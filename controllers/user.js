@@ -96,9 +96,10 @@ if (req.user) {
  * Sign in using email and password.
  */
 exports.postLogin = (req, res, next) => {
-  req.assert('email', 'Email is not valid').isEmail();
+  //req.assert('email', 'Email is not valid').isEmail();
   req.assert('password', 'Password cannot be blank').notEmpty();
-  req.sanitize('email').normalizeEmail({ remove_dots: false });
+  req.assert('username', 'Username cannot be blank').notEmpty();
+  //req.sanitize('email').normalizeEmail({ remove_dots: false });
 
   const errors = req.validationErrors();
 
@@ -154,11 +155,11 @@ exports.getSignup = (req, res) => {
  * Create a new local account.
  */
 exports.postSignup = (req, res, next) => {
-  req.assert('email', 'Email is not valid').isEmail();
+  req.assert('username', 'Username cannot be blank').notEmpty();
   req.assert('password', 'Password must be at least 4 characters long').len(4);
   req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
-  req.sanitize('email').normalizeEmail({ remove_dots: false });
-
+  req.assert('signupcode', 'Wrong Sign Up Code').equals("0451");
+  
   const errors = req.validationErrors();
 
   if (errors) {
@@ -167,24 +168,20 @@ exports.postSignup = (req, res, next) => {
   }
 
   //random assignment of experimental group
-  var result = ['no:no', 'no:low', 'no:high', 'ui:no', 'ui:low', 'ui:high'][Math.floor(Math.random() * 6)]
-  var resultArray = result.split(':');
   const user = new User({
-    email: req.body.email,
     password: req.body.password,
-    mturkID: req.body.mturkID,
     username: req.body.username,
-    group: result,
+    group: 'no:no',
     active: true,
-    ui: resultArray[0], //ui or no
-    notify: resultArray[1], //no, low or high
+    ui: 'no', //ui or no
+    notify: 'no', //no, low or high
     lastNotifyVisit : Date.now()
   });
 
-  User.findOne({ email: req.body.email }, (err, existingUser) => {
+  User.findOne({ username: req.body.username }, (err, existingUser) => {
     if (err) { return next(err); }
     if (existingUser) {
-      req.flash('errors', { msg: 'Account with that email address already exists.' });
+      req.flash('errors', { msg: 'Account with that Username already exists.' });
       return res.redirect('/signup');
     }
     user.save((err) => {
