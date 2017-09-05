@@ -246,7 +246,7 @@ app.get('/info', passportConfig.isAuthenticated, function (req, res) {
 //User's Page
 app.get('/me', passportConfig.isAuthenticated, userController.getMe);
 
-app.get('/completed', passportConfig.isAuthenticated, userController.userTestResults);
+//app.get('/completed', passportConfig.isAuthenticated, userController.userTestResults);
 
 app.get('/notifications', passportConfig.isAuthenticated, notificationController.getNotifications);
 
@@ -254,10 +254,10 @@ app.get('/notifications', passportConfig.isAuthenticated, notificationController
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 app.get('/logout', userController.logout);
-app.get('/forgot', userController.getForgot);
-app.post('/forgot', userController.postForgot);
-app.get('/reset/:token', userController.getReset);
-app.post('/reset/:token', userController.postReset);
+//app.get('/forgot', userController.getForgot);
+//app.post('/forgot', userController.postForgot);
+//app.get('/reset/:token', userController.getReset);
+//app.post('/reset/:token', userController.postReset);
 app.get('/signup', userController.getSignup);
 app.post('/signup', userController.postSignup);
 
@@ -266,11 +266,11 @@ app.post('/account/signup_info_post', passportConfig.isAuthenticated, useravatar
 
 app.post('/account/profile', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, csrf, userController.postUpdateProfile);
 
-app.get('/contact', contactController.getContact);
-app.post('/contact', contactController.postContact);
+//app.get('/contact', contactController.getContact);
+//app.post('/contact', contactController.postContact);
 
 app.get('/account', passportConfig.isAuthenticated, userController.getAccount);
-app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
+//app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
 
 //See actors
 //app.get('/actors', actorsController.getActors);

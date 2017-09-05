@@ -12,12 +12,12 @@ var mongoose = require('mongoose');
 var fs = require('fs')
 
 
-var highUsers = require('./highusers.json');
-var actors1 = require('./actorsv1.json');
-var posts1 = require('./postsv1.json');
-var post_reply1 = require('./post_replyv1.json');
-var actorReply = require('./actorReply.json');
-var notify = require('./notify.json');
+
+var actors1 = require('./testdrive_actorv1.json');
+var posts1 = require('./testdrive_postv1.json');
+var post_reply1 = require('./testdrive_replyv1.json');
+//var actorReply = require('./actorReply.json');
+//var notify = require('./notify.json');
 var dd = require('./upload_post_replyv1.json');
 
 dotenv.load({ path: '.env' });
@@ -87,13 +87,13 @@ function ActorCreate(actor1) {
   actordetail = {};
   actordetail.profile = {};
 
-  actordetail.profile.name = actor1.name
-  actordetail.profile.gender = actor1.gender;
+  actordetail.profile.name = actor1.realname
+  //actordetail.profile.gender = actor1.gender;
   actordetail.profile.location = actor1.location;
   actordetail.profile.picture = actor1.picture;
   actordetail.profile.bio = actor1.bio;
   actordetail.profile.age = actor1.age;
-  actordetail.class = actor1.class;
+  //actordetail.class = actor1.class;
   actordetail.username = actor1.username;
   
 
@@ -114,20 +114,26 @@ function PostCreate(new_post) {
   
   Actor.findOne({ username: new_post.actor}, (err, act) => {
     if (err) { console.log(err); return next(err); }
+    //if (err) { console.log("actor does not exist"); return -1; }
+
+    if (!act) {
+      console.log("actor does not exist");
+      return -1;
+    }
 
     console.log('Looking up Actor ID is : ' + act._id); 
     var postdetail = new Object();
     postdetail.actor = {};
     postdetail.body = new_post.body
     postdetail.post_id = new_post.id;
-    postdetail.class = new_post.class;
+    //postdetail.class = new_post.class;
     postdetail.picture = new_post.picture;
+
     postdetail.likes = getLikes();
     postdetail.lowread = getReads(6,20);
     postdetail.highread = getReads(145,203);
+
     postdetail.actor.$oid = act._id.toString();
-    //postdetail.actor=`${act._id}`;
-    //postdetail.actor2=act;
     postdetail.time = timeStringToNum(new_post.time);
 
     console.log('Looking up Actor: ' + act.username); 
@@ -148,6 +154,11 @@ Script.findOne({ post_id: new_post.replyID}, function(err, pr){
         return
       }
 
+      if (!pr) {
+      console.log("actor does not exist");
+      return -1;
+    }
+
       console.log('In SCRIPT');
       console.log('In Reply: ' + pr._id);
 
@@ -158,7 +169,7 @@ Script.findOne({ post_id: new_post.replyID}, function(err, pr){
       postdetail.body = new_post.body
       postdetail.post_id = new_post.id;
       postdetail.class = new_post.class;
-      postdetail.picture = new_post.picture;
+      //postdetail.picture = new_post.picture;
       postdetail.likes = new_post.likes;
       postdetail.lowread = new_post.lowread;
       postdetail.highread = new_post.highread;
@@ -182,6 +193,12 @@ function PostReplyCreate(new_post) {
       console.log(err);
       return
     }
+
+    if (!act) {
+      console.log("actor does not exist");
+      return -1;
+    }
+
     console.log('Looking up Actor: ' + act.username); 
     console.log('Try for post: ' + new_post.reply);
     var postdetail = new Object();
@@ -189,16 +206,18 @@ function PostReplyCreate(new_post) {
     postdetail.replyID = new_post.reply;
     postdetail.body = new_post.body
     postdetail.post_id = 300 + new_post.id;
-    postdetail.class = new_post.class;
-    postdetail.picture = new_post.picture;
+    //postdetail.class = new_post.class;
+    //postdetail.picture = new_post.picture;
     postdetail.likes = getLikes();
     postdetail.lowread = getReads(6,20);
     postdetail.highread = getReads(145,203);
+
     postdetail.actor.$oid = act._id.toString();
     //postdetail.reply.$oid = pr._id.toString();
     console.log('Time is now: ' + new_post.time);
     postdetail.time = timeStringToNum(new_post.time);
     fs.appendFileSync('upload_post_replyv0.json', JSON.stringify(postdetail));
+
   });
     
     
@@ -290,6 +309,7 @@ for (var i = 0, len = posts1.length; i < len; i++) {
       
       PostCreate(posts1[i]);
 }
+
 for (var i = 0, len = post_reply1.length; i < len; i++) {
       
       PostReplyCreate(post_reply1[i]);
@@ -306,6 +326,12 @@ for (var i = 0, len = actorReply.length; i < len; i++) {
 for (var i = 0, len = actorReply.length; i < len; i++) {
       
       actorNotifyCreate(actorReply[i]);
+}
+
+
+for (var i = 0, len = dd.length; i < len; i++) {
+      
+      PostReplyCreateFinal(dd[i]);
 }
 */
 

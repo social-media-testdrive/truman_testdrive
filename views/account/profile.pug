@@ -8,9 +8,6 @@ block content
     form.ui.form(action='/account/profile', method='POST', enctype='multipart/form-data')
       input(type='hidden', name='_csrf', value=_csrf)
       .field
-        label(for='email') Email
-        input.form-control(type='email', name='email', id='email', value=user.email)
-      .field
         label(for='name') Name
         input.form-control(type='text', name='name', id='name', value=user.profile.name)
       .field
@@ -29,16 +26,3 @@ block content
             img#imgInp.ui.small.image(src=user.gravatar(60))
         input#picinput(type='file', accept='image/*', capture='camera', name='picinput')
       button.ui.button(type='submit') Update Profile
-
-    h3.ui.header Change Password
-
-    form.ui.form(action='/account/password', method='POST')
-      input(type='hidden', name='_csrf', value=_csrf)
-      .field
-        label(for='password') New Password
-        input.form-control(type='password', name='password', id='password')
-      .field
-        label(for='confirmPassword') Confirm Password
-        input.form-control(type='password', name='confirmPassword', id='confirmPassword')
-      .field
-        button.ui.button(type='submit') Change Password

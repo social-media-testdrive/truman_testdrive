@@ -113,25 +113,6 @@ function readURL(input) {
         readURL(this);
     });
 
-//Modal to show "other users" in Notifications 
-/*
-$('a.others').click(function(){
-  let key = $(this).attr('key');
-
-
-  $('.ui.long.extrausers.modal#'+key).modal({
-    onVisible: function() {
-      var el = document.querySelector('.ui.long.extrausers.modal#'+key+" div.ui.extra.divided.items");
-      var lazyLoad = new LazyLoad({
-         container: el /// <--- not sure if this works here, read below
-    });
-      
-      
-      
-    }
-  }).modal('show')  
-}); */
-
 //add humanized time to all posts
 $('.right.floated.time.meta, .date').each(function() {
     var ms = parseInt($(this).text(), 10);
@@ -274,9 +255,9 @@ $('.right.floated.time.meta, .date').each(function() {
       var label = $(this).next("a.ui.basic.red.left.pointing.label.count");
       label.html(function(i, val) { return val*1+1 });
       var postID = $(this).closest( ".ui.fluid.card.dim" ).attr( "postID" );
-      var like = Date.now();
-      console.log("***********LIKE: post "+postID+" at time "+like);
-      $.post( "/feed", { postID: postID, like: like, _csrf : $('meta[name="csrf-token"]').attr('content') } );
+      //var like = Date.now();
+      console.log("***********LIKE: post "+postID);
+      $.post( "/feed", { postID: postID, like: 1, _csrf : $('meta[name="csrf-token"]').attr('content') } );
 
     }
 
@@ -288,9 +269,8 @@ $('.right.floated.time.meta, .date').each(function() {
 
      var post = $(this).closest( ".ui.fluid.card.dim");
      var postID = post.attr( "postID" );
-     var flag = Date.now();
-     console.log("***********FLAG: post "+postID+" at time "+flag);
-     $.post( "/feed", { postID: postID, flag: flag, _csrf : $('meta[name="csrf-token"]').attr('content') } );
+     console.log("***********FLAG: post "+postID);
+     $.post( "/feed", { postID: postID, flag: 1, _csrf : $('meta[name="csrf-token"]').attr('content') } );
      console.log("Removing Post content now!");
      post.find(".ui.dimmer.flag").dimmer({
                    closable: false
@@ -305,38 +285,17 @@ $('.right.floated.time.meta, .date').each(function() {
 
   });
 
-  //User wants to REREAD
-  $('.ui.button.reread')
-  .on('click', function() {
-    //.ui.active.dimmer
-    $(this).closest( ".ui.dimmer" ).removeClass( "active" );
-    $(this).closest( ".ui.fluid.card.dim" ).find(".ui.inverted.read.dimmer").dimmer('hide');
-
-
-     var postID = $(this).closest( ".ui.fluid.card.dim" ).attr( "postID" );
-     var reread = Date.now();
-     console.log("##########REREAD######SEND TO DB######: post "+postID+" at time "+reread);
-     $.post( "/feed", { postID: postID, start: reread, _csrf : $('meta[name="csrf-token"]').attr('content') } );
-     //maybe send this later, when we have a re-read event to time???
-     //$.post( "/feed", { postID: postID, like: like, _csrf : $('meta[name="csrf-token"]').attr('content') } );
-
-  });
 
 
   //Dimm cards as user scrolls - send Post to update DB on timing of events .image
   //$('.ui.fluid.card.dim') img.post $('.ui.fluid.card.dim .image'
+  /*
   $('img.post')
   .visibility({
     once       : false,
     continuous : false,
     observeChanges: true,
     offset: 65,
-    
-    /*
-    onTopVisibleReverse:function(calculations) {
-      console.log(":::::Now passing onTopVisibleReverse:::::");
-    },*/
-
     
     //USER HAS NOW READ THE POST (READ EVENT) 
     //onBottomVisibleReverse:function(calculations) { onBottomPassed
@@ -422,7 +381,7 @@ $('.right.floated.time.meta, .date').each(function() {
 
         }
   })
-;//WTF!!!
+;//WTF!!!*/
 
 
 
