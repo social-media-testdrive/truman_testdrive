@@ -230,6 +230,12 @@ app.get('/tos', function (req, res) {
   });
 })
 
+app.get('/finished',  passportConfig.isAuthenticated, function (req, res) {
+  res.render('finished', {
+    title: 'Post Exercise'
+  });
+})
+
 app.get('/com', function (req, res) {
   res.render('com', {
     title: 'Community Rules'
