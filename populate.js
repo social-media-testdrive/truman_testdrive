@@ -27,6 +27,7 @@ var MongoClient = require('mongodb').MongoClient
 
 
 //var connection = mongo.connect('mongodb://127.0.0.1/test');
+
 mongoose.connect(process.env.PRO_MONGODB_URI || process.env.PRO_MONGOLAB_URI);
 var db = mongoose.connection;
 mongoose.connection.on('error', (err) => {
@@ -112,12 +113,14 @@ function ActorCreate(actor1) {
 
 function PostCreate(new_post) {
   
-  Actor.findOne({ username: new_post.actor}, (err, act) => {
+  //console.log("START: actor:::::", + new_post.bot);
+
+  Actor.findOne({ username: new_post.bot}, (err, act) => {
     if (err) { console.log(err); return next(err); }
     //if (err) { console.log("actor does not exist"); return -1; }
 
     if (!act) {
-      console.log("actor does not exist");
+      console.log("actor does not exist:::::", + new_post.bot+" ID is "+new_post.id);
       return -1;
     }
 
@@ -128,6 +131,8 @@ function PostCreate(new_post) {
     postdetail.post_id = new_post.id;
     //postdetail.class = new_post.class;
     postdetail.picture = new_post.picture;
+    postdetail.module = new_post.module;
+    postdetail.class = new_post.type;
 
     postdetail.likes = getLikes();
     postdetail.lowread = getReads(6,20);
@@ -161,6 +166,7 @@ Script.findOne({ post_id: new_post.replyID}, function(err, pr){
 
       console.log('In SCRIPT');
       console.log('In Reply: ' + pr._id);
+      console.log('Try for Modual: ' + new_post.module);
 
       //console.log('Looking up Actor ID is : ' + act._id); 
       var postdetail = new Object();
@@ -169,6 +175,8 @@ Script.findOne({ post_id: new_post.replyID}, function(err, pr){
       postdetail.body = new_post.body
       postdetail.post_id = new_post.id;
       postdetail.class = new_post.class;
+      postdetail.module = "presentation";
+
       //postdetail.picture = new_post.picture;
       postdetail.likes = new_post.likes;
       postdetail.lowread = new_post.lowread;
@@ -201,6 +209,7 @@ function PostReplyCreate(new_post) {
 
     console.log('Looking up Actor: ' + act.username); 
     console.log('Try for post: ' + new_post.reply);
+    console.log('Try for Modual: ' + new_post.module);
     var postdetail = new Object();
     postdetail.actor = {};
     postdetail.replyID = new_post.reply;
@@ -211,6 +220,8 @@ function PostReplyCreate(new_post) {
     postdetail.likes = getLikes();
     postdetail.lowread = getReads(6,20);
     postdetail.highread = getReads(145,203);
+    postdetail.module = new_post.module;
+    postdetail.class = new_post.type;
 
     postdetail.actor.$oid = act._id.toString();
     //postdetail.reply.$oid = pr._id.toString();
@@ -334,11 +345,11 @@ for (var i = 0, len = dd.length; i < len; i++) {
       PostReplyCreateFinal(dd[i]);
 }
 */
-
 for (var i = 0, len = dd.length; i < len; i++) {
       
       PostReplyCreateFinal(dd[i]);
 }
+
 
 //PostReplyCreate(posts1[0]);
 //PostCreate(posts1[1]);

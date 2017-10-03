@@ -10,6 +10,7 @@ const scriptSchema = new mongoose.Schema({
   body: {type: String, default: '', trim: true},
   post_id: Number,
   class: String, //experimental or normal
+  module: String, //name of mod for this script
   picture: String,
   highread: Number,
   lowread: Number,

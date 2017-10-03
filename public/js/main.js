@@ -129,7 +129,21 @@ $('.right.floated.time.meta, .date').each(function() {
   //Sign Up Info Skip Button
   $('button.ui.button.skip')
   .on('click', function() {
-    window.location.href='/com';
+    window.location.href='/info';
+  });
+
+
+//Pre qiuz for presentation mod (rocket!!!)
+  $('.ui.big.green.labeled.icon.button.prepres')
+  .on('click', function() {
+    window.location.href='/modual/presentation'; 
+  });
+
+
+
+  $('.ui.big.green.labeled.icon.button.finished')
+  .on('click', function() {
+    window.location.href='/'; 
   });
 
   //Community Rules Button (rocket!!!)

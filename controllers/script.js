@@ -15,11 +15,11 @@ exports.getScript = (req, res) => {
   var time_diff = time_now - req.user.createdAt;
   //var today = moment();
   //var tomorrow = moment(today).add(1, 'days');
+
   var time_limit = time_diff - 864000000; //one day in milliseconds
 
   var user_ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   var userAgent = req.headers['user-agent']; 
-
 
 
   console.log("time_diff  is now "+time_diff);
@@ -39,21 +39,14 @@ exports.getScript = (req, res) => {
        path: 'posts.actorAuthor',
        model: 'Actor'
     })
-  .exec(function (err, user) {
-  //User.findById(req.user.id, (err, user) => {
 
-    //User is no longer active - study is over
-    if (!user.active)
-    {
-      req.logout();
-      req.flash('errors', { msg: 'Account is no longer active. Study is over' });
-      res.redirect('/login');
-    }
+  .exec(function (err, user) {
 
     user.logUser(time_now, userAgent, user_ip);
 
     Script.find()
-      .where('time').lte(time_diff).gte(time_limit)
+      .where('time').lte(time_diff)//.gte(time_limit)
+      .where('module').equals(req.params.modId)
       .sort('-time')
       .populate('actor')
       .populate({ 
@@ -84,81 +77,87 @@ exports.getScript = (req, res) => {
           //console.log(typeof user_posts[0] === 'undefined');
           //console.log(user_posts[0].relativeTime);
           //console.log(feed[0].time)
-          if(typeof script_feed[0] === 'undefined') {
-              console.log("Script_Feed is empty, push user_posts");
-              finalfeed.push(user_posts[0]);
-              user_posts.splice(0,1);
-          }
-          else if(!(typeof user_posts[0] === 'undefined') && (script_feed[0].time < user_posts[0].relativeTime)){
-              console.log("Push user_posts");
-              finalfeed.push(user_posts[0]);
-              user_posts.splice(0,1);
+          if(!script_feed[0].actor) {
+            script_feed.splice(0,1);
           }
           else{
-            //console.log("ELSE PUSH FEED");
-            var feedIndex = _.findIndex(user.feedAction, function(o) { return o.post == script_feed[0].id; });
 
-             
-            if(feedIndex!=-1)
-            {
-              //console.log("WE HAVE AN ACTION!!!!!");
+            if(typeof script_feed[0] === 'undefined') {
+                console.log("Script_Feed is empty, push user_posts");
+                finalfeed.push(user_posts[0]);
+                user_posts.splice(0,1);
+            }
+            else if(!(typeof user_posts[0] === 'undefined') && (script_feed[0].time < user_posts[0].relativeTime)){
+                console.log("Push user_posts");
+                finalfeed.push(user_posts[0]);
+                user_posts.splice(0,1);
+            }
+            else{
+              //console.log("ELSE PUSH FEED");
+              var feedIndex = _.findIndex(user.feedAction, function(o) { return o.post == script_feed[0].id; });
 
-              if (user.feedAction[feedIndex].readTime[0])
-              { 
-                script_feed[0].read = true;
-                script_feed[0].state = 'read';
-                //console.log("Post: %o has been READ", script_feed[0].id);
-              }
-
-              if (user.feedAction[feedIndex].liked)
-              { 
-                script_feed[0].like = true;
-                script_feed[0].likes++;
-                //console.log("Post %o has been LIKED", script_feed[0].id);
-              }
-
-              if (user.feedAction[feedIndex].replyTime[0])
-              { 
-                script_feed[0].reply = true;
-                //console.log("Post %o has been REPLIED", script_feed[0].id);
-              }
-
-              //If this post has been flagged - remove it from FEED array (script_feed)
-              if (user.feedAction[feedIndex].flagTime[0])
-              { 
-                script_feed.splice(0,1);
-                //console.log("Post %o has been FLAGGED", script_feed[0].id);
-              }
-
-              //post is from blocked user - so remove  it from feed
-              else if (user.blocked.includes(script_feed[0].actor.username))
+               
+              if(feedIndex!=-1)
               {
-                script_feed.splice(0,1);
-              }
+                //console.log("WE HAVE AN ACTION!!!!!");
 
-              else
-              {
-                //console.log("Post is NOT FLAGGED, ADDED TO FINAL FEED");
-                finalfeed.push(script_feed[0]);
-                script_feed.splice(0,1);
-              }
+                if (user.feedAction[feedIndex].readTime[0])
+                { 
+                  script_feed[0].read = true;
+                  script_feed[0].state = 'read';
+                  //console.log("Post: %o has been READ", script_feed[0].id);
+                }
 
-              }//end of IF we found Feed_action
+                if (user.feedAction[feedIndex].liked)
+                { 
+                  script_feed[0].like = true;
+                  script_feed[0].likes++;
+                  //console.log("Post %o has been LIKED", script_feed[0].id);
+                }
 
-              else
-              {
-                //console.log("NO FEED ACTION SO, ADDED TO FINAL FEED");
-                if (user.blocked.includes(script_feed[0].actor.username))
+                if (user.feedAction[feedIndex].replyTime[0])
+                { 
+                  script_feed[0].reply = true;
+                  //console.log("Post %o has been REPLIED", script_feed[0].id);
+                }
+
+                //If this post has been flagged - remove it from FEED array (script_feed)
+                if (user.feedAction[feedIndex].flagTime[0])
+                { 
+                  script_feed.splice(0,1);
+                  //console.log("Post %o has been FLAGGED", script_feed[0].id);
+                }
+
+                //post is from blocked user - so remove  it from feed
+                else if (user.blocked.includes(script_feed[0].actor.username))
                 {
                   script_feed.splice(0,1);
                 }
+
                 else
                 {
+                  //console.log("Post is NOT FLAGGED, ADDED TO FINAL FEED");
                   finalfeed.push(script_feed[0]);
                   script_feed.splice(0,1);
                 }
-              }
-            }//else in while loop
+
+                }//end of IF we found Feed_action
+
+                else
+                {
+                  //console.log("NO FEED ACTION SO, ADDED TO FINAL FEED");
+                  if (user.blocked.includes(script_feed[0].actor.username))
+                  {
+                    script_feed.splice(0,1);
+                  }
+                  else
+                  {
+                    finalfeed.push(script_feed[0]);
+                    script_feed.splice(0,1);
+                  }
+                }
+              }//else in while loop
+          }//if username
       }//while loop
 
       user.save((err) => {
@@ -169,7 +168,7 @@ exports.getScript = (req, res) => {
       });
 
 
-      res.render('script', { script: finalfeed });
+      res.render('script', { script: finalfeed, mod: req.params.modId });
 
       });//end of Script.find()
 

@@ -1,0 +1,43 @@
+extends ui_layout
+
+block content
+
+  .ui.text.container
+    br
+    h2 Presentation Post Exercise 
+
+    .ui.form
+      .field
+        label What’s safe online behavior??
+        textarea(rows='2')
+      .field
+        label How did you respond?
+        textarea(rows='2')
+      .field
+        label What can you do in the future?
+        textarea(rows='2')
+      .grouped.fields
+        label(for='fruit') Feel like you know how to present yourself online?:
+      .field
+        .ui.radio.checkbox
+          input.hidden(type='radio', name='fruit', checked='', tabindex='0')
+          label Definitely Yes
+      .field
+        .ui.radio.checkbox
+          input.hidden(type='radio', name='fruit', tabindex='0')
+          label Kind of
+      .field
+        .ui.radio.checkbox
+          input.hidden(type='radio', name='fruit', tabindex='0')
+          label Not really
+      .field
+        .ui.radio.checkbox
+          input.hidden(type='radio', name='fruit', tabindex='0')
+          label Not at all
+
+    .ui.big.green.labeled.icon.button.finished
+        i.rocket.icon
+        |   Got it!
+    br
+    br
+    br

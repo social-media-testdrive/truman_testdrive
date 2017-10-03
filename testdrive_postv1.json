@@ -1,317 +1,515 @@
 [
   {
-    "id": 3,
-    "body": "Hi there",
-    "picture": "u3p1.jpg",
-    "actor": "cloe.htt",
-    "time": "-50:00"
-  },
-  {
     "id": 4,
-    "body": "We dance for hopes... we create the dreams -Einstein",
+    "body": "We dance for hopes... we create the dreams\" -Einstein",
     "picture": "u3p2.jpeg",
-    "actor": "cloe.htt",
-    "time": "-32:00"
+    "bot": "cloe.htt",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-2:00:00"
   },
   {
     "id": 5,
     "body": "#summer #rain",
     "picture": "u4p1.jpg",
-    "actor": "habbey113",
-    "time": "-44:00"
-  },
-  {
-    "id": 6,
-    "body": "Visiting university!",
-    "picture": "u4p2.jpg",
-    "actor": "habbey113",
-    "time": "-10:00"
+    "bot": "habbey113",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-1:57:00"
   },
   {
     "id": 7,
     "body": "beach life",
     "picture": "u5p1.jpg",
-    "actor": "kilani244",
-    "time": "-32:00"
-  },
-  {
-    "id": 8,
-    "body": "after the rain...",
-    "picture": "u5p2.jpg",
-    "actor": "kilani244",
-    "time": "-12:00"
+    "bot": "kilani244",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-1:54:00"
   },
   {
     "id": 9,
     "body": "spending the last days of summer here...",
     "picture": "u6p1.jpeg",
-    "actor": "ellis_06",
-    "time": "-39:00"
+    "bot": "ellis_06",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-1:51:00"
   },
   {
-    "id": 10,
-    "body": "Oceana",
-    "picture": "u6p2.jpeg",
-    "actor": "ellis_06",
-    "time": "-21:18"
-  },
-  {
-    "id": 11,
-    "body": "escpaing the city for a bit",
-    "picture": "u7p1.jpg",
-    "actor": "l.wakefield17",
-    "time": "-44:00"
-  },
-  {
-    "id": 12,
-    "body": "Stroll through Battery",
-    "picture": "u7p2.jpg",
-    "actor": "l.wakefield17",
-    "time": "-39:00"
-  },
-  {
-    "id": 14,
-    "body": "getting back into drawing. plz reply w/ critiques (i'm thick-skinned i swear)",
-    "picture": "orange_drawing.jpeg",
-    "actor": "kitty.z",
-    "time": "-45:98"
-  },
-  {
-    "id": 15,
-    "body": "ayyy lmao snuck into my bro's LAN party",
-    "picture": "LAN_Party.jpg",
-    "actor": "frank-the-best",
-    "time": "-21:11"
-  },
-  {
-    "id": 17,
-    "body": "lemme try to fry an egg on the sidewalk",
-    "picture": "egg_on_sidewalk.jpeg",
-    "actor": "aaahhh",
-    "time": "-15:11"
-  },
-  {
-    "id": 19,
-    "body": "my aunt mailed me some assam tea!",
-    "picture": "assam_tea.jpg",
-    "actor": "morning-tea-and-books",
-    "time": "-70:00"
-  },
-  {
-    "id": 23,
-    "body": "#internationaldanceday",
-    "picture": "ballet.jpg",
-    "actor": "triple-threat",
-    "time": "-38:00"
-  },
-  {
-    "id": 24,
-    "body": "the usual",
-    "picture": "starbucks.jpg",
-    "actor": "m-beckett",
-    "time": "-54:00"
-  },
-  {
-    "id": 25,
-    "body": "doggo",
-    "picture": "Puppy.jpg",
-    "actor": "ethan-the-man",
-    "time": "-10:00"
-  },
-  {
-    "id": 36,
-    "body": "Family weekend at the beach:) #thankful",
-    "picture": "post36.jpg",
-    "actor": "yrollam_htims",
-    "time": "-32:00"
-  },
-  {
-    "id": 37,
-    "body": "experimenting... #sparkle #makeup #pretty",
-    "picture": "post37.jpg",
-    "actor": "unicornsparkle",
-    "time": "-72:00"
-  },
-  {
-    "id": 38,
-    "body": "peek-a-boo #cats #catsofinstagram",
-    "picture": "post38.jpg",
-    "actor": "princess_lindss",
-    "time": "-39:00"
-  },
-  {
-    "id": 39,
-    "body": "home made mac and cheese....mmmmm",
-    "picture": "post39.jpg",
-    "actor": "king_corey",
-    "time": "-61:18"
-  },
-  {
-    "id": 41,
-    "body": "got super bored in class today... :p",
-    "picture": "post41.jpg",
-    "actor": "itsmelucy",
-    "time": "-44:00"
-  },
-  {
-    "id": 42,
-    "body": "#mondaypunday your welcome",
-    "picture": "post42.jpg",
-    "actor": "beachmoreworryless",
-    "time": "-39:00"
-  },
-  {
-    "id": 43,
-    "body": "shoutout to these girls! <3 ya!",
-    "picture": "post43.jpg",
-    "actor": "goaliegirl",
-    "time": "-45:98"
-  },
-  {
-    "id": 44,
-    "body": "maggie you did so good today #proud #bff",
-    "picture": "post44.jpg",
-    "actor": "im_musicool",
-    "time": "-61:11"
-  },
-  {
-    "id": 45,
-    "body": "all mine. don't touch.",
-    "picture": "post45.jpg",
-    "actor": "memeking",
-    "time": "-15:11"
-  },
-  {
-    "id": 51,
-    "body": "ugh school",
-    "picture": "post50.jpg",
-    "actor": "candyqueen67",
-    "time": "-39:00"
-  },
-  {
-    "id": 54,
-    "body": "#TBT hockey prac",
-    "picture": "post54.jpg",
-    "actor": "Nick_Thomas",
-    "time": "-21:18"
-  },
-  {
-    "id": 57,
-    "body": "beach with my family.  love them",
-    "picture": "beach.jpg",
-    "actor": "soccergirl16",
-    "time": "-44:00"
-  },
-  {
-    "id": 58,
-    "body": "yankee game!!!!!! GO YANKS",
-    "picture": "yankee.jpg",
-    "actor": "soccergirl16",
-    "time": "-39:00"
+    "id": 111,
+    "body": "YUMMM got to go with Dad to Costco today 🌶🍎🍐🍕🌭🍟🥙",
+    "picture": "reciept.jpg",
+    "bot": "rosie_pris",
+    "module": "presentation",
+    "type": "bad",
+    "time": "-1:48:00"
   },
   {
     "id": 59,
     "body": "#TBT with the boys",
     "picture": "boyspic.jpg",
-    "actor": "asherballer",
-    "time": "-45:98"
+    "bot": "asherballer",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-1:45:00"
   },
   {
-    "id": 62,
-    "body": "movies w/ the boys",
-    "picture": "movies.jpg",
-    "actor": "asherballer",
-    "time": "-21:11"
+    "id": 11,
+    "body": "escpaing the city for a bit",
+    "picture": "u7p1.jpg",
+    "bot": "l.wakefield17",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-1:42:00"
   },
   {
-    "id": 66,
-    "body": "got a pet budgie! Isn’t he SO CUTE!?! 😍 You guys have any name ideas",
-    "picture": "budgie.jpg",
-    "actor": "emememily",
-    "time": "-15:11"
+    "id": 14,
+    "body": "getting back into drawing. plz reply w/ critiques (i'm thick-skinned i swear)",
+    "picture": "orange_drawing.jpeg",
+    "bot": "kitty.z",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-1:39:00"
   },
   {
-    "id": 68,
-    "body": "playing minecraft",
-    "picture": "playing_minecraft.jpg",
-    "actor": "mine-craft313",
-    "time": "-70:00"
+    "id": 15,
+    "body": "ayyy lmao snuck into my bro's LAN party",
+    "picture": "LAN_Party.jpg",
+    "bot": "frank-the-best",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-1:36:00"
   },
   {
-    "id": 70,
-    "body": "Missing my girls😭😭😭",
-    "picture": "missingmyfriends.jpg",
-    "actor": "mel_williams1314",
-    "time": "-38:00"
+    "id": 17,
+    "body": "lemme try to fry an egg on the sidewalk",
+    "picture": "egg_on_sidewalk.jpeg",
+    "bot": "aaahhh",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-1:33:00"
   },
   {
-    "id": 71,
-    "body": "#yummmm #starbucks #frappucino",
-    "picture": "frap.jpg",
-    "actor": "vkemp02",
-    "time": "-54:00"
+    "id": 112,
+    "body": "Yeah, Dylan I don't want you to come over. HAHA @DylanCrazzzzzy you're so dumb",
+    "picture": "catmeme.jpg",
+    "bot": "candyqueen67",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-1:30:00"
   },
   {
-    "id": 73,
-    "body": "Road Trippin",
-    "picture": "Roadtrip.jpg",
-    "actor": "jasmine_1110",
-    "time": "-10:00"
+    "id": 23,
+    "body": "#internationaldanceday",
+    "picture": "ballet.jpg",
+    "bot": "triple-threat",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-1:27:00"
   },
   {
-    "id": 74,
-    "body": "I love nature",
-    "picture": "ilovenature.jpg",
-    "actor": "peytonpope_xx",
-    "time": "-32:00"
+    "id": 24,
+    "body": "the usual",
+    "picture": "starbucks.jpg",
+    "bot": "m-beckett",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-1:24:00"
   },
   {
-    "id": 75,
-    "body": "#coffeeandbooks",
-    "picture": "coffeeandbooks.jpg",
-    "actor": "peytonpope_xx",
-    "time": "-72:00"
+    "id": 10,
+    "body": "Oceana",
+    "picture": "u6p2.jpeg",
+    "bot": "ellis_06",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-1:21:00"
+  },
+  {
+    "id": 25,
+    "body": "doggo",
+    "picture": "Puppy.jpg",
+    "bot": "ethan-the-man",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-1:18:00"
   },
   {
     "id": 76,
     "body": "Missing summer 🌞",
     "picture": "missingsummer.jpg",
-    "actor": "mel_williams1314",
-    "time": "-39:00"
+    "bot": "mel_williams1314",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-1:15:00"
+  },
+  {
+    "id": 36,
+    "body": "Family weekend at the beach:) #thankful",
+    "picture": "post36.jpg",
+    "bot": "yrollam_htims",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-1:12:00"
+  },
+  {
+    "id": 98,
+    "body": "Dad let me borrow his card for the mall. Shopping anyone?",
+    "picture": "card.jpg",
+    "bot": "cool.kid5386",
+    "module": "presentation",
+    "type": "bad",
+    "time": "-1:09:00"
+  },
+  {
+    "id": 37,
+    "body": "experimenting... #sparkle #makeup #pretty",
+    "picture": "post37.jpg",
+    "bot": "unicornsparkle",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-1:06:00"
+  },
+  {
+    "id": 38,
+    "body": "peek-a-boo #cats #catsofinstagram",
+    "picture": "post38.jpg",
+    "bot": "princess_lindss",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-1:03:00"
+  },
+  {
+    "id": 39,
+    "body": "home made mac and cheese....mmmmm",
+    "picture": "post39.jpg",
+    "bot": "king_corey",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-1:00:00"
+  },
+  {
+    "id": 99,
+    "body": "321 Jefferson Ave come hang out guys, I'm bored.",
+    "picture": "house.jpg",
+    "bot": "jcas348",
+    "module": "presentation",
+    "type": "bad",
+    "time": "-0:57:00"
+  },
+  {
+    "id": 41,
+    "body": "got super bored in class today... :p",
+    "picture": "post41.jpg",
+    "bot": "itsmelucy",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-0:54:00"
+  },
+  {
+    "id": 42,
+    "body": "#mondaypunday your welcome",
+    "picture": "post42.jpg",
+    "bot": "beachmoreworryless",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-0:51:00"
+  },
+  {
+    "id": 43,
+    "body": "shoutout to these girls! <3 ya!",
+    "picture": "post43.jpg",
+    "bot": "goaliegirl",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-0:48:00"
+  },
+  {
+    "id": 6,
+    "body": "Visiting university!",
+    "picture": "u4p2.jpg",
+    "bot": "habbey113",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-0:45:00"
+  },
+  {
+    "id": 44,
+    "body": "maggie you did so good today #proud #bff",
+    "picture": "post44.jpg",
+    "bot": "im_musicool",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-0:42:00"
+  },
+  {
+    "id": 105,
+    "body": "Thanks for buying me these limited-edition shoes! Feeling blessed ❤️",
+    "picture": "shoes.jpg",
+    "bot": "vkemp02",
+    "module": "presentation",
+    "type": "bad",
+    "time": "-0:39:00"
+  },
+  {
+    "id": 45,
+    "body": "all mine. don't touch.",
+    "picture": "post45.jpg",
+    "bot": "memeking",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-0:36:00"
+  },
+  {
+    "id": 51,
+    "body": "ugh school",
+    "picture": "post50.jpg",
+    "bot": "candyqueen67",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-0:33:00"
+  },
+  {
+    "id": 54,
+    "body": "#TBT hockey prac",
+    "picture": "post54.jpg",
+    "bot": "Nick_Thomas",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-0:30:00"
+  },
+  {
+    "id": 56,
+    "body": "starbucks with my girls!!!!",
+    "picture": "starbucks.jpg",
+    "bot": "dyliegirlll",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-0:27:00"
+  },
+  {
+    "id": 57,
+    "body": "beach with my family.  love them",
+    "picture": "beach.jpg",
+    "bot": "soccergirl16",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-0:24:00"
+  },
+  {
+    "id": 100,
+    "body": "She's always dumb like this 🙄 @_insertname_",
+    "picture": "texting.jpg",
+    "bot": "mel_williams1314",
+    "module": "presentation",
+    "type": "bad",
+    "time": "-0:21:00"
+  },
+  {
+    "id": 12,
+    "body": "Stroll through Battery",
+    "picture": "u7p2.jpg",
+    "bot": "l.wakefield17",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-0:18:00"
+  },
+  {
+    "id": 93,
+    "body": "if you didnt know, I take selfies a lot",
+    "picture": "littlegirlselfie.jpg",
+    "bot": "dyliegirlll",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-0:15:00"
+  },
+  {
+    "id": 62,
+    "body": "movies w/ the boys",
+    "picture": "movies.jpg",
+    "bot": "asherballer",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-0:12:00"
+  },
+  {
+    "id": 110,
+    "body": "OMG I am so annoyed at my mom. I just can't believe she won't let me go to Jessica's house later. Jess, don't have too much fun without me :(",
+    "picture": "friends.jpg",
+    "bot": "ihollow28",
+    "module": "presentation",
+    "type": "bad",
+    "time": "-0:09:00"
+  },
+  {
+    "id": 66,
+    "body": "got a pet budgie! Isn’t he SO CUTE!?! 😍 You guys have any name ideas",
+    "picture": "budgie.jpg",
+    "bot": "emememily",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-0:06:00"
+  },
+  {
+    "id": 68,
+    "body": "playing minecraft",
+    "picture": "playing_minecraft.jpg",
+    "bot": "mine-craft313",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "-0:03:00"
+  },
+  {
+    "id": 73,
+    "body": "Road Trippin",
+    "picture": "Roadtrip.jpg",
+    "bot": "jasmine_1110",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "0:00"
+  },
+  {
+    "id": 3,
+    "body": "Hi there",
+    "picture": "u3p1.jpg",
+    "bot": "cloe.htt",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "0:01"
+  },
+  {
+    "id": 74,
+    "body": "I love nature",
+    "picture": "ilovenature.jpg",
+    "bot": "peytonpope_xx",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "0:02"
+  },
+  {
+    "id": 102,
+    "body": "I can't believe people still wearing this lol",
+    "picture": "dress.jpg",
+    "bot": "jake_is_awesome15",
+    "module": "presentation",
+    "type": "bad",
+    "time": "0:03"
+  },
+  {
+    "id": 70,
+    "body": "Missing my girls😭😭😭",
+    "picture": "missingmyfriends.jpg",
+    "bot": "mel_williams1314",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "0:04"
+  },
+  {
+    "id": 71,
+    "body": "#yummmm #starbucks #frappucino",
+    "picture": "frap.jpg",
+    "bot": "vkemp02",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "0:05"
   },
   {
     "id": 78,
     "body": "Just got a new camera! Better pictures to come!",
     "picture": "cannoncamera.jpg",
-    "actor": "peytonpope_xx",
-    "time": "-61:18"
+    "bot": "peytonpope_xx",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "0:06"
   },
   {
     "id": 79,
     "body": "#basketballislife #sportlife #athlete",
     "picture": "basketballlife.jpeg",
-    "actor": "hannahleee_23",
-    "time": "-44:00"
+    "bot": "hannahleee_23",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "0:07"
+  },
+  {
+    "id": 80,
+    "body": "cant wait to see him tomorrow 💕 #allmine",
+    "picture": "post80.jpg",
+    "bot": "neenz03",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "0:08"
+  },
+  {
+    "id": 83,
+    "body": "Lol!!!!!",
+    "picture": "post83.jpg",
+    "bot": "cool.kid5386",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "0:09"
   },
   {
     "id": 85,
     "body": "my fave activity at camp is riding 🐴🐴 #summer17",
     "picture": "horse.jpg",
-    "actor": "rider_hannah_07",
-    "time": "-39:00"
-  },
-  {
-    "id": 86,
-    "body": "pretending there isn't school on Monday likkkke",
-    "picture": "handsbehindhead.jpg",
-    "actor": "user70.jpg",
-    "time": "-15:11"
+    "bot": "rider_hannah_07",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "0:10"
   },
   {
     "id": 87,
     "body": "happy birthday to meeeee 😊😊😊",
     "picture": "birthdaycake.jpg",
-    "actor": "alexa.garcia",
-    "time": "-39:00"
+    "bot": "alexa.garcia",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "0:11"
+  },
+  {
+    "id": 113,
+    "body": "@emmaaaaa your mom is so lame my house is lit",
+    "picture": "basement.jpg",
+    "bot": "asherballer",
+    "module": "presentation",
+    "type": "bad",
+    "time": "0:12"
+  },
+  {
+    "id": 106,
+    "body": "Heading to Disneyland this weekend. Soooooo excited!!",
+    "picture": "Disneyland.jpg",
+    "bot": "dyliegirlll",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "0:13"
+  },
+  {
+    "id": 109,
+    "body": "My hotel room is mexico is so lit 💵",
+    "picture": "hotel room.jpg",
+    "bot": "lil_niki",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "0:14"
+  },
+  {
+    "id": 58,
+    "body": "yankee game!!!!!! GO YANKS",
+    "picture": "yankee.jpg",
+    "bot": "soccergirl16",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "0:15"
+  },
+  {
+    "id": 8,
+    "body": "after the rain...",
+    "picture": "u5p2.jpg",
+    "bot": "kilani244",
+    "module": "presentation",
+    "type": "neutral",
+    "time": "0:16"
   }
 ]

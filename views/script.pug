@@ -71,7 +71,7 @@ block content
                     span=val.reply.actor.profile.name
                 .content
                   if val.reply.picture
-                    img.post.ui.left.floated.small.image(src=val.reply.picture)
+                    img.post.ui.left.floated.small.image(src="/"+val.reply.picture)
                   p=val.reply.body
             .three.ui.bottom.attached.icon.buttons
               //-.ui.reply.button(tabindex='0')
@@ -208,7 +208,7 @@ block content
                     span=val.reply.actor.profile.name
                 .content
                   if val.reply.picture
-                    img.post.ui.left.floated.small.image(src=val.reply.picture)
+                    img.post.ui.left.floated.small.image(src="/"+val.reply.picture)
                   p=val.reply.body
               if user.notify != 'low'
                 .right.floated.meta
@@ -248,7 +248,7 @@ block content
                 img.ui.avatar.image(src='/profile_pictures/'+val.actor.profile.picture)
                 span=val.actor.profile.name
             .image
-              img.post(src=val.picture)
+              img.post(src="/"+val.picture)
               //-img(src='/picture.svg', data-src=val.picture)
             .content
               .description=val.body
@@ -279,7 +279,8 @@ block content
                     i.heart.icon
                     |  Like
                   a.ui.basic.red.left.pointing.label.count=val.likes
-    a.ui.fluid.card(href='/finished')
+    -var post_quiz = "/postquiz/"+mod;
+    a.ui.fluid.card(href=post_quiz)
       .content
         .description
         |  Click here when you are done!

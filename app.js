@@ -218,7 +218,16 @@ app.use('/profile_pictures',express.static(path.join(__dirname, 'profile_picture
 /**
  * Primary app routes.
  */
-app.get('/', passportConfig.isAuthenticated, scriptController.getScript);
+//app.get('/', passportConfig.isAuthenticated, scriptController.getScript);
+
+app.get('/', passportConfig.isAuthenticated, function (req, res) {
+  res.render('mods', {
+    title: 'Pick a Lesson'
+  });
+})
+
+app.get('/modual/:modId', passportConfig.isAuthenticated, scriptController.getScript);
+
 app.post('/post/new', userpostupload.single('picinput'), check, csrf, scriptController.newPost);
 
 app.post('/account/profile', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, csrf, userController.postUpdateProfile);
@@ -227,6 +236,18 @@ app.post('/account/profile', passportConfig.isAuthenticated, useravatarupload.si
 app.get('/tos', function (req, res) {
   res.render('tos', {
     title: 'TOS'
+  });
+})
+
+app.get('/prequiz/presentation',  passportConfig.isAuthenticated, function (req, res) {
+  res.render('prequiz_pres', {
+    title: 'Pre Quiz'
+  });
+})
+
+app.get('/postquiz/presentation',  passportConfig.isAuthenticated, function (req, res) {
+  res.render('postquiz_pres', {
+    title: 'Pre Quiz'
   });
 })
 

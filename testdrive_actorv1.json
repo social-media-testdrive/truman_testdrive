@@ -1,336 +1,33 @@
 [
   {
-    "id": 3,
-    "username": "cloe.htt",
-    "realname": "Cloe Hansen",
-    "age": 10,
-    "location": "Boston, MA",
-    "bio": "LMS | Gr. 6 ~ dancing in the rain",
-    "picture": "user3.jpg"
-  },
-  {
-    "id": 4,
-    "username": "habbey113",
-    "realname": "Hayden Abbey",
-    "age": 11,
-    "location": "Cambridge",
-    "bio": "Cams MS 7",
-    "picture": "user4.jpg"
-  },
-  {
-    "id": 5,
-    "username": "kilani244",
-    "realname": "Kiki Pualani",
-    "age": 12,
-    "location": "Honolulu, HI",
-    "bio": "Peace Love Surf",
-    "picture": "user5.jpeg"
-  },
-  {
-    "id": 6,
-    "username": "ellis_06",
-    "realname": "Elli Andreas",
-    "age": 13,
-    "location": "Greece",
-    "bio": "Everything has beauty, but not everyone can see.\" -Confucius",
-    "picture": "user6.jpg"
-  },
-  {
-    "id": 7,
-    "username": "l.wakefield17",
-    "realname": "Lauren Wakefield",
-    "age": 14,
-    "location": "New York, NY",
-    "bio": "It's up to you, NY NY",
-    "picture": "user7.jpg"
-  },
-  {
-    "id": 8,
-    "username": "mine-craft313",
-    "realname": "Rob Yang",
-    "age": 13,
-    "location": "San Diego, CA",
-    "bio": "something about myself whatever",
-    "picture": "user8.jpg"
-  },
-  {
-    "id": 9,
-    "username": "kitty.z",
-    "realname": "Katherine Zhou",
-    "age": 14,
-    "location": "Seattle, WA",
-    "bio": "cat-lover, dreamer, procrastinator",
-    "picture": "user9.jpg"
-  },
-  {
-    "id": 10,
-    "username": "frank-the-best",
-    "realname": "Franklin Robinson",
-    "age": 12,
-    "location": "Omaha, Nebraska",
-    "bio": "how is this username not already taken?",
-    "picture": "user10.jpg"
-  },
-  {
     "id": 11,
     "username": "aaahhh",
     "realname": "Aidan Acosta",
     "age": 12,
     "location": "Anaheim, California",
     "bio": "help nothing happens here (no Disneyland doesn't count)",
-    "picture": "user11.png"
+    "picture": "user11.png",
+    "module": "presentation"
   },
   {
-    "id": 12,
-    "username": "morning-tea-and-books",
-    "realname": "Shika Ramphal",
-    "age": 13,
-    "location": "Princeton, New Jersey",
-    "bio": "[insert something witty]",
-    "picture": "user12.jpg"
-  },
-  {
-    "id": 13,
-    "username": "jlp777",
-    "realname": "Jason Perez",
-    "age": 14,
-    "location": "Oakland, CA",
-    "bio": "Currently rereading the HP series",
-    "picture": "user13.png"
-  },
-  {
-    "id": 14,
-    "username": "triple-threat",
-    "realname": "Sarah Stella",
-    "age": 12,
-    "location": "Los Angeles, CA",
-    "bio": "Singer | Dancer | Actress | Model | Mermaid <33333",
-    "picture": "user14.jpg"
-  },
-  {
-    "id": 15,
-    "username": "k.r.h345",
-    "realname": "Keith Hernandez",
-    "age": 14,
-    "location": "Surprise, AZ",
-    "bio": "i hate bios",
-    "picture": "user15.jpg"
-  },
-  {
-    "id": 16,
-    "username": "elena_and",
-    "realname": "Elena Anderson",
-    "age": 11,
-    "location": "Houston, TX",
-    "bio": "Live, Laugh, Love",
-    "picture": "user16.jpg"
-  },
-  {
-    "id": 17,
-    "username": "m-beckett",
-    "realname": "Mary Beckett",
-    "age": 12,
-    "location": "Little Rock, AR",
-    "bio": "Never love anybody, who treats you like you're ordinary",
-    "picture": "user17.jpg"
-  },
-  {
-    "id": 18,
-    "username": "ethan-the-man",
-    "realname": "Ethan Kravitz",
-    "age": 13,
-    "location": "Ames, IA",
-    "bio": "I always dream of being a billionaire like my uncle.......He's dreaming too",
-    "picture": "user18.png"
-  },
-  {
-    "id": 19,
-    "username": "DylanCrazzzzzy",
-    "realname": "Dylan Goldstein",
-    "age": 11,
-    "location": "Huntington Beach, California",
-    "bio": "I love videogames and memes.",
-    "picture": "user19.jpg"
-  },
-  {
-    "id": 21,
-    "username": "Gr8Scott77",
-    "realname": "David Cole",
-    "age": 14,
-    "location": "Sudbury, MA",
-    "bio": "~social media~ is a scam release your mind post memes",
-    "picture": "user21.jpg"
-  },
-  {
-    "id": 24,
-    "username": "cupcake25",
-    "realname": "Jenny Chen",
-    "age": 13,
-    "location": "Boston, MA",
-    "bio": "I love Taylor Swift <3",
-    "picture": "user24.jpg"
-  },
-  {
-    "id": 25,
-    "username": "ella_vaderrr",
-    "realname": "Ella Sroni",
-    "age": 14,
-    "location": "Jersey City, NJ",
-    "bio": "14 | Freshman | Jersey Girl | Scorpio",
-    "picture": "user25.jpg"
-  },
-  {
-    "id": 26,
-    "username": "sam-I-am",
-    "realname": "Sam Hill",
+    "id": 65,
+    "username": "alexa.garcia",
+    "realname": "Alexa Garcia",
     "age": 10,
-    "location": "Cape May, NJ",
-    "bio": "Sam | NJ |Woodrow Middle School",
-    "picture": "user26.jpg"
+    "location": "Scarsdale, NY",
+    "bio": "singing🎶  drama🎭 dance💃",
+    "picture": "user65.jpg",
+    "module": "presentation"
   },
   {
-    "id": 27,
-    "username": "yrollam_htims",
-    "realname": "Mallory Smith",
-    "age": 15,
-    "location": "Honolulu, HI",
-    "bio": "life's a beach, i'm just playing in the sand",
-    "picture": "user27.jpg"
-  },
-  {
-    "id": 28,
-    "username": "king_corey",
-    "realname": "Corey King",
-    "age": 11,
-    "location": "Tulsa, OK",
-    "bio": "_ُ�hockey_ُ�  �__���soccer�__���  _ُ�basketball_ُ�",
-    "picture": "user28.jpg"
-  },
-  {
-    "id": 29,
-    "username": "goaliegirl",
-    "realname": "Breana Summers",
-    "age": 12,
-    "location": "Tampa, FL",
-    "bio": "I play like a girl. Try to keep up.",
-    "picture": "user29.jpg"
-  },
-  {
-    "id": 30,
-    "username": "princess_lindss",
-    "realname": "Linsday Stokes",
-    "age": 13,
-    "location": "Nashville, TN",
-    "bio": "~you know my name, not my story~",
-    "picture": "user30.jpg"
-  },
-  {
-    "id": 31,
-    "username": "unicornsparkle",
-    "realname": "Maya Rein",
-    "age": 11,
-    "location": "Riverside, CA",
-    "bio": "obsessed with unicorns and sparkles! Follow for follow!",
-    "picture": "unicorn.jpg"
-  },
-  {
-    "id": 32,
-    "username": "im_musicool",
-    "realname": "Erika Prakash",
-    "age": 13,
-    "location": "Seattle, WA",
-    "bio": "Take me to see Hamilton plz",
-    "picture": "user32.jpg"
-  },
-  {
-    "id": 33,
-    "username": "beachmoreworryless",
-    "realname": "Sean Gomez",
+    "id": 71,
+    "username": "andrewthomas_",
+    "realname": "Andrew Thomas",
     "age": 14,
-    "location": "Miami, FL",
-    "bio": "Osceola Middle | Lizzy <3",
-    "picture": "user33.jpg"
-  },
-  {
-    "id": 35,
-    "username": "itsmelucy",
-    "realname": "Lucy Simms",
-    "age": 12,
-    "location": "Charleston, SC",
-    "bio": "So many desserts so little time",
-    "picture": "user35.jpg"
-  },
-  {
-    "id": 36,
-    "username": "emememily",
-    "realname": "Emily Li",
-    "age": 11,
-    "location": "Chicago, IL",
-    "bio": "HELLO WORLD ^__^",
-    "picture": "user36.jpg"
-  },
-  {
-    "id": 37,
-    "username": "dannyboii",
-    "realname": "Daniel Mai",
-    "age": 13,
-    "location": "Boston, MA",
-    "bio": "��\\_(���)_/��",
-    "picture": "user37.jpg"
-  },
-  {
-    "id": 38,
-    "username": "rosie_pris",
-    "realname": "Priscilla Rose",
-    "age": 14,
-    "location": "New York, NY",
-    "bio": "Follow my beauty and vlogging channel!!! xx",
-    "picture": "user38.jpg"
-  },
-  {
-    "id": 39,
-    "username": "thomas_the_train",
-    "realname": "Thomas Rogers",
-    "age": 13,
-    "location": "Cincinnati, OH",
-    "bio": "yo.",
-    "picture": "user39.jpg"
-  },
-  {
-    "id": 40,
-    "username": "Suzieee",
-    "realname": "Susan Turner",
-    "age": 12,
-    "location": "New York, NY",
-    "bio": "what do people put in bios O.o",
-    "picture": "user40.jpg"
-  },
-  {
-    "id": 41,
-    "username": "lil_niki",
-    "realname": "Nikita Patel",
-    "age": 11,
-    "location": "Pleasanton, CA",
-    "bio": "hello there <3",
-    "picture": "user41.jpg"
-  },
-  {
-    "id": 42,
-    "username": "bball_guy",
-    "realname": "Neel Talwar",
-    "age": 12,
-    "location": "Austin, TX",
-    "bio": "I like basketball & food",
-    "picture": "user42.jpg"
-  },
-  {
-    "id": 43,
-    "username": "emmaaaaa",
-    "realname": "Emma Garcia",
-    "age": 13,
-    "location": "Westchester, NY",
-    "bio": "Family, friends, & FOOD!",
-    "picture": "user41.jpg"
+    "location": "Greenwich, CT",
+    "bio": "I'd stalk me too 😏",
+    "picture": "user71.jpg",
+    "module": ""
   },
   {
     "id": 44,
@@ -339,25 +36,8 @@
     "age": 10,
     "location": "Orlando, FL",
     "bio": "I'm a person",
-    "picture": "user43.jpg"
-  },
-  {
-    "id": 45,
-    "username": "QueenOfDarkness",
-    "realname": "Ebony Darkness Raven Way",
-    "age": 13,
-    "location": "Boston, MA",
-    "bio": "special fangz (get it coz im goffick)",
-    "picture": "user44.png"
-  },
-  {
-    "id": 46,
-    "username": "dyliegirllll",
-    "realname": "Dylan Friedman",
-    "age": 11,
-    "location": "Boca Raton, FL",
-    "bio": "miss my girlz. bunk 7 for lifeeeee <3",
-    "picture": "user46.jpg"
+    "picture": "user43.png",
+    "module": ""
   },
   {
     "id": 47,
@@ -366,7 +46,8 @@
     "age": 10,
     "location": "Roslyn, NY",
     "bio": "my dog is cuter than yours",
-    "picture": "user47.jpg"
+    "picture": "user47.jpg",
+    "module": ""
   },
   {
     "id": 48,
@@ -375,16 +56,38 @@
     "age": 12,
     "location": "New York, NY",
     "bio": "im cool, ur not",
-    "picture": "user48.jpg"
+    "picture": "user48.jpg",
+    "module": "presentation"
   },
   {
-    "id": 49,
-    "username": "soccergirl16",
-    "realname": "Raquel Reese",
-    "age": 11,
-    "location": "Tampa, FL",
-    "bio": "lady ledgends #16",
-    "picture": "user49.jpg"
+    "id": 42,
+    "username": "bball_guy",
+    "realname": "Neel Talwar",
+    "age": 12,
+    "location": "Austin, TX",
+    "bio": "I like basketball & food",
+    "picture": "user42.jpg",
+    "module": ""
+  },
+  {
+    "id": 33,
+    "username": "beachmoreworryless",
+    "realname": "Sean Gomez",
+    "age": 14,
+    "location": "Miami, FL",
+    "bio": "Osceola Middle | Lizzy <3",
+    "picture": "user33.jpg",
+    "module": "presentation"
+  },
+  {
+    "id": 22,
+    "username": "bey-hive-4eva",
+    "realname": "Lana Sheehan",
+    "age": 12,
+    "location": "Greensboro, NC",
+    "bio": "Beyonce is my queen #beyhive",
+    "picture": "",
+    "module": ""
   },
   {
     "id": 50,
@@ -393,7 +96,18 @@
     "age": 14,
     "location": "Columbus, OH",
     "bio": "<333333",
-    "picture": "user50.jpg"
+    "picture": "user50.jpg",
+    "module": ""
+  },
+  {
+    "id": 2,
+    "username": "botperson",
+    "realname": "Ima Robot",
+    "age": 12,
+    "location": "Los Angeles, CA",
+    "bio": "I am another bot person.",
+    "picture": "user2.jpeg",
+    "module": ""
   },
   {
     "id": 51,
@@ -402,34 +116,198 @@
     "age": 13,
     "location": "Miami, FL",
     "bio": "link in bio~",
-    "picture": "user51.jpg"
+    "picture": "user51.jpg",
+    "module": "presentation"
   },
   {
-    "id": 52,
-    "username": "numba_24",
-    "realname": "Connor McCormick",
-    "age": 12,
-    "location": "Los Angeles, CA",
-    "bio": "snap streak: 100",
-    "picture": "user52.jpg"
+    "id": 23,
+    "username": "Claire.cuddlybear",
+    "realname": "Claire Johnson",
+    "age": 11,
+    "location": "Oakland, CA",
+    "bio": "I love to dance! Someday I'm going to be on Broadway <3",
+    "picture": "",
+    "module": ""
   },
   {
-    "id": 53,
-    "username": "sassystar75",
-    "realname": "Brielle Jordan",
+    "id": 3,
+    "username": "cloe.htt",
+    "realname": "Cloe Hansen",
+    "age": 10,
+    "location": "Boston, MA",
+    "bio": "LMS | Gr. 6 ~ dancing in the rain",
+    "picture": "user3.jpg",
+    "module": "presentation"
+  },
+  {
+    "id": 63,
+    "username": "cool.kid5386",
+    "realname": "Liam Knapke",
+    "age": 10,
+    "location": "Syracuse, New York",
+    "bio": "hi im liam and i like call of duty!!!",
+    "picture": "user63.jpg",
+    "module": "presentation"
+  },
+  {
+    "id": 24,
+    "username": "cupcake25",
+    "realname": "Jenny Chen",
+    "age": 13,
+    "location": "Boston, MA",
+    "bio": "I love Taylor Swift <3",
+    "picture": "user24.jpg",
+    "module": ""
+  },
+  {
+    "id": 37,
+    "username": "dannyboii",
+    "realname": "Daniel Mai",
+    "age": 13,
+    "location": "Boston, MA",
+    "bio": "¯\\_(ツ)_/¯",
+    "picture": "user37.jpg",
+    "module": ""
+  },
+  {
+    "id": 19,
+    "username": "DylanCrazzzzzy",
+    "realname": "Dylan Goldstein",
+    "age": 11,
+    "location": "Huntington Beach, California",
+    "bio": "I love videogames and memes.",
+    "picture": "user19.jpg",
+    "module": ""
+  },
+  {
+    "id": 46,
+    "username": "dyliegirllll",
+    "realname": "Dylan Friedman",
+    "age": 11,
+    "location": "Boca Raton, FL",
+    "bio": "miss my girlz. bunk 7 for lifeeeee <3",
+    "picture": "user46.jpg",
+    "module": "presentation"
+  },
+  {
+    "id": 16,
+    "username": "elena_and",
+    "realname": "Elena Anderson",
+    "age": 11,
+    "location": "Houston, TX",
+    "bio": "Live, Laugh, Love",
+    "picture": "user16.jpg",
+    "module": ""
+  },
+  {
+    "id": 25,
+    "username": "ella_vaderrr",
+    "realname": "Ella Sroni",
+    "age": 14,
+    "location": "Jersey City, NJ",
+    "bio": "14 | Freshman | Jersey Girl | Scorpio",
+    "picture": "user25.jpg",
+    "module": ""
+  },
+  {
+    "id": 6,
+    "username": "ellis_06",
+    "realname": "Elli Andreas",
+    "age": 13,
+    "location": "Greece",
+    "bio": "Everything has beauty, but not everyone can see.\" -Confucius",
+    "picture": "user6.jpg",
+    "module": "presentation"
+  },
+  {
+    "id": 36,
+    "username": "emememily",
+    "realname": "Emily Li",
+    "age": 11,
+    "location": "Chicago, IL",
+    "bio": "HELLO WORLD ^__^",
+    "picture": "user36.jpg",
+    "module": "presentation"
+  },
+  {
+    "id": 43,
+    "username": "emmaaaaa",
+    "realname": "Emma Garcia",
     "age": 13,
     "location": "Westchester, NY",
-    "bio": "look what you made me do",
-    "picture": "user53.jpg"
+    "bio": "Family, friends, & FOOD!",
+    "picture": "user41.jpg",
+    "module": ""
   },
   {
-    "id": 54,
-    "username": "Nick_Thomas",
-    "realname": "Nick Thomas",
+    "id": 18,
+    "username": "ethan-the-man",
+    "realname": "Ethan Kravitz",
+    "age": 13,
+    "location": "Ames, IA",
+    "bio": "I always dream of being a billionaire like my uncle.......He's dreaming too",
+    "picture": "user18.png",
+    "module": "presentation"
+  },
+  {
+    "id": 1,
+    "username": "fakename123",
+    "realname": "Fake N. Ame",
+    "age": 14,
+    "location": "Ithaca, NY",
+    "bio": "I am a fake profile meant to show how this procedure works!",
+    "picture": "user1.png",
+    "module": ""
+  },
+  {
+    "id": 10,
+    "username": "frank-the-best",
+    "realname": "Franklin Robinson",
     "age": 12,
-    "location": "Detroit, MI",
-    "bio": "soccer guy",
-    "picture": "user54.jpg"
+    "location": "Omaha, Nebraska",
+    "bio": "how is this username not already taken?",
+    "picture": "user10.jpg",
+    "module": "presentation"
+  },
+  {
+    "id": 29,
+    "username": "goaliegirl",
+    "realname": "Breana Summers",
+    "age": 12,
+    "location": "Tampa, FL",
+    "bio": "I play like a girl. Try to keep up.",
+    "picture": "user29.jpg",
+    "module": "presentation"
+  },
+  {
+    "id": 21,
+    "username": "Gr8Scott77",
+    "realname": "David Cole",
+    "age": 14,
+    "location": "Sudbury, MA",
+    "bio": "~social media~ is a scam release your mind post memes",
+    "picture": "user21.jpg",
+    "module": ""
+  },
+  {
+    "id": 62,
+    "username": "gracieeeeee82",
+    "realname": "Grace Burns",
+    "age": 12,
+    "location": "Seattle, WA",
+    "bio": "I love Taylor Swift, food, and turtles!!! 🐢 sc: itsmegracieeee",
+    "picture": "user 62.jpg",
+    "module": ""
+  },
+  {
+    "id": 4,
+    "username": "habbey113",
+    "realname": "Hayden Abbey",
+    "age": 11,
+    "location": "Cambridge",
+    "bio": "Cams MS 7",
+    "picture": "user4.jpg",
+    "module": "presentation"
   },
   {
     "id": 55,
@@ -437,17 +315,49 @@
     "realname": "Hannah Lee",
     "age": 12,
     "location": "Philadelphia, PA",
-    "bio": "12 | Basketball_ُ� | Follow your dreams",
-    "picture": "user55.jpg"
+    "bio": "12 | Basketball🏀 | Follow your dreams",
+    "picture": "user55.jpg",
+    "module": "presentation"
   },
   {
-    "id": 56,
-    "username": "peytonpope_xx",
-    "realname": "Peyton Pope",
+    "id": 78,
+    "username": "ihollow28",
+    "realname": "Isaac Holloway",
     "age": 12,
-    "location": "Portland, OR",
-    "bio": "��_���Peyton��_��� 7th Grade _��_ Dancer �Ϭ",
-    "picture": "user56.jpg"
+    "location": "Vero Beach, FL",
+    "bio": "12, I love Chipotle",
+    "picture": "",
+    "module": "presentation"
+  },
+  {
+    "id": 32,
+    "username": "im_musicool",
+    "realname": "Erika Prakash",
+    "age": 13,
+    "location": "Seattle, WA",
+    "bio": "Take me to see Hamilton plz",
+    "picture": "user32.jpg",
+    "module": "presentation"
+  },
+  {
+    "id": 35,
+    "username": "itsmelucy",
+    "realname": "Lucy Simms",
+    "age": 12,
+    "location": "Charleston, SC",
+    "bio": "So many desserts so little time",
+    "picture": "user35.jpg",
+    "module": "presentation"
+  },
+  {
+    "id": 61,
+    "username": "jake_is_awesome15",
+    "realname": "Jake Matthews",
+    "age": 14,
+    "location": "Cleveland, OH",
+    "bio": "🏈 #15 | follow me and ill follow back 👍🏽",
+    "picture": "user61.jpg",
+    "module": "presentation"
   },
   {
     "id": 57,
@@ -456,52 +366,38 @@
     "age": 14,
     "location": "Poway, CA",
     "bio": "You couldn't handle me even if I came with instructions",
-    "picture": "user57.jpg"
+    "picture": "user57.jpg",
+    "module": "presentation"
   },
   {
-    "id": 58,
-    "username": "vkemp02",
-    "realname": "Vanessa Kemp",
+    "id": 75,
+    "username": "jcas348",
+    "realname": "Jane Casey",
+    "age": 12,
+    "location": "Salem, OR",
+    "bio": "SHMS cheerleader",
+    "picture": "",
+    "module": "presentation"
+  },
+  {
+    "id": 77,
+    "username": "jeremymurr",
+    "realname": "Jeremy Murray",
     "age": 11,
-    "location": "Dallas, TX",
-    "bio": "Family_�ե Animals_ِ_ Friends_��_",
-    "picture": "user58.jpg"
+    "location": "San Diego, CA",
+    "bio": "Surfer n Sk8ter",
+    "picture": "",
+    "module": ""
   },
   {
-    "id": 59,
-    "username": "mel_williams1314",
-    "realname": "Melissa Williams",
-    "age": 13,
-    "location": "Buffalo, NY",
-    "bio": "Enjoying the life, one day at a time _���_�μ",
-    "picture": "user59.jpg"
-  },
-  {
-    "id": 65,
-    "username": "alexa.garcia",
-    "realname": "Alexa Garcia",
-    "age": 10,
-    "location": "Scarsdale, NY",
-    "bio": "singing_�_�  drama_�__ dance_���",
-    "picture": "user65.jpg"
-  },
-  {
-    "id": 66,
-    "username": "shellypuppy101",
-    "realname": "Michelle Rose",
-    "age": 13,
-    "location": "New York, NY",
-    "bio": "Today's gonna be a good day and here's why _���",
-    "picture": "user66.jpg"
-  },
-  {
-    "id": 67,
-    "username": "zachpeters06",
-    "realname": "Zach Peters",
-    "age": 11,
-    "location": "Boca Raton, FL",
-    "bio": "IMG Academy �__���_ُۉ__���",
-    "picture": "user67.jpg"
+    "id": 13,
+    "username": "jlp777",
+    "realname": "Jason Perez",
+    "age": 14,
+    "location": "Oakland, CA",
+    "bio": "Currently rereading the HP series",
+    "picture": "user13.png",
+    "module": ""
   },
   {
     "id": 68,
@@ -509,8 +405,199 @@
     "realname": "Josh Radin",
     "age": 13,
     "location": "Purcellville, VA",
-    "bio": "_��_ keeping it real since '04 _��_",
-    "picture": "user68.jpg"
+    "bio": "😎 keeping it real since '04 😎",
+    "picture": "user68.jpg",
+    "module": ""
+  },
+  {
+    "id": 15,
+    "username": "k.r.h345",
+    "realname": "Keith Hernandez",
+    "age": 14,
+    "location": "Surprise, AZ",
+    "bio": "i hate bios",
+    "picture": "user15.jpg",
+    "module": ""
+  },
+  {
+    "id": 76,
+    "username": "kgreengreen",
+    "realname": "Kaleb Green",
+    "age": 13,
+    "location": "Raleigh, NC",
+    "bio": "~Football~Track~Basketball~",
+    "picture": "",
+    "module": ""
+  },
+  {
+    "id": 5,
+    "username": "kilani244",
+    "realname": "Kiki Pualani",
+    "age": 12,
+    "location": "Honolulu, HI",
+    "bio": "Peace Love Surf",
+    "picture": "user5.jpeg",
+    "module": "presentation"
+  },
+  {
+    "id": 28,
+    "username": "king_corey",
+    "realname": "Corey King",
+    "age": 11,
+    "location": "Tulsa, OK",
+    "bio": "🏒hockey🏒  ⚽️soccer⚽️  🏀basketball🏀",
+    "picture": "user28.jpg",
+    "module": "presentation"
+  },
+  {
+    "id": 9,
+    "username": "kitty.z",
+    "realname": "Katherine Zhou",
+    "age": 14,
+    "location": "Seattle, WA",
+    "bio": "cat-lover, dreamer, procrastinator",
+    "picture": "user9.jpg",
+    "module": "presentation"
+  },
+  {
+    "id": 7,
+    "username": "l.wakefield17",
+    "realname": "Lauren Wakefield",
+    "age": 14,
+    "location": "New York, NY",
+    "bio": "It's up to you, NY NY",
+    "picture": "user7.jpg",
+    "module": "presentation"
+  },
+  {
+    "id": 41,
+    "username": "lil_niki",
+    "realname": "Nikita Patel",
+    "age": 11,
+    "location": "Pleasanton, CA",
+    "bio": "hello there <3",
+    "picture": "",
+    "module": "presentation"
+  },
+  {
+    "id": 17,
+    "username": "m-beckett",
+    "realname": "Mary Beckett",
+    "age": 12,
+    "location": "Little Rock, AR",
+    "bio": "Never love anybody, who treats you like you're ordinary",
+    "picture": "user17.jpg",
+    "module": "presentation"
+  },
+  {
+    "id": 59,
+    "username": "mel_williams1314",
+    "realname": "Melissa Williams",
+    "age": 13,
+    "location": "Buffalo, NY",
+    "bio": "Enjoying the life, one day at a time 🌻🌺",
+    "picture": "user59.jpg",
+    "module": "presentation"
+  },
+  {
+    "id": 34,
+    "username": "memeking",
+    "realname": "Keegan Scott",
+    "age": 13,
+    "location": "Cedar Rapids, IA",
+    "bio": "its dat boi waddup",
+    "picture": "user34.jpg",
+    "module": "presentation"
+  },
+  {
+    "id": 8,
+    "username": "mine-craft313",
+    "realname": "Rob Yang",
+    "age": 13,
+    "location": "San Diego, CA",
+    "bio": "something about myself whatever",
+    "picture": "user8.jpg",
+    "module": "presentation"
+  },
+  {
+    "id": 12,
+    "username": "morning-tea-and-books",
+    "realname": "Shika Ramphal",
+    "age": 13,
+    "location": "Princeton, New Jersey",
+    "bio": "[insert something witty]",
+    "picture": "user12.jpg",
+    "module": ""
+  },
+  {
+    "id": 60,
+    "username": "neenz03",
+    "realname": "Nina Ruiz",
+    "age": 15,
+    "location": "Los Angeles, CA",
+    "bio": "LA livin | 15 yearz young | Taken 🔒❤️ C.M.",
+    "picture": "user60.jpg",
+    "module": "presentation"
+  },
+  {
+    "id": 54,
+    "username": "Nick_Thomas",
+    "realname": "Nick Thomas",
+    "age": 12,
+    "location": "Detroit, MI",
+    "bio": "soccer guy",
+    "picture": "user54.jpg",
+    "module": "presentation"
+  },
+  {
+    "id": 73,
+    "username": "noahandherarc",
+    "realname": "Noah Liebman",
+    "age": 13,
+    "location": "Santa Monica, CA",
+    "bio": "Lakers for lyfe 🏀",
+    "picture": "user73.jpg",
+    "module": ""
+  },
+  {
+    "id": 52,
+    "username": "numba_24",
+    "realname": "Connor McCormick",
+    "age": 12,
+    "location": "Los Angeles, CA",
+    "bio": "snap streak: 100",
+    "picture": "user52.jpg",
+    "module": ""
+  },
+  {
+    "id": 56,
+    "username": "peytonpope_xx",
+    "realname": "Peyton Pope",
+    "age": 12,
+    "location": "Portland, OR",
+    "bio": "❤️Peyton❤️ 7th Grade 📚 Dancer ✨",
+    "picture": "user56.jpg",
+    "module": "presentation"
+  },
+  {
+    "id": 30,
+    "username": "princess_lindss",
+    "realname": "Linsday Stokes",
+    "age": 13,
+    "location": "Nashville, TN",
+    "bio": "~you know my name, not my story~",
+    "picture": "user30.jpg",
+    "module": "presentation"
+  },
+  {
+    "id": 45,
+    "username": "QueenOfDarkness",
+    "realname": "Ebony Darkness Raven Way",
+    "age": 13,
+    "location": "Boston, MA",
+    "bio": "special fangz (get it coz im goffick)",
+    "picture": "user44.png",
+    "module": ""
   },
   {
     "id": 69,
@@ -518,26 +605,69 @@
     "realname": "Hannah Cohn",
     "age": 14,
     "location": "Roslyn, NY",
-    "bio": "CITS 2018 _ُ�",
-    "picture": "user69.jpg"
+    "bio": "CITS 2018 🏕",
+    "picture": "user69.jpg",
+    "module": "presentation"
   },
   {
-    "id": 70,
-    "username": "zoe.g._",
-    "realname": "Zoe Goodall",
-    "age": 12,
-    "location": "Stamford, CT",
-    "bio": "Warning �_ʕ�� May include sass �_ʕ��",
-    "picture": "user70.jpg"
-  },
-  {
-    "id": 71,
-    "username": "andrewthomas_",
-    "realname": "Andrew Thomas",
+    "id": 38,
+    "username": "rosie_pris",
+    "realname": "Priscilla Rose",
     "age": 14,
-    "location": "Greenwich, CT",
-    "bio": "I'd stalk me too _���",
-    "picture": "user71.jpg"
+    "location": "New York, NY",
+    "bio": "Follow my beauty and vlogging channel!!! xx",
+    "picture": "user38.jpg",
+    "module": "presentation"
+  },
+  {
+    "id": 74,
+    "username": "ryguy76",
+    "realname": "Ryan Freyer",
+    "age": 15,
+    "location": "Brentwood, CA",
+    "bio": "¿Why not?",
+    "picture": "user74.jpg",
+    "module": ""
+  },
+  {
+    "id": 26,
+    "username": "sam-I-am",
+    "realname": "Sam Hill",
+    "age": 10,
+    "location": "Cape May, NJ",
+    "bio": "Sam | NJ |Woodrow Middle School",
+    "picture": "user26.jpg",
+    "module": ""
+  },
+  {
+    "id": 64,
+    "username": "sammi_bautistaxx",
+    "realname": "Samantha Bautista",
+    "age": 13,
+    "location": "Phoenix, Arizona",
+    "bio": "X.IV.MMIV | follow 4 follow | C/O 2022!!📚📚",
+    "picture": "user64.jpg",
+    "module": ""
+  },
+  {
+    "id": 53,
+    "username": "sassystar75",
+    "realname": "Brielle Jordan",
+    "age": 13,
+    "location": "Westchester, NY",
+    "bio": "look what you made me do",
+    "picture": "user53.jpg",
+    "module": ""
+  },
+  {
+    "id": 66,
+    "username": "shellypuppy101",
+    "realname": "Michelle Rose",
+    "age": 13,
+    "location": "New York, NY",
+    "bio": "Today's gonna be a good day and here's why 😉",
+    "picture": "user66.jpg",
+    "module": ""
   },
   {
     "id": 72,
@@ -546,24 +676,107 @@
     "age": 11,
     "location": "Beverly Hills, CA",
     "bio": "DM for slime pricing inquiries",
-    "picture": "user72.jpg"
+    "picture": "user72.jpg",
+    "module": ""
   },
   {
-    "id": 73,
-    "username": "noahandherarc",
-    "realname": "Noah Liebman",
+    "id": 49,
+    "username": "soccergirl16",
+    "realname": "Raquel Reese",
+    "age": 11,
+    "location": "Tampa, FL",
+    "bio": "lady ledgends #16",
+    "picture": "user49.jpg",
+    "module": "presentation"
+  },
+  {
+    "id": 40,
+    "username": "Suzieee",
+    "realname": "Susan Turner",
+    "age": 12,
+    "location": "New York, NY",
+    "bio": "what do people put in bios O.o",
+    "picture": "user40.jpg",
+    "module": ""
+  },
+  {
+    "id": 20,
+    "username": "Tarathefairest",
+    "realname": "Tara Granberg",
     "age": 13,
-    "location": "Santa Monica, CA",
-    "bio": "Lakers for lyfe _ُ�",
-    "picture": "user73.jpg"
+    "location": "Burlingame, California",
+    "bio": "Highlight on fleek <3 follow me on instaaaaaaaa",
+    "picture": "",
+    "module": ""
   },
   {
-    "id": 74,
-    "username": "ryguy76",
-    "realname": "Ryan Freyer",
+    "id": 39,
+    "username": "thomas_the_train",
+    "realname": "Thomas Rogers",
+    "age": 13,
+    "location": "Cincinnati, OH",
+    "bio": "yo.",
+    "picture": "user39.jpg",
+    "module": ""
+  },
+  {
+    "id": 14,
+    "username": "triple-threat",
+    "realname": "Sarah Stella",
+    "age": 12,
+    "location": "Los Angeles, CA",
+    "bio": "Singer | Dancer | Actress | Model | Mermaid <33333",
+    "picture": "user14.jpg",
+    "module": "presentation"
+  },
+  {
+    "id": 31,
+    "username": "unicornsparkle",
+    "realname": "Maya Rein",
+    "age": 11,
+    "location": "Riverside, CA",
+    "bio": "obsessed with unicorns and sparkles! Follow for follow!",
+    "picture": "unicorn.jpg",
+    "module": "presentation"
+  },
+  {
+    "id": 58,
+    "username": "vkemp02",
+    "realname": "Vanessa Kemp",
+    "age": 11,
+    "location": "Dallas, TX",
+    "bio": "Family💕 Animals🐾 Friends👭",
+    "picture": "user58.jpg",
+    "module": "presentation"
+  },
+  {
+    "id": 27,
+    "username": "yrollam_htims",
+    "realname": "Mallory Smith",
     "age": 15,
-    "location": "Brentwood, CA",
-    "bio": "��Why not?",
-    "picture": "user74.jpg"
+    "location": "Honolulu, HI",
+    "bio": "life's a beach, i'm just playing in the sand",
+    "picture": "user27.jpg",
+    "module": "presentation"
+  },
+  {
+    "id": 67,
+    "username": "zachpeters06",
+    "realname": "Zach Peters",
+    "age": 11,
+    "location": "Boca Raton, FL",
+    "bio": "IMG Academy ⚽️🏀⚾️",
+    "picture": "user67.jpg",
+    "module": ""
+  },
+  {
+    "id": 70,
+    "username": "zoe.g._",
+    "realname": "Zoe Goodall",
+    "age": 12,
+    "location": "Stamford, CT",
+    "bio": "Warning ⚠️ May include sass ⚠️",
+    "picture": "user70.jpg",
+    "module": ""
   }
 ]
