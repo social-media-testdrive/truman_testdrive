@@ -263,7 +263,7 @@ exports.getPrezResults = (req, res) => {
     var replies = user.getReplies();
     var posts = user.getPosts();
     //var liked = user.getLiked();
-    if(posts[0].picture)
+    if(posts[0])
     {
       console.log("!!!!!!!!!!!!!!!!Picture is "+posts[0].picture);
       console.log("!!!!!!!!!!!!!!!!Picture is "+posts[0].body);
