@@ -167,6 +167,7 @@ Script.findOne({ post_id: new_post.replyID}, function(err, pr){
       console.log('In SCRIPT');
       console.log('In Reply: ' + pr._id);
       console.log('Try for Modual: ' + new_post.module);
+      console.log('Looking up Actor ID is : ' + new_post.actor.$oid);
 
       //console.log('Looking up Actor ID is : ' + act._id); 
       var postdetail = new Object();
@@ -208,6 +209,7 @@ function PostReplyCreate(new_post) {
     }
 
     console.log('Looking up Actor: ' + act.username); 
+    console.log('Looking up Actor ID is : ' + act._id);
     console.log('Try for post: ' + new_post.reply);
     console.log('Try for Modual: ' + new_post.module);
     var postdetail = new Object();

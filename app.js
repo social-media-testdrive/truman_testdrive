@@ -245,17 +245,24 @@ app.get('/prequiz/presentation',  passportConfig.isAuthenticated, function (req,
   });
 })
 
+app.post('/prequiz/presentation', passportConfig.isAuthenticated, scriptController.postPreQuiz_Prez);
+
+
 app.get('/postquiz/presentation',  passportConfig.isAuthenticated, function (req, res) {
   res.render('postquiz_pres', {
     title: 'Pre Quiz'
   });
 })
 
+app.post('/postquiz/presentation', passportConfig.isAuthenticated, scriptController.postPostQuiz_Prez);
+
 app.get('/finished',  passportConfig.isAuthenticated, function (req, res) {
   res.render('finished', {
     title: 'Post Exercise'
   });
 })
+
+app.get('/postquiz/presentation/results', passportConfig.isAuthenticated, scriptController.getPrezResults);
 
 app.get('/com', function (req, res) {
   res.render('com', {

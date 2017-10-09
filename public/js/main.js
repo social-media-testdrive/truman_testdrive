@@ -146,6 +146,13 @@ $('.right.floated.time.meta, .date').each(function() {
     window.location.href='/'; 
   });
 
+
+
+  $('.ui.big.green.labeled.icon.button.finish_lesson')
+  .on('click', function() {
+    window.location.href='/'; 
+  });
+
   //Community Rules Button (rocket!!!)
   $('.ui.big.green.labeled.icon.button.com')
   .on('click', function() {
@@ -298,105 +305,5 @@ $('.right.floated.time.meta, .date').each(function() {
     
 
   });
-
-
-
-  //Dimm cards as user scrolls - send Post to update DB on timing of events .image
-  //$('.ui.fluid.card.dim') img.post $('.ui.fluid.card.dim .image'
-  /*
-  $('img.post')
-  .visibility({
-    once       : false,
-    continuous : false,
-    observeChanges: true,
-    offset: 65,
-    
-    //USER HAS NOW READ THE POST (READ EVENT) 
-    //onBottomVisibleReverse:function(calculations) { onBottomPassed
-      onBottomPassed:function(calculations) {
-        console.log(":::::Now passing onBottomPassed:::::");
-        var parent = $(this).parents(".ui.fluid.card.dim");
-
-        //As Long as Dimmer is not Active and We have a UI condistion - Dimm screen and send Post READ event
-        if (!(parent.dimmer('is active')) && (parent.attr( "ui" )=='ui'))
-        {
-          console.log("::::UI passing::::DIMMING NOW::::::::");
-
-          var postID = parent.attr( "postID" );
-          var read = Date.now();
-          //actual dim the element
-          parent.find(".ui.inverted.read.dimmer").dimmer({
-                   closable: false
-                  })
-                  .dimmer('show');
-          //some weird reason this dimmer will be closable if not "dimmed" twice
-          parent.find(".ui.inverted.read.dimmer").dimmer({
-                   closable: false
-                  })
-                  .dimmer('show');
-          //send post to server to update DB that we have now read this
-          console.log("::::UI passing::::SENDING POST TO DB::::::::");
-          $.post( "/feed", { postID: postID, read: read, _csrf : $('meta[name="csrf-token"]').attr('content') } );
-
-        }
-
-        //if we are not in UI condistion, and we are reading, then send off Post to DB for new Read Time
-        //Maybe kill this so we don't fill the DB with all this stuff. Seems kind of silly (or only do like 10, etc)
-        //else if ((parent.attr( "ui" )=='no') && (parent.attr( "state" )=='unread'))
-
-        //Need to get all "read" and "start" times in non-UI case (as all other times rests on it)
-        else if ((parent.attr( "ui" )=='no'))
-        {
-          console.log("::::NO UI passing:::");
-          //console.log("::::first time reading -> UNREAD:::");
-          var postID = parent.attr( "postID" );
-          var read = Date.now();
-          //set to read now
-          //parent.attr( "state" , "read");
-
-          //send post to server to update DB that we have now read this
-          console.log("::::NO UI :::::READ::::SENDING POST TO DB::::::::");
-          $.post( "/feed", { postID: postID, read: read, _csrf : $('meta[name="csrf-token"]').attr('content') } );
-        }
-
-        //UI and DIMMED READ, which does not count as a READ
-        else
-          {console.log("::::passing::::Already dimmed - do nothing - UI is now "+parent.attr( "ui" ));}
-
-      },
-
-    ////POST IS NOW Visiable - START EVENT
-    onBottomVisible:function(calculations) {
-        console.log("@@@@@@@ Now Seen @@@@@@@@@");
-        var parent = $(this).parents(".ui.fluid.card.dim");
-        
-        //Post is not DIMMED (SO WE CAN SEE IT) - and We are in UI condistion - POST START EVENT to DB
-        if (!(parent.dimmer('is active')) && (parent.attr( "ui" )=='ui'))
-        {
-          var postID = parent.attr( "postID" );
-          var start = Date.now();
-          console.log("@@@@@@@ UI!!!! @@@@@@SENDING TO DB@@@@@@START POST UI has seen post "+postID+" at time "+start);
-
-          $.post( "/feed", { postID: postID, start: start, _csrf : $('meta[name="csrf-token"]').attr('content') } );
-          
-        }
-        //if not UI, we still need to Update DB with new START time
-        //else if ((parent.attr( "ui" )=='no')&& (parent.attr( "state" )=='unread'))
-        else if ((parent.attr( "ui" )=='no'))
-        {
-          var postID = parent.attr( "postID" );
-          var start = Date.now();
-          console.log("@@@@@@@ NO UI!!!! @@@@@@START@@@@@@START@@@@@@@ POST has seen post "+postID+" at time "+start)
-          $.post( "/feed", { postID: postID, start: start, _csrf : $('meta[name="csrf-token"]').attr('content') } );
-        }
-
-        else
-          {console.log("@@@@@@@ Now Seen @@@@@@@@@  START Already dimmed - do nothing - OR NO UI");}
-
-        }
-  })
-;//WTF!!!*/
-
-
 
 });

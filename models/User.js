@@ -33,6 +33,7 @@ const userSchema = new mongoose.Schema({
 
   posts: [new Schema({
     type: String, //post, reply, actorReply
+    modual: String, //Which lesson modual does this belong to
 
     postID: Number,  //number for this post (1,2,3...) reply get -1 maybe should change to a String ID system
     body: {type: String, default: '', trim: true}, //body of post or reply
@@ -57,6 +58,12 @@ const userSchema = new mongoose.Schema({
     ipAddress: String
     })],
 
+  quiz: [new Schema({
+    type: String,
+    modual: String,
+    score: Number
+    })],
+
   pageLog: [new Schema({
     time: Date,
     page: String
@@ -71,6 +78,7 @@ const userSchema = new mongoose.Schema({
 
   feedAction: [new Schema({
         post: {type: Schema.ObjectId, ref: 'Script'},
+        modual: String, //which class is this modual
         postClass: String,
         rereadTimes: Number, //number of times post has been viewed by user
         startTime: Number, //always the newest startTime (full date in ms)
@@ -163,6 +171,41 @@ userSchema.methods.getPosts = function getPosts() {
      temp.push(this.posts[i]);
   }
 
+  temp.sort(function (a, b) {
+    return a.postID - b.postID;
+  });
+
+  return temp;
+
+};
+
+/**
+ * Helper method for getting all User Posts.
+ */
+userSchema.methods.getReplies = function getReplies() {
+  var temp = [];
+  for (var i = 0, len = this.posts.length; i < len; i++) {
+    if (this.posts[i].replyID >= 0)
+     temp.push(this.posts[i]);
+  }
+
+  temp.sort(function (a, b) {
+    return a.postID - b.postID;
+  });
+
+  return temp;
+};
+
+/**
+ * Helper method for getting all User Posts.
+*/
+userSchema.methods.getModPosts = function getModPosts(modual) {
+  var temp = [];
+  for (var i = 0, len = this.posts.length; i < len; i++) {
+    if (this.posts[i].postID >= 0 && this.posts[i].modual == modual)
+     temp.push(this.posts[i]);
+  }
+
   //sort to ensure that posts[x].postID == x
   temp.sort(function (a, b) {
     return a.postID - b.postID;
@@ -191,10 +234,43 @@ userSchema.methods.getPostsAndReplies = function getPostsAndReplies() {
 
 };
 
+/**
+ * Helper method for getting all User Posts and replies.
+ */
+userSchema.methods.getModPostsAndReplies = function getModPostsAndReplies(modual) {
+  var temp = [];
+  for (var i = 0, len = this.posts.length; i < len; i++) {
+    if ((this.posts[i].postID >= 0 || this.posts[i].replyID >= 0)&& this.posts[i].modual == modual)
+     temp.push(this.posts[i]);
+  }
+
+  //sort to ensure that posts[x].postID == x
+  temp.sort(function (a, b) {
+    return a.absTime - b.absTime;
+  });
+
+  return temp;
+
+};
+
 //Return the user post from its ID
 userSchema.methods.getUserPostByID = function(postID) {
   
   return this.posts.find(x => x.postID == postID);
+
+};
+
+//Return the user post from its ID
+userSchema.methods.getUserPreQuizScore = function(modual) {
+  
+  return  this.quiz.find(x => ((x.modual == modual) && (x.type == "pre")));
+
+};
+
+//Return the user post from its ID
+userSchema.methods.getUserPostQuizScore = function(modual) {
+  
+  return  this.quiz.find(x => ((x.modual == modual) && (x.type == "post")));
 
 };
 

@@ -187,6 +187,98 @@ exports.getScriptPost = (req, res) => {
 
 /*
 ##############
+Post Quiz Prez
+##############
+*/
+exports.postPostQuiz_Prez = (req, res) => {
+
+  User.findById(req.user.id, (err, user) => {
+    //somehow user does not exist here
+    if (err) { return next(err); }
+
+    var quiz = {};
+    quiz.type = "post";
+    quiz.modual = "presentation";
+    quiz.score = parseInt(req.body.phone_post || '0') + parseInt(req.body.disclose_post || '0') + parseInt(req.body.picture_post || '0') + parseInt(req.body.lie_post || '0') + parseInt(req.body.complain_post || '0');
+    user.quiz.push(quiz);
+
+    user.save((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect('/postquiz/presentation/results')
+    });
+  });
+};
+
+/*
+##############
+Pre Quiz Prez
+##############
+*/
+exports.postPreQuiz_Prez = (req, res, next) => {
+
+  User.findById(req.user.id, (err, user) => {
+    //somehow user does not exist here
+    if (err) { return next(err); }
+
+    var quiz = {};
+    quiz.type = "pre";
+    quiz.modual = "presentation";
+    quiz.score = parseInt(req.body.phone_pre || '0') + parseInt(req.body.disclose_pre || '0') + parseInt(req.body.picture_pre || '0') + parseInt(req.body.lie_pre || '0') + parseInt(req.body.complain_pre || '0');
+    user.quiz.push(quiz);
+
+    user.save((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect('/modual/presentation')
+    });
+  });
+};
+
+//getPrezResults
+/*
+##############
+Get Presentation Results page
+##############
+*/
+exports.getPrezResults = (req, res) => {
+
+  User.findById(req.user.id)
+  .populate({ 
+       path: 'posts.reply',
+       model: 'Script',
+       populate: {
+         path: 'actor',
+         model: 'Actor'
+       } 
+    })
+  .exec(function (err, user) {
+    if (err) { return next(err); }
+
+    var pre = user.getUserPreQuizScore("presentation");
+    var post = user.getUserPostQuizScore("presentation");
+
+    var replies = user.getReplies();
+    var posts = user.getPosts();
+    //var liked = user.getLiked();
+    if(posts[0].picture)
+    {
+      console.log("!!!!!!!!!!!!!!!!Picture is "+posts[0].picture);
+      console.log("!!!!!!!!!!!!!!!!Picture is "+posts[0].body);
+    }
+
+    console.log("########################"+ replies.length);
+    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$"+ posts.length);
+
+    res.render('pres_results', { s_post: posts[0], replies: replies.slice(0, 3) , pre: pre, post:post});
+
+  });
+};
+
+/*
+##############
 NEW POST
 #############
 */
@@ -286,7 +378,7 @@ exports.newPost = (req, res) => {
               return next(err);
             }
             //req.flash('success', { msg: 'Profile information has been updated.' });
-            res.redirect('/');
+            res.redirect('/modual/presentation');
           });
 
         });//of of Notification
@@ -308,7 +400,7 @@ exports.newPost = (req, res) => {
           return next(err);
         }
         //req.flash('success', { msg: 'Profile information has been updated.' });
-        res.redirect('/');
+        res.redirect('/modual/presentation');
       });
 
     }
