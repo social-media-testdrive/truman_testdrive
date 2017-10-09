@@ -4,7 +4,7 @@ block content
   .ui.container
     h2 Modual Results
     br
-    h3="You scored "+pre.score+" out of 4 in your Pre Quiz and "+pre.score+" out of 4 in your Post Quiz"
+    h3="You scored "+(pre.score || 0)+" out of 4 in your Pre Quiz and "+(post.score || 0)+" out of 4 in your Post Quiz"
     br
     br
     h3 Here are some posts you replied to:
