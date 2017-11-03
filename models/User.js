@@ -33,7 +33,7 @@ const userSchema = new mongoose.Schema({
 
   posts: [new Schema({
     type: String, //post, reply, actorReply
-    modual: String, //Which lesson modual does this belong to
+    module: String, //Which lesson module does this belong to
 
     postID: Number,  //number for this post (1,2,3...) reply get -1 maybe should change to a String ID system
     body: {type: String, default: '', trim: true}, //body of post or reply
@@ -199,20 +199,35 @@ userSchema.methods.getReplies = function getReplies() {
 /**
  * Helper method for getting all User Posts.
 */
-userSchema.methods.getModPosts = function getModPosts(modual) {
+userSchema.methods.getModPosts = function getModPosts(module) {
   var temp = [];
   for (var i = 0, len = this.posts.length; i < len; i++) {
-    if (this.posts[i].postID >= 0 && this.posts[i].modual == modual)
+    if (this.posts[i].postID >= 0 && this.posts[i].module == module)
      temp.push(this.posts[i]);
   }
-
   //sort to ensure that posts[x].postID == x
   temp.sort(function (a, b) {
     return a.postID - b.postID;
   });
 
   return temp;
+};
 
+/**
+ * Helper method for getting all User Replies from Mod.
+ */
+userSchema.methods.getModReplies = function getModReplies(module) {
+  var temp = [];
+  for (var i = 0, len = this.posts.length; i < len; i++) {
+    if (this.posts[i].replyID >= 0 && this.posts[i].module == module)
+     temp.push(this.posts[i]);
+  }
+
+  temp.sort(function (a, b) {
+    return a.postID - b.postID;
+  });
+
+  return temp;
 };
 
 /**
@@ -237,10 +252,10 @@ userSchema.methods.getPostsAndReplies = function getPostsAndReplies() {
 /**
  * Helper method for getting all User Posts and replies.
  */
-userSchema.methods.getModPostsAndReplies = function getModPostsAndReplies(modual) {
+userSchema.methods.getModPostsAndReplies = function getModPostsAndReplies(module) {
   var temp = [];
   for (var i = 0, len = this.posts.length; i < len; i++) {
-    if ((this.posts[i].postID >= 0 || this.posts[i].replyID >= 0)&& this.posts[i].modual == modual)
+    if ((this.posts[i].postID >= 0 || this.posts[i].replyID >= 0) && this.posts[i].module == module)
      temp.push(this.posts[i]);
   }
 
@@ -290,10 +305,10 @@ userSchema.methods.getActorReplyByID = function(actorReplyID) {
 };
 
 //get user posts within the min/max time period 
-userSchema.methods.getPostInPeriod = function(min, max) {
+userSchema.methods.getPostInPeriod = function(min, max, module) {
     //concat posts & reply
     return this.posts.filter(function(item) {
-        return item.relativeTime >= min && item.relativeTime <= max;
+        return (item.relativeTime >= min) && (item.relativeTime <= max) && (item.module == module);
     });
 }
 

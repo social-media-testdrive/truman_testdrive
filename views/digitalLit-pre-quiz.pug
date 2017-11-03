@@ -1,0 +1,95 @@
+extends ui_layout
+
+block content
+
+  .ui.text.container
+    br
+    h2 Information Literacy and Fake News Pre-Activity Quiz
+     form#cyber_pre.ui.reply.form(action='/prequiz/digital_literacy', method='POST')
+      input(type='hidden', name='_csrf', value=_csrf)
+      .ui.form
+        .grouped.fields
+          label(for='assignment_pre') What is a good clue that an article or fact you see online is real (and not fake)?
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='assignment_pre', tabindex='0', value='1')
+            label It gives information about who wrote the story and who published it.
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='assignment_pre', tabindex='0', value='0')
+            label It uses a lot of numbers and statistics, even if it doesn't say where they came from.
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='assignment_pre', tabindex='0', value='0')
+            label It was shared by a lot of your friends and family on Facebook, so it must be true.
+        .grouped.fields
+          label(for='news_pre') What are some strategies that people use to get you to click on news stories?
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='news_pre', tabindex='0', value='0')
+            label Give their stories titles that make you curious about what the story says.
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='news_pre', tabindex='0', value='0')
+            label Use images, videos, numbers, or "facts" that seem unbelievable or too good to be true.
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='news_pre', tabindex='0', value='0')
+            label Use images or words are shocking or that create strong emotions.
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='news_pre', tabindex='0', value='1')
+            label All of the above.
+        .grouped.fields
+          label(for='stopping_pre') What are things you can do to help other people distinguish between real and fake news or websites? 
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='stopping_pre', tabindex='0', value='0')
+            label Remind them to check the facts. It's easy to do a Google search to check whether something really happened.
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='stopping_pre', tabindex='0', value='0')
+            label Remind them to look for accurate website addresses. Sometimes people set up news sites that mimic trustworthy sites, but are actually fake.
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='stopping_pre', tabindex='0', value='0')
+            label Remind them to check the "about us" section of a website. It might indicate whether a site is satire or real.
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='stopping_pre', tabindex='0', value='1')
+            label All of the above.
+        .grouped.fields
+          label(for='social_pre') Your friend Anna tells you that 5+5 = 15 because of a new math rule that she saw on Facebook. Is this true?
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='social_pre', tabindex='0', value='0')
+            label Yes - Facebook wouldn't lie.
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='social_pre', tabindex='0', value='1')
+            label No - anyone can post anything on Facebook, whether it's true or not. Plus that just doesn't make sense!
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='social_pre', tabindex='0', value='0')
+            label Yes - Anna is a math genius so I trust her.
+
+        h2 Just one more question... there are no right or wrong answers to this one!
+        .grouped.fields
+          label(for="use") Do you have an account on any social media sites?
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='use', tabindex='0', value='1')
+            label Yes.
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='use', tabindex='0', value='0')
+            label No.
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='use', tabindex='0', value='0')
+            label I'm not sure.
+        br
+        button.ui.button(type='submit') Submit
+    br
+    br
+    br

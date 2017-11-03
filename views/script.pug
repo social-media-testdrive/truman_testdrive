@@ -46,7 +46,7 @@ block content
         -if (val.actorAuthor) {u_class = "actorReply"}
         -else if (val.reply) {u_class = "userReply"}
         -else {u_class = "userPost"}
-        .ui.fluid.card(postID=val.id, ui=user.ui, notify=user.notify, type=u_class, u_postID=val.replyID || val.postID || val.actorReplyID)
+        .ui.fluid.card(postID=val.id, ui=user.ui, notify=user.notify, type=u_class, module=val.module, u_postID=val.replyID || val.postID || val.actorReplyID)
           if val.reply
             //- if post is a reply post -  add the post and populate the reply as well
             .content
@@ -279,7 +279,7 @@ block content
                     i.heart.icon
                     |  Like
                   a.ui.basic.red.left.pointing.label.count=val.likes
-    -var post_quiz = "/postquiz/"+mod;
+    -var post_quiz = "/results/"+mod;
     a.ui.fluid.card(href=post_quiz)
       .content
         .description
@@ -328,8 +328,29 @@ block content
         form#replyform.ui.reply.form(action='/post/new', method='POST', enctype='multipart/form-data')
           input(type='hidden', name='_csrf', value=_csrf)
           input#replyInput(type='hidden', name='reply', value='a')
+          input#replyModule(type='hidden', name='module', value=mod)
           .field
             textarea(rows='2', placeholder='Add your Reply', name='body')
           .ui.error.message
       .actions
         input.ui.green.button(type='submit', value='Submit', form='replyform')
+
+    //- New Post Modal
+    .ui.small.post.modal
+      i.close.icon
+      .header Add a New Post
+      .content
+        form#postform.ui.feed.form(action='/post/new', method='POST', enctype='multipart/form-data')
+          input(type='hidden', name='_csrf', value=_csrf)
+          input(type='hidden', name='module', value=mod)
+          .field
+            textarea(rows='2', placeholder='Share Somthing', name='body')
+          .field.image-upload
+            label(for='picinput')
+              .image.content
+                img#imgInp.ui.fluid.image(src='/photo-camera.svg')
+            //-input#picinput(type='file', accept='image/*', capture='camera', name='picinput')
+            input#picinput(type='file', accept='image/*', name='picinput')
+          .ui.error.message
+      .actions
+        input.ui.green.button(type='submit', name="foo", value='Submit', form='postform')

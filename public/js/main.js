@@ -41,7 +41,9 @@ $(window).on("load", function() {
   $('.reply.button').click(function () {
     
     let postID = $(this).closest( ".ui.fluid.card.dim" ).attr( "postID" );
+    //let mod = $(this).closest( ".ui.fluid.card.dim" ).attr( "module" );
     $('#replyInput').attr("value", postID);
+    //$('#replyModule').attr("value", mod);
 
     $(' .ui.small.reply.modal').modal('show');
 });
@@ -61,7 +63,7 @@ $(window).on("load", function() {
         rules: [
           {
             type   : 'empty',
-            prompt : 'Please add some text about what you ate'
+            prompt : 'Please add some text your picture'
           }
         ]
       },
@@ -139,13 +141,25 @@ $('.right.floated.time.meta, .date').each(function() {
     window.location.href='/modual/presentation'; 
   });
 
+//Go to Post Quiz (Presentation)
+  $('.ui.big.green.labeled.icon.button.prez_post_quiz')
+  .on('click', function() {
+    window.location.href='/postquiz/presentation'; 
+  });
+
+  //Go to Post Quiz (ANY)
+  $('.ui.big.green.labeled.icon.button.post_quiz')
+  .on('click', function() {
+    let mod = $(this).attr( "mod" );
+    console.log("Mod is now: "+mod);
+    window.location.href='/postquiz/'+mod; 
+  });
 
 
   $('.ui.big.green.labeled.icon.button.finished')
   .on('click', function() {
     window.location.href='/'; 
   });
-
 
 
   $('.ui.big.green.labeled.icon.button.finish_lesson')
@@ -159,7 +173,7 @@ $('.right.floated.time.meta, .date').each(function() {
     window.location.href='/info'; //maybe go to tour site???
   });
 
-  //Community Rules Button (rocket!!!)
+  //Info  (rocket!!!)
   $('.ui.big.green.labeled.icon.button.info')
   .on('click', function() {
     window.location.href='/'; //maybe go to tour site???

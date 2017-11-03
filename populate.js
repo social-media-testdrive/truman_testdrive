@@ -127,7 +127,8 @@ function PostCreate(new_post) {
     console.log('Looking up Actor ID is : ' + act._id); 
     var postdetail = new Object();
     postdetail.actor = {};
-    postdetail.body = new_post.body
+    //was body now post
+    postdetail.body = new_post.post
     postdetail.post_id = new_post.id;
     //postdetail.class = new_post.class;
     postdetail.picture = new_post.picture;
@@ -176,7 +177,7 @@ Script.findOne({ post_id: new_post.replyID}, function(err, pr){
       postdetail.body = new_post.body
       postdetail.post_id = new_post.id;
       postdetail.class = new_post.class;
-      postdetail.module = "presentation";
+      postdetail.module = new_post.module;
 
       //postdetail.picture = new_post.picture;
       postdetail.likes = new_post.likes;
@@ -197,7 +198,7 @@ Script.findOne({ post_id: new_post.replyID}, function(err, pr){
 
 function PostReplyCreate(new_post) {
 
-   Actor.findOne({ username: new_post.actor}, function(err, act){
+   Actor.findOne({ username: new_post.bot}, function(err, act){
     if(err) {
       console.log(err);
       return
@@ -208,14 +209,15 @@ function PostReplyCreate(new_post) {
       return -1;
     }
 
-    console.log('Looking up Actor: ' + act.username); 
+    console.log('@@@@@@@Looking up Actor: ' + act.username); 
     console.log('Looking up Actor ID is : ' + act._id);
     console.log('Try for post: ' + new_post.reply);
-    console.log('Try for Modual: ' + new_post.module);
+    console.log('########Try for Modual: ' + new_post.module);
     var postdetail = new Object();
     postdetail.actor = {};
-    postdetail.replyID = new_post.reply;
-    postdetail.body = new_post.body
+    //fix to new scehma 
+    postdetail.replyID = new_post.post;
+    postdetail.body = new_post.reply
     postdetail.post_id = 300 + new_post.id;
     //postdetail.class = new_post.class;
     //postdetail.picture = new_post.picture;

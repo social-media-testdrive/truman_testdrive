@@ -1,0 +1,109 @@
+extends ui_layout
+
+block content
+
+  .ui.text.container
+    br
+    h2 Standing Up Against Cyberbullying Pre-Activity Quiz
+    form#cyber_pre.ui.reply.form(action='/prequiz/cyberbullying', method='POST')
+      input(type='hidden', name='_csrf', value=_csrf)
+      .ui.form
+        .grouped.fields
+          label(for='embarrassment_pre') You’ve always known that Tom isn’t well-liked at school but recently you've seen your classmates writing mean posts about him online, saying he’s “an embarrassment” and that it will be best if he leaves. What do you do?
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='embarrassment_pre', tabindex='0', value='0')
+            label Comment on a post saying "I know right? Nobody wants to see him.".
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='embarrassment_pre', tabindex='0', value='0')
+            label Take a screenshot and post it with a comment saying "I agree!".
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='embarrassment_pre', tabindex='0', value='1')
+            label Comment on a post saying "You guys sound like jerks for saying that!".
+        .grouped.fields
+          label(for='friend_pre') Your best friend Cody tells you he has been very upset lately because his classmates are constantly making fun of him online, calling him things like “fat nerd” and “idiot”. You realize he’s being cyberbullied. What should you do?
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='friend_pre', tabindex='0', value='1')
+            label Help Cody tell an adult about the bullying.
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='friend_pre', tabindex='0', value='0')
+            label Stop being friends with Cody because you don’t want to be bullied too.
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='friend_pre', tabindex='0', value='0')
+            label Tell Cody to grow up and get over it.
+        .grouped.fields
+          label(for='movement_pre') Recently your classmates started the “Ignore Sarah Movement”, because they dislike Sarah’s personality and they want to exclude her. Somebody sent you an invitation to this movement. What do you do?
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='movement_pre', tabindex='0', value='0')
+            label Reply “absolutely!” even though you don’t really know Sarah.
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='movement_pre', tabindex='0', value='1')
+            label Tell Sarah about the invitation and make sure to include her next time someone ignores her.
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='movement_pre', tabindex='0', value='0')
+            label Share the invitation with more people. The more the merrier.
+        .grouped.fields
+          label(for='behaviors_pre') Which of the following are things that a cyberbully might do?
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='behaviors_pre', tabindex='0', value='0')
+            label Making a fake profile to laugh at someone.
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='behaviors_pre', tabindex='0', value='0')
+            label Taking somebody’s picture and turning it into a hurtful meme.
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='behaviors_pre', tabindex='0', value='0')
+            label Leaving mean comments under someone’s dancing video.
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='behaviors_pre', tabindex='0', value='1')
+            label All of the above.
+        .grouped.fields
+          label(for='actions_pre') Which of these are things you can do to stand up against cyberbullying?
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='actions_pre', tabindex='0', value='0')
+            label Reporting a mean post to the site it was posted on.
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='actions_pre', tabindex='0', value='0')
+            label Telling a trusted adult about something mean that you saw.
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='actions_pre', tabindex='0', value='0')
+            label Telling people who are spreading rumors to stop.
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='actions_pre', tabindex='0', value='1')
+            label All of the above.
+        h2 Just one more question... there are no right or wrong answers to this one!
+        .grouped.fields
+          label(for="use") Do you have an account on any social media sites?
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='use', tabindex='0', value='1')
+            label Yes.
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='use', tabindex='0', value='0')
+            label No.
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='use', tabindex='0', value='0')
+            label I'm not sure.
+
+        br
+        button.ui.button(type='submit') Submit
+    br
+    br
+    br

@@ -67,7 +67,7 @@ exports.getScript = (req, res) => {
 
         //Look up Notifications??? And do this as well?
 
-        user_posts = user.getPostInPeriod(time_limit, time_diff);
+        user_posts = user.getPostInPeriod(time_limit, time_diff, req.params.modId);
 
         user_posts.sort(function (a, b) {
             return b.relativeTime - a.relativeTime;
@@ -213,6 +213,58 @@ exports.postPostQuiz_Prez = (req, res) => {
 
 /*
 ##############
+Post Quiz Cyber
+##############
+*/
+exports.postPostQuiz_Cyber = (req, res) => {
+
+  User.findById(req.user.id, (err, user) => {
+    //somehow user does not exist here
+    if (err) { return next(err); }
+
+    var quiz = {};
+    quiz.type = "post";
+    quiz.modual = "cyberbullying";
+    quiz.score = parseInt(req.body.embarrassment_post || '0') + parseInt(req.body.friend_post || '0') + parseInt(req.body.movement_post || '0') + parseInt(req.body.behaviors_post || '0') + parseInt(req.body.actions_post || '0');
+    user.quiz.push(quiz);
+
+    user.save((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect('/postquiz/cyberbullying/results')
+    });
+  });
+};
+
+/*
+##############
+Post Quiz Lit
+##############
+*/
+exports.postPostQuiz_Lit = (req, res) => {
+
+  User.findById(req.user.id, (err, user) => {
+    //somehow user does not exist here
+    if (err) { return next(err); }
+
+    var quiz = {};
+    quiz.type = "post";
+    quiz.modual = "digital_literacy";
+    quiz.score = parseInt(req.body.assignment_post || '0') + parseInt(req.body.news_post || '0') + parseInt(req.body.stopping_post || '0') + parseInt(req.body.social_post || '0');
+    user.quiz.push(quiz);
+
+    user.save((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect('/postquiz/digital_literacy/results')
+    });
+  });
+};
+
+/*
+##############
 Pre Quiz Prez
 ##############
 */
@@ -237,6 +289,98 @@ exports.postPreQuiz_Prez = (req, res, next) => {
   });
 };
 
+/*
+##############
+Pre Quiz Cyber
+##############
+*/
+exports.postPreQuiz_Cyber = (req, res, next) => {
+
+  User.findById(req.user.id, (err, user) => {
+    //somehow user does not exist here
+    if (err) { return next(err); }
+
+    var quiz = {};
+    quiz.type = "pre";
+    quiz.modual = "cyberbullying";
+    quiz.score = parseInt(req.body.embarrassment_pre || '0') + parseInt(req.body.friend_pre || '0') + parseInt(req.body.picture_pre || '0') + parseInt(req.body.movement_pre || '0') + parseInt(req.body.behaviors_pre || '0') + parseInt(req.body.actions_pre || '0');
+    user.quiz.push(quiz);
+
+    user.save((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect('/modual/cyberbullying')
+    });
+  });
+};
+
+/*
+##############
+Pre Quiz Cyber
+##############
+*/
+exports.postPreQuiz_Lit = (req, res, next) => {
+
+  User.findById(req.user.id, (err, user) => {
+    //somehow user does not exist here
+    if (err) { return next(err); }
+
+    var quiz = {};
+    quiz.type = "pre";
+    quiz.modual = "digital_literacy";
+    quiz.score = parseInt(req.body.assignment_pre || '0') + parseInt(req.body.news_pre || '0') + parseInt(req.body.stopping_pre || '0') + parseInt(req.body.social_pre || '0');
+    user.quiz.push(quiz);
+
+    user.save((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect('/modual/digital_literacy')
+    });
+  });
+};
+//getPrezResults
+/*
+##############
+Get Presentation Results page
+##############
+*/
+exports.getResults = (req, res) => {
+
+  User.findById(req.user.id)
+  .populate({ 
+       path: 'posts.reply',
+       model: 'Script',
+       populate: {
+         path: 'actor',
+         model: 'Actor'
+       } 
+    })
+  .exec(function (err, user) {
+    if (err) { return next(err); }
+
+    //var pre = user.getUserPreQuizScore("presentation");
+    //var post = user.getUserPostQuizScore("presentation");
+
+    var replies = user.getModReplies(req.params.modId);
+    var posts = user.getModPosts(req.params.modId);
+    //var liked = user.getLiked();
+    if(posts[0])
+    {
+      console.log("!!!!!!!!!!!!!!!!Picture is "+posts[0].picture);
+      console.log("!!!!!!!!!!!!!!!!Picture is "+posts[0].body);
+    }
+
+    console.log("########################"+ replies.length);
+    console.log("MOD is "+ req.params.modId);
+
+    res.render('results', { s_post: posts[0], mod: req.params.modId, replies: replies.slice(0, 3)});
+
+  });
+};
+
+
 //getPrezResults
 /*
 ##############
@@ -257,11 +401,11 @@ exports.getPrezResults = (req, res) => {
   .exec(function (err, user) {
     if (err) { return next(err); }
 
-    var pre = user.getUserPreQuizScore("presentation");
-    var post = user.getUserPostQuizScore("presentation");
+    //var pre = user.getUserPreQuizScore("presentation");
+    //var post = user.getUserPostQuizScore("presentation");
 
-    var replies = user.getReplies();
-    var posts = user.getPosts();
+    var replies = user.getModReplies('presentation');
+    var posts = user.getModPosts('presentation');
     //var liked = user.getLiked();
     if(posts[0])
     {
@@ -272,7 +416,128 @@ exports.getPrezResults = (req, res) => {
     console.log("########################"+ replies.length);
     console.log("$$$$$$$$$$$$$$$$$$$$$$$$$"+ posts.length);
 
-    res.render('pres_results', { s_post: posts[0], replies: replies.slice(0, 3) , pre: pre, post:post});
+    res.render('pres_results', { s_post: posts[0], replies: replies.slice(0, 3)});
+
+  });
+};
+
+//getPrezQuizResults
+/*
+##############
+Get Presentation Quiz Results page
+##############
+*/
+exports.getQuizResults = (req, res) => {
+
+  User.findById(req.user.id)
+  .populate({ 
+       path: 'posts.reply',
+       model: 'Script',
+       populate: {
+         path: 'actor',
+         model: 'Actor'
+       } 
+    })
+  .exec(function (err, user) {
+    if (err) { return next(err); }
+
+    var pre = user.getUserPreQuizScore(req.params.modId);
+    var post = user.getUserPostQuizScore(req.params.modId);
+
+    var total = 0;
+
+    if (req.params.modId == 'presentation' || req.params.modId == 'cyberbullying')
+    {
+      total = 5;
+    }
+    else if (req.params.modId == 'digital_literacy')
+    {
+      total = 4;
+    }
+
+    res.render('quiz_results', { pre: pre, post: post, total: total});
+
+  });
+};
+
+//getPrezQuizResults
+/*
+##############
+Get Presentation Quiz Results page
+##############
+*/
+exports.getPrezQuizResults = (req, res) => {
+
+  User.findById(req.user.id)
+  .populate({ 
+       path: 'posts.reply',
+       model: 'Script',
+       populate: {
+         path: 'actor',
+         model: 'Actor'
+       } 
+    })
+  .exec(function (err, user) {
+    if (err) { return next(err); }
+
+    var pre = user.getUserPreQuizScore("presentation");
+    var post = user.getUserPostQuizScore("presentation");
+
+    res.render('pres_quiz_results', { pre: pre, post: post});
+
+  });
+};
+
+/*
+##############
+Get Cyberbullying Quiz Results page
+##############
+*/
+exports.getCyberQuizResults = (req, res) => {
+
+  User.findById(req.user.id)
+  .populate({ 
+       path: 'posts.reply',
+       model: 'Script',
+       populate: {
+         path: 'actor',
+         model: 'Actor'
+       } 
+    })
+  .exec(function (err, user) {
+    if (err) { return next(err); }
+
+    var pre = user.getUserPreQuizScore("cyberbullying");
+    var post = user.getUserPostQuizScore("cyberbullying");
+
+    res.render('cyber_quiz_results', { pre: pre, post: post});
+
+  });
+};
+
+/*
+##############
+Get Dig Lit Quiz Results page
+##############
+*/
+exports.getLitQuizResults = (req, res) => {
+
+  User.findById(req.user.id)
+  .populate({ 
+       path: 'posts.reply',
+       model: 'Script',
+       populate: {
+         path: 'actor',
+         model: 'Actor'
+       } 
+    })
+  .exec(function (err, user) {
+    if (err) { return next(err); }
+
+    var pre = user.getUserPreQuizScore("digital_literacy");
+    var post = user.getUserPostQuizScore("digital_literacy");
+
+    res.render('lit_quiz_results', { pre: pre, post: post});
 
   });
 };
@@ -295,6 +560,7 @@ exports.newPost = (req, res) => {
 
     var post = new Object();
     post.body = req.body.body;
+    post.module = req.body.module;
     post.absTime = Date.now();
     post.relativeTime = post.absTime - user.createdAt;
 
@@ -321,7 +587,6 @@ exports.newPost = (req, res) => {
     if (req.file)
     {
       post.picture = req.file.filename;
-
       user.numPosts = user.numPosts + 1;
       post.postID = user.numPosts;
       post.type = "user_post";
@@ -378,7 +643,8 @@ exports.newPost = (req, res) => {
               return next(err);
             }
             //req.flash('success', { msg: 'Profile information has been updated.' });
-            res.redirect('/modual/presentation');
+            //res.redirect('/modual/presentation');
+            res.redirect('/modual/'+req.body.module);
           });
 
         });//of of Notification
@@ -400,7 +666,7 @@ exports.newPost = (req, res) => {
           return next(err);
         }
         //req.flash('success', { msg: 'Profile information has been updated.' });
-        res.redirect('/modual/presentation');
+        res.redirect('/modual/'+req.body.module);
       });
 
     }
