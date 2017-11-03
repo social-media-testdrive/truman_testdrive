@@ -245,7 +245,7 @@ app.get('/prequiz/presentation',  passportConfig.isAuthenticated, function (req,
     title: 'Pre Quiz'
   });
 })
-app.post('/prequiz/presentation', passportConfig.isAuthenticated, scriptController.postPreQuiz_Cyber);
+app.post('/prequiz/presentation', passportConfig.isAuthenticated, scriptController.postPreQuiz_Prez);
 
 //cyberbullying Pre Quiz
 app.get('/prequiz/cyberbullying',  passportConfig.isAuthenticated, function (req, res) {
