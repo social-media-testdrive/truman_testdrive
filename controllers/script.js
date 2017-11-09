@@ -284,7 +284,7 @@ exports.postPreQuiz_Prez = (req, res, next) => {
       if (err) {
         return next(err);
       }
-      res.redirect('/modual/presentation')
+      res.redirect('/modual/presentation/wait')
     });
   });
 };
@@ -310,7 +310,7 @@ exports.postPreQuiz_Cyber = (req, res, next) => {
       if (err) {
         return next(err);
       }
-      res.redirect('/modual/cyberbullying')
+      res.redirect('/modual/cyberbullying/wait')
     });
   });
 };
@@ -336,7 +336,7 @@ exports.postPreQuiz_Lit = (req, res, next) => {
       if (err) {
         return next(err);
       }
-      res.redirect('/modual/digital_literacy')
+      res.redirect('/modual/digital_literacy/wait')
     });
   });
 };
@@ -458,6 +458,16 @@ exports.getQuizResults = (req, res) => {
     res.render('quiz_results', { pre: pre, post: post, total: total});
 
   });
+};
+
+
+/*
+##############
+Get WAIT page
+##############
+*/
+exports.getWait = (req, res) => {
+    res.render('wait', { sec: req.params.sec, mod: req.params.modId});
 };
 
 //getPrezQuizResults

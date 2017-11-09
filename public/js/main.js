@@ -152,7 +152,7 @@ $('.right.floated.time.meta, .date').each(function() {
   .on('click', function() {
     let mod = $(this).attr( "mod" );
     console.log("Mod is now: "+mod);
-    window.location.href='/postquiz/'+mod; 
+    window.location.href='/postquiz/'+mod+'/wait'; 
   });
 
 

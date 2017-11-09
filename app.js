@@ -306,6 +306,7 @@ app.get('/finished',  passportConfig.isAuthenticated, function (req, res) {
 
 app.get('/results/:modId', passportConfig.isAuthenticated, scriptController.getResults);
 app.get('/postquiz/:modId/results', passportConfig.isAuthenticated, scriptController.getQuizResults);
+app.get('/:sec/:modId/wait', passportConfig.isAuthenticated, scriptController.getWait);
 
 app.get('/com', function (req, res) {
   res.render('com', {

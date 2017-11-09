@@ -33,25 +33,6 @@ block content
                   if val.reply.picture
                     img.post.ui.left.floated.small.image(src="/"+val.reply.picture)
                   p=val.reply.body
-            .three.ui.bottom.attached.icon.buttons
-              //-.ui.reply.button(tabindex='0')
-              .ui.button(tabindex='0')
-                i.reply.icon
-                |  Reply
-              //-.ui.flag.button(tabindex='0')
-              .ui.button(tabindex='0')
-                i.flag.icon
-                |  Flag
-              if val.like
-                //-.ui.red.like.button
-                .ui.red.button
-                  i.heart.icon
-                  |  Like
-              else
-                //-.ui.like.button
-                .ui.button
-                  i.heart.icon
-                  |  Like
     h3 Why did you reply this way?
     br
     br
@@ -72,25 +53,6 @@ block content
           img(src='/user_post/'+s_post.picture)
         .content
           .description=s_post.body
-        .three.ui.bottom.attached.icon.buttons
-          //-.ui.reply.button(tabindex='0')
-          .ui.button(tabindex='0')
-            i.reply.icon
-            |  Reply
-          //-.ui.flag.button(tabindex='0')
-          .ui.button(tabindex='0')
-            i.flag.icon
-            |  Flag
-          if s_post.like
-            //-.ui.red.like.button
-            .ui.red.button
-              i.heart.icon
-              |  Like
-          else
-            //-.ui.like.button
-            .ui.button
-              i.heart.icon
-              |  Like
       h3 What would you do different?
       br
       br

@@ -35,7 +35,7 @@ block content
           img.ui.avatar.image(src='/user_post/'+user.profile.picture)
         else
           img.ui.avatar.image(src=user.gravatar(60))
-      input(type='text', placeholder='Share your meal')
+      input(type='text', placeholder='Share yourself!')
       i.big.photo.link.icon
     each val in script
       //- create a card for each post in val (if by user make the card a little different)
@@ -60,7 +60,7 @@ block content
               a(href='/me')
                 span=user.profile.name || user.email || user.id
             .content
-              .description(style="font-size:130%")=val.body
+              .description(style="font-size:150%")=val.body
             .extra.content
               .ui.fluid.card
                 .content
@@ -102,7 +102,7 @@ block content
                 img.ui.avatar.image(src='/profile_pictures/'+val.actorAuthor.profile.picture)
                 span=val.actorAuthor.profile.name
             .content
-              .description(style="font-size:130%")=val.body
+              .description(style="font-size:150%")=val.body
             .extra.content
               .ui.fluid.card
                 .content
