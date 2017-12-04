@@ -197,10 +197,42 @@ exports.postPostQuiz_Prez = (req, res) => {
     if (err) { return next(err); }
 
     var quiz = {};
+    
     quiz.type = "post";
     quiz.modual = "presentation";
     quiz.score = parseInt(req.body.phone_post || '0') + parseInt(req.body.disclose_post || '0') + parseInt(req.body.picture_post || '0') + parseInt(req.body.lie_post || '0') + parseInt(req.body.complain_post || '0');
     user.quiz.push(quiz);
+
+    var evaluation = {};
+    //like
+    evaluation.type = "post";
+    evaluation.modual = "presentation";
+    evaluation.question = "like";
+    evaluation.val = parseInt(req.body.like || '0');
+    user.eval_quiz.push(evaluation);
+
+    //friends
+    evaluation.type = "post";
+    evaluation.modual = "presentation";
+    evaluation.question = "friends";
+    evaluation.val = parseInt(req.body.friends || '0');
+    user.eval_quiz.push(evaluation); 
+
+    //length
+    evaluation.type = "post";
+    evaluation.modual = "presentation";
+    evaluation.question = "length";
+    evaluation.val = parseInt(req.body.length || '0');
+    user.eval_quiz.push(evaluation);
+
+    //understand
+    evaluation.type = "post";
+    evaluation.modual = "presentation";
+    evaluation.question = "understand";
+    evaluation.val = parseInt(req.body.understand || '0');
+    user.eval_quiz.push(evaluation);
+
+
 
     user.save((err) => {
       if (err) {
@@ -228,6 +260,35 @@ exports.postPostQuiz_Cyber = (req, res) => {
     quiz.score = parseInt(req.body.embarrassment_post || '0') + parseInt(req.body.friend_post || '0') + parseInt(req.body.movement_post || '0') + parseInt(req.body.behaviors_post || '0') + parseInt(req.body.actions_post || '0');
     user.quiz.push(quiz);
 
+    var evaluation = {};
+    //like
+    evaluation.type = "post";
+    evaluation.modual = "cyberbullying";
+    evaluation.question = "like";
+    evaluation.val = parseInt(req.body.like || '0');
+    user.eval_quiz.push(evaluation);
+
+    //friends
+    evaluation.type = "post";
+    evaluation.modual = "cyberbullying";
+    evaluation.question = "friends";
+    evaluation.val = parseInt(req.body.friends || '0');
+    user.eval_quiz.push(evaluation); 
+
+    //length
+    evaluation.type = "post";
+    evaluation.modual = "cyberbullying";
+    evaluation.question = "length";
+    evaluation.val = parseInt(req.body.length || '0');
+    user.eval_quiz.push(evaluation);
+
+    //understand
+    evaluation.type = "post";
+    evaluation.modual = "cyberbullying";
+    evaluation.question = "understand";
+    evaluation.val = parseInt(req.body.understand || '0');
+    user.eval_quiz.push(evaluation);
+
     user.save((err) => {
       if (err) {
         return next(err);
@@ -254,6 +315,35 @@ exports.postPostQuiz_Lit = (req, res) => {
     quiz.score = parseInt(req.body.assignment_post || '0') + parseInt(req.body.news_post || '0') + parseInt(req.body.stopping_post || '0') + parseInt(req.body.social_post || '0');
     user.quiz.push(quiz);
 
+    var evaluation = {};
+    //like
+    evaluation.type = "post";
+    evaluation.modual = "digital_literacy";
+    evaluation.question = "like";
+    evaluation.val = parseInt(req.body.like || '0');
+    user.eval_quiz.push(evaluation);
+
+    //friends
+    evaluation.type = "post";
+    evaluation.modual = "digital_literacy";
+    evaluation.question = "friends";
+    evaluation.val = parseInt(req.body.friends || '0');
+    user.eval_quiz.push(evaluation); 
+
+    //length
+    evaluation.type = "post";
+    evaluation.modual = "digital_literacy";
+    evaluation.question = "length";
+    evaluation.val = parseInt(req.body.length || '0');
+    user.eval_quiz.push(evaluation);
+
+    //understand
+    evaluation.type = "post";
+    evaluation.modual = "digital_literacy";
+    evaluation.question = "understand";
+    evaluation.val = parseInt(req.body.understand || '0');
+    user.eval_quiz.push(evaluation);
+
     user.save((err) => {
       if (err) {
         return next(err);
@@ -275,10 +365,20 @@ exports.postPreQuiz_Prez = (req, res, next) => {
     if (err) { return next(err); }
 
     var quiz = {};
+
     quiz.type = "pre";
     quiz.modual = "presentation";
     quiz.score = parseInt(req.body.phone_pre || '0') + parseInt(req.body.disclose_pre || '0') + parseInt(req.body.picture_pre || '0') + parseInt(req.body.lie_pre || '0') + parseInt(req.body.complain_pre || '0');
     user.quiz.push(quiz);
+
+    var evaluation = {};
+    //use
+    evaluation.type = "pre";
+    evaluation.modual = "presentation";
+    evaluation.question = "use";
+    evaluation.val = parseInt(req.body.use || '0');
+
+    user.eval_quiz.push(evaluation);
 
     user.save((err) => {
       if (err) {
@@ -306,6 +406,15 @@ exports.postPreQuiz_Cyber = (req, res, next) => {
     quiz.score = parseInt(req.body.embarrassment_pre || '0') + parseInt(req.body.friend_pre || '0') + parseInt(req.body.picture_pre || '0') + parseInt(req.body.movement_pre || '0') + parseInt(req.body.behaviors_pre || '0') + parseInt(req.body.actions_pre || '0');
     user.quiz.push(quiz);
 
+    var evaluation = {};
+    //use
+    evaluation.type = "pre";
+    evaluation.modual = "cyberbullying";
+    evaluation.question = "use";
+    evaluation.val = parseInt(req.body.use || '0');
+
+    user.eval_quiz.push(evaluation);
+
     user.save((err) => {
       if (err) {
         return next(err);
@@ -331,6 +440,15 @@ exports.postPreQuiz_Lit = (req, res, next) => {
     quiz.modual = "digital_literacy";
     quiz.score = parseInt(req.body.assignment_pre || '0') + parseInt(req.body.news_pre || '0') + parseInt(req.body.stopping_pre || '0') + parseInt(req.body.social_pre || '0');
     user.quiz.push(quiz);
+
+    var evaluation = {};
+    //use
+    evaluation.type = "pre";
+    evaluation.modual = "digital_literacy";
+    evaluation.question = "use";
+    evaluation.val = parseInt(req.body.use || '0');
+
+    user.eval_quiz.push(evaluation);
 
     user.save((err) => {
       if (err) {

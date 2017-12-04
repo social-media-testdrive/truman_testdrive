@@ -64,6 +64,13 @@ const userSchema = new mongoose.Schema({
     score: Number
     })],
 
+  eval_quiz: [new Schema({
+    question: String,
+    type: String,
+    modual: String,
+    val: Number
+    })],
+
   pageLog: [new Schema({
     time: Date,
     page: String
