@@ -1,0 +1,46 @@
+extends ../ui_layout
+
+block content
+  
+  .sixteen.wide.column
+    h3.ui.header Pick a Profile Image and Name
+    p="Now you’ll be picking a display name and photo for your account. This is how other people will see you when they see your posts on the site, so pick a name and photo that represents how you want to be seen. Pick a name that will let others know who you are, but doesn’t reveal too much about you (like your last name or the school you go to)."
+
+    form.ui.form(action='/create_name', method='POST')
+      input(type='hidden', name='_csrf', value=_csrf)
+      .inline.fields
+        label Pick a Profile Image:
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='picture', tabindex='0', value='minecraft.png')
+            label 
+              img.ui.small.circular.image(src='/profile_pictures/minecraft.png')
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='picture', tabindex='0', value='lizard.jpg')
+            label 
+              img.ui.small.circular.image(src='/profile_pictures/lizard.jpg')
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='picture', tabindex='0', value='bub.jpg')
+            label 
+              img.ui.small.circular.image(src='/profile_pictures/bub.jpg')
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='picture', tabindex='0', value='ball.png')
+            label 
+              img.ui.small.circular.image(src='/profile_pictures/ball.png')
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='picture', tabindex='0', value='dog.jpg')
+            label 
+              img.ui.small.circular.image(src='/profile_pictures/dog.jpg')
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='picture', tabindex='0', value='emoji.jpg')
+            label 
+              img.ui.small.circular.image(src='/profile_pictures/emoji.jpg')
+      .field
+        label(for='name') Name
+        input(type='text', name='name', id='name', placeholder='Enter your Name', required) 
+      button.ui.button(type='submit') Submit

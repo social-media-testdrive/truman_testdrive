@@ -306,6 +306,7 @@ app.get('/finished',  passportConfig.isAuthenticated, function (req, res) {
 
 app.get('/results/:modId', passportConfig.isAuthenticated, scriptController.getResults);
 app.get('/postquiz/:modId/results', passportConfig.isAuthenticated, scriptController.getQuizResults);
+
 app.get('/:sec/:modId/wait', passportConfig.isAuthenticated, scriptController.getWait);
 
 app.get('/com', function (req, res) {
@@ -335,6 +336,23 @@ app.get('/logout', userController.logout);
 //app.post('/reset/:token', userController.postReset);
 app.get('/signup', userController.getSignup);
 app.post('/signup', userController.postSignup);
+
+app.get('/create_username', userController.getSignupUsername);
+app.post('/create_username', userController.postSignupUsername);
+
+app.get('/create_password', passportConfig.isAuthenticated, userController.getSignupPassword);
+app.post('/create_password', passportConfig.isAuthenticated, userController.postSignupPassword);
+
+app.get('/create_name', passportConfig.isAuthenticated, userController.getSignupName);
+app.post('/create_name', passportConfig.isAuthenticated, userController.postSignupName);
+
+app.get('/create_bio', passportConfig.isAuthenticated, userController.getSignupBio);
+app.post('/create_bio', passportConfig.isAuthenticated, userController.postSignupBio);
+
+///review/signup
+app.get('/review/signup', passportConfig.isAuthenticated, userController.getSignupReview);
+
+//////////////////////////
 
 app.get('/account/signup_info', passportConfig.isAuthenticated, userController.getSignupInfo);
 app.post('/account/signup_info_post', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, csrf, userController.postSignupInfo);

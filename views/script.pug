@@ -8,7 +8,7 @@ block content
     .ui.card
       .image
         if user.profile.picture
-          img(src='/user_post/'+user.profile.picture)
+          img(src='/profile_pictures/'+user.profile.picture)
         else
           img(src=user.gravatar(60))
       .content

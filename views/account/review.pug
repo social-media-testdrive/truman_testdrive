@@ -1,0 +1,29 @@
+extends ../ui_layout
+
+block content
+  
+  .sixteen.wide.column
+    h2.ui.header Review Profile Information
+    p="Here’s your new profile! Take a minute to look it over. Talk with your group about why you chose your name, photo, and other information. Did you choose to keep it private or let everyone else see it? Why?"
+
+    .ui.centered.card
+      .image
+        if user.profile.picture
+          img(src='/profile_pictures/'+user.profile.picture)
+        else
+          img(src=user.gravatar(60))
+      .content
+        a.header= user.profile.name || user.email || user.id
+        .meta="@"+user.username
+        .description=user.profile.bio
+        .description
+          if user.profile.location
+            i.marker.icon
+            span=user.profile.location
+      .one.ui.bottom.attached.icon.buttons
+          button.ui.editprofile.button(data-tooltip='Update Your Profile', data-position='bottom left')
+            i.write.icon
+
+    .ui.big.green.labeled.icon.button.finished
+      i.rocket.icon
+      |   Click when Done!

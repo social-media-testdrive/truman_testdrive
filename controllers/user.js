@@ -155,9 +155,9 @@ exports.getSignup = (req, res) => {
  * Create a new local account.
  */
 exports.postSignup = (req, res, next) => {
-  req.assert('username', 'Username cannot be blank').notEmpty();
-  req.assert('password', 'Password must be at least 4 characters long').len(4);
-  req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
+  //req.assert('username', 'Username cannot be blank').notEmpty();
+  //req.assert('password', 'Password must be at least 4 characters long').len(4);
+  //req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
   req.assert('signupcode', 'Wrong Sign Up Code').equals("0451");
   
   const errors = req.validationErrors();
@@ -166,10 +166,45 @@ exports.postSignup = (req, res, next) => {
     req.flash('errors', errors);
     return res.redirect('/signup');
   }
+  else 
+  {
+    res.redirect('/create_username');
+  }
+};
+
+/**
+ * GET /create_username
+ * Create Username page.
+ */
+exports.getSignupUsername = (req, res) => {
+  if (req.user) {
+    return res.redirect('/');
+  }
+  res.render('account/username', {
+    title: 'Create Username'
+  });
+};
+
+/**
+ * POST /signup
+ * Create a new local account.
+ */
+exports.postSignupUsername = (req, res, next) => {
+  req.assert('username', 'Username cannot be blank').notEmpty();
+  //req.assert('password', 'Password must be at least 4 characters long').len(4);
+  //req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
+  //req.assert('signupcode', 'Wrong Sign Up Code').equals("0451");
+  
+  const errors = req.validationErrors();
+
+  if (errors) {
+    req.flash('errors', errors);
+    return res.redirect('/create_username');
+  }
 
   //random assignment of experimental group
   const user = new User({
-    password: req.body.password,
+    password: "thinkblue",
     username: req.body.username,
     group: 'no:no',
     active: true,
@@ -182,7 +217,7 @@ exports.postSignup = (req, res, next) => {
     if (err) { return next(err); }
     if (existingUser) {
       req.flash('errors', { msg: 'Account with that Username already exists.' });
-      return res.redirect('/signup');
+      return res.redirect('/create_username');
     }
     user.save((err) => {
       if (err) { return next(err); }
@@ -190,11 +225,152 @@ exports.postSignup = (req, res, next) => {
         if (err) {
           return next(err);
         }
-        res.redirect('/account/signup_info');
+        res.redirect('/create_password');
       });
     });
   });
 };
+
+/**
+ * GET /create_password
+ * Signup password page.
+ */
+exports.getSignupPassword = (req, res) => {
+
+  res.render('account/password', {
+    title: 'Create Password'
+  });
+};
+
+/**
+ * POST /create_password
+ * Update Password information.
+ */
+exports.postSignupPassword = (req, res, next) => {
+
+  req.assert('password', 'Password must be at least 4 characters long').len(4);
+  req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
+  
+  const errors = req.validationErrors();
+
+  if (errors) {
+    req.flash('errors', errors);
+    return res.redirect('/create_password');
+  }
+
+  User.findById(req.user.id, (err, user) => {
+    if (err) { return next(err); }
+    //user.email = req.body.email || '';
+    user.password = req.body.password;
+    //user.profile.name = req.body.name || '';
+    //user.profile.location = req.body.location || '';
+    //user.profile.bio = req.body.bio || '';
+
+    user.save((err) => {
+      if (err) {
+        if (err.code === 11000) {
+          req.flash('errors', { msg: 'The email address you have entered is already associated with an account.' });
+          return res.redirect('/create_password');
+        }
+        return next(err);
+      }
+      req.flash('success', { msg: 'Password has been created.' });
+      res.redirect('/create_name');
+    });
+  });
+};
+
+/**
+ * GET /create_name
+ * Signup name page.
+ */
+exports.getSignupName = (req, res) => {
+
+  res.render('account/name_picture', {
+    title: 'Create Name'
+  });
+};
+
+/**
+ * POST /create_name
+ * Update Name information.
+ */
+exports.postSignupName = (req, res, next) => {
+
+
+  User.findById(req.user.id, (err, user) => {
+    if (err) { return next(err); }
+    //user.email = req.body.email || '';
+    user.profile.name = req.body.name || '';
+    //user.profile.location = req.body.location || '';
+    //user.profile.bio = req.body.bio || '';
+    user.profile.picture = req.body.picture || '';
+
+    user.save((err) => {
+      if (err) {
+        if (err.code === 11000) {
+          req.flash('errors', { msg: 'The email address you have entered is already associated with an account.' });
+          return res.redirect('/create_name');
+        }
+        return next(err);
+      }
+      req.flash('success', { msg: 'Name and Picture has been updated.' });
+      res.redirect('/create_bio');
+    });
+  });
+};
+
+/**
+ * GET /create_bio
+ * Signup bio page.
+ */
+exports.getSignupBio = (req, res) => {
+
+  res.render('account/bio_location', {
+    title: 'Create Bio'
+  });
+};
+
+/**
+ * POST /create_bio
+ * Update Bio information.
+ */
+exports.postSignupBio = (req, res, next) => {
+
+
+  User.findById(req.user.id, (err, user) => {
+    if (err) { return next(err); }
+    //user.email = req.body.email || '';
+    //user.profile.name = req.body.name || '';
+    user.profile.location = req.body.location || '';
+    user.profile.bio = req.body.bio || '';
+    //user.profile.picture = req.body.picture || '';
+
+    user.save((err) => {
+      if (err) {
+        if (err.code === 11000) {
+          req.flash('errors', { msg: 'The email address you have entered is already associated with an account.' });
+          return res.redirect('/create_name');
+        }
+        return next(err);
+      }
+      req.flash('success', { msg: 'Bio and Location has been updated.' });
+      res.redirect('/review/signup/wait');
+    });
+  });
+};
+
+/**
+ * GET /review/signup
+ * Profile page.
+ */
+exports.getSignupReview= (req, res) => {
+  res.render('account/review', {
+    title: 'Review your Account'
+  });
+};
+
+
 
 
 
@@ -254,7 +430,7 @@ exports.getSignupInfo = (req, res) => {
 };
 
 /**
- * GET /account
+ * GET /getMe
  * Profile page.
  */
 exports.getMe = (req, res) => {

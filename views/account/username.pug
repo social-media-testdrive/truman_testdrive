@@ -1,0 +1,13 @@
+extends ../ui_layout
+
+block content
+  .sixteen.wide.column
+    h2.ui.header Enter your Username
+    p="First, pick a username for your account. This is how the computer will identify you. If someone goes to your own page on the site, they will see your username."
+    form.ui.form(id='signup-username-form', method='POST')
+      input(type='hidden', name='_csrf', value=_csrf)
+      .field
+        label(for='username') Username
+        input(type='text', name='username', id='username', placeholder='Username', autofocus, required)       
+      .field
+      button.ui.button(type='submit') Create Username
