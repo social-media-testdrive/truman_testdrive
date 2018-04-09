@@ -61,6 +61,7 @@ dotenv.load({ path: '.env' });
  */
 const actorsController = require('./controllers/actors');
 const scriptController = require('./controllers/script');
+const classController = require('./controllers/class');
 const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
 const notificationController = require('./controllers/notification');
@@ -163,7 +164,7 @@ app.use(flash());
 
 
 app.use((req, res, next) => {
-  if ((req.path === '/api/upload') || (req.path === '/post/new') || (req.path === '/account/profile') || (req.path === '/account/signup_info_post')) {
+  if ((req.path === '/api/upload') || (req.path === '/post/new') || (req.path === '/account/profile') || (req.path === '/account/signup_info_post')|| (req.path === '/classes')) {
     console.log("Not checking CSRF - out path now");
     //console.log("@@@@@request is " + req);
     next();
@@ -294,16 +295,6 @@ app.get('/finished',  passportConfig.isAuthenticated, function (req, res) {
   });
 })
 
-//app.get('/postquiz/presentation/results', passportConfig.isAuthenticated, scriptController.getPrezQuizResults);
-//app.get('/results/presentation', passportConfig.isAuthenticated, scriptController.getPrezResults);
-
-//app.get('/postquiz/cyberbullying/results', passportConfig.isAuthenticated, scriptController.getCyberQuizResults);
-//app.get('/results/cyberbullying', passportConfig.isAuthenticated, scriptController.getCyberResults);
-
-
-//app.get('/postquiz/digital_literacy/results', passportConfig.isAuthenticated, scriptController.getLitQuizResults);
-//app.get('/results/digital_literacy', passportConfig.isAuthenticated, scriptController.getLitResults);
-
 app.get('/results/:modId', passportConfig.isAuthenticated, scriptController.getResults);
 app.get('/postquiz/:modId/results', passportConfig.isAuthenticated, scriptController.getQuizResults);
 
@@ -322,6 +313,12 @@ app.get('/info', passportConfig.isAuthenticated, function (req, res) {
 });
 
 
+
+//Classes
+app.get('/classes', passportConfig.isAuthenticated, classController.getClasses);
+app.get('/class/:classId', passportConfig.isAuthenticated, classController.getClass);
+app.post('/classes', passportConfig.isAuthenticated, classController.postCreateClass);
+
 //User's Page
 app.get('/me', passportConfig.isAuthenticated, userController.getMe);
 app.get('/notifications', passportConfig.isAuthenticated, notificationController.getNotifications);
@@ -334,11 +331,21 @@ app.get('/logout', userController.logout);
 //app.post('/forgot', userController.postForgot);
 //app.get('/reset/:token', userController.getReset);
 //app.post('/reset/:token', userController.postReset);
+
+
 app.get('/signup', userController.getSignup);
 app.post('/signup', userController.postSignup);
 
+//Instructor junks
+app.get('/create_instructor', userController.getSignupInstructor);
+app.post('/create_instructor', userController.postSignupInstructor);
+
 app.get('/create_username', userController.getSignupUsername);
 app.post('/create_username', userController.postSignupUsername);
+
+//'/create_username_class/'
+app.get('/create_username_class/:classId', userController.getSignupUsername);
+app.post('/create_username_class/:classId', userController.postSignupUsernameClass);
 
 app.get('/create_password', passportConfig.isAuthenticated, userController.getSignupPassword);
 app.post('/create_password', passportConfig.isAuthenticated, userController.postSignupPassword);

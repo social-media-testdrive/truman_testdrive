@@ -53,6 +53,11 @@ $(window).on("load", function() {
     $(' .ui.small.post.modal').modal('show');
 });
 
+//New Class Button
+  $("#new_class.ui.big.green.labeled.icon.button").click(function () {
+    $('.ui.small.newclass.modal').modal('show');
+});
+
   //new post validator (picture and text can not be empty)
   $('.ui.feed.form')
   .form({
@@ -92,6 +97,33 @@ $(window).on("load", function() {
           }
         ]
       }
+    }
+  })
+;
+
+$('#classform.ui.form')
+  .form({
+    on: 'blur',
+    fields: {
+      classname: {
+        identifier  : 'classname',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please include a Class Name'
+          }
+        ]
+      },
+      accesscode: {
+        identifier  : 'accesscode',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please add an Access Code'
+          }
+        ]
+      }
+
     }
   })
 ;

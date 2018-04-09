@@ -4,6 +4,7 @@ const nodemailer = require('nodemailer');
 const passport = require('passport');
 const moment = require('moment');
 const User = require('../models/User');
+const Class = require('../models/Class.js');
 const Notification = require('../models/Notification.js');
 
 /**
@@ -158,18 +159,111 @@ exports.postSignup = (req, res, next) => {
   //req.assert('username', 'Username cannot be blank').notEmpty();
   //req.assert('password', 'Password must be at least 4 characters long').len(4);
   //req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
-  req.assert('signupcode', 'Wrong Sign Up Code').equals("0451");
+  //xyzzy
+  req.assert('signupcode', 'Wrong Sign Up Code').notEmpty();
+  
+  const errors = req.validationErrors();
+
+  if (errors) {
+    req.flash('Sign Up Code Can Not Be Blank. Please Try Again', errors);
+    return res.redirect('/signup');
+  }
+  //default Student - No Class Assignment
+  else if (req.body.signupcode == "0451")
+  {
+    res.redirect('/create_username');
+  }
+
+  //default Student - No Class Assignment
+  else if (req.body.signupcode == "xyzzy")
+  {
+    res.redirect('/create_instructor');
+  }
+
+  //Check if belong to Class - if not- then reject and try again
+  else
+  {
+
+    Class.findOne({ accessCode: req.body.signupcode }, (err, existingClass) => {
+      if (err) { return next(err); }
+      //found the class this belongs to. Continue making account
+      if (existingClass) {
+        res.redirect('/create_username_class/'+req.body.signupcode);
+      }
+      else
+      {
+        req.flash('errors', { msg: 'No Class with that Access Code found. Please try again.' });
+        return res.redirect('/signup');
+      }
+      
+      });//end of CLASS FIND ONE
+
+  }
+
+};
+
+/**
+ * GET /create_instructor
+ * Create instructor page.
+ */
+exports.getSignupInstructor = (req, res) => {
+  if (req.user) {
+    return res.redirect('/');
+  }
+  res.render('account/instructor', {
+    title: 'Create Instructor Username'
+  });
+};
+
+/**
+ * POST /signup
+ * Create a new local account.
+ */
+exports.postSignupInstructor = (req, res, next) => {
+  req.assert('username', 'Username cannot be blank').notEmpty();
+  req.assert('password', 'Password must be at least 4 characters long').len(4);
+  req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
+  //req.assert('signupcode', 'Wrong Sign Up Code').equals("0451");
   
   const errors = req.validationErrors();
 
   if (errors) {
     req.flash('errors', errors);
-    return res.redirect('/signup');
+    return res.redirect('/create_instructor');
   }
-  else 
-  {
-    res.redirect('/create_username');
-  }
+
+  const user = new User({
+    password: req.body.password,
+    username: req.body.username,
+    group: 'no:no',
+    active: true,
+    ui: 'no', //ui or no
+    notify: 'no', //no, low or high
+    isInstructor: true,
+    lastNotifyVisit : Date.now()
+  });
+
+  user.profile.name = req.body.name || '';
+  user.profile.location = req.body.location || '';
+  user.profile.bio = req.body.bio || '';
+  user.profile.picture = req.body.picture || '';
+
+  User.findOne({ username: req.body.username }, (err, existingUser) => {
+    if (err) { return next(err); }
+    if (existingUser) {
+      req.flash('errors', { msg: 'Account with that Username already exists.' });
+      return res.redirect('/create_username');
+    }
+    user.save((err) => {
+      if (err) { return next(err); }
+      req.logIn(user, (err) => {
+        if (err) {
+          return next(err);
+        }
+        res.redirect('/');
+      });
+    });
+  });
 };
 
 /**
@@ -213,6 +307,8 @@ exports.postSignupUsername = (req, res, next) => {
     lastNotifyVisit : Date.now()
   });
 
+  
+
   User.findOne({ username: req.body.username }, (err, existingUser) => {
     if (err) { return next(err); }
     if (existingUser) {
@@ -229,6 +325,72 @@ exports.postSignupUsername = (req, res, next) => {
       });
     });
   });
+};
+
+/**
+ * POST /signup
+ * Create a new local account.
+ */
+exports.postSignupUsernameClass = (req, res, next) => {
+  req.assert('username', 'Username cannot be blank').notEmpty();
+  //req.assert('password', 'Password must be at least 4 characters long').len(4);
+  //req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
+  //req.assert('signupcode', 'Wrong Sign Up Code').equals("0451");
+  
+  const errors = req.validationErrors();
+
+  if (errors) {
+    req.flash('errors', errors);
+    return res.redirect('/create_username');
+  }
+
+  //random assignment of experimental group
+  const user = new User({
+    password: "thinkblue",
+    username: req.body.username,
+    group: 'no:no',
+    active: true,
+    ui: 'no', //ui or no
+    notify: 'no', //no, low or high
+    lastNotifyVisit : Date.now()
+  });
+
+  
+
+  User.findOne({ username: req.body.username }, (err, existingUser) => {
+    if (err) { return next(err); }
+    if (existingUser) {
+      req.flash('errors', { msg: 'Account with that Username already exists.' });
+      return res.redirect('/create_username');
+    }
+    user.save((err) => {
+      if (err) { return next(err); }
+      req.logIn(user, (err) => {
+        
+        if (err) {
+          return next(err);
+        }
+
+        //req.params.classId
+        Class.findOne({ accessCode: req.params.classId }, (err, existingClass) => {
+          if (err) { return next(err); }
+
+          //found the class this belongs to. add student to Class
+          if (existingClass) {
+            existingClass.students.push(user);
+
+            existingClass.save((err) => {
+              if (err) { return next(err); }
+                res.redirect('/create_password');
+            });//exsistingClass.save
+          }//if existingClass
+
+        });//Class.findOne 
+
+        
+      });//req.logIn
+    });//user.save
+  });//User.findOne
 };
 
 /**

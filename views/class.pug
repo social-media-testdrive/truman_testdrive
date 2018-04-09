@@ -1,0 +1,31 @@
+extends ui_layout
+
+block content
+
+  .sixteen.wide.column 
+    br
+    h3=found_class.className
+    table.ui.celled.padded.table
+      thead
+        tr
+          th Student Name
+          th Presentation Pre Quiz
+          th Presentation Post Quiz
+          th Cyberbullying Pre Quiz
+          th Cyberbullying Post Quiz
+          th Digital Literacy Pre Quiz
+          th Digital Literacy Post Quiz
+      each student in found_class.students
+        -var pre_presentation = student.quiz.find(function(e) {return (e.type == "pre"&&e.modual=="presentation")});
+        tbody
+          tr
+            td=student.username
+            td=student.quiz.find(function(e) {return (e.type == "pre"&&e.modual=="presentation")})
+            td=student.quiz.find(function(e) {return (e.type == "post"&&e.modual=="presentation")})
+            td=student.quiz.find(function(e) {return (e.type == "pre"&&e.modual=="cyberbullying")})
+            td=student.quiz.find(function(e) {return (e.type == "post"&&e.modual=="cyberbullying")})
+            td=student.quiz.find(function(e) {return (e.type == "pre"&&e.modual=="digital_literacy")})
+            td=student.quiz.find(function(e) {return (e.type == "post"&&e.modual=="digital_literacy")})
+    br
+    br
+    br

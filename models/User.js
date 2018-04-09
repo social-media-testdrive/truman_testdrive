@@ -11,6 +11,7 @@ const userSchema = new mongoose.Schema({
   username: { type: String, unique: true },
   active: {type: Boolean, default: true},
   isAdmin: {type: Boolean, default: false},
+  isInstructor: {type: Boolean, default: false},
 
   completed: {type: Boolean, default: false},
 
