@@ -32,7 +32,7 @@ block content
     #newpost.ui.fluid.left.labeled.right.icon.input
       .ui.label
         if user.profile.picture
-          img.ui.avatar.image(src='/user_post/'+user.profile.picture)
+          img(src='/profile_pictures/'+user.profile.picture)
         else
           img.ui.avatar.image(src=user.gravatar(60))
       input(type='text', placeholder='Share yourself!')

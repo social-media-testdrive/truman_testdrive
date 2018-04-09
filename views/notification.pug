@@ -9,7 +9,7 @@ block content
       //- this is the for user card - does not show up on mobile
       .image
         if user.profile.picture
-          img(src='/user_post/'+user.profile.picture)
+          img(src='/profile_pictures/'+user.profile.picture)
         else
           img(src=user.gravatar(60))
       .content
@@ -17,7 +17,7 @@ block content
 
   .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
     if notification_feed == -1
-      p You have no notifications. I guess no one likes you...jk! 😜
+      p You have no notifications at this time.
     else
       .ui.feed
         each val in notification_feed

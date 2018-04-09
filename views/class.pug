@@ -17,15 +17,38 @@ block content
           th Digital Literacy Post Quiz
       each student in found_class.students
         -var pre_presentation = student.quiz.find(function(e) {return (e.type == "pre"&&e.modual=="presentation")});
+        -var post_presentation = student.quiz.find(function(e) {return (e.type == "post"&&e.modual=="presentation")});
+        -var pre_cyberbullying = student.quiz.find(function(e) {return (e.type == "pre"&&e.modual=="cyberbullying")});
+        -var post_cyberbullying = student.quiz.find(function(e) {return (e.type == "post"&&e.modual=="cyberbullying")});
+        -var pre_digital_literacy = student.quiz.find(function(e) {return (e.type == "pre"&&e.modual=="digital_literacy")});
+        -var post_digital_literacy = student.quiz.find(function(e) {return (e.type == "post"&&e.modual=="digital_literacy")});
         tbody
           tr
             td=student.username
-            td=student.quiz.find(function(e) {return (e.type == "pre"&&e.modual=="presentation")})
-            td=student.quiz.find(function(e) {return (e.type == "post"&&e.modual=="presentation")})
-            td=student.quiz.find(function(e) {return (e.type == "pre"&&e.modual=="cyberbullying")})
-            td=student.quiz.find(function(e) {return (e.type == "post"&&e.modual=="cyberbullying")})
-            td=student.quiz.find(function(e) {return (e.type == "pre"&&e.modual=="digital_literacy")})
-            td=student.quiz.find(function(e) {return (e.type == "post"&&e.modual=="digital_literacy")})
+            if pre_presentation
+              td=pre_presentation.score 
+            else
+              td=""
+            if post_presentation
+              td=post_presentation.score 
+            else
+              td=""
+            if pre_cyberbullying
+              td=pre_cyberbullying.score 
+            else
+              td=""
+            if post_cyberbullying
+              td=post_cyberbullying.score 
+            else
+              td=""
+            if pre_digital_literacy
+              td=pre_digital_literacy.score 
+            else
+              td=""
+            if post_digital_literacy
+              td=post_digital_literacy.score 
+            else
+              td=""
     br
     br
     br
