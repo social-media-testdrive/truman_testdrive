@@ -1,0 +1,74 @@
+extends ui_layout
+
+block content
+
+  .ui.text.container
+    br
+    h2 The Power of Likes Pre-Activity Quiz
+    form#pres_pre.ui.reply.form(action='/prequiz/likes', method='POST')
+        input(type='hidden', name='_csrf', value=_csrf)
+        .ui.form
+          .grouped.fields
+            label(for='selfie_pre') Julia gets 150 likes on her selfie, but Kaylie only gets 50. What does this say about Julia and Kaylie?
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='selfie_pre',  tabindex='0', value='0')
+              label It says that Julia is a better person than Kaylie.
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='selfie_pre', tabindex='0', value='0')
+              label It says that Julia is cooler than Kaylie.
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='selfie_pre', tabindex='0', value='1')
+              label Neither, it doesn't say anything about them as people.
+          .grouped.fields
+            label(for='friend-pre') Your best friend is disappointed because they created a post that didn't get a lot of likes. What should you do?
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='friend_pre', tabindex='0', value='0')
+              label You should stop being friends with them.
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='friend_pre', tabindex='0', value='1')
+              label You should comment on the post with something positive and friendly.
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='friend_pre', tabindex='0', value='0')
+              label You should tell them in person that their post was dumb.
+          .grouped.fields
+            label(for='boring_pre') Your friend posts something that you think is boring, but it gets lots of likes. What should you do?
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='boring_pre', tabindex='0', value='0')
+              label Comment on the post telling everyone they're dumb for liking it.
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='boring_pre', tabindex='0', value='0')
+              label Make your own post and tell everyone to like that post instead.
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='boring_pre', tabindex='0', value='1')
+              label Ignore the post.
+            br
+          h3 Just one more question... there are no right or wrong answers to this one!
+          .grouped.fields
+            label(for="use") Do you have an account on any social media sites?
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='use', tabindex='0', value='1')
+              label Yes.
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='use', tabindex='0', value='0')
+              label No.
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='use', tabindex='0', value='0')
+              label I'm not sure.
+
+          br
+          button.ui.button(type='submit') Submit
+    br
+    br
+    br

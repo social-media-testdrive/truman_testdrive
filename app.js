@@ -264,6 +264,14 @@ app.get('/prequiz/digital_literacy',  passportConfig.isAuthenticated, function (
 })
 app.post('/prequiz/digital_literacy', passportConfig.isAuthenticated, scriptController.postPreQuiz_Lit);
 
+//likes Pre Quiz
+app.get('/prequiz/likes',  passportConfig.isAuthenticated, function (req, res) {
+  res.render('likes-pre-quiz', {
+    title: 'Pre Quiz'
+  });
+})
+app.post('/prequiz/likes', passportConfig.isAuthenticated, scriptController.postPreQuiz_Likes);
+
 
 //Post Presentation
 app.get('/postquiz/presentation',  passportConfig.isAuthenticated, function (req, res) {
@@ -288,6 +296,14 @@ app.get('/postquiz/digital_literacy',  passportConfig.isAuthenticated, function 
   });
 })
 app.post('/postquiz/digital_literacy', passportConfig.isAuthenticated, scriptController.postPostQuiz_Lit);
+
+//Post likes
+app.get('/postquiz/likes',  passportConfig.isAuthenticated, function (req, res) {
+  res.render('likes-post-quiz', {
+    title: 'Post Quiz'
+  });
+})
+app.post('/postquiz/likes', passportConfig.isAuthenticated, scriptController.postPostQuiz_Likes);
 
 app.get('/finished',  passportConfig.isAuthenticated, function (req, res) {
   res.render('finished', {

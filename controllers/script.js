@@ -355,6 +355,61 @@ exports.postPostQuiz_Lit = (req, res) => {
 
 /*
 ##############
+Post Quiz Likes
+##############
+*/
+exports.postPostQuiz_Likes = (req, res) => {
+
+  User.findById(req.user.id, (err, user) => {
+    //somehow user does not exist here
+    if (err) { return next(err); }
+
+    var quiz = {};
+    quiz.type = "post";
+    quiz.modual = "likes";
+    quiz.score = parseInt(req.body.selfie_post || '0') + parseInt(req.body.friend_post || '0') + parseInt(req.body.boring_post || '0');
+    user.quiz.push(quiz);
+
+    var evaluation = {};
+    //like
+    evaluation.type = "post";
+    evaluation.modual = "likes";
+    evaluation.question = "like";
+    evaluation.val = parseInt(req.body.like || '0');
+    user.eval_quiz.push(evaluation);
+
+    //friends
+    evaluation.type = "post";
+    evaluation.modual = "likes";
+    evaluation.question = "friends";
+    evaluation.val = parseInt(req.body.friends || '0');
+    user.eval_quiz.push(evaluation); 
+
+    //length
+    evaluation.type = "post";
+    evaluation.modual = "likes";
+    evaluation.question = "length";
+    evaluation.val = parseInt(req.body.length || '0');
+    user.eval_quiz.push(evaluation);
+
+    //understand
+    evaluation.type = "post";
+    evaluation.modual = "likes";
+    evaluation.question = "understand";
+    evaluation.val = parseInt(req.body.understand || '0');
+    user.eval_quiz.push(evaluation);
+
+    user.save((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect('/postquiz/likes/results')
+    });
+  });
+};
+
+/*
+##############
 Pre Quiz Prez
 ##############
 */
@@ -426,7 +481,7 @@ exports.postPreQuiz_Cyber = (req, res, next) => {
 
 /*
 ##############
-Pre Quiz Cyber
+Pre Quiz LIT
 ##############
 */
 exports.postPreQuiz_Lit = (req, res, next) => {
@@ -458,6 +513,44 @@ exports.postPreQuiz_Lit = (req, res, next) => {
     });
   });
 };
+
+/*
+##############
+Pre Quiz LIKES
+##############
+*/
+exports.postPreQuiz_Likes = (req, res, next) => {
+
+  User.findById(req.user.id, (err, user) => {
+    //somehow user does not exist here
+    if (err) { return next(err); }
+
+    var quiz = {};
+    quiz.type = "pre";
+    quiz.modual = "likes";
+    quiz.score = parseInt(req.body.selfie_pre || '0') + parseInt(req.body.friend_pre || '0') + parseInt(req.body.boring_pre || '0');
+    user.quiz.push(quiz);
+
+    var evaluation = {};
+    //use
+    evaluation.type = "pre";
+    evaluation.modual = "likes";
+    evaluation.question = "use";
+    evaluation.val = parseInt(req.body.use || '0');
+
+    user.eval_quiz.push(evaluation);
+
+    user.save((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect('/modual/likes/wait')
+    });
+  });
+};
+
+
+
 //getPrezResults
 /*
 ##############
