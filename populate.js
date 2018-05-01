@@ -15,8 +15,8 @@ var fs = require('fs')
 
 //var actors_list = require('./input/actors.json');
 var actors_list = [];
-var posts_list = require('./input/image_posts.json');
-var replies_list = require('./input/image_replies.json');
+var posts_list = require('./input/posts.json');
+var replies_list = require('./input/replies.json');
 
 /*
 var actors1 = require('./testdrive_actorv1.json');

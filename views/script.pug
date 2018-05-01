@@ -210,14 +210,6 @@ block content
                   if val.reply.picture
                     img.post.ui.left.floated.small.image(src="/"+val.reply.picture)
                   p=val.reply.body
-              if user.notify != 'low'
-                .right.floated.meta
-                  i.icon.checkmark
-                  | Seen by #{val.lowread}
-              else if user.notify != 'high'
-                .right.floated.meta
-                  i.icon.checkmark
-                  | Seen by #{val.highread}
             .three.ui.bottom.attached.icon.buttons
               .ui.reply.button(tabindex='0')
                 i.reply.icon
@@ -252,14 +244,6 @@ block content
               //-img(src='/picture.svg', data-src=val.picture)
             .content
               .description=val.body
-              if user.notify != 'low'
-                .right.floated.meta
-                  i.icon.checkmark
-                  | Seen by #{val.lowread}
-              else if user.notify != 'high'
-                .right.floated.meta
-                  i.icon.checkmark
-                  | Seen by #{val.highread}
             .three.ui.bottom.attached.icon.buttons
               .ui.reply.button(tabindex='0')
                 i.reply.icon
