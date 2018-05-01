@@ -410,6 +410,61 @@ exports.postPostQuiz_Likes = (req, res) => {
 
 /*
 ##############
+Post Quiz Likes
+##############
+*/
+exports.postPostQuiz_Image = (req, res) => {
+
+  User.findById(req.user.id, (err, user) => {
+    //somehow user does not exist here
+    if (err) { return next(err); }
+
+    var quiz = {};
+    quiz.type = "post";
+    quiz.modual = "image";
+    quiz.score = parseInt(req.body.alter_post || '0') + parseInt(req.body.photo_post || '0') + parseInt(req.body.motivate_post || '0')+ parseInt(req.body.lie_post || '0')+ parseInt(req.body.everyone_post || '0');
+    user.quiz.push(quiz);
+
+    var evaluation = {};
+    //like
+    evaluation.type = "post";
+    evaluation.modual = "image";
+    evaluation.question = "like";
+    evaluation.val = parseInt(req.body.like || '0');
+    user.eval_quiz.push(evaluation);
+
+    //friends
+    evaluation.type = "post";
+    evaluation.modual = "image";
+    evaluation.question = "friends";
+    evaluation.val = parseInt(req.body.friends || '0');
+    user.eval_quiz.push(evaluation); 
+
+    //length
+    evaluation.type = "post";
+    evaluation.modual = "image";
+    evaluation.question = "length";
+    evaluation.val = parseInt(req.body.length || '0');
+    user.eval_quiz.push(evaluation);
+
+    //understand
+    evaluation.type = "post";
+    evaluation.modual = "image";
+    evaluation.question = "understand";
+    evaluation.val = parseInt(req.body.understand || '0');
+    user.eval_quiz.push(evaluation);
+
+    user.save((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect('/postquiz/image/results')
+    });
+  });
+};
+
+/*
+##############
 Pre Quiz Prez
 ##############
 */
@@ -545,6 +600,41 @@ exports.postPreQuiz_Likes = (req, res, next) => {
         return next(err);
       }
       res.redirect('/modual/likes/wait')
+    });
+  });
+};
+
+/*
+##############
+Pre Quiz IMAGE
+##############
+*/
+exports.postPreQuiz_Image = (req, res, next) => {
+
+  User.findById(req.user.id, (err, user) => {
+    //somehow user does not exist here
+    if (err) { return next(err); }
+
+    var quiz = {};
+    quiz.type = "pre";
+    quiz.modual = "image";
+    quiz.score = parseInt(req.body.alter_post || '0') + parseInt(req.body.photo_post || '0') + parseInt(req.body.motivate_post || '0')+ parseInt(req.body.lie_post || '0')+ parseInt(req.body.everyone_post || '0');
+    user.quiz.push(quiz);
+
+    var evaluation = {};
+    //use
+    evaluation.type = "pre";
+    evaluation.modual = "image";
+    evaluation.question = "use";
+    evaluation.val = parseInt(req.body.use || '0');
+
+    user.eval_quiz.push(evaluation);
+
+    user.save((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect('/modual/image/wait')
     });
   });
 };

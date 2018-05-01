@@ -15,6 +15,10 @@ block content
           th Cyberbullying Post Quiz
           th Digital Literacy Pre Quiz
           th Digital Literacy Post Quiz
+          th Likes Pre Quiz
+          th Likes Post Quiz
+          th Image Pre Quiz
+          th Image Post Quiz
       each student in found_class.students
         -var pre_presentation = student.quiz.find(function(e) {return (e.type == "pre"&&e.modual=="presentation")});
         -var post_presentation = student.quiz.find(function(e) {return (e.type == "post"&&e.modual=="presentation")});
@@ -22,6 +26,12 @@ block content
         -var post_cyberbullying = student.quiz.find(function(e) {return (e.type == "post"&&e.modual=="cyberbullying")});
         -var pre_digital_literacy = student.quiz.find(function(e) {return (e.type == "pre"&&e.modual=="digital_literacy")});
         -var post_digital_literacy = student.quiz.find(function(e) {return (e.type == "post"&&e.modual=="digital_literacy")});
+
+        -var pre_like = student.quiz.find(function(e) {return (e.type == "pre"&&e.modual=="likes")});
+        -var post_like = student.quiz.find(function(e) {return (e.type == "post"&&e.modual=="likes")});
+
+        -var pre_image = student.quiz.find(function(e) {return (e.type == "pre"&&e.modual=="image")});
+        -var post_image = student.quiz.find(function(e) {return (e.type == "post"&&e.modual=="image")});
         tbody
           tr
             td=student.username
@@ -47,6 +57,22 @@ block content
               td=""
             if post_digital_literacy
               td=post_digital_literacy.score 
+            else
+              td=""
+            if pre_like
+              td=pre_like.score 
+            else
+              td=""
+            if post_like
+              td=post_like.score 
+            else
+              td=""
+            if pre_image
+              td=pre_image.score 
+            else
+              td=""
+            if post_image
+              td=post_image.score 
             else
               td=""
     br

@@ -272,6 +272,14 @@ app.get('/prequiz/likes',  passportConfig.isAuthenticated, function (req, res) {
 })
 app.post('/prequiz/likes', passportConfig.isAuthenticated, scriptController.postPreQuiz_Likes);
 
+//Image Pre Quiz
+app.get('/prequiz/image',  passportConfig.isAuthenticated, function (req, res) {
+  res.render('images-pre', {
+    title: 'Pre Quiz'
+  });
+})
+app.post('/prequiz/image', passportConfig.isAuthenticated, scriptController.postPreQuiz_Image);
+
 
 //Post Presentation
 app.get('/postquiz/presentation',  passportConfig.isAuthenticated, function (req, res) {
@@ -303,7 +311,14 @@ app.get('/postquiz/likes',  passportConfig.isAuthenticated, function (req, res) 
     title: 'Post Quiz'
   });
 })
-app.post('/postquiz/likes', passportConfig.isAuthenticated, scriptController.postPostQuiz_Likes);
+
+//Post quiz Image
+app.get('/postquiz/image',  passportConfig.isAuthenticated, function (req, res) {
+  res.render('images-post', {
+    title: 'Post Quiz'
+  });
+})
+app.post('/postquiz/image', passportConfig.isAuthenticated, scriptController.postPostQuiz_Image);
 
 app.get('/finished',  passportConfig.isAuthenticated, function (req, res) {
   res.render('finished', {

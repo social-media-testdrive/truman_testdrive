@@ -1,0 +1,105 @@
+extends ui_layout
+
+block content
+
+  .ui.text.container
+    br
+    h2 Images and Self-Image Pre-Activity Quiz
+    form#images_pre.ui.reply.form(action='/prequiz/image', method='POST')
+        input(type='hidden', name='_csrf', value=_csrf)
+        .ui.form
+          .grouped.fields
+            label(for='alter-pre') What does it mean to alter a photo?
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='alter_pre',  tabindex='0', value='0')
+              label Keep it the same as the original.
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='alter_pre', tabindex='0', value='1')
+              label Change the way the photo looks.
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='alter_pre', tabindex='0', value='0')
+              label Delete the photo so nobody can see it.
+          .grouped.fields
+            label(for='photo_pre') Which of the following is not a way that someone might alter a photo?
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='photo_pre', tabindex='0', value='0')
+              label Using a filter to make the photo look different.
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='photo_pre', tabindex='0', value='0')
+              label Use a photo editing app.
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='photo_pre', tabindex='0', value='1')
+              label Using a hashtag along with the photo.
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='photo_pre', tabindex='0', value='0')
+              label Using Photoshop.
+          .grouped.fields
+            label(for='motivate_pre') What might motivate people to alter a photo?
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='motivate_pre', tabindex='0', value='0')
+              label To make themselves look better.
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='motivate_pre', tabindex='0', value='0')
+              label To convince people to buy something that they are selling.
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='motivate_pre', tabindex='0', value='0')
+              label To illustrate their creative ideas.
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='motivate_pre', tabindex='0', value='0')
+              label To gain more likes or followers.
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='motivate_pre', tabindex='0', value='1')
+              label All of the above.
+          .grouped.fields
+            label(for='mislead_pre') True or false: It's always bad to alter a photo because that might mislead people.
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='mislead_pre', tabindex='0', value='0')
+              label true
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='mislead_pre', tabindex='0', value='1')
+              label False
+          .grouped.fields
+            label(for='everyone_pre') True or false: If everyone is altering their photos, I should do that as well.
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='everyone_pre', tabindex='0', value='0')
+              label True
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='everyone_pre', tabindex='0', value='1')
+              label False
+          h3 Just one more question... there are no right or wrong answers to this one!
+          .grouped.fields
+            label(for="use") Do you have an account on any social media sites?
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='use', tabindex='0', value='1')
+              label Yes.
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='use', tabindex='0', value='0')
+              label No.
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='use', tabindex='0', value='0')
+              label I'm not sure.
+
+          br
+          button.ui.button(type='submit') Submit
+    br
+    br
+    br
