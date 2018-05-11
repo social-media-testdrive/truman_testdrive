@@ -257,12 +257,12 @@ app.get('/prequiz/cyberbullying',  passportConfig.isAuthenticated, function (req
 app.post('/prequiz/cyberbullying', passportConfig.isAuthenticated, scriptController.postPreQuiz_Cyber);
 
 //digital_literacy Pre Quiz
-app.get('/prequiz/digital_literacy',  passportConfig.isAuthenticated, function (req, res) {
+app.get('/prequiz/digital-literacy',  passportConfig.isAuthenticated, function (req, res) {
   res.render('digitalLit-pre-quiz', {
     title: 'Pre Quiz'
   });
 })
-app.post('/prequiz/digital_literacy', passportConfig.isAuthenticated, scriptController.postPreQuiz_Lit);
+app.post('/prequiz/digital-literacy', passportConfig.isAuthenticated, scriptController.postPreQuiz_Lit);
 
 //likes Pre Quiz
 app.get('/prequiz/likes',  passportConfig.isAuthenticated, function (req, res) {
@@ -298,12 +298,12 @@ app.get('/postquiz/cyberbullying',  passportConfig.isAuthenticated, function (re
 app.post('/postquiz/cyberbullying', passportConfig.isAuthenticated, scriptController.postPostQuiz_Cyber);
 
 //Post digital_literacy
-app.get('/postquiz/digital_literacy',  passportConfig.isAuthenticated, function (req, res) {
+app.get('/postquiz/digital-literacy',  passportConfig.isAuthenticated, function (req, res) {
   res.render('digitalLit-post-quiz', {
     title: 'Post Quiz'
   });
 })
-app.post('/postquiz/digital_literacy', passportConfig.isAuthenticated, scriptController.postPostQuiz_Lit);
+app.post('/postquiz/digital-literacy', passportConfig.isAuthenticated, scriptController.postPostQuiz_Lit);
 
 //Post likes
 app.get('/postquiz/likes',  passportConfig.isAuthenticated, function (req, res) {

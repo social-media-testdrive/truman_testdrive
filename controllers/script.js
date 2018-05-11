@@ -311,35 +311,35 @@ exports.postPostQuiz_Lit = (req, res) => {
 
     var quiz = {};
     quiz.type = "post";
-    quiz.modual = "digital_literacy";
+    quiz.modual = "digital-literacy";
     quiz.score = parseInt(req.body.assignment_post || '0') + parseInt(req.body.news_post || '0') + parseInt(req.body.stopping_post || '0') + parseInt(req.body.social_post || '0');
     user.quiz.push(quiz);
 
     var evaluation = {};
     //like
     evaluation.type = "post";
-    evaluation.modual = "digital_literacy";
+    evaluation.modual = "digital-literacy";
     evaluation.question = "like";
     evaluation.val = parseInt(req.body.like || '0');
     user.eval_quiz.push(evaluation);
 
     //friends
     evaluation.type = "post";
-    evaluation.modual = "digital_literacy";
+    evaluation.modual = "digital-literacy";
     evaluation.question = "friends";
     evaluation.val = parseInt(req.body.friends || '0');
     user.eval_quiz.push(evaluation); 
 
     //length
     evaluation.type = "post";
-    evaluation.modual = "digital_literacy";
+    evaluation.modual = "digital-literacy";
     evaluation.question = "length";
     evaluation.val = parseInt(req.body.length || '0');
     user.eval_quiz.push(evaluation);
 
     //understand
     evaluation.type = "post";
-    evaluation.modual = "digital_literacy";
+    evaluation.modual = "digital-literacy";
     evaluation.question = "understand";
     evaluation.val = parseInt(req.body.understand || '0');
     user.eval_quiz.push(evaluation);
@@ -348,7 +348,7 @@ exports.postPostQuiz_Lit = (req, res) => {
       if (err) {
         return next(err);
       }
-      res.redirect('/postquiz/digital_literacy/results')
+      res.redirect('/postquiz/digital-literacy/results')
     });
   });
 };
@@ -547,14 +547,14 @@ exports.postPreQuiz_Lit = (req, res, next) => {
 
     var quiz = {};
     quiz.type = "pre";
-    quiz.modual = "digital_literacy";
+    quiz.modual = "digital-literacy";
     quiz.score = parseInt(req.body.assignment_pre || '0') + parseInt(req.body.news_pre || '0') + parseInt(req.body.stopping_pre || '0') + parseInt(req.body.social_pre || '0');
     user.quiz.push(quiz);
 
     var evaluation = {};
     //use
     evaluation.type = "pre";
-    evaluation.modual = "digital_literacy";
+    evaluation.modual = "digital-literacy";
     evaluation.question = "use";
     evaluation.val = parseInt(req.body.use || '0');
 
@@ -564,7 +564,7 @@ exports.postPreQuiz_Lit = (req, res, next) => {
       if (err) {
         return next(err);
       }
-      res.redirect('/modual/digital_literacy/wait')
+      res.redirect('/modual/digital-literacy/wait')
     });
   });
 };
@@ -751,7 +751,7 @@ exports.getQuizResults = (req, res) => {
     {
       total = 5;
     }
-    else if (req.params.modId == 'digital_literacy')
+    else if (req.params.modId == 'digital-literacy')
     {
       total = 4;
     }
@@ -845,8 +845,8 @@ exports.getLitQuizResults = (req, res) => {
   .exec(function (err, user) {
     if (err) { return next(err); }
 
-    var pre = user.getUserPreQuizScore("digital_literacy");
-    var post = user.getUserPostQuizScore("digital_literacy");
+    var pre = user.getUserPreQuizScore("digital-literacy");
+    var post = user.getUserPostQuizScore("digital-literacy");
 
     res.render('lit_quiz_results', { pre: pre, post: post});
 

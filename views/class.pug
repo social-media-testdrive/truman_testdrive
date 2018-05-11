@@ -24,8 +24,8 @@ block content
         -var post_presentation = student.quiz.find(function(e) {return (e.type == "post"&&e.modual=="presentation")});
         -var pre_cyberbullying = student.quiz.find(function(e) {return (e.type == "pre"&&e.modual=="cyberbullying")});
         -var post_cyberbullying = student.quiz.find(function(e) {return (e.type == "post"&&e.modual=="cyberbullying")});
-        -var pre_digital_literacy = student.quiz.find(function(e) {return (e.type == "pre"&&e.modual=="digital_literacy")});
-        -var post_digital_literacy = student.quiz.find(function(e) {return (e.type == "post"&&e.modual=="digital_literacy")});
+        -var pre_digital-literacy = student.quiz.find(function(e) {return (e.type == "pre"&&e.modual=="digital-literacy")});
+        -var post_digital-literacy = student.quiz.find(function(e) {return (e.type == "post"&&e.modual=="digital-literacy")});
 
         -var pre_like = student.quiz.find(function(e) {return (e.type == "pre"&&e.modual=="likes")});
         -var post_like = student.quiz.find(function(e) {return (e.type == "post"&&e.modual=="likes")});
@@ -51,12 +51,12 @@ block content
               td=post_cyberbullying.score 
             else
               td=""
-            if pre_digital_literacy
-              td=pre_digital_literacy.score 
+            if pre_digital-literacy
+              td=pre_digital-literacy.score 
             else
               td=""
-            if post_digital_literacy
-              td=post_digital_literacy.score 
+            if post_digital-literacy
+              td=post_digital-literacy.score 
             else
               td=""
             if pre_like
