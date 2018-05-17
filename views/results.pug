@@ -7,33 +7,34 @@ block content
     h3 Here are some posts you replied to:
     .ui.three.stackable.link.cards
       each val in replies
-        .ui.fluid.card
-            //- if post is a reply post -  add the post and populate the reply as well
-            .content
-              .right.floated.time.meta= (user.createdAt.getTime() + val.relativeTime)
-              |
-              a.ui.avatar.image(href='/me')
-                if user.profile.picture
-                  img(src='/user_post/'+user.profile.picture)
-                else
-                  img(src=user.gravatar(60))
-              a(href='/me')
-                span=user.profile.name || user.email || user.id
-            .content
-              .description(style="font-size:130%")=val.body
-            .extra.content
-              .ui.fluid.card
-                .content
-                  //-.right.floated.time.meta= (user.createdAt.getTime() + val.reply.time)
-                  |
-                  if val.reply.actor
+        if (val.reply !== null && typeof val.reply === 'object')
+          .ui.fluid.card
+              //- if post is a reply post -  add the post and populate the reply as well
+              .content
+                .right.floated.time.meta= (user.createdAt.getTime() + val.relativeTime)
+                |
+                a.ui.avatar.image(href='/me')
+                  if user.profile.picture
+                    img(src='/user_post/'+user.profile.picture)
+                  else
+                    img(src=user.gravatar(60))
+                a(href='/me')
+                  span=user.profile.name || user.email || user.id
+              .content
+                .description(style="font-size:130%")=val.body
+              .extra.content
+                .ui.fluid.card
+                  .content
+                    //-.right.floated.time.meta= (user.createdAt.getTime() + val.reply.time)
+                    |
+
                     a(href='/user/'+val.reply.actor.username)   
                       img.ui.avatar.image(src='/profile_pictures/'+val.reply.actor.profile.picture)
                       span=val.reply.actor.profile.name
-                .content
-                  if val.reply.picture
-                    img.post.ui.left.floated.small.image(src="/"+val.reply.picture)
-                  p=val.reply.body
+                  .content
+                    if val.reply.picture
+                      img.post.ui.left.floated.small.image(src="/"+val.reply.picture)
+                    p=val.reply.body
     h3 Why did you reply this way?
     br
     br
