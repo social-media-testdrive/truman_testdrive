@@ -26,9 +26,10 @@ block content
                 .content
                   //-.right.floated.time.meta= (user.createdAt.getTime() + val.reply.time)
                   |
-                  a(href='/user/'+val.reply.actor.username)   
-                    img.ui.avatar.image(src='/profile_pictures/'+val.reply.actor.profile.picture)
-                    span=val.reply.actor.profile.name
+                  if val.reply.actor
+                    a(href='/user/'+val.reply.actor.username)   
+                      img.ui.avatar.image(src='/profile_pictures/'+val.reply.actor.profile.picture)
+                      span=val.reply.actor.profile.name
                 .content
                   if val.reply.picture
                     img.post.ui.left.floated.small.image(src="/"+val.reply.picture)
