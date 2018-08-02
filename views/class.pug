@@ -20,59 +20,47 @@ block content
           th Image Pre Quiz
           th Image Post Quiz
       each student in found_class.students
-        -var pre_presentation = student.quiz.find(function(e) {return (e.type == "pre"&&e.modual=="presentation")});
-        -var post_presentation = student.quiz.find(function(e) {return (e.type == "post"&&e.modual=="presentation")});
-        -var pre_cyberbullying = student.quiz.find(function(e) {return (e.type == "pre"&&e.modual=="cyberbullying")});
-        -var post_cyberbullying = student.quiz.find(function(e) {return (e.type == "post"&&e.modual=="cyberbullying")});
-        -var pre_digital-literacy = student.quiz.find(function(e) {return (e.type == "pre"&&e.modual=="digital-literacy")});
-        -var post_digital-literacy = student.quiz.find(function(e) {return (e.type == "post"&&e.modual=="digital-literacy")});
-
-        -var pre_like = student.quiz.find(function(e) {return (e.type == "pre"&&e.modual=="likes")});
-        -var post_like = student.quiz.find(function(e) {return (e.type == "post"&&e.modual=="likes")});
-
-        -var pre_image = student.quiz.find(function(e) {return (e.type == "pre"&&e.modual=="image")});
-        -var post_image = student.quiz.find(function(e) {return (e.type == "post"&&e.modual=="image")});
         tbody
           tr
             td=student.username
-            if pre_presentation
-              td=pre_presentation.score 
+            if student.pre_presentation
+              td=student.pre_presentation.score 
             else
               td=""
-            if post_presentation
-              td=post_presentation.score 
+            if student.post_presentation
+              td=student.post_presentation.score 
             else
               td=""
-            if pre_cyberbullying
-              td=pre_cyberbullying.score 
+            if student.pre_cyberbullying
+              td=student.pre_cyberbullying.score 
             else
               td=""
-            if post_cyberbullying
-              td=post_cyberbullying.score 
+            if student.post_cyberbullying
+              td=student.post_cyberbullying.score 
             else
               td=""
-            if pre_digital-literacy
-              td=pre_digital-literacy.score 
+            if student.pre_digital_literacy
+              td=student.pre_digital_literacy.score 
             else
               td=""
-            if post_digital-literacy
-              td=post_digital-literacy.score 
+            if student.post_digital_literacy
+              td=student.post_digital_literacy.score 
             else
               td=""
-            if pre_like
-              td=pre_like.score 
+            if student.pre_like
+              td=student.pre_like.score 
             else
               td=""
-            if post_like
-              td=post_like.score 
+            if student.post_like
+              td=student.post_like.score 
             else
               td=""
-            if pre_image
-              td=pre_image.score 
+            if student.pre_image
+              td=student.pre_image.score 
             else
               td=""
-            if post_image
-              td=post_image.score 
+            if student.post_image
+              td=student.post_image.score 
             else
               td=""
     br

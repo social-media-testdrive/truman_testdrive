@@ -46,12 +46,15 @@ exports.getClass = (req, res, next) => {
   if (req.user.isInstructor)
   {
 
+    console.log("SECOND Our Paramater is:::::");
+    console.log(req.params.classId);
     Class.findOne({ accessCode: req.params.classId, teacher: req.user.id})
         .populate('students')
         .exec(function (err, found_class) 
         {
 
-          if (err) { console.log(err); return next(err); }
+          console.log("INSIDE CLASS!!!!");
+          if (err) { console.log("ERROR");console.log(err); return next(err); }
           ////this is not solving the problem 
           if (found_class == null) 
           {
@@ -60,7 +63,23 @@ exports.getClass = (req, res, next) => {
             return next(myerr); 
           }
 
+          console.log("BEFORE FORRRRR!!!!");
+          for (var i = 0; i < found_class.students.length; i++) {
+            found_class.students[i].pre_presentation = found_class.students[i].quiz.find(function(e) {return (e.type == "pre"&&e.modual=="presentation")});
+            found_class.students[i].post_presentation = found_class.students[i].quiz.find(function(e) {return (e.type == "post"&&e.modual=="presentation")});
+            found_class.students[i].pre_cyberbullying = found_class.students[i].quiz.find(function(e) {return (e.type == "pre"&&e.modual=="cyberbullying")});
+            found_class.students[i].post_cyberbullying = found_class.students[i].quiz.find(function(e) {return (e.type == "post"&&e.modual=="cyberbullying")});
+            found_class.students[i].pre_digital_literacy = found_class.students[i].quiz.find(function(e) {return (e.type == "pre"&&e.modual=="digital-literacy")});
+            found_class.students[i].post_digital_literacy = found_class.students[i].quiz.find(function(e) {return (e.type == "post"&&e.modual=="digital-literacy")});
+            found_class.students[i].pre_like = found_class.students[i].quiz.find(function(e) {return (e.type == "pre"&&e.modual=="likes")});
+            found_class.students[i].post_like = found_class.students[i].quiz.find(function(e) {return (e.type == "post"&&e.modual=="likes")});
+            found_class.students[i].pre_image = found_class.students[i].quiz.find(function(e) {return (e.type == "pre"&&e.modual=="image")});
+            found_class.students[i].post_image = found_class.students[i].quiz.find(function(e) {return (e.type == "post"&&e.modual=="image")});
+            //Do something
+          }
+          console.log("BEFORE RENDER!!!!");
           res.render('class', { found_class: found_class});
+          console.log("AFTER RENDER!!!!");
 
         });
   }
