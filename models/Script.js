@@ -18,8 +18,19 @@ const scriptSchema = new mongoose.Schema({
   actor: {type: Schema.ObjectId, ref: 'Actor'},
 
   reply: {type: Schema.ObjectId, ref: 'Script'},
-  time: Number //in millisecons
-});
+  time: Number,
+   //in millisecons
+  comments: [new Schema({
+    class: String, //Bully, Marginal, normal, etc
+    module: String, //name of mod for this script
+    actor: {type: Schema.ObjectId, ref: 'Actor'},
+    body: {type: String, default: '', trim: true}, //body of post or reply
+    commentID: Number, //ID of the comment
+    time: Number,//millisecons
+    new_comment: {type: Boolean, default: false}, //is new comment
+    likes: Number
+    }, { versionKey: false })]
+},{ versionKey: false });
 
 
 const Script = mongoose.model('Script', scriptSchema);

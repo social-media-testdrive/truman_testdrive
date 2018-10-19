@@ -49,6 +49,21 @@ const userSchema = new mongoose.Schema({
     actorReplyORelativeTime: Number,
     actorAuthor: {type: Schema.ObjectId, ref: 'Actor'},
 
+    //Actor Comments for User Made Posts
+    comments: [new Schema({
+      //class: String, //Bully, Marginal, normal, etc
+      actor: {type: Schema.ObjectId, ref: 'Actor'},
+      body: {type: String, default: '', trim: true}, //body of post or reply
+      commentID: Number, //ID of the comment
+      time: Number,//millisecons
+      absTime: Number,//millisecons
+      new_comment: {type: Boolean, default: false}, //is new comment
+      isUser: {type: Boolean, default: false}, //is this a comment on own post
+      liked: {type: Boolean, default: false}, //has the user liked it? 
+      flagged: {type: Boolean, default: false},//is Flagged?
+      likes: Number
+      }, { versionKey: false })],
+
     absTime: Date,
     relativeTime: {type: Number}
     })],
@@ -94,8 +109,23 @@ const userSchema = new mongoose.Schema({
         readTime : [Number],
         flagTime  : [Number],
         likeTime  : [Number],
-        replyTime  : [Number]
-    }, {_id: true})],
+        replyTime  : [Number],
+
+        comments: [new Schema({
+          comment: {type: Schema.ObjectId},//ID Reference for Script post comment
+          liked: {type: Boolean, default: false}, //is liked?
+          flagged: {type: Boolean, default: false},//is Flagged?
+          flagTime  : [Number], //array of flag times
+          likeTime  : [Number], //array of like times
+
+          new_comment: {type: Boolean, default: false}, //is new comment
+          new_comment_id: Number,//ID for comment
+          comment_body: String, //Original Body of User Post
+          absTime: Date,
+          commentTime: {type: Number},
+          time: {type: Number}
+          },{_id: true, versionKey: false })]
+    }, {_id: true, versionKey: false })],
 
   profile: {
     name: String,

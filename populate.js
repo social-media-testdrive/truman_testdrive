@@ -6,26 +6,15 @@ console.log('This script is running!!!!');
 var async = require('async')
 var Actor = require('./models/Actor.js');
 var Script = require('./models/Script.js');
+var Notification = require('./models/Notification.js');
 const _ = require('lodash');
 const dotenv = require('dotenv');
 var mongoose = require('mongoose');
 var fs = require('fs')
 
-
-
-//var actors_list = require('./input/actors.json');
-var actors_list = [];
+var actors_list = require('./input/actors.json');
 var posts_list = require('./input/posts.json');
-var replies_list = require('./input/replies.json');
-
-/*
-var actors1 = require('./testdrive_actorv1.json');
-var posts1 = require('./testdrive_postv1.json');
-var post_reply1 = require('./testdrive_replyv1.json');
-//var actorReply = require('./actorReply.json');
-//var notify = require('./notify.json');
-var dd = require('./upload_post_replyv1.json');
-*/
+var comment_list = require('./input/comments.json');
 
 dotenv.load({ path: '.env' });
 
@@ -34,12 +23,11 @@ var MongoClient = require('mongodb').MongoClient
 
 
 //var connection = mongo.connect('mongodb://127.0.0.1/test');
-
-mongoose.connect(process.env.PRO_MONGODB_URI || process.env.PRO_MONGOLAB_URI);
+mongoose.connect(process.env.PRO_MONGODB_URI);
 var db = mongoose.connection;
 mongoose.connection.on('error', (err) => {
   console.error(err);
-  console.log('%s MongoDB connection error. Please make sure MongoDB is running.', chalk.red('✗'));
+  console.log('%s MongoDB connection error. Please make sure MongoDB is running.');
   process.exit();
 });
 
@@ -47,6 +35,14 @@ mongoose.connection.on('error', (err) => {
 
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
+function insert_order(element, array) {
+  array.push(element);
+  array.sort(function(a, b) {
+    return a.time - b.time;
+  });
+  return array;
 }
 
 function timeStringToNum (v) {
@@ -65,6 +61,17 @@ function getLikes() {
   return notRandomNumbers[idx];
 }
 
+function  randomIntFromInterval(min,max)
+{
+    return Math.floor(Math.random()*(max-min+1)+min);
+}
+
+function getLikesComment() {
+  var notRandomNumbers = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 3, 4];
+  var idx = Math.floor(Math.random() * notRandomNumbers.length);
+  return notRandomNumbers[idx];
+}
+
 function getReads(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -79,12 +86,11 @@ function createActorInstances() {
     actordetail.profile = {};
 
     actordetail.profile.name = actor_raw.name
-    actordetail.profile.gender = actor_raw.gender;
     actordetail.profile.location = actor_raw.location;
     actordetail.profile.picture = actor_raw.picture;
     actordetail.profile.bio = actor_raw.bio;
     actordetail.profile.age = actor_raw.age;
-    actordetail.class = actor_raw.class;
+    //actordetail.class = actor_raw.class;
     actordetail.username = actor_raw.username;
     
     var actor = new Actor(actordetail);
@@ -109,8 +115,8 @@ function createActorInstances() {
 function createPostInstances() {
   async.each(posts_list, function(new_post, callback) {
 
-    Actor.findOne({ username: new_post.bot}, (err, act) => {
-        //if (err) { console.log(err); return next(err); }
+    Actor.findOne({ username: new_post.actor}, (err, act) => {
+        if (err) { console.log("createPostInstances"); console.log(err); return; }
         console.log("start post for: "+new_post.id);
 
         if(act)
@@ -119,15 +125,16 @@ function createPostInstances() {
           var postdetail = new Object();
 
           postdetail.module = new_post.module;
-          postdetail.body = new_post.post
+          postdetail.body = new_post.body
+
+          //postdetail.module = new_post.module;
+          postdetail.likes = new_post.likes || getLikes();
 
           //only for likes posts
-          postdetail.post_id = 4000+new_post.id;
+          postdetail.post_id = new_post.id;
 
           postdetail.class = new_post.type;
           postdetail.picture = new_post.picture;
-          postdetail.likes = new_post.likes || getLikes();
-          //postdetail.likes = getLikes();
           postdetail.lowread = getReads(6,20);
           postdetail.highread = getReads(145,203);
           postdetail.actor = act;
@@ -143,7 +150,7 @@ function createPostInstances() {
           if (err) {
             console.log("Something went wrong in Saving POST!!!");
             console.log(err);
-             callback(err);
+            callback(err);
           }
           console.log('Saved New Post: ' + script.id);
           callback();
@@ -175,48 +182,61 @@ function createPostInstances() {
 
 //replies_list
 function createPostRepliesInstances() {
-  async.each(replies_list, function(new_replies, callback) {
+  async.eachSeries(comment_list, function(new_replies, callback) {
 
     console.log("start REPLY for: "+new_replies.id);
-    Actor.findOne({ username: new_replies.bot}, (err, act) => {
+    Actor.findOne({ username: new_replies.actor}, (err, act) => {
 
       if(act)
       {
-          Script.findOne({ post_id: 4000+new_replies.post}, function(err, pr){
+          Script.findOne({ post_id: new_replies.reply}, function(err, pr){
 
             if(pr){    
         
               console.log('Looking up Actor ID is : ' + act._id); 
               console.log('Looking up OP POST ID is : ' + pr._id); 
-              var postdetail = new Object();
+              var comment_detail = new Object();
               //postdetail.actor = {};
-              postdetail.body = new_replies.reply
-              postdetail.post_id = 400 + new_replies.id;
-              postdetail.module = new_replies.module;
-              //postdetail.class = new_replies.type;
-              //postdetail.picture = new_post.picture;
-              postdetail.likes = new_replies.likes || getLikes();
-              postdetail.lowread = getReads(6,20);
-              postdetail.highread = getReads(145,203);
+              comment_detail.body = new_replies.body
+              comment_detail.commentID = new_replies.id;
+              //comment_detail.class = new_replies.class;
+              comment_detail.module = new_replies.module;
+                
+              comment_detail.likes = getLikesComment();
+              comment_detail.time = timeStringToNum(new_replies.time);
+              /*1 hr is 3600000
+              console.log('Time is of POST is: ' + pr.time); 
+              let comment_time = pr.time + randomIntFromInterval(300000,3600000)
+              console.log('New Comment time is: ' + comment_time); 
+              comment_detail.time = comment_time;
+              console.log('NEW NON BULLY Time is : ' + comment_detail.time);
               
-              postdetail.actor = act;
-              postdetail.reply = pr;
+              console.log('NEW Time is : ' + comment_detail.time);
+              */
               
-              postdetail.time = timeStringToNum(new_replies.time);
 
-              console.log('Looking up Actor: ' + act.username); 
-              //console.log(mongoose.Types.ObjectId.isValid(postdetail.actor.$oid));
-              //console.log(postdetail);
-              
-              var script = new Script(postdetail);
+              console.log('Adding in Actor: ' + act.username);
+              comment_detail.actor = act;
 
-              script.save(function (err) {
+              //pr.comments = insert_order(comment_detail, pr.comments);
+              //console.log('Comment'+comment_detail.commentID+' on Post '+pr.post_id+' Length before: ' + pr.comments.length); 
+              pr.comments.push(comment_detail);
+              pr.comments.sort(function(a, b) {return a.time - b.time;});
+              //console.log('Comment'+comment_detail.commentID+' on Post '+pr.post_id+' Length After: ' + pr.comments.length); 
+              //var script = new Script(postdetail);
+
+              pr.save(function (err) {
               if (err) {
-                console.log("Something went wrong in Saving POST!!!");
+                console.log("@@@@@@@@@@@@@@@@Something went wrong in Saving COMMENT!!!");
+                console.log("Error IN: "+new_replies.id);
+                console.log('Looking up Actor: ' + act.username);
+                 console.log('Looking up OP POST ID: ' + pr._id); 
+                console.log('Time is : ' + new_replies.time); 
+                console.log('NEW Time is : ' + comment_detail.time);
                 console.log(err);
-                 callback(err);
+                callback(err);
               }
-              console.log('Saved New Post: ' + script.id);
+              console.log('Added new Comment to Post: ' + pr.id);
               callback();
             });
             }// if PR
@@ -224,6 +244,7 @@ function createPostRepliesInstances() {
             else
             {
               //Else no ACTOR Found
+              console.log("############Error IN: "+new_replies.id);
               console.log("No POST Found!!!");
               callback();
             }
@@ -233,9 +254,11 @@ function createPostRepliesInstances() {
       else
       {
         //Else no ACTOR Found
+        console.log("****************Error IN: "+new_replies.id);
         console.log("No Actor Found!!!");
         callback();
       }
+      console.log("BoTTom REPLY for: "+new_replies.id);
       console.log("BOTTOM OF SAVE");
 
       });
@@ -244,10 +267,10 @@ function createPostRepliesInstances() {
         if (err) {
           console.log("END IS WRONG!!!");
           console.log(err);
-           callback(err);
+          callback(err);
         }
         //return response
-        console.log("All DONE WITH REPLIES!!!")
+        console.log("All DONE WITH REPLIES/Comments!!!")
         //mongoose.connection.close();
       }
   );
@@ -271,12 +294,17 @@ function(err, results) {
     mongoose.connection.close();
 });*/
 
+//createActorInstances()
 //createPostInstances()
 createPostRepliesInstances()
+//actorNotifyCreate();
+//NotifyCreate();
 
+
+//PostReplyCreate(posts1[0]);
+//PostCreate(posts1[1]);
+//actorNotifyCreate(actorReply[i]);
 console.log('After Lookup:');
-
-
 
 
 

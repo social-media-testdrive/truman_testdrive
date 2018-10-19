@@ -19,20 +19,6 @@ $(window).on("load", function() {
     ;
   });
 
-  //check bell
-  if (!(top.location.pathname === '/login' || top.location.pathname === '/signup'))
-  {
-      
-    $.getJSON( "/bell", function( json ) {
-      
-      if (json.result)
-      {
-        $("i.big.alarm.icon").replaceWith( '<i class="big icons"><i class="red alarm icon"></i><i class="corner yellow lightning icon"></i></i>' );
-      }
-
-   });
-}
-
   //make checkbox work
   $('.ui.checkbox')
   .checkbox();
@@ -40,13 +26,120 @@ $(window).on("load", function() {
   //get add new reply post modal to show
   $('.reply.button').click(function () {
     
-    let postID = $(this).closest( ".ui.fluid.card.dim" ).attr( "postID" );
-    //let mod = $(this).closest( ".ui.fluid.card.dim" ).attr( "module" );
-    $('#replyInput').attr("value", postID);
-    //$('#replyModule').attr("value", mod);
+    let parent = $(this).closest( ".ui.fluid.card" );
+    let postID = parent.attr( "postID" );
 
-    $(' .ui.small.reply.modal').modal('show');
+    parent.find( "input.newcomment" ).focus();
 });
+
+
+  ////////////////////
+  $("input.newcomment").keyup(function(event) {
+      //i.big.send.link.icon
+      //$(this).siblings( "i.big.send.link.icon")
+      if (event.keyCode === 13) {
+          $(this).siblings( "i.big.send.link.icon").click();
+      }
+  });
+
+  //create a new Comment
+  $("i.big.send.link.icon").click(function() {
+    var text = $(this).siblings( "input.newcomment").val();
+    var card = $(this).parents( ".ui.fluid.card" );
+    var comments = card.find( ".ui.comments" )
+    //no comments area - add it
+    console.log("Comments is now "+comments.length)
+    if( !comments.length )
+    {
+      //.three.ui.bottom.attached.icon.buttons
+      console.log("Adding new Comments sections")
+      var buttons = card.find( ".three.ui.bottom.attached.icon.buttons" )
+      buttons.after( '<div class="content"><div class="ui comments"></div>' );
+      var comments = card.find( ".ui.comments" )
+    }
+    if (text.trim() !== '')
+    {
+      console.log(text)
+      var date = Date.now();
+      var ava = $(this).siblings('.ui.label').find('img.ui.avatar.image');
+      var ava_img = ava.attr( "src" );
+      var ava_name = ava.attr( "name" );
+      var postID = card.attr( "postID" );
+
+      var mess = '<div class="comment"> <a class="avatar"> <img src="'+ava_img+'"> </a> <div class="content"> <a class="author">'+ava_name+'</a> <div class="metadata"> <span class="date">'+humanized_time_span(date)+'</span> <i class="heart icon"></i> 0 Likes </div> <div class="text">'+text+'</div> <div class="actions"> <a class="like">Like</a> <a class="flag">Flag</a> </div> </div> </div>';   
+      $(this).siblings( "input.newcomment").val('');
+      comments.append(mess);
+      console.log("######### NEW COMMENTS:  PostID: "+postID+", new_comment time is "+date+" and text is "+text);
+     
+      if (card.attr( "type" )=='userPost')
+        $.post( "/userPost_feed", { postID: postID, new_comment: date, comment_text: text, _csrf : $('meta[name="csrf-token"]').attr('content') } );
+      else
+        $.post( "/feed", { postID: postID, new_comment: date, comment_text: text, _csrf : $('meta[name="csrf-token"]').attr('content') } );
+
+    }
+  });
+
+   //a.like.comment
+  $('a.like.comment')
+  .on('click', function() {
+
+    //if already liked, unlike if pressed
+    if ( $( this ).hasClass( "red" ) ) {
+        console.log("***********UNLIKE: post");
+        //Un read Like Button
+        $( this ).removeClass("red");
+
+        var comment = $(this).parents( ".comment" );
+        comment.find( "i.heart.icon" ).removeClass("red");
+
+        var label = comment.find( "span.num" );
+        label.html(function(i, val) { return val*1-1 });
+    }
+    //since not red, this button press is a LIKE action
+    else{
+      $(this).addClass("red");
+      var comment = $(this).parents( ".comment" );
+      comment.find( "i.heart.icon" ).addClass("red");
+
+      var label = comment.find( "span.num" );
+      label.html(function(i, val) { return val*1+1 });
+
+      var postID = $(this).closest( ".ui.fluid.card" ).attr( "postID" );
+      var commentID = comment.attr("commentID");
+      var like = Date.now();
+      console.log("#########COMMENT LIKE:  PostID: "+postID+", Comment ID: "+commentID+" at time "+like);
+
+      if ($(this).closest( ".ui.fluid.card" ).attr( "type" )=='userPost')
+        $.post( "/userPost_feed", { postID: postID, commentID: commentID, like: like, _csrf : $('meta[name="csrf-token"]').attr('content') } );
+      else
+        $.post( "/feed", { postID: postID, commentID: commentID, like: like, _csrf : $('meta[name="csrf-token"]').attr('content') } );
+
+    }
+
+  });
+
+  //flag a comment
+  $('a.flag.comment')
+  .on('click', function() {
+
+    var comment = $(this).parents( ".comment" );
+    var postID = $(this).closest( ".ui.fluid.card" ).attr( "postID" );
+    var typeID = $(this).closest( ".ui.fluid.card" ).attr( "type" );
+    var commentID = comment.attr("commentID");
+    comment.replaceWith( '<div class="comment" style="background-color:black;color:white"><h5 class="ui inverted header"><span>The admins will review this post further. We are sorry you had this experience.</span></h5></div>' );
+    var flag = Date.now();
+    console.log("#########COMMENT FLAG:  PostID: "+postID+", Comment ID: "+commentID+"  TYPE is "+typeID+" at time "+flag);
+
+    if (typeID=='userPost')
+      $.post( "/userPost_feed", { postID: postID, commentID: commentID, flag: flag, _csrf : $('meta[name="csrf-token"]').attr('content') } );
+    else
+      $.post( "/feed", { postID: postID, commentID: commentID, flag: flag, _csrf : $('meta[name="csrf-token"]').attr('content') } );
+
+  });
+
+
+  ///////////////////
+
 
   //get add new feed post modal to work
   $("#newpost, a.item.newpost").click(function () {
@@ -84,22 +177,6 @@ $(window).on("load", function() {
     }
   });
 
-  $('.ui.reply.form')
-  .form({
-    on: 'blur',
-    fields: {
-      body: {
-        identifier  : 'body',
-        rules: [
-          {
-            type   : 'empty',
-            prompt : 'Please add some text for your reply'
-          }
-        ]
-      }
-    }
-  })
-;
 
 $('#classform.ui.form')
   .form({
@@ -329,6 +406,52 @@ $('.right.floated.time.meta, .date').each(function() {
     }
 
   });
+
+  //lazy images
+  //$('.demo.items .image img')
+  
+  $('#content .fluid.card .img img')
+  .visibility({
+    type       : 'image',
+    offset: 350,
+    //transition : 'fade in',
+    //duration   : 1000,
+
+    onLoad:function(calculations) {
+        console.log("@@@@@@@ Real Image @@@@@@@@@");
+        //var data_src = $(this).attr( "data-src" );
+        //$(this).attr( "src",  data_src);
+        //style="color: inherit; display: inline;"
+        //$(this).attr( "style",  "max-width:100%;");
+        $('#content .fluid.card .img img').visibility('refresh');
+
+        }
+  })
+;
+
+/*
+$('.img.post img')
+  .visibility({
+    once       : true,
+    continuous : false,
+    observeChanges: false,
+    //throttle:100,
+    //offset: 250,
+    
+    
+
+    ////POST IS NOW Visiable - START EVENT
+    onTopVisible:function(calculations) {
+        console.log("@@@@@@@ Real Image @@@@@@@@@");
+        var data_src = $(this).attr( "data-src" );
+        $(this).attr( "src",  data_src);
+        //style="color: inherit; display: inline;"
+        $(this).attr( "style",  "max-width:100%;");
+        $('.img.post img').visibility('refresh');
+
+        }
+  })
+;*/
 
   //this is the FLAG button
   $('.flag.button')

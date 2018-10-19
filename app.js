@@ -92,40 +92,6 @@ mongoose.connection.on('error', (err) => {
 });
 
 
-
-//userController.mailAllActiveUsers()
-/****
-**CRON JOBS
-** Mailing Users
-*/
-var rule = new schedule.RecurrenceRule();
-rule.hour = 4;
-rule.minute = 55;
- 
-var j = schedule.scheduleJob(rule, function(){
-  console.log('@@@@@@######@@@@@@@@#########@@@@@@@@@@@@########');
-  console.log('@@@@@@######@@@@@@@@Sending Mail to All USER!!!!!');
-  console.log('@@@@@@######@@@@@@@@#########@@@@@@@@@@@@########');
-  userController.mailAllActiveUsers();
-}); 
-
-
-/****
-**CRON JOBS 
-**Check if users are still active
-*/
-var rule = new schedule.RecurrenceRule();
-rule.hour = 4;
-rule.minute = 30;
- 
-var j = schedule.scheduleJob(rule, function(){
-  console.log('@@@@@@######@@@@@@@@#########@@@@@@@@@@@@########');
-  console.log('@@@@@@######@@@@@@@@Checking if Users are active!!!!!');
-  console.log('@@@@@@######@@@@@@@@#########@@@@@@@@@@@@########');
-  userController.stillActive();
-}); 
-
-
 /**
  * Express configuration.
  */
