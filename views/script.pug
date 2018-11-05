@@ -75,7 +75,7 @@ block content
           
           //- This is a User made post
           .content
-            .right.floated.time.meta= (user.createdAt.getTime() + val.relativeTime)
+            .right.floated.time.meta= (Date.now() + val.relativeTime)
             |  
             a.ui.avatar.image(href='/me')
               if user.profile.picture
@@ -105,7 +105,7 @@ block content
               .ui.comments
                 each comment in val.comments
                   //-IF this comment is USER made, do this
-                  if (user.createdAt.getTime() + comment.time) < Date.now()
+                  if (Date.now() + comment.time) < Date.now()
                     if !comment.flagged
                       if comment.new_comment
                         -console.log("New COMMENT AREA");
@@ -118,7 +118,7 @@ block content
                           .content
                             a.author(href='/me')=user.profile.name || user.username || user.id
                             .metadata
-                              span.date=(user.createdAt.getTime() + comment.time)
+                              span.date=(Date.now() + comment.time)
                               .rating
                                 if comment.liked
                                   i.red.heart.icon
@@ -145,7 +145,7 @@ block content
                           .content
                             a.author(href='/user/'+comment.actor.username)=comment.actor.profile.name
                             .metadata
-                              span.date=(user.createdAt.getTime() + comment.time)
+                              span.date=(Date.now() + comment.time)
                               .rating
                                 if comment.liked
                                   i.red.heart.icon
@@ -197,7 +197,7 @@ block content
                         span="The admins will review this post further. We are sorry you had this experience."
           //- Normal Base Post
           .content
-            .right.floated.time.meta= (user.createdAt.getTime() + val.time)
+            .right.floated.time.meta= (Date.now() + val.time)
             |  
             a(href='/user/'+val.actor.username)
               img.ui.avatar.image(src='/profile_pictures/'+val.actor.profile.picture)
@@ -234,7 +234,7 @@ block content
               .ui.comments
                 each comment in val.comments
                   //-IF this comment is USER made, do this
-                  if (user.createdAt.getTime() + comment.time) < Date.now()
+                  if (Date.now() + comment.time) < Date.now()
                     if comment.new_comment
                       -console.log("New COMMENT AREA");
                       .comment(commentID=comment.new_comment_id)
@@ -246,7 +246,7 @@ block content
                         .content
                           a.author(href='/me')=user.profile.name || user.username || user.id
                           .metadata
-                            span.date=(user.createdAt.getTime() + comment.time)
+                            span.date=(Date.now() + comment.time)
                             .rating
                               i.heart.icon
                               span.num=0
@@ -263,7 +263,7 @@ block content
                         .content
                           a.author(href='/user/'+comment.actor.username)=comment.actor.profile.name
                           .metadata
-                            span.date=(user.createdAt.getTime() + comment.time)
+                            span.date=(Date.now() + comment.time)
                             .rating
                               if comment.liked
                                 i.red.heart.icon
@@ -301,6 +301,7 @@ block content
                 input.newcomment(type='text', placeholder='Write a Comment')
                 i.big.send.link.icon
 
+    -var post_quiz = "/results/"+mod;
     a.ui.fluid.card(href=post_quiz)
       .content
         .description
