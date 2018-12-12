@@ -475,4 +475,7 @@ $('.img.post img')
 
   });
 
+  introJs().start();
+  startIntro();
+
 });

@@ -80,11 +80,24 @@ const app = express();
 
 /**
  * Connect to MongoDB.
- */
+ 
 mongoose.Promise = global.Promise;
 
 //mongoose.connect(process.env.MONGODB_URI || process.env.MONGOLAB_URI);
 mongoose.connect(process.env.PRO_MONGODB_URI || process.env.PRO_MONGOLAB_URI, { useNewUrlParser: true });
+mongoose.connection.on('error', (err) => {
+  console.error(err);
+  console.log('%s MongoDB connection error. Please make sure MongoDB is running.', chalk.red('✗'));
+  process.exit();
+});
+
+/**
+ * Connect to MongoDB.
+ */
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+mongoose.set('useNewUrlParser', true);
+mongoose.connect(process.env.PRO_MONGODB_URI || process.env.PRO_MONGOLAB_URI);
 mongoose.connection.on('error', (err) => {
   console.error(err);
   console.log('%s MongoDB connection error. Please make sure MongoDB is running.', chalk.red('✗'));
@@ -308,6 +321,18 @@ app.get('/com', function (req, res) {
 app.get('/info', passportConfig.isAuthenticated, function (req, res) {
   res.render('info', {
     title: 'User Docs'
+  });
+});
+
+app.get('/test_comment', function (req, res) {
+  res.render('test', {
+    title: 'Test Comments'
+  });
+});
+
+app.get('/test_sim', function (req, res) {
+  res.render('test_sim', {
+    title: 'Test Sim'
   });
 });
 

@@ -1,0 +1,62 @@
+
+extends ui_layout
+  
+block content
+  .computer.only.tablet.only.four.wide.column 
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column(data-step="2" data-intro="Cyberbullying is when someone posts or shares negative things about someone else online. The bully may use digital devices, sites, or apps. The bully often does this again and again to the same person.")
+    .ui.fluid.card.test(postID="3", data-step="1" data-intro="You have recently seen that some people keep saying mean things about Dylan. A group of friends from school are bullying Dylan on social media.")
+          .content
+            .right.floated.meta= "Yesterday"
+            |
+            a(href='/user/hannahleee_23')
+              img.ui.avatar.image(src='/profile_pictures/user55.jpg')
+              span='Cassie Reed'
+          .image
+            img.post(src="basketballshoes.jpg")
+          .content
+            .description="Wow, look at this awesome burger!!! :D "
+            //-.right.floated.meta
+              i.icon.checkmark
+              | Seen by 12
+          .three.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            .ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Flag
+            .ui.labeled.button(tabindex='0')
+              .ui.like.button
+                i.heart.icon
+                |  Like
+              a.ui.basic.red.left.pointing.label.count=2
+          
+          .content
+            .ui.comments
+              .comment
+                a.avatar
+                  img(src='/profile_pictures/user66.jpeg')
+                .content
+                  a.author Emma Hanson
+                  .metadata
+                    span.date 1527025081548
+                    i.heart.icon
+                    |  0 Likes
+                  .text(data-step="3" data-intro="This is an example of cyberbullying.")
+                    | when will you get it into your head that nobody likes your stupid head!.
+                  .actions(data-step="5" data-intro="Flagging something will report it to the website and the bullying post will be taken down. Sometimes it takes a while for the website to respond.")
+                    a.reply Reply
+                    a.like Like
+                    a.flag(data-step="4" data-intro="One way you can act against cyberbullying is by pressing the “Flag” button.") Flag 
+          .content
+            //-.description(style="text-align:center;background:#E8E8E8")="How is Cassie Feeling?"
+            .ui.fluid.left.labeled.right.icon.input(data-step="7" data-intro="Another way you can act against cyberbullying is by confronting the bully.")
+              .ui.label            
+                img.ui.avatar.image(src='/profile_pictures/user61.jpg', name="Jane Doe")
+              input.newcomment(type='text', placeholder='Write a Message', data-step="6" data-intro="Another way you can act against cyberbullying is by writing a supportive comment to the target.")
+              i.big.send.link.icon
+
+  script().
+    var myVar = 'Hello Var';
+    console.log(myVar);
+
