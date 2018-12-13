@@ -363,6 +363,12 @@ app.get('/trans_script/cyberbullying', function (req, res) {
   });
 });
 
+app.get('/end/cyberbullying', function (req, res) {
+  res.render('cyberbullying/cyberbullying_end', {
+    title: 'Hold up'
+  });
+});
+
 
 
 //Classes

@@ -243,6 +243,24 @@ $('.right.floated.time.meta, .date').each(function() {
     window.location.href='/trans/cyberbullying';
   });
 
+  //Cyberbullying to Transition
+  $('.ui.big.green.labeled.icon.button.cybertutorial')
+  .on('click', function() {
+    window.location.href='/tutorial/cyberbullying';
+  });
+
+  //Cyberbullying to Transition
+  $('.ui.big.green.labeled.icon.button.cybersim')
+  .on('click', function() {
+    window.location.href='/sim/cyberbullying';
+  });
+
+  //finish
+  $('.ui.big.green.labeled.icon.button.finish')
+  .on('click', function() {
+    window.location.href='/';
+  });
+
   
   //Cyberbullying to Transition
   $('.ui.big.green.labeled.icon.button.cybertrans_script')
@@ -257,12 +275,12 @@ $('.right.floated.time.meta, .date').each(function() {
     window.location.href='/modual/cyberbullying';
   });
 
-  //Cyberbullying Transition to freeplay
-  $('.ui.big.green.labeled.icon.button.post_quiz_cyberbullying')
+  //Cyberbullying end play
+  $('.ui.big.green.labeled.icon.button.cyberbullying_end')
   .on('click', function() {
-    window.location.href='/postquiz/cyberbullying';
+    window.location.href='/end/cyberbullying';
   });
-  
+
   //Sign Up Info Skip Button
   $('button.ui.button.skip')
   .on('click', function() {
