@@ -604,7 +604,7 @@ exports.postPreQuiz_Cyber = (req, res, next) => {
       if (err) {
         return next(err);
       }
-      res.redirect('/modual/cyberbullying/wait')
+      res.redirect('/tutorial/cyberbullying')
     });
   });
 };
@@ -757,13 +757,13 @@ exports.getResults = (req, res) => {
 };
 
 
-//getPrezResults
+//getCyberResults
 /*
 ##############
-Get Presentation Results page
+Get Cyberbullying Results page 
 ##############
 */
-exports.getPrezResults = (req, res) => {
+exports.getCyberbullyingResults = (req, res) => {
 
   User.findById(req.user.id)
   .populate({ 
@@ -780,8 +780,8 @@ exports.getPrezResults = (req, res) => {
     //var pre = user.getUserPreQuizScore("presentation");
     //var post = user.getUserPostQuizScore("presentation");
 
-    var replies = user.getModReplies('presentation');
-    var posts = user.getModPosts('presentation');
+    var replies = user.getModReplies('cyberbullying');
+    var posts = user.getModPosts('cyberbullying');
     //var liked = user.getLiked();
     if(posts[0])
     {
@@ -792,7 +792,7 @@ exports.getPrezResults = (req, res) => {
     console.log("########################"+ replies.length);
     console.log("$$$$$$$$$$$$$$$$$$$$$$$$$"+ posts.length);
 
-    res.render('pres_results', { s_post: posts[0], replies: replies.slice(0, 3)});
+    res.render('cyberbullying/cyberbullying_results', { s_post: posts[0], replies: replies.slice(0, 3)});
 
   });
 };

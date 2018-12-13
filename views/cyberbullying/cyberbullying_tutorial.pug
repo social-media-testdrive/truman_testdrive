@@ -1,0 +1,109 @@
+
+extends ../ui_layout
+  
+block content
+  .computer.only.tablet.only.four.wide.column 
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
+    .ui.fluid.card.test(postID="3")
+          .content
+            .right.floated.meta= "Yesterday"
+            |
+            a(href='/user/hannahleee_23')
+              img.ui.avatar.image(src='/profile_pictures/user55.jpg')
+              span='Cassie Reed'
+          .image
+            img.post(src="/basketballshoes.jpg")
+          .content
+            .description="Wow, look at this awesome burger!!! :D "
+            //-.right.floated.meta
+              i.icon.checkmark
+              | Seen by 12
+          .three.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            .ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Flag
+            .ui.labeled.button(tabindex='0')
+              .ui.like.button
+                i.heart.icon
+                |  Like
+              a.ui.basic.red.left.pointing.label.count=2
+          
+          .content
+            .ui.comments
+              .comment
+                a.avatar
+                  img(src='/profile_pictures/user66.jpeg')
+                .content
+                  a.author Emma Hanson
+                  .metadata
+                    span.date 1527025081548
+                    i.heart.icon
+                    |  0 Likes
+                  #step3.text()
+                    | when will you get it into your head that nobody likes your stupid head!.
+                  #step5.actions
+                    a.reply Reply
+                    a.like Like
+                    #step4.a.flag Flag 
+          .content
+            //-.description(style="text-align:center;background:#E8E8E8")="How is Cassie Feeling?"
+            #step7.ui.fluid.left.labeled.right.icon.input()
+              .ui.label            
+                img.ui.avatar.image(src='/profile_pictures/user61.jpg', name="Jane Doe")
+              input.newcomment(type='text', placeholder='Write a Message')
+              i.big.send.link.icon
+
+block scripts
+  script().
+    function startIntro(){
+        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true });
+          intro.setOptions({
+            steps: [
+              { 
+                element: document.querySelectorAll('.ui.fluid.card.test')[0],
+                intro: "You have recently seen that some people keep saying mean things about Dylan. A group of friends from school are bullying Dylan on social media.",
+                position: 'right'
+              },
+              {
+                element: document.querySelectorAll('#content.eight')[0],
+                intro: "Cyberbullying is when someone posts or shares negative things about someone else online. The bully may use digital devices, sites, or apps. The bully often does this again and again to the same person.",
+                position: 'right'
+              },
+              { 
+                element: document.querySelectorAll('#step3.text')[0],
+                intro: "This is an example of cyberbullying.",
+                position: 'right'
+              },
+              { 
+                element: document.querySelectorAll('#step4')[0],
+                intro: "One way you can act against cyberbullying is by pressing the “Flag” button.",
+                position: 'right'
+              },
+              { 
+                element: document.querySelectorAll('#step5')[0],
+                intro: "Flagging something will report it to the website and the bullying post will be taken down. Sometimes it takes a while for the website to respond.",
+                position: 'right'
+              },
+              { 
+                element: document.querySelectorAll('input.newcomment')[0],
+                intro: "Another way you can act against cyberbullying is by writing a supportive comment to the target.",
+                position: 'right'
+              },
+              { 
+                element: document.querySelectorAll('#step7')[0],
+                intro: "Another way you can act against cyberbullying is by confronting the bully.",
+                position: 'right'
+              },
+              
+            ]
+          });
+          intro.start().onexit(function() {
+          window.location.href='/sim/cyberbullying';
+        });
+          
+      };
+
+      $(window).on("load", function() {startIntro();});

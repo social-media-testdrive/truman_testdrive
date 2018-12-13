@@ -63,6 +63,14 @@ html
       {
           cursor: pointer;
       }
+      .introjs-hint-dot
+      {
+        background:blue;
+      }
+      .introjs-hint-pulse
+      {
+        background:blue;
+      }
       
   script.
     if ('serviceWorker' in navigator) {
@@ -88,9 +96,9 @@ html
     script(src='/js/lib/humanized_time_span.js')
     script(src='/js/lib/lazyload.transpiled.min.js')
     script(src='/js/lib/intro.min.js')
-    //script(src='/js/lib/bootstrap.min.js') humanized_time_span.js
     script(src='/semantic/dist/semantic.min.js')
     script(src='/js/main.js')
+    block scripts
 
     //- // Google Analytics: change UA-XXXXX-X to be your site's ID
     //- script.

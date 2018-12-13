@@ -237,6 +237,32 @@ $('.right.floated.time.meta, .date').each(function() {
     window.location.href='/signup';
   });
 
+  //Cyberbullying to Transition
+  $('.ui.big.green.labeled.icon.button.cybertrans')
+  .on('click', function() {
+    window.location.href='/trans/cyberbullying';
+  });
+
+  
+  //Cyberbullying to Transition
+  $('.ui.big.green.labeled.icon.button.cybertrans_script')
+  .on('click', function() {
+    window.location.href='/trans_script/cyberbullying';
+  });
+
+  ///modual/:modId
+  //Cyberbullying Transition to freeplay
+  $('.ui.big.green.labeled.icon.button.cyber_script')
+  .on('click', function() {
+    window.location.href='/modual/cyberbullying';
+  });
+
+  //Cyberbullying Transition to freeplay
+  $('.ui.big.green.labeled.icon.button.post_quiz_cyberbullying')
+  .on('click', function() {
+    window.location.href='/postquiz/cyberbullying';
+  });
+  
   //Sign Up Info Skip Button
   $('button.ui.button.skip')
   .on('click', function() {
@@ -476,6 +502,6 @@ $('.img.post img')
   });
 
   introJs().start();
-  startIntro();
+  
 
 });

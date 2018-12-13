@@ -208,6 +208,9 @@ app.get('/', passportConfig.isAuthenticated, function (req, res) {
   });
 })
 
+app.get('/results/cyberbullying', passportConfig.isAuthenticated, scriptController.getCyberbullyingResults);
+
+
 app.get('/modual/:modId', passportConfig.isAuthenticated, scriptController.getScript);
 
 app.post('/post/new', userpostupload.single('picinput'), check, csrf, scriptController.newPost);
@@ -231,7 +234,7 @@ app.post('/prequiz/presentation', passportConfig.isAuthenticated, scriptControll
 
 //cyberbullying Pre Quiz
 app.get('/prequiz/cyberbullying',  passportConfig.isAuthenticated, function (req, res) {
-  res.render('cyberbullying-pre-quiz', {
+  res.render('cyberbullying/cyberbullying-pre-quiz', {
     title: 'Pre Quiz'
   });
 })
@@ -272,7 +275,7 @@ app.post('/postquiz/presentation', passportConfig.isAuthenticated, scriptControl
 
 //Post Cyberbully
 app.get('/postquiz/cyberbullying',  passportConfig.isAuthenticated, function (req, res) {
-  res.render('cyberbullying-post-quiz', {
+  res.render('cyberbullying/cyberbullying-post-quiz', {
     title: 'Post Quiz'
   });
 })
@@ -333,6 +336,30 @@ app.get('/test_comment', function (req, res) {
 app.get('/test_sim', function (req, res) {
   res.render('test_sim', {
     title: 'Test Sim'
+  });
+});
+
+app.get('/tutorial/cyberbullying', function (req, res) {
+  res.render('cyberbullying/cyberbullying_tutorial', {
+    title: 'Cyberbullying Tutorial'
+  });
+});
+
+app.get('/sim/cyberbullying', function (req, res) {
+  res.render('cyberbullying/cyberbullying_sim', {
+    title: 'Cyberbullying Guided Activity'
+  });
+});
+
+app.get('/trans/cyberbullying', function (req, res) {
+  res.render('cyberbullying/cyberbullying_trans', {
+    title: 'Recap'
+  });
+});
+
+app.get('/trans_script/cyberbullying', function (req, res) {
+  res.render('cyberbullying/cyberbullying_trans_script', {
+    title: 'Hold up'
   });
 });
 

@@ -1,0 +1,226 @@
+extends ../ui_layout
+
+block content
+  .ui.container
+    h3 Did you notice these Cyberbullying posts?
+    .ui.three.cards
+      .ui.fluid.card.dim(postid='5bbd0194bc9b3d199046157e' ui='no' notify='no' state='unread' type='actor' actor_un='ella_vaderrr' actor_name='Ella Sroni' actor_pic='user25.jpg')
+        .content
+          .right.floated.meta 1 hour ago
+          a(href='/user/ella_vaderrr')
+            img.ui.avatar.image(src='/profile_pictures/user25.jpg')
+            span Ella Sroni
+        .img
+          img(src='/bad_cook.jpg', style='max-width: 100%; display: inline !important;')
+        .content
+          .description @candyqueen67 thinks she&apos;s a good cook but she&apos;s not :P
+        .three.ui.bottom.attached.icon.buttons
+          .ui.reply.button(tabindex='0')
+            i.reply.icon
+            |  Reply
+          .ui.flag.button(tabindex='0')
+            i.flag.icon
+            |  Flag
+          .ui.labeled.button(tabindex='0')
+            .ui.like.button
+              i.heart.icon
+              |  Like
+            a.ui.basic.red.left.pointing.label.count 4
+        .content
+          .ui.comments
+            .comment(commentid='5bbd01d88a48061a73337b97')
+              a.avatar(href='/user/emememily')
+                img(src='/profile_pictures/user36.jpg' title='' style='')
+              .content
+                a.author(href='/user/emememily') Emily Li
+                .metadata
+                  span.date 6 minutes ago
+                  .rating
+                    i.red.heart.icon
+                    span 1
+                    |  Likes
+                .text Lol. She&apos;s so annoying.
+                .actions
+                  a.red.like.comment Like
+                  a.flag.comment Flag
+        .extra.content
+          .ui.fluid.left.labeled.right.icon.input
+            .ui.label
+              img.ui.avatar.image(src='/profile_pictures/bub.jpg' name='Dominic')
+            input.newcomment(type='text' placeholder='Write a Comment')
+            i.big.send.link.icon
+   
+    
+      .ui.fluid.card.dim(postid='5bbd0194bc9b3d199046157d' ui='no' notify='no' state='unread' type='actor' actor_un='goaliegirl' actor_name='Breana Summers' actor_pic='user29.jpg')
+        .ui.dimmer.flag
+          .content
+            .center
+              h2.ui.inverted.icon.header
+                i.red.flag.icon
+                |  You&apos;ve flagged this!
+              h3.ui.inverted.header
+                span The admins will review this post further. We are sorry you had this experience.
+        .content
+          .right.floated.meta 1 hour ago
+          a(href='/user/goaliegirl')
+            img.ui.avatar.image(src='/profile_pictures/user29.jpg')
+            span Breana Summers
+        .img.post
+          img.transition.visible(src='/group_photo.jpg' data-src='/group_photo.jpg' style='max-width: 100%;display: inline !important;')
+        .content
+          .description You looks so dumb @aaahhh
+        .three.ui.bottom.attached.icon.buttons
+          .ui.reply.button(tabindex='0')
+            i.reply.icon
+            |  Reply
+          .ui.flag.button(tabindex='0')
+            i.flag.icon
+            |  Flag
+          .ui.labeled.button(tabindex='0')
+            .ui.like.button
+              i.heart.icon
+              |  Like
+            a.ui.basic.red.left.pointing.label.count 3
+        .content
+          .ui.comments
+            .comment(commentid='5bbd01d88a48061a73337b92')
+              a.avatar(href='/user/goaliegirl')
+                img(src='/profile_pictures/user29.jpg')
+              .content
+                a.author(href='/user/goaliegirl') Breana Summers
+                .metadata
+                  span.date 39 minutes ago
+                  .rating
+                    i.heart.icon
+                    span.num 0
+                    |  Likes
+                .text No. You looks dumb in every single group photo we took.
+                .actions
+                  a.like.comment Like
+                  a.flag.comment Flag
+        .extra.content
+          .ui.fluid.left.labeled.right.icon.input
+            .ui.label
+              img.ui.avatar.image(src='/profile_pictures/bub.jpg' name='Dominic')
+            input.newcomment(type='text' placeholder='Write a Comment')
+            i.big.send.link.icon
+      //-cats
+      .ui.fluid.card.dim(postid='5bbd0194bc9b3d199046156e' ui='no' notify='no' state='unread' type='actor' actor_un='m-beckett' actor_name='Mary Beckett' actor_pic='user17.jpg')
+        .ui.dimmer.flag
+          .content
+            .center
+              h2.ui.inverted.icon.header
+                i.red.flag.icon
+                |  You&apos;ve flagged this!
+              h3.ui.inverted.header
+                span The admins will review this post further. We are sorry you had this experience.
+        .content
+          .right.floated.meta 1 hour ago
+          a(href='/user/m-beckett')
+            img.ui.avatar.image(src='/profile_pictures/user17.jpg')
+            span Mary Beckett
+        .img.post
+          img.transition.visible(src='/party.jpg' data-src='/party.jpg' style='max-width: 100%; display: inline !important;' title='')
+        .content
+          .description I don&apos;t want ugly person on my party @jlp777
+        .three.ui.bottom.attached.icon.buttons
+          .ui.reply.button(tabindex='0')
+            i.reply.icon
+            |  Reply
+          .ui.flag.button(tabindex='0')
+            i.flag.icon
+            |  Flag
+          .ui.labeled.button(tabindex='0')
+            .ui.like.button
+              i.heart.icon
+              |  Like
+            a.ui.basic.red.left.pointing.label.count 2
+        .content
+          .ui.comments
+            .comment(commentid='5bbd01d78a48061a73337b8e')
+              a.avatar(href='/user/kilani244')
+                img(src='/profile_pictures/user5.jpeg')
+              .content
+                a.author(href='/user/kilani244') Kiki Pualani
+                .metadata
+                  span.date 1 hour ago
+                  .rating
+                    i.heart.icon
+                    span.num 0
+                    |  Likes
+                .text haha glad that I&apos;m not the only one who think so
+                .actions
+                  a.like.comment Like
+                  a.flag.comment Flag
+        .extra.content
+          .ui.fluid.left.labeled.right.icon.input
+            .ui.label
+              img.ui.avatar.image(src='/profile_pictures/bub.jpg' name='Dominic')
+            input.newcomment(type='text' placeholder='Write a Comment')
+            i.big.send.link.icon
+
+    h3 What would you do in the future?
+    textarea(rows='3')
+    br
+    h3 Why is it important for people to act against cyberbullying?
+    textarea(rows='3')
+    h3 What will you do in the future to be an upstander if you see cyberbullying?
+    textarea(rows='3')
+    br
+    //-h3 Here are some posts you replied to:
+    //-.ui.three.stackable.link.cards
+      each val in replies
+        if (val.reply !== null && typeof val.reply === 'object')
+          .ui.fluid.card
+              //- if post is a reply post -  add the post and populate the reply as well
+              .content
+                .right.floated.time.meta= (user.createdAt.getTime() + val.relativeTime)
+                |
+                a.ui.avatar.image(href='/me')
+                  if user.profile.picture
+                    img(src='/user_post/'+user.profile.picture)
+                  else
+                    img(src=user.gravatar(60))
+                a(href='/me')
+                  span=user.profile.name || user.email || user.id
+              .content
+                .description(style="font-size:130%")=val.body
+              .extra.content
+                .ui.fluid.card
+                  .content
+                    //-.right.floated.time.meta= (user.createdAt.getTime() + val.reply.time)
+                    |
+
+                    a(href='/user/'+val.reply.actor.username)   
+                      img.ui.avatar.image(src='/profile_pictures/'+val.reply.actor.profile.picture)
+                      span=val.reply.actor.profile.name
+                  .content
+                    if val.reply.picture
+                      img.post.ui.left.floated.small.image(src="/"+val.reply.picture)
+                    p=val.reply.body
+    br
+    if s_post
+      h3 Here is what you posted:
+      .ui.card
+        .content
+          .right.floated.time.meta= (user.createdAt.getTime() + s_post.relativeTime)
+          |  
+          a.ui.avatar.image(href='/me')
+            if user.profile.picture
+              img(src='/user_post/'+user.profile.picture)
+            else
+              img(src=user.gravatar(60))
+          a(href='/me')
+            span=user.profile.name || user.email || user.id
+        .image
+          img(src='/user_post/'+s_post.picture)
+        .content
+          .description=s_post.body
+      h3 What would you do different?
+      br
+      br
+    .ui.big.green.labeled.icon.button.post_quiz_cyberbullying
+          i.rocket.icon
+          |   Take Final Quiz!
+
+      
