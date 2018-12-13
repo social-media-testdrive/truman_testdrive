@@ -2,7 +2,7 @@ extends ../ui_layout
 
 block content
   .ui.container
-    h3 Did you notice these Cyberbullying posts?
+    h3 These were the cyberbullying posts in the timeline. How many did you notice?
     .ui.three.cards
       .ui.fluid.card.dim(postid='5bbd0194bc9b3d199046157e' ui='no' notify='no' state='unread' type='actor' actor_un='ella_vaderrr' actor_name='Ella Sroni' actor_pic='user25.jpg')
         .content
@@ -158,8 +158,11 @@ block content
               img.ui.avatar.image(src='/profile_pictures/bub.jpg' name='Dominic')
             input.newcomment(type='text' placeholder='Write a Comment')
             i.big.send.link.icon
-
-    h3 What would you do in the future?
+    br
+    h3 Tell us what you did to be an upstander.
+    textarea(rows='3')
+    br
+    h3 Why did you act this way?
     textarea(rows='3')
     br
     h3 Why is it important for people to act against cyberbullying?
