@@ -128,6 +128,7 @@ $(window).on("load", function() {
     var commentID = comment.attr("commentID");
     comment.replaceWith( '<div class="comment" style="background-color:black;color:white"><h5 class="ui inverted header"><span>The admins will review this post further. We are sorry you had this experience.</span></h5></div>' );
     var flag = Date.now();
+
     console.log("#########COMMENT FLAG:  PostID: "+postID+", Comment ID: "+commentID+"  TYPE is "+typeID+" at time "+flag);
 
     if (typeID=='userPost')
@@ -135,6 +136,7 @@ $(window).on("load", function() {
     else
       $.post( "/feed", { postID: postID, commentID: commentID, flag: flag, _csrf : $('meta[name="csrf-token"]').attr('content') } );
 
+    introJs().refresh();
   });
 
 
