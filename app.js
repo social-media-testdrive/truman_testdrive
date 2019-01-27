@@ -359,13 +359,25 @@ app.get('/trans/cyberbullying', function (req, res) {
 
 app.get('/trans_script/cyberbullying', function (req, res) {
   res.render('cyberbullying/cyberbullying_trans_script', {
-    title: 'Hold up'
+    title: 'Recap'
   });
 });
 
 app.get('/end/cyberbullying', function (req, res) {
   res.render('cyberbullying/cyberbullying_end', {
-    title: 'Hold up'
+    title: 'Finished'
+  });
+});
+
+app.get('/start/cyberbullying', function (req, res) {
+  res.render('cyberbullying/cyberbullying_start', {
+    title: 'Welcome'
+  });
+});
+
+app.get('/tut_guide/cyberbullying', function (req, res) {
+  res.render('cyberbullying/cyberbullying_tut_guide', {
+    title: 'Welcome'
   });
 });
 

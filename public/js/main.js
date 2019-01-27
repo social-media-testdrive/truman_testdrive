@@ -145,7 +145,8 @@ $(window).on("load", function() {
 
   //get add new feed post modal to work
   $("#newpost, a.item.newpost").click(function () {
-    $(' .ui.small.post.modal').modal('show');
+    //console.log("Clicking new Post");
+    $(' .ui.small.post.modal').modal('show'); 
 });
 
 //New Class Button
@@ -255,6 +256,12 @@ $('.right.floated.time.meta, .date').each(function() {
   $('.ui.big.green.labeled.icon.button.cybersim')
   .on('click', function() {
     window.location.href='/sim/cyberbullying';
+  });
+
+  //Cyberbullying Start to Tutorial
+  $('.ui.big.green.labeled.icon.button.cyberstart')
+  .on('click', function() {
+    window.location.href='/tutorial/cyberbullying';
   });
 
   //finish

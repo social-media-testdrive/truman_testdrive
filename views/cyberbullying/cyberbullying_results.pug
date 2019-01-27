@@ -160,15 +160,81 @@ block content
             i.big.send.link.icon
     br
     h3 Tell us what you did to be an upstander.
-    textarea(rows='3')
-    br
-    h3 Why did you act this way?
-    textarea(rows='3')
+    .ui.form
+      .inline.fields
+        label(for='help') Did you flag the post or comment?
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='yes', checked='', tabindex='0')
+            label Yes
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='no', tabindex='0')
+            label No
+      .inline.fields
+        label(for='help') Did you “like” the target’s post to show support?
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='yes', checked='', tabindex='0')
+            label Yes
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='no', tabindex='0')
+            label No
+      .inline.fields
+        label(for='help') Did you write a supportive or defending comment for the target?
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='yes', checked='', tabindex='0')
+            label Yes
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='no', tabindex='0')
+            label No
+      .inline.fields
+        label(for='help') Did you confront the bully?
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='yes', checked='', tabindex='0')
+            label Yes
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='no', tabindex='0')
+            label No
+      .inline.fields
+        label(for='help') Would you support the target offline?
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='yes', checked='', tabindex='0')
+            label Yes
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='no', tabindex='0')
+            label No
+      .inline.fields
+        label(for='help') Would you tell a trusted adult if you saw this kind of post?
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='yes', checked='', tabindex='0')
+            label Yes
+        .field
+          .ui.radio.checkbox
+            input.hidden(type='radio', name='no', tabindex='0')
+            label No
+      .field
+        label Why did you act this way
+        textarea(rows='2')
+
     br
     h3 Why is it important for people to act against cyberbullying?
-    textarea(rows='3')
+    .ui.form
+      .field
+        textarea(rows='2')
+    br
     h3 What will you do in the future to be an upstander if you see cyberbullying?
-    textarea(rows='3')
+    .ui.form
+      .field
+        textarea(rows='2')
     br
     //-h3 Here are some posts you replied to:
     //-.ui.three.stackable.link.cards
@@ -202,7 +268,7 @@ block content
                       img.post.ui.left.floated.small.image(src="/"+val.reply.picture)
                     p=val.reply.body
     br
-    if s_post
+    //-if s_post
       h3 Here is what you posted:
       .ui.card
         .content

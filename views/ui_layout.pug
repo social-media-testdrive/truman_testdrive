@@ -16,7 +16,7 @@ html
     link(rel='manifest', href='/manifest.json')
     link(rel='stylesheet', href='/semantic/dist/semantic.min.css')
     link(rel='stylesheet', href='/js/lib/introjs.min.css')
-    link(rel='stylesheet', href='/js/lib/themes/introjs-modern.css')
+    //-link(rel='stylesheet', href='/js/themes/introjs-nassim.css')
     style(type='text/css').
       body {
       background-color: #F5F8FA;
@@ -71,6 +71,18 @@ html
       .introjs-hint-pulse
       {
         background:blue;
+      }
+      .introjs-tooltiptext
+      {
+        font-size: large;
+      }
+      .introjs-skipbutton.introjs-donebutton
+      {
+        visibility: visible;
+      }
+      .introjs-skipbutton
+      {
+        visibility: hidden;
       }
       
   script.

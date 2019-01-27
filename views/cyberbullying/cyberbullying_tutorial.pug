@@ -61,10 +61,6 @@ block scripts
         var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true });
           intro.setOptions({
             steps: [
-              {
-                element: document.querySelectorAll('#content.eight')[0],
-                intro: "Welcome to the cyberbullying lesson! We’ll review a few key terms and show you ways to handle cyberbullying if you see it. Then you’ll have time to explore the LearnLove.Life timeline!"
-              },
               { 
                 element: document.querySelectorAll('.ui.fluid.card.test')[0],
                 intro: "You have recently seen that some people keep saying mean things about Dylan. A group of friends from school are bullying Dylan on social media.",
@@ -104,7 +100,7 @@ block scripts
             ]
           });
           intro.start().onexit(function() {
-          window.location.href='/sim/cyberbullying';
+          window.location.href='/tut_guide/cyberbullying';
         });
           
       };
