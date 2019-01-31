@@ -12,7 +12,7 @@ exports.getScript = (req, res, next) => {
 
   //req.user.createdAt
   var time_now = Date.now();
-  var time_diff = time_now - req.user.createdAt;
+  var time_diff = time_now;
   //var today = moment();
   //var tomorrow = moment(today).add(1, 'days');
   var time_limit = time_diff - 86400000; //one day in milliseconds
@@ -73,7 +73,10 @@ exports.getScript = (req, res, next) => {
 
         //Look up Notifications??? And do this as well?
 
-        user_posts = user.getPostInPeriod(time_limit, time_diff);
+        //user_posts = user.getPostInPeriod(time_limit, time_diff);
+        user_posts = user.getModPosts(req.params.modId)
+
+        console.log("@@@@@@@@@@ User Post is size: "+user_posts.length);
 
         user_posts.sort(function (a, b) {
             return b.relativeTime - a.relativeTime;
