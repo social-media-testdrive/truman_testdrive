@@ -118,7 +118,7 @@ block content
                           .content
                             a.author(href='/me')=user.profile.name || user.username || user.id
                             .metadata
-                              span.date=(Date.now() + comment.time)
+                              span.date.sim=(Date.now() + comment.time)
                               .rating
                                 if comment.liked
                                   i.red.heart.icon
@@ -145,7 +145,7 @@ block content
                           .content
                             a.author(href='/user/'+comment.actor.username)=comment.actor.profile.name
                             .metadata
-                              span.date=(Date.now() + comment.time)
+                              span.date.sim=(Date.now() + comment.time)
                               .rating
                                 if comment.liked
                                   i.red.heart.icon
@@ -209,7 +209,7 @@ block content
             //-img.post(src="/"+val.picture)
             img(src='/picture.svg', data-src="/"+val.picture, style="max-width:100%;")
           .content
-            .description=val.body
+            .description!=val.body
           .three.ui.bottom.attached.icon.buttons
             .ui.reply.button(tabindex='0')
               i.reply.icon
@@ -246,7 +246,7 @@ block content
                         .content
                           a.author(href='/me')=user.profile.name || user.username || user.id
                           .metadata
-                            span.date=(Date.now() + comment.time)
+                            span.date.sim=(Date.now() + comment.time)
                             .rating
                               i.heart.icon
                               span.num=0
@@ -263,7 +263,7 @@ block content
                         .content
                           a.author(href='/user/'+comment.actor.username)=comment.actor.profile.name
                           .metadata
-                            span.date=(Date.now() + comment.time)
+                            span.date.sim=(Date.now() + comment.time)
                             .rating
                               if comment.liked
                                 i.red.heart.icon
