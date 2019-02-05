@@ -12,6 +12,12 @@ const dotenv = require('dotenv');
 var mongoose = require('mongoose');
 var fs = require('fs')
 
+//input files
+/********
+TODO:
+Use CSV files instead of json files
+use a CSV file reader and use that as input
+********/
 var actors_list = require('./input/actors.json');
 var posts_list = require('./input/posts.json');
 var comment_list = require('./input/comments.json');
@@ -32,11 +38,13 @@ mongoose.connection.on('error', (err) => {
 });
 
 
-
+//capitalize a string
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 }
 
+//usuful when adding comments to ensure they are always in the correct order
+//(based on the time of the comments)
 function insert_order(element, array) {
   array.push(element);
   array.sort(function(a, b) {
@@ -45,6 +53,8 @@ function insert_order(element, array) {
   return array;
 }
 
+//Transforms a time like -12:32 (minus 12 minutes and 32 seconds)
+//into a time in milliseconds
 function timeStringToNum (v) {
   var timeParts = v.split(":");
   if (timeParts[0] =="-0")
@@ -55,6 +65,8 @@ function timeStringToNum (v) {
     return parseInt(((timeParts[0] * (60000 * 60)) + (timeParts[1] * 60000)), 10);
 };
 
+//create a radom number (for likes) with a weighted distrubution
+//this is for posts
 function getLikes() {
   var notRandomNumbers = [1, 1, 1, 2, 2, 2, 3, 3, 4, 4, 5, 6];
   var idx = Math.floor(Math.random() * notRandomNumbers.length);
@@ -66,19 +78,26 @@ function  randomIntFromInterval(min,max)
     return Math.floor(Math.random()*(max-min+1)+min);
 }
 
+//create a radom number (for likes) with a weighted distrubution
+//this is for comments
 function getLikesComment() {
   var notRandomNumbers = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 3, 4];
   var idx = Math.floor(Math.random() * notRandomNumbers.length);
   return notRandomNumbers[idx];
 }
 
+//Create a random number between two values (like when a post needs a number of times it has been read)
 function getReads(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
 
-
+/*************************
+createActorInstances:
+Creates all the Actors in the simulation
+Must be done first!
+*************************/
 function createActorInstances() {
   async.each(actors_list, function(actor_raw, callback) {
 
@@ -112,6 +131,11 @@ function createActorInstances() {
   );
 }
 
+/*************************
+createPostInstances:
+Creates each post and uploads it to the DB
+Actors must be in DB first to add them correctly to the post
+*************************/
 function createPostInstances() {
   async.each(posts_list, function(new_post, callback) {
 
@@ -127,7 +151,6 @@ function createPostInstances() {
           postdetail.module = new_post.module;
           postdetail.body = new_post.body
 
-          //postdetail.module = new_post.module;
           postdetail.likes = new_post.likes || getLikes();
 
           //only for likes posts
@@ -180,7 +203,13 @@ function createPostInstances() {
   );
 }
 
-//replies_list
+/*************************
+createPostRepliesInstances:
+Creates inline comments for each post
+Looks up actors and posts to insert the correct comment
+Does this in series to insure comments are put in, in correct order
+Takes a while because of this
+*************************/
 function createPostRepliesInstances() {
   async.eachSeries(comment_list, function(new_replies, callback) {
 
@@ -276,38 +305,14 @@ function createPostRepliesInstances() {
   );
 }
 
-
-/*async.series([
-    createPostInstances,
-    createPostRepliesInstances
-],
-// Optional callback
-function(err, results) {
-    if (err) {
-        console.log('FINAL ERR: '+err);
-    }
-    else {
-        console.log('ALL DONE - Close now');
-        
-    }
-    // All done, disconnect from database
-    mongoose.connection.close();
-});*/
-
+/*
+TODO: Create a asych function that runs 
+all these functions in serial, in this order
+Once all done, stop the program (Be sure to close the mongoose connection)
+*/
 //createActorInstances()
 //createPostInstances()
 createPostRepliesInstances()
-//actorNotifyCreate();
-//NotifyCreate();
 
+console.log('All Done');
 
-//PostReplyCreate(posts1[0]);
-//PostCreate(posts1[1]);
-//actorNotifyCreate(actorReply[i]);
-console.log('After Lookup:');
-
-
-
-
-    //All done, disconnect from database
-    //mongoose.connection.close();

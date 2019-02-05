@@ -1,25 +1,21 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-function timeStringToNum (v) {
-  var timeParts = v.split(":");
-  return ((timeParts[0] * (60000 * 60)) + (timeParts[1] * 60000));
-}
-
 const scriptSchema = new mongoose.Schema({
-  body: {type: String, default: '', trim: true},
-  post_id: Number,
-  class: String, //experimental or normal
-  module: String, //name of mod for this script
-  picture: String,
-  highread: Number,
-  lowread: Number,
-  likes: Number,
-  actor: {type: Schema.ObjectId, ref: 'Actor'},
+  body: {type: String, default: '', trim: true}, //body of the post
+  post_id: Number, //post ID used in the CSV input file 
+  class: String, //experimental or normal (not used in TestDrive)
+  module: String, //name of lesson mod for this script (i.e. cyberbullying, etc)
+  picture: String, //filename of the image for this post
+  highread: Number, //not used in TestDrive (should kill)
+  lowread: Number, //not used in TestDrive (should kill)
+  likes: Number, //number of likes this post has
+  actor: {type: Schema.ObjectId, ref: 'Actor'}, // Actor who "wrote" this post
 
-  reply: {type: Schema.ObjectId, ref: 'Script'},
-  time: Number,
-   //in millisecons
+  //reply: {type: Schema.ObjectId, ref: 'Script'},
+  time: Number, //relative time of the post in millisecons
+
+  //comments for this post (is an array)
   comments: [new Schema({
     class: String, //Bully, Marginal, normal, etc
     module: String, //name of mod for this script
@@ -29,7 +25,7 @@ const scriptSchema = new mongoose.Schema({
     time: Number,//millisecons
     new_comment: {type: Boolean, default: false}, //is new comment
     likes: Number
-    }, { versionKey: false })]
+    }, { versionKey: false })] //versioning messes up our updates to the DB sometimes, so we kill it here
 },{ versionKey: false });
 
 

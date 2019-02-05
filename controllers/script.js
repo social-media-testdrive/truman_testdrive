@@ -13,15 +13,11 @@ exports.getScript = (req, res, next) => {
   //req.user.createdAt
   var time_now = Date.now();
   var time_diff = time_now;
-  //var today = moment();
-  //var tomorrow = moment(today).add(1, 'days');
+  
   var time_limit = time_diff - 86400000; //one day in milliseconds
 
   var user_ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   var userAgent = req.headers['user-agent']; 
-
-  var bully_post;
-  var bully_count = 0;
 
 
   console.log("$#$#$#$#$#$#$START GET SCRIPT$#$#$$#$#$#$#$#$#$#$#$#$#");
@@ -47,6 +43,7 @@ exports.getScript = (req, res, next) => {
     })
   .exec(function (err, user) {
 
+    //log user 
     user.logUser(time_now, userAgent, user_ip);
 
 
@@ -120,11 +117,7 @@ exports.getScript = (req, res, next) => {
                     //is this action of new user made comment we have to add???
                     if (user.feedAction[feedIndex].comments[i].new_comment)
                     {
-                      //comment.new_comment
-                      //console.log("adding User Made Comment into feed: "+user.feedAction[feedIndex].comments[i].new_comment_id);
-                      //console.log(JSON.stringify(user.feedAction[feedIndex].comments[i]))
-                      //script_feed[0].comments.push(user.feedAction[feedIndex].comments[i]);
-
+                      
                       var cat = new Object();
                       cat.body = user.feedAction[feedIndex].comments[i].comment_body;
                       cat.new_comment = user.feedAction[feedIndex].comments[i].new_comment;
@@ -141,8 +134,9 @@ exports.getScript = (req, res, next) => {
                     else
                     {
                       //Do something
-                      //var commentIndex = _.findIndex(user.feedAction[feedIndex].comments, function(o) { return o.comment == script_feed[0].comments[i].id; });
+                      
                       var commentIndex = _.findIndex(script_feed[0].comments, function(o) { return o.id == user.feedAction[feedIndex].comments[i].comment; });
+                      
                       //If user action on Comment in Script Post
                       if(commentIndex!=-1)
                       {
@@ -266,6 +260,8 @@ exports.getScriptPost = (req, res) => {
 /*
 ##############
 Post Quiz Prez
+
+post results of quiz to DB
 ##############
 */
 exports.postPostQuiz_Prez = (req, res) => {
@@ -324,6 +320,7 @@ exports.postPostQuiz_Prez = (req, res) => {
 /*
 ##############
 Post Quiz Cyber
+post results of quiz to DB
 ##############
 */
 exports.postPostQuiz_Cyber = (req, res) => {
@@ -379,6 +376,7 @@ exports.postPostQuiz_Cyber = (req, res) => {
 /*
 ##############
 Post Quiz Lit
+post results of quiz to DB
 ##############
 */
 exports.postPostQuiz_Lit = (req, res) => {
@@ -434,6 +432,7 @@ exports.postPostQuiz_Lit = (req, res) => {
 /*
 ##############
 Post Quiz Likes
+post results of quiz to DB
 ##############
 */
 exports.postPostQuiz_Likes = (req, res) => {
@@ -489,6 +488,7 @@ exports.postPostQuiz_Likes = (req, res) => {
 /*
 ##############
 Post Quiz Likes
+post results of quiz to DB
 ##############
 */
 exports.postPostQuiz_Image = (req, res) => {
@@ -544,6 +544,7 @@ exports.postPostQuiz_Image = (req, res) => {
 /*
 ##############
 Pre Quiz Prez
+post results of quiz to DB
 ##############
 */
 exports.postPreQuiz_Prez = (req, res, next) => {
@@ -580,6 +581,7 @@ exports.postPreQuiz_Prez = (req, res, next) => {
 /*
 ##############
 Pre Quiz Cyber
+post results of quiz to DB
 ##############
 */
 exports.postPreQuiz_Cyber = (req, res, next) => {
@@ -615,6 +617,7 @@ exports.postPreQuiz_Cyber = (req, res, next) => {
 /*
 ##############
 Pre Quiz LIT
+post results of quiz to DB
 ##############
 */
 exports.postPreQuiz_Lit = (req, res, next) => {
@@ -650,6 +653,7 @@ exports.postPreQuiz_Lit = (req, res, next) => {
 /*
 ##############
 Pre Quiz LIKES
+post results of quiz to DB
 ##############
 */
 exports.postPreQuiz_Likes = (req, res, next) => {
@@ -685,6 +689,7 @@ exports.postPreQuiz_Likes = (req, res, next) => {
 /*
 ##############
 Pre Quiz IMAGE
+post results of quiz to DB
 ##############
 */
 exports.postPreQuiz_Image = (req, res, next) => {
@@ -934,6 +939,7 @@ exports.getLitQuizResults = (req, res) => {
 /*
 ##############
 NEW POST
+Add a new post to the DB from the user
 #############
 */
 exports.newPost = (req, res) => {
@@ -941,11 +947,8 @@ exports.newPost = (req, res) => {
   User.findById(req.user.id, (err, user) => {
     if (err) { return next(err); }
 
-    //var lastFive = user.id.substr(user.id.length - 5);
-   // console.log(lastFive +" just called to create a new post");
-    //console.log("OG file name is "+req.file.originalname);
-    //console.log("Actual file name is "+req.file.filename);
-    console.log("Text Body of Post is "+req.body.body);
+    
+    //console.log("Text Body of Post is "+req.body.body);
 
     var post = new Object();
     post.body = req.body.body;
@@ -994,6 +997,7 @@ exports.newPost = (req, res) => {
 
     }
 
+    //not used any more. Can ignore (should kill)
     else if (req.body.reply)
     {
       post.reply = req.body.reply;
@@ -1027,6 +1031,8 @@ exports.newPost = (req, res) => {
 /**
  * POST /feed/
  * Update user's feed posts Actions.
+ All likes, flags, new comments (with actions on those comments as well)
+ get added here
  */
 exports.postUpdateFeedAction = (req, res, next) => {
 
@@ -1224,9 +1230,7 @@ exports.postUpdateFeedAction = (req, res, next) => {
         }
         return next(err);
       }
-      //req.flash('success', { msg: 'Profile information has been updated.' });
-      //res.redirect('/account');
-      //console.log("@@@@@@@@@@@ SAVED TO DB!!!!!!!!! ");
+      
       res.send({result:"success"});
     });
   });

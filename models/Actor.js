@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const actorSchema = new mongoose.Schema({
-  class: String, //normal, bully, victim, highread,cohort
-  username: String,
-  profile: {
+  class: String, //normal, bully, victim, highread,cohort (not used in TestDrive)
+  username: String, //username of actor - acts as a key to this actor
+  profile: { //profile of this actor
     name: String,
     gender: String,
     age: Number,
@@ -13,7 +13,7 @@ const actorSchema = new mongoose.Schema({
   }
 }, { timestamps: true });
 
-//Pretty sure this is dead code
+//get the URL of this actor, don't remember if I use this
 actorSchema
 .virtual('url')
 .get(function () {

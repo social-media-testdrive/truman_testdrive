@@ -1,6 +1,7 @@
 //$(document).ready(function() {
 
 //Before Page load:
+//hide news feed before it is all loaded
 $('#content').hide();
 $('#loading').show();
 
@@ -33,7 +34,9 @@ $(window).on("load", function() {
 });
 
 
-  ////////////////////
+  /*
+  focus on new comment prompt if clicked
+  */
   $("input.newcomment").keyup(function(event) {
       //i.big.send.link.icon
       //$(this).siblings( "i.big.send.link.icon")
@@ -51,7 +54,6 @@ $(window).on("load", function() {
     console.log("Comments is now "+comments.length)
     if( !comments.length )
     {
-      //.three.ui.bottom.attached.icon.buttons
       console.log("Adding new Comments sections")
       var buttons = card.find( ".three.ui.bottom.attached.icon.buttons" )
       buttons.after( '<div class="content"><div class="ui comments"></div>' );
@@ -79,7 +81,7 @@ $(window).on("load", function() {
     }
   });
 
-   //a.like.comment
+   //Like a comment
   $('a.like.comment')
   .on('click', function() {
 
@@ -139,10 +141,6 @@ $(window).on("load", function() {
     introJs().refresh();
   });
 
-
-  ///////////////////
-
-
   //get add new feed post modal to work
   $("#newpost, a.item.newpost").click(function () {
     //console.log("Clicking new Post");
@@ -180,7 +178,7 @@ $(window).on("load", function() {
     }
   });
 
-
+//validate class form
 $('#classform.ui.form')
   .form({
     on: 'blur',
@@ -435,7 +433,7 @@ $('.right.floated.time.meta, .date.sim').each(function() {
   .modal('show')
 ;
 
-  //this is the LIKE button
+  //this is the LIKE button for posts
   $('.like.button')
   .on('click', function() {
 
@@ -460,9 +458,7 @@ $('.right.floated.time.meta, .date.sim').each(function() {
 
   });
 
-  //lazy images
-  //$('.demo.items .image img')
-  
+  //lazy loading of images
   $('#content .fluid.card .img img')
   .visibility({
     type       : 'image',
@@ -481,30 +477,6 @@ $('.right.floated.time.meta, .date.sim').each(function() {
         }
   })
 ;
-
-/*
-$('.img.post img')
-  .visibility({
-    once       : true,
-    continuous : false,
-    observeChanges: false,
-    //throttle:100,
-    //offset: 250,
-    
-    
-
-    ////POST IS NOW Visiable - START EVENT
-    onTopVisible:function(calculations) {
-        console.log("@@@@@@@ Real Image @@@@@@@@@");
-        var data_src = $(this).attr( "data-src" );
-        $(this).attr( "src",  data_src);
-        //style="color: inherit; display: inline;"
-        $(this).attr( "style",  "max-width:100%;");
-        $('.img.post img').visibility('refresh');
-
-        }
-  })
-;*/
 
   //this is the FLAG button
   $('.flag.button')

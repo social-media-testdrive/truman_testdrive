@@ -21,9 +21,11 @@ const expressStatusMonitor = require('express-status-monitor');
 const sass = require('node-sass-middleware');
 var schedule = require('node-schedule');
 
+//multer is how we send files (like images) thru web forms
 const multer = require('multer');
 //Math.random().toString(36)+'00000000000000000').slice(2, 10) + Date.now()
 
+//multer options for basic files
 var m_options = multer.diskStorage({ destination : path.join(__dirname, 'uploads') ,
   filename: function (req, file, cb) {
     var prefix = req.user.id + Math.random().toString(36).slice(2, 10);
@@ -31,6 +33,7 @@ var m_options = multer.diskStorage({ destination : path.join(__dirname, 'uploads
   }
 });
 
+//multer options for uploading a post (user created post)
 var userpost_options = multer.diskStorage({ destination : path.join(__dirname, 'uploads/user_post') ,
   filename: function (req, file, cb) {
     var lastsix = req.user.id.substr(req.user.id.length - 6);
@@ -39,6 +42,7 @@ var userpost_options = multer.diskStorage({ destination : path.join(__dirname, '
   }
 });
 
+//multer options for uploading a user profile image
 var useravatar_options = multer.diskStorage({ destination : path.join(__dirname, 'uploads/user_post') ,
   filename: function (req, file, cb) {
     var prefix = req.user.id + Math.random().toString(36).slice(2, 10);
@@ -112,6 +116,7 @@ app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 app.use(expressStatusMonitor());
+//We do compression on our production server using nginx as a reverse proxy
 //app.use(compression());
 app.use(sass({
   src: path.join(__dirname, 'public'),
@@ -121,6 +126,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressValidator());
+//defines our session
 app.use(session({
   resave: true,
   saveUninitialized: true,
@@ -143,7 +149,8 @@ app.use(passport.session());
 app.use(flash());
 
 
-
+//this allows us to no check CSRF when uploading an image. Its a weird issue that 
+//multer and lusca no not play well together
 app.use((req, res, next) => {
   if ((req.path === '/api/upload') || (req.path === '/post/new') || (req.path === '/account/profile') || (req.path === '/account/signup_info_post')|| (req.path === '/classes')) {
     console.log("Not checking CSRF - out path now");
@@ -154,8 +161,10 @@ app.use((req, res, next) => {
   }
 });
 
+//secruity settings in our http header
 app.use(lusca.xframe('SAMEORIGIN'));
 app.use(lusca.xssProtection(true));
+
 
 app.use((req, res, next) => {
   res.locals.user = req.user;
@@ -170,13 +179,13 @@ app.use((req, res, next) => {
       req.path !== '/bell' &&
       !req.path.match(/^\/auth/) &&
       !req.path.match(/\./)) {
-    console.log("@@@@@path is now");
-    console.log(req.path);
+    //console.log("@@@@@path is now");
+    //console.log(req.path);
     req.session.returnTo = req.path;
   } else if (req.user &&
       req.path == '/account') {
-    console.log("!!!!!!!path is now");
-    console.log(req.path);
+    //console.log("!!!!!!!path is now");
+    //console.log(req.path);
     req.session.returnTo = req.path;
   }
   next();
@@ -184,6 +193,7 @@ app.use((req, res, next) => {
 
 var csrf = lusca({ csrf: true });
 
+//helper function just to see what is in the body
 function check(req, res, next) {
     console.log("@@@@@@@@@@@@Body is now ");
     console.log(req.body);
@@ -191,6 +201,8 @@ function check(req, res, next) {
 }
 
 
+//All of our static files that express willl automatically server for us
+//in production, we have nginx server this instead to take the load off out Node app
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
 app.use('/semantic',express.static(path.join(__dirname, 'semantic'), { maxAge: 31557600000 }));
 app.use(express.static(path.join(__dirname, 'uploads'), { maxAge: 31557600000 }));
@@ -200,8 +212,8 @@ app.use('/profile_pictures',express.static(path.join(__dirname, 'profile_picture
 /**
  * Primary app routes.
  */
-//app.get('/', passportConfig.isAuthenticated, scriptController.getScript);
 
+//main route is the lesson mod selection screen
 app.get('/', passportConfig.isAuthenticated, function (req, res) {
   res.render('mods', {
     title: 'Pick a Lesson'
@@ -210,14 +222,16 @@ app.get('/', passportConfig.isAuthenticated, function (req, res) {
 
 app.get('/results/cyberbullying', passportConfig.isAuthenticated, scriptController.getCyberbullyingResults);
 
-
+//main route for getting the simulation (Free Play) for a given lesson mod
 app.get('/modual/:modId', passportConfig.isAuthenticated, scriptController.getScript);
 
+//post a new user created post
 app.post('/post/new', userpostupload.single('picinput'), check, csrf, scriptController.newPost);
 
 app.post('/account/profile', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, csrf, userController.postUpdateProfile);
 //app.post('/api/upload', upload.single('myFile'), apiController.postFileUpload);
 
+//this is the TOS  
 app.get('/tos', function (req, res) {
   res.render('tos', {
     title: 'TOS'
@@ -327,12 +341,14 @@ app.get('/info', passportConfig.isAuthenticated, function (req, res) {
   });
 });
 
+//test page
 app.get('/test_comment', function (req, res) {
   res.render('test', {
     title: 'Test Comments'
   });
 });
 
+//test a simulation (tutorial or guided activity)
 app.get('/test_sim', function (req, res) {
   res.render('test_sim', {
     title: 'Test Sim'
@@ -443,18 +459,8 @@ app.post('/user', passportConfig.isAuthenticated, actorsController.postBlockOrRe
 app.get('/bell', passportConfig.isAuthenticated, userController.checkBell);
 
 //getScript
-app.get('/feed', passportConfig.isAuthenticated, scriptController.getScript);
+//app.get('/feed', passportConfig.isAuthenticated, scriptController.getScript);
 app.post('/feed', passportConfig.isAuthenticated, scriptController.postUpdateFeedAction);
-
-/**
- * API examples routes.
- */
-app.get('/api', apiController.getApi);
-
-
-///Upload files and get them back
-app.get('/api/upload', apiController.getFileUpload);
-app.post('/api/upload', upload.single('myFile'), apiController.postFileUpload);
 
 /**
  * Error Handler.

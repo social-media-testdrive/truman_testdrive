@@ -4,45 +4,50 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new mongoose.Schema({
-  email: String,
-  password: String,
+  email: String, //user e-mail (not used in TestDrive)
+  password: String, //hashed and salted
   passwordResetToken: String,
   passwordResetExpires: Date,
-  username: { type: String, unique: true },
-  active: {type: Boolean, default: true},
-  isAdmin: {type: Boolean, default: false},
-  isInstructor: {type: Boolean, default: false},
+  username: { type: String, unique: true }, //username, must be unique
+  active: {type: Boolean, default: true}, //currently active? Not used in TestDrive
+  isAdmin: {type: Boolean, default: false}, //is an Admin? (only changed directly in DB)
+  isInstructor: {type: Boolean, default: false}, // is this user an Instructor
 
-  completed: {type: Boolean, default: false},
+  completed: {type: Boolean, default: false}, //not used in TestDrive
 
-  numPosts: { type: Number, default: -1 }, //not including replys
-  numReplies: { type: Number, default: -1 }, //not including posts
-  numActorReplies: { type: Number, default: -1 }, //not including posts
+  //I don't believe these are used for TestDrive. It's mainly used for the Notification functionality
+  numPosts: { type: Number, default: -1 }, //How many posts has this user created? not including replys
+  numReplies: { type: Number, default: -1 }, //How many comments has user made
+  numActorReplies: { type: Number, default: -1 }, //How many times has an actor commented on this user
 
-  lastNotifyVisit: Date,
+  lastNotifyVisit: Date, //date user last visited the site
 
-  mturkID: String,
+  mturkID: String, //not used in TestDrive
 
+//Experimental group of this user
+//Not used in TestDrive
   group: String, //full group type
   ui: String,    //just UI type (no or ui)
   notify: String, //notification type (no, low or high)
 
   tokens: Array,
 
-  blocked: [String],
-  reported: [String],
+  blocked: [String], //actors user has blocked
+  reported: [String], //actors user has reported
 
+  //User created posts
   posts: [new Schema({
-    type: String, //post, reply, actorReply
+    type: String, //post, reply, actorReply (in TestDrive, it's always just a post)
     module: String, //Which lesson module does this belong to
 
     postID: Number,  //number for this post (1,2,3...) reply get -1 maybe should change to a String ID system
     body: {type: String, default: '', trim: true}, //body of post or reply
     picture: String, //picture for post
 
-    replyID: Number, //use this for User Replies
+    replyID: Number, //use this for User Replies (not used in TestDrive)
     reply: {type: Schema.ObjectId, ref: 'Script'}, //Actor Post reply is to =>
 
+    //not used in testDrive
     actorReplyID: Number, //An Actor reply to a User Post
     actorReplyOBody: String, //Original Body of User Post
     actorReplyOPicture: String, //Original Picture of User Post
@@ -51,35 +56,36 @@ const userSchema = new mongoose.Schema({
 
     //Actor Comments for User Made Posts
     comments: [new Schema({
-      //class: String, //Bully, Marginal, normal, etc
       actor: {type: Schema.ObjectId, ref: 'Actor'},
-      body: {type: String, default: '', trim: true}, //body of post or reply
+      body: {type: String, default: '', trim: true}, //body of comment
       commentID: Number, //ID of the comment
-      time: Number,//millisecons
-      absTime: Number,//millisecons
+      time: Number,//reletive in millisecons
+      absTime: Number,//absolute time in millisecons (time in took place in real world)
       new_comment: {type: Boolean, default: false}, //is new comment
-      isUser: {type: Boolean, default: false}, //is this a comment on own post
+      isUser: {type: Boolean, default: false}, //is this a user comment on their own post
       liked: {type: Boolean, default: false}, //has the user liked it? 
       flagged: {type: Boolean, default: false},//is Flagged?
-      likes: Number
+      likes: Number //number of likes this comment has
       }, { versionKey: false })],
 
-    absTime: Date,
+    absTime: Date, //absolute date (time in real world), this post took place in
     relativeTime: {type: Number}
     })],
 
+  //logins user made to site
   log: [new Schema({
     time: Date,
     userAgent: String,
     ipAddress: String
     })],
 
+  //quiz results (new workflow will not have this)
   quiz: [new Schema({
     type: String,
     modual: String,
     score: Number
     })],
-
+  //evaluation quiz results (not in new workflow, may be added later)
   eval_quiz: [new Schema({
     question: String,
     type: String,
@@ -87,11 +93,13 @@ const userSchema = new mongoose.Schema({
     val: Number
     })],
 
+  //pages user has visited. Not sure if this is used in TestDrive
   pageLog: [new Schema({
     time: Date,
     page: String
     })],
 
+  //When and why someone reported an actor
   blockAndReportLog: [new Schema({
     time: Date,
     action: String,
@@ -99,18 +107,20 @@ const userSchema = new mongoose.Schema({
     actorName: String
     })],
 
+  //all actions a user can make in a feed
   feedAction: [new Schema({
-        post: {type: Schema.ObjectId, ref: 'Script'},
-        modual: String, //which class is this modual
-        postClass: String,
-        rereadTimes: Number, //number of times post has been viewed by user
-        startTime: Number, //always the newest startTime (full date in ms)
-        liked: {type: Boolean, default: false},
-        readTime : [Number],
-        flagTime  : [Number],
-        likeTime  : [Number],
-        replyTime  : [Number],
+        post: {type: Schema.ObjectId, ref: 'Script'}, //which post did the user interact with?
+        modual: String, //which lesson mod did this take place in?
+        postClass: String, //class of the post itself (don't think this is used anymore)
+        rereadTimes: Number, //number of times post has been viewed by user (not used in TestDrive)
+        startTime: Number, //always the newest startTime (full date in ms) (not used in TestDrive)
+        liked: {type: Boolean, default: false}, //did the user like this post in the feed?
+        readTime : [Number], //array of how long a user read a post. Each read is a new element in this array
+        flagTime  : [Number], //same but for flagging
+        likeTime  : [Number], //same but for liking
+        replyTime  : [Number], //same but for commenting
 
+        //user created comment on an actor's post (fake post)
         comments: [new Schema({
           comment: {type: Schema.ObjectId},//ID Reference for Script post comment
           liked: {type: Boolean, default: false}, //is liked?
@@ -127,12 +137,13 @@ const userSchema = new mongoose.Schema({
           },{_id: true, versionKey: false })]
     }, {_id: true, versionKey: false })],
 
+  //users profile
   profile: {
     name: String,
     gender: String,
     location: String,
     bio: String,
-    website: String,
+    website: String, //I don't believe this has ever been used
     picture: String
   }
 }, { timestamps: true });
@@ -218,7 +229,8 @@ userSchema.methods.getPosts = function getPosts() {
 };
 
 /**
- * Helper method for getting all User Posts.
+ * Helper method for getting all User replies.
+ no longer needed in Truman or TestDrive
  */
 userSchema.methods.getReplies = function getReplies() {
   var temp = [];
@@ -235,7 +247,8 @@ userSchema.methods.getReplies = function getReplies() {
 };
 
 /**
- * Helper method for getting all User Posts.
+ * Helper method for getting all User Posts in a lesson mod
+ This way posts made in one lesson mod don't show up in another
 */
 userSchema.methods.getModPosts = function getModPosts(module) {
   var temp = [];
@@ -252,7 +265,8 @@ userSchema.methods.getModPosts = function getModPosts(module) {
 };
 
 /**
- * Helper method for getting all User Replies from Mod.
+ * Helper method for getting all User Replies from Lesson Mod.
+ not needed anymore now that we have comments instead of replies
  */
 userSchema.methods.getModReplies = function getModReplies(module) {
   var temp = [];
@@ -288,7 +302,8 @@ userSchema.methods.getPostsAndReplies = function getPostsAndReplies() {
 };
 
 /**
- * Helper method for getting all User Posts and replies.
+ * Helper method for getting all User Posts and replies for a lesson mod
+ not needed now
  */
 userSchema.methods.getModPostsAndReplies = function getModPostsAndReplies(module) {
   var temp = [];
@@ -313,14 +328,14 @@ userSchema.methods.getUserPostByID = function(postID) {
 
 };
 
-//Return the user post from its ID
+//Return the user pre-quiz result from its ID
 userSchema.methods.getUserPreQuizScore = function(modual) {
   
   return  this.quiz.find(x => ((x.modual == modual) && (x.type == "pre")));
 
 };
 
-//Return the user post from its ID
+//Return the user post-quiz result from its ID
 userSchema.methods.getUserPostQuizScore = function(modual) {
   
   return  this.quiz.find(x => ((x.modual == modual) && (x.type == "post")));
@@ -328,14 +343,14 @@ userSchema.methods.getUserPostQuizScore = function(modual) {
 };
 
 
-//Return the user reply from its ID
+//Return the user reply from its ID, not needed now
 userSchema.methods.getUserReplyByID = function(replyID) {
   
   return this.posts.find(x => x.replyID == replyID);
 
 };
 
-//Return the user reply from its ID
+//Return the actor reply from its ID - not needed now
 userSchema.methods.getActorReplyByID = function(actorReplyID) {
   
   return this.posts.find(x => x.actorReplyID == actorReplyID);
@@ -367,13 +382,3 @@ userSchema.methods.gravatar = function gravatar(size) {
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
-
-/* Garbage snips
-    new Schema({ //{type: Schema.ObjectId, ref: 'Script'},
-      body: {type: String, default: '', trim: true},
-      picture: String,
-      time: Number,
-      actorName: String,
-      actorPicture: String,
-      actorUserName: String}),
-    */
