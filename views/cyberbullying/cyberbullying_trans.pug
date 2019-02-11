@@ -5,16 +5,40 @@ block content
   .ui.text.container
     br
     h3 Let’s recap what we have just learned!
-    p <b>Cyberbullying</b> is when someone posts or shares negative things about someone else online. The bully may use digital devices, sites, or apps. The bully often does this again and again to the same person.
 
-    p An <b>upstander</b> will confront the bully, or support and defend the target.
-
-    p You can also <b>flag the comment</b> or <b>tell a trusted adult</b>.
-
-
-    .ui.big.green.labeled.icon.button.cybertrans_script
-        i.rocket.icon
-        |   Got it!
+    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+        .ui.big.green.labeled.icon.button
+            i.rocket.icon
+            |   Got it!
+    br
+    br
+    br
+    block scripts
+  script().
+    function startIntro(){
+        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true });
+          intro.setOptions({
+            steps: [
+              { 
+                intro: "Cyberbullying is when someone posts or shares negative things about someone else online. The bully may use digital devices, sites, or apps. The bully often does this again and again to the same person"
+              },
+              {
+                intro: "An upstander will confront the bully, or support and defend the target."
+            
+              },
+              { 
+               
+                intro: "You can also flag the comment or tell a trusted adult"
+                
+              }
+              
+            ]
+          });
+          intro.start().onexit(function() {
+          window.location.href='/trans_script/cyberbullying';
+        });
+          
+      };
     br
     br
     br

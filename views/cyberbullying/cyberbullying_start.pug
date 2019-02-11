@@ -4,17 +4,45 @@ block content
 
   .ui.text.container
     br
-    h3 Welcome to the Cyberbullying lesson!
-    p We’ll review a few key terms and show you ways to handle cyberbullying if you see it. Then you’ll have time to explore the LearnLove.Life timeline!
-    p <b>Cyberbullying</b> is when someone posts or shares negative things about someone else online. The bully may use digital devices, sites, or apps. The bully often does this again and again to the same person.
-    p A <b> Bully</b> is someone who hurts a person or a group on purpose more than once.
-    p A <b>Target</b> is someone who is being bullied.
-    p An <b>upstander</b> is someone who acts against bullying. An upstander might confront the bully or tell a trusted adult. An upstander might support the person being bullied by checking in with them or defending them.
+    h3 Welcome to the LearnLove.Life social media site!
+    p#step  Before you get started, let’s go over some important rules of the road when using social media. We will review a few key terms and show you ways to handle cyberbullying if you see it. Then you will have time to explore the LearnLove.Life timeline!
 
-    .ui.big.green.labeled.icon.button.cyberstart
-        i.rocket.icon
-        |   Got it!
+    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+        .ui.big.green.labeled.icon.button
+            i.rocket.icon
+            |   Got it!
     br
     br
     br
+    block scripts
+  script().
+    function startIntro(){
+        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true });
+          intro.setOptions({
+            steps: [
+              { 
+                intro: "cyberbullying is when someone posts or shares negative things about someone else online. The bully may use digital devices, sites, or apps. The bully often does this again and again to the same person."
+              },
+              {
+                intro: "A bully is someone who hurts a person or a group on purpose more than once."
+            
+              },
+              { 
+               
+                intro: "A target is someone who is being bullied."
+                
+              },
+              { 
+                intro: "An upstander is someone who acts against bullying. An upstander might confront the bully or tell a trusted adult. An upstander might support the person being bullied by checking in with them or defending them."
+              }
+              
+            ]
+          });
+          intro.start().onexit(function() {
+          window.location.href='/tutorial/cyberbullying';
+        });
+          
+      };
+
+      //$(window).on("load", function() {startIntro();});
 

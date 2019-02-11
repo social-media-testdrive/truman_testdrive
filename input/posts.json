@@ -10,23 +10,13 @@
     "likes": ""
   },
   {
-    "id": 2,
-    "body": "My siblings are so cuteeeeeee",
-    "picture": "cutesiblings.jpg",
-    "actor": "Claire.cuddlybear",
-    "module": "cyberbullying",
-    "type": "neutral",
-    "time": "-0:16",
-    "likes": ""
-  },
-  {
     "id": 4,
     "body": "No one likes you. Why do you come to school? @<a href=\"https://test.learnlove.life/user/DylanCrazzzzzy\">Dylan Goldstein</a>",
     "picture": "blackbkg.jpg",
     "actor": "ella_vaderrr",
     "module": "cyberbullying",
     "type": "negative",
-    "time": "-1:15",
+    "time": "-0:37",
     "likes": ""
   },
   {
@@ -36,7 +26,7 @@
     "actor": "goaliegirl",
     "module": "cyberbullying",
     "type": "negative",
-    "time": "-1:01",
+    "time": "-0:16",
     "likes": ""
   },
   {
@@ -46,37 +36,7 @@
     "actor": "DylanCrazzzzzy",
     "module": "cyberbullying",
     "type": "negative",
-    "time": "-0:42",
-    "likes": ""
-  },
-  {
-    "id": 8,
-    "body": "Just got back from church with my best friend",
-    "picture": "churchbestfriends.jpg",
-    "actor": "morning-tea-and-books",
-    "module": "cyberbullying",
-    "type": "neutral",
-    "time": "-1:39",
-    "likes": ""
-  },
-  {
-    "id": 9,
-    "body": "So excited for winter break!",
-    "picture": "winterbreak.jpg",
-    "actor": "arihearts",
-    "module": "cyberbullying",
-    "type": "neutral",
-    "time": "-1:36",
-    "likes": ""
-  },
-  {
-    "id": 10,
-    "body": "great nite with my boys!!!!! haha Carter looks stupid in this pic",
-    "picture": "sillypic.jpg",
-    "actor": "cool.kid5386",
-    "module": "cyberbullying",
-    "type": "neutral",
-    "time": "-1:33",
+    "time": "-0:33",
     "likes": ""
   },
   {
@@ -86,27 +46,7 @@
     "actor": "memeking",
     "module": "cyberbullying",
     "type": "negative",
-    "time": "-1:59",
-    "likes": ""
-  },
-  {
-    "id": 12,
-    "body": "my math teacher is SO NOT CHILL",
-    "picture": "teacheremoji.jpg",
-    "actor": "neenz03",
-    "module": "cyberbullying",
-    "type": "neutral",
-    "time": "-1:27",
-    "likes": ""
-  },
-  {
-    "id": 13,
-    "body": "back of the bus crewwwwwww only losers sit in the front ahhah",
-    "picture": "backofthebus.jpg",
-    "actor": "ryguy76",
-    "module": "cyberbullying",
-    "type": "negative",
-    "time": "-1:24",
+    "time": "-0:43",
     "likes": ""
   },
   {
@@ -120,26 +60,6 @@
     "likes": ""
   },
   {
-    "id": 15,
-    "body": "You looks so dumb in this pic @<a href=\"https://test.learnlove.life/user/aaahhh\">Aidan Acosta</a>",
-    "picture": "groupphoto.jpg",
-    "actor": "goaliegirl",
-    "module": "cyberbullying",
-    "type": "negative",
-    "time": "-1:18",
-    "likes": ""
-  },
-  {
-    "id": 17,
-    "body": "My dog is sooo cute!!!",
-    "picture": "cute_dog.jpg",
-    "actor": "arihearts",
-    "module": "cyberbullying",
-    "type": "neutral",
-    "time": "-1:12",
-    "likes": ""
-  },
-  {
     "id": 20,
     "body": "What a cool picture of our theater! Anyone want to go to the movies tomorrow? :D",
     "picture": "coolmovies.jpeg",
@@ -147,16 +67,6 @@
     "module": "cyberbullying",
     "type": "neutral",
     "time": "-1:03",
-    "likes": ""
-  },
-  {
-    "id": 22,
-    "body": "Turning 12 🎉",
-    "picture": "birthdaypic.jpg",
-    "actor": "dannyboii",
-    "module": "cyberbullying",
-    "type": "neutral",
-    "time": "-0:57",
     "likes": ""
   },
   {
@@ -277,16 +187,6 @@
     "module": "cyberbullying",
     "type": "neutral",
     "time": "-0:09",
-    "likes": ""
-  },
-  {
-    "id": 39,
-    "body": "after the rain...",
-    "picture": "u5p2.jpg",
-    "actor": "kilani244",
-    "module": "cyberbullying",
-    "type": "neutral",
-    "time": "-0:06",
     "likes": ""
   },
   {

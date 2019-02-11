@@ -136,7 +136,10 @@ block content
         .ui.reply.button(tabindex='0')
           i.reply.icon
           |                             Reply
-        .ui.flag.button(data-hint="Press the “flag” button to report this post to the website.", data-position="bottom-left")
+        //.ui.flag.button(data-hint="Press the “flag” button to report this post to the website.", data-position="bottom-left")
+          i.flag.icon
+          |                             Flag
+        .ui.flag.button()
           i.flag.icon
           |                             Flag
         .ui.labeled.button(tabindex='0')
@@ -166,7 +169,7 @@ block content
           .ui.label
             img.ui.avatar.image(src='/profile_pictures/bub.jpg' name='Dominic')
           input.newcomment(type='text' placeholder='Write a Comment', data-hint='Let’s tell the bully that this behavior is not okay. Copy and paste the following comment: “Guys, Sarah will be very upset if she sees this post. You should delete it.', data-position="bottom-left")
-          i.big.send.link.icon
+          i.big.send.link.icon(data-hint="Press the “flag” button above to report this post to the website.", data-position="bottom-left")
     //-##########
     //-.ui.fluid.card.test(postID="3")
           .content
@@ -232,7 +235,7 @@ block scripts
                 intro: "Lana and Emma are in the same class at school. Recently, Emma has been saying a lot of mean things to Lana. Here is an example of what has been going on."
               },
               { 
-                intro: "Which of these is an example of cyberbullying? Click on the blue dots around the posts to learn more about Cyberbullying and what you can do about it."
+                intro: "Which of these is an example of cyberbullying? Click on the blue dots around the posts to learn more about cyberbullying and what you can do about it."
               }
               
             ]
