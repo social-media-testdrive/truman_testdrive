@@ -11,17 +11,34 @@ const _ = require('lodash');
 const dotenv = require('dotenv');
 var mongoose = require('mongoose');
 var fs = require('fs')
-
+const CSVToJSON = require("csvtojson");
 //input files
 /********
 TODO:
 Use CSV files instead of json files
 use a CSV file reader and use that as input
 ********/
+var actors_list //= require('./input/actors.json');
+var posts_list //= require('./input/posts.json');
+var comment_list //= require('./input/comments.json');
+async function readData() {
+    try {        
+        //synchronously read all csv files and convert them to JSON
+        await console.log("Start reading data from .csv files")
+         actors_list = await CSVToJSON().fromFile('./input/bots.csv');
+         posts_list = await CSVToJSON().fromFile('./input/allposts.csv');
+         comment_list = await CSVToJSON().fromFile('./input/allreplies.csv');
 
-var actors_list = require('./input/actors.json');
-var posts_list = require('./input/posts.json');
-var comment_list = require('./input/comments.json');
+        //synchronously write all converted JSON output to .json files incase for future use
+        // fs.writeFileSync("./input/bots.json", JSON.stringify(actors_list));
+        // fs.writeFileSync("./input/allposts.json", JSON.stringify(posts_list));
+        // fs.writeFileSync("./input/allreplies.json", JSON.stringify(comment_list));
+        await console.log("Converted data to json")
+    } catch (err) {
+        console.log('Error occurred in reading data from csv files', err);
+    }
+}
+
 
 dotenv.load({ path: '.env' });
 
@@ -323,6 +340,7 @@ Once all done, stop the program (Be sure to close the mongoose connection)
 */
 async function loadDatabase() {
     try {
+        await readData(); //read data from csv files and convert it to json for loading
         await promisify(dropCollections); //drop existing collecions before loading data
         await promisify(createActorInstances);
         await promisify(createPostInstances);
@@ -331,7 +349,6 @@ async function loadDatabase() {
         console.log('Error occurred in Loading', err);
     }
 }
-
 
 // createActorInstances()
 // createPostInstances()
