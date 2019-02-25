@@ -118,6 +118,7 @@ exports.getScript = (req, res, next) => {
                     if (user.feedAction[feedIndex].comments[i].new_comment)
                     {
                       
+                      console.log("Adding a new Comment by the USER");
                       var cat = new Object();
                       cat.body = user.feedAction[feedIndex].comments[i].comment_body;
                       cat.new_comment = user.feedAction[feedIndex].comments[i].new_comment;
@@ -126,7 +127,7 @@ exports.getScript = (req, res, next) => {
                       cat.likes = 0;
 
                       script_feed[0].comments.push(cat);
-                      //console.log("Already have COMMENT ARRAY");
+                      console.log("Already have COMMENT ARRAY");
                 
 
                     }

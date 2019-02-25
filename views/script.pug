@@ -38,30 +38,6 @@ block content
           img.ui.avatar.image(src=user.gravatar(60))
       input(type='text', placeholder='Create a post')
       i.big.photo.link.icon
-
-    // if profile_card != -1
-      .ui.raised.fluid.card.profile_card(postID=profile_card.username, transparency='no', profile="yes") 
-        //-h3.ui.center.aligned.header(style="background-image: url('/public/checkered4.png');background-size: contain;")
-          br
-          a.pro_name_link(href='/user/'+profile_card.username)
-            img.ui.centered.tiny.circular.image.pro_name_image(src='/profile_pictures/'+profile_card.pro_image)
-          br
-        .content.pro(style="background-image: url('/public/checkered6.png');background-size: cover;")
-          .center.aligned
-            a.pro_name_link(href='/user/'+profile_card.username)
-              img.ui.centered.small.circular.image.pro_name_image(src='/profile_pictures/'+profile_card.pro_image)
-        .content(style="white-space:nowrap;")
-          span(style="font-size:150%;font-weight: bold;")="What's on "
-          a.pro_name_link(href='/user/'+profile_card.username)
-            span(style="font-size:150%;").pro_name=profile_card.name
-          span(style="font-size:150%;")="'s plate? "
-          br
-          span(style="white-space:normal;")=(user.profile.name || user.username)+", we care about helping you connect with others. Browse through "+profile_card.name+"'s posts. Imagine how "+profile_card.name+" feels and what is going on in " +profile_card.pronoun+" life."
-        .content()
-          .ui.three.column.grid.pro
-            each post in profile_card.posts
-              .column.profile(body=post.body, time=post.time)
-                img.ui.fluid.image(src="/post_pictures/"+post.picture)
   
     each val in script
       //- create a card for each post in val (if by user make the card a little different)
@@ -234,52 +210,51 @@ block content
               .ui.comments
                 each comment in val.comments
                   //-IF this comment is USER made, do this
-                  if (Date.now() + comment.time) < Date.now()
-                    if comment.new_comment
-                      -console.log("New COMMENT AREA");
-                      .comment(commentID=comment.new_comment_id)
-                        a.avatar.image(href='/me')
-                          if user.profile.picture
-                            img(src='/profile_pictures/'+user.profile.picture)
-                          else
-                            img(src=user.gravatar(60))
-                        .content
-                          a.author(href='/me')=user.profile.name || user.username || user.id
-                          .metadata
-                            span.date.sim=(Date.now() + comment.time)
-                            .rating
-                              i.heart.icon
-                              span.num=0
-                              |  Likes
-                          .text=comment.body
-                          .actions
-                            a.like.comment Like
-                            a.flag.comment Flag
-                    //- Else this is a normal comment from the script
-                    else
-                      .comment(commentID=comment.id)
-                        a.avatar(href='/user/'+comment.actor.username)
-                          img(src='/profile_pictures/'+comment.actor.profile.picture)
-                        .content
-                          a.author(href='/user/'+comment.actor.username)=comment.actor.profile.name
-                          .metadata
-                            span.date.sim=(Date.now() + comment.time)
-                            .rating
-                              if comment.liked
-                                i.red.heart.icon
-                                span=comment.likes
-                                |  Likes 
-                              else
-                                i.heart.icon
-                                span.num=comment.likes
-                                |  Likes
-                          .text=comment.body
-                          .actions
+                  if comment.new_comment
+                    -console.log("New COMMENT AREA");
+                    .comment(commentID=comment.new_comment_id)
+                      a.avatar.image(href='/me')
+                        if user.profile.picture
+                          img(src='/profile_pictures/'+user.profile.picture)
+                        else
+                          img(src=user.gravatar(60))
+                      .content
+                        a.author(href='/me')=user.profile.name || user.username || user.id
+                        .metadata
+                          span.date.sim=(Date.now() + comment.time)
+                          .rating
+                            i.heart.icon
+                            span.num=0
+                            |  Likes
+                        .text=comment.body
+                        .actions
+                          a.like.comment Like
+                          a.flag.comment Flag
+                  //- Else this is a normal comment from the script
+                  else
+                    .comment(commentID=comment.id)
+                      a.avatar(href='/user/'+comment.actor.username)
+                        img(src='/profile_pictures/'+comment.actor.profile.picture)
+                      .content
+                        a.author(href='/user/'+comment.actor.username)=comment.actor.profile.name
+                        .metadata
+                          span.date.sim=(Date.now() + comment.time)
+                          .rating
                             if comment.liked
-                              a.red.like.comment Like
+                              i.red.heart.icon
+                              span=comment.likes
+                              |  Likes 
                             else
-                              a.like.comment Like
-                            a.flag.comment Flag
+                              i.heart.icon
+                              span.num=comment.likes
+                              |  Likes
+                        .text=comment.body
+                        .actions
+                          if comment.liked
+                            a.red.like.comment Like
+                          else
+                            a.like.comment Like
+                          a.flag.comment Flag
           .extra.content
             if user.comment_prompt == "yes"
               .description(style="text-align:center;background:#E8E8E8")="How is "+val.actor.profile.name+" Feeling?"
