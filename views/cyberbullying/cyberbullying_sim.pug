@@ -221,13 +221,15 @@ block content
                 img.ui.avatar.image(src='/profile_pictures/bub.jpg' name='Dominic')
               input.newcomment(type='text', placeholder='Write a Message')
               i.big.send.link.icon
-    .ui.big.green.labeled.icon.button.cybertrans
+    button.ui.big.labeled.icon.button.cybertrans
           i.rocket.icon
           |   Let's Continue!
 
 block scripts
   script().
     function startIntro(){
+        var hints;
+        var counter = 0;
         var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
           intro.setOptions({
             steps: [
@@ -241,7 +243,12 @@ block scripts
             ]
           });
           intro.start().onexit(function() {
-          introJs().addHints();
+          hints = introJs().addHints();
+          console.log('hints added')
+          hints.onhintclose(function(e) {
+           counter++;
+           if(counter == 4) {$( ".cybertrans" ).addClass("green");}
+          });
         });
           
       };
