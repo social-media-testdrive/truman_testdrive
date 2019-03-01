@@ -13,8 +13,10 @@ exports.getScript = (req, res, next) => {
   //req.user.createdAt
   var time_now = Date.now();
   var time_diff = time_now;
+
   
-  var time_limit = time_diff - 86400000; //one day in milliseconds
+  
+  var time_limit = time_diff - 86400000; 
 
   var user_ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   var userAgent = req.headers['user-agent']; 
