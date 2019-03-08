@@ -270,7 +270,9 @@ $(window).on("load", function () {
   //finish
   $('.ui.big.green.labeled.icon.button.finish')
     .on('click', function () {
+      $.post("/deleteUserFeedActions", {_csrf: $('meta[name="csrf-token"]').attr('content') });
       window.location.href = '/';
+
     });
 
 
