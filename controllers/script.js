@@ -1236,3 +1236,33 @@ exports.postUpdateFeedAction = (req, res, next) => {
     });
   });
 };
+
+
+
+
+/**
+ * POST /deleteUserFeedActions/
+ * Delete user's feed posts Actions.
+ All likes, flags, new comments (with actions on those comments as well)
+ gets deleted here
+ */
+exports.postDeleteFeedAction = (req, res, next) => {
+  console.log("Deleting user feed posts Actions")
+  User.findById(req.user.id, (err, user) => {
+    //somehow user does not exist here
+    if (err) { return next(err); }
+    console.log("@@@@@@@@@@@  /deleteUserFeedActions req body  ", req.body);
+    
+    user.feedAction =[];
+    user.save((err) => {
+      if (err) {
+        if (err.code === 11000) {
+          req.flash('errors', { msg: 'Something in delete feedAction went crazy. You should never see this.' });
+          return res.redirect('/');
+        }
+        return next(err);
+      }      
+      res.send({result:"success"});
+    });
+  });
+};
