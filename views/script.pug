@@ -182,8 +182,10 @@ block content
             img(src="image.png" style="position: absolute; z-index: 2;")
             span#overlay_text(style="position: relative; top: -10px; z-index: 3;") OVERLAY
           .img.post
-            //-img.post(src="/"+val.picture)
+            //-img.post(src="/"+val.picture)           
             img(src='/picture.svg', data-src="/"+val.picture, style="max-width:100%;")
+            //.read.rounded.right.floated.info_button(id="info_"+val.id,style="z-index:12;text-align:center;position:relative;bottom:10px;width:7%;height:auto")
+              i.info.icon
           .content
             .description!=val.body
           .three.ui.bottom.attached.icon.buttons
@@ -329,7 +331,7 @@ block content
           input(type='hidden', name='_csrf', value=_csrf) 
           input(type='hidden', name='module', value=mod)  
           .field  
-            textarea(rows='2', placeholder='Share Somthing', name='body') 
+            textarea(rows='2',placeholder='What do you want to share?',name='body')
           .field.image-upload 
             label(for='picinput') 
               .image.content  
@@ -338,4 +340,25 @@ block content
             input#picinput(type='file', accept='image/*', name='picinput')  
           .ui.error.message 
       .actions  
-        input.ui.green.button(type='submit', name="foo", value='Submit', form='postform')
+        input.ui.green.button(type='submit', name="foo", value='Post', form='postform')
+
+
+    //- View Post Info Modal  
+    .ui.small.info.modal  
+      i.close.icon  
+      .header Info about post  
+      .content
+          .field
+            h2.ui.header
+              i.large.icons
+                i.google.icon
+                i.bottom.left.corner.search.icon            
+              | Search on Google
+            h2.ui.header
+              i.large.icons
+                i.wikipedia.icon
+                i.bottom.left.corner.share.icon            
+              | Go to Wikipedia
+            //- textarea(rows='2', placeholder='Some Info', name='body')          
+      .actions  
+        input.ui.green.button(value='Ok', name="foo",type='submit')
