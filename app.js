@@ -335,6 +335,12 @@ app.get('/com', function (req, res) {
   });
 });
 
+app.get('/privacy', function (req, res) {
+  res.render('pp', {
+    title: 'Privacy Policy'
+  });
+});
+
 app.get('/info', passportConfig.isAuthenticated, function (req, res) {
   res.render('info', {
     title: 'User Docs'
