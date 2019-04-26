@@ -1,0 +1,63 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container
+    br
+    .column
+      .ui.raised.segment
+        .ui.blue.ribbon.label
+          h3
+            i.history.icon
+            | &nbsp Let’s recap what we have just learned !
+        br
+        br
+        ui.bulleted.list
+          .item
+            h5
+              i.arrow.circle.right.blue.icon
+              |  It's important to know how to spot fake news on social media so you can stop it from spreading. Look out for clickbait headlines, suspicious sources, and excessive grammatical errors.
+          br
+
+          .item
+            h5
+              i.arrow.circle.right.blue.icon
+              | Once you've done that, be sure to read the article more closely and check the source. You should also look for corroboration by finding other credible articles that have the same claims. 
+
+    
+    br
+    br
+    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+        .ui.big.green.labeled.icon.button
+            i.rocket.icon
+            |   Got it!
+    br
+    br
+    br
+    block scripts
+  script().
+    function startIntro(){
+        //- var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
+        //-   intro.setOptions({
+        //-     steps: [
+        //-       { 
+        //-         intro: "<b>Cyberbullying</b> is when someone posts or shares negative things about someone else online. The <b>bully</b> may use digital devices, sites, or apps. The bully often does this again and again to the same person"
+        //-       },
+        //-       {
+        //-         intro: "An <b>upstander</b> will confront the bully, or support and defend the target."
+            
+        //-       },
+        //-       { 
+               
+        //-         intro: "You can also <b>flag</b> the comment or tell a trusted adult."
+                
+        //-       }
+              
+        //-     ]
+        //-   });
+        //-   intro.start().onexit(function() {
+        //-   window.location.href='/trans_script/digital-literacy';
+        //- });
+        window.location.href='/trans_script/digital-literacy';
+
+      };

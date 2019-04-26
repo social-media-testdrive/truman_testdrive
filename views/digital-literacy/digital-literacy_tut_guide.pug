@@ -1,0 +1,160 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container
+    br
+    
+    h2.ui.header
+      i.check.square.outline.green.icon
+      .content Here are things you can do next to determine the credibility of an article.
+        .sub.header 
+          i.eye.icon 
+          span Read and check all the boxes
+    
+    .ui.message.negative.transition.hidden
+      i.close.icon
+      .header
+        | Read and select all boxes to proceed!
+          
+    .ui.styled.fluid.accordion
+      #point1.title.active
+        i.dropdown.icon
+        |     Check out the website that the news article comes from.
+      .active.content.ui.list
+          .item
+            #protip1.ui.floated.compact.segment
+              .ui.fitted.large.checkbox
+                input.ui(type="checkbox" checked="")
+            .label If the website is part of a credible news, academic (ends with “.edu”), or governmental (ends with “.gov”) organization, this is a sign that the article is credible.
+          br
+          .item
+            #protip2.ui.floated.compact.segment
+              .ui.fitted.large.checkbox
+                input.ui(type="checkbox")
+            .label You can also look at the “About Us” page to learn more about the website and who is writing the articles.
+          .item
+            #point1_button.button.ui.mini.green.right.labeled.icon.button
+              i.down.arrow.icon
+              |   Next
+      #point2.title
+        i.dropdown.icon
+        |     Look at the contents of the article.
+      .content.ui.list
+          .item
+            #protip3.ui.floated.compact.segment
+              .ui.fitted.large.checkbox
+                input.ui(type="checkbox" id="")
+            .label If the information in the article is very surprising, even unbelievable, be suspicious that it might be fake news.
+
+          .item
+            #protip4.ui.floated.compact.segment
+              .ui.fitted.large.checkbox
+                input.ui(type="checkbox"  id="")
+            .label Excessive spelling or grammar errors are other signs that this might not be a credible article.
+          .item
+              #point2_button.button.ui.mini.green.right.labeled.icon.button
+                i.down.arrow.icon
+                |   Next
+      #point3.title
+        i.dropdown.icon
+        |     Corroborate key points with other credible websites.
+      .content.ui.list
+          .item
+            #protip5.ui.floated.compact.segment
+              .ui.fitted.large.checkbox
+                input.ui(type="checkbox")
+            .label As a next step, you can find an additional credible source or article that confirms or supports a news article. To do this, search for the same topic on websites such as Snopes.com, Wikipedia, and major news websites.
+          .item
+              #point3_button.button.ui.mini.green.right.labeled.icon.button
+                i.down.arrow.icon
+                |   Next          
+    br
+    br
+    .ui.big.labeled.icon.button.cybersim
+        i.rocket.icon
+        |   Got it!
+    br
+    br
+    br
+block scripts
+  script().
+    $('.ui.accordion').accordion();   
+
+    setTimeout(function(){
+      $('.sub.header').transition('shake');    
+    
+    }, 1500);
+
+    setTimeout(function(){
+      $('#point1').transition('shake');    
+    }, 2500);
+
+
+    $('#point1_button').on('click', function () {
+      if (($('#protip1 .checkbox input')[0].checked) && 
+                          ($('#protip2 .checkbox input')[0].checked)){
+        $('#point2').transition('shake');
+        $('#point2').click();
+      }
+      else {
+        $('.ui.message').addClass('visible')
+        .delay(3000)
+        .queue(function() {
+          $(this).removeClass('visible').dequeue();
+        });
+      }
+     });
+
+
+    $('#point2_button').on('click', function () {
+      if (($('#protip3 .checkbox input')[0].checked) && 
+                          ($('#protip4 .checkbox input')[0].checked)){
+        $('#point3').transition('shake');
+        $('#point3').click();
+      }
+      else {
+        $('.ui.message').addClass('visible')
+        .delay(3000)
+        .queue(function() {
+          $(this).removeClass('visible').dequeue();
+        });
+      }
+    });
+
+    $('#point3_button').on('click', function () {
+      if (($('input:checked').length) == 
+          ($('input').length)){  
+        $('.ui.big.labeled.icon.button.cybersim').addClass('green');
+        $('.ui.big.green.labeled.icon.button.cybersim').transition('jiggle');
+      }
+      else {
+        $('.ui.message').addClass('visible')
+        .delay(3000)
+        .queue(function() {
+          $(this).removeClass('visible').dequeue();
+        });
+      }
+    });
+
+    //- $('.ui.big.labeled.icon.button.cybersim').on('click', function () {
+    //-     $('.ui.message').addClass('visible')
+    //-     .delay(3000)
+    //-     .queue(function() {
+    //-       $(this).removeClass('visible').dequeue();
+    //-     });
+    //- });    
+
+    $("input").change(function(){
+      if (($('input:checked').length) == 
+            ($('input').length)){
+        $('.ui.big.labeled.icon.button.cybersim').addClass('green');
+        $('.ui.big.labeled.icon.button.cybersim').transition('jiggle');
+      }
+      else{
+        $('.ui.big.labeled.icon.button.cybersim').removeClass('green');
+      }
+    });
+   
+    
+    

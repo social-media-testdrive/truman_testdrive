@@ -1,0 +1,75 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container
+    br
+
+    .ui.raised.segment
+      
+      h3.ui.header
+        i.info.circle.icon
+        .content
+          br
+          | Social media is a great way to get news quickly and easily. Your friends may share articles that are interesting to you, too. But sometimes it can be difficult to determine if the news article can be trusted.
+      h3.ui.header
+        i.search.icon
+        .content Not everything you see on the internet is true! Sometimes people share things on social media that look like news, but the information is not true or trustworthy. It’s very important to learn how to figure out which information is real vs. fake.
+
+
+    .ui.segment
+      h3.ui.header
+        i.question.circle.outline.blue.icon
+        .content
+          | Why does fake news exist?
+      .ui.two.column.relaxed.grid     
+        .column
+          .ui.raised.segment
+            a.ui.blue.ribbon.label
+              h5
+                i.dollar.sign.icon 
+                span Money
+            h5 Each time someone clicks on a news article, the website makes more money. So, websites create news articles that draw people's attention. They don't care whether the information is true or not.
+        .column
+          .ui.raised.segment
+            a.ui.blue.ribbon.label 
+              h5  
+                i.magic.icon 
+                span Influence
+            h5 Other times, people write misleading articles to spread their beliefs, presenting their opinions as facts.        
+    br
+    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+        .ui.big.green.labeled.icon.button
+            i.rocket.icon
+            |   Got it!
+    br
+    br
+    br
+    block scripts
+  script().
+    function startIntro(){
+        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true , 'doneLabel':'Done &#10003'});
+          intro.setOptions({
+            steps: [
+              { 
+                intro: "<b>Source</b>: the website, organization, or person the information comes from"
+              },
+              {
+                intro: "<b>Credible</b>: able to be believed; trustworthy"
+              },
+              { 
+                intro: "<b>Fake news</b> : A news story that looks real but has been made up."
+              },
+              { 
+                intro: "<b>Clickbait</b>: an article that has a catchy headline to get people to click on it."
+              }              
+            ]
+          });
+          intro.start().onexit(function() {
+          window.location.href='/tutorial/digital-literacy';
+        });
+          
+      };
+
+      //$(window).on("load", function() {startIntro();});
+

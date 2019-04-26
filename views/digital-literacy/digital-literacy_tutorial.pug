@@ -1,0 +1,109 @@
+
+extends ../ui_layout
+  
+block content
+  .computer.only.tablet.only.four.wide.column 
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
+
+    .ui.fluid.card.dim()
+      .ui.dimmer.flag
+        .content
+          .center
+            h2.ui.inverted.icon.header
+              i.red.flag.icon
+              |                                     You &apos;ve flagged this!
+              h3.ui.inverted.header
+                span The admins will review this post further. We are sorry you had this experience.
+      .content
+        .right.floated.meta= "Yesterday"
+        a(href='#')
+              img.ui.avatar.image(src='/profile_pictures/user55.jpg')
+              span='Lana Reed'
+      .img.post        
+        img(src='/infolittutorial1.png' style='max-width:100%;')
+      .content(style="background:rgba(0, 0, 0, 0.05);")
+          .read.rounded.right.floated.info_button(id="info_tut_1",style="z-index:12;text-align:center;position:relative;bottom:10px;width:7%;height:auto")
+            i.info.icon
+          .a#step3(href='#',onclick='return false;')
+            | WWW.NEWSNETWORK.COM.CO
+          .header#step1 7 States Will Vote Today to Make Homework ILLEGAL for All Middle Schoolers.   
+      .extra.content
+          p              
+          .description="BREAKING: 7 States Will Vote Today to Make Homework ILLEGAL!!!!"
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |                             Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |                             Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |                                 Like
+          a.ui.basic.red.left.pointing.label.count 2
+      .content
+        .ui.comments
+          .comment(commentid='5bbd01d88a48061a73337b96')
+            a.avatar
+              img(src='/profile_pictures/user66.jpeg')
+            .content
+              a.author Emma Hanson
+              .metadata
+                span.date 1543985371299
+                .rating
+                  i.heart.icon
+                  span.num 1
+                  |                                             Likes
+              .text omg this is really scary
+              .actions
+                a.like.comment Like
+                a.flag.comment Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment', data-hint="Let’s send a supportive message to the target. Copy and paste the following comment: <i>“Lana, a lot of people think math is hard! Don’t worry about it”</i>.", data-position="bottom-left")
+          i.big.send.link.icon
+    //-#######################
+
+block scripts
+  script().
+    function startIntro(){
+        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
+          intro.setOptions({
+            steps: [
+              { 
+                element: document.querySelectorAll('#step1')[0],
+                intro: "Fake news articles use shocking and exaggerated headlines and images to get you to click on them. Often, the headline will try to make you curious and lure you like bait to click on it.",
+                position: 'bottom',
+                scrollTo: "tooltip"
+              },
+              {
+                element: document.querySelectorAll('.post')[0],
+                intro: "Does the article use wild or sensational images that are trying to make you feel emotional? This is another strategy fake news articles use to get you to click on them.",
+                position: 'bottom',
+                scrollTo: "tooltip"
+              },
+              { 
+                element: document.querySelectorAll('#step3')[0],
+                intro: "If you find unusual web addresses or site names, including those that end with “.co” - this is a telltale sign of fake news. These sites are often trying to appear like real news websites, but they are not.",
+                position: 'bottom',
+                scrollTo: "tooltip"
+              },
+              { 
+                element: document.querySelectorAll('.info_button')[0],
+                intro: "Some social media sites have an information button you can click on to get more information about the source website. If there is no detailed information about the website here, it might not be a credible news website.",
+                position: 'bottom',
+                scrollTo: "tooltip"
+              },
+              
+            ]
+          });
+          intro.start().onexit(function() {
+          window.location.href='/tut_guide/digital-literacy';
+        });
+          
+      };
+
+      $(window).on("load", function() {startIntro();});
