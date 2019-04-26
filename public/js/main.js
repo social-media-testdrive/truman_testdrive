@@ -145,6 +145,14 @@ $(window).on("load", function () {
     $(' .ui.small.post.modal').modal('show');
   });
 
+    //get add new feed post modal to work
+    $(".info_button").click(function () {
+      //console.log("Clicking new Post");
+      $(' .ui.small.info.modal').modal('show');
+      document.getElementById('post_info_text_modual').innerHTML = $(this).data('info_text');
+      console.log($(this).data('info_text'));
+    });
+  
   //New Class Button
   $("#new_class.ui.big.green.labeled.icon.button").click(function () {
     $('.ui.small.newclass.modal').modal('show');
@@ -240,7 +248,11 @@ $(window).on("load", function () {
   $('.cybertrans')
     .on('click', function (e) {
       if ($(this).hasClass('green')) {
-        window.location.href = '/trans/cyberbullying';
+        console.log(window.location.pathname)
+        let pathArray = window.location.pathname.split('/');
+        console.log(pathArray);
+        window.location.href = '/trans/' + pathArray[2];
+        // window.location.href = '/trans/cyberbullying';
       }
       else {
         e.preventDefault();
@@ -252,13 +264,18 @@ $(window).on("load", function () {
   //Cyberbullying to Transition
   $('.ui.big.green.labeled.icon.button.cybertutorial')
     .on('click', function () {
-      window.location.href = '/tutorial/cyberbullying';
+      console.log(window.location.pathname)
+      let pathArray = window.location.pathname.split('/');
+      console.log(pathArray);
+      window.location.href = '/tutorial/' + pathArray[2];
     });
 
   //Cyberbullying to Transition
-  $('.ui.big.green.labeled.icon.button.cybersim')
-    .on('click', function () {
-      window.location.href = '/sim/cyberbullying';
+  $(document).on('click', '.ui.big.labeled.icon.button.cybersim.green', function () {
+      console.log(window.location.pathname)
+      let pathArray = window.location.pathname.split('/');
+      console.log(pathArray);
+      window.location.href = '/sim/' + pathArray[2];
     });
 
   //Cyberbullying Start to Tutorial
@@ -292,7 +309,10 @@ $(window).on("load", function () {
   //Cyberbullying end play
   $('.ui.big.green.labeled.icon.button.cyberbullying_end')
     .on('click', function () {
-      window.location.href = '/end/cyberbullying';
+      console.log(window.location.pathname)
+      let pathArray = window.location.pathname.split('/');
+      console.log(pathArray);
+      window.location.href = '/end/' + pathArray[2];
     });
 
   //Sign Up Info Skip Button
