@@ -220,7 +220,7 @@ app.get('/', passportConfig.isAuthenticated, function (req, res) {
   });
 })
 
-app.get('/results/cyberbullying', passportConfig.isAuthenticated, scriptController.getCyberbullyingResults);
+// app.get('/results/cyberbullying', passportConfig.isAuthenticated, scriptController.getCyberbullyingResults);
 
 //main route for getting the simulation (Free Play) for a given lesson mod
 app.get('/modual/:modId', passportConfig.isAuthenticated, scriptController.getScript);
@@ -324,7 +324,7 @@ app.get('/finished',  passportConfig.isAuthenticated, function (req, res) {
   });
 })
 
-app.get('/results/:modId', passportConfig.isAuthenticated, scriptController.getResults);
+// app.get('/results/:modId', passportConfig.isAuthenticated, scriptController.getResults);
 app.get('/postquiz/:modId/results', passportConfig.isAuthenticated, scriptController.getQuizResults);
 
 app.get('/:sec/:modId/wait', passportConfig.isAuthenticated, scriptController.getWait);
@@ -361,48 +361,59 @@ app.get('/test_sim', function (req, res) {
   });
 });
 
-app.get('/tutorial/cyberbullying', function (req, res) {
-  res.render('cyberbullying/cyberbullying_tutorial', {
+app.get('/tutorial/:modId', function (req, res) {
+  res.render(req.param("modId") + '/' + req.param("modId")  +'_tutorial', {
     title: 'Cyberbullying Tutorial'
   });
 });
 
-app.get('/sim/cyberbullying', function (req, res) {
-  res.render('cyberbullying/cyberbullying_sim', {
+app.get('/sim/:modId', function (req, res) {
+  res.render(req.param("modId") + '/' + req.param("modId")+'_sim', {
     title: 'Cyberbullying Guided Activity'
   });
 });
 
-app.get('/trans/cyberbullying', function (req, res) {
-  res.render('cyberbullying/cyberbullying_trans', {
+app.get('/trans/:modId', function (req, res) {
+  res.render(req.param("modId") + '/' + req.param("modId")+'_trans', {
     title: 'Recap'
   });
 });
 
-app.get('/trans_script/cyberbullying', function (req, res) {
-  res.render('cyberbullying/cyberbullying_trans_script', {
+app.get('/trans_script/:modId', function (req, res) {
+  res.render(req.param("modId") + '/' + req.param("modId")+'_trans_script', {
     title: 'Recap'
   });
 });
 
-app.get('/end/cyberbullying', function (req, res) {
-  res.render('cyberbullying/cyberbullying_end', {
+app.get('/end/:modId', function (req, res) {
+  res.render(req.param("modId") + '/' + req.param("modId")+'_end', {
     title: 'Finished'
   });
 });
 
-app.get('/start/cyberbullying', function (req, res) {
-  res.render('cyberbullying/cyberbullying_start', {
+app.get('/start/:modId', function (req, res) {
+  res.render(req.param("modId") + '/' + req.param("modId")+'_start', {
     title: 'Welcome'
   });
 });
 
-app.get('/tut_guide/cyberbullying', function (req, res) {
-  res.render('cyberbullying/cyberbullying_tut_guide', {
+app.get('/intro/:modId', function (req, res) {
+  res.render(req.param("modId") + '/' + req.param("modId")+'_intro', {
+    title: 'Welcome'
+  });
+});
+app.get('/tut_guide/:modId', function (req, res) {
+  res.render(req.param("modId") + '/' + req.param("modId")+'_tut_guide', {
     title: 'Welcome'
   });
 });
 
+app.get('/results/:modId', function (req, res) {
+  console.log(req.param("modId") + '/' + req.param("modId")+'_results')
+  res.render(req.param("modId") + '/' + req.param("modId")+'_results', {
+    title: 'Reflection'
+  });
+});
 
 
 //Classes

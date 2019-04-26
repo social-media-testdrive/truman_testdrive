@@ -10,6 +10,7 @@ const scriptSchema = new mongoose.Schema({
   highread: Number, //not used in TestDrive (should kill)
   lowread: Number, //not used in TestDrive (should kill)
   likes: Number, //number of likes this post has
+  info_text: String,
   actor: {type: Schema.ObjectId, ref: 'Actor'}, // Actor who "wrote" this post
 
   //reply: {type: Schema.ObjectId, ref: 'Script'},

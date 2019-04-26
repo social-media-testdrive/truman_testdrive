@@ -1,0 +1,410 @@
+
+extends ../ui_layout
+  
+block content
+  .computer.only.tablet.only.four.wide.column 
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
+
+    .ui.fluid.card.dim()
+      .ui.dimmer.flag
+        .content
+          .center
+            h2.ui.inverted.icon.header
+              i.red.flag.icon
+              |                                     You &apos;ve flagged this!
+              h3.ui.inverted.header
+                span The admins will review this post further. We are sorry you had this experience.
+      .content
+        .right.floated.meta= "Yesterday"
+        a(href='#')
+              img.ui.avatar.image(src='/profile_pictures/user55.jpg')
+              span='Lana Reed'
+      .img.post        
+        img(src='/infolitguided1.png' style='max-width:100%;')
+      .content(style="background:rgba(0, 0, 0, 0.05);")
+          .read.rounded.right.floated.info_button(id="info_guide_1",style="z-index:12;text-align:center;position:relative;bottom:10px;width:7%;height:auto")
+            i.info.icon
+          a(onclick='openPost()', data-hint="Remember to check which website the article comes from. This website is suspicious because the web address ends with '.co'.")
+            | WASHINGTON-POSST.COM.CO
+          .header  The 15 SHOCKING foods that will cause a heart attack !!   
+      .extra.content(data-hint="This is an example of a clickbait headline. You can see that the headline uses shocking language to get people to click on the article.", data-position="bottom-left")
+          p              
+          .description="You'll never guess what these are!!!"
+      .four.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |                             Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |                             Flag
+        .ui.share.button(tabindex='0')
+          i.share.icon
+          |                             Share
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |                                Like
+          a.ui.basic.red.left.pointing.label.count 2
+      .content
+        .ui.comments
+          .comment(commentid='5bbd01d88a48061a73337b96')
+            a.avatar
+              img(src='/profile_pictures/user66.jpeg')
+            .content
+              a.author Emma Hanson
+              .metadata
+                span.date 1543985371299
+                .rating
+                  i.heart.icon
+                  span.num 1
+                  |                                             Likes
+              .text omg this is really scary
+              .actions
+                a.like.comment Like
+                a.flag.comment Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src='/profile_pictures/'+ user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+    //-#######################
+    .ui.fluid.card.dim()
+      .ui.dimmer.flag
+        .content
+          .center
+            h2.ui.inverted.icon.header
+              i.red.flag.icon
+              |                                     You &apos;ve flagged this!
+              h3.ui.inverted.header
+                span The admins will review this post further. We are sorry you had this experience.
+      .content
+        .right.floated.meta= "Yesterday"
+        a(href='#')
+              img.ui.avatar.image(src='/profile_pictures/user54.jpg')
+              span='Ariel Simon'
+      .img.post
+        img(src='/infolitguided2.png' style='max-width:100%;')
+      .content(style="background:rgba(0, 0, 0, 0.05);")
+          .read.rounded.right.floated.info_button(id="info_guide_2",style="z-index:12;text-align:center;position:relative;bottom:10px;width:7%;height:auto")
+            i.info.icon
+          a#article1(onclick='openPost()')
+            | WWW.NYTIMES.COM &nbsp &nbsp
+          a(href='#',data-hint='Now that you have seen the telltale signs of fake news on social media, click on the article to check it out.')
+          .header Mass Migration of Painted Lady Butterflies Entrances Californains   
+      .extra.content
+          p              
+          .description="The orange butterflies, called painted ladies, are known to travel annually from the deserts of Southern California to the Pacific Northwest."
+      .four.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |                             Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |                             Flag
+        .ui.share.button(tabindex='0')
+          i.share.icon
+          |                             Share
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |                                 Like
+          a.ui.basic.red.left.pointing.label.count 2
+      .content
+        .ui.comments
+          .comment(commentid='5bbd01d88a48061a73337b96')
+            a.avatar
+              img(src='/profile_pictures/user36.jpg')
+            .content
+              a.author Hayden Abbey
+              .metadata
+                span.date 1543985371299
+                .rating
+                  i.heart.icon
+                  span.num 1
+                  |                                             Likes
+              .text So beautiful🦋😍
+              .actions
+                a.like.comment Like
+                a.flag.comment Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+
+
+    //-#######################
+    .ui.fluid.card.dim()
+      .ui.dimmer.flag
+        .content
+          .center
+            h2.ui.inverted.icon.header
+              i.red.flag.icon
+              |                                     You &apos;ve flagged this!
+              h3.ui.inverted.header
+                span The admins will review this post further. We are sorry you had this experience.
+      .content
+        .right.floated.meta= "Yesterday"
+        a(href='#')
+              img.ui.avatar.image(src='/profile_pictures/user54.jpg')
+              span='Ariel Simon'
+      .img.post
+        img(src='/infolitguided3.jpg' style='max-width:100%;')
+      .content(style="background:rgba(0, 0, 0, 0.05);")
+          .read.rounded.right.floated.info_button(id="info_guide_3",style="z-index:12;text-align:center;position:relative;bottom:10px;width:7%;height:auto")
+            i.info.icon
+          a#article1(onclick='openPost()')
+            | WWW.NPR.ORG &nbsp &nbsp
+          .header Having A Best Friend In Your Teenage Years Could Benefit You For Life   
+      .extra.content
+          p              
+          .description="Researchers have found that people with deep friendships in adolescence had less anxiety and a greater sense of self-worth in early adulthood. Close friends matter, their study found."
+      .four.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |                             Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |                             Flag
+        .ui.share.button(tabindex='0')
+          i.share.icon
+          |                             Share
+        span(data-hint="If you decide the article is real news and you want to spread it, you can share it by clicking the “share” button.")
+
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |                                 Like
+          a.ui.basic.red.left.pointing.label.count 2
+      .content
+        .ui.comments
+          .comment(commentid='5bbd01d88a48061a73337b96')
+            a.avatar
+              img(src='/profile_pictures/user36.jpg')
+            .content
+              a.author Hayden Abbey
+              .metadata
+                span.date 1543985371299
+                .rating
+                  i.heart.icon
+                  span.num 1
+                  |                                             Likes
+              .text lol love my bffs❤️
+              .actions
+                a.like.comment Like
+                a.flag.comment Flag
+          .comment(commentid='5bbd01d88a48061a73337b96')
+            a.avatar
+              img(src='/profile_pictures/user30.jpg')
+            .content
+              a.author Hayden Abbey
+              .metadata
+                span.date 1543985371299
+                .rating
+                  i.heart.icon
+                  span.num 1
+                  |                                             Likes
+              .text Wow who knew?
+              .actions
+                a.like.comment Like
+                a.flag.comment Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+
+    //-#######################
+    .ui.fluid.card.dim()
+      .ui.dimmer.flag
+        .content
+          .center
+            h2.ui.inverted.icon.header
+              i.red.flag.icon
+              |                                     You &apos;ve flagged this!
+              h3.ui.inverted.header
+                span The admins will review this post further. We are sorry you had this experience.
+      .content
+        .right.floated.meta= "Yesterday"
+        a(href='#')
+              img.ui.avatar.image(src='/profile_pictures/user54.jpg')
+              span='Ariel Simon'
+      .img.post
+        img(src='/infolitguided4.jpg' style='max-width:100%;')
+      .content(style="background:rgba(0, 0, 0, 0.05);")
+          .read.rounded.right.floated.info_button(id="info_guide_4",style="z-index:12;text-align:center;position:relative;bottom:10px;width:7%;height:auto")
+            i.info.icon
+          a#article1(onclick='openPost()')
+            | CNN-LOCAL8.COM.CO &nbsp &nbsp
+          .header Missouri Teen's House Burns Down After Fidget Spinner Catches Fire   
+      .extra.content
+          p              
+          .description="Police received a distress call from the 13 year old Jonathon Engelbert, of Kansas City, MO, late yesterday night. Reports say that the teen's battery powered fidget spinner caught fire and burned their house down."
+      .four.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |                             Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |                             Flag
+        .span(data-hint=" If you decide the article is fake news, you can flag the post to report it. Don’t share the article!.")          
+        .ui.share.button(tabindex='0')
+          i.share.icon
+          |                             Share
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |                                 Like
+          a.ui.basic.red.left.pointing.label.count 2
+      .content
+        .ui.comments
+          .comment(commentid='5bbd01d88a48061a73337b96')
+            a.avatar
+              img(src='/profile_pictures/user36.jpg')
+            .content
+              a.author Hayden Abbey
+              .metadata
+                span.date 1543985371299
+                .rating
+                  i.heart.icon
+                  span.num 1
+                  |                                             Likes
+              .text So beautiful🦋😍
+              .actions
+                a.like.comment Like
+                a.flag.comment Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+
+    
+    button.ui.big.labeled.icon.button.cybertrans
+        i.rocket.icon
+        |   Let's Continue!
+
+
+    //- View Next Steps Modal      
+    .ui.small.modal#next_steps  
+      i.close.icon  
+      .header Next steps after opening the article 
+      .content
+          .ui.styled.fluid.accordion
+            .title
+              //- .ui.fitted.large.checkbox
+              //-   input.ui(type="checkbox", checked="")#check
+              i.dropdown.icon
+              |     Read the full article
+            .content
+              p.transition.hidden
+                | Reading the article is a great way to check for signs this article contains misinformation. When you read the article, look for exaggerated claims, text or pictures that are designed to pull at your emotions, and frequent spelling or grammar mistakes.
+            .title
+              i.dropdown.icon
+              |     Check out the website this article is from
+            .content
+              p
+                | If the website is not part of a credible news, academic, or governmental organization, this is a sign that the article might be fake news.
+            .title
+              i.dropdown.icon
+              |     Search this topic on Snopes.com, Wikipedia, or major news websites
+            .content
+              p
+                | Corroboration from other sources that confirms or supports a news article is a sign that the information is credible.
+            .title
+              i.dropdown.icon
+              |     Like this post
+            .content
+              p
+                | Remember to only like an article if you have determined that it is not fake news. You can stop the spread of misinformation!
+            .title
+              i.dropdown.icon
+              |     Share this article
+            .content
+              p
+                | Remember to only share an article if you have determined that it is not fake news. You can stop the spread of misinformation!
+          
+      .actions
+        .ui.positive.right.labeled.icon.button
+          | Done
+          i.checkmark.icon
+
+    //- View Post Info Modal  
+    .ui.small.modal#info_modal
+      i.close.icon  
+      h3.ui.header 
+        i.info.circle.icon
+        | Info about News Source  
+      .content
+          .field
+            h3.ui.header#post_info_body
+              |  The New York Times (sometimes abbreviated as the NYT and NYTimes) is an American newspaper based in New York City with worldwide influence and readership. Founded in 1851, the paper has won 125 Pulitzer Prizes, more than any other newspaper. The Times is ranked 17th in the world by circulation and 2nd in the U.S.        
+      .actions
+        .ui.positive.right.labeled.icon.button
+          | Done
+          i.checkmark.icon
+
+
+block scripts
+  script().
+    var info_text = 'No Information Found';
+    let post_info_description = new Map([
+        ['WWW.NEWSNETWORK.COM.CO','News Network provides the most up to date local and national news.'],
+        ['WWW.NYTIMES.COM','The New York Times (sometimes abbreviated as the NYT and NYTimes) is an American newspaper based in New York City with worldwide influence and readership. Founded in 1851, the paper has won 125 Pulitzer Prizes, more than any other newspaper. The Times is ranked 17th in the world by circulation and 2nd in the U.S.'],
+        ['WWW.NPR.ORG','National Public Radio (NPR, stylized as npr) is an American privately and publicly funded non-profit membership media organization based in Washington, D.C.']
+        ]);
+    
+    $('.ui.accordion').accordion();   
+    function startIntro(){
+        var hints;
+        var counter = 0;
+        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
+          intro.setOptions({
+            steps: [
+              { 
+                intro: "In this activity, we will look at the telltale signs of fake news on social media. See if you can spot the clues!"
+              },
+              { 
+                intro: "Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more..."
+              }
+              
+            ]
+          });
+          intro.start().onexit(function() {
+          hints = introJs().addHints();
+          console.log('hints added')
+          hints.onhintclose(function(e) {
+           counter++;
+           if(counter == 4) {$( ".cybertrans" ).addClass("green");}
+           $( ".cybertrans" ).addClass("green");           
+          });
+        });
+          
+      };
+
+      $(window).on("load", function() {startIntro();});
+
+
+      function openPost(){
+        $('#next_steps').modal('show');
+      }
+
+
+    //get add new feed post modal to work
+      $(".info_button").click(function () {
+        console.log($('.info_button').next());
+        console.log($(this).attr('id'));
+        var clickedId = '#' + $(this).attr('id');
+        info_header = $(clickedId).next()[0].innerText;
+          console.log(info_header.toString());
+        info_text = post_info_description.get(info_header.toString().trim()) || 'No Information Found';
+        console.log(info_header  + info_text );
+        //- document.getElementById('post_info_header').innerHTML = info_header;
+        document.getElementById('post_info_body').innerHTML = info_text;
+        //console.log("Clicking new Post");
+        $('#info_modal').modal('show');
+      });
