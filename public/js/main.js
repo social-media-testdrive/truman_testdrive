@@ -146,7 +146,7 @@ $(window).on("load", function () {
   });
 
     //get add new feed post modal to work
-    $(".info_button").click(function () {
+    $(".modual.info_button").click(function () {
       //console.log("Clicking new Post");
       $(' .ui.small.info.modal').modal('show');
       document.getElementById('post_info_text_modual').innerHTML = $(this).data('info_text');

@@ -24,10 +24,10 @@ block content
       .content(style="background:rgba(0, 0, 0, 0.05);")
           .read.rounded.right.floated.info_button(id="info_guide_1",style="z-index:12;text-align:center;position:relative;bottom:10px;width:7%;height:auto")
             i.info.icon
-          a(onclick='openPost()', data-hint="Remember to check which website the article comes from. This website is suspicious because the web address ends with '.co'.")
+          a(onclick='openPost()', data-hint="Be sure to check the article's website, too. This one is suspicious because of the '.com.co', a sure sign it's trying to imitate a credible site.")
             | WASHINGTON-POSST.COM.CO
           .header  The 15 SHOCKING foods that will cause a heart attack !!   
-      .extra.content(data-hint="This is an example of a clickbait headline. You can see that the headline uses shocking language to get people to click on the article.", data-position="bottom-left")
+      .extra.content(data-hint="This is an example of a clickbait headline. You can see that the headline uses shocking language and has a wild image to get people to click on it.", data-position="bottom-left")
           p              
           .description="You'll never guess what these are!!!"
       .four.ui.bottom.attached.icon.buttons
@@ -90,7 +90,7 @@ block content
             i.info.icon
           a#article1(onclick='openPost()')
             | WWW.NYTIMES.COM &nbsp &nbsp
-          a(href='#',data-hint='Now that you have seen the telltale signs of fake news on social media, click on the article to check it out.')
+          a(href='#',data-hint="Now that you've seen a few telltale signs of fake news on social media, click on the article link to check it out.")
           .header Mass Migration of Painted Lady Butterflies Entrances Californains   
       .extra.content
           p              
@@ -292,7 +292,7 @@ block content
     //- View Next Steps Modal      
     .ui.small.modal#next_steps  
       i.close.icon  
-      .header Next steps after opening the article 
+      .header You've clicked on this article! Let's explore some things you could do next. 
       .content
           .ui.styled.fluid.accordion
             .title
@@ -302,32 +302,26 @@ block content
               |     Read the full article
             .content
               p.transition.hidden
-                | Reading the article is a great way to check for signs this article contains misinformation. When you read the article, look for exaggerated claims, text or pictures that are designed to pull at your emotions, and frequent spelling or grammar mistakes.
+                | Look out for unbelievable claims or wild images. Check for spelling or grammar mistakes, too!
             .title
               i.dropdown.icon
               |     Check out the website this article is from
             .content
               p
-                | If the website is not part of a credible news, academic, or governmental organization, this is a sign that the article might be fake news.
+                | If the website is not part of a credible news, academic, or governmental organization, this is a sign the article might not be trustworthy.
             .title
               i.dropdown.icon
-              |     Search this topic on Snopes.com, Wikipedia, or major news websites
+              | Fact-check the article by searching the topic on Snopes.com, FactCheck.org, or major news websites.
             .content
               p
                 | Corroboration from other sources that confirms or supports a news article is a sign that the information is credible.
             .title
               i.dropdown.icon
-              |     Like this post
+              |     Be aware of what you share.
             .content
               p
-                | Remember to only like an article if you have determined that it is not fake news. You can stop the spread of misinformation!
-            .title
-              i.dropdown.icon
-              |     Share this article
-            .content
-              p
-                | Remember to only share an article if you have determined that it is not fake news. You can stop the spread of misinformation!
-          
+                | It's easy to quickly like or share something, but you could be spreading fake news! Remember to only like or share articles you know are true.
+
       .actions
         .ui.positive.right.labeled.icon.button
           | Done
@@ -396,13 +390,13 @@ block scripts
 
     //get add new feed post modal to work
       $(".info_button").click(function () {
-        console.log($('.info_button').next());
-        console.log($(this).attr('id'));
+        //- console.log($('.info_button').next());
+        //- console.log($(this).attr('id'));
         var clickedId = '#' + $(this).attr('id');
         info_header = $(clickedId).next()[0].innerText;
-          console.log(info_header.toString());
+          //- console.log(info_header.toString());
         info_text = post_info_description.get(info_header.toString().trim()) || 'No Information Found';
-        console.log(info_header  + info_text );
+        //- console.log(info_header  + info_text );
         //- document.getElementById('post_info_header').innerHTML = info_header;
         document.getElementById('post_info_body').innerHTML = info_text;
         //console.log("Clicking new Post");

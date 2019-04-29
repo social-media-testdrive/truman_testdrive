@@ -20,51 +20,51 @@ block content
     .ui.styled.fluid.accordion
       #point1.title.active
         i.dropdown.icon
-        |     Check out the website that the news article comes from.
+        | Read the article closely. Ask yourself: Does it make sense? Is it believable?
       .active.content.ui.list
           .item
             #protip1.ui.floated.compact.segment
               .ui.fitted.large.checkbox
                 input.ui(type="checkbox" checked="")
-            .label If the website is part of a credible news, academic (ends with “.edu”), or governmental (ends with “.gov”) organization, this is a sign that the article is credible.
-          br
-          .item
-            #protip2.ui.floated.compact.segment
-              .ui.fitted.large.checkbox
-                input.ui(type="checkbox")
-            .label You can also look at the “About Us” page to learn more about the website and who is writing the articles.
+            .label If the information in the article is surprising, even unbelievable, be suspicious that it might be fake news.
+
           .item
             #point1_button.button.ui.mini.green.right.labeled.icon.button
               i.down.arrow.icon
               |   Next
       #point2.title
         i.dropdown.icon
-        |     Look at the contents of the article.
+        |     Analyze the source. Ask yourself: Does it come from a credible source?
       .content.ui.list
+          .item
+            #protip2.ui.floated.compact.segment
+              .ui.fitted.large.checkbox
+                input.ui(type="checkbox" id="")
+            .label If the website is part of a credible news, academic (ends with ".edu"), or governmental (ends with ".gov") organization, this is a good sign the article is credible.
+
           .item
             #protip3.ui.floated.compact.segment
               .ui.fitted.large.checkbox
-                input.ui(type="checkbox" id="")
-            .label If the information in the article is very surprising, even unbelievable, be suspicious that it might be fake news.
-
-          .item
-            #protip4.ui.floated.compact.segment
-              .ui.fitted.large.checkbox
                 input.ui(type="checkbox"  id="")
-            .label Excessive spelling or grammar errors are other signs that this might not be a credible article.
+            .label You can also look at the "About Us" page to learn more about the website and who is writing the articles. It's also important to look beyond the "About Us" page to make sure it's a reliable source.
           .item
               #point2_button.button.ui.mini.green.right.labeled.icon.button
                 i.down.arrow.icon
                 |   Next
       #point3.title
         i.dropdown.icon
-        |     Corroborate key points with other credible websites.
+        |     Look for corroboration. Ask yourself: Do other credible sources say the same thing?
       .content.ui.list
+          .item
+            #protip4.ui.floated.compact.segment
+              .ui.fitted.large.checkbox
+                input.ui(type="checkbox")
+            .label As a next step, you should look for additional credible sources or articles that confirm what the article says. This is called corroboration. 
           .item
             #protip5.ui.floated.compact.segment
               .ui.fitted.large.checkbox
                 input.ui(type="checkbox")
-            .label As a next step, you can find an additional credible source or article that confirms or supports a news article. To do this, search for the same topic on websites such as Snopes.com, Wikipedia, and major news websites.
+            .label To do this, search for the same topic on fact-checking websites such as Snopes.com, FactCheck.org, and major news websites.
           .item
               #point3_button.button.ui.mini.green.right.labeled.icon.button
                 i.down.arrow.icon
@@ -92,8 +92,7 @@ block scripts
 
 
     $('#point1_button').on('click', function () {
-      if (($('#protip1 .checkbox input')[0].checked) && 
-                          ($('#protip2 .checkbox input')[0].checked)){
+      if (($('#protip1 .checkbox input')[0].checked)){
         $('#point2').transition('shake');
         $('#point2').click();
       }
@@ -108,8 +107,8 @@ block scripts
 
 
     $('#point2_button').on('click', function () {
-      if (($('#protip3 .checkbox input')[0].checked) && 
-                          ($('#protip4 .checkbox input')[0].checked)){
+      if (($('#protip2 .checkbox input')[0].checked) && 
+                          ($('#protip3 .checkbox input')[0].checked)){
         $('#point3').transition('shake');
         $('#point3').click();
       }
