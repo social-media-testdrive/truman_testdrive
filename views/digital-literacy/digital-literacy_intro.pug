@@ -15,23 +15,23 @@ block content
           i.forward.blue.icon
           | Here are the four activities that we will be doing.
 
-    .ui.tiny.four.steps
-      .active.step(style="display:none !important;")
+    .ui.tiny.four.steps.hidden(style="display:none !important;")
+      .active.step
         i.book.icon
         .content
           .title Learn
           .description Learn key ideas
-      .step(style="display:none !important;")
+      .step
         i.edit.icon
         .content
           .title Practice
           .description Practice social media skills
-      .step(style="display:none !important;")
+      .step
         i.binoculars.icon
         .content
           .title Explore
           .description Explore the social media timeline
-      .step(style="display:none !important;")
+      .step
         i.question.icon
         .content
           .title Reflect
@@ -56,10 +56,7 @@ block content
 
     setTimeout(function(){
       $('.ui.blue.message').transition('fly down', '1500ms',function() {
-        $('.step').transition({
-          animation : 'fly right',
-          duration  : 2000,
-          interval  : 500
-        });    
+        $('.steps').transition('fly down', '1500ms');
       }); 
     }, 1000);
+  
