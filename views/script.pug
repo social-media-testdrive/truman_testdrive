@@ -188,7 +188,7 @@ block content
             else
               img(src='/picture.svg', data-src="/"+val.picture, style="max-width:100%;")
           if (val.module == 'digital-literacy' && val.info_text != "")
-            .read.rounded.right.floated.info_button(id="info_"+val.id, data-info_text = val.info_text, style="z-index:12;text-align:center;align-self:flex-end;position:relative;bottom:10px;width:7%;height:auto")
+            .read.rounded.right.floated.modual.info_button(id="info_"+val.id, data-info_text = val.info_text, style="z-index:12;text-align:center;align-self:flex-end;position:relative;bottom:10px;width:7%;height:auto")
               i.info.icon
           .content
             .description!=val.body
@@ -316,7 +316,7 @@ block content
     //- View Next Steps Modal      
     .ui.small.modal#next_steps_modual  
       i.close.icon  
-      .header Next steps after opening the article 
+      .header You've clicked on this article! Let's explore some things you could do next. 
       .content
           .ui.styled.fluid.accordion
             .title
@@ -326,31 +326,25 @@ block content
               |     Read the full article
             .content
               p.transition.hidden
-                | Reading the article is a great way to check for signs this article contains misinformation. When you read the article, look for exaggerated claims, text or pictures that are designed to pull at your emotions, and frequent spelling or grammar mistakes.
+                | Look out for unbelievable claims or wild images. Check for spelling or grammar mistakes, too!
             .title
               i.dropdown.icon
               |     Check out the website this article is from
             .content
               p
-                | If the website is not part of a credible news, academic, or governmental organization, this is a sign that the article might be fake news.
+                | If the website is not part of a credible news, academic, or governmental organization, this is a sign the article might not be trustworthy.
             .title
               i.dropdown.icon
-              |     Search this topic on Snopes.com, Wikipedia, or major news websites
+              | Fact-check the article by searching the topic on Snopes.com, FactCheck.org, or major news websites.
             .content
               p
                 | Corroboration from other sources that confirms or supports a news article is a sign that the information is credible.
             .title
               i.dropdown.icon
-              |     Like this post
+              |     Be aware of what you share.
             .content
               p
-                | Remember to only like an article if you have determined that it is not fake news. You can stop the spread of misinformation!
-            .title
-              i.dropdown.icon
-              |     Share this article
-            .content
-              p
-                | Remember to only share an article if you have determined that it is not fake news. You can stop the spread of misinformation!   
+                | It's easy to quickly like or share something, but you could be spreading fake news! Remember to only like or share articles you know are true.
       .actions
         .ui.positive.right.labeled.icon.button
           | Done

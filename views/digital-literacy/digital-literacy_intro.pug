@@ -5,35 +5,33 @@ block content
   .ui.text.container
     br
     .ui.raised.segment
-      .ui.bottom.attached.label
-        h4(style="float:left")
-          i.forward.blue.icon
-          | Here are the four activities that we will be doing in this lesson.
       h3.ui.header
         i.bullhorn.icon
         .content
-          | Welcome to the LearnLove.Life social media site!
+          | Welcome to the TestDrive social media site!
+      hr
       h5 You're about to enter a social media site, but before you get started, we wanted to review a few key terms related to reading news on social media.
-      br
-      br
-    
+    .ui.blue.message.hidden 
+          i.forward.blue.icon
+          | Here are the four activities that we will be doing.
+
     .ui.tiny.four.steps
-      .active.step
+      .active.step(style="display:none !important;")
         i.book.icon
         .content
           .title Learn
           .description Learn key ideas
-      .step
+      .step(style="display:none !important;")
         i.edit.icon
         .content
           .title Practice
           .description Practice social media skills
-      .step
+      .step(style="display:none !important;")
         i.binoculars.icon
         .content
           .title Explore
           .description Explore the social media timeline
-      .step
+      .step(style="display:none !important;")
         i.question.icon
         .content
           .title Reflect
@@ -54,3 +52,14 @@ block content
     function startIntro(){       
           window.location.href='/start/digital-literacy';
         };
+
+
+    setTimeout(function(){
+      $('.ui.blue.message').transition('fly down', '1500ms',function() {
+        $('.step').transition({
+          animation : 'fly right',
+          duration  : 2000,
+          interval  : 500
+        });    
+      }); 
+    }, 1000);
