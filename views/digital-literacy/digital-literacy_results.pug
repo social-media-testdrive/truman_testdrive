@@ -2,150 +2,171 @@ extends ../ui_layout
 
 block content
   .ui.container
-    .ui.raised.segment
-      .ui.ribbon.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
-          i.exclamation.triangle.yellow.icon
-          | These were the fake news posts in the timeline. How many did you notice?
-      br
-      br
-      .ui.three.cards
+    .ui.stackable.column.grid
+      .ui.column
+        .ui.raised.segment
+          .ui.label(style="background-color:#2185d08a;color:#000000d1;")
+            h4(style="float:left")
+              i.exclamation.triangle.icon(style="color: #f9ff00 !important;")
+
+              | These were the fake news posts in the timeline. How many did you notice?
+          br
+          br
+          .ui.stackable.three.cards
+            
+            .ui.fluid.card.dim()#card1
+              .content
+                .right.floated.meta 20 minutes ago  
+                a(href='/user/zoe.g._')
+                  img.ui.avatar.image(src='/profile_pictures/user70.JPG')
+                  span Zoe Goodall
+              .img.post
+                img.transition.visible(src='/fakenews1.png', data-src='/fakenews1.png', style='max-width: 100%; cursor: pointer;display: inline !important;')
+              .read.rounded.right.floated.info_button(data-info_text="Real facts.com is THE news source for you. Learn about everything that's going on everywhere in real time. You can trust us!", style='z-index:12;text-align:center;align-self:flex-end;position:relative;bottom:10px;width:7%;height:auto')
+                i.info.icon
+              .content
+                .description
+                  | Breaking News: Driving age just lowered to 12. DMV flooded with road test appointments and car companies cannot keep their newest models off the road.
         
-        .ui.fluid.card.dim()#card1
-          .content
-            .right.floated.meta 20 minutes ago  
-            a(href='/user/zoe.g._')
-              img.ui.avatar.image(src='/profile_pictures/user70.JPG')
-              span Zoe Goodall
-          .img.post
-            img.transition.visible(src='/fakenews1.png', data-src='/fakenews1.png', style='max-width: 100%; cursor: pointer;display: inline !important;')
-          .read.rounded.right.floated.info_button(data-info_text="Real facts.com is THE news source for you. Learn about everything that's going on everywhere in real time. You can trust us!", style='z-index:12;text-align:center;align-self:flex-end;position:relative;bottom:10px;width:7%;height:auto')
-            i.info.icon
-          .content
-            .description
-              | Breaking News: Driving age just lowered to 12. DMV flooded with road test appointments and car companies cannot keep their newest models off the road.
-    
-      
-        .ui.fluid.card.dim()#card2
-          .content
-            .right.floated.meta 30 minutes ago
-            a(href='/user/k.r.h345')
-              img.ui.avatar.image(src='/profile_pictures/user15.jpg')
-              span Keith Hernandez
-          .img.post
-            img.transition.visible(src='/fakenews2.png', data-src='/fakenews2.png', style='max-width: 100%; cursor: pointer;display: inline !important;')
-          .read.rounded.right.floated.info_button(data-info_text="ScienceTruth is everyone's favorite and reliable source for science facts.", style='z-index:12;text-align:center;align-self:flex-end;position:relative;bottom:10px;width:7%;height:auto')
-            i.info.icon
-          .content
-            .description
-              | Craving a donut? Think again! Scientists found that donuts are the leading cause of cancer in young children 😳
+          
+            .ui.fluid.card.dim()#card2
+              .content
+                .right.floated.meta 30 minutes ago
+                a(href='/user/k.r.h345')
+                  img.ui.avatar.image(src='/profile_pictures/user15.jpg')
+                  span Keith Hernandez
+              .img.post
+                img.transition.visible(src='/fakenews2.png', data-src='/fakenews2.png', style='max-width: 100%; cursor: pointer;display: inline !important;')
+              .read.rounded.right.floated.info_button(data-info_text="ScienceTruth is everyone's favorite and reliable source for science facts.", style='z-index:12;text-align:center;align-self:flex-end;position:relative;bottom:10px;width:7%;height:auto')
+                i.info.icon
+              .content
+                .description
+                  | Craving a donut? Think again! Scientists found that donuts are the leading cause of cancer in young children 😳
 
 
-        .ui.fluid.card.dim()#card3
-          .content
-            .right.floated.meta 1 hour ago
-            a(href='/user/aperson')
-              img.ui.avatar.image(src='/profile_pictures/user55.jpg')
-              span Lana Reed
-          .img.post
-            img.transition.visible(src='/fakenews3.png', data-src='/fakenews3.png', style='max-width: 100%;cursor: pointer;display: inline !important;')
-          .read.rounded.right.floated.info_button(data-info_text="No Information Found !", style='z-index:12;text-align:center;align-self:flex-end;position:relative;bottom:10px;width:7%;height:auto')
-            i.info.icon          
-          .content
-            .description
-              | You'll never guess what these are!!!
+            .ui.fluid.card.dim()#card3
+              .content
+                .right.floated.meta 1 hour ago
+                a(href='/user/aperson')
+                  img.ui.avatar.image(src='/profile_pictures/user55.jpg')
+                  span Lana Reed
+              .img.post
+                img.transition.visible(src='/fakenews3.png', data-src='/fakenews3.png', style='max-width: 100%;cursor: pointer;display: inline !important;')
+              .read.rounded.right.floated.info_button(data-info_text="No Information Found !", style='z-index:12;text-align:center;align-self:flex-end;position:relative;bottom:10px;width:7%;height:auto')
+                i.info.icon          
+              .content
+                .description
+                  | You'll never guess what these are!!!
  
  
-
-    br
-    h3 Did you notice any signs of fake news in these posts?
-    .ui.form
-      .inline.fields
-        label(for='help', style="font-size:120%;") They had clickbait headlines and wild images.
-        .field
-          .ui.radio.checkbox
-            input.hidden(type='radio', value="yes", name='help', tabindex='0')
-            label Yes
-        .field
-          .ui.radio.checkbox
-            input.hidden(type='radio', value="no", name='help', tabindex='0')
-            label No
-    .ui.form
-      .inline.fields
-        label(for='like', style="font-size:120%;") They had spelling mistakes or dramatic punctuation.
-        .field
-          .ui.radio.checkbox
-            input.hidden(type='radio', name='like', tabindex='0')
-            label Yes
-        .field
-          .ui.radio.checkbox
-            input.hidden(type='radio', name='like', tabindex='0')
-            label No
-    .ui.form
-      .inline.fields
-        label(for='write', style="font-size:120%;") They were from a suspicious website.
-        .field
-          .ui.radio.checkbox
-            input.hidden(type='radio', name='write',  tabindex='0')
-            label Yes
-        .field
-          .ui.radio.checkbox
-            input.hidden(type='radio', name='write', tabindex='0')
-            label No
+    .ui.raised.segment
+      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
+        h4(style="float:left")
+          | Did you notice any signs of fake news in these posts?
 
 
-    br
-    h3 Tell us what you would do next to check the credibility of the above articles.
-    .ui.form
-      .inline.fields
-        label(for='help', style="font-size:120%;") I would read the full article.
-        .field
-          .ui.radio.checkbox
-            input.hidden(type='radio', value="yes", name='help', tabindex='0')
-            label Yes
-        .field
-          .ui.radio.checkbox
-            input.hidden(type='radio', value="no", name='help', tabindex='0')
-            label No
-    .ui.form
-      .inline.fields
-        label(for='like', style="font-size:120%;") I would check the source.
-        .field
-          .ui.radio.checkbox
-            input.hidden(type='radio', name='like', tabindex='0')
-            label Yes
-        .field
-          .ui.radio.checkbox
-            input.hidden(type='radio', name='like', tabindex='0')
-            label No
-    .ui.form
-      .inline.fields
-        label(for='write', style="font-size:120%;") I would find corroboration from other credible sources.
-        .field
-          .ui.radio.checkbox
-            input.hidden(type='radio', name='write',  tabindex='0')
-            label Yes
-        .field
-          .ui.radio.checkbox
-            input.hidden(type='radio', name='write', tabindex='0')
-            label No            
+      .ui.form
+        .inline.fields
+          label(for='help', style="font-size:120%;") They had clickbait headlines and wild images.
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', value="yes", name='help', tabindex='0')
+              label Yes
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', value="no", name='help', tabindex='0')
+              label No
+      .ui.form
+        .inline.fields
+          label(for='like', style="font-size:120%;") They had spelling mistakes or dramatic punctuation.
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='like', tabindex='0')
+              label Yes
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='like', tabindex='0')
+              label No
+      .ui.form
+        .inline.fields
+          label(for='write', style="font-size:120%;") They were from a suspicious website.
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='write',  tabindex='0')
+              label Yes
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='write', tabindex='0')
+              label No
+
+
+    .ui.raised.segment
+      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
+        h4(style="float:left")
+          | Tell us what you would do next to check the credibility of the above articles.
+      .ui.form
+        .inline.fields
+          label(for='help', style="font-size:120%;") I would read the full article.
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', value="yes", name='help', tabindex='0')
+              label Yes
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', value="no", name='help', tabindex='0')
+              label No
+      .ui.form
+        .inline.fields
+          label(for='like', style="font-size:120%;") I would check the source.
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='like', tabindex='0')
+              label Yes
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='like', tabindex='0')
+              label No
+      .ui.form
+        .inline.fields
+          label(for='write', style="font-size:120%;") I would find corroboration from other credible sources.
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='write',  tabindex='0')
+              label Yes
+          .field
+            .ui.radio.checkbox
+              input.hidden(type='radio', name='write', tabindex='0')
+              label No            
       
-      .field
-        label(style="font-size:120%;") What are the benefits and drawbacks of getting news on social media ?
-        textarea(rows='2')
+    .ui.raised.segment
+      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
+        h4(style="float:left")
+          | What are the benefits and drawbacks of getting news on social media ?
+      .ui.form
+        .inline.fields
+          label(style="font-size:120%;")
+          textarea.glowing-border(rows='2')
 
-    br
-    //-h3 Why is it important for people to act against cyberbullying?
-    .ui.form
-      .field
-        label(style="font-size:120%;") Why is it important to evaluate the information you see on social media ?
-        textarea(rows='2')
-    br
-    //-h3 What will you do in the future to be an upstander if you see cyberbullying?
-    .ui.form
-      .field
-        label(style="font-size:120%;") What would you do in the future on real social media sites to make sure that the information you see is credible?
-        textarea(rows='2')
+    .ui.raised.segment
+      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
+        h4(style="float:left")
+          | Why is it important to evaluate the information you see on social media ?
+      .ui.form
+        .inline.fields
+          label(style="font-size:120%;")
+          textarea.glowing-border(rows='2')
+
+    .ui.raised.segment
+      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
+        h4(style="float:left")
+          | What would you do in the future on real social media sites to make sure that the information you see is credible?
+      .ui.form
+        .inline.fields
+          label(style="font-size:120%;")
+          textarea.glowing-border(rows='2')
+
+
+
     br
     .ui.big.green.labeled.icon.button.cyberbullying_end
           i.rocket.icon
@@ -155,7 +176,7 @@ block content
 block scripts
   script().
     setTimeout(function(){
-      $('.ui.ribbon.label').transition('bounce');        
+      $('.ui.label').transition('bounce');        
     }, 1000);
 
 
