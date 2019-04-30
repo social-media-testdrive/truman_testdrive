@@ -102,6 +102,15 @@ html
           overflow: hidden;
           cursor:pointer;
       }
+      .glowing-border {
+          border: 2px solid #dadada !important;
+          border-radius: 7px !important;
+      }
+      .glowing-border:focus { 
+          outline: none !important;
+          border-color: #9ecaed !important;
+          box-shadow: 0 0 10px #9ecaed !important;
+      }  
       
   script.
     if ('serviceWorker' in navigator) {
