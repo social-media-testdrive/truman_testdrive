@@ -51,7 +51,7 @@ block content
       .header
        | Complete all activities to proceed!
     a(href='javascript:void(0);', onclick='javascript:startIntro();')
-        .ui.green.labeled.icon.button.disabled
+        .ui.labeled.icon.button
             i.rocket.icon
             |   Got it!
     br
@@ -64,14 +64,14 @@ block scripts
       $('#question').show(); 
       $('#question').transition('jiggle');     
       if(!($('#question').is(":hidden") ||  $('#influence_info').is(":hidden") || $('#money_info').is(":hidden"))){
-        $('.ui.green.labeled.icon.button').removeClass('disabled');
+        $('.ui.labeled.icon.button').addClass('green');
       } 
     });
     $('#money>a').on('click', function () {      
         $('#money_info').show(); 
         $('#money').transition('tada');     
         if(!($('#question').is(":hidden") ||  $('#influence_info').is(":hidden") || $('#money_info').is(":hidden"))){
-          $('.ui.green.labeled.icon.button').removeClass('disabled');
+          $('.ui.labeled.icon.button').addClass('green');
         }
     });
 
@@ -79,7 +79,7 @@ block scripts
         $('#influence_info').show();      
         $('#influence').transition('tada');     
         if(!($('#question').is(":hidden") ||  $('#influence_info').is(":hidden") || $('#money_info').is(":hidden"))){
-          $('.ui.green.labeled.icon.button').removeClass('disabled');
+          $('.ui.labeled.icon.button').addClass('green');
         }
     });
 
