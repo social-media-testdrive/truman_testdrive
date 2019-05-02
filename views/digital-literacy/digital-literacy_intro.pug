@@ -6,36 +6,37 @@ block content
     br
     .ui.raised.segment
       h3.ui.header
-        i.bullhorn.icon
+        i.bullhorn.blue.icon
         .content
           | Welcome to the TestDrive social media site!
       hr
-      h5 You're about to enter a social media site, but before you get started, we wanted to review a few key terms related to reading news on social media.
-    .ui.blue.message.hidden 
-          i.forward.blue.icon
-          | Here are the four activities that we will be doing.
+      h5 You're about to enter a social media site.
+      h5 Here are the four activities that we will be doing.
+    //- .ui.blue.message.hidden 
+    //-       i.forward.blue.icon
+    //-       | Here are the four activities that we will be doing.
 
-    .ui.tiny.four.steps.hidden(style="display:none !important;")
-      .active.step
+    .ui.tiny.four.steps
+      .step.glowing-box(data-color="#FCF6BD",style="background-color: #FCF6BD !important;")
         i.book.icon
         .content
           .title Learn
-          .description Learn key ideas
-      .step
+          .description(style="background-color: #FCF6BD !important;") Learn key ideas
+      .step.glowing-box(data-color="#D0F4DE",style="background-color:  #D0F4DE !important;") 
         i.edit.icon
-        .content
+        .blue.content
           .title Practice
-          .description Practice social media skills
-      .step
+          .description( style="background-color: #D0F4DE !important;") Practice social media skills
+      .step.glowing-box(data-color="#A9DEF9", style="background-color:  #A9DEF9 !important") 
         i.binoculars.icon
         .content
           .title Explore
-          .description Explore the social media timeline
-      .step
+          .description(style="background-color: #A9DEF9 !important")  Explore the social media timeline
+      .step.glowing-box(data-color="#E4C1F9",style="background-color: #E4C1F9 !important;") 
         i.question.icon
         .content
           .title Reflect
-          .description Reflect on what you did
+          .description(style="background-color:#E4C1F9 !important;")  Reflect on what you did
           
     br
     a(href='javascript:void(0);', onclick='javascript:startIntro();')
@@ -54,9 +55,9 @@ block content
         };
 
 
-    setTimeout(function(){
-      $('.ui.blue.message').transition('fly down', '1500ms',function() {
-        $('.steps').transition('fly down', '1500ms');
-      }); 
-    }, 1000);
+    //- setTimeout(function(){
+    //-   $('.ui.message').transition('fly down', '1500ms',function() {
+    //-     $('.steps').transition('fly down', '1500ms');
+    //-   }); 
+    //- }, 1000);
   

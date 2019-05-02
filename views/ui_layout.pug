@@ -110,7 +110,23 @@ html
           outline: none !important;
           border-color: #9ecaed !important;
           box-shadow: 0 0 10px #9ecaed !important;
-      }  
+      }
+      .glowing-box:hover { 
+          outline: none !important;
+          border-color: #9ecaed !important;
+          box-shadow: 0 0 10px #9ecaed !important;
+      }
+      .glowing-box{
+        background-color: #fff !important;
+        box-shadow:
+        0 0 60px 30px #fff !important,  /* inner white */
+        0 0 100px 60px #f0f !important, /* middle magenta */
+        0 0 140px 90px #0ff !important; /* outer cyan */
+     }
+      .ui.steps .step:after {
+      background-color: inherit !important;
+     }
+      
       
   script.
     if ('serviceWorker' in navigator) {
