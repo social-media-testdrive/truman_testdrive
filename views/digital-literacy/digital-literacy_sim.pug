@@ -17,8 +17,8 @@ block content
       .content
         .right.floated.meta= "Yesterday"
         a(href='#')
-              img.ui.avatar.image(src='/profile_pictures/user55.jpg')
-              span='Lana Reed'
+              img.ui.avatar.image(src='/profile_pictures/user21.jpg')
+              span='Sam Hill'
       .img.post        
         img(src='/infolitguided1.png' style='max-width:100%;')
       .content(style="background:rgba(0, 0, 0, 0.05);")
@@ -114,9 +114,9 @@ block content
         .ui.comments
           .comment(commentid='5bbd01d88a48061a73337b96')
             a.avatar
-              img(src='/profile_pictures/user36.jpg')
+              img(src='/profile_pictures/user24.jpg')
             .content
-              a.author Hayden Abbey
+              a.author Jenny Chen
               .metadata
                 span.date 1543985371299
                 .rating
@@ -148,13 +148,15 @@ block content
       .content
         .right.floated.meta= "Yesterday"
         a(href='#')
-              img.ui.avatar.image(src='/profile_pictures/user54.jpg')
-              span='Ariel Simon'
+              img.ui.avatar.image(src='/profile_pictures/user53.jpg')
+              span='Brielle Jordan'
       .img.post
         img(src='/infolitguided3.jpg' style='max-width:100%;')
       .content(style="background:rgba(0, 0, 0, 0.05);")
-          .read.rounded.right.floated.info_button(id="info_guide_3",style="z-index:12;text-align:center;position:relative;bottom:10px;width:7%;height:auto")
+          
+          .read.rounded.right.floated.info_button(id="info_guide_3", style="z-index:12;text-align:center;position:relative;bottom:10px;width:7%;height:auto")
             i.info.icon
+            p(data-hint="Check out this button to get more information about the source website!")
           a#article1(onclick='openPost()')
             | WWW.NPR.ORG &nbsp &nbsp
           .header Having A Best Friend In Your Teenage Years Could Benefit You For Life   
@@ -197,9 +199,9 @@ block content
                 a.flag.comment Flag
           .comment(commentid='5bbd01d88a48061a73337b96')
             a.avatar
-              img(src='/profile_pictures/user30.jpg')
+              img(src='/profile_pictures/user21.jpg')
             .content
-              a.author Hayden Abbey
+              a.author David Cole
               .metadata
                 span.date 1543985371299
                 .rating
@@ -230,8 +232,8 @@ block content
       .content
         .right.floated.meta= "Yesterday"
         a(href='#')
-              img.ui.avatar.image(src='/profile_pictures/user54.jpg')
-              span='Ariel Simon'
+              img.ui.avatar.image(src='/profile_pictures/user33.jpg')
+              span='Sean Gomez'
       .img.post
         img(src='/infolitguided4.jpg' style='max-width:100%;')
       .content(style="background:rgba(0, 0, 0, 0.05);")
@@ -263,16 +265,16 @@ block content
         .ui.comments
           .comment(commentid='5bbd01d88a48061a73337b96')
             a.avatar
-              img(src='/profile_pictures/user36.jpg')
+              img(src='/profile_pictures/user74.jpg')
             .content
-              a.author Hayden Abbey
+              a.author Ryan Freyer
               .metadata
                 span.date 1543985371299
                 .rating
                   i.heart.icon
                   span.num 1
                   |                                             Likes
-              .text So beautiful🦋😍
+              .text omg i can't believe this really happened !!
               .actions
                 a.like.comment Like
                 a.flag.comment Flag
@@ -355,7 +357,7 @@ block scripts
     $('.ui.accordion').accordion();   
     function startIntro(){
         var hints;
-        var counter = 0;
+        var literacy_counter = 0;
         var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
           intro.setOptions({
             steps: [
@@ -372,9 +374,8 @@ block scripts
           hints = introJs().addHints();
           console.log('hints added')
           hints.onhintclose(function(e) {
-           counter++;
-           if(counter == 4) {$( ".cybertrans" ).addClass("green");}
-           $( ".cybertrans" ).addClass("green");           
+           literacy_counter++;
+           if(literacy_counter == 6) {$( ".cybertrans" ).addClass("green");}
           });
         });
           
