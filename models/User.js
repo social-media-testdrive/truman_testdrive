@@ -12,6 +12,7 @@ const userSchema = new mongoose.Schema({
   active: {type: Boolean, default: true}, //currently active? Not used in TestDrive
   isAdmin: {type: Boolean, default: false}, //is an Admin? (only changed directly in DB)
   isInstructor: {type: Boolean, default: false}, // is this user an Instructor
+  isGuest: {type: Boolean, default: false}, // is this user an Instructor
 
   completed: {type: Boolean, default: false}, //not used in TestDrive
 

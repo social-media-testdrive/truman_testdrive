@@ -7,6 +7,19 @@ const User = require('../models/User');
 const Class = require('../models/Class.js');
 const Notification = require('../models/Notification.js');
 
+//create random id for guest accounts
+function makeid(length) {
+   var result           = '';
+   var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+   var charactersLength = characters.length;
+   for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+   }
+   return result;
+}
+
+
+
 /**
  * GET /login
  * Login page.
@@ -261,6 +274,47 @@ exports.postSignupInstructor = (req, res, next) => {
           return next(err);
         }
         res.redirect('/');
+      });
+    });
+  });
+};
+
+/**
+ * get Guest accout
+ * Create a new local account.
+ */
+exports.getGuest = (req, res, next) => {
+
+
+  const user = new User({
+    password: "thinkblue",
+    username: "guest"+makeid(10),
+    group: 'no:no',
+    active: true,
+    ui: 'no', //ui or no
+    notify: 'no', //no, low or high
+    isGuest: true,
+    lastNotifyVisit : Date.now()
+  });
+
+  user.profile.name = "Guest";
+  user.profile.location = "Guest Town";
+  user.profile.bio = '';
+  user.profile.picture = '/ball.png';
+
+  User.findOne({ username: req.body.username }, (err, existingUser) => {
+    if (err) { return next(err); }
+    if (existingUser) {
+      req.flash('errors', { msg: 'Account with that Username already exists.' });
+      return res.redirect('/guest/'+req.params.modId);
+    }
+    user.save((err) => {
+      if (err) { return next(err); }
+      req.logIn(user, (err) => {
+        if (err) {
+          return next(err);
+        }
+        res.redirect('/intro/'+req.params.modId);
       });
     });
   });
@@ -692,13 +746,41 @@ exports.postUpdatePassword = (req, res, next) => {
  * POST /account/delete
  * Delete user account.
  */
-exports.postDeleteAccount = (req, res, next) => {
-  User.remove({ _id: req.user.id }, (err) => {
-    if (err) { return next(err); }
-    req.logout();
-    req.flash('info', { msg: 'Your account has been deleted.' });
-    res.redirect('/');
-  });
+exports.getDeleteAccount = (req, res, next) => {
+  console.log("In postDeleteAccount");
+  //is this a guest account?
+  if(typeof req.user.isGuest !== 'undefined' && req.user.isGuest)
+  {
+    console.log("@#@#@#@Deleting Guest User")
+    User.remove({ _id: req.user.id }, (err) => {
+      if (err) { return next(err); }
+      req.logout();
+      //req.flash('info', { msg: 'Your account has been deleted.' });
+      //res.redirect('/');
+      res.redirect('/');
+    });
+  }
+  else
+  {
+    console.log("Deleting user feed posts Actions")
+    User.findById(req.user.id, (err, user) => {
+      //somehow user does not exist here
+      if (err) { return next(err); }
+      console.log("@@@@@@@@@@@  /deleteUserFeedActions req body  ", req.body);
+      
+      user.feedAction =[];
+      user.save((err) => {
+        if (err) {
+          if (err.code === 11000) {
+            req.flash('errors', { msg: 'Something in delete feedAction went crazy. You should never see this.' });
+            return res.redirect('/');
+          }
+          return next(err);
+        }      
+        res.redirect('/');
+      });
+    });
+  }
 };
 
 /**

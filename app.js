@@ -213,8 +213,11 @@ app.use('/profile_pictures',express.static(path.join(__dirname, 'profile_picture
  * Primary app routes.
  */
 
+//create Gust account
+ app.get('/guest/:modId', userController.getGuest);
+
 //main route is the lesson mod selection screen
-app.get('/', passportConfig.isAuthenticated, function (req, res) {
+app.get('/', function (req, res) {
   res.render('mods', {
     title: 'Pick a Lesson'
   });
@@ -238,94 +241,11 @@ app.get('/tos', function (req, res) {
   });
 })
 
-//presentation Pre Quiz
-app.get('/prequiz/presentation',  passportConfig.isAuthenticated, function (req, res) {
-  res.render('prequiz_pres', {
-    title: 'Pre Quiz'
-  });
-})
-app.post('/prequiz/presentation', passportConfig.isAuthenticated, scriptController.postPreQuiz_Prez);
-
-//cyberbullying Pre Quiz
-app.get('/prequiz/cyberbullying',  passportConfig.isAuthenticated, function (req, res) {
-  res.render('cyberbullying/cyberbullying-pre-quiz', {
-    title: 'Pre Quiz'
-  });
-})
-app.post('/prequiz/cyberbullying', passportConfig.isAuthenticated, scriptController.postPreQuiz_Cyber);
-
-//digital_literacy Pre Quiz
-app.get('/prequiz/digital-literacy',  passportConfig.isAuthenticated, function (req, res) {
-  res.render('digitalLit-pre-quiz', {
-    title: 'Pre Quiz'
-  });
-})
-app.post('/prequiz/digital-literacy', passportConfig.isAuthenticated, scriptController.postPreQuiz_Lit);
-
-//likes Pre Quiz
-app.get('/prequiz/likes',  passportConfig.isAuthenticated, function (req, res) {
-  res.render('likes-pre-quiz', {
-    title: 'Pre Quiz'
-  });
-})
-app.post('/prequiz/likes', passportConfig.isAuthenticated, scriptController.postPreQuiz_Likes);
-
-//Image Pre Quiz
-app.get('/prequiz/image',  passportConfig.isAuthenticated, function (req, res) {
-  res.render('images-pre', {
-    title: 'Pre Quiz'
-  });
-})
-app.post('/prequiz/image', passportConfig.isAuthenticated, scriptController.postPreQuiz_Image);
-
-
-//Post Presentation
-app.get('/postquiz/presentation',  passportConfig.isAuthenticated, function (req, res) {
-  res.render('postquiz_pres', {
-    title: 'Post Quiz'
-  });
-})
-app.post('/postquiz/presentation', passportConfig.isAuthenticated, scriptController.postPostQuiz_Prez);
-
-//Post Cyberbully
-app.get('/postquiz/cyberbullying',  passportConfig.isAuthenticated, function (req, res) {
-  res.render('cyberbullying/cyberbullying-post-quiz', {
-    title: 'Post Quiz'
-  });
-})
-app.post('/postquiz/cyberbullying', passportConfig.isAuthenticated, scriptController.postPostQuiz_Cyber);
-
-//Post digital_literacy
-app.get('/postquiz/digital-literacy',  passportConfig.isAuthenticated, function (req, res) {
-  res.render('digitalLit-post-quiz', {
-    title: 'Post Quiz'
-  });
-})
-app.post('/postquiz/digital-literacy', passportConfig.isAuthenticated, scriptController.postPostQuiz_Lit);
-
-//Post likes
-app.get('/postquiz/likes',  passportConfig.isAuthenticated, function (req, res) {
-  res.render('likes-post-quiz', {
-    title: 'Post Quiz'
-  });
-})
-
-//Post quiz Image
-app.get('/postquiz/image',  passportConfig.isAuthenticated, function (req, res) {
-  res.render('images-post', {
-    title: 'Post Quiz'
-  });
-})
-app.post('/postquiz/image', passportConfig.isAuthenticated, scriptController.postPostQuiz_Image);
-
 app.get('/finished',  passportConfig.isAuthenticated, function (req, res) {
   res.render('finished', {
     title: 'Post Exercise'
   });
 })
-
-// app.get('/results/:modId', passportConfig.isAuthenticated, scriptController.getResults);
-app.get('/postquiz/:modId/results', passportConfig.isAuthenticated, scriptController.getQuizResults);
 
 app.get('/:sec/:modId/wait', passportConfig.isAuthenticated, scriptController.getWait);
 
@@ -479,8 +399,9 @@ app.get('/bell', passportConfig.isAuthenticated, userController.checkBell);
 //app.get('/feed', passportConfig.isAuthenticated, scriptController.getScript);
 app.post('/feed', passportConfig.isAuthenticated, scriptController.postUpdateFeedAction);
 app.post('/deleteUserFeedActions', passportConfig.isAuthenticated, scriptController.postDeleteFeedAction);
-
-
+//postDeleteAccount
+//app.post('/deleteAccount', passportConfig.isAuthenticated, userController.getDeleteAccount);
+app.get('/delete', passportConfig.isAuthenticated, userController.getDeleteAccount);
 /**
  * Error Handler.
  */

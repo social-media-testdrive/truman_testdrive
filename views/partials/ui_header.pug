@@ -6,8 +6,8 @@
       |  
       .right.menu
         if !user
-          a.item(href='/login') Login
-          a.item(href='/signup') Create Account
+          //-a.item(href='/login') Login
+          //-a.item(href='/signup') Create Account
         else
           a.item.newpost
             i.big.write.square.icon
@@ -31,8 +31,8 @@
     a.item(href='/')
       img.ui.tiny.image(src='/logo.png', id='cell_logo')
     if !user
-      a.item(href='/login') Login
-      a.item(href='/signup') Create Account
+      //-a.item(href='/login') Login
+      //-a.item(href='/signup') Create Account
     else
       a.item.newpost
         i.big.write.square.icon
