@@ -97,7 +97,7 @@ html
           color: #2185d0;
           background-color:#ffffff;   
           box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); 
-          z-index: 12;
+          z-index: 9;
           text-align:center;      
           overflow: hidden;
           cursor:pointer;
@@ -144,7 +144,16 @@ html
       include partials/ui_header
       include partials/ui_flash
       block content
-
+     
+      .ui.small.basic.share.modal
+        .ui.icon.header
+          i.share.icon
+          |     You have shared this post!
+        .actions(style="text-align:center;")   
+          .ui.green.ok.inverted.button
+            i.checkmark.icon
+            |   Done          
+           
     //include partials/ui_footer
     
 
