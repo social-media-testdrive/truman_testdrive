@@ -25,7 +25,7 @@ block content
           .item
             #protip1.ui.floated.compact.segment
               .ui.fitted.large.checkbox
-                input.ui(type="checkbox" checked="")
+                input.ui(type="checkbox" )
             .label If the information in the article is surprising, even unbelievable, be suspicious that it might be fake news.
 
           .item
@@ -59,7 +59,7 @@ block content
             #protip4.ui.floated.compact.segment
               .ui.fitted.large.checkbox
                 input.ui(type="checkbox")
-            .label As a next step, you should look for additional credible sources or articles that confirm what the article says. This is called corroboration. 
+            .label As a next step, you should look for additional credible sources or articles that confirm what the article says. This is called <b>corroboration.</b> 
           .item
             #protip5.ui.floated.compact.segment
               .ui.fitted.large.checkbox
@@ -69,7 +69,6 @@ block content
               #point3_button.button.ui.mini.green.right.labeled.icon.button
                 i.down.arrow.icon
                 |   Next          
-    br
     br
     .ui.big.labeled.icon.button.cybersim
         i.rocket.icon
@@ -82,18 +81,17 @@ block scripts
     $('.ui.accordion').accordion();   
 
     setTimeout(function(){
-      $('.sub.header').transition('shake');    
-    
+      $('.sub.header').transition('shake'); 
     }, 1500);
 
     setTimeout(function(){
-      $('#point1').transition('shake');    
+      $('#point1').transition('jiggle');    
     }, 2500);
 
 
     $('#point1_button').on('click', function () {
       if (($('#protip1 .checkbox input')[0].checked)){
-        $('#point2').transition('shake');
+        $('#point2').transition('jiggle');
         $('#point2').click();
       }
       else {
@@ -109,7 +107,7 @@ block scripts
     $('#point2_button').on('click', function () {
       if (($('#protip2 .checkbox input')[0].checked) && 
                           ($('#protip3 .checkbox input')[0].checked)){
-        $('#point3').transition('shake');
+        $('#point3').transition('jiggle');
         $('#point3').click();
       }
       else {

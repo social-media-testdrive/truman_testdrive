@@ -303,7 +303,10 @@ $(window).on("load", function () {
   //Cyberbullying Transition to freeplay
   $('.ui.big.green.labeled.icon.button.cyber_script')
     .on('click', function () {
-      window.location.href = '/modual/cyberbullying';
+      console.log(window.location.pathname)
+      let pathArray = window.location.pathname.split('/');
+      console.log(pathArray);
+      window.location.href = '/modual/' + pathArray[2];
     });
 
   //Cyberbullying end play
@@ -504,6 +507,14 @@ $(window).on("load", function () {
       }
     })
     ;
+
+//this is the FLAG button
+  $('.ui.share.button')
+    .on('click', function () {
+      $('.ui.small.basic.share.modal')
+        .modal('show');      
+  });
+
 
   //this is the FLAG button
   $('.flag.button')
