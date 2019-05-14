@@ -489,7 +489,7 @@ $(window).on("load", function () {
   $('#content .fluid.card .img img')
     .visibility({
       type: 'image',
-      offset: 350,
+      offset: 0,
       //transition : 'fade in',
       //duration   : 1000,
 
