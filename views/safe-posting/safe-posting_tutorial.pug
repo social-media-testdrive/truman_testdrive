@@ -1,0 +1,234 @@
+
+extends ../ui_layout
+  
+block content
+  .computer.only.tablet.only.four.wide.column 
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
+
+    .ui.fluid.card.dim()
+      .ui.dimmer.flag
+        .content
+          .center
+            h2.ui.inverted.icon.header
+              i.red.flag.icon
+              |                                     You &apos;ve flagged this!
+              h3.ui.inverted.header
+                span The admins will review this post further. We are sorry you had this experience.
+      .content
+        .right.floated.meta= "Yesterday"
+        a(href='#')
+              img.ui.avatar.image(src='/profile_pictures/user6.jpeg')
+              span='Elli Andreas'
+      .img.post        
+        img(src='/safeposttut1.png' style='max-width:100%;')
+      .extra.content
+          p              
+          .description="We found this kitten in our back yard! We rescued it"
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |                             Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |                             Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |                                 Like
+          a.ui.basic.red.left.pointing.label.count 2
+      .content
+        .ui.comments
+          .comment(commentid='5bbd01d88a48061a73337b96')
+            a.avatar
+              img(src='/profile_pictures/user16.jpg')
+            .content
+              a.author Elena Anderson
+              .metadata
+                span.date 1543985371299
+                .rating
+                  i.heart.icon
+                  span.num 1
+                  |                                             Likes
+              .text wow it's so tiny!!!
+              .actions
+                a.like.comment Like
+                a.flag.comment Flag
+          .comment
+            a.avatar
+              img(src='/profile_pictures/user21.jpg')
+            .content
+              a.author David Cole
+              .metadata
+                span.date 1543985371299
+                .rating
+                  i.heart.icon
+                  span.num 1
+                  |                                             Likes
+              .text That's a really great thing you're doing!
+              .actions
+                a.like.comment Like
+                a.flag.comment Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+    //-#######################
+ 
+ 
+    .ui.fluid.card.dim()
+      .ui.dimmer.flag
+        .content
+          .center
+            h2.ui.inverted.icon.header
+              i.red.flag.icon
+              |                                     You &apos;ve flagged this!
+              h3.ui.inverted.header
+                span The admins will review this post further. We are sorry you had this experience.
+      .content
+        .right.floated.meta= "Yesterday"
+        a(href='#')
+              img.ui.avatar.image(src='/profile_pictures/user21.jpg')
+              span='David Cole'
+      .img.post        
+        img(src='/safeposttut2.png' style='max-width:100%;')
+      .extra.content
+          p              
+          .description="I went hiking with my mom this weekend"
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |                             Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |                             Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |                                 Like
+          a.ui.basic.red.left.pointing.label.count 2
+      .content
+        .ui.comments
+          .comment()
+            a.avatar
+              img(src='/profile_pictures/user24.jpg')
+            .content
+              a.author Jenny Chen
+              .metadata
+                span.date 1543985371299
+                .rating
+                  i.heart.icon
+                  span.num 1
+                  |                                             Likes
+              .text what a great view😍
+              .actions
+                a.like.comment Like
+                a.flag.comment Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+    //-#######################
+
+
+    #live-chat.live-chat
+      header.clearfix
+        a.chat-close(href='#') x
+        h4 John Doe
+        span.chat-message-counter 3
+      .chat
+        .chat-history
+          .chat-message.clearfix
+            img(src='http://gravatar.com/avatar/2c0ad52fc5943b78d6abe069cc08f320?s=32', alt='', width='32', height='32')
+            .chat-message-content.clearfix
+              span.chat-time 13:35
+              h5 John Doe
+              p
+                | hey! I really like ur pictures.
+            // end chat-message-content
+            // end chat-message
+            hr            
+            .chat-message.clearfix
+              img(src='http://gravatar.com/avatar/2c0ad52fc5943b78d6abe069cc08f320?s=32', alt='', width='32', height='32')
+              .chat-message-content.clearfix
+                span.chat-time 13:36
+                h5 John Doe
+                p
+                  | idk u but u seem cool 😎 tell me about urself
+              // end chat-message-content
+              // end chat-message
+            hr            
+            .chat-message.clearfix
+              img(src='http://gravatar.com/avatar/2c0ad52fc5943b78d6abe069cc08f320?s=32', alt='', width='32', height='32')
+              .chat-message-content.clearfix
+                span.chat-time 13:37
+                h5 John Doe
+                p
+                  | where do u go to school?
+              // end chat-message-content
+              // end chat-message
+              hr
+        // end chat-history
+        p.chat-feedback Your partner is typing…
+        hr
+        form(action='#', method='post',id='live-chat_form')
+          fieldset
+            input(type='text', placeholder='Type your message…', autofocus='')
+            input(type='hidden')
+      // end chat
+      // end live-chat
+
+block scripts
+  script().
+    function startIntro(){
+        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
+          intro.setOptions({
+            steps: [
+              { 
+                element: document.querySelectorAll('#step1')[0],
+                intro: "Before you talk to someone online, ask yourself. <li> “Do I know this person offline? Have I met them face-to-face?” </li><li>If the answer is “No” to either, be careful about what you say to them.</li>",
+                position: 'bottom',
+                scrollTo: "tooltip"
+              },
+              {
+                element: document.querySelectorAll('#live-chat')[0],
+                intro: "If someone you don’t know asks for private information or pressures you to share personal things, here are some strategies you can use to respond. ",
+                position: 'bottom',
+                scrollTo: "tooltip"
+              },
+              { 
+                element: document.querySelectorAll('#live-chat')[0],
+                intro: "Change the subject or say: “I don't want to talk about this.",
+                position: 'bottom',
+                scrollTo: "tooltip"
+              },
+              { 
+                element: document.querySelectorAll('#live-chat')[0],
+                intro: "Use humor to change the conversation, such as: “You're asking so many questions?! Haha you sound like my nosy aunt.",
+                position: 'bottom',
+                scrollTo: "tooltip"
+              },
+              { 
+                element: document.querySelectorAll('#live-chat')[0],
+                intro: "Unfriend, block, or report the user.",
+                position: 'bottom',
+                scrollTo: "tooltip"
+              },
+              { 
+                element: document.querySelectorAll('#live-chat')[0],
+                intro: "Keep in mind, you do not have to share anything, even if you are pressured! It's not okay for someone to pressure you, and that's not being a good friend. If anything feels wrong, you can also unfriend, block, or report the user so that they can no longer message you.",
+                position: 'bottom',
+                scrollTo: "tooltip"
+              },
+            ]
+          });
+          intro.start().onexit(function() {
+          window.location.href='/tut_guide/safe-posting';
+        });
+          
+      };
+
+      $(window).on("load", function() {startIntro();});

@@ -1,0 +1,58 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container
+    //-        
+        br
+        h3 Now you get to explore the LearnLove.Life timeline! You can read what others have posted, respond, or make your own posts.
+        br
+        h3 Before We Start
+
+        p
+            img.ui.avatar.image(src='/profile_pictures/user55.jpg')
+            <b>Dylan Goldstein</b> just moved into town and is new in school. He loves to draw comics and spends most of recess sitting by himself drawing in his sketchbook.
+
+        p Some of Dylan’s classmates have started to make fun of him at school. Last week, 
+            img.ui.avatar.image(src='/profile_pictures/user66.jpeg')
+            <b>Keegan Scott</b> secretly took a picture of Dylan’s sketchbook. She posted the photo on social media with a mean comment. Since then, Keegan’s friends 
+            img.ui.avatar.image(src='/profile_pictures/user5.jpeg')
+            <b>Ella Sroni</b> and 
+            img.ui.avatar.image(src='/profile_pictures/user64.jpg')
+            <b>Breana Summers</b> have also been making fun of Dylan on social media.
+
+        .ui.info.message
+            p Now, let’s apply what you have learned! Try to spot and respond to cyberbullying posts or comments on the LearnLove.Life timeline. When you get to the bottom of the page, click “Continue” to move to the next part of the lesson.
+    //-h3 Click Let's Go!
+
+    //-a(href='javascript:void(0);', onclick='javascript:startIntro();')
+        .ui.big.green.labeled.icon.button
+            i.rocket.icon
+            |   Got it!
+    br
+    br
+    br
+    block scripts
+      script().
+        $(window).on("load", function() {startIntro()});
+        function startIntro(){
+            var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
+              intro.setOptions({
+                steps: [
+                  { 
+                    intro: "Now, let's apply what you have learned in the TestDrive timeline!"
+                  },
+                  {
+                    intro: "As you look through the timeline, see if you can spot the signs of fake news articles being shared."
+                  },
+                  {
+                    intro: "You can also click on the articles and decide what you would do next."
+                  }
+                ]
+              });
+              intro.start().onexit(function() {
+              window.location.href='/modual/digital-literacy';
+            });          
+          };
+        
+
