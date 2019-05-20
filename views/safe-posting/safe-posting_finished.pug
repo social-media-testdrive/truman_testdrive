@@ -1,0 +1,43 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container
+    br
+    h2 Cyberbullying Post Exercise 
+
+    .ui.form
+      .field
+        label Did you see any bullying posts?
+        textarea(rows='2')
+      .field
+        label How did you respond?
+        textarea(rows='2')
+      .field
+        label What can you do in the future if you see Cyberbullying?
+        textarea(rows='2')
+      .grouped.fields
+        label(for='fruit') Feel like you know how to deal with Cyberbullying in the future?:
+      .field
+        .ui.radio.checkbox
+          input.hidden(type='radio', name='fruit', checked='', tabindex='0')
+          label Definitely Yes
+      .field
+        .ui.radio.checkbox
+          input.hidden(type='radio', name='fruit', tabindex='0')
+          label Kind of
+      .field
+        .ui.radio.checkbox
+          input.hidden(type='radio', name='fruit', tabindex='0')
+          label Not really
+      .field
+        .ui.radio.checkbox
+          input.hidden(type='radio', name='fruit', tabindex='0')
+          label Not at all
+
+    .ui.big.green.labeled.icon.button.com
+        i.rocket.icon
+        |   Got it!
+    br
+    br
+    br

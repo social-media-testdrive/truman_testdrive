@@ -1,0 +1,146 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container
+
+    .ui.raised.segment
+      h3.ui.header
+        i.bullhorn.blue.icon
+        .content
+          | Introduction
+      hr
+      h5.ui.header
+        i.right.arrow.icon
+        .content
+          | Social media can connect people over the Internet. People use social media to share information, their interests, and connect with friends and family. We can also use it to talk to new people and meet new friends!
+ 
+      h5.ui.header
+        i.right.arrow.icon
+        .content
+          | On social media, you may be talking to many different people at the same time. Some of whom you might not know in real life. Remember to always be careful about the information you share online, especially with people you've never met face-to-face.
+      #introduction_next.button.ui.mini.green.right.labeled.icon.button
+              i.down.arrow.icon
+              |   Next
+    
+    #question.ui.segment.hidden
+      h3.ui.header
+        i.key.blue.icon
+        .content Key Ideas
+          .sub.header 
+            i.hand.pointer.blue.icon 
+            span.blue Click on each label below to learn more
+      //- .ui.segments     
+      .ui.stackable.two.column.grid
+        .ui.column
+          #audience.ui.raised.segment
+            a.ui.blue.ribbon.label
+                //- i.dollar.sign.icon 
+                span Audience
+            span.hidden(id="audience_info", style="font-weight:600") Anyone who can see information about you or posted by you online.
+              ul(style="font-weight:400") Some people in your social media audience will be your friends and family. But your audience can also include strangers and people who you don’t know face-to-face.
+
+        .ui.column
+          #private_information.ui.raised.segment
+            a.ui.blue.ribbon.label
+                //- i.magic.icon 
+                span Private information
+            span.hidden(id="private_information_info",style="font-weight:600") Information about you that can be used to identify you because it is unique to you.
+              ul(style="font-weight:400") This can include things like your full name, school, home address, or phone number. Be careful to not share any private information in pictures, either.
+        
+        .ui.column
+          #risky.ui.raised.segment
+            a.ui.blue.ribbon.label
+                //- i.magic.icon 
+                span Risky
+            span.hidden(id="risky_info",style="font-weight:600") Potentially harmful to one’s emotional or physical well-being.
+              ul(style="font-weight:400") It is risky to share private information online. People could share it with others people or use it to try to trick or scam you.
+    
+    .ui.message.negative.transition.hidden
+      i.close.icon
+      .header
+       | Complete all activities to proceed!
+    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+        .ui.labeled.icon.button
+            i.rocket.icon
+            |   Got it!
+    br
+    br
+    br
+block scripts
+  script().
+    var incomplete_activities = ($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden")|| $('#risky_info').is(":hidden"));
+    $('#introduction_next').on('click', function () {      
+      $('#question').show(); 
+      $('#question').transition('jiggle');     
+      if(!($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#risky_info').is(":hidden"))){
+        $('.ui.labeled.icon.button').addClass('green');
+      } 
+    });
+
+    $('#audience>a').on('click', function () {      
+        $('#audience_info').show(); 
+        $('#audience').transition('tada');     
+        if(!($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden")|| $('#risky_info').is(":hidden"))){
+          $('.ui.labeled.icon.button').addClass('green');
+        }
+    });
+
+    $('#private_information>a').on('click', function () {      
+        $('#private_information_info').show();      
+        $('#private_information').transition('tada');     
+        if(!($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#risky_info').is(":hidden"))){
+          $('.ui.labeled.icon.button').addClass('green');
+        }
+    });
+
+     $('#risky>a').on('click', function () {      
+        $('#risky_info').show(); 
+        $('#risky').transition('tada');     
+        if(!($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#risky_info').is(":hidden"))){
+          $('.ui.labeled.icon.button').addClass('green');
+        }
+    });
+
+
+    function startIntro(){
+        if(($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#risky_info').is(":hidden"))){          
+          $('.ui.message').addClass('visible')
+            .delay(3000)
+            .queue(function() {
+              $(this).removeClass('visible').dequeue();
+          });
+        }
+        else {
+          console.log(incomplete_activities)
+          window.location.href='/tutorial/safe-posting';
+
+          //- $('.ui.text.container').hide();
+          //- var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true , 'doneLabel':'Done &#10003'});
+          //-   intro.setOptions({
+          //-     steps: [
+          //-       { 
+          //-         intro: "<b>Now lets go over some Key Concepts.</b>"
+          //-       },
+          //-       { 
+          //-         intro: "<b>Source</b>: the website, organization, or person the information comes from"
+          //-       },
+          //-       {
+          //-         intro: "<b>Credible</b>: believable and trustworthy"
+          //-       },
+          //-       { 
+          //-         intro: "<b>Fake news</b>: a news story that looks real but has been made up."
+          //-       },
+          //-       { 
+          //-         intro: "<b>Clickbait</b>: an article that has a catchy headline to get people to click on it."
+          //-       }              
+          //-     ]
+          //-   });
+          //-   intro.start().onexit(function() {
+          //-   window.location.href='/tutorial/digital-literacy';
+          //- });
+        }          
+      };
+
+      //$(window).on("load", function() {startIntro();});
+

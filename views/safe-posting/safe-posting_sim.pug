@@ -1,0 +1,268 @@
+
+extends ../ui_layout
+  
+block content
+  .computer.only.tablet.only.four.wide.column 
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
+
+    .ui.fluid.card.dim()
+      .ui.dimmer.flag
+        .content
+          .center
+            h2.ui.inverted.icon.header
+              i.red.flag.icon
+              |                                     You &apos;ve flagged this!
+              h3.ui.inverted.header
+                span The admins will review this post further. We are sorry you had this experience.
+      .content(id ='post1_header')
+        .right.floated.meta= "Yesterday"
+        a(href='#')
+              img.ui.avatar.image(src='/profile_pictures/user33.jpg')
+              span='Sean Gomez'
+      .img.post        
+        img(src='/safepostga1.jpg' style='max-width:100%;')
+      .extra.content
+          p              
+          .description="my dad helped me make this lego airplane!"
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |                             Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |                             Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |                                 Like
+          a.ui.basic.red.left.pointing.label.count 2
+      .content
+        .ui.comments
+          .comment(commentid='5bbd01d88a48061a73337b96')
+            a.avatar
+              img(src='/profile_pictures/user42.jpg')
+            .content
+              a.author Neel Talwar
+              .metadata
+                span.date 1543985371299
+                .rating
+                  i.heart.icon
+                  span.num 1
+                  |                                             Likes
+              .text cool !!
+              .actions
+                a.like.comment Like
+                a.flag.comment Flag
+          .comment
+            a.avatar
+              img(src='/profile_pictures/user38.jpg')
+            .content
+              a.author Priscilla Rose
+              .metadata
+                span.date 1543985371299
+                .rating
+                  i.heart.icon
+                  span.num 1
+                  |                                             Likes
+              .text haha I like legos too
+              .actions
+                a.like.comment Like
+                a.flag.comment Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+    //-#######################
+ 
+ 
+    .ui.fluid.card.dim()
+      .ui.dimmer.flag
+        .content
+          .center
+            h2.ui.inverted.icon.header
+              i.red.flag.icon
+              |                                     You &apos;ve flagged this!
+              h3.ui.inverted.header
+                span The admins will review this post further. We are sorry you had this experience.
+      .content
+        .right.floated.meta= "Yesterday"
+        a(href='#')
+              img.ui.avatar.image(src='/profile_pictures/user63.jpg')
+              span='Liam Knapke'
+      .img.post        
+        img(src='/safepostga2.jpg' style='max-width:100%;')
+      .extra.content
+          p(data-hint="Remember, you should never share private information on social media! You can flag the post so it can get removed from the social media site.")              
+          .description="new phone who dis? text me @ my new number 607-252-6771"
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |                             Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |                             Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |                                 Like
+          a.ui.basic.red.left.pointing.label.count 2
+      .content
+        .ui.comments
+          .comment()
+            a.avatar
+              img(src='/profile_pictures/user33.jpg')
+            .content
+              a.author Sean Gomez
+              .metadata
+                span.date 1543985371299
+                .rating
+                  i.heart.icon
+                  span.num 1
+                  |                                             Likes
+              .text texting u now
+              .actions
+                a.like.comment Like
+                a.flag.comment Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+    //-#######################
+    button.ui.big.labeled.icon.button.cybertrans
+        i.rocket.icon
+        |   Let's Continue!
+
+
+    .container.clearfix
+      .chat(style="right:24px;")
+        .chat-header.clearfix
+          a(href='#')
+            img.ui.avatar.image(src='/profile_pictures/user21.jpg',style="width: 3em;height: 3em;")
+          .chat-about
+            .chat-with Chat with Vincent
+            //- .chat-num-messages already 1 902 messages
+          //- i.fa.fa-star
+        // end chat-header
+        .chat-history
+          ul
+            li
+              .message-data
+                span.message-data-name
+                  i.dot.circle.icon.online
+                  |  Vincent
+                span.message-data-time 10:12 AM
+              .message.my-message
+                | hey nice profile pic
+            li
+              .message-data
+                span.message-data-name
+                  i.dot.circle.icon.online
+                  |  Vincent
+                span.message-data-time 10:20 AM
+              .message.my-message
+                | wanna be friends?
+            li(data-hint="Since these messages came from a stranger, you should not share any private information with them.")
+              .message-data
+                span.message-data-name
+                  i.dot.circle.icon.online
+                  |  Vincent
+                span.message-data-time 10:22 AM
+              .message.my-message
+                | how old r u?
+              i.dot.circle.icon.online
+              i.dot.circle.icon.online(style='color: #AED2A6')
+              i.dot.circle.icon.online(style='color:#DAE9DA')
+        // end chat-history
+        .chat-message.clearfix
+          .ui.fluid.action.input
+            input#message-to-send(type='text', name='message-to-send', placeholder='Type your message')
+            button
+              i.send.icon
+              | Send
+        // end chat-message
+        // end chat
+    // end container
+    script()#message-template(type='text/x-handlebars-template').
+      <li class="clearfix">
+      <div class="message-data align-right">
+      <span class="message-data-time" >{{time}}</span> &nbsp; &nbsp;
+      <span class="message-data-name" >Olia</span> <i class="fa fa-circle me"></i>
+      </div>
+      <div class="message other-message float-right">
+      {{messageOutput}}
+      </div>
+      </li>
+    script()#message-response-template(type='text/x-handlebars-template').
+      <li>
+      <div class="message-data">
+      <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
+      <span class="message-data-time">{{time}}</span>
+      </div>
+      <div class="message my-message">
+      {{response}}
+      </div>
+      </li>
+
+
+block scripts
+  script().
+    var info_text = 'No Information Found';
+    let post_info_description = new Map([
+        ['WWW.NEWSNETWORK.COM.CO','News Network provides the most up to date local and national news.'],
+        ['WWW.NYTIMES.COM','The New York Times (sometimes abbreviated as the NYT and NYTimes) is an American newspaper based in New York City with worldwide influence and readership. Founded in 1851, the paper has won 125 Pulitzer Prizes, more than any other newspaper. The Times is ranked 17th in the world by circulation and 2nd in the U.S.'],
+        ['WWW.NPR.ORG','National Public Radio (NPR, stylized as npr) is an American privately and publicly funded non-profit membership media organization based in Washington, D.C.']
+        ]);
+    
+    $('.ui.accordion').accordion();   
+    function startIntro(){
+        var hints;
+        var literacy_counter = 0;
+        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
+          intro.setOptions({
+            steps: [
+              { 
+                intro: "In this activity, we will look at some Prompted Behaviors for safe posting"
+              },
+              { 
+                intro: "Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more..."
+              }
+              
+            ]
+          });
+          intro.start().onexit(function() {
+          hints = introJs().addHints();
+          console.log('hints added')
+          hints.onhintclose(function(e) {
+           literacy_counter++;
+           if(literacy_counter == 2) {$( ".cybertrans" ).addClass("green");}
+          });
+        });
+          
+      };
+
+      $(window).on("load", function() {startIntro();});
+
+
+      function openPost(){
+        $('#next_steps').modal('show');
+      }
+
+
+    //get add new feed post modal to work
+      $(".info_button").click(function () {
+        //- console.log($('.info_button').next());
+        //- console.log($(this).attr('id'));
+        var clickedId = '#' + $(this).attr('id');
+        info_header = $(clickedId).next()[0].innerText;
+          //- console.log(info_header.toString());
+        info_text = post_info_description.get(info_header.toString().trim()) || 'No Information Found';
+        //- console.log(info_header  + info_text );
+        //- document.getElementById('post_info_header').innerHTML = info_header;
+        document.getElementById('post_info_body').innerHTML = info_text;
+        //console.log("Clicking new Post");
+        $('#info_modal').modal('show');
+      });

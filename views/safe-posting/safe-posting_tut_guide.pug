@@ -1,0 +1,211 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container
+    br
+    .ui.raised.segment
+      h3.ui.header
+        i.wechat.icon
+        .content
+          | Someone you don’t know personally but is a friend of a friend sends you the following message.
+      hr 
+      #introduction_next.button.ui.mini.green.right.labeled.icon.button
+              i.eye.icon
+              |   View  Messages
+
+
+    #show_steps.ui.segment.hidden
+      //- .ui.header.title
+      a.ui.blue.ribbon.label
+        h4
+          i.hand.pointer.icon
+          content Click here to see ways to respond.
+
+      br
+      br
+      #steps.ui.stackable.two.column.grid.hidden
+        .ui.column
+          #step1.ui.raised.segment
+            span(id="audience_info", style="font-weight:600") You haven’t met this person in real life yet! Do not share private information with them.
+
+        .ui.column
+          #step2.ui.raised.segment
+            span(id="private_information_info",style="font-weight:600") One thing you can do to respond is to change the subject. Try saying “How about we play together at school instead?” to this person.
+        
+        .ui.column
+          #step3.ui.raised.segment
+            span(id="risky_info",style="font-weight:600") Or, if you want to be direct, try saying “I don’t know you. I don’t feel comfortable giving you my address.”
+        
+        .ui.column
+          #step4.ui.raised.segment
+            span(id="risky_info",style="font-weight:600") You can also talk to a trusted adult about how to handle this situation.
+    
+    #chat1.container.clearfix.hidden
+      .chat(style="right:24px;")
+        .chat-header.clearfix
+          a(href='#')
+            img.ui.avatar.image(src='/profile_pictures/user21.jpg',style="width: 3em;height: 3em;")
+          .chat-about
+            .chat-with Chat with Sam Hill
+            //- .chat-num-messages already 1 902 messages
+          //- i.fa.fa-star
+        // end chat-header
+        .chat-history
+          ul
+            li.clearfix
+              .message-data
+                span.message-data-name 
+                  i.dot.circle.icon.online
+                  | Sam 
+                span.message-data-time 10:12 AM
+              .message.my-message
+                | Hey, your friend gave me your number.
+            li
+              .message-data
+                span.message-data-name
+                  i.dot.circle.icon.online
+                  |  Sam 
+                span.message-data-time 10:12 AM
+              .message.my-message
+                | She said you were really into basketball.
+            li
+              .message-data
+                span.message-data-name
+                  i.dot.circle.icon.online
+                  |  Sam 
+                span.message-data-time 10:20 AM
+              .message.my-message
+                | What’s your address so I can stop by after school to shoot some hoops
+
+              i.dot.circle.icon.online
+              i.dot.circle.icon.online(style='color: #AED2A6')
+              i.dot.circle.icon.online(style='color:#DAE9DA')
+        // end chat-history
+        .chat-message.clearfix
+          .ui.fluid.action.input
+            input#message-to-send(type='text', name='message-to-send', placeholder='Type your message')
+            button
+              i.blue.send.icon
+              | Send
+        // end chat-message
+        // end chat
+    // end container
+    script()#message-template(type='text/x-handlebars-template').
+      <li class="clearfix">
+      <div class="message-data align-right">
+      <span class="message-data-time" >{{time}}</span> &nbsp; &nbsp;
+      <span class="message-data-name" >Olia</span> <i class="fa fa-circle me"></i>
+      </div>
+      <div class="message other-message float-right">
+      {{messageOutput}}
+      </div>
+      </li>
+    script()#message-response-template(type='text/x-handlebars-template').
+      <li>
+      <div class="message-data">
+      <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
+      <span class="message-data-time">{{time}}</span>
+      </div>
+      <div class="message my-message">
+      {{response}}
+      </div>
+      </li>
+
+    br
+    .ui.big.labeled.icon.button.cybersim
+        i.rocket.icon
+        |   Got it!
+    br
+    br
+    br
+block scripts
+  script().
+   
+
+    setTimeout(function(){
+      $('.sub.header').transition('shake'); 
+    }, 1500);
+
+    setTimeout(function(){
+      $('#point1').transition('jiggle');    
+    }, 2500);
+
+    $('#introduction_next').on('click', function () {      
+      $('#chat1').show(); 
+      setTimeout(function(){
+        $('#show_steps').show();
+        $('#steps').hide();
+        $('#show_steps').transition('jiggle');    
+      }, 3000);      
+
+    });
+
+    $('#show_steps a').on('click', function () {
+        //- $('#steps').hide();
+        //- $('#steps').show();
+        setTimeout(function(){
+          $('#step1,#step2,#step3,#step4').transition({
+            animation : 'jiggle',
+            duration  : 800,
+            interval  : 200
+          });    
+        $('#steps').show();         
+        $('.ui.big.labeled.icon.button.cybersim').addClass('green');
+        $('.ui.big.labeled.icon.button.cybersim').transition('jiggle');
+        }, 500);
+
+     });
+
+
+    $('#point2_button').on('click', function () {
+      if (($('#protip2 .checkbox input')[0].checked) && 
+                          ($('#protip3 .checkbox input')[0].checked)){
+        $('#point3').transition('jiggle');
+        $('#point3').click();
+      }
+      else {
+        $('.ui.message').addClass('visible')
+        .delay(3000)
+        .queue(function() {
+          $(this).removeClass('visible').dequeue();
+        });
+      }
+    });
+
+    $('#point3_button').on('click', function () {
+      if (($('input:checked').length) == 
+          ($('input').length)){  
+        $('.ui.big.labeled.icon.button.cybersim').addClass('green');
+        $('.ui.big.green.labeled.icon.button.cybersim').transition('jiggle');
+      }
+      else {
+        $('.ui.message').addClass('visible')
+        .delay(3000)
+        .queue(function() {
+          $(this).removeClass('visible').dequeue();
+        });
+      }
+    });
+
+    //- $('.ui.big.labeled.icon.button.cybersim').on('click', function () {
+    //-     $('.ui.message').addClass('visible')
+    //-     .delay(3000)
+    //-     .queue(function() {
+    //-       $(this).removeClass('visible').dequeue();
+    //-     });
+    //- });    
+
+    $("input").change(function(){
+      if (($('input:checked').length) == 
+            ($('input').length)){
+        $('.ui.big.labeled.icon.button.cybersim').addClass('green');
+        $('.ui.big.labeled.icon.button.cybersim').transition('jiggle');
+      }
+      else{
+        $('.ui.big.labeled.icon.button.cybersim').removeClass('green');
+      }
+    });
+   
+    
+    
