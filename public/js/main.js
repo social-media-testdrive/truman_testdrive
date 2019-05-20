@@ -82,7 +82,10 @@ $(window).on("load", function () {
           }
       },
       scrollToBottom: function() {
-        this.$chatHistory.scrollTop(this.$chatHistory[0].scrollHeight);
+        if(this.$chatHistory[0]){
+          this.$chatHistory.scrollTop(this.$chatHistory[0].scrollHeight);
+        }
+        
       },
       getCurrentTime: function() {
         return new Date().toLocaleTimeString().
