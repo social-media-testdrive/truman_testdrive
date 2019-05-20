@@ -531,7 +531,7 @@ $(window).on("load", function () {
         .dimmer('show');
       //repeat to ensure its closable             
       post.find(".ui.dimmer.flag").dimmer({
-        closable: false
+        closable: true
       })
         .dimmer('show');
 
