@@ -4,71 +4,114 @@ block content
 
   .ui.text.container
     br
-    
-    h2.ui.header
-      i.check.square.outline.green.icon
-      .content Here are things you can do next to determine the credibility of an article.
-        .sub.header 
-          i.eye.icon 
-          span Read and check all the boxes
-    
-    .ui.message.negative.transition.hidden
-      i.close.icon
-      .header
-        | Read and select all boxes to proceed!
-          
-    .ui.styled.fluid.accordion
-      #point1.title.active
-        i.dropdown.icon
-        | Read the article closely. Ask yourself: Does it make sense? Is it believable?
-      .active.content.ui.list
-          .item
-            #protip1.ui.floated.compact.segment
-              .ui.fitted.large.checkbox
-                input.ui(type="checkbox" )
-            .label If the information in the article is surprising, even unbelievable, be suspicious that it might be fake news.
+    .ui.raised.segment
+      h3.ui.header
+        i.wechat.icon
+        .content
+          | Someone you don’t know personally but is a friend of a friend sends you the following message.
+      hr 
+      #introduction_next.button.ui.mini.green.right.labeled.icon.button
+              i.eye.icon
+              |   View  Messages
 
-          .item
-            #point1_button.button.ui.mini.green.right.labeled.icon.button
-              i.down.arrow.icon
-              |   Next
-      #point2.title
-        i.dropdown.icon
-        |     Analyze the source. Ask yourself: Does it come from a credible source?
-      .content.ui.list
-          .item
-            #protip2.ui.floated.compact.segment
-              .ui.fitted.large.checkbox
-                input.ui(type="checkbox" id="")
-            .label If the website is part of a credible news, academic (ends with ".edu"), or governmental (ends with ".gov") organization, this is a good sign the article is credible.
 
-          .item
-            #protip3.ui.floated.compact.segment
-              .ui.fitted.large.checkbox
-                input.ui(type="checkbox"  id="")
-            .label You can also look at the "About Us" page to learn more about the website and who is writing the articles. It's also important to look beyond the "About Us" page to make sure it's a reliable source.
-          .item
-              #point2_button.button.ui.mini.green.right.labeled.icon.button
-                i.down.arrow.icon
-                |   Next
-      #point3.title
-        i.dropdown.icon
-        |     Look for corroboration. Ask yourself: Do other credible sources say the same thing?
-      .content.ui.list
-          .item
-            #protip4.ui.floated.compact.segment
-              .ui.fitted.large.checkbox
-                input.ui(type="checkbox")
-            .label As a next step, you should look for additional credible sources or articles that confirm what the article says. This is called <b>corroboration.</b> 
-          .item
-            #protip5.ui.floated.compact.segment
-              .ui.fitted.large.checkbox
-                input.ui(type="checkbox")
-            .label To do this, search for the same topic on fact-checking websites such as Snopes.com, FactCheck.org, and major news websites.
-          .item
-              #point3_button.button.ui.mini.green.right.labeled.icon.button
-                i.down.arrow.icon
-                |   Next          
+    #show_steps.ui.segment.hidden
+      //- .ui.header.title
+      a.ui.blue.ribbon.label
+        h4
+          i.hand.pointer.icon
+          content Click here to see ways to respond.
+
+      br
+      br
+      #steps.ui.stackable.two.column.grid.hidden
+        .ui.column
+          #step1.ui.raised.segment
+            span(id="audience_info", style="font-weight:600") You haven’t met this person in real life yet! Do not share private information with them.
+
+        .ui.column
+          #step2.ui.raised.segment
+            span(id="private_information_info",style="font-weight:600") One thing you can do to respond is to change the subject. Try saying “How about we play together at school instead?” to this person.
+        
+        .ui.column
+          #step3.ui.raised.segment
+            span(id="risky_info",style="font-weight:600") Or, if you want to be direct, try saying “I don’t know you. I don’t feel comfortable giving you my address.”
+        
+        .ui.column
+          #step4.ui.raised.segment
+            span(id="risky_info",style="font-weight:600") You can also talk to a trusted adult about how to handle this situation.
+    
+    #chat1.container.clearfix.hidden
+      .chat(style="right:24px;")
+        .chat-header.clearfix
+          a(href='#')
+            img.ui.avatar.image(src='/profile_pictures/user21.jpg',style="width: 3em;height: 3em;")
+          .chat-about
+            .chat-with Chat with Sam Hill
+            //- .chat-num-messages already 1 902 messages
+          //- i.fa.fa-star
+        // end chat-header
+        .chat-history
+          ul
+            li.clearfix
+              .message-data
+                span.message-data-name 
+                  i.dot.circle.icon.online
+                  | Sam 
+                span.message-data-time 10:12 AM
+              .message.my-message
+                | Hey, your friend gave me your number.
+            li
+              .message-data
+                span.message-data-name
+                  i.dot.circle.icon.online
+                  |  Sam 
+                span.message-data-time 10:12 AM
+              .message.my-message
+                | She said you were really into basketball.
+            li
+              .message-data
+                span.message-data-name
+                  i.dot.circle.icon.online
+                  |  Sam 
+                span.message-data-time 10:20 AM
+              .message.my-message
+                | What’s your address so I can stop by after school to shoot some hoops
+
+              i.dot.circle.icon.online
+              i.dot.circle.icon.online(style='color: #AED2A6')
+              i.dot.circle.icon.online(style='color:#DAE9DA')
+        // end chat-history
+        .chat-message.clearfix
+          .ui.fluid.action.input
+            input#message-to-send(type='text', name='message-to-send', placeholder='Type your message')
+            button
+              i.blue.send.icon
+              | Send
+        // end chat-message
+        // end chat
+    // end container
+    script()#message-template(type='text/x-handlebars-template').
+      <li class="clearfix">
+      <div class="message-data align-right">
+      <span class="message-data-time" >{{time}}</span> &nbsp; &nbsp;
+      <span class="message-data-name" >Olia</span> <i class="fa fa-circle me"></i>
+      </div>
+      <div class="message other-message float-right">
+      {{messageOutput}}
+      </div>
+      </li>
+    script()#message-response-template(type='text/x-handlebars-template').
+      <li>
+      <div class="message-data">
+      <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
+      <span class="message-data-time">{{time}}</span>
+      </div>
+      <div class="message my-message">
+      {{response}}
+      </div>
+      </li>
+
     br
     .ui.big.labeled.icon.button.cybersim
         i.rocket.icon
@@ -78,7 +121,7 @@ block content
     br
 block scripts
   script().
-    $('.ui.accordion').accordion();   
+   
 
     setTimeout(function(){
       $('.sub.header').transition('shake'); 
@@ -88,19 +131,30 @@ block scripts
       $('#point1').transition('jiggle');    
     }, 2500);
 
+    $('#introduction_next').on('click', function () {      
+      $('#chat1').show(); 
+      setTimeout(function(){
+        $('#show_steps').show();
+        $('#steps').hide();
+        $('#show_steps').transition('jiggle');    
+      }, 3000);      
 
-    $('#point1_button').on('click', function () {
-      if (($('#protip1 .checkbox input')[0].checked)){
-        $('#point2').transition('jiggle');
-        $('#point2').click();
-      }
-      else {
-        $('.ui.message').addClass('visible')
-        .delay(3000)
-        .queue(function() {
-          $(this).removeClass('visible').dequeue();
-        });
-      }
+    });
+
+    $('#show_steps a').on('click', function () {
+        //- $('#steps').hide();
+        //- $('#steps').show();
+        setTimeout(function(){
+          $('#step1,#step2,#step3,#step4').transition({
+            animation : 'jiggle',
+            duration  : 800,
+            interval  : 200
+          });    
+        $('#steps').show();         
+        $('.ui.big.labeled.icon.button.cybersim').addClass('green');
+        $('.ui.big.labeled.icon.button.cybersim').transition('jiggle');
+        }, 500);
+
      });
 
 

@@ -32,27 +32,27 @@ block content
     br
     br
     br
-    block scripts
-      script().
-        $(window).on("load", function() {startIntro()});
-        function startIntro(){
-            var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
-              intro.setOptions({
-                steps: [
-                  { 
-                    intro: "Now, let's apply what you have learned in the TestDrive timeline!"
-                  },
-                  {
-                    intro: "As you look through the timeline, see if you can spot the signs of fake news articles being shared."
-                  },
-                  {
-                    intro: "You can also click on the articles and decide what you would do next."
-                  }
-                ]
-              });
-              intro.start().onexit(function() {
-              window.location.href='/modual/digital-literacy';
-            });          
-          };
+block scripts
+  script().
+    $(window).on("load", function() {startIntro()});
+    function startIntro(){
+        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':false, 'doneLabel':'Done &#10003' });
+          intro.setOptions({
+            steps: [
+              { 
+                intro: "Now you get to explore the TestDrive timeline! You can read what others have posted, respond, or make your own posts."
+              },
+              {
+                intro: "Before you start: Imagine that [person] and [person] are some of your best friends on this social media site. The other people, you don’t know very well or haven't met face-to-face."
+              },
+              {
+                intro: "Try to spot and respond to posts where someone shared private information. You can also create a post that's okay to share with a broad audience on social media - one that doesn’t have any private information. Be on the lookout for any direct messages and try responding to them. When you get to the end of the timeline, click “Let's Continue” to move on."
+              }
+            ]
+          });
+          intro.start().onexit(function() {
+          window.location.href='/modual/safe-posting';
+        });          
+      };
         
 
