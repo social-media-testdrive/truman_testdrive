@@ -1,0 +1,226 @@
+
+extends ../ui_layout
+  
+block content
+  .computer.only.tablet.only.four.wide.column 
+    .ui.card
+      .image
+        img(src="/profile_pictures/user79.jpg")
+      .content(data-hint="Here is another one of Jake’s accounts, minecraftboi23", data-position="top-left")
+        a.header= 'ur minecraft boi'
+        .meta="@"+'minecraftboi23'
+        .description="Minecraft 4 life 🙌From one gamer to another, follow for a follow back!" 
+        .description 
+          i.marker.icon
+          span="Cleveland, OH"
+
+  
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column 
+
+    .ui.fluid.card.test(data-hint="On this account, he only posts about Minecraft, which is one of his favorite games. He talks to other Minecraft fans through this account.", data-position="top-left")
+      .content
+        .right.floated.meta= "Yesterday"
+        |
+        a(href='/user/minecraftboi23')
+          img.ui.avatar.image(src='/profile_pictures/user79.jpg')
+          span='ur minecraft boi'
+      .image
+        img.post(src="/selfpresga7.jpg")
+      .content
+        .description="Check out this new minecraft Steve toy! he's the og 🙌#minecraftsteve"
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+      
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src='/profile_pictures/user74.jpg')
+            .content
+              a.author Ryan Freyer
+              .metadata
+                span.date 11 Minutes ago
+                i.heart.icon
+                |  3 Likes
+              .text()
+                | Where do they sell it?
+              .actions
+                a.like Like
+                a.flag Flag
+          .comment
+            a.avatar
+              img(src='/profile_pictures/user18.png')
+            .content
+              a.author Ethan Kravitz
+              .metadata
+                span.date 8 Minutes ago
+                i.heart.icon
+                |  3 Likes
+              .text()
+                | steve is the best
+              .actions
+                a.like Like
+                a.flag Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+
+    .ui.fluid.card.test()
+      .content
+        .right.floated.meta= "Yesterday"
+        |
+        a(href='/user/minecraftboi23')
+          img.ui.avatar.image(src='/profile_pictures/user79.jpg')
+          span='ur minecraft boi'
+      .image
+        img.post(src="/selfpresga8.jpg")
+      .content
+        .description="guys! check out the dope minecraft village i made"
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+      
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src='/profile_pictures/user25.jpg')
+            .content
+              a.author Ella Sroni
+              .metadata
+                span.date 12 Minutes ago
+                i.heart.icon
+                |  3 Likes
+              .text()
+                | great job!!
+              .actions
+                a.like Like
+                a.flag Flag
+          .comment
+            a.avatar
+              img(src='/profile_pictures/user74.jpg')
+            .content
+              a.author Ryan Freyer
+              .metadata
+                span.date 2 Minutes ago
+                i.heart.icon
+                |  4 Likes
+              .text()
+                | pretty good design
+              .actions
+                a.like Like
+                a.flag Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+
+    .ui.fluid.card.test()
+      .content
+        .right.floated.meta= "Yesterday"
+        |
+        a(href='/user/minecraftboi23')
+          img.ui.avatar.image(src='/profile_pictures/user79.jpg')
+          span='ur minecraft boi'
+      .image
+        img.post(src="/selfpresga9.png")
+      .content(data-hint="Would you say the same things in person? If you wouldn’t say that in front of your teacher, your mom, or your grandma, don’t post it!", data-position="top-left")
+        .description="would buy this minecraft sword irl?"
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+      
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src='/profile_pictures/user71.JPG')
+            .content
+              a.author Andrew Thomas
+              .metadata
+                span.date 10 Minutes ago
+                i.heart.icon
+                |  1 Likes
+              .text()
+                | lmao i could make a better one
+              .actions
+                a.like Like
+                a.flag Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+
+    
+    button.ui.big.labeled.icon.button.cybertrans
+        i.rocket.icon
+        |   Let's Continue!
+
+
+
+
+
+block scripts
+  script().
+     
+    function startIntro(){
+        var hints;
+        var literacy_counter = 0;
+        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
+          intro.setOptions({
+            steps: [
+              { 
+                intro: "Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more..."
+              }
+              
+            ]
+          });
+          intro.start().onexit(function() {
+          hints = introJs().addHints();
+          console.log('hints added')
+          hints.onhintclose(function(e) {
+           literacy_counter++;
+           if(literacy_counter == 3) {$( ".cybertrans" ).addClass("green");}
+          });
+        });
+          
+      };
+
+      $(window).on("load", function() {startIntro();});
+
+

@@ -1,0 +1,176 @@
+
+extends ../ui_layout
+  
+block content
+  .computer.only.tablet.only.four.wide.column 
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
+    #step3.ui.fluid.card.test(postID="3")
+          .content
+            .right.floated.meta= "Yesterday"
+            |
+            a(href='/user/dannyboii')
+              img.ui.avatar.image(src='/profile_pictures/user37.jpg')
+              span='Daniel Mai'
+          .image
+            img.post(src="/selfprestut1.jpg")
+          .content
+            .description="look at my cool new skateboard!!!"
+            //-.right.floated.meta
+              i.icon.checkmark
+              | Seen by 12
+          .three.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            .ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Flag
+            .ui.labeled.button(tabindex='0')
+              .ui.like.button
+                i.heart.icon
+                |  Like
+              a.ui.basic.red.left.pointing.label.count=2
+          
+          .content
+            .ui.comments
+              .comment
+                a.avatar
+                  img(src='/profile_pictures/user60.jpg')
+                .content
+                  a.author Nina Ruiz
+                  .metadata
+                    span.date 1 Minute ago
+                    i.heart.icon
+                    |  2 Likes
+                  .text()
+                    | love it
+                  .actions
+                    a.like Like
+                    a.flag Flag
+              .comment
+                a.avatar
+                  img(src='/profile_pictures/user63.jpg')
+                .content
+                  a.author Liam Knapke
+                  .metadata
+                    span.date 1 Minute ago
+                    i.heart.icon
+                    |  2 Likes
+                  .text()
+                    | love it
+                  .actions
+                    a.like Like
+                    a.flag Flag
+          .extra.content
+            .ui.fluid.left.labeled.right.icon.input
+              .ui.label
+                img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+              input.newcomment(type='text' placeholder='Write a Comment')
+              i.big.send.link.icon
+    //-%%%%%%%%%%%%%%%%%%%%%%%%%
+    #step4.ui.fluid.card.test(postID="3")
+          .content
+            .right.floated.meta= "Yesterday"
+            |
+            a#step5(href='/user/aperson')
+              img.ui.avatar.image(src='/profile_pictures/user43.png')
+              span='My Name'
+          .image
+            img.post(src="/selfprestut2.png")
+          .content
+            .description="i literally hate our math teacher SO MUCH"
+            //-.right.floated.meta
+              i.icon.checkmark
+              | Seen by 12
+          .three.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            .ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Flag
+            .ui.labeled.button(tabindex='0')
+              .ui.like.button
+                i.heart.icon
+                |  Like
+              a.ui.basic.red.left.pointing.label.count=2
+          
+          .content
+            .ui.comments
+              .comment
+                a.avatar
+                  img(src='/profile_pictures/user44.png')
+                .content
+                  a.author Ebony Darkness Raven Way
+                  .metadata
+                    span.date 1 Minute ago
+                    i.heart.icon
+                    |  0 Likes
+                  .text()
+                    | lol same
+                  .actions
+                    a.like Like
+                    a.flag Flag
+              .comment
+                a.avatar
+                  img(src='/profile_pictures/user1.png')
+                .content
+                  a.author Fake N. Ame
+                  .metadata
+                    span.date 1 Minute ago
+                    i.heart.icon
+                    |  0 Likes
+                  #step3.text()
+                    | made an account just for this^
+                  #step5.actions
+                    a.like Like
+                    a.flag Flag
+          .extra.content
+            .ui.fluid.left.labeled.right.icon.input
+              .ui.label
+                img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+              input.newcomment(type='text' placeholder='Write a Comment')
+              i.big.send.link.icon
+    //-#######################
+    
+
+block scripts
+  script().
+    function startIntro(){
+        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
+          intro.setOptions({
+            steps: [
+              { 
+                element: document.querySelectorAll('#step1')[0],
+                intro: "People can have an additional account to post things that are more casual or personal. This account will be followed by close friends and people they know well.",
+                position: 'bottom',
+                scrollTo: "tooltip"
+              },
+              { 
+                element: document.querySelectorAll('#step3')[0],
+                intro: "Sometimes, people create an account to talk to others who are interested in the same things as they are (e.g., video games, soccer, music). When they do this, they might want to be anonymous since they are talking to people that they do not know very well.",
+                position: 'bottom',
+                scrollTo: "tooltip"
+              },
+              {
+                element: document.querySelectorAll('#step4')[0],
+                intro: "Some people create fake accounts to post mean things or to cyberbully people, but it's important to be kind and respectful on social media, no matter what account you are on.",
+                position: 'bottom',
+                scrollTo: "tooltip"
+              },
+              { 
+                element: document.querySelectorAll('#step5')[0],
+                intro: "Remember, even if you don’t use your real name, people might still figure out who you are from the things you post or the friends you have.",
+                position: 'bottom',
+                scrollTo: "tooltip"
+              }
+              
+            ]
+          });
+          intro.start().onexit(function() {
+          window.location.href='/sim/presentation';
+        });
+          
+      };
+
+      $(window).on("load", function() {startIntro();});

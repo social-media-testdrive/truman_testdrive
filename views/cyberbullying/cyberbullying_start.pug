@@ -3,69 +3,116 @@ extends ../ui_layout
 block content
 
   .ui.text.container
-    br
-    h3 Welcome to the LearnLove.Life social media site!
-    p#step  You're about to enter a social media site, but before you get started, we wanted to review a few key terms and show you ways to handle cyberbullying if you see it.
-    p Here are the four activities that we will be doing in this lesson.
-    .content
-      .ui.tiny.four.steps
-        .active.step
-          i.book.icon
-          .content
-            .title Learn
-            .description Learn key ideas
-        .step
-          i.edit.icon
-          .content
-            .title Practice
-            .description Practice social media skills
-        .step
-          i.binoculars.icon
-          .content
-            .title Explore
-            .description Explore the social media timeline
-        .step
-          i.question.icon
-          .content
-            .title Reflect
-            .description Reflect on what you did
-            
-    br
+
+    .ui.raised.segment
+      h3.ui.header
+        i.key.blue.icon
+        .content
+          | Introduction and Key Ideas
+      hr
+      h5.ui.header
+        i.info.circle.icon
+        .content
+          | <b>Cyberbullying</b> is when someone posts or shares negative things about someone else online.
+      h5.ui.header
+        i.exclamation.triangle.icon
+        .content
+          | The <b>bully</b> may use digital devices, sites, or apps. The bully often does this again and again to the same person. 
+
+      #introduction_next.button.ui.mini.green.right.labeled.icon.button
+              i.down.arrow.icon
+              |   Next
+    
+    #question.ui.segment.hidden
+      h3.ui.header
+        i.key.blue.icon
+        .content Key Ideas
+          .sub.header 
+            i.hand.pointer.blue.icon 
+            span.blue Click on each label below to learn more
+      //- .ui.segments     
+      .ui.stackable.two.column.grid
+        .ui.column
+          #audience.ui.raised.segment
+            a.ui.blue.ribbon.label
+                //- i.dollar.sign.icon 
+                span Bully
+            span.hidden(id="audience_info", style="font-weight:600") Someone who hurts a person or a group on purpose more than once.
+        .ui.column
+          #anonymous.ui.raised.segment
+            a.ui.blue.ribbon.label
+                //- i.magic.icon 
+                span Target
+            span.hidden(id="anonymous_info",style="font-weight:600") Someone who is being bullied
+        .ui.column
+          #curate.ui.raised.segment
+            a.ui.blue.ribbon.label
+                //- i.magic.icon 
+                span Upstander
+            span.hidden(id="curate_info",style="font-weight:600") Someone who acts against bullying.
+              ul(style="font-weight:400") An upstander might confront the bully or tell a trusted adult. An upstander might support the person being bullied by checking in with them or defending them.       
+    
+    
+    .ui.message.negative.transition.hidden
+      i.close.icon
+      .header
+       | Complete all activities to proceed!
     a(href='javascript:void(0);', onclick='javascript:startIntro();')
-        .ui.big.green.labeled.icon.button
+        .ui.labeled.icon.button
             i.rocket.icon
             |   Got it!
     br
     br
     br
-    block scripts
+block scripts
   script().
+    var incomplete_activities = ($('#question').is(":hidden") ||  $('#anonymous_info').is(":hidden") || $('#audience_info').is(":hidden")|| $('#curate_info').is(":hidden"));
+    $('#introduction_next').on('click', function () {      
+      $('#question').show(); 
+      $('#question').transition('jiggle');     
+      if(!($('#question').is(":hidden") ||  $('#anonymous_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#curate_info').is(":hidden"))){
+        $('.ui.labeled.icon.button').addClass('green');
+      } 
+    });
+
+    $('#audience>a').on('click', function () {      
+        $('#audience_info').show(); 
+        $('#audience').transition('tada');     
+        if(!($('#question').is(":hidden") ||  $('#anonymous_info').is(":hidden") || $('#audience_info').is(":hidden")|| $('#curate_info').is(":hidden"))){
+          $('.ui.labeled.icon.button').addClass('green');
+        }
+    });
+
+    $('#anonymous>a').on('click', function () {      
+        $('#anonymous_info').show();      
+        $('#anonymous').transition('tada');     
+        if(!($('#question').is(":hidden") ||  $('#anonymous_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#curate_info').is(":hidden"))){
+          $('.ui.labeled.icon.button').addClass('green');
+        }
+    });
+
+     $('#curate>a').on('click', function () {      
+        $('#curate_info').show(); 
+        $('#curate').transition('tada');     
+        if(!($('#question').is(":hidden") ||  $('#anonymous_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#curate_info').is(":hidden"))){
+          $('.ui.labeled.icon.button').addClass('green');
+        }
+    });
+
+
     function startIntro(){
-        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true , 'doneLabel':'Done &#10003'});
-          intro.setOptions({
-            steps: [
-              { 
-                intro: "<b>Cyberbullying</b> is when someone posts or shares negative things about someone else online. The <b>bully</b> may use digital devices, sites, or apps. The bully often does this again and again to the same person."
-              },
-              {
-                intro: "A <b>bully</b> is someone who hurts a person or a group on purpose more than once."
-            
-              },
-              { 
-               
-                intro: "A <b>target</b> is someone who is being <b>bullied</b>."
-                
-              },
-              { 
-                intro: "An <b>upstander</b> is someone who acts against bullying. An upstander might confront the bully or tell a trusted adult. An upstander might support the person being bullied by checking in with them or defending them."
-              }
-              
-            ]
+        if(($('#question').is(":hidden") ||  $('#influence_info').is(":hidden") || $('#money_info').is(":hidden"))){          
+          $('.ui.message').addClass('visible')
+            .delay(3000)
+            .queue(function() {
+              $(this).removeClass('visible').dequeue();
           });
-          intro.start().onexit(function() {
-          window.location.href='/tutorial/cyberbullying';
-        });
+        }
+        else {
           
+          console.log(incomplete_activities)
+          window.location.href='/tutorial/cyberbullying';
+        }          
       };
 
       //$(window).on("load", function() {startIntro();});

@@ -49,31 +49,7 @@ block content
    
   block scripts
   script().
-    function startIntro(){
-        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true , 'doneLabel':'Done &#10003'});
-          intro.setOptions({
-            steps: [
-              { 
-                intro: "<b>Cyberbullying</b> is when someone posts or shares negative things about someone else online. The <b>bully</b> may use digital devices, sites, or apps. The bully often does this again and again to the same person."
-              },
-              {
-                intro: "A <b>bully</b> is someone who hurts a person or a group on purpose more than once."
-            
-              },
-              { 
-               
-                intro: "A <b>target</b> is someone who is being <b>bullied</b>."
-                
-              },
-              { 
-                intro: "An <b>upstander</b> is someone who acts against bullying. An upstander might confront the bully or tell a trusted adult. An upstander might support the person being bullied by checking in with them or defending them."
-              }
-              
-            ]
-          });
-          intro.start().onexit(function() {
-          window.location.href='/tutorial/cyberbullying';
-        });
-          
-      };
+    function startIntro(){       
+          window.location.href='/start/cyberbullying';
+        };
   

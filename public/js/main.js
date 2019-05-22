@@ -407,6 +407,22 @@ $(window).on("load", function () {
       window.location.href = '/sim/' + pathArray[2];
     });
 
+  //Cyberbullying to Transition 1
+  $(document).on('click', '.ui.big.labeled.icon.button.cybersim1.green', function () {
+      console.log(window.location.pathname)
+      let pathArray = window.location.pathname.split('/');
+      console.log(pathArray);
+      window.location.href = '/sim1/' + pathArray[2];
+    });
+
+  //Cyberbullying to Transition
+  $(document).on('click', '.ui.big.labeled.icon.button.cybersim2.green', function () {
+      console.log(window.location.pathname)
+      let pathArray = window.location.pathname.split('/');
+      console.log(pathArray);
+      window.location.href = '/sim2/' + pathArray[2];
+    });
+
   //Cyberbullying Start to Tutorial
   $('.ui.big.green.labeled.icon.button.cyberstart')
     .on('click', function () {

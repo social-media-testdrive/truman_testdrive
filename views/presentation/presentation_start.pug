@@ -1,0 +1,120 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container
+
+    .ui.raised.segment
+      h3.ui.header
+        i.key.blue.icon
+        .content
+          | Introduction and Key Ideas
+      hr
+      h5.ui.header
+        i.info.circle.icon
+        .content
+          | Posting on social media can be a great way to show people who you are! You can be yourself and share your thoughts with other people. 
+      h5.ui.header
+        i.exclamation.triangle.icon
+        .content
+          | Sometimes, people have fake accounts too. These are called <b>finstas</b> or spam accounts. People may have these to talk to others who are interested in the same things as they are, or to post things for only their close friends to see.
+
+      #introduction_next.button.ui.mini.green.right.labeled.icon.button
+              i.down.arrow.icon
+              |   Next
+    
+    #question.ui.segment.hidden
+      h3.ui.header
+        i.key.blue.icon
+        .content Key Ideas
+          .sub.header 
+            i.hand.pointer.blue.icon 
+            span.blue Click on each label below to learn more
+      //- .ui.segments     
+      .ui.stackable.two.column.grid
+        .ui.column
+          #audience.ui.raised.segment
+            a.ui.blue.ribbon.label
+                //- i.dollar.sign.icon 
+                span Audience
+            span.hidden(id="audience_info", style="font-weight:600") Anyone who can see information about you or posted by you online.
+        .ui.column
+          #anonymous.ui.raised.segment
+            a.ui.blue.ribbon.label
+                //- i.magic.icon 
+                span Anonymous
+            span.hidden(id="anonymous_info",style="font-weight:600") Keeping your name and identity hidden online.
+              ul(style="font-weight:400") Sometimes people use fintas to post anonymously.    
+        .ui.column
+          #curate.ui.raised.segment
+            a.ui.blue.ribbon.label
+                //- i.magic.icon 
+                span Curate
+            span.hidden(id="curate_info",style="font-weight:600") To select and organize what you post on social media.
+              ul(style="font-weight:400") Some people keep their main account more carefully curated, and will not post things that are too casual.       
+    
+    
+    .ui.message.negative.transition.hidden
+      i.close.icon
+      .header
+       | Complete all activities to proceed!
+    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+        .ui.labeled.icon.button
+            i.rocket.icon
+            |   Got it!
+    br
+    br
+    br
+block scripts
+  script().
+    var incomplete_activities = ($('#question').is(":hidden") ||  $('#anonymous_info').is(":hidden") || $('#audience_info').is(":hidden")|| $('#curate_info').is(":hidden"));
+    $('#introduction_next').on('click', function () {      
+      $('#question').show(); 
+      $('#question').transition('jiggle');     
+      if(!($('#question').is(":hidden") ||  $('#anonymous_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#curate_info').is(":hidden"))){
+        $('.ui.labeled.icon.button').addClass('green');
+      } 
+    });
+
+    $('#audience>a').on('click', function () {      
+        $('#audience_info').show(); 
+        $('#audience').transition('tada');     
+        if(!($('#question').is(":hidden") ||  $('#anonymous_info').is(":hidden") || $('#audience_info').is(":hidden")|| $('#curate_info').is(":hidden"))){
+          $('.ui.labeled.icon.button').addClass('green');
+        }
+    });
+
+    $('#anonymous>a').on('click', function () {      
+        $('#anonymous_info').show();      
+        $('#anonymous').transition('tada');     
+        if(!($('#question').is(":hidden") ||  $('#anonymous_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#curate_info').is(":hidden"))){
+          $('.ui.labeled.icon.button').addClass('green');
+        }
+    });
+
+     $('#curate>a').on('click', function () {      
+        $('#curate_info').show(); 
+        $('#curate').transition('tada');     
+        if(!($('#question').is(":hidden") ||  $('#anonymous_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#curate_info').is(":hidden"))){
+          $('.ui.labeled.icon.button').addClass('green');
+        }
+    });
+
+
+    function startIntro(){
+        if(($('#question').is(":hidden") ||  $('#influence_info').is(":hidden") || $('#money_info').is(":hidden"))){          
+          $('.ui.message').addClass('visible')
+            .delay(3000)
+            .queue(function() {
+              $(this).removeClass('visible').dequeue();
+          });
+        }
+        else {
+          
+          console.log(incomplete_activities)
+          window.location.href='/tutorial/presentation';
+        }          
+      };
+
+      //$(window).on("load", function() {startIntro();});
+

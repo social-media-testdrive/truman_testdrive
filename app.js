@@ -283,12 +283,24 @@ app.get('/test_sim', function (req, res) {
 
 app.get('/tutorial/:modId', function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")  +'_tutorial', {
-    title: 'Cyberbullying Tutorial'
+    title: 'Tutorial'
   });
 });
 
 app.get('/sim/:modId', function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_sim', {
+    title: 'Cyberbullying Guided Activity'
+  });
+});
+
+app.get('/sim1/:modId', function (req, res) {
+  res.render(req.param("modId") + '/' + req.param("modId")+'_sim1', {
+    title: 'Cyberbullying Guided Activity'
+  });
+});
+
+app.get('/sim2/:modId', function (req, res) {
+  res.render(req.param("modId") + '/' + req.param("modId")+'_sim2', {
     title: 'Cyberbullying Guided Activity'
   });
 });
