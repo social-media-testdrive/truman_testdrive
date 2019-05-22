@@ -300,7 +300,7 @@ exports.getGuest = (req, res, next) => {
   user.profile.name = "Guest";
   user.profile.location = "Guest Town";
   user.profile.bio = '';
-  user.profile.picture = '/ball.png';
+  user.profile.picture = 'avatar-icon.svg';
 
   User.findOne({ username: req.body.username }, (err, existingUser) => {
     if (err) { return next(err); }
