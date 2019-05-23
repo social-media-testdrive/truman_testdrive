@@ -13,7 +13,9 @@ $(window).on("load", function () {
     let pathArray = window.location.pathname.split('/');
 
 
-    $('.chat-minimize').on('click', function () {
+    $('.chat-header').on('click', function (e) {
+      e.preventDefault();
+
       var chatId = $(this).closest('.container').attr('id');
       console.log(chatId);
       if(chatId){
@@ -105,13 +107,15 @@ $(window).on("load", function () {
                 // $('#chatbox1').remove();   
                 var el = $('#chatbox1').detach();
               }
+              if($('#chatbox2').is(":hidden")){
               $($('#chatbox2 .chat-history')[0]).slideToggle(300, 'swing');
               $($('#chatbox2 .chat-message')[0]).slideToggle(300, 'swing');
               $($('#chatbox2 .chat-history')[0]).slideToggle(300, 'swing');
               $($('#chatbox2 .chat-message')[0]).slideToggle(300, 'swing');
-              $('#chatbox2').slideToggle(300, 'swing');  
+              $('#chatbox2').slideToggle(300, 'swing');
+              }  
               this.cacheDOM();
-              this.bindEvents();; 
+              this.bindEvents(); 
               $('#loading').after(el);
               // $('#chatbox1').show();
 
