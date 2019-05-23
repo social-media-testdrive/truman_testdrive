@@ -664,6 +664,10 @@ $(window).on("load", function () {
         .modal('show');      
   });
 
+  $(".dimmer.soon").dimmer({
+        closable: false
+      });
+
 
   //this is the FLAG button
   $('.flag.button')
