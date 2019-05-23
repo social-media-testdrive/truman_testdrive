@@ -44,6 +44,11 @@ block content
     #chat1.container.clearfix.hidden
       .chat(style="right:24px;")
         .chat-header.clearfix
+          a.chat-close(href='#')
+            i.large.close.icon
+          a.chat-minimize(href='#')
+            i.window.minimize.icon
+
           a(href='#')
             img.ui.avatar.image(src='/profile_pictures/user21.jpg',style="width: 3em;height: 3em;")
           .chat-about
@@ -95,7 +100,7 @@ block content
       <li class="clearfix">
       <div class="message-data align-right">
       <span class="message-data-time" >{{time}}</span> &nbsp; &nbsp;
-      <span class="message-data-name" >Olia</span> <i class="fa fa-circle me"></i>
+      <span class="message-data-name" >Me</span> <i class="dot circle icon me"></i>
       </div>
       <div class="message other-message float-right">
       {{messageOutput}}
