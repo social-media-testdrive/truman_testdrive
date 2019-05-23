@@ -190,7 +190,7 @@ block content
               i.info.icon
           .content
             .description!=val.body
-          .three.ui.bottom.attached.icon.buttons
+          .three.ui.bottom.attached.icon.buttons(style="z-index:0;")
             .ui.reply.button(tabindex='0')
               i.reply.icon
               |  Reply
@@ -292,13 +292,17 @@ block content
     br
     br
     //- Chat Box  
-    #chatbox.container.clearfix.hidden
+    #chatbox1.container.clearfix.hidden
       .chat(style="right:24px;")
         .chat-header.clearfix
+          a.chat-close(href='#')
+            i.large.close.icon
+          a.chat-minimize(href='#')
+            i.window.minimize.icon
           a(href='#')
-            img.ui.avatar.image(src='/profile_pictures/user21.jpg',style="width: 3em;height: 3em;")
+            img.ui.avatar.image(src='/profile_pictures/avatar-icon.svg',style="width: 3em;height: 3em;")
           .chat-about
-            .chat-with Chat with Vincent
+            .chat-with Chat with Jack
             //- .chat-num-messages already 1 902 messages
           //- i.fa.fa-star
         // end chat-header
@@ -308,29 +312,19 @@ block content
               .message-data
                 span.message-data-name
                   i.dot.circle.icon.online
-                  |  Vincent
+                  |  Jack
                 span.message-data-time 10:12 AM
               .message.my-message
-                | hey nice profile pic
+                | hey, I have a question about the homework for tomorrow
             li
               .message-data
                 span.message-data-name
                   i.dot.circle.icon.online
-                  |  Vincent
+                  |  Jack
                 span.message-data-time 10:20 AM
               .message.my-message
-                | wanna be friends?
-            li(data-hint="Since these messages came from a stranger, you should not share any private information with them.")
-              .message-data
-                span.message-data-name
-                  i.dot.circle.icon.online
-                  |  Vincent
-                span.message-data-time 10:22 AM
-              .message.my-message
-                | how old r u?
-              i.dot.circle.icon.online
-              i.dot.circle.icon.online(style='color: #AED2A6')
-              i.dot.circle.icon.online(style='color:#DAE9DA')
+                | can you tell me your number so i can call you real quick?
+
         // end chat-history
         .chat-message.clearfix
           .ui.fluid.action.input
@@ -341,11 +335,66 @@ block content
         // end chat-message
         // end chat
     // end container
+
+    //- Chat Box  
+    #chatbox2.container.clearfix.hidden
+      .chat(style="right:345px;")
+        .chat-header.clearfix
+          a.chat-close(href='#')
+            i.large.close.icon
+          a.chat-minimize(href='#')
+            i.window.minimize.icon
+          a(href='#')
+            img.ui.avatar.image(src='/profile_pictures/user8.jpg',style="width: 3em;height: 3em;")
+          .chat-about
+            .chat-with Chat with Rob
+            //- .chat-num-messages already 1 902 messages
+          //- i.fa.fa-star
+        // end chat-header
+        .chat-history
+          ul
+            li
+              .message-data
+                span.message-data-name
+                  i.dot.circle.icon.online
+                  |  Rob
+                span.message-data-time 10:12 AM
+              .message.my-message
+                | Hi there! I noticed that you were also online!
+            li
+              .message-data
+                span.message-data-name
+                  i.dot.circle.icon.online
+                  |  ROb
+                span.message-data-time 10:20 AM
+              .message.my-message
+                | Do you want to talk for a bit?
+            li
+              .message-data
+                span.message-data-name
+                  i.dot.circle.icon.online
+                  |  Rob
+                span.message-data-time 10:20 AM
+              .message.my-message
+                | I want to get to know you better!
+
+        // end chat-history
+        .chat-message.clearfix
+          .ui.fluid.action.input
+            input#message-to-send(type='text', name='message-to-send', placeholder='Type your message')
+            button
+              i.send.icon
+              | Send
+        // end chat-message
+        // end chat
+    // end container
+
+
     script()#message-template(type='text/x-handlebars-template').
       <li class="clearfix">
       <div class="message-data align-right">
       <span class="message-data-time" >{{time}}</span> &nbsp; &nbsp;
-      <span class="message-data-name" >Olia</span> <i class="fa fa-circle me"></i>
+      <span class="message-data-name" >Me</span> <i class="fa fa-circle me"></i>
       </div>
       <div class="message other-message float-right">
       {{messageOutput}}
@@ -446,6 +495,16 @@ block scripts
         function openChat(){
           let pathArray = window.location.pathname.split('/');
           if(pathArray[2] == "safe-posting"){
-            $('#chatbox').show();
+          setTimeout(function(){
+
+              //- $($('#chatbox1 .chat-history')[0]).slideUp(400);
+              //- $($('#chatbox1 .chat-message')[0]).slideUp(400);
+              $($('#chatbox1 .chat-history')[0]).slideToggle(300, 'swing');
+              $($('#chatbox1 .chat-message')[0]).slideToggle(300, 'swing');
+              $('#chatbox1').slideToggle(300, 'swing'); 
+              $($('#chatbox1 .chat-history')[0]).slideToggle(300, 'swing');
+              $($('#chatbox1 .chat-message')[0]).slideToggle(300, 'swing');
+              //- $('#chatbox2').show();
+            }, 10000);    
           }
         }
