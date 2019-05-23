@@ -10,21 +10,40 @@ $(window).on("load", function () {
 
   (function () {
 
-    $('.chat-header').on('click', function () {
-      $('.chat-history').slideToggle(300, 'swing');
-      $('.chat-message').slideToggle(300, 'swing');
+    let pathArray = window.location.pathname.split('/');
+
+
+    $('.chat-minimize').on('click', function () {
+      var chatId = $(this).closest('.container').attr('id');
+      console.log(chatId);
+      if(chatId){
+        $($('#' + chatId + ' .chat-history')[0]).slideToggle(300, 'swing');
+        $($('#' + chatId + ' .chat-message')[0]).slideToggle(300, 'swing');
+      }
+      else{
+        $('.chat-history').slideToggle(300, 'swing');
+        $('.chat-message').slideToggle(300, 'swing');
+      }
       // $('.chat-message-counter').fadeToggle(300, 'swing');
+    });
+
+    $('.chat-close').on('click', function(e) {
+      e.preventDefault();
+      var chatId = $(this).closest('.container').attr('id');
+      if(chatId){
+        $('#'+chatId).fadeOut(300); 
+      }
+      else{
+        $('.chat').fadeOut(300);  
+      }
     });
 
     var chat = {
       messageToSend: '',
       messageResponses: [
-        'Why did the web developer leave the restaurant? Because of the table layout.',
-        'How do you comfort a JavaScript bug? You console it.',
-        'An SQL query enters a bar, approaches two tables and asks: "May I join you?"',
-        'What is the most used language in programming? Profanity.',
-        'What is the object-oriented way to become wealthy? Inheritance.',
-        'An SEO expert walks into a bar, bars, pub, tavern, public house, Irish pub, drinks, beer, alcohol'
+        'OK !!',
+        'OK !!',
+        'OK !!'
       ],
       init: function () {
         this.cacheDOM();
@@ -32,10 +51,24 @@ $(window).on("load", function () {
         this.render();
       },
       cacheDOM: function () {
-        this.$chatHistory = $('.chat-history');
-        this.$button = $('button');
-        this.$textarea = $('#message-to-send');
-        this.$chatHistoryList = this.$chatHistory.find('ul');
+        var chatId = $('.chat-history').closest('.container').attr('id');
+        console.log(chatId);
+        if(chatId){
+          this.$chatHistory = $('#'+chatId +' .chat-history'); 
+          this.$button = $('#'+chatId +' button');
+          this.$textarea = $('#'+chatId +' #message-to-send');
+          this.$chatHistoryList = this.$chatHistory.find('ul');
+          console.log('#'+chatId +' .chat-history');
+        }
+        else {
+          this.$chatHistory = $('.chat-history');
+          this.$button = $('button');
+          this.$textarea = $('#message-to-send');
+          this.$chatHistoryList = this.$chatHistory.find('ul');
+          console.log('else');
+          console.log(this.$chatHistory);
+        }
+     
       },
       bindEvents: function () {
         this.$button.on('click', this.addMessage.bind(this));
@@ -62,9 +95,28 @@ $(window).on("load", function () {
           };
 
           setTimeout(function () {
-            this.$chatHistoryList.append(templateResponse(contextResponse));
+            // this.$chatHistoryList.append(templateResponse(contextResponse));
             this.scrollToBottom();
           }.bind(this), 1500);
+
+          setTimeout(function () {
+            if(pathArray[1] == 'modual' && pathArray[2] == 'safe-posting' ) {
+              if($('#chatbox1')){
+                // $('#chatbox1').remove();   
+                var el = $('#chatbox1').detach();
+              }
+              $($('#chatbox2 .chat-history')[0]).slideToggle(300, 'swing');
+              $($('#chatbox2 .chat-message')[0]).slideToggle(300, 'swing');
+              $($('#chatbox2 .chat-history')[0]).slideToggle(300, 'swing');
+              $($('#chatbox2 .chat-message')[0]).slideToggle(300, 'swing');
+              $('#chatbox2').slideToggle(300, 'swing');  
+              this.cacheDOM();
+              this.bindEvents();; 
+              $('#loading').after(el);
+              // $('#chatbox1').show();
+
+            };
+          }.bind(this), 9000);
 
         }
 
@@ -96,7 +148,6 @@ $(window).on("load", function () {
 
     };
 
-    let pathArray = window.location.pathname.split('/');
     console.log(pathArray);
      if(pathArray[2] == 'safe-posting' ) {
       chat.init();
