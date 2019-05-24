@@ -511,10 +511,12 @@ passport.use('pinterest', new OAuth2Strategy({
  * Login Required middleware.
  */
 exports.isAuthenticated = (req, res, next) => {
+  const mod = req.path.split('/').slice(-1)[0];
   if (req.isAuthenticated()) {
     return next();
   }
-  res.redirect('/login');
+  //res.redirect('/guest');
+  res.redirect(`/guest/${mod}`);
 }; 
 
 /**

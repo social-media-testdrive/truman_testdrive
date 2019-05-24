@@ -281,49 +281,49 @@ app.get('/test_sim', function (req, res) {
   });
 });
 
-app.get('/tutorial/:modId', function (req, res) {
+app.get('/tutorial/:modId',passportConfig.isAuthenticated, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")  +'_tutorial', {
     title: 'Tutorial'
   });
 });
 
-app.get('/sim/:modId', function (req, res) {
+app.get('/sim/:modId', passportConfig.isAuthenticated, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_sim', {
     title: 'Cyberbullying Guided Activity'
   });
 });
 
-app.get('/sim1/:modId', function (req, res) {
+app.get('/sim1/:modId',passportConfig.isAuthenticated, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_sim1', {
     title: 'Cyberbullying Guided Activity'
   });
 });
 
-app.get('/sim2/:modId', function (req, res) {
+app.get('/sim2/:modId', passportConfig.isAuthenticated, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_sim2', {
     title: 'Cyberbullying Guided Activity'
   });
 });
 
-app.get('/trans/:modId', function (req, res) {
+app.get('/trans/:modId', passportConfig.isAuthenticated, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_trans', {
     title: 'Recap'
   });
 });
 
-app.get('/trans_script/:modId', function (req, res) {
+app.get('/trans_script/:modId', passportConfig.isAuthenticated, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_trans_script', {
     title: 'Recap'
   });
 });
 
-app.get('/end/:modId', function (req, res) {
+app.get('/end/:modId', passportConfig.isAuthenticated, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_end', {
     title: 'Finished'
   });
 });
 
-app.get('/start/:modId', function (req, res) {
+app.get('/start/:modId', passportConfig.isAuthenticated, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_start', {
     title: 'Welcome'
   });
@@ -334,13 +334,13 @@ app.get('/intro/:modId', function (req, res) {
     title: 'Welcome'
   });
 });
-app.get('/tut_guide/:modId', function (req, res) {
+app.get('/tut_guide/:modId', passportConfig.isAuthenticated, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_tut_guide', {
     title: 'Welcome'
   });
 });
 
-app.get('/results/:modId', function (req, res) {
+app.get('/results/:modId', passportConfig.isAuthenticated, function (req, res) {
   console.log(req.param("modId") + '/' + req.param("modId")+'_results')
   res.render(req.param("modId") + '/' + req.param("modId")+'_results', {
     title: 'Reflection'
