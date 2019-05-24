@@ -329,7 +329,7 @@ app.get('/start/:modId', passportConfig.isAuthenticated, function (req, res) {
   });
 });
 
-app.get('/intro/:modId', function (req, res) {
+app.get('/intro/:modId', passportConfig.isAuthenticated,function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_intro', {
     title: 'Welcome'
   });
