@@ -20,13 +20,13 @@ block content
               img.ui.avatar.image(src='/profile_pictures/user55.jpg')
               span='Lana Reed'
       .img.post        
-        img(src='/infolittutorial1.png' style='max-width:100%;')
+        img(src='/infolittutorial1.jpg' style='max-width:100%;')
       .content(style="background:rgba(0, 0, 0, 0.05);")
-          .read.rounded.right.floated.info_button(id="info_tut_1",style="z-index:9;text-align:center;position:relative;bottom:10px;width:7%;height:auto")
-            i.info.icon
+          //- .read.rounded.right.floated.info_button(id="info_tut_1",style="z-index:9;text-align:center;position:relative;bottom:10px;width:7%;height:auto")
+          //-   i.info.icon
           .a#step3(href='#',onclick='return false;')
             | WWW.NEWSNETWORK.COM.CO
-          .header#step1 7 States Will Vote Today to Make Homework ILLEGAL for All Middle Schoolers.   
+          .header#step1 7 States Will Vote Today Make Homework ILLEGAL for ALL Middle Schooleers!!!!   
       .extra.content
           p              
           .description="BREAKING: 7 States Will Vote Today to Make Homework ILLEGAL!!!!"
@@ -55,7 +55,7 @@ block content
                   i.heart.icon
                   span.num 1
                   |                                             Likes
-              .text omg this is really scary
+              .text LOVE THIS
               .actions
                 a.like.comment Like
                 a.flag.comment Flag
@@ -81,22 +81,22 @@ block scripts
               },
               {
                 element: document.querySelectorAll('.post')[0],
-                intro: "Does the article use wild or sensational images that are trying to make you feel emotional? <br>This is another strategy fake news articles use to get you to click on them.",
+                intro: "Does the article <b>use wild or sensational images</b> that are trying to make you feel a strong emotion? <br>This is another strategy of <b>clickbait articles.</b>",
                 position: 'bottom',
                 scrollTo: "tooltip"
               },
               { 
                 element: document.querySelectorAll('#step3')[0],
-                intro: "If you find <b>unusual web addresses or site names</b>, including those that end with “.com.co” - this is a telltale sign of fake news. These sites are often trying to appear like real news websites, but they are not.",
+                intro: "If you find <b>unusual web addresses or site names</b>, including those that end with '.com.co' this is a sign of fake news. These sites may appear like real news websites but most often are not.",
                 position: 'bottom',
                 scrollTo: "tooltip"
               },
-              { 
-                element: document.querySelectorAll('.info_button')[0],
-                intro: "Some social media sites have an <b>information button</b> you can click on to get more information about the source of the website. If you don't see any details about the website, it might not be so credible!",
-                position: 'bottom',
-                scrollTo: "tooltip"
-              },
+              //- { 
+              //-   element: document.querySelectorAll('.info_button')[0],
+              //-   intro: "Some social media sites have an <b>information button</b> you can click on to get more information about the source of the website. If you don't see any details about the website, it might not be so credible!",
+              //-   position: 'bottom',
+              //-   scrollTo: "tooltip"
+              //- },
               { 
                 element: document.querySelectorAll('#step1')[0],
                 intro: "Are there many spelling errors, lots of ALL CAPS, or dramatic punctuation?!?!???? These are all signs that the article <b>may not be credible.</b>",

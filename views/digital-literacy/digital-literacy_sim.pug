@@ -24,9 +24,11 @@ block content
       .content(style="background:rgba(0, 0, 0, 0.05);")
           .read.rounded.right.floated.info_button(id="info_guide_1",style="z-index:9;text-align:center;position:relative;bottom:10px;width:7%;height:auto")
             i.info.icon
-          a(onclick='openPost()', data-hint="Be sure to check the article's website, too. This one is suspicious because of the '.com.co', a sure sign it's trying to imitate a credible site.")
-            | WASHINGTON-POSST.COM.CO
-          .header(data-hint="This is an example of a clickbait headline. You can see that the headline uses shocking language and has a wild image to get people to click on it.", data-position="top-left")  The 15 SHOCKING foods that will cause a heart attack !!   
+          a(onclick='openPost()',data-hint="Be sure to check the article's website. This one is suspicious because of the '.com.co,' a sure sign it's trying to imitate a credible site. Also note the spelling errors in the URL.", data-position="top")
+            | WASHINGTON-POSST.COM.CO &nbsp; &nbsp;
+          .header(data-hint="This is an example of a clickbait headline. You can see that the headline uses shocking language and has a wild image to get people to click on it.", data-position="top-right")
+            | The 15 SHOCKING foods that will cause a heart attack !!   
+      .extra.content
           p              
           .description="You'll never guess what these are!!!"
       .four.ui.bottom.attached.icon.buttons
@@ -88,8 +90,7 @@ block content
           .read.rounded.right.floated.info_button(id="info_guide_2",style="z-index:9;text-align:center;position:relative;bottom:10px;width:7%;height:auto")
             i.info.icon
           a#article1(onclick='openPost()')
-            | WWW.NYTIMES.COM &nbsp &nbsp
-          a(href='#',data-hint="Now that you've seen a few telltale signs of fake news on social media, click on the article link to check it out.")
+            | WWW.NYTIMES.COM
           .header Mass Migration of Painted Lady Butterflies Entrances Californains   
       .extra.content
           p              
@@ -147,90 +148,6 @@ block content
       .content
         .right.floated.meta= "Yesterday"
         a(href='#')
-              img.ui.avatar.image(src='/profile_pictures/user53.jpg')
-              span='Brielle Jordan'
-      .img.post
-        img(src='/infolitguided3.jpg' style='max-width:100%;')
-      .content(style="background:rgba(0, 0, 0, 0.05);")
-          
-          .read.rounded.right.floated.info_button(id="info_guide_3", style="z-index:9;text-align:center;position:relative;bottom:10px;width:7%;height:auto")
-            i.info.icon
-            p(data-hint="Check out this button to get more information about the source website!")
-          a#article1(onclick='openPost()')
-            | WWW.NPR.ORG &nbsp &nbsp
-          .header Having A Best Friend In Your Teenage Years Could Benefit You For Life   
-      .extra.content
-          p              
-          .description="Researchers have found that people with deep friendships in adolescence had less anxiety and a greater sense of self-worth in early adulthood. Close friends matter, their study found."
-      .four.ui.bottom.attached.icon.buttons
-        .ui.reply.button(tabindex='0')
-          i.reply.icon
-          |                             Reply
-        .ui.flag.button(tabindex='0')
-          i.flag.icon
-          |                             Flag
-        .ui.share.button(tabindex='0')
-          i.share.icon
-          |                             Share
-        span(data-hint="If you decide the article is real news and you want to spread it, you can share it by clicking the “share” button.")
-
-        .ui.labeled.button(tabindex='0')
-          .ui.like.button
-            i.heart.icon
-            |                                 Like
-          a.ui.basic.red.left.pointing.label.count 2
-      .content
-        .ui.comments
-          .comment(commentid='5bbd01d88a48061a73337b96')
-            a.avatar
-              img(src='/profile_pictures/user36.jpg')
-            .content
-              a.author Hayden Abbey
-              .metadata
-                span.date 1543985371299
-                .rating
-                  i.heart.icon
-                  span.num 1
-                  |                                             Likes
-              .text lol love my bffs❤️
-              .actions
-                a.like.comment Like
-                a.flag.comment Flag
-          .comment(commentid='5bbd01d88a48061a73337b96')
-            a.avatar
-              img(src='/profile_pictures/user21.jpg')
-            .content
-              a.author David Cole
-              .metadata
-                span.date 1543985371299
-                .rating
-                  i.heart.icon
-                  span.num 1
-                  |                                             Likes
-              .text Wow who knew?
-              .actions
-                a.like.comment Like
-                a.flag.comment Flag
-      .extra.content
-        .ui.fluid.left.labeled.right.icon.input
-          .ui.label
-            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment(type='text' placeholder='Write a Comment')
-          i.big.send.link.icon
-
-    //-#######################
-    .ui.fluid.card.dim()
-      .ui.dimmer.flag
-        .content
-          .center
-            h2.ui.inverted.icon.header
-              i.red.flag.icon
-              |                                     You &apos;ve flagged this!
-              h3.ui.inverted.header
-                span The admins will review this post further. We are sorry you had this experience.
-      .content
-        .right.floated.meta= "Yesterday"
-        a(href='#')
               img.ui.avatar.image(src='/profile_pictures/user33.jpg')
               span='Sean Gomez'
       .img.post
@@ -239,7 +156,8 @@ block content
           .read.rounded.right.floated.info_button(id="info_guide_4",style="z-index:9;text-align:center;position:relative;bottom:10px;width:7%;height:auto")
             i.info.icon
           a#article1(onclick='openPost()')
-            | CNN-LOCAL8.COM.CO &nbsp &nbsp
+            | CNN-LOCAL8.COM.CO &nbsp; &nbsp;
+          a(href='#',data-hint="Now that you've seen a few telltale signs of fake news on social media, click on the article link to check it out.")
           .header Missouri Teen's House Burns Down After Fidget Spinner Catches Fire   
       .extra.content
           p              
@@ -361,7 +279,7 @@ block scripts
           intro.setOptions({
             steps: [
               { 
-                intro: "In this activity, we will look at the telltale signs of fake news on social media. See if you can spot the clues!"
+                intro: "In this activity, let's look at the signs of fake news on social media. See if you can spot the clues!"
               },
               { 
                 intro: "Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more..."
@@ -374,7 +292,7 @@ block scripts
           console.log('hints added')
           hints.onhintclose(function(e) {
            literacy_counter++;
-           if(literacy_counter == 6) {$( ".cybertrans" ).addClass("green");}
+           if(literacy_counter == 4) {$( ".cybertrans" ).addClass("green");}
           });
         });
           
