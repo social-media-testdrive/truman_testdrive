@@ -23,8 +23,8 @@
               img.ui.mini.spaced.circular.image(src=user.gravatar(60))
             |
             span= user.profile.name || user.username || user.id
-            i.dropdown.icon
-            .menu
+            //-i.dropdown.icon
+            //-.menu
               a.item(href='/logout') Logout
 .mobile.only.row
   .ui.fluid.top.fixed.four.item.menu
@@ -46,8 +46,8 @@
           img.ui.mini.spaced.circular.image(src='/profile_pictures/'+user.profile.picture)
         else
           img.ui.mini.spaced.circular.image(src=user.gravatar(60))
-        i.dropdown.icon
-        .menu
+        //-i.dropdown.icon
+        //-.menu
           a.item(href='/logout') Logout
 
 

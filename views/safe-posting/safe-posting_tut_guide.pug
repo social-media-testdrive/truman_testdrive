@@ -27,19 +27,31 @@ block content
       #steps.ui.stackable.two.column.grid.hidden
         .ui.column
           #step1.ui.raised.segment
-            span(id="audience_info", style="font-weight:600") You haven’t met this person in real life yet! Do not share private information with them.
+            a.ui.blue.ribbon.label
+                //- i.magic.icon 
+                span Don't share
+            span.hidden(id="step1_info", style="font-weight:600") You haven’t met this person in real life yet! Do not share private information with them.
 
         .ui.column
           #step2.ui.raised.segment
-            span(id="private_information_info",style="font-weight:600") One thing you can do to respond is to change the subject. Try saying “How about we play together at school instead?” to this person.
+            a.ui.blue.ribbon.label
+                //- i.magic.icon 
+                span Change the Subject
+            span.hidden(id="step2_info",style="font-weight:600") One thing you can do to respond is to change the subject. Try saying “How about we play together at school instead?” to this person.
         
         .ui.column
           #step3.ui.raised.segment
-            span(id="risky_info",style="font-weight:600") Or, if you want to be direct, try saying “I don’t know you. I don’t feel comfortable giving you my address.”
+            a.ui.blue.ribbon.label
+                //- i.magic.icon 
+                span Be Direct
+            span.hidden(id="step3_info",style="font-weight:600") Or, if you want to be direct, try saying “I don’t know you. I don’t feel comfortable giving you my address.”
         
         .ui.column
           #step4.ui.raised.segment
-            span(id="risky_info",style="font-weight:600") You can also talk to a trusted adult about how to handle this situation.
+            a.ui.blue.ribbon.label
+                //- i.magic.icon 
+                span Talk to a trusted adult
+            span.hidden(id="step4_info",style="font-weight:600") You can also talk to a trusted adult about how to handle this situation.
     
     #chat1.container.clearfix.hidden
       .chat(style="right:24px;")
@@ -148,19 +160,32 @@ block scripts
 
     $('#show_steps a').on('click', function () {
         //- $('#steps').hide();
-        //- $('#steps').show();
-        setTimeout(function(){
-          $('#step1,#step2,#step3,#step4').transition({
-            animation : 'jiggle',
-            duration  : 800,
-            interval  : 200
-          });    
+        //- $('#steps').show();  
         $('#steps').show();         
         $('.ui.big.labeled.icon.button.cybersim').addClass('green');
-        $('.ui.big.labeled.icon.button.cybersim').transition('jiggle');
-        }, 500);
 
      });
+
+     $('#step1>a').on('click', function () {      
+        $('#step1_info').show(); 
+        $('#step1').transition('tada');     
+        
+    });
+
+    $('#step2>a').on('click', function () {      
+        $('#step2_info').show();      
+        $('#step2').transition('tada');     
+    });
+
+     $('#step3>a').on('click', function () {      
+        $('#step3_info').show(); 
+        $('#step3').transition('tada');     
+    });
+
+    $('#step4>a').on('click', function () {      
+        $('#step4_info').show(); 
+        $('#step4').transition('tada');     
+    });
 
 
     $('#point2_button').on('click', function () {

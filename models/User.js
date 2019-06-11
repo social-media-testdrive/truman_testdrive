@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new mongoose.Schema({
-  email: String, //user e-mail (not used in TestDrive)
+  email: {type: String, default: ""}, //user e-mail (not used in TestDrive)
   password: String, //hashed and salted
   passwordResetToken: String,
   passwordResetExpires: Date,

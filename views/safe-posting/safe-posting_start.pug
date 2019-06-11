@@ -38,7 +38,7 @@ block content
                 //- i.dollar.sign.icon 
                 span Audience
             span.hidden(id="audience_info", style="font-weight:600") Anyone who can see information about you or posted by you online.
-              ul(style="font-weight:400") Some people in your social media audience will be your friends and family. But your audience can also include strangers and people who you don’t know face-to-face.
+              ul(style="font-weight:400") This could include strangers or people you haven't met face-to-face.
 
         .ui.column
           #private_information.ui.raised.segment
@@ -46,7 +46,7 @@ block content
                 //- i.magic.icon 
                 span Private information
             span.hidden(id="private_information_info",style="font-weight:600") Information about you that can be used to identify you because it is unique to you.
-              ul(style="font-weight:400") This can include things like your full name, school, home address, or phone number. Be careful to not share any private information in pictures, either.
+              ul(style="font-weight:400") This can include things like your full name, school, home address, or phone number.
         
         .ui.column
           #risky.ui.raised.segment
@@ -54,7 +54,7 @@ block content
                 //- i.magic.icon 
                 span Risky
             span.hidden(id="risky_info",style="font-weight:600") Potentially harmful to one’s emotional or physical well-being.
-              ul(style="font-weight:400") It is risky to share private information online. People could share it with others people or use it to try to trick or scam you.
+              ul(style="font-weight:400") It is risky to share private information online. People could share it with others or use it to try to trick or scam you.
     
     .ui.message.negative.transition.hidden
       i.close.icon
@@ -70,6 +70,7 @@ block content
 block scripts
   script().
     var incomplete_activities = ($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden")|| $('#risky_info').is(":hidden"));
+    
     $('#introduction_next').on('click', function () {      
       $('#question').show(); 
       $('#question').transition('jiggle');     
