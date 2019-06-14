@@ -630,7 +630,7 @@ exports.postSignupInfo = (req, res, next) => {
  */
 exports.getAccount = (req, res) => {
   res.render('account/profile', {
-    title: 'Account Management'
+    title: 'Account Management', mod: req.params.modId
   });
 };
 
@@ -641,7 +641,7 @@ exports.getAccount = (req, res) => {
 exports.getSignupInfo = (req, res) => {
 
   res.render('account/signup_info', {
-    title: 'Add Information'
+    title: 'Add Information', mod: req.params.modId
   });
 };
 
@@ -684,7 +684,7 @@ exports.postUpdateProfile = (req, res, next) => {
 
   if (errors) {
     req.flash('errors', errors);
-    return res.redirect('/account');
+    return res.redirect('/account/'+req.param("modId"));
   }
 
   User.findById(req.user.id, (err, user) => {
@@ -706,12 +706,12 @@ exports.postUpdateProfile = (req, res, next) => {
       if (err) {
         if (err.code === 11000) {
           req.flash('errors', { msg: 'The email address you have entered is already associated with an account.' });
-          return res.redirect('/account');
+          res.redirect('/modual/'+req.param("modId"));
         }
         return next(err);
       }
-      req.flash('success', { msg: 'Profile information has been updated.' });
-      res.redirect('/account');
+      //req.flash('success', { msg: 'Profile information has been updated.' });
+      res.redirect('/modual/'+req.param("modId"));
     });
   });
 };

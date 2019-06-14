@@ -5,11 +5,15 @@ block content
     .ui.stackable.column.grid
       .ui.column
         .ui.raised.segment
+          h3.ui.header
+            i.question.purple.icon
+            .content
+              | Reflect
           .ui.label(style="background-color:#2185d08a;color:#000000d1;")
             h4(style="float:left")
               i.exclamation.triangle.icon(style="color: #f9ff00 !important;")
 
-              | These were the fake news posts in the timeline. How many did you notice?
+              | These were the FAKE news posts in the timeline. How many did you notice?
           br
           br
           .ui.stackable.three.cards
@@ -57,6 +61,61 @@ block content
               .content
                 .description
                   | You'll never guess what these are!!!
+          br
+          br
+
+          .ui.label(style="background-color:#2185d08a;color:#000000d1;")
+            h4(style="float:left")
+              i.exclamation.triangle.icon(style="color: #f9ff00 !important;")
+
+              | These were the REAL news posts in the timeline. How many did you notice?
+          br
+          br
+          .ui.stackable.three.cards
+            
+            .ui.fluid.card.dim()#card4
+              .content
+                .right.floated.meta 20 minutes ago  
+                a(href='/user/slimebygabby')
+                  img.ui.avatar.image(src='/profile_pictures/user72.jpg')
+                  span Gabby Rogers
+              .img.post
+                img.transition.visible(src='/realnews2.png', data-src='/realnews2.png', style='max-width: 100%; cursor: pointer;display: inline !important;')
+              .read.rounded.right.floated.info_button(data-info_text="Cable News Network (CNN) is an American news-based pay television channel owned by WarnerMedia News &amp; Sports, a division of AT&amp;T's WarnerMedia. CNN was founded in 1980 by American media proprietor Ted Turner as a 24-hour cable news channel.", style='z-index:12;text-align:center;align-self:flex-end;position:relative;bottom:10px;width:7%;height:auto')
+                i.info.icon
+              .content
+                .description
+                  | Volkswagen's ID Buggy, an electric dune buggy concept, was an eye-catching presence at this week's Geneva International Motor Show. The most surprising thing about it, though, is that VW might actually put it into production.
+        
+          
+            .ui.fluid.card.dim()#card5
+              .content
+                .right.floated.meta 30 minutes ago
+                a(href='/user/cloe.htt')
+                  img.ui.avatar.image(src='/profile_pictures/user3.jpg')
+                  span Cloe Hansen
+              .img.post
+                img.transition.visible(src='/realnews1.png', data-src='/realnews1.png', style='max-width: 100%; cursor: pointer;display: inline !important;')
+              .read.rounded.right.floated.info_button(data-info_text="Weill Cornell Medicine is the biomedical research unit and medical school of Cornell University, a private Ivy League university. The medical college is located at 1300 York Avenue, on the Upper East Side of Manhattan in New York City, along with the Weill Cornell Graduate School of Medical Sciences.", style='z-index:9;text-align:center;align-self:flex-end;position:relative;bottom:10px;width:7%;height:auto')
+                i.info.icon
+              .content
+                .description
+                  | According to an accumulating body of research by Dr. Cantley and his team at Weill Cornell Medicine, excess sugar also helps many types of cancer to grow more rapidly.
+
+
+            .ui.fluid.card.dim()#card6
+              .content
+                .right.floated.meta 1 hour ago
+                a(href='/user/Suzieee')
+                  img.ui.avatar.image(src='/profile_pictures/user40.jpg')
+                  span Susan Turner
+              .img.post
+                img.transition.visible(src='/realnews3.png', data-src='/realnews3.png', style='max-width: 100%;cursor: pointer;display: inline !important;')
+              .read.rounded.right.floated.info_button(data-info_text="The Washington Post (sometimes abbreviated as WaPo) is a major American daily newspaper published in Washington, D.C., with a particular emphasis on national politics and the federal government. It has the largest circulation in the Washington metropolitan area.", style='z-index:9;text-align:center;align-self:flex-end;position:relative;bottom:10px;width:7%;height:auto')
+                i.info.icon          
+              .content
+                .description
+                  | The University of Chicago will no longer require ACT or SAT scores from U.S. students
  
  
     .ui.raised.segment
@@ -181,7 +240,7 @@ block scripts
 
 
     setTimeout(function(){
-      $('#card1,#card2,#card3').transition({
+      $('#card1,#card2,#card3,#card4,#card5,#card6').transition({
       animation : 'jiggle',
       duration  : 800,
       interval  : 200

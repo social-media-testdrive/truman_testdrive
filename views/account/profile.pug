@@ -5,13 +5,13 @@ block content
   .sixteen.wide.column
     h3.ui.header Profile Information
 
-    form.ui.form(action='/account/profile', method='POST', enctype='multipart/form-data')
+    form.ui.form(action='/account/profile/'+mod, method='POST', enctype='multipart/form-data')
       input(type='hidden', name='_csrf', value=_csrf)
       .field
         label(for='name') Name
         input.form-control(type='text', name='name', id='name', value=user.profile.name)
       .field
-        label(for='location') Location
+        label(for='location') Location (City, State)
         input.form-control(type='text', name='location', id='location', value=user.profile.location)
       .field
         label(for='bio') Bio

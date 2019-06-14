@@ -14,7 +14,7 @@ block content
           img(src=user.gravatar(60))
       .content
         a.header(href='/me')= user.profile.name || user.email || user.id
-        .meta="@"+user.username
+        .meta="@Guest"
         .description=user.profile.bio
         .description
           if user.profile.location
@@ -60,8 +60,9 @@ block content
                 img(src=user.gravatar(60))
             a(href='/me')
               span=user.profile.name || user.email || user.id
-          .image
-            img(src='/user_post/'+val.picture)
+          if val.picture
+            .image
+              img(src='/user_post/'+val.picture)
           .content
             .description=val.body
           .two.ui.bottom.attached.icon.buttons
@@ -420,16 +421,48 @@ block content
           input(type='hidden', name='_csrf', value=_csrf) 
           input(type='hidden', name='module', value=mod)  
           .field  
-            textarea(rows='2',placeholder='What do you want to share?',name='body')
+            textarea(rows='3',placeholder='What do you want to share?',name='body')
           .field.image-upload 
             label(for='picinput') 
               .image.content  
-                img#imgInp.ui.fluid.image(src='/photo-camera.svg')  
+                img#imgInp.ui.centered.small.image(src='/photo-camera.svg')  
             //-input#picinput(type='file', accept='image/*', capture='camera', name='picinput') 
             input#picinput(type='file', accept='image/*', name='picinput')  
           .ui.error.message 
       .actions  
         input.ui.green.button(type='submit', name="foo", value='Post', form='postform')
+
+    //- Info Lit Flag Modal  
+    .ui.small.info.flag.modal  
+      i.close.icon  
+      .header You've flagged] this article! Do you think there are any signs of fake news? [check multiple]  
+      .content
+        form.ui.form()  
+          .inline.field
+            .ui.checkbox
+              input.hidden(type='checkbox', tabindex='0')
+              label The article had a shocking and exaggerated headline.
+          .inline.field
+            .ui.checkbox
+              input.hidden(type='checkbox', tabindex='0')
+              label The article used sensational images.
+            label
+          .inline.field
+            .ui.checkbox
+              input.hidden(type='checkbox', tabindex='0')
+              label The article had an unusual web address or site name.
+          .inline.field
+            .ui.checkbox
+              input.hidden(type='checkbox', tabindex='0')
+              label The article had spelling errors, ALL CAPS, or dramatic punctuation!!!!
+          .inline.field
+            .ui.checkbox
+              input.hidden(type='checkbox', tabindex='0')
+              label I didn't see any signs. This could be a real news article. I’m flagging it for another reason
+      .actions
+        .ui.positive.right.labeled.icon.button
+          | Submit
+          i.checkmark.icon
 
     //- View Next Steps Modal      
     .ui.small.modal#next_steps_modual  

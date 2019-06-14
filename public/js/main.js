@@ -356,16 +356,7 @@ $(window).on("load", function () {
           rules: [
             {
               type: 'empty',
-              prompt: 'Please add some text your picture'
-            }
-          ]
-        },
-        picinput: {
-          identifier: 'picinput',
-          rules: [
-            {
-              type: 'empty',
-              prompt: 'Please click on Camera Icon to add a photo'
+              prompt: 'Please add some text'
             }
           ]
         }
@@ -582,7 +573,8 @@ $(window).on("load", function () {
   //Edit button
   $('.ui.editprofile.button')
     .on('click', function () {
-      window.location.href = '/account';
+      let pathArray = window.location.pathname.split('/');
+      window.location.href = '/account/' + pathArray[2];
     });
 
   //this is the REPORT User button
@@ -712,7 +704,7 @@ $(window).on("load", function () {
     })
     ;
 
-//this is the FLAG button
+//this is the Share button
   $('.ui.share.button')
     .on('click', function () {
       $('.ui.small.basic.share.modal')
@@ -743,8 +735,18 @@ $(window).on("load", function () {
       })
         .dimmer('show');
 
+      let pathArray = window.location.pathname.split('/');
+      let mod = pathArray[2];
+
+      if(mod =="digital-literacy")
+      {
+        $('.ui.small.info.flag.modal').modal('show');
+      }
+
 
     });
+
+
 
   introJs().start();
 

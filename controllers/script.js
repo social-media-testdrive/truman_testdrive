@@ -982,51 +982,25 @@ exports.newPost = (req, res) => {
     if (req.file)
     {
       post.picture = req.file.filename;
-      user.numPosts = user.numPosts + 1;
-      post.postID = user.numPosts;
-      post.type = "user_post";
-      
-      console.log("numPost is now "+user.numPosts);
-      user.posts.unshift(post);
-      console.log("CREATING NEW POST!!!");
-
-      user.save((err) => {
-            if (err) {
-              return next(err);
-            }
-            
-            res.redirect('/modual/'+req.body.module);
-          });
-
     }
+    user.numPosts = user.numPosts + 1;
+    post.postID = user.numPosts;
+    post.type = "user_post";
+    
+    console.log("numPost is now "+user.numPosts);
+    user.posts.unshift(post);
+    console.log("CREATING NEW POST!!!");
 
-    //not used any more. Can ignore (should kill)
-    else if (req.body.reply)
-    {
-      post.reply = req.body.reply;
-      post.type = "user_reply";
-      user.numReplies = user.numReplies + 1;
-      post.replyID = user.numReplies; //all reply posts are -1 as ID
-      
-      user.posts.unshift(post);
-      console.log("CREATING REPLY");
+    user.save((err) => {
+          if (err) {
+            return next(err);
+          }
+          
+          res.redirect('/modual/'+req.body.module);
+        });
 
-      user.save((err) => {
-        if (err) {
-          return next(err);
-        }
-        //req.flash('success', { msg: 'Profile information has been updated.' });
-        res.redirect('/modual/'+req.body.module);
-      });
 
-    }
 
-    else
-    {
-      console.log("@#@#@#@#@#@#@#ERROR: Oh Snap, Made a Post but not reply or Pic")
-      req.flash('errors', { msg: 'ERROR: Your post or reply did not get sent' });
-      res.redirect('/');
-    }
 
   });
 };

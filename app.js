@@ -157,7 +157,8 @@ app.use((req, res, next) => {
     //console.log("@@@@@request is " + req);
     next();
   } else {
-    lusca.csrf()(req, res, next);
+    //lusca.csrf()(req, res, next);
+    next();
   }
 });
 
@@ -191,7 +192,7 @@ app.use((req, res, next) => {
   next();
 });
 
-var csrf = lusca({ csrf: true });
+//var csrf = lusca({ csrf: true });
 
 //helper function just to see what is in the body
 function check(req, res, next) {
@@ -229,9 +230,12 @@ app.get('/', function (req, res) {
 app.get('/modual/:modId', passportConfig.isAuthenticated, scriptController.getScript);
 
 //post a new user created post
-app.post('/post/new', userpostupload.single('picinput'), check, csrf, scriptController.newPost);
+//app.post('/post/new', userpostupload.single('picinput'), check, csrf, scriptController.newPost);
+app.post('/post/new', userpostupload.single('picinput'), check, scriptController.newPost);
 
-app.post('/account/profile', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, csrf, userController.postUpdateProfile);
+//app.post('/account/profile', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, csrf, userController.postUpdateProfile);
+app.post('/account/profile', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, userController.postUpdateProfile);
+
 //app.post('/api/upload', upload.single('myFile'), apiController.postFileUpload);
 
 //this is the TOS  
@@ -289,19 +293,19 @@ app.get('/tutorial/:modId',passportConfig.isAuthenticated, function (req, res) {
 
 app.get('/sim/:modId', passportConfig.isAuthenticated, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_sim', {
-    title: 'Cyberbullying Guided Activity'
+    title: 'Guided Activity'
   });
 });
 
 app.get('/sim1/:modId',passportConfig.isAuthenticated, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_sim1', {
-    title: 'Cyberbullying Guided Activity'
+    title: 'Guided Activity'
   });
 });
 
 app.get('/sim2/:modId', passportConfig.isAuthenticated, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_sim2', {
-    title: 'Cyberbullying Guided Activity'
+    title: 'Guided Activity'
   });
 });
 
@@ -396,11 +400,14 @@ app.get('/review/signup', passportConfig.isAuthenticated, userController.getSign
 //////////////////////////
 
 app.get('/account/signup_info', passportConfig.isAuthenticated, userController.getSignupInfo);
-app.post('/account/signup_info_post', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, csrf, userController.postSignupInfo);
+//app.post('/account/signup_info_post', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, csrf, userController.postSignupInfo);
+app.post('/account/signup_info_post', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, userController.postSignupInfo);
 
-app.post('/account/profile', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, csrf, userController.postUpdateProfile);
 
-app.get('/account', passportConfig.isAuthenticated, userController.getAccount);
+//app.post('/account/profile/:modId', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, csrf, userController.postUpdateProfile);
+app.post('/account/profile/:modId', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, userController.postUpdateProfile);
+
+app.get('/account/:modId', passportConfig.isAuthenticated, userController.getAccount);
 
 app.get('/user/:userId', passportConfig.isAuthenticated, actorsController.getActor);
 app.post('/user', passportConfig.isAuthenticated, actorsController.postBlockOrReport);
