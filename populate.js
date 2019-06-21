@@ -40,7 +40,7 @@ async function readData() {
 }
 
 
-dotenv.load({ path: '.env' });
+dotenv.config({ path: '.env' });
 
 var MongoClient = require('mongodb').MongoClient
     , assert = require('assert');

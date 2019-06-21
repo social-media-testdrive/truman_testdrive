@@ -285,7 +285,7 @@ exports.postSignupInstructor = (req, res, next) => {
  */
 exports.getGuest = (req, res, next) => {
 
-
+  console.log("Now Making a Guest");
   const user = new User({
     password: "thinkblue",
     username: "guest"+makeid(10),
@@ -301,6 +301,7 @@ exports.getGuest = (req, res, next) => {
   user.profile.location = "Guest Town";
   user.profile.bio = '';
   user.profile.picture = 'avatar-icon.svg';
+  console.log("New Guest is now: "+ user.profile.name);
 
   User.findOne({ username: req.body.username }, (err, existingUser) => {
     if (err) { return next(err); }
@@ -314,6 +315,7 @@ exports.getGuest = (req, res, next) => {
         if (err) {
           return next(err);
         }
+        console.log("All done with Guest making!");
         res.redirect('/intro/'+req.params.modId);
       });
     });
