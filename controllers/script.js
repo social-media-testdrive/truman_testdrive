@@ -260,6 +260,68 @@ exports.getScriptPost = (req, res) => {
 	});
 };
 
+
+/**
+ * GET /
+ * List of Script posts for Feed
+ * Made for testing
+*/
+exports.getScriptFeed = (req, res, next) => {
+
+
+  console.log("$#$#$#$#$#$#$START GET FEED$#$#$$#$#$#$#$#$#$#$#$#$#");
+  //console.log("time_diff  is now "+time_diff);
+  //console.log("time_limit  is now "+time_limit);
+  //study2_n0_p0
+  console.log("$#$#$#$#$#$#$START GET FEED$#$#$$#$#$#$#$#$#$#$#$#$#");
+  var scriptFilter = "";
+
+  
+
+  var profileFilter = "";
+  //study3_n20, study3_n80
+
+
+
+  //scriptFilter = req.params.caseId;
+
+  //req.params.modId
+  console.log("#############SCRIPT FILTER IS NOW " + scriptFilter);
+  
+  //{
+  
+    Script.find()
+      //.where('time').lte(time_diff)//.gte(time_limit)
+      .where('module').equals(req.params.modId)
+      .sort('-time')
+      .populate('actor')
+      .populate({ 
+       path: 'comments.actor',
+       populate: {
+         path: 'actor',
+         model: 'Actor'
+       } 
+    })
+      .exec(function (err, script_feed) {
+        if (err) { return next(err); }
+        //Successful, so render
+
+        //update script feed to see if reading and posts has already happened
+        var finalfeed = [];
+        finalfeed = script_feed;
+
+      
+      //shuffle up the list
+      //finalfeed = shuffle(finalfeed);
+
+
+      console.log("Script Size is now: "+finalfeed.length);
+      res.render('feed', { script: finalfeed});
+
+      });//end of Script.find()
+
+};//end of .getScript
+
 /*
 ##############
 Post Quiz Prez

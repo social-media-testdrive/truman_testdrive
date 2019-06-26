@@ -229,6 +229,9 @@ app.get('/', function (req, res) {
 //main route for getting the simulation (Free Play) for a given lesson mod
 app.get('/modual/:modId', passportConfig.isAuthenticated, scriptController.getScript);
 
+//THIS IS FOR LOAD TESTING
+app.get('/testing/:modId', scriptController.getScriptFeed);
+
 //post a new user created post
 //app.post('/post/new', userpostupload.single('picinput'), check, csrf, scriptController.newPost);
 app.post('/post/new', userpostupload.single('picinput'), check, scriptController.newPost);
