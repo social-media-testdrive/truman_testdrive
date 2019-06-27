@@ -1,8 +1,9 @@
+-var cdn = "https://testdrive.sfo2.cdn.digitaloceanspaces.com";
 .computer.only.tablet.only.row 
   .ui.borderless.fixed.menu
     .ui.container
       a.item(href='/')
-        img.ui.tiny.image(src='/logo.png', id='logo')
+        img.ui.tiny.image(src=cdn+'/logo.png', id='logo')
       |  
       .right.menu
         if !user
@@ -18,7 +19,7 @@
               i.big.university.icon
           .ui.simple.dropdown.item
             if user.profile.picture
-              img.ui.mini.spaced.circular.image(src='/profile_pictures/'+user.profile.picture)
+              img.ui.mini.spaced.circular.image(src=cdn+'/profile_pictures/'+user.profile.picture)
             else
               img.ui.mini.spaced.circular.image(src=user.gravatar(60))
             |
@@ -29,7 +30,7 @@
 .mobile.only.row
   .ui.fluid.top.fixed.four.item.menu
     a.item(href='/')
-      img.ui.tiny.image(src='/logo.png', id='cell_logo')
+      img.ui.tiny.image(src=cdn+'/logo.png', id='cell_logo')
     if !user
       //-a.item(href='/login') Login
       //-a.item(href='/signup') Create Account
@@ -43,7 +44,7 @@
           i.big.university.icon
       .ui.simple.dropdown.item
         if user.profile.picture
-          img.ui.mini.spaced.circular.image(src='/profile_pictures/'+user.profile.picture)
+          img.ui.mini.spaced.circular.image(src=cdn+'/profile_pictures/'+user.profile.picture)
         else
           img.ui.mini.spaced.circular.image(src=user.gravatar(60))
         //-i.dropdown.icon

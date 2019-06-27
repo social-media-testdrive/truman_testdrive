@@ -239,7 +239,7 @@ block content
                   else
                     .comment(commentID=comment.id)
                       a.avatar(href='/user/'+comment.actor.username)
-                        img(src='/profile_pictures/'+comment.actor.profile.picture)
+                        img(src=cdn+'/profile_pictures/'+comment.actor.profile.picture)
                       .content
                         a.author(href='/user/'+comment.actor.username)=comment.actor.profile.name
                         .metadata
@@ -301,7 +301,7 @@ block content
           a.chat-minimize(href='#')
             i.window.minimize.icon
           a(href='#')
-            img.ui.avatar.image(src='/profile_pictures/avatar-icon.svg',style="width: 3em;height: 3em;")
+            img.ui.avatar.image(src=cdn+'/profile_pictures/avatar-icon.svg',style="width: 3em;height: 3em;")
           .chat-about
             .chat-with Chat with Jack
             //- .chat-num-messages already 1 902 messages
@@ -346,7 +346,7 @@ block content
           a.chat-minimize(href='#')
             i.window.minimize.icon
           a(href='#')
-            img.ui.avatar.image(src='/profile_pictures/user8.jpg',style="width: 3em;height: 3em;")
+            img.ui.avatar.image(src=cdn+'/profile_pictures/user8.jpg',style="width: 3em;height: 3em;")
           .chat-about
             .chat-with Chat with Rob
             //- .chat-num-messages already 1 902 messages

@@ -1,3 +1,4 @@
+-var cdn = "https://testdrive.sfo2.cdn.digitaloceanspaces.com";
 doctype html
 html
   head
@@ -12,10 +13,12 @@ html
     meta(name="msapplication-tap-highlight" content="no")
     meta(name="content-language" content="en_US")
     title #{title} - Social Media TestDrive
-    link(rel='shortcut icon', href='/favicon.ico')
+    link(rel='shortcut icon', href=cdn+'/favicon.ico')
     link(rel='manifest', href='/manifest.json')
-    link(rel='stylesheet', href='/semantic/dist/semantic.min.css')
-    link(rel='stylesheet', href='/js/lib/introjs.min.css')
+    //link(rel='stylesheet', href='/semantic/dist/semantic.min.css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css', integrity='sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=', crossorigin='anonymous')
+    
+    link(rel='stylesheet', href=cdn+'/js/lib/introjs.min.css')
     //-link(rel='stylesheet', href='/js/themes/introjs-nassim.css')
     style(type='text/css').
       body {
@@ -548,14 +551,16 @@ html
     include partials/ui_footer
     
 
-    script(src='/js/lib/jquery-3.1.1.min.js')
-    script(src='/js/lib/humanized_time_span.js')
-    script(src='/js/lib/lazyload.transpiled.min.js')
+    script(src=cdn+'/js/lib/jquery-3.1.1.min.js')
+    script(src=cdn+'/js/lib/humanized_time_span.js')
+    script(src=cdn+'/js/lib/lazyload.transpiled.min.js')
     script(src='//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js')
     script(src='//cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js')
-    script(src='/js/lib/intro.min.js')
-    script(src='/semantic/dist/semantic.min.js')
-    script(src='/js/main.js')
+    script(src=cdn+'/js/lib/intro.min.js')
+    //script(src='/semantic/dist/semantic.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js', integrity='sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=', crossorigin='anonymous')
+    
+    script(src=cdn+'/js/main.js')
     block scripts
 
     //- // Google Analytics: change UA-XXXXX-X to be your site's ID
