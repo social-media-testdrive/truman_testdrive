@@ -18,7 +18,6 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const expressValidator = require('express-validator');
 const expressStatusMonitor = require('express-status-monitor');
-const sass = require('node-sass-middleware');
 var schedule = require('node-schedule');
 
 //multer is how we send files (like images) thru web forms
@@ -115,13 +114,15 @@ mongoose.connection.on('error', (err) => {
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-app.use(expressStatusMonitor());
+//app.use(expressStatusMonitor());
 //We do compression on our production server using nginx as a reverse proxy
 //app.use(compression());
+/*
 app.use(sass({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public')
 }));
+*/
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -135,7 +136,7 @@ app.use(session({
     path: '/',
     httpOnly: true,
     secure: false,
-    maxAge: 7200000
+    maxAge: 1209600000
   },
   secret: process.env.SESSION_SECRET,
   store: new MongoStore({
