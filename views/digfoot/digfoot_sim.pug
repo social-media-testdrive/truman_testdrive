@@ -1,0 +1,278 @@
+
+extends ../ui_layout
+  
+block content
+  .computer.only.tablet.only.four.wide.column 
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
+
+    .ui.fluid.card.test(data-hint="Click on the post to think about its impact on digital footprints!", data-position="top-left")
+      .ui.dimmer.flag
+        .content
+          .center
+            h2.ui.inverted.icon.header
+              i.red.flag.icon
+              |                                     You &apos;ve flagged this!
+              h3.ui.inverted.header
+                span The admins will review this post further. We are sorry you had this experience.
+      .content
+        .right.floated.meta= "Yesterday"
+        a(href='#')
+              img.ui.avatar.image(src='/profile_pictures/user71.JPG')
+              span='Andrew Thomas'
+      .img.post
+        img(src='/digfootga1.jpg' style='max-width:100%;')
+      .content
+        .description the first day after my bday and guess what i HAVE to do? clean your room says my momh
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |                             Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |                             Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |                                 Like
+          a.ui.basic.red.left.pointing.label.count 2
+      .content
+        .ui.comments
+          .comment(commentid='5bbd01d88a48061a73337b96')
+            a.avatar
+              img(src='/profile_pictures/user52.jpg')
+            .content
+              a.author Connor McCormick
+              .metadata
+                span.date 1543985371299
+                .rating
+                  i.heart.icon
+                  span.num 1
+                  |                                             Likes
+              .text haha that sucks
+              .actions
+                a.like.comment Like
+                a.flag.comment Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+    //-#######################
+    .ui.fluid.card.dim()
+      .ui.dimmer.flag
+        .content
+          .center
+            h2.ui.inverted.icon.header
+              i.red.flag.icon
+              |                                     You &apos;ve flagged this!
+              h3.ui.inverted.header
+                span The admins will review this post further. We are sorry you had this experience.
+      .content
+        .right.floated.meta= "Yesterday"
+        a(href='#')
+              img.ui.avatar.image(src='/profile_pictures/user50.jpg')
+              span='Jenny Schmidt'
+      .img.post
+        img(src='/digfootga2.jpg' style='max-width:100%;')
+      .content
+        .description Here is a picture of my cat!!
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |                             Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |                             Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |                                 Like
+          a.ui.basic.red.left.pointing.label.count 2
+      .content
+        .ui.comments
+          .comment(commentid='5bbd01d88a48061a73337b96')
+            a.avatar
+              img(src='/profile_pictures/user24.jpg')
+            .content
+              a.author Jenny Chen
+              .metadata
+                span.date 1543985371299
+                .rating
+                  i.heart.icon
+                  span.num 1
+                  |                                             Likes
+              .text Wow really cute😍
+              .actions
+                a.like.comment Like
+                a.flag.comment Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+    //-##########
+    
+    .ui.fluid.card.test(data-hint="Remember, your digital footprint can affect your reputation online and offline! Think about who can see your post and how they might view you as a result.", data-position="top-left")
+        .ui.dimmer.flag
+          .content
+            .center
+              h2.ui.inverted.icon.header
+                i.red.flag.icon
+                |                                     You &apos;ve flagged this!
+                h3.ui.inverted.header
+                  span The admins will review this post further. We are sorry you had this experience.
+        .content
+          .right.floated.meta= "Yesterday"
+          a(href='#')
+                img.ui.avatar.image(src='/profile_pictures/user40.jpg')
+                span='Susan Turner'
+        .img.post
+          img(src='/digfootga3.jpg' style='max-width:100%;')
+        .content
+          .description omg Lindsay I love you but you look ridiculous! lol
+        .three.ui.bottom.attached.icon.buttons
+          .ui.reply.button(tabindex='0')
+            i.reply.icon
+            |                             Reply
+          .ui.flag.button(tabindex='0')
+            i.flag.icon
+            |                             Flag
+          .ui.labeled.button(tabindex='0')
+            .ui.like.button
+              i.heart.icon
+              |                                 Like
+            a.ui.basic.red.left.pointing.label.count 2
+        .content
+          .ui.comments
+            .comment(commentid='5bbd01d88a48061a73337b96')
+              a.avatar
+                img(src='/profile_pictures/user66.jpeg')
+              .content
+                a.author Michelle Rose
+                .metadata
+                  span.date 1543985371299
+                  .rating
+                    i.heart.icon
+                    span.num 1
+                    |                                             Likes
+                .text lol!!
+                .actions
+                  a.like.comment Like
+                  a.flag.comment Flag
+        .content
+          .ui.comments
+            .comment(commentid='5bbd01d88a48061a73337b96')
+              a.avatar
+                img(src='/profile_pictures/user30.jpg')
+              .content
+                a.author Linsday Stokes
+                .metadata
+                  span.date 1543985371299
+                  .rating
+                    i.heart.icon
+                    span.num 0
+                    |                                             Likes
+                .text Hey, do you mind deleting this picture?
+                .actions
+                  a.like.comment Like
+                  a.flag.comment Flag
+        .content
+          .ui.comments            
+        .extra.content
+          .ui.fluid.left.labeled.right.icon.input
+            .ui.label
+              img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            input.newcomment(type='text' placeholder='Write a Comment')
+            i.big.send.link.icon
+    
+
+    //-#######################
+    .ui.fluid.card.dim()
+      .ui.dimmer.flag
+        .content
+          .center
+            h2.ui.inverted.icon.header
+              i.red.flag.icon
+              |                                     You &apos;ve flagged this!
+              h3.ui.inverted.header
+                span The admins will review this post further. We are sorry you had this experience.
+      .content
+        .right.floated.meta= "Yesterday"
+        a(href='#')
+              img.ui.avatar.image(src='/profile_pictures/user24.jpg')
+              span='Jenny Chen'
+      .img.post
+        img(src='/digfootga4.jpg' style='max-width:100%;')
+      .content
+        .description I don't want summer to end!!
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |                             Reply
+        //.ui.flag.button(data-hint="Press the “flag” button to report this post to the website.", data-position="bottom-right")
+          i.flag.icon
+          |                             Flag
+        .ui.flag.button()
+          i.flag.icon
+          |                             Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |                                 Like
+          a.ui.basic.red.left.pointing.label.count 2
+      .content
+        .ui.comments
+          .comment(commentid='5bbd01d88a48061a73337b96')
+            a.avatar
+              img(src='/profile_pictures/user63.jpg')
+            .content
+              a.author Liam Knapke
+              .metadata
+                span.date 1543985371299
+                .rating
+                  i.heart.icon
+                  span.num 1
+                  |                                             Likes
+              .text back to school soon🙁
+              .actions
+                a.like.comment Like
+                a.flag.comment Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+
+    button.ui.big.labeled.icon.button.cybertrans
+          i.rocket.icon
+          |   Let's Continue!
+
+block scripts
+  script().
+    function startIntro(){
+        var hints;
+        var counter = 0;
+        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
+        intro.setOptions({
+          steps: [
+            { 
+              intro: "Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more..."
+            }
+            
+          ]
+        });
+          intro.start().onexit(function() {
+          hints = introJs().addHints();
+          console.log('hints added')
+          hints.onhintclose(function(e) {
+           counter++;
+           if(counter == 2) {$( ".cybertrans" ).addClass("green");}
+          });
+        });
+          
+      };
+
+      $(window).on("load", function() {startIntro();});
