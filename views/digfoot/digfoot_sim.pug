@@ -4,6 +4,33 @@ extends ../ui_layout
 block content
   .computer.only.tablet.only.four.wide.column 
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
+    #newpost.ui.fluid.left.labeled.right.icon.input(data-hint=" Let’s practice creating a post that would have a positive impact on your digital footprint. You can post things related to your hobbies, your school activities, or any other interests!", data-position="top-left")
+      .ui.label
+        if user.profile.picture
+          img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture)
+        else
+          img.ui.avatar.image(src=user.gravatar(60))
+      input(type='text', placeholder='Create a post')
+      i.big.photo.link.icon
+    
+    .ui.small.post.modal  
+      i.close.icon  
+      .header Add a New Post  
+      .content  
+        form#postform.ui.feed.form(action='/post/new', method='POST', enctype='multipart/form-data')  
+          input(type='hidden', name='_csrf', value=_csrf) 
+          input(type='hidden', name='module', value=mod)  
+          .field  
+            textarea(rows='3',placeholder='What do you want to share?',name='body')
+          .field.image-upload 
+            label(for='picinput') 
+              .image.content  
+                img#imgInp.ui.centered.small.image(src='/photo-camera.svg')  
+            //-input#picinput(type='file', accept='image/*', capture='camera', name='picinput') 
+            input#picinput(type='file', accept='image/*', name='picinput')  
+          .ui.error.message 
+      .actions  
+        input.ui.green.button(type='submit', name="foo", value='Post', form='postform')
 
     .ui.fluid.card.test(data-hint="Click on the post to think about its impact on digital footprints!", data-position="top-left")
       .ui.dimmer.flag
@@ -253,6 +280,35 @@ block content
 block scripts
   script().
     function startIntro(){
+        
+        $("#newpost, a.item.newpost").click(function () {
+          $(' .ui.small.post.modal').modal('show');
+        });
+    
+        
+          $(".modual.info_button").click(function () {
+            $(' .ui.small.info.modal').modal('show');
+            document.getElementById('post_info_text_modual').innerHTML = $(this).data('info_text');
+            console.log($(this).data('info_text'));
+          });
+          
+        
+          $('.ui.feed.form')
+            .form({
+              on: 'blur',
+              fields: {
+                body: {
+                  identifier: 'body',
+                  rules: [
+                    {
+                      type: 'empty',
+                      prompt: 'Please add some text'
+                    }
+                  ]
+                }
+              }
+            });
+      
         var hints;
         var counter = 0;
         var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
