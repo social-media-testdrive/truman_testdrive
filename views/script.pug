@@ -26,7 +26,7 @@ block content
 
   #loading.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
     img.ui.centered.small.image(src='/heart.svg')
-  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column(style='display: none;')
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column(style='display: none;')  
     //-.ui.active.dimmer.feed
       .ui.large.text.loader Loading
     //- Input for creating new post at top of feed
@@ -184,6 +184,8 @@ block content
             //-img.post(src="/"+val.picture)
             if (val.module == 'digital-literacy' && val.info_text != "")           
               img(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPost()',style="max-width:100%;cursor:pointer")
+            else if (val.module == 'digfoot')
+              img(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPostDigfoot()',style="max-width:100%;cursor:pointer")
             else
               img(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, style="max-width:100%;")
           if (val.module == 'digital-literacy' && val.info_text != "")
@@ -517,6 +519,34 @@ block content
         .ui.positive.right.labeled.icon.button
           | Done
           i.checkmark.icon
+            
+    //- digfoot post checklist Modal      
+    .ui.small.modal#digfoot_post_modual
+      i.close.icon  
+      .header How would this post influence digital footprints?
+      .content
+          .ui.form
+             .field
+               .ui.checkbox
+                 input(type='checkbox')
+                 label The post will have a negative impact on the poster’s digital footprint.
+             .field
+               .ui.checkbox
+                 input(type='checkbox')
+                 label The poster was sharing something that they might later regret.
+             .field
+               .ui.checkbox
+                 input(type='checkbox')
+                 label The post was not considerate of other people’s digital footprints.
+             .field
+               .ui.checkbox
+                 input(type='checkbox')
+                 label This was a responsible post that will create a positive digital footprint.
+
+      .actions
+        .ui.positive.right.labeled.icon.button
+          | Done
+          i.checkmark.icon
 
 block scripts
   script().
@@ -524,6 +554,11 @@ block scripts
         $(window).on("load", function() {openChat()});
         function openPost(){
           $('#next_steps_modual').modal('show');
+        }
+        function openPostDigfoot(){
+          console.log("test if ex");
+          $('input[type=checkbox]').prop('checked',false);
+          $('#digfoot_post_modual').modal('show');
         }
         function openChat(){
           let pathArray = window.location.pathname.split('/');

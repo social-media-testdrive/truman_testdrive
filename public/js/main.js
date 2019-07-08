@@ -33,10 +33,10 @@ $(window).on("load", function () {
       e.preventDefault();
       var chatId = $(this).closest('.container').attr('id');
       if(chatId){
-        $('#'+chatId).fadeOut(300); 
+        $('#'+chatId).fadeOut(300);
       }
       else{
-        $('.chat').fadeOut(300);  
+        $('.chat').fadeOut(300);
       }
     });
 
@@ -56,7 +56,7 @@ $(window).on("load", function () {
         var chatId = $('.chat-history').closest('.container').attr('id');
         console.log(chatId);
         if(chatId){
-          this.$chatHistory = $('#'+chatId +' .chat-history'); 
+          this.$chatHistory = $('#'+chatId +' .chat-history');
           this.$button = $('#'+chatId +' button');
           this.$textarea = $('#'+chatId +' #message-to-send');
           this.$chatHistoryList = this.$chatHistory.find('ul');
@@ -70,7 +70,7 @@ $(window).on("load", function () {
           console.log('else');
           console.log(this.$chatHistory);
         }
-     
+
       },
       bindEvents: function () {
         this.$button.on('click', this.addMessage.bind(this));
@@ -104,7 +104,7 @@ $(window).on("load", function () {
           setTimeout(function () {
             if(pathArray[1] == 'modual' && pathArray[2] == 'safe-posting' ) {
               if($('#chatbox1')){
-                // $('#chatbox1').remove();   
+                // $('#chatbox1').remove();
                 var el = $('#chatbox1').detach();
               }
               if($('#chatbox2').is(":hidden")){
@@ -113,9 +113,9 @@ $(window).on("load", function () {
               $($('#chatbox2 .chat-history')[0]).slideToggle(300, 'swing');
               $($('#chatbox2 .chat-message')[0]).slideToggle(300, 'swing');
               $('#chatbox2').slideToggle(300, 'swing');
-              }  
+              }
               this.cacheDOM();
-              this.bindEvents(); 
+              this.bindEvents();
               $('#loading').after(el);
               // $('#chatbox1').show();
 
@@ -180,26 +180,26 @@ $(window).on("load", function () {
   (function() {
 
     $('#live-chat header').on('click', function() {
-  
+
       $('.chat').slideToggle(300, 'swing');
       $('.chat-message-counter').fadeToggle(300, 'swing');
-  
+
     });
-  
+
     $('.chat-close').on('click', function(e) {
-  
+
       e.preventDefault();
       $('#live-chat').fadeOut(300);
-  
+
     });
-  
+
   }) ();
 
   //close loading dimmer on load
   $('#loading').hide();
   $('#content').attr('style', 'block');
   $('#content').fadeIn('slow');
-  //close messages from flash message 
+  //close messages from flash message
   $('.message .close')
     .on('click', function () {
       $(this)
@@ -340,7 +340,7 @@ $(window).on("load", function () {
       document.getElementById('post_info_text_modual').innerHTML = $(this).data('info_text');
       console.log("&*&*&*&*&"+$(this).data('info_text'));
     });
-  
+
   //New Class Button
   $("#new_class.ui.big.green.labeled.icon.button").click(function () {
     $('.ui.small.newclass.modal').modal('show');
@@ -708,7 +708,7 @@ $(window).on("load", function () {
   $('.ui.share.button')
     .on('click', function () {
       $('.ui.small.basic.share.modal')
-        .modal('show');      
+        .modal('show');
   });
 
   $(".dimmer.soon").dimmer({
@@ -729,7 +729,7 @@ $(window).on("load", function () {
         closable: false
       })
         .dimmer('show');
-      //repeat to ensure its closable             
+      //repeat to ensure its closable
       post.find(".ui.dimmer.flag").dimmer({
         closable: true
       })
