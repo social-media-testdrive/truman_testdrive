@@ -65,11 +65,8 @@ dotenv.config({ path: '.env' });
 const actorsController = require('./controllers/actors');
 const scriptController = require('./controllers/script');
 const classController = require('./controllers/class');
-const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
 const notificationController = require('./controllers/notification');
-const apiController = require('./controllers/api');
-const contactController = require('./controllers/contact');
 
 /**
  * API keys and Passport configuration.

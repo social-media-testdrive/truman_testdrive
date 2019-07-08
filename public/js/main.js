@@ -335,10 +335,10 @@ $(window).on("load", function () {
 
     //get add new feed post modal to work
     $(".modual.info_button").click(function () {
-      //console.log("Clicking new Post");
-      $(' .ui.small.info.modal').modal('show');
+      console.log("@@@@@@@Clicking info button!!!!");
+      $('.ui.small.popinfo.modal').modal('show');
       document.getElementById('post_info_text_modual').innerHTML = $(this).data('info_text');
-      console.log($(this).data('info_text'));
+      console.log("&*&*&*&*&"+$(this).data('info_text'));
     });
   
   //New Class Button
@@ -739,7 +739,8 @@ $(window).on("load", function () {
       let mod = pathArray[2];
 
       if(mod =="digital-literacy")
-      {
+      { 
+        console.log("CLICKING ON DIG INGO FLAG")
         $('.ui.small.info.flag.modal').modal('show');
       }
 
