@@ -310,6 +310,7 @@ block scripts
   script().
   
     function openPostDigfootSim(){
+      $('input[type=checkbox]').prop('checked',false);
       $('#digfoot_sim_modal').modal('show');
     }
     
