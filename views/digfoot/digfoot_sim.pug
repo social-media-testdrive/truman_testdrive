@@ -4,6 +4,35 @@ extends ../ui_layout
 block content
   .computer.only.tablet.only.four.wide.column 
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
+    
+    .ui.small.modal#digfoot_sim_modal
+      i.close.icon  
+      .header How would this post influence digital footprints?
+      .content
+          .ui.form
+             .field
+               .ui.checkbox
+                 input(type='checkbox')
+                 label The post will have a negative impact on the poster’s digital footprint.
+             .field
+               .ui.checkbox
+                 input(type='checkbox')
+                 label The poster was sharing something that they might later regret.
+             .field
+               .ui.checkbox
+                 input(type='checkbox')
+                 label The post was not considerate of other people’s digital footprints.
+             .field
+               .ui.checkbox
+                 input(type='checkbox')
+                 label This was a responsible post that will create a positive digital footprint.
+
+      .actions
+        .ui.positive.right.labeled.icon.button
+          | Done
+          i.checkmark.icon
+    
+    
     #newpost.ui.fluid.left.labeled.right.icon.input(data-hint=" Let’s practice creating a post that would have a positive impact on your digital footprint. You can post things related to your hobbies, your school activities, or any other interests!", data-position="top-left")
       .ui.label
         if user.profile.picture
@@ -47,7 +76,7 @@ block content
               img.ui.avatar.image(src='/profile_pictures/user71.JPG')
               span='Andrew Thomas'
       .img.post
-        img(src='/digfootga1.jpg' style='max-width:100%;')
+        img(src='/digfootga1.jpg' style='max-width:100%;' onclick='openPostDigfootSim()')
       .content
         .description the first day after my bday and guess what i HAVE to do? clean your room says my momh
       .three.ui.bottom.attached.icon.buttons
@@ -101,7 +130,7 @@ block content
               img.ui.avatar.image(src='/profile_pictures/user50.jpg')
               span='Jenny Schmidt'
       .img.post
-        img(src='/digfootga2.jpg' style='max-width:100%;')
+        img(src='/digfootga2.jpg' style='max-width:100%;' onclick='openPostDigfootSim()')
       .content
         .description Here is a picture of my cat!!
       .three.ui.bottom.attached.icon.buttons
@@ -156,7 +185,7 @@ block content
                 img.ui.avatar.image(src='/profile_pictures/user40.jpg')
                 span='Susan Turner'
         .img.post
-          img(src='/digfootga3.jpg' style='max-width:100%;')
+          img(src='/digfootga3.jpg' style='max-width:100%;' onclick='openPostDigfootSim()')
         .content
           .description omg Lindsay I love you but you look ridiculous! lol
         .three.ui.bottom.attached.icon.buttons
@@ -231,7 +260,7 @@ block content
               img.ui.avatar.image(src='/profile_pictures/user24.jpg')
               span='Jenny Chen'
       .img.post
-        img(src='/digfootga4.jpg' style='max-width:100%;')
+        img(src='/digfootga4.jpg' style='max-width:100%;' onclick='openPostDigfootSim()')
       .content
         .description I don't want summer to end!!
       .three.ui.bottom.attached.icon.buttons
@@ -279,6 +308,11 @@ block content
 
 block scripts
   script().
+  
+    function openPostDigfootSim(){
+      $('#digfoot_sim_modal').modal('show');
+    }
+    
     function startIntro(){
         
         $("#newpost, a.item.newpost").click(function () {
@@ -332,3 +366,4 @@ block scripts
       };
 
       $(window).on("load", function() {startIntro();});
+      
