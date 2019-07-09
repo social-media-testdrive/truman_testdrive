@@ -1,6 +1,7 @@
 extends ../ui_layout
 
 block content
+  -var cdn = "https://testdrive.sfo2.cdn.digitaloceanspaces.com";
   .ui.container
     .ui.stackable.column.grid
       .ui.column
@@ -22,10 +23,10 @@ block content
               .content
                 .right.floated.meta 20 minutes ago  
                 a(href='/user/realmellie22')
-                  img.ui.avatar.image(src='/profile_pictures/user80.jpg')
+                  img.ui.avatar.image(src=cdn+'/profile_pictures/user80.jpg')
                   span elena who
               .image
-                img.post(src="/spcrying.jpg")
+                img.post(src=cdn+"/post_pictures/spcrying.jpg")
               .content
                 .description="school really sucks i just wanna quit!!!"
         
@@ -34,10 +35,10 @@ block content
               .content
                 .right.floated.meta 15 minutes ago  
                 a(href='/user/realmellie22')
-                  img.ui.avatar.image(src='/profile_pictures/user80.jpg')
+                  img.ui.avatar.image(src=cdn+'/profile_pictures/user80.jpg')
                   span elena who
               .image
-                img.post(src="/spselfie.jpg")
+                img.post(src=cdn+"/post_pictures/spselfie.jpg")
               .content
                 .description="silly selfie what do u think?"
 
@@ -46,10 +47,10 @@ block content
               .content
                 .right.floated.meta 15 minutes ago  
                 a(href='/user/realmellie22')
-                  img.ui.avatar.image(src='/profile_pictures/user80.jpg')
+                  img.ui.avatar.image(src=cdn+'/profile_pictures/user80.jpg')
                   span elena who
               .image
-                img.post(src="/spnosering.png")
+                img.post(src=cdn+"/post_pictures/spnosering.png")
               .content
                 .description="got a nose ring don't tell my parents they'll flip out lol"
  
@@ -159,5 +160,3 @@ block scripts
       interval  : 200
       });    
     }, 2000);
-
-

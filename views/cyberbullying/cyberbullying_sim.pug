@@ -2,6 +2,7 @@
 extends ../ui_layout
   
 block content
+  -var cdn = "https://testdrive.sfo2.cdn.digitaloceanspaces.com";
   .computer.only.tablet.only.four.wide.column 
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
 
@@ -17,10 +18,10 @@ block content
       .content
         .right.floated.meta= "Yesterday"
         a(href='#')
-              img.ui.avatar.image(src='/profile_pictures/user55.jpg')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user55.jpg')
               span='Lana Reed'
       .img.post
-        img(src='/calculator.jpg' style='max-width:100%;')
+        img(src=cdn+'/post_pictures/calculator.jpg' style='max-width:100%;')
       .content
         .description Somebody help me with math
       .three.ui.bottom.attached.icon.buttons
@@ -39,7 +40,7 @@ block content
         .ui.comments
           .comment(commentid='5bbd01d88a48061a73337b96')
             a.avatar
-              img(src='/profile_pictures/user66.jpeg')
+              img(src=cdn+'/profile_pictures/user66.jpeg')
             .content
               a.author Emma Hanson
               .metadata
@@ -55,7 +56,7 @@ block content
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
-            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
           input.newcomment(type='text' placeholder='Write a Comment', data-hint="Let’s send a supportive message to the target. Copy and paste the following comment: <i>“Lana, a lot of people think math is hard! Don’t worry about it”</i>.", data-position="bottom-left")
           i.big.send.link.icon
     //-#######################
@@ -71,10 +72,10 @@ block content
       .content
         .right.floated.meta= "Yesterday"
         a(href='#')
-              img.ui.avatar.image(src='/profile_pictures/user54.jpg')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user54.jpg')
               span='Ariel Simon'
       .img.post
-        img(src='/class_schedule.png' style='max-width:100%;')
+        img(src=cdn+'/post_pictures/class_schedule.png' style='max-width:100%;')
       .content
         .description Look at my class schedule this semester!
       .three.ui.bottom.attached.icon.buttons
@@ -93,7 +94,7 @@ block content
         .ui.comments
           .comment(commentid='5bbd01d88a48061a73337b96')
             a.avatar
-              img(src='/profile_pictures/user36.jpg')
+              img(src=cdn+'/profile_pictures/user36.jpg')
             .content
               a.author Hayden Abbey
               .metadata
@@ -109,7 +110,7 @@ block content
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
-            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
     //-##########
@@ -126,10 +127,10 @@ block content
         .content
           .right.floated.meta= "Yesterday"
           a(href='#')
-                img.ui.avatar.image(src='/profile_pictures/user66.jpeg')
+                img.ui.avatar.image(src=cdn+'/profile_pictures/user66.jpeg')
                 span='Emma Hanson'
         .img.post
-          img(src='/loser.jpg' style='max-width:100%;')
+          img(src=cdn+'/post_pictures/loser.jpg' style='max-width:100%;')
         .content
           .description Lana is a LOSER!
         .three.ui.bottom.attached.icon.buttons
@@ -151,7 +152,7 @@ block content
         .extra.content
           .ui.fluid.left.labeled.right.icon.input
             .ui.label
-              img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+              img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
             input.newcomment(type='text' placeholder='Write a Comment')
             i.big.send.link.icon
     
@@ -169,10 +170,10 @@ block content
       .content
         .right.floated.meta= "Yesterday"
         a(href='#')
-              img.ui.avatar.image(src='/profile_pictures/user44.png')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user44.png')
               span='David Cole'
       .img.post
-        img(src='/blackbkg.jpg' style='max-width:100%;')
+        img(src=cdn+'/post_pictures/blackbkg.jpg' style='max-width:100%;')
       .content
         .description No one likes u sarah. Why do u come to school? @Sarah Stella
       .three.ui.bottom.attached.icon.buttons
@@ -194,7 +195,7 @@ block content
         .ui.comments
           .comment(commentid='5bbd01d88a48061a73337b96')
             a.avatar
-              img(src='/profile_pictures/user43.jpg')
+              img(src=cdn+'/profile_pictures/user43.jpg')
             .content
               a.author Susan Turner
               .metadata
@@ -211,7 +212,7 @@ block content
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
-            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
           input.newcomment(type='text' placeholder='Write a Comment', data-hint='Let’s tell the bully that this behavior is not okay. Copy and paste the following comment: <i>“Guys, Sarah will be very upset if she sees this post. You should delete it."</i>', data-position="bottom-left")
           i.big.send.link.icon
     //-##########
@@ -278,7 +279,7 @@ block scripts
           intro.setOptions({
             steps: [
               { 
-                intro: "<div> <img class='ui avatar image' src='/profile_pictures/user55.jpg'/><b>Lana</b> & <img class='ui avatar image' src='/profile_pictures/user66.jpg'/><b>Emma</b> </div> <div>are in the same class at school. Recently, Emma has been saying a lot of mean things to Lana.</div>"
+                intro: "<div> <img class='ui avatar image' src='https://testdrive.sfo2.cdn.digitaloceanspaces.com/profile_pictures/user55.jpg'/><b>Lana</b> & <img class='ui avatar image' src='https://testdrive.sfo2.cdn.digitaloceanspaces.com/profile_pictures/user66.jpg'/><b>Emma</b> </div> <div>are in the same class at school. Recently, Emma has been saying a lot of mean things to Lana.</div>"
               },
               { 
                 intro: "Here you will see an example of what's been going on. Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more about cyberbullying and what you can do about it"
@@ -298,5 +299,3 @@ block scripts
       };
 
       $(window).on("load", function() {startIntro();});
-
-

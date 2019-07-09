@@ -2,6 +2,7 @@
 extends ../ui_layout
   
 block content
+  -var cdn = "https://testdrive.sfo2.cdn.digitaloceanspaces.com";
   .computer.only.tablet.only.four.wide.column 
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
     
@@ -38,7 +39,7 @@ block content
         if user.profile.picture
           img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture)
         else
-          img.ui.avatar.image(src=user.gravatar(60))
+          img.ui.avatar.image(src=cdn+user.gravatar(60))
       input(type='text', placeholder='Create a post')
       i.big.photo.link.icon
   
@@ -55,10 +56,10 @@ block content
       .content
         .right.floated.meta= "Yesterday"
         a(href='#')
-              img.ui.avatar.image(src='/profile_pictures/user71.JPG')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user71.JPG')
               span='Andrew Thomas'
       .img.post
-        img(src='/digfootga1.jpg' style='max-width:100%;' onclick='openPostDigfootSim()')
+        img(src=cdn+'/digfootga1.jpg' style='max-width:100%;' onclick='openPostDigfootSim()')
       .content
         .description the first day after my bday and guess what i HAVE to do? clean your room says my momh
       .three.ui.bottom.attached.icon.buttons
@@ -77,7 +78,7 @@ block content
         .ui.comments
           .comment(commentid='5bbd01d88a48061a73337b96')
             a.avatar
-              img(src='/profile_pictures/user52.jpg')
+              img(src=cdn+'/profile_pictures/user52.jpg')
             .content
               a.author Connor McCormick
               .metadata
@@ -93,7 +94,7 @@ block content
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
-            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
     //-#######################
@@ -109,10 +110,10 @@ block content
       .content
         .right.floated.meta= "Yesterday"
         a(href='#')
-              img.ui.avatar.image(src='/profile_pictures/user50.jpg')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user50.jpg')
               span='Jenny Schmidt'
       .img.post
-        img(src='/digfootga2.jpg' style='max-width:100%;' onclick='openPostDigfootSim()')
+        img(src=cdn+'/digfootga2.jpg' style='max-width:100%;' onclick='openPostDigfootSim()')
       .content
         .description Here is a picture of my cat!!
       .three.ui.bottom.attached.icon.buttons
@@ -131,7 +132,7 @@ block content
         .ui.comments
           .comment(commentid='5bbd01d88a48061a73337b96')
             a.avatar
-              img(src='/profile_pictures/user24.jpg')
+              img(src=cdn+'/profile_pictures/user24.jpg')
             .content
               a.author Jenny Chen
               .metadata
@@ -147,7 +148,7 @@ block content
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
-            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
     //-##########
@@ -164,10 +165,10 @@ block content
         .content
           .right.floated.meta= "Yesterday"
           a(href='#')
-                img.ui.avatar.image(src='/profile_pictures/user40.jpg')
+                img.ui.avatar.image(src=cdn+'/profile_pictures/user40.jpg')
                 span='Susan Turner'
         .img.post
-          img(src='/digfootga3.jpg' style='max-width:100%;' onclick='openPostDigfootSim()')
+          img(src=cdn+'/digfootga3.jpg' style='max-width:100%;' onclick='openPostDigfootSim()')
         .content
           .description omg Lindsay I love you but you look ridiculous! lol
         .three.ui.bottom.attached.icon.buttons
@@ -186,7 +187,7 @@ block content
           .ui.comments
             .comment(commentid='5bbd01d88a48061a73337b96')
               a.avatar
-                img(src='/profile_pictures/user66.jpeg')
+                img(src=cdn+'/profile_pictures/user66.jpeg')
               .content
                 a.author Michelle Rose
                 .metadata
@@ -203,7 +204,7 @@ block content
           .ui.comments
             .comment(commentid='5bbd01d88a48061a73337b96', data-hint="If someone posts something you don’t want to have as part of your digital footprint, you can ask them to delete it.", data-position="top-right")
               a.avatar
-                img(src='/profile_pictures/user30.jpg')
+                img(src=cdn+'/profile_pictures/user30.jpg')
               .content
                 a.author Linsday Stokes
                 .metadata
@@ -221,7 +222,7 @@ block content
         .extra.content
           .ui.fluid.left.labeled.right.icon.input
             .ui.label
-              img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+              img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
             input.newcomment(type='text' placeholder='Write a Comment')
             i.big.send.link.icon
     
@@ -239,10 +240,10 @@ block content
       .content
         .right.floated.meta= "Yesterday"
         a(href='#')
-              img.ui.avatar.image(src='/profile_pictures/user24.jpg')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user24.jpg')
               span='Jenny Chen'
       .img.post
-        img(src='/digfootga4.jpg' style='max-width:100%;' onclick='openPostDigfootSim()')
+        img(src=cdn+'/digfootga4.jpg' style='max-width:100%;' onclick='openPostDigfootSim()')
       .content
         .description I don't want summer to end!!
       .three.ui.bottom.attached.icon.buttons
@@ -264,7 +265,7 @@ block content
         .ui.comments
           .comment(commentid='5bbd01d88a48061a73337b96')
             a.avatar
-              img(src='/profile_pictures/user63.jpg')
+              img(src=cdn+'/profile_pictures/user63.jpg')
             .content
               a.author Liam Knapke
               .metadata
@@ -280,7 +281,7 @@ block content
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
-            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
 

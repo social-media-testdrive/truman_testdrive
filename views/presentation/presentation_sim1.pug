@@ -2,10 +2,11 @@
 extends ../ui_layout
   
 block content
+  -var cdn = "https://testdrive.sfo2.cdn.digitaloceanspaces.com";
   .computer.only.tablet.only.four.wide.column 
     .ui.card(data-hint="Here’s Jake’s finsta, jakethesnake. Only 16 of his closest friends from school follow this account.", data-position="top-left")
       .image
-        img(src="/profile_pictures/user78.png")
+        img(src=cdn+"/profile_pictures/user78.png")
       .content
         a.header= 'Snake Jake'
         .meta="@"+'jakethesnake'
@@ -22,10 +23,10 @@ block content
         .right.floated.meta= "Yesterday"
         |
         a(href='/user/jakethesnake')
-          img.ui.avatar.image(src='/profile_pictures/user78.png')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user78.png')
           span='Snake Jake'
       .image
-        img.post(src="/selfpresga4.jpg")
+        img.post(src=cdn+"/post_pictures/selfpresga4.jpg")
       .content
         .description="does anyone else feel like a goat is their spirit animal?"
       .three.ui.bottom.attached.icon.buttons
@@ -45,7 +46,7 @@ block content
         .ui.comments
           .comment
             a.avatar
-              img(src='/profile_pictures/user44.png')
+              img(src=cdn+'/profile_pictures/user44.png')
             .content
               a.author Ebony Darkness Raven Way
               .metadata
@@ -60,7 +61,7 @@ block content
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
-            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
 
@@ -69,10 +70,10 @@ block content
         .right.floated.meta= "Yesterday"
         |
         a(href='/user/jakethesnake')
-          img.ui.avatar.image(src='/profile_pictures/user78.png')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user78.png')
           span='Snake Jake'
       .image
-        img.post(src="/selfpresga5.png")
+        img.post(src=cdn+"/post_pictures/selfpresga5.png")
       .content
         .description="my cuz let me ride his bike😎 shh don't tell my parents"
       .three.ui.bottom.attached.icon.buttons
@@ -92,7 +93,7 @@ block content
         .ui.comments
           .comment
             a.avatar
-              img(src='/profile_pictures/user44.png')
+              img(src=cdn+'/profile_pictures/user44.png')
             .content
               a.author Ebony Darkness Raven Way
               .metadata
@@ -106,7 +107,7 @@ block content
                 a.flag Flag
           .comment
             a.avatar
-              img(src='/profile_pictures/user43.png')
+              img(src=cdn+'/profile_pictures/user43.png')
             .content
               a.author My Name
               .metadata
@@ -121,7 +122,7 @@ block content
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
-            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
 
@@ -130,10 +131,10 @@ block content
         .right.floated.meta= "Yesterday"
         |
         a(href='/user/jakethesnake')
-          img.ui.avatar.image(src='/profile_pictures/user78.png')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user78.png')
           span='Snake Jake'
       .image
-        img.post(src="/selfpresga6.jpg")
+        img.post(src=cdn+"/post_pictures/selfpresga6.jpg")
       .content(data-hint="Even though Jake doesn’t name the person, the post is unkind and stirs up drama. Would Jake post the same thing on his public account? Remember to be kind and respectful online!", data-position="top-left")
         .description="ugh i'm so annoyed with you know who. he's so stupid and i don't want him to come to school"
       .three.ui.bottom.attached.icon.buttons
@@ -153,7 +154,7 @@ block content
         .ui.comments
           .comment
             a.avatar
-              img(src='/profile_pictures/user1.png')
+              img(src=cdn+'/profile_pictures/user1.png')
             .content
               a.author Fake N. Ame
               .metadata
@@ -167,7 +168,7 @@ block content
                 a.flag Flag
           .comment
             a.avatar
-              img(src='/profile_pictures/user43.png')
+              img(src=cdn+'/profile_pictures/user43.png')
             .content
               a.author My Name
               .metadata
@@ -182,7 +183,7 @@ block content
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
-            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
 
@@ -222,5 +223,3 @@ block scripts
       };
 
       $(window).on("load", function() {startIntro();});
-
-

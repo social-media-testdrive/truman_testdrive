@@ -1,7 +1,7 @@
 extends ../ui_layout
 
 block content
-
+  -var cdn = "https://testdrive.sfo2.cdn.digitaloceanspaces.com";
   .ui.text.container
     br
     .ui.raised.segment
@@ -62,7 +62,7 @@ block content
             i.window.minimize.icon
 
           a(href='#')
-            img.ui.avatar.image(src='/profile_pictures/user21.jpg',style="width: 3em;height: 3em;")
+            img.ui.avatar.image(src=cdn+'/profile_pictures/user21.jpg',style="width: 3em;height: 3em;")
           .chat-about
             .chat-with Chat with Sam Hill
             //- .chat-num-messages already 1 902 messages

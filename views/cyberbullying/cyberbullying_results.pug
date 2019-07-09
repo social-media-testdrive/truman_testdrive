@@ -1,6 +1,7 @@
 extends ../ui_layout
 
 block content
+  -var cdn = "https://testdrive.sfo2.cdn.digitaloceanspaces.com";
   .ui.container
     .ui.stackable.column.grid
       .ui.column
@@ -22,10 +23,10 @@ block content
               .content
                 .right.floated.time 1 hour ago
                 a(href='/user/ella_vaderrr')
-                  img.ui.avatar.image(src='/profile_pictures/user25.jpg')
+                  img.ui.avatar.image(src=cdn+'/profile_pictures/user25.jpg')
                   span Ella Sroni
               .image
-                img.post(src='/blackbkg.jpg')
+                img.post(src=cdn+'/post_pictures/blackbkg.jpg')
               .content
                 .description
                   | No one likes you. Why do you come to school? @
@@ -36,10 +37,10 @@ block content
               .content
                 .right.floated.time 1 hour ago
                 a(href='/user/goaliegirl')
-                  img.ui.avatar.image(src='/profile_pictures/user29.jpg')
+                  img.ui.avatar.image(src=cdn+'/profile_pictures/user29.jpg')
                   span Breana Summers
               .image
-                img.post(src='/ewww.jpg')
+                img.post(src=cdn+'/post_pictures/ewww.jpg')
               .content
                 .description Dylan smells like he didn&apos;t shower for a week
 
@@ -48,10 +49,10 @@ block content
               .content
                 .right.floated.time 1 hour ago
                 a(href='/user/memeking')
-                  img.ui.avatar.image(src='/profile_pictures/user34.jpg')
+                  img.ui.avatar.image(src=cdn+'/profile_pictures/user34.jpg')
                   span Keegan Scott
               .image
-                img.post(src='/dylansketchbook.jpeg')
+                img.post(src=cdn+'/post_pictures/dylansketchbook.jpeg')
               .content
                 .description omg lollll look at Dylan&rsquo;s sketchbook he&rsquo;s such a nerdddd
        
@@ -153,5 +154,3 @@ block scripts
       interval  : 200
       });    
     }, 2000);
-
-

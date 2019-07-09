@@ -1,6 +1,7 @@
 extends ../ui_layout
 
 block content
+  -var cdn = "https://testdrive.sfo2.cdn.digitaloceanspaces.com";
   .ui.container
     .ui.stackable.column.grid
       .ui.column
@@ -22,10 +23,10 @@ block content
               .content
                 .right.floated.time 30 minutes ago
                 a(href='/user/k.r.h345')
-                  img.ui.avatar.image(src='/profile_pictures/user15.jpg')
+                  img.ui.avatar.image(src=cdn+'/profile_pictures/user15.jpg')
                   span Keith Hernandez
               .image
-                img.post(src='/angrycat.jpg')
+                img.post(src=cdn+'/post_pictures/angrycat.jpg')
               .content
                 .description
                   | Does this cat remind anyone else of Mrs. Lee?? She's always glaring at us lol. Why does she have to suck SO MUCH
@@ -35,10 +36,10 @@ block content
               .content
                 .right.floated.time 48 minutes ago
                 a(href='/user/ryguy76')
-                  img.ui.avatar.image(src='/profile_pictures/user74.jpg')
+                  img.ui.avatar.image(src=cdn+'/profile_pictures/user74.jpg')
                   span Ryan Freyer
               .image
-                img.post(src='/facepalm.jpg ')
+                img.post(src=cdn+'/post_pictures/facepalm.jpg ')
               .content
                 .description Lol Danny didn't want me telling anyobody but he tripped over a rock and twisted his ankle. He is literally a meme. 
 
@@ -47,10 +48,10 @@ block content
               .content
                 .right.floated.time 1 hour ago
                 a(href='/user/ella_vaderrr')
-                  img.ui.avatar.image(src='/profile_pictures/user25.jpg')
+                  img.ui.avatar.image(src=cdn+'/profile_pictures/user25.jpg')
                   span Ella Sroni
               .image
-                img.post(src='/backtoschool.jpg')
+                img.post(src=cdn+'/post_pictures/backtoschool.jpg')
               .content
                 .description First day of grade 7! come over to my house at 22 Eastwood dr if you want to hang
        
@@ -64,10 +65,10 @@ block content
                 .content
                   .right.floated.time 30 minutes ago
                   a(href='/user/k.r.h345')
-                    img.ui.avatar.image(src='/profile_pictures/user15.jpg')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user15.jpg')
                     span Keith Hernandez
                 .image
-                  img.post(src='/angrycat.jpg')
+                  img.post(src=cdn+'/post_pictures/angrycat.jpg')
                 .content
                   .description
                     | Does this cat remind anyone else of Mrs. Lee?? She's always glaring at us lol. Why does she have to suck SO MUCH
@@ -129,10 +130,10 @@ block content
                 .content
                   .right.floated.time 48 minutes ago
                   a(href='/user/ryguy76')
-                    img.ui.avatar.image(src='/profile_pictures/user74.jpg')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user74.jpg')
                     span Ryan Freyer
                 .image
-                  img.post(src='/facepalm.jpg ')
+                  img.post(src=cdn+'/post_pictures/facepalm.jpg ')
                 .content
                   .description Lol Danny didn't want me telling anyobody but he tripped over a rock and twisted his ankle. He is literally a meme. 
             
@@ -193,10 +194,10 @@ block content
                 .content
                   .right.floated.time 1 hour ago
                   a(href='/user/ella_vaderrr')
-                    img.ui.avatar.image(src='/profile_pictures/user25.jpg')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user25.jpg')
                     span Ella Sroni
                 .image
-                  img.post(src='/backtoschool.jpg')
+                  img.post(src=cdn+'/post_pictures/backtoschool.jpg')
                 .content
                   .description First day of grade 7! come over to my house at 22 Eastwood dr if you want to hang
             

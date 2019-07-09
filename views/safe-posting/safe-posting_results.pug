@@ -1,6 +1,7 @@
 extends ../ui_layout
 
 block content
+  -var cdn = "https://testdrive.sfo2.cdn.digitaloceanspaces.com";
   .ui.container
     .ui.stackable.column.grid
       .ui.column
@@ -22,10 +23,10 @@ block content
               .content
                 .right.floated.meta 20 minutes ago  
                 a(href='/userjake_is_awesome15')
-                  img.ui.avatar.image(src='/profile_pictures/user70.JPG')
+                  img.ui.avatar.image(src=cdn+'/profile_pictures/user70.JPG')
                   span Zoe Goodall
               .img.post
-                img.transition.visible(src='/safepostga2.jpg', data-src='/safepostga2.jpg', style='max-width: 100%; cursor: pointer;display: inline !important;')
+                img.transition.visible(src=cdn+'/post_pictures/safepostga2.jpg', data-src='/safepostga2.jpg', style='max-width: 100%; cursor: pointer;display: inline !important;')
               .content
                 .description
                   | new phone who dis? my new number is 607-252-6771
@@ -34,10 +35,10 @@ block content
               .content
                 .right.floated.meta 30 minutes ago
                 a(href='/user/ethan-the-man')
-                  img.ui.avatar.image(src='/profile_pictures/user18.png')
+                  img.ui.avatar.image(src=cdn+'/profile_pictures/user18.png')
                   span Ethan Kravitz
               .img.post
-                img.transition.visible(src='/coolmovies.jpeg', data-src='/coolmovies.jpeg', style='max-width: 100%; cursor: pointer;display: inline !important;')
+                img.transition.visible(src=cdn+'/post_pictures/coolmovies.jpeg', data-src='/coolmovies.jpeg', style='max-width: 100%; cursor: pointer;display: inline !important;')
               .content
                 .description
                   | Gonna be at the Regal THIS FRIDAY to see the new Marvel movie!! Meet me there at 8 🎥🍿
@@ -47,10 +48,10 @@ block content
               .content
                 .right.floated.meta 1 hour ago
                 a(href='/user/jasmine_1110')
-                  img.ui.avatar.image(src='/profile_pictures/user57.jpg')
+                  img.ui.avatar.image(src=cdn+'/profile_pictures/user57.jpg')
                   span Jasmine Woolley
               .img.post
-                img.transition.visible(src='/house.jpg', data-src='/house.jpg', style='max-width: 100%;cursor: pointer;display: inline !important;')
+                img.transition.visible(src=cdn+'/post_pictures/house.jpg', data-src='/house.jpg', style='max-width: 100%;cursor: pointer;display: inline !important;')
               .content
                 .description
                   | 321 Jefferson Ave come hang out guys, I'm bored.
@@ -67,10 +68,10 @@ block content
             .content
               .right.floated.meta 1 hour ago
               a(href='/user/jasmine_1110')
-                img.ui.avatar.image(src='/profile_pictures/user57.jpg')
+                img.ui.avatar.image(src=cdn+'/profile_pictures/user57.jpg')
                 span Jasmine Woolley
             .img.post
-              img.transition.visible(src='/house.jpg', data-src='/house.jpg', style='max-width: 100%;cursor: pointer;display: inline !important;')
+              img.transition.visible(src=cdn+'/post_pictures/house.jpg', data-src='/house.jpg', style='max-width: 100%;cursor: pointer;display: inline !important;')
             .content
               .description
                 | 321 Jefferson Ave come hang out guys, I'm bored.
@@ -222,5 +223,3 @@ block scripts
       interval  : 200
       });    
     }, 2000);
-
-
