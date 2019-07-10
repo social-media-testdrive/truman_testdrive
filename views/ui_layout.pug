@@ -129,7 +129,22 @@ html
       .ui.steps .step:after {
       background-color: inherit !important;
      }
-
+     
+     /*--------SCREENSHOTS----------*/
+     @media print{
+       body * {
+         visibility: visible;
+       }
+       #printResponses,
+       #printResponses * {
+         visibility: visible;
+       }
+      .printvis {
+         visibility: visible;
+       }
+       
+      
+     }
 
       @charset "utf-8";
       /* CSS Document */
