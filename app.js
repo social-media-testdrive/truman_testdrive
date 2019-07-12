@@ -84,7 +84,7 @@ const app = express();
 
 /**
  * Connect to MongoDB.
- 
+
 mongoose.Promise = global.Promise;
 
 //mongoose.connect(process.env.MONGODB_URI || process.env.MONGOLAB_URI);
@@ -149,7 +149,7 @@ app.use(passport.session());
 app.use(flash());
 
 
-//this allows us to no check CSRF when uploading an image. Its a weird issue that 
+//this allows us to no check CSRF when uploading an image. Its a weird issue that
 //multer and lusca no not play well together
 app.use((req, res, next) => {
   if ((req.path === '/api/upload') || (req.path === '/post/new') || (req.path === '/account/profile') || (req.path === '/account/signup_info_post')|| (req.path === '/classes')) {
@@ -241,7 +241,7 @@ app.post('/account/profile', passportConfig.isAuthenticated, useravatarupload.si
 
 //app.post('/api/upload', upload.single('myFile'), apiController.postFileUpload);
 
-//this is the TOS  
+//this is the TOS
 app.get('/tos', function (req, res) {
   res.render('tos', {
     title: 'TOS'
@@ -351,6 +351,14 @@ app.get('/results/:modId', passportConfig.isAuthenticated, function (req, res) {
   console.log(req.param("modId") + '/' + req.param("modId")+'_results')
   res.render(req.param("modId") + '/' + req.param("modId")+'_results', {
     title: 'Reflection'
+  });
+});
+
+//For privacy settings page that doesnt do anything
+app.get('/settings/privacy', passportConfig.isAuthenticated, function (req, res) {
+  console.log('privacy/privacy_settings')
+  res.render('privacy/privacy_settings', {
+    title: 'Privacy Settings'
   });
 });
 

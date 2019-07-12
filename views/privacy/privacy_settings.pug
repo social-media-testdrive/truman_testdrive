@@ -1,0 +1,131 @@
+extends ../ui_layout
+
+block content
+  
+  .sixteen.wide.column
+    h2.ui.header Profile Information
+    br
+    form.ui.form
+      .grouped.fields
+        label(for='account', style="font-size:140%") Account Settings
+          .field
+            br
+            .ui.toggle.checkbox
+              input(type='checkbox' name='public')
+              label Private account
+          .field
+            .ui.toggle.checkbox
+              input(type='checkbox' name='public')
+              label Allow my account to show in search engine results
+              br
+              br
+    form.ui.form
+      .grouped.fields
+          label(for='interaction', style="font-size:140%") Interaction Settings
+          br
+          br
+          label(for='contacts', style="font-size:120%") Contacts
+          .field
+            br
+            label(style="font-size:100%") Allow friend requests from
+            .ui.selection.dropdown
+              input(type='hidden' name='friendRequests')
+              i.dropdown.icon
+              .default.text Select
+              .menu
+                .item(data-value='0') Everyone
+                .item(data-value='1') Friends of Friends
+          .field
+            label(style="font-size:100%") Who can see my friends list?
+            .ui.selection.dropdown
+              input(type='hidden' name='friendRequests')
+              i.dropdown.icon
+              .default.text Select
+              .menu
+                .item(data-value='0') Everyone
+                .item(data-value='1') Friends of Friends
+                .item(data-value='2') Friends
+                .item(data-value='3') Only Me
+          br
+          label(for='comments', style="font-size:120%") Comments
+          .field
+            br
+            label(style="font-size:100%") Allow comments from
+            .ui.selection.dropdown
+              input(type='hidden' name='friendRequests')
+              i.dropdown.icon
+              .default.text Select
+              .default.
+              .menu
+                .item(data-value='0') Everyone
+                .item(data-value='1') Friends of Friends
+                .item(data-value='2') Friends
+                .item(data-value='3') Only Me
+          br
+          .field
+            label(style="font-size:100%") Block comments from (:TODO)
+            .ui.selection.dropdown
+              input(type='hidden' name='friendRequests')
+              i.dropdown.icon
+              .default.text Select
+              .default.
+              .menu
+                .item(data-value='0') Everyone
+                .item(data-value='1') Friends of Friends
+                .item(data-value='2') Friends
+                .item(data-value='3') Only Me
+          br
+          label(for='tags', style="font-size:120%") Tags
+            .field
+              br
+              .ui.toggle.checkbox
+                input(type='checkbox' name='public')
+                label Allow people to tag me in their posts
+            .field
+              .ui.toggle.checkbox
+                input(type='checkbox' name='public')
+                label Automatically add tagged posts in my timeline
+                br
+                br
+    form.ui.form
+      .grouped.fields
+          label(for='information', style="font-size:140%") Information Sharing Settings
+          br
+          br
+          label(for='location', style="font-size:120%") Location
+            .field
+              br
+              .ui.toggle.checkbox
+                input(type='checkbox' name='locationShare')
+                label Turn on location sharing
+            .field
+              br
+              label(style="font-size:100%") Share my location with
+              .ui.selection.dropdown
+                input(type='hidden' name='shareLocationWith')
+                i.dropdown.icon
+                .default.text Select
+                .menu
+                  .item(data-value='0') Everyone
+                  .item(data-value='1') Friends of Friends
+                  .item(data-value='2') Friends
+                  .item(data-value='3') Only Me
+          br
+          label(for='advertisements', style="font-size:120%") Advertisements
+            .field
+              br
+              .ui.toggle.checkbox
+                input(type='checkbox' name='activityAds')
+                label Show me ads based on my activity
+            .field
+              .ui.toggle.checkbox
+                input(type='checkbox' name='partnersAds')
+                label Show me ads based on data from partners
+                br
+                br
+
+  block scripts
+    script().
+
+      $('.ui.dropdown')
+        .dropdown('set selected', '0');
