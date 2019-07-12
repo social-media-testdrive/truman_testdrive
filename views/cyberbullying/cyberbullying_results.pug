@@ -61,52 +61,35 @@ block content
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
           | Tell us what you did to be an upstander.
-
-
+      .ui.form
+        br
+        .inline.fields
+          label(for='iFlagged', name='iFlagged') 
+          .field
+            .ui.checkbox
+              input(type='checkbox')
+              label(for='iFlagged', style="font-size:120%;", tabindex='0') I flagged the post or comment.
       .ui.form
         .inline.fields
-          label(for='help', style="font-size:120%;") Did you flag the post or comment?
+          label(for='iLiked', name='iLiked') 
           .field
-            .ui.radio.checkbox
-              input.hidden(type='radio', value="yes", name='help', tabindex='0')
-              label Yes
-          .field
-            .ui.radio.checkbox
-              input.hidden(type='radio', value="no", name='help', tabindex='0')
-              label No
+            .ui.checkbox
+              input(type='checkbox')
+              label(for='iLiked', style="font-size:120%;", tabindex='0') I "liked" the target's post to show support.
       .ui.form
         .inline.fields
-          label(for='like', style="font-size:120%;") Did you “like” the target’s post to show support?
+          label(for='iSupported', name='iSupported') 
           .field
-            .ui.radio.checkbox
-              input.hidden(type='radio', name='like', tabindex='0')
-              label Yes
-          .field
-            .ui.radio.checkbox
-              input.hidden(type='radio', name='like', tabindex='0')
-              label No
+            .ui.checkbox
+              input(type='checkbox')
+              label(for='iSupported', style="font-size:120%;", tabindex='0') I wrote a supportive or defending comment for the target.
       .ui.form
         .inline.fields
-          label(for='write', style="font-size:120%;") Did you write a supportive or defending comment for the target?
+          label(for='wouldTell', name='wouldTell') 
           .field
-            .ui.radio.checkbox
-              input.hidden(type='radio', name='write',  tabindex='0')
-              label Yes
-          .field
-            .ui.radio.checkbox
-              input.hidden(type='radio', name='write', tabindex='0')
-              label No
-      .ui.form
-        .inline.fields
-          label(for='write', style="font-size:120%;") Would you tell a trusted adult if you saw this kind of post?
-          .field
-            .ui.radio.checkbox
-              input.hidden(type='radio', name='write',  tabindex='0')
-              label Yes
-          .field
-            .ui.radio.checkbox
-              input.hidden(type='radio', name='write', tabindex='0')
-              label No
+            .ui.checkbox
+              input(type='checkbox')
+              label(for='wouldTell', style="font-size:120%;", tabindex='0') I would tell a trusted adult if I saw this kind of post.
       .ui.form
         .field
           label(for='like', style="font-size:120%;") Why did you act this way?
