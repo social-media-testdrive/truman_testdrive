@@ -1,0 +1,139 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container
+
+    .ui.raised.segment
+      h3.ui.header
+        i.book.blue.icon
+        .content
+          | Introduction
+      hr
+      h5.ui.header
+        i.right.arrow.icon
+        .content
+          | When you go on social media, it’s important to be aware of what you share and who you share it with!
+      
+      h5.ui.header
+        i.right.arrow.icon
+        .content
+          | Sometimes your information gets collected and used by the company that runs the website, even without your knowledge! They can sell your information to advertisers and show you targeted advertisements.
+ 
+      h5.ui.header
+        i.right.arrow.icon
+        .content
+          | To protect yourself online, you need to understand <i>what</i> information is being collected about you online and how it is being used.
+      #introduction_next.button.ui.mini.green.right.labeled.icon.button
+              i.down.arrow.icon
+              |   Next
+    
+    #question.ui.segment.hidden
+      h3.ui.header
+        i.key.blue.icon
+        .content Key Ideas
+          .sub.header 
+            i.hand.pointer.blue.icon 
+            span.blue Click on each label below to learn more
+      //- .ui.segments     
+      .ui.stackable.two.column.grid
+        .ui.column
+          #privacyConcept.ui.raised.segment
+            a.ui.blue.ribbon.label
+                //- i.magic.icon 
+                span Privacy
+            span.hidden(id="privacyConcept_info",style="font-weight:600")  Protection from being observed or tracked by others, including the government, the public, or selected individuals or groups.
+
+        .ui.column
+          #settingsConcept.ui.raised.segment
+            a.ui.blue.ribbon.label
+                //- i.dollar.sign.icon 
+                span Privacy Settings
+            span.hidden(id="settingsConcept_info", style="font-weight:600") Choices a website or app might give you about what information is visible to other users and third parties.
+
+        .ui.column
+          #privacyPolicyConcept.ui.raised.segment
+            a.ui.blue.ribbon.label
+                //- i.magic.icon 
+                span Privacy Policy
+            span.hidden(id="policyConcept_info",style="font-weight:600") A legal document that an app or website must provide and that describes what user information they collect and how they use it.
+        
+        .ui.column
+          #optOut.ui.raised.segment
+            a.ui.blue.ribbon.label
+                //- i.magic.icon 
+                span Opt Out
+            span.hidden(id="optOut_info",style="font-weight:600") To choose to not participate in something.
+              ul(style="font-weight:400") You use privacy settings to <b>opt out</b> of some of the ways that the website collects and shares your data.
+              
+    .ui.message.negative.transition.hidden
+      i.close.icon
+      .header
+       | Complete all activities to proceed!
+    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+        .ui.labeled.icon.button
+            i.rocket.icon
+            |   Got it!
+    br
+    br
+    br
+block scripts
+  script().
+    var incomplete_activities = ($('#question').is(":hidden") || $('#optOut_info').is(":hidden") ||  $('#settingsConcept_info').is(":hidden") || $('#policyConcept_info').is(":hidden")|| $('#privacyConcept_info').is(":hidden"));
+    
+    $('#introduction_next').on('click', function () {      
+      $('#question').show(); 
+      $('#question').transition('jiggle');     
+      if(!($('#question').is(":hidden") || $('#optOut_info').is(":hidden") || $('#settingsConcept_info').is(":hidden") || $('#policyConcept_info').is(":hidden") || $('#privacyConcept_info').is(":hidden"))){
+        $('.ui.labeled.icon.button').addClass('green');
+      } 
+    });
+
+    $('#privacyConcept>a').on('click', function () {      
+        $('#privacyConcept_info').show(); 
+        $('#privacyConcept').transition('tada');     
+        if(!($('#question').is(":hidden") || $('#optOut_info').is(":hidden") || $('#settingsConcept_info').is(":hidden") || $('#policyConcept_info').is(":hidden")|| $('#privacyConcept_info').is(":hidden"))){
+          $('.ui.labeled.icon.button').addClass('green');
+        }
+    });
+
+    $('#settingsConcept>a').on('click', function () {      
+        $('#settingsConcept_info').show();      
+        $('#settingsConcept').transition('tada');     
+        if(!($('#question').is(":hidden") || $('#optOut_info').is(":hidden") ||  $('#settingsConcept_info').is(":hidden") || $('#policyConcept_info').is(":hidden") || $('#privacyConcept_info').is(":hidden"))){
+          $('.ui.labeled.icon.button').addClass('green');
+        }
+    });
+
+     $('#privacyPolicyConcept>a').on('click', function () {      
+        $('#policyConcept_info').show(); 
+        $('#privacyPolicyConcept').transition('tada');     
+        if(!($('#question').is(":hidden") || $('#optOut_info').is(":hidden") ||  $('#settingsConcept_info').is(":hidden") || $('#policyConcept_info').is(":hidden") || $('#privacyConcept_info').is(":hidden"))){
+          $('.ui.labeled.icon.button').addClass('green');
+        }
+    });
+    
+    $('#optOut>a').on('click', function () {      
+       $('#optOut_info').show(); 
+       $('#optOut').transition('tada');     
+       if(!($('#question').is(":hidden") || $('#optOut_info').is(":hidden") || $('#settingsConcept_info').is(":hidden") || $('#policyConcept_info').is(":hidden") || $('#privacyConcept_info').is(":hidden"))){
+         $('.ui.labeled.icon.button').addClass('green');
+       }
+   });
+
+
+    function startIntro(){
+        if(($('#question').is(":hidden") ||  $('#settingsConcept_info').is(":hidden") || $('#policyConcept_info').is(":hidden") || $('#privacyConcept_info').is(":hidden"))){          
+          $('.ui.message').addClass('visible')
+            .delay(3000)
+            .queue(function() {
+              $(this).removeClass('visible').dequeue();
+          });
+        }
+        else {
+          console.log(incomplete_activities)
+          window.location.href='/tutorial/privacy';
+        }          
+      };
+
+      //$(window).on("load", function() {startIntro();});
