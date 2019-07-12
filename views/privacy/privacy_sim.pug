@@ -12,8 +12,8 @@ block content
       form.ui.form
         .grouped.fields
           label(for='account', style="font-size:140%") Account Settings
-            .field
-              br(data-hint=" If your account is on a “Public” setting, everyone on the Internet can access your account and see what you post. Let’s try changing it to “Private” so that only people you approve would be able to see your posts.", data-position="top-left")
+            .field(data-hint=" If your account is on a “Public” setting, everyone on the Internet can access your account and see what you post. Let’s try changing it to “Private” so that only people you approve would be able to see your posts." data-hintPosition="top-middle")
+              br
               .ui.toggle.checkbox
                 input(type='checkbox' name='public')
                 label Private account
@@ -31,8 +31,8 @@ block content
             br
             br
             label(for='contacts', style="font-size:120%") Contacts
-            .field
-              br(data-hint="This is where you can change who can contact you on the social media site. Try changing the settings so that strangers cannot comment on your posts or send you friend requests." data-position="top-left")
+            .field(data-hint="This is where you can change who can contact you on the social media site. Try changing the settings so that strangers cannot comment on your posts or send you friend requests." data-hintPosition="top-middle")
+              br
               label(style="font-size:100%") Allow friend requests from
                 .div(style='width: 200px;')
                 .ui.selection.dropdown
