@@ -154,6 +154,9 @@ block content
                   br
             .ui.divider
             br
+    button.ui.big.labeled.icon.button.cybertrans
+          i.rocket.icon
+          |   Let's Continue!
 
   block scripts
     script().
@@ -177,7 +180,7 @@ block content
             console.log('hints added')
             hints.onhintclose(function(e) {
              counter++;
-             if(counter == 4) {$( ".cybertrans" ).addClass("green");}
+             if(counter == 2) {$( ".cybertrans" ).addClass("green");}
             });
           });
             
