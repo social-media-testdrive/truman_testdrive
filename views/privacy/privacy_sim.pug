@@ -31,7 +31,7 @@ block content
             br
             br
             label(for='contacts', style="font-size:120%") Contacts
-            .field(data-hint="This is where you can change who can contact you on the social media site. Try changing the settings so that strangers cannot comment on your posts or send you friend requests." data-hintPosition="top-middle")
+            .field(data-hint="This is where you can change who can contact you on the social media site. Try changing the settings to “Friends” or “Friends of Friends” so that strangers cannot comment on your posts or send you friend requests." data-hintPosition="top-middle")
               br
               label(style="font-size:100%") Allow friend requests from
                 .div(style='width: 200px;')
@@ -119,9 +119,9 @@ block content
         .grouped.fields
             label(for='information', style="font-size:140%") Information Sharing Settings
             br
-            br
+            br 
             label(for='location', style="font-size:120%") Location
-            .field
+            .field(data-hint="Use this setting to control how you share your location information. Right now, it is set so that you are putting your location on every post. You can try turning this off entirely, or restricting who can see your location information.", data-hintPosition="top-middle")
               br
               .ui.toggle.checkbox
                 input(type='checkbox' name='locationShare' checked='checked')
@@ -141,7 +141,7 @@ block content
                     .item(data-value='3') Only Me
             br
             label(for='advertisements', style="font-size:120%") Advertisements
-              .field
+              .field(data-hint="This is where you can change how the social media site shows you advertisements. Right now, the site is using your information to show you targeted ads. Let’s try turning off these settings to opt out of targeted advertisements." data-hintPosition="top-middle")
                 br
                 .ui.toggle.checkbox
                   input(type='checkbox' name='activityAds' checked='checked')
