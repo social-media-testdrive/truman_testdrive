@@ -2,9 +2,11 @@ extends ../ui_layout
 
 block content
   -var cdn = "https://testdrive.sfo2.cdn.digitaloceanspaces.com";
+  
   .ui.container
     .ui.stackable.column.grid
       .ui.column
+        .insertPrint
         .ui.raised.segment
           h3.ui.header
             i.question.purple.icon
@@ -57,7 +59,7 @@ block content
                 .description omg lollll look at Dylan&rsquo;s sketchbook he&rsquo;s such a nerdddd
        
  
-    .ui.raised.segment
+    .ui.raised.segment.responseOne
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
           | Tell us what you did to be an upstander.
@@ -94,29 +96,33 @@ block content
         .field
           label(for='like', style="font-size:120%;") Why did you act this way?
           label(style="font-size:120%;")
-          textarea.glowing-border(rows='2') 
+          textarea.glowing-border(rows='4') 
 
       
-    .ui.raised.segment
+    .ui.raised.segment.responseTwo
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
           | Why is it important for people to act against cyberbullying?
       .ui.form
         .inline.fields
           label(style="font-size:120%;")
-          textarea.glowing-border(rows='2')
+          textarea.glowing-border(rows='4')
 
-    .ui.raised.segment
+    .ui.raised.segment.responseThree
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
           | What will you do in the future to be an upstander if you see cyberbullying?
       .ui.form
         .inline.fields
           label(style="font-size:120%;")
-          textarea.glowing-border(rows='2')
+          textarea.glowing-border(rows='4')
 
 
-
+    br
+    .ui.big.green.labeled.icon.button(onclick="onPrint()")
+          i.right.arrow.icon
+          |   Print your responses
+    br
     br
     .ui.big.green.labeled.icon.button.cyberbullying_end
           i.rocket.icon
@@ -125,6 +131,22 @@ block content
       
 block scripts
   script().
+  
+    function onPrint(){
+    
+      $(".insertPrint").empty();
+      $(".insertPrint").css('display','block');  
+      $(".responseOne").clone().appendTo(".insertPrint");
+      $(".responseTwo").clone().appendTo(".insertPrint");
+      $(".responseThree").clone().appendTo(".insertPrint");
+    
+      $(".insertPrint").css('font-size','50%');
+      
+      window.print();  
+      
+      $(".insertPrint").css('display','none');     
+    }
+    
     setTimeout(function(){
       $('.ui.label').transition('bounce');        
     }, 1000);

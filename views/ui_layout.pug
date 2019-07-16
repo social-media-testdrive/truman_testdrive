@@ -131,19 +131,21 @@ html
      }
      
      /*--------SCREENSHOTS----------*/
-     @media print{
+     @media print{ 
        body * {
-         visibility: visible;
+         display: none;
        }
-       #printResponses,
-       #printResponses * {
-         visibility: visible;
+       .insertPrint,
+       .insertPrint * {
+         display: block;
        }
-      .printvis {
-         visibility: visible;
+       .ui.big.green.labeled.icon.button {
+         display: none;
+       }
+       .ui.menu {
+         display: none;
        }
        
-      
      }
 
       @charset "utf-8";

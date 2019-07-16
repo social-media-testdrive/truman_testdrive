@@ -5,6 +5,7 @@ block content
   .ui.container
     .ui.stackable.column.grid
       .ui.column
+        .insertPrint
         .ui.raised.segment
           h3.ui.header
             i.question.purple.icon
@@ -76,7 +77,7 @@ block content
               .description
                 | 321 Jefferson Ave come hang out guys, I'm bored.
 
-        .ui.fluid.card.dim()
+        .ui.fluid.card.dim().responseOne
           .content
             .ui.form
               .inline.fields
@@ -131,7 +132,7 @@ block content
                     .message.my-message
                       | can you tell me your number so i can call you real quick?                 
 
-        .ui.fluid.card.dim()#card3
+        .ui.fluid.card.dim().responseTwo#card3
           .content
             .ui.form
               .inline.fields
@@ -166,15 +167,19 @@ block content
                     input(type='checkbox')
                     label(for='unsure', style="font-size:120%;", tabindex='0')  I wasn’t sure how to respond
             hr
-    .ui.raised.segment
+    .ui.raised.segment.responseThree
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
           | What would you do in the future to protect your private information and other people’s private information on social media?
       .ui.form
         .inline.fields
           label(style="font-size:120%;")
-          textarea.glowing-border(rows='2')
-
+          textarea.glowing-border(rows='3')
+    br
+    .ui.big.green.labeled.icon.button(onclick="onPrint()")
+          i.right.arrow.icon
+          |   Print your responses
+    br
     br
     .ui.big.green.labeled.icon.button.cyberbullying_end
           i.rocket.icon
@@ -183,6 +188,18 @@ block content
       
 block scripts
   script().
+    function onPrint(){
+    
+      $(".insertPrint").empty();
+      $(".insertPrint").css('display','block');  
+      $(".responseOne").clone().appendTo(".insertPrint");
+      $(".responseTwo").clone().appendTo(".insertPrint");
+      $(".responseThree").clone().appendTo(".insertPrint");
+      
+      window.print();  
+      
+      $(".insertPrint").css('display','none');     
+    }
     setTimeout(function(){
       $('.ui.label').transition('bounce');        
     }, 1000);
