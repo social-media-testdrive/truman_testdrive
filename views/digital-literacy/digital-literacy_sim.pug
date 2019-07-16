@@ -22,12 +22,12 @@ block content
               span='Sam Hill'
       .img.post        
         img(src=cdn+'/post_pictures/infolitguided1.png' style='max-width:100%;')
-      .content(style="background:rgba(0, 0, 0, 0.05);")
+        .content(style="background:rgba(0, 0, 0, 0.05);",data-hint="Be sure to check the article's website. This one is suspicious because of the '.com.co,' a sure sign it's trying to imitate a credible site. Also note the spelling errors in the URL.", data-position="top-middle")
           .read.rounded.right.floated.info_button(id="info_guide_1",style="z-index:9;text-align:center;position:relative;bottom:10px;width:7%;height:auto")
             i.info.icon
-          a(onclick='openPost()',data-hint="Be sure to check the article's website. This one is suspicious because of the '.com.co,' a sure sign it's trying to imitate a credible site. Also note the spelling errors in the URL.", data-position="top")
+          a(onclick='openPost()')
             | WASHINGTON-POSST.COM.CO &nbsp; &nbsp;
-          .header(data-hint="This is an example of a clickbait headline. You can see that the headline uses shocking language and has a wild image to get people to click on it.", data-position="top-right")
+          .header(data-hint="This is an example of a clickbait headline. You can see that the headline uses shocking language and has a wild image to get people to click on it.", data-position="top-left")
             | The 15 SHOCKING foods that will cause a heart attack !!   
       .extra.content
           p              
@@ -158,7 +158,7 @@ block content
             i.info.icon
           a#article1(onclick='openPost()')
             | CNN-LOCAL8.COM.CO &nbsp; &nbsp;
-          a(href='#',data-hint="Now that you've seen a few telltale signs of fake news on social media, click on the article link to check it out.")
+          a(href='#',data-hint="After analyzing the headline and image, be sure to click on the article link to read the article more closely.")
           .header Missouri Teen's House Burns Down After Fidget Spinner Catches Fire   
       .extra.content
           p              
@@ -167,10 +167,10 @@ block content
         .ui.reply.button(tabindex='0')
           i.reply.icon
           |                             Reply
-        .ui.flag.button(tabindex='0')
+        .ui.flag.button(tabindex='0', data-hint=" If you decide the article is fake news, you can flag the post to report it. Don’t share the article!")
           i.flag.icon
           |                             Flag
-        .span(data-hint=" If you decide the article is fake news, you can flag the post to report it. Don’t share the article!")          
+        //-.span()          
         .ui.share.button(tabindex='0')
           i.share.icon
           |                             Share
@@ -212,7 +212,7 @@ block content
     //- Info Lit Flag Modal  
     .ui.small.info.flag.modal  
       i.close.icon  
-      .header You've flagged] this article! Do you think there are any signs of fake news? [check multiple]  
+      .header You've flagged this article! Do you think there are any signs of fake news? [check multiple]  
       .content
         form.ui.form()  
           .inline.field
