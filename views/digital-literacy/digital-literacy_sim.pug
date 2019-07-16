@@ -2,6 +2,7 @@
 extends ../ui_layout
   
 block content
+  -var cdn = "https://testdrive.sfo2.cdn.digitaloceanspaces.com";
   .computer.only.tablet.only.four.wide.column 
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
 
@@ -17,11 +18,11 @@ block content
       .content
         .right.floated.meta= "Yesterday"
         a(href='#')
-              img.ui.avatar.image(src='/profile_pictures/user21.jpg')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user21.jpg')
               span='Sam Hill'
       .img.post        
-        img(src='/infolitguided1.png' style='max-width:100%;')
-      .content(style="background:rgba(0, 0, 0, 0.05);",data-hint="Be sure to check the article's website. This one is suspicious because of the '.com.co,' a sure sign it's trying to imitate a credible site. Also note the spelling errors in the URL.", data-position="top-middle")
+        img(src=cdn+'/post_pictures/infolitguided1.png' style='max-width:100%;')
+        .content(style="background:rgba(0, 0, 0, 0.05);",data-hint="Be sure to check the article's website. This one is suspicious because of the '.com.co,' a sure sign it's trying to imitate a credible site. Also note the spelling errors in the URL.", data-position="top-middle")
           .read.rounded.right.floated.info_button(id="info_guide_1",style="z-index:9;text-align:center;position:relative;bottom:10px;width:7%;height:auto")
             i.info.icon
           a(onclick='openPost()')
@@ -50,7 +51,7 @@ block content
         .ui.comments
           .comment(commentid='5bbd01d88a48061a73337b96')
             a.avatar
-              img(src='/profile_pictures/user66.jpeg')
+              img(src=cdn+'/profile_pictures/user66.jpeg')
             .content
               a.author Emma Hanson
               .metadata
@@ -66,7 +67,7 @@ block content
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
-            img.ui.avatar.image(src='/profile_pictures/'+ user.profile.picture, name=user.profile.name)
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+ user.profile.picture, name=user.profile.name)
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
     //-#######################
@@ -82,10 +83,10 @@ block content
       .content
         .right.floated.meta= "Yesterday"
         a(href='#')
-              img.ui.avatar.image(src='/profile_pictures/user54.jpg')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user54.jpg')
               span='Ariel Simon'
       .img.post
-        img(src='/infolitguided2.png' style='max-width:100%;')
+        img(src=cdn+'/post_pictures/infolitguided2.png' style='max-width:100%;')
       .content(style="background:rgba(0, 0, 0, 0.05);")
           .read.rounded.right.floated.info_button(id="info_guide_2",style="z-index:9;text-align:center;position:relative;bottom:10px;width:7%;height:auto")
             i.info.icon
@@ -114,7 +115,7 @@ block content
         .ui.comments
           .comment(commentid='5bbd01d88a48061a73337b96')
             a.avatar
-              img(src='/profile_pictures/user24.jpg')
+              img(src=cdn+'/profile_pictures/user24.jpg')
             .content
               a.author Jenny Chen
               .metadata
@@ -130,7 +131,7 @@ block content
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
-            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
 
@@ -148,10 +149,10 @@ block content
       .content
         .right.floated.meta= "Yesterday"
         a(href='#')
-              img.ui.avatar.image(src='/profile_pictures/user33.jpg')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user33.jpg')
               span='Sean Gomez'
       .img.post
-        img(src='/infolitguided4.jpg' style='max-width:100%;')
+        img(src=cdn+'/post_pictures/infolitguided4.jpg' style='max-width:100%;')
       .content(style="background:rgba(0, 0, 0, 0.05);")
           .read.rounded.right.floated.info_button(id="info_guide_4",style="z-index:9;text-align:center;position:relative;bottom:10px;width:7%;height:auto")
             i.info.icon
@@ -182,7 +183,7 @@ block content
         .ui.comments
           .comment(commentid='5bbd01d88a48061a73337b96')
             a.avatar
-              img(src='/profile_pictures/user74.jpg')
+              img(src=cdn+'/profile_pictures/user74.jpg')
             .content
               a.author Ryan Freyer
               .metadata
@@ -198,7 +199,7 @@ block content
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
-            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
 

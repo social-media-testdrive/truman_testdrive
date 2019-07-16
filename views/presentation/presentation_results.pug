@@ -1,9 +1,11 @@
 extends ../ui_layout
 
 block content
+  -var cdn = "https://testdrive.sfo2.cdn.digitaloceanspaces.com";
   .ui.container
     .ui.stackable.column.grid
       .ui.column
+        .insertPrint
         .ui.raised.segment
           h3.ui.header
             i.question.purple.icon
@@ -22,10 +24,10 @@ block content
               .content
                 .right.floated.meta 20 minutes ago  
                 a(href='/user/realmellie22')
-                  img.ui.avatar.image(src='/profile_pictures/user80.jpg')
+                  img.ui.avatar.image(src=cdn+'/profile_pictures/user80.jpg')
                   span elena who
               .image
-                img.post(src="/spcrying.jpg")
+                img.post(src=cdn+"/post_pictures/spcrying.jpg")
               .content
                 .description="school really sucks i just wanna quit!!!"
         
@@ -34,10 +36,10 @@ block content
               .content
                 .right.floated.meta 15 minutes ago  
                 a(href='/user/realmellie22')
-                  img.ui.avatar.image(src='/profile_pictures/user80.jpg')
+                  img.ui.avatar.image(src=cdn+'/profile_pictures/user80.jpg')
                   span elena who
               .image
-                img.post(src="/spselfie.jpg")
+                img.post(src=cdn+"/post_pictures/spselfie.jpg")
               .content
                 .description="silly selfie what do u think?"
 
@@ -46,99 +48,94 @@ block content
               .content
                 .right.floated.meta 15 minutes ago  
                 a(href='/user/realmellie22')
-                  img.ui.avatar.image(src='/profile_pictures/user80.jpg')
+                  img.ui.avatar.image(src=cdn+'/profile_pictures/user80.jpg')
                   span elena who
               .image
-                img.post(src="/spnosering.png")
+                img.post(src=cdn+"/post_pictures/spnosering.png")
               .content
                 .description="got a nose ring don't tell my parents they'll flip out lol"
  
  
-    .ui.raised.segment
+    .ui.raised.segment.responseOne
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
           | How were the posts in Elena’s finsta different from the ones in her main account?
 
+      .ui.form
+        br
+        .inline.fields
+          label(for='certainPeople', name='certainPeople') 
+          .field
+            .ui.checkbox
+              input(type='checkbox')
+              label(for='certainPeople', style="font-size:120%;", tabindex='0') She posted about things that only certain people will be interested in
 
       .ui.form
         .inline.fields
-          label(for='help', style="font-size:120%;") She posted about things that only certain people will be interested in
+          label(for='casual', name='casual') 
           .field
-            .ui.radio.checkbox
-              input.hidden(type='radio', value="yes", name='help', tabindex='0')
-              label Yes
-          .field
-            .ui.radio.checkbox
-              input.hidden(type='radio', value="no", name='help', tabindex='0')
-              label No
+            .ui.checkbox
+              input(type='checkbox')
+              label(for='casual', style="font-size:120%;", tabindex='0') She posted things that are more casual or personal
+        
+
       .ui.form
         .inline.fields
-          label(for='like', style="font-size:120%;") She posted things that are more casual or personal
+          label(for='meanPost', name='meanPost') 
           .field
-            .ui.radio.checkbox
-              input.hidden(type='radio', name='like', tabindex='0')
-              label Yes
-          .field
-            .ui.radio.checkbox
-              input.hidden(type='radio', name='like', tabindex='0')
-              label No
-      .ui.form
-        .inline.fields
-          label(for='write', style="font-size:120%;") She posted mean things about other people
-          .field
-            .ui.radio.checkbox
-              input.hidden(type='radio', name='write',  tabindex='0')
-              label Yes
-          .field
-            .ui.radio.checkbox
-              input.hidden(type='radio', name='write', tabindex='0')
-              label No
+            .ui.checkbox
+              input(type='checkbox')
+              label(for='meanPost', style="font-size:120%;", tabindex='0') She posted mean things about other people
+  
 
-
-    .ui.raised.segment
+    .ui.raised.segment.responseTwo
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
           | Did you create a post on the TestDrive timeline?
       .ui.form
+        br
         .inline.fields
           .field
-            .ui.radio.checkbox
-              input.hidden(type='radio', value="yes", name='help', tabindex='0')
+            .radio.checkbox
+              input(type='radio', value="yes", name='make', tabindex='0')
               label Yes
           .field
-            .ui.radio.checkbox
-              input.hidden(type='radio', value="no", name='help', tabindex='0')
+            .radio.checkbox
+              input(type='radio', value="no", name='make', tabindex='0')
               label No
       
-    .ui.raised.segment
+    .ui.raised.segment.responseThree
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
           | How did you think about the audience when you created your post?
       .ui.form
         .inline.fields
           label(style="font-size:120%;")
-          textarea.glowing-border(rows='2')
+          textarea.glowing-border(rows='3')
 
-    .ui.raised.segment
+    .ui.raised.segment.responseFour
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
           | What are the benefits of having multiple social media accounts?
       .ui.form
         .inline.fields
           label(style="font-size:120%;")
-          textarea.glowing-border(rows='2')
+          textarea.glowing-border(rows='3')
 
-    .ui.raised.segment
+    .ui.raised.segment.responseFive
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
           | What are the drawbacks of having multiple social media accounts?
       .ui.form
         .inline.fields
           label(style="font-size:120%;")
-          textarea.glowing-border(rows='2')
-
-
-
+          textarea.glowing-border(rows='3')
+            
+    br
+    .ui.big.green.labeled.icon.button(onclick="onPrint()")
+          i.right.arrow.icon
+          |   Print your responses
+    br
     br
     .ui.big.green.labeled.icon.button.cyberbullying_end
           i.rocket.icon
@@ -147,6 +144,22 @@ block content
       
 block scripts
   script().
+  
+    function onPrint(){
+    
+      $(".insertPrint").empty();
+      $(".insertPrint").css('display','block');  
+      $(".responseOne").clone().appendTo(".insertPrint");
+      $(".responseTwo").clone().appendTo(".insertPrint");
+      $(".responseThree").clone().appendTo(".insertPrint");
+      $(".responseFour").clone().appendTo(".insertPrint");
+      $(".responseFive").clone().appendTo(".insertPrint");
+      
+      window.print();  
+      
+      $(".insertPrint").css('display','none');     
+    }
+    
     setTimeout(function(){
       $('.ui.label').transition('bounce');        
     }, 1000);
@@ -159,5 +172,3 @@ block scripts
       interval  : 200
       });    
     }, 2000);
-
-

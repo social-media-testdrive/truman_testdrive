@@ -6,6 +6,7 @@ block content
     body {
       overflow: hidden; 
     }
+  -var cdn = "https://testdrive.sfo2.cdn.digitaloceanspaces.com";
   .computer.only.tablet.only.four.wide.column 
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
 
@@ -21,10 +22,10 @@ block content
       .content
         .right.floated.meta= "Yesterday"
         a(href='#')
-              img.ui.avatar.image(src='/profile_pictures/user63.jpg')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user63.jpg')
               span='Liam Knapke'
       .img.post        
-        img(src='/safepostga2.jpg' style='max-width:100%;')
+        img(src=cdn+'/post_pictures/safepostga2.jpg' style='max-width:100%;')
       .extra.content
           p(data-hint="If you see your friends sharing private information on social media, it's a good idea to tell them to take it down.")              
           .description="new phone who dis? text me @ my new number 607-252-6771"
@@ -44,7 +45,7 @@ block content
         .ui.comments
           .comment()
             a.avatar
-              img(src='/profile_pictures/user33.jpg')
+              img(src=cdn+'/profile_pictures/user33.jpg')
             .content
               a.author Sean Gomez
               .metadata
@@ -60,7 +61,7 @@ block content
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
-            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
     //-#######################
@@ -78,10 +79,10 @@ block content
       .content(id ='post1_header')
         .right.floated.meta= "Yesterday"
         a(href='#')
-              img.ui.avatar.image(src='/profile_pictures/user33.jpg')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user33.jpg')
               span='Sean Gomez'
       .img.post        
-        img(src='/safepostga1.jpg' style='max-width:100%;')
+        img(src=cdn+'/post_pictures/safepostga1.jpg' style='max-width:100%;')
       .extra.content
           p              
           .description="my dad helped me make this lego airplane!"
@@ -101,7 +102,7 @@ block content
         .ui.comments
           .comment(commentid='5bbd01d88a48061a73337b96')
             a.avatar
-              img(src='/profile_pictures/user42.jpg')
+              img(src=cdn+'/profile_pictures/user42.jpg')
             .content
               a.author Neel Talwar
               .metadata
@@ -116,7 +117,7 @@ block content
                 a.flag.comment Flag
           .comment
             a.avatar
-              img(src='/profile_pictures/user38.jpg')
+              img(src=cdn+'/profile_pictures/user38.jpg')
             .content
               a.author Priscilla Rose
               .metadata
@@ -132,7 +133,7 @@ block content
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
-            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
     //-#######################
@@ -153,7 +154,7 @@ block content
             i.window.minimize.icon
 
           a(href='#')
-            img.ui.avatar.image(src='/profile_pictures/user21.jpg',style="width: 3em;height: 3em;")
+            img.ui.avatar.image(src=cdn+'/profile_pictures/user21.jpg',style="width: 3em;height: 3em;")
           .chat-about
             .chat-with Chat with Vincent
             

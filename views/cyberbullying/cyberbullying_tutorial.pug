@@ -2,6 +2,7 @@
 extends ../ui_layout
   
 block content
+  -var cdn = "https://testdrive.sfo2.cdn.digitaloceanspaces.com";
   .computer.only.tablet.only.four.wide.column 
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
     .ui.fluid.card.test(postID="3")
@@ -9,10 +10,10 @@ block content
             .right.floated.meta= "Yesterday"
             |
             a(href='/user/hannahleee_23')
-              img.ui.avatar.image(src='/profile_pictures/user55.jpg')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user55.jpg')
               span='Dylan Reed'
           .image
-            img.post(src="/basketballshoes.jpg")
+            img.post(src=cdn+"/basketballshoes.jpg")
           .content
             .description="Wow, look at these new awesome kicks!!! :D "
             //-.right.floated.meta
@@ -35,7 +36,7 @@ block content
             .ui.comments
               .comment
                 a.avatar
-                  img(src='/profile_pictures/user66.jpeg')
+                  img(src=cdn+'/profile_pictures/user66.jpeg')
                 .content
                   a.author Emma Hanson
                   .metadata
@@ -51,7 +52,7 @@ block content
             //-.description(style="text-align:center;background:#E8E8E8")="How is Cassie Feeling?"
             #step7.ui.fluid.left.labeled.right.icon.input()
               .ui.label            
-                img.ui.avatar.image(src='/profile_pictures/user61.jpg', name="Jane Doe")
+                img.ui.avatar.image(src=cdn+'/profile_pictures/user61.jpg', name="Jane Doe")
               input.newcomment(type='text', placeholder='Write a Message')
               i.big.send.link.icon
 
