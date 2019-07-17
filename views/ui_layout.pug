@@ -129,7 +129,24 @@ html
       .ui.steps .step:after {
       background-color: inherit !important;
      }
-
+     
+     /*--------SCREENSHOTS----------*/
+     @media print{ 
+       body * {
+         display: none;
+       }
+       .insertPrint,
+       .insertPrint * {
+         display: block;
+       }
+       .ui.big.green.labeled.icon.button {
+         display: none;
+       }
+       .ui.menu {
+         display: none;
+       }
+       
+     }
 
       @charset "utf-8";
       /* CSS Document */

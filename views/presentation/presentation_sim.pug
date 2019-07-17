@@ -2,10 +2,11 @@
 extends ../ui_layout
   
 block content
+  -var cdn = "https://testdrive.sfo2.cdn.digitaloceanspaces.com";
   .computer.only.tablet.only.four.wide.column 
     .ui.card
       .image
-        img(src="/profile_pictures/user61.jpg")
+        img(src=cdn+"/profile_pictures/user61.jpg")
       .content
         a.header= 'Jake Matthews'
         .meta="@"+'jake_is_awesome15'
@@ -22,10 +23,10 @@ block content
         .right.floated.meta= "Yesterday"
         |
         a(href='/user/jake_is_awesome15')
-          img.ui.avatar.image(src='/profile_pictures/user61.jpg')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user61.jpg')
           span='Jake Matthews'
       .image
-        img.post(src="/selfpresga1.png")
+        img.post(src=cdn+"/post_pictures/selfpresga1.png")
       .content
         .description="Great run by mike 🏈"
       .three.ui.bottom.attached.icon.buttons
@@ -45,7 +46,7 @@ block content
         .ui.comments
           .comment
             a.avatar
-              img(src='/profile_pictures/user71.JPG')
+              img(src=cdn+'/profile_pictures/user71.JPG')
             .content
               a.author Andrew Thomas
               .metadata
@@ -59,7 +60,7 @@ block content
                 a.flag Flag
           .comment
             a.avatar
-              img(src='/profile_pictures/user74.jpg')
+              img(src=cdn+'/profile_pictures/user74.jpg')
             .content
               a.author Ryan Freyer
               .metadata
@@ -74,7 +75,7 @@ block content
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
-            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
             
@@ -83,10 +84,10 @@ block content
         .right.floated.meta= "Yesterday"
         |
         a(href='/user/jake_is_awesome15')
-          img.ui.avatar.image(src='/profile_pictures/user61.jpg')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user61.jpg')
           span='Jake Matthews'
       .image
-        img.post(src="/selfpresga2.png")
+        img.post(src=cdn+"/post_pictures/selfpresga2.png")
       .content
         .description="This is my science fair project!"
       .three.ui.bottom.attached.icon.buttons
@@ -106,7 +107,7 @@ block content
         .ui.comments
           .comment
             a.avatar
-              img(src='/profile_pictures/user57.jpg')
+              img(src=cdn+'/profile_pictures/user57.jpg')
             .content
               a.author Jasmine Woolley
               .metadata
@@ -121,7 +122,7 @@ block content
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
-            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
 
@@ -130,10 +131,10 @@ block content
         .right.floated.meta= "Yesterday"
         |
         a(href='/user/jake_is_awesome15')
-          img.ui.avatar.image(src='/profile_pictures/user61.jpg')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user61.jpg')
           span='Jake Matthews'
       .image
-        img.post(src="/selfpresga3.JPG")
+        img.post(src=cdn+"/post_pictures/selfpresga3.JPG")
       .content
         .description="My mom took this pic of me!😎"
       .three.ui.bottom.attached.icon.buttons
@@ -153,7 +154,7 @@ block content
         .ui.comments
           .comment
             a.avatar
-              img(src='/profile_pictures/user63.jpg')
+              img(src=cdn+'/profile_pictures/user63.jpg')
             .content
               a.author Liam Knapke
               .metadata
@@ -168,7 +169,7 @@ block content
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
-            img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
 
@@ -215,5 +216,3 @@ block scripts
       };
 
       $(window).on("load", function() {startIntro();});
-
-
