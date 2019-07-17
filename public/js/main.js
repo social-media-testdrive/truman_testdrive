@@ -440,6 +440,23 @@ $(window).on("load", function () {
 
     });
 
+  //cyberbullying to transition 2
+  $('.cybertrans2')
+    .on('click', function (e) {
+      if ($(this).hasClass('green')) {
+        console.log(window.location.pathname)
+        let pathArray = window.location.pathname.split('/');
+        console.log(pathArray);
+        window.location.href = '/trans2/' + pathArray[2];
+         //window.location.href = '/trans2/privacy';
+      }
+      else {
+        e.preventDefault();
+        alert('Please go through each blue dot to proceed further !');
+      }
+
+    });
+
   //Cyberbullying to Transition
   $('.ui.big.green.labeled.icon.button.cybertutorial')
     .on('click', function () {

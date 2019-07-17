@@ -318,6 +318,13 @@ app.get('/trans/:modId', passportConfig.isAuthenticated, function (req, res) {
   });
 });
 
+//my addition
+app.get('/trans2/:modId', passportConfig.isAuthenticated, function (req, res) {
+  res.render(req.param("modId") + '/' + req.param("modId")+'_trans2', {
+    title: 'Recap'
+  });
+});
+
 app.get('/trans_script/:modId', passportConfig.isAuthenticated, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_trans_script', {
     title: 'Recap'
