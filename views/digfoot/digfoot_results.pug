@@ -60,7 +60,7 @@ block content
             .ui.label(style="background-color:#2185d08a;color:#000000d1;")
               h4(style="float:left")
                 | How would the following posts have a negative impact on digital footprints?
-            .ui.stackable.two.cards
+            .ui.stackable.two.cards.checkOne
       
               .ui.fluid.card.dim()#card1
                 .content
@@ -75,7 +75,7 @@ block content
                     | Does this cat remind anyone else of Mrs. Lee?? She's always glaring at us lol. Why does she have to suck SO MUCH
           
       
-              .ui.fluid.card.dim().checkOne
+              .ui.fluid.card.dim()
                 .content
                   .ui.form
                     .inline.fields
@@ -109,7 +109,7 @@ block content
                           input(type='checkbox', name='responsible')
                           label(for='responsible', style="font-size:120%", tabindex='0') This was a responsible post.
                     
-            .ui.stackable.two.cards
+            .ui.stackable.two.cards.checkTwo
             
               .ui.fluid.card.dim()#card2
                 .content
@@ -122,7 +122,7 @@ block content
                 .content
                   .description Lol Danny didn't want me telling anyobody but he tripped over a rock and twisted his ankle. He is literally a meme. 
             
-              .ui.fluid.card.dim.printvis().checkTwo
+              .ui.fluid.card.dim.printvis()
                 .content
                   .ui.form
                     .inline.fields
@@ -156,7 +156,7 @@ block content
                           input(type='checkbox', name='responsible2')
                           label(for='responsible2', style="font-size:120%", tabindex='0') This was a responsible post.
                       
-            .ui.stackable.two.cards
+            .ui.stackable.two.cards.checkThree
             
               .ui.fluid.card.dim()#card3
                 .content
@@ -169,7 +169,7 @@ block content
                 .content
                   .description First day of grade 7! come over to my house at 22 Eastwood dr if you want to hang
             
-              .ui.fluid.card.dim().checkThree
+              .ui.fluid.card.dim()
                 .content
                   .ui.form
                     .inline.fields
@@ -203,23 +203,23 @@ block content
                           input(type='checkbox', name='responsible3')
                           label(for='responsible3', style="font-size:120%", tabindex='0') This was a responsible post.
     
-    .ui.raised.segment.typedResponseOne
+    .ui.raised.segment.responseOne
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
           | What would you do in the future to be responsible for your digital footprint on social media?
       .ui.form
         .inline.fields
           label(style="font-size:120%;")
-          textarea.glowing-border(rows='2')
+          textarea.glowing-border(rows='2' id="digfoot_responseOne")
 
-    .ui.raised.segment.typedResponseTwo
+    .ui.raised.segment.responseTwo
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
           | What would you do in the future to be responsible for other people’s digital footprints on social media?
       .ui.form
         .inline.fields
           label(style="font-size:120%;")
-          textarea.glowing-border(rows='2')
+          textarea.glowing-border(rows='2' id="digfoot_responseTwo")
 
     br
     .ui.big.green.labeled.icon.button(onclick="onPrint()")
@@ -238,14 +238,22 @@ block scripts
     function onPrint(){
     
       $(".insertPrint").empty();
-      $(".insertPrint").css('display','block');  
+      $(".insertPrint").css('display','block'); 
+       
       $(".checkOne").clone().appendTo(".insertPrint");
+      $(".insertPrint").append('<div class="breakHere"</div>');
       $(".checkTwo").clone().appendTo(".insertPrint");
+      $(".insertPrint").append('<div class="breakHere"</div>');
       $(".checkThree").clone().appendTo(".insertPrint");
-      $(".typedResponseOne").clone().appendTo(".insertPrint");
-      $(".typedResponseTwo").clone().appendTo(".insertPrint");
-    
-      $(".insertPrint").css('font-size','50%');
+      $(".insertPrint").append('<div class="breakHere"</div><br>');
+      
+      $(".insertPrint").append("<h4>What would you do in the future to be responsible for your digital footprint on social media?</h4>");
+      var responseOne = document.getElementById("digfoot_responseOne").value;
+      $(".insertPrint").append(responseOne);
+      
+      $(".insertPrint").append("<h4>What would you do in the future to be responsible for other people’s digital footprints on social media?</h4>");
+      var responseTwo = document.getElementById("digfoot_responseTwo").value;
+      $(".insertPrint").append(responseTwo);
       
       window.print();  
       

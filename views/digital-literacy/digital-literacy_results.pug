@@ -125,7 +125,7 @@ block content
         h4(style="float:left")
           | Did you notice any signs of fake news in these posts?
       
-      .ui.stackable.two.cards
+      .ui.stackable.two.cards.checkOne
         
         .ui.fluid.card.dim()#card1
           .content
@@ -141,7 +141,7 @@ block content
             .description
               | Breaking News: Driving age just lowered to 12. DMV flooded with road test appointments and car companies cannot keep their newest models off the road.
     
-        .ui.fluid.card.dim().checkOne
+        .ui.fluid.card.dim()
           .content
             .ui.form
               br
@@ -166,7 +166,7 @@ block content
                     input(type='checkbox')
                     label(for='suspicious', style="font-size:120%;", tabindex='0') They were from a suspicious website.
               
-      .ui.stackable.two.cards
+      .ui.stackable.two.cards.checkTwo
         
         .ui.fluid.card.dim()#card2
           .content
@@ -182,7 +182,7 @@ block content
             .description
               | Craving a donut? Think again! Scientists found that donuts are the leading cause of cancer in young children 😳
 
-        .ui.fluid.card.dim().checkTwo
+        .ui.fluid.card.dim()
           .content
             .ui.form
               br
@@ -207,7 +207,7 @@ block content
                     input(type='checkbox')
                     label(for='suspicious', style="font-size:120%;", tabindex='0') They were from a suspicious website.
       
-      .ui.stackable.two.cards
+      .ui.stackable.two.cards.checkThree
         
         .ui.fluid.card.dim()#card3
           .content
@@ -223,7 +223,7 @@ block content
             .description
               | You'll never guess what these are!!!
               
-        .ui.fluid.card.dim().checkThree
+        .ui.fluid.card.dim()
           .content
             .ui.form
               br
@@ -249,59 +249,60 @@ block content
                     label(for='suspicious', style="font-size:120%;", tabindex='0') They were from a suspicious website.
                         
 
-    .ui.raised.segment.checkFour
+    .ui.raised.segment
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
           | Tell us what you would do next to check the credibility of the above articles.
-      .ui.form
-        br
-        .inline.fields
-          label(for='wouldRead', name='wouldRead') 
-          .field
-            .ui.checkbox
-              input(type='checkbox')
-              label(for='wouldRead', style="font-size:120%;", tabindex='0') I would read the full article.
-      .ui.form
-        .inline.fields
-          label(for='checkSource', name='checkSource') 
-          .field
-            .ui.checkbox
-              input(type='checkbox')
-              label(for='checkSource', style="font-size:120%;", tabindex='0') I would check the source.
-      .ui.form
-        .inline.fields
-          label(for='corroboration', name='corroboration') 
-          .field
-            .ui.checkbox
-              input(type='checkbox')
-              label(for='corroboration', style="font-size:120%;", tabindex='0') I would find corroboration from other credible sources.       
+      .content.checkFour
+        .ui.form
+          br
+          .inline.fields
+            label(for='wouldRead', name='wouldRead') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='wouldRead', style="font-size:120%;", tabindex='0') I would read the full article.
+        .ui.form
+          .inline.fields
+            label(for='checkSource', name='checkSource') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='checkSource', style="font-size:120%;", tabindex='0') I would check the source.
+        .ui.form
+          .inline.fields
+            label(for='corroboration', name='corroboration') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='corroboration', style="font-size:120%;", tabindex='0') I would find corroboration from other credible sources.       
       
-    .ui.raised.segment.responseOne
+    .ui.raised.segment
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
           | What are the benefits and drawbacks of getting news on social media ?
       .ui.form
         .inline.fields
           label(style="font-size:120%;")
-          textarea.glowing-border(rows='2')
+          textarea.glowing-border(rows='2' id="literacy_responseOne")
 
-    .ui.raised.segment.responseTwo
+    .ui.raised.segment
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
           | Why is it important to evaluate the information you see on social media ?
       .ui.form
         .inline.fields
           label(style="font-size:120%;")
-          textarea.glowing-border(rows='2')
+          textarea.glowing-border(rows='2' id="literacy_responseTwo")
 
-    .ui.raised.segment.responseThree
+    .ui.raised.segment
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
           | What would you do in the future on real social media sites to make sure that the information you see is credible?
       .ui.form
         .inline.fields
           label(style="font-size:120%;")
-          textarea.glowing-border(rows='2')
+          textarea.glowing-border(rows='2' id="literacy_responseThree")
 
 
     br
@@ -323,13 +324,27 @@ block scripts
         $(".insertPrint").empty();
         $(".insertPrint").css('display','block');  
         $(".checkOne").clone().appendTo(".insertPrint");
+        $(".insertPrint").append('<div class="breakHere"</div>');
         $(".checkTwo").clone().appendTo(".insertPrint");
+        $(".insertPrint").append('<div class="breakHere"</div>');
         $(".checkThree").clone().appendTo(".insertPrint");
-        $(".responseOne").clone().appendTo(".insertPrint");
-        $(".responseTwo").clone().appendTo(".insertPrint");
-        $(".responseThree").clone().appendTo(".insertPrint");
+        $(".insertPrint").append('<br>');
         
-        $(".insertPrint").css('font-size','50%');
+        $(".insertPrint").append("<h5>Tell us what you would do next to check the credibility of the above articles.</h5>");
+        $(".checkFour").clone().appendTo(".insertPrint");
+        
+        $(".insertPrint").append('<div class="breakHere"</div>');
+        $(".insertPrint").append("<br><h4>What are the benefits and drawbacks of getting news on social media ?</h4>");
+        var responseOne = document.getElementById("literacy_responseOne").value;
+        $(".insertPrint").append(responseOne);
+        
+        $(".insertPrint").append("<h4>What are the benefits and drawbacks of getting news on social media ?</h4>");
+        var responseOne = document.getElementById("literacy_responseTwo").value;
+        $(".insertPrint").append(responseTwo);
+        
+        $(".insertPrint").append("<h4>What would you do in the future on real social media sites to make sure that the information you see is credible?</h4>");
+        var responseThree = document.getElementById("literacy_responseTwo").value;
+        $(".insertPrint").append(responseThree);
         
         window.print();  
         

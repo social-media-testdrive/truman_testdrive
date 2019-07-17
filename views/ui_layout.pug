@@ -138,6 +138,7 @@ html
        .insertPrint,
        .insertPrint * {
          display: block;
+         overflow: visible;
        }
        .ui.big.green.labeled.icon.button {
          display: none;
@@ -145,7 +146,9 @@ html
        .ui.menu {
          display: none;
        }
-       
+       .breakHere{
+         page-break-before: always;
+       }  
      }
 
       @charset "utf-8";
