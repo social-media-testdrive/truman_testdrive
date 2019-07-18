@@ -490,6 +490,13 @@ $(window).on("load", function () {
       window.location.href = '/sim2/' + pathArray[2];
     });
 
+
+  //Privacy free-play to settings
+  $(document).on('click', '.ui.big.labeled.icon.button.free1.green', function () {
+      console.log(window.location.pathname)
+      window.location.href = '/free-settings/privacy';
+    });
+
   //Cyberbullying Start to Tutorial
   $('.ui.big.green.labeled.icon.button.cyberstart')
     .on('click', function () {

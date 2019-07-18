@@ -1,0 +1,162 @@
+extends ../ui_layout
+
+block content
+  
+  .computer.only.tablet.only.four.wide.column 
+  .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
+    .ui.container
+      h2.ui.header Privacy Settings
+      br
+      .ui.divider
+      br
+      form.ui.form
+        .grouped.fields
+          label(for='account', style="font-size:140%") Account Settings
+            .field
+              br
+              .ui.toggle.checkbox
+                input(type='checkbox' name='public')
+                label Private account
+            .field
+              .ui.toggle.checkbox
+                input(type='checkbox' name='public' checked='checked')
+                label Allow my account to show in search engine results
+                br
+                br
+      .ui.divider
+      br
+      form.ui.form
+        .grouped.fields
+            label(for='interaction', style="font-size:140%") Interaction Settings
+            br
+            br
+            label(for='contacts', style="font-size:120%") Contacts
+            .field
+              br
+              label(style="font-size:100%") Allow friend requests from
+                .div(style='width: 200px;')
+                .ui.selection.dropdown
+                  input(type='hidden' name='friendRequests')
+                  i.dropdown.icon
+                  .default.text Select
+                  .menu
+                    .item(data-value='0') Everyone
+                    .item(data-value='1') Friends of Friends
+            br
+            .field
+              label(style="font-size:100%") Who can see my friends list?
+                .div(style='width: 200px;')
+                .ui.selection.dropdown
+                  input(type='hidden' name='friendList')
+                  i.dropdown.icon
+                  .default.text Select
+                  .menu
+                    .item(data-value='0') Everyone
+                    .item(data-value='1') Friends of Friends
+                    .item(data-value='2') Friends
+                    .item(data-value='3') Only Me
+            br
+            label(for='comments', style="font-size:120%") Comments
+            .field
+              br
+              label(style="font-size:100%") Allow comments from
+                .div(style='width: 200px;')
+                .ui.selection.dropdown
+                  input(type='hidden' name='friendRequests')
+                  i.dropdown.icon
+                  .default.text Select
+                  .default.
+                  .menu
+                    .item(data-value='0') Everyone
+                    .item(data-value='1') Friends of Friends
+                    .item(data-value='2') Friends
+                    .item(data-value='3') Only Me
+            br
+            .field
+              label(style="font-size:100%") Block comments from
+              .div(style='width: 200px;')
+                select.ui.fluid.search.dropdown(multiple='')
+                  option Fake N. Ame
+                  option Ima Robot
+                  option Cloe Hansen
+                  option Hayden Abbey
+                  option Kiki Pualani
+                  option Elli Andreas
+                  option Lauren Wakefield
+                  option Rob Yang
+                  option Katherine Zhou
+                  option Franklin Robinson
+                  option Aidan Acosta
+                  option Shika Ramphal
+                  option Jason Perez
+                  option Sarah Stella
+                  option Keith Hernandez
+                  option Elena Anderson
+                  option Mary Beckett
+                  option Ethan Kravitz
+                  option Dylan Goldstein
+                  option David Cole
+                  option Lana Sheehan
+                  option Claire Johnson
+                  option Jenny Chen
+                  option Ella Sroni
+            br
+            label(for='tags', style="font-size:120%") Tags
+              .field
+                br
+                .ui.toggle.checkbox
+                  input(type='checkbox' name='public' checked='checked')
+                  label Allow people to tag me in their posts
+              .field
+                .ui.toggle.checkbox
+                  input(type='checkbox' name='public' checked='checked')
+                  label Automatically add tagged posts in my timeline
+                  br
+                  br
+      .ui.divider
+      br
+      form.ui.form
+        .grouped.fields
+            label(for='information', style="font-size:140%") Information Sharing Settings
+            br
+            br
+            label(for='location', style="font-size:120%") Location
+            .field
+              br
+              .ui.toggle.checkbox
+                input(type='checkbox' name='locationShare' checked='checked')
+                label Turn on location sharing
+            .field
+              br
+              label(style="font-size:100%") Share my location with
+              .div(style='width: 200px;')
+                .ui.selection.dropdown
+                  input(type='hidden' name='shareLocationWith')
+                  i.dropdown.icon
+                  .default.text Select
+                  .menu
+                    .item(data-value='0') Everyone
+                    .item(data-value='1') Friends of Friends
+                    .item(data-value='2') Friends
+                    .item(data-value='3') Only Me
+            br
+            label(for='advertisements', style="font-size:120%") Advertisements
+              .field
+                br
+                .ui.toggle.checkbox
+                  input(type='checkbox' name='activityAds' checked='checked')
+                  label Show me ads based on my activity
+              .field
+                .ui.toggle.checkbox
+                  input(type='checkbox' name='partnersAds' checked='checked')
+                  label Show me ads based on data from partners
+                  br
+                  br
+            .ui.divider
+            br
+
+  block scripts
+    script().
+
+      $('.ui.dropdown')
+        .dropdown('set selected', '0');
