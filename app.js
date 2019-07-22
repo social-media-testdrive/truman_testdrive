@@ -19,10 +19,22 @@ const passport = require('passport');
 const expressValidator = require('express-validator');
 const expressStatusMonitor = require('express-status-monitor');
 var schedule = require('node-schedule');
-
+const aws = require('aws-sdk');
 //multer is how we send files (like images) thru web forms
 const multer = require('multer');
-//Math.random().toString(36)+'00000000000000000').slice(2, 10) + Date.now()
+
+/**
+ * Load environment variables from .env file, where API keys and passwords are configured.
+ */
+dotenv.config({ path: '.env' });
+
+/*
+aws.config.update({
+  secretAccessKey: process.env.AWS_SECRET,
+  accessKeyId: process.env.AWS_ACCESS,
+  region: "us-east-2"
+});
+*/
 
 //multer options for basic files
 var m_options = multer.diskStorage({ destination : path.join(__dirname, 'uploads') ,
@@ -54,10 +66,6 @@ const upload= multer({ storage: m_options });
 const userpostupload= multer({ storage: userpost_options });
 const useravatarupload= multer({ storage: useravatar_options });
 
-/**
- * Load environment variables from .env file, where API keys and passwords are configured.
- */
-dotenv.config({ path: '.env' });
 
 /**
  * Controllers (route handlers).
@@ -152,7 +160,9 @@ app.use(flash());
 app.use((req, res, next) => {
   if ((req.path === '/api/upload') || (req.path === '/post/new') || (req.path === '/account/profile') || (req.path === '/account/signup_info_post')|| (req.path === '/classes')) {
     console.log("Not checking CSRF - out path now");
-    //console.log("@@@@@request is " + req);
+    console.log("@@@@@request is " + req);
+    console.log("@@@@@file is " + req.file);
+    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
     next();
   } else {
     //lusca.csrf()(req, res, next);
@@ -230,7 +240,7 @@ app.get('/modual/:modId', passportConfig.isAuthenticated, scriptController.getSc
 //THIS IS FOR LOAD TESTING
 app.get('/testing/:modId', scriptController.getScriptFeed);
 
-//post a new user created post
+//post a new user created post s3_upload
 //app.post('/post/new', userpostupload.single('picinput'), check, csrf, scriptController.newPost);
 app.post('/post/new', userpostupload.single('picinput'), check, scriptController.newPost);
 

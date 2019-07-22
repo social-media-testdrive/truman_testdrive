@@ -8,15 +8,18 @@ $('#loading').show();
 $(window).on("load", function () {
 
 
-  (function () {
+  $('.container.clearfix').each(
+    function () {
 
     let pathArray = window.location.pathname.split('/');
+    var chatId = this.id
+    console.log("@@@@This is my id: "+chatId);
 
 
     $('.chat-header').on('click', function (e) {
       e.preventDefault();
 
-      var chatId = $(this).closest('.container').attr('id');
+      //var chatId = $(this).closest('.container').attr('id');
       console.log(chatId);
       if(chatId){
         $($('#' + chatId + ' .chat-history')[0]).slideToggle(300, 'swing');
@@ -31,7 +34,7 @@ $(window).on("load", function () {
 
     $('.chat-close').on('click', function(e) {
       e.preventDefault();
-      var chatId = $(this).closest('.container').attr('id');
+      //var chatId = $(this).closest('.container').attr('id');
       if(chatId){
         $('#'+chatId).fadeOut(300);
       }
@@ -53,7 +56,9 @@ $(window).on("load", function () {
         this.render();
       },
       cacheDOM: function () {
-        var chatId = $('.chat-history').closest('.container').attr('id');
+        //var chatId = $('.chat-history').closest('.container').attr('id');
+        console.log("!!!!this is my: "+this.id);
+        //var chatId = $(this).id
         console.log(chatId);
         if(chatId){
           this.$chatHistory = $('#'+chatId +' .chat-history');
@@ -101,6 +106,7 @@ $(window).on("load", function () {
             this.scrollToBottom();
           }.bind(this), 1500);
 
+          /*
           setTimeout(function () {
             if(pathArray[1] == 'modual' && pathArray[2] == 'safe-posting' ) {
               if($('#chatbox1')){
@@ -119,8 +125,10 @@ $(window).on("load", function () {
               $('#loading').after(el);
               // $('#chatbox1').show();
 
+
             };
           }.bind(this), 9000);
+          */
 
         }
 
@@ -152,32 +160,16 @@ $(window).on("load", function () {
 
     };
 
+    console.log("START OF CHATS!");
     console.log(pathArray);
      if(pathArray[2] == 'safe-posting' ) {
       chat.init();
      };
 
 
-    var searchFilter = {
-      options: { valueNames: ['name'] },
-      init: function () {
-        var userList = new List('people-list', this.options);
-        var noItems = $('<li id="no-items-found">No items found</li>');
-        userList.on('updated', function (list) {
-          if (list.matchingItems.length === 0) {
-            $(list.list).append(noItems);
-          } else {
-            noItems.detach();
-          }
-        });
-      }
-    };
+  });
 
-    searchFilter.init();
-
-  })();
-
-  (function() {
+  /*(function() {
 
     $('#live-chat header').on('click', function() {
 
@@ -193,7 +185,7 @@ $(window).on("load", function () {
 
     });
 
-  }) ();
+  });*/
 
   //close loading dimmer on load
   $('#loading').hide();
@@ -212,6 +204,13 @@ $(window).on("load", function () {
   $('.ui.checkbox')
     .checkbox();
 
+  $('a.chat-minimize').click(function () {
+
+    //code goes here
+    let chat = $(this).closest('.chat');
+    chat.slideToggle(300, 'swing');
+
+  });
   //get add new reply post modal to show
   $('.reply.button').click(function () {
 

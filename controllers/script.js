@@ -1,7 +1,9 @@
 const Script = require('../models/Script.js');
 const User = require('../models/User');
 const Notification = require('../models/Notification');
+const fs = require('fs')
 const _ = require('lodash');
+const aws = require('aws-sdk');
 
 
 /**
@@ -340,6 +342,7 @@ Add a new post to the DB from the user
 */
 exports.newPost = (req, res) => {
 
+  console.log("###########NEW POST#############");
   User.findById(req.user.id, (err, user) => {
     if (err) { return next(err); }
 
@@ -388,6 +391,34 @@ exports.newPost = (req, res) => {
           if (err) {
             return next(err);
           }
+
+          //upload to S3
+          aws.config.update({
+            secretAccessKey: process.env.AWS_SECRET,
+            accessKeyId: process.env.AWS_ACCESS,
+            region: "us-east-2"
+          });
+
+          const s3 = new aws.S3();
+          // call S3 to retrieve upload file to specified bucket
+          var uploadParams = {Bucket: 'testdrive-filesystem', Key: '', ACL:'public-read', Body: ''};
+          var file = "uploads/user_post/"+req.file.filename;
+          var fileStream = fs.createReadStream(file);
+          fileStream.on('error', function(err) {
+            console.log('File Error', err);
+          });
+          uploadParams.Body = fileStream;
+          var path = require('path');
+          uploadParams.Key = path.basename(req.file.filename);
+
+          // call S3 to retrieve upload file to specified bucket
+          s3.upload (uploadParams, function (err, data) {
+            if (err) {
+              console.log("Error", err);
+            } if (data) {
+              console.log("Upload Success to s3", data.Location);
+            }
+          });
           
           res.redirect('/modual/'+req.body.module);
         });
