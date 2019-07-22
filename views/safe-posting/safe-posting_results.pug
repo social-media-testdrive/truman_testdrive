@@ -184,7 +184,19 @@ block content
             hr
             .ui.form
               .inline.fields
-                label(for='write', style="font-size:120%;") I wasn’t sure how to respond
+                label(for='write', style="font-size:120%;") I was direct
+                .field
+                  .ui.radio.checkbox
+                    input.hidden(type='radio', name='write',  tabindex='0')
+                    label Yes
+                .field
+                  .ui.radio.checkbox
+                    input.hidden(type='radio', name='write', tabindex='0')
+                    label No
+            hr
+            .ui.form
+              .inline.fields
+                label(for='write', style="font-size:120%;") I did something else
                 .field
                   .ui.radio.checkbox
                     input.hidden(type='radio', name='write',  tabindex='0')

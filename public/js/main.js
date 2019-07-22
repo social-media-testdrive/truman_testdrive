@@ -8,37 +8,12 @@ $('#loading').show();
 $(window).on("load", function () {
 
 
-  (function () {
+  $('.container.clearfix').each(
+    function () {
 
     let pathArray = window.location.pathname.split('/');
-
-
-    $('.chat-header').on('click', function (e) {
-      e.preventDefault();
-
-      var chatId = $(this).closest('.container').attr('id');
-      console.log(chatId);
-      if(chatId){
-        $($('#' + chatId + ' .chat-history')[0]).slideToggle(300, 'swing');
-        $($('#' + chatId + ' .chat-message')[0]).slideToggle(300, 'swing');
-      }
-      else{
-        $('.chat-history').slideToggle(300, 'swing');
-        $('.chat-message').slideToggle(300, 'swing');
-      }
-      // $('.chat-message-counter').fadeToggle(300, 'swing');
-    });
-
-    $('.chat-close').on('click', function(e) {
-      e.preventDefault();
-      var chatId = $(this).closest('.container').attr('id');
-      if(chatId){
-        $('#'+chatId).fadeOut(300);
-      }
-      else{
-        $('.chat').fadeOut(300);
-      }
-    });
+    var chatId = this.id
+    console.log("@@@@This is my id: "+chatId);
 
     var chat = {
       messageToSend: '',
@@ -53,7 +28,9 @@ $(window).on("load", function () {
         this.render();
       },
       cacheDOM: function () {
-        var chatId = $('.chat-history').closest('.container').attr('id');
+        //var chatId = $('.chat-history').closest('.container').attr('id');
+        console.log("!!!!this is my: "+this.id);
+        //var chatId = $(this).id
         console.log(chatId);
         if(chatId){
           this.$chatHistory = $('#'+chatId +' .chat-history');
@@ -101,6 +78,7 @@ $(window).on("load", function () {
             this.scrollToBottom();
           }.bind(this), 1500);
 
+          /*
           setTimeout(function () {
             if(pathArray[1] == 'modual' && pathArray[2] == 'safe-posting' ) {
               if($('#chatbox1')){
@@ -119,8 +97,10 @@ $(window).on("load", function () {
               $('#loading').after(el);
               // $('#chatbox1').show();
 
+
             };
           }.bind(this), 9000);
+          */
 
         }
 
@@ -152,48 +132,27 @@ $(window).on("load", function () {
 
     };
 
+    console.log("START OF CHATS!");
     console.log(pathArray);
      if(pathArray[2] == 'safe-posting' ) {
       chat.init();
      };
 
+  });
 
-    var searchFilter = {
-      options: { valueNames: ['name'] },
-      init: function () {
-        var userList = new List('people-list', this.options);
-        var noItems = $('<li id="no-items-found">No items found</li>');
-        userList.on('updated', function (list) {
-          if (list.matchingItems.length === 0) {
-            $(list.list).append(noItems);
-          } else {
-            noItems.detach();
-          }
-        });
-      }
-    };
+  //Minimize a chat box
+  $('a.chat-minimize').click(function () {
+     //code goes here
+     let chat = $(this).closest('.chat').children('.chat-history');
+     chat.slideToggle(300, 'swing');
+  });
 
-    searchFilter.init();
-
-  })();
-
-  (function() {
-
-    $('#live-chat header').on('click', function() {
-
-      $('.chat').slideToggle(300, 'swing');
-      $('.chat-message-counter').fadeToggle(300, 'swing');
-
-    });
-
-    $('.chat-close').on('click', function(e) {
-
-      e.preventDefault();
-      $('#live-chat').fadeOut(300);
-
-    });
-
-  }) ();
+  //Close a chat box
+  $('a.chat-close').click(function () {
+     //code goes here
+     let chat = $(this).closest('.chat');
+     chat.fadeOut(300, 'swing');
+  });
 
   //close loading dimmer on load
   $('#loading').hide();
@@ -335,10 +294,10 @@ $(window).on("load", function () {
 
     //get add new feed post modal to work
     $(".modual.info_button").click(function () {
-      //console.log("Clicking new Post");
-      $(' .ui.small.info.modal').modal('show');
+      console.log("@@@@@@@Clicking info button!!!!");
+      $('.ui.small.popinfo.modal').modal('show');
       document.getElementById('post_info_text_modual').innerHTML = $(this).data('info_text');
-      console.log($(this).data('info_text'));
+      console.log("&*&*&*&*&"+$(this).data('info_text'));
     });
 
   //New Class Button
@@ -740,6 +699,8 @@ $(window).on("load", function () {
 
       if(mod =="digital-literacy")
       {
+        console.log("CLICKING ON DIG INGO FLAG")
+        $('input[type=checkbox]').prop('checked',false);
         $('.ui.small.info.flag.modal').modal('show');
       }
 
