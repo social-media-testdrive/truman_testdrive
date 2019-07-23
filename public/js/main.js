@@ -490,12 +490,36 @@ $(window).on("load", function () {
       window.location.href = '/sim2/' + pathArray[2];
     });
 
-
   //Privacy free-play to settings
   $(document).on('click', '.ui.big.labeled.icon.button.free1.green', function () {
       console.log(window.location.pathname)
       window.location.href = '/free-settings/privacy';
     });
+
+  //Privacy settings to free-play2
+  $(document).on('click', '.ui.big.labeled.icon.button.settings1.green', function () {
+      console.log(window.location.pathname)
+      window.location.href = '/free-play2/privacy';
+    });
+
+  //Privacy free-play2 to settings2
+  $(document).on('click', '.ui.big.labeled.icon.button.settings2.green', function () {
+      console.log(window.location.pathname)
+      window.location.href = '/free-settings2/privacy';
+    });
+
+  //Privacy settings2 to free3
+  $(document).on('click', '.ui.big.labeled.icon.button.free3.green', function () {
+      console.log(window.location.pathname)
+      window.location.href = '/free-play3/privacy';
+    });
+
+  //Privacy free3 to results
+  $(document).on('click', '.ui.big.labeled.icon.button.privacyresults.green', function () {
+      console.log(window.location.pathname)
+      window.location.href = '/results/privacy';
+    });
+
 
   //Cyberbullying Start to Tutorial
   $('.ui.big.green.labeled.icon.button.cyberstart')

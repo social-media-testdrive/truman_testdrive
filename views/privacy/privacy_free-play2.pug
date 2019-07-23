@@ -18,7 +18,7 @@ block content
   
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column 
 
-    .ui.fluid.card.test(data-hint="Remember, this is what Lily’s profile looks like to anyone on the Internet. All of her posts can be seen on her profile page.", data-position="top-left")
+    .ui.fluid.card.test
       .content
         .right.floated.meta= "1 day ago"
         |
@@ -28,9 +28,8 @@ block content
       .image
         img.post(src=cdn+"/post_pictures/nyctrip.jpg")
       .content
-        .description(data-hint="Lily has shared location information in her posts. Her location information is also available to anyone on the Internet." data-hintPosition="middle-right")
+        .description(data-hint="This is what Lily’s profile now looks like to strangers on the Internet. You can see that all of her location information has been hidden." data-hintPosition="middle-right")
           | On a trip to nyc with my family😃
-          span.locationtag  — At New York, NY
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
           i.reply.icon
@@ -68,7 +67,7 @@ block content
           i.big.send.link.icon
             
     .ui.fluid.card.test()
-      .content
+      .content(data-hint="However, strangers can still see all of her posts." data-hintPosition="middle-middle")
         .right.floated.meta= "3 days ago"
         |
         a(href='/user/hui_lily')
@@ -79,7 +78,6 @@ block content
       .content
         .description
           | bowling with friends!!
-          span.locationtag  — At Bowl-O-Drome, Ithaca, NY
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
           i.reply.icon
@@ -142,7 +140,6 @@ block content
       .content
         .description
           | pretty flowers in my back yard
-          span.locationtag  — At Ithaca, NY
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
           i.reply.icon
@@ -191,7 +188,6 @@ block content
       .content
         .description
           | Making friendship bracelets❤️
-          span.locationtag  — At Ithaca, NY
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
           i.reply.icon
@@ -238,7 +234,6 @@ block content
       .content
         .description
           | so proud of my gingerbread house
-          span.locationtag  — At Boynton Middle School, Ithaca, NY
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
           i.reply.icon
@@ -301,7 +296,6 @@ block content
       .content
         .description
           | healthy eating
-          span.locationtag  — At Core Life Eatery, Ithaca, NY
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
           i.reply.icon
@@ -364,7 +358,6 @@ block content
       .content
         .description
           | monkey!
-          span.locationtag  — At Binghamton Zoo at Ross Park, Binghamton, NY
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
           i.reply.icon
@@ -397,7 +390,6 @@ block content
       .content
         .description
           | hey it's me 
-          span.locationtag  — At Stewart Park, Ithaca, NY
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
           i.reply.icon
@@ -452,7 +444,7 @@ block content
             
 
     
-    button.ui.big.labeled.icon.button.free1
+    button.ui.big.labeled.icon.button.settings2
         i.rocket.icon
         |   Let's Continue!
 
@@ -466,25 +458,14 @@ block scripts
     function startIntro(){
         var hints;
         var literacy_counter = 0;
-        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
-          intro.setOptions({
-            steps: [
-              { 
-                intro: "This is the social media profile page of Lily Hui, a middle school student. This is how Lily’s profile will look like to anyone on the Internet. Take some time to look through it and see what kinds of posts she has on her profile!"
-              },
-              { 
-                intro: "Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more..."
-              }
-            ]
-          });
-          intro.start().onexit(function() {
-          hints = introJs().addHints();
-          console.log('hints added')
-          hints.onhintclose(function(e) {
-           literacy_counter++;
-           if(literacy_counter == 2) {$( ".free1" ).addClass("green");}
-          });
+
+        hints = introJs().addHints();
+        console.log('hints added')
+        hints.onhintclose(function(e) {
+         literacy_counter++;
+         if(literacy_counter == 2) {$( ".settings2" ).addClass("green");}
         });
+
           
       };
 
