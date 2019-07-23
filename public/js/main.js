@@ -15,34 +15,6 @@ $(window).on("load", function () {
     var chatId = this.id
     console.log("@@@@This is my id: "+chatId);
 
-
-    $('.chat-header').on('click', function (e) {
-      e.preventDefault();
-
-      //var chatId = $(this).closest('.container').attr('id');
-      console.log(chatId);
-      if(chatId){
-        $($('#' + chatId + ' .chat-history')[0]).slideToggle(300, 'swing');
-        $($('#' + chatId + ' .chat-message')[0]).slideToggle(300, 'swing');
-      }
-      else{
-        $('.chat-history').slideToggle(300, 'swing');
-        $('.chat-message').slideToggle(300, 'swing');
-      }
-      // $('.chat-message-counter').fadeToggle(300, 'swing');
-    });
-
-    $('.chat-close').on('click', function(e) {
-      e.preventDefault();
-      //var chatId = $(this).closest('.container').attr('id');
-      if(chatId){
-        $('#'+chatId).fadeOut(300);
-      }
-      else{
-        $('.chat').fadeOut(300);
-      }
-    });
-
     var chat = {
       messageToSend: '',
       messageResponses: [
@@ -166,26 +138,21 @@ $(window).on("load", function () {
       chat.init();
      };
 
-
   });
 
-  /*(function() {
+  //Minimize a chat box
+  $('a.chat-minimize').click(function () {
+     //code goes here
+     let chat = $(this).closest('.chat').children('.chat-history');
+     chat.slideToggle(300, 'swing');
+  });
 
-    $('#live-chat header').on('click', function() {
-
-      $('.chat').slideToggle(300, 'swing');
-      $('.chat-message-counter').fadeToggle(300, 'swing');
-
-    });
-
-    $('.chat-close').on('click', function(e) {
-
-      e.preventDefault();
-      $('#live-chat').fadeOut(300);
-
-    });
-
-  });*/
+  //Close a chat box
+  $('a.chat-close').click(function () {
+     //code goes here
+     let chat = $(this).closest('.chat');
+     chat.fadeOut(300, 'swing');
+  });
 
   //close loading dimmer on load
   $('#loading').hide();
@@ -738,8 +705,10 @@ $(window).on("load", function () {
       let mod = pathArray[2];
 
       if(mod =="digital-literacy")
-      { 
+
+      {
         console.log("CLICKING ON DIG INGO FLAG")
+        $('input[type=checkbox]').prop('checked',false);
         $('.ui.small.info.flag.modal').modal('show');
       }
 

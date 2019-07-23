@@ -565,28 +565,22 @@ block scripts
           let pathArray = window.location.pathname.split('/');
           if(pathArray[2] == "safe-posting"){
           setTimeout(function(){
+              $($('#chatbox1 .chat-history')[0]).slideToggle(300, 'swing');
+              $($('#chatbox1 .chat-message')[0]).slideToggle(300, 'swing');
+              $('#chatbox1').slideToggle(300, 'swing'); 
+              $($('#chatbox1 .chat-history')[0]).slideToggle(300, 'swing');
+              $($('#chatbox1 .chat-message')[0]).slideToggle(300, 'swing');
+              
+            }, 10000);    
+                  
+          setTimeout(function(){
 
-               //$($('#chatbox1 .chat-history')[0]).slideUp(400);
-               //$($('#chatbox1 .chat-message')[0]).slideUp(400);
-              //$($('#chatbox1 .chat-history')[0]).slideToggle(300, 'swing');
-              //$($('#chatbox1 .chat-message')[0]).slideToggle(300, 'swing');
-              $('#chatbox1').slideToggle(400, 'swing'); 
-              //$($('#chatbox1 .chat-history')[0]).slideToggle(300, 'swing');
-              //$($('#chatbox1 .chat-message')[0]).slideToggle(300, 'swing');
-              //- $('#chatbox2').show();
-            }, 4000);   
-
-            setTimeout(function(){
-
-               //$($('#chatbox1 .chat-history')[0]).slideUp(400);
-               //$($('#chatbox1 .chat-message')[0]).slideUp(400);
-              //$($('#chatbox1 .chat-history')[0]).slideToggle(300, 'swing');
-              //$($('#chatbox1 .chat-message')[0]).slideToggle(300, 'swing');
-              $('#chatbox2').slideToggle(400, 'swing'); 
-              //$($('#chatbox1 .chat-history')[0]).slideToggle(300, 'swing');
-              //$($('#chatbox1 .chat-message')[0]).slideToggle(300, 'swing');
-              // $('#chatbox2').show();
-            }, 5000);   
-
+              $($('#chatbox2 .chat-history')[0]).slideToggle(300, 'swing');
+              $($('#chatbox2 .chat-message')[0]).slideToggle(300, 'swing');
+              $('#chatbox2').slideToggle(300, 'swing'); 
+              $($('#chatbox2 .chat-history')[0]).slideToggle(300, 'swing');
+              $($('#chatbox2 .chat-message')[0]).slideToggle(300, 'swing');
+              
+            }, 20000);    
           }
         }
