@@ -171,6 +171,13 @@ $(window).on("load", function () {
   $('.ui.checkbox')
     .checkbox();
 
+  $('a.chat-minimize').click(function () {
+
+    //code goes here
+    let chat = $(this).closest('.chat');
+    chat.slideToggle(300, 'swing');
+
+  });
   //get add new reply post modal to show
   $('.reply.button').click(function () {
 
@@ -698,6 +705,7 @@ $(window).on("load", function () {
       let mod = pathArray[2];
 
       if(mod =="digital-literacy")
+
       {
         console.log("CLICKING ON DIG INGO FLAG")
         $('input[type=checkbox]').prop('checked',false);

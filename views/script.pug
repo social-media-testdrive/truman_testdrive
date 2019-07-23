@@ -3,7 +3,8 @@ extends ui_layout
 block content
 
   
-  -var cdn = "https://testdrive.sfo2.cdn.digitaloceanspaces.com";
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  -var s3 = "https://testdrive-filesystem.s3.us-east-2.amazonaws.com/"
   -//var cdn = "";
   .computer.only.tablet.only.four.wide.column 
     .ui.card
@@ -62,7 +63,7 @@ block content
               span=user.profile.name || user.email || user.id
           if val.picture
             .image
-              img(src='/user_post/'+val.picture)
+              img(src=s3+val.picture)
           .content
             .description=val.body
           .two.ui.bottom.attached.icon.buttons
@@ -437,7 +438,7 @@ block content
     //- Info Lit Flag Modal  
     .ui.small.info.flag.modal  
       i.close.icon  
-      .header You've flagged] this article! Do you think there are any signs of fake news? [check multiple]  
+      .header You've flagged this article! Do you think there are any signs of fake news? [check multiple]  
       .content
         form.ui.form()  
           .inline.field
@@ -506,7 +507,7 @@ block content
 
 
     //- View Post Info Modal
-    .ui.small.info.modal
+    .ui.small.popinfo.modal
       i.close.icon  
       h3.ui.header
         i.info.circle.icon 
@@ -564,7 +565,6 @@ block scripts
           let pathArray = window.location.pathname.split('/');
           if(pathArray[2] == "safe-posting"){
           setTimeout(function(){
-
               $($('#chatbox1 .chat-history')[0]).slideToggle(300, 'swing');
               $($('#chatbox1 .chat-message')[0]).slideToggle(300, 'swing');
               $('#chatbox1').slideToggle(300, 'swing'); 

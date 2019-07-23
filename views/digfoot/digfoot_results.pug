@@ -5,6 +5,7 @@ block content
   .ui.container
     .ui.stackable.column.grid
       .ui.column
+        .insertPrint
         .ui.raised.segment
           h3.ui.header
             i.question.purple.icon
@@ -74,56 +75,40 @@ block content
                     | Does this cat remind anyone else of Mrs. Lee?? She's always glaring at us lol. Why does she have to suck SO MUCH
           
       
-              .ui.fluid.card.dim()
+              .ui.fluid.card.dim().checkOne
                 .content
                   .ui.form
                     .inline.fields
-                      label(for='help', style="font-size:120%;") The poster was oversharing.
+                      label(for='overshare', name='overshare') 
                       .field
-                        .ui.radio.checkbox
-                          input.hidden(type='radio', value="yes", name='help', tabindex='0')
-                          label Yes
-                      .field
-                        .ui.radio.checkbox
-                          input.hidden(type='radio', value="no", name='help', tabindex='0')
-                          label No
+                        .ui.checkbox
+                          input(type='checkbox')
+                          label(for='overshare', style="font-size:120%;", tabindex='0') The poster was oversharing.
                   hr
                   .ui.form
                     .inline.fields
-                      label(for='like', style="font-size:120%;") The poster was sharing something that they might later regret.
+                      label(for='regret', name='regret') 
                       .field
-                        .ui.radio.checkbox
-                          input.hidden(type='radio', name='like', tabindex='0')
-                          label Yes
-                      .field
-                        .ui.radio.checkbox
-                          input.hidden(type='radio', name='like', tabindex='0')
-                          label No
+                        .ui.checkbox
+                          input(type='checkbox', name='regret')
+                          label(for='regret', style="font-size:120%", tabindex='0') The poster was sharing something that they might later regret.
                   hr
                   .ui.form
                     .inline.fields
-                      label(for='write', style="font-size:120%;") The post was not considerate of other people’s digital footprints.
+                      label(for='inconsiderate') 
                       .field
-                        .ui.radio.checkbox
-                          input.hidden(type='radio', name='write',  tabindex='0')
-                          label Yes
-                      .field
-                        .ui.radio.checkbox
-                          input.hidden(type='radio', name='write', tabindex='0')
-                          label No
+                        .ui.checkbox
+                          input(type='checkbox', name='inconsiderate')
+                          label(for='inconsiderate', style="font-size:120%", tabindex='0') The post was not considerate of other people’s digital footprints.
                   hr
                   .ui.form
                     .inline.fields
-                      label(for='write', style="font-size:120%;") This was a responsible post.
+                      label(for='responsible') 
                       .field
-                        .ui.radio.checkbox
-                          input.hidden(type='radio', name='responsible',  tabindex='0')
-                          label Yes
-                      .field
-                        .ui.radio.checkbox
-                          input.hidden(type='radio', name='responsible', tabindex='0')
-                          label No
-                  hr
+                        .ui.checkbox
+                          input(type='checkbox', name='responsible')
+                          label(for='responsible', style="font-size:120%", tabindex='0') This was a responsible post.
+                    
             .ui.stackable.two.cards
             
               .ui.fluid.card.dim()#card2
@@ -137,57 +122,40 @@ block content
                 .content
                   .description Lol Danny didn't want me telling anyobody but he tripped over a rock and twisted his ankle. He is literally a meme. 
             
-              .ui.fluid.card.dim()
+              .ui.fluid.card.dim.printvis().checkTwo
                 .content
                   .ui.form
                     .inline.fields
-                      label(for='help', style="font-size:120%;") The poster was oversharing.
+                      label(for='overshare2', name='overshare2') 
                       .field
-                        .ui.radio.checkbox
-                          input.hidden(type='radio', value="yes", name='help1', tabindex='0')
-                          label Yes
-                      .field
-                        .ui.radio.checkbox
-                          input.hidden(type='radio', value="no", name='help1', tabindex='0')
-                          label No
+                        .ui.checkbox
+                          input(type='checkbox')
+                          label(for='overshare2', style="font-size:120%;", tabindex='0') The poster was oversharing.
                   hr
                   .ui.form
                     .inline.fields
-                      label(for='like', style="font-size:120%;") The poster was sharing something that they might later regret.
+                      label(for='regret2') 
                       .field
-                        .ui.radio.checkbox
-                          input.hidden(type='radio', name='like1', tabindex='0')
-                          label Yes
-                      .field
-                        .ui.radio.checkbox
-                          input.hidden(type='radio', name='like1', tabindex='0')
-                          label No
+                        .ui.checkbox
+                          input(type='checkbox', name='regret2')
+                          label(for='regret2', style="font-size:120%", tabindex='0') The poster was sharing something that they might later regret.
                   hr
                   .ui.form
                     .inline.fields
-                      label(for='write', style="font-size:120%;") The post was not considerate of other people’s digital footprints.
+                      label(for='inconsiderate2') 
                       .field
-                        .ui.radio.checkbox
-                          input.hidden(type='radio', name='write1',  tabindex='0')
-                          label Yes
-                      .field
-                        .ui.radio.checkbox
-                          input.hidden(type='radio', name='write1', tabindex='0')
-                          label No
+                        .ui.checkbox
+                          input(type='checkbox', name='inconsiderate2')
+                          label(for='inconsiderate2', style="font-size:120%", tabindex='0') The post was not considerate of other people’s digital footprints.
                   hr
                   .ui.form
                     .inline.fields
-                      label(for='write', style="font-size:120%;") This was a responsible post.
+                      label(for='responsible2') 
                       .field
-                        .ui.radio.checkbox
-                          input.hidden(type='radio', name='responsible1',  tabindex='0')
-                          label Yes
-                      .field
-                        .ui.radio.checkbox
-                          input.hidden(type='radio', name='responsible1', tabindex='0')
-                          label No
-                  hr
-                    
+                        .ui.checkbox
+                          input(type='checkbox', name='responsible2')
+                          label(for='responsible2', style="font-size:120%", tabindex='0') This was a responsible post.
+                      
             .ui.stackable.two.cards
             
               .ui.fluid.card.dim()#card3
@@ -201,58 +169,41 @@ block content
                 .content
                   .description First day of grade 7! come over to my house at 22 Eastwood dr if you want to hang
             
-              .ui.fluid.card.dim()
+              .ui.fluid.card.dim().checkThree
                 .content
                   .ui.form
                     .inline.fields
-                      label(for='help', style="font-size:120%;") The poster was oversharing.
+                      label(for='overshare3') 
                       .field
-                        .ui.radio.checkbox
-                          input.hidden(type='radio', value="yes", name='help2', tabindex='0')
-                          label Yes
-                      .field
-                        .ui.radio.checkbox
-                          input.hidden(type='radio', value="no", name='help2', tabindex='0')
-                          label No
+                        .ui.checkbox
+                          input(type='checkbox')
+                          label(for='overshare3', style="font-size:120%;", tabindex='0') The poster was oversharing.
                   hr
                   .ui.form
                     .inline.fields
-                      label(for='like', style="font-size:120%;") The poster was sharing something that they might later regret.
+                      label(for='regret3') 
                       .field
-                        .ui.radio.checkbox
-                          input.hidden(type='radio', name='like2', tabindex='0')
-                          label Yes
-                      .field
-                        .ui.radio.checkbox
-                          input.hidden(type='radio', name='like2', tabindex='0')
-                          label No
+                        .ui.checkbox
+                          input(type='checkbox', name='regret3')
+                          label(for='regret3', style="font-size:120%", tabindex='0') The poster was sharing something that they might later regret.
                   hr
                   .ui.form
                     .inline.fields
-                      label(for='write', style="font-size:120%;") The post was not considerate of other people’s digital footprints.
+                      label(for='inconsiderate3') 
                       .field
-                        .ui.radio.checkbox
-                          input.hidden(type='radio', name='write2',  tabindex='0')
-                          label Yes
-                      .field
-                        .ui.radio.checkbox
-                          input.hidden(type='radio', name='write2', tabindex='0')
-                          label No
+                        .ui.checkbox
+                          input(type='checkbox', name='inconsiderate3')
+                          label(for='inconsiderate3', style="font-size:120%", tabindex='0') The post was not considerate of other people’s digital footprints.
                   hr
                   .ui.form
                     .inline.fields
-                      label(for='write', style="font-size:120%;") This was a responsible post.
+                      label(for='responsible3') 
                       .field
-                        .ui.radio.checkbox
-                          input.hidden(type='radio', name='responsible2',  tabindex='0')
-                          label Yes
-                      .field
-                        .ui.radio.checkbox
-                          input.hidden(type='radio', name='responsible2', tabindex='0')
-                          label No
-                  hr
+                        .ui.checkbox
+                          input(type='checkbox', name='responsible3')
+                          label(for='responsible3', style="font-size:120%", tabindex='0') This was a responsible post.
     
-    .ui.raised.segment
+    .ui.raised.segment.typedResponseOne
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
           | What would you do in the future to be responsible for your digital footprint on social media?
@@ -261,7 +212,7 @@ block content
           label(style="font-size:120%;")
           textarea.glowing-border(rows='2')
 
-    .ui.raised.segment
+    .ui.raised.segment.typedResponseTwo
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
           | What would you do in the future to be responsible for other people’s digital footprints on social media?
@@ -270,8 +221,11 @@ block content
           label(style="font-size:120%;")
           textarea.glowing-border(rows='2')
 
-
-
+    br
+    .ui.big.green.labeled.icon.button(onclick="onPrint()")
+          i.right.arrow.icon
+          |   Print your responses
+    br
     br
     .ui.big.green.labeled.icon.button.cyberbullying_end
           i.rocket.icon
@@ -280,6 +234,24 @@ block content
       
 block scripts
   script().
+    
+    function onPrint(){
+    
+      $(".insertPrint").empty();
+      $(".insertPrint").css('display','block');  
+      $(".checkOne").clone().appendTo(".insertPrint");
+      $(".checkTwo").clone().appendTo(".insertPrint");
+      $(".checkThree").clone().appendTo(".insertPrint");
+      $(".typedResponseOne").clone().appendTo(".insertPrint");
+      $(".typedResponseTwo").clone().appendTo(".insertPrint");
+    
+      $(".insertPrint").css('font-size','50%');
+      
+      window.print();  
+      
+      $(".insertPrint").css('display','none');     
+    }
+    
     setTimeout(function(){
       $('.ui.label').transition('bounce');        
     }, 1000);
