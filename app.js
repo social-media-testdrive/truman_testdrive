@@ -18,12 +18,23 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const expressValidator = require('express-validator');
 const expressStatusMonitor = require('express-status-monitor');
-const sass = require('node-sass-middleware');
 var schedule = require('node-schedule');
-
+const aws = require('aws-sdk');
 //multer is how we send files (like images) thru web forms
 const multer = require('multer');
-//Math.random().toString(36)+'00000000000000000').slice(2, 10) + Date.now()
+
+/**
+ * Load environment variables from .env file, where API keys and passwords are configured.
+ */
+dotenv.config({ path: '.env' });
+
+/*
+aws.config.update({
+  secretAccessKey: process.env.AWS_SECRET,
+  accessKeyId: process.env.AWS_ACCESS,
+  region: "us-east-2"
+});
+*/
 
 //multer options for basic files
 var m_options = multer.diskStorage({ destination : path.join(__dirname, 'uploads') ,
@@ -55,10 +66,6 @@ const upload= multer({ storage: m_options });
 const userpostupload= multer({ storage: userpost_options });
 const useravatarupload= multer({ storage: useravatar_options });
 
-/**
- * Load environment variables from .env file, where API keys and passwords are configured.
- */
-dotenv.config({ path: '.env' });
 
 /**
  * Controllers (route handlers).
@@ -66,11 +73,8 @@ dotenv.config({ path: '.env' });
 const actorsController = require('./controllers/actors');
 const scriptController = require('./controllers/script');
 const classController = require('./controllers/class');
-const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
 const notificationController = require('./controllers/notification');
-const apiController = require('./controllers/api');
-const contactController = require('./controllers/contact');
 
 /**
  * API keys and Passport configuration.
@@ -115,13 +119,15 @@ mongoose.connection.on('error', (err) => {
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-app.use(expressStatusMonitor());
+//app.use(expressStatusMonitor());
 //We do compression on our production server using nginx as a reverse proxy
 //app.use(compression());
+/*
 app.use(sass({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public')
 }));
+*/
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -135,7 +141,7 @@ app.use(session({
     path: '/',
     httpOnly: true,
     secure: false,
-    maxAge: 7200000
+    maxAge: 1209600000
   },
   secret: process.env.SESSION_SECRET,
   store: new MongoStore({
@@ -154,7 +160,9 @@ app.use(flash());
 app.use((req, res, next) => {
   if ((req.path === '/api/upload') || (req.path === '/post/new') || (req.path === '/account/profile') || (req.path === '/account/signup_info_post')|| (req.path === '/classes')) {
     console.log("Not checking CSRF - out path now");
-    //console.log("@@@@@request is " + req);
+    console.log("@@@@@request is " + req);
+    console.log("@@@@@file is " + req.file);
+    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
     next();
   } else {
     //lusca.csrf()(req, res, next);
@@ -232,7 +240,7 @@ app.get('/modual/:modId', passportConfig.isAuthenticated, scriptController.getSc
 //THIS IS FOR LOAD TESTING
 app.get('/testing/:modId', scriptController.getScriptFeed);
 
-//post a new user created post
+//post a new user created post s3_upload
 //app.post('/post/new', userpostupload.single('picinput'), check, csrf, scriptController.newPost);
 app.post('/post/new', userpostupload.single('picinput'), check, scriptController.newPost);
 

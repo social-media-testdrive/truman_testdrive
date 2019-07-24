@@ -7,7 +7,7 @@ block content
     
     h2.ui.header
       //- i.check.square.outline.green.icon
-      .content Here are things you can do next to determine the credibility of an article.
+      .content When you see a news article on social media, always check to make sure it's credible! Here are a few important things to do:
         .sub.header 
           i.eye.icon 
           span Read and check all the boxes
@@ -18,55 +18,41 @@ block content
         | Read and select all boxes to proceed!
           
     .ui.styled.fluid.accordion
-      #point1.title.active
-        i.dropdown.icon
-        | When you see a new article on social media, you should always check to make sure it is credible. Here is what you should do.
-      .active.content.ui.list
-          .item
-            #protip1.ui.floated.compact.segment
-              .ui.fitted.large.checkbox
-                input.ui(type="checkbox" )
-            .label If the information in the article is surprising, even unbelievable, be suspicious that it might be fake news.
-
-          .item
-            #point1_button.ui.icon.green.button
-              i.down.arrow.icon
-
-      #point2.title
+      #point1.title
         i.dropdown.icon
         |     Analyze the source. Ask yourself: Does it come from a credible source?
       .content.ui.list
           .item
-            #protip2.ui.floated.compact.segment
+            #protip1.ui.floated.compact.segment
               .ui.fitted.large.checkbox
                 input.ui(type="checkbox" id="")
             .label If the website is part of a credible news, academic (ends with ".edu"), or governmental (ends with ".gov") organization, this is a good sign the article is credible.
 
           .item
-            #protip3.ui.floated.compact.segment
+            #protip2.ui.floated.compact.segment
               .ui.fitted.large.checkbox
                 input.ui(type="checkbox"  id="")
-            .label You can also look at the "About Us" page to learn more about the website and who is writing the articles. It's also important to look beyond the "About Us" page to make sure it's a reliable source.
+            .label You can also look at the “About Us” page to learn more about the website and who is writing the article. It’s important to find out information about the site owner and author by exploring the site and searching the web.
           .item
-              #point2_button.ui.icon.green.button
+              #point1_button.ui.icon.green.button
                 i.down.arrow.icon
                 
-      #point3.title
+      #point2.title
         i.dropdown.icon
         |     Look for corroboration. Ask yourself: Do other credible sources say the same thing?
       .content.ui.list
           .item
-            #protip4.ui.floated.compact.segment
+            #protip3.ui.floated.compact.segment
               .ui.fitted.large.checkbox
                 input.ui(type="checkbox")
             .label As a next step, you should look for additional credible sources or articles that confirm what the article says. This is called <b>corroboration.</b> 
           .item
-            #protip5.ui.floated.compact.segment
+            #protip4.ui.floated.compact.segment
               .ui.fitted.large.checkbox
                 input.ui(type="checkbox")
             .label To do this, search for the same topic on fact-checking websites such as Snopes.com, FactCheck.org, and major news websites.
           .item
-              #point3_button.ui.icon.green.button
+              #point2_button.ui.icon.green.button
                 i.down.arrow.icon
                   
     br
@@ -109,21 +95,6 @@ block scripts
                           ($('#protip3 .checkbox input')[0].checked)){
         $('#point3').transition('jiggle');
         $('#point3').click();
-      }
-      else {
-        $('.ui.message').addClass('visible')
-        .delay(3000)
-        .queue(function() {
-          $(this).removeClass('visible').dequeue();
-        });
-      }
-    });
-
-    $('#point3_button').on('click', function () {
-      if (($('input:checked').length) == 
-          ($('input').length)){  
-        $('.ui.big.labeled.icon.button.cybersim').addClass('green');
-        $('.ui.big.green.labeled.icon.button.cybersim').transition('jiggle');
       }
       else {
         $('.ui.message').addClass('visible')
