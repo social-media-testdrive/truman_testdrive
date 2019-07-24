@@ -1,0 +1,91 @@
+extends ../ui_layout
+
+block content
+  -var cdn = "https://testdrive.sfo2.cdn.digitaloceanspaces.com";
+  .ui.container
+    .ui.stackable.column.grid
+      .ui.column
+        .insertPrint
+        .ui.raised.segment
+          h3.ui.header
+            i.question.purple.icon
+            .content
+              | Reflect
+
+    .ui.raised.segment.responseOne
+      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
+        h4(style="float:left")
+          | Did you notice any changes in Lily’s profile after you changed the privacy settings?
+      .ui.form
+        .inline.fields
+          label(style="font-size:120%;")
+          textarea.glowing-border(rows='2' id="privacy_responseOne")
+
+    .ui.raised.segment.responseTwo
+      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
+        h4(style="float:left")
+          | Why is it important to know what information websites collect about you?
+      .ui.form
+        .inline.fields
+          label(style="font-size:120%;")
+          textarea.glowing-border(rows='2' id="privacy_responseTwo")
+
+    .ui.raised.segment.responseThree
+      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
+        h4(style="float:left")
+          | What are the 3 key things that you should look for in a Privacy Policy?
+      .ui.form
+        .inline.fields
+          label(style="font-size:120%;")
+          textarea.glowing-border(rows='2' id="privacy_responseThree")
+            
+    .ui.raised.segment.responseFour
+      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
+        h4(style="float:left")
+          | What can you do in the future to protect your privacy on social media?
+      .ui.form
+        .inline.fields
+          label(style="font-size:120%;")
+          textarea.glowing-border(rows='2' id="privacy_responseFour")
+          
+          
+
+    br
+    .ui.big.green.labeled.icon.button(onclick="onPrint()")
+          i.right.arrow.icon
+          |   Print your responses
+    br
+    br
+    .ui.big.green.labeled.icon.button.cyberbullying_end
+          i.rocket.icon
+          |   Finish Lesson
+          
+          
+block scripts
+  script().
+    
+    function onPrint(){
+    
+      $(".insertPrint").empty();
+      $(".insertPrint").css('display','block'); 
+      
+      $(".insertPrint").append("<h4>Did you notice any changes in Lily’s profile after you changed the privacy settings?</h4>");
+      var responseOne = document.getElementById("privacy_responseOne").value;
+      $(".insertPrint").append(responseOne);
+      
+      $(".insertPrint").append("<h4>Why is it important to know what information websites collect about you?</h4>");
+      var responseTwo = document.getElementById("privacy_responseTwo").value;
+      $(".insertPrint").append(responseTwo);
+      
+      $(".insertPrint").append("<h4>What are the 3 key things that you should look for in a Privacy Policy?</h4>");
+      var responseThree = document.getElementById("privacy_responseThree").value;
+      $(".insertPrint").append(responseThree);
+      
+      $(".insertPrint").append("<h4>What can you do in the future to protect your privacy on social media?</h4>");
+      var responseFour = document.getElementById("privacy_responseFour").value;
+      $(".insertPrint").append(responseFour);
+      
+      window.print();  
+      
+      $(".insertPrint").css('display','none');     
+    }

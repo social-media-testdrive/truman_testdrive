@@ -56,6 +56,9 @@ html
       {
       font-size: 1.30em;
       }
+      .locationtag {
+        color: #929292;
+      }
       .wireframe {
       margin-top: 2em;
       }
@@ -138,6 +141,7 @@ html
        .insertPrint,
        .insertPrint * {
          display: block;
+         overflow: visible;
        }
        .ui.big.green.labeled.icon.button {
          display: none;
@@ -145,7 +149,9 @@ html
        .ui.menu {
          display: none;
        }
-       
+       .breakHere{
+         page-break-before: always;
+       }  
      }
 
       @charset "utf-8";
@@ -519,7 +525,15 @@ html
         bottom: 0;
         width: 100%;
       }
-
+      
+      /*------Highlight text on hover------*/
+      
+      .highlightOnHover {
+        background-color: #FFFFA6;
+      }
+      .highlightOnHover:hover {
+        background-color: #FFFF00;
+      }
 
 
 

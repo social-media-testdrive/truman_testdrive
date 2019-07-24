@@ -1,0 +1,100 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container
+    br
+    
+    h2.ui.header
+      //- i.check.square.outline.green.icon
+      .content What are some other things I can do to protect my privacy?
+        br
+        .ui.raised.segment
+          h5.ui.header
+            i.right.arrow.icon
+            .content
+              | Before you can protect your information, you need to understand what companies are collecting about you.
+        .ui.raised.segment
+          h5.ui.header
+            i.right.arrow.icon
+            .content
+              | Social media sites have a privacy policy that explains what information they collect about you and what they do with it.
+        .sub.header 
+          i.eye.icon 
+          span Read and check all the boxes
+  
+    .ui.message.negative.transition.hidden
+      i.close.icon
+      .header
+        | Read and select all boxes to proceed!
+          
+    .ui.styled.fluid.accordion          
+      #point3.title
+        i.dropdown.icon
+        |    Remember the word ASK when you analyze a privacy policy. ASK yourself…
+      .content.ui.list
+          .item
+            #protip1.ui.floated.compact.segment
+              .ui.fitted.large.checkbox
+                input.ui(type="checkbox")
+            .label Accessed: What will be <b>accessed</b> or collected by the company?
+          .item
+            #protip2.ui.floated.compact.segment
+              .ui.fitted.large.checkbox
+                input.ui(type="checkbox")
+            .label Shared: What will be <b>shared</b> with other companies?
+          .item
+            #protip3.ui.floated.compact.segment
+              .ui.fitted.large.checkbox
+                input.ui(type="checkbox")
+            .label Known: What could be <b>known</b> about me if I use this?
+                  
+    br
+    .ui.big.labeled.icon.button.cybersim
+        i.rocket.icon
+        |   Got it!
+    br
+    br
+    br
+block scripts
+  script().
+    $('.ui.accordion').accordion();   
+
+    setTimeout(function(){
+      $('.sub.header').transition('shake'); 
+    }, 1500);
+
+    setTimeout(function(){
+      $('#point1').transition('jiggle');    
+    }, 2500);
+
+
+
+    $('#point3_button').on('click', function () {
+      if (($('input:checked').length) == 
+          ($('input').length)){  
+        $('.ui.big.labeled.icon.button.cybersim').addClass('green');
+        $('.ui.big.green.labeled.icon.button.cybersim').transition('jiggle');
+      }
+      else {
+        $('.ui.message').addClass('visible')
+        .delay(3000)
+        .queue(function() {
+          $(this).removeClass('visible').dequeue();
+        });
+      }
+    });   
+
+    $("input").change(function(){
+      if (($('input:checked').length) == 
+            ($('input').length)){
+        $('.ui.big.labeled.icon.button.cybersim').addClass('green');
+        $('.ui.big.labeled.icon.button.cybersim').transition('jiggle');
+      }
+      else{
+        $('.ui.big.labeled.icon.button.cybersim').removeClass('green');
+      }
+    });
+   
+    
+    

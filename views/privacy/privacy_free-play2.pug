@@ -1,0 +1,472 @@
+
+extends ../ui_layout
+  
+block content
+  -var cdn = "https://testdrive.sfo2.cdn.digitaloceanspaces.com";
+  .computer.only.tablet.only.four.wide.column 
+    .ui.card
+      .image
+        img(src=cdn+"/post_pictures/lilyprofpic.png")
+      .content
+        a.header= 'Lily Hui'
+        .meta="@"+'hui_lily'
+        .description="😍🤩😝😁 boynton'20" 
+        .description 
+          i.marker.icon
+          span="Ithaca, NY"
+
+  
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column 
+
+    .ui.fluid.card.test
+      .content
+        .right.floated.meta= "1 day ago"
+        |
+        a(href='/user/hui_lily')
+          img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
+          span='Lily Hui'
+      .image
+        img.post(src=cdn+"/post_pictures/nyctrip.jpg")
+      .content
+        .description(data-hint="This is what Lily’s profile now looks like to strangers on the Internet. You can see that all of her location information has been hidden." data-hintPosition="middle-right")
+          | On a trip to nyc with my family😃
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+      
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user71.JPG')
+            .content
+              a.author Melissa Williams
+              .metadata
+                span.date 2 hours ago
+                i.heart.icon
+                |  1 Like
+              .text()
+                | wow so jealous!
+              .actions
+                a.like Like
+                a.flag Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+            
+    .ui.fluid.card.test()
+      .content(data-hint="However, strangers can still see all of her posts." data-hintPosition="middle-middle")
+        .right.floated.meta= "3 days ago"
+        |
+        a(href='/user/hui_lily')
+          img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
+          span='Lily Hui'
+      .image
+        img.post(src=cdn+"/post_pictures/bowlingalley.jpg")
+      .content
+        .description
+          | bowling with friends!!
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=4
+      
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user47.jpeg')
+            .content
+              a.author Ariel Simon
+              .metadata
+                span.date 1 Day ago
+                i.heart.icon
+                |  2 Likes
+              .text()
+                | looks like fun
+              .actions
+                a.like Like
+                a.flag Flag
+          .comment
+            a.avatar
+              img(src=cdn+'/post_pictures/lilyprofpic.png')
+            .content
+              a.author Lily Hui
+              .metadata
+                span.date 1 Day ago
+                i.heart.icon
+                |  1 Like
+              .text()
+                | let's go together next time!!
+              .actions
+                a.like Like
+                a.flag Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+
+    .ui.fluid.card.test()
+      .content
+        .right.floated.meta= "4 days ago"
+        |
+        a(href='/user/hui_lily')
+          img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
+          span='Lily Hui'
+      .image
+        img.post(src=cdn+"/post_pictures/prettyflowers.png")
+      .content
+        .description
+          | pretty flowers in my back yard
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+      
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user47.jpeg')
+            .content
+              a.author Ariel Simon
+              .metadata
+                span.date 2 Days ago
+                i.heart.icon
+                |  1 Like
+              .text()
+                | prettyyyyyy
+              .actions
+                a.like Like
+                a.flag Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+            
+    .ui.fluid.card.test()
+      .content
+        .right.floated.meta= "A week ago"
+        |
+        a(href='/user/hui_lily')
+          img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
+          span='Lily Hui'
+      .image
+        img.post(src=cdn+"/post_pictures/friendshipbracelet.png")
+      .content
+        .description
+          | Making friendship bracelets❤️
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+      .ui.comments
+        .comment
+          a.avatar
+            img(src=cdn+'/profile_pictures/user41.jpg')
+          .content
+            a.author Emma Garcia
+            .metadata
+              span.date 5 Days ago
+              i.heart.icon
+              |  1 Like
+            .text()
+              | i remember this @_@
+            .actions
+              a.like Like
+              a.flag Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+            
+    .ui.fluid.card.test()
+      .content
+        .right.floated.meta= "A week ago"
+        |
+        a(href='/user/hui_lily')
+          img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
+          span='Lily Hui'
+      .image
+        img.post(src=cdn+"/post_pictures/gingerbread.jpg")
+      .content
+        .description
+          | so proud of my gingerbread house
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=3
+      
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user40.jpg')
+            .content
+              a.author Susan Turner
+              .metadata
+                span.date 2 Days ago
+                i.heart.icon
+                |  1 Like
+              .text()
+                | Dat house
+              .actions
+                a.like Like
+                a.flag Flag
+          .comment
+            a.avatar
+              img(src=cdn+'/post_pictures/lilyprofpic.png')
+            .content
+              a.author Lily Hui
+              .metadata
+                span.date 1 Day ago
+                i.heart.icon
+                |  1 Like
+              .text()
+                | Lol
+              .actions
+                a.like Like
+                a.flag Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+            
+    .ui.fluid.card.test()
+      .content
+        .right.floated.meta= "Two weeks ago"
+        |
+        a(href='/user/hui_lily')
+          img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
+          span='Lily Hui'
+      .image
+        img.post(src=cdn+"/post_pictures/healthyeating.png")
+      .content
+        .description
+          | healthy eating
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+      
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user7.jpg')
+            .content
+              a.author Lauren Wakefield
+              .metadata
+                span.date 2 Days ago
+                i.heart.icon
+                |  1 Like
+              .text()
+                | Was it good?
+              .actions
+                a.like Like
+                a.flag Flag
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user47.jpeg')
+            .content
+              a.author Ariel Simon
+              .metadata
+                span.date 2 Days ago
+                i.heart.icon
+                |  1 Like
+              .text()
+                | very healthy
+              .actions
+                a.like Like
+                a.flag Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+        
+    .ui.fluid.card.test()
+      .content
+        .right.floated.meta= "Two weeks ago"
+        |
+        a(href='/user/hui_lily')
+          img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
+          span='Lily Hui'
+      .image
+        img.post(src=cdn+"/post_pictures/zoomonkey.jpg")
+      .content
+        .description
+          | monkey!
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+
+            
+    .ui.fluid.card.test()
+      .content
+        .right.floated.meta= "Two weeks ago"
+        |
+        a(href='/user/hui_lily')
+          img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
+          span='Lily Hui'
+      .image
+        img.post(src=cdn+"/post_pictures/lilypicture.png")
+      .content
+        .description
+          | hey it's me 
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=3
+      
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user7.jpg')
+            .content
+              a.author Lauren Wakefield
+              .metadata
+                span.date 2 Days ago
+                i.heart.icon
+                |  1 Like
+              .text()
+                | pretty pic ^^
+              .actions
+                a.like Like
+                a.flag Flag
+          .comment
+            a.avatar
+              img(src=cdn+'/post_pictures/lilyprofpic.png')
+            .content
+              a.author Lilu Hui
+              .metadata
+                span.date 2 Days ago
+                i.heart.icon
+                |  1 Like
+              .text()
+                | Thankss 🙂
+              .actions
+                a.like Like
+                a.flag Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon            
+            
+      
+            
+
+    
+    button.ui.big.labeled.icon.button.settings2
+        i.rocket.icon
+        |   Let's Continue!
+
+
+
+
+
+block scripts
+  script().
+     
+    function startIntro(){
+        var hints;
+        var literacy_counter = 0;
+
+        hints = introJs().addHints();
+        console.log('hints added')
+        hints.onhintclose(function(e) {
+         literacy_counter++;
+         if(literacy_counter == 2) {$( ".settings2" ).addClass("green");}
+        });
+
+          
+      };
+
+      $(window).on("load", function() {startIntro();});

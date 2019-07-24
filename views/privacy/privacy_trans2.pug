@@ -1,0 +1,50 @@
+extends ../ui_layout
+
+block content
+
+  
+    .ui.text.container
+      br
+      .column
+        .ui.raised.segment
+          .ui.blue.ribbon.label
+            h3
+              i.history.icon
+              | &nbsp Let's review!
+              
+          .content
+            br         
+            p It’s important to understand what information social media companies collect about you. When you read a website’s Privacy Policy, ASK yourself...
+            .item
+              p
+                i.arrow.circle.right.blue.icon
+                | Accessed: What will be <b>accessed</b> or collected by the company?
+            br
+            .item
+              p
+                i.arrow.circle.right.blue.icon
+                | Shared: What will be <b>shared</b> with other people or third parties?
+            br
+            .item
+              p
+                i.arrow.circle.right.blue.icon
+                | Known: What could be <b>known</b> about me if I use this?
+            
+            br
+            p Also, when you sign up for a social media account, make sure you know what your <b>privacy settings</b> are and change them to something that you are comfortable with! 
+
+        br
+        br
+        a(href='javascript:void(0);', onclick='javascript:startIntro();')
+            .ui.big.green.labeled.icon.button
+                i.rocket.icon
+                |  Got It!
+        br
+        br
+        br
+      
+block scripts
+  script().
+    function startIntro(){       
+          window.location.href='/free-play/privacy';
+        };

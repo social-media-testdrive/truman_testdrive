@@ -120,88 +120,189 @@ block content
                   | The University of Chicago will no longer require ACT or SAT scores from U.S. students
  
  
-    .ui.raised.segment.responseOne
+    .ui.raised.segment
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
           | Did you notice any signs of fake news in these posts?
-
-      .ui.form
-        br
-        .inline.fields
-          label(for='clickbait', name='clickbait') 
-          .field
-            .ui.checkbox
-              input(type='checkbox')
-              label(for='clickbait', style="font-size:120%;", tabindex='0') They had clickbait headlines and wild images.
-      .ui.form
-        .inline.fields
-          label(for='mistakes', name='mistakes') 
-          .field
-            .ui.checkbox
-              input(type='checkbox')
-              label(for='mistakes', style="font-size:120%;", tabindex='0') They had spelling mistakes or dramatic punctuation.
-      .ui.form
-        .inline.fields
-          label(for='suspicious', name='suspicious') 
-          .field
-            .ui.checkbox
-              input(type='checkbox')
-              label(for='suspicious', style="font-size:120%;", tabindex='0') They were from a suspicious website.
+      
+      .ui.stackable.two.cards.checkOne
         
+        .ui.fluid.card.dim()#card1
+          .content
+            .right.floated.meta 20 minutes ago  
+            a(href='/user/zoe.g._')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user70.JPG')
+              span Zoe Goodall
+          .img.post
+            img.transition.visible(src=cdn+'/post_pictures/fakenews1.png', data-src='/fakenews1.png', style='max-width: 100%; cursor: pointer;display: inline !important;')
+          .read.rounded.right.floated.info_button(data-info_text="Real facts.com is THE news source for you. Learn about everything that's going on everywhere in real time. You can trust us!", style='z-index:12;text-align:center;align-self:flex-end;position:relative;bottom:10px;width:7%;height:auto')
+            i.info.icon
+          .content
+            .description
+              | Breaking News: Driving age just lowered to 12. DMV flooded with road test appointments and car companies cannot keep their newest models off the road.
+    
+        .ui.fluid.card.dim()
+          .content
+            .ui.form
+              br
+              .inline.fields
+                label(for='clickbait', name='clickbait') 
+                .field
+                  .ui.checkbox
+                    input(type='checkbox')
+                    label(for='clickbait', style="font-size:120%;", tabindex='0') They had clickbait headlines and wild images.
+            .ui.form
+              .inline.fields
+                label(for='mistakes', name='mistakes') 
+                .field
+                  .ui.checkbox
+                    input(type='checkbox')
+                    label(for='mistakes', style="font-size:120%;", tabindex='0') They had spelling mistakes or dramatic punctuation.
+            .ui.form
+              .inline.fields
+                label(for='suspicious', name='suspicious') 
+                .field
+                  .ui.checkbox
+                    input(type='checkbox')
+                    label(for='suspicious', style="font-size:120%;", tabindex='0') They were from a suspicious website.
+              
+      .ui.stackable.two.cards.checkTwo
+        
+        .ui.fluid.card.dim()#card2
+          .content
+            .right.floated.meta 30 minutes ago
+            a(href='/user/k.r.h345')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user15.jpg')
+              span Keith Hernandez
+          .img.post
+            img.transition.visible(src=cdn+'/post_pictures/fakenews2.png', data-src='/fakenews2.png', style='max-width: 100%; cursor: pointer;display: inline !important;')
+          .read.rounded.right.floated.info_button(data-info_text="ScienceTruth is everyone's favorite and reliable source for science facts.", style='z-index:9;text-align:center;align-self:flex-end;position:relative;bottom:10px;width:7%;height:auto')
+            i.info.icon
+          .content
+            .description
+              | Craving a donut? Think again! Scientists found that donuts are the leading cause of cancer in young children 😳
 
-    .ui.raised.segment.responseTwo
+        .ui.fluid.card.dim()
+          .content
+            .ui.form
+              br
+              .inline.fields
+                label(for='clickbait', name='clickbait') 
+                .field
+                  .ui.checkbox
+                    input(type='checkbox')
+                    label(for='clickbait', style="font-size:120%;", tabindex='0') They had clickbait headlines and wild images.
+            .ui.form
+              .inline.fields
+                label(for='mistakes', name='mistakes') 
+                .field
+                  .ui.checkbox
+                    input(type='checkbox')
+                    label(for='mistakes', style="font-size:120%;", tabindex='0') They had spelling mistakes or dramatic punctuation.
+            .ui.form
+              .inline.fields
+                label(for='suspicious', name='suspicious') 
+                .field
+                  .ui.checkbox
+                    input(type='checkbox')
+                    label(for='suspicious', style="font-size:120%;", tabindex='0') They were from a suspicious website.
+      
+      .ui.stackable.two.cards.checkThree
+        
+        .ui.fluid.card.dim()#card3
+          .content
+            .right.floated.meta 1 hour ago
+            a(href='/user/aperson')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user55.jpg')
+              span Lana Reed
+          .img.post
+            img.transition.visible(src=cdn+'/post_pictures/fakenews3.png', data-src='/fakenews3.png', style='max-width: 100%;cursor: pointer;display: inline !important;')
+          .read.rounded.right.floated.info_button(data-info_text="No Information Found !", style='z-index:9;text-align:center;align-self:flex-end;position:relative;bottom:10px;width:7%;height:auto')
+            i.info.icon          
+          .content
+            .description
+              | You'll never guess what these are!!!
+              
+        .ui.fluid.card.dim()
+          .content
+            .ui.form
+              br
+              .inline.fields
+                label(for='clickbait', name='clickbait') 
+                .field
+                  .ui.checkbox
+                    input(type='checkbox')
+                    label(for='clickbait', style="font-size:120%;", tabindex='0') They had clickbait headlines and wild images.
+            .ui.form
+              .inline.fields
+                label(for='mistakes', name='mistakes') 
+                .field
+                  .ui.checkbox
+                    input(type='checkbox')
+                    label(for='mistakes', style="font-size:120%;", tabindex='0') They had spelling mistakes or dramatic punctuation.
+            .ui.form
+              .inline.fields
+                label(for='suspicious', name='suspicious') 
+                .field
+                  .ui.checkbox
+                    input(type='checkbox')
+                    label(for='suspicious', style="font-size:120%;", tabindex='0') They were from a suspicious website.
+                        
+
+    .ui.raised.segment
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
           | Tell us what you would do next to check the credibility of the above articles.
-      .ui.form
-        br
-        .inline.fields
-          label(for='wouldRead', name='wouldRead') 
-          .field
-            .ui.checkbox
-              input(type='checkbox')
-              label(for='wouldRead', style="font-size:120%;", tabindex='0') I would read the full article.
-      .ui.form
-        .inline.fields
-          label(for='checkSource', name='checkSource') 
-          .field
-            .ui.checkbox
-              input(type='checkbox')
-              label(for='checkSource', style="font-size:120%;", tabindex='0') I would check the source.
-      .ui.form
-        .inline.fields
-          label(for='corroboration', name='corroboration') 
-          .field
-            .ui.checkbox
-              input(type='checkbox')
-              label(for='corroboration', style="font-size:120%;", tabindex='0') I would find corroboration from other credible sources.       
+      .content.checkFour
+        .ui.form
+          br
+          .inline.fields
+            label(for='wouldRead', name='wouldRead') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='wouldRead', style="font-size:120%;", tabindex='0') I would read the full article.
+        .ui.form
+          .inline.fields
+            label(for='checkSource', name='checkSource') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='checkSource', style="font-size:120%;", tabindex='0') I would check the source.
+        .ui.form
+          .inline.fields
+            label(for='corroboration', name='corroboration') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='corroboration', style="font-size:120%;", tabindex='0') I would find corroboration from other credible sources.       
       
-    .ui.raised.segment.responseThree
+    .ui.raised.segment
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
           | What are the benefits and drawbacks of getting news on social media ?
       .ui.form
         .inline.fields
           label(style="font-size:120%;")
-          textarea.glowing-border(rows='2')
+          textarea.glowing-border(rows='2' id="literacy_responseOne")
 
-    .ui.raised.segment.responseFour
+    .ui.raised.segment
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
           | Why is it important to evaluate the information you see on social media ?
       .ui.form
         .inline.fields
           label(style="font-size:120%;")
-          textarea.glowing-border(rows='2')
+          textarea.glowing-border(rows='2' id="literacy_responseTwo")
 
-    .ui.raised.segment.responseFive
+    .ui.raised.segment
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
           | What would you do in the future on real social media sites to make sure that the information you see is credible?
       .ui.form
         .inline.fields
           label(style="font-size:120%;")
-          textarea.glowing-border(rows='2')
+          textarea.glowing-border(rows='2' id="literacy_responseThree")
 
 
     br
@@ -222,11 +323,28 @@ block scripts
       
         $(".insertPrint").empty();
         $(".insertPrint").css('display','block');  
-        $(".responseOne").clone().appendTo(".insertPrint");
-        $(".responseTwo").clone().appendTo(".insertPrint");
-        $(".responseThree").clone().appendTo(".insertPrint");
-        $(".responseFour").clone().appendTo(".insertPrint");
-        $(".responseFive").clone().appendTo(".insertPrint");
+        $(".checkOne").clone().appendTo(".insertPrint");
+        $(".insertPrint").append('<div class="breakHere"</div>');
+        $(".checkTwo").clone().appendTo(".insertPrint");
+        $(".insertPrint").append('<div class="breakHere"</div>');
+        $(".checkThree").clone().appendTo(".insertPrint");
+        $(".insertPrint").append('<br>');
+        
+        $(".insertPrint").append("<h5>Tell us what you would do next to check the credibility of the above articles.</h5>");
+        $(".checkFour").clone().appendTo(".insertPrint");
+        
+        $(".insertPrint").append('<div class="breakHere"</div>');
+        $(".insertPrint").append("<br><h4>What are the benefits and drawbacks of getting news on social media ?</h4>");
+        var responseOne = document.getElementById("literacy_responseOne").value;
+        $(".insertPrint").append(responseOne);
+        
+        $(".insertPrint").append("<h4>What are the benefits and drawbacks of getting news on social media ?</h4>");
+        var responseOne = document.getElementById("literacy_responseTwo").value;
+        $(".insertPrint").append(responseTwo);
+        
+        $(".insertPrint").append("<h4>What would you do in the future on real social media sites to make sure that the information you see is credible?</h4>");
+        var responseThree = document.getElementById("literacy_responseTwo").value;
+        $(".insertPrint").append(responseThree);
         
         window.print();  
         

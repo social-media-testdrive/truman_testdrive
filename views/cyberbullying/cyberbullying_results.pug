@@ -59,44 +59,46 @@ block content
                 .description omg lollll look at Dylan&rsquo;s sketchbook he&rsquo;s such a nerdddd
        
  
-    .ui.raised.segment.responseOne
+    .ui.raised.segment
+      
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
           | Tell us what you did to be an upstander.
-      .ui.form
-        br
-        .inline.fields
-          label(for='iFlagged', name='iFlagged') 
-          .field
-            .ui.checkbox
-              input(type='checkbox')
-              label(for='iFlagged', style="font-size:120%;", tabindex='0') I flagged the post or comment.
-      .ui.form
-        .inline.fields
-          label(for='iLiked', name='iLiked') 
-          .field
-            .ui.checkbox
-              input(type='checkbox')
-              label(for='iLiked', style="font-size:120%;", tabindex='0') I "liked" the target's post to show support.
-      .ui.form
-        .inline.fields
-          label(for='iSupported', name='iSupported') 
-          .field
-            .ui.checkbox
-              input(type='checkbox')
-              label(for='iSupported', style="font-size:120%;", tabindex='0') I wrote a supportive or defending comment for the target.
-      .ui.form
-        .inline.fields
-          label(for='wouldTell', name='wouldTell') 
-          .field
-            .ui.checkbox
-              input(type='checkbox')
-              label(for='wouldTell', style="font-size:120%;", tabindex='0') I would tell a trusted adult if I saw this kind of post.
+      .content.checkOne
+        .ui.form
+          br
+          .inline.fields
+            label(for='iFlagged', name='iFlagged') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='iFlagged', style="font-size:120%;", tabindex='0') I flagged the post or comment.
+        .ui.form
+          .inline.fields
+            label(for='iLiked', name='iLiked') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='iLiked', style="font-size:120%;", tabindex='0') I "liked" the target's post to show support.
+        .ui.form
+          .inline.fields
+            label(for='iSupported', name='iSupported') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='iSupported', style="font-size:120%;", tabindex='0') I wrote a supportive or defending comment for the target.
+        .ui.form
+          .inline.fields
+            label(for='wouldTell', name='wouldTell') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='wouldTell', style="font-size:120%;", tabindex='0') I would tell a trusted adult if I saw this kind of post.
       .ui.form
         .field
           label(for='like', style="font-size:120%;") Why did you act this way?
           label(style="font-size:120%;")
-          textarea.glowing-border(rows='4') 
+          textarea.glowing-border(rows='4' id="cyber_responseOne") 
 
       
     .ui.raised.segment.responseTwo
@@ -106,7 +108,7 @@ block content
       .ui.form
         .inline.fields
           label(style="font-size:120%;")
-          textarea.glowing-border(rows='4')
+          textarea.glowing-border(rows='4' id="cyber_responseTwo")
 
     .ui.raised.segment.responseThree
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
@@ -115,7 +117,7 @@ block content
       .ui.form
         .inline.fields
           label(style="font-size:120%;")
-          textarea.glowing-border(rows='4')
+          textarea.glowing-border(rows='4' id="cyber_responseThree")
 
 
     br
@@ -136,11 +138,20 @@ block scripts
     
       $(".insertPrint").empty();
       $(".insertPrint").css('display','block');  
-      $(".responseOne").clone().appendTo(".insertPrint");
-      $(".responseTwo").clone().appendTo(".insertPrint");
-      $(".responseThree").clone().appendTo(".insertPrint");
-    
-      $(".insertPrint").css('font-size','50%');
+      $(".insertPrint").append("<h4>Tell us what you did to be an upstander.</h4>");
+      $(".checkOne").clone().appendTo(".insertPrint");
+
+      $(".insertPrint").append("<br><h4>Why did you act this way?</h4>");
+      var responseOne = document.getElementById("cyber_responseOne").value;
+      $(".insertPrint").append(responseOne);
+      
+      $(".insertPrint").append("<h4>Why is it important for people to act against cyberbullying?</h4>");
+      var responseOne = document.getElementById("cyber_responseTwo").value;
+      $(".insertPrint").append(responseOne);
+      
+      $(".insertPrint").append("<h4>What will you do in the future to be an upstander if you see cyberbullying?</h4>");
+      var responseThree = document.getElementById("cyber_responseTwo").value;
+      $(".insertPrint").append(responseThree);
       
       window.print();  
       
