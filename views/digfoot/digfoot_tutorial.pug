@@ -15,7 +15,7 @@ block content
           .image
             img.post(src=cdn+'/digfootga1.jpg')
           #step4.content
-            .description="the first day after my bday and guess what i HAVE to do? clean your room says my mom"
+            .description="the first day after my bday and guess what i HAVE to do? clean your room says my mom i hate her so much!!!"
             //-.right.floated.meta
               i.icon.checkmark
               | Seen by 12
@@ -98,20 +98,6 @@ block content
                   .actions
                     a.like Like
                     a.flag Flag
-              .comment
-                a.avatar
-                  img(src=cdn+'/profile_pictures/user30.jpg')
-                .content
-                  a.author Linsday Stokes
-                  .metadata
-                    span.date 1 Minute ago
-                    i.heart.icon
-                    |  0 Likes
-                  .text()
-                    | Hey, do you mind deleting this picture?
-                  .actions
-                    a.like Like
-                    a.flag Flag
           .extra.content
             .ui.fluid.left.labeled.right.icon.input
               .ui.label
@@ -128,28 +114,40 @@ block scripts
           intro.setOptions({
             steps: [
               { 
-                element: document.querySelectorAll('#step1')[0],
+                element: document.querySelectorAll('#step3')[0],
                 intro: "How can you shape your digital footprint?",
-                position: 'bottom',
-                scrollTo: "tooltip"
+                position: "right",
+                scrollTo: 'tooltip'
               },
               { 
                 element: document.querySelectorAll('#step3')[0],
                 intro: "Think before you post, because many things you do online will add to your digital footprint.",
-                position: 'bottom',
+                position: "right",
                 scrollTo: "tooltip"
               },
               {
                 element: document.querySelectorAll('#step4')[0],
-                intro: "Don’t overshare! Be careful not to share too much personal or private information in your posts. Think about if you want to have that info or post as a part of your digital footprint.",
-                position: 'bottom',
+                intro: "Think about whether you are sharing too much personal or private information. Would you be ok with this being a part of your digital footprint?",
+                position: "top",
                 scrollTo: "tooltip"
               },
               { 
                 element: document.querySelectorAll('#step5')[0],
-                intro: "If someone posts something you don’t want to have as part of your digital footprint, you can ask them to delete it.",
-                position: 'right',
-                scrollTo: "tooltip"
+                intro: "How can you be responsible for other people’s digital footprints?",
+                position: "right",
+                scrollTo: "element"
+              },
+              { 
+                element: document.querySelectorAll('#step5')[0],
+                intro: "Think about your friends’ digital footprints, too! It’s your responsibility to not post embarrassing pictures, gossip, or hateful things about others.",
+                position: "right",
+                scrollTo: "element"
+              },
+              { 
+                element: document.querySelectorAll('#step5')[0],
+                intro: "If someone posts something you don’t want to have as part of your digital footprint, you can ask them to delete it through a private message.",
+                position: "right",
+                scrollTo: "element"
               }
               
             ]

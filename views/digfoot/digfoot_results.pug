@@ -206,7 +206,7 @@ block content
     .ui.raised.segment.responseOne
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
-          | What would you do in the future to be responsible for your digital footprint on social media?
+          | What can you do in the future to make sure you have a positive digital footprint on social media? 
       .ui.form
         .inline.fields
           label(style="font-size:120%;")
@@ -215,7 +215,7 @@ block content
     .ui.raised.segment.responseTwo
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
-          | What would you do in the future to be responsible for other people’s digital footprints on social media?
+          | What can you do in the future to be mindful of other people's digital footprints on social media?
       .ui.form
         .inline.fields
           label(style="font-size:120%;")
@@ -247,11 +247,11 @@ block scripts
       $(".checkThree").clone().appendTo(".insertPrint");
       $(".insertPrint").append('<div class="breakHere"</div><br>');
       
-      $(".insertPrint").append("<h4>What would you do in the future to be responsible for your digital footprint on social media?</h4>");
+      $(".insertPrint").append("<h4>What can you do in the future to make sure you have a positive digital footprint on social media?</h4>");
       var responseOne = document.getElementById("digfoot_responseOne").value;
       $(".insertPrint").append(responseOne);
       
-      $(".insertPrint").append("<h4>What would you do in the future to be responsible for other people’s digital footprints on social media?</h4>");
+      $(".insertPrint").append("<h4>What can you do in the future to be mindful of other people's digital footprints on social media?</h4>");
       var responseTwo = document.getElementById("digfoot_responseTwo").value;
       $(".insertPrint").append(responseTwo);
       
