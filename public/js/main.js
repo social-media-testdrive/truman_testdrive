@@ -141,15 +141,15 @@ $(window).on("load", function () {
   });
 
   //Minimize a chat box
-  $('a.chat-minimize').click(function () {
-     //code goes here
+  $('a.chat-minimize').click(function (e) {
+     e.preventDefault();
      let chat = $(this).closest('.chat').children('.chat-history');
      chat.slideToggle(300, 'swing');
   });
 
   //Close a chat box
-  $('a.chat-close').click(function () {
-     //code goes here
+  $('a.chat-close').click(function (e) {
+     e.preventDefault();
      let chat = $(this).closest('.chat');
      chat.fadeOut(300, 'swing');
   });
@@ -171,13 +171,6 @@ $(window).on("load", function () {
   $('.ui.checkbox')
     .checkbox();
 
-  $('a.chat-minimize').click(function () {
-
-    //code goes here
-    let chat = $(this).closest('.chat');
-    chat.slideToggle(300, 'swing');
-
-  });
   //get add new reply post modal to show
   $('.reply.button').click(function () {
 
