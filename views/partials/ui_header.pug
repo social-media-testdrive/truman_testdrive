@@ -1,9 +1,9 @@
--var cdn = "https://testdrive.sfo2.cdn.digitaloceanspaces.com";
+-var cdn = "https://dhpd030vnpk29.cloudfront.net";
 .computer.only.tablet.only.row 
   .ui.borderless.fixed.menu
     .ui.container
       a.item(href='/')
-        img.ui.tiny.image(src=cdn+'/logo.png', id='logo')
+        img.ui.tiny.image(src=cdn+'/finalLogo.png', id='logo')
       |  
       .right.menu
         if !user
@@ -30,7 +30,7 @@
 .mobile.only.row
   .ui.fluid.top.fixed.four.item.menu
     a.item(href='/')
-      img.ui.tiny.image(src=cdn+'/logo.png', id='cell_logo')
+      img.ui.tiny.image(src=cdn+'/finalLogo.png', id='cell_logo')
     if !user
       //-a.item(href='/login') Login
       //-a.item(href='/signup') Create Account
@@ -50,8 +50,3 @@
         //-i.dropdown.icon
         //-.menu
           a.item(href='/logout') Logout
-
-
-
-
-
