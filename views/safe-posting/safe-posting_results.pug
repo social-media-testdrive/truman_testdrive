@@ -160,30 +160,24 @@ block content
                   .ui.checkbox
                     input(type='checkbox')
                     label(for='ignore', style="font-size:120%;", tabindex='0')  I ignored the message
+                    
             hr
             .ui.form
               .inline.fields
-                label(for='write', style="font-size:120%;") I was direct
-                .field
-                  .ui.radio.checkbox
-                    input.hidden(type='radio', name='write',  tabindex='0')
-                    label Yes
-                .field
-                  .ui.radio.checkbox
-                    input.hidden(type='radio', name='write', tabindex='0')
-                    label No
-            hr
-            .ui.form
-              .inline.fields
-                label(for='write', style="font-size:120%;") I did something else
-                .field
-                  .ui.radio.checkbox
-                    input.hidden(type='radio', name='write',  tabindex='0')
-                    label Yes
+                label(for='direct', name='direct') 
                 .field
                   .ui.checkbox
                     input(type='checkbox')
-                    label(for='unsure', style="font-size:120%;", tabindex='0')  I wasn’t sure how to respond
+                    label(for='direct', style="font-size:120%;", tabindex='0')  I was direct
+          
+            hr
+            .ui.form
+              .inline.fields
+                label(for='somethingElse', name='somethingElse') 
+                .field
+                  .ui.checkbox
+                    input(type='checkbox')
+                    label(for='somethingElse', style="font-size:120%;", tabindex='0')  I did something else
             hr
     .ui.raised.segment.responseOne
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
