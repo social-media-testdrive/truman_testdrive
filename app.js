@@ -242,7 +242,7 @@ app.get('/testing/:modId', scriptController.getScriptFeed);
 
 //post a new user created post s3_upload
 //app.post('/post/new', userpostupload.single('picinput'), check, csrf, scriptController.newPost);
-app.post('/post/new', userpostupload.single('picinput'), check, scriptController.newPost);
+app.post('/post/new', check, scriptController.newPost);
 
 //app.post('/account/profile', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, csrf, userController.postUpdateProfile);
 app.post('/account/profile', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, userController.postUpdateProfile);

@@ -63,7 +63,7 @@ block content
               span=user.profile.name || user.email || user.id
           if val.picture
             .image
-              img(src=s3+val.picture)
+              img(src=cdn+"/post_pictures/"+val.picture)
           .content
             .description=val.body
           .two.ui.bottom.attached.icon.buttons
@@ -414,23 +414,49 @@ block content
       {{response}}
       </div>
       </li>
-
+      
     //- New Post Modal  
     .ui.small.post.modal  
       i.close.icon  
       .header Add a New Post  
       .content  
-        form#postform.ui.feed.form(action='/post/new', method='POST', enctype='multipart/form-data')  
+        form#postform.ui.feed.form(action='/post/new', method='POST')  
           input(type='hidden', name='_csrf', value=_csrf) 
           input(type='hidden', name='module', value=mod)  
           .field  
             textarea(rows='3',placeholder='What do you want to share?',name='body')
-          .field.image-upload 
-            label(for='picinput') 
-              .image.content  
-                img#imgInp.ui.centered.small.image(src='/photo-camera.svg')  
-            //-input#picinput(type='file', accept='image/*', capture='camera', name='picinput') 
-            input#picinput(type='file', accept='image/*', name='picinput')  
+          .three.fields
+            .field
+              .ui.radio.checkbox
+                input#photoOne.hidden(type='radio' name='picinput' value="teacupdog.jpeg")
+                label
+                    img(src=cdn+"/post_pictures/teacupdog.jpeg" style='width:65%;height:auto;')
+            .field
+              .ui.radio.checkbox
+                input#photoTwo.hidden(type='radio' name='picinput' value="autumn.jpg")
+                label
+                    img(src=cdn+"/post_pictures/autumn.jpg" style='width:65%;height:auto;')
+            .field
+              .ui.radio.checkbox
+                input#photoThree.hidden(type='radio' name='picinput' value="Disneyland.jpg")
+                label
+                    img(src=cdn+"/post_pictures/Disneyland.jpg" style='width:65%;height:auto;')  
+          .three.fields
+            .field
+              .ui.radio.checkbox
+                input#photoFour.hidden(type='radio' name='picinput' value="Iceland.jpg")
+                label
+                    img(src=cdn+"/post_pictures/Iceland.jpg" style='width:65%;height:auto;')
+            .field
+              .ui.radio.checkbox
+                input#photoFive.hidden(type='radio' name='picinput' value="balloons.jpg")
+                label
+                    img(src=cdn+"/post_pictures/balloons.jpg" style='width:65%;height:auto;')
+            .field
+              .ui.radio.checkbox
+                input#photoSix.hidden(type='radio' name='picinput' value="beachpuppy.jpg")
+                label
+                    img(src=cdn+"/post_pictures/beachpuppy.jpg" style='width:65%;height:auto;')  
           .ui.error.message 
       .actions  
         input.ui.green.button(type='submit', name="foo", value='Post', form='postform')
@@ -565,6 +591,7 @@ block scripts
           $('input[type=checkbox]').prop('checked',false);
           $('#digfoot_post_modual').modal('show');
         }
+        
         function openChat(){
           let pathArray = window.location.pathname.split('/');
           if(pathArray[2] == "safe-posting"){
