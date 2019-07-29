@@ -11,7 +11,7 @@
           //-a.item(href='/signup') Create Account
         else
           a.item.newpost
-            i.big.plus.icon
+            i.big.plus.icon(style="display: none;")
           //-a.item(href='/notifications') 
             i.big.alarm.icon
           if user.isInstructor
@@ -36,7 +36,7 @@
       //-a.item(href='/signup') Create Account
     else
       a.item.newpost
-        i.big.plus.icon
+        i.big.plus.icon(style="display: none;")
       //-a.item(href='/notifications') 
         i.big.alarm.icon
       if user.isInstructor

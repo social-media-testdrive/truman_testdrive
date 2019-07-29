@@ -123,14 +123,16 @@ block content
             label(for='location', style="font-size:120%") Location
             .field(data-hint="She can turn off location sharing and restrict who can see her location to “Friends” only. Let’s try doing this! " data-hintPosition="top-middle")
               br
-              .ui.toggle.checkbox(name='locationToggle')
+              .ui.toggle.checkbox#locationCue1(name='locationToggle')
                 input(type='checkbox' name='locationSetting' checked='checked')
                 label Turn on location sharing
+    
             .field
               br
               label(style="font-size:100%") Share my location with
+              
               .div(style='width: 200px;')
-                .ui.selection.dropdown(name='shareLocationWith')
+                .ui.selection.dropdown#locationCue2(name='shareLocationWith')
                   input(type='hidden')
                   i.dropdown.icon
                   .default.text Select
@@ -155,7 +157,13 @@ block content
             .ui.divider
             br(data-hint="Have you turned off location sharing and changed who can see Lily’s location? Click “Let’s Continue!” to see how her profile has changed." data-hintPosition="middle-right")
 
-    button.ui.big.labeled.icon.button.settings1
+    .ui.warning.message#locationCue1Text(style="display:none;")
+      .header
+        | Turn location sharing off
+    .ui.warning.message#locationCue2Text(style="display:none;")
+      .header
+        | Change to share your location with "Friends"
+    button.ui.big.labeled.icon.button.settings1#settings1Button
         i.rocket.icon
         |   Let's Continue!
         
@@ -169,6 +177,57 @@ block scripts
     var keySetting1 = $("input[name='locationSetting']").is(':checked');
     var keySetting2 = "";
     
+    
+    
+    //Initializing and managing the hints
+    function startIntro(){
+        var hints;
+
+        hints = introJs().addHints();
+        console.log('hints added')
+        hints.onhintclose(function(e) {
+         literacy_counter++;
+         if(literacy_counter == 3) {
+           if((keySetting1 == false) && (keySetting2 === "Friends")){
+              $( ".settings1" ).addClass("green");
+           }
+         }
+        });
+
+          
+      };
+    
+    //Functions for adding visual cues to the appropriate settings
+    
+    function jiggleCueOne() {
+      $('#locationCue1').transition('shake');
+    }
+    function jiggleCueTwo() {
+      $('#locationCue2').transition('shake');
+    }
+    
+    $('#settings1Button').on('click', function () {  
+      if(keySetting1 == true){
+        $('#locationCue1Text').show(); 
+        $('#locationCue1').transition('bounce');   
+      } else {
+        $('#locationCue1Text').hide();
+      }
+      if(keySetting2 !== "Friends"){
+        $('#locationCue2Text').show(); 
+        $('#locationCue2').transition('bounce');   
+      } else {
+        $('#locationCue2Text').hide();
+      }    
+   });
+
+    
+    $(window).on("load", function() {startIntro();});
+
+    //Make the dropdown work
+    $('.ui.dropdown')
+      .dropdown('set selected', '0');
+      
     //Using logic to determine if all required criteria are met before allowing to proceed 
     
     $(".ui.selection.dropdown[name='shareLocationWith']").change(function() {
@@ -192,33 +251,8 @@ block scripts
            $( ".settings1" ).addClass("green");
         }
         else{
+          //Indicate settings to change with animation
           $( ".settings1" ).removeClass("green");
         }
       }
     });
-    
-    //Initializing and managing the hints
-    function startIntro(){
-        var hints;
-
-        hints = introJs().addHints();
-        console.log('hints added')
-        hints.onhintclose(function(e) {
-         literacy_counter++;
-         if(literacy_counter == 3) {
-           if((keySetting1 == false) && (keySetting2 === "Friends")){
-              $( ".settings1" ).addClass("green");
-           }
-         }
-        });
-
-          
-      };
-
-    $(window).on("load", function() {startIntro();});
-
-    //Make the dropdown work
-    $('.ui.dropdown')
-      .dropdown('set selected', '0');
-    
-    $('ui.dropdown')
