@@ -2,11 +2,13 @@ extends ui_layout
   
 block content
   
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   .computer.only.tablet.only.four.wide.column 
     .ui.card
       .image
         if user.profile.picture
-          img(src='/user_post/'+user.profile.picture)
+          //-img(src=cdn+'/user_post/'+user.profile.picture)
+          img(src=cdn+'/profile_pictures/avatar-icon.svg')
         else
           img(src=user.gravatar(60))
       .content
@@ -31,7 +33,8 @@ block content
             |  
             a.ui.avatar.image(href='/me')
               if user.profile.picture
-                img(src='/user_post/'+user.profile.picture)
+                //-img(src=cdn+'/user_post/'+user.profile.picture)
+                img(src=cdn+'/profile_pictures/avatar-icon.svg')
               else
                 img(src=user.gravatar(60))
               a(href='/me')
@@ -43,11 +46,11 @@ block content
               .content
                 .right.floated.time.meta= (user.createdAt.getTime() + val.reply.time)
                 |  
-                img.ui.avatar.image(src='/profile_pictures/'+val.reply.actor.profile.picture)
+                img.ui.avatar.image(src=cdn+'/profile_pictures/'+val.reply.actor.profile.picture)
                 span=val.reply.actor.profile.name
               if val.reply.picture
                 .image
-                  img(src="/"+val.reply.picture)
+                  img(src=cdn+"/"+val.reply.picture)
               .content
                 .description=val.reply.body
           .three.ui.bottom.attached.icon.buttons
@@ -75,13 +78,14 @@ block content
             |  
             a.ui.avatar.image(href='/me')
               if user.profile.picture
-                img(src='/user_post/'+user.profile.picture)
+                //-img(src=cdn+'/user_post/'+user.profile.picture)
+                img(src=cdn+'/profile_pictures/avatar-icon.svg')
               else
                 img(src=user.gravatar(60))
             a(href='/me')
               span=user.profile.name || user.email || user.id
           .image
-            img(src='/user_post/'+val.picture)
+            img(src=cdn+'/post_pictures/'+val.picture)
           .content
             .description=val.body
           .three.ui.bottom.attached.icon.buttons
