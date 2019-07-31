@@ -1,14 +1,14 @@
 extends ui_layout
   
 block content
-  
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   .computer.only.tablet.only.four.wide.column 
     .ui.card
       .image
         if actor.class == 'high_read'
           img(src=actor.profile.picture)
         else
-          img(src='/profile_pictures/'+actor.profile.picture)
+          img(src=cdn+'/profile_pictures/'+actor.profile.picture)
       .content
         a.header= actor.profile.name
         .meta="@"+actor.username
@@ -42,7 +42,7 @@ block content
               .right.floated.time.meta= (user.createdAt.getTime() + val.time)
               |
               a.ui.avatar.image(href='/user/'+val.actor.username)
-                img(src='/profile_pictures/'+val.actor.profile.picture)
+                img(src=cdn+'/profile_pictures/'+val.actor.profile.picture)
               a(href='/user/'+val.actor.username)
                 span=val.actor.profile.name
             .content
@@ -53,11 +53,11 @@ block content
                   .right.floated.time.meta= (user.createdAt.getTime() + val.reply.time)
                   |
                   a(href='/user/'+val.reply.actor.username)   
-                    img.ui.avatar.image(src='/profile_pictures/'+val.reply.actor.profile.picture)
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/'+val.reply.actor.profile.picture)
                     span=val.reply.actor.profile.name
                 if val.reply.picture
                   .image
-                    img(src="/"+val.reply.picture)
+                    img(src=cdn+"/"+val.reply.picture)
                 .content
                   .description=val.reply.body
             .three.ui.bottom.attached.icon.buttons
@@ -87,10 +87,10 @@ block content
               .right.floated.time.meta= (user.createdAt.getTime() + val.time)
               |  
               a(href='/user/'+val.actor.username)
-                img.ui.avatar.image(src='/profile_pictures/'+val.actor.profile.picture)
+                img.ui.avatar.image(src=cdn+'/profile_pictures/'+val.actor.profile.picture)
                 span=val.actor.profile.name
             .image
-              img(src="/"+val.picture)
+              img(src=cdn+"/post_pictures/"+val.picture)
               //-img(src='/picture.svg', data-src=val.picture)
             .content
               .description=val.body
