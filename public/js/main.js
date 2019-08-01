@@ -441,7 +441,13 @@ $(window).on("load", function () {
       window.location.href = '/sim1/' + pathArray[2];
     });
 
-  //Cyberbullying to Transition
+  //Privacy sim2 to Tutorial
+  $(document).on('click', '.ui.big.labeled.icon.button.privacytutorial.green', function () {
+      console.log(window.location.pathname)
+      window.location.href = '/tutorial/privacy';
+    });
+
+  //To sim2
   $(document).on('click', '.ui.big.labeled.icon.button.cybersim2.green', function () {
       console.log(window.location.pathname)
       let pathArray = window.location.pathname.split('/');

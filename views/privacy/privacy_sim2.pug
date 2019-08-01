@@ -63,34 +63,34 @@ block content
     br
     br
     br
-    button.ui.big.labeled.icon.button.cybertrans2
+    button.ui.big.labeled.icon.button.privacytutorial
       i.rocket.icon
       |   Let's Continue!
     br
     br
       
-  block scripts
-    script().
-      function startIntro(){
-          var hints;
-          var privacy_sim2_counter = 0;
-          var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
-            intro.setOptions({
-              steps: [
-                { 
-                  intro: "Click on the blue dots to learn more..."
-                }
-              ]
-            });
-            intro.start().onexit(function() {
-            hints = introJs().addHints();
-            console.log('hints added')
-            hints.onhintclose(function(e) {
-             privacy_sim2_counter++;
-             if(privacy_sim2_counter == 6) {$( ".cybertrans2" ).addClass("green");}
-            });
-          });
-            
-        };
+block scripts
+  script().
+    function startIntro(){
+      var hints;
+      var privacy_sim2_counter = 0;
+      var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
+        intro.setOptions({
+          steps: [
+            { 
+              intro: "Click on the blue dots &nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; to learn more..."
+            }
+          ]
+        });
+        intro.start().onexit(function() {
+        hints = introJs().addHints();
+        console.log('hints added')
+        hints.onhintclose(function(e) {
+         privacy_sim2_counter++;
+         if(privacy_sim2_counter == 6) {$( ".privacytutorial" ).addClass("green");}
+        });
+      });
         
-        $(window).on("load", function() {startIntro();});
+    };
+    
+    $(window).on("load", function() {startIntro();});

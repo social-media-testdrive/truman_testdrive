@@ -7,7 +7,7 @@ block content
     
     h2.ui.header
       //- i.check.square.outline.green.icon
-      .content What are some other things I can do to protect my privacy?
+      .content What are some things I can do to protect my privacy?
         br
         .ui.raised.segment
           h5.ui.header
@@ -50,7 +50,7 @@ block content
             .label Known: What could be <b>known</b> about me if I use this?
                   
     br
-    .ui.big.labeled.icon.button.cybersim
+    .ui.big.labeled.icon.button.cybersim2
         i.rocket.icon
         |   Got it!
     br
@@ -73,8 +73,8 @@ block scripts
     $('#point3_button').on('click', function () {
       if (($('input:checked').length) == 
           ($('input').length)){  
-        $('.ui.big.labeled.icon.button.cybersim').addClass('green');
-        $('.ui.big.green.labeled.icon.button.cybersim').transition('jiggle');
+        $('.ui.big.labeled.icon.button.cybersim2').addClass('green');
+        $('.ui.big.green.labeled.icon.button.cybersim2').transition('jiggle');
       }
       else {
         $('.ui.message').addClass('visible')
@@ -88,11 +88,11 @@ block scripts
     $("input").change(function(){
       if (($('input:checked').length) == 
             ($('input').length)){
-        $('.ui.big.labeled.icon.button.cybersim').addClass('green');
-        $('.ui.big.labeled.icon.button.cybersim').transition('jiggle');
+        $('.ui.big.labeled.icon.button.cybersim2').addClass('green');
+        $('.ui.big.labeled.icon.button.cybersim2').transition('jiggle');
       }
       else{
-        $('.ui.big.labeled.icon.button.cybersim').removeClass('green');
+        $('.ui.big.labeled.icon.button.cybersim2').removeClass('green');
       }
     });
    
