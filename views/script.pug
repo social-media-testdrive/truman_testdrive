@@ -14,7 +14,7 @@ block content
         else
           img(src=user.gravatar(60))
       .content
-        a.header(href='/me')= user.profile.name || user.email || user.id
+        a.header(href='/me/'+mod)= user.profile.name || user.email || user.id
         .meta="@Guest"
         .description=user.profile.bio
         .description
@@ -54,12 +54,12 @@ block content
           .content
             .right.floated.time.meta= (Date.now() + val.relativeTime)
             |  
-            a.ui.avatar.image(href='/me')
+            a.ui.avatar.image(href='/me/'+mod)
               if user.profile.picture
                 img(src=cdn+'/profile_pictures/'+user.profile.picture)
               else
                 img(src=user.gravatar(60))
-            a(href='/me')
+            a(href='/me/'+mod)
               span=user.profile.name || user.email || user.id
           if val.picture
             .image
@@ -88,13 +88,13 @@ block content
                       if comment.new_comment
                         -console.log("New COMMENT AREA");
                         .comment(commentID=comment.commentID)
-                          a.avatar.image(href='/me')
+                          a.avatar.image(href='/me/'+mod)
                             if user.profile.picture
                               img(src=cdn+'/profile_pictures/'+user.profile.picture)
                             else
                               img(src=user.gravatar(60))
                           .content
-                            a.author(href='/me')=user.profile.name || user.username || user.id
+                            a.author(href='/me/'+mod)=user.profile.name || user.username || user.id
                             .metadata
                               span.date.sim=(Date.now() + comment.time)
                               .rating
@@ -221,13 +221,13 @@ block content
                   if comment.new_comment
                     -console.log("New COMMENT AREA");
                     .comment(commentID=comment.new_comment_id)
-                      a.avatar.image(href='/me')
+                      a.avatar.image(href='/me/'+mod)
                         if user.profile.picture
                           img(src=cdn+'/profile_pictures/'+user.profile.picture)
                         else
                           img(src=user.gravatar(60))
                       .content
-                        a.author(href='/me')=user.profile.name || user.username || user.id
+                        a.author(href='/me/'+mod)=user.profile.name || user.username || user.id
                         .metadata
                           span.date.sim=(Date.now() + comment.time)
                           .rating

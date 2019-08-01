@@ -413,7 +413,7 @@ app.get('/class/:classId', passportConfig.isAuthenticated, classController.getCl
 app.post('/classes', passportConfig.isAuthenticated, classController.postCreateClass);
 
 //User's Page
-app.get('/me', passportConfig.isAuthenticated, userController.getMe);
+app.get('/me/:modId', passportConfig.isAuthenticated, userController.getMe);
 app.get('/notifications', passportConfig.isAuthenticated, notificationController.getNotifications);
 
 

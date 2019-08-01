@@ -1,19 +1,17 @@
 extends ui_layout
   
 block content
-  
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   .computer.only.tablet.only.four.wide.column 
     .ui.card
       .image
         if user.profile.picture
-          //-img(src=cdn+'/user_post/'+user.profile.picture)
-          img(src=cdn+'/profile_pictures/avatar-icon.svg')
+          img(src=cdn+'/profile_pictures/'+user.profile.picture)
         else
           img(src=user.gravatar(60))
       .content
         a.header= user.profile.name || user.email || user.id
-        .meta="@"+user.username
+        .meta="@Guest"
         .description=user.profile.bio
         .description
           if user.profile.location
@@ -33,8 +31,7 @@ block content
             |  
             a.ui.avatar.image(href='/me')
               if user.profile.picture
-                //-img(src=cdn+'/user_post/'+user.profile.picture)
-                img(src=cdn+'/profile_pictures/avatar-icon.svg')
+                img(src=cdn+'/profile_pictures/'+user.profile.picture)
               else
                 img(src=user.gravatar(60))
               a(href='/me')
@@ -50,7 +47,7 @@ block content
                 span=val.reply.actor.profile.name
               if val.reply.picture
                 .image
-                  img(src=cdn+"/"+val.reply.picture)
+                  img(src="/"+val.reply.picture)
               .content
                 .description=val.reply.body
           .three.ui.bottom.attached.icon.buttons
@@ -78,8 +75,7 @@ block content
             |  
             a.ui.avatar.image(href='/me')
               if user.profile.picture
-                //-img(src=cdn+'/user_post/'+user.profile.picture)
-                img(src=cdn+'/profile_pictures/avatar-icon.svg')
+                img(src=cdn+'/profile_pictures/'+user.profile.picture)
               else
                 img(src=user.gravatar(60))
             a(href='/me')
