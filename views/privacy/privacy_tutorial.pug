@@ -26,93 +26,95 @@ block content
       .ui.divider
       br
       form.ui.form
-        #step3.grouped.fields
+        .grouped.fields
             label(for='interaction', style="font-size:140%") Interaction Settings
             br
             br
-            label(for='contacts', style="font-size:120%") Contacts
-            .field
-              br
-              label(style="font-size:100%") Allow friend requests from
-                .div(style='width: 200px;')
-                .ui.selection.dropdown
-                  input(type='hidden' name='friendRequests')
-                  i.dropdown.icon
-                  .default.text Select
-                  .menu
-                    .item(data-value='0') Everyone
-                    .item(data-value='1') Friends of Friends
-            br
-            .field
-              label(style="font-size:100%") Who can see my friends list?
-                .div(style='width: 200px;')
-                .ui.selection.dropdown
-                  input(type='hidden' name='friendList')
-                  i.dropdown.icon
-                  .default.text Select
-                  .menu
-                    .item(data-value='0') Everyone
-                    .item(data-value='1') Friends of Friends
-                    .item(data-value='2') Friends
-                    .item(data-value='3') Only Me
-            br
-            label(for='comments', style="font-size:120%") Comments
-            .field
-              br
-              label(style="font-size:100%") Allow comments from
-                .div(style='width: 200px;')
-                .ui.selection.dropdown
-                  input(type='hidden' name='friendRequests')
-                  i.dropdown.icon
-                  .default.text Select
-                  .default.
-                  .menu
-                    .item(data-value='0') Everyone
-                    .item(data-value='1') Friends of Friends
-                    .item(data-value='2') Friends
-                    .item(data-value='3') Only Me
-            br
-            .field
-              label(style="font-size:100%") Block comments from
-              .div(style='width: 200px;')
-                select.ui.fluid.search.dropdown(multiple='')
-                  option Fake N. Ame
-                  option Ima Robot
-                  option Cloe Hansen
-                  option Hayden Abbey
-                  option Kiki Pualani
-                  option Elli Andreas
-                  option Lauren Wakefield
-                  option Rob Yang
-                  option Katherine Zhou
-                  option Franklin Robinson
-                  option Aidan Acosta
-                  option Shika Ramphal
-                  option Jason Perez
-                  option Sarah Stella
-                  option Keith Hernandez
-                  option Elena Anderson
-                  option Mary Beckett
-                  option Ethan Kravitz
-                  option Dylan Goldstein
-                  option David Cole
-                  option Lana Sheehan
-                  option Claire Johnson
-                  option Jenny Chen
-                  option Ella Sroni
-            br
-            label(for='tags', style="font-size:120%") Tags
+            div#step3
+              label(for='contacts', style="font-size:120%") Contacts
               .field
                 br
-                .ui.toggle.checkbox
-                  input(type='checkbox' name='public' checked='checked')
-                  label Allow people to tag me in their posts
+                label(style="font-size:100%") Allow friend requests from
+                  .div(style='width: 200px;')
+                  .ui.selection.dropdown
+                    input(type='hidden' name='friendRequests')
+                    i.dropdown.icon
+                    .default.text Select
+                    .menu
+                      .item(data-value='0') Everyone
+                      .item(data-value='1') Friends of Friends
+              br
               .field
-                .ui.toggle.checkbox
-                  input(type='checkbox' name='public' checked='checked')
-                  label Automatically add tagged posts in my timeline
+                label(style="font-size:100%") Who can see my friends list?
+                  .div(style='width: 200px;')
+                  .ui.selection.dropdown
+                    input(type='hidden' name='friendList')
+                    i.dropdown.icon
+                    .default.text Select
+                    .menu
+                      .item(data-value='0') Everyone
+                      .item(data-value='1') Friends of Friends
+                      .item(data-value='2') Friends
+                      .item(data-value='3') Only Me
+              br
+              label(for='comments', style="font-size:120%") Comments
+              .field
+                br
+                label(style="font-size:100%") Allow comments from
+                  .div(style='width: 200px;')
+                  .ui.selection.dropdown
+                    input(type='hidden' name='friendRequests')
+                    i.dropdown.icon
+                    .default.text Select
+                    .default.
+                    .menu
+                      .item(data-value='0') Everyone
+                      .item(data-value='1') Friends of Friends
+                      .item(data-value='2') Friends
+                      .item(data-value='3') Only Me
+              br
+              .field
+                label(style="font-size:100%") Block comments from
+                .div(style='width: 200px;')
+                  select.ui.fluid.search.dropdown(multiple='')
+                    option Fake N. Ame
+                    option Ima Robot
+                    option Cloe Hansen
+                    option Hayden Abbey
+                    option Kiki Pualani
+                    option Elli Andreas
+                    option Lauren Wakefield
+                    option Rob Yang
+                    option Katherine Zhou
+                    option Franklin Robinson
+                    option Aidan Acosta
+                    option Shika Ramphal
+                    option Jason Perez
+                    option Sarah Stella
+                    option Keith Hernandez
+                    option Elena Anderson
+                    option Mary Beckett
+                    option Ethan Kravitz
+                    option Dylan Goldstein
+                    option David Cole
+                    option Lana Sheehan
+                    option Claire Johnson
+                    option Jenny Chen
+                    option Ella Sroni
+              br
+            div#tagStep    
+              label(for='tags', style="font-size:120%") Tags
+                .field
                   br
-                  br
+                  .ui.toggle.checkbox
+                    input(type='checkbox' name='public' checked='checked')
+                    label Allow people to tag me in their posts
+                .field
+                  .ui.toggle.checkbox
+                    input(type='checkbox' name='public' checked='checked')
+                    label Automatically add tagged posts in my timeline
+                    br
+                    br
       .ui.divider
       br
       form.ui.form
@@ -179,7 +181,13 @@ block content
                 {
                   element: document.querySelectorAll('#step3')[0],
                   intro: "Some social media sites will let you choose who can contact you. You can change who can add you as a friend on the site, comment on your posts, or tag you in posts.",
-                  position: 'bottom',
+                  position: 'left',
+                  scrollTo: "tooltip"
+                },
+                {
+                  element: document.querySelectorAll('#tagStep')[0],
+                  intro: "Changing these settings will stop people from being able to “tag” you in posts that you did not make. This way, you can control which posts show up on your profile.",
+                  position: 'left',
                   scrollTo: "tooltip"
                 },
                 { 

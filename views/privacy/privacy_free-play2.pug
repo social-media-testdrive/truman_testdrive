@@ -36,7 +36,7 @@ block content
       .image
         img.post(src=cdn+"/post_pictures/nyctrip.jpg")
       .content
-        .description(data-hint="This is what Lily’s profile now looks like to strangers on the Internet. You can see that all of her location information has been hidden." data-hintPosition="middle-right")
+        .description(data-hint="This is what Lily’s profile now looks like to the public on the Internet. You can see that all of her location information has been hidden." data-hintPosition="middle-right")
           | On a trip to nyc with my family😃
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
@@ -85,7 +85,7 @@ block content
                   |  You&apos;ve flagged this!
                   h3.ui.inverted.header
                     span="The admins will review this post further. We are sorry you had this experience."
-      .content(data-hint="However, strangers can still see all of her posts." data-hintPosition="middle-middle")
+      .content(data-hint="However, the public can still see all of her posts." data-hintPosition="middle-middle")
         .right.floated.meta= "3 days ago"
         |
         a(href='/user/hui_lily')
@@ -94,7 +94,7 @@ block content
       .image
         img.post(src=cdn+"/post_pictures/bowlingalley.jpg")
       .content
-        .description
+        .description(data-hint="Since Lily changed her privacy settings, her location information is now only visible to her social media friends." data-hintPosition="middle-middle")
           | bowling with friends!!
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
