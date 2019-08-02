@@ -7,23 +7,23 @@ block content
     .ui.container
       h2.ui.header Privacy Settings
       br
-      .ui.divider
-      br
+      
+      br.ui.divider
       form.ui.form
         .grouped.fields(data-hint=" If your account is on a “Public” setting, everyone on the Internet can access your account and see what you post. Right now, it is set as a public account." data-hintPosition="top-middle")
-          label(for='account', style="font-size:140%") Account Settings
-            .div(data-hint="Let’s try changing it to “Private” so that only people you approve would be able to see your posts. Slide the button over so “Private account” is selected." data-hintPosition="left-middle")
-              .field
-                br
-                .ui.toggle.checkbox
+          label(for='account', style="font-size:140%") Account Settings  
+            .field(data-hint="Let’s try changing it to “Private” so that only people you approve would be able to see your posts. Slide the button over so “Private account” is selected." data-hintPosition="bottom-middle")
+              br
+              .ui.toggle.checkbox
                   input(type='checkbox' name='public')
                   label Private account
-              .field
-                .ui.toggle.checkbox
-                  input(type='checkbox' name='public' checked='checked')
-                  label Allow my account to show in search engine results
-                  br
-                  br
+                
+            .field
+              .ui.toggle.checkbox
+                input(type='checkbox' name='public' checked='checked')
+                label Allow my account to show in search engine results
+                br
+                br
       .ui.divider
       br
       form.ui.form
