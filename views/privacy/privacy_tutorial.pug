@@ -102,7 +102,8 @@ block content
                     option Jenny Chen
                     option Ella Sroni
               br
-            div#tagStep    
+            
+            .grouped.fields#tagStep  
               label(for='tags', style="font-size:120%") Tags
                 .field
                   br
@@ -123,24 +124,24 @@ block content
             br
             br
             label(for='location', style="font-size:120%") Location
-            .field
-              br
-              .ui.toggle.checkbox
-                input(type='checkbox' name='locationShare' checked='checked')
-                label Turn on location sharing
-            .field
-              br
-              label(style="font-size:100%") Share my location with
-              .div(style='width: 200px;')
-                .ui.selection.dropdown
-                  input(type='hidden' name='shareLocationWith')
-                  i.dropdown.icon
-                  .default.text Select
-                  .menu
-                    .item(data-value='0') Everyone
-                    .item(data-value='1') Friends of Friends
-                    .item(data-value='2') Friends
-                    .item(data-value='3') Only Me
+              .field
+                br
+                .ui.toggle.checkbox
+                  input(type='checkbox' name='locationShare' checked='checked')
+                  label Turn on location sharing
+              .field
+                br
+                label(style="font-size:100%") Share my location with
+                .div(style='width: 200px;')
+                  .ui.selection.dropdown
+                    input(type='hidden' name='shareLocationWith')
+                    i.dropdown.icon
+                    .default.text Select
+                    .menu
+                      .item(data-value='0') Everyone
+                      .item(data-value='1') Friends of Friends
+                      .item(data-value='2') Friends
+                      .item(data-value='3') Only Me
             br
             label(for='advertisements', style="font-size:120%") Advertisements
               .field

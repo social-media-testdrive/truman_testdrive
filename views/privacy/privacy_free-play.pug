@@ -10,7 +10,7 @@ block content
       .content
         a.header= 'Lily Hui'
         .meta="@"+'hui_lily'
-        .description="😍🤩😝😁 boynton'20" 
+        .description="😍🤩😝😁" 
         .description 
           i.marker.icon
           span="Ithaca, NY"
@@ -30,13 +30,12 @@ block content
       .content
         .right.floated.meta= "1 day ago"
         |
-        a(href='/user/hui_lily')
-          img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
-          span='Lily Hui'
+        img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
+        span='Lily Hui'
       .image
         img.post(src=cdn+"/post_pictures/nyctrip.jpg")
       .content
-        .description(data-hint="Lily has shared location information in her posts. Her location information is also available to anyone on the Internet." data-hintPosition="middle-right")
+        .description
           | On a trip to nyc with my family😃
           span.locationtag  — At New York, NY
       .three.ui.bottom.attached.icon.buttons
@@ -89,13 +88,12 @@ block content
       .content
         .right.floated.meta= "3 days ago"
         |
-        a(href='/user/hui_lily')
-          img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
-          span='Lily Hui'
+        img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
+        span='Lily Hui'
       .image
         img.post(src=cdn+"/post_pictures/bowlingalley.jpg")
       .content
-        .description
+        .description(data-hint="Lily has shared location information in her posts. Her location information is also available to anyone on the Internet." data-hintPosition="middle-right")
           | bowling with friends!!
           span.locationtag  — At Bowl-O-Drome, Ithaca, NY
       .three.ui.bottom.attached.icon.buttons
@@ -164,9 +162,8 @@ block content
       .content
         .right.floated.meta= "4 days ago"
         |
-        a(href='/user/hui_lily')
-          img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
-          span='Lily Hui'
+        img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
+        span='Lily Hui'
       .image
         img.post(src=cdn+"/post_pictures/prettyflowers.png")
       .content
@@ -223,9 +220,8 @@ block content
       .content
         .right.floated.meta= "A week ago"
         |
-        a(href='/user/hui_lily')
-          img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
-          span='Lily Hui'
+        img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
+        span='Lily Hui'
       .image
         img.post(src=cdn+"/post_pictures/friendshipbracelet.png")
       .content
@@ -280,9 +276,8 @@ block content
       .content
         .right.floated.meta= "A week ago"
         |
-        a(href='/user/hui_lily')
-          img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
-          span='Lily Hui'
+        img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
+        span='Lily Hui'
       .image
         img.post(src=cdn+"/post_pictures/gingerbread.jpg")
       .content
@@ -355,9 +350,8 @@ block content
       .content
         .right.floated.meta= "Two weeks ago"
         |
-        a(href='/user/hui_lily')
-          img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
-          span='Lily Hui'
+        img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
+        span='Lily Hui'
       .image
         img.post(src=cdn+"/post_pictures/healthyeating.png")
       .content
@@ -430,9 +424,8 @@ block content
       .content
         .right.floated.meta= "Two weeks ago"
         |
-        a(href='/user/hui_lily')
-          img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
-          span='Lily Hui'
+        img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
+        span='Lily Hui'
       .image
         img.post(src=cdn+"/post_pictures/zoomonkey.jpg")
       .content
@@ -471,9 +464,8 @@ block content
       .content
         .right.floated.meta= "Two weeks ago"
         |
-        a(href='/user/hui_lily')
-          img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
-          span='Lily Hui'
+        img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
+        span='Lily Hui'
       .image
         img.post(src=cdn+"/post_pictures/lilypicture.png")
       .content
@@ -537,8 +529,10 @@ block content
       
             
 
-    
-    button.ui.big.labeled.icon.button.free1
+    .ui.warning.message#clickAllDots(style="display:none;")
+      .header
+        | Click through all of the blue dots to continue
+    button.ui.big.labeled.icon.button.free1#free1Button
         i.rocket.icon
         |   Let's Continue!
 
@@ -548,10 +542,11 @@ block content
 
 block scripts
   script().
-     
+    var literacy_counter = 0;
+    
     function startIntro(){
         var hints;
-        var literacy_counter = 0;
+        
         var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
           intro.setOptions({
             steps: [
@@ -574,10 +569,19 @@ block scripts
           console.log('hints added')
           hints.onhintclose(function(e) {
            literacy_counter++;
-           if(literacy_counter == 2) {$( ".free1" ).addClass("green");}
+           if(literacy_counter == 2) {
+             $('#clickAllDots').hide();
+             $( ".free1" ).addClass("green");
+           }
           });
         });
           
       };
+      
+      $('#free1Button').on('click', function () { 
+        if(literacy_counter != 2){
+          $('#clickAllDots').show();
+        }
+      });
 
       $(window).on("load", function() {startIntro();});
