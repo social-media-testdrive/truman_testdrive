@@ -21,33 +21,35 @@ block content
               | Social media sites have a privacy policy that explains what information they collect about you and what they do with it.
         .sub.header 
           i.eye.icon 
-          span Read and check all the boxes
+          span Read and check all the boxes below
   
     .ui.message.negative.transition.hidden
       i.close.icon
       .header
         | Read and select all boxes to proceed!
           
-    .ui.styled.fluid.accordion          
-      #point3.title
-        i.dropdown.icon
-        |    Remember the word ASK when you analyze a privacy policy. ASK yourself…
+        //-.ui.styled.fluid.accordion   
+    .ui.raised.segment 
+      h5.ui.header#point3
+        i.right.arrow.icon
+        .content
+          |    Remember the word ASK when you analyze a privacy policy. ASK yourself…
       .content.ui.list
           .item
-            #protip1.ui.floated.compact.segment
-              .ui.fitted.large.checkbox
+            #protip1.ui.segment
+              .ui.checkbox
                 input.ui(type="checkbox")
-            .label Accessed: What will be <b>accessed</b> or collected by the company?
+                label(style="vertical-align: middle;") Accessed: What will be <b>accessed</b> or collected by the company?
           .item
-            #protip2.ui.floated.compact.segment
-              .ui.fitted.large.checkbox
+            #protip2.ui.segment
+              .ui.checkbox
                 input.ui(type="checkbox")
-            .label Shared: What will be <b>shared</b> with other companies?
+                label Shared: What will be <b>shared</b> with other companies?
           .item
-            #protip3.ui.floated.compact.segment
-              .ui.fitted.large.checkbox
+            #protip3.ui.segment
+              .ui.checkbox
                 input.ui(type="checkbox")
-            .label Known: What could be <b>known</b> about me if I use this?
+                label Known: What could be <b>known</b> about me if I use this?
                   
     br
     .ui.big.labeled.icon.button.cybersim2
