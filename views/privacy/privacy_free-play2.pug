@@ -87,13 +87,15 @@ block content
       .content(data-hint="However, the public can still see all of her posts." data-hintPosition="middle-middle")
         .right.floated.meta= "3 days ago"
         |
-        img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
-        span='Lily Hui'
+        a(href="/user/Suzieee")
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user40.jpg')
+          span Susan Turner
       .image
         img.post(src=cdn+"/post_pictures/bowlingalley.jpg")
       .content
-        .description(data-hint="Since Lily changed her privacy settings, her location information is now only visible to her social media friends." data-hintPosition="middle-middle")
+        .description(data-hint="Since Lily changed her privacy settings, her location information is now only visible to her social media friends." data-hintPosition="middle-right")
           | bowling with friends!!
+          span.locationtag  — with <a href="/user/emmaaaaa">Emma Garcia</a> and Lily Hui
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
           i.reply.icon
@@ -113,7 +115,7 @@ block content
             a.avatar
               img(src=cdn+'/profile_pictures/user47.jpeg')
             .content
-              a.author Ariel Simon
+              a.author(href="/user/arihearts") Ariel Simon
               .metadata
                 span.date 1 Day ago
                 .rating
@@ -186,7 +188,7 @@ block content
             a.avatar
               img(src=cdn+'/profile_pictures/user47.jpeg')
             .content
-              a.author Ariel Simon
+              a.author(href="/user/arihearts") Ariel Simon
               .metadata
                 span.date 2 Days ago
                 .rating
@@ -241,7 +243,7 @@ block content
           a.avatar
             img(src=cdn+'/profile_pictures/user41.jpg')
           .content
-            a.author Emma Garcia
+            a.author(href="/user/emmaaaaa") Emma Garcia
             .metadata
               span.date 5 Days ago
               .rating
@@ -272,13 +274,15 @@ block content
       .content
         .right.floated.meta= "A week ago"
         |
-        img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
-        span='Lily Hui'
+        a(href="/user/arihearts")
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user47.jpeg')
+          span Ariel Simon
       .image
         img.post(src=cdn+"/post_pictures/gingerbread.jpg")
       .content
         .description
-          | so proud of my gingerbread house
+          | so proud of my gingerbread house   
+          span.locationtag  — with Lily Hui
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
           i.reply.icon
@@ -298,7 +302,7 @@ block content
             a.avatar
               img(src=cdn+'/profile_pictures/user40.jpg')
             .content
-              a.author Susan Turner
+              a.author(href="/user/Suzieee") Susan Turner
               .metadata
                 span.date 2 Days ago
                 .rating
@@ -371,7 +375,7 @@ block content
             a.avatar
               img(src=cdn+'/profile_pictures/user7.jpg')
             .content
-              a.author Lauren Wakefield
+              a.author(href="/user/l.wakefield17")  Lauren Wakefield
               .metadata
                 span.date 2 Days ago
                 .rating
@@ -387,7 +391,7 @@ block content
             a.avatar
               img(src=cdn+'/profile_pictures/user47.jpeg')
             .content
-              a.author Ariel Simon
+              a.author(href="/user/arihearts") Ariel Simon
               .metadata
                 span.date 2 Days ago
                 .rating
@@ -483,7 +487,7 @@ block content
             a.avatar
               img(src=cdn+'/profile_pictures/user7.jpg')
             .content
-              a.author Lauren Wakefield
+              a.author(href="/user/l.wakefield17")  Lauren Wakefield
               .metadata
                 span.date 2 Days ago
                 .rating
@@ -499,7 +503,7 @@ block content
             a.avatar
               img(src=cdn+'/post_pictures/lilyprofpic.png')
             .content
-              a.author Lilu Hui
+              a.author Lily Hui
               .metadata
                 span.date 2 Days ago
                 .rating
@@ -521,8 +525,10 @@ block content
       
             
 
-    
-    button.ui.big.labeled.icon.button.settings2
+    .ui.warning.message#clickAllDotsFree2(style="display:none;")
+      .header
+        | Click through all of the blue dots to continue
+    button.ui.big.labeled.icon.button.settings2#settings2
         i.rocket.icon
         |   Let's Continue!
 
@@ -532,19 +538,28 @@ block content
 
 block scripts
   script().
-     
+    var literacy_counter = 0;
+    
     function startIntro(){
         var hints;
-        var literacy_counter = 0;
-
+      
         hints = introJs().addHints();
         console.log('hints added')
         hints.onhintclose(function(e) {
          literacy_counter++;
-         if(literacy_counter == 2) {$( ".settings2" ).addClass("green");}
+         if(literacy_counter == 3) {
+           $('#clickAllDotsFree2').hide();
+           $( ".settings2" ).addClass("green");
+         }
         });
 
           
       };
+      
+      $('#settings2').on('click', function () { 
+        if(literacy_counter != 3){
+          $('#clickAllDotsFree2').show();
+        }
+      });
 
       $(window).on("load", function() {startIntro();});

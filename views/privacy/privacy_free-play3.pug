@@ -26,7 +26,11 @@ block content
     br
     .content(data-hint="A private profile can protect your information and keep it safe. If you have your information available to the public, people can use it to try to trick or scam you." data-hintPosition="middle-middle")
     br
-    button.ui.big.labeled.icon.button.privacyresults
+      
+    .ui.warning.message#clickAllDotsFinal(style="display:none;")
+      .header
+        | Click through all of the blue dots to continue
+    button.ui.big.labeled.icon.button.privacyresults#privacyresults
         i.rocket.icon
         |   Let's Continue!
 
@@ -36,19 +40,28 @@ block content
 
 block scripts
   script().
-     
+   var literacy_counter = 0;
     function startIntro(){
         var hints;
-        var literacy_counter = 0;
+        
 
         hints = introJs().addHints();
         console.log('hints added')
         hints.onhintclose(function(e) {
          literacy_counter++;
-         if(literacy_counter == 2) {$( ".privacyresults" ).addClass("green");}
+         if(literacy_counter == 2) {
+           $('#clickAllDotsFinal').hide();
+           $( ".privacyresults" ).addClass("green");
+         }
         });
 
           
       };
+      
+      $('#privacyresults').on('click', function () { 
+        if(literacy_counter != 2){
+          $('#clickAllDotsFinal').show();
+        }
+      });
 
       $(window).on("load", function() {startIntro();});

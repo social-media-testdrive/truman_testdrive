@@ -17,13 +17,16 @@ block content
               .ui.toggle.checkbox
                   input(type='checkbox' name='public')
                   label Private account
-                
+            span.settingSmallLabel When your account is private, only people you approve can see your posts.
+            br
+            br
             .field
               .ui.toggle.checkbox
                 input(type='checkbox' name='public' checked='checked')
                 label Allow my account to show in search engine results
-                br
-                br
+            span.settingSmallLabel When this setting is on, search engines may link to your profile in their results.
+            br
+            br
       .ui.divider
       br
       form.ui.form
@@ -118,60 +121,49 @@ block content
       br
       form.ui.form
         .grouped.fields
-            label(for='information', style="font-size:140%") Information Sharing Settings
-            br
-            br 
-            label(for='location', style="font-size:120%") Location
-              .field(data-hint="Use this setting to control how you share your location information. Right now, it is set so that you are putting your location on every post. You can try turning this off entirely, or restricting who can see your location information.", data-hintPosition="top-middle")
+            label(for='information', style="font-size:140%") Location Sharing Settings
+              .field(data-hint="Use this setting to control how you share your location information. Right now, it is set so that you are putting your location on every post." data-hintPosition="middle-middle")
                 br
                 .ui.toggle.checkbox
                   input(type='checkbox' name='locationShare' checked='checked')
                   label Turn on location sharing
-              .field
-                br
-                label(style="font-size:100%") Share my location with
+            .field(data-hint="You can try turning this off entirely, or restricting who can see your location information." data-hintPosition="middle-middle")
+              br
+              label(style="font-size:100%") Share my location with
                 .div(style='width: 200px;')
-                  .ui.selection.dropdown
-                    input(type='hidden' name='shareLocationWith')
-                    i.dropdown.icon
-                    .default.text Select
-                    .menu
-                      .item(data-value='0') Everyone
-                      .item(data-value='1') Friends of Friends
-                      .item(data-value='2') Friends
-                      .item(data-value='3') Only Me
+                .ui.selection.dropdown
+                  input(type='hidden' name='shareLocationWith')
+                  i.dropdown.icon
+                  .default.text Select
+                  .menu
+                    .item(data-value='0') Everyone
+                    .item(data-value='1') Friends of Friends
+                    .item(data-value='2') Friends
+                    .item(data-value='3') Only Me
             br
-            label(for='advertisements', style="font-size:120%") Advertisements
-              .field(data-hint="This is where you can change how the social media site shows you advertisements. Right now, the site is using your information to show you targeted ads. Let’s try turning off these settings to opt out of targeted advertisements." data-hintPosition="top-middle")
-                br
-                .ui.toggle.checkbox
-                  input(type='checkbox' name='activityAds' checked='checked')
-                  label Show me ads based on my activity
-              .field
-                .ui.toggle.checkbox
-                  input(type='checkbox' name='partnersAds' checked='checked')
-                  label Show me ads based on data from partners
-                  br
-                  br
             .ui.divider
             br
-    button.ui.big.labeled.icon.button.cybertrans2
+    .ui.warning.message#clickAllDotsSim(style="display:none;")
+      .header
+        | Click through all of the blue dots to continue
+    button.ui.big.labeled.icon.button.cybertrans2#cybertrans2
           i.rocket.icon
           |   Let's Continue!
 
   block scripts
     script().
+      var counter = 0;
       function startIntro(){
           var hints;
-          var counter = 0;
+  
           var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
             intro.setOptions({
               steps: [
                 { 
-                  intro: "This is an example of a privacy settings page you could see on a social media site."
+                  intro: "Now that you have learned about different privacy settings, let’s practice how to change them!"
                 },
                 { 
-                  intro: "Here, you can change how you share information with others. Click on the blue dots &nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more!"
+                  intro: "Click on the blue dots &nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more!"
                 }
                 
               ]
@@ -181,11 +173,20 @@ block content
             console.log('hints added')
             hints.onhintclose(function(e) {
              counter++;
-             if(counter == 4) {$( ".cybertrans2" ).addClass("green");}
+             if(counter == 5) {
+               $('#clickAllDotsSim').hide();
+               $( ".cybertrans2" ).addClass("green");
+             }
             });
           });
             
         };
+        
+        $('#cybertrans2').on('click', function () { 
+          if(counter != 5){
+            $('#clickAllDotsSim').show();
+          }
+        });
         
         $(window).on("load", function() {startIntro();});
 

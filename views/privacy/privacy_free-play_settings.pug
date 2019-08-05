@@ -17,12 +17,16 @@ block content
               .ui.toggle.read-only.checkbox
                 input(type='checkbox' name='privateAccount')
                 label Private account
+            span.settingSmallLabel When your account is private, only people you approve can see your posts.
+            br
+            br
             .field
               .ui.toggle.read-only.checkbox
                 input(type='checkbox' name='public' checked='checked')
                 label Allow my account to show in search engine results
-                br
-                br
+            span.settingSmallLabel When this setting is on, search engines may link to your profile in their results.
+            br
+            br
       .ui.divider
       br
       form.ui.form
@@ -117,21 +121,16 @@ block content
       br
       form.ui.form
         .grouped.fields
-            label(for='information', style="font-size:140%") Information Sharing Settings
-            br
-            br
-            label(for='location', style="font-size:120%") Location
+            label(for='information', style="font-size:140%") Location Sharing Settings
               .field(data-hint='She can <b>turn off location sharing</b> and restrict who can see her location to <b>“Friends” only</b>. Let’s try doing this!' data-hintPosition="top-middle")
                 br
                 .ui.toggle.checkbox#locationCue1(name='locationToggle')
                   input(type='checkbox' name='locationSetting' checked='checked')
                   label Turn on location sharing
-    
             .field
               br
               label(style="font-size:100%") Share my location with
-              
-              .div(style='width: 200px;')
+                .div(style='width: 200px;')
                 .ui.selection.dropdown#locationCue2(name='shareLocationWith')
                   input(type='hidden')
                   i.dropdown.icon
@@ -142,18 +141,6 @@ block content
                     .item(data-value='2') Friends
                     .item(data-value='3') Only Me
             br
-            label(for='advertisements', style="font-size:120%") Advertisements
-              .field
-                br
-                .ui.toggle.read-only.checkbox
-                  input(type='checkbox' name='activityAds' checked='checked')
-                  label Show me ads based on my activity
-              .field
-                .ui.toggle.read-only.checkbox
-                  input(type='checkbox' name='partnersAds' checked='checked')
-                  label Show me ads based on data from partners
-                  br
-                  br
             .ui.divider
             br(data-hint="Have you turned off location sharing and changed who can see Lily’s location? Click “Let’s Continue!” to see how her profile has changed." data-hintPosition="middle-right")
     

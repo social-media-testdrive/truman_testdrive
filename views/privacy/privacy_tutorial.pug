@@ -17,12 +17,16 @@ block content
               .ui.toggle.checkbox
                 input(type='checkbox' name='public')
                 label Private account
+            span.settingSmallLabel When your account is private, only people you approve can see your posts.
+            br
+            br
             .field
               .ui.toggle.checkbox
                 input(type='checkbox' name='public' checked='checked')
                 label Allow my account to show in search engine results
-                br
-                br
+            span.settingSmallLabel When this setting is on, search engines may link to your profile in their results.
+            br
+            br
       .ui.divider
       br
       form.ui.form
@@ -30,7 +34,7 @@ block content
             label(for='interaction', style="font-size:140%") Interaction Settings
             br
             br
-            div#step3
+            #step3.grouped.fields
               label(for='contacts', style="font-size:120%") Contacts
               .field
                 br
@@ -120,41 +124,26 @@ block content
       br
       form.ui.form
         #step4.grouped.fields
-            label(for='information', style="font-size:140%") Information Sharing Settings
-            br
-            br
-            label(for='location', style="font-size:120%") Location
+            label(for='information', style="font-size:140%") Location Sharing Settings
               .field
                 br
                 .ui.toggle.checkbox
                   input(type='checkbox' name='locationShare' checked='checked')
                   label Turn on location sharing
-              .field
-                br
-                label(style="font-size:100%") Share my location with
+            .field
+              br
+              label(style="font-size:100%") Share my location with
                 .div(style='width: 200px;')
-                  .ui.selection.dropdown
-                    input(type='hidden' name='shareLocationWith')
-                    i.dropdown.icon
-                    .default.text Select
-                    .menu
-                      .item(data-value='0') Everyone
-                      .item(data-value='1') Friends of Friends
-                      .item(data-value='2') Friends
-                      .item(data-value='3') Only Me
+                .ui.selection.dropdown
+                  input(type='hidden' name='shareLocationWith')
+                  i.dropdown.icon
+                  .default.text Select
+                  .menu
+                    .item(data-value='0') Everyone
+                    .item(data-value='1') Friends of Friends
+                    .item(data-value='2') Friends
+                    .item(data-value='3') Only Me
             br
-            label(for='advertisements', style="font-size:120%") Advertisements
-              .field
-                br
-                .ui.toggle.checkbox
-                  input(type='checkbox' name='activityAds' checked='checked')
-                  label Show me ads based on my activity
-              .field
-                .ui.toggle.checkbox
-                  input(type='checkbox' name='partnersAds' checked='checked')
-                  label Show me ads based on data from partners
-                  br
-                  br
             .ui.divider
 
   block scripts
@@ -193,7 +182,7 @@ block content
                 },
                 { 
                   element: document.querySelectorAll('#step4')[0],
-                  intro: "Many social media sites will collect information about you to show you targeted advertisements. Here, you can change the information that the website collects about you, such as your location or the things you do on the site.",
+                  intro: "Here, you can change how you share your location information. You can choose to remove it completely or hide it from certain people.",
                   position: 'right',
                   scrollTo: "tooltip"
                 }
