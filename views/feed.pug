@@ -52,7 +52,7 @@ block content
           .right.floated.time.meta= (Date.now() + val.time)
           |  
           a(href='/user/'+val.actor.username)
-            img.ui.avatar.image(src=cdn+'/profile_pictures/'+val.actor.profile.picture)
+            img.ui.avatar.image(src='/picture.svg', data-src=cdn+'/profile_pictures/'+val.actor.profile.picture)
             span=val.actor.profile.name
         //-div(style="position: relative; z-index: 1;")
           img(src="image.png" style="position: absolute; z-index: 2;")
@@ -112,8 +112,8 @@ block content
                 //- Else this is a normal comment from the script
                 else
                   .comment(commentID=comment.id)
-                    a.avatar(href='/user/'+comment.actor.username)
-                      img(src=cdn+'/profile_pictures/'+comment.actor.profile.picture)
+                    a.avatar.image(href='/user/'+comment.actor.username)
+                      img(src='/picture.svg', data-src=cdn+'/profile_pictures/'+comment.actor.profile.picture)
                     .content
                       a.author(href='/user/'+comment.actor.username)=comment.actor.profile.name
                       .metadata

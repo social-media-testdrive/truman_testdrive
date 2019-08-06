@@ -710,21 +710,13 @@ $(window).on("load", function () {
     });
 
   //lazy loading of images
-  $('#content .fluid.card .img img')
+  $('#content .fluid.card .img img, img.ui.avatar.image, a.avatar.image')
     .visibility({
       type: 'image',
       offset: 0,
-      //transition : 'fade in',
-      //duration   : 1000,
-
       onLoad: function (calculations) {
         console.log("@@@@@@@ Real Image @@@@@@@@@");
-        //var data_src = $(this).attr( "data-src" );
-        //$(this).attr( "src",  data_src);
-        //style="color: inherit; display: inline;"
-        //$(this).attr( "style",  "max-width:100%;");
-        $('#content .fluid.card .img img').visibility('refresh');
-
+        $('#content .fluid.card .img img, img.ui.avatar.image, a.avatar.image').visibility('refresh');
       }
     })
     ;
