@@ -356,6 +356,12 @@ app.get('/free-play3/privacy', passportConfig.isAuthenticated, function (req, re
   });
 });
 
+app.get('/free-play4/privacy', passportConfig.isAuthenticated, function (req, res) {
+  res.render('privacy/privacy_free-play4', {
+    title: 'Free-Play 4'
+  });
+});
+
 app.get('/free-settings/privacy', passportConfig.isAuthenticated, function (req, res) {
   res.render('privacy/privacy_free-play_settings', {
     title: 'Free-Play Settings'
@@ -365,6 +371,12 @@ app.get('/free-settings/privacy', passportConfig.isAuthenticated, function (req,
 app.get('/free-settings2/privacy', passportConfig.isAuthenticated, function (req, res) {
   res.render('privacy/privacy_free-play_settings2', {
     title: 'Free-Play Settings 2'
+  });
+});
+
+app.get('/free-settings3/privacy', passportConfig.isAuthenticated, function (req, res) {
+  res.render('privacy/privacy_free-play_settings3', {
+    title: 'Free-Play Settings 3'
   });
 });
 

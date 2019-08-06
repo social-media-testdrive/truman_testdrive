@@ -4,7 +4,7 @@ block content
   
   .computer.only.tablet.only.four.wide.column 
   .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
-    .ui.container(data-hint="What would Lily need to do if she didn’t want strangers to see her social media posts? Which privacy settings would she have to change?")
+    .ui.container(data-hint="Lily would like to hide tagged posts from her profile. Which privacy settings would she have to change?")
       h2.ui.header#topOfPage Privacy Settings
       br
       .ui.divider
@@ -12,12 +12,10 @@ block content
       form.ui.form
         .grouped.fields
           label(for='account', style="font-size:140%") Account Settings
-            .field(data-hint="She can make her account “Private,” so that only her social media friends can see her posts. Let’s try doing this!" data-hintPosition="top-middle")
-              br
-              .ui.warning.message#privateAccountCueText(style="display:none; font-size:60%;")
-                .header
-                  | Turn on the "private account" setting
-              .ui.toggle.checkbox#privateAccountCue(name='togglePrivateAccount')
+            br
+            br
+            .field
+              .ui.toggle.read-only.checkbox(name='togglePrivateAccount')
                 input(type='checkbox' name='toggleValue')
                 label Private account
             span.settingSmallLabel When your account is private, only people you approve can see your posts.
@@ -108,14 +106,14 @@ block content
                   option Ella Sroni
             br
             label(for='tags', style="font-size:120%") Tags
-              .field
+              .field(data-hint="She can turn off tagging settings and hide tagged posts from her timeline. Let’s try doing this!" data-hintPosition="top-middle")
                 br
-                .ui.toggle.read-only.checkbox
-                  input(type='checkbox' name='public')
+                .ui.toggle.checkbox(name='allowTagToggle')#tagCue1
+                  input(type='checkbox' name='allowTagInput' checked='checked')
                   label Allow people to tag me in their posts
               .field
-                .ui.toggle.read-only.checkbox
-                  input(type='checkbox' name='public')
+                .ui.toggle.checkbox(name='autoTagToggle')#tagCue2
+                  input(type='checkbox' name='autoTagInput' checked='checked')
                   label Automatically add tagged posts in my timeline
                   br
                   br
@@ -144,12 +142,18 @@ block content
                     .item(data-value='3') Only Me
             br
             .ui.divider
-            br(data-hint="Have you changed the account settings to a “Private” account? Click “Let’s Continue!” to see how her profile has changed." data-hintPosition="middle-right")
+            br(data-hint="Have you turned off tagging settings and hidden tagged posts from Lily’s timeline? Click “Let’s Continue!” to see how her profile has changed." data-hintPosition="middle-right")
 
-    .ui.warning.message#clickAllDotsSettings2(style="display:none;")
+    .ui.warning.message#tagCue1Text(style="display:none;")
       .header
-        | Click through all of the blue dots to continue
-    button.ui.big.labeled.icon.button.free3#free3Button
+        | Turn off tagging settings
+    .ui.warning.message#tagCue2Text(style="display:none;")
+      .header
+        | Hide tagged posts from the timeline
+    .ui.warning.message#tagDotText(style="display:none;")
+      .header
+        | Click through all of the blue dots
+    button.ui.big.labeled.icon.button.free4#free4Button
         i.rocket.icon
         |   Let's Continue!
         
@@ -159,70 +163,27 @@ block scripts
     
     var literacy_counter = 0;
     
-    //Get the status of the key setting
-    var keySetting1 = $("input[name='toggleValue']").is(':checked');
-    
-    //Using logic to determine if all required criteria are met before allowing to proceed 
-
-    $(".ui.toggle.checkbox[name='togglePrivateAccount']").change(function() {
-      keySetting1 = $("input[name='toggleValue']").is(":checked");
-      if(keySetting1 == true){
-        $('#privateAccountCueText').hide();
-      }
-      if(literacy_counter == 3) {
-        if((keySetting1 == true)){
-           $( ".free3" ).addClass("green");
-        }
-        else{
-          $( ".free3" ).removeClass("green");
-        }
-      }
-    });
+    //Variables for the two key settings 
+    var keySetting1 = $("input[name='allowTagInput']").is(':checked');
+    var keySetting2 = $("input[name='autoTagInput']").is(':checked');
     
     //Initializing and managing the hints
     function startIntro(){
         var hints;
-
         hints = introJs().addHints();
         console.log('hints added')
         hints.onhintclose(function(e) {
          literacy_counter++;
+         //turn the button green if all three criteria are met
          if(literacy_counter == 3) {
-           if(keySetting1 == true){
-              $('#clickAllDotsSettings2').hide();
-              $( ".free3" ).addClass("green");
+           //remove the yellow warning about dots 
+           $('#tagDotText').hide();
+           if((keySetting1 == false) && (keySetting2 == false)){
+              $( ".free4" ).addClass("green");
            }
          }
         });  
       };
-      
-      //Function for adding visual cue to the appropriate setting
-    
-      function jiggleCue() {
-        $('#privateAccountCue').transition('shake');
-      }
-      
-      //Adding messaging for the private account setting, scrolling to the setting
-      
-      $('#free3Button').on('click', function () {  
-        if(literacy_counter != 3){
-          $('#clickAllDotsSettings2').show();
-        }
-        if(keySetting1 == false){
-          $('#privateAccountCueText').show(); 
-          
-          //snippet taken from StackOverflow
-          $([document.documentElement, document.body]).animate({
-              scrollTop: $("#topOfPage").offset().top
-          }, 1000);
-          
-          setTimeout(function () {
-            $('#privateAccountCue').transition('bounce');
-          }, 1000);
-        } else {
-          $('#privateAccountCueText').hide();
-        }
-     });
 
     $(window).on("load", function() {startIntro();});
 
@@ -232,3 +193,63 @@ block scripts
     
     $('#locationDropdown')
       .dropdown('set selected', '2');
+      
+    /*All code below is using logic to determine if all required criteria are met before allowing to proceed, handling error messages*/
+    
+    //Giving appropriate feedback upon clicking continue
+  
+    $('#free4Button').on('click', function () {  
+      if(keySetting1 == true){
+        $('#tagCue1Text').show(); 
+        $('#tagCue1').transition('bounce');   
+      } else {
+        $('#tagCue1Text').hide();
+      }
+      if(keySetting2 == true){
+        $('#tagCue2Text').show(); 
+        $('#tagCue2').transition('bounce');
+      } else {
+        $('#tagCue2Text').hide();
+      } 
+      if(literacy_counter != 3){
+        $('#tagDotText').show(); 
+      }
+   });
+    
+    //Get the value of the toggle when it changes, make messaging disappear if corrrected
+    
+    $(".ui.toggle.checkbox[name='allowTagToggle']").change(function() {
+      keySetting1 = $("input[name='allowTagInput']").is(":checked");
+      
+      //If the yellow warning is already open, make it disappear when setting is corrected
+      if(keySetting1 == false){
+        $('#tagCue1Text').hide();
+      }
+
+      if(literacy_counter == 3) {
+        if((keySetting1 == false) && (keySetting2 == false)){
+           $( ".free4" ).addClass("green");
+        }
+        else{
+          $( ".free4" ).removeClass("green");
+        }
+      }
+    });
+    
+    $(".ui.toggle.checkbox[name='autoTagToggle']").change(function() {
+      keySetting2 = $("input[name='autoTagInput']").is(":checked");
+      
+      //If the yellow warning is already open, make it disappear when setting is corrected
+      if(keySetting2 == false){
+        $('#tagCue2Text').hide();
+      }
+
+      if(literacy_counter == 3) {
+        if((keySetting1 == false) && (keySetting2 == false)){
+           $( ".free4" ).addClass("green");
+        }
+        else{
+          $( ".free4" ).removeClass("green");
+        }
+      }
+    });

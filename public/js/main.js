@@ -467,7 +467,19 @@ $(window).on("load", function () {
       window.location.href = '/free-play2/privacy';
     });
 
-  //Privacy free-play2 to settings2
+  //Privacy free-play2 to settings3
+  $(document).on('click', '.ui.big.labeled.icon.button.settings3.green', function () {
+      console.log(window.location.pathname)
+      window.location.href = '/free-settings3/privacy';
+    });
+
+  //Privacy settings3 to free-play4
+  $(document).on('click', '.ui.big.labeled.icon.button.free4.green', function () {
+      console.log(window.location.pathname)
+      window.location.href = '/free-play4/privacy';
+    });
+
+  //Privacy free-play4 to settings2
   $(document).on('click', '.ui.big.labeled.icon.button.settings2.green', function () {
       console.log(window.location.pathname)
       window.location.href = '/free-settings2/privacy';
