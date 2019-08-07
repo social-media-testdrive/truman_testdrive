@@ -27,8 +27,8 @@ exports.getFileUpload = (req, res) => {
 };
 
 exports.postFileUpload = (req, res) => {
-  console.log("OG file name is "+req.file.originalname);
-  console.log("Actual file name is "+req.file.filename);
+  //console.log("OG file name is "+req.file.originalname);
+  //console.log("Actual file name is "+req.file.filename);
   //filename
   req.flash('success', { msg: 'File was uploaded successfully.' });
   res.redirect('/api/upload');

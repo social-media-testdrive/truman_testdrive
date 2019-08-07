@@ -7,7 +7,7 @@ const _ = require('lodash');
 /**
  * GET /
  * List of Actors.
- 
+
 exports.index = (req, res) => {
   res.render('home', {
     title: 'Home'
@@ -29,10 +29,10 @@ exports.getActor = (req, res, next) => {
 
   var time_diff = Date.now() - req.user.createdAt;
 
-  console.log("START HERE Our Paramater is:::::");
-  console.log(req.params.userId);
-  console.log("Time Diff");
-  console.log(time_diff);
+  //console.log("START HERE Our Paramater is:::::");
+  //console.log(req.params.userId);
+  //console.log("Time Diff");
+  //console.log(time_diff);
 
   User.findById(req.user.id)
   .exec(function (err, user) {
@@ -64,49 +64,49 @@ exports.getActor = (req, res, next) => {
     .where('time').lte(time_diff)
     .sort('-time')
     .populate('actor')
-    .populate({ 
+    .populate({
      path: 'reply',
      populate: {
        path: 'actor',
        model: 'Actor'
-       } 
+       }
     })
     .exec(function (err, script_feed) {
       if (err) { console.log(err); return next(err); }
-      
-      
+
+
       for (var i = script_feed.length - 1; i >= 0; i--) {
 
         var feedIndex = _.findIndex(user.feedAction, function(o) { return o.post == script_feed[i].id; });
 
-             
+
           if(feedIndex!=-1)
           {
             //console.log("WE HAVE AN ACTION!!!!!");
 
             if (user.feedAction[feedIndex].readTime[0])
-            { 
+            {
               script_feed[i].read = true;
               script_feed[i].state = 'read';
-              console.log("Post: %o has been READ", script_feed[i].id);
+              //console.log("Post: %o has been READ", script_feed[i].id);
             }
 
             if (user.feedAction[feedIndex].liked)
-            { 
+            {
               script_feed[i].like = true;
               script_feed[i].likes++;
               //console.log("Post %o has been LIKED", script_feed[i].id);
             }
 
             if (user.feedAction[feedIndex].replyTime[0])
-            { 
+            {
               script_feed[i].reply = true;
               //console.log("Post %o has been REPLIED", script_feed[i].id);
             }
 
             //If this post has been flagged - remove it from FEED array (script_feed)
             if (user.feedAction[feedIndex].flagTime[0])
-            { 
+            {
               script_feed.splice(i,1);
               //console.log("Post %o has been FLAGGED", script_feed[i].id);
             }
@@ -122,12 +122,12 @@ exports.getActor = (req, res, next) => {
           return next(err);
         }
       });
-      console.log("Is block is now "+isBlocked);
+      //console.log("Is block is now "+isBlocked);
       res.render('actor', { script: script_feed, actor: act, blocked:isBlocked });
     });
 
  // }
-	
+
   });//Actor Find One
 });//User.findbyID
 };
@@ -158,7 +158,7 @@ exports.postBlockOrReport = (req, res, next) => {
     //if we have a reported user and they are not already in the list, add them now
     else if (req.body.reported && !(user.reported.includes(req.body.reported)))
     {
-      console.log("@@@Reporting a user now")
+      //console.log("@@@Reporting a user now")
       user.reported.push(req.body.reported);
       var log = {};
       log.time = Date.now();
@@ -189,4 +189,3 @@ exports.postBlockOrReport = (req, res, next) => {
     });
   });
 };
-

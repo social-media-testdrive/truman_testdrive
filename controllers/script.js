@@ -24,7 +24,7 @@ exports.getScript = (req, res, next) => {
   var userAgent = req.headers['user-agent'];
 
 
-  console.log("$#$#$#$#$#$#$START GET SCRIPT$#$#$$#$#$#$#$#$#$#$#$#$#");
+  //console.log("$#$#$#$#$#$#$START GET SCRIPT$#$#$$#$#$#$#$#$#$#$#$#$#");
   //console.log("time_diff  is now "+time_diff);
   //console.log("time_limit  is now "+time_limit);
 
@@ -77,7 +77,7 @@ exports.getScript = (req, res, next) => {
         //user_posts = user.getPostInPeriod(time_limit, time_diff);
         user_posts = user.getModPosts(req.params.modId)
 
-        console.log("@@@@@@@@@@ User Post is size: "+user_posts.length);
+        //console.log("@@@@@@@@@@ User Post is size: "+user_posts.length);
 
         user_posts.sort(function (a, b) {
             return b.relativeTime - a.relativeTime;
@@ -88,12 +88,12 @@ exports.getScript = (req, res, next) => {
           //console.log(user_posts[0].relativeTime);
           //console.log(feed[0].time)
           if(typeof script_feed[0] === 'undefined') {
-              console.log("Script_Feed is empty, push user_posts");
+              //console.log("Script_Feed is empty, push user_posts");
               finalfeed.push(user_posts[0]);
               user_posts.splice(0,1);
           }
           else if(!(typeof user_posts[0] === 'undefined') && (script_feed[0].time < user_posts[0].relativeTime)){
-              console.log("Push user_posts");
+              //console.log("Push user_posts");
               finalfeed.push(user_posts[0]);
               user_posts.splice(0,1);
           }
@@ -105,7 +105,7 @@ exports.getScript = (req, res, next) => {
 
             if(feedIndex!=-1)
             {
-              console.log("WE HAVE AN ACTION!!!!!");
+              //console.log("WE HAVE AN ACTION!!!!!");
 
               //check to see if there are comments - if so remove ones that are not in time yet.
               //Do all comment work here for feed
@@ -122,7 +122,7 @@ exports.getScript = (req, res, next) => {
                     if (user.feedAction[feedIndex].comments[i].new_comment)
                     {
 
-                      console.log("Adding a new Comment by the USER");
+                      //console.log("Adding a new Comment by the USER");
                       var cat = new Object();
                       cat.body = user.feedAction[feedIndex].comments[i].comment_body;
                       cat.new_comment = user.feedAction[feedIndex].comments[i].new_comment;
@@ -131,7 +131,7 @@ exports.getScript = (req, res, next) => {
                       cat.likes = 0;
 
                       script_feed[0].comments.push(cat);
-                      console.log("Already have COMMENT ARRAY");
+                      //console.log("Already have COMMENT ARRAY");
 
 
                     }
@@ -158,7 +158,7 @@ exports.getScript = (req, res, next) => {
                         //Action is a FLAG (user Flaged this comment in this post)
                         if (user.feedAction[feedIndex].comments[i].flagged)
                         {
-                          console.log("Comment %o has been LIKED", user.feedAction[feedIndex].comments[i].id);
+                          //console.log("Comment %o has been LIKED", user.feedAction[feedIndex].comments[i].id);
                           script_feed[0].comments.splice(commentIndex,1);
                         }
                       }
@@ -238,13 +238,13 @@ exports.getScript = (req, res, next) => {
 
       user.save((err) => {
         if (err) {
-          console.log("ERROR IN USER SAVE IS "+err);
+          //console.log("ERROR IN USER SAVE IS "+err);
           return next(err);
         }
         //req.flash('success', { msg: 'Profile information has been updated.' });
       });
 
-      console.log("Script Size is now: "+finalfeed.length);
+      //console.log("Script Size is now: "+finalfeed.length);
       res.render('script', { script: finalfeed, mod: req.params.modId });
 
       });//end of Script.find()
@@ -257,7 +257,7 @@ exports.getScript = (req, res, next) => {
 exports.getScriptPost = (req, res) => {
 
 	Script.findOne({ _id: req.params.id}, (err, post) => {
-		console.log(post);
+		//console.log(post);
 		res.render('script_post', { post: post });
 	});
 };
@@ -271,11 +271,11 @@ exports.getScriptPost = (req, res) => {
 exports.getScriptFeed = (req, res, next) => {
 
 
-  console.log("$#$#$#$#$#$#$START GET FEED$#$#$$#$#$#$#$#$#$#$#$#$#");
+  //console.log("$#$#$#$#$#$#$START GET FEED$#$#$$#$#$#$#$#$#$#$#$#$#");
   //console.log("time_diff  is now "+time_diff);
   //console.log("time_limit  is now "+time_limit);
   //study2_n0_p0
-  console.log("$#$#$#$#$#$#$START GET FEED$#$#$$#$#$#$#$#$#$#$#$#$#");
+  //console.log("$#$#$#$#$#$#$START GET FEED$#$#$$#$#$#$#$#$#$#$#$#$#");
   var scriptFilter = "";
 
 
@@ -288,7 +288,7 @@ exports.getScriptFeed = (req, res, next) => {
   //scriptFilter = req.params.caseId;
 
   //req.params.modId
-  console.log("#############SCRIPT FILTER IS NOW " + scriptFilter);
+  //console.log("#############SCRIPT FILTER IS NOW " + scriptFilter);
 
   //{
 
@@ -317,7 +317,7 @@ exports.getScriptFeed = (req, res, next) => {
       //finalfeed = shuffle(finalfeed);
 
 
-      console.log("Script Size is now: "+finalfeed.length);
+      //console.log("Script Size is now: "+finalfeed.length);
       res.render('feed', { script: finalfeed});
 
       });//end of Script.find()
@@ -342,7 +342,7 @@ Add a new post to the DB from the user
 */
 exports.newPost = (req, res) => {
 
-  console.log("###########NEW POST#############");
+  //console.log("###########NEW POST#############");
   User.findById(req.user.id, (err, user) => {
     if (err) { return next(err); }
 
@@ -359,19 +359,19 @@ exports.newPost = (req, res) => {
     if (!(user.numPosts) && user.numPosts < -1)
     {
       user.numPosts = -1;
-      console.log("numPost is "+user.numPosts);
+      //console.log("numPost is "+user.numPosts);
     }
 
     if (!(user.numReplies) && user.numReplies < -1)
     {
       user.numReplies = -1;
-      console.log("numReplies is "+user.numReplies);
+      //console.log("numReplies is "+user.numReplies);
     }
 
     if (!(user.numActorReplies) && user.numActorReplies < -1)
     {
       user.numActorReplies = -1;
-      console.log("numActorReplies is "+user.numActorReplies);
+      //console.log("numActorReplies is "+user.numActorReplies);
     }
 
 
@@ -381,9 +381,9 @@ exports.newPost = (req, res) => {
     post.postID = user.numPosts;
     post.type = "user_post";
 
-    console.log("numPost is now "+user.numPosts);
+    //console.log("numPost is now "+user.numPosts);
     user.posts.unshift(post);
-    console.log("CREATING NEW POST!!!");
+    //console.log("CREATING NEW POST!!!");
 
     user.save((err) => {
           if (err) {
@@ -434,7 +434,7 @@ exports.postUpdateFeedAction = (req, res, next) => {
     //somehow user does not exist here
     if (err) { return next(err); }
 
-    console.log("@@@@@@@@@@@ TOP postID is  ", req.body.postID);
+    //console.log("@@@@@@@@@@@ TOP postID is  ", req.body.postID);
 
     //find the object from the right post in feed
     var feedIndex = _.findIndex(user.feedAction, function(o) { return o.post == req.body.postID; });
@@ -444,7 +444,7 @@ exports.postUpdateFeedAction = (req, res, next) => {
     if(feedIndex==-1)
     {
       //Post does not exist yet in User DB, so we have to add it now
-      console.log("$$$$$Making new feedAction Object! at post ", req.body.postID);
+      //console.log("$$$$$Making new feedAction Object! at post ", req.body.postID);
       var cat = new Object();
       cat.post = req.body.postID;
       if(!(req.body.start))
@@ -456,12 +456,12 @@ exports.postUpdateFeedAction = (req, res, next) => {
       //add new post into feedAction
       //user.feedAction.push(cat);
       feedIndex = user.feedAction.push(cat) - 1;
-      console.log("##### new index is at index "+ feedIndex);
+      //console.log("##### new index is at index "+ feedIndex);
 
     }
 
       //we found the right post, and feedIndex is the right index for it
-      console.log("##### FOUND post "+req.body.postID+" at index "+ feedIndex);
+      //console.log("##### FOUND post "+req.body.postID+" at index "+ feedIndex);
 
       //create a new Comment
       if(req.body.new_comment)
@@ -472,8 +472,8 @@ exports.postUpdateFeedAction = (req, res, next) => {
           user.numReplies = user.numReplies + 1;
           cat.new_comment_id = user.numReplies;
           cat.comment_body = req.body.comment_text;
-          console.log("Start Time is: "+user.feedAction[feedIndex].startTime);
-          console.log("DATE Time is: "+req.body.new_comment);
+          //console.log("Start Time is: "+user.feedAction[feedIndex].startTime);
+          //console.log("DATE Time is: "+req.body.new_comment);
           cat.commentTime = req.body.new_comment - user.feedAction[feedIndex].startTime;
           //console.log("Comment Time is: "+cat.commentTime);
 
@@ -550,16 +550,16 @@ exports.postUpdateFeedAction = (req, res, next) => {
         if ((!user.feedAction[feedIndex].flagTime)&&req.body.flag)
         {
           let flag = req.body.flag - user.feedAction[feedIndex].startTime
-          console.log("!!!!!New FIRST FLAG Time: ", flag);
+          //console.log("!!!!!New FIRST FLAG Time: ", flag);
           user.feedAction[feedIndex].flagTime = [flag];
-          console.log("!!!!!adding FIRST FLAG time [0] now which is  ", user.feedAction[feedIndex].flagTime[0]);
+          //console.log("!!!!!adding FIRST FLAG time [0] now which is  ", user.feedAction[feedIndex].flagTime[0]);
         }
 
         //Already have a flagTime Array, New FLAG event, need to add this to flagTime array
         else if ((user.feedAction[feedIndex].flagTime)&&req.body.flag)
         {
           let flag = req.body.flag - user.feedAction[feedIndex].startTime
-          console.log("%%%%%Add new FLAG Time: ", flag);
+          //console.log("%%%%%Add new FLAG Time: ", flag);
           user.feedAction[feedIndex].flagTime.push(flag);
         }
 
@@ -567,17 +567,17 @@ exports.postUpdateFeedAction = (req, res, next) => {
         else if ((!user.feedAction[feedIndex].likeTime)&&req.body.like)
         {
           let like = req.body.like - user.feedAction[feedIndex].startTime
-          console.log("!!!!!!New FIRST LIKE Time: ", like);
+          //console.log("!!!!!!New FIRST LIKE Time: ", like);
           user.feedAction[feedIndex].likeTime = [like];
           user.feedAction[feedIndex].liked = true;
-          console.log("!!!!!!!adding FIRST LIKE time [0] now which is  ", user.feedAction[feedIndex].likeTime[0]);
+          //console.log("!!!!!!!adding FIRST LIKE time [0] now which is  ", user.feedAction[feedIndex].likeTime[0]);
         }
 
         //Already have a likeTime Array, New LIKE event, need to add this to likeTime array
         else if ((user.feedAction[feedIndex].likeTime)&&req.body.like)
         {
           let like = req.body.like - user.feedAction[feedIndex].startTime
-          console.log("%%%%%Add new LIKE Time: ", like);
+          //console.log("%%%%%Add new LIKE Time: ", like);
           user.feedAction[feedIndex].likeTime.push(like);
           if(user.feedAction[feedIndex].liked)
           {
@@ -593,22 +593,22 @@ exports.postUpdateFeedAction = (req, res, next) => {
         else if ((!user.feedAction[feedIndex].replyTime)&&req.body.reply)
         {
           let reply = req.body.reply - user.feedAction[feedIndex].startTime
-          console.log("!!!!!!!New FIRST REPLY Time: ", reply);
+          //console.log("!!!!!!!New FIRST REPLY Time: ", reply);
           user.feedAction[feedIndex].replyTime = [reply];
-          console.log("!!!!!!!adding FIRST REPLY time [0] now which is  ", user.feedAction[feedIndex].replyTime[0]);
+          //console.log("!!!!!!!adding FIRST REPLY time [0] now which is  ", user.feedAction[feedIndex].replyTime[0]);
         }
 
         //Already have a replyTime Array, New REPLY event, need to add this to replyTime array
         else if ((user.feedAction[feedIndex].replyTime)&&req.body.reply)
         {
           let reply = req.body.reply - user.feedAction[feedIndex].startTime
-          console.log("%%%%%Add new REPLY Time: ", reply);
+          //console.log("%%%%%Add new REPLY Time: ", reply);
           user.feedAction[feedIndex].replyTime.push(reply);
         }
 
         else
         {
-          console.log("Got a POST that did not fit anything. Possible Error.")
+          //console.log("Got a POST that did not fit anything. Possible Error.")
         }
       }//end of ELSE ANYTHING NOT A COMMENT
 
@@ -640,11 +640,11 @@ exports.postUpdateFeedAction = (req, res, next) => {
  gets deleted here
  */
 exports.postDeleteFeedAction = (req, res, next) => {
-  console.log("Deleting user feed posts Actions")
+  //console.log("Deleting user feed posts Actions")
   User.findById(req.user.id, (err, user) => {
     //somehow user does not exist here
     if (err) { return next(err); }
-    console.log("@@@@@@@@@@@  /deleteUserFeedActions req body  ", req.body);
+    //console.log("@@@@@@@@@@@  /deleteUserFeedActions req body  ", req.body);
 
     user.feedAction =[];
     user.save((err) => {

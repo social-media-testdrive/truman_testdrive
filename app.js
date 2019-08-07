@@ -108,7 +108,7 @@ mongoose.set('useNewUrlParser', true);
 mongoose.connect(process.env.PRO_MONGODB_URI || process.env.PRO_MONGOLAB_URI);
 mongoose.connection.on('error', (err) => {
   console.error(err);
-  console.log('%s MongoDB connection error. Please make sure MongoDB is running.', chalk.red('✗'));
+  //console.log('%s MongoDB connection error. Please make sure MongoDB is running.', chalk.red('✗'));
   process.exit();
 });
 
@@ -159,10 +159,10 @@ app.use(flash());
 //multer and lusca no not play well together
 app.use((req, res, next) => {
   if ((req.path === '/api/upload') || (req.path === '/post/new') || (req.path === '/account/profile') || (req.path === '/account/signup_info_post')|| (req.path === '/classes')) {
-    console.log("Not checking CSRF - out path now");
-    console.log("@@@@@request is " + req);
-    console.log("@@@@@file is " + req.file);
-    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+    //console.log("Not checking CSRF - out path now");
+    //console.log("@@@@@request is " + req);
+    //console.log("@@@@@file is " + req.file);
+    //console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
     next();
   } else {
     //lusca.csrf()(req, res, next);
@@ -204,8 +204,8 @@ app.use((req, res, next) => {
 
 //helper function just to see what is in the body
 function check(req, res, next) {
-    console.log("@@@@@@@@@@@@Body is now ");
-    console.log(req.body);
+    //console.log("@@@@@@@@@@@@Body is now ");
+    //console.log(req.body);
     next();
 }
 
@@ -404,7 +404,7 @@ app.get('/tut_guide/:modId', passportConfig.isAuthenticated, function (req, res)
 });
 
 app.get('/results/:modId', passportConfig.isAuthenticated, function (req, res) {
-  console.log(req.param("modId") + '/' + req.param("modId")+'_results')
+  //console.log(req.param("modId") + '/' + req.param("modId")+'_results')
   res.render(req.param("modId") + '/' + req.param("modId")+'_results', {
     title: 'Reflection'
   });
@@ -412,7 +412,7 @@ app.get('/results/:modId', passportConfig.isAuthenticated, function (req, res) {
 
 //For privacy settings page that doesnt do anything
 app.get('/settings/privacy', passportConfig.isAuthenticated, function (req, res) {
-  console.log('privacy/privacy_settings')
+  //console.log('privacy/privacy_settings')
   res.render('privacy/privacy_settings', {
     title: 'Privacy Settings'
   });
@@ -515,8 +515,8 @@ app.use(function(err, req, res, next) {
  * Start Express server.
  */
 app.listen(app.get('port'), () => {
-  console.log('%s App is running at http://localhost:%d in %s mode', chalk.green('✓'), app.get('port'), app.get('env')); 
-  console.log('  Press CTRL-C to stop\n');
+  //console.log('%s App is running at http://localhost:%d in %s mode', chalk.green('✓'), app.get('port'), app.get('env')); 
+  //console.log('  Press CTRL-C to stop\n');
 });
 
 module.exports = app;
