@@ -716,13 +716,13 @@ $(window).on("load", function () {
     });
 
   //lazy loading of images
-  $('#content .fluid.card .img img, img.ui.avatar.image, a.avatar.image')
+  $('#content .fluid.card .img img, img.ui.avatar.image, a.avatar.image img')
     .visibility({
       type: 'image',
       offset: 0,
       onLoad: function (calculations) {
         console.log("@@@@@@@ Real Image @@@@@@@@@");
-        $('#content .fluid.card .img img, img.ui.avatar.image, a.avatar.image').visibility('refresh');
+        $('#content .fluid.card .img img, img.ui.avatar.image, a.avatar.image img').visibility('refresh');
       }
     })
     ;

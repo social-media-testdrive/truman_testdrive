@@ -117,7 +117,7 @@ block content
                       else
                         .comment(commentID=comment.commentID)
                           a.avatar(href='/user/'+comment.actor.username)
-                            img(src=cdn+'/profile_pictures/'+comment.actor.profile.picture)
+                            img(src='/picture.svg', data-src=cdn+'/profile_pictures/'+comment.actor.profile.picture)
                           .content
                             a.author(href='/user/'+comment.actor.username)=comment.actor.profile.name
                             .metadata
@@ -241,8 +241,8 @@ block content
                   //- Else this is a normal comment from the script
                   else
                     .comment(commentID=comment.id)
-                      a.avatar(href='/user/'+comment.actor.username)
-                        img(src=cdn+'/profile_pictures/'+comment.actor.profile.picture)
+                      a.avatar.image(href='/user/'+comment.actor.username)
+                        img(src='/picture.svg', data-src=cdn+'/profile_pictures/'+comment.actor.profile.picture)
                       .content
                         a.author(href='/user/'+comment.actor.username)=comment.actor.profile.name
                         .metadata
