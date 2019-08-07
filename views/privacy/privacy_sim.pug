@@ -146,7 +146,7 @@ block content
     .ui.warning.message#clickAllDotsSim(style="display:none;")
       .header
         | Click through all of the blue dots to continue
-    button.ui.big.labeled.icon.button.cybertrans2#cybertrans2
+    button.ui.big.labeled.icon.button.privacytrans2#privacytrans2
           i.rocket.icon
           |   Let's Continue!
 
@@ -175,14 +175,14 @@ block content
              counter++;
              if(counter == 5) {
                $('#clickAllDotsSim').hide();
-               $( ".cybertrans2" ).addClass("green");
+               $( ".privacytrans2" ).addClass("green");
              }
             });
           });
             
         };
         
-        $('#cybertrans2').on('click', function () { 
+        $('#privacytrans2').on('click', function () { 
           if(counter != 5){
             $('#clickAllDotsSim').show();
           }

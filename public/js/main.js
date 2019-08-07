@@ -447,6 +447,12 @@ $(window).on("load", function () {
       window.location.href = '/tutorial/privacy';
     });
 
+  //Privacy sim to trans2
+  $(document).on('click', '.ui.big.labeled.icon.button.privacytrans2.green', function () {
+      console.log(window.location.pathname)
+      window.location.href = '/trans2/privacy';
+    });
+
   //To sim2
   $(document).on('click', '.ui.big.labeled.icon.button.cybersim2.green', function () {
       console.log(window.location.pathname)
