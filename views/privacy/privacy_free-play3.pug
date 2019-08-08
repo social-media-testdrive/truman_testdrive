@@ -54,7 +54,7 @@ block scripts
         console.log('hints added')
         hints.onhintclose(function(e) {
          literacy_counter++;
-         if(literacy_counter == 2) {
+         if(literacy_counter == 3) {
            $('#clickAllDotsFinal').hide();
            $( ".privacyresults" ).addClass("green");
          }
@@ -64,7 +64,7 @@ block scripts
       };
       
       $('#privacyresults').on('click', function () { 
-        if(literacy_counter != 2){
+        if(literacy_counter != 3){
           $('#clickAllDotsFinal').show();
         }
       });
