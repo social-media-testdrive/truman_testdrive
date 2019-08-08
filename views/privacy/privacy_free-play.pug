@@ -32,9 +32,9 @@ block content
         img.ui.avatar.image(src='/picture.svg', data-src=cdn+'/post_pictures/lilyprofpic.png')
         |   <b>Lily Hui</b>
       .img.post
-        img(src='/picture.svg', data-src=cdn+"/post_pictures/nyctrip.jpg", style="max-width:100%;")
+        img#loadingPostTwo(src='/picture.svg', data-src=cdn+"/post_pictures/nyctrip.jpg", style="max-width:100%;")
       .content
-        .description
+        .description#dataHintThree
           | On a trip to nyc with my family😃
           span.locationtag  — At New York, NY
       .three.ui.bottom.attached.icon.buttons
@@ -572,13 +572,13 @@ block scripts
         hints = introJs().addHints();
         hints.onhintclose(function(e) {
           literacy_counter++;
-          if(literacy_counter == 2) {
+          if(literacy_counter == 3) {
            $('#clickAllDots').hide();
            $( ".free1" ).addClass("green");
           }
         });
 
-        $('#loadingPost')
+        $('#loadingPost, #loadingPostTwo')
           .visibility({
             type: 'image',
             offset: 0
@@ -592,7 +592,22 @@ block scripts
           hints = introJs().addHints();
           hints.onhintclose(function(e) {
             literacy_counter++;
-            if(literacy_counter == 2) {
+            if(literacy_counter == 3) {
+             $('#clickAllDots').hide();
+             $( ".free1" ).addClass("green");
+           }
+          });
+        });
+        
+        $('#loadingPostTwo').on("load", function (){
+          $('#dataHintThree').attr({
+            'data-hint':"Think about what you can learn about Lily! What are some of her hobbies? Where does she like to go? Who are her friends?",
+            'data-hintPosition':"middle-right"
+          });
+          hints = introJs().addHints();
+          hints.onhintclose(function(e) {
+            literacy_counter++;
+            if(literacy_counter == 3) {
              $('#clickAllDots').hide();
              $( ".free1" ).addClass("green");
            }
@@ -604,7 +619,7 @@ block scripts
     };
     
     $('#free1Button').on('click', function () { 
-      if(literacy_counter != 2){
+      if(literacy_counter != 3){
         $('#clickAllDots').show();
       }
     });

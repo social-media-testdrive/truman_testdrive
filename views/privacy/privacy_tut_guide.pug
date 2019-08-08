@@ -4,36 +4,42 @@ block content
 
   .ui.text.container
     br
-    
-    h2.ui.header
-      //- i.check.square.outline.green.icon
-      .content What are some things I can do to protect my privacy?
-        br
-        .ui.raised.segment
+    .ui.raised.segment
+      h2.ui.header
+        //- i.check.square.outline.green.icon
+        .content What are some things I can do to protect my privacy?
+          br
+          
           h5.ui.header
-            i.right.arrow.icon
+            i.arrow.circle.right.blue.icon
             .content
               | Before you can protect your information, you need to understand what companies are collecting about you.
-        .ui.raised.segment
+
           h5.ui.header
-            i.right.arrow.icon
+            i.arrow.circle.right.blue.icon
             .content
               | Social media sites have a privacy policy that explains what information they collect about you and what they do with it.
-        .sub.header 
-          i.eye.icon 
-          span Read and check all the boxes below
+  
+          #tut_guide_next.button.ui.mini.green.right.labeled.icon.button
+                  i.down.arrow.icon
+                  |   Next
+            
+    br
+            
   
     .ui.message.negative.transition.hidden
       i.close.icon
       .header
         | Read and select all boxes to proceed!
           
+    #hiddenEye.content.hidden
+      .sub.header 
+        i.eye.icon 
+        span Read and check all the boxes below
         //-.ui.styled.fluid.accordion   
-    .ui.raised.segment 
-      h5.ui.header#point3
-        i.right.arrow.icon
-        .content
-          |    Remember the word ASK when you analyze a privacy policy. ASK yourself…
+    #askQuestion.ui.raised.segment.hidden
+      h2.ui.header#point3
+        .content Remember the word ASK when you analyze a privacy policy. ASK yourself…
       .content.ui.list
           .item
             #protip1.ui.segment
@@ -60,7 +66,11 @@ block content
     br
 block scripts
   script().
-    $('.ui.accordion').accordion();   
+    $('#tut_guide_next').on('click', function () {  
+      $('#hiddenEye').show();    
+      $('#askQuestion').show(); 
+      $('#askQuestion').transition('jiggle');     
+    }); 
 
     setTimeout(function(){
       $('.sub.header').transition('shake'); 

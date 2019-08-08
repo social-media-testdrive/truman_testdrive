@@ -11,7 +11,7 @@ block content
         a.header= 'Lily Hui'
         .meta="@"+'hui_lily'
         .description="😍🤩😝😁" 
-        .description 
+        .description
           i.marker.icon
           span="Ithaca, NY"
 
@@ -24,15 +24,20 @@ block content
       
             
     br
-    .content(data-hint="A private profile can protect your information and keep it safe. If you have your information available to the public, people can use it to try to trick or scam you." data-hintPosition="middle-middle")
+    .content(data-hint="A private profile can protect your information and keep it safe. If you have your information available to the public, you don’t have control over who sees your content." data-hintPosition="middle-middle")
     br
-      
+    br
+    br
+    .content(data-hint="Make sure to think about what you want to share, and whether you want it to be public or private on the internet." data-hintPosition='middle-middle')
+    br 
+    
     .ui.warning.message#clickAllDotsFinal(style="display:none;")
       .header
         | Click through all of the blue dots to continue
     button.ui.big.labeled.icon.button.privacyresults#privacyresults
         i.rocket.icon
         |   Let's Continue!
+      
 
 
 
