@@ -29,12 +29,12 @@ block content
                     span="The admins will review this post further. We are sorry you had this experience."
       .content
         .right.floated.meta= "1 day ago"
-        img.ui.avatar.image(src='/picture.svg', data-src=cdn+'/post_pictures/lilyprofpic.png')
+        img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
         |   <b>Lily Hui</b>
       .img.post
-        img(src='/picture.svg', data-src=cdn+"/post_pictures/nyctrip.jpg", style="max-width:100%;")
+        img#loadingPostOne(src=cdn+"/post_pictures/nyctrip.jpg", style="max-width:100%;")
       .content
-        .description(data-hint="This is what Lily’s profile now looks like to the public. All of her location information has been hidden. It is now only visible to her social media friends." data-hintPosition="middle-right")
+        .description#dataHintOneA(data-hint="This is what Lily’s profile now looks like to the public. All of her location information has been hidden. It is now only visible to her social media friends." data-hintPosition="middle-right")
           | On a trip to nyc with my family😃
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
@@ -53,7 +53,7 @@ block content
         .ui.comments
           .comment
             a.avatar.image
-              img(src='/picture.svg', data-src=cdn+'/profile_pictures/user71.JPG')
+              img(src=cdn+'/profile_pictures/user71.JPG')
             .content
               a.author Melissa Williams
               .metadata
@@ -83,16 +83,16 @@ block content
                   |  You&apos;ve flagged this!
                   h3.ui.inverted.header
                     span="The admins will review this post further. We are sorry you had this experience."
-      .content(data-hint="Here is an example of a tagged post. Susan created this post and tagged Lily in it." data-hintPosition="middle-middle")
+      .content#dataHintTwoA(data-hint="Here is an example of a tagged post. Susan created this post and tagged Lily in it." data-hintPosition="middle-middle")
         .right.floated.meta= "3 days ago"
         |
         a(href="/user/Suzieee")
-          img.ui.avatar.image(src='/picture.svg', data-src=cdn+'/profile_pictures/user40.jpg')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user40.jpg')
           span(style="color: black;") <b> Susan Turner</b>
       .img.post
-        img(src='/picture.svg', data-src=cdn+"/post_pictures/bowlingalley.jpg", style="max-width:100%;")
+        img#loadingPostTwo(src=cdn+"/post_pictures/bowlingalley.jpg", style="max-width:100%;")
       .content
-        .description(data-hint="Lily can’t change what these posts say because she did not make them. This can be a problem if she doesn’t want this post on her profile!" data-hintPosition="middle-right")
+        .description#dataHintThreeA(data-hint="Lily can’t change what these posts say because she did not make them. This can be a problem if she doesn’t want this post on her profile!", data-hintPosition="middle-right")
           | bowling with friends!!
           span.locationtag  — with Emma Garcia and Lily Hui
       .three.ui.bottom.attached.icon.buttons
@@ -112,7 +112,7 @@ block content
         .ui.comments
           .comment
             a.avatar.image
-              img(src='/picture.svg', data-src=cdn+'/profile_pictures/user47.jpeg')
+              img(src=cdn+'/profile_pictures/user47.jpeg')
             .content
               a.author(href="/user/arihearts") Ariel Simon
               .metadata
@@ -128,7 +128,7 @@ block content
                 a.flag.comment Flag
           .comment
             a.avatar.image
-              img(src='/picture.svg', data-src=cdn+'/post_pictures/lilyprofpic.png')
+              img(src=cdn+'/post_pictures/lilyprofpic.png')
             .content
               a.author Lily Hui
               .metadata
@@ -161,10 +161,10 @@ block content
       .content
         .right.floated.meta= "4 days ago"
         |
-        img.ui.avatar.image(src='/picture.svg', data-src=cdn+'/post_pictures/lilyprofpic.png')
+        img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
         |   <b>Lily Hui</b>
       .img.post
-        img(src='/picture.svg', data-src=cdn+"/post_pictures/prettyflowers.png", style="max-width:100%;")
+        img(src=cdn+"/post_pictures/prettyflowers.png", style="max-width:100%;")
       .content
         .description
           | pretty flowers in my back yard
@@ -185,7 +185,7 @@ block content
         .ui.comments
           .comment
             a.avatar.image
-              img(src='/picture.svg', data-src=cdn+'/profile_pictures/user47.jpeg')
+              img(src=cdn+'/profile_pictures/user47.jpeg')
             .content
               a.author(href="/user/arihearts") Ariel Simon
               .metadata
@@ -218,10 +218,10 @@ block content
       .content
         .right.floated.meta= "A week ago"
         |
-        img.ui.avatar.image(src='/picture.svg', data-src=cdn+'/post_pictures/lilyprofpic.png')
+        img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
         |   <b>Lily Hui</b>
       .img.post
-        img(src='/picture.svg', data-src=cdn+"/post_pictures/friendshipbracelet.png", style="max-width:100%;")
+        img(src=cdn+"/post_pictures/friendshipbracelet.png", style="max-width:100%;")
       .content
         .description
           | Making friendship bracelets❤️
@@ -240,7 +240,7 @@ block content
       .ui.comments
         .comment
           a.avatar.image
-            img(src='/picture.svg', data-src=cdn+'/profile_pictures/user41.jpg')
+            img(src=cdn+'/profile_pictures/user41.jpg')
           .content
             a.author(href="/user/emmaaaaa") Emma Garcia
             .metadata
@@ -274,12 +274,12 @@ block content
         .right.floated.meta= "A week ago"
         |
         a(href="/user/arihearts")
-          img.ui.avatar.image(src='/picture.svg', data-src=cdn+'/profile_pictures/user47.jpeg')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user47.jpeg')
           span(style="color: black;") <b> Ariel Simon</b>
       .img.post
-        img(src='/picture.svg', data-src=cdn+"/post_pictures/gingerbread.jpg", style="max-width:100%;")
+        img#loadingPostThree(src=cdn+"/post_pictures/gingerbread.jpg", style="max-width:100%;")
       .content
-        .description(data-hint="This is another example of a tagged post. Ariel created this post and tagged Lily in it." data-hintPosition="middle-right")
+        .description#dataHintFourA(data-hint="This is another example of a tagged post. Ariel created this post and tagged Lily in it." data-hintPosition="middle-right")
           | so proud of my gingerbread house   
           span.locationtag  — with Lily Hui
       .three.ui.bottom.attached.icon.buttons
@@ -299,7 +299,7 @@ block content
         .ui.comments
           .comment
             a.avatar.image
-              img(src='/picture.svg', data-src=cdn+'/profile_pictures/user40.jpg')
+              img(src=cdn+'/profile_pictures/user40.jpg')
             .content
               a.author(href="/user/Suzieee") Susan Turner
               .metadata
@@ -315,7 +315,7 @@ block content
                 a.flag.comment Flag
           .comment
             a.avatar.image
-              img(src='/picture.svg', data-src=cdn+'/post_pictures/lilyprofpic.png')
+              img(src=cdn+'/post_pictures/lilyprofpic.png')
             .content
               a.author Lily Hui
               .metadata
@@ -348,10 +348,10 @@ block content
       .content
         .right.floated.meta= "Two weeks ago"
         |
-        img.ui.avatar.image(src='/picture.svg', data-src=cdn+'/post_pictures/lilyprofpic.png')
+        img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
         |   <b>Lily Hui</b>
       .img.post
-        img(src='/picture.svg', data-src=cdn+"/post_pictures/healthyeating.png", style="max-width:100%;")
+        img(src=cdn+"/post_pictures/healthyeating.png", style="max-width:100%;")
       .content
         .description
           | healthy eating
@@ -372,7 +372,7 @@ block content
         .ui.comments
           .comment
             a.avatar.image
-              img(src='/picture.svg', data-src=cdn+'/profile_pictures/user7.jpg')
+              img(src=cdn+'/profile_pictures/user7.jpg')
             .content
               a.author(href="/user/l.wakefield17")  Lauren Wakefield
               .metadata
@@ -388,7 +388,7 @@ block content
                 a.flag.comment Flag
           .comment
             a.avatar.image
-              img(src='/picture.svg', data-src=cdn+'/profile_pictures/user47.jpeg')
+              img(src=cdn+'/profile_pictures/user47.jpeg')
             .content
               a.author(href="/user/arihearts") Ariel Simon
               .metadata
@@ -421,10 +421,10 @@ block content
       .content
         .right.floated.meta= "Two weeks ago"
         |
-        img.ui.avatar.image(src='/picture.svg', data-src=cdn+'/post_pictures/lilyprofpic.png')
+        img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
         |   <b>Lily Hui</b>
       .img.post
-        img(src='/picture.svg', data-src=cdn+"/post_pictures/zoomonkey.jpg", style="max-width:100%;")
+        img(src=cdn+"/post_pictures/zoomonkey.jpg", style="max-width:100%;")
       .content
         .description
           | monkey!
@@ -460,10 +460,10 @@ block content
       .content
         .right.floated.meta= "Two weeks ago"
         |
-        img.ui.avatar.image(src='/picture.svg', data-src=cdn+'/post_pictures/lilyprofpic.png')
+        img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
         |   <b>Lily Hui</b>
       .img.post
-        img(src='/picture.svg', data-src=cdn+"/post_pictures/lilypicture.png", style="max-width:100%;")
+        img(src=cdn+"/post_pictures/lilypicture.png", style="max-width:100%;")
       .content
         .description
           | hey it's me 
@@ -484,7 +484,7 @@ block content
         .ui.comments
           .comment
             a.avatar.image
-              img(src='/picture.svg', data-src=cdn+'/profile_pictures/user7.jpg')
+              img(src=cdn+'/profile_pictures/user7.jpg')
             .content
               a.author(href="/user/l.wakefield17")  Lauren Wakefield
               .metadata
@@ -500,7 +500,7 @@ block content
                 a.flag.comment Flag
           .comment
             a.avatar.image
-              img(src='/picture.svg', data-src=cdn+'/post_pictures/lilyprofpic.png')
+              img(src=cdn+'/post_pictures/lilyprofpic.png')
             .content
               a.author Lily Hui
               .metadata
@@ -538,8 +538,102 @@ block content
 block scripts
   script().
     var literacy_counter = 0;
-    
-    function startIntro(){
+  
+    //code from trying to get blue dots to cooperate with lazy loading
+    /*function startIntro(){
+      
+      if(window.location.hash) {
+      
+      } else {
+        
+        var hints;
+  
+
+          $('#loadingPostOne')
+            .visibility({
+              type: 'image',
+              offset: 0
+            });
+          
+          $('#loadingPostOne').on("load", function (){
+            console.log("Loaded post one");
+            $('#dataHintOneA').attr({
+              'data-hint':"This is what Lily’s profile now looks like to the public. All of her location information has been hidden. It is now only visible to her social media friends.",
+              'data-hintPosition':"middle-right"
+            });
+            hints = introJs().addHints();
+            console.log("hints:");
+            console.log(hints);
+            hints.onhintclose(function(e) {
+              literacy_counter++;
+              if(literacy_counter == 4) {
+               $('#clickAllDotsFree2').hide();
+               $( ".settings3" ).addClass("green");
+             }
+            });
+          });
+          
+          $('#loadingPostTwo')
+            .visibility({
+              type: 'image',
+              offset: 0
+            });
+
+          $('#loadingPostTwo').on("load", function (){
+            $('#dataHintTwoA').attr({
+              'data-hint':"Here is an example of a tagged post. Susan created this post and tagged Lily in it.",
+              'data-hintPosition':"middle-middle"
+            });
+            $('#dataHintThreeA').attr({
+              'data-hint':"Lily can’t change what these posts say because she did not make them. This can be a problem if she doesn’t want this post on her profile!",
+              'data-hintPosition':"middle-right"
+            });
+            console.log("loaded post two");
+            hints = introJs().addHints();
+            console.log("hints:");
+            console.log(hints);
+            hints.onhintclose(function(e) {
+              literacy_counter++;
+              if(literacy_counter == 4) {
+               $('#clickAllDotsFree2').hide();
+               $( ".settings3" ).addClass("green");
+             }
+            });
+          });
+          
+          $('#loadingPostThree')
+            .visibility({
+              type: 'image',
+              offset: 0
+            });
+          $('#loadingPostThree').on("load", function (){
+            $('#dataHintFourA').attr({
+              'data-hint':"This is another example of a tagged post. Ariel created this post and tagged Lily in it.",
+              'data-hintPosition':"middle-right"
+            });
+            console.log("loaded post three");
+            hints = introJs().addHints();
+            console.log("hints:");
+            console.log(hints);
+            hints.onhintclose(function(e) {
+              literacy_counter++;
+              if(literacy_counter == 4) {
+               $('#clickAllDotsFree2').hide();
+               $( ".settings3" ).addClass("green");
+             }
+            });
+          });
+      
+        }
+          
+      };
+      
+      $(document).ready(function(){
+        $(this).scrollTop(0);
+      });*/
+      
+      //taken from old code, no lazy loading considerations
+      function startIntro(){
         var hints;
       
         hints = introJs().addHints();
@@ -561,4 +655,9 @@ block scripts
         }
       });
 
-      $(window).on("load", function() {startIntro();});
+      $(window).on("load", function() {
+        startIntro();
+      });
+      
+    
+      

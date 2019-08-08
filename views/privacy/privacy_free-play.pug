@@ -27,7 +27,7 @@ block content
                   |  You&apos;ve flagged this!
                   h3.ui.inverted.header
                     span="The admins will review this post further. We are sorry you had this experience."
-      .content(data-hint="Remember, this is what Lily’s profile looks like to anyone on the Internet. All of her posts can be seen on her profile page.", data-hintPosition="middle-middle")
+      .content#dataHintOne(data-hint="Remember, this is what Lily’s profile looks like to anyone on the Internet. All of her posts can be seen on her profile page." data-hintPosition="middle-middle")
         .right.floated.meta= "1 day ago"
         img.ui.avatar.image(src='/picture.svg', data-src=cdn+'/post_pictures/lilyprofpic.png')
         |   <b>Lily Hui</b>
@@ -165,9 +165,9 @@ block content
         img.ui.avatar.image(src='/picture.svg', data-src=cdn+'/post_pictures/lilyprofpic.png')
         |   <b>Lily Hui</b>
       .img.post
-        img(src='/picture.svg', data-src=cdn+"/post_pictures/prettyflowers.png", style="max-width:100%;")
+        img#loadingPost(src='/picture.svg', data-src=cdn+"/post_pictures/prettyflowers.png", style="max-width:100%;")
       .content
-        .description(data-hint="Lily has shared location information in her posts. Her location information is also available to anyone on the Internet." data-hintPosition="middle-right")
+        .description#dataHintTwo
           | pretty flowers in my back yard
           span.locationtag  — At Ithaca, NY
       .three.ui.bottom.attached.icon.buttons
@@ -546,43 +546,67 @@ block scripts
     var literacy_counter = 0;
     
     function startIntro(){
-        var hints;
+      
+      var hints;
+      
+      var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false,'scrollToElement':true, 'doneLabel':'Done &#10003' });
+        intro.setOptions({
+          steps: [
+            { 
+              intro: "This is the social media profile page of Lily Hui, a middle school student.",
+            },
+            {
+              intro: "This is how Lily’s profile will look to anyone on the Internet."
+            },
+            {
+              intro: "Take some time to look through it and see what kinds of posts she has on her profile!"
+            },
+            { 
+              intro: "Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more..."
+            }
+          ]
+        });
         
-        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
-          intro.setOptions({
-            steps: [
-              { 
-                intro: "This is the social media profile page of Lily Hui, a middle school student."
-              },
-              {
-                intro: "This is how Lily’s profile will look to anyone on the Internet."
-              },
-              {
-                intro: "Take some time to look through it and see what kinds of posts she has on her profile!"
-              },
-              { 
-                intro: "Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more..."
-              }
-            ]
+      intro.start().onexit(function() {
+        
+        hints = introJs().addHints();
+        hints.onhintclose(function(e) {
+          literacy_counter++;
+          if(literacy_counter == 2) {
+           $('#clickAllDots').hide();
+           $( ".free1" ).addClass("green");
+          }
+        });
+
+        $('#loadingPost')
+          .visibility({
+            type: 'image',
+            offset: 0
           });
-          intro.start().onexit(function() {
+      
+        $('#loadingPost').on("load", function (){
+          $('#dataHintTwo').attr({
+            'data-hint':"Lily has shared location information in her posts. Her location information is also available to anyone on the Internet.",
+            'data-hintPosition':"middle-right"
+          });
           hints = introJs().addHints();
-          console.log('hints added')
           hints.onhintclose(function(e) {
-           literacy_counter++;
-           if(literacy_counter == 2) {
+            literacy_counter++;
+            if(literacy_counter == 2) {
              $('#clickAllDots').hide();
              $( ".free1" ).addClass("green");
            }
           });
         });
-          
-      };
-      
-      $('#free1Button').on('click', function () { 
-        if(literacy_counter != 2){
-          $('#clickAllDots').show();
-        }
+        
       });
+        
+    };
+    
+    $('#free1Button').on('click', function () { 
+      if(literacy_counter != 2){
+        $('#clickAllDots').show();
+      }
+    });
 
-      $(window).on("load", function() {startIntro();});
+    $(window).on("load", function() {startIntro();});
