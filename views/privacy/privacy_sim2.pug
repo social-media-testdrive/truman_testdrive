@@ -94,7 +94,7 @@ block scripts
         console.log('hints added')
         hints.onhintclose(function(e) {
          privacy_sim2_counter++;
-         if(privacy_sim2_counter == 5) {
+         if(privacy_sim2_counter == 4) {
            $('#clickAllDotsSim2').hide();
            $( ".privacytutorial" ).addClass("green");
          }
@@ -104,7 +104,7 @@ block scripts
     };
     
     $('#privacytutorial').on('click', function () { 
-      if(privacy_sim2_counter != 5){
+      if(privacy_sim2_counter != 4){
         $('#clickAllDotsSim2').show();
       }
     });
