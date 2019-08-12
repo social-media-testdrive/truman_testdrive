@@ -66,7 +66,7 @@ block content
               img(src=cdn+"/post_pictures/"+val.picture)
           .content
             .description=val.body
-          .two.ui.bottom.attached.icon.buttons
+          .two.ui.bottom.attached.icon.buttons(style="z-index:0;")
             .ui.reply.button(tabindex='0')
               i.reply.icon
               |  Reply
@@ -431,65 +431,65 @@ block content
                   .ui.radio.checkbox
                     input#photoOne.hidden(type='radio' name='picinput' value="basketballshoes.jpg")
                     label
-                        img(src=cdn+"/post_pictures/basketballshoes.jpg" style='width:65%;height:auto;')
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/basketballshoes.jpg" style='width:65%;height:auto;')
                 .field
                   .ui.radio.checkbox
                     input#photoTwo.hidden(type='radio' name='picinput' value="typewriter.jpg")
                     label
-                        img(src=cdn+"/post_pictures/typewriter.jpg" style='width:65%;height:auto;')
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/typewriter.jpg" style='width:65%;height:auto;')
                 .field
                   .ui.radio.checkbox
                     input#photoThree.hidden(type='radio' name='picinput' value="cat.jpg")
                     label
-                        img(src=cdn+"/post_pictures/cat.jpg" style='width:65%;height:auto;') 
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/cat.jpg" style='width:65%;height:auto;') 
               .three.fields
                 .field
                   .ui.radio.checkbox
                     input#photoOne.hidden(type='radio' name='picinput' value="cupcakes.jpg")
                     label
-                        img(src=cdn+"/post_pictures/cupcakes.jpg" style='width:65%;height:auto;')
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/cupcakes.jpg" style='width:65%;height:auto;')
                 .field
                   .ui.radio.checkbox
                     input#photoTwo.hidden(type='radio' name='picinput' value="autumn.jpg")
                     label
-                        img(src=cdn+"/post_pictures/autumn.jpg" style='width:65%;height:auto;')
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/autumn.jpg" style='width:65%;height:auto;')
                 .field
                   .ui.radio.checkbox
                     input#photoThree.hidden(type='radio' name='picinput' value="Disneyland.jpg")
                     label
-                        img(src=cdn+"/post_pictures/Disneyland.jpg" style='width:65%;height:auto;')  
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/Disneyland.jpg" style='width:65%;height:auto;')  
               .three.fields
                 .field
                   .ui.radio.checkbox
                     input#photoTwo.hidden(type='radio' name='picinput' value="studytime.jpg")
                     label
-                        img(src=cdn+"/post_pictures/studytime.jpg" style='width:65%;height:auto;')
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/studytime.jpg" style='width:65%;height:auto;')
                 .field
                   .ui.radio.checkbox
                     input#photoThree.hidden(type='radio' name='picinput' value="palm_trees.jpeg")
                     label
-                        img(src=cdn+"/post_pictures/palm_trees.jpeg" style='width:65%;height:auto;') 
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/palm_trees.jpeg" style='width:65%;height:auto;') 
                 .field
                   .ui.radio.checkbox
                     input#photoOne.hidden(type='radio' name='picinput' value="footballseason.jpg")
                     label
-                        img(src=cdn+"/post_pictures/footballseason.jpg" style='width:65%;height:auto;')
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/footballseason.jpg" style='width:65%;height:auto;')
               .three.fields
                 .field
                   .ui.radio.checkbox
                     input#photoFour.hidden(type='radio' name='picinput' value="Iceland.jpg")
                     label
-                        img(src=cdn+"/post_pictures/Iceland.jpg" style='width:65%;height:auto;')
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/Iceland.jpg" style='width:65%;height:auto;')
                 .field
                   .ui.radio.checkbox
                     input#photoFive.hidden(type='radio' name='picinput' value="balloons.jpg")
                     label
-                        img(src=cdn+"/post_pictures/balloons.jpg" style='width:65%;height:auto;')
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/balloons.jpg" style='width:65%;height:auto;')
                 .field
                   .ui.radio.checkbox
                     input#photoSix.hidden(type='radio' name='picinput' value="beachpuppy.jpg")
                     label
-                        img(src=cdn+"/post_pictures/beachpuppy.jpg" style='width:65%;height:auto;')  
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/beachpuppy.jpg" style='width:65%;height:auto;')  
               
           .ui.error.message 
       .actions  

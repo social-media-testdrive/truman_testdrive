@@ -288,8 +288,11 @@ $(window).on("load", function () {
 
   //get add new feed post modal to work
   $("#newpost, a.item.newpost").click(function () {
-    //console.log("Clicking new Post");
     $(' .ui.small.post.modal').modal('show');
+    //lazy load the images in the modal
+    $(".lazy").each(function() {
+        $(this).attr('src', $(this).attr('data-src'));
+    });
   });
 
     //get add new feed post modal to work
