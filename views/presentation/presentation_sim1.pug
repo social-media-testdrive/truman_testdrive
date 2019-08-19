@@ -18,7 +18,15 @@ block content
   
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column 
 
-    .ui.fluid.card.test(data-hint="Here, he posts funny pictures and casual things that he would not post on his main account because he only wants his best friends to see it.", data-position="top-left")
+    .ui.fluid.card.dim.test(data-hint="Here, he posts funny pictures and casual things that he would not post on his main account because he only wants his best friends to see it.", data-position="top-left")
+      .ui.dimmer.flag
+            .content
+              .center
+                h2.ui.inverted.icon.header
+                  i.red.flag.icon
+                  |  You&apos;ve flagged this!
+                  h3.ui.inverted.header
+                    span="The admins will review this post further. We are sorry you had this experience."
       .content
         .right.floated.meta= "Yesterday"
         |
@@ -51,13 +59,15 @@ block content
               a.author Ebony Darkness Raven Way
               .metadata
                 span.date 1 Minute ago
-                i.heart.icon
-                |  2 Likes
+                .rating
+                  i.heart.icon
+                  span.num 2
+                  |     Likes
               .text()
                 | lmao same. or maybe a sloth
               .actions
-                a.like Like
-                a.flag Flag
+                a.like.comment Like
+                a.flag.comment.comment Flag
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
@@ -65,7 +75,15 @@ block content
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
 
-    .ui.fluid.card.test()
+    .ui.fluid.card.dim.test()
+      .ui.dimmer.flag
+            .content
+              .center
+                h2.ui.inverted.icon.header
+                  i.red.flag.icon
+                  |  You&apos;ve flagged this!
+                  h3.ui.inverted.header
+                    span="The admins will review this post further. We are sorry you had this experience."
       .content
         .right.floated.meta= "Yesterday"
         |
@@ -98,13 +116,15 @@ block content
               a.author Ebony Darkness Raven Way
               .metadata
                 span.date 1 Minute ago
-                i.heart.icon
-                |  0 Likes
+                .rating
+                  i.heart.icon
+                  span.num 0
+                  |     Likes
               .text()
                 | lmao shadyyyy
               .actions
-                a.like Like
-                a.flag Flag
+                a.like.comment Like
+                a.flag.comment.comment Flag
           .comment
             a.avatar
               img(src=cdn+'/profile_pictures/user43.png')
@@ -112,13 +132,15 @@ block content
               a.author My Name
               .metadata
                 span.date 2 Minute ago
-                i.heart.icon
-                |  1 Likes
+                .rating
+                  i.heart.icon
+                  span.num 1
+                  |     Likes
               .text()
                 | lol u think ur so cool
               .actions
-                a.like Like
-                a.flag Flag
+                a.like.comment Like
+                a.flag.comment.comment Flag
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
@@ -126,7 +148,15 @@ block content
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
 
-    .ui.fluid.card.test()
+    .ui.fluid.card.dim.test()
+      .ui.dimmer.flag
+            .content
+              .center
+                h2.ui.inverted.icon.header
+                  i.red.flag.icon
+                  |  You&apos;ve flagged this!
+                  h3.ui.inverted.header
+                    span="The admins will review this post further. We are sorry you had this experience."
       .content
         .right.floated.meta= "Yesterday"
         |
@@ -159,13 +189,15 @@ block content
               a.author Fake N. Ame
               .metadata
                 span.date 10 Minute ago
-                i.heart.icon
-                |  1 Likes
+                .rating
+                  i.heart.icon
+                  span.num 1
+                  |     Likes
               .text()
                 | srsly dude
               .actions
-                a.like Like
-                a.flag Flag
+                a.like.comment Like
+                a.flag.comment.comment Flag
           .comment
             a.avatar
               img(src=cdn+'/profile_pictures/user43.png')
@@ -173,13 +205,15 @@ block content
               a.author My Name
               .metadata
                 span.date 15 Minute ago
-                i.heart.icon
-                |  0 Likes
+                .rating
+                  i.heart.icon
+                  span.num 0
+                  |     Likes
               .text()
                 | yeah i want him to leave lol
               .actions
-                a.like Like
-                a.flag Flag
+                a.like.comment Like
+                a.flag.comment.comment Flag
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
@@ -202,7 +236,7 @@ block scripts
     function startIntro(){
         var hints;
         var literacy_counter = 0;
-        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
+        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
           intro.setOptions({
             steps: [
               { 

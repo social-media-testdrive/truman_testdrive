@@ -1,6 +1,6 @@
 -var cdn = "https://dhpd030vnpk29.cloudfront.net";
 .computer.only.tablet.only.row 
-  .ui.borderless.fixed.menu
+  .ui.borderless.fixed.menu(style="z-index:10000002;")
     .ui.container
       a.item(href='/')
         img.ui.tiny.image(src=cdn+'/finalLogo.png', id='logo')
@@ -28,7 +28,7 @@
             //-.menu
               a.item(href='/logout') Logout
 .mobile.only.row
-  .ui.fluid.top.fixed.four.item.menu
+  .ui.fluid.top.fixed.four.item.menu(style="z-index:10000002;")
     a.item(href='/')
       img.ui.tiny.image(src=cdn+'/finalLogo.png', id='cell_logo')
     if !user
