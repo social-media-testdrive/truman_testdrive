@@ -4,8 +4,8 @@ extends ../ui_layout
 block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   .computer.only.tablet.only.four.wide.column 
-  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
-    .ui.fluid.card.test(postID="3")
+  .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
+    #step1.ui.fluid.card.test(postID="3")
           .content
             .right.floated.meta= "Yesterday"
             |
@@ -55,47 +55,55 @@ block content
                 img.ui.avatar.image(src=cdn+'/profile_pictures/user61.jpg', name="Jane Doe")
               input.newcomment(type='text', placeholder='Write a Message')
               i.big.send.link.icon
+    br
 
 block scripts
   script().
     function startIntro(){
-        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
+        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
           intro.setOptions({
             steps: [
               { 
-                element: document.querySelectorAll('.ui.fluid.card.test')[0],
+                element: document.querySelectorAll('#step1')[0],
                 intro: "You have recently seen that some people keep saying mean things about Dylan. A group of friends from school are bullying Dylan on social media.",
-                position: 'right'
+                position: 'right',
+                scrollTo: 'tooltip'
               },
               {
-                element: document.querySelectorAll('#content.eight')[0],
+                element: document.querySelectorAll('#step1')[0],
                 intro: "<b>Cyberbullying</b> is when someone posts or shares negative things about someone else online. <br>The <b>bully</b> may use digital devices, sites, or apps. The bully often does this again and again to the same person.",
-                position: 'right'
+                position: 'right',
+                scrollTo: 'tooltip'
               },
               { 
                 element: document.querySelectorAll('#step3.text')[0],
                 intro: "This is an example of <b>cyberbullying.</b>",
-                position: 'right'
+                position: 'right',
+                scrollTo: 'tooltip'
               },
               { 
-                element: document.querySelectorAll('#step4')[0],
+                element: document.querySelectorAll('a.flag')[0],
                 intro: "One way you can act against cyberbullying is by pressing the <b>“Flag”</b> button.",
-                position: 'right'
+                position: 'right',
+                scrollTo: 'tooltip'
               },
               { 
                 element: document.querySelectorAll('a.flag')[0],
                 intro: "<b>Flagging</b> something will report it to the website and the bullying post will be taken down. Sometimes it takes a while for the website to respond.",
-                position: 'right'
+                position: 'right',
+                scrollTo: 'tooltip'
               },
               { 
-                element: document.querySelectorAll('input.newcomment')[0],
+                element: document.querySelectorAll('#step7')[0],
                 intro: "Another way you can act against cyberbullying is by writing a <b>supportive comment</b> to the target.",
-                position: 'right'
+                position: 'left',
+                scrollTo: 'tooltip'
               },
               { 
                 element: document.querySelectorAll('#step7')[0],
                 intro: "Another way you can act against cyberbullying is by <b>confronting the bully</b>.",
-                position: 'right'
+                position: 'left',
+                scrollTo: 'tooltip'
               },
               
             ]

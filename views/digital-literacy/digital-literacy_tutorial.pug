@@ -6,7 +6,7 @@ block content
   .computer.only.tablet.only.four.wide.column 
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
 
-    .ui.fluid.card.dim()
+    #step1A.ui.fluid.card.dim()
       .ui.dimmer.flag
         .content
           .center
@@ -22,12 +22,12 @@ block content
               span='Lana Reed'
       .img.post        
         img(src=cdn+'/post_pictures/infolittutorial1_new.jpg' style='max-width:100%;')
-      .content(style="background:rgba(0, 0, 0, 0.05);")
+      #step1.content(style="background:rgba(0, 0, 0, 0.05);")
           //- .read.rounded.right.floated.info_button(id="info_tut_1",style="z-index:9;text-align:center;position:relative;bottom:10px;width:7%;height:auto")
           //-   i.info.icon
           .a#step3(href='#',onclick='return false;')
             | WWW.NEWSNETWORK.COM.CO
-          .header#step1 7 States Will Vote Today Make Homework ILLEGAL for ALL Middle Schooleers!!!!   
+          .header 7 States Will Vote Today Make Homework ILLEGAL for ALL Middle Schooleers!!!!   
       .extra.content
           p              
           .description="BREAKING: 7 States Will Vote Today to Make Homework ILLEGAL!!!!"
@@ -75,10 +75,10 @@ block scripts
           intro.setOptions({
             steps: [
               { 
-                element: document.querySelectorAll('#step1')[0],
+                element: document.querySelectorAll('#step1A')[0],
                 intro: "Fake news articles use <b>shocking and exaggerated headlines and images</b> to get you to click on them. Often, the headline will try to make you curious and lure you like bait to click on it.",
-                position: 'bottom',
-                scrollTo: "tooltip"
+                position: 'right',
+                scrollTo: 'tooltip'
               },
               {
                 element: document.querySelectorAll('.post')[0],

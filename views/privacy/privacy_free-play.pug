@@ -18,7 +18,7 @@ block content
   
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column 
 
-    .ui.fluid.card.dim.test()
+    #step1.ui.fluid.card.dim.test()
       .ui.dimmer.flag
             .content
               .center
@@ -549,20 +549,32 @@ block scripts
     function startIntro(){
         var hints;
         
-        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
+        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
           intro.setOptions({
             steps: [
               { 
-                intro: "This is the social media profile page of Lily Hui, a middle school student."
+                element: document.querySelectorAll('#step1')[0],
+                intro: "This is the social media profile page of Lily Hui, a middle school student.",
+                position:'right',
+                scrollTo:'tooltip'
               },
               {
-                intro: "This is how Lily’s profile will look to anyone on the Internet."
+                element: document.querySelectorAll('#step1')[0],
+                intro: "This is how Lily’s profile will look to anyone on the Internet.",
+                position:'right',
+                scrollTo:'tooltip'
               },
               {
-                intro: "Take some time to look through it and see what kinds of posts she has on her profile!"
+                element: document.querySelectorAll('#step1')[0],
+                intro: "Take some time to look through it and see what kinds of posts she has on her profile!",
+                position:'right',
+                scrollTo:'tooltip'
               },
               { 
-                intro: "Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more..."
+                element: document.querySelectorAll('#step1')[0],
+                intro: "Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more...",
+                position:'right',
+                scrollTo:'tooltip'
               }
             ]
           });
@@ -598,20 +610,28 @@ block scripts
       
       var hints;
       
-      var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false,'scrollToElement':true, 'doneLabel':'Done &#10003' });
+      var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
         intro.setOptions({
           steps: [
             { 
+              element: document.querySelectorAll('#step1')[0],
               intro: "This is the social media profile page of Lily Hui, a middle school student.",
+              position:'right'
             },
             {
-              intro: "This is how Lily’s profile will look to anyone on the internet."
+              element: document.querySelectorAll('#step1')[0],
+              intro: "This is how Lily’s profile will look to anyone on the internet.",
+              position:'right'
             },
             {
-              intro: "Take some time to look through it and see what kinds of posts she has on her profile!"
+              element: document.querySelectorAll('#step1')[0],
+              intro: "Take some time to look through it and see what kinds of posts she has on her profile!",
+              position:'right'
             },
             { 
-              intro: "Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more..."
+              element: document.querySelectorAll('#step1')[0],
+              intro: "Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more...",
+              position:'right'
             }
           ]
         });

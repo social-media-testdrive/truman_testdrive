@@ -18,7 +18,7 @@ block content
   
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column 
 
-    .ui.fluid.card.dim.test(data-hint="Jake keeps his main account carefully curated. He only posts things that he would be okay with all of his social media audience seeing.", data-position="top-left")
+    #step1.ui.fluid.card.dim.test(data-hint="Jake keeps his main account carefully curated. He only posts things that he would be okay with all of his social media audience seeing.", data-position="top-left")
       .ui.dimmer.flag
             .content
               .center
@@ -225,13 +225,22 @@ block scripts
           intro.setOptions({
             steps: [
               { 
-                intro: "These are posts from the social media accounts of Jake, a 13 year old. He has 3 different accounts. His main one (Jake Matthews), as well as two other accounts (jakethesnake and minecraftboi23)."
+                element: document.querySelectorAll('#step1')[0],
+                intro: "These are posts from the social media accounts of Jake, a 13 year old. He has 3 different accounts. His main one (Jake Matthews), as well as two other accounts (jakethesnake and minecraftboi23).",
+                position:'right',
+                scrollTo:'tooltip'
               },
               { 
-                intro: "In this activity, we will look at Jake's different accounts."
+                element: document.querySelectorAll('#step1')[0],
+                intro: "In this activity, we will look at Jake's different accounts.",
+                position:'right',
+                scrollTo:'tooltip'
               },
               { 
-                intro: "Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more..."
+                element: document.querySelectorAll('#step1')[0],
+                intro: "Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more...",
+                position:'right',
+                scrollTo:'tooltip'
               }
               
             ]

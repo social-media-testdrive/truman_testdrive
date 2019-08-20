@@ -6,7 +6,7 @@ block content
   .computer.only.tablet.only.four.wide.column 
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
 
-    .ui.fluid.card.dim()
+    #step1.ui.fluid.card.dim()
       .ui.dimmer.flag
         .content
           .center
@@ -215,57 +215,7 @@ block content
             img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
           input.newcomment(type='text' placeholder='Write a Comment', data-hint='Let’s tell the bully that this behavior is not okay. Copy and paste the following comment: <i>“Guys, Sarah will be very upset if she sees this post. You should delete it."</i>', data-position="bottom-left")
           i.big.send.link.icon
-    //-##########
-    //-.ui.fluid.card.test(postID="3")
-          .content
-            .right.floated.meta= "Yesterday"
-            |
-            a(href='/user/hannahleee_23')
-              img.ui.avatar.image(src='/profile_pictures/user55.jpg')
-              span='Lana Reed'
-          .image
-            img.post(src="/basketballshoes.jpg")
-          .content
-            .description="Wow, look at these awesome kicks!!! :D "
-            //-.right.floated.meta
-              i.icon.checkmark
-              | Seen by 12
-          .three.ui.bottom.attached.icon.buttons
-            .ui.reply.button(tabindex='0')
-              i.reply.icon
-              |  Reply
-            .ui.flag.button(tabindex='0')
-              i.flag.icon
-              |  Flag
-            .ui.labeled.button(tabindex='0')
-              .ui.like.button
-                i.heart.icon
-                |  Like
-              a.ui.basic.red.left.pointing.label.count=2
-          
-          .content
-            .ui.comments
-              .comment(data-hint="This comment is an example of cyberbullying. Press the “flag” button to report it to the website.", data-position="top")
-                a.avatar
-                  img(src='/profile_pictures/user66.jpeg')
-                .content
-                  a.author Emma Hanson
-                  .metadata
-                    span.date 1527025081548
-                    i.heart.icon
-                    |  0 Likes
-                  .text
-                    | when will you get it into your head that nobody likes your stupid head!.
-                  .actions
-                    a.like.comment Like
-                    a.flag.comment Flag
-          .content
-            //-.description(style="text-align:center;background:#E8E8E8")="How is Cassie Feeling?"
-            .ui.fluid.left.labeled.right.icon.input(data-hint="Let’s send a supportive message to the target. Type here, 'Lana, a lot of people think math is hard! Don’t worry about it.'", data-position="bottom-left-aligned")
-              .ui.label            
-                img.ui.avatar.image(src='/profile_pictures/'+user.profile.picture, name=user.profile.name)
-              input.newcomment(type='text', placeholder='Write a Message')
-              i.big.send.link.icon
+
     button.ui.big.labeled.icon.button.cybertrans
           i.rocket.icon
           |   Let's Continue!
@@ -275,14 +225,20 @@ block scripts
     function startIntro(){
         var hints;
         var counter = 0;
-        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
+        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
           intro.setOptions({
             steps: [
               { 
-                intro: "<div> <img class='ui avatar image' src='https://dhpd030vnpk29.cloudfront.net/profile_pictures/user55.jpg'/><b>Lana</b> & <img class='ui avatar image' src='https://dhpd030vnpk29.cloudfront.net/profile_pictures/user66.jpg'/><b>Emma</b> </div> <div>are in the same class at school. Recently, Emma has been saying a lot of mean things to Lana.</div>"
+                element: document.querySelectorAll('#step1')[0],
+                intro: "<div> <img class='ui avatar image' src='https://dhpd030vnpk29.cloudfront.net/profile_pictures/user55.jpg'/><b>Lana</b>  &  <img class='ui avatar image' src='https://dhpd030vnpk29.cloudfront.net/profile_pictures/user66.jpg'/><b>Emma</b> </div> <div>are in the same class at school. Recently, Emma has been saying a lot of mean things to Lana.</div>",
+                position:'right',
+                scrollTo: 'tooltip'
               },
               { 
-                intro: "Here you will see an example of what's been going on. Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more about cyberbullying and what you can do about it"
+                element: document.querySelectorAll('#step1')[0],
+                intro: "Here you will see an example of what's been going on. Click on the blue dots &nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; to learn more about cyberbullying and what you can do about it.",
+                position:'right',
+                scrollTo:'tooltip'
               }
               
             ]
