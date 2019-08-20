@@ -24,11 +24,10 @@ block content
         a(href='#')
               img.ui.avatar.image(src=cdn+'/profile_pictures/user63.jpg')
               span='Liam Knapke'
-      .img.post        
-        img(src=cdn+'/post_pictures/safepostga2.jpg' style='max-width:100%;')
-      .extra.content
-          p(data-hint="If you see your friends sharing private information on social media, it's a good idea to tell them to take it down.")              
-          .description="new phone who dis? text me @ my new number 607-252-6771"
+      .image       
+        img.post(src=cdn+'/post_pictures/safepostga2.jpg' style='max-width:100%;')
+      .content
+          .description(data-hint="If you see your friends sharing private information on social media, it's a good idea to tell them to take it down." data-hintPosition="middle-right")="new phone who dis? text me @ my new number 607-252-6771"
       .three.ui.bottom.attached.icon.buttons(style="z-index:0")
         .ui.reply.button(tabindex='0')
           i.reply.icon
