@@ -2,10 +2,12 @@
 extends ../ui_layout
   
 block content
+  
   style.
     body {
       overflow: hidden; 
     }
+    
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   .computer.only.tablet.only.four.wide.column 
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
@@ -158,7 +160,7 @@ block content
             .chat-with Chat with Vincent
             
         // end chat-header
-        .chat-history
+        .chat-history(data-hint="Since these messages came from a stranger, you should not share any private information with them. Remember, you can also ignore the person." data-hintPosition="top-middle")
           ul
             li
               .message-data
@@ -176,7 +178,7 @@ block content
                 span.message-data-time 10:20 AM
               .message.my-message
                 | wanna be friends?
-            li(data-hint="Since these messages came from a stranger, you should not share any private information with them. Remember, you can also ignore the person.")
+            li
               .message-data
                 span.message-data-name
                   i.dot.circle.icon.online
