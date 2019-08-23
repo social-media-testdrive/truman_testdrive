@@ -4,7 +4,7 @@ block content
   
   .computer.only.tablet.only.four.wide.column 
   .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
-    .ui.container
+    #step1.ui.container
       h2.ui.header Privacy Settings
       br
       
@@ -154,10 +154,16 @@ block content
             intro.setOptions({
               steps: [
                 { 
-                  intro: "Now that you have learned about different privacy settings, let’s practice how to change them!"
+                  element: document.querySelectorAll('#step1')[0],
+                  intro: "Now that you have learned about different privacy settings, let’s practice how to change them!",
+                  scrollTo:'tooltip',
+                  position:'left'
                 },
                 { 
-                  intro: "Click on the blue dots &nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more!"
+                  element: document.querySelectorAll('#step1')[0],
+                  intro: "Click on the blue dots &nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more!",
+                  scrollTo:'tooltip',
+                  position:'left'
                 }
                 
               ]

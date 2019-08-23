@@ -3,22 +3,24 @@ extends ../ui_layout
 block content
 
   .ui.text.container
-
+    br  
     .ui.raised.segment
+    
       h3.ui.header
         i.book.blue.icon
         .content
-          | Introduction
+          | Learn
       hr
       h5.ui.header
-        i.right.arrow.icon
+        i.arrow.circle.right.blue.icon
         .content
           | Social media is a great way to communicate with others and express yourself. You can also use it to show others, including colleges or future employers, who you are as a person.
  
       h5.ui.header
-        i.right.arrow.icon
+        i.arrow.circle.right.blue.icon
         .content
           | However, social media use can also have drawbacks. What you and others share is permanent, and it's easy to get caught in sharing things you may later regret. It can also take a lot of time to manage different platforms and accounts.
+      br
       #introduction_next.button.ui.mini.green.right.labeled.icon.button
               i.down.arrow.icon
               |   Next
@@ -27,9 +29,10 @@ block content
       h3.ui.header
         i.key.blue.icon
         .content Key Ideas
-          .sub.header 
-            i.hand.pointer.blue.icon 
-            span.blue Click on each label below to learn more
+      .sub.header 
+        i.hand.pointer.icon(style="color:gray;")
+        span(style="color: gray;") Click on each label below to learn more
+      br
       //- .ui.segments     
       .ui.stackable.two.column.grid
         .ui.column

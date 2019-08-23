@@ -32,7 +32,7 @@ block content
       .header
         | Read and select all boxes to proceed!
           
-    #hiddenEye.content.hidden
+    #hiddenEye.content.hidden(style="color:#696969;")
       .sub.header 
         i.eye.icon 
         span Read and check all the boxes below
@@ -58,7 +58,13 @@ block content
                 label Known: What could be <b>known</b> about me if I use this?
                   
     br
-    .ui.big.labeled.icon.button.cybersim2
+    .ui.warning.message#checkAllWarning(style="display:none;")
+      .header
+        | Check all the boxes to proceed
+    .ui.warning.message#clickNextWarning(style="display:none;")
+      .header
+        | Click the green next button
+    .ui.big.labeled.icon.button.cybersim2#privacyTutGuideButton
         i.rocket.icon
         |   Got it!
     br
@@ -66,7 +72,8 @@ block content
     br
 block scripts
   script().
-    $('#tut_guide_next').on('click', function () {  
+    $('#tut_guide_next').on('click', function () { 
+      $('#clickNextWarning').hide(); 
       $('#hiddenEye').show();    
       $('#askQuestion').show(); 
       $('#askQuestion').transition('jiggle');     
@@ -100,6 +107,7 @@ block scripts
     $("input").change(function(){
       if (($('input:checked').length) == 
             ($('input').length)){
+        $("#checkAllWarning").hide();
         $('.ui.big.labeled.icon.button.cybersim2').addClass('green');
         $('.ui.big.labeled.icon.button.cybersim2').transition('jiggle');
       }
@@ -107,6 +115,19 @@ block scripts
         $('.ui.big.labeled.icon.button.cybersim2').removeClass('green');
       }
     });
+    
+    $("#privacyTutGuideButton").on('click', function() {
+      if (($('input:checked').length) == ($('input').length)){
+        //do nothing
+      }
+      else{
+        if($("#hiddenEye").is(":visible")){
+          $('#checkAllWarning').show();
+        }else{
+          $('#clickNextWarning').show();
+        }
+      }
+    })
    
     
     

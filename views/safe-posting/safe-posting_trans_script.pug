@@ -10,7 +10,7 @@ block scripts
   script().
     $(window).on("load", function() {startIntro()});
     function startIntro(){
-        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':false, 'doneLabel':'Done &#10003', 'tooltipClass':'blueTooltip' });
+        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false, 'scrollToElement':false, 'doneLabel':'Done &#10003', 'tooltipClass':'blueTooltip' });
           intro.setOptions({
             steps: [
               { 

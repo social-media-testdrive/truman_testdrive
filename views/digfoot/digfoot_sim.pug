@@ -48,7 +48,7 @@ block content
       i.big.photo.link.icon
   
 
-    .ui.fluid.card.test
+    .ui.fluid.card.test#step1
       .ui.dimmer.flag
         .content
           .center
@@ -286,11 +286,14 @@ block scripts
       
         var hints;
         var counter = 0;
-        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
+        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
         intro.setOptions({
           steps: [
             { 
-              intro: "Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more..."
+              element: document.querySelectorAll('#step1')[0],
+              intro: "Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more...",
+              position: "left",
+              scrollTo: 'tooltip'
             }
             
           ]

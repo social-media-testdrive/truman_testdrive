@@ -71,19 +71,19 @@ block content
 block scripts
   script().
     function startIntro(){
-        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
+        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
           intro.setOptions({
             steps: [
               { 
                 element: document.querySelectorAll('#step1A')[0],
                 intro: "Fake news articles use <b>shocking and exaggerated headlines and images</b> to get you to click on them. Often, the headline will try to make you curious and lure you like bait to click on it.",
-                position: 'right',
+                position: 'left',
                 scrollTo: 'tooltip'
               },
               {
                 element: document.querySelectorAll('.post')[0],
                 intro: "Does the article <b>use wild or sensational images</b> that are trying to make you feel a strong emotion? <br>This is another strategy of <b>clickbait articles.</b>",
-                position: 'bottom',
+                position: 'left',
                 scrollTo: "tooltip"
               },
               { 

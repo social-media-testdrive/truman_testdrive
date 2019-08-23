@@ -18,7 +18,7 @@ block content
   
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column 
 
-    .ui.fluid.card.dim.test(data-hint="On this account, he only posts about Minecraft, which is one of his favorite games. He talks to other Minecraft fans through this account.", data-position="top-left")
+    #blueDotStep.ui.fluid.card.dim.test(data-hint="On this account, he only posts about Minecraft, which is one of his favorite games. He talks to other Minecraft fans through this account.", data-position="top-left")
       .ui.dimmer.flag
             .content
               .center
@@ -240,7 +240,10 @@ block scripts
           intro.setOptions({
             steps: [
               { 
-                intro: "Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more..."
+                element: document.querySelectorAll('#blueDotStep')[0],
+                intro: "Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more...",
+                scrollTo: 'tooltip',
+                position: 'right'
               }
               
             ]
