@@ -70,7 +70,8 @@ block content
     .container.clearfix
       .chat#step2(style="right:24px;")
         .chat-header.clearfix
-          a.chat-close(href='#')
+          //-Making both buttons a minimize action. If user closes chat before tooltip highlights, tooltip bugs out. 
+          a.chat-minimize(href='#')
             i.large.close.icon
           a.chat-minimize(href='#')
             i.window.minimize.icon

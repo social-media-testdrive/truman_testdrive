@@ -36,7 +36,7 @@ block content
       .ui.stackable.two.column.grid
         .ui.column
           #audience.ui.raised.segment
-            a.ui.blue.ribbon.label
+            a.ui.blue.ribbon.label#audienceLabel
                 //- i.dollar.sign.icon 
                 span Audience
             span.hidden(id="audience_info", style="font-weight:600") Anyone who can see information about you or posted by you online.
@@ -44,7 +44,7 @@ block content
 
         .ui.column
           #private_information.ui.raised.segment
-            a.ui.blue.ribbon.label
+            a.ui.blue.ribbon.label#privateInformationLabel
                 //- i.magic.icon 
                 span Private information
             span.hidden(id="private_information_info",style="font-weight:600") Information about you that can be used to identify you because it is unique to you.
@@ -52,16 +52,18 @@ block content
         
         .ui.column
           #risky.ui.raised.segment
-            a.ui.blue.ribbon.label
+            a.ui.blue.ribbon.label#riskyLabel
                 //- i.magic.icon 
                 span Risky
             span.hidden(id="risky_info",style="font-weight:600") Potentially harmful to one’s emotional or physical well-being.
               ul(style="font-weight:400") It is risky to share private information online. People could share it with others or use it to try to trick or scam you.
     
-    .ui.message.negative.transition.hidden
-      i.close.icon
+    .ui.warning.message#clickNextWarning(style="display:none;")
       .header
-       | Complete all activities to proceed!
+       | Click "Next"
+    .ui.warning.message#clickLabelsWarning(style="display:none;")
+     .header
+      | Click on each label to proceed  
     a(href='javascript:void(0);', onclick='javascript:startIntro();')
         .ui.labeled.icon.button
             i.rocket.icon
@@ -71,9 +73,22 @@ block content
     br
 block scripts
   script().
-    var incomplete_activities = ($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden")|| $('#risky_info').is(":hidden"));
-    
-    $('#introduction_next').on('click', function () {      
+  
+    //a function to animate any unclicked labels, used for error messaging
+    function animateUnclickedLabels() {
+      if($('#audience_info').is(":hidden")){
+        $('#audienceLabel').transition('bounce');
+      }
+      if($('#private_information_info').is(":hidden")){
+        $('#privateInformationLabel').transition('bounce');
+      }
+      if($('#risky_info').is(":hidden")){
+        $('#riskyLabel').transition('bounce');
+      }
+    };
+  
+    $('#introduction_next').on('click', function () {   
+      $('#clickNextWarning').hide();   
       $('#question').show(); 
       $('#question').transition('jiggle');     
       if(!($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#risky_info').is(":hidden"))){
@@ -85,6 +100,7 @@ block scripts
         $('#audience_info').show(); 
         $('#audience').transition('tada');     
         if(!($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden")|| $('#risky_info').is(":hidden"))){
+          $('#clickLabelsWarning').hide();
           $('.ui.labeled.icon.button').addClass('green');
         }
     });
@@ -93,6 +109,7 @@ block scripts
         $('#private_information_info').show();      
         $('#private_information').transition('tada');     
         if(!($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#risky_info').is(":hidden"))){
+          $('#clickLabelsWarning').hide();
           $('.ui.labeled.icon.button').addClass('green');
         }
     });
@@ -101,48 +118,27 @@ block scripts
         $('#risky_info').show(); 
         $('#risky').transition('tada');     
         if(!($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#risky_info').is(":hidden"))){
+          $('#clickLabelsWarning').hide();
           $('.ui.labeled.icon.button').addClass('green');
         }
     });
 
 
     function startIntro(){
-        if(($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#risky_info').is(":hidden"))){          
-          $('.ui.message').addClass('visible')
-            .delay(3000)
-            .queue(function() {
-              $(this).removeClass('visible').dequeue();
-          });
-        }
-        else {
-          console.log(incomplete_activities)
-          window.location.href='/tutorial/safe-posting';
-
-          //- $('.ui.text.container').hide();
-          //- var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true , 'doneLabel':'Done &#10003'});
-          //-   intro.setOptions({
-          //-     steps: [
-          //-       { 
-          //-         intro: "<b>Now lets go over some Key Concepts.</b>"
-          //-       },
-          //-       { 
-          //-         intro: "<b>Source</b>: the website, organization, or person the information comes from"
-          //-       },
-          //-       {
-          //-         intro: "<b>Credible</b>: believable and trustworthy"
-          //-       },
-          //-       { 
-          //-         intro: "<b>Fake news</b>: a news story that looks real but has been made up."
-          //-       },
-          //-       { 
-          //-         intro: "<b>Clickbait</b>: an article that has a catchy headline to get people to click on it."
-          //-       }              
-          //-     ]
-          //-   });
-          //-   intro.start().onexit(function() {
-          //-   window.location.href='/tutorial/digital-literacy';
-          //- });
-        }          
+        if($('#question').is(":hidden")){
+          //User has not clicked next
+          $('#clickNextWarning').show();
+          $('#introduction_next').transition('bounce');
+        }else{
+          var clickedAllLabels = ($('#audience_info').is(":visible") && $('#private_information_info').is(":visible") &&  $('#risky_info').is(":visible"));
+          if(clickedAllLabels == true){ 
+            //everything is good to proceed
+            $('#clickLabelsWarning').hide();
+            window.location.href='/tutorial/safe-posting';
+          } else { 
+            //User has not clicked all the labels
+            $('#clickLabelsWarning').show();
+            animateUnclickedLabels();
+          }
+        }         
       };
-
-      //$(window).on("load", function() {startIntro();});

@@ -204,8 +204,10 @@ block content
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
 
-    
-    button.ui.big.labeled.icon.button.cybertrans
+    .ui.warning.message#clickAllDotsWarning(style="display:none;")
+      .header
+        | Click through all of the blue dots to continue
+    button.ui.big.labeled.icon.button.cybertrans#digitalLiteracySimButton
         i.rocket.icon
         |   Let's Continue!
 
@@ -237,6 +239,7 @@ block content
             .ui.checkbox
               input.hidden(type='checkbox', tabindex='0')
               label I didn't see any signs. This could be a real news article. I’m flagging it for another reason
+      
       .actions
         .ui.positive.right.labeled.icon.button
           | Submit
@@ -290,6 +293,7 @@ block content
           .field
             h3.ui.header#post_info_body
               |  The New York Times (sometimes abbreviated as the NYT and NYTimes) is an American newspaper based in New York City with worldwide influence and readership. Founded in 1851, the paper has won 125 Pulitzer Prizes, more than any other newspaper. The Times is ranked 17th in the world by circulation and 2nd in the U.S.        
+
       .actions
         .ui.positive.right.labeled.icon.button
           | Done
@@ -332,11 +336,24 @@ block scripts
           console.log('hints added')
           hints.onhintclose(function(e) {
            literacy_counter++;
-           if(literacy_counter == 4) {$( ".cybertrans" ).addClass("green");}
+           if(literacy_counter == 4) {
+             $("#clickAllDotsWarning").hide();
+             $( ".cybertrans" ).addClass("green");
+           }
           });
+        });
+        
+        //error messaging
+        $('#digitalLiteracySimButton').on('click', function() {
+          if(literacy_counter != 4){
+            $('#clickAllDotsWarning').show();
+          }
         });
           
       };
+      
+  
+      
 
       $(window).on("load", function() {startIntro();});
 

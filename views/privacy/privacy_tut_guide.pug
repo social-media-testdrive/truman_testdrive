@@ -44,17 +44,17 @@ block content
           .item
             #protip1.ui.segment
               .ui.checkbox
-                input.ui(type="checkbox")
+                input.ui(type="checkbox")#input1
                 label(style="vertical-align: middle;") Accessed: What will be <b>accessed</b> or collected by the company?
           .item
             #protip2.ui.segment
               .ui.checkbox
-                input.ui(type="checkbox")
+                input.ui(type="checkbox")#input2
                 label Shared: What will be <b>shared</b> with other companies?
           .item
             #protip3.ui.segment
               .ui.checkbox
-                input.ui(type="checkbox")
+                input.ui(type="checkbox")#input3 
                 label Known: What could be <b>known</b> about me if I use this?
                   
     br
@@ -63,7 +63,7 @@ block content
         | Check all the boxes to proceed
     .ui.warning.message#clickNextWarning(style="display:none;")
       .header
-        | Click the green next button
+        | Click "Next"
     .ui.big.labeled.icon.button.cybersim2#privacyTutGuideButton
         i.rocket.icon
         |   Got it!
@@ -72,6 +72,23 @@ block content
     br
 block scripts
   script().
+  
+    //function to animate unchecked boxes, used with error messaging. 
+    function animateUnchecked(){
+      if($("#input1").is(":not(:checked)")){
+        console.log("input 1 is unchecked");
+        $("#protip1").transition('bounce');
+      }
+      if($("#input2").is(":not(:checked)")){
+        console.log("input 2 is unchecked");
+        $("#protip2").transition('bounce');
+      }
+      if($("#input3").is(":not(:checked)")){
+        console.log("input 3 is unchecked");
+        $("#protip3").transition('bounce');
+      }
+    };
+    
     $('#tut_guide_next').on('click', function () { 
       $('#clickNextWarning').hide(); 
       $('#hiddenEye').show();    
@@ -123,8 +140,10 @@ block scripts
       else{
         if($("#hiddenEye").is(":visible")){
           $('#checkAllWarning').show();
+          animateUnchecked();
         }else{
           $('#clickNextWarning').show();
+          $('#tut_guide_next').transition('bounce');
         }
       }
     })

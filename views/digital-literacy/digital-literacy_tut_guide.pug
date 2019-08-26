@@ -13,12 +13,7 @@ block content
           br
           i.eye.icon 
           span Read and check all the boxes
-    
-    .ui.message.negative.transition.hidden
-      i.close.icon
-      .header
-        | Read and select all boxes to proceed!
-          
+        
     .ui.styled.fluid.accordion
       #point1.title
         i.dropdown.icon
@@ -26,18 +21,19 @@ block content
       .content.ui.list
           .item
             #protip1.ui.floated.compact.segment
-              .ui.fitted.large.checkbox
+              .ui.fitted.large.checkbox#checkbox1
                 input.ui(type="checkbox" id="")
             .label If the website is part of a credible news, academic (ends with ".edu"), or governmental (ends with ".gov") organization, this is a good sign the article is credible.
 
           .item
             #protip2.ui.floated.compact.segment
-              .ui.fitted.large.checkbox
+              .ui.fitted.large.checkbox#checkbox2
                 input.ui(type="checkbox"  id="")
             .label You can also look at the “About Us” page to learn more about the website and who is writing the article. It’s important to find out information about the site owner and author by exploring the site and searching the web.
           .item
-              #point1_button.ui.icon.green.button
+              #point1_button.button.ui.mini.green.right.labeled.icon.button
                 i.down.arrow.icon
+                | Next
                 
       #point2.title
         i.dropdown.icon
@@ -45,20 +41,23 @@ block content
       .content.ui.list
           .item
             #protip3.ui.floated.compact.segment
-              .ui.fitted.large.checkbox
+              .ui.fitted.large.checkbox#checkbox3
                 input.ui(type="checkbox")
             .label As a next step, you should look for additional credible sources or articles that confirm what the article says. This is called <b>corroboration.</b> 
           .item
             #protip4.ui.floated.compact.segment
-              .ui.fitted.large.checkbox
+              .ui.fitted.large.checkbox#checkbox4
                 input.ui(type="checkbox")
             .label To do this, search for the same topic on fact-checking websites such as Snopes.com, FactCheck.org, and major news websites.
-          .item
+          //-.item
               #point2_button.ui.icon.green.button
                 i.down.arrow.icon
                   
     br
-    .ui.big.labeled.icon.button.cybersim
+    .ui.warning.message#checkAllBoxesWarning(style="display:none;")
+     .header
+      | Check all the boxes to proceed
+    .ui.big.labeled.icon.button.cybersim#cyberSimButton
         i.rocket.icon
         |   Got it!
     br
@@ -66,6 +65,7 @@ block content
     br
 block scripts
   script().
+  
     $('.ui.accordion').accordion();   
 
     setTimeout(function(){
@@ -78,51 +78,42 @@ block scripts
 
 
     $('#point1_button').on('click', function () {
-      if (($('#protip1 .checkbox input')[0].checked)){
+      //if (($('#protip1 .checkbox input')[0].checked) && ($('#protip2 .checkbox input')[0].checked)){
+        //$("#checkAllBoxesWarning").hide();
         $('#point2').transition('jiggle');
         $('#point2').click();
-      }
-      else {
-        $('.ui.message').addClass('visible')
-        .delay(3000)
-        .queue(function() {
-          $(this).removeClass('visible').dequeue();
-        });
-      }
+      //}
+      //else {
+        //$('#checkAllBoxesWarning').show();
+      //}
      });
 
 
-    $('#point2_button').on('click', function () {
-      if (($('#protip2 .checkbox input')[0].checked) && 
-                          ($('#protip3 .checkbox input')[0].checked)){
+    /*$('#point2_button').on('click', function () {
+      if (($('#protip3 .checkbox input')[0].checked) && ($('#protip4 .checkbox input')[0].checked)){
         $('#point3').transition('jiggle');
         $('#point3').click();
       }
       else {
-        $('.ui.message').addClass('visible')
-        .delay(3000)
-        .queue(function() {
-          $(this).removeClass('visible').dequeue();
-        });
+        $("#checkAllBoxesWarning").show();
       }
-    });
-
-    //- $('.ui.big.labeled.icon.button.cybersim').on('click', function () {
-    //-     $('.ui.message').addClass('visible')
-    //-     .delay(3000)
-    //-     .queue(function() {
-    //-       $(this).removeClass('visible').dequeue();
-    //-     });
-    //- });    
+    }); */
 
     $("input").change(function(){
       if (($('input:checked').length) == 
             ($('input').length)){
+        $("#checkAllBoxesWarning").hide();
         $('.ui.big.labeled.icon.button.cybersim').addClass('green');
         $('.ui.big.labeled.icon.button.cybersim').transition('jiggle');
       }
       else{
         $('.ui.big.labeled.icon.button.cybersim').removeClass('green');
+      }
+    });
+    
+    $("#cyberSimButton").on('click', function() {
+      if(($('input:checked').length) != ($('input').length)){
+        $("#checkAllBoxesWarning").show();
       }
     });
    

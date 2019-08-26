@@ -397,7 +397,7 @@ $(window).on("load", function () {
       }
       else {
         e.preventDefault();
-        alert('Please go through each blue dot to proceed further !');
+        //alert('Please go through each blue dot to proceed further !');
       }
 
     });
@@ -414,7 +414,7 @@ $(window).on("load", function () {
       }
       else {
         e.preventDefault();
-        alert('Please go through each blue dot to proceed further !');
+        //alert('Please go through each blue dot to proceed further !');
       }
 
     });

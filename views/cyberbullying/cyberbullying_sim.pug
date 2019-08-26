@@ -216,13 +216,17 @@ block content
           input.newcomment(type='text' placeholder='Write a Comment', data-hint='Let’s tell the bully that this behavior is not okay. Copy and paste the following comment: <i>“Guys, Sarah will be very upset if she sees this post. You should delete it."</i>', data-position="bottom-left")
           i.big.send.link.icon
 
-    button.ui.big.labeled.icon.button.cybertrans
+    .ui.warning.message#clickAllDotsSim(style="display:none;")
+      .header
+        | Click through all of the blue dots to continue
+    button.ui.big.labeled.icon.button.cybertrans#cyberTransButton
           i.rocket.icon
           |   Let's Continue!
 
 block scripts
   script().
     function startIntro(){
+        
         var hints;
         var counter = 0;
         var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
@@ -248,8 +252,19 @@ block scripts
           console.log('hints added')
           hints.onhintclose(function(e) {
            counter++;
-           if(counter == 4) {$( ".cybertrans" ).addClass("green");}
+           if(counter == 4) {
+             $('#clickAllDotsSim').hide();
+             $( ".cybertrans" ).addClass("green");
+           }
           });
+          
+          //error messaging
+          $('#cyberTransButton').on('click', function() {
+            if(counter != 4){
+              $('#clickAllDotsSim').show();
+            }
+          });
+        
         });
           
       };

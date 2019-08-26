@@ -37,25 +37,25 @@ block content
       .ui.stackable.two.column.grid
         .ui.column
           #source.ui.raised.segment
-            a.ui.blue.ribbon.label
+            a.ui.blue.ribbon.label#sourceLabel
                 //- i.dollar.sign.icon 
                 span Source
             span.hidden(id="source_info", style="font-weight:600") The website, organization, or person the information comes from.
         .ui.column
           #credible.ui.raised.segment
-            a.ui.blue.ribbon.label
+            a.ui.blue.ribbon.label#credibleLabel
                 //- i.magic.icon 
                 span Credible
             span.hidden(id="credible_info",style="font-weight:600") Believable and trustworthy
         .ui.column
           #news.ui.raised.segment
-            a.ui.blue.ribbon.label
+            a.ui.blue.ribbon.label#newsLabel
                 //- i.magic.icon 
                 span Fake news
             span.hidden(id="news_info",style="font-weight:600") A news story that looks real but has been made up.
         .ui.column
           #clickbait.ui.raised.segment
-            a.ui.blue.ribbon.label
+            a.ui.blue.ribbon.label#clickbaitLabel
                 //- i.magic.icon 
                 span Clickbait
             span.hidden(id="clickbait_info",style="font-weight:600") An article that has a catchy headline to get people to click on it.
@@ -71,44 +71,68 @@ block content
       .ui.stackable.two.column.grid
         .ui.column
           #money.ui.raised.segment
-            a.ui.blue.ribbon.label
+            a.ui.blue.ribbon.label#moneyLabel
                 i.dollar.sign.icon 
                 span Money
             span.hidden(id="money_info", style="font-weight:600") Each time someone clicks on a news article, the website makes more money. So, websites create news articles that draw people's attention. They don't care whether the information is true or not.
         .ui.column
           #influence.ui.raised.segment
-            a.ui.blue.ribbon.label
+            a.ui.blue.ribbon.label#influenceLabel
                 i.magic.icon 
                 span Influence
             span.hidden(id="influence_info",style="font-weight:600") Other times, people write misleading articles to spread their beliefs, presenting their opinions as facts.            
       br
+    .ui.warning.message#clickNextWarning(style="display:none;")
+      .header
+       | Click "Next"
+    .ui.warning.message#clickLabelsWarning(style="display:none;")
+     .header
+      | Click on each label to proceed   
     a(href='javascript:void(0);', onclick='javascript:startIntro();')
       .ui.labeled.icon.button
           i.rocket.icon
           |   Got it!   
           
-
-    .ui.message.negative.transition.hidden
-        i.close.icon
-        .header
-          | Complete all activities to proceed!  
-
-
+    br
+    br
+    br
       
-
-    br
-    br
-    br
 block scripts
   script().
+  
+    //functions  to animate any unclicked labels, used for error messaging
+    function animateUnclickedLabels1() {
+      if($('#source_info').is(":hidden")){
+        $('#sourceLabel').transition('bounce');
+      }
+      if($('#credible_info').is(":hidden")){
+        $('#credibleLabel').transition('bounce');
+      }
+      if($('#news_info').is(":hidden")){
+        $('#newsLabel').transition('bounce');
+      }
+      if($('#clickbait_info').is(":hidden")){
+        $('#clickbaitLabel').transition('bounce');
+      }
+    };
+    
+    function animateUnclickedLabels2() {
+      if($('#influence_info').is(":hidden")){
+        $('#influenceLabel').transition('bounce');
+      }
+      if($('#money_info').is(":hidden")){
+        $('#moneyLabel').transition('bounce');
+      }
+    };
+    
+    //Old code, did my best to read and comment 
+    
     var incomplete_activities = ($('#key_ideas').is(":hidden") ||  $('#influence_info').is(":hidden") || $('#money_info').is(":hidden"));
     
-    $('#ideas_next').on('click', function () {      
+    $('#ideas_next').on('click', function () { 
+      $('#clickNextWarning').hide();      
       $('#key_ideas').show(); 
       $('#key_ideas').transition('jiggle');     
-      if(!($('#key_ideas').is(":hidden") ||  $('#influence_info').is(":hidden") || $('#money_info').is(":hidden"))){
-        $('.ui.labeled.icon.button').addClass('green');
-      } 
     });
 
     $('#money>a').on('click', function () {      
@@ -134,6 +158,7 @@ block scripts
              $('#news_info').is(":hidden") ||  $('#news_info').is(":hidden") 
              ||  $('#clickbait_info').is(":hidden")))
         {
+          $("#clickLabelsWarning").hide();
           $('.ui.labeled.icon.button').addClass('green');
         }
     });
@@ -145,6 +170,7 @@ block scripts
              $('#news_info').is(":hidden") ||  $('#news_info').is(":hidden") 
              ||  $('#clickbait_info').is(":hidden")))
         {
+          $("#clickLabelsWarning").hide();
           $('.ui.labeled.icon.button').addClass('green');
         }
     });    
@@ -156,6 +182,7 @@ block scripts
              $('#news_info').is(":hidden") ||  $('#news_info').is(":hidden") 
              ||  $('#clickbait_info').is(":hidden")))
         {
+          $("#clickLabelsWarning").hide();
           $('.ui.labeled.icon.button').addClass('green');
         }
     });
@@ -167,70 +194,38 @@ block scripts
              $('#news_info').is(":hidden") ||  $('#news_info').is(":hidden") 
              ||  $('#clickbait_info').is(":hidden")))
         {
+          $("#clickLabelsWarning").hide();
           $('.ui.labeled.icon.button').addClass('green');
         }
     });
-
+    
 
     function startIntro(){
+      
+      if($("#key_ideas").is(":hidden") && $("#question").is(":not(:visible)")){
+        $("#clickNextWarning").show();
+        $("#ideas_next").transition("bounce");
+      }
 
        if(($('.ui.raised.segment').is(":hidden") &&  $('#key_ideas').is(":hidden") &&  $('#question').is(":visible")))
         {          
-            if(!($('#question').is(":hidden") ||  $('#influence_info').is(":hidden") || $('#money_info').is(":hidden")))
-            {
+            if(!($('#question').is(":hidden") ||  $('#influence_info').is(":hidden") || $('#money_info').is(":hidden"))){
+              $('#clickLabelsWarning').hide();
               window.location.href='/tutorial/digital-literacy';
+            } else {
+              $('#clickLabelsWarning').show();
+              animateUnclickedLabels2();
             }
-            else{
-            $('.ui.message').addClass('visible')
-            .delay(3000)
-            .queue(function() {
-              $(this).removeClass('visible').dequeue();
-          });
-            }
-        }
-
-        else if(($('#key_ideas').is(":hidden") ||  $('#credible_info').is(":hidden") || 
-             $('#news_info').is(":hidden") ||  $('#news_info').is(":hidden") 
-             ||  $('#clickbait_info').is(":hidden")))
-        {          
-          $('.ui.message').addClass('visible')
-            .delay(3000)
-            .queue(function() {
-              $(this).removeClass('visible').dequeue();
-          });
-        }
-
-        else {
-          console.log(incomplete_activities)
+        } else if(($('#key_ideas').is(":hidden") ||  $('#credible_info').is(":hidden") || $('#news_info').is(":hidden") ||  $('#news_info').is(":hidden") ||  $('#clickbait_info').is(":hidden"))){          
+          if($("#key_ideas").is(":not(:hidden)")){
+            $('#clickLabelsWarning').show();
+            animateUnclickedLabels1();
+          }
+        } else {
           $('#learn').hide();
           $('#key_ideas').hide(); 
           $('#question').show(); 
           $('.ui.labeled.icon.button').removeClass('green');
 
-          //- var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'scrollToElement':true , 'doneLabel':'Done &#10003'});
-          //-   intro.setOptions({
-          //-     steps: [
-          //-       { 
-          //-         intro: "<b>Now lets go over some Key Concepts.</b>"
-          //-       },
-          //-       { 
-          //-         intro: "<b>Source</b>: the website, organization, or person the information comes from"
-          //-       },
-          //-       {
-          //-         intro: "<b>Credible</b>: believable and trustworthy"
-          //-       },
-          //-       { 
-          //-         intro: "<b>Fake news</b>: a news story that looks real but has been made up."
-          //-       },
-          //-       { 
-          //-         intro: "<b>Clickbait</b>: an article that has a catchy headline to get people to click on it."
-          //-       }              
-          //-     ]
-          //-   });
-          //-   intro.start().onexit(function() {
-          //-   window.location.href='/tutorial/digital-literacy';
-          //- });
         }          
       };
-
-      //$(window).on("load", function() {startIntro();});

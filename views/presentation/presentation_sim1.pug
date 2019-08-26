@@ -221,8 +221,10 @@ block content
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
 
-    
-    button.ui.big.labeled.icon.button.cybersim2
+    .ui.warning.message#clickAllDotsSim(style="display:none;")
+      .header
+        | Click through all of the blue dots to continue
+    button.ui.big.labeled.icon.button.cybersim2#cyberSim2Button
         i.rocket.icon
         |   Let's Continue!
 
@@ -253,10 +255,19 @@ block scripts
           console.log('hints added')
           hints.onhintclose(function(e) {
            literacy_counter++;
-           if(literacy_counter == 3) {$( ".cybersim2" ).addClass("green");}
+           if(literacy_counter == 3) {
+             $("#clickAllDotsSim").hide();
+             $( ".cybersim2" ).addClass("green");
+           }
           });
         });
           
+        //error messaging
+        $('#cyberSim2Button').on('click', function() {
+          if(literacy_counter != 3){
+            $('#clickAllDotsSim').show();
+          }
+        });
       };
 
       $(window).on("load", function() {startIntro();});

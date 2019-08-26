@@ -42,36 +42,38 @@ block content
       .ui.stackable.two.column.grid
         .ui.column
           #privacyConcept.ui.raised.segment
-            a.ui.blue.ribbon.label
+            a.ui.blue.ribbon.label#privacyLabel
                 //- i.magic.icon 
                 span Privacy
             span.hidden(id="privacyConcept_info",style="font-weight:600")  Control of personal information to protect it from being observed or tracked by others.
 
         .ui.column
           #settingsConcept.ui.raised.segment
-            a.ui.blue.ribbon.label
+            a.ui.blue.ribbon.label#settingsLabel
                 //- i.dollar.sign.icon 
                 span Privacy Settings
             span.hidden(id="settingsConcept_info", style="font-weight:600") Choices a website or app might give you about what information is visible to other users and companies.
 
         .ui.column
           #privacyPolicyConcept.ui.raised.segment
-            a.ui.blue.ribbon.label
+            a.ui.blue.ribbon.label#privacyPolicyLabel
                 //- i.magic.icon 
                 span Privacy Policy
             span.hidden(id="policyConcept_info",style="font-weight:600") A legal document that an app or website must provide and that describes what user information they collect and how they use it.
         
         .ui.column
           #optOut.ui.raised.segment
-            a.ui.blue.ribbon.label
+            a.ui.blue.ribbon.label#optOutLabel
                 //- i.magic.icon 
                 span Opt Out
             span.hidden(id="optOut_info",style="font-weight:600") To choose to not participate in something.
               
-    .ui.message.negative.transition.hidden
-      i.close.icon
+    .ui.warning.message#clickNextWarning(style="display:none;")
       .header
-       | Complete all activities to proceed!
+       | Click "Next"
+    .ui.warning.message#clickLabelsWarning(style="display:none;")
+     .header
+      | Click on each label to proceed  
     a(href='javascript:void(0);', onclick='javascript:startIntro();')
         .ui.labeled.icon.button
             i.rocket.icon
@@ -81,9 +83,25 @@ block content
     br
 block scripts
   script().
-    var incomplete_activities = ($('#question').is(":hidden") || $('#optOut_info').is(":hidden") ||  $('#settingsConcept_info').is(":hidden") || $('#policyConcept_info').is(":hidden")|| $('#privacyConcept_info').is(":hidden"));
-    
-    $('#introduction_next').on('click', function () {      
+  
+    //a function to animate any unclicked labels, used for error messaging
+    function animateUnclickedLabels() {
+      if($('#privacyConcept_info').is(":hidden")){
+        $('#privacyLabel').transition('bounce');
+      }
+      if($('#settingsConcept_info').is(":hidden")){
+        $('#settingsLabel').transition('bounce');
+      }
+      if($('#policyConcept_info').is(":hidden")){
+        $('#privacyPolicyLabel').transition('bounce');
+      }
+      if($('#optOut_info').is(":hidden")){
+        $('#optOutLabel').transition('bounce');
+      }
+    };
+
+    $('#introduction_next').on('click', function () {   
+      $("#clickNextWarning").hide();   
       $('#question').show(); 
       $('#question').transition('jiggle');     
       if(!($('#question').is(":hidden") || $('#optOut_info').is(":hidden") || $('#settingsConcept_info').is(":hidden") || $('#policyConcept_info').is(":hidden") || $('#privacyConcept_info').is(":hidden"))){
@@ -94,7 +112,8 @@ block scripts
     $('#privacyConcept>a').on('click', function () {      
         $('#privacyConcept_info').show(); 
         $('#privacyConcept').transition('tada');     
-        if(!($('#question').is(":hidden") || $('#optOut_info').is(":hidden") || $('#settingsConcept_info').is(":hidden") || $('#policyConcept_info').is(":hidden")|| $('#privacyConcept_info').is(":hidden"))){
+        if(!($('#question').is(":hidden") ||  $('#privacyConcept_info').is(":hidden") || $('#settingsConcept_info').is(":hidden")|| $('#policyConcept_info').is(":hidden") || $('#optOut_info').is(":hidden"))){
+          $('#clickLabelsWarning').hide();
           $('.ui.labeled.icon.button').addClass('green');
         }
     });
@@ -102,7 +121,8 @@ block scripts
     $('#settingsConcept>a').on('click', function () {      
         $('#settingsConcept_info').show();      
         $('#settingsConcept').transition('tada');     
-        if(!($('#question').is(":hidden") || $('#optOut_info').is(":hidden") ||  $('#settingsConcept_info').is(":hidden") || $('#policyConcept_info').is(":hidden") || $('#privacyConcept_info').is(":hidden"))){
+        if(!($('#question').is(":hidden") ||  $('#privacyConcept_info').is(":hidden") || $('#settingsConcept_info').is(":hidden")|| $('#policyConcept_info').is(":hidden") || $('#optOut_info').is(":hidden"))){
+          $('#clickLabelsWarning').hide();
           $('.ui.labeled.icon.button').addClass('green');
         }
     });
@@ -110,7 +130,8 @@ block scripts
      $('#privacyPolicyConcept>a').on('click', function () {      
         $('#policyConcept_info').show(); 
         $('#privacyPolicyConcept').transition('tada');     
-        if(!($('#question').is(":hidden") || $('#optOut_info').is(":hidden") ||  $('#settingsConcept_info').is(":hidden") || $('#policyConcept_info').is(":hidden") || $('#privacyConcept_info').is(":hidden"))){
+        if(!($('#question').is(":hidden") ||  $('#privacyConcept_info').is(":hidden") || $('#settingsConcept_info').is(":hidden")|| $('#policyConcept_info').is(":hidden") || $('#optOut_info').is(":hidden"))){
+          $('#clickLabelsWarning').hide();
           $('.ui.labeled.icon.button').addClass('green');
         }
     });
@@ -118,24 +139,28 @@ block scripts
     $('#optOut>a').on('click', function () {      
        $('#optOut_info').show(); 
        $('#optOut').transition('tada');     
-       if(!($('#question').is(":hidden") || $('#optOut_info').is(":hidden") || $('#settingsConcept_info').is(":hidden") || $('#policyConcept_info').is(":hidden") || $('#privacyConcept_info').is(":hidden"))){
+       if(!($('#question').is(":hidden") ||  $('#privacyConcept_info').is(":hidden") || $('#settingsConcept_info').is(":hidden")|| $('#policyConcept_info').is(":hidden") || $('#optOut_info').is(":hidden"))){
+         $('#clickLabelsWarning').hide();
          $('.ui.labeled.icon.button').addClass('green');
        }
    });
 
 
     function startIntro(){
-        if(($('#question').is(":hidden") ||  $('#settingsConcept_info').is(":hidden") || $('#policyConcept_info').is(":hidden") || $('#privacyConcept_info').is(":hidden"))){          
-          $('.ui.message').addClass('visible')
-            .delay(3000)
-            .queue(function() {
-              $(this).removeClass('visible').dequeue();
-          });
-        }
-        else {
-          console.log(incomplete_activities)
+      if($('#question').is(":hidden")){ 
+        //User has not clicked next
+        $('#clickNextWarning').show();
+        $('#introduction_next').transition('bounce');
+      } else {
+        var clickedAllLabels = ($('#privacyConcept_info').is(":visible") && $('#settingsConcept_info').is(":visible") &&  $('#policyConcept_info').is(":visible")  &&  $('#optOut_info').is(":visible"));
+        if(clickedAllLabels == true){ 
+          //everything is good to proceed
+          $('#clickLabelsWarning').hide();
           window.location.href='/tut_guide/privacy';
-        }          
-      };
-
-      //$(window).on("load", function() {startIntro();});
+        } else { 
+          //User has not clicked all the labels
+          $('#clickLabelsWarning').show();
+          animateUnclickedLabels();
+        }   
+      }  
+    }; 

@@ -206,8 +206,10 @@ block content
           i.big.send.link.icon
 
 
-    
-    button.ui.big.labeled.icon.button.cybersim1
+    .ui.warning.message#clickAllDotsSim(style="display:none;")
+      .header
+        | Click through all of the blue dots to continue
+    button.ui.big.labeled.icon.button.cybersim1#cyberSim1Button
         i.rocket.icon
         |   Let's Continue!
 
@@ -250,8 +252,18 @@ block scripts
           console.log('hints added')
           hints.onhintclose(function(e) {
            literacy_counter++;
-           if(literacy_counter == 1) {$( ".cybersim1" ).addClass("green");}
+           if(literacy_counter == 1) {
+             $("#clickAllDotsSim").hide();
+             $( ".cybersim1" ).addClass("green");
+           }
           });
+        });
+        
+        //error messaging
+        $('#cyberSim1Button').on('click', function() {
+          if(literacy_counter != 1){
+            $('#clickAllDotsSim').show();
+          }
         });
           
       };

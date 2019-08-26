@@ -221,8 +221,10 @@ block content
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
 
-    
-    button.ui.big.labeled.icon.button.cybertrans
+    .ui.warning.message#clickAllDotsSim(style="display:none;")
+      .header
+        | Click through all of the blue dots to continue
+    button.ui.big.labeled.icon.button.cybertrans#cyberTransButton
         i.rocket.icon
         |   Let's Continue!
 
@@ -253,8 +255,18 @@ block scripts
           console.log('hints added')
           hints.onhintclose(function(e) {
            literacy_counter++;
-           if(literacy_counter == 3) {$( ".cybertrans" ).addClass("green");}
+           if(literacy_counter == 3) {
+             $("#clickAllDotsSim").hide();
+             $( ".cybertrans" ).addClass("green");
+           }
           });
+        });
+        
+        //error messaging
+        $('#cyberTransButton').on('click', function() {
+          if(literacy_counter != 3){
+            $('#clickAllDotsSim').show();
+          }
         });
           
       };

@@ -17,7 +17,7 @@ block content
 
     #show_steps.ui.segment.hidden
       //- .ui.header.title
-      a.ui.blue.ribbon.label
+      a.ui.blue.ribbon.label#clickHereToSee
         h4
           i.hand.pointer.icon
           content Click here to see ways to respond.
@@ -27,14 +27,14 @@ block content
       #steps.ui.stackable.two.column.grid.hidden
         .ui.column
           #step1.ui.raised.segment
-            a.ui.blue.ribbon.label
+            a.ui.blue.ribbon.label#step1Label
                 //- i.magic.icon 
                 span Ignore the person
             span.hidden(id="step1_info", style="font-weight:600") Ignoring the person is always an option! You shouldn't share private information with someone you haven't met in real life.
 
         .ui.column
           #step2.ui.raised.segment
-            a.ui.blue.ribbon.label
+            a.ui.blue.ribbon.label#step2Label
                 //- i.magic.icon 
 
                 span Change the Subject
@@ -42,14 +42,14 @@ block content
         
         .ui.column
           #step3.ui.raised.segment
-            a.ui.blue.ribbon.label
+            a.ui.blue.ribbon.label#step3Label
                 //- i.magic.icon 
                 span Be Direct
             span.hidden(id="step3_info",style="font-weight:600") Try saying “I don’t know you. I don’t feel comfortable giving you my address.”
         
         .ui.column
           #step4.ui.raised.segment
-            a.ui.blue.ribbon.label
+            a.ui.blue.ribbon.label#step4Label
                 //- i.magic.icon 
                 span Talk to a trusted adult
             span.hidden(id="step4_info",style="font-weight:600") It's always helpful to get advice from someone you trust.
@@ -57,7 +57,8 @@ block content
     #chat1.container.clearfix.hidden
       .chat(style="right:24px;")
         .chat-header.clearfix
-          a.chat-close(href='#')
+          //-making close button have minimize functionality so user can't accidentally close the chat and not be able to reference it
+          a.chat-minimize(href='#')
             i.large.close.icon
           a.chat-minimize(href='#')
             i.window.minimize.icon
@@ -96,9 +97,6 @@ block content
               .message.my-message
                 | What’s your address so I can stop by after school to shoot some hoops
 
-              i.dot.circle.icon.online
-              i.dot.circle.icon.online(style='color: #AED2A6')
-              i.dot.circle.icon.online(style='color:#DAE9DA')
         // end chat-history
         .chat-message.clearfix
           .ui.fluid.action.input
@@ -131,7 +129,16 @@ block content
       </li>
 
     br
-    .ui.big.labeled.icon.button.cybersim
+    .ui.warning.message#clickViewMessagesWarning(style="display:none;")
+      .header
+       | Click "View Messages"
+    .ui.warning.message#clickToSeeWarning(style="display:none;")
+     .header
+      | Click the blue banner to see ways to respond
+    .ui.warning.message#clickLabelsWarning(style="display:none;")
+     .header
+      | Click on each label to proceed  
+    .ui.big.labeled.icon.button.cybersim#safepostSimButton
         i.rocket.icon
         |   Got it!
     br
@@ -139,7 +146,22 @@ block content
     br
 block scripts
   script().
-   
+  
+    //a function to animate any unclicked labels, used for error messaging
+    function animateUnclickedLabels() {
+      if($('#step1_info').is(":hidden")){
+        $('#step1Label').transition('bounce');
+      }
+      if($('#step2_info').is(":hidden")){
+        $('#step2Label').transition('bounce');
+      }
+      if($('#step3_info').is(":hidden")){
+        $('#step3Label').transition('bounce');
+      }
+      if($('#step4_info').is(":hidden")){
+        $('#step4Label').transition('bounce');
+      }
+    };
 
     setTimeout(function(){
       $('.sub.header').transition('shake'); 
@@ -149,7 +171,8 @@ block scripts
       $('#point1').transition('jiggle');    
     }, 2500);
 
-    $('#introduction_next').on('click', function () {      
+    $('#introduction_next').on('click', function () { 
+      $('#clickViewMessagesWarning').hide();     
       $('#chat1').show(); 
       setTimeout(function(){
         $('#show_steps').show();
@@ -160,74 +183,67 @@ block scripts
     });
 
     $('#show_steps a').on('click', function () {
-        //- $('#steps').hide();
-        //- $('#steps').show();  
-        $('#steps').show();         
-        $('.ui.big.labeled.icon.button.cybersim').addClass('green');
-
+        $('#steps').show();   
+        $('#clickToSeeWarning').hide();      
+        //$('.ui.big.labeled.icon.button.cybersim').addClass('green');
      });
 
      $('#step1>a').on('click', function () {      
         $('#step1_info').show(); 
-        $('#step1').transition('tada');     
-        
+        $('#step1').transition('tada'); 
+        if($('#step1_info').is(":visible") && $('#step2_info').is(":visible") && $('#step3_info').is(":visible") && $('#step4_info').is(":visible")){
+          $('#clickLabelsWarning').hide();
+          $('.ui.big.labeled.icon.button.cybersim').addClass('green');
+        }    
     });
 
     $('#step2>a').on('click', function () {      
         $('#step2_info').show();      
-        $('#step2').transition('tada');     
+        $('#step2').transition('tada'); 
+        if($('#step1_info').is(":visible") && $('#step2_info').is(":visible") && $('#step3_info').is(":visible") && $('#step4_info').is(":visible")){
+          $('#clickLabelsWarning').hide();
+          $('.ui.big.labeled.icon.button.cybersim').addClass('green');
+        }       
     });
 
      $('#step3>a').on('click', function () {      
         $('#step3_info').show(); 
-        $('#step3').transition('tada');     
+        $('#step3').transition('tada');
+        if($('#step1_info').is(":visible") && $('#step2_info').is(":visible") && $('#step3_info').is(":visible") && $('#step4_info').is(":visible")){
+          $('#clickLabelsWarning').hide();
+          $('.ui.big.labeled.icon.button.cybersim').addClass('green');
+        }        
     });
 
     $('#step4>a').on('click', function () {      
         $('#step4_info').show(); 
-        $('#step4').transition('tada');     
+        $('#step4').transition('tada'); 
+        if($('#step1_info').is(":visible") && $('#step2_info').is(":visible") && $('#step3_info').is(":visible") && $('#step4_info').is(":visible")){
+          $('#clickLabelsWarning').hide();
+          $('.ui.big.labeled.icon.button.cybersim').addClass('green');
+        }       
     });
-
-
-    $('#point2_button').on('click', function () {
-      if (($('#protip2 .checkbox input')[0].checked) && 
-                          ($('#protip3 .checkbox input')[0].checked)){
-        $('#point3').transition('jiggle');
-        $('#point3').click();
-      }
-      else {
-        $('.ui.message').addClass('visible')
-        .delay(3000)
-        .queue(function() {
-          $(this).removeClass('visible').dequeue();
-        });
-      }
-    });
-
-    $('#point3_button').on('click', function () {
-      if (($('input:checked').length) == 
-          ($('input').length)){  
-        $('.ui.big.labeled.icon.button.cybersim').addClass('green');
-        $('.ui.big.green.labeled.icon.button.cybersim').transition('jiggle');
-      }
-      else {
-        $('.ui.message').addClass('visible')
-        .delay(3000)
-        .queue(function() {
-          $(this).removeClass('visible').dequeue();
-        });
+    
+    $('#safepostSimButton').on('click', function(){
+      
+      if($('#chat1').is(":hidden")){
+        $("#clickViewMessagesWarning").show();
+      } else if ($('#show_steps').is(":visible") && $('#steps').is(":hidden")){
+        $("#clickToSeeWarning").show();
+        $("#clickHereToSee").transition('bounce');
+      } else if ($('#show_steps').is(":visible") && $('#steps').is(":visible")){
+        if($('#step1_info').is(":visible") && $('#step2_info').is(":visible") && $('#step3_info').is(":visible") && $('#step4_info').is(":visible")){
+          $('#clickLabelsWarning').hide();
+          $('.ui.big.labeled.icon.button.cybersim').addClass('green');
+        } else {
+          $('#clickLabelsWarning').show();
+          animateUnclickedLabels();
+        }  
       }
     });
 
-    //- $('.ui.big.labeled.icon.button.cybersim').on('click', function () {
-    //-     $('.ui.message').addClass('visible')
-    //-     .delay(3000)
-    //-     .queue(function() {
-    //-       $(this).removeClass('visible').dequeue();
-    //-     });
-    //- });    
-
-    $("input").change(function(){
+    //I do not know what this is supposed to do
+    /*$("input").change(function(){
       if (($('input:checked').length) == 
             ($('input').length)){
         $('.ui.big.labeled.icon.button.cybersim').addClass('green');
@@ -236,7 +252,7 @@ block scripts
       else{
         //$('.ui.big.labeled.icon.button.cybersim').removeClass('green');
       }
-    });
+    });*/
    
     
     
