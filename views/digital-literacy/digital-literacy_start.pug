@@ -139,6 +139,7 @@ block scripts
         $('#money_info').show(); 
         $('#money').transition('tada');     
         if(!($('#influence_info').is(":hidden") || $('#money_info').is(":hidden"))){
+          $("#clickLabelsWarning").hide();
           $('.ui.labeled.icon.button').addClass('green');
         }
     });
@@ -147,6 +148,7 @@ block scripts
         $('#influence_info').show();      
         $('#influence').transition('tada');     
         if(!($('#influence_info').is(":hidden") || $('#money_info').is(":hidden"))){
+          $("#clickLabelsWarning").hide();
           $('.ui.labeled.icon.button').addClass('green');
         }
     });
