@@ -7,7 +7,9 @@ $('#loading').show();
 
 $(window).on("load", function () {
 
-
+/*
+Start chat box code
+*/
   $('.container.clearfix').each(
     function () {
 
@@ -154,6 +156,10 @@ $(window).on("load", function () {
      chat.fadeOut(300, 'swing');
   });
 
+/*
+end chat box code
+*/
+
   //close loading dimmer on load
   $('#loading').hide();
   $('#content').attr('style', 'block');
@@ -167,7 +173,7 @@ $(window).on("load", function () {
         ;
     });
 
-  //make checkbox work
+  //activate checkboxes
   $('.ui.checkbox')
     .checkbox();
 
@@ -419,6 +425,10 @@ $(window).on("load", function () {
 
     });
 
+/*
+Start button links
+*/
+
   //Cyberbullying to Transition
   $('.ui.big.green.labeled.icon.button.cybertutorial')
     .on('click', function () {
@@ -610,6 +620,10 @@ $(window).on("load", function () {
       let pathArray = window.location.pathname.split('/');
       window.location.href = '/account/' + pathArray[2];
     });
+
+/*
+end button links
+*/
 
   //this is the REPORT User button
   $('button.ui.button.report')
