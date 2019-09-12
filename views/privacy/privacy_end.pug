@@ -4,7 +4,8 @@ block content
 
   .ui.text.container
     br
-    h3 You have completed this lesson!
+    h1 You have completed this lesson!
+        
     h3 Would you like to: 
 
     .ui.big.green.labeled.icon.button.finish
@@ -12,18 +13,28 @@ block content
         |   Finish Lesson
     br
     br
-    .ui.big.green.labeled.icon.button.cybertutorial
+    a(href='javascript:void(0);', onclick='javascript:startIntroOne();')
+        .ui.big.green.labeled.icon.button
+            i.edit.icon
+            |   Give Us Feedback (Optional) 
+            
+    br
+    br
+          
+    h3 You can also:
+
+    .ui.big.blue.labeled.icon.button.cybertutorial
         i.chevron.circle.left.icon
         |   Go Back to the Tutorial
     br
     br
-    .ui.big.green.labeled.icon.button.cybersim
+    .ui.big.blue.labeled.icon.button.cybersim
         i.chevron.circle.left.icon
         |   Go Back to the Guided Activity
     br
     br
-    a(href='javascript:void(0);', onclick='javascript:startIntro();')
-        .ui.big.green.labeled.icon.button
+    a(href='javascript:void(0);', onclick='javascript:startIntroTwo();')
+        .ui.big.blue.labeled.icon.button
             i.chevron.circle.left.icon
             |  Go Back to the Timeline
     br
@@ -32,6 +43,11 @@ block content
       
 block scripts
   script().
-    function startIntro(){       
+  
+    function startIntroOne(){       
+      window.open(href='https://cornell.qualtrics.com/jfe/form/SV_9tMszwlpe1TIIxT');
+    };
+    
+    function startIntroTwo(){       
           window.location.href='/free-play/privacy';
         };

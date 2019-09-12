@@ -438,6 +438,15 @@ Start button links
       window.location.href = '/tutorial/' + pathArray[2];
     });
 
+  //Cyberbullying to Transition (blue button)
+  $('.ui.big.blue.labeled.icon.button.cybertutorial')
+    .on('click', function () {
+      console.log(window.location.pathname)
+      let pathArray = window.location.pathname.split('/');
+      console.log(pathArray);
+      window.location.href = '/tutorial/' + pathArray[2];
+    });
+
   //Cyberbullying to Transition
   $(document).on('click', '.ui.big.labeled.icon.button.cybersim.green', function () {
       console.log(window.location.pathname)
@@ -445,6 +454,14 @@ Start button links
       console.log(pathArray);
       window.location.href = '/sim/' + pathArray[2];
     });
+
+    //Cyberbullying to Transition (blue button)
+    $(document).on('click', '.ui.big.labeled.icon.button.cybersim.blue', function () {
+        console.log(window.location.pathname)
+        let pathArray = window.location.pathname.split('/');
+        console.log(pathArray);
+        window.location.href = '/sim/' + pathArray[2];
+      });
 
   //Cyberbullying to Transition 1
   $(document).on('click', '.ui.big.labeled.icon.button.cybersim1.green', function () {
@@ -541,6 +558,15 @@ Start button links
   ///modual/:modId
   //Cyberbullying Transition to freeplay
   $('.ui.big.green.labeled.icon.button.cyber_script')
+    .on('click', function () {
+      console.log(window.location.pathname)
+      let pathArray = window.location.pathname.split('/');
+      console.log(pathArray);
+      window.location.href = '/modual/' + pathArray[2];
+    });
+
+  //Cyberbullying Transition to freeplay (blue button)
+  $('.ui.big.blue.labeled.icon.button.cyber_script')
     .on('click', function () {
       console.log(window.location.pathname)
       let pathArray = window.location.pathname.split('/');
