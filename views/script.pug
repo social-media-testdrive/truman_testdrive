@@ -52,7 +52,7 @@ block content
           
           //- This is a User made post
           .content
-            .right.floated.time.meta= (Date.now() + val.relativeTime)
+            .right.floated.time.meta= ((Date.now() - (Date.now() - val.absTime)))
             |  
             a.ui.avatar.image(href='/me/'+mod)
               if user.profile.picture
