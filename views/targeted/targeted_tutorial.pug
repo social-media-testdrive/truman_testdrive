@@ -1,0 +1,129 @@
+
+extends ../ui_layout
+  
+block content
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  .computer.only.tablet.only.four.wide.column 
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
+    #step3.ui.fluid.card.test(postID="3")
+          .content
+              
+            .ui.right.floated.menu(style="border:none; box-shadow:none;")
+              .ui.dropdown.icon.item
+                i.ellipsis.horizontal.icon
+                .menu.fluid.floated.left
+                  .item#item1
+                    i.fitted.circular.close.icon(style="color:gray;")
+                    | Hide Ad
+                  .item
+                    i.fitted.circular.exclamation.icon(style="color:gray;")
+                    | Report Ad
+                  .item(style="width:auto;height:auto;")
+                    i.fitted.circular.question.icon(style="color:gray;") 
+                    | Why Am I Seeing This Ad?
+                  
+          
+            a(href='/user/andrewthomas_')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user71.JPG')
+              span='Company Name'
+                
+          .image
+            img.post(src=cdn+'/post_pictures/digfootga1.jpg')
+              
+      
+          #step4.content
+            .description#hashtag="Here is where the sponsored post description would go with a hashtag #ad"
+            //-.right.floated.meta
+              i.icon.checkmark
+              | Seen by 12
+          .content#sponsoredTag(style="border:none;")
+            i.left.floated.external.alternate.icon(style="color:gray;")
+            .left.floated.meta="Sponsored"
+          .ui.bottom.attached.icon.buttons
+            //-.ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            //-.ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Flag
+            .ui.labeled.button(tabindex='0')
+              .ui.like.button
+                i.heart.icon
+                |  Like
+              a.ui.basic.red.left.pointing.label.count=2
+          
+          //-.content
+            .ui.comments
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user52.jpg')
+                .content
+                  a.author Connor McCormick
+                  .metadata
+                    span.date 5 hours ago
+                    i.heart.icon
+                    |  2 Likes
+                  .text()
+                    | haha that sucks
+                  .actions
+                    a.like Like
+                    a.flag Flag
+          //-.extra.content
+            .ui.fluid.left.labeled.right.icon.input
+              .ui.label
+                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+              input.newcomment(type='text' placeholder='Write a Comment')
+              i.big.send.link.icon
+    
+
+block scripts
+  script().
+  
+    $('.ui.dropdown')
+      .dropdown()
+    ;
+    
+    function startIntro(){
+        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
+          intro.setOptions({
+            steps: [
+              { 
+                element: document.querySelectorAll('#step3')[0],
+                intro: "Sometimes, advertisements and sponsored posts can look very similar to your friends’ posts on social media.",
+                position: "right",
+                scrollTo: 'tooltip'
+              },
+              { 
+                element: document.querySelectorAll('#step3')[0],
+                intro: "Here are some tips that can help you figure out if a post is an advertisement or not.",
+                position: "right",
+                scrollTo: "tooltip"
+              },
+              {
+                element: document.querySelectorAll('#sponsoredTag')[0],
+                intro: "Advertisements on social media have the words “<i>AD</i>,” “<i>Advertisement</i>,” “<i>Promoted</i>,” or “<i>Sponsored</i>” at the top or bottom of a post.",
+                position: "left",
+                scrollTo: "tooltip"
+              },
+              { 
+                element: document.querySelectorAll('#hashtag')[0],
+                intro: "You can also look at the text of the post to see if it contains a hashtag such as #ad, #advertisement, or #sponsored.",
+                position: "right",
+                scrollTo: "tooltip"
+              },
+              {
+                element: document.querySelectorAll('#item1')[0],
+                intro: "test",
+                position: "left",
+                scrollTo: "tooltip"
+              }
+              
+            ]
+          });
+          intro.start().onexit(function() {
+          window.location.href='/sim/digfoot';
+        });
+          
+      };
+
+      $(window).on("load", function() {startIntro();});

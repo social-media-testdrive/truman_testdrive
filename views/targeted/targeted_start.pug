@@ -1,0 +1,146 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container
+    br
+    .ui.raised.segment
+      h3.ui.header
+        i.book.blue.icon
+        .content
+          | Learn
+      hr
+      h5.ui.header
+        i.arrow.circle.right.blue.icon
+        .content
+          | When you browse social media, you sometimes see advertisements for products. 
+      h5.ui.header
+        i.arrow.circle.right.blue.icon
+        .content
+          | It’s important to know how to identify advertisements on social media to figure out when companies are trying to sell you things. Advertisements can be helpful to people, but it can also sometimes cause people to buy things they don’t need or can’t afford.
+      h5.ui.header
+        i.arrow.circle.right.blue.icon
+        .content
+              | Companies collect information about you and use it to show you advertisements that are relevant to your tastes. This is called targeted advertising. 
+      br
+      #introduction_next.button.ui.mini.green.right.labeled.icon.button
+              i.down.arrow.icon
+              |   Next
+    
+    #question.ui.segment.hidden
+      h3.ui.header
+        i.key.blue.icon
+        .content Key Ideas
+      .sub.header 
+        i.hand.pointer.icon(style="color:gray;")
+        span(style="color: gray;") Click on each label below to learn more
+      br
+      //- .ui.segments     
+      .ui.stackable.two.column.grid
+        .ui.column
+          #audience.ui.raised.segment
+            a.ui.blue.ribbon.label#audienceLabel
+                //- i.dollar.sign.icon 
+                span Data
+            span.hidden(id="audience_info", style="font-weight:600") Facts and statistics collected together to be used for different purposes.
+              ul(style="font-weight:400") Apps or websites collect data about what other websites you visit, what products you buy online, and what you look up on search engines.
+
+        .ui.column
+          #private_information.ui.raised.segment
+            a.ui.blue.ribbon.label#privateInformationLabel
+                //- i.magic.icon 
+                span Targeted advertising
+            span.hidden(id="private_information_info",style="font-weight:600")  When apps or websites use information they have collected about you to show you certain types of advertisements.
+              ul(style="font-weight:400") Companies will show you advertisements that are relevant to you based on your data.
+        
+        .ui.column
+          #risky.ui.raised.segment
+            a.ui.blue.ribbon.label#riskyLabel
+                //- i.magic.icon 
+                span Sponsored post
+            span.hidden(id="risky_info",style="font-weight:600") A post on social media that is paid for by a company as an advertisement for their product.
+    
+    .ui.warning.message#clickNextWarning(style="display:none;")
+      .header
+       | Click "Next"
+    .ui.warning.message#clickLabelsWarning(style="display:none;")
+     .header
+      | Click on each label to proceed  
+    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+        .ui.labeled.icon.button
+            i.rocket.icon
+            |   Got it!
+    br
+    br
+    br
+block scripts
+  script().
+  
+    //a function to animate any unclicked labels, used for error messaging
+    function animateUnclickedLabels() {
+      if($('#audience_info').is(":hidden")){
+        $('#audienceLabel').transition('bounce');
+      }
+      if($('#private_information_info').is(":hidden")){
+        $('#privateInformationLabel').transition('bounce');
+      }
+      if($('#risky_info').is(":hidden")){
+        $('#riskyLabel').transition('bounce');
+      }
+    };
+  
+    $('#introduction_next').on('click', function () {   
+      $('#clickNextWarning').hide();   
+      $('#question').show(); 
+      $('#question').transition('jiggle');     
+      if(!($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#risky_info').is(":hidden"))){
+        $('.ui.labeled.icon.button').addClass('green');
+      } 
+    });
+
+    $('#audience>a').on('click', function () {      
+        $('#audience_info').show(); 
+        $('#audience').transition('tada');     
+        if(!($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden")|| $('#risky_info').is(":hidden"))){
+          $('#clickLabelsWarning').hide();
+          $('.ui.labeled.icon.button').addClass('green');
+        }
+    });
+
+    $('#private_information>a').on('click', function () {      
+        $('#private_information_info').show();      
+        $('#private_information').transition('tada');     
+        if(!($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#risky_info').is(":hidden"))){
+          $('#clickLabelsWarning').hide();
+          $('.ui.labeled.icon.button').addClass('green');
+        }
+    });
+
+     $('#risky>a').on('click', function () {      
+        $('#risky_info').show(); 
+        $('#risky').transition('tada');     
+        if(!($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#risky_info').is(":hidden"))){
+          $('#clickLabelsWarning').hide();
+          $('.ui.labeled.icon.button').addClass('green');
+        }
+    });
+
+
+    function startIntro(){
+        if($('#question').is(":hidden")){
+          //User has not clicked next
+          $('#clickNextWarning').show();
+          $('#introduction_next').transition('bounce');
+        }else{
+          var clickedAllLabels = ($('#audience_info').is(":visible") && $('#private_information_info').is(":visible") &&  $('#risky_info').is(":visible"));
+          if(clickedAllLabels == true){ 
+            //everything is good to proceed
+            $('#clickLabelsWarning').hide();
+            window.location.href='/tutorial/targeted';
+          } else { 
+            //User has not clicked all the labels
+            $('#clickLabelsWarning').show();
+            animateUnclickedLabels();
+          }
+        }         
+      };

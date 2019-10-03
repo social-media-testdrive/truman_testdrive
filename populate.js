@@ -5,6 +5,7 @@ console.log('Started data loading script !!');
 
 var async = require('async')
 var Actor = require('./models/Actor.js');
+var User = require('./models/User.js');
 var Script = require('./models/Script.js');
 var Notification = require('./models/Notification.js');
 const _ = require('lodash');
@@ -22,7 +23,7 @@ var actors_list //= require('./input/actors.json');
 var posts_list //= require('./input/posts.json');
 var comment_list //= require('./input/comments.json');
 async function readData() {
-    try {        
+    try {
         //synchronously read all csv files and convert them to JSON
         await console.log("Start reading data from .csv files")
          actors_list = await CSVToJSON().fromFile('./input/bots.csv');
@@ -59,7 +60,7 @@ mongoose.connection.on('error', (err) => {
 
 /*
 drop existing collections before loading
-to make sure we dont overwrite the data 
+to make sure we dont overwrite the data
 incase we run the script twice or more
 */
 function dropCollections() {
@@ -68,6 +69,9 @@ function dropCollections() {
     });
     db.collections['scripts'].drop(function (err) {
         console.log('scripts collection dropped');
+    });
+    db.collections['users'].drop(function (err) {
+        console.log('users collection dropped');
     });
 }
 
@@ -173,7 +177,7 @@ function createPostInstances() {
             if (err) { console.log("createPostInstances error"); console.log(err); return; }
             // console.log("start post for: "+new_post.id);
             if (act) {
-                // console.log('Looking up Actor username is : ' + act.username); 
+                // console.log('Looking up Actor username is : ' + act.username);
                 var postdetail = new Object();
                 postdetail.module = new_post.module;
                 postdetail.body = new_post.body;
@@ -245,8 +249,8 @@ function createPostRepliesInstances() {
             if (act) {
                 Script.findOne({ post_id: new_replies.reply }, function (err, pr) {
                     if (pr) {
-                        // console.log('Looking up Actor ID is : ' + act._id); 
-                        // console.log('Looking up OP POST ID is : ' + pr._id); 
+                        // console.log('Looking up Actor ID is : ' + act._id);
+                        // console.log('Looking up OP POST ID is : ' + pr._id);
                         var comment_detail = new Object();
                         //postdetail.actor = {};
                         comment_detail.body = new_replies.body
@@ -256,19 +260,19 @@ function createPostRepliesInstances() {
                         comment_detail.likes = getLikesComment();
                         comment_detail.time = timeStringToNum(new_replies.time);
                         /*1 hr is 3600000
-                        console.log('Time is of POST is: ' + pr.time); 
+                        console.log('Time is of POST is: ' + pr.time);
                         let comment_time = pr.time + randomIntFromInterval(300000,3600000)
-                        console.log('New Comment time is: ' + comment_time); 
+                        console.log('New Comment time is: ' + comment_time);
                         comment_detail.time = comment_time;
-                        console.log('NEW NON BULLY Time is : ' + comment_detail.time);            
+                        console.log('NEW NON BULLY Time is : ' + comment_detail.time);
                         console.log('NEW Time is : ' + comment_detail.time);*/
                         // console.log('Adding in Actor: ' + act.username);
                         comment_detail.actor = act;
                         //pr.comments = insert_order(comment_detail, pr.comments);
-                        //console.log('Comment'+comment_detail.commentID+' on Post '+pr.post_id+' Length before: ' + pr.comments.length); 
+                        //console.log('Comment'+comment_detail.commentID+' on Post '+pr.post_id+' Length before: ' + pr.comments.length);
                         pr.comments.push(comment_detail);
                         pr.comments.sort(function (a, b) { return a.time - b.time; });
-                        //console.log('Comment'+comment_detail.commentID+' on Post '+pr.post_id+' Length After: ' + pr.comments.length); 
+                        //console.log('Comment'+comment_detail.commentID+' on Post '+pr.post_id+' Length After: ' + pr.comments.length);
                         //var script = new Script(postdetail);
 
                         pr.save(function (err) {
@@ -276,8 +280,8 @@ function createPostRepliesInstances() {
                                 console.log("@@@@@@@@@@@@@@@@Something went wrong in Saving COMMENT!!!");
                                 console.log("Error IN: " + new_replies.id);
                                 // console.log('Looking up Actor: ' + act.username);
-                                // console.log('Looking up OP POST ID: ' + pr._id); 
-                                // console.log('Time is : ' + new_replies.time); 
+                                // console.log('Looking up OP POST ID: ' + pr._id);
+                                // console.log('Time is : ' + new_replies.time);
                                 // console.log('NEW Time is : ' + comment_detail.time);
                                 // console.log(err);
                                 callback(err);
@@ -321,7 +325,7 @@ function createPostRepliesInstances() {
 
 
 /*
-promisify function will convert a function call to promise 
+promisify function will convert a function call to promise
 which will eventually resolve when function completes its execution,
 additionally it will wait for 2 seconds before starting.
 */
@@ -335,7 +339,7 @@ function promisify(inputFunction) {
 }
 
 /*
-TODO: Async function that runs 
+TODO: Async function that runs
 all these functions in serial, in this order
 Once all done, stop the program (Be sure to close the mongoose connection)
 */
