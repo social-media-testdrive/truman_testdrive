@@ -11,14 +11,14 @@ block content
             .ui.right.floated.menu(style="border:none; box-shadow:none;")
               .ui.dropdown.icon.item
                 i.ellipsis.horizontal.icon
-                .menu.fluid.floated.left
-                  .item#item1
+                .menu.fluid.floated.left#item1
+                  .item(data-value='0')
                     i.fitted.circular.close.icon(style="color:gray;")
                     | Hide Ad
-                  .item
+                  .item(data-value='1')
                     i.fitted.circular.exclamation.icon(style="color:gray;")
                     | Report Ad
-                  .item(style="width:auto;height:auto;")
+                  .item(data-value='2')
                     i.fitted.circular.question.icon(style="color:gray;") 
                     | Why Am I Seeing This Ad?
                   
@@ -32,7 +32,9 @@ block content
               
       
           #step4.content
-            .description#hashtag="Here is where the sponsored post description would go with a hashtag #ad"
+            .description
+              | Here is where the sponsored post description would go with a hashtag 
+              span#hashtag #ad
             //-.right.floated.meta
               i.icon.checkmark
               | Seen by 12
@@ -47,7 +49,7 @@ block content
               i.flag.icon
               |  Flag
             .ui.labeled.button(tabindex='0')
-              .ui.like.button
+              .ui.like.button#likeButton
                 i.heart.icon
                 |  Like
               a.ui.basic.red.left.pointing.label.count=2
@@ -79,19 +81,30 @@ block content
 block scripts
   script().
   
-    $('.ui.dropdown')
-      .dropdown()
-    ;
+
+    
+    
+
     
     function startIntro(){
+
+    
         var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
+        
+        $('.ui.dropdown.icon.item').dropdown({
+          duration: 0
+        });
+      
           intro.setOptions({
             steps: [
               { 
                 element: document.querySelectorAll('#step3')[0],
                 intro: "Sometimes, advertisements and sponsored posts can look very similar to your friends’ posts on social media.",
                 position: "right",
-                scrollTo: 'tooltip'
+                scrollTo: 'tooltip',
+                onchange: function(){
+                  console.log("changed");
+                }
               },
               { 
                 element: document.querySelectorAll('#step3')[0],
@@ -111,18 +124,79 @@ block scripts
                 position: "right",
                 scrollTo: "tooltip"
               },
-              {
+              { 
+                element: document.querySelectorAll('#hashtag')[0],
+                intro: "You might also notice that the post is from someone you don’t know and is not your social media friend, even though your friend might have liked or commented on the post!",
+                position: "right",
+                scrollTo: "tooltip"
+              },
+              { 
                 element: document.querySelectorAll('#item1')[0],
-                intro: "test",
-                position: "left",
+                intro: "If you decide a post is an advertisement, here are a few things you can do.",
+                position: "right",
+                scrollTo: "tooltip"
+              },
+              { 
+                element: document.querySelectorAll('#item1')[0],
+                intro: "If the advertisement is not relevant to you, or you don’t want to see it again, you can click “<i>Hide ad</i>” to get rid of the advertisement from your timeline.",
+                position: "right",
+                scrollTo: "tooltip"
+              },
+              { 
+                element: document.querySelectorAll('#item1')[0],
+                intro: "If the advertisement is offensive or inappropriate, you can click “Report ad” report it to the website.",
+                position: "right",
+                scrollTo: "tooltip"
+              },
+              { 
+                element: document.querySelectorAll('#item1')[0],
+                intro: "You can click “Why am I seeing this ad?” to learn more about how the website decided to show you the advertisement.",
+                position: "right",
+                scrollTo: "tooltip"
+              },
+              { 
+                element: document.querySelectorAll('#step3')[0],
+                intro: "Remember, you can always ignore the advertisement!",
+                position: "right",
                 scrollTo: "tooltip"
               }
-              
             ]
           });
+          
+          intro.onbeforechange(function() {
+              console.log("change");
+              console.log($(this)[0]._currentStep);
+              if(($(this)[0]._currentStep >= 5) && ($(this)[0]._currentStep < 9)){
+                $('.ui.dropdown.icon.item').dropdown({
+                  duration: 0
+                });
+                $('.ui.dropdown.icon.item').dropdown('show');
+                if($(this)[0]._currentStep === 6){
+                  $('.ui.dropdown.icon.item')
+                    .dropdown('set selected', '0');
+                } else if ($(this)[0]._currentStep === 7){
+                  $('.ui.dropdown.icon.item')
+                    .dropdown('set selected', '1');
+                } else if ($(this)[0]._currentStep === 8){
+                  $('.ui.dropdown.icon.item')
+                    .dropdown('set selected', '2');
+                } else {
+                  $('.ui.dropdown.icon.item')
+                    .dropdown('clear');
+                }
+                intro.refresh();
+                
+              } else {
+                $('.ui.dropdown.icon.item')
+                  .dropdown('clear');
+                $('.ui.dropdown.icon.item').dropdown('hide');
+                
+              }
+          });
+          
           intro.start().onexit(function() {
-          window.location.href='/sim/digfoot';
-        });
+            window.location.href='/sim/digfoot';
+          });
           
       };
 
