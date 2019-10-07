@@ -5,6 +5,78 @@ block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   .computer.only.tablet.only.four.wide.column 
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
+    
+    .ui.fluid.card.test#step1
+      .ui.dimmer.flag
+        .content
+          .center
+            h2.ui.inverted.icon.header
+              i.red.flag.icon
+              |                                     You &apos;ve flagged this!
+              h3.ui.inverted.header
+                span The admins will review this post further. We are sorry you had this experience.
+      .content
+        .right.floated.meta= "Yesterday"
+        a(href='/user/sammi_bautistaxx')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user64.jpg')
+              span='Samantha Bautista'
+      .img.post
+        img(src=cdn+'/post_pictures/bluepowder.jpg' style='max-width:100%;')
+      .content
+        .description Had so much fun at the color run this weekend #blue
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |                             Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |                             Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |                                 Like
+          a.ui.basic.red.left.pointing.label.count 5
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user12.jpg')
+            .content
+              a.author Shika Ramphal
+              .metadata
+                span.date Yesterday
+                .rating
+                  i.heart.icon
+                  span.num 2
+                  |                                             Likes
+              .text omg so pretty!
+              .actions
+                a.like.comment Like
+                a.flag.comment Flag
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user3.jpg')
+            .content
+              a.author Cloe Hansen
+              .metadata
+                span.date Yesterday
+                .rating
+                  i.heart.icon
+                  span.num 0
+                  |                                             Likes
+              .text I wish I was there
+              .actions
+                a.like.comment Like
+                a.flag.comment Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+            
+    
+    
     #step3.ui.fluid.card.test(postID="3")
           .content
               
@@ -21,28 +93,26 @@ block content
                   .item(data-value='2')
                     i.fitted.circular.question.icon(style="color:gray;") 
                     | Why Am I Seeing This Ad?
-                  
-          
-            a(href='/user/andrewthomas_')
-              img.ui.avatar.image(src=cdn+'/profile_pictures/user71.JPG')
-              span='Company Name'
-                
+                      
+            a.left.floated(href='/user/3striiipes')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/three_stripes_pfp.jpg')
+              span(style="vertical-align:middle;")='Three Stripes Shoes'
+
           .image
-            img.post(src=cdn+'/post_pictures/digfootga1.jpg')
-              
-      
+            img.post(src=cdn+'/post_pictures/three_stripes_ad.jpg')
+
           #step4.content
-            .description
-              | Here is where the sponsored post description would go with a hashtag 
-              span#hashtag #ad
+            .description#hashtag
+              | For your next race, choose ThreeStripes. 
+              span #sneakerheads #runnerheads #ad
             //-.right.floated.meta
               i.icon.checkmark
               | Seen by 12
           .content#sponsoredTag(style="border:none;")
             i.left.floated.external.alternate.icon(style="color:gray;")
             .left.floated.meta="Sponsored"
-          .ui.bottom.attached.icon.buttons
-            //-.ui.reply.button(tabindex='0')
+          .ui.two.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
               i.reply.icon
               |  Reply
             //-.ui.flag.button(tabindex='0')
@@ -52,21 +122,35 @@ block content
               .ui.like.button#likeButton
                 i.heart.icon
                 |  Like
-              a.ui.basic.red.left.pointing.label.count=2
+              a.ui.basic.red.left.pointing.label.count=50
           
-          //-.content
+          .content
             .ui.comments
               .comment
                 a.avatar
-                  img(src=cdn+'/profile_pictures/user52.jpg')
+                  img(src=cdn+'/profile_pictures/user8.jpg')
                 .content
-                  a.author Connor McCormick
+                  a.author Rob Yang
                   .metadata
-                    span.date 5 hours ago
+                    span.date Yesterday
                     i.heart.icon
-                    |  2 Likes
+                    |  1 Likes
                   .text()
-                    | haha that sucks
+                    | yo check this out @jlp777
+                  .actions
+                    a.like Like
+                    a.flag Flag
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user10.jpg')
+                .content
+                  a.author Franklin Robinson
+                  .metadata
+                    span.date Yesterday
+                    i.heart.icon
+                    |  1 Likes
+                  .text()
+                    | Looks good
                   .actions
                     a.like Like
                     a.flag Flag
@@ -76,6 +160,61 @@ block content
                 img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
               input.newcomment(type='text' placeholder='Write a Comment')
               i.big.send.link.icon
+              
+    .ui.fluid.card.test#step1
+      .ui.dimmer.flag
+        .content
+          .center
+            h2.ui.inverted.icon.header
+              i.red.flag.icon
+              |                                     You &apos;ve flagged this!
+              h3.ui.inverted.header
+                span The admins will review this post further. We are sorry you had this experience.
+      .content
+        .right.floated.meta= "Yesterday"
+        a(href='/user/thomas_the_train')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user39.jpg')
+              span='Thomas Rogers'
+      .img.post
+        img(src=cdn+'/post_pictures/smileplushies.jpg' style='max-width:100%;')
+      .content
+        .description 😁😀😁
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |                             Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |                             Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |                                 Like
+          a.ui.basic.red.left.pointing.label.count 2
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user10.jpg')
+            .content
+              a.author Franklin Robinson
+              .metadata
+                span.date Yesterday
+                .rating
+                  i.heart.icon
+                  span.num 2
+                  |                                             Likes
+              .text Nice pic
+              .actions
+                a.like.comment Like
+                a.flag.comment Flag
+          
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
     
 
 block scripts
@@ -94,109 +233,113 @@ block scripts
         $('.ui.dropdown.icon.item').dropdown({
           duration: 0
         });
-      
-          intro.setOptions({
-            steps: [
-              { 
-                element: document.querySelectorAll('#step3')[0],
-                intro: "Sometimes, advertisements and sponsored posts can look very similar to your friends’ posts on social media.",
-                position: "right",
-                scrollTo: 'tooltip',
-                onchange: function(){
-                  console.log("changed");
-                }
-              },
-              { 
-                element: document.querySelectorAll('#step3')[0],
-                intro: "Here are some tips that can help you figure out if a post is an advertisement or not.",
-                position: "right",
-                scrollTo: "tooltip"
-              },
-              {
-                element: document.querySelectorAll('#sponsoredTag')[0],
-                intro: "Advertisements on social media have the words “<i>AD</i>,” “<i>Advertisement</i>,” “<i>Promoted</i>,” or “<i>Sponsored</i>” at the top or bottom of a post.",
-                position: "left",
-                scrollTo: "tooltip"
-              },
-              { 
-                element: document.querySelectorAll('#hashtag')[0],
-                intro: "You can also look at the text of the post to see if it contains a hashtag such as #ad, #advertisement, or #sponsored.",
-                position: "right",
-                scrollTo: "tooltip"
-              },
-              { 
-                element: document.querySelectorAll('#hashtag')[0],
-                intro: "You might also notice that the post is from someone you don’t know and is not your social media friend, even though your friend might have liked or commented on the post!",
-                position: "right",
-                scrollTo: "tooltip"
-              },
-              { 
-                element: document.querySelectorAll('#item1')[0],
-                intro: "If you decide a post is an advertisement, here are a few things you can do.",
-                position: "right",
-                scrollTo: "tooltip"
-              },
-              { 
-                element: document.querySelectorAll('#item1')[0],
-                intro: "If the advertisement is not relevant to you, or you don’t want to see it again, you can click “<i>Hide ad</i>” to get rid of the advertisement from your timeline.",
-                position: "right",
-                scrollTo: "tooltip"
-              },
-              { 
-                element: document.querySelectorAll('#item1')[0],
-                intro: "If the advertisement is offensive or inappropriate, you can click “Report ad” report it to the website.",
-                position: "right",
-                scrollTo: "tooltip"
-              },
-              { 
-                element: document.querySelectorAll('#item1')[0],
-                intro: "You can click “Why am I seeing this ad?” to learn more about how the website decided to show you the advertisement.",
-                position: "right",
-                scrollTo: "tooltip"
-              },
-              { 
-                element: document.querySelectorAll('#step3')[0],
-                intro: "Remember, you can always ignore the advertisement!",
-                position: "right",
-                scrollTo: "tooltip"
-              }
-            ]
-          });
-          
-          intro.onbeforechange(function() {
-              console.log("change");
-              console.log($(this)[0]._currentStep);
-              if(($(this)[0]._currentStep >= 5) && ($(this)[0]._currentStep < 9)){
-                $('.ui.dropdown.icon.item').dropdown({
-                  duration: 0
-                });
-                $('.ui.dropdown.icon.item').dropdown('show');
-                if($(this)[0]._currentStep === 6){
-                  $('.ui.dropdown.icon.item')
-                    .dropdown('set selected', '0');
-                } else if ($(this)[0]._currentStep === 7){
-                  $('.ui.dropdown.icon.item')
-                    .dropdown('set selected', '1');
-                } else if ($(this)[0]._currentStep === 8){
-                  $('.ui.dropdown.icon.item')
-                    .dropdown('set selected', '2');
-                } else {
-                  $('.ui.dropdown.icon.item')
-                    .dropdown('clear');
-                }
-                intro.refresh();
-                
+        //prevent the dropdown from closing on item select
+        $('.item').on('click', function (e) {
+          e.stopPropagation();
+        });   
+        
+
+        intro.setOptions({
+          steps: [
+            { 
+              element: document.querySelectorAll('#step1')[0],
+              intro: "Sometimes, advertisements and sponsored posts can look very similar to your friends’ posts on social media.",
+              position: "right",
+              scrollTo: 'tooltip'
+            },
+            { 
+              element: document.querySelectorAll('#step1')[0],
+              intro: "Here are some tips that can help you figure out if a post is an advertisement or not.",
+              position: "right",
+              scrollTo: "tooltip"
+            },
+            {
+              element: document.querySelectorAll('#sponsoredTag')[0],
+              intro: "Advertisements on social media have the words “<i>AD</i>,” “<i>Advertisement</i>,” “<i>Promoted</i>,” or “<i>Sponsored</i>” at the top or bottom of a post.",
+              position: "left",
+              scrollTo: "tooltip"
+            },
+            { 
+              element: document.querySelectorAll('#hashtag')[0],
+              intro: "You can also look at the text of the post to see if it contains a hashtag such as #ad, #advertisement, or #sponsored.",
+              position: "right",
+              scrollTo: "tooltip"
+            },
+            { 
+              element: document.querySelectorAll('#hashtag')[0],
+              intro: "You might also notice that the post is from someone you don’t know and is not your social media friend, even though your friend might have liked or commented on the post!",
+              position: "right",
+              scrollTo: "tooltip"
+            },
+            { 
+              element: document.querySelectorAll('#item1')[0],
+              intro: "If you decide a post is an advertisement, here are a few things you can do.",
+              position: "right",
+              scrollTo: "tooltip"
+            },
+            { 
+              element: document.querySelectorAll('#item1')[0],
+              intro: "If the advertisement is not relevant to you, or you don’t want to see it again, you can click “<i>Hide ad</i>” to get rid of the advertisement from your timeline.",
+              position: "right",
+              scrollTo: "tooltip"
+            },
+            { 
+              element: document.querySelectorAll('#item1')[0],
+              intro: "If the advertisement is offensive or inappropriate, you can click “Report ad” report it to the website.",
+              position: "right",
+              scrollTo: "tooltip"
+            },
+            { 
+              element: document.querySelectorAll('#item1')[0],
+              intro: "You can click “Why am I seeing this ad?” to learn more about how the website decided to show you the advertisement.",
+              position: "right",
+              scrollTo: "tooltip"
+            },
+            { 
+              element: document.querySelectorAll('#step3')[0],
+              intro: "Remember, you can always ignore the advertisement!",
+              position: "right",
+              scrollTo: "tooltip"
+            }
+          ]
+        });
+        
+        intro.onbeforechange(function() {
+            console.log("change");
+            console.log($(this)[0]._currentStep);
+            if(($(this)[0]._currentStep >= 5) && ($(this)[0]._currentStep < 9)){
+              $('.ui.dropdown.icon.item').dropdown({
+                duration: 0
+              });
+              
+              $('.ui.dropdown.icon.item').dropdown('show');
+              if($(this)[0]._currentStep === 6){
+                $('.ui.dropdown.icon.item')
+                  .dropdown('set selected', '0');
+              } else if ($(this)[0]._currentStep === 7){
+                $('.ui.dropdown.icon.item')
+                  .dropdown('set selected', '1');
+              } else if ($(this)[0]._currentStep === 8){
+                $('.ui.dropdown.icon.item')
+                  .dropdown('set selected', '2');
               } else {
                 $('.ui.dropdown.icon.item')
                   .dropdown('clear');
-                $('.ui.dropdown.icon.item').dropdown('hide');
-                
               }
-          });
-          
-          intro.start().onexit(function() {
-            window.location.href='/sim/digfoot';
-          });
+              intro.refresh();
+              
+            } else {
+              $('.ui.dropdown.icon.item')
+                .dropdown('clear');
+              $('.ui.dropdown.icon.item').dropdown('hide');
+              
+              
+            }
+        });
+        
+        intro.start().onexit(function() {
+          window.location.href='/sim/targeted';
+        });
           
       };
 
