@@ -678,6 +678,26 @@ exports.getMe = (req, res) => {
  * POST /account/profile
  * Update profile information.
  */
+exports.postUpdateInterestSelection = (req, res, next) => {
+
+  User.findById(req.user.id, (err, user) => {
+    if (err) { return next(err); }
+
+    user.targetedAdTopic = req.body.chosenTopic || '';
+
+    user.save((err) => {
+      if (err) {
+        return next(err);
+      }
+    });
+  });
+};
+
+
+/**
+ * POST /account/profile
+ * Update profile information.
+ */
 exports.postUpdateProfile = (req, res, next) => {
   //req.assert('email', 'Please enter a valid email address.').isEmail();
   //req.sanitize('email').normalizeEmail({ remove_dots: false });

@@ -418,6 +418,28 @@ app.get('/settings/privacy', passportConfig.isAuthenticated, function (req, res)
   });
 });
 
+//The interest pages for the targeted ads Module
+app.get('/food/targeted', passportConfig.isAuthenticated, function (req, res) {
+  //console.log('privacy/privacy_settings')
+  res.render('targeted/targeted_food', {
+    title: 'Food Interest Page'
+  });
+});
+
+app.get('/sports/targeted', passportConfig.isAuthenticated, function (req, res) {
+  //console.log('privacy/privacy_settings')
+  res.render('targeted/targeted_sports', {
+    title: 'Sports Interest Page'
+  });
+});
+
+app.get('/gaming/targeted', passportConfig.isAuthenticated, function (req, res) {
+  //console.log('privacy/privacy_settings')
+  res.render('targeted/targeted_gaming', {
+    title: 'Gaming Interest Page'
+  });
+});
+
 
 //Classes
 app.get('/classes', passportConfig.isAuthenticated, classController.getClasses);
@@ -485,6 +507,7 @@ app.get('/bell', passportConfig.isAuthenticated, userController.checkBell);
 //app.get('/feed', passportConfig.isAuthenticated, scriptController.getScript);
 app.post('/feed', passportConfig.isAuthenticated, scriptController.postUpdateFeedAction);
 app.post('/deleteUserFeedActions', passportConfig.isAuthenticated, scriptController.postDeleteFeedAction);
+app.post('/interest', passportConfig.isAuthenticated, userController.postUpdateInterestSelection);
 //postDeleteAccount
 //app.post('/deleteAccount', passportConfig.isAuthenticated, userController.getDeleteAccount);
 app.get('/delete', passportConfig.isAuthenticated, userController.getDeleteAccount);

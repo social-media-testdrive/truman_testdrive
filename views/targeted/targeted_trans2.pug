@@ -1,0 +1,77 @@
+extends ../ui_layout
+
+block content
+  
+  .computer.only.tablet.only.four.wide.column 
+  .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
+    .ui.container
+      form.ui.form
+          .field
+            br
+            label(style="font-size:135%") 
+              | Choose an interest!  
+              
+              br
+              br
+              //-.div(style='width: 200px;')
+              
+              i.search.large.gray.icon
+              .ui.selection.dropdown(name='topicSelect')
+                input(type='hidden')
+                i.dropdown.icon
+                .default.text Select a topic
+                .menu
+                  .item(data-value='0' style="font-size:100%") Food
+                  .item(data-value='1' style="font-size:100%") Sports
+                  .item(data-value='2' style="font-size:100%") Gaming
+            
+
+      br
+    
+      br
+      br
+      br
+      br
+      br
+      br
+      a(href='javascript:void(0);', onclick='javascript:startIntro();')
+          .ui.big.labeled.icon.button
+              i.rocket.icon
+              |   Let's Continue!
+      br
+      br
+      br
+    
+block scripts
+  script().
+  
+    $('.ui.dropdown')
+      .dropdown();
+      
+    $(".ui.selection.dropdown[name='topicSelect']").change(function() {
+          $('.ui.big.labeled.icon.button').addClass('green');
+          var newSelect = ($(".ui.selection.dropdown[name='topicSelect']").dropdown('get text'));
+          $.post("/feed", { targetedAdTopic: newSelect, _csrf: $('meta[name="csrf-token"]').attr('content') });
+    });
+      
+      
+    function startIntro(){
+      
+      var currentSelect = ($(".ui.selection.dropdown[name='topicSelect']").dropdown('get text'));
+      
+      //record the choice in the db to use later when generating the free play section 
+      $.post("/interest", { chosenTopic: currentSelect, _csrf: $('meta[name="csrf-token"]').attr('content') });
+      
+      //take the user to the appropriate interest page depending on their choice
+      if($('.ui.big.labeled.icon.button').hasClass('green')){     
+        if(currentSelect === "Food"){
+          window.location.href='/food/targeted';
+        }else if (currentSelect === "Sports"){
+          window.location.href='/sports/targeted';
+        }else if (currentSelect === "Gaming"){
+          window.location.href='/gaming/targeted';
+        }
+      }
+      
+      
+    };

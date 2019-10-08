@@ -1,0 +1,42 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container
+    br
+    .column
+      .ui.raised.segment
+        .ui.blue.ribbon.label
+          h3
+            i.history.icon
+            | &nbsp Let's review!
+        br
+          
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            |  Companies collect <b>data</b> from you, such as websites you visit, products you buy, and things you look up on search engines. This data is used to show you <b>targeted advertising</b> on social media.
+
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            |   The advertisements can be in the form of a <b>sponsored post</b>, which look similar to regular social media posts but contain advertisements.
+
+        br
+  
+    br
+    br
+    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+        .ui.big.green.labeled.icon.button
+            i.rocket.icon
+            |   Got it!
+    br
+    br
+    br
+    block scripts
+  script().
+    function startIntro(){
+      
+        window.location.href='/trans_script/targeted';
+
+      };

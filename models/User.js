@@ -36,6 +36,7 @@ const userSchema = new mongoose.Schema({
   blocked: [String], //actors user has blocked
   reported: [String], //actors user has reported
 
+  targetedAdTopic: {type: String, default: ""}, //Food, Gaming, or Sports
   //User created posts
   posts: [new Schema({
     type: String, //post, reply, actorReply (in TestDrive, it's always just a post)
@@ -64,7 +65,7 @@ const userSchema = new mongoose.Schema({
       absTime: Number,//absolute time in millisecons (time in took place in real world)
       new_comment: {type: Boolean, default: false}, //is new comment
       isUser: {type: Boolean, default: false}, //is this a user comment on their own post
-      liked: {type: Boolean, default: false}, //has the user liked it? 
+      liked: {type: Boolean, default: false}, //has the user liked it?
       flagged: {type: Boolean, default: false},//is Flagged?
       likes: Number //number of likes this comment has
       }, { versionKey: false })],
@@ -178,7 +179,7 @@ userSchema.methods.comparePassword = function comparePassword(candidatePassword,
  * Add Log to User if access is 1 hour from last use.
  */
 userSchema.methods.logUser = function logUser(time, agent, ip) {
-  
+
   if(this.log.length > 0)
   {
     var log_time = new Date(this.log[this.log.length -1].time);
@@ -324,21 +325,21 @@ userSchema.methods.getModPostsAndReplies = function getModPostsAndReplies(module
 
 //Return the user post from its ID
 userSchema.methods.getUserPostByID = function(postID) {
-  
+
   return this.posts.find(x => x.postID == postID);
 
 };
 
 //Return the user pre-quiz result from its ID
 userSchema.methods.getUserPreQuizScore = function(modual) {
-  
+
   return  this.quiz.find(x => ((x.modual == modual) && (x.type == "pre")));
 
 };
 
 //Return the user post-quiz result from its ID
 userSchema.methods.getUserPostQuizScore = function(modual) {
-  
+
   return  this.quiz.find(x => ((x.modual == modual) && (x.type == "post")));
 
 };
@@ -346,19 +347,19 @@ userSchema.methods.getUserPostQuizScore = function(modual) {
 
 //Return the user reply from its ID, not needed now
 userSchema.methods.getUserReplyByID = function(replyID) {
-  
+
   return this.posts.find(x => x.replyID == replyID);
 
 };
 
 //Return the actor reply from its ID - not needed now
 userSchema.methods.getActorReplyByID = function(actorReplyID) {
-  
+
   return this.posts.find(x => x.actorReplyID == actorReplyID);
 
 };
 
-//get user posts within the min/max time period 
+//get user posts within the min/max time period
 userSchema.methods.getPostInPeriod = function(min, max, module) {
     //concat posts & reply
     return this.posts.filter(function(item) {
