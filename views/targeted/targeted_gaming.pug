@@ -4,3 +4,17 @@ block content
 
   .ui.text.container
     h3 gaming
+    
+    
+    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+        .ui.big.green.labeled.icon.button
+            i.rocket.icon
+            |   Let's Continue!
+            
+block scripts
+  script().
+    function startIntro(){
+      
+        window.location.href='/trans_script/targeted';
+
+    };

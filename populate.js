@@ -180,6 +180,7 @@ function createPostInstances() {
                 // console.log('Looking up Actor username is : ' + act.username);
                 var postdetail = new Object();
                 postdetail.module = new_post.module;
+                postdetail.type = new_post.type;
                 postdetail.body = new_post.body;
                 postdetail.info_text = new_post.info_text;
                 postdetail.likes = new_post.likes || getLikes();
