@@ -1,0 +1,268 @@
+extends ../ui_layout
+
+block content
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  -var adType = user.targetedAdTopic;
+  
+  .ui.container
+    .ui.stackable.column.grid
+      .ui.column
+        .insertPrint
+        .ui.raised.segment
+          h3.ui.header
+            i.question.blue.icon
+            .content
+              | Reflect
+          .ui.label(style="background-color:#2185d08a;color:#000000d1;")
+            h4(style="float:left")
+              i.exclamation.triangle.icon(style="color: #f9ff00 !important;")
+
+              | These were the advertisements in the timeline. How many did you notice?
+          br
+          br
+          .ui.stackable.three.cards
+            
+            if (adType == 'Sports')
+              
+              .ui.fluid.card.dim()#card1
+                .content      
+                  .ui.right.floated.menu(style="border:none; box-shadow:none;")
+                    .ui.dropdown.icon.item
+                      i.ellipsis.horizontal.icon
+                  a.left.floated(href='/user/3striiipes')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/three_stripes_pfp.jpg')
+                    span(style="vertical-align:middle;")='Three Stripes Shoes'
+                .image
+                  img.post(src=cdn+'/post_pictures/three_stripes_ad.jpg')
+                #step4.content
+                  .description#hashtag
+                    | For your next race, choose ThreeStripes. 
+                    span #sneakerheads #runnerheads #ad
+          
+              .ui.fluid.card.dim()#card2
+                .content      
+                  .ui.right.floated.menu(style="border:none; box-shadow:none;")
+                    .ui.dropdown.icon.item
+                      i.ellipsis.horizontal.icon
+                  a.left.floated(href='/user/3striiipes')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/three_stripes_pfp.jpg')
+                    span(style="vertical-align:middle;")='Three Stripes Shoes'
+                .image
+                  img.post(src=cdn+'/post_pictures/three_stripes_ad_2.jpeg')
+                #step4.content
+                  .description#hashtag
+                    | When's your next big race? Comment down below! 
+
+              .ui.fluid.card.dim()#card3
+                .content      
+                  .ui.right.floated.menu(style="border:none; box-shadow:none;")
+                    .ui.dropdown.icon.item
+                      i.ellipsis.horizontal.icon
+                  a.left.floated(href='/user/rockvilleclubsoccer')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/club_soccer_pfp.jpg')
+                    span(style="vertical-align:middle;")='Rockville Club Soccer'
+                .image
+                  img.post(src=cdn+'/post_pictures/club_soccer_ad.jpg')
+                #step4.content
+                  .description#hashtag
+                    | Spots are filling up fast! Make sure you sign up for club soccer TODAY.
+                    
+            if (adType == 'Gaming')
+              
+              .ui.fluid.card.dim()#card1
+                .content      
+                  .ui.right.floated.menu(style="border:none; box-shadow:none;")
+                    .ui.dropdown.icon.item
+                      i.ellipsis.horizontal.icon
+                  a.left.floated(href='/user/nentindo')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/controller_pfp.jpg')
+                    span(style="vertical-align:middle;")='Nentindo'
+                .image
+                  img.post(src=cdn+'/post_pictures/controller_ad.jpg')
+                #step4.content
+                  .description#hashtag
+                    | Which team are you on: 🔴or 🔵?
+
+              .ui.fluid.card.dim()#card2
+                .content      
+                  .ui.right.floated.menu(style="border:none; box-shadow:none;")
+                    .ui.dropdown.icon.item
+                      i.ellipsis.horizontal.icon
+                  a.left.floated(href='/user/vrtech')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/VR_pfp.jpg')
+                    span(style="vertical-align:middle;")='VR Tech'
+                .image
+                  img.post(src=cdn+'/post_pictures/VR_ad.jpg')
+                #step4.content
+                  .description#hashtag
+                    | Play any game on our VR headsets. Experience the future, now. #VR #tech 
+
+              .ui.fluid.card.dim()#card3
+                .content      
+                  .ui.right.floated.menu(style="border:none; box-shadow:none;")
+                    .ui.dropdown.icon.item
+                      i.ellipsis.horizontal.icon
+                  a.left.floated(href='/user/rogerthatapp')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/rogerthat_pfp.jpg')
+                    span(style="vertical-align:middle;")='Roger That Mobile App'
+                .image
+                  img.post(src=cdn+'/post_pictures/roger_ad.jpg')
+                #step4.content
+                  .description#hashtag
+                    | Download the #1 mobile game in the world. #rogerthat #app
+                    
+            if (adType == 'Food')
+              
+              .ui.fluid.card.dim()#card1
+                .content      
+                  .ui.right.floated.menu(style="border:none; box-shadow:none;")
+                    .ui.dropdown.icon.item
+                      i.ellipsis.horizontal.icon
+                  a.left.floated(href='/user/mcburgers')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/burger_ad_pfp.jpg')
+                    span(style="vertical-align:middle;")='McBurgers'
+                .image
+                  img.post(src=cdn+'/post_pictures/burger_ad.jpg')
+                #step4.content
+                  .description#hashtag
+                    | Yum. 11/10. (📸: @ethan-the-man)
+  
+              .ui.fluid.card.dim()#card2
+                .content      
+                  .ui.right.floated.menu(style="border:none; box-shadow:none;")
+                    .ui.dropdown.icon.item
+                      i.ellipsis.horizontal.icon
+                  a.left.floated(href='/user/crunchflakes')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/crunch_flakes_pfp.jpg')
+                    span(style="vertical-align:middle;")='Crunch Flakes Cereal'
+                .image
+                  img.post(src=cdn+'/post_pictures/cereal_ad.jpg')
+                #step4.content
+                  .description#hashtag
+                    | A spoonful of ______ 🤤#strawberrycrunch
+  
+              .ui.fluid.card.dim()#card3
+                .content      
+                  .ui.right.floated.menu(style="border:none; box-shadow:none;")
+                    .ui.dropdown.icon.item
+                      i.ellipsis.horizontal.icon
+                  a.left.floated(href='/user/popdrinks')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/pop_drinks_pfp.jpg')
+                    span(style="vertical-align:middle;")='Pop Drinks'
+                .image
+                  img.post(src=cdn+'/post_pictures/drink_ad.jpg')
+                #step4.content
+                  .description#hashtag
+                    | 😱Six brand new flavors 😱Coming soon, in-stores near you. 
+
+          br
+          br
+
+
+
+    .ui.raised.segment
+      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
+        h4(style="float:left")
+          | What did you do when you saw an advertisement or a sponsored post?
+      .content.checkOne
+        .ui.form
+          br
+          .inline.fields
+            label(for='wouldRead', name='wouldRead') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='wouldRead', style="font-size:120%;", tabindex='0') I hid the advertisement from my timeline.
+        .ui.form
+          .inline.fields
+            label(for='checkSource', name='checkSource') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='checkSource', style="font-size:120%;", tabindex='0') I reported the advertisement to the website.
+        .ui.form
+          .inline.fields
+            label(for='corroboration', name='corroboration') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='corroboration', style="font-size:120%;", tabindex='0') I looked at why I was getting the advertisement.     
+        .ui.form
+          .inline.fields
+            label(for='ignored', name='ignored') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='ignored', style="font-size:120%;", tabindex='0') I ignored the advertisement.    
+        .ui.form
+          .inline.fields
+            label(for='nothing', name='nothing') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='nothing', style="font-size:120%;", tabindex='0') I did not do anything.
+
+    .ui.raised.segment
+      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
+        h4(style="float:left")
+          | Why do companies collect user data?
+      .ui.form
+        .inline.fields
+          label(style="font-size:120%;")
+          textarea.glowing-border(rows='2' id="literacy_responseOne")
+
+    .ui.raised.segment
+      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
+        h4(style="float:left")
+          | Why is it important to know how to identify advertisements on social media?
+      .ui.form
+        .inline.fields
+          label(style="font-size:120%;")
+          textarea.glowing-border(rows='2' id="literacy_responseTwo")
+
+    br
+    .ui.big.green.labeled.icon.button(onclick="onPrint()")
+          i.right.arrow.icon
+          |   Print your responses
+    br
+    br
+    .ui.big.green.labeled.icon.button.cyberbullying_end
+          i.rocket.icon
+          |   Finish Lesson
+
+      
+block scripts
+  script().
+  
+    function onPrint(){
+      
+        $(".insertPrint").empty();
+        $(".insertPrint").css('display','block');  
+        $(".insertPrint").append("<br><h4>What did you do when you saw an advertisement or a sponsored post?</h4>");
+        $(".checkOne").clone().appendTo(".insertPrint");
+
+        $(".insertPrint").append("<br><h4>Why do companies collect user data?</h4>");
+        var responseOne = document.getElementById("literacy_responseOne").value;
+        $(".insertPrint").append(responseOne);
+        
+        $(".insertPrint").append("<h4>Why is it important to know how to identify advertisements on social media?</h4>");
+        var responseTwo = document.getElementById("literacy_responseTwo").value;
+        $(".insertPrint").append(responseTwo);
+        
+        window.print();  
+        
+        $(".insertPrint").css('display','none');   
+    }
+    
+    setTimeout(function(){
+      $('.ui.label').transition('bounce');        
+    }, 1000);
+
+
+    setTimeout(function(){
+      $('#card1,#card2,#card3,#card4,#card5,#card6').transition({
+      animation : 'jiggle',
+      duration  : 800,
+      interval  : 200
+      });    
+    }, 2000);
