@@ -270,12 +270,13 @@ block content
                                 a.flag.comment Flag      
             
               
-                //-.extra.content
+                .extra.content
                   .ui.fluid.left.labeled.right.icon.input
                     .ui.label
                       img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
                     input.newcomment(type='text' placeholder='Write a Comment')
                     i.big.send.link.icon
+                      
         else if (((val.type == 'Sports') || (val.type == 'Food') || (val.type == 'Gaming')) && (!(val.type == user.targetedAdTopic)))
           //- do nothing, do not display
         
@@ -733,6 +734,73 @@ block content
         .ui.positive.right.labeled.icon.button
           | Done
           i.checkmark.icon
+            
+    //- Why am I seeing this ad modal, used in targeted ads modual. text depends on previously selected interest in trans2.
+    if (user.targetedAdTopic == 'Sports')
+      .ui.small.modal#whyAmISeeingThisAdModal
+        i.close.icon  
+        .header Why am I seeing this ad?
+        .content
+            p You're seeing this ad because we wanted to reach people interested in <b>sports</b>. 
+            p This is based on what you do on TestDrive, such as pages you have visited and search terms you have clicked on.
+                  
+            br
+            .actions
+              .ui.positive.right.labeled.icon.button
+                | Done
+                i.checkmark.icon
+                
+    else if (user.targetedAdTopic == 'Food')
+      .ui.small.modal#whyAmISeeingThisAdModal
+        i.close.icon  
+        .header Why am I seeing this ad?
+        .content
+            p You're seeing this ad because we wanted to reach people interested in <b>food</b>. 
+            p This is based on what you do on TestDrive, such as pages you have visited and search terms you have clicked on.
+                  
+            br
+            .actions
+              .ui.positive.right.labeled.icon.button
+                | Done
+                i.checkmark.icon
+      
+    else if (user.targetedAdTopic == 'Gaming')
+      .ui.small.modal#whyAmISeeingThisAdModal
+        i.close.icon  
+        .header Why am I seeing this ad?
+        .content
+            p You're seeing this ad because we wanted to reach people interested in <b>gaming</b>. 
+            p This is based on what you do on TestDrive, such as pages you have visited and search terms you have clicked on.
+                  
+            br
+            .actions
+              .ui.positive.right.labeled.icon.button
+                | Done
+                i.checkmark.icon
+
+      //-Hide ad modal, used in targeted ads module. 
+      .ui.small.modal#hideAdModal
+        i.close.icon  
+        .header Why did you choose to hide this ad?
+        .content
+            .ui.form
+               .field
+                 .ui.checkbox
+                   input(type='checkbox')
+                   label The ad was not relevant to me
+               .field
+                 .ui.checkbox
+                   input(type='checkbox')
+                   label I see this ad too often
+               .field
+                 .ui.checkbox
+                   input(type='checkbox')
+                   label The ad was inappropriate
+               br
+               .actions
+                 .ui.positive.right.labeled.icon.button
+                   | Done
+                   i.checkmark.icon
 
 block scripts
   script().
@@ -760,9 +828,14 @@ block scripts
    
          } else if (dropdownSelection == 1){
            //flag the post
-           var post = $(this).closest(".ui.fluid.card.dim");
+           var post = $(this).closest(".ui.fluid.card.test");
+           //this query is not getting the correct info, for some reason
            var postID = post.attr("postID");
            console.log("***********FLAG: post " + postID);
+           //$.post("/feed", { postID: postID, flag: 1, _csrf: $('meta[name="csrf-token"]').attr('content') });
+           console.log("Removing Post content now!");
+          
+           
            post.find(".ui.dimmer.flag").dimmer({
              closable: false
            })

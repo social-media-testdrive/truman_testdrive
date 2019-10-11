@@ -367,30 +367,17 @@ block content
         
     .ui.small.modal#whyAmISeeingThisAdModal
       i.close.icon  
-      .header Here's why we chose to show Hannah this ad:
+      .header Why is Hannah seeing this ad?
       .content
-          .ui.styled.fluid.accordion
-            .title
-              //- .ui.fitted.large.checkbox
-              //-   input.ui(type="checkbox", checked="")#check
-              i.dropdown.icon
-              |    Hannah's Google search history
-            .content
-              p.transition.hidden
-                | Hannah has been searching for guitar brands on google. 
-            .title
-              i.dropdown.icon
-              |    Hannah's YouTube search history
-            .content
-              p
-                | Hannah has been watching guitar videos on YouTube. 
+          p Hannah is seeing this ad because TestDrive wanted to reach people interested in <b>guitars</b>. 
+          p This is based on what Hannah does on TestDrive, such as pages she has visited and search terms she has clicked on.
                 
           br
           .actions
             .ui.positive.right.labeled.icon.button
               | Done
               i.checkmark.icon
-            
+          
       .ui.small.modal#hideAdModal
         i.close.icon  
         .header Why did you choose to hide this ad?
