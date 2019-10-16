@@ -162,7 +162,7 @@ block content
       //-THIS is for posts by Actors, not the USER
       else
         if(val.type == user.targetedAdTopic)
-          #step3.ui.fluid.card.test(postID="3")
+          #step3.ui.fluid.card.test(postID=val.id)
               #blueDotStep.ui.fluid.card.dim
                 .ui.dimmer.flag
                   .content
@@ -812,9 +812,11 @@ block scripts
          if(dropdownSelection == 0){
            $(".inverted.dimmer").css("background-color","rgba(211,211,211,0.95)");
            //hide the post
-           var post = $(this).closest(".ui.fluid.card.dim");
+           var post = $(this).closest(".ui.fluid.card.test");
            var postID = post.attr("postID");
            console.log("***********HIDE: post " + postID);
+           $.post("/feed", { postID: postID, flag: 1, _csrf: $('meta[name="csrf-token"]').attr('content') });
+           console.log("Removing Script Post content now!");
            post.find(".ui.inverted.dimmer.notflag").dimmer({
              closable: false
            }).dimmer('show')
@@ -829,13 +831,10 @@ block scripts
          } else if (dropdownSelection == 1){
            //flag the post
            var post = $(this).closest(".ui.fluid.card.test");
-           //this query is not getting the correct info, for some reason
            var postID = post.attr("postID");
            console.log("***********FLAG: post " + postID);
-           //$.post("/feed", { postID: postID, flag: 1, _csrf: $('meta[name="csrf-token"]').attr('content') });
-           console.log("Removing Post content now!");
-          
-           
+           $.post("/feed", { postID: postID, flag: 1, _csrf: $('meta[name="csrf-token"]').attr('content') });
+           console.log("Removing Script Post content now!");     
            post.find(".ui.dimmer.flag").dimmer({
              closable: false
            })
@@ -853,6 +852,7 @@ block scripts
          }
        }
      });
+     //end code for targeted ads dropdown functionality
         
         $('.big.plus.icon').css({"display": "block"})
         $('.ui.simple.dropdown.item').css({"display":"inherit"})
