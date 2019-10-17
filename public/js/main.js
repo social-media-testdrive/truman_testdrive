@@ -232,6 +232,8 @@ end chat box code
     }
   });
 
+  
+
   //Like a comment
   $('a.like.comment')
     .on('click', function () {

@@ -6,7 +6,96 @@ block content
   .computer.only.tablet.only.four.wide.column 
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
     
-    .ui.fluid.card.test#step1
+
+            
+    
+    
+    #step1.ui.fluid.card.test(postID="3")
+          .content
+              
+            .ui.right.floated.menu(style="border:none; box-shadow:none;")
+              .ui.dropdown.icon.item
+                i.ellipsis.horizontal.icon
+                .menu.fluid.floated.left#item1
+                  .item(data-value='0')
+                    i.fitted.circular.close.icon(style="color:gray;")
+                    | Hide Ad
+                  .item(data-value='1')
+                    i.fitted.circular.exclamation.icon(style="color:gray;")
+                    | Report Ad
+                  .item(data-value='2')
+                    i.fitted.circular.question.icon(style="color:gray;") 
+                    | Why Am I Seeing This Ad?
+                      
+            a.left.floated(href='/user/3striiipes')#poster
+              img.ui.avatar.image(src=cdn+'/profile_pictures/three_stripes_pfp.jpg')
+              span(style="vertical-align:middle;")='Three Stripes Shoes'
+
+          .image
+            img.post(src=cdn+'/post_pictures/three_stripes_ad.jpg')
+
+          #step4.content
+            .description#hashtag
+              | For your next race, choose ThreeStripes. 
+              span #sneakerheads #runnerheads #ad
+            //-.right.floated.meta
+              i.icon.checkmark
+              | Seen by 12
+          .content#sponsoredTag(style="border:none;")
+            i.left.floated.external.alternate.icon(style="color:gray;")
+            .left.floated.meta="Sponsored"
+          .ui.two.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            //-.ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Flag
+            .ui.labeled.button(tabindex='0')
+              .ui.like.button#likeButton
+                i.heart.icon
+                |  Like
+              a.ui.basic.red.left.pointing.label.count=50
+          
+          .content
+            .ui.comments
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user8.jpg')
+                .content
+                  a.author Rob Yang
+                  .metadata
+                    span.date Yesterday
+                    i.heart.icon
+                    |  1 Likes
+                  .text()
+                    | yo check this out @jlp777
+                  .actions
+                    a.like Like
+                    a.flag Flag
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user10.jpg')
+                .content
+                  a.author Franklin Robinson
+                  .metadata
+                    span.date Yesterday
+                    i.heart.icon
+                    |  1 Likes
+                  .text()
+                    | Looks good
+                  .actions
+                    a.like Like
+                    a.flag Flag
+          //-.extra.content
+            .ui.fluid.left.labeled.right.icon.input
+              .ui.label
+                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+              input.newcomment(type='text' placeholder='Write a Comment')
+              i.big.send.link.icon
+      
+      
+    .ui.fluid.card.test
       .ui.dimmer.flag
         .content
           .center
@@ -73,94 +162,7 @@ block content
           .ui.label
             img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
           input.newcomment(type='text' placeholder='Write a Comment')
-          i.big.send.link.icon
-            
-    
-    
-    #step3.ui.fluid.card.test(postID="3")
-          .content
-              
-            .ui.right.floated.menu(style="border:none; box-shadow:none;")
-              .ui.dropdown.icon.item
-                i.ellipsis.horizontal.icon
-                .menu.fluid.floated.left#item1
-                  .item(data-value='0')
-                    i.fitted.circular.close.icon(style="color:gray;")
-                    | Hide Ad
-                  .item(data-value='1')
-                    i.fitted.circular.exclamation.icon(style="color:gray;")
-                    | Report Ad
-                  .item(data-value='2')
-                    i.fitted.circular.question.icon(style="color:gray;") 
-                    | Why Am I Seeing This Ad?
-                      
-            a.left.floated(href='/user/3striiipes')
-              img.ui.avatar.image(src=cdn+'/profile_pictures/three_stripes_pfp.jpg')
-              span(style="vertical-align:middle;")='Three Stripes Shoes'
-
-          .image
-            img.post(src=cdn+'/post_pictures/three_stripes_ad.jpg')
-
-          #step4.content
-            .description#hashtag
-              | For your next race, choose ThreeStripes. 
-              span #sneakerheads #runnerheads #ad
-            //-.right.floated.meta
-              i.icon.checkmark
-              | Seen by 12
-          .content#sponsoredTag(style="border:none;")
-            i.left.floated.external.alternate.icon(style="color:gray;")
-            .left.floated.meta="Sponsored"
-          .ui.two.bottom.attached.icon.buttons
-            .ui.reply.button(tabindex='0')
-              i.reply.icon
-              |  Reply
-            //-.ui.flag.button(tabindex='0')
-              i.flag.icon
-              |  Flag
-            .ui.labeled.button(tabindex='0')
-              .ui.like.button#likeButton
-                i.heart.icon
-                |  Like
-              a.ui.basic.red.left.pointing.label.count=50
-          
-          .content
-            .ui.comments
-              .comment
-                a.avatar
-                  img(src=cdn+'/profile_pictures/user8.jpg')
-                .content
-                  a.author Rob Yang
-                  .metadata
-                    span.date Yesterday
-                    i.heart.icon
-                    |  1 Likes
-                  .text()
-                    | yo check this out @jlp777
-                  .actions
-                    a.like Like
-                    a.flag Flag
-              .comment
-                a.avatar
-                  img(src=cdn+'/profile_pictures/user10.jpg')
-                .content
-                  a.author Franklin Robinson
-                  .metadata
-                    span.date Yesterday
-                    i.heart.icon
-                    |  1 Likes
-                  .text()
-                    | Looks good
-                  .actions
-                    a.like Like
-                    a.flag Flag
-          //-.extra.content
-            .ui.fluid.left.labeled.right.icon.input
-              .ui.label
-                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-              input.newcomment(type='text' placeholder='Write a Comment')
-              i.big.send.link.icon
-              
+          i.big.send.link.icon      
     .ui.fluid.card.test#step1
       .ui.dimmer.flag
         .content
@@ -266,7 +268,7 @@ block scripts
               scrollTo: "tooltip"
             },
             { 
-              element: document.querySelectorAll('#hashtag')[0],
+              element: document.querySelectorAll('#poster')[0],
               intro: "You might also notice that the post is from someone you don’t know and is not your social media friend, even though your friend might have liked or commented on the post!",
               position: "right",
               scrollTo: "tooltip"
@@ -296,7 +298,7 @@ block scripts
               scrollTo: "tooltip"
             },
             { 
-              element: document.querySelectorAll('#step3')[0],
+              element: document.querySelectorAll('#step1')[0],
               intro: "Remember, you can always ignore the advertisement!",
               position: "right",
               scrollTo: "tooltip"

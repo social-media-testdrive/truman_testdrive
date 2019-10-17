@@ -162,120 +162,120 @@ block content
       //-THIS is for posts by Actors, not the USER
       else
         if(val.type == user.targetedAdTopic)
-          #step3.ui.fluid.card.test(postID=val.id)
-              #blueDotStep.ui.fluid.card.dim
-                .ui.dimmer.flag
-                  .content
-                    .center
-                      h2.ui.inverted.icon.header
-                        i.red.flag.icon
-                        |                                     You &apos;ve reported this ad!
-                        h3.ui.inverted.header
-                          span The admins will review this ad further. We are sorry you had this experience.
-                          
-                .ui.inverted.dimmer.notflag
-                  .content
-                    .center
-                      h2.ui.inverted.icon.header
-                        i.eye.slash.icon(style="color:black;")
-                        h1.ui.header(style="color:black;") You&apos;ve hidden this ad!
-                .content
-                  .ui.right.floated.menu(style="border:none; box-shadow:none;")
-                    .ui.dropdown.icon.item
-                      i.ellipsis.horizontal.icon
-                      .menu.fluid.floated.left#item1
-                        .item(data-value='0')
-                          i.fitted.circular.close.icon(style="color:gray;")
-                          | Hide Ad
-                        .item(data-value='1')
-                          i.fitted.circular.exclamation.icon(style="color:gray;")
-                          | Report Ad
-                        .item(data-value='2')
-                          i.fitted.circular.question.icon(style="color:gray;") 
-                          | Why Am I Seeing This Ad?
-                            
-                  a.left.floated(href='/user/'+val.actor.username)
-                    img.ui.avatar.image(src='/picture.svg', data-src=cdn+'/profile_pictures/'+val.actor.profile.picture)
-                    span=val.actor.profile.name
-      
-                .image
-                  //-note: not lazy-loaded 
-                  img(src=cdn+"/post_pictures/"+val.picture, style="max-width:100%;")
-      
-                #step4.content
-                  .description!=val.body
+          //-#step3.ui.fluid.card.test
+          #blueDotStep.ui.fluid.card.dim(postID=val.id)
+            .ui.dimmer.flag
+              .content
+                .center
+                  h2.ui.inverted.icon.header
+                    i.red.flag.icon
+                    |                                     You &apos;ve reported this ad!
+                    h3.ui.inverted.header
+                      span The admins will review this ad further. We are sorry you had this experience.
+                      
+            .ui.inverted.dimmer.notflag
+              .content
+                .center
+                  h2.ui.inverted.icon.header
+                    i.eye.slash.icon(style="color:black;")
+                    h1.ui.header(style="color:black;") You&apos;ve hidden this ad!
+            .content
+              .ui.right.floated.menu(style="border:none; box-shadow:none;")
+                .ui.dropdown.icon.item
+                  i.ellipsis.horizontal.icon
+                  .menu.fluid.floated.left#item1
+                    .item(data-value='0')
+                      i.fitted.circular.close.icon(style="color:gray;")
+                      | Hide Ad
+                    .item(data-value='1')
+                      i.fitted.circular.exclamation.icon(style="color:gray;")
+                      | Report Ad
+                    .item(data-value='2')
+                      i.fitted.circular.question.icon(style="color:gray;") 
+                      | Why Am I Seeing This Ad?
+                        
+              a.left.floated(href='/user/'+val.actor.username)
+                img.ui.avatar.image(src='/picture.svg', data-src=cdn+'/profile_pictures/'+val.actor.profile.picture)
+                span=val.actor.profile.name
+  
+            .image
+              //-note: not lazy-loaded 
+              img(src=cdn+"/post_pictures/"+val.picture, style="max-width:100%;")
+  
+            #step4.content
+              .description!=val.body
 
-                .content#sponsoredTag(style="border:none;")
-                  i.left.floated.external.alternate.icon(style="color:gray;")
-                  .left.floated.meta="Sponsored"
-                .ui.two.bottom.attached.icon.buttons
-                  .ui.reply.button(tabindex='0')
-                    i.reply.icon
-                    |  Reply
-                  .ui.labeled.button(tabindex='0')
-                    .ui.like.button
-                      i.heart.icon
-                      |  Like
-                    a.ui.basic.red.left.pointing.label.count=50
-                    
-                if val.comments.length > 0
-                  .content
-                    .ui.comments
-                      each comment in val.comments
-                        //-IF this comment is USER made, do this
-                        if comment.new_comment
-                          -console.log("New COMMENT AREA");
-                          .comment(commentID=comment.new_comment_id)
-                            a.avatar.image(href='/me/'+mod)
-                              if user.profile.picture
-                                img(src=cdn+'/profile_pictures/'+user.profile.picture)
+            .content#sponsoredTag(style="border:none;")
+              i.left.floated.external.alternate.icon(style="color:gray;")
+              .left.floated.meta="Sponsored"
+            .three.ui.bottom.attached.icon.buttons
+              .ui.reply.button(tabindex='0')
+                i.reply.icon
+                |  Reply
+              .ui.labeled.button(tabindex='0')
+                .ui.like.button
+                  i.heart.icon
+                  |  Like
+                a.ui.basic.red.left.pointing.label.count=50
+                
+            if val.comments.length > 0
+              .content
+                .ui.comments
+                  each comment in val.comments
+                    //-IF this comment is USER made, do this
+                    if comment.new_comment
+                      -console.log("New COMMENT AREA");
+                      .comment(commentID=comment.new_comment_id)
+                        a.avatar.image(href='/me/'+mod)
+                          if user.profile.picture
+                            img(src=cdn+'/profile_pictures/'+user.profile.picture)
+                          else
+                            img(src=user.gravatar(60))
+                        .content
+                          a.author(href='/me/'+mod)=user.profile.name || user.username || user.id
+                          .metadata
+                            span.date.sim=(Date.now() + comment.time)
+                            .rating
+                              i.heart.icon
+                              span.num=0
+                              |  Likes
+                          .text=comment.body
+                          .actions
+                            a.like.comment Like
+                            a.flag.comment Flag
+                    //- Else this is a normal comment from the script
+                    else
+                      .comment(commentID=comment.id)
+                        a.avatar.image(href='/user/'+comment.actor.username)
+                          img(src='/picture.svg', data-src=cdn+'/profile_pictures/'+comment.actor.profile.picture)
+                        .content
+                          a.author(href='/user/'+comment.actor.username)=comment.actor.profile.name
+                          .metadata
+                            span.date.sim=(Date.now() + comment.time)
+                            .rating
+                              if comment.liked
+                                i.red.heart.icon
+                                span=comment.likes
+                                |  Likes 
                               else
-                                img(src=user.gravatar(60))
-                            .content
-                              a.author(href='/me/'+mod)=user.profile.name || user.username || user.id
-                              .metadata
-                                span.date.sim=(Date.now() + comment.time)
-                                .rating
-                                  i.heart.icon
-                                  span.num=0
-                                  |  Likes
-                              .text=comment.body
-                              .actions
-                                a.like.comment Like
-                                a.flag.comment Flag
-                        //- Else this is a normal comment from the script
-                        else
-                          .comment(commentID=comment.id)
-                            a.avatar.image(href='/user/'+comment.actor.username)
-                              img(src='/picture.svg', data-src=cdn+'/profile_pictures/'+comment.actor.profile.picture)
-                            .content
-                              a.author(href='/user/'+comment.actor.username)=comment.actor.profile.name
-                              .metadata
-                                span.date.sim=(Date.now() + comment.time)
-                                .rating
-                                  if comment.liked
-                                    i.red.heart.icon
-                                    span=comment.likes
-                                    |  Likes 
-                                  else
-                                    i.heart.icon
-                                    span.num=comment.likes
-                                    |  Likes
-                              .text=comment.body
-                              .actions
-                                if comment.liked
-                                  a.red.like.comment Like
-                                else
-                                  a.like.comment Like
-                                a.flag.comment Flag      
-            
-              
-                .extra.content
-                  .ui.fluid.left.labeled.right.icon.input
-                    .ui.label
-                      img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-                    input.newcomment(type='text' placeholder='Write a Comment')
-                    i.big.send.link.icon
+                                i.heart.icon
+                                span.num=comment.likes
+                                |  Likes
+                          .text=comment.body
+                          .actions
+                            if comment.liked
+                              a.red.like.comment Like
+                            else
+                              a.like.comment Like
+                            a.flag.comment Flag      
+        
+          
+            .extra.content
+              .ui.fluid.left.labeled.right.icon.input
+                .ui.label
+                  img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+                input.newcomment(type='text' placeholder='Write a Comment')
+                i.big.send.link.icon#sendAdComment
                       
         else if (((val.type == 'Sports') || (val.type == 'Food') || (val.type == 'Gaming')) && (!(val.type == user.targetedAdTopic)))
           //- do nothing, do not display
@@ -812,7 +812,7 @@ block scripts
          if(dropdownSelection == 0){
            $(".inverted.dimmer").css("background-color","rgba(211,211,211,0.95)");
            //hide the post
-           var post = $(this).closest(".ui.fluid.card.test");
+           var post = $(this).closest(".ui.fluid.card.dim");
            var postID = post.attr("postID");
            console.log("***********HIDE: post " + postID);
            $.post("/feed", { postID: postID, flag: 1, _csrf: $('meta[name="csrf-token"]').attr('content') });
@@ -830,7 +830,7 @@ block scripts
    
          } else if (dropdownSelection == 1){
            //flag the post
-           var post = $(this).closest(".ui.fluid.card.test");
+           var post = $(this).closest(".ui.fluid.card.dim");
            var postID = post.attr("postID");
            console.log("***********FLAG: post " + postID);
            $.post("/feed", { postID: postID, flag: 1, _csrf: $('meta[name="csrf-token"]').attr('content') });
