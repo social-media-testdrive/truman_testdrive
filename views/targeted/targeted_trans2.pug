@@ -2,45 +2,56 @@ extends ../ui_layout
 
 block content
   
-  .computer.only.tablet.only.four.wide.column 
-  .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
-    .ui.container
-      form.ui.form
-          .field
-            br
-            label(style="font-size:135%") 
-              | Choose an interest!  
-              
-              br
-              br
-              //-.div(style='width: 200px;')
-              
-              i.search.large.gray.icon
-              .ui.selection.dropdown(name='topicSelect')
-                input(type='hidden')
-                i.dropdown.icon
-                .default.text Select a topic
-                .menu
-                  .item(data-value='0' style="font-size:100%") Food
-                  .item(data-value='1' style="font-size:100%") Sports
-                  .item(data-value='2' style="font-size:100%") Gaming
-            
+  .ui.text.container
+    br
+    .column
+      .ui.raised.segment
+        h3.ui.header
+          i.binoculars.blue.icon
+          .content
+            | Explore
+        hr
+          
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            |  Before you get to explore the TestDrive timeline, we wanted show you some fun pages related to your interests.
+      
+          
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            |  Choose a topic below to learn more!
+        br
+        .ui.container
+          form.ui.form
+              .field#animateDropdownError
+                label(style="font-size:120%;")
+                  i.search.large.gray.icon
+                  .ui.selection.dropdown(name='topicSelect')
+                    input(type='hidden')
+                    i.dropdown.icon
+                    .default.text Choose a topic...
+                    .menu
+                      .item(data-value='0' style="font-size:100%") Food
+                      .item(data-value='1' style="font-size:100%") Sports
+                      .item(data-value='2' style="font-size:100%") Gaming
+      br
+      br
 
-      br
-    
-      br
-      br
-      br
-      br
-      br
-      br
-      a(href='javascript:void(0);', onclick='javascript:startIntro();')
-          .ui.big.labeled.icon.button
-              i.rocket.icon
-              |   Let's Continue!
-      br
-      br
-      br
+    br
+    br
+    .ui.warning.message#selectTopicError(style="display:none;")
+     .header
+      | Select an interest to proceed 
+      
+    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+        .ui.big.labeled.icon.button
+            i.rocket.icon
+            |   Let's Continue!
+    br
+    br
+    br
     
 block scripts
   script().
@@ -50,9 +61,17 @@ block scripts
       
     $(".ui.selection.dropdown[name='topicSelect']").change(function() {
           $('.ui.big.labeled.icon.button').addClass('green');
+          $('#selectTopicError').hide();
           var newSelect = ($(".ui.selection.dropdown[name='topicSelect']").dropdown('get text'));
           $.post("/feed", { targetedAdTopic: newSelect, _csrf: $('meta[name="csrf-token"]').attr('content') });
     });
+    
+    $('.ui.big.labeled.icon.button').on('click',function(){
+      if(!$(this).hasClass('green')){
+        $('#selectTopicError').show();
+        $("#animateDropdownError").transition('bounce');
+      }
+    })
       
       
     function startIntro(){
