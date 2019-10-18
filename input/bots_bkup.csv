@@ -41,7 +41,7 @@ id,username,name,age,location,bio,picture,module
 42,bball_guy,Neel Talwar,12,"Austin, TX",I like basketball & food,user42.jpg,
 43,emmaaaaa,Emma Garcia,13,"Westchester, NY","Family, friends, & FOOD!",user41.jpg,cyberbullying
 44,aperson,My Name,10,"Orlando, FL",I'm a person,user43.png,
-45,QueenOfDarkness,Ebony Darkness Raven Way,13,"Boston, MA",special fangz (get it coz im goffick),user44.png,
+45,QueenOfDarkness,Queen of Darkness,13,"Boston, MA",special fangz (get it coz im goffick),user44.png,
 46,dyliegirllll,Dylan Friedman ,11,"Boca Raton, FL",miss my girlz. bunk 7 for lifeeeee <3,user46.jpg,presentation/cyberbullying
 47,arihearts,Ariel Simon,10,"Roslyn, NY",my dog is cuter than yours,user47.jpeg,
 48,asherballer,Asher Michaels,12,"New York, NY","im cool, ur not",user48.jpeg,presentation/cyberbullying
@@ -64,7 +64,7 @@ id,username,name,age,location,bio,picture,module
 65,alexa.garcia,Alexa Garcia,10,"Scarsdale, NY",singing🎶  drama🎭 dance💃,user65.jpg,presentation
 66,shellypuppy101,Michelle Rose,13,"New York, NY",Today's gonna be a good day and here's why 😉,user66.jpeg,
 67,zachpeters06,Zach Peters,11,"Boca Raton, FL",IMG Academy ⚽️🏀⚾️ ,user67.jpg,cyberbullying
-68,joshradinnn,Josh Radin,13,"Purcellville, VA",😎 keeping it real since '04 😎,user68.JPG,
+68,joshradinnn,Josh Radin,13,"Purcellville, VA",😎 keeping it real since '04 😎,user68.jpg,
 69,rider_hannah_07,Hannah Cohn,14,"Roslyn, NY",CITS 2018 🏕,user69.jpg,presentation
 70,zoe.g._,Zoe Goodall,12,"Stamford, CT",Warning ⚠️ May include sass ⚠️,user70.JPG,
 71,andrewthomas_,Andrew Thomas,14,"Greenwich, CT",I'd stalk me too 😏,user71.JPG,cyberbullying
@@ -75,3 +75,13 @@ id,username,name,age,location,bio,picture,module
 78,jakethesnake,Snake Jake,14,"Cleveland, OH",keepin up with ur boy 🐍,user78.png,PRESENTATION ONLY
 79,minecraftboi23,ur minecraft boi,14,"Cleveland, OH","Minecraft 4 life 🙌From one gamer to another, follow for a follow back!",user79.jpg,PRESENTATION ONLY
 80,realmellie22,elena who,11,"Houston, TX",this is real. this is me 🎤🙈,elenawhoprof.jpg,PRESENTATION ONLY
+81,goldenguitarsca,Golden Guitars,,"San Diego, CA","Only the best since 1979. San Diego, LA, Seattle.",golden_guitars_pfp.jpg,TARGETED ONLY
+82,rocknrollcenter,Rock N' Roll Center NY,,"New York, NY","Rockstars raising the next generation of rockstars. First month of lessons are FREE, what are you waiting for?",rocknroll_pfp.jpg,TARGETED ONLY
+83,3striiipes,Three Stripes Shoes,,"Atlanta, Georgia",Three Striiipes or you're out. #sneakerheads ,three_stripes_pfp.jpg,TARGETED ONLY
+84,rockvilleclubsoccer,Rockville Club Soccer,,"Rockville, MD","The premier club soccer team in Rockville, Maryland.",club_soccer_pfp.jpg,TARGETED ONLY
+85,mcburgers,McBurgers,,"Madison, WI",Always fresh. Forever diggin' it. Since 1950. ,burger_ad_pfp.jpg,TARGETED ONLY
+86,crunchflakes,Crunch Flakes Cereal,,"Indianapolis, Indiana",Wake up with Crunch Flakes and have the best day ever!,crunch_flakes_pfp.jpg,TARGETED ONLY
+87,popdrinks,Pop Drinks,,"San Francisco, CA","Revolutionizing soda, one sip at a time.",pop_drinks_pfp.jpg,TARGETED ONLY
+88,nentindo,Nentindo,,"Tokyo, Japan",Official home of all things Nentindo! Join our family #nentindo.,controller_pfp.jpg,TARGETED ONLY
+89,vrtech,VR Tech ,,"Palo Alto, CA",EXPERIENCE THE FUTURE #VRTech Sign-up for a free trial today.,VR_pfp.jpg,TARGETED ONLY
+90,rogerthatapp,Roger That Mobile App,,"Dallas, TX",Download the world's #1 mobile gaming app.,rogerthat_pfp.jpg,TARGETED ONLY
