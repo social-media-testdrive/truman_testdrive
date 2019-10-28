@@ -44,7 +44,7 @@ block content
                   
         a.left.floated(href='/user/goldenguitarsca')
           img.ui.avatar.image(src=cdn+'/profile_pictures/golden_guitars_pfp.jpg')
-          span(style="vertical-align:middle;")='Golden Guitars'
+          span(style="vertical-align:middle;")#companyName='Golden Guitars'
 
       .image
         img.post(src=cdn+'/post_pictures/golden_guitar_ad.jpg')
@@ -217,7 +217,7 @@ block content
                   
         a.left.floated(href='/user/rocknrollcenter')
           img.ui.avatar.image(src=cdn+'/profile_pictures/rocknroll_pfp.jpg')
-          span(style="vertical-align:middle;")="Rock N' Roll Center NY"
+          span(style="vertical-align:middle;")#companyName="Rock N' Roll Center NY"
 
       .image
         img.post(src=cdn+'/post_pictures/rocknroll_ad.jpg')
@@ -369,15 +369,7 @@ block content
       i.close.icon  
       .header Why is Hannah seeing this ad?
       .content
-          p Hannah is seeing this ad because TestDrive wanted to reach people interested in <b>guitars</b>. 
-          p This is based on what Hannah does on TestDrive, such as pages she has visited and search terms she has clicked on.
-                
-          br
-          .actions
-            .ui.positive.right.labeled.icon.button
-              | Done
-              i.checkmark.icon
-          
+  
       .ui.small.modal#hideAdModal
         i.close.icon  
         .header Why did you choose to hide this ad?
@@ -485,7 +477,17 @@ block scripts
                      .dimmer('show');
                    
                  } else if (dropdownSelection == 2){
+                   //get the company name to dynamically use in the modal
+                   var companyName = $(this).closest(".ui.fluid.card.dim").find("#companyName").text();
                    //open info modal
+                   $("#whyAmISeeingThisAdModal .content").html(
+                     "<p>Hannah is seeing this ad because <b>"+companyName+"</b> wanted to reach people interested in <b>guitars</b>.</p>" +
+                     "<p>This is based on what Hannah does on TestDrive, such as pages she has visited and search terms she has clicked on.</p>"+
+                     "<br>" +
+                     "<div class='actions'>" +
+                     "<div class='ui positive right labeled icon button'>Done" +
+                     "<i class='checkmark icon'></i></div></div>"
+                   );
                    $("#whyAmISeeingThisAdModal").modal('show');
                    
                  }

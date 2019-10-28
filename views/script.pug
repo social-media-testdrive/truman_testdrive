@@ -196,7 +196,7 @@ block content
                         
               a.left.floated(href='/user/'+val.actor.username)
                 img.ui.avatar.image(src='/picture.svg', data-src=cdn+'/profile_pictures/'+val.actor.profile.picture)
-                span=val.actor.profile.name
+                span#companyName=val.actor.profile.name
   
             .image
               //-note: not lazy-loaded 
@@ -736,48 +736,16 @@ block content
           i.checkmark.icon
             
     //- Why am I seeing this ad modal, used in targeted ads modual. text depends on previously selected interest in trans2.
-    if (user.targetedAdTopic == 'Sports')
-      .ui.small.modal#whyAmISeeingThisAdModal
-        i.close.icon  
-        .header Why am I seeing this ad?
-        .content
-            p You're seeing this ad because we wanted to reach people interested in <b>sports</b>. 
-            p This is based on what you do on TestDrive, such as pages you have visited and search terms you have clicked on.
-                  
-            br
-            .actions
-              .ui.positive.right.labeled.icon.button
-                | Done
-                i.checkmark.icon
+    .ui.small.modal#whyAmISeeingThisAdModal
+      i.close.icon  
+      .header Why am I seeing this ad?
+      if (user.targetedAdTopic == 'Sports')
+        .content(id="sports")
+      else if (user.targetedAdTopic == 'Food')
+        .content(id="food")
+      else if (user.targetedAdTopic == 'Gaming')
+        .content(id="gaming")
                 
-    else if (user.targetedAdTopic == 'Food')
-      .ui.small.modal#whyAmISeeingThisAdModal
-        i.close.icon  
-        .header Why am I seeing this ad?
-        .content
-            p You're seeing this ad because we wanted to reach people interested in <b>food</b>. 
-            p This is based on what you do on TestDrive, such as pages you have visited and search terms you have clicked on.
-                  
-            br
-            .actions
-              .ui.positive.right.labeled.icon.button
-                | Done
-                i.checkmark.icon
-      
-    else if (user.targetedAdTopic == 'Gaming')
-      .ui.small.modal#whyAmISeeingThisAdModal
-        i.close.icon  
-        .header Why am I seeing this ad?
-        .content
-            p You're seeing this ad because we wanted to reach people interested in <b>gaming</b>. 
-            p This is based on what you do on TestDrive, such as pages you have visited and search terms you have clicked on.
-                  
-            br
-            .actions
-              .ui.positive.right.labeled.icon.button
-                | Done
-                i.checkmark.icon
-
       //-Hide ad modal, used in targeted ads module. 
       .ui.small.modal#hideAdModal
         i.close.icon  
@@ -846,9 +814,20 @@ block scripts
              .dimmer('show');
            
          } else if (dropdownSelection == 2){
-           //open info modal
-           $("#whyAmISeeingThisAdModal").modal('show');
-           
+           //get the company name to dynamically use in the modal
+           var companyName = $(this).closest(".ui.fluid.card.dim").find("#companyName").text();
+           //get the ad type
+           var adType = $("#whyAmISeeingThisAdModal").find(".content").attr("id");
+           //open info modal, generate correct text based on ad type and company name
+           $("#whyAmISeeingThisAdModal .content").html(
+             "<p>You are seeing this ad because <b>"+companyName+"</b> wanted to reach people interested in <b>"+adType+"</b>.</p>" +
+             "<p>This is based on what you have done on TestDrive, such as pages you have visited and search terms you have clicked on.</p>"+
+             "<br>" +
+             "<div class='actions'>" +
+             "<div class='ui positive right labeled icon button'>Done" +
+             "<i class='checkmark icon'></i></div></div>"
+           );
+           $("#whyAmISeeingThisAdModal").modal('show'); 
          }
        }
      });
