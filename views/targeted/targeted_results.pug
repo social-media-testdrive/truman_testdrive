@@ -186,7 +186,14 @@ block content
             .field
               .ui.checkbox
                 input(type='checkbox')
-                label(for='corroboration', style="font-size:120%;", tabindex='0') I looked at why I was getting the advertisement.     
+                label(for='corroboration', style="font-size:120%;", tabindex='0') I looked at why I was getting the advertisement. 
+        .ui.form
+          .inline.fields
+            label(for='corroboration', name='wouldViewAd') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='wouldViewAd', style="font-size:120%;", tabindex='0') I wanted to click on the advertisement.    
         .ui.form
           .inline.fields
             label(for='ignored', name='ignored') 
@@ -205,7 +212,7 @@ block content
     .ui.raised.segment
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
-          | Why do companies collect user data?
+          | Why do companies collect data from people's profiles or online activity?
       .ui.form
         .inline.fields
           label(style="font-size:120%;")
@@ -241,7 +248,7 @@ block scripts
         $(".insertPrint").append("<br><h4>What did you do when you saw an advertisement or a sponsored post?</h4>");
         $(".checkOne").clone().appendTo(".insertPrint");
 
-        $(".insertPrint").append("<br><h4>Why do companies collect user data?</h4>");
+        $(".insertPrint").append("<br><h4>Why do companies collect data from people's profiles or online activity?</h4>");
         var responseOne = document.getElementById("literacy_responseOne").value;
         $(".insertPrint").append(responseOne);
         
