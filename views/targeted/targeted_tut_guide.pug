@@ -55,7 +55,7 @@ block content
                 input.ui(type="checkbox")
             .label If it is not required, do not provide your information or link your profile to a website.
           
-    .ui.icon.info.message
+    .ui.icon.info.message#infoMessage(style="display:none;")
       i.info.circle.icon
       .content
         .header
@@ -94,12 +94,10 @@ block scripts
 
 
     $('#point1_button').on('click', function () {
-        $('#point2').transition('jiggle');
         $('#point2').click();
      });
      
      $('#point2_button').on('click', function () {
-         $('#point3').transition('jiggle');
          $('#point3').click();
       });
 
@@ -109,6 +107,9 @@ block scripts
             ($('input').length)){
         $("#checkAllBoxesWarning").hide();
         $('.ui.big.labeled.icon.button.cybersim').addClass('green');
+        $("#infoMessage").show();
+        $("#infoMessage").transition('jiggle');
+
         $('.ui.big.labeled.icon.button.cybersim').transition('jiggle');
       }
       else{
