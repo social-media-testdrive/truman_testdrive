@@ -7,7 +7,7 @@ block content
     
     h2.ui.header
       //- i.check.square.outline.green.icon
-      .content When you see a news article on social media, always check to make sure it's credible! Here are a few important things to do:
+      .content What can you do if you want to prevent targeted advertisements?
       
         .sub.header 
           br
@@ -17,19 +17,14 @@ block content
     .ui.styled.fluid.accordion
       #point1.title
         i.dropdown.icon
-        |     Analyze the source. Ask yourself: Does it come from a credible source?
+        |     Turn off cookies
       .content.ui.list
           .item
             #protip1.ui.floated.compact.segment
               .ui.fitted.large.checkbox#checkbox1
                 input.ui(type="checkbox" id="")
-            .label If the website is part of a credible news, academic (ends with ".edu"), or governmental (ends with ".gov") organization, this is a good sign the article is credible.
+            .label Cookies are used to identify your device and track your behavior. You can turn them off using privacy settings..
 
-          .item
-            #protip2.ui.floated.compact.segment
-              .ui.fitted.large.checkbox#checkbox2
-                input.ui(type="checkbox"  id="")
-            .label You can also look at the “About Us” page to learn more about the website and who is writing the article. It’s important to find out information about the site owner and author by exploring the site and searching the web.
           .item
               #point1_button.button.ui.mini.green.right.labeled.icon.button
                 i.down.arrow.icon
@@ -37,22 +32,35 @@ block content
                 
       #point2.title
         i.dropdown.icon
-        |     Look for corroboration. Ask yourself: Do other credible sources say the same thing?
+        |     Adjust privacy settings
+      .content.ui.list
+          .item
+            #protip2.ui.floated.compact.segment
+              .ui.fitted.large.checkbox#checkbox2
+                input.ui(type="checkbox")
+            .label Stop the data from being collected in the first place! Change your privacy settings so that the website does not collect information. 
+          
+          .item
+              #point2_button.button.ui.mini.green.right.labeled.icon.button
+                i.down.arrow.icon
+                | Next
+                  
+      #point3.title
+        i.dropdown.icon
+        |     Limit what you share
       .content.ui.list
           .item
             #protip3.ui.floated.compact.segment
               .ui.fitted.large.checkbox#checkbox3
                 input.ui(type="checkbox")
-            .label As a next step, you should look for additional credible sources or articles that confirm what the article says. This is called <b>corroboration.</b> 
-          .item
-            #protip4.ui.floated.compact.segment
-              .ui.fitted.large.checkbox#checkbox4
-                input.ui(type="checkbox")
-            .label To do this, search for the same topic on fact-checking websites such as Snopes.com, FactCheck.org, and major news websites.
-          //-.item
-              #point2_button.ui.icon.green.button
-                i.down.arrow.icon
-                  
+            .label If it is not required, do not provide your information or link your profile to a website.
+          
+    .ui.icon.info.message
+      i.info.circle.icon
+      .content
+        .header
+          | If you want to learn more about how to change your privacy settings, look at the “Social Media Privacy” module on TestDrive!
+                     
     br
     .ui.warning.message#checkAllBoxesWarning(style="display:none;")
      .header
@@ -79,29 +87,22 @@ block scripts
     setTimeout(function(){
       $('#point2').transition('jiggle');    
     }, 3000);
+    
+    setTimeout(function(){
+      $('#point3').transition('jiggle');    
+    }, 3500);
 
 
     $('#point1_button').on('click', function () {
-      //if (($('#protip1 .checkbox input')[0].checked) && ($('#protip2 .checkbox input')[0].checked)){
-        //$("#checkAllBoxesWarning").hide();
         $('#point2').transition('jiggle');
         $('#point2').click();
-      //}
-      //else {
-        //$('#checkAllBoxesWarning').show();
-      //}
      });
+     
+     $('#point2_button').on('click', function () {
+         $('#point3').transition('jiggle');
+         $('#point3').click();
+      });
 
-
-    /*$('#point2_button').on('click', function () {
-      if (($('#protip3 .checkbox input')[0].checked) && ($('#protip4 .checkbox input')[0].checked)){
-        $('#point3').transition('jiggle');
-        $('#point3').click();
-      }
-      else {
-        $("#checkAllBoxesWarning").show();
-      }
-    }); */
 
     $("input").change(function(){
       if (($('input:checked').length) == 

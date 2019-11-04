@@ -245,7 +245,7 @@ block scripts
           steps: [
             { 
               element: document.querySelectorAll('#step1')[0],
-              intro: "Sometimes, advertisements and sponsored posts can look very similar to other posts on social media.",
+              intro: "Sometimes, advertisements and sponsored posts can look very similar to other posts or articles on social media.",
               position: "right",
               scrollTo: 'tooltip'
             },
@@ -257,14 +257,8 @@ block scripts
             },
             {
               element: document.querySelectorAll('#sponsoredTag')[0],
-              intro: "Advertisements on social media have the words “<i>AD</i>,” “<i>Advertisement</i>,” “<i>Promoted</i>,” or “<i>Sponsored</i>” at the top or bottom of a post.",
+              intro: "Look for the words “<i>AD</i>,” “<i>Advertisement</i>,” “<i>Promoted</i>,” or “<i>Sponsored</i>” at the top or bottom of a post. Ads can also have a #hashtag with the same words!",
               position: "left",
-              scrollTo: "tooltip"
-            },
-            { 
-              element: document.querySelectorAll('#hashtag')[0],
-              intro: "You can also look at the text of the post to see if it contains a hashtag such as #ad, #advertisement, or #sponsored.",
-              position: "right",
               scrollTo: "tooltip"
             },
             { 
@@ -309,19 +303,19 @@ block scripts
         intro.onbeforechange(function() {
             console.log("change");
             console.log($(this)[0]._currentStep);
-            if(($(this)[0]._currentStep >= 5) && ($(this)[0]._currentStep < 9)){
+            if(($(this)[0]._currentStep >= 4) && ($(this)[0]._currentStep < 8)){
               $('.ui.dropdown.icon.item').dropdown({
                 duration: 0
               });
               
               $('.ui.dropdown.icon.item').dropdown('show');
-              if($(this)[0]._currentStep === 6){
+              if($(this)[0]._currentStep === 5){
                 $('.ui.dropdown.icon.item')
                   .dropdown('set selected', '0');
-              } else if ($(this)[0]._currentStep === 7){
+              } else if ($(this)[0]._currentStep === 6){
                 $('.ui.dropdown.icon.item')
                   .dropdown('set selected', '1');
-              } else if ($(this)[0]._currentStep === 8){
+              } else if ($(this)[0]._currentStep === 7){
                 $('.ui.dropdown.icon.item')
                   .dropdown('set selected', '2');
               } else {
@@ -340,7 +334,7 @@ block scripts
         });
         
         intro.start().onexit(function() {
-          window.location.href='/sim/targeted';
+          window.location.href='/tut_guide/targeted';
         });
           
       };
