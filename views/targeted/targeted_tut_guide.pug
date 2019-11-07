@@ -17,13 +17,19 @@ block content
     .ui.styled.fluid.accordion
       #point1.title
         i.dropdown.icon
-        |     Turn off cookies
+        |     Turn off cookies in your web browser
       .content.ui.list
           .item
             #protip1.ui.floated.compact.segment
               .ui.fitted.large.checkbox#checkbox1
                 input.ui(type="checkbox" id="")
-            .label Cookies are used to identify your device and track your behavior. You can turn them off using privacy settings..
+            .label Cookies are used to identify your device and track your behavior. You can go to your browser settings to turn them off.
+
+          .item
+            #protip1.ui.floated.compact.segment
+              .ui.fitted.large.checkbox#checkbox1
+                input.ui(type="checkbox" id="")
+            .label There is a trade-off! Some websites might not work if you turn cookies off.
 
           .item
               #point1_button.button.ui.mini.green.right.labeled.icon.button
@@ -32,7 +38,7 @@ block content
                 
       #point2.title
         i.dropdown.icon
-        |     Adjust privacy settings
+        |     Adjust privacy settings on the website
       .content.ui.list
           .item
             #protip2.ui.floated.compact.segment
@@ -40,6 +46,12 @@ block content
                 input.ui(type="checkbox")
             .label Stop the data from being collected in the first place! Change your privacy settings so that the website does not collect information. 
           
+          .item
+            #protip2.ui.floated.compact.segment
+              .ui.fitted.large.checkbox#checkbox2
+                input.ui(type="checkbox")
+            .label In your privacy settings page, you can make your account private or turn off access to information. 
+            
           .item
               #point2_button.button.ui.mini.green.right.labeled.icon.button
                 i.down.arrow.icon
