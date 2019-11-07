@@ -1,0 +1,164 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container
+    br
+    .ui.raised.segment
+      h3.ui.header
+        i.book.blue.icon
+        .content
+          | Learn
+      hr
+      h5.ui.header
+        i.arrow.circle.right.blue.icon
+        .content
+          | Using social media can be fun and interesting. In fact, social media sites are created to be that way. They grab your attention and make you come back again and again.
+      h5.ui.header
+        i.arrow.circle.right.blue.icon
+        .content
+          | It’s important to think about how and why you use social media. Do you have a specific reason for going on it, or are you doing it without thinking?
+      h5.ui.header
+        i.arrow.circle.right.blue.icon
+        .content
+          | Think about who is in control. You, or your phone?
+
+      br
+      #introduction_next.button.ui.mini.green.right.labeled.icon.button
+              i.down.arrow.icon
+              |   Next
+    
+    #question.ui.segment.hidden
+      h3.ui.header
+        i.key.blue.icon
+        .content Key Ideas
+      .sub.header 
+        i.hand.pointer.icon(style="color:gray;")
+        span(style="color: gray;") Click on each label below to learn more
+      br
+      //- .ui.segments     
+      .ui.stackable.two.column.grid
+        .ui.column
+          #audience.ui.raised.segment
+            a.ui.blue.ribbon.label#audienceLabel
+                //- i.dollar.sign.icon 
+                span Habit
+            span.hidden(id="audience_info", style="font-weight:600") Something we do automatically without thinking.
+              ul(style="font-weight:400") Bad social media <i>habits</i> can include things like checking it too often or spending more time than you would like on it.
+
+        .ui.column
+          #private_information.ui.raised.segment
+            a.ui.blue.ribbon.label#privateInformationLabel
+                //- i.magic.icon 
+                span Attention-grabbing design
+            span.hidden(id="private_information_info",style="font-weight:600")  Features of a device or app that are intended to encourage users to use it frequently.
+
+        .ui.column
+          #risky.ui.raised.segment
+            a.ui.blue.ribbon.label#riskyLabel
+                //- i.magic.icon 
+                span Validation
+            span.hidden(id="risky_info",style="font-weight:600") The feeling of being liked, valued, and accepted by other people.  
+    
+        .ui.column
+          #feedback.ui.raised.segment
+            a.ui.blue.ribbon.label#feedbackLabel
+                //- i.magic.icon 
+                span Social media feedback loop
+            span.hidden(id="feedback_info",style="font-weight:600")  A response to something you do or post on social media that causes you to want to spend more time and attention on it.  
+
+    .ui.warning.message#clickNextWarning(style="display:none;")
+      .header
+       | Click "Next"
+    .ui.warning.message#clickLabelsWarning(style="display:none;")
+     .header
+      | Click on each label to proceed  
+    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+        .ui.labeled.icon.button
+            i.rocket.icon
+            |   Got it!
+    br
+    br
+    br
+block scripts
+  script().
+  
+    //a function to animate any unclicked labels, used for error messaging
+    function animateUnclickedLabels() {
+      if($('#audience_info').is(":hidden")){
+        $('#audienceLabel').transition('bounce');
+      }
+      if($('#private_information_info').is(":hidden")){
+        $('#privateInformationLabel').transition('bounce');
+      }
+      if($('#risky_info').is(":hidden")){
+        $('#riskyLabel').transition('bounce');
+      }
+      if($('#feedback_info').is(":hidden")){
+        $('#feedbackLabel').transition('bounce');
+      }
+    };
+  
+    $('#introduction_next').on('click', function () {   
+      $('#clickNextWarning').hide();   
+      $('#question').show(); 
+      $('#question').transition('jiggle');     
+      if(!($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#risky_info').is(":hidden") || $('#feedback_info').is(":hidden"))){
+        $('.ui.labeled.icon.button').addClass('green');
+      } 
+    });
+
+    $('#audience>a').on('click', function () {      
+        $('#audience_info').show(); 
+        $('#audience').transition('tada');     
+        if(!($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden")|| $('#risky_info').is(":hidden"))){
+          $('#clickLabelsWarning').hide();
+          $('.ui.labeled.icon.button').addClass('green');
+        }
+    });
+
+    $('#private_information>a').on('click', function () {      
+        $('#private_information_info').show();      
+        $('#private_information').transition('tada');     
+        if(!($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#risky_info').is(":hidden"))){
+          $('#clickLabelsWarning').hide();
+          $('.ui.labeled.icon.button').addClass('green');
+        }
+    });
+
+     $('#risky>a').on('click', function () {      
+        $('#risky_info').show(); 
+        $('#risky').transition('tada');     
+        if(!($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#risky_info').is(":hidden"))){
+          $('#clickLabelsWarning').hide();
+          $('.ui.labeled.icon.button').addClass('green');
+        }
+    });
+
+    $('#feedback>a').on('click', function () {      
+       $('#feedback_info').show(); 
+       $('#feedback').transition('tada');     
+       if(!($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#risky_info').is(":hidden") || $('#feedback_info').is(":hidden"))){
+         $('#clickLabelsWarning').hide();
+         $('.ui.labeled.icon.button').addClass('green');
+       }
+    });
+
+    function startIntro(){
+        if($('#question').is(":hidden")){
+          //User has not clicked next
+          $('#clickNextWarning').show();
+          $('#introduction_next').transition('bounce');
+        }else{
+          var clickedAllLabels = ($('#audience_info').is(":visible") && $('#private_information_info').is(":visible") &&  $('#risky_info').is(":visible") &&  $('#feedback_info').is(":visible"));
+          if(clickedAllLabels == true){ 
+            //everything is good to proceed
+            $('#clickLabelsWarning').hide();
+            window.location.href='/tutorial/habits';
+          } else { 
+            //User has not clicked all the labels
+            $('#clickLabelsWarning').show();
+            animateUnclickedLabels();
+          }
+        }         
+      };
