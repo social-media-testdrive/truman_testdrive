@@ -502,8 +502,20 @@ block scripts
                $("#clickAllDotsSim").hide();
                $( ".cybertrans" ).addClass("green");
              }
-          });
+           });
+          
+          //I'm not sure if this is a stable solution, but it seems to work. Keep this and implement later.
+          //use this to get the current step - each hint has a predefined number. Use to keep a record for if each has been clicked
+          /*hints.onhintclick(function(){
+            console.log("CLICKED A HINT!");
+            setTimeout(function(){
+              console.log(hints._currentStep);
+            }, 100);
+          });*/
+          
         });
+        
+        
         
         //error messaging
         $('#cyberTransButton').on('click', function() {

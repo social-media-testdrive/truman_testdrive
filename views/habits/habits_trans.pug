@@ -1,0 +1,62 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container
+    br
+    .column
+      .ui.raised.segment
+        .ui.blue.ribbon.label
+          h3
+            i.history.icon
+            | &nbsp Let's review!
+        br
+          
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            |  Social media sites have <b>attention-grabbing design</b> features such as notifications, likes, and comments.
+          
+            
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | You can form social media habits through a feedback loop that makes you feel good when you get a response to something you post online.
+          
+            
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | Here are some strategies you can use to build healthy social media habits.
+            
+        h5.ui.header
+          i.caret.right.blue.icon(style="text-indent:3em;")
+          .content
+            |   Turn off or reduce the number of notifications you get from social media
+            
+        h5.ui.header
+          i.caret.right.blue.icon(style="text-indent:3em;")
+          .content
+            |   Be mindful of and track how much time you spend on social media
+        
+        h5.ui.header
+          i.caret.right.blue.icon(style="text-indent:3em;")
+          .content
+            |   Make sure to take breaks or disconnect from social media if you need to
+        br
+        br
+    
+    br
+    br
+    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+        .ui.big.green.labeled.icon.button
+            i.rocket.icon
+            |   Got it!
+    br
+    br
+    br
+    block scripts
+  script().
+    function startIntro(){
+        window.location.href='/trans_script/habits';
+      };
