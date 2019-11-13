@@ -1206,13 +1206,11 @@ block scripts
         $('.habitsNotificationsDisplay').hide();
         $("#feedsteps").addClass("active");
         $("#notificationsteps").removeClass("active");
-        hints.refresh();
       } else if ($(this).data().value === 'notifications'){
         $(".habitsHomeDisplay").hide();
         $(".habitsNotificationsDisplay").show();
         $("#feedsteps").removeClass("active");
         $("#notificationsteps").addClass("active");
-        hints.refresh();
       }
     });
     //end code for habits UI functionality
@@ -1362,18 +1360,18 @@ block scripts
           // if the page is shown, start the timer (i.e. get the current time)
           
           var freePlayPageViewTimer = Date.now();
-          console.log("TIMER STARTED: " + freePlayPageViewTimer);
+          //record this date as the start of the habits timeline
+          $.post("/habitsTimer", { habitsStart: freePlayPageViewTimer, _csrf : $('meta[name="csrf-token"]').attr('content') } );
+
           function handleVisibilityChange() {
             if (document[hidden]) {
               var currentTime = Date.now();
               var totalViewTime = currentTime - freePlayPageViewTimer;
               //post to db 
-              console.log("HIDDEN DETECTED, END TIMER AND POST");
               $.post("/habitsTimer", { habitsTimer: totalViewTime, _csrf : $('meta[name="csrf-token"]').attr('content') } );
             } else {
               //start the timer
               freePlayPageViewTimer = Date.now();
-              console.log("TIMER STARTED: " + freePlayPageViewTimer);
             }
           }
           
