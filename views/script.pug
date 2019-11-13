@@ -1189,13 +1189,16 @@ block content
 
 block scripts
   script().
-  
-    $('.ui.sticky')
-      .sticky()
-    ;
-    //code to make habits UI work
+    
+    //Convenient variable to indicate which module we're in
+    let pathArray = window.location.pathname.split('/');
+    var currentModule = pathArray[2];
+    
+    //Activating the sticky functionality for the left column
+    $('.ui.sticky').sticky();
+    
+    //code to make habits module UI work, swaps between home and notification display via hide/show
     $(".ui.vertical.menu a.item").on('click', function(){
-      console.log("MENU CLICK!");
       $('.ui.two.item.top.attached.tabular.menu a.item').removeClass('active');
       $(this).addClass('active');
       if($(this).data().value === 'feed'){
@@ -1212,8 +1215,11 @@ block scripts
         hints.refresh();
       }
     });
+    //end code for habits UI functionality
       
-    //code to make dropdown functional for targeted ads module
+    /**
+     * Code for ad dropdown functionality in targeted ads module
+     */
     $('.ui.dropdown.icon.item')
      .dropdown({
        onChange: function() {
@@ -1272,22 +1278,35 @@ block scripts
          }
        }
      });
-     //end code for targeted ads dropdown functionality
-        
+     /**
+      * End code for targeted ads dropdown functionality
+      */
+          
         $('.big.plus.icon').css({"display": "block"})
         $('.ui.simple.dropdown.item').css({"display":"inherit"})
-        
+            
         $('.ui.accordion').accordion();   
         $(window).on("load", function() {openChat()});
+        
+        /**
+         * Code to open modals
+         */    
         function openPost(){
           $('#next_steps_modual').modal('show');
         }
+        
         function openPostDigfoot(){
           console.log("test if ex");
           $('input[type=checkbox]').prop('checked',false);
           $('#digfoot_post_modual').modal('show');
         }
-        
+        /**
+         * End code to open modals
+         */
+            
+        /**
+         * chat box code
+         */
         function openChat(){
           let pathArray = window.location.pathname.split('/');
           if(pathArray[2] == "safe-posting"){
@@ -1311,3 +1330,56 @@ block scripts
             }, 20000);    
           }
         }
+        /**
+         * End chat box code
+         */
+            
+       /**
+        * Implementing timer for habits module, only want this to occur in habits module
+        */
+        console.log("current Module: "+currentModule);
+        if(currentModule === "habits"){
+          console.log('HABITS CHECK PASSED');
+          //Timing how long the user looks at this page
+          //from https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API
+          
+          // Set the name of the hidden property and the change event for visibility
+          var hidden, visibilityChange; 
+          
+          if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and later support 
+            hidden = "hidden";
+            visibilityChange = "visibilitychange";
+          } else if (typeof document.msHidden !== "undefined") {
+            hidden = "msHidden";
+            visibilityChange = "msvisibilitychange";
+          } else if (typeof document.webkitHidden !== "undefined") {
+            hidden = "webkitHidden";
+            visibilityChange = "webkitvisibilitychange";
+          }
+
+
+          // If the page is hidden, stop the timer and push total time in db
+          // if the page is shown, start the timer (i.e. get the current time)
+          
+          var freePlayPageViewTimer = Date.now();
+          console.log("TIMER STARTED: " + freePlayPageViewTimer);
+          function handleVisibilityChange() {
+            if (document[hidden]) {
+              var currentTime = Date.now();
+              var totalViewTime = currentTime - freePlayPageViewTimer;
+              //post to db 
+              console.log("HIDDEN DETECTED, END TIMER AND POST");
+              $.post("/habitsTimer", { habitsTimer: totalViewTime, _csrf : $('meta[name="csrf-token"]').attr('content') } );
+            } else {
+              //start the timer
+              freePlayPageViewTimer = Date.now();
+              console.log("TIMER STARTED: " + freePlayPageViewTimer);
+            }
+          }
+          
+          // Handle page visibility change   
+          document.addEventListener(visibilityChange, handleVisibilityChange, false);
+        }
+        /**
+         * End timer implementation for habits module
+         */

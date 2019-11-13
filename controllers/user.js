@@ -693,6 +693,30 @@ exports.postUpdateInterestSelection = (req, res, next) => {
   });
 };
 
+/**
+ * POST /account/profile
+ * Update profile information. How long has the user looked at the free-play section? Habits module only.
+ */
+exports.postUpdateHabitsTimer = (req, res, next) => {
+  console.log("####");
+  console.log("YOU ARE IN THE POST UPDATES HABITS TIMER!!!");
+  User.findById(req.user.id, (err, user) => {
+    if (err) { return next(err); }
+
+    if (user.habitsTimer){
+      user.habitsTimer.push(req.body.habitsTimer);
+    } else {
+      user.habitsTimer = [req.body.habitsTimer];
+    }
+    console.log("###");
+    user.save((err) => {
+      if (err) {
+        return next(err);
+      }
+    });
+  });
+};
+
 
 /**
  * POST /account/profile

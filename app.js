@@ -508,6 +508,7 @@ app.get('/bell', passportConfig.isAuthenticated, userController.checkBell);
 app.post('/feed', passportConfig.isAuthenticated, scriptController.postUpdateFeedAction);
 app.post('/deleteUserFeedActions', passportConfig.isAuthenticated, scriptController.postDeleteFeedAction);
 app.post('/interest', passportConfig.isAuthenticated, userController.postUpdateInterestSelection);
+app.post('/habitsTimer', passportConfig.isAuthenticated, userController.postUpdateHabitsTimer);
 //postDeleteAccount
 //app.post('/deleteAccount', passportConfig.isAuthenticated, userController.getDeleteAccount);
 app.get('/delete', passportConfig.isAuthenticated, userController.getDeleteAccount);

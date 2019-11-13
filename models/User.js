@@ -37,6 +37,7 @@ const userSchema = new mongoose.Schema({
   reported: [String], //actors user has reported
 
   targetedAdTopic: {type: String, default: ""}, //Food, Gaming, or Sports
+  habitsTimer: [Number], //How long the user has been on the free-play page each time they visit, use sum of this array to get a total time. 
   //User created posts
   posts: [new Schema({
     type: String, //post, reply, actorReply (in TestDrive, it's always just a post)
