@@ -232,7 +232,7 @@ end chat box code
     }
   });
 
-  
+
 
   //Like a comment
   $('a.like.comment')
@@ -381,7 +381,7 @@ end chat box code
   });
 
   //add humanized time to all posts
-  $('.right.floated.time.meta, .date.sim').each(function () {
+  $('.right.floated.time.meta, .date.sim, .time.notificationTime').each(function () {
     var ms = parseInt($(this).text(), 10);
     let time = new Date(ms);
     $(this).text(humanized_time_span(time));

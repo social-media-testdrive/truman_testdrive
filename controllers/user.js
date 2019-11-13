@@ -676,7 +676,7 @@ exports.getMe = (req, res) => {
 
 /**
  * POST /account/profile
- * Update profile information.
+ * Update profile information.Which ad topic did the user pick? Targeted ads module only.
  */
 exports.postUpdateInterestSelection = (req, res, next) => {
 
