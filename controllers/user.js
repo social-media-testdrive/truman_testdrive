@@ -672,6 +672,15 @@ exports.getMe = (req, res) => {
 
 };
 
+exports.getHabitsTimer = (req, res) => {
+    User.findById(req.user.id)
+      .exec(function (err, user){
+        startTime = user.firstHabitViewTime;
+        console.log("Retrieved time: "+startTime);
+        res.json({startTime: startTime});
+      });
+};
+
 /**
  * POST /account/profile
  * Update profile information.Which ad topic did the user pick? Targeted ads module only.

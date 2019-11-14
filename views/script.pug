@@ -447,7 +447,7 @@ block content
         //- if val.relativeTime - then post came from user_post (so user post, user reply to actor reply to user post)
         
         if (val.type == 'notification')
-          .ui.raised.segment.habitsNotificationsDisplay(style="display:none;")
+          .ui.raised.segment.habitsNotificationItem(style="display:none;")
             .ui.feed
              .event
                //-CSS properties: https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
@@ -455,7 +455,8 @@ block content
                  img(src=cdn + '/profile_pictures/' +val.actor.profile.picture style="width:100% !important; height:100% !important; display:inline  !important; margin:0 auto !important;")
                .content
                  .summary=val.body
-                  .time.notificationTime(style="font-weight:normal !important;")=(Date.now() + val.time)
+                  .time.notificationTime(style="font-weight:normal !important;")=(habitsStart - val.time)
+                  .time.millisecondType(style="display:none;")=(val.time)
 
         else if val.relativeTime
           -var u_class;
@@ -1189,31 +1190,13 @@ block content
 
 block scripts
   script().
-    
+            
     //Convenient variable to indicate which module we're in
     let pathArray = window.location.pathname.split('/');
     var currentModule = pathArray[2];
     
     //Activating the sticky functionality for the left column
     $('.ui.sticky').sticky();
-    
-    //code to make habits module UI work, swaps between home and notification display via hide/show
-    $(".ui.vertical.menu a.item").on('click', function(){
-      $('.ui.two.item.top.attached.tabular.menu a.item').removeClass('active');
-      $(this).addClass('active');
-      if($(this).data().value === 'feed'){
-        $('.habitsHomeDisplay').show();
-        $('.habitsNotificationsDisplay').hide();
-        $("#feedsteps").addClass("active");
-        $("#notificationsteps").removeClass("active");
-      } else if ($(this).data().value === 'notifications'){
-        $(".habitsHomeDisplay").hide();
-        $(".habitsNotificationsDisplay").show();
-        $("#feedsteps").removeClass("active");
-        $("#notificationsteps").addClass("active");
-      }
-    });
-    //end code for habits UI functionality
       
     /**
      * Code for ad dropdown functionality in targeted ads module
@@ -1282,9 +1265,9 @@ block scripts
           
         $('.big.plus.icon').css({"display": "block"})
         $('.ui.simple.dropdown.item').css({"display":"inherit"})
-            
-        $('.ui.accordion').accordion();   
-        $(window).on("load", function() {openChat()});
+        $('.ui.accordion').accordion();  
+         
+        $(window).on("load", function() {openChat()}); 
         
         /**
          * Code to open modals
@@ -1359,7 +1342,7 @@ block scripts
           // If the page is hidden, stop the timer and push total time in db
           // if the page is shown, start the timer (i.e. get the current time)
           
-          var freePlayPageViewTimer = Date.now();
+          freePlayPageViewTimer = Date.now();
           //record this date as the start of the habits timeline
           $.post("/habitsTimer", { habitsStart: freePlayPageViewTimer, _csrf : $('meta[name="csrf-token"]').attr('content') } );
 
@@ -1380,4 +1363,41 @@ block scripts
         }
         /**
          * End timer implementation for habits module
+         */
+         
+         /*
+         *code to make habits module UI work, swaps between home and notification display via hide/show
+         *also determines which notifications to show
+         */
+         $(".ui.vertical.menu a.item").on('click', function(){
+           $('.ui.two.item.top.attached.tabular.menu a.item').removeClass('active');
+           $(this).addClass('active');
+           if($(this).data().value === 'feed'){
+             $('.habitsHomeDisplay').show();
+             $('.habitsNotificationsDisplay').hide();
+             $('.habitsNotificationItem').hide();
+             $("#feedsteps").addClass("active");
+             $("#notificationsteps").removeClass("active");
+           } else if ($(this).data().value === 'notifications'){
+             $(".habitsHomeDisplay").hide();
+             $(".habitsNotificationsDisplay").show();
+             $("#feedsteps").removeClass("active");
+             $("#notificationsteps").addClass("active");
+             //get the start time, i.e. when the user first opened the free-play section
+             $.get( "/habitsTimer", function( data ) {
+               var timeNow = Date.now();
+               var habitsStart = data.startTime;
+               var timeElapsed = timeNow - habitsStart;
+               //determine which notifications to show
+               $('.habitsNotificationItem').each(function(index){ //for each notification, check if it is within the time elapsed
+                 var notifTimestamp = parseInt($(this).find('.time.millisecondType').html(), 10);
+                 if(notifTimestamp < timeElapsed){
+                   $(this).show();
+                 }
+               });
+             });
+           }
+         });
+         /*
+         *end code for habits UI functionality
          */

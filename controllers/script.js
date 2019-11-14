@@ -72,6 +72,9 @@ exports.getScript = (req, res, next) => {
 
         var user_posts = [];
 
+        //for the habits module specifically
+        var habitsStartTime = user.firstHabitViewTime;
+
         //Look up Notifications??? And do this as well?
 
         //user_posts = user.getPostInPeriod(time_limit, time_diff);
@@ -245,7 +248,7 @@ exports.getScript = (req, res, next) => {
       });
 
       //console.log("Script Size is now: "+finalfeed.length);
-      res.render('script', { script: finalfeed, mod: req.params.modId });
+      res.render('script', { script: finalfeed, mod: req.params.modId, habitsStart: habitsStartTime,});
 
       });//end of Script.find()
 

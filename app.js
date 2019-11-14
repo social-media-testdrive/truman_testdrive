@@ -237,6 +237,8 @@ app.get('/', function (req, res) {
 //main route for getting the simulation (Free Play) for a given lesson mod
 app.get('/modual/:modId', passportConfig.isAuthenticated, scriptController.getScript);
 
+app.get('/habitsTimer', passportConfig.isAuthenticated, userController.getHabitsTimer);
+
 //THIS IS FOR LOAD TESTING
 app.get('/testing/:modId', scriptController.getScriptFeed);
 
