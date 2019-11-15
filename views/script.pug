@@ -455,6 +455,7 @@ block content
                  img(src=cdn + '/profile_pictures/' +val.actor.profile.picture style="width:100% !important; height:100% !important; display:inline  !important; margin:0 auto !important;")
                .content
                  .summary=val.body
+                  //-.time.notificationTime(style="font-weight:normal !important;")=(habitsStart + val.time)
                   .time.notificationTime(style="font-weight:normal !important;")=(habitsStart + val.time)
                   .time.millisecondType(style="display:none;")=(val.time)
 
@@ -1357,9 +1358,11 @@ block scripts
           // If the page is hidden, stop the timer and push total time in db
           // if the page is shown, start the timer (i.e. get the current time)
           
+          /*
           freePlayPageViewTimer = Date.now();
           //record this date as the start of the habits timeline
           $.post("/habitsTimer", { habitsStart: freePlayPageViewTimer, _csrf : $('meta[name="csrf-token"]').attr('content') } );
+          */
 
           function handleVisibilityChange() {
             if (document[hidden]) {
@@ -1414,11 +1417,13 @@ block scripts
              $.get( "/habitsTimer", function( data ) {
                var timeNow = Date.now();
                var habitsStart = data.startTime;
+               console.log("START TIME........ "+habitsStart);
                var timeElapsed = timeNow - habitsStart;
                //determine which notifications to show
                $('.habitsNotificationItem').each(function(index){ //for each notification, check if it is within the time elapsed
                  var notifTimestamp = parseInt($(this).find('.time.millisecondType').html(), 10);
                  if(notifTimestamp < timeElapsed){
+                   $(this).find('.time.notificationTime').html(humanized_time_span(habitsStart + notifTimestamp));
                    $(this).show();
                  }
                });
@@ -1430,8 +1435,8 @@ block scripts
          
          if(currentModule === "habits"){
            $.get( "/habitsTimer", function( data ) {
-             var timeElapsed = data.totalTimeViewedHabits; //TODO: CHANGE THIS TO THE START TIME...
-             //console.log("TIME ELAPSED: " + timeElapsed);
+             var timeElapsed = Date.now() - data.startTime; 
+             console.log("TIME ELAPSED: " + timeElapsed);
              $.get('/habitsNotificationTimes', function (data){
                //get the array of timestamps for the notifications from the script, will be sorted from least to greatest
                var notificationTimestamps = data.notificationTimestamps;

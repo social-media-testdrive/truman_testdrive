@@ -712,7 +712,7 @@ exports.postUpdateInterestSelection = (req, res, next) => {
  * POST /account/profile
  * Update profile information. How long has the user looked at the free-play section? Habits module only.
  */
-exports.postUpdateHabitsTimer = (req, res, next) => {
+exports.postUpdateHabitsTimer = (req, res, done) => {
 
   User.findById(req.user.id, (err, user) => {
     if (err) { return next(err); }
@@ -731,6 +731,9 @@ exports.postUpdateHabitsTimer = (req, res, next) => {
     user.save((err) => {
       if (err) {
         return next(err);
+      }
+      if (req.body.habitsStart){
+        res.json({url:'/modual/habits'});
       }
     });
   });
