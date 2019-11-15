@@ -238,6 +238,7 @@ app.get('/', function (req, res) {
 app.get('/modual/:modId', passportConfig.isAuthenticated, scriptController.getScript);
 
 app.get('/habitsTimer', passportConfig.isAuthenticated, userController.getHabitsTimer);
+app.get('/habitsNotificationTimes', passportConfig.isAuthenticated, scriptController.getNotificationTimes);
 
 //THIS IS FOR LOAD TESTING
 app.get('/testing/:modId', scriptController.getScriptFeed);

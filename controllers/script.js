@@ -5,6 +5,42 @@ const fs = require('fs')
 const _ = require('lodash');
 const aws = require('aws-sdk');
 
+/**
+ * GET /
+ * Notification timestamps for the habits module
+*/
+
+
+exports.getNotificationTimes = (req, res) => {
+  console.log("####");
+  console.log("YOU ARE IN THE GET REQUEST");
+  Script.find()
+    //.where('time').lte(time_diff)//.gte(time_limit)
+    .where('module').equals('habits')
+    .where('type').equals('notification')
+    .sort('time')
+    .exec(function (err, script_feed) {
+      if (err) { return next(err); }
+
+      var notifTimestampArray = [];
+      var notifTextArray = [];
+      var notifPhotoArray = [];
+      console.log("SCRIPT FEED LENGTH: "+script_feed.length);
+      for(var i = 0; i < script_feed.length; i++){
+        if (notifTimestampArray){
+          notifTimestampArray.push(script_feed[i].time);
+          notifTextArray.push(script_feed[i].body);
+          notifPhotoArray.push(script_feed[i].picture);
+        } else {
+          notifTimestampArray = [script_feed[i].time];
+          notifTextArray = [script_feed[i].body];
+          notifPhotoArray = [script_feed[i].picture];
+        }
+      }
+      res.json({notificationTimestamps:notifTimestampArray, notificationText:notifTextArray, notificationPhoto:notifPhotoArray});
+    });
+};
+
 
 /**
  * GET /

@@ -673,11 +673,19 @@ exports.getMe = (req, res) => {
 };
 
 exports.getHabitsTimer = (req, res) => {
+  console.log("###");
+  console.log("YOU ARE IN THE TIMER GET REQUEST");
     User.findById(req.user.id)
       .exec(function (err, user){
-        startTime = user.firstHabitViewTime;
-        console.log("Retrieved time: "+startTime);
-        res.json({startTime: startTime});
+        var startTime = user.firstHabitViewTime;
+        var totalTimeViewedHabits = 0;
+        if(user.habitsTimer){
+          for(var i = 0; i<user.habitsTimer.length; i++){
+            totalTimeViewedHabits = totalTimeViewedHabits + user.habitsTimer[i];
+          }
+        }
+
+        res.json({startTime: startTime, totalTimeViewedHabits:totalTimeViewedHabits});
       });
 };
 
