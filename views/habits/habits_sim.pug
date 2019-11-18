@@ -15,23 +15,23 @@ block content
         a.item(data-value='notifications')#notificationsteps
           i.icon.bell
           |  Notifications
-          .ui.red.right.pointing.label 1
+          .ui.red.right.pointing.label !
 
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
         
     //-feed
     //-.ui.bottom.attached.segment#step0
-    .ui.fluid.card.test.feedDisplay(postID="3" data-hint="hello" data-hintPosition="top-middle")
-          .content
+    #step0.ui.fluid.card.test.feedDisplay
+          .content(postID="3" data-hint="This is a social media timeline. You will get notifications when your friends like or comment on your posts." data-hintPosition="middle-middle")
             .right.floated.meta= "Yesterday"
             |
-            a(href='/user/andrewthomas_')
-              img.ui.avatar.image(src=cdn+'/profile_pictures/user71.JPG')
-              span='Andrew Thomas'
+            a(href='/user/zachpeters06')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user67.jpg')
+              span='Zach Peters'
           .image
-            img.post(src=cdn+'/post_pictures/digfootga1.jpg')
+            img.post(src=cdn+'/post_pictures/space_habits.jpg')
           #step4.content
-            .description="the first day after my bday and guess what i HAVE to do? clean your room says my mom i hate her so much!!!"
+            .description="check out my new wallpaper 😍"
             //-.right.floated.meta
               i.icon.checkmark
               | Seen by 12
@@ -52,65 +52,29 @@ block content
             .ui.comments
               .comment
                 a.avatar
-                  img(src=cdn+'/profile_pictures/user52.jpg')
+                  img(src=cdn+'/profile_pictures/user21.jpg')
                 .content
-                  a.author Connor McCormick
+                  a.author David Cole
                   .metadata
-                    span.date 5 hours ago
+                    span.date Yesterday
                     i.heart.icon
                     |  2 Likes
                   .text()
-                    | haha that sucks
+                    | i have one just like that on my iPad!!
                   .actions
                     a.like Like
-                    a.flag Flag
-          .extra.content(data-hint="This is a social media timeline. You will get notifications when your friends like or comment on your posts." data-hintPosition="top-middle")
-            .ui.fluid.left.labeled.right.icon.input
-              .ui.label
-                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-              input.newcomment(type='text' placeholder='Write a Comment')
-              i.big.send.link.icon#sendComment1
-    //-%%%%%%%%%%%%%%%%%%%%%%%%%
-    #step5.ui.fluid.card.test.feedDisplay(postID="3")
-          .content
-            .right.floated.meta= "15 Minutes Ago"
-            |
-            a(href='/user/Suzieee')
-              img.ui.avatar.image(src=cdn+'/profile_pictures/user40.jpg')
-              span='Susan Turner'
-          .image
-            img.post(src=cdn+"/post_pictures/digfootga3.jpg")
-          .content
-            .description="omg Lindsay I love you but you look ridiculous! lol"
-            //-.right.floated.meta
-              i.icon.checkmark
-              | Seen by 12
-          .three.ui.bottom.attached.icon.buttons
-            .ui.reply.button(tabindex='0')
-              i.reply.icon
-              |  Reply
-            .ui.flag.button(tabindex='0')
-              i.flag.icon
-              |  Flag
-            .ui.labeled.button(tabindex='0')
-              .ui.like.button
-                i.heart.icon
-                |  Like
-              a.ui.basic.red.left.pointing.label.count=2
-          
-          .content
-            .ui.comments
+                    a.flag Flag    
               .comment
                 a.avatar
-                  img(src=cdn+'/profile_pictures/user66.jpeg')
+                  img(src=cdn+'/profile_pictures/user22.jpeg')
                 .content
-                  a.author Michelle Rose
+                  a.author Lana Sheehan
                   .metadata
-                    span.date 1 minute ago
+                    span.date Yesterday
                     i.heart.icon
-                    |  0 Likes
+                    |  2 Likes
                   .text()
-                    | lol!!
+                    | cool
                   .actions
                     a.like Like
                     a.flag Flag
@@ -119,26 +83,358 @@ block content
               .ui.label
                 img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
               input.newcomment(type='text' placeholder='Write a Comment')
+              i.big.send.link.icon#sendComment1
+    //-%%%%%%%%%%%%%%%%%%%%%%%%%
+    #step5.ui.fluid.card.test.feedDisplay(postID="3")
+          .content
+            .right.floated.meta= "Yesterday"
+            |
+            a(href='/user/cloe.htt')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user3.jpg')
+              span='Cloe Hansen'
+          .image
+            img.post(src=cdn+"/post_pictures/sunset_friends_habits.jpg")
+          .content
+            .description="love you all like sisters <3 "
+            //-.right.floated.meta
+              i.icon.checkmark
+              | Seen by 12
+          .three.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            .ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Flag
+            .ui.labeled.button(tabindex='0')
+              .ui.like.button
+                i.heart.icon
+                |  Like
+              a.ui.basic.red.left.pointing.label.count=3
+          
+          .content
+            .ui.comments
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user46.jpg')
+                .content
+                  a.author Dylan Friedman 
+                  .metadata
+                    span.date Yesterday
+                    i.heart.icon
+                    |  3 Likes
+                  .text()
+                    | LYLAS &gt;3 
+                  .actions
+                    a.like Like
+                    a.flag Flag    
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user47.jpeg')
+                .content
+                  a.author Ariel Simon 
+                  .metadata
+                    span.date Yesterday
+                    i.heart.icon
+                    |  3 Likes
+                  .text()
+                    | ily 
+                  .actions
+                    a.like Like
+                    a.flag Flag
+                    
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user69.jpg')
+                .content
+                  a.author Hannah Cohn
+                  .metadata
+                    span.date Yesterday
+                    i.heart.icon
+                    |  3 Likes
+                  .text()
+                    | so much love for you guys
+                  .actions
+                    a.like Like
+                    a.flag Flag
+                    
+            .extra.content
+              .ui.fluid.left.labeled.right.icon.input
+                .ui.label
+                  img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+                input.newcomment(type='text' placeholder='Write a Comment')
+                i.big.send.link.icon
+                          
+                    
+                    
+    .ui.fluid.card.test.feedDisplay(postID="4")
+          .content
+            .right.floated.meta= "Yesterday"
+            |
+            a(href='/user/jlp777')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user13.png')
+              span='Jason Perez'
+          .image
+            img.post(src=cdn+"/post_pictures/theater_habits.jpg")
+          .content
+            .description="Getting ready for the opening show tonite! "
+            //-.right.floated.meta
+              i.icon.checkmark
+              | Seen by 12
+          .three.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            .ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Flag
+            .ui.labeled.button(tabindex='0')
+              .ui.like.button
+                i.heart.icon
+                |  Like
+              a.ui.basic.red.left.pointing.label.count=1
+          
+          .content
+            .ui.comments
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user70.JPG')
+                .content
+                  a.author Zoe Goodall
+                  .metadata
+                    span.date Yesterday
+                    i.heart.icon
+                    |  1 Likes
+                  .text()
+                    | break a leg ;)!
+                  .actions
+                    a.like Like
+                    a.flag Flag    
+  
+          .extra.content
+            .ui.fluid.left.labeled.right.icon.input
+              .ui.label
+                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+              input.newcomment(type='text' placeholder='Write a Comment')
               i.big.send.link.icon
+                
+                
+    .ui.fluid.card.test.feedDisplay(postID="3")
+          .content
+            .right.floated.meta= "Yesterday"
+            |
+            a(href='/user/gracieeeeee82')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user62.jpg')
+              span='Grace Burns'
+          .image
+            img.post(src=cdn+"/post_pictures/cafe_aesthetic_habits.jpg")
+          .content
+            .description="~ cafe vibes ~"
+            //-.right.floated.meta
+              i.icon.checkmark
+              | Seen by 12
+          .three.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            .ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Flag
+            .ui.labeled.button(tabindex='0')
+              .ui.like.button
+                i.heart.icon
+                |  Like
+              a.ui.basic.red.left.pointing.label.count=2
+          
+          .content
+            .ui.comments  
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user71.JPG')
+                .content
+                  a.author Andrew Thomas
+                  .metadata
+                    span.date Yesterday
+                    i.heart.icon
+                    |  1 Likes
+                  .text()
+                    | this aesthetic tho 🙌🏽
+                  .actions
+                    a.like Like
+                    a.flag Flag
+                    
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user72.jpg')
+                .content
+                  a.author Gabby Rogers
+                  .metadata
+                    span.date Yesterday
+                    i.heart.icon
+                    |  0 Likes
+                  .text()
+                    | is this the new place that opened up??
+                  .actions
+                    a.like Like
+                    a.flag Flag
+                    
+            .extra.content
+              .ui.fluid.left.labeled.right.icon.input
+                .ui.label
+                  img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+                input.newcomment(type='text' placeholder='Write a Comment')
+                i.big.send.link.icon
+                    
+    .ui.fluid.card.test.feedDisplay(postID="3")
+          .content
+            .right.floated.meta= "Yesterday"
+            |
+            a(href='/user/goaliegirl')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user29.jpg')
+              span='Breana Summers'
+          .image
+            img.post(src=cdn+"/post_pictures/code_habits.jpg")
+          .content
+            .description="first coding project, complete ✅"
+            //-.right.floated.meta
+              i.icon.checkmark
+              | Seen by 12
+          .three.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            .ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Flag
+            .ui.labeled.button(tabindex='0')
+              .ui.like.button
+                i.heart.icon
+                |  Like
+              a.ui.basic.red.left.pointing.label.count=2
+          
+          .content
+            .ui.comments  
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user73.JPG')
+                .content
+                  a.author Noah Liebman
+                  .metadata
+                    span.date Yesterday
+                    i.heart.icon
+                    |  1 Likes
+                  .text()
+                    | wOAH
+                  .actions
+                    a.like Like
+                    a.flag Flag
+                    
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user74.jpg')
+                .content
+                  a.author Ryan Freyer
+                  .metadata
+                    span.date Yesterday
+                    i.heart.icon
+                    |  0 Likes
+                  .text()
+                    | do you code???
+                  .actions
+                    a.like Like
+                    a.flag Flag
     //-#######################
     //-Notifications page
-    button.ui.basic.button.notificationsDisplay(style="display:none;")
+    button.ui.basic.button.notificationsDisplay(style="display:none;")#settingsButton
       i.cog.icon
       |   Settings
       
-    button.ui.basic.button.notificationsDisplay(style="display:none;")
+    button.ui.basic.button.notificationsDisplay(style="display:none;")#activityButton
       i.clock.icon
       |   My Activity
 
     .ui.raised.segment.notificationsDisplay(style="display:none;")
-      .ui.feed
-       .event
-         //-CSS properties: https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
-         .label(style="overflow:hidden !important; width:3em !important; height:3em !important")
-           img(src=cdn + '/profile_pictures/' style="width:100% !important; height:100% !important; display:inline  !important; margin:0 auto !important;")
-         .content
-           .summary
-            //-.time.notificationTime=(Date.now() + val.time)
+     .ui.feed
+      .event
+        //-CSS properties: https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
+        .label(style="overflow:hidden !important; width:3em !important; height:3em !important")
+          img(src=cdn +'/profile_pictures/user22.jpeg' style="width:100% !important; height:100% !important; display:inline  !important; margin:0 auto !important;")
+        .content
+          .summary Lana Sheehan commented on Zach Peters’ post: “cool”.
+          
+    .ui.raised.segment.notificationsDisplay(style="display:none;")
+     .ui.feed
+      .event
+        //-CSS properties: https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
+        .label(style="overflow:hidden !important; width:3em !important; height:3em !important")
+          img(src=cdn +'/profile_pictures/user69.jpg' style="width:100% !important; height:100% !important; display:inline  !important; margin:0 auto !important;")
+        .content
+          .summary Hannah Cohn commented on Cloe Hansen’s post: “so much love for you guys”.
+          
+    .ui.raised.segment.notificationsDisplay(style="display:none;")
+     .ui.feed
+      .event
+        //-CSS properties: https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
+        .label(style="overflow:hidden !important; width:3em !important; height:3em !important")
+          img(src=cdn +'/profile_pictures/user3.jpg' style="width:100% !important; height:100% !important; display:inline  !important; margin:0 auto !important;")
+        .content
+          .summary Cloe Hansen posted: “love you all like sisters &gt;3 ”.
+          
+    .ui.raised.segment.notificationsDisplay(style="display:none;")
+     .ui.feed
+      .event
+        //-CSS properties: https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
+        .label(style="overflow:hidden !important; width:3em !important; height:3em !important")
+          img(src=cdn +'/profile_pictures/user28.jpg' style="width:100% !important; height:100% !important; display:inline  !important; margin:0 auto !important;")
+        .content
+          .summary Corey King liked Grace Burns’ post: “~ cafe vibes ~”.
+          
+    .ui.raised.segment.notificationsDisplay(style="display:none;")
+     .ui.feed
+      .event
+        //-CSS properties: https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
+        .label(style="overflow:hidden !important; width:3em !important; height:3em !important")
+          img(src=cdn +'/profile_pictures/user13.png' style="width:100% !important; height:100% !important; display:inline  !important; margin:0 auto !important;")
+        .content
+          .summary Jason Perez posted: “Getting ready for the opening show tonite! ”.
+          
+    .ui.raised.segment.notificationsDisplay(style="display:none;")
+     .ui.feed
+      .event
+        //-CSS properties: https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
+        .label(style="overflow:hidden !important; width:3em !important; height:3em !important")
+          img(src=cdn +'/profile_pictures/user72.jpg' style="width:100% !important; height:100% !important; display:inline  !important; margin:0 auto !important;")
+        .content
+          .summary Gabby Rogers commented on Grace Burns’s post: “is this the new place that opened up??”.
+
+    .ui.raised.segment.notificationsDisplay(style="display:none;")
+     .ui.feed
+      .event
+        //-CSS properties: https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
+        .label(style="overflow:hidden !important; width:3em !important; height:3em !important")
+          img(src=cdn +'/profile_pictures/user62.jpg' style="width:100% !important; height:100% !important; display:inline  !important; margin:0 auto !important;")
+        .content
+          .summary Grace Burns posted: “~ cafe vibes ~”.
+          
+          
+          
+    //-Settings display
+
+    .ui.container.settingsDisplay(style="display:none;")
+      h2.ui.header Notification Settings
+      .ui.divider
+      br
+      form.ui.form
+        .field
+          br
+          .ui.toggle.checkbox
+            input(type='checkbox' name='public' checked='checked')
+            label Popup Alerts
+        span.settingLabel Disabling this will stop popup alerts. 
+        br
+        br           
+          
+    
 
 
 block scripts
@@ -150,8 +446,6 @@ block scripts
     var literacy_counter = 0;
     function startIntro(){
       
-        $('#myheader').attr('data-hint','testing dots');
-        $('#myheader').attr('data-hintPosition','middle-middle');
         var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
           intro.setOptions({
             steps: [
@@ -171,7 +465,6 @@ block scripts
           });
           
           intro.start().onexit(function() {
-            
             var hints = introJs().addHints()
             
             console.log(hints);
@@ -183,34 +476,44 @@ block scripts
             
             hints.onhintclose(function(e) {
              literacy_counter++;
-             if(literacy_counter == 5) {
-               $("#clickAllDotsSim").hide();
-               $( ".cybertrans" ).addClass("green");
+             if(literacy_counter == 1) {
+               console.log('UPDATING ATTR');
+               $('#notificationsteps').attr({
+                 "data-hint":'hello!',
+                 'data-hintPosition':'middle-middle'
+               });
+               $('.ui.fluid.card.test.feedDisplay .content').removeAttr('data-hint data-hintPosition');
+               
+               var hints2 = introJs().addHints();
+               console.log('HINTS ADDED');
+               hints2.refresh();
              }
             });
             
-            $("#sendComment1").on('click', function(){
+            /*$("#sendComment1").on('click', function(){
               console.log("sent clicked, refresh called");
               hints.refresh();
-            });
+            });*/
             
             $(".ui.vertical.menu a.item").on('click', function(){
               console.log("MENU CLICK!");
-              $('.ui.two.item.top.attached.tabular.menu a.item').removeClass('active');
+              $('.ui.vertical.menu a.item').removeClass('active');
               $(this).addClass('active');
               if($(this).data().value === 'feed'){
                 $('.feedDisplay').show();
+                $(".settingsDisplay").hide();
                 $("#feedsteps").addClass('active');
                 $('.notificationsDisplay').hide();
                 $('#notificationsteps').removeClass('active');
-                hints.refresh();
+                //hints.refresh();
 
               } else if ($(this).data().value === 'notifications'){
                 $(".feedDisplay").hide();
+                $(".settingsDisplay").hide();
                 $("#feedsteps").removeClass('active');
                 $(".notificationsDisplay").show();
                 $("#notificationsteps").addClass('active');
-                hints.refresh();
+                //hints.refresh();
                 
               }
             });
@@ -221,4 +524,9 @@ block scripts
       $(window).on("load", function() {
         startIntro();
         
+      });
+      
+      $('#settingsButton').on('click', function(){
+        $('.notificationsDisplay').hide();
+        $('.settingsDisplay').show();
       });

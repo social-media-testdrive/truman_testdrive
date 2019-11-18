@@ -25,13 +25,13 @@ block content
           .content
             .right.floated.meta= "Yesterday"
             |
-            a(href='/user/andrewthomas_')
-              img.ui.avatar.image(src=cdn+'/profile_pictures/user71.JPG')
-              span='Andrew Thomas'
+            a(href='/user/m-beckett')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user17.jpg')
+              span='Mary Beckett'
           .image
-            img.post(src=cdn+'/post_pictures/digfootga1.jpg')
+            img.post(src=cdn+'/post_pictures/snowhabits.jpg')
           #step4.content
-            .description="the first day after my bday and guess what i HAVE to do? clean your room says my mom i hate her so much!!!"
+            .description="Look at this cute snowman😄"
             //-.right.floated.meta
               i.icon.checkmark
               | Seen by 12
@@ -52,15 +52,29 @@ block content
             .ui.comments
               .comment
                 a.avatar
-                  img(src=cdn+'/profile_pictures/user52.jpg')
+                  img(src=cdn+'/profile_pictures/user3.jpg')
                 .content
-                  a.author Connor McCormick
+                  a.author Cloe Hansen
                   .metadata
-                    span.date 5 hours ago
+                    span.date Yesterday
                     i.heart.icon
                     |  2 Likes
                   .text()
-                    | haha that sucks
+                    | sweet!!
+                  .actions
+                    a.like Like
+                    a.flag Flag
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user5.jpeg')
+                .content
+                  a.author Kiki Pualani
+                  .metadata
+                    span.date Yesterday
+                    i.heart.icon
+                    |  2 Likes
+                  .text()
+                    | I like it haha
                   .actions
                     a.like Like
                     a.flag Flag
@@ -73,15 +87,15 @@ block content
     //-%%%%%%%%%%%%%%%%%%%%%%%%%
     #step5.ui.fluid.card.test.feedDisplay(postID="3")
           .content
-            .right.floated.meta= "15 Minutes Ago"
+            .right.floated.meta= "Yesterday"
             |
-            a(href='/user/Suzieee')
-              img.ui.avatar.image(src=cdn+'/profile_pictures/user40.jpg')
-              span='Susan Turner'
+            a(href='/user/cupcake25')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user24.jpg')
+              span='Jenny Chen'
           .image
-            img.post(src=cdn+"/post_pictures/digfootga3.jpg")
+            img.post(src=cdn+"/post_pictures/flighthabits.jpg")
           .content
-            .description="omg Lindsay I love you but you look ridiculous! lol"
+            .description="i wanna see the world >"
             //-.right.floated.meta
               i.icon.checkmark
               | Seen by 12
@@ -102,15 +116,15 @@ block content
             .ui.comments
               .comment
                 a.avatar
-                  img(src=cdn+'/profile_pictures/user66.jpeg')
+                  img(src=cdn+'/profile_pictures/user6.jpeg')
                 .content
-                  a.author Michelle Rose
+                  a.author Elli Andreas
                   .metadata
-                    span.date 1 minute ago
+                    span.date Yesterday
                     i.heart.icon
-                    |  0 Likes
+                    |  1 Like
                   .text()
-                    | lol!!
+                    | where to?
                   .actions
                     a.like Like
                     a.flag Flag
@@ -130,10 +144,51 @@ block content
     button.ui.basic.button.notificationsDisplay(style="display:none;")
       i.clock.icon
       |   My Activity
-
+        
     .ui.raised.segment.notificationsDisplay(style="display:none;")
-      p#step2
-        | Cassie liked your post!
+      .ui.feed#step2
+       .event
+         //-CSS properties: https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
+         .label(style="overflow:hidden !important; width:3em !important; height:3em !important")
+           img(src=cdn +'/profile_pictures/user6.jpeg' style="width:100% !important; height:100% !important; display:inline  !important; margin:0 auto !important;")
+         .content
+           .summary Elli Andreas commented on Jenny Chen’s post: “where to?”.
+           
+    .ui.raised.segment.notificationsDisplay(style="display:none;")
+     .ui.feed
+      .event
+        //-CSS properties: https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
+        .label(style="overflow:hidden !important; width:3em !important; height:3em !important")
+          img(src=cdn +'/profile_pictures/user27.jpg' style="width:100% !important; height:100% !important; display:inline  !important; margin:0 auto !important;")
+        .content
+          .summary Mallory Smith liked Jenny Chen’s post: “i wanna see the world &gt;”.
+    
+    .ui.raised.segment.notificationsDisplay(style="display:none;")
+     .ui.feed
+      .event
+        //-CSS properties: https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
+        .label(style="overflow:hidden !important; width:3em !important; height:3em !important")
+          img(src=cdn +'/profile_pictures/user40.jpg' style="width:100% !important; height:100% !important; display:inline  !important; margin:0 auto !important;")
+        .content
+          .summary Susan Turner liked Mary Beckett’s post: “Look at this cute snowman😄”.
+          
+    .ui.raised.segment.notificationsDisplay(style="display:none;")
+     .ui.feed
+      .event
+        //-CSS properties: https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
+        .label(style="overflow:hidden !important; width:3em !important; height:3em !important")
+          img(src=cdn +'/profile_pictures/user3.jpg' style="width:100% !important; height:100% !important; display:inline  !important; margin:0 auto !important;")
+        .content
+          .summary Cloe Hansen commented on Mary Beckett’s post: “sweet!!”.
+          
+    .ui.raised.segment.notificationsDisplay(style="display:none;")
+     .ui.feed
+      .event
+        //-CSS properties: https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
+        .label(style="overflow:hidden !important; width:3em !important; height:3em !important")
+          img(src=cdn +'/profile_pictures/user17.jpg' style="width:100% !important; height:100% !important; display:inline  !important; margin:0 auto !important;")
+        .content
+          .summary Mary Beckett posted: “Look at this cute snowman😄”.
     //-Settings page - this will probaly be a separate page for the free play section. keeping everything on one page for simplicity with tutorial sequence
 
 block scripts

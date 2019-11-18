@@ -434,12 +434,37 @@ block content
         i.big.photo.link.icon
         
       //-Notifications page
-      button.ui.basic.button.habitsNotificationsDisplay(style="display:none;")
+      button.ui.basic.button.habitsNotificationsDisplay(style="display:none;")#habitsSettingsButton
         i.cog.icon
         |   Settings                    
-      button.ui.basic.button.habitsNotificationsDisplay(style="display:none;")
+      button.ui.basic.button.habitsNotificationsDisplay(style="display:none;")#habitsActivityButton
         i.clock.icon
         |   My Activity
+        
+      .ui.container.habitsSettingsDisplay(style="display:none;")
+        h2.ui.header Notification Settings
+        .ui.divider
+        br
+        form.ui.form
+          .field
+            br
+            .ui.toggle.checkbox
+              input(type='checkbox' name='popupAlerts' checked='checked')
+              label Popup Alerts
+          span.settingLabel Disabling this will stop popup alerts. 
+          br
+          br    
+          
+      .ui.container.habitsActivityDisplay(style="display:none;")
+        h2.ui.header My Activity
+        .ui.divider
+
+        h2.ui.header Total View Time:
+        .ui.statistic
+          .value#habitsActivityTotalTime 0
+          .label
+            | minutes
+ 
 
       each val in script
         //- create a card for each post in val (if by user make the card a little different)
@@ -821,12 +846,12 @@ block content
                         img.ui.avatar.image(src=user.gravatar(60), name=user.profile.name || user.username || user.id)            
                     input.newcomment(type='text', placeholder='Write a Comment')
                     i.big.send.link.icon
-                      
+    //-end the habits module case                  
 
 
         
     -var post_quiz = "/results/"+mod;
-    a.ui.fluid.card(href=post_quiz)
+    a.ui.fluid.card.habitsHomeDisplay(href=post_quiz)
       .content
         .ui.big.green.labeled.icon.button.script
           i.rocket.icon
@@ -1359,11 +1384,13 @@ block scripts
           // if the page is shown, start the timer (i.e. get the current time)
           
           /*
-          freePlayPageViewTimer = Date.now();
+          var freePlayPageViewTimer = Date.now();
           //record this date as the start of the habits timeline
           $.post("/habitsTimer", { habitsStart: freePlayPageViewTimer, _csrf : $('meta[name="csrf-token"]').attr('content') } );
           */
-
+          
+          var freePlayPageViewTimer = Date.now();
+          
           function handleVisibilityChange() {
             if (document[hidden]) {
               var currentTime = Date.now();
@@ -1375,6 +1402,21 @@ block scripts
               freePlayPageViewTimer = Date.now();
             }
           }
+          
+          //activity page
+          $('#habitsActivityButton').on('click', function(){
+            $('.habitsHomeDisplay').hide();
+            $('.habitsNotificationsDisplay').hide();
+            $('.habitsNotificationItem').hide();
+            $('.habitsSettingsDisplay').hide();
+            //get the current amount of time 
+            $.get( "/habitsTimer", function( data ) {
+              var activityDisplayTime = (data.totalTimeViewedHabits + (Date.now() - freePlayPageViewTimer))/60000;
+              activityDisplayTime = Math.round( activityDisplayTime * 10 ) / 10; //round to 1 decimal place
+              $('#habitsActivityTotalTime').html(activityDisplayTime);
+              $('.habitsActivityDisplay').show();
+            });
+          });
           
           // Handle page visibility change   
           document.addEventListener(visibilityChange, handleVisibilityChange, false);
@@ -1388,12 +1430,25 @@ block scripts
          *also determines which notifications to show
          */
          
+         //settings page
+         $('#habitsSettingsButton').on('click',function(){
+           $('.habitsHomeDisplay').hide();
+           $('.habitsNotificationsDisplay').hide();
+           $('.habitsNotificationItem').hide();
+           $('.habitsActivityDisplay').hide();
+           $('.habitsSettingsDisplay').show();
+         });
+         
+        
+         
          //making the side menu work
          
          $(".ui.vertical.menu a.item").on('click', function(){
            $('.ui.two.item.top.attached.tabular.menu a.item').removeClass('active');
            $(this).addClass('active');
            if($(this).data().value === 'feed'){
+             $(".habitsSettingsDisplay").hide();
+             $(".habitsActivityDisplay").hide();
              if($("#notificationsteps").hasClass("active")){
                $(".ui.red.right.pointing.label").hide();
                //hide any old notification popups
@@ -1407,6 +1462,8 @@ block scripts
 
            } else if ($(this).data().value === 'notifications'){
              $(".habitsHomeDisplay").hide();
+             $(".habitsSettingsDisplay").hide();
+             $(".habitsActivityDisplay").hide();
              $(".habitsNotificationsDisplay").show();
              $("#feedsteps").removeClass("active");
              $("#notificationsteps").addClass("active");
@@ -1417,7 +1474,6 @@ block scripts
              $.get( "/habitsTimer", function( data ) {
                var timeNow = Date.now();
                var habitsStart = data.startTime;
-               console.log("START TIME........ "+habitsStart);
                var timeElapsed = timeNow - habitsStart;
                //determine which notifications to show
                $('.habitsNotificationItem').each(function(index){ //for each notification, check if it is within the time elapsed
@@ -1463,8 +1519,11 @@ block scripts
                          var imageHref = "https://dhpd030vnpk29.cloudfront.net/profile_pictures/" + data.notificationPhoto[notificationIndexCount];
                          $('#popupNotificationImage').attr("src",imageHref);
                          $('.ui.fixed.bottom.sticky.notificationPopup .summary').text(data.notificationText[notificationIndexCount]);
-                        $('.ui.fixed.bottom.sticky.notificationPopup .time').hide();
-                         $('.notificationPopup').transition('pulse');
+                         $('.ui.fixed.bottom.sticky.notificationPopup .time').hide();
+                         //only show the popup if they aren't disabled in the settings
+                         if($("input[name='popupAlerts']").is(':checked')){
+                           $('.notificationPopup').transition('pulse');
+                         }
                          
                        }
                        
