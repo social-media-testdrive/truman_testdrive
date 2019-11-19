@@ -1512,17 +1512,17 @@ block scripts
                        //code to actually show popup in frontend
                        //don't show popups in notifications window, only home
                        if($('.ui.vertical.menu a.item.active').data().value == "feed"){
-                         $('.ui.red.right.pointing.label').transition('pulse');
-                         $('i.icon.bell').transition("tada");
-                         $('#removeHidden').removeClass("hidden");
-                         //$('.ui.fixed.bottom.sticky.notificationPopup .summary').text("My popup for notification " + notificationIndexCount);
                          var imageHref = "https://dhpd030vnpk29.cloudfront.net/profile_pictures/" + data.notificationPhoto[notificationIndexCount];
                          $('#popupNotificationImage').attr("src",imageHref);
                          $('.ui.fixed.bottom.sticky.notificationPopup .summary').text(data.notificationText[notificationIndexCount]);
                          $('.ui.fixed.bottom.sticky.notificationPopup .time').hide();
-                         //only show the popup if they aren't disabled in the settings
+                         
+                         //only show the popup and animate the bell if they aren't disabled in the settings
                          if($("input[name='popupAlerts']").is(':checked')){
+                           $('#removeHidden').removeClass("hidden");
                            $('.notificationPopup').transition('pulse');
+                           $('.ui.red.right.pointing.label').transition('pulse');
+                           $('i.icon.bell').transition("tada");
                          }
                          
                        }
