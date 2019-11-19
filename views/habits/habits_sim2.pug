@@ -1,0 +1,146 @@
+
+extends ../ui_layout
+  
+block content
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  
+  
+
+  .computer.only.tablet.only.four.wide.column 
+    .ui.sticky.sideMenu(style='width: 272px !important; height: 500px !important; left: 64.5px;')
+      .ui.vertical.menu(style="width:auto;")
+        a.item(data-value='feed')#feedsteps 
+          i.icon.home
+          |  Home
+        a.active.item(data-value='notifications')#notificationsteps
+          i.icon.bell
+          |  Notifications
+
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
+    .ui.fixed.bottom.sticky(style="padding-bottom:2em; padding-left:1em; padding-right:1em; display:none;")#removeHidden
+      .ui.icon.compact.message.warning
+        i.close.icon
+        i.question.icon.float
+        .content
+          .ui.header Need some help? 
+          p Make sure you are clicking "Got it" on the blue dots!
+    //-#######################
+    //-Notifications page
+    button.ui.basic.button.notificationsDisplay(data-hint="One way you can build a healthy habit is to turn off or reduce the number of notifications that you get. Click Settings on the notification window to see how you can do this." data-hintPosition='middle-right')#settingsButton
+      i.cog.icon
+      |   Settings
+      
+    button.ui.basic.button.notificationsDisplay#activityButton
+      i.clock.icon
+      |   My Activity
+      
+    .ui.raised.segment.notificationsDisplay(data-hint='Notifications can give you helpful information, but having too many of them can be distracting.' data-hintPosition='top-middle')
+     .ui.feed
+      .event
+        //-CSS properties: https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
+        .label(style="overflow:hidden !important; width:3em !important; height:3em !important")
+          img(src=cdn +'/profile_pictures/user22.jpeg' style="width:100% !important; height:100% !important; display:inline  !important; margin:0 auto !important;")
+        .content
+          .summary Lana Sheehan commented on Zach Peters’ post: “cool”.
+          
+    .ui.raised.segment.notificationsDisplay
+     .ui.feed
+      .event
+        //-CSS properties: https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
+        .label(style="overflow:hidden !important; width:3em !important; height:3em !important")
+          img(src=cdn +'/profile_pictures/user69.jpg' style="width:100% !important; height:100% !important; display:inline  !important; margin:0 auto !important;")
+        .content
+          .summary Hannah Cohn commented on Cloe Hansen’s post: “so much love for you guys”.
+          
+    .ui.raised.segment.notificationsDisplay
+     .ui.feed
+      .event
+        //-CSS properties: https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
+        .label(style="overflow:hidden !important; width:3em !important; height:3em !important")
+          img(src=cdn +'/profile_pictures/user3.jpg' style="width:100% !important; height:100% !important; display:inline  !important; margin:0 auto !important;")
+        .content
+          .summary Cloe Hansen posted: “love you all like sisters &gt;3 ”.
+          
+    .ui.raised.segment.notificationsDisplay
+     .ui.feed
+      .event
+        //-CSS properties: https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
+        .label(style="overflow:hidden !important; width:3em !important; height:3em !important")
+          img(src=cdn +'/profile_pictures/user28.jpg' style="width:100% !important; height:100% !important; display:inline  !important; margin:0 auto !important;")
+        .content
+          .summary Corey King liked Grace Burns’ post: “~ cafe vibes ~”.
+          
+    .ui.raised.segment.notificationsDisplay
+     .ui.feed
+      .event
+        //-CSS properties: https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
+        .label(style="overflow:hidden !important; width:3em !important; height:3em !important")
+          img(src=cdn +'/profile_pictures/user13.png' style="width:100% !important; height:100% !important; display:inline  !important; margin:0 auto !important;")
+        .content
+          .summary Jason Perez posted: “Getting ready for the opening show tonite! ”.
+          
+    .ui.raised.segment.notificationsDisplay
+     .ui.feed
+      .event
+        //-CSS properties: https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
+        .label(style="overflow:hidden !important; width:3em !important; height:3em !important")
+          img(src=cdn +'/profile_pictures/user72.jpg' style="width:100% !important; height:100% !important; display:inline  !important; margin:0 auto !important;")
+        .content
+          .summary Gabby Rogers commented on Grace Burns’s post: “is this the new place that opened up??”.
+
+    .ui.raised.segment.notificationsDisplay
+     .ui.feed
+      .event
+        //-CSS properties: https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
+        .label(style="overflow:hidden !important; width:3em !important; height:3em !important")
+          img(src=cdn +'/profile_pictures/user62.jpg' style="width:100% !important; height:100% !important; display:inline  !important; margin:0 auto !important;")
+        .content
+          .summary Grace Burns posted: “~ cafe vibes ~”.
+          
+block scripts
+  script().
+    
+    $('.ui.sticky.sideMenu').sticky();    
+    var literacy_counter = 0;
+    
+    function startIntro(){
+      var hints = introJs().addHints();  
+      var clickCount = 0; 
+      
+      //for providing guidance message
+      hints.onhintclick(function(hintElement, item, stepId) {
+          clickCount++;
+          if(clickCount > 5){ 
+            //show the guidance message, user probably doesn't know to click "got it"
+            if($('#removeHidden').is(":hidden")){
+              $('#removeHidden').transition('fade');
+            } else {
+              $('#removeHidden').transition('bounce');
+            }
+          }
+      });
+          
+      hints.onhintclose(function(e) {
+        clickCount = 0; //The user knows to click "got it"
+        if($('#removeHidden').is(":visible")){
+          $("#removeHidden").transition('fade');
+        }
+        literacy_counter++;
+        if(literacy_counter == 2) {
+         window.location.href='/sim3/habits';
+        }
+      });
+      
+      //showing the "Need some help?" guidance message after 2 minutes on the page (assuming the user doesn't know to click "Got it")
+      setTimeout(function(){
+        if($('#removeHidden').is(":hidden")){
+          console.log("SHOW GUIDANCE");
+          $('#removeHidden').transition('fade');
+        }
+      },120000);     
+    };
+
+    $(window).on("load", function() {
+      startIntro();  
+    });
+  

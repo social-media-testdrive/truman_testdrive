@@ -1,0 +1,87 @@
+
+extends ../ui_layout
+  
+block content
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+
+  .computer.only.tablet.only.four.wide.column 
+    .ui.sticky.sideMenu(style='width: 272px !important; height: 500px !important; left: 64.5px;')
+      .ui.vertical.menu(style="width:auto;")
+        a.active.item(data-value='feed')#feedsteps 
+          i.icon.home
+          |  Home
+        a.item(data-value='notifications')#notificationsteps
+          i.icon.bell
+          |  Notifications
+
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
+    .ui.fixed.bottom.sticky(style="padding-bottom:2em; padding-left:1em; padding-right:1em; display:none;")#removeHidden
+      .ui.icon.compact.message.warning
+        i.close.icon
+        i.question.icon.float
+        .content
+          .ui.header Need some help? 
+          p Make sure you are clicking "Got it" on the blue dots!
+    //-Activity display 
+    .ui.container.habitsActivityDisplay
+      h2.ui.header(data-hint="Some social media sites even have a page where you can track the time you have spent using the site or app." data-hintPosition='middle-middle') My Activity
+      .ui.divider
+
+      h2.ui.header(data-hint="It’s important to be mindful of how much time you spend on social media. Take a break or disconnect if you think you have been using it too much!" data-hintPosition='middle-middle') Total View Time:
+      .ui.statistic
+        .value#habitsActivityTotalTime 6.5
+        .label
+          | minutes
+       
+          
+    
+
+
+block scripts
+  script().
+    
+    $('.ui.sticky.sideMenu').sticky();  
+    var literacy_counter = 0;
+    
+    function startIntro(){  
+      var hints = introJs().addHints();
+      var clickCount = 0; 
+      
+      //for providing guidance message
+      hints.onhintclick(function(hintElement, item, stepId) {
+          //console.log('hint clicked', hintElement, item, stepId);
+          clickCount++;
+          if(clickCount > 5){ 
+            //show the guidance message, user probably doesn't know to click "got it"
+            if($('#removeHidden').is(":hidden")){
+              $('#removeHidden').transition('fade');
+            } else {
+              $('#removeHidden').transition('bounce');
+            }
+          }
+      });
+      
+      hints.onhintclose(function(e) {
+        clickCount = 0; //The user knows to click "got it"
+        if($('#removeHidden').is(":visible")){
+          $("#removeHidden").transition('fade');
+        }
+        literacy_counter++;
+        if(literacy_counter == 2) {
+         window.location.href='/trans/habits';
+        }
+      });
+      
+      //showing the "Need some help?" guidance message after 2 minutes on the page (assuming the user doesn't know to click "Got it")
+      setTimeout(function(){
+        if($('#removeHidden').is(":hidden")){
+          console.log("SHOW GUIDANCE");
+          $('#removeHidden').transition('fade');
+        }
+      },120000);
+    };
+       
+    
+    $(window).on("load", function() {
+      startIntro();
+    });

@@ -323,6 +323,18 @@ app.get('/sim2/:modId', passportConfig.isAuthenticated, function (req, res) {
   });
 });
 
+app.get('/sim3/:modId', passportConfig.isAuthenticated, function (req, res) {
+  res.render(req.param("modId") + '/' + req.param("modId")+'_sim3', {
+    title: 'Guided Activity'
+  });
+});
+
+app.get('/sim4/:modId', passportConfig.isAuthenticated, function (req, res) {
+  res.render(req.param("modId") + '/' + req.param("modId")+'_sim4', {
+    title: 'Guided Activity'
+  });
+});
+
 app.get('/trans/:modId', passportConfig.isAuthenticated, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_trans', {
     title: 'Recap'
