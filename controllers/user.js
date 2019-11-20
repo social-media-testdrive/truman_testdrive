@@ -673,8 +673,6 @@ exports.getMe = (req, res) => {
 };
 
 exports.getHabitsTimer = (req, res) => {
-  console.log("###");
-  console.log("YOU ARE IN THE TIMER GET REQUEST");
     User.findById(req.user.id)
       .exec(function (err, user){
         var startTime = user.firstHabitViewTime;

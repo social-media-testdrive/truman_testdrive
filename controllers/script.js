@@ -12,8 +12,6 @@ const aws = require('aws-sdk');
 
 
 exports.getNotificationTimes = (req, res) => {
-  console.log("####");
-  console.log("YOU ARE IN THE GET REQUEST");
   Script.find()
     //.where('time').lte(time_diff)//.gte(time_limit)
     .where('module').equals('habits')
@@ -25,7 +23,7 @@ exports.getNotificationTimes = (req, res) => {
       var notifTimestampArray = [];
       var notifTextArray = [];
       var notifPhotoArray = [];
-      console.log("SCRIPT FEED LENGTH: "+script_feed.length);
+
       for(var i = 0; i < script_feed.length; i++){
         if (notifTimestampArray){
           notifTimestampArray.push(script_feed[i].time);
