@@ -12,41 +12,97 @@ block content
             .content
               | Reflect
 
-    .ui.raised.segment.responseOne
+    .ui.raised.segment
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
-          | Did you notice any changes in Lily’s profile after you changed the privacy settings?
-      .ui.form
-        .inline.fields
-          label(style="font-size:120%;")
-          textarea.glowing-border(rows='2' id="privacy_responseOne")
+          | How many of these attention-grabbing design features did you notice?
+      .content.checkOne
+        .ui.form
+          br
+          .inline.fields
+            label(for='notifications', name='notifications') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='notifications', style="font-size:120%;", tabindex='0') Notifications
+        .ui.form
+          .inline.fields
+            label(for='likes', name='likes') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='likes', style="font-size:120%;", tabindex='0') Likes and comments from other people
+        .ui.form
+          .inline.fields
+            label(for='timeSpent', name='timeSpent') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='timeSpent', style="font-size:120%;", tabindex='0') Time spent on social media
 
     .ui.raised.segment.responseTwo
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
-          | Why is it important to know what information websites collect about you?
+          | How many minutes do you think you spent on the TestDrive timeline?
+    
       .ui.form
-        .inline.fields
-          label(style="font-size:120%;")
-          textarea.glowing-border(rows='2' id="privacy_responseTwo")
+        br
+        .ui.form
+          .inline.fields(style="max-width:15em;")
+            input.glowing-border(type='text' id="habits_responseTwo")
+            label(style="font-size:120%;")  &nbsp&nbspMinutes
+      button.ui.green.button#checkTime Find out the actual time!
+      br
+      .ui.header(style="display:none;")#undoHide You actually spent:
+      .ui.horizontal.statistic(style="display:none;")
+        .value#habitsActivityTotalTime 0
+        .label
+          | minutes
+        
 
-    .ui.raised.segment.responseThree
+    .ui.raised.segment
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
-          | What are the three things you should ask yourself when reading a privacy policy?
-      .ui.form
-        .inline.fields
-          label(style="font-size:120%;")
-          textarea.glowing-border(rows='2' id="privacy_responseThree")
+          | On the TestDrive timeline, what did you do to build a healthy social media habit?
+      .content.checkTwo
+        .ui.form
+          br
+          .inline.fields
+            label(for='wouldRead', name='wouldRead') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='wouldRead', style="font-size:120%;", tabindex='0') I reviewed the time spent on the site
+        .ui.form
+          .inline.fields
+            label(for='checkSource', name='checkSource') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='checkSource', style="font-size:120%;", tabindex='0') I reduced the number of notifications that I get
+        .ui.form
+          .inline.fields
+            label(for='corroboration', name='corroboration') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='corroboration', style="font-size:120%;", tabindex='0') I ignored the notifications
+        .ui.form
+          .inline.fields
+            label(for='corroboration', name='wouldViewAd') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='wouldViewAd', style="font-size:120%;", tabindex='0') I did not do anything  
             
     .ui.raised.segment.responseFour
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")
         h4(style="float:left")
-          | What can you do in the future to protect your privacy on social media?
+          | Why is it important to build a healthy social media habit?
       .ui.form
         .inline.fields
           label(style="font-size:120%;")
-          textarea.glowing-border(rows='2' id="privacy_responseFour")
+          textarea.glowing-border(rows='2' id="habits_responseFour")
           
           
 
@@ -63,26 +119,39 @@ block content
           
 block scripts
   script().
+
+    $('#checkTime').on('click', function(){
+      $.get( "/habitsTimer", function( data ) {
+        var activityDisplayTime = (data.totalTimeViewedHabits)/60000;
+        activityDisplayTime = Math.round( activityDisplayTime * 10 ) / 10; //round to 1 decimal place
+        $('#habitsActivityTotalTime').html(activityDisplayTime);
+        $('#undoHide').show();
+        $('.ui.horizontal.statistic').show();
+      });
+    })
     
     function onPrint(){
     
       $(".insertPrint").empty();
       $(".insertPrint").css('display','block'); 
       
-      $(".insertPrint").append("<h4>Did you notice any changes in Lily’s profile after you changed the privacy settings?</h4>");
-      var responseOne = document.getElementById("privacy_responseOne").value;
-      $(".insertPrint").append(responseOne);
+      $(".insertPrint").append("<br><h4>How many of these attention-grabbing design features did you notice?</h4>");
+      $(".checkOne").clone().appendTo(".insertPrint");
       
-      $(".insertPrint").append("<h4>Why is it important to know what information websites collect about you?</h4>");
-      var responseTwo = document.getElementById("privacy_responseTwo").value;
+      $(".insertPrint").append("<br><h4>How many minutes do you think you spent on the TestDrive timeline?</h4>");
+      var responseTwo = document.getElementById("habits_responseTwo").value;
       $(".insertPrint").append(responseTwo);
+      if($('.ui.horizontal.statistic').is(":visible")){
+        $(".insertPrint").append("<br><h4>Actual time spent:</h4>");
+        var actualTime = $('#habitsActivityTotalTime').text();
+        $(".insertPrint").append(actualTime);
+      }
       
-      $(".insertPrint").append("<h4>What are the three things you should ask yourself when reading a privacy policy?</h4>");
-      var responseThree = document.getElementById("privacy_responseThree").value;
-      $(".insertPrint").append(responseThree);
+      $(".insertPrint").append("<br><h4>What did you do when you saw an advertisement or a sponsored post?</h4>");
+      $(".checkTwo").clone().appendTo(".insertPrint");
       
-      $(".insertPrint").append("<h4>What can you do in the future to protect your privacy on social media?</h4>");
-      var responseFour = document.getElementById("privacy_responseFour").value;
+      $(".insertPrint").append("<h4>Why is it important to build a healthy social media habit?</h4>");
+      var responseFour = document.getElementById("habits_responseFour").value;
       $(".insertPrint").append(responseFour);
       
       window.print();  

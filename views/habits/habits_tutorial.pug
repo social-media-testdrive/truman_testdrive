@@ -7,7 +7,7 @@ block content
   
 
   .computer.only.tablet.only.four.wide.column 
-    .ui.sticky(style='width: 272px !important; height: 500px !important; left: 64.5px;')
+    .ui.fixed.sticky(style='width: 272px !important; height: 500px !important; left: 64.5px;')
       .ui.vertical.menu(style="width:auto;")
         a.active.item(data-value='feed')#feedsteps 
           i.icon.home
@@ -16,9 +16,7 @@ block content
           i.icon.bell
           |  Notifications
           .ui.red.right.pointing.label 1
-  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
-    
-    
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
     //-feed
 
     .ui.fluid.card.test.feedDisplay(postID="3")#step0
@@ -93,9 +91,9 @@ block content
               img.ui.avatar.image(src=cdn+'/profile_pictures/user24.jpg')
               span='Jenny Chen'
           .image
-            img.post(src=cdn+"/post_pictures/flighthabits.jpg")
+            img.post(src=cdn+"/post_pictures/drone_video.png")
           .content
-            .description="i wanna see the world >"
+            .description="Watch this video to find out more about the history of drones!!"
             //-.right.floated.meta
               i.icon.checkmark
               | Seen by 12
@@ -124,7 +122,7 @@ block content
                     i.heart.icon
                     |  1 Like
                   .text()
-                    | where to?
+                    | this is v cool
                   .actions
                     a.like Like
                     a.flag Flag
@@ -152,7 +150,7 @@ block content
          .label(style="overflow:hidden !important; width:3em !important; height:3em !important")
            img(src=cdn +'/profile_pictures/user6.jpeg' style="width:100% !important; height:100% !important; display:inline  !important; margin:0 auto !important;")
          .content
-           .summary Elli Andreas commented on Jenny Chen’s post: “where to?”.
+           .summary Elli Andreas commented on Jenny Chen’s post: “this is v cool”.
            
     .ui.raised.segment.notificationsDisplay(style="display:none;")
      .ui.feed
@@ -161,7 +159,7 @@ block content
         .label(style="overflow:hidden !important; width:3em !important; height:3em !important")
           img(src=cdn +'/profile_pictures/user27.jpg' style="width:100% !important; height:100% !important; display:inline  !important; margin:0 auto !important;")
         .content
-          .summary Mallory Smith liked Jenny Chen’s post: “i wanna see the world &gt;”.
+          .summary Mallory Smith liked Jenny Chen’s post: “Watch this video to find out more about the history of drones!!”.
     
     .ui.raised.segment.notificationsDisplay(style="display:none;")
      .ui.feed
@@ -195,8 +193,7 @@ block scripts
   script().
   
     $('.ui.sticky')
-      .sticky()
-    ;
+      .sticky();
   
     /*$(".ui.two.item.stackable.menu a.item").on('click', function(){
       console.log("MENU CLICK!");
