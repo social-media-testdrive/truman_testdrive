@@ -7,7 +7,18 @@ block content
   -var s3 = "https://testdrive-filesystem.s3.us-east-2.amazonaws.com/"
   -//var cdn = "";
   .computer.only.tablet.only.four.wide.column 
-    .ui.sticky.sideMenu(style='width: 272px !important; height: 262.531px !important; left: 64.5px;')
+    //=.ui.sticky.sideMenu(style='width: 272px !important; height: 262.531px !important; left: 64.5px;')
+    .ui.fixed.sticky.sideMenu(style='width: 272px !important; height: 500px !important;')
+      if(mod == "habits")      
+        .ui.vertical.menu(style="width:auto;")
+          a.active.item(data-value='feed')#feedsteps 
+            i.icon.home
+            |  Home
+          a.item(data-value='notifications')#notificationsteps
+            i.icon.bell
+            |  Notifications
+            .ui.red.right.pointing.label(style="display:none") !
+      
       .ui.card
         .image
           if user.profile.picture
@@ -25,15 +36,21 @@ block content
         .one.ui.bottom.attached.icon.buttons
             button.ui.editprofile.button(data-tooltip='Update Your Profile', data-position='bottom left')
               i.write.icon
-      if(mod == "habits")      
-        .ui.vertical.menu(style="width:auto;")
-          a.active.item(data-value='feed')#feedsteps 
-            i.icon.home
-            |  Home
-          a.item(data-value='notifications')#notificationsteps
-            i.icon.bell
-            |  Notifications
-            .ui.red.right.pointing.label(style="display:none") !
+      
+            
+  if(mod == "habits")
+    //-mobile only version of the menu
+    .mobile.only.sixteen.wide.column
+      .ui.top.fixed.vertical.menu(style="width:100%; padding-top:5em;")
+        a.active.item(data-value='feed')#feedsteps
+          i.icon.home
+          |  Home
+        a.item(data-value='notifications')#notificationsteps      
+          i.icon.bell
+          |  Notifications
+          .ui.red.right.pointing.label !
+      br
+      br
 
   #loading.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
     img.ui.centered.small.image(src='/heart.svg')
@@ -1237,7 +1254,7 @@ block scripts
     console.log("CURRENT MODULE: " + currentModule);
     
     //Activating the sticky functionality for the left column
-    $('.ui.sticky.sideMenu').sticky();
+    //$('.ui.sticky.sideMenu').sticky();
       
     /**
      * Code for ad dropdown functionality in targeted ads module
@@ -1444,7 +1461,7 @@ block scripts
          //making the side menu work
          
          $(".ui.vertical.menu a.item").on('click', function(){
-           $('.ui.two.item.top.attached.tabular.menu a.item').removeClass('active');
+           $('.ui.vertical.menu a.item').removeClass('active');
            $(this).addClass('active');
            if($(this).data().value === 'feed'){
              $(".habitsSettingsDisplay").hide();
