@@ -189,6 +189,13 @@ block content
                 label(for='corroboration', style="font-size:120%;", tabindex='0') I looked at why I was getting the advertisement. 
         .ui.form
           .inline.fields
+            label(for='interacted', name='interacted') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='interacted', style="font-size:120%;", tabindex='0') I liked the ad or commented on it.
+        .ui.form
+          .inline.fields
             label(for='corroboration', name='wouldViewAd') 
             .field
               .ui.checkbox
@@ -207,7 +214,7 @@ block content
             .field
               .ui.checkbox
                 input(type='checkbox')
-                label(for='nothing', style="font-size:120%;", tabindex='0') I did not do anything.
+                label(for='nothing', style="font-size:120%;", tabindex='0') I didn't notice the advertisement.
 
     .ui.raised.segment
       .ui.label(style="background-color:#2185d08a;color:#000000d1;")

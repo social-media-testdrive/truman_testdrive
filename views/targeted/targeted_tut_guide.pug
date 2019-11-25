@@ -8,7 +8,10 @@ block content
     h2.ui.header
       //- i.check.square.outline.green.icon
       .content What can you do if you want to prevent targeted advertisements?
-      
+        .sub.header 
+          br  
+          span(style="color:#000000;") While it's hard to avoid targeted ads altogether, there are some things you can do to limit the amount of data companies track and the amount of targeted ads you see.
+        
         .sub.header 
           br
           i.eye.icon 
@@ -29,7 +32,7 @@ block content
             #protip1.ui.floated.compact.segment
               .ui.fitted.large.checkbox#checkbox1
                 input.ui(type="checkbox" id="")
-            .label There is a trade-off! Some websites might not work if you turn cookies off.
+            .label But keep in mind, there is a trade-off! Some websites might not work if you turn cookies off.
 
           .item
               #point1_button.button.ui.mini.green.right.labeled.icon.button
@@ -38,19 +41,19 @@ block content
                 
       #point2.title
         i.dropdown.icon
-        |     Adjust privacy settings on the website
+        |     Adjust privacy settings in your apps
       .content.ui.list
           .item
             #protip2.ui.floated.compact.segment
               .ui.fitted.large.checkbox#checkbox2
                 input.ui(type="checkbox")
-            .label Stop the data from being collected in the first place! Change your privacy settings so that the website does not collect information. 
+            .label Change your privacy settings so that apps don't collect certain information. 
           
           .item
             #protip2.ui.floated.compact.segment
               .ui.fitted.large.checkbox#checkbox2
                 input.ui(type="checkbox")
-            .label In your privacy settings page, you can make your account private or turn off access to information. 
+            .label You can also make your account private or turn off access to certain information within the privacy settings.
             
           .item
               #point2_button.button.ui.mini.green.right.labeled.icon.button
@@ -67,7 +70,7 @@ block content
                 input.ui(type="checkbox")
             .label If it is not required, do not provide your information or link your profile to a website.
           
-    .ui.icon.info.message#infoMessage(style="display:none;")
+    //-.ui.icon.info.message#infoMessage(style="display:none;")
       i.info.circle.icon
       .content
         .header
@@ -119,8 +122,8 @@ block scripts
             ($('input').length)){
         $("#checkAllBoxesWarning").hide();
         $('.ui.big.labeled.icon.button.cybersim').addClass('green');
-        $("#infoMessage").show();
-        $("#infoMessage").transition('jiggle');
+        //$("#infoMessage").show();
+        //$("#infoMessage").transition('jiggle');
 
         $('.ui.big.labeled.icon.button.cybersim').transition('jiggle');
       }
