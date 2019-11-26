@@ -356,28 +356,28 @@ block content
       .header Why is Hannah seeing this ad?
       .content
   
-      .ui.small.modal#hideAdModal
-        i.close.icon  
-        .header Why did you choose to hide this ad?
-        .content
-            .ui.form
-               .field
-                 .ui.checkbox
-                   input(type='checkbox')
-                   label The ad was not relevant to me
-               .field
-                 .ui.checkbox
-                   input(type='checkbox')
-                   label I see this ad too often
-               .field
-                 .ui.checkbox
-                   input(type='checkbox')
-                   label The ad was inappropriate
-               br
-               .actions
-                 .ui.positive.right.labeled.icon.button
-                   | Done
-                   i.checkmark.icon
+    .ui.small.modal#hideAdModal
+      i.close.icon  
+      .header Why did you choose to hide this ad?
+      .content
+          .ui.form
+             .field
+               .ui.checkbox
+                 input(type='checkbox')
+                 label The ad was not relevant to me
+             .field
+               .ui.checkbox
+                 input(type='checkbox')
+                 label I see this ad too often
+             .field
+               .ui.checkbox
+                 input(type='checkbox')
+                 label The ad was inappropriate
+             br
+             .actions
+               .ui.positive.right.labeled.icon.button
+                 | Done
+                 i.checkmark.icon
 
 
 
@@ -433,6 +433,7 @@ block scripts
                  if(dropdownSelection == 0){
                    $(".inverted.dimmer").css("background-color","rgba(211,211,211,0.95)");
                    //hide the post
+                   $('input[type=checkbox]').prop('checked',false);
                    var post = $(this).closest(".ui.fluid.card.dim");
                    var postID = post.attr("postID");
                    console.log("***********HIDE: post " + postID);
@@ -489,20 +490,8 @@ block scripts
                $( ".cybertrans" ).addClass("green");
              }
            });
-          
-          //I'm not sure if this is a stable solution, but it seems to work. Keep this and implement later.
-          //use this to get the current step - each hint has a predefined number. Use to keep a record for if each has been clicked
-          /*hints.onhintclick(function(){
-            console.log("CLICKED A HINT!");
-            setTimeout(function(){
-              console.log(hints._currentStep);
-            }, 100);
-          });*/
-          
         });
-        
-        
-        
+  
         //error messaging
         $('#cyberTransButton').on('click', function() {
           if(literacy_counter != 5){
