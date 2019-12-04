@@ -110,7 +110,7 @@ block content
       
       //-notifications display, habits
       if (val.type == 'notification')
-        .ui.raised.segment.habitsNotificationItem(style="display:none;")
+        .ui.raised.segment.habitsNotificationItem(style="display:none;" correspondingPost=val.post_id)
           .ui.feed
            .event
              //-CSS properties: https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
@@ -252,7 +252,7 @@ block content
                     |                                     You &apos;ve reported this ad!
                     h3.ui.inverted.header
                       span The admins will review this ad further. We are sorry you had this experience.
-                      
+                  
             .ui.inverted.dimmer.notflag
               .content
                 .center
@@ -363,7 +363,7 @@ block content
         else
         
           //-this is a totally normal actor post
-          .ui.fluid.card.dim.habitsHomeDisplay(postID=val.id, ui=user.ui, transparency=user.transparency, notify=user.notify, state=val.state || 'unread', type='actor', actor_un = val.actor.username, actor_name = val.actor.profile.name, actor_pic = val.actor.profile.picture)
+          .ui.fluid.card.dim.habitsHomeDisplay(postNumber = val.post_id, postID=val.id, ui=user.ui, transparency=user.transparency, notify=user.notify, state=val.state || 'unread', type='actor', actor_un = val.actor.username, actor_name = val.actor.profile.name, actor_pic = val.actor.profile.picture)
             //- dimmer DIV for flagging
             .ui.dimmer.flag
                   .content
@@ -1198,6 +1198,36 @@ block scripts
              });
            });
          }
+         
+         
+         //notifications popup link
+         $('.notificationPopup').on('click', function(){
+
+           console.log("click");
+           console.log(postID);
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $("#newpost").offset().top
+            }, 2000);
+         });
+         
+         //notifications popup link
+         //This doesn't mix well with the lazy loading implementation
+         $('.habitsNotificationItem').on('click', function(){
+           console.log("click");
+           var scrollToPost = $(this).attr('correspondingPost');
+           //go to the home page
+           $('.habitsNotificationsDisplay').hide();
+           $('.habitsNotificationItem').hide();
+           $('.habitsSettingsDisplay').hide();
+           $('.habitsActivityDisplay').hide();
+           $('.habitsHomeDisplay').show();
+           setTimeout(function(){
+             console.log("execute to post " + scrollToPost);
+             $([document.documentElement, document.body]).animate({
+                 scrollTop: $('.ui.fluid.card.habitsHomeDisplay[postnumber="'+scrollToPost+'"]').offset().top
+             }, 2000);
+           },5000);
+         });
          
          /*
          *end code for habits UI functionality
