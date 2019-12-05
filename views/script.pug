@@ -817,7 +817,7 @@ block content
             
     //- Why am I seeing this ad modal, used in targeted ads modual. text depends on previously selected interest in trans2.
     .ui.small.modal#whyAmISeeingThisAdModal
-      i.close.icon  
+      i.close.icon
       .header Why am I seeing this ad?
       if (user.targetedAdTopic == 'Sports')
         .content(id="sports")
@@ -849,8 +849,71 @@ block content
                .ui.positive.right.labeled.icon.button
                  | Done
                  i.checkmark.icon
-    
-    .ui.fixed.bottom.sticky.notificationPopup#mobilePopup(style="padding-bottom:2em; padding-left:1em; padding-right:1em; display:none;")
+                   
+    //-Hide ad modal, used in targeted ads module. 
+    .ui.tiny.long.viewPolicyPopup.modal  
+      .ui.segment 
+        .ui.fluid.card
+         .content
+           .right.floated.meta= "Yesterday"
+           |
+           a(href='/user/m-beckett')
+             img.ui.avatar.image(src=cdn+'/profile_pictures/user17.jpg')
+             span='Mary Beckett'
+         .image
+           img.post(src=cdn+'/post_pictures/snowhabits.jpg')
+         #step4.content
+           .description="Look at this cute snowman😄"
+           //-.right.floated.meta
+             i.icon.checkmark
+             | Seen by 12
+         .three.ui.bottom.attached.icon.buttons
+           .ui.reply.button(tabindex='0')
+             i.reply.icon
+             |  Reply
+           .ui.flag.button(tabindex='0')
+             i.flag.icon
+             |  Flag
+           .ui.labeled.button(tabindex='0')
+             .ui.like.button
+               i.heart.icon
+               |  Like
+             a.ui.basic.red.left.pointing.label.count=2       
+         .content
+           .ui.comments
+             .comment
+               a.avatar
+                 img(src=cdn+'/profile_pictures/user3.jpg')
+               .content
+                 a.author Cloe Hansen
+                 .metadata
+                   span.date Yesterday
+                   i.heart.icon
+                   |  2 Likes
+                 .text()
+                   | sweet!!
+                 .actions
+                   a.like Like
+                   a.flag Flag
+             .comment
+               a.avatar
+                 img(src=cdn+'/profile_pictures/user5.jpeg')
+               .content
+                 a.author Kiki Pualani
+                 .metadata
+                   span.date Yesterday
+                   i.heart.icon
+                   |  2 Likes
+                 .text()
+                   | I like it haha
+                 .actions
+                   a.like Like
+                   a.flag Flag
+        .actions
+         .ui.positive.left.labeled.icon.button
+           | Back to Feed
+           i.chevron.left.icon
+    .ui.fixed.bottom.sticky.notificationPopup#mobilePopup(style="padding-bottom:2em; padding-left:1em; padding-right:1em; display:none;" correspondingpost=0)
       .ui.info.message#removeHiddenMobile
         i.close.icon
         .ui.feed
@@ -861,7 +924,7 @@ block content
            .content
              .summary Thomas Rogers commented on Hannah Lee’s post: “I love ribs”.        
   .computer.only.tablet.only.two.wide.column 
-    .ui.fixed.bottom.sticky.notificationPopup#desktopPopup(style="padding-bottom:2em; padding-left:1em; padding-right:1em; display:none;")
+    .ui.fixed.bottom.sticky.notificationPopup#desktopPopup(style="padding-bottom:2em; padding-left:1em; padding-right:1em; display:none;" correspondingpost=0)
      .ui.info.message#removeHidden
        i.close.icon
        .ui.feed
@@ -1164,6 +1227,7 @@ block scripts
                          }
                          var imageHref = "https://dhpd030vnpk29.cloudfront.net/profile_pictures/" + data.notificationPhoto[notificationIndexCount];
                          $('.popupNotificationImage').attr("src",imageHref);
+                         $('.notificationPopup').attr("correspondingpost",data.notifCorrespondingPost[notificationIndexCount]);
                          $('.ui.fixed.bottom.sticky.notificationPopup .summary').text(data.notificationText[notificationIndexCount]);
                          $('.ui.fixed.bottom.sticky.notificationPopup .time').hide();
                          //only show the popup and animate the bell if they aren't disabled in the settings
@@ -1198,37 +1262,31 @@ block scripts
              });
            });
          }
-         
-         
-         //notifications popup link
-         $('.notificationPopup').on('click', function(){
+          
+         //notifications popup on click, show the corresponding post
+      
+         $('.habitsNotificationItem, .notificationPopup').on('click', function(){
+           console.log("clicked item!");
+           var relevantPostNumber = $(this).attr('correspondingPost');
+           //show the relevant post in a popup modal
+           console.log("execute on post " + relevantPostNumber);
+           var relevantPost = $('.ui.fluid.card.habitsHomeDisplay[postnumber="'+relevantPostNumber+'"]').clone();
+           $('.ui.viewPolicyPopup.modal .ui.fluid.card').html(relevantPost);
+           $('.ui.viewPolicyPopup.modal .ui.fluid.card').removeAttr('postnumber').show();
+           $('.viewPolicyPopup').modal('show');
+           //lazy load the images 
+           $(".ui.viewPolicyPopup.modal .ui.fluid.card img")
+           .visibility({
+             type: 'image',
+             offset: 0,
+             onLoad: function (calculations) {
+               $('.ui.viewPolicyPopup.modal .ui.fluid.card img').visibility('refresh');
+             }
+           })
+           ;
 
-           console.log("click");
-           console.log(postID);
-            $([document.documentElement, document.body]).animate({
-                scrollTop: $("#newpost").offset().top
-            }, 2000);
          });
-         
-         //notifications popup link
-         //This doesn't mix well with the lazy loading implementation
-         /*$('.habitsNotificationItem').on('click', function(){
-           console.log("click");
-           var scrollToPost = $(this).attr('correspondingPost');
-           //go to the home page
-           $('.habitsNotificationsDisplay').hide();
-           $('.habitsNotificationItem').hide();
-           $('.habitsSettingsDisplay').hide();
-           $('.habitsActivityDisplay').hide();
-           $('.habitsHomeDisplay').show();
-           setTimeout(function(){
-             console.log("execute to post " + scrollToPost);
-             $([document.documentElement, document.body]).animate({
-                 scrollTop: $('.ui.fluid.card.habitsHomeDisplay[postnumber="'+scrollToPost+'"]').offset().top
-             }, 2000);
-           },5000);
-         });*/
-         
+  
          /*
          *end code for habits UI functionality
          */

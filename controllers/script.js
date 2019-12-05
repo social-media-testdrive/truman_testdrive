@@ -23,19 +23,22 @@ exports.getNotificationTimes = (req, res) => {
       var notifTimestampArray = [];
       var notifTextArray = [];
       var notifPhotoArray = [];
+      var notifCorrespondingPostArray = [];
 
       for(var i = 0; i < script_feed.length; i++){
         if (notifTimestampArray){
           notifTimestampArray.push(script_feed[i].time);
           notifTextArray.push(script_feed[i].body);
           notifPhotoArray.push(script_feed[i].picture);
+          notifCorrespondingPostArray.push(parseInt(script_feed[i].info_text));
         } else {
           notifTimestampArray = [script_feed[i].time];
           notifTextArray = [script_feed[i].body];
           notifPhotoArray = [script_feed[i].picture];
+          notifCorrespondingPostArray = parseInt([script_feed[i].info_text]);
         }
       }
-      res.json({notificationTimestamps:notifTimestampArray, notificationText:notifTextArray, notificationPhoto:notifPhotoArray});
+      res.json({notificationTimestamps:notifTimestampArray, notificationText:notifTextArray, notificationPhoto:notifPhotoArray, notifCorrespondingPost:notifCorrespondingPostArray});
     });
 };
 
