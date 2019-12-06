@@ -110,7 +110,7 @@ block content
       
       //-notifications display, habits
       if (val.type == 'notification')
-        .ui.raised.segment.habitsNotificationItem(style="display:none;" correspondingPost=val.post_id)
+        .ui.raised.segment.habitsNotificationItem(style="display:none;" correspondingPost=val.info_text)
           .ui.feed
            .event
              //-CSS properties: https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
@@ -1273,7 +1273,7 @@ block scripts
            var relevantPostNumber = $(this).attr('correspondingPost');
            //show the relevant post in a popup modal
            console.log("execute on post " + relevantPostNumber);
-           var relevantPost = $('.ui.fluid.card.habitsHomeDisplay[postnumber="'+relevantPostNumber+'"]').clone();
+           var relevantPost = $('.ui.fluid.card.habitsHomeDisplay[postnumber="'+relevantPostNumber+'"]').clone().show();
            $('.ui.viewPolicyPopup.modal .ui.fluid.card').html(relevantPost);
            $('.ui.viewPolicyPopup.modal .ui.fluid.card').removeAttr('postnumber').show();
            $('.viewPolicyPopup').modal('show');
