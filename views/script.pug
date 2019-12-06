@@ -1236,11 +1236,11 @@ block scripts
                            $('i.icon.bell').transition("tada");
                            //if in a mobile view, put popup in the middle
                            if($('.ui.top.fixed.vertical.menu').is(':visible')){
-                             $('#removeHiddenMobile').show();
+                             $('#removeHiddenMobile').removeClass('hidden').show();
                              $('#mobilePopup').transition('pulse');
                            }else {
                              //else put popup on the side
-                             $('#removeHidden').show();
+                             $('#removeHidden').removeClass('hidden').show();
                              $('#desktopPopup').transition('pulse');
                            }
                          }
@@ -1265,7 +1265,10 @@ block scripts
           
          //notifications popup on click, show the corresponding post
       
-         $('.habitsNotificationItem, .notificationPopup').on('click', function(){
+         $('.habitsNotificationItem, .notificationPopup').on('click', function(event){
+           if ($(event.target).hasClass('close')){
+             return false;
+           }
            console.log("clicked item!");
            var relevantPostNumber = $(this).attr('correspondingPost');
            //show the relevant post in a popup modal
