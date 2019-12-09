@@ -7,10 +7,10 @@ block content
 
     form.ui.form(action='/account/profile/'+mod, method='POST', enctype='multipart/form-data')
       input(type='hidden', name='_csrf', value=_csrf)
-      .field
+      .field(data-tooltip="Remember, this information is stored on the site until you finish the lesson. Think about using a nickname or an alias instead of your real name." data-position="bottom left")
         label(for='name') Name
         input.form-control(type='text', name='name', id='name', value=user.profile.name)
-      .field
+      .field(data-tooltip="Think about using another location instead of your real location." data-position="bottom left")
         label(for='location') Location (City, State)
         input.form-control(type='text', name='location', id='location', value=user.profile.location)
       .field
