@@ -84,10 +84,27 @@ block content
         form.ui.form
           .field
             br
-            .ui.toggle.checkbox
-              input(type='checkbox' name='popupAlerts' checked='checked')
-              label Popup Alerts
-          span.settingLabel Disabling this will stop popup alerts. 
+            .ui.toggle.checkbox(name='popupAlertsCheckbox')
+              input(type='checkbox' name='popupAlerts')
+              label Pause All
+          span.settingLabel This will pause all popup notifications
+          br
+          br
+          
+          .field(style="display:none;")#pauseTimeSelectField
+            label(style="font-size:120%;") How long would you like to pause?
+              br
+              br
+              .ui.selection.dropdown(name='pauseTimeSelect')
+                input(type='hidden')
+                i.dropdown.icon
+                .default.text 
+                .menu
+                  .item(data-value='15 minutes' style="font-size:100%") 15 minutes
+                  .item(data-value='1 hour' style="font-size:100%") 1 hour
+                  .item(data-value='2 hours' style="font-size:100%") 2 hours
+                  .item(data-value='4 hours' style="font-size:100%") 4 hours
+                  .item(data-value='8 hours' style="font-size:100%") 8 hours
           br
           br    
           
@@ -96,7 +113,7 @@ block content
         h2.ui.header My Activity
         .ui.divider
 
-        h2.ui.header Total View Time:
+        h2.ui.header Time on TestDrive:
         .ui.statistic
           .value#habitsActivityTotalTime 0
           .label
@@ -911,7 +928,7 @@ block content
                    a.flag Flag
         .actions
          .ui.positive.left.labeled.icon.button
-           | Back to Feed
+           | Back to Timeline
            i.chevron.left.icon
     .ui.fixed.bottom.sticky.notificationPopup#mobilePopup(style="padding-bottom:2em; padding-left:1em; padding-right:1em; display:none;" correspondingpost=0)
       .ui.info.message#removeHiddenMobile
@@ -944,6 +961,9 @@ block scripts
     
     //Activating the sticky functionality for the left column
     //$('.ui.sticky.sideMenu').sticky();
+    
+    //activating a normal dropdown (the one used in the habits module settings)
+    $('.ui.selection.dropdown').dropdown('set selected', '1 hour');
       
     /**
      * Code for ad dropdown functionality in targeted ads module
@@ -1070,7 +1090,17 @@ block scripts
 
     //##########################
     //long block of code dedicated to only the habits module ahead, should have separated into another script file or generally found a cleaner way to do this module 
-         
+      
+      //hiding the pause time select unless pause is turned on (in notification settings)   
+       $(".ui.toggle.checkbox[name='popupAlertsCheckbox']").change(function() {
+         console.log("CHANGE");
+         if($("input[name='popupAlerts']").is(":checked")){
+           $('#pauseTimeSelectField').show();
+         } else {
+           $('#pauseTimeSelectField').hide();
+         }
+       });
+      
        /**
         * Implementing timer for habits module, and activity page, only want this to occur in habits module
         */
@@ -1231,7 +1261,7 @@ block scripts
                          $('.ui.fixed.bottom.sticky.notificationPopup .summary').text(data.notificationText[notificationIndexCount]);
                          $('.ui.fixed.bottom.sticky.notificationPopup .time').hide();
                          //only show the popup and animate the bell if they aren't disabled in the settings
-                         if($("input[name='popupAlerts']").is(':checked')){
+                         if(!$("input[name='popupAlerts']").is(':checked')){
                            $('.ui.red.right.pointing.label').transition('pulse');
                            $('i.icon.bell').transition("tada");
                            //if in a mobile view, put popup in the middle
