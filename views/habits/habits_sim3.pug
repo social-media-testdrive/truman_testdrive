@@ -43,18 +43,40 @@ block content
       form.ui.form
         .field(data-hint="Here, you can change the number of notifications you get for different types of content. Try pausing notifications for a while by turning this setting off." data-hintPosition='middle-middle')
           br
-          .ui.toggle.checkbox
-            input(type='checkbox' name='public' checked='checked')
-            label Popup Alerts
-        span.settingLabel Disabling this will stop popup alerts. 
+          .ui.toggle.checkbox(name='popupAlertsCheckbox')
+            input(type='checkbox' name='popupAlerts')
+            label Pause All
+        span.settingLabel This will pause all notifications
         br
-        br           
+        br
+        
+        .field#pauseTimeSelectField
+          label(style="font-size:120%;") How long would you like to pause?
+            br
+            br
+            .ui.selection.dropdown(name='pauseTimeSelect')
+              input(type='hidden')
+              i.dropdown.icon
+              .default.text 
+              .menu
+                .item(data-value='15 minutes' style="font-size:100%") 15 minutes
+                .item(data-value='1 hour' style="font-size:100%") 1 hour
+                .item(data-value='2 hours' style="font-size:100%") 2 hours
+                .item(data-value='4 hours' style="font-size:100%") 4 hours
+                .item(data-value='8 hours' style="font-size:100%") 8 hours
+        br
+        br    
+        
+              
           
     
 
 
 block scripts
   script().
+    
+    //activating a normal dropdown (the one used in the habits module settings)
+    $('.ui.selection.dropdown').dropdown('set selected', '1 hour');
     
     var literacy_counter = 0;
     
