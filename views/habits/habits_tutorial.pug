@@ -3,8 +3,6 @@ extends ../ui_layout
   
 block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
-  
-  
 
   .computer.only.tablet.only.four.wide.column 
     .ui.fixed.sticky.sideMenu(style='width: 272px !important; height: 500px !important;')
@@ -147,7 +145,7 @@ block content
               input.newcomment(type='text' placeholder='Write a Comment')
               i.big.send.link.icon
     //-#######################
-
+    br
     //-Notifications page
     button.ui.basic.button.notificationsDisplay(style="display:none;")
       i.cog.icon
@@ -202,7 +200,8 @@ block content
         .content
           .summary Mary Beckett posted: “Look at this cute snowman😄”.
     //-Settings page - this will probaly be a separate page for the free play section. keeping everything on one page for simplicity with tutorial sequence
-
+    br
+    br
 block scripts
   script().
   
