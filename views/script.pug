@@ -294,11 +294,11 @@ block content
               a.left.floated(href='/user/'+val.actor.username)
                 img.ui.avatar.image(src='/picture.svg', data-src=cdn+'/profile_pictures/'+val.actor.profile.picture)
                 span#companyName=val.actor.profile.name
-  
+
             .image
               //-note: not lazy-loaded 
               img(src=cdn+"/post_pictures/"+val.picture, style="max-width:100%;")
-  
+
             #step4.content
               .description!=val.body
 
@@ -501,22 +501,22 @@ block content
                     else
                       img.ui.avatar.image(src=user.gravatar(60), name=user.profile.name || user.username || user.id)            
                   input.newcomment(type='text', placeholder='Write a Comment')
-                  i.big.send.link.icon       
-        
+                  i.big.send.link.icon  
+                       
+  
     -var post_quiz = "/results/"+mod;
     a.ui.fluid.card.habitsHomeDisplay(href=post_quiz)
       .content
-        .ui.big.green.labeled.icon.button.script
+        .ui.big.green.labeled.icon.button.script.habitsHomeDisplay
           i.rocket.icon
           |   Let's Continue!
-        //-.description
-        //-|  Click here when you are done!
           
     br
     br
+
     //- Chat Box  
     #chatbox1.container.clearfix.hidden
-      .chat(style="right:24px;")
+      .chat(style="right:24px; margin-bottom:3em;")
         .chat-header.clearfix
           a.chat-close(href='#')
             i.large.close.icon
@@ -561,7 +561,7 @@ block content
 
     //- Chat Box  
     #chatbox2.container.clearfix.hidden
-      .chat(style="right:345px;")
+      .chat(style="right:345px; margin-bottom:3em;")
         .chat-header.clearfix
           a.chat-close(href='#')
             i.large.close.icon
@@ -610,30 +610,30 @@ block content
               | Send
         //- end chat-message
         //- end chat
-    //- end container
+      //- end container``
 
 
-    script()#message-template(type='text/x-handlebars-template').
-      <li class="clearfix">
-      <div class="message-data align-right">
-      <span class="message-data-time" >{{time}}</span> &nbsp; &nbsp;
-      <span class="message-data-name" >Me</span> <i class="fa fa-circle me"></i>
-      </div>
-      <div class="message other-message float-right">
-      {{messageOutput}}
-      </div>
-      </li>
-    script()#message-response-template(type='text/x-handlebars-template').
-      <li>
-      <div class="message-data">
-      <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
-      <span class="message-data-time">{{time}}</span>
-      </div>
-      <div class="message my-message">
-      {{response}}
-      </div>
-      </li>
-      
+      script()#message-template(type='text/x-handlebars-template').
+        <li class="clearfix">
+        <div class="message-data align-right">
+        <span class="message-data-time" >{{time}}</span> &nbsp; &nbsp;
+        <span class="message-data-name" >Me</span> <i class="fa fa-circle me"></i>
+        </div>
+        <div class="message other-message float-right">
+        {{messageOutput}}
+        </div>
+        </li>
+      script()#message-response-template(type='text/x-handlebars-template').
+        <li>
+        <div class="message-data">
+        <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
+        <span class="message-data-time">{{time}}</span>
+        </div>
+        <div class="message my-message">
+        {{response}}
+        </div>
+        </li>
+    
     //- New Post Modal  
     .ui.small.post.modal  
       i.close.icon  
@@ -940,17 +940,18 @@ block content
              img.popupNotificationImage(src=cdn + '/profile_pictures/user39.jpg' style="width:100% !important; height:100% !important; display:inline  !important; margin:0 auto !important;")
            .content
              .summary Thomas Rogers commented on Hannah Lee’s post: “I love ribs”.        
-  .computer.only.tablet.only.two.wide.column 
-    .ui.fixed.bottom.sticky.notificationPopup#desktopPopup(style="padding-bottom:4em; padding-left:1em; padding-right:1em; display:none;" correspondingpost=0)
-     .ui.info.message#removeHidden
-       i.close.icon
-       .ui.feed
-        .event
-          //-CSS properties: https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
-          .label(style="overflow:hidden !important; width:3em !important; height:3em !important")
-            img.popupNotificationImage(src=cdn + '/profile_pictures/user39.jpg' style="width:100% !important; height:100% !important; display:inline  !important; margin:0 auto !important;")
-          .content
-            .summary Thomas Rogers commented on Hannah Lee’s post: “I love ribs”.               
+  if(mod == "habits")
+    .computer.only.tablet.only.two.wide.column 
+      .ui.fixed.bottom.sticky.notificationPopup#desktopPopup(style="padding-bottom:4em; padding-left:1em; padding-right:1em; display:none;" correspondingpost=0)
+       .ui.info.message#removeHidden
+         i.close.icon
+         .ui.feed
+          .event
+            //-CSS properties: https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
+            .label(style="overflow:hidden !important; width:3em !important; height:3em !important")
+              img.popupNotificationImage(src=cdn + '/profile_pictures/user39.jpg' style="width:100% !important; height:100% !important; display:inline  !important; margin:0 auto !important;")
+            .content
+              .summary Thomas Rogers commented on Hannah Lee’s post: “I love ribs”.               
  
 block scripts
   script().
@@ -1054,39 +1055,38 @@ block scripts
        * End code to open modals
        */
             
-      /**
-       * chat box code
-       */
-       
-        $(window).on("load", function() {openChat()}); 
-       
-        function openChat(){
-          let pathArray = window.location.pathname.split('/');
-          if(pathArray[2] == "safe-posting"){
-          setTimeout(function(){
-              $($('#chatbox1 .chat-history')[0]).slideToggle(300, 'swing');
-              $($('#chatbox1 .chat-message')[0]).slideToggle(300, 'swing');
-              $('#chatbox1').slideToggle(300, 'swing'); 
-              $($('#chatbox1 .chat-history')[0]).slideToggle(300, 'swing');
-              $($('#chatbox1 .chat-message')[0]).slideToggle(300, 'swing');
-              
-            }, 10000);    
-                  
-          setTimeout(function(){
+    /**
+     * chat box code
+     */
+     
+      $(window).on("load", function() {openChat()}); 
+     
+      function openChat(){
+        if(currentModule == "safe-posting"){
+        setTimeout(function(){
+            $($('#chatbox1 .chat-history')[0]).slideToggle(300, 'swing');
+            $($('#chatbox1 .chat-message')[0]).slideToggle(300, 'swing');
+            $('#chatbox1').slideToggle(300, 'swing'); 
+            $($('#chatbox1 .chat-history')[0]).slideToggle(300, 'swing');
+            $($('#chatbox1 .chat-message')[0]).slideToggle(300, 'swing');
+            
+          }, 10000);    
+                
+        setTimeout(function(){
 
-              $($('#chatbox2 .chat-history')[0]).slideToggle(300, 'swing');
-              $($('#chatbox2 .chat-message')[0]).slideToggle(300, 'swing');
-              $('#chatbox2').slideToggle(300, 'swing'); 
-              $($('#chatbox2 .chat-history')[0]).slideToggle(300, 'swing');
-              $($('#chatbox2 .chat-message')[0]).slideToggle(300, 'swing');
-              
-            }, 20000);    
-          }
+            $($('#chatbox2 .chat-history')[0]).slideToggle(300, 'swing');
+            $($('#chatbox2 .chat-message')[0]).slideToggle(300, 'swing');
+            $('#chatbox2').slideToggle(300, 'swing'); 
+            $($('#chatbox2 .chat-history')[0]).slideToggle(300, 'swing');
+            $($('#chatbox2 .chat-message')[0]).slideToggle(300, 'swing');
+            
+          }, 20000);    
         }
-        
-      /**
-       * End chat box code
-       */
+      }
+      
+    /**
+     * End chat box code
+     */
 
     //##########################
     //long block of code dedicated to only the habits module ahead, should have separated into another script file or generally found a cleaner way to do this module 
