@@ -867,69 +867,16 @@ block content
                  | Done
                  i.checkmark.icon
                    
-    //-Hide ad modal, used in targeted ads module. 
+    //-Show a post as a popup, used in habits module
     .ui.tiny.long.viewPolicyPopup.modal(style="top:5em;")  
       .ui.segment 
         .ui.fluid.card
-         .content
-           .right.floated.meta= "Yesterday"
-           |
-           a(href='/user/m-beckett')
-             img.ui.avatar.image(src=cdn+'/profile_pictures/user17.jpg')
-             span='Mary Beckett'
-         .image
-           img.post(src=cdn+'/post_pictures/snowhabits.jpg')
-         #step4.content
-           .description="Look at this cute snowman😄"
-           //-.right.floated.meta
-             i.icon.checkmark
-             | Seen by 12
-         .three.ui.bottom.attached.icon.buttons
-           .ui.reply.button(tabindex='0')
-             i.reply.icon
-             |  Reply
-           .ui.flag.button(tabindex='0')
-             i.flag.icon
-             |  Flag
-           .ui.labeled.button(tabindex='0')
-             .ui.like.button
-               i.heart.icon
-               |  Like
-             a.ui.basic.red.left.pointing.label.count=2       
-         .content
-           .ui.comments
-             .comment
-               a.avatar
-                 img(src=cdn+'/profile_pictures/user3.jpg')
-               .content
-                 a.author Cloe Hansen
-                 .metadata
-                   span.date Yesterday
-                   i.heart.icon
-                   |  2 Likes
-                 .text()
-                   | sweet!!
-                 .actions
-                   a.like Like
-                   a.flag Flag
-             .comment
-               a.avatar
-                 img(src=cdn+'/profile_pictures/user5.jpeg')
-               .content
-                 a.author Kiki Pualani
-                 .metadata
-                   span.date Yesterday
-                   i.heart.icon
-                   |  2 Likes
-                 .text()
-                   | I like it haha
-                 .actions
-                   a.like Like
-                   a.flag Flag
         .actions
          .ui.positive.left.labeled.icon.button
            | Back to Timeline
            i.chevron.left.icon
+   
+    //-Mobile version of the notification popup
     .ui.fixed.bottom.sticky.notificationPopup#mobilePopup(style="padding-bottom:4em; padding-left:1em; padding-right:1em; display:none;" correspondingpost=0)
       .ui.info.message#removeHiddenMobile
         i.close.icon
