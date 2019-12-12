@@ -13,15 +13,15 @@ block content
       h5.ui.header
         i.arrow.circle.right.blue.icon
         .content
-          | Using social media can be fun and interesting. In fact, social media sites are created to be that way. They grab your attention and make you come back again and again.
+          | Using social media can be fun and interesting. In fact, social media sites are created to be that way. The features within the apps are designed by people who want to grab your attention!
       h5.ui.header
         i.arrow.circle.right.blue.icon
         .content
-          | It’s important to think about how and why you use social media. Do you have a specific reason for going on it, or are you doing it without thinking?
+          | Social media companies want you to spend more and more time on social media, but in a way that doesn’t really benefit you. Spending too much time on social media can take away time from other meaningful things in your life.
       h5.ui.header
         i.arrow.circle.right.blue.icon
         .content
-          | Think about who is in control. You, or your phone?
+          | Today, you're going to explore how and why they do that, and how it affects you.
 
       br
       #introduction_next.button.ui.mini.green.right.labeled.icon.button
@@ -44,7 +44,7 @@ block content
                 //- i.dollar.sign.icon 
                 span Habit
             span.hidden(id="audience_info", style="font-weight:600") Something we do automatically without thinking.
-              ul(style="font-weight:400") Bad social media <i>habits</i> can include things like checking it too often or spending more time than you would like on it.
+              ul(style="font-weight:400") Social media <i>habits</i> can include things like checking it regularly or scrolling through your social media feed as soon as you wake up.
 
         .ui.column
           #private_information.ui.raised.segment
@@ -57,16 +57,9 @@ block content
           #risky.ui.raised.segment
             a.ui.blue.ribbon.label#riskyLabel
                 //- i.magic.icon 
-                span Validation
-            span.hidden(id="risky_info",style="font-weight:600") The feeling of being liked, valued, and accepted by other people.  
-    
-        .ui.column
-          #feedback.ui.raised.segment
-            a.ui.blue.ribbon.label#feedbackLabel
-                //- i.magic.icon 
-                span Social media feedback loop
-            span.hidden(id="feedback_info",style="font-weight:600")  A response to something you do or post on social media that causes you to want to spend more time and attention on it.  
-
+                span Feedback loop
+            span.hidden(id="risky_info",style="font-weight:600") When you get a response to something you do or post online, causing your brain to experience a temporary moment of pleasure.
+            
     .ui.warning.message#clickNextWarning(style="display:none;")
       .header
        | Click "Next"
@@ -92,16 +85,13 @@ block scripts
       if($('#risky_info').is(":hidden")){
         $('#riskyLabel').transition('bounce');
       }
-      if($('#feedback_info').is(":hidden")){
-        $('#feedbackLabel').transition('bounce');
-      }
     };
   
     $('#introduction_next').on('click', function () {   
       $('#clickNextWarning').hide();   
       $('#question').show(); 
       $('#question').transition('jiggle');     
-      if(!($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#risky_info').is(":hidden") || $('#feedback_info').is(":hidden"))){
+      if(!($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#risky_info').is(":hidden"))){
         $('.ui.labeled.icon.button').addClass('green');
       } 
     });
@@ -132,23 +122,14 @@ block scripts
           $('.ui.labeled.icon.button').addClass('green');
         }
     });
-
-    $('#feedback>a').on('click', function () {      
-       $('#feedback_info').show(); 
-       $('#feedback').transition('tada');     
-       if(!($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#risky_info').is(":hidden") || $('#feedback_info').is(":hidden"))){
-         $('#clickLabelsWarning').hide();
-         $('.ui.labeled.icon.button').addClass('green');
-       }
-    });
-
+    
     function startIntro(){
         if($('#question').is(":hidden")){
           //User has not clicked next
           $('#clickNextWarning').show();
           $('#introduction_next').transition('bounce');
         }else{
-          var clickedAllLabels = ($('#audience_info').is(":visible") && $('#private_information_info').is(":visible") &&  $('#risky_info').is(":visible") &&  $('#feedback_info').is(":visible"));
+          var clickedAllLabels = ($('#audience_info').is(":visible") && $('#private_information_info').is(":visible") &&  $('#risky_info').is(":visible"));
           if(clickedAllLabels == true){ 
             //everything is good to proceed
             $('#clickLabelsWarning').hide();
