@@ -45,13 +45,35 @@ block content
         .value#habitsActivityTotalTime 6.5
         .label
           | minutes
-       
+          
+      h2.ui.header Manage My Time:
+      br
+      .field#reminderTimeSelectField
+        label(style="font-size:100%; font-weight:bold;") Set Daily Reminder
+          br
+          br
+          .ui.selection.dropdown(name='reminderTimeSelect')
+            input(type='hidden')
+            i.dropdown.icon
+            .default.text 
+            .menu
+              .item(data-value='remind 15 minutes' style="font-size:100%") 15 minutes
+              .item(data-value='remind 1 hour' style="font-size:100%") 1 hour
+              .item(data-value='remind 2 hours' style="font-size:100%") 2 hours
+              .item(data-value='remind 4 hours' style="font-size:100%") 4 hours
+              .item(data-value='remind 8 hours' style="font-size:100%") 8 hours
+      br
+      span We'll send you a reminder once you've reached the time you set for yourself.
+   
           
     
 
 
 block scripts
   script().
+  
+    //activating a normal dropdown (the one used in the habits module activity page)
+    $('.ui.selection.dropdown').dropdown();
     
     var literacy_counter = 0;
     

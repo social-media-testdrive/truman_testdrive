@@ -86,13 +86,13 @@ block content
             br
             .ui.toggle.checkbox(name='popupAlertsCheckbox')
               input(type='checkbox' name='popupAlerts')
-              label Pause All
-          span.settingLabel This will pause all notifications
+              label(style="font-weight:bold;") Pause All
+          span.settingLabel This will pause all notifications.
           br
           br
-          
+          br
           .field(style="display:none;")#pauseTimeSelectField
-            label(style="font-size:120%;") How long would you like to pause?
+            label(style="font-size:100%;") How long would you like to pause notifications for?
               br
               br
               .ui.selection.dropdown(name='pauseTimeSelect')
@@ -118,7 +118,26 @@ block content
           .value#habitsActivityTotalTime 0
           .label
             | minutes
-    
+            
+        h2.ui.header Manage My Time:
+        br
+        .field#reminderTimeSelectField
+          label(style="font-size:100%; font-weight:bold;") Set Daily Reminder
+            br
+            br
+            .ui.selection.dropdown(name='reminderTimeSelect')
+              input(type='hidden')
+              i.dropdown.icon
+              .default.text 
+              .menu
+                .item(data-value='remind 15 minutes' style="font-size:100%") 15 minutes
+                .item(data-value='remind 1 hour' style="font-size:100%") 1 hour
+                .item(data-value='remind 2 hours' style="font-size:100%") 2 hours
+                .item(data-value='remind 4 hours' style="font-size:100%") 4 hours
+                .item(data-value='remind 8 hours' style="font-size:100%") 8 hours
+        br
+        span We'll send you a reminder once you've reached the time you set for yourself.
+
   
     each val in script
       //- create a card for each post in val (if by user make the card a little different)
@@ -911,7 +930,8 @@ block scripts
     //$('.ui.sticky.sideMenu').sticky();
     
     //activating a normal dropdown (the one used in the habits module settings)
-    $('.ui.selection.dropdown').dropdown('set selected', '1 hour');
+    $('.ui.selection.dropdown[name="pauseTimeSelect"]').dropdown('set selected', '1 hour');
+    $('.ui.selection.dropdown[name="reminderTimeSelect"]').dropdown();
       
     /**
      * Code for ad dropdown functionality in targeted ads module
