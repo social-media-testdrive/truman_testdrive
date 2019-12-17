@@ -1,0 +1,298 @@
+extends ../ui_layout
+
+block content
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  .ui.container(style="margin-bottom:4em;")
+    .ui.stackable.column.grid
+      .ui.column
+        .insertPrint
+        .ui.raised.segment
+          h3.ui.header
+            i.question.blue.icon
+            .content
+              | Reflect
+          .ui.label(style="background-color:#2185d08a;color:#000000d1;")
+            h4(style="float:left")
+              i.exclamation.triangle.icon(style="color: #f9ff00 !important;")
+
+              | These were the phishing scam posts in the timeline. How many did you notice?
+          br
+          br
+          .ui.stackable.three.cards
+            
+            .ui.fluid.card.dim()#card1
+              .content
+                .right.floated.time 30 minutes ago
+                a(href='/user/k.r.h345')
+                  img.ui.avatar.image(src=cdn+'/profile_pictures/user15.jpg')
+                  span Keith Hernandez
+              .image
+                img.post(src=cdn+'/post_pictures/snowhabits.jpg')
+              .content
+                .description
+                  | Does this cat remind anyone else of Mrs. Lee?? She's always glaring at us lol. Why does she have to suck SO MUCH
+        
+          
+            .ui.fluid.card.dim()#card2
+              .content
+                .right.floated.time 48 minutes ago
+                a(href='/user/ryguy76')
+                  img.ui.avatar.image(src=cdn+'/profile_pictures/user74.jpg')
+                  span Ryan Freyer
+              .image
+                img.post(src=cdn+'/post_pictures/facepalm.jpg ')
+              .content
+                .description Lol Danny didn't want me telling anyobody but he tripped over a rock and twisted his ankle. He is literally a meme. 
+
+
+            .ui.fluid.card.dim()#card3
+              .content
+                .right.floated.time 1 hour ago
+                a(href='/user/ella_vaderrr')
+                  img.ui.avatar.image(src=cdn+'/profile_pictures/user25.jpg')
+                  span Ella Sroni
+              .image
+                img.post(src=cdn+'/post_pictures/backtoschool.jpg')
+              .content
+                .description First day of grade 7! come over to my house at 22 Eastwood dr if you want to hang
+       
+          .ui.raised.segment
+            .ui.label(style="background-color:#2185d08a;color:#000000d1;")
+              h4(style="float:left")
+                | How did you respond to these posts that were phishing scams?
+            .ui.stackable.two.cards.checkOne
+      
+              .ui.fluid.card.dim()#card1
+                .content
+                  .right.floated.time 30 minutes ago
+                  a(href='/user/k.r.h345')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user15.jpg')
+                    span Keith Hernandez
+                .image
+                  img.post(src=cdn+'/post_pictures/snowhabits.jpg')
+                .content
+                  .description
+                    | Does this cat remind anyone else of Mrs. Lee?? She's always glaring at us lol. Why does she have to suck SO MUCH
+          
+      
+              .ui.fluid.card.dim()
+                .content
+                  .ui.form
+                    .inline.fields
+                      label(for='overshare', name='overshare') 
+                      .field
+                        .ui.checkbox
+                          input(type='checkbox')
+                          label(for='overshare', style="font-size:120%;", tabindex='0') I flagged the post.
+                  hr
+                  .ui.form
+                    .inline.fields
+                      label(for='regret', name='regret') 
+                      .field
+                        .ui.checkbox
+                          input(type='checkbox', name='regret')
+                          label(for='regret', style="font-size:120%", tabindex='0') I wrote a comment warning other people about the scam.
+                  hr
+                  .ui.form
+                    .inline.fields
+                      label(for='inconsiderate') 
+                      .field
+                        .ui.checkbox
+                          input(type='checkbox', name='inconsiderate')
+                          label(for='inconsiderate', style="font-size:120%", tabindex='0') I clicked on the link.
+                  hr
+                  .ui.form
+                    .inline.fields
+                      label(for='responsible') 
+                      .field
+                        .ui.checkbox
+                          input(type='checkbox', name='responsible')
+                          label(for='responsible', style="font-size:120%", tabindex='0') I ignored the post.
+                  hr
+                  .ui.form
+                    .inline.fields
+                      label(for='somethingelse') 
+                      .field
+                        .ui.checkbox
+                          input(type='checkbox', name='somethingelse')
+                          label(for='somethingelse', style="font-size:120%", tabindex='0') I did something else.
+                            
+            .ui.stackable.two.cards.checkTwo
+            
+              .ui.fluid.card.dim()#card2
+                .content
+                  .right.floated.time 48 minutes ago
+                  a(href='/user/ryguy76')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user74.jpg')
+                    span Ryan Freyer
+                .image
+                  img.post(src=cdn+'/post_pictures/facepalm.jpg ')
+                .content
+                  .description Lol Danny didn't want me telling anyobody but he tripped over a rock and twisted his ankle. He is literally a meme. 
+            
+              .ui.fluid.card.dim.printvis()
+                .content
+                  .ui.form
+                    .inline.fields
+                      label(for='overshare2', name='overshare2') 
+                      .field
+                        .ui.checkbox
+                          input(type='checkbox')
+                          label(for='overshare2', style="font-size:120%;", tabindex='0') I flagged the post.
+                  hr
+                  .ui.form
+                    .inline.fields
+                      label(for='regret2') 
+                      .field
+                        .ui.checkbox
+                          input(type='checkbox', name='regret2')
+                          label(for='regret2', style="font-size:120%", tabindex='0') I wrote a comment warning other people about the scam.
+                  hr
+                  .ui.form
+                    .inline.fields
+                      label(for='inconsiderate2') 
+                      .field
+                        .ui.checkbox
+                          input(type='checkbox', name='inconsiderate2')
+                          label(for='inconsiderate2', style="font-size:120%", tabindex='0') I clicked on the link.
+                  hr
+                  .ui.form
+                    .inline.fields
+                      label(for='responsible2') 
+                      .field
+                        .ui.checkbox
+                          input(type='checkbox', name='responsible2')
+                          label(for='responsible2', style="font-size:120%", tabindex='0') I ignored the post.
+                  hr
+                  .ui.form
+                    .inline.fields
+                      label(for='somethingelse') 
+                      .field
+                        .ui.checkbox
+                          input(type='checkbox', name='somethingelse')
+                          label(for='somethingelse', style="font-size:120%", tabindex='0') I did something else.
+                          
+            .ui.stackable.two.cards.checkThree
+            
+              .ui.fluid.card.dim()#card3
+                .content
+                  .right.floated.time 1 hour ago
+                  a(href='/user/ella_vaderrr')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user25.jpg')
+                    span Ella Sroni
+                .image
+                  img.post(src=cdn+'/post_pictures/backtoschool.jpg')
+                .content
+                  .description First day of grade 7! come over to my house at 22 Eastwood dr if you want to hang
+            
+              .ui.fluid.card.dim()
+                .content
+                  .ui.form
+                    .inline.fields
+                      label(for='overshare3') 
+                      .field
+                        .ui.checkbox
+                          input(type='checkbox')
+                          label(for='overshare3', style="font-size:120%;", tabindex='0') I flagged the post.
+                  hr
+                  .ui.form
+                    .inline.fields
+                      label(for='regret3') 
+                      .field
+                        .ui.checkbox
+                          input(type='checkbox', name='regret3')
+                          label(for='regret3', style="font-size:120%", tabindex='0') I wrote a comment warning other people about the scam.
+                  hr
+                  .ui.form
+                    .inline.fields
+                      label(for='inconsiderate3') 
+                      .field
+                        .ui.checkbox
+                          input(type='checkbox', name='inconsiderate3')
+                          label(for='inconsiderate3', style="font-size:120%", tabindex='0') I clicked on the link.
+                  hr
+                  .ui.form
+                    .inline.fields
+                      label(for='responsible3') 
+                      .field
+                        .ui.checkbox
+                          input(type='checkbox', name='responsible3')
+                          label(for='responsible3', style="font-size:120%", tabindex='0') I ignored the post.
+                  hr
+                  .ui.form
+                    .inline.fields
+                      label(for='somethingelse') 
+                      .field
+                        .ui.checkbox
+                          input(type='checkbox', name='somethingelse')
+                          label(for='somethingelse', style="font-size:120%", tabindex='0') I did something else.
+                                  
+    .ui.raised.segment.responseOne
+      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
+        h4(style="float:left")
+          | What are some clues you can use to identify phishing scams? 
+      .ui.form
+        .inline.fields
+          label(style="font-size:120%;")
+          textarea.glowing-border(rows='2' id="digfoot_responseOne")
+
+    .ui.raised.segment.responseTwo
+      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
+        h4(style="float:left")
+          | Why is it important to protect yourself against phishing scams?
+      .ui.form
+        .inline.fields
+          label(style="font-size:120%;")
+          textarea.glowing-border(rows='2' id="digfoot_responseTwo")
+
+    br
+    .ui.big.green.labeled.icon.button(onclick="onPrint()")
+          i.right.arrow.icon
+          |   Print your responses
+    br
+    br
+    .ui.big.green.labeled.icon.button.cyberbullying_end
+          i.rocket.icon
+          |   Finish Lesson
+
+      
+block scripts
+  script().
+    
+    function onPrint(){
+    
+      $(".insertPrint").empty();
+      $(".insertPrint").css('display','block'); 
+       
+      $(".checkOne").clone().appendTo(".insertPrint");
+      $(".insertPrint").append('<div class="breakHere"</div>');
+      $(".checkTwo").clone().appendTo(".insertPrint");
+      $(".insertPrint").append('<div class="breakHere"</div>');
+      $(".checkThree").clone().appendTo(".insertPrint");
+      $(".insertPrint").append('<div class="breakHere"</div><br>');
+      
+      $(".insertPrint").append("<h4>What are some clues you can use to identify phishing scams?</h4>");
+      var responseOne = document.getElementById("digfoot_responseOne").value;
+      $(".insertPrint").append(responseOne);
+      
+      $(".insertPrint").append("<h4>Why is it important to protect yourself against phishing scams?</h4>");
+      var responseTwo = document.getElementById("digfoot_responseTwo").value;
+      $(".insertPrint").append(responseTwo);
+      
+      window.print();  
+      
+      $(".insertPrint").css('display','none');     
+    }
+    
+    setTimeout(function(){
+      $('.ui.label').transition('bounce');        
+    }, 1000);
+
+
+    setTimeout(function(){
+      $('#card1,#card2,#card3').transition({
+      animation : 'jiggle',
+      duration  : 800,
+      interval  : 200
+      });    
+    }, 2000);

@@ -1,0 +1,60 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container(style="padding-bottom:4em;")
+    br
+    .column
+      .ui.raised.segment
+        .ui.blue.ribbon.label
+          h3
+            i.history.icon
+            | &nbsp Let's review!
+        br
+          
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            |  Phishing scams on social media happen when a scammer poses as an institution or your friend and posts a message asking you to provide private information.
+          
+            
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | Scammers can use shortened URLs to trick you into clicking on risky websites. Phishing scams will also have spelling or grammar errors, and deals that sound too good to be true.
+          
+            
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | If you see someone posting a phishing scam, you can:
+            
+        h5.ui.header
+          i.caret.right.blue.icon(style="text-indent:3em;")
+          .content
+            |   Ignore the link and don’t click on it
+            
+        h5.ui.header
+          i.caret.right.blue.icon(style="text-indent:3em;")
+          .content
+            |   “Flag” the post to report it to the website
+        
+        h5.ui.header
+          i.caret.right.blue.icon(style="text-indent:3em;")
+          .content
+            |   Comment on post to warn other people
+        br
+        br
+    
+    br
+    br
+    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+        .ui.big.green.labeled.icon.button
+            i.rocket.icon
+            |   Got it!
+
+    block scripts
+  script().
+    function startIntro(){
+        window.location.href='/trans_script/phishing';
+      };

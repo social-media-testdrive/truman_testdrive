@@ -1,0 +1,356 @@
+
+extends ../ui_layout
+  
+block content
+
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+
+  .computer.only.tablet.only.four.wide.column 
+
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
+    //-feed
+
+    .ui.fluid.card.test.feedDisplay(postID="3")#step0
+          .content
+            .right.floated.meta= "Yesterday"
+            |
+            a(href='/user/m-beckett')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user17.jpg')
+              span='Mary Beckett'
+          .image
+            img.post(src=cdn+'/post_pictures/snowhabits.jpg')
+          #step4.content
+            .description
+              | Look at this cute snowman😄 
+              span(style="color:#0000FF;")#shortenedURL shortened URL
+              |   more text
+            //-.right.floated.meta
+              i.icon.checkmark
+              | Seen by 12
+          .three.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            .ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Flag
+            .ui.labeled.button(tabindex='0')
+              .ui.like.button
+                i.heart.icon
+                |  Like
+              a.ui.basic.red.left.pointing.label.count=2
+          
+          .content
+            .ui.comments
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user3.jpg')
+                .content
+                  a.author Cloe Hansen
+                  .metadata
+                    span.date Yesterday
+                    i.heart.icon
+                    |  2 Likes
+                  .text()
+                    | sweet!!
+                  .actions
+                    a.like Like
+                    a.flag Flag
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user5.jpeg')
+                .content
+                  a.author Kiki Pualani
+                  .metadata
+                    span.date Yesterday
+                    i.heart.icon
+                    |  2 Likes
+                  .text()
+                    | I like it haha
+                  .actions
+                    a.like Like
+                    a.flag Flag
+          .extra.content
+            .ui.fluid.left.labeled.right.icon.input
+              .ui.label
+                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+              input.newcomment(type='text' placeholder='Write a Comment')
+              i.big.send.link.icon
+    //-%%%%%%%%%%%%%%%%%%%%%%%%%
+    #step5.ui.fluid.card.test.feedDisplay(postID="3")
+          .content
+            .right.floated.meta= "Yesterday"
+            |
+            a(href='/user/cupcake25')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user24.jpg')
+              span='Jenny Chen'
+          .image
+            img.post(src=cdn+"/post_pictures/drone_video.png")
+          .content
+            .description="Watch this video to find out more about the history of drones!!"
+            //-.right.floated.meta
+              i.icon.checkmark
+              | Seen by 12
+          .three.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            .ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Flag
+            .ui.labeled.button(tabindex='0')
+              .ui.like.button
+                i.heart.icon
+                |  Like
+              a.ui.basic.red.left.pointing.label.count=2
+          
+          .content
+            .ui.comments
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user6.jpeg')
+                .content
+                  a.author Elli Andreas
+                  .metadata
+                    span.date Yesterday
+                    i.heart.icon
+                    |  1 Like
+                  .text()
+                    | this is v cool
+                  .actions
+                    a.like Like
+                    a.flag Flag
+          .extra.content
+            .ui.fluid.left.labeled.right.icon.input
+              .ui.label
+                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+              input.newcomment(type='text' placeholder='Write a Comment')
+              i.big.send.link.icon
+                
+    .ui.fluid.card.test.feedDisplay(postID="3" style="margin-bottom:4em;")#step6
+          .content
+            .right.floated.meta= "Yesterday"
+            |
+            a(href='/user/m-beckett')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user17.jpg')
+              span='Mary Beckett'
+          .image
+            img.post(src=cdn+'/post_pictures/snowhabits.jpg')
+          #step4.content
+            .description
+              | Look at this cute snowman😄 
+              span(style="color:#0000FF;")#shortenedURL2 shortened URL
+              |   more text
+            //-.right.floated.meta
+              i.icon.checkmark
+              | Seen by 12
+          .three.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            .ui.flag.button(tabindex='0')#flagStep
+              i.flag.icon
+              |  Flag
+            .ui.labeled.button(tabindex='0')
+              .ui.like.button
+                i.heart.icon
+                |  Like
+              a.ui.basic.red.left.pointing.label.count=2
+          
+          .content
+            .ui.comments
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user3.jpg')
+                .content
+                  a.author Cloe Hansen
+                  .metadata
+                    span.date Yesterday
+                    i.heart.icon
+                    |  2 Likes
+                  .text()
+                    | sweet!!
+                  .actions
+                    a.like Like
+                    a.flag Flag
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user5.jpeg')
+                .content
+                  a.author Kiki Pualani
+                  .metadata
+                    span.date Yesterday
+                    i.heart.icon
+                    |  2 Likes
+                  .text()
+                    | I like it haha
+                  .actions
+                    a.like Like
+                    a.flag Flag
+          .extra.content
+            .ui.fluid.left.labeled.right.icon.input#commentStep
+              .ui.label
+                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+              input.newcomment(type='text' placeholder='Write a Comment')
+              i.big.send.link.icon
+                
+    .container.clearfix
+      .chat(style="right:24px; margin-bottom:3em;")
+        .chat-header.clearfix
+          //-Making both buttons a minimize action. If user closes chat before tooltip highlights, tooltip bugs out. 
+          a.chat-minimize(href='#')
+            i.large.close.icon
+          a.chat-minimize(href='#')
+            i.window.minimize.icon
+
+          a(href='#')
+            img.ui.avatar.image(src=cdn+'/profile_pictures/user21.jpg',style="width: 3em;height: 3em;")
+          .chat-about
+            .chat-with Chat with Sam Hill
+            //- .chat-num-messages already 1 902 messages
+          //- i.fa.fa-star
+        // end chat-header
+        .chat-history
+          ul
+            li
+              .message-data
+                span.message-data-name 
+                  i.dot.circle.icon.online
+                  | Sam 
+                span.message-data-time 10:12 AM
+              .message.my-message
+                | hey! I really like ur pictures.
+            li
+              .message-data
+                span.message-data-name
+                  i.dot.circle.icon.online
+                  |  Sam 
+                span.message-data-time 10:12 AM
+              .message.my-message
+                | idk u but u seem cool 😎 tell me about urself
+            li
+              .message-data
+                span.message-data-name
+                  i.dot.circle.icon.online
+                  |  Sam 
+                span.message-data-time 10:20 AM
+              .message.my-message
+                | where do u go to school?
+        // end chat-history
+        .chat-message.clearfix
+          .ui.fluid.action.input
+            input#message-to-send(type='text', name='message-to-send', placeholder='Type your message')
+            button
+              i.send.icon
+              | Send
+        // end chat-message
+        // end chat
+    // end container
+    script()#message-template(type='text/x-handlebars-template').
+      <li class="clearfix">
+      <div class="message-data align-right">
+      <span class="message-data-time" >{{time}}</span> &nbsp; &nbsp;
+      <span class="message-data-name" >Me</span> <i class="fa fa-circle me"></i>
+      </div>
+      <div class="message other-message float-right">
+      {{messageOutput}}
+      </div>
+      </li>
+    script()#message-response-template(type='text/x-handlebars-template').
+      <li>
+      <div class="message-data">
+      <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
+      <span class="message-data-time">{{time}}</span>
+      </div>
+      <div class="message my-message">
+      {{response}}
+      </div>
+      </li>
+block scripts
+  script().
+  
+    function startIntro(){
+
+        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
+
+        intro.setOptions({
+          steps: [
+            { 
+              element: document.querySelectorAll('#shortenedURL')[0],
+              intro: "Look out for shortened URLs in posts or private messages. This is a strategy scammers use to make people go into a risky website. Even if a URL is not shortened, check carefully to make sure it is correct.",
+              position: "right",
+              scrollTo: 'tooltip'
+            },
+            {
+              element: document.querySelectorAll('#step0')[0],
+              intro: "If something sounds too good to be true, be skeptical! Scammers often offer easy chances to win free money or prizes.",
+              position: "right",
+              scrollTo: "tooltip"
+            },
+            { 
+              element: document.querySelectorAll('#step5')[0],
+              intro: "The message will sound urgent, making you worry that something is wrong. Or it will say that you have a limited time to respond. Be careful about messages that ask for financial information or information about your social media accounts.",
+              position: "right",
+              scrollTo: "tooltip"
+            },
+            { 
+              element: document.querySelectorAll('#step5')[0],
+              intro: "Look out for spelling and grammar errors, as well as images that don’t look quite right. A real company does not send out messages with these kinds of errors.",
+              position: "right",
+              scrollTo: "tooltip"
+            },
+            { 
+              intro: "Scammers can also trick you by pretending to be your friend. If you get a message from a friend asking for private information or money, think twice before you respond."
+            },
+            { 
+              element: document.querySelectorAll('#step6')[0],
+              intro: "What can you do if you see someone posting a phishing scam?",
+              position: "right",
+              scrollTo: "tooltip"
+            },
+            { 
+              element: document.querySelectorAll('#shortenedURL2')[0],
+              intro: "Ignore the link and don’t click on it, especially if it is a shortened or incorrect URL!",
+              position: "right",
+              scrollTo: "tooltip"
+            },
+            { 
+              element: document.querySelectorAll('#flagStep')[0],
+              intro: "You can press the “Flag” button to report the post to the website.",
+              position: "right",
+              scrollTo: "tooltip"
+            },
+            { 
+              element: document.querySelectorAll('#commentStep')[0],
+              intro: "You can also write a comment on the post to warn other people that it might be a scam.",
+              position: "right",
+              scrollTo: "tooltip"
+            }
+            
+          ]
+        });
+
+
+        
+        intro.onbeforechange(function() {
+            console.log($(this)[0]._currentStep);
+            if($(this)[0]._currentStep == 1){
+              intro.refresh();
+              console.log('refreshed');
+            }
+            if($(this)[0]._currentStep === 4){
+              $('.chat').transition("pulse");
+            } 
+        });
+        
+        
+        intro.start().onexit(function() {
+          window.location.href='/tut_guide/phishing';
+        });  
+        
+      }; //end startIntro
+
+      $(window).on("load", function() {
+        startIntro();
+
+      });

@@ -1,0 +1,85 @@
+extends ../ui_layout
+
+block content
+  
+  .ui.text.container(style="margin-bottom:4em;")
+    br
+    .ui.raised.segment
+      h2.ui.header
+        //- i.check.square.outline.green.icon
+        .content What should you do if you accidentally fall for a phishing scam? 
+          br
+          br
+        #hiddenEye.content(style="color:#696969;")
+          .sub.header 
+            i.eye.icon 
+            span Read and check all the boxes below
+            //-.ui.styled.fluid.accordion   
+
+      .content.ui.list
+          .item
+            #protip1.ui.segment
+              .ui.checkbox
+                input.ui(type="checkbox")#input1
+                label If you have given a phishing website your password, change your password immediately.
+          .item
+            #protip2.ui.segment
+              .ui.checkbox
+                input.ui(type="checkbox")#input2
+                label Tell a trusted adult. They can help you take the right steps to protect your information.
+                  
+    br
+    .ui.warning.message#checkAllWarning(style="display:none;")
+      .header
+        | Check all the boxes to proceed
+    .ui.big.labeled.icon.button#phishingTutGuideButton
+        i.rocket.icon
+        |   Got it!
+
+block scripts
+  script().
+  
+    //function to animate unchecked boxes, used with error messaging. 
+    function animateUnchecked(){
+      if($("#input1").is(":not(:checked)")){
+        console.log("input 1 is unchecked");
+        $("#protip1").transition('bounce');
+      }
+      if($("#input2").is(":not(:checked)")){
+        console.log("input 2 is unchecked");
+        $("#protip2").transition('bounce');
+      }
+    }; 
+
+    setTimeout(function(){
+      $('.sub.header').transition('shake'); 
+    }, 1500);
+
+    setTimeout(function(){
+      $('#point1').transition('jiggle');    
+    }, 2500);
+
+    $("input").change(function(){
+      if (($('input:checked').length) == 
+            ($('input').length)){
+        $("#checkAllWarning").hide();
+        $('.ui.big.labeled.icon.button').addClass('green');
+        $('.ui.big.labeled.icon.button').transition('jiggle');
+      }
+      else{
+        $('.ui.big.labeled.icon.button').removeClass('green');
+      }
+    });
+    
+    $("#phishingTutGuideButton").on('click', function() {
+      if (($('input:checked').length) == ($('input').length)){
+            window.location.href='/sim/phishing';
+      }
+      else{
+        $('#checkAllWarning').show();
+        animateUnchecked();
+      }
+    })
+   
+    
+    

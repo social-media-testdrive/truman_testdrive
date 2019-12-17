@@ -1,0 +1,280 @@
+
+extends ../ui_layout
+  
+block content
+
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+
+  .computer.only.tablet.only.four.wide.column 
+
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
+    //-feed
+
+    .ui.fluid.card.test(postID="3")
+          .content( data-hint="Check the content of the post for signs of phishing scams. This one is suspicious because it has spelling errors and sounds too good to be true." data-hintPosition="middle-middle")
+            .right.floated.meta= "Yesterday"
+            |
+            a(href='/user/m-beckett')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user17.jpg')
+              span='Mary Beckett'
+          .image
+            img.post(src=cdn+'/post_pictures/snowhabits.jpg')
+          #step4.content
+            .description(data-hint="This post has a shortened URL, which can lead to a risky website. Don’t click on the link!" data-hintPosition="middle-right")
+              | Look at this cute snowman😄 
+              span(style="color:#0000FF;")#shortenedURL shortened URL
+              |   more text
+            //-.right.floated.meta
+              i.icon.checkmark
+              | Seen by 12
+          .three.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            .ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Flag
+            .ui.labeled.button(tabindex='0')
+              .ui.like.button
+                i.heart.icon
+                |  Like
+              a.ui.basic.red.left.pointing.label.count=2
+          
+          .content
+            .ui.comments
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user3.jpg')
+                .content
+                  a.author Cloe Hansen
+                  .metadata
+                    span.date Yesterday
+                    i.heart.icon
+                    |  2 Likes
+                  .text()
+                    | sweet!!
+                  .actions
+                    a.like Like
+                    a.flag Flag
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user5.jpeg')
+                .content
+                  a.author Kiki Pualani
+                  .metadata
+                    span.date Yesterday
+                    i.heart.icon
+                    |  2 Likes
+                  .text()
+                    | I like it haha
+                  .actions
+                    a.like Like
+                    a.flag Flag
+          .extra.content
+            .ui.fluid.left.labeled.right.icon.input(data-hint="Let’s warn people that this post might be a phishing scam. Copy and paste the following comment: “This post looks suspicious! It might be a scam. Don’t click on the link!”" data-hintPosition="middle-middle")
+              .ui.label
+                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+              input.newcomment(type='text' placeholder='Write a Comment')
+              i.big.send.link.icon
+    //-%%%%%%%%%%%%%%%%%%%%%%%%%
+    #step5.ui.fluid.card.test(postID="3")
+          .content
+            .right.floated.meta= "Yesterday"
+            |
+            a(href='/user/cupcake25')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user24.jpg')
+              span='Jenny Chen'
+          .image
+            img.post(src=cdn+"/post_pictures/drone_video.png")
+          .content
+            .description="Watch this video to find out more about the history of drones!!"
+            //-.right.floated.meta
+              i.icon.checkmark
+              | Seen by 12
+          .three.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            .ui.flag.button(tabindex='0' data-hint="If you decide the post is a phishing scam, you can flag the post to report it." data-hintPosition="middle-right")
+              i.flag.icon
+              |  Flag
+            .ui.labeled.button(tabindex='0')
+              .ui.like.button
+                i.heart.icon
+                |  Like
+              a.ui.basic.red.left.pointing.label.count=2
+          
+          .content
+            .ui.comments
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user6.jpeg')
+                .content
+                  a.author Elli Andreas
+                  .metadata
+                    span.date Yesterday
+                    i.heart.icon
+                    |  1 Like
+                  .text()
+                    | this is v cool
+                  .actions
+                    a.like Like
+                    a.flag Flag
+          .extra.content
+            .ui.fluid.left.labeled.right.icon.input
+              .ui.label
+                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+              input.newcomment(type='text' placeholder='Write a Comment')
+              i.big.send.link.icon
+                
+    .ui.warning.message#clickAllDotsWarning(style="display:none;")
+      .header
+        | Click through all of the blue dots to continue      
+    button.ui.big.labeled.icon.button.cybertrans#cyberTransButton(style="margin-bottom:4em;")
+        i.rocket.icon
+        |   Let's Continue!
+        
+    .ui.large.long.modal#phishingModal(style="top:7em;")
+      i.close.icon  
+      .header Fill in the survey to enter our giveaway!
+      .image.content
+        .ui.medium.centered.image
+          img(src=cdn+'/post_pictures/Disneyland.jpg')
+        .description
+          .ui.header(style="margin-top:1em;") Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod ut metus eu pulvinar. Interdum.
+      .content
+        
+        .ui.form(style="margin-top:1em;")
+           .field
+             label Name
+             input(type='text' name='name' placeholder='Fill in your name...')
+           .field
+             label Date of Birth
+             input(type='text' name='dob' placeholder='Enter your date of birth...')
+           .field
+             label Address
+             input(type='text' name='address' placeholder='Enter your address...')
+           br
+           .actions
+             .ui.positive.right.labeled.icon.button
+               | Submit!
+               i.checkmark.icon
+      
+    .chat(style="right:24px; margin-bottom:3em;")
+      .chat-header.clearfix
+        //-Making both buttons a minimize action. If user closes chat before tooltip highlights, tooltip bugs out. 
+        a.chat-minimize(href='#')
+          i.large.close.icon
+        a.chat-minimize(href='#')
+          i.window.minimize.icon
+
+        a(href='#')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user21.jpg',style="width: 3em;height: 3em;")
+        .chat-about
+          .chat-with Chat with Sam Hill
+          //- .chat-num-messages already 1 902 messages
+        //- i.fa.fa-star
+      // end chat-header
+      .chat-history(data-hint="Watch out for scammers who are pretending to be your friend! You may see a photo of someone you know, but the message isn't really from them." data-hintPosition='top-middle')
+        ul
+          li
+            .message-data
+              span.message-data-name 
+                i.dot.circle.icon.online
+                | Sam 
+              span.message-data-time 10:12 AM
+            .message.my-message
+              | hey! I really like ur pictures.
+          li
+            .message-data
+              span.message-data-name
+                i.dot.circle.icon.online
+                |  Sam 
+              span.message-data-time 10:12 AM
+            .message.my-message
+              | idk u but u seem cool 😎 tell me about urself
+          li
+            .message-data
+              span.message-data-name
+                i.dot.circle.icon.online
+                |  Sam 
+              span.message-data-time 10:20 AM
+            .message.my-message
+              | where do u go to school?
+      // end chat-history
+      .chat-message.clearfix
+        .ui.fluid.action.input
+          input#message-to-send(type='text', name='message-to-send', placeholder='Type your message')
+          button
+            i.send.icon
+            | Send
+      // end chat-message
+      // end chat
+    // end container
+    script()#message-template(type='text/x-handlebars-template').
+      <li class="clearfix">
+      <div class="message-data align-right">
+      <span class="message-data-time" >{{time}}</span> &nbsp; &nbsp;
+      <span class="message-data-name" >Me</span> <i class="fa fa-circle me"></i>
+      </div>
+      <div class="message other-message float-right">
+      {{messageOutput}}
+      </div>
+      </li>
+    script()#message-response-template(type='text/x-handlebars-template').
+      <li>
+      <div class="message-data">
+      <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
+      <span class="message-data-time">{{time}}</span>
+      </div>
+      <div class="message my-message">
+      {{response}}
+      </div>
+      </li>
+block scripts
+  script().
+  
+    $("#shortenedURL").on('click', function(){
+      $('#phishingModal').modal('show');
+    });
+  
+    function startIntro(){
+      
+        var hints;
+        var counter = 0;
+        var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
+        intro.setOptions({
+          steps: [
+            { 
+              element: document.querySelectorAll('#step1')[0],
+              intro: "Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more...",
+              position: "left",
+              scrollTo: 'tooltip'
+            }
+            
+          ]
+        });
+          intro.start().onexit(function() {
+            window.scrollTo(0,0);
+            hints = introJs().addHints();
+            console.log('hints added')
+            hints.onhintclose(function(e) {
+             counter++;
+             if(counter == 5) {
+               $('#clickAllDotsWarning').hide();
+               $( ".cybertrans" ).addClass("green");
+             }
+          });
+        });
+        
+        
+        //error messaging
+        $('#cyberTransButton').on('click', function() {
+          if(counter != 5){
+            $('#clickAllDotsWarning').show();
+          }
+        });
+          
+      };
+  
+      $(window).on("load", function() {startIntro();});
