@@ -285,7 +285,11 @@ exports.getScript = (req, res, next) => {
       });
 
       //console.log("Script Size is now: "+finalfeed.length);
-      res.render('script', { script: finalfeed, mod: req.params.modId, habitsStart: habitsStartTime,});
+      if(req.params.modId == "phishing"){
+        res.render('phishing/phishing_script', { script: finalfeed, mod: req.params.modId, habitsStart: habitsStartTime,});
+      }else{
+        res.render('script', { script: finalfeed, mod: req.params.modId, habitsStart: habitsStartTime,});
+      }
 
       });//end of Script.find()
 

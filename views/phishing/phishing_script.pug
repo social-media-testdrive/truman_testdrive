@@ -1,0 +1,615 @@
+extends ../ui_layout
+  
+block content
+
+  
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  -var s3 = "https://testdrive-filesystem.s3.us-east-2.amazonaws.com/"
+  -//var cdn = "";
+  .computer.only.tablet.only.four.wide.column
+    .ui.fixed.sticky.sideMenu(style='width: 272px !important; height: 500px !important;')
+      .ui.card
+        .image
+          if user.profile.picture
+            img(src=cdn+'/profile_pictures/'+user.profile.picture)
+          else
+            img(src=user.gravatar(60))
+        .content
+          a.header(href='/me/'+mod)= user.profile.name || user.email || user.id
+          .meta="@Guest"
+          .description=user.profile.bio
+          .description
+            if user.profile.location
+              i.marker.icon
+              span=user.profile.location
+        .one.ui.bottom.attached.icon.buttons
+            button.ui.editprofile.button(data-tooltip='Update Your Profile', data-position='bottom left')
+                i.write.icon
+                  
+  #loading.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
+    img.ui.centered.small.image(src='/heart.svg')
+      
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column(style='display: none;')  
+  
+    //- Input for creating new post at top of feed
+    #newpost.ui.fluid.left.labeled.right.icon.input
+      .ui.label
+        if user.profile.picture
+          img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture)
+        else
+          img.ui.avatar.image(src=user.gravatar(60))
+      input(type='text', placeholder='Create a post')
+      i.big.photo.link.icon
+  
+    each val in script
+      //- create a card for each post in val (if by user make the card a little different)
+      //- if val.relativeTime - then post came from user_post (so user post, user reply to actor reply to user post)
+  
+      if val.relativeTime
+        -var u_class;
+        -if (val.actorAuthor) {u_class = "actorReply"}
+        -else if (val.reply) {u_class = "userReply"}
+        -else {u_class = "userPost"}
+        .ui.fluid.card(u_postID=val.id, ui=user.ui, notify=user.notify, type=u_class, postID=val.postID)
+          
+          //- This is a User made post
+          .content
+            .right.floated.time.meta= ((Date.now() - (Date.now() - val.absTime)))
+            |  
+            a.ui.avatar.image(href='/me/'+mod)
+              if user.profile.picture
+                img(src=cdn+'/profile_pictures/'+user.profile.picture)
+              else
+                img(src=user.gravatar(60))
+            a(href='/me/'+mod)
+              span=user.profile.name || user.email || user.id
+          if val.picture
+            .image
+              img(src=cdn+"/post_pictures/"+val.picture)
+          .content
+            .description=val.body
+          .two.ui.bottom.attached.icon.buttons(style="z-index:0;")
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            if val.liked
+              .ui.red.like.button
+                i.heart.icon
+                |  Like
+            else
+              .ui.like.button
+                i.heart.icon
+                |  Like
+          if val.comments.length > 0
+            .content
+              .ui.comments
+                each comment in val.comments
+                  //-IF this comment is USER made, do this
+                  if (Date.now() + comment.time) < Date.now()
+                    if !comment.flagged
+                      if comment.new_comment
+                        -console.log("New COMMENT AREA");
+                        .comment(commentID=comment.commentID)
+                          a.avatar.image(href='/me/'+mod)
+                            if user.profile.picture
+                              img(src=cdn+'/profile_pictures/'+user.profile.picture)
+                            else
+                              img(src=user.gravatar(60))
+                          .content
+                            a.author(href='/me/'+mod)=user.profile.name || user.username || user.id
+                            .metadata
+                              span.date.sim=(Date.now() + comment.time)
+                              .rating
+                                if comment.liked
+                                  i.red.heart.icon
+                                  span=comment.likes
+                                  | Likes 
+                                else
+                                  i.heart.icon
+                                  span.num=comment.likes
+                                  |  Likes
+                            .text=comment.body
+                            .actions
+                              if comment.liked
+                                a.red.like.comment Like
+                              else
+                                a.like.comment Like
+                              a.flag.comment Flag
+                      //- Else this is a normal comment from the script
+                      else
+                        .comment(commentID=comment.commentID)
+                          a.avatar(href='/user/'+comment.actor.username)
+                            img(src='/picture.svg', data-src=cdn+'/profile_pictures/'+comment.actor.profile.picture)
+                          .content
+                            a.author(href='/user/'+comment.actor.username)=comment.actor.profile.name
+                            .metadata
+                              span.date.sim=(Date.now() + comment.time)
+                              .rating
+                                if comment.liked
+                                  i.red.heart.icon
+                                  span=comment.likes
+                                  | Likes 
+                                else
+                                  i.heart.icon
+                                  span.num=comment.likes
+                                  |  Likes
+                            .text=comment.body
+                            .actions
+                              if comment.liked
+                                a.red.like.comment Like
+                              else
+                                a.like.comment Like
+                              a.flag.comment Flag
+          .extra.content
+            if user.comment_prompt == "yes"
+              .description(style="text-align:center;background:#E8E8E8")="How is "+(user.profile.name || user.username || user.id)+" Feeling?"
+              .ui.fluid.left.labeled.right.icon.input
+                .ui.label            
+                  if user.profile.picture
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name || user.username || user.id)
+                  else
+                    img.ui.avatar.image(src=user.gravatar(60), name=user.profile.name || user.username || user.id)
+                input.newcomment(type='text', placeholder='Write a Comment')
+                i.big.send.link.icon
+            else
+              .ui.fluid.left.labeled.right.icon.input
+                .ui.label
+                  if user.profile.picture
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name || user.username || user.id)
+                  else
+                    img.ui.avatar.image(src=user.gravatar(60), name=user.profile.name || user.username || user.id)            
+                input.newcomment(type='text', placeholder='Write a Comment')
+                i.big.send.link.icon
+
+      //- Now we are making posts by Actors, not the USER
+      
+      else
+      
+        //-this is a totally normal actor post
+        .ui.fluid.card.dim(postNumber = val.post_id, postID=val.id, ui=user.ui, transparency=user.transparency, notify=user.notify, state=val.state || 'unread', type='actor', actor_un = val.actor.username, actor_name = val.actor.profile.name, actor_pic = val.actor.profile.picture)
+          //- dimmer DIV for flagging
+          .ui.dimmer.flag
+                .content
+                  .center
+                    h2.ui.inverted.icon.header
+                      i.red.flag.icon
+                      |  You&apos;ve flagged this!
+                      h3.ui.inverted.header
+                        span="The admins will review this post further. We are sorry you had this experience."
+          //- Normal Base Post
+          .content
+            .right.floated.time.meta= (Date.now() + val.time)
+            |  
+            a(href='/user/'+val.actor.username)
+              img.ui.avatar.image(src='/picture.svg', data-src=cdn+'/profile_pictures/'+val.actor.profile.picture)
+              span=val.actor.profile.name
+          .img.post
+            if (val.module == 'digital-literacy' && val.info_text != "")           
+              img(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPost()',style="max-width:100%;cursor:pointer")
+            else
+              img(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, style="max-width:100%;")
+          .content
+            .description!=val.body 
+              if(val.info_text != "")
+                | &nbsp
+                span.phishingLink(phishingPostType=val.type, style="color:#0000FF;")=val.info_text
+          .three.ui.bottom.attached.icon.buttons(style="z-index:0;")
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            .ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Flag
+            if val.like
+              .ui.labeled.button(tabindex='0')
+                .ui.red.like.button
+                  i.heart.icon
+                  |  Like
+                a.ui.basic.red.left.pointing.label=val.likes
+            else
+              .ui.labeled.button(tabindex='0')
+                .ui.like.button
+                  i.heart.icon
+                  |  Like
+                a.ui.basic.red.left.pointing.label.count=val.likes
+          if val.comments.length > 0
+            .content
+              .ui.comments
+                each comment in val.comments
+                  //-IF this comment is USER made, do this
+                  if comment.new_comment
+                    -console.log("New COMMENT AREA");
+                    .comment(commentID=comment.new_comment_id)
+                      a.avatar.image(href='/me/'+mod)
+                        if user.profile.picture
+                          img(src=cdn+'/profile_pictures/'+user.profile.picture)
+                        else
+                          img(src=user.gravatar(60))
+                      .content
+                        a.author(href='/me/'+mod)=user.profile.name || user.username || user.id
+                        .metadata
+                          span.date.sim=(Date.now() + comment.time)
+                          .rating
+                            i.heart.icon
+                            span.num=0
+                            |  Likes
+                        .text=comment.body
+                        .actions
+                          a.like.comment Like
+                          a.flag.comment Flag
+                  //- Else this is a normal comment from the script
+                  else
+                    .comment(commentID=comment.id)
+                      a.avatar.image(href='/user/'+comment.actor.username)
+                        img(src='/picture.svg', data-src=cdn+'/profile_pictures/'+comment.actor.profile.picture)
+                      .content
+                        a.author(href='/user/'+comment.actor.username)=comment.actor.profile.name
+                        .metadata
+                          span.date.sim=(Date.now() + comment.time)
+                          .rating
+                            if comment.liked
+                              i.red.heart.icon
+                              span=comment.likes
+                              |  Likes 
+                            else
+                              i.heart.icon
+                              span.num=comment.likes
+                              |  Likes
+                        .text=comment.body
+                        .actions
+                          if comment.liked
+                            a.red.like.comment Like
+                          else
+                            a.like.comment Like
+                          a.flag.comment Flag
+          .extra.content
+            .ui.fluid.left.labeled.right.icon.input
+              .ui.label
+                if user.profile.picture
+                  img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name || user.username || user.id)
+                else
+                  img.ui.avatar.image(src=user.gravatar(60), name=user.profile.name || user.username || user.id)            
+              input.newcomment(type='text', placeholder='Write a Comment')
+              i.big.send.link.icon  
+                     
+
+    -var post_quiz = "/results/"+mod;
+    a.ui.fluid.card(href=post_quiz)
+      .content
+        .ui.big.green.labeled.icon.button.script
+          i.rocket.icon
+          |   Let's Continue!
+          
+    br
+    br
+
+    //- Chat Box  
+    #chatbox1.container.clearfix.hidden
+      .chat(style="right:24px; margin-bottom:3em;")
+        .chat-header.clearfix
+          a.chat-close(href='#')
+            i.large.close.icon
+          a.chat-minimize(href='#')
+            i.window.minimize.icon
+          a(href='#')
+            img.ui.avatar.image(src=cdn+'/profile_pictures/avatar-icon.svg',style="width: 3em;height: 3em;")
+          .chat-about
+            .chat-with Chat with Jack
+        //- end chat-header
+        .chat-history
+          ul
+            li
+              .message-data
+                span.message-data-name
+                  i.dot.circle.icon.online
+                  |  Jack
+                span.message-data-time 10:12 AM
+              .message.my-message
+                | hey, I have a question about the homework for tomorrow
+            li
+              .message-data
+                span.message-data-name
+                  i.dot.circle.icon.online
+                  |  Jack
+                span.message-data-time 10:20 AM
+              .message.my-message
+                | can you tell me your number so i can call you real quick?
+
+        //- end chat-history
+        //- start chat-message
+        .chat-message.clearfix
+          .ui.fluid.action.input
+            input#message-to-send(type='text', name='message-to-send', placeholder='Type your message')
+            button
+              i.send.icon
+              | Send
+        //- end chat-message
+        //- end chat
+    //- end container
+
+    //- Chat Box  
+    #chatbox2.container.clearfix.hidden
+      .chat(style="right:345px; margin-bottom:3em;")
+        .chat-header.clearfix
+          a.chat-close(href='#')
+            i.large.close.icon
+          a.chat-minimize(href='#')
+            i.window.minimize.icon
+          a(href='#')
+            img.ui.avatar.image(src=cdn+'/profile_pictures/user8.jpg',style="width: 3em;height: 3em;")
+          .chat-about
+            .chat-with Chat with Rob
+            //- .chat-num-messages already 1 902 messages
+          //- i.fa.fa-star
+        //- end chat-header
+        .chat-history
+          ul
+            li
+              .message-data
+                span.message-data-name
+                  i.dot.circle.icon.online
+                  |  Rob
+                span.message-data-time 10:12 AM
+              .message.my-message
+                | Hi there! I noticed that you were also online!
+            li
+              .message-data
+                span.message-data-name
+                  i.dot.circle.icon.online
+                  |  Rob
+                span.message-data-time 10:20 AM
+              .message.my-message
+                | Do you want to talk for a bit?
+            li
+              .message-data
+                span.message-data-name
+                  i.dot.circle.icon.online
+                  |  Rob
+                span.message-data-time 10:20 AM
+              .message.my-message
+                | I want to get to know you better!
+        //- end chat-history
+        //-start chat-message
+        .chat-message.clearfix
+          .ui.fluid.action.input
+            input#message-to-send(type='text', name='message-to-send', placeholder='Type your message')
+            button
+              i.send.icon
+              | Send
+        //- end chat-message
+        //- end chat
+      //- end container``
+
+
+      script()#message-template(type='text/x-handlebars-template').
+        <li class="clearfix">
+        <div class="message-data align-right">
+        <span class="message-data-time" >{{time}}</span> &nbsp; &nbsp;
+        <span class="message-data-name" >Me</span> <i class="fa fa-circle me"></i>
+        </div>
+        <div class="message other-message float-right">
+        {{messageOutput}}
+        </div>
+        </li>
+      script()#message-response-template(type='text/x-handlebars-template').
+        <li>
+        <div class="message-data">
+        <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
+        <span class="message-data-time">{{time}}</span>
+        </div>
+        <div class="message my-message">
+        {{response}}
+        </div>
+        </li>
+
+    .ui.large.long.modal#phishingModal1(style="top:7em;")
+      i.close.icon  
+      .header Fill in the survey to receive a free gift card!
+      .image.content
+        .ui.medium.centered.image
+          img(src=cdn+'/post_pictures/Disneyland.jpg')
+        .description
+          .ui.header(style="margin-top:1em;") Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod ut metus eu pulvinar. Interdum.
+      .content
+        
+        .ui.form(style="margin-top:1em;")
+           .field
+             label Name
+             input(type='text' name='name' placeholder='Fill in your name...')
+           .field
+             label Date of Birth
+             input(type='text' name='dob' placeholder='Enter your date of birth...')
+           .field
+             label Address
+             input(type='text' name='address' placeholder='Enter your address...')
+           br
+           .actions
+             .ui.positive.right.labeled.icon.button
+               | Submit!
+               i.checkmark.icon  
+               
+    .ui.large.long.modal#phishingModal2(style="top:7em;")
+      i.close.icon  
+      .header Log in to your google account:
+      .image.content
+       .ui.medium.centered.image
+         img(src=cdn+'/post_pictures/Disneyland.jpg')
+       .description
+         .ui.header(style="margin-top:1em;") Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod ut metus eu pulvinar. Interdum.
+      .content
+       
+       .ui.form(style="margin-top:1em;")
+          .field
+            label Name
+            input(type='text' name='username' placeholder='Enter your username...')
+          .field
+            label Date of Birth
+            input(type='text' name='password' placeholder='Enter your password...')
+          br
+          .actions
+            .ui.positive.right.labeled.icon.button
+              | Log in!
+              i.checkmark.icon 
+              
+    .ui.large.long.modal#phishingModal3(style="top:7em;")
+      i.close.icon  
+      .header Third phishing scam
+      .image.content
+       .ui.medium.centered.image
+         img(src=cdn+'/post_pictures/Disneyland.jpg')
+       .description
+         .ui.header(style="margin-top:1em;") Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod ut metus eu pulvinar. Interdum.
+      .content
+       
+       .ui.form(style="margin-top:1em;")
+          .field
+            label Name
+            input(type='text' name='username' placeholder='Enter your username...')
+          .field
+            label Date of Birth
+            input(type='text' name='password' placeholder='Enter your password...')
+          br
+          .actions
+            .ui.positive.right.labeled.icon.button
+              | Log in!
+              i.checkmark.icon 
+               
+    //- New Post Modal  
+    .ui.small.post.modal  
+      i.close.icon  
+      .header Add a New Post  
+      .content  
+        form#postform.ui.feed.form(action='/post/new', method='POST')  
+          input(type='hidden', name='_csrf', value=_csrf) 
+          input(type='hidden', name='module', value=mod)  
+          .field  
+            textarea(rows='3',placeholder='What do you want to share?',name='body')
+          .ui.segment
+              .three.fields
+                .field
+                  .ui.radio.checkbox
+                    input#photoOne.hidden(type='radio' name='picinput' value="basketballshoes.jpg")
+                    label
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/basketballshoes.jpg" style='width:65%;height:auto;')
+                .field
+                  .ui.radio.checkbox
+                    input#photoTwo.hidden(type='radio' name='picinput' value="typewriter.jpg")
+                    label
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/typewriter.jpg" style='width:65%;height:auto;')
+                .field
+                  .ui.radio.checkbox
+                    input#photoThree.hidden(type='radio' name='picinput' value="cat.jpg")
+                    label
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/cat.jpg" style='width:65%;height:auto;') 
+              .three.fields
+                .field
+                  .ui.radio.checkbox
+                    input#photoOne.hidden(type='radio' name='picinput' value="cupcakes.jpg")
+                    label
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/cupcakes.jpg" style='width:65%;height:auto;')
+                .field
+                  .ui.radio.checkbox
+                    input#photoTwo.hidden(type='radio' name='picinput' value="autumn.jpg")
+                    label
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/autumn.jpg" style='width:65%;height:auto;')
+                .field
+                  .ui.radio.checkbox
+                    input#photoThree.hidden(type='radio' name='picinput' value="Disneyland.jpg")
+                    label
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/Disneyland.jpg" style='width:65%;height:auto;')  
+              .three.fields
+                .field
+                  .ui.radio.checkbox
+                    input#photoTwo.hidden(type='radio' name='picinput' value="studytime.jpg")
+                    label
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/studytime.jpg" style='width:65%;height:auto;')
+                .field
+                  .ui.radio.checkbox
+                    input#photoThree.hidden(type='radio' name='picinput' value="palm_trees.jpeg")
+                    label
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/palm_trees.jpeg" style='width:65%;height:auto;') 
+                .field
+                  .ui.radio.checkbox
+                    input#photoOne.hidden(type='radio' name='picinput' value="footballseason.jpg")
+                    label
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/footballseason.jpg" style='width:65%;height:auto;')
+              .three.fields
+                .field
+                  .ui.radio.checkbox
+                    input#photoFour.hidden(type='radio' name='picinput' value="Iceland.jpg")
+                    label
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/Iceland.jpg" style='width:65%;height:auto;')
+                .field
+                  .ui.radio.checkbox
+                    input#photoFive.hidden(type='radio' name='picinput' value="balloons.jpg")
+                    label
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/balloons.jpg" style='width:65%;height:auto;')
+                .field
+                  .ui.radio.checkbox
+                    input#photoSix.hidden(type='radio' name='picinput' value="beachpuppy.jpg")
+                    label
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/beachpuppy.jpg" style='width:65%;height:auto;')  
+              
+          .ui.error.message 
+      .actions  
+        input.ui.green.button(type='submit', name="foo", value='Post', form='postform')
+          
+block scripts
+  script().
+            
+    //Convenient variable to indicate which module we're in
+    let pathArray = window.location.pathname.split('/');
+    var currentModule = pathArray[2];
+    
+    //Activating the sticky functionality for the left column
+    //$('.ui.sticky.sideMenu').sticky();
+    
+       
+    //Misc code
+    $('.big.plus.icon').css({"display": "block"})
+    $('.ui.simple.dropdown.item').css({"display":"inherit"})
+    $('.ui.accordion').accordion();    
+        
+    //Three different modals, one for each type of phishing scam
+    $('.phishingLink').on('click', function(){
+      if($(this).attr('phishingPostType') === "phishing1"){
+        $('#phishingModal1').modal('show');
+      } else if ($(this).attr('phishingPostType') === "phishing2"){
+        $('#phishingModal2').modal('show');
+      } else if ($(this).attr('phishingPostType') === "phishing3"){
+        $('#phishingModal3').modal('show');
+      }
+    }); 
+        
+    /**
+     * chat box code
+     */
+     
+    $(window).on("load", function() {openChat()}); 
+   
+    function openChat(){
+      if(currentModule == "phishing"){
+      setTimeout(function(){
+          $($('#chatbox1 .chat-history')[0]).slideToggle(300, 'swing');
+          $($('#chatbox1 .chat-message')[0]).slideToggle(300, 'swing');
+          $('#chatbox1').slideToggle(300, 'swing'); 
+          $($('#chatbox1 .chat-history')[0]).slideToggle(300, 'swing');
+          $($('#chatbox1 .chat-message')[0]).slideToggle(300, 'swing');
+          
+        }, 10000);    
+              
+      setTimeout(function(){
+
+          $($('#chatbox2 .chat-history')[0]).slideToggle(300, 'swing');
+          $($('#chatbox2 .chat-message')[0]).slideToggle(300, 'swing');
+          $('#chatbox2').slideToggle(300, 'swing'); 
+          $($('#chatbox2 .chat-history')[0]).slideToggle(300, 'swing');
+          $($('#chatbox2 .chat-message')[0]).slideToggle(300, 'swing');
+          
+        }, 20000);    
+      }
+    }
+      
+    /**
+     * End chat box code
+     */

@@ -136,7 +136,7 @@ Start chat box code
 
     console.log("START OF CHATS!");
     console.log(pathArray);
-     if(pathArray[2] == 'safe-posting' ) {
+     if((pathArray[2] == 'safe-posting' ) || (pathArray[2] == 'phishing' )) {
       chat.init();
      };
 
