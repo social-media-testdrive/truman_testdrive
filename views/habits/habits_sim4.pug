@@ -28,7 +28,7 @@ block content
     br
 
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
-    .ui.fixed.bottom.sticky(style="padding-bottom:2em; padding-left:1em; padding-right:1em; display:none;")#removeHidden
+    .ui.fixed.bottom.sticky(style="padding-bottom:6em; padding-left:1em; padding-right:1em; display:none;")#removeHidden
       .ui.icon.compact.message.warning
         i.close.icon
         i.question.icon.float
@@ -40,7 +40,7 @@ block content
       h2.ui.header(data-hint="Some social media sites even have a page where you can track the time you have spent using the site or app. You can even set daily time limit reminders!" data-hintPosition='middle-middle') My Activity
       .ui.divider
 
-      h2.ui.header(data-hint="It’s important to be mindful of how much time you spend on social media. Take a break or disconnect if you think you have been using it too much!" data-hintPosition='middle-middle') Time on TestDrive:
+      h2.ui.header(data-hint="It’s important to be mindful of how much time you spend on social media." data-hintPosition='middle-middle') Time on TestDrive:
       .ui.statistic
         .value#habitsActivityTotalTime 6.5
         .label
@@ -48,7 +48,7 @@ block content
           
       h2.ui.header Manage My Time:
       br
-      .field#reminderTimeSelectField
+      .field(data-hint="Take a break or disconnect if you think you have been using it too much!" data-hintPosition="middle-middle")#reminderTimeSelectField
         label(style="font-size:100%; font-weight:bold;") Set Daily Reminder
           br
           br
@@ -101,7 +101,7 @@ block scripts
           $("#removeHidden").transition('fade');
         }
         literacy_counter++;
-        if(literacy_counter == 2) {
+        if(literacy_counter == 3) {
          window.location.href='/trans/habits';
         }
       });

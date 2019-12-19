@@ -738,7 +738,7 @@ end button links
   //this is the LIKE button for posts
   $('.like.button')
     .on('click', function () {
-
+      console.log("CLICK LIKE");
       //if already liked, unlike if pressed
       if ($(this).hasClass("red")) {
         console.log("***********UNLIKE: post");

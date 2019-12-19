@@ -732,6 +732,8 @@ exports.postUpdateHabitsTimer = (req, res, done) => {
       }
       if (req.body.habitsStart){
         res.json({url:'/modual/habits'});
+      } else {
+        res.send({result:"success"});
       }
     });
   });

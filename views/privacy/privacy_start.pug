@@ -107,7 +107,7 @@ block scripts
       } 
     });
 
-    $('#privacyConcept>a').on('click', function () {      
+    $('#privacyConcept').on('click', function () {      
         $('#privacyConcept_info').show(); 
         $('#privacyConcept').transition('tada');     
         if(!($('#question').is(":hidden") ||  $('#privacyConcept_info').is(":hidden") || $('#settingsConcept_info').is(":hidden")|| $('#policyConcept_info').is(":hidden") || $('#optOut_info').is(":hidden"))){
@@ -116,7 +116,7 @@ block scripts
         }
     });
 
-    $('#settingsConcept>a').on('click', function () {      
+    $('#settingsConcept').on('click', function () {      
         $('#settingsConcept_info').show();      
         $('#settingsConcept').transition('tada');     
         if(!($('#question').is(":hidden") ||  $('#privacyConcept_info').is(":hidden") || $('#settingsConcept_info').is(":hidden")|| $('#policyConcept_info').is(":hidden") || $('#optOut_info').is(":hidden"))){
@@ -125,7 +125,7 @@ block scripts
         }
     });
 
-     $('#privacyPolicyConcept>a').on('click', function () {      
+     $('#privacyPolicyConcept').on('click', function () {      
         $('#policyConcept_info').show(); 
         $('#privacyPolicyConcept').transition('tada');     
         if(!($('#question').is(":hidden") ||  $('#privacyConcept_info').is(":hidden") || $('#settingsConcept_info').is(":hidden")|| $('#policyConcept_info').is(":hidden") || $('#optOut_info').is(":hidden"))){
@@ -134,7 +134,7 @@ block scripts
         }
     });
     
-    $('#optOut>a').on('click', function () {      
+    $('#optOut').on('click', function () {      
        $('#optOut_info').show(); 
        $('#optOut').transition('tada');     
        if(!($('#question').is(":hidden") ||  $('#privacyConcept_info').is(":hidden") || $('#settingsConcept_info').is(":hidden")|| $('#policyConcept_info').is(":hidden") || $('#optOut_info').is(":hidden"))){

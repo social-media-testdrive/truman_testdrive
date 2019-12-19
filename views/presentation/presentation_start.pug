@@ -92,7 +92,7 @@ block scripts
       }
     });
 
-    $('#audience>a').on('click', function () {      
+    $('#audience').on('click', function () {      
         $('#audience_info').show(); 
         $('#audience').transition('tada');     
         if(!($('#question').is(":hidden") ||  $('#anonymous_info').is(":hidden") || $('#audience_info').is(":hidden")|| $('#curate_info').is(":hidden"))){
@@ -100,7 +100,7 @@ block scripts
         }
     });
 
-    $('#anonymous>a').on('click', function () {      
+    $('#anonymous').on('click', function () {      
         $('#anonymous_info').show();      
         $('#anonymous').transition('tada');     
         if(!($('#question').is(":hidden") ||  $('#anonymous_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#curate_info').is(":hidden"))){
@@ -109,7 +109,7 @@ block scripts
         }
     });
 
-     $('#curate>a').on('click', function () {      
+     $('#curate').on('click', function () {      
         $('#curate_info').show(); 
         $('#curate').transition('tada');     
         if(!($('#question').is(":hidden") ||  $('#anonymous_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#curate_info').is(":hidden"))){
