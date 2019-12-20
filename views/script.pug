@@ -68,11 +68,29 @@ block content
     //- Habits module specific ui
     if(mod == "habits")
         
-      //-Buttons at the top of the notifications page
-      button.ui.basic.button.habitsNotificationsDisplay(style="display:none;")#habitsSettingsButton
+      //-Buttons at the top of the notifications page (and settings and activity pages)
+      //- future improvement could be to make a separate class for this rather than duplicating three times
+      button.ui.basic.button.habitsNotificationsDisplay.habitsSettingsButton(style="display:none;")
         i.cog.icon
         |   Settings                    
-      button.ui.basic.button.habitsNotificationsDisplay(style="display:none;")#habitsActivityButton
+      button.ui.basic.button.habitsNotificationsDisplay.habitsActivityButton(style="display:none;")
+        i.clock.icon
+        |   My Activity
+        
+      //-Buttons at the top of the notifications page (and settings and activity pages)
+      button.ui.basic.button.habitsSettingsDisplay.habitsSettingsButton(style="display:none; margin-bottom:1em;")
+        i.cog.icon
+        |   Settings                    
+      button.ui.basic.button.habitsSettingsDisplay.habitsActivityButton(style="display:none; margin-bottom:1em;")
+        i.clock.icon
+        |   My Activity
+
+        
+      //-Buttons at the top of the notifications page (and settings and activity pages)
+      button.ui.basic.button.habitsActivityDisplay.habitsSettingsButton(style="display:none;margin-bottom:1em;")
+        i.cog.icon
+        |   Settings                    
+      button.ui.basic.button.habitsActivityDisplay.habitsActivityButton(style="display:none;margin-bottom:1em;")
         i.clock.icon
         |   My Activity
         
@@ -1119,7 +1137,7 @@ block scripts
           })
     
           //creating the activity page, requires timer
-          $('#habitsActivityButton').on('click', function(){
+          $('.habitsActivityButton').on('click', function(){
             $('.habitsHomeDisplay').hide();
             $('.habitsNotificationsDisplay').hide();
             $('.habitsNotificationItem').hide();
@@ -1159,7 +1177,7 @@ block scripts
          
          //show the settings page
          
-         $('#habitsSettingsButton').on('click',function(){
+         $('.habitsSettingsButton').on('click',function(){
            $('.habitsHomeDisplay').hide();
            $('.habitsNotificationsDisplay').hide();
            $('.habitsNotificationItem').hide();

@@ -7,34 +7,52 @@ block content
   .computer.only.tablet.only.four.wide.column 
     .ui.fixed.sticky.sideMenu(style='width: 272px !important; height: 500px !important;')
       .ui.vertical.menu(style="width:auto;")
-        a.active.item(data-value='feed')#feedsteps 
+        a.item(data-value='feed')#feedsteps 
           i.icon.home
           |  Home
-        a.item(data-value='notifications')#notificationsteps
+        a.active.item(data-value='notifications')#notificationsteps
           i.icon.bell
           |  Notifications
           
   //-mobile only version of the menu
   .mobile.only.sixteen.wide.column
     .ui.top.fixed.vertical.menu(style="width:100%; padding-top:5em;")
-      a.active.item(data-value='feed')#feedsteps
+      a.item(data-value='feed')#feedsteps
         i.icon.home
         |  Home
-      a.item(data-value='notifications')#notificationsteps      
+      a.active.item(data-value='notifications')#notificationsteps      
         i.icon.bell
         |  Notifications
         .ui.red.right.pointing.label !
     br
     br
 
-  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
-    .ui.fixed.bottom.sticky(style="padding-bottom:6em; padding-left:1em; padding-right:1em; display:none;")#removeHidden
-      .ui.icon.compact.message.warning
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
+    .ui.fixed.bottom.sticky(style="margin-bottom:6em; margin-left:1em; margin-right:1em")
+      
+      .ui.icon.compact.message.warning(style="display:none; margin-left:1em; margin-right:1em;")#removeHidden
         i.close.icon
         i.question.icon.float
         .content
           .ui.header Need some help? 
           p Make sure you are clicking "Got it" on the blue dots!
+      .ui.icon.message.warning(style="display:none; margin-left:1em; margin-right:1em;")#notificationWarning
+        i.close.icon
+        i.hand.pointer.icon.float
+        .content
+          p Click through all of the blue dots
+          
+      
+          
+    button.ui.basic.button.notificationsDisplay#settingsButton
+      i.cog.icon
+      |   Settings
+      
+    button.ui.basic.button.notificationsDisplay#activityButton
+      i.clock.icon
+      |   My Activity
+    br
+    br
     //-Activity display 
     .ui.container.habitsActivityDisplay
       h2.ui.header(data-hint="Some social media sites even have a page where you can track the time you have spent using the site or app. You can even set daily time limit reminders!" data-hintPosition='middle-middle') My Activity
@@ -64,7 +82,11 @@ block content
               .item(data-value='remind 8 hours' style="font-size:100%") 8 hours
       br
       span We'll send you a reminder once you've reached the time you set for yourself.
-   
+      
+    button.ui.big.labeled.icon.button.cybertrans(style="margin-bottom:4em; margin-top:2em;")
+        i.rocket.icon
+        |   Let's Continue!
+            
           
     
 
@@ -95,6 +117,18 @@ block scripts
           }
       });
       
+      $('button.ui.big.labeled.icon.button.cybertrans').on('click', function(){
+        if(literacy_counter != 3){
+          //show the message normall the first time
+          if($('#notificationWarning').is(":hidden")){
+            $('#notificationWarning').transition('fade');
+          }else{
+            //otherwise, bounce the message to draw attention to it
+            $('#notificationWarning').transition('bounce');
+          }
+        }
+      });
+      
       hints.onhintclose(function(e) {
         clickCount = 0; //The user knows to click "got it"
         if($('#removeHidden').is(":visible")){
@@ -102,7 +136,10 @@ block scripts
         }
         literacy_counter++;
         if(literacy_counter == 3) {
-         window.location.href='/trans/habits';
+         $('button.ui.big.labeled.icon.button.cybertrans').addClass('green');
+         if($('#notificationWarning').is(":visible")){
+           $("#notificationWarning").transition('fade');
+         }
         }
       });
       
