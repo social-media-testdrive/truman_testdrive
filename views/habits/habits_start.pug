@@ -13,11 +13,11 @@ block content
       h5.ui.header
         i.arrow.circle.right.blue.icon
         .content
-          | Using social media can be fun and interesting. In fact, social media sites are created to be that way. The features within the apps are designed by people who want to grab your attention!
+          | Using social media can be fun and interesting. In fact, social media sites are created to be that way. The features within the apps are designed by people who want to grab your attention.
       h5.ui.header
         i.arrow.circle.right.blue.icon
         .content
-          | Social media companies want you to spend more and more time on social media, but in a way that doesn’t really benefit you. Spending too much time on social media can take away time from other meaningful things in your life.
+          | Social media companies want you to spend more and more time on social media, but in a way that doesn’t always benefit you. Spending too much time on social media can take away time from other meaningful things in your life.
       h5.ui.header
         i.arrow.circle.right.blue.icon
         .content
@@ -39,12 +39,12 @@ block content
       //- .ui.segments     
       .ui.stackable.two.column.grid
         .ui.column
-          #audience.ui.raised.segment
+          .ui.raised.segment#audience
             a.ui.blue.ribbon.label#audienceLabel
                 //- i.dollar.sign.icon 
                 span Habit
             span.hidden(id="audience_info", style="font-weight:600") Something we do automatically without thinking.
-              ul(style="font-weight:400") Social media <i>habits</i> can include things like checking it regularly or scrolling through your social media feed as soon as you wake up.
+              ul(style="font-weight:400") Social media <i>habits</i> can include things like checking social media regularly or scrolling through your social media feed as soon as you wake up.
 
         .ui.column
           #private_information.ui.raised.segment
@@ -96,7 +96,7 @@ block scripts
       } 
     });
 
-    $('#audience>a').on('click', function () {      
+    $('#audience').on('click', function () {      
         $('#audience_info').show(); 
         $('#audience').transition('tada');     
         if(!($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden")|| $('#risky_info').is(":hidden"))){
@@ -105,7 +105,7 @@ block scripts
         }
     });
 
-    $('#private_information>a').on('click', function () {      
+    $('#private_information').on('click', function () {      
         $('#private_information_info').show();      
         $('#private_information').transition('tada');     
         if(!($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#risky_info').is(":hidden"))){
@@ -114,7 +114,7 @@ block scripts
         }
     });
 
-     $('#risky>a').on('click', function () {      
+     $('#risky').on('click', function () {      
         $('#risky_info').show(); 
         $('#risky').transition('tada');     
         if(!($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#risky_info').is(":hidden"))){

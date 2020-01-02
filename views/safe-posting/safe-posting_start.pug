@@ -93,7 +93,7 @@ block scripts
       } 
     });
 
-    $('#audience>a').on('click', function () {      
+    $('#audience').on('click', function () {      
         $('#audience_info').show(); 
         $('#audience').transition('tada');     
         if(!($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden")|| $('#risky_info').is(":hidden"))){
@@ -102,7 +102,7 @@ block scripts
         }
     });
 
-    $('#private_information>a').on('click', function () {      
+    $('#private_information').on('click', function () {      
         $('#private_information_info').show();      
         $('#private_information').transition('tada');     
         if(!($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#risky_info').is(":hidden"))){
@@ -111,7 +111,7 @@ block scripts
         }
     });
 
-     $('#risky>a').on('click', function () {      
+     $('#risky').on('click', function () {      
         $('#risky_info').show(); 
         $('#risky').transition('tada');     
         if(!($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#risky_info').is(":hidden"))){

@@ -68,11 +68,29 @@ block content
     //- Habits module specific ui
     if(mod == "habits")
         
-      //-Buttons at the top of the notifications page
-      button.ui.basic.button.habitsNotificationsDisplay(style="display:none;")#habitsSettingsButton
+      //-Buttons at the top of the notifications page (and settings and activity pages)
+      //- future improvement could be to make a separate class for this rather than duplicating three times
+      button.ui.basic.button.habitsNotificationsDisplay.habitsSettingsButton(style="display:none;")
         i.cog.icon
         |   Settings                    
-      button.ui.basic.button.habitsNotificationsDisplay(style="display:none;")#habitsActivityButton
+      button.ui.basic.button.habitsNotificationsDisplay.habitsActivityButton(style="display:none;")
+        i.clock.icon
+        |   My Activity
+        
+      //-Buttons at the top of the notifications page (and settings and activity pages)
+      button.ui.basic.button.habitsSettingsDisplay.habitsSettingsButton(style="display:none; margin-bottom:1em;")
+        i.cog.icon
+        |   Settings                    
+      button.ui.basic.button.habitsSettingsDisplay.habitsActivityButton(style="display:none; margin-bottom:1em;")
+        i.clock.icon
+        |   My Activity
+
+        
+      //-Buttons at the top of the notifications page (and settings and activity pages)
+      button.ui.basic.button.habitsActivityDisplay.habitsSettingsButton(style="display:none;margin-bottom:1em;")
+        i.cog.icon
+        |   Settings                    
+      button.ui.basic.button.habitsActivityDisplay.habitsActivityButton(style="display:none;margin-bottom:1em;")
         i.clock.icon
         |   My Activity
         
@@ -524,7 +542,7 @@ block content
                        
   
     -var post_quiz = "/results/"+mod;
-    a.ui.fluid.card.habitsHomeDisplay(href=post_quiz)
+    a.ui.fluid.card.habitsHomeDisplay
       .content
         .ui.big.green.labeled.icon.button.script.habitsHomeDisplay
           i.rocket.icon
@@ -1108,8 +1126,18 @@ block scripts
             }
           }
           
+          //also send a new time stamp when the "let's continue" button is clicked, since the post request gets cancelled on page change
+          $('.ui.big.green.labeled.icon.button.script.habitsHomeDisplay').on('click', function(){
+            var freePlayPageViewTimer = Date.now();
+            var currentTime = Date.now();
+            var totalViewTime = currentTime - freePlayPageViewTimer;
+            $.post("/habitsTimer", { habitsTimer: totalViewTime, _csrf : $('meta[name="csrf-token"]').attr('content') }, function(){
+              window.location.href = '/results/habits';
+            });
+          })
+    
           //creating the activity page, requires timer
-          $('#habitsActivityButton').on('click', function(){
+          $('.habitsActivityButton').on('click', function(){
             $('.habitsHomeDisplay').hide();
             $('.habitsNotificationsDisplay').hide();
             $('.habitsNotificationItem').hide();
@@ -1125,11 +1153,19 @@ block scripts
           
           // Handle page visibility change   
           document.addEventListener(visibilityChange, handleVisibilityChange, false);
-        }
-        
+          
       /**
        * End timer implementation and activity page for habits module
        */
+       
+        //not in habits module, set the "let's continue" button click listener to have typical behavior
+        } else {
+          $('.ui.big.green.labeled.icon.button.script.habitsHomeDisplay').on('click', function(){
+            window.location.href('/results/'+currentModule);
+          })
+        }
+        
+      
          
        /*
        *code to make habits module UI work, swaps between various displays via hide/show of classes
@@ -1141,7 +1177,7 @@ block scripts
          
          //show the settings page
          
-         $('#habitsSettingsButton').on('click',function(){
+         $('.habitsSettingsButton').on('click',function(){
            $('.habitsHomeDisplay').hide();
            $('.habitsNotificationsDisplay').hide();
            $('.habitsNotificationItem').hide();
@@ -1269,7 +1305,6 @@ block scripts
            console.log("clicked item!");
            var relevantPostNumber = $(this).attr('correspondingPost');
            //show the relevant post in a popup modal
-           console.log("execute on post " + relevantPostNumber);
            var relevantPost = $('.ui.fluid.card.habitsHomeDisplay[postnumber="'+relevantPostNumber+'"]').clone().show();
            $('.ui.viewPolicyPopup.modal .ui.fluid.card').html(relevantPost);
            $('.ui.viewPolicyPopup.modal .ui.fluid.card').removeAttr('postnumber').show();

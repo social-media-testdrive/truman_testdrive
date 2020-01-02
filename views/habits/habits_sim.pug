@@ -15,7 +15,6 @@ block content
         a.item(data-value='notifications')#notificationsteps  
           i.icon.bell
           |  Notifications
-          .ui.red.right.pointing.label !
           
   //-mobile only version of the menu
   .mobile.only.sixteen.wide.column
@@ -26,19 +25,26 @@ block content
       a.item(data-value='notifications')#notificationsteps      
         i.icon.bell
         |  Notifications
-        .ui.red.right.pointing.label !
     br
     br
 
       
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
-    .ui.fixed.bottom.sticky(style="padding-bottom:4em; padding-left:1em; padding-right:1em; display:none;")#removeHidden
-      .ui.icon.compact.message.warning
+    .ui.fixed.bottom.sticky(style="padding-bottom:6em; padding-left:1em; padding-right:1em")
+      .ui.icon.compact.message.warning(style="display:none;")#removeHidden
         i.close.icon
         i.question.icon.float
         .content
           .ui.header Need some help? 
           p Make sure you are clicking "Got it" on the blue dots!
+          
+      .ui.icon.message.warning(style="display:none; padding-left:1em; padding-right:1em;")#notificationWarning
+        i.close.icon
+        i.hand.pointer.icon.float
+        .content
+          .ui.header There's still blue dots to find!
+          p Click through all of the blue dots before going to the notifications page
+          
     //-feed
     //-.ui.bottom.attached.segment#step0
     #step0.ui.fluid.card.test.feedDisplay
@@ -106,7 +112,7 @@ block content
               i.big.send.link.icon#sendComment1
     //-%%%%%%%%%%%%%%%%%%%%%%%%%
     #step5.ui.fluid.card.test.feedDisplay(postID="3")
-          .content(data-hint="Click on the Notifications tab to see what notifications you have received!" data-hintPosition='middle-middle')
+          .content(data-hint="Once you've clicked all the blue dots, click on the Notifications tab to see what notifications you have received!" data-hintPosition='middle-middle')
             .right.floated.meta= "Yesterday"
             |
             a(href='/user/cloe.htt')
@@ -410,6 +416,18 @@ block scripts
                 }
             });
             
+            $('a.item[data-value="notifications"]').on('click', function(){
+              if(literacy_counter != 2){
+                //show the message normally the first time
+                if($('#notificationWarning').is(":hidden")){
+                  $('#notificationWarning').transition('fade');
+                }else{
+                  //otherwise, bounce the message to draw attention to it
+                  $('#notificationWarning').transition('bounce');
+                }
+              } 
+            });
+            
             hints.onhintclose(function(e) {
               clickCount = 0; //The user knows to click "got it"
               if($('#removeHidden').is(":visible")){
@@ -417,8 +435,22 @@ block scripts
               }
               literacy_counter++;
               if(literacy_counter == 2) {
-               //go to next page
-               window.location.href='/sim2/habits';
+                //hide the warning message if it's visible
+                if($('#notificationWarning').is(":visible")){
+                  $('#notificationWarning').transition('fade');
+                }
+               //enable the notifications button
+               
+               $('a.item[data-value="notifications"]').on('click', function(){
+                 window.location.href='/sim2/habits';
+               });
+               
+               function glowNotifications(){
+                 $('a.item[data-value="notifications"]').transition('glow');
+               }
+               glowNotifications();
+               setInterval(glowNotifications, 3500);
+               
               }
             }); 
             
