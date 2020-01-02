@@ -287,6 +287,8 @@ exports.getScript = (req, res, next) => {
       //console.log("Script Size is now: "+finalfeed.length);
       if(req.params.modId == "phishing"){
         res.render('phishing/phishing_script', { script: finalfeed, mod: req.params.modId, habitsStart: habitsStartTime,});
+      }else if(req.params.modId == "habits"){
+        res.render('habits/habits_script', { script: finalfeed, mod: req.params.modId, habitsStart: habitsStartTime,});
       }else{
         res.render('script', { script: finalfeed, mod: req.params.modId, habitsStart: habitsStartTime,});
       }
