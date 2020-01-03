@@ -404,14 +404,15 @@ block content
 
     .ui.large.long.modal#phishingModal1(style="top:7em;")
       i.close.icon  
-      .header Fill in the survey to receive a free gift card!
-      .image.content
-        .ui.medium.centered.image
-          img(src=cdn+'/post_pictures/Disneyland.jpg')
-        .description
-          .ui.header(style="margin-top:1em;") Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod ut metus eu pulvinar. Interdum.
+      .ui.center.aligned.header FILL OUT THIS SURVEY TO RECEIVE A FREE GIFT CARD!
       .content
-        
+        .ui.one.column.centered.grid(style="margin-top:1em; margin-bottom:1em;")
+          .ui.green.large.statistic
+            .label Fill out this survey to receive a gift card worth    
+            .value
+              | $500
+            .label to any store you want!
+
         .ui.form(style="margin-top:1em;")
            .field
              label Name
@@ -430,48 +431,60 @@ block content
                
     .ui.large.long.modal#phishingModal2(style="top:7em;")
       i.close.icon  
-      .header Log in to your google account:
-      .image.content
-       .ui.medium.centered.image
-         img(src=cdn+'/post_pictures/Disneyland.jpg')
-       .description
-         .ui.header(style="margin-top:1em;") Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod ut metus eu pulvinar. Interdum.
+      .ui.center.aligned.header 
+        span(style="color:red;") !WARNING! 
+        | Our systems show that your TestDrive account is 
+        span(style="color:red;") AT RISK!
+
       .content
-       
-       .ui.form(style="margin-top:1em;")
+        .ui.error.icon.message
+          i.circle.exclamation.icon
+          .content
+            .header
+              | Enter your login information to prove that it's you
+
+        .ui.form(style="margin-top:1em;")
           .field
-            label Name
+            label Username
             input(type='text' name='username' placeholder='Enter your username...')
           .field
-            label Date of Birth
-            input(type='text' name='password' placeholder='Enter your password...')
+            label Password
+            input(type='password' name='password' placeholder='Enter your password...')
           br
           .actions
             .ui.positive.right.labeled.icon.button
-              | Log in!
+              | Submit
               i.checkmark.icon 
               
     .ui.large.long.modal#phishingModal3(style="top:7em;")
       i.close.icon  
-      .header Third phishing scam
-      .image.content
-       .ui.medium.centered.image
-         img(src=cdn+'/post_pictures/Disneyland.jpg')
-       .description
-         .ui.header(style="margin-top:1em;") Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod ut metus eu pulvinar. Interdum.
+      .ui.center.aligned.header WOW! Get a new iPhone for just $19.99!!
+      .ui.one.column.centered.grid(style="margin-top:1em; margin-bottom:1em;")
+        .image.content
+         .ui.medium.centered.image
+           img(src=cdn+'/post_pictures/Disneyland.jpg')
+         .description
+           .ui.header(style="margin-top:1em; font-size:200%;") Brand new iPhones! 
+           .ui.header 
+             | HURRY - only
+             span(style="color:red;")  3
+             |  left!!!
       .content
-       
+       .ui.header Enter your card information to place an order for this CRAZY deal! 
        .ui.form(style="margin-top:1em;")
           .field
             label Name
-            input(type='text' name='username' placeholder='Enter your username...')
+            input(type='text' name='cardholderName')
           .field
-            label Date of Birth
-            input(type='text' name='password' placeholder='Enter your password...')
+            label Credit Card Number
+            input(type='text' name='cardNumber')
+          .field
+            label Security Code 
+            input(type='password' name='password')
           br
           .actions
             .ui.positive.right.labeled.icon.button
-              | Log in!
+              | PLACE ORDER
               i.checkmark.icon 
                
     //- New Post Modal  
