@@ -39,9 +39,9 @@ block content
               img.ui.avatar.image(src=cdn+'/profile_pictures/user17.jpg')
               span='Mary Beckett'
           .image
-            img.post(src=cdn+'/post_pictures/snowhabits.jpg')
+            img.post(src=cdn+'/post_pictures/libraryhabits.jpg')
           #step4.content
-            .description="Look at this cute snowman😄"
+            .description="My favorite way to spend an afternoon - at the library!"
             //-.right.floated.meta
               i.icon.checkmark
               | Seen by 12
@@ -70,7 +70,7 @@ block content
                     i.heart.icon
                     |  2 Likes
                   .text()
-                    | sweet!!
+                    | I love reading too😊
                   .actions
                     a.like Like
                     a.flag Flag
@@ -84,7 +84,7 @@ block content
                     i.heart.icon
                     |  2 Likes
                   .text()
-                    | I like it haha
+                    | Sounds like fun
                   .actions
                     a.like Like
                     a.flag Flag
@@ -135,6 +135,56 @@ block content
                     |  1 Like
                   .text()
                     | this is v cool
+                  .actions
+                    a.like Like
+                    a.flag Flag
+          .extra.content
+            .ui.fluid.left.labeled.right.icon.input
+              .ui.label
+                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+              input.newcomment(type='text' placeholder='Write a Comment')
+              i.big.send.link.icon
+                
+    #step6.ui.fluid.card.test.feedDisplay(postID="4")
+          .content
+            .right.floated.meta= "Yesterday"
+            |
+            a(href='/user/beachmoreworryless')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user33.jpg')
+              span='Sean Gomez'
+          .image
+            img.post(src=cdn+"/post_pictures/boardhabits.jpg")
+          .content
+            .description="Who else likes BOARD GAMES?!??"
+            //-.right.floated.meta
+              i.icon.checkmark
+              | Seen by 12
+          .three.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            .ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Flag
+            .ui.labeled.button(tabindex='0')
+              .ui.like.button
+                i.heart.icon
+                |  Like
+              a.ui.basic.red.left.pointing.label.count=2
+          
+          .content
+            .ui.comments
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user10.jpg')
+                .content
+                  a.author Franklin Robinson
+                  .metadata
+                    span.date Yesterday
+                    i.heart.icon
+                    |  1 Like
+                  .text()
+                    | Me!!!
                   .actions
                     a.like Like
                     a.flag Flag
@@ -259,13 +309,18 @@ block scripts
               },
               { 
                 element: document.querySelectorAll('#step5')[0],
-                intro: "Video and streaming sites will automatically play videos one after the other to keep you watching. This makes it hard for you to take a break or stop.",
+                intro: "Another strategy companies use to keep you drawn into their apps is a feature like autoplay, which starts playing another video as soon as you've finished the one you were watching.",
                 position: "right",
                 scrollTo: "tooltip"
               },
               { 
                 element: document.querySelectorAll('#step5')[0],
-                intro: "In a real social media site, the timeline won’t have an end! You will be able to scroll for hours, and maybe spend more time than you planned.",
+                intro: "This makes it tempting to keep watching, even if you have other things you want or need to do!",
+                position: "right"
+              },
+              { 
+                element: document.querySelectorAll('#step6')[0],
+                intro: "Also, in a real social media site, the timeline has no end! Companies do this on purpose, hoping to keep you using their app for as long as possible, but you could end up scrolling for hours, possibly spending more time than you had hoped to.",
                 position: "right",
                 scrollTo: "tooltip"
               }
@@ -278,7 +333,7 @@ block scripts
             steps: [
               { 
                 element: document.querySelectorAll('#step0')[0],
-                intro: "Have you ever seen notifications from social media that pop up and buzz on your phone?",
+                intro: "Have you ever had notifications buzz on your phone or seen them pop up on your phone's home screen?",
                 position: "right",
                 scrollTo: 'tooltip'
               },
@@ -302,13 +357,18 @@ block scripts
               },
               { 
                 element: document.querySelectorAll('#step5')[0],
-                intro: "Video and streaming sites automatically play videos one after the other to keep you watching. This makes it harder to take a break or stop.",
+                intro: "Another strategy companies use to keep you drawn into their apps is a feature like autoplay, which starts playing another video as soon as you've finished the one you were watching.",
                 position: "right",
                 scrollTo: "tooltip"
               },
               { 
                 element: document.querySelectorAll('#step5')[0],
-                intro: "In a real social media site, the timeline doesn't end! You're able to scroll for hours, and maybe spend more time than you planned.",
+                intro: "This makes it tempting to keep watching, even if you have other things you want or need to do!",
+                position: "right"
+              },
+              { 
+                element: document.querySelectorAll('#step6')[0],
+                intro: "Also, in a real social media site, the timeline has no end! Companies do this on purpose, hoping to keep you using their app for as long as possible, but you could end up scrolling for hours, possibly spending more time than you had hoped to.",
                 position: "right",
                 scrollTo: "tooltip"
               }

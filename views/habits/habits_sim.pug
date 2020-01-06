@@ -385,13 +385,19 @@ block scripts
             steps: [
               { 
                 element: document.querySelectorAll('#step0')[0],
-                intro: "Now that you're aware of some of the features apps use to grab your attention, let’s learn some strategies to help you build healthy social media habits.",
+                intro: "Thinking about your media choices and the habits you form while using them is important. Good habits help us build healthy and happy lives. Bad habits can make our lives more difficult.",
                 position: "right",
                 scrollTo: 'tooltip'
               },
               { 
                 element: document.querySelectorAll('#step0')[0],
-                intro: "Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; to learn more...",
+                intro: "While apps create certain features to grab your attention and keep you using them for as long as possible, it's important to think about how you can form good habits and not let companies control what you do!",
+                position: "right",
+                scrollTo: 'tooltip'
+              },
+              { 
+                element: document.querySelectorAll('#step0')[0],
+                intro: "Let's learn some strategies to build healthy social media habits. Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; to learn more...",
                 position: "right",
                 scrollTo: 'tooltip'
               }     
@@ -449,7 +455,7 @@ block scripts
                  $('a.item[data-value="notifications"]').transition('glow');
                }
                glowNotifications();
-               setInterval(glowNotifications, 3500);
+               setInterval(glowNotifications, 2000);
                
               }
             }); 
