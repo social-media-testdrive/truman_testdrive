@@ -30,20 +30,25 @@ block content
 
       
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
-    .ui.fixed.bottom.sticky(style="padding-bottom:6em; padding-left:1em; padding-right:1em")
-      .ui.icon.compact.message.warning(style="display:none;")#removeHidden
-        i.close.icon
-        i.question.icon.float
-        .content
-          .ui.header Need some help? 
-          p Make sure you are clicking "Got it" on the blue dots!
-          
-      .ui.icon.message.warning(style="display:none; padding-left:1em; padding-right:1em;")#notificationWarning
-        i.close.icon
-        i.hand.pointer.icon.float
-        .content
-          .ui.header There's still blue dots to find!
-          p Click through all of the blue dots before going to the notifications page
+    .ui.one.column.centered.grid(style="padding-top:1em;")
+      .ui.fixed.bottom.sticky(style="padding-bottom:6em;")
+        .ui.icon.compact.message.warning(style="display:none;")#removeHidden
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header Need some help? 
+            p Make sure you are clicking "Got it" on the blue dots!
+            
+        .ui.message.centered.success(style="display:none;")#nextPageInstruction
+          .content
+            .ui.header Click the notifications button to continue! 
+            
+        .ui.icon.message.warning(style="display:none;")#notificationWarning
+          i.close.icon
+          i.hand.pointer.icon.float
+          .content
+            .ui.header There are still blue dots to find!
+            p Click through all of the blue dots before going to the notifications page.
           
     //-feed
     //-.ui.bottom.attached.segment#step0
@@ -344,7 +349,7 @@ block content
                 a.avatar
                   img(src=cdn+'/profile_pictures/user73.JPG')
                 .content
-                  a.author Noah Liebman
+                  a.author Noah Alpern
                   .metadata
                     span.date Yesterday
                     i.heart.icon
@@ -391,7 +396,7 @@ block scripts
               },
               { 
                 element: document.querySelectorAll('#step0')[0],
-                intro: "While apps create certain features to grab your attention and keep you using them for as long as possible, it's important to think about how you can form good habits and not let companies control what you do!",
+                intro: "While apps use certain features to grab your attention and keep you using them for as long as possible, it's important to think about how you can form good habits and be in control of your media use!",
                 position: "right",
                 scrollTo: 'tooltip'
               },
@@ -441,12 +446,17 @@ block scripts
               }
               literacy_counter++;
               if(literacy_counter == 2) {
+                
                 //hide the warning message if it's visible
                 if($('#notificationWarning').is(":visible")){
                   $('#notificationWarning').transition('fade');
                 }
+                //show the instructional message
+                if($('#nextPageInstruction').is(":hidden")){
+                  $('#nextPageInstruction').transition('fade');
+                }
+                
                //enable the notifications button
-               
                $('a.item[data-value="notifications"]').on('click', function(){
                  window.location.href='/sim2/habits';
                });
@@ -460,11 +470,14 @@ block scripts
               }
             }); 
             
-            //showing the "Need some help?" guidance message after 2 minutes on the page (assuming the user doesn't know to click "Got it")
-            setTimeout(function(){
+            //showing the "Need some help?" guidance message after 2 minutes on the page
+            setInterval(function(){
               if($('#removeHidden').is(":hidden")){
-                console.log("SHOW GUIDANCE");
-                $('#removeHidden').transition('fade');
+                console.log("counter: "+literacy_counter);
+                if(literacy_counter != 2){
+                  //user does not know to click blue dots
+                  $('#removeHidden').transition('fade');
+                }
               }
             },120000); 
           }); 
