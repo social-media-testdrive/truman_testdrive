@@ -10,20 +10,80 @@ block content
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
     //-feed
 
-    .ui.fluid.card.test(postID="3")
+    .ui.fluid.card.test(postID="3")#step0
           .content( data-hint="Check the content of the post for signs of phishing scams. This one is suspicious because it has spelling errors and sounds too good to be true." data-hintPosition="middle-middle")
             .right.floated.meta= "Yesterday"
             |
-            a(href='/user/m-beckett')
-              img.ui.avatar.image(src=cdn+'/profile_pictures/user17.jpg')
-              span='Mary Beckett'
+            a(href='/user/cool.kid5386')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user63.jpg')
+              span='Liam Knapke'
           .image
-            img.post(src=cdn+'/post_pictures/snowhabits.jpg')
+            img.post(src=cdn+'/post_pictures/phishingga1.png')
           #step4.content
             .description(data-hint="This post has a shortened URL, which can lead to a risky website. Don’t click on the link!" data-hintPosition="middle-right")
-              | Look at this cute snowman😄 
-              span(style="color:#0000FF;")#shortenedURL shortened URL
-              |   more text
+              | BRAND NEW IPHONE -90% OFF!! Shop our bigggest $ale of the year! CyBeR MoNDdAy SAVnGs!! 
+              span(style="color:#0000FF;")#shortenedURL1 http://bit.ly/CybMond 
+          .three.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            .ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Flag
+            .ui.labeled.button(tabindex='0')
+              .ui.like.button
+                i.heart.icon
+                |  Like
+              a.ui.basic.red.left.pointing.label.count=2
+          
+          .content
+            .ui.comments
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user63.jpg')
+                .content
+                  a.author Liam Knapke
+                  .metadata
+                    span.date Yesterday
+                    i.heart.icon
+                    |  2 Likes
+                  .text()
+                    | #iphone #deals #sale #cybermonday #shoping
+                  .actions
+                    a.like Like
+                    a.flag Flag
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user47.jpeg')
+                .content
+                  a.author Ariel Simon
+                  .metadata
+                    span.date Yesterday
+                    i.heart.icon
+                    |  2 Likes
+                  .text()
+                    | wow cool
+                  .actions
+                    a.like Like
+                    a.flag Flag
+          .extra.content
+            .ui.fluid.left.labeled.right.icon.input(data-hint="Let’s warn people that this post might be a phishing scam. Copy and paste the following comment: “This post looks suspicious! It might be a scam. Don’t click on the link!”" data-hintPosition="middle-middle")
+              .ui.label
+                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+              input.newcomment(type='text' placeholder='Write a Comment')
+              i.big.send.link.icon
+    //-%%%%%%%%%%%%%%%%%%%%%%%%%
+    #step5.ui.fluid.card.test(postID="3")
+          .content
+            .right.floated.meta= "Yesterday"
+            |
+            a(href='/user/kitty.z')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user9.jpg')
+              span='Katherine Zhou'
+          .image
+            img.post(src=cdn+"/post_pictures/pancake_phi.jpg")
+          .content
+            .description="Guys these are the best pancakes I've ever had #fooddreams"
             //-.right.floated.meta
               i.icon.checkmark
               | Seen by 12
@@ -44,53 +104,54 @@ block content
             .ui.comments
               .comment
                 a.avatar
-                  img(src=cdn+'/profile_pictures/user3.jpg')
+                  img(src=cdn+'/profile_pictures/user73.JPG')
                 .content
-                  a.author Cloe Hansen
+                  a.author Noah Alpern
                   .metadata
                     span.date Yesterday
                     i.heart.icon
-                    |  2 Likes
+                    |  1 Like
                   .text()
-                    | sweet!!
+                    | omg where did you get these pancakes from???
                   .actions
                     a.like Like
                     a.flag Flag
               .comment
                 a.avatar
-                  img(src=cdn+'/profile_pictures/user5.jpeg')
+                  img(src=cdn+'/profile_pictures/user70.JPG')
                 .content
-                  a.author Kiki Pualani
+                  a.author Zoe Goodall
                   .metadata
                     span.date Yesterday
                     i.heart.icon
-                    |  2 Likes
+                    |  1 Like
                   .text()
-                    | I like it haha
+                    | #yummyinmytummy
                   .actions
                     a.like Like
                     a.flag Flag
           .extra.content
-            .ui.fluid.left.labeled.right.icon.input(data-hint="Let’s warn people that this post might be a phishing scam. Copy and paste the following comment: “This post looks suspicious! It might be a scam. Don’t click on the link!”" data-hintPosition="middle-middle")
+            .ui.fluid.left.labeled.right.icon.input
               .ui.label
                 img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
               input.newcomment(type='text' placeholder='Write a Comment')
               i.big.send.link.icon
+                
+                
     //-%%%%%%%%%%%%%%%%%%%%%%%%%
-    #step5.ui.fluid.card.test(postID="3")
+    .ui.fluid.card.test(postID="4")
           .content
             .right.floated.meta= "Yesterday"
             |
-            a(href='/user/cupcake25')
-              img.ui.avatar.image(src=cdn+'/profile_pictures/user24.jpg')
-              span='Jenny Chen'
+            a(href='/user/kitty.z')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user9.jpg')
+              span=''
           .image
-            img.post(src=cdn+"/post_pictures/drone_video.png")
+            img.post(src=cdn+"/post_pictures/phishingga3.jpg")
           .content
-            .description="Watch this video to find out more about the history of drones!!"
-            //-.right.floated.meta
-              i.icon.checkmark
-              | Seen by 12
+            .description
+              | CA$$H GIVAWAY!! Fill out survey NOW:
+              span(style="color:#0000FF;")#shortenedURL2  http://give.away/quickca$h
           .three.ui.bottom.attached.icon.buttons
             .ui.reply.button(tabindex='0')
               i.reply.icon
@@ -108,15 +169,82 @@ block content
             .ui.comments
               .comment
                 a.avatar
-                  img(src=cdn+'/profile_pictures/user6.jpeg')
+                  img(src=cdn+'/profile_pictures/user2.jpeg')
                 .content
-                  a.author Elli Andreas
+                  a.author Ima Robot
                   .metadata
                     span.date Yesterday
                     i.heart.icon
                     |  1 Like
                   .text()
-                    | this is v cool
+                    | I tried this and it really worked!!!
+                  .actions
+                    a.like Like
+                    a.flag Flag
+
+          .extra.content
+            .ui.fluid.left.labeled.right.icon.input
+              .ui.label
+                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+              input.newcomment(type='text' placeholder='Write a Comment')
+              i.big.send.link.icon
+                
+    //-%%%%%%%%%%%%%%%%%%%%%%%%%
+    .ui.fluid.card.test(postID="5")
+          .content
+            .right.floated.meta= "Yesterday"
+            |
+            a(href='/user/im_musicool')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user32.JPG')
+              span='Erika Prakash'
+          .image
+            img.post(src=cdn+"/post_pictures/photography_phi.png")
+          .content
+            .description="tryna get better at photography"
+            //-.right.floated.meta
+              i.icon.checkmark
+              | Seen by 12
+          .three.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            .ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Flag
+            .ui.labeled.button(tabindex='0')
+              .ui.like.button
+                i.heart.icon
+                |  Like
+              a.ui.basic.red.left.pointing.label.count=2
+          
+          .content
+            .ui.comments
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user5.jpeg')
+                .content
+                  a.author Kiki Pualani
+                  .metadata
+                    span.date Yesterday
+                    i.heart.icon
+                    |  3 Likes
+                  .text()
+                    | Nice pic!
+                  .actions
+                    a.like Like
+                    a.flag Flag
+
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user8.jpg')
+                .content
+                  a.author Rob Yang
+                  .metadata
+                    span.date Yesterday
+                    i.heart.icon
+                    |  1 Like
+                  .text()
+                    | I think you're already pretty good
                   .actions
                     a.like Like
                     a.flag Flag
@@ -126,7 +254,7 @@ block content
                 img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
               input.newcomment(type='text' placeholder='Write a Comment')
               i.big.send.link.icon
-                
+                                      
     .ui.warning.message#clickAllDotsWarning(style="display:none;")
       .header
         | Click through all of the blue dots to continue      
@@ -136,29 +264,61 @@ block content
         
     .ui.large.long.modal#phishingModal(style="top:7em;")
       i.close.icon  
-      .header Fill in the survey to enter our giveaway!
-      .image.content
-        .ui.medium.centered.image
-          img(src=cdn+'/post_pictures/Disneyland.jpg')
-        .description
-          .ui.header(style="margin-top:1em;") Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod ut metus eu pulvinar. Interdum.
+      .ui.center.aligned.header WOW! Get a new iPhone for just $19.99!!
+      .ui.one.column.centered.grid(style="margin-top:1em; margin-bottom:1em;")
+        .image.content
+         .ui.medium.centered.image
+           img(src=cdn+'/post_pictures/phishingga1.png')
+         .description
+           .ui.header(style="margin-top:1em; font-size:200%;") Brand new iPhones! 
+           .ui.header 
+             | HURRY - only
+             span(style="color:red;")  3
+             |  left!!!
       .content
-        
+       .ui.header Enter your card information to place an order for this CRAZY deal! 
+       .ui.form(style="margin-top:1em;")
+          .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
+            label Name
+            input(type='text' readonly='' name='cardholderName')
+          .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
+            label Credit Card Number
+            input(type='text' readonly='' name='cardNumber')
+          .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
+            label Security Code 
+            input(type='password' readonly='' name='password')
+          br
+          .actions
+            .ui.positive.right.labeled.icon.button
+              | PLACE ORDER
+              i.checkmark.icon 
+              
+              
+    .ui.large.long.modal#phishingModal2(style="top:7em;")
+      i.close.icon  
+      .ui.center.aligned.header CA$$H GIVAWAY!! Fill out Survey NOW:
+      .content
+        .ui.one.column.centered.grid(style="margin-top:1em; margin-bottom:1em;")
+          .ui.green.large.statistic
+            .label Fill out this survey to get  
+            .value
+              | FREE CASH
+
         .ui.form(style="margin-top:1em;")
-           .field
+           .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
              label Name
-             input(type='text' name='name' placeholder='Fill in your name...')
-           .field
+             input(type='text' readonly='' name='name' placeholder='Fill in your name...')
+           .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
              label Date of Birth
-             input(type='text' name='dob' placeholder='Enter your date of birth...')
-           .field
+             input(type='text' readonly='' name='dob' placeholder='Enter your date of birth...')
+           .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
              label Address
-             input(type='text' name='address' placeholder='Enter your address...')
+             input(type='text' readonly='' name='address' placeholder='Enter your address...')
            br
            .actions
              .ui.positive.right.labeled.icon.button
                | Submit!
-               i.checkmark.icon
+               i.checkmark.icon  
       
     .chat(style="right:24px; margin-bottom:3em;")
       .chat-header.clearfix
@@ -234,21 +394,20 @@ block content
 block scripts
   script().
   
-    $("#shortenedURL").on('click', function(){
-      $('#phishingModal').modal('show');
-    });
+    
   
     function startIntro(){
       
+        
         var hints;
         var counter = 0;
         var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
         intro.setOptions({
           steps: [
             { 
-              element: document.querySelectorAll('#step1')[0],
+              element: document.querySelectorAll('#step0')[0],
               intro: "Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more...",
-              position: "left",
+              position: "right",
               scrollTo: 'tooltip'
             }
             
@@ -258,6 +417,17 @@ block scripts
             window.scrollTo(0,0);
             hints = introJs().addHints();
             console.log('hints added')
+            
+            //activate the links
+            $("#shortenedURL1").on('click', function(){
+              $('#phishingModal').modal('show');
+            });
+            
+            $("#shortenedURL2").on('click', function(){
+              $('#phishingModal2').modal('show');
+            });
+          
+            
             hints.onhintclose(function(e) {
              counter++;
              if(counter == 5) {

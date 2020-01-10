@@ -213,6 +213,7 @@ function check(req, res, next) {
 //All of our static files that express willl automatically server for us
 //in production, we have nginx server this instead to take the load off out Node app
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
+app.use(express.static(path.join(__dirname, 'public2'), { maxAge: 31557600000 }));
 app.use('/semantic',express.static(path.join(__dirname, 'semantic'), { maxAge: 31557600000 }));
 app.use(express.static(path.join(__dirname, 'uploads'), { maxAge: 31557600000 }));
 app.use(express.static(path.join(__dirname, 'post_pictures'), { maxAge: 31557600000 }));
