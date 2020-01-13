@@ -601,7 +601,6 @@ block scripts
     $(window).on("load", function() {openChat()}); 
    
     function openChat(){
-      if(currentModule == "phishing"){
       setTimeout(function(){
           $($('#chatbox1 .chat-history')[0]).slideToggle(300, 'swing');
           $($('#chatbox1 .chat-message')[0]).slideToggle(300, 'swing');
@@ -620,7 +619,6 @@ block scripts
           $($('#chatbox2 .chat-message')[0]).slideToggle(300, 'swing');
           
         }, 20000);    
-      }
     }
       
     /**
