@@ -1,68 +1,81 @@
 
-//a function to animate any unclicked labels, used for error messaging
 function animateUnclickedLabels() {
-  if($('#audience_info').is(":hidden")){
-    $('#audienceLabel').transition('bounce');
+  if($('#keyTerm1Definition').is(":hidden")){
+    $('#keyTerm1Label').transition('bounce');
   }
-  if($('#private_information_info').is(":hidden")){
-    $('#privateInformationLabel').transition('bounce');
+  if($('#keyTerm2Definition').is(":hidden")){
+    $('#keyTerm2Label').transition('bounce');
   }
-  if($('#risky_info').is(":hidden")){
-    $('#riskyLabel').transition('bounce');
+  if($('#keyTerm3Definition').is(":hidden")){
+    $('#keyTerm3Label').transition('bounce');
   }
 };
+
+function startIntro(){
+  if($('#question').is(":hidden")){
+    //User has not clicked next
+    $('#clickNextWarning').show();
+    $('#introduction_next').transition('bounce');
+  }else{
+    var clickedAllLabels = ($('#keyTerm1Definition').is(":visible") && $('#keyTerm2Definition').is(":visible") &&  $('#keyTerm3Definition').is(":visible"));
+    if(clickedAllLabels == true){
+      //everything is good to proceed
+      $('#clickLabelsWarning').hide();
+      window.location.href='/tutorial/phishing';
+    } else {
+      //User has not clicked all the labels
+      $('#clickLabelsWarning').show();
+      animateUnclickedLabels();
+    }
+  }
+};
+
+function clickLabel(labelName){
+  $(labelName.concat("Definition")).show();
+  $(labelName).transition('tada');
+  if(!($('#question').is(":hidden") ||  $('#keyTerm2Definition').is(":hidden") || $('#keyTerm1Definition').is(":hidden")|| $('#keyTerm3Definition').is(":hidden"))){
+    $('#clickLabelsWarning').hide();
+    $('.ui.labeled.icon.button').addClass('green');
+  }
+};
+
 
 $('#introduction_next').on('click', function () {
   $('#clickNextWarning').hide();
   $('#question').show();
   $('#question').transition('jiggle');
-  if(!($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#risky_info').is(":hidden"))){
+  if(!($('#question').is(":hidden") ||  $('#keyTerm2Definition').is(":hidden") || $('#keyTerm1Definition').is(":hidden") || $('#keyTerm3Definition').is(":hidden"))){
     $('.ui.labeled.icon.button').addClass('green');
   }
 });
 
-$('#audience>a').on('click', function () {
-    $('#audience_info').show();
-    $('#audience').transition('tada');
-    if(!($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden")|| $('#risky_info').is(":hidden"))){
+$('#keyTerm1>a').on('click', function () { clickLabel('#keyTerm1') });
+$('#keyTerm2>a').on('click', function () { clickLabel('#keyTerm2') });
+ $('#keyTerm3>a').on('click', function () { clickLabel('#keyTerm3') });
+
+/*$('#keyTerm1>a').on('click', function () {
+    $('#keyTerm1Definition').show();
+    $('#keyTerm1').transition('tada');
+    if(!($('#question').is(":hidden") ||  $('#keyTerm2Definition').is(":hidden") || $('#keyTerm1Definition').is(":hidden")|| $('#keyTerm3Definition').is(":hidden"))){
       $('#clickLabelsWarning').hide();
       $('.ui.labeled.icon.button').addClass('green');
     }
 });
 
-$('#private_information>a').on('click', function () {
-    $('#private_information_info').show();
-    $('#private_information').transition('tada');
-    if(!($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#risky_info').is(":hidden"))){
+$('#keyTerm2>a').on('click', function () {
+    $('#keyTerm2Definition').show();
+    $('#keyTerm2').transition('tada');
+    if(!($('#question').is(":hidden") ||  $('#keyTerm2Definition').is(":hidden") || $('#keyTerm1Definition').is(":hidden") || $('#keyTerm3Definition').is(":hidden"))){
       $('#clickLabelsWarning').hide();
       $('.ui.labeled.icon.button').addClass('green');
     }
 });
 
- $('#risky>a').on('click', function () {
-    $('#risky_info').show();
-    $('#risky').transition('tada');
-    if(!($('#question').is(":hidden") ||  $('#private_information_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#risky_info').is(":hidden"))){
+ $('#keyTerm3>a').on('click', function () {
+    $('#keyTerm3Definition').show();
+    $('#keyTerm3').transition('tada');
+    if(!($('#question').is(":hidden") ||  $('#keyTerm2Definition').is(":hidden") || $('#keyTerm1Definition').is(":hidden") || $('#keyTerm3Definition').is(":hidden"))){
       $('#clickLabelsWarning').hide();
       $('.ui.labeled.icon.button').addClass('green');
     }
-});
-
-function startIntro(){
-    if($('#question').is(":hidden")){
-      //User has not clicked next
-      $('#clickNextWarning').show();
-      $('#introduction_next').transition('bounce');
-    }else{
-      var clickedAllLabels = ($('#audience_info').is(":visible") && $('#private_information_info').is(":visible") &&  $('#risky_info').is(":visible"));
-      if(clickedAllLabels == true){
-        //everything is good to proceed
-        $('#clickLabelsWarning').hide();
-        window.location.href='/tutorial/phishing';
-      } else {
-        //User has not clicked all the labels
-        $('#clickLabelsWarning').show();
-        animateUnclickedLabels();
-      }
-    }
-  };
+});*/
