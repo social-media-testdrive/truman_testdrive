@@ -54,43 +54,6 @@ block content
     br
     
 block scripts
-  script().
+  script(src="/module_js/targeted/targeted_trans2.js")
   
-    $('.ui.dropdown')
-      .dropdown();
-      
-    $(".ui.selection.dropdown[name='topicSelect']").change(function() {
-          $('.ui.big.labeled.icon.button').addClass('green');
-          $('#selectTopicError').hide();
-          var newSelect = ($(".ui.selection.dropdown[name='topicSelect']").dropdown('get text'));
-          $.post("/feed", { targetedAdTopic: newSelect, _csrf: $('meta[name="csrf-token"]').attr('content') });
-    });
     
-    $('.ui.big.labeled.icon.button').on('click',function(){
-      if(!$(this).hasClass('green')){
-        $('#selectTopicError').show();
-        $("#animateDropdownError").transition('bounce');
-      }
-    })
-      
-      
-    function startIntro(){
-      
-      var currentSelect = ($(".ui.selection.dropdown[name='topicSelect']").dropdown('get text'));
-      
-      //record the choice in the db to use later when generating the free play section 
-      $.post("/interest", { chosenTopic: currentSelect, _csrf: $('meta[name="csrf-token"]').attr('content') });
-      
-      //take the user to the appropriate interest page depending on their choice
-      if($('.ui.big.labeled.icon.button').hasClass('green')){     
-        if(currentSelect === "Food"){
-          window.location.href='/food/targeted';
-        }else if (currentSelect === "Sports"){
-          window.location.href='/sports/targeted';
-        }else if (currentSelect === "Gaming"){
-          window.location.href='/gaming/targeted';
-        }
-      }
-      
-      
-    };
