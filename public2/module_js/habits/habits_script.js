@@ -84,26 +84,21 @@ $('.ui.selection.dropdown[name="reminderTimeSelect"]').dropdown();
         $('.habitsSettingsDisplay').hide();
         //get the current amount of time
         $.get( "/habitsTimer", function( data ) {
-          var activityDisplayTime = (data.totalTimeViewedHabits + (Date.now() - freePlayPageViewTimer))/60000;
-          activityDisplayTime = Math.round( activityDisplayTime * 10 ) / 10; //round to 1 decimal place
-          $('#habitsActivityTotalTime').html(activityDisplayTime);
+          var activityDisplayTimeMinutes = Math.floor((data.totalTimeViewedHabits + (Date.now() - freePlayPageViewTimer))/60000);
+          var activityDisplayTimeSeconds = Math.floor(((data.totalTimeViewedHabits + (Date.now() - freePlayPageViewTimer)) % 60000) / 1000);
+          $('#habitsActivityTotalTimeMinutes').html(activityDisplayTimeMinutes);
+          $('#habitsActivityTotalTimeSeconds').html(activityDisplayTimeSeconds);
           $('.habitsActivityDisplay').show();
         });
       });
 
       // Handle page visibility change
       document.addEventListener(visibilityChange, handleVisibilityChange, false);
-
+    }
   /**
    * End timer implementation and activity page for habits module
    */
 
-    //not in habits module, set the "let's continue" button click listener to have typical behavior
-    } else {
-      $('.ui.big.green.labeled.icon.button.script.habitsHomeDisplay').on('click', function(){
-        window.location.href('/results/'+currentModule);
-      })
-    }
 
 
 

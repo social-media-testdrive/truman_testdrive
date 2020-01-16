@@ -1,10 +1,11 @@
 $('#checkTime').on('click', function(){
   $.get( "/habitsTimer", function( data ) {
-    var activityDisplayTime = (data.totalTimeViewedHabits)/60000;
-    activityDisplayTime = Math.round( activityDisplayTime * 10 ) / 10; //round to 1 decimal place
-    $('#habitsActivityTotalTime').html(activityDisplayTime);
+    var activityDisplayTimeMinutes = Math.floor(data.totalTimeViewedHabits/60000);
+    var activityDisplayTimeSeconds = Math.floor((data.totalTimeViewedHabits % 60000) / 1000);
+    $('#habitsActivityTotalTimeMinutes').html(activityDisplayTimeMinutes);
+    $('#habitsActivityTotalTimeSeconds').html(activityDisplayTimeSeconds);
     $('#undoHide').show();
-    $('.ui.horizontal.statistic').show();
+    $('.ui.statistics').show();
   });
 })
 
@@ -15,14 +16,17 @@ function onPrint(){
 
   $(".insertPrint").append("<br><h4>How many of these attention-grabbing design features did you notice?</h4>");
   $(".checkOne").clone().appendTo(".insertPrint");
-  
+
   $(".insertPrint").append("<br><h4>How many minutes do you think you spent on the TestDrive timeline?</h4>");
   var responseTwo = document.getElementById("habits_responseTwo").value;
   $(".insertPrint").append(responseTwo);
-  if($('.ui.horizontal.statistic').is(":visible")){
+
+  if($('.ui.statistics').is(":visible")){
     $(".insertPrint").append("<br><h4>Actual time spent:</h4>");
-    var actualTime = $('#habitsActivityTotalTime').text();
-    $(".insertPrint").append(actualTime);
+    var actualTimeMinutes = $('#habitsActivityTotalTimeMinutes').text();
+    var actualTimeSeconds = $('#habitsActivityTotalTimeSeconds').text();
+    var stringToAppend = `${actualTimeMinutes} minutes and ${actualTimeSeconds} seconds`
+    $('.insertPrint').append(stringToAppend);
   }
 
   $(".insertPrint").append("<br><h4>What did you do when you saw an advertisement or a sponsored post?</h4>");

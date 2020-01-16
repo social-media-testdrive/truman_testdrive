@@ -125,16 +125,24 @@ block content
         br    
         
     //-activtiy page
-    .ui.container.habitsActivityDisplay(style="display:none;")
+    .ui.container.habitsActivityDisplay(style="display:none; padding-bottom:10em;")
       h2.ui.header My Activity
       .ui.divider
 
       h2.ui.header Time on TestDrive:
-      .ui.statistic
-        .value#habitsActivityTotalTime 0
-        .label
-          | minutes
-          
+      .ui.statistics
+        .statistic
+          .value#habitsActivityTotalTimeMinutes 0
+          .label
+            | min 
+        .statistic  
+          .value :
+          .label
+        .statistic
+          .value#habitsActivityTotalTimeSeconds 0
+          .label
+            | sec
+        
       h2.ui.header Manage My Time:
       br
       .field#reminderTimeSelectField

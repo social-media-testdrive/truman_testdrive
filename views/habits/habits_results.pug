@@ -54,10 +54,18 @@ block content
       button.ui.green.button#checkTime Find out the actual time!
       br
       .ui.header(style="display:none;")#undoHide You actually spent:
-      .ui.horizontal.statistic(style="display:none;")
-        .value#habitsActivityTotalTime 0
-        .label
-          | minutes
+      .ui.statistics(style="display:none;")
+        .statistic
+          .value#habitsActivityTotalTimeMinutes 0
+          .label
+            | min 
+        .statistic  
+          .value :
+          .label
+        .statistic
+          .value#habitsActivityTotalTimeSeconds 0
+          .label
+            | sec
         
 
     .ui.raised.segment

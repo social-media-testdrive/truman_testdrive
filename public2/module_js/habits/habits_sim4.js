@@ -47,11 +47,13 @@ function startIntro(){
     }
   });
 
-  //showing the "Need some help?" guidance message after 2 minutes on the page (assuming the user doesn't know to click "Got it")
+  //showing the "Need some help?" guidance message after 40 seconds per blue dot (assuming the user doesn't know to click "Got it")
   setTimeout(function(){
     if($('#removeHidden').is(":hidden")){
-      console.log("SHOW GUIDANCE");
-      $('#removeHidden').transition('fade');
+      if(literacy_counter != 3){
+        //user does not know to click blue dots
+        $('#removeHidden').transition('fade');
+      }
     }
   },120000);
 };

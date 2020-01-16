@@ -72,6 +72,8 @@ function startIntro(){
             //show the instructional message
             if($('#nextPageInstruction').is(":hidden")){
               $('#nextPageInstruction').transition('fade');
+              //add margin to the bottom of the page
+              $('#addBottomMargin').css('margin-bottom', '10em');
             }
 
            //enable the notifications button
@@ -88,7 +90,7 @@ function startIntro(){
           }
         });
 
-        //showing the "Need some help?" guidance message after 2 minutes on the page
+        //showing the "Need some help?" guidance message after a total of 40 seconds per blue dot (80s)
         setInterval(function(){
           if($('#removeHidden').is(":hidden")){
             console.log("counter: "+literacy_counter);
@@ -97,7 +99,7 @@ function startIntro(){
               $('#removeHidden').transition('fade');
             }
           }
-        },120000);
+        },80000);
       });
 
   };

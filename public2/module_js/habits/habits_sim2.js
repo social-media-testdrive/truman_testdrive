@@ -2,7 +2,7 @@ var literacy_counter = 0;
 
 function startIntro(){
   var hints = introJs().addHints();
-  var clickCount = 0; 
+  var clickCount = 0;
 
   //for providing guidance message
   hints.onhintclick(function(hintElement, item, stepId) {
@@ -44,6 +44,8 @@ function startIntro(){
       //show the instructional message
       if($('#nextPageInstruction').is(":hidden")){
         $('#nextPageInstruction').transition('fade');
+        //add margin to the bottom of the page
+        $('#addBottomMargin').css('margin-bottom', '10em');
       }
 
       //enable the settings button
@@ -60,7 +62,7 @@ function startIntro(){
      }
   });
 
-  //showing the "Need some help?" guidance message after 2 minutes on the page (assuming the user doesn't know to click "Got it")
+  //showing the "Need some help?" guidance message after 40 seconds per blue dot (assuming the user doesn't know to click "Got it")
   setTimeout(function(){
     if($('#removeHidden').is(":hidden")){
       if(literacy_counter != 2){
@@ -68,7 +70,7 @@ function startIntro(){
         $('#removeHidden').transition('fade');
       }
     }
-  },120000);
+  },80000);
 };
 
 $(window).on("load", function() {
