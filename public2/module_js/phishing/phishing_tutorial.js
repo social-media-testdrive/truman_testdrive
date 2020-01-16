@@ -35,9 +35,6 @@ function startIntro(){
         scrollTo: "tooltip"
       },
       {
-        intro: "Scammers can also trick you by pretending to be your friend. If you get a message from a friend asking for private information or money, think twice before you respond."
-      },
-      {
         element: document.querySelectorAll('#step6')[0],
         intro: "What can you do if you see someone posting a phishing scam?",
         position: "right",
@@ -63,17 +60,6 @@ function startIntro(){
       }
 
     ]
-  });
-
-  intro.onbeforechange(function() {
-      console.log($(this)[0]._currentStep);
-      if($(this)[0]._currentStep == 1){
-        intro.refresh();
-        console.log('refreshed');
-      }
-      if($(this)[0]._currentStep === 5){
-        $('.chat').transition("pulse");
-      }
   });
 
   intro.start().onexit(function() {
