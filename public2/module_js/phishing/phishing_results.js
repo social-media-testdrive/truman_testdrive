@@ -21,17 +21,19 @@ function onPrint(){
   window.print();
 
   $(".insertPrint").css('display','none');
-}
+};
 
-setTimeout(function(){
+function animateQuestions(){
   $('.ui.label').transition('bounce');
-}, 1000);
+};
 
-
-setTimeout(function(){
+function animateCards(){
   $('#card1,#card2,#card3').transition({
   animation : 'jiggle',
   duration  : 800,
   interval  : 200
   });
-}, 2000);
+};
+
+setTimeout(function(){animateQuestions()}, 1000);
+setTimeout(function(){animateCards()}, 2000);

@@ -68,6 +68,4 @@ function startIntro(){
 
 }; //end startIntro
 
-$(window).on("load", function() {
-  startIntro();
-});
+$(window).on("load", function() { startIntro(); });

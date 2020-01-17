@@ -11,12 +11,13 @@ function animateUnclickedLabels() {
   }
 };
 
-function startIntro(){
+function clickGotIt(){
   if($('#question').is(":hidden")){
-    //User has not clicked next
+    //User has not yet clicked next
     $('#clickNextWarning').show();
     $('#introduction_next').transition('bounce');
   }else{
+    //determine if all the labeles are clicked
     var clickedAllLabels = ($('#keyTerm1Definition').is(":visible") && $('#keyTerm2Definition').is(":visible") &&  $('#keyTerm3Definition').is(":visible"));
     if(clickedAllLabels == true){
       //everything is good to proceed
@@ -51,31 +52,4 @@ $('#introduction_next').on('click', function () {
 
 $('#keyTerm1>a').on('click', function () { clickLabel('#keyTerm1') });
 $('#keyTerm2>a').on('click', function () { clickLabel('#keyTerm2') });
- $('#keyTerm3>a').on('click', function () { clickLabel('#keyTerm3') });
-
-/*$('#keyTerm1>a').on('click', function () {
-    $('#keyTerm1Definition').show();
-    $('#keyTerm1').transition('tada');
-    if(!($('#question').is(":hidden") ||  $('#keyTerm2Definition').is(":hidden") || $('#keyTerm1Definition').is(":hidden")|| $('#keyTerm3Definition').is(":hidden"))){
-      $('#clickLabelsWarning').hide();
-      $('.ui.labeled.icon.button').addClass('green');
-    }
-});
-
-$('#keyTerm2>a').on('click', function () {
-    $('#keyTerm2Definition').show();
-    $('#keyTerm2').transition('tada');
-    if(!($('#question').is(":hidden") ||  $('#keyTerm2Definition').is(":hidden") || $('#keyTerm1Definition').is(":hidden") || $('#keyTerm3Definition').is(":hidden"))){
-      $('#clickLabelsWarning').hide();
-      $('.ui.labeled.icon.button').addClass('green');
-    }
-});
-
- $('#keyTerm3>a').on('click', function () {
-    $('#keyTerm3Definition').show();
-    $('#keyTerm3').transition('tada');
-    if(!($('#question').is(":hidden") ||  $('#keyTerm2Definition').is(":hidden") || $('#keyTerm1Definition').is(":hidden") || $('#keyTerm3Definition').is(":hidden"))){
-      $('#clickLabelsWarning').hide();
-      $('.ui.labeled.icon.button').addClass('green');
-    }
-});*/
+$('#keyTerm3>a').on('click', function () { clickLabel('#keyTerm3') });

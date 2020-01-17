@@ -1,19 +1,9 @@
-function startIntro(){
+function clickGetStarted(){
   window.location.href='/start/phishing';
 };
 
-$("#learn").on('click', function() {
-  $('#learn').transition('tada');
-  });
+function animateObject(obj){
+  $(obj).transition('tada');
+}
 
-$('#practice').on('click', function() {
-  $('#practice').transition('tada');
-});
-
-$('#explore').on('click', function() {
-  $('#explore').transition('tada');
-});
-
-$('#reflect').on('click', function() {
-  $('#reflect').transition('tada');
-});
+$("#learn, #practice, #explore, #reflect").on('click', function() {animateObject($(this))});
