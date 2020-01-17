@@ -36,6 +36,19 @@ function startHints(){
   });
 
   hints.addHints();
+  clickCount = 0;
+  //for providing guidance message
+  hints.onhintclick(function() {
+      clickCount++;
+      if(clickCount > 5){
+        //show the guidance message, user probably doesn't know to click "got it"
+        if($('#removeHidden').is(":hidden")){
+          $('#removeHidden').transition('fade');
+        } else {
+          $('#removeHidden').transition('bounce');
+        }
+      }
+  });
 
   //activate the phishing links
   $("#shortenedURL1").on('click', function() {showModal('#phishingModal')});
@@ -44,6 +57,10 @@ function startHints(){
 
   hints.onhintclose(function() {
      counter++;
+     clickCount = 0;
+     if($('#removeHidden').is(":visible")){
+       $('#removeHidden').transition('fade');
+     }
      if(counter == 5) {
        $('#clickAllDotsWarning').hide();
        $( ".cybertrans" ).addClass("green");

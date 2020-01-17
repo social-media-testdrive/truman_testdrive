@@ -50,6 +50,6 @@ $('#introduction_next').on('click', function () {
   }
 });
 
-$('#keyTerm1>a').on('click', function () { clickLabel('#keyTerm1') });
-$('#keyTerm2>a').on('click', function () { clickLabel('#keyTerm2') });
-$('#keyTerm3>a').on('click', function () { clickLabel('#keyTerm3') });
+$('#keyTerm1').on('click', function () { clickLabel('#keyTerm1') });
+$('#keyTerm2').on('click', function () { clickLabel('#keyTerm2') });
+$('#keyTerm3').on('click', function () { clickLabel('#keyTerm3') });
