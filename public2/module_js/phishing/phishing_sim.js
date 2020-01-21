@@ -62,7 +62,9 @@ function startHints(){
        $('#removeHidden').transition('fade');
      }
      if(counter == 5) {
-       $('#clickAllDotsWarning').hide();
+       if($('#clickAllDotsWarning').is(':visible')){
+         $('#clickAllDotsWarning').transition('fade');
+       }
        $( ".cybertrans" ).addClass("green");
      }
   });
@@ -70,7 +72,13 @@ function startHints(){
 
 function errorCheck(){
   if(counter != 5){
-    $('#clickAllDotsWarning').show();
+    //show the message normally the first time
+    if($('#clickAllDotsWarning').is(":hidden")){
+      $('#clickAllDotsWarning').transition('fade');
+    }else{
+      //otherwise, bounce the message to draw attention to it
+      $('#clickAllDotsWarning').transition('bounce');
+    }
   }
 };
 
