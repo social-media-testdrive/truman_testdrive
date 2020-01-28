@@ -6,6 +6,12 @@ function startIntro(){
     steps: [
       {
         element: document.querySelectorAll('#step0')[0],
+        intro: "One way someone can try to steal your identity on the internet is by getting you to click on a link or enter information about yourself.",
+        position: "right",
+        scrollTo: 'tooltip'
+      },
+      {
+        element: document.querySelectorAll('#step0')[0],
         intro: "Here are some tips on how to identify a phishing scam on social media. Look for these clues!",
         position: "right",
         scrollTo: 'tooltip'
@@ -24,7 +30,7 @@ function startIntro(){
       },
       {
         element: document.querySelectorAll('#step5')[0],
-        intro: "The message will sound urgent, making you worry that something is wrong. Or it will say that you have a limited time to respond. Be careful about messages that ask for financial information or information about your social media accounts.",
+        intro: "The message will sound urgent, making you worry that something is wrong.",
         position: "right",
         scrollTo: "tooltip"
       },

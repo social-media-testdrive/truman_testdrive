@@ -1,4 +1,3 @@
-
 function animateUnclickedLabels() {
   if($('#keyTerm1Definition').is(":hidden")){
     $('#keyTerm1Label').transition('bounce');

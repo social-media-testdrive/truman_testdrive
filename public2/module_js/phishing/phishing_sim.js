@@ -8,7 +8,7 @@ function startHints(){
   var hints = introJs().setOptions({
     hints: [
       {
-        hint: 'Check the content of the post for signs of phishing scams. This one is suspicious because it has spelling errors and sounds too good to be true.',
+        hint: 'This post is suspicious because it has spelling errors and sounds too good to be true.',
         element: '#hint1',
         hintPosition: 'middle-middle'
       },
