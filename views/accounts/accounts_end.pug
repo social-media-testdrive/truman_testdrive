@@ -1,0 +1,40 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container(style="margin-bottom:4em;")
+    br
+    h1 What would you like to do next?
+        
+    h3 Would you like to: 
+
+    .ui.big.green.labeled.icon.button.finish
+        i.checkmark.icon
+        |   Finish Lesson
+    br
+    br
+    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+        .ui.big.green.labeled.icon.button
+            i.edit.icon
+            |   Give Us Feedback (Optional) 
+            
+    br
+    br
+      
+    h3 You can also:
+
+    .ui.big.blue.labeled.icon.button.cybertutorial
+        i.chevron.circle.left.icon
+        |   Go Back to the Tutorial
+    br
+    br
+    .ui.big.blue.labeled.icon.button.cybersim
+        i.chevron.circle.left.icon
+        |   Go Back to the Guided Activity
+
+      
+block scripts
+  script().
+    function startIntro(){       
+      window.open(href='https://cornell.qualtrics.com/jfe/form/SV_9tMszwlpe1TIIxT');
+    };

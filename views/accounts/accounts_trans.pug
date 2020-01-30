@@ -1,0 +1,39 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container(style="padding-bottom:4em;")
+    br
+    .column
+      .ui.raised.segment
+        .ui.blue.ribbon.label
+          h3
+            i.history.icon
+            | &nbsp Let's review!
+        br
+          
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            |  To use a social media site, you need a username and a password. A username identifies who you are to people on social media. A password is a secret code that you use to access your account.
+                
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | A social media profile page will let other people learn about who you are. You can include information such as your first name, a picture of yourself, and a short description about yourself.
+          
+        br
+      
+    br
+    br
+      
+    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+        .ui.big.green.labeled.icon.button
+            i.rocket.icon
+            |   Got it!
+
+    block scripts
+  script().
+    function startIntro(){
+        window.location.href='/results/accounts';
+      };

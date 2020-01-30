@@ -1,0 +1,37 @@
+extends ../ui_layout
+
+block content
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  .ui.container(style="margin-bottom:4em;")
+    .ui.stackable.column.grid
+      .ui.column
+        .insertPrint
+        .ui.raised.segment
+          h3.ui.header
+            i.question.blue.icon
+            .content
+              | Reflect
+
+    .ui.raised.segment.responseOne
+      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
+        h4(style="float:left")
+          | What kind of information should you include or not include in a social media profile?
+      .ui.form
+        .inline.fields
+          label(style="font-size:120%;")
+          textarea.glowing-border(rows='2' id="accounts_responseOne")
+
+    br
+    .ui.big.green.labeled.icon.button(onclick="onPrint()")
+          i.right.arrow.icon
+          |   Print your response
+    br
+    br
+    .ui.big.green.labeled.icon.button.cyberbullying_end
+          i.rocket.icon
+          |   Continue
+          
+          
+block scripts
+  script(src = "/module_js/accounts/accounts_results.js")
+    

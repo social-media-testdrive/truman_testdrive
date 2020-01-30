@@ -306,6 +306,12 @@ app.get('/tutorial/:modId',passportConfig.isAuthenticated, function (req, res) {
   });
 });
 
+app.get('/tutorial2/:modId',passportConfig.isAuthenticated, function (req, res) {
+  res.render(req.param("modId") + '/' + req.param("modId")  +'_tutorial2', {
+    title: 'Tutorial'
+  });
+});
+
 app.get('/sim/:modId', passportConfig.isAuthenticated, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_sim', {
     title: 'Guided Activity'

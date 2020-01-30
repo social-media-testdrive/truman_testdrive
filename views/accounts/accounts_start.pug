@@ -1,0 +1,71 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container(style="padding-bottom:4em;")
+    br
+    .ui.raised.segment
+      h3.ui.header
+        i.book.blue.icon
+        .content
+          | Learn
+      hr
+      h5.ui.header
+        i.arrow.circle.right.blue.icon
+        .content
+          | Social media is made to share information! The purpose is to connect people over the internet. Sharing with people through social media can help you stay connected and communicate with your friends and family. You can learn more about what others are up to and even make new friends.
+      h5.ui.header
+        i.arrow.circle.right.blue.icon
+        .content
+          | To access the benefits of social media, you first need to create an account and fill out a profile. In this module, we will learn about the things you need to do to set up your social media account.             
+      
+      br
+      #introduction_next.button.ui.mini.green.right.labeled.icon.button
+              i.down.arrow.icon
+              |   Next
+    
+    #question.ui.segment.hidden
+      h3.ui.header
+        i.key.blue.icon
+        .content Key Ideas
+      .sub.header 
+        i.hand.pointer.icon(style="color:gray;")
+        span(style="color: gray;") Click on each label below to learn more
+      br
+      //- .ui.segments     
+      .ui.stackable.two.column.grid
+        .ui.column
+          #keyTerm1.ui.raised.segment
+            a.ui.blue.ribbon.label#keyTerm1Label
+                //- i.dollar.sign.icon 
+                span Username
+            span.hidden(id="keyTerm1Definition", style="font-weight:600") Just like your real name, usernames are the way we identify each other online. Our username tells other people who we are on social media.
+        
+        .ui.column
+          #keyTerm2.ui.raised.segment
+            a.ui.blue.ribbon.label#keyTerm2Label
+                //- i.magic.icon 
+                span Password
+            span.hidden(id="keyTerm2Definition",style="font-weight:600")  Passwords are like keys that help us get into our accounts. Just like a safe or locker, only the people who know the key can get inside the account.
+              ul(style="font-weight:400") Don’t share your password with anyone else! You should be the only person who knows what your password is.
+
+        .ui.column
+          #keyTerm3.ui.raised.segment
+            a.ui.blue.ribbon.label#keyTerm3Label
+                //- i.magic.icon 
+                span Profile
+            span.hidden(id="keyTerm3Definition",style="font-weight:600") Your personal page on social media that includes information about yourself, such as name, location, and photos.
+            
+    .ui.warning.message#clickNextWarning(style="display:none;")
+      .header
+       | Click "Next"
+    .ui.warning.message#clickLabelsWarning(style="display:none;")
+     .header
+      | Click on each label to proceed  
+    a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
+        .ui.labeled.icon.button
+            i.rocket.icon
+            |   Got it!
+            
+block scripts
+  script(src="/module_js/accounts/accounts_start.js")
