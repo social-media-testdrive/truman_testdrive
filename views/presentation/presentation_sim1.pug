@@ -17,7 +17,21 @@ block content
 
   
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column 
-
+    .ui.one.column.centered.grid(style="padding-top:1em;")
+      .ui.fixed.bottom.sticky(style="padding-bottom:6em;")
+        .ui.icon.compact.message.warning(style="display:none;")#removeHidden
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header Need some help? 
+            p Make sure you are clicking "Got it" on the blue dots!
+          
+        .ui.icon.message.warning(style="display:none;")#clickAllDotsWarning
+          i.close.icon
+          i.hand.pointer.icon.float
+          .content
+            .ui.header There are still blue dots to find!
+            p Click through all of the blue dots to continue.
     #blueDotStep.ui.fluid.card.dim.test(data-hint="Here, he posts funny pictures and casual things that he would not post on his main account because he only wants his best friends to see it.", data-position="top-left")
       .ui.dimmer.flag
             .content
@@ -238,6 +252,8 @@ block scripts
     function startIntro(){
         var hints;
         var literacy_counter = 0;
+        clickCount=0;
+        
         var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
           intro.setOptions({
             steps: [
@@ -250,24 +266,70 @@ block scripts
               
             ]
           });
-          intro.start().onexit(function() {
+          
+        intro.start().onexit(function() {
+          
           hints = introJs().addHints();
-          console.log('hints added')
+          
+          hints.onhintclick(function() {
+              clickCount++;
+              if(clickCount >= 3){
+                //show the guidance message, user probably doesn't know to click "got it"
+                if($('#removeHidden').is(":hidden")){
+                  $('#removeHidden').transition('fade');
+                  $('#cyberSim2Button').css("margin-bottom", "10em");
+                } else {
+                  $('#removeHidden').transition('bounce');
+                }
+              }
+          });
+          
           hints.onhintclose(function(e) {
            literacy_counter++;
+           clickCount = 0;
+           if($('#removeHidden').is(":visible")){
+             $('#removeHidden').transition('fade');
+             if($('#clickAllDotsWarning').is(":hidden")){
+               $('#cyberSim2Button').css("margin-bottom", "4em");
+             }
+           }
            if(literacy_counter == 3) {
-             $("#clickAllDotsSim").hide();
+             if($('#clickAllDotsWarning').is(':visible')){
+               $('#clickAllDotsWarning').transition('fade');
+               $('#cyberSim2Button').css("margin-bottom", "4em");
+             }
              $( ".cybersim2" ).addClass("green");
            }
           });
+          
+          //error messaging
+          $('#cyberSim2Button').on('click', function() {
+            if(literacy_counter != 3){
+              //show the message normally the first time
+              if($('#clickAllDotsWarning').is(":hidden")){
+                $('#clickAllDotsWarning').transition('fade');
+                $('#cyberSim2Button').css("margin-bottom", "10em");
+              }else{
+                //otherwise, bounce the message to draw attention to it
+                $('#clickAllDotsWarning').transition('bounce');
+              }
+            }
+          });
+          
+          //showing the "Need some help?" guidance message after a total of 2 minutes
+          setInterval(function(){
+            if($('#removeHidden').is(":hidden")){
+              if(literacy_counter != 3){
+                //user does not know to click blue dots
+                $('#removeHidden').transition('fade');
+                $('#cyberSim2Button').css('margin-bottom', '10em');
+              }
+            }
+          },120000);
+          
         });
           
-        //error messaging
-        $('#cyberSim2Button').on('click', function() {
-          if(literacy_counter != 3){
-            $('#clickAllDotsSim').show();
-          }
-        });
+      
       };
 
       $(window).on("load", function() {startIntro();});

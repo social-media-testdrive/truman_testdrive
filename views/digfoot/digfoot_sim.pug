@@ -5,7 +5,23 @@ block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   .computer.only.tablet.only.four.wide.column 
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
-    
+
+    .ui.one.column.centered.grid(style="padding-top:1em;")
+      .ui.fixed.bottom.sticky(style="padding-bottom:6em;")
+        .ui.icon.compact.message.warning(style="display:none;")#removeHidden
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header Need some help? 
+            p Make sure you are clicking "Got it" on the blue dots!
+          
+        .ui.icon.message.warning(style="display:none;")#clickAllDotsWarning
+          i.close.icon
+          i.hand.pointer.icon.float
+          .content
+            .ui.header There are still blue dots to find!
+            p Click through all of the blue dots to continue.
+                    
     .ui.small.modal#digfoot_sim_modal
       i.close.icon  
       .header How would this post influence digital footprints?
@@ -38,7 +54,7 @@ block content
           i.checkmark.icon
     
     
-    #newpost.ui.fluid.left.labeled.right.icon.input(data-hint=" How can you have a positive impact on your digital footprint? You can post things related to your hobbies, your school activities, or any other interests!", data-position="top-left")
+    #newpost.ui.fluid.left.labeled.right.icon.input(style="margin-top:1em;" data-hint=" How can you have a positive impact on your digital footprint? You can post things related to your hobbies, your school activities, or any other interests!", data-position="top-left")
       .ui.label
         if user.profile.picture
           img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture)
@@ -46,7 +62,6 @@ block content
           img.ui.avatar.image(src=cdn+user.gravatar(60))
       input(type='text', placeholder='Create a post')
       i.big.photo.link.icon
-  
 
     .ui.fluid.card.test#step1
       .ui.dimmer.flag
@@ -270,7 +285,7 @@ block content
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
             
-    .ui.warning.message#clickAllDotsWarning(style="display:none;")
+    //-.ui.warning.message#clickAllDotsWarning(style="display:none;")
       .header
         | Click through all of the blue dots to continue
     button.ui.big.labeled.icon.button.cybertrans#cyberTransButton(style="margin-bottom:4em;")
@@ -288,7 +303,8 @@ block scripts
     function startIntro(){
       
         var hints;
-        var counter = 0;
+        clickCount = 0;
+        counter = 0;
         var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
         intro.setOptions({
           steps: [
@@ -301,25 +317,77 @@ block scripts
             
           ]
         });
-          intro.start().onexit(function() {
+        
+        intro.start().onexit(function() {
           hints = introJs().addHints();
-          console.log('hints added')
-          hints.onhintclose(function(e) {
+          
+          hints.onhintclick(function() {
+              clickCount++;
+              if(clickCount > 5){
+                //show the guidance message, user probably doesn't know to click "got it"
+                if($('#removeHidden').is(":hidden")){
+                  $('#removeHidden').transition('fade');
+                  $('#cyberTransButton').css('margin-bottom','10em');
+                } else {
+                  $('#removeHidden').transition('bounce');
+                }
+              }
+          });
+          
+          hints.onhintclose(function() {
            counter++;
+           clickCount = 0;
+           if($('#removeHidden').is(":visible")){
+             $('#removeHidden').transition('fade');
+             if($('#clickAllDotsWarning').is(":hidden")){
+               $('#cyberTransButton').css("margin-bottom", "4em");
+             }
+           }
            if(counter == 5) {
-             $('#clickAllDotsWarning').hide();
+             if($('#clickAllDotsWarning').is(':visible')){
+               $('#clickAllDotsWarning').transition('fade');
+               $('#cyberTransButton').css("margin-bottom", "4em");
+             }
              $( ".cybertrans" ).addClass("green");
            }
           });
+          
+        
+        
+          //error messaging
+          $('#cyberTransButton').on('click', function() {
+            if(counter != 5){
+              //show the message normally the first time
+              if($('#clickAllDotsWarning').is(":hidden")){
+                $('#clickAllDotsWarning').transition('fade');
+                $('#cyberTransButton').css("margin-bottom", "10em");
+              }else{
+                //otherwise, bounce the message to draw attention to it
+                $('#clickAllDotsWarning').transition('bounce');
+              }
+            }
+          });
+          
+          //showing the "Need some help?" guidance message after a total of 2 minutes
+          setInterval(function(){
+            if($('#removeHidden').is(":hidden")){
+              if(counter != 5){
+                //user does not know to click blue dots
+                $('#removeHidden').transition('fade');
+                $('#cyberTransButton').css('margin-bottom', '10em');
+              }
+            }
+          },120000);
+          
         });
         
-        //error messaging
-        $('#cyberTransButton').on('click', function() {
-          if(counter != 5){
-            $('#clickAllDotsWarning').show();
+        $('#cyberTransButton').on('click', function(){
+          if($('#removeHidden').is(":visible") || $('#clickAllDotsWarning').is(":visible")){
+            $('#cyberTransButton').css('margin-bottom', '10em');
+          }else{
+            $('#cyberTransButton').css('margin-bottom', '4em');
           }
         });
-          
       };
 
       $(window).on("load", function() {startIntro();});

@@ -35,7 +35,7 @@ function startIntro(){
         hints.onhintclick(function(hintElement, item, stepId) {
             //console.log('hint clicked', hintElement, item, stepId);
             clickCount++;
-            if(clickCount > 5){
+            if(clickCount >= 4){
               //show the guidance message, user probably doesn't know to click "got it"
               if($('#removeHidden').is(":hidden")){
                 $('#removeHidden').transition('fade');

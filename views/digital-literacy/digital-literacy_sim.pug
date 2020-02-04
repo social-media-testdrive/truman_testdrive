@@ -5,7 +5,22 @@ block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   .computer.only.tablet.only.four.wide.column 
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
-
+    .ui.one.column.centered.grid(style="padding-top:1em;")
+      .ui.fixed.bottom.sticky(style="padding-bottom:6em;")
+        .ui.icon.compact.message.warning(style="display:none;")#removeHidden
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header Need some help? 
+            p Make sure you are clicking "Got it" on the blue dots!
+          
+        .ui.icon.message.warning(style="display:none;")#clickAllDotsWarning
+          i.close.icon
+          i.hand.pointer.icon.float
+          .content
+            .ui.header There are still blue dots to find!
+            p Click through all of the blue dots to continue.
+            
     #step1.ui.fluid.card.dim()
       .ui.dimmer.flag
         .content
@@ -312,45 +327,89 @@ block scripts
     $('.ui.accordion').accordion();   
     function startIntro(){
         var hints;
+        clickCount = 0;
         var literacy_counter = 0;
         var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
-          intro.setOptions({
-            steps: [
-              { 
-                element: document.querySelectorAll('#step1')[0],
-                intro: "In this activity, let's look at the signs of fake news on social media. See if you can spot the clues!",
-                position:'left',
-                scrollTo:'tooltip'
-              },
-              { 
-                element: document.querySelectorAll('#step1')[0],
-                intro: "Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; to learn more...",
-                position:'left',
-                scrollTo:'tooltip'
-              }
-              
-            ]
-          });
-          intro.start().onexit(function() {
+        
+        intro.setOptions({
+          steps: [
+            { 
+              element: document.querySelectorAll('#step1')[0],
+              intro: "In this activity, let's look at the signs of fake news on social media. See if you can spot the clues!",
+              position:'left',
+              scrollTo:'tooltip'
+            },
+            { 
+              element: document.querySelectorAll('#step1')[0],
+              intro: "Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; to learn more...",
+              position:'left',
+              scrollTo:'tooltip'
+            }
+            
+          ]
+        });
+        
+        intro.start().onexit(function() {
+          
           hints = introJs().addHints();
-          console.log('hints added')
+          
+          hints.onhintclick(function() {
+              clickCount++;
+              if(clickCount > 4){
+                //show the guidance message, user probably doesn't know to click "got it"
+                if($('#removeHidden').is(":hidden")){
+                  $('#removeHidden').transition('fade');
+                  $('#digitalLiteracySimButton').css("margin-bottom", "10em");
+                } else {
+                  $('#removeHidden').transition('bounce');
+                }
+              }
+          });
+          
           hints.onhintclose(function(e) {
            literacy_counter++;
+           clickCount = 0;
+           if($('#removeHidden').is(":visible")){
+             $('#removeHidden').transition('fade');
+             if($('#clickAllDotsWarning').is(":hidden")){
+               $('#digitalLiteracySimButton').css("margin-bottom", "4em");
+             }
+           }
            if(literacy_counter == 4) {
-             $("#clickAllDotsWarning").hide();
+             if($('#clickAllDotsWarning').is(':visible')){
+               $('#clickAllDotsWarning').transition('fade');
+               $('#digitalLiteracySimButton').css("margin-bottom", "4em");
+             }
              $( ".cybertrans" ).addClass("green");
            }
           });
-        });
         
         //error messaging
         $('#digitalLiteracySimButton').on('click', function() {
           if(literacy_counter != 4){
-            $('#clickAllDotsWarning').show();
+            //show the message normally the first time
+            if($('#clickAllDotsWarning').is(":hidden")){
+              $('#clickAllDotsWarning').transition('fade');
+              $('#digitalLiteracySimButton').css("margin-bottom", "10em");
+            }else{
+              //otherwise, bounce the message to draw attention to it
+              $('#clickAllDotsWarning').transition('bounce');
+            }
           }
         });
-          
-      };
+        
+        //showing the "Need some help?" guidance message after a total of 2 minutes
+        setInterval(function(){
+          if($('#removeHidden').is(":hidden")){
+            if(literacy_counter != 4){
+              //user does not know to click blue dots
+              $('#removeHidden').transition('fade');
+              $('#digitalLiteracySimButton').css('margin-bottom', '10em');
+            }
+          }
+        },120000);
+      });  
+    };
       
   
       

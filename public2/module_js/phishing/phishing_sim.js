@@ -2,6 +2,16 @@ function showModal(modal){
   $(modal).modal('show');
 }
 
+//showing the "Need some help?" guidance message after 40 seconds per blue dot (assuming the user doesn't know to click "Got it")
+function showHelp(){
+  if($('#removeHidden').is(":hidden")){
+    if(counter != 5){
+      //user does not know to click blue dots
+      $('#removeHidden').transition('fade');
+    }
+  }
+};
+
 function startHints(){
   window.scrollTo(0,0);
 
@@ -37,10 +47,11 @@ function startHints(){
 
   hints.addHints();
   clickCount = 0;
+  counter = 0;
   //for providing guidance message
   hints.onhintclick(function() {
       clickCount++;
-      if(clickCount > 5){
+      if(clickCount >= 5){
         //show the guidance message, user probably doesn't know to click "got it"
         if($('#removeHidden').is(":hidden")){
           $('#removeHidden').transition('fade');
@@ -68,6 +79,8 @@ function startHints(){
        $( ".cybertrans" ).addClass("green");
      }
   });
+
+  setInterval(function () {showHelp();}, 120000);
 };
 
 function errorCheck(){

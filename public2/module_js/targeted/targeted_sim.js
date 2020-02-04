@@ -1,7 +1,17 @@
+function showHelp(){
+  if($('#removeHidden').is(":hidden")){
+    if(literacy_counter != 5){
+      //user does not know to click blue dots
+      $('#removeHidden').transition('fade');
+    }
+  }
+};
+
 function startIntro(){
 
   var hints;
-  var literacy_counter = 0;
+   literacy_counter = 0;
+  clickCount = 0;
   var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
     intro.setOptions({
       steps: [
@@ -93,20 +103,47 @@ function startIntro(){
        });
 
       hints = introJs().addHints();
-      console.log('hints added')
+
+      //for providing guidance message
+      hints.onhintclick(function() {
+          clickCount++;
+          if(clickCount >= 5){
+            //show the guidance message, user probably doesn't know to click "got it"
+            if($('#removeHidden').is(":hidden")){
+              $('#removeHidden').transition('fade');
+            } else {
+              $('#removeHidden').transition('bounce');
+            }
+          }
+      });
+
       hints.onhintclose(function(e) {
        literacy_counter++;
+       clickCount = 0;
+       if($('#removeHidden').is(":visible")){
+         $('#removeHidden').transition('fade');
+       }
        if(literacy_counter == 5) {
-         $("#clickAllDotsSim").hide();
+         if($('#clickAllDotsWarning').is(':visible')){
+           $('#clickAllDotsWarning').transition('fade');
+         }
          $( ".cybertrans" ).addClass("green");
        }
      });
+
+     setInterval(function (){showHelp()},120000);
   });
 
   //error messaging
   $('#cyberTransButton').on('click', function() {
     if(literacy_counter != 5){
-      $('#clickAllDotsSim').show();
+      //show the message normally the first time
+      if($('#clickAllDotsWarning').is(":hidden")){
+        $('#clickAllDotsWarning').transition('fade');
+      }else{
+        //otherwise, bounce the message to draw attention to it
+        $('#clickAllDotsWarning').transition('bounce');
+      }
     }
   });
 
