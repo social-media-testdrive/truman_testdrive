@@ -3,6 +3,21 @@ extends ../ui_layout
 block content
 
   .ui.text.container(style="margin-bottom:4em;")
+    .ui.one.column.centered.grid(style="padding-top:1em;")
+      .ui.fixed.bottom.sticky(style="padding-bottom:6em;")
+        .ui.icon.compact.message.warning(style="display:none;")#removeHidden
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header Need some help? 
+            p Make sure you are clicking "Got it" on the blue dots!
+          
+        .ui.icon.message.warning(style="display:none;")#clickAllDotsWarning
+          i.close.icon
+          i.hand.pointer.icon.float
+          .content
+            .ui.header There are still blue dots to find!
+            p Click through all of the blue dots to continue.
     br
     br
     h1 Social Media TestDrive Privacy Policy:
@@ -74,6 +89,7 @@ block scripts
     var privacy_sim2_counter = 0;
     function startIntro(){
       var hints;
+      clickCount = 0;
       var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true, 'doneLabel':'Done &#10003', 'tooltipClass':'blueTooltip' });
         intro.setOptions({
           steps: [
@@ -88,24 +104,74 @@ block scripts
             }
           ]
         });
-        intro.start().onexit(function() {
+      intro.start().onexit(function() {
+        
         hints = introJs().addHints();
-        console.log('hints added')
+        
+        hints.onhintclick(function() {
+            clickCount++;
+            if(clickCount >= 4){
+              //show the guidance message, user probably doesn't know to click "got it"
+              if($('#removeHidden').is(":hidden")){
+                $('#removeHidden').transition('fade');
+                $('#privacytutorial').css("margin-bottom", "10em");
+              } else {
+                $('#removeHidden').transition('bounce');
+              }
+            }
+        });
+        
         hints.onhintclose(function(e) {
          privacy_sim2_counter++;
+         clickCount = 0;
+         if($('#removeHidden').is(":visible")){
+           $('#removeHidden').transition('fade');
+           if($('#clickAllDotsWarning').is(":hidden")){
+             $('#privacytutorial').css("margin-bottom", "4em");
+           }
+         }
          if(privacy_sim2_counter == 4) {
-           $('#clickAllDotsSim2').hide();
+           if($('#clickAllDotsWarning').is(':visible')){
+             $('#clickAllDotsWarning').transition('fade');
+             $('#privacytutorial').css("margin-bottom", "4em");
+           }
            $( ".privacytutorial" ).addClass("green");
          }
         });
-      });
         
+        //error messaging
+        $('#privacytutorial').on('click', function() {
+          if(privacy_sim2_counter != 4){
+            //show the message normally the first time
+            if($('#clickAllDotsWarning').is(":hidden")){
+              $('#clickAllDotsWarning').transition('fade');
+              $('#privacytutorial').css("margin-bottom", "10em");
+            }else{
+              //otherwise, bounce the message to draw attention to it
+              $('#clickAllDotsWarning').transition('bounce');
+            }
+          }
+        });
+        
+        //showing the "Need some help?" guidance message after a total of 2 minutes
+        setInterval(function(){
+          if($('#removeHidden').is(":hidden")){
+            if(privacy_sim2_counter != 4){
+              //user does not know to click blue dots
+              $('#removeHidden').transition('fade');
+              $('#privacytutorial').css('margin-bottom', '10em');
+            }
+          }
+        },120000);
+        
+        
+      });  
     };
     
-    $('#privacytutorial').on('click', function () { 
+    /*$('#privacytutorial').on('click', function () { 
       if(privacy_sim2_counter != 4){
         $('#clickAllDotsSim2').show();
       }
-    });
+    });*/
     
     $(window).on("load", function() {startIntro();});

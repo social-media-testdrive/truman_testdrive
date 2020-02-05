@@ -17,6 +17,21 @@ block content
 
   
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column 
+    .ui.one.column.centered.grid(style="padding-top:1em;")
+      .ui.fixed.bottom.sticky(style="padding-bottom:6em;")
+        .ui.icon.compact.message.warning(style="display:none;")#removeHidden
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header Need some help? 
+            p Make sure you are clicking "Got it" on the blue dots!
+          
+        .ui.icon.message.warning(style="display:none;")#clickAllDotsWarning
+          i.close.icon
+          i.hand.pointer.icon.float
+          .content
+            .ui.header There are still blue dots to find!
+            p Click through all of the blue dots to continue.
 
     .ui.fluid.card.dim.test()
       .ui.dimmer.flag
@@ -388,16 +403,40 @@ block content
 block scripts
   script().
     var literacy_counter = 0;
+    clickCount = 0;
     
     function startIntro(){
         var hints;
       
         hints = introJs().addHints();
-        console.log('hints added')
+        
+        hints.onhintclick(function() {
+            clickCount++;
+            if(clickCount > 2){
+              //show the guidance message, user probably doesn't know to click "got it"
+              if($('#removeHidden').is(":hidden")){
+                $('#removeHidden').transition('fade');
+                $('#settings2').css("margin-bottom", "10em");
+              } else {
+                $('#removeHidden').transition('bounce');
+              }
+            }
+        });
+        
         hints.onhintclose(function(e) {
          literacy_counter++;
+         clickCount = 0;
+         if($('#removeHidden').is(":visible")){
+           $('#removeHidden').transition('fade');
+           if($('#clickAllDotsWarning').is(":hidden")){
+             $('#settings2').css("margin-bottom", "4em");
+           }
+         }
          if(literacy_counter == 2) {
-           $('#clickAllDotsFree4').hide();
+           if($('#clickAllDotsWarning').is(':visible')){
+             $('#clickAllDotsWarning').transition('fade');
+             $('#settings2').css("margin-bottom", "4em");
+           }
            $( ".settings2" ).addClass("green");
          }
         });
@@ -407,8 +446,26 @@ block scripts
       
       $('#settings2').on('click', function () { 
         if(literacy_counter != 2){
-          $('#clickAllDotsFree4').show();
+          //show the message normally the first time
+          if($('#clickAllDotsWarning').is(":hidden")){
+            $('#clickAllDotsWarning').transition('fade');
+            $('#settings2').css("margin-bottom", "10em");
+          }else{
+            //otherwise, bounce the message to draw attention to it
+            $('#clickAllDotsWarning').transition('bounce');
+          }
         }
       });
+      
+      //showing the "Need some help?" guidance message after a total of 40 seconds per blue dot
+      setInterval(function(){
+        if($('#removeHidden').is(":hidden")){
+          if(literacy_counter != 2){
+            //user does not know to click blue dots
+            $('#removeHidden').transition('fade');
+            $('#settings2').css('margin-bottom', '10em');
+          }
+        }
+      },80000);
 
       $(window).on("load", function() {startIntro();});

@@ -4,7 +4,23 @@ block content
   
   .computer.only.tablet.only.four.wide.column 
   .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
-    .ui.container(data-hint="What would Lily need to do if she didn’t want strangers to see her social media posts? Which privacy settings would she have to change?")
+    .ui.one.column.centered.grid(style="padding-top:1em;")
+      .ui.fixed.bottom.sticky(style="padding-bottom:6em;")
+        .ui.icon.compact.message.warning(style="display:none;")#removeHidden
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header Need some help? 
+            p Make sure you are clicking "Got it" on the blue dots!
+          
+        .ui.icon.message.warning(style="display:none;")#clickAllDotsWarning
+          i.close.icon
+          i.hand.pointer.icon.float
+          .content
+            .ui.header There are still blue dots to find!
+            p Click through all of the blue dots to continue.
+    
+    .ui.container(style="margin-top:1em;" data-hint="What would Lily need to do if she didn’t want strangers to see her social media posts? Which privacy settings would she have to change?")
       h2.ui.header#topOfPage Privacy Settings
       br
       .ui.divider
@@ -152,6 +168,7 @@ block scripts
   script().
     
     var literacy_counter = 0;
+    clickCount = 0;
     
     //Get the status of the key setting
     var keySetting1 = $("input[name='toggleValue']").is(':checked');
@@ -178,12 +195,35 @@ block scripts
         var hints;
 
         hints = introJs().addHints();
-        console.log('hints added')
+        
+        hints.onhintclick(function() {
+            clickCount++;
+            if(clickCount >= 3){
+              //show the guidance message, user probably doesn't know to click "got it"
+              if($('#removeHidden').is(":hidden")){
+                $('#removeHidden').transition('fade');
+                $('#free3Button').css("margin-bottom", "10em");
+              } else {
+                $('#removeHidden').transition('bounce');
+              }
+            }
+        });
+        
         hints.onhintclose(function(e) {
          literacy_counter++;
+         clickCount = 0;
+         if($('#removeHidden').is(":visible")){
+           $('#removeHidden').transition('fade');
+           if($('#clickAllDotsWarning').is(":hidden")){
+             $('#free3Button').css("margin-bottom", "4em");
+           }
+         }
          if(literacy_counter == 3) {
+           if($('#clickAllDotsWarning').is(':visible')){
+             $('#clickAllDotsWarning').transition('fade');
+             $('#free3Button').css("margin-bottom", "4em");
+           }
            if(keySetting1 == true){
-              $('#clickAllDotsSettings2').hide();
               $( ".free3" ).addClass("green");
            }
          }
@@ -200,7 +240,14 @@ block scripts
       
       $('#free3Button').on('click', function () {  
         if(literacy_counter != 3){
-          $('#clickAllDotsSettings2').show();
+          //show the message normally the first time
+          if($('#clickAllDotsWarning').is(":hidden")){
+            $('#clickAllDotsWarning').transition('fade');
+            $('#free3Button').css("margin-bottom", "10em");
+          }else{
+            //otherwise, bounce the message to draw attention to it
+            $('#clickAllDotsWarning').transition('bounce');
+          }
         }
         if(keySetting1 == false){
           $('#privateAccountCueText').show(); 
