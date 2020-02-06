@@ -3,47 +3,68 @@ function reportPasswordStrength(currentInput){
   var regexCaps = new RegExp("[A-Z]+");
   var regexLower = new RegExp("[a-z]+");
   var regexNum = new RegExp("[0-9]+");
+  var regexSymbol = new RegExp("[\\W|_]+");
 
   if(regexCaps.test(currentInput)){
-    if(uppercase == 0){
-      uppercase = 1;
-      $('#example5').progress('increment');
-    }
+    uppercase = 1;
   } else {
-    if(uppercase == 1){
-      $('#example5').progress('decrement');
-    }
     uppercase = 0;
   }
 
   if(regexLower.test(currentInput)){
-    if(lowercase == 0){
-      lowercase = 1;
-      $('#example5').progress('increment');
-    }
+    lowercase = 1;
   } else {
-    if(lowercase == 1){
-      $('#example5').progress('decrement');
-    }
     lowercase = 0;
   }
 
   if(regexNum.test(currentInput)){
-    if(number == 0){
-      number = 1;
-      $('#example5').progress('increment');
-    }
+    number = 1;
   } else {
-    if(number == 1){
-      $('#example5').progress('decrement');
-    }
     number = 0;
   }
 
-  //correcting any potentially lagging UI
-  if((uppercase + lowercase + number) == 0){
-    $('#example5').progress('reset');
+  if(regexSymbol.test(currentInput)){
+    symbol = 1;
+  } else {
+    symbol = 0;
   }
+
+  //correcting any potentially lagging UI
+  if((uppercase + lowercase + number + symbol) == 0){
+    $('#passwordStrength').progress('reset');
+    $("#strengthLabel").text("Password Strength");
+  }
+  //showing a message to indicate strength: weak, average, strong, very strong
+  if((uppercase + lowercase + number + symbol) == 1){
+    $('#passwordStrength').progress({
+      value: 1
+    });
+    $("#strengthLabel").text("Password Strength: Weak");
+  }
+  //showing a message to indicate strength: weak, average, strong, very strong
+  if((uppercase + lowercase + number + symbol) == 2){
+    $('#passwordStrength').progress({
+      value: 2
+    });
+    $("#strengthLabel").text("Password Strength: Average");
+  }
+
+  //showing a message to indicate strength: weak, average, strong, very strong
+  if((uppercase + lowercase + number + symbol) == 3){
+    $('#passwordStrength').progress({
+      value: 3
+    });
+    $("#strengthLabel").text("Password Strength: Strong");
+  }
+
+  //showing a message to indicate strength: weak, average, strong, very strong
+  if((uppercase + lowercase + number + symbol) == 4){
+    $('#passwordStrength').progress({
+      value: 4
+    });
+    $("#strengthLabel").text("Password Strength\: Very Strong");
+  }
+
 };
 
 function clickHint(){
@@ -87,6 +108,11 @@ function showHelp(){
 };
 
 function startHints(){
+
+  //enable the fields
+  $('input[name="username"]').removeAttr('readonly');
+  $('input[name="password"]').removeAttr('readonly');
+
   window.scrollTo(0,0);
 
   var hints = introJs().setOptions({
@@ -135,6 +161,7 @@ function startHints(){
   uppercase = 0;
   lowercase = 0;
   number = 0;
+  symbol = 0;
 
   $('input[name="password"]').on('input', function(){reportPasswordStrength($(this).val());});
 

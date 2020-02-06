@@ -25,21 +25,30 @@ block content
     .ui.raised.segment#generalStep
       h2.ui.header Create An Account
       
-      .ui.form
+      .ui.form(style="font-size:130%;")
         .field
           label(style="margin-bottom:1em;") Username
           div#hint1 
-          input(type="text" name='username' placeholder="username" style="margin-top:1em;")
+          input(readonly='' type="text" name='username' placeholder="username" style="margin-top:1em;")
+        br
         .field
           label(style="margin-bottom:1em;") Password
           div#hint2
-          input(type="password" name="password" placeholder="password" style="margin-top:1em;")  
-      br    
-      #example5.ui.indicating.small.progress(data-value='0' data-total='3')
+          input(readonly='' type="password" name="password" placeholder="password" style="margin-top:1em;")  
+      #passwordStrength.ui.indicating.small.progress(style="margin-top:.5em;" data-value='0' data-total='4')
         .bar
-        .label Password Strength
-  
-
+      span#strengthLabel(style="font-weight:bold; font-size:120%;") Password Strength
+      br
+      br
+      .ui.segment
+        span(style="font-weight:bold; font-size:120%;") Try to make a very strong password! Remember to use:
+        br
+        .ui.basic.segment
+          .ui.bulleted.list(style="font-size:120%;")
+            .item uppercase letters
+            .item lowercase letters
+            .item numbers
+            .item symbols
     button.ui.big.labeled.icon.button#continueSim(style="margin-bottom:4em;")
         i.rocket.icon
         |   Let's Continue!      

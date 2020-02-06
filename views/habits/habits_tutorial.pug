@@ -102,10 +102,14 @@ block content
             a(href='/user/cupcake25')
               img.ui.avatar.image(src=cdn+'/profile_pictures/user24.jpg')
               span='Jenny Chen'
-          .image
-            img.post(src=cdn+"/post_pictures/drone_video.png")
+          //-.image
+            img.post(src="/post_pictures/testGif.gif")
+          //-.ui.embed(data-src='/post_pictures/little_sheep.mp4')
+          
+          video(width='auto' height='310' autoplay loop controls)
+            source(src=cdn + '/post_pictures/little_sheep.mp4' type='video/mp4')
           .content
-            .description="Watch this video to find out more about the history of drones!!"
+            .description="Cute video - A young Desert Bighorn Sheep walks by in the Rim Country of Grand Canyon National Park"
             //-.right.floated.meta
               i.icon.checkmark
               | Seen by 12
