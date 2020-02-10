@@ -3,28 +3,29 @@ extends ui_layout
 block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   .computer.only.tablet.only.four.wide.column 
-    .ui.card
-      .image
-        if actor.class == 'high_read'
-          img(src=actor.profile.picture)
-        else
-          img(src=cdn+'/profile_pictures/'+actor.profile.picture)
-      .content
-        a.header= actor.profile.name
-        .meta="@"+actor.username
-        .description=actor.profile.bio
-        .description 
-          i.marker.icon
-          span=actor.profile.location
-      .two.ui.bottom.attached.icon.buttons
-          button.ui.button.block(data-tooltip='Block User', data-position='bottom left', username=actor.username)
-            i.ban.icon
-          |  
-          button.ui.button.report(data-tooltip='Report User', data-position='bottom right', username=actor.username)
-            i.flag.icon
+    .ui.sticky.sideMenu
+      .ui.card
+        .image
+          if actor.class == 'high_read'
+            img(src=actor.profile.picture)
+          else
+            img(src=cdn+'/profile_pictures/'+actor.profile.picture)
+        .content
+          a.header= actor.profile.name
+          .meta="@"+actor.username
+          .description=actor.profile.bio
+          .description 
+            i.marker.icon
+            span=actor.profile.location
+        .two.ui.bottom.attached.icon.buttons
+            button.ui.button.block(data-tooltip='Block User', data-position='bottom left', username=actor.username)
+              i.ban.icon
+            |  
+            button.ui.button.report(data-tooltip='Report User', data-position='bottom right', username=actor.username)
+              i.flag.icon
 
 
-  .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column 
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column 
     each val in script
       if(val.type !== 'notification')
         .ui.fluid.card.dim(postID=val.id, ui=user.ui, notify=user.notify, state=val.state || 'unread', type='actor')

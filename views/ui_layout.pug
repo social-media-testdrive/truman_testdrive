@@ -195,29 +195,11 @@ html
       .ui.steps .step:after {
       background-color: inherit !important;
      }
-    
      
-     /*--------SCREENSHOTS----------*/
-     @media print{ 
-       body * {
-         display: none;
-       }
-       .insertPrint,
-       .insertPrint * {
-         display: block;
-         overflow: visible;
-       }
-       .ui.big.green.labeled.icon.button {
-         display: none;
-       }
-       .ui.menu {
-         display: none;
-       }
-       .breakHere{
-         page-break-before: always;
-       }  
+     .computer.only.tablet.only.four.wide.column {
+       height: auto !important;
      }
-
+     
       @charset "utf-8";
       /* CSS Document */
 
@@ -641,23 +623,27 @@ html
         font-weight: normal;
         font-size: 65%;
       }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      
+      /*--------SCREENSHOTS----------*/
+      @media print{ 
+        body * {
+          display: none;
+        }
+        .insertPrint,
+        .insertPrint * {
+          display: block;
+          overflow: visible;
+        }
+        .ui.big.green.labeled.icon.button {
+          display: none;
+        }
+        .ui.menu {
+          display: none;
+        }
+        .breakHere{
+          page-break-before: always;
+        }  
+      }
 
       
   script.
@@ -697,7 +683,7 @@ html
     //script(src='/semantic/dist/semantic.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js', integrity='sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=', crossorigin='anonymous')
     
-    script(src=cdn+'/js/main9.js')
+    script(src=cdn+'/js/main10.js')
     block scripts
 
     //- // Google Analytics: change UA-XXXXX-X to be your site's ID

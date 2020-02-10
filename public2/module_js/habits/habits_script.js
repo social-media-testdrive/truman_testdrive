@@ -2,8 +2,6 @@
 let pathArray = window.location.pathname.split('/');
 var currentModule = pathArray[2];
 
-//Activating the sticky functionality for the left column
-//$('.ui.sticky.sideMenu').sticky();
 
 //activating a normal dropdown (the one used in the habits module settings)
 $('.ui.selection.dropdown[name="pauseTimeSelect"]').dropdown('set selected', '1 hour');

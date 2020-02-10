@@ -7,6 +7,14 @@ $('#loading').show();
 
 $(window).on("load", function () {
 
+  //Activating the sticky functionality for the left column
+  $('.ui.sticky.sideMenu')
+    .sticky({
+      context: '#content',
+      offset: 90
+    })
+  ;
+
 /*
 Start chat box code
 */
