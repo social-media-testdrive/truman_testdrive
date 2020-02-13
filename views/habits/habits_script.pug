@@ -24,7 +24,7 @@ block content
           else
             img(src=user.gravatar(60))
         .content
-          a.header(href='/me/'+mod)= user.profile.name || user.email || user.id
+          a.header.myProfileLink(href='/me/'+mod)= user.profile.name || user.email || user.id
           .meta="@Guest"
           .description=user.profile.bio
           .description
@@ -32,7 +32,7 @@ block content
               i.marker.icon
               span=user.profile.location
         .one.ui.bottom.attached.icon.buttons
-            button.ui.editprofile.button(data-tooltip='Update Your Profile', data-position='bottom left')
+            button.ui.habitsEditprofile.button(data-tooltip='Update Your Profile', data-position='bottom left')
                 i.write.icon
       
             
@@ -191,12 +191,12 @@ block content
           .content
             .right.floated.time.meta= ((Date.now() - (Date.now() - val.absTime)))
             |  
-            a.ui.avatar.image(href='/me/'+mod)
+            a.ui.avatar.image.myProfileLink(href='/me/'+mod)
               if user.profile.picture
                 img(src=cdn+'/profile_pictures/'+user.profile.picture)
               else
                 img(src=user.gravatar(60))
-            a(href='/me/'+mod)
+            a.myProfileLink(href='/me/'+mod)
               span=user.profile.name || user.email || user.id
           if val.picture
             .image
@@ -316,7 +316,8 @@ block content
           .content
             .right.floated.time.meta= (Date.now() + val.time)
             |  
-            a(href='/user/'+val.actor.username)
+            //-a(href='/user/'+val.actor.username)#actorLink
+            a(href='/user/'+val.actor.username)#actorLink
               img.ui.avatar.image(src='/picture.svg', data-src=cdn+'/profile_pictures/'+val.actor.profile.picture)
               span=val.actor.profile.name
           //-div(style="position: relative; z-index: 1;")
@@ -437,11 +438,11 @@ block content
     br
   
     //- New Post Modal  
-    .ui.small.post.modal  
+    .ui.small.post.modal 
       i.close.icon  
       .header Add a New Post  
       .content  
-        form#postform.ui.feed.form(action='/post/new', method='POST')  
+        form#postform.ui.feed.form(action='/post/new', method='POST')
           input(type='hidden', name='_csrf', value=_csrf) 
           input(type='hidden', name='module', value=mod)  
           .field  
@@ -514,7 +515,7 @@ block content
               
           .ui.error.message 
       .actions  
-        input.ui.green.button(type='submit', name="foo", value='Post', form='postform')
+        input.ui.green.button(type='submit', name="foo", value='Post', form='postform')#submitForm
                  
     //-Show a post as a popup, used in habits module
     .ui.tiny.long.viewPolicyPopup.modal(style="top:5em;")  
