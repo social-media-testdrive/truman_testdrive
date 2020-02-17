@@ -1,3 +1,7 @@
+let clickCount = 0;
+let counter = 0;
+const numberOfHints = 5;
+
 function showModal(modal){
   $(modal).modal('show');
 }
@@ -5,9 +9,22 @@ function showModal(modal){
 //showing the "Need some help?" guidance message after 40 seconds per blue dot (assuming the user doesn't know to click "Got it")
 function showHelp(){
   if($('#removeHidden').is(":hidden")){
-    if(counter != 5){
+    if(counter != numberOfHints){
       //user does not know to click blue dots
       $('#removeHidden').transition('fade');
+    }
+  }
+};
+
+function errorCheck(){
+  if(counter != numberOfHints){
+    //show the message normally the first time
+    if($('#clickAllDotsWarning').is(":hidden")){
+      $('#clickAllDotsWarning').transition('fade');
+      $('#cyberTransButton').css("margin-bottom", "10em");
+    }else{
+      //otherwise, bounce the message to draw attention to it
+      $('#clickAllDotsWarning').transition('bounce');
     }
   }
 };
@@ -46,12 +63,11 @@ function startHints(){
   });
 
   hints.addHints();
-  clickCount = 0;
-  counter = 0;
+
   //for providing guidance message
   hints.onhintclick(function() {
       clickCount++;
-      if(clickCount >= 5){
+      if(clickCount >= numberOfHints){
         //show the guidance message, user probably doesn't know to click "got it"
         if($('#removeHidden').is(":hidden")){
           $('#removeHidden').transition('fade');
@@ -71,49 +87,45 @@ function startHints(){
      clickCount = 0;
      if($('#removeHidden').is(":visible")){
        $('#removeHidden').transition('fade');
+       if($('#clickAllDotsWarning').is(":hidden")){
+         $('#cyberTransButton').css("margin-bottom", "4em");
+       }
      }
-     if(counter == 5) {
+     if(counter == numberOfHints) {
        if($('#clickAllDotsWarning').is(':visible')){
          $('#clickAllDotsWarning').transition('fade');
+         $('#cyberTransButton').css("margin-bottom", "4em");
        }
        $( ".cybertrans" ).addClass("green");
      }
   });
 
-  setInterval(function () {showHelp();}, 120000);
-};
-
-function errorCheck(){
-  if(counter != 5){
-    //show the message normally the first time
-    if($('#clickAllDotsWarning').is(":hidden")){
-      $('#clickAllDotsWarning').transition('fade');
-    }else{
-      //otherwise, bounce the message to draw attention to it
-      $('#clickAllDotsWarning').transition('bounce');
-    }
-  }
+  setInterval(showHelp, 120000);
 };
 
 function startIntro(){
-  //global
-  counter = 0;
-  var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
+  var intro = introJs().setOptions({
+    'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false,
+    'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true,
+    'doneLabel':'Done &#10003'
+  });
   intro.setOptions({
     steps: [
       {
         element: document.querySelectorAll('#step0')[0],
-        intro: "Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more...",
+        intro: "Click on the blue dots&nbsp;<a role='button' "+
+          "tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'>"+
+          "</div><div class='introjs-hint-pulse'></div></a>" +
+          " &nbsp; &nbsp; &nbsp;to learn more...",
         position: "right",
         scrollTo: 'tooltip'
       }
-
     ]
   });
 
-  intro.start().onexit(function() {startHints()});
-  $('#cyberTransButton').on('click', function() {errorCheck()});
+  intro.start().onexit(startHints);
+  $('#cyberTransButton').on('click', errorCheck);
 
 };
 
-$(window).on("load", function() {startIntro();});
+$(window).on("load", startIntro);
