@@ -8,7 +8,7 @@ function openPhishingModal(phishingLink){
   }
 }
 
-//Misc code
+$('.ui.modal').modal({ closable: false });
 $('.big.plus.icon').css({"display": "block"})
 $('.ui.simple.dropdown.item').css({"display":"inherit"})
 

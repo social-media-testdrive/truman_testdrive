@@ -306,9 +306,12 @@ block content
              input(type='text' readonly='' name='address' placeholder='Enter your address...')
            br
            .actions
-             .ui.positive.right.labeled.icon.button
-               | Submit!
-               i.checkmark.icon  
+             .ui.right.labeled.icon.button(data-tooltip="This is a phishing website! You should not enter any private information." data-position="top left")
+               | Submit
+               i.checkmark.icon 
+             .ui.negative.right.labeled.icon.button
+               | Cancel
+               i.close.icon 
                
     .ui.large.long.modal#phishingModal2(style="top:8em;")
       i.close.icon  
@@ -333,9 +336,12 @@ block content
             input(type='password' readonly='' name='password' placeholder='Enter your password...')
           br
           .actions
-            .ui.positive.right.labeled.icon.button
+            .ui.right.labeled.icon.button(data-tooltip="This is a phishing website! You should not enter any private information." data-position="top left")
               | Submit
               i.checkmark.icon 
+            .ui.negative.right.labeled.icon.button
+              | Cancel
+              i.close.icon 
               
     .ui.large.long.modal#phishingModal3(style="top:8em;")
       i.close.icon  
@@ -364,9 +370,12 @@ block content
             input(type='password' readonly='' name='password')
           br
           .actions
-            .ui.positive.right.labeled.icon.button
+            .ui.right.labeled.icon.button(data-tooltip="This is a phishing website! You should not enter any private information." data-position="top left")
               | PLACE ORDER
               i.checkmark.icon 
+            .ui.negative.right.labeled.icon.button
+              | CLOSE
+              i.close.icon 
                
     //- New Post Modal  
     .ui.small.post.modal  

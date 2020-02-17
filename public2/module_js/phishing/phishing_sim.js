@@ -6,7 +6,7 @@ function showModal(modal){
   $(modal).modal('show');
 }
 
-//showing the "Need some help?" guidance message after 40 seconds per blue dot (assuming the user doesn't know to click "Got it")
+//showing the "Need some help?" guidance message after 40 seconds per blue dot
 function showHelp(){
   if($('#removeHidden').is(":hidden")){
     if(counter != numberOfHints){
@@ -35,27 +35,34 @@ function startHints(){
   var hints = introJs().setOptions({
     hints: [
       {
-        hint: 'This post is suspicious because it has spelling errors and sounds too good to be true.',
+        hint: `This post is suspicious because it has spelling errors and sounds
+        too good to be true.`,
         element: '#hint1',
         hintPosition: 'middle-middle'
       },
       {
-        hint: 'This post has a shortened URL, which can lead to a risky website. Don’t click on the link!',
+        hint: `This post has a shortened URL, which can lead to a risky website.
+        Don’t click on the link!`,
         element: '#hint2',
         hintPosition: 'middle-right'
       },
       {
-        hint: "Watch out for scammers who are pretending to be your friend! You may see a photo of someone you know, but the post isn't really from them.",
+        hint: `Watch out for scammers who are pretending to be your friend!
+        You may see a photo of someone you know, but the post isn't
+        really from them.`,
         element: '#hint3',
         hintPosition: 'middle-middle'
       },
       {
-        hint: "If you decide the post is a phishing scam, you can flag the post to report it.",
+        hint: `If you decide the post is a phishing scam, click on the flag
+        to report it.`,
         element: '#hint4',
         hintPosition: 'middle-right'
       },
       {
-        hint: "Let’s warn people that this post might be a phishing scam. Copy and paste the following comment: “This post looks suspicious! It might be a scam. Don’t click on the link!”",
+        hint: `Let’s warn people that this post might be a phishing scam. Copy
+        and paste the following comment: “This post looks suspicious!
+        It might be a scam. Don’t click on the link!”`,
         element: '#hint5',
         hintPosition: 'middle-middle'
       }
@@ -81,6 +88,9 @@ function startHints(){
   $("#shortenedURL1").on('click', function() {showModal('#phishingModal')});
   $("#shortenedURL2").on('click', function() {showModal('#phishingModal2')});
 
+  $('.ui.negative.right.labeled.icon.button').on('click', function(){
+
+  })
 
   hints.onhintclose(function() {
      counter++;
@@ -128,4 +138,5 @@ function startIntro(){
 
 };
 
+$('.ui.modal').modal({ closable: false });
 $(window).on("load", startIntro);
