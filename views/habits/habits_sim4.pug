@@ -54,16 +54,24 @@ block content
     br
     //-Activity display 
     .ui.container.habitsActivityDisplay
-      h2.ui.header(data-hint="Some social media sites even have a page where you can track the time you have spent using the site or app. You can even set daily time limit reminders!" data-hintPosition='middle-middle') My Activity
+      h2.ui.header(data-hint="Some social media sites also have a page where you can track the time you have spent using the site or app. You can even set daily time limit reminders!" data-hintPosition='middle-middle') My Activity
       .ui.divider
 
-      h2.ui.header(data-hint="It’s important to be mindful of how much time you spend on social media." data-hintPosition='middle-middle') Time on TestDrive:
-      .ui.statistic
-        .value#habitsActivityTotalTime 6.5
-        .label
-          | minutes
+      h2.ui.header(data-hint="It’s important to be mindful of how much time you spend on social media. Think about how to balance social media use with the time you spend on other activities, like hanging out with your friends face-to-face!" data-hintPosition='middle-middle') Time on TestDrive:
+      .ui.statistics
+        .statistic
+          .value 6
+          .label
+            | min 
+        .statistic  
+          .value :
+          .label
+        .statistic
+          .value 30
+          .label
+            | sec
           
-      h2.ui.header Manage My Time:
+      h2.ui.header(data-hint="Signs that you need a break from social media might include things like missing time with family or friends, feeling sad, anxious, or tired, or struggling to stay on top of homework and chores." data-hintPosition="middle-middle") Manage My Time:
       br
       .field(data-hint="Take a break or disconnect if you think you have been using it too much!" data-hintPosition="middle-middle")#reminderTimeSelectField
         label(style="font-size:100%; font-weight:bold;") Set Daily Reminder

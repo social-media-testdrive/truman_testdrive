@@ -22,7 +22,7 @@ function startIntro(){
   });
 
   $('button.ui.big.labeled.icon.button.cybertrans').on('click', function(){
-    if(literacy_counter != 3){
+    if(literacy_counter != 4){
       //show the message normall the first time
       if($('#notificationWarning').is(":hidden")){
         $('#notificationWarning').transition('fade');
@@ -39,7 +39,7 @@ function startIntro(){
       $("#removeHidden").transition('fade');
     }
     literacy_counter++;
-    if(literacy_counter == 3) {
+    if(literacy_counter == 4) {
      $('button.ui.big.labeled.icon.button.cybertrans').addClass('green');
      if($('#notificationWarning').is(":visible")){
        $("#notificationWarning").transition('fade');
@@ -50,7 +50,7 @@ function startIntro(){
   //showing the "Need some help?" guidance message after 40 seconds per blue dot (assuming the user doesn't know to click "Got it")
   setTimeout(function(){
     if($('#removeHidden').is(":hidden")){
-      if(literacy_counter != 3){
+      if(literacy_counter != 4){
         //user does not know to click blue dots
         $('#removeHidden').transition('fade');
       }
