@@ -1,14 +1,14 @@
 extends ../ui_layout
 
 block content
-  
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   .ui.text.container(style="padding-bottom:4em;")
     br
     .ui.raised.segment(style="text-align:center;")
       br
       a.ui.card(style="display:inline-block;")
         .image
-          img(src='/upstander.png')
+          img(src=cdn+'/upstander.png')
         .content
           .header="How to Be an Upstander"
       h3.ui.block.center.aligned.header(style="background: linear-gradient(to right, #FCF6BD 0%, #D0F4DE 25%,#A9DEF9 50%,#E4C1F9 100%);")
