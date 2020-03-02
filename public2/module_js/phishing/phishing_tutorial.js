@@ -14,8 +14,8 @@ function startIntro(){
       },
       {
         element: document.querySelectorAll('#step0')[0],
-        intro: `Here are some tips on how to identify a phishing scam on social
-        media. Look for these clues!`,
+        intro: `Here are some tips on how to identify a phishing scam on
+        social media.`,
         position: "right",
         scrollTo: 'tooltip'
       },
@@ -37,13 +37,13 @@ function startIntro(){
       },
       {
         element: document.querySelectorAll('#step5')[0],
-        intro: `The message will sound urgent, making you worry that something
-        is wrong.`,
+        intro: `Be wary of messages that sound urgent. Scammers often create
+        posts that make you worry or feel like something is wrong.`,
         position: "right",
         scrollTo: "tooltip"
       },
       {
-        element: document.querySelectorAll('#step6')[0],
+        element: document.querySelectorAll('#step5')[0],
         intro: `Look out for spelling and grammar errors, as well as images
         that don’t look quite right. A real company does not send out
         messages with these kinds of errors.`,
@@ -68,13 +68,6 @@ function startIntro(){
         intro: `You can press the “Flag” button to report the post
         to the website.`,
         position: "right",
-        scrollTo: "tooltip"
-      },
-      {
-        element: document.querySelectorAll('#commentStep')[0],
-        intro: `You can also write a comment on the post to warn other people
-         that it might be a scam.`,
-        position: "top",
         scrollTo: "tooltip"
       }
 

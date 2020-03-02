@@ -36,18 +36,18 @@ block content
               h3.ui.inverted.header
                 span The admins will review this post further. We are sorry you had this experience.
 
-      .content#hint1
-        .right.floated.meta= "Yesterday"
+      .content
+        .right.floated.meta#hint1= "Yesterday"
         |
         a(href='/user/cool.kid5386')
           img.ui.avatar.image(src=cdn+'/profile_pictures/user63.jpg')
           span='Liam Knapke'
       .image
-        img.post(src=cdn+'/post_pictures/phishingga1.png')
+        img.post(src=cdn+'/post_pictures/phishingga_new.png')
       .content
         .description#hint2
-          | BRAND NEW IPHONE -90% OFF!! Shop our bigggest $ale of the year! CyBeR MoNDdAy SAVnGs!! 
-          span(style="color:#0000FF;")#shortenedURL1 http://bit.ly/CybMond 
+          | Get BRaND nEW iPhONE for FREE!! 
+          span(style="color:#0000FF;")#shortenedURL1 http://bit.ly/5Bd6hTcO
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
           i.reply.icon
@@ -92,7 +92,7 @@ block content
                 a.like Like
                 a.flag Flag
       .extra.content
-        .ui.fluid.left.labeled.right.icon.input#hint5
+        .ui.fluid.left.labeled.right.icon.input
           .ui.label
             img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
           input.newcomment(type='text' placeholder='Write a Comment')
@@ -190,11 +190,11 @@ block content
           img.ui.avatar.image(src=cdn+'/profile_pictures/user64.jpg')
           span='Samantha Bautista'
       .image
-        img.post(src=cdn+"/post_pictures/phishingga3.jpg")
+        img.post(src=cdn+"/post_pictures/phishingga_new2.jpg")
       .content
         .description
-          | CA$$H GIVAWAY!! Fill out survey NOW:
-          span(style="color:#0000FF;")#shortenedURL2  http://give.away/quickca$h
+          | Universal Theme Park ticket GIVAWAY!! Fill out surrvey NOW: 
+          span(style="color:#0000FF;")#shortenedURL2  http://give.away/parktix
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
           i.reply.icon
@@ -315,11 +315,11 @@ block content
         
     .ui.large.long.modal#phishingModal(style="top:7em;")
       i.close.icon  
-      .ui.center.aligned.header WOW! Get a new iPhone for just $19.99!!
+      .ui.center.aligned.header WOW! Get a new iPhone!!
       .ui.one.column.centered.grid(style="margin-top:1em; margin-bottom:1em;")
         .image.content
          .ui.medium.centered.image
-           img(src=cdn+'/post_pictures/phishingga1.png')
+           img(src=cdn+'/post_pictures/phishingga_new.png')
          .description
            .ui.header(style="margin-top:1em; font-size:200%;") Brand new iPhones! 
            .ui.header 
@@ -327,21 +327,21 @@ block content
              span(style="color:red;")  3
              |  left!!!
       .content
-       .ui.header Enter your card information to place an order for this CRAZY deal! 
+       .ui.header Enter your information to get this CRAZY deal! 
        .ui.form(style="margin-top:1em;")
           .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
             label Name
-            input(type='text' readonly='' name='cardholderName')
+            input(type='text' readonly='' name='name')
           .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
-            label Credit Card Number
-            input(type='text' readonly='' name='cardNumber')
+            label Email Address
+            input(type='text' readonly='' name='email')
           .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
-            label Security Code 
-            input(type='password' readonly='' name='password')
+            label Home Address
+            input(type='password' readonly='' name='homeaddress')
           br
           .actions
             .ui.right.labeled.icon.button(data-tooltip="This is a phishing website! You should not enter any private information." data-position="top left")
-              | PLACE ORDER
+              | SUBMIT
               i.checkmark.icon 
             .ui.negative.right.labeled.icon.button
               | CLOSE
@@ -350,13 +350,14 @@ block content
               
     .ui.large.long.modal#phishingModal2(style="top:7em;")
       i.close.icon  
-      .ui.center.aligned.header CA$$H GIVAWAY!! Fill out Survey NOW:
+      .ui.center.aligned.header 
+        | Universal Theme Park ticket GIVAWAY!! Fill out surrvey NOW:
       .content
         .ui.one.column.centered.grid(style="margin-top:1em; margin-bottom:1em;")
           .ui.green.large.statistic
             .label Fill out this survey to get  
             .value
-              | FREE CASH
+              | FREE TICKETS
 
         .ui.form(style="margin-top:1em;")
            .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")

@@ -5,6 +5,9 @@ function animateUnchecked(){
   if($("#checkbox2").is(":not(:checked)")){
     $("#item2").transition('bounce');
   }
+  if($("#checkbox3").is(":not(:checked)")){
+    $("#item3").transition('bounce');
+  }
 };
 
 function checkStatus(){
@@ -33,9 +36,6 @@ setTimeout(function(){
   $('.sub.header').transition('shake');
 }, 1500);
 
-setTimeout(function(){
-  $('#point1').transition('jiggle');
-}, 2500);
 
 $("input").change(function(){ checkStatus(); });
 $("#phishingTutGuideButton").on('click', function() { clickGotIt() });

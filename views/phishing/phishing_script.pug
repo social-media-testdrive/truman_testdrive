@@ -357,17 +357,20 @@ block content
              span(style="color:red;")  3
              |  left!!!
       .content
-       .ui.header Enter your card information to place an order for this CRAZY deal! 
+       .ui.header Enter your information to place an order for this CRAZY deal! 
        .ui.form(style="margin-top:1em;")
           .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
             label Name
-            input(type='text' readonly='' name='cardholderName')
+            input(type='text' readonly='' name='name')
           .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
-            label Credit Card Number
-            input(type='text' readonly='' name='cardNumber')
+            label Email
+            input(type='text' readonly='' name='email')
           .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
-            label Security Code 
-            input(type='password' readonly='' name='password')
+            label Home Address
+            input(type='password' readonly='' name='homeAddress')
+          .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
+            label School name
+            input(type='password' readonly='' name='schoolName')
           br
           .actions
             .ui.right.labeled.icon.button(data-tooltip="This is a phishing website! You should not enter any private information." data-position="top left")

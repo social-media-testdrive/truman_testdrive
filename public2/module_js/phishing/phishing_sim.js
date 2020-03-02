@@ -1,6 +1,6 @@
 let clickCount = 0;
 let counter = 0;
-const numberOfHints = 5;
+const numberOfHints = 4;
 
 function showModal(modal){
   $(modal).modal('show');
@@ -55,16 +55,9 @@ function startHints(){
       },
       {
         hint: `If you decide the post is a phishing scam, click on the flag
-        to report it.`,
+        button to report it.`,
         element: '#hint4',
         hintPosition: 'middle-right'
-      },
-      {
-        hint: `Let’s warn people that this post might be a phishing scam. Copy
-        and paste the following comment: “This post looks suspicious!
-        It might be a scam. Don’t click on the link!”`,
-        element: '#hint5',
-        hintPosition: 'middle-middle'
       }
     ]
   });
