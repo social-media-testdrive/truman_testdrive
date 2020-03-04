@@ -62,62 +62,8 @@ block content
         |   Got it!
 
 block scripts
-  script().
+  script(src="/module_js/digital-literacy/digital-literacy_tut_guide.js")
   
-    $('.ui.accordion').accordion();   
-
-    setTimeout(function(){
-      $('.sub.header').transition('shake'); 
-    }, 1500);
-
-    setTimeout(function(){
-      $('#point1').transition('jiggle');    
-    }, 2500);
-    
-    setTimeout(function(){
-      $('#point2').transition('jiggle');    
-    }, 3000);
-
-
-    $('#point1_button').on('click', function () {
-      //if (($('#protip1 .checkbox input')[0].checked) && ($('#protip2 .checkbox input')[0].checked)){
-        //$("#checkAllBoxesWarning").hide();
-        $('#point2').transition('jiggle');
-        $('#point2').click();
-      //}
-      //else {
-        //$('#checkAllBoxesWarning').show();
-      //}
-     });
-
-
-    /*$('#point2_button').on('click', function () {
-      if (($('#protip3 .checkbox input')[0].checked) && ($('#protip4 .checkbox input')[0].checked)){
-        $('#point3').transition('jiggle');
-        $('#point3').click();
-      }
-      else {
-        $("#checkAllBoxesWarning").show();
-      }
-    }); */
-
-    $("input").change(function(){
-      if (($('input:checked').length) == 
-            ($('input').length)){
-        $("#checkAllBoxesWarning").hide();
-        $('.ui.big.labeled.icon.button.cybersim').addClass('green');
-        $('.ui.big.labeled.icon.button.cybersim').transition('jiggle');
-      }
-      else{
-        $('.ui.big.labeled.icon.button.cybersim').removeClass('green');
-      }
-    });
-    
-    $("#cyberSimButton").on('click', function() {
-      if(($('input:checked').length) != ($('input').length)){
-        $("#checkAllBoxesWarning").show();
-      }
-    });
-   
+  
     
     
