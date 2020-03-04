@@ -2,9 +2,9 @@ extends ../ui_layout
 
 block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
-  .ui.text.container(style="padding-bottom:4em;")
+  .ui.sixteen.wide.column.welcomePageColumn
     br
-    .ui.raised.segment(style="text-align:center;")
+    .ui.raised.segment(style="text-align:center; width:100%; margin:0 0;")
       h3.ui.block.center.aligned.header(style="background: linear-gradient(to right, #FCF6BD 0%, #D0F4DE 25%,#A9DEF9 50%,#E4C1F9 100%);")
         //- i.bullhorn.blue.icon
         | Welcome to Social Media TestDrive!
@@ -41,7 +41,7 @@ block content
             .title REFLECT
             .title(style="background-color:#E4C1F9 !important;")  on what you did
 
-    .ui.basic.segment(style="text-align:center;")
+    .ui.basic.segment(style="text-align:center; padding-bottom:4em;")
       a(href='javascript:void(0);', onclick='javascript:startIntro();')
           .ui.big.green.labeled.icon.button.welcomeButton
               i.rocket.icon
@@ -49,7 +49,7 @@ block content
     br
     br
     br
-   
+ 
    
 block scripts
   script(src="/module_js/cyberbullying/cyberbullying_intro.js")
