@@ -1,4 +1,4 @@
-function clickGetStarted(){
+function startIntro(){
   window.location.href='/start/accounts';
 };
 
