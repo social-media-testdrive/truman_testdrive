@@ -1,75 +1,56 @@
+let numberOfDots = 0;
+let closeCount = 0;
+let clickCount = 0;
+//for the password strength indicator
+const regexCaps = new RegExp("[A-Z]+");
+const regexLower = new RegExp("[a-z]+");
+const regexNum = new RegExp("[0-9]+");
+const regexSymbol = new RegExp("[\\W|_]+");
+let uppercase = 0;
+let lowercase = 0;
+let number = 0;
+let symbol = 0;
+let strengthLevel = 0;
+
 function reportPasswordStrength(currentInput){
+  uppercase = regexCaps.test(currentInput);
+  lowercase = regexLower.test(currentInput);
+  number = regexNum.test(currentInput);
+  symbol = regexSymbol.test(currentInput);
 
-  var regexCaps = new RegExp("[A-Z]+");
-  var regexLower = new RegExp("[a-z]+");
-  var regexNum = new RegExp("[0-9]+");
-  var regexSymbol = new RegExp("[\\W|_]+");
+  strengthLevel = uppercase + lowercase + number + symbol;
 
-  if(regexCaps.test(currentInput)){
-    uppercase = 1;
-  } else {
-    uppercase = 0;
+  switch (strengthLevel) {
+    case 0:
+      $('#passwordStrength').progress('reset');
+      $("#strengthLabel").text("Password Strength");
+      break;
+    case 1:
+      $('#passwordStrength').progress({ value: 1 });
+      $("#strengthLabel").text("Password Strength: Weak");
+      break;
+    case 2:
+      $('#passwordStrength').progress({ value: 2 });
+      $("#strengthLabel").text("Password Strength: Average");
+      break;
+    case 3:
+      $('#passwordStrength').progress({ value: 3 });
+      $("#strengthLabel").text("Password Strength: Strong");
+      break;
+    case 4:
+      $('#passwordStrength').progress({ value: 4 });
+      $("#strengthLabel").text("Password Strength: Very Strong");
+      break;
+    default:
+      $('#passwordStrength').progress('reset');
+      $("#strengthLabel").text("Password Strength");
+      break;
   }
-
-  if(regexLower.test(currentInput)){
-    lowercase = 1;
-  } else {
-    lowercase = 0;
-  }
-
-  if(regexNum.test(currentInput)){
-    number = 1;
-  } else {
-    number = 0;
-  }
-
-  if(regexSymbol.test(currentInput)){
-    symbol = 1;
-  } else {
-    symbol = 0;
-  }
-
-  //correcting any potentially lagging UI
-  if((uppercase + lowercase + number + symbol) == 0){
-    $('#passwordStrength').progress('reset');
-    $("#strengthLabel").text("Password Strength");
-  }
-  //showing a message to indicate strength: weak, average, strong, very strong
-  if((uppercase + lowercase + number + symbol) == 1){
-    $('#passwordStrength').progress({
-      value: 1
-    });
-    $("#strengthLabel").text("Password Strength: Weak");
-  }
-  //showing a message to indicate strength: weak, average, strong, very strong
-  if((uppercase + lowercase + number + symbol) == 2){
-    $('#passwordStrength').progress({
-      value: 2
-    });
-    $("#strengthLabel").text("Password Strength: Average");
-  }
-
-  //showing a message to indicate strength: weak, average, strong, very strong
-  if((uppercase + lowercase + number + symbol) == 3){
-    $('#passwordStrength').progress({
-      value: 3
-    });
-    $("#strengthLabel").text("Password Strength: Strong");
-  }
-
-  //showing a message to indicate strength: weak, average, strong, very strong
-  if((uppercase + lowercase + number + symbol) == 4){
-    $('#passwordStrength').progress({
-      value: 4
-    });
-    $("#strengthLabel").text("Password Strength\: Very Strong");
-  }
-
 };
 
 function clickHint(){
   clickCount++;
-  if(clickCount > 6){
+  if(clickCount >= numberOfDots){
     //show the guidance message, user probably doesn't know to click "got it"
     if($('#removeHidden').is(":hidden")){
       $('#removeHidden').transition('fade');
@@ -81,13 +62,15 @@ function clickHint(){
 };
 
 function closeHint(){
-  counter++;
+  closeCount++;
   clickCount = 0;
   if($('#removeHidden').is(":visible")){
     $('#removeHidden').transition('fade');
-    $('#continueSim').css('margin-bottom','4em');
+    if($('#clickAllDotsWarning').is(':hidden')){
+      $('#continueSim').css('margin-bottom','4em');
+    }
   }
-  if(counter == 7) {
+  if(closeCount == numberOfDots) {
     if($('#clickAllDotsWarning').is(':visible')){
       $('#clickAllDotsWarning').transition('fade');
       $('#continueSim').css('margin-bottom','4em');
@@ -99,7 +82,7 @@ function closeHint(){
 //showing the "Need some help?" guidance message after 2 minutes
 function showHelp(){
   if($('#removeHidden').is(":hidden")){
-    if(counter != 7){
+    if(closeCount != numberOfDots){
       //user does not know to click blue dots
       $('#removeHidden').transition('fade');
       $('#continueSim').css('margin-bottom', '10em');
@@ -168,24 +151,17 @@ function startHints(){
   });
 
   hints.addHints();
+  numberOfDots = hints._introItems.length;
   clickCount = 0;
-  counter=0;
-  //for providing guidance message
-  hints.onhintclick(function() {clickHint();});
-  hints.onhintclose(function() {closeHint();});
-
-  //for the password strength indicator
-  uppercase = 0;
-  lowercase = 0;
-  number = 0;
-  symbol = 0;
-
+  closeCount = 0;
+  hints.onhintclick(clickHint);
+  hints.onhintclose(closeHint);
+  setInterval(showHelp, 120000);
   $('input[name="password"]').on('input', function(){reportPasswordStrength($(this).val());});
-
 };
 
 function errorCheck(){
-  if(counter != 7){
+  if(closeCount != numberOfDots){
     //show the message normally the first time
     if($('#clickAllDotsWarning').is(":hidden")){
       $('#clickAllDotsWarning').transition('fade');
@@ -201,9 +177,6 @@ function errorCheck(){
 };
 
 function startIntro(){
-  //global
-  counter = 0;
-  clickCount = 0;
   var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
   intro.setOptions({
     steps: [
@@ -226,11 +199,8 @@ function startIntro(){
     ]
   });
 
-  intro.start().onexit(function() {startHints()});
-  $('#continueSim').on('click', function() {errorCheck()});
-
-
-
+  intro.start().onexit(startHints);
+  $('#continueSim').on('click', errorCheck);
 };
 
-$(window).on("load", function() {startIntro();});
+$(window).on("load", startIntro)

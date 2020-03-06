@@ -1,3 +1,47 @@
+let numberOfDots = 0;
+let closeCount = 0;
+let clickCount = 0;
+
+function clickHint(){
+  clickCount++;
+  if(clickCount >= numberOfDots){
+    //show the guidance message, user probably doesn't know to click "got it"
+    if($('#removeHidden').is(":hidden")){
+      $('#removeHidden').transition('fade');
+      $('#finishSim').css("margin-bottom", "10em");
+    } else {
+      $('#removeHidden').transition('bounce');
+    }
+  }
+};
+
+function closeHint(){
+  closeCount++;
+  clickCount = 0;
+  if($('#removeHidden').is(":visible")){
+    $('#removeHidden').transition('fade');
+    $('#finishSim').css("margin-bottom", "4em");
+  }
+  if(closeCount == numberOfDots) {
+    if($('#clickAllDotsWarning').is(':visible')){
+      $('#clickAllDotsWarning').transition('fade');
+      $('#finishSim').css("margin-bottom", "4em");
+    }
+    $("#finishSim").addClass("green");
+  }
+};
+
+//showing the "Need some help?" guidance message after 2 minutes
+function showHelp(){
+  if($('#removeHidden').is(":hidden")){
+    if(closeCount != numberOfDots){
+      //user does not know to click blue dots
+      $('#removeHidden').transition('fade');
+      $('#continueSim').css('margin-bottom', '10em');
+    }
+  }
+};
+
 function startHints(){
   window.scrollTo(0,0);
 
@@ -18,43 +62,16 @@ function startHints(){
       }
     ]
   });
-
   hints.addHints();
-  clickCount = 0;
-  counter=0;
-  //for providing guidance message
-  hints.onhintclick(function() {
-      clickCount++;
-      if(clickCount >= 2){
-        //show the guidance message, user probably doesn't know to click "got it"
-        if($('#removeHidden').is(":hidden")){
-          $('#removeHidden').transition('fade');
-          $('#finishSim').css("margin-bottom", "10em");
-        } else {
-          $('#removeHidden').transition('bounce');
-        }
-      }
-  });
+  numberOfDots = hints._introItems.length;
+  hints.onhintclick(clickHint);
+  hints.onhintclose(closeHint);
+  setInterval(showHelp, 60000);
 
-  hints.onhintclose(function() {
-     counter++;
-     clickCount = 0;
-     if($('#removeHidden').is(":visible")){
-       $('#removeHidden').transition('fade');
-       $('#finishSim').css("margin-bottom", "4em");
-     }
-     if(counter == 2) {
-       if($('#clickAllDotsWarning').is(':visible')){
-         $('#clickAllDotsWarning').transition('fade');
-           $('#finishSim').css("margin-bottom", "4em");
-       }
-       $("#finishSim").addClass("green");
-     }
-  });
 };
 
 function errorCheck(){
-  if(counter != 2){
+  if(closeCount != numberOfDots){
     //show the message normally the first time
     if($('#clickAllDotsWarning').is(":hidden")){
       $('#clickAllDotsWarning').transition('fade');
@@ -69,5 +86,5 @@ function errorCheck(){
   }
 };
 
-$(window).on("load", function() {startHints();});
-$('#finishSim').on('click', function() {errorCheck()});
+$(window).on("load", startHints);
+$('#finishSim').on('click', errorCheck);
