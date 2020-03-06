@@ -3,9 +3,13 @@ function onPrint(){
   $(".insertPrint").empty();
   $(".insertPrint").css('display','block');
 
-  $(".insertPrint").append("<h4>What kind of information should you include or not include in a social media profile?</h4>");
+  $(".insertPrint").append(`<h4>What are some features of a strong password?</h4>`);
   var responseOne = document.getElementById("accounts_responseOne").value;
   $(".insertPrint").append(responseOne);
+  $(".insertPrint").append(`<h4>What kind of information should you share on
+    your social media profile?</h4>`);
+  var responseTwo = document.getElementById("accounts_responseTwo").value;
+  $(".insertPrint").append(responseTwo);
 
   window.print();
 

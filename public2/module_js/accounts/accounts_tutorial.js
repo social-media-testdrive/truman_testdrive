@@ -12,43 +12,71 @@ function startIntro(){
     steps: [
       {
         element: document.querySelectorAll('#usernameStep')[0],
-        intro: "Choose a good username. This is your name other people on social media will see.",
+        intro: `Choose a good username. This is the name other people on social
+          media will see.`,
         position: "right",
         scrollTo: 'tooltip'
       },
       {
         element: document.querySelectorAll('#usernameStep')[0],
-        intro: "Think about the website's purpose. Is it for connecting with friends? Then you might just use your first name or a nickname. Be careful not to use your full name.",
+        intro: `Think about the website's purpose. Is it for connecting with
+          friends, family, and people you know offline? Then you could include
+          your first name or a nickname so that other people will know who you
+          are.`,
         position: "right",
         scrollTo: 'tooltip'
       },
       {
         element: document.querySelectorAll('#usernameStep')[0],
-        intro: "If you don't want anyone to know who you are, pick something that is not related to your real name.",
+        intro: `If you don't want anyone to know who you are, pick something
+          that is not related to your real name.`,
+        position: "right",
+        scrollTo: 'tooltip'
+      },
+      {
+        element: document.querySelectorAll('#usernameStep')[0],
+        intro: `You should also think about if you want to use the same username
+          for different sites. Using the same username will make it easier for
+          people to follow your digital footprint and to identify who you are.`,
         position: "right",
         scrollTo: 'tooltip'
       },
       {
         element: document.querySelectorAll('#passwordStep')[0],
-        intro: "Make sure to create a strong password that you can remember!",
+        intro: `Make sure to create a strong password that you can remember!`,
         position: "right",
         scrollTo: "tooltip"
       },
       {
         element: document.querySelectorAll('#passwordStep')[0],
-        intro: "Passwords should be easy to remember so we don't get locked out of our accounts, but we also want to make it hard for others to guess them.",
+        intro: `Passwords should be easy to remember so you don't get locked out
+          of your accounts, but you also want to make it hard for others to
+          guess.`,
         position: "right",
         scrollTo: "tooltip"
       },
       {
         element: document.querySelectorAll('#passwordStep')[0],
-        intro: "Examples of bad passwords: password, 123456, abc123, 111111, password1, yourname11, or anything else that could be easily guessed by other people.",
+        intro: `Examples of bad passwords: password, 123456, abc123, 111111,
+        password1, yourname11, or anything else that could be easily guessed by
+        other people.`,
         position: "right",
         scrollTo: "tooltip"
       },
       {
         element: document.querySelectorAll('#passwordStep')[0],
-        intro: "Try not to use the same password across different sites. If you have trouble remembering all the different passwords, try writing it down in a safe place or asking your parents for help.",
+        intro: `It’s a good idea to create different passwords for different
+          sites, but make sure it’s something you can memorize! It’s not safe to
+          write down your passwords. If you forget your password, there are ways
+          the website can help you reset it.`,
+        position: "right",
+        scrollTo: "tooltip"
+      },
+      {
+        element: document.querySelectorAll('#passwordStep')[0],
+        intro: `Don’t share your password with anyone else, not even your best
+          friend! One exception might be your parents. Have a conversation with
+          them about safe password practices.`,
         position: "right",
         scrollTo: "tooltip"
       }
