@@ -65,6 +65,7 @@ function startHints(){
         //show the guidance message, user probably doesn't know to click "got it"
         if($('#removeHidden').is(":hidden")){
           $('#removeHidden').transition('fade');
+          $('#cyberTransButton').css('margin-bottom', '10em');
         } else {
           $('#removeHidden').transition('bounce');
         }
