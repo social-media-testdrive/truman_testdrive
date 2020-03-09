@@ -6,12 +6,13 @@ function showModal(modal){
   $(modal).modal('show');
 }
 
-//showing the "Need some help?" guidance message after 40 seconds per blue dot
+//showing the "Need some help?" guidance message
 function showHelp(){
   if($('#removeHidden').is(":hidden")){
     if(counter != numberOfHints){
       //user does not know to click blue dots
       $('#removeHidden').transition('fade');
+      $('#cyberTransButton').css('margin-bottom', '10em');
     }
   }
 };

@@ -72,7 +72,7 @@ block content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
             img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment(type='text' placeholder='Write a Comment', data-hint="Let’s send a supportive message to the target. Copy and paste the following comment: <i>“Lana, a lot of people think math is hard! Don’t worry about it”</i>.", data-position="bottom-left")
+          input.newcomment#hint1(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
     //-#######################
     .ui.fluid.card.dim()
@@ -161,7 +161,7 @@ block content
               |                                 Like
             a.ui.basic.red.left.pointing.label.count 2
         .content
-          .description(data-hint="Press the <b>“flag”</b> button to report this post to the website.", data-position="bottom-right")
+          .description#hint2
         .content
           .ui.comments            
         .extra.content
@@ -195,9 +195,6 @@ block content
         .ui.reply.button(tabindex='0')
           i.reply.icon
           |                             Reply
-        //.ui.flag.button(data-hint="Press the “flag” button to report this post to the website.", data-position="bottom-right")
-          i.flag.icon
-          |                             Flag
         .ui.flag.button()
           i.flag.icon
           |                             Flag
@@ -223,12 +220,12 @@ block content
               .actions
                 a.like.comment Like
                 a.flag.comment Flag
-                a(data-hint="Press the <b>“flag”</b> button to report this comment to the website.", data-position="bottom-right")
+                a#hint3
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
             img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment(type='text' placeholder='Write a Comment', data-hint='Let’s tell the bully that this behavior is not okay. Copy and paste the following comment: <i>“Guys, Sarah will be very upset if she sees this post. You should delete it."</i>', data-position="bottom-left")
+          input.newcomment#hint4(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
 
     //-.ui.warning.message#clickAllDotsSim(style="display:none;")
