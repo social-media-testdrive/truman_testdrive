@@ -295,23 +295,29 @@ block content
             .label to any store you want!
 
         .ui.form(style="margin-top:1em;")
-           .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
-             label Name
-             input(type='text' readonly='' name='name' placeholder='Fill in your name...')
-           .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
-             label Date of Birth
-             input(type='text' readonly='' name='dob' placeholder='Enter your date of birth...')
-           .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
-             label Address
-             input(type='text' readonly='' name='address' placeholder='Enter your address...')
-           br
-           .actions
-             .ui.right.labeled.icon.button(data-tooltip="This is a phishing website! You should not enter any private information." data-position="top left")
-               | Submit
-               i.checkmark.icon 
-             .ui.negative.right.labeled.icon.button
-               | Cancel
-               i.close.icon 
+          .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
+            label First Name
+            input(readonly='')
+          .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
+            label Last Name
+            input(readonly='')
+          .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
+            label Birth Date
+            input(readonly='')
+          .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
+            label Email Address
+            input(readonly='')
+          .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
+            label Home Address
+            input(readonly='')
+          br
+          .actions
+           .ui.right.labeled.icon.button(data-tooltip="This is a phishing website! You should not enter any private information." data-position="top left")
+             | Submit
+             i.checkmark.icon 
+           .ui.negative.right.labeled.icon.button
+             | Cancel
+             i.close.icon 
                
     .ui.large.long.modal#phishingModal2(style="top:8em;")
       i.close.icon  
@@ -330,10 +336,10 @@ block content
         .ui.form(style="margin-top:1em;")
           .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
             label Username
-            input(type='text' readonly='' name='username' placeholder='Enter your username...')
+            input(readonly='' placeholder='Enter your username...')
           .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
             label Password
-            input(type='password' readonly='' name='password' placeholder='Enter your password...')
+            input(readonly='' placeholder='Enter your password...')
           br
           .actions
             .ui.right.labeled.icon.button(data-tooltip="This is a phishing website! You should not enter any private information." data-position="top left")
@@ -360,17 +366,20 @@ block content
        .ui.header Enter your information to place an order for this CRAZY deal! 
        .ui.form(style="margin-top:1em;")
           .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
-            label Name
-            input(type='text' readonly='' name='name')
+            label First Name
+            input(readonly='')
           .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
-            label Email
-            input(type='text' readonly='' name='email')
+            label Last Name
+            input(readonly='')
+          .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
+            label Birth Date
+            input(readonly='')
+          .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
+            label Email Address
+            input(readonly='')
           .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
             label Home Address
-            input(type='password' readonly='' name='homeAddress')
-          .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
-            label School name
-            input(type='password' readonly='' name='schoolName')
+            input(readonly='')
           br
           .actions
             .ui.right.labeled.icon.button(data-tooltip="This is a phishing website! You should not enter any private information." data-position="top left")
