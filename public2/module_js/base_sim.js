@@ -1,6 +1,6 @@
 let clickCount = 0;
 let counter = 0;
-const numberOfHints = 4;
+const numberOfHints = hintsList.length;
 
 //showing the "Need some help?" guidance message
 function showHelp(){
@@ -79,7 +79,7 @@ function startIntro(){
     'doneLabel':'Done &#10003'
   });
     intro.setOptions({
-      steps: stepList
+      steps: stepsList
     });
     intro.start().onexit(startHints);
     $('#cyberTransButton').on('click', errorCheck);

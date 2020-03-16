@@ -1,65 +1,47 @@
-//activating a normal dropdown (the one used in the habits module settings)
-$('.ui.selection.dropdown[name="pauseTimeSelect"]').dropdown('set selected', '1 hour');
-$('.ui.selection.dropdown[name="reminderTimeSelect"]').dropdown();
+$(document).ready(function(){
+  //activating a normal dropdown (the one used in the habits module settings)
+  $('.ui.selection.dropdown[name="pauseTimeSelect"]').dropdown('set selected', '1 hour');
+  $('.ui.selection.dropdown[name="reminderTimeSelect"]').dropdown();
 
-/*
-* Misc code
-*/
-$('.big.plus.icon').css({"display": "block"})
-$('.ui.simple.dropdown.item').css({"display":"inherit"})
-$('.ui.accordion').accordion();
+  /*
+  * Misc code
+  */
+  $('.big.plus.icon').css({"display": "block"})
+  $('.ui.simple.dropdown.item').css({"display":"inherit"})
+  $('.ui.accordion').accordion();
 
-//hiding the pause time select unless pause is turned on (in notification settings)
-$(".ui.toggle.checkbox[name='popupAlertsCheckbox']").change(function() {
- console.log("CHANGE");
- if($("input[name='popupAlerts']").is(":checked")){
-   $('#pauseTimeSelectField').show();
- } else {
-   $('#pauseTimeSelectField').hide();
- }
+  //hiding the pause time select unless pause is turned on (in notification settings)
+  $(".ui.toggle.checkbox[name='popupAlertsCheckbox']").change(function() {
+   console.log("CHANGE");
+   if($("input[name='popupAlerts']").is(":checked")){
+     $('#pauseTimeSelectField').show();
+   } else {
+     $('#pauseTimeSelectField').hide();
+   }
+  });
 });
 
-/**
-* Implementing timer for habits module, and activity page
-*/
+// function recordNewViewTime(windowLocation){
+//   console.log("CALLED");
+//   var currentTime = Date.now();
+//   var totalViewTime = currentTime - freePlayPageViewTimer;
+//   $.post("/habitsTimer", { habitsTimer: totalViewTime,
+//    _csrf : $('meta[name="csrf-token"]').attr('content')});
+// };
 
-//no longer want to have the page visibility considered with timing.
-/*
-//Timing how long the user looks at this page
-//from https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API
+function recordNewViewTime(windowLocation){
+  console.log("CALLED");
+  var currentTime = Date.now();
+  var totalViewTime = currentTime - freePlayPageViewTimer;
+  $.post("/habitsTimer", { habitsTimer: totalViewTime, _csrf : $('meta[name="csrf-token"]').attr('content') }).then(function(){
+    if(windowLocation !== undefined){
+      window.location.href = windowLocation;
+    }
+  });
+};
 
-// Set the name of the hidden property and the change event for visibility
-var hidden, visibilityChange;
-
-if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and later support
-  hidden = "hidden";
-  visibilityChange = "visibilitychange";
-} else if (typeof document.msHidden !== "undefined") {
-  hidden = "msHidden";
-  visibilityChange = "msvisibilitychange";
-} else if (typeof document.webkitHidden !== "undefined") {
-  hidden = "webkitHidden";
-  visibilityChange = "webkitvisibilitychange";
-}
-
-// If the page is hidden, stop the timer and push total time in db
-// if the page is shown, start the timer (i.e. get the current time)
-
-function handleVisibilityChange() {
-  if (document[hidden]) {
-    var currentTime = Date.now();
-    var totalViewTime = currentTime - freePlayPageViewTimer;
-    //post to db
-    $.post("/habitsTimer", { habitsTimer: totalViewTime, _csrf : $('meta[name="csrf-token"]').attr('content') } );
-  } else {
-    //start the timer
-    freePlayPageViewTimer = Date.now();
-  }
-}
-
-// Handle page visibility change
-document.addEventListener(visibilityChange, handleVisibilityChange, false);
-*/
+//$(window).on('beforeunload', recordNewViewTime);
+//window.addEventListener('beforeunload', recordNewViewTime);
 
 function goToActivityPage(){
   $('.habitsHomeDisplay').hide();
@@ -111,16 +93,7 @@ function goToNotifications(){
   $(".ui.red.right.pointing.label").hide();
 };
 
-function recordNewViewTime(windowLocation){
-  console.log("CALLED");
-  var currentTime = Date.now();
-  var totalViewTime = currentTime - freePlayPageViewTimer;
-  $.post("/habitsTimer", { habitsTimer: totalViewTime, _csrf : $('meta[name="csrf-token"]').attr('content') }, function(){
-    if(windowLocation !== undefined){
-      window.location.href = windowLocation;
-    }
-  });
-};
+
 
 var freePlayPageViewTimer = Date.now();
 var totalTimeViewedHabits = 0;
