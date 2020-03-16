@@ -63,7 +63,7 @@ function startHints(){
          $('#clickAllDotsWarning').transition('fade');
          $('#cyberTransButton').css("margin-bottom", "4em");
        }
-       $( ".cybertrans" ).addClass("green");
+       $( "#cyberTransButton" ).addClass("green");
      }
   });
 
@@ -73,7 +73,7 @@ function startHints(){
 
 function startIntro(){
 
-  var intro = introJs().setOptions({
+  var intro = introJs().setOptions({ 'disableInteraction': true,
     'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false,
     'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true,
     'doneLabel':'Done &#10003'
@@ -81,7 +81,10 @@ function startIntro(){
     intro.setOptions({
       steps: stepsList
     });
-    intro.start().onexit(startHints);
+    intro.start().onexit(function(){
+      startHints();
+      eventsAfterHints();
+    });
     $('#cyberTransButton').on('click', errorCheck);
 
 };
