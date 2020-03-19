@@ -11,6 +11,7 @@ function startIntro(){
         //show the guidance message, user probably doesn't know to click "got it"
         if($('#removeHidden').is(":hidden")){
           $('#removeHidden').transition('fade');
+          $("#addBottomMargin").css('margin-bottom', '10em');
         } else {
           $('#removeHidden').transition('bounce');
         }
@@ -22,6 +23,7 @@ function startIntro(){
       //show the message normally the first time
       if($('#notificationWarning').is(":hidden")){
         $('#notificationWarning').transition('fade');
+        $("#addBottomMargin").css('margin-bottom', '10em');
       }else{
         //otherwise, bounce the message to draw attention to it
         $('#notificationWarning').transition('bounce');
@@ -68,6 +70,7 @@ function startIntro(){
       if(literacy_counter != 2){
         //user does not know to click blue dots
         $('#removeHidden').transition('fade');
+        $("#addBottomMargin").css('margin-bottom', '10em');
       }
     }
   },80000);
