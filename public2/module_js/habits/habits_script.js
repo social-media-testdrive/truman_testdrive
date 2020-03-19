@@ -104,7 +104,7 @@ $('.ui.big.green.labeled.icon.button.script.habitsHomeDisplay').on('click', func
 });
 
 //send a new time when an actor profile is visited
-$('#actorLink').on('click', function(){
+$('.actorLink').on('click', function(){
   recordNewViewTime();
 });
 
