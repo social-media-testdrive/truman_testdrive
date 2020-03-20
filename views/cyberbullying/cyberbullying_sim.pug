@@ -152,7 +152,7 @@ block content
           .ui.reply.button(tabindex='0')
             i.reply.icon
             |                             Reply
-          .ui.flag.button(tabindex='0')
+          .ui.flag.button(tabindex='0')#hint2
             i.flag.icon
             |                             Flag
           .ui.labeled.button(tabindex='0')
@@ -160,10 +160,10 @@ block content
               i.heart.icon
               |                                 Like
             a.ui.basic.red.left.pointing.label.count 2
-        .content
-          .description#hint2
-        .content
-          .ui.comments            
+        //- .content
+        //-   .description
+        //- .content
+        //-   .ui.comments            
         .extra.content
           .ui.fluid.left.labeled.right.icon.input
             .ui.label
@@ -248,7 +248,8 @@ block scripts
       {
         hint: `Press the <b>“flag”</b> button to report this post to the
         website.`,
-        element: '#hint2'
+        element: '#hint2',
+        hintPosition: "bottom-middle"
       },
       {
         hint: `Press the <b>“flag”</b> button to report this comment to the
