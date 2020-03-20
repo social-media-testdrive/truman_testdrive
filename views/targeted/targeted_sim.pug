@@ -41,9 +41,9 @@ block content
               h1.ui.header(style="color:black;") You&apos;ve hidden this ad!
             
 
-      .content(data-hint="This is a sponsored post from a guitar company. You can see that the post looks very similar to other social media posts.", data-hintPosition="middle-middle")
+      .content#hint1
           
-        .ui.right.floated.menu(style="border:none; box-shadow:none;" data-hint="Try clicking the three dots and then “Why am I seeing this ad?” to learn more about how the website decided to show you the advertisement." data-hintPosition="bottom-right")
+        .ui.right.floated.menu#hint2(style="border:none; box-shadow:none;")
           .ui.dropdown.icon.item
             i.ellipsis.horizontal.icon
             .menu.fluid.floated.left#item1
@@ -65,13 +65,13 @@ block content
         img.post(src=cdn+'/post_pictures/golden_guitar_ad.jpg')
 
       #step4.content
-        .description(data-hint='One way you can tell that this post is an advertisement is by looking for words like “AD,” “Advertisement,” “Promoted,” or “Sponsored.”' data-hintPosition="middle-right")
+        .description#hint3
           | You can be the best with Golden Guitars.
           span#hashtag  #advertisement
         //-.right.floated.meta
           i.icon.checkmark
           | Seen by 12
-      .content#sponsoredTag(style="border:none;")
+      .content.sponsoredTag(style="border:none;")
         i.left.floated.external.alternate.icon(style="color:gray;")
         .left.floated.meta="Sponsored"
       .ui.two.bottom.attached.icon.buttons
@@ -216,7 +216,7 @@ block content
               h1.ui.header(style="color:black;") You&apos;ve hidden this ad!
       .content
           
-        .ui.right.floated.menu(style="border:none; box-shadow:none;" data-hint="This looks like another sponsored post! Click the three dots and then click “Hide ad” if you don’t want to see the advertisement, or “Report ad” if it is inappropriate." data-hintPosition="bottom-right")
+        .ui.right.floated.menu#hint4(style="border:none; box-shadow:none;")
           .ui.dropdown.icon.item
             i.ellipsis.horizontal.icon
             .menu.fluid.floated.left#item1
@@ -244,7 +244,7 @@ block content
         //-.right.floated.meta
           i.icon.checkmark
           | Seen by 12
-      .content#sponsoredTag(style="border:none;"  data-hint="Remember, you can always ignore the advertisement!" data-hintPosition="middle-middle")
+      .content.sponsoredTag#hint5(style="border:none;")
         i.left.floated.external.alternate.icon(style="color:gray;")
         .left.floated.meta="Sponsored"
       .ui.two.bottom.attached.icon.buttons
@@ -399,3 +399,4 @@ block content
 
 block scripts
   script(src="/module_js/targeted/targeted_sim.js")
+  script(src="/module_js/base_sim.js")
