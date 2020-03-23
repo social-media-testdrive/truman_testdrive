@@ -4,7 +4,7 @@ extends ../ui_layout
 block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   .computer.only.tablet.only.four.wide.column 
-    .ui.card(data-hint="Here’s Jake’s finsta, jakethesnake. Only 16 of his closest friends from school follow this account.", data-position="top-left")
+    .ui.card#hint1
       .image
         img(src=cdn+"/profile_pictures/user78.png")
       .content
@@ -32,7 +32,7 @@ block content
           .content
             .ui.header There are still blue dots to find!
             p Click through all of the blue dots to continue.
-    #blueDotStep.ui.fluid.card.dim.test(data-hint="Here, he posts funny pictures and casual things that he would not post on his main account because he only wants his best friends to see it.", data-position="top-left")
+    #hint2.ui.fluid.card.dim.test
       .ui.dimmer.flag
             .content
               .center
@@ -179,7 +179,7 @@ block content
           span='Snake Jake'
       .image
         img.post(src=cdn+"/post_pictures/selfpresga6.jpg")
-      .content(data-hint="Even though Jake doesn’t name the person, the post is unkind and stirs up drama. Would Jake post the same thing on his public account? Remember to be kind and respectful online!", data-position="top-left")
+      .content#hint3
         .description="ugh i'm so annoyed with you know who. he's so stupid and i don't want him to come to school"
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')

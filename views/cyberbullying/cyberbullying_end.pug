@@ -1,55 +1,54 @@
 extends ../ui_layout
 
 block content
-
-  .ui.text.container(style="margin-bottom:4em;")
-    br
-      
-    h1 What would you like to do next?
-  
-  
-    .ui.raised.segment
-      h3.ui.header
-        .content
-          | Would you like to:
-      hr
-      .ui.basic.segment.center.aligned
-        .ui.big.green.labeled.icon.button.finish.endPageButton
-            i.checkmark.icon
-            |   Finish Lesson
-        br
-        br
-        .ui.big.green.labeled.icon.button.finish.endPageButton
-            i.chevron.circle.right.icon
-            |   See Other Modules
-        br
-        br
-        a(href='javascript:void(0);', onclick='javascript:startIntro();')
-            .ui.big.green.labeled.icon.button.endPageButton
-                i.edit.icon
-                |   Give Us Feedback
-      
-              
-    .ui.raised.segment
-      h3.ui.header
-        .content
-          | You can also go back into the module to:
-      hr
-      .ui.basic.segment.center.aligned
-        .ui.big.blue.labeled.icon.button.cybertutorial.endPageButton
-            i.chevron.circle.left.icon
-            |   Learn Key Ideas
-        br
-        br
-        .ui.big.blue.labeled.icon.button.cybersim.endPageButton
-            i.chevron.circle.left.icon
-            |   Practice Skills
-        br
-        br
-        .ui.big.blue.labeled.icon.button.cyber_script.endPageButton
-            i.chevron.circle.left.icon
-            |   Explore Timeline
-      
+  .ten.wide.computer.twelve.wide.tablet.sixteen.wide.mobile.column.centered
+    .ui.basic.segment(style="margin-bottom:4em;")
+        
+      h1 What would you like to do next?
+    
+    
+      .ui.raised.segment
+        h3.ui.header
+          .content
+            | Would you like to:
+        hr
+        .ui.basic.segment.center.aligned
+          .ui.big.green.labeled.icon.button.finish.endPageButton
+              i.checkmark.icon
+              |   Finish Lesson
+          br
+          br
+          .ui.big.green.labeled.icon.button.finish.endPageButton
+              i.chevron.circle.right.icon
+              |   See Other Modules
+          br
+          br
+          a(href='javascript:void(0);', onclick='javascript:startIntro();')
+              .ui.big.green.labeled.icon.button.endPageButton
+                  i.edit.icon
+                  |   Give Us Feedback
+        
+                
+      .ui.raised.segment
+        h3.ui.header
+          .content
+            | You can also go back into the module to:
+        hr
+        .ui.basic.segment.center.aligned
+          .ui.big.blue.labeled.icon.button.cybertutorial.endPageButton
+              i.chevron.circle.left.icon
+              |   Learn Key Ideas
+          br
+          br
+          .ui.big.blue.labeled.icon.button.cybersim.endPageButton
+              i.chevron.circle.left.icon
+              |   Practice Skills
+          br
+          br
+          .ui.big.blue.labeled.icon.button.cyber_script.endPageButton
+              i.chevron.circle.left.icon
+              |   Explore Timeline
+        
 block scripts
   script().
     function startIntro(){       

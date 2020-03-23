@@ -7,7 +7,7 @@ block content
     .ui.card
       .image
         img(src=cdn+"/profile_pictures/user79.jpg")
-      .content(data-hint="Here is another one of Jake’s accounts, minecraftboi23", data-position="top-left")
+      .content
         a.header= 'ur minecraft boi'
         .meta="@"+'minecraftboi23'
         .description="Minecraft 4 life 🙌From one gamer to another, follow for a follow back!" 
@@ -33,7 +33,7 @@ block content
             .ui.header There are still blue dots to find!
             p Click through all of the blue dots to continue.
             
-    #blueDotStep.ui.fluid.card.dim.test(data-hint="On this account, he only posts about Minecraft, which is one of his favorite games. He talks to other Minecraft fans through this account.", data-position="top-left")
+    #hint2.ui.fluid.card.dim.test
       .ui.dimmer.flag
             .content
               .center
@@ -196,7 +196,7 @@ block content
           span='ur minecraft boi'
       .image
         img.post(src=cdn+"/post_pictures/selfpresga9.png")
-      .content(data-hint="Would you say the same things in person? If you wouldn’t say that in front of your teacher, your mom, or your grandma, don’t post it!", data-position="top-left")
+      .content#hint3
         .description="Look at this lame minecraft sword lol it's totally trash?"
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
