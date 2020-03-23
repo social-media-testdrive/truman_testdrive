@@ -1,5 +1,4 @@
 function startIntro(){
-    var hints;
     var literacy_counter = 0;
     clickCount = 0;
 
@@ -7,7 +6,7 @@ function startIntro(){
       intro.setOptions({
         steps: [
           {
-            element: document.querySelectorAll('#blueDotStep')[0],
+            element: document.querySelectorAll('#hint2')[0],
             intro: "Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more...",
             scrollTo: 'tooltip',
             position: 'right'
@@ -17,8 +16,31 @@ function startIntro(){
       });
 
     intro.start().onexit(function() {
+      var hints = introJs().setOptions({
+        hints: [
+          {
+            hint: `Here is another one of Jake’s accounts, minecraftboi23.`,
+            element: '#hint2',
+            hintPosition: 'top-left'
+          },
+          {
+            hint: `On this account, he only posts about Minecraft, which is one
+            of his favorite games. He talks to other Minecraft fans through this
+            account.`,
+            element: '#hint2',
+            hintPosition: 'top-middle'
+          },
+          {
+            hint: `Would you say the same things in person? If you wouldn’t say
+            that in front of your teacher, your mom, or your grandma, don’t post
+            it!`,
+            element: '#hint3',
+            hintPosition: 'top-middle'
+          }
+        ]
+      });
 
-      hints = introJs().addHints();
+      hints.addHints();
 
       hints.onhintclick(function() {
           clickCount++;

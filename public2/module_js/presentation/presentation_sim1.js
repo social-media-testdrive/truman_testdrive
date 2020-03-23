@@ -7,7 +7,7 @@ function startIntro(){
       intro.setOptions({
         steps: [
           {
-            element: document.querySelectorAll('#blueDotStep')[0],
+            element: document.querySelectorAll('#hint2')[0],
             intro: "Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more...",
             position:'right',
             scrollTo:'tooltip'
@@ -18,7 +18,32 @@ function startIntro(){
 
     intro.start().onexit(function() {
 
-      hints = introJs().addHints();
+      var hints = introJs().setOptions({
+        hints: [
+          {
+            hint: `Here’s Jake’s finsta, jakethesnake. Only 16 of his closest
+            friends from school follow this account.`,
+            element: '#hint2',
+            hintPosition: 'top-left'
+          },
+          {
+            hint: `Here, he posts funny pictures and casual things that he would
+            not post on his main account because he only wants his best friends
+            to see it.`,
+            element: '#hint2',
+            hintPosition: 'top-middle'
+          },
+          {
+            hint: `Even though Jake doesn’t name the person, the post is unkind
+            and stirs up drama. Would Jake post the same thing on his public
+            account? Remember to be kind and respectful online!`,
+            element: '#hint3',
+            hintPosition: 'top-middle'
+          }
+        ]
+      });
+
+      hints.addHints();
 
       hints.onhintclick(function() {
           clickCount++;
