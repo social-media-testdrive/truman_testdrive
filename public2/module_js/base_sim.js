@@ -27,6 +27,9 @@ function errorCheck(){
 };
 
 function startHints(){
+  
+  $('#cyberTransButton').on('click', errorCheck);
+
   window.scrollTo(0,0);
 
   var hints = introJs().setOptions({
@@ -81,9 +84,32 @@ function startIntro(){
     intro.setOptions({
       steps: stepsList
     });
-    intro.start().onexit(startHints);
-    $('#cyberTransButton').on('click', errorCheck);
+    intro.start().onexit(function(){
+      startHints();
+      // an eventsAfterHints function isn't always defined
+      try{
+        eventsAfterHints();
+      }catch(error){
+        console.log("No defined events after hints.");
+        console.error(error);
+      }
+
+    });
+
 
 };
 
-$(window).on("load", startIntro);
+$(window).on("load", function(){
+  try {
+    startIntro();
+  } catch (error) {
+    console.log("No intro. Try starting hints.");
+    console.error(error);
+    try {
+      startHints();
+    } catch (error) {
+      console.log("No hints.");
+      console.error(error);
+    }
+  }
+});
