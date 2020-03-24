@@ -81,10 +81,7 @@ function startIntro(){
     intro.setOptions({
       steps: stepsList
     });
-    intro.start().onexit(function(){
-      startHints();
-      eventsAfterHints();
-    });
+    intro.start().onexit(startHints);
     $('#cyberTransButton').on('click', errorCheck);
 
 };
