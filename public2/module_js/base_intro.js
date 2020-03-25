@@ -1,5 +1,6 @@
 function startIntro(){
-  window.location.href='/start/safe-posting';
+  let pathArray = window.location.pathname.split('/');
+  window.location.href='/start/' + pathArray[2];
 };
 
 function animateObject(obj){
