@@ -40,33 +40,33 @@ block content
       //- .ui.segments     
       .ui.stackable.two.column.grid
         .ui.column
-          #keyTerm1.ui.raised.segment
-            a.ui.blue.ribbon.label#keyTerm1Label
+          .keyTerm.ui.raised.segment
+            a.ui.blue.ribbon.label.keyTermLabel
                 //- i.dollar.sign.icon 
                 span Username
-            span.hidden(id="keyTerm1Definition", style="font-weight:600") 
+            span.hidden.keyTermDefinition(style="font-weight:600") 
               | The name or ID that you use when you log in.
               ul(style="font-weight:400") 
                 | Some social media sites ask you to use your e-mail address as 
                 | a username. Others will ask you to choose a name for yourself.
         
         .ui.column
-          #keyTerm2.ui.raised.segment
-            a.ui.blue.ribbon.label#keyTerm2Label
+          .keyTerm.ui.raised.segment
+            a.ui.blue.ribbon.label.keyTermLabel
                 //- i.magic.icon 
                 span Password
-            span.hidden(id="keyTerm2Definition",style="font-weight:600")  
+            span.hidden.keyTermDefinition(style="font-weight:600")  
               | A secret string of letters, symbols, and numbers that you can 
               | use to restrict who can access something digital.
               ul(style="font-weight:400") 
                 | Think of your password like a key to your home. Only people 
                 | with the key can get inside.
         .ui.column
-          #keyTerm3.ui.raised.segment
-            a.ui.blue.ribbon.label#keyTerm3Label
+          .keyTerm.ui.raised.segment
+            a.ui.blue.ribbon.label.keyTermLabel
                 //- i.magic.icon 
                 span Profile
-            span.hidden(id="keyTerm3Definition",style="font-weight:600") 
+            span.hidden.keyTermDefinition(style="font-weight:600") 
               | Your personal page on social media that includes information 
               | about you, such as your name, location, and pictures you post
               | or are tagged in.
@@ -83,4 +83,4 @@ block content
             |   Got it!
             
 block scripts
-  script(src="/module_js/accounts/accounts_start.js")
+  script(src="/module_js/base_start.js")

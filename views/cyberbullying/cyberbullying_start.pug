@@ -34,23 +34,23 @@ block content
       //- .ui.segments     
       .ui.stackable.two.column.grid
         .ui.column
-          #audience.ui.raised.segment
-            a.ui.blue.ribbon.label#audienceLabel
+          .keyTerm.ui.raised.segment
+            a.ui.blue.ribbon.label.keyTermLabel
                 //- i.dollar.sign.icon 
                 span Bully
-            span.hidden(id="audience_info", style="font-weight:600") Someone who hurts a person or a group on purpose more than once.
+            span.hidden.keyTermDefinition(style="font-weight:600") Someone who hurts a person or a group on purpose more than once.
         .ui.column
-          #anonymous.ui.raised.segment
-            a.ui.blue.ribbon.label#anonymousLabel
+          .keyTerm.ui.raised.segment
+            a.ui.blue.ribbon.label.keyTermLabel
                 //- i.magic.icon 
                 span Target
-            span.hidden(id="anonymous_info",style="font-weight:600") Someone who is being bullied
+            span.hidden.keyTermDefinition(style="font-weight:600") Someone who is being bullied
         .ui.column
-          #curate.ui.raised.segment
-            a.ui.blue.ribbon.label#curateLabel
+          .keyTerm.ui.raised.segment
+            a.ui.blue.ribbon.label.keyTermLabel
                 //- i.magic.icon 
                 span Upstander
-            span.hidden(id="curate_info",style="font-weight:600") Someone who acts against bullying.
+            span.hidden.keyTermDefinition(style="font-weight:600") Someone who acts against bullying.
               ul(style="font-weight:400") An upstander might confront the bully or tell a trusted adult. An upstander might support the person being bullied by checking in with them or defending them.       
     
     
@@ -60,12 +60,12 @@ block content
     .ui.warning.message#clickLabelsWarning(style="display:none;")
      .header
       | Click on each label to proceed   
-    a(href='javascript:void(0);', onclick='javascript:startIntro();')#cyberStartButton
+    a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
         .ui.labeled.icon.button
             i.rocket.icon
             |   Got it!
 
 block scripts
-  script(src="/module_js/cyberbullying/cyberbullying_start.js")
+  script(src="/module_js/base_start.js")
     
     
