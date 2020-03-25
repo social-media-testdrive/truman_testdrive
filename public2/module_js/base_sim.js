@@ -27,7 +27,7 @@ function errorCheck(){
 };
 
 function startHints(){
-  
+
   $('#cyberTransButton').on('click', errorCheck);
 
   window.scrollTo(0,0);
@@ -42,12 +42,14 @@ function startHints(){
   hints.onhintclick(function() {
       clickCount++;
       if(clickCount >= numberOfHints){
-        //show the guidance message, user probably doesn't know to click "got it"
-        if($('#removeHidden').is(":hidden")){
-          $('#removeHidden').transition('fade');
-          $('#cyberTransButton').css('margin-bottom', '10em');
-        } else {
-          $('#removeHidden').transition('bounce');
+        if(clickCount !== 1){
+          //show the guidance message, user probably doesn't know to click "got it"
+          if($('#removeHidden').is(":hidden")){
+            $('#removeHidden').transition('fade');
+            $('#cyberTransButton').css('margin-bottom', '10em');
+          } else {
+            $('#removeHidden').transition('bounce');
+          }
         }
       }
   });

@@ -19,8 +19,8 @@ block content
           .content
             .ui.header There are still blue dots to find!
             p Click through all of the blue dots to continue.
-    
-    .ui.container(style="margin-top:1em;" data-hint="Lily would like to hide her location information from the public on the internet. Which privacy settings would she have to change?" data-hintPosition="top-middle")
+            
+    .ui.container#hint1(style="margin-top:1em;")
       h2.ui.header Privacy Settings
       br
       .ui.divider
@@ -132,7 +132,7 @@ block content
       form.ui.form
         .grouped.fields
             label(for='information', style="font-size:140%") Location Sharing Settings
-              .field(data-hint='She can <b>turn off location sharing</b> and restrict who can see her location to <b>“Friends” only</b>. Let’s try doing this!' data-hintPosition="top-middle")
+              .field#hint2
                 br
                 .ui.toggle.checkbox#locationCue1(name='locationToggle')
                   input(type='checkbox' name='locationSetting' checked='checked')
@@ -152,7 +152,7 @@ block content
                     .item(data-value='3') Only Me
             br
             .ui.divider
-            br(data-hint="Have you turned off location sharing and changed who can see Lily’s location? Click “<i>Let’s Continue!</i>” to see how her profile has changed." data-hintPosition="middle-right")
+            br#hint3
     
     
     .ui.warning.message#locationCue1Text(style="display:none;")

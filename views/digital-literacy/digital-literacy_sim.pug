@@ -38,12 +38,12 @@ block content
       .img.post        
         img(src=cdn+'/post_pictures/infolitguided1.png' style='max-width:100%;')
 
-      .content(style="background:rgba(0, 0, 0, 0.05);" data-hint="Be sure to check the article's website. This one is suspicious because of the '.com.co,' a sure sign it's trying to imitate a credible site. Also note the spelling errors in the URL.", data-hintPosition="top-left")
+      .content#hint1(style="background:rgba(0, 0, 0, 0.05);")
           .read.rounded.right.floated.info_button(id="info_guide_1",style="z-index:9;text-align:center;position:relative;bottom:10px;width:7%;height:auto")
             i.info.icon
           a(onclick='openPost()')
             | WASHINGTON-POSST.COM.CO &nbsp; &nbsp;
-          .header(data-hint="You can see that the headline uses shocking language and has a wild image to get people to click on it. This is an example of a clickbait headline.", data-hintPosition="middle-right")
+          .header#hint2
             | The 15 SHOCKING foods that will cause a heart attack !!   
       .extra.content
           p              
@@ -174,7 +174,7 @@ block content
             i.info.icon
           a#article1(onclick='openPost()')
             | CNN-LOCAL8.COM.CO &nbsp; &nbsp;
-          a(href='#',data-hint="After analyzing the headline and image, be sure to click on the article link to read the article more closely.")
+          a#hint3(href='#')
           .header Missouri Teen's House Burns Down After Fidget Spinner Catches Fire   
       .extra.content
           p              
@@ -183,7 +183,7 @@ block content
         .ui.reply.button(tabindex='0')
           i.reply.icon
           |                             Reply
-        .ui.flag.button(tabindex='0', data-hint=" If you decide the article is fake news, you can flag the post to report it. Don’t share the article!")
+        .ui.flag.button#hint4(tabindex='0')
           i.flag.icon
           |                             Flag
         //-.span()          
@@ -222,7 +222,7 @@ block content
     .ui.warning.message#clickAllDotsWarning(style="display:none;")
       .header
         | Click through all of the blue dots to continue
-    button.ui.big.labeled.icon.button.cybertrans#digitalLiteracySimButton(style="margin-bottom:4em;")
+    button.ui.big.labeled.icon.button.cybertrans#cyberTransButton(style="margin-bottom:4em;")
         i.rocket.icon
         |   Let's Continue!
 
@@ -317,4 +317,5 @@ block content
 
 block scripts
   script(src="/module_js/digital-literacy/digital-literacy_sim.js")
+  script(src="/module_js/base_sim.js")
     

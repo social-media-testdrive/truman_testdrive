@@ -44,14 +44,14 @@ block content
                   |  You&apos;ve flagged this!
                   h3.ui.inverted.header
                     span="The admins will review this post further. We are sorry you had this experience."
-      .content(data-hint="Remember, this is what Lily’s profile looks like to anyone on the internet. All of her posts can be seen on her profile page." data-hintPosition="middle-middle")
+      .content#hint1
         .right.floated.meta= "Yesterday"
         img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
         |   <b>Lily Hui</b>
       .img.post
         img#loadingPostTwo(src=cdn+"/post_pictures/nyctrip.jpg", style="max-width:100%;")
       .content
-        .description(data-hint="Think about what you can learn about Lily! What are some of her hobbies? Where does she like to go? Who are her friends?" data-HintPosition="middle-right")
+        .description#hint2
           | On a trip to nyc with my family😃
           span.locationtag  — At New York, NY
       .three.ui.bottom.attached.icon.buttons
@@ -184,7 +184,7 @@ block content
       .img.post
         img#loadingPost(src=cdn+"/post_pictures/prettyflowers.png", style="max-width:100%;")
       .content
-        .description(data-hint="Lily has shared location information in her posts. Her location information is also available to anyone on the internet." data-hintPosition="middle-right")
+        .description#hint3
           | pretty flowers in my back yard
           span.locationtag  — At Ithaca, NY
       .three.ui.bottom.attached.icon.buttons
@@ -550,7 +550,7 @@ block content
     .ui.warning.message#clickAllDots(style="display:none;")
       .header
         | Click through all of the blue dots to continue
-    button.ui.big.labeled.icon.button.free1#free1Button(style="margin-bottom:4em;")
+    button.ui.big.labeled.icon.button.free1#cyberTransButton(style="margin-bottom:4em;")
         i.rocket.icon
         |   Let's Continue!
 
@@ -559,6 +559,57 @@ block content
 
 
 block scripts
-  script(src="/module_js/privacy/privacy_free-play.js")
-  
+  script.
+    var stepsList = [
+      {
+        element: document.querySelectorAll('#step1')[0],
+        intro: `This is the social media profile page of Lily Hui, a middle school
+        student.`,
+        position:'right',
+        scrollTo:'tooltip'
+      },
+      {
+        element: document.querySelectorAll('#step1')[0],
+        intro: `This is how Lily’s profile will look to anyone on the Internet.`,
+        position:'right',
+        scrollTo:'tooltip'
+      },
+      {
+        element: document.querySelectorAll('#step1')[0],
+        intro: `Take some time to look through it and see what kinds of posts she
+        has on her profile!`,
+        position:'right',
+        scrollTo:'tooltip'
+      },
+      {
+        element: document.querySelectorAll('#step1')[0],
+        intro: `Click on the blue dots&nbsp;<a role='button' tabindex='0'
+        class='introjs-hint'><div class='introjs-hint-dot'></div><div
+        class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; to learn more...`,
+        position:'right',
+        scrollTo:'tooltip'
+      }
+    ];
+    
+    var hintsList = [
+      {
+        hint: `Remember, this is what Lily’s profile looks like to anyone on the
+        internet. All of her posts can be seen on her profile page.`,
+        element: '#hint1',
+        hintPosition: 'middle-middle'
+      },
+      {
+        hint: `Think about what you can learn about Lily! What are some of her
+        hobbies? Where does she like to go? Who are her friends?`,
+        element: '#hint2',
+        hintPosition: 'middle-right'
+      },
+      {
+        hint: `Lily has shared location information in her posts. Her location
+        information is also available to anyone on the internet.`,
+        element: '#hint3',
+        hintPosition: 'middle-right'
+      }
+    ];
+  script(src="/module_js/base_sim.js")
   

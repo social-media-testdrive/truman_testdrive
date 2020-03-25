@@ -7,8 +7,31 @@ var keySetting2 = "";
 
 //Initializing and managing the hints
 function startIntro(){
-    var hints;
-    hints = introJs().addHints();
+  var hints = introJs().setOptions({
+    hints: [
+      {
+        hint: `Lily would like to hide her location information from the public on
+        the internet. Which privacy settings would she have to change?`,
+        element: '#hint1',
+        hintPosition: 'top-middle'
+      },
+      {
+        hint: `She can <b>turn off location sharing</b> and restrict who can see her
+        location to <b>“Friends” only</b>. Let’s try doing this!`,
+        element: '#hint2',
+        hintPosition: 'top-middle'
+      },
+      {
+        hint: `Have you turned off location sharing and changed who can see Lily’s
+        location? Click “<i>Let’s Continue!</i>” to see how her profile has
+        changed.`,
+        element: '#hint3',
+        hintPosition: 'middle-right'
+      }
+    ]
+  });
+
+  hints.addHints();
 
     hints.onhintclick(function() {
         clickCount++;

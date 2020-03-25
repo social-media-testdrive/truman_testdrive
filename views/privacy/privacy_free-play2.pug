@@ -50,7 +50,7 @@ block content
       .img.post
         img#loadingPostOne(src=cdn+"/post_pictures/nyctrip.jpg", style="max-width:100%;")
       .content
-        .description#dataHintOneA(data-hint="This is what Lily’s profile now looks like to the public. All of her location information has been hidden. It is now only visible to her social media friends." data-hintPosition="middle-right")
+        .description#hint1
           | On a trip to nyc with my family😃
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
@@ -99,7 +99,7 @@ block content
                   |  You&apos;ve flagged this!
                   h3.ui.inverted.header
                     span="The admins will review this post further. We are sorry you had this experience."
-      .content#dataHintTwoA(data-hint="Here is an example of a tagged post. Susan created this post and tagged Lily in it." data-hintPosition="middle-middle")
+      .content#hint2
         .right.floated.meta= "3 days ago"
         |
         a(href="/user/Suzieee")
@@ -543,11 +543,27 @@ block content
     .ui.warning.message#clickAllDotsFree2(style="display:none;")
       .header
         | Click through all of the blue dots to continue
-    button.ui.big.labeled.icon.button.settings3#settings3(style="margin-bottom:4em;")
+    button.ui.big.labeled.icon.button.settings3#cyberTransButton(style="margin-bottom:4em;")
         i.rocket.icon
         |   Let's Continue!
 
 
 block scripts
-  script(src="/module_js/privacy/privacy_free-play2.js")
+  script.
+    var hintsList = [
+      {
+        hint: `This is what Lily’s profile now looks like to the public. All of her
+        location information has been hidden. It is now only visible to her social
+        media friends.`,
+        element: '#hint1',
+        hintPosition: 'middle-right'
+      },
+      {
+        hint: `Here is an example of a tagged post. Susan created this post and
+        tagged Lily in it.`,
+        element: '#hint2',
+        hintPosition: 'middle-middle'
+      }
+    ];
+  script(src="/module_js/base_sim.js")
   

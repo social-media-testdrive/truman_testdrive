@@ -26,9 +26,9 @@ block content
       
       br.ui.divider
       form.ui.form
-        .grouped.fields(data-hint=" If your account is on a “<i>Public</i>” setting, everyone on the internet can access your account and see what you post. Right now, it is set as a public account." data-hintPosition="top-middle")
+        .grouped.fields#hint1
           label(for='account', style="font-size:140%") Account Settings  
-            .field(data-hint="Let’s try changing it to “<i>Private</i>” so that only people you approve would be able to see your posts. Slide the button over so “<i>Private account</i>” is selected." data-hintPosition="bottom-middle")
+            .field#hint2
               br
               .ui.toggle.checkbox
                   input(type='checkbox' name='public')
@@ -45,7 +45,7 @@ block content
             br
             br
             label(for='contacts', style="font-size:120%") Contacts
-            .field(data-hint="This is where you can change who can contact you on the social media site. Try changing the settings to “<i>Friends</i>” or “<i>Friends of Friends</i>” so that strangers cannot comment on your posts or send you friend requests." data-hintPosition="top-middle")
+            .field#hint3
               br
               label(style="font-size:100%") Allow friend requests from
                 .div(style='width: 200px;')
@@ -132,12 +132,12 @@ block content
       form.ui.form
         .grouped.fields
             label(for='information', style="font-size:140%") Location Sharing Settings
-              .field(data-hint="Use this setting to control how you share your location information. Right now, it is set so that you are putting your location on every post." data-hintPosition="middle-middle")
+              .field#hint4
                 br
                 .ui.toggle.checkbox
                   input(type='checkbox' name='locationShare' checked='checked')
                   label Turn on location sharing
-            .field(data-hint="You can try turning this off entirely, or restricting who can see your location information." data-hintPosition="middle-middle")
+            .field#hint5
               br
               label(style="font-size:100%") Share my location with
                 .div(style='width: 200px;')
@@ -156,10 +156,11 @@ block content
     .ui.warning.message#clickAllDotsSim(style="display:none;")
       .header
         | Click through all of the blue dots to continue
-    button.ui.big.labeled.icon.button.privacytrans2#privacytrans2(style="margin-bottom:4em;")
+    button.ui.big.labeled.icon.button.privacytrans2#cyberTransButton(style="margin-bottom:4em;")
           i.rocket.icon
           |   Let's Continue!
 
-  block scripts
-    script(src="/module_js/privacy/privacy_sim.js")
+block scripts
+  script(src="/module_js/privacy/privacy_sim.js")
+  script(src="/module_js/base_sim.js")
     

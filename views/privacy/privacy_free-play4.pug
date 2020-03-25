@@ -43,7 +43,7 @@ block content
                   |  You&apos;ve flagged this!
                   h3.ui.inverted.header
                     span="The admins will review this post further. We are sorry you had this experience."
-      .content(data-hint="This is what Lily’s profile now looks like to the public. If you look through it, you can see that the tagged posts have been removed from her profile.", data-hintPosition="middle-middle")
+      .content#hint1
         .right.floated.meta= "Yesterday"
         img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
         |   <b>Lily Hui</b>
@@ -99,7 +99,7 @@ block content
                   |  You&apos;ve flagged this!
                   h3.ui.inverted.header
                     span="The admins will review this post further. We are sorry you had this experience."
-      .content(data-hint="However, the public can still see all of her posts." data-hintPosition="middle-middle")
+      .content#hint2
         .right.floated.meta= "4 days ago"
         |
         img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
@@ -393,14 +393,26 @@ block content
     .ui.warning.message#clickAllDotsFree4(style="display:none;")
       .header
         | Click through all of the blue dots to continue
-    button.ui.big.labeled.icon.button.settings2#settings2(style="margin-bottom:4em;")
+    button.ui.big.labeled.icon.button.settings2#cyberTransButton(style="margin-bottom:4em;")
         i.rocket.icon
         |   Let's Continue!
 
 
-
-
-
 block scripts
-  script(src="/module_js/privacy/privacy_free-play4.js")
+  script.
+    var hintsList = [
+      {
+        hint: `This is what Lily’s profile now looks like to the public. If you look
+        through it, you can see that the tagged posts have been removed from her
+        profile.`,
+        element: '#hint1',
+        hintPosition: 'middle-middle'
+      },
+      {
+        hint: `However, the public can still see all of her posts.`,
+        element: '#hint2',
+        hintPosition: 'middle-middle'
+      },
+    ]
+  script(src="/module_js/base_sim.js")
   
