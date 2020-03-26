@@ -403,9 +403,15 @@ app.get('/free-settings3/privacy', passportConfig.isAuthenticated, function (req
 });
 
 app.get('/end/:modId', passportConfig.isAuthenticated, function (req, res) {
-  res.render(req.param("modId") + '/' + req.param("modId")+'_end', {
-    title: 'Finished'
-  });
+  if((req.param("modId") === 'accounts') || (req.param("modId") === 'privacy')){
+    res.render(req.param("modId") + '/' + req.param("modId")+'_end', {
+      title: 'Finished'
+    });
+  } else {
+    res.render('base_end.pug', {
+      title: 'Finished'
+    });
+  }
 });
 
 app.get('/start/:modId', passportConfig.isAuthenticated, function (req, res) {
