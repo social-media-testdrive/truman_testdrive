@@ -421,7 +421,7 @@ app.get('/start/:modId', passportConfig.isAuthenticated, function (req, res) {
 });
 
 app.get('/intro/:modId', passportConfig.isAuthenticated,function (req, res) {
-  res.render(req.param("modId") + '/' + req.param("modId")+'_intro', {
+  res.render('base_intro.pug', {
     title: 'Welcome'
   });
 });
