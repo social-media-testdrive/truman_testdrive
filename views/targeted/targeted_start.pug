@@ -39,26 +39,26 @@ block content
       //- .ui.segments     
       .ui.stackable.two.column.grid
         .ui.column
-          #audience.ui.raised.segment
-            a.ui.blue.ribbon.label#audienceLabel
+          .ui.raised.segment.keyTerm
+            a.ui.blue.ribbon.label.keyTermLabel
                 //- i.dollar.sign.icon 
                 span Data
-            span.hidden(id="audience_info", style="font-weight:600") Facts and statistics about a user that are collected for different purposes.
+            span.hidden.keyTermDefinition(style="font-weight:600") Facts and statistics about a user that are collected for different purposes.
               ul(style="font-weight:400") Apps and websites collect data about your online activity (i.e. other sites you visit, what you click on, what you search for, etc.)
 
         .ui.column
-          #private_information.ui.raised.segment
-            a.ui.blue.ribbon.label#privateInformationLabel
+          .ui.raised.segment.keyTerm
+            a.ui.blue.ribbon.label.keyTermLabel
                 //- i.magic.icon 
                 span Targeted advertising
-            span.hidden(id="private_information_info",style="font-weight:600")  When apps or websites show you certain types of advertisements based on information they’ve collected about you. 
+            span.hidden.keyTermDefinition(style="font-weight:600")  When apps or websites show you certain types of advertisements based on information they’ve collected about you. 
             
         .ui.column
-          #risky.ui.raised.segment
-            a.ui.blue.ribbon.label#riskyLabel
+          .ui.raised.segment.keyTerm
+            a.ui.blue.ribbon.label.keyTermLabel
                 //- i.magic.icon 
                 span Sponsored post
-            span.hidden(id="risky_info",style="font-weight:600") A post on social media that is paid for by a company as an advertisement for their product.
+            span.hidden.keyTermDefinition(style="font-weight:600") A post on social media that is paid for by a company as an advertisement for their product.
               ul(style="font-weight:400") Sponsored posts usually are labeled as “sponsored” but they look a lot like posts from the average person. 
     .ui.warning.message#clickNextWarning(style="display:none;")
       .header
@@ -66,11 +66,11 @@ block content
     .ui.warning.message#clickLabelsWarning(style="display:none;")
      .header
       | Click on each label to proceed  
-    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+    a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
         .ui.labeled.icon.button
             i.rocket.icon
             |   Got it!
 
 block scripts
-  script(src="/module_js/targeted/targeted_start.js")
+  script(src="/module_js/base_start.js")
   

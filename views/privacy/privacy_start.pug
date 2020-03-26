@@ -41,32 +41,32 @@ block content
       //- .ui.segments     
       .ui.stackable.two.column.grid
         .ui.column
-          #privacyConcept.ui.raised.segment
-            a.ui.blue.ribbon.label#privacyLabel
+          .ui.raised.segment.keyTerm
+            a.ui.blue.ribbon.label.keyTermLabel
                 //- i.magic.icon 
                 span Privacy
-            span.hidden(id="privacyConcept_info",style="font-weight:600")  Control of personal information to protect it from being observed or tracked by others.
+            span.hidden.keyTermDefinition(style="font-weight:600")  Control of personal information to protect it from being observed or tracked by others.
 
         .ui.column
-          #settingsConcept.ui.raised.segment
-            a.ui.blue.ribbon.label#settingsLabel
+          .ui.raised.segment.keyTerm
+            a.ui.blue.ribbon.label.keyTermLabel
                 //- i.dollar.sign.icon 
                 span Privacy Settings
-            span.hidden(id="settingsConcept_info", style="font-weight:600") Choices a website or app might give you about what information is visible to other users and companies.
+            span.hidden.keyTermDefinition(style="font-weight:600") Choices a website or app might give you about what information is visible to other users and companies.
 
         .ui.column
-          #privacyPolicyConcept.ui.raised.segment
-            a.ui.blue.ribbon.label#privacyPolicyLabel
+          .ui.raised.segment.keyTerm
+            a.ui.blue.ribbon.label.keyTermLabel
                 //- i.magic.icon 
                 span Privacy Policy
-            span.hidden(id="policyConcept_info",style="font-weight:600") A legal document that an app or website must provide and that describes what user information they collect and how they use it.
+            span.hidden.keyTermDefinition(style="font-weight:600") A legal document that an app or website must provide and that describes what user information they collect and how they use it.
         
         .ui.column
-          #optOut.ui.raised.segment
-            a.ui.blue.ribbon.label#optOutLabel
+          .ui.raised.segment.keyTerm
+            a.ui.blue.ribbon.label.keyTermLabel
                 //- i.magic.icon 
                 span Opt Out
-            span.hidden(id="optOut_info",style="font-weight:600") To choose to not participate in something.
+            span.hidden.keyTermDefinition(style="font-weight:600") To choose to not participate in something.
               
     .ui.warning.message#clickNextWarning(style="display:none;")
       .header
@@ -74,10 +74,10 @@ block content
     .ui.warning.message#clickLabelsWarning(style="display:none;")
      .header
       | Click on each label to proceed  
-    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+    a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
         .ui.labeled.icon.button
             i.rocket.icon
             |   Got it!
             
 block scripts
-  script(src="/module_js/privacy/privacy_start.js")
+  script(src="/module_js/base_start.js")

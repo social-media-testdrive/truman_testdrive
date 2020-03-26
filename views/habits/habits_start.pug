@@ -39,26 +39,26 @@ block content
       //- .ui.segments     
       .ui.stackable.two.column.grid
         .ui.column
-          .ui.raised.segment#audience
-            a.ui.blue.ribbon.label#audienceLabel
+          .keyTerm.ui.raised.segment
+            a.ui.blue.ribbon.label.keyTermLabel
                 //- i.dollar.sign.icon 
                 span Habit
-            span.hidden(id="audience_info", style="font-weight:600") Something we do automatically without thinking.
+            span.hidden.keyTermDefinition(style="font-weight:600") Something we do automatically without thinking.
               ul(style="font-weight:400") Social media <i>habits</i> can include things like checking social media regularly or scrolling through your social media feed as soon as you wake up.
 
         .ui.column
-          #private_information.ui.raised.segment
-            a.ui.blue.ribbon.label#privateInformationLabel
+          .keyTerm.ui.raised.segment
+            a.ui.blue.ribbon.label.keyTermLabel
                 //- i.magic.icon 
                 span Attention-grabbing design
-            span.hidden(id="private_information_info",style="font-weight:600")  Features of a device or app that are intended to encourage users to use it frequently.
+            span.hidden.keyTermDefinition(style="font-weight:600")  Features of a device or app that are intended to encourage users to use it frequently.
               ul(style="font-weight:400") Some features include notifications for new content, autoplay on videos, and endless scrolling.
         .ui.column
-          #risky.ui.raised.segment
-            a.ui.blue.ribbon.label#riskyLabel
+          .keyTerm.ui.raised.segment
+            a.ui.blue.ribbon.label.keyTermLabel
                 //- i.magic.icon 
                 span Feedback loop
-            span.hidden(id="risky_info",style="font-weight:600") The pleasure you experience when you get a response to something you do or post online, making you want to go back and post more.
+            span.hidden.keyTermDefinition(style="font-weight:600") The pleasure you experience when you get a response to something you do or post online, making you want to go back and post more.
             
     .ui.warning.message#clickNextWarning(style="display:none;")
       .header
@@ -66,11 +66,11 @@ block content
     .ui.warning.message#clickLabelsWarning(style="display:none;")
      .header
       | Click on each label to proceed  
-    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+    a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
         .ui.labeled.icon.button
             i.rocket.icon
             |   Got it!
             
 block scripts
-  script(src='/module_js/habits/habits_start.js')
+  script(src='/module_js/base_start.js')
     
