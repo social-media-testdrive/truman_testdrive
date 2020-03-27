@@ -68,44 +68,6 @@ var hintsList = [
 
 let result;
 
-function reportPasswordStrength(currentInput){
-
-  result = zxcvbn(currentInput);
-
-  switch (result.score) {
-    case 0:
-      if(result.password === ""){
-        $('#passwordStrength').progress('reset');
-        $("#strengthLabel").text("Password Strength");
-      } else {
-        $('#passwordStrength').progress({ value: 1 });
-        $("#strengthLabel").text("Password Strength: Very Weak");
-      }
-      break;
-    case 1:
-      $('#passwordStrength').progress({ value: 2 });
-      $("#strengthLabel").text("Password Strength: Weak");
-      break;
-    case 2:
-      $('#passwordStrength').progress({ value: 3 });
-      $("#strengthLabel").text("Password Strength: Moderate");
-      break;
-    case 3:
-      $('#passwordStrength').progress({ value: 4 });
-      $("#strengthLabel").text("Password Strength: Strong");
-      break;
-    case 4:
-      $('#passwordStrength').progress({ value: 5 });
-      $("#strengthLabel").text("Password Strength: Very Strong");
-      break;
-    default:
-      $('#passwordStrength').progress('reset');
-      $("#strengthLabel").text("Password Strength");
-      break;
-  }
-};
-
-
 function eventsAfterHints(){
   $('input[name="username"]').removeAttr('readonly');
   $('input[name="password"]').removeAttr('readonly');
