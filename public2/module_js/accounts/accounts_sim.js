@@ -66,44 +66,36 @@ var hintsList = [
   }
 ];
 
-//for the password strength indicator
-const regexCaps = new RegExp("[A-Z]+");
-const regexLower = new RegExp("[a-z]+");
-const regexNum = new RegExp("[0-9]+");
-const regexSymbol = new RegExp("[\\W|_]+");
-let uppercase = 0;
-let lowercase = 0;
-let number = 0;
-let symbol = 0;
-let strengthLevel = 0;
+let result;
 
 function reportPasswordStrength(currentInput){
-  uppercase = regexCaps.test(currentInput);
-  lowercase = regexLower.test(currentInput);
-  number = regexNum.test(currentInput);
-  symbol = regexSymbol.test(currentInput);
 
-  strengthLevel = uppercase + lowercase + number + symbol;
+  result = zxcvbn(currentInput);
 
-  switch (strengthLevel) {
+  switch (result.score) {
     case 0:
-      $('#passwordStrength').progress('reset');
-      $("#strengthLabel").text("Password Strength");
+      if(result.password === ""){
+        $('#passwordStrength').progress('reset');
+        $("#strengthLabel").text("Password Strength");
+      } else {
+        $('#passwordStrength').progress({ value: 1 });
+        $("#strengthLabel").text("Password Strength: Very Weak");
+      }
       break;
     case 1:
-      $('#passwordStrength').progress({ value: 1 });
+      $('#passwordStrength').progress({ value: 2 });
       $("#strengthLabel").text("Password Strength: Weak");
       break;
     case 2:
-      $('#passwordStrength').progress({ value: 2 });
-      $("#strengthLabel").text("Password Strength: Average");
+      $('#passwordStrength').progress({ value: 3 });
+      $("#strengthLabel").text("Password Strength: Moderate");
       break;
     case 3:
-      $('#passwordStrength').progress({ value: 3 });
+      $('#passwordStrength').progress({ value: 4 });
       $("#strengthLabel").text("Password Strength: Strong");
       break;
     case 4:
-      $('#passwordStrength').progress({ value: 4 });
+      $('#passwordStrength').progress({ value: 5 });
       $("#strengthLabel").text("Password Strength: Very Strong");
       break;
     default:
@@ -117,5 +109,39 @@ function reportPasswordStrength(currentInput){
 function eventsAfterHints(){
   $('input[name="username"]').removeAttr('readonly');
   $('input[name="password"]').removeAttr('readonly');
-  $('input[name="password"]').on('input', function(){reportPasswordStrength($(this).val())});
+  $('input[name="password"]').on('input', function(){
+
+    result = zxcvbn($(this).val());
+    switch (result.score) {
+      case 0:
+        if(result.password === ""){
+          $('#passwordStrength').progress('reset');
+          $("#strengthLabel").text("Password Strength");
+        } else {
+          $('#passwordStrength').progress({ value: 1 });
+          $("#strengthLabel").text("Password Strength: Very Weak");
+        }
+        break;
+      case 1:
+        $('#passwordStrength').progress({ value: 2 });
+        $("#strengthLabel").text("Password Strength: Weak");
+        break;
+      case 2:
+        $('#passwordStrength').progress({ value: 3 });
+        $("#strengthLabel").text("Password Strength: Moderate");
+        break;
+      case 3:
+        $('#passwordStrength').progress({ value: 4 });
+        $("#strengthLabel").text("Password Strength: Strong");
+        break;
+      case 4:
+        $('#passwordStrength').progress({ value: 5 });
+        $("#strengthLabel").text("Password Strength: Very Strong");
+        break;
+      default:
+        $('#passwordStrength').progress('reset');
+        $("#strengthLabel").text("Password Strength");
+        break;
+    }
+  });
 };
