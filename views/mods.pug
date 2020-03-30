@@ -1,62 +1,77 @@
 extends ui_layout
 block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
-  h2 Pick a Lesson Plan
-  br
+  .ui.container(style="padding:0;")
+    br
+    h2 Pick a Module
+    br
 
-  .ui.four.stackable.link.cards(style="padding-bottom:4em;")
-      a.ui.card(href='/guest/habits')
-        .image
-          img(src=cdn+'/smhabits.png')
-        .content
-          .header="Healthy Social Media Habits"
-      a.ui.card(href='/guest/targeted')
-        .image
-          img(src=cdn+'/targetedads.png')
-        .content
-          .header="Ads on Social Media"
-      a.ui.card(href='/guest/phishing')
-        .image
-          img(src=cdn+'/phishing.png')
-        .content
-          .header="Scams and Phishing"
-      a.ui.card(href='/guest/cyberbullying')
-        .image
-          img(src=cdn+'/upstander.png')
-        .content
-          .header="How to Be an Upstander"
-      a.ui.card(href='/guest/safe-posting')
-        .image
-          img(src=cdn+'/privateinfo.png')
-        .content
-          .header="Is It Private Information?"
-      a.ui.card(href='/guest/digfoot')
-        .image
-          img(src=cdn+'/digfoot.png')
-        .content
-          .header="Shaping Your Digital Footprint"
-      a.ui.card(href='/guest/presentation')
-        .image
-          img(src=cdn+'/onlineidentity.png')
-        .content
-          .header="Online Identities"
-      a.ui.card(href='/guest/privacy')
-        .image
-          img(src=cdn+'/smprivacy.png')
-        .content
-          .header="Social Media Privacy"  
-      a.ui.card(href='/guest/digital-literacy')
-        .image
-          img(src=cdn+'/news.png')
-        .content
-          .header="News in Social Media"
-      a.ui.card(href='#')
-        .ui.inverted.active.dimmer.soon
+    .ui.four.stackable.link.cards(style="padding-bottom:4em;")
+      
+        a.ui.card(href='/guest/habits')
+          .image
+            .ui.blue.ribbon.label NEW!
+            img(src=cdn+'/smhabits.png')
           .content
-            .center
-              h2.ui.header
-                |  Coming Soon!
-        .image(style="filter: blur(1.5px);")
-          img(src=cdn+'/acctandpasswords.png')
-        .content
-          .header="Accounts and Passwords"
+            .header="Healthy Social Media Habits"
+            
+        a.ui.card(href='/guest/targeted')
+          .image
+            .ui.blue.ribbon.label NEW!
+            img(src=cdn+'/targetedads.png')
+          .content
+            .header="Ads on Social Media"
+            
+        a.ui.card(href='/guest/phishing')
+          .image
+            .ui.blue.ribbon.label NEW!
+            img(src=cdn+'/phishing.png')
+          .content
+            .header="Scams and Phishing"
+            
+        a.ui.card(href='/guest/cyberbullying')
+          .image
+            img(src=cdn+'/upstander.png')
+          .content
+            .header="How to Be an Upstander"
+            
+        a.ui.card(href='/guest/safe-posting')
+          .image
+            img(src=cdn+'/privateinfo.png')
+          .content
+            .header="Is It Private Information?"
+            
+        a.ui.card(href='/guest/digfoot')
+          .image
+            img(src=cdn+'/digfoot.png')
+          .content
+            .header="Shaping Your Digital Footprint"
+            
+        a.ui.card(href='/guest/presentation')
+          .image
+            img(src=cdn+'/onlineidentity.png')
+          .content
+            .header="Online Identities"
+            
+        a.ui.card(href='/guest/privacy')
+          .image
+            img(src=cdn+'/smprivacy.png')
+          .content
+            .header="Social Media Privacy" 
+             
+        a.ui.card(href='/guest/digital-literacy')
+          .image
+            img(src=cdn+'/news.png')
+          .content
+            .header="News in Social Media"
+            
+        a.ui.card(href='#')
+          .ui.inverted.active.dimmer.soon
+            .content
+              .center
+                h2.ui.header
+                  |  Coming Soon!
+          .image(style="filter: blur(1.5px);")
+            img(src=cdn+'/acctandpasswords.png')
+          .content
+            .header="Accounts and Passwords"
