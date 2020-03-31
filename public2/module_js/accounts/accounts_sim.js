@@ -18,51 +18,17 @@ var stepsList = [
 
 var hintsList = [
   {
-    hint: 'Choose a good username.',
-    element: '#hint1',
-    hintPosition: 'middle-left'
-  },
-  {
-    hint: `If the social media site is for connecting with friends, family,
-      and people you know offline, you could include your first name or a
-      nickname.`,
+    hint: `Think about whether you want to include your part of your name or a
+    nickname. You may or may not want people to know exactly who you are based
+    on your username. `,
     element: '#hint1',
     hintPosition: 'middle-middle'
   },
   {
-    hint: `If you don't want anyone to know who you are, pick something that
-      is not related to your real name.`,
-    element: '#hint1',
-    hintPosition: 'middle-right'
-  },
-  {
-    hint: `Choose a password. Make sure that it is hard to guess but easy to
-      remember.`,
-    element: '#hint2',
-    hintPosition: 'middle-left'
-  },
-  {
-    hint: `Try making your password a phrase or sentence rather than a
-      single word, or just the first letter of each word in a sentence.
-      For example, the sentence “I graduated from Montgomery Elementary
-      School in 2019” can be shortened to “IgfMESi2019”, which is a strong
-       password!`,
+    hint: `Make sure you have a strong password that you can easily remember,
+    but that is difficult for others to guess!`,
     element: '#hint2',
     hintPosition: 'middle-middle'
-  },
-  {
-    hint: `You could also try using two or more words connected by numbers
-      or symbols you can remember. For example, “Montgomery2019Elementary”
-      would be a good place to start.`,
-    element: '#hint2',
-    hintPosition: 'middle-right'
-  },
-  {
-    hint: `You can make your password even stronger by including different
-      types of characters, such as capital letters, numbers, and symbols.
-      Making your password longer can be good too!`,
-    element: '#hint3',
-    hintPosition: 'top-middle'
   }
 ];
 

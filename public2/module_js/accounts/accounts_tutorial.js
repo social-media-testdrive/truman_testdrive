@@ -12,17 +12,16 @@ function startIntro(){
     steps: [
       {
         element: document.querySelectorAll('#usernameStep')[0],
-        intro: `Choose a good username. This is the name other people on social
-          media will see.`,
+        intro: `Choose your username carefully! This is the name other people on
+        social media will see.`,
         position: "right",
         scrollTo: 'tooltip'
       },
       {
         element: document.querySelectorAll('#usernameStep')[0],
-        intro: `Think about the website's purpose. Is it for connecting with
-          friends, family, and people you know offline? Then you could include
-          your first name or a nickname so that other people will know who you
-          are.`,
+        intro: `Depending on who you are connecting with, you may want to
+        include your first name or a nickname so that other people will know who
+        you are.`,
         position: "right",
         scrollTo: 'tooltip'
       },
@@ -30,14 +29,6 @@ function startIntro(){
         element: document.querySelectorAll('#usernameStep')[0],
         intro: `If you don't want anyone to know who you are, pick something
           that is not related to your real name.`,
-        position: "right",
-        scrollTo: 'tooltip'
-      },
-      {
-        element: document.querySelectorAll('#usernameStep')[0],
-        intro: `You should also think about if you want to use the same username
-          for different sites. Using the same username will make it easier for
-          people to follow your digital footprint and to identify who you are.`,
         position: "right",
         scrollTo: 'tooltip'
       },
