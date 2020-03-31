@@ -30,11 +30,17 @@ block content
           label(style="margin-bottom:1em;") Username
           div#hint1 
           input(readonly='' type="text" name='username' placeholder="username" style="margin-top:1em;")
+          .ui.warning.message#usernameWarning(style="margin-bottom:18px; font-size:16px;")
+            .header Try creating a username
         br
         .field
           label(style="margin-bottom:1em;") Password
           div#hint2
           input(readonly='' type="password" name="password" placeholder="password" style="margin-top:1em;")  
+        .ui.warning.message#passwordWarning(style="margin-bottom:18px; font-size:16px;")
+          .header Try creating a password 
+
+
       #passwordStrength.ui.indicating.small.progress(style="margin-top:.5em;" data-value='0' data-total='5')
         .bar
       span#strengthLabel(style="font-weight:bold; font-size:120%;") Password Strength
@@ -55,4 +61,3 @@ block content
           
 block scripts
   script(src="/module_js/accounts/accounts_sim.js")
-  script(src="/module_js/base_sim.js")

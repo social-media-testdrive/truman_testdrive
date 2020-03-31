@@ -6,8 +6,8 @@ function startIntro(){
     steps: [
       {
         element: document.querySelectorAll('#generalStep')[0],
-        intro: `When you first create your profile, don’t share too much
-          information on it.`,
+        intro: `When you first create your profile, think about how much
+        information you really want to share with other people.`,
         position: "right",
         scrollTo: 'tooltip'
       },
