@@ -38,19 +38,19 @@ let result;
 let clickCount = 0;
 let counter = 0;
 const numberOfHints = hintsList.length;
+let suggestionStringHTML;
 
-function displayFieldMessage(messageID){
-  if($(messageID).is(':visible')){
-    $(messageID).transition("bounce");
-  } else {
-    $(messageID).transition('fade down');
-  }
+function displayFeedback(result){
+  $('#feedbackWarning').text(result.feedback.warning);
+  suggestionStringHTML = "";
+  result.feedback.suggestions.forEach(element => {
+    suggestionStringHTML = suggestionStringHTML.concat("<li>"+element+"</li>");
+  });
+  $('#feedbackSuggestion').html(suggestionStringHTML);
 }
 
 function hideFieldMessage(messageID){
-  if($(messageID).is(':visible')){
-    $(messageID).transition('fade down');
-  }
+  $(messageID).hide();
   if ( (counter === numberOfHints)
     && ($('input[name="username"]').val() !== "")
     && ($('input[name="password"]').val() !== "") ){
@@ -77,36 +77,44 @@ function eventsAfterHints(){
           $('#passwordStrength').progress('reset');
           $("#strengthLabel").text("Password Strength");
           $('#cyberTransButton').removeClass('green');
+          $('#feedbackWarning').text("");
+          $('#feedbackSuggestion').html("");
         } else {
           $('#passwordStrength').progress({ value: 1 });
           $("#strengthLabel").text("Password Strength: Very Weak");
           hideFieldMessage('#passwordWarning');
+          displayFeedback(result);
         }
         break;
       case 1:
         $('#passwordStrength').progress({ value: 2 });
         $("#strengthLabel").text("Password Strength: Weak");
         hideFieldMessage('#passwordWarning');
+        displayFeedback(result);
         break;
       case 2:
         $('#passwordStrength').progress({ value: 3 });
         $("#strengthLabel").text("Password Strength: Moderate");
         hideFieldMessage('#passwordWarning');
+        displayFeedback(result);
         break;
       case 3:
         $('#passwordStrength').progress({ value: 4 });
         $("#strengthLabel").text("Password Strength: Strong");
         hideFieldMessage('#passwordWarning');
+        displayFeedback(result);
         break;
       case 4:
         $('#passwordStrength').progress({ value: 5 });
         $("#strengthLabel").text("Password Strength: Very Strong");
         hideFieldMessage('#passwordWarning');
+        displayFeedback(result);
         break;
       default:
         $('#passwordStrength').progress('reset');
         $("#strengthLabel").text("Password Strength");
         hideFieldMessage('#passwordWarning');
+        displayFeedback(result);
         break;
     }
   });
@@ -136,11 +144,11 @@ function errorCheck(){
   }
 
   if($('input[name="password"]').val() === ""){
-    displayFieldMessage('#passwordWarning');
+    $('#passwordWarning').show();
   }
 
   if($('input[name="username"]').val() === ""){
-    displayFieldMessage('#usernameWarning');
+    $('#usernameWarning').show();
   }
 };
 
