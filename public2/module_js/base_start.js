@@ -36,7 +36,7 @@ $('#introduction_next').on('click', function () {
 });
 
 $('.keyTerm').on('click', function (event) {
-  $(event.target).closest('.keyTerm').children('.keyTermDefinition').show();;
+  $(event.target).closest('.keyTerm').children('.keyTermDefinition').show();
   $(event.target).closest('.keyTerm').transition('tada');
 
   if($(".keyTermDefinition:hidden").length === 0){
