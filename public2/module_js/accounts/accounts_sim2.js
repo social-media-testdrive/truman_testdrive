@@ -7,8 +7,7 @@ var hintsList = [
   },
   {
     hint: `Start off by sharing only a little bit of information about
-      yourself. You can always add more information later but it is
-      difficult to remove information.`,
+      yourself. You can always add more information later if you need to.`,
     element: '#generalStep',
     hintPosition: 'top-right'
   }

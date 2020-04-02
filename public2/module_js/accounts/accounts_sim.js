@@ -29,6 +29,13 @@ let hintsList = [
     but that is difficult for others to guess!`,
     element: '#hint2',
     hintPosition: 'middle-middle'
+  },
+  {
+    hint: `You can make your password stronger by including different types of
+    characters, such as capital letters, numbers, and symbols. Making your
+    password longer can be good too!`,
+    element: '#strengthLabel',
+    hintPosition: 'middle-right'
   }
 ];
 

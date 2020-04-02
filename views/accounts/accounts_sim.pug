@@ -42,15 +42,14 @@ block content
 
       #passwordStrength.ui.indicating.small.progress(style="margin-top:.5em;" data-value='0' data-total='5')
         .bar
-      span#strengthLabel(style="font-weight:bold; font-size:120%;") Password Strength
-      br
+      h3#strengthLabel(style="font-weight:bold; font-size:120%;") Password Strength
       .ui.message.hidden#feedbackMessage(style="margin-bottom:18px; font-size:16px;") 
         ul(style="padding-left:28px; margin-top:0;")#feedbackSuggestion
 
-      .ui.segment
+      //-.ui.segment
         span(style="font-weight:bold; font-size:120%;") Try to make a very strong password! Remember to use:
         br
-        .ui.basic.segment#hint3
+        .ui.basic.segment
           .ui.bulleted.list(style="font-size:120%;")
             .item uppercase letters
             .item lowercase letters
