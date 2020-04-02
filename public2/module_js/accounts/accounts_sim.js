@@ -41,12 +41,21 @@ const numberOfHints = hintsList.length;
 let suggestionStringHTML;
 
 function displayFeedback(result){
-  $('#feedbackWarning').text(result.feedback.warning);
-  suggestionStringHTML = "";
+
+  if(result.feedback.warning !== ""){
+    suggestionStringHTML = "<li>"+result.feedback.warning+"</li>";
+  } else {
+    suggestionStringHTML = "";
+  }
   result.feedback.suggestions.forEach(element => {
     suggestionStringHTML = suggestionStringHTML.concat("<li>"+element+"</li>");
   });
-  $('#feedbackSuggestion').html(suggestionStringHTML);
+  if((suggestionStringHTML === "")){
+    $('#feedbackMessage').hide();
+  } else {
+    $('#feedbackSuggestion').html(suggestionStringHTML);
+    $('#feedbackMessage').show();
+  }
 }
 
 function hideFieldMessage(messageID){
@@ -79,6 +88,7 @@ function eventsAfterHints(){
           $('#cyberTransButton').removeClass('green');
           $('#feedbackWarning').text("");
           $('#feedbackSuggestion').html("");
+          $('#feedbackMessage').hide();
         } else {
           $('#passwordStrength').progress({ value: 1 });
           $("#strengthLabel").text("Password Strength: Very Weak");
