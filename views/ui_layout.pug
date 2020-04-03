@@ -2,7 +2,6 @@
 doctype html
 html
   head
-    
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
@@ -28,7 +27,10 @@ html
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css', integrity='sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=', crossorigin='anonymous')
     
     link(rel='stylesheet', href=cdn+'/js/lib/introjs.min.css')
+
     //-link(rel='stylesheet', href='/js/themes/introjs-nassim.css')
+    block styles
+    
     style(type='text/css').
       body {
       background-color: #F5F8FA;
@@ -649,6 +651,10 @@ html
       .settingSmallLabel {
         font-weight: normal;
         font-size: 65%;
+      }
+      
+      .addBottomMargin{
+        margin-bottom: 4em;
       }
       
       /*--------SCREENSHOTS----------*/

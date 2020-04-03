@@ -10,7 +10,7 @@ block content
     .ui.raised.segment#generalStep
       h2.ui.header Create An Account
       
-      .ui.form(style="font-size:130%;")
+      .ui.form
         .field#usernameStep
           label Username
           input(type="text" readonly="" name='username' placeholder="username")
@@ -18,9 +18,13 @@ block content
           label Password
           input(type="password" readonly="" name="password" placeholder="password")    
 
-    button.ui.big.labeled.icon.button#continueTutorial(style="margin-bottom:4em;")
+    button.ui.big.labeled.icon.button.addBottomMargin#continueTutorial
         i.rocket.icon
         |   Let's Continue!      
           
 block scripts
   script(src="/module_js/accounts/accounts_tutorial.js")
+  
+block styles
+  style 
+    include ../../css/accounts/sim2.css 

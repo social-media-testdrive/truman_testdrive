@@ -2,7 +2,7 @@ extends ../ui_layout
 
 block content
 
-  .ui.text.container(style="padding-bottom:4em;")
+  .ui.text.container.addBottomMargin
     br
     .ui.raised.segment
       h3.ui.header
@@ -31,9 +31,9 @@ block content
       h3.ui.header
         i.key.blue.icon
         .content Key Ideas
-      .sub.header 
-        i.hand.pointer.icon(style="color:gray;")
-        span(style="color: gray;") Click on each label below to learn more
+      .sub.header.grayElement
+        i.hand.pointer.icon
+        span  Click on each label below to learn more
       br
       //- .ui.segments     
       .ui.stackable.two.column.grid
@@ -42,9 +42,9 @@ block content
             a.ui.blue.ribbon.label.keyTermLabel
                 //- i.dollar.sign.icon 
                 span Username
-            span.hidden.keyTermDefinition(style="font-weight:600") 
+            span.hidden.keyTermDefinition
               | The name or ID that you use when you log in.
-              ul(style="font-weight:400") 
+              ul
                 | Some social media sites ask you to use your e-mail address as 
                 | a username. Others will ask you to choose a name for yourself.
         
@@ -53,10 +53,10 @@ block content
             a.ui.blue.ribbon.label.keyTermLabel
                 //- i.magic.icon 
                 span Password
-            span.hidden.keyTermDefinition(style="font-weight:600")  
+            span.hidden.keyTermDefinition
               | A secret string of letters, symbols, and numbers that you can 
               | use to restrict who can access something digital.
-              ul(style="font-weight:400") 
+              ul
                 | Think of your password like a key to your home. Only people 
                 | with the key can get inside.
         .ui.column
@@ -64,17 +64,17 @@ block content
             a.ui.blue.ribbon.label.keyTermLabel
                 //- i.magic.icon 
                 span Profile
-            span.hidden.keyTermDefinition(style="font-weight:600") 
+            span.hidden.keyTermDefinition 
               | Your personal page on social media that includes information 
               | about you. 
-              ul(style="font-weight:400") 
+              ul
                 | Your profile may contain information like your name, location, 
                 | and pictures you post or are tagged in.
-            
-    .ui.warning.message#clickNextWarning(style="display:none;")
+          
+    .ui.warning.message#clickNextWarning
       .header
        | Click "Next"
-    .ui.warning.message#clickLabelsWarning(style="display:none;")
+    .ui.warning.message#clickLabelsWarning
      .header
       | Click on each label to proceed  
     a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
@@ -84,3 +84,7 @@ block content
             
 block scripts
   script(src="/module_js/base_start.js")
+  
+block styles
+  style 
+    include ../../css/accounts/start.css    

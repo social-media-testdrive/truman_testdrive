@@ -1,0 +1,12 @@
+.ui.label{
+  background-color: #2185d08a;
+  color: #000000d1;
+}
+
+.ui.label h4{
+  float: left;
+}
+
+.ui.form label{
+  font-size: 120%;
+}

@@ -7,16 +7,16 @@ block content
   .computer.only.tablet.only.four.wide.column
 
   .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
-    .ui.one.column.centered.grid(style="padding-top:1em;")
-      .ui.fixed.bottom.sticky(style="padding-bottom:6em;")
-        .ui.icon.compact.message.warning(style="display:none;")#removeHidden
+    .ui.one.column.centered.grid
+      .ui.fixed.bottom.sticky
+        .ui.icon.compact.message.warning#removeHidden
           i.close.icon
           i.question.icon.float
           .content
             .ui.header Need some help? 
             p Make sure you are clicking "Got it" on the blue dots!
           
-        .ui.icon.message.warning(style="display:none;")#clickAllDotsWarning
+        .ui.icon.message.warning#clickAllDotsWarning
           i.close.icon
           i.hand.pointer.icon.float
           .content
@@ -25,26 +25,26 @@ block content
     .ui.raised.segment#generalStep
       h2.ui.header Create An Account
       
-      .ui.form(style="font-size:130%;")
+      .ui.form
         .field
-          label(style="margin-bottom:1em;") Username
+          label Username
           div#hint1 
-          input(readonly='' type="text" name='username' placeholder="username" style="margin-top:1em;")
+          input(readonly='' type="text" name='username' placeholder="username")
           .ui.warning.message#usernameWarning(style="margin-bottom:18px; font-size:16px;")
             .header Try creating a username
         br
         .field
-          label(style="margin-bottom:1em;") Password
+          label Password
           div#hint2
-          input(readonly='' type="password" name="password" placeholder="password" style="margin-top:1em;")  
-        .ui.warning.message#passwordWarning(style="margin-bottom:18px; font-size:16px;")
+          input(readonly='' type="password" name="password" placeholder="password")  
+        .ui.warning.message#passwordWarning
           .header Try creating a password 
 
-      #passwordStrength.ui.indicating.small.progress(style="margin-top:.5em;" data-value='0' data-total='5')
+      #passwordStrength.ui.indicating.small.progress(data-value='0' data-total='5')
         .bar
-      h3#strengthLabel(style="font-weight:bold; font-size:120%;") Password Strength
-      .ui.message.hidden#feedbackMessage(style="margin-bottom:18px; font-size:16px;") 
-        ul(style="padding-left:28px; margin-top:0;")#feedbackSuggestion
+      h3#strengthLabel Password Strength
+      .ui.message.hidden#feedbackMessage
+        ul#feedbackSuggestion
 
       //-.ui.segment
         span(style="font-weight:bold; font-size:120%;") Try to make a very strong password! Remember to use:
@@ -55,9 +55,13 @@ block content
             .item lowercase letters
             .item numbers
             .item symbols
-    button.ui.big.labeled.icon.button.cybersim2#cyberTransButton(style="margin-bottom:4em;")
+    button.ui.big.labeled.icon.button.addBottomMargin.cybersim2#cyberTransButton
         i.rocket.icon
         |   Let's Continue!      
           
 block scripts
   script(src="/module_js/accounts/accounts_sim.js")
+  
+block styles
+  style 
+    include ../../css/accounts/sim.css 

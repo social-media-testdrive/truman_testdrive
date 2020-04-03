@@ -1,0 +1,19 @@
+.addBottomMargin{
+  padding-bottom: 4em;
+}
+
+.grayElement{
+  color:gray;
+}
+
+.keyTermDefinition{
+  font-weight: 600;
+}
+
+.keyTermDefinition ul {
+  font-weight: 400;
+}
+
+.ui.warning.message{
+  display: none;
+}

@@ -9,8 +9,8 @@ block content
   .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
     .ui.raised.segment#generalStep
       h2.ui.header Create Your Profile
-      
-      .ui.form(style="font-size:130%;")
+          
+      .ui.form
         .field
           label Name
           input(type="text" readonly="")
@@ -39,3 +39,7 @@ block content
           
 block scripts
   script(src="/module_js/accounts/accounts_tutorial2.js")
+  
+block styles
+  style 
+    include ../../css/tutorial.css 
