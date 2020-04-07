@@ -1,0 +1,266 @@
+
+extends ../ui_layout
+  
+block content
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  .computer.only.tablet.only.four.wide.column 
+  .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
+    .ui.one.column.centered.grid(style="padding-top:1em;")
+      .ui.fixed.bottom.sticky(style="padding-bottom:6em;")
+        .ui.icon.compact.message.warning(style="display:none;")#removeHidden
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header Need some help? 
+            p Make sure you are clicking "Got it" on the blue dots!
+          
+        .ui.icon.message.warning(style="display:none;")#clickAllDotsWarning
+          i.close.icon
+          i.hand.pointer.icon.float
+          .content
+            .ui.header There are still blue dots to find!
+            p Click through all of the blue dots to continue.
+    .ui.fluid.card.test#step1
+          .content#hint1
+            .right.floated.meta= "Yesterday"
+            |
+            a(href='/user/emememily')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user36.jpg')
+              span='Emily Li'
+          .image
+            img.post(src=cdn+'/post_pictures/movie_se.jpg')
+          .content
+            .description#hint2=`FROZEN second time ❄️❄️☃️`
+          .three.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            .ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Flag
+            .ui.labeled.button(tabindex='0')
+              .ui.like.button
+                i.heart.icon
+                |  Like
+              a.ui.basic.red.left.pointing.label.count=2
+          
+          .content
+            .ui.comments
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user69.jpg')
+                .content
+                  a.author Hannah Cohn
+                  .metadata
+                    span.date 5 hours ago
+                    i.heart.icon
+                    |  3 Likes
+                  .text()
+                    | My favorite movie ever <3
+                  .actions
+                    a.like Like
+                    a.flag Flag
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/three_stripes_pfp.jpg')
+                .content
+                  a.author Three Stripes Shoes
+                  .metadata
+                    span.date 5 hours ago
+                    i.heart.icon
+                    |  3 Likes
+                  .text()
+                    | Me too!!!
+                  .actions
+                    a.like Like
+                    a.flag Flag
+          .extra.content
+            .ui.fluid.left.labeled.right.icon.input
+              .ui.label
+                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+              input.newcomment(type='text' placeholder='Write a Comment')
+              i.big.send.link.icon
+
+
+    .ui.fluid.card.test
+          .content
+            .right.floated.meta= "15 Minutes Ago"
+            |
+            a(href='/user/rosie_pris')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user38.jpg')
+              span='Priscilla Rose'
+          .image
+            img.post(src=cdn+"/post_pictures/dance_se.jpg")
+          .content
+            .description="Best dance show ever❤️❤️"
+
+          .three.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            .ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Flag
+            .ui.labeled.button(tabindex='0')
+              .ui.like.button
+                i.heart.icon
+                |  Like
+              a.ui.basic.red.left.pointing.label.count=2
+          
+          .content
+            .ui.comments
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user7.jpg')
+                .content
+                  a.author Lauren Wakefield
+                  .metadata
+                    span.date 1 minute ago
+                    i.heart.icon
+                    |  0 Likes
+                  .text()
+                    | Where was that?
+                  .actions
+                    a.like Like
+                    a.flag Flag
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user23.jpg')
+                .content
+                  a.author Claire Johnson
+                  .metadata
+                    span.date 1 minute ago
+                    i.heart.icon
+                    |  0 Likes
+                  .text()
+                    | Come to our dance performance next week!
+                  .actions
+                    a.like Like
+                    a.flag Flag
+          .extra.content#hint3
+            .ui.fluid.left.labeled.right.icon.input
+              .ui.label
+                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+              input.newcomment(type='text' placeholder='Write a Comment')
+              i.big.send.link.icon
+                
+    .ui.fluid.card.test
+          .content#hint4
+            .right.floated.meta= "15 Minutes Ago"
+            |
+            a(href='/user/thomas_the_train')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user39.jpg')
+              span='Thomas Rogers'
+          .image
+            img.post(src=cdn+"/post_pictures/rbxcube_se.jpg")
+          .content
+            .description="Had fun rubix-cubing hhh"
+
+          .three.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            .ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Flag
+            .ui.labeled.button(tabindex='0')
+              .ui.like.button
+                i.heart.icon
+                |  Like
+              a.ui.basic.red.left.pointing.label.count=2
+          
+          .content
+            .ui.comments
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user24.jpg')
+                .content
+                  a.author Jenny Chen
+                  .metadata
+                    span.date 1 minute ago
+                    i.heart.icon
+                    |  0 Likes
+                  .text()
+                    | Could you teach me how to do it too?
+                  .actions
+                    a.like Like
+                    a.flag Flag
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user25.jpg')
+                .content
+                  a.author Ella Sroni
+                  .metadata
+                    span.date 1 minute ago
+                    i.heart.icon
+                    |  0 Likes
+                  .text()
+                    | OMG that looks so hard
+                  .actions
+                    a.like Like
+                    a.flag Flag
+          .extra.content
+            .ui.fluid.left.labeled.right.icon.input
+              .ui.label
+                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+              input.newcomment(type='text' placeholder='Write a Comment')
+              i.big.send.link.icon
+    //-#######################
+    button.ui.big.labeled.icon.button.cybertrans#cyberTransButton(style="margin-bottom:4em;")
+          i.rocket.icon
+          |   Let's Continue!
+    
+
+block scripts
+  script.
+    var hintsList=
+    [
+      {
+        hint: `Nick’s best friends Liam and Vanessa have posted that they are 
+        hanging out but Nick was not asked to go. Nick sees this post and is upset 
+        that he is missing out.`,
+        element: '#hint1',
+        hintPosition: 'middle-middle'
+      },
+      {
+        hint: `This is a red flag feeling. What could Nick do to make himself 
+        feel better? One thing he could do is actively reach out to his other 
+        friends on social media. Talking to his other friends could help Nick 
+        feel more connected.`,
+        element: '#hint2',
+        hintPosition: 'middle-right'
+      },
+      {
+        hint: `Let’s try out some of the things that Nick could do to connect to 
+        others by actively using social media. Try commenting on other people’s 
+        posts or try sending a private message! You can also try making your own 
+        post.`,
+        element: '#hint3',
+        hintPosition: 'middle-middle'
+      },
+      {
+        hint: `Nick can also take a break from social media. He can also connect 
+        with family and friends in other ways or do a fun activity like riding 
+        his bike outside.`,
+        element: '#hint4',
+        hintPosition: 'middle-middle'
+      }
+    ]
+    
+    var stepsList=
+    [
+      {
+        element: document.querySelectorAll('#step1')[0],
+        intro: `This is the social media timeline of Nick, a middle school 
+        student. He just got back home from school and is browsing social media. 
+        Click on the blue dots&nbsp;<a role='button' tabindex='0'
+        class='introjs-hint'><div class='introjs-hint-dot'></div><div class=
+        'introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more...`,
+        position: "left",
+        scrollTo: 'tooltip'
+      }
+    
+    ]
+  
+  script(src="/module_js/base_sim.js")
+    

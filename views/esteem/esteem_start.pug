@@ -1,0 +1,103 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container.addBottomMargin
+    br
+    .ui.raised.segment
+      h3.ui.header
+        i.book.blue.icon
+        .content
+          | Learn
+      hr
+      h5.ui.header
+        i.arrow.circle.right.blue.icon
+        .content
+          | Social media use can come with its ups and downs. On one hand, you 
+          | can connect with friends, share what you are doing or thinking, and 
+          | stay up-to-date on the latest happenings.
+      h5.ui.header
+        i.arrow.circle.right.blue.icon
+        .content
+          | On the other hand, you may feel like you have to check social media 
+          | more frequently so you don’t miss out on things. There can also be 
+          | pressure to make it look like your life is great, which can make you 
+          | feel like your life is not as exciting as other people’s are.   
+      h5.ui.header
+        i.arrow.circle.right.blue.icon
+        .content
+          | In this module, you will learn how social media can affect how you 
+          | feel and practice some ways to be mindful of when social media makes 
+          | you feel bad.
+        
+      
+      br
+      #introduction_next.button.ui.mini.green.right.labeled.icon.button
+              i.down.arrow.icon
+              |   Next
+    
+    #question.ui.segment.hidden
+      h3.ui.header
+        i.key.blue.icon
+        .content Key Ideas
+      .sub.header.grayElement
+        i.hand.pointer.icon
+        span  Click on each label below to learn more
+      br
+      //- .ui.segments     
+      .ui.stackable.two.column.grid
+        .ui.column
+          .keyTerm.ui.raised.segment
+            a.ui.blue.ribbon.label.keyTermLabel
+                //- i.dollar.sign.icon 
+                span Red flag feeling
+            span.hidden.keyTermDefinition
+              | When something happens on social media that makes you feel 
+              | uncomfortable, worried, sad, or anxious.
+        
+        .ui.column
+          .keyTerm.ui.raised.segment
+            a.ui.blue.ribbon.label.keyTermLabel
+                //- i.magic.icon 
+                span Active social media use
+            span.hidden.keyTermDefinition
+              | When you interact with other people on social media doing things 
+              | like making a post, commenting on posts, and talking through 
+              | chat.
+          
+        .ui.column
+          .keyTerm.ui.raised.segment
+            a.ui.blue.ribbon.label.keyTermLabel
+                //- i.magic.icon 
+                span Passive social media use
+            span.hidden.keyTermDefinition 
+              | When you scroll through your feed without engaging or directly 
+              | talking to anyone.
+              
+        .ui.column
+          .keyTerm.ui.raised.segment
+            a.ui.blue.ribbon.label.keyTermLabel
+                //- i.magic.icon 
+                span FOMO
+            span.hidden.keyTermDefinition 
+              | An acronym for “Fear of Missing Out.” When you get anxious or 
+              | sad after seeing other people sharing cool things that you might 
+              | not be involved in.
+
+    .ui.warning.message#clickNextWarning
+      .header
+       | Click "Next"
+    .ui.warning.message#clickLabelsWarning
+     .header
+      | Click on each label to proceed  
+    a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
+        .ui.labeled.icon.button
+            i.rocket.icon
+            |   Got it!
+            
+block scripts
+  script(src="/module_js/base_start.js")
+  
+block styles
+  style 
+    include ../../css/accounts/start.css    

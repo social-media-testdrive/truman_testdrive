@@ -1,0 +1,198 @@
+
+extends ../ui_layout
+  
+block content
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  .computer.only.tablet.only.four.wide.column 
+  .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
+    .ui.fluid.card.test#step1
+          .content
+            .right.floated.meta= "Yesterday"
+            |
+            a(href='/user/triple-threat')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user14.jpg')
+              span='Sarah Stella'
+          .image
+            img.post(src=cdn+'/post_pictures/cheeseburger_se.jpg')
+          .content
+            .description=`🍔Big Big Burger!!!`
+          .three.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            .ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Flag
+            .ui.labeled.button(tabindex='0')
+              .ui.like.button
+                i.heart.icon
+                |  Like
+              a.ui.basic.red.left.pointing.label.count=2
+          
+          .content
+            .ui.comments
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user27.jpg')
+                .content
+                  a.author Mallory Smith
+                  .metadata
+                    span.date 5 hours ago
+                    i.heart.icon
+                    |  3 Likes
+                  .text()
+                    | Yummyyy😋
+                  .actions
+                    a.like Like
+                    a.flag Flag
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user38.jpg')
+                .content
+                  a.author Priscilla Rose
+                  .metadata
+                    span.date 5 hours ago
+                    i.heart.icon
+                    |  3 Likes
+                  .text()
+                    | Can we share this 😍
+                  .actions
+                    a.like Like
+                    a.flag Flag
+          .extra.content
+            .ui.fluid.left.labeled.right.icon.input
+              .ui.label
+                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+              input.newcomment(type='text' placeholder='Write a Comment')
+              i.big.send.link.icon
+
+
+    .ui.fluid.card.test#step2
+          .content
+            .right.floated.meta= "15 Minutes Ago"
+            |
+            a(href='/user/emememily')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user36.jpg')
+              span='Emily Li'
+          .image
+            img.post(src=cdn+"/post_pictures/sister_se.jpg")
+          .content
+            .description="Sisters make the best friends in the world."
+
+          .three.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            .ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Flag
+            .ui.labeled.button(tabindex='0')
+              .ui.like.button
+                i.heart.icon
+                |  Like
+              a.ui.basic.red.left.pointing.label.count=2
+          
+          .content
+            .ui.comments
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user35.jpg')
+                .content
+                  a.author Lucy Simms
+                  .metadata
+                    span.date 1 minute ago
+                    i.heart.icon
+                    |  0 Likes
+                  .text()
+                    | so cute!!
+                  .actions
+                    a.like Like
+                    a.flag Flag
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user50.jpg')
+                .content
+                  a.author Jenny Schmidt
+                  .metadata
+                    span.date 1 minute ago
+                    i.heart.icon
+                    |  0 Likes
+                  .text()
+                    | Sisters are for sharing laughter and wiping tears~
+                  .actions
+                    a.like Like
+                    a.flag Flag
+          .extra.content
+            .ui.fluid.left.labeled.right.icon.input
+              .ui.label
+                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+              input.newcomment(type='text' placeholder='Write a Comment')
+              i.big.send.link.icon
+                
+    .ui.fluid.card.test.addBottomMargin#step3
+          .content
+            .right.floated.meta= "15 Minutes Ago"
+            |
+            a(href='/user/kilani244')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user5.jpeg')
+              span='Kiki Pualani'
+          .image
+            img.post(src=cdn+"/post_pictures/joy_se.jpg")
+          .content
+            .description="Let's find joy in the journey together"
+
+          .three.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            .ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Flag
+            .ui.labeled.button(tabindex='0')
+              .ui.like.button
+                i.heart.icon
+                |  Like
+              a.ui.basic.red.left.pointing.label.count=2
+          
+          .content
+            .ui.comments#step4
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user60.jpg')
+                .content
+                  a.author Nina Ruiz
+                  .metadata
+                    span.date 1 minute ago
+                    i.heart.icon
+                    |  0 Likes
+                  .text()
+                    | Enjoying the life, one day at a time 🌻🌺
+                  .actions
+                    a.like Like
+                    a.flag Flag
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user63.jpg')
+                .content
+                  a.author Liam Knapke
+                  .metadata
+                    span.date 1 minute ago
+                    i.heart.icon
+                    |  0 Likes
+                  .text()
+                    | Why not?
+                  .actions
+                    a.like Like
+                    a.flag Flag
+          .extra.content
+            .ui.fluid.left.labeled.right.icon.input
+              .ui.label
+                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+              input.newcomment(type='text' placeholder='Write a Comment')
+              i.big.send.link.icon
+    //-#######################
+    
+
+block scripts
+  script(src="/module_js/esteem/esteem_tutorial.js")
+    

@@ -709,6 +709,26 @@ exports.postUpdateInterestSelection = (req, res, next) => {
 
 /**
  * POST /account/profile
+ * Update profile information.Which ad topic did the user pick? Esteem module only.
+ */
+exports.postEsteemInterestSelection = (req, res, next) => {
+
+  User.findById(req.user.id, (err, user) => {
+    if (err) { return next(err); }
+
+    user.esteemTopic = req.body.chosenTopic || '';
+
+    user.save((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.send({result:"success"});
+    });
+  });
+};
+
+/**
+ * POST /account/profile
  * Update profile information. How long has the user looked at the free-play section? Habits module only.
  */
 exports.postUpdateHabitsTimer = (req, res, done) => {
