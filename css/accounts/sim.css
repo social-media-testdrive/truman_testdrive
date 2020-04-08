@@ -15,14 +15,14 @@
 }
 
 .field label{
-  margin-bottom: 1em;
+  margin-bottom: 1em !important;
 }
 
 .field input{
-  margin-top: 1em;
+  margin-top: 1em !important;
 }
 
-.field .ui.warning.message{
+.ui.form .ui.warning.message{
   margin-bottom:18px;
   font-size:16px;
 }
