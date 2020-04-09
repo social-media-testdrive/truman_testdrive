@@ -9,8 +9,7 @@ block content
   .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
     .ui.raised.segment#generalStep
       h2.ui.header Create An Account
-      
-      .ui.form
+      .ui.form(style="font-size: 130%;")
         .field#usernameStep
           label Username
           input(type="text" readonly="" name='username' placeholder="username")
@@ -24,7 +23,3 @@ block content
           
 block scripts
   script(src="/module_js/accounts/accounts_tutorial.js")
-  
-block styles
-  style 
-    include ../../css/accounts/sim2.css 
