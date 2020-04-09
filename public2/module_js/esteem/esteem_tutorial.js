@@ -52,7 +52,7 @@ function startIntro(){
             scrollTo: 'tooltip'
           },
           {
-            element: document.querySelectorAll('#step5')[0],
+            element: document.querySelectorAll('#step3')[0],
             intro: `If you notice that you are starting to feel anxious or
             depressed, it may be a good idea to take a social media break. Do
             something else you really enjoy, like spending time with your family
