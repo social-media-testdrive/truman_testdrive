@@ -1,4 +1,3 @@
-
 extends ../ui_layout
   
 block content
@@ -36,7 +35,7 @@ block content
           .content
             .ui.header Need some help? 
             p Make sure you are clicking "Got it" on the blue dots!
-        .ui.icon.message.warning(style="display:none;")#notificationWarning
+        .ui.icon.message.warning(style="display:none;")#clickAllDotsWarning
           i.close.icon
           i.hand.pointer.icon.float
           .content
@@ -54,10 +53,10 @@ block content
     br
     //-Activity display 
     .ui.container.habitsActivityDisplay
-      h2.ui.header(data-hint="Some social media sites also have a page where you can track the time you have spent using the site or app. You can even set daily time limit reminders!" data-hintPosition='middle-middle') My Activity
+      h2.ui.header#hint1 My Activity
       .ui.divider
 
-      h2.ui.header(data-hint="It’s important to be mindful of how much time you spend on social media. Think about how to balance social media use with the time you spend on other activities, like hanging out with your friends face-to-face!" data-hintPosition='middle-middle') Time on TestDrive:
+      h2.ui.header#hint2 Time on TestDrive:
       .ui.statistics
         .statistic
           .value 6
@@ -71,9 +70,9 @@ block content
           .label
             | sec
           
-      h2.ui.header(data-hint="Signs that you need a break from social media might include things like missing time with family or friends, feeling sad, anxious, or tired, or struggling to stay on top of homework and chores." data-hintPosition="middle-middle") Manage My Time:
+      h2.ui.header#hint3 Manage My Time:
       br
-      .field(data-hint="Take a break or disconnect if you think you have been using it too much!" data-hintPosition="middle-middle")#reminderTimeSelectField
+      .field#reminderTimeSelectField
         label(style="font-size:100%; font-weight:bold;") Set Daily Reminder
           br
           br
@@ -90,7 +89,7 @@ block content
       br
       span We'll send you a reminder once you've reached the time you set for yourself.
       
-    button.ui.big.labeled.icon.button.cybertrans(style="margin-bottom:4em; margin-top:2em;")#addBottomMargin
+    button.ui.big.labeled.icon.button.cybertrans#cyberTransButton(style="margin-bottom:4em; margin-top:2em;")
         i.rocket.icon
         |   Let's Continue!
             
@@ -100,3 +99,4 @@ block content
 
 block scripts
   script(src="/module_js/habits/habits_sim4.js")
+  script(src="/module_js/base_sim.js")

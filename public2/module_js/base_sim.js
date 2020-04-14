@@ -1,11 +1,11 @@
-let clickCount = 0;
-let counter = 0;
+let clickedHints = 0;
+let closedHints = 0;
 const numberOfHints = hintsList.length;
 
 //showing the "Need some help?" guidance message
 function showHelp(){
   if($('#removeHidden').is(":hidden")){
-    if(counter != numberOfHints){
+    if(closedHints != numberOfHints){
       //user does not know to click blue dots
       $('#removeHidden').transition('fade');
       $('#cyberTransButton').css('margin-bottom', '10em');
@@ -14,7 +14,7 @@ function showHelp(){
 };
 
 function errorCheck(){
-  if(counter != numberOfHints){
+  if(closedHints != numberOfHints){
     //show the message normally the first time
     if($('#clickAllDotsWarning').is(":hidden")){
       $('#clickAllDotsWarning').transition('fade');
@@ -40,9 +40,9 @@ function startHints(){
 
   //for providing guidance message
   hints.onhintclick(function() {
-      clickCount++;
-      if(clickCount >= numberOfHints){
-        if(clickCount !== 1){
+      clickedHints++;
+      if(clickedHints >= numberOfHints){
+        if(clickedHints !== 1){
           //show the guidance message, user probably doesn't know to click "got it"
           if($('#removeHidden').is(":hidden")){
             $('#removeHidden').transition('fade');
@@ -53,23 +53,26 @@ function startHints(){
         }
       }
   });
-
-  hints.onhintclose(function() {
-     counter++;
-     clickCount = 0;
-     if($('#removeHidden').is(":visible")){
-       $('#removeHidden').transition('fade');
-       if($('#clickAllDotsWarning').is(":hidden")){
-         $('#cyberTransButton').css("margin-bottom", "4em");
-       }
-     }
-     if(counter == numberOfHints) {
-       if($('#clickAllDotsWarning').is(':visible')){
-         $('#clickAllDotsWarning').transition('fade');
-         $('#cyberTransButton').css("margin-bottom", "4em");
-       }
-       $( "#cyberTransButton" ).addClass("green");
-     }
+  hints.onhintclose(function(){
+    if(typeof customOnHintCloseFunction !== 'undefined'){
+      customOnHintCloseFunction();
+    } else {
+      closedHints++;
+      clickedHints = 0;
+      if($('#removeHidden').is(":visible")){
+        $('#removeHidden').transition('fade');
+        if($('#clickAllDotsWarning').is(":hidden")){
+          $('#cyberTransButton').css("margin-bottom", "4em");
+        }
+      }
+      if(closedHints == numberOfHints) {
+        if($('#clickAllDotsWarning').is(':visible')){
+          $('#clickAllDotsWarning').transition('fade');
+          $('#cyberTransButton').css("margin-bottom", "4em");
+        }
+        $( "#cyberTransButton" ).addClass("green");
+      }
+    }
   });
 
   setInterval(showHelp, 120000);
@@ -109,6 +112,12 @@ $(window).on("load", function(){
     console.error(error);
     try {
       startHints();
+      try{
+        eventsAfterHints();
+      }catch(error){
+        console.log("No defined events after hints.");
+        console.error(error);
+      }
     } catch (error) {
       console.log("No hints.");
       console.error(error);

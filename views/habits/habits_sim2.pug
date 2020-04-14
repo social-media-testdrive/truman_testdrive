@@ -51,8 +51,8 @@ block content
             p Click through all of the blue dots before going to the settings page.
           
     //-#######################
-    //-Notifications page
-    button.ui.basic.button.notificationsDisplay(data-hint="One way you can build a healthy habit is to turn off or reduce the number of notifications that you get. After you've clicked all the blue dots, click Settings on the notification window to see how you can do this." data-hintPosition='middle-right')#settingsButton
+    //-Notifications page  
+    button.ui.basic.button.notificationsDisplay.settingsButton
       i.cog.icon
       |   Settings
       
@@ -60,7 +60,7 @@ block content
       i.clock.icon
       |   My Activity
       
-    .ui.raised.segment.notificationsDisplay(data-hint='Notifications can give you helpful information, but having too many can make you feel like you constantly need to check them.' data-hintPosition='top-middle')
+    .ui.raised.segment.notificationsDisplay#hint2
      .ui.feed
       .event
         //-CSS properties: https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
@@ -126,3 +126,4 @@ block content
     br
 block scripts
   script(src="/module_js/habits/habits_sim2.js")
+  script(src="/module_js/base_sim.js")

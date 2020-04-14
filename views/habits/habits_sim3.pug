@@ -58,11 +58,11 @@ block content
     br
     //-Settings display
     .ui.container.settingsDisplay
-      h2.ui.header(data-hint="Most social media sites have settings that you can use to control the number of notifications you get. It will look similar to this page." data-hintPosition='middle-middle') Notification Settings
+      h2.ui.header#hint1 Notification Settings
       .ui.divider
       br
       form.ui.form#addBottomMargin
-        .field(data-hint="Here, you can change the number of notifications you get for different types of content. Try pausing notifications for a while by turning this setting on." data-hintPosition='middle-middle')
+        .field#hint2
           br
           .ui.toggle.checkbox(name='popupAlertsCheckbox')
             input(type='checkbox' name='popupAlerts')
@@ -90,5 +90,6 @@ block content
 
 block scripts
   script(src="/module_js/habits/habits_sim3.js")
+  script(src="/module_js/base_sim.js")
       
     

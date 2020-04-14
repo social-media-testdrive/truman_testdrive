@@ -12,7 +12,7 @@ block content
         a.active.item(data-value='feed')#feedsteps 
           i.icon.home
           |  Home
-        a.item(data-value='notifications')#notificationsteps  
+        a.item(data-value='notifications' style="margin-bottom:0 !important;")#cyberTransButton
           i.icon.bell
           |  Notifications
           
@@ -22,7 +22,7 @@ block content
       a.active.item(data-value='feed')#feedsteps
         i.icon.home
         |  Home
-      a.item(data-value='notifications')#notificationsteps      
+      a.item(data-value='notifications')#cyberTransButton     
         i.icon.bell
         |  Notifications
     br
@@ -53,7 +53,7 @@ block content
     //-feed
     //-.ui.bottom.attached.segment#step0
     #step0.ui.fluid.card.test.feedDisplay
-          .content(postID="3" data-hint="This is a social media timeline. You will get notifications when your friends like or comment on your posts." data-hintPosition="middle-middle")
+          .content(postID="3")#hint1
             .right.floated.meta= "Yesterday"
             |
             a(href='/user/zachpeters06')
@@ -117,7 +117,7 @@ block content
               i.big.send.link.icon#sendComment1
     //-%%%%%%%%%%%%%%%%%%%%%%%%%
     #step5.ui.fluid.card.test.feedDisplay(postID="0")
-          .content(data-hint="Once you've clicked all the blue dots, click on the Notifications tab to see what notifications you have received!" data-hintPosition='middle-middle')
+          .content#hint2
             .right.floated.meta= "Yesterday"
             |
             a(href='/user/cloe.htt')
@@ -380,3 +380,10 @@ block content
       
 block scripts
   script(src="/module_js/habits/habits_sim.js")
+  script(src="/module_js/base_sim.js")
+  
+block styles
+  style.
+    #cyberTransButton {
+      margin-bottom: 0 !important;
+    }

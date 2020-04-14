@@ -42,8 +42,8 @@ let hintsList = [
 let result;
 
 
-let clickCount = 0;
-let counter = 0;
+let clickedHints = 0;
+let closedHints = 0;
 const numberOfHints = hintsList.length;
 let suggestionStringHTML;
 
@@ -67,7 +67,7 @@ function displayFeedback(result){
 
 function hideFieldMessage(messageID){
   $(messageID).hide();
-  if ( (counter === numberOfHints)
+  if ( (closedHints === numberOfHints)
     && ($('input[name="username"]').val() !== "")
     && ($('input[name="password"]').val() !== "") ){
       $('#cyberTransButton').addClass('green');
@@ -140,7 +140,7 @@ function eventsAfterHints(){
 //showing the "Need some help?" guidance message
 function showHelp(){
   if($('#removeHidden').is(":hidden")){
-    if(counter != numberOfHints){
+    if(closedHints != numberOfHints){
       //user does not know to click blue dots
       $('#removeHidden').transition('fade');
       $('#cyberTransButton').css('margin-bottom', '10em');
@@ -149,7 +149,7 @@ function showHelp(){
 };
 
 function errorCheck(){
-  if(counter != numberOfHints){
+  if(closedHints != numberOfHints){
     //show the message normally the first time
     if($('#clickAllDotsWarning').is(":hidden")){
       $('#clickAllDotsWarning').transition('fade');
@@ -183,9 +183,9 @@ function startHints(){
 
   //for providing guidance message
   hints.onhintclick(function() {
-      clickCount++;
-      if(clickCount >= numberOfHints){
-        if(clickCount !== 1){
+      clickedHints++;
+      if(clickedHints >= numberOfHints){
+        if(clickedHints !== 1){
           //show the guidance message, user probably doesn't know to click "got it"
           if($('#removeHidden').is(":hidden")){
             $('#removeHidden').transition('fade');
@@ -198,15 +198,15 @@ function startHints(){
   });
 
   hints.onhintclose(function() {
-     counter++;
-     clickCount = 0;
+     closedHints++;
+     clickedHints = 0;
      if($('#removeHidden').is(":visible")){
        $('#removeHidden').transition('fade');
        if($('#clickAllDotsWarning').is(":hidden")){
          $('#cyberTransButton').css("margin-bottom", "4em");
        }
      }
-     if(counter == numberOfHints) {
+     if(closedHints == numberOfHints) {
        if($('#clickAllDotsWarning').is(':visible')){
          $('#clickAllDotsWarning').transition('fade');
          $('#cyberTransButton').css("margin-bottom", "4em");
