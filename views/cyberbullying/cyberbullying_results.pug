@@ -3,7 +3,7 @@ extends ../ui_layout
 block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   
-  .ui.container(style="margin-bottom:4em;")
+  .ui.container.addBottomMargin
     .ui.stackable.column.grid
       .ui.column
         .insertPrint
@@ -12,10 +12,9 @@ block content
             i.question.blue.icon
             .content
               | Reflect
-          .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-            h4(style="float:left")
-              i.exclamation.triangle.icon(style="color: #f9ff00 !important;")
-
+          .ui.label
+            h4
+              i.exclamation.triangle.icon
               | These were the cyberbullying posts in the timeline. How many did you notice?
           br
           br
@@ -61,8 +60,8 @@ block content
  
     .ui.raised.segment
       
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
+      .ui.label
+        h4
           | Tell us what you did to be an upstander.
       .content.checkOne
         .ui.form
@@ -72,51 +71,51 @@ block content
             .field
               .ui.checkbox
                 input(type='checkbox')
-                label(for='iFlagged', style="font-size:120%;", tabindex='0') I flagged the post or comment.
+                label(for='iFlagged', tabindex='0') I flagged the post or comment.
         .ui.form
           .inline.fields
             label(for='iLiked', name='iLiked') 
             .field
               .ui.checkbox
                 input(type='checkbox')
-                label(for='iLiked', style="font-size:120%;", tabindex='0') I "liked" the target's post to show support.
+                label(for='iLiked', tabindex='0') I "liked" the target's post to show support.
         .ui.form
           .inline.fields
             label(for='iSupported', name='iSupported') 
             .field
               .ui.checkbox
                 input(type='checkbox')
-                label(for='iSupported', style="font-size:120%;", tabindex='0') I wrote a supportive or defending comment for the target.
+                label(for='iSupported', tabindex='0') I wrote a supportive or defending comment for the target.
         .ui.form
           .inline.fields
             label(for='wouldTell', name='wouldTell') 
             .field
               .ui.checkbox
                 input(type='checkbox')
-                label(for='wouldTell', style="font-size:120%;", tabindex='0') I would tell a trusted adult if I saw this kind of post.
+                label(for='wouldTell', tabindex='0') I would tell a trusted adult if I saw this kind of post.
       .ui.form
         .field
-          label(for='like', style="font-size:120%;") Why did you act this way?
-          label(style="font-size:120%;")
+          label(for='like') Why did you act this way?
+          label
           textarea.glowing-border(rows='4' id="cyber_responseOne") 
 
       
     .ui.raised.segment.responseTwo
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
+      .ui.label
+        h4
           | Why is it important for people to act against cyberbullying?
       .ui.form
         .inline.fields
-          label(style="font-size:120%;")
+          label
           textarea.glowing-border(rows='4' id="cyber_responseTwo")
 
     .ui.raised.segment.responseThree
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
+      .ui.label
+        h4
           | What will you do in the future to be an upstander if you see cyberbullying?
       .ui.form
         .inline.fields
-          label(style="font-size:120%;")
+          label
           textarea.glowing-border(rows='4' id="cyber_responseThree")
 
 
@@ -134,4 +133,7 @@ block content
 block scripts
   script(src="/module_js/cyberbullying/cyberbullying_results.js")
   
+block styles
+  link(rel='stylesheet', href='/css/cyberbullying/results.css')
+
     

@@ -2,7 +2,7 @@ extends ../ui_layout
 
 block content
   
-  .ui.text.container(style="margin-bottom:4em;")
+  .ui.text.container.addBottomMargin
     br  
     .ui.raised.segment
     
@@ -30,8 +30,8 @@ block content
         i.key.blue.icon
         .content Key Ideas
       .sub.header 
-        i.hand.pointer.icon(style="color:gray;")
-        span(style="color: gray;") Click on each label below to learn more
+        i.hand.pointer.icon.grayElement
+        span.grayElement Click on each label below to learn more
       br
       //- .ui.segments     
       .ui.stackable.two.column.grid
@@ -40,16 +40,16 @@ block content
             a.ui.blue.ribbon.label.keyTermLabel
                 //- i.magic.icon 
                 span Digital Footprint
-            span.hidden.keyTermDefinition(style="font-weight:600") All the information online about a person either posted by that person or others, intentionally or unintentionally.
-              ul(style="font-weight:400") Your digital footprint can affect your reputation online and offline. It's important to manage it as much as you can!
+            span.hidden.keyTermDefinition All the information online about a person either posted by that person or others, intentionally or unintentionally.
+              ul Your digital footprint can affect your reputation online and offline. It's important to manage it as much as you can!
         
         .ui.column
           .keyTerm.ui.raised.segment
             a.ui.blue.ribbon.label.keyTermLabel
                 //- i.magic.icon 
                 span Audience
-            span.hidden.keyTermDefinition(style="font-weight:600")  Anyone who can see information about you or posted by you online.
-              ul(style="font-weight:400") Before you post on social media, think about your current and future audience. Remember that your posts will always be a part of your digital footprint!
+            span.hidden.keyTermDefinition  Anyone who can see information about you or posted by you online.
+              ul Before you post on social media, think about your current and future audience. Remember that your posts will always be a part of your digital footprint!
 
       
         .ui.column
@@ -57,13 +57,13 @@ block content
             a.ui.blue.ribbon.label.keyTermLabel
                 //- i.dollar.sign.icon 
                 span Oversharing
-            span.hidden.keyTermDefinition(style="font-weight:600") When people share something they later regret.
-              ul(style="font-weight:400") This can be when people share too much private or personal information about themselves.
+            span.hidden.keyTermDefinition When people share something they later regret.
+              ul This can be when people share too much private or personal information about themselves.
               
-    .ui.warning.message#clickNextWarning(style="display:none;")
+    .ui.warning.message#clickNextWarning
       .header
        | Click "Next"
-    .ui.warning.message#clickLabelsWarning(style="display:none;")
+    .ui.warning.message#clickLabelsWarning
      .header
       | Click on each label to proceed 
     a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
@@ -73,3 +73,6 @@ block content
 
 block scripts
   script(src="/module_js/base_start.js")
+
+block styles
+  link(rel='stylesheet', href='/css/start.css')  

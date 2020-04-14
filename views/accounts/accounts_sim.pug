@@ -27,16 +27,16 @@ block content
       
       .ui.form
         .field
-          label Username
+          label.addFieldSpacingBottom Username
           div#hint1 
-          input(readonly='' type="text" name='username' placeholder="username")
+          input.addFieldSpacingTop(readonly='' type="text" name='username' placeholder="username")
           .ui.warning.message#usernameWarning
             .header Try creating a username
         br
         .field
-          label Password
+          label.addFieldSpacingBottom Password
           div#hint2
-          input(readonly='' type="password" name="password" placeholder="password")  
+          input.addFieldSpacingTop(readonly='' type="password" name="password" placeholder="password")  
         .ui.warning.message#passwordWarning
           .header Try creating a password 
 

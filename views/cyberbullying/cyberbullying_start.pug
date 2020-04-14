@@ -2,7 +2,7 @@ extends ../ui_layout
 
 block content
   
-  .ui.text.container(style="padding-bottom:4em;")
+  .ui.text.container.addBottomMargin
     br  
     .ui.raised.segment
       h3.ui.header
@@ -28,8 +28,8 @@ block content
         i.key.blue.icon
         .content Key Ideas
       .sub.header 
-        i.hand.pointer.icon(style="color:gray;")
-        span(style="color: gray;") Click on each label below to learn more
+        i.hand.pointer.icon.grayElement
+        span.grayElement Click on each label below to learn more
       br
       //- .ui.segments     
       .ui.stackable.two.column.grid
@@ -38,26 +38,26 @@ block content
             a.ui.blue.ribbon.label.keyTermLabel
                 //- i.dollar.sign.icon 
                 span Bully
-            span.hidden.keyTermDefinition(style="font-weight:600") Someone who hurts a person or a group on purpose more than once.
+            span.hidden.keyTermDefinition Someone who hurts a person or a group on purpose more than once.
         .ui.column
           .keyTerm.ui.raised.segment
             a.ui.blue.ribbon.label.keyTermLabel
                 //- i.magic.icon 
                 span Target
-            span.hidden.keyTermDefinition(style="font-weight:600") Someone who is being bullied
+            span.hidden.keyTermDefinition Someone who is being bullied
         .ui.column
           .keyTerm.ui.raised.segment
             a.ui.blue.ribbon.label.keyTermLabel
                 //- i.magic.icon 
                 span Upstander
-            span.hidden.keyTermDefinition(style="font-weight:600") Someone who acts against bullying.
-              ul(style="font-weight:400") An upstander might confront the bully or tell a trusted adult. An upstander might support the person being bullied by checking in with them or defending them.       
+            span.hidden.keyTermDefinition Someone who acts against bullying.
+              ul An upstander might confront the bully or tell a trusted adult. An upstander might support the person being bullied by checking in with them or defending them.       
     
     
-    .ui.warning.message#clickNextWarning(style="display:none;")
+    .ui.warning.message#clickNextWarning
       .header
        | Click "Next"
-    .ui.warning.message#clickLabelsWarning(style="display:none;")
+    .ui.warning.message#clickLabelsWarning
      .header
       | Click on each label to proceed   
     a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
@@ -67,5 +67,8 @@ block content
 
 block scripts
   script(src="/module_js/base_start.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/start.css')  
     
     

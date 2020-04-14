@@ -14,11 +14,11 @@
   font-size: 130%;
 }
 
-.field label{
+.addFieldSpacingBottom {
   margin-bottom: 1em !important;
 }
 
-.field input{
+.addFieldSpacingTop{
   margin-top: 1em !important;
 }
 

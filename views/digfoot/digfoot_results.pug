@@ -2,7 +2,7 @@ extends ../ui_layout
 
 block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
-  .ui.container(style="margin-bottom:4em;")
+  .ui.container.addBottomMargin
     .ui.stackable.column.grid
       .ui.column
         .insertPrint
@@ -11,9 +11,9 @@ block content
             i.question.blue.icon
             .content
               | Reflect
-          .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-            h4(style="float:left")
-              i.exclamation.triangle.icon(style="color: #f9ff00 !important;")
+          .ui.label
+            h4
+              i.exclamation.triangle.icon
 
               | These were the posts that would have a negative impact on people’s digital footprints. How many did you notice?
           br
@@ -57,8 +57,8 @@ block content
                 .description First day of grade 7! come over to my house at 22 Eastwood dr if you want to hang
        
           .ui.raised.segment
-            .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-              h4(style="float:left")
+            .ui.label
+              h4
                 | How would the following posts have a negative impact on digital footprints?
             .ui.stackable.two.cards.checkOne
       
@@ -83,7 +83,7 @@ block content
                       .field
                         .ui.checkbox
                           input(type='checkbox')
-                          label(for='overshare', style="font-size:120%;", tabindex='0') The poster was oversharing.
+                          label(for='overshare', tabindex='0') The poster was oversharing.
                   hr
                   .ui.form
                     .inline.fields
@@ -91,7 +91,7 @@ block content
                       .field
                         .ui.checkbox
                           input(type='checkbox', name='regret')
-                          label(for='regret', style="font-size:120%", tabindex='0') The poster was sharing something that they might later regret.
+                          label(for='regret', tabindex='0') The poster was sharing something that they might later regret.
                   hr
                   .ui.form
                     .inline.fields
@@ -99,7 +99,7 @@ block content
                       .field
                         .ui.checkbox
                           input(type='checkbox', name='inconsiderate')
-                          label(for='inconsiderate', style="font-size:120%", tabindex='0') The post was not considerate of other people’s digital footprints.
+                          label(for='inconsiderate', tabindex='0') The post was not considerate of other people’s digital footprints.
                   hr
                   .ui.form
                     .inline.fields
@@ -107,7 +107,7 @@ block content
                       .field
                         .ui.checkbox
                           input(type='checkbox', name='responsible')
-                          label(for='responsible', style="font-size:120%", tabindex='0') This was a responsible post.
+                          label(for='responsible', tabindex='0') This was a responsible post.
                     
             .ui.stackable.two.cards.checkTwo
             
@@ -130,7 +130,7 @@ block content
                       .field
                         .ui.checkbox
                           input(type='checkbox')
-                          label(for='overshare2', style="font-size:120%;", tabindex='0') The poster was oversharing.
+                          label(for='overshare2', tabindex='0') The poster was oversharing.
                   hr
                   .ui.form
                     .inline.fields
@@ -138,7 +138,7 @@ block content
                       .field
                         .ui.checkbox
                           input(type='checkbox', name='regret2')
-                          label(for='regret2', style="font-size:120%", tabindex='0') The poster was sharing something that they might later regret.
+                          label(for='regret2', tabindex='0') The poster was sharing something that they might later regret.
                   hr
                   .ui.form
                     .inline.fields
@@ -146,7 +146,7 @@ block content
                       .field
                         .ui.checkbox
                           input(type='checkbox', name='inconsiderate2')
-                          label(for='inconsiderate2', style="font-size:120%", tabindex='0') The post was not considerate of other people’s digital footprints.
+                          label(for='inconsiderate2', tabindex='0') The post was not considerate of other people’s digital footprints.
                   hr
                   .ui.form
                     .inline.fields
@@ -154,7 +154,7 @@ block content
                       .field
                         .ui.checkbox
                           input(type='checkbox', name='responsible2')
-                          label(for='responsible2', style="font-size:120%", tabindex='0') This was a responsible post.
+                          label(for='responsible2', tabindex='0') This was a responsible post.
                       
             .ui.stackable.two.cards.checkThree
             
@@ -177,7 +177,7 @@ block content
                       .field
                         .ui.checkbox
                           input(type='checkbox')
-                          label(for='overshare3', style="font-size:120%;", tabindex='0') The poster was oversharing.
+                          label(for='overshare3', tabindex='0') The poster was oversharing.
                   hr
                   .ui.form
                     .inline.fields
@@ -185,7 +185,7 @@ block content
                       .field
                         .ui.checkbox
                           input(type='checkbox', name='regret3')
-                          label(for='regret3', style="font-size:120%", tabindex='0') The poster was sharing something that they might later regret.
+                          label(for='regret3', tabindex='0') The poster was sharing something that they might later regret.
                   hr
                   .ui.form
                     .inline.fields
@@ -193,7 +193,7 @@ block content
                       .field
                         .ui.checkbox
                           input(type='checkbox', name='inconsiderate3')
-                          label(for='inconsiderate3', style="font-size:120%", tabindex='0') The post was not considerate of other people’s digital footprints.
+                          label(for='inconsiderate3', tabindex='0') The post was not considerate of other people’s digital footprints.
                   hr
                   .ui.form
                     .inline.fields
@@ -201,24 +201,24 @@ block content
                       .field
                         .ui.checkbox
                           input(type='checkbox', name='responsible3')
-                          label(for='responsible3', style="font-size:120%", tabindex='0') This was a responsible post.
+                          label(for='responsible3', tabindex='0') This was a responsible post.
     
     .ui.raised.segment.responseOne
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
+      .ui.label
+        h4
           | What can you do in the future to make sure you have a positive digital footprint on social media? 
       .ui.form
         .inline.fields
-          label(style="font-size:120%;")
+          label
           textarea.glowing-border(rows='2' id="digfoot_responseOne")
 
     .ui.raised.segment.responseTwo
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
+      .ui.label
+        h4
           | What can you do in the future to be mindful of other people's digital footprints on social media?
       .ui.form
         .inline.fields
-          label(style="font-size:120%;")
+          label
           textarea.glowing-border(rows='2' id="digfoot_responseTwo")
 
     br
@@ -234,3 +234,6 @@ block content
       
 block scripts
   script(src="/module_js/digfoot/digfoot_results.js")
+
+block styles
+  link(rel="stylesheet", href="/css/digfoot/results.css")

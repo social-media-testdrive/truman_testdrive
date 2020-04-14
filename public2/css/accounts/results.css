@@ -1,3 +1,4 @@
+/* results page */
 .ui.label{
   background-color: #2185d08a;
   color: #000000d1;
@@ -7,6 +8,6 @@
   float: left;
 }
 
-.ui.form label{
+.ui.form label {
   font-size: 120%;
 }
