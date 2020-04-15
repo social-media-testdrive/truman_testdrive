@@ -7,7 +7,7 @@ function startIntro(){
           },
           {
             intro: "As you look through the timeline, see if you can find features that grab your attention and think about what you can do to build healthy social media habits."
-        
+
           }
         ]
       });

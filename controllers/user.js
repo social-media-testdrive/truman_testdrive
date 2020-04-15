@@ -727,6 +727,14 @@ exports.postEsteemInterestSelection = (req, res, next) => {
   });
 };
 
+exports.getEsteemTopic = (req, res) => {
+    User.findById(req.user.id)
+      .exec(function (err, user){
+        let selectedTopic = user.esteemTopic;
+        res.json({esteemTopic: selectedTopic});
+      });
+};
+
 /**
  * POST /account/profile
  * Update profile information. How long has the user looked at the free-play section? Habits module only.

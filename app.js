@@ -238,6 +238,8 @@ app.get('/', function (req, res) {
 //main route for getting the simulation (Free Play) for a given lesson mod
 app.get('/modual/:modId', passportConfig.isAuthenticated, scriptController.getScript);
 
+app.get('/esteemTopic', passportConfig.isAuthenticated, userController.getEsteemTopic);
+
 app.get('/habitsTimer', passportConfig.isAuthenticated, userController.getHabitsTimer);
 app.get('/habitsNotificationTimes', passportConfig.isAuthenticated, scriptController.getNotificationTimes);
 

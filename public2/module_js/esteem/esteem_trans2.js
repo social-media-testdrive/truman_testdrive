@@ -20,7 +20,7 @@ function startIntro(){
     //record the choice in the db to use when generating the free play section
     $.post("/esteemInterest", { chosenTopic: currentSelect, _csrf: $('meta[name="csrf-token"]').attr('content') }).then(function(){
       //take the user to the free-play section
-      window.location.href='/modual/esteem';
+      window.location.href='/trans_script/esteem';
     });
   }
 };
