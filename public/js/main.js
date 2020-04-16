@@ -2,10 +2,49 @@
 
 //Before Page load:
 //hide news feed before it is all loaded
+
 $('#content').hide();
 $('#loading').show();
 
+function changeActiveProgressTo(activeStep){
+  if(!$(activeStep).hasClass('active')){
+    $('#headerStep1, #headerStep2, #headerStep3, #headerStep4').removeClass('active');
+    $(activeStep).addClass('active');
+  }
+}
+
 $(window).on("load", function () {
+
+  // managing the progress bar in the header
+  let pathArrayForHeader = window.location.pathname.split('/');
+  let currentModuleForHeader = pathArrayForHeader[2];
+  let currentPageForHeader = pathArrayForHeader[1];
+  let stepNumber = "";
+
+  $.getJSON('/json/standardProgressData.json', function(data) {
+    stepNumber = data[currentPageForHeader];
+  }).then(function () {
+    switch (stepNumber) {
+      case '1':
+        changeActiveProgressTo('#headerStep1');
+        break;
+      case '2':
+        changeActiveProgressTo("#headerStep2");
+        break;
+      case '3':
+        changeActiveProgressTo("#headerStep3");
+        break;
+      case '4':
+        changeActiveProgressTo("#headerStep4");
+        break;
+      default:
+        console.log('do not change the state');
+        break;
+    }
+  });
+
+
+
 
   //Activating the sticky functionality for the left column
   $('.ui.sticky.sideMenu')

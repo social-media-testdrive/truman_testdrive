@@ -9,20 +9,20 @@
         .eight.wide.column
           .ui.basic.segment.center.aligned
             ul
-              li.active
+              li#headerStep1
                 .ui.container
                   h4.number 1
                   h4.checkmark &#10003
                   span learn
-              li
+              li#headerStep2
                 h4.number 2
                 h4.checkmark &#10003
                 span practice
-              li
+              li#headerStep3
                 h4.number 3
                 h4.checkmark &#10003
                 span explore
-              li
+              li#headerStep4
                 h4.number 4
                 h4.checkmark &#10003
                 span reflect
@@ -121,6 +121,4 @@
           img.ui.mini.spaced.circular.image(src=cdn+'/profile_pictures/'+user.profile.picture)
         else
           img.ui.mini.spaced.circular.image(src=user.gravatar(60))
-            
-block styles
-  link(rel='stylesheet', href='/css/header.css') 
+          
