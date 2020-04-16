@@ -28,6 +28,14 @@ li h4 {
   margin: 0;
 }
 
+li h4.number{
+  display:none;
+}
+
+li h4.checkmark {
+  display: inline-block;
+}
+
 li span{
   color: #14a1f6;
   position: static;
@@ -57,8 +65,6 @@ li h4::before{
   z-index: -1;
 }
 
-
-
 li:first-child::before {
   display: none;
 }
@@ -67,8 +73,20 @@ li h4:first-child::before {
   display: none;
 }
 
+li h4.checkmark::before{
+  display:none;
+}
+
 .active h4 {
   background: #333333;
+}
+
+.active h4.checkmark {
+  display:none;
+}
+
+.active h4.number {
+  display:inline-block;
 }
 
 .active span {
@@ -82,6 +100,16 @@ li h4:first-child::before {
   line-height: 1.75em;
 }
 
+.active ~ li h4.checkmark {
+  color: #D7D7D7;
+  display: none;
+}
+
+.active ~ li h4.number {
+  color: #D7D7D7;
+  display: inline-block;
+}
+
 .active ~ li span {
   color: #D7D7D7;
 }
@@ -89,3 +117,6 @@ li h4:first-child::before {
 .active ~ li::before {
   background: #D7D7D7;
 }
+
+/* reference used for this css:
+https://stackoverflow.com/questions/19642308/creating-css3-circles-connected-by-lines */
