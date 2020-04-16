@@ -73,7 +73,7 @@ function startHints(){
 
 function startIntro(){
 
-  var intro = introJs().setOptions({ 'disableInteraction': true,
+  var intro = introJs().setOptions({ 
     'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false,
     'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true,
     'doneLabel':'Done &#10003'
