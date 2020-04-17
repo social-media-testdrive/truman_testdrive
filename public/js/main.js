@@ -41,6 +41,10 @@ $(window).on("load", function () {
         changeActiveProgressTo("#headerStep4");
         $('.hideHeader').css('display', 'block');
         break;
+      case 'end':
+        $('#headerStep1, #headerStep2, #headerStep3, #headerStep4').removeClass('active');
+        $('.hideHeader').css('display', 'block');
+        break;
       default:
         console.log('Progress bar is not visible right now');
         break;

@@ -3,7 +3,7 @@
 }
 
 ul{
-  margin: 0;
+  margin: -6px;
   padding: 0;
 }
 
@@ -13,10 +13,11 @@ li {
   text-align: center;
   line-height: 40px;
   border-radius: 50%;
-  margin: 0 2em;
   display: inline-block;
   color: white;
   position: relative;
+  /* for responsiveness */
+  margin: 0 2vw 0 2vw;
 }
 
 li h4 {
@@ -51,11 +52,12 @@ li::before{
   content: '';
   position: absolute;
   top: 18px;
-  left: -4em;
-  width: 4em;
   height: 2px;
   background: #14a1f6;
   z-index: -1;
+  /* for responsiveness */
+  left: -4vw;
+  width: 4vw;
 }
 
 li h4::before{
@@ -122,5 +124,6 @@ li h4.checkmark::before{
   background: #D7D7D7;
 }
 
-/* reference used for this css:
+/* used technique provided by user bookcasey in the following post,
+including the technique for responsiveness provided by user AaronDanielson:
 https://stackoverflow.com/questions/19642308/creating-css3-circles-connected-by-lines */
