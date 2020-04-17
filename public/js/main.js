@@ -17,8 +17,8 @@ $(window).on("load", function () {
 
   // managing the progress bar in the header
   let pathArrayForHeader = window.location.pathname.split('/');
-  let currentModuleForHeader = pathArrayForHeader[2];
   let currentPageForHeader = pathArrayForHeader[1];
+  let currentModuleForHeader = pathArrayForHeader[2];
   let stepNumber = "";
 
   $.getJSON('/json/standardProgressData.json', function(data) {
@@ -27,24 +27,25 @@ $(window).on("load", function () {
     switch (stepNumber) {
       case '1':
         changeActiveProgressTo('#headerStep1');
+        $('.hideHeader').css('display', 'block');
         break;
       case '2':
         changeActiveProgressTo("#headerStep2");
+        $('.hideHeader').css('display', 'block');
         break;
       case '3':
         changeActiveProgressTo("#headerStep3");
+        $('.hideHeader').css('display', 'block');
         break;
       case '4':
         changeActiveProgressTo("#headerStep4");
+        $('.hideHeader').css('display', 'block');
         break;
       default:
-        console.log('do not change the state');
+        console.log('Progress bar is not visible right now');
         break;
     }
   });
-
-
-
 
   //Activating the sticky functionality for the left column
   $('.ui.sticky.sideMenu')

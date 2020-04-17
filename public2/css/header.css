@@ -1,3 +1,7 @@
+.hideHeader{
+  display:none;
+}
+
 ul{
   margin: 0;
   padding: 0;
@@ -40,7 +44,7 @@ li span{
   color: #14a1f6;
   position: static;
   margin: -1em;
-
+  display: block;
 }
 
 li::before{

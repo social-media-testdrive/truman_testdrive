@@ -7,13 +7,12 @@
           a.item(href='/')
             img.ui.tiny.image(src=cdn+'/finalLogo.png', id='logo')
         .eight.wide.column
-          .ui.basic.segment.center.aligned
+          .ui.basic.segment.center.aligned.hideHeader
             ul
               li#headerStep1
-                .ui.container
-                  h4.number 1
-                  h4.checkmark &#10003
-                  span learn
+                h4.number 1
+                h4.checkmark &#10003
+                span learn
               li#headerStep2
                 h4.number 2
                 h4.checkmark &#10003
@@ -42,66 +41,6 @@
                 |
                 span= user.profile.name || user.username || user.id
 
-//- .computer.only.tablet.only.row 
-//-   .ui.borderless.fixed.menu(style="z-index:10000002;")
-//-     .ui.grid.container#myheader
-//-         .four.wide.column
-//-           a.item(href='/')
-//-             img.ui.tiny.image(src=cdn+'/finalLogo.png', id='logo')
-//-         .eight.wide.column
-//-           .ui.basic.segment
-//-             .ui.center.aligned.grid.four.column
-//-               .column
-//-                 h4.numberClass 1
-//-                 span.numberText Learn
-//-               .column
-//-                 h4.numberClass 2
-//-                 span Practice
-//-               .column
-//-                 h4.numberClass 3
-//-                 span Explore
-//-               .column
-//-                 h4.numberClass 4
-//-                 span Reflect
-//-         .four.wide.column
-//-           .right.menu
-//-             if user
-//-               a.item.newpost
-//-                 i.big.plus.icon(style="display: none;")
-//-               if user.isInstructor
-//-                 a.item(href='/classes') 
-//-                   i.big.university.icon
-//-               .ui.simple.dropdown.item(style="display: none;")
-//-                 if user.profile.picture
-//-                   img.ui.mini.spaced.circular.image(src=cdn+'/profile_pictures/'+user.profile.picture)
-//-                 else
-//-                   img.ui.mini.spaced.circular.image(src=user.gravatar(60))
-//-                 |
-//-                 span= user.profile.name || user.username || user.id
-  
-//- .computer.only.tablet.only.row 
-//-   .ui.borderless.fixed.menu(style="z-index:10000002;")
-//-     .ui.container#myheader
-//-       a.item(href='/')
-//-         img.ui.tiny.image(src=cdn+'/finalLogo.png', id='logo')
-//-       |
-//-       .item
-//-         h4 TEST
-//-       .right.menu
-//-         if user
-//-           a.item.newpost
-//-             i.big.plus.icon(style="display: none;")
-//-           if user.isInstructor
-//-             a.item(href='/classes') 
-//-               i.big.university.icon
-//-           .ui.simple.dropdown.item(style="display: none;")
-//-             if user.profile.picture
-//-               img.ui.mini.spaced.circular.image(src=cdn+'/profile_pictures/'+user.profile.picture)
-//-             else
-//-               img.ui.mini.spaced.circular.image(src=user.gravatar(60))
-//-             |
-//-             span= user.profile.name || user.username || user.id
-//- 
             
 .mobile.only.row
   .ui.fluid.top.fixed.four.item.menu(style="z-index:10000002;")
