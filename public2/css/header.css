@@ -2,12 +2,12 @@
   display:none;
 }
 
-ul{
+.progressList{
   margin: -6px;
   padding: 0;
 }
 
-li {
+.progressStep {
   width: 40px;
   height: 40px;
   text-align: center;
@@ -20,7 +20,7 @@ li {
   margin: 0 2vw 0 2vw;
 }
 
-li h4 {
+.progressStep h4 {
   width: 2em;
   height: 2em;
   text-align: center;
@@ -33,22 +33,22 @@ li h4 {
   margin: 0;
 }
 
-li h4.number{
+.progressStep h4.number{
   display:none;
 }
 
-li h4.checkmark {
+.progressStep h4.checkmark {
   display: inline-block;
 }
 
-li span{
+.progressStep span{
   color: #14a1f6;
   position: static;
   margin: -1em;
   display: block;
 }
 
-li::before{
+.progressStep::before{
   content: '';
   position: absolute;
   top: 18px;
@@ -60,7 +60,7 @@ li::before{
   width: 4vw;
 }
 
-li h4::before{
+.progressStep h4::before{
   content: '';
   position: absolute;
   top: .9em;
@@ -71,56 +71,56 @@ li h4::before{
   z-index: -1;
 }
 
-li:first-child::before {
+.progressStep:first-child::before {
   display: none;
 }
 
-li h4:first-child::before {
+.progressStep h4:first-child::before {
   display: none;
 }
 
-li h4.checkmark::before{
+.progressStep h4.checkmark::before{
   display:none;
 }
 
-.active h4 {
+.progressBarActive h4 {
   background: #333333;
 }
 
-.active h4.checkmark {
+.progressBarActive h4.checkmark {
   display:none;
 }
 
-.active h4.number {
+.progressBarActive h4.number {
   display:inline-block;
 }
 
-.active span {
+.progressBarActive span {
   color: #333333;
 }
 
-.active ~ li h4 {
+.progressBarActive ~ .progressStep h4 {
   background: white;
   color: #D7D7D7;
   border: 2px solid #D7D7D7;
   line-height: 1.75em;
 }
 
-.active ~ li h4.checkmark {
+.progressBarActive ~ .progressStep h4.checkmark {
   color: #D7D7D7;
   display: none;
 }
 
-.active ~ li h4.number {
+.progressBarActive ~ .progressStep h4.number {
   color: #D7D7D7;
   display: inline-block;
 }
 
-.active ~ li span {
+.progressBarActive ~ .progressStep span {
   color: #D7D7D7;
 }
 
-.active ~ li::before {
+.progressBarActive ~ .progressStep::before {
   background: #D7D7D7;
 }
 

@@ -7,9 +7,9 @@ $('#content').hide();
 $('#loading').show();
 
 function changeActiveProgressTo(activeStep){
-  if(!$(activeStep).hasClass('active')){
-    $('#headerStep1, #headerStep2, #headerStep3, #headerStep4').removeClass('active');
-    $(activeStep).addClass('active');
+  if(!$(activeStep).hasClass('progressBarActive')){
+    $('#headerStep1, #headerStep2, #headerStep3, #headerStep4').removeClass('progressBarActive');
+    $(activeStep).addClass('progressBarActive');
   }
 }
 
@@ -20,8 +20,18 @@ $(window).on("load", function () {
   let currentPageForHeader = pathArrayForHeader[1];
   let currentModuleForHeader = pathArrayForHeader[2];
   let stepNumber = "";
+  let jsonPath = '/json/standardProgressData.json';
 
-  $.getJSON('/json/standardProgressData.json', function(data) {
+  switch (currentModuleForHeader) {
+    case 'cyberbullying':
+    case 'digfoot':
+      jsonPath = "/json/progressDataB.json";
+    default:
+      jsonPath = "/json/progressDataA.json";
+      break;
+  }
+
+  $.getJSON(jsonPath, function(data) {
     stepNumber = data[currentPageForHeader];
   }).then(function () {
     switch (stepNumber) {
@@ -42,7 +52,7 @@ $(window).on("load", function () {
         $('.hideHeader').css('display', 'block');
         break;
       case 'end':
-        $('#headerStep1, #headerStep2, #headerStep3, #headerStep4').removeClass('active');
+        $('#headerStep1, #headerStep2, #headerStep3, #headerStep4').removeClass('progressBarActive');
         $('.hideHeader').css('display', 'block');
         break;
       default:
