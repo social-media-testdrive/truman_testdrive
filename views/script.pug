@@ -1038,10 +1038,10 @@ block content
       i.close.icon  
       .content
         .ui.styled.fluid.accordion
-          .title
+          .active.title
             i.dropdown.icon
             |  How would Jeremy feel if he saw this post?
-          .content
+          .active.content
             .ui.form
               .field
                 .ui.checkbox
@@ -1058,6 +1058,10 @@ block content
               .field
                 .ui.checkbox
                   input(type='checkbox')
+                  label Jealous
+              .field
+                .ui.checkbox
+                  input(type='checkbox')
                   label Anxious
               .field
                 .ui.checkbox
@@ -1067,8 +1071,11 @@ block content
                 .ui.checkbox
                   input(type='checkbox')
                   label Neutral
-                  
-          .title
+            br
+            .button.ui.mini.green.right.labeled.icon.button.esteemModalNextButton
+              i.down.arrow.icon
+              | Next          
+          .title.esteemModalSection2
             i.dropdown.icon
             |  What could Jeremy do to make himself feel better?
           .content
@@ -1092,7 +1099,7 @@ block content
               .field
                 .ui.checkbox
                   input(type='checkbox')
-                  label Something else          
+                  label Do something else          
       .actions
         .ui.positive.right.labeled.icon.button
           | Done
@@ -1202,9 +1209,15 @@ block scripts
         }
         
         function openPostEsteem(){
+          $('.ui.accordion').accordion('open', 0);
+          $('.ui.accordion').accordion('close', 1);
           $('input[type=checkbox]').prop('checked',false);
           $('#esteem_post_modal').modal('show');
         }
+        
+        $('.esteemModalNextButton').on('click', function(){
+          $('.esteemModalSection2').click();
+        });
       /**
        * End code to open modals
        */

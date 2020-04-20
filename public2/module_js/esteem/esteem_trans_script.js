@@ -58,7 +58,9 @@ function startIntro(){
         },
         {
           intro: `Here is some background before you start: Imagine that you are
-          looking at Jeremy Murray's social media timeline.`
+          looking at
+          <img class='ui avatar image' src='${cdn}/profile_pictures/user77.jpg'>
+          Jeremy Murray's social media timeline.`
         },
         {
           intro: `Jeremy has two friends, &nbsp
