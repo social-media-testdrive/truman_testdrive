@@ -11,10 +11,9 @@ block content
             i.question.blue.icon
             .content
               | Reflect
-          .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-            h4(style="float:left")
-              i.exclamation.triangle.icon(style="color: #f9ff00 !important;")
-
+          .ui.label.resultsPromptLabel
+            h4
+              i.exclamation.triangle.icon
               | These were the FAKE news posts in the timeline. How many did you notice?
           br
           br
@@ -27,7 +26,7 @@ block content
                   img.ui.avatar.image(src=cdn+'/profile_pictures/user70.JPG')
                   span Zoe Goodall
               .img.post
-                img.transition.visible(src=cdn+'/post_pictures/fakenews1.png', data-src='/fakenews1.png', style='max-width: 100%; cursor: pointer;display: inline !important;')
+                img.transition.visible(src=cdn+'/post_pictures/fakenews1.png', data-src='/fakenews1.png')
               .read.rounded.right.floated.info_button(data-info_text="Real facts.com is THE news source for you. Learn about everything that's going on everywhere in real time. You can trust us!", style='z-index:12;text-align:center;align-self:flex-end;position:relative;bottom:10px;width:7%;height:auto')
                 i.info.icon
               .content
