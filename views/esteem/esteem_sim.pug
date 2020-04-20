@@ -261,7 +261,7 @@ block content
           i.rocket.icon
           |   Let's Continue!
           
-  .ui.small.modal#esteem_post_modal
+  .ui.small.long.modal#esteem_post_modal
     i.close.icon  
     .content
       .ui.styled.fluid.accordion
@@ -271,34 +271,37 @@ block content
         .active.content
           
           .ui.form
-            .field
-              .ui.checkbox
-                input(type='checkbox')
-                label Happy
-            .field
-              .ui.checkbox
-                input(type='checkbox')
-                label Excited
-            .field
-              .ui.checkbox
-                input(type='checkbox')
-                label Sad
-            .field
-              .ui.checkbox
-                input(type='checkbox')
-                label Jealous
-            .field
-              .ui.checkbox
-                input(type='checkbox')
-                label Anxious
-            .field
-              .ui.checkbox
-                input(type='checkbox')
-                label Angry
-            .field
-              .ui.checkbox
-                input(type='checkbox')
-                label Neutral
+            .ui.grid
+              .eight.wide.column
+                .field
+                  .ui.checkbox
+                    input(type='checkbox')
+                    label Happy
+                .field
+                  .ui.checkbox
+                    input(type='checkbox')
+                    label Excited
+                .field
+                  .ui.checkbox
+                    input(type='checkbox')
+                    label Sad
+                .field
+                  .ui.checkbox
+                    input(type='checkbox')
+                    label Jealous
+              .eight.wide.column
+                .field
+                  .ui.checkbox
+                    input(type='checkbox')
+                    label Anxious
+                .field
+                  .ui.checkbox
+                    input(type='checkbox')
+                    label Angry
+                .field
+                  .ui.checkbox
+                    input(type='checkbox')
+                    label Neutral
           br
           .button.ui.mini.green.right.labeled.icon.button#nextButton
             i.down.arrow.icon
