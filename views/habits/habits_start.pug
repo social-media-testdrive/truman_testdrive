@@ -2,7 +2,7 @@ extends ../ui_layout
 
 block content
 
-  .ui.text.container(style="padding-bottom:4em;")
+  .ui.text.container.addBottomMargin
     br
     .ui.raised.segment
       h3.ui.header
@@ -32,9 +32,9 @@ block content
       h3.ui.header
         i.key.blue.icon
         .content Key Ideas
-      .sub.header 
-        i.hand.pointer.icon(style="color:gray;")
-        span(style="color: gray;") Click on each label below to learn more
+      .sub.header.grayElement 
+        i.hand.pointer.icon
+        span Click on each label below to learn more
       br
       //- .ui.segments     
       .ui.stackable.two.column.grid
@@ -43,27 +43,27 @@ block content
             a.ui.blue.ribbon.label.keyTermLabel
                 //- i.dollar.sign.icon 
                 span Habit
-            span.hidden.keyTermDefinition(style="font-weight:600") Something we do automatically without thinking.
-              ul(style="font-weight:400") Social media <i>habits</i> can include things like checking social media regularly or scrolling through your social media feed as soon as you wake up.
+            span.hidden.keyTermDefinition Something we do automatically without thinking.
+              ul Social media <i>habits</i> can include things like checking social media regularly or scrolling through your social media feed as soon as you wake up.
 
         .ui.column
           .keyTerm.ui.raised.segment
             a.ui.blue.ribbon.label.keyTermLabel
                 //- i.magic.icon 
                 span Attention-grabbing design
-            span.hidden.keyTermDefinition(style="font-weight:600")  Features of a device or app that are intended to encourage users to use it frequently.
-              ul(style="font-weight:400") Some features include notifications for new content, autoplay on videos, and endless scrolling.
+            span.hidden.keyTermDefinition  Features of a device or app that are intended to encourage users to use it frequently.
+              ul Some features include notifications for new content, autoplay on videos, and endless scrolling.
         .ui.column
           .keyTerm.ui.raised.segment
             a.ui.blue.ribbon.label.keyTermLabel
                 //- i.magic.icon 
                 span Feedback loop
-            span.hidden.keyTermDefinition(style="font-weight:600") The pleasure you experience when you get a response to something you do or post online, making you want to go back and post more.
+            span.hidden.keyTermDefinition The pleasure you experience when you get a response to something you do or post online, making you want to go back and post more.
             
-    .ui.warning.message#clickNextWarning(style="display:none;")
+    .ui.warning.message#clickNextWarning
       .header
        | Click "Next"
-    .ui.warning.message#clickLabelsWarning(style="display:none;")
+    .ui.warning.message#clickLabelsWarning
      .header
       | Click on each label to proceed  
     a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
@@ -73,4 +73,7 @@ block content
             
 block scripts
   script(src='/module_js/base_start.js')
+  
+block styles
+  link(rel='stylesheet', href='/css/start.css')
     

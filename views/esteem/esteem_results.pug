@@ -4,7 +4,7 @@ block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   -var chosenTopic = user.esteemTopic;
   
-  .ui.container(style="margin-bottom:4em;")
+  .ui.container.addBottomMargin
     .ui.stackable.column.grid
       .ui.column
         .insertPrint
@@ -13,9 +13,9 @@ block content
             i.question.blue.icon
             .content
               | Reflect
-          .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-            h4(style="float:left")
-              i.exclamation.triangle.icon(style="color: #f9ff00 !important;")
+          .ui.label.resultsPromptLabel
+            h4
+              i.exclamation.triangle.icon
 
               | These were some posts on the timeline that could have caused a 
               | red flag feeling for Jeremy. How many did you notice?
@@ -29,7 +29,7 @@ block content
                 .content      
                   a.left.floated(href='/user/sassystar75')
                     img.ui.avatar.image(src=cdn+'/profile_pictures/user53.jpg')
-                    span(style="vertical-align:middle;")='Brielle Jordan'
+                    span='Brielle Jordan'
                 .image
                   img.post(src=cdn+'/post_pictures/basketball-team_se.jpg')
                 .content
@@ -40,7 +40,7 @@ block content
                 .content      
                   a.left.floated(href='/user/habbey113')
                     img.ui.avatar.image(src=cdn+'/profile_pictures/user4.jpg')
-                    span(style="vertical-align:middle;")='Hayden Abbey'
+                    span='Hayden Abbey'
                 .image
                   img.post(src=cdn+'/post_pictures/softball_se.jpg')
                 .content
@@ -51,7 +51,7 @@ block content
                 .content      
                   a.left.floated(href='/user/bball_guy')
                     img.ui.avatar.image(src=cdn+'/profile_pictures/user42.jpg')
-                    span(style="vertical-align:middle;")='Neel Talwar'
+                    span='Neel Talwar'
                 .image
                   img.post(src=cdn+'/post_pictures/dunk_se.jpg')
                 .content
@@ -64,7 +64,7 @@ block content
                 .content      
                   a.left.floated(href='/user/Suzieee')
                     img.ui.avatar.image(src=cdn+'/profile_pictures/user40.jpg')
-                    span(style="vertical-align:middle;")='Susan Turner'
+                    span='Susan Turner'
                 .image
                   img.post(src=cdn+'/post_pictures/girl-gamer_se.jpg')
                 .content
@@ -75,7 +75,7 @@ block content
                 .content      
                   a.left.floated(href='/user/princess_lindss')
                     img.ui.avatar.image(src=cdn+'/profile_pictures/user30.jpg')
-                    span(style="vertical-align:middle;")='Linsday Stokes'
+                    span='Linsday Stokes'
                 .image
                   img.post(src=cdn+'/post_pictures/switch_se.jpg')
                 .content
@@ -86,7 +86,7 @@ block content
                 .content      
                   a.left.floated(href='/user/asherballer')
                     img.ui.avatar.image(src=cdn+'/profile_pictures/user48.jpeg')
-                    span(style="vertical-align:middle;")='Asher Michaels'
+                    span='Asher Michaels'
                 .image
                   img.post(src=cdn+'/post_pictures/nintendo_se.jpg')
                 .content
@@ -99,7 +99,7 @@ block content
                 .content      
                   a.left.floated(href='/user/kilani244')
                     img.ui.avatar.image(src=cdn+'/profile_pictures/user5.jpeg')
-                    span(style="vertical-align:middle;")='Kiki Pualani'
+                    span='Kiki Pualani'
                 .image
                   img.post(src=cdn+'/post_pictures/pizza_se.jpg')
                 .content
@@ -110,7 +110,7 @@ block content
                 .content      
                   a.left.floated(href='/user/frank-the-best')
                     img.ui.avatar.image(src=cdn+'/profile_pictures/user10.jpg')
-                    span(style="vertical-align:middle;")='Franklin Robinson'
+                    span='Franklin Robinson'
                 .image
                   img.post(src=cdn+'/post_pictures/mixer_se.jpg')
                 .content
@@ -121,7 +121,7 @@ block content
                 .content      
                   a.left.floated(href='/user/unicornsparkle')
                     img.ui.avatar.image(src=cdn+'/profile_pictures/unicorn.jpg')
-                    span(style="vertical-align:middle;")='Maya Rein'
+                    span='Maya Rein'
                 .image
                   img.post(src=cdn+'/post_pictures/Pancakes_se.jpg')
                 .content
@@ -134,8 +134,8 @@ block content
 
 
     .ui.raised.segment
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
+      .ui.label.resultsPromptLabel
+        h4
           | What could Jeremy do when he sees a post that could cause a red 
           | flag feeling?
       .content.checkOne
@@ -146,7 +146,7 @@ block content
             .field
               .ui.checkbox
                 input(type='checkbox')
-                label(for='wouldRead', style="font-size:120%;", tabindex='0') 
+                label(for='wouldRead', tabindex='0') 
                   | Reach out to other friends on social media
         .ui.form
           .inline.fields
@@ -154,7 +154,7 @@ block content
             .field
               .ui.checkbox
                 input(type='checkbox')
-                label(for='checkSource', style="font-size:120%;", tabindex='0') 
+                label(for='checkSource', tabindex='0') 
                   | Do an activity that he enjoys
         .ui.form
           .inline.fields
@@ -162,7 +162,7 @@ block content
             .field
               .ui.checkbox
                 input(type='checkbox')
-                label(for='corroboration', style="font-size:120%;", tabindex='0') 
+                label(for='corroboration', tabindex='0') 
                   | Spend time with friends and family offline
         .ui.form
           .inline.fields
@@ -170,7 +170,7 @@ block content
             .field
               .ui.checkbox
                 input(type='checkbox')
-                label(for='interacted', style="font-size:120%;", tabindex='0') 
+                label(for='interacted', tabindex='0') 
                   | Take a break from social media
         .ui.form
           .inline.fields
@@ -178,16 +178,16 @@ block content
             .field
               .ui.checkbox
                 input(type='checkbox')
-                label(for='wouldViewAd', style="font-size:120%;", tabindex='0') 
+                label(for='wouldViewAd', tabindex='0') 
                   | Do something else
 
     .ui.raised.segment
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
+      .ui.label.resultsPromptLabel
+        h4
           | What are some ways you can achieve media balance on social media?
       .ui.form
         .inline.fields
-          label(style="font-size:120%;")
+          label
           textarea.glowing-border(rows='2' id="literacy_responseOne")
 
 
@@ -204,4 +204,7 @@ block content
       
 block scripts
   script(src="/module_js/esteem/esteem_results.js")
+  
+block styles 
+  link(rel='stylesheet', href='/css/esteem.css')
   
