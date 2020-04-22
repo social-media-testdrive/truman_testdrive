@@ -1,0 +1,76 @@
+/* desktop menu  */
+
+.ui.vertical.menu {
+  width: auto;
+}
+
+.ui.vertical.menu .item {
+  margin-bottom: 0 !important;
+}
+
+/* mobile menu */
+
+.ui.top.fixed.vertical.menu{
+  width:100%;
+  padding-top:5em;
+}
+
+/* warnings */
+
+#nextPageInstruction, #notificationWarning {
+  display: none;
+}
+
+.ui.fixed.bottom.sticky {
+  padding-bottom: 6em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+/* standard sim stuff */
+
+.ui.one.column.centered.grid {
+  margin-top: 1em;
+  padding-top: 0 !important;
+}
+
+/* notifications display, sim2 */
+/* CSS properties: https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image */
+
+.event .label {
+  overflow:hidden !important;
+  width:3em !important;
+  height:3em !important;
+}
+
+.event .label img {
+   width:100% !important;
+   height:100% !important;
+   display:inline  !important;
+   margin:0 auto !important;
+}
+
+/* notification settings, sim3 */
+
+.ui.toggle.checkbox label {
+  font-weight: bold;
+}
+
+#pauseTimeSelectField {
+  display: none;
+}
+
+#pauseTimeSelectField label {
+  font-size: 100%;
+}
+
+.menu. .item {
+  font-size: 100%;
+}
+
+/* activity page, sim4 */
+
+#reminderTimeSelectField label {
+  font-size: 100%;
+  font-weight: bold;
+}

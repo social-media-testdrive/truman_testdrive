@@ -5,7 +5,7 @@ block content
 
   .computer.only.tablet.only.four.wide.column 
     .ui.sticky.sideMenu
-      .ui.vertical.menu(style="width:auto;")
+      .ui.vertical.menu
         a.item(data-value='feed')#feedsteps 
           i.icon.home
           |  Home
@@ -15,7 +15,7 @@ block content
           
   //-mobile only version of the menu
   .mobile.only.sixteen.wide.column
-    .ui.top.fixed.vertical.menu(style="width:100%; padding-top:5em;")
+    .ui.top.fixed.vertical.menu
       a.item(data-value='feed')#feedsteps
         i.icon.home
         |  Home
@@ -27,15 +27,15 @@ block content
     br
 
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
-    .ui.one.column.centered.grid(style="margin-top:1em;")
-      .ui.fixed.bottom.sticky(style="margin-bottom:6em; margin-left:1em; margin-right:1em")  
-        .ui.icon.compact.message.warning(style="display:none;")#removeHidden
+    .ui.one.column.centered.grid
+      .ui.fixed.bottom.sticky
+        .ui.icon.compact.message.warning#removeHidden
           i.close.icon
           i.question.icon.float
           .content
             .ui.header Need some help? 
             p Make sure you are clicking "Got it" on the blue dots!
-        .ui.icon.message.warning(style="display:none;")#clickAllDotsWarning
+        .ui.icon.message.warning#clickAllDotsWarning
           i.close.icon
           i.hand.pointer.icon.float
           .content
@@ -73,7 +73,7 @@ block content
       h2.ui.header#hint3 Manage My Time:
       br
       .field#reminderTimeSelectField
-        label(style="font-size:100%; font-weight:bold;") Set Daily Reminder
+        label Set Daily Reminder
           br
           br
           .ui.selection.dropdown(name='reminderTimeSelect')
@@ -81,11 +81,11 @@ block content
             i.dropdown.icon
             .default.text 
             .menu
-              .item(data-value='remind 15 minutes' style="font-size:100%") 15 minutes
-              .item(data-value='remind 1 hour' style="font-size:100%") 1 hour
-              .item(data-value='remind 2 hours' style="font-size:100%") 2 hours
-              .item(data-value='remind 4 hours' style="font-size:100%") 4 hours
-              .item(data-value='remind 8 hours' style="font-size:100%") 8 hours
+              .item(data-value='remind 15 minutes') 15 minutes
+              .item(data-value='remind 1 hour') 1 hour
+              .item(data-value='remind 2 hours') 2 hours
+              .item(data-value='remind 4 hours') 4 hours
+              .item(data-value='remind 8 hours') 8 hours
       br
       span We'll send you a reminder once you've reached the time you set for yourself.
       
@@ -100,3 +100,7 @@ block content
 block scripts
   script(src="/module_js/habits/habits_sim4.js")
   script(src="/module_js/base_sim.js")
+  
+block styles
+  link(rel='stylesheet', href="/css/habits/habits_sim.css")
+  link(rel='stylesheet', href='/css/sim.css')

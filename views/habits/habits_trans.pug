@@ -2,7 +2,7 @@ extends ../ui_layout
 
 block content
 
-  .ui.text.container(style="padding-bottom:4em;")
+  .ui.text.container.addBottomMargin
     br
     .column
       .ui.raised.segment
@@ -53,8 +53,11 @@ block content
             i.rocket.icon
             |   Got it!
 
-    block scripts
+block scripts
   script().
     function startIntro(){
         window.location.href='/trans_script/habits';
       };
+
+block styles 
+  link(rel='stylesheet', href="/css/habits/habits_trans.css")
