@@ -283,7 +283,7 @@ block content
     br
     br
 
-    .ui.large.long.modal#phishingModal1(style="top:8em;")
+    .ui.large.long.modal#phishingModal1
       i.close.icon  
       .ui.center.aligned.header FILL OUT THIS SURVEY TO RECEIVE A FREE GIFT CARD!
       .content
@@ -294,7 +294,7 @@ block content
               | $500
             .label to any store you want!
 
-        .ui.form(style="margin-top:1em;")
+        .ui.form
           .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
             label First Name
             input(readonly='')
@@ -319,7 +319,7 @@ block content
              | Cancel
              i.close.icon 
                
-    .ui.large.long.modal#phishingModal2(style="top:8em;")
+    .ui.large.long.modal#phishingModal2
       i.close.icon  
       .ui.center.aligned.header 
         span(style="color:red;") !WARNING! 
@@ -333,7 +333,7 @@ block content
             .header
               | Enter your login information to prove that it's you
 
-        .ui.form(style="margin-top:1em;")
+        .ui.form
           .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
             label Username
             input(readonly='' placeholder='Enter your username...')
@@ -349,22 +349,22 @@ block content
               | Cancel
               i.close.icon 
               
-    .ui.large.long.modal#phishingModal3(style="top:8em;")
+    .ui.large.long.modal#phishingModal3
       i.close.icon  
       .ui.center.aligned.header WOW! Get a new Switch for just $19.99!!
-      .ui.one.column.centered.grid(style="margin-top:1em; margin-bottom:1em;")
+      .ui.one.column.centered.grid
         .image.content
          .ui.medium.centered.image
            img(src=cdn+'/post_pictures/nintendo_phi.jpg')
          .description
-           .ui.header(style="margin-top:1em; font-size:200%;") This deal will NOT LAST!! 
+           .ui.header.cardScamHeader This deal will NOT LAST!! 
            .ui.header 
              | HURRY - only
              span(style="color:red;")  3
              |  left!!!
       .content
        .ui.header Enter your information to place an order for this CRAZY deal! 
-       .ui.form(style="margin-top:1em;")
+       .ui.form
           .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
             label First Name
             input(readonly='')
@@ -471,5 +471,8 @@ block content
           
 block scripts
   script(src="/module_js/phishing/phishing_script.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/phishing.css')
             
     

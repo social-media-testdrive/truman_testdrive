@@ -2,7 +2,7 @@ extends ../ui_layout
 
 block content
 
-  .ui.text.container(style="padding-bottom:4em;")
+  .ui.text.container.addBottomMargin
     br
     .column
       .ui.raised.segment
@@ -30,12 +30,12 @@ block content
             | If you see a phishing scam, you can:
             
         h5.ui.header
-          i.caret.right.blue.icon(style="text-indent:3em;")
+          i.caret.right.blue.icon
           .content
             |   Ignore the link and don’t click on it
             
         h5.ui.header
-          i.caret.right.blue.icon(style="text-indent:3em;")
+          i.caret.right.blue.icon
           .content
             |   “Flag” the post to report it to the website
         
@@ -50,8 +50,11 @@ block content
             i.rocket.icon
             |   Got it!
 
-    block scripts
+block scripts
   script().
     function startIntro(){
         window.location.href='/trans_script/phishing';
       };
+
+block styles
+  link(rel='stylesheet', href='/css/phishing.css')

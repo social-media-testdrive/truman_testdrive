@@ -8,16 +8,16 @@ block content
   .computer.only.tablet.only.four.wide.column 
 
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
-    .ui.one.column.centered.grid(style="padding-top:1em;")
-      .ui.fixed.bottom.sticky(style="padding-bottom:6em;")
-        .ui.icon.compact.message.warning(style="display:none;")#removeHidden
+    .ui.one.column.centered.grid
+      .ui.fixed.bottom.sticky
+        .ui.icon.compact.message.warning#removeHidden
           i.close.icon
           i.question.icon.float
           .content
             .ui.header Need some help? 
             p Make sure you are clicking "Got it" on the blue dots!
           
-        .ui.icon.message.warning(style="display:none;")#clickAllDotsWarning
+        .ui.icon.message.warning#clickAllDotsWarning
           i.close.icon
           i.hand.pointer.icon.float
           .content
@@ -47,7 +47,7 @@ block content
       .content
         .description#hint2
           | Get BRaND nEW iPhONE for FREE!! 
-          span(style="color:#0000FF;")#shortenedURL1 http://bit.ly/5Bd6hTcO
+          span#shortenedURL1 http://bit.ly/5Bd6hTcO
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
           i.reply.icon
@@ -194,7 +194,7 @@ block content
       .content
         .description
           | Universal Theme Park ticket GIVAWAY!! Fill out surrvey NOW: 
-          span(style="color:#0000FF;")#shortenedURL2  http://give.away/parktix
+          span#shortenedURL2  http://give.away/parktix
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
           i.reply.icon
@@ -305,30 +305,27 @@ block content
             img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
-                                  
-    //-.ui.warning.message#clickAllDotsWarning(style="display:none;")
-      .header
-        | Click through all of the blue dots to continue      
+                                    
     button.ui.big.labeled.icon.button.cybertrans#cyberTransButton(style="margin-bottom:4em;")
         i.rocket.icon
         |   Let's Continue!
         
-    .ui.large.long.modal#phishingModal(style="top:7em;")
+    .ui.large.long.modal#phishingModal
       i.close.icon  
       .ui.center.aligned.header WOW! Get a new iPhone!!
-      .ui.one.column.centered.grid(style="margin-top:1em; margin-bottom:1em;")
+      .ui.one.column.centered.grid
         .image.content
          .ui.medium.centered.image
            img(src=cdn+'/post_pictures/phishingga_new.png')
          .description
-           .ui.header(style="margin-top:1em; font-size:200%;") Brand new iPhones! 
+           .ui.header.cardScamHeader Brand new iPhones! 
            .ui.header 
              | HURRY - only
              span(style="color:red;")  3
              |  left!!!
       .content
        .ui.header Enter your information to get this CRAZY deal! 
-       .ui.form(style="margin-top:1em;")
+       .ui.form
           .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
             label First Name
             input(readonly='')
@@ -354,18 +351,18 @@ block content
               i.close.icon 
               
               
-    .ui.large.long.modal#phishingModal2(style="top:7em;")
+    .ui.large.long.modal#phishingModal2
       i.close.icon  
       .ui.center.aligned.header 
         | Universal Theme Park ticket GIVAWAY!! Fill out surrvey NOW:
       .content
-        .ui.one.column.centered.grid(style="margin-top:1em; margin-bottom:1em;")
+        .ui.one.column.centered.grid
           .ui.green.large.statistic
             .label Fill out this survey to get  
             .value
               | FREE TICKETS
 
-        .ui.form(style="margin-top:1em;")
+        .ui.form
           .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
             label First Name
             input(readonly='')
@@ -393,3 +390,7 @@ block content
 block scripts
   script(src="/module_js/phishing/phishing_sim.js")
   script(src="/module_js/base_sim.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/phishing.css')
+  link(rel='stylesheet', href='/css/sim.css')

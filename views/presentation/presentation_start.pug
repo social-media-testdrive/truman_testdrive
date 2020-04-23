@@ -2,7 +2,7 @@ extends ../ui_layout
 
 block content
 
-  .ui.text.container(style="margin-bottom:4em;")
+  .ui.text.container.addBottomMargin
     br
     .ui.raised.segment
       h3.ui.header
@@ -13,11 +13,15 @@ block content
       h5.ui.header
         i.arrow.circle.right.blue.icon
         .content
-          | Posting on social media can be a great way to show people who you are! You can be yourself and share your thoughts with other people. 
+          | Posting on social media can be a great way to show people who you 
+          | are! You can be yourself and share your thoughts with other people. 
       h5.ui.header
         i.arrow.circle.right.blue.icon
         .content
-          | Sometimes, people have fake accounts too. These are called <b>finstas</b> or spam accounts. People may have these to talk to others who are interested in the same things as they are, or to post things for only their close friends to see.
+          | Sometimes, people have fake accounts too. These are called 
+          | <b>finstas</b> or spam accounts. People may have these to talk to 
+          | others who are interested in the same things as they are, or to 
+          | post things for only their close friends to see.
       br
       #introduction_next.button.ui.mini.green.right.labeled.icon.button
               i.down.arrow.icon
@@ -27,38 +31,35 @@ block content
       h3.ui.header
         i.key.blue.icon
         .content Key Ideas
-      .sub.header 
-        i.hand.pointer.icon(style="color:gray;")
-        span(style="color: gray;") Click on each label below to learn more
+      .sub.header.grayElement 
+        i.hand.pointer.icon
+        span Click on each label below to learn more
       br
-      //- .ui.segments     
+    
       .ui.stackable.two.column.grid
         .ui.column
           .keyTerm.ui.raised.segment
             a.ui.blue.ribbon.label.keyTermLabel
-                //- i.dollar.sign.icon 
                 span Audience
-            span.hidden.keyTermDefinition(style="font-weight:600") Anyone who can see information about you or posted by you online.
+            span.hidden.keyTermDefinition Anyone who can see information about you or posted by you online.
         .ui.column
           .keyTerm.ui.raised.segment
             a.ui.blue.ribbon.label.keyTermLabel
-                //- i.magic.icon 
                 span Anonymous
-            span.hidden.keyTermDefinition(style="font-weight:600") Keeping your name and identity hidden online.
-              ul(style="font-weight:400") Sometimes people use finstas to post anonymously.    
+            span.hidden.keyTermDefinition Keeping your name and identity hidden online.
+              ul Sometimes people use finstas to post anonymously.    
         .ui.column
           .keyTerm.ui.raised.segment
             a.ui.blue.ribbon.label.keyTermLabel
-                //- i.magic.icon 
                 span Curate
-            span.hidden.keyTermDefinition(style="font-weight:600") To select and organize what you post on social media.
-              ul(style="font-weight:400") Some people keep their main account carefully curated, while they might post more casually on an anonymous account.       
+            span.hidden.keyTermDefinition To select and organize what you post on social media.
+              ul Some people keep their main account carefully curated, while they might post more casually on an anonymous account.       
     
     
-    .ui.warning.message#clickNextWarning(style="display:none;")
+    .ui.warning.message#clickNextWarning
       .header
        | Click "Next"
-    .ui.warning.message#clickLabelsWarning(style="display:none;")
+    .ui.warning.message#clickLabelsWarning
      .header
       | Click on each label to proceed   
     a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
@@ -68,5 +69,8 @@ block content
 
 block scripts
   script(src="/module_js/base_start.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/start.css')
   
   

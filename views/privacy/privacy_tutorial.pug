@@ -4,14 +4,14 @@ block content
   
   .computer.only.tablet.only.four.wide.column 
   .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
-    #step1.ui.container(style="margin-bottom:4em;")
+    #step1.ui.container.addBottomMargin
       h2.ui.header Privacy Settings
       br
       .ui.divider
       br
       form.ui.form
         #step2.grouped.fields
-          label(for='account', style="font-size:140%") Account Settings
+          label.sectionTitle(for='account') Account Settings
             .field
               br
               .ui.toggle.checkbox
@@ -24,15 +24,15 @@ block content
       br
       form.ui.form
         .grouped.fields
-            label(for='interaction', style="font-size:140%") Interaction Settings
+            label.sectionTitle(for='interaction') Interaction Settings
             br
             br
             #step3.grouped.fields
-              label(for='contacts', style="font-size:120%") Contacts
+              label.subsectionTitle(for='contacts') Contacts
               .field
                 br
-                label(style="font-size:100%") Allow friend requests from
-                  .div(style='width: 200px;')
+                label.standardLabel Allow friend requests from
+                  .div
                   .ui.selection.dropdown
                     input(type='hidden' name='friendRequests')
                     i.dropdown.icon
@@ -42,8 +42,8 @@ block content
                       .item(data-value='1') Friends of Friends
               br
               .field
-                label(style="font-size:100%") Who can see my friends list?
-                  .div(style='width: 200px;')
+                label.standardLabel Who can see my friends list?
+                  .div
                   .ui.selection.dropdown
                     input(type='hidden' name='friendList')
                     i.dropdown.icon
@@ -54,11 +54,11 @@ block content
                       .item(data-value='2') Friends
                       .item(data-value='3') Only Me
               br
-              label(for='comments', style="font-size:120%") Comments
+              label.subsectionTitle(for='comments') Comments
               .field
                 br
-                label(style="font-size:100%") Allow comments from
-                  .div(style='width: 200px;')
+                label.standardLabel Allow comments from
+                  .div
                   .ui.selection.dropdown
                     input(type='hidden' name='friendRequests')
                     i.dropdown.icon
@@ -71,8 +71,8 @@ block content
                       .item(data-value='3') Only Me
               br
               .field
-                label(style="font-size:100%") Block comments from
-                .div(style='width: 200px;')
+                label.standardLabel Block comments from
+                .div
                   select.ui.fluid.search.dropdown(multiple='')
                     option Fake N. Ame
                     option Ima Robot
@@ -101,7 +101,7 @@ block content
               br
             
             .grouped.fields#tagStep  
-              label(for='tags', style="font-size:120%") Tags
+              label.subsectionTitle(for='tags') Tags
                 .field
                   br
                   .ui.toggle.checkbox
@@ -117,7 +117,7 @@ block content
       br
       form.ui.form
         #step4.grouped.fields
-            label(for='information', style="font-size:140%") Location Sharing Settings
+            label.sectionTitle(for='information') Location Sharing Settings
               .field
                 br
                 .ui.toggle.checkbox
@@ -125,8 +125,8 @@ block content
                   label Turn on location sharing
             .field
               br
-              label(style="font-size:100%") Share my location with
-                .div(style='width: 200px;')
+              label.standardLabel Share my location with
+                .div
                 .ui.selection.dropdown
                   input(type='hidden' name='shareLocationWith')
                   i.dropdown.icon
@@ -142,4 +142,5 @@ block content
 block scripts
   script(src="/module_js/privacy/privacy_tutorial.js")
 
-    
+block styles
+  link(rel='stylesheet', href='/css/privacy.css')

@@ -26,17 +26,17 @@ block content
         .content
           | If your identity is stolen, someone could:    
       h5.ui.header
-        i.caret.right.blue.icon(style="text-indent:3em;")
+        i.caret.right.blue.icon
         .content
           |  Apply for credit cards in your name and buy things
           
       h5.ui.header
-        i.caret.right.blue.icon(style="text-indent:3em;")
+        i.caret.right.blue.icon
         .content
           |   Cyberbully someone while pretending to be you
       
       h5.ui.header
-        i.caret.right.blue.icon(style="text-indent:3em;")
+        i.caret.right.blue.icon
         .content
           |   Create false identification documents
       
@@ -49,9 +49,9 @@ block content
       h3.ui.header
         i.key.blue.icon
         .content Key Ideas
-      .sub.header 
-        i.hand.pointer.icon(style="color:gray;")
-        span(style="color: gray;") Click on each label below to learn more
+      .sub.header.grayElement
+        i.hand.pointer.icon
+        span Click on each label below to learn more
       br
       //- .ui.segments     
       .ui.stackable.two.column.grid
@@ -60,26 +60,26 @@ block content
             a.ui.blue.ribbon.label.keyTermLabel
                 //- i.dollar.sign.icon 
                 span Private information
-            span.hidden.keyTermDefinition(style="font-weight:600") Information that can be used to identify you because it is unique to you (e.g., your full name, your address, or your password).
+            span.hidden.keyTermDefinition Information that can be used to identify you because it is unique to you (e.g., your full name, your address, or your password).
 
         .ui.column
           .keyTerm.ui.raised.segment
             a.ui.blue.ribbon.label.keyTermLabel
                 //- i.magic.icon 
                 span Phishing scam
-            span.hidden.keyTermDefinition(style="font-weight:600")  When someone poses as an institution, like a bank or a school, and posts a message asking you to provide private information.
+            span.hidden.keyTermDefinition  When someone poses as an institution, like a bank or a school, and posts a message asking you to provide private information.
 
         .ui.column
           .keyTerm.ui.raised.segment
             a.ui.blue.ribbon.label.keyTermLabel
                 //- i.magic.icon 
                 span Shortened URL
-            span.hidden.keyTermDefinition(style="font-weight:600") A web address that has been condensed and that could potentially mislead a user into going into a risky website.
+            span.hidden.keyTermDefinition A web address that has been condensed and that could potentially mislead a user into going into a risky website.
             
-    .ui.warning.message#clickNextWarning(style="display:none;")
+    .ui.warning.message#clickNextWarning
       .header
        | Click "Next"
-    .ui.warning.message#clickLabelsWarning(style="display:none;")
+    .ui.warning.message#clickLabelsWarning
      .header
       | Click on each label to proceed  
     a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
@@ -89,3 +89,6 @@ block content
             
 block scripts
   script(src="/module_js/base_start.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/start.css')

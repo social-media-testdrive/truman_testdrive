@@ -2,7 +2,7 @@ extends ../ui_layout
 
 block content
   
-  .ui.text.container(style="margin-bottom:4em;")
+  .ui.text.container.addBottomMargin
     br
     .ui.raised.segment
       h3.ui.header
@@ -34,44 +34,41 @@ block content
       h3.ui.header
         i.key.blue.icon
         .content Key Ideas
-      .sub.header 
-        i.hand.pointer.icon(style="color:gray;")
-        span(style="color: gray;") Click on each label below to learn more
+      .sub.header.grayElement
+        i.hand.pointer.icon
+        span Click on each label below to learn more
       br
-      //- .ui.segments     
+    
       .ui.stackable.two.column.grid
         .ui.column
           .ui.raised.segment.keyTerm
             a.ui.blue.ribbon.label.keyTermLabel
-                //- i.magic.icon 
                 span Privacy
-            span.hidden.keyTermDefinition(style="font-weight:600")  Control of personal information to protect it from being observed or tracked by others.
+            span.hidden.keyTermDefinition  Control of personal information to protect it from being observed or tracked by others.
 
         .ui.column
           .ui.raised.segment.keyTerm
             a.ui.blue.ribbon.label.keyTermLabel
-                //- i.dollar.sign.icon 
                 span Privacy Settings
-            span.hidden.keyTermDefinition(style="font-weight:600") Choices a website or app might give you about what information is visible to other users and companies.
+            span.hidden.keyTermDefinition Choices a website or app might give you about what information is visible to other users and companies.
 
         .ui.column
           .ui.raised.segment.keyTerm
             a.ui.blue.ribbon.label.keyTermLabel
-                //- i.magic.icon 
                 span Privacy Policy
-            span.hidden.keyTermDefinition(style="font-weight:600") A legal document that an app or website must provide and that describes what user information they collect and how they use it.
+            span.hidden.keyTermDefinition A legal document that an app or website must provide and that describes what user information they collect and how they use it.
         
         .ui.column
           .ui.raised.segment.keyTerm
             a.ui.blue.ribbon.label.keyTermLabel
                 //- i.magic.icon 
                 span Opt Out
-            span.hidden.keyTermDefinition(style="font-weight:600") To choose to not participate in something.
+            span.hidden.keyTermDefinition To choose to not participate in something.
               
-    .ui.warning.message#clickNextWarning(style="display:none;")
+    .ui.warning.message#clickNextWarning
       .header
        | Click "Next"
-    .ui.warning.message#clickLabelsWarning(style="display:none;")
+    .ui.warning.message#clickLabelsWarning
      .header
       | Click on each label to proceed  
     a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
@@ -81,3 +78,6 @@ block content
             
 block scripts
   script(src="/module_js/base_start.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/start.css')

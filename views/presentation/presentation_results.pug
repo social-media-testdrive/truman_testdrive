@@ -11,11 +11,12 @@ block content
             i.question.blue.icon
             .content
               | Reflect
-          .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-            h4(style="float:left")
-              i.exclamation.triangle.icon(style="color: #f9ff00 !important;")
+          .ui.label
+            h4
+              i.exclamation.triangle.icon
 
-              | These were the posts on the timeline that were from Elena’s finsta accounts. How many did you notice?
+              | These were the posts on the timeline that were from Elena’s 
+              | finsta accounts. How many did you notice?
           br
           br
           .ui.stackable.three.cards
@@ -57,9 +58,10 @@ block content
  
  
     .ui.raised.segment.checkOne
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
-          | How were the posts in Elena’s finsta different from the ones in her main account?
+      .ui.label
+        h4
+          | How were the posts in Elena’s finsta different from the ones in her 
+          | main account?
 
       .ui.form
         br
@@ -68,7 +70,9 @@ block content
           .field
             .ui.checkbox
               input(type='checkbox')
-              label(for='certainPeople', style="font-size:120%;", tabindex='0') She posted about things that only certain people will be interested in
+              label(for='certainPeople', tabindex='0') 
+                | She posted about things that only certain people will be 
+                | interested in
 
       .ui.form
         .inline.fields
@@ -76,7 +80,8 @@ block content
           .field
             .ui.checkbox
               input(type='checkbox')
-              label(for='casual', style="font-size:120%;", tabindex='0') She posted things that are more casual or personal
+              label(for='casual', tabindex='0') 
+                | She posted things that are more casual or personal
         
 
       .ui.form
@@ -85,12 +90,13 @@ block content
           .field
             .ui.checkbox
               input(type='checkbox')
-              label(for='meanPost', style="font-size:120%;", tabindex='0') She posted mean things about other people
+              label(for='meanPost', tabindex='0') 
+                | She posted mean things about other people
   
 
     .ui.raised.segment.radioOne
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
+      .ui.label
+        h4
           | Did you create a post on the TestDrive timeline?
       .ui.form
         br
@@ -105,30 +111,30 @@ block content
               label No
       
     .ui.raised.segment
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
+      .ui.label
+        h4
           | How did you think about the audience when you created your post?
       .ui.form
         .inline.fields
-          label(style="font-size:120%;")
+          label
           textarea.glowing-border(rows='3' id="presentation_responseOne")
 
     .ui.raised.segment
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
+      .ui.label
+        h4
           | What are the benefits of having multiple social media accounts?
       .ui.form
         .inline.fields
-          label(style="font-size:120%;")
+          label
           textarea.glowing-border(rows='3' id="presentation_responseTwo")
 
     .ui.raised.segment
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
+      .ui.label
+        h4
           | What are the drawbacks of having multiple social media accounts?
       .ui.form
         .inline.fields
-          label(style="font-size:120%;")
+          label
           textarea.glowing-border(rows='3' id="presentation_responseThree")
             
     br
@@ -145,4 +151,6 @@ block content
 block scripts
   script(src="/module_js/presentation/presentation_results.js")
   
+block styles
+  link(rel='stylesheet', href='/css/results.css')
     

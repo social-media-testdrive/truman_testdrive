@@ -4,30 +4,30 @@ block content
   
   .computer.only.tablet.only.four.wide.column 
   .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
-    .ui.one.column.centered.grid(style="padding-top:1em;")
-      .ui.fixed.bottom.sticky(style="padding-bottom:6em;")
-        .ui.icon.compact.message.warning(style="display:none;")#removeHidden
+    .ui.one.column.centered.grid
+      .ui.fixed.bottom.sticky
+        .ui.icon.compact.message.warning#removeHidden
           i.close.icon
           i.question.icon.float
           .content
             .ui.header Need some help? 
             p Make sure you are clicking "Got it" on the blue dots!
           
-        .ui.icon.message.warning(style="display:none;")#clickAllDotsWarning
+        .ui.icon.message.warning#clickAllDotsWarning
           i.close.icon
           i.hand.pointer.icon.float
           .content
             .ui.header There are still blue dots to find!
             p Click through all of the blue dots to continue.
             
-    #step1.ui.container
+    #step1.ui.container.addTop
       h2.ui.header Privacy Settings
       br
       
       br.ui.divider
       form.ui.form
         .grouped.fields#hint1
-          label(for='account', style="font-size:140%") Account Settings  
+          label.sectionTitle(for='account') Account Settings  
             .field#hint2
               br
               .ui.toggle.checkbox
@@ -41,14 +41,14 @@ block content
       br
       form.ui.form
         .grouped.fields
-            label(for='interaction', style="font-size:140%") Interaction Settings
+            label.sectionTitle(for='interaction') Interaction Settings
             br
             br
-            label(for='contacts', style="font-size:120%") Contacts
+            label.subsectionTitle(for='contacts') Contacts
             .field#hint3
               br
-              label(style="font-size:100%") Allow friend requests from
-                .div(style='width: 200px;')
+              label.standardLabel Allow friend requests from
+                .div
                 .ui.selection.dropdown
                   input(type='hidden' name='friendRequests')
                   i.dropdown.icon
@@ -58,8 +58,8 @@ block content
                     .item(data-value='1') Friends of Friends
             br
             .field
-              label(style="font-size:100%") Who can see my friends list?
-                .div(style='width: 200px;')
+              label.standardLabel Who can see my friends list?
+                .div
                 .ui.selection.dropdown
                   input(type='hidden' name='friendList')
                   i.dropdown.icon
@@ -70,11 +70,11 @@ block content
                     .item(data-value='2') Friends
                     .item(data-value='3') Only Me
             br
-            label(for='comments', style="font-size:120%") Comments
+            label.subsectionTitle(for='comments') Comments
             .field
               br
-              label(style="font-size:100%") Allow comments from
-                .div(style='width: 200px;')
+              label.standardLabel Allow comments from
+                .div
                 .ui.selection.dropdown
                   input(type='hidden' name='friendRequests')
                   i.dropdown.icon
@@ -87,8 +87,8 @@ block content
                     .item(data-value='3') Only Me
             br
             .field
-              label(style="font-size:100%") Block comments from
-              .div(style='width: 200px;')
+              label.standardLabel Block comments from
+              .div
                 select.ui.fluid.search.dropdown(multiple='')
                   option Fake N. Ame
                   option Ima Robot
@@ -115,7 +115,7 @@ block content
                   option Jenny Chen
                   option Ella Sroni
             br
-            label(for='tags', style="font-size:120%") Tags
+            label.subsectionTitle(for='tags') Tags
               .field
                 br
                 .ui.toggle.checkbox
@@ -131,7 +131,7 @@ block content
       br
       form.ui.form
         .grouped.fields
-            label(for='information', style="font-size:140%") Location Sharing Settings
+            label.sectionTitle(for='information') Location Sharing Settings
               .field#hint4
                 br
                 .ui.toggle.checkbox
@@ -139,8 +139,8 @@ block content
                   label Turn on location sharing
             .field#hint5
               br
-              label(style="font-size:100%") Share my location with
-                .div(style='width: 200px;')
+              label.standardLabel Share my location with
+                .div
                 .ui.selection.dropdown
                   input(type='hidden' name='shareLocationWith')
                   i.dropdown.icon
@@ -153,9 +153,6 @@ block content
             br
             .ui.divider
             br
-    .ui.warning.message#clickAllDotsSim(style="display:none;")
-      .header
-        | Click through all of the blue dots to continue
     button.ui.big.labeled.icon.button.privacytrans2#cyberTransButton(style="margin-bottom:4em;")
           i.rocket.icon
           |   Let's Continue!
@@ -164,3 +161,6 @@ block scripts
   script(src="/module_js/privacy/privacy_sim.js")
   script(src="/module_js/base_sim.js")
     
+block styles
+  link(rel='stylesheet', href='/css/sim.css')
+  link(rel='stylesheet', href='/css/privacy.css')
