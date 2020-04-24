@@ -49,7 +49,7 @@ block content
         -if (val.actorAuthor) {u_class = "actorReply"}
         -else if (val.reply) {u_class = "userReply"}
         -else {u_class = "userPost"}
-        .ui.fluid.card(u_postID=val.id, ui=user.ui, notify=user.notify, type=u_class, postID=val.postID)
+        .ui.fluid.card.userMadePost(u_postID=val.id, ui=user.ui, notify=user.notify, type=u_class, postID=val.postID)
           
           //- This is a User made post
           .content
@@ -67,7 +67,7 @@ block content
               img(src=cdn+"/post_pictures/"+val.picture)
           .content
             .description=val.body
-          .two.ui.bottom.attached.icon.buttons(style="z-index:0;")
+          .two.ui.bottom.attached.icon.buttons
             .ui.reply.button(tabindex='0')
               i.reply.icon
               |  Reply
@@ -141,7 +141,7 @@ block content
                               a.flag.comment Flag
           .extra.content
             if user.comment_prompt == "yes"
-              .description(style="text-align:center;background:#E8E8E8")="How is "+(user.profile.name || user.username || user.id)+" Feeling?"
+              .description="How is "+(user.profile.name || user.username || user.id)+" Feeling?"
               .ui.fluid.left.labeled.right.icon.input
                 .ui.label            
                   if user.profile.picture
@@ -168,7 +168,7 @@ block content
         if (val.module == 'targeted')
           if (val.type == user.targetedAdTopic)
             //-#step3.ui.fluid.card.test
-            #blueDotStep.ui.fluid.card.dim(postID=val.id)
+            #blueDotStep.ui.fluid.card.dim.targetedAdPost(postID=val.id)
               .ui.dimmer.flag
                 .content
                   .center
@@ -182,21 +182,21 @@ block content
                 .content
                   .center
                     h2.ui.inverted.icon.header
-                      i.eye.slash.icon(style="color:black;")
-                      h1.ui.header(style="color:black;") You&apos;ve hidden this ad!
+                      i.eye.slash.icon
+                      h1.ui.header You&apos;ve hidden this ad!
               .content
-                .ui.right.floated.menu(style="border:none; box-shadow:none;")
+                .ui.right.floated.menu
                   .ui.dropdown.icon.item
                     i.ellipsis.horizontal.icon
                     .menu.fluid.floated.left#item1
                       .item(data-value='0')
-                        i.fitted.circular.close.icon(style="color:gray;")
+                        i.fitted.circular.close.icon
                         | Hide Ad
                       .item(data-value='1')
-                        i.fitted.circular.exclamation.icon(style="color:gray;")
+                        i.fitted.circular.exclamation.icon
                         | Report Ad
                       .item(data-value='2')
-                        i.fitted.circular.question.icon(style="color:gray;") 
+                        i.fitted.circular.question.icon
                         | Why Am I Seeing This Ad?
                           
                 a.left.floated(href='/user/'+val.actor.username)
@@ -205,13 +205,13 @@ block content
 
               .image
                 //-note: not lazy-loaded 
-                img(src=cdn+"/post_pictures/"+val.picture, style="max-width:100%;")
+                img(src=cdn+"/post_pictures/"+val.picture)
 
               #step4.content
                 .description!=val.body
 
-              .content#sponsoredTag(style="border:none;")
-                i.left.floated.external.alternate.icon(style="color:gray;")
+              .content#sponsoredTag
+                i.left.floated.external.alternate.icon
                 .left.floated.meta="Sponsored"
               .three.ui.bottom.attached.icon.buttons
                 .ui.reply.button(tabindex='0')
@@ -311,19 +311,19 @@ block content
               .img.post
                 //-img.post(src="/"+val.picture)
                 if (val.module == 'digital-literacy' && val.info_text != "")           
-                  img(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPost()',style="max-width:100%;cursor:pointer")
+                  img.imageWithModal(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPost()')
                 else if (val.module == 'digfoot')
-                  img(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPostDigfoot()',style="max-width:100%;cursor:pointer")
+                  img.imageWithModal(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPostDigfoot()')
                 else if (val.module == 'esteem')
-                  img(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPostEsteem()',style="max-width:100%;cursor:pointer")
+                  img.imageWithModal(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPostEsteem()')
                 else
-                  img(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, style="max-width:100%;")
+                  img(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture)
               if (val.module == 'digital-literacy' && val.info_text != "")
-                .read.rounded.right.floated.modual.info_button(id="info_"+val.id, data-info_text = val.info_text, style="z-index:9;text-align:center;align-self:flex-end;position:relative;bottom:10px;width:7%;height:auto")
+                .read.rounded.right.floated.modual.info_button(id="info_"+val.id, data-info_text = val.info_text)
                   i.info.icon
               .content
                 .description!=val.body
-              .three.ui.bottom.attached.icon.buttons(style="z-index:0;")
+              .three.ui.bottom.attached.icon.buttons
                 .ui.reply.button(tabindex='0')
                   i.reply.icon
                   |  Reply
@@ -439,19 +439,19 @@ block content
               .img.post
                 //-img.post(src="/"+val.picture)
                 if (val.module == 'digital-literacy' && val.info_text != "")           
-                  img(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPost()',style="max-width:100%;cursor:pointer")
+                  img(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPost()')
                 else if (val.module == 'digfoot')
-                  img(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPostDigfoot()',style="max-width:100%;cursor:pointer")
+                  img(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPostDigfoot()')
                 else if (val.module == 'esteem')
-                  img(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPostEsteem()',style="max-width:100%;cursor:pointer")
+                  img(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPostEsteem()')
                 else
-                  img(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, style="max-width:100%;")
+                  img(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture)
               if (val.module == 'digital-literacy' && val.info_text != "")
-                .read.rounded.right.floated.modual.info_button(id="info_"+val.id, data-info_text = val.info_text, style="z-index:9;text-align:center;align-self:flex-end;position:relative;bottom:10px;width:7%;height:auto")
+                .read.rounded.right.floated.modual.info_button(id="info_"+val.id, data-info_text = val.info_text)
                   i.info.icon
               .content
                 .description!=val.body
-              .three.ui.bottom.attached.icon.buttons(style="z-index:0;")
+              .three.ui.bottom.attached.icon.buttons
                 .ui.reply.button(tabindex='0')
                   i.reply.icon
                   |  Reply
@@ -569,17 +569,17 @@ block content
             .img.post
               //-img.post(src="/"+val.picture)
               if (val.module == 'digital-literacy' && val.info_text != "")           
-                img(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPost()',style="max-width:100%;cursor:pointer")
+                img.imageWithModal(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPost()')
               else if (val.module == 'digfoot')
-                img(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPostDigfoot()',style="max-width:100%;cursor:pointer")
+                img.imageWithModal(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPostDigfoot()')
               else
-                img(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, style="max-width:100%;")
+                img(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture)
             if (val.module == 'digital-literacy' && val.info_text != "")
-              .read.rounded.right.floated.modual.info_button(id="info_"+val.id, data-info_text = val.info_text, style="z-index:9;text-align:center;align-self:flex-end;position:relative;bottom:10px;width:7%;height:auto")
+              .read.rounded.right.floated.modual.info_button(id="info_"+val.id, data-info_text = val.info_text)
                 i.info.icon
             .content
               .description!=val.body
-            .three.ui.bottom.attached.icon.buttons(style="z-index:0;")
+            .three.ui.bottom.attached.icon.buttons
               .ui.reply.button(tabindex='0')
                 i.reply.icon
                 |  Reply
@@ -682,14 +682,14 @@ block content
 
     //- Chat Box  
     #chatbox1.container.clearfix.hidden
-      .chat(style="right:24px; margin-bottom:3em;")
+      .chat
         .chat-header.clearfix
           a.chat-close(href='#')
             i.large.close.icon
           a.chat-minimize(href='#')
             i.window.minimize.icon
           a(href='#')
-            img.ui.avatar.image(src=cdn+'/profile_pictures/avatar-icon.svg',style="width: 3em;height: 3em;")
+            img.ui.avatar.image(src=cdn+'/profile_pictures/avatar-icon.svg')
           .chat-about
             .chat-with Chat with Jack
             //- .chat-num-messages already 1 902 messages
@@ -727,14 +727,14 @@ block content
 
     //- Chat Box  
     #chatbox2.container.clearfix.hidden
-      .chat(style="right:345px; margin-bottom:3em;")
+      .chat
         .chat-header.clearfix
           a.chat-close(href='#')
             i.large.close.icon
           a.chat-minimize(href='#')
             i.window.minimize.icon
           a(href='#')
-            img.ui.avatar.image(src=cdn+'/profile_pictures/user8.jpg',style="width: 3em;height: 3em;")
+            img.ui.avatar.image(src=cdn+'/profile_pictures/user8.jpg')
           .chat-about
             .chat-with Chat with Rob
             //- .chat-num-messages already 1 902 messages
@@ -801,7 +801,7 @@ block content
         </li>
     
     //- New Post Modal  
-    .ui.small.post.modal  
+    .ui.small.post.modal.newPostModal  
       i.close.icon  
       .header Add a New Post  
       .content  
@@ -816,65 +816,65 @@ block content
                   .ui.radio.checkbox
                     input#photoOne.hidden(type='radio' name='picinput' value="basketballshoes.jpg")
                     label
-                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/basketballshoes.jpg" style='width:65%;height:auto;')
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/basketballshoes.jpg")
                 .field
                   .ui.radio.checkbox
                     input#photoTwo.hidden(type='radio' name='picinput' value="typewriter.jpg")
                     label
-                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/typewriter.jpg" style='width:65%;height:auto;')
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/typewriter.jpg")
                 .field
                   .ui.radio.checkbox
                     input#photoThree.hidden(type='radio' name='picinput' value="cat.jpg")
                     label
-                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/cat.jpg" style='width:65%;height:auto;') 
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/cat.jpg") 
               .three.fields
                 .field
                   .ui.radio.checkbox
                     input#photoOne.hidden(type='radio' name='picinput' value="cupcakes.jpg")
                     label
-                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/cupcakes.jpg" style='width:65%;height:auto;')
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/cupcakes.jpg")
                 .field
                   .ui.radio.checkbox
                     input#photoTwo.hidden(type='radio' name='picinput' value="autumn.jpg")
                     label
-                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/autumn.jpg" style='width:65%;height:auto;')
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/autumn.jpg")
                 .field
                   .ui.radio.checkbox
                     input#photoThree.hidden(type='radio' name='picinput' value="Disneyland.jpg")
                     label
-                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/Disneyland.jpg" style='width:65%;height:auto;')  
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/Disneyland.jpg")  
               .three.fields
                 .field
                   .ui.radio.checkbox
                     input#photoTwo.hidden(type='radio' name='picinput' value="studytime.jpg")
                     label
-                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/studytime.jpg" style='width:65%;height:auto;')
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/studytime.jpg")
                 .field
                   .ui.radio.checkbox
                     input#photoThree.hidden(type='radio' name='picinput' value="palm_trees.jpeg")
                     label
-                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/palm_trees.jpeg" style='width:65%;height:auto;') 
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/palm_trees.jpeg") 
                 .field
                   .ui.radio.checkbox
                     input#photoOne.hidden(type='radio' name='picinput' value="footballseason.jpg")
                     label
-                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/footballseason.jpg" style='width:65%;height:auto;')
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/footballseason.jpg")
               .three.fields
                 .field
                   .ui.radio.checkbox
                     input#photoFour.hidden(type='radio' name='picinput' value="Iceland.jpg")
                     label
-                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/Iceland.jpg" style='width:65%;height:auto;')
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/Iceland.jpg")
                 .field
                   .ui.radio.checkbox
                     input#photoFive.hidden(type='radio' name='picinput' value="balloons.jpg")
                     label
-                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/balloons.jpg" style='width:65%;height:auto;')
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/balloons.jpg")
                 .field
                   .ui.radio.checkbox
                     input#photoSix.hidden(type='radio' name='picinput' value="beachpuppy.jpg")
                     label
-                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/beachpuppy.jpg" style='width:65%;height:auto;')  
+                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/beachpuppy.jpg")  
               
           .ui.error.message 
       .actions  
@@ -1257,3 +1257,6 @@ block scripts
     /**
      * End chat box code
      */
+     
+block styles
+  link(rel='stylesheet', href='/css/script.css')
