@@ -2,7 +2,7 @@ extends ../ui_layout
 
 block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
-  .ui.container(style="padding-bottom:4em;")
+  .ui.container.addBottomMargin
     .ui.stackable.column.grid
       .ui.column
         .insertPrint
@@ -11,9 +11,9 @@ block content
             i.question.blue.icon
             .content
               | Reflect
-          .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-            h4(style="float:left")
-              i.exclamation.triangle.icon(style="color: #f9ff00 !important;")
+          .ui.label
+            h4
+              i.exclamation.triangle.icon
 
               | These were the posts with private information in the timeline. How many did you notice?
           br
@@ -27,7 +27,7 @@ block content
                   img.ui.avatar.image(src=cdn+'/profile_pictures/user70.JPG')
                   span Zoe Goodall
               .img.post
-                img.transition.visible(src=cdn+'/post_pictures/safepostga2.jpg', data-src='/safepostga2.jpg', style='max-width: 100%; cursor: pointer;display: inline !important;')
+                img.transition.visible(src=cdn+'/post_pictures/safepostga2.jpg', data-src='/safepostga2.jpg')
               .content
                 .description
                   | new phone who dis? my new number is 607-252-6771
@@ -39,7 +39,7 @@ block content
                   img.ui.avatar.image(src=cdn+'/profile_pictures/user18.png')
                   span Ethan Kravitz
               .img.post
-                img.transition.visible(src=cdn+'/post_pictures/coolmovies.jpeg', data-src='/coolmovies.jpeg', style='max-width: 100%; cursor: pointer;display: inline !important;')
+                img.transition.visible(src=cdn+'/post_pictures/coolmovies.jpeg', data-src='/coolmovies.jpeg')
               .content
                 .description
                   | Gonna be at the Regal THIS FRIDAY to see the new Marvel movie!! Meet me there at 8 🎥🍿
@@ -52,7 +52,7 @@ block content
                   img.ui.avatar.image(src=cdn+'/profile_pictures/user57.jpg')
                   span Jasmine Woolley
               .img.post
-                img.transition.visible(src=cdn+'/post_pictures/house.jpg', data-src='/house.jpg', style='max-width: 100%;cursor: pointer;display: inline !important;')
+                img.transition.visible(src=cdn+'/post_pictures/house.jpg', data-src='/house.jpg')
               .content
                 .description
                   | 321 Jefferson Ave come hang out guys, I'm bored.
@@ -60,8 +60,8 @@ block content
  
  
     .ui.raised.segment.checkOne
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
+      .ui.label
+        h4
           | Why is this post inappropriate for social media?
       .ui.stackable.two.cards
 
@@ -72,7 +72,7 @@ block content
                 img.ui.avatar.image(src=cdn+'/profile_pictures/user57.jpg')
                 span Jasmine Woolley
             .img.post
-              img.transition.visible(src=cdn+'/post_pictures/house.jpg', data-src='/house.jpg', style='max-width: 100%;cursor: pointer;display: inline !important;')
+              img.transition.visible(src=cdn+'/post_pictures/house.jpg', data-src='/house.jpg')
             .content
               .description
                 | 321 Jefferson Ave come hang out guys, I'm bored.
@@ -85,7 +85,7 @@ block content
                 .field
                   .ui.checkbox
                     input(type='checkbox')
-                    label(for='privateInfo', style="font-size:120%;", tabindex='0')  Private information like street address, phone number, school name, or email address was shared
+                    label(for='privateInfo', tabindex='0')  Private information like street address, phone number, school name, or email address was shared
             hr
             .ui.form
               .inline.fields
@@ -93,7 +93,7 @@ block content
                 .field
                   .ui.checkbox
                     input(type='checkbox')
-                    label(for='think', style="font-size:120%;", tabindex='0')  The person making the post did not think about all the audiences who could see it
+                    label(for='think', tabindex='0')  The person making the post did not think about all the audiences who could see it
             hr
             .ui.form
               .inline.fields
@@ -101,18 +101,18 @@ block content
                 .field
                   .ui.checkbox
                     input(type='checkbox')
-                    label(for='think', style="font-size:120%;", tabindex='0')  It was appropriate for social media
+                    label(for='think', tabindex='0')  It was appropriate for social media
             
     .ui.raised.segment.checkTwo
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
+      .ui.label
+        h4
           | How did you respond to these messages that asked for private information?
       .ui.stackable.two.cards
 
         .ui.fluid.card.dim()#card3
           .content
-            .chat(style=" bottom: auto;font-size: 12px;right: auto;position: relative;width: auto;float:left;")
-              .chat-history(style="height:inherit")
+            .chat
+              .chat-history
                 ul
                   li.clearfix
                     .message-data
@@ -140,7 +140,7 @@ block content
 
                   .ui.checkbox
                     input(type='checkbox')
-                    label(for='changeSub', style="font-size:120%;", tabindex='0')  I changed the subject
+                    label(for='changeSub', tabindex='0')  I changed the subject
             hr
             .ui.form
               .inline.fields
@@ -149,7 +149,7 @@ block content
 
                   .ui.checkbox
                     input(type='checkbox')
-                    label(for='humor', style="font-size:120%;", tabindex='0')  I used humor
+                    label(for='humor', tabindex='0')  I used humor
 
             hr
             .ui.form
@@ -158,7 +158,7 @@ block content
                 .field
                   .ui.checkbox
                     input(type='checkbox')
-                    label(for='ignore', style="font-size:120%;", tabindex='0')  I ignored the message
+                    label(for='ignore', tabindex='0')  I ignored the message
                     
             hr
             .ui.form
@@ -167,7 +167,7 @@ block content
                 .field
                   .ui.checkbox
                     input(type='checkbox')
-                    label(for='direct', style="font-size:120%;", tabindex='0')  I was direct
+                    label(for='direct', tabindex='0')  I was direct
           
             hr
             .ui.form
@@ -176,15 +176,15 @@ block content
                 .field
                   .ui.checkbox
                     input(type='checkbox')
-                    label(for='somethingElse', style="font-size:120%;", tabindex='0')  I did something else
+                    label(for='somethingElse', tabindex='0')  I did something else
     
     .ui.raised.segment.responseOne
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
+      .ui.label
+        h4
           | What would you do in the future to protect your private information and other people’s private information on social media?
       .ui.form
         .inline.fields
-          label(style="font-size:120%;")
+          label
           textarea.glowing-border(rows='3' id="safe_responseOne")
     br
     .ui.big.green.labeled.icon.button(onclick="onPrint()")
@@ -199,4 +199,7 @@ block content
       
 block scripts
   script(src="/module_js/safe-posting/safe-posting_results.js")
-  
+
+block styles 
+  link(rel='stylesheet', href='/css/results.css') 
+  link(rel='stylesheet', href='/css/safe-posting.css')

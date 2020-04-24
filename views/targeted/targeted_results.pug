@@ -4,7 +4,7 @@ block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   -var adType = user.targetedAdTopic;
   
-  .ui.container(style="margin-bottom:4em;")
+  .ui.container.addBottomMargin
     .ui.stackable.column.grid
       .ui.column
         .insertPrint
@@ -13,9 +13,9 @@ block content
             i.question.blue.icon
             .content
               | Reflect
-          .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-            h4(style="float:left")
-              i.exclamation.triangle.icon(style="color: #f9ff00 !important;")
+          .ui.label
+            h4
+              i.exclamation.triangle.icon
 
               | These were the advertisements in the timeline. How many did you notice?
           br
@@ -26,12 +26,12 @@ block content
               
               .ui.fluid.card.dim()#card1
                 .content      
-                  .ui.right.floated.menu(style="border:none; box-shadow:none;")
+                  .ui.right.floated.menu
                     .ui.dropdown.icon.item
                       i.ellipsis.horizontal.icon
                   a.left.floated(href='/user/3striiipes')
                     img.ui.avatar.image(src=cdn+'/profile_pictures/three_stripes_pfp.jpg')
-                    span(style="vertical-align:middle;")='Three Stripes Shoes'
+                    span='Three Stripes Shoes'
                 .image
                   img.post(src=cdn+'/post_pictures/three_stripes_ad.jpg')
                 #step4.content
@@ -41,12 +41,12 @@ block content
           
               .ui.fluid.card.dim()#card2
                 .content      
-                  .ui.right.floated.menu(style="border:none; box-shadow:none;")
+                  .ui.right.floated.menu
                     .ui.dropdown.icon.item
                       i.ellipsis.horizontal.icon
                   a.left.floated(href='/user/3striiipes')
                     img.ui.avatar.image(src=cdn+'/profile_pictures/three_stripes_pfp.jpg')
-                    span(style="vertical-align:middle;")='Three Stripes Shoes'
+                    span='Three Stripes Shoes'
                 .image
                   img.post(src=cdn+'/post_pictures/three_stripes_ad_2.jpeg')
                 #step4.content
@@ -55,12 +55,12 @@ block content
 
               .ui.fluid.card.dim()#card3
                 .content      
-                  .ui.right.floated.menu(style="border:none; box-shadow:none;")
+                  .ui.right.floated.menu
                     .ui.dropdown.icon.item
                       i.ellipsis.horizontal.icon
                   a.left.floated(href='/user/rockvilleclubsoccer')
                     img.ui.avatar.image(src=cdn+'/profile_pictures/club_soccer_pfp.jpg')
-                    span(style="vertical-align:middle;")='Rockville Club Soccer'
+                    span='Rockville Club Soccer'
                 .image
                   img.post(src=cdn+'/post_pictures/club_soccer_ad.jpg')
                 #step4.content
@@ -71,12 +71,12 @@ block content
               
               .ui.fluid.card.dim()#card1
                 .content      
-                  .ui.right.floated.menu(style="border:none; box-shadow:none;")
+                  .ui.right.floated.menu
                     .ui.dropdown.icon.item
                       i.ellipsis.horizontal.icon
                   a.left.floated(href='/user/nentindo')
                     img.ui.avatar.image(src=cdn+'/profile_pictures/controller_pfp.jpg')
-                    span(style="vertical-align:middle;")='Nentindo'
+                    span='Nentindo'
                 .image
                   img.post(src=cdn+'/post_pictures/controller_ad.jpg')
                 #step4.content
@@ -85,12 +85,12 @@ block content
 
               .ui.fluid.card.dim()#card2
                 .content      
-                  .ui.right.floated.menu(style="border:none; box-shadow:none;")
+                  .ui.right.floated.menu
                     .ui.dropdown.icon.item
                       i.ellipsis.horizontal.icon
                   a.left.floated(href='/user/vrtech')
                     img.ui.avatar.image(src=cdn+'/profile_pictures/VR_pfp.jpg')
-                    span(style="vertical-align:middle;")='VR Tech'
+                    span='VR Tech'
                 .image
                   img.post(src=cdn+'/post_pictures/VR_ad.jpg')
                 #step4.content
@@ -99,12 +99,12 @@ block content
 
               .ui.fluid.card.dim()#card3
                 .content      
-                  .ui.right.floated.menu(style="border:none; box-shadow:none;")
+                  .ui.right.floated.menu
                     .ui.dropdown.icon.item
                       i.ellipsis.horizontal.icon
                   a.left.floated(href='/user/rogerthatapp')
                     img.ui.avatar.image(src=cdn+'/profile_pictures/rogerthat_pfp.jpg')
-                    span(style="vertical-align:middle;")='Roger That Mobile App'
+                    span='Roger That Mobile App'
                 .image
                   img.post(src=cdn+'/post_pictures/roger_ad.jpg')
                 #step4.content
@@ -115,12 +115,12 @@ block content
               
               .ui.fluid.card.dim()#card1
                 .content      
-                  .ui.right.floated.menu(style="border:none; box-shadow:none;")
+                  .ui.right.floated.menu
                     .ui.dropdown.icon.item
                       i.ellipsis.horizontal.icon
                   a.left.floated(href='/user/mcburgers')
                     img.ui.avatar.image(src=cdn+'/profile_pictures/burger_ad_pfp.jpg')
-                    span(style="vertical-align:middle;")='McBurgers'
+                    span='McBurgers'
                 .image
                   img.post(src=cdn+'/post_pictures/burger_ad.jpg')
                 #step4.content
@@ -129,12 +129,12 @@ block content
   
               .ui.fluid.card.dim()#card2
                 .content      
-                  .ui.right.floated.menu(style="border:none; box-shadow:none;")
+                  .ui.right.floated.menu
                     .ui.dropdown.icon.item
                       i.ellipsis.horizontal.icon
                   a.left.floated(href='/user/crunchflakes')
                     img.ui.avatar.image(src=cdn+'/profile_pictures/crunch_flakes_pfp.jpg')
-                    span(style="vertical-align:middle;")='Crunch Flakes Cereal'
+                    span='Crunch Flakes Cereal'
                 .image
                   img.post(src=cdn+'/post_pictures/cereal_ad.jpg')
                 #step4.content
@@ -143,12 +143,12 @@ block content
   
               .ui.fluid.card.dim()#card3
                 .content      
-                  .ui.right.floated.menu(style="border:none; box-shadow:none;")
+                  .ui.right.floated.menu
                     .ui.dropdown.icon.item
                       i.ellipsis.horizontal.icon
                   a.left.floated(href='/user/popdrinks')
                     img.ui.avatar.image(src=cdn+'/profile_pictures/pop_drinks_pfp.jpg')
-                    span(style="vertical-align:middle;")='Pop Drinks'
+                    span='Pop Drinks'
                 .image
                   img.post(src=cdn+'/post_pictures/drink_ad.jpg')
                 #step4.content
@@ -161,8 +161,8 @@ block content
 
 
     .ui.raised.segment
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
+      .ui.label
+        h4
           | What did you do when you saw an advertisement or a sponsored post?
       .content.checkOne
         .ui.form
@@ -172,66 +172,66 @@ block content
             .field
               .ui.checkbox
                 input(type='checkbox')
-                label(for='wouldRead', style="font-size:120%;", tabindex='0') I hid the advertisement from my timeline.
+                label(for='wouldRead', tabindex='0') I hid the advertisement from my timeline.
         .ui.form
           .inline.fields
             label(for='checkSource', name='checkSource') 
             .field
               .ui.checkbox
                 input(type='checkbox')
-                label(for='checkSource', style="font-size:120%;", tabindex='0') I reported the advertisement to the website.
+                label(for='checkSource', tabindex='0') I reported the advertisement to the website.
         .ui.form
           .inline.fields
             label(for='corroboration', name='corroboration') 
             .field
               .ui.checkbox
                 input(type='checkbox')
-                label(for='corroboration', style="font-size:120%;", tabindex='0') I looked at why I was getting the advertisement. 
+                label(for='corroboration', tabindex='0') I looked at why I was getting the advertisement. 
         .ui.form
           .inline.fields
             label(for='interacted', name='interacted') 
             .field
               .ui.checkbox
                 input(type='checkbox')
-                label(for='interacted', style="font-size:120%;", tabindex='0') I liked the ad or commented on it.
+                label(for='interacted', tabindex='0') I liked the ad or commented on it.
         .ui.form
           .inline.fields
             label(for='corroboration', name='wouldViewAd') 
             .field
               .ui.checkbox
                 input(type='checkbox')
-                label(for='wouldViewAd', style="font-size:120%;", tabindex='0') I wanted to click on the advertisement.    
+                label(for='wouldViewAd', tabindex='0') I wanted to click on the advertisement.    
         .ui.form
           .inline.fields
             label(for='ignored', name='ignored') 
             .field
               .ui.checkbox
                 input(type='checkbox')
-                label(for='ignored', style="font-size:120%;", tabindex='0') I ignored the advertisement.    
+                label(for='ignored', tabindex='0') I ignored the advertisement.    
         .ui.form
           .inline.fields
             label(for='nothing', name='nothing') 
             .field
               .ui.checkbox
                 input(type='checkbox')
-                label(for='nothing', style="font-size:120%;", tabindex='0') I didn't notice the advertisement.
+                label(for='nothing', tabindex='0') I didn't notice the advertisement.
 
     .ui.raised.segment
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
+      .ui.label
+        h4
           | Why do companies collect data from people's profiles or online activity?
       .ui.form
         .inline.fields
-          label(style="font-size:120%;")
+          label
           textarea.glowing-border(rows='2' id="literacy_responseOne")
 
     .ui.raised.segment
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
+      .ui.label
+        h4
           | Why is it important to know how to identify advertisements on social media?
       .ui.form
         .inline.fields
-          label(style="font-size:120%;")
+          label
           textarea.glowing-border(rows='2' id="literacy_responseTwo")
 
     br
@@ -247,4 +247,8 @@ block content
       
 block scripts
   script(src="/module_js/targeted/targeted_results.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/targeted.css')
+  link(rel='stylesheet', href='/css/results.css')
   

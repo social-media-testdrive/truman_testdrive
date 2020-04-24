@@ -2,7 +2,7 @@ extends ../ui_layout
 
 block content
   
-  .ui.text.container(style="padding-bottom:4em;")
+  .ui.text.container.addBottomMargin
     br
     .ui.raised.segment
       h3.ui.header
@@ -13,12 +13,18 @@ block content
       h5.ui.header
         i.arrow.circle.right.blue.icon
         .content
-          | Social media can connect people over the Internet. People use social media to share information, their interests, and connect with friends and family. They can also use it to talk to new people and meet new friends!
+          | Social media can connect people over the Internet. People use social 
+          | media to share information, their interests, and connect with 
+          | friends and family. They can also use it to talk to new people and 
+          | meet new friends!
  
       h5.ui.header
         i.arrow.circle.right.blue.icon
         .content
-          | On social media, you may be talking to many different people at the same time. You might not know some of them in real life. Remember to always be careful about the information you share online, especially with people you've never met face-to-face.
+          | On social media, you may be talking to many different people at the 
+          | same time. You might not know some of them in real life. Remember to 
+          | always be careful about the information you share online, especially 
+          | with people you've never met face-to-face.
       br
       #introduction_next.button.ui.mini.green.right.labeled.icon.button
               i.down.arrow.icon
@@ -28,46 +34,48 @@ block content
       h3.ui.header
         i.key.blue.icon
         .content Key Ideas
-      .sub.header 
-        i.hand.pointer.icon(style="color:gray;")
-        span(style="color: gray;") Click on each label below to learn more
-      br
-      //- .ui.segments     
+      .sub.header.grayElement 
+        i.hand.pointer.icon
+        span Click on each label below to learn more
+      br   
       .ui.stackable.two.column.grid
         .ui.column
           .ui.raised.segment.keyTerm
             a.ui.blue.ribbon.label.keyTermLabel
-                //- i.dollar.sign.icon 
                 span Audience
-            span.hidden.keyTermDefinition(style="font-weight:600") Anyone who can see information about you or posted by you online.
-              ul(style="font-weight:400") This could include strangers or people you haven't met face-to-face.
+            span.hidden.keyTermDefinition 
+              | Anyone who can see information about you or posted by you 
+              | online.
+              ul
+                |This could include strangers or people you haven't met face-to-face.
 
         .ui.column
           .ui.raised.segment.keyTerm
             a.ui.blue.ribbon.label.keyTermLabel
-                //- i.magic.icon 
                 span Private information
-            span.hidden.keyTermDefinition(style="font-weight:600") Information about you that can be used to identify you because it is unique to you.
-              ul(style="font-weight:400") This can include things like your full name, school, home address, or phone number.
+            span.hidden.keyTermDefinition Information about you that can be used to identify you because it is unique to you.
+              ul This can include things like your full name, school, home address, or phone number.
         
         .ui.column
           .ui.raised.segment.keyTerm
             a.ui.blue.ribbon.label.keyTermLabel
-                //- i.magic.icon 
                 span Risky
-            span.hidden.keyTermDefinition(style="font-weight:600") Potentially harmful to one’s emotional or physical well-being.
-              ul(style="font-weight:400") It is risky to share private information online. People could share it with others or use it to try to trick or scam you.
+            span.hidden.keyTermDefinition Potentially harmful to one’s emotional or physical well-being.
+              ul It is risky to share private information online. People could share it with others or use it to try to trick or scam you.
     
-    .ui.warning.message#clickNextWarning(style="display:none;")
+    .ui.warning.message#clickNextWarning
       .header
        | Click "Next"
-    .ui.warning.message#clickLabelsWarning(style="display:none;")
+    .ui.warning.message#clickLabelsWarning
      .header
       | Click on each label to proceed  
     a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
         .ui.labeled.icon.button
             i.rocket.icon
             |   Got it!
+            
 block scripts
   script(src="/module_js/base_start.js")
-  
+
+block styles
+  link(rel='stylesheet', href='/css/start.css')
