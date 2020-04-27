@@ -29,14 +29,15 @@ block content
         .field
           label.addFieldSpacingBottom Username
           div#hint1 
-          input.addFieldSpacingTop(readonly='' type="text" name='input1' placeholder="username" autocomplete='off')
+          input.addFieldSpacingTop(readonly='' type="text" name='input1' autocomplete='off')
           .ui.warning.message#usernameWarning
             .header Try creating a username
         br
         .field
           label.addFieldSpacingBottom Password
           div#hint2
-          input.addFieldSpacingTop(readonly='' type="password" name="password" placeholder="password" autocomplete='off')  
+          input.addFieldSpacingTop#customPasswordInput(readonly='' type="text" name="password" autocomplete='off' style="text-security:disc; -webkit-text-security:disc; font-family:dotsfont;")  
+          //- https://stackoverflow.com/a/49304708
         .ui.warning.message#passwordWarning
           .header Try creating a password 
 
@@ -46,7 +47,7 @@ block content
       .ui.message.hidden#feedbackMessage
         ul#feedbackSuggestion
 
-    button.ui.big.labeled.icon.button.addBottomMargin#cyberTransButton
+    button.ui.big.labeled.icon.button.addBottomMargin.cybersim2#cyberTransButton
         i.rocket.icon
         |   Let's Continue!      
           

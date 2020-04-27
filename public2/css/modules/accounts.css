@@ -1,3 +1,20 @@
+@font-face {
+    font-family:'dotsfont';
+    src:url('/fonts/dotsfont.eot');
+    src:url('/fonts/dotsfont.eot?#iefix')  format('embedded-opentype'),
+        url('/fonts/dotsfont.svg#font')    format('svg'),
+        url('/fonts/dotsfont.woff')        format('woff'),
+        url('/fonts/dotsfont.ttf')         format('truetype');
+    font-weight:normal;
+    font-style:normal;
+}
+/* https://github.com/kylewelsby/dotsfonts */
+
+#customPasswordInput {
+  font-size: 14px;
+  height: 50px;
+}
+
 .ui.one.column.centered.grid{
   padding-top: 1em;
 }

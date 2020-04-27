@@ -77,14 +77,7 @@ function hideFieldMessage(messageID){
 }
 
 function eventsAfterHints(){
-  $('#cyberTransButton').on('click', function(){
-    if($('#cyberTransButton').hasClass('green')){
-      // remove input before next page to prevent "save login info" popup
-      $('input[name="password"]').val('');
-      window.location.href='/sim2/accounts';
-    }
-  });
-
+  
   $('input[name="input1"]').removeAttr('readonly');
   $('input[name="password"]').removeAttr('readonly');
 
