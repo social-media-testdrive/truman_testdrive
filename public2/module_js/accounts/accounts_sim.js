@@ -68,7 +68,7 @@ function displayFeedback(result){
 function hideFieldMessage(messageID){
   $(messageID).hide();
   if ( (closedHints === numberOfHints)
-    && ($('input[name="username"]').val() !== "")
+    && ($('input[name="input1"]').val() !== "")
     && ($('input[name="password"]').val() !== "") ){
       $('#cyberTransButton').addClass('green');
   }else{
@@ -77,10 +77,18 @@ function hideFieldMessage(messageID){
 }
 
 function eventsAfterHints(){
-  $('input[name="username"]').removeAttr('readonly');
+  $('#cyberTransButton').on('click', function(){
+    if($('#cyberTransButton').hasClass('green')){
+      // remove input before next page to prevent "save login info" popup
+      $('input[name="password"]').val('');
+      window.location.href='/sim2/accounts';
+    }
+  });
+
+  $('input[name="input1"]').removeAttr('readonly');
   $('input[name="password"]').removeAttr('readonly');
 
-  $('input[name="username"]').on('input', function(){
+  $('input[name="input1"]').on('input', function(){
     hideFieldMessage('#usernameWarning');
   });
 
@@ -164,7 +172,7 @@ function errorCheck(){
     $('#passwordWarning').show();
   }
 
-  if($('input[name="username"]').val() === ""){
+  if($('input[name="input1"]').val() === ""){
     $('#usernameWarning').show();
   }
 };

@@ -12,10 +12,10 @@ block content
       .ui.form(style="font-size: 130%;")
         .field#usernameStep
           label Username
-          input(type="text" readonly="" name='username' placeholder="username")
+          input(type="text" disabled="" name='username' placeholder="username")
         .field#passwordStep
           label Password
-          input(type="password" readonly="" name="password" placeholder="password")    
+          input(type="password" disabled="" name="password" placeholder="password" onfocus="$(this).removeAttr('readonly');")    
 
     button.ui.big.labeled.icon.button.addBottomMargin#continueTutorial
         i.rocket.icon

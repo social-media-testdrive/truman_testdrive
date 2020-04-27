@@ -29,14 +29,14 @@ block content
         .field
           label.addFieldSpacingBottom Username
           div#hint1 
-          input.addFieldSpacingTop(readonly='' type="text" name='username' placeholder="username")
+          input.addFieldSpacingTop(readonly='' type="text" name='input1' placeholder="username" autocomplete='off')
           .ui.warning.message#usernameWarning
             .header Try creating a username
         br
         .field
           label.addFieldSpacingBottom Password
           div#hint2
-          input.addFieldSpacingTop(readonly='' type="password" name="password" placeholder="password")  
+          input.addFieldSpacingTop(readonly='' type="password" name="password" placeholder="password" autocomplete='off')  
         .ui.warning.message#passwordWarning
           .header Try creating a password 
 
@@ -46,16 +46,7 @@ block content
       .ui.message.hidden#feedbackMessage
         ul#feedbackSuggestion
 
-      //-.ui.segment
-        span(style="font-weight:bold; font-size:120%;") Try to make a very strong password! Remember to use:
-        br
-        .ui.basic.segment
-          .ui.bulleted.list(style="font-size:120%;")
-            .item uppercase letters
-            .item lowercase letters
-            .item numbers
-            .item symbols
-    button.ui.big.labeled.icon.button.addBottomMargin.cybersim2#cyberTransButton
+    button.ui.big.labeled.icon.button.addBottomMargin#cyberTransButton
         i.rocket.icon
         |   Let's Continue!      
           
