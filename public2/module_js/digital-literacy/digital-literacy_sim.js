@@ -53,15 +53,15 @@ let post_info_description = new Map([
 
 $('.ui.accordion').accordion();
 
-function openPost(){
-  $('#next_steps').modal('show');
+function eventsAfterHints(){
+  $('.articleLink').on('click', function(){
+    $('#next_steps').modal('show');
+  });
+  $(".info_button").click(function () {
+    var clickedId = '#' + $(this).attr('id');
+    let info_header = $(clickedId).next()[0].innerText;
+    let info_text = post_info_description.get(info_header.toString().trim()) || 'No Information Found';
+    document.getElementById('post_info_body').innerHTML = info_text;
+    $('#info_modal').modal('show');
+  });
 }
-
-//get add new feed post modal to work
-$(".info_button").click(function () {
-  var clickedId = '#' + $(this).attr('id');
-  let info_header = $(clickedId).next()[0].innerText;
-  let info_text = post_info_description.get(info_header.toString().trim()) || 'No Information Found';
-  document.getElementById('post_info_body').innerHTML = info_text;
-  $('#info_modal').modal('show');
-});

@@ -27,8 +27,11 @@ function errorCheck(){
 };
 
 function startHints(){
-
-  $('#cyberTransButton').on('click', errorCheck);
+  if(typeof customErrorCheck !== 'undefined'){
+    $('#cyberTransButton').on('click', customErrorCheck);
+  } else {
+    $('#cyberTransButton').on('click', errorCheck);
+  }
 
   window.scrollTo(0,0);
 

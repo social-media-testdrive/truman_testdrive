@@ -38,7 +38,7 @@ block content
       .image       
         img.post(src=cdn+'/post_pictures/safepostphonepic.png')
       .content
-          .description(data-hint="If you see your friends sharing private information on social media, it's a good idea to tell them to take it down." data-hintPosition="middle-right")="new phone who dis? text me @ my new number 607-252-6771"
+          .description#hint1="new phone who dis? text me @ my new number 607-252-6771"
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
           i.reply.icon
@@ -86,7 +86,7 @@ block content
             .chat-with Chat with Vincent
             
         // end chat-header
-        .chat-history(data-hint="Since these messages came from a stranger, you should not share any private information with them. Remember, you can also ignore the person." data-hintPosition="top-middle")
+        .chat-history#hint2
           ul
             li
               .message-data
@@ -147,6 +147,7 @@ block content
 
 block scripts
   script(src="/module_js/safe-posting/safe-posting_sim.js")
+  script(src="/module_js/base_sim.js")
   
 block styles
   link(rel='stylesheet', href='/css/sim.css')
