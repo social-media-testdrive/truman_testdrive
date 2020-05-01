@@ -1,0 +1,94 @@
+extends ../ui_layout
+
+block content
+  
+  .ui.text.container.addBottomMargin
+    br  
+    .ui.raised.segment
+    
+      h3.ui.header
+        i.book.blue.icon
+        .content
+          | Learn
+      hr
+      h5.ui.header
+        i.arrow.circle.right.blue.icon
+        .content
+          | Being connected on social media can help you get news as soon as 
+          | things happen, but initial news reports might not be very detailed 
+          | or accurate.
+
+      h5.ui.header
+        i.arrow.circle.right.blue.icon
+        .content
+          | Even though it is inaccurate or incomplete, people might share news 
+          | on social media to get more followers, “likes,” and shares, or to be 
+          | viewed as important, knowledgeable, and helpful.
+          
+      h5.ui.header
+        i.arrow.circle.right.blue.icon
+        .content
+          | Initial news reports are useful when an event is developing and you 
+          | need information quickly. But these can be incomplete or inaccurate, 
+          | and can be later corrected, withdrawn, or enhanced.
+          
+      br
+      #introduction_next.button.ui.mini.green.right.labeled.icon.button
+              i.down.arrow.icon
+              |   Next
+    
+    #question.ui.segment.hidden
+      h3.ui.header
+        i.key.blue.icon
+        .content Key Ideas
+      .sub.header 
+        i.hand.pointer.icon.grayElement
+        span.grayElement Click on each label below to learn more
+      br
+      .ui.stackable.two.column.grid
+        .ui.column
+          .keyTerm.ui.raised.segment
+            a.ui.blue.ribbon.label.keyTermLabel
+                span News
+            span.hidden.keyTermDefinition 
+              | New information about recent or important events.
+        
+        .ui.column
+          .keyTerm.ui.raised.segment
+            a.ui.blue.ribbon.label.keyTermLabel
+                span Breaking News
+            span.hidden.keyTermDefinition 
+              | Information being reported about an event that has just happened 
+              | or is currently occurring.
+      
+        .ui.column
+          .keyTerm.ui.raised.segment
+            a.ui.blue.ribbon.label.keyTermLabel
+                span Opinion
+            span.hidden.keyTermDefinition 
+              | A personal belief, view, or judgment about something.
+              
+        .ui.column
+          .keyTerm.ui.raised.segment
+            a.ui.blue.ribbon.label.keyTermLabel
+                span Fact Checking
+            span.hidden.keyTermDefinition 
+              | Verifying the information you see in news stories against other 
+              | sources.
+              
+    .ui.warning.message#clickNextWarning
+      .header
+       | Click "Next"
+    .ui.warning.message#clickLabelsWarning
+     .header
+      | Click on each label to proceed 
+    a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
+        .ui.labeled.icon.button
+            i.rocket.icon
+            |   Got it!
+
+block scripts
+  script(src="/module_js/base_start.js")
+
+block styles
+  link(rel='stylesheet', href='/css/start.css')  
