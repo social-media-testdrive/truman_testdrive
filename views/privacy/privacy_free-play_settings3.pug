@@ -20,7 +20,7 @@ block content
             .ui.header There are still blue dots to find!
             p Click through all of the blue dots to continue.
     
-    .ui.container.addTop(data-hint="Lily would like to hide tagged posts from her profile. Which privacy settings would she have to change?")
+    .ui.container.addTop#hint1
       h2.ui.header#topOfPage Privacy Settings
       br
       .ui.divider
@@ -116,7 +116,7 @@ block content
                   option Ella Sroni
             br
             label.subsectionTitle(for='tags') Tags
-              .field(data-hint="She can turn off tagging settings and hide tagged posts from her timeline. Let’s try doing this!" data-hintPosition="top-middle")
+              .field#hint2
                 br
                 .ui.toggle.checkbox(name='allowTagToggle')#tagCue1
                   input(type='checkbox' name='allowTagInput' checked='checked')
@@ -152,7 +152,7 @@ block content
                     .item(data-value='3') Only Me
             br
             .ui.divider
-            br(data-hint="Have you turned off tagging settings and hidden tagged posts from Lily’s timeline? Click “<i>Let’s Continue!</i>” to see how her profile has changed." data-hintPosition="middle-right")
+            br#hint3
 
     .ui.warning.message#tagCue1Text
       .header
@@ -161,13 +161,14 @@ block content
       .header
         | Hide tagged posts from the timeline
 
-    button.ui.big.labeled.icon.button.free4#free4Button(style="margin-bottom:4em;")
+    button.ui.big.labeled.icon.button.free4#cyberTransButton(style="margin-bottom:4em;")
         i.rocket.icon
         |   Let's Continue!
         
         
 block scripts
   script(src="/module_js/privacy/privacy_free-play_settings3.js")
+  script(src="/module_js/base_sim.js")
   
 block styles
   link(rel='stylesheet', href='/css/modules/privacy.css')

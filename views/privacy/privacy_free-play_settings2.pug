@@ -20,7 +20,7 @@ block content
             .ui.header There are still blue dots to find!
             p Click through all of the blue dots to continue.
     
-    .ui.container.addTop(data-hint="What would Lily need to do if she didn’t want strangers to see her social media posts? Which privacy settings would she have to change?")
+    .ui.container.addTop#hint1
       h2.ui.header#topOfPage Privacy Settings
       br
       .ui.divider
@@ -28,7 +28,7 @@ block content
       form.ui.form
         .grouped.fields
           label.sectionTitle(for='account') Account Settings
-            .field(data-hint="She can make her account “<i>Private</i>,” so that only her social media friends can see her posts. Let’s try doing this!" data-hintPosition="top-middle")
+            .field#hint2
               br
               .ui.warning.message#privateAccountCueText
                 .header
@@ -154,15 +154,16 @@ block content
                     .item(data-value='3') Only Me
             br
             .ui.divider
-            br(data-hint="Have you changed the account settings to a “<i>Private</i>” account? Click “<i>Let’s Continue!</i>” to see how her profile has changed." data-hintPosition="middle-right")
+            br#hint3
 
-    button.ui.big.labeled.icon.button.free3#free3Button(style="margin-bottom:4em;")
+    button.ui.big.labeled.icon.button.free3#cyberTransButton(style="margin-bottom:4em;")
         i.rocket.icon
         |   Let's Continue!
         
         
 block scripts
   script(src="/module_js/privacy/privacy_free-play_settings2.js")
+  script(src="/module_js/base_sim.js")
   
 block styles
   link(rel='stylesheet', href='/css/sim.css')
