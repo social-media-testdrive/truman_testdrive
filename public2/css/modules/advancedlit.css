@@ -1,5 +1,43 @@
+.testDriveBlue {
+  background-color: #14a1f6 !important;
+  color: white !important;
+}
+
 /* trans */
 
 i.caret.icon {
   text-indent: 3em;
+}
+
+/* a.item {
+  background-color: white !important;
+} */
+
+.ui.tab {
+  margin-top: 1em;
+}
+
+.removeTopPadding {
+  padding-top: 0 !important;
+}
+
+/* tutorial */
+
+.img.post img{
+  max-width: 100%;
+}
+
+.fullArticleImage{
+  max-width: 100%;
+  margin-right: 3em !important;
+}
+
+.articleText {
+  font-size: 22px;
+}
+
+/* sim */
+
+.newsArticleTitleContainer {
+  background: rgba(0, 0, 0, 0.05) !important;
 }
