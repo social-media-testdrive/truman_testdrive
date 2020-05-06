@@ -4,7 +4,7 @@ block content
   
   //- insert code for article after RAs provide design
 
-  #content.sixteen.wide.column.centered.removeTopPadding
+  #content.sixteen.wide.column.centered.removeTopPadding.addBottomMargin
     //- .ui.basic.segment(style="margin-bottom: 4em;")#context
     
       //- .ui.sticky
@@ -18,9 +18,9 @@ block content
       //-       | Search
     
     //- #####################################################
-    .ui.active.tab(data-tab="one")
+    .ui.tab(data-tab="one")
       .ui.grid  
-        .eight.wide.column.centered
+        .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.centered
           #step1.ui.fluid.card.dim()
             .ui.dimmer.flag
               .content
@@ -37,7 +37,7 @@ block content
               a(href='#')
                     img.ui.avatar.image(src=cdn+'/profile_pictures/user21.jpg')
                     span='Sam Hill'
-            .img.post        
+            .img.post.articleImage.articleTab(data-tab="two")        
               img(src=cdn+'/post_pictures/infolitguided1.png')
 
             .content.newsArticleTitleContainer.articleTab(data-tab="two")
@@ -89,7 +89,7 @@ block content
         | Return to the timeline
       button.ui.big.green.button.searchTab(data-tab='three')
         i.icon.search
-        | Look up "foods that cause heart attacks"
+        | Search for "foods that cause heart attacks"
       .ui.segment(style='margin-bottom: 4em;')
         .ui.grid          
           .row
@@ -118,18 +118,54 @@ block content
               p.articleText.homeTab3(data-tab='three') 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
               
     //- #####################################################
-    .ui.tab(data-tab="three")
-      
-      p.homeTab(data-tab='one') 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
-      
-      p 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
-      
-      p 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
-      
-      p 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
-      
-      p 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
-                            
+    .ui.active.tab(data-tab="three")
+      .ui.grid          
+        .row
+          .column
+
+            button.ui.big.testDriveBlue.button.homeTab(data-tab='one')
+              i.icon.reply
+              | Go back to the timeline
+            button.ui.big.testDriveBlue.button.articleTab(data-tab='two')
+              i.icon.reply
+              | Go back to the article
+        .row
+          .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.left.floated.column    
+            h2 Search results for "food that cause heart attacks"
+            
+            
+            p.resultURL result1url.com
+            a
+              h4.resultTitle Article Title 1
+            p.resultPreviewText
+              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus 
+              | ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus.
+              | Nam at auctor velit, vitae fermentum diam.
+
+            p.resultURL result2url.com
+            a
+              h4.resultTitle Article Title 2
+            p.resultPreviewText
+              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus 
+              | ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus.
+              | Nam at auctor velit, vitae fermentum diam.
+
+            p.resultURL result3url.com
+            a
+              h4.resultTitle Article Title 3
+            p.resultPreviewText
+              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus 
+              | ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus.
+              | Nam at auctor velit, vitae fermentum diam.
+
+            p.resultURL result4url.com
+            a
+              h4.resultTitle Article Title 4
+            p.resultPreviewText
+              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus 
+              | ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus.
+              | Nam at auctor velit, vitae fermentum diam.
+
 block scripts
   script(src='/module_js/advancedlit/advancedlit_tutorial.js')
   

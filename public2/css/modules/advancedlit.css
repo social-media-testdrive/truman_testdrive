@@ -38,6 +38,38 @@ i.caret.icon {
 
 /* sim */
 
+.articleImage {
+  cursor: pointer;
+}
+
 .newsArticleTitleContainer {
   background: rgba(0, 0, 0, 0.05) !important;
+  cursor: pointer;
+}
+
+/* search results */
+
+.button.homeTab {
+  margin: 0 5px 5px 0;
+}
+
+.resultURL{
+  margin: 0 0 0 0;
+  padding: 15px 0 0 0;
+  font-size: 16px;
+  cursor: default;
+}
+
+.resultTitle {
+  margin: 0;
+  padding: 10px 0;
+  font-size: 22px;
+  cursor: default;
+}
+
+.resultPreviewText{
+  margin: 0;
+  padding: 0 0 15px 0;
+  font-size: 16px;
+  cursor: default;
 }
