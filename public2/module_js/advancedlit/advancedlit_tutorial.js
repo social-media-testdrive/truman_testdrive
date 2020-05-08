@@ -1,3 +1,22 @@
+function changeActiveTab(newActiveTab) {
+  $('.ui.tab').removeClass('active');
+  switch (newActiveTab) {
+    case 'home':
+      $('.ui.tab[data-tab="one"]').addClass('active');
+
+      break;
+    case 'article':
+      $('.ui.tab[data-tab="two"]').addClass('active');
+      break;
+    case 'search':
+      $('.ui.tab[data-tab="three"]').addClass('active');
+      break;
+    default:
+      $('.ui.tab[data-tab="one"]').addClass('active');
+      break;
+  }
+}
+
 function startIntro(){
   var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true,
   'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false,
@@ -70,24 +89,28 @@ function startIntro(){
   });
 
   intro.onbeforechange(function (){
-    if($(this)[0]._currentStep == 2){
-      $('.long.modal').modal('show');
-    } else {
-      $('.long.modal').modal('hide');
+    let currentStep = $(this)[0]._currentStep;
+    if(currentStep === 0){
+        changeActiveTab('home');
+    } else if ((1 <= currentStep) && (currentStep < 4) ){
+      // if(currentStep === 1){
+      //   $('.ui.card').transition({
+      //     animation: 'pulse',
+      //     onComplete: function(){
+      //       console.log('COMPELTED ANIMATION');
+      //       changeActiveTab('article');
+      //     }
+      //   });
+      // } else {
+        changeActiveTab('article');
+      // }
+    } else if (currentStep >= 4) {
+      changeActiveTab('search');
     }
   });
 
 };
 
-// $(window).on("load", function() {startIntro();});
 $(window).on("load", function() {
-  let headerHeight = $('.ui.borderless.fixed.menu').height();
-  console.log(`Header height: ${headerHeight}` )
-  $('.ui.sticky').sticky({
-    offset: headerHeight,
-    observeChanges: true
-  });
-
-  $('.menu .item').tab();
-  $('.homeTab, .articleTab, .searchTab').tab();
+  startIntro();
 });

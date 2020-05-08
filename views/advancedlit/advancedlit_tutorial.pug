@@ -87,13 +87,13 @@ block content
       button.ui.big.testDriveBlue.button.homeTab(data-tab='one')
         i.icon.reply
         | Return to the timeline
-      button.ui.big.green.button.searchTab(data-tab='three')
+      button.ui.big.green.button.searchTab#step4(data-tab='three')
         i.icon.search
         | Search for "foods that cause heart attacks"
       .ui.segment(style='margin-bottom: 4em;')
         .ui.grid          
           .row
-            .column
+            .column#step2
 
 
               h1 
@@ -103,7 +103,7 @@ block content
               p Author: Jane Doe
               p Published: 5 May 2020
           .row
-            .sixteen.wide.column
+            .sixteen.wide.column#step3
               
               img.ui.large.left.floated.image.fullArticleImage(src=cdn+'/post_pictures/infolitguided1.png')
 
@@ -119,7 +119,7 @@ block content
               
     //- #####################################################
     .ui.tab(data-tab="three")
-      .ui.grid          
+      .ui.grid     
         .row
           .column
 
@@ -131,7 +131,7 @@ block content
               | Go back to the article
         .row
           .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.left.floated.column    
-            h2 Search results for "food that cause heart attacks"
+            h2#step5 Search results for "food that cause heart attacks"
             
             
             p.resultURL result1url.com
