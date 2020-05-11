@@ -4,54 +4,61 @@ function startIntro(){
         steps: [
           {
             element: '#step1',
-            intro: `Social media can help you feel connected to your friends and
-            be up to date on what they are doing. You can also learn new things
-            about your interests from people you follow.`,
+            intro: `Social media can help you stay connected to your friends and
+            be in the know on what they're up to. It's also a great place to
+            learn and explore new hobbies and interests.`,
             position: 'right',
             // scrollTo: 'tooltip'
           },
           {
             element: '#step2',
-            intro: `But sometimes, you might see things that make you feel like
-            your life isn’t as exciting as other people’s or you are being left
-            out of things that your friends are doing.`,
+            intro: `But, sometimes you might see things that make you feel like
+            you are being left out of things that your friends are doing. This
+            can make you feel worried, sad, or anxious. `,
             position: 'right',
             // scrollTo: 'element',
             // scrollPadding: 100
           },
           {
             element: '#step2',
-            intro: `This can make you feel isolated, anxious, or uncomfortable.
-            These feelings are red flags. When you notice a <b>red flag
-            feeling</b>, slow down and take some time to identify what caused
-            the feeling.`,
+            intro: `These feelings are red flags. When you notice these <b>red
+            flag feelings</b> it is important to slow down and think about how
+            you feel and what you can do about it.`,
             position: 'right',
             // scrollToElement: false
           },
           {
             element: '#step2',
-            intro: `It may feel like you have to <b>overshare</b> and post a lot
-            of things to get people to pay attention to you, but if you do, you
-            might regret it later. Instead, try taking a break from social
-            media and do something else you enjoy.`,
+            intro: `Sometimes, just taking a break and logging off to do
+            something else you enjoy can help you feel better.`,
             position: 'right',
             // scrollToElement: false
           },
           {
             element: '#step3',
-            intro: `You could feel like other people’s lives are much more
-            exciting than yours after seeing their posts on social media. But
-            remember that most people only post about positive and exciting
-            things.`,
+            intro: `You may sometimes feel like other people's lives are much
+            more exciting than yours after seeing their posts. But remember,
+            most people only post about the positive and exciting thing going
+            on, leaving out everything else.`,
             position: 'right',
             // scrollTo: 'element',
             // scrollPadding: 100
           },
           {
             element: '#step3',
-            intro: `Remember, try to <b>balance</b> your social media use with
-            other things in life, like spending time with your family and
-            friends offline, reading a book, or going on a hike.`,
+            intro: `Other times, you might be doing something cool and be
+            tempted to share all about it on social media. Just remember that
+            <b>oversharing</b> feelings, information, or experiences might feel
+            good in the moment, but could cause you or others to feel
+            uncomfortable later.`,
+            position: 'right',
+            // scrollToElement: false
+          },
+          {
+            element: '#step4',
+            intro: `A good way to enjoy social media is to balance it with other
+            things you enjoy doing, like spending time with family and friends,
+            reading a book, or playing outside.`,
             position: 'right',
             // scrollToElement: false
           }

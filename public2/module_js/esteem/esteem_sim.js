@@ -15,16 +15,16 @@ var hintsList=
     hintPosition: 'middle-right'
   },
   {
-    hint: `When Nick sees all these fun activities that his friends are
-    doing, he could feel like his life isn’t very interesting. But remember,
-    many people post only the most positive and exciting things.`,
+    hint: `Seeing everything his friends are posting might make Nick feel like
+    his life isn't as interesting or fun. But it's important to remember that a
+    lot of people just post the positive and exciting things going on in their
+    lives.`,
     element: '#hint3',
     hintPosition: 'middle-middle'
   },
   {
-    hint: `Nick can always take a break from social media. He can connect
-    with family and friends in other ways or do a fun activity like riding
-    his bike outside.`,
+    hint: `Nick can always take a break from social media. He can meet up with
+    friends and family or do something else he enjoys, like riding his bike.`,
     element: '#hint4',
     hintPosition: 'middle-middle'
   }
@@ -33,10 +33,9 @@ var hintsList=
 var stepsList=
 [
   {
-    element: document.querySelectorAll('#step1')[0],
-    intro: `This is the social media timeline of Nick, a middle school
-    student. He just got back home from school and is looking at his social
-    media feed.
+    element: '#step1',
+    intro: `This is Nick's social media timeline. He just got back from school
+    and is checking out his feed.
     Click on the blue dots&nbsp;<a role='button' tabindex='0'
     class='introjs-hint'><div class='introjs-hint-dot'></div><div class=
     'introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more...`,

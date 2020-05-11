@@ -4,7 +4,7 @@ extends ../ui_layout
 block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   .computer.only.tablet.only.four.wide.column 
-  .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
+  .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.addBottomMargin
     .ui.fluid.card.test#step1
           .content
             .right.floated.meta= "Yesterday"
@@ -142,7 +142,7 @@ block content
               a.ui.basic.red.left.pointing.label.count=2
           
           .content
-            .ui.comments#step4
+            .ui.comments
               .comment
                 a.avatar
                   img(src=cdn+'/profile_pictures/user40.jpg')
@@ -179,7 +179,7 @@ block content
           //-     i.big.send.link.icon
           //- 
                 
-    .ui.fluid.card.test.addBottomMargin
+    .ui.fluid.card.test#step4
           .content
             .right.floated.meta= "15 Minutes Ago"
             |

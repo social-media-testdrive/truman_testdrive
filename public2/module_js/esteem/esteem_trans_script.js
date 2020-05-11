@@ -69,6 +69,10 @@ function startIntro(){
           <img class='ui avatar image' src='${cdn}/profile_pictures/${bot2Image}'>
           <span>${bot2FullName}</span> who he met  at a ${eventKeyword}. Look
           out for posts from ${bot1FirstName} and ${bot2FirstName}.`
+        },
+        {
+          intro: `You may also see posts by other people that might cause you to
+          feel good or bad. Click on the posts to reflect on your feelings.`
         }
 
       ]
