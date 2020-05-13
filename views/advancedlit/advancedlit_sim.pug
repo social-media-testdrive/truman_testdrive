@@ -4,24 +4,24 @@ block content
 
   #content.sixteen.wide.column.centered.removeTopPadding.addBottomMargin
     //- #####################################################
+    .ui.one.column.centered.grid
+      .ui.fixed.bottom.sticky
+        .ui.icon.compact.message.warning.hidden#removeHidden
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header Need some help? 
+            p Make sure you are clicking "Got it" on the blue dots!
+          
+        .ui.icon.message.warning.hidden#clickAllDotsWarning
+          i.close.icon
+          i.hand.pointer.icon.float
+          .content
+            .ui.header There are still blue dots to find!
+            p Click through all of the blue dots to continue.
     .ui.active.tab(data-tab="one")
       .ui.grid.gridInsideTab  
         .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.centered
-          //- .ui.one.column.centered.grid
-          //-   .ui.fixed.bottom.sticky
-          //-     .ui.icon.compact.message.warning#removeHidden
-          //-       i.close.icon
-          //-       i.question.icon.float
-          //-       .content
-          //-         .ui.header Need some help? 
-          //-         p Make sure you are clicking "Got it" on the blue dots!
-          //- 
-          //-     .ui.icon.message.warning#clickAllDotsWarning
-          //-       i.close.icon
-          //-       i.hand.pointer.icon.float
-          //-       .content
-          //-         .ui.header There are still blue dots to find!
-          //-         p Click through all of the blue dots to continue.
           #step1.ui.fluid.card.dim()
             .ui.dimmer.flag
               .content
@@ -88,7 +88,7 @@ block content
       button.ui.big.testDriveBlue.button.homeTab(data-tab='one')
         i.icon.reply
         | Return to the timeline
-      button.ui.big.green.button.searchTab#hint2(data-tab='three')
+      button.ui.big.green.button.searchTab(data-tab='three')
         i.icon.search
         | Search for "foods that cause heart attacks"
       .ui.segment(style='margin-bottom: 4em;')
@@ -97,7 +97,7 @@ block content
             .column
 
 
-              h1 
+              h1
                 | The 15 SHOCKING foods that will cause a heart attack !!  
               h2 
                 | You'll never guess what these are!!!
@@ -110,11 +110,11 @@ block content
 
               p.articleText Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
 
-              p.articleText Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
+              p.articleText#hint2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
 
-              p.articleText Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
+              p.articleText#hint3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
 
-              p.articleText Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
+              p.articleText#hint4 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
 
               p.articleText.homeTab3(data-tab='three') 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
               
@@ -135,7 +135,7 @@ block content
             h2 Search results for "food that cause heart attacks"
             
             
-            p.resultURL#hint3 result1url.com
+            p.resultURL result1url.com
             a
               h4.resultTitle Article Title 1
             p.resultPreviewText

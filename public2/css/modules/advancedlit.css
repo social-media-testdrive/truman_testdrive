@@ -3,6 +3,11 @@
   color: white !important;
 }
 
+.testDriveLightGray {
+  background-color: #D7D7D7 !important;
+  color: white !important;
+}
+
 /* trans */
 
 i.caret.icon {
@@ -72,4 +77,14 @@ i.caret.icon {
   padding: 0 0 15px 0;
   font-size: 16px;
   cursor: default;
+}
+
+/* sim page */
+
+.ui.fixed.bottom.sticky {
+  margin-bottom: 4em;
+}
+
+.sixteen.wide.column.centered.removeTopPadding.addBottomMargin{
+  margin-top:2em;
 }

@@ -737,6 +737,34 @@ exports.getEsteemTopic = (req, res) => {
 
 /**
  * POST /account/profile
+ * Update profile information.Which ad topic did the user pick? Esteem module only.
+ */
+exports.postAdvancedlitInterestSelection = (req, res, next) => {
+
+  User.findById(req.user.id, (err, user) => {
+    if (err) { return next(err); }
+
+    user.advancedlitTopic = req.body.chosenTopic || '';
+
+    user.save((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.send({result:"success"});
+    });
+  });
+};
+
+exports.getAdvancedlitTopic = (req, res) => {
+    User.findById(req.user.id)
+      .exec(function (err, user){
+        let selectedTopic = user.advancedlitTopic;
+        res.json({advancedlitTopic: selectedTopic});
+      });
+};
+
+/**
+ * POST /account/profile
  * Update profile information. How long has the user looked at the free-play section? Habits module only.
  */
 exports.postUpdateHabitsTimer = (req, res, done) => {

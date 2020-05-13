@@ -6,7 +6,28 @@ function changeActiveTab(newActiveTab) {
       break;
     case 'article':
       $('.ui.tab[data-tab="two"]').addClass('active');
+      hintsList = [
+        {
+          hint: `testing hint set 1`,
+          element: '#hint1'
+        },
+        {
+          hint: `testing hint 2A`,
+          element: '#hint2'
+        },
+        {
+          hint: `testing hint 2B`,
+          element: '#hint3'
+        },
+        {
+          hint: `testing hint 2C`,
+          element: '#hint4'
+        }
+      ]
+      startHints();
+
       break;
+
     case 'search':
       $('.ui.tab[data-tab="three"]').addClass('active');
       break;
@@ -16,48 +37,45 @@ function changeActiveTab(newActiveTab) {
   }
 }
 
-$('.menu .item').tab();
-
 $('.articleTab[data-tab="two"]').on('click', function(){
   $('.ui.card').transition({
     animation: 'pulse',
     onComplete: function(){
-      // if(closedHints === numberOfHints){
-      //   changeActiveTab('article');
-      // } else {
+      if(closedHints === numberOfHints){
+        changeActiveTab('article');
+      } else {
         if($('#clickAllDotsWarning').is(":hidden")){
           $('#clickAllDotsWarning').transition('fade');
-          $('.gridInsideTab').css("margin-bottom", "10em");
+          $('.gridInsideTab').css("margin-bottom", "12em");
         }else{
           //otherwise, bounce the message to draw attention to it
           $('#clickAllDotsWarning').transition('bounce');
         }
-      // }
+      }
     }
   });
 })
 
 function customOnHintCloseFunction(){
   // do nothing
-  if (closedHints === numberOfHints){
-    $('.articleTab[data-tab="two"]').on('click', function(){
-      $('.ui.card').transition({
-        animation: 'pulse',
-        onComplete: function(){
-          // if(closedHints === numberOfHints){
-            changeActiveTab('article');
-          // } else {
-            // if($('#clickAllDotsWarning').is(":hidden")){
-            //   $('#clickAllDotsWarning').transition('fade');
-            //   $('.gridInsideTab').css("margin-bottom", "10em");
-            // }else{
-            //   //otherwise, bounce the message to draw attention to it
-            //   $('#clickAllDotsWarning').transition('bounce');
-            // }
-          // }
-        }
-      });
-    })
+  closedHints++;
+  clickedHints = 0;
+  if (closedHints == numberOfHints){
+    if($('#clickAllDotsWarning').is(":visible")){
+      $('#clickAllDotsWarning').transition('fade');
+    }
+    if($('#removeHidden').is(":visible")){
+      $('#removeHidden').transition('fade');
+    }
+
+  } else {
+    if($('#clickAllDotsWarning').is(":hidden")){
+      $('#clickAllDotsWarning').transition('fade');
+      $('.gridInsideTab').css("margin-bottom", "12em");
+    }else{
+      //otherwise, bounce the message to draw attention to it
+      $('#clickAllDotsWarning').transition('bounce');
+    }
   }
 
 }

@@ -1,0 +1,84 @@
+extends ../ui_layout
+
+block content
+
+  #content.sixteen.wide.column.centered.removeTopPadding.addBottomMargin
+    //- #####################################################
+    .ui.one.column.centered.grid
+      .ui.fixed.bottom.sticky
+        .ui.icon.compact.message.warning.hidden#removeHidden
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header Need some help? 
+            p Make sure you are clicking "Got it" on the blue dots!
+          
+        .ui.icon.message.warning.hidden#clickAllDotsWarning
+          i.close.icon
+          i.hand.pointer.icon.float
+          .content
+            .ui.header There are still blue dots to find!
+            p Click through all of the blue dots to continue.
+
+
+    .ui.grid.gridInsideTab         
+      //- .row
+      //-   .column
+      //- 
+      //-     button.ui.big.testDriveBlue.button.homeTab(data-tab='one')
+      //-       i.icon.reply
+      //-       | Go back to the timeline
+      //-     button.ui.big.testDriveBlue.button.articleTab(data-tab='two')
+      //-       i.icon.reply
+      //-       | Go back to the article
+      .row
+        .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.left.floated.column    
+          h2 Search results for "food that cause heart attacks"
+          
+          
+          p.resultURL result1url.com
+          a
+            h4.resultTitle#hint3 Article Title 1
+          p.resultPreviewText
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus 
+            | ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus.
+            | Nam at auctor velit, vitae fermentum diam.
+
+          p.resultURL result2url.com
+          a
+            h4.resultTitle Article Title 2
+          p.resultPreviewText
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus 
+            | ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus.
+            | Nam at auctor velit, vitae fermentum diam.
+
+          p.resultURL result3url.com
+          a
+            h4.resultTitle Article Title 3
+          p.resultPreviewText
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus 
+            | ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus.
+            | Nam at auctor velit, vitae fermentum diam.
+
+          p.resultURL result4url.com
+          a
+            h4.resultTitle Article Title 4
+          p.resultPreviewText
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus 
+            | ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus.
+            | Nam at auctor velit, vitae fermentum diam.
+    .row
+      .column
+
+        //- button.ui.big.testDriveBlue.button.homeTab(data-tab='one')
+        //-   i.icon.reply
+        //-   | Go back to the timeline
+        button.ui.big.button.articleTab
+          i.icon.rocket
+          | Let's Continue
+block scripts
+  script(src='/module_js/advancedlit/advancedlit_sim3.js')
+  script(src='/module_js/base_sim.js')
+  
+block styles
+  link(rel='stylesheet', href='/css/modules/advancedlit.css')
