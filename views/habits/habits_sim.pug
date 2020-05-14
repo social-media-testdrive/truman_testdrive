@@ -53,7 +53,7 @@ block content
     //-feed
     //-.ui.bottom.attached.segment#step0
     #step0.ui.fluid.card.test.feedDisplay
-          .content(postID="3" data-hint="This is a social media timeline. You will get notifications when your friends like or comment on your posts." data-hintPosition="middle-middle")
+          .content(data-hint="This is a social media timeline. You will get notifications when your friends like or comment on your posts." data-hintPosition="middle-middle")
             .right.floated.meta= "Yesterday"
             |
             a(href='/user/zachpeters06')
@@ -116,7 +116,7 @@ block content
               input.newcomment(type='text' placeholder='Write a Comment')
               i.big.send.link.icon#sendComment1
     //-%%%%%%%%%%%%%%%%%%%%%%%%%
-    #step5.ui.fluid.card.test.feedDisplay(postID="0")
+    #step5.ui.fluid.card.test.feedDisplay
           .content(data-hint="Once you've clicked all the blue dots, click on the Notifications tab to see what notifications you have received!" data-hintPosition='middle-middle')
             .right.floated.meta= "Yesterday"
             |
@@ -198,7 +198,7 @@ block content
                           
                     
                     
-    .ui.fluid.card.test.feedDisplay(postID="1")
+    .ui.fluid.card.test.feedDisplay
           .content
             .right.floated.meta= "Yesterday"
             |
@@ -250,7 +250,7 @@ block content
               i.big.send.link.icon
                 
                 
-    .ui.fluid.card.test.feedDisplay(postID="2")
+    .ui.fluid.card.test.feedDisplay
           .content
             .right.floated.meta= "Yesterday"
             |
@@ -316,7 +316,7 @@ block content
                 input.newcomment(type='text' placeholder='Write a Comment')
                 i.big.send.link.icon
                     
-    .ui.fluid.card.test.feedDisplay(postID="3")#addBottomMargin
+    .ui.fluid.card.test.feedDisplay#addBottomMargin
           .content
             .right.floated.meta= "Yesterday"
             |
@@ -374,6 +374,13 @@ block content
                   .actions
                     a.like Like
                     a.flag Flag
+                    
+            .extra.content
+              .ui.fluid.left.labeled.right.icon.input
+                .ui.label
+                  img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+                input.newcomment(type='text' placeholder='Write a Comment')
+                i.big.send.link.icon
     br   
     br         
   
