@@ -71,8 +71,6 @@ function startIntro(){
   });
 
   intro.onbeforechange(function() {
-      console.log("change");
-      console.log($(this)[0]._currentStep);
       if(($(this)[0]._currentStep >= 4) && ($(this)[0]._currentStep < 8)){
         $('.ui.dropdown.icon.item').dropdown({
           duration: 0

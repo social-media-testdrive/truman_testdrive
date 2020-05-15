@@ -1,0 +1,12 @@
+extends ../script.pug
+
+block post
+  if (val.type === user.esteemTopic)
+    include ../partials/script_actorPost
+    
+  include ../partials/script/esteemModal 
+
+
+block scripts2
+  script.
+    /* alert('hi'); */

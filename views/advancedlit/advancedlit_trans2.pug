@@ -1,0 +1,57 @@
+extends ../ui_layout
+
+block content
+  
+  .ui.text.container.addBottomMargin
+    br
+    .column
+      .ui.raised.segment
+        h3.ui.header
+          i.binoculars.blue.icon
+          .content
+            | Explore
+        hr
+          
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            |  Before exploring the TestDrive timeline, choose a topic below to 
+            | see things that are more interesting to you! 
+
+        br
+        .ui.container
+          form.ui.form
+              .field#animateDropdownError
+                label
+                  i.search.large.gray.icon
+                  .ui.selection.dropdown(name='topicSelect')
+                    input(type='hidden')
+                    i.dropdown.icon
+                    .default.text Choose a topic...
+                    .menu
+                      .item(data-value='0') Music
+                      .item(data-value='1') Sports
+                      .item(data-value='2') Gaming
+      br
+      br
+
+    br
+    br
+    .ui.warning.message.hidden#selectTopicError
+     .header
+      | Select an interest to proceed 
+      
+    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+        .ui.big.labeled.icon.button
+            i.rocket.icon
+            |   Let's Continue!
+    br
+    br
+    br
+    
+block scripts
+  script(src="/module_js/advancedlit/advancedlit_trans2.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/modules/advancedlit.css')
+  

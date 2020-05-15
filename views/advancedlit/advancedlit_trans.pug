@@ -1,0 +1,65 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container.addBottomMargin
+    br
+    .column
+      .ui.raised.segment
+        .ui.blue.ribbon.label
+          h3
+            i.history.icon
+            | &nbsp Let's review!
+        br
+          
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | Social media can be a good source of <b>breaking news</b>, where 
+            | you can find information about an event that has just happened or 
+            | is currently occurring.
+
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | When you see breaking news, it’s important to see if it is from a 
+            | reliable news source and <b>fact-check</b> the information you see 
+            | in the article.
+            
+        h5.ui.header
+          i.caret.right.blue.icon
+          .content
+            | Check whether the article is a news story or an opinion piece
+            
+        h5.ui.header
+          i.caret.right.blue.icon
+          .content
+            | Check the source of the information
+            
+        h5.ui.header
+          i.caret.right.blue.icon
+          .content
+            | Look at other sources to see if they are saying the same thing
+                    
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | If you think the article is incorrect or incomplete, wait to get 
+            | the full story before you decide to share it!
+        br
+  
+    br
+    br
+    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+        .ui.big.green.labeled.icon.button
+            i.rocket.icon
+            |   Got it!
+            
+block scripts
+  script().
+    function startIntro(){
+      window.location.href='/trans_script/advancedlit';
+    };
+    
+block styles
+  link(rel='stylesheet', href='/css/modules/advancedlit.css')

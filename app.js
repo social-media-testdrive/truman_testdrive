@@ -539,6 +539,7 @@ app.post('/feed', passportConfig.isAuthenticated, scriptController.postUpdateFee
 app.post('/deleteUserFeedActions', passportConfig.isAuthenticated, scriptController.postDeleteFeedAction);
 app.post('/interest', passportConfig.isAuthenticated, userController.postUpdateInterestSelection);
 app.post('/esteemInterest', passportConfig.isAuthenticated, userController.postEsteemInterestSelection);
+app.post('/advancedlitInterest', passportConfig.isAuthenticated, userController.postAdvancedlitInterestSelection);
 app.post('/habitsTimer', passportConfig.isAuthenticated, userController.postUpdateHabitsTimer);
 //postDeleteAccount
 //app.post('/deleteAccount', passportConfig.isAuthenticated, userController.getDeleteAccount);
