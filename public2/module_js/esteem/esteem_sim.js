@@ -46,6 +46,9 @@ var stepsList=
 ]
 
 function eventsAfterHints(){
+
+  introJs().hideHint(1);
+
   $('.ui.fluid.card.test img').on('click', function(){
     $('.ui.accordion').accordion('open', 0);
     $('.ui.accordion').accordion('close', 1);
@@ -57,3 +60,25 @@ function eventsAfterHints(){
     $('#modSection2').click();
   });
 };
+
+
+function customOnHintCloseFunction(stepID) {
+  closedHints++;
+  clickedHints = 0;
+  if(stepID === 0){
+    introJs().showHint(1);
+  }
+  if($('#removeHidden').is(":visible")){
+    $('#removeHidden').transition('fade');
+    if($('#clickAllDotsWarning').is(":hidden")){
+      $('#cyberTransButton').css("margin-bottom", "4em");
+    }
+  }
+  if(closedHints == numberOfHints) {
+    if($('#clickAllDotsWarning').is(':visible')){
+      $('#clickAllDotsWarning').transition('fade');
+      $('#cyberTransButton').css("margin-bottom", "4em");
+    }
+    $( "#cyberTransButton" ).addClass("green");
+  }
+}

@@ -12,7 +12,7 @@ const moduleCards = {
   "privacy":["smprivacy.png","Social Media Privacy"],
   "safe-posting":["privateinfo.png","Is It Private Information?"],
   "targeted":["targetedads.png","Ads on Social Media"],
-  "esteem":["esteem.png","The Ups and Downs of Social Media"]
+  "esteem":["esteem.png","Social Media & How You Feel"]
 };
 
 function startIntro(){

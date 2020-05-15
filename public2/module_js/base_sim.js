@@ -56,9 +56,9 @@ function startHints(){
         }
       }
   });
-  hints.onhintclose(function(){
+  hints.onhintclose(function(stepID){
     if(typeof customOnHintCloseFunction !== 'undefined'){
-      customOnHintCloseFunction();
+      customOnHintCloseFunction(stepID);
     } else {
       closedHints++;
       clickedHints = 0;

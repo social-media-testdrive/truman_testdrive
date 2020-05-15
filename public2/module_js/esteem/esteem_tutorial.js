@@ -28,26 +28,27 @@ function startIntro(){
             // scrollToElement: false
           },
           {
-            element: '#step2',
-            intro: `Sometimes, just taking a break and logging off to do
-            something else you enjoy can help you feel better.`,
-            position: 'right',
-            // scrollToElement: false
-          },
-          {
             element: '#step3',
             intro: `You may sometimes feel like other people's lives are much
             more exciting than yours after seeing their posts. But remember,
-            most people only post about the positive and exciting thing going
-            on, leaving out everything else.`,
+            people tend to post more about positive and exciting things,
+            especially when lots of people can see it.`,
             position: 'right',
             // scrollTo: 'element',
             // scrollPadding: 100
           },
           {
             element: '#step3',
+            intro: `If you get a red flag feeling, just taking a break and
+            logging off to do something else you enjoy can help you feel
+            better`,
+            position: 'right',
+            // scrollToElement: false
+          },
+          {
+            element: '#step4',
             intro: `Other times, you might be doing something cool and be
-            tempted to share all about it on social media. Just remember that
+            tempted to share all about it on social media. But
             <b>oversharing</b> feelings, information, or experiences might feel
             good in the moment, but could cause you or others to feel
             uncomfortable later.`,
@@ -56,9 +57,9 @@ function startIntro(){
           },
           {
             element: '#step4',
-            intro: `A good way to enjoy social media is to balance it with other
-            things you enjoy doing, like spending time with family and friends,
-            reading a book, or playing outside.`,
+            intro: `A good way to enjoy social media is to <b>balance</b> it
+            with other things you enjoy doing, like spending time with family
+            and friends, reading a book, or playing outside.`,
             position: 'right',
             // scrollToElement: false
           }

@@ -12,6 +12,12 @@ form label{
   display: none;
 }
 
+/* trans script */
+
+.noLineBreak{
+  white-space: nowrap;
+}
+
 /* results */
 
 .resultsPromptLabel{
@@ -33,4 +39,10 @@ form label{
 
 .ui.checkbox label, .inline.fields label{
   font-size: 120%;
+}
+
+/* general */
+
+.customCircularAvatar {
+  object-fit: cover;
 }

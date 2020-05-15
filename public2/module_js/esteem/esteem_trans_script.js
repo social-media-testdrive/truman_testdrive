@@ -13,30 +13,30 @@ function startIntro(){
   switch (topicSelection) {
     case 'Sports':
       eventKeyword = 'soccer game';
-      bot1Image = 'user30.jpg';
-      bot1FullName = "Lindsay Stokes"
-      bot1FirstName = "Lindsay"
-      bot2Image = 'user48.jpeg';
-      bot2FullName = "Asher Michaels"
-      bot2FirstName = "Asher"
+      bot1Image = 'user53.jpg';
+      bot1FullName = "Brielle Jordan";
+      bot1FirstName = "Brielle";
+      bot2Image = 'user4.jpg';
+      bot2FullName = "Hayden Abbey";
+      bot2FirstName = "Hayden";
       break;
-    case 'Food':
-      eventKeyword = 'cooking class';
-      bot1Image = 'user30.jpg';
-      bot1FullName = "Lindsay Stokes"
-      bot1FirstName = "Lindsay"
-      bot2Image = 'user48.jpeg';
-      bot2FullName = "Asher Michaels"
-      bot2FirstName = "Asher"
+    case 'Music':
+      eventKeyword = 'music camp';
+      bot1Image = 'user5.jpeg';
+      bot1FullName = "Kiki Pualani";
+      bot1FirstName = " Kiki";
+      bot2Image = 'user10.jpg';
+      bot2FullName = "Franklin Robinson";
+      bot2FirstName = "Franklin";
       break;
     case 'Gaming':
       eventKeyword = 'gaming meetup';
       bot1Image = 'user30.jpg';
-      bot1FullName = "Lindsay Stokes"
-      bot1FirstName = "Lindsay"
+      bot1FullName = "Lindsay Stokes";
+      bot1FirstName = "Lindsay";
       bot2Image = 'user48.jpeg';
-      bot2FullName = "Asher Michaels"
-      bot2FirstName = "Asher"
+      bot2FullName = "Asher Michaels";
+      bot2FirstName = "Asher";
       break;
     default:
       eventKeyword = 'soccer game';
@@ -59,20 +59,22 @@ function startIntro(){
         {
           intro: `Here is some background before you start: Imagine that you are
           looking at
-          <img class='ui avatar image' src='${cdn}/profile_pictures/user77.jpg'>
-          Jeremy Murray's social media timeline.`
+          <span class='noLineBreak'><img class='ui avatar image customCircularAvatar' src='${cdn}/profile_pictures/user77.jpg'>
+          Jeremy Murray's</span>
+          social media timeline.`
         },
         {
-          intro: `Jeremy has two friends, &nbsp
-          <img class='ui avatar image' src='${cdn}/profile_pictures/${bot1Image}'>
-          <span>${bot1FullName}</span> and &nbsp
-          <img class='ui avatar image' src='${cdn}/profile_pictures/${bot2Image}'>
-          <span>${bot2FullName}</span> who he met  at a ${eventKeyword}. Look
-          out for posts from ${bot1FirstName} and ${bot2FirstName}.`
+          intro: `Jeremy has two friends,
+          <span class='noLineBreak'><img class='ui avatar image customCircularAvatar' src='${cdn}/profile_pictures/${bot1Image}'>
+          <span>${bot1FullName}</span></span> and
+          <span class='noLineBreak'><img class='ui avatar image customCircularAvatar' src='${cdn}/profile_pictures/${bot2Image}'>
+          <span>${bot2FullName}</span></span> whom he met  at a ${eventKeyword}.
+          Look out for posts from ${bot1FirstName} and ${bot2FirstName}.`
         },
         {
-          intro: `You may also see posts by other people that might cause you to
-          feel good or bad. Click on the posts to reflect on your feelings.`
+          intro: `You may also see posts by other people that express red flag
+          feelings. Click on the posts to reflect on how Jeremy might feel when
+          he sees the posts.`
         }
 
       ]
