@@ -2,7 +2,10 @@ extends ../script.pug
 
 block post
   if (val.type === user.esteemTopic)
-    include ../partials/script_actorPost
+    if (val.info_text !== "")
+      include ../partials/script/taggedPost
+    else
+      include ../partials/script_actorPost
     
   include ../partials/script/esteemModal 
 
