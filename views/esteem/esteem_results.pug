@@ -139,47 +139,51 @@ block content
         h4
           | How might Jeremy feel when he sees these posts?
       .content.checkOne
+        br
         .ui.form
-          br
-          .inline.fields
-            label(for='wouldRead', name='wouldRead') 
-            .field
-              .ui.checkbox
-                input(type='checkbox')
-                label(for='wouldRead', tabindex='0') 
-                  | Reach out to other friends on social media
-        .ui.form
-          .inline.fields
-            label(for='checkSource', name='checkSource') 
-            .field
-              .ui.checkbox
-                input(type='checkbox')
-                label(for='checkSource', tabindex='0') 
-                  | Do an activity that he enjoys
-        .ui.form
-          .inline.fields
-            label(for='corroboration', name='corroboration') 
-            .field
-              .ui.checkbox
-                input(type='checkbox')
-                label(for='corroboration', tabindex='0') 
-                  | Spend time with friends and family offline
-        .ui.form
-          .inline.fields
-            label(for='interacted', name='interacted') 
-            .field
-              .ui.checkbox
-                input(type='checkbox')
-                label(for='interacted', tabindex='0') 
-                  | Take a break from social media
-        .ui.form
-          .inline.fields
-            label(for='corroboration', name='wouldViewAd') 
-            .field
-              .ui.checkbox
-                input(type='checkbox')
-                label(for='wouldViewAd', tabindex='0') 
-                  | Do something else
+          .ui.grid
+            .eight.wide.column
+              .field
+                .ui.checkbox
+                  input(type='checkbox')
+                  label Happy
+              .field
+                .ui.checkbox
+                  input(type='checkbox')
+                  label Excited
+              .field
+                .ui.checkbox
+                  input(type='checkbox')
+                  label Sad
+              .field
+                .ui.checkbox
+                  input(type='checkbox')
+                  label Jealous
+              .field
+                .ui.checkbox
+                  input(type='checkbox')
+                  label Encouraged
+            .eight.wide.column
+              .field
+                .ui.checkbox
+                  input(type='checkbox')
+                  label Anxious
+              .field
+                .ui.checkbox
+                  input(type='checkbox')
+                  label Angry
+              .field
+                .ui.checkbox
+                  input(type='checkbox')
+                  label Embarrassed
+              .field
+                .ui.checkbox
+                  input(type='checkbox')
+                  label Empathetic
+              .field
+                .ui.checkbox
+                  input(type='checkbox')
+                  label Neutral
 
     .ui.raised.segment
       .ui.label.resultsPromptLabel

@@ -23,11 +23,18 @@ var hintsList=
     hintPosition: 'middle-middle'
   },
   {
+    hint: `Click on the post to think about how Nick would feel and things that
+    Nick could do.`,
+    element: '#hint3',
+    hintPosition: 'middle-right'
+  },
+  {
     hint: `Nick can always take a break from social media. He can meet up with
     friends and family or do something else he enjoys, like riding his bike.`,
     element: '#hint4',
     hintPosition: 'middle-middle'
   }
+
 ]
 
 var stepsList=

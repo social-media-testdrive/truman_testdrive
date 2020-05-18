@@ -39,19 +39,19 @@ function startIntro(){
           },
           {
             element: '#step3',
-            intro: `If you get a red flag feeling, just taking a break and
-            logging off to do something else you enjoy can help you feel
-            better`,
-            position: 'right',
-            // scrollToElement: false
-          },
-          {
-            element: '#step4',
             intro: `Other times, you might be doing something cool and be
             tempted to share all about it on social media. But
             <b>oversharing</b> feelings, information, or experiences might feel
             good in the moment, but could cause you or others to feel
             uncomfortable later.`,
+            position: 'right',
+            // scrollToElement: false
+          },
+          {
+            element: '#step4',
+            intro: `If you get a red flag feeling, just taking a break and
+            logging off to do something else you enjoy can help you feel
+            better.`,
             position: 'right',
             // scrollToElement: false
           },
