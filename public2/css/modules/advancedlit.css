@@ -14,10 +14,6 @@ i.caret.icon {
   text-indent: 3em;
 }
 
-/* a.item {
-  background-color: white !important;
-} */
-
 .ui.tab {
   margin-top: 1em;
 }
@@ -50,6 +46,10 @@ i.caret.icon {
 .newsArticleTitleContainer {
   background: rgba(0, 0, 0, 0.05) !important;
   cursor: pointer;
+}
+
+.opinionLabel {
+  padding: 1em 0;
 }
 
 /* search results */
@@ -87,4 +87,10 @@ i.caret.icon {
 
 .sixteen.wide.column.centered.removeTopPadding.addBottomMargin{
   margin-top:2em;
+}
+
+/* free-play section */
+.sideMenu {
+  width: 100% !important;
+  max-width: 260px !important;
 }

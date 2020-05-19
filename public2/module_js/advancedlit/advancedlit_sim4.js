@@ -1,17 +1,9 @@
 var hintsList = [
   {
-    hint: `Check other sources to see if they are saying the same thing. You
-    search for “Haywell Middle School closing” on Google, and here are the first
-    5 things that you find.`,
-    element: '#hint1',
-    hintPosition: 'middle-middle'
-  },
-  {
-    hint: `This is what a correction looks like. It tells you that this article
-    was recently updated to add more information. The language used also
-    suggests that there may be more information to come.`,
-    element: '#hint2',
-    hintPosition: 'middle-middle'
+    hint: `Now that you have analyzed and fact-checked the article, what would
+    you do next? Think about the consequences of sharing a news article that
+    isn’t accurate or doesn’t have all the information.`,
+    element: '#hint1'
   }
 ];
 
@@ -27,11 +19,10 @@ function customOnHintCloseFunction(){
       $('#removeHidden').transition('fade');
     }
     $('.articleTab').addClass('green');
-
   } else {
-    if($('#removeHidden').is(":visible")){
-      $('#removeHidden').transition('fade');
-      $('.ui.big.button').css("margin-bottom", "12em");
+    if($('#clickAllDotsWarning').is(":hidden")){
+      $('#clickAllDotsWarning').transition('fade');
+      $('.gridInsideTab').css("margin-bottom", "12em");
     }else{
       //otherwise, bounce the message to draw attention to it
       $('#clickAllDotsWarning').transition('bounce');
@@ -41,7 +32,7 @@ function customOnHintCloseFunction(){
 
 $('.articleTab').on('click', function(){
   if(closedHints === numberOfHints){
-    window.location.href = '/sim4/advancedlit';
+    window.location.href = '/trans/advancedlit';
   } else {
     if($('#clickAllDotsWarning').is(":hidden")){
       $('#clickAllDotsWarning').transition('fade');

@@ -291,6 +291,8 @@ exports.getScript = (req, res, next) => {
         res.render('habits/habits_script', { script: finalfeed, mod: req.params.modId, habitsStart: habitsStartTime,});
       }else if(req.params.modId == "esteem"){
         res.render('esteem/esteem_script', { script: finalfeed, mod: req.params.modId});
+      }else if(req.params.modId == "advancedlit"){
+        res.render('advancedlit/advancedlit_script', { script: finalfeed, mod: req.params.modId});
       }else if(req.params.modId == "targeted"){
         res.render('targeted/targeted_script', { script: finalfeed, mod: req.params.modId});
       }else{

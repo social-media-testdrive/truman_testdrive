@@ -1,0 +1,296 @@
+extends ../ui_layout
+  
+block content
+
+  
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  -var s3 = "https://testdrive-filesystem.s3.us-east-2.amazonaws.com/"
+  -//var cdn = "";
+  .ui.active.tab(data-tab='timeline')
+    .ui.grid
+      .computer.only.tablet.only.four.wide.column
+        .ui.sticky.sideMenu
+          .ui.card
+            .image
+              if user.profile.picture
+                img(src=cdn+'/profile_pictures/'+user.profile.picture)
+              else
+                img(src=user.gravatar(60))
+            .content
+              a.header(href='/me/'+mod)= user.profile.name || user.email || user.id
+              .meta="@Guest"
+              .description=user.profile.bio
+              .description
+                if user.profile.location
+                  i.marker.icon
+                  span=user.profile.location
+            .one.ui.bottom.attached.icon.buttons
+                button.ui.editprofile.button(data-tooltip='Update Your Profile', data-position='bottom left')
+                    i.write.icon
+          
+      #loading.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
+        img.ui.centered.small.image(src='/heart.svg')
+      #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column(style='display: none;')  
+        //- Input for creating new post at top of feed
+        #newpost.ui.fluid.left.labeled.right.icon.input.habitsHomeDisplay
+          .ui.label
+            if user.profile.picture
+              img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture)
+            else
+              img.ui.avatar.image(src=user.gravatar(60))
+          input(type='text', placeholder='Create a post')
+          i.big.photo.link.icon
+
+        each val in script
+          //- create a card for each post in val (if by user make the card a little different)
+          //- if val.relativeTime - then post came from user_post (so user post, user reply to actor reply to user post)
+
+          if val.relativeTime
+            include ../partials/script_userPost
+          //- Now we are making posts by Actors, not the USER
+          else
+            if(val.type === user.advancedlitTopic)
+              if(val.info_text !== "")
+                .ui.fluid.card.dim(data-tab="article" postNumber = val.post_id, postID=val.id, ui=user.ui, transparency=user.transparency, notify=user.notify, state=val.state || 'unread', type='actor', actor_un = val.actor.username, actor_name = val.actor.profile.name, actor_pic = val.actor.profile.picture)
+                  //- dimmer DIV for flagging
+                  .ui.dimmer.flag
+                        .content
+                          .center
+                            h2.ui.inverted.icon.header
+                              i.red.flag.icon
+                              |  You&apos;ve flagged this!
+                              h3.ui.inverted.header
+                                span="The admins will review this post further. We are sorry you had this experience."
+                  //- Normal Base Post
+                  .content
+                    .right.floated.time.meta= (Date.now() + val.time)
+                    |  
+                    a(href='/user/'+val.actor.username)
+                      img.ui.avatar.image(src='/picture.svg', data-src=cdn+'/profile_pictures/'+val.actor.profile.picture)
+                      span=val.actor.profile.name
+                  //-div(style="position: relative; z-index: 1;")
+                    img(src="image.png" style="position: absolute; z-index: 2;")
+                    span#overlay_text(style="position: relative; top: -10px; z-index: 3;") OVERLAY
+                  .img.post
+                    //-img.post(src="/"+val.picture)
+                    if (val.module == 'digital-literacy' && val.info_text != "")           
+                      img.imageWithModal(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPost()')
+                    else if (val.module == 'digfoot')
+                      img.imageWithModal(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPostDigfoot()')
+                    else if (val.module == 'esteem')
+                      img.imageWithModal(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPostEsteem()')
+                    else
+                      img(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture)
+                  if (val.module == 'digital-literacy' && val.info_text != "")
+                    .read.rounded.right.floated.modual.info_button(id="info_"+val.id, data-info_text = val.info_text)
+                      i.info.icon
+                  .content
+                    .description!=val.body
+                  .three.ui.bottom.attached.icon.buttons
+                    .ui.reply.button(tabindex='0')
+                      i.reply.icon
+                      |  Reply
+                    .ui.flag.button(tabindex='0')
+                      i.flag.icon
+                      |  Flag
+                    if val.like
+                      .ui.labeled.button(tabindex='0')
+                        .ui.red.like.button
+                          i.heart.icon
+                          |  Like
+                        a.ui.basic.red.left.pointing.label=val.likes
+                    else
+                      .ui.labeled.button(tabindex='0')
+                        .ui.like.button
+                          i.heart.icon
+                          |  Like
+                        a.ui.basic.red.left.pointing.label.count=val.likes
+                  if val.comments.length > 0
+                    .content
+                      .ui.comments
+                        each comment in val.comments
+                          //-IF this comment is USER made, do this
+                          if comment.new_comment
+                            -console.log("New COMMENT AREA");
+                            .comment(commentID=comment.new_comment_id)
+                              a.avatar.image(href='/me/'+mod)
+                                if user.profile.picture
+                                  img(src=cdn+'/profile_pictures/'+user.profile.picture)
+                                else
+                                  img(src=user.gravatar(60))
+                              .content
+                                a.author(href='/me/'+mod)=user.profile.name || user.username || user.id
+                                .metadata
+                                  span.date.sim=(Date.now() + comment.time)
+                                  .rating
+                                    i.heart.icon
+                                    span.num=0
+                                    |  Likes
+                                .text=comment.body
+                                .actions
+                                  a.like.comment Like
+                                  a.flag.comment Flag
+                          //- Else this is a normal comment from the script
+                          else
+                            .comment(commentID=comment.id)
+                              a.avatar.image(href='/user/'+comment.actor.username)
+                                img(src='/picture.svg', data-src=cdn+'/profile_pictures/'+comment.actor.profile.picture)
+                              .content
+                                a.author(href='/user/'+comment.actor.username)=comment.actor.profile.name
+                                .metadata
+                                  span.date.sim=(Date.now() + comment.time)
+                                  .rating
+                                    if comment.liked
+                                      i.red.heart.icon
+                                      span=comment.likes
+                                      |  Likes 
+                                    else
+                                      i.heart.icon
+                                      span.num=comment.likes
+                                      |  Likes
+                                .text=comment.body
+                                .actions
+                                  if comment.liked
+                                    a.red.like.comment Like
+                                  else
+                                    a.like.comment Like
+                                  a.flag.comment Flag
+                  .extra.content
+                    if user.comment_prompt == "yes"
+                      .description(style="text-align:center;background:#E8E8E8")="How is "+val.actor.profile.name+" Feeling?"
+                      .ui.fluid.left.labeled.right.icon.input
+                        .ui.label            
+                          if user.profile.picture
+                            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name || user.username || user.id)
+                          else
+                            img.ui.avatar.image(src=user.gravatar(60), name=user.profile.name || user.username || user.id)
+                        input.newcomment(type='text', placeholder='Write a Comment')
+                        i.big.send.link.icon
+                    else
+                      .ui.fluid.left.labeled.right.icon.input
+                        .ui.label
+                          if user.profile.picture
+                            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name || user.username || user.id)
+                          else
+                            img.ui.avatar.image(src=user.gravatar(60), name=user.profile.name || user.username || user.id)            
+                        input.newcomment(type='text', placeholder='Write a Comment')
+                        i.big.send.link.icon  
+
+              else
+                include ../partials/script_actorPost
+        a.ui.fluid.card
+          .content
+            .ui.big.green.labeled.icon.button.script
+              i.rocket.icon
+              |   Let's Continue!        
+        br
+        br
+        
+  .ui.tab(data-tab="article")
+    button.ui.big.testDriveBlue.button.timelineTab(data-tab='timeline')
+      i.icon.reply
+      | Return to the timeline
+    button.ui.big.green.button.searchTab(data-tab='search')
+      i.icon.search
+      | Search for "foods that cause heart attacks"
+    .ui.segment(style='margin-bottom: 4em;')
+      .ui.grid.gridInsideTab          
+        .row
+          .column
+
+            h1
+              | The 15 SHOCKING foods that will cause a heart attack !!  
+            h2 
+              | You'll never guess what these are!!!
+            p Author: Jane Doe
+            p Published: 5 May 2020
+        .row
+          .sixteen.wide.column
+            
+            img.ui.large.left.floated.image.fullArticleImage(src=cdn+'/post_pictures/infolitguided1.png')
+
+            p.articleText Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
+
+            p.articleText#hint2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
+
+            p.articleText#hint3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
+
+            p.articleText#hint4 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
+
+            p.articleText.timelineTab3(data-tab='search') 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
+            
+  //- #####################################################
+  .ui.tab(data-tab="search")
+    .ui.grid.gridInsideTab         
+      .row
+        .column
+
+          button.ui.big.testDriveBlue.button.timelineTab(data-tab='timeline')
+            i.icon.reply
+            | Go back to the timeline
+          button.ui.big.testDriveBlue.button.articleTab(data-tab='article')
+            i.icon.reply
+            | Go back to the article
+      .row
+        .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.left.floated.column    
+          h2 Search results for "food that cause heart attacks"
+          
+          
+          p.resultURL result1url.com
+          a
+            h4.resultTitle Article Title 1
+          p.resultPreviewText
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus 
+            | ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus.
+            | Nam at auctor velit, vitae fermentum diam.
+
+          p.resultURL result2url.com
+          a
+            h4.resultTitle Article Title 2
+          p.resultPreviewText
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus 
+            | ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus.
+            | Nam at auctor velit, vitae fermentum diam.
+
+          p.resultURL result3url.com
+          a
+            h4.resultTitle Article Title 3
+          p.resultPreviewText
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus 
+            | ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus.
+            | Nam at auctor velit, vitae fermentum diam.
+
+          p.resultURL result4url.com
+          a
+            h4.resultTitle Article Title 4
+          p.resultPreviewText
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus 
+            | ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus.
+            | Nam at auctor velit, vitae fermentum diam.
+             
+block scripts
+  script.
+    function changeActiveTab(newActiveTab) {
+      $('.ui.tab').removeClass('active');
+      switch (newActiveTab) {
+        case 'timeline':
+          $('.ui.tab[data-tab="timeline"]').addClass('active');
+          break;
+        case 'article':
+          $('.ui.tab[data-tab="article"]').addClass('active');
+          break;
+        case 'search':
+          $('.ui.tab[data-tab="search"]').addClass('active');
+          break;
+        default:
+          $('.ui.tab[data-tab="timeline"]').addClass('active');
+          break;
+      }
+    }
+    
+    $('.ui.card, .ui.button.articleTab, .ui.button.timelineTab, .ui.button.searchTab').tab();
+  script(src='/module_js/script.js')     
+     
+block styles
+  link(rel='stylesheet', href='/css/script.css')
+  link(rel='stylesheet', href='/css/modules/advancedlit.css')

@@ -85,7 +85,7 @@ function startIntro(){
   });
 
   intro.start().onexit(function() {
-    window.location.href='/sim/advancedlit';
+    window.location.href='/sim1/advancedlit';
   });
 
   intro.onbeforechange(function (){
