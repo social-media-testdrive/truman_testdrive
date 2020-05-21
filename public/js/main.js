@@ -20,7 +20,7 @@ $(window).on("load", function () {
   let currentPageForHeader = pathArrayForHeader[1];
   let currentModuleForHeader = pathArrayForHeader[2];
   let stepNumber = "";
-  let jsonPath = '/json/standardProgressData.json';
+  let jsonPath = '/json/progressDataA.json';
 
   switch (currentModuleForHeader) {
     case 'cyberbullying':

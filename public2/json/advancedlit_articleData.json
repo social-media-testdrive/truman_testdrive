@@ -1,0 +1,98 @@
+{
+  "music":[
+    {
+      "number": 1,
+      "heading": "Title for Music Article 1!",
+      "subheading": "Subheading for music article 1",
+      "author": "Jane Doe",
+      "date": "21 May 2020",
+      "blockOne": "This is the first paragraph of music article 1. Congrats!",
+      "blockTwo": "This is the second paragraph of music article 1.",
+      "blockThree": "This is the third paragraph of music article 1. There probably won't be more paragraphs than this!",
+    },
+    {
+      "number": 2,
+      "heading": "Title for Music Article 2!",
+      "subheading": "Subheading for music article 2",
+      "author": "John Doe",
+      "date": "21 May 2020",
+      "blockOne": "This is the first paragraph of music article 2. Congrats!",
+      "blockTwo": "This is the second paragraph of music article 2.",
+      "blockThree": "This is the third paragraph of music article 2. There probably won't be more paragraphs than this!",
+    },
+    {
+      "number": 3,
+      "heading": "Title for Music Article 3!",
+      "subheading": "Subheading for music article 3",
+      "author": "John Smith",
+      "date": "21 May 2020",
+      "blockOne": "This is the first paragraph of music article 3. Congrats!",
+      "blockTwo": "This is the second paragraph of music article 3.",
+      "blockThree": "This is the third paragraph of music article 3. There probably won't be more paragraphs than this!",
+    }
+  ],
+  "gaming":[
+    {
+      "number": 1,
+      "heading": "Title for gaming Article 1!",
+      "subheading": "Subheading for gaming article 1",
+      "author": "Jane Doe",
+      "date": "21 May 2020",
+      "blockOne": "This is the first paragraph of gaming article 1. Congrats!",
+      "blockTwo": "This is the second paragraph of gaming article 1.",
+      "blockThree": "This is the third paragraph of gaming article 1. There probably won't be more paragraphs than this!",
+    },
+    {
+      "number": 2,
+      "heading": "Title for gaming Article 2!",
+      "subheading": "Subheading for gaming article 2",
+      "author": "John Doe",
+      "date": "21 May 2020",
+      "blockOne": "This is the first paragraph of gaming article 2. Congrats!",
+      "blockTwo": "This is the second paragraph of gaming article 2.",
+      "blockThree": "This is the third paragraph of gaming article 2. There probably won't be more paragraphs than this!",
+    },
+    {
+      "number": 3,
+      "heading": "Title for gaming Article 3!",
+      "subheading": "Subheading for gaming article 3",
+      "author": "John Smith",
+      "date": "21 May 2020",
+      "blockOne": "This is the first paragraph of gaming article 3. Congrats!",
+      "blockTwo": "This is the second paragraph of gaming article 3.",
+      "blockThree": "This is the third paragraph of gaming article 3. There probably won't be more paragraphs than this!",
+    }
+  ],
+  "sports":[
+    {
+      "number": 1,
+      "heading": "Title for sports Article 1!",
+      "subheading": "Subheading for sports article 1",
+      "author": "Jane Doe",
+      "date": "21 May 2020",
+      "blockOne": "This is the first paragraph of sports article 1. Congrats!",
+      "blockTwo": "This is the second paragraph of sports article 1.",
+      "blockThree": "This is the third paragraph of sports article 1. There probably won't be more paragraphs than this!",
+    },
+    {
+      "number": 2,
+      "heading": "Title for sports Article 2!",
+      "subheading": "Subheading for sports article 2",
+      "author": "John Doe",
+      "date": "21 May 2020",
+      "blockOne": "This is the first paragraph of sports article 2. Congrats!",
+      "blockTwo": "This is the second paragraph of sports article 2.",
+      "blockThree": "This is the third paragraph of sports article 2. There probably won't be more paragraphs than this!",
+    },
+    {
+      "number": 3,
+      "heading": "Title for sports Article 3!",
+      "subheading": "Subheading for sports article 3",
+      "author": "John Smith",
+      "date": "21 May 2020",
+      "blockOne": "This is the first paragraph of sports article 3. Congrats!",
+      "blockTwo": "This is the second paragraph of sports article 3.",
+      "blockThree": "This is the third paragraph of sports article 3. There probably won't be more paragraphs than this!",
+    }
+  ]
+}

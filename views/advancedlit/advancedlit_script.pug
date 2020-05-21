@@ -5,11 +5,11 @@ block content
   
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   -var s3 = "https://testdrive-filesystem.s3.us-east-2.amazonaws.com/"
-  -//var cdn = "";
+  
   .ui.active.tab(data-tab='timeline')
     .ui.grid
       .computer.only.tablet.only.four.wide.column
-        .ui.sticky.sideMenu
+        .ui.sticky
           .ui.card
             .image
               if user.profile.picture
@@ -73,19 +73,19 @@ block content
       .ui.grid.gridInsideTab          
         .row
           .column
-            h1
+            h1.articleHeading
               | The 15 SHOCKING foods that will cause a heart attack !!  
               | (article 1)
-            h2 
+            h2.articleSubheading 
               | You'll never guess what these are!!!
-            p Author: Jane Doe
+            p.articleAuthor Jane Doe
             p Published: 5 May 2020
         .row
           .sixteen.wide.column
             
             img.ui.large.left.floated.image.fullArticleImage(src=cdn+'/post_pictures/infolitguided1.png')
 
-            p.articleText Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
+            p.articleText.articleBlock1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
 
             p.articleText#hint2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
 
@@ -108,19 +108,19 @@ block content
       .ui.grid.gridInsideTab          
         .row
           .column
-            h1
+            h1.articleHeading
               | The 15 SHOCKING foods that will cause a heart attack !! 
               | (article 2) 
-            h2 
+            h2.articleSubheading 
               | You'll never guess what these are!!!
-            p Author: Jane Doe
+            p.articleAuthor Jane Doe
             p Published: 5 May 2020
         .row
           .sixteen.wide.column
             
             img.ui.large.left.floated.image.fullArticleImage(src=cdn+'/post_pictures/infolitguided1.png')
 
-            p.articleText Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
+            p.articleText.articleBlock1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
 
             p.articleText#hint2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
 
@@ -144,19 +144,19 @@ block content
       .ui.grid.gridInsideTab          
         .row
           .column
-            h1
+            h1.articleHeading
               | The 15 SHOCKING foods that will cause a heart attack !!  
               | (article 3)
-            h2 
+            h2.articleSubheading 
               | You'll never guess what these are!!!
-            p Author: Jane Doe
+            p.articleAuthor Jane Doe
             p Published: 5 May 2020
         .row
           .sixteen.wide.column
             
             img.ui.large.left.floated.image.fullArticleImage(src=cdn+'/post_pictures/infolitguided1.png')
 
-            p.articleText Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
+            p.articleText.articleBlock1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
 
             p.articleText#hint2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
 
@@ -308,21 +308,8 @@ block content
   //- ############################
            
 block scripts
-  script.    
-    let articleNumber = 1;
-    $('.ui.card, .ui.button.articleTab, .ui.button.timelineTab, .ui.button.searchTab').tab({
-      onLoad: function(tabPath){
-        let endOfString = tabPath.substr(tabPath.length - 1);
-        if ((endOfString === '1') || (endOfString === '2') || (endOfString === '3')){
-          articleNumber = tabPath.substr(tabPath.length - 1);
-          $(document).scrollTop(0);
-        } else {
-          $('.ui.card[data-tab="article'+articleNumber+'"]')[0].scrollIntoView();
-        }
-      }
-    });
-    
-  script(src='/module_js/script.js')     
+  script(src='/module_js/script.js')   
+  script(src='/module_js/advancedlit/advancedlit_script.js')  
      
 block styles
   link(rel='stylesheet', href='/css/script.css')

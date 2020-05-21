@@ -90,7 +90,7 @@ i.caret.icon {
 }
 
 /* free-play section */
-.sideMenu {
-  width: 100% !important;
-  max-width: 260px !important;
+.specialSideMenu {
+  width: 100%;
+  max-width: 260px;
 }
