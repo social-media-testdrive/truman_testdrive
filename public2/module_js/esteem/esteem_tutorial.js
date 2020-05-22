@@ -30,19 +30,30 @@ function startIntro(){
           {
             element: '#step3',
             intro: `You may sometimes feel like other people's lives are much
-            more exciting than yours after seeing their posts. But remember,
-            people tend to post more about positive and exciting things,
-            especially when lots of people can see it.`,
+            more exciting than yours after seeing their posts.`,
             position: 'right',
             // scrollTo: 'element',
             // scrollPadding: 100
           },
           {
             element: '#step3',
+            intro: `But remember, people tend to post more about positive and
+            exciting things, especially when lots of people can see it.`,
+            position: 'right',
+            // scrollTo: 'element',
+            // scrollPadding: 100
+          },
+          {
+            element: '#step3B',
             intro: `Other times, you might be doing something cool and be
-            tempted to share all about it on social media. But
-            <b>oversharing</b> feelings, information, or experiences might feel
-            good in the moment, but could cause you or others to feel
+            tempted to share all about it on social media.`,
+            position: 'right',
+            // scrollToElement: false
+          },
+          {
+            element: '#step3B',
+            intro: `<b>Oversharing</b> feelings, information, or experiences
+            might feel good in the moment, but could cause you or others to feel
             uncomfortable later.`,
             position: 'right',
             // scrollToElement: false

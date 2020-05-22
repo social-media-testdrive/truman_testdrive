@@ -5,7 +5,7 @@ function onPrint(){
     $(".insertPrint").append("<br><h4>How might Jeremy feel when he sees these posts?</h4>");
     $(".checkOne").clone().appendTo(".insertPrint");
 
-    $(".insertPrint").append("<br><h4>What are some ways you can achieve media balance on social media?</h4>");
+    $(".insertPrint").append("<br><h4>What could you do to feel better when you get red flag feelings on social media?</h4>");
     var responseOne = document.getElementById("literacy_responseOne").value;
     $(".insertPrint").append(responseOne);
 

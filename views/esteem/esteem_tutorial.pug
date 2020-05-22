@@ -6,228 +6,276 @@ block content
   .computer.only.tablet.only.four.wide.column 
   .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.addBottomMargin
     .ui.fluid.card.test#step1
-          .content
-            .right.floated.meta= "Yesterday"
-            |
-            a(href='/user/triple-threat')
-              img.ui.avatar.image(src=cdn+'/profile_pictures/user14.jpg')
-              span='Sarah Stella'
-          .image
-            img.post(src=cdn+'/post_pictures/kidbday_se.jpg')
-          .content
-            .description=`celebrating my younger bro's birthday! <3`
-          .three.ui.bottom.attached.icon.buttons
-            .ui.reply.button(tabindex='0')
-              i.reply.icon
-              |  Reply
-            .ui.flag.button(tabindex='0')
-              i.flag.icon
-              |  Flag
-            .ui.labeled.button(tabindex='0')
-              .ui.like.button
+      .content
+        .right.floated.meta= "Yesterday"
+        |
+        a(href='/user/triple-threat')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user14.jpg')
+          span='Sarah Stella'
+      .image
+        img.post(src=cdn+'/post_pictures/kidbday_se.jpg')
+      .content
+        .description=`celebrating my younger bro's birthday! <3`
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+      
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user35.jpg')
+            .content
+              a.author Lucy Simms
+              .metadata
+                span.date 5 hours ago
                 i.heart.icon
-                |  Like
-              a.ui.basic.red.left.pointing.label.count=2
-          
-          .content
-            .ui.comments
-              .comment
-                a.avatar
-                  img(src=cdn+'/profile_pictures/user35.jpg')
-                .content
-                  a.author Lucy Simms
-                  .metadata
-                    span.date 5 hours ago
-                    i.heart.icon
-                    |  3 Likes
-                  .text()
-                    | so cute!!
-                  .actions
-                    a.like Like
-                    a.flag Flag
-              .comment
-                a.avatar
-                  img(src=cdn+'/profile_pictures/user50.jpg')
-                .content
-                  a.author Jenny Schmidt
-                  .metadata
-                    span.date 5 hours ago
-                    i.heart.icon
-                    |  3 Likes
-                  .text()
-                    | When was this? haha
-                  .actions
-                    a.like Like
-                    a.flag Flag
-          //- .extra.content
-          //-   .ui.fluid.left.labeled.right.icon.input
-          //-     .ui.label
-          //-       img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          //-     input.newcomment(type='text' placeholder='Write a Comment')
-          //-     i.big.send.link.icon
-
-
+                |  3 Likes
+              .text()
+                | so cute!!
+              .actions
+                a.like Like
+                a.flag Flag
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user50.jpg')
+            .content
+              a.author Jenny Schmidt
+              .metadata
+                span.date 5 hours ago
+                i.heart.icon
+                |  3 Likes
+              .text()
+                | When was this? haha
+              .actions
+                a.like Like
+                a.flag Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+            
     .ui.fluid.card.test#step2
-          .content
-            .right.floated.meta= "15 Minutes Ago"
-            |
-            a(href='/user/zachpeters06')
-              img.ui.avatar.image(src=cdn+'/profile_pictures/user67.jpg')
-              span='Zach Peters'
-          .image
-            img.post(src=cdn+"/post_pictures/hang_se.jpg")
-          .content
-            .description="we hanging @ the mall"
+      .content
+        .right.floated.meta= "15 Minutes Ago"
+        |
+        a(href='/user/zachpeters06')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user67.jpg')
+          span='Zach Peters'
+      .image
+        img.post(src=cdn+"/post_pictures/hang_se.jpg")
+      .content
+        .description="we hanging @ the mall"
 
-          .three.ui.bottom.attached.icon.buttons
-            .ui.reply.button(tabindex='0')
-              i.reply.icon
-              |  Reply
-            .ui.flag.button(tabindex='0')
-              i.flag.icon
-              |  Flag
-            .ui.labeled.button(tabindex='0')
-              .ui.like.button
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+      
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user71.JPG')
+            .content
+              a.author Andrew Thomas
+              .metadata
+                span.date 1 minute ago
                 i.heart.icon
-                |  Like
-              a.ui.basic.red.left.pointing.label.count=2
-          
-          .content
-            .ui.comments
-              .comment
-                a.avatar
-                  img(src=cdn+'/profile_pictures/user71.JPG')
-                .content
-                  a.author Andrew Thomas
-                  .metadata
-                    span.date 1 minute ago
-                    i.heart.icon
-                    |  0 Likes
-                  .text()
-                    | fun times
-                  .actions
-                    a.like Like
-                    a.flag Flag
-          //- 
-          //- .extra.content
-          //-   .ui.fluid.left.labeled.right.icon.input
-          //-     .ui.label
-          //-       img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          //-     input.newcomment(type='text' placeholder='Write a Comment')
-          //-     i.big.send.link.icon
-                
+                |  0 Likes
+              .text()
+                | fun times
+              .actions
+                a.like Like
+                a.flag Flag
+      
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+            
     .ui.fluid.card.test.addBottomMargin#step3
-          .content
-            .right.floated.meta= "15 Minutes Ago"
-            |
-            a(href='/user/beachmoreworryless')
-              img.ui.avatar.image(src=cdn+'/profile_pictures/user33.jpg')
-              span='Sean Gomez'
-          .image
-            img.post(src=cdn+"/post_pictures/maui_se.png")
-          .content
-            .description="maui vacay with the fam🏝️"
+      .content
+        .right.floated.meta= "15 Minutes Ago"
+        |
+        a(href='/user/beachmoreworryless')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user33.jpg')
+          span='Sean Gomez'
+      .image
+        img.post(src=cdn+"/post_pictures/maui_se.png")
+      .content
+        .description="maui vacay with the fam🏝️"
 
-          .three.ui.bottom.attached.icon.buttons
-            .ui.reply.button(tabindex='0')
-              i.reply.icon
-              |  Reply
-            .ui.flag.button(tabindex='0')
-              i.flag.icon
-              |  Flag
-            .ui.labeled.button(tabindex='0')
-              .ui.like.button
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+      
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user40.jpg')
+            .content
+              a.author Susan Turner
+              .metadata
+                span.date 1 minute ago
                 i.heart.icon
-                |  Like
-              a.ui.basic.red.left.pointing.label.count=2
-          
-          .content
-            .ui.comments
-              .comment
-                a.avatar
-                  img(src=cdn+'/profile_pictures/user40.jpg')
-                .content
-                  a.author Susan Turner
-                  .metadata
-                    span.date 1 minute ago
-                    i.heart.icon
-                    |  0 Likes
-                  .text()
-                    | Wow so beautiful!!🌺
-                  .actions
-                    a.like Like
-                    a.flag Flag
-              .comment
-                a.avatar
-                  img(src=cdn+'/profile_pictures/user68.jpg')
-                .content
-                  a.author Josh Radin
-                  .metadata
-                    span.date 1 minute ago
-                    i.heart.icon
-                    |  0 Likes
-                  .text()
-                    | 😎
-                  .actions
-                    a.like Like
-                    a.flag Flag
-          //- .extra.content
-          //-   .ui.fluid.left.labeled.right.icon.input
-          //-     .ui.label
-          //-       img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          //-     input.newcomment(type='text' placeholder='Write a Comment')
-          //-     i.big.send.link.icon
-          //- 
+                |  0 Likes
+              .text()
+                | Wow so beautiful!!🌺
+              .actions
+                a.like Like
+                a.flag Flag
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user68.jpg')
+            .content
+              a.author Josh Radin
+              .metadata
+                span.date 1 minute ago
+                i.heart.icon
+                |  0 Likes
+              .text()
+                | 😎
+              .actions
+                a.like Like
+                a.flag Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+      
+    .ui.fluid.card.test.addBottomMargin#step3B
+      .content
+        .right.floated.meta= "15 Minutes Ago"
+        |
+        a(href='/user/dannyboii')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user37.jpg')
+          span='Daniel Mai'
+      .image
+        img.post(src=cdn+"/post_pictures/gift_se.jpg")
+      .content
+        .description="yo guess who got a sick bday gift"
+        
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+      
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user48.jpeg')
+            .content
+              a.author Asher Michaels
+              .metadata
+                span.date 1 minute ago
+                i.heart.icon
+                |  0 Likes
+              .text()
+                | is that a smart watch?!?!?
+              .actions
+                a.like Like
+                a.flag Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
                 
+               
+                 
     .ui.fluid.card.test#step4
-          .content
-            .right.floated.meta= "15 Minutes Ago"
-            |
-            a(href='/user/kilani244')
-              img.ui.avatar.image(src=cdn+'/profile_pictures/user5.jpeg')
-              span='Kiki Pualani'
-          .image
-            img.post(src=cdn+"/post_pictures/joy_se.jpg")
-          .content
-            .description="My motto"
+      .content
+        .right.floated.meta= "15 Minutes Ago"
+        |
+        a(href='/user/kilani244')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user5.jpeg')
+          span='Kiki Pualani'
+      .image
+        img.post(src=cdn+"/post_pictures/joy_se.jpg")
+      .content
+        .description="My motto"
 
-          .three.ui.bottom.attached.icon.buttons
-            .ui.reply.button(tabindex='0')
-              i.reply.icon
-              |  Reply
-            .ui.flag.button(tabindex='0')
-              i.flag.icon
-              |  Flag
-            .ui.labeled.button(tabindex='0')
-              .ui.like.button
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+      
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user60.jpg')
+            .content
+              a.author Nina Ruiz
+              .metadata
+                span.date 1 minute ago
                 i.heart.icon
-                |  Like
-              a.ui.basic.red.left.pointing.label.count=2
+                |  0 Likes
+              .text()
+                | good one
+              .actions
+                a.like Like
+                a.flag Flag
           
-          .content
-            .ui.comments
-              .comment
-                a.avatar
-                  img(src=cdn+'/profile_pictures/user60.jpg')
-                .content
-                  a.author Nina Ruiz
-                  .metadata
-                    span.date 1 minute ago
-                    i.heart.icon
-                    |  0 Likes
-                  .text()
-                    | good one
-                  .actions
-                    a.like Like
-                    a.flag Flag
-              
-          //- .extra.content
-          //-   .ui.fluid.left.labeled.right.icon.input
-          //-     .ui.label
-          //-       img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          //-     input.newcomment(type='text' placeholder='Write a Comment')
-          //-     i.big.send.link.icon
-    //-#######################
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+  //-#######################
     
 
 block scripts

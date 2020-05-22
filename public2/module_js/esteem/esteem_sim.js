@@ -3,7 +3,7 @@ var hintsList=
   {
     hint: `Nick’s best friends Liam and Vanessa have posted that they are
     hanging out but Nick was not invited. How would Nick feel after seeing
-    this post? Click on the post to think about how Nick would feel.`,
+    this post? Click on the post to think about how Nick might feel.`,
     element: '#hint1',
     hintPosition: 'middle-middle'
   },
@@ -16,14 +16,13 @@ var hintsList=
   },
   {
     hint: `Seeing everything his friends are posting might make Nick feel like
-    his life isn't as interesting or fun. But it's important to remember that a
-    lot of people just post the positive and exciting things going on in their
-    lives.`,
+    his life isn't as interesting or fun. But a lot of people just post the
+    positive and exciting things going on in their lives.`,
     element: '#hint3',
     hintPosition: 'middle-middle'
   },
   {
-    hint: `Click on the post to think about how Nick would feel and things that
+    hint: `Click on the post to think about how Nick might feel and things that
     Nick could do.`,
     element: '#hint3',
     hintPosition: 'middle-right'

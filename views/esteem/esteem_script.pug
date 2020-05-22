@@ -6,10 +6,20 @@ block post
       include ../partials/script/taggedPost
     else
       include ../partials/script_actorPost
-    
+  
+
   include ../partials/script/esteemModal 
-
-
+  
+block rightColumn
+  .computer.only.four.wide.column
+    .ui.sticky.compact.positive.message.advancedLitReminder
+      p 
+        | Remember that you are viewing Jeremy’s timeline, but you can still make posts and comments of your own.
+        
 block scripts2
   script.
-    /* alert('hi'); */
+    $('.advancedLitReminder')
+    .sticky({
+      context: '#content',
+      offset: 90
+    })
