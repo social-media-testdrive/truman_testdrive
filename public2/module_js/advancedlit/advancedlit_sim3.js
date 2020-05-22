@@ -31,10 +31,6 @@ function customOnHintCloseFunction(){
   } else {
     if($('#removeHidden').is(":visible")){
       $('#removeHidden').transition('fade');
-      $('.ui.big.button').css("margin-bottom", "12em");
-    }else{
-      //otherwise, bounce the message to draw attention to it
-      $('#clickAllDotsWarning').transition('bounce');
     }
   }
 }
@@ -45,7 +41,6 @@ $('.articleTab').on('click', function(){
   } else {
     if($('#clickAllDotsWarning').is(":hidden")){
       $('#clickAllDotsWarning').transition('fade');
-      $('.ui.big.button').css("margin-bottom", "12em");
     }else{
       //otherwise, bounce the message to draw attention to it
       $('#clickAllDotsWarning').transition('bounce');

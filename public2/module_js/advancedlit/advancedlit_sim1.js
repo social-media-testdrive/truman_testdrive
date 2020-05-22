@@ -18,6 +18,7 @@ function customOnHintCloseFunction(){
     if($('#removeHidden').is(":visible")){
       $('#removeHidden').transition('fade');
     }
+    $('#instructionsToContinue').show();
 
   } else {
     if($('#clickAllDotsWarning').is(":hidden")){

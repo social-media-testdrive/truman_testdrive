@@ -20,7 +20,7 @@ block content
             .ui.header There are still blue dots to find!
             p Click through all of the blue dots to continue.
 
-    .ui.grid.gridInsideTab  
+    .ui.grid.gridInsideTab(style="margin-bottom: 12em;")  
       .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.centered
         .ui.fluid.card.dim()
           .ui.dimmer.flag
@@ -38,10 +38,10 @@ block content
             a(href='#')
                   img.ui.avatar.image(src=cdn+'/profile_pictures/user21.jpg')
                   span='Sam Hill'
-          .img.post.articleImage.articleTab(data-tab="two")        
+          .img.post.articleImage(data-tab="two")        
             img(src=cdn+'/post_pictures/infolitguided1.png')
 
-          .content.newsArticleTitleContainer.articleTab(data-tab="two")
+          .content.newsArticleTitleContainer(data-tab="two")
               a.articleLink
                 | WASHINGTON-POSST.COM.CO &nbsp; &nbsp;
               .header
