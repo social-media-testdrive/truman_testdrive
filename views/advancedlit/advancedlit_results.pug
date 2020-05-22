@@ -1,12 +1,217 @@
 extends ../ui_layout
 
 block content
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  -var chosenTopic = user.advancedlitTopic;
   
-//- insert code for articles after RAs provide design
-//- will probably need to create 3 sim pages
+  .ui.container.addBottomMargin
+    .ui.stackable.column.grid
+      .ui.column
+        .insertPrint
+        .ui.raised.segment
+          h3.ui.header
+            i.question.blue.icon
+            .content
+              | Reflect
+          .ui.label.resultsPromptLabel
+            h4
+              i.exclamation.triangle.icon
+
+              | These were the breaking news stories in the timeline. How many 
+              | did you notice?
+          br
+          br
+          .ui.stackable.three.cards
+            
+            if (chosenTopic == 'Music')
+              .ui.fluid.card.dim
+                .content      
+                  a.left.floated(href='/user/yrollam_htims')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user53.jpg')
+                    span='Brielle Jordan'
+                .image
+                  img.post(src=cdn+'/post_pictures/playing-piano_se.jpg')
+                .content
+                  .description
+                    | Text for article 1 in music  
+          
+              .ui.fluid.card.dim
+                .content      
+                  a.left.floated(href='/user/kilani244')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user4.jpg')
+                    span='Hayden Abbey'
+                .image
+                  img.post(src=cdn+'/post_pictures/acoustic_se.jpg')
+                .content
+                  .description
+                    | Text for article 2 in music 
+
+              .ui.fluid.card.dim
+                .content      
+                  a.left.floated(href='/user/Nick_Thomas')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user42.jpg')
+                    span='Neel Talwar'
+                .image
+                  img.post(src=cdn+'/post_pictures/friends_music_se.jpg')
+                .content
+                  .description
+                    | Text for article 3 in music 
+                    
+            if (chosenTopic == 'Sports')
+              
+              .ui.fluid.card.dim
+                .content      
+                  a.left.floated(href='/user/Suzieee')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user40.jpg')
+                    span='Susan Turner'
+                .image
+                  img.post(src=cdn+'/post_pictures/outdoors_se.jpg')
+                .content
+                  .description
+                    | Text for artice 1 in sports
+
+              .ui.fluid.card.dim
+                .content      
+                  a.left.floated(href='/user/princess_lindss')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user30.jpg')
+                    span='Linsday Stokes'
+                .image
+                  img.post(src=cdn+'/post_pictures/baseball_se.jpg')
+                .content
+                  .description
+                    | Text for article 2 in sports
+
+              .ui.fluid.card.dim
+                .content      
+                  a.left.floated(href='/user/asherballer')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user48.jpeg')
+                    span='Asher Michaels'
+                .image
+                  img.post(src=cdn+'/post_pictures/football_se.jpg')
+                .content
+                  .description
+                    | Text for article 3 in sports  
+                    
+            if (chosenTopic == 'Gaming')
+              
+              .ui.fluid.card.dim
+                .content      
+                  a.left.floated(href='/user/kilani244')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user5.jpeg')
+                    span='Kiki Pualani'
+                .image
+                  img.post(src=cdn+'/post_pictures/computer-game_se.jpg')
+                .content
+                  .description
+                    | Text for article 1 in gaming
+
+              .ui.fluid.card.dim
+                .content      
+                  a.left.floated(href='/user/frank-the-best')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user10.jpg')
+                    span='Franklin Robinson'
+                .image
+                  img.post(src=cdn+'/post_pictures/nintendo_se.jpg')
+                .content
+                  .description
+                    | Text for article 2 in gaming
+  
+              .ui.fluid.card.dim
+                .content      
+                  a.left.floated(href='/user/unicornsparkle')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/unicorn.jpg')
+                    span='Maya Rein'
+                .image
+                  img.post(src=cdn+'/post_pictures/xbox_se.jpg')
+                .content
+                  .description
+                    | Text for article 3 in gaming
+
+          br
+          br
+
+
+
+    .ui.raised.segment
+      .ui.label
+        h4
+          | What did you do when you saw a breaking news story?
+      .content.checkOne
+        .ui.form
+          br
+          .inline.fields
+            label(for='wouldRead', name='wouldRead') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='wouldRead', tabindex='0') 
+                  | I checked to see if it was an opinion piece
+        .ui.form
+          .inline.fields
+            label(for='checkSource', name='checkSource') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='checkSource', tabindex='0') 
+                  | I looked at the source(s) of the information in the article
+        .ui.form
+          .inline.fields
+            label(for='corroboration', name='corroboration') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='corroboration', tabindex='0')
+                  | I checked other sources
+        .ui.form
+          .inline.fields
+            label(for='interacted', name='interacted') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='interacted', tabindex='0')
+                  | I shared the news article
+        .ui.form
+          .inline.fields
+            label(for='corroboration', name='wouldViewAd') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='wouldViewAd', tabindex='0') 
+                  | I flagged the post
+        .ui.form
+          .inline.fields
+            label(for='ignored', name='ignored') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='ignored', tabindex='0') 
+                  | I did not do anything 
+
+
+    .ui.raised.segment
+      .ui.label.resultsPromptLabel
+        h4
+          | Why is it important to get the full story before reacting to or 
+          | sharing breaking news?
+      .ui.form
+        .inline.fields
+          label
+          textarea.glowing-border(rows='2' id="literacy_responseOne")
+
+
+    br
+    .ui.big.green.labeled.icon.button(onclick="onPrint()")
+          i.right.arrow.icon
+          |   Print your responses
+    br
+    br
+    .ui.big.green.labeled.icon.button.cyberbullying_end
+          i.rocket.icon
+          |   Continue
 
 block scripts
   script(src='/module_js/advancedlit/advancedlit_results.js')
   
 block styles
   link(rel='stylesheet', href='/css/modules/advancedlit.css')
+  link(rel='stylesheet', href='/css/results.css')
