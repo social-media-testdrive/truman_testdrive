@@ -1,98 +1,63 @@
 {
-  "music":[
-    {
-      "number": 1,
-      "heading": "Title for Music Article 1!",
-      "subheading": "Subheading for music article 1",
-      "author": "Jane Doe",
-      "date": "21 May 2020",
-      "blockOne": "This is the first paragraph of music article 1. Congrats!",
-      "blockTwo": "This is the second paragraph of music article 1.",
-      "blockThree": "This is the third paragraph of music article 1. There probably won't be more paragraphs than this!",
+  "article1": {
+    "buttonText": "Search about \"article 1\"",
+    "headline": "Article 1 Headline",
+    "subHeadline": "Article 1 sub headline",
+    "author": "Author: Jane Doe",
+    "date": "5 May 2020",
+    "image": "https://dhpd030vnpk29.cloudfront.net/post_pictures/playing-piano_se.jpg",
+    "block1": "This is the first paragraph of article 1.",
+    "block2": "This is the second paragraph of article 1.",
+    "block3": "This is the third paragraph of article 1."
+  },
+  "article2": {
+    "buttonText": "Search about \"article 2\"",
+    "headline": "Article 2 Headline",
+    "subHeadline": "Article 2 sub headline",
+    "author": "Author: John Smith",
+    "date": "6 May 2020",
+    "image": "https://dhpd030vnpk29.cloudfront.net/post_pictures/acoustic_se.jpg",
+    "block1": "This is the first paragraph of article 2.",
+    "block2": "This is the second paragraph of article 2.",
+    "block3": "This is the third paragraph of article 2."
+  },
+  "article3": {
+    "buttonText": "Search about \"article 3\"",
+    "headline": "Article 3 Headline",
+    "subHeadline": "Article 3 sub headline",
+    "author": "Author: Jane Smith",
+    "date": "7 May 2020",
+    "image": "https://dhpd030vnpk29.cloudfront.net/post_pictures/friends_music_se.jpg",
+    "block1": "This is the first paragraph of article 3.",
+    "block2": "This is the second paragraph of article 3.",
+    "block3": "This is the third paragraph of article 3."
+  },
+  "search": {
+    "searchTitle": "Search results",
+    "item1": {
+      "url": "resultURL1.com",
+      "title": "Article Title 1",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Nam at auctor velit, vitae fermentum diam."
     },
-    {
-      "number": 2,
-      "heading": "Title for Music Article 2!",
-      "subheading": "Subheading for music article 2",
-      "author": "John Doe",
-      "date": "21 May 2020",
-      "blockOne": "This is the first paragraph of music article 2. Congrats!",
-      "blockTwo": "This is the second paragraph of music article 2.",
-      "blockThree": "This is the third paragraph of music article 2. There probably won't be more paragraphs than this!",
+    "item2": {
+      "url": "resultURL2.com",
+      "title": "Article Title 2",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Nam at auctor velit, vitae fermentum diam."
     },
-    {
-      "number": 3,
-      "heading": "Title for Music Article 3!",
-      "subheading": "Subheading for music article 3",
-      "author": "John Smith",
-      "date": "21 May 2020",
-      "blockOne": "This is the first paragraph of music article 3. Congrats!",
-      "blockTwo": "This is the second paragraph of music article 3.",
-      "blockThree": "This is the third paragraph of music article 3. There probably won't be more paragraphs than this!",
+    "item3": {
+      "url": "resultURL3.com",
+      "title": "Article Title 3",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Nam at auctor velit, vitae fermentum diam."
+    },
+    "item4": {
+      "url": "resultURL4.com",
+      "title": "Article Title 4",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Nam at auctor velit, vitae fermentum diam."
+    },
+    "item5": {
+      "url": "resultURL5.com",
+      "title": "Article Title 5",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Nam at auctor velit, vitae fermentum diam."
     }
-  ],
-  "gaming":[
-    {
-      "number": 1,
-      "heading": "Title for gaming Article 1!",
-      "subheading": "Subheading for gaming article 1",
-      "author": "Jane Doe",
-      "date": "21 May 2020",
-      "blockOne": "This is the first paragraph of gaming article 1. Congrats!",
-      "blockTwo": "This is the second paragraph of gaming article 1.",
-      "blockThree": "This is the third paragraph of gaming article 1. There probably won't be more paragraphs than this!",
-    },
-    {
-      "number": 2,
-      "heading": "Title for gaming Article 2!",
-      "subheading": "Subheading for gaming article 2",
-      "author": "John Doe",
-      "date": "21 May 2020",
-      "blockOne": "This is the first paragraph of gaming article 2. Congrats!",
-      "blockTwo": "This is the second paragraph of gaming article 2.",
-      "blockThree": "This is the third paragraph of gaming article 2. There probably won't be more paragraphs than this!",
-    },
-    {
-      "number": 3,
-      "heading": "Title for gaming Article 3!",
-      "subheading": "Subheading for gaming article 3",
-      "author": "John Smith",
-      "date": "21 May 2020",
-      "blockOne": "This is the first paragraph of gaming article 3. Congrats!",
-      "blockTwo": "This is the second paragraph of gaming article 3.",
-      "blockThree": "This is the third paragraph of gaming article 3. There probably won't be more paragraphs than this!",
-    }
-  ],
-  "sports":[
-    {
-      "number": 1,
-      "heading": "Title for sports Article 1!",
-      "subheading": "Subheading for sports article 1",
-      "author": "Jane Doe",
-      "date": "21 May 2020",
-      "blockOne": "This is the first paragraph of sports article 1. Congrats!",
-      "blockTwo": "This is the second paragraph of sports article 1.",
-      "blockThree": "This is the third paragraph of sports article 1. There probably won't be more paragraphs than this!",
-    },
-    {
-      "number": 2,
-      "heading": "Title for sports Article 2!",
-      "subheading": "Subheading for sports article 2",
-      "author": "John Doe",
-      "date": "21 May 2020",
-      "blockOne": "This is the first paragraph of sports article 2. Congrats!",
-      "blockTwo": "This is the second paragraph of sports article 2.",
-      "blockThree": "This is the third paragraph of sports article 2. There probably won't be more paragraphs than this!",
-    },
-    {
-      "number": 3,
-      "heading": "Title for sports Article 3!",
-      "subheading": "Subheading for sports article 3",
-      "author": "John Smith",
-      "date": "21 May 2020",
-      "blockOne": "This is the first paragraph of sports article 3. Congrats!",
-      "blockTwo": "This is the second paragraph of sports article 3.",
-      "blockThree": "This is the third paragraph of sports article 3. There probably won't be more paragraphs than this!",
-    }
-  ]
+  }
 }
