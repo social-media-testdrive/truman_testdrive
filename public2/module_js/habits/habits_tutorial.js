@@ -6,10 +6,6 @@ function startIntro(){
     'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true,
     'doneLabel':'Done &#10003' });
   if($('.ui.menu.notMobileView').is(":visible")){
-<<<<<<< HEAD
-=======
-    // console.log("IN THE LAPTOP VIEW");
->>>>>>> 4fc1310... Removing manifest and service-worker file references
     intro.setOptions({
       steps: [
         {
@@ -68,10 +64,6 @@ function startIntro(){
       ]
     });
   } else if ($('.ui.menu.mobileView').is(":visible")){
-<<<<<<< HEAD
-=======
-    // console.log("IN THE MOBILE VIEW");
->>>>>>> 4fc1310... Removing manifest and service-worker file references
     intro.setOptions({
       steps: [
         {
