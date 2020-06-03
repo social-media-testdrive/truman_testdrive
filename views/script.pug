@@ -45,14 +45,14 @@ block content
       //- if val.relativeTime - then post came from user_post (so user post, user reply to actor reply to user post)
 
       if val.relativeTime
-        include partials/script_userPost
+        include partials/script/userPost
       //- Now we are making posts by Actors, not the USER
       
       //- This is a tageted ad post in the targeted ads module
       else
       
         block post
-          include partials/script_actorPost
+          include partials/script/actorPost
 
   
     -var post_quiz = "/results/"+mod;
@@ -65,13 +65,13 @@ block content
     br
     br
   
-    include partials/script_chatBox
+    include partials/script/chatBox
     
-    include partials/script/newPostModal
+    include partials/script/modals/newUserPost
     
-    include partials/script/digitalLiteracyFlagModal
+    include partials/script/modals/digitalLiteracyFlag
 
-    include partials/script/digitalLiteracyModal
+    include partials/script/modals/digitalLiteracyArticle
     
     //- View Post Info Modal
     .ui.small.popinfo.modal

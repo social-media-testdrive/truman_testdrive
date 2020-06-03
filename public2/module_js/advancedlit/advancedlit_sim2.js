@@ -37,9 +37,6 @@ function customOnHintCloseFunction(){
   } else {
     if ($('#removeHidden').is(":visible")) {
       $('#removeHidden').transition('fade');
-    } else {
-      //otherwise, bounce the message to draw attention to it
-      $('#clickAllDotsWarning').transition('bounce');
     }
   }
 }
