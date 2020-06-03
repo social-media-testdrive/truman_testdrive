@@ -19,20 +19,9 @@
   //-div(style="position: relative; z-index: 1;")
     img(src="image.png" style="position: absolute; z-index: 2;")
     span#overlay_text(style="position: relative; top: -10px; z-index: 3;") OVERLAY
-  .img.post
-    //-img.post(src="/"+val.picture)
-    if (val.module == 'digital-literacy' && val.info_text != "")           
-      img.imageWithModal(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPost()')
-    else if (val.module == 'digfoot')
-      img.imageWithModal(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPostDigfoot()')
-    else if (val.module == 'esteem')
-      img.imageWithModal(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPostEsteem()')
-    else
-      img(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture)
-  if (val.module == 'digital-literacy' && val.info_text != "")
-    .read.rounded.right.floated.modual.info_button(id="info_"+val.id, data-info_text = val.info_text)
-      i.info.icon
-  .content
+  .img.post.pointerCursor
+    img(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture)
+  .content.pointerCursor
     .description!=val.body
   .three.ui.bottom.attached.icon.buttons
     .ui.reply.button(tabindex='0')
