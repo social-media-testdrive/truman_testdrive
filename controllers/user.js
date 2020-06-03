@@ -821,11 +821,12 @@ exports.postUpdateProfile = (req, res, next) => {
     //user.profile.website = req.body.website || '';
     user.profile.bio = req.body.bio || '';
 
-    if (req.file)
-    {
-      //console.log("Changeing Picture now to: "+ req.file.filename);
-      user.profile.picture = req.file.filename;
-    }
+    user.profile.picture = req.body.profilePhoto;
+    // if (req.file)
+    // {
+    //   //console.log("Changeing Picture now to: "+ req.file.filename);
+    //   user.profile.picture = req.file.filename;
+    // }
 
     user.save((err) => {
       if (err) {

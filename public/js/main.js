@@ -357,7 +357,7 @@ end chat box code
     });
 
   //get add new feed post modal to work
-  $("#newpost, a.item.newpost").click(function () {
+  $("#newpost, a.item.newpost, .editProfilePictureButton").click(function () {
     $(' .ui.small.post.modal').modal('show');
     //lazy load the images in the modal
     $(".lazy").each(function() {
