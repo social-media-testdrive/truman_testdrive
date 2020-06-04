@@ -5,17 +5,6 @@ block content
   //- insert code for article after RAs provide design
 
   #content.sixteen.wide.column.centered.removeTopPadding.addBottomMargin
-    //- .ui.basic.segment(style="margin-bottom: 4em;")#context
-    
-      //- .ui.sticky
-      //-   .ui.fluid.two.item.menu
-      //-     a.active.item(data-tab='one') 
-      //-       i.home.icon
-      //-       | Home
-      //-     a.item(data-tab='two') 
-      //-     a.item
-      //-       i.search.icon
-      //-       | Search
     
     //- #####################################################
     .ui.active.tab(data-tab="one")
@@ -38,16 +27,13 @@ block content
                     img.ui.avatar.image(src=cdn+'/profile_pictures/user21.jpg')
                     span='Sam Hill'
             .img.post.articleImage.articleTab(data-tab="two")        
-              img(src=cdn+'/post_pictures/infolitguided1.png')
+              img(src='/picture.svg')
 
             .content.newsArticleTitleContainer.articleTab(data-tab="two")
                 a.articleLink
-                  | WASHINGTON-POSST.COM.CO &nbsp; &nbsp;
+                  | reedcountyvoice.com &nbsp; &nbsp;
                 .header
-                  | The 15 SHOCKING foods that will cause a heart attack !!   
-            .extra.content
-                p              
-                .description="You'll never guess what these are!!!"
+                  | BREAKING NEWS: Tornado Warning Issued in Reed County   
             .four.ui.bottom.attached.icon.buttons
               .ui.reply.button(tabindex='0')
                 i.reply.icon
@@ -62,24 +48,7 @@ block content
                 .ui.like.button
                   i.heart.icon
                   | Like
-                a.ui.basic.red.left.pointing.label.count 2
-            .content
-              .ui.comments
-                .comment(commentid='5bbd01d88a48061a73337b96')
-                  a.avatar
-                    img(src=cdn+'/profile_pictures/user66.jpeg')
-                  .content
-                    a.author Emma Hanson
-                    .metadata
-                      span.date Yesterday
-                      .rating
-                        i.heart.icon
-                        span.num 1
-                        | Likes
-                    .text omg this is really scary
-                    .actions
-                      a.like.comment Like
-                      a.flag.comment Flag
+                a.ui.basic.red.left.pointing.label.count 0
                   
     //- #####################################################
     .ui.tab(data-tab="two")
@@ -89,7 +58,7 @@ block content
         | Return to the timeline
       button.ui.big.green.button.searchTab#step4(data-tab='three')
         i.icon.search
-        | Search for "foods that cause heart attacks"
+        | Search for "Reed County tornado"
       .ui.segment(style='margin-bottom: 4em;')
         .ui.grid          
           .row
@@ -97,26 +66,25 @@ block content
 
 
               h1 
-                | The 15 SHOCKING foods that will cause a heart attack !!  
+                | BREAKING NEWS: Tornado Warning Issued in Reed County 
               h2 
-                | You'll never guess what these are!!!
-              p Author: Jane Doe
-              p Published: 5 May 2020
+                | The Reed County Voice
+              p Author: Jeremy Townsend
+              p 10 minutes ago
           .row
             .sixteen.wide.column#step3
               
-              img.ui.large.left.floated.image.fullArticleImage(src=cdn+'/post_pictures/infolitguided1.png')
+              img.ui.large.left.floated.image.fullArticleImage(src='/picture.svg')
 
-              p.articleText Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
-
-              p.articleText Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
-
-              p.articleText Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
-
-              p.articleText Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
-  
-              p.articleText.homeTab3(data-tab='three') 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Phasellus et mattis quam. Mauris tincidunt felis et diam suscipit, rhoncus auctor tellus imperdiet. Vestibulum pulvinar augue purus, vitae aliquet est volutpat non. Aenean ac ligula vel odio luctus laoreet sed vel tortor. Mauris porta tortor ac augue tempus, in ullamcorper metus fermentum. Nam venenatis consectetur dui sit amet suscipit. Quisque id felis vel urna vehicula ultrices vel sit amet eros. Nam at auctor velit, vitae fermentum diam. Vivamus fermentum commodo elementum. Vivamus ante sapien, rutrum eu leo sed, commodo pellentesque orci. Curabitur in tellus et dolor maximus rhoncus quis at diam. Etiam volutpat arcu vitae odio efficitur tempus.
-              
+              p.articleText 
+                | According to the National Weather Service, a tornado watch was 
+                | issued for Reed County today, effective immediately. Severe 
+                | wind gusts and large thunderstorms might lead to significant 
+                | damage to the local community. Residents are advised to 
+                | discuss emergency plans and check their tornado shelter.
+              p.articleText 
+                | Please stay tuned for more news to come.
+                
     //- #####################################################
     .ui.tab(data-tab="three")
       .ui.grid     
@@ -131,40 +99,54 @@ block content
               | Go back to the article
         .row
           .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.left.floated.column    
-            h2#step5 Search results for "food that cause heart attacks"
+            h2#step5 Search results for "Reed County tornado"
             
             
-            p.resultURL result1url.com
+            p.resultURL reedcountyvoice.com
             a
-              h4.resultTitle Article Title 1
+              h4.resultTitle 
+               | Tornado Watch Issued in Reed County - The Reed County Voice
             p.resultPreviewText
-              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus 
-              | ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus.
-              | Nam at auctor velit, vitae fermentum diam.
+              | The National Weather Service issued a tornado watch at 3 p.m. 
+              | yesterday. Residents should expect large hail and very heavy 
+              | downpours starting early today.
 
-            p.resultURL result2url.com
+            p.resultURL reedcountyvoice.com
             a
-              h4.resultTitle Article Title 2
+              h4.resultTitle 
+                | Local Grocery Stores Emptied after Tornado Warning - The Reed County Voice
             p.resultPreviewText
-              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus 
-              | ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus.
-              | Nam at auctor velit, vitae fermentum diam.
+              | After the tornado warning was issued, residents of Reed County 
+              | rushed to stores to stock up on supplies. Many stores were 
+              | emptied while others limited sales of important ...
 
-            p.resultURL result3url.com
+            p.resultURL reedcountyfl.gov
             a
-              h4.resultTitle Article Title 3
+              h4.resultTitle 
+                | Record-Breaking Roller Coaster "Tornado" Coming to Town - Reed 
+                | County
             p.resultPreviewText
-              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus 
-              | ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus.
-              | Nam at auctor velit, vitae fermentum diam.
+              | Five Flags in Reed County is planning to construct a new roller 
+              | coaster named "Tornado Coaster." Once finished, it will be one 
+              | of the tallest roller coasters in the ...
 
-            p.resultURL result4url.com
+            p.resultURL weather.gov
             a
-              h4.resultTitle Article Title 4
+              h4.resultTitle 
+                | Active Alerts - National Weather Service
             p.resultPreviewText
-              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus 
-              | ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus.
-              | Nam at auctor velit, vitae fermentum diam.
+              | Tornado Warning: Take Action! A tornado has been sighted or 
+              | indicated in Reed County, FL. There is imminent danger to life 
+              | and property. Move to an interior room on the lowest ...
+              
+            p.resultURL fiveflagspark.com
+            a
+              h4.resultTitle 
+                | "Tornado Coaster" Opening Next Year! - Five Flags Theme Park
+            p.resultPreviewText
+              | Five Flags announces construction plans for “Tornado Coaster,” a 
+              | record-breaking roller coaster that is first of its kind in the 
+              | country. ...
 
 block scripts
   script(src='/module_js/advancedlit/advancedlit_tutorial.js')

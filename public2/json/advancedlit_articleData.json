@@ -1,63 +1,50 @@
 {
   "article1": {
-    "buttonText": "Search about \"article 1\"",
-    "headline": "Article 1 Headline",
-    "subHeadline": "Article 1 sub headline",
-    "author": "Author: Jane Doe",
-    "date": "5 May 2020",
-    "image": "https://dhpd030vnpk29.cloudfront.net/post_pictures/playing-piano_se.jpg",
-    "block1": "This is the first paragraph of article 1.",
-    "block2": "This is the second paragraph of article 1.",
-    "block3": "This is the third paragraph of article 1."
-  },
-  "article2": {
-    "buttonText": "Search about \"article 2\"",
-    "headline": "Article 2 Headline",
-    "subHeadline": "Article 2 sub headline",
-    "author": "Author: John Smith",
-    "date": "6 May 2020",
-    "image": "https://dhpd030vnpk29.cloudfront.net/post_pictures/acoustic_se.jpg",
-    "block1": "This is the first paragraph of article 2.",
-    "block2": "This is the second paragraph of article 2.",
-    "block3": "This is the third paragraph of article 2."
+    "buttonText": "Search for \"Chestin CA earthquake\"",
+    "headline": "Breaking News: Magnitude 5.3 Earthquake Hits Chestin",
+    "subHeadline": "Chestin Daily",
+    "author": "Author: Amy Huang",
+    "date": "10 minutes ago",
+    "image": "https://dhpd030vnpk29.cloudfront.net/post_pictures/quake1_orig.jpg",
+    "block1": "A magnitude 5.3 earthquake was reported 1 hour ago, 17 miles from Chestin, Calif., according to the U.S. Geological Survey (Source: usgs.gov). They advised that residents should expect aftershocks until later tonight.",
+    "block2": "This article will be updated with further details to come."
   },
   "article3": {
-    "buttonText": "Search about \"article 3\"",
-    "headline": "Article 3 Headline",
-    "subHeadline": "Article 3 sub headline",
-    "author": "Author: Jane Smith",
-    "date": "7 May 2020",
-    "image": "https://dhpd030vnpk29.cloudfront.net/post_pictures/friends_music_se.jpg",
-    "block1": "This is the first paragraph of article 3.",
-    "block2": "This is the second paragraph of article 3.",
-    "block3": "This is the third paragraph of article 3."
+    "buttonText": "Search for \"Chestin CA earthquake\"",
+    "headline": "Locals Should Prepare in the Face of Earthquake Warning",
+    "subHeadline": "California Local News",
+    "author": "Author: Richard Becker",
+    "date": "1 day ago",
+    "image": "https://dhpd030vnpk29.cloudfront.net/post_pictures/quake3_orig.jpg",
+    "block1": "The U.S. Geological Survey issued a statement at 3 p.m. today warning residents of Chestin, California to be prepared for a moderate to severe earthquake to hit Chestin County tomorrow. Residents are advised to check for hazards in the home and identify safe places indoors and outdoors.",
+    "block2": "If an earthquake happens, here are things you can do to protect yourself right away. If you are in a car, pull over, stop, and set your parking brake. If you are in bed, turn face down and cover your head and neck with a pillow. If you are outdoors, stay outdoors away from buildings."
   },
   "search": {
-    "searchTitle": "Search results",
+    "searchTitle": "Search results for \"Chestin CA earthquake\"",
     "item1": {
-      "url": "resultURL1.com",
-      "title": "Article Title 1",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Nam at auctor velit, vitae fermentum diam."
+      "url": "chestindaily.com",
+      "title": "Earthquake Hits Chestin County - Chestin Daily",
+      "text": "A magnitude 5.3 earthquake was reported 1 hour ago, 17 miles from Chestin, Calif., according to the U.S. ... Residents should expect additional tremors ..."
     },
     "item2": {
-      "url": "resultURL2.com",
-      "title": "Article Title 2",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Nam at auctor velit, vitae fermentum diam."
+      "url": "calocalnews.com",
+      "title": "Locals Prepare in the Face of Earthquake Warning - California Local News",
+      "text": "The U.S. Geological Survey issued a statement at 3 p.m. today warning residents of Chestin, California to be prepared for a moderate to ..."
     },
     "item3": {
-      "url": "resultURL3.com",
-      "title": "Article Title 3",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Nam at auctor velit, vitae fermentum diam."
+      "url": "usgs.gov",
+      "title": "Latest Earthquakes - USGS Earthquake Hazards",
+      "text": "Latest earthquakes: M 5.3, Chestin, CA, USA; M 5.6, Hokota, Ibaraki, Japan; M 6.8, San Pedro de Atacama, Chile; ... Last updated 5 minutes ago ..."
     },
     "item4": {
-      "url": "resultURL4.com",
-      "title": "Article Title 4",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Nam at auctor velit, vitae fermentum diam."
+      "url": "en.wikipedia.org",
+      "title": "Chestin, CA (City) - Wikipedia",
+      "text": "Chestin, CA, officially the City of Chestin, is the largest city in Chestin County, California. With an estimated population of nearly one hundred thoursand ..."
     },
     "item5": {
-      "url": "resultURL5.com",
-      "title": "Article Title 5",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rhoncus ex sit amet efficitur gravida. Sed maximus orci vitae congue maximus. Nam at auctor velit, vitae fermentum diam."
+      "url": "eewsystem.org",
+      "title": "The Science of Earthquakes - Early Earthquake Warning System",
+      "text": "An earthquake is what happens when two blocks of the earth suddenly slip past ... from an earthquake, and this varies depending on where you are during the ..."
     }
   }
 }

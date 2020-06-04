@@ -20,7 +20,7 @@ setTimeout(function(){
 
 
 setTimeout(function(){
-  $('#card1,#card2,#card3,#card4,#card5,#card6').transition({
+  $('#card1,#card2').transition({
   animation : 'jiggle',
   duration  : 800,
   interval  : 200

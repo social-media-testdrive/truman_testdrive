@@ -1,5 +1,5 @@
 /* Could consider using .csv file like for allposts, but doesn't seem worth
-it with so little data. Consider this option if we need more articles to 
+it with so little data. Consider this option if we need more articles to
 facilitate topic customization. */
 
 // #############################################################################
@@ -10,7 +10,6 @@ $(window).on("load", function () {
   let jsonPath = '/json/advancedlit_articleData.json';
 
   $.getJSON(jsonPath).then(function(articleData){
-
     $('.ui.tab').each(function(){
       let dataTabAttribute = ($(this).closest('.ui.tab').attr('data-tab'));
 
@@ -25,7 +24,6 @@ $(window).on("load", function () {
         $(this).find('.fullArticleImage').attr("src",articleData[dataTabAttribute].image);
         $(this).find('.articleBlock1').text(articleData[dataTabAttribute].block1);
         $(this).find('.articleBlock2').text(articleData[dataTabAttribute].block2);
-        $(this).find('.articleBlock3').text(articleData[dataTabAttribute].block3);
       }
       if( (dataTabAttribute === "search1")
       || (dataTabAttribute === "search2")
@@ -58,5 +56,18 @@ $('.ui.card, .ui.button.articleTab, .ui.button.timelineTab, .ui.button.searchTab
     } else {
       $('.ui.card[data-tab="article'+articleNumber+'"]')[0].scrollIntoView();
     }
+
+    // lazy loading of images (needs to be duplicated here from main.js so that
+    // it works after changing tabs)
+    $('#content .fluid.card .img img, img.ui.avatar.image, a.avatar.image img')
+      .visibility({
+        type: 'image',
+        offset: 0,
+        onLoad: function (calculations) {
+          console.log("@@@@@@@ Real Image @@@@@@@@@");
+          $('#content .fluid.card .img img, img.ui.avatar.image, a.avatar.image img').visibility('refresh');
+        }
+      })
+      ;
   }
 });
