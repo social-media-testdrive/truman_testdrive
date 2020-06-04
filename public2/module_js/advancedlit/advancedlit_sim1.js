@@ -1,9 +1,21 @@
+var stepsList = [
+  {
+    element: '#step1',
+    intro: `Click on the blue dots&nbsp;<a role='button' tabindex='0'
+    class='introjs-hint'><div class='introjs-hint-dot'></div><div class=
+    'introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more...`,
+    position: "left",
+    scrollTo: 'tooltip'
+  }
+]
+
 var hintsList = [
   {
     hint: `Your friend Liam just posted an article that says your school is
     closing, and it looks like many of your other friends are sharing it as
     well. Click on the article to see what it says!`,
-    element: '#hint1'
+    element: '#hint1',
+    hintPosition: 'middle-middle'
   }
 ];
 
@@ -23,7 +35,7 @@ function customOnHintCloseFunction(){
   } else {
     if($('#clickAllDotsWarning').is(":hidden")){
       $('#clickAllDotsWarning').transition('fade');
-      $('.gridInsideTab').css("margin-bottom", "12em");
+      // $('.gridInsideTab').css("margin-bottom", "12em");
     }else{
       //otherwise, bounce the message to draw attention to it
       $('#clickAllDotsWarning').transition('bounce');
@@ -40,7 +52,7 @@ $('.ui.card').on('click', function(){
       } else {
         if($('#clickAllDotsWarning').is(":hidden")){
           $('#clickAllDotsWarning').transition('fade');
-          $('.gridInsideTab').css("margin-bottom", "12em");
+          // $('.gridInsideTab').css("margin-bottom", "12em");
         }else{
           //otherwise, bounce the message to draw attention to it
           $('#clickAllDotsWarning').transition('bounce');

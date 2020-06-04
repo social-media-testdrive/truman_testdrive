@@ -59,24 +59,15 @@ function startIntro(){
       {
         element: '#step5',
         intro: `Breaking news stories develop over time, so the first reports
-        might not have all the information. Reliable articles will make changes,
-        add information, and make corrections to the original article as the
-        story evolves.`,
+        might not have all the information.`,
         position: "right",
         scrollTo: "tooltip"
       },
       {
-        element: '#step6',
-        intro: `Think about the consequences of sharing a news article that
-        isn’t accurate or doesn’t have all the information. It can be harmful to
-        form opinions and make decisions based on false news.`,
-        position: "right",
-        scrollTo: "tooltip"
-      },
-      {
-        element: '#step7',
-        intro: `If you do decide to share something, you can add other reliable
-        sources that report the same information in the article.`,
+        element: '#step5',
+        intro: `Don’t share a news article that isn’t accurate or doesn’t have
+        all the information. It can be harmful to form opinions and make
+        decisions based on false news.`,
         position: "right",
         scrollTo: "tooltip"
       }

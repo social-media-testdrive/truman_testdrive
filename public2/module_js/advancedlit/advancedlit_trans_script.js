@@ -11,9 +11,12 @@ function startIntro(){
           },
           {
             intro: `Here is some background before you start: Imagine that you
-            have just heard that a tornado warning has been issued in your
-            county. You are going on social media to see if you can find any
-            information about it.`
+            have just heard that there has been an earthquake in the city that
+            your friends are visiting for a school trip.`
+          },
+          {
+            intro: `You are going on social media to see if you can find any
+            information about it. Try to identify accurate information!`
           }
 
         ]

@@ -4,14 +4,13 @@ var hintsList = [
     search for “Haywell Middle School closing” on Google, and here are the first
     5 things that you find.`,
     element: '#hint1',
-    hintPosition: 'middle-middle'
+    hintPosition: 'top-middle'
   },
   {
-    hint: `This is what a correction looks like. It tells you that this article
-    was recently updated to add more information. The language used also
-    suggests that there may be more information to come.`,
+    hint: `The language used here also suggests that there may be more
+    information to come.`,
     element: '#hint2',
-    hintPosition: 'middle-middle'
+    hintPosition: 'middle-right'
   }
 ];
 

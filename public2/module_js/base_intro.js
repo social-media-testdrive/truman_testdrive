@@ -3,7 +3,7 @@ const pathArray = window.location.pathname.split('/');
 
 const moduleCards = {
   "accounts":["acctandpasswords.png","Accounts and Passwords"],
-  "advancedlit":["news.png", "Advanced News Literacy"],
+  "advancedlit":["advancednews.png", "Advanced News Literacy"],
   "cyberbullying":["upstander.png","How to Be an Upstander"],
   "digfoot":["digfoot.png","Shaping Your Digital Footprint"],
   "digital-literacy":["news.png","News in Social Media"],
