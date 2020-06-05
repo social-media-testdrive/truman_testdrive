@@ -21,7 +21,14 @@ block content
             p Click through all of the blue dots to continue.
 
 
-    .ui.grid.gridInsideTab       
+    .ui.grid.gridInsideTab(style="margin-bottom:12em;")   
+    
+      .row 
+        .column
+          button.ui.big.button.articleTab
+            i.icon.rocket
+            | Return to social media feed
+            
       .row
         .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.left.floated.column    
 
@@ -72,12 +79,7 @@ block content
             | This e-newsletter is informational only and is neither sponsored 
             | nor endorsed by the Board of Education of the Hillwood County 
             | School District, the ...
-            
-    .row(style="margin-bottom:12em; margin-top: 1em;")  
-      .column
-        button.ui.big.button.articleTab
-          i.icon.rocket
-          | Return to social media feed
+
 block scripts
   script(src='/module_js/advancedlit/advancedlit_sim3.js')
   script(src='/module_js/base_sim.js')

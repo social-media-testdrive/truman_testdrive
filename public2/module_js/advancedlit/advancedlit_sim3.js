@@ -7,8 +7,8 @@ var hintsList = [
     hintPosition: 'top-middle'
   },
   {
-    hint: `The language used here also suggests that there may be more
-    information to come.`,
+    hint: `None of the sources you have found seem to be mentioning the same
+    thing.`,
     element: '#hint2',
     hintPosition: 'middle-right'
   }

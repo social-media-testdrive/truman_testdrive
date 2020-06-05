@@ -4,20 +4,21 @@ var hintsList = [
     accurate story. First, check the source. Is the article from a reliable news
     source?`,
     element: '#hint1',
-    hintPosition: 'top-left'
+    hintPosition: 'bottom-left'
   },
   {
     hint: `This label tells you if the article is an opinion piece or a news
     story. It’s great to read about other people’s opinions, but it’s important
     not to confuse it for being fact!`,
     element: '#hint2',
-    hintPosition: 'middle-middle'
+    hintPosition: 'bottom-left'
   },
   {
     hint: `Trustworthy news articles will also explain how and where their
-    information was gathered, and provide links to relevant sources.`,
+    information was gathered, and provide links to relevant sources. That is
+    missing here.`,
     element: '#hint3',
-    hintPosition: 'top-right'
+    hintPosition: 'bottom-middle'
   }
 ];
 

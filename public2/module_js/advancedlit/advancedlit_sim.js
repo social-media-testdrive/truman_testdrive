@@ -11,7 +11,7 @@ var stepsList = [
 
 var hintsList = [
   {
-    hint: `Your friend Liam just posted an article that says your school is
+    hint: `Your friend Corey just posted an article that says your school is
     closing, and it looks like many of your other friends are sharing it as
     well. Click on the article to see what it says!`,
     element: '#hint1',
@@ -43,7 +43,7 @@ function customOnHintCloseFunction(){
   }
 }
 
-$('.ui.card').on('click', function(){
+$('.ui.card.articleCard').on('click', function(){
   $('.ui.card').transition({
     animation: 'pulse',
     onComplete: function(){

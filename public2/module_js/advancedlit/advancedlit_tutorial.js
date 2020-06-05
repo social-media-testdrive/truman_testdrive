@@ -3,7 +3,6 @@ function changeActiveTab(newActiveTab) {
   switch (newActiveTab) {
     case 'home':
       $('.ui.tab[data-tab="one"]').addClass('active');
-
       break;
     case 'article':
       $('.ui.tab[data-tab="two"]').addClass('active');
@@ -34,9 +33,9 @@ function startIntro(){
       },
       {
         element: '#step2',
-        intro: `Here, you can see that the article is clearly labeled as an
-        <b>opinion</b> piece, rather than a news article. Reliable articles will
-        clearly distinguish between opinion and news.`,
+        intro: `Check to see if the article is clearly labeled as an opinion
+        piece or a news article. Reliable articles will clearly distinguish
+        between opinion and news.`,
         position: "right",
         scrollTo: "tooltip"
       },
@@ -49,6 +48,13 @@ function startIntro(){
         scrollTo: "tooltip"
       },
       {
+        element: '#step3B',
+        intro: `Breaking news stories develop over time, so the first reports
+        might not have all the information.`,
+        position: "right",
+        scrollTo: "tooltip"
+      },
+      {
         element: "#step4",
         intro: `Even if an article looks reliable, you should check with at
         least one additional source. Is the story being reported by other news
@@ -57,14 +63,15 @@ function startIntro(){
         scrollTo: "tooltip"
       },
       {
-        element: '#step5',
-        intro: `Breaking news stories develop over time, so the first reports
-        might not have all the information.`,
+        element: "#step5",
+        intro: `Even if an article looks reliable, you should check with at
+        least one additional source. Is the story being reported by other news
+        sites?`,
         position: "right",
         scrollTo: "tooltip"
       },
       {
-        element: '#step5',
+        element: '#step1',
         intro: `Don’t share a news article that isn’t accurate or doesn’t have
         all the information. It can be harmful to form opinions and make
         decisions based on false news.`,
@@ -75,14 +82,14 @@ function startIntro(){
   });
 
   intro.start().onexit(function() {
-    window.location.href='/sim1/advancedlit';
+    window.location.href='/sim/advancedlit';
   });
 
   intro.onbeforechange(function (){
     let currentStep = $(this)[0]._currentStep;
     if(currentStep === 0){
         changeActiveTab('home');
-    } else if ((1 <= currentStep) && (currentStep < 4) ){
+    } else if ((1 <= currentStep) && (currentStep < 5) ){
       // if(currentStep === 1){
       //   $('.ui.card').transition({
       //     animation: 'pulse',
@@ -94,8 +101,10 @@ function startIntro(){
       // } else {
         changeActiveTab('article');
       // }
-    } else if (currentStep >= 4) {
+    } else if ((currentStep) >= 5 && (currentStep < 6)) {
       changeActiveTab('search');
+    } else if  (currentStep >= 6 ) {
+      changeActiveTab('home');
     }
   });
 
