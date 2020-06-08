@@ -139,26 +139,26 @@ block content
                               else
                                 a.like.comment Like
                               a.flag.comment Flag
-          .extra.content
-            if user.comment_prompt == "yes"
-              .description(style="text-align:center;background:#E8E8E8")="How is "+(user.profile.name || user.username || user.id)+" Feeling?"
-              .ui.fluid.left.labeled.right.icon.input
-                .ui.label            
-                  if user.profile.picture
-                    img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name || user.username || user.id)
-                  else
-                    img.ui.avatar.image(src=user.gravatar(60), name=user.profile.name || user.username || user.id)
-                input.newcomment(type='text', placeholder='Write a Comment')
-                i.big.send.link.icon
-            else
-              .ui.fluid.left.labeled.right.icon.input
-                .ui.label
-                  if user.profile.picture
-                    img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name || user.username || user.id)
-                  else
-                    img.ui.avatar.image(src=user.gravatar(60), name=user.profile.name || user.username || user.id)            
-                input.newcomment(type='text', placeholder='Write a Comment')
-                i.big.send.link.icon
+          //- .extra.content
+          //-   if user.comment_prompt == "yes"
+          //-     .description(style="text-align:center;background:#E8E8E8")="How is "+(user.profile.name || user.username || user.id)+" Feeling?"
+          //-     .ui.fluid.left.labeled.right.icon.input
+          //-       .ui.label            
+          //-         if user.profile.picture
+          //-           img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name || user.username || user.id)
+          //-         else
+          //-           img.ui.avatar.image(src=user.gravatar(60), name=user.profile.name || user.username || user.id)
+          //-       input.newcomment(type='text', placeholder='Write a Comment')
+          //-       i.big.send.link.icon
+          //-   else
+          //-     .ui.fluid.left.labeled.right.icon.input
+          //-       .ui.label
+          //-         if user.profile.picture
+          //-           img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name || user.username || user.id)
+          //-         else
+          //-           img.ui.avatar.image(src=user.gravatar(60), name=user.profile.name || user.username || user.id)            
+          //-       input.newcomment(type='text', placeholder='Write a Comment')
+          //-       i.big.send.link.icon
 
       //- Now we are making posts by Actors, not the USER
       

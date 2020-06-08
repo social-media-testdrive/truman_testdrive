@@ -3,7 +3,7 @@ function startIntro(){
 
   var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
   if($('.ui.menu.notMobileView').is(":visible")){
-    console.log("IN THE LAPTOP VIEW");
+    // console.log("IN THE LAPTOP VIEW");
     intro.setOptions({
       steps: [
         {
@@ -51,7 +51,7 @@ function startIntro(){
       ]
     });
   } else if ($('.ui.menu.mobileView').is(":visible")){
-    console.log("IN THE MOBILE VIEW");
+    // console.log("IN THE MOBILE VIEW");
     intro.setOptions({
       steps: [
         {
@@ -101,7 +101,7 @@ function startIntro(){
   }
 
   intro.onbeforechange(function() {
-      console.log($(this)[0]._currentStep);
+      // console.log($(this)[0]._currentStep);
       if($(this)[0]._currentStep == 1){
         setTimeout(function(){
           $('#notificationsTabLabel').transition('jiggle');

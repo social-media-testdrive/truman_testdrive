@@ -57,7 +57,7 @@ function startIntro(){
              $('input[type=checkbox]').prop('checked',false);
              var post = $(this).closest(".ui.fluid.card.dim");
              var postID = post.attr("postID");
-             console.log("***********HIDE: post " + postID);
+             // console.log("***********HIDE: post " + postID);
              post.find(".ui.inverted.dimmer.notflag").dimmer({
                closable: false
              }).dimmer('show')
@@ -73,7 +73,7 @@ function startIntro(){
              //flag the post
              var post = $(this).closest(".ui.fluid.card.dim");
              var postID = post.attr("postID");
-             console.log("***********FLAG: post " + postID);
+             // console.log("***********FLAG: post " + postID);
              post.find(".ui.dimmer.flag").dimmer({
                closable: false
              })

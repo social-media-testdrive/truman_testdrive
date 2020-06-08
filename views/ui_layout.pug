@@ -23,7 +23,7 @@ html
     meta(property='og:image' content='https://dhpd030vnpk29.cloudfront.net/squareLogo.png')
     title #{title} - Social Media TestDrive
     link(rel='shortcut icon', href=cdn+'/favicon.ico')
-    link(rel='manifest', href='/manifest.json')
+    //- link(rel='manifest', href='/manifest.json')
     //link(rel='stylesheet', href='/semantic/dist/semantic.min.css')
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css', integrity='sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=', crossorigin='anonymous')
     
@@ -669,7 +669,7 @@ html
       }
 
       
-  script.
+  //-script.
     if ('serviceWorker' in navigator) {
     console.log("Will the service worker register?");
     navigator.serviceWorker.register('/service-worker.js')
