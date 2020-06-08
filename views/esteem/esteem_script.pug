@@ -11,11 +11,31 @@ block post
   include ../partials/script/modals/esteemPost
   
 block rightColumn
+
   .computer.only.four.wide.column
     .ui.sticky.compact.positive.message.advancedLitReminder
-      p 
-        | Remember that you are viewing Jeremy’s timeline, but you can still make posts and comments of your own.
-        
+      case user.esteemTopic
+        when "Music"
+          p 
+            | Remember that you are viewing Jeremy’s timeline, you are looking for 
+            | posts by Kiki and Franklin. You can still make posts and add 
+            | comments on the timeline. 
+        when "Sports"
+          p 
+            | Remember that you are viewing Jeremy’s timeline, you are looking for 
+            | posts by Brielle and Hayden. You can still make posts and add 
+            | comments on the timeline. 
+        when "Gaming"
+          p 
+            | Remember that you are viewing Jeremy’s timeline, you are looking for 
+            | posts by Lindsay and Asher. You can still make posts and add 
+            | comments on the timeline. 
+        default
+          p 
+            | Remember that you are viewing Jeremy’s timeline, you are looking for 
+            | posts by Kiki and Franklin. You can still make posts and add 
+            | comments on the timeline. 
+
 block scripts2
   script.
     $('.advancedLitReminder')

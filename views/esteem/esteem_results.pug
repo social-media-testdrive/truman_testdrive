@@ -17,8 +17,8 @@ block content
             h4
               i.exclamation.triangle.icon
 
-              | Here are some posts where Jeremy's friends expressed red flag 
-              | feelings, did you notice them?
+              | Here are some posts that might have caused Jeremy to experience 
+              | a red flag feeling, did you notice any of them?
           br
           br
           .ui.stackable.three.cards
@@ -133,58 +133,16 @@ block content
           br
 
 
-
     .ui.raised.segment
       .ui.label.resultsPromptLabel
         h4
-          | How might Jeremy feel when he sees these posts?
-      .content.checkOne
-        br
-        .ui.form
-          .ui.grid
-            .eight.wide.column
-              .field
-                .ui.checkbox
-                  input(type='checkbox')
-                  label Happy
-              .field
-                .ui.checkbox
-                  input(type='checkbox')
-                  label Excited
-              .field
-                .ui.checkbox
-                  input(type='checkbox')
-                  label Sad
-              .field
-                .ui.checkbox
-                  input(type='checkbox')
-                  label Jealous
-              .field
-                .ui.checkbox
-                  input(type='checkbox')
-                  label Encouraged
-            .eight.wide.column
-              .field
-                .ui.checkbox
-                  input(type='checkbox')
-                  label Anxious
-              .field
-                .ui.checkbox
-                  input(type='checkbox')
-                  label Angry
-              .field
-                .ui.checkbox
-                  input(type='checkbox')
-                  label Embarrassed
-              .field
-                .ui.checkbox
-                  input(type='checkbox')
-                  label Empathetic
-              .field
-                .ui.checkbox
-                  input(type='checkbox')
-                  label Neutral
-
+          | Do you remember seeing other posts that might have caused Jeremy to 
+          | feel good? What were they?
+      .ui.form
+        .inline.fields
+          label
+          textarea.glowing-border(rows='2' id="literacy_responseOne")
+            
     .ui.raised.segment
       .ui.label.resultsPromptLabel
         h4
@@ -193,7 +151,7 @@ block content
       .ui.form
         .inline.fields
           label
-          textarea.glowing-border(rows='2' id="literacy_responseOne")
+          textarea.glowing-border(rows='2' id="literacy_responseTwo")
 
 
     br
