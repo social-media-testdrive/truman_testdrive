@@ -1,11 +1,14 @@
 //$(document).ready(function() {
-
 //Before Page load:
 //hide news feed before it is all loaded
 $('#content').hide();
 $('#loading').show();
 
 $(window).on("load", function () {
+
+  //recording the current page
+  let pathArray = window.location.pathname.split('/');
+  $.post("/pageLog", { page: pathArray[1], lesson: pathArray[2], _csrf: $('meta[name="csrf-token"]').attr('content') });
 
   //Activating the sticky functionality for the left column
   $('.ui.sticky.sideMenu')

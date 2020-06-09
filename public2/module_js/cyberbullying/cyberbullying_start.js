@@ -40,7 +40,7 @@ $('#anonymous').on('click', function () {
 
  $('#curate').on('click', function () {
     $('#curate_info').show();
-    $('#curate').transition('tada');     
+    $('#curate').transition('tada');
     if(!($('#question').is(":hidden") ||  $('#anonymous_info').is(":hidden") || $('#audience_info').is(":hidden") || $('#curate_info').is(":hidden"))){
       $('#clickLabelsWarning').hide();
       $('.ui.labeled.icon.button').addClass('green');

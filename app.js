@@ -523,6 +523,8 @@ app.get('/account/:modId', passportConfig.isAuthenticated, userController.getAcc
 app.get('/user/:userId', passportConfig.isAuthenticated, actorsController.getActor);
 app.post('/user', passportConfig.isAuthenticated, actorsController.postBlockOrReport);
 
+app.post('/pageLog', passportConfig.isAuthenticated, userController.postPageLog);
+
 app.get('/bell', passportConfig.isAuthenticated, userController.checkBell);
 
 //getScript

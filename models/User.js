@@ -100,7 +100,8 @@ const userSchema = new mongoose.Schema({
   //pages user has visited. Not sure if this is used in TestDrive
   pageLog: [new Schema({
     time: Date,
-    page: String
+    subdirectory1: String,
+    subdirectory2: String
     })],
 
   //When and why someone reported an actor
@@ -206,11 +207,16 @@ userSchema.methods.logUser = function logUser(time, agent, ip) {
 
 };
 
-userSchema.methods.logPage = function logPage(time, page) {
-
+userSchema.methods.logPage = function logPage(time, subdirectory1, subdirectory2) {
     let log = {};
     log.time = time;
-    log.page = page;
+    if(subdirectory1 !== undefined){
+      log.subdirectory1 = subdirectory1;
+      log.subdirectory2 = subdirectory2;
+    } else {
+      log.subdirectory1 = "home";
+      log.subdirectory2 = "";
+    }
     this.pageLog.push(log);
 };
 

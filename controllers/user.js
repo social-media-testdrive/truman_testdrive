@@ -672,6 +672,24 @@ exports.getMe = (req, res) => {
 
 };
 
+/**
+ * post a pageLog
+ */
+exports.postPageLog = (req, res, next) => {
+
+  User.findById(req.user.id, (err, user) => {
+    if (err) { return next(err); }
+    console.log("HERE WE ARE!");
+    user.logPage(Date.now(), req.body.page, req.body.lesson);
+    user.save((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.send({result:"success"});
+    });
+  });
+};
+
 exports.getHabitsTimer = (req, res) => {
     User.findById(req.user.id)
       .exec(function (err, user){
