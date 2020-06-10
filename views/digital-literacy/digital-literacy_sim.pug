@@ -5,16 +5,16 @@ block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   .computer.only.tablet.only.four.wide.column 
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
-    .ui.one.column.centered.grid(style="padding-top:1em;")
-      .ui.fixed.bottom.sticky(style="padding-bottom:6em;")
-        .ui.icon.compact.message.warning(style="display:none;")#removeHidden
+    .ui.one.column.centered.grid
+      .ui.fixed.bottom.sticky
+        .ui.icon.compact.message.warning#removeHidden
           i.close.icon
           i.question.icon.float
           .content
             .ui.header Need some help? 
             p Make sure you are clicking "Got it" on the blue dots!
           
-        .ui.icon.message.warning(style="display:none;")#clickAllDotsWarning
+        .ui.icon.message.warning#clickAllDotsWarning
           i.close.icon
           i.hand.pointer.icon.float
           .content
@@ -27,23 +27,25 @@ block content
           .center
             h2.ui.inverted.icon.header
               i.red.flag.icon
-              |                                     You &apos;ve flagged this!
+              | You&apos;ve flagged this!
               h3.ui.inverted.header
-                span The admins will review this post further. We are sorry you had this experience.
+                span 
+                  | The admins will review this post further. We are sorry you 
+                  | had this experience.
       .content
         .right.floated.meta= "Yesterday"
         a(href='#')
               img.ui.avatar.image(src=cdn+'/profile_pictures/user21.jpg')
               span='Sam Hill'
       .img.post        
-        img(src=cdn+'/post_pictures/infolitguided1.png' style='max-width:100%;')
+        img(src=cdn+'/post_pictures/infolitguided1.png')
 
-      .content(style="background:rgba(0, 0, 0, 0.05);" data-hint="Be sure to check the article's website. This one is suspicious because of the '.com.co,' a sure sign it's trying to imitate a credible site. Also note the spelling errors in the URL.", data-hintPosition="top-left")
-          .read.rounded.right.floated.info_button(id="info_guide_1",style="z-index:9;text-align:center;position:relative;bottom:10px;width:7%;height:auto")
+      .content.newsArticleTitleContainer#hint1
+          .read.rounded.right.floated.info_button(id="info_guide_1")
             i.info.icon
-          a(onclick='openPost()')
+          a.articleLink
             | WASHINGTON-POSST.COM.CO &nbsp; &nbsp;
-          .header(data-hint="You can see that the headline uses shocking language and has a wild image to get people to click on it. This is an example of a clickbait headline.", data-hintPosition="middle-right")
+          .header#hint2
             | The 15 SHOCKING foods that will cause a heart attack !!   
       .extra.content
           p              
@@ -93,7 +95,7 @@ block content
           .center
             h2.ui.inverted.icon.header
               i.red.flag.icon
-              |                                     You &apos;ve flagged this!
+              |                                     You&apos;ve flagged this!
               h3.ui.inverted.header
                 span The admins will review this post further. We are sorry you had this experience.
       .content
@@ -102,11 +104,11 @@ block content
               img.ui.avatar.image(src=cdn+'/profile_pictures/user54.jpg')
               span='Ariel Simon'
       .img.post
-        img(src=cdn+'/post_pictures/infolitguided2.png' style='max-width:100%;')
-      .content(style="background:rgba(0, 0, 0, 0.05);")
-          .read.rounded.right.floated.info_button(id="info_guide_2",style="z-index:9;text-align:center;position:relative;bottom:10px;width:7%;height:auto")
+        img(src=cdn+'/post_pictures/infolitguided2.png')
+      .content.newsArticleTitleContainer
+          .read.rounded.right.floated.info_button(id="info_guide_2")
             i.info.icon
-          a#article1(onclick='openPost()')
+          a.articleLink#article1
             | WWW.NYTIMES.COM
           .header Mass Migration of Painted Lady Butterflies Entrances Californains   
       .extra.content
@@ -159,7 +161,7 @@ block content
           .center
             h2.ui.inverted.icon.header
               i.red.flag.icon
-              |                                     You &apos;ve flagged this!
+              |                                     You&apos;ve flagged this!
               h3.ui.inverted.header
                 span The admins will review this post further. We are sorry you had this experience.
       .content
@@ -168,13 +170,13 @@ block content
               img.ui.avatar.image(src=cdn+'/profile_pictures/user33.jpg')
               span='Sean Gomez'
       .img.post
-        img(src=cdn+'/post_pictures/infolitguided4.jpg' style='max-width:100%;')
-      .content(style="background:rgba(0, 0, 0, 0.05);")
-          .read.rounded.right.floated.info_button(id="info_guide_4",style="z-index:9;text-align:center;position:relative;bottom:10px;width:7%;height:auto")
+        img(src=cdn+'/post_pictures/infolitguided4.jpg')
+      .content.newsArticleTitleContainer
+          .read.rounded.right.floated.info_button(id="info_guide_4")
             i.info.icon
-          a#article1(onclick='openPost()')
+          a.articleLink#article1
             | CNN-LOCAL8.COM.CO &nbsp; &nbsp;
-          a(href='#',data-hint="After analyzing the headline and image, be sure to click on the article link to read the article more closely.")
+          a#hint3(href='#')
           .header Missouri Teen's House Burns Down After Fidget Spinner Catches Fire   
       .extra.content
           p              
@@ -183,7 +185,7 @@ block content
         .ui.reply.button(tabindex='0')
           i.reply.icon
           |                             Reply
-        .ui.flag.button(tabindex='0', data-hint=" If you decide the article is fake news, you can flag the post to report it. Don’t share the article!")
+        .ui.flag.button#hint4(tabindex='0')
           i.flag.icon
           |                             Flag
         //-.span()          
@@ -219,10 +221,10 @@ block content
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
 
-    .ui.warning.message#clickAllDotsWarning(style="display:none;")
+    .ui.warning.message#clickAllDotsWarning
       .header
         | Click through all of the blue dots to continue
-    button.ui.big.labeled.icon.button.cybertrans#digitalLiteracySimButton(style="margin-bottom:4em;")
+    button.ui.big.labeled.icon.button.cybertrans#cyberTransButton(style="margin-bottom:4em;")
         i.rocket.icon
         |   Let's Continue!
 
@@ -317,4 +319,8 @@ block content
 
 block scripts
   script(src="/module_js/digital-literacy/digital-literacy_sim.js")
-    
+  script(src="/module_js/base_sim.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/modules/digital-literacy.css')
+  link(rel='stylesheet', href='/css/sim.css')

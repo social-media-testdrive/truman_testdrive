@@ -18,16 +18,16 @@ block content
 
   
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column 
-    .ui.one.column.centered.grid(style="padding-top:1em;")
-      .ui.fixed.bottom.sticky(style="padding-bottom:6em;")
-        .ui.icon.compact.message.warning(style="display:none;")#removeHidden
+    .ui.one.column.centered.grid
+      .ui.fixed.bottom.sticky
+        .ui.icon.compact.message.warning#removeHidden
           i.close.icon
           i.question.icon.float
           .content
             .ui.header Need some help? 
             p Make sure you are clicking "Got it" on the blue dots!
           
-        .ui.icon.message.warning(style="display:none;")#clickAllDotsWarning
+        .ui.icon.message.warning#clickAllDotsWarning
           i.close.icon
           i.hand.pointer.icon.float
           .content
@@ -48,9 +48,9 @@ block content
         img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
         |   <b>Lily Hui</b>
       .img.post
-        img#loadingPostOne(src=cdn+"/post_pictures/nyctrip.jpg", style="max-width:100%;")
+        img#loadingPostOne(src=cdn+"/post_pictures/nyctrip.jpg")
       .content
-        .description#dataHintOneA(data-hint="This is what Lily’s profile now looks like to the public. All of her location information has been hidden. It is now only visible to her social media friends." data-hintPosition="middle-right")
+        .description#hint1
           | On a trip to nyc with my family😃
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
@@ -99,14 +99,14 @@ block content
                   |  You&apos;ve flagged this!
                   h3.ui.inverted.header
                     span="The admins will review this post further. We are sorry you had this experience."
-      .content#dataHintTwoA(data-hint="Here is an example of a tagged post. Susan created this post and tagged Lily in it." data-hintPosition="middle-middle")
+      .content#hint2
         .right.floated.meta= "3 days ago"
         |
         a(href="/user/Suzieee")
           img.ui.avatar.image(src=cdn+'/profile_pictures/user40.jpg')
-          span(style="color: black;") <b> Susan Turner</b>
+          span <b> Susan Turner</b>
       .img.post
-        img#loadingPostTwo(src=cdn+"/post_pictures/bowlingalley.jpg", style="max-width:100%;")
+        img#loadingPostTwo(src=cdn+"/post_pictures/bowlingalley.jpg")
       .content
         .description#dataHintThreeA(data-hint="Lily can’t change what these posts say because she did not make them. This can be a problem if she doesn’t want this post on her profile!", data-hintPosition="middle-right")
           | bowling with friends!!
@@ -180,7 +180,7 @@ block content
         img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
         |   <b>Lily Hui</b>
       .img.post
-        img(src=cdn+"/post_pictures/prettyflowers.png", style="max-width:100%;")
+        img(src=cdn+"/post_pictures/prettyflowers.png")
       .content
         .description
           | pretty flowers in my back yard
@@ -237,7 +237,7 @@ block content
         img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
         |   <b>Lily Hui</b>
       .img.post
-        img(src=cdn+"/post_pictures/friendshipbracelet.png", style="max-width:100%;")
+        img(src=cdn+"/post_pictures/friendshipbracelet.png")
       .content
         .description
           | Making friendship bracelets❤️
@@ -291,9 +291,9 @@ block content
         |
         a(href="/user/arihearts")
           img.ui.avatar.image(src=cdn+'/profile_pictures/user47.jpeg')
-          span(style="color: black;") <b> Ariel Simon</b>
+          span <b> Ariel Simon</b>
       .img.post
-        img#loadingPostThree(src=cdn+"/post_pictures/gingerbread.jpg", style="max-width:100%;")
+        img#loadingPostThree(src=cdn+"/post_pictures/gingerbread.jpg")
       .content
         .description#dataHintFourA(data-hint="This is another example of a tagged post. Ariel created this post and tagged Lily in it." data-hintPosition="middle-right")
           | so proud of my gingerbread house   
@@ -367,7 +367,7 @@ block content
         img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
         |   <b>Lily Hui</b>
       .img.post
-        img(src=cdn+"/post_pictures/healthyeating.png", style="max-width:100%;")
+        img(src=cdn+"/post_pictures/healthyeating.png")
       .content
         .description
           | healthy eating
@@ -440,7 +440,7 @@ block content
         img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
         |   <b>Lily Hui</b>
       .img.post
-        img(src=cdn+"/post_pictures/zoomonkey.jpg", style="max-width:100%;")
+        img(src=cdn+"/post_pictures/zoomonkey.jpg")
       .content
         .description
           | monkey!
@@ -479,7 +479,7 @@ block content
         img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
         |   <b>Lily Hui</b>
       .img.post
-        img(src=cdn+"/post_pictures/lilypicture.png", style="max-width:100%;")
+        img(src=cdn+"/post_pictures/lilypicture.png")
       .content
         .description
           | hey it's me 
@@ -537,17 +537,32 @@ block content
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon            
             
-      
-            
 
-    .ui.warning.message#clickAllDotsFree2(style="display:none;")
-      .header
-        | Click through all of the blue dots to continue
-    button.ui.big.labeled.icon.button.settings3#settings3(style="margin-bottom:4em;")
+    button.ui.big.labeled.icon.button.settings3#cyberTransButton(style="margin-bottom:4em;")
         i.rocket.icon
         |   Let's Continue!
 
 
 block scripts
-  script(src="/module_js/privacy/privacy_free-play2.js")
+  script.
+    var hintsList = [
+      {
+        hint: `This is what Lily’s profile now looks like to the public. All of her
+        location information has been hidden. It is now only visible to her social
+        media friends.`,
+        element: '#hint1',
+        hintPosition: 'middle-right'
+      },
+      {
+        hint: `Here is an example of a tagged post. Susan created this post and
+        tagged Lily in it.`,
+        element: '#hint2',
+        hintPosition: 'middle-middle'
+      }
+    ];
+  script(src="/module_js/base_sim.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/sim.css')
+  link(rel='stylesheet', href='/css/modules/privacy.css')
   

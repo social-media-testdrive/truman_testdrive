@@ -1,0 +1,110 @@
+/* targeted ad menu */
+
+.ui.right.floated.menu {
+  border: none;
+  box-shadow: none;
+}
+
+.ui.right.floated.menu i.fitted.icon,
+i.external.alternate.icon {
+  color: gray;
+}
+
+.ui.card a span {
+  vertical-align: middle;
+}
+
+#sponsoredTag, .sponsoredTag {
+  border: none;
+}
+
+/* hidden ad overlay */
+
+.notflag i, .notflag h1 {
+  color: black;
+}
+
+/* trans */
+
+.caret.icon {
+  text-indent: 3em !important;
+}
+
+/* trans2 */
+
+.ui.form label {
+  font-size: 120% !important;
+}
+
+.ui.form .item {
+  font-size: 100% !important;
+}
+
+/* interest pages */
+
+/* gaming */
+
+.gamingElement1 img {
+  object-fit:cover;
+  height:280px !important;
+}
+
+.gamingElement1 h1 {
+  position:absolute;
+  bottom:50%;
+  width:100%;
+  height:auto;
+  color:white;
+}
+
+.gamingElement1 p {
+  position:absolute;
+  bottom:40%;
+  width:100%;
+  height:auto;
+  color:white;
+}
+
+.gamingElement2 img {
+  object-fit:cover;
+  height:280px !important;
+}
+
+.gamingElement2 h2 {
+  position:absolute;
+  bottom:50%;
+  left:5%;
+  right:5%;
+  width:100%;
+  height:auto;
+  color:white;
+}
+
+/* food */
+
+.mainRecipe {
+  background-color:#FFFFFF;
+  padding-bottom:4em !important;
+}
+
+.mainRecipe img {
+  max-width:100%;
+}
+
+.sideRecipes img {
+  object-fit:cover;
+  width:130px !important;
+  height:130px !important;
+}
+
+/* sports */
+
+.sportsPageBackground{
+  background-color: #FFFFFF;
+}
+
+.sportsPageBackground img {
+  object-fit:cover;
+  width:200px !important;
+  height:200px !important;
+}

@@ -2,7 +2,7 @@ extends ../ui_layout
 
 block content
 
-  .ui.text.container(style="margin-bottom:4em;")
+  .ui.text.container.addBottomMargin
     br
     .column
       .ui.raised.segment
@@ -15,31 +15,35 @@ block content
         h5.ui.header
           i.arrow.circle.right.blue.icon
           .content
-            |  Companies collect all sorts of data about your online activity and then use that data to show you targeted ads on social media. 
+            |  Companies collect all sorts of data about your online activity 
+            | and then use that data to show you targeted ads on social media. 
 
         h5.ui.header
           i.arrow.circle.right.blue.icon
           .content
-            |   Ads are required to be labeled in some way, such as “ad” or “sponsored.”  But the posts can still look very similar to regular social media posts on your timeline.
+            | Ads are required to be labeled in some way, such as “ad” or 
+            | “sponsored.”  But the posts can still look very similar to regular 
+            | social media posts on your timeline.
 
 
         h5.ui.header
           i.arrow.circle.right.blue.icon
           .content
-            |   You can follow these strategies to help reduce the number of targeted ads you see online:
+            | You can follow these strategies to help reduce the number of 
+            | targeted ads you see online:
             
         h5.ui.header
-          i.caret.right.blue.icon(style="text-indent:3em;")
+          i.caret.right.blue.icon
           .content
             |   Turn off cookies in your web browser
             
         h5.ui.header
-          i.caret.right.blue.icon(style="text-indent:3em;")
+          i.caret.right.blue.icon
           .content
             |   Adjust privacy settings in your apps
         
         h5.ui.header
-          i.caret.right.blue.icon(style="text-indent:3em;")
+          i.caret.right.blue.icon
           .content
             |   Limit what you share
         br
@@ -51,8 +55,11 @@ block content
             i.rocket.icon
             |   Got it!
 
-    block scripts
+block scripts
   script().
     function startIntro(){
         window.location.href='/trans2/targeted';
       };
+
+block styles
+  link(rel='stylesheet', href='/css/modules/targeted.css')

@@ -5,16 +5,16 @@ block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   .computer.only.tablet.only.four.wide.column 
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
-    .ui.one.column.centered.grid(style="padding-top:1em;")
-      .ui.fixed.bottom.sticky(style="padding-bottom:6em;")
-        .ui.icon.compact.message.warning(style="display:none;")#removeHidden
+    .ui.one.column.centered.grid
+      .ui.fixed.bottom.sticky
+        .ui.icon.compact.message.warning#removeHidden
           i.close.icon
           i.question.icon.float
           .content
             .ui.header Need some help? 
             p Make sure you are clicking "Got it" on the blue dots!
           
-        .ui.icon.message.warning(style="display:none;")#clickAllDotsWarning
+        .ui.icon.message.warning#clickAllDotsWarning
           i.close.icon
           i.hand.pointer.icon.float
           .content
@@ -27,29 +27,31 @@ block content
           .center
             h2.ui.inverted.icon.header
               i.red.flag.icon
-              |                                     You &apos;ve flagged this!
+              | You&apos;ve flagged this!
               h3.ui.inverted.header
-                span The admins will review this post further. We are sorry you had this experience.
+                span 
+                  | The admins will review this post further. We are sorry you 
+                  | had this experience.
       .content
         .right.floated.meta= "Yesterday"
         a(href='#')
               img.ui.avatar.image(src=cdn+'/profile_pictures/user55.jpg')
               span='Lana Reed'
       .img.post
-        img(src=cdn+'/post_pictures/calculator.jpg' style='max-width:100%;')
+        img(src=cdn+'/post_pictures/calculator.jpg')
       .content
         .description Somebody help me with math
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
           i.reply.icon
-          |                             Reply
+          | Reply
         .ui.flag.button(tabindex='0')
           i.flag.icon
-          |                             Flag
+          | Flag
         .ui.labeled.button(tabindex='0')
           .ui.like.button
             i.heart.icon
-            |                                 Like
+            | Like
           a.ui.basic.red.left.pointing.label.count 2
       .content
         .ui.comments
@@ -63,8 +65,10 @@ block content
                 .rating
                   i.heart.icon
                   span.num 1
-                  |                                             Likes
-              .text Seriously, you should drop out or repeat grade 7 if you can't even deal with such an easy assignment.
+                  | Likes
+              .text 
+                | Seriously, you should drop out or repeat grade 7 if you can't 
+                | even deal with such an easy assignment.
               .actions
                 a.like.comment Like
                 a.flag.comment Flag
@@ -81,29 +85,31 @@ block content
           .center
             h2.ui.inverted.icon.header
               i.red.flag.icon
-              |                                     You &apos;ve flagged this!
+              | You&apos;ve flagged this!
               h3.ui.inverted.header
-                span The admins will review this post further. We are sorry you had this experience.
+                span 
+                  | The admins will review this post further. We are sorry you 
+                  | had this experience.
       .content
         .right.floated.meta= "Yesterday"
         a(href='#')
               img.ui.avatar.image(src=cdn+'/profile_pictures/user54.jpg')
               span='Ariel Simon'
       .img.post
-        img(src=cdn+'/post_pictures/class_schedule.png' style='max-width:100%;')
+        img(src=cdn+'/post_pictures/class_schedule.png')
       .content
         .description Look at my class schedule this semester!
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
           i.reply.icon
-          |                             Reply
+          | Reply
         .ui.flag.button(tabindex='0')
           i.flag.icon
-          |                             Flag
+          | Flag
         .ui.labeled.button(tabindex='0')
           .ui.like.button
             i.heart.icon
-            |                                 Like
+            | Like
           a.ui.basic.red.left.pointing.label.count 2
       .content
         .ui.comments
@@ -117,7 +123,7 @@ block content
                 .rating
                   i.heart.icon
                   span.num 1
-                  |                                             Likes
+                  | Likes
               .text omg i’m so scared of physics
               .actions
                 a.like.comment Like
@@ -136,34 +142,32 @@ block content
             .center
               h2.ui.inverted.icon.header
                 i.red.flag.icon
-                |                                     You &apos;ve flagged this!
+                | You&apos;ve flagged this!
                 h3.ui.inverted.header
-                  span The admins will review this post further. We are sorry you had this experience.
+                  span 
+                    | The admins will review this post further. We are sorry you 
+                    | had this experience.
         .content
           .right.floated.meta= "Yesterday"
           a(href='#')
                 img.ui.avatar.image(src=cdn+'/profile_pictures/user66.jpeg')
                 span='Emma Hanson'
         .img.post
-          img(src=cdn+'/post_pictures/loser.jpg' style='max-width:100%;')
+          img(src=cdn+'/post_pictures/loser.jpg')
         .content
           .description Lana is a LOSER!
         .three.ui.bottom.attached.icon.buttons
           .ui.reply.button(tabindex='0')
             i.reply.icon
-            |                             Reply
+            | Reply
           .ui.flag.button(tabindex='0')#hint2
             i.flag.icon
-            |                             Flag
+            | Flag
           .ui.labeled.button(tabindex='0')
             .ui.like.button
               i.heart.icon
-              |                                 Like
-            a.ui.basic.red.left.pointing.label.count 2
-        //- .content
-        //-   .description
-        //- .content
-        //-   .ui.comments            
+              | Like
+            a.ui.basic.red.left.pointing.label.count 2        
         .extra.content
           .ui.fluid.left.labeled.right.icon.input
             .ui.label
@@ -179,29 +183,32 @@ block content
           .center
             h2.ui.inverted.icon.header
               i.red.flag.icon
-              |                                     You &apos;ve flagged this!
+              | You&apos;ve flagged this!
               h3.ui.inverted.header
-                span The admins will review this post further. We are sorry you had this experience.
+                span 
+                  | The admins will review this post further. We are sorry you 
+                  | had this experience.
       .content
         .right.floated.meta= "Yesterday"
         a(href='#')
               img.ui.avatar.image(src=cdn+'/profile_pictures/user44.png')
               span='David Cole'
       .img.post
-        img(src=cdn+'/post_pictures/blackbkg.jpg' style='max-width:100%;')
+        img(src=cdn+'/post_pictures/blackbkg.jpg')
       .content
-        .description No one likes u sarah. Why do u come to school? @Sarah Stella
+        .description 
+          | No one likes u sarah. Why do u come to school? @Sarah Stella
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
           i.reply.icon
-          |                             Reply
+          | Reply
         .ui.flag.button()
           i.flag.icon
-          |                             Flag
+          | Flag
         .ui.labeled.button(tabindex='0')
           .ui.like.button
             i.heart.icon
-            |                                 Like
+            | Like
           a.ui.basic.red.left.pointing.label.count 2
       .content
         .ui.comments
@@ -215,7 +222,7 @@ block content
                 .rating
                   i.heart.icon
                   span.num 1
-                  |                                             Likes
+                  | Likes
               .text Lol it’s true ! I don’t want to see her at school anymore
               .actions
                 a.like.comment Like
@@ -228,10 +235,7 @@ block content
           input.newcomment#hint4(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
 
-    //-.ui.warning.message#clickAllDotsSim(style="display:none;")
-      .header
-        | Click through all of the blue dots to continue
-    button.ui.big.labeled.icon.button.cybertrans#cyberTransButton(style="margin-bottom:4em;")
+    button.ui.big.labeled.icon.button.cybertrans#cyberTransButton(style="margin-bottom: 4em;")
           i.rocket.icon
           |   Let's Continue!
 
@@ -282,5 +286,8 @@ block scripts
     ]
     
   script(src = "/module_js/base_sim.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/sim.css')
 
     

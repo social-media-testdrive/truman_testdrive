@@ -2,7 +2,7 @@ extends ../ui_layout
 
 block content
   
-  .ui.text.container(style="margin-bottom:4em;")
+  .ui.text.container.addBottomMargin
     br
     .column
       .ui.raised.segment
@@ -26,16 +26,16 @@ block content
         .ui.container
           form.ui.form
               .field#animateDropdownError
-                label(style="font-size:120%;")
+                label
                   i.search.large.gray.icon
                   .ui.selection.dropdown(name='topicSelect')
                     input(type='hidden')
                     i.dropdown.icon
                     .default.text Choose a topic...
                     .menu
-                      .item(data-value='0' style="font-size:100%") Food
-                      .item(data-value='1' style="font-size:100%") Sports
-                      .item(data-value='2' style="font-size:100%") Gaming
+                      .item(data-value='0') Food
+                      .item(data-value='1') Sports
+                      .item(data-value='2') Gaming
       br
       br
 
@@ -55,5 +55,8 @@ block content
     
 block scripts
   script(src="/module_js/targeted/targeted_trans2.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/modules/targeted.css')
   
     

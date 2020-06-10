@@ -1,14 +1,68 @@
 //$(document).ready(function() {
 //Before Page load:
 //hide news feed before it is all loaded
+
 $('#content').hide();
 $('#loading').show();
+
+function changeActiveProgressTo(activeStep){
+  if(!$(activeStep).hasClass('progressBarActive')){
+    $('#headerStep1, #headerStep2, #headerStep3, #headerStep4').removeClass('progressBarActive');
+    $(activeStep).addClass('progressBarActive');
+  }
+}
 
 $(window).on("load", function () {
 
   //recording the current page
   let pathArray = window.location.pathname.split('/');
   $.post("/pageLog", { page: pathArray[1], lesson: pathArray[2], _csrf: $('meta[name="csrf-token"]').attr('content') });
+
+  // managing the progress bar in the header
+  let pathArrayForHeader = window.location.pathname.split('/');
+  let currentPageForHeader = pathArrayForHeader[1];
+  let currentModuleForHeader = pathArrayForHeader[2];
+  let stepNumber = "";
+  let jsonPath = '/json/progressDataA.json';
+
+  switch (currentModuleForHeader) {
+    case 'cyberbullying':
+    case 'digfoot':
+      jsonPath = "/json/progressDataB.json";
+    default:
+      jsonPath = "/json/progressDataA.json";
+      break;
+  }
+
+  $.getJSON(jsonPath, function(data) {
+    stepNumber = data[currentPageForHeader];
+  }).then(function () {
+    switch (stepNumber) {
+      case '1':
+        changeActiveProgressTo('#headerStep1');
+        $('.hideHeader').css('display', 'block');
+        break;
+      case '2':
+        changeActiveProgressTo("#headerStep2");
+        $('.hideHeader').css('display', 'block');
+        break;
+      case '3':
+        changeActiveProgressTo("#headerStep3");
+        $('.hideHeader').css('display', 'block');
+        break;
+      case '4':
+        changeActiveProgressTo("#headerStep4");
+        $('.hideHeader').css('display', 'block');
+        break;
+      case 'end':
+        $('#headerStep1, #headerStep2, #headerStep3, #headerStep4').removeClass('progressBarActive');
+        $('.hideHeader').css('display', 'block');
+        break;
+      default:
+        console.log('Progress bar is not visible right now');
+        break;
+    }
+  });
 
   //Activating the sticky functionality for the left column
   $('.ui.sticky.sideMenu')
@@ -306,7 +360,7 @@ end chat box code
     });
 
   //get add new feed post modal to work
-  $("#newpost, a.item.newpost").click(function () {
+  $("#newpost, a.item.newpost, .editProfilePictureButton").click(function () {
     $(' .ui.small.post.modal').modal('show');
     //lazy load the images in the modal
     $(".lazy").each(function() {

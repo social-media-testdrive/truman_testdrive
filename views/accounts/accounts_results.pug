@@ -1,0 +1,60 @@
+extends ../ui_layout
+
+block content
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  .ui.container.addBottomMargin
+    .ui.stackable.column.grid
+      .ui.column
+        .insertPrint
+        .ui.raised.segment
+          h3.ui.header
+            i.question.blue.icon
+            .content
+              | Reflect
+
+    .ui.raised.segment.responseOne
+      .ui.label
+        h4
+          | What are some features of a strong password?
+      .ui.form
+        .inline.fields
+          label
+          textarea.glowing-border(rows='2' id="accounts_responseOne")
+            
+    .ui.raised.segment.responseTwo
+      .ui.label
+        h4
+          | Why is it important to choose your username carefully?
+      .ui.form
+        .inline.fields
+          label
+          textarea.glowing-border(rows='2' id="accounts_responseTwo")
+            
+    .ui.raised.segment.responseThree
+      .ui.label
+        h4
+          | What kind of information is okay to share on your social media 
+          | profile?
+      .ui.form
+        .inline.fields
+          label
+          textarea.glowing-border(rows='2' id="accounts_responseThree")
+
+    br
+    .ui.big.green.labeled.icon.button(onclick="onPrint()")
+          i.right.arrow.icon
+          |   Print your response
+    br
+    br
+    .ui.big.green.labeled.icon.button.cyberbullying_end
+          i.rocket.icon
+          |   Continue
+          
+          
+block scripts
+  script(src = "/module_js/accounts/accounts_results.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/results.css')
+    
+    

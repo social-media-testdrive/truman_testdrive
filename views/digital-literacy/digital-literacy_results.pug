@@ -11,11 +11,11 @@ block content
             i.question.blue.icon
             .content
               | Reflect
-          .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-            h4(style="float:left")
-              i.exclamation.triangle.icon(style="color: #f9ff00 !important;")
-
-              | These were the FAKE news posts in the timeline. How many did you notice?
+          .ui.label.resultsPromptLabel
+            h4
+              i.exclamation.triangle.icon
+              | These were the FAKE news posts in the timeline. How many did you 
+              | notice?
           br
           br
           .ui.stackable.three.cards
@@ -27,12 +27,14 @@ block content
                   img.ui.avatar.image(src=cdn+'/profile_pictures/user70.JPG')
                   span Zoe Goodall
               .img.post
-                img.transition.visible(src=cdn+'/post_pictures/fakenews1.png', data-src='/fakenews1.png', style='max-width: 100%; cursor: pointer;display: inline !important;')
-              .read.rounded.right.floated.info_button(data-info_text="Real facts.com is THE news source for you. Learn about everything that's going on everywhere in real time. You can trust us!", style='z-index:12;text-align:center;align-self:flex-end;position:relative;bottom:10px;width:7%;height:auto')
+                img.transition.visible(src=cdn+'/post_pictures/fakenews1.png', data-src='/fakenews1.png')
+              .read.rounded.right.floated.info_button(data-info_text="Real facts.com is THE news source for you. Learn about everything that's going on everywhere in real time. You can trust us!")
                 i.info.icon
               .content
                 .description
-                  | Breaking News: Driving age just lowered to 12. DMV flooded with road test appointments and car companies cannot keep their newest models off the road.
+                  | Breaking News: Driving age just lowered to 12. DMV flooded 
+                  | with road test appointments and car companies cannot keep 
+                  | their newest models off the road.
         
           
             .ui.fluid.card.dim()#card2
@@ -42,12 +44,13 @@ block content
                   img.ui.avatar.image(src=cdn+'/profile_pictures/user15.jpg')
                   span Keith Hernandez
               .img.post
-                img.transition.visible(src=cdn+'/post_pictures/fakenews2.png', data-src='/fakenews2.png', style='max-width: 100%; cursor: pointer;display: inline !important;')
-              .read.rounded.right.floated.info_button(data-info_text="ScienceTruth is everyone's favorite and reliable source for science facts.", style='z-index:9;text-align:center;align-self:flex-end;position:relative;bottom:10px;width:7%;height:auto')
+                img.transition.visible(src=cdn+'/post_pictures/fakenews2.png', data-src='/fakenews2.png')
+              .read.rounded.right.floated.info_button(data-info_text="ScienceTruth is everyone's favorite and reliable source for science facts.")
                 i.info.icon
               .content
                 .description
-                  | Craving a donut? Think again! Scientists found that donuts are the leading cause of cancer in young children 😳
+                  | Craving a donut? Think again! Scientists found that donuts 
+                  | are the leading cause of cancer in young children 😳
 
 
             .ui.fluid.card.dim()#card3
@@ -57,8 +60,8 @@ block content
                   img.ui.avatar.image(src=cdn+'/profile_pictures/user55.jpg')
                   span Lana Reed
               .img.post
-                img.transition.visible(src=cdn+'/post_pictures/fakenews3.png', data-src='/fakenews3.png', style='max-width: 100%;cursor: pointer;display: inline !important;')
-              .read.rounded.right.floated.info_button(data-info_text="No Information Found !", style='z-index:9;text-align:center;align-self:flex-end;position:relative;bottom:10px;width:7%;height:auto')
+                img.transition.visible(src=cdn+'/post_pictures/fakenews3.png', data-src='/fakenews3.png')
+              .read.rounded.right.floated.info_button(data-info_text="No Information Found !")
                 i.info.icon          
               .content
                 .description
@@ -66,11 +69,12 @@ block content
           br
           br
 
-          .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-            h4(style="float:left")
-              i.exclamation.triangle.icon(style="color: #f9ff00 !important;")
+          .ui.label.resultsPromptLabel
+            h4
+              i.exclamation.triangle.icon
 
-              | These were the REAL news posts in the timeline. How many did you notice?
+              | These were the REAL news posts in the timeline. How many did you 
+              | notice?
           br
           br
           .ui.stackable.three.cards
@@ -82,12 +86,15 @@ block content
                   img.ui.avatar.image(src=cdn+'/profile_pictures/user72.jpg')
                   span Gabby Rogers
               .img.post
-                img.transition.visible(src=cdn+'/post_pictures/realnews2.png', data-src='/realnews2.png', style='max-width: 100%; cursor: pointer;display: inline !important;')
-              .read.rounded.right.floated.info_button(data-info_text="Cable News Network (CNN) is an American news-based pay television channel owned by WarnerMedia News &amp; Sports, a division of AT&amp;T's WarnerMedia. CNN was founded in 1980 by American media proprietor Ted Turner as a 24-hour cable news channel.", style='z-index:12;text-align:center;align-self:flex-end;position:relative;bottom:10px;width:7%;height:auto')
+                img.transition.visible(src=cdn+'/post_pictures/realnews2.png', data-src='/realnews2.png')
+              .read.rounded.right.floated.info_button(data-info_text="Cable News Network (CNN) is an American news-based pay television channel owned by WarnerMedia News &amp; Sports, a division of AT&amp;T's WarnerMedia. CNN was founded in 1980 by American media proprietor Ted Turner as a 24-hour cable news channel.")
                 i.info.icon
               .content
                 .description
-                  | Volkswagen's ID Buggy, an electric dune buggy concept, was an eye-catching presence at this week's Geneva International Motor Show. The most surprising thing about it, though, is that VW might actually put it into production.
+                  | Volkswagen's ID Buggy, an electric dune buggy concept, was 
+                  | an eye-catching presence at this week's Geneva International 
+                  | Motor Show. The most surprising thing about it, though, is 
+                  | that VW might actually put it into production.
         
           
             .ui.fluid.card.dim()#card5
@@ -97,12 +104,14 @@ block content
                   img.ui.avatar.image(src=cdn+'/profile_pictures/user3.jpg')
                   span Cloe Hansen
               .img.post
-                img.transition.visible(src=cdn+'/post_pictures/realnews1.png', data-src='/realnews1.png', style='max-width: 100%; cursor: pointer;display: inline !important;')
-              .read.rounded.right.floated.info_button(data-info_text="Weill Cornell Medicine is the biomedical research unit and medical school of Cornell University, a private Ivy League university. The medical college is located at 1300 York Avenue, on the Upper East Side of Manhattan in New York City, along with the Weill Cornell Graduate School of Medical Sciences.", style='z-index:9;text-align:center;align-self:flex-end;position:relative;bottom:10px;width:7%;height:auto')
+                img.transition.visible(src=cdn+'/post_pictures/realnews1.png', data-src='/realnews1.png')
+              .read.rounded.right.floated.info_button(data-info_text="Weill Cornell Medicine is the biomedical research unit and medical school of Cornell University, a private Ivy League university. The medical college is located at 1300 York Avenue, on the Upper East Side of Manhattan in New York City, along with the Weill Cornell Graduate School of Medical Sciences.", )
                 i.info.icon
               .content
                 .description
-                  | According to an accumulating body of research by Dr. Cantley and his team at Weill Cornell Medicine, excess sugar also helps many types of cancer to grow more rapidly.
+                  | According to an accumulating body of research by Dr. Cantley 
+                  | and his team at Weill Cornell Medicine, excess sugar also 
+                  | helps many types of cancer to grow more rapidly.
 
 
             .ui.fluid.card.dim()#card6
@@ -112,17 +121,18 @@ block content
                   img.ui.avatar.image(src=cdn+'/profile_pictures/user40.jpg')
                   span Susan Turner
               .img.post
-                img.transition.visible(src=cdn+'/post_pictures/realnews3.png', data-src='/realnews3.png', style='max-width: 100%;cursor: pointer;display: inline !important;')
-              .read.rounded.right.floated.info_button(data-info_text="The Washington Post (sometimes abbreviated as WaPo) is a major American daily newspaper published in Washington, D.C., with a particular emphasis on national politics and the federal government. It has the largest circulation in the Washington metropolitan area.", style='z-index:9;text-align:center;align-self:flex-end;position:relative;bottom:10px;width:7%;height:auto')
+                img.transition.visible(src=cdn+'/post_pictures/realnews3.png', data-src='/realnews3.png')
+              .read.rounded.right.floated.info_button(data-info_text="The Washington Post (sometimes abbreviated as WaPo) is a major American daily newspaper published in Washington, D.C., with a particular emphasis on national politics and the federal government. It has the largest circulation in the Washington metropolitan area.")
                 i.info.icon          
               .content
                 .description
-                  | The University of Chicago will no longer require ACT or SAT scores from U.S. students
+                  | The University of Chicago will no longer require ACT or SAT 
+                  | scores from U.S. students
  
  
     .ui.raised.segment
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
+      .ui.label.results.resultsPromptLabel
+        h4
           | Did you notice any signs of fake news in these posts?
       
       .ui.stackable.two.cards.checkOne
@@ -134,12 +144,14 @@ block content
               img.ui.avatar.image(src=cdn+'/profile_pictures/user70.JPG')
               span Zoe Goodall
           .img.post
-            img.transition.visible(src=cdn+'/post_pictures/fakenews1.png', data-src='/fakenews1.png', style='max-width: 100%; cursor: pointer;display: inline !important;')
-          .read.rounded.right.floated.info_button(data-info_text="Real facts.com is THE news source for you. Learn about everything that's going on everywhere in real time. You can trust us!", style='z-index:12;text-align:center;align-self:flex-end;position:relative;bottom:10px;width:7%;height:auto')
+            img.transition.visible(src=cdn+'/post_pictures/fakenews1.png', data-src='/fakenews1.png')
+          .read.rounded.right.floated.info_button(data-info_text="Real facts.com is THE news source for you. Learn about everything that's going on everywhere in real time. You can trust us!")
             i.info.icon
           .content
             .description
-              | Breaking News: Driving age just lowered to 12. DMV flooded with road test appointments and car companies cannot keep their newest models off the road.
+              | Breaking News: Driving age just lowered to 12. DMV flooded with 
+              | road test appointments and car companies cannot keep their 
+              | newest models off the road.
     
         .ui.fluid.card.dim()
           .content
@@ -150,21 +162,24 @@ block content
                 .field
                   .ui.checkbox
                     input(type='checkbox')
-                    label(for='clickbait', style="font-size:120%;", tabindex='0') They had clickbait headlines and wild images.
+                    label(for='clickbait', tabindex='0') 
+                      | They had clickbait headlines and wild images.
             .ui.form
               .inline.fields
                 label(for='mistakes', name='mistakes') 
                 .field
                   .ui.checkbox
                     input(type='checkbox')
-                    label(for='mistakes', style="font-size:120%;", tabindex='0') They had spelling mistakes or dramatic punctuation.
+                    label(for='mistakes', tabindex='0') 
+                      | They had spelling mistakes or dramatic punctuation.
             .ui.form
               .inline.fields
                 label(for='suspicious', name='suspicious') 
                 .field
                   .ui.checkbox
                     input(type='checkbox')
-                    label(for='suspicious', style="font-size:120%;", tabindex='0') They were from a suspicious website.
+                    label(for='suspicious', tabindex='0') 
+                      | They were from a suspicious website.
               
       .ui.stackable.two.cards.checkTwo
         
@@ -175,12 +190,13 @@ block content
               img.ui.avatar.image(src=cdn+'/profile_pictures/user15.jpg')
               span Keith Hernandez
           .img.post
-            img.transition.visible(src=cdn+'/post_pictures/fakenews2.png', data-src='/fakenews2.png', style='max-width: 100%; cursor: pointer;display: inline !important;')
-          .read.rounded.right.floated.info_button(data-info_text="ScienceTruth is everyone's favorite and reliable source for science facts.", style='z-index:9;text-align:center;align-self:flex-end;position:relative;bottom:10px;width:7%;height:auto')
+            img.transition.visible(src=cdn+'/post_pictures/fakenews2.png', data-src='/fakenews2.png')
+          .read.rounded.right.floated.info_button(data-info_text="ScienceTruth is everyone's favorite and reliable source for science facts.")
             i.info.icon
           .content
             .description
-              | Craving a donut? Think again! Scientists found that donuts are the leading cause of cancer in young children 😳
+              | Craving a donut? Think again! Scientists found that donuts are 
+              | the leading cause of cancer in young children 😳
 
         .ui.fluid.card.dim()
           .content
@@ -191,21 +207,24 @@ block content
                 .field
                   .ui.checkbox
                     input(type='checkbox')
-                    label(for='clickbait', style="font-size:120%;", tabindex='0') They had clickbait headlines and wild images.
+                    label(for='clickbait', tabindex='0') 
+                      | They had clickbait headlines and wild images.
             .ui.form
               .inline.fields
                 label(for='mistakes', name='mistakes') 
                 .field
                   .ui.checkbox
                     input(type='checkbox')
-                    label(for='mistakes', style="font-size:120%;", tabindex='0') They had spelling mistakes or dramatic punctuation.
+                    label(for='mistakes', tabindex='0') 
+                      | They had spelling mistakes or dramatic punctuation.
             .ui.form
               .inline.fields
                 label(for='suspicious', name='suspicious') 
                 .field
                   .ui.checkbox
                     input(type='checkbox')
-                    label(for='suspicious', style="font-size:120%;", tabindex='0') They were from a suspicious website.
+                    label(for='suspicious', tabindex='0') 
+                      | They were from a suspicious website.
       
       .ui.stackable.two.cards.checkThree
         
@@ -216,8 +235,8 @@ block content
               img.ui.avatar.image(src=cdn+'/profile_pictures/user55.jpg')
               span Lana Reed
           .img.post
-            img.transition.visible(src=cdn+'/post_pictures/fakenews3.png', data-src='/fakenews3.png', style='max-width: 100%;cursor: pointer;display: inline !important;')
-          .read.rounded.right.floated.info_button(data-info_text="No Information Found !", style='z-index:9;text-align:center;align-self:flex-end;position:relative;bottom:10px;width:7%;height:auto')
+            img.transition.visible(src=cdn+'/post_pictures/fakenews3.png', data-src='/fakenews3.png')
+          .read.rounded.right.floated.info_button(data-info_text="No Information Found !")
             i.info.icon          
           .content
             .description
@@ -232,27 +251,31 @@ block content
                 .field
                   .ui.checkbox
                     input(type='checkbox')
-                    label(for='clickbait', style="font-size:120%;", tabindex='0') They had clickbait headlines and wild images.
+                    label(for='clickbait', tabindex='0') 
+                      | They had clickbait headlines and wild images.
             .ui.form
               .inline.fields
                 label(for='mistakes', name='mistakes') 
                 .field
                   .ui.checkbox
                     input(type='checkbox')
-                    label(for='mistakes', style="font-size:120%;", tabindex='0') They had spelling mistakes or dramatic punctuation.
+                    label(for='mistakes', tabindex='0') 
+                      | They had spelling mistakes or dramatic punctuation.
             .ui.form
               .inline.fields
                 label(for='suspicious', name='suspicious') 
                 .field
                   .ui.checkbox
                     input(type='checkbox')
-                    label(for='suspicious', style="font-size:120%;", tabindex='0') They were from a suspicious website.
+                    label(for='suspicious',tabindex='0') 
+                       | They were from a suspicious website.
                         
 
     .ui.raised.segment
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
-          | Tell us what you would do next to check the credibility of the above articles.
+      .ui.label.resultsPromptLabel
+        h4
+          | Tell us what you would do next to check the credibility of the above 
+          | articles.
       .content.checkFour
         .ui.form
           br
@@ -261,47 +284,52 @@ block content
             .field
               .ui.checkbox
                 input(type='checkbox')
-                label(for='wouldRead', style="font-size:120%;", tabindex='0') I would read the full article.
+                label(for='wouldRead', tabindex='0') 
+                  | I would read the full article.
         .ui.form
           .inline.fields
             label(for='checkSource', name='checkSource') 
             .field
               .ui.checkbox
                 input(type='checkbox')
-                label(for='checkSource', style="font-size:120%;", tabindex='0') I would check the source.
+                label(for='checkSource', tabindex='0') 
+                  | I would check the source.
         .ui.form
           .inline.fields
             label(for='corroboration', name='corroboration') 
             .field
               .ui.checkbox
                 input(type='checkbox')
-                label(for='corroboration', style="font-size:120%;", tabindex='0') I would find corroboration from other credible sources.       
+                label(for='corroboration', tabindex='0') 
+                  | I would find corroboration from other credible sources.       
       
     .ui.raised.segment
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
+      .ui.label.resultsPromptLabel
+        h4
           | What are the benefits and drawbacks of getting news on social media?
       .ui.form
         .inline.fields
-          label(style="font-size:120%;")
+          label
           textarea.glowing-border(rows='2' id="literacy_responseOne")
 
     .ui.raised.segment
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
-          | Why is it important to evaluate the information you see on social media?
+      .ui.label.resultsPromptLabel
+        h4
+          | Why is it important to evaluate the information you see on social 
+          | media?
       .ui.form
         .inline.fields
-          label(style="font-size:120%;")
+          label
           textarea.glowing-border(rows='2' id="literacy_responseTwo")
 
     .ui.raised.segment
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
-          | What would you do in the future on real social media sites to make sure that the information you see is credible?
+      .ui.label.resultsPromptLabel
+        h4
+          | What would you do in the future on real social media sites to make 
+          | sure that the information you see is credible?
       .ui.form
         .inline.fields
-          label(style="font-size:120%;")
+          label
           textarea.glowing-border(rows='2' id="literacy_responseThree")
 
 
@@ -318,5 +346,8 @@ block content
       
 block scripts
   script(src="/module_js/digital-literacy/digital-literacy_results.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/modules/digital-literacy.css')
   
     

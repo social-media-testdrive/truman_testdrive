@@ -2,7 +2,7 @@ extends ../ui_layout
 
 block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
-  .ui.container(style="margin-bottom:4em;")
+  .ui.container.addBottomMargin
     .ui.stackable.column.grid
       .ui.column
         .insertPrint
@@ -13,39 +13,39 @@ block content
               | Reflect
 
     .ui.raised.segment.responseOne
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
+      .ui.label
+        h4
           | Did you notice any changes in Lily’s profile after you changed the privacy settings?
       .ui.form
         .inline.fields
-          label(style="font-size:120%;")
+          label
           textarea.glowing-border(rows='2' id="privacy_responseOne")
 
     .ui.raised.segment.responseTwo
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
+      .ui.label
+        h4
           | Why is it important to know what information websites collect about you?
       .ui.form
         .inline.fields
-          label(style="font-size:120%;")
+          label
           textarea.glowing-border(rows='2' id="privacy_responseTwo")
 
     .ui.raised.segment.responseThree
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
+      .ui.label
+        h4
           | What are the three things you should ask yourself when reading a privacy policy?
       .ui.form
         .inline.fields
-          label(style="font-size:120%;")
+          label
           textarea.glowing-border(rows='2' id="privacy_responseThree")
             
     .ui.raised.segment.responseFour
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
+      .ui.label
+        h4
           | What can you do in the future to protect your privacy on social media?
       .ui.form
         .inline.fields
-          label(style="font-size:120%;")
+          label
           textarea.glowing-border(rows='2' id="privacy_responseFour")
           
           
@@ -64,4 +64,6 @@ block content
 block scripts
   script(src="/module_js/privacy/privacy_results.js")
     
+block styles
+  link(rel='stylesheet', href='/css/results.css')
   

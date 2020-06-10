@@ -1,0 +1,69 @@
+extends ../ui_layout
+
+block content
+
+  #content.sixteen.wide.column.centered.removeTopPadding.addBottomMargin
+    //- #####################################################
+    .ui.one.column.centered.grid
+      .ui.fixed.bottom.sticky
+        .ui.icon.compact.message.warning.hidden#removeHidden
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header Need some help? 
+            p Make sure you are clicking "Got it" on the blue dots!
+          
+        .ui.icon.message.warning.hidden#clickAllDotsWarning
+          i.close.icon
+          i.hand.pointer.icon.float
+          .content
+            .ui.header There are still blue dots to find!
+            p Click through all of the blue dots to continue.
+        .ui.icon.message.success.hidden#instructionsToContinue
+          .content
+            .ui.header Scroll down to search for more information! 
+
+    .ui.grid.gridInsideTab(style="margin-bottom: 12em;")        
+      .row
+        .column(style="padding:0;")
+          //- button.ui.big.testDriveLightGray.button.homeTab(data-tab='one')
+          //-   i.icon.reply
+          //-   | Return to the timeline
+          button.ui.big.button.searchTab(data-tab='three')
+            i.icon.search
+            | Search for "Haywell Middle School closing"  
+    
+      .ui.segment
+        .ui.grid 
+          .row
+            .column
+              .ui.basic.segment(style="padding: 0 0 15px 0;")#hint2
+                h1
+                  | BREAKING NEWS: Haywell Middle School to Close Starting Tomorrow  
+              .ui.basic.segment(style="padding: 0 0 15px 0;; margin: 0;")#hint1 
+                h2
+                  | The Hillwood Times
+              p Author: James Darby
+              p 5 minutes ago
+          .row
+            .six.wide.computer.six.wide.tablet.sixteen.wide.mobile.column
+              img.ui.large.image.fullArticleImage(src=cdn + '/post_pictures/haywell1_orig.jpg')
+            .ten.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
+              .ui.basic.segment(style="padding: 0 0 15px 0;")#hint3
+                p.articleText
+                  | Haywell Middle school students will probably not return to 
+                  | classrooms for the rest of the academic year, making it one of 
+                  | the first schools in the Hillwood area to make the call during 
+                  | the current pandemic.
+                p.articleText 
+                  | One local educator remarked that "closing for the remainder of 
+                  | the year would be the right decision."
+  
+
+
+block scripts
+  script(src='/module_js/advancedlit/advancedlit_sim2.js')
+  script(src='/module_js/base_sim.js')
+  
+block styles
+  link(rel='stylesheet', href='/css/modules/advancedlit.css')

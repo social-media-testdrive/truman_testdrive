@@ -1,0 +1,25 @@
+extends ../ui_layout
+
+block content
+
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+
+  .computer.only.tablet.only.four.wide.column
+
+  .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
+    .ui.raised.segment#generalStep
+      h2.ui.header Create An Account
+      .ui.form(style="font-size: 130%;")
+        .field#usernameStep
+          label Username
+          input(type="text" disabled="" name='username' placeholder="username")
+        .field#passwordStep
+          label Password
+          input(type="password" disabled="" name="password" placeholder="password" onfocus="$(this).removeAttr('readonly');")    
+
+    button.ui.big.labeled.icon.button.addBottomMargin#continueTutorial
+        i.rocket.icon
+        |   Let's Continue!      
+          
+block scripts
+  script(src="/module_js/accounts/accounts_tutorial.js")

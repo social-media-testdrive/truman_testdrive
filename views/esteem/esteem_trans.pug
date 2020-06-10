@@ -1,0 +1,46 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container(style="margin-bottom:4em;")
+    br
+    .column
+      .ui.raised.segment
+        .ui.blue.ribbon.label
+          h3
+            i.history.icon
+            | &nbsp Let's review!
+        br
+          
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | A red flag feeling is when something happens on social media that 
+            | makes you feel uncomfortable, worried, sad, or anxious.
+
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | What can you do when you get a red flag feeling on social media? 
+            | Take some time to identify how you are feeling and think about 
+            | what you can do to address it in a productive way.
+                    
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | You can achieve media balance by using social media in a way that 
+            | feels positive and in balance with other life activities.
+        br
+  
+    br
+    br
+    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+        .ui.big.green.labeled.icon.button
+            i.rocket.icon
+            |   Got it!
+            
+    block scripts
+  script().
+    function startIntro(){
+      window.location.href='/trans2/esteem';
+    };

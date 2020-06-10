@@ -5,7 +5,7 @@ block content
 
   .computer.only.tablet.only.four.wide.column 
     .ui.sticky.sideMenu
-      .ui.vertical.menu(style="width:auto;")
+      .ui.vertical.menu
         a.item(data-value='feed')#feedsteps 
           i.icon.home
           |  Home
@@ -15,7 +15,7 @@ block content
     
   //-mobile only version of the menu
   .mobile.only.sixteen.wide.column
-    .ui.top.fixed.vertical.menu(style="width:100%; padding-top:5em;")
+    .ui.top.fixed.vertical.menu
       a.item(data-value='feed')#feedsteps
         i.icon.home
         |  Home
@@ -27,20 +27,20 @@ block content
     br
 
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
-    .ui.one.column.centered.grid(style="margin-top:1em;")
-      .ui.fixed.bottom.sticky(style="padding-bottom:6em; padding-left:1em; padding-right:1em")
-        .ui.icon.compact.message.warning(style="display:none;")#removeHidden
+    .ui.one.column.centered.grid
+      .ui.fixed.bottom.sticky
+        .ui.icon.compact.message.warning#removeHidden
           i.close.icon
           i.question.icon.float
           .content
             .ui.header Need some help? 
             p Make sure you are clicking "Got it" on the blue dots!
             
-        .ui.message.centered.success(style="display:none;")#nextPageInstruction
+        .ui.message.centered.success#nextPageInstruction
           .content
             .ui.header Click the "My Activity" button to continue! 
     
-        .ui.icon.message.warning(style="display:none; padding-left:1em; padding-right:1em;")#notificationWarning
+        .ui.icon.message.warning#notificationWarning
           i.close.icon
           i.hand.pointer.icon.float
           .content
@@ -58,21 +58,21 @@ block content
     br
     //-Settings display
     .ui.container.settingsDisplay
-      h2.ui.header(data-hint="Most social media sites have settings that you can use to control the number of notifications you get. It will look similar to this page." data-hintPosition='middle-middle') Notification Settings
+      h2.ui.header#hint1 Notification Settings
       .ui.divider
       br
       form.ui.form#addBottomMargin
-        .field(data-hint="Here, you can change the number of notifications you get for different types of content. Try pausing notifications for a while by turning this setting on." data-hintPosition='middle-middle')
+        .field#hint2
           br
           .ui.toggle.checkbox(name='popupAlertsCheckbox')
             input(type='checkbox' name='popupAlerts')
-            label(style="font-weight:bold;") Pause All
+            label Pause All
         span.settingLabel This will pause all notifications.
         br
         br
         br
-        .field(style="display:none;")#pauseTimeSelectField
-          label(style="font-size:100%;") How long would you like to pause notifications for?
+        .field#pauseTimeSelectField
+          label How long would you like to pause notifications for?
             br
             br
             .ui.selection.dropdown(name='pauseTimeSelect')
@@ -80,15 +80,20 @@ block content
               i.dropdown.icon
               .default.text 
               .menu
-                .item(data-value='15 minutes' style="font-size:100%") 15 minutes
-                .item(data-value='1 hour' style="font-size:100%") 1 hour
-                .item(data-value='2 hours' style="font-size:100%") 2 hours
-                .item(data-value='4 hours' style="font-size:100%") 4 hours
-                .item(data-value='8 hours' style="font-size:100%") 8 hours
+                .item(data-value='15 minutes') 15 minutes
+                .item(data-value='1 hour') 1 hour
+                .item(data-value='2 hours') 2 hours
+                .item(data-value='4 hours') 4 hours
+                .item(data-value='8 hours') 8 hours
         br
         br    
 
 block scripts
   script(src="/module_js/habits/habits_sim3.js")
+  script(src="/module_js/base_sim.js")
+  
+block styles 
+  link(rel='stylesheet', href='/css/modules/habits/habits_sim.css')
+  link(rel='stylesheet', href='/css/sim.css')
       
     

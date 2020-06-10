@@ -17,16 +17,16 @@ block content
 
   
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column 
-    .ui.one.column.centered.grid(style="padding-top:1em;")
-      .ui.fixed.bottom.sticky(style="padding-bottom:6em;")
-        .ui.icon.compact.message.warning(style="display:none;")#removeHidden
+    .ui.one.column.centered.grid
+      .ui.fixed.bottom.sticky
+        .ui.icon.compact.message.warning#removeHidden
           i.close.icon
           i.question.icon.float
           .content
             .ui.header Need some help? 
             p Make sure you are clicking "Got it" on the blue dots!
           
-        .ui.icon.message.warning(style="display:none;")#clickAllDotsWarning
+        .ui.icon.message.warning#clickAllDotsWarning
           i.close.icon
           i.hand.pointer.icon.float
           .content
@@ -235,10 +235,7 @@ block content
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
 
-    .ui.warning.message#clickAllDotsSim(style="display:none;")
-      .header
-        | Click through all of the blue dots to continue
-    button.ui.big.labeled.icon.button.cybersim2#cyberSim2Button(style="margin-bottom:4em;")
+    button.ui.big.labeled.icon.button.cybersim2#cyberTransButton(style="margin-bottom:4em;")
         i.rocket.icon
         |   Let's Continue!
 
@@ -247,4 +244,42 @@ block content
 
 
 block scripts
+  script.
+    var stepsList = [
+      {
+        element: document.querySelectorAll('#hint2')[0],
+        intro: `Click on the blue dots&nbsp;<a role='button' tabindex='0'
+        class='introjs-hint'><div class='introjs-hint-dot'></div><div
+        class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more...`,
+        position:'right',
+        scrollTo:'tooltip'
+      }
+    ];
+    
+    var hintsList = [
+      {
+        hint: `Here’s Jake’s finsta, jakethesnake. Only 16 of his closest
+        friends from school follow this account.`,
+        element: '#hint2',
+        hintPosition: 'top-left'
+      },
+      {
+        hint: `Here, he posts funny pictures and casual things that he would
+        not post on his main account because he only wants his best friends
+        to see it.`,
+        element: '#hint2',
+        hintPosition: 'top-middle'
+      },
+      {
+        hint: `Even though Jake doesn’t name the person, the post is unkind
+        and stirs up drama. Would Jake post the same thing on his public
+        account? Remember to be kind and respectful online!`,
+        element: '#hint3',
+        hintPosition: 'top-middle'
+      }
+    ];
   script(src="/module_js/presentation/presentation_sim1.js")
+  script(src="/module_js/base_sim.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/sim.css')

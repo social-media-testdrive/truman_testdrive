@@ -1,0 +1,37 @@
+/* desktop menu */
+
+.ui.fixed.sticky.sideMenu {
+  width: 272px !important;
+  height: 500px !important;
+}
+
+.ui.vertical.menu.notMobileView {
+  width:auto;
+}
+
+/* mobile menu */
+.ui.top.fixed.vertical.menu.mobileView {
+  width:100%;
+  padding-top:5em;
+}
+
+/* hiding the notifications display */
+
+.notificationsDisplay {
+  display: none;
+}
+
+/* notifications */
+
+.event .label {
+  overflow:hidden !important;
+  width:3em !important;
+  height:3em !important;
+}
+
+.event .label img {
+  width:100% !important;
+  height:100% !important;
+  display:inline  !important;
+  margin:0 auto !important;
+}

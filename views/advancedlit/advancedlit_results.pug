@@ -1,0 +1,144 @@
+extends ../ui_layout
+
+block content
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  -var chosenTopic = user.advancedlitTopic;
+  
+  .ui.container.addBottomMargin
+    .ui.stackable.column.grid
+      .ui.column
+        .insertPrint
+        .ui.raised.segment
+          h3.ui.header
+            i.question.blue.icon
+            .content
+              | Reflect
+          .ui.label.resultsPromptLabel
+            h4
+              i.exclamation.triangle.icon
+
+              | These were the breaking news stories in the timeline. How many 
+              | did you notice?
+          br
+          br
+          .ui.stackable.three.cards
+            .ui.fluid.card.dim#card1
+              .content      
+                a.left.floated(href='/user/frank-the-best')
+                  img.ui.avatar.image(src=cdn+'/profile_pictures/user10.jpg')
+                  span='Franklin Robinson'
+              .image
+                img.post(src=cdn+'/post_pictures/quake1_an.png')
+              .content
+                .description
+                  | Stay safe folks!!
+                  
+            .ui.fluid.card.dim#card2
+              .content      
+                a.left.floated(href='/user/ella_vaderrr')
+                  img.ui.avatar.image(src=cdn+'/profile_pictures/user25.jpg')
+                  span='Ella Sroni'
+              .image
+                img.post(src=cdn+'/post_pictures/quake2_an.PNG')
+              .content
+                .description
+                  | My brother just called from his class trip in California. 
+                  | They had an earthquake there but they are safe.
+        
+            .ui.fluid.card.dim#card3
+              .content      
+                a.left.floated(href='/user/morning-tea-and-books')
+                  img.ui.avatar.image(src=cdn+'/profile_pictures/user12.jpg')
+                  span='Shika Ramphal'
+              .image
+                img.post(src=cdn+'/post_pictures/quake3_an.png')
+              .content
+                .description
+                  | oh no arent the 7th graders in cali rn?
+
+          br
+          br
+
+    .ui.raised.segment
+      .ui.label
+        h4
+          | What did you do when you saw a breaking news story?
+      .content.checkOne
+        .ui.form
+          br
+          .inline.fields
+            label(for='wouldRead', name='wouldRead') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='wouldRead', tabindex='0') 
+                  | I checked to see if it was an opinion piece
+        .ui.form
+          .inline.fields
+            label(for='checkSource', name='checkSource') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='checkSource', tabindex='0') 
+                  | I looked at the source(s) of the information in the article
+        .ui.form
+          .inline.fields
+            label(for='corroboration', name='corroboration') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='corroboration', tabindex='0')
+                  | I checked other sources
+        .ui.form
+          .inline.fields
+            label(for='interacted', name='interacted') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='interacted', tabindex='0')
+                  | I shared the news article
+        .ui.form
+          .inline.fields
+            label(for='corroboration', name='wouldViewAd') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='wouldViewAd', tabindex='0') 
+                  | I flagged the post
+        .ui.form
+          .inline.fields
+            label(for='ignored', name='ignored') 
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label(for='ignored', tabindex='0') 
+                  | I did not do anything 
+
+
+    .ui.raised.segment
+      .ui.label.resultsPromptLabel
+        h4
+          | Why is it important to get the full story before reacting to or 
+          | sharing breaking news?
+      .ui.form
+        .inline.fields
+          label
+          textarea.glowing-border(rows='2' id="literacy_responseOne")
+
+
+    br
+    .ui.big.green.labeled.icon.button(onclick="onPrint()")
+          i.right.arrow.icon
+          |   Print your responses
+    br
+    br
+    .ui.big.green.labeled.icon.button.cyberbullying_end
+          i.rocket.icon
+          |   Continue
+
+block scripts
+  script(src='/module_js/advancedlit/advancedlit_results.js')
+  
+block styles
+  link(rel='stylesheet', href='/css/modules/advancedlit.css')
+  link(rel='stylesheet', href='/css/results.css')

@@ -6,16 +6,16 @@ block content
   .computer.only.tablet.only.four.wide.column 
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
 
-    .ui.one.column.centered.grid(style="padding-top:1em;")
-      .ui.fixed.bottom.sticky(style="padding-bottom:6em;")
-        .ui.icon.compact.message.warning(style="display:none;")#removeHidden
+    .ui.one.column.centered.grid
+      .ui.fixed.bottom.sticky
+        .ui.icon.compact.message.warning#removeHidden
           i.close.icon
           i.question.icon.float
           .content
             .ui.header Need some help? 
             p Make sure you are clicking "Got it" on the blue dots!
           
-        .ui.icon.message.warning(style="display:none;")#clickAllDotsWarning
+        .ui.icon.message.warning#clickAllDotsWarning
           i.close.icon
           i.hand.pointer.icon.float
           .content
@@ -30,23 +30,33 @@ block content
              .field
                .ui.checkbox
                  input(type='checkbox')
-                 label The post will have a negative impact on this person’s digital footprint.
+                 label 
+                  | The post will have a negative impact on this person’s 
+                  | digital footprint.
              .field
                .ui.checkbox
                  input(type='checkbox')
-                 label This person was sharing something that they might later regret.
+                 label 
+                  | This person was sharing something that they might later 
+                  | regret.
              .field
                .ui.checkbox
                  input(type='checkbox')
-                 label The post was not considerate of other people’s digital footprints.
+                 label 
+                  | The post was not considerate of other people’s digital 
+                  | footprints.
              .field
                .ui.checkbox
                  input(type='checkbox')
-                 label The post will not have an impact on this person’s digital footprint. 
+                 label 
+                  | The post will not have an impact on this person’s digital 
+                  | footprint. 
              .field
                .ui.checkbox
                  input(type='checkbox')
-                 label This was a responsible post that will create a positive digital footprint.
+                 label 
+                  | This was a responsible post that will create a positive 
+                  | digital footprint.
 
       .actions
         .ui.positive.right.labeled.icon.button
@@ -63,24 +73,28 @@ block content
       input(type='text', placeholder='Create a post')
       i.big.photo.link.icon
 
-    .ui.fluid.card.test#step1
+    .ui.fluid.card.test.dim#step1
       .ui.dimmer.flag
         .content
           .center
             h2.ui.inverted.icon.header
               i.red.flag.icon
-              |                                     You &apos;ve flagged this!
+              | You&apos;ve flagged this!
               h3.ui.inverted.header
-                span The admins will review this post further. We are sorry you had this experience.
+                span 
+                  | The admins will review this post further. We are sorry you 
+                  | had this experience.
       .content
         .right.floated.meta= "Yesterday"
         a(href='#')
               img.ui.avatar.image(src=cdn+'/profile_pictures/user71.JPG')
               span='Andrew Thomas'
       .img.post
-        img(src=cdn+'/post_pictures/digfootga1new.jpg' style='max-width:100%;' onclick='openPostDigfootSim()')
+        img(src=cdn+'/post_pictures/digfootga1new.jpg')
       .content
-        .description#hint2 Like my post if you think math is stupid. haha anyone have hw i can copy?
+        .description#hint2 
+          | Like my post if you think math is stupid. haha anyone have hw i can 
+          | copy?
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
           i.reply.icon
@@ -123,16 +137,18 @@ block content
           .center
             h2.ui.inverted.icon.header
               i.red.flag.icon
-              |                                     You &apos;ve flagged this!
+              | You&apos;ve flagged this!
               h3.ui.inverted.header
-                span The admins will review this post further. We are sorry you had this experience.
+                span 
+                  | The admins will review this post further. We are sorry you 
+                  | had this experience.
       .content#hint3
         .right.floated.meta= "Yesterday"
         a(href='#')
               img.ui.avatar.image(src=cdn+'/profile_pictures/user50.jpg')
               span='Jenny Schmidt'
       .img.post
-        img(src=cdn+'/post_pictures/digfootga2.jpg' style='max-width:100%;' onclick='openPostDigfootSim()')
+        img(src=cdn+'/post_pictures/digfootga2.jpg')
       .content
         .description Here is a picture of my cat!!
       .three.ui.bottom.attached.icon.buttons
@@ -172,24 +188,28 @@ block content
           i.big.send.link.icon
     //-##########
     
-    .ui.fluid.card.test
+    .ui.fluid.card.test.dim
         .ui.dimmer.flag
           .content
             .center
               h2.ui.inverted.icon.header
                 i.red.flag.icon
-                |                                     You &apos;ve flagged this!
+                | You&apos;ve flagged this!
                 h3.ui.inverted.header
-                  span The admins will review this post further. We are sorry you had this experience.
+                  span 
+                    | The admins will review this post further. We are sorry you 
+                    | had this experience.
         .content#hint4
           .right.floated.meta= "Yesterday"
           a(href='#')
                 img.ui.avatar.image(src=cdn+'/profile_pictures/user40.jpg')
                 span='Susan Turner'
         .img.post
-          img(src=cdn+'/post_pictures/digfootga3new.jpg' style='max-width:100%;' onclick='openPostDigfootSim()')
+          img(src=cdn+'/post_pictures/digfootga3new.jpg')
         .content
-          .description#hint5 pic of me and donna skipping class and hanging out @ a cafe today 😂
+          .description#hint5 
+            | pic of me and donna skipping class and hanging out @ a cafe 
+            | today 😂
         .three.ui.bottom.attached.icon.buttons
           .ui.reply.button(tabindex='0')
             i.reply.icon
@@ -234,16 +254,18 @@ block content
           .center
             h2.ui.inverted.icon.header
               i.red.flag.icon
-              |                                     You &apos;ve flagged this!
+              | You&apos;ve flagged this!
               h3.ui.inverted.header
-                span The admins will review this post further. We are sorry you had this experience.
+                span 
+                  | The admins will review this post further. We are sorry you 
+                  | had this experience.
       .content
         .right.floated.meta= "Yesterday"
         a(href='#')
               img.ui.avatar.image(src=cdn+'/profile_pictures/user24.jpg')
               span='Jenny Chen'
       .img.post
-        img(src=cdn+'/post_pictures/digfootga4.jpg' style='max-width:100%;' onclick='openPostDigfootSim()')
+        img(src=cdn+'/post_pictures/digfootga4.jpg')
       .content
         .description I don't want summer to end!!
       .three.ui.bottom.attached.icon.buttons
@@ -289,3 +311,6 @@ block content
 block scripts
   script(src="/module_js/digfoot/digfoot_sim.js")  
   script(src ="/module_js/base_sim.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/modules/digfoot.css')  

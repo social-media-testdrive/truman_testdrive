@@ -238,6 +238,9 @@ app.get('/', function (req, res) {
 //main route for getting the simulation (Free Play) for a given lesson mod
 app.get('/modual/:modId', passportConfig.isAuthenticated, scriptController.getScript);
 
+app.get('/esteemTopic', passportConfig.isAuthenticated, userController.getEsteemTopic);
+app.get('/advancedlitTopic', passportConfig.isAuthenticated, userController.getAdvancedlitTopic);
+
 app.get('/habitsTimer', passportConfig.isAuthenticated, userController.getHabitsTimer);
 app.get('/habitsNotificationTimes', passportConfig.isAuthenticated, scriptController.getNotificationTimes);
 
@@ -403,9 +406,15 @@ app.get('/free-settings3/privacy', passportConfig.isAuthenticated, function (req
 });
 
 app.get('/end/:modId', passportConfig.isAuthenticated, function (req, res) {
-  res.render(req.param("modId") + '/' + req.param("modId")+'_end', {
-    title: 'Finished'
-  });
+  if((req.param("modId") === 'accounts') || (req.param("modId") === 'privacy')){
+    res.render(req.param("modId") + '/' + req.param("modId")+'_end', {
+      title: 'Finished'
+    });
+  } else {
+    res.render('base_end.pug', {
+      title: 'Finished'
+    });
+  }
 });
 
 app.get('/start/:modId', passportConfig.isAuthenticated, function (req, res) {
@@ -415,7 +424,7 @@ app.get('/start/:modId', passportConfig.isAuthenticated, function (req, res) {
 });
 
 app.get('/intro/:modId', passportConfig.isAuthenticated,function (req, res) {
-  res.render(req.param("modId") + '/' + req.param("modId")+'_intro', {
+  res.render('base_intro.pug', {
     title: 'Welcome'
   });
 });
@@ -532,6 +541,8 @@ app.get('/bell', passportConfig.isAuthenticated, userController.checkBell);
 app.post('/feed', passportConfig.isAuthenticated, scriptController.postUpdateFeedAction);
 app.post('/deleteUserFeedActions', passportConfig.isAuthenticated, scriptController.postDeleteFeedAction);
 app.post('/interest', passportConfig.isAuthenticated, userController.postUpdateInterestSelection);
+app.post('/esteemInterest', passportConfig.isAuthenticated, userController.postEsteemInterestSelection);
+app.post('/advancedlitInterest', passportConfig.isAuthenticated, userController.postAdvancedlitInterestSelection);
 app.post('/habitsTimer', passportConfig.isAuthenticated, userController.postUpdateHabitsTimer);
 //postDeleteAccount
 //app.post('/deleteAccount', passportConfig.isAuthenticated, userController.getDeleteAccount);

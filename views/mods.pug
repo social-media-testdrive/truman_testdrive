@@ -8,6 +8,27 @@ block content
 
     .ui.four.stackable.link.cards(style="padding-bottom:4em;")
       
+        a.ui.card(href='/guest/advancedlit')
+          .image
+            .ui.grey.ribbon.label In Development
+            img(src=cdn+'/advancednews.png')
+          .content
+            .header="Advanced News Literacy" 
+            
+        a.ui.card(href='/guest/esteem')
+          .image
+            .ui.grey.ribbon.label In Development
+            img(src=cdn+'/esteem.png')
+          .content
+            .header="The Ups and Downs of Social Media" 
+            
+        a.ui.card(href='/guest/accounts')
+          .image
+            .ui.blue.ribbon.label NEW!
+            img(src=cdn+'/acctandpasswords.png')
+          .content
+            .header="Accounts and Passwords"  
+
         a.ui.card(href='/guest/habits')
           .image
             .ui.blue.ribbon.label NEW!
@@ -64,14 +85,15 @@ block content
             img(src=cdn+'/news.png')
           .content
             .header="News in Social Media"
-            
-        a.ui.card(href='#')
-          .ui.inverted.active.dimmer.soon
-            .content
-              .center
-                h2.ui.header
-                  |  Coming Soon!
-          .image(style="filter: blur(1.5px);")
-            img(src=cdn+'/acctandpasswords.png')
-          .content
-            .header="Accounts and Passwords"
+          
+      
+        //- a.ui.card(href='#')
+        //-   .ui.inverted.active.dimmer.soon
+        //-     .content
+        //-       .center
+        //-         h2.ui.header
+        //-           |  Coming Soon!
+        //-   .image(style="filter: blur(1.5px);")
+        //-     img(src=cdn+'/acctandpasswords.png')
+        //-   .content
+        //-     .header="Accounts and Passwords"

@@ -2,7 +2,7 @@ extends ../ui_layout
 
 block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
-  .ui.container(style="margin-bottom:4em;")
+  .ui.container.addBottomMargin
     .ui.stackable.column.grid
       .ui.column
         .insertPrint
@@ -11,11 +11,12 @@ block content
             i.question.blue.icon
             .content
               | Reflect
-          .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-            h4(style="float:left")
-              i.exclamation.triangle.icon(style="color: #f9ff00 !important;")
+          .ui.label
+            h4
+              i.exclamation.triangle.icon
 
-              | These were the phishing scam posts in the timeline. How many did you notice?
+              | These were the phishing scam posts in the timeline. How many did 
+              | you notice?
           br
           br
           .ui.stackable.three.cards
@@ -65,8 +66,8 @@ block content
                   span(style="color:#0000FF;")  http://bit.ly/FREEGIFTS
        
           .ui.raised.segment
-            .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-              h4(style="float:left")
+            .ui.label
+              h4
                 | How did you respond to these posts that were phishing scams?
             .ui.stackable.two.cards.checkOne
       
@@ -93,7 +94,7 @@ block content
                       .field
                         .ui.checkbox
                           input(type='checkbox')
-                          label(for='overshare', style="font-size:120%;", tabindex='0') I flagged the post.
+                          label(for='overshare', tabindex='0') I flagged the post.
                   hr
                   .ui.form
                     .inline.fields
@@ -101,7 +102,7 @@ block content
                       .field
                         .ui.checkbox
                           input(type='checkbox', name='inconsiderate')
-                          label(for='inconsiderate', style="font-size:120%", tabindex='0') I clicked on the link.
+                          label(for='inconsiderate', tabindex='0') I clicked on the link.
                   hr
                   .ui.form
                     .inline.fields
@@ -109,7 +110,7 @@ block content
                       .field
                         .ui.checkbox
                           input(type='checkbox', name='responsible')
-                          label(for='responsible', style="font-size:120%", tabindex='0') I ignored the post.
+                          label(for='responsible', tabindex='0') I ignored the post.
                   hr
                   .ui.form
                     .inline.fields
@@ -117,7 +118,7 @@ block content
                       .field
                         .ui.checkbox
                           input(type='checkbox', name='somethingelse')
-                          label(for='somethingelse', style="font-size:120%", tabindex='0') I did something else.
+                          label(for='somethingelse', tabindex='0') I did something else.
                             
             .ui.stackable.two.cards.checkTwo
             
@@ -143,7 +144,7 @@ block content
                       .field
                         .ui.checkbox
                           input(type='checkbox')
-                          label(for='overshare2', style="font-size:120%;", tabindex='0') I flagged the post.
+                          label(for='overshare2', tabindex='0') I flagged the post.
                   hr
                   .ui.form
                     .inline.fields
@@ -151,7 +152,7 @@ block content
                       .field
                         .ui.checkbox
                           input(type='checkbox', name='inconsiderate2')
-                          label(for='inconsiderate2', style="font-size:120%", tabindex='0') I clicked on the link.
+                          label(for='inconsiderate2', tabindex='0') I clicked on the link.
                   hr
                   .ui.form
                     .inline.fields
@@ -159,7 +160,7 @@ block content
                       .field
                         .ui.checkbox
                           input(type='checkbox', name='responsible2')
-                          label(for='responsible2', style="font-size:120%", tabindex='0') I ignored the post.
+                          label(for='responsible2', tabindex='0') I ignored the post.
                   hr
                   .ui.form
                     .inline.fields
@@ -167,7 +168,7 @@ block content
                       .field
                         .ui.checkbox
                           input(type='checkbox', name='somethingelse')
-                          label(for='somethingelse', style="font-size:120%", tabindex='0') I did something else.
+                          label(for='somethingelse', tabindex='0') I did something else.
                           
             .ui.stackable.two.cards.checkThree
             
@@ -195,7 +196,7 @@ block content
                       .field
                         .ui.checkbox
                           input(type='checkbox')
-                          label(for='overshare3', style="font-size:120%;", tabindex='0') I flagged the post.
+                          label(for='overshare3', tabindex='0') I flagged the post.
                   hr
                   .ui.form
                     .inline.fields
@@ -203,7 +204,7 @@ block content
                       .field
                         .ui.checkbox
                           input(type='checkbox', name='inconsiderate3')
-                          label(for='inconsiderate3', style="font-size:120%", tabindex='0') I clicked on the link.
+                          label(for='inconsiderate3', tabindex='0') I clicked on the link.
                   hr
                   .ui.form
                     .inline.fields
@@ -211,7 +212,7 @@ block content
                       .field
                         .ui.checkbox
                           input(type='checkbox', name='responsible3')
-                          label(for='responsible3', style="font-size:120%", tabindex='0') I ignored the post.
+                          label(for='responsible3', tabindex='0') I ignored the post.
                   hr
                   .ui.form
                     .inline.fields
@@ -219,24 +220,24 @@ block content
                       .field
                         .ui.checkbox
                           input(type='checkbox', name='somethingelse')
-                          label(for='somethingelse', style="font-size:120%", tabindex='0') I did something else.
+                          label(for='somethingelse', tabindex='0') I did something else.
                                   
     .ui.raised.segment.responseOne
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
+      .ui.label
+        h4
           | What are some clues you can use to identify phishing scams? 
       .ui.form
         .inline.fields
-          label(style="font-size:120%;")
+          label
           textarea.glowing-border(rows='2' id="digfoot_responseOne")
 
     .ui.raised.segment.responseTwo
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
+      .ui.label
+        h4
           | Why is it important to protect yourself against phishing scams?
       .ui.form
         .inline.fields
-          label(style="font-size:120%;")
+          label
           textarea.glowing-border(rows='2' id="digfoot_responseTwo")
 
     br
@@ -252,3 +253,6 @@ block content
       
 block scripts
   script(src="/module_js/phishing/phishing_results.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/results.css')

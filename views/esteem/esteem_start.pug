@@ -1,0 +1,86 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container.addBottomMargin
+    br
+    .ui.raised.segment
+      h3.ui.header
+        i.book.blue.icon
+        .content
+          | Learn
+      hr
+      h5.ui.header
+        i.arrow.circle.right.blue.icon
+        .content
+          | Social media use can come with its ups and downs. On one hand, you 
+          | can connect with friends, share what you are doing or thinking, and 
+          | stay up-to-date on the latest happenings.
+      h5.ui.header
+        i.arrow.circle.right.blue.icon
+        .content
+          | On the other hand, it can be distracting and you may feel like you 
+          | have to check it all the time. There can also be pressure to make it 
+          | look like your life is perfect, which may feel exhausting.
+      h5.ui.header
+        i.arrow.circle.right.blue.icon
+        .content
+          | In this module, you will learn how to use social media in a way that 
+          | feels positive and balanced.
+        
+      
+      br
+      #introduction_next.button.ui.mini.green.right.labeled.icon.button
+              i.down.arrow.icon
+              |   Next
+    
+    #question.ui.segment.hidden
+      h3.ui.header
+        i.key.blue.icon
+        .content Key Ideas
+      .sub.header.grayElement
+        i.hand.pointer.icon
+        span  Click on each label below to learn more
+      br   
+      .ui.stackable.two.column.grid
+        .ui.column
+          .keyTerm.ui.raised.segment
+            a.ui.blue.ribbon.label.keyTermLabel
+                span Red flag feeling
+            span.hidden.keyTermDefinition
+              | When something happens on social media that makes you feel 
+              | uncomfortable, worried, sad, or anxious.
+        
+        .ui.column
+          .keyTerm.ui.raised.segment
+            a.ui.blue.ribbon.label.keyTermLabel
+                span Oversharing
+            span.hidden.keyTermDefinition
+              | Sharing personal feelings, information, or experience that later 
+              | make someone feel uncomfortable or regretful.
+          
+        .ui.column
+          .keyTerm.ui.raised.segment
+            a.ui.blue.ribbon.label.keyTermLabel
+                //- i.magic.icon 
+                span Media balance
+            span.hidden.keyTermDefinition 
+              | Using media in a way that feels healthy and in balance with 
+              | other life activities.
+
+    .ui.warning.message#clickNextWarning
+      .header
+       | Click "Next"
+    .ui.warning.message#clickLabelsWarning
+     .header
+      | Click on each label to proceed  
+    a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
+        .ui.labeled.icon.button
+            i.rocket.icon
+            |   Got it!
+            
+block scripts
+  script(src="/module_js/base_start.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/start.css')    
