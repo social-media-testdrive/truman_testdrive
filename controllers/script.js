@@ -515,6 +515,17 @@ exports.postUpdateFeedAction = (req, res, next) => {
       //we found the right post, and feedIndex is the right index for it
       //console.log("##### FOUND post "+req.body.postID+" at index "+ feedIndex);
 
+      // interaction with a popup modal
+      if(req.body.modalName)
+      {
+          var modalInfo = new Object();
+          modalInfo.modalOpened = true;
+          modalInfo.modalName = req.body.modalName;
+          modalInfo.modalOpenedTime = req.body.modalOpenedTime;
+          user.feedAction[feedIndex].modal.push(modalInfo);
+
+      }
+
       //create a new Comment
       if(req.body.new_comment)
       {

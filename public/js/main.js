@@ -16,7 +16,7 @@ $(window).on("load", function () {
 
   //recording the current page
   let pathArray = window.location.pathname.split('/');
-  $.post("/pageLog", { page: pathArray[1], lesson: pathArray[2], _csrf: $('meta[name="csrf-token"]').attr('content') });
+  $.post("/pageLog", { subdirectory1: pathArray[1], subdirectory2: pathArray[2], _csrf: $('meta[name="csrf-token"]').attr('content') });
 
   // managing the progress bar in the header
   let pathArrayForHeader = window.location.pathname.split('/');
@@ -611,8 +611,7 @@ Start button links
   $('.ui.big.green.labeled.icon.button.finish')
     .on('click', function () {
       //$.post("/deleteAccount", {_csrf: $('meta[name="csrf-token"]').attr('content') });
-      window.location.href = '/delete';
-
+      window.location.href = '/';
     });
 
 

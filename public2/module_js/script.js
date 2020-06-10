@@ -93,10 +93,25 @@ $('.ui.dropdown.icon.item')
       $('#next_steps_modual').modal('show');
     }
 
-    function openPostDigfoot(){
+    $('#openPostDigfoot').on('click', function(){
+      let postNumber = $(this).closest('.ui.card').attr('postNumber');
+      let post = $(this).closest(".ui.fluid.card");
+      let postID = post.attr("postID");
+      let modalOpenedTime = Date.now();
       $('input[type=checkbox]').prop('checked',false);
-      $('#digfoot_post_modual').modal('show');
-    }
+      $('#digfoot_post_modual').modal({
+        onHide: function(){
+          let modalName = $(this).attr('data-modalName');
+           $.post("/feed", {
+             postID: postID,
+             modalName: modalName,
+             modalOpenedTime: modalOpenedTime,
+             _csrf: $('meta[name="csrf-token"]').attr('content')
+           });
+          return true;
+        }
+      }).modal('show');
+    });
 
     function openPostEsteem(){
       $('.ui.accordion').accordion('open', 0);

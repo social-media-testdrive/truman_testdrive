@@ -127,6 +127,13 @@ const userSchema = new mongoose.Schema({
         likeTime  : [Number], //same but for liking
         replyTime  : [Number], //same but for commenting
 
+        // popup modal info
+        modal: [new Schema({
+          modalName: String,
+          modalOpened: {type: Boolean, default: false},
+          modalOpenedTime: Number
+        },{_id: false, versionKey: false })],
+
         //user created comment on an actor's post (fake post)
         comments: [new Schema({
           comment: {type: Schema.ObjectId},//ID Reference for Script post comment
