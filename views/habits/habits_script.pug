@@ -8,14 +8,14 @@ block content
   -//var cdn = "";
   .computer.only.tablet.only.four.wide.column
     .ui.sticky.sideMenu
-      .ui.vertical.menu(style="width:auto;")
+      .ui.vertical.menu
         a.active.item(data-value='feed')#feedsteps 
           i.icon.home
           |  Home
         a.item(data-value='notifications')#notificationsteps
           i.icon.bell
           |  Notifications
-          .ui.red.right.pointing.label(style="display:none") !
+          .ui.red.right.pointing.label !
           
       .ui.card
         .image
@@ -38,20 +38,20 @@ block content
             
   //-mobile only version of the menu
   .mobile.only.sixteen.wide.column
-    .ui.top.fixed.vertical.menu(style="width:100%; padding-top:5em;")
+    .ui.top.fixed.vertical.menu
       a.active.item(data-value='feed')#feedsteps
         i.icon.home
         |  Home
       a.item(data-value='notifications')#notificationsteps      
         i.icon.bell
         |  Notifications
-        .ui.red.right.pointing.label(style="display:none") !
+        .ui.red.right.pointing.label !
     br
     br
 
   #loading.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
     img.ui.centered.small.image(src='/heart.svg')
-  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column(style='display: none;')  
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column 
 
     //- Input for creating new post at top of feed
     #newpost.ui.fluid.left.labeled.right.icon.input.habitsHomeDisplay
@@ -67,32 +67,32 @@ block content
     
     //-Buttons at the top of the notifications page (and settings and activity pages)
     //- future improvement could be to make a separate class for this rather than duplicating three times
-    button.ui.basic.button.habitsNotificationsDisplay.habitsSettingsButton(style="display:none;")
+    button.ui.basic.button.habitsNotificationsDisplay.habitsSettingsButton(style='display:none;')
       i.cog.icon
       |   Settings                    
-    button.ui.basic.button.habitsNotificationsDisplay.habitsActivityButton(style="display:none;")
+    button.ui.basic.button.habitsNotificationsDisplay.habitsActivityButton(style='display:none;')
       i.clock.icon
       |   My Activity
       
     //-Buttons at the top of the notifications page (and settings and activity pages)
-    button.ui.basic.button.habitsSettingsDisplay.habitsSettingsButton(style="display:none; margin-bottom:1em;")
+    button.ui.basic.button.habitsSettingsDisplay.habitsSettingsButton(style='display:none;')
       i.cog.icon
       |   Settings                    
-    button.ui.basic.button.habitsSettingsDisplay.habitsActivityButton(style="display:none; margin-bottom:1em;")
+    button.ui.basic.button.habitsSettingsDisplay.habitsActivityButton(style='display:none;')
       i.clock.icon
       |   My Activity
 
       
     //-Buttons at the top of the notifications page (and settings and activity pages)
-    button.ui.basic.button.habitsActivityDisplay.habitsSettingsButton(style="display:none;margin-bottom:1em;")
+    button.ui.basic.button.habitsActivityDisplay.habitsSettingsButton(style='display:none;')
       i.cog.icon
       |   Settings                    
-    button.ui.basic.button.habitsActivityDisplay.habitsActivityButton(style="display:none;margin-bottom:1em;")
+    button.ui.basic.button.habitsActivityDisplay.habitsActivityButton(style='display:none;')
       i.clock.icon
       |   My Activity
       
     //-Settings page
-    .ui.container.habitsSettingsDisplay(style="display:none;")
+    .ui.container.habitsSettingsDisplay(style='display:none;')
       h2.ui.header Notification Settings
       .ui.divider
       br
@@ -101,13 +101,13 @@ block content
           br
           .ui.toggle.checkbox(name='popupAlertsCheckbox')
             input(type='checkbox' name='popupAlerts')
-            label(style="font-weight:bold;") Pause All
+            label Pause All
         span.settingLabel This will pause all notifications.
         br
         br
         br
-        .field(style="display:none;")#pauseTimeSelectField
-          label(style="font-size:100%;") How long would you like to pause notifications for?
+        .field#pauseTimeSelectField
+          label How long would you like to pause notifications for?
             br
             br
             .ui.selection.dropdown(name='pauseTimeSelect')
@@ -115,16 +115,16 @@ block content
               i.dropdown.icon
               .default.text 
               .menu
-                .item(data-value='15 minutes' style="font-size:100%") 15 minutes
-                .item(data-value='1 hour' style="font-size:100%") 1 hour
-                .item(data-value='2 hours' style="font-size:100%") 2 hours
-                .item(data-value='4 hours' style="font-size:100%") 4 hours
-                .item(data-value='8 hours' style="font-size:100%") 8 hours
+                .item(data-value='15 minutes') 15 minutes
+                .item(data-value='1 hour') 1 hour
+                .item(data-value='2 hours') 2 hours
+                .item(data-value='4 hours') 4 hours
+                .item(data-value='8 hours') 8 hours
         br
         br    
         
     //-activtiy page
-    .ui.container.habitsActivityDisplay(style="display:none; padding-bottom:10em;")
+    .ui.container.habitsActivityDisplay(style='display:none;')
       h2.ui.header My Activity
       .ui.divider
 
@@ -145,7 +145,7 @@ block content
       h2.ui.header Manage My Time:
       br
       .field#reminderTimeSelectField
-        label(style="font-size:100%; font-weight:bold;") Set Daily Reminder
+        label Set Daily Reminder
           br
           br
           .ui.selection.dropdown(name='reminderTimeSelect')
@@ -153,11 +153,11 @@ block content
             i.dropdown.icon
             .default.text 
             .menu
-              .item(data-value='remind 15 minutes' style="font-size:100%") 15 minutes
-              .item(data-value='remind 1 hour' style="font-size:100%") 1 hour
-              .item(data-value='remind 2 hours' style="font-size:100%") 2 hours
-              .item(data-value='remind 4 hours' style="font-size:100%") 4 hours
-              .item(data-value='remind 8 hours' style="font-size:100%") 8 hours
+              .item(data-value='remind 15 minutes') 15 minutes
+              .item(data-value='remind 1 hour') 1 hour
+              .item(data-value='remind 2 hours') 2 hours
+              .item(data-value='remind 4 hours') 4 hours
+              .item(data-value='remind 8 hours') 8 hours
       br
       span We'll send you a reminder once you've reached the time you set for yourself.
 
@@ -173,11 +173,11 @@ block content
           .ui.feed
            .event
              //-CSS properties: https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
-             .label(style="overflow:hidden !important; width:3em !important; height:3em !important")
-               img(src=cdn + '/profile_pictures/' +val.actor.profile.picture style="width:100% !important; height:100% !important; display:inline  !important; margin:0 auto !important;")
+             .label
+               img(src=cdn + '/profile_pictures/' +val.actor.profile.picture)
              .content
                .summary=val.body
-                .time.notificationTime(style="font-weight:normal !important;")=(habitsStart + val.time)
+                .time.notificationTime=(habitsStart + val.time)
                 .time.millisecondType(style="display:none;")=(val.time)
                     
       else if val.relativeTime
@@ -549,4 +549,7 @@ block content
             .summary Thomas Rogers commented on Hannah Lee’s post: “I love ribs”.               
 
 block scripts
-  script(src="/module_js/habits/habits_script.js")            
+  script(src="/module_js/habits/habits_script.js")        
+  
+block styles
+  link(rel='stylesheet', href='/css/modules/habits/habits_script.css')    

@@ -1,0 +1,41 @@
+/* tutorial & sim */
+
+#shortenedURL, #shortenedURL1, #shortenedURL2, #shortenedURL3 {
+  color: #0000FF;
+}
+
+/* tut_guide */
+
+.grayElement {
+  color:#696969;
+}
+
+#checkAllWarning {
+  display: none;
+}
+
+/* modals in sim & script */
+
+.ui.modal{
+  top: 8em;
+}
+
+.ui.modal .ui.grid {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.ui.form {
+  margin-top: 1em;
+}
+
+.cardScamHeader {
+  margin-top: 1em !important;
+  font-size: 200% !important;
+}
+
+/* trans */
+
+i.caret.icon {
+  text-indent: 3em;
+}

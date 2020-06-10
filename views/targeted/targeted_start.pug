@@ -2,7 +2,7 @@ extends ../ui_layout
 
 block content
   
-  .ui.text.container(style="margin-bottom:4em;")
+  .ui.text.container.addBottomMargin
     br
     .ui.raised.segment
       h3.ui.header
@@ -13,15 +13,20 @@ block content
       h5.ui.header
         i.arrow.circle.right.blue.icon
         .content
-          | It's really common to see advertisements when browsing through your social media feed.
+          | It's really common to see advertisements when browsing through your 
+          | social media feed.
       h5.ui.header
         i.arrow.circle.right.blue.icon
         .content
-          | In fact, companies often collect information about you and use it to show you ads for things they think you'll like. This is called targeted advertising.
+          | In fact, companies often collect information about you and use it to 
+          | show you ads for things they think you'll like. This is called 
+          | targeted advertising.
       h5.ui.header
         i.arrow.circle.right.blue.icon
         .content
-          | While it may be nice to see ads tailored to your interests, the more companies know about you, the more your information is at risk of being sold, stolen, or used in ways you don't agree with.
+          | While it may be nice to see ads tailored to your interests, the more 
+          | companies know about you, the more your information is at risk of 
+          | being sold, stolen, or used in ways you don't agree with.
 
       br
       #introduction_next.button.ui.mini.green.right.labeled.icon.button
@@ -32,45 +37,57 @@ block content
       h3.ui.header
         i.key.blue.icon
         .content Key Ideas
-      .sub.header 
-        i.hand.pointer.icon(style="color:gray;")
-        span(style="color: gray;") Click on each label below to learn more
+      .sub.header.grayElement 
+        i.hand.pointer.icon
+        span Click on each label below to learn more
       br
       //- .ui.segments     
       .ui.stackable.two.column.grid
         .ui.column
-          #audience.ui.raised.segment
-            a.ui.blue.ribbon.label#audienceLabel
+          .ui.raised.segment.keyTerm
+            a.ui.blue.ribbon.label.keyTermLabel
                 //- i.dollar.sign.icon 
                 span Data
-            span.hidden(id="audience_info", style="font-weight:600") Facts and statistics about a user that are collected for different purposes.
-              ul(style="font-weight:400") Apps and websites collect data about your online activity (i.e. other sites you visit, what you click on, what you search for, etc.)
+            span.hidden.keyTermDefinition 
+              | Facts and statistics about a user that are collected for 
+              | different purposes.
+              ul
+                | Apps and websites collect data about your online activity 
+                | (i.e. other sites you visit, what you click on, what you 
+                | search for, etc.)
 
         .ui.column
-          #private_information.ui.raised.segment
-            a.ui.blue.ribbon.label#privateInformationLabel
-                //- i.magic.icon 
+          .ui.raised.segment.keyTerm
+            a.ui.blue.ribbon.label.keyTermLabel
                 span Targeted advertising
-            span.hidden(id="private_information_info",style="font-weight:600")  When apps or websites show you certain types of advertisements based on information they’ve collected about you. 
+            span.hidden.keyTermDefinition  
+              | When apps or websites show you certain types of advertisements 
+              | based on information they’ve collected about you. 
             
         .ui.column
-          #risky.ui.raised.segment
-            a.ui.blue.ribbon.label#riskyLabel
-                //- i.magic.icon 
+          .ui.raised.segment.keyTerm
+            a.ui.blue.ribbon.label.keyTermLabel
                 span Sponsored post
-            span.hidden(id="risky_info",style="font-weight:600") A post on social media that is paid for by a company as an advertisement for their product.
-              ul(style="font-weight:400") Sponsored posts usually are labeled as “sponsored” but they look a lot like posts from the average person. 
-    .ui.warning.message#clickNextWarning(style="display:none;")
+            span.hidden.keyTermDefinition 
+              | A post on social media that is paid for by a company as an 
+              | advertisement for their product.
+              ul 
+                | Sponsored posts usually are labeled as “sponsored” but they 
+                | look a lot like posts from the average person. 
+    .ui.warning.message#clickNextWarning
       .header
        | Click "Next"
-    .ui.warning.message#clickLabelsWarning(style="display:none;")
+    .ui.warning.message#clickLabelsWarning
      .header
       | Click on each label to proceed  
-    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+    a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
         .ui.labeled.icon.button
             i.rocket.icon
             |   Got it!
 
 block scripts
-  script(src="/module_js/targeted/targeted_start.js")
+  script(src="/module_js/base_start.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/start.css')
   

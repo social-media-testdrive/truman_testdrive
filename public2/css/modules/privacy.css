@@ -1,0 +1,41 @@
+/* privacy settings page */
+/* tutorial, sim, settings pages */
+.addTop {
+  margin-top: 1em !important ;
+}
+
+.sectionTitle {
+  font-size: 140% !important;
+}
+
+.subsectionTitle {
+  font-size: 120% !important;
+}
+
+.standardLabel {
+  font-size: 100% !important;
+}
+
+.standardLabel .div {
+  width: 200px;
+}
+
+#locationCue1Text, #locationCue2Text, #locationCue3Text,
+#tagCue1Text, #tagCue2Text {
+  display: none;
+}
+
+#privateAccountCueText {
+  display: none;
+  font-size: 60%;
+}
+
+/* free-play sections */
+
+.img.post img {
+  max-width: 100%;
+}
+
+.ui.card .content a span {
+  color: black;
+}

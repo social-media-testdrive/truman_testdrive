@@ -1,52 +1,49 @@
-var literacy_counter = 0;
-clickCount = 0;
+const hintsList = [
+  {
+    hint: `Lily would like to hide tagged posts from her profile. Which privacy
+    settings would she have to change?`,
+    element: '#hint1'
+  },
+  {
+    hint: `She can make her account “<i>Private</i>,” so that only her social
+    media friends can see her posts. Let’s try doing this!`,
+    element: '#hint2',
+    hintPosition: 'top-middle'
+  },
+  {
+    hint: `Have you changed the account settings to a “<i>Private</i>” account?
+    Click “<i>Let’s Continue!</i>” to see how her profile has changed.`,
+    element: '#hint3',
+    hintPosition: 'middle-right'
+  }
+];
 
 //Variables for the two key settings
-var keySetting1 = $("input[name='allowTagInput']").is(':checked');
-var keySetting2 = $("input[name='autoTagInput']").is(':checked');
+let keySetting1 = $("input[name='allowTagInput']").is(':checked');
+let keySetting2 = $("input[name='autoTagInput']").is(':checked');
 
-//Initializing and managing the hints
-function startIntro(){
-    var hints;
-    hints = introJs().addHints();
+function customOnHintCloseFunction() {
+ closedHints++;
+ clickedHints = 0;
+ if($('#removeHidden').is(":visible")){
+   $('#removeHidden').transition('fade');
+   if($('#clickAllDotsWarning').is(":hidden")){
+     $('#cyberTransButton').css("margin-bottom", "4em");
+   }
+ }
+ //turn the button green if all three criteria are met
+ if(closedHints == hintsList.length) {
+   //remove the yellow warning about dots
+   if($('#clickAllDotsWarning').is(':visible')){
+     $('#clickAllDotsWarning').transition('fade');
+     $('#cyberTransButton').css("margin-bottom", "4em");
+   }
+   if((keySetting1 == false) && (keySetting2 == false)){
+      $( "#cyberTransButton" ).addClass("green");
+   }
+ }
+}
 
-    hints.onhintclick(function() {
-        clickCount++;
-        if(clickCount >= 3){
-          //show the guidance message, user probably doesn't know to click "got it"
-          if($('#removeHidden').is(":hidden")){
-            $('#removeHidden').transition('fade');
-            $('#free4Button').css("margin-bottom", "10em");
-          } else {
-            $('#removeHidden').transition('bounce');
-          }
-        }
-    });
-
-    hints.onhintclose(function(e) {
-     literacy_counter++;
-     clickCount = 0;
-     if($('#removeHidden').is(":visible")){
-       $('#removeHidden').transition('fade');
-       if($('#clickAllDotsWarning').is(":hidden")){
-         $('#free4Button').css("margin-bottom", "4em");
-       }
-     }
-     //turn the button green if all three criteria are met
-     if(literacy_counter == 3) {
-       //remove the yellow warning about dots
-       if($('#clickAllDotsWarning').is(':visible')){
-         $('#clickAllDotsWarning').transition('fade');
-         $('#free4Button').css("margin-bottom", "4em");
-       }
-       if((keySetting1 == false) && (keySetting2 == false)){
-          $( ".free4" ).addClass("green");
-       }
-     }
-    });
-  };
-
-$(window).on("load", function() {startIntro();});
 
 //Make the dropdown work
 $('.ui.dropdown')
@@ -59,7 +56,7 @@ $('#locationDropdown')
 
 //Giving appropriate feedback upon clicking continue
 
-$('#free4Button').on('click', function () {
+$('#cyberTransButton').on('click', function () {
   if(keySetting1 == true){
     $('#tagCue1Text').show();
     $('#tagCue1').transition('bounce');
@@ -72,11 +69,11 @@ $('#free4Button').on('click', function () {
   } else {
     $('#tagCue2Text').hide();
   }
-  if(literacy_counter != 3){
+  if(closedHints != hintsList.length){
     //show the message normally the first time
     if($('#clickAllDotsWarning').is(":hidden")){
       $('#clickAllDotsWarning').transition('fade');
-      $('#free4Button').css("margin-bottom", "10em");
+      $('#cyberTransButton').css("margin-bottom", "10em");
     }else{
       //otherwise, bounce the message to draw attention to it
       $('#clickAllDotsWarning').transition('bounce');
@@ -94,7 +91,7 @@ $(".ui.toggle.checkbox[name='allowTagToggle']").change(function() {
     $('#tagCue1Text').hide();
   }
 
-  if(literacy_counter == 3) {
+  if(closedHints == hintsList.length) {
     if((keySetting1 == false) && (keySetting2 == false)){
        $( ".free4" ).addClass("green");
     }
@@ -112,7 +109,7 @@ $(".ui.toggle.checkbox[name='autoTagToggle']").change(function() {
     $('#tagCue2Text').hide();
   }
 
-  if(literacy_counter == 3) {
+  if(closedHints == hintsList.length) {
     if((keySetting1 == false) && (keySetting2 == false)){
        $( ".free4" ).addClass("green");
     }

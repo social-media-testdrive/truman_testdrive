@@ -17,16 +17,16 @@ block content
 
   
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
-    .ui.one.column.centered.grid(style="padding-top:1em;")
-      .ui.fixed.bottom.sticky(style="padding-bottom:6em;")
-        .ui.icon.compact.message.warning(style="display:none;")#removeHidden
+    .ui.one.column.centered.grid
+      .ui.fixed.bottom.sticky
+        .ui.icon.compact.message.warning#removeHidden
           i.close.icon
           i.question.icon.float
           .content
             .ui.header Need some help? 
             p Make sure you are clicking "Got it" on the blue dots!
           
-        .ui.icon.message.warning(style="display:none;")#clickAllDotsWarning
+        .ui.icon.message.warning#clickAllDotsWarning
           i.close.icon
           i.hand.pointer.icon.float
           .content
@@ -35,28 +35,46 @@ block content
 
     .ui.fluid.card.test
       .content
-        .center.aligned.description(data-hint="All of Lily’s posts have been hidden to strangers. Only her social media friends can see her posts now." data-hintPosition='middle-left') This account is private.
+        .center.aligned.description#hint1 This account is private.
       
             
     br
-    .content(data-hint="A private profile can protect your information and keep it safe. If you have your information available to the public, you don’t have control over who sees your content." data-hintPosition="middle-middle")
+    .content#hint2
     br
     br
     br
-    .content(data-hint="Make sure to think about what you want to share, and whether you want it to be public or private on the internet." data-hintPosition='middle-middle')
+    .content#hint3
     br 
     
-    .ui.warning.message#clickAllDotsFinal(style="display:none;")
-      .header
-        | Click through all of the blue dots to continue
-    button.ui.big.labeled.icon.button.privacyresults#privacyresults(style="margin-bottom:4em;")
+
+    button.ui.big.labeled.icon.button.privacyresults#cyberTransButton(style="margin-bottom:4em;")
         i.rocket.icon
         |   Let's Continue!
-      
-
-
-
-
 
 block scripts
-  script(src="/module_js/privacy/privacy_free-play3.js")
+  script.
+    var hintsList = [
+      {
+        hint: `All of Lily’s posts have been hidden to strangers. Only her social
+        media friends can see her posts now.`,
+        element: '#hint1',
+        hintPosition: 'middle-left'
+      },
+      {
+        hint: `A private profile can protect your information and keep it safe. If
+        you have your information available to the public, you don’t have control
+        over who sees your content.`,
+        element: '#hint2',
+        hintPosition: 'middle-middle'
+      },
+      {
+        hint: `Make sure to think about what you want to share, and whether you want
+        it to be public or private on the internet.`,
+        element: '#hint3',
+        hintPosition: 'middle-middle'
+      }
+    ];
+  script(src="/module_js/base_sim.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/sim.css')

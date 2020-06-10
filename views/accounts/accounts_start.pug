@@ -1,0 +1,89 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container.addBottomMargin
+    br
+    .ui.raised.segment
+      h3.ui.header
+        i.book.blue.icon
+        .content
+          | Learn
+      hr
+      h5.ui.header
+        i.arrow.circle.right.blue.icon
+        .content
+          | Before joining your friends on social media, you'll need to create 
+          | an account and fill out some basic profile information.
+      h5.ui.header
+        i.arrow.circle.right.blue.icon
+        .content
+          | When you create your account, be sure to choose the right kind of 
+          | username and password to keep your account safe and protect you and 
+          | your friends!           
+      
+      br
+      #introduction_next.button.ui.mini.green.right.labeled.icon.button
+              i.down.arrow.icon
+              |   Next
+    
+    #question.ui.segment.hidden
+      h3.ui.header
+        i.key.blue.icon
+        .content Key Ideas
+      .sub.header.grayElement
+        i.hand.pointer.icon
+        span  Click on each label below to learn more
+      br
+      //- .ui.segments     
+      .ui.stackable.two.column.grid
+        .ui.column
+          .keyTerm.ui.raised.segment
+            a.ui.blue.ribbon.label.keyTermLabel
+                //- i.dollar.sign.icon 
+                span Username
+            span.hidden.keyTermDefinition
+              | The name or ID that you use when you log in.
+              ul
+                | Some social media sites ask you to use your e-mail address as 
+                | a username. Others will ask you to choose a name for yourself.
+        
+        .ui.column
+          .keyTerm.ui.raised.segment
+            a.ui.blue.ribbon.label.keyTermLabel
+                //- i.magic.icon 
+                span Password
+            span.hidden.keyTermDefinition
+              | A secret string of letters, symbols, and numbers that you can 
+              | use to restrict who can access something digital.
+              ul
+                | Think of your password like a key to your home. Only people 
+                | with the key can get inside.
+        .ui.column
+          .keyTerm.ui.raised.segment
+            a.ui.blue.ribbon.label.keyTermLabel
+                //- i.magic.icon 
+                span Profile
+            span.hidden.keyTermDefinition 
+              | Your personal page on social media that includes information 
+              | about you. 
+              ul
+                | Your profile may contain information like your name, location, 
+                | and pictures you post or are tagged in.
+          
+    .ui.warning.message#clickNextWarning
+      .header
+       | Click "Next"
+    .ui.warning.message#clickLabelsWarning
+     .header
+      | Click on each label to proceed  
+    a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
+        .ui.labeled.icon.button
+            i.rocket.icon
+            |   Got it!
+            
+block scripts
+  script(src="/module_js/base_start.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/start.css')  

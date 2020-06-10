@@ -1,13 +1,19 @@
 function startIntro(){
-    var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true, 'doneLabel':'Done &#10003', 'tooltipClass':'blueTooltip'});
+    var intro = introJs().setOptions({
+      'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false,
+      'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true,
+      'doneLabel':'Done &#10003', 'tooltipClass':'blueTooltip'});
       intro.setOptions({
         steps: [
           {
-            intro: "Now you get to explore the TestDrive timeline! You can read what others have posted, respond, or make your own posts."
+            intro: `Now you get to explore the TestDrive timeline! You can read
+            what others have posted, respond, or make your own posts.`
           },
           {
-            intro: "As you look through the timeline, see if you can find features that grab your attention and think about what you can do to build healthy social media habits."
-        
+            intro: `As you look through the timeline, see if you can find
+            features that grab your attention and think about what you can do to
+            build healthy social media habits.`
+
           }
         ]
       });

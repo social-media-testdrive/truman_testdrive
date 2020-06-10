@@ -1,0 +1,45 @@
+extends ../script.pug
+
+block post
+  if (val.type === user.esteemTopic)
+    if (val.info_text !== "")
+      include ../partials/script/taggedPost
+    else
+      include ../partials/script/actorPost
+  
+
+  include ../partials/script/modals/esteemPost
+  
+block rightColumn
+
+  .computer.only.four.wide.column
+    .ui.sticky.compact.positive.message.advancedLitReminder
+      case user.esteemTopic
+        when "Music"
+          p 
+            | Remember that you are viewing Jeremy’s timeline, you are looking for 
+            | posts by Kiki and Franklin. You can still make posts and add 
+            | comments on the timeline. 
+        when "Sports"
+          p 
+            | Remember that you are viewing Jeremy’s timeline, you are looking for 
+            | posts by Brielle and Hayden. You can still make posts and add 
+            | comments on the timeline. 
+        when "Gaming"
+          p 
+            | Remember that you are viewing Jeremy’s timeline, you are looking for 
+            | posts by Lindsay and Asher. You can still make posts and add 
+            | comments on the timeline. 
+        default
+          p 
+            | Remember that you are viewing Jeremy’s timeline, you are looking for 
+            | posts by Kiki and Franklin. You can still make posts and add 
+            | comments on the timeline. 
+
+block scripts2
+  script.
+    $('.advancedLitReminder')
+    .sticky({
+      context: '#content',
+      offset: 90
+    })

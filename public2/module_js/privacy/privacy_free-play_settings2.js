@@ -1,9 +1,26 @@
-
-var literacy_counter = 0;
-clickCount = 0;
+const hintsList = [
+  {
+    hint: `What would Lily need to do if she didn’t want strangers to see her
+    social media posts? Which privacy settings would she have to change?`,
+    element: '#hint1'
+  },
+  {
+    hint: `She can turn off tagging settings and hide tagged posts from her
+    timeline. Let’s try doing this!`,
+    element: '#hint2',
+    hintPosition: 'top-middle'
+  },
+  {
+    hint: `Have you turned off tagging settings and hidden tagged posts from
+    Lily’s timeline? Click “<i>Let’s Continue!</i>” to see how her profile has
+    changed.`,
+    element: '#hint3',
+    hintPosition: 'middle-right'
+  }
+];
 
 //Get the status of the key setting
-var keySetting1 = $("input[name='toggleValue']").is(':checked');
+let keySetting1 = $("input[name='toggleValue']").is(':checked');
 
 //Using logic to determine if all required criteria are met before allowing to proceed
 
@@ -12,92 +29,70 @@ $(".ui.toggle.checkbox[name='togglePrivateAccount']").change(function() {
   if(keySetting1 == true){
     $('#privateAccountCueText').hide();
   }
-  if(literacy_counter == 3) {
+  if(closedHints == hintsList.length) {
     if((keySetting1 == true)){
-       $( ".free3" ).addClass("green");
+       $( "#cyberTransButton" ).addClass("green");
     }
     else{
-      $( ".free3" ).removeClass("green");
+      $( "#cyberTransButton" ).removeClass("green");
     }
   }
 });
 
-//Initializing and managing the hints
-function startIntro(){
-    var hints;
-
-    hints = introJs().addHints();
-
-    hints.onhintclick(function() {
-        clickCount++;
-        if(clickCount >= 3){
-          //show the guidance message, user probably doesn't know to click "got it"
-          if($('#removeHidden').is(":hidden")){
-            $('#removeHidden').transition('fade');
-            $('#free3Button').css("margin-bottom", "10em");
-          } else {
-            $('#removeHidden').transition('bounce');
-          }
-        }
-    });
-
-    hints.onhintclose(function(e) {
-     literacy_counter++;
-     clickCount = 0;
-     if($('#removeHidden').is(":visible")){
-       $('#removeHidden').transition('fade');
-       if($('#clickAllDotsWarning').is(":hidden")){
-         $('#free3Button').css("margin-bottom", "4em");
-       }
-     }
-     if(literacy_counter == 3) {
-       if($('#clickAllDotsWarning').is(':visible')){
-         $('#clickAllDotsWarning').transition('fade');
-         $('#free3Button').css("margin-bottom", "4em");
-       }
-       if(keySetting1 == true){
-          $( ".free3" ).addClass("green");
-       }
-     }
-    });
-  };
-
-  //Function for adding visual cue to the appropriate setting
-
-  function jiggleCue() {
-    $('#privateAccountCue').transition('shake');
+function customOnHintCloseFunction() {
+  closedHints++;
+  clickedHints = 0;
+  if($('#removeHidden').is(":visible")){
+    $('#removeHidden').transition('fade');
+    if($('#clickAllDotsWarning').is(":hidden")){
+      $('#cyberTransButton').css("margin-bottom", "4em");
+    }
   }
-
-  //Adding messaging for the private account setting, scrolling to the setting
-
-  $('#free3Button').on('click', function () {
-    if(literacy_counter != 3){
-      //show the message normally the first time
-      if($('#clickAllDotsWarning').is(":hidden")){
-        $('#clickAllDotsWarning').transition('fade');
-        $('#free3Button').css("margin-bottom", "10em");
-      }else{
-        //otherwise, bounce the message to draw attention to it
-        $('#clickAllDotsWarning').transition('bounce');
-      }
+  if(closedHints == hintsList.length) {
+    if($('#clickAllDotsWarning').is(':visible')){
+      $('#clickAllDotsWarning').transition('fade');
+      $('#cyberTransButton').css("margin-bottom", "4em");
     }
-    if(keySetting1 == false){
-      $('#privateAccountCueText').show();
-
-      //snippet taken from StackOverflow
-      $([document.documentElement, document.body]).animate({
-          scrollTop: $("#topOfPage").offset().top
-      }, 1000);
-
-      setTimeout(function () {
-        $('#privateAccountCue').transition('bounce');
-      }, 1000);
-    } else {
-      $('#privateAccountCueText').hide();
+    if(keySetting1 == true){
+      $( ".free3" ).addClass("green");
     }
- });
+  }
+}
 
-$(window).on("load", function() {startIntro();});
+//Function for adding visual cue to the appropriate setting
+
+function jiggleCue() {
+  $('#privateAccountCue').transition('shake');
+}
+
+//Adding messaging for the private account setting, scrolling to the setting
+
+$('#cyberTransButton').on('click', function () {
+  if(closedHints != hintsList.length){
+    //show the message normally the first time
+    if($('#clickAllDotsWarning').is(":hidden")){
+      $('#clickAllDotsWarning').transition('fade');
+      $('#cyberTransButton').css("margin-bottom", "10em");
+    }else{
+      //otherwise, bounce the message to draw attention to it
+      $('#clickAllDotsWarning').transition('bounce');
+    }
+  }
+  if(keySetting1 == false){
+    $('#privateAccountCueText').show();
+
+    //snippet taken from StackOverflow
+    $([document.documentElement, document.body]).animate({
+      scrollTop: $("#topOfPage").offset().top
+    }, 1000);
+
+    setTimeout(function () {
+      $('#privateAccountCue').transition('bounce');
+    }, 1000);
+  } else {
+    $('#privateAccountCueText').hide();
+  }
+});
 
 //Make the dropdown work
 $('.ui.dropdown')

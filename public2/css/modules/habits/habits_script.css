@@ -1,0 +1,70 @@
+/* desktop main menu  */
+
+.ui.vertical.menu {
+  width: auto;
+}
+
+/* mobile main menu */
+
+.ui.top.fixed.vertical.menu {
+  width: 100%;
+  padding-top: 5em;
+}
+
+/* both main menus */
+
+.ui.red.pointing.label {
+  display: none;
+}
+
+/* hiding various elements with various margins */
+#content,
+#pauseTimeSelectField {
+  display: none;
+}
+
+.habitsSettingsDisplay,
+.button.habitsActivityDisplay {
+  /* display: none; */
+  margin-bottom: 1em !important;
+}
+
+.container.habitsActivityDisplay {
+  /* display: none; */
+  margin-bottom: 10em;
+}
+
+/* settings and activity pages */
+
+.field label {
+  font-weight: bold;
+}
+
+#pauseTimeSelectField label,
+#reminderTimeSelectField label {
+  font-size: 100%;
+  font-weight: bold;
+}
+
+.menu .item {
+  font-size: 100%;
+}
+
+/* notifications display */
+
+.event .label {
+  overflow:hidden !important;
+  width:3em !important;
+  height:3em !important;
+}
+
+.event .label img {
+  width:100% !important;
+  height:100% !important;
+  display:inline  !important;
+  margin:0 auto !important;
+}
+
+.event .notificationTime {
+  font-weight: normal !important;
+}

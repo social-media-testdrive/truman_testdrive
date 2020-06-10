@@ -18,16 +18,16 @@ block content
 
   
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column 
-    .ui.one.column.centered.grid(style="padding-top:1em;")
-      .ui.fixed.bottom.sticky(style="padding-bottom:6em;")
-        .ui.icon.compact.message.warning(style="display:none;")#removeHidden
+    .ui.one.column.centered.grid
+      .ui.fixed.bottom.sticky
+        .ui.icon.compact.message.warning#removeHidden
           i.close.icon
           i.question.icon.float
           .content
             .ui.header Need some help? 
             p Make sure you are clicking "Got it" on the blue dots!
           
-        .ui.icon.message.warning(style="display:none;")#clickAllDotsWarning
+        .ui.icon.message.warning#clickAllDotsWarning
           i.close.icon
           i.hand.pointer.icon.float
           .content
@@ -43,12 +43,12 @@ block content
                   |  You&apos;ve flagged this!
                   h3.ui.inverted.header
                     span="The admins will review this post further. We are sorry you had this experience."
-      .content(data-hint="This is what Lily’s profile now looks like to the public. If you look through it, you can see that the tagged posts have been removed from her profile.", data-hintPosition="middle-middle")
+      .content#hint1
         .right.floated.meta= "Yesterday"
         img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
         |   <b>Lily Hui</b>
       .img.post
-        img(src=cdn+"/post_pictures/nyctrip.jpg", style="max-width:100%;")
+        img(src=cdn+"/post_pictures/nyctrip.jpg")
       .content
         .description
           | On a trip to nyc with my family😃
@@ -99,13 +99,13 @@ block content
                   |  You&apos;ve flagged this!
                   h3.ui.inverted.header
                     span="The admins will review this post further. We are sorry you had this experience."
-      .content(data-hint="However, the public can still see all of her posts." data-hintPosition="middle-middle")
+      .content#hint2
         .right.floated.meta= "4 days ago"
         |
         img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
         |   <b>Lily Hui</b>
       .img.post
-        img(src=cdn+"/post_pictures/prettyflowers.png", style="max-width:100%;")
+        img(src=cdn+"/post_pictures/prettyflowers.png")
       .content
         .description
           | pretty flowers in my back yard
@@ -162,7 +162,7 @@ block content
         img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
         |   <b>Lily Hui</b>
       .img.post
-        img(src=cdn+"/post_pictures/friendshipbracelet.png", style="max-width:100%;")
+        img(src=cdn+"/post_pictures/friendshipbracelet.png")
       .content
         .description
           | Making friendship bracelets❤️
@@ -217,7 +217,7 @@ block content
         img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
         |   <b>Lily Hui</b>
       .img.post
-        img(src=cdn+"/post_pictures/healthyeating.png", style="max-width:100%;")
+        img(src=cdn+"/post_pictures/healthyeating.png")
       .content
         .description
           | healthy eating
@@ -290,7 +290,7 @@ block content
         img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
         |   <b>Lily Hui</b>
       .img.post
-        img(src=cdn+"/post_pictures/zoomonkey.jpg", style="max-width:100%;")
+        img(src=cdn+"/post_pictures/zoomonkey.jpg")
       .content
         .description
           | monkey!
@@ -329,7 +329,7 @@ block content
         img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
         |   <b>Lily Hui</b>
       .img.post
-        img(src=cdn+"/post_pictures/lilypicture.png", style="max-width:100%;")
+        img(src=cdn+"/post_pictures/lilypicture.png")
       .content
         .description
           | hey it's me 
@@ -388,19 +388,29 @@ block content
           i.big.send.link.icon            
             
       
-            
-
-    .ui.warning.message#clickAllDotsFree4(style="display:none;")
-      .header
-        | Click through all of the blue dots to continue
-    button.ui.big.labeled.icon.button.settings2#settings2(style="margin-bottom:4em;")
+    button.ui.big.labeled.icon.button.settings2#cyberTransButton(style="margin-bottom:4em;")
         i.rocket.icon
         |   Let's Continue!
 
 
-
-
-
 block scripts
-  script(src="/module_js/privacy/privacy_free-play4.js")
-  
+  script.
+    var hintsList = [
+      {
+        hint: `This is what Lily’s profile now looks like to the public. If you look
+        through it, you can see that the tagged posts have been removed from her
+        profile.`,
+        element: '#hint1',
+        hintPosition: 'middle-middle'
+      },
+      {
+        hint: `However, the public can still see all of her posts.`,
+        element: '#hint2',
+        hintPosition: 'middle-middle'
+      },
+    ]
+  script(src="/module_js/base_sim.js")
+
+block styles
+  link(rel='stylesheet', href='/css/modules/privacy.css')
+  link(rel='stylesheet', href='/css/sim.css')

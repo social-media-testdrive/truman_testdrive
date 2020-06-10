@@ -37,6 +37,8 @@ const userSchema = new mongoose.Schema({
   reported: [String], //actors user has reported
 
   targetedAdTopic: {type: String, default: ""}, //Food, Gaming, or Sports
+  esteemTopic: {type: String, default: ""}, //Food, Gaming, or Sports
+  advancedlitTopic: {type: String, default: ""}, //Music, Gaming, or Sports
   habitsTimer: [Number], //How long the user has been on the free-play page each time they visit, use sum of this array to get a total time.
   firstHabitViewTime: { type: Number, default: -1}, //The time that the user first opened the free-play section of the habits module
   //User created posts

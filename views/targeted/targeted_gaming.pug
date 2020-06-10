@@ -14,10 +14,10 @@ block content
         p Available Now
     .row
       .column.center.aligned
-        .ui.fluid.image
-          img(src=cdn+ '/post_pictures/Games_Interest_Page_1.png' style="object-fit:cover;height:280px;")
-          h1(style="position:absolute; bottom:50%; width:100%; height:auto; color:white;") Your World Awaits
-          p(style="position:absolute; bottom:40%; width:100%; height:auto; color:white;") Come experience the wonder of Boggle Earth in virtual reality
+        .ui.fluid.image.gamingElement1
+          img(src=cdn+ '/post_pictures/Games_Interest_Page_1.png')
+          h1 Your World Awaits
+          p Come experience the wonder of Boggle Earth in virtual reality
     .row
       .column.center.aligned
         h1 Introducing Boggle Earth VR
@@ -25,15 +25,15 @@ block content
         
     .row
       .column.left.aligned
-        .ui.fluid.image
-          img(src=cdn+ '/post_pictures/Games_Interest_Page_2.jpg' style="object-fit:cover;height:280px;")
-          h2(style="position:absolute; bottom:50%; left:5%; right:5%; width:100%; height:auto; color:white;") Be the Change
+        .ui.fluid.image.gamingElement2
+          img(src=cdn+ '/post_pictures/Games_Interest_Page_2.jpg')
+          h2 Be the Change
           
         
       .column
-        .ui.fluid.image
-          img(src=cdn+ '/post_pictures/Games_Interest_Page_3.jpg' style="object-fit:cover;height:280px;")
-          h2(style="position:absolute; bottom:50%; left:5%; right:5%; width:100%; height:auto; color:white;") Space VR
+        .ui.fluid.image.gamingElement2
+          img(src=cdn+ '/post_pictures/Games_Interest_Page_3.jpg')
+          h2 Space VR
         
   a(href='javascript:void(0);', onclick='javascript:startIntro();', style="margin-bottom:4em;")
       .ui.big.green.labeled.icon.button
@@ -46,3 +46,6 @@ block scripts
     function startIntro(){
       window.location.href='/trans_script/targeted';
     };
+    
+block styles
+  link(rel='stylesheet', href='/css/modules/targeted.css')
