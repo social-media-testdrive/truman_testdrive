@@ -522,6 +522,9 @@ exports.postUpdateFeedAction = (req, res, next) => {
           modalInfo.modalOpened = true;
           modalInfo.modalName = req.body.modalName;
           modalInfo.modalOpenedTime = req.body.modalOpenedTime;
+          modalInfo.modalViewTime = req.body.modalViewTime;
+          modalInfo.modalCheckboxesCount = req.body.modalCheckboxesCount;
+          modalInfo.modalCheckboxesInput = req.body.modalCheckboxesInput;
           user.feedAction[feedIndex].modal.push(modalInfo);
 
       }

@@ -93,22 +93,50 @@ $('.ui.dropdown.icon.item')
       $('#next_steps_modual').modal('show');
     }
 
-    $('#openPostDigfoot').on('click', function(){
-      let postNumber = $(this).closest('.ui.card').attr('postNumber');
-      let post = $(this).closest(".ui.fluid.card");
-      let postID = post.attr("postID");
-      let modalOpenedTime = Date.now();
+
+    // open a modal and record the inputs
+
+    $('.openPostDigfoot').on('click', function(){
+
+      const postNumber = $(this).closest('.ui.card').attr('postNumber');
+      const post = $(this).closest(".ui.fluid.card");
+      const postID = post.attr("postID");
+      const modalOpenedTime = Date.now();
+      let checkboxInputs = 0b0;
+
+      $('.ui.modal[data-modalName=digfoot_normalPostModal] .ui.checkbox').removeClass("checked");
       $('input[type=checkbox]').prop('checked',false);
+
       $('#digfoot_post_modual').modal({
         onHide: function(){
-          let modalName = $(this).attr('data-modalName');
+
+          const modalClosedTime = Date.now();
+          const modalViewTime = modalClosedTime - modalOpenedTime;
+          const modalName = $(this).attr('data-modalName');
+          let numberOfCheckboxes = 0;
+
+          $('.ui.modal[data-modalName=digfoot_normalPostModal] .ui.checkbox input').each(function(){
+            numberOfCheckboxes++;
+            if ($(this).is(":checked")){
+              checkboxInputs = checkboxInputs << 1;
+              checkboxInputs++;
+            } else {
+              checkboxInputs = checkboxInputs << 1;
+            }
+          });
+
            $.post("/feed", {
              postID: postID,
              modalName: modalName,
              modalOpenedTime: modalOpenedTime,
+             modalViewTime: modalViewTime,
+             modalCheckboxesCount: numberOfCheckboxes,
+             modalCheckboxesInput: checkboxInputs,
              _csrf: $('meta[name="csrf-token"]').attr('content')
+           }).then(function(){
+             return true;
            });
-          return true;
+
         }
       }).modal('show');
     });

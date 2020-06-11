@@ -131,7 +131,10 @@ const userSchema = new mongoose.Schema({
         modal: [new Schema({
           modalName: String,
           modalOpened: {type: Boolean, default: false},
-          modalOpenedTime: Number
+          modalOpenedTime: Number,
+          modalViewTime: Number,
+          modalCheckboxesCount: Number,
+          modalCheckboxesInput: Number
         },{_id: false, versionKey: false })],
 
         //user created comment on an actor's post (fake post)
