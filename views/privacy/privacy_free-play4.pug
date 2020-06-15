@@ -178,23 +178,24 @@ block content
             i.heart.icon
             |  Like
           a.ui.basic.red.left.pointing.label.count=2
-      .ui.comments
-        .comment
-          a.avatar.image
-            img(src=cdn+'/profile_pictures/user41.jpg')
-          .content
-            a.author(href="/user/emmaaaaa") Emma Garcia
-            .metadata
-              span.date 5 days ago
-              .rating
-                i.heart.icon
-                span.num 1
-                |     Likes
-            .text()
-              | i remember this @_@
-            .actions
-              a.like.comment Like
-              a.flag.comment.comment Flag
+      .content
+        .ui.comments
+          .comment
+            a.avatar.image
+              img(src=cdn+'/profile_pictures/user41.jpg')
+            .content
+              a.author(href="/user/emmaaaaa") Emma Garcia
+              .metadata
+                span.date 5 days ago
+                .rating
+                  i.heart.icon
+                  span.num 1
+                  |     Likes
+              .text()
+                | i remember this @_@
+              .actions
+                a.like.comment Like
+                a.flag.comment.comment Flag
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
@@ -409,6 +410,8 @@ block scripts
         hintPosition: 'middle-middle'
       },
     ]
+    
+  script(src='/js/comments.js')
   script(src="/module_js/base_sim.js")
 
 block styles

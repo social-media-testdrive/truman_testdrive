@@ -44,7 +44,7 @@ function customOnHintCloseFunction(){
 }
 
 $('.ui.card.articleCard').on('click', function(){
-  $('.ui.card').transition({
+  $('.ui.card.articleCard').transition({
     animation: 'pulse',
     onComplete: function(){
       if(closedHints === numberOfHints){
