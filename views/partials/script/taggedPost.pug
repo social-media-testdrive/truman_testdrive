@@ -26,7 +26,7 @@
     else if (val.module == 'digfoot')
       img.imageWithModal(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPostDigfoot()')
     else if (val.module == 'esteem')
-      img.imageWithModal(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPostEsteem()')
+      img.imageWithModal.openPostEsteem(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture)
     else
       img(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture)
   if (val.module == 'digital-literacy' && val.info_text != "")

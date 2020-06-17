@@ -368,14 +368,6 @@ end chat box code
     });
   });
 
-    //get add new feed post modal to work
-    $(".modual.info_button").click(function () {
-      console.log("@@@@@@@Clicking info button!!!!");
-      $('.ui.small.popinfo.modal').modal('show');
-      document.getElementById('post_info_text_modual').innerHTML = $(this).data('info_text');
-      console.log("&*&*&*&*&"+$(this).data('info_text'));
-    });
-
   //New Class Button
   $("#new_class.ui.big.green.labeled.icon.button").click(function () {
     $('.ui.small.newclass.modal').modal('show');
