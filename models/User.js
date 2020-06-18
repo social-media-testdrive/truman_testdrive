@@ -154,6 +154,46 @@ const userSchema = new mongoose.Schema({
           },{_id: true, versionKey: false })]
     }, {_id: true, versionKey: false })],
 
+
+    guidedActivityAction: [new Schema({
+          simPostNumber: String, //which post did the user interact with?
+          modual: String, //which lesson mod did this take place in?
+          //postClass: String, //class of the post itself (don't think this is used anymore)
+          //rereadTimes: Number, //number of times post has been viewed by user (not used in TestDrive)
+          startTime: Number, //always the newest startTime (full date in ms) (not used in TestDrive)
+          liked: {type: Boolean, default: false}, //did the user like this post in the feed?
+          //readTime : [Number], //array of how long a user read a post. Each read is a new element in this array
+          flagTime  : [Number], //same but for flagging
+          likeTime  : [Number], //same but for liking
+          replyTime  : [Number], //same but for commenting
+
+          // popup modal info
+          modal: [new Schema({
+            modalName: String,
+            modalOpened: {type: Boolean, default: false},
+            modalOpenedTime: Number,
+            modalViewTime: Number,
+            modalCheckboxesCount: Number,
+            modalCheckboxesInput: Number
+          },{_id: false, versionKey: false })],
+
+          //user created comment on an actor's post (fake post)
+          comments: [new Schema({
+            comment: {type: Schema.ObjectId},//ID Reference for Script post comment
+            liked: {type: Boolean, default: false}, //is liked?
+            flagged: {type: Boolean, default: false},//is Flagged?
+            flagTime  : [Number], //array of flag times
+            likeTime  : [Number], //array of like times
+
+            new_comment: {type: Boolean, default: false}, //is new comment
+            new_comment_id: Number,//ID for comment
+            comment_body: String, //Original Body of User Post
+            absTime: Date,
+            commentTime: {type: Number},
+            time: {type: Number}
+            },{_id: true, versionKey: false })]
+      }, {_id: true, versionKey: false })],
+
   //users profile
   profile: {
     name: String,
