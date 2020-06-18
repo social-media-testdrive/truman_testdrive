@@ -179,14 +179,15 @@ const userSchema = new mongoose.Schema({
 
           //user created comment on an actor's post (fake post)
           comments: [new Schema({
-            comment: {type: Schema.ObjectId},//ID Reference for Script post comment
+            //comment: {type: Schema.ObjectId},//ID Reference for Script post comment
+            comment: String,
             liked: {type: Boolean, default: false}, //is liked?
             flagged: {type: Boolean, default: false},//is Flagged?
             flagTime  : [Number], //array of flag times
             likeTime  : [Number], //array of like times
 
             new_comment: {type: Boolean, default: false}, //is new comment
-            new_comment_id: Number,//ID for comment
+            new_comment_id: String,//ID for comment
             comment_body: String, //Original Body of User Post
             absTime: Date,
             commentTime: {type: Number},

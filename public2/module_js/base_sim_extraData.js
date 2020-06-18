@@ -17,6 +17,8 @@ function recordSimModalInputs(modalNameAttrStr) {
 
       const modalClosedTime = Date.now();
       const modalViewTime = modalClosedTime - modalOpenedTime;
+      const pathArrayForHeader = window.location.pathname.split('/');
+      const currentModule = pathArrayForHeader[2];
       const modalName = $(this).attr('data-modalName');
       let numberOfCheckboxes = 0;
 
@@ -33,6 +35,7 @@ function recordSimModalInputs(modalNameAttrStr) {
        $.post("/guidedActivityAction", {
          //postID: postID,
          simPostNumber: simPostNumber,
+         modual: currentModule,
          modalName: modalName,
          modalOpenedTime: modalOpenedTime,
          modalViewTime: modalViewTime,

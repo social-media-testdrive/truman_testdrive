@@ -752,6 +752,7 @@ exports.postGuidedActivityAction = (req, res, next) => {
       //console.log("$$$$$Making new feedAction Object! at post ", req.body.postID);
       var cat = new Object();
       cat.simPostNumber = req.body.simPostNumber;
+      cat.modual = req.body.modual;
       if(!(req.body.start))
         {
           //console.log("!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!No start");
@@ -793,7 +794,7 @@ exports.postGuidedActivityAction = (req, res, next) => {
           cat.comment_body = req.body.comment_text;
           //console.log("Start Time is: "+user.feedAction[feedIndex].startTime);
           //console.log("DATE Time is: "+req.body.new_comment);
-          cat.commentTime = req.body.new_comment - user.feedAction[feedIndex].startTime;
+          //cat.commentTime = req.body.new_comment - user.feedAction[feedIndex].startTime;
           //console.log("Comment Time is: "+cat.commentTime);
 
           //create a new cat.comment id for USER replies here to do actions on them. Empty now
