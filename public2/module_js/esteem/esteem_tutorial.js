@@ -42,9 +42,9 @@ function startIntro(){
           // },
           {
             element: '#step3B',
-            intro: `Other times, you might be doing something cool and be
-            tempted to share all about it on social media. Sharing on social
-            media is great, but try not to overshare!`,
+            intro: `When you get a red flag feeling, you might be tempted to
+            share how you feel on social media. Sharing on social media is
+            great, but try not to overshare!`,
             position: 'right'
           },
           {

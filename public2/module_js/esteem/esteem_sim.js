@@ -1,10 +1,9 @@
 var hintsList=
 [
   {
-    hint: `Nick's best friends, Liam and Vanessa have posted that they are
-    hanging out, but Nick was not invited. Click on the post to think about how
-    Nick might feel and what he can do if he is experiencing a red flag
-    feeling.`,
+    hint: `Nick’s best friends Liam and Vanessa have posted that they are
+    hanging out but Nick was not invited. How might Nick feel after seeing this
+    post? Click on the post to reflect.`,
     element: '#hint1',
     position: 'right',
     hintPosition: 'middle-right'

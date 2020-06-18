@@ -72,6 +72,8 @@ block content
     include partials/script/modals/digitalLiteracyFlag
 
     include partials/script/modals/digitalLiteracyArticle
+  
+    include partials/script/modals/esteemPost
     
     //- View Post Info Modal
     .ui.small.popinfo.modal
@@ -119,7 +121,42 @@ block content
         .ui.positive.right.labeled.icon.button
           | Done
           i.checkmark.icon
-            
+    
+    //- Why am I seeing this ad modal, used in targeted ads modual. text depends on previously selected interest in trans2.
+    .ui.small.modal#whyAmISeeingThisAdModal(data-modalName="targeted_whyAdModal")
+      i.close.icon
+      .header Why am I seeing this ad?
+      if (user.targetedAdTopic == 'Sports')
+        .content(id="sports")
+      else if (user.targetedAdTopic == 'Food')
+        .content(id="food")
+      else if (user.targetedAdTopic == 'Gaming')
+        .content(id="gaming")
+    
+    //-Hide ad modal, used in targeted ads module. 
+    .ui.small.modal#hideAdModal(data-modalName="targeted_hideAdModal")
+      i.close.icon  
+      .header Why did you choose to hide this ad?
+      .content
+          .ui.form
+             .field
+               .ui.checkbox
+                 input(type='checkbox')
+                 label The ad was not relevant to me
+             .field
+               .ui.checkbox
+                 input(type='checkbox')
+                 label I see this ad too often
+             .field
+               .ui.checkbox
+                 input(type='checkbox')
+                 label The ad was inappropriate
+             br
+      .actions
+        .ui.positive.right.labeled.icon.button
+          | Done
+          i.checkmark.icon          
+               
   block rightColumn
     -
                  
