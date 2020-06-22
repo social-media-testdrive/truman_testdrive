@@ -156,7 +156,7 @@ const userSchema = new mongoose.Schema({
 
 
     guidedActivityAction: [new Schema({
-          simPostNumber: String, //which post did the user interact with?
+          post: String, //which post did the user interact with?
           modual: String, //which lesson mod did this take place in?
           //postClass: String, //class of the post itself (don't think this is used anymore)
           //rereadTimes: Number, //number of times post has been viewed by user (not used in TestDrive)

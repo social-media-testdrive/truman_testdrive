@@ -271,49 +271,63 @@ end chat box code
     //no comments area - add it
     console.log("Comments is now " + comments.length)
     if (!comments.length) {
-      console.log("Adding new Comments sections")
       var buttons = card.find(".three.ui.bottom.attached.icon.buttons")
       buttons.after('<div class="content"><div class="ui comments"></div>');
       var comments = card.find(".ui.comments")
     }
     if (text.trim() !== '') {
-      console.log(text)
       var date = Date.now();
       var ava = $(this).siblings('.ui.label').find('img.ui.avatar.image');
       var ava_img = ava.attr("src");
       var ava_name = ava.attr("name");
       //var postID = card.attr("postID");
 
-      var mess = '<div class="comment"> <a class="avatar"> <img src="' + ava_img + '"> </a> <div class="content"> <a class="author">' + ava_name + '</a> <div class="metadata"> <span class="date">' + humanized_time_span(date) + '</span> <i class="heart icon"></i> 0 Likes </div> <div class="text">' + text + '</div> <div class="actions"> <a class="like">Like</a> <a class="flag">Flag</a> </div> </div> </div>';
+      var mess =
+        `<div class="comment">
+          <a class="avatar">
+            <img src="${ava_img}">
+          </a>
+          <div class="content">
+            <a class="author">${ava_name}</a>
+            <div class="metadata">
+              <span class="date">${humanized_time_span(date)}</span>
+              <i class="heart icon"></i>
+              0 Likes
+            </div>
+            <div class="text">${text}</div>
+            <div class="actions">
+              <a class="like">Like</a>
+              <a class="flag">Flag</a>
+            </div>
+          </div>
+        </div>`;
       $(this).siblings("input.newcomment").val('');
       comments.append(mess);
-      //console.log("######### NEW COMMENTS:  PostID: " + postID + ", new_comment time is " + date + " and text is " + text);
 
-      if (card.attr("type") == 'userPost')
+      if (card.attr("type") == 'userPost') {
         $.post("/userPost_feed", {
           postID: postID,
           new_comment: date,
           comment_text: text,
           _csrf: $('meta[name="csrf-token"]').attr('content')
         });
-      else
+      } else {
+        let postID;
         if(currentPageForHeader === "sim"){
-          let simPostNumber = card.attr("simPostNumber");
-          $.post("/guidedActivityAction", {
-            simPostNumber: simPostNumber,
-            new_comment: date,
-            comment_text: text,
-            _csrf: $('meta[name="csrf-token"]').attr('content')
-          });
+          postID = card.attr("simPostNumber");
+          actionType = 'guided activity';
         } else {
-          let postID = card.attr("postID");
-          $.post("/feed", {
-            postID: postID,
-            new_comment: date,
-            comment_text: text,
-            _csrf: $('meta[name="csrf-token"]').attr('content')
-          });
+          postID = card.attr("postID");
+          actionType = 'free play';
         }
+        $.post("/feed", {
+          actionType: actionType,
+          postID: postID,
+          new_comment: date,
+          comment_text: text,
+          _csrf: $('meta[name="csrf-token"]').attr('content')
+        });
+      }
 
     }
   });
@@ -348,29 +362,62 @@ end chat box code
         // var postID = $(this).closest(".ui.fluid.card").attr("postID");
         var commentID = comment.attr("commentID");
         var like = Date.now();
-        console.log("#########COMMENT LIKE:  PostID: " + postID + ", Comment ID: " + commentID + " at time " + like);
+        //console.log("#########COMMENT LIKE:  PostID: " + postID + ", Comment ID: " + commentID + " at time " + like);
+        let postID;
+        let actionType = 'free play';
+        switch(currentPageForHeader){
+          case 'sim':
+            postID = $(this).closest(".ui.fluid.card").attr("simPostNumber");
+            actionType = 'guided activity';
+            break;
+          case 'modual':
+            postID = $(this).closest(".ui.fluid.card").attr("postID");
+            actionType = 'free play';
+            break;
+          default:
+            postID = $(this).closest(".ui.fluid.card").attr("postID");
+            actionType = 'free play';
+            break;
+        }
 
         if ($(this).closest(".ui.fluid.card").attr("type") == 'userPost')
-          $.post("/userPost_feed", { postID: postID, commentID: commentID, like: like, _csrf: $('meta[name="csrf-token"]').attr('content') });
-        else
-          if(currentPageForHeader === "sim"){
-            var simPostNumber = $(this).closest(".ui.fluid.card").attr("simPostNumber");
-            $.post("/guidedActivityAction", {
-              simPostNumber: simPostNumber,
-              modual: currentModuleForHeader,
-              commentID: commentID,
-              like: like,
-              _csrf: $('meta[name="csrf-token"]').attr('content')
-            });
-          } else {
-            var postID = $(this).closest(".ui.fluid.card").attr("postID");
-            $.post("/feed", {
-              postID: postID,
-              commentID: commentID,
-              like: like,
-              _csrf: $('meta[name="csrf-token"]').attr('content')
-            });
-          }
+          $.post("/userPost_feed", {
+            postID: postID,
+            commentID: commentID,
+            like: like,
+            _csrf: $('meta[name="csrf-token"]').attr('content')
+          });
+        else {
+          $.post("/feed", {
+            actionType: actionType,
+            postID: postID,
+            modual: currentModuleForHeader,
+            commentID: commentID,
+            like: like,
+            _csrf: $('meta[name="csrf-token"]').attr('content')
+          });
+        }
+
+          // if(currentPageForHeader === "sim"){
+          //   var simPostNumber = $(this).closest(".ui.fluid.card").attr("simPostNumber");
+          //   $.post("/feed", {
+          //     actionType: 'guided activity',
+          //     simPostNumber: simPostNumber,
+          //     modual: currentModuleForHeader,
+          //     commentID: commentID,
+          //     like: like,
+          //     _csrf: $('meta[name="csrf-token"]').attr('content')
+          //   });
+          // } else {
+          //   var postID = $(this).closest(".ui.fluid.card").attr("postID");
+          //   $.post("/feed", {
+          //     actionType: 'free play',
+          //     postID: postID,
+          //     commentID: commentID,
+          //     like: like,
+          //     _csrf: $('meta[name="csrf-token"]').attr('content')
+          //   });
+          // }
 
       }
 
@@ -392,7 +439,13 @@ end chat box code
       if (typeID == 'userPost')
         $.post("/userPost_feed", { postID: postID, commentID: commentID, flag: flag, _csrf: $('meta[name="csrf-token"]').attr('content') });
       else
-        $.post("/feed", { postID: postID, commentID: commentID, flag: flag, _csrf: $('meta[name="csrf-token"]').attr('content') });
+        $.post("/feed", {
+          actionType: 'free play',
+          postID: postID,
+          commentID: commentID,
+          flag: flag,
+          _csrf: $('meta[name="csrf-token"]').attr('content')
+        });
 
       introJs().refresh();
     });
@@ -846,23 +899,25 @@ end button links
         var label = $(this).next("a.ui.basic.red.left.pointing.label.count");
         label.html(function (i, val) { return val * 1 + 1 });
         //var like = Date.now();
-        console.log("***********LIKE: post " + postID);
+        //console.log("***********LIKE: post " + postID);
+        let postID;
+        let actionType = 'free play';
         if(currentPageForHeader === "sim"){
-          var simPostNumber =  $(this).closest(".ui.fluid.card.dim").attr("simPostNumber");
-          $.post("/guidedActivityAction", {
-            simPostNumber: simPostNumber,
-            modual: currentModuleForHeader,
-            like: 1,
-            _csrf: $('meta[name="csrf-token"]').attr('content')
-          });
+          postID =  $(this).closest(".ui.fluid.card.dim").attr("simPostNumber");
+          actionType = 'guided activity';
         } else {
-          var postID = $(this).closest(".ui.fluid.card.dim").attr("postID");
-          $.post("/feed", {
-            postID: postID,
-            like: 1,
-            _csrf: $('meta[name="csrf-token"]').attr('content')
-          });
+          postID = $(this).closest(".ui.fluid.card.dim").attr("postID");
+          actionType = 'free play';
         }
+
+        $.post("/feed", {
+          actionType: actionType,
+          postID: postID,
+          modual: currentModuleForHeader,
+          like: 1,
+          _csrf: $('meta[name="csrf-token"]').attr('content')
+        });
+
       }
 
     });
@@ -891,14 +946,26 @@ end button links
       });
 
 
-  //this is the FLAG button
+  // flag a post
   $('.flag.button')
     .on('click', function () {
 
       var post = $(this).closest(".ui.fluid.card.dim");
-      var postID = post.attr("postID");
-      console.log("***********FLAG: post " + postID);
-      $.post("/feed", { postID: postID, flag: 1, _csrf: $('meta[name="csrf-token"]').attr('content') });
+      let postID;
+      let actionType = 'free play';
+      if(currentPageForHeader === "sim"){
+        postID =  post.attr("simPostNumber");
+        actionType = 'guided activity';
+      } else {
+        postID = post.attr("postID");
+        actionType = 'free play';
+      }
+      $.post("/feed", {
+        actionType: actionType,
+        postID: postID,
+        flag: 1,
+        _csrf: $('meta[name="csrf-token"]').attr('content')
+      });
       console.log("Removing Post content now!");
       post.find(".ui.dimmer.flag").dimmer({
         closable: false

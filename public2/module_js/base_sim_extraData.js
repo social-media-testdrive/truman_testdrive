@@ -32,9 +32,9 @@ function recordSimModalInputs(modalNameAttrStr) {
         }
       });
 
-       $.post("/guidedActivityAction", {
-         //postID: postID,
-         simPostNumber: simPostNumber,
+       $.post("/feed", {
+         actionType: 'guided activity',
+         postID: simPostNumber,
          modual: currentModule,
          modalName: modalName,
          modalOpenedTime: modalOpenedTime,

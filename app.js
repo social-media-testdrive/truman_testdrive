@@ -540,7 +540,7 @@ app.get('/bell', passportConfig.isAuthenticated, userController.checkBell);
 //getScript
 //app.get('/feed', passportConfig.isAuthenticated, scriptController.getScript);
 app.post('/feed', passportConfig.isAuthenticated, scriptController.postUpdateFeedAction);
-app.post('/guidedActivityAction', passportConfig.isAuthenticated, scriptController.postGuidedActivityAction);
+//app.post('/guidedActivityAction', passportConfig.isAuthenticated, scriptController.postGuidedActivityAction);
 app.post('/deleteUserFeedActions', passportConfig.isAuthenticated, scriptController.postDeleteFeedAction);
 app.post('/interest', passportConfig.isAuthenticated, userController.postUpdateInterestSelection);
 app.post('/esteemInterest', passportConfig.isAuthenticated, userController.postEsteemInterestSelection);
