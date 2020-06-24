@@ -5,12 +5,22 @@ block content
   //- insert code for article after RAs provide design
 
   #content.sixteen.wide.column.centered.removeTopPadding.addBottomMargin
-    
+    .ui.one.column.centered.grid
+      .ui.fixed.bottom.sticky
+        .ui.icon.message.success.hidden#instructionsToContinueOne
+          .content
+            .ui.header Click the article to continue! 
+        .ui.icon.message.success.hidden#instructionsToContinueTwo
+          .content
+            .ui.header Click the search button to continue! 
+        .ui.icon.message.success.hidden#instructionsToContinueThree
+          .content
+            .ui.header Click 'Go back to the timeline' to continue! 
     //- #####################################################
     .ui.active.tab(data-tab="one")
-      .ui.grid  
+      .ui.grid(style='margin-bottom:4em;')
         .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.centered
-          #step1.ui.fluid.card.dim()
+          #step1.ui.fluid.card.dim.articleCard
             .ui.dimmer.flag
               .content
                 .center
@@ -85,10 +95,10 @@ block content
               a(href='#')
                     img.ui.avatar.image(src=cdn+'/profile_pictures/user21.jpg')
                     span='Sam Hill'
-            .img.post.articleImage.articleTab(data-tab="two")        
+            .img.post.articleImage(data-tab="two")        
               img(src=cdn+'/post_pictures/bike_an.jpg')
 
-            .content.articleTab(data-tab="two")
+            .content(data-tab="two")
               .description
                 | Perfect day for a bike ride!
             .four.ui.bottom.attached.icon.buttons
@@ -158,10 +168,10 @@ block content
               a(href='#')
                     img.ui.avatar.image(src=cdn+'/profile_pictures/user3.jpg')
                     span='Cloe Hansen'
-            .img.post.articleImage.articleTab(data-tab="two")        
+            .img.post.articleImage(data-tab="two")        
               img(src=cdn+'/post_pictures/hammock_an.jpg')
 
-            .content.articleTab(data-tab="two")
+            .content(data-tab="two")
               .description
                 | just janging out with my bestie 😜
             .four.ui.bottom.attached.icon.buttons
@@ -231,10 +241,10 @@ block content
               a(href='#')
                     img.ui.avatar.image(src=cdn+'/profile_pictures/user25.jpg')
                     span='Ella Sroni'
-            .img.post.articleImage.articleTab(data-tab="two")        
+            .img.post.articleImage(data-tab="two")        
               img(src=cdn+'/post_pictures/homework_an.jpg')
 
-            .content.articleTab(data-tab="two")
+            .content(data-tab="two")
               .description
                 | Homework timee
             .four.ui.bottom.attached.icon.buttons
@@ -291,20 +301,21 @@ block content
     //- #####################################################
     .ui.tab(data-tab="two")
     
-      button.ui.big.testDriveBlue.button.homeTab(data-tab='one')
+      //- button.ui.big.testDriveBlue.button.homeTab(data-tab='one')
+      button.ui.big.button.homeTab(data-tab='one')
         i.icon.reply
-        | Return to the timeline
-      button.ui.big.green.button.searchTab#step4(data-tab='three')
+        | Go back to the timeline
+      button.ui.big.button.searchTab#step4(data-tab='three')
         i.icon.search
         | Search for "Reed County tornado"
       .ui.segment(style='margin-bottom: 4em;')
-        .ui.grid          
+        .ui.grid(style='margin-bottom:4em;')          
           .row
             .column#step2
-              h1 
-                | BREAKING NEWS: Tornado Warning Issued in Reed County 
               h2 
                 | The Reed County Voice
+              h1 
+                | BREAKING NEWS: Tornado Warning Issued in Reed County 
               p Author: Jeremy Townsend
               p 10 minutes ago
           .row
@@ -322,21 +333,21 @@ block content
                 
     //- #####################################################
     .ui.tab(data-tab="three")
-      .ui.grid     
+      .ui.grid(style='margin-bottom:4em;')     
         .row
           .column
 
-            button.ui.big.testDriveBlue.button.homeTab(data-tab='one')
+            button.ui.big.button.homeTab(data-tab='one')#step6
               i.icon.reply
               | Go back to the timeline
-            button.ui.big.testDriveBlue.button.articleTab(data-tab='two')
+            button.ui.big.button.articleTab(data-tab='two')
               i.icon.reply
               | Go back to the article
         .row
           .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.left.floated.column    
             h2#step5 Search results for "Reed County tornado"
             
-            .ui.basic.segment#step6(style='margin:0;padding:0;')
+            .ui.basic.segment(style='margin:0;padding:0;')
               p.resultURL reedcountyvoice.com
               a
                 h4.resultTitle 

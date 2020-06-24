@@ -1,14 +1,12 @@
 const hintsList = [
   {
-    hint: `Now that you have analyzed and fact-checked the article, what would
-    you do next?`,
+    hint: `Based on your analysis of the article, what would you do next?`,
     element: '#hint1',
     hintPosition: 'middle-middle'
   },
   {
-    hint: `Sharing a news article that is not accurate or does not have all the
-    information might trick others into believing something that might not be
-    true.`,
+    hint: `It's not a good idea to share a news article that isn't accurate
+    since it may just make other people believe something that isn't true.`,
     element: '#hint2',
     hintPosition: 'top-middle'
   }

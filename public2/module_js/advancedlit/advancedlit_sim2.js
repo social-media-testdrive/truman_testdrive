@@ -1,8 +1,7 @@
 var hintsList = [
   {
     hint: `Let’s try to analyze the news article to identify if this is an
-    accurate story. First, check the source. Is the article from a reliable news
-    source?`,
+    accurate story.`,
     element: '#hint1',
     hintPosition: 'bottom-left'
   },
@@ -19,7 +18,14 @@ var hintsList = [
     missing here.`,
     element: '#hint3',
     hintPosition: 'bottom-middle'
-  }
+  },
+  {
+    hint: `Let’s check other sources to see if they are saying the same thing.
+    Click the “Search for” button to learn what the first five results are.`,
+    element: '#hint4',
+    hintPosition: 'bottom-middle'
+  },
+
 ];
 
 function customOnHintCloseFunction(){
@@ -34,6 +40,7 @@ function customOnHintCloseFunction(){
       $('#removeHidden').transition('fade');
     }
     $('.searchTab').removeClass('testDriveLightGray').addClass('green');
+    $('#instructionsToContinue').show();
 
   } else {
     if ($('#removeHidden').is(":visible")) {
