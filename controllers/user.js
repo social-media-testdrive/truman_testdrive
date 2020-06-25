@@ -23,9 +23,10 @@ function makeid(length) {
  * Login page.
  */
 exports.getLogin = (req, res) => {
-  if (req.user) {
-    return res.redirect('/');
-  }
+  // commented out by Anna
+  // if (req.user) {
+  //   return res.redirect('/');
+  // }
   res.render('account/login', {
     title: 'Login'
   });
@@ -109,8 +110,9 @@ if (req.user) {
  */
 exports.postLogin = (req, res, next) => {
   //req.assert('email', 'Email is not valid').isEmail();
-  req.assert('password', 'Password cannot be blank').notEmpty();
-  req.assert('username', 'Username cannot be blank').notEmpty();
+  // commented out by Anna
+  //req.assert('password', 'Password cannot be blank').notEmpty();
+  req.assert('username', 'Please enter your username.').notEmpty();
   //req.sanitize('email').normalizeEmail({ remove_dots: false });
 
   const errors = req.validationErrors();
@@ -121,7 +123,9 @@ exports.postLogin = (req, res, next) => {
   }
 
   passport.authenticate('local', (err, user, info) => {
-    if (err) { return next(err); }
+    if (err) {
+      return next(err);
+    }
     if (!user) {
       req.flash('errors', info);
       return res.redirect('/login');
@@ -154,9 +158,9 @@ exports.logout = (req, res) => {
  * Signup page.
  */
 exports.getSignup = (req, res) => {
-  if (req.user) {
-    return res.redirect('/');
-  }
+  // if (req.user) {
+  //   return res.redirect('/');
+  // }
   res.render('account/signup', {
     title: 'Create Account'
   });
@@ -171,45 +175,88 @@ exports.postSignup = (req, res, next) => {
   //req.assert('password', 'Password must be at least 4 characters long').len(4);
   //req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
   //xyzzy
+// commented out by Anna
+
+  // req.assert('signupcode', 'Wrong Sign Up Code').notEmpty();
+  //
+  // const errors = req.validationErrors();
+  //
+  // if (errors) {
+  //   req.flash('Sign Up Code Can Not Be Blank. Please Try Again', errors);
+  //   return res.redirect('/signup');
+  // }
+  // //default Student - No Class Assignment
+  // else if (req.body.signupcode == "0451")
+  // {
+  //   res.redirect('/create_username');
+  // }
+  //
+  // //default Student - No Class Assignment
+  // else if (req.body.signupcode == "xyzzy")
+  // {
+  //   res.redirect('/create_instructor');
+  // }
+  //
+  // //Check if belong to Class - if not- then reject and try again
+  // else
+  // {
+  //
+  //   Class.findOne({ accessCode: req.body.signupcode }, (err, existingClass) => {
+  //     if (err) { return next(err); }
+  //     //found the class this belongs to. Continue making account
+  //     if (existingClass) {
+  //       res.redirect('/create_username_class/'+req.body.signupcode);
+  //     }
+  //     else
+  //     {
+  //       req.flash('errors', { msg: 'No Class with that Access Code found. Please try again.' });
+  //       return res.redirect('/signup');
+  //     }
+  //
+  //     });//end of CLASS FIND ONE
+  //
+  // }
+
   req.assert('signupcode', 'Wrong Sign Up Code').notEmpty();
+  const user = new User({
+    //password: "thinkblue",
+    username: req.body.signupcode,
+    //group: 'no:no',
+    active: true,
+    //ui: 'no', //ui or no
+    //notify: 'no', //no, low or high
+    //isGuest: false,
+    start : Date.now()
+  });
 
-  const errors = req.validationErrors();
+  user.profile.name = "Guest";
+  user.profile.location = "Guest Town";
+  user.profile.bio = '';
+  user.profile.picture = 'avatar-icon.svg';
+  //console.log("New Guest is now: "+ user.profile.name);
 
-  if (errors) {
-    req.flash('Sign Up Code Can Not Be Blank. Please Try Again', errors);
-    return res.redirect('/signup');
-  }
-  //default Student - No Class Assignment
-  else if (req.body.signupcode == "0451")
-  {
-    res.redirect('/create_username');
-  }
+  User.findOne({ username: req.body.signupcode }, (err, existingUser) => {
+    if (err) { return next(err); }
+    if (existingUser) {
+      req.flash('errors', {
+        msg: 'This username is taken. Please choose a different one.'
+      });
+      return res.redirect('/signup');
 
-  //default Student - No Class Assignment
-  else if (req.body.signupcode == "xyzzy")
-  {
-    res.redirect('/create_instructor');
-  }
-
-  //Check if belong to Class - if not- then reject and try again
-  else
-  {
-
-    Class.findOne({ accessCode: req.body.signupcode }, (err, existingClass) => {
+    }
+    user.save((err) => {
       if (err) { return next(err); }
-      //found the class this belongs to. Continue making account
-      if (existingClass) {
-        res.redirect('/create_username_class/'+req.body.signupcode);
-      }
-      else
-      {
-        req.flash('errors', { msg: 'No Class with that Access Code found. Please try again.' });
-        return res.redirect('/signup');
-      }
+      req.logIn(user, (err) => {
+        if (err) {
+          return next(err);
+        }
+        //console.log("All done with Guest making!");
+        //res.redirect('/intro/'+req.params.modId);
+        res.redirect('/');
+      });
+    });
+  });
 
-      });//end of CLASS FIND ONE
-
-  }
 
 };
 
@@ -281,44 +328,94 @@ exports.postSignupInstructor = (req, res, next) => {
  * get Guest accout
  * Create a new local account.
  */
-exports.getGuest = (req, res, next) => {
 
-  //console.log("Now Making a Guest");
-  const user = new User({
-    password: "thinkblue",
-    username: "guest"+makeid(10),
-    group: 'no:no',
-    active: true,
-    ui: 'no', //ui or no
-    notify: 'no', //no, low or high
-    isGuest: true,
-    lastNotifyVisit : Date.now()
-  });
 
-  user.profile.name = "Guest";
-  user.profile.location = "Guest Town";
-  user.profile.bio = '';
-  user.profile.picture = 'avatar-icon.svg';
-  //console.log("New Guest is now: "+ user.profile.name);
+// exports.getGuest = (req, res, next) => {
 
-  User.findOne({ username: req.body.username }, (err, existingUser) => {
-    if (err) { return next(err); }
-    if (existingUser) {
-      req.flash('errors', { msg: 'Account with that Username already exists.' });
-      return res.redirect('/guest/'+req.params.modId);
-    }
-    user.save((err) => {
-      if (err) { return next(err); }
-      req.logIn(user, (err) => {
-        if (err) {
-          return next(err);
-        }
-        //console.log("All done with Guest making!");
-        res.redirect('/intro/'+req.params.modId);
-      });
-    });
-  });
-};
+  // commented out by Anna
+  // modifying so that it creates an account from a provided username
+
+  // //console.log("Now Making a Guest");
+  // const user = new User({
+  //   password: "thinkblue",
+  //   username: "guest"+makeid(10),
+  //   group: 'no:no',
+  //   active: true,
+  //   ui: 'no', //ui or no
+  //   notify: 'no', //no, low or high
+  //   isGuest: true,
+  //   lastNotifyVisit : Date.now()
+  // });
+  //
+  // user.profile.name = "Guest";
+  // user.profile.location = "Guest Town";
+  // user.profile.bio = '';
+  // user.profile.picture = 'avatar-icon.svg';
+  // //console.log("New Guest is now: "+ user.profile.name);
+  //
+  // User.findOne({ username: req.body.username }, (err, existingUser) => {
+  //   if (err) { return next(err); }
+  //   if (existingUser) {
+  //     req.flash('errors', { msg: 'Account with that Username already exists.' });
+  //     return res.redirect('/guest/'+req.params.modId);
+  //   }
+  //   user.save((err) => {
+  //     if (err) { return next(err); }
+  //     req.logIn(user, (err) => {
+  //       if (err) {
+  //         return next(err);
+  //       }
+  //       //console.log("All done with Guest making!");
+  //       res.redirect('/intro/'+req.params.modId);
+  //     });
+  //   });
+  // });
+
+  // added by Anna
+  // creating an account from a provided username
+//   req.assert('signupcode', 'Wrong Sign Up Code').notEmpty();
+//   console.log("HEY ANNA");
+//   console.log(req.signupcode);
+//   const user = new User({
+//     //password: "thinkblue",
+//     username: req.signupcode,
+//     //group: 'no:no',
+//     active: true,
+//     //ui: 'no', //ui or no
+//     //notify: 'no', //no, low or high
+//     //isGuest: false,
+//     start : Date.now()
+//   });
+//
+//   user.profile.name = "Guest";
+//   user.profile.location = "Guest Town";
+//   user.profile.bio = '';
+//   user.profile.picture = 'avatar-icon.svg';
+//   //console.log("New Guest is now: "+ user.profile.name);
+//
+//   User.findOne({ username: req.body.username }, (err, existingUser) => {
+//     if (err) { return next(err); }
+//     if (existingUser) {
+//       req.flash('errors', {
+//         msg: 'Account with that Username already exists. Please choose a different one.'
+//       });
+//       //return res.redirect('/guest/'+req.params.modId);
+//       return res.redirect('/signup');
+//     }
+//     user.save((err) => {
+//       if (err) { return next(err); }
+//       req.logIn(user, (err) => {
+//         if (err) {
+//           return next(err);
+//         }
+//         //console.log("All done with Guest making!");
+//         //res.redirect('/intro/'+req.params.modId);
+//         res.redirect('/');
+//       });
+//     });
+//   });
+//
+// };
 
 /**
  * GET /create_username

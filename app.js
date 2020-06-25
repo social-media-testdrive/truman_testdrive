@@ -225,10 +225,20 @@ app.use('/profile_pictures',express.static(path.join(__dirname, 'profile_picture
  */
 
 //create Gust account
- app.get('/guest/:modId', userController.getGuest);
+ //app.get('/guest/:modId', userController.getGuest);
 
+// commented out by Anna
 //main route is the lesson mod selection screen
-app.get('/', function (req, res) {
+// app.get('/', function (req, res) {
+//   res.render('mods', {
+//     title: 'Pick a Lesson'
+//   });
+// })
+
+// added by Anna
+// main route is the lesson mod selection screen,
+// but the user needs to be logged in before it is visible
+app.get('/', passportConfig.isAuthenticated, function (req, res) {
   res.render('mods', {
     title: 'Pick a Lesson'
   });
@@ -493,7 +503,9 @@ app.get('/logout', userController.logout);
 
 
 app.get('/signup', userController.getSignup);
+// commented out by Anna
 app.post('/signup', userController.postSignup);
+//app.post('/signup', userController.getGuest);
 
 //Instructor junks
 app.get('/create_instructor', userController.getSignupInstructor);

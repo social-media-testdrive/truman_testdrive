@@ -18,20 +18,30 @@ passport.deserializeUser((id, done) => {
 /**
  * Sign in using Email and Password.
  */
-passport.use(new LocalStrategy({ usernameField: 'username' }, (username, password, done) => {
+
+// commented out by Anna
+//passport.use(new LocalStrategy({ usernameField: 'username' }, (username, password, done) => {
+passport.use(new LocalStrategy({ usernameField: 'username', passwordField: 'username' }, (username, password, done) => {
   //User.findOne({ username: username.toLowerCase() }, (err, user) => {
   User.findOne({ username: username }, (err, user) => {
-    if (err) { return done(err); }
+    if (err) {
+      return done(err);
+    }
     if (!user) {
       return done(null, false, { msg: `Username ${username} not found.` });
     }
-    user.comparePassword(password, (err, isMatch) => {
-      if (err) { return done(err); }
-      if (isMatch) {
-        return done(null, user);
-      }
-      return done(null, false, { msg: 'Invalid username or password.' });
-    });
+
+    // added by Anna
+    return done(null, user);
+
+    // commented out by Anna
+    // user.comparePassword(password, (err, isMatch) => {
+    //   if (err) { return done(err); }
+    //   if (isMatch) {
+    //     return done(null, user);
+    //   }
+    //   return done(null, false, { msg: 'Invalid username or password.' });
+    // });
   });
 }));
 
@@ -52,7 +62,7 @@ passport.use(new LocalStrategy({ usernameField: 'username' }, (username, passwor
 
 /**
  * Sign in with Facebook.
- 
+
 passport.use(new FacebookStrategy({
   clientID: process.env.FACEBOOK_ID,
   clientSecret: process.env.FACEBOOK_SECRET,
@@ -112,7 +122,7 @@ passport.use(new FacebookStrategy({
 
 /**
  * Sign in with GitHub.
- 
+
 passport.use(new GitHubStrategy({
   clientID: process.env.GITHUB_ID,
   clientSecret: process.env.GITHUB_SECRET,
@@ -224,7 +234,7 @@ passport.use(new TwitterStrategy({
 
 /**
  * Sign in with Google.
- 
+
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_ID,
   clientSecret: process.env.GOOGLE_SECRET,
@@ -282,7 +292,7 @@ passport.use(new GoogleStrategy({
 
 /**
  * Sign in with LinkedIn.
- 
+
 passport.use(new LinkedInStrategy({
   clientID: process.env.LINKEDIN_ID,
   clientSecret: process.env.LINKEDIN_SECRET,
@@ -344,7 +354,7 @@ passport.use(new LinkedInStrategy({
 
 /**
  * Sign in with Instagram.
- 
+
 passport.use(new InstagramStrategy({
   clientID: process.env.INSTAGRAM_ID,
   clientSecret: process.env.INSTAGRAM_SECRET,
@@ -397,7 +407,7 @@ passport.use(new InstagramStrategy({
 
 /**
  * Tumblr API OAuth.
- 
+
 passport.use('tumblr', new OAuthStrategy({
   requestTokenURL: 'http://www.tumblr.com/oauth/request_token',
   accessTokenURL: 'http://www.tumblr.com/oauth/access_token',
@@ -420,7 +430,7 @@ passport.use('tumblr', new OAuthStrategy({
 
 /**
  * Foursquare API OAuth.
- 
+
 passport.use('foursquare', new OAuth2Strategy({
   authorizationURL: 'https://foursquare.com/oauth2/authorize',
   tokenURL: 'https://foursquare.com/oauth2/access_token',
@@ -442,7 +452,7 @@ passport.use('foursquare', new OAuth2Strategy({
 
 /**
  * Steam API OpenID.
- 
+
 passport.use(new OpenIDStrategy({
   apiKey: process.env.STEAM_KEY,
   providerURL: 'http://steamcommunity.com/openid',
@@ -479,7 +489,7 @@ passport.use(new OpenIDStrategy({
 
 /**
  * Pinterest API OAuth.
- 
+
 passport.use('pinterest', new OAuth2Strategy({
   authorizationURL: 'https://api.pinterest.com/oauth/',
   tokenURL: 'https://api.pinterest.com/v1/oauth/token',
@@ -508,8 +518,14 @@ exports.isAuthenticated = (req, res, next) => {
     return next();
   }
   //res.redirect('/guest');
-  res.redirect(`/guest/${mod}`);
-}; 
+
+  // commented out by Anna
+  //res.redirect(`/guest/${mod}`);
+
+  // added by Anna
+  // redirect to the login page instead of the mod page
+  res.redirect('/login');
+};
 
 /**
  * Authorization Required middleware.

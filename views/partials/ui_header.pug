@@ -33,14 +33,16 @@
               if user.isInstructor
                 a.item(href='/classes') 
                   i.big.university.icon
-              .ui.simple.dropdown.item(style="display: none;")
+              .ui.simple.dropdown.item
                 if user.profile.picture
                   img.ui.mini.spaced.circular.image(src=cdn+'/profile_pictures/'+user.profile.picture)
                 else
                   img.ui.mini.spaced.circular.image(src=user.gravatar(60))
                 |
-                span= user.profile.name || user.username || user.id
-
+                span= user.username || user.profile.name || user.id
+                i.dropdown.icon
+                .menu
+                  a.item(href='/logout') Logout
             
 .mobile.only.row
   .ui.fluid.top.fixed.four.item.menu(style="z-index:10000002;")
