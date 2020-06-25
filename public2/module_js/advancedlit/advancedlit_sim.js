@@ -19,8 +19,18 @@ var hintsList = [
   }
 ];
 
-function customOnHintCloseFunction(){
-  // do nothing
+function eventsAfterHints(){
+  introJs().hideHints();
+  introJs().showHint(0);
+}
+
+function customOnHintCloseFunction(stepID){
+
+  // sequential hint appearance
+  stepID += 1;
+  if(stepID !== numberOfHints){
+    introJs().showHint(stepID);
+  }
   closedHints++;
   clickedHints = 0;
   if (closedHints == numberOfHints){
