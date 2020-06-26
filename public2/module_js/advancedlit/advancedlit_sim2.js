@@ -14,8 +14,8 @@ var hintsList = [
   },
   {
     hint: `Trustworthy news articles will also explain how and where their
-    information was gathered, and provide links to relevant sources. That is
-    missing here.`,
+    information was gathered, and provide links to sources used by the author.
+    That is missing here.`,
     element: '#hint3',
     hintPosition: 'bottom-middle'
   },

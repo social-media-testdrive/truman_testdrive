@@ -53,8 +53,8 @@ function customOnHintCloseFunction(stepID){
   }
 }
 
-$('.ui.card.articleCard').on('click', function(){
-  $('.ui.card.articleCard').transition({
+$('.articleClickable').on('click', function(){
+  $('.articleImage.articleClickable').transition({
     animation: 'pulse',
     onComplete: function(){
       if(closedHints === numberOfHints){

@@ -9,76 +9,17 @@ block content
       .ui.fixed.bottom.sticky
         .ui.icon.message.success.hidden#instructionsToContinueOne
           .content
-            .ui.header Click the article to continue! 
+            .ui.header Click on the article to continue! 
         .ui.icon.message.success.hidden#instructionsToContinueTwo
           .content
             .ui.header Click the search button to continue! 
         .ui.icon.message.success.hidden#instructionsToContinueThree
           .content
-            .ui.header Click 'Go back to the timeline' to continue! 
+            .ui.header Click "Go back to the timeline" to continue!
     //- #####################################################
     .ui.active.tab(data-tab="one")
       .ui.grid(style='margin-bottom:4em;')
         .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.centered
-          #step1.ui.fluid.card.dim.articleCard
-            .ui.dimmer.flag
-              .content
-                .center
-                  h2.ui.inverted.icon.header
-                    i.red.flag.icon
-                    | You&apos;ve flagged this!
-                    h3.ui.inverted.header
-                      span 
-                        | The admins will review this post further. We are sorry 
-                        | you had this experience.
-            .content
-              .right.floated.meta= "Yesterday"
-              a(href='#')
-                    img.ui.avatar.image(src=cdn+'/profile_pictures/user21.jpg')
-                    span='Sam Hill'
-            .img.post.articleImage.articleTab(data-tab="two")        
-              img(src=cdn+'/post_pictures/tornado1_an.png')
-
-            .content.articleTab(data-tab="two")
-              .description
-                | Be safe out there!! 
-            .four.ui.bottom.attached.icon.buttons
-              .ui.reply.button(tabindex='0')
-                i.reply.icon
-                | Reply
-              .ui.flag.button(tabindex='0')
-                i.flag.icon
-                | Flag
-              .ui.share.button(tabindex='0')
-                i.share.icon
-                | Share
-              .ui.labeled.button(tabindex='0')
-                .ui.like.button
-                  i.heart.icon
-                  | Like
-                a.ui.basic.red.left.pointing.label.count 0
-            .content
-              .ui.comments
-                .comment
-                  a.avatar
-                    img(src=cdn+'/profile_pictures/user66.jpeg')
-                  .content
-                    a.author Michelle Rose
-                    .metadata
-                      span.date 1 minute ago
-                      i.heart.icon
-                      |  0 Likes
-                    .text()
-                      | lol!!
-                    .actions
-                      a.like Like
-                      a.flag Flag     
-            .extra.content
-              .ui.fluid.left.labeled.right.icon.input
-                .ui.label
-                  img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-                input.newcomment(type='text' placeholder='Write a Comment')
-                i.big.send.link.icon      
           .ui.fluid.card.dim()
             .ui.dimmer.flag
               .content
@@ -151,7 +92,69 @@ block content
                 .ui.label
                   img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
                 input.newcomment(type='text' placeholder='Write a Comment')
-                i.big.send.link.icon         
+                i.big.send.link.icon
+          
+          #step1.ui.fluid.card.dim.articleCard
+            .ui.dimmer.flag
+              .content
+                .center
+                  h2.ui.inverted.icon.header
+                    i.red.flag.icon
+                    | You&apos;ve flagged this!
+                    h3.ui.inverted.header
+                      span 
+                        | The admins will review this post further. We are sorry 
+                        | you had this experience.
+            .content
+              .right.floated.meta= "Yesterday"
+              a(href='#')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user37.jpg')
+                    span='Daniel Mai'
+            .img.post.articleImage.articleTab(data-tab="two")        
+              img(src=cdn+'/post_pictures/tornado1_an.png')
+
+            .content.articleTab(data-tab="two")
+              .description
+                | Be safe out there!! 
+            .four.ui.bottom.attached.icon.buttons
+              .ui.reply.button(tabindex='0')
+                i.reply.icon
+                | Reply
+              .ui.flag.button(tabindex='0')
+                i.flag.icon
+                | Flag
+              .ui.share.button(tabindex='0')
+                i.share.icon
+                | Share
+              .ui.labeled.button(tabindex='0')
+                .ui.like.button
+                  i.heart.icon
+                  | Like
+                a.ui.basic.red.left.pointing.label.count 0
+            .content
+              .ui.comments
+                .comment
+                  a.avatar
+                    img(src=cdn+'/profile_pictures/unicorn.jpg')
+                  .content
+                    a.author Maya Rein
+                    .metadata
+                      span.date 1 minute ago
+                      i.heart.icon
+                      |  0 Likes
+                    .text()
+                      | fingers crossed
+                    .actions
+                      a.like Like
+                      a.flag Flag     
+            .extra.content
+              .ui.fluid.left.labeled.right.icon.input
+                .ui.label
+                  img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+                input.newcomment(type='text' placeholder='Write a Comment')
+                i.big.send.link.icon      
+          
+                   
           .ui.fluid.card.dim()
             .ui.dimmer.flag
               .content
@@ -311,19 +314,21 @@ block content
       .ui.segment(style='margin-bottom: 4em;')
         .ui.grid(style='margin-bottom:4em;')          
           .row
-            .column#step2
+            .column
               h2 
                 | The Reed County Voice
               h1 
-                | BREAKING NEWS: Tornado Warning Issued in Reed County 
+                span#step2 BREAKING NEWS:
+                | Tornado Warning Issued in Reed County 
               p Author: Jeremy Townsend
               p 10 minutes ago
           .row
             .six.wide.computer.six.wide.tablet.sixteen.wide.mobile.column
               img.ui.large.image.fullArticleImage(src=cdn+'/post_pictures/tornado1_orig.jpg')
-            .ten.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column#step3
+            .ten.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
               p.articleText 
-                | According to the National Weather Service, a tornado watch was 
+                span#step3 According to the National Weather Service,
+                | a tornado watch was 
                 | issued for Reed County today, effective immediately. Severe 
                 | wind gusts and large thunderstorms might lead to significant 
                 | damage to the local community. Residents are advised to 
@@ -352,6 +357,8 @@ block content
               a
                 h4.resultTitle 
                  | Tornado Watch Issued in Reed County - The Reed County Voice
+              p.resultPublished
+                | 2 hours ago
               p.resultPreviewText
                 | The National Weather Service issued a tornado watch at 3 p.m. 
                 | yesterday. Residents should expect large hail and very heavy 
@@ -361,6 +368,8 @@ block content
             a
               h4.resultTitle 
                 | Local Grocery Stores Emptied after Tornado Warning - The Reed County Voice
+            p.resultPublished
+              | 15 hours ago
             p.resultPreviewText
               | After the tornado warning was issued, residents of Reed County 
               | rushed to stores to stock up on supplies. Many stores were 
@@ -371,6 +380,8 @@ block content
               h4.resultTitle 
                 | Record-Breaking Roller Coaster "Tornado" Coming to Town - Reed 
                 | County
+            p.resultPublished
+              | 4 months ago
             p.resultPreviewText
               | Five Flags in Reed County is planning to construct a new roller 
               | coaster named "Tornado Coaster." Once finished, it will be one 
@@ -380,6 +391,8 @@ block content
             a
               h4.resultTitle 
                 | Active Alerts - National Weather Service
+            p.resultPublished
+              | 1 day ago
             p.resultPreviewText
               | Tornado Warning: Take Action! A tornado has been sighted or 
               | indicated in Reed County, FL. There is imminent danger to life 
@@ -389,6 +402,8 @@ block content
             a
               h4.resultTitle 
                 | "Tornado Coaster" Opening Next Year! - Five Flags Theme Park
+            p.resultPublished
+              | 5 months ago
             p.resultPreviewText
               | Five Flags announces construction plans for “Tornado Coaster,” a 
               | record-breaking roller coaster that is first of its kind in the 

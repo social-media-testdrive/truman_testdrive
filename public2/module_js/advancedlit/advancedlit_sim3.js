@@ -1,9 +1,14 @@
 var hintsList = [
   {
     hint: `Search engines like google often prioritize results about breaking
-    news. None of the sources you found seem to be mentioning the same thing.
-    This might be an indication that the article has inaccurate information.`,
+    news.`,
     element: '#hint2',
+    hintPosition: 'middle-middle'
+  },
+  {
+    hint: `None of the sources you found seem to be mentioning the same thing.
+    This might be an indication that the article has inaccurate information.`,
+    element: '#hint3',
     hintPosition: 'middle-right'
   }
 ];

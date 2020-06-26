@@ -8,6 +8,12 @@ const hintsList = [
     hint: `It's not a good idea to share a news article that isn't accurate
     since it may just make other people believe something that isn't true.`,
     element: '#hint2',
+    hintPosition: 'bottom-middle'
+  },
+  {
+    hint: `If you think the article is incorrect, you can flag the post to
+    report it to the website.`,
+    element: '#hint3',
     hintPosition: 'top-middle'
   }
 ];
@@ -38,7 +44,7 @@ function customOnHintCloseFunction(stepID){
   }
 }
 
-$('.articleTab').on('click', function(){
+$('.continueButton').on('click', function(){
   if(closedHints === numberOfHints){
     window.location.href = '/trans/advancedlit';
   } else {

@@ -19,9 +19,9 @@
   //-div(style="position: relative; z-index: 1;")
     img(src="image.png" style="position: absolute; z-index: 2;")
     span#overlay_text(style="position: relative; top: -10px; z-index: 3;") OVERLAY
-  .img.post.pointerCursor
+  .img.post.pointerCursor.articleTab(data-tab=articleTabID)
     img(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture)
-  .content.pointerCursor
+  .content
     .description!=val.body
   .three.ui.bottom.attached.icon.buttons
     .ui.reply.button(tabindex='0')

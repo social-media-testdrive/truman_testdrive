@@ -4,14 +4,14 @@ const firstStepsList = [
     intro: `When you see a breaking news story on social media, it's
     important to make sure it is reliable.`,
     position: "right",
-    scrollTo: 'tooltip'
+    scrollTo: "element"
   },
   {
     element: '#step1',
     intro: `Click on the story to learn more before sharing it with
     others! `,
     position: "right",
-    scrollTo: 'tooltip'
+    scrollTo: "element"
   }
 ];
 
@@ -19,22 +19,25 @@ const secondStepsList = [
   {
     element: '#step2',
     intro: `Check to see if the article is clearly labeled as an opinion
-    piece or a news article.`,
+    piece or a news article. In this example, the title states that this is a
+    news article.`,
     position: "bottom",
     scrollTo: "tooltip"
   },
   {
     element: '#step3',
     intro: `When you read an article, <b>fact-check</b> the information!
-    Reliable articles will explain where they got the information and will also
-    share links to other relevant sources.`,
+    Reliable articles will explain where they got the information and will
+    include links to the sources that the author used when writing their
+    story.`,
     position: "left",
     scrollTo: "tooltip"
   },
   {
     element: '#step3B',
     intro: `Breaking news stories develop over time, so the first reports
-    might not have all the information.`,
+    might not have all the information, and reliable articles will often make
+    this clear.`,
     position: "left",
     scrollTo: "tooltip"
   },
@@ -58,7 +61,8 @@ const thirdStepsList = [
   },
   {
     element: "#step6",
-    intro: `Click on the ‘go back to the timeline’ button.`,
+    intro: `Click on the "Go back to the timeline" button to see what you can
+    do next.`,
     position: "bottom",
     scrollTo: "element"
   }
@@ -67,8 +71,14 @@ const thirdStepsList = [
 const fourthStepsList = [
   {
     element: '#step1',
-    intro: `It's important not to share a news article that isn’t accurate
-    since you don't want others believing something that isn't true!`,
+    intro: `Since we have verified this article, it's okay to share the news
+    with others.`,
+    position: "right",
+    scrollTo: "tooltip"
+  },
+  {
+    intro: `It's important not to share a news article that isn’t accurate since
+    you don't want others believing something that isn't true!`,
     position: "right",
     scrollTo: "tooltip"
   }
@@ -95,7 +105,7 @@ function changeActiveTab(newActiveTab) {
 function startIntro(){
   let intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true,
   'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false,
-  'scrollToElement':true, 'doneLabel':'Done &#10003' });
+   'doneLabel':'Done &#10003' });
 
   intro.setOptions({
     steps: firstStepsList

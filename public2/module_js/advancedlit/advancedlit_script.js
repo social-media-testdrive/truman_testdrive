@@ -45,8 +45,10 @@ $(window).on("load", function () {
 
 let articleNumber = 1;
 // scrolling to the correct article when returning to the timeline tab
-$('.ui.card, .ui.button.articleTab, .ui.button.timelineTab, .ui.button.searchTab').tab({
+$('.ui.card .img.articleTab, .ui.button.articleTab, .ui.button.timelineTab, .ui.button.searchTab').tab({
+  alwaysRefresh: true,
   onLoad: function(tabPath){
+    console.log(tabPath);
     let endOfString = tabPath.substr(tabPath.length - 1);
     if ((endOfString === '1')
     || (endOfString === '2')
@@ -54,20 +56,20 @@ $('.ui.card, .ui.button.articleTab, .ui.button.timelineTab, .ui.button.searchTab
       articleNumber = tabPath.substr(tabPath.length - 1);
       $(document).scrollTop(0);
     } else {
-      $('.ui.card[data-tab="article'+articleNumber+'"]')[0].scrollIntoView();
+      $('.ui.card .img[data-tab="article'+articleNumber+'"]')[0].scrollIntoView();
+      // lazy loading of images (needs to be duplicated here from main.js so that
+      // it works after changing tabs)
+      $('#content .fluid.card .img img, img.ui.avatar.image, a.avatar.image img')
+        .visibility({
+          type: 'image',
+          offset: 0,
+          onLoad: function (calculations) {
+            console.log("@@@@@@@ Real Image @@@@@@@@@");
+            $('#content .fluid.card .img img, img.ui.avatar.image, a.avatar.image img').visibility('refresh');
+          }
+        });
     }
 
-    // lazy loading of images (needs to be duplicated here from main.js so that
-    // it works after changing tabs)
-    $('#content .fluid.card .img img, img.ui.avatar.image, a.avatar.image img')
-      .visibility({
-        type: 'image',
-        offset: 0,
-        onLoad: function (calculations) {
-          console.log("@@@@@@@ Real Image @@@@@@@@@");
-          $('#content .fluid.card .img img, img.ui.avatar.image, a.avatar.image img').visibility('refresh');
-        }
-      })
-      ;
+
   }
 });
