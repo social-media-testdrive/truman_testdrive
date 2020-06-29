@@ -10,6 +10,9 @@ block content
     .ui.grid
       .computer.only.tablet.only.four.wide.column
         .ui.sticky
+          .ui.icon.message.success.hidden#pleaseshowonback
+            .content
+              .ui.header Click the article to continue! 
           .ui.card
             .image
               if user.profile.picture
@@ -70,7 +73,12 @@ block content
       i.icon.search
       span.searchButtonText 
     include ../partials/script/advancedlit_articleTab
-    
+    button.ui.big.testDriveBlue.button.timelineTab(data-tab='timeline')
+      i.icon.reply
+      | Return to the timeline
+    button.ui.big.green.button.searchTab(data-tab='search1')
+      i.icon.search
+      span.searchButtonText 
   //- .ui.tab(data-tab="article2" style="width:inherit;")
   //-   button.ui.big.testDriveBlue.button.timelineTab(data-tab='timeline')
   //-     i.icon.reply
@@ -88,6 +96,12 @@ block content
       i.icon.search
       span.searchButtonText 
     include ../partials/script/advancedlit_articleTab
+    button.ui.big.testDriveBlue.button.timelineTab(data-tab='timeline')
+      i.icon.reply
+      | Return to the timeline
+    button.ui.big.green.button.searchTab(data-tab='search3')
+      i.icon.search
+      span.searchButtonText 
     
   //- #########################################################################
   
@@ -102,6 +116,14 @@ block content
             i.icon.reply
             | Go back to the article
       include ../partials/script/advancedlit_searchTab
+      .row
+        .column
+          button.ui.big.testDriveBlue.button.timelineTab(data-tab='timeline')
+            i.icon.reply
+            | Go back to the timeline
+          button.ui.big.testDriveBlue.button.articleTab(data-tab='article1')
+            i.icon.reply
+            | Go back to the article
       
   //- .ui.tab(data-tab="search2")
   //-   .ui.grid.gridInsideTab(style="margin-bottom:4em;")          
@@ -126,6 +148,14 @@ block content
             i.icon.reply
             | Go back to the article
       include ../partials/script/advancedlit_searchTab
+      .row
+        .column
+          button.ui.big.testDriveBlue.button.timelineTab(data-tab='timeline')
+            i.icon.reply
+            | Go back to the timeline
+          button.ui.big.testDriveBlue.button.articleTab(data-tab='article3')
+            i.icon.reply
+            | Go back to the article
       
   //- #########################################################################
            

@@ -58,8 +58,15 @@ block content
                 p.articleText 
                   | One local educator remarked that "closing for the remainder of 
                   | the year would be the right decision."
-  
-
+                  
+      .row
+        .column(style="padding:0;")
+          button.ui.big.button.homeTab(data-tab='one')
+            i.icon.reply
+            | Go back to the timeline
+          button.ui.big.button.searchTab(data-tab='three')
+            i.icon.search
+            | Search for "Haywell Middle School closing"  
 
 block scripts
   script(src='/module_js/advancedlit/advancedlit_sim2.js')

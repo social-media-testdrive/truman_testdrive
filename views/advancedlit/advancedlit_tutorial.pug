@@ -303,15 +303,13 @@ block content
                 i.big.send.link.icon   
     //- #####################################################
     .ui.tab(data-tab="two")
-    
-      //- button.ui.big.testDriveBlue.button.homeTab(data-tab='one')
       button.ui.big.button.homeTab(data-tab='one')
         i.icon.reply
         | Go back to the timeline
       button.ui.big.button.searchTab#step4(data-tab='three')
         i.icon.search
         | Search for "Reed County tornado"
-      .ui.segment(style='margin-bottom: 4em;')
+      .ui.segment
         .ui.grid(style='margin-bottom:4em;')          
           .row
             .column
@@ -335,13 +333,17 @@ block content
                 | discuss emergency plans and check their tornado shelter.
               p.articleText#step3B 
                 | Please stay tuned for more news to come.
-                
+      button.ui.big.button.homeTab(data-tab='one')
+        i.icon.reply
+        | Go back to the timeline
+      button.ui.big.button.searchTab#step4(data-tab='three' style='margin-bottom: 4em;')
+        i.icon.search
+        | Search for "Reed County tornado"          
     //- #####################################################
     .ui.tab(data-tab="three")
       .ui.grid(style='margin-bottom:4em;')     
         .row
           .column
-
             button.ui.big.button.homeTab(data-tab='one')#step6
               i.icon.reply
               | Go back to the timeline
@@ -408,7 +410,14 @@ block content
               | Five Flags announces construction plans for “Tornado Coaster,” a 
               | record-breaking roller coaster that is first of its kind in the 
               | country. ...
-
+        .row
+          .column
+            button.ui.big.button.homeTab(data-tab='one')
+              i.icon.reply
+              | Go back to the timeline
+            button.ui.big.button.articleTab(data-tab='two')
+              i.icon.reply
+              | Go back to the article
 block scripts
   script(src=cdn+'/js/comments.js')
   script(src='/module_js/advancedlit/advancedlit_tutorial.js')
