@@ -5,12 +5,27 @@ facilitate topic customization. */
 // #############################################################################
 
 // snippet taken from :
+// https://stackoverflow.com/a/25806609
+document.onmouseover = function() {
+    //User's mouse is inside the page.
+    window.innerDocClick = true;
+}
+
+document.onmouseleave = function() {
+    //User's mouse has left the page.
+    window.innerDocClick = false;
+}
+// snippet taken from :
 // https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onbeforeunload
 window.addEventListener('beforeunload', function (e) {
   // Cancel the event
-  e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
-  // Chrome requires returnValue to be set
-  e.returnValue = '';
+  if(window.innerDocClick){
+
+  } else {
+    e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
+    // Chrome requires returnValue to be set
+    e.returnValue = '';
+  }
 });
 
 $(window).on("load", function () {
