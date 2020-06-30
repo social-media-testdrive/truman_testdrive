@@ -2,6 +2,22 @@ let clickedHints = 0;
 let closedHints = 0;
 const numberOfHints = hintsList.length;
 
+let pathArray = window.location.pathname.split('/');
+const subdirectory1 = pathArray[1];
+const subdirectory2 = pathArray[2];
+let hintNumber = 0;
+let hintOpenTimestamp = Date.now();
+let closedHint = false;
+
+function addCardIds(){
+  let id = 1;
+  $('.ui.card').each(function(){
+    $(this).attr('simPostNumber', id);
+    id++;
+  });
+}
+
+
 //showing the "Need some help?" guidance message
 function showHelp(){
   if($('#removeHidden').is(":hidden")){
@@ -42,7 +58,9 @@ function startHints(){
   hints.addHints();
 
   //for providing guidance message
-  hints.onhintclick(function() {
+  hints.onhintclick(function(e) {
+    hintNumber = $(e).attr('data-step');
+    hintOpenTimestamp = Date.now();
       clickedHints++;
       if(clickedHints >= numberOfHints){
         if(clickedHints !== 1){
@@ -57,6 +75,15 @@ function startHints(){
       }
   });
   hints.onhintclose(function(stepID){
+    let cat = new Object();
+    cat.subdirectory1 = subdirectory1;
+    cat.subdirectory2 = subdirectory2;
+    cat.dotNumber = hintNumber;
+    cat.viewDuration = Date.now() - hintOpenTimestamp;
+    cat.clickedClose = true;
+
+    $.post("/bluedot", {
+      action: cat, _csrf: $('meta[name="csrf-token"]').attr('content') });
     if(typeof customOnHintCloseFunction !== 'undefined'){
       customOnHintCloseFunction(stepID);
     } else {
@@ -103,11 +130,10 @@ function startIntro(){
       }
 
     });
-
-
 };
 
 $(window).on("load", function(){
+  addCardIds();
   try {
     startIntro();
   } catch (error) {

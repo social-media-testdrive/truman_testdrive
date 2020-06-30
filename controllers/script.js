@@ -697,3 +697,51 @@ exports.postDeleteFeedAction = (req, res, next) => {
     });
   });
 };
+
+
+/*
+ POST /blueDot/
+ Update a blue dot action
+*/
+exports.postBlueDotAction = (req, res, next) => {
+
+  User.findById(req.user.id, (err, user) => {
+
+    // somehow user does not exist here
+    if (err) {
+      return next(err);
+    }
+
+    // Determine where the action is coming from and adjust the push location
+
+    let userAction = user.blueDotAction;
+
+    //Post does not exist yet in User DB, so we have to add it now
+    let cat = new Object();
+
+    cat.subdirectory1 = req.body.action.subdirectory1;
+    cat.subdirectory2 = req.body.action.subdirectory2;
+    cat.dotNumber = req.body.action.dotNumber;
+    cat.viewDuration = req.body.action.viewDuration;
+    cat.clickedClose = req.body.action.clickedClose;
+    //cat.rereadTimes = 0;
+    // add new post into correct location
+    userAction.push(cat);
+
+    // save to DB
+    user.save((err) => {
+      if (err) {
+        if (err.code === 11000) {
+          req.flash('errors', {
+            msg: 'Something in blueDotAction went crazy. You should never see this.'
+          });
+          return res.redirect('/');
+        }
+        return next(err);
+      }
+      res.send({
+        result:"success"
+      });
+    });
+  });
+};
