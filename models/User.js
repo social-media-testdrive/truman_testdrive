@@ -76,7 +76,7 @@ const userSchema = new mongoose.Schema({
 
     absTime: Date, //absolute date (time in real world), this post took place in
     relativeTime: {type: Number}
-    })],
+  })],
 
   //logins user made to site
   log: [new Schema({
@@ -154,7 +154,6 @@ const userSchema = new mongoose.Schema({
       },{_id: true, versionKey: false })]
     }, {_id: true, versionKey: false })],
 
-
     guidedActivityAction: [new Schema({
       post: String, //which post did the user interact with?
       modual: String, //which lesson mod did this take place in?
@@ -192,8 +191,16 @@ const userSchema = new mongoose.Schema({
         absTime: Date,
         commentTime: {type: Number},
         time: {type: Number}
-        },{_id: true, versionKey: false })]
-      }, {_id: true, versionKey: false })],
+      },{_id: true, versionKey: false })]
+    }, {_id: true, versionKey: false })],
+
+    reflectionAction: [new Schema({
+      modual: String, //which lesson mod did this take place in?
+      prompt: String,
+      writtenResponse: String,
+      numberOfCheckboxes: Number,
+      checkboxResponse: Number
+    }, {_id: true, versionKey: false })],
 
     blueDotAction: [new Schema({
       subdirectory1: String, // which page the user is on

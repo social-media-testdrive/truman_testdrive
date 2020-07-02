@@ -162,7 +162,7 @@ block content
 
     .ui.raised.segment
       .ui.label
-        h4
+        h4.reflectionCheckboxesPrompt
           | What did you do when you saw an advertisement or a sponsored post?
       .content.checkOne
         .ui.form
@@ -218,7 +218,7 @@ block content
 
     .ui.raised.segment
       .ui.label
-        h4
+        h4.reflectionPrompt
           | Why do companies collect data from people's profiles or online activity?
       .ui.form
         .inline.fields
@@ -227,7 +227,7 @@ block content
 
     .ui.raised.segment
       .ui.label
-        h4
+        h4.reflectionPrompt
           | Why is it important to know how to identify advertisements on social media?
       .ui.form
         .inline.fields
@@ -240,13 +240,14 @@ block content
           |   Print your responses
     br
     br
-    .ui.big.green.labeled.icon.button.cyberbullying_end
+    .ui.big.green.labeled.icon.button.results_end
           i.rocket.icon
           |   Continue
 
       
 block scripts
   script(src="/module_js/targeted/targeted_results.js")
+  script(src='/module_js/base_results.js')
   
 block styles
   link(rel='stylesheet', href='/css/modules/targeted.css')
