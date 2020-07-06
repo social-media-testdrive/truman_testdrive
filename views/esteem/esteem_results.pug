@@ -35,17 +35,9 @@ block content
                 .content
                   .description
                     | Watching the big match with my BFF!!
+                    span(style='color:#929292;')
+                      |  — with Hayden Abbey
           
-              .ui.fluid.card.dim
-                .content      
-                  a.left.floated(href='/user/habbey113')
-                    img.ui.avatar.image(src=cdn+'/profile_pictures/user4.jpg')
-                    span='Hayden Abbey'
-                .image
-                  img.post(src=cdn+'/post_pictures/signedball_se.jpg')
-                .content
-                  .description
-                    | Can't believe my parents got me a GENUINE signed ball
 
               .ui.fluid.card.dim
                 .content      
@@ -56,8 +48,11 @@ block content
                   img.post(src=cdn+'/post_pictures/tryouts_se.jpg')
                 .content
                   .description
-                    | Yaaaaaaas made it to the next round of soccer tryouts. 
-                    | Sorry Hayden and Jeremy
+                    | Wow, can't believe I'm the only one who made it to the 
+                    | next round of soccer tryouts from our group
+                    span(style='color:#929292;')
+                      |  — with Hayden Abbey, Jeremy Murray, and Corey King
+          
                     
             if (chosenTopic == 'Gaming')
               
@@ -70,19 +65,10 @@ block content
                   img.post(src=cdn+'/post_pictures/computer-game_se.jpg')
                 .content
                   .description
-                    | Honestly think I am the best player in our meetup league
+                    | Totally beating everyone
+                    span(style='color:#929292;')
+                      |  — with Lindsay Stokes and Asher Michaels
 
-              .ui.fluid.card.dim
-                .content      
-                  a.left.floated(href='/user/princess_lindss')
-                    img.ui.avatar.image(src=cdn+'/profile_pictures/user30.jpg')
-                    span='Linsday Stokes'
-                .image
-                  img.post(src=cdn+'/post_pictures/switch_se.jpg')
-                .content
-                  .description
-                    | Just got a new Switch! Any games I should ask my parents 
-                    | to buy me?
 
               .ui.fluid.card.dim
                 .content      
@@ -94,6 +80,8 @@ block content
                 .content
                   .description
                     | Playing online with my best friend  
+                    span(style='color:#929292;')
+                      |  — with Lindsay Stokes 
                     
             if (chosenTopic == 'Music')
               
@@ -107,17 +95,9 @@ block content
                 .content
                   .description
                     | We missed you at the concert Jeremy!
+                    span(style='color:#929292;')
+                      |  — with Kiki Pualani
 
-              .ui.fluid.card.dim
-                .content      
-                  a.left.floated(href='/user/kilani244')
-                    img.ui.avatar.image(src=cdn+'/profile_pictures/user5.jpeg')
-                    span='Kiki Pualani'
-                .image
-                  img.post(src=cdn+'/post_pictures/electric_se.jpg')
-                .content
-                  .description
-                    | I just got the best present ever!
   
               .ui.fluid.card.dim
                 .content      
@@ -128,7 +108,10 @@ block content
                   img.post(src=cdn+'/post_pictures/bestguitar_se.JPG')
                 .content
                   .description
-                    | i'm a better player than everyone else @ music camp tbh
+                    | Inviting the best musicians from camp to make a song 
+                    | together.
+                    span(style='color:#929292;')
+                      |  — with Kiki Pualani and Nick Thomas
 
           br
           br
@@ -137,8 +120,7 @@ block content
     .ui.raised.segment
       .ui.label.resultsPromptLabel
         h4
-          | Do you remember seeing other posts that might have caused Jeremy to 
-          | feel good? What were they?
+          | Why might these posts cause Jeremy to have a red flag feeling?
       .ui.form
         .inline.fields
           label
@@ -147,12 +129,22 @@ block content
     .ui.raised.segment
       .ui.label.resultsPromptLabel
         h4
-          | What could you do to feel better when you get red flag feelings on 
-          | social media?
+          | Do you remember seeing posts that might have caused Jeremy to feel 
+          | good? What kinds of posts were they?
       .ui.form
         .inline.fields
           label
           textarea.glowing-border(rows='2' id="literacy_responseTwo")
+            
+    .ui.raised.segment
+      .ui.label.resultsPromptLabel
+        h4
+          | What could Jeremy do to feel better after experiencing a red flag 
+          | feeling on social media?
+      .ui.form
+        .inline.fields
+          label
+          textarea.glowing-border(rows='2' id="literacy_responseThree")
 
 
     br

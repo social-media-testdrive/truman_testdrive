@@ -1,27 +1,13 @@
 var hintsList=
 [
   {
-    hint: `Nick’s best friends Liam and Vanessa have posted that they are
-    hanging out but Nick was not invited. How might Nick feel after seeing this
-    post? Click on the post to reflect.`,
+    hint: `Nick's best friends, Liam and Vanessa, have posted that they are
+    hanging out, but Nick was not invited. Click on the post to reflect on how
+    Nick might feel and what he can do if he is experiencing a red flag
+    feeling.`,
     element: '#hint1',
     position: 'right',
     hintPosition: 'middle-right'
-  },
-  // {
-  //   hint: `Nick could feel upset and sad that he is missing out. This is a
-  //   red flag feeling. What could Nick do to make himself feel better? Click
-  //   on the post to think about things that Nick could do.`,
-  //   element: '#hint2',
-  //   hintPosition: 'middle-right'
-  // },
-  {
-    hint: `Seeing everything his friends are posting might make Nick feel like
-    his life isn't as interesting or fun. But a lot of people just post the
-    positive and exciting things going on in their lives.`,
-    element: '#hint3A',
-    position: 'right',
-    hintPosition: 'bottom-right'
   },
   {
     hint: `Click on the post to think about how Nick might feel and things that
@@ -29,6 +15,14 @@ var hintsList=
     element: '#hint3',
     position: 'bottom',
     hintPosition: 'middle-right'
+  },
+  {
+    hint: `Seeing everything his friends are posting might make Nick feel like
+    his life isn't as interesting or fun. But a lot of people just post the
+    positive and exciting things going on in their lives.`,
+    element: '#hint3A',
+    position: 'right',
+    hintPosition: 'bottom-right'
   },
   {
     hint: `Nick can always take a break from social media. He can meet up with
@@ -56,8 +50,8 @@ var stepsList=
 ]
 
 function eventsAfterHints(){
-
-  // introJs().hideHint(1);
+    introJs().hideHints();
+    introJs().showHint(0);
 
   $('.ui.fluid.card.test img').on('click', function(){
     $('.ui.accordion').accordion('open', 0);
@@ -73,11 +67,14 @@ function eventsAfterHints(){
 
 
 function customOnHintCloseFunction(stepID) {
+  // sequential hint appearance
+  stepID += 1;
+  if(stepID !== numberOfHints){
+    introJs().showHint(stepID);
+  }
+
   closedHints++;
   clickedHints = 0;
-  // if(stepID === 0){
-  //   introJs().showHint(1);
-  // }
   if($('#removeHidden').is(":visible")){
     $('#removeHidden').transition('fade');
     if($('#clickAllDotsWarning').is(":hidden")){

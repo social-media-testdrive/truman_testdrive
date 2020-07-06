@@ -30,7 +30,7 @@ function startIntro(){
       bot2FirstName = "Franklin";
       break;
     case 'Gaming':
-      eventKeyword = 'gaming meetup';
+      eventKeyword = 'gaming club';
       bot1Image = 'user30.jpg';
       bot1FullName = "Lindsay Stokes";
       bot1FirstName = "Lindsay";
@@ -49,36 +49,47 @@ function startIntro(){
       break;
   }
 
-  var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true, 'doneLabel':'Done &#10003', 'tooltipClass':'blueTooltip'});
-    intro.setOptions({
-      steps: [
-        {
-          intro: `Now you get to explore the TestDrive timeline! You can read
-          what others have posted, respond, or make your own posts.`
-        },
-        {
-          intro: `Here is some background before you start: Imagine that you are
-          looking at
-          <span class='noLineBreak'><img class='ui avatar image customCircularAvatar' src='${cdn}/profile_pictures/user77.jpg'>
-          Jeremy Murray's</span>
-          social media timeline.`
-        },
-        {
-          intro: `Jeremy has two friends,
-          <span class='noLineBreak'><img class='ui avatar image customCircularAvatar' src='${cdn}/profile_pictures/${bot1Image}'>
-          <span>${bot1FullName}</span></span> and
-          <span class='noLineBreak'><img class='ui avatar image customCircularAvatar' src='${cdn}/profile_pictures/${bot2Image}'>
-          <span>${bot2FullName}</span></span> whom he met  at a ${eventKeyword}.
-          Look out for posts from ${bot1FirstName} and ${bot2FirstName}.`
-        },
-        {
-          intro: `You may also see posts by other people that express red flag
-          feelings. Click on the posts to reflect on how Jeremy might feel when
-          he sees the posts.`
-        }
+  var intro = introJs().setOptions({
+    'hidePrev': true,
+    'hideNext': true,
+    'exitOnOverlayClick': false,
+    'showStepNumbers':false,
+    'showBullets':false,
+    'scrollToElement':true,
+    'doneLabel':'Done &#10003',
+    'tooltipClass':'blueTooltip'
+  });
 
-      ]
-    });
+  intro.setOptions({
+    steps: [
+      {
+        intro: `Now you get to explore the TestDrive timeline! You can read
+        what others have posted, respond, or make your own posts.`
+      },
+      {
+        intro: `Here is some background before you start: Imagine that you are
+        looking at
+        <span class='noLineBreak'><img class='ui avatar image customCircularAvatar' src='${cdn}/profile_pictures/user77.jpg'>
+        Jeremy Murray's</span>
+        social media timeline.`
+      },
+      {
+        intro: `Jeremy has two friends,
+        <span class='noLineBreak'><img class='ui avatar image customCircularAvatar' src='${cdn}/profile_pictures/${bot1Image}'>
+        <span>${bot1FullName}</span></span> and
+        <span class='noLineBreak'><img class='ui avatar image customCircularAvatar' src='${cdn}/profile_pictures/${bot2Image}'>
+        <span>${bot2FullName}</span></span> whom he met  at a ${eventKeyword}.
+        Look out for posts from ${bot1FirstName} and ${bot2FirstName}.`
+      },
+      {
+        intro: `You may also see posts from other friends that could cause
+        Jeremy to have a red flag feeling. Click on these posts to think about
+        how Jeremy might feel and what he can do about it.`
+      }
+
+    ]
+  });
+
   intro.start().onexit(function() {
     window.location.href='/modual/esteem';
   });
