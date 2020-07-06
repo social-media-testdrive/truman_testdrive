@@ -61,7 +61,7 @@ block content
  
     .ui.raised.segment.checkOne
       .ui.label
-        h4
+        h4.reflectionCheckboxesPrompt
           | Why is this post inappropriate for social media?
       .ui.stackable.two.cards
 
@@ -105,7 +105,7 @@ block content
             
     .ui.raised.segment.checkTwo
       .ui.label
-        h4
+        h4.reflectionCheckboxesPrompt
           | How did you respond to these messages that asked for private information?
       .ui.stackable.two.cards
 
@@ -180,7 +180,7 @@ block content
     
     .ui.raised.segment.responseOne
       .ui.label
-        h4
+        h4.reflectionPrompt
           | What would you do in the future to protect your private information and other people’s private information on social media?
       .ui.form
         .inline.fields
@@ -192,13 +192,14 @@ block content
           |   Print your responses
     br
     br
-    .ui.big.green.labeled.icon.button.cyberbullying_end
+    .ui.big.green.labeled.icon.button.results_end
           i.rocket.icon
           |   Continue
 
       
 block scripts
   script(src="/module_js/safe-posting/safe-posting_results.js")
+  script(src='/module_js/base_results.js')  
 
 block styles 
   link(rel='stylesheet', href='/css/results.css') 

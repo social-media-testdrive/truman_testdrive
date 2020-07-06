@@ -64,7 +64,7 @@ block content
     .ui.raised.segment
       
       .ui.label
-        h4
+        h4.reflectionCheckboxesPrompt
           | Tell us what you did to be an upstander.
       .content.checkOne
         .ui.form
@@ -100,16 +100,24 @@ block content
                 input(type='checkbox')
                 label(for='wouldTell', tabindex='0') 
                   | I would tell a trusted adult if I saw this kind of post.
+      
+      .ui.label
+        h4.reflectionPrompt
+          |  Why did you act this way?
       .ui.form
+        .inline.fields
+          label
+          textarea.glowing-border(rows='4' id="cyber_responseOne")
+      //-.ui.form
         .field
-          label(for='like') Why did you act this way?
+          label.reflectionPrompt(for='like') Why did you act this way?
           label
           textarea.glowing-border(rows='4' id="cyber_responseOne") 
 
       
     .ui.raised.segment.responseTwo
       .ui.label
-        h4
+        h4.reflectionPrompt
           | Why is it important for people to act against cyberbullying?
       .ui.form
         .inline.fields
@@ -118,7 +126,7 @@ block content
 
     .ui.raised.segment.responseThree
       .ui.label
-        h4
+        h4.reflectionPrompt
           | What will you do in the future to be an upstander if you see 
           | cyberbullying?
       .ui.form
@@ -133,13 +141,14 @@ block content
           |   Print your responses
     br
     br
-    .ui.big.green.labeled.icon.button.cyberbullying_end
+    .ui.big.green.labeled.icon.button.results_end
           i.rocket.icon
           |   Continue
 
       
 block scripts
   script(src="/module_js/cyberbullying/cyberbullying_results.js")
+  script(src='/module_js/base_results.js')
   
 block styles
   link(rel='stylesheet', href='/css/results.css')

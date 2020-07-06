@@ -14,7 +14,7 @@ block content
 
     .ui.raised.segment.responseOne
       .ui.label
-        h4
+        h4.reflectionPrompt
           | What are some features of a strong password?
       .ui.form
         .inline.fields
@@ -23,7 +23,7 @@ block content
             
     .ui.raised.segment.responseTwo
       .ui.label
-        h4
+        h4.reflectionPrompt
           | Why is it important to choose your username carefully?
       .ui.form
         .inline.fields
@@ -32,7 +32,7 @@ block content
             
     .ui.raised.segment.responseThree
       .ui.label
-        h4
+        h4.reflectionPrompt
           | What kind of information is okay to share on your social media 
           | profile?
       .ui.form
@@ -46,13 +46,14 @@ block content
           |   Print your response
     br
     br
-    .ui.big.green.labeled.icon.button.cyberbullying_end
+    .ui.big.green.labeled.icon.button.results_end
           i.rocket.icon
           |   Continue
           
           
 block scripts
   script(src = "/module_js/accounts/accounts_results.js")
+  script(src='/module_js/base_results.js')
   
 block styles
   link(rel='stylesheet', href='/css/results.css')

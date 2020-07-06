@@ -132,7 +132,7 @@ block content
  
     .ui.raised.segment
       .ui.label.results.resultsPromptLabel
-        h4
+        h4.reflectionCheckboxesPrompt
           | Did you notice any signs of fake news in these posts?
       
       .ui.stackable.two.cards.checkOne
@@ -273,7 +273,7 @@ block content
 
     .ui.raised.segment
       .ui.label.resultsPromptLabel
-        h4
+        h4.reflectionCheckboxesPrompt
           | Tell us what you would do next to check the credibility of the above 
           | articles.
       .content.checkFour
@@ -305,7 +305,7 @@ block content
       
     .ui.raised.segment
       .ui.label.resultsPromptLabel
-        h4
+        h4.reflectionPrompt
           | What are the benefits and drawbacks of getting news on social media?
       .ui.form
         .inline.fields
@@ -314,7 +314,7 @@ block content
 
     .ui.raised.segment
       .ui.label.resultsPromptLabel
-        h4
+        h4.reflectionPrompt
           | Why is it important to evaluate the information you see on social 
           | media?
       .ui.form
@@ -324,7 +324,7 @@ block content
 
     .ui.raised.segment
       .ui.label.resultsPromptLabel
-        h4
+        h4.reflectionPrompt
           | What would you do in the future on real social media sites to make 
           | sure that the information you see is credible?
       .ui.form
@@ -339,13 +339,14 @@ block content
           |   Print your responses
     br
     br
-    .ui.big.green.labeled.icon.button.cyberbullying_end
+    .ui.big.green.labeled.icon.button.results_end
           i.rocket.icon
           |   Continue
 
       
 block scripts
   script(src="/module_js/digital-literacy/digital-literacy_results.js")
+  script(src='/module_js/base_results.js')
   
 block styles
   link(rel='stylesheet', href='/css/modules/digital-literacy.css')

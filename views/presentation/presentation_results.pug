@@ -59,7 +59,7 @@ block content
  
     .ui.raised.segment.checkOne
       .ui.label
-        h4
+        h4.reflectionCheckboxesPrompt
           | How were the posts in Elena’s finsta different from the ones in her 
           | main account?
 
@@ -112,7 +112,7 @@ block content
       
     .ui.raised.segment
       .ui.label
-        h4
+        h4.reflectionPrompt
           | How did you think about the audience when you created your post?
       .ui.form
         .inline.fields
@@ -121,7 +121,7 @@ block content
 
     .ui.raised.segment
       .ui.label
-        h4
+        h4.reflectionPrompt
           | What are the benefits of having multiple social media accounts?
       .ui.form
         .inline.fields
@@ -130,7 +130,7 @@ block content
 
     .ui.raised.segment
       .ui.label
-        h4
+        h4.reflectionPrompt
           | What are the drawbacks of having multiple social media accounts?
       .ui.form
         .inline.fields
@@ -143,14 +143,14 @@ block content
           |   Print your responses
     br
     br
-    .ui.big.green.labeled.icon.button.cyberbullying_end
+    .ui.big.green.labeled.icon.button.results_end
           i.rocket.icon
           |   Continue
 
       
 block scripts
   script(src="/module_js/presentation/presentation_results.js")
-  
+  script(src='/module_js/base_results.js')
 block styles
   link(rel='stylesheet', href='/css/results.css')
     
