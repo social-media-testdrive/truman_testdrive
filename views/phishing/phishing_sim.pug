@@ -310,7 +310,7 @@ block content
         i.rocket.icon
         |   Let's Continue!
         
-    .ui.large.long.modal#phishingModal
+    .ui.large.long.modal#phishingModal(data-modalName="phishing_iPhoneModal")
       i.close.icon  
       .ui.center.aligned.header WOW! Get a new iPhone!!
       .ui.one.column.centered.grid
@@ -351,7 +351,7 @@ block content
               i.close.icon 
               
               
-    .ui.large.long.modal#phishingModal2
+    .ui.large.long.modal#phishingModal2(data-modalName="phishing_ticketGiveawayModal")
       i.close.icon  
       .ui.center.aligned.header 
         | Universal Theme Park ticket GIVAWAY!! Fill out surrvey NOW:
@@ -388,6 +388,7 @@ block content
              i.close.icon  
   
 block scripts
+  script(src='/module_js/base_sim_extraData.js')  
   script(src="/module_js/phishing/phishing_sim.js")
   script(src="/module_js/base_sim.js")
   

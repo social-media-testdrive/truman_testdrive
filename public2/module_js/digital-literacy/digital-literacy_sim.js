@@ -54,14 +54,22 @@ let post_info_description = new Map([
 $('.ui.accordion').accordion();
 
 function eventsAfterHints(){
+
   $('.articleLink').on('click', function(){
-    $('#next_steps').modal('show');
+    recordSimModalInputs('digital-literacy_articleModal');
   });
+
+
   $(".info_button").click(function () {
     var clickedId = '#' + $(this).attr('id');
     let info_header = $(clickedId).next()[0].innerText;
     let info_text = post_info_description.get(info_header.toString().trim()) || 'No Information Found';
     document.getElementById('post_info_body').innerHTML = info_text;
-    $('#info_modal').modal('show');
+    recordSimModalInputs('digital-literacy_infoModal');
   });
+
+  $('.flag.button').on('click', function(){
+    $('input[type=checkbox]').prop('checked',false);
+    recordSimModalInputs('digital-literacy_flagModal');
+  })
 }

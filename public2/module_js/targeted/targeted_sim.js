@@ -81,8 +81,8 @@ function eventsAfterHints(){
           closable: true
         })
           .dimmer('show');
-        //open hida ad Modal
-        $("#hideAdModal").modal('show');
+        //open hide ad Modal
+        recordSimModalInputs('targeted_hideAdModal');
 
       } else if (dropdownSelection == 1){
         //flag the post
@@ -111,7 +111,7 @@ function eventsAfterHints(){
           "<div class='ui positive right labeled icon button'>Done" +
           "<i class='checkmark icon'></i></div></div>"
         );
-        $("#whyAmISeeingThisAdModal").modal('show');
+        recordSimModalInputs('targeted_whySeeingAdModal');
 
       }
     }

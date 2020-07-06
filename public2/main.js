@@ -983,9 +983,9 @@ end button links
       if(mod =="digital-literacy")
 
       {
-        console.log("CLICKING ON DIG INGO FLAG")
+        //console.log("CLICKING ON DIG INGO FLAG");
         $('input[type=checkbox]').prop('checked',false);
-        $('.ui.small.info.flag.modal').modal('show');
+        recordModalInputs('digital-literacy_flagModal');
       }
 
 

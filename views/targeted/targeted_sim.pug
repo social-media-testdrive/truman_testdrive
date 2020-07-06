@@ -359,12 +359,12 @@ block content
         |   Let's Continue!
         
         
-    .ui.small.modal#whyAmISeeingThisAdModal
+    .ui.small.modal#whyAmISeeingThisAdModal(data-modalName="targeted_whySeeingAdModal")
       i.close.icon  
       .header Why is Hannah seeing this ad?
       .content
   
-    .ui.small.modal#hideAdModal
+    .ui.small.modal#hideAdModal(data-modalName="targeted_hideAdModal")
       i.close.icon  
       .header Why did you choose to hide this ad?
       .content
@@ -391,6 +391,7 @@ block content
 
 
 block scripts
+  script(src='/module_js/base_sim_extraData.js')
   script(src="/module_js/targeted/targeted_sim.js")
   script(src="/module_js/base_sim.js")
 

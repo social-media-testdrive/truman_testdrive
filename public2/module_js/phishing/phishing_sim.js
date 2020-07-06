@@ -38,14 +38,15 @@ var stepsList =[
   }
 ];
 
-function showModal(modal){
-  $(modal).modal('show');
-}
 
 function eventsAfterHints(){
   //activate the phishing links
-  $("#shortenedURL1").on('click', function() {showModal('#phishingModal')});
-  $("#shortenedURL2").on('click', function() {showModal('#phishingModal2')});
+  $("#shortenedURL1").on('click', function() {
+    recordSimModalInputs('phishing_iPhoneModal');
+  });
+  $("#shortenedURL2").on('click', function() {
+    recordSimModalInputs('phishing_ticketGiveawayModal');
+  });
 }
 
 $('.ui.modal').modal({ closable: false });

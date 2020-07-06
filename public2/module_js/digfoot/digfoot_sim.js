@@ -52,6 +52,6 @@ function eventsAfterHints() {
   $('.img.post img').on('click', function(){
     $('input[type=checkbox]').prop('checked',false);
     // $('#digfoot_sim_modal').modal('show');
-    recordSimModalInputs('digfoot_simModal')
+    recordSimModalInputs('digfoot_simModal');
   });
 }

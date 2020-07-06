@@ -230,40 +230,38 @@ block content
 
 
     //- Info Lit Flag Modal  
-    .ui.small.info.flag.modal  
+    .ui.small.info.flag.modal(data-modalName="digital-literacy_flagModal")  
       i.close.icon  
       .header You've flagged this article! Do you think there are any signs of fake news? [check multiple]  
       .content
-        form.ui.form()  
+        .ui.form 
           .inline.field
             .ui.checkbox
-              input.hidden(type='checkbox', tabindex='0')
+              input(type='checkbox')
               label The article had a shocking and exaggerated headline.
           .inline.field
             .ui.checkbox
-              input.hidden(type='checkbox', tabindex='0')
+              input(type='checkbox')
               label The article used sensational images.
-            label
           .inline.field
             .ui.checkbox
-              input.hidden(type='checkbox', tabindex='0')
+              input(type='checkbox')
               label The article had an unusual web address or site name.
           .inline.field
             .ui.checkbox
-              input.hidden(type='checkbox', tabindex='0')
+              input(type='checkbox')
               label The article had spelling errors, ALL CAPS, or dramatic punctuation!!!!
           .inline.field
             .ui.checkbox
-              input.hidden(type='checkbox', tabindex='0')
+              input(type='checkbox')
               label I didn't see any signs. This could be a real news article. I’m flagging it for another reason
       
       .actions
         .ui.positive.right.labeled.icon.button
           | Submit
           i.checkmark.icon
-
     //- View Next Steps Modal      
-    .ui.small.modal#next_steps  
+    .ui.small.modal#next_steps(data-modalName="digital-literacy_articleModal")  
       i.close.icon  
       .header You've clicked on this article! Let's explore some things you could do next. 
       .content
@@ -301,7 +299,7 @@ block content
           i.checkmark.icon
 
     //- View Post Info Modal  
-    .ui.small.modal#info_modal
+    .ui.small.modal#info_modal(data-modalName="digital-literacy_infoModal")
       i.close.icon  
       h3.ui.header 
         i.info.circle.icon
@@ -318,6 +316,7 @@ block content
 
 
 block scripts
+  script(src='/module_js/base_sim_extraData.js')
   script(src="/module_js/digital-literacy/digital-literacy_sim.js")
   script(src="/module_js/base_sim.js")
   

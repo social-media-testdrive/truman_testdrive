@@ -261,7 +261,7 @@ block content
           i.rocket.icon
           |   Let's Continue!
           
-  .ui.small.long.modal#esteem_post_modal
+  .ui.small.long.modal#esteem_post_modal(data-modalName="esteem_postModal")
     i.close.icon  
     .content
       .ui.styled.fluid.accordion
@@ -358,6 +358,7 @@ block content
       
 
 block scripts
+  script(src='/module_js/base_sim_extraData.js')
   script(src="/module_js/esteem/esteem_sim.js")
   script(src="/module_js/base_sim.js")
   
