@@ -698,8 +698,8 @@ exports.postDeleteFeedAction = (req, res, next) => {
 
 /*
  POST /reflectionAction/
- Update a respones in the reflection section
- Each response question gets its own action
+ Update a response in the reflection section
+ Each reflection question gets its own action
 */
 exports.postReflectionAction = (req, res, next) => {
 
@@ -710,8 +710,7 @@ exports.postReflectionAction = (req, res, next) => {
       return next(err);
     }
 
-    // Determine where the action is coming from and adjust the push location
-
+    // Define the push location
     let userAction = user.reflectionAction;
 
     //Post does not exist yet in User DB, so we have to add it now
@@ -752,8 +751,7 @@ exports.postBlueDotAction = (req, res, next) => {
       return next(err);
     }
 
-    // Determine where the action is coming from and adjust the push location
-
+    // Define the push location
     let userAction = user.blueDotAction;
 
     //Post does not exist yet in User DB, so we have to add it now
@@ -764,7 +762,7 @@ exports.postBlueDotAction = (req, res, next) => {
     cat.dotNumber = req.body.action.dotNumber;
     cat.viewDuration = req.body.action.viewDuration;
     cat.clickedClose = req.body.action.clickedClose;
-    //cat.rereadTimes = 0;
+
     // add new post into correct location
     userAction.push(cat);
 

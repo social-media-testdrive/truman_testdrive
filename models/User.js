@@ -154,6 +154,7 @@ const userSchema = new mongoose.Schema({
       },{_id: true, versionKey: false })]
     }, {_id: true, versionKey: false })],
 
+    // all actions a user can make in the guided activity (not blue dots)
     guidedActivityAction: [new Schema({
       post: String, //which post did the user interact with?
       modual: String, //which lesson mod did this take place in?
@@ -194,6 +195,7 @@ const userSchema = new mongoose.Schema({
       },{_id: true, versionKey: false })]
     }, {_id: true, versionKey: false })],
 
+    // action in the reflection section
     reflectionAction: [new Schema({
       modual: String, //which lesson mod did this take place in?
       prompt: String,
@@ -204,6 +206,7 @@ const userSchema = new mongoose.Schema({
       checkedActualTime: Boolean, // this is for the habits module
     }, {_id: true, versionKey: false })],
 
+    // blue dot action in a guided activity
     blueDotAction: [new Schema({
       subdirectory1: String, // which page the user is on
       subdirectory2: String, // which module the user is on

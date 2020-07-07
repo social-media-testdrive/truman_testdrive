@@ -1,8 +1,15 @@
 function recordResponses() {
-  let pathArray = window.location.pathname.split('/');
-  const subdirectory2 = pathArray[2];
-  let actionArray = new Array();
+  // Records each response as an individual action written to the db.
+  // Different types of inputs are handled: text, checkbox, radio, and
+  // custom.
 
+  let pathArray = window.location.pathname.split('/');
+  const subdirectory2 = pathArray[2]; // idenify the current module
+  let actionArray = new Array(); // this array will be handed to Promise.all
+
+  // ****** Handling different input types ******
+
+  // for standard text inputs
   $('.reflectionPrompt').each(function(){
     let cat = new Object();
     cat.modual = subdirectory2
@@ -15,6 +22,7 @@ function recordResponses() {
     actionArray.push(jqxhr);
   });
 
+  // for checkbox inputs
   $('.reflectionCheckboxesPrompt').each(function(){
     let cat = new Object();
     cat.modual = subdirectory2
@@ -39,6 +47,7 @@ function recordResponses() {
     actionArray.push(jqxhr);
   });
 
+  // for radio box selections (currently only used once in the presentation module)
   $('.reflectionRadioPrompt').each(function(){
     let cat = new Object();
     cat.modual = subdirectory2
@@ -53,6 +62,7 @@ function recordResponses() {
     actionArray.push(jqxhr);
   });
 
+  // specifically for the habits module: for the time spend on free play question
   $('.reflectionHabitsTimeEntryPrompt').each(function(){
     let cat = new Object();
     cat.modual = subdirectory2
@@ -70,17 +80,16 @@ function recordResponses() {
     actionArray.push(jqxhr);
   });
 
+  // ********************************************
+
+  // wait to change pages until ALL post requests in actionArray return,
+  // otherwise the post requests might get cancelled during the page change
   Promise.all(actionArray).then(function(values) {
     console.log(values);
     window.location.href = `/end/${pathArray[2]}`
   });
 
-//collect as an array of promises and hand off the array to promise.WAIT
-//can hand an array of promises, will resolve when they are done
-//will trigger "then" when they are done
-//does not require all of them to be successes
-//promise.all
-}
+} //end recordResponses()
 
 $('.ui.big.green.labeled.icon.button.results_end').on('click', function () {
   recordResponses();

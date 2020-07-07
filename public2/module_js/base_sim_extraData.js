@@ -1,10 +1,15 @@
-// Function that records popup modal data once it is closed
-// Requires the data-modalName attribute string as a parameter
+/*
+Function that records popup modal data when the popup closes.
+Requires the data-modalName attribute string as a parameter.
+To add this functionality to a modal: Give the modal a unique data-modalname
+attribute, then find where $(modal).show("modal") is called and replace it with
+this function.
+*/
+
 function recordSimModalInputs(modalNameAttrStr) {
   let target = $(event.target);
   const simPostNumber = target.closest('.ui.card').attr('simPostNumber');
   const post = target.closest(".ui.fluid.card");
-  // const postID = post.attr("postID");
   const modalOpenedTime = Date.now();
   let checkboxInputs = 0b0;
 
