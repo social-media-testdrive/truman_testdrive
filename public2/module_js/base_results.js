@@ -39,6 +39,37 @@ function recordResponses() {
     actionArray.push(jqxhr);
   });
 
+  $('.reflectionRadioPrompt').each(function(){
+    let cat = new Object();
+    cat.modual = subdirectory2
+    cat.prompt = $(this).text();
+    let radioSelection = "";
+    radioSelection = $(this).closest('.ui.segment').find('.radio.checkbox input:checked').siblings('label').text();
+    cat.radioSelection = radioSelection;
+    const jqxhr = $.post("/reflection", {
+      action: cat,
+      _csrf: $('meta[name="csrf-token"]').attr('content')
+    });
+    actionArray.push(jqxhr);
+  });
+
+  $('.reflectionHabitsTimeEntryPrompt').each(function(){
+    let cat = new Object();
+    cat.modual = subdirectory2
+    cat.prompt = $(this).text();
+    cat.writtenResponse = $(this).closest('.ui.label').siblings('.ui.form').find('input').val();
+    if ($('.habitsReflectionCheckTime').is(":visible")){
+      cat.checkedActualTime = true;
+    } else {
+      cat.checkedActualTime = false;
+    }
+    const jqxhr = $.post("/reflection", {
+      action: cat,
+      _csrf: $('meta[name="csrf-token"]').attr('content')
+    });
+    actionArray.push(jqxhr);
+  });
+
   Promise.all(actionArray).then(function(values) {
     console.log(values);
     window.location.href = `/end/${pathArray[2]}`

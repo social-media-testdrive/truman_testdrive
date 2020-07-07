@@ -198,8 +198,10 @@ const userSchema = new mongoose.Schema({
       modual: String, //which lesson mod did this take place in?
       prompt: String,
       writtenResponse: String,
+      radioSelection: String, // this is for the presentation module
       numberOfCheckboxes: Number,
-      checkboxResponse: Number
+      checkboxResponse: Number,
+      checkedActualTime: Boolean, // this is for the habits module
     }, {_id: true, versionKey: false })],
 
     blueDotAction: [new Schema({

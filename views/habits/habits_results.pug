@@ -42,7 +42,7 @@ block content
 
     .ui.raised.segment.responseTwo
       .ui.label
-        h4
+        h4.reflectionHabitsTimeEntryPrompt
           | How many minutes do you think you spent on the TestDrive timeline?
     
       .ui.form
@@ -53,7 +53,7 @@ block content
             label  &nbsp&nbspMinutes
       button.ui.green.button#checkTime Find out the actual time!
       br
-      .ui.header(style="display:none;")#undoHide You actually spent:
+      .ui.header.habitsReflectionCheckTime(style="display:none;")#undoHide You actually spent:
       .ui.statistics(style="display:none;")
         .statistic
           .value#habitsActivityTotalTimeMinutes 0
