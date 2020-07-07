@@ -61,7 +61,7 @@ mongoose.connection.on('error', (err) => {
 /*
 drop existing collections before loading
 to make sure we dont overwrite the data
-incase we run the script twice or more
+in case we run the script twice or more
 */
 function dropCollections() {
     db.collections['actors'].drop(function (err) {
@@ -70,9 +70,9 @@ function dropCollections() {
     db.collections['scripts'].drop(function (err) {
         console.log('scripts collection dropped');
     });
-    db.collections['users'].drop(function (err) {
-        console.log('users collection dropped');
-    });
+    // db.collections['users'].drop(function (err) {
+    //     console.log('users collection dropped');
+    // });
 }
 
 //capitalize a string
