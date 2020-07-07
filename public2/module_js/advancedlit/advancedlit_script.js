@@ -56,6 +56,7 @@ $(window).on("load", function () {
           let itemNumber = $(this).attr('data-itemNumber');
           $(this).find('.url').text(articleData['search'][itemNumber].url);
           $(this).find('.title').text(articleData['search'][itemNumber].title);
+          $(this).find('.time').text(articleData['search'][itemNumber].time);
           $(this).find('.text').text(articleData['search'][itemNumber].text);
         })
       }

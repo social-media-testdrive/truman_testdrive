@@ -11,8 +11,8 @@ function startIntro(){
           },
           {
             intro: `Here is some background before you start: Imagine that you
-            have just heard that there has been an earthquake in the city that
-            your friends are visiting for a school trip.`
+            have just heard that your hometown of Chestin, California has been
+            chosen to host the Olympic Games.`
           },
           {
             intro: `You are going on social media to see if you can find any
