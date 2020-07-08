@@ -27,7 +27,7 @@ block content
                 i.write.icon
                   
   #loading.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
-    img.ui.centered.small.image(src='/heart.svg')
+    img.ui.centered.small.image(src='/images/heart.svg')
       
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column(style='display: none;')  
   
@@ -119,7 +119,7 @@ block content
                       else
                         .comment(commentID=comment.commentID)
                           a.avatar(href='/user/'+comment.actor.username)
-                            img(src='/picture.svg', data-src=cdn+'/profile_pictures/'+comment.actor.profile.picture)
+                            img(src='/images/picture.svg', data-src=cdn+'/profile_pictures/'+comment.actor.profile.picture)
                           .content
                             a.author(href='/user/'+comment.actor.username)=comment.actor.profile.name
                             .metadata
@@ -181,13 +181,13 @@ block content
             .right.floated.time.meta= (Date.now() + val.time)
             |  
             a(href='/user/'+val.actor.username)
-              img.ui.avatar.image(src='/picture.svg', data-src=cdn+'/profile_pictures/'+val.actor.profile.picture)
+              img.ui.avatar.image(src='/images/picture.svg', data-src=cdn+'/profile_pictures/'+val.actor.profile.picture)
               span=val.actor.profile.name
           .img.post
             if (val.module == 'digital-literacy' && val.info_text != "")           
-              img(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPost()',style="max-width:100%;cursor:pointer")
+              img(src='/images/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPost()',style="max-width:100%;cursor:pointer")
             else
-              img(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, style="max-width:100%;")
+              img(src='/images/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, style="max-width:100%;")
           .content
             .description!=val.body 
               if(val.info_text != "")
@@ -241,7 +241,7 @@ block content
                   else
                     .comment(commentID=comment.id)
                       a.avatar.image(href='/user/'+comment.actor.username)
-                        img(src='/picture.svg', data-src=cdn+'/profile_pictures/'+comment.actor.profile.picture)
+                        img(src='/images/picture.svg', data-src=cdn+'/profile_pictures/'+comment.actor.profile.picture)
                       .content
                         a.author(href='/user/'+comment.actor.username)=comment.actor.profile.name
                         .metadata
@@ -405,65 +405,65 @@ block content
                   .ui.radio.checkbox
                     input#photoOne.hidden(type='radio' name='picinput' value="basketballshoes.jpg")
                     label
-                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/basketballshoes.jpg" style='width:65%;height:auto;')
+                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/basketballshoes.jpg" style='width:65%;height:auto;')
                 .field
                   .ui.radio.checkbox
                     input#photoTwo.hidden(type='radio' name='picinput' value="typewriter.jpg")
                     label
-                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/typewriter.jpg" style='width:65%;height:auto;')
+                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/typewriter.jpg" style='width:65%;height:auto;')
                 .field
                   .ui.radio.checkbox
                     input#photoThree.hidden(type='radio' name='picinput' value="cat.jpg")
                     label
-                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/cat.jpg" style='width:65%;height:auto;') 
+                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/cat.jpg" style='width:65%;height:auto;') 
               .three.fields
                 .field
                   .ui.radio.checkbox
                     input#photoOne.hidden(type='radio' name='picinput' value="cupcakes.jpg")
                     label
-                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/cupcakes.jpg" style='width:65%;height:auto;')
+                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/cupcakes.jpg" style='width:65%;height:auto;')
                 .field
                   .ui.radio.checkbox
                     input#photoTwo.hidden(type='radio' name='picinput' value="autumn.jpg")
                     label
-                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/autumn.jpg" style='width:65%;height:auto;')
+                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/autumn.jpg" style='width:65%;height:auto;')
                 .field
                   .ui.radio.checkbox
                     input#photoThree.hidden(type='radio' name='picinput' value="Disneyland.jpg")
                     label
-                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/Disneyland.jpg" style='width:65%;height:auto;')  
+                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/Disneyland.jpg" style='width:65%;height:auto;')  
               .three.fields
                 .field
                   .ui.radio.checkbox
                     input#photoTwo.hidden(type='radio' name='picinput' value="studytime.jpg")
                     label
-                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/studytime.jpg" style='width:65%;height:auto;')
+                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/studytime.jpg" style='width:65%;height:auto;')
                 .field
                   .ui.radio.checkbox
                     input#photoThree.hidden(type='radio' name='picinput' value="palm_trees.jpeg")
                     label
-                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/palm_trees.jpeg" style='width:65%;height:auto;') 
+                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/palm_trees.jpeg" style='width:65%;height:auto;') 
                 .field
                   .ui.radio.checkbox
                     input#photoOne.hidden(type='radio' name='picinput' value="footballseason.jpg")
                     label
-                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/footballseason.jpg" style='width:65%;height:auto;')
+                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/footballseason.jpg" style='width:65%;height:auto;')
               .three.fields
                 .field
                   .ui.radio.checkbox
                     input#photoFour.hidden(type='radio' name='picinput' value="Iceland.jpg")
                     label
-                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/Iceland.jpg" style='width:65%;height:auto;')
+                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/Iceland.jpg" style='width:65%;height:auto;')
                 .field
                   .ui.radio.checkbox
                     input#photoFive.hidden(type='radio' name='picinput' value="balloons.jpg")
                     label
-                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/balloons.jpg" style='width:65%;height:auto;')
+                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/balloons.jpg" style='width:65%;height:auto;')
                 .field
                   .ui.radio.checkbox
                     input#photoSix.hidden(type='radio' name='picinput' value="beachpuppy.jpg")
                     label
-                        img.lazy(src='/picture.svg' data-src=cdn+"/post_pictures/beachpuppy.jpg" style='width:65%;height:auto;')  
+                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/beachpuppy.jpg" style='width:65%;height:auto;')  
               
           .ui.error.message 
       .actions  

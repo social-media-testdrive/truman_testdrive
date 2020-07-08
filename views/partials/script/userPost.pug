@@ -71,7 +71,7 @@
               else
                 .comment(commentID=comment.commentID)
                   a.avatar(href='/user/'+comment.actor.username)
-                    img(src='/picture.svg', data-src=cdn+'/profile_pictures/'+comment.actor.profile.picture)
+                    img(src='/images/picture.svg', data-src=cdn+'/profile_pictures/'+comment.actor.profile.picture)
                   .content
                     a.author(href='/user/'+comment.actor.username)=comment.actor.profile.name
                     .metadata
