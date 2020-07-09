@@ -13,8 +13,7 @@ function changeActiveProgressTo(activeStep){
   }
 }
 
-$(window).on("load", function () {
-
+function updateProgressBar(){
   // managing the progress bar in the header
   let pathArrayForHeader = window.location.pathname.split('/');
   let currentPageForHeader = pathArrayForHeader[1];
@@ -60,6 +59,11 @@ $(window).on("load", function () {
         break;
     }
   });
+}
+
+$(window).on("load", function () {
+
+  updateProgressBar();
 
   //Activating the sticky functionality for the left column
   $('.ui.sticky.sideMenu')
@@ -68,25 +72,21 @@ $(window).on("load", function () {
       offset: 90
   });
 
-
   //close loading dimmer on load
   $('#loading').hide();
   $('#content').attr('style', 'block');
   $('#content').fadeIn('slow');
+
   //close messages from flash message
   $('.message .close')
     .on('click', function () {
-      $(this)
-        .closest('.message')
-        .transition('fade')
-        ;
+      $(this).closest('.message').transition('fade');
     });
 
   //activate checkboxes
-  $('.ui.checkbox')
-    .checkbox();
+  $('.ui.checkbox').checkbox();
 
-  //get add new feed post modal to work
+  // add new post popup in the freeplay section
   $("#newpost, a.item.newpost, .editProfilePictureButton").click(function () {
     $(' .ui.small.post.modal').modal('show');
     //lazy load the images in the modal
@@ -95,20 +95,7 @@ $(window).on("load", function () {
     });
   });
 
-    //get add new feed post modal to work
-    $(".modual.info_button").click(function () {
-      console.log("@@@@@@@Clicking info button!!!!");
-      $('.ui.small.popinfo.modal').modal('show');
-      document.getElementById('post_info_text_modual').innerHTML = $(this).data('info_text');
-      console.log("&*&*&*&*&"+$(this).data('info_text'));
-    });
-
-  //New Class Button
-  $("#new_class.ui.big.green.labeled.icon.button").click(function () {
-    $('.ui.small.newclass.modal').modal('show');
-  });
-
-  //new post validator (picture and text can not be empty)
+  // new post validator (picture and text can not be empty)
   $('.ui.feed.form')
     .form({
       on: 'blur',
@@ -125,33 +112,44 @@ $(window).on("load", function () {
       }
     });
 
-  //validate class form
-  $('#classform.ui.form')
-    .form({
-      on: 'blur',
-      fields: {
-        classname: {
-          identifier: 'classname',
-          rules: [
-            {
-              type: 'empty',
-              prompt: 'Please include a Class Name'
-            }
-          ]
-        },
-        accesscode: {
-          identifier: 'accesscode',
-          rules: [
-            {
-              type: 'empty',
-              prompt: 'Please add an Access Code'
-            }
-          ]
-        }
+  // article info popup in the digital-literacy module
+  $(".modual.info_button").click(function () {
+    console.log("@@@@@@@Clicking info button!!!!");
+    $('.ui.small.popinfo.modal').modal('show');
+    document.getElementById('post_info_text_modual').innerHTML = $(this).data('info_text');
+    console.log("&*&*&*&*&"+$(this).data('info_text'));
+  });
 
-      }
-    })
-    ;
+  // //New Class Button - this is not currently being used
+  // $("#new_class.ui.big.green.labeled.icon.button").click(function () {
+  //   $('.ui.small.newclass.modal').modal('show');
+  // });
+  //
+  // //validate class form - this is not currently being used
+  // $('#classform.ui.form')
+  //   .form({
+  //     on: 'blur',
+  //     fields: {
+  //       classname: {
+  //         identifier: 'classname',
+  //         rules: [
+  //           {
+  //             type: 'empty',
+  //             prompt: 'Please include a Class Name'
+  //           }
+  //         ]
+  //       },
+  //       accesscode: {
+  //         identifier: 'accesscode',
+  //         rules: [
+  //           {
+  //             type: 'empty',
+  //             prompt: 'Please add an Access Code'
+  //           }
+  //         ]
+  //       }
+  //     }
+  //   });
 
   //Picture Preview on Image Selection
   function readURL(input) {
@@ -172,14 +170,16 @@ $(window).on("load", function () {
     readURL(this);
   });
 
+  //
+  // MOVED TO COMMENTS.JS
   //add humanized time to all posts
-  $('.right.floated.time.meta, .date.sim, .time.notificationTime').each(function () {
-    var ms = parseInt($(this).text(), 10);
-    let time = new Date(ms);
-    $(this).text(humanized_time_span(time));
-  });
+  // $('.right.floated.time.meta, .date.sim, .time.notificationTime').each(function () {
+  //   var ms = parseInt($(this).text(), 10);
+  //   let time = new Date(ms);
+  //   $(this).text(humanized_time_span(time));
+  // });
 
-  //Sign Up Button
+  // Sign Up Button - not currently used
   $('.ui.big.green.labeled.icon.button.signup')
     .on('click', function () {
       window.location.href = '/signup';
@@ -482,7 +482,7 @@ end button links
 
   });
 
-  //this is the Block User button
+  //this is the Block User button - this doesn't have consequences in TestDrive
   $('button.ui.button.block')
     .on('click', function () {
 
@@ -527,30 +527,31 @@ end button links
     .modal('show')
     ;
 
-  //this is the LIKE button for posts
-  $('.like.button')
-    .on('click', function () {
-      console.log("CLICK LIKE");
-      //if already liked, unlike if pressed
-      if ($(this).hasClass("red")) {
-        console.log("***********UNLIKE: post");
-        $(this).removeClass("red");
-        var label = $(this).next("a.ui.basic.red.left.pointing.label.count");
-        label.html(function (i, val) { return val * 1 - 1 });
-      }
-      //since not red, this button press is a LIKE action
-      else {
-        $(this).addClass("red");
-        var label = $(this).next("a.ui.basic.red.left.pointing.label.count");
-        label.html(function (i, val) { return val * 1 + 1 });
-        var postID = $(this).closest(".ui.fluid.card.dim").attr("postID");
-        //var like = Date.now();
-        console.log("***********LIKE: post " + postID);
-        $.post("/feed", { postID: postID, like: 1, _csrf: $('meta[name="csrf-token"]').attr('content') });
-
-      }
-
-    });
+  // MOVED TO COMMENTS.JS
+  // //this is the LIKE button for posts
+  // $('.like.button')
+  //   .on('click', function () {
+  //     console.log("CLICK LIKE");
+  //     //if already liked, unlike if pressed
+  //     if ($(this).hasClass("red")) {
+  //       console.log("***********UNLIKE: post");
+  //       $(this).removeClass("red");
+  //       var label = $(this).next("a.ui.basic.red.left.pointing.label.count");
+  //       label.html(function (i, val) { return val * 1 - 1 });
+  //     }
+  //     //since not red, this button press is a LIKE action
+  //     else {
+  //       $(this).addClass("red");
+  //       var label = $(this).next("a.ui.basic.red.left.pointing.label.count");
+  //       label.html(function (i, val) { return val * 1 + 1 });
+  //       var postID = $(this).closest(".ui.fluid.card.dim").attr("postID");
+  //       //var like = Date.now();
+  //       console.log("***********LIKE: post " + postID);
+  //       $.post("/feed", { postID: postID, like: 1, _csrf: $('meta[name="csrf-token"]').attr('content') });
+  //
+  //     }
+  //
+  //   });
 
   //lazy loading of images
   $('#content .fluid.card .img img, img.ui.avatar.image, a.avatar.image img')
@@ -564,50 +565,51 @@ end button links
     })
     ;
 
-//this is the Share button
-  $('.ui.share.button')
-    .on('click', function () {
-      $('.ui.small.basic.share.modal')
-        .modal('show');
-  });
+// MOVED TO COMMENTS.JS
+// //this is the Share button
+//   $('.ui.share.button')
+//     .on('click', function () {
+//       $('.ui.small.basic.share.modal')
+//         .modal('show');
+//   });
 
   $(".dimmer.soon").dimmer({
         closable: false
       });
 
-
-  //this is the FLAG button
-  $('.flag.button')
-    .on('click', function () {
-
-      var post = $(this).closest(".ui.fluid.card.dim");
-      var postID = post.attr("postID");
-      console.log("***********FLAG: post " + postID);
-      $.post("/feed", { postID: postID, flag: 1, _csrf: $('meta[name="csrf-token"]').attr('content') });
-      console.log("Removing Post content now!");
-      post.find(".ui.dimmer.flag").dimmer({
-        closable: false
-      })
-        .dimmer('show');
-      //repeat to ensure its closable
-      post.find(".ui.dimmer.flag").dimmer({
-        closable: true
-      })
-        .dimmer('show');
-
-      let pathArray = window.location.pathname.split('/');
-      let mod = pathArray[2];
-
-      if(mod =="digital-literacy")
-
-      {
-        console.log("CLICKING ON DIG INGO FLAG")
-        $('input[type=checkbox]').prop('checked',false);
-        $('.ui.small.info.flag.modal').modal('show');
-      }
-
-
-    });
+// MOVED TO COMMENTS.JS
+  // //this is the FLAG button
+  // $('.flag.button')
+  //   .on('click', function () {
+  //
+  //     var post = $(this).closest(".ui.fluid.card.dim");
+  //     var postID = post.attr("postID");
+  //     console.log("***********FLAG: post " + postID);
+  //     $.post("/feed", { postID: postID, flag: 1, _csrf: $('meta[name="csrf-token"]').attr('content') });
+  //     console.log("Removing Post content now!");
+  //     post.find(".ui.dimmer.flag").dimmer({
+  //       closable: false
+  //     })
+  //       .dimmer('show');
+  //     //repeat to ensure its closable
+  //     post.find(".ui.dimmer.flag").dimmer({
+  //       closable: true
+  //     })
+  //       .dimmer('show');
+  //
+  //     let pathArray = window.location.pathname.split('/');
+  //     let mod = pathArray[2];
+  //
+  //     if(mod =="digital-literacy")
+  //
+  //     {
+  //       console.log("CLICKING ON DIG INGO FLAG")
+  //       $('input[type=checkbox]').prop('checked',false);
+  //       $('.ui.small.info.flag.modal').modal('show');
+  //     }
+  //
+  //
+  //   });
 
 
 

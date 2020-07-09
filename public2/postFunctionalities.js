@@ -1,3 +1,75 @@
+function addHumanizedTimeToPost(){
+  let target = $(this);
+  var ms = parseInt(target.text(), 10);
+  let time = new Date(ms);
+  target.text(humanized_time_span(time));
+}
+
+// ****** actions on main post *******
+
+function likePost(){
+  let target = $(event.target);
+  console.log("CLICK LIKE");
+  //if already liked, unlike if pressed
+  if (target.hasClass("red")) {
+    console.log("***********UNLIKE: post");
+    target.removeClass("red");
+    var label = $(this).next("a.ui.basic.red.left.pointing.label.count");
+    label.html(function (i, val) { return val * 1 - 1 });
+  }
+  //since not red, this button press is a LIKE action
+  else {
+    target.addClass("red");
+    var label = $(this).next("a.ui.basic.red.left.pointing.label.count");
+    label.html(function (i, val) { return val * 1 + 1 });
+    var postID = $(this).closest(".ui.fluid.card.dim").attr("postID");
+    //var like = Date.now();
+    console.log("***********LIKE: post " + postID);
+    $.post("/feed", { postID: postID, like: 1, _csrf: $('meta[name="csrf-token"]').attr('content') });
+
+  }
+};
+
+function flagPost(){
+  var post = $(this).closest(".ui.fluid.card.dim");
+  var postID = post.attr("postID");
+  console.log("***********FLAG: post " + postID);
+  $.post("/feed", {
+    postID: postID,
+    flag: 1,
+    _csrf: $('meta[name="csrf-token"]').attr('content')
+  });
+  console.log("Removing Post content now!");
+  post.find(".ui.dimmer.flag").dimmer({
+    closable: false
+  })
+    .dimmer('show');
+  //repeat to ensure its closable
+  post.find(".ui.dimmer.flag").dimmer({
+    closable: true
+  })
+    .dimmer('show');
+
+  let pathArray = window.location.pathname.split('/');
+  let mod = pathArray[2];
+
+  if(mod =="digital-literacy")
+
+  {
+    console.log("CLICKING ON DIG INGO FLAG")
+    $('input[type=checkbox]').prop('checked',false);
+    $('.ui.small.info.flag.modal').modal('show');
+  }
+};
+
+function sharePost(){
+  $('.ui.small.basic.share.modal').modal('show');
+};
+
+// ***********************************
+
+// ****** actions on a comment *******
+
 async function addNewComment(event) {
   let target = $(event.target);
   if (!target.hasClass('link')) {
@@ -143,6 +215,9 @@ function flagComment() {
   document.body.hints.refresh();
 }
 
+// **********************************
+
+
 $(window).on('load', () => {
   /*
   focus on new comment prompt if clicked
@@ -170,13 +245,34 @@ $(window).on('load', () => {
     }
   }, true);
 
-  //create a new Comment
+  // add humanized time to all posts
+  $('.right.floated.time.meta, .date.sim, .time.notificationTime').each(addHumanizedTimeToPost);
+
+  // like a post
+  $('.like.button').on('click', likePost);
+
+  // create a new Comment
   $('i.big.send.link.icon').click(addNewComment);
 
-  //Like a comment
+  // like a comment
   $('a.like.comment').click(likeComment);
 
-  //flag a comment
+  // flag a comment
   $('a.flag.comment').click(flagComment);
+
+
+  // only enable certain functionality when not in a tutorial page
+  // TODO: double check with Yoon that this is intended behavior
+  let pathArray = window.location.pathname.split('/');
+  let currentPage = pathArray[1];
+  if(currentPage !== "tutorial"){
+
+    // flag a post
+    $('.flag.button').on('click', flagPost);
+
+    // share a post
+    $('.ui.share.button').on('click', sharePost);
+
+  }
 
 });
