@@ -705,7 +705,7 @@ html
             i.checkmark.icon
             |   Done              
     include partials/ui_footer
-    
+    //- ToDo: process.env.instance == 'test'
     if process.env.NODE_ENV == 'production'
       script(src=cdn+'/js/lib/jquery-3.1.1.min.js')
       script(src=cdn+'/js/lib/humanized_time_span.js')
@@ -716,7 +716,7 @@ html
       script(src=cdn+'/js/lib/zxcvbn.js')
       //script(src='/semantic/dist/semantic.min.js')
       script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js', integrity='sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=', crossorigin='anonymous')
-      script(src=cdn+'/js/main13.js')
+      script(src=cdn+'/js/main.js?v=1')
     else
       script(src=cdn+'/js/lib/jquery-3.1.1.min.js')
       script(src=cdn+'/js/lib/humanized_time_span.js')
@@ -726,7 +726,8 @@ html
       script(src='/js/lib/intro.js')
       script(src=cdn+'/js/lib/zxcvbn.js')
       script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.js')
-      script(src='/main.js')
+      - var t = '/main.js?t=' + (new Date()).getTime().toString();
+      script(src=t)
 
     block scripts
 
