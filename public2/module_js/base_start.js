@@ -17,7 +17,11 @@ function clickGotIt(){
       //everything is good to proceed
       $('#clickLabelsWarning').hide();
       let pathArray = window.location.pathname.split('/');
-      window.location.href='/tutorial/' + pathArray[2];
+      if(pathArray[2] === "privacy"){
+        window.location.href='/tut_guide/' + pathArray[2];
+      } else {
+        window.location.href='/tutorial/' + pathArray[2];
+      }
     } else {
       //User has not clicked all the labels
       $('#clickLabelsWarning').show();
