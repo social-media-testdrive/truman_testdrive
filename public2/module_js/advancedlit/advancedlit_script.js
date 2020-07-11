@@ -92,9 +92,8 @@
               $('#content .fluid.card .img img, img.ui.avatar.image, a.avatar.image img').visibility('refresh');
             }
           });
+        }
       }
-
-
-    }
+    });
   });
 }
