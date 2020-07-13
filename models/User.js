@@ -154,66 +154,72 @@ const userSchema = new mongoose.Schema({
       },{_id: true, versionKey: false })]
     }, {_id: true, versionKey: false })],
 
-    // all actions a user can make in the guided activity (not blue dots)
-    guidedActivityAction: [new Schema({
-      post: String, //which post did the user interact with?
-      modual: String, //which lesson mod did this take place in?
-      //postClass: String, //class of the post itself (don't think this is used anymore)
-      //rereadTimes: Number, //number of times post has been viewed by user (not used in TestDrive)
-      startTime: Number, //always the newest startTime (full date in ms) (not used in TestDrive)
-      liked: {type: Boolean, default: false}, //did the user like this post in the feed?
-      //readTime : [Number], //array of how long a user read a post. Each read is a new element in this array
-      flagTime  : [Number], //same but for flagging
-      likeTime  : [Number], //same but for liking
-      replyTime  : [Number], //same but for commenting
+  // step log data (for any walkthrough-style text bubbles)
+  introjsStepAction: [new Schema({
+    subdirectory1: String, // which page the user is on
+    subdirectory2: String, // which module the user is on
+    stepNumber: Number, // which step this action is on (steps start from 0)
+    viewDuration: Number, // how long the user was on this step (milliseconds)
+    absoluteStartTime: Date // time the step opened in the real world
+  }, {_id: true, versionKey: false })],
 
-      // popup modal info
-      modal: [new Schema({
-        modalName: String,
-        modalOpened: {type: Boolean, default: false},
-        modalOpenedTime: Number,
-        modalViewTime: Number,
-        modalCheckboxesCount: Number,
-        modalCheckboxesInput: Number
-      },{_id: false, versionKey: false })],
+  // all actions a user can make in the guided activity (not blue dots)
+  guidedActivityAction: [new Schema({
+    post: String, //which post did the user interact with?
+    modual: String, //which lesson mod did this take place in?
+    startTime: Number, //always the newest startTime (full date in ms) (not used in TestDrive)
+    liked: {type: Boolean, default: false}, //did the user like this post in the feed?
+    flagTime  : [Number], //same but for flagging
+    likeTime  : [Number], //same but for liking
+    replyTime  : [Number], //same but for commenting
 
-      //user created comment on an actor's post (fake post)
-      comments: [new Schema({
-        //comment: {type: Schema.ObjectId},//ID Reference for Script post comment
-        comment: String,
-        liked: {type: Boolean, default: false}, //is liked?
-        flagged: {type: Boolean, default: false},//is Flagged?
-        flagTime  : [Number], //array of flag times
-        likeTime  : [Number], //array of like times
+    // popup modal info
+    modal: [new Schema({
+      modalName: String,
+      modalOpened: {type: Boolean, default: false},
+      modalOpenedTime: Number,
+      modalViewTime: Number,
+      modalCheckboxesCount: Number,
+      modalCheckboxesInput: Number
+    },{_id: false, versionKey: false })],
 
-        new_comment: {type: Boolean, default: false}, //is new comment
-        new_comment_id: String,//ID for comment
-        comment_body: String, //Original Body of User Post
-        absTime: Date,
-        commentTime: {type: Number},
-        time: {type: Number}
-      },{_id: true, versionKey: false })]
-    }, {_id: true, versionKey: false })],
+    //user created comment on an actor's post (fake post)
+    comments: [new Schema({
+      //comment: {type: Schema.ObjectId},//ID Reference for Script post comment
+      comment: String,
+      liked: {type: Boolean, default: false}, //is liked?
+      flagged: {type: Boolean, default: false},//is Flagged?
+      flagTime  : [Number], //array of flag times
+      likeTime  : [Number], //array of like times
 
-    // action in the reflection section
-    reflectionAction: [new Schema({
-      modual: String, //which lesson mod did this take place in?
-      prompt: String,
-      writtenResponse: String,
-      radioSelection: String, // this is for the presentation module
-      numberOfCheckboxes: Number,
-      checkboxResponse: Number,
-      checkedActualTime: Boolean, // this is for the habits module
-    }, {_id: true, versionKey: false })],
+      new_comment: {type: Boolean, default: false}, //is new comment
+      new_comment_id: String,//ID for comment
+      comment_body: String, //Original Body of User Post
+      absTime: Date,
+      commentTime: {type: Number},
+      time: {type: Number}
+    },{_id: true, versionKey: false })]
+  }, {_id: true, versionKey: false })],
 
-    // blue dot action in a guided activity
-    blueDotAction: [new Schema({
-      subdirectory1: String, // which page the user is on
-      subdirectory2: String, // which module the user is on
-      dotNumber: Number, // which dot was opened
-      viewDuration: Number, // how long the user viewed the dot (milliseconds)
-      clickedClose: Boolean
-    }, {_id: true, versionKey: false })],
+  // action in the reflection section
+  reflectionAction: [new Schema({
+    modual: String, //which lesson mod did this take place in?
+    prompt: String,
+    writtenResponse: String,
+    radioSelection: String, // this is for the presentation module
+    numberOfCheckboxes: Number,
+    checkboxResponse: Number,
+    checkedActualTime: Boolean, // this is for the habits module
+  }, {_id: true, versionKey: false })],
+
+  // blue dot action in a guided activity
+  blueDotAction: [new Schema({
+    subdirectory1: String, // which page the user is on
+    subdirectory2: String, // which module the user is on
+    dotNumber: Number, // which dot was opened
+    viewDuration: Number, // how long the user viewed the dot (milliseconds)
+    clickedClose: Boolean
+  }, {_id: true, versionKey: false })],
 
   //users profile
   profile: {

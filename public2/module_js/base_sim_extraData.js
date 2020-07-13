@@ -11,7 +11,7 @@ function recordSimModalInputs(modalNameAttrStr) {
   const simPostNumber = target.closest('.ui.card').attr('simPostNumber');
   const post = target.closest(".ui.fluid.card");
   const modalOpenedTime = Date.now();
-  let checkboxInputs = 0b0;
+  let checkboxInputs = 0b0; // going to use bit shifting
 
   $(`.ui.modal[data-modalName=${modalNameAttrStr}] .ui.checkbox`).removeClass("checked");
   $('input[type=checkbox]').prop('checked',false);
@@ -30,10 +30,10 @@ function recordSimModalInputs(modalNameAttrStr) {
       $(`.ui.modal[data-modalName=${modalNameAttrStr}] .ui.checkbox input`).each(function(){
         numberOfCheckboxes++;
         if ($(this).is(":checked")){
-          checkboxInputs = checkboxInputs << 1;
+          checkboxInputs = checkboxInputs << 1; // shift left and add 1 to mark true
           checkboxInputs++;
         } else {
-          checkboxInputs = checkboxInputs << 1;
+          checkboxInputs = checkboxInputs << 1; //shift left
         }
       });
 
