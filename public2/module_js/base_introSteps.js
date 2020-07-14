@@ -7,6 +7,7 @@
 
   function startIntro(){
     var intro = introJs().setOptions({
+      steps: stepsList,
       'hidePrev': true,
       'hideNext': true,
       'exitOnOverlayClick': false,
@@ -16,19 +17,24 @@
       'doneLabel':'Done &#10003'
     });
 
-    intro.setOptions({
-      steps: stepsList
-    });
-
-    // ************ logging the time spent on each tutorial box ****************
-
     /*
     onbeforechange:
     "Given callback function will be called before starting a new step of
     introduction. The callback function receives the element of the new step as
     an argument."
     */
-    intro.onbeforechange(function(){
+    intro.onbeforechange (function() {
+
+      // if this function is defined in the custom js file, run it
+      try {
+        additionalOnBeforeChange($(this));
+      } catch (error) {
+        if ( !(error instanceof ReferenceError) ) {
+          console.log("There has been an unexpected error:");
+          console.log(error);
+        }
+      }
+
       // ._currentStep has the number of the NEXT tutorial box you're moving toward.
       // However, we want to know the number of the step we are LEAVING.
       // We can use ._direction to determine if we are going forward or backward,
@@ -100,14 +106,20 @@
       });
     })
 
-    // ************************************************************************
-
-    // start the intro
-    intro.start();
+    intro.start(); //start the intro
   };
 
   $(window).on("load", function() {
-    startIntro();
+    // if this function is defined in the custom js file, run it
+    try {
+      customOnWindowLoad();
+    } catch (error) {
+      if (error instanceof ReferenceError) {
+        startIntro();
+      } else {
+        console.log("There has been an unexpected error:");
+        console.log(error);
+      }
+    }
   });
-
 }
