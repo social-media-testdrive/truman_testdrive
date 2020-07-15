@@ -83,6 +83,17 @@
     returning false would prevent the tour from closing."
     */
     intro.onbeforeexit(function(){
+
+      // if this function is defined in the custom js file, run it
+      try {
+        additionalOnBeforeExit();
+      } catch (error) {
+        if ( !(error instanceof ReferenceError) ) {
+          console.log("There has been an unexpected error:");
+          console.log(error);
+        }
+      }
+
       let leavingStep = $(this)[0]._currentStep;
       // edge case: current step will = -1 when the user leaves the page using
       // something like the back button. Don not record that.
