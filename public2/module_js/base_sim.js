@@ -2,6 +2,8 @@ let clickedHints = 0;
 let closedHints = 0;
 const numberOfHints = hintsList.length;
 
+let jqhxrArray = new Array(); // this array will be handed to Promise.all
+let startTimestamp = Date.now();
 let pathArray = window.location.pathname.split('/');
 const subdirectory1 = pathArray[1];
 const subdirectory2 = pathArray[2];
@@ -20,7 +22,6 @@ function addCardIds(){
     id++;
   });
 }
-
 
 // showing the "Need some help? Make sure you are clicking 'got it!'"
 // guidance message
@@ -71,32 +72,33 @@ function startHints(){
   hints.onhintclick(function(e) {
     hintNumber = $(e).attr('data-step'); // update the current hint number
     hintOpenTimestamp = Date.now(); // update the timestamp for opening a hint
-      clickedHints++;
-      if(clickedHints >= numberOfHints){
-        if(clickedHints !== 1){
-          //show the guidance message, user probably doesn't know to click "got it"
-          if($('#removeHidden').is(":hidden")){
-            $('#removeHidden').transition('fade');
-            $('#cyberTransButton').css('margin-bottom', '10em');
-          } else {
-            $('#removeHidden').transition('bounce');
-          }
+    clickedHints++;
+    if(clickedHints >= numberOfHints){
+      if(clickedHints !== 1){
+        //show the guidance message, user probably doesn't know to click "got it"
+        if($('#removeHidden').is(":hidden")){
+          $('#removeHidden').transition('fade');
+          $('#cyberTransButton').css('margin-bottom', '10em');
+        } else {
+          $('#removeHidden').transition('bounce');
         }
       }
+    }
   });
   hints.onhintclose(function(stepID){
-    // ****** record the hint data *******
+    // *********************** record the hint data ****************************
     let cat = new Object();
     cat.subdirectory1 = subdirectory1;
     cat.subdirectory2 = subdirectory2;
     cat.dotNumber = hintNumber; // which hint was most recently interacted with
+    cat.absoluteTimeOpened = hintOpenTimestamp; // timestamp of hint being opened
     cat.viewDuration = Date.now() - hintOpenTimestamp; // how long the hint was open for
     cat.clickedClose = true; // this is always going to be true on posting for now
 
     $.post("/bluedot", {
       action: cat, _csrf: $('meta[name="csrf-token"]').attr('content')
     });
-    // ***********************************
+    // ************************************************************************
 
     // if a customOnHintCloseFunction is provided, use it
     if(typeof customOnHintCloseFunction !== 'undefined'){
@@ -131,25 +133,92 @@ function startHints(){
 function startIntro(){
 
   var intro = introJs().setOptions({
-    'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false,
-    'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true,
+    steps: stepsList,
+    'hidePrev': true,
+    'hideNext': true,
+    'exitOnOverlayClick': false,
+    'showStepNumbers':false,
+    'showBullets':false,
+    'scrollToElement':true,
     'doneLabel':'Done &#10003'
   });
-    intro.setOptions({
-      steps: stepsList
+
+  // *************** code copied over from base_introStep.js *******************
+  intro.onbeforechange (function() {
+    try {
+      additionalOnBeforeChange($(this));
+    } catch (error) {
+      if ( !(error instanceof ReferenceError) ) {
+        console.log("There has been an unexpected error:");
+        console.log(error);
+      }
+    }
+    let leavingStep = 0;
+    if($(this)[0]._direction === "forward") {
+      leavingStep = ($(this)[0]._currentStep - 1);
+    } else if ($(this)[0]._direction === "backward"){
+      leavingStep = ($(this)[0]._currentStep + 1);
+    } else {
+      console.log(`There was an error in calculating the step number.`);
+    }
+    let totalTimeOpen = Date.now() - startTimestamp;
+    let cat = new Object();
+    cat.subdirectory1 = subdirectory1;
+    cat.subdirectory2 = subdirectory2;
+    cat.stepNumber = leavingStep;
+    cat.viewDuration = totalTimeOpen;
+    cat.absoluteStartTime = startTimestamp;
+    if(leavingStep !== -1){
+      const jqxhr = $.post("/introjsStep", {
+        action: cat,
+        _csrf: $('meta[name="csrf-token"]').attr('content')
+      });
+      jqhxrArray.push(jqxhr);
+    }
+  });
+
+  intro.onafterchange(function(){
+    startTimestamp = Date.now();
+  });
+
+  intro.onbeforeexit(function(){
+    try {
+      additionalOnBeforeExit();
+    } catch (error) {
+      if ( !(error instanceof ReferenceError) ) {
+        console.log("There has been an unexpected error:");
+        console.log(error);
+      }
+    }
+    let leavingStep = $(this)[0]._currentStep;
+    let totalTimeOpen = Date.now() - startTimestamp;
+    let cat = new Object();
+    cat.subdirectory1 = subdirectory1;
+    cat.subdirectory2 = subdirectory2;
+    cat.stepNumber = leavingStep;
+    cat.viewDuration = totalTimeOpen;
+    cat.absoluteStartTime = startTimestamp;
+    const jqxhr = $.post("/introjsStep", {
+      action: cat,
+      _csrf: $('meta[name="csrf-token"]').attr('content')
     });
-    intro.start().onexit(function(){
+    jqhxrArray.push(jqxhr);
+    Promise.all(jqhxrArray).then(function() {
+      // changed from base_introStep.js
       startHints();
-      // an eventsAfterHints function isn't always defined, so call it if it
-      // exists
       try{
         eventsAfterHints();
-      }catch(error){
-        console.log("No defined events after hints.");
-        console.error(error);
+      } catch(error) {
+        if ( !(error instanceof ReferenceError) ) {
+          console.log("There has been an unexpected error:");
+          console.log(error);
+        }
       }
-
     });
+  })
+  // **************************************************************************
+
+  intro.start();
 };
 
 $(window).on("load", function(){
@@ -159,21 +228,27 @@ $(window).on("load", function(){
     // to be called manually.
     startIntro();
   } catch (error) {
-    console.log("No intro. Try starting hints.");
-    console.error(error);
+    if ( !(error instanceof ReferenceError) ) {
+      console.log("There has been an unexpected error:");
+      console.log(error);
+    }
     try {
       startHints();
       try{
         // an eventsAfterHints function isn't always defined, so call it if it
         // exists
         eventsAfterHints();
-      }catch(error){
-        console.log("No defined events after hints.");
-        console.error(error);
+      } catch(error) {
+        if ( !(error instanceof ReferenceError) ) {
+          console.log("There has been an unexpected error:");
+          console.log(error);
+        }
       }
     } catch (error) {
-      console.log("No hints.");
-      console.error(error);
+      if ( !(error instanceof ReferenceError) ) {
+        console.log("There has been an unexpected error:");
+        console.log(error);
+      }
     }
   }
 });

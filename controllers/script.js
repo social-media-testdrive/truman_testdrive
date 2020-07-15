@@ -800,6 +800,7 @@ exports.postBlueDotAction = (req, res, next) => {
     cat.subdirectory1 = req.body.action.subdirectory1;
     cat.subdirectory2 = req.body.action.subdirectory2;
     cat.dotNumber = req.body.action.dotNumber;
+    cat.absoluteTimeOpened = req.body.action.absoluteTimeOpened;
     cat.viewDuration = req.body.action.viewDuration;
     cat.clickedClose = req.body.action.clickedClose;
 
