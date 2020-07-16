@@ -928,25 +928,34 @@ exports.postUpdateProfile = (req, res, next) => {
   }
 
   User.findById(req.user.id, (err, user) => {
-    if (err) { return next(err); }
-    //user.email = req.body.email || '';
+    if (err) {
+      return next(err);
+    }
     user.profile.name = req.body.name || '';
-    //user.profile.gender = req.body.gender || '';
     user.profile.location = req.body.location || '';
-    //user.profile.website = req.body.website || '';
     user.profile.bio = req.body.bio || '';
-
     user.profile.picture = req.body.profilePhoto;
-    // if (req.file)
-    // {
-    //   //console.log("Changeing Picture now to: "+ req.file.filename);
-    //   user.profile.picture = req.file.filename;
-    // }
+
+    // log the change in profileHistory
+
+    let cat = new Object();
+
+    cat.absoluteTimeChanged = Date.now();
+    cat.name = req.body.name || '';
+    cat.location = req.body.location || '';
+    cat.bio = req.body.bio = '';
+    cat.picture= req.body.profilePhoto || '';
+
+    user.profileHistory.push(cat);
+
 
     user.save((err) => {
       if (err) {
         if (err.code === 11000) {
-          req.flash('errors', { msg: 'The email address you have entered is already associated with an account.' });
+          req.flash('errors', {
+            msg: `The email address you have entered is already associated with
+            an account.`
+          });
           res.redirect('/modual/'+req.param("modId"));
         }
         return next(err);

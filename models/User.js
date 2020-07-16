@@ -225,12 +225,19 @@ const userSchema = new mongoose.Schema({
   //users profile
   profile: {
     name: String,
-    gender: String,
     location: String,
     bio: String,
-    website: String, //I don't believe this has ever been used
     picture: String
-  }
+  },
+
+  // history of all changes to the user profile
+  profileHistory: [new Schema({
+    absoluteTimeChanged: Date,
+    name: String,
+    location: String,
+    bio: String,
+    picture: String
+  }, {_id: true, versionKey: false })],
 }, { timestamps: true });
 
 /**
