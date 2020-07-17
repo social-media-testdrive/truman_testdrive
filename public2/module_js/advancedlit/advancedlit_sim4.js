@@ -6,7 +6,7 @@ const hintsList = [
   },
   {
     hint: `It's not a good idea to share a news article that isn't accurate
-    since it may just make other people believe something that isn't true.`,
+    since it can cause other people believe something that isn't true.`,
     element: '#hint2',
     hintPosition: 'bottom-middle'
   },

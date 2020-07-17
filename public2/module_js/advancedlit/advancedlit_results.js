@@ -9,6 +9,10 @@ function onPrint(){
     var responseOne = document.getElementById("literacy_responseOne").value;
     $(".insertPrint").append(responseOne);
 
+    $(".insertPrint").append("<br><h4>Did you read any of the articles? What did you notice?</h4>");
+    var responseTwo = document.getElementById("literacy_responseTwo").value;
+    $(".insertPrint").append(responseTwo);
+
     window.print();
 
     $(".insertPrint").css('display','none');

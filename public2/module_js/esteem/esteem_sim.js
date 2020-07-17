@@ -10,8 +10,8 @@ var hintsList=
     hintPosition: 'middle-right'
   },
   {
-    hint: `Click on the post to think about how Nick might feel and things that
-    Nick could do.`,
+    hint: `Click on the post to think about how Nick might feel when he sees
+    this post and the things he can do about it.`,
     element: '#hint3',
     position: 'bottom',
     hintPosition: 'middle-right'

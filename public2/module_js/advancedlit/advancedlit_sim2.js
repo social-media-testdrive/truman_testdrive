@@ -15,13 +15,14 @@ var hintsList = [
   {
     hint: `Trustworthy news articles will also explain how and where their
     information was gathered, and provide links to sources used by the author.
-    That is missing here.`,
+    This article does not cite any official sources.`,
     element: '#hint3',
     hintPosition: 'bottom-middle'
   },
   {
-    hint: `Let’s check other sources to see if they are saying the same thing.
-    Click the “Search for” button to learn what the first five results are.`,
+    hint: `Let’s search for more sources to see if others are reporting the same
+    news. Click the “Search for” button to learn what the first five results
+    are.`,
     element: '#hint4',
     hintPosition: 'bottom-middle'
   },

@@ -4,7 +4,6 @@ var stepsList = [
     intro: `Click on the blue dots&nbsp;<a role='button' tabindex='0'
     class='introjs-hint'><div class='introjs-hint-dot'></div><div class=
     'introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more...`,
-    position: "left",
     scrollTo: 'tooltip'
   }
 ]

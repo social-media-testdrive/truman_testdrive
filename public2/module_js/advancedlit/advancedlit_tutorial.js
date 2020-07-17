@@ -1,17 +1,21 @@
 const firstStepsList = [
   {
+    element: '#step1A',
+    intro: `Scroll through the timeline to learn how to respond to breaking news
+    on social media.`,
+    position: "right"
+  },
+  {
     element: '#step1',
     intro: `When you see a breaking news story on social media, it's
     important to make sure it is reliable.`,
-    position: "right",
-    scrollTo: "element"
+    position: "right"
   },
   {
     element: '#step1',
     intro: `Click on the story to learn more before sharing it with
     others! `,
-    position: "right",
-    scrollTo: "element"
+    position: "right"
   }
 ];
 
@@ -22,7 +26,7 @@ const secondStepsList = [
     piece or a news article. In this example, the title states that this is a
     news article.`,
     position: "bottom",
-    scrollTo: "tooltip"
+    scrollTo: "element"
   },
   {
     element: '#step3',
@@ -31,7 +35,7 @@ const secondStepsList = [
     include links to the sources that the author used when writing their
     story.`,
     position: "left",
-    scrollTo: "tooltip"
+    scrollTo: "element"
   },
   {
     element: '#step3B',
@@ -39,7 +43,7 @@ const secondStepsList = [
     might not have all the information, and reliable articles will often make
     this clear.`,
     position: "left",
-    scrollTo: "tooltip"
+    scrollTo: "element"
   },
   {
     element: "#step4",
@@ -47,7 +51,7 @@ const secondStepsList = [
     least one additional source. Click the search button to see if other sites
     are reporting this story.`,
     position: "right",
-    scrollTo: "tooltip"
+    scrollTo: "element"
   }
 ];
 
@@ -71,16 +75,19 @@ const thirdStepsList = [
 const fourthStepsList = [
   {
     element: '#step1',
-    intro: `Since we have verified this article, it's okay to share the news
-    with others.`,
+    intro: `We verified that the article is from a trustworthy site and that
+    others are reporting the same news. It’s okay to share this breaking news
+    with your friends.`,
     position: "right",
-    scrollTo: "tooltip"
+    scrollTo: "element",
+    scrollPadding: 90
   },
   {
+    element: '#step1',
     intro: `It's important not to share a news article that isn’t accurate since
     you don't want others believing something that isn't true!`,
     position: "right",
-    scrollTo: "tooltip"
+    scrollTo: "element"
   }
 ]
 
@@ -103,12 +110,16 @@ function changeActiveTab(newActiveTab) {
 }
 
 function startIntro(){
-  let intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true,
-  'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false,
-   'doneLabel':'Done &#10003' });
-
-  intro.setOptions({
-    steps: firstStepsList
+  window.scrollTo(0, 0);
+  let intro = introJs().setOptions({
+    steps: firstStepsList,
+    'scrollToElement': false,
+    'hidePrev': true,
+    'hideNext': true,
+    'exitOnOverlayClick': false,
+    'showStepNumbers':false,
+    'showBullets':false,
+    'doneLabel':'Done &#10003'
   });
 
   intro.start().onexit(function() {
@@ -130,10 +141,15 @@ function startIntro(){
   intro.onbeforechange( function() {
     let currentStep = $(this)[0]._currentStep;
     if (currentStep < 1){
+      window.scrollTo(0, 0);
       $('.ui.card.articleCard').removeClass('articleCardClickable');
     }
     if(currentStep === 1){
+      $('.scrollToHere')[0].scrollIntoView();
       $('.ui.card.articleCard').addClass('articleCardClickable');
+    }
+    if(currentStep === 2){
+      $('.scrollToHere')[0].scrollIntoView();
     }
   });
 
@@ -141,9 +157,17 @@ function startIntro(){
 }
 
 function startSecondIntro(){
-  let secondIntro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true,
-  'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false,
-  'scrollToElement':true, 'doneLabel':'Done &#10003' });
+
+  window.scrollTo(0, 0);
+  let secondIntro = introJs().setOptions({
+    'hidePrev': true,
+    'hideNext': true,
+    'exitOnOverlayClick': false,
+    'showStepNumbers':false,
+    'showBullets':false,
+    'scrollToElement':true,
+    'doneLabel':'Done &#10003'
+  });
 
   secondIntro.setOptions({
     steps: secondStepsList
@@ -159,6 +183,7 @@ function startSecondIntro(){
       $('.ui.big.button.searchTab').removeClass('green');
     }
     if(currentStep === 3){
+      window.scrollTo(0, 0);
       $('.ui.big.button.searchTab').addClass('green');
     }
   });
@@ -174,9 +199,17 @@ function startSecondIntro(){
 };
 
 function startThirdIntro(){
-  let thirdIntro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true,
-  'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false,
-  'scrollToElement':true, 'doneLabel':'Done &#10003' });
+
+  window.scrollTo(0, 0);
+  let thirdIntro = introJs().setOptions({
+    'hidePrev': true,
+    'hideNext': true,
+    'exitOnOverlayClick': false,
+    'showStepNumbers':false,
+    'showBullets':false,
+    'scrollToElement':true,
+    'doneLabel':'Done &#10003'
+  });
 
   thirdIntro.setOptions({
     steps: thirdStepsList
@@ -189,6 +222,7 @@ function startThirdIntro(){
   thirdIntro.onbeforechange( function() {
     let currentStep = $(this)[0]._currentStep;
     if(currentStep === 1){
+      window.scrollTo(0, 0);
       $('.ui.big.button.homeTab').addClass('testDriveBlue');
     }
   });
@@ -206,9 +240,17 @@ function startThirdIntro(){
 function startFourthIntro(){
 
   $('.ui.card.articleCard').removeClass('articleCardClickable');
-  let fourthIntro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true,
-  'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false,
-  'scrollToElement':true, 'doneLabel':'Done &#10003' });
+  $('.scrollToHere')[0].scrollIntoView();
+
+  let fourthIntro = introJs().setOptions({
+    'hidePrev': true,
+    'hideNext': true,
+    'exitOnOverlayClick': false,
+    'showStepNumbers':false,
+    'showBullets':false,
+    'scrollToElement':true,
+    'doneLabel':'Done &#10003'
+  });
 
   fourthIntro.setOptions({
     steps: fourthStepsList
@@ -225,5 +267,7 @@ function startFourthIntro(){
 
 
 $(window).on("load", function() {
+
   startIntro();
+
 });
