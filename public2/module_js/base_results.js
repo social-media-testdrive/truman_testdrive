@@ -84,8 +84,7 @@ function recordResponses() {
 
   // wait to change pages until ALL post requests in actionArray return,
   // otherwise the post requests might get cancelled during the page change
-  Promise.all(actionArray).then(function(values) {
-    console.log(values);
+  Promise.all(actionArray).then(function() {
     window.location.href = `/end/${pathArray[2]}`
   });
 

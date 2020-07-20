@@ -1,3 +1,5 @@
+let actionArray = new Array(); // this array will be handed to Promise.all
+
 function animateUnclickedLabels() {
   $('.keyTermDefinition').each(function(){
     if($(this).is(":hidden")){
@@ -17,7 +19,9 @@ function clickGotIt(){
       //everything is good to proceed
       $('#clickLabelsWarning').hide();
       let pathArray = window.location.pathname.split('/');
-      window.location.href='/tutorial/' + pathArray[2];
+      Promise.all(actionArray).then(function(){
+        window.location.href='/tutorial/' + pathArray[2];
+      });
     } else {
       //User has not clicked all the labels
       $('#clickLabelsWarning').show();
@@ -33,6 +37,19 @@ $('#introduction_next').on('click', function () {
   if($(".keyTermDefinition:hidden").length === 0){
     $('.ui.labeled.icon.button').addClass('green');
   }
+
+  // log action in db
+  let cat = new Object();
+  let pathArray = window.location.pathname.split('/');
+  cat.subdirectory1 = pathArray[1];
+  cat.subdirectory2 = pathArray[2];
+  cat.actionType = 'next';
+  cat.absoluteTimestamp = Date.now();
+  const jqxhr = $.post("/startPageAction", {
+    action: cat,
+    _csrf: $('meta[name="csrf-token"]').attr('content')
+  });
+  actionArray.push(jqxhr);
 });
 
 $('.keyTerm').on('click', function (event) {
@@ -43,4 +60,18 @@ $('.keyTerm').on('click', function (event) {
     $('#clickLabelsWarning').hide();
     $('.ui.labeled.icon.button').addClass('green');
   }
+
+  // log action in db
+  let cat = new Object();
+  let pathArray = window.location.pathname.split('/');
+  cat.subdirectory1 = pathArray[1];
+  cat.subdirectory2 = pathArray[2];
+  cat.actionType = 'term';
+  cat.vocabTerm = $(event.target).closest('.keyTerm').children('.keyTermLabel').text();
+  cat.absoluteTimestamp = Date.now();
+  const jqxhr = $.post("/startPageAction", {
+    action: cat,
+    _csrf: $('meta[name="csrf-token"]').attr('content')
+  });
+  actionArray.push(jqxhr);
 });

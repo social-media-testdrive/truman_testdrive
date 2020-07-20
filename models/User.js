@@ -4,10 +4,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new mongoose.Schema({
-  email: {type: String, default: ""}, //user e-mail (not used in TestDrive)
-  password: String, //hashed and salted
-  passwordResetToken: String,
-  passwordResetExpires: Date,
+  // email: {type: String, default: ""},
+  // password: String, //hashed and salted
+  // passwordResetToken: String,
+  // passwordResetExpires: Date,
   username: { type: String, unique: true }, //username, must be unique
   active: {type: Boolean, default: true}, //currently active? Not used in TestDrive
   isAdmin: {type: Boolean, default: false}, //is an Admin? (only changed directly in DB)
@@ -16,22 +16,21 @@ const userSchema = new mongoose.Schema({
 
   completed: {type: Boolean, default: false}, //not used in TestDrive
 
-  //I don't believe these are used for TestDrive. It's mainly used for the Notification functionality
   numPosts: { type: Number, default: -1 }, //How many posts has this user created? not including replys
   numReplies: { type: Number, default: -1 }, //How many comments has user made
-  numActorReplies: { type: Number, default: -1 }, //How many times has an actor commented on this user
+  //numActorReplies: { type: Number, default: -1 }, //How many times has an actor commented on this user
 
   lastNotifyVisit: Date, //date user last visited the site
 
   mturkID: String, //not used in TestDrive
 
-//Experimental group of this user
-//Not used in TestDrive
-  group: String, //full group type
-  ui: String,    //just UI type (no or ui)
-  notify: String, //notification type (no, low or high)
+  //Experimental group of this user
+  //Not used in TestDrive
+  // group: String, //full group type
+  // ui: String,    //just UI type (no or ui)
+  // notify: String, //notification type (no, low or high)
 
-  tokens: Array,
+  // tokens: Array,
 
   blocked: [String], //actors user has blocked
   reported: [String], //actors user has reported
@@ -50,15 +49,15 @@ const userSchema = new mongoose.Schema({
     body: {type: String, default: '', trim: true}, //body of post or reply
     picture: String, //picture for post
 
-    replyID: Number, //use this for User Replies (not used in TestDrive)
-    reply: {type: Schema.ObjectId, ref: 'Script'}, //Actor Post reply is to =>
-
-    //not used in testDrive
-    actorReplyID: Number, //An Actor reply to a User Post
-    actorReplyOBody: String, //Original Body of User Post
-    actorReplyOPicture: String, //Original Picture of User Post
-    actorReplyORelativeTime: Number,
-    actorAuthor: {type: Schema.ObjectId, ref: 'Actor'},
+    // replyID: Number, //use this for User Replies (not used in TestDrive)
+    // reply: {type: Schema.ObjectId, ref: 'Script'}, //Actor Post reply is to =>
+    //
+    // //not used in testDrive
+    // actorReplyID: Number, //An Actor reply to a User Post
+    // actorReplyOBody: String, //Original Body of User Post
+    // actorReplyOPicture: String, //Original Picture of User Post
+    // actorReplyORelativeTime: Number,
+    // actorAuthor: {type: Schema.ObjectId, ref: 'Actor'},
 
     //Actor Comments for User Made Posts
     comments: [new Schema({
@@ -85,19 +84,19 @@ const userSchema = new mongoose.Schema({
     ipAddress: String
     })],
 
-  //quiz results (new workflow will not have this)
-  quiz: [new Schema({
-    type: String,
-    modual: String,
-    score: Number
-    })],
-  //evaluation quiz results (not in new workflow, may be added later)
-  eval_quiz: [new Schema({
-    question: String,
-    type: String,
-    modual: String,
-    val: Number
-    })],
+  // //quiz results (new workflow will not have this)
+  // quiz: [new Schema({
+  //   type: String,
+  //   modual: String,
+  //   score: Number
+  //   })],
+  // //evaluation quiz results (not in new workflow, may be added later)
+  // eval_quiz: [new Schema({
+  //   question: String,
+  //   type: String,
+  //   modual: String,
+  //   val: Number
+  //   })],
 
   //pages user has visited. Not sure if this is used in TestDrive
   pageLog: [new Schema({
@@ -153,6 +152,15 @@ const userSchema = new mongoose.Schema({
       time: {type: Number}
       },{_id: true, versionKey: false })]
     }, {_id: true, versionKey: false })],
+
+  // start page log data
+  startPageAction: [new Schema({
+    subdirectory1: String, // which page the user is on
+    subdirectory2: String, // which module the user is on
+    actionType: {type: String}, // Next or Term
+    vocabTerm: {type: String}, // none if actionType is "next"
+    absoluteTimestamp: Date // time the actuon occurred in the real world
+  }, {_id: true, versionKey: false})],
 
   // step log data (for any walkthrough-style text bubbles)
   introjsStepAction: [new Schema({

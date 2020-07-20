@@ -552,6 +552,7 @@ app.get('/bell', passportConfig.isAuthenticated, userController.checkBell);
 //getScript
 //app.get('/feed', passportConfig.isAuthenticated, scriptController.getScript);
 app.post('/feed', passportConfig.isAuthenticated, scriptController.postUpdateFeedAction);
+app.post('/startPageAction', passportConfig.isAuthenticated, scriptController.postStartPageAction);
 app.post('/introjsStep', passportConfig.isAuthenticated, scriptController.postIntrojsStepAction);
 app.post('/reflection', passportConfig.isAuthenticated, scriptController.postReflectionAction);
 app.post('/bluedot', passportConfig.isAuthenticated, scriptController.postBlueDotAction);
