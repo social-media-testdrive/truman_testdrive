@@ -44,7 +44,7 @@
           $(this).find('.articleHeading').text(articleData[dataTabAttribute].headline);
           $(this).find('.articleSubheading').text(articleData[dataTabAttribute].subHeadline);
           $(this).find('.articleAuthor').text(articleData[dataTabAttribute].author);
-          $(this).find('.articleDate').text('Published:' + articleData[dataTabAttribute].date);
+          $(this).find('.articleDate').text('Published: ' + articleData[dataTabAttribute].date);
           $(this).find('.fullArticleImage').attr("src",articleData[dataTabAttribute].image);
           $(this).find('.articleBlock1').text(articleData[dataTabAttribute].block1);
           $(this).find('.articleBlock2').text(articleData[dataTabAttribute].block2);

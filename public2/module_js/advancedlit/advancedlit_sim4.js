@@ -1,6 +1,7 @@
 const hintsList = [
   {
-    hint: `Based on your analysis of the article, what would you do next?`,
+    hint: `Based on your analysis of the article, think about what would you do
+    next.`,
     element: '#hint1',
     hintPosition: 'middle-middle'
   },

@@ -1,8 +1,8 @@
 const firstStepsList = [
   {
     element: '#step1A',
-    intro: `Scroll through the timeline to learn how to respond to breaking news
-    on social media.`,
+    intro: `Let's scroll through the timeline to learn how to respond to
+    breaking news on social media.`,
     position: "right"
   },
   {
@@ -13,8 +13,7 @@ const firstStepsList = [
   },
   {
     element: '#step1',
-    intro: `Click on the story to learn more before sharing it with
-    others! `,
+    intro: `Let's learn more about the story before sharing it with others!`,
     position: "right"
   }
 ];
@@ -39,9 +38,9 @@ const secondStepsList = [
   },
   {
     element: '#step3B',
-    intro: `Breaking news stories develop over time, so the first reports
-    might not have all the information, and reliable articles will often make
-    this clear.`,
+    intro: `Breaking news stories develop over time, so the first reports might
+    not have all the information. Reliable articles will often make this
+    clear.`,
     position: "left",
     scrollTo: "element"
   },
@@ -124,6 +123,7 @@ function startIntro(){
 
   intro.start().onexit(function() {
     $('#instructionsToContinueOne').show();
+    $('.ui.card.articleCard').off();
     $('.ui.card.articleCard').on('click', function(){
       if($(this).hasClass('articleCardClickable')){
         $(this).transition({
@@ -146,14 +146,26 @@ function startIntro(){
     }
     if(currentStep === 1){
       $('.scrollToHere')[0].scrollIntoView();
-      $('.ui.card.articleCard').addClass('articleCardClickable');
     }
     if(currentStep === 2){
       $('.scrollToHere')[0].scrollIntoView();
+      $('.ui.card.articleCard').addClass('articleCardClickable');
     }
   });
 
-
+  $('.ui.card.articleCard').on('click', function(){
+    if($(this).hasClass('articleCardClickable')){
+      $(this).transition({
+        animation: 'pulse',
+        onComplete: function(){
+          intro.exit();
+          changeActiveTab('article');
+          $('#instructionsToContinueOne').hide();
+          startSecondIntro();
+        }
+      });
+    }
+  });
 }
 
 function startSecondIntro(){

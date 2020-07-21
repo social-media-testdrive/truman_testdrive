@@ -1,6 +1,6 @@
 var hintsList = [
   {
-    hint: `Search engines like google often prioritize results about breaking
+    hint: `Search engines like Google often prioritize results about breaking
     news.`,
     element: '#hint2',
     hintPosition: 'middle-middle'
