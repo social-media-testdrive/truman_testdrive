@@ -57,10 +57,16 @@ const secondStepsList = [
 const thirdStepsList = [
   {
     element: "#step5",
-    intro: `You can look for additional resources using a search engine. Make
-    sure you click on a website you can trust.`,
+    intro: `You can look for additional resources using a search engine.`,
     position: "right",
     scrollTo: "element"
+  },
+  {
+    element: "#step5B",
+    intro: `Some of the sources you found are reporting the same news as the
+    article you saw. This is a sign that the article is reliable.`,
+    position: "right",
+    scrollTo: "tooltip"
   },
   {
     element: "#step6",
