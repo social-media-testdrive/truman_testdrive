@@ -1,52 +1,50 @@
-var literacy_counter = 0;
-clickCount = 0;
+const hintsList = [
+  {
+    hint: `Lily would like to hide her location information from the public on
+    the internet. Which privacy settings would she have to change?`,
+    element: '#hint1',
+    hintPosition: 'top-middle'
+  },
+  {
+    hint: `She can <b>turn off location sharing</b> and restrict who can see her
+    location to <b>“Friends” only</b>. Let’s try doing this!`,
+    element: '#hint2',
+    hintPosition: 'top-middle'
+  },
+  {
+    hint: `Have you turned off location sharing and changed who can see Lily’s
+    location? Click “<i>Let’s Continue!</i>” to see how her profile has
+    changed.`,
+    element: '#hint3',
+    hintPosition: 'middle-right'
+  }
+];
 
 //Variables for the two key settings
-var keySetting1 = $("input[name='locationSetting']").is(':checked');
-var keySetting2 = "";
+let keySetting1 = $("input[name='locationSetting']").is(':checked');
+let keySetting2 = "";
 
-//Initializing and managing the hints
-function startIntro(){
-    var hints;
-    hints = introJs().addHints();
-
-    hints.onhintclick(function() {
-        clickCount++;
-        if(clickCount >= 3){
-          //show the guidance message, user probably doesn't know to click "got it"
-          if($('#removeHidden').is(":hidden")){
-            $('#removeHidden').transition('fade');
-            $('#settings1Button').css("margin-bottom", "10em");
-          } else {
-            $('#removeHidden').transition('bounce');
-          }
-        }
-    });
-
-    hints.onhintclose(function(e) {
-     literacy_counter++;
-     clickCount = 0;
-     if($('#removeHidden').is(":visible")){
-       $('#removeHidden').transition('fade');
-       if($('#clickAllDotsWarning').is(":hidden")){
-         $('#cyberTransButton').css("margin-bottom", "4em");
-       }
-     }
-     //turn the button green if all three criteria are met
-     if(literacy_counter == 3) {
-       //remove the yellow warning about dots
-       if($('#clickAllDotsWarning').is(':visible')){
-         $('#clickAllDotsWarning').transition('fade');
-         $('#cyberTransButton').css("margin-bottom", "4em");
-       }
-       if((keySetting1 == false) && (keySetting2 === "Friends")){
-          $( ".settings1" ).addClass("green");
-       }
-     }
-    });
-  };
-
-$(window).on("load", function() {startIntro();});
+function customOnHintCloseFunction() {
+  closedHints++;
+  clickedHints = 0;
+  if($('#removeHidden').is(":visible")){
+    $('#removeHidden').transition('fade');
+    if($('#clickAllDotsWarning').is(":hidden")){
+      $('#cyberTransButton').css("margin-bottom", "4em");
+    }
+  }
+  //turn the button green if all three criteria are met
+  if(closedHints == hintsList.length) {
+    //remove the yellow warning about dots
+    if($('#clickAllDotsWarning').is(':visible')){
+      $('#clickAllDotsWarning').transition('fade');
+      $('#cyberTransButton').css("margin-bottom", "4em");
+    }
+    if((keySetting1 == false) && (keySetting2 === "Friends")){
+      $( ".settings1" ).addClass("green");
+    }
+  }
+};
 
 //Make the dropdown work
 $('.ui.dropdown')
@@ -63,7 +61,7 @@ function jiggleCueTwo() {
   $('#locationCue2').transition('shake');
 }
 
-$('#settings1Button').on('click', function () {
+$('#cyberTransButton').on('click', function () {
   if(keySetting1 == true){
     $('#locationCue1Text').show();
     $('#locationCue1').transition('bounce');
@@ -76,11 +74,11 @@ $('#settings1Button').on('click', function () {
   } else {
     $('#locationCue2Text').hide();
   }
-  if(literacy_counter != 3){
+  if(closedHints != hintsList.length){
     //show the message normally the first time
     if($('#clickAllDotsWarning').is(":hidden")){
       $('#clickAllDotsWarning').transition('fade');
-      $('#settings1Button').css("margin-bottom", "10em");
+      $('#cyberTransButton').css("margin-bottom", "10em");
     }else{
       //otherwise, bounce the message to draw attention to it
       $('#clickAllDotsWarning').transition('bounce');
@@ -99,7 +97,7 @@ $(".ui.selection.dropdown[name='shareLocationWith']").change(function() {
   }
 
   //All blue dots are clicked and the settings are correct
-  if(literacy_counter == 3) {
+  if(closedHints == hintsList.length) {
     if((keySetting1 == false) && (keySetting2 === "Friends")){
        $( ".settings1" ).addClass("green");
     }
@@ -118,7 +116,7 @@ $(".ui.toggle.checkbox[name='locationToggle']").change(function() {
     $('#locationCue1Text').hide();
   }
 
-  if(literacy_counter == 3) {
+  if(closedHints == hintsList.length) {
     if((keySetting1 == false) && (keySetting2 === "Friends")){
        $( ".settings1" ).addClass("green");
     }

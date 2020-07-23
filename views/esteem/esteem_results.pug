@@ -1,0 +1,166 @@
+extends ../ui_layout
+
+block content
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  -var chosenTopic = user.esteemTopic;
+  
+  .ui.container.addBottomMargin
+    .ui.stackable.column.grid
+      .ui.column
+        .insertPrint
+        .ui.raised.segment
+          h3.ui.header
+            i.question.blue.icon
+            .content
+              | Reflect
+          .ui.label.resultsPromptLabel
+            h4
+              i.exclamation.triangle.icon
+
+              | Here are some posts that might have caused Jeremy to experience 
+              | a red flag feeling, did you notice any of them?
+          br
+          br
+          .ui.stackable.three.cards
+            
+            if (chosenTopic == 'Sports')
+              
+              .ui.fluid.card.dim
+                .content      
+                  a.left.floated(href='/user/sassystar75')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user53.jpg')
+                    span='Brielle Jordan'
+                .image
+                  img.post(src=cdn+'/post_pictures/bigmatch_se.jpg')
+                .content
+                  .description
+                    | Watching the big match with my BFF!!
+                    span(style='color:#929292;')
+                      |  — with Hayden Abbey
+          
+
+              .ui.fluid.card.dim
+                .content      
+                  a.left.floated(href='/user/sassystar75')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user53.jpg')
+                    span='Brielle Jordan'
+                .image
+                  img.post(src=cdn+'/post_pictures/tryouts_se.jpg')
+                .content
+                  .description
+                    | Wow, can't believe I'm the only one who made it to the 
+                    | next round of soccer tryouts from our group
+                    span(style='color:#929292;')
+                      |  — with Hayden Abbey, Jeremy Murray, and Corey King
+          
+                    
+            if (chosenTopic == 'Gaming')
+              
+              .ui.fluid.card.dim
+                .content      
+                  a.left.floated(href='/user/asherballer')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user48.jpeg')
+                    span='Asher Michaels'
+                .image
+                  img.post(src=cdn+'/post_pictures/computer-game_se.jpg')
+                .content
+                  .description
+                    | Totally beating everyone
+                    span(style='color:#929292;')
+                      |  — with Lindsay Stokes and Asher Michaels
+
+
+              .ui.fluid.card.dim
+                .content      
+                  a.left.floated(href='/user/asherballer')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user48.jpeg')
+                    span='Asher Michaels'
+                .image
+                  img.post(src=cdn+'/post_pictures/nintendo_se.jpg')
+                .content
+                  .description
+                    | Playing online with my best friend  
+                    span(style='color:#929292;')
+                      |  — with Lindsay Stokes 
+                    
+            if (chosenTopic == 'Music')
+              
+              .ui.fluid.card.dim
+                .content     
+                  a.left.floated(href='/user/frank-the-best')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user10.jpg')
+                    span='Franklin Robinson' 
+                .image
+                  img.post(src=cdn+'/post_pictures/concert-crowd_se.jpg')
+                .content
+                  .description
+                    | We missed you at the concert Jeremy!
+                    span(style='color:#929292;')
+                      |  — with Kiki Pualani
+
+  
+              .ui.fluid.card.dim
+                .content      
+                  a.left.floated(href='/user/frank-the-best')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user10.jpg')
+                    span='Franklin Robinson' 
+                .image
+                  img.post(src=cdn+'/post_pictures/bestguitar_se.JPG')
+                .content
+                  .description
+                    | Inviting the best musicians from camp to make a song 
+                    | together.
+                    span(style='color:#929292;')
+                      |  — with Kiki Pualani and Nick Thomas
+
+          br
+          br
+
+
+    .ui.raised.segment
+      .ui.label.resultsPromptLabel
+        h4
+          | Why might these posts cause Jeremy to have a red flag feeling?
+      .ui.form
+        .inline.fields
+          label
+          textarea.glowing-border(rows='2' id="literacy_responseOne")
+            
+    .ui.raised.segment
+      .ui.label.resultsPromptLabel
+        h4
+          | Do you remember seeing posts that might have caused Jeremy to feel 
+          | good? What kinds of posts were they?
+      .ui.form
+        .inline.fields
+          label
+          textarea.glowing-border(rows='2' id="literacy_responseTwo")
+            
+    .ui.raised.segment
+      .ui.label.resultsPromptLabel
+        h4
+          | What could Jeremy do to feel better after experiencing a red flag 
+          | feeling on social media?
+      .ui.form
+        .inline.fields
+          label
+          textarea.glowing-border(rows='2' id="literacy_responseThree")
+
+
+    br
+    .ui.big.green.labeled.icon.button(onclick="onPrint()")
+          i.right.arrow.icon
+          |   Print your responses
+    br
+    br
+    .ui.big.green.labeled.icon.button.cyberbullying_end
+          i.rocket.icon
+          |   Continue
+
+      
+block scripts
+  script(src="/module_js/esteem/esteem_results.js")
+  
+block styles 
+  link(rel='stylesheet', href='/css/modules/esteem.css')
+  

@@ -2,7 +2,7 @@ extends ../ui_layout
 
 block content
   
-  .ui.text.container(style="margin-bottom:4em;")
+  .ui.text.container.addBottomMargin
     br
     .ui.raised.segment
       h3.ui.header
@@ -13,17 +13,22 @@ block content
       h5.ui.header
         i.arrow.circle.right.blue.icon
         .content
-          | When you go on social media, it’s important to be aware of what you share and who you share it with.
+          | When you go on social media, it’s important to be aware of what you 
+          | share and who you share it with.
       
       h5.ui.header
         i.arrow.circle.right.blue.icon
         .content
-          | If you have your social media profile open to the public, people can use your information for harmful things, like to try to trick or scam you.
+          | If you have your social media profile open to the public, people can 
+          | use your information for harmful things, like to try to trick or 
+          | scam you.
 
       h5.ui.header
         i.arrow.circle.right.blue.icon
         .content
-          | The information you share can also be used by the company that runs the website. They can sell your information to advertisers and show you targeted advertisements.
+          | The information you share can also be used by the company that runs 
+          | the website. They can sell your information to advertisers and show 
+          | you targeted advertisements.
       
       br
       #introduction_next.button.ui.mini.green.right.labeled.icon.button
@@ -34,50 +39,58 @@ block content
       h3.ui.header
         i.key.blue.icon
         .content Key Ideas
-      .sub.header 
-        i.hand.pointer.icon(style="color:gray;")
-        span(style="color: gray;") Click on each label below to learn more
+      .sub.header.grayElement
+        i.hand.pointer.icon
+        span Click on each label below to learn more
       br
-      //- .ui.segments     
+    
       .ui.stackable.two.column.grid
         .ui.column
-          #privacyConcept.ui.raised.segment
-            a.ui.blue.ribbon.label#privacyLabel
-                //- i.magic.icon 
+          .ui.raised.segment.keyTerm
+            a.ui.blue.ribbon.label.keyTermLabel
                 span Privacy
-            span.hidden(id="privacyConcept_info",style="font-weight:600")  Control of personal information to protect it from being observed or tracked by others.
+            span.hidden.keyTermDefinition  
+              | Control of personal information to protect it from being 
+              | observed or tracked by others.
 
         .ui.column
-          #settingsConcept.ui.raised.segment
-            a.ui.blue.ribbon.label#settingsLabel
-                //- i.dollar.sign.icon 
+          .ui.raised.segment.keyTerm
+            a.ui.blue.ribbon.label.keyTermLabel
                 span Privacy Settings
-            span.hidden(id="settingsConcept_info", style="font-weight:600") Choices a website or app might give you about what information is visible to other users and companies.
+            span.hidden.keyTermDefinition 
+              | Choices a website or app might give you about what information 
+              | is visible to other users and companies.
 
         .ui.column
-          #privacyPolicyConcept.ui.raised.segment
-            a.ui.blue.ribbon.label#privacyPolicyLabel
-                //- i.magic.icon 
+          .ui.raised.segment.keyTerm
+            a.ui.blue.ribbon.label.keyTermLabel
                 span Privacy Policy
-            span.hidden(id="policyConcept_info",style="font-weight:600") A legal document that an app or website must provide and that describes what user information they collect and how they use it.
+            span.hidden.keyTermDefinition 
+              | A legal document that an app or website must provide and that 
+              | describes what user information they collect and how they use 
+              | it.
         
         .ui.column
-          #optOut.ui.raised.segment
-            a.ui.blue.ribbon.label#optOutLabel
+          .ui.raised.segment.keyTerm
+            a.ui.blue.ribbon.label.keyTermLabel
                 //- i.magic.icon 
                 span Opt Out
-            span.hidden(id="optOut_info",style="font-weight:600") To choose to not participate in something.
+            span.hidden.keyTermDefinition 
+              | To choose to not participate in something.
               
-    .ui.warning.message#clickNextWarning(style="display:none;")
+    .ui.warning.message#clickNextWarning
       .header
        | Click "Next"
-    .ui.warning.message#clickLabelsWarning(style="display:none;")
+    .ui.warning.message#clickLabelsWarning
      .header
       | Click on each label to proceed  
-    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+    a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
         .ui.labeled.icon.button
             i.rocket.icon
             |   Got it!
             
 block scripts
-  script(src="/module_js/privacy/privacy_start.js")
+  script(src="/module_js/base_start.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/start.css')

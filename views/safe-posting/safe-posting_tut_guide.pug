@@ -28,34 +28,35 @@ block content
         .ui.column
           #step1.ui.raised.segment
             a.ui.blue.ribbon.label#step1Label
-                //- i.magic.icon 
                 span Ignore the person
-            span.hidden(id="step1_info", style="font-weight:600") Ignoring the person is always an option! You shouldn't share private information with someone you haven't met in real life.
+            span.hidden.responseSuggestion(id="step1_info") 
+              | Ignoring the person is always an option! You shouldn't share 
+              | private information with someone you haven't met in real life.
 
         .ui.column
           #step2.ui.raised.segment
             a.ui.blue.ribbon.label#step2Label
-                //- i.magic.icon 
-
                 span Change the Subject
-            span.hidden(id="step2_info",style="font-weight:600") One thing you can do is to change the subject.
+            span.hidden.responseSuggestion(id="step2_info") 
+              | One thing you can do is to change the subject.
         
         .ui.column
           #step3.ui.raised.segment
             a.ui.blue.ribbon.label#step3Label
-                //- i.magic.icon 
                 span Be Direct
-            span.hidden(id="step3_info",style="font-weight:600") Try saying “I don’t know you. I don’t feel comfortable giving you my address.”
+            span.hidden.responseSuggestion(id="step3_info") 
+              | Try saying “I don’t know you. I don’t feel comfortable giving 
+              | you my address.”
         
         .ui.column
           #step4.ui.raised.segment
             a.ui.blue.ribbon.label#step4Label
-                //- i.magic.icon 
                 span Talk to a trusted adult
-            span.hidden(id="step4_info",style="font-weight:600") It's always helpful to get advice from someone you trust.
+            span.hidden.responseSuggestion(id="step4_info") 
+             | It's always helpful to get advice from someone you trust.
     
     #chat1.container.clearfix.hidden
-      .chat(style="right:24px; margin-bottom:3em;")
+      .chat
         .chat-header.clearfix
           //-making close button have minimize functionality so user can't accidentally close the chat and not be able to reference it
           a.chat-minimize(href='#')
@@ -129,13 +130,13 @@ block content
       </li>
 
     br
-    .ui.warning.message#clickViewMessagesWarning(style="display:none;")
+    .ui.warning.message#clickViewMessagesWarning
       .header
        | Click "View Messages"
-    .ui.warning.message#clickToSeeWarning(style="display:none;")
+    .ui.warning.message#clickToSeeWarning
      .header
       | Click the blue banner to see ways to respond
-    .ui.warning.message#clickLabelsWarning(style="display:none;")
+    .ui.warning.message#clickLabelsWarning
      .header
       | Click on each label to proceed  
     .ui.big.labeled.icon.button.cybersim#safepostSimButton
@@ -146,5 +147,8 @@ block content
     br
 block scripts
   script(src="/module_js/safe-posting/safe-posting_tut_guide.js")
+  script(src=cdn+'/js/chatbox.js')
   
+block styles
+  link(rel='stylesheet', href='/css/modules/safe-posting.css')
   

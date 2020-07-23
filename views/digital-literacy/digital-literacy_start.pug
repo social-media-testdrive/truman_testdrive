@@ -2,7 +2,7 @@ extends ../ui_layout
 
 block content
 
-  .ui.text.container(style="margin-bottom:4em;")
+  .ui.text.container.addBottomMargin
     br
     #learn.ui.raised.segment
       h3.ui.header
@@ -13,11 +13,14 @@ block content
       h5.ui.header
         i.arrow.circle.right.blue.icon
         .content
-          | Social media is a great way to get news quickly and easily. Your friends may like or share articles that are interesting to you. 
+          | Social media is a great way to get news quickly and easily. Your 
+          | friends may like or share articles that are interesting to you. 
       h5.ui.header
         i.arrow.circle.right.blue.icon
         .content
-          | But you have to be careful! Sometimes people share articles on social media that look like accurate news but actually include false or untrustworthy information.
+          | But you have to be careful! Sometimes people share articles on 
+          | social media that look like accurate news but actually include false 
+          | or untrustworthy information.
       br
       #ideas_next.button.ui.mini.green.right.labeled.icon.button
               i.down.arrow.icon
@@ -40,25 +43,29 @@ block content
             a.ui.blue.ribbon.label#sourceLabel
                 //- i.dollar.sign.icon 
                 span Source
-            span.hidden(id="source_info", style="font-weight:600") The website, organization, or person the information comes from.
+            span.hidden(id="source_info", style="font-weight:600") 
+              | The website, organization, or person the information comes from.
         .ui.column
           #credible.ui.raised.segment
             a.ui.blue.ribbon.label#credibleLabel
                 //- i.magic.icon 
                 span Credible
-            span.hidden(id="credible_info",style="font-weight:600") Believable and trustworthy
+            span.hidden(id="credible_info",style="font-weight:600") 
+              | Believable and trustworthy
         .ui.column
           #news.ui.raised.segment
             a.ui.blue.ribbon.label#newsLabel
                 //- i.magic.icon 
                 span Fake news
-            span.hidden(id="news_info",style="font-weight:600") A news story that looks real but has been made up.
+            span.hidden(id="news_info",style="font-weight:600") 
+              | A news story that looks real but has been made up.
         .ui.column
           #clickbait.ui.raised.segment
             a.ui.blue.ribbon.label#clickbaitLabel
                 //- i.magic.icon 
                 span Clickbait
-            span.hidden(id="clickbait_info",style="font-weight:600") An article that has a catchy headline to get people to click on it.
+            span.hidden(id="clickbait_info",style="font-weight:600") 
+              | An article that has a catchy headline to get people to click on it.
 
     #question.ui.segment.hidden
       h3.ui.header
@@ -74,13 +81,19 @@ block content
             a.ui.blue.ribbon.label#moneyLabel
                 i.dollar.sign.icon 
                 span Money
-            span.hidden(id="money_info", style="font-weight:600") Each time someone clicks on a news article, the website makes more money. So, websites create news articles that draw people's attention. They don't care whether the information is true or not.
+            span.hidden(id="money_info", style="font-weight:600") 
+              | Each time someone clicks on a news article, the website makes 
+              | more money. So, websites create news articles that draw people's 
+              | attention. They don't care whether the information is true or 
+              | not.
         .ui.column
           #influence.ui.raised.segment
             a.ui.blue.ribbon.label#influenceLabel
                 i.magic.icon 
                 span Influence
-            span.hidden(id="influence_info",style="font-weight:600") Other times, people write misleading articles to spread their beliefs, presenting their opinions as facts.            
+            span.hidden(id="influence_info",style="font-weight:600") 
+              | Other times, people write misleading articles to spread their 
+              | beliefs, presenting their opinions as facts.            
       br
     .ui.warning.message#clickNextWarning(style="display:none;")
       .header

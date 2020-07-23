@@ -1,0 +1,367 @@
+
+extends ../ui_layout
+  
+block content
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  .computer.only.tablet.only.four.wide.column 
+  .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
+    .ui.one.column.centered.grid
+      .ui.fixed.bottom.sticky
+        .ui.icon.compact.message.warning#removeHidden
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header Need some help? 
+            p Make sure you are clicking "Got it" on the blue dots!
+          
+        .ui.icon.message.warning#clickAllDotsWarning
+          i.close.icon
+          i.hand.pointer.icon.float
+          .content
+            .ui.header There are still blue dots to find!
+            p Click through all of the blue dots to continue.
+    .ui.fluid.card.test#step1
+          .content#hint1
+            .right.floated.meta= "Yesterday"
+            |
+            a(href='/user/vkemp02')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user58.jpg')
+              span='Vanessa Kemp'
+          .image
+            img.post(src=cdn+'/post_pictures/movie_se.jpg')
+          .content
+            .description#hint2=`Watching FROZEN with Liam ❄️❄️☃️`
+          .three.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            .ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Flag
+            .ui.labeled.button(tabindex='0')
+              .ui.like.button
+                i.heart.icon
+                |  Like
+              a.ui.basic.red.left.pointing.label.count=2
+          
+          .content
+            .ui.comments
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user69.jpg')
+                .content
+                  a.author Hannah Cohn
+                  .metadata
+                    span.date 5 hours ago
+                    i.heart.icon
+                    |  3 Likes
+                  .text()
+                    | have fun!!
+                  .actions
+                    a.like Like
+                    a.flag Flag
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user48.jpeg')
+                .content
+                  a.author Asher Michaels
+                  .metadata
+                    span.date 5 hours ago
+                    i.heart.icon
+                    |  3 Likes
+                  .text()
+                    | Hey I liked that movie
+                  .actions
+                    a.like Like
+                    a.flag Flag
+          .extra.content
+            .ui.fluid.left.labeled.right.icon.input
+              .ui.label
+                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+              input.newcomment(type='text' placeholder='Write a Comment')
+              i.big.send.link.icon
+
+
+    .ui.fluid.card.test
+          .content
+            .right.floated.meta= "15 Minutes Ago"
+            |
+            a(href='/user/gracieeeeee82')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user62.jpg')
+              span='Grace Burns'
+          .image
+            img.post(src=cdn+"/post_pictures/bdance_se.jpg")
+          .content
+            .description="I want to dance like this some day"
+
+          .three.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            .ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Flag
+            .ui.labeled.button(tabindex='0')
+              .ui.like.button
+                i.heart.icon
+                |  Like
+              a.ui.basic.red.left.pointing.label.count=2
+          
+          .content
+            .ui.comments
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user64.jpg')
+                .content
+                  a.author Samantha Bautista
+                  .metadata
+                    span.date 1 minute ago
+                    i.heart.icon
+                    |  0 Likes
+                  .text()
+                    | cool
+                  .actions
+                    a.like Like
+                    a.flag Flag
+              
+          .extra.content
+            .ui.fluid.left.labeled.right.icon.input
+              .ui.label
+                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+              input.newcomment(type='text' placeholder='Write a Comment')
+              i.big.send.link.icon
+                
+    .ui.fluid.card.test
+          .content#hint3
+            .right.floated.meta= "15 Minutes Ago"
+            |
+            a(href='/user/rosie_pris')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user38.jpg')
+              span='Priscilla Rose'
+          .image
+            img.post(src=cdn+"/post_pictures/disney_se.jpg")
+          .content#hint5
+            .description#hint3A
+              | Guess what? My mom just told me that we're going to 
+              | DISNEY this summer!! AAAAHHHH!!!!
+
+          .three.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            .ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Flag
+            .ui.labeled.button(tabindex='0')
+              .ui.like.button
+                i.heart.icon
+                |  Like
+              a.ui.basic.red.left.pointing.label.count=2
+          
+          .content
+            .ui.comments
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user7.jpg')
+                .content
+                  a.author Lauren Wakefield
+                  .metadata
+                    span.date 1 minute ago
+                    i.heart.icon
+                    |  0 Likes
+                  .text()
+                    | That's so awesome!!!!
+                  .actions
+                    a.like Like
+                    a.flag Flag
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user23.jpg')
+                .content
+                  a.author Claire Johnson
+                  .metadata
+                    span.date 1 minute ago
+                    i.heart.icon
+                    |  0 Likes
+                  .text()
+                    | Take me with u😭
+                  .actions
+                    a.like Like
+                    a.flag Flag
+          .extra.content
+            .ui.fluid.left.labeled.right.icon.input
+              .ui.label
+                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+              input.newcomment(type='text' placeholder='Write a Comment')
+              i.big.send.link.icon
+    
+    .ui.fluid.card.test
+          .content
+            .right.floated.meta= "15 Minutes Ago"
+            |
+            a(href='/user/thomas_the_train')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user39.jpg')
+              span='Thomas Rogers'
+          .image
+            img.post(src=cdn+"/post_pictures/rbxcube_se.jpg")
+          .content
+            .description#hint4
+              | Just beat my record by 1.6 seconds
+
+          .three.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            .ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Flag
+            .ui.labeled.button(tabindex='0')
+              .ui.like.button
+                i.heart.icon
+                |  Like
+              a.ui.basic.red.left.pointing.label.count=2
+          
+          .content
+            .ui.comments
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user24.jpg')
+                .content
+                  a.author Jenny Chen
+                  .metadata
+                    span.date 1 minute ago
+                    i.heart.icon
+                    |  0 Likes
+                  .text()
+                    | Teach me how to do it too!
+                  .actions
+                    a.like Like
+                    a.flag Flag
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user25.jpg')
+                .content
+                  a.author Ella Sroni
+                  .metadata
+                    span.date 1 minute ago
+                    i.heart.icon
+                    |  0 Likes
+                  .text()
+                    | that looks so hard
+                  .actions
+                    a.like Like
+                    a.flag Flag
+          .extra.content
+            .ui.fluid.left.labeled.right.icon.input
+              .ui.label
+                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+              input.newcomment(type='text' placeholder='Write a Comment')
+              i.big.send.link.icon
+    //-#######################
+    button.ui.big.labeled.icon.button.cybertrans#cyberTransButton(Style="margin-bottom:4em;")
+          i.rocket.icon
+          |   Let's Continue!
+          
+  .ui.small.long.modal#esteem_post_modal
+    i.close.icon  
+    .content
+      .ui.styled.fluid.accordion
+        .active.title
+          i.dropdown.icon
+          |  How could Nick feel if he saw this post? (Check all that apply.)
+        .active.content
+          
+          .ui.form
+            .ui.grid
+              .eight.wide.column
+                .field
+                  .ui.checkbox
+                    input(type='checkbox')
+                    label Happy
+                .field
+                  .ui.checkbox
+                    input(type='checkbox')
+                    label Excited
+                .field
+                  .ui.checkbox
+                    input(type='checkbox')
+                    label Sad
+                .field
+                  .ui.checkbox
+                    input(type='checkbox')
+                    label Jealous
+                .field
+                  .ui.checkbox
+                    input(type='checkbox')
+                    label Encouraged
+              .eight.wide.column
+                .field
+                  .ui.checkbox
+                    input(type='checkbox')
+                    label Anxious
+                .field
+                  .ui.checkbox
+                    input(type='checkbox')
+                    label Angry
+                .field
+                  .ui.checkbox
+                    input(type='checkbox')
+                    label Embarrassed
+                .field
+                  .ui.checkbox
+                    input(type='checkbox')
+                    label Empathetic
+                .field
+                  .ui.checkbox
+                    input(type='checkbox')
+                    label Neutral
+          br
+          .button.ui.mini.green.right.labeled.icon.button#nextButton
+            i.down.arrow.icon
+            | Next      
+        .title#modSection2
+          i.dropdown.icon
+          |  What kinds of things could Nick do to make himself feel better?
+        .content
+          .ui.form
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label Reach out to other friends on social media
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label Support his friend by leaving a comment
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label Express his feelings to his friend(s)
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label Do an activity that he enjoys
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label Spend time with friends and family offline
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label Take a break from social media
+            .field
+              .ui.checkbox
+                input(type='checkbox')
+                label Do something else          
+    .actions
+      .ui.positive.right.labeled.icon.button
+        | Done
+        i.checkmark.icon          
+      
+
+block scripts
+  script(src='/postFunctionalities.js')
+  script(src="/module_js/esteem/esteem_sim.js")
+  script(src="/module_js/base_sim.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/sim.css')

@@ -1,98 +1,56 @@
-var counter = 0;
-var clickCount = 0;
-function startIntro(){
-    var hints;
+var stepsList = [
+  {
+    element: document.querySelectorAll('#step1')[0],
+    intro: `Now that you have learned about different privacy settings, let’s
+    practice how to change them!`,
+    scrollTo:'tooltip',
+    position:'left'
+  },
+  {
+    element: document.querySelectorAll('#step1')[0],
+    intro: `Click on the blue dots &nbsp;<a role='button' tabindex='0'
+    class='introjs-hint'><div class='introjs-hint-dot'></div><div
+    class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more...`,
+    scrollTo:'tooltip',
+    position:'left'
+  }
+];
 
-    var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
-      intro.setOptions({
-        steps: [
-          {
-            element: document.querySelectorAll('#step1')[0],
-            intro: "Now that you have learned about different privacy settings, let’s practice how to change them!",
-            scrollTo:'tooltip',
-            position:'left'
-          },
-          {
-            element: document.querySelectorAll('#step1')[0],
-            intro: "Click on the blue dots &nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more...",
-            scrollTo:'tooltip',
-            position:'left'
-          }
+var hintsList = [
+  {
+    hint: `If your account is on a “<i>Public</i>” setting, everyone on the
+    internet can access your account and see what you post. Right now, it is set
+    as a public account.`,
+    element: '#hint1',
+    hintPosition: 'top-middle'
+  },
+  {
+    hint: `Let’s try changing it to “<i>Private</i>” so that only people you
+    approve would be able to see your posts. Slide the button over so
+    “<i>Private account</i>” is selected.`,
+    element: '#hint2',
+    hintPosition: 'bottom-middle'
+  },
+  {
+    hint: `This is where you can change who can contact you on the social media
+    site. Try changing the settings to “<i>Friends</i>” or “<i>Friends of
+    Friends</i>” so that strangers cannot comment on your posts or send you
+    friend requests.`,
+    element: '#hint3',
+    hintPosition: 'top-middle'
+  },
+  {
+    hint: `Use this setting to control how you share your location information.
+    Right now, it is set so that you are putting your location on every post.`,
+    element: '#hint4',
+    hintPosition: 'middle-middle'
+  },
+  {
+    hint: `You can try turning this off entirely, or restricting who can see
+    your location information.`,
+    element: '#hint5',
+    hintPosition: 'middle-middle'
+  }
+];
 
-        ]
-      });
-    intro.start().onexit(function() {
-
-      hints = introJs().addHints();
-
-      hints.onhintclick(function() {
-          clickCount++;
-          if(clickCount > 4){
-            //show the guidance message, user probably doesn't know to click "got it"
-            if($('#removeHidden').is(":hidden")){
-              $('#removeHidden').transition('fade');
-              $('#privacytrans2').css("margin-bottom", "10em");
-            } else {
-              $('#removeHidden').transition('bounce');
-            }
-          }
-      });
-
-      hints.onhintclose(function(e) {
-       counter++;
-       clickCount = 0;
-       if($('#removeHidden').is(":visible")){
-         $('#removeHidden').transition('fade');
-         if($('#clickAllDotsWarning').is(":hidden")){
-           $('#privacytrans2').css("margin-bottom", "4em");
-         }
-       }
-       if(counter == 5) {
-         if($('#clickAllDotsWarning').is(':visible')){
-           $('#clickAllDotsWarning').transition('fade');
-           $('#privacytrans2').css("margin-bottom", "4em");
-         }
-         $( ".privacytrans2" ).addClass("green");
-       }
-      });
-
-      //error messaging
-      $('#privacytrans2').on('click', function() {
-        if(counter != 5){
-          //show the message normally the first time
-          if($('#clickAllDotsWarning').is(":hidden")){
-            $('#clickAllDotsWarning').transition('fade');
-            $('#privacytrans2').css("margin-bottom", "10em");
-          }else{
-            //otherwise, bounce the message to draw attention to it
-            $('#clickAllDotsWarning').transition('bounce');
-          }
-        }
-      });
-
-      //showing the "Need some help?" guidance message after a total of 2 minutes
-      setInterval(function(){
-        if($('#removeHidden').is(":hidden")){
-          if(counter != 5){
-            //user does not know to click blue dots
-            $('#removeHidden').transition('fade');
-            $('#privacytrans2').css('margin-bottom', '10em');
-          }
-        }
-      },120000);
-
-
-    });
-
-  };
-
-  /*$('#privacytrans2').on('click', function () {
-    if(counter != 5){
-      $('#clickAllDotsSim').show();
-    }
-  });*/
-
-  $(window).on("load", function() {startIntro();});
-
-$('.ui.dropdown')
-  .dropdown('set selected', '0');
+$('.ui.dropdown').dropdown('set selected', '0');

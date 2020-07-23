@@ -2,19 +2,17 @@ extends ../ui_layout
 
 block content
   
-  .ui.text.container(style="margin-bottom:4em;")
+  .ui.text.container.addBottomMargin
     br
     .ui.raised.segment
       h2.ui.header
-        //- i.check.square.outline.green.icon
         .content What should you do if you accidentally fall for a phishing scam? 
           br
           br
-        #hiddenEye.content(style="color:#696969;")
+        #hiddenEye.content.grayElement
           .sub.header 
             i.eye.icon 
             span Read and check all the boxes below
-            //-.ui.styled.fluid.accordion   
 
       .content.ui.list
           .item
@@ -41,7 +39,7 @@ block content
                   | to protect your information.
                   
     br
-    .ui.warning.message#checkAllWarning(style="display:none;")
+    .ui.warning.message#checkAllWarning
       .header
         | Check all the boxes to proceed
     .ui.big.labeled.icon.button#phishingTutGuideButton
@@ -50,3 +48,6 @@ block content
 
 block scripts
   script(src="/module_js/phishing/phishing_tut_guide.js")
+  
+block styles 
+  link(rel='stylesheet', href='/css/modules/phishing.css')

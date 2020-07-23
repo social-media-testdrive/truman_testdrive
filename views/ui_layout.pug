@@ -2,7 +2,6 @@
 doctype html
 html
   head
-    
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
@@ -26,9 +25,12 @@ html
     //- link(rel='manifest', href='/manifest.json')
     //link(rel='stylesheet', href='/semantic/dist/semantic.min.css')
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css', integrity='sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=', crossorigin='anonymous')
-    
     link(rel='stylesheet', href=cdn+'/js/lib/introjs.min.css')
+
+    link(rel='stylesheet', href='/css/header.css') 
     //-link(rel='stylesheet', href='/js/themes/introjs-nassim.css')
+    block styles
+    
     style(type='text/css').
       body {
       background-color: #F5F8FA;
@@ -64,6 +66,9 @@ html
       button
       {
         cursor: pointer;
+      }
+      .keyTermDefinition{
+        vertical-align: middle;
       }
       .ui.button
       {
@@ -117,6 +122,7 @@ html
       }
       .introjs-tooltiptext
       {
+        line-height: 120%;
         font-size: 135%;
       }
       .introjs-skipbutton.introjs-donebutton, .introjs-skipbutton.introjs-donebutton:hover
@@ -647,6 +653,10 @@ html
         font-size: 65%;
       }
       
+      .addBottomMargin{
+        margin-bottom: 4em;
+      }
+      
       /*--------SCREENSHOTS----------*/
       @media print{ 
         body * {
@@ -695,18 +705,30 @@ html
             i.checkmark.icon
             |   Done              
     include partials/ui_footer
-    
+    //- ToDo: process.env.instance == 'test'
+    if process.env.NODE_ENV == 'production'
+      script(src=cdn+'/js/lib/jquery-3.1.1.min.js')
+      script(src=cdn+'/js/lib/humanized_time_span.js')
+      script(src=cdn+'/js/lib/lazyload.transpiled.min.js')
+      script(src='//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js')
+      script(src='//cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js')
+      script(src=cdn+'/js/lib/intro.min.js')
+      script(src=cdn+'/js/lib/zxcvbn.js')
+      //script(src='/semantic/dist/semantic.min.js')
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js', integrity='sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=', crossorigin='anonymous')
+      script(src=cdn+'/js/main.js?v=1')
+    else
+      script(src=cdn+'/js/lib/jquery-3.1.1.min.js')
+      script(src=cdn+'/js/lib/humanized_time_span.js')
+      script(src=cdn+'/js/lib/lazyload.transpiled.min.js')
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js')
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.js')
+      script(src='/js/lib/intro.js')
+      script(src=cdn+'/js/lib/zxcvbn.js')
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.js')
+      - var t = '/main.js?t=' + (new Date()).getTime().toString();
+      script(src=t)
 
-    script(src=cdn+'/js/lib/jquery-3.1.1.min.js')
-    script(src=cdn+'/js/lib/humanized_time_span.js')
-    script(src=cdn+'/js/lib/lazyload.transpiled.min.js')
-    script(src='//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js')
-    script(src='//cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js')
-    script(src=cdn+'/js/lib/intro.min.js')
-    //script(src='/semantic/dist/semantic.min.js')
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js', integrity='sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=', crossorigin='anonymous')
-    
-    script(src=cdn+'/js/main10.js')
     block scripts
 
     //- // Google Analytics: change UA-XXXXX-X to be your site's ID

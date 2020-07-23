@@ -4,8 +4,8 @@ block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
 
   .ui.equal.width.padded.internally.celled.grid
-    .ten.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column(style="background-color:#FFFFFF; padding-bottom:4em;")
-      img.ui.fluid.image(src = cdn+'/post_pictures/spcookies.jpg' style="max-width:100%;")  
+    .ten.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.mainRecipe
+      img.ui.fluid.image(src=cdn+'/post_pictures/spcookies.jpg')  
       .ui.equal.width.padded.internally.celled.grid.stackable
         .ui.column.center.aligned
           h2 Confetti Cookies
@@ -44,22 +44,22 @@ block content
               |   Let's Continue!
 
           
-    .computer.only.tablet.only.six.wide.column
+    .computer.only.tablet.only.six.wide.column.sideRecipes
       h2 What's Cooking
       .ui.equal.width.padded.grid
         .row 
           .ui.column
-            img.ui.fluid.image(src=cdn+ '/post_pictures/Food_Interest_Page_2.jpg' style="object-fit:cover;width:130px;height:130px;")
+            img.ui.fluid.image(src=cdn+ '/post_pictures/Food_Interest_Page_2.jpg')
           .ui.column
             h4 Irresistable Fudge Brownies
         .row 
           .ui.column
-            img.ui.fluid.image(src= cdn +'/post_pictures/Food_Interest_Page_3.jpg' style="object-fit:cover;width:130px;height:130px;")
+            img.ui.fluid.image(src= cdn +'/post_pictures/Food_Interest_Page_3.jpg')
           .ui.column
             h4 Easy + Quick Dinners
         .row 
           .ui.column
-            img.ui.fluid.image(src= cdn +'/post_pictures/Food_Interest_Page_4.jpg' style="object-fit:cover;width:130px;height:130px;")
+            img.ui.fluid.image(src= cdn +'/post_pictures/Food_Interest_Page_4.jpg')
           .ui.column
             h4 'Tis the Season for Pies!
           
@@ -68,3 +68,6 @@ block scripts
     function startIntro(){
       window.location.href='/trans_script/targeted';
     };
+
+block styles
+  link(rel='stylesheet', href='/css/modules/targeted.css')

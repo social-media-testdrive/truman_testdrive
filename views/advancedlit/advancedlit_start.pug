@@ -1,0 +1,86 @@
+extends ../ui_layout
+
+block content
+  
+  .ui.text.container.addBottomMargin
+    br  
+    .ui.raised.segment
+    
+      h3.ui.header
+        i.book.blue.icon
+        .content
+          | Learn
+      hr
+      h5.ui.header
+        i.arrow.circle.right.blue.icon
+        .content
+          | Being connected on social media can help you get news as soon as 
+          | things happen, but early news reports might not be very detailed or 
+          | accurate.
+          
+      h5.ui.header
+        i.arrow.circle.right.blue.icon
+        .content
+          | News outlets are battling to report the news first, which means we 
+          | get news faster. But we have to be more careful about making sure 
+          | the news is accurate and complete.
+
+      h5.ui.header
+        i.arrow.circle.right.blue.icon
+        .content
+          | And even though breaking news can be inaccurate or incomplete, 
+          | people might share it on social media to get more “likes” and 
+          | shares, or to be seen as important, smart, and helpful.
+
+      br
+      #introduction_next.button.ui.mini.green.right.labeled.icon.button
+              i.down.arrow.icon
+              |   Next
+    
+    #question.ui.segment.hidden
+      h3.ui.header
+        i.key.blue.icon
+        .content Key Ideas
+      .sub.header 
+        i.hand.pointer.icon.grayElement
+        span.grayElement Click on each label below to learn more
+      br
+      .ui.stackable.two.column.grid
+        .ui.column
+          .keyTerm.ui.raised.segment
+            a.ui.blue.ribbon.label.keyTermLabel
+                span Breaking News
+            span.hidden.keyTermDefinition 
+              | Information being reported about an event that has just happened 
+              | or is currently occurring.
+      
+        .ui.column
+          .keyTerm.ui.raised.segment
+            a.ui.blue.ribbon.label.keyTermLabel
+                span Opinion
+            span.hidden.keyTermDefinition 
+              | A personal belief, view, or judgment about something.
+              
+        .ui.column
+          .keyTerm.ui.raised.segment
+            a.ui.blue.ribbon.label.keyTermLabel
+                span Fact Checking
+            span.hidden.keyTermDefinition 
+              | Verifying the information you see in news stories.
+              
+    .ui.warning.message#clickNextWarning
+      .header
+       | Click "Next"
+    .ui.warning.message#clickLabelsWarning
+     .header
+      | Click on each label to proceed 
+    a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
+        .ui.labeled.icon.button
+            i.rocket.icon
+            |   Got it!
+
+block scripts
+  script(src="/module_js/base_start.js")
+
+block styles
+  link(rel='stylesheet', href='/css/start.css')  

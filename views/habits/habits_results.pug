@@ -13,8 +13,8 @@ block content
               | Reflect
 
     .ui.raised.segment
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
+      .ui.label
+        h4
           | How many of these attention-grabbing design features did you notice?
       .content.checkOne
         .ui.form
@@ -24,25 +24,25 @@ block content
             .field
               .ui.checkbox
                 input(type='checkbox')
-                label(for='notifications', style="font-size:120%;", tabindex='0') Notifications
+                label(for='notifications', tabindex='0') Notifications
         .ui.form
           .inline.fields
             label(for='likes', name='likes') 
             .field
               .ui.checkbox
                 input(type='checkbox')
-                label(for='likes', style="font-size:120%;", tabindex='0') Likes and comments from other people
+                label(for='likes', tabindex='0') Likes and comments from other people
         .ui.form
           .inline.fields
             label(for='timeSpent', name='timeSpent') 
             .field
               .ui.checkbox
                 input(type='checkbox')
-                label(for='timeSpent', style="font-size:120%;", tabindex='0') Time spent on social media
+                label(for='timeSpent', tabindex='0') Time spent on social media
 
     .ui.raised.segment.responseTwo
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
+      .ui.label
+        h4
           | How many minutes do you think you spent on the TestDrive timeline?
     
       .ui.form
@@ -50,7 +50,7 @@ block content
         .ui.form
           .inline.fields(style="max-width:15em;")
             input.glowing-border(type='text' id="habits_responseTwo")
-            label(style="font-size:120%;")  &nbsp&nbspMinutes
+            label  &nbsp&nbspMinutes
       button.ui.green.button#checkTime Find out the actual time!
       br
       .ui.header(style="display:none;")#undoHide You actually spent:
@@ -69,8 +69,8 @@ block content
         
 
     .ui.raised.segment
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
+      .ui.label
+        h4
           | On the TestDrive timeline, what did you do to build a healthy social media habit?
       .content.checkTwo
         .ui.form
@@ -80,36 +80,36 @@ block content
             .field
               .ui.checkbox
                 input(type='checkbox')
-                label(for='wouldRead', style="font-size:120%;", tabindex='0') I reviewed the time spent on the site
+                label(for='wouldRead', tabindex='0') I reviewed the time spent on the site
         .ui.form
           .inline.fields
             label(for='checkSource', name='checkSource') 
             .field
               .ui.checkbox
                 input(type='checkbox')
-                label(for='checkSource', style="font-size:120%;", tabindex='0') I reduced the number of notifications that I get
+                label(for='checkSource', tabindex='0') I reduced the number of notifications that I get
         .ui.form
           .inline.fields
             label(for='corroboration', name='corroboration') 
             .field
               .ui.checkbox
                 input(type='checkbox')
-                label(for='corroboration', style="font-size:120%;", tabindex='0') I ignored the notifications
+                label(for='corroboration', tabindex='0') I ignored the notifications
         .ui.form
           .inline.fields
             label(for='corroboration', name='wouldViewAd') 
             .field
               .ui.checkbox
                 input(type='checkbox')
-                label(for='wouldViewAd', style="font-size:120%;", tabindex='0') I did not do anything to build a healthy social media habit
+                label(for='wouldViewAd', tabindex='0') I did not do anything to build a healthy social media habit
             
     .ui.raised.segment.responseFour
-      .ui.label(style="background-color:#2185d08a;color:#000000d1;")
-        h4(style="float:left")
+      .ui.label
+        h4
           | Why is it important to build healthy social media habits?
       .ui.form
         .inline.fields
-          label(style="font-size:120%;")
+          label
           textarea.glowing-border(rows='2' id="habits_responseFour")
           
           
@@ -127,5 +127,7 @@ block content
           
 block scripts
   script(src="/module_js/habits/habits_results.js")
-
+  
+block styles
+  link(rel='stylesheet', href='/css/results.css')
     

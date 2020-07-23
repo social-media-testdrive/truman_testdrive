@@ -1,8 +1,3 @@
-function openPostDigfootSim(){
-  $('input[type=checkbox]').prop('checked',false);
-  $('#digfoot_sim_modal').modal('show');
-};
-
 var hintsList=
 [
   {
@@ -51,3 +46,11 @@ var stepsList=
   }
 
 ]
+
+
+function eventsAfterHints() {
+  $('.img.post img').on('click', function(){
+    $('input[type=checkbox]').prop('checked',false);
+    $('#digfoot_sim_modal').modal('show');
+  });
+}

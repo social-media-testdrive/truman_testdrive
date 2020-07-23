@@ -709,6 +709,62 @@ exports.postUpdateInterestSelection = (req, res, next) => {
 
 /**
  * POST /account/profile
+ * Update profile information.Which ad topic did the user pick? Esteem module only.
+ */
+exports.postEsteemInterestSelection = (req, res, next) => {
+
+  User.findById(req.user.id, (err, user) => {
+    if (err) { return next(err); }
+
+    user.esteemTopic = req.body.chosenTopic || '';
+
+    user.save((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.send({result:"success"});
+    });
+  });
+};
+
+exports.getEsteemTopic = (req, res) => {
+    User.findById(req.user.id)
+      .exec(function (err, user){
+        let selectedTopic = user.esteemTopic;
+        res.json({esteemTopic: selectedTopic});
+      });
+};
+
+/**
+ * POST /account/profile
+ * Update profile information.Which ad topic did the user pick? Esteem module only.
+ */
+exports.postAdvancedlitInterestSelection = (req, res, next) => {
+
+  User.findById(req.user.id, (err, user) => {
+    if (err) { return next(err); }
+
+    user.advancedlitTopic = req.body.chosenTopic || '';
+
+    user.save((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.send({result:"success"});
+    });
+  });
+};
+
+exports.getAdvancedlitTopic = (req, res) => {
+    User.findById(req.user.id)
+      .exec(function (err, user){
+        let selectedTopic = user.advancedlitTopic;
+        res.json({advancedlitTopic: selectedTopic});
+      });
+};
+
+/**
+ * POST /account/profile
  * Update profile information. How long has the user looked at the free-play section? Habits module only.
  */
 exports.postUpdateHabitsTimer = (req, res, done) => {
@@ -765,11 +821,12 @@ exports.postUpdateProfile = (req, res, next) => {
     //user.profile.website = req.body.website || '';
     user.profile.bio = req.body.bio || '';
 
-    if (req.file)
-    {
-      //console.log("Changeing Picture now to: "+ req.file.filename);
-      user.profile.picture = req.file.filename;
-    }
+    user.profile.picture = req.body.profilePhoto;
+    // if (req.file)
+    // {
+    //   //console.log("Changeing Picture now to: "+ req.file.filename);
+    //   user.profile.picture = req.file.filename;
+    // }
 
     user.save((err) => {
       if (err) {

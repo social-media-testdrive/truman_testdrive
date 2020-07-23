@@ -6,7 +6,7 @@ block content
 
   .computer.only.tablet.only.four.wide.column 
 
-  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.addBottomMargin
     //-feed
 
     .ui.fluid.card.test.feedDisplay#step0
@@ -22,7 +22,7 @@ block content
             .description
               | CLicK NoW to get FREE movie tickets for a year!! 
               | Only 30 spots left 
-              span(style="color:#0000FF;")#shortenedURL http://bit.ly/FREEMOVIES
+              span#shortenedURL http://bit.ly/FREEMOVIES
           .three.ui.bottom.attached.icon.buttons
             .ui.reply.button(tabindex='0')
               i.reply.icon
@@ -85,7 +85,7 @@ block content
           .content
             .description
               | !!WARNING!! Your account has been deactivated. Click here to reactivate:  
-              span(style="color:#0000FF;")#shortenedURL2 testdrive.co/activate.
+              span#shortenedURL2 testdrive.co/activate.
               | This is a verified post by offical TestDrive administator account.
             //-.right.floated.meta
               i.icon.checkmark
@@ -110,7 +110,7 @@ block content
               input.newcomment(type='text' placeholder='Write a Comment')
               i.big.send.link.icon
                 
-    .ui.fluid.card.test.feedDisplay(style="margin-bottom:4em;")#step6
+    .ui.fluid.card.test.feedDisplay.addBottomMargin#step6
           .content
             .right.floated.meta= "Yesterday"
             |
@@ -122,7 +122,7 @@ block content
           #step4.content
             .description
               | Need ca$H FAST? The frist 500 people get $500!! Fill out survey NOW: 
-              span(style="color:#0000FF;")#shortenedURL3 http://give.away/quickca$h
+              span#shortenedURL3 http://give.away/quickca$h
           .three.ui.bottom.attached.icon.buttons
             .ui.reply.button(tabindex='0')
               i.reply.icon
@@ -174,6 +174,9 @@ block content
               i.big.send.link.icon
                                                  
 block scripts
+  script(src='/postFunctionalities.js')
   script(src="/module_js/phishing/phishing_tutorial.js")
-  
+
+block styles
+  link(rel='stylesheet', href='/css/modules/phishing.css')
     

@@ -15,10 +15,9 @@ block content
           .image
             img.post(src=cdn+'/post_pictures/digfootga1.jpg')
           #step4.content
-            .description="the first day after my bday and guess what i HAVE to do? clean your room says my mom i hate her so much!!!"
-            //-.right.floated.meta
-              i.icon.checkmark
-              | Seen by 12
+            .description
+              | the first day after my bday and guess what i HAVE to do? clean 
+              | your room says my mom i hate her so much!!!
           .three.ui.bottom.attached.icon.buttons
             .ui.reply.button(tabindex='0')
               i.reply.icon
@@ -66,9 +65,6 @@ block content
             img.post(src=cdn+"/post_pictures/digfootga3.jpg")
           .content
             .description="omg Lindsay I love you but you look ridiculous! lol"
-            //-.right.floated.meta
-              i.icon.checkmark
-              | Seen by 12
           .three.ui.bottom.attached.icon.buttons
             .ui.reply.button(tabindex='0')
               i.reply.icon
@@ -108,5 +104,6 @@ block content
     
 
 block scripts
+  script(src='/postFunctionalities.js')
   script(src="/module_js/digfoot/digfoot_tutorial.js")
     
