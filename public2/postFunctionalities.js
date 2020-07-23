@@ -133,8 +133,14 @@ async function addNewComment(event) {
         _csrf: $('meta[name="csrf-token"]').attr('content')
       });
 
-    // We store the page's hints on the body for easy access
-    document.body.hints.refresh();
+    try {
+      // We store the page's hints on the body for easy access
+      document.body.hints.refresh();
+    } catch (error) {
+      if( !(error instanceof TypeError) ){
+        console.error(error);
+      }
+    }
   }
 }
 
@@ -212,7 +218,14 @@ function flagComment() {
     });
   }
 
-  document.body.hints.refresh();
+  try {
+    // We store the page's hints on the body for easy access
+    document.body.hints.refresh();
+  } catch (error) {
+    if( !(error instanceof TypeError) ){
+      console.error(error);
+    }
+  }
 }
 
 // **********************************
