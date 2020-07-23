@@ -11,15 +11,15 @@ function likePost(){
   let target = $(event.target);
   console.log("CLICK LIKE");
   //if already liked, unlike if pressed
-  if (target.hasClass("red")) {
+  if (target.closest('.ui.like.button').hasClass("red")) {
     console.log("***********UNLIKE: post");
-    target.removeClass("red");
-    var label = $(this).next("a.ui.basic.red.left.pointing.label.count");
+    target.closest('.ui.like.button').removeClass("red");
+    var label = $(this).closest('.ui.like.button').next("a.ui.basic.red.left.pointing.label.count");
     label.html(function (i, val) { return val * 1 - 1 });
   }
   //since not red, this button press is a LIKE action
   else {
-    target.addClass("red");
+    target.closest('.ui.like.button').addClass("red");
     var label = $(this).next("a.ui.basic.red.left.pointing.label.count");
     label.html(function (i, val) { return val * 1 + 1 });
     var postID = $(this).closest(".ui.fluid.card.dim").attr("postID");
@@ -249,7 +249,7 @@ $(window).on('load', () => {
   $('.right.floated.time.meta, .date.sim, .time.notificationTime').each(addHumanizedTimeToPost);
 
   // like a post
-  $('.like.button').on('click', likePost);
+  $('.like.button').click(likePost);
 
   // create a new Comment
   $('i.big.send.link.icon').click(addNewComment);
