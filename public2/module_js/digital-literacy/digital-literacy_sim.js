@@ -55,6 +55,10 @@ $('.ui.accordion').accordion();
 
 function eventsAfterHints(){
   $('.articleLink').on('click', function(){
+    $('#next_steps').find('.accordion').accordion('close', 0);
+    $('#next_steps').find('.accordion').accordion('close', 1);
+    $('#next_steps').find('.accordion').accordion('close', 2);
+    $('#next_steps').find('.accordion').accordion('close', 3);
     $('#next_steps').modal('show');
   });
   $(".info_button").click(function () {

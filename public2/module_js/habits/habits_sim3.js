@@ -42,7 +42,7 @@ function customOnHintCloseFunction() {
 
    //do the glowing animation every 2 seconds
    function glowNotifications(){
-     $('#activityButton').transition('glow');
+     $('#activityButton').closest('.item').transition('glow');
    }
    glowNotifications();
    setInterval(glowNotifications, 2000);

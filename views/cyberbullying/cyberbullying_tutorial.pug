@@ -39,17 +39,18 @@ block content
               .metadata
                 span.date Yesterday
                 i.heart.icon
-                |  0 Likes
+                span.num=0
+                |  Likes
               #step3.text()
                 | When will you get it into your head that nobody wants to 
                 | hear from you!.
               #step5.actions
-                a.like Like
+                a.comment.like Like
                 a.flag Flag
       .content
         #step7.ui.fluid.left.labeled.right.icon.input()
           .ui.label            
-            img.ui.avatar.image(src=cdn+'/profile_pictures/user61.jpg', name="Jane Doe")
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
           input.newcomment(type='text', placeholder='Write a Message')
           i.big.send.link.icon
 

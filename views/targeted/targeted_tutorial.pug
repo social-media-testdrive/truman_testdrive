@@ -62,12 +62,13 @@ block content
                   .metadata
                     span.date Yesterday
                     i.heart.icon
-                    |  1 Likes
+                    span.num=1
+                    |  Likes
                   .text()
                     | yo check this out @jlp777
                   .actions
-                    a.like Like
-                    a.flag Flag
+                    a.comment.like Like
+                    a.comment.flag Flag
               .comment
                 a.avatar
                   img(src=cdn+'/profile_pictures/user10.jpg')
@@ -76,12 +77,13 @@ block content
                   .metadata
                     span.date Yesterday
                     i.heart.icon
-                    |  1 Likes
+                    span.num=1
+                    |  Likes
                   .text()
                     | Looks good
                   .actions
-                    a.like Like
-                    a.flag Flag
+                    a.comment.like Like
+                    a.comment.flag Flag
 
 block scripts
   script(src="/module_js/targeted/targeted_tutorial.js")

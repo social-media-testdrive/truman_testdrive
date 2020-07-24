@@ -52,13 +52,16 @@ block content
           
     //-#######################
     //-Notifications page  
-    button.ui.basic.button.notificationsDisplay.settingsButton
-      i.cog.icon
-      |   Settings
-      
-    button.ui.basic.button.notificationsDisplay#activityButton
-      i.clock.icon
-      |   My Activity
+    .ui.stackable.secondary.menu(style="margin-top:0")
+      .ui.container
+        .item(style="padding: 7px 0 7px 0")
+          button.ui.basic.button.notificationsDisplay.settingsButton
+            i.cog.icon
+            |   Settings
+        .item(style="padding: 7px 0 7px 0")
+          button.ui.basic.button.notificationsDisplay#activityButton
+            i.clock.icon
+            |   My Activity
       
     .ui.raised.segment.notificationsDisplay#hint2
      .ui.feed

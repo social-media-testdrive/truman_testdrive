@@ -71,12 +71,13 @@ block content
               .metadata
                 span.date Yesterday
                 i.heart.icon
-                |  2 Likes
+                span.num=2
+                |  Likes
               .text()
                 | #iphone #deals #sale #cybermonday #shoping
               .actions
-                a.like Like
-                a.flag Flag
+                a.comment.like Like
+                a.comment.flag Flag
           .comment
             a.avatar
               img(src=cdn+'/profile_pictures/user47.jpeg')
@@ -85,12 +86,13 @@ block content
               .metadata
                 span.date Yesterday
                 i.heart.icon
-                |  2 Likes
+                span.num=2
+                |  Likes
               .text()
                 | wow cool
               .actions
-                a.like Like
-                a.flag Flag
+                a.comment.like Like
+                a.comment.flag Flag
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
@@ -145,12 +147,13 @@ block content
               .metadata
                 span.date Yesterday
                 i.heart.icon
-                |  1 Like
+                span.num=1
+                |  Likes
               .text()
                 | omg where did you get these pancakes from???
               .actions
-                a.like Like
-                a.flag Flag
+                a.comment.like Like
+                a.comment.flag Flag
           .comment
             a.avatar
               img(src=cdn+'/profile_pictures/user70.JPG')
@@ -159,12 +162,13 @@ block content
               .metadata
                 span.date Yesterday
                 i.heart.icon
-                |  1 Like
+                span.num=1
+                |  Likes
               .text()
                 | #yummyinmytummy
               .actions
-                a.like Like
-                a.flag Flag
+                a.comment.like Like
+                a.comment.flag Flag
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
@@ -218,11 +222,12 @@ block content
               .metadata
                 span.date Yesterday
                 i.heart.icon
-                |  1 Like
+                span.num=1
+                |  Likes
               .text()
                 | I tried this and it really worked!!!
               .actions
-                a.like Like
+                a.comment.like Like
                 a.flag Flag
 
       .extra.content
@@ -278,12 +283,13 @@ block content
               .metadata
                 span.date Yesterday
                 i.heart.icon
-                |  3 Likes
+                span.num=3
+                |  Likes
               .text()
                 | Nice pic!
               .actions
-                a.like Like
-                a.flag Flag
+                a.comment.like Like
+                a.comment.flag Flag
 
           .comment
             a.avatar
@@ -293,12 +299,13 @@ block content
               .metadata
                 span.date Yesterday
                 i.heart.icon
-                |  1 Like
+                span.num=1
+                |  Likes
               .text()
                 | I think you're already pretty good
               .actions
-                a.like Like
-                a.flag Flag
+                a.comment.like Like
+                a.comment.flag Flag
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
@@ -310,7 +317,7 @@ block content
         i.rocket.icon
         |   Let's Continue!
         
-    .ui.large.long.modal#phishingModal
+    .ui.large.long.modal#phishingModal(style="margin-bottom:4em;")
       i.close.icon  
       .ui.center.aligned.header WOW! Get a new iPhone!!
       .ui.one.column.centered.grid
@@ -351,7 +358,7 @@ block content
               i.close.icon 
               
               
-    .ui.large.long.modal#phishingModal2
+    .ui.large.long.modal#phishingModal2(style="margin-bottom:4em;")
       i.close.icon  
       .ui.center.aligned.header 
         | Universal Theme Park ticket GIVAWAY!! Fill out surrvey NOW:

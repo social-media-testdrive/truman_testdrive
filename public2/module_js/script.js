@@ -90,6 +90,10 @@ $('.ui.dropdown.icon.item')
    */
 
     function openPost(){
+      $('#next_steps_modual').find('.accordion').accordion('close', 0);
+      $('#next_steps_modual').find('.accordion').accordion('close', 1);
+      $('#next_steps_modual').find('.accordion').accordion('close', 2);
+      $('#next_steps_modual').find('.accordion').accordion('close', 3);
       $('#next_steps_modual').modal('show');
     }
 

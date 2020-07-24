@@ -18,7 +18,7 @@ function startIntro(){
           {
             element: document.querySelectorAll('#step2')[0],
             intro: "If someone you don’t know asks for private information or pressures you to share personal things, there are some strategies you can use to respond.",
-            position: 'top',
+            position: 'left',
             highlightClass:"helperHelper"
 
           },
