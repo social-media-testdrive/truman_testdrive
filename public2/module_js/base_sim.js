@@ -19,6 +19,15 @@ function addCardIds(){
   $('.ui.card').each(function(){
      idString = `${subdirectory2}SimPost${id}`;
     $(this).attr('simPostNumber', idString);
+    // give comments IDs as well
+    let commentID = 1;
+    let commentIdString = "";
+    $(this).find('.comment').not('.like').not('.flag').each(function(){
+      console.log(`Comment ${commentID} of post ${id}`);
+      commentIdString = `${subdirectory2}_${id}_${commentID}`;
+      $(this).attr('commentID', commentIdString);
+      commentID++;
+    })
     id++;
   });
 }

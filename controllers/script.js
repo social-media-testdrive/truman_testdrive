@@ -492,7 +492,6 @@ exports.postUpdateFeedAction = (req, res, next) => {
     // Determine where the action is coming from and adjust the push location
 
     let userAction = user.feedAction;
-
     switch(req.body.actionType) {
       case 'guided activity':
         userAction = user.guidedActivityAction;
@@ -509,7 +508,6 @@ exports.postUpdateFeedAction = (req, res, next) => {
     let feedIndex = _.findIndex(userAction, function(o) {
       return o.post == req.body.postID;
     });
-
     if (feedIndex==-1) {
       //Post does not exist yet in User DB, so we have to add it now
       let cat = new Object();
@@ -557,16 +555,15 @@ exports.postUpdateFeedAction = (req, res, next) => {
     // Are we doing anything with an existing comment?
     else if(req.body.commentID) {
       let commentIndex = _.findIndex(userAction[feedIndex].comments, function(o){
-         return o.comment == req.body.commentID;
-       });
+        return o.comment == req.body.commentID;
+      });
 
       // no comment in this post-actions yet
       if(commentIndex==-1)
       {
         var cat = new Object();
         cat.comment = req.body.commentID;
-        userAction[feedIndex].comments.push(cat);
-        commentIndex = 0;
+        commentIndex = userAction[feedIndex].comments.push(cat) - 1;
       }
 
       // LIKE A COMMENT

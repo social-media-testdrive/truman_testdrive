@@ -322,6 +322,7 @@ end chat box code
         }
         $.post("/feed", {
           actionType: actionType,
+          modual: currentModuleForHeader,
           postID: postID,
           new_comment: date,
           comment_text: text,
@@ -362,7 +363,6 @@ end chat box code
         // var postID = $(this).closest(".ui.fluid.card").attr("postID");
         var commentID = comment.attr("commentID");
         var like = Date.now();
-        //console.log("#########COMMENT LIKE:  PostID: " + postID + ", Comment ID: " + commentID + " at time " + like);
         let postID;
         let actionType = 'free play';
         switch(currentPageForHeader){
@@ -379,6 +379,8 @@ end chat box code
             actionType = 'free play';
             break;
         }
+
+        console.log("#########COMMENT LIKE:  PostID: " + postID + ", Comment ID: " + commentID + " at time " + like);
 
         if ($(this).closest(".ui.fluid.card").attr("type") == 'userPost')
           $.post("/userPost_feed", {
@@ -428,8 +430,23 @@ end chat box code
     .on('click', function () {
 
       var comment = $(this).parents(".comment");
-      var postID = $(this).closest(".ui.fluid.card").attr("postID");
-      var typeID = $(this).closest(".ui.fluid.card").attr("type");
+      let postID;
+      let actionType = 'free play';
+      switch(currentPageForHeader){
+        case 'sim':
+          postID = $(this).closest(".ui.fluid.card").attr("simPostNumber");
+          actionType = 'guided activity';
+          break;
+        case 'modual':
+          postID = $(this).closest(".ui.fluid.card").attr("postID");
+          actionType = 'free play';
+          break;
+        default:
+          postID = $(this).closest(".ui.fluid.card").attr("postID");
+          actionType = 'free play';
+          break;
+      }
+      var typeID = $(this).closest(".ui.card").attr("type");
       var commentID = comment.attr("commentID");
       comment.replaceWith('<div class="comment" style="background-color:black;color:white"><h5 class="ui inverted header"><span>The admins will review this post further. We are sorry you had this experience.</span></h5></div>');
       var flag = Date.now();
@@ -437,10 +454,16 @@ end chat box code
       console.log("#########COMMENT FLAG:  PostID: " + postID + ", Comment ID: " + commentID + "  TYPE is " + typeID + " at time " + flag);
 
       if (typeID == 'userPost')
-        $.post("/userPost_feed", { postID: postID, commentID: commentID, flag: flag, _csrf: $('meta[name="csrf-token"]').attr('content') });
+        $.post("/userPost_feed", {
+          postID: postID,
+          commentID: commentID,
+          flag: flag,
+          _csrf: $('meta[name="csrf-token"]').attr('content')
+        });
       else
         $.post("/feed", {
-          actionType: 'free play',
+          actionType: actionType,
+          modual: currentModuleForHeader,
           postID: postID,
           commentID: commentID,
           flag: flag,
@@ -903,10 +926,10 @@ end button links
         let postID;
         let actionType = 'free play';
         if(currentPageForHeader === "sim"){
-          postID =  $(this).closest(".ui.fluid.card.dim").attr("simPostNumber");
+          postID =  $(this).closest(".ui.card").attr("simPostNumber");
           actionType = 'guided activity';
         } else {
-          postID = $(this).closest(".ui.fluid.card.dim").attr("postID");
+          postID = $(this).closest(".ui.card").attr("postID");
           actionType = 'free play';
         }
 
@@ -963,6 +986,7 @@ end button links
       $.post("/feed", {
         actionType: actionType,
         postID: postID,
+        modual: currentModuleForHeader,
         flag: 1,
         _csrf: $('meta[name="csrf-token"]').attr('content')
       });
