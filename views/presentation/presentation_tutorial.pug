@@ -38,13 +38,15 @@ block content
                   a.author Nina Ruiz
                   .metadata
                     span.date Yesterday
-                    i.heart.icon
-                    |  2 Likes
+                    .rating
+                      i.heart.icon
+                      span.num=2
+                      |  Likes
                   .text()
                     | love it
                   .actions
-                    a.like Like
-                    a.flag Flag
+                    a.comment.like Like
+                    a.comment.flag Flag
               .comment
                 a.avatar
                   img(src=cdn+'/profile_pictures/user63.jpg')
@@ -52,13 +54,15 @@ block content
                   a.author Liam Knapke
                   .metadata
                     span.date Yesterday
-                    i.heart.icon
-                    |  2 Likes
+                    .rating
+                      i.heart.icon
+                      span.num=2
+                      |  Likes
                   .text()
                     | Nice!
                   .actions
-                    a.like Like
-                    a.flag Flag
+                    a.comment.like Like
+                    a.comment.flag Flag
           .extra.content
             .ui.fluid.left.labeled.right.icon.input
               .ui.label
@@ -99,13 +103,15 @@ block content
                   a.author Ebony Darkness Raven Way
                   .metadata
                     span.date Yesterday
-                    i.heart.icon
-                    |  0 Likes
+                    .rating
+                      i.heart.icon
+                      span.num=0
+                      |  Likes
                   .text()
                     | lol same
                   .actions
-                    a.like Like
-                    a.flag Flag
+                    a.comment.like Like
+                    a.comment.flag Flag
               .comment
                 a.avatar
                   img(src=cdn+'/profile_pictures/user1.png')
@@ -113,13 +119,15 @@ block content
                   a.author Fake N. Ame
                   .metadata
                     span.date Yesterday
-                    i.heart.icon
-                    |  0 Likes
+                    .rating
+                      i.heart.icon
+                      span.num=0
+                      |  Likes
                   #step3.text()
                     | made an account just for this^
                   #step5.actions
-                    a.like Like
-                    a.flag Flag
+                    a.comment.like Like
+                    a.comment.flag Flag
           .extra.content
             .ui.fluid.left.labeled.right.icon.input
               .ui.label

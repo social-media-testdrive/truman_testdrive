@@ -17,14 +17,14 @@ function addCardIds(){
   let id = 1;
   let idString = "";
   $('.ui.card').each(function(){
-     idString = `${subdirectory2}SimPost${id}`;
+     idString = `${subdirectory2}_${subdirectory1}_post${id}`;
     $(this).attr('simPostNumber', idString);
     // give comments IDs as well
     let commentID = 1;
     let commentIdString = "";
     $(this).find('.comment').not('.like').not('.flag').each(function(){
       console.log(`Comment ${commentID} of post ${id}`);
-      commentIdString = `${subdirectory2}_${id}_${commentID}`;
+      commentIdString = `${subdirectory2}_${subdirectory1}_post${id}_comment${commentID}`;
       $(this).attr('commentID', commentIdString);
       commentID++;
     })
@@ -131,6 +131,7 @@ function startHints(){
     }
   });
 
+  document.body.hints = hints;
   // if a user is on the page for some time, they may not be clicking "got it"
   // on the dots. Show the help message suggesting that action.
   setInterval(showHelp, 120000);

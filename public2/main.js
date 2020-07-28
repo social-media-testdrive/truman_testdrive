@@ -331,6 +331,14 @@ end chat box code
       }
 
     }
+    try {
+      // We store the page's hints on the body for easy access
+      document.body.hints.refresh();
+    } catch (error) {
+      if( !(error instanceof TypeError) ){
+        console.error(error);
+      }
+    }
   });
 
 
@@ -471,6 +479,14 @@ end chat box code
         });
 
       introJs().refresh();
+      try {
+        // We store the page's hints on the body for easy access
+        document.body.hints.refresh();
+      } catch (error) {
+        if( !(error instanceof TypeError) ){
+          console.error(error);
+        }
+      }
     });
 
   //get add new feed post modal to work

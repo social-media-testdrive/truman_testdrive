@@ -61,13 +61,15 @@ block content
                   a.author Rob Yang
                   .metadata
                     span.date Yesterday
-                    i.heart.icon
-                    |  1 Likes
+                    .rating
+                      i.heart.icon
+                      span.num=1
+                      |  Likes
                   .text()
                     | yo check this out @jlp777
                   .actions
-                    a.like Like
-                    a.flag Flag
+                    a.comment.like Like
+                    a.comment.flag Flag
               .comment
                 a.avatar
                   img(src=cdn+'/profile_pictures/user10.jpg')
@@ -75,13 +77,15 @@ block content
                   a.author Franklin Robinson
                   .metadata
                     span.date Yesterday
-                    i.heart.icon
-                    |  1 Likes
+                    .rating
+                      i.heart.icon
+                      span.num=1
+                      |  Likes
                   .text()
                     | Looks good
                   .actions
-                    a.like Like
-                    a.flag Flag
+                    a.comment.like Like
+                    a.comment.flag Flag
 
 block scripts
   script(src="/module_js/targeted/targeted_tutorial.js")

@@ -40,13 +40,15 @@ block content
                   a.author Connor McCormick
                   .metadata
                     span.date 5 hours ago
-                    i.heart.icon
-                    |  2 Likes
+                    .rating
+                      i.heart.icon
+                      span.num=1
+                      |  Likes
                   .text()
                     | haha that sucks
                   .actions
-                    a.like Like
-                    a.flag Flag
+                    a.comment.like Like
+                    a.comment.flag Flag
           .extra.content
             .ui.fluid.left.labeled.right.icon.input
               .ui.label
@@ -87,13 +89,15 @@ block content
                   a.author Michelle Rose
                   .metadata
                     span.date 1 minute ago
-                    i.heart.icon
-                    |  0 Likes
+                    .rating
+                      i.heart.icon
+                      span.num=0
+                      |  Likes
                   .text()
                     | lol!!
                   .actions
-                    a.like Like
-                    a.flag Flag
+                    a.comment.like Like
+                    a.comment.flag Flag
           .extra.content
             .ui.fluid.left.labeled.right.icon.input
               .ui.label
