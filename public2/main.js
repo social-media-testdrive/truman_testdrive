@@ -266,7 +266,7 @@ end chat box code
   //create a new Comment
   $("i.big.send.link.icon").click(function () {
     var text = $(this).siblings("input.newcomment").val();
-    var card = $(this).parents(".ui.fluid.card");
+    var card = $(this).parents(".ui.card");
     var comments = card.find(".ui.comments")
     //no comments area - add it
     console.log("Comments is now " + comments.length)
@@ -312,13 +312,21 @@ end chat box code
           _csrf: $('meta[name="csrf-token"]').attr('content')
         });
       } else {
-        let postID;
-        if(currentPageForHeader === "sim"){
-          postID = card.attr("simPostNumber");
-          actionType = 'guided activity';
-        } else {
-          postID = card.attr("postID");
-          actionType = 'free play';
+        let postID = card.attr('postID');
+        switch(currentPageForHeader){
+          case 'sim':
+          case 'free-play':
+          case 'free-play2':
+          case 'free-play3':
+          case 'free-play4':
+            actionType = 'guided activity';
+            break;
+          case 'tutorial':
+            actionType = 'tutorial';
+            break;
+          default:
+            actionType = 'free play';
+            break;
         }
         $.post("/feed", {
           actionType: actionType,
@@ -371,24 +379,25 @@ end chat box code
         // var postID = $(this).closest(".ui.fluid.card").attr("postID");
         var commentID = comment.attr("commentID");
         var like = Date.now();
-        let postID;
+        let postID = $(this).closest(".ui.card").attr("postID");
         let actionType = 'free play';
         switch(currentPageForHeader){
           case 'sim':
-            postID = $(this).closest(".ui.fluid.card").attr("simPostNumber");
+          case 'free-play':
+          case 'free-play2':
+          case 'free-play3':
+          case 'free-play4':
             actionType = 'guided activity';
             break;
-          case 'modual':
-            postID = $(this).closest(".ui.fluid.card").attr("postID");
-            actionType = 'free play';
+          case 'tutorial':
+            actionType = 'tutorial';
             break;
           default:
-            postID = $(this).closest(".ui.fluid.card").attr("postID");
             actionType = 'free play';
             break;
         }
 
-        console.log("#########COMMENT LIKE:  PostID: " + postID + ", Comment ID: " + commentID + " at time " + like);
+        //console.log("#########COMMENT LIKE:  PostID: " + postID + ", Comment ID: " + commentID + " at time " + like);
 
         if ($(this).closest(".ui.fluid.card").attr("type") == 'userPost')
           $.post("/userPost_feed", {
@@ -407,28 +416,6 @@ end chat box code
             _csrf: $('meta[name="csrf-token"]').attr('content')
           });
         }
-
-          // if(currentPageForHeader === "sim"){
-          //   var simPostNumber = $(this).closest(".ui.fluid.card").attr("simPostNumber");
-          //   $.post("/feed", {
-          //     actionType: 'guided activity',
-          //     simPostNumber: simPostNumber,
-          //     modual: currentModuleForHeader,
-          //     commentID: commentID,
-          //     like: like,
-          //     _csrf: $('meta[name="csrf-token"]').attr('content')
-          //   });
-          // } else {
-          //   var postID = $(this).closest(".ui.fluid.card").attr("postID");
-          //   $.post("/feed", {
-          //     actionType: 'free play',
-          //     postID: postID,
-          //     commentID: commentID,
-          //     like: like,
-          //     _csrf: $('meta[name="csrf-token"]').attr('content')
-          //   });
-          // }
-
       }
 
     });
@@ -438,19 +425,20 @@ end chat box code
     .on('click', function () {
 
       var comment = $(this).parents(".comment");
-      let postID;
+      let postID = $(this).closest(".ui.card").attr("postID");
       let actionType = 'free play';
       switch(currentPageForHeader){
         case 'sim':
-          postID = $(this).closest(".ui.fluid.card").attr("simPostNumber");
+        case 'free-play':
+        case 'free-play2':
+        case 'free-play3':
+        case 'free-play4':
           actionType = 'guided activity';
           break;
-        case 'modual':
-          postID = $(this).closest(".ui.fluid.card").attr("postID");
-          actionType = 'free play';
+        case 'tutorial':
+          actionType = 'tutorial';
           break;
         default:
-          postID = $(this).closest(".ui.fluid.card").attr("postID");
           actionType = 'free play';
           break;
       }
@@ -939,16 +927,23 @@ end button links
         label.html(function (i, val) { return val * 1 + 1 });
         //var like = Date.now();
         //console.log("***********LIKE: post " + postID);
-        let postID;
+        let postID = $(this).closest(".ui.card").attr("postID");
         let actionType = 'free play';
-        if(currentPageForHeader === "sim"){
-          postID =  $(this).closest(".ui.card").attr("simPostNumber");
-          actionType = 'guided activity';
-        } else {
-          postID = $(this).closest(".ui.card").attr("postID");
-          actionType = 'free play';
+        switch(currentPageForHeader){
+          case 'sim':
+          case 'free-play':
+          case 'free-play2':
+          case 'free-play3':
+          case 'free-play4':
+            actionType = 'guided activity';
+            break;
+          case 'tutorial':
+            actionType = 'tutorial';
+            break;
+          default:
+            action = 'free play';
+            break;
         }
-
         $.post("/feed", {
           actionType: actionType,
           postID: postID,
@@ -989,16 +984,25 @@ end button links
   $('.flag.button')
     .on('click', function () {
 
-      var post = $(this).closest(".ui.fluid.card.dim");
-      let postID;
+      var post = $(this).closest(".ui.card");
+      let postID = post.attr("postID");
       let actionType = 'free play';
-      if(currentPageForHeader === "sim"){
-        postID =  post.attr("simPostNumber");
-        actionType = 'guided activity';
-      } else {
-        postID = post.attr("postID");
-        actionType = 'free play';
+      switch(currentPageForHeader){
+        case 'sim':
+        case 'free-play':
+        case 'free-play2':
+        case 'free-play3':
+        case 'free-play4':
+          actionType = 'guided activity';
+          break;
+        case 'tutorial':
+          actionType = 'tutorial';
+          break;
+        default:
+          actionType = 'free-play';
+          break;
       }
+
       $.post("/feed", {
         actionType: actionType,
         postID: postID,

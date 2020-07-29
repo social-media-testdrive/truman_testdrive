@@ -496,8 +496,8 @@ exports.postUpdateFeedAction = (req, res, next) => {
       case 'guided activity':
         userAction = user.guidedActivityAction;
         break;
-      case 'free play':
-        userAction = user.feedAction;
+      case 'tutorial':
+        userAction = user.tutorialAction;
         break;
       default:
         userAction = user.feedAction;

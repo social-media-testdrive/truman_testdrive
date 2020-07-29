@@ -18,7 +18,7 @@ function addCardIds(){
   let idString = "";
   $('.ui.card').each(function(){
      idString = `${subdirectory2}_${subdirectory1}_post${id}`;
-    $(this).attr('simPostNumber', idString);
+    $(this).attr('postID', idString);
     // give comments IDs as well
     let commentID = 1;
     let commentIdString = "";
