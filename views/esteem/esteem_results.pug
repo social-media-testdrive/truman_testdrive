@@ -2,7 +2,7 @@ extends ../ui_layout
 
 block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
-  -var chosenTopic = user.esteemTopic;
+  -var chosenTopic = user.esteemTopic[user.esteemTopic.length - 1];
   
   .ui.container.addBottomMargin
     .ui.stackable.column.grid
@@ -31,57 +31,43 @@ block content
                     img.ui.avatar.image(src=cdn+'/profile_pictures/user53.jpg')
                     span='Brielle Jordan'
                 .image
-                  img.post(src=cdn+'/post_pictures/basketball-team_se.jpg')
+                  img.post(src=cdn+'/post_pictures/bigmatch_se.jpg')
                 .content
                   .description
-                    | Wish my team wasn't always hanging out without me :( 
+                    | Watching the big match with my BFF!!
+                    span(style='color:#929292;')
+                      |  — with Hayden Abbey
           
-              .ui.fluid.card.dim
-                .content      
-                  a.left.floated(href='/user/habbey113')
-                    img.ui.avatar.image(src=cdn+'/profile_pictures/user4.jpg')
-                    span='Hayden Abbey'
-                .image
-                  img.post(src=cdn+'/post_pictures/softball_se.jpg')
-                .content
-                  .description
-                    | That feeling when your super old cleats make your feet 
-                    | hurt 😫
 
               .ui.fluid.card.dim
                 .content      
-                  a.left.floated(href='/user/bball_guy')
-                    img.ui.avatar.image(src=cdn+'/profile_pictures/user42.jpg')
-                    span='Neel Talwar'
+                  a.left.floated(href='/user/sassystar75')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user53.jpg')
+                    span='Brielle Jordan'
                 .image
-                  img.post(src=cdn+'/post_pictures/dunk_se.jpg')
+                  img.post(src=cdn+'/post_pictures/tryouts_se.jpg')
                 .content
                   .description
-                    | Watching my teammate dunk and wishing I could be that good
+                    | Wow, can't believe I'm the only one who made it to the 
+                    | next round of soccer tryouts from our group
+                    span(style='color:#929292;')
+                      |  — with Hayden Abbey, Jeremy Murray, and Corey King
                     
             if (chosenTopic == 'Gaming')
               
               .ui.fluid.card.dim
                 .content      
-                  a.left.floated(href='/user/Suzieee')
-                    img.ui.avatar.image(src=cdn+'/profile_pictures/user40.jpg')
-                    span='Susan Turner'
+                  a.left.floated(href='/user/asherballer')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user48.jpeg')
+                    span='Asher Michaels'
                 .image
-                  img.post(src=cdn+'/post_pictures/girl-gamer_se.jpg')
+                  img.post(src=cdn+'/post_pictures/computer-game_se.jpg')
                 .content
                   .description
-                    | Trying to figure out why no one wants to play with me😔
+                    | Totally beating everyone
+                    span(style='color:#929292;')
+                      |  — with Lindsay Stokes and Asher Michaels
 
-              .ui.fluid.card.dim
-                .content      
-                  a.left.floated(href='/user/princess_lindss')
-                    img.ui.avatar.image(src=cdn+'/profile_pictures/user30.jpg')
-                    span='Linsday Stokes'
-                .image
-                  img.post(src=cdn+'/post_pictures/switch_se.jpg')
-                .content
-                  .description
-                    | Wish I could have a new Switch like my bff 
 
               .ui.fluid.card.dim
                 .content      
@@ -92,42 +78,39 @@ block content
                   img.post(src=cdn+'/post_pictures/nintendo_se.jpg')
                 .content
                   .description
-                    | I don't think I will ever beat my friends at Mario Kart  
+                    | Playing online with my best friend  
+                    span(style='color:#929292;')
+                      |  — with Lindsay Stokes  
                     
             if (chosenTopic == 'Music')
               
               .ui.fluid.card.dim
-                .content      
-                  a.left.floated(href='/user/kilani244')
-                    img.ui.avatar.image(src=cdn+'/profile_pictures/user5.jpeg')
-                    span='Kiki Pualani'
+                .content     
+                  a.left.floated(href='/user/frank-the-best')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user10.jpg')
+                    span='Franklin Robinson' 
                 .image
                   img.post(src=cdn+'/post_pictures/concert-crowd_se.jpg')
                 .content
                   .description
-                    | When your friends go to a concert without you
+                    | We missed you at the concert Jeremy!
+                    span(style='color:#929292;')
+                      |  — with Kiki Pualani
 
+  
               .ui.fluid.card.dim
                 .content      
                   a.left.floated(href='/user/frank-the-best')
                     img.ui.avatar.image(src=cdn+'/profile_pictures/user10.jpg')
-                    span='Franklin Robinson'
+                    span='Franklin Robinson' 
                 .image
-                  img.post(src=cdn+'/post_pictures/electric_se.jpg')
+                  img.post(src=cdn+'/post_pictures/bestguitar_se.JPG')
                 .content
                   .description
-                    | Really wish I had one of these to play😢
-  
-              .ui.fluid.card.dim
-                .content      
-                  a.left.floated(href='/user/unicornsparkle')
-                    img.ui.avatar.image(src=cdn+'/profile_pictures/unicorn.jpg')
-                    span='Maya Rein'
-                .image
-                  img.post(src=cdn+'/post_pictures/piano-sad_se.jpg')
-                .content
-                  .description
-                    | I just want to not suck at playing😔
+                    | Inviting the best musicians from camp to make a song 
+                    | together.
+                    span(style='color:#929292;')
+                      |  — with Kiki Pualani and Nick Thomas
 
           br
           br

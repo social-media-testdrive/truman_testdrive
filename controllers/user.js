@@ -804,51 +804,52 @@ exports.getHabitsTimer = (req, res) => {
 
 /**
  * POST /account/profile
- * Update profile information.Which ad topic did the user pick? Targeted ads module only.
+ * Update profile information.Which ad topic did the user pick?
  */
 exports.postUpdateInterestSelection = (req, res, next) => {
 
   User.findById(req.user.id, (err, user) => {
-    if (err) { return next(err); }
-
-    user.targetedAdTopic = req.body.chosenTopic || '';
-
-    user.save((err) => {
-      if (err) {
-        return next(err);
-      }
-      res.send({result:"success"});
-    });
-  });
-};
-
-/**
- * POST /account/profile
- * Update profile information.Which ad topic did the user pick? Esteem module only.
- */
-exports.postEsteemInterestSelection = (req, res, next) => {
-
-  User.findById(req.user.id, (err, user) => {
-    if (err) { return next(err); }
-
-    user.esteemTopic = req.body.chosenTopic || '';
+    if (err) {
+      return next(err);
+    }
+    let userTopic = user.targetedAdTopic;
+    switch(req.body.subdirectory2){
+      case 'targeted':
+        userTopic = user.targetedAdTopic;
+        break;
+      case 'esteem':
+        userTopic = user.esteemTopic;
+        break;
+    }
+    if (userTopic) {
+      // this is NOT the first topic selected
+      userTopic.push(req.body.chosenTopic);
+    } else {
+      // this IS the first topic selected
+      userTopic = [req.body.chosenTopic];
+    }
 
     user.save((err) => {
       if (err) {
         return next(err);
       }
-      res.send({result:"success"});
-    });
-  });
-};
-
-exports.getEsteemTopic = (req, res) => {
-    User.findById(req.user.id)
-      .exec(function (err, user){
-        let selectedTopic = user.esteemTopic;
-        res.json({esteemTopic: selectedTopic});
+      res.send({
+        result:"success"
       });
+    });
+  });
 };
+
+// exports.getEsteemTopic = (req, res) => {
+//     User.findById(req.user.id)
+//       .exec(function (err, user){
+//         let selectedTopic = user.esteemTopic[user.esteemTopic.length - 1];
+//         console.log(`Topic: ${selectedTopic}`);
+//         res.json({
+//           esteemTopic: selectedTopic
+//         });
+//       });
+// };
 
 /**
  * POST /account/profile
@@ -865,7 +866,9 @@ exports.postAdvancedlitInterestSelection = (req, res, next) => {
       if (err) {
         return next(err);
       }
-      res.send({result:"success"});
+      res.send({
+        result:"success"
+      });
     });
   });
 };

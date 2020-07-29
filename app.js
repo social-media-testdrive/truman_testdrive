@@ -249,7 +249,7 @@ app.get('/', passportConfig.isAuthenticated, function (req, res) {
 //main route for getting the simulation (Free Play) for a given lesson mod
 app.get('/modual/:modId', passportConfig.isAuthenticated, scriptController.getScript);
 
-app.get('/esteemTopic', passportConfig.isAuthenticated, userController.getEsteemTopic);
+// app.get('/esteemTopic', passportConfig.isAuthenticated, userController.getEsteemTopic);
 app.get('/advancedlitTopic', passportConfig.isAuthenticated, userController.getAdvancedlitTopic);
 
 app.get('/habitsTimer', passportConfig.isAuthenticated, userController.getHabitsTimer);
@@ -559,7 +559,6 @@ app.post('/bluedot', passportConfig.isAuthenticated, scriptController.postBlueDo
 //app.post('/guidedActivityAction', passportConfig.isAuthenticated, scriptController.postGuidedActivityAction);
 app.post('/deleteUserFeedActions', passportConfig.isAuthenticated, scriptController.postDeleteFeedAction);
 app.post('/interest', passportConfig.isAuthenticated, userController.postUpdateInterestSelection);
-app.post('/esteemInterest', passportConfig.isAuthenticated, userController.postEsteemInterestSelection);
 app.post('/advancedlitInterest', passportConfig.isAuthenticated, userController.postAdvancedlitInterestSelection);
 app.post('/habitsTimer', passportConfig.isAuthenticated, userController.postUpdateHabitsTimer);
 //postDeleteAccount

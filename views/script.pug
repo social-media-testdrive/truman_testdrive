@@ -123,11 +123,11 @@ block content
     .ui.small.modal#whyAmISeeingThisAdModal(data-modalName="targeted_whyAdModal")
       i.close.icon
       .header Why am I seeing this ad?
-      if (user.targetedAdTopic == 'Sports')
+      if (user.targetedAdTopic[user.targetedAdTopic.length - 1] == 'Sports')
         .content(id="sports")
-      else if (user.targetedAdTopic == 'Food')
+      else if (user.targetedAdTopic[user.targetedAdTopic.length - 1] == 'Food')
         .content(id="food")
-      else if (user.targetedAdTopic == 'Gaming')
+      else if (user.targetedAdTopic[user.targetedAdTopic.length - 1] == 'Gaming')
         .content(id="gaming")
     
     //-Hide ad modal, used in targeted ads module. 

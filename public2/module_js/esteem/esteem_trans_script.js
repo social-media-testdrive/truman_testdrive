@@ -36,7 +36,7 @@ function customOnWindowLoad(){
         bot2FirstName = "Franklin";
         break;
       case 'Gaming':
-        eventKeyword = 'gaming meetup';
+        eventKeyword = 'gaming club';
         bot1Image = 'user30.jpg';
         bot1FullName = "Lindsay Stokes";
         bot1FirstName = "Lindsay";
@@ -76,9 +76,9 @@ function customOnWindowLoad(){
         Look out for posts from ${bot1FirstName} and ${bot2FirstName}.`
       },
       {
-        intro: `You may also see posts by other people that express red flag
-        feelings. Click on the posts to reflect on how Jeremy might feel when
-        he sees the posts.`
+        intro: `You may also see posts from other friends that could cause
+        Jeremy to have a red flag feeling. Click on these posts to think about
+        how Jeremy might feel and what he can do about it.`
       }
     ];
 

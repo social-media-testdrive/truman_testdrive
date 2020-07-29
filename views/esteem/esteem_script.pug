@@ -1,7 +1,7 @@
 extends ../script.pug
 
 block post
-  if (val.type === user.esteemTopic)
+  if (val.type === user.esteemTopic[user.esteemTopic.length - 1])
     if (val.info_text !== "")
       include ../partials/script/taggedPost
     else
@@ -11,7 +11,7 @@ block rightColumn
 
   .computer.only.four.wide.column
     .ui.sticky.compact.positive.message.advancedLitReminder
-      case user.esteemTopic
+      case user.esteemTopic[user.esteemTopic.length - 1]
         when "Music"
           p 
             | Remember that you are viewing Jeremy’s timeline, you are looking for 
