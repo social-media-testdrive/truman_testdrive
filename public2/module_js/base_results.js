@@ -1,95 +1,92 @@
-function recordResponses() {
-  // Records each response as an individual action written to the db.
-  // Different types of inputs are handled: text, checkbox, radio, and
-  // custom.
+let pathArray = window.location.pathname.split('/');
+const subdirectory2 = pathArray[2]; // idenifies the current module
+let actionArray = new Array(); // this array will be handed to Promise.all
 
-  let pathArray = window.location.pathname.split('/');
-  const subdirectory2 = pathArray[2]; // idenify the current module
-  let actionArray = new Array(); // this array will be handed to Promise.all
+function recordResponse(responseType){
+  // create new object with desired data to pass to the post request
+  let cat = new Object();
+  cat.modual = subdirectory2
+  cat.prompt = $(this).text();
+  // adjust variables depending on the response type
+  switch(responseType){
+    case 'written':
+      cat.writtenResponse = $(this)
+        .closest('.ui.label')
+          .siblings('.ui.form')
+            .find('textarea')
+            .val();
+      break;
+    case 'checkboxes':
+      // using bit shifting to record which boxes are checked
+      let checkboxInputs = 0b0; // does not need to be binary, useful for testing
+      let numberOfCheckboxes = 0; // record number of boxes to add any leading zeros during data exports
+      $(this).closest('.ui.segment').find('.ui.checkbox input').each(function(){
+        numberOfCheckboxes++;
+        if ($(this).is(":checked")){
+          checkboxInputs = checkboxInputs << 1;
+          checkboxInputs++;
+        } else {
+          checkboxInputs = checkboxInputs << 1;
+        }
+      });
+      cat.numberOfCheckboxes = numberOfCheckboxes;
+      cat.checkboxResponse = checkboxInputs;
+      break;
+    case 'radio':
+      let radioSelection = "";
+      radioSelection = $(this)
+        .closest('.ui.segment')
+          .find('.radio.checkbox input:checked')
+            .siblings('label')
+            .text();
+      cat.radioSelection = radioSelection;
+      break;
+    case 'habits_time_entry':
+      cat.writtenResponse = $(this)
+        .closest('.ui.label')
+          .siblings('.ui.form')
+            .find('input')
+            .val();
+      cat.checkedActualTime = $('.habitsReflectionCheckTime').is(":visible");
+      break;
+  }
 
-  // ****** Handling different input types ******
+  const jqxhr = $.post("/reflection", {
+    action: cat,
+    _csrf: $('meta[name="csrf-token"]').attr('content')
+  });
+  actionArray.push(jqxhr);
+}
 
-  // for standard text inputs
-  $('.reflectionPrompt').each(function(){
-    let cat = new Object();
-    cat.modual = subdirectory2
-    cat.prompt = $(this).text();
-    cat.writtenResponse = $(this).closest('.ui.label').siblings('.ui.form').find('textarea').val();
-    const jqxhr = $.post("/reflection", {
-      action: cat,
-      _csrf: $('meta[name="csrf-token"]').attr('content')
-    });
-    actionArray.push(jqxhr);
+function iterateOverPrompts() {
+
+  // Search for each prompt type.
+  // The types are: written, checkboxes, radio**, and habits_time_entry**.
+  // **Unusual prompt types that currently only occur once in the project.
+
+  $('.reflectionPrompt').each( function() {
+    return recordResponse.call($(this),'written');
   });
 
-  // for checkbox inputs
-  $('.reflectionCheckboxesPrompt').each(function(){
-    let cat = new Object();
-    cat.modual = subdirectory2
-    cat.prompt = $(this).text();
-    let checkboxInputs = 0b0;
-    let numberOfCheckboxes = 0;
-    $(this).closest('.ui.segment').find('.ui.checkbox input').each(function(){
-      numberOfCheckboxes++;
-      if ($(this).is(":checked")){
-        checkboxInputs = checkboxInputs << 1;
-        checkboxInputs++;
-      } else {
-        checkboxInputs = checkboxInputs << 1;
-      }
-    });
-    cat.numberOfCheckboxes = numberOfCheckboxes;
-    cat.checkboxResponse = checkboxInputs;
-    const jqxhr = $.post("/reflection", {
-      action: cat,
-      _csrf: $('meta[name="csrf-token"]').attr('content')
-    });
-    actionArray.push(jqxhr);
+  $('.reflectionCheckboxesPrompt').each( function() {
+    return recordResponse.call($(this),'checkboxes')
   });
 
-  // for radio box selections (currently only used once in the presentation module)
-  $('.reflectionRadioPrompt').each(function(){
-    let cat = new Object();
-    cat.modual = subdirectory2
-    cat.prompt = $(this).text();
-    let radioSelection = "";
-    radioSelection = $(this).closest('.ui.segment').find('.radio.checkbox input:checked').siblings('label').text();
-    cat.radioSelection = radioSelection;
-    const jqxhr = $.post("/reflection", {
-      action: cat,
-      _csrf: $('meta[name="csrf-token"]').attr('content')
-    });
-    actionArray.push(jqxhr);
+  $('.reflectionRadioPrompt').each( function() {
+    return recordResponse.call($(this),'radio')
   });
 
-  // specifically for the habits module: for the time spend on free play question
-  $('.reflectionHabitsTimeEntryPrompt').each(function(){
-    let cat = new Object();
-    cat.modual = subdirectory2
-    cat.prompt = $(this).text();
-    cat.writtenResponse = $(this).closest('.ui.label').siblings('.ui.form').find('input').val();
-    if ($('.habitsReflectionCheckTime').is(":visible")){
-      cat.checkedActualTime = true;
-    } else {
-      cat.checkedActualTime = false;
-    }
-    const jqxhr = $.post("/reflection", {
-      action: cat,
-      _csrf: $('meta[name="csrf-token"]').attr('content')
-    });
-    actionArray.push(jqxhr);
+  $('.reflectionHabitsTimeEntryPrompt').each( function() {
+    return recordResponse.call($(this),'habits_time_entry')
   });
 
-  // ********************************************
-
-  // wait to change pages until ALL post requests in actionArray return,
+  // wait to change pages until all post requests in actionArray return,
   // otherwise the post requests might get cancelled during the page change
   Promise.all(actionArray).then(function() {
     window.location.href = `/end/${pathArray[2]}`
   });
-
-} //end recordResponses()
+}
 
 $('.ui.big.green.labeled.icon.button.results_end').on('click', function () {
-  recordResponses();
+  return iterateOverPrompts();
 });
