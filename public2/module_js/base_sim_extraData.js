@@ -8,8 +8,9 @@ this function.
 
 function recordSimModalInputs(modalNameAttrStr) {
   let target = $(event.target);
-  const simPostNumber = target.closest('.ui.card').attr('simPostNumber');
-  const post = target.closest(".ui.fluid.card");
+  //const simPostNumber = target.closest('.ui.card').attr('simPostNumber');
+  const post = target.closest(".ui.card");
+  const postID = post.attr("postID");
   const modalOpenedTime = Date.now();
   let checkboxInputs = 0b0; // going to use bit shifting
 
@@ -39,7 +40,7 @@ function recordSimModalInputs(modalNameAttrStr) {
 
        $.post("/feed", {
          actionType: 'guided activity',
-         postID: simPostNumber,
+         postID: postID,
          modual: currentModule,
          modalName: modalName,
          modalOpenedTime: modalOpenedTime,

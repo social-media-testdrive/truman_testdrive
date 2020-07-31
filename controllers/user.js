@@ -840,16 +840,16 @@ exports.postUpdateInterestSelection = (req, res, next) => {
   });
 };
 
-// exports.getEsteemTopic = (req, res) => {
-//     User.findById(req.user.id)
-//       .exec(function (err, user){
-//         let selectedTopic = user.esteemTopic[user.esteemTopic.length - 1];
-//         console.log(`Topic: ${selectedTopic}`);
-//         res.json({
-//           esteemTopic: selectedTopic
-//         });
-//       });
-// };
+exports.getEsteemTopic = (req, res) => {
+    User.findById(req.user.id)
+      .exec(function (err, user){
+        let selectedTopic = user.esteemTopic[user.esteemTopic.length - 1];
+        console.log(`Topic: ${selectedTopic}`);
+        res.json({
+          esteemTopic: selectedTopic
+        });
+      });
+};
 
 /**
  * POST /account/profile
@@ -946,7 +946,7 @@ exports.postUpdateProfile = (req, res, next) => {
     cat.absoluteTimeChanged = Date.now();
     cat.name = req.body.name || '';
     cat.location = req.body.location || '';
-    cat.bio = req.body.bio = '';
+    cat.bio = req.body.bio || '';
     cat.picture= req.body.profilePhoto || '';
 
     user.profileHistory.push(cat);

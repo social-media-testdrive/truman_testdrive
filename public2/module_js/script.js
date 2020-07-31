@@ -6,8 +6,7 @@ var currentModule = pathArray[2];
 // Requires the data-modalName attribute string as a parameter
 function recordModalInputs(modalNameAttrStr) {
   let target = $(event.target);
-  const postNumber = target.closest('.ui.card').attr('postNumber');
-  const post = target.closest(".ui.fluid.card");
+  const post = target.closest(".ui.card");
   const postID = post.attr("postID");
   const modalOpenedTime = Date.now();
   let checkboxInputs = 0b0;
@@ -35,7 +34,9 @@ function recordModalInputs(modalNameAttrStr) {
       });
 
        $.post("/feed", {
+         actionType: 'free play',
          postID: postID,
+         modual: currentModule,
          modalName: modalName,
          modalOpenedTime: modalOpenedTime,
          modalViewTime: modalViewTime,
