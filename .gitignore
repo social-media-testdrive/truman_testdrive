@@ -11,6 +11,7 @@ lib-cov
 pids
 logs
 results
+outputFiles
 tmp
 
 #Build
@@ -35,3 +36,6 @@ bower_components
 # OS metadata
 .DS_Store
 Thumbs.db
+
+# misc files
+create-account-batch.js

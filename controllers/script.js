@@ -166,7 +166,7 @@ exports.getScript = (req, res, next) => {
                       var cat = new Object();
                       cat.body = user.feedAction[feedIndex].comments[i].comment_body;
                       cat.new_comment = user.feedAction[feedIndex].comments[i].new_comment;
-                      cat.time = user.feedAction[feedIndex].comments[i].time;
+                      cat.time = user.feedAction[feedIndex].comments[i].absTime;
                       cat.commentID = user.feedAction[feedIndex].comments[i].new_comment_id;
                       cat.likes = 0;
 
@@ -547,9 +547,18 @@ exports.postUpdateFeedAction = (req, res, next) => {
 
       // create a new cat.comment id for USER replies here to do actions on them. Empty now
       cat.absTime = Date.now();
-      cat.time = cat.absTime - user.createdAt;
+      // cat.time = cat.absTime - user.createdAt;
       userAction[feedIndex].comments.push(cat);
-      userAction[feedIndex].replyTime = [cat.time];
+
+      //array of replyTime is empty and we have a new (first) REPLY event
+      if ((!userAction[feedIndex].replyTime)) {
+        userAction[feedIndex].replyTime = [cat.absTime];
+      }
+
+      //Already have a replyTime Array, New REPLY event, need to add this to replyTime array
+      else if ((userAction[feedIndex].replyTime)) {
+        userAction[feedIndex].replyTime.push(cat.absTime);
+      }
     }
 
     // Are we doing anything with an existing comment?
@@ -569,7 +578,7 @@ exports.postUpdateFeedAction = (req, res, next) => {
       // LIKE A COMMENT
       if(req.body.like)
       {
-        let like = req.body.like - userAction[feedIndex].startTime
+        let like = req.body.like;
         if (userAction[feedIndex].comments[commentIndex].likeTime) {
           // this is NOT the first like
           userAction[feedIndex].comments[commentIndex].likeTime.push(like);
@@ -583,7 +592,7 @@ exports.postUpdateFeedAction = (req, res, next) => {
 
       // FLAG A COMMENT
       else if(req.body.flag) {
-        let flag = req.body.flag - userAction[feedIndex].startTime
+        let flag = req.body.flag;
         if (userAction[feedIndex].comments[commentIndex].flagTime) {
           // this is NOT the first flag
           userAction[feedIndex].comments[commentIndex].flagTime.push(flag);
@@ -601,19 +610,21 @@ exports.postUpdateFeedAction = (req, res, next) => {
 
       // array of flagTime is empty and we have a new (first) Flag event
       if ((!userAction[feedIndex].flagTime)&&req.body.flag) {
-        let flag = req.body.flag - userAction[feedIndex].startTime
+        let flag = req.body.flag;
         userAction[feedIndex].flagTime = [flag];
+        userAction[feedIndex].flagged = true;
       }
 
       //Already have a flagTime Array, New FLAG event, need to add this to flagTime array
       else if ((userAction[feedIndex].flagTime)&&req.body.flag) {
-        let flag = req.body.flag - userAction[feedIndex].startTime
+        let flag = req.body.flag;
         userAction[feedIndex].flagTime.push(flag);
+        userAction[feedIndex].flagged = true;
       }
 
       //array of likeTime is empty and we have a new (first) LIKE event
       else if ((!userAction[feedIndex].likeTime)&&req.body.like) {
-        let like = req.body.like - userAction[feedIndex].startTime
+        let like = req.body.like;
         userAction[feedIndex].likeTime = [like];
         userAction[feedIndex].liked = true;
       }
@@ -621,25 +632,9 @@ exports.postUpdateFeedAction = (req, res, next) => {
       //Already have a likeTime Array, New LIKE event, need to add this to likeTime array
       else if ((userAction[feedIndex].likeTime)&&req.body.like)
       {
-        let like = req.body.like - userAction[feedIndex].startTime;
+        let like = req.body.like;
         userAction[feedIndex].likeTime.push(like);
-        if (userAction[feedIndex].liked) {
-          userAction[feedIndex].liked = false;
-        } else {
-          userAction[feedIndex].liked = true;
-        }
-      }
-
-      //array of replyTime is empty and we have a new (first) REPLY event
-      else if ((!userAction[feedIndex].replyTime)&&req.body.reply) {
-        let reply = req.body.reply - userAction[feedIndex].startTime;
-        userAction[feedIndex].replyTime = [reply];
-      }
-
-      //Already have a replyTime Array, New REPLY event, need to add this to replyTime array
-      else if ((userAction[feedIndex].replyTime)&&req.body.reply) {
-        let reply = req.body.reply - userAction[feedIndex].startTime
-        userAction[feedIndex].replyTime.push(reply);
+        userAction[feedIndex].liked = true;
       }
 
       else {

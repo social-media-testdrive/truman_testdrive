@@ -291,14 +291,8 @@ end chat box code
             <a class="author">${ava_name}</a>
             <div class="metadata">
               <span class="date">${humanized_time_span(date)}</span>
-              <i class="heart icon"></i>
-              0 Likes
             </div>
             <div class="text">${text}</div>
-            <div class="actions">
-              <a class="like">Like</a>
-              <a class="flag">Flag</a>
-            </div>
           </div>
         </div>`;
       $(this).siblings("input.newcomment").val('');
@@ -910,6 +904,7 @@ end button links
     ;
 
   //this is the LIKE button for posts
+  // like a post
   $('.like.button')
     .on('click', function () {
       console.log("CLICK LIKE");
@@ -944,11 +939,12 @@ end button links
             action = 'free play';
             break;
         }
+        let like = Date.now();
         $.post("/feed", {
           actionType: actionType,
           postID: postID,
           modual: currentModuleForHeader,
-          like: 1,
+          like: like,
           _csrf: $('meta[name="csrf-token"]').attr('content')
         });
 
@@ -983,7 +979,7 @@ end button links
   // flag a post
   $('.flag.button')
     .on('click', function () {
-
+      let flag = Date.now();
       var post = $(this).closest(".ui.card");
       let postID = post.attr("postID");
       let actionType = 'free play';
@@ -1007,7 +1003,7 @@ end button links
         actionType: actionType,
         postID: postID,
         modual: currentModuleForHeader,
-        flag: 1,
+        flag: flag,
         _csrf: $('meta[name="csrf-token"]').attr('content')
       });
       console.log("Removing Post content now!");

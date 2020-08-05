@@ -233,23 +233,23 @@ block content
                           .content
                             a.author(href='/me/'+mod)=user.profile.name || user.username || user.id
                             .metadata
-                              span.date.sim=(Date.now() + comment.time)
-                              .rating
-                                if comment.liked
-                                  i.red.heart.icon
-                                  span=comment.likes
-                                  | Likes 
-                                else
-                                  i.heart.icon
-                                  span.num=comment.likes
-                                  |  Likes
+                              span.date.sim=(comment.time)
+                              //- .rating
+                              //-   if comment.liked
+                              //-     i.red.heart.icon
+                              //-     span=comment.likes
+                              //-     | Likes 
+                              //-   else
+                              //-     i.heart.icon
+                              //-     span.num=comment.likes
+                              //-     |  Likes
                             .text=comment.body
-                            .actions
-                              if comment.liked
-                                a.red.like.comment Like
-                              else
-                                a.like.comment Like
-                              a.flag.comment Flag
+                            //- .actions
+                            //-   if comment.liked
+                            //-     a.red.like.comment Like
+                            //-   else
+                            //-     a.like.comment Like
+                            //-   a.flag.comment Flag
                       //- Else this is a normal comment from the script
                       else
                         .comment(commentID=comment.commentID)
@@ -371,15 +371,15 @@ block content
                       .content
                         a.author(href='/me/'+mod)=user.profile.name || user.username || user.id
                         .metadata
-                          span.date.sim=(Date.now() + comment.time)
-                          .rating
-                            i.heart.icon
-                            span.num=0
-                            |  Likes
+                          span.date.sim=(comment.time)
+                          //- .rating
+                          //-   i.heart.icon
+                          //-   span.num=0
+                          //-   |  Likes
                         .text=comment.body
-                        .actions
-                          a.like.comment Like
-                          a.flag.comment Flag
+                        //- .actions
+                        //-   a.like.comment Like
+                        //-   a.flag.comment Flag
                   //- Else this is a normal comment from the script
                   else
                     .comment(commentID=comment.id)

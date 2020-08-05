@@ -963,7 +963,6 @@ exports.postUpdateProfile = (req, res, next) => {
         }
         return next(err);
       }
-      //req.flash('success', { msg: 'Profile information has been updated.' });
       res.redirect('/modual/'+req.param("modId"));
     });
   });

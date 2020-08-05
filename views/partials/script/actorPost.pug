@@ -69,15 +69,15 @@
               .content
                 a.author(href='/me/'+mod)=user.profile.name || user.username || user.id
                 .metadata
-                  span.date.sim=(Date.now() + comment.time)
-                  .rating
-                    i.heart.icon
-                    span.num=0
-                    |  Likes
+                  span.date.sim=(comment.time)
+                  //- .rating
+                  //-   i.heart.icon
+                  //-   span.num=0
+                  //-   |  Likes
                 .text=comment.body
-                .actions
-                  a.like.comment Like
-                  a.flag.comment Flag
+                //- .actions
+                //-   a.like.comment Like
+                //-   a.flag.comment Flag
           //- Else this is a normal comment from the script
           else
             .comment(commentID=comment.id)

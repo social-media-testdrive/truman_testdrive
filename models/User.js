@@ -121,10 +121,11 @@ const userSchema = new mongoose.Schema({
     rereadTimes: Number, //number of times post has been viewed by user (not used in TestDrive)
     startTime: Number, //always the newest startTime (full date in ms) (not used in TestDrive)
     liked: {type: Boolean, default: false}, //did the user like this post in the feed?
+    flagged: {type: Boolean, default: false}, //did the user flag this post in the feed?
     readTime : [Number], //array of how long a user read a post. Each read is a new element in this array
-    flagTime  : [Number], //same but for flagging
-    likeTime  : [Number], //same but for liking
-    replyTime  : [Number], //same but for commenting
+    flagTime  : [Date], //same but for flagging
+    likeTime  : [Date], //same but for liking
+    replyTime  : [Date], //same but for commenting
 
     // popup modal info
     modal: [new Schema({
@@ -141,15 +142,15 @@ const userSchema = new mongoose.Schema({
       comment: {type: Schema.ObjectId},//ID Reference for Script post comment
       liked: {type: Boolean, default: false}, //is liked?
       flagged: {type: Boolean, default: false},//is Flagged?
-      flagTime  : [Number], //array of flag times
-      likeTime  : [Number], //array of like times
+      flagTime  : [Date], //array of flag times
+      likeTime  : [Date], //array of like times
 
       new_comment: {type: Boolean, default: false}, //is new comment
       new_comment_id: Number,//ID for comment
       comment_body: String, //Original Body of User Post
       absTime: Date,
       commentTime: {type: Number},
-      time: {type: Number}
+      // time: {type: Number}
       },{_id: true, versionKey: false })]
     }, {_id: true, versionKey: false })],
 
@@ -177,22 +178,23 @@ const userSchema = new mongoose.Schema({
     modual: String, //which lesson mod did this take place in?
     startTime: Number, //always the newest startTime (full date in ms) (not used in TestDrive)
     liked: {type: Boolean, default: false}, //did the user like this post in the feed?
-    flagTime  : [Number], //same but for flagging
-    likeTime  : [Number], //same but for liking
-    replyTime  : [Number], //same but for commenting
+    flagged: {type: Boolean, default: false}, //did the user flag this post in the feed?
+    flagTime  : [Date], //same but for flagging
+    likeTime  : [Date], //same but for liking
+    replyTime  : [Date], //same but for commenting
     comments: [new Schema({
       comment: String,
       liked: {type: Boolean, default: false}, //is liked?
       flagged: {type: Boolean, default: false},//is Flagged?
-      flagTime  : [Number], //array of flag times
-      likeTime  : [Number], //array of like times
+      flagTime  : [Date], //array of flag times
+      likeTime  : [Date], //array of like times
 
       new_comment: {type: Boolean, default: false}, //is new comment
       new_comment_id: String,//ID for comment
       comment_body: String, //Original Body of User Post
       absTime: Date,
       commentTime: {type: Number},
-      time: {type: Number}
+      // time: {type: Number}
     },{_id: true, versionKey: false })]
   }, {_id: true, versionKey: false })],
 
@@ -202,9 +204,10 @@ const userSchema = new mongoose.Schema({
     modual: String, //which lesson mod did this take place in?
     startTime: Number, //always the newest startTime (full date in ms) (not used in TestDrive)
     liked: {type: Boolean, default: false}, //did the user like this post in the feed?
-    flagTime  : [Number], //same but for flagging
-    likeTime  : [Number], //same but for liking
-    replyTime  : [Number], //same but for commenting
+    flagged: {type: Boolean, default: false}, //did the user flag this post in the feed?
+    flagTime  : [Date], //same but for flagging
+    likeTime  : [Date], //same but for liking
+    replyTime  : [Date], //same but for commenting
 
     // popup modal info
     modal: [new Schema({
@@ -222,15 +225,15 @@ const userSchema = new mongoose.Schema({
       comment: String,
       liked: {type: Boolean, default: false}, //is liked?
       flagged: {type: Boolean, default: false},//is Flagged?
-      flagTime  : [Number], //array of flag times
-      likeTime  : [Number], //array of like times
+      flagTime  : [Date], //array of flag times
+      likeTime  : [Date], //array of like times
 
       new_comment: {type: Boolean, default: false}, //is new comment
       new_comment_id: String,//ID for comment
       comment_body: String, //Original Body of User Post
       absTime: Date,
       commentTime: {type: Number},
-      time: {type: Number}
+      // time: {type: Number}
     },{_id: true, versionKey: false })]
   }, {_id: true, versionKey: false })],
 
