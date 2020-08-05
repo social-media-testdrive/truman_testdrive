@@ -2,11 +2,12 @@ let pathArray = window.location.pathname.split('/');
 const subdirectory2 = pathArray[2]; // idenifies the current module
 let actionArray = new Array(); // this array will be handed to Promise.all
 
-function recordResponse(responseType){
+function recordResponse(responseType,timestamp){
   // create new object with desired data to pass to the post request
   let cat = new Object();
   cat.modual = subdirectory2
   cat.prompt = $(this).text();
+  cat.absoluteTimeContinued = timestamp;
   // adjust variables depending on the response type
   switch(responseType){
     case 'written':
@@ -60,24 +61,26 @@ function recordResponse(responseType){
 
 function iterateOverPrompts() {
 
+  let timestamp = Date.now();
+
   // Search for each prompt type.
   // The types are: written, checkboxes, radio**, and habits_time_entry**.
   // **Unusual prompt types that currently only occur once in the project.
 
   $('.reflectionPrompt').each( function() {
-    return recordResponse.call($(this),'written');
+    return recordResponse.call($(this),'written',timestamp);
   });
 
   $('.reflectionCheckboxesPrompt').each( function() {
-    return recordResponse.call($(this),'checkboxes')
+    return recordResponse.call($(this),'checkboxes',timestamp)
   });
 
   $('.reflectionRadioPrompt').each( function() {
-    return recordResponse.call($(this),'radio')
+    return recordResponse.call($(this),'radio',timestamp)
   });
 
   $('.reflectionHabitsTimeEntryPrompt').each( function() {
-    return recordResponse.call($(this),'habits_time_entry')
+    return recordResponse.call($(this),'habits_time_entry',timestamp)
   });
 
   // wait to change pages until all post requests in actionArray return,

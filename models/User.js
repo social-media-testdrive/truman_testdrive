@@ -239,6 +239,7 @@ const userSchema = new mongoose.Schema({
 
   // action in the reflection section
   reflectionAction: [new Schema({
+    absoluteTimeContinued: Date, //time that the user left the page by clicking continue
     modual: String, //which lesson mod did this take place in?
     prompt: String,
     writtenResponse: String,
