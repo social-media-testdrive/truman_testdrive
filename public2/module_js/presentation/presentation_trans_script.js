@@ -1,6 +1,6 @@
 const nextPageURL = 'modual';
 
-const stepsList = []
+const stepsList = [
   {
     intro: "Now you get to explore the TestDrive timeline! You can read and respond to what others have posted, or make your own posts."
   },
