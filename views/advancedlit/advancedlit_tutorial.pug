@@ -7,9 +7,9 @@ block content
   #content.sixteen.wide.column.centered.removeTopPadding.addBottomMargin
     .ui.one.column.centered.grid
       .ui.fixed.bottom.sticky
-        .ui.icon.message.success.hidden#instructionsToContinueOne
-          .content
-            .ui.header Click on the article to continue! 
+        //- .ui.icon.message.success.hidden#instructionsToContinueOne
+        //-   .content
+        //-     .ui.header Click on the Tornado Watch article to continue! 
         .ui.icon.message.success.hidden#instructionsToContinueTwo
           .content
             .ui.header Click the search button to continue! 
@@ -185,7 +185,7 @@ block content
                     img.ui.avatar.image(src=cdn+'/profile_pictures/user37.jpg')
                     span='Daniel Mai'
             .img.post.articleImage.articleTab(data-tab="two")        
-              img(src=cdn+'/post_pictures/tornado1_an.png')
+              img(src=cdn+'/post_pictures/tornado1_an_upd.png')
 
             .content.articleTab(data-tab="two")
               .description
@@ -227,7 +227,9 @@ block content
                   img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
                 input.newcomment(type='text' placeholder='Write a Comment')
                 i.big.send.link.icon      
-          
+          .ui.icon.message.success.hidden#instructionsToContinueOne
+            .content
+              .ui.header Click on the Tornado Watch article to continue! 
           .ui.fluid.card.dim()
             .ui.dimmer.flag
               .content
@@ -317,7 +319,7 @@ block content
                 | The Reed County Voice
               h1 
                 span#step2 BREAKING NEWS:
-                | Tornado Warning Issued in Reed County 
+                |  Tornado Warning Issued in Reed County 
               p Author: Jeremy Townsend
               p 45 minutes ago
           .row
@@ -326,7 +328,7 @@ block content
             .ten.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
               p.articleText 
                 span#step3 According to the National Hurricane Center (Source: 
-                | nhc.noaa.gov), a tornado watch was 
+                | nhc.noaa.gov), a tornado warning was 
                 | issued for Reed County today, effective immediately. Severe 
                 | wind gusts and large thunderstorms might lead to significant 
                 | damage to the local community. Residents are advised to 
@@ -362,7 +364,7 @@ block content
               p.resultPublished
                 | 2 hours ago
               p.resultPreviewText
-                | The National Weather Service issued a tornado watch at 3 p.m. 
+                | The National Weather Service issued a tornado warning at 3 p.m. 
                 | yesterday. Residents should expect large hail and very heavy 
                 | downpours starting early today.
 

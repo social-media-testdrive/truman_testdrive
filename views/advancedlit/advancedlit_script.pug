@@ -109,6 +109,21 @@ block content
     button.ui.big.green.button.searchTab(data-tab='search3')
       i.icon.search
       span.searchButtonText 
+      
+  .ui.tab(data-tab="article4" style="width:inherit; margin-bottom:8em;")
+    button.ui.big.testDriveBlue.button.timelineTab(data-tab='timeline')
+      i.icon.reply
+      | Return to the timeline
+    button.ui.big.green.button.searchTab(data-tab='search4')
+      i.icon.search
+      span.searchButtonText 
+    include ../partials/script/advancedlit_articleTab
+    button.ui.big.testDriveBlue.button.timelineTab(data-tab='timeline')
+      i.icon.reply
+      | Return to the timeline
+    button.ui.big.green.button.searchTab(data-tab='search4')
+      i.icon.search
+      span.searchButtonText 
     
   //- #########################################################################
   
@@ -169,6 +184,26 @@ block content
             i.icon.reply
             | Go back to the timeline
           button.ui.big.testDriveBlue.button.articleTab(data-tab='article3')
+            i.icon.reply
+            | Go back to the article
+            
+  .ui.tab(data-tab="search4" style="margin-bottom:8em;")
+    .ui.grid.gridInsideTab(style="margin-bottom:4em;")          
+      .row
+        .column
+          button.ui.big.testDriveBlue.button.timelineTab(data-tab='timeline')
+            i.icon.reply
+            | Go back to the timeline
+          button.ui.big.testDriveBlue.button.articleTab(data-tab='article4')
+            i.icon.reply
+            | Go back to the article
+      include ../partials/script/advancedlit_searchTab
+      .row
+        .column
+          button.ui.big.testDriveBlue.button.timelineTab(data-tab='timeline')
+            i.icon.reply
+            | Go back to the timeline
+          button.ui.big.testDriveBlue.button.articleTab(data-tab='article4')
             i.icon.reply
             | Go back to the article
       

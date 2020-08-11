@@ -39,7 +39,8 @@
         let dataTabAttribute = ($(this).closest('.ui.tab').attr('data-tab'));
         if( (dataTabAttribute === "article1")
         || (dataTabAttribute === "article2")
-        || (dataTabAttribute === "article3") ){
+        || (dataTabAttribute === "article3")
+        || (dataTabAttribute === "article4") ){
           $(this).find('.searchButtonText').text(articleData[dataTabAttribute].buttonText);
           $(this).find('.articleHeading').text(articleData[dataTabAttribute].headline);
           $(this).find('.articleSubheading').text(articleData[dataTabAttribute].subHeadline);
@@ -51,7 +52,8 @@
         }
         if( (dataTabAttribute === "search1")
         || (dataTabAttribute === "search2")
-        || (dataTabAttribute === "search3")){
+        || (dataTabAttribute === "search3")
+        || (dataTabAttribute === "search4")){
           $(this).find('.searchTitle').text(articleData['search'].searchTitle);
           $(this).find('.searchItem').each(function(){
             let itemNumber = $(this).attr('data-itemNumber');
@@ -72,11 +74,11 @@
     // TODO: look in to using history to fix the scroll issue
     alwaysRefresh: true,
     onLoad: function(tabPath){
-      console.log(tabPath);
       let endOfString = tabPath.substr(tabPath.length - 1);
       if ((endOfString === '1')
       || (endOfString === '2')
-      || (endOfString === '3')){
+      || (endOfString === '3')
+      || (endOfString === '4')){
         articleNumber = tabPath.substr(tabPath.length - 1);
         $(document).scrollTop(0);
       } else {

@@ -13,7 +13,8 @@ const firstStepsList = [
   },
   {
     element: '#step1',
-    intro: `Let's learn more about the story before sharing it with others!`,
+    intro: `Let's learn more about the story before sharing it with others!
+    Click on the tornado warning article to see what you can learn.`,
     position: "right"
   }
 ];
@@ -89,8 +90,8 @@ const fourthStepsList = [
   },
   {
     element: '#step1',
-    intro: `It's important not to share a news article that isn’t accurate since
-    you don't want others believing something that isn't true!`,
+    intro: `If you are not sure whether the article is accurate, do not share it
+    with others. You don't want others believing something that may not be true!`,
     position: "right",
     scrollTo: "element"
   }
@@ -128,7 +129,7 @@ function startIntro(){
   });
 
   intro.start().onexit(function() {
-    $('#instructionsToContinueOne').show();
+    $('#instructionsToContinueOne').transition('tada');
     $('.ui.card.articleCard').off();
     $('.ui.card.articleCard').on('click', function(){
       if($(this).hasClass('articleCardClickable')){

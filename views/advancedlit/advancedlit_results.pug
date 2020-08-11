@@ -17,8 +17,8 @@ block content
             h4
               i.exclamation.triangle.icon
 
-              | There were two breaking news and one opinion article about 
-              | Chestin hosting the olympics. Did you notice any of them?
+              | There were two breaking news articles and one opinion piece 
+              | about Chestin hosting the olympics. Did you notice any of them?
           br
           br
           .ui.stackable.three.cards
@@ -113,6 +113,15 @@ block content
                 label(for='ignored', tabindex='0') 
                   | I did not do anything 
 
+    .ui.raised.segment
+      .ui.label.resultsPromptLabel
+        h4
+          | Did you read any of the articles? Did you notice any signs that the 
+          | article may be inaccurate?
+      .ui.form
+        .inline.fields
+          label
+          textarea.glowing-border(rows='2' id="literacy_responseOne")
 
     .ui.raised.segment
       .ui.label.resultsPromptLabel
@@ -122,18 +131,8 @@ block content
       .ui.form
         .inline.fields
           label
-          textarea.glowing-border(rows='2' id="literacy_responseOne")
-    
-    .ui.raised.segment
-      .ui.label.resultsPromptLabel
-        h4
-          | Did you read any of the articles? What did you notice?
-      .ui.form
-        .inline.fields
-          label
           textarea.glowing-border(rows='2' id="literacy_responseTwo")
-
-
+    
     br
     .ui.big.green.labeled.icon.button(onclick="onPrint()")
           i.right.arrow.icon

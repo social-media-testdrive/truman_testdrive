@@ -7,10 +7,10 @@ let stepsList = [
   },
   {
     element: document.querySelectorAll('#generalStep')[0],
-    intro: `Click on the blue dots&nbsp;<a role='button' tabindex='0'
-      class='introjs-hint'><div class='introjs-hint-dot'></div>
-      <div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;
-      to learn more...`,
+    intro: `Click on "Done" and then look for the blue dots&nbsp;<a role='button' tabindex='0'
+    class='introjs-hint'><div class='introjs-hint-dot'></div><div
+    class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;
+    to learn more!`,
     position: "right",
     scrollTo: 'tooltip'
   }

@@ -11,6 +11,16 @@
   },
   "article2": {
     "buttonText": "Search for \"Chestin CA Olympics\"",
+    "headline": "Breaking News: City of Chestin Wins Race to Host 2032 Olympic Games",
+    "subHeadline": "Chestin Daily",
+    "author": "Author: Amy Huang",
+    "date": "1 hour ago",
+    "image": "https://dhpd030vnpk29.cloudfront.net/post_pictures/olympic1_orig.jpg",
+    "block1": "The City of Chestin, CA has won the race to host the 2032 Olympic Games after advancing to the final round of voting by the International Olympic Committee's members. Some members of the community were seen celebrating on the street. One of them shared his excitement with a local newspaper saying: ‘2032, see you at Chestin.’",
+    "block2": "In the past, Chestin’s mayor has shown her support for hosting the olympics saying the city is \"clean, safe, and has the infrastructure to take on the logistical hurdles of running one of the most spectacular sporting events in the world.\""
+  },
+  "article3": {
+    "buttonText": "Search for \"Chestin CA Olympics\"",
     "headline": "Opinion: Hosting Olympic Games Could Boost Local Economy",
     "subHeadline": "Chestin Daily",
     "author": "Author: Alex Hubright",
@@ -19,7 +29,7 @@
     "block1": "With initial reports coming in of cities submitting a bid to host the 2032 Olympic Games, I dare say the city of Chestin has waited many years to experience this joy. Hosting the Olympic Games can have several economic benefits associated with the city such as ticket sales, increased employment, broadcast revenue, sponsorships, and increased tourism.",
     "block2": "With its state-of-the-art infrastructure and transportation networks, and a government reserve fund of $30 billion, Chestin is the safest, most reliable city to host the Olympic Games. 2032, see you at Chestin."
   },
-  "article3": {
+  "article4": {
     "buttonText": "Search for \"Chestin CA Olympics\"",
     "headline": "Chestin Submits Bid as Olympic Host City",
     "subHeadline": "California Local News",

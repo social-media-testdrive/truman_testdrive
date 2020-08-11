@@ -5,13 +5,14 @@ function onPrint(){
     $(".insertPrint").append("<br><h4>What did you do when you saw an advertisement or a sponsored post?</h4>");
     $(".checkOne").clone().appendTo(".insertPrint");
 
-    $(".insertPrint").append("<br><h4>Why is it important to get the full story before reacting to or sharing breaking news?</h4>");
+    $(".insertPrint").append("<br><h4>Did you read any of the articles? Did you notice any signs that the article may be inaccurate?</h4>");
     var responseOne = document.getElementById("literacy_responseOne").value;
     $(".insertPrint").append(responseOne);
 
-    $(".insertPrint").append("<br><h4>Did you read any of the articles? What did you notice?</h4>");
+    $(".insertPrint").append("<br><h4>Why is it important to get the full story before reacting to or sharing breaking news?</h4>");
     var responseTwo = document.getElementById("literacy_responseTwo").value;
     $(".insertPrint").append(responseTwo);
+
 
     window.print();
 

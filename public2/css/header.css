@@ -127,3 +127,14 @@
 /* used technique provided by user bookcasey in the following post,
 including the technique for responsiveness provided by user AaronDanielson:
 https://stackoverflow.com/questions/19642308/creating-css3-circles-connected-by-lines */
+
+/* extra large desktops, arbitrarily chosen cutoff */
+@media (min-width: 2300px) {
+  .progressStep {
+    margin: 0 1vw 0 1vw;
+  }
+  .progressStep::before{
+    left: -2vw;
+    width: 2vw;
+  }
+}
