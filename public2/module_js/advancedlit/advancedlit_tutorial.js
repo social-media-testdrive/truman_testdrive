@@ -129,7 +129,8 @@ function startIntro(){
   });
 
   intro.start().onexit(function() {
-    $('#instructionsToContinueOne').transition('tada');
+    $('#instructionsToContinueOne').show();
+    $(".articleCard").css("box-shadow", "0px 0px 15px #14a1f6")
     $('.ui.card.articleCard').off();
     $('.ui.card.articleCard').on('click', function(){
       if($(this).hasClass('articleCardClickable')){
