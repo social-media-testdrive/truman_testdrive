@@ -41,18 +41,60 @@ function updateProgressBar(){
       case '2':
         changeActiveProgressTo("#headerStep2");
         $('.hideHeader').css('display', 'block');
+        $('#headerStep1').on('click', function(){
+          window.location.href = `/tutorial/${currentModuleForHeader}`;
+        });
         break;
       case '3':
         changeActiveProgressTo("#headerStep3");
         $('.hideHeader').css('display', 'block');
+        $('#headerStep1').on('click', function(){
+          window.location.href = `/tutorial/${currentModuleForHeader}`;
+        });
+        $('#headerStep2').on('click', function(){
+          window.location.href = `/sim/${currentModuleForHeader}`;
+        });
         break;
       case '4':
         changeActiveProgressTo("#headerStep4");
         $('.hideHeader').css('display', 'block');
+        $('#headerStep1').on('click', function(){
+          window.location.href = `/tutorial/${currentModuleForHeader}`;
+        });
+        $('#headerStep2').on('click', function(){
+          window.location.href = `/sim/${currentModuleForHeader}`;
+        });
+        $('#headerStep3').on('click', function(){
+          if(currentModuleForHeader === "accounts"){
+            window.location.href = `/sim/${currentModuleForHeader}`;
+          } else if(currentModuleForHeader === "privacy"){
+            window.location.href = `/free-play/${currentModuleForHeader}`;
+          } else {
+            window.location.href = `/modual/${currentModuleForHeader}`;
+          }
+        });
         break;
       case 'end':
         $('#headerStep1, #headerStep2, #headerStep3, #headerStep4').removeClass('progressBarActive');
         $('.hideHeader').css('display', 'block');
+        $('#headerStep1').on('click', function(){
+          window.location.href = `/tutorial/${currentModuleForHeader}`;
+        });
+        $('#headerStep2').on('click', function(){
+          window.location.href = `/sim/${currentModuleForHeader}`;
+        });
+        $('#headerStep3').on('click', function(){
+          if(currentModuleForHeader === "accounts"){
+            window.location.href = `/sim/${currentModuleForHeader}`;
+          } else if(currentModuleForHeader === "privacy"){
+            window.location.href = `/free-play/${currentModuleForHeader}`;
+          } else {
+            window.location.href = `/modual/${currentModuleForHeader}`;
+          }
+        });
+        $('#headerStep4').on('click', function(){
+          window.location.href = `/results/${currentModuleForHeader}`;
+        });
         break;
       default:
         console.log('Progress bar is not visible right now');
