@@ -474,14 +474,7 @@ exports.newPost = (req, res) => {
   });
 };
 
-/*
- POST /feed/
- Update user's actions on posts throughout a module.
- All likes, flags, popup interactions, new comments (with actions on those
- comments as well) get added here
-*/
-exports.postUpdateFeedAction = (req, res, next) => {
-
+function _postAction(req, res, next, functionToRun){
   User.findById(req.user.id, (err, user) => {
 
     // somehow user does not exist here
@@ -489,158 +482,7 @@ exports.postUpdateFeedAction = (req, res, next) => {
       return next(err);
     }
 
-    // Determine where the action is coming from and adjust the push location
-
-    let userAction = user.feedAction;
-    switch(req.body.actionType) {
-      case 'guided activity':
-        userAction = user.guidedActivityAction;
-        break;
-      case 'tutorial':
-        userAction = user.tutorialAction;
-        break;
-      default:
-        userAction = user.feedAction;
-        break;
-    }
-
-    // Then find the object from the right post in feed
-    let feedIndex = _.findIndex(userAction, function(o) {
-      return o.post == req.body.postID;
-    });
-    if (feedIndex==-1) {
-      //Post does not exist yet in User DB, so we have to add it now
-      let cat = new Object();
-
-      cat.modual = req.body.modual;
-      cat.post = req.body.postID;
-      cat.startTime = 0;
-      //cat.rereadTimes = 0;
-      // add new post into correct location
-      feedIndex = userAction.push(cat) - 1;
-    }
-
-    // userAction is the correct action array
-    // we found the right post
-    // and feedIndex is the correct index for that post in the action array
-
-    // interaction with a popup modal
-    if (req.body.modalName) {
-        let modalInfo = new Object();
-        modalInfo.modalOpened = true;
-        modalInfo.modalName = req.body.modalName;
-        modalInfo.modalOpenedTime = req.body.modalOpenedTime;
-        modalInfo.modalViewTime = req.body.modalViewTime;
-        modalInfo.modalCheckboxesCount = req.body.modalCheckboxesCount;
-        modalInfo.modalCheckboxesInput = req.body.modalCheckboxesInput;
-        userAction[feedIndex].modal.push(modalInfo);
-    }
-
-    // create a new Comment
-    if (req.body.new_comment) {
-      let cat = new Object();
-      cat.new_comment = true;
-      user.numReplies = user.numReplies + 1;
-      cat.new_comment_id = user.numReplies;
-      cat.comment_body = req.body.comment_text;
-      //cat.commentTime = req.body.new_comment - userAction[feedIndex].startTime;
-
-      // create a new cat.comment id for USER replies here to do actions on them. Empty now
-      cat.absTime = Date.now();
-      // cat.time = cat.absTime - user.createdAt;
-      userAction[feedIndex].comments.push(cat);
-
-      //array of replyTime is empty and we have a new (first) REPLY event
-      if ((!userAction[feedIndex].replyTime)) {
-        userAction[feedIndex].replyTime = [cat.absTime];
-      }
-
-      //Already have a replyTime Array, New REPLY event, need to add this to replyTime array
-      else if ((userAction[feedIndex].replyTime)) {
-        userAction[feedIndex].replyTime.push(cat.absTime);
-      }
-    }
-
-    // Are we doing anything with an existing comment?
-    else if(req.body.commentID) {
-      let commentIndex = _.findIndex(userAction[feedIndex].comments, function(o){
-        return o.comment == req.body.commentID;
-      });
-
-      // no comment in this post-actions yet
-      if(commentIndex==-1)
-      {
-        var cat = new Object();
-        cat.comment = req.body.commentID;
-        commentIndex = userAction[feedIndex].comments.push(cat) - 1;
-      }
-
-      // LIKE A COMMENT
-      if(req.body.like)
-      {
-        let like = req.body.like;
-        if (userAction[feedIndex].comments[commentIndex].likeTime) {
-          // this is NOT the first like
-          userAction[feedIndex].comments[commentIndex].likeTime.push(like);
-        } else {
-          // this IS the first like
-          userAction[feedIndex].comments[commentIndex].likeTime = [like];
-        }
-        userAction[feedIndex].comments[commentIndex].liked = true;
-
-      }
-
-      // FLAG A COMMENT
-      else if(req.body.flag) {
-        let flag = req.body.flag;
-        if (userAction[feedIndex].comments[commentIndex].flagTime) {
-          // this is NOT the first flag
-          userAction[feedIndex].comments[commentIndex].flagTime.push(flag);
-        } else {
-          // this IS the first flag
-          userAction[feedIndex].comments[commentIndex].flagTime = [flag];
-        }
-        userAction[feedIndex].comments[commentIndex].flagged = true;
-      }
-
-    } // end of all comment junk
-
-    // else not a comment - it's a post action
-    else {
-
-      // array of flagTime is empty and we have a new (first) Flag event
-      if ((!userAction[feedIndex].flagTime)&&req.body.flag) {
-        let flag = req.body.flag;
-        userAction[feedIndex].flagTime = [flag];
-        userAction[feedIndex].flagged = true;
-      }
-
-      //Already have a flagTime Array, New FLAG event, need to add this to flagTime array
-      else if ((userAction[feedIndex].flagTime)&&req.body.flag) {
-        let flag = req.body.flag;
-        userAction[feedIndex].flagTime.push(flag);
-        userAction[feedIndex].flagged = true;
-      }
-
-      //array of likeTime is empty and we have a new (first) LIKE event
-      else if ((!userAction[feedIndex].likeTime)&&req.body.like) {
-        let like = req.body.like;
-        userAction[feedIndex].likeTime = [like];
-        userAction[feedIndex].liked = true;
-      }
-
-      //Already have a likeTime Array, New LIKE event, need to add this to likeTime array
-      else if ((userAction[feedIndex].likeTime)&&req.body.like)
-      {
-        let like = req.body.like;
-        userAction[feedIndex].likeTime.push(like);
-        userAction[feedIndex].liked = true;
-      }
-
-      else {
-        //console.log("Got a POST that did not fit anything. Possible Error.")
-      }
-    }//end of ELSE ANYTHING NOT A COMMENT
+    functionToRun(req, user);
 
     // save to DB
     user.save((err) => {
@@ -658,6 +500,169 @@ exports.postUpdateFeedAction = (req, res, next) => {
       });
     });
   });
+}
+
+
+function _postUpdateFeedAction(req, user){
+  let userAction = user.feedAction;
+  switch(req.body.actionType) {
+    case 'guided activity':
+      userAction = user.guidedActivityAction;
+      break;
+    case 'tutorial':
+      userAction = user.tutorialAction;
+      break;
+    default:
+      userAction = user.feedAction;
+      break;
+  }
+
+  // Then find the object from the right post in feed
+  let feedIndex = _.findIndex(userAction, function(o) {
+    return o.post == req.body.postID;
+  });
+  if (feedIndex==-1) {
+    //Post does not exist yet in User DB, so we have to add it now
+    let cat = new Object();
+
+    cat.modual = req.body.modual;
+    cat.post = req.body.postID;
+    cat.startTime = 0;
+    //cat.rereadTimes = 0;
+    // add new post into correct location
+    feedIndex = userAction.push(cat) - 1;
+  }
+
+  // userAction is the correct action array
+  // we found the right post
+  // and feedIndex is the correct index for that post in the action array
+
+  // interaction with a popup modal
+  if (req.body.modalName) {
+      let modalInfo = new Object();
+      modalInfo.modalOpened = true;
+      modalInfo.modalName = req.body.modalName;
+      modalInfo.modalOpenedTime = req.body.modalOpenedTime;
+      modalInfo.modalViewTime = req.body.modalViewTime;
+      modalInfo.modalCheckboxesCount = req.body.modalCheckboxesCount;
+      modalInfo.modalCheckboxesInput = req.body.modalCheckboxesInput;
+      userAction[feedIndex].modal.push(modalInfo);
+  }
+
+  // create a new Comment
+  if (req.body.new_comment) {
+    let cat = new Object();
+    cat.new_comment = true;
+    user.numReplies = user.numReplies + 1;
+    cat.new_comment_id = user.numReplies;
+    cat.comment_body = req.body.comment_text;
+    //cat.commentTime = req.body.new_comment - userAction[feedIndex].startTime;
+
+    // create a new cat.comment id for USER replies here to do actions on them. Empty now
+    cat.absTime = Date.now();
+    // cat.time = cat.absTime - user.createdAt;
+    userAction[feedIndex].comments.push(cat);
+
+    //array of replyTime is empty and we have a new (first) REPLY event
+    if ((!userAction[feedIndex].replyTime)) {
+      userAction[feedIndex].replyTime = [cat.absTime];
+    }
+
+    //Already have a replyTime Array, New REPLY event, need to add this to replyTime array
+    else if ((userAction[feedIndex].replyTime)) {
+      userAction[feedIndex].replyTime.push(cat.absTime);
+    }
+  }
+
+  // Are we doing anything with an existing comment?
+  else if(req.body.commentID) {
+    let commentIndex = _.findIndex(userAction[feedIndex].comments, function(o){
+      return o.comment == req.body.commentID;
+    });
+
+    // no comment in this post-actions yet
+    if(commentIndex==-1)
+    {
+      var cat = new Object();
+      cat.comment = req.body.commentID;
+      commentIndex = userAction[feedIndex].comments.push(cat) - 1;
+    }
+
+    // LIKE A COMMENT
+    if(req.body.like)
+    {
+      let like = req.body.like;
+      if (userAction[feedIndex].comments[commentIndex].likeTime) {
+        // this is NOT the first like
+        userAction[feedIndex].comments[commentIndex].likeTime.push(like);
+      } else {
+        // this IS the first like
+        userAction[feedIndex].comments[commentIndex].likeTime = [like];
+      }
+      userAction[feedIndex].comments[commentIndex].liked = true;
+
+    }
+
+    // FLAG A COMMENT
+    else if(req.body.flag) {
+      let flag = req.body.flag;
+      if (userAction[feedIndex].comments[commentIndex].flagTime) {
+        // this is NOT the first flag
+        userAction[feedIndex].comments[commentIndex].flagTime.push(flag);
+      } else {
+        // this IS the first flag
+        userAction[feedIndex].comments[commentIndex].flagTime = [flag];
+      }
+      userAction[feedIndex].comments[commentIndex].flagged = true;
+    }
+
+  } // end of all comment junk
+
+  // else not a comment - it's a post action
+  else {
+
+    // array of flagTime is empty and we have a new (first) Flag event
+    if ((!userAction[feedIndex].flagTime)&&req.body.flag) {
+      let flag = req.body.flag;
+      userAction[feedIndex].flagTime = [flag];
+      userAction[feedIndex].flagged = true;
+    }
+
+    //Already have a flagTime Array, New FLAG event, need to add this to flagTime array
+    else if ((userAction[feedIndex].flagTime)&&req.body.flag) {
+      let flag = req.body.flag;
+      userAction[feedIndex].flagTime.push(flag);
+      userAction[feedIndex].flagged = true;
+    }
+
+    //array of likeTime is empty and we have a new (first) LIKE event
+    else if ((!userAction[feedIndex].likeTime)&&req.body.like) {
+      let like = req.body.like;
+      userAction[feedIndex].likeTime = [like];
+      userAction[feedIndex].liked = true;
+    }
+
+    //Already have a likeTime Array, New LIKE event, need to add this to likeTime array
+    else if ((userAction[feedIndex].likeTime)&&req.body.like)
+    {
+      let like = req.body.like;
+      userAction[feedIndex].likeTime.push(like);
+      userAction[feedIndex].liked = true;
+    }
+
+    else {
+      //console.log("Got a POST that did not fit anything. Possible Error.")
+    }
+  }//end of ELSE ANYTHING NOT A COMMENT
+}
+/*
+ POST /feed/
+ Update user's actions on posts throughout a module.
+ All likes, flags, popup interactions, new comments (with actions on those
+ comments as well) get added here
+*/
+exports.postUpdateFeedAction = (req, res, next) => {
+  _postAction(req, res, next, _postUpdateFeedAction);
 };
 
 /**

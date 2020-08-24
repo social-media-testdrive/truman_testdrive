@@ -19,8 +19,10 @@ function recordResponse(responseType,timestamp){
       break;
     case 'checkboxes':
       // using bit shifting to record which boxes are checked
+      // i.e. [][✓][][][✓][]  => 010010
+      // records the base 10 number in DB, decode to binary string later
       let checkboxInputs = 0b0; // does not need to be binary, useful for testing
-      let numberOfCheckboxes = 0; // record number of boxes to add any leading zeros during data exports
+      let numberOfCheckboxes = 0; // record number of boxes to add any leading zeros when decoding
       $(this).closest('.ui.segment').find('.ui.checkbox input').each(function(){
         numberOfCheckboxes++;
         if ($(this).is(":checked")){
