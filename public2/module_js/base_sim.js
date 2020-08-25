@@ -16,7 +16,7 @@ let closedHint = false;
 function addCardIds(){
   let id = 1;
   let idString = "";
-  $('.ui.card').each(function(){
+  $('.ui.fluid.card').each(function(){
      idString = `${subdirectory2}_${subdirectory1}_post${id}`;
     $(this).attr('postID', idString);
     // give comments IDs as well

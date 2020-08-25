@@ -926,6 +926,9 @@ end button links
         let actionType = 'free play';
         switch(currentPageForHeader){
           case 'sim':
+          case 'sim1':
+          case 'sim2':
+          case 'sim3':
           case 'free-play':
           case 'free-play2':
           case 'free-play3':

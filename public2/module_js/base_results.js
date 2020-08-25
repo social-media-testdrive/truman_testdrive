@@ -93,5 +93,6 @@ function iterateOverPrompts() {
 }
 
 $('.ui.big.green.labeled.icon.button.results_end').on('click', function () {
+  $(".insertPrint").empty();
   return iterateOverPrompts();
 });
