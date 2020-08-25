@@ -80,8 +80,6 @@ const userSchema = new mongoose.Schema({
   //logins user made to site
   log: [new Schema({
     time: Date,
-    userAgent: String,
-    ipAddress: String
     })],
 
   // //quiz results (new workflow will not have this)
@@ -303,32 +301,24 @@ userSchema.methods.comparePassword = function comparePassword(candidatePassword,
 };
 
 /**
- * Add Log to User if access is 1 hour from last use.
+ * Add Log to User regardless of when last access was
  */
-userSchema.methods.logUser = function logUser(time, agent, ip) {
-
-  if(this.log.length > 0)
-  {
-    var log_time = new Date(this.log[this.log.length -1].time);
-
-    if(time >= (log_time.getTime() + 3600000))
-    {
-      var log = {};
-      log.time = time;
-      log.userAgent = agent;
-      log.ipAddress = ip;
-      this.log.push(log);
-    }
-  }
-  else if(this.log.length == 0)
-  {
+userSchema.methods.logUser = function logUser(time) {
+  if(this.log.length > 0) {
     var log = {};
     log.time = time;
-    log.userAgent = agent;
-    log.ipAddress = ip;
     this.log.push(log);
   }
-
+  else if(this.log.length == 0) {
+    var log = {};
+    log.time = time;
+    this.log.push(log);
+  }
+  this.save((err) => {
+    if (err) {
+      return next(err);
+    }
+  });
 };
 
 userSchema.methods.logPage = function logPage(time, subdirectory1, subdirectory2) {

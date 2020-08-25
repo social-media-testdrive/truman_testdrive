@@ -138,6 +138,7 @@ exports.postLogin = (req, res, next) => {
     req.logIn(user, (err) => {
       if (err) { return next(err); }
       //req.flash('success', { msg: 'Success! You are logged in.' });
+      user.logUser(Date.now());
       res.redirect('/');
     });
   })(req, res, next);
