@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
   // password: String, //hashed and salted
   // passwordResetToken: String,
   // passwordResetExpires: Date,
-  username: { type: String, unique: true }, //username, must be unique
+  username: { type: String, unique: true, collation: {locale: 'en', strength: 2}}, //username, must be unique
   active: {type: Boolean, default: true}, //currently active? Not used in TestDrive
   isAdmin: {type: Boolean, default: false}, //is an Admin? (only changed directly in DB)
   isInstructor: {type: Boolean, default: false}, // is this user an Instructor

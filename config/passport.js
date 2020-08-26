@@ -23,7 +23,10 @@ passport.deserializeUser((id, done) => {
 //passport.use(new LocalStrategy({ usernameField: 'username' }, (username, password, done) => {
 passport.use(new LocalStrategy({ usernameField: 'username', passwordField: 'username' }, (username, password, done) => {
   //User.findOne({ username: username.toLowerCase() }, (err, user) => {
-  User.findOne({ username: username }, (err, user) => {
+
+  User.findOne({ username: username })
+  .collation({locale: 'en', strength: 2})
+  .exec(function (err, user) {
     if (err) {
       return done(err);
     }
