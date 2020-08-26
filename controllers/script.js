@@ -841,7 +841,7 @@ exports.postBlueDotAction = (req, res, next) => {
     cat.dotNumber = req.body.action.dotNumber;
     cat.absoluteTimeOpened = req.body.action.absoluteTimeOpened;
     cat.viewDuration = req.body.action.viewDuration;
-    cat.clickedClose = req.body.action.clickedClose;
+    cat.clickedGotIt = req.body.action.clickedGotIt;
 
     // add new post into correct location
     userAction.push(cat);

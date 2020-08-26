@@ -11,8 +11,8 @@ let hintNumber = 0; // updates to match the most recently opened blue dot
 let hintOpenTimestamp = Date.now(); // updates whenever a blue dot is opened
 let closedHint = false;
 
-// Automatically add unique card IDs to guided activity posts
-// Each post must have an ID to have any actions on it written to the DB
+// Automatically add unique card IDs to guided activity posts and comments
+// Each post/comment must have an ID to have any actions on it written to the DB
 function addCardIds(){
   let id = 1;
   let idString = "";
@@ -23,7 +23,6 @@ function addCardIds(){
     let commentID = 1;
     let commentIdString = "";
     $(this).find('.comment').not('.like').not('.flag').each(function(){
-      console.log(`Comment ${commentID} of post ${id}`);
       commentIdString = `${subdirectory2}_${subdirectory1}_post${id}_comment${commentID}`;
       $(this).attr('commentID', commentIdString);
       commentID++;
@@ -31,6 +30,36 @@ function addCardIds(){
     id++;
   });
 }
+
+// Requires a boolean parameter indicating if the user clicked 'got it'
+// It is very important that this parameter be correct when using this function,
+// as it is an important distinction to the researchers.
+function recordHintAction(userClickedGotIt){
+  let cat = new Object();
+  cat.subdirectory1 = subdirectory1;
+  cat.subdirectory2 = subdirectory2;
+  cat.dotNumber = hintNumber; // which hint was most recently interacted with
+  cat.absoluteTimeOpened = hintOpenTimestamp; // timestamp of hint being opened
+  cat.viewDuration = Date.now() - hintOpenTimestamp; // how long the hint was open for
+  cat.clickedGotIt = userClickedGotIt;
+  $.post("/bluedot", {
+    action: cat, _csrf: $('meta[name="csrf-token"]').attr('content')
+  });
+};
+
+// Rather than clicking "got it", the user hid the text by clicking elsewhere.
+// This event still needs to be recorded as a blue dot action in the db.
+function detectImproperlyClosedHint(event){
+  var target = $(event.target);
+  // Check if the click was outside of the tooltip and that a tooltip was open
+  if (!target.closest('.introjs-tooltip').length && $('.introjs-tooltip').is(':visible')){
+    // check if this tooltip belonged to a blue dot (as opposed to a tutorial step)
+    if($('.introjs-hintReference').length){
+      // record this hint action with parameter as false since the user did not click 'got it'
+      recordHintAction(false);
+    }
+  }
+};
 
 // showing the "Need some help? Make sure you are clicking 'got it!'"
 // guidance message
@@ -95,19 +124,8 @@ function startHints(){
     }
   });
   hints.onhintclose(function(stepID){
-    // *********************** record the hint data ****************************
-    let cat = new Object();
-    cat.subdirectory1 = subdirectory1;
-    cat.subdirectory2 = subdirectory2;
-    cat.dotNumber = hintNumber; // which hint was most recently interacted with
-    cat.absoluteTimeOpened = hintOpenTimestamp; // timestamp of hint being opened
-    cat.viewDuration = Date.now() - hintOpenTimestamp; // how long the hint was open for
-    cat.clickedClose = true; // this is always going to be true on posting for now
-
-    $.post("/bluedot", {
-      action: cat, _csrf: $('meta[name="csrf-token"]').attr('content')
-    });
-    // ************************************************************************
+    // record this hint action with parameter as true since the user clicked 'got it'
+    recordHintAction(true);
 
     // if a customOnHintCloseFunction is provided, use it
     if(typeof customOnHintCloseFunction !== 'undefined'){
@@ -233,6 +251,8 @@ function startIntro(){
 
 $(window).on("load", function(){
   addCardIds(); // required for data to record properly
+  // reference: https://stackoverflow.com/a/3028037
+  $(document).click(detectImproperlyClosedHint);
   try {
     // a tutorial sequence isn't always present. If it isn't, startHints() needs
     // to be called manually.

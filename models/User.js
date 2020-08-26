@@ -254,7 +254,7 @@ const userSchema = new mongoose.Schema({
     dotNumber: Number, // which dot was opened
     absoluteTimeOpened: Date, // date of when the dot was opened
     viewDuration: Number, // how long the user viewed the dot (milliseconds)
-    clickedClose: Boolean
+    clickedGotIt: Boolean
   }, {_id: true, versionKey: false })],
 
   //users profile
