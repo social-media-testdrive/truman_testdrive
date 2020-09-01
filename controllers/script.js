@@ -83,11 +83,6 @@ exports.getScript = (req, res, next) => {
        model: 'Actor'
     })
   .exec(function (err, user) {
-
-    //log user
-    user.logUser(time_now, userAgent, user_ip);
-
-
     Script.find()
       //.where('time').lte(time_diff)//.gte(time_limit)
       .where('module').equals(req.params.modId)
