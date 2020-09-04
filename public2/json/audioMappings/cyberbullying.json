@@ -1,0 +1,38 @@
+{
+  "start": {
+    ".voiceover_introduction": "cyberbullying_start_1.mp3"
+
+    ".voiceover_keyTerm1": {
+      "audioFile": "cyberbullying_start_2.mp3"
+    },
+    ".voiceover_keyTerm2": {
+      "audioFile": "cyberbullying_start_3.mp3"
+    },
+    ".voiceover_keyTerm3": {
+      "audioFile": "cyberbullying_start_4.mp3"
+    }
+  },
+  "tutorial": {
+    "1": {
+      "audioFile": "cyberbullying_tutorial_1.mp3"
+    },
+    "2": {
+      "audioFile": "cyberbullying_tutorial_2.mp3"
+    },
+    "3": {
+      "audioFile": "cyberbullying_tutorial3_.mp3"
+    },
+    "4": {
+      "audioFile": "cyberbullying_tutorial4_.mp3"
+    },
+    "5": {
+      "audioFile": "cyberbullying_tutorial5_.mp3"
+    },
+    "6": {
+      "audioFile": "cyberbullying_tutorial6_.mp3"
+    },
+    "7": {
+      "audioFile": "cyberbullying_tutorial7_.mp3"
+    }
+  }
+}

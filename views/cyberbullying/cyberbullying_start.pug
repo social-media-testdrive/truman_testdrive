@@ -1,14 +1,28 @@
 extends ../ui_layout
 
 block content
-  
+
   .ui.text.container.addBottomMargin
-    br  
+    br
+    //- .ui.icon.button
+    //-   i.pause.icon
+    //- .ui.icon.button
+    //-   i.play.icon
+    //- .ui.toggle.checkbox(style="padding-left:20px;")
+    //-   input(type='checkbox' name='public')
+    //-   label Voiceovers
+
+        
+      
     .ui.raised.segment
-      h3.ui.header
-        i.book.blue.icon
-        .content
-          | Learn
+      .ui.basic.clearing.segment
+        .ui.left.floated.header
+          i.book.blue.icon
+          .content
+            | Learn
+        .ui.right.floated.header
+          .ui.icon.button
+            i.volume.up.icon
       hr
       h5.ui.header
         i.arrow.circle.right.blue.icon
@@ -35,19 +49,19 @@ block content
       br
       .ui.stackable.two.column.grid
         .ui.column
-          .keyTerm.ui.raised.segment
+          .keyTerm.ui.raised.segment.voiceover_keyTerm1
             a.ui.blue.ribbon.label.keyTermLabel
                 span Bully
             span.hidden.keyTermDefinition  
               | Someone who hurts a person or a group on purpose more than once.
         .ui.column
-          .keyTerm.ui.raised.segment
+          .keyTerm.ui.raised.segment.voiceover_keyTerm2
             a.ui.blue.ribbon.label.keyTermLabel
                 span Target
             span.hidden.keyTermDefinition 
               | Someone who is being bullied
         .ui.column
-          .keyTerm.ui.raised.segment
+          .keyTerm.ui.raised.segment.voiceover_keyTerm3
             a.ui.blue.ribbon.label.keyTermLabel
                 span Upstander
             span.hidden.keyTermDefinition 
@@ -71,6 +85,7 @@ block content
 
 block scripts
   script(src="/module_js/base_start.js")
+  script(src='/voiceover.js')
   
 block styles
   link(rel='stylesheet', href='/css/start.css')  
