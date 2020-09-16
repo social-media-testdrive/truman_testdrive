@@ -42,14 +42,22 @@ function updateProgressBar(){
         changeActiveProgressTo("#headerStep2");
         $('.hideHeader').css('display', 'block');
         $('#headerStep1').on('click', function(){
-          window.location.href = `/tutorial/${currentModuleForHeader}`;
+          if(currentModuleForHeader === "privacy"){
+            window.location.href = `/tut_guide/${currentModuleForHeader}`
+          } else {
+            window.location.href = `/tutorial/${currentModuleForHeader}`;
+          }
         });
         break;
       case '3':
         changeActiveProgressTo("#headerStep3");
         $('.hideHeader').css('display', 'block');
         $('#headerStep1').on('click', function(){
-          window.location.href = `/tutorial/${currentModuleForHeader}`;
+          if(currentModuleForHeader === "privacy"){
+            window.location.href = `/tut_guide/${currentModuleForHeader}`
+          } else {
+            window.location.href = `/tutorial/${currentModuleForHeader}`;
+          }
         });
         $('#headerStep2').on('click', function(){
           window.location.href = `/sim/${currentModuleForHeader}`;
@@ -59,7 +67,11 @@ function updateProgressBar(){
         changeActiveProgressTo("#headerStep4");
         $('.hideHeader').css('display', 'block');
         $('#headerStep1').on('click', function(){
-          window.location.href = `/tutorial/${currentModuleForHeader}`;
+          if(currentModuleForHeader === "privacy"){
+            window.location.href = `/tut_guide/${currentModuleForHeader}`
+          } else {
+            window.location.href = `/tutorial/${currentModuleForHeader}`;
+          }
         });
         $('#headerStep2').on('click', function(){
           window.location.href = `/sim/${currentModuleForHeader}`;
@@ -78,7 +90,11 @@ function updateProgressBar(){
         $('#headerStep1, #headerStep2, #headerStep3, #headerStep4').removeClass('progressBarActive');
         $('.hideHeader').css('display', 'block');
         $('#headerStep1').on('click', function(){
-          window.location.href = `/tutorial/${currentModuleForHeader}`;
+          if(currentModuleForHeader === "privacy"){
+            window.location.href = `/tut_guide/${currentModuleForHeader}`
+          } else {
+            window.location.href = `/tutorial/${currentModuleForHeader}`;
+          }
         });
         $('#headerStep2').on('click', function(){
           window.location.href = `/sim/${currentModuleForHeader}`;
