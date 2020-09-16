@@ -4,6 +4,27 @@
   const subdirectory1 = pathArray[1]; // idenify the current page
   const subdirectory2 = pathArray[2]; // idenify the current module
   let startTimestamp = Date.now();
+  let audioChannel = new Audio(); // Audio channel for voiceovers
+
+  async function playVoiceover(list,index){
+
+    let audioFile = list[index].audioFile;
+    if (audioFile !== '') {
+      audioChannel.src = `/audioFiles/${subdirectory2}/${audioFile}`;
+      let playVoiceoverPromise = audioChannel.play();
+      if (playVoiceoverPromise !== undefined) {
+        playVoiceoverPromise.catch(error => {
+          if (error.name === 'NotAllowedError') {
+            console.log(`** Browser has determined that audio is not allowed to play yet. **`);
+          } else {
+            console.log(error)
+          }
+        });
+      }
+    } else {
+      console.log(`** No audio filename provided for step ${index}. If this is expected, then ignore this message. **`);
+    }
+  }
 
   function startIntro(){
     var intro = introJs().setOptions({
@@ -73,6 +94,7 @@
     an argument."
     */
     intro.onafterchange(function(){
+      playVoiceover(stepsList, $(this)[0]._currentStep);
       // reset the timestamp for the next step
       startTimestamp = Date.now();
     })
@@ -83,7 +105,7 @@
     returning false would prevent the tour from closing."
     */
     intro.onbeforeexit(function(){
-
+      audioChannel.pause();
       // if this function is defined in the custom js file, run it
       try {
         additionalOnBeforeExit();

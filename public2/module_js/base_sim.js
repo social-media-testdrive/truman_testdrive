@@ -10,6 +10,7 @@ const subdirectory2 = pathArray[2];
 let hintNumber = 0; // updates to match the most recently opened blue dot
 let hintOpenTimestamp = Date.now(); // updates whenever a blue dot is opened
 let closedHint = false;
+let audioChannel = new Audio(); // Audio channel for voiceovers
 
 // Automatically add unique card IDs to guided activity posts and comments
 // Each post/comment must have an ID to have any actions on it written to the DB
@@ -56,10 +57,30 @@ function detectImproperlyClosedHint(event){
     // check if this tooltip belonged to a blue dot (as opposed to a tutorial step)
     if($('.introjs-hintReference').length){
       // record this hint action with parameter as false since the user did not click 'got it'
+      audioChannel.pause();
       recordHintAction(false);
     }
   }
 };
+
+function playVoiceover(list,index){
+  let audioFile = list[index].audioFile;
+  if (audioFile !== '') {
+    audioChannel.src = `/audioFiles/${subdirectory2}/${audioFile}`;
+    let playVoiceoverPromise = audioChannel.play();
+    if (playVoiceoverPromise !== undefined) {
+      playVoiceoverPromise.catch(error => {
+        if (error.name === 'NotAllowedError') {
+          console.log(`** Browser has determined that audio is not allowed to play yet. **`);
+        } else {
+          console.log(error)
+        }
+      });
+    }
+  } else {
+    console.log(`** No audio filename provided for step ${index}. If this is expected, then ignore this message. **`);
+  }
+}
 
 // showing the "Need some help? Make sure you are clicking 'got it!'"
 // guidance message
@@ -111,6 +132,11 @@ function startHints(){
     hintNumber = $(e).attr('data-step'); // update the current hint number
     hintOpenTimestamp = Date.now(); // update the timestamp for opening a hint
     clickedHints++;
+    if (!$('.introjs-tooltip').is(':visible')) {
+      playVoiceover(hintsList, hintNumber);
+    } else {
+      audioChannel.pause();
+    }
     if(clickedHints >= numberOfHints){
       if(clickedHints !== 1){
         //show the guidance message, user probably doesn't know to click "got it"
@@ -125,6 +151,7 @@ function startHints(){
   });
   hints.onhintclose(function(stepID){
     // record this hint action with parameter as true since the user clicked 'got it'
+    audioChannel.pause();
     recordHintAction(true);
 
     // if a customOnHintCloseFunction is provided, use it
@@ -206,10 +233,12 @@ function startIntro(){
   });
 
   intro.onafterchange(function(){
+    playVoiceover(stepsList, $(this)[0]._currentStep);
     startTimestamp = Date.now();
   });
 
   intro.onbeforeexit(function(){
+    audioChannel.pause();
     try {
       additionalOnBeforeExit();
     } catch (error) {

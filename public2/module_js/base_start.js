@@ -1,4 +1,6 @@
 let actionArray = new Array(); // this array will be handed to Promise.all
+const audioChannel = new Audio(); // the audio channel for voiceovers
+const pathArray = window.location.pathname.split('/');
 
 function animateUnclickedLabels() {
   $('.keyTermDefinition').each(function(){
@@ -9,16 +11,15 @@ function animateUnclickedLabels() {
 };
 
 function clickGotIt(){
-  if($('#question').is(":hidden")){
+  if ($('.keyIdeasSegment').is(":hidden")) {
     //User has not yet clicked next
     $('#clickNextWarning').show();
-    $('#introduction_next').transition('bounce');
-  }else{
+    $('.showKeyTermsButton').transition('bounce');
+  } else {
     //determine if all the labeles are clicked
-    if($(".keyTermDefinition:hidden").length === 0){
+    if ($(".keyTermDefinition:hidden").length === 0) {
       //everything is good to proceed
       $('#clickLabelsWarning').hide();
-      let pathArray = window.location.pathname.split('/');
       Promise.all(actionArray).then(function(){
         window.location.href='/tutorial/' + pathArray[2];
       });
@@ -30,48 +31,82 @@ function clickGotIt(){
   }
 };
 
-$('#introduction_next').on('click', function () {
-  $('#clickNextWarning').hide();
-  $('#question').show();
-  $('#question').transition('jiggle');
-  if($(".keyTermDefinition:hidden").length === 0){
-    $('.ui.labeled.icon.button').addClass('green');
-  }
-
+function logActionInDB (actionType, keyIdea = '') {
   // log action in db
-  let cat = new Object();
-  let pathArray = window.location.pathname.split('/');
+  const cat = new Object();
   cat.subdirectory1 = pathArray[1];
   cat.subdirectory2 = pathArray[2];
-  cat.actionType = 'next';
+  cat.actionType = actionType;
+  if(keyIdea !== ''){
+    cat.vocabTerm = keyIdea;
+  }
   cat.absoluteTimestamp = Date.now();
   const jqxhr = $.post("/startPageAction", {
     action: cat,
     _csrf: $('meta[name="csrf-token"]').attr('content')
   });
   actionArray.push(jqxhr);
-});
+};
 
-$('.keyTerm').on('click', function (event) {
-  $(event.target).closest('.keyTerm').children('.keyTermDefinition').show();
-  $(event.target).closest('.keyTerm').transition('tada');
-
-  if($(".keyTermDefinition:hidden").length === 0){
-    $('#clickLabelsWarning').hide();
-    $('.ui.labeled.icon.button').addClass('green');
+function playVoiceover(audioFile) {
+  const subdirectory2 = pathArray[2];
+  if (audioFile !== '') {
+    audioChannel.src = `/audioFiles/${subdirectory2}/${audioFile}`;
+    let playVoiceoverPromise = audioChannel.play();
+    if (playVoiceoverPromise !== undefined) {
+      playVoiceoverPromise.catch(error => {
+        if (error.name === 'NotAllowedError') {
+          console.log(`** Browser has determined that audio is not allowed to play yet. **`);
+        } else {
+          console.log(error)
+        }
+      });
+    }
+  } else {
+    console.log(`** No audio filename provided for step ${index}. If this is expected, then ignore this message. **`);
   }
+};
 
-  // log action in db
-  let cat = new Object();
-  let pathArray = window.location.pathname.split('/');
-  cat.subdirectory1 = pathArray[1];
-  cat.subdirectory2 = pathArray[2];
-  cat.actionType = 'term';
-  cat.vocabTerm = $(event.target).closest('.keyTerm').children('.keyTermLabel').text();
-  cat.absoluteTimestamp = Date.now();
-  const jqxhr = $.post("/startPageAction", {
-    action: cat,
-    _csrf: $('meta[name="csrf-token"]').attr('content')
+function addVoiceovers() {
+  for (const element in voiceoverMappings) {
+    $(element).on('click', function(){
+      playVoiceover(voiceoverMappings[element]);
+    });
+  }
+};
+
+$(window).on("load", function() {
+
+  addVoiceovers();
+
+  $('.showLearnSectionButton').on('click', function () {
+    $('#clickNextWarning').hide();
+    $('.learnSegment').show();
+    $('.learnSegment .ui.header').transition('jiggle');
+    $('.showLearnSectionButton').hide();
+    logActionInDB('next_showLearnSection');
   });
-  actionArray.push(jqxhr);
+
+  $('.showKeyTermsButton').on('click', function () {
+    $('#clickNextWarning').hide();
+    $('.showKeyTermsButton').css('display', 'none');
+    $('.keyIdeasSegment').show();
+    $('.keyIdeasSegment').transition('jiggle');
+    if($(".keyTermDefinition:hidden").length === 0){
+      $('.ui.labeled.icon.button').addClass('green');
+    }
+    logActionInDB('next_showKeyIdeas');
+  });
+
+  $('.keyTerm').on('click', function (event) {
+    $(event.target).closest('.keyTerm').children('.keyTermDefinition').show();
+    $(event.target).closest('.keyTerm').transition('tada');
+    if ($(".keyTermDefinition:hidden").length === 0) {
+      $('#clickLabelsWarning').hide();
+      $('.ui.labeled.icon.button').addClass('green');
+    }
+    const vocabTerm = $(event.target).closest('.keyTerm').children('.keyTermLabel').text();
+    logActionInDB('keyIdea', vocabTerm);
+  });
+
 });

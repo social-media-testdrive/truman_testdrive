@@ -777,7 +777,6 @@ exports.postPageLog = (req, res, next) => {
 
   User.findById(req.user.id, (err, user) => {
     if (err) { return next(err); }
-    console.log("HERE WE ARE!");
     user.logPage(Date.now(), req.body.subdirectory1, req.body.subdirectory2);
     user.save((err) => {
       if (err) {

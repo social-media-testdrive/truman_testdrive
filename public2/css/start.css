@@ -1,3 +1,16 @@
+.learnSegment {
+  padding: 14px 0 14px 0 !important;
+}
+
+.showLearnSectionButton {
+  margin-top: 14px !important;
+  margin-bottom: 14px !important;
+}
+
+.showKeyTermsButton {
+  margin-top: 14px !important;
+}
+
 i.caret.icon {
   text-indent:3em;
 }

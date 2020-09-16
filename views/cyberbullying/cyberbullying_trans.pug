@@ -11,38 +11,43 @@ block content
             i.history.icon
             | &nbsp Let's review!
         br
-          
-        h5.ui.header
-          i.arrow.circle.right.blue.icon
-          .content
-            | <b>Cyberbullying</b> is when someone posts or shares negative 
-            | things about someone else online. The <b>bully</b> may use digital 
-            | devices, sites, or apps. The bully often does this again and again 
-            | to the same person.
-          
-            
-        h5.ui.header
-          i.arrow.circle.right.blue.icon
-          .content
-            | An <b>upstander</b> will confront the bully, or support and defend 
-            | the target.
-          
-            
-        h5.ui.header
-          i.arrow.circle.right.blue.icon
-          .content
-            | You can also <b>flag</b> the comment or tell a trusted adult.
-        br
-    
+        .ui.mini.green.right.labeled.icon.button.showReviewSectionButton
+          i.down.arrow.icon
+          |   Next  
+        .ui.basic.segment.reviewSegment.hidden
+          h5.ui.header
+            i.arrow.circle.right.blue.icon
+            .content
+              | <b>Cyberbullying</b> is when someone posts or shares negative 
+              | things about someone else online. The <b>bully</b> may use digital 
+              | devices, sites, or apps. The bully often does this again and again 
+              | to the same person.    
+          h5.ui.header
+            i.arrow.circle.right.blue.icon
+            .content
+              | An <b>upstander</b> will confront the bully, or support and defend 
+              | the target.      
+          h5.ui.header
+            i.arrow.circle.right.blue.icon
+            .content
+              | You can also <b>flag</b> the comment or tell a trusted adult.
+          br
     br
     br
-    a(href='javascript:void(0);', onclick='javascript:startIntro();')
-        .ui.big.green.labeled.icon.button
+    .ui.warning.message.clickNextWarning.hidden
+      .header
+       | Click "Next"
+    a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
+        .ui.big.labeled.icon.button.gotItButton
             i.rocket.icon
             |   Got it!
 
 block scripts
-  script().
-    function startIntro(){
-        window.location.href='/trans_script/cyberbullying';
-      };
+  script.
+    var voiceoverMappings = {
+      '.showReviewSectionButton': 'cyberbullying_trans.mp3'
+    };
+  script(src="/module_js/base_trans.js")
+    
+block styles
+  link(rel='stylesheet', href='/css/trans.css')  
