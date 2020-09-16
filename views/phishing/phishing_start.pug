@@ -41,11 +41,11 @@ block content
           |   Create false identification documents
       
       br
-      #introduction_next.button.ui.mini.green.right.labeled.icon.button
-              i.down.arrow.icon
-              |   Next
+      .ui.mini.green.right.labeled.icon.button.showKeyTermsButton
+        i.down.arrow.icon
+        |   Next
     
-    #question.ui.segment.hidden
+    .ui.segment.keyIdeasSegment.hidden
       h3.ui.header
         i.key.blue.icon
         .content Key Ideas
@@ -88,6 +88,13 @@ block content
             |   Got it!
             
 block scripts
+  script.
+    var voiceoverMappings = {
+      '.showLearnSectionButton': '',
+      '.voiceover_keyTerm1': '',
+      '.voiceover_keyTerm2': '',
+      '.voiceover_keyTerm3': ''
+    };
   script(src="/module_js/base_start.js")
   
 block styles
