@@ -1,11 +1,17 @@
 {
   const audioChannel = new Audio(); // the audio channel for voiceovers
+  let voiceoverSequenceCount = 0;
 
   function playVoiceover(audioFile) {
+
     const pathArray = window.location.pathname.split('/');
     const subdirectory2 = pathArray[2];
     if (audioFile !== '') {
-      audioChannel.src = `/audioFiles/${subdirectory2}/${audioFile}`;
+      if (typeof audioFile === "string"){
+        audioChannel.src = `/audioFiles/${subdirectory2}/${audioFile}`;
+      } else if (typeof audioFile === "object"){
+        audioChannel.src = `/audioFiles/${subdirectory2}/${audioFile[voiceoverSequenceCount]}`;
+      }
       let playVoiceoverPromise = audioChannel.play();
       if (playVoiceoverPromise !== undefined) {
         playVoiceoverPromise.catch(error => {
@@ -15,6 +21,12 @@
             console.log(error)
           }
         });
+      }
+      audioChannel.onended = function(){
+        voiceoverSequenceCount++;
+        if ((typeof audioFile === "object") && (voiceoverSequenceCount < audioFile.length)){
+          playVoiceover(audioFile);
+        }
       }
     } else {
       console.log(`** No audio filename provided for this step. If this is expected, then ignore this message. **`);
