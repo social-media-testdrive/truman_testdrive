@@ -3,7 +3,9 @@ const nextPageURL = 'tut_guide';
 const stepsList = [
   {
     element: '#step1',
-    intro: `TODO: Add new dialogue here. This text is filler.`,
+    intro: `NOTE: Most browsers require users to interact with the page before
+    audio can play, so this step will not have a voiceover. Its purpose is to 
+    get the user to interact with the page. Text would be added later.`,
     position: 'right',
     scrollTo: 'tooltip',
     audioFile: ''
