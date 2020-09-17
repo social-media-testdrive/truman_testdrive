@@ -2,9 +2,9 @@
   const audioChannel = new Audio(); // the audio channel for voiceovers
 
   function playVoiceover(audioFile) {
+    const pathArray = window.location.pathname.split('/');
     const subdirectory2 = pathArray[2];
     if (audioFile !== '') {
-      const pathArray = window.location.pathname.split('/');
       audioChannel.src = `/audioFiles/${subdirectory2}/${audioFile}`;
       let playVoiceoverPromise = audioChannel.play();
       if (playVoiceoverPromise !== undefined) {
