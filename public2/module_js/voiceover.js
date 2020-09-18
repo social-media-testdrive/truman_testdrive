@@ -10,7 +10,9 @@
       if (typeof audioFile === "string"){
         audioChannel.src = `/audioFiles/${subdirectory2}/${audioFile}`;
       } else if (typeof audioFile === "object"){
-        audioChannel.src = `/audioFiles/${subdirectory2}/${audioFile[voiceoverSequenceCount]}`;
+        if( audioFile[voiceoverSequenceCount] !== ''){
+          audioChannel.src = `/audioFiles/${subdirectory2}/${audioFile[voiceoverSequenceCount]}`;
+        }
       }
       let playVoiceoverPromise = audioChannel.play();
       if (playVoiceoverPromise !== undefined) {
@@ -29,7 +31,7 @@
         }
       }
     } else {
-      console.log(`** No audio filename provided for this step. If this is expected, then ignore this message. **`);
+      console.log(`** No audio filename provided. If this is expected, then ignore this message. **`);
     }
   };
 

@@ -7,14 +7,16 @@ var hintsList=
     feeling.`,
     element: '#hint1',
     position: 'right',
-    hintPosition: 'middle-right'
+    hintPosition: 'middle-right',
+    audioFile: ''
   },
   {
     hint: `Click on the post to think about how Nick might feel when he sees
     this post and the things he can do about it.`,
     element: '#hint3',
     position: 'bottom',
-    hintPosition: 'middle-right'
+    hintPosition: 'middle-right',
+    audioFile: ''
   },
   {
     hint: `Seeing everything his friends are posting might make Nick feel like
@@ -22,29 +24,41 @@ var hintsList=
     positive and exciting things going on in their lives.`,
     element: '#hint3A',
     position: 'right',
-    hintPosition: 'bottom-right'
+    hintPosition: 'bottom-right',
+    audioFile: ''
   },
   {
     hint: `Nick can always take a break from social media. He can meet up with
     friends and family or do something else he enjoys, like riding his bike.`,
     element: '#hint4',
     position: 'bottom-right',
-    hintPosition: 'middle-right'
+    hintPosition: 'middle-right',
+    audioFile: ''
   }
 ]
 
 var stepsList=
 [
   {
-      element: '#step1',
-      intro: `This is Nick's social media timeline. He just got back from school
-      and is checking out his feed.
-      Click on the blue dots&nbsp;<a role='button' tabindex='0'
-      class='introjs-hint'><div class='introjs-hint-dot'></div><div class=
-      'introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more...`,
-      position: "left",
-      scrollTo: 'tooltip'
-    }
+    element: '#step1',
+    intro: `NOTE: Most browsers require users to interact with the page before
+    audio can play, so this step will not have a voiceover. Its purpose is to
+    get the user to interact with the page. Text would be added later.`,
+    position: 'left',
+    scrollTo: 'tooltip',
+    audioFile: ''
+  },
+  {
+    element: '#step1',
+    intro: `This is Nick's social media timeline. He just got back from school
+    and is checking out his feed.
+    Click on the blue dots&nbsp;<a role='button' tabindex='0'
+    class='introjs-hint'><div class='introjs-hint-dot'></div><div class=
+    'introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more...`,
+    position: "left",
+    scrollTo: 'tooltip',
+    audioFile: ''
+  }
 ]
 
 function eventsAfterHints(){

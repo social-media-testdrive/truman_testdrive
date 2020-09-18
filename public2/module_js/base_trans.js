@@ -7,8 +7,8 @@ function clickGotIt(){
     //everything is good to proceed
     $('#clickLabelsWarning').hide();
     Voiceovers.pauseVoiceover();
-    const pathArray = window.location.pathname.split('/');  
-    window.location.href=`/trans_script/${pathArray[2]}`;
+    const pathArray = window.location.pathname.split('/');
+    window.location.href=`/${nextPage}/${pathArray[2]}`;
   }
 };
 
