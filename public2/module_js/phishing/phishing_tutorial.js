@@ -3,18 +3,29 @@ const nextPageURL = 'tut_guide';
 const stepsList = [
   {
     element: '#step0',
+    intro: `NOTE: Most browsers require users to interact with the page before
+    audio can play, so this step will not have a voiceover. Its purpose is to
+    get the user to interact with the page. Text would be added later.`,
+    position: 'right',
+    scrollTo: 'tooltip',
+    audioFile: ''
+  },
+  {
+    element: '#step0',
     intro: `One way someone can try to steal your identity on the internet
     is by getting you to click on a link or enter
     information about yourself.`,
     position: "right",
-    scrollTo: 'tooltip'
+    scrollTo: 'tooltip',
+    audioFile: ''
   },
   {
     element: '#step0',
     intro: `Here are some tips on how to identify a phishing scam on
     social media.`,
     position: "right",
-    scrollTo: 'tooltip'
+    scrollTo: 'tooltip',
+    audioFile: ''
   },
   {
     element: '#shortenedURL',
@@ -23,21 +34,24 @@ const stepsList = [
     Even if a URL is not shortened, check carefully to make sure
     it is correct.`,
     position: "right",
-    scrollTo: 'tooltip'
+    scrollTo: 'tooltip',
+    audioFile: ''
   },
   {
     element: '#step0',
     intro: `If something sounds too good to be true, be skeptical!
     Scammers often offer easy chances to win free money or prizes.`,
     position: "right",
-    scrollTo: "tooltip"
+    scrollTo: "tooltip",
+    audioFile: ''
   },
   {
     element: '#step5',
     intro: `Be wary of messages that sound urgent. Scammers often create
     posts that make you worry or feel like something is wrong.`,
     position: "right",
-    scrollTo: "tooltip"
+    scrollTo: "tooltip",
+    audioFile: ''
   },
   {
     element: '#step5',
@@ -45,26 +59,30 @@ const stepsList = [
     that don’t look quite right. A real company does not send out
     messages with these kinds of errors.`,
     position: "right",
-    scrollTo: "tooltip"
+    scrollTo: "tooltip",
+    audioFile: ''
   },
   {
     element: '#step6',
     intro: `What can you do if you see someone posting a phishing scam?`,
     position: "right",
-    scrollTo: "tooltip"
+    scrollTo: "tooltip",
+    audioFile: ''
   },
   {
     element: '#shortenedURL3',
     intro: `Ignore the link and don’t click on it, especially if it is a
     shortened or incorrect URL!`,
     position: "right",
-    scrollTo: "tooltip"
+    scrollTo: "tooltip",
+    audioFile: ''
   },
   {
     element: '#flagStep',
     intro: `You can press the “Flag” button to report the post
     to the website.`,
     position: "right",
-    scrollTo: "tooltip"
+    scrollTo: "tooltip",
+    audioFile: ''
   }
 ];

@@ -10,40 +10,44 @@ block content
         .content
           | Learn
       hr
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          | When you are online, you might come across scams that try to steal 
-          | your private information or your identity.
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          | If someone steals your private information, they can pretend to be 
-          | you. This is called identity theft and you may not be aware of its 
-          | consequences until far into the future.             
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          | If your identity is stolen, someone could:    
-      h5.ui.header
-        i.caret.right.blue.icon
-        .content
-          |  Apply for credit cards in your name and buy things
-          
-      h5.ui.header
-        i.caret.right.blue.icon
-        .content
-          |   Cyberbully someone while pretending to be you
-      
-      h5.ui.header
-        i.caret.right.blue.icon
-        .content
-          |   Create false identification documents
-      
-      br
-      .ui.mini.green.right.labeled.icon.button.showKeyTermsButton
+      .ui.mini.green.right.labeled.icon.button.showLearnSectionButton
         i.down.arrow.icon
         |   Next
+      .ui.basic.segment.learnSegment.hidden
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | When you are online, you might come across scams that try to steal 
+            | your private information or your identity.
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | If someone steals your private information, they can pretend to be 
+            | you. This is called identity theft and you may not be aware of its 
+            | consequences until far into the future.             
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | If your identity is stolen, someone could:    
+        h5.ui.header
+          i.caret.right.blue.icon
+          .content
+            |  Apply for credit cards in your name and buy things
+            
+        h5.ui.header
+          i.caret.right.blue.icon
+          .content
+            |   Cyberbully someone while pretending to be you
+        
+        h5.ui.header
+          i.caret.right.blue.icon
+          .content
+            |   Create false identification documents
+        
+        br
+        .ui.mini.green.right.labeled.icon.button.showKeyTermsButton
+          i.down.arrow.icon
+          |   Next
     
     .ui.segment.keyIdeasSegment.hidden
       h3.ui.header
@@ -56,21 +60,21 @@ block content
       //- .ui.segments     
       .ui.stackable.two.column.grid
         .ui.column
-          .keyTerm.ui.raised.segment
+          .keyTerm.ui.raised.segment.voiceover_keyTerm1
             a.ui.blue.ribbon.label.keyTermLabel
                 //- i.dollar.sign.icon 
                 span Private information
             span.hidden.keyTermDefinition Information that can be used to identify you because it is unique to you (e.g., your full name, your address, or your password).
 
         .ui.column
-          .keyTerm.ui.raised.segment
+          .keyTerm.ui.raised.segment.voiceover_keyTerm2
             a.ui.blue.ribbon.label.keyTermLabel
                 //- i.magic.icon 
                 span Phishing scam
             span.hidden.keyTermDefinition  When someone poses as an institution, like a bank or a school, and posts a message asking you to provide private information.
 
         .ui.column
-          .keyTerm.ui.raised.segment
+          .keyTerm.ui.raised.segment.voiceover_keyTerm3
             a.ui.blue.ribbon.label.keyTermLabel
                 //- i.magic.icon 
                 span Shortened URL
@@ -90,11 +94,12 @@ block content
 block scripts
   script.
     var voiceoverMappings = {
-      '.showLearnSectionButton': '',
+      '.showLearnSectionButton': ['','',''],
       '.voiceover_keyTerm1': '',
       '.voiceover_keyTerm2': '',
       '.voiceover_keyTerm3': ''
     };
+  script(src='/module_js/voiceover.js')
   script(src="/module_js/base_start.js")
   
 block styles
