@@ -4,7 +4,7 @@ const stepsList = [
   {
     element: '#step1',
     intro: `NOTE: Most browsers require users to interact with the page before
-    audio can play, so this step will not have a voiceover. Its purpose is to 
+    audio can play, so this step will not have a voiceover. Its purpose is to
     get the user to interact with the page. Text would be added later.`,
     position: 'right',
     scrollTo: 'tooltip',
@@ -17,7 +17,7 @@ const stepsList = [
     Dylan on social media.`,
     position: 'right',
     scrollTo: 'tooltip',
-    audioFile: 'cyberbullying_tutorial_0.mp3'
+    audioFile: ''
   },
   {
     element: '#step1',
@@ -27,14 +27,14 @@ const stepsList = [
     and again to the same person.`,
     position: 'right',
     scrollTo: 'tooltip',
-    audioFile: 'cyberbullying_tutorial_1.mp3'
+    audioFile: ''
   },
   {
     element: '#step3.text',
     intro: `This is an example of <b>cyberbullying.</b>`,
     position: 'right',
     scrollTo: 'tooltip',
-    audioFile: 'cyberbullying_tutorial_2.mp3'
+    audioFile: ''
   },
   {
     element: 'a.flag',
@@ -42,7 +42,7 @@ const stepsList = [
     <b>“Flag”</b> button.`,
     position: 'right',
     scrollTo: 'tooltip',
-    audioFile: 'cyberbullying_tutorial_3.mp3'
+    audioFile: ''
   },
   {
     element: 'a.flag',
@@ -51,7 +51,7 @@ const stepsList = [
     the website to respond.`,
     position: 'right',
     scrollTo: 'tooltip',
-    audioFile: 'cyberbullying_tutorial_4.mp3'
+    audioFile: ''
   },
   {
     element: '#step7',
@@ -59,7 +59,7 @@ const stepsList = [
     a <b>supportive comment</b> to the target.`,
     position: 'left',
     scrollTo: 'tooltip',
-    audioFile: 'cyberbullying_tutorial_5.mp3'
+    audioFile: ''
   },
   {
     element: '#step7',
@@ -67,6 +67,6 @@ const stepsList = [
     <b>confronting the bully</b>.`,
     position: 'left',
     scrollTo: 'tooltip',
-    audioFile: 'cyberbullying_tutorial_6.mp3'
+    audioFile: ''
   }
 ];
