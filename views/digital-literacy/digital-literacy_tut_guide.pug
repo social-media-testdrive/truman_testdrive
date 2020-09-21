@@ -17,7 +17,7 @@ block content
           span Read and check all the boxes
         
     .ui.styled.fluid.accordion
-      #point1.title
+      #point1.title(data-voiceoverIndex='voiceover_tut_guide_1')
         i.dropdown.icon
         | Analyze the source. Ask yourself: Does it come from a credible source?
       .content.ui.list
@@ -44,7 +44,7 @@ block content
                 i.down.arrow.icon
                 | Next
                 
-      #point2.title
+      #point2.title(data-voiceoverIndex='voiceover_tut_guide_2')
         i.dropdown.icon
         | Look for corroboration. Ask yourself: Do other credible sources say 
         | the same thing?
@@ -74,7 +74,14 @@ block content
         |   Got it!
 
 block scripts
+  script.
+    var voiceoverMappings = {
+      'voiceover_tut_guide_1': ['',''],
+      'voiceover_tut_guide_2': ['','']
+    };
   script(src="/module_js/digital-literacy/digital-literacy_tut_guide.js")
+  script(src="/module_js/voiceover.js")
+  
   
   
     

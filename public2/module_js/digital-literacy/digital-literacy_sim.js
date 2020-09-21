@@ -1,18 +1,29 @@
 var stepsList = [
   {
-    element: document.querySelectorAll('#step1')[0],
+    element: '#step1',
+    intro: `NOTE: Most browsers require users to interact with the page before
+    audio can play, so this step will not have a voiceover. Its purpose is to
+    get the user to interact with the page. Text would be added later.`,
+    position: 'left',
+    scrollTo: 'tooltip',
+    audioFile: ''
+  },
+  {
+    element: '#step1',
     intro: `In this activity, let's look at the signs of fake news on social
     media. See if you can spot the clues!`,
     position:'left',
-    scrollTo:'tooltip'
+    scrollTo:'tooltip',
+    audioFile: ''
   },
   {
-    element: document.querySelectorAll('#step1')[0],
+    element: '#step1',
     intro: `Click on the blue dots&nbsp;<a role='button' tabindex='0'
     class='introjs-hint'><div class='introjs-hint-dot'></div><div
     class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; to learn more...`,
     position:'left',
-    scrollTo:'tooltip'
+    scrollTo:'tooltip',
+    audioFile: ''
   }
 ];
 
@@ -23,24 +34,28 @@ var hintsList=
     because of the '.com.co,' a sure sign it's trying to imitate a credible
     site. Also note the spelling errors in the URL.`,
     element: '#hint1',
-    hintPosition: 'top-left'
+    hintPosition: 'top-left',
+    audioFile: ''
   },
   {
     hint: `You can see that the headline uses shocking language and has a wild
     image to get people to click on it. This is an example of a clickbait
     headline.`,
     element: '#hint2',
-    hintPosition: 'middle-right'
+    hintPosition: 'middle-right',
+    audioFile: ''
   },
   {
     hint: `After analyzing the headline and image, be sure to click on the
     article link to read the article more closely.`,
-    element: '#hint3'
+    element: '#hint3',
+    audioFile: ''
   },
   {
     hint: `If you decide the article is fake news, you can flag the post to
     report it. Don’t share the article!`,
-    element: '#hint4'
+    element: '#hint4',
+    audioFile: ''
   }
 ];
 

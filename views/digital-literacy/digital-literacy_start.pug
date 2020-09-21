@@ -10,23 +10,25 @@ block content
         .content
           | Learn
       hr
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          | Social media is a great way to get news quickly and easily. Your 
-          | friends may like or share articles that are interesting to you. 
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          | But you have to be careful! Sometimes people share articles on 
-          | social media that look like accurate news but actually include false 
-          | or untrustworthy information.
-      br
-      #introduction_next.button.ui.mini.green.right.labeled.icon.button
+      .ui.mini.green.right.labeled.icon.button.showLearnSectionButton
         i.down.arrow.icon
         |   Next
-    
-
+      .ui.basic.segment.learnSegment.hidden
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | Social media is a great way to get news quickly and easily. Your 
+            | friends may like or share articles that are interesting to you. 
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | But you have to be careful! Sometimes people share articles on 
+            | social media that look like accurate news but actually include false 
+            | or untrustworthy information.
+        br
+        #introduction_next.button.ui.mini.green.right.labeled.icon.button
+          i.down.arrow.icon
+          |   Next
     
     #question.ui.segment.hidden
       h3.ui.header
@@ -38,25 +40,25 @@ block content
       br  
       .ui.stackable.two.column.grid
         .ui.column
-          .keyTerm.ui.raised.segment
+          .keyTerm.ui.raised.segment.voiceover_keyTerm1
             a.ui.blue.ribbon.label.keyTermLabel
               span Source
             span.hidden.part1.keyTermDefinition  
               | The website, organization, or person the information comes from.
         .ui.column
-          .keyTerm.ui.raised.segment
+          .keyTerm.ui.raised.segment.voiceover_keyTerm2
             a.ui.blue.ribbon.label.keyTermLabel
               span Credible
             span.hidden.part1.keyTermDefinition 
               | Believable and trustworthy
         .ui.column
-          .keyTerm.ui.raised.segment
+          .keyTerm.ui.raised.segment.voiceover_keyTerm3
             a.ui.blue.ribbon.label.keyTermLabel
               span Fake news
             span.hidden.part1.keyTermDefinition 
               | A news story that looks real but has been made up.
         .ui.column
-          .keyTerm.ui.raised.segment
+          .keyTerm.ui.raised.segment.voiceover_keyTerm4
             a.ui.blue.ribbon.label.keyTermLabel
               span Clickbait
             span.hidden.part1.keyTermDefinition 
@@ -72,7 +74,7 @@ block content
       //- .ui.segments     
       .ui.stackable.two.column.grid
         .ui.column
-          .keyTerm.ui.raised.segment
+          .keyTerm.ui.raised.segment.voiceover_keyTerm5
             a.ui.blue.ribbon.label.keyTermLabel
                 i.dollar.sign.icon 
                 span Money
@@ -82,7 +84,7 @@ block content
               | attention. They don't care whether the information is true or 
               | not.
         .ui.column
-          .keyTerm.ui.raised.segment
+          .keyTerm.ui.raised.segment.voiceover_keyTerm6
             a.ui.blue.ribbon.label.keyTermLabel
                 i.magic.icon 
                 span Influence
@@ -103,6 +105,17 @@ block content
           
       
 block scripts
+  script.
+    var voiceoverMappings = {
+      '.showLearnSectionButton': ['',''],
+      '.voiceover_keyTerm1': '',
+      '.voiceover_keyTerm2': '',
+      '.voiceover_keyTerm3': '',
+      '.voiceover_keyTerm4': '',
+      '.voiceover_keyTerm5': '',
+      '.voiceover_keyTerm6': ''
+    };
+  script(src='/module_js/voiceover.js')
   script(src="/module_js/digital-literacy/digital-literacy_start.js")
   
 block styles

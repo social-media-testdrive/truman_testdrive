@@ -1,5 +1,24 @@
 let actionArray = new Array(); // this array will be handed to Promise.all
 
+$('.showLearnSectionButton').on('click', function () {
+  $('#clickNextWarning').hide();
+  $('.learnSegment').show();
+  $('.learnSegment .ui.header').transition('jiggle');
+  $('.showLearnSectionButton').hide();
+  // log action in db
+  let cat = new Object();
+  let pathArray = window.location.pathname.split('/');
+  cat.subdirectory1 = pathArray[1];
+  cat.subdirectory2 = pathArray[2];
+  cat.actionType = 'next_showLearnSection';
+  cat.absoluteTimestamp = Date.now();
+  const jqxhr = $.post("/startPageAction", {
+    action: cat,
+    _csrf: $('meta[name="csrf-token"]').attr('content')
+  });
+  actionArray.push(jqxhr);
+});
+
 $('#introduction_next').on('click', function () {
   $('#clickNextWarning').hide();
   $('#question').show();
@@ -13,7 +32,7 @@ $('#introduction_next').on('click', function () {
   let pathArray = window.location.pathname.split('/');
   cat.subdirectory1 = pathArray[1];
   cat.subdirectory2 = pathArray[2];
-  cat.actionType = 'next';
+  cat.actionType = 'next_showKeyIdeas';
   cat.absoluteTimestamp = Date.now();
   const jqxhr = $.post("/startPageAction", {
     action: cat,
@@ -31,7 +50,6 @@ function animateUnclickedLabels() {
 };
 
 function clickGotIt(){
-
   if($('#question').is(":hidden") && $('#question2').is(":hidden")){
     //User has not yet clicked next
     $('#clickNextWarning').show();
@@ -99,3 +117,7 @@ $('.keyTerm').on('click', function (event) {
   });
   actionArray.push(jqxhr);
 });
+
+$(window).on('load', function(){
+  Voiceovers.addVoiceovers();
+})
