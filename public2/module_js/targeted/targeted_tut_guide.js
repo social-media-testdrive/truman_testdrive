@@ -1,4 +1,9 @@
-$('.ui.accordion').accordion();
+$('.ui.accordion').accordion({
+  onOpen: function(){
+    let voiceoverKey = $(this).prev('.title').attr('data-voiceoverIndex');
+    Voiceovers.playVoiceover(voiceoverMappings[voiceoverKey]);
+  }
+});
 
 setTimeout(function(){
   $('.sub.header').transition('shake');
@@ -15,7 +20,6 @@ setTimeout(function(){
 setTimeout(function(){
   $('#point3').transition('jiggle');
 }, 3500);
-
 
 $('#point1_button').on('click', function () {
     $('#point2').click();

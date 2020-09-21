@@ -10,28 +10,30 @@ block content
         .content
           | Learn
       hr
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          | It's really common to see advertisements when browsing through your 
-          | social media feed.
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          | In fact, companies often collect information about you and use it to 
-          | show you ads for things they think you'll like. This is called 
-          | targeted advertising.
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          | While it may be nice to see ads tailored to your interests, the more 
-          | companies know about you, the more your information is at risk of 
-          | being sold, stolen, or used in ways you don't agree with.
-
-      br
-      .ui.mini.green.right.labeled.icon.button.showKeyTermsButton
+      .ui.mini.green.right.labeled.icon.button.showLearnSectionButton
         i.down.arrow.icon
         |   Next
+      .ui.basic.segment.learnSegment.hidden
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | It's really common to see advertisements when browsing through your 
+            | social media feed.
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | In fact, companies often collect information about you and use it to 
+            | show you ads for things they think you'll like. This is called 
+            | targeted advertising.
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | While it may be nice to see ads tailored to your interests, the more 
+            | companies know about you, the more your information is at risk of 
+            | being sold, stolen, or used in ways you don't agree with.
+        .ui.mini.green.right.labeled.icon.button.showKeyTermsButton
+          i.down.arrow.icon
+          |   Next
     
     .ui.segment.keyIdeasSegment.hidden
       h3.ui.header
@@ -44,7 +46,7 @@ block content
       //- .ui.segments     
       .ui.stackable.two.column.grid
         .ui.column
-          .ui.raised.segment.keyTerm
+          .ui.raised.segment.keyTerm.voiceover_keyTerm1
             a.ui.blue.ribbon.label.keyTermLabel
                 //- i.dollar.sign.icon 
                 span Data
@@ -57,7 +59,7 @@ block content
                 | search for, etc.)
 
         .ui.column
-          .ui.raised.segment.keyTerm
+          .ui.raised.segment.keyTerm.voiceover_keyTerm2
             a.ui.blue.ribbon.label.keyTermLabel
                 span Targeted advertising
             span.hidden.keyTermDefinition  
@@ -65,7 +67,7 @@ block content
               | based on information they’ve collected about you. 
             
         .ui.column
-          .ui.raised.segment.keyTerm
+          .ui.raised.segment.keyTerm.voiceover_keyTerm3
             a.ui.blue.ribbon.label.keyTermLabel
                 span Sponsored post
             span.hidden.keyTermDefinition 
@@ -81,18 +83,19 @@ block content
      .header
       | Click on each label to proceed  
     a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
-        .ui.labeled.icon.button
-            i.rocket.icon
-            |   Got it!
+      .ui.labeled.icon.button
+          i.rocket.icon
+          |   Got it!
 
 block scripts
   script.
     var voiceoverMappings = {
-      '.showLearnSectionButton': '',
+      '.showLearnSectionButton': ['','',''],
       '.voiceover_keyTerm1': '',
       '.voiceover_keyTerm2': '',
       '.voiceover_keyTerm3': ''
     };
+  script(src='/module_js/voiceover.js')
   script(src="/module_js/base_start.js")
   
 block styles

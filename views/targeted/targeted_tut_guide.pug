@@ -21,7 +21,7 @@ block content
           span Read and check all the boxes
         
     .ui.styled.fluid.accordion
-      #point1.title
+      #point1.title(data-voiceoverIndex='voiceover_tut_guide_1')
         i.dropdown.icon
         |     Turn off cookies in your web browser
       .content.ui.list
@@ -42,7 +42,7 @@ block content
                 i.down.arrow.icon
                 | Next
                 
-      #point2.title
+      #point2.title(data-voiceoverIndex='voiceover_tut_guide_2')
         i.dropdown.icon
         |     Adjust privacy settings in your apps
       .content.ui.list
@@ -63,7 +63,7 @@ block content
                 i.down.arrow.icon
                 | Next
                   
-      #point3.title
+      #point3.title(data-voiceoverIndex='voiceover_tut_guide_3')
         i.dropdown.icon
         |     Limit what you share
       .content.ui.list
@@ -82,7 +82,14 @@ block content
         |   Got it!
 
 block scripts
+  script.
+    var voiceoverMappings = {
+      'voiceover_tut_guide_1': ['',''],
+      'voiceover_tut_guide_2': ['',''],
+      'voiceover_tut_guide_3': ['','']
+    };
   script(src="/module_js/targeted/targeted_tut_guide.js")
+  script(src="/module_js/voiceover.js")
   
     
     

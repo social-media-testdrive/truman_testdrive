@@ -1,21 +1,33 @@
-var stepsList=[
+var stepsList = [
+  {
+    element: '#blueDotStep',
+    intro: `NOTE: Most browsers require users to interact with the page before
+    audio can play, so this step will not have a voiceover. Its purpose is to
+    get the user to interact with the page. Text would be added later.`,
+    position: 'right',
+    scrollTo: 'tooltip',
+    audioFile: ''
+  },
   {
     element: document.querySelectorAll('#blueDotStep')[0],
     intro: "This is the social media timeline of Hannah, a middle school student. One of Hannah’s favorite hobbies is playing the guitar.",
     scrollTo: 'tooltip',
-    position: 'right'
+    position: 'right',
+    audioFile: ''
   },
   {
     element: document.querySelectorAll('#blueDotStep')[0],
     intro: " Recently, she has been watching guitar tutorials on YouTube and looking up cool guitar brands on Google.",
     scrollTo: 'tooltip',
-    position: 'right'
+    position: 'right',
+    audioFile: ''
   },
   {
     element: document.querySelectorAll('#blueDotStep')[0],
     intro: "In this activity, you will see how targeted advertisements work. Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more...",
     scrollTo: 'tooltip',
-    position: 'right'
+    position: 'right',
+    audioFile: ''
   }
 
 ];
@@ -25,31 +37,36 @@ var hintsList = [
     hint: `This is a sponsored post from a guitar company. You can see that the
     post looks very similar to other social media posts.`,
     element: '#hint1',
-    hintPosition: 'middle-middle'
+    hintPosition: 'middle-middle',
+    audioFile: ''
   },
   {
     hint: `Try clicking the three dots and then “Why am I seeing this ad?” to
     learn more about how the website decided to show you the advertisement.`,
     element: '#hint2',
-    hintPosition: 'bottom-right'
+    hintPosition: 'bottom-right',
+    audioFile: ''
   },
   {
     hint: `One way you can tell that this post is an advertisement is by looking
     for words like “AD,” “Advertisement,” “Promoted,” or “Sponsored.”`,
     element: '#hint3',
-    hintPosition: 'middle-right'
+    hintPosition: 'middle-right',
+    audioFile: ''
   },
   {
     hint: `This looks like another sponsored post! Click the three dots and then
     click “Hide ad” if you don’t want to see the advertisement, or “Report ad”
     if it is inappropriate.`,
     element: '#hint4',
-    hintPosition: 'bottom-right'
+    hintPosition: 'bottom-right',
+    audioFile: ''
   },
   {
     hint: `Remember, you can always ignore the advertisement!`,
     element: '#hint5',
-    hintPosition: 'middle-middle'
+    hintPosition: 'middle-middle',
+    audioFile: ''
   }
 ];
 

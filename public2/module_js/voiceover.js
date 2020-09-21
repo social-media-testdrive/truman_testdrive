@@ -28,6 +28,8 @@
         voiceoverSequenceCount++;
         if ((typeof audioFile === "object") && (voiceoverSequenceCount < audioFile.length)){
           playVoiceover(audioFile);
+        } else {
+          voiceoverSequenceCount = 0;
         }
       }
     } else {
