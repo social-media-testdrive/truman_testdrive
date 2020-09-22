@@ -3,17 +3,17 @@ block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   .ui.container(style="padding:0;")
     br
-    h2 Pick a Module :)
+    h2 Pick a Module
     br
 
     .ui.four.stackable.link.cards(style="padding-bottom:4em;")
       
-        a.ui.card(href='/guest/advancedlit')
+        a.ui.card(href='/guest/accounts')
           .image
-            .ui.grey.ribbon.label In Development
-            img(src=cdn+'/advancednews.png')
+            .ui.blue.ribbon.label NEW!
+            img(src=cdn+'/acctandpasswords.png')
           .content
-            .header="Responding to Breaking News!" 
+            .header="Accounts and Passwords"  
             
         a.ui.card(href='/guest/esteem')
           .image
@@ -22,13 +22,13 @@ block content
           .content
             .header="The Ups and Downs of Social Media" 
             
-        a.ui.card(href='/guest/accounts')
+        a.ui.card(href='/guest/advancedlit')
           .image
             .ui.blue.ribbon.label NEW!
-            img(src=cdn+'/acctandpasswords.png')
+            img(src=cdn+'/advancednews.png')
           .content
-            .header="Accounts and Passwords"  
-
+            .header="Responding to Breaking News!" 
+            
         a.ui.card(href='/guest/habits')
           .image
             img(src=cdn+'/smhabits.png')
