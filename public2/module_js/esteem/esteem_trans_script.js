@@ -25,7 +25,7 @@ function customOnWindowLoad(){
         bot2Image = 'user4.jpg';
         bot2FullName = "Hayden Abbey";
         bot2FirstName = "Hayden";
-        customAudioFile = "";
+        customAudioFile = "CUSML.1.7.3.mp3";
         break;
       case 'Music':
         eventKeyword = 'music camp';
@@ -35,7 +35,7 @@ function customOnWindowLoad(){
         bot2Image = 'user10.jpg';
         bot2FullName = "Franklin Robinson";
         bot2FirstName = "Franklin";
-        customAudioFile = "";
+        customAudioFile = "CUSML.1.6.3.mp3";
         break;
       case 'Gaming':
         eventKeyword = 'gaming club';
@@ -45,17 +45,17 @@ function customOnWindowLoad(){
         bot2Image = 'user48.jpeg';
         bot2FullName = "Asher Michaels";
         bot2FirstName = "Asher";
-        customAudioFile = "";
+        customAudioFile = "CUSML.1.8.3.mp3";
         break;
       default:
-        eventKeyword = 'soccer game';
+        eventKeyword = 'gaming club';
         bot1Image = 'user30.jpg';
         bot1FullName = "Lindsay Stokes"
         bot1FirstName = "Lindsay"
         bot2Image = 'user48.jpeg';
         bot2FullName = "Asher Michaels"
         bot2FirstName = "Asher"
-        customAudioFile = "";
+        customAudioFile = "CUSML.1.8.3.mp3";
         break;
     }
 
@@ -71,7 +71,7 @@ function customOnWindowLoad(){
       {
         intro: `Now you get to explore the TestDrive timeline! You can read
         what others have posted, respond, or make your own posts.`,
-        audioFile: ''
+        audioFile: 'CUSML.1.6.1.mp3'
       },
       {
         intro: `Here is some background before you start: Imagine that you are
@@ -79,7 +79,7 @@ function customOnWindowLoad(){
         <span class='noLineBreak'><img class='ui avatar image customCircularAvatar' src='${cdn}/profile_pictures/user77.jpg'>
         Jeremy Murray's</span>
         social media timeline.`,
-        audioFile: ''
+        audioFile: 'CUSML.1.6.2.mp3'
       },
       {
         intro: `Jeremy has two friends,
@@ -94,7 +94,7 @@ function customOnWindowLoad(){
         intro: `You may also see posts from other friends that could cause
         Jeremy to have a red flag feeling. Click on these posts to think about
         how Jeremy might feel and what he can do about it.`,
-        audioFile: ''
+        audioFile: 'CUSML.1.6.4.mp3'
       }
     ];
 

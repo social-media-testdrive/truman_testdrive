@@ -1,6 +1,11 @@
 {
+  const cdn = 'https://dhpd030vnpk29.cloudfront.net';
   const audioChannel = new Audio(); // the audio channel for voiceovers
   let voiceoverSequenceCount = 0;
+
+  function pauseVoiceover(){
+    audioChannel.pause();
+  }
 
   function playVoiceover(audioFile) {
 
@@ -8,10 +13,18 @@
     const subdirectory2 = pathArray[2];
     if (audioFile !== '') {
       if (typeof audioFile === "string"){
-        audioChannel.src = `/audioFiles/${subdirectory2}/${audioFile}`;
+        if (subdirectory2 === "cyberbullying") { // TODO: remove once cyberbullying voice-overs recorded
+          audioChannel.src = `/audioFiles/${subdirectory2}/${audioFile}`;
+        } else {
+          audioChannel.src = `${cdn}/voice-overs/${audioFile}`;
+        }
       } else if (typeof audioFile === "object"){
         if( audioFile[voiceoverSequenceCount] !== ''){
-          audioChannel.src = `/audioFiles/${subdirectory2}/${audioFile[voiceoverSequenceCount]}`;
+          if (subdirectory2 === "cyberbullying") { // TODO: remove once cyberbullying voice-overs recorded
+            audioChannel.src = `/audioFiles/${subdirectory2}/${audioFile[voiceoverSequenceCount]}`;
+          } else {
+            audioChannel.src = `${cdn}/voice-overs/${audioFile[voiceoverSequenceCount]}`;
+          }
         }
       }
       let playVoiceoverPromise = audioChannel.play();
@@ -29,13 +42,18 @@
         if ((typeof audioFile === "object") && (voiceoverSequenceCount < audioFile.length)){
           playVoiceover(audioFile);
         } else {
-          voiceoverSequenceCount = 0;
+          resetVoiceoverSequenceCount();
         }
       }
     } else {
+      pauseVoiceover();
       console.log(`** No audio filename provided. If this is expected, then ignore this message. **`);
     }
   };
+
+  function resetVoiceoverSequenceCount(){
+    voiceoverSequenceCount = 0;
+  }
 
   function addVoiceovers() {
     for (const element in voiceoverMappings) {
@@ -45,12 +63,11 @@
     }
   };
 
-  function pauseVoiceover(){
-    audioChannel.pause();
-  }
+
 
   window.Voiceovers = {
     playVoiceover,
+    resetVoiceoverSequenceCount,
     pauseVoiceover,
     addVoiceovers
   }

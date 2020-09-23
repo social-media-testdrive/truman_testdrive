@@ -9,25 +9,30 @@ var stepsList = [
     audioFile: ''
   },
   {
-    element: document.querySelectorAll('#blueDotStep')[0],
-    intro: "This is the social media timeline of Hannah, a middle school student. One of Hannah’s favorite hobbies is playing the guitar.",
+    element: '#blueDotStep',
+    intro: `This is the social media timeline of Hannah, a middle school student.
+    One of Hannah’s favorite hobbies is playing the guitar.`,
     scrollTo: 'tooltip',
     position: 'right',
-    audioFile: ''
+    audioFile: 'CUSML.2.5.1.mp3'
   },
   {
-    element: document.querySelectorAll('#blueDotStep')[0],
-    intro: " Recently, she has been watching guitar tutorials on YouTube and looking up cool guitar brands on Google.",
+    element: '#blueDotStep',
+    intro: `Recently, she has been watching guitar tutorials on YouTube and
+    looking up cool guitar brands on Google.`,
     scrollTo: 'tooltip',
     position: 'right',
-    audioFile: ''
+    audioFile: 'CUSML.2.5.2.mp3'
   },
   {
-    element: document.querySelectorAll('#blueDotStep')[0],
-    intro: "In this activity, you will see how targeted advertisements work. Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more...",
+    element: '#blueDotStep',
+    intro: `In this activity, you will see how targeted advertisements work.
+    Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'>
+    <div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a>
+    &nbsp; &nbsp; &nbsp;to learn more...`,
     scrollTo: 'tooltip',
     position: 'right',
-    audioFile: ''
+    audioFile: 'CUSML.2.5.3.mp3'
   }
 
 ];
@@ -38,21 +43,21 @@ var hintsList = [
     post looks very similar to other social media posts.`,
     element: '#hint1',
     hintPosition: 'middle-middle',
-    audioFile: ''
+    audioFile: 'CUSML.2.5.4.mp3'
   },
   {
     hint: `Try clicking the three dots and then “Why am I seeing this ad?” to
     learn more about how the website decided to show you the advertisement.`,
     element: '#hint2',
     hintPosition: 'bottom-right',
-    audioFile: ''
+    audioFile: 'CUSML.2.5.5.mp3'
   },
   {
     hint: `One way you can tell that this post is an advertisement is by looking
     for words like “AD,” “Advertisement,” “Promoted,” or “Sponsored.”`,
     element: '#hint3',
     hintPosition: 'middle-right',
-    audioFile: ''
+    audioFile: 'CUSML.2.5.6.mp3'
   },
   {
     hint: `This looks like another sponsored post! Click the three dots and then
@@ -60,13 +65,13 @@ var hintsList = [
     if it is inappropriate.`,
     element: '#hint4',
     hintPosition: 'bottom-right',
-    audioFile: ''
+    audioFile: 'CUSML.2.5.7.mp3'
   },
   {
     hint: `Remember, you can always ignore the advertisement!`,
     element: '#hint5',
     hintPosition: 'middle-middle',
-    audioFile: ''
+    audioFile: 'CUSML.2.5.8.mp3'
   }
 ];
 

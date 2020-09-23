@@ -8,7 +8,7 @@ var hintsList=
     element: '#hint1',
     position: 'right',
     hintPosition: 'middle-right',
-    audioFile: ''
+    audioFile: 'CUSML.1.4.2.mp3'
   },
   {
     hint: `Click on the post to think about how Nick might feel when he sees
@@ -16,7 +16,7 @@ var hintsList=
     element: '#hint3',
     position: 'bottom',
     hintPosition: 'middle-right',
-    audioFile: ''
+    audioFile: 'CUSML.1.4.3.mp3'
   },
   {
     hint: `Seeing everything his friends are posting might make Nick feel like
@@ -25,7 +25,7 @@ var hintsList=
     element: '#hint3A',
     position: 'right',
     hintPosition: 'bottom-right',
-    audioFile: ''
+    audioFile: 'CUSML.1.4.4.mp3'
   },
   {
     hint: `Nick can always take a break from social media. He can meet up with
@@ -33,7 +33,7 @@ var hintsList=
     element: '#hint4',
     position: 'bottom-right',
     hintPosition: 'middle-right',
-    audioFile: ''
+    audioFile: 'CUSML.1.4.5.mp3'
   }
 ]
 
@@ -57,7 +57,7 @@ var stepsList=
     'introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more...`,
     position: "left",
     scrollTo: 'tooltip',
-    audioFile: ''
+    audioFile: 'CUSML.1.4.1.mp3'
   }
 ]
 

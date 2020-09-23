@@ -1,7 +1,11 @@
 $('.ui.accordion').accordion({
   onOpen: function(){
     let voiceoverKey = $(this).prev('.title').attr('data-voiceoverIndex');
+    Voiceovers.resetVoiceoverSequenceCount();
     Voiceovers.playVoiceover(voiceoverMappings[voiceoverKey]);
+  },
+  onClosing: function(){
+    Voiceovers.pauseVoiceover();
   }
 });
 
