@@ -8,7 +8,7 @@ const stepsList = [
     get the user to interact with the page. Text would be added later.`,
     position: 'right',
     scrollTo: 'tooltip',
-    audioFile: ''
+    audioFile: ['']
   },
   {
     element: '#step1',
@@ -16,7 +16,7 @@ const stepsList = [
     to other posts or articles on social media.`,
     position: "right",
     scrollTo: 'tooltip',
-    audioFile: 'CUSML.2.3.1.mp3'
+    audioFile: ['CUSML.2.3.1.mp3']
   },
   {
     element: '#step1',
@@ -24,7 +24,7 @@ const stepsList = [
     advertisement or not.`,
     position: "right",
     scrollTo: "tooltip",
-    audioFile: 'CUSML.2.3.2.mp3'
+    audioFile: ['CUSML.2.3.2.mp3']
   },
   {
     element: '#sponsoredTag',
@@ -33,7 +33,7 @@ const stepsList = [
     Ads can also have a #hashtag with the same words!`,
     position: "left",
     scrollTo: "tooltip",
-    audioFile: 'CUSML.2.3.3.mp3'
+    audioFile: ['CUSML.2.3.3.mp3']
   },
   {
     element: '#poster',
@@ -42,14 +42,14 @@ const stepsList = [
     liked or commented on the post!`,
     position: "right",
     scrollTo: "tooltip",
-    audioFile: 'CUSML.2.3.4.mp3'
+    audioFile: ['CUSML.2.3.4.mp3']
   },
   {
     element: '#item1',
     intro: `What can you do if you spot an ad?`,
     position: "right",
     scrollTo: "tooltip",
-    audioFile: 'CUSML.2.3.5.mp3'
+    audioFile: ['CUSML.2.3.5.mp3']
   },
   {
     element: '#item1',
@@ -58,7 +58,7 @@ const stepsList = [
     timeline.`,
     position: "right",
     scrollTo: "tooltip",
-    audioFile: 'CUSML.2.3.6.mp3'
+    audioFile: ['CUSML.2.3.6.mp3']
   },
   {
     element: '#item1',
@@ -66,7 +66,7 @@ const stepsList = [
     “Report ad” to report it to the website.`,
     position: "right",
     scrollTo: "tooltip",
-    audioFile: 'CUSML.2.3.7.mp3'
+    audioFile: ['CUSML.2.3.7.mp3']
   },
   {
     element: '#item1',
@@ -74,7 +74,7 @@ const stepsList = [
     the website decided to show you the advertisement.`,
     position: "right",
     scrollTo: "tooltip",
-    audioFile: 'CUSML.2.3.8.mp3'
+    audioFile: ['CUSML.2.3.8.mp3']
   },
   {
     element: '#step1',
@@ -82,7 +82,7 @@ const stepsList = [
     settings so you don’t see them altogether!`,
     position: "right",
     scrollTo: "tooltip",
-    audioFile: 'CUSML.2.3.9.mp3'
+    audioFile: ['CUSML.2.3.9.mp3']
   }
 ]
 

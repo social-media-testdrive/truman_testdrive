@@ -1,8 +1,12 @@
 $('.ui.accordion').accordion({
   onOpen: function(){
+    Voiceovers.pauseVoiceover();
     let voiceoverKey = $(this).prev('.title').attr('data-voiceoverIndex');
     Voiceovers.resetVoiceoverSequenceCount();
-    Voiceovers.playVoiceover(voiceoverMappings[voiceoverKey]);
+    const voiceoverInfo = voiceoverMappings[voiceoverKey];
+    setTimeout(function(){
+      Voiceovers.playVoiceover(voiceoverInfo["files"],voiceoverInfo["delay"]);
+    },voiceoverInfo["initialDelay"]);
   },
   onClosing: function(){
     Voiceovers.pauseVoiceover();

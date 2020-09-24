@@ -6,7 +6,7 @@ var stepsList = [
     get the user to interact with the page. Text would be added later.`,
     position: 'right',
     scrollTo: 'tooltip',
-    audioFile: ''
+    audioFile: ['']
   },
   {
     element: '#blueDotStep',
@@ -14,7 +14,7 @@ var stepsList = [
     One of Hannah’s favorite hobbies is playing the guitar.`,
     scrollTo: 'tooltip',
     position: 'right',
-    audioFile: 'CUSML.2.5.1.mp3'
+    audioFile: ['CUSML.2.5.1.mp3']
   },
   {
     element: '#blueDotStep',
@@ -22,7 +22,7 @@ var stepsList = [
     looking up cool guitar brands on Google.`,
     scrollTo: 'tooltip',
     position: 'right',
-    audioFile: 'CUSML.2.5.2.mp3'
+    audioFile: ['CUSML.2.5.2.mp3']
   },
   {
     element: '#blueDotStep',
@@ -32,7 +32,7 @@ var stepsList = [
     &nbsp; &nbsp; &nbsp;to learn more...`,
     scrollTo: 'tooltip',
     position: 'right',
-    audioFile: 'CUSML.2.5.3.mp3'
+    audioFile: ['CUSML.2.5.3.mp3']
   }
 
 ];
@@ -43,21 +43,21 @@ var hintsList = [
     post looks very similar to other social media posts.`,
     element: '#hint1',
     hintPosition: 'middle-middle',
-    audioFile: 'CUSML.2.5.4.mp3'
+    audioFile: ['CUSML.2.5.4.mp3']
   },
   {
     hint: `Try clicking the three dots and then “Why am I seeing this ad?” to
     learn more about how the website decided to show you the advertisement.`,
     element: '#hint2',
     hintPosition: 'bottom-right',
-    audioFile: 'CUSML.2.5.5.mp3'
+    audioFile: ['CUSML.2.5.5.mp3']
   },
   {
     hint: `One way you can tell that this post is an advertisement is by looking
     for words like “AD,” “Advertisement,” “Promoted,” or “Sponsored.”`,
     element: '#hint3',
     hintPosition: 'middle-right',
-    audioFile: 'CUSML.2.5.6.mp3'
+    audioFile: ['CUSML.2.5.6.mp3']
   },
   {
     hint: `This looks like another sponsored post! Click the three dots and then
@@ -65,13 +65,13 @@ var hintsList = [
     if it is inappropriate.`,
     element: '#hint4',
     hintPosition: 'bottom-right',
-    audioFile: 'CUSML.2.5.7.mp3'
+    audioFile: ['CUSML.2.5.7.mp3']
   },
   {
     hint: `Remember, you can always ignore the advertisement!`,
     element: '#hint5',
     hintPosition: 'middle-middle',
-    audioFile: 'CUSML.2.5.8.mp3'
+    audioFile: ['CUSML.2.5.8.mp3']
   }
 ];
 

@@ -55,7 +55,7 @@ $(window).on("load", function() {
     $('#clickNextWarning').hide();
     $('.learnSegment').show();
     $('.learnSegment .ui.header').transition('jiggle');
-    $('.showLearnSectionButton').hide();
+    $('.showLearnSectionButton').parent('.ui.segment').hide();
     logActionInDB('next_showLearnSection');
   });
 

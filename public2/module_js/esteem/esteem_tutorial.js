@@ -8,7 +8,7 @@ const stepsList = [
     get the user to interact with the page. Text would be added later.`,
     position: 'right',
     scrollTo: 'tooltip',
-    audioFile: ''
+    audioFile: ['']
   },
   {
     element: '#step1',
@@ -16,7 +16,7 @@ const stepsList = [
     be in the know on what they're up to. It's also a great place to
     learn and explore new hobbies and interests.`,
     position: 'right',
-    audioFile: 'CUSML.1.3.1.mp3'
+    audioFile: ['CUSML.1.3.1.mp3']
   },
   {
     element: '#step2',
@@ -25,7 +25,7 @@ const stepsList = [
     much more exciting than yours, which can make you feel worried, sad,
     or anxious.`,
     position: 'right',
-    audioFile: 'CUSML.1.3.2.mp3'
+    audioFile: ['CUSML.1.3.2.mp3']
   },
   {
     element: '#step2',
@@ -33,7 +33,7 @@ const stepsList = [
     feelings, it is important to slow down and think about how you feel
     and what you can do about it.`,
     position: 'right',
-    audioFile: 'CUSML.1.3.3.mp3'
+    audioFile: ['CUSML.1.3.3.mp3']
   },
   {
     element: '#step3B',
@@ -41,7 +41,7 @@ const stepsList = [
     share how you feel on social media. Sharing on social media is
     great, but try not to overshare!`,
     position: 'right',
-    audioFile: 'CUSML.1.3.4.mp3'
+    audioFile: ['CUSML.1.3.4.mp3']
   },
   {
     element: '#step3B',
@@ -49,7 +49,7 @@ const stepsList = [
     might feel good in the moment, but could cause you or others to feel
     uncomfortable later.`,
     position: 'right',
-    audioFile: 'CUSML.1.3.5.mp3'
+    audioFile: ['CUSML.1.3.5.mp3']
   },
   {
     element: '#step4',
@@ -57,7 +57,7 @@ const stepsList = [
     logging off to do something else you enjoy can help you feel
     better.`,
     position: 'right',
-    audioFile: 'CUSML.1.3.6.mp3'
+    audioFile: ['CUSML.1.3.6.mp3']
   },
   {
     element: '#step4',
@@ -65,6 +65,6 @@ const stepsList = [
     with other things you enjoy doing, like spending time with family
     and friends, reading a book, or playing outside.`,
     position: 'right',
-    audioFile: 'CUSML.1.3.7.mp3'
+    audioFile: ['CUSML.1.3.7.mp3']
   }
 ];

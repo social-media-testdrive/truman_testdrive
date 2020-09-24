@@ -11,7 +11,7 @@
     audioChannel.pause();
   }
 
-  function playVoiceover(audioFile, delay) {
+  function playVoiceover(audioFile, delay = 0) {
     const pathArray = window.location.pathname.split('/');
     const subdirectory2 = pathArray[2];
     if (audioFile !== '') {

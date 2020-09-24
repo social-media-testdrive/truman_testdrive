@@ -10,9 +10,10 @@ block content
         .content
           | Learn
       hr
-      .ui.mini.green.right.labeled.icon.button.showLearnSectionButton
-        i.down.arrow.icon
-        |   Next
+      .ui.basic.segment(style="padding:0")
+        .ui.mini.green.right.labeled.icon.button.showLearnSectionButton
+          i.down.arrow.icon
+          |   Next
       .ui.basic.segment.learnSegment.hidden
         h5.ui.header
           i.arrow.circle.right.blue.icon
@@ -91,7 +92,7 @@ block scripts
   script.
     var voiceoverMappings = {
       '.showLearnSectionButton': {
-        "initialDelay": 3000,
+        "initialDelay": 700,
         "delay": 1000,
         "files": ['CUSML.2.1.1.mp3','CUSML.2.1.2.mp3','CUSML.2.1.3.mp3']
       },

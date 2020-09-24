@@ -45,7 +45,11 @@ block content
 block scripts
   script.
     var voiceoverMappings = {
-      '.showReviewSectionButton': ['','','']
+      '.showReviewSectionButton': {
+        "initialDelay": 0,
+        "delay": 0,
+        "files": ['cyberbullying_trans.mp3']
+      }
     };
     var nextPage = 'trans_script';
   script(src="/module_js/voiceover.js")  

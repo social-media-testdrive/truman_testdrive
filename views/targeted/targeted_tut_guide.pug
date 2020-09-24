@@ -84,9 +84,21 @@ block content
 block scripts
   script.
     var voiceoverMappings = {
-      'voiceover_tut_guide_1': ['CUSML.2.4.03.mp3','CUSML.2.4.04.mp3','CUSML.2.4.05.mp3'],
-      'voiceover_tut_guide_2': ['CUSML.2.4.06.mp3','CUSML.2.4.07.mp3','CUSML.2.4.08.mp3'],
-      'voiceover_tut_guide_3': ['CUSML.2.4.09.mp3','CUSML.2.4.10.mp3']
+      'voiceover_tut_guide_1': {
+        "initialDelay": 500,
+        "delay": 500,
+        "files": ['CUSML.2.4.03.mp3','CUSML.2.4.04.mp3','CUSML.2.4.05.mp3']
+      },
+      'voiceover_tut_guide_2': {
+        "initialDelay": 700,
+        "delay": 500,
+        "files": ['CUSML.2.4.06.mp3','CUSML.2.4.07.mp3','CUSML.2.4.08.mp3']
+      },
+      'voiceover_tut_guide_3': {
+        "initialDelay": 700,
+        "delay": 500,
+        "files": ['CUSML.2.4.09.mp3','CUSML.2.4.10.mp3']
+      }
     };
   script(src="/module_js/targeted/targeted_tut_guide.js")
   script(src="/module_js/voiceover.js")

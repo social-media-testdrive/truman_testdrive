@@ -64,7 +64,11 @@ block content
 block scripts
   script.
     var voiceoverMappings = {
-      '.showReviewSectionButton': ['CUSML.2.6.1.mp3','CUSML.2.6.2.mp3','CUSML.2.6.3.mp3']
+      '.showReviewSectionButton': {
+        "initialDelay": 500,
+        "delay": 500,
+        "files": ['CUSML.2.6.1.mp3','CUSML.2.6.2.mp3','CUSML.2.6.3.mp3']
+      }
     };
     var nextPage = 'trans2';
   script(src="/module_js/voiceover.js")  
