@@ -3,28 +3,23 @@
   const audioChannel = new Audio(); // the audio channel for voiceovers
   let voiceoverSequenceCount = 0;
 
+  function resetVoiceoverSequenceCount(){
+    voiceoverSequenceCount = 0;
+  }
+
   function pauseVoiceover(){
     audioChannel.pause();
   }
 
-  function playVoiceover(audioFile) {
-
+  function playVoiceover(audioFile, delay) {
     const pathArray = window.location.pathname.split('/');
     const subdirectory2 = pathArray[2];
     if (audioFile !== '') {
-      if (typeof audioFile === "string"){
+      if( audioFile[voiceoverSequenceCount] !== ''){
         if (subdirectory2 === "cyberbullying") { // TODO: remove once cyberbullying voice-overs recorded
-          audioChannel.src = `/audioFiles/${subdirectory2}/${audioFile}`;
+          audioChannel.src = `/audioFiles/${subdirectory2}/${audioFile[voiceoverSequenceCount]}`;
         } else {
-          audioChannel.src = `${cdn}/voice-overs/${audioFile}`;
-        }
-      } else if (typeof audioFile === "object"){
-        if( audioFile[voiceoverSequenceCount] !== ''){
-          if (subdirectory2 === "cyberbullying") { // TODO: remove once cyberbullying voice-overs recorded
-            audioChannel.src = `/audioFiles/${subdirectory2}/${audioFile[voiceoverSequenceCount]}`;
-          } else {
-            audioChannel.src = `${cdn}/voice-overs/${audioFile[voiceoverSequenceCount]}`;
-          }
+          audioChannel.src = `${cdn}/voice-overs/${audioFile[voiceoverSequenceCount]}`;
         }
       }
       let playVoiceoverPromise = audioChannel.play();
@@ -39,8 +34,10 @@
       }
       audioChannel.onended = function(){
         voiceoverSequenceCount++;
-        if ((typeof audioFile === "object") && (voiceoverSequenceCount < audioFile.length)){
-          playVoiceover(audioFile);
+        if (voiceoverSequenceCount < audioFile.length){
+          setTimeout(function(){
+            playVoiceover(audioFile,delay);
+          }, delay);
         } else {
           resetVoiceoverSequenceCount();
         }
@@ -51,24 +48,22 @@
     }
   };
 
-  function resetVoiceoverSequenceCount(){
-    voiceoverSequenceCount = 0;
-  }
-
   function addVoiceovers() {
     for (const element in voiceoverMappings) {
+      const voiceoverInfo = voiceoverMappings[element];
       $(element).on('click', function(){
-        playVoiceover(voiceoverMappings[element]);
+        pauseVoiceover();
+        setTimeout( function() {
+          playVoiceover(voiceoverInfo["files"],voiceoverInfo["delay"]);
+        }, voiceoverInfo["initialDelay"]);
       });
     }
   };
 
-
-
   window.Voiceovers = {
-    playVoiceover,
     resetVoiceoverSequenceCount,
     pauseVoiceover,
+    playVoiceover,
     addVoiceovers
   }
 }
