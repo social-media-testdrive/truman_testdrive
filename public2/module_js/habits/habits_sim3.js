@@ -3,14 +3,16 @@ const hintsList = [
     element: '#hint1',
     hint: `Most social media sites have settings that you can use to control the
     number of notifications you get. It will look similar to this page.`,
-    hintPosition: "middle-middle"
+    hintPosition: "middle-middle",
+    audioFile: ['']
   },
   {
     element: '#hint2',
     hint: `Here, you can change the number of notifications you get for
     different types of content. Try pausing notifications for a while by turning
     this setting on.`,
-    hintPosition: "middle-middle"
+    hintPosition: "middle-middle",
+    audioFile: ['']
   }
 ];
 

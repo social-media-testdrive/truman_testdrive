@@ -10,6 +10,11 @@ function animateUnclickedLabels() {
 };
 
 function clickGotIt(){
+  if($('.learnSegment').is(':hidden')){
+    //User has not yet clicked next
+    $('#clickNextWarning').show();
+    $('.showLearnSectionButton').transition('bounce');
+  }
   if ($('.keyIdeasSegment').is(":hidden")) {
     //User has not yet clicked next
     $('#clickNextWarning').show();

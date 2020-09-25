@@ -9,14 +9,16 @@ function startIntro(){
         intro: `When you first create your profile, think about how much
         information you really want to share with other people.`,
         position: "right",
-        scrollTo: 'tooltip'
+        scrollTo: 'tooltip',
+        audioFile: ['']
       },
       {
         element: document.querySelectorAll('#generalStep')[0],
         intro: `Some platforms make it optional to share certain information.
           Don't feel pressured to share everything!`,
         position: "right",
-        scrollTo: 'tooltip'
+        scrollTo: 'tooltip',
+        audioFile: ['']
       },
       {
         element: document.querySelectorAll('#locationStep')[0],
@@ -24,7 +26,8 @@ function startIntro(){
         very easy for strangers to figure out who you are and where you live.
         Try not to be too specific when you share your location.`,
         position: "right",
-        scrollTo: 'tooltip'
+        scrollTo: 'tooltip',
+        audioFile: ['']
       }
     ]
   });

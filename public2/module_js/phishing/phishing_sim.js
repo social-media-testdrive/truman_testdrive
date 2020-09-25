@@ -4,14 +4,14 @@ var hintsList = [
     too good to be true.`,
     element: '#hint1',
     hintPosition: 'middle-middle',
-    audioFile: ''
+    audioFile: ['']
   },
   {
     hint: `This post has a shortened URL, which can lead to a risky website.
     Don’t click on the link!`,
     element: '#hint2',
     hintPosition: 'middle-right',
-    audioFile: ''
+    audioFile: ['']
   },
   {
     hint: `Watch out for scammers who are pretending to be your friend!
@@ -19,14 +19,14 @@ var hintsList = [
     really from them.`,
     element: '#hint3',
     hintPosition: 'middle-middle',
-    audioFile: ''
+    audioFile: ['']
   },
   {
     hint: `If you decide the post is a phishing scam, click on the flag
     button to report it.`,
     element: '#hint4',
     hintPosition: 'middle-right',
-    audioFile: ''
+    audioFile: ['']
   }
 ];
 
@@ -38,7 +38,7 @@ var stepsList = [
     get the user to interact with the page. Text would be added later.`,
     position: 'right',
     scrollTo: 'tooltip',
-    audioFile: ''
+    audioFile: ['']
   },
   {
     element: '#step0',
@@ -48,7 +48,7 @@ var stepsList = [
       " &nbsp; &nbsp; &nbsp;to learn more...",
     position: "right",
     scrollTo: 'tooltip',
-    audioFile: ''
+    audioFile: ['']
   }
 ];
 

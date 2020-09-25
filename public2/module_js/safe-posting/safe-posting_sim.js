@@ -1,6 +1,7 @@
 const stepsList = [
   {
-    intro: "Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more..."
+    intro: "Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more...",
+    audioFile: ['']
   }
 ];
 
@@ -9,13 +10,15 @@ const hintsList = [
     element: '#hint1',
     hint: `If you see your friends sharing private information on social media,
     it's a good idea to tell them to take it down.`,
-    hintPosition: "middle-right"
+    hintPosition: "middle-right",
+    audioFile: ['']
   },
   {
     element: '#hint2',
     hint: `Since these messages came from a stranger, you should not share any
     private information with them. Remember, you can also ignore the person.`,
-    hintPosition: "top-middle"
+    hintPosition: "top-middle",
+    audioFile: ['']
   }
 ];
 

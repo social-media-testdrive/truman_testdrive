@@ -3,19 +3,22 @@ const stepsList = [
     element: document.querySelectorAll('#step0')[0],
     intro: "Thinking about your media choices and the habits you form while using them is important. Good habits help us build healthy and happy lives. Bad habits can make our lives more difficult.",
     position: "right",
-    scrollTo: 'tooltip'
+    scrollTo: 'tooltip',
+    audioFile: ['']
   },
   {
     element: document.getElementById('step0'),
     intro: "While apps use certain features to grab your attention and keep you using them for as long as possible, it's important to think about how you can form good habits and be in control of your media use!",
     position: "right",
-    scrollTo: 'tooltip'
+    scrollTo: 'tooltip',
+    audioFile: ['']
   },
   {
     element: document.getElementById('step0'),
     intro: "Let's learn some strategies to build healthy social media habits. Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; to learn more...",
     position: "right",
-    scrollTo: 'tooltip'
+    scrollTo: 'tooltip',
+    audioFile: ['']
   }
 ];
 
@@ -24,13 +27,15 @@ const hintsList = [
     element: '#hint1',
     hint: `This is a social media timeline. You will get notifications when
     your friends like or comment on your posts.`,
-    hintPosition: "middle-middle"
+    hintPosition: "middle-middle",
+    audioFile: ['']
   },
   {
     element: '#hint2',
     hint: `Once you've clicked all the blue dots, click on the Notifications tab
     to see what notifications you have received!`,
-    hintPosition: "middle-middle"
+    hintPosition: "middle-middle",
+    audioFile: ['']
   }
 ];
 

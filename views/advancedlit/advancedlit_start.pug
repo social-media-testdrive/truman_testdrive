@@ -11,31 +11,34 @@ block content
         .content
           | Learn
       hr
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          | Being connected on social media can help you get news as soon as 
-          | things happen, but early news reports might not be very detailed or 
-          | accurate.
-          
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          | News outlets are battling to report the news first, which means we 
-          | get news faster, but it also means we have to be more careful about
-          | making sure the news is accurate.
+      .ui.basic.segment(style="padding:0")
+        .ui.mini.green.right.labeled.icon.button.showLearnSectionButton
+          i.down.arrow.icon
+          |   Next
+      .ui.basic.segment.learnSegment.hidden
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | Being connected on social media can help you get news as soon as 
+            | things happen, but early news reports might not be very detailed or 
+            | accurate.
+            
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | News outlets are battling to report the news first, which means we 
+            | get news faster, but it also means we have to be more careful about
+            | making sure the news is accurate.
 
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          | And even though breaking news can be inaccurate or incomplete, 
-          | people share it on social media to get more “likes” and shares, or 
-          | to be seen as important, smart, and helpful.
-
-      br
-      .ui.mini.green.right.labeled.icon.button.showKeyTermsButton
-        i.down.arrow.icon
-        |   Next
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | And even though breaking news can be inaccurate or incomplete, 
+            | people share it on social media to get more “likes” and shares, or 
+            | to be seen as important, smart, and helpful.
+        .ui.mini.green.right.labeled.icon.button.showKeyTermsButton
+          i.down.arrow.icon
+          |   Next
     
     .ui.segment.keyIdeasSegment.hidden
       h3.ui.header
@@ -47,7 +50,7 @@ block content
       br
       .ui.stackable.two.column.grid
         .ui.column
-          .keyTerm.ui.raised.segment
+          .keyTerm.ui.raised.segment.voiceover_keyTerm1
             a.ui.blue.ribbon.label.keyTermLabel
                 span Breaking News
             span.hidden.keyTermDefinition 
@@ -55,14 +58,14 @@ block content
               | or is currently occurring.
       
         .ui.column
-          .keyTerm.ui.raised.segment
+          .keyTerm.ui.raised.segment.voiceover_keyTerm2
             a.ui.blue.ribbon.label.keyTermLabel
                 span Opinion
             span.hidden.keyTermDefinition 
               | A personal belief, view, or judgment about something.
               
         .ui.column
-          .keyTerm.ui.raised.segment
+          .keyTerm.ui.raised.segment.voiceover_keyTerm3
             a.ui.blue.ribbon.label.keyTermLabel
                 span Fact Checking
             span.hidden.keyTermDefinition 
@@ -76,18 +79,35 @@ block content
      .header
       | Click on each label to proceed 
     a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
-        .ui.labeled.icon.button
-            i.rocket.icon
-            |   Got it!
+      .ui.labeled.icon.button
+          i.rocket.icon
+          |   Got it!
 
 block scripts
   script.
     var voiceoverMappings = {
-      '.showLearnSectionButton': '',
-      '.voiceover_keyTerm1': '',
-      '.voiceover_keyTerm2': '',
-      '.voiceover_keyTerm3': ''
+      '.showLearnSectionButton': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['','','']
+      },
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['']
+      },
+      '.voiceover_keyTerm2': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['']
+      }
     };
+  script(src='/module_js/voiceover.js')
   script(src="/module_js/base_start.js")
 
 block styles

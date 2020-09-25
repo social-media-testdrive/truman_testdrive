@@ -59,16 +59,19 @@ block scripts
         hint: `Fill out the profile information. Remember to not share too many
           details about who you are.`,
         element: '#generalStep',
-        hintPosition: 'top-middle'
+        hintPosition: 'top-middle',
+        audioFile: ['']
       },
       {
         hint: `Start off by sharing only a little bit of information about
           yourself. You can always add more information later if you need to.`,
         element: '#generalStep',
-        hintPosition: 'top-right'
+        hintPosition: 'top-right',
+        audioFile: ['']
       }
     ];
   script(src="/module_js/base_sim.js")
+  script(src="/module_js/voiceover.js")
   
 block styles
-  link(rel='stylesheet', href='/css/accounts/sim.css')
+  link(rel='stylesheet', href='/css/modules/accounts.css')

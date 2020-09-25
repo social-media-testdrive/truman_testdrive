@@ -4,21 +4,21 @@ var hintsList = [
     You can post things related to your hobbies, your school activities, or
     any other interests!`,
     element: '#hint1',
-    audioFile: ''
+    audioFile: ['']
   },
   {
     hint: `Read this post and then click on it to think more about how a
     post like this impacts someone’s digital footprint.`,
     element: '#hint2',
     hintPosition: 'bottom-right',
-    audioFile: ''
+    audioFile: ['']
   },
   {
     hint: `Read this post and then click on it to think more about how a
     post like this impacts someone’s digital footprint.`,
     element: '#hint3',
     hintPosition: 'middle-middle',
-    audioFile: ''
+    audioFile: ['']
   },
   {
     hint: `Remember, your digital footprint can affect your reputation
@@ -26,7 +26,7 @@ var hintsList = [
     view you as a result.`,
     element: '#hint4',
     hintPosition: 'middle-middle',
-    audioFile: ''
+    audioFile: ['']
   },
   {
     hint: `If someone posts something you don’t want to have as part of your
@@ -34,7 +34,7 @@ var hintsList = [
     message.`,
     element: '#hint5',
     hintPosition: 'bottom-right',
-    audioFile: ''
+    audioFile: ['']
   }
 ];
 
@@ -46,7 +46,7 @@ var stepsList = [
     get the user to interact with the page. Text would be added later.`,
     position: 'left',
     scrollTo: 'tooltip',
-    audioFile: ''
+    audioFile: ['']
   },
   {
     element: '#step1',
@@ -55,7 +55,7 @@ var stepsList = [
     'introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more...`,
     position: "left",
     scrollTo: 'tooltip',
-    audioFile: ''
+    audioFile: ['']
   }
 ];
 

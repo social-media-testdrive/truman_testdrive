@@ -8,14 +8,14 @@ const stepsList = [
     get the user to interact with the page. Text would be added later.`,
     position: 'right',
     scrollTo: 'tooltip',
-    audioFile: ''
+    audioFile: ['']
   },
   {
     element: '#step3',
     intro: `How can you shape your digital footprint?`,
     position: "right",
     scrollTo: 'tooltip',
-    audioFile: ''
+    audioFile: ['']
   },
   {
     element: '#step3',
@@ -23,7 +23,7 @@ const stepsList = [
     will add to your digital footprint.`,
     position: "right",
     scrollTo: "tooltip",
-    audioFile: ''
+    audioFile: ['']
   },
   {
     element: '#step4',
@@ -32,7 +32,7 @@ const stepsList = [
     digital footprint?`,
     position: "left",
     scrollTo: "tooltip",
-    audioFile: ''
+    audioFile: ['']
   },
   {
     element: '#step5',
@@ -40,7 +40,7 @@ const stepsList = [
     footprints?`,
     position: "right",
     scrollTo: "tooltip",
-    audioFile: ''
+    audioFile: ['']
   },
   {
     element: '#step5',
@@ -49,7 +49,7 @@ const stepsList = [
     things about others.`,
     position: "right",
     scrollTo: "tooltip",
-    audioFile: ''
+    audioFile: ['']
   },
   {
     element: '#step5',
@@ -58,6 +58,6 @@ const stepsList = [
     private message.`,
     position: "right",
     scrollTo: "tooltip",
-    audioFile: ''
+    audioFile: ['']
   }
 ];

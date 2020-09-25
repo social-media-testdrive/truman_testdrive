@@ -8,7 +8,7 @@ const stepsList = [
     get the user to interact with the page. Text would be added later.`,
     position: 'right',
     scrollTo: 'tooltip',
-    audioFile: ''
+    audioFile: ['']
   },
   {
     element: '#step0',
@@ -17,7 +17,7 @@ const stepsList = [
     information about yourself.`,
     position: "right",
     scrollTo: 'tooltip',
-    audioFile: ''
+    audioFile: ['']
   },
   {
     element: '#step0',
@@ -25,7 +25,7 @@ const stepsList = [
     social media.`,
     position: "right",
     scrollTo: 'tooltip',
-    audioFile: ''
+    audioFile: ['']
   },
   {
     element: '#shortenedURL',
@@ -35,7 +35,7 @@ const stepsList = [
     it is correct.`,
     position: "right",
     scrollTo: 'tooltip',
-    audioFile: ''
+    audioFile: ['']
   },
   {
     element: '#step0',
@@ -43,7 +43,7 @@ const stepsList = [
     Scammers often offer easy chances to win free money or prizes.`,
     position: "right",
     scrollTo: "tooltip",
-    audioFile: ''
+    audioFile: ['']
   },
   {
     element: '#step5',
@@ -51,7 +51,7 @@ const stepsList = [
     posts that make you worry or feel like something is wrong.`,
     position: "right",
     scrollTo: "tooltip",
-    audioFile: ''
+    audioFile: ['']
   },
   {
     element: '#step5',
@@ -60,14 +60,14 @@ const stepsList = [
     messages with these kinds of errors.`,
     position: "right",
     scrollTo: "tooltip",
-    audioFile: ''
+    audioFile: ['']
   },
   {
     element: '#step6',
     intro: `What can you do if you see someone posting a phishing scam?`,
     position: "right",
     scrollTo: "tooltip",
-    audioFile: ''
+    audioFile: ['']
   },
   {
     element: '#shortenedURL3',
@@ -75,7 +75,7 @@ const stepsList = [
     shortened or incorrect URL!`,
     position: "right",
     scrollTo: "tooltip",
-    audioFile: ''
+    audioFile: ['']
   },
   {
     element: '#flagStep',
@@ -83,6 +83,6 @@ const stepsList = [
     to the website.`,
     position: "right",
     scrollTo: "tooltip",
-    audioFile: ''
+    audioFile: ['']
   }
 ];

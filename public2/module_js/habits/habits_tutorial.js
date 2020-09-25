@@ -30,7 +30,8 @@ $(window).on("load", function() {
         intro: `Have you ever seen notifications from social media that pop up
         and buzz on your phone?`,
         position: "right",
-        scrollTo: 'tooltip'
+        scrollTo: 'tooltip',
+        audioFile: ['']
       },
       {
         element: document.querySelectorAll('#notificationsteps')[0],
@@ -38,7 +39,8 @@ $(window).on("load", function() {
         attention. It can make you feel like you have to go on the site to
         check what it’s about.`,
         position: "right",
-        scrollTo: "tooltip"
+        scrollTo: "tooltip",
+        audioFile: ['']
       },
       {
         element: document.querySelectorAll('#step2')[0],
@@ -46,14 +48,16 @@ $(window).on("load", function() {
         post. It gives us a feeling of being valued and accepted by other
         people.`,
         position: "left",
-        scrollTo: "tooltip"
+        scrollTo: "tooltip",
+        audioFile: ['']
       },
       {
         element: document.querySelectorAll('#step2')[0],
         intro: `Likes and comments can create a feedback loop that makes you
         check again and again to see if you got anything new.`,
         position: "right",
-        scrollTo: "tooltip"
+        scrollTo: "tooltip",
+        audioFile: ['']
       },
       {
         element: document.querySelectorAll('#step5')[0],
@@ -61,13 +65,15 @@ $(window).on("load", function() {
         which starts playing another video as soon as you've finished the one
         you were watching.`,
         position: "right",
-        scrollTo: "tooltip"
+        scrollTo: "tooltip",
+        audioFile: ['']
       },
       {
         element: document.querySelectorAll('#step5')[0],
         intro: `This makes it tempting to keep watching, even if you have
         other things you want or need to do!`,
-        position: "right"
+        position: "right",
+        audioFile: ['']
       },
       {
         element: document.querySelectorAll('#step6')[0],
@@ -75,7 +81,8 @@ $(window).on("load", function() {
         This keeps you engaged, but you could end up scrolling for hours,
         possibly spending more time than you had hoped to.`,
         position: "right",
-        scrollTo: "tooltip"
+        scrollTo: "tooltip",
+        audioFile: ['']
       }
     ]
   } else if ( $('.ui.menu.mobileView').is(":visible") ) {
@@ -85,7 +92,8 @@ $(window).on("load", function() {
         intro: `Have you ever had notifications buzz on your phone or seen
         them pop up on your phone's home screen?`,
         position: "right",
-        scrollTo: 'tooltip'
+        scrollTo: 'tooltip',
+        audioFile: ['']
       },
       {
         element: document.querySelectorAll('#notificationstepsMobile')[0],
@@ -93,21 +101,24 @@ $(window).on("load", function() {
         attention. It can make you feel like you have to go on the app to
         check what it’s about.`,
         position: "right",
-        scrollTo: "tooltip"
+        scrollTo: "tooltip",
+        audioFile: ['']
       },
       {
         element: document.querySelectorAll('#step2')[0],
         intro: `We all love getting likes and comments on the things that we
         post. It gives us a sense of being validated by other people.`,
         position: "left",
-        scrollTo: "tooltip"
+        scrollTo: "tooltip",
+        audioFile: ['']
       },
       {
         element: document.querySelectorAll('#step2')[0],
         intro: `Likes and comments can create a feedback loop that makes you
         check again and again to see if you got anything new.`,
         position: "right",
-        scrollTo: "tooltip"
+        scrollTo: "tooltip",
+        audioFile: ['']
       },
       {
         element: document.querySelectorAll('#step5')[0],
@@ -115,13 +126,15 @@ $(window).on("load", function() {
         which starts playing another video as soon as you've finished the one
         you were watching.`,
         position: "right",
-        scrollTo: "tooltip"
+        scrollTo: "tooltip",
+        audioFile: ['']
       },
       {
         element: document.querySelectorAll('#step5')[0],
         intro: `This makes it tempting to keep watching, even if you have
         other things you want or need to do!`,
-        position: "right"
+        position: "right",
+        audioFile: ['']
       },
       {
         element: document.querySelectorAll('#step6')[0],
@@ -129,7 +142,8 @@ $(window).on("load", function() {
         This keeps you engaged, but you could end up scrolling for hours,
         possibly spending more time than you had hoped to.`,
         position: "right",
-        scrollTo: "tooltip"
+        scrollTo: "tooltip",
+        audioFile: ['']
       }
     ];
   }

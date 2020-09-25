@@ -15,7 +15,8 @@ function startIntro(){
         intro: `Choose your username carefully! This is the name other people on
         social media will see.`,
         position: "right",
-        scrollTo: 'tooltip'
+        scrollTo: 'tooltip',
+        audioFile: ['']
       },
       {
         element: document.querySelectorAll('#usernameStep')[0],
@@ -23,20 +24,23 @@ function startIntro(){
         include your first name or a nickname so that other people will know who
         you are.`,
         position: "right",
-        scrollTo: 'tooltip'
+        scrollTo: 'tooltip',
+        audioFile: ['']
       },
       {
         element: document.querySelectorAll('#usernameStep')[0],
         intro: `If you don't want anyone to know who you are, pick something
           that is not related to your real name.`,
         position: "right",
-        scrollTo: 'tooltip'
+        scrollTo: 'tooltip',
+        audioFile: ['']
       },
       {
         element: document.querySelectorAll('#passwordStep')[0],
         intro: `Make sure to create a strong password that you can remember!`,
         position: "right",
-        scrollTo: "tooltip"
+        scrollTo: "tooltip",
+        audioFile: ['']
       },
       {
         element: document.querySelectorAll('#passwordStep')[0],
@@ -44,7 +48,8 @@ function startIntro(){
           of your accounts, but you also want to make it hard for others to
           guess.`,
         position: "right",
-        scrollTo: "tooltip"
+        scrollTo: "tooltip",
+        audioFile: ['']
       },
       {
         element: document.querySelectorAll('#passwordStep')[0],
@@ -52,7 +57,8 @@ function startIntro(){
         password1, yourname11, or anything else that could be easily guessed by
         other people.`,
         position: "right",
-        scrollTo: "tooltip"
+        scrollTo: "tooltip",
+        audioFile: ['']
       },
       {
         element: document.querySelectorAll('#passwordStep')[0],
@@ -61,7 +67,8 @@ function startIntro(){
           write down your passwords. If you forget your password, there are ways
           the website can help you reset it.`,
         position: "right",
-        scrollTo: "tooltip"
+        scrollTo: "tooltip",
+        audioFile: ['']
       },
       {
         element: document.querySelectorAll('#passwordStep')[0],
@@ -69,7 +76,8 @@ function startIntro(){
           friend! One exception might be your parents. Have a conversation with
           them about safe password practices.`,
         position: "right",
-        scrollTo: "tooltip"
+        scrollTo: "tooltip",
+        audioFile: ['']
       }
     ]
   });

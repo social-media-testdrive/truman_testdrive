@@ -3,14 +3,16 @@ const hintsList = [
     hint: `Now that you have analyzed and fact-checked the article, what would
     you do next?`,
     element: '#hint1',
-    hintPosition: 'middle-middle'
+    hintPosition: 'middle-middle',
+    audioFile: ['']
   },
   {
     hint: `Sharing a news article that is not accurate or does not have all the
     information might trick others into believing something that might not be
     true.`,
     element: '#hint2',
-    hintPosition: 'top-middle'
+    hintPosition: 'top-middle',
+    audioFile: ['']
   }
 ];
 

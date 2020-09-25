@@ -1,7 +1,6 @@
 {
-  const cdn = 'https://dhpd030vnpk29.cloudfront.net';
-  const audioChannel = new Audio(); // the audio channel for voiceovers
-  let voiceoverSequenceCount = 0;
+  var audioChannel = new Audio(); // the audio channel for voiceovers
+  var voiceoverSequenceCount = 0;
 
   function resetVoiceoverSequenceCount(){
     voiceoverSequenceCount = 0;
@@ -19,19 +18,25 @@
         if (subdirectory2 === "cyberbullying") { // TODO: remove once cyberbullying voice-overs recorded
           audioChannel.src = `/audioFiles/${subdirectory2}/${audioFile[voiceoverSequenceCount]}`;
         } else {
-          audioChannel.src = `${cdn}/voice-overs/${audioFile[voiceoverSequenceCount]}`;
+          if(audioFile.length > 1){
+            audioChannel.src = `https://dhpd030vnpk29.cloudfront.net/voice-overs/${audioFile[voiceoverSequenceCount]}`;
+          } else if (audioFile.length === 1) {
+            audioChannel.src = `https://dhpd030vnpk29.cloudfront.net/voice-overs/${audioFile[0]}`;
+          }
+
+        }
+        let playVoiceoverPromise = audioChannel.play();
+        if (playVoiceoverPromise !== undefined) {
+          playVoiceoverPromise.catch(error => {
+            if (error.name === 'NotAllowedError') {
+              console.log(`** Browser has determined that audio is not allowed to play yet. **`);
+            } else {
+              console.log(error)
+            }
+          });
         }
       }
-      let playVoiceoverPromise = audioChannel.play();
-      if (playVoiceoverPromise !== undefined) {
-        playVoiceoverPromise.catch(error => {
-          if (error.name === 'NotAllowedError') {
-            console.log(`** Browser has determined that audio is not allowed to play yet. **`);
-          } else {
-            console.log(error)
-          }
-        });
-      }
+
       audioChannel.onended = function(){
         voiceoverSequenceCount++;
         if (voiceoverSequenceCount < audioFile.length){

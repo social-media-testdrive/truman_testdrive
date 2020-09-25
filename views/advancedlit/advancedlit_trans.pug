@@ -11,56 +11,69 @@ block content
             i.history.icon
             | &nbsp Let's review!
         br
-          
-        h5.ui.header
-          i.arrow.circle.right.blue.icon
-          .content
-            | Social media can be a great place to discover <b>breaking news</b>, 
-            | where you can find information about an event that has just 
-            | happened or is currently occurring.
+        .ui.mini.green.right.labeled.icon.button.showReviewSectionButton
+          i.down.arrow.icon
+          |   Next  
+        .ui.basic.segment.reviewSegment.hidden
+          h5.ui.header
+            i.arrow.circle.right.blue.icon
+            .content
+              | Social media can be a great place to discover <b>breaking news</b>, 
+              | where you can find information about an event that has just 
+              | happened or is currently occurring.
 
-        h5.ui.header
-          i.arrow.circle.right.blue.icon
-          .content
-            | When you see breaking news, it’s important to check if it is from 
-            | a reliable news source and to <b>fact-check</b> the information in 
-            | the article. Ask yourself these questions:
+          h5.ui.header
+            i.arrow.circle.right.blue.icon
+            .content
+              | When you see breaking news, it’s important to check if it is from 
+              | a reliable news source and to <b>fact-check</b> the information in 
+              | the article. Ask yourself these questions:
             
-        h5.ui.header
-          i.caret.right.blue.icon
-          .content
-            | Is this article an opinion piece?
+          h5.ui.header
+            i.caret.right.blue.icon
+            .content
+              | Is this article an opinion piece?
+              
+          h5.ui.header
+            i.caret.right.blue.icon
+            .content
+              | Does the article mention where the information they reported comes 
+              | from?
             
-        h5.ui.header
-          i.caret.right.blue.icon
-          .content
-            | Does the article mention where the information they reported comes 
-            | from?
-            
-        h5.ui.header
-          i.caret.right.blue.icon
-          .content
-            | Are there other sources that are also reporting this news?
-                    
-        h5.ui.header
-          i.arrow.circle.right.blue.icon
-          .content
-            | If you think the article is incorrect or incomplete, wait to get 
-            | the full story before you decide to share it!
-        br
-  
+          h5.ui.header
+            i.caret.right.blue.icon
+            .content
+              | Are there other sources that are also reporting this news?
+                      
+          h5.ui.header
+            i.arrow.circle.right.blue.icon
+            .content
+              | If you think the article is incorrect or incomplete, wait to get 
+              | the full story before you decide to share it!
+          br
     br
     br
-    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+    .ui.warning.message.clickNextWarning.hidden
+      .header
+       | Click "Next"
+    a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
         .ui.big.green.labeled.icon.button
             i.rocket.icon
             |   Got it!
             
 block scripts
   script().
-    function startIntro(){
-      window.location.href='/trans_script/advancedlit';
+    var voiceoverMappings = {
+      '.showReviewSectionButton': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['']
+      }
     };
+    var nextPage = 'trans_script';
+  script(src="/module_js/voiceover.js")  
+  script(src="/module_js/base_trans.js")
     
 block styles
   link(rel='stylesheet', href='/css/modules/advancedlit.css')
+  link(rel='stylesheet', href='/css/trans.css')  

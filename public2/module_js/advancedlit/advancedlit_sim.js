@@ -5,7 +5,8 @@ var stepsList = [
     class='introjs-hint'><div class='introjs-hint-dot'></div><div class=
     'introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more...`,
     position: "left",
-    scrollTo: 'tooltip'
+    scrollTo: 'tooltip',
+    audioFile: ['']
   }
 ]
 
@@ -15,7 +16,8 @@ var hintsList = [
     closing, and it looks like many of your other friends are sharing it as
     well. Click on the article to see what it says!`,
     element: '#hint1',
-    hintPosition: 'middle-middle'
+    hintPosition: 'middle-middle',
+    audioFile: ['']
   }
 ];
 

@@ -2,12 +2,14 @@ const nextPageURL = 'modual';
 const stepsList = [
   {
     intro: `Now you get to explore the TestDrive timeline! You can read
-    what others have posted, respond, or make your own posts.`
+    what others have posted, respond, or make your own posts.`,
+    audioFile: ['']
   },
   {
     intro: `As you look through the timeline, see if you can find
     features that grab your attention and think about what you can do to
-    build healthy social media habits.`
+    build healthy social media habits.`,
+    audioFile: ['']
   }
 ];
 

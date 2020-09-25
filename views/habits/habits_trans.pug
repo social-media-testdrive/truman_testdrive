@@ -11,53 +11,67 @@ block content
             i.history.icon
             | &nbsp Let's review!
         br
+        .ui.mini.green.right.labeled.icon.button.showReviewSectionButton
+          i.down.arrow.icon
+          |   Next  
+        .ui.basic.segment.reviewSegment.hidden
+          h5.ui.header
+            i.arrow.circle.right.blue.icon
+            .content
+              |  Social media sites have attention-grabbing design features such as notifications, video autoplay, and endless news feed scrolling.
+            
+              
+          h5.ui.header
+            i.arrow.circle.right.blue.icon
+            .content
+              | The constant feedback loops of social media can cause you to form unhealthy social media habits.
+            
+              
+          h5.ui.header
+            i.arrow.circle.right.blue.icon
+            .content
+              | Here are some strategies you can use to build healthy social media habits.
+              
+          h5.ui.header
+            i.caret.right.blue.icon(style="text-indent:3em;")
+            .content
+              |   Turn off or reduce the number of notifications you get from social media
+              
+          h5.ui.header
+            i.caret.right.blue.icon(style="text-indent:3em;")
+            .content
+              |   Be mindful of and track how much time you spend on social media
           
-        h5.ui.header
-          i.arrow.circle.right.blue.icon
-          .content
-            |  Social media sites have attention-grabbing design features such as notifications, video autoplay, and endless news feed scrolling.
-          
-            
-        h5.ui.header
-          i.arrow.circle.right.blue.icon
-          .content
-            | The constant feedback loops of social media can cause you to form unhealthy social media habits.
-          
-            
-        h5.ui.header
-          i.arrow.circle.right.blue.icon
-          .content
-            | Here are some strategies you can use to build healthy social media habits.
-            
-        h5.ui.header
-          i.caret.right.blue.icon(style="text-indent:3em;")
-          .content
-            |   Turn off or reduce the number of notifications you get from social media
-            
-        h5.ui.header
-          i.caret.right.blue.icon(style="text-indent:3em;")
-          .content
-            |   Be mindful of and track how much time you spend on social media
-        
-        h5.ui.header
-          i.caret.right.blue.icon(style="text-indent:3em;")
-          .content
-            |   Make sure to take breaks or disconnect from social media if you need to
-        br
-        br
+          h5.ui.header
+            i.caret.right.blue.icon(style="text-indent:3em;")
+            .content
+              |   Make sure to take breaks or disconnect from social media if you need to
+          br
+          br
     
     br
     br
-    a(href='javascript:void(0);', onclick='javascript:startIntro();')
-        .ui.big.green.labeled.icon.button
-            i.rocket.icon
-            |   Got it!
+    .ui.warning.message.clickNextWarning.hidden
+      .header
+       | Click "Next"
+    a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
+      .ui.big.labeled.icon.button.gotItButton
+          i.rocket.icon
+          |   Got it!
 
 block scripts
   script().
-    function startIntro(){
-        window.location.href='/trans_script/habits';
-      };
+    var voiceoverMappings = {
+      '.showReviewSectionButton': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['']
+      }
+    };
+    var nextPage = 'trans_script';
+  script(src="/module_js/voiceover.js")  
+  script(src="/module_js/base_trans.js")
 
 block styles 
   link(rel='stylesheet', href="/css/modules/habits/habits_trans.css")
+  link(rel='stylesheet', href='/css/trans.css')  

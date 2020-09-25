@@ -7,7 +7,8 @@ const stepsList = [
     on social media? Here are some ways to see if the news article is
     reliable.`,
     position: "right",
-    scrollTo: 'tooltip'
+    scrollTo: 'tooltip',
+    audioFile: ['']
   },
   {
     element: '#step2',
@@ -15,7 +16,8 @@ const stepsList = [
     piece or a news article. Reliable articles will clearly distinguish
     between opinion and news.`,
     position: "right",
-    scrollTo: "tooltip"
+    scrollTo: "tooltip",
+    audioFile: ['']
   },
   {
     element: '#step3',
@@ -23,14 +25,16 @@ const stepsList = [
     information. Reliable articles explain how and where their information
     was gathered, and provide links to relevant sources.`,
     position: "left",
-    scrollTo: "tooltip"
+    scrollTo: "tooltip",
+    audioFile: ['']
   },
   {
     element: '#step3B',
     intro: `Breaking news stories develop over time, so the first reports
     might not have all the information.`,
     position: "right",
-    scrollTo: "tooltip"
+    scrollTo: "tooltip",
+    audioFile: ['']
   },
   {
     element: "#step4",
@@ -38,7 +42,8 @@ const stepsList = [
     least one additional source. Is the story being reported by other news
     sites?`,
     position: "right",
-    scrollTo: "tooltip"
+    scrollTo: "tooltip",
+    audioFile: ['']
   },
   {
     element: "#step5",
@@ -46,7 +51,8 @@ const stepsList = [
     least one additional source. Is the story being reported by other news
     sites?`,
     position: "right",
-    scrollTo: "tooltip"
+    scrollTo: "tooltip",
+    audioFile: ['']
   },
   {
     element: '#step1',
@@ -54,7 +60,8 @@ const stepsList = [
     all the information. It can be harmful to form opinions and make
     decisions based on false news.`,
     position: "right",
-    scrollTo: "tooltip"
+    scrollTo: "tooltip",
+    audioFile: ['']
   }
 ];
 

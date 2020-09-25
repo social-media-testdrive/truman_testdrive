@@ -10,22 +10,27 @@ block content
         .content
           | Learn
       hr
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          | Posting on social media can be a great way to show people who you 
-          | are! You can be yourself and share your thoughts with other people. 
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          | Sometimes, people have fake accounts too. These are called 
-          | <b>finstas</b> or spam accounts. People may have these to talk to 
-          | others who are interested in the same things as they are, or to 
-          | post things for only their close friends to see.
-      br
-      .ui.mini.green.right.labeled.icon.button.showKeyTermsButton
-        i.down.arrow.icon
-        |   Next
+      .ui.basic.segment(style="padding:0")
+        .ui.mini.green.right.labeled.icon.button.showLearnSectionButton
+          i.down.arrow.icon
+          |   Next
+      .ui.basic.segment.learnSegment.hidden
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | Posting on social media can be a great way to show people who you 
+            | are! You can be yourself and share your thoughts with other people. 
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | Sometimes, people have fake accounts too. These are called 
+            | <b>finstas</b> or spam accounts. People may have these to talk to 
+            | others who are interested in the same things as they are, or to 
+            | post things for only their close friends to see.
+        br
+        .ui.mini.green.right.labeled.icon.button.showKeyTermsButton
+          i.down.arrow.icon
+          |   Next
     
     .ui.segment.keyIdeasSegment.hidden
       h3.ui.header
@@ -38,18 +43,18 @@ block content
     
       .ui.stackable.two.column.grid
         .ui.column
-          .keyTerm.ui.raised.segment
+          .keyTerm.ui.raised.segment.voiceover_keyTerm1
             a.ui.blue.ribbon.label.keyTermLabel
                 span Audience
             span.hidden.keyTermDefinition Anyone who can see information about you or posted by you online.
         .ui.column
-          .keyTerm.ui.raised.segment
+          .keyTerm.ui.raised.segment.voiceover_keyTerm2
             a.ui.blue.ribbon.label.keyTermLabel
                 span Anonymous
             span.hidden.keyTermDefinition Keeping your name and identity hidden online.
               ul Sometimes people use finstas to post anonymously.    
         .ui.column
-          .keyTerm.ui.raised.segment
+          .keyTerm.ui.raised.segment.voiceover_keyTerm3
             a.ui.blue.ribbon.label.keyTermLabel
                 span Curate
             span.hidden.keyTermDefinition To select and organize what you post on social media.
@@ -63,18 +68,35 @@ block content
      .header
       | Click on each label to proceed   
     a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
-        .ui.labeled.icon.button
-            i.rocket.icon
-            |   Got it!
+      .ui.labeled.icon.button
+          i.rocket.icon
+          |   Got it!
 
 block scripts
   script.
     var voiceoverMappings = {
-      '.showLearnSectionButton': '',
-      '.voiceover_keyTerm1': '',
-      '.voiceover_keyTerm2': '',
-      '.voiceover_keyTerm3': ''
+      '.showLearnSectionButton': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['','','']
+      },
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['']
+      },
+      '.voiceover_keyTerm2': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['']
+      }
     };
+  script(src='/module_js/voiceover.js')
   script(src="/module_js/base_start.js")
   
 block styles

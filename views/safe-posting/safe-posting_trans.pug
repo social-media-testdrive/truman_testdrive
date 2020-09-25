@@ -11,34 +11,51 @@ block content
             i.history.icon
             | &nbsp Let's review!
         br
+        .ui.mini.green.right.labeled.icon.button.showReviewSectionButton
+          i.down.arrow.icon
+          |   Next  
+        .ui.basic.segment.reviewSegment.hidden
+          h5.ui.header
+            i.arrow.circle.right.blue.icon
+            .content
+              | Your social media <b>audience</b> can include a lot of people that 
+              | you don’t know very well. This is why you should not share 
+              | <b>private information</b> online, such as your full name, 
+              | address, or phone number.
           
-        h5.ui.header
-          i.arrow.circle.right.blue.icon
-          .content
-            | Your social media <b>audience</b> can include a lot of people that 
-            | you don’t know very well. This is why you should not share 
-            | <b>private information</b> online, such as your full name, 
-            | address, or phone number.
-        
-        h5.ui.header
-          i.arrow.circle.right.blue.icon
-          .content 
-            | If someone you don’t know is asking for private information about 
-            | you online, you should be cautious! When this happens, it's 
-            | important to slow down, pause, and think about the situation. You 
-            | can respond by <b>changing the subject or telling a trusted 
-            | adult.</b>
-        
-        br
+          h5.ui.header
+            i.arrow.circle.right.blue.icon
+            .content 
+              | If someone you don’t know is asking for private information about 
+              | you online, you should be cautious! When this happens, it's 
+              | important to slow down, pause, and think about the situation. You 
+              | can respond by <b>changing the subject or telling a trusted 
+              | adult.</b>
+          
+          br
         
     br
     br
-    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+    .ui.warning.message.clickNextWarning.hidden
+      .header
+       | Click "Next"
+    a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
         .ui.big.green.labeled.icon.button
             i.rocket.icon
             |   Got it!
-    block scripts
+            
+block scripts
   script().
-    function startIntro(){
-        window.location.href='/trans_script/safe-posting';
-      };
+    var voiceoverMappings = {
+      '.showReviewSectionButton': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['']
+      }
+    };
+    var nextPage = 'trans_script';
+  script(src="/module_js/voiceover.js")  
+  script(src="/module_js/base_trans.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/trans.css')  
