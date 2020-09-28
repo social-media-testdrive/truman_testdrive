@@ -1,9 +1,9 @@
 {
-  let jqhxrArray = new Array(); // this array will be handed to Promise.all
+  var jqhxrArray = new Array(); // this array will be handed to Promise.all
   let pathArray = window.location.pathname.split('/');
   const subdirectory1 = pathArray[1]; // idenify the current page
   const subdirectory2 = pathArray[2]; // idenify the current module
-  let startTimestamp = Date.now();
+  var startTimestamp = Date.now();
 
   function startIntro(){
     var intro = introJs().setOptions({
