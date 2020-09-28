@@ -5,14 +5,14 @@ const hintsList = [
     element: '#hint1'
   },
   {
-    hint: `She can make her account “<i>Private</i>,” so that only her social
-    media friends can see her posts. Let’s try doing this!`,
+    hint: `She can turn off tagging settings and hide tagged posts from her
+    timeline. Let’s try doing this!`,
     element: '#hint2',
     hintPosition: 'top-middle'
   },
   {
-    hint: `Have you changed the account settings to a “<i>Private</i>” account?
-    Click “<i>Let’s Continue!</i>” to see how her profile has changed.`,
+    hint: `Have you turned off tagging settings and hidden tagged posts from
+    Lily’s timeline? Click “Let’s Continue!” to see how her profile has changed`,
     element: '#hint3',
     hintPosition: 'middle-right'
   }
