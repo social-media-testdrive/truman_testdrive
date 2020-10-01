@@ -4,14 +4,14 @@ var hintsList = [
     too good to be true.`,
     element: '#hint1',
     hintPosition: 'middle-middle',
-    audioFile: ['']
+    audioFile: ['CUSML.3.5.2.mp3']
   },
   {
     hint: `This post has a shortened URL, which can lead to a risky website.
     Don’t click on the link!`,
     element: '#hint2',
     hintPosition: 'middle-right',
-    audioFile: ['']
+    audioFile: ['CUSML.3.5.3.mp3']
   },
   {
     hint: `Watch out for scammers who are pretending to be your friend!
@@ -19,14 +19,14 @@ var hintsList = [
     really from them.`,
     element: '#hint3',
     hintPosition: 'middle-middle',
-    audioFile: ['']
+    audioFile: ['CUSML.3.5.5.mp3']
   },
   {
     hint: `If you decide the post is a phishing scam, click on the flag
     button to report it.`,
     element: '#hint4',
     hintPosition: 'middle-right',
-    audioFile: ['']
+    audioFile: ['CUSML.3.5.4.mp3']
   }
 ];
 
@@ -48,7 +48,7 @@ var stepsList = [
       " &nbsp; &nbsp; &nbsp;to learn more...",
     position: "right",
     scrollTo: 'tooltip',
-    audioFile: ['']
+    audioFile: ['CUSML.3.5.1.mp3']
   }
 ];
 
