@@ -1,0 +1,315 @@
+@charset "utf-8";
+
+/* ---- GENERAL ---- */
+
+body {
+  background-color: #F5F8FA;
+  padding: 0em;
+}
+
+.hidden {
+  display: none;
+}
+
+.computer.only.tablet.only.four.wide.column {
+  height: auto !important;
+}
+
+/* ------ INTRO PAGE ------ */
+
+.welcomePageCard {
+  width: 350px !important;
+}
+
+.ui.steps .step:after {
+  width: 18px !important;
+  height: 18px !important;
+  background-color: inherit !important;
+}
+
+.welcomeButton {
+  font-size: 22px !important;
+}
+
+.glowing-box:hover {
+  outline: none !important;
+  border-color: #9ecaed !important;
+  box-shadow: 0 0 10px #9ecaed !important;
+}
+
+.glowing-box {
+  background-color: #fff !important;
+  box-shadow:
+    0 0 60px 30px #fff !important,
+    /* inner white */
+    0 0 100px 60px #f0f !important,
+    /* middle magenta */
+    0 0 140px 90px #0ff !important;
+  /* outer cyan */
+}
+
+/* ------- END PAGE ------- */
+
+.endPageButton {
+  max-width: 100%;
+  width: 260px;
+  text-align: left !important;
+}
+
+/* --- CURSOR APPEARANCES --- */
+
+a {
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
+}
+
+.ui.button {
+  cursor: pointer;
+}
+
+#newpost.ui.fluid.left.labeled.right.icon.input {
+  cursor: pointer;
+}
+
+/* --- POST APPEARANCES --- */
+
+.ui.fluid.card>.content>.description {
+  font-size: 1.30em;
+}
+
+.locationtag {
+  color: #929292;
+}
+
+/* only for some digital literacy posts */
+.info_button {
+  border-radius: 14px;
+  border: 2px solid #cacacab0;
+  box-sizing: border-box;
+  color: #2185d0;
+  background-color: #ffffff;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  z-index: 9;
+  text-align: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* ---- INTROJS HINTS ---- */
+/* ----- (BLUE DOTS) ----- */
+
+.introjs-hint-dot {
+  background: #2185d0;
+}
+
+.introjs-hint-pulse {
+  background: #2185d0;
+}
+
+/* ---- INTROJS STEPS ---- */
+/* ----- (TUTORIAL) ------ */
+
+/* removes a gray overlay that covers everything but the selected element */
+.introjs-overlay {
+  visibility: hidden;
+}
+
+/* the box highlighting the selected element */
+.introjs-helperLayer {
+  border: 1px solid rgba(0, 149, 255, .5);
+  box-shadow: 0 2px 20px rgba(0, 149, 255, .4);
+  background-color: rgba(255, 255, 255, 0);
+}
+
+/* custom tooltips that have a blue border */
+.blueTooltip {
+  border: 1px solid rgba(0, 149, 255, .5);
+  box-shadow: 0 2px 20px rgba(0, 149, 255, .4);
+}
+
+/* avoid editing this, fixes issues with content being hidden under things */
+/* brings the tooltip forward on z-axis */
+.introjs-tooltipReferenceLayer {
+  z-index: 10000005;
+}
+
+/* adjusts the tooltip text appearance */
+.introjs-tooltiptext {
+  line-height: 120%;
+  font-size: 135%;
+}
+
+.introjs-fixedTooltip {
+  position: absolute;
+}
+
+.introjs-fixParent {
+  position: static;
+}
+
+/* customizing the back, next, and done buttons on steps */
+/* -  -  -  -  - */
+.introjs-skipbutton.introjs-donebutton, .introjs-skipbutton.introjs-donebutton:hover {
+  height: 22px;
+  line-height: 22px !important;
+  visibility: visible;
+  float: right;
+  border-radius: 5px;
+  color: rgba(255, 255, 255, .9);
+  background-image: linear-gradient(#21ba45, #21ba45);
+  text-shadow: 0px 0px 0 #fff;
+  margin-left: 5px;
+  border: 0px solid #d4d4d4;
+  font: 16px sans-serif;
+}
+
+.introjs-button.introjs-nextbutton, .introjs-button.introjs-nextbutton:hover {
+  height: 22px;
+  line-height: 22px !important;
+  border-radius: 5px;
+  visibility: visible;
+  color: rgba(255, 255, 255, .9);
+  background-image: linear-gradient(#2185D0, #2185D0);
+  text-shadow: 0px 0px 0 #fff;
+  margin-left: 5px;
+  border: 0px solid #d4d4d4;
+  font: 16px sans-serif;
+}
+
+.introjs-button.introjs-prevbutton, .introjs-button.introjs-prevbutton:hover {
+  height: 22px;
+  line-height: 22px !important;
+  border-radius: 5px;
+  visibility: visible;
+  color: rgba(255, 255, 255, .9);
+  background-image: linear-gradient(#2185D0, #2185D0);
+  text-shadow: 0px 0px 0 #fff;
+  margin-left: 5px;
+  border: 0px solid #d4d4d4;
+  font: 16px sans-serif;
+}
+
+.introjs-button, .introjs-button:hover {
+  height: 22px;
+  line-height: 22px !important;
+  border-radius: 5px;
+  visibility: visible;
+  color: rgba(255, 255, 255, .9);
+  background-image: linear-gradient(#21ba45, #21ba45);
+  text-shadow: 0px 0px 0 #fff;
+  margin-left: 5px;
+  border: none;
+  font: 16px sans-serif;
+}
+
+.introjs-skipbutton {
+  visibility: hidden;
+}
+/* -  -  -  -  - */
+
+/* ----- OTHER ------ */
+
+/* gray out text*/
+.greyOut {
+  color: #A9A9A9
+}
+
+/* settings page sublabels (privacy module) */
+.settingSmallLabel {
+  font-weight: normal;
+  font-size: 65%;
+}
+
+.ui.footer {
+  /* Increased specificity for SO snippet priority */
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+/* misc alignment classes */
+
+.addBottomMargin {
+  margin-bottom: 4em;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+/* highlight on hover */
+
+.highlightOnHover {
+  color: black;
+  background-color: #FFFFA6;
+}
+
+.highlightOnHover:hover {
+  color: black;
+  background-color: #FFFF00;
+}
+
+/* most likely used in the habits module menus */
+
+.ui.vertical.menu a.item {
+  color: black;
+  background: rgba(0, 0, 0, .05);
+}
+
+.ui.vertical.menu a.item:hover {
+  color: black;
+  background: white;
+}
+
+.ui.vertical.menu a.item.active {
+  color: black;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, .5);
+  background: white;
+}
+
+.ui.vertical.menu a.item.active:hover {
+  color: black;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, .5);
+  background: white;
+}
+
+/* Enlarge text on hover */
+
+.bigTextOnHover {
+  color: black;
+  font-size: 100%;
+}
+
+.bigTextOnHover:hover {
+  color: black;
+  font-size: 125%;
+}
+
+/* --- POSSIBLY UNUSED? --- */
+
+.main.container {
+  margin-top: 5em;
+}
+
+.ui.menu .item img.logo {
+  margin-left: 3.5em;
+}
+
+.wireframe {
+  margin-top: 2em;
+}
+
+.image-upload img {
+  cursor: pointer;
+}
+
+.image-upload>input {
+  display: none;
+}

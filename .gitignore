@@ -36,5 +36,7 @@ bower_components
 .DS_Store
 Thumbs.db
 
-#EB deployment
-.elasticbeanstalk
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

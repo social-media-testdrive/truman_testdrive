@@ -16,6 +16,7 @@
   display: inline-block;
   color: white;
   position: relative;
+  cursor: pointer;
   /* for responsiveness */
   margin: 0 2vw 0 2vw;
 }
@@ -83,6 +84,10 @@
   display:none;
 }
 
+.progressBarActive {
+  cursor: default;
+}
+
 .progressBarActive h4 {
   background: #333333;
 }
@@ -97,6 +102,10 @@
 
 .progressBarActive span {
   color: #333333;
+}
+
+.progressBarActive ~ .progressStep {
+  cursor: default;
 }
 
 .progressBarActive ~ .progressStep h4 {
