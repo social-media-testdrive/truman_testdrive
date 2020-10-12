@@ -628,9 +628,11 @@ exports.postSignupInfo = (req, res, next) => {
  * GET /account
  * Profile page.
  */
+
 exports.getAccount = (req, res) => {
   res.render('account/profile', {
-    title: 'Account Management', mod: req.params.modId
+    title: 'Account Management',
+    mod: req.params.modId
   });
 };
 

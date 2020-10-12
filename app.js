@@ -22,6 +22,7 @@ var schedule = require('node-schedule');
 const aws = require('aws-sdk');
 //multer is how we send files (like images) thru web forms
 const multer = require('multer');
+const csrf = require('csurf')
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
@@ -80,6 +81,9 @@ const notificationController = require('./controllers/notification');
  * API keys and Passport configuration.
  */
 const passportConfig = require('./config/passport');
+
+// set up route middleware
+var csrfProtection = csrf();
 
 /**
  * Create Express server.
@@ -204,9 +208,14 @@ app.use((req, res, next) => {
 
 //helper function just to see what is in the body
 function check(req, res, next) {
-    //console.log("@@@@@@@@@@@@Body is now ");
-    //console.log(req.body);
+    // console.log("@@@@@@@@@@@@Body is now ");
+    // console.log(req.body);
     next();
+}
+
+function addCsrf(req, res, next) {
+  res.locals.csrfToken = req.csrfToken();
+  next();
 }
 
 
@@ -531,11 +540,10 @@ app.get('/account/signup_info', passportConfig.isAuthenticated, userController.g
 //app.post('/account/signup_info_post', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, csrf, userController.postSignupInfo);
 app.post('/account/signup_info_post', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, userController.postSignupInfo);
 
-
 //app.post('/account/profile/:modId', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, csrf, userController.postUpdateProfile);
-app.post('/account/profile/:modId', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, userController.postUpdateProfile);
+app.post('/account/profile/:modId', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, csrfProtection, userController.postUpdateProfile);
 
-app.get('/account/:modId', passportConfig.isAuthenticated, userController.getAccount);
+app.get('/account/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, userController.getAccount);
 
 app.get('/user/:userId', passportConfig.isAuthenticated, actorsController.getActor);
 app.post('/user', passportConfig.isAuthenticated, actorsController.postBlockOrReport);
