@@ -93,7 +93,7 @@ function iterateOverPrompts() {
 
 function checkAllPromptsOpened(){
   let status = true;
-  $('.reflectionSegment').each(function(){
+  $('.reflectionPromptSegment').each(function(){
     if($(this).is(':hidden')){
       status = false;
     }
@@ -121,11 +121,11 @@ $(window).on("load", function(){
     $('.reflectionSegmentButton').on('click', function(){
       let segmentButton = $(this);
       segmentButton.hide();
-      segmentButton.next('.reflectionSegment').transition({
+      segmentButton.next('.reflectionPromptSegment').transition({
         animation: 'fade down',
         onComplete: function() {
-          segmentButton.parents('.reflectionSegmentB')
-            .next('.reflectionSegmentB')
+          segmentButton.parents('.reflectionTopSegment')
+            .next('.reflectionTopSegment')
             .transition('fade down');
         }
       });
@@ -143,7 +143,7 @@ $(window).on("load", function(){
         return iterateOverPrompts();
       } else {
         // slightly different messaging for start vs next buttons
-        if($('.voiceover_reflection1').next('.reflectionSegment').is(':hidden')){
+        if($('.voiceover_reflection1').next('.reflectionPromptSegment').is(':hidden')){
           showWarning('.startPromptsWarning');
         } else {
           showWarning('.openAllPromptsWarning');
