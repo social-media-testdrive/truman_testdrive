@@ -1,5 +1,5 @@
 function onPrint(){
-  
+
   $(".insertPrint").empty();
   $(".insertPrint").css('display','block');
 
@@ -15,8 +15,8 @@ function onPrint(){
   $(".insertPrint").append(
     `<br>
     <h4>
-      Do you remember seeing posts that might have caused Jeremy to
-      feel good? What kinds of posts were they?
+    Do you remember seeing posts that might have caused Jeremy to feel good?
+    What kinds of posts were they?
     </h4>`
   );
   var responseTwo = document.getElementById("literacy_responseTwo").value;
@@ -25,8 +25,8 @@ function onPrint(){
   $(".insertPrint").append(
     `<br>
     <h4>
-      What could Jeremy do to feel better after experiencing a red flag
-      feeling on social media?
+      What could Jeremy do to feel better after experiencing a red flag feeling
+      on social media?
     </h4>`
   );
   var responseThree = document.getElementById("literacy_responseThree").value;
@@ -37,6 +37,6 @@ function onPrint(){
   $(".insertPrint").css('display','none');
 }
 
-setTimeout(function(){
-  $('.ui.label').transition('bounce');
-}, 1000);
+// setTimeout(function(){
+//   $('.ui.label').transition('bounce');
+// }, 1000);

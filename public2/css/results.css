@@ -14,3 +14,32 @@ i.exclamation.triangle.icon {
 label {
   font-size:120% !important;
 }
+
+.noPadding {
+  padding: 0 !important;
+}
+
+.resultsAddBottomMargin {
+  margin-bottom: 10em;
+}
+
+/*--------SCREENSHOTS----------*/
+@media print{
+  body * {
+    display: none;
+  }
+  .insertPrint,
+  .insertPrint * {
+    display: block;
+    overflow: visible;
+  }
+  .ui.big.labeled.icon.button {
+    display: none;
+  }
+  .ui.menu {
+    display: none;
+  }
+  .breakHere{
+    page-break-before: always;
+  }
+}
