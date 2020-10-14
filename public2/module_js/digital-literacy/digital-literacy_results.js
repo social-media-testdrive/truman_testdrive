@@ -1,16 +1,16 @@
 function onPrint(){
-
+  if($('.results_print').hasClass('green')){
     $(".insertPrint").empty();
     $(".insertPrint").css('display','block');
-    $(".checkOne").clone().appendTo(".insertPrint");
+    $(".checkOne").clone().removeClass('reflectionPromptSegment').appendTo(".insertPrint");
     $(".insertPrint").append('<div class="breakHere"</div>');
-    $(".checkTwo").clone().appendTo(".insertPrint");
+    $(".checkTwo").clone().removeClass('reflectionPromptSegment').appendTo(".insertPrint");
     $(".insertPrint").append('<div class="breakHere"</div>');
-    $(".checkThree").clone().appendTo(".insertPrint");
+    $(".checkThree").clone().removeClass('reflectionPromptSegment').appendTo(".insertPrint");
     $(".insertPrint").append('<br>');
 
     $(".insertPrint").append("<h5>Tell us what you would do next to check the credibility of the above articles.</h5>");
-    $(".checkFour").clone().appendTo(".insertPrint");
+    $(".checkFour").clone().removeClass('reflectionPromptSegment').appendTo(".insertPrint");
 
     $(".insertPrint").append('<div class="breakHere"</div>');
     $(".insertPrint").append("<br><h4>What are the benefits and drawbacks of getting news on social media?</h4>");
@@ -28,17 +28,24 @@ function onPrint(){
     window.print();
 
     $(".insertPrint").css('display','none');
+  } else {
+    if($('.voiceover_reflection1').next('.reflectionPromptSegment').is(':hidden')){
+      showWarning('.startPromptsWarning');
+    } else {
+      showWarning('.openAllPromptsWarning');
+    }
+  }
 }
 
-setTimeout(function(){
-  $('.ui.label').transition('bounce');
-}, 1000);
-
-
-setTimeout(function(){
-  $('#card1,#card2,#card3,#card4,#card5,#card6').transition({
-  animation : 'jiggle',
-  duration  : 800,
-  interval  : 200
-  });
-}, 2000);
+// setTimeout(function(){
+//   $('.ui.label').transition('bounce');
+// }, 1000);
+//
+//
+// setTimeout(function(){
+//   $('#card1,#card2,#card3,#card4,#card5,#card6').transition({
+//   animation : 'jiggle',
+//   duration  : 800,
+//   interval  : 200
+//   });
+// }, 2000);

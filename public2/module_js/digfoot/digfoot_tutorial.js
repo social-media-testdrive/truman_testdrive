@@ -15,7 +15,7 @@ const stepsList = [
     intro: `How can you shape your digital footprint?`,
     position: "right",
     scrollTo: 'tooltip',
-    audioFile: ['']
+    audioFile: ['CUSML.4.3.1.mp3']
   },
   {
     element: '#step3',
@@ -23,7 +23,7 @@ const stepsList = [
     will add to your digital footprint.`,
     position: "right",
     scrollTo: "tooltip",
-    audioFile: ['']
+    audioFile: ['CUSML.4.3.2.mp3']
   },
   {
     element: '#step4',
@@ -32,7 +32,7 @@ const stepsList = [
     digital footprint?`,
     position: "left",
     scrollTo: "tooltip",
-    audioFile: ['']
+    audioFile: ['CUSML.4.3.3.mp3']
   },
   {
     element: '#step5',
@@ -40,7 +40,7 @@ const stepsList = [
     footprints?`,
     position: "right",
     scrollTo: "tooltip",
-    audioFile: ['']
+    audioFile: ['CUSML.4.3.4.mp3']
   },
   {
     element: '#step5',
@@ -49,7 +49,7 @@ const stepsList = [
     things about others.`,
     position: "right",
     scrollTo: "tooltip",
-    audioFile: ['']
+    audioFile: ['CUSML.4.3.5.mp3']
   },
   {
     element: '#step5',
@@ -58,6 +58,6 @@ const stepsList = [
     private message.`,
     position: "right",
     scrollTo: "tooltip",
-    audioFile: ['']
+    audioFile: ['CUSML.4.3.6.mp3']
   }
 ];
