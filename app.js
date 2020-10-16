@@ -22,6 +22,7 @@ var schedule = require('node-schedule');
 const aws = require('aws-sdk');
 //multer is how we send files (like images) thru web forms
 const multer = require('multer');
+const csrf = require('csurf')
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
@@ -80,6 +81,9 @@ const notificationController = require('./controllers/notification');
  * API keys and Passport configuration.
  */
 const passportConfig = require('./config/passport');
+
+// set up route middleware
+var csrfProtection = csrf();
 
 /**
  * Create Express server.
@@ -210,6 +214,10 @@ function check(req, res, next) {
     next();
 }
 
+function addCsrf(req, res, next) {
+  res.locals.csrfToken = req.csrfToken();
+  next();
+}
 
 //All of our static files that express willl automatically server for us
 //in production, we have nginx server this instead to take the load off out Node app
@@ -247,7 +255,7 @@ app.get('/', passportConfig.isAuthenticated, function (req, res) {
 // app.get('/results/cyberbullying', passportConfig.isAuthenticated, scriptController.getCyberbullyingResults);
 
 //main route for getting the simulation (Free Play) for a given lesson mod
-app.get('/modual/:modId', passportConfig.isAuthenticated, scriptController.getScript);
+app.get('/modual/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, scriptController.getScript);
 
 app.get('/esteemTopic', passportConfig.isAuthenticated, userController.getEsteemTopic);
 app.get('/advancedlitTopic', passportConfig.isAuthenticated, userController.getAdvancedlitTopic);
@@ -260,10 +268,10 @@ app.get('/testing/:modId', scriptController.getScriptFeed);
 
 //post a new user created post s3_upload
 //app.post('/post/new', userpostupload.single('picinput'), check, csrf, scriptController.newPost);
-app.post('/post/new', check, scriptController.newPost);
+app.post('/post/new', check, csrfProtection, scriptController.newPost);
 
 //app.post('/account/profile', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, csrf, userController.postUpdateProfile);
-app.post('/account/profile', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, userController.postUpdateProfile);
+app.post('/account/profile', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, csrfProtection, userController.postUpdateProfile);
 
 //app.post('/api/upload', upload.single('myFile'), apiController.postFileUpload);
 
@@ -314,109 +322,109 @@ app.get('/test_sim', function (req, res) {
   });
 });
 
-app.get('/tutorial/:modId',passportConfig.isAuthenticated, function (req, res) {
+app.get('/tutorial/:modId',passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")  +'_tutorial', {
     title: 'Tutorial'
   });
 });
 
-app.get('/tutorial2/:modId',passportConfig.isAuthenticated, function (req, res) {
+app.get('/tutorial2/:modId',passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")  +'_tutorial2', {
     title: 'Tutorial'
   });
 });
 
-app.get('/sim/:modId', passportConfig.isAuthenticated, function (req, res) {
+app.get('/sim/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_sim', {
     title: 'Guided Activity'
   });
 });
 
-app.get('/sim1/:modId',passportConfig.isAuthenticated, function (req, res) {
+app.get('/sim1/:modId',passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_sim1', {
     title: 'Guided Activity'
   });
 });
 
-app.get('/sim2/:modId', passportConfig.isAuthenticated, function (req, res) {
+app.get('/sim2/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_sim2', {
     title: 'Guided Activity'
   });
 });
 
-app.get('/sim3/:modId', passportConfig.isAuthenticated, function (req, res) {
+app.get('/sim3/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_sim3', {
     title: 'Guided Activity'
   });
 });
 
-app.get('/sim4/:modId', passportConfig.isAuthenticated, function (req, res) {
+app.get('/sim4/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_sim4', {
     title: 'Guided Activity'
   });
 });
 
-app.get('/trans/:modId', passportConfig.isAuthenticated, function (req, res) {
+app.get('/trans/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_trans', {
     title: 'Recap'
   });
 });
 
-app.get('/trans2/:modId', passportConfig.isAuthenticated, function (req, res) {
+app.get('/trans2/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_trans2', {
     title: 'Recap'
   });
 });
 
-app.get('/trans_script/:modId', passportConfig.isAuthenticated, function (req, res) {
+app.get('/trans_script/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_trans_script', {
     title: 'Recap'
   });
 });
 
-app.get('/free-play/privacy', passportConfig.isAuthenticated, function (req, res) {
+app.get('/free-play/privacy', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render('privacy/privacy_free-play', {
     title: 'Free-Play'
   });
 });
 
-app.get('/free-play2/privacy', passportConfig.isAuthenticated, function (req, res) {
+app.get('/free-play2/privacy', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render('privacy/privacy_free-play2', {
     title: 'Free-Play 2'
   });
 });
 
-app.get('/free-play3/privacy', passportConfig.isAuthenticated, function (req, res) {
+app.get('/free-play3/privacy', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render('privacy/privacy_free-play3', {
     title: 'Free-Play 3'
   });
 });
 
-app.get('/free-play4/privacy', passportConfig.isAuthenticated, function (req, res) {
+app.get('/free-play4/privacy', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render('privacy/privacy_free-play4', {
     title: 'Free-Play 4'
   });
 });
 
-app.get('/free-settings/privacy', passportConfig.isAuthenticated, function (req, res) {
+app.get('/free-settings/privacy', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render('privacy/privacy_free-play_settings', {
     title: 'Free-Play Settings'
   });
 });
 
-app.get('/free-settings2/privacy', passportConfig.isAuthenticated, function (req, res) {
+app.get('/free-settings2/privacy', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render('privacy/privacy_free-play_settings2', {
     title: 'Free-Play Settings 2'
   });
 });
 
-app.get('/free-settings3/privacy', passportConfig.isAuthenticated, function (req, res) {
+app.get('/free-settings3/privacy', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render('privacy/privacy_free-play_settings3', {
     title: 'Free-Play Settings 3'
   });
 });
 
-app.get('/end/:modId', passportConfig.isAuthenticated, function (req, res) {
+app.get('/end/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   if((req.param("modId") === 'accounts') || (req.param("modId") === 'privacy')){
     res.render(req.param("modId") + '/' + req.param("modId")+'_end', {
       title: 'Finished'
@@ -428,24 +436,24 @@ app.get('/end/:modId', passportConfig.isAuthenticated, function (req, res) {
   }
 });
 
-app.get('/start/:modId', passportConfig.isAuthenticated, function (req, res) {
+app.get('/start/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_start', {
     title: 'Welcome'
   });
 });
 
-app.get('/intro/:modId', passportConfig.isAuthenticated,function (req, res) {
+app.get('/intro/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render('base_intro.pug', {
     title: 'Welcome'
   });
 });
-app.get('/tut_guide/:modId', passportConfig.isAuthenticated, function (req, res) {
+app.get('/tut_guide/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_tut_guide', {
     title: 'Welcome'
   });
 });
 
-app.get('/results/:modId', passportConfig.isAuthenticated, function (req, res) {
+app.get('/results/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   //console.log(req.param("modId") + '/' + req.param("modId")+'_results')
   res.render(req.param("modId") + '/' + req.param("modId")+'_results', {
     title: 'Reflection'
@@ -453,7 +461,7 @@ app.get('/results/:modId', passportConfig.isAuthenticated, function (req, res) {
 });
 
 //For privacy settings page that doesnt do anything
-app.get('/settings/privacy', passportConfig.isAuthenticated, function (req, res) {
+app.get('/settings/privacy', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   //console.log('privacy/privacy_settings')
   res.render('privacy/privacy_settings', {
     title: 'Privacy Settings'
@@ -461,21 +469,21 @@ app.get('/settings/privacy', passportConfig.isAuthenticated, function (req, res)
 });
 
 //The interest pages for the targeted ads Module
-app.get('/food/targeted', passportConfig.isAuthenticated, function (req, res) {
+app.get('/food/targeted', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   //console.log('privacy/privacy_settings')
   res.render('targeted/targeted_food', {
     title: 'Food Interest Page'
   });
 });
 
-app.get('/sports/targeted', passportConfig.isAuthenticated, function (req, res) {
+app.get('/sports/targeted', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   //console.log('privacy/privacy_settings')
   res.render('targeted/targeted_sports', {
     title: 'Sports Interest Page'
   });
 });
 
-app.get('/gaming/targeted', passportConfig.isAuthenticated, function (req, res) {
+app.get('/gaming/targeted', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   //console.log('privacy/privacy_settings')
   res.render('targeted/targeted_gaming', {
     title: 'Gaming Interest Page'
@@ -489,25 +497,25 @@ app.get('/class/:classId', passportConfig.isAuthenticated, classController.getCl
 app.post('/classes', passportConfig.isAuthenticated, classController.postCreateClass);
 
 //User's Page
-app.get('/me/:modId', passportConfig.isAuthenticated, userController.getMe);
+app.get('/me/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, userController.getMe);
 app.get('/notifications', passportConfig.isAuthenticated, notificationController.getNotifications);
 
 
-app.get('/login', userController.getLogin);
-app.post('/login', userController.postLogin);
-app.get('/logout', userController.logout);
+app.get('/login', csrfProtection, addCsrf, userController.getLogin);
+app.post('/login', check, csrfProtection, userController.postLogin);
+app.get('/logout', csrfProtection, addCsrf, userController.logout);
 //app.get('/forgot', userController.getForgot);
 //app.post('/forgot', userController.postForgot);
 //app.get('/reset/:token', userController.getReset);
 //app.post('/reset/:token', userController.postReset);
 
 
-app.get('/signup', userController.getSignup);
+app.get('/signup', csrfProtection, addCsrf, userController.getSignup);
 // commented out by Anna
-app.post('/signup', userController.postSignup);
+app.post('/signup', check, csrfProtection, userController.postSignup);
 //app.post('/signup', userController.getGuest);
 
-//Instructor junks
+// Instructors not used in TestDrive
 app.get('/create_instructor', userController.getSignupInstructor);
 app.post('/create_instructor', userController.postSignupInstructor);
 
@@ -532,35 +540,36 @@ app.get('/review/signup', passportConfig.isAuthenticated, userController.getSign
 
 //////////////////////////
 
-app.get('/account/signup_info', passportConfig.isAuthenticated, userController.getSignupInfo);
+app.get('/account/signup_info', passportConfig.isAuthenticated, csrfProtection, addCsrf, userController.getSignupInfo);
 //app.post('/account/signup_info_post', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, csrf, userController.postSignupInfo);
-app.post('/account/signup_info_post', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, userController.postSignupInfo);
+app.post('/account/signup_info_post', passportConfig.isAuthenticated, check, csrfProtection, useravatarupload.single('picinput'), check, userController.postSignupInfo);
 
 
 //app.post('/account/profile/:modId', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, csrf, userController.postUpdateProfile);
-app.post('/account/profile/:modId', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, userController.postUpdateProfile);
+app.post('/account/profile/:modId', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, csrfProtection, userController.postUpdateProfile);
 
-app.get('/account/:modId', passportConfig.isAuthenticated, userController.getAccount);
+app.get('/account/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, userController.getAccount);
 
-app.get('/user/:userId', passportConfig.isAuthenticated, actorsController.getActor);
-app.post('/user', passportConfig.isAuthenticated, actorsController.postBlockOrReport);
+app.get('/user/:userId', passportConfig.isAuthenticated, csrfProtection, addCsrf, actorsController.getActor);
+app.post('/user', passportConfig.isAuthenticated, check, csrfProtection, actorsController.postBlockOrReport);
 
-app.post('/pageLog', passportConfig.isAuthenticated, userController.postPageLog);
+// TODO: check if csrf is on every page, because of this
+app.post('/pageLog', passportConfig.isAuthenticated, check, csrfProtection, userController.postPageLog);
 
 app.get('/bell', passportConfig.isAuthenticated, userController.checkBell);
 
 //getScript
 //app.get('/feed', passportConfig.isAuthenticated, scriptController.getScript);
-app.post('/feed', passportConfig.isAuthenticated, scriptController.postUpdateFeedAction);
-app.post('/startPageAction', passportConfig.isAuthenticated, scriptController.postStartPageAction);
-app.post('/introjsStep', passportConfig.isAuthenticated, scriptController.postIntrojsStepAction);
-app.post('/reflection', passportConfig.isAuthenticated, scriptController.postReflectionAction);
-app.post('/bluedot', passportConfig.isAuthenticated, scriptController.postBlueDotAction);
+app.post('/feed', passportConfig.isAuthenticated, check, csrfProtection, scriptController.postUpdateFeedAction);
+app.post('/startPageAction', passportConfig.isAuthenticated, check, csrfProtection, scriptController.postStartPageAction);
+app.post('/introjsStep', passportConfig.isAuthenticated, check, csrfProtection, scriptController.postIntrojsStepAction);
+app.post('/reflection', passportConfig.isAuthenticated, check, csrfProtection, scriptController.postReflectionAction);
+app.post('/bluedot', passportConfig.isAuthenticated, check, csrfProtection, scriptController.postBlueDotAction);
 //app.post('/guidedActivityAction', passportConfig.isAuthenticated, scriptController.postGuidedActivityAction);
 app.post('/deleteUserFeedActions', passportConfig.isAuthenticated, scriptController.postDeleteFeedAction);
-app.post('/interest', passportConfig.isAuthenticated, userController.postUpdateInterestSelection);
-app.post('/advancedlitInterest', passportConfig.isAuthenticated, userController.postAdvancedlitInterestSelection);
-app.post('/habitsTimer', passportConfig.isAuthenticated, userController.postUpdateHabitsTimer);
+app.post('/interest', passportConfig.isAuthenticated, check, csrfProtection, userController.postUpdateInterestSelection);
+app.post('/advancedlitInterest', passportConfig.isAuthenticated, check, csrfProtection, userController.postAdvancedlitInterestSelection);
+app.post('/habitsTimer', passportConfig.isAuthenticated, check, csrfProtection, userController.postUpdateHabitsTimer);
 //postDeleteAccount
 //app.post('/deleteAccount', passportConfig.isAuthenticated, userController.getDeleteAccount);
 app.get('/delete', passportConfig.isAuthenticated, userController.getDeleteAccount);

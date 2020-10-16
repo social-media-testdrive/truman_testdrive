@@ -4,7 +4,7 @@ block content
   .ten.wide.column
     h2.ui.header Login
     form.ui.form(method='POST')
-      input(type='hidden', name='_csrf', value=_csrf)
+      input(type='hidden', name='_csrf', value=csrfToken)
       .field
         label(for='username') Username
         input(type='text', name='username', id='username', placeholder='Username', autofocus, required).field
