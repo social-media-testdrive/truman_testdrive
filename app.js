@@ -312,49 +312,49 @@ app.get('/test_sim', function (req, res) {
   });
 });
 
-app.get('/tutorial/:modId',passportConfig.isAuthenticated, function (req, res) {
+app.get('/tutorial/:modId',passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")  +'_tutorial', {
     title: 'Tutorial'
   });
 });
 
-app.get('/tutorial2/:modId',passportConfig.isAuthenticated, function (req, res) {
+app.get('/tutorial2/:modId',passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")  +'_tutorial2', {
     title: 'Tutorial'
   });
 });
 
-app.get('/sim/:modId', passportConfig.isAuthenticated, function (req, res) {
+app.get('/sim/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_sim', {
     title: 'Guided Activity'
   });
 });
 
-app.get('/sim1/:modId',passportConfig.isAuthenticated, function (req, res) {
+app.get('/sim1/:modId',passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_sim1', {
     title: 'Guided Activity'
   });
 });
 
-app.get('/sim2/:modId', passportConfig.isAuthenticated, function (req, res) {
+app.get('/sim2/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_sim2', {
     title: 'Guided Activity'
   });
 });
 
-app.get('/sim3/:modId', passportConfig.isAuthenticated, function (req, res) {
+app.get('/sim3/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_sim3', {
     title: 'Guided Activity'
   });
 });
 
-app.get('/sim4/:modId', passportConfig.isAuthenticated, function (req, res) {
+app.get('/sim4/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_sim4', {
     title: 'Guided Activity'
   });
 });
 
-app.get('/trans/:modId', passportConfig.isAuthenticated, function (req, res) {
+app.get('/trans/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_trans', {
     title: 'Recap'
   });
@@ -372,43 +372,43 @@ app.get('/trans_script/:modId', passportConfig.isAuthenticated, csrfProtection, 
   });
 });
 
-app.get('/free-play/privacy', passportConfig.isAuthenticated, function (req, res) {
+app.get('/free-play/privacy', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render('privacy/privacy_free-play', {
     title: 'Free-Play'
   });
 });
 
-app.get('/free-play2/privacy', passportConfig.isAuthenticated, function (req, res) {
+app.get('/free-play2/privacy', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render('privacy/privacy_free-play2', {
     title: 'Free-Play 2'
   });
 });
 
-app.get('/free-play3/privacy', passportConfig.isAuthenticated, function (req, res) {
+app.get('/free-play3/privacy', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render('privacy/privacy_free-play3', {
     title: 'Free-Play 3'
   });
 });
 
-app.get('/free-play4/privacy', passportConfig.isAuthenticated, function (req, res) {
+app.get('/free-play4/privacy', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render('privacy/privacy_free-play4', {
     title: 'Free-Play 4'
   });
 });
 
-app.get('/free-settings/privacy', passportConfig.isAuthenticated, function (req, res) {
+app.get('/free-settings/privacy', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render('privacy/privacy_free-play_settings', {
     title: 'Free-Play Settings'
   });
 });
 
-app.get('/free-settings2/privacy', passportConfig.isAuthenticated, function (req, res) {
+app.get('/free-settings2/privacy', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render('privacy/privacy_free-play_settings2', {
     title: 'Free-Play Settings 2'
   });
 });
 
-app.get('/free-settings3/privacy', passportConfig.isAuthenticated, function (req, res) {
+app.get('/free-settings3/privacy', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render('privacy/privacy_free-play_settings3', {
     title: 'Free-Play Settings 3'
   });
@@ -445,7 +445,7 @@ app.get('/intro/:modId', passportConfig.isAuthenticated,function (req, res) {
     });
   }
 });
-app.get('/tut_guide/:modId', passportConfig.isAuthenticated, function (req, res) {
+app.get('/tut_guide/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_tut_guide', {
     title: 'Welcome'
   });
@@ -459,7 +459,7 @@ app.get('/results/:modId', passportConfig.isAuthenticated, function (req, res) {
 });
 
 //For privacy settings page that doesnt do anything
-app.get('/settings/privacy', passportConfig.isAuthenticated, function (req, res) {
+app.get('/settings/privacy', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   //console.log('privacy/privacy_settings')
   res.render('privacy/privacy_settings', {
     title: 'Privacy Settings'
