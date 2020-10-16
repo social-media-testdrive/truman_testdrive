@@ -395,8 +395,13 @@ Start button links
   //finish
   $('.ui.big.green.labeled.icon.button.finish')
     .on('click', function () {
-      //$.post("/deleteAccount", {_csrf: $('meta[name="csrf-token"]').attr('content') });
-      window.location.href = '/delete';
+      // Anna: changed delete to a post request
+      $.post("/delete", {_csrf: $('meta[name="csrf-token"]').attr('content') })
+      .done(function(){
+        window.location.href = '/';
+      });
+      // Anna: commented this out
+      // window.location.href = '/delete';
 
     });
 
