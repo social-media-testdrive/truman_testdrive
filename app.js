@@ -246,7 +246,7 @@ app.use('/profile_pictures',express.static(path.join(__dirname, 'profile_picture
 // added by Anna
 // main route is the lesson mod selection screen,
 // but the user needs to be logged in before it is visible
-app.get('/', passportConfig.isAuthenticated, function (req, res) {
+app.get('/', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render('mods', {
     title: 'Pick a Lesson'
   });

@@ -14,7 +14,7 @@ var stepsList = [
     media. See if you can spot the clues!`,
     position:'left',
     scrollTo:'tooltip',
-    audioFile: ['']
+    audioFile: ['CUSML.5.6.1.mp3']
   },
   {
     element: '#step1',
@@ -23,7 +23,7 @@ var stepsList = [
     class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; to learn more...`,
     position:'left',
     scrollTo:'tooltip',
-    audioFile: ['']
+    audioFile: ['CUSML.5.6.2.mp3']
   }
 ];
 
@@ -35,7 +35,7 @@ var hintsList=
     site. Also note the spelling errors in the URL.`,
     element: '#hint1',
     hintPosition: 'top-left',
-    audioFile: ['']
+    audioFile: ['CUSML.5.6.3.mp3']
   },
   {
     hint: `You can see that the headline uses shocking language and has a wild
@@ -43,19 +43,19 @@ var hintsList=
     headline.`,
     element: '#hint2',
     hintPosition: 'middle-right',
-    audioFile: ['']
+    audioFile: ['CUSML.5.6.4.mp3']
   },
   {
     hint: `After analyzing the headline and image, be sure to click on the
     article link to read the article more closely.`,
     element: '#hint3',
-    audioFile: ['']
+    audioFile: ['CUSML.5.6.5.mp3']
   },
   {
     hint: `If you decide the article is fake news, you can flag the post to
     report it. Don’t share the article!`,
     element: '#hint4',
-    audioFile: ['']
+    audioFile: ['CUSML.5.6.6.mp3']
   }
 ];
 

@@ -4,7 +4,7 @@
   .header Add a New Post  
   .content  
     form#postform.ui.feed.form(action='/post/new', method='POST')  
-      input(type='hidden', name='_csrf', value=_csrf) 
+      input(type='hidden', name='_csrf', value=csrfToken) 
       input(type='hidden', name='module', value=mod)  
       .field  
         textarea(rows='3',placeholder='What do you want to share?',name='body')
