@@ -30,6 +30,11 @@ function updateProgressBar(){
       break;
   }
 
+  // Adding the module title to the progress bar
+  $.getJSON('/json/moduleInfo.json', function(data) {
+    $('.moduleTitle span').text(data[currentModuleForHeader]["title"]);
+  });
+
   $.getJSON(jsonPath, function(data) {
     stepNumber = data[currentPageForHeader];
   }).then(function () {
@@ -398,11 +403,8 @@ Start button links
       // Anna: changed delete to a post request
       $.post("/delete", {_csrf: $('meta[name="csrf-token"]').attr('content') })
       .done(function(){
-        window.location.href = '/';
+        window.location.href = 'https://socialmediatestdrive.org/modules.html';
       });
-      // Anna: commented this out
-      // window.location.href = '/delete';
-
     });
 
 

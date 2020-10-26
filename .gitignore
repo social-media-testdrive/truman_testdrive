@@ -40,3 +40,10 @@ Thumbs.db
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+# Behat and Composer
+composer.json
+composer.lock
+features
+vendor
+selenium-server-standalone-3.141.59.jar
