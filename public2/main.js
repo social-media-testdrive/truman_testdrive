@@ -132,7 +132,7 @@ $(window).on("load", function () {
   $('.ui.sticky.sideMenu')
     .sticky({
       context: '#content',
-      offset: 90
+      offset: 115
   });
 
   //close loading dimmer on load
