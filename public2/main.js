@@ -32,7 +32,9 @@ function updateProgressBar(){
 
   // Adding the module title to the progress bar
   $.getJSON('/json/moduleInfo.json', function(data) {
-    $('.moduleTitle span').text(data[currentModuleForHeader]["title"]);
+    if(currentModuleForHeader !== undefined){
+      $('.moduleTitle span').text(data[currentModuleForHeader]["title"]);
+    }
   });
 
   $.getJSON(jsonPath, function(data) {
