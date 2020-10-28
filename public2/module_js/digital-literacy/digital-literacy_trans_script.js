@@ -2,9 +2,7 @@ const nextPageURL = 'modual';
 
 const stepsList = [
  {
-    intro: `NOTE: Most browsers require users to interact with the page before
-    audio can play, so this step will not have a voiceover. Its purpose is to
-    get the user to interact with the page. Text would be added later.`,
+    intro: `Click "Next" to begin!`,
     audioFile: ['']
   },
   {

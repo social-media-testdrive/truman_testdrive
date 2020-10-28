@@ -33,16 +33,14 @@ var hintsList = [
 var stepsList = [
   {
     element: '#step0',
-    intro: `NOTE: Most browsers require users to interact with the page before
-    audio can play, so this step will not have a voiceover. Its purpose is to
-    get the user to interact with the page. Text would be added later.`,
+    intro: `Click "Next" to begin!`,
     position: 'right',
     scrollTo: 'tooltip',
     audioFile: ['']
   },
   {
     element: '#step0',
-    intro: "Click on the blue dots&nbsp;<a role='button' "+
+    intro: "Click on \"Done\" and then look for the blue dots&nbsp;<a role='button' "+
       "tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'>"+
       "</div><div class='introjs-hint-pulse'></div></a>" +
       " &nbsp; &nbsp; &nbsp;to learn more...",

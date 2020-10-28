@@ -14,16 +14,11 @@ function playVoiceover(audioFile, delay = 0) {
   const subdirectory2 = pathArray[2];
   if (audioFile !== '') {
     if( audioFile[voiceoverSequenceCount] !== ''){
-      if (subdirectory2 === "cyberbullying") { // TODO: remove once cyberbullying voice-overs recorded
-        audioChannel.src = `/audioFiles/${subdirectory2}/${audioFile[voiceoverSequenceCount]}`;
-      } else {
-        if(audioFile.length > 1){
-          audioChannel.src = `https://dhpd030vnpk29.cloudfront.net/voice-overs/${audioFile[voiceoverSequenceCount]}`;
-        } else if (audioFile.length === 1) {
-          audioChannel.src = `https://dhpd030vnpk29.cloudfront.net/voice-overs/${audioFile[0]}`;
-        }
-
-      }
+      if(audioFile.length > 1){
+        audioChannel.src = `https://dhpd030vnpk29.cloudfront.net/voice-overs/${audioFile[voiceoverSequenceCount]}`;
+      } else if (audioFile.length === 1) {
+        audioChannel.src = `https://dhpd030vnpk29.cloudfront.net/voice-overs/${audioFile[0]}`;
+      }    
       let playVoiceoverPromise = audioChannel.play();
       if (playVoiceoverPromise !== undefined) {
         playVoiceoverPromise.catch(error => {

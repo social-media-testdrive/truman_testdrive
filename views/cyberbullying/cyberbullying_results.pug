@@ -110,23 +110,19 @@ block content
                         label(for='wouldTell', tabindex='0') 
                           | I would tell a trusted adult if I saw this kind of post.
       
-        .ui.basic.segment.noPadding.hidden.reflectionTopSegment
-          .ui.raised.segment
-            .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection3
-              i.down.arrow.icon
-              |   Next
-            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
-              .ui.label.resultsPromptLabel
-                h4.reflectionPrompt
-                  |  Why did you act this way?
-              .ui.form
-                .inline.fields
-                  label
-                  textarea.glowing-border(rows='4' id="cyber_responseOne")
+              .ui.basic.segment.noPadding
+                .ui.basic.segment.noPadding.reflectionPromptSegment
+                  .ui.label.resultsPromptLabel
+                    h4.reflectionPrompt
+                      |  Why did you act this way?
+                  .ui.form
+                    .inline.fields
+                      label
+                      textarea.glowing-border(rows='4' id="cyber_responseOne")
                         
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
           .ui.raised.segment
-            .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection4
+            .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection3
               i.down.arrow.icon
               |   Next
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
@@ -140,7 +136,7 @@ block content
 
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
           .ui.raised.segment
-            .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection5
+            .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection4
               i.down.arrow.icon
               |   Next
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
@@ -176,27 +172,22 @@ block scripts
       '.voiceover_reflection1': {
         "initialDelay": 0,
         "delay": 0,
-        "files": ['']
+        "files": ['CUSML.6.7.1.mp3']
       },
       '.voiceover_reflection2': {
         "initialDelay": 500,
         "delay": 0,
-        "files": ['']
+        "files": ['CUSML.6.7.2.mp3']
       },
       '.voiceover_reflection3': {
         "initialDelay": 500,
         "delay": 0,
-        "files": ['']
+        "files": ['CUSML.6.7.3.mp3']
       },
       '.voiceover_reflection4': {
         "initialDelay": 500,
         "delay": 0,
-        "files": ['']
-      },
-      '.voiceover_reflection5': {
-        "initialDelay": 500,
-        "delay": 0,
-        "files": ['']
+        "files": ['CUSML.6.7.4.mp3']
       }
     };
   script(src="/module_js/cyberbullying/cyberbullying_results.js")
