@@ -2,25 +2,16 @@ extends ../ui_layout
 
 block content
   .ten.wide.column
-    h2.ui.header Login
+    h2.ui.header Login to Your Account
     form.ui.form(method='POST')
       input(type='hidden', name='_csrf', value=csrfToken)
       .field
-        label(for='username') Username
+        label(for='username' style="font-size:larger;") Username
         input(type='text', name='username', id='username', placeholder='Username', autofocus, required).field
-      //-.field
-        label(for='password') Password
-        input(type='password', name='password', id='password', placeholder='Password', required)
-      button.ui.big.button(type='submit') Login
-    .ui.horizontal.divider
-      | Or
-    .center.aligned.column
-      .ui.big.green.labeled.icon.button.signup
-        i.signup.icon
-        |   Sign Up
+      button.ui.big.green.button(type='submit') Login
     br
     br  
-    a(href="/privacy")="Privacy policy" 
+    //- a(href="/privacy")="Privacy policy" 
   br
   br
   br

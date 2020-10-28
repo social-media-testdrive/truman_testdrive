@@ -561,10 +561,10 @@ end chat box code
   });
 
   //Sign Up Button
-  $('.ui.big.green.labeled.icon.button.signup')
-    .on('click', function () {
-      window.location.href = '/signup';
-    });
+  // $('.ui.big.green.labeled.icon.button.signup')
+  //   .on('click', function () {
+  //     window.location.href = '/signup';
+  //   });
 
   //Cyberbullying to Transition
   $('.cybertrans')

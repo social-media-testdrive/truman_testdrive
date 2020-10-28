@@ -510,9 +510,9 @@ app.get('/logout', csrfProtection, addCsrf, userController.logout);
 //app.post('/reset/:token', userController.postReset);
 
 
-app.get('/signup', csrfProtection, addCsrf, userController.getSignup);
+// app.get('/signup', csrfProtection, addCsrf, userController.getSignup);
 // commented out by Anna
-app.post('/signup', check, csrfProtection, userController.postSignup);
+// app.post('/signup', check, csrfProtection, userController.postSignup);
 //app.post('/signup', userController.getGuest);
 
 // Instructors not used in TestDrive
