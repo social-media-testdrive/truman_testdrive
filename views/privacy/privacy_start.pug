@@ -10,31 +10,36 @@ block content
         .content
           | Learn
       hr
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          | When you go on social media, it’s important to be aware of what you 
-          | share and who you share it with.
-      
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          | If you have your social media profile open to the public, people can 
-          | use your information for harmful things, like to try to trick or 
-          | scam you.
+      .ui.basic.segment(style="padding:0")
+        .ui.mini.green.right.labeled.icon.button.showLearnSectionButton
+          i.down.arrow.icon
+          |   Next
+      .ui.basic.segment.learnSegment.hidden
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | When you go on social media, it’s important to be aware of what you 
+            | share and who you share it with.
+        
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | If you have your social media profile open to the public, people can 
+            | use your information for harmful things, like to try to trick or 
+            | scam you.
 
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          | The information you share can also be used by the company that runs 
-          | the website. They can sell your information to advertisers and show 
-          | you targeted advertisements.
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | The information you share can also be used by the company that runs 
+            | the website. They can sell your information to advertisers and show 
+            | you targeted advertisements.
+        
+        br
+        .ui.mini.green.right.labeled.icon.button.showKeyTermsButton
+          i.down.arrow.icon
+          |   Next
       
-      br
-      .ui.mini.green.right.labeled.icon.button.showKeyTermsButton
-        i.down.arrow.icon
-        |   Next
-    
     .ui.segment.keyIdeasSegment.hidden
       h3.ui.header
         i.key.blue.icon
@@ -46,7 +51,7 @@ block content
     
       .ui.stackable.two.column.grid
         .ui.column
-          .ui.raised.segment.keyTerm
+          .ui.raised.segment.keyTerm.voiceover_keyTerm1
             a.ui.blue.ribbon.label.keyTermLabel
                 span Privacy
             span.hidden.keyTermDefinition  
@@ -54,7 +59,7 @@ block content
               | observed or tracked by others.
 
         .ui.column
-          .ui.raised.segment.keyTerm
+          .ui.raised.segment.keyTerm.voiceover_keyTerm2
             a.ui.blue.ribbon.label.keyTermLabel
                 span Privacy Settings
             span.hidden.keyTermDefinition 
@@ -62,7 +67,7 @@ block content
               | is visible to other users and companies.
 
         .ui.column
-          .ui.raised.segment.keyTerm
+          .ui.raised.segment.keyTerm.voiceover_keyTerm3
             a.ui.blue.ribbon.label.keyTermLabel
                 span Privacy Policy
             span.hidden.keyTermDefinition 
@@ -71,7 +76,7 @@ block content
               | it.
         
         .ui.column
-          .ui.raised.segment.keyTerm
+          .ui.raised.segment.keyTerm.voiceover_keyTerm4
             a.ui.blue.ribbon.label.keyTermLabel
                 //- i.magic.icon 
                 span Opt Out
@@ -92,12 +97,33 @@ block content
 block scripts
   script.
     var voiceoverMappings = {
-      '.showLearnSectionButton': '',
-      '.voiceover_keyTerm1': '',
-      '.voiceover_keyTerm2': '',
-      '.voiceover_keyTerm3': '',
-      '.voiceover_keyTerm4': ''
+      '.showLearnSectionButton': {
+        "initialDelay": 700,
+        "delay": 500,
+        "files": ['CUSML.7.1.1.mp3','CUSML.7.1.2.mp3','CUSML.7.1.3.mp3']
+      },
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.7.2.1.mp3']
+      },
+      '.voiceover_keyTerm2':  {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.7.2.2.mp3']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.7.2.3.mp3']
+        },
+      '.voiceover_keyTerm4': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.7.2.4.mp3']
+      }
     };
+  script(src='/module_js/voiceover.js')
   script(src="/module_js/base_start.js")
   
 block styles

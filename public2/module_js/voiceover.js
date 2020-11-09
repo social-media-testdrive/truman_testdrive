@@ -18,7 +18,7 @@ function playVoiceover(audioFile, delay = 0) {
         audioChannel.src = `https://dhpd030vnpk29.cloudfront.net/voice-overs/${audioFile[voiceoverSequenceCount]}`;
       } else if (audioFile.length === 1) {
         audioChannel.src = `https://dhpd030vnpk29.cloudfront.net/voice-overs/${audioFile[0]}`;
-      }    
+      }
       let playVoiceoverPromise = audioChannel.play();
       if (playVoiceoverPromise !== undefined) {
         playVoiceoverPromise.catch(error => {
