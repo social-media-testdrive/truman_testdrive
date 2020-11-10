@@ -62,7 +62,6 @@ function recordResponse(responseType,timestamp){
 }
 
 function iterateOverPrompts() {
-
   let timestamp = Date.now();
 
   // Search for each prompt type.
@@ -92,7 +91,63 @@ function iterateOverPrompts() {
   });
 }
 
-$('.ui.big.green.labeled.icon.button.results_end').on('click', function () {
-  $(".insertPrint").empty();
-  return iterateOverPrompts();
-});
+function checkAllPromptsOpened(){
+  let status = true;
+  $('.reflectionPromptSegment').each(function(){
+    if($(this).is(':hidden')){
+      status = false;
+    }
+  });
+  return status;
+}
+
+function showWarning(warningID){
+  if($(warningID).is(':visible')){
+    $(warningID).transition('bounce');
+  } else {
+    $(warningID).transition('fade down');
+  }
+}
+
+function hideWarning(warningID){
+  if($(warningID).is(':visible')){
+    $(warningID).transition('fade down');
+  }
+}
+
+$(window).on("load", function(){
+    Voiceovers.addVoiceovers();
+
+    $('.reflectionSegmentButton').on('click', function(){
+      let segmentButton = $(this);
+      segmentButton.hide();
+      segmentButton.next('.reflectionPromptSegment').transition({
+        animation: 'fade down',
+        onComplete: function() {
+          segmentButton.parents('.reflectionTopSegment')
+            .next('.reflectionTopSegment')
+            .transition('fade down');
+        }
+      });
+      hideWarning('.startPromptsWarning');
+      hideWarning('.openAllPromptsWarning');
+      if(checkAllPromptsOpened() === true){
+        $('.ui.big.labeled.icon.button').addClass('green');
+        $('.ui.big.labeled.icon.button').transition('jiggle');
+      }
+    });
+
+    $('.results_end').on('click', function () {
+      if(checkAllPromptsOpened() === true){
+        $(".insertPrint").empty();
+        return iterateOverPrompts();
+      } else {
+        // slightly different messaging for start vs next buttons
+        if($('.voiceover_reflection1').next('.reflectionPromptSegment').is(':hidden')){
+          showWarning('.startPromptsWarning');
+        } else {
+          showWarning('.openAllPromptsWarning');
+        }
+      }
+    });
+})

@@ -3,9 +3,7 @@ const nextPageURL = 'tut_guide';
 const stepsList = [
   {
     element: '#step1A',
-    intro: `NOTE: Most browsers require users to interact with the page before
-    audio can play, so this step will not have a voiceover. Its purpose is to
-    get the user to interact with the page. Text would be added later.`,
+    intro: `Click "Next" to begin!`,
     position: 'left',
     scrollTo: 'tooltip',
     audioFile: ['']
@@ -17,7 +15,7 @@ const stepsList = [
     you curious and lure you like bait to click on it.`,
     position: 'left',
     scrollTo: 'tooltip',
-    audioFile: ['']
+    audioFile: ['CUSML.5.4.1.mp3']
   },
   {
     element: '.post',
@@ -26,7 +24,7 @@ const stepsList = [
     <b>clickbait articles.</b>`,
     position: 'left',
     scrollTo: "tooltip",
-    audioFile: ['']
+    audioFile: ['CUSML.5.4.2.mp3']
   },
   {
     element: '#step3',
@@ -35,7 +33,7 @@ const stepsList = [
     appear like real news websites but most often are not.`,
     position: 'bottom',
     scrollTo: "tooltip",
-    audioFile: ['']
+    audioFile: ['CUSML.5.4.3.mp3']
   },
   {
     element: '#step1',
@@ -44,6 +42,6 @@ const stepsList = [
     <b>may not be credible.</b>`,
     position: 'bottom',
     scrollTo: "tooltip",
-    audioFile: ['']
+    audioFile: ['CUSML.5.4.4.mp3']
   }
 ];

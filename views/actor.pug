@@ -145,7 +145,7 @@ block content
       .header Report This User
       .content
         form#reportform.ui.reply.form(action='/user', method='POST')
-          input(type='hidden', name='_csrf', value=_csrf)
+          input(type='hidden', name='_csrf', value=csrfToken)
           input(type='hidden', name='reported', value=actor.username)
           .ui.form
             .grouped.fields

@@ -3,9 +3,7 @@ const nextPageURL = 'sim';
 const stepsList = [
   {
     element: '#step3',
-    intro: `NOTE: Most browsers require users to interact with the page before
-    audio can play, so this step will not have a voiceover. Its purpose is to
-    get the user to interact with the page. Text would be added later.`,
+    intro: `Click "Next" to begin!`,
     position: 'right',
     scrollTo: 'tooltip',
     audioFile: ['']
@@ -15,7 +13,7 @@ const stepsList = [
     intro: `How can you shape your digital footprint?`,
     position: "right",
     scrollTo: 'tooltip',
-    audioFile: ['']
+    audioFile: ['CUSML.4.3.1.mp3']
   },
   {
     element: '#step3',
@@ -23,7 +21,7 @@ const stepsList = [
     will add to your digital footprint.`,
     position: "right",
     scrollTo: "tooltip",
-    audioFile: ['']
+    audioFile: ['CUSML.4.3.2.mp3']
   },
   {
     element: '#step4',
@@ -32,7 +30,7 @@ const stepsList = [
     digital footprint?`,
     position: "left",
     scrollTo: "tooltip",
-    audioFile: ['']
+    audioFile: ['CUSML.4.3.3.mp3']
   },
   {
     element: '#step5',
@@ -40,7 +38,7 @@ const stepsList = [
     footprints?`,
     position: "right",
     scrollTo: "tooltip",
-    audioFile: ['']
+    audioFile: ['CUSML.4.3.4.mp3']
   },
   {
     element: '#step5',
@@ -49,7 +47,7 @@ const stepsList = [
     things about others.`,
     position: "right",
     scrollTo: "tooltip",
-    audioFile: ['']
+    audioFile: ['CUSML.4.3.5.mp3']
   },
   {
     element: '#step5',
@@ -58,6 +56,6 @@ const stepsList = [
     private message.`,
     position: "right",
     scrollTo: "tooltip",
-    audioFile: ['']
+    audioFile: ['CUSML.4.3.6.mp3']
   }
 ];

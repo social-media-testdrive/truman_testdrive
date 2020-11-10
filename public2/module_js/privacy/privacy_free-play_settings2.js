@@ -1,21 +1,24 @@
-const hintsList = [
+var hintsList = [
   {
     hint: `What would Lily need to do if she didn’t want strangers to see her
     social media posts? Which privacy settings would she have to change?`,
-    element: '#hint1'
+    element: '#hint1',
+    audioFile: ['CUSML.7.8.18.mp3']
   },
   {
-    hint: `She can turn off tagging settings and hide tagged posts from her
-    timeline. Let’s try doing this!`,
+    hint: `She can make her account “<i>Private</i>,” so that only her social
+    media friends can see her posts. Let’s try doing this!`,
     element: '#hint2',
-    hintPosition: 'top-middle'
+    hintPosition: 'top-middle',
+    audioFile: ['CUSML.7.8.19.mp3']
+
   },
   {
-    hint: `Have you turned off tagging settings and hidden tagged posts from
-    Lily’s timeline? Click “<i>Let’s Continue!</i>” to see how her profile has
-    changed.`,
+    hint: `Have you changed the account settings to a “<i>Private</i>” account?
+    Click “<i>Let’s Continue!</i>” to see how her profile has changed.`,
     element: '#hint3',
-    hintPosition: 'middle-right'
+    hintPosition: 'middle-right',
+    audioFile: ['CUSML.7.8.20.mp3']
   }
 ];
 

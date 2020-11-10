@@ -16,7 +16,11 @@ $(window).on("load", function () {
 
   //recording the current page
   let pathArray = window.location.pathname.split('/');
-  $.post("/pageLog", { subdirectory1: pathArray[1], subdirectory2: pathArray[2], _csrf: $('meta[name="csrf-token"]').attr('content') });
+  $.post("/pageLog", {
+    subdirectory1: pathArray[1],
+    subdirectory2: pathArray[2],
+    _csrf: $('meta[name="csrf-token"]').attr('content')
+  });
 
   // managing the progress bar in the header
   let pathArrayForHeader = window.location.pathname.split('/');
@@ -557,10 +561,10 @@ end chat box code
   });
 
   //Sign Up Button
-  $('.ui.big.green.labeled.icon.button.signup')
-    .on('click', function () {
-      window.location.href = '/signup';
-    });
+  // $('.ui.big.green.labeled.icon.button.signup')
+  //   .on('click', function () {
+  //     window.location.href = '/signup';
+  //   });
 
   //Cyberbullying to Transition
   $('.cybertrans')

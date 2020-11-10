@@ -1,9 +1,7 @@
 var stepsList = [
   {
     element: '#blueDotStep',
-    intro: `NOTE: Most browsers require users to interact with the page before
-    audio can play, so this step will not have a voiceover. Its purpose is to
-    get the user to interact with the page. Text would be added later.`,
+    intro: `Click "Next" to begin!`,
     position: 'right',
     scrollTo: 'tooltip',
     audioFile: ['']
@@ -27,7 +25,7 @@ var stepsList = [
   {
     element: '#blueDotStep',
     intro: `In this activity, you will see how targeted advertisements work.
-    Click on the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'>
+    Click on "Done" and then look for the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'>
     <div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a>
     &nbsp; &nbsp; &nbsp;to learn more...`,
     scrollTo: 'tooltip',

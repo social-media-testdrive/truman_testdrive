@@ -41,9 +41,7 @@ var stepsList=
 [
   {
     element: '#step1',
-    intro: `NOTE: Most browsers require users to interact with the page before
-    audio can play, so this step will not have a voiceover. Its purpose is to
-    get the user to interact with the page. Text would be added later.`,
+    intro: `Click "Next" to begin!`,
     position: 'left',
     scrollTo: 'tooltip',
     audioFile: ['']
@@ -52,7 +50,7 @@ var stepsList=
     element: '#step1',
     intro: `This is Nick's social media timeline. He just got back from school
     and is checking out his feed.
-    Click on the blue dots&nbsp;<a role='button' tabindex='0'
+    Click on "Done" and then look for the blue dots&nbsp;<a role='button' tabindex='0'
     class='introjs-hint'><div class='introjs-hint-dot'></div><div class=
     'introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more...`,
     position: "left",
