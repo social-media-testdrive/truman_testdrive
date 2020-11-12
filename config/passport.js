@@ -2,7 +2,6 @@ const passport = require('passport');
 const request = require('request');
 const LocalStrategy = require('passport-local').Strategy;
 
-
 const User = require('../models/User');
 
 passport.serializeUser((user, done) => {
@@ -15,15 +14,14 @@ passport.deserializeUser((id, done) => {
   });
 });
 
-/**
- * Sign in using Email and Password.
- */
+/*
+* Sign in as a student with username.
+*/
 
-// commented out by Anna
-//passport.use(new LocalStrategy({ usernameField: 'username' }, (username, password, done) => {
-passport.use(new LocalStrategy({ usernameField: 'username', passwordField: 'username' }, (username, password, done) => {
-  //User.findOne({ username: username.toLowerCase() }, (err, user) => {
-
+passport.use('student-local', new LocalStrategy({
+  usernameField: 'username',
+  passwordField: 'username'
+}, (username, password, done) => {
   User.findOne({ username: username })
   .collation({locale: 'en', strength: 2})
   .exec(function (err, user) {
@@ -31,22 +29,70 @@ passport.use(new LocalStrategy({ usernameField: 'username', passwordField: 'user
       return done(err);
     }
     if (!user) {
-      return done(null, false, { msg: `Username ${username} not found.` });
+      return done(null, false, {
+        msg: `Username ${username} not found.`
+      });
     }
-
-    // added by Anna
     return done(null, user);
 
-    // commented out by Anna
-    // user.comparePassword(password, (err, isMatch) => {
-    //   if (err) { return done(err); }
-    //   if (isMatch) {
-    //     return done(null, user);
-    //   }
-    //   return done(null, false, { msg: 'Invalid username or password.' });
-    // });
   });
 }));
+
+/*
+* Sign in as an instructor with username and password.
+*/
+
+passport.use('instructor-local', new LocalStrategy({
+  usernameField: 'instructor_username',
+  passwordField: 'instructor_password'
+}, (instructor_username, instructor_password, done) => {
+  User.findOne({ username: instructor_username }, (err, user) => {
+    if (err) {
+      return done(err);
+    }
+    if (!user) {
+      return done(null, false, {
+        msg: `Username ${instructor_username} not found.`
+      });
+    }
+    user.comparePassword(instructor_password, (err, isMatch) => {
+      if (err) {
+        return done(err);
+      }
+      if (isMatch) {
+        return done(null, user);
+      }
+      return done(null, false, { msg: 'Invalid username or password.' });
+    });
+  });
+}));
+
+/**
+* Login Required middleware.
+*/
+
+exports.isAuthenticated = (req, res, next) => {
+  const mod = req.path.split('/').slice(-1)[0];
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  // redirect to the login page if not authenticated
+  res.redirect('/login');
+};
+
+/**
+* Authorization Required middleware.
+*/
+
+exports.isAuthorized = (req, res, next) => {
+  const provider = req.path.split('/').slice(-1)[0];
+  const token = req.user.tokens.find(token => token.kind === provider);
+  if (token) {
+    next();
+  } else {
+    res.redirect(`/auth/${provider}`);
+  }
+};
 
 /**
  * OAuth Strategy Overview
@@ -511,34 +557,3 @@ passport.use('pinterest', new OAuth2Strategy({
     });
   }
 )); */
-
-/**
- * Login Required middleware.
- */
-exports.isAuthenticated = (req, res, next) => {
-  const mod = req.path.split('/').slice(-1)[0];
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  //res.redirect('/guest');
-
-  // commented out by Anna
-  //res.redirect(`/guest/${mod}`);
-
-  // added by Anna
-  // redirect to the login page instead of the mod page
-  res.redirect('/login');
-};
-
-/**
- * Authorization Required middleware.
- */
-exports.isAuthorized = (req, res, next) => {
-  const provider = req.path.split('/').slice(-1)[0];
-  const token = req.user.tokens.find(token => token.kind === provider);
-  if (token) {
-    next();
-  } else {
-    res.redirect(`/auth/${provider}`);
-  }
-};

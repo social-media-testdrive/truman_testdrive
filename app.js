@@ -502,7 +502,8 @@ app.get('/notifications', passportConfig.isAuthenticated, notificationController
 
 
 app.get('/login', csrfProtection, addCsrf, userController.getLogin);
-app.post('/login', check, csrfProtection, userController.postLogin);
+app.post('/studentLogin', check, csrfProtection, userController.postStudentLogin);
+app.post('/instructorLogin', check, csrfProtection, userController.postInstructorLogin);
 app.get('/logout', csrfProtection, addCsrf, userController.logout);
 //app.get('/forgot', userController.getForgot);
 //app.post('/forgot', userController.postForgot);

@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 const userSchema = new mongoose.Schema({
   // email: {type: String, default: ""},
-  // password: String, //hashed and salted
+  password: String, //hashed and salted
   // passwordResetToken: String,
   // passwordResetExpires: Date,
   username: { type: String, unique: true, collation: {locale: 'en', strength: 2}}, //username, must be unique
