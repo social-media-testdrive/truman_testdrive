@@ -41,3 +41,6 @@ Thumbs.db
 addNewInstructor.js
 create-account-batch.js
 create-account-batch-dev.js
+
+# eb cli
+.elasticbeanstalk
