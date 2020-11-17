@@ -492,9 +492,11 @@ app.get('/gaming/targeted', passportConfig.isAuthenticated, csrfProtection, addC
 
 
 //Classes
-app.get('/classes', passportConfig.isAuthenticated, classController.getClasses);
-app.get('/class/:classId', passportConfig.isAuthenticated, classController.getClass);
-app.post('/classes', passportConfig.isAuthenticated, classController.postCreateClass);
+app.get('/classes', passportConfig.isAuthenticated, csrfProtection, addCsrf, classController.getClasses);
+app.get('/class/:classId', passportConfig.isAuthenticated,  csrfProtection, addCsrf, classController.getClass);
+app.post('/classes', passportConfig.isAuthenticated, check, csrfProtection, classController.postCreateClass);
+app.post('/addStudentToClass', passportConfig.isAuthenticated, check, csrfProtection, classController.addStudentToClass);
+//app.post('/generateStudentAccounts', passportConfig.isAuthenticated, check, csrfProtection, classController.generateStudentAccounts);
 
 //User's Page
 app.get('/me/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, userController.getMe);

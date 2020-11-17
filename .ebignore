@@ -8,20 +8,24 @@ lib-cov
 *.swp
 *.zip
 
+
+
+#Build
+public
+post_pictures
+profile_pictures
+final_data
+outputFiles
 pids
 logs
 results
-outputFiles
 tmp
-
-#Build
-public/css/main.css
+semantic
+test
+.git
 
 #user_uploads
-uploads/user_post
-
-# API keys and secrets
-.env
+uploads
 
 # Dependency directory
 node_modules
@@ -43,4 +47,6 @@ create-account-batch.js
 create-account-batch-dev.js
 
 # Elastic Beanstalk Files
-.elasticbeanstalk
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

@@ -4,21 +4,17 @@ block content
 
   .sixteen.wide.column 
     br
-    h3=found_class.className
+    a.ui.testDriveBlueButton.returnToClassList.button.labeled.icon.large(href='/classes')
+      i.icon.reply
+      |  Back to Class List
+    h3 Viewing Class:
+    h3#className=found_class.className
     table.ui.celled.padded.table
       thead
         tr
           th Student Name
           th Presentation Pre Quiz
           th Presentation Post Quiz
-          th Cyberbullying Pre Quiz
-          th Cyberbullying Post Quiz
-          th Digital Literacy Pre Quiz
-          th Digital Literacy Post Quiz
-          th Likes Pre Quiz
-          th Likes Post Quiz
-          th Image Pre Quiz
-          th Image Post Quiz
       each student in found_class.students
         tbody
           tr
@@ -31,38 +27,51 @@ block content
               td=student.post_presentation.score 
             else
               td=""
-            if student.pre_cyberbullying
-              td=student.pre_cyberbullying.score 
-            else
-              td=""
-            if student.post_cyberbullying
-              td=student.post_cyberbullying.score 
-            else
-              td=""
-            if student.pre_digital_literacy
-              td=student.pre_digital_literacy.score 
-            else
-              td=""
-            if student.post_digital_literacy
-              td=student.post_digital_literacy.score 
-            else
-              td=""
-            if student.pre_like
-              td=student.pre_like.score 
-            else
-              td=""
-            if student.post_like
-              td=student.post_like.score 
-            else
-              td=""
-            if student.pre_image
-              td=student.pre_image.score 
-            else
-              td=""
-            if student.post_image
-              td=student.post_image.score 
-            else
-              td=""
+    
+    button.ui.basic.button.green.addStudentButton
+      i.plus.icon
+      | Add existing student to class
+      
+    button.ui.basic.button.green.generateAccountsButton
+      i.plus.icon
+      | Generate accounts in this class
+    
     br
     br
     br
+      
+    //- .ui.small.modal#generateAccountsModal
+    //-   i.close.icon
+    //-   .header Create Accounts in Class: #{found_class.className}
+    //-   .content
+    //-     form.ui.form(name="generateStudentAccounts" action='/generateStudentAccounts', method='POST')
+    //-       input(type='hidden', name='_csrf', value=csrfToken)
+    //-       input(type='hidden', name='className' value=found_class.className)
+    //-       input(type='hidden', name='classId' value=found_class.accessCode)
+    //-       .field
+    //-         label(for='numberOfAccounts') How many accounts would you like to add?
+    //-         input(type='text', name='numberOfAccounts', id='studentUsername', placeholder='Enter a Number...')
+    //-   .actions
+    //-     input.ui.button(type='button', value='Cancel', form='generateStudentAccounts')
+    //-     input.ui.green.button(type='submit', value='Submit', form='generateStudentAccounts')
+      
+    .ui.small.modal#addStudentToClassModal
+      i.close.icon
+      .header Add Student to Class
+      .content
+        h3#classNameHeader
+          | Adding to class: #{found_class.className}
+        form#addStudentForm.ui.form(name="addStudentToClass" action='/addStudentToClass', method='POST')
+          input(type='hidden', name='_csrf', value=csrfToken)
+          input(type='hidden', name='className' value=found_class.className)
+          input(type='hidden', name='classId' value=found_class.accessCode)
+          .field
+            label(for='studentUsername') Student Username
+            input(type='text', name='studentUsername', id='studentUsername', placeholder='Enter Student Name')
+          .ui.error.message
+      .actions
+        input.ui.green.button(type='submit', value='Submit', form='addStudentForm')
+
+      
+block scripts
+  script(src="/user_portal/classDetails.js")
