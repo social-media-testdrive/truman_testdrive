@@ -496,7 +496,7 @@ app.get('/classes', passportConfig.isAuthenticated, csrfProtection, addCsrf, cla
 app.get('/class/:classId', passportConfig.isAuthenticated,  csrfProtection, addCsrf, classController.getClass);
 app.post('/classes', passportConfig.isAuthenticated, check, csrfProtection, classController.postCreateClass);
 app.post('/addStudentToClass', passportConfig.isAuthenticated, check, csrfProtection, classController.addStudentToClass);
-//app.post('/generateStudentAccounts', passportConfig.isAuthenticated, check, csrfProtection, classController.generateStudentAccounts);
+app.post('/generateStudentAccounts', passportConfig.isAuthenticated, check, csrfProtection, classController.generateStudentAccounts);
 
 //User's Page
 app.get('/me/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, userController.getMe);

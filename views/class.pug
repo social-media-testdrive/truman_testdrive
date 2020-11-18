@@ -7,20 +7,23 @@ block content
     a.ui.testDriveBlueButton.returnToClassList.button.labeled.icon.large(href='/classes')
       i.icon.reply
       |  Back to Class List
-    h3 Viewing Class:
+    h3 Managing Class:
     h3#className=found_class.className
+    button.ui.basic.button.green.generateAccountsButton
+      i.plus.icon
+      | Generate accounts in this class
     table.ui.celled.padded.table
       thead
         tr
+          th Username
           th Student Name
-          th Presentation Pre Quiz
           th Presentation Post Quiz
       each student in found_class.students
         tbody
           tr
             td=student.username
-            if student.pre_presentation
-              td=student.pre_presentation.score 
+            if student.name
+              td=student.name 
             else
               td=""
             if student.post_presentation
@@ -28,49 +31,50 @@ block content
             else
               td=""
     
-    button.ui.basic.button.green.addStudentButton
-      i.plus.icon
-      | Add existing student to class
-      
-    button.ui.basic.button.green.generateAccountsButton
-      i.plus.icon
-      | Generate accounts in this class
+    //- button.ui.basic.button.green.addStudentButton
+    //-   i.plus.icon
+    //-   | Add existing student to class
+
+    button.ui.green.button.labeled.icon.downloadList
+      i.download.icon
+      | Download list as excel file
+  
     
     br
     br
     br
       
-    //- .ui.small.modal#generateAccountsModal
-    //-   i.close.icon
-    //-   .header Create Accounts in Class: #{found_class.className}
-    //-   .content
-    //-     form.ui.form(name="generateStudentAccounts" action='/generateStudentAccounts', method='POST')
-    //-       input(type='hidden', name='_csrf', value=csrfToken)
-    //-       input(type='hidden', name='className' value=found_class.className)
-    //-       input(type='hidden', name='classId' value=found_class.accessCode)
-    //-       .field
-    //-         label(for='numberOfAccounts') How many accounts would you like to add?
-    //-         input(type='text', name='numberOfAccounts', id='studentUsername', placeholder='Enter a Number...')
-    //-   .actions
-    //-     input.ui.button(type='button', value='Cancel', form='generateStudentAccounts')
-    //-     input.ui.green.button(type='submit', value='Submit', form='generateStudentAccounts')
-      
-    .ui.small.modal#addStudentToClassModal
+    .ui.small.modal#generateAccountsModal
       i.close.icon
-      .header Add Student to Class
+      .header Create Accounts in Class: #{found_class.className}
       .content
-        h3#classNameHeader
-          | Adding to class: #{found_class.className}
-        form#addStudentForm.ui.form(name="addStudentToClass" action='/addStudentToClass', method='POST')
+        form#generateStudentAccounts.ui.form(name="generateStudentAccounts" action='/generateStudentAccounts', method='POST')
           input(type='hidden', name='_csrf', value=csrfToken)
           input(type='hidden', name='className' value=found_class.className)
           input(type='hidden', name='classId' value=found_class.accessCode)
           .field
-            label(for='studentUsername') Student Username
-            input(type='text', name='studentUsername', id='studentUsername', placeholder='Enter Student Name')
-          .ui.error.message
+            label(for='numberOfAccounts') How many accounts would you like to add?
+            input(type='text', name='numberOfAccounts', id='numberOfAccounts', placeholder='Enter a Number...')
       .actions
-        input.ui.green.button(type='submit', value='Submit', form='addStudentForm')
+        input.ui.red.deny.button(type='cancel', value='Cancel')
+        input.ui.green.button(type='submit', value='Submit', form='generateStudentAccounts')
+      
+    //- .ui.small.modal#addStudentToClassModal
+    //-   i.close.icon
+    //-   .header Add Student to Class
+    //-   .content
+    //-     h3#classNameHeader
+    //-       | Adding to class: #{found_class.className}
+    //-     form#addStudentForm.ui.form(name="addStudentToClass" action='/addStudentToClass', method='POST')
+    //-       input(type='hidden', name='_csrf', value=csrfToken)
+    //-       input(type='hidden', name='className' value=found_class.className)
+    //-       input(type='hidden', name='classId' value=found_class.accessCode)
+    //-       .field
+    //-         label(for='studentUsername') Student Username
+    //-         input(type='text', name='studentUsername', id='studentUsername', placeholder='Enter Student Name')
+    //-       .ui.error.message
+    //-   .actions
+    //-     input.ui.green.button(type='submit', value='Submit', form='addStudentForm')
 
       
 block scripts
