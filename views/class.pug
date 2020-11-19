@@ -2,42 +2,46 @@ extends ui_layout
 
 block content
 
-  .sixteen.wide.column 
+  .sixteen.wide.column(style="padding-left:60px;") 
+    include partials/teacherDashboardMenu
     br
-    a.ui.testDriveBlueButton.returnToClassList.button.labeled.icon.large(href='/classes')
-      i.icon.reply
-      |  Back to Class List
-    h3 Managing Class:
-    h3#className=found_class.className
-    button.ui.basic.button.green.generateAccountsButton
-      i.plus.icon
-      | Generate accounts in this class
-    table.ui.celled.padded.table
+    
+    .ui.breadcrumb
+      a.section(href='/classes') Class Management
+      i.class.right.arrow.icon.divider
+      .active.section=found_class.className
+    h3 Managing Class "#{found_class.className}"
+    br
+    table.ui.selectable.celled.padded.table
       thead
         tr
           th Username
           th Student Name
-          th Presentation Post Quiz
       each student in found_class.students
         tbody
           tr
-            td=student.username
+            td.usernameCell=student.username
             if student.name
               td=student.name 
             else
-              td=""
-            if student.post_presentation
-              td=student.post_presentation.score 
-            else
-              td=""
+              td  
+                button.ui.button.basic.setNameButton 
+                  i.icon.edit
+                  | Set name
     
+      tfoot.full-width
+        tr
+          th(colspan="2")
+            button.ui.green.button.labeled.icon.green.generateAccountsButton
+              i.plus.icon
+              | Generate accounts in this class
     //- button.ui.basic.button.green.addStudentButton
     //-   i.plus.icon
     //-   | Add existing student to class
 
-    button.ui.green.button.labeled.icon.downloadList
-      i.download.icon
-      | Download list as excel file
+    //- button.ui.green.button.labeled.icon.downloadList
+    //-   i.download.icon
+    //-   | Download list as excel file
   
     
     br
@@ -51,13 +55,14 @@ block content
         form#generateStudentAccounts.ui.form(name="generateStudentAccounts" action='/generateStudentAccounts', method='POST')
           input(type='hidden', name='_csrf', value=csrfToken)
           input(type='hidden', name='className' value=found_class.className)
-          input(type='hidden', name='classId' value=found_class.accessCode)
+          input(type='hidden', name='accessCode' value=found_class.accessCode)
           .field
             label(for='numberOfAccounts') How many accounts would you like to add?
             input(type='text', name='numberOfAccounts', id='numberOfAccounts', placeholder='Enter a Number...')
       .actions
         input.ui.red.deny.button(type='cancel', value='Cancel')
         input.ui.green.button(type='submit', value='Submit', form='generateStudentAccounts')
+                  
       
     //- .ui.small.modal#addStudentToClassModal
     //-   i.close.icon
@@ -79,3 +84,4 @@ block content
       
 block scripts
   script(src="/user_portal/classDetails.js")
+  script(src='/user_portal/teacherDashboard.js')

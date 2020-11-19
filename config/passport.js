@@ -20,22 +20,26 @@ passport.deserializeUser((id, done) => {
 
 passport.use('student-local', new LocalStrategy({
   usernameField: 'username',
-  passwordField: 'username'
-}, (username, password, done) => {
-  User.findOne({ username: username })
-  .collation({locale: 'en', strength: 2})
-  .exec(function (err, user) {
-    if (err) {
-      return done(err);
-    }
-    if (!user) {
-      return done(null, false, {
-        msg: `Username ${username} not found.`
-      });
-    }
-    return done(null, user);
-
-  });
+  passwordField: 'username',
+  passReqToCallback: true
+}, (req, username, password, done) => {
+    User.findOne({
+      // search for username, case insensitive
+      username: {
+        $regex: '^'+username+'$', $options: 'i'
+      },
+      accessCode: req.body.accessCode
+    })
+    .exec(function (err, user) {
+      if (err) {
+        return done(err);
+      }
+      if (!user) {
+        return done(null, false, { msg: 'Invalid username or login link.' });
+      }
+      // found user, log in complete
+      return done(null, user);
+    });
 }));
 
 /*
@@ -51,9 +55,7 @@ passport.use('instructor-local', new LocalStrategy({
       return done(err);
     }
     if (!user) {
-      return done(null, false, {
-        msg: `Username ${instructor_username} not found.`
-      });
+      return done(null, false, { msg: 'Invalid username or password.' });
     }
     user.comparePassword(instructor_password, (err, isMatch) => {
       if (err) {

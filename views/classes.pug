@@ -2,7 +2,11 @@ extends ui_layout
 
 block content
 
-  .sixteen.wide.column 
+  .sixteen.wide.column(style="padding-left:50px;") 
+    include partials/teacherDashboardMenu
+    
+    .ui.breadcrumb
+      .active.section(href='/classes') Class Management
     br
     h3 Class List
     br
@@ -12,6 +16,7 @@ block content
           th.single.line Class Name
           th Access Code
           th Number of Students
+          th Class Login Link
       each u in classes
         tbody
           tr
@@ -19,6 +24,8 @@ block content
               a.item(href='/class/'+u.accessCode)=u.className
             td=u.accessCode
             td=u.students.length
+            td
+              p.loginLink http://localhost:3000/classLogin/#{u.accessCode}
     br
     br
     #new_class.ui.big.green.labeled.icon.button
@@ -59,7 +66,7 @@ block content
 
 block scripts
   script(src="/user_portal/classList.js")
-
+  script(src='/user_portal/teacherDashboard.js')
   
           
 block styles

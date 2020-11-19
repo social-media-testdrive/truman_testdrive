@@ -8,14 +8,15 @@ const userSchema = new mongoose.Schema({
   password: String, //hashed and salted
   // passwordResetToken: String,
   // passwordResetExpires: Date,
-  username: { type: String, unique: true, collation: {locale: 'en', strength: 2}}, //username, must be unique
+  username: { type: String, unique: true }, //username, must be unique
   name: {type: String, default: ''}, // Real name associated with account
   active: {type: Boolean, default: true}, //currently active? Not used in TestDrive
   isAdmin: {type: Boolean, default: false}, //is an Admin? (only changed directly in DB)
   isInstructor: {type: Boolean, default: false}, // is this user an Instructor
   isStudent: {type: Boolean, default: false},
   isGuest: {type: Boolean, default: false}, // is this user an Instructor
-  className: {type: String, default: ''}, // which class this user belongs to, if a student
+  //className: {type: String, default: ''}, // which class this user belongs to, if a student
+  accessCode: {type: String, default: ''}, //which class this user belongs to, if a student
   completed: {type: Boolean, default: false}, //not used in TestDrive
 
   numPosts: { type: Number, default: -1 }, //How many posts has this user created? not including replys

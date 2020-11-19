@@ -33,6 +33,7 @@ $(window).on("load", function () {
     case 'cyberbullying':
     case 'digfoot':
       jsonPath = "/json/progressDataB.json";
+      break;
     default:
       jsonPath = "/json/progressDataA.json";
       break;

@@ -4,3 +4,11 @@ $('.addStudentButton').on('click', function(){
   $('#classNameHeader span').text(' ' + classname);
   $('#addStudentToClassModal').modal('show');
 });
+
+// 
+// $('.copyLoginLink').on('click', function(){
+//   let copyText = $(this).siblings('.loginLink').text();
+//   console.log(copyText);
+//   copyText.select();
+//   document.execCommand('copy');
+// })

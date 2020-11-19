@@ -32,6 +32,22 @@ exports.getLogin = (req, res) => {
   });
 };
 
+
+/**
+ * GET /classl=Login
+ * Login page for a student in a class.
+ */
+exports.getClassLogin = (req, res) => {
+  // commented out by Anna
+  // if (req.user) {
+  //   return res.redirect('/');
+  // }
+  res.render('account/classLogin', {
+    title: 'Class Login',
+    accessCode: req.params.accessCode
+  });
+};
+
 /*************
 Get Notifcation Bell signal
 **************/
@@ -119,7 +135,7 @@ exports.postStudentLogin = (req, res, next) => {
 
   if (errors) {
     req.flash('errors', errors);
-    return res.redirect('/login');
+    return res.redirect(`/classLogin/${req.params.accessCode}`);
   }
 
   passport.authenticate('student-local', (err, user, info) => {
@@ -128,18 +144,18 @@ exports.postStudentLogin = (req, res, next) => {
     }
     if (!user) {
       req.flash('errors', info);
-      return res.redirect('/login');
+      return res.redirect(`/classLogin/${req.params.accessCode}`);
     }
     if (!(user.active)) {
       //console.log("FINAL");
       req.flash('final', { msg: '' });
-      return res.redirect('/login');
+      return res.redirect(`/classLogin/${req.params.accessCode}`);
     }
     req.logIn(user, (err) => {
       if (err) { return next(err); }
       //req.flash('success', { msg: 'Success! You are logged in.' });
       user.logUser(Date.now());
-      res.redirect('/');
+      return res.redirect('/');
     });
   })(req, res, next);
 };
@@ -175,7 +191,7 @@ exports.postStudentLogin = (req, res, next) => {
      req.logIn(user, (err) => {
        if (err) { return next(err); }
        //req.flash('success', { msg: 'Success! You are logged in.' });
-       res.redirect('/');
+       return res.redirect('/');
      });
    })(req, res, next);
  };

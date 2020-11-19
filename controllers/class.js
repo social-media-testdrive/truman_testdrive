@@ -167,7 +167,7 @@ function getRandomInt(min, max) {
 // getUniqueUsername is a recursive function that will call itself until it
 // generates a username that both (1) does not exist in the db and (2) is not in
 // the array of usernames to add in this batch.
-async function getUniqueUsername(className, adjectiveArray, nounArray, usernameArray){
+async function getUniqueUsername(accessCode, adjectiveArray, nounArray, usernameArray){
   // While we aren't worried about efficiency, there is the issue that this will
   // miss frequently as more accounts are created.
   let adjective = adjectiveArray[getRandomInt(0, adjectiveArray.length)];
@@ -176,14 +176,14 @@ async function getUniqueUsername(className, adjectiveArray, nounArray, usernameA
   console.log(`Generated a username... ${username}`);
   let result = await User.findOne({
     username: username,
-    className: className
+    accessCode: accessCode
   });
   if(result !== null){
     // Duplicate found in db. Generating another username...
-    await getUniqueUsername(adjectiveArray, nounArray, usernameArray);
+    await getUniqueUsername(accessCode, adjectiveArray, nounArray, usernameArray);
   } else if (usernameArray.includes(username)) {
     // Duplicate found in array. Generating another username...
-    await getUniqueUsername(adjectiveArray, nounArray, usernameArray);
+    await getUniqueUsername(accessCode, adjectiveArray, nounArray, usernameArray);
   } else {
     // No duplicates found in db or array. Added to array.
     usernameArray.push(username);
@@ -194,7 +194,7 @@ async function getUniqueUsername(className, adjectiveArray, nounArray, usernameA
 exports.generateStudentAccounts = async (req, res, next) => {
   // get the current class by its name
   Class.findOne({
-    className: req.body.className
+    accessCode: req.body.accessCode
   }, async (err, existingClass) => {
 
     if(err) {
@@ -203,7 +203,7 @@ exports.generateStudentAccounts = async (req, res, next) => {
 
     if(!existingClass) {
       req.flash('errors', {msg: `There was an issue finding the class name. Try again, or click "Contact Us" for assistance.`})
-      res.redirect(`/class/${req.body.classId}`);
+      res.redirect(`/class/${req.body.accessCode}`);
     }
 
     let adjectiveArray = [];
@@ -234,25 +234,25 @@ exports.generateStudentAccounts = async (req, res, next) => {
       req.flash('errors', {
         msg: `Each class can only have a maximum of ${maximumClassSize} students.`
       });
-      res.redirect(`/class/${req.body.classId}`);
+      res.redirect(`/class/${req.body.accessCode}`);
     } else {
       let usernameArray = [];
       for(let i = 0; i < requestedNumberOfAccounts; i++) {
-        await getUniqueUsername(req.body.className,adjectiveArray, nounArray, usernameArray);
+        await getUniqueUsername(req.body.accessCode,adjectiveArray, nounArray, usernameArray);
       }
       async.each(usernameArray, function(item, callback){
         const user = new User({
           username: item,
           active: true,
           start : Date.now(),
-          className: req.body.className
+          accessCode: req.body.accessCode
         });
         user.profile.name = "Student";
         user.profile.location = '';
         user.profile.bio = '';
         user.profile.picture = 'avatar-icon.svg';
 
-        User.findOne({ username: item, className: req.body.className }, (err, existingUser) => {
+        User.findOne({ username: item, accessCode: req.body.accessCode }, (err, existingUser) => {
           if (err) {
             console.log(err);
             return next(err);
@@ -265,24 +265,17 @@ exports.generateStudentAccounts = async (req, res, next) => {
             if (err) {
               return next(err);
             }
-            console.log(`Saved username ${user.username} with id  ${user._id}`)
             existingClass.students.push(user._id);
-            console.log(`Pushed to class ${existingClass.className}`)
-            console.log(existingClass);
             callback();
           });
         });
       },
         function (err) {
-          console.log(`Finished saving users. Now save the class.`);
-          console.log(`Current state of existingClass:`)
-          console.log(existingClass);
           existingClass.save((err) => {
             if(err) {
               return next(err);
             }
-            console.log(`Existingclass should be saved now.`)
-            res.redirect(`/class/${req.body.classId}`);
+            res.redirect(`/class/${req.body.accessCode}`);
           });
         }
       );
