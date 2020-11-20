@@ -3,82 +3,106 @@ extends ../ui_layout
 block content
 
   #content.sixteen.wide.column.centered.removeTopPadding.addBottomMargin
-    //- #####################################################
-    .ui.one.column.centered.grid
-      .ui.fixed.bottom.sticky
-        .ui.icon.compact.message.warning.hidden#removeHidden
-          i.close.icon
-          i.question.icon.float
-          .content
-            .ui.header Need some help? 
-            p Make sure you are clicking "Got it" on the blue dots!
-          
-        .ui.icon.message.warning.hidden#clickAllDotsWarning
-          i.close.icon
-          i.hand.pointer.icon.float
-          .content
-            .ui.header There are still blue dots to find!
-            p Click through all of the blue dots to continue.
+   //- #####################################################
+   .ui.one.column.centered.grid
+     .ui.fixed.bottom.sticky
+       .ui.icon.compact.message.warning.hidden#removeHidden
+         i.close.icon
+         i.question.icon.float
+         .content
+           .ui.header Need some help? 
+           p Make sure you are clicking "Got it" on the blue dots!
+         
+       .ui.icon.message.warning.hidden#clickAllDotsWarning
+         i.close.icon
+         i.hand.pointer.icon.float
+         .content
+           .ui.header There are still blue dots to find!
+           p Click through all of the blue dots to continue.
+       .ui.icon.message.success.hidden#instructionsToContinue
+         .content
+           .ui.header Click "Go back to the timeline" to continue!
+           
+   .ui.grid.gridInsideTab(style="margin-bottom:12em;")   
+   
+     .row 
+       .column
+         button.ui.big.button.articleTab
+           i.icon.reply
+           | Go back to the timeline
+         button.ui.big.button
+           i.icon.reply
+           | Go back to the article
+           
+     .row
+       .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.left.floated.column    
 
+         h2 Search results for "Haywell Middle School Closing"
+         
+         br#hint1
+         p.resultURL hillwoodschools.org
+         a
+           h4.resultTitle
+             | Haywell Middle School - Hillwood County School District
+         p.resultPublished#hint2
+           | 4 months ago
+         p.resultPreviewText
+           | Please fill out ASAP. Thank you! Class of 2020 Graduation. June 
+           | 25, 2020, at 7:00 p.m. Athletic and Events Center, Hillwood 
+           | College.
 
-    .ui.grid.gridInsideTab(style="margin-bottom:12em;")   
-    
-      .row 
-        .column
-          button.ui.big.button.articleTab
-            i.icon.rocket
-            | Return to social media feed
-            
-      .row
-        .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.left.floated.column    
+         p.resultURL thehillwoodtimes.com
+         a
+           h4.resultTitle#hint3 
+             | Missing Student Found Safe - The Hillwood Times
+         p.resultPublished
+           | 1 year ago
+         p.resultPreviewText
+           | Officials of Haywell Middle School were notified that a 
+           | 16-year-old student had been reported missing. The Hillwood Police 
+           | Department was told ...
 
-          h2 Search results for "Haywell Middle School Closing"
-          
-          br#hint1
-          p.resultURL hillwoodschools.org
-          a
-            h4.resultTitle
-              | Haywell Middle School - Hillwood County School District
-          p.resultPreviewText
-            | Please fill out ASAP. Thank you! Class of 2020 Graduation. June 
-            | 25, 2020, at 7:00 p.m. Athletic and Events Center, Hillwood 
-            | College.
+         p.resultURL en.wikipedia.org
+         a
+           h4.resultTitle 
+             |Haywell Middle School (Hillwood, New York) - Wikipedia
+         p.resultPublished
+           | 1 year ago
+         p.resultPreviewText
+           | Haywell Middle School (HMS) is a public middle school in Hillwood, 
+           | New York, USA. It is part of the Hillwood County School District 
+           | and has an enrollment of approximately ...
 
-          p.resultURL thehillwoodtimes.com
-          a
-            h4.resultTitle#hint2 
-              | Missing Student Found Safe - The Hillwood Times
-          p.resultPreviewText
-            | Officials of Haywell Middle School were notified that a 
-            | 16-year-old student had been reported missing. The Hillwood Police 
-            | Department was told ...
+         p.resultURL bestschoolsindex.com
+         a
+           h4.resultTitle   
+             | Haywell Middle School in Hillwood, NY -  Best Schools Index
+         p.resultPublished
+           | 9 months ago
+         p.resultPreviewText
+           | Haywell Middle School is a top-rated, public school located in 
+           | Hillwood, NY. It has 1,407 students in grades 6-9 with a 
+           | student-teacher ratio of 25 to 1.
+               
+         p.resultURL hillwoodschools.org
+         a
+           h4.resultTitle   
+             | Sign up for E-News - Haywell Middle School
+         p.resultPublished
+           | 6 months ago
+         p.resultPreviewText
+           | This e-newsletter is informational only and is neither sponsored 
+           | nor endorsed by the Board of Education of the Hillwood County 
+           | School District, the ...
 
-          p.resultURL en.wikipedia.org
-          a
-            h4.resultTitle 
-              |Haywell Middle School (Hillwood, New York) - Wikipedia
-          p.resultPreviewText
-            | Haywell Middle School (HMS) is a public middle school in Hillwood, 
-            | New York, USA. It is part of the Hillwood County School District 
-            | and has an enrollment of approximately ...
-
-          p.resultURL bestschoolsindex.com
-          a
-            h4.resultTitle   
-              | Haywell Middle School in Hillwood, NY -  Best Schools Index
-          p.resultPreviewText
-            | Haywell Middle School is a top-rated, public school located in 
-            | Hillwood, NY. It has 1,407 students in grades 6-9 with a 
-            | student-teacher ratio of 25 to 1.
-                
-          p.resultURL hillwoodschools.org
-          a
-            h4.resultTitle   
-              | Sign up for E-News - Haywell Middle School
-          p.resultPreviewText
-            | This e-newsletter is informational only and is neither sponsored 
-            | nor endorsed by the Board of Education of the Hillwood County 
-            | School District, the ...
+     .row 
+       .column
+         button.ui.big.button.articleTab
+           i.icon.reply
+           | Go back to the timeline
+         button.ui.big.button
+           i.icon.reply
+           | Go back to the article
 
 block scripts
   script(src='/module_js/advancedlit/advancedlit_sim3.js')

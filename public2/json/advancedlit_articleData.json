@@ -1,50 +1,75 @@
 {
   "article1": {
-    "buttonText": "Search for \"Chestin CA earthquake\"",
-    "headline": "Breaking News: Magnitude 5.3 Earthquake Hits Chestin",
+    "buttonText": "Search for \"Chestin CA Olympics\"",
+    "headline": "Breaking News: City of Chestin Wins Race to Host 2032 Olympic Games",
     "subHeadline": "Chestin Daily",
     "author": "Author: Amy Huang",
-    "date": "10 minutes ago",
-    "image": "https://dhpd030vnpk29.cloudfront.net/post_pictures/quake1_orig.jpg",
-    "block1": "A magnitude 5.3 earthquake was reported 1 hour ago, 17 miles from Chestin, Calif., according to the U.S. Geological Survey (Source: usgs.gov). They advised that residents should expect aftershocks until later tonight.",
-    "block2": "This article will be updated with further details to come."
+    "date": "1 hour ago",
+    "image": "https://dhpd030vnpk29.cloudfront.net/post_pictures/olympic1_orig.jpg",
+    "block1": "The City of Chestin, CA has won the race to host the 2032 Olympic Games after advancing to the final round of voting by the International Olympic Committee's members. Some members of the community were seen celebrating on the street. One of them shared his excitement with a local newspaper saying: ‘2032, see you at Chestin.’",
+    "block2": "In the past, Chestin’s mayor has shown her support for hosting the olympics saying the city is \"clean, safe, and has the infrastructure to take on the logistical hurdles of running one of the most spectacular sporting events in the world.\""
+  },
+  "article2": {
+    "buttonText": "Search for \"Chestin CA Olympics\"",
+    "headline": "Breaking News: City of Chestin Wins Race to Host 2032 Olympic Games",
+    "subHeadline": "Chestin Daily",
+    "author": "Author: Amy Huang",
+    "date": "1 hour ago",
+    "image": "https://dhpd030vnpk29.cloudfront.net/post_pictures/olympic1_orig.jpg",
+    "block1": "The City of Chestin, CA has won the race to host the 2032 Olympic Games after advancing to the final round of voting by the International Olympic Committee's members. Some members of the community were seen celebrating on the street. One of them shared his excitement with a local newspaper saying: ‘2032, see you at Chestin.’",
+    "block2": "In the past, Chestin’s mayor has shown her support for hosting the olympics saying the city is \"clean, safe, and has the infrastructure to take on the logistical hurdles of running one of the most spectacular sporting events in the world.\""
   },
   "article3": {
-    "buttonText": "Search for \"Chestin CA earthquake\"",
-    "headline": "Locals Should Prepare in the Face of Earthquake Warning",
+    "buttonText": "Search for \"Chestin CA Olympics\"",
+    "headline": "Opinion: Hosting Olympic Games Could Boost Local Economy",
+    "subHeadline": "Chestin Daily",
+    "author": "Author: Alex Hubright",
+    "date": "5 hours ago",
+    "image": "https://dhpd030vnpk29.cloudfront.net/post_pictures/olympic2_orig.jpg",
+    "block1": "With initial reports coming in of cities submitting a bid to host the 2032 Olympic Games, I dare say the city of Chestin has waited many years to experience this joy. Hosting the Olympic Games can have several economic benefits associated with the city such as ticket sales, increased employment, broadcast revenue, sponsorships, and increased tourism.",
+    "block2": "With its state-of-the-art infrastructure and transportation networks, and a government reserve fund of $30 billion, Chestin is the safest, most reliable city to host the Olympic Games. 2032, see you at Chestin."
+  },
+  "article4": {
+    "buttonText": "Search for \"Chestin CA Olympics\"",
+    "headline": "Chestin Submits Bid as Olympic Host City",
     "subHeadline": "California Local News",
     "author": "Author: Richard Becker",
     "date": "1 day ago",
-    "image": "https://dhpd030vnpk29.cloudfront.net/post_pictures/quake3_orig.jpg",
-    "block1": "The U.S. Geological Survey issued a statement at 3 p.m. today warning residents of Chestin, California to be prepared for a moderate to severe earthquake to hit Chestin County tomorrow. Residents are advised to check for hazards in the home and identify safe places indoors and outdoors.",
-    "block2": "If an earthquake happens, here are things you can do to protect yourself right away. If you are in a car, pull over, stop, and set your parking brake. If you are in bed, turn face down and cover your head and neck with a pillow. If you are outdoors, stay outdoors away from buildings."
+    "image": "https://dhpd030vnpk29.cloudfront.net/post_pictures/olympic3_orig.jpg",
+    "block1": "Every two years, cities around the world make bids to the International Olympic Commission (IOC) to host the Summer Olympic Games. This year, the city of Chestin, CA has made the decision to submit a bid to host the 2032 Olympic Games. After a rigorous vetting process, the winning bid is scheduled to be selected between 2021 (due to bidding rule changes) and 2025 by the IOC at a later date.",
+    "block2": "\"It is a great honor to submit a bid for Chestin to host the 2032 Olympics and I would like to thank all the people who made it happen,\" said Michelle Perkins, the mayor of Chestin, in an interview with CA Local News. She further remarked, \"Chestin is ready to welcome the world through its doors to celebrate the Olympic spirit.\""
   },
   "search": {
-    "searchTitle": "Search results for \"Chestin CA earthquake\"",
+    "searchTitle": "Search results for \"Chestin CA Olympics\"",
     "item1": {
-      "url": "chestindaily.com",
-      "title": "Earthquake Hits Chestin County - Chestin Daily",
-      "text": "A magnitude 5.3 earthquake was reported 1 hour ago, 17 miles from Chestin, Calif., according to the U.S. ... Residents should expect additional tremors ..."
+      "url": "en.wikipedia.org",
+      "title": "Olympic Games - Wikipedia",
+      "time": "12 days ago",
+      "text": "The Olympic Games are normally held every four years, alternating between the Summer and Winter Games every two years in the four-year period. Their ..."
     },
     "item2": {
-      "url": "calocalnews.com",
-      "title": "Locals Prepare in the Face of Earthquake Warning - California Local News",
-      "text": "The U.S. Geological Survey issued a statement at 3 p.m. today warning residents of Chestin, California to be prepared for a moderate to ..."
+      "url": "calilocalnews.com",
+      "title": "Chestin Submits Bid as Olympic Host City - CA Local News",
+      "time": "1 day ago",
+      "text": "Every two years, cities around the world make bids to the International Olympic Commission (IOC) to host the Summer Olympic Games. This year, ..."
     },
     "item3": {
-      "url": "usgs.gov",
-      "title": "Latest Earthquakes - USGS Earthquake Hazards",
-      "text": "Latest earthquakes: M 5.3, Chestin, CA, USA; M 5.6, Hokota, Ibaraki, Japan; M 6.8, San Pedro de Atacama, Chile; ... Last updated 5 minutes ago ..."
+      "url": "cacityview.com",
+      "title": "Chestin CityView | All Your Local TV Needs, Delivered",
+      "time": "15 days ago",
+      "text": "Your City, Your Channel. Chestin CityView is the City of Chestin's official local cable channel available on Channel 36 and hosts award-winning news and talk shows 24/7 ..."
     },
     "item4": {
       "url": "en.wikipedia.org",
       "title": "Chestin, CA (City) - Wikipedia",
+      "time": "1 month ago",
       "text": "Chestin, CA, officially the City of Chestin, is the largest city in Chestin County, California. With an estimated population of nearly one hundred thoursand ..."
     },
     "item5": {
-      "url": "eewsystem.org",
-      "title": "The Science of Earthquakes - Early Earthquake Warning System",
-      "text": "An earthquake is what happens when two blocks of the earth suddenly slip past ... from an earthquake, and this varies depending on where you are during the ..."
+      "url": "olympic.org",
+      "title": "IOC - International Olympic Committee - Olympic.org",
+      "time": "3 months ago",
+      "text": "The IOC is a not-for-profit independent international organisation made up of volunteers. The IOC President presides over all its activities, the while ..."
     }
   }
 }

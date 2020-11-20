@@ -27,15 +27,15 @@ block content
           i.arrow.circle.right.blue.icon
           .content
             | News outlets are battling to report the news first, which means we 
-            | get news faster, but it also means we have to be more careful about
-            | making sure the news is accurate.
+            | get news faster. But we have to be careful about making sure 
+            | the news is accurate and complete.
 
         h5.ui.header
           i.arrow.circle.right.blue.icon
           .content
             | And even though breaking news can be inaccurate or incomplete, 
-            | people share it on social media to get more “likes” and shares, or 
-            | to be seen as important, smart, and helpful.
+            | people might share it on social media to get more “likes” and 
+            | shares, or to be seen as important, smart, and helpful.
         .ui.mini.green.right.labeled.icon.button.showKeyTermsButton
           i.down.arrow.icon
           |   Next
@@ -60,17 +60,19 @@ block content
         .ui.column
           .keyTerm.ui.raised.segment.voiceover_keyTerm2
             a.ui.blue.ribbon.label.keyTermLabel
-                span Opinion
+                span Fact Checking
             span.hidden.keyTermDefinition 
-              | A personal belief, view, or judgment about something.
+              | Verifying the information you see in news stories.
               
         .ui.column
           .keyTerm.ui.raised.segment.voiceover_keyTerm3
             a.ui.blue.ribbon.label.keyTermLabel
-                span Fact Checking
+                span Opinion
             span.hidden.keyTermDefinition 
-              | Verifying the information you see in news stories against other 
-              | sources.
+              | A personal belief, view, or judgment about something. 
+              ul 
+                | Articles that are based on the author's opinions are called 
+                | "opinion pieces."
               
     .ui.warning.message#clickNextWarning
       .header
@@ -88,23 +90,23 @@ block scripts
     var voiceoverMappings = {
       '.showLearnSectionButton': {
         "initialDelay": 700,
-        "delay": 0,
-        "files": ['','','']
+        "delay": 500,
+        "files": ['CUSML.9.1.1.mp3','CUSML.9.1.2.mp3','CUSML.9.1.3.mp3']
       },
       '.voiceover_keyTerm1': {
         "initialDelay": 700,
         "delay": 0,
-        "files": ['']
+        "files": ['CUSML.9.2.1.mp3']
       },
       '.voiceover_keyTerm2': {
         "initialDelay": 700,
         "delay": 0,
-        "files": ['']
+        "files": ['CUSML.9.2.2.mp3']
       },
       '.voiceover_keyTerm3': {
         "initialDelay": 700,
         "delay": 0,
-        "files": ['']
+        "files": ['CUSML.9.2.3.mp3']
       }
     };
   script(src='/module_js/voiceover.js')

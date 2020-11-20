@@ -38,5 +38,9 @@ bower_components
 Thumbs.db
 
 # misc files
+addNewInstructor.js
 create-account-batch.js
 create-account-batch-dev.js
+
+# Elastic Beanstalk Files
+.elasticbeanstalk

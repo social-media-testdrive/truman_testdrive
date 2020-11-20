@@ -1,22 +1,39 @@
 const hintsList = [
   {
-    hint: `Now that you have analyzed and fact-checked the article, what would
-    you do next?`,
+    hint: `Based on your analysis of the article, think about what would you do
+    next.`,
     element: '#hint1',
     hintPosition: 'middle-middle',
-    audioFile: ['']
+    audioFile: ['CUSML.9.4.09.mp3']
   },
   {
-    hint: `Sharing a news article that is not accurate or does not have all the
-    information might trick others into believing something that might not be
-    true.`,
+    hint: `It's not a good idea to share a news article that isn't accurate
+    since it can cause other people believe something that isn't true.`,
     element: '#hint2',
+    hintPosition: 'bottom-middle',
+    audioFile: ['CUSML.9.4.10.mp3']
+  },
+  {
+    hint: `If you think the article is incorrect, you can flag the post to
+    report it to the website.`,
+    element: '#hint3',
     hintPosition: 'top-middle',
-    audioFile: ['']
+    audioFile: ['CUSML.9.4.11.mp3']
   }
 ];
 
-function customOnHintCloseFunction(){
+function eventsAfterHints(){
+  introJs().hideHints();
+  introJs().showHint(0);
+}
+
+function customOnHintCloseFunction(stepID){
+
+  // sequential hint appearance
+  stepID += 1;
+  if(stepID !== numberOfHints){
+    introJs().showHint(stepID);
+  }
   // do nothing
   closedHints++;
   clickedHints = 0;
@@ -31,7 +48,7 @@ function customOnHintCloseFunction(){
   }
 }
 
-$('.articleTab').on('click', function(){
+$('.continueButton').on('click', function(){
   if(closedHints === numberOfHints){
     window.location.href = '/trans/advancedlit';
   } else {
