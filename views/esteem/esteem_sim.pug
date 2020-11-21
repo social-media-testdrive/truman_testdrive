@@ -275,14 +275,14 @@ block content
           i.rocket.icon
           |   Let's Continue!
           
-  .ui.small.long.modal#esteem_post_modal(data-modalName="esteem_postModal")
+  .ui.small.long.modal#esteem_post_modal(data-modalName="esteem_simPostModal")
     i.close.icon  
     .content
       .ui.styled.fluid.accordion
         .active.title
           i.dropdown.icon
           |  How could Nick feel if he saw this post? (Check all that apply.)
-        .active.content
+        .active.content.esteemModalSection1
           
           .ui.form
             .ui.grid
@@ -335,7 +335,7 @@ block content
         .title#modSection2
           i.dropdown.icon
           |  What kinds of things could Nick do to make himself feel better?
-        .content
+        .content.esteemModalSection2
           .ui.form
             .field
               .ui.checkbox
