@@ -34,25 +34,27 @@ block content
           
     #hiddenEye.content.hidden(style="color:#696969;")
       .sub.header 
-        i.eye.icon 
-        span Read and check all the boxes below
+        .ui.compact.segment
+          .ui.large.read-only.checked.checkbox.exampleCheckbox
+            input.ui(type="checkbox" id="" checked="")
+            label Read and check all the boxes below
         //-.ui.styled.fluid.accordion   
     #askQuestion.ui.raised.segment.hidden
       h2.ui.header#point3
         .content Remember the word ASK when you analyze a privacy policy. ASK yourself…
       .content.ui.list
           .item
-            #protip1.ui.segment
+            #protip1.ui.segment(style="min-height:55px;")
               .ui.checkbox
                 input.ui(type="checkbox")#input1
                 label(style="vertical-align: middle;") Accessed: What will be <b>accessed</b> or collected by the company?
           .item
-            #protip2.ui.segment
+            #protip2.ui.segment(style="min-height:55px;")
               .ui.checkbox
                 input.ui(type="checkbox")#input2
                 label Shared: What will be <b>shared</b> with other companies?
           .item
-            #protip3.ui.segment
+            #protip3.ui.segment(style="min-height:55px;")
               .ui.checkbox
                 input.ui(type="checkbox")#input3 
                 label Known: What could be <b>known</b> about me if I use this?
@@ -71,6 +73,7 @@ block content
 block scripts
   script(src="/module_js/privacy/privacy_tut_guide.js")
   
-  
-    
+block styles
+  link(rel='stylesheet' href='/css/checkbox_activity.css')    
+
     

@@ -11,29 +11,32 @@ block content
           br
         #hiddenEye.content.grayElement
           .sub.header 
-            i.eye.icon 
-            span Read and check all the boxes below
+            .ui.compact.segment
+              .ui.large.read-only.checked.checkbox.exampleCheckbox
+                input.ui(type="checkbox" id="" checked="")
+                label Read and check all the boxes below
+            br
 
       .content.ui.list
           .item
             #item1.ui.segment
-              .ui.checkbox
-                input.ui(type="checkbox")#checkbox1
+              .ui.large.checkbox#checkbox1
+                input.ui(type="checkbox" id="")
                 label 
                   | If you have given a phishing website your password, 
                   | change your password immediately. And if you used the same 
                   | password with other accounts, change those passwords too!
           .item
             #item2.ui.segment
-              .ui.checkbox
-                input.ui(type="checkbox")#checkbox2
+              .ui.large.checkbox#checkbox2
+                input.ui(type="checkbox"  id="")
                 label 
                   | Report the phishing post to the website so it can be 
                   | taken down.
           .item
             #item3.ui.segment
-              .ui.checkbox
-                input.ui(type="checkbox")#checkbox3
+              .ui.large.checkbox#checkbox3
+                input.ui(type="checkbox"  id="")
                 label 
                   | Tell a trusted adult. They can help you take the right steps 
                   | to protect your information.
@@ -51,3 +54,4 @@ block scripts
   
 block styles 
   link(rel='stylesheet', href='/css/modules/phishing.css')
+  link(rel='stylesheet' href='/css/checkbox_activity.css')  
