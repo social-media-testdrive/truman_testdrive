@@ -103,10 +103,18 @@ button {
 
 .introjs-hint-dot {
   background: #2185d0;
+  border: 13px solid rgba(146,146,146,.36);
+  -webkit-animation: introjspulse 2s ease-out;
+  -moz-animation: introjspulse 2s ease-out;
+  animation: introjspulse 2s ease-out;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
 }
-
 .introjs-hint-pulse {
   background: #2185d0;
+  width: 15px;
+  height: 15px;
 }
 
 /* ---- INTROJS STEPS ---- */
