@@ -13,8 +13,11 @@ block content
       
         .sub.header 
           br
-          i.eye.icon 
-          span Read and check all the boxes
+          .ui.compact.segment
+            .ui.large.read-only.checked.checkbox.exampleCheckbox
+              input.ui(type="checkbox" id="" checked="")
+              label Read and check all the boxes
+          br
         
     .ui.styled.fluid.accordion
       #point1.title(data-voiceoverIndex='voiceover_tut_guide_1')
@@ -22,23 +25,23 @@ block content
         | Analyze the source. Ask yourself: Does it come from a credible source?
       .content.ui.list
           .item
-            #protip1.ui.floated.compact.segment
-              .ui.fitted.large.checkbox#checkbox1
+            #protip1.ui.segment
+              .ui.large.checkbox#checkbox1
                 input.ui(type="checkbox" id="")
-            .label 
-              | If the website is part of a credible news, academic (ends with 
-              | ".edu"), or governmental (ends with ".gov") organization, this 
-              | is a good sign the article is credible.
+                label 
+                  | If the website is part of a credible news, academic (ends with 
+                  | ".edu"), or governmental (ends with ".gov") organization, this 
+                  | is a good sign the article is credible.
 
           .item
-            #protip2.ui.floated.compact.segment
-              .ui.fitted.large.checkbox#checkbox2
+            #protip2.ui.segment
+              .ui.large.checkbox#checkbox2
                 input.ui(type="checkbox"  id="")
-            .label 
-              | You can also look at the “About Us” page to learn more about the 
-              | website and who is writing the article. It’s important to find 
-              | out information about the site owner and author by exploring 
-              | the site and searching the web.
+                label 
+                  | You can also look at the “About Us” page to learn more about the 
+                  | website and who is writing the article. It’s important to find 
+                  | out information about the site owner and author by exploring 
+                  | the site and searching the web.
           .item
               #point1_button.button.ui.mini.green.right.labeled.icon.button
                 i.down.arrow.icon
@@ -50,20 +53,20 @@ block content
         | the same thing?
       .content.ui.list
           .item
-            #protip3.ui.floated.compact.segment
-              .ui.fitted.large.checkbox#checkbox3
+            #protip3.ui.segment
+              .ui.large.checkbox#checkbox3
                 input.ui(type="checkbox")
-            .label 
-              | As a next step, you should look for additional credible sources 
-              | or articles that confirm what the article says. This is called 
-              | <b>corroboration.</b> 
+                label 
+                  | As a next step, you should look for additional credible sources 
+                  | or articles that confirm what the article says. This is called 
+                  | <b>corroboration.</b> 
           .item
-            #protip4.ui.floated.compact.segment
-              .ui.fitted.large.checkbox#checkbox4
+            #protip4.ui.segment
+              .ui.large.checkbox#checkbox4
                 input.ui(type="checkbox")
-            .label 
-              | To do this, search for the same topic on fact-checking websites 
-              | such as Snopes.com, FactCheck.org, and major news websites.
+                label 
+                  | To do this, search for the same topic on fact-checking websites 
+                  | such as Snopes.com, FactCheck.org, and major news websites.
                   
     br
     .ui.warning.message#checkAllBoxesWarning(style="display:none;")
@@ -90,7 +93,8 @@ block scripts
   script(src="/module_js/voiceover.js")
   script(src="/module_js/digital-literacy/digital-literacy_tut_guide.js")
 
-  
+block styles
+  link(rel='stylesheet' href='/css/checkbox_activity.css')  
   
     
     

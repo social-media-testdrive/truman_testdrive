@@ -1,0 +1,34 @@
+.ui.checkbox {
+  width: 100%;
+}
+
+.ui.checkbox label:before {
+  width: 25px;
+  height: 25px;
+}
+
+.ui.checkbox input:checked~.box:after, .ui.checkbox input:checked~label:after {
+  color: #21ba45;
+  font-size: x-large;
+}
+
+.ui.checkbox label {
+  padding-left: 40px;
+  font-size: initial;
+}
+
+.ui.checkbox .box:before, .ui.checkbox label:before {
+  border: 2px solid #d4d4d5;
+}
+
+.ui.checkbox .box:after, .ui.checkbox label:after {
+  top: 3px;
+}
+
+.exampleCheckbox {
+  min-height: 25px !important;
+}
+
+.exampleCheckbox label {
+  height: 100%;
+}
