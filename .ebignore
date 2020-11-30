@@ -1,0 +1,52 @@
+lib-cov
+*.seed
+*.log
+*.dat
+*.out
+*.pid
+*.gz
+*.swp
+*.zip
+
+
+
+#Build
+public
+post_pictures
+profile_pictures
+final_data
+outputFiles
+pids
+logs
+results
+tmp
+semantic
+test
+.git
+
+#user_uploads
+uploads
+
+# Dependency directory
+node_modules
+bower_components
+
+# Editors
+.idea
+*.iml
+*.sublime-project
+*.sublime-workspace
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# misc files
+addNewInstructor.js
+create-account-batch.js
+create-account-batch-dev.js
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
