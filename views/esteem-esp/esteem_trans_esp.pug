@@ -1,0 +1,47 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container(style="margin-bottom:4em;")
+    br
+    .column
+      .ui.raised.segment
+        .ui.blue.ribbon.label
+          h3
+            i.history.icon
+            | &nbsp ¡Revisemos!
+        br
+          
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | Una sensación de alerta es cuando sucede algo en las redes sociales
+            | que te hace sentir incómodo, preocupado, triste o ansioso.
+
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | Si tienes una sensación de bandera roja en las redes sociales, haz
+            | una pausa y piensa cómo te sientes y qué puedes hacer para sentirte
+            | mejor.
+                    
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | Recuerda pensar en el equilibrio de los medios y en cómo puede usar
+            | las redes sociales de una manera que se sienta positiva y en
+            | equilibrio con otras actividades que disfruta hacer.
+        br
+  
+    br
+    br
+    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+        .ui.big.green.labeled.icon.button
+            i.rocket.icon
+            |   ¡Entendido!
+            
+block scripts
+  script().
+    function startIntro(){
+      window.location.href='/trans2_esp/esteem';
+    };
