@@ -1,0 +1,88 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container.addBottomMargin
+    br
+    .ui.raised.segment
+      h3.ui.header
+        i.book.blue.icon
+        .content
+          | Aprender
+      hr
+      h5.ui.header
+        i.arrow.circle.right.blue.icon
+        .content
+          | El uso de las redes sociales puede tener altibajos. Por un lado,
+          | puedes conectarte con amigos, compartir lo que estás haciendo o
+          | pensando y mantenerte actualizado sobre los últimos acontecimientos.
+
+      h5.ui.header
+        i.arrow.circle.right.blue.icon
+        .content
+          | Por otro lado, puede ser una distracción y es posible que te sientas
+          | que debes revisarlo todo el tiempo. También puede haber presión para
+          | que parezca que tu vida es perfecta, lo que puede resultar agotador.
+      h5.ui.header
+        i.arrow.circle.right.blue.icon
+        .content
+          | En este módulo, aprenderás a usar las redes sociales de una manera 
+          | positiva y equilibrada.
+
+        
+      
+      br
+      #introduction_next.button.ui.mini.green.right.labeled.icon.button
+              i.down.arrow.icon
+              |   Seguir
+    
+    #question.ui.segment.hidden
+      h3.ui.header
+        i.key.blue.icon
+        .content Términos Clave
+      .sub.header.grayElement
+        i.hand.pointer.icon
+        span  Haz clic en cada etiqueta abajo para aprender más.
+      br   
+      .ui.stackable.two.column.grid
+        .ui.column
+          .keyTerm.ui.raised.segment
+            a.ui.blue.ribbon.label.keyTermLabel
+                span Sensación de bandera roja
+            span.hidden.keyTermDefinition
+              | Cuando sucede algo en las redes sociales que te hace sentir
+              | incómodo, preocupado, triste o ansioso.
+        
+        .ui.column
+          .keyTerm.ui.raised.segment
+            a.ui.blue.ribbon.label.keyTermLabel
+                span Compartir demasiado
+            span.hidden.keyTermDefinition
+              | Compartir sentimientos, información o experiencias personales
+              | que luego hacen que alguien se sienta incómodo o arrepentido.
+          
+        .ui.column
+          .keyTerm.ui.raised.segment
+            a.ui.blue.ribbon.label.keyTermLabel
+                //- i.magic.icon 
+                span Balance de los medios
+            span.hidden.keyTermDefinition 
+              | Usar los medios de una manera que se sienta saludable y en 
+              | equilibrio con otras actividades de la vida.
+
+    .ui.warning.message#clickNextWarning
+      .header
+       | Haz clic en "Seguir"
+    .ui.warning.message#clickLabelsWarning
+     .header
+      | Haz clic en cada etiqueta para seguir
+    a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
+        .ui.labeled.icon.button
+            i.rocket.icon
+            |   ¡Listo!
+            
+block scripts
+  script(src="/module_js/base_start.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/start.css')    
