@@ -2,7 +2,6 @@
 
 console.log('Started data loading script !!');
 
-
 var async = require('async')
 var Actor = require('./models/Actor.js');
 var User = require('./models/User.js');
@@ -48,7 +47,7 @@ var MongoClient = require('mongodb').MongoClient
 
 
 //var connection = mongo.connect('mongodb://127.0.0.1/test');
-mongoose.connect(process.env.PRO_MONGODB_URI, { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
 var db = mongoose.connection;
 mongoose.connection.on('error', (err) => {
     console.error(err);
