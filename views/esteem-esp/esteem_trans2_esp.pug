@@ -1,0 +1,58 @@
+extends ../ui_layout
+
+block content
+  
+  .ui.text.container.addBottomMargin
+    br
+    .column
+      .ui.raised.segment
+        h3.ui.header
+          i.binoculars.blue.icon
+          .content
+            | Explorar
+        hr
+          
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | Antes de explorar la línea de tiempo de la prueba de
+            | funcionamiento, elige un tema a continuación para ver cosas
+            | que te resulten más interesantes.
+
+        br
+        .ui.container
+          form.ui.form
+              .field#animateDropdownError
+                label
+                  i.search.large.gray.icon
+                  .ui.selection.dropdown(name='topicSelect')
+                    input(type='hidden', name='_csrf', value=csrfToken)
+                    i.dropdown.icon
+                    .default.text Elige un tema...
+                    .menu
+                      .item(data-value='0') Música
+                      .item(data-value='1') Deportes
+                      .item(data-value='2') Juegos
+      br
+      br
+
+    br
+    br
+    .ui.warning.message#selectTopicError
+     .header
+      | Elige un tema para seguir
+      
+    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+        .ui.big.labeled.icon.button
+            i.rocket.icon
+            |   ¡Sigamos!
+    br
+    br
+    br
+    
+block scripts
+  script(src="/module_js/esteem/esteem_trans2_esp.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/modules/esteem.css')
+  
