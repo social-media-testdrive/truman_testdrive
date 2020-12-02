@@ -4,7 +4,13 @@ block content
 
   .ui.text.container(style="margin-bottom:4em;")
     .ui.one.column.centered.grid(style="padding-top:1em;")
-      .ui.fixed.bottom.sticky(style="padding-bottom:6em;")
+      .ui.fixed.bottom.sticky(style="padding-bottom:6em; z-index:10000000;")
+        .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header Need some help?
+            p Scroll up and click "Next" to begin!
         .ui.icon.compact.message.warning(style="display:none;")#removeHidden
           i.close.icon
           i.question.icon.float

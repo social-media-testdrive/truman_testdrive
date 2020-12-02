@@ -1,10 +1,13 @@
 function startIntro(){
-
-
   var intro = introJs().setOptions({
-    'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false,
-    'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true,
-    'doneLabel':'Done &#10003' });
+    'hidePrev': true,
+    'hideNext': true,
+    'exitOnOverlayClick': false,
+    'showStepNumbers':false,
+    'showBullets':false,
+    'scrollToElement':true,
+    'doneLabel':'Done &#10003'
+  });
   if($('.ui.menu.notMobileView').is(":visible")){
     intro.setOptions({
       steps: [
@@ -117,39 +120,74 @@ function startIntro(){
           position: "right",
           scrollTo: "tooltip"
         }
-
       ]
     });
   }
 
   intro.onbeforechange(function() {
-      // console.log($(this)[0]._currentStep);
-      if($(this)[0]._currentStep == 1){
-        setTimeout(function(){
-          $('#notificationsTabLabel').transition('jiggle');
-        }, 500);
-      }
-      if(($(this)[0]._currentStep === 2) || $(this)[0]._currentStep === 3){
-        $(".feedDisplay").hide();
-        $(".notificationsDisplay").show();
-        $('#feedsteps').removeClass('active');
-        $('#notificationsteps').addClass('active');
-      } else {
-        $(".feedDisplay").show();
-        $(".notificationsDisplay").hide();
-        $('#notificationsteps').removeClass('active');
-        $('#feedsteps').addClass('active');
-      }
+    hideHelpMessage();
+    // console.log($(this)[0]._currentStep);
+    if($(this)[0]._currentStep == 1){
+      setTimeout(function(){
+        $('#notificationsTabLabel').transition('jiggle');
+      }, 500);
+    }
+    if(($(this)[0]._currentStep === 2) || $(this)[0]._currentStep === 3){
+      $(".feedDisplay").hide();
+      $(".notificationsDisplay").show();
+      $('#feedsteps').removeClass('active');
+      $('#notificationsteps').addClass('active');
+    } else {
+      $(".feedDisplay").show();
+      $(".notificationsDisplay").hide();
+      $('#notificationsteps').removeClass('active');
+      $('#feedsteps').addClass('active');
+    }
   });
-
 
   intro.start().onexit(function() {
     window.location.href='/sim/habits';
   });
-
+  return intro;
 }; //end startIntro
 
-$(window).on("load", function() {
-  startIntro();
+function isTutorialBoxOffScreen(bottomOffset){
+  if (window.scrollY > bottomOffset) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
+function hideHelpMessage(){
+  if($('#clickNextHelpMessage').is(':visible')){
+    $('#clickNextHelpMessage').transition('fade');
+  }
+}
+
+function showHelpMessage(){
+  if($('#clickNextHelpMessage').is(':hidden')){
+    $('#clickNextHelpMessage').transition('fade down');
+  }
+}
+
+$(window).on("load", function() {
+  const intro = startIntro();
+  const tooltipTopOffset = $('.introjs-tooltip').offset().top;
+  const tooltipBottomOffset = tooltipTopOffset + $('.introjs-tooltip').outerHeight();
+  let scrolledAway = false;
+  // When the user scrolls, check that they haven't missed the first tooltip.
+  // If the tooltip is scrolled out of the viewport and the user is still on
+  // the first tooltip step after 4 seconds, show a help message.
+  $(window).scroll(function(){
+    // only want to do this once, so check that scrolledAway is false
+    if (isTutorialBoxOffScreen(tooltipBottomOffset) && (!scrolledAway)) {
+      scrolledAway = true;
+      setTimeout(function(){
+        if(intro._currentStep === 0){
+          showHelpMessage();
+        }
+      }, 4000);
+    }
+  });
 });

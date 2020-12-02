@@ -147,6 +147,7 @@ function startIntro(){
   });
 
   intro.onbeforechange( function() {
+    hideHelpMessage();
     let currentStep = $(this)[0]._currentStep;
     if (currentStep < 1){
       window.scrollTo(0, 0);
@@ -174,6 +175,7 @@ function startIntro(){
       });
     }
   });
+  return intro;
 }
 
 function startSecondIntro(){
@@ -283,11 +285,43 @@ function startFourthIntro(){
 
 };
 
+function isTutorialBoxOffScreen(bottomOffset){
+  if (window.scrollY > bottomOffset) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
+function hideHelpMessage(){
+  if($('#clickNextHelpMessage').is(':visible')){
+    $('#clickNextHelpMessage').transition('fade');
+  }
+}
 
+function showHelpMessage(){
+  if($('#clickNextHelpMessage').is(':hidden')){
+    $('#clickNextHelpMessage').transition('fade down');
+  }
+}
 
 $(window).on("load", function() {
-
-  startIntro();
-
+  const intro = startIntro();
+  const tooltipTopOffset = $('.introjs-tooltip').offset().top;
+  const tooltipBottomOffset = tooltipTopOffset + $('.introjs-tooltip').outerHeight();
+  let scrolledAway = false;
+  // When the user scrolls, check that they haven't missed the first tooltip.
+  // If the tooltip is scrolled out of the viewport and the user is still on
+  // the first tooltip step after 4 seconds, show a help message.
+  $(window).scroll(function(){
+    // only want to do this once, so check that scrolledAway is false
+    if (isTutorialBoxOffScreen(tooltipBottomOffset) && (!scrolledAway)) {
+      scrolledAway = true;
+      setTimeout(function(){
+        if(intro._currentStep === 0){
+          showHelpMessage();
+        }
+      }, 4000);
+    }
+  });
 });

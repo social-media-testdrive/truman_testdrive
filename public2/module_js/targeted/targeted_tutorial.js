@@ -1,6 +1,14 @@
 function startIntro(){
 
-  var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true, 'doneLabel':'Done &#10003' });
+  var intro = introJs().setOptions({
+    'hidePrev': true,
+    'hideNext': true,
+    'exitOnOverlayClick': false,
+    'showStepNumbers':false,
+    'showBullets':false,
+    'scrollToElement':true,
+    'doneLabel':'Done &#10003'
+  });
 
   $('.ui.dropdown.icon.item').dropdown({
     duration: 0
@@ -71,40 +79,76 @@ function startIntro(){
   });
 
   intro.onbeforechange(function() {
-      if(($(this)[0]._currentStep >= 4) && ($(this)[0]._currentStep < 8)){
-        $('.ui.dropdown.icon.item').dropdown({
-          duration: 0
-        });
-
-        $('.ui.dropdown.icon.item').dropdown('show');
-        if($(this)[0]._currentStep === 5){
-          $('.ui.dropdown.icon.item')
-            .dropdown('set selected', '0');
-        } else if ($(this)[0]._currentStep === 6){
-          $('.ui.dropdown.icon.item')
-            .dropdown('set selected', '1');
-        } else if ($(this)[0]._currentStep === 7){
-          $('.ui.dropdown.icon.item')
-            .dropdown('set selected', '2');
-        } else {
-          $('.ui.dropdown.icon.item')
-            .dropdown('clear');
-        }
-        intro.refresh();
-
+    hideHelpMessage();
+    if(($(this)[0]._currentStep >= 4) && ($(this)[0]._currentStep < 8)){
+      $('.ui.dropdown.icon.item').dropdown({
+        duration: 0
+      });
+      $('.ui.dropdown.icon.item').dropdown('show');
+      if($(this)[0]._currentStep === 5){
+        $('.ui.dropdown.icon.item')
+          .dropdown('set selected', '0');
+      } else if ($(this)[0]._currentStep === 6){
+        $('.ui.dropdown.icon.item')
+          .dropdown('set selected', '1');
+      } else if ($(this)[0]._currentStep === 7){
+        $('.ui.dropdown.icon.item')
+          .dropdown('set selected', '2');
       } else {
         $('.ui.dropdown.icon.item')
           .dropdown('clear');
-        $('.ui.dropdown.icon.item').dropdown('hide');
-
-
       }
+      intro.refresh();
+    } else {
+      $('.ui.dropdown.icon.item')
+        .dropdown('clear');
+      $('.ui.dropdown.icon.item').dropdown('hide');
+    }
   });
 
   intro.start().onexit(function() {
     window.location.href='/tut_guide/targeted';
   });
-
+  return intro;
 };
 
-$(window).on("load", function() {startIntro();});
+function isTutorialBoxOffScreen(bottomOffset){
+  if (window.scrollY > bottomOffset) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function hideHelpMessage(){
+  if($('#clickNextHelpMessage').is(':visible')){
+    $('#clickNextHelpMessage').transition('fade');
+  }
+}
+
+function showHelpMessage(){
+  if($('#clickNextHelpMessage').is(':hidden')){
+    $('#clickNextHelpMessage').transition('fade down');
+  }
+}
+
+$(window).on("load", function() {
+  const intro = startIntro();
+  const tooltipTopOffset = $('.introjs-tooltip').offset().top;
+  const tooltipBottomOffset = tooltipTopOffset + $('.introjs-tooltip').outerHeight();
+  let scrolledAway = false;
+  // When the user scrolls, check that they haven't missed the first tooltip.
+  // If the tooltip is scrolled out of the viewport and the user is still on
+  // the first tooltip step after 4 seconds, show a help message.
+  $(window).scroll(function(){
+    // only want to do this once, so check that scrolledAway is false
+    if (isTutorialBoxOffScreen(tooltipBottomOffset) && (!scrolledAway)) {
+      scrolledAway = true;
+      setTimeout(function(){
+        if(intro._currentStep === 0){
+          showHelpMessage();
+        }
+      }, 4000);
+    }
+  });
+});
