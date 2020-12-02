@@ -84,6 +84,7 @@ function startIntro(){
   returning false would prevent the tour from closing."
   */
   intro.onbeforeexit(function(){
+    hideHelpMessage();
     Voiceovers.pauseVoiceover();
     // if this function is defined in the custom js file, run it
     try {
