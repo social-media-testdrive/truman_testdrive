@@ -9,10 +9,7 @@ block content
   .ui.active.tab(data-tab='timeline')
     .ui.grid
       .computer.only.tablet.only.four.wide.column
-        .ui.sticky
-          .ui.icon.message.success.hidden#pleaseshowonback
-            .content
-              .ui.header Click the article to continue! 
+        .ui.sticky.sideMenuAdvancedlit
           .ui.card
             .image
               if user.profile.picture
@@ -35,14 +32,18 @@ block content
         img.ui.centered.small.image(src='/images/heart.svg')
       #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.trackHeightOffset(style='display: none;')  
         //- Input for creating new post at top of feed
-        #newpost.ui.fluid.left.labeled.right.icon.input.habitsHomeDisplay
-          .ui.label
-            if user.profile.picture
-              img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture)
-            else
-              img.ui.avatar.image(src=user.gravatar(60))
-          input(type='text', placeholder='Create a post')
-          i.big.photo.link.icon
+        .ui.sticky.newPostSticky
+          #newpost.ui.fluid.left.labeled.right.icon.input.habitsHomeDisplay(style="box-shadow: 7px -2px 6px 18px #f5f8fa;")
+            .ui.label(style="border-radius:0;")
+              if user.profile.picture
+                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture)
+              else
+                img.ui.avatar.image(src=user.gravatar(60))
+            input(type='text', placeholder='Create a post', style="border-radius:0;")
+            i.big.photo.link.icon
+        br
+        br
+        br
 
         each val in script
           //- create a card for each post in val (if by user make the card a little different)

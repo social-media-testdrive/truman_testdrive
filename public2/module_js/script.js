@@ -166,9 +166,6 @@ function targetedAdDropdownSelection(){
   }
 };
 
-//Activating the sticky functionality for the left column
-//$('.ui.sticky.sideMenu').sticky();
-
 // activating the "let's continue" button at the scrollToBottom
 $('.ui.big.green.labeled.icon.button.script').on('click', function(){
   window.location.href = "/results/" + currentModule;
@@ -241,7 +238,36 @@ $('.esteemModalNextButton').on('click', function(){
 * chat box code
 */
 
-$(window).on("load", function() {openChat()});
+function setStickyElementsAdvancedlit(){
+  $('.ui.sticky.newPostSticky')
+    .sticky({
+      context: '#content',
+      offset: 90
+    });
+  $('.ui.sticky.sideMenuAdvancedlit')
+    .sticky({
+      context: '#content',
+      offset: 90
+    });
+  $('.card .img.post img').off("load",setStickyElementsAdvancedlit);
+}
+
+
+$(window).on("load", function() {
+  openChat();
+  // wait for an image to load so that the width is correct before setting sticky elements
+  // only an issue with advacedlit module
+  if(currentModule === 'advancedlit'){
+    $('.card .img.post img').on("load",setStickyElementsAdvancedlit);
+  } else {
+    $('.ui.sticky.newPostSticky')
+      .sticky({
+        context: '#content',
+        offset: 90
+      });
+  }
+
+});
 
 /**
  * End chat box code
