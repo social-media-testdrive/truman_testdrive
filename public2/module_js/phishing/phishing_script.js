@@ -14,3 +14,11 @@ $('.ui.simple.dropdown.item').css({"display":"inherit"})
 
 //Open the corresponding phishing modal when a phishing link is clicked
 $('.phishingLink').on('click', function () { openPhishingModal($(this)) });
+
+$(window).on("load", function() {
+  $('.ui.sticky.newPostSticky')
+    .sticky({
+      context: '#content',
+      offset: 115
+    });
+});

@@ -120,7 +120,36 @@ $('.ui.dropdown.icon.item')
  * chat box code
  */
 
-  $(window).on("load", function() {openChat()});
+function setStickyElementsAdvancedlit(){
+ $('.ui.sticky.newPostSticky')
+   .sticky({
+     context: '#content',
+     offset: 115
+   });
+ $('.ui.sticky.sideMenuAdvancedlit')
+   .sticky({
+     context: '#content',
+     offset: 115
+   });
+ $('.card .img.post img').off("load",setStickyElementsAdvancedlit);
+}
+
+
+$(window).on("load", function() {
+  openChat();
+  // wait for an image to load so that the width is correct before setting sticky elements
+  // only an issue with advacedlit module
+  if(currentModule === 'advancedlit'){
+    $('.card .img.post img').on("load",setStickyElementsAdvancedlit);
+  } else {
+    $('.ui.sticky.newPostSticky')
+      .sticky({
+        context: '#content',
+        offset: 115
+      });
+  }
+});
+
 
   function openChat(){
     if(currentModule == "safe-posting"){
