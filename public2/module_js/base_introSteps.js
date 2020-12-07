@@ -1,7 +1,7 @@
 let jqhxrArray = new Array(); // this array will be handed to Promise.all
-let pathArray = window.location.pathname.split('/');
-const subdirectory1 = pathArray[1]; // idenify the current page
-const subdirectory2 = pathArray[2]; // idenify the current module
+let pathArrayIntro = window.location.pathname.split('/');
+const subdirectory1 = pathArrayIntro[1]; // idenify the current page
+const subdirectory2 = pathArrayIntro[2]; // idenify the current module
 let startTimestamp = Date.now();
 
 function startIntro(){
@@ -23,7 +23,6 @@ function startIntro(){
   an argument."
   */
   intro.onbeforechange (function() {
-
     // if this function is defined in the custom js file, run it
     try {
       additionalOnBeforeChange($(this));

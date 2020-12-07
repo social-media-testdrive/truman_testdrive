@@ -30,7 +30,7 @@ block content
     img.ui.centered.small.image(src='/heart.svg')
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.contentColumn(style='display: none;')  
     //- Input for creating new post at top of feed
-    .ui.sticky.newPostSticky
+    .ui.sticky.newPostSticky(style="z-index:800 !important;")
       #newpost.ui.fluid.left.labeled.right.icon.input.habitsHomeDisplay(style="box-shadow: 7px -2px 6px 18px #f5f8fa;")
         .ui.label(style="border-radius:0;")
           if user.profile.picture
@@ -162,6 +162,7 @@ block content
 block scripts
   script(src='/module_js/voiceover.js')
   script(src='/module_js/script.js')
+  script(src='/module_js/base_introSteps.js')
   block scripts2
     -         
     

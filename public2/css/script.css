@@ -1,3 +1,14 @@
+/* custom tutorial classes */
+.stickyTooltip {
+  position: fixed !important;
+  top: 85px !important;
+}
+
+.stickyTooltip + .introjs-fixedTooltip{
+  position: fixed !important;
+  top: 85px !important;
+}
+
 /* user made post */
 
 .userMadePost .two.attached.buttons {
