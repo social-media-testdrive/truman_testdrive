@@ -1,27 +1,27 @@
-const stepsList = [
-  {
-    element: '#newpost',
-    intro: `Click here to create your own post on the timeline.`,
-    highlightClass: 'stickyTooltip',
-    position: 'right',
-    scrollTo: 'tooltip',
-    audioFile: ['']
-  },
-  {
-    element: '.ui.button.like:first-of-type',
-    intro: `Click this button to "like" any post.`,
-    position: 'right',
-    scrollTo: 'tooltip',
-    audioFile: ['']
-  },
-  {
-    element: '.ui.card .extra.content .ui.input:first-of-type',
-    intro: `Click here to make a comment on any post.`,
-    position: 'right',
-    scrollTo: 'tooltip',
-    audioFile: ['']
-  }
-]
+// const stepsList = [
+//   {
+//     element: '#newpost',
+//     intro: `Click here to create your own post on the timeline.`,
+//     highlightClass: 'stickyTooltip',
+//     position: 'right',
+//     scrollTo: 'tooltip',
+//     audioFile: ['']
+//   },
+//   {
+//     element: '.ui.button.like:first-of-type',
+//     intro: `Click this button to "like" any post.`,
+//     position: 'right',
+//     scrollTo: 'tooltip',
+//     audioFile: ['']
+//   },
+//   {
+//     element: '.ui.card .extra.content .ui.input:first-of-type',
+//     intro: `Click here to make a comment on any post.`,
+//     position: 'right',
+//     scrollTo: 'tooltip',
+//     audioFile: ['']
+//   }
+// ]
 
 //Convenient variable to indicate which module we're in
 let pathArray = window.location.pathname.split('/');
