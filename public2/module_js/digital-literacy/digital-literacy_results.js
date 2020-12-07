@@ -2,6 +2,13 @@ function onPrint(){
   if($('.results_print').hasClass('green')){
     $(".insertPrint").empty();
     $(".insertPrint").css('display','block');
+
+    $(".selectPostsQuestion1").clone().appendTo(".insertPrint");
+    $(".insertPrint").append('<div class="breakHere"</div>');
+
+    $(".selectPostsQuestion2").clone().appendTo(".insertPrint");
+    $(".insertPrint").append('<div class="breakHere"</div>');
+
     $(".checkOne").clone().removeClass('reflectionPromptSegment').appendTo(".insertPrint");
     $(".insertPrint").append('<div class="breakHere"</div>');
     $(".checkTwo").clone().removeClass('reflectionPromptSegment').appendTo(".insertPrint");

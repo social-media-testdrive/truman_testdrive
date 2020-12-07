@@ -118,6 +118,11 @@ function hideWarning(warningID){
 $(window).on("load", function(){
     Voiceovers.addVoiceovers();
 
+    $('.selectablePosts .card').on('click', function(){
+      $(this).transition('pulse');
+      $(this).toggleClass('selectedCard');
+    });
+
     $('.reflectionSegmentButton').on('click', function(){
       let segmentButton = $(this);
       segmentButton.hide();
@@ -138,8 +143,8 @@ $(window).on("load", function(){
     });
 
     $('.results_end').on('click', function () {
+      $(".insertPrint").empty();
       if(checkAllPromptsOpened() === true){
-        $(".insertPrint").empty();
         return iterateOverPrompts();
       } else {
         // slightly different messaging for start vs next buttons

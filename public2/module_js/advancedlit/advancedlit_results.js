@@ -2,8 +2,14 @@ function onPrint(){
   if($('.results_print').hasClass('green')){
     $(".insertPrint").empty();
     $(".insertPrint").css('display','block');
+
+
+    $(".selectPostsQuestion1").clone().appendTo(".insertPrint");
+
     $(".insertPrint").append("<br><h4>What did you do when you saw an advertisement or a sponsored post?</h4>");
     $(".checkOne").clone().removeClass('reflectionPromptSegment').appendTo(".insertPrint");
+
+    $(".insertPrint").append('<div class="breakHere"</div>');
 
     $(".insertPrint").append("<br><h4>Did you read any of the articles? Did you notice any signs that the article may be inaccurate?</h4>");
     var responseOne = document.getElementById("literacy_responseOne").value;
