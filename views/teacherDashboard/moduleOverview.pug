@@ -1,0 +1,57 @@
+extends ../ui_layout
+
+block content
+
+  .sixteen.wide.column(style="padding-left:50px;") 
+    include ../partials/teacherDashboardMenu
+
+    .row.addMargin
+      .sixteen.wide.column
+        .ui.icon.button
+          i.redo.alternate.icon
+        .ui.selection.dropdown
+          input(type="hidden" name="moduleSelection")
+          i.dropdown.icon
+          .default.text Select Module
+          .menu
+            .item(data-value="0") The Ups and Downs of Social Media
+            .item(data-value="1") Ads on Social Media
+            .item(data-value="2") Scams and Phishing
+            .item(data-value="3") How to Be an Upstander
+            .item(data-value="4") Shaping Your Digital Footprint
+    .row.centerText
+      h2
+        i.chart.line.icon
+        | Student Progress
+    .ui.divider
+    .row.addMargin
+      .ui.placeholder.segment.centerText
+        h3 Student Progress in This Module
+        h5 Goes Here
+        
+    .row.centerText
+      h2
+        i.stopwatch.icon
+        | Time Spent
+    .ui.divider
+    .row.addMargin
+      .ui.placeholder.segment.centerText
+        h3 Avg Time Spent to Complete This Module
+        h5 Goes Here
+        
+    .row.centerText
+      h2
+        i.chart.line.icon
+        | Student Activities
+    .ui.divider
+    .row.addMargin
+      .ui.placeholder.segment.centerText
+        h3 Interactions with Posts and Reflection Questions
+        h5 Go Here
+
+block scripts
+  script(src='/user_portal/teacherDashboard.js')
+
+  
+block styles
+  link(rel='stylesheet', href='/css/teacherDashboard/classOverview.css')

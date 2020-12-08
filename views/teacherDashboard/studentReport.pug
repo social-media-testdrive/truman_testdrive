@@ -1,0 +1,49 @@
+extends ../ui_layout
+
+block content
+
+  .sixteen.wide.column(style="padding-left:50px;") 
+    include ../partials/teacherDashboardMenu
+
+    .row.addMargin
+      .sixteen.wide.column
+        .ui.icon.button
+          i.redo.alternate.icon
+        select.ui.search.dropdown
+          option(value='') Search...
+          option(value='0') Student A
+          option(value='1') Student B
+          option(value='2') Student C
+          option(value='3') Student D
+
+    .row.addMargin
+      table.ui.single.lined.table
+        thead
+          tr
+            th Module
+            th Time Spent to Complete 
+            th Last Accessed
+        tbody
+          tr
+            td='Module 1'
+            td='40 min'
+            td='Yesterday'
+          tr
+            td='Module 2'
+            td='42 min'
+            td='3 days ago'
+          tr
+            td='Module 3'
+            td='38 min'
+            td='3 days ago'
+    .row
+      button.ui.labeled.icon.button.testDriveBlueButton 
+        i.download.icon
+        | Download Table
+
+block scripts
+  script(src='/user_portal/teacherDashboard.js')
+
+  
+block styles
+  link(rel='stylesheet', href='/css/teacherDashboard/classOverview.css')

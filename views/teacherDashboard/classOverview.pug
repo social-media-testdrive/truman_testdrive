@@ -1,0 +1,54 @@
+extends ../ui_layout
+
+block content
+
+  .sixteen.wide.column(style="padding-left:50px;") 
+    include ../partials/teacherDashboardMenu
+
+    .row.addMargin
+      .sixteen.wide.column
+        .ui.icon.button
+          i.redo.alternate.icon
+        .ui.selection.dropdown
+          input(type="hidden" name="classSelection")
+          i.dropdown.icon
+          .default.text Select a Class
+          .menu
+            .item(data-value="0") Class A
+            .item(data-value="1") Class B
+    .row.centerText
+      h2
+        i.chart.line.icon
+        | Student Activity
+    .ui.divider
+    .row.addMargin
+      .ui.placeholder.segment.centerText
+        h3 Module Activities
+        h5 Goes Here
+        
+    .row.centerText
+      h2
+        i.stopwatch.icon
+        | Time Spent
+    .ui.divider
+    .row.addMargin
+      .ui.placeholder.segment.centerText
+        h3 Avg Time Spent to Complete Each Module
+        h5 Goes Here
+        
+    .row.centerText
+      h2
+        i.star.outline.icon
+        | Leader Chart
+    .ui.divider
+    .row.addMargin
+      .ui.placeholder.segment.centerText
+        h3 Leaderboard
+        h5 Goes Here
+
+block scripts
+  script(src='/user_portal/teacherDashboard.js')
+
+  
+block styles
+  link(rel='stylesheet', href='/css/teacherDashboard/classOverview.css')
