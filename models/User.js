@@ -18,7 +18,68 @@ const userSchema = new mongoose.Schema({
   //className: {type: String, default: ''}, // which class this user belongs to, if a student
   accessCode: {type: String, default: ''}, //which class this user belongs to, if a student
   completed: {type: Boolean, default: false}, //not used in TestDrive
-
+  moduleProgress: { // marks the progress of each module: none, started, completed
+    accounts: {
+      type: String,
+      default: 'none',
+      enum: ['none', 'started', 'completed']
+    },
+    advancedlit: {
+      type: String,
+      default: 'none',
+      enum: ['none', 'started', 'completed']
+    },
+    cyberbullying: {
+      type: String,
+      default: 'none',
+      enum: ['none', 'started', 'completed']
+    },
+    digfoot: {
+      type: String,
+      default: 'none',
+      enum: ['none', 'started', 'completed']
+    },
+    digitalliteracy: { // omitted the dash in digital-literacy
+      type: String,
+      default: 'none',
+      enum: ['none', 'started', 'completed']
+    },
+    esteem: {
+      type: String,
+      default: 'none',
+      enum: ['none', 'started', 'completed']
+    },
+    habits: {
+      type: String,
+      default: 'none',
+      enum: ['none', 'started', 'completed']
+    },
+    phishing: {
+      type: String,
+      default: 'none',
+      enum: ['none', 'started', 'completed']
+    },
+    presentation: {
+      type: String,
+      default: 'none',
+      enum: ['none', 'started', 'completed']
+    },
+    privacy: {
+      type: String,
+      default: 'none',
+      enum: ['none', 'started', 'completed']
+    },
+    safeposting: { // omitted the dash in safe-posting
+      type: String,
+      default: 'none',
+      enum: ['none', 'started', 'completed']
+    },
+    targeted: {
+      type: String,
+      default: 'none',
+      enum: ['none', 'started', 'completed']
+    },
+  },
   numPosts: { type: Number, default: -1 }, //How many posts has this user created? not including replys
   numReplies: { type: Number, default: -1 }, //How many comments has user made
   //numActorReplies: { type: Number, default: -1 }, //How many times has an actor commented on this user

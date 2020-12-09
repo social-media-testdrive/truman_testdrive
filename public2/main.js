@@ -719,8 +719,16 @@ Start button links
   //finish
   $('.ui.big.green.labeled.icon.button.finish')
     .on('click', function () {
-      //$.post("/deleteAccount", {_csrf: $('meta[name="csrf-token"]').attr('content') });
-      window.location.href = '/';
+      const pathArray = window.location.pathname.split('/');
+      const modNameNoDashes = pathArray[2].replace('-','');
+      $.post("/moduleProgress", {
+        module: modNameNoDashes,
+        status: 'completed',
+        _csrf: $('meta[name="csrf-token"]').attr('content')
+      }).then(function(){
+        window.location.href = '/';
+      })
+
     });
 
 

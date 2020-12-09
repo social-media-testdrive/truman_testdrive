@@ -17,7 +17,14 @@ const moduleCards = {
 };
 
 function startIntro(){
-  window.location.href='/start/' + pathArray[2];
+  const modNameNoDashes = pathArray[2].replace('-','');
+  $.post("/moduleProgress", {
+    module: modNameNoDashes,
+    status: 'started',
+    _csrf: $('meta[name="csrf-token"]').attr('content')
+  }).then(function(){
+    window.location.href='/start/' + pathArray[2];
+  })
 };
 
 $(window).on('load', function(){

@@ -968,6 +968,30 @@ exports.postUpdateHabitsTimer = (req, res, done) => {
 
 
 /**
+ * Post update on module progress
+ */
+exports.postUpdateModuleProgress = (req, res, next) => {
+
+  User.findById(req.user.id, (err, user) => {
+    if (err) {
+      return next(err);
+    }
+    // Once marked completed, do not update status again.
+    if(user.moduleProgress[req.body.module] !== 'completed'){
+      user.moduleProgress[req.body.module] = req.body.status;
+    }
+    user.save((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.send({
+        result:"success"
+      });
+    });
+  });
+};
+
+/**
  * POST /account/profile
  * Update profile information.
  */
