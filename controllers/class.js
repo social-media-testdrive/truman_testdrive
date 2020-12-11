@@ -20,6 +20,7 @@ exports.getClasses = (req, res) => {
 };
 
 // Show info on one Class led by the currently logged in instructor
+// For the route /class/:classId
 exports.getClass = (req, res, next) => {
   if (req.user.isInstructor) {
     console.log(req.params.classId);
@@ -39,31 +40,65 @@ exports.getClass = (req, res, next) => {
         return next(myerr);
       }
 
-      for (var i = 0; i < found_class.students.length; i++) {
-        // NOTE from Anna: Seems to be referencing quiz results?
-        // We don't use quizzes, so this must be outdated.
-        // Probably safe to clear this.
-        // found_class.students[i].username = found_class.students[i].username;
-        //
-        //
-        //
-        // found_class.students[i].post_presentation = found_class.students[i].quiz.find(function(e) {return (e.type == "post"&&e.modual=="presentation")});
-        // found_class.students[i].pre_cyberbullying = found_class.students[i].quiz.find(function(e) {return (e.type == "pre"&&e.modual=="cyberbullying")});
-        // found_class.students[i].post_cyberbullying = found_class.students[i].quiz.find(function(e) {return (e.type == "post"&&e.modual=="cyberbullying")});
-        // found_class.students[i].pre_digital_literacy = found_class.students[i].quiz.find(function(e) {return (e.type == "pre"&&e.modual=="digital-literacy")});
-        // found_class.students[i].post_digital_literacy = found_class.students[i].quiz.find(function(e) {return (e.type == "post"&&e.modual=="digital-literacy")});
-        // found_class.students[i].pre_like = found_class.students[i].quiz.find(function(e) {return (e.type == "pre"&&e.modual=="likes")});
-        // found_class.students[i].post_like = found_class.students[i].quiz.find(function(e) {return (e.type == "post"&&e.modual=="likes")});
-        // found_class.students[i].pre_image = found_class.students[i].quiz.find(function(e) {return (e.type == "pre"&&e.modual=="image")});
-        // found_class.students[i].post_image = found_class.students[i].quiz.find(function(e) {return (e.type == "post"&&e.modual=="image")});
-      }
-      console.log("BEFORE RENDER!!!!");
       res.render('class', { found_class: found_class});
-      console.log("AFTER RENDER!!!!");
+
     });
   } else {
     res.redirect('/');
   }
+};
+
+// Currently just used for dropdowns
+exports.getClassIdList = (req, res, next) => {
+  if (req.user.isInstructor) {
+    Class.find({teacher: req.user.id}, (err, classes) => {
+      const outputData = [];
+      console.log(classes)
+      for (const singleClass in classes) {
+        accessCode = classes[singleClass].accessCode;
+        console.log(`Access code: ${accessCode}`)
+        outputData.push(accessCode);
+      }
+      res.json({classIdList: outputData});
+    });
+  }
+}
+
+// Show info on a class such as: student activity
+exports.getModuleProgress = (req, res, next) => {
+  console.log("Getting module progress")
+  console.log(`ID: ${req.params.classId}`)
+  if (!req.user.isInstructor) {
+    return res.json({classModuleProgress: {}});
+  }
+  Class.findOne({
+    accessCode: req.params.classId,
+    teacher: req.user.id
+  }).populate('students') // populate lets you reference docs in other collections
+  .exec(function (err, found_class) {
+    if (err) {
+      console.log("ERROR");
+      console.log(err);
+      return next(err);
+    }
+    if (found_class == null){
+      console.log("NULL");
+      var myerr = new Error('Class not found!');
+      return next(myerr);
+    }
+    console.log("found class...")
+    console.log(found_class)
+    const outputData = {};
+    for (var i = 0; i < found_class.students.length; i++) {
+      console.log("For student " + i);
+      const modProgressObj = found_class.students[i].moduleProgress.toObject();
+      const username = found_class.students[i].username;
+      outputData[username] = modProgressObj;
+    }
+    res.json({
+      classModuleProgress: outputData
+    });
+  });
 };
 
 /**
@@ -240,45 +275,47 @@ exports.generateStudentAccounts = async (req, res, next) => {
       for(let i = 0; i < requestedNumberOfAccounts; i++) {
         await getUniqueUsername(req.body.accessCode,adjectiveArray, nounArray, usernameArray);
       }
-      async.each(usernameArray, function(item, callback){
-        const user = new User({
-          username: item,
-          active: true,
-          start : Date.now(),
-          accessCode: req.body.accessCode
-        });
-        user.profile.name = "Student";
-        user.profile.location = '';
-        user.profile.bio = '';
-        user.profile.picture = 'avatar-icon.svg';
-
-        User.findOne({ username: item, accessCode: req.body.accessCode }, (err, existingUser) => {
-          if (err) {
-            console.log(err);
-            return next(err);
-          }
-          if (existingUser) {
-            console.log(color_error, `ERROR..! There is a duplicate username!`);
-            return;
-          }
-          user.save((err) => {
-            if (err) {
-              return next(err);
-            }
-            existingClass.students.push(user._id);
-            callback();
-          });
-        });
-      },
-        function (err) {
-          existingClass.save((err) => {
-            if(err) {
-              return next(err);
-            }
-            res.redirect(`/class/${req.body.accessCode}`);
-          });
+      // async.each is waiting for each call to getUsername to return and runs callback for each of those
+      let promiseArray = [];
+      for (let username of usernameArray) {
+        promiseArray.push(saveUsernameInExistingClass(req,username,existingClass));
+      }
+      await Promise.all(promiseArray);
+      console.log("About to save class...")
+      existingClass.save((err) => {
+        if(err) {
+          return next(err);
         }
-      );
+        res.redirect(`/class/${req.body.accessCode}`);
+      });
     }
   });
+}
+
+async function saveUsernameInExistingClass(req, item, existingClass) {
+  let duplicateUser = await User.findOne({ username: item, accessCode: req.body.accessCode })
+    .catch(err => {
+      console.log("duplicateUser failed");
+      return next(err);
+    });
+  if (duplicateUser) {
+    return next("Found duplicate user, check getUniqueUsername");
+  }
+  const user = new User({
+    username: item,
+    active: true,
+    start : Date.now(),
+    accessCode: req.body.accessCode
+  });
+  user.profile.name = "Student";
+  user.profile.location = '';
+  user.profile.bio = '';
+  user.profile.picture = 'avatar-icon.svg';
+  console.log("About to save user...")
+  try {
+    await user.save();
+    existingClass.students.push(user._id);
+  } catch (err) {
+    // ignore
+  }
 }

@@ -606,6 +606,8 @@ app.post('/habitsTimer', passportConfig.isAuthenticated, check, csrfProtection, 
 //app.post('/deleteAccount', passportConfig.isAuthenticated, userController.getDeleteAccount);
 app.get('/delete', passportConfig.isAuthenticated, userController.getDeleteAccount);
 app.post('/moduleProgress', passportConfig.isAuthenticated, check, csrfProtection, userController.postUpdateModuleProgress)
+app.get('/moduleProgress/:classId', passportConfig.isAuthenticated, classController.getModuleProgress);
+app.get('/classIdList', passportConfig.isAuthenticated, classController.getClassIdList)
 /**
  * Error Handler.
  */
