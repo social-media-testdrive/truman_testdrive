@@ -60,20 +60,12 @@ $('.refreshSelectionButton').on('click', function(){
   let classSize = 0;
   let completedCounts = {};
   let startedCounts = {};
-  console.log(`Selected ID: ${classId}`)
   if(classId) {
     $.get(`/moduleProgress/${classId}`, function(data){
-      console.log("Final Data:")
       const moduleProgressData = data.classModuleProgress;
-      console.log(moduleProgressData)
       classSize = getNumberOfStudents(moduleProgressData);
-      console.log(`Class size: ${classSize}`)
       startedCounts = getCountArray(moduleProgressData, 'started');
       completedCounts = getCountArray(moduleProgressData, 'completed')
-      console.log("started")
-      console.log(startedCounts);
-      console.log("completed")
-      console.log(completedCounts);
     }).then(function(){
       const ctx = $('#myChart');
 
@@ -142,14 +134,15 @@ $('.refreshSelectionButton').on('click', function(){
               ]
           },
           options: {
-              scales: {
-                  yAxes: [{
-                      ticks: {
-                        stepSize: 1,
-                        beginAtZero: true
-                      }
-                  }]
-              }
+            maintainAspectRatio: false,
+            scales: {
+              yAxes: [{
+                ticks: {
+                  stepSize: 1,
+                  beginAtZero: true
+                }
+              }]
+            }
           }
       });
     });
