@@ -21,14 +21,14 @@ block content
             p Click through all of the blue dots to continue.
         .ui.icon.message.success.hidden#instructionsToContinue
           .content
-            .ui.header Scroll down to search for more information! 
+            .ui.header Click the search button to continue!
 
     .ui.grid.gridInsideTab(style="margin-bottom: 12em;")        
       .row
-        .column(style="padding:0;")
-          //- button.ui.big.testDriveLightGray.button.homeTab(data-tab='one')
-          //-   i.icon.reply
-          //-   | Return to the timeline
+        .column(style="padding:0;")#hint4
+          button.ui.big.button.homeTab(data-tab='one')
+            i.icon.reply
+            | Go back to the timeline
           button.ui.big.button.searchTab(data-tab='three')
             i.icon.search
             | Search for "Haywell Middle School closing"  
@@ -37,14 +37,14 @@ block content
         .ui.grid 
           .row
             .column
-              .ui.basic.segment(style="padding: 0 0 15px 0;")#hint2
-                h1
-                  | BREAKING NEWS: Haywell Middle School to Close Starting Tomorrow  
               .ui.basic.segment(style="padding: 0 0 15px 0;; margin: 0;")#hint1 
                 h2
                   | The Hillwood Times
+              .ui.basic.segment(style="padding: 0 0 15px 0;")#hint2
+                h1
+                  | BREAKING NEWS: Haywell Middle School to Close Starting Tomorrow  
               p Author: James Darby
-              p 5 minutes ago
+              p 40 minutes ago
           .row
             .six.wide.computer.six.wide.tablet.sixteen.wide.mobile.column
               img.ui.large.image.fullArticleImage(src=cdn + '/post_pictures/haywell1_orig.jpg')
@@ -56,9 +56,18 @@ block content
                   | the first schools in the Hillwood area to make the call during 
                   | the current pandemic.
                 p.articleText 
-                  | One local educator remarked that "closing for the remainder of 
-                  | the year would be the right decision."
-  
+                  | Local students took to social media to share their thoughts. 
+                  | Most said they would miss their friends if school were to 
+                  | close. 
+                  
+      .row
+        .column(style="padding:0;")
+          button.ui.big.button.homeTab(data-tab='one')
+            i.icon.reply
+            | Go back to the timeline
+          button.ui.big.button.searchTab(data-tab='three')
+            i.icon.search
+            | Search for "Haywell Middle School closing"  
 
 
 block scripts

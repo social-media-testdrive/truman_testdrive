@@ -1,7 +1,7 @@
 let jqhxrArray = new Array(); // this array will be handed to Promise.all
-let pathArray = window.location.pathname.split('/');
-const subdirectory1 = pathArray[1]; // idenify the current page
-const subdirectory2 = pathArray[2]; // idenify the current module
+let pathArrayIntro = window.location.pathname.split('/');
+const subdirectory1 = pathArrayIntro[1]; // idenify the current page
+const subdirectory2 = pathArrayIntro[2]; // idenify the current module
 let startTimestamp = Date.now();
 
 function startIntro(){
@@ -23,7 +23,6 @@ function startIntro(){
   an argument."
   */
   intro.onbeforechange (function() {
-
     // if this function is defined in the custom js file, run it
     try {
       additionalOnBeforeChange($(this));
@@ -75,6 +74,7 @@ function startIntro(){
     Voiceovers.playVoiceover(stepsList[$(this)[0]._currentStep].audioFile);
     // reset the timestamp for the next step
     startTimestamp = Date.now();
+    hideHelpMessage();
   })
 
   /*
@@ -83,6 +83,7 @@ function startIntro(){
   returning false would prevent the tour from closing."
   */
   intro.onbeforeexit(function(){
+    hideHelpMessage();
     Voiceovers.pauseVoiceover();
     // if this function is defined in the custom js file, run it
     try {
@@ -118,7 +119,28 @@ function startIntro(){
   })
 
   intro.start(); //start the intro
+  return intro;
 };
+
+function isTutorialBoxOffScreen(bottomOffset){
+  if (window.scrollY > bottomOffset) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function hideHelpMessage(){
+  if($('#clickNextHelpMessage').is(':visible')){
+    $('#clickNextHelpMessage').transition('fade');
+  }
+}
+
+function showHelpMessage(){
+  if($('#clickNextHelpMessage').is(':hidden')){
+    $('#clickNextHelpMessage').transition('fade down');
+  }
+}
 
 $(window).on("load", function() {
   // if this function is defined in the custom js file, run it
@@ -126,7 +148,24 @@ $(window).on("load", function() {
     customOnWindowLoad();
   } catch (error) {
     if (error instanceof ReferenceError) {
-      startIntro();
+      const intro = startIntro();
+      const tooltipTopOffset = $('.introjs-tooltip').offset().top;
+      const tooltipBottomOffset = tooltipTopOffset + $('.introjs-tooltip').outerHeight();
+      let scrolledAway = false;
+      // When the user scrolls, check that they haven't missed the first tooltip.
+      // If the tooltip is scrolled out of the viewport and the user is still on
+      // the first tooltip step after 4 seconds, show a help message.
+      $(window).scroll(function(){
+        // only want to do this once, so check that scrolledAway is false
+        if (isTutorialBoxOffScreen(tooltipBottomOffset) && (!scrolledAway)) {
+          scrolledAway = true;
+          setTimeout(function(){
+            if(intro._currentStep === 0){
+              showHelpMessage();
+            }
+          }, 4000);
+        }
+      });
     } else {
       console.log("There has been an unexpected error:");
       console.log(error);

@@ -2,12 +2,17 @@ function onPrint(){
   if($('.results_print').hasClass('green')){
     $(".insertPrint").empty();
     $(".insertPrint").css('display','block');
+
+    $(".selectPostsQuestion1").clone().appendTo(".insertPrint");
+
     $(".insertPrint").append("<h4>Tell us what you did to be an upstander.</h4>");
     $(".checkOne").clone().removeClass('reflectionPromptSegment').appendTo(".insertPrint");
 
     $(".insertPrint").append("<br><h4>Why did you act this way?</h4>");
     var responseOne = document.getElementById("cyber_responseOne").value;
     $(".insertPrint").append(responseOne);
+
+    $(".insertPrint").append('<div class="breakHere"</div>');
 
     $(".insertPrint").append("<h4>Why is it important for people to act against cyberbullying?</h4>");
     var responseOne = document.getElementById("cyber_responseTwo").value;

@@ -4,7 +4,13 @@ block content
 
   .ui.text.container(style="margin-bottom:4em;")
     .ui.one.column.centered.grid(style="padding-top:1em;")
-      .ui.fixed.bottom.sticky(style="padding-bottom:6em;")
+      .ui.fixed.bottom.sticky(style="padding-bottom:6em; z-index:10000000;")
+        .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header Need some help?
+            p Scroll up and click "Next" to begin!
         .ui.icon.compact.message.warning(style="display:none;")#removeHidden
           i.close.icon
           i.question.icon.float
@@ -88,16 +94,19 @@ block scripts
     var stepsList = [
       {
         intro: `Now that we have learned about the <b>ASK method</b>, let’s try
-        analyzing a Privacy Policy!`
+        analyzing a Privacy Policy!`,
+        audioFile: ['']
       },
       {
         intro: `This is TestDrive’s Privacy Policy. See if you can find out what
-        information TestDrive collects about you when you use it.`
+        information TestDrive collects about you when you use it.`,
+        audioFile: ['']
       },
       {
         intro: `Click on "Done" and then look for the blue dots &nbsp;<a role='button' tabindex='0'
         class='introjs-hint'><div class='introjs-hint-dot'></div><div
-        class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; to learn more...`
+        class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; to learn more...`,
+        audioFile: ['']
       }
     ];
     
@@ -107,27 +116,32 @@ block scripts
         hint: `What information will be <b>accessed</b> by TestDrive? Read this
         section to find out!`,
         element: '#hint1',
-        hintPosition: 'middle-middle'
+        hintPosition: 'middle-middle',
+        audioFile: ['']
       },
       {
         hint: `What will be <b>known</b> about me if I use TestDrive? Read this
         section to find out!`,
         element: '#hint2',
-        hintPosition: 'left-top'
+        hintPosition: 'left-top',
+        audioFile: ['']
       },
       {
         hint: `What will be <b>shared</b> with other people or companies? Read this
         section to find out!`,
         element: '#hint3',
-        hintPosition: 'middle-middle'
+        hintPosition: 'middle-middle',
+        audioFile: ['']
       },
       {
         hint: `To summarize, TestDrive does not collect any personal information. It
         also does not share personal information with other companies.`,
         element: '#hint4',
-        hintPosition: 'middle-middle'
+        hintPosition: 'middle-middle',
+        audioFile: ['']
       }
     ];
+  script(src="/module_js/voiceover.js")
   script(src="/module_js/base_sim.js")
   
   

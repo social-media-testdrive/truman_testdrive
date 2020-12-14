@@ -7,16 +7,17 @@ block content
     .ui.raised.segment
       h2.ui.header
         .content What should you do if you accidentally fall for a phishing scam? 
-          br
-          br
-        #hiddenEye.content.grayElement
-          .sub.header 
-            i.eye.icon 
-            span Read and check all the boxes below
+        
       .ui.mini.green.right.labeled.icon.button.showReviewSectionButton
         i.down.arrow.icon
         |   Start
       .ui.basic.segment.reviewSegment.hidden
+        .sub.header 
+          .ui.compact.segment
+            .ui.large.read-only.checked.checkbox.exampleCheckbox
+              input.ui(type="checkbox" id="" checked="")
+              label Read and check all the boxes below
+          br
         .content.ui.list
             .item
               #item1.ui.segment
@@ -65,3 +66,4 @@ block scripts
   script(src='/module_js/voiceover.js')
 block styles 
   link(rel='stylesheet', href='/css/modules/phishing.css')
+  link(rel='stylesheet' href='/css/checkbox_activity.css')  

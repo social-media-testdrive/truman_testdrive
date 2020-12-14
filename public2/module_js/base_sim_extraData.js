@@ -19,8 +19,47 @@ function recordSimModalInputs(modalNameAttrStr) {
 
   $(`.ui.modal[data-modalName=${modalNameAttrStr}]`).modal({
     closable: false,
+    onVisible: function(){
+      switch(modalNameAttrStr){
+        case 'digital-literacy_articleModal':
+          Voiceovers.playVoiceover(['CUSML.misc_02.mp3'])
+          break;
+        case 'digital-literacy_flagModal':
+          Voiceovers.playVoiceover(['CUSML.misc_03.mp3'])
+          break;
+        case 'digfoot_normalPostModal':
+          Voiceovers.playVoiceover(['CUSML.misc_04.mp3'])
+          break;
+        case 'esteem_simPostModal':
+          $('.ui.accordion').accordion('open', 0);
+          $('.ui.accordion').accordion('close', 1);
+          $('.ui.accordion').accordion({
+            onOpen: function(){
+              if($(this).hasClass('esteemModalSection2')){
+                Voiceovers.playVoiceover(['CUSML.misc_06.mp3'])
+              }
+            }
+          })
+          $('input[type=checkbox]').prop('checked',false);
+          Voiceovers.playVoiceover(['CUSML.misc_05.mp3'])
+          break;
+        case 'esteem_postModal':
+          $('.ui.accordion').accordion('open', 0);
+          $('.ui.accordion').accordion('close', 1);
+          $('.ui.accordion').accordion({
+            onOpen: function(){
+              if($(this).hasClass('esteemModalSection2')){
+                Voiceovers.playVoiceover(['CUSML.misc_08.mp3'])
+              }
+            }
+          })
+          $('input[type=checkbox]').prop('checked',false);
+          Voiceovers.playVoiceover(['CUSML.misc_07.mp3'])
+          break;
+      }
+    },
     onHide: function(){
-
+      Voiceovers.pauseVoiceover();
       const modalClosedTime = Date.now();
       const modalViewTime = modalClosedTime - modalOpenedTime;
       const pathArrayForHeader = window.location.pathname.split('/');

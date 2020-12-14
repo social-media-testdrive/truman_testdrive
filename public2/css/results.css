@@ -1,3 +1,7 @@
+.selectedCard {
+  box-shadow: 0 0 6px 8px rgba(0,149,255,.4) !important;
+}
+
 .ui.label {
   background-color: #2185d08a;
   color: #000000d1;

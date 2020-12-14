@@ -215,9 +215,11 @@ function startIntro(){
   intro.onafterchange(function(){
     Voiceovers.playVoiceover(stepsList[$(this)[0]._currentStep].audioFile);
     startTimestamp = Date.now();
+    hideHelpMessage();
   });
 
   intro.onbeforeexit(function(){
+    hideHelpMessage();
     Voiceovers.pauseVoiceover();
     try {
       additionalOnBeforeExit();
@@ -256,7 +258,29 @@ function startIntro(){
   // **************************************************************************
 
   intro.start();
+
+  return intro;
 };
+
+function isTutorialBoxOffScreen(bottomOffset){
+  if (window.scrollY > bottomOffset) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function hideHelpMessage(){
+  if($('#clickNextHelpMessage').is(':visible')){
+    $('#clickNextHelpMessage').transition('fade');
+  }
+}
+
+function showHelpMessage(){
+  if($('#clickNextHelpMessage').is(':hidden')){
+    $('#clickNextHelpMessage').transition('fade down');
+  }
+}
 
 $(window).on("load", function(){
   addCardIds(); // required for data to record properly
@@ -265,7 +289,24 @@ $(window).on("load", function(){
   try {
     // a tutorial sequence isn't always present. If it isn't, startHints() needs
     // to be called manually.
-    startIntro();
+    const intro = startIntro();
+    const tooltipTopOffset = $('.introjs-tooltip').offset().top;
+    const tooltipBottomOffset = tooltipTopOffset + $('.introjs-tooltip').outerHeight();
+    let scrolledAway = false;
+    // When the user scrolls, check that they haven't missed the first tooltip.
+    // If the tooltip is scrolled out of the viewport and the user is still on
+    // the first tooltip step after 4 seconds, show a help message.
+    $(window).scroll(function(){
+      // only want to do this once, so check that scrolledAway is false
+      if (isTutorialBoxOffScreen(tooltipBottomOffset) && (!scrolledAway)) {
+        scrolledAway = true;
+        setTimeout(function(){
+          if(intro._currentStep === 0){
+            showHelpMessage();
+          }
+        }, 4000);
+      }
+    });
   } catch (error) {
     if ( !(error instanceof ReferenceError) ) {
       console.log("There has been an unexpected error:");
