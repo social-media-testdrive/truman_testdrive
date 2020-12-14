@@ -33,21 +33,20 @@ block content
         | Student Progress
     .ui.divider
     .row.addMargin
-      .ui.stackable.two.column.grid
+      .ui.stackable.two.column.grid.middle.aligned
         .column
           .ui.basic.segment
             canvas#studentProgress(width="400" height="400")
-        .column
-          .ui.button View details
+        .column#studentProgressText
     
     .row.addMargin
-      table.ui.celled.table
+      table.ui.celled.table#progressTable
         thead
           tr
             th Completed
             th Started but not completed
             th Have not started
-        tbody#fillProgressTable
+        tbody#fillProgressTableBody
         
     .row.centerText
       h2

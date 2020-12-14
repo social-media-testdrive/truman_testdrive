@@ -41,6 +41,9 @@ function getMaxLength(listOne, listTwo, listThree){
   return  returnValue;
 }
 
+$('#studentProgressText').hide();
+$('#progressTable').hide();
+
 $('.refreshModSelectionButton').on('click', function(){
   let modName = ($(".ui.selection.dropdown[name='moduleSelection']").dropdown('get value'));
   let classId = ($(".ui.selection.dropdown[name='classSelection']").dropdown('get value'));
@@ -52,7 +55,8 @@ $('.refreshModSelectionButton').on('click', function(){
   let noneCount = 0;
 
   if (classId && modName) {
-    $("#fillProgressTable").empty();
+    $('#studentProgressText').empty();
+    $("#fillProgressTableBody").empty();
     $.get(`/moduleProgress/${classId}`, function(data){
       let userStatusesArrays = getModuleProgressUserBreakdown(data.classModuleProgress, modName);
       completedUsernames = userStatusesArrays[0];
@@ -62,18 +66,25 @@ $('.refreshModSelectionButton').on('click', function(){
       startedCount = startedUsernames.length;
       noneCount = noneUsernames.length;
     }).then(function() {
+      $('#studentProgressText').prepend(`
+        <h3>${completedCount} students have completed this module.</h3>
+        <h3>${startedCount} students have started but not completed this module.</h3>
+        <h3>${noneCount} students have not started this module.</h3>
+      `);
+      $('#studentProgressText').show();
       const maxLength = getMaxLength(completedUsernames, startedUsernames, noneUsernames);
       for (let i = 0; i < maxLength; i++) {
         let completed = getValueAtIndex(completedUsernames, i);
         let started = getValueAtIndex(startedUsernames, i);
         let none = getValueAtIndex(noneUsernames, i);
-        $("#fillProgressTable").append(`
+        $("#fillProgressTableBody").append(`
           <tr>
             <td data-label='Completed'>${completed}</td>
             <td data-label='Started'>${started}</td>
             <td data-label='None'>${none}</td>
           </tr>
         `);
+        $('#progressTable').show();
       }
 
       const ctx = $('#studentProgress');
