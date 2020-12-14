@@ -52,6 +52,7 @@ $('.refreshModSelectionButton').on('click', function(){
   let noneCount = 0;
 
   if (classId && modName) {
+    $("#fillProgressTable").empty();
     $.get(`/moduleProgress/${classId}`, function(data){
       let userStatusesArrays = getModuleProgressUserBreakdown(data.classModuleProgress, modName);
       completedUsernames = userStatusesArrays[0];
