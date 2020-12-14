@@ -1,22 +1,33 @@
 var hintsList = [
   {
-    hint: `Check other sources to see if they are saying the same thing. You
-    search for “Haywell Middle School closing” on Google, and here are the first
-    5 things that you find.`,
-    element: '#hint1',
-    hintPosition: 'top-middle',
-    audioFile: ['']
+    hint: `Search engines like Google often prioritize results about breaking
+    news.`,
+    element: '#hint2',
+    hintPosition: 'middle-middle',
+    audioFile: ['CUSML.9.4.07.mp3']
   },
   {
-    hint: `None of the sources you have found seem to be mentioning the same
-    thing.`,
-    element: '#hint2',
+    hint: `None of the sources you found are reporting the same news as the
+    article you saw on your timeline. This might be an indication that the
+    article has inaccurate information.`,
+    element: '#hint3',
     hintPosition: 'middle-right',
-    audioFile: ['']
+    audioFile: ['CUSML.9.4.08.mp3']
   }
 ];
 
-function customOnHintCloseFunction(){
+function eventsAfterHints(){
+  introJs().hideHints();
+  introJs().showHint(0);
+}
+
+function customOnHintCloseFunction(stepID){
+
+  // sequential hint appearance
+  stepID += 1;
+  if(stepID !== numberOfHints){
+    introJs().showHint(stepID);
+  }
   // do nothing
   closedHints++;
   clickedHints = 0;
@@ -28,6 +39,7 @@ function customOnHintCloseFunction(){
       $('#removeHidden').transition('fade');
     }
     $('.articleTab').addClass('green');
+    $('#instructionsToContinue').show();
 
   } else {
     if($('#removeHidden').is(":visible")){

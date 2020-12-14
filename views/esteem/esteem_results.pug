@@ -17,15 +17,18 @@ block content
           .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection1
             i.down.arrow.icon
             |   Start
-          .ui.basic.segment.reflectionPromptSegment.hidden  
+          .ui.basic.segment.reflectionPromptSegment.hidden.selectPostsQuestion1  
             .ui.label.resultsPromptLabel
               h4
                 i.exclamation.triangle.icon
                 | Here are some posts that might have caused Jeremy to experience 
                 | a red flag feeling, did you notice any of them?
             br
-            br
-            .ui.stackable.three.cards
+            br  
+            h3.grayElement(style="color:#696969;")
+              i.hand.pointer.icon
+              | Click on the ones that you noticed!  
+            .ui.stackable.three.cards.selectablePosts
               
               if (chosenTopic == 'Sports')
                 

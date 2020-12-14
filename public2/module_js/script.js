@@ -1,3 +1,28 @@
+// const stepsList = [
+//   {
+//     element: '#newpost',
+//     intro: `Click here to create your own post on the timeline.`,
+//     highlightClass: 'stickyTooltip',
+//     position: 'right',
+//     scrollTo: 'tooltip',
+//     audioFile: ['']
+//   },
+//   {
+//     element: '.ui.button.like:first-of-type',
+//     intro: `Click this button to "like" any post.`,
+//     position: 'right',
+//     scrollTo: 'tooltip',
+//     audioFile: ['']
+//   },
+//   {
+//     element: '.ui.card .extra.content .ui.input:first-of-type',
+//     intro: `Click here to make a comment on any post.`,
+//     position: 'right',
+//     scrollTo: 'tooltip',
+//     audioFile: ['']
+//   }
+// ]
+
 //Convenient variable to indicate which module we're in
 let pathArray = window.location.pathname.split('/');
 var currentModule = pathArray[2];
@@ -16,8 +41,47 @@ function recordModalInputs(modalNameAttrStr) {
 
   $(`.ui.modal[data-modalName=${modalNameAttrStr}]`).modal({
     closable: false,
+    onVisible: function(){
+      switch(modalNameAttrStr){
+        case 'digital-literacy_articleModal':
+          Voiceovers.playVoiceover(['CUSML.misc_02.mp3'])
+          break;
+        case 'digital-literacy_flagModal':
+          Voiceovers.playVoiceover(['CUSML.misc_03.mp3'])
+          break;
+        case 'digfoot_normalPostModal':
+          Voiceovers.playVoiceover(['CUSML.misc_04.mp3'])
+          break;
+        case 'esteem_simPostModal':
+          $('.ui.accordion').accordion('open', 0);
+          $('.ui.accordion').accordion('close', 1);
+          $('.ui.accordion').accordion({
+            onOpen: function(){
+              if($(this).hasClass('esteemModalSection2')){
+                Voiceovers.playVoiceover(['CUSML.misc_06.mp3'])
+              }
+            }
+          })
+          $('input[type=checkbox]').prop('checked',false);
+          Voiceovers.playVoiceover(['CUSML.misc_05.mp3'])
+          break;
+        case 'esteem_postModal':
+          $('.ui.accordion').accordion('open', 0);
+          $('.ui.accordion').accordion('close', 1);
+          $('.ui.accordion').accordion({
+            onOpen: function(){
+              if($(this).hasClass('esteemModalSection2')){
+                Voiceovers.playVoiceover(['CUSML.misc_08.mp3'])
+              }
+            }
+          })
+          $('input[type=checkbox]').prop('checked',false);
+          Voiceovers.playVoiceover(['CUSML.misc_07.mp3'])
+          break;
+      }
+    },
     onHide: function(){
-
+      Voiceovers.pauseVoiceover();
       const modalClosedTime = Date.now();
       const modalViewTime = modalClosedTime - modalOpenedTime;
       const modalName = $(this).attr('data-modalName');
@@ -127,9 +191,6 @@ function targetedAdDropdownSelection(){
   }
 };
 
-//Activating the sticky functionality for the left column
-//$('.ui.sticky.sideMenu').sticky();
-
 // activating the "let's continue" button at the scrollToBottom
 $('.ui.big.green.labeled.icon.button.script').on('click', function(){
   window.location.href = "/results/" + currentModule;
@@ -202,7 +263,36 @@ $('.esteemModalNextButton').on('click', function(){
 * chat box code
 */
 
-$(window).on("load", function() {openChat()});
+function setStickyElementsAdvancedlit(){
+  $('.ui.sticky.newPostSticky')
+    .sticky({
+      context: '#content',
+      offset: 90
+    });
+  $('.ui.sticky.sideMenuAdvancedlit')
+    .sticky({
+      context: '#content',
+      offset: 90
+    });
+  $('.card .img.post img').off("load",setStickyElementsAdvancedlit);
+}
+
+
+$(window).on("load", function() {
+  openChat();
+  // wait for an image to load so that the width is correct before setting sticky elements
+  // only an issue with advacedlit module
+  if(currentModule === 'advancedlit'){
+    $('.card .img.post img').on("load",setStickyElementsAdvancedlit);
+  } else {
+    $('.ui.sticky.newPostSticky')
+      .sticky({
+        context: '#content',
+        offset: 90
+      });
+  }
+
+});
 
 /**
  * End chat box code

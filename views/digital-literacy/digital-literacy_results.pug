@@ -16,7 +16,7 @@ block content
           .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection1
             i.down.arrow.icon
             |   Start
-          .ui.basic.segment.reflectionPromptSegment.hidden  
+          .ui.basic.segment.reflectionPromptSegment.hidden.selectPostsQuestion1  
             .ui.label.resultsPromptLabel
               h4
                 i.exclamation.triangle.icon
@@ -24,7 +24,10 @@ block content
                 | notice?
             br
             br
-            .ui.stackable.three.cards
+            h3.grayElement(style="color:#696969;")
+              i.hand.pointer.icon
+              | Click on the ones that you noticed!
+            .ui.stackable.three.cards.selectablePosts
               
               .ui.fluid.card.dim()#card1
                 .content
@@ -74,13 +77,12 @@ block content
                     | You'll never guess what these are!!!
             br
             br
-
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
           .ui.raised.segment
             .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection2
               i.down.arrow.icon
               |   Next
-            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden.selectPostsQuestion2 
               .ui.label.resultsPromptLabel
                 h4
                   i.exclamation.triangle.icon
@@ -89,7 +91,10 @@ block content
                   | notice?
               br
               br
-              .ui.stackable.three.cards
+              h3.grayElement(style="color:#696969;")
+                i.hand.pointer.icon
+                | Click on the ones that you noticed!
+              .ui.stackable.three.cards.selectablePosts
                 
                 .ui.fluid.card.dim()#card4
                   .content
@@ -423,7 +428,7 @@ block scripts
       '.voiceover_reflection7': {
         "initialDelay": 500,
         "delay": 0,
-        "files": ['']
+        "files": ['CUSML.misc_01.mp3']
       }
     };
   script(src="/module_js/digital-literacy/digital-literacy_results.js")

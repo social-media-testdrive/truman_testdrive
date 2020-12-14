@@ -1,12 +1,19 @@
 var stepsList = [
   {
     element: '#step1',
+    intro: `Click "Next" to begin!`,
+    position: 'right',
+    scrollTo: 'tooltip',
+    audioFile: ['']
+  },
+  {
+    element: '#step1',
     intro: `Click on "Done" and then look for the blue dots&nbsp;<a role='button' tabindex='0'
     class='introjs-hint'><div class='introjs-hint-dot'></div><div class=
     'introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more...`,
     position: "left",
     scrollTo: 'tooltip',
-    audioFile: ['']
+    audioFile: ['CUSML.9.4.01.mp3']
   }
 ]
 
@@ -14,15 +21,25 @@ var hintsList = [
   {
     hint: `Your friend Corey just posted an article that says your school is
     closing, and it looks like many of your other friends are sharing it as
-    well. Click on the article to see what it says!`,
+    well. Click on the article to see what it says.`,
     element: '#hint1',
     hintPosition: 'middle-middle',
-    audioFile: ['']
+    audioFile: ['CUSML.9.4.02.mp3']
   }
 ];
 
-function customOnHintCloseFunction(){
-  // do nothing
+function eventsAfterHints(){
+  introJs().hideHints();
+  introJs().showHint(0);
+}
+
+function customOnHintCloseFunction(stepID){
+
+  // sequential hint appearance
+  stepID += 1;
+  if(stepID !== numberOfHints){
+    introJs().showHint(stepID);
+  }
   closedHints++;
   clickedHints = 0;
   if (closedHints == numberOfHints){
@@ -45,8 +62,8 @@ function customOnHintCloseFunction(){
   }
 }
 
-$('.ui.card.articleCard').on('click', function(){
-  $('.ui.card').transition({
+$('.articleClickable').on('click', function(){
+  $('.articleImage.articleClickable').transition({
     animation: 'pulse',
     onComplete: function(){
       if(closedHints === numberOfHints){

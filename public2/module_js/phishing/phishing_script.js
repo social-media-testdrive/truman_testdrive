@@ -51,6 +51,12 @@ function openPhishingModal(phishingLink){
   }
 }
 
+$('.ui.sticky.newPostSticky')
+  .sticky({
+    context: '#content',
+    offset: 90
+  });
+
 $('.ui.modal').modal({ closable: false });
 $('.big.plus.icon').css({"display": "block"})
 $('.ui.simple.dropdown.item').css({"display":"inherit"})

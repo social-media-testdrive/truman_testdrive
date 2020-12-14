@@ -17,49 +17,52 @@ block content
           .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection1
             i.down.arrow.icon
             |   Start
-          .ui.basic.segment.reflectionPromptSegment.hidden  
+          .ui.basic.segment.reflectionPromptSegment.hidden.selectPostsQuestion1    
             .ui.label.resultsPromptLabel
               h4
                 i.exclamation.triangle.icon
 
-                | These were the breaking news stories in the timeline. How many 
-                | did you notice?
+                | There were two breaking news articles and one opinion piece 
+                | about Chestin hosting the olympics. Did you notice any of them?
             br
             br
-            .ui.stackable.three.cards
+            h3.grayElement(style="color:#696969;")
+              i.hand.pointer.icon
+              | Click on the ones that you noticed!
+            .ui.stackable.three.cards.selectablePosts
               .ui.fluid.card.dim#card1
-                .content      
-                  a.left.floated(href='/user/frank-the-best')
-                    img.ui.avatar.image(src=cdn+'/profile_pictures/user10.jpg')
-                    span='Franklin Robinson'
+                .content     
+                  p.left.floated(href='/user/emememily')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user36.jpg')
+                    span='Emily Li'
                 .image
-                  img.post(src=cdn+'/post_pictures/quake1_an.png')
-                .content
+                  img.post(src=cdn+'/post_pictures/olympic1_an.png')
+                .content.descriptionContent
                   .description
-                    | Stay safe folks!!
+                    | Wow just heard that we will be hosting the olympics?!?!?
                     
               .ui.fluid.card.dim#card2
-                .content      
-                  a.left.floated(href='/user/ella_vaderrr')
+                .content        
+                  p.left.floated(href='/user/ella_vaderrr')
                     img.ui.avatar.image(src=cdn+'/profile_pictures/user25.jpg')
                     span='Ella Sroni'
                 .image
-                  img.post(src=cdn+'/post_pictures/quake2_an.PNG')
-                .content
+                  img.post(src=cdn+'/post_pictures/olympic2_an.png')
+                .content.descriptionContent
                   .description
-                    | My brother just called from his class trip in California. 
-                    | They had an earthquake there but they are safe.
+                    | Interesting article on how Chestin could host the Olympics
           
               .ui.fluid.card.dim#card3
-                .content      
-                  a.left.floated(href='/user/morning-tea-and-books')
+                .content   
+                  p.left.floated(href='/user/morning-tea-and-books')
                     img.ui.avatar.image(src=cdn+'/profile_pictures/user12.jpg')
                     span='Shika Ramphal'
                 .image
-                  img.post(src=cdn+'/post_pictures/quake3_an.png')
-                .content
+                  img.post(src=cdn+'/post_pictures/olympic3_an.png')
+                .content.descriptionContent
                   .description
-                    | oh no arent the 7th graders in cali rn?
+                    | Woo!! Go Chestin go!!
+
 
             br
             br
@@ -126,6 +129,21 @@ block content
 
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
           .ui.raised.segment
+            .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection3
+              i.down.arrow.icon
+              |   Next
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
+              .ui.label.resultsPromptLabel
+                h4.reflectionPrompt
+                  | Did you read any of the articles? Did you notice any signs that the 
+                  | article may be inaccurate?
+              .ui.form
+                .inline.fields
+                  label
+                  textarea.glowing-border(rows='2' id="literacy_responseOne")
+                    
+        .ui.basic.segment.noPadding.hidden.reflectionTopSegment
+          .ui.raised.segment
             .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection4
               i.down.arrow.icon
               |   Next
@@ -137,7 +155,7 @@ block content
               .ui.form
                 .inline.fields
                   label
-                  textarea.glowing-border(rows='2' id="literacy_responseOne")
+                  textarea.glowing-border(rows='2' id="literacy_responseTwo")
 
 
     .ui.warning.message.hidden.startPromptsWarning
@@ -162,22 +180,22 @@ block scripts
       '.voiceover_reflection1': {
         "initialDelay": 0,
         "delay": 0,
-        "files": ['']
+        "files": ['CUSML.9.6.1.mp3']
       },
       '.voiceover_reflection2': {
         "initialDelay": 500,
         "delay": 0,
-        "files": ['']
+        "files": ['CUSML.9.6.2.mp3']
       },
       '.voiceover_reflection3': {
         "initialDelay": 500,
         "delay": 0,
-        "files": ['']
+        "files": ['CUSML.9.6.3.mp3']
       },
       '.voiceover_reflection4': {
         "initialDelay": 500,
         "delay": 0,
-        "files": ['']
+        "files": ['CUSML.9.6.4.mp3']
       }
     };
   script(src='/module_js/advancedlit/advancedlit_results.js')

@@ -69,7 +69,6 @@ $(window).on("load", function () {
     }
   });
 
-  //Activating the sticky functionality for the left column
   $('.ui.sticky.sideMenu')
     .sticky({
       context: '#content',
@@ -974,7 +973,6 @@ end button links
       type: 'image',
       offset: 0,
       onLoad: function (calculations) {
-        console.log("@@@@@@@ Real Image @@@@@@@@@");
         $('#content .fluid.card .img img, img.ui.avatar.image, a.avatar.image img').visibility('refresh');
       }
     })

@@ -3,6 +3,9 @@ function onPrint(){
     $(".insertPrint").empty();
     $(".insertPrint").css('display','block');
 
+    $(".selectPostsQuestion1").clone().appendTo(".insertPrint");
+    $(".insertPrint").append('<div class="breakHere"</div>');
+    
     $(".checkOne").clone().removeClass('reflectionPromptSegment').appendTo(".insertPrint");
     $(".checkTwo").clone().removeClass('reflectionPromptSegment').appendTo(".insertPrint");
 
