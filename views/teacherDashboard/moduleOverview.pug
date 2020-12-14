@@ -39,7 +39,15 @@ block content
             canvas#studentProgress(width="400" height="400")
         .column
           .ui.button View details
-
+    
+    .row.addMargin
+      table.ui.celled.table
+        thead
+          tr
+            th Completed
+            th Started but not completed
+            th Have not started
+        tbody#fillProgressTable
         
     .row.centerText
       h2

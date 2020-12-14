@@ -9,8 +9,6 @@ $(window).on('load', function(){
 
   $.get(`/classIdList`, function(data){
     const classIdList = data.classIdList;
-    console.log("List:")
-    console.log(classIdList)
     for (const id of classIdList) {
      $(`<div class="item" data-value="${id}">${id}</div>`).appendTo( $('.ui.selection.dropdown[name="classSelection"] .menu') )
     }

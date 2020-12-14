@@ -23,7 +23,6 @@ exports.getClasses = (req, res) => {
 // For the route /class/:classId
 exports.getClass = (req, res, next) => {
   if (req.user.isInstructor) {
-    console.log(req.params.classId);
     Class.findOne({
       accessCode: req.params.classId,
       teacher: req.user.id
@@ -53,10 +52,8 @@ exports.getClassIdList = (req, res, next) => {
   if (req.user.isInstructor) {
     Class.find({teacher: req.user.id}, (err, classes) => {
       const outputData = [];
-      console.log(classes)
       for (const singleClass in classes) {
         accessCode = classes[singleClass].accessCode;
-        console.log(`Access code: ${accessCode}`)
         outputData.push(accessCode);
       }
       res.json({classIdList: outputData});
@@ -66,8 +63,6 @@ exports.getClassIdList = (req, res, next) => {
 
 // Show info on a class such as: student activity
 exports.getModuleProgress = (req, res, next) => {
-  console.log("Getting module progress")
-  console.log(`ID: ${req.params.classId}`)
   if (!req.user.isInstructor) {
     return res.json({classModuleProgress: {}});
   }
@@ -86,11 +81,8 @@ exports.getModuleProgress = (req, res, next) => {
       var myerr = new Error('Class not found!');
       return next(myerr);
     }
-    console.log("found class...")
-    console.log(found_class)
     const outputData = {};
     for (var i = 0; i < found_class.students.length; i++) {
-      console.log("For student " + i);
       const modProgressObj = found_class.students[i].moduleProgress.toObject();
       const username = found_class.students[i].username;
       outputData[username] = modProgressObj;
