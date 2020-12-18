@@ -93,6 +93,39 @@ exports.getModuleProgress = (req, res, next) => {
   });
 };
 
+// Show info on a class such as: student activity
+exports.getReflectionResponses = (req, res, next) => {
+  if (!req.user.isInstructor) {
+    return res.json({classReflectionResponses: {}});
+  }
+  Class.findOne({
+    accessCode: req.params.classId,
+    teacher: req.user.id
+  }).populate('students') // populate lets you reference docs in other collections
+  .exec(function (err, found_class) {
+    if (err) {
+      console.log("ERROR");
+      console.log(err);
+      return next(err);
+    }
+    if (found_class == null){
+      console.log("NULL");
+      var myerr = new Error('Class not found!');
+      return next(myerr);
+    }
+    const outputData = {};
+    for (var i = 0; i < found_class.students.length; i++) {
+      const reflectionActions = found_class.students[i].reflectionAction.toObject();
+      const username = found_class.students[i].username;
+      outputData[username] = reflectionActions;
+    }
+    res.json({
+      reflectionResponses: outputData
+    });
+  });
+};
+
+
 /**
  * POST /class/create
  * Update/Create Instructor's class

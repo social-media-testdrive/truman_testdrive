@@ -44,9 +44,7 @@ function getMaxLength(listOne, listTwo, listThree){
 $('#studentProgressText').hide();
 $('#progressTable').hide();
 
-$('.refreshModSelectionButton').on('click', function(){
-  let modName = ($(".ui.selection.dropdown[name='moduleSelection']").dropdown('get value'));
-  let classId = ($(".ui.selection.dropdown[name='classSelection']").dropdown('get value'));
+function visualizeStudentProgressData(modName, classId){
   let completedUsernames = [];
   let startedUsernames = [];
   let noneUsernames = [];
@@ -88,7 +86,7 @@ $('.refreshModSelectionButton').on('click', function(){
       }
 
       const ctx = $('#studentProgress');
-      var myChart = new Chart(ctx, {
+      const myChart = new Chart(ctx, {
           type: 'doughnut',
           data: {
             datasets: [{
@@ -110,4 +108,107 @@ $('.refreshModSelectionButton').on('click', function(){
   } else {
     console.log('Missing a selection')
   }
-})
+}
+
+function countOccurrenceAcrossStudents(prompt, classReflectionResponses){
+  let occurrenceCount = 0;
+  for (const username in classReflectionResponses) {
+    for (let i = 0; i < classReflectionResponses[username].length; i++) {
+      if (classReflectionResponses[username][i].prompt === prompt) {
+        // for written repsonses, only count it if not a blank response
+        if (classReflectionResponses[username][i].type === 'written'){
+          if (classReflectionResponses[username][i].writtenResponse !== ''){
+            occurrenceCount++;
+          }
+        }
+      }
+    }
+  }
+  return occurrenceCount;
+}
+
+function getStudentCount(classReflectionResponses){
+  let studentCount = 0;
+  for (const username in classReflectionResponses){
+    studentCount++;
+  }
+  return studentCount;
+}
+
+async function visualizeStudentReflectionData(modName, classId){
+  $("#openEndedResponses").empty();
+  $("#openEndedResponses").append(`
+    <h4> Students' answers to the open-ended questions:</h4>
+  `)
+  const reflectionJsonData = await $.getJSON("/json/reflectionSectionData.json");
+  console.log(reflectionJsonData)
+  const dbData = await $.get(`/classReflectionResponses/${classId}`);
+  const classReflectionResponses = dbData.reflectionResponses;
+  console.log(`Response data:`)
+  console.log(classReflectionResponses);
+  const studentCount = getStudentCount(classReflectionResponses);
+  console.log(`Student count: ${studentCount}`);
+  const modReflectionData = reflectionJsonData[modName];
+  for (const questionNumber in modReflectionData) {
+    const questionData = modReflectionData[questionNumber];
+    const occurrenceCount = countOccurrenceAcrossStudents(questionData.prompt, classReflectionResponses);
+    console.log(`Occurence count for prompt:\n${questionData.prompt}\n${occurrenceCount}`);
+    switch (questionData.type){
+      case "written":
+        $("#openEndedResponses").append(`
+          <div class="row addMargin">
+            <h4>${questionNumber}. ${questionData.prompt}</h4>
+          </div>
+          <div class="row addMargin">
+            <div class="ui items">
+              <div class="item">
+                <div class="ui image">
+                  <canvas id="chart${questionNumber}" width="150" height="100">
+                </div>
+                <div class="middle aligned content">
+                  <h4>${occurrenceCount} students answered this question</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        `)
+        const ctx = $(`#chart${questionNumber}`);
+        const studentCountDifference = studentCount - occurrenceCount;
+        const newChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+              datasets: [{
+                  data: [occurrenceCount, studentCountDifference],
+                  backgroundColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(0, 0, 0, 0.1)'
+                  ]
+              }],
+              labels: ["Answered", "Not Answered"],
+
+            },
+            options: {
+              legend: {
+                display: false
+              },
+              maintainAspectRatio: false
+            }
+        });
+        break;
+    }
+
+
+
+  }
+}
+
+
+$(window).on("load", async function(){
+  $('.refreshModSelectionButton').on('click', function(){
+    let modName = ($(".ui.selection.dropdown[name='moduleSelection']").dropdown('get value'));
+    let classId = ($(".ui.selection.dropdown[name='classSelection']").dropdown('get value'));
+    visualizeStudentProgressData(modName, classId);
+    visualizeStudentReflectionData(modName, classId);
+
+  });
+});

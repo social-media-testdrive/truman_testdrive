@@ -64,13 +64,17 @@ block content
         | Student Activities
     .ui.divider
     .row.addMargin
-      .ui.placeholder.segment.centerText
-        h3 Interactions with Posts and Reflection Questions
-        h5 Go Here
+      h3 Reflection
+    
+    .row.addMargin#openEndedResponses
+
+            
+
 
 block scripts
   script(src='/user_portal/teacherDashboard.js')
-  script(src='/user_portal/moduleOverview.js')
+  - var m = '/user_portal/moduleOverview.js?t=' + (new Date()).getTime().toString();
+  script(src=m)
   script(src='/js/lib/chart.js') 
   
 block styles

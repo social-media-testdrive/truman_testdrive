@@ -1,0 +1,289 @@
+{
+  "accounts": {
+    "Q1": {
+      "type": "written",
+      "prompt": "What are some features of a strong password?"
+    },
+    "Q2": {
+      "type": "written",
+      "prompt": "Why is it important to choose your username carefully?"
+    },
+    "Q3": {
+      "type": "written",
+      "prompt": "What kind of information is okay to share on your social media profile?"
+    }
+  },
+  "advancedlit": {
+    "Q1": {
+      "type": "checkbox",
+      "prompt": "What did you do when you saw a breaking news story?",
+      "checkboxLabels": {
+        "0": "I checked to see if it was an opinion piece",
+        "1": "I looked at the source(s) of the information in the article",
+        "2": "I checked other sources",
+        "3": "I shared the news article",
+        "4": "I flagged the post",
+        "5": "I did not do anything"
+      }
+    },
+    "Q2": {
+      "type": "written",
+      "prompt": "Did you read any of the articles? Did you notice any signs that the article may be inaccurate?"
+    },
+    "Q3": {
+      "type": "written",
+      "prompt": "Why is it important to get the full story before reacting to or sharing breaking news?"
+    }
+  },
+  "cyberbullying": {
+    "Q1": {
+      "type": "checkbox",
+      "prompt": "Tell us what you did to be an upstander.",
+      "checkboxLabels": {
+        "0": "I flagged the post or comment.",
+        "1": "I \"liked\" the target's post to show support.",
+        "2": "I wrote a supportive or defending comment for the target.",
+        "3": "I would tell a trusted adult if I saw this kind of post."
+      }
+    },
+    "Q2": {
+      "type": "written",
+      "prompt": "Why did you act this way?"
+    },
+    "Q3": {
+      "type": "written",
+      "prompt": "Why is it important for people to act against cyberbullying?"
+    },
+    "Q4": {
+      "type": "written",
+      "prompt": "What will you do in the future to be an upstander if you see cyberbullying?"
+    }
+  },
+  "digfoot": {
+    "Q1": {
+      "type": "checkboxGrouped",
+      "prompt": "How would the following posts have a negative impact on digital footprints?",
+      "checkboxLabels": {
+        "1A": "The poster was oversharing.",
+        "1B": "The poster was sharing something that they might later regret.",
+        "1C": "The post was not considerate of other people’s digital footprints.",
+        "1D": "This was a responsible post.",
+        "2A": "The poster was oversharing.",
+        "2B": "The poster was sharing something that they might later regret.",
+        "2C": "The post was not considerate of other people’s digital footprints.",
+        "2D": "This was a responsible post.",
+        "3A": "The poster was oversharing.",
+        "3B": "The poster was sharing something that they might later regret.",
+        "3C": "The post was not considerate of other people’s digital footprints.",
+        "3D": "This was a responsible post."
+      }
+    },
+    "Q2": {
+      "type": "written",
+      "prompt": "What can you do in the future to make sure you have a positive digital footprint on social media?"
+    },
+    "Q3": {
+      "type": "written",
+      "prompt": "What can you do in the future to be mindful of other people's digital footprints on social media?"
+    }
+  },
+  "digital-literacy": {
+    "Q1": {
+      "type": "checkboxGrouped",
+      "prompt": "Did you notice any signs of fake news in these posts?",
+      "checkboxLabels": {
+        "1A": "They had clickbait headlines and wild images.",
+        "1B": "They had spelling mistakes or dramatic punctuation.",
+        "1C": "They were from a suspicious website.",
+        "2A": "They had clickbait headlines and wild images.",
+        "2B": "They had spelling mistakes or dramatic punctuation.",
+        "2C": "They were from a suspicious website.",
+        "3A": "They had clickbait headlines and wild images.",
+        "3B": "They had spelling mistakes or dramatic punctuation.",
+        "3C": "They were from a suspicious website."
+      }
+    },
+    "Q2": {
+      "type": "checkbox",
+      "prompt": "Tell us what you would do next to check the credibility of the above articles.",
+      "checkboxLabels": {
+        "0": "I would read the full article.",
+        "1": "I would check the source.",
+        "2": "I would find corroboration from other credible sources."
+      }
+    },
+    "quesiton3": {
+      "type": "written",
+      "prompt": "What are the benefits and drawbacks of getting news on social media?"
+    },
+    "Q4": {
+      "type": "written",
+      "prompt": "Why is it important to evaluate the information you see on social media?"
+    }
+  },
+  "esteem": {
+    "Q1": {
+      "type": "written",
+      "prompt": "Why might these posts cause Jeremy to have a red flag feeling?"
+    },
+    "Q2": {
+      "type": "written",
+      "prompt": "Do you remember seeing posts that might have caused Jeremy to feel good? What kinds of posts were they?"
+    },
+    "Q3": {
+      "type": "written",
+      "prompt": "What could Jeremy do to feel better after experiencing a red flag feeling on social media?"
+    }
+  },
+  "habits": {
+    "Q1": {
+      "type": "checkbox",
+      "prompt": "How many of these attention-grabbing design features did you notice?",
+      "checkboxLabels": {
+        "0": "Notifications",
+        "1": "Likes and comments from other people",
+        "2": "Time spent on social media"
+      }
+    },
+    "Q2": {
+      "type": "habitsUnique",
+      "prompt": "How many minutes do you think you spent on the TestDrive timeline?"
+    },
+    "Q3": {
+      "type": "checkbox",
+      "prompt": "On the TestDrive timeline, what did you do to build a healthy social media habit?",
+      "checkboxLabels": {
+        "0": "I reviewed the time spent on the site",
+        "1": "I reduced the number of notifications that I get",
+        "2": "I ignored the notifications",
+        "3": "I did not do anything to build a healthy social media habit"
+      }
+    },
+    "Q4": {
+      "type": "written",
+      "prompt": "Why is it important to build healthy social media habits?"
+    }
+  },
+  "phishing": {
+    "Q1": {
+      "type": "checkboxGrouped",
+      "prompt": "How did you respond to these posts that were phishing scams?",
+      "checkboxLabels": {
+        "1A": "I flagged the post.",
+        "1B": "I clicked on the link.",
+        "1C": "I ignored the post.",
+        "1D": "I did something else.",
+        "2A": "I flagged the post.",
+        "2B": "I clicked on the link.",
+        "2C": "I ignored the post.",
+        "2D": "I did something else.",
+        "3A": "I flagged the post.",
+        "3B": "I clicked on the link.",
+        "3C": "I ignored the post.",
+        "3D": "I did something else."
+      }
+    },
+    "Q2": {
+      "type": "written",
+      "prompt": "What are some clues you can use to identify phishing scams?"
+    },
+    "Q3": {
+      "type": "written",
+      "prompt": "Why is it important to protect yourself against phishing scams?"
+    }
+  },
+  "presentation": {
+    "Q1": {
+      "type": "checkbox",
+      "prompt": "These were the posts on the timeline that were from Elena’s finsta accounts. How many did you notice?",
+      "checkboxLabels": {
+        "0": "She posted about things that only certain people will be interested in",
+        "1": "She posted things that are more casual or personal",
+        "2": "She posted mean things about other people"
+      }
+    },
+    "Q2": {
+      "type": "radio",
+      "prompt": "Did you create a post on the TestDrive timeline?",
+      "radioLabels": {
+        "0": "Yes",
+        "1": "No"
+      }
+    },
+    "Q3": {
+      "type": "written",
+      "prompt": "How did you think about the audience when you created your post?"
+    },
+    "Q4": {
+      "type": "written",
+      "prompt": "What are the benefits of having multiple social media accounts?"
+    }
+  },
+  "privacy": {
+    "Q1": {
+      "type": "written",
+      "prompt": "Did you notice any changes in Lily’s profile after you changed the privacy settings?"
+    },
+    "Q2": {
+      "type": "written",
+      "prompt": "Why is it important to know what information websites collect about you?"
+    },
+    "Q3": {
+      "type": "written",
+      "prompt": "What are the three things you should ask yourself when reading a privacy policy?"
+    },
+    "Q4": {
+      "type": "written",
+      "prompt": "What can you do in the future to protect your privacy on social media?"
+    }
+  },
+  "safe-posting": {
+    "Q1": {
+      "type": "checkbox",
+      "prompt": "Why is this post inappropriate for social media?",
+      "checkboxLabels": {
+        "0": "Private information like street address, phone number, school name, or email address was shared",
+        "1": "The person making the post did not think about all the audiences who could see it",
+        "2": "It was appropriate for social media"
+      }
+    },
+    "Q2": {
+      "type": "checkbox",
+      "prompt": "How did you respond to these messages that asked for private information?",
+      "checkboxLabels": {
+        "0": "I changed the subject",
+        "1": "I used humor",
+        "2": "I ignored the message",
+        "3": "I was direct",
+        "4": "I did something else"
+      }
+    },
+    "Q3": {
+      "type": "written",
+      "prompt": "What would you do in the future to protect your private information and other people’s private information on social media?"
+    }
+  },
+  "targeted": {
+    "Q1": {
+      "type": "checkbox",
+      "prompt": "What did you do when you saw an advertisement or a sponsored post?",
+      "checkboxLabels": {
+        "0": "I hid the advertisement from my timeline.",
+        "1": "I reported the advertisement to the website.",
+        "2": "I looked at why I was getting the advertisement.",
+        "3": "I liked the ad or commented on it.",
+        "4": "I wanted to click on the advertisement.",
+        "5": "I ignored the advertisement.",
+        "6": "I didn't notice the advertisement."
+      }
+    },
+    "Q2": {
+      "type": "written",
+      "prompt": "Why do companies collect data from people's profiles or online activity?"
+    },
+    "Q4": {
+      "type": "written",
+      "prompt": "Why is it important to know how to identify advertisements on social media?"
+    }
+  }
+}

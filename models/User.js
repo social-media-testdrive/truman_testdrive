@@ -256,11 +256,12 @@ const userSchema = new mongoose.Schema({
     absoluteTimeContinued: Date, //time that the user left the page by clicking continue
     modual: String, //which lesson mod did this take place in?
     prompt: String,
+    type: String, // Which type of response this will be: written, checkbox, radio, habitsUnique
     writtenResponse: String,
     radioSelection: String, // this is for the presentation module
     numberOfCheckboxes: Number,
     checkboxResponse: Number,
-    checkedActualTime: Boolean, // this is for the habits module
+    checkedActualTime: Boolean, // this is unique to the habits module
   }, {_id: true, versionKey: false })],
 
   // blue dot action in a guided activity

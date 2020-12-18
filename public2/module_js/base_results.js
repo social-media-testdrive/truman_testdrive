@@ -6,11 +6,13 @@ function recordResponse(responseType,timestamp){
   // create new object with desired data to pass to the post request
   let cat = new Object();
   cat.modual = subdirectory2
-  cat.prompt = $(this).text();
+  // prompt with any new line characters removed
+  cat.prompt = $(this).text().replace(/\r?\n|\r/, '');
   cat.absoluteTimeContinued = timestamp;
   // adjust variables depending on the response type
   switch(responseType){
     case 'written':
+      cat.type = 'written';
       cat.writtenResponse = $(this)
         .closest('.ui.label')
           .siblings('.ui.form')
@@ -18,6 +20,7 @@ function recordResponse(responseType,timestamp){
             .val();
       break;
     case 'checkboxes':
+      cat.type = 'checkbox';
       // using bit shifting to record which boxes are checked
       // i.e. [][✓][][][✓][]  => 010010
       // records the base 10 number in DB, decode to binary string later
@@ -36,6 +39,7 @@ function recordResponse(responseType,timestamp){
       cat.checkboxResponse = checkboxInputs;
       break;
     case 'radio':
+      cat.type = 'radio';
       let radioSelection = "";
       radioSelection = $(this)
         .closest('.ui.segment')
@@ -45,6 +49,7 @@ function recordResponse(responseType,timestamp){
       cat.radioSelection = radioSelection;
       break;
     case 'habits_time_entry':
+      cat.type = 'habitsUnique';
       cat.writtenResponse = $(this)
         .closest('.ui.label')
           .siblings('.ui.form')
