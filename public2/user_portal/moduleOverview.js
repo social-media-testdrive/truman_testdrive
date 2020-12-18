@@ -1,3 +1,23 @@
+function getValueAtIndex(array, index){
+  if(array[index] === undefined){
+    return "";
+  } else {
+    return array[index];
+  }
+}
+
+// Can assume that there will always be exactly three lists
+function getMaxLength(listOne, listTwo, listThree){
+  let returnValue = listOne.length;
+  if(listTwo.length > returnValue){
+     returnValue = listTwo.length;
+  }
+  if(listThree.length > returnValue){
+     returnValue = listThree.length;
+  }
+  return  returnValue;
+}
+
 function getModuleProgressUserBreakdown(progressData, modName){
   let completedUsers = [];
   let startedUsers = [];
@@ -20,29 +40,6 @@ function getModuleProgressUserBreakdown(progressData, modName){
   }
   return [completedUsers, startedUsers, noneUsers];
 }
-
-function getValueAtIndex(array, index){
-  if(array[index] === undefined){
-    return "";
-  } else {
-    return array[index];
-  }
-}
-
-// Can assume that there will always be exactly three lists
-function getMaxLength(listOne, listTwo, listThree){
-  let returnValue = listOne.length;
-  if(listTwo.length > returnValue){
-     returnValue = listTwo.length;
-  }
-  if(listThree.length > returnValue){
-     returnValue = listThree.length;
-  }
-  return  returnValue;
-}
-
-$('#studentProgressText').hide();
-$('#progressTable').hide();
 
 function visualizeStudentProgressData(modName, classId){
   let completedUsernames = [];
@@ -110,6 +107,15 @@ function visualizeStudentProgressData(modName, classId){
   }
 }
 
+
+function getStudentCount(classReflectionResponses){
+  let studentCount = 0;
+  for (const username in classReflectionResponses){
+    studentCount++;
+  }
+  return studentCount;
+}
+
 function countOccurrenceAcrossStudents(prompt, classReflectionResponses){
   let occurrenceCount = 0;
   for (const username in classReflectionResponses) {
@@ -127,18 +133,22 @@ function countOccurrenceAcrossStudents(prompt, classReflectionResponses){
   return occurrenceCount;
 }
 
-function getStudentCount(classReflectionResponses){
-  let studentCount = 0;
-  for (const username in classReflectionResponses){
-    studentCount++;
+function getCheckboxLabelArray(reflectionJsonData,modName,question){
+  const labelArray = [];
+  for(const checkboxLabel in reflectionJsonData[modName][question].checkboxLabels){
+    labelArray.push(reflectionJsonData[modName][question].checkboxLabels[checkboxLabel]);
   }
-  return studentCount;
+  return labelArray;
 }
 
 async function visualizeStudentReflectionData(modName, classId){
   $("#openEndedResponses").empty();
+  $("#checkboxResponses").empty();
   $("#openEndedResponses").append(`
     <h4> Students' answers to the open-ended questions:</h4>
+  `)
+  $("#checkboxResponses").append(`
+    <h4> Students' answers to the checkbox questions:</h4>
   `)
   const reflectionJsonData = await $.getJSON("/json/reflectionSectionData.json");
   console.log(reflectionJsonData)
@@ -147,12 +157,10 @@ async function visualizeStudentReflectionData(modName, classId){
   console.log(`Response data:`)
   console.log(classReflectionResponses);
   const studentCount = getStudentCount(classReflectionResponses);
-  console.log(`Student count: ${studentCount}`);
   const modReflectionData = reflectionJsonData[modName];
   for (const questionNumber in modReflectionData) {
     const questionData = modReflectionData[questionNumber];
     const occurrenceCount = countOccurrenceAcrossStudents(questionData.prompt, classReflectionResponses);
-    console.log(`Occurence count for prompt:\n${questionData.prompt}\n${occurrenceCount}`);
     switch (questionData.type){
       case "written":
         $("#openEndedResponses").append(`
@@ -194,21 +202,61 @@ async function visualizeStudentReflectionData(modName, classId){
               maintainAspectRatio: false
             }
         });
+        break; //end 'written' case
+
+      case "checkbox":
+        $("#checkboxResponses").append(`
+          <div class="row">
+            <h4>${questionNumber}. ${questionData.prompt}</h4>
+          </div>
+          <div class="row addMargin">
+            <div class="ui basic segment">
+              <canvas id="chart${questionNumber}" height="300">
+            </div>
+          </div>
+        `);
+
+        const chartLabelArray = getCheckboxLabelArray(reflectionJsonData,modName,questionNumber);
+        const ctxCheckbox = $(`#chart${questionNumber}`);
+        const newChartCheckbox = new Chart(ctxCheckbox, {
+            type: 'horizontalBar',
+            data: {
+              datasets: [{
+                  data: [1,3,4,2,5,6],
+                  backgroundColor: 'rgba(54, 162, 235, 1)',
+                  borderColor: 'rgba(54, 162, 235, 1)',
+              }],
+              labels: chartLabelArray,
+
+            },
+            options: {
+              legend: {
+                display: false
+              },
+              maintainAspectRatio: false,
+              scales: {
+                xAxes: [{
+                  ticks: {
+                    stepSize: 1,
+                    beginAtZero: true
+                  }
+                }]
+              }
+            }
+        });
         break;
     }
-
-
-
   }
 }
 
 
 $(window).on("load", async function(){
+  $('#studentProgressText').hide();
+  $('#progressTable').hide();
   $('.refreshModSelectionButton').on('click', function(){
     let modName = ($(".ui.selection.dropdown[name='moduleSelection']").dropdown('get value'));
     let classId = ($(".ui.selection.dropdown[name='classSelection']").dropdown('get value'));
     visualizeStudentProgressData(modName, classId);
     visualizeStudentReflectionData(modName, classId);
-
   });
 });
