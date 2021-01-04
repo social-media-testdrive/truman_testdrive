@@ -137,7 +137,9 @@ $('.refreshSelectionButton').on('click', function(){
               yAxes: [{
                 ticks: {
                   stepSize: 1,
-                  beginAtZero: true
+                  beginAtZero: true,
+                  suggestedMin: classSize,
+                  suggestedMax: classSize
                 }
               }]
             }

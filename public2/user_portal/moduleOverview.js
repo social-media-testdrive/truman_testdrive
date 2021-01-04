@@ -217,12 +217,14 @@ async function visualizeStudentReflectionData(modName, classId){
         `);
 
         const chartLabelArray = getCheckboxLabelArray(reflectionJsonData,modName,questionNumber);
+        const numberOfCheckboxes = chartLabelArray.length;
+        const checkboxData = parseCheckboxSelectionsForQuestion(numberOfCheckboxes, classReflectionResponses, questionNumber, modReflectionData);
         const ctxCheckbox = $(`#chart${questionNumber}`);
         const newChartCheckbox = new Chart(ctxCheckbox, {
             type: 'horizontalBar',
             data: {
               datasets: [{
-                  data: [1,3,4,2,5,6],
+                  data: checkboxData,
                   backgroundColor: 'rgba(54, 162, 235, 1)',
                   borderColor: 'rgba(54, 162, 235, 1)',
               }],
@@ -234,11 +236,14 @@ async function visualizeStudentReflectionData(modName, classId){
                 display: false
               },
               maintainAspectRatio: false,
+              responsive: true,
               scales: {
                 xAxes: [{
                   ticks: {
                     stepSize: 1,
-                    beginAtZero: true
+                    beginAtZero: true,
+                    suggestedMin: studentCount,
+                    suggestedMax: studentCount
                   }
                 }]
               }
@@ -249,6 +254,35 @@ async function visualizeStudentReflectionData(modName, classId){
   }
 }
 
+
+function parseCheckboxSelectionsForQuestion(numberOfCheckboxes, classReflectionResponses, questionNumber, modReflectionData){
+  console.log(`Number of checkboxes: ${numberOfCheckboxes}`);
+  console.log(`Question number: ${questionNumber}`)
+  const questionPrompt = modReflectionData[questionNumber].prompt;
+  console.log(`Prompt: ${questionPrompt}`)
+  const checkboxSelections = [];
+  for (let i=0; i<numberOfCheckboxes; i++){
+    checkboxSelections.push(0);
+  }
+  for(const username in classReflectionResponses) {
+    console.log(`username: ${username}`);
+    const userResponseList = classReflectionResponses[username];
+    // Array.filter() returns an array. There can only be one match, so use the result at index [0].
+    const searchResultArray = (userResponseList.filter(response => response.prompt === questionPrompt));
+    let response = 0;
+    if(searchResultArray.length) {
+      response = searchResultArray[0];
+    };
+    console.log(response)
+    let checkboxBinary = response.checkboxResponse;
+    // iterate in reverse to get the right direction of checkboxes from bit shifting
+    for(let i=numberOfCheckboxes-1; i>=0; i--){
+      checkboxSelections[i] = checkboxSelections[i] + (checkboxBinary & 1);
+      checkboxBinary = checkboxBinary >> 1;
+    }
+  }
+  return checkboxSelections;
+}
 
 $(window).on("load", async function(){
   $('#studentProgressText').hide();
