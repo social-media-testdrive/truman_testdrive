@@ -1,3 +1,26 @@
+function initializeStudentProgressChart(){
+  const ctx = $('#studentProgress');
+  const studentProgressChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        datasets: [{
+            data: [0,0,1],
+            backgroundColor: [
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 99, 132, 1)',
+              'rgba(0, 0, 0, 0.1)'
+            ]
+        }],
+        labels: ["Completed", "Started but not completed", "Have not started"],
+
+      },
+      options: {
+        maintainAspectRatio: false
+      }
+  });
+  return studentProgressChart;
+}
+
 function getValueAtIndex(array, index){
   if(array[index] === undefined){
     return "";
@@ -41,7 +64,7 @@ function getModuleProgressUserBreakdown(progressData, modName){
   return [completedUsers, startedUsers, noneUsers];
 }
 
-function visualizeStudentProgressData(chart, modName, classId){
+function updateStudentProgressChart(chart, modName, classId){
   let completedUsernames = [];
   let startedUsernames = [];
   let noneUsernames = [];
@@ -124,6 +147,30 @@ function getCheckboxLabelArray(reflectionJsonData,modName,question){
   return labelArray;
 }
 
+function parseClassCheckboxSelectionsForQuestion(questionNumber, numberOfCheckboxes, classReflectionResponses, modReflectionData){
+  const questionPrompt = modReflectionData[questionNumber].prompt;
+  const checkboxSelections = [];
+  for (let i=0; i<numberOfCheckboxes; i++){
+    checkboxSelections.push(0);
+  }
+  for(const username in classReflectionResponses) {
+    const userResponseList = classReflectionResponses[username];
+    // Array.filter() returns an array. There can only be one match, so use the result at index [0].
+    const searchResultArray = (userResponseList.filter(response => response.prompt === questionPrompt));
+    let response = 0;
+    if(searchResultArray.length) {
+      response = searchResultArray[0];
+    };
+    let checkboxBinary = response.checkboxResponse;
+    // iterate in reverse to get the right direction of checkboxes from bit shifting
+    for(let i=numberOfCheckboxes-1; i>=0; i--){
+      checkboxSelections[i] = checkboxSelections[i] + (checkboxBinary & 1);
+      checkboxBinary = checkboxBinary >> 1;
+    }
+  }
+  return checkboxSelections;
+}
+
 async function visualizeStudentReflectionData(modName, classId){
   $("#openEndedResponses").empty();
   $("#checkboxResponses").empty();
@@ -201,7 +248,7 @@ async function visualizeStudentReflectionData(modName, classId){
 
         const chartLabelArray = getCheckboxLabelArray(reflectionJsonData,modName,questionNumber);
         const numberOfCheckboxes = chartLabelArray.length;
-        const checkboxData = parseCheckboxSelectionsForQuestion(numberOfCheckboxes, classReflectionResponses, questionNumber, modReflectionData);
+        const checkboxData = parseClassCheckboxSelectionsForQuestion(questionNumber, numberOfCheckboxes, classReflectionResponses, modReflectionData);
         const ctxCheckbox = $(`#chart${questionNumber}`);
         const newChartCheckbox = new Chart(ctxCheckbox, {
             type: 'horizontalBar',
@@ -238,61 +285,15 @@ async function visualizeStudentReflectionData(modName, classId){
 }
 
 
-function parseCheckboxSelectionsForQuestion(numberOfCheckboxes, classReflectionResponses, questionNumber, modReflectionData){
-  console.log(`Number of checkboxes: ${numberOfCheckboxes}`);
-  console.log(`Question number: ${questionNumber}`)
-  const questionPrompt = modReflectionData[questionNumber].prompt;
-  console.log(`Prompt: ${questionPrompt}`)
-  const checkboxSelections = [];
-  for (let i=0; i<numberOfCheckboxes; i++){
-    checkboxSelections.push(0);
-  }
-  for(const username in classReflectionResponses) {
-    console.log(`username: ${username}`);
-    const userResponseList = classReflectionResponses[username];
-    // Array.filter() returns an array. There can only be one match, so use the result at index [0].
-    const searchResultArray = (userResponseList.filter(response => response.prompt === questionPrompt));
-    let response = 0;
-    if(searchResultArray.length) {
-      response = searchResultArray[0];
-    };
-    console.log(response)
-    let checkboxBinary = response.checkboxResponse;
-    // iterate in reverse to get the right direction of checkboxes from bit shifting
-    for(let i=numberOfCheckboxes-1; i>=0; i--){
-      checkboxSelections[i] = checkboxSelections[i] + (checkboxBinary & 1);
-      checkboxBinary = checkboxBinary >> 1;
-    }
-  }
-  return checkboxSelections;
-}
 
 $(window).on("load", async function(){
   $('#studentProgressText').hide();
   $('#progressTable').hide();
-  const ctx = $('#studentProgress');
-  const studentProgressChart = new Chart(ctx, {
-      type: 'doughnut',
-      data: {
-        datasets: [{
-            data: [0,0,1],
-            backgroundColor: [
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 99, 132, 1)',
-              'rgba(0, 0, 0, 0.1)'
-            ]
-        }],
-        labels: ["Completed", "Started but not completed", "Have not started"],
-
-      },
-      options: {
-        maintainAspectRatio: false
-      }
-  });
+  const studentProgressChart = initializeStudentProgressChart();
   $('.refreshModSelectionButton').on('click', function(){
     let modName = ($(".ui.selection.dropdown[name='moduleSelection']").dropdown('get value'));
     let classId = ($(".ui.selection.dropdown[name='classSelection']").dropdown('get value'));
-    visualizeStudentProgressData(studentProgressChart, modName, classId);
+    updateStudentProgressChart(studentProgressChart, modName, classId);
     visualizeStudentReflectionData(modName, classId);
   });
 });

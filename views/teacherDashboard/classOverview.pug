@@ -45,6 +45,8 @@ block content
         h5 Goes Here
 
 block scripts
+  - var n = '/user_portal/teacherDashboardTools.js?t=' + (new Date()).getTime().toString();
+  script(src=n)
   - var m = '/user_portal/classOverview.js?t=' + (new Date()).getTime().toString();
   script(src=m)
   script(src='/js/lib/chart.js') 

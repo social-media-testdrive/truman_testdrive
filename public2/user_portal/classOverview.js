@@ -1,20 +1,4 @@
-function setActiveMenuItem(){
-  const subdirectory1 = window.location.pathname.split('/')[1];
-  $('.teacherDashboardMenu .item[href$=' + subdirectory1 + ']').addClass('active');
-}
-
-$(window).on('load', function(){
-  setActiveMenuItem();
-  $('.ui.dropdown').dropdown();
-
-  $.get(`/classIdList`, function(data){
-    const classIdList = data.classIdList;
-    for (const id of classIdList) {
-     $(`<div class="item" data-value="${id}">${id}</div>`).appendTo( $('.ui.selection.dropdown[name="classSelection"] .menu') )
-    }
-  });
-
-  // initialize the bar graph
+function initializeStudentActivityBarChart(){
   const ctx = $('#studentActivityBarChart');
   var studentActivityBarChart = new Chart(ctx, {
       type: 'bar',
@@ -66,27 +50,16 @@ $(window).on('load', function(){
         }
       }
   });
+  return studentActivityBarChart;
+}
 
-  $('.refreshSelectionButton').on('click', function(){
-    let classId = ($(".ui.selection.dropdown[name='classSelection']").dropdown('get value'));
-    let classSize = 0;
-    let completedCounts = {};
-    let startedCounts = {};
-    if(classId) {
-      $.get(`/moduleProgress/${classId}`, function(data){
-        const moduleProgressData = data.classModuleProgress;
-        classSize = getNumberOfStudents(moduleProgressData);
-        startedCounts = getCountArray(moduleProgressData, 'started');
-        completedCounts = getCountArray(moduleProgressData, 'completed')
-      }).then(function(){
-        visualizeStudentProgress(studentActivityBarChart, classSize, startedCounts, completedCounts);
-      });
-    } else {
-      console.log('No selected class')
-    }
-
-  })
-})
+function getNumberOfStudents(progressData){
+  let count = 0;
+  for(const username in progressData){
+    count++;
+  }
+  return count;
+}
 
 function getNewModNameDictionary(){
   const modNameDictionary = {
@@ -118,15 +91,9 @@ function getCountArray(progressData, progressLabel){
   return startedCounts;
 }
 
-function getNumberOfStudents(progressData){
-  let count = 0;
-  for(const username in progressData){
-    count++;
-  }
-  return count;
-}
-
-function visualizeStudentProgress(chart, classSize, startedCounts, completedCounts){
+function updateChartValues(chart, classSize, startedCounts, completedCounts){
+  chart.options.scales.yAxes[0].ticks.suggestedMin = classSize;
+  chart.options.scales.yAxes[0].ticks.suggestedMax = classSize;
   chart.data.datasets[0].data = [
     startedCounts["accounts"],
     startedCounts["advancedlit"],
@@ -155,7 +122,50 @@ function visualizeStudentProgress(chart, classSize, startedCounts, completedCoun
     completedCounts["safeposting"],
     completedCounts["targeted"]
   ];
-  chart.options.scales.yAxes[0].ticks.suggestedMin = classSize;
-  chart.options.scales.yAxes[0].ticks.suggestedMax = classSize;
   chart.update();
 };
+
+function visualizeStudentActivityData(chart){
+  let classId = ($(".ui.selection.dropdown[name='classSelection']").dropdown('get value'));
+  let classSize = 0;
+  let completedCounts = {};
+  let startedCounts = {};
+  if(classId) {
+    $.get(`/moduleProgress/${classId}`, function(data){
+      const moduleProgressData = data.classModuleProgress;
+      classSize = getNumberOfStudents(moduleProgressData);
+      startedCounts = getCountArray(moduleProgressData, 'started');
+      completedCounts = getCountArray(moduleProgressData, 'completed')
+    }).then(function(){
+      updateChartValues(chart, classSize, startedCounts, completedCounts);
+    });
+  } else {
+    console.log('No selected class')
+  }
+}
+
+$(window).on('load', function(){
+  const studentActivityBarChart = initializeStudentActivityBarChart();
+  $('.refreshSelectionButton').on('click', function(){
+    visualizeStudentActivityData(studentActivityBarChart);
+  })
+
+  // $('.refreshSelectionButton').on('click', function(){
+  //   let classId = ($(".ui.selection.dropdown[name='classSelection']").dropdown('get value'));
+  //   let classSize = 0;
+  //   let completedCounts = {};
+  //   let startedCounts = {};
+  //   if(classId) {
+  //     $.get(`/moduleProgress/${classId}`, function(data){
+  //       const moduleProgressData = data.classModuleProgress;
+  //       classSize = getNumberOfStudents(moduleProgressData);
+  //       startedCounts = getCountArray(moduleProgressData, 'started');
+  //       completedCounts = getCountArray(moduleProgressData, 'completed')
+  //     }).then(function(){
+  //       updateChartValues(studentActivityBarChart, classSize, startedCounts, completedCounts);
+  //     });
+  //   } else {
+  //     console.log('No selected class')
+  //   }
+  // })
+})
