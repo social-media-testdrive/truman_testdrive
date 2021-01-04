@@ -42,8 +42,8 @@ block content
         | Download Table
 
 block scripts
-  script(src='/user_portal/teacherDashboard.js')
-
+  - var m = '/user_portal/studentReport.js?t=' + (new Date()).getTime().toString();
+  script(src=m)
   
 block styles
   link(rel='stylesheet', href='/css/teacherDashboard/classOverview.css')

@@ -12,7 +12,7 @@ exports.getClasses = (req, res) => {
   if (req.user.isInstructor) {
     Class.find({teacher: req.user.id}, (err, classes) => {
       //classes is array with all classes for this instructor
-      res.render('classes', { classes: classes });
+      res.render('teacherDashboard/classManagement', { classes: classes });
     });
   } else {
     res.redirect('/');
@@ -39,7 +39,7 @@ exports.getClass = (req, res, next) => {
         return next(myerr);
       }
 
-      res.render('class', { found_class: found_class});
+      res.render('teacherDashboard/viewClass', { found_class: found_class});
 
     });
   } else {
@@ -141,7 +141,7 @@ exports.postCreateClass = (req, res, next) => {
 
   if (errors) {
     req.flash('errors', errors);
-    return res.redirect('/classes');
+    return res.redirect('/classManagement');
   }
   // NOTE from Anna: should probably check that user isInstructor if not already checked
   User.findById(req.user.id, (err, user) => {
@@ -164,13 +164,13 @@ exports.postCreateClass = (req, res, next) => {
       }
       if (existingClass) {
         req.flash('errors', { msg: 'Class with that Access Code already exists. Try another Access Code.' });
-        return res.redirect('/classes');
+        return res.redirect('/classManagement');
       }
       new_class.save((err) => {
       if (err) {
         return next(err);
       }
-        res.redirect('/classes');
+        res.redirect('/classManagement');
       });
     });
 
@@ -186,7 +186,7 @@ exports.addStudentToClass = (req, res, next) => {
     }
     if(!existingClass) {
       req.flash('errors', {msg: `There was an issue finding the class name. Try again, or click "Contact Us" for assistance.`})
-      res.redirect(`/class/${req.body.classId}`);
+      res.redirect(`/viewClass/${req.body.classId}`);
     }
     User.findOne({username: req.body.studentUsername}, (err, student) => {
       if(err){
@@ -194,7 +194,7 @@ exports.addStudentToClass = (req, res, next) => {
       }
       if(!student){
         req.flash('errors', {msg: `No students found with the username '${req.body.studentUsername}'.`})
-        res.redirect(`/class/${req.body.classId}`);
+        res.redirect(`/viewClass/${req.body.classId}`);
       }
       if(student){
         existingClass.students.push(student._id);
@@ -202,7 +202,7 @@ exports.addStudentToClass = (req, res, next) => {
           if (err) {
             return next(err);
           }
-          res.redirect(`/class/${req.body.classId}`);
+          res.redirect(`/viewClass/${req.body.classId}`);
         });
       }
     });
@@ -263,7 +263,7 @@ exports.generateStudentAccounts = async (req, res, next) => {
 
     if(!existingClass) {
       req.flash('errors', {msg: `There was an issue finding the class name. Try again, or click "Contact Us" for assistance.`})
-      res.redirect(`/class/${req.body.accessCode}`);
+      res.redirect(`/viewClass/${req.body.accessCode}`);
     }
 
     let adjectiveArray = [];
@@ -294,7 +294,7 @@ exports.generateStudentAccounts = async (req, res, next) => {
       req.flash('errors', {
         msg: `Each class can only have a maximum of ${maximumClassSize} students.`
       });
-      res.redirect(`/class/${req.body.accessCode}`);
+      res.redirect(`/viewClass/${req.body.accessCode}`);
     } else {
       let usernameArray = [];
       for(let i = 0; i < requestedNumberOfAccounts; i++) {
@@ -311,7 +311,7 @@ exports.generateStudentAccounts = async (req, res, next) => {
         if(err) {
           return next(err);
         }
-        res.redirect(`/class/${req.body.accessCode}`);
+        res.redirect(`/viewClass/${req.body.accessCode}`);
       });
     }
   });

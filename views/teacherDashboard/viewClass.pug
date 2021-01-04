@@ -1,16 +1,16 @@
-extends ui_layout
+extends ../ui_layout
 
 block content
 
   .sixteen.wide.column(style="padding-left:60px;") 
-    include partials/teacherDashboardMenu
+    include ../partials/teacherDashboardMenu
     br
     
     .ui.breadcrumb
-      a.section(href='/classes') Class Management
+      a.section(href='/classManagement') Class Management
       i.class.right.arrow.icon.divider
       .active.section=found_class.className
-    h3 Managing Class "#{found_class.className}"
+    h3 Viewing Class "#{found_class.className}"
     br
     table.ui.selectable.celled.padded.table
       thead
@@ -83,5 +83,4 @@ block content
 
       
 block scripts
-  script(src="/user_portal/classDetails.js")
-  script(src='/user_portal/teacherDashboard.js')
+  script(src="/user_portal/viewClass.js")

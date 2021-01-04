@@ -41,7 +41,7 @@ function getModuleProgressUserBreakdown(progressData, modName){
   return [completedUsers, startedUsers, noneUsers];
 }
 
-function visualizeStudentProgressData(modName, classId){
+function visualizeStudentProgressData(chart, modName, classId){
   let completedUsernames = [];
   let startedUsernames = [];
   let noneUsernames = [];
@@ -81,26 +81,9 @@ function visualizeStudentProgressData(modName, classId){
         `);
         $('#progressTable').show();
       }
-
-      const ctx = $('#studentProgress');
-      const myChart = new Chart(ctx, {
-          type: 'doughnut',
-          data: {
-            datasets: [{
-                data: [completedCount, startedCount, noneCount],
-                backgroundColor: [
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 99, 132, 1)',
-                  'rgba(0, 0, 0, 0.1)'
-                ]
-            }],
-            labels: ["Completed", "Started but not completed", "Have not started"],
-
-          },
-          options: {
-            maintainAspectRatio: false
-          }
-      });
+      // update the chart
+      chart.data.datasets[0].data = [completedCount, startedCount, noneCount];
+      chart.update();
     });
   } else {
     console.log('Missing a selection')
@@ -287,10 +270,29 @@ function parseCheckboxSelectionsForQuestion(numberOfCheckboxes, classReflectionR
 $(window).on("load", async function(){
   $('#studentProgressText').hide();
   $('#progressTable').hide();
+  const ctx = $('#studentProgress');
+  const studentProgressChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        datasets: [{
+            data: [0,0,1],
+            backgroundColor: [
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 99, 132, 1)',
+              'rgba(0, 0, 0, 0.1)'
+            ]
+        }],
+        labels: ["Completed", "Started but not completed", "Have not started"],
+
+      },
+      options: {
+        maintainAspectRatio: false
+      }
+  });
   $('.refreshModSelectionButton').on('click', function(){
     let modName = ($(".ui.selection.dropdown[name='moduleSelection']").dropdown('get value'));
     let classId = ($(".ui.selection.dropdown[name='classSelection']").dropdown('get value'));
-    visualizeStudentProgressData(modName, classId);
+    visualizeStudentProgressData(studentProgressChart, modName, classId);
     visualizeStudentReflectionData(modName, classId);
   });
 });

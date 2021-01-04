@@ -22,7 +22,7 @@ block content
     .ui.divider
     .row.addMargin
       .ui.basic.segment
-        canvas#myChart(width="400" height="400")
+        canvas#studentActivityBarChart(width="400" height="400")
         
     .row.centerText
       h2
@@ -45,7 +45,8 @@ block content
         h5 Goes Here
 
 block scripts
-  script(src='/user_portal/teacherDashboard.js')
+  - var m = '/user_portal/classOverview.js?t=' + (new Date()).getTime().toString();
+  script(src=m)
   script(src='/js/lib/chart.js') 
 
   

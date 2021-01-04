@@ -1,12 +1,12 @@
-extends ui_layout
+extends ../ui_layout
 
 block content
 
   .sixteen.wide.column(style="padding-left:50px;") 
-    include partials/teacherDashboardMenu
+    include ../partials/teacherDashboardMenu
     
     .ui.breadcrumb
-      .active.section(href='/classes') Class Management
+      .active.section(href='/classManagement') Class Management
     br
     h3 Class List
     br
@@ -21,7 +21,7 @@ block content
         tbody
           tr
             td.classNameColumn
-              a.item(href='/class/'+u.accessCode)=u.className
+              a.item(href='/viewClass/'+u.accessCode)=u.className
             td=u.accessCode
             td=u.students.length
             td
@@ -35,7 +35,7 @@ block content
       i.close.icon
       .header Create New Class
       .content
-        form#classform.ui.form(action='/classes', method='POST')
+        form#classform.ui.form(action='/createNewClass', method='POST')
           input(type='hidden', name='_csrf', value=csrfToken)
           .field
             label(for='classname') Class Name
@@ -65,8 +65,7 @@ block content
         input.ui.green.button(type='submit', value='Submit', form='addStudentForm')
 
 block scripts
-  script(src="/user_portal/classList.js")
-  script(src='/user_portal/teacherDashboard.js')
+  script(src="/user_portal/classManagement.js")
   
           
 block styles
