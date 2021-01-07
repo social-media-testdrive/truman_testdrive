@@ -98,6 +98,24 @@ function parseClassCheckboxSelectionsForQuestion(questionNumber, numberOfCheckbo
   return checkboxSelections;
 }
 
+function appendGroupedCheckboxTypeHtml(questionNumber, itemNumber, questionData){
+  const cdn = "https://dhpd030vnpk29.cloudfront.net";
+  $("#groupedCheckboxResponses").append(`
+    <div class="row addMargin">
+      <div class="ui items">
+        <div class="item">
+          <div class="middle aligned content">
+            <img src=${cdn}${questionData.groupImages[itemNumber]} style='width:100px;height:100px;'>
+          </div>
+          <div class="ui image">
+            <canvas id="groupedCheckboxChart${itemNumber}" width="700" height="200">
+          </div>
+        </div>
+      </div>
+    </div>
+  `)
+}
+
 function appendCheckboxTypeHtml(questionNumber, questionData){
   $("#checkboxResponses").append(`
     <div class="row">
@@ -111,8 +129,8 @@ function appendCheckboxTypeHtml(questionNumber, questionData){
   `);
 }
 
-function createCheckboxTypeChart(questionNumber, chartLabelArray, studentCount, checkboxData){
-  const ctxCheckbox = $(`#chart${questionNumber}`);
+function createCheckboxTypeChart(chartId, chartLabelArray, studentCount, checkboxData){
+  const ctxCheckbox = $(chartId);
   const newChartCheckbox = new Chart(ctxCheckbox, {
       type: 'horizontalBar',
       data: {
@@ -197,12 +215,16 @@ async function visualizeStudentReflectionData(modName, classId){
   // clear any existing charts
   $("#openEndedResponses").empty();
   $("#checkboxResponses").empty();
+  $("#groupedCheckboxResponses").empty();
   // append section labels
   $("#openEndedResponses").append(`
     <h4> Students' answers to the open-ended questions:</h4>
   `)
   $("#checkboxResponses").append(`
     <h4> Students' answers to the checkbox questions:</h4>
+  `)
+  $("#groupedCheckboxResponses").append(`
+    <h4> Students' answers to the grouped checkbox questions:</h4>
   `)
   const reflectionJsonData = await $.getJSON("/json/reflectionSectionData.json");
   const dbData = await $.get(`/classReflectionResponses/${classId}`);
@@ -215,18 +237,42 @@ async function visualizeStudentReflectionData(modName, classId){
     const questionData = modReflectionData[questionNumber];
 
     switch (questionData.type){
-      case "written":
+      case "written": {
         const responseCount = countResponsesToPrompt(questionData.prompt, classReflectionResponses);
         appendWrittenTypeHtml(questionNumber, questionData, responseCount);
         createWrittenTypeChart(questionNumber, studentCount, responseCount);
         break;
-      case "checkbox":
+      }
+      case "checkbox": {
         const chartLabelArray = getCheckboxLabelArray(reflectionJsonData,modName,questionNumber);
         const numberOfCheckboxes = chartLabelArray.length;
         const checkboxData = parseClassCheckboxSelectionsForQuestion(questionNumber, numberOfCheckboxes, classReflectionResponses, modReflectionData);
         appendCheckboxTypeHtml(questionNumber, questionData);
-        createCheckboxTypeChart(questionNumber, chartLabelArray, studentCount, checkboxData);
+        const chartId = `#chart${questionNumber}`;
+        createCheckboxTypeChart(chartId, chartLabelArray, studentCount, checkboxData);
         break;
+      }
+      case "checkboxGrouped": {
+        const numberOfGroups = modReflectionData[questionNumber].groupCount;
+        const chartLabelArray = getCheckboxLabelArray(reflectionJsonData,modName,questionNumber);
+        const checkboxesPerGroup = chartLabelArray.length;
+        const totalNumberOfCheckboxes = numberOfGroups * chartLabelArray.length;
+        $("#groupedCheckboxResponses").append(`
+          <div class="row addMargin">
+            <h4>${questionNumber}. ${questionData.prompt}</h4>
+          </div>
+        `);
+        const allGroupsCheckboxData = parseClassCheckboxSelectionsForQuestion(questionNumber, totalNumberOfCheckboxes, classReflectionResponses, modReflectionData);
+        for (let i=0; i<numberOfGroups; i++){
+          const sliceStart = i*checkboxesPerGroup;
+          const sliceEnd = sliceStart + checkboxesPerGroup
+          const subgroupCheckboxData = allGroupsCheckboxData.slice(sliceStart,sliceEnd);
+          appendGroupedCheckboxTypeHtml(questionNumber, i, questionData);
+          const chartId = `#groupedCheckboxChart${i}`;
+          createCheckboxTypeChart(chartId, chartLabelArray, studentCount, subgroupCheckboxData);
+        }
+        break;
+      }
     }
   }
 }

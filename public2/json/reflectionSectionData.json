@@ -169,18 +169,16 @@
       "type": "checkboxGrouped",
       "prompt": "How did you respond to these posts that were phishing scams?",
       "checkboxLabels": {
-        "1A": "I flagged the post.",
-        "1B": "I clicked on the link.",
-        "1C": "I ignored the post.",
-        "1D": "I did something else.",
-        "2A": "I flagged the post.",
-        "2B": "I clicked on the link.",
-        "2C": "I ignored the post.",
-        "2D": "I did something else.",
-        "3A": "I flagged the post.",
-        "3B": "I clicked on the link.",
-        "3C": "I ignored the post.",
-        "3D": "I did something else."
+        "0": "I flagged the post.",
+        "1": "I clicked on the link.",
+        "2": "I ignored the post.",
+        "3": "I did something else."
+      },
+      "groupCount": "3",
+      "groupImages": {
+        "0": "/post_pictures/nintendo_phi.jpg",
+        "1": "/post_pictures/accountrisk_phi.png",
+        "2": "/post_pictures/giftcard_phi.jpg"
       }
     },
     "Q2": {
