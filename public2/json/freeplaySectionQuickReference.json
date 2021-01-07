@@ -1,0 +1,88 @@
+{
+  "advancedlit": {
+    "modals": "false",
+    "customContent": "false"
+  },
+  "cyberbullying": {
+    "modals": "false",
+    "customContent": "false"
+  },
+  "digfoot": {
+    "modals": "true",
+    "modalInfo": {
+      "0": {
+        "modalName": "digfoot_normalPostModal",
+        "label": "Clicked Post"
+      }
+    },
+    "customContent": "false"
+  },
+  "digital-literacy": {
+    "modals": "true",
+    "modalInfo": {
+      "0": {
+        "modalName": "digital-literacy_articleModal",
+        "label": "Clicked on Article"
+      },
+      "1": {
+        "modalName": "digital-literacy_articleInfoModal",
+        "label": "Checked Source Information"
+      },
+      "2": {
+        "modalName": "digital-literacy_flagModal",
+        "label": "flagged"
+      }
+    },
+    "customContent": "false"
+  },
+  "esteem": {
+    "modals": "true",
+    "modalInfo": {
+      "0": {
+        "modalName": "esteem_postModal",
+        "label": "Clicked Post"
+      }
+    },
+    "customContent": "true"
+  },
+  "habits": {
+    "modals": "false",
+    "customContent": "false"
+  },
+  "phishing": {
+    "modals": "true",
+    "modalInfo": {
+      "0": {
+        "modalName": "phishing_creditCardScam",
+        "label": "Clicked Link"
+      }
+    },
+    "customContent": "false"
+  },
+  "presentation": {
+    "modals": "false",
+    "customContent": "false"
+  },
+  "privacy": {
+    "modals": "false",
+    "customContent": "false"
+  },
+  "safe-posting": {
+    "modals": "false",
+    "customContent": "false"
+  },
+  "targeted": {
+    "modals": "true",
+    "modalInfo": {
+      "0": {
+        "modalName": "targeted_whyAdModal",
+        "label": "Checked Why I Am Seeing This Ad"
+      },
+      "1": {
+        "modalName": "targeted_hideAdModal",
+        "label": "Hid Ad"
+      }
+    },
+    "customContent": "true"
+  }
+}

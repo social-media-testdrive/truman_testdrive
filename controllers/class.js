@@ -93,6 +93,41 @@ exports.getModuleProgress = (req, res, next) => {
   });
 };
 
+exports.getClassFreeplayActions = (req, res, next) => {
+  if (!req.user.isInstructor) {
+    return res.json({classFreeplayActions: {}});
+  }
+  Class.findOne({
+    accessCode: req.params.classId,
+    teacher: req.user.id
+  }).populate('students')
+  .exec(function (err, found_class){
+    if (err) {
+      console.log("ERROR");
+      console.log(err);
+      return next(err);
+    }
+    if (found_class == null){
+      console.log("NULL");
+      var myerr = new Error('Class not found!');
+      return next(myerr);
+    }
+    const outputData = {};
+    for(const student of found_class.students){
+      const actionList = [];
+      for(const actions of student.feedAction){
+        if(actions.modual === req.params.modName){
+          actionList.push(actions);
+        }
+        outputData[student.username] = actionList;
+      }
+    }
+    res.json({
+      classFreeplayActions: outputData
+    });
+  });
+}
+
 // Show info on a class such as: student activity
 exports.getReflectionResponses = (req, res, next) => {
   if (!req.user.isInstructor) {

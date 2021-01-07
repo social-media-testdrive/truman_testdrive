@@ -396,6 +396,56 @@ function visualizeStudentProgressData(studentProgressChart, modName, classId){
 
 }
 
+function calculateTotalActionCount(actions){
+  let actionSum = 0;
+  if(actions.liked){
+    actionSum++;
+  }
+  if(actions.flagged){
+    actionSum++;
+  }
+  if(actions.comments.length){
+    actionSum++;
+  }
+  if(actions.modal.length){
+    actionSum++;
+  }
+  return actionSum;
+}
+
+function getTopThreePosts(classFreeplayActions){
+  const classwideTotals = {};
+  for(const username in classFreeplayActions) {
+    for(const actions of classFreeplayActions[username]){
+      actions.totalActionCount = calculateTotalActionCount(actions);
+      if(classwideTotals[actions.post]){
+        classwideTotals[actions.post] = classwideTotals[actions.post] + actions.totalActionCount;
+      } else {
+        classwideTotals[actions.post] = actions.totalActionCount;
+      }
+    }
+  }
+  // change to array and sort
+  // references:
+  // https://stackoverflow.com/a/1069840
+  // https://stackoverflow.com/a/38824395
+  const sortableArray = Object.keys(classwideTotals).map((key) => [key, classwideTotals[key]]);
+  sortableArray.sort(function(a, b) {
+      return b[1] - a[1];
+  });
+  // from largest at [0] to third largest at [2]
+  const topPosts = [sortableArray[0][0],sortableArray[1][0],sortableArray[2][0]];
+  return topPosts;
+}
+
+async function visualizeFreeplayActivity(modName, classId){
+  const allFreeplayContentInfo = await $.getJSON("/json/freeplaySectionQuickReference.json");
+  const freeplayContentInfo = allFreeplayContentInfo[modName];
+  const dbData = await $.get(`/classFreeplayActions/${classId}/${modName}`);
+  const classFreeplayActions = dbData.classFreeplayActions;
+  const topPosts = getTopThreePosts(classFreeplayActions);
+}
+
 $(window).on("load", async function(){
   $('#studentProgressText').hide();
   $('#progressTable').hide();
@@ -405,5 +455,6 @@ $(window).on("load", async function(){
     let classId = ($(".ui.selection.dropdown[name='classSelection']").dropdown('get value'));
     visualizeStudentProgressData(studentProgressChart, modName, classId);
     visualizeStudentReflectionData(modName, classId);
+    visualizeFreeplayActivity(modName, classId);
   });
 });

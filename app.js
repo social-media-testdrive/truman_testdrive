@@ -605,10 +605,11 @@ app.post('/habitsTimer', passportConfig.isAuthenticated, check, csrfProtection, 
 //postDeleteAccount
 //app.post('/deleteAccount', passportConfig.isAuthenticated, userController.getDeleteAccount);
 app.get('/delete', passportConfig.isAuthenticated, userController.getDeleteAccount);
-app.post('/moduleProgress', passportConfig.isAuthenticated, check, csrfProtection, userController.postUpdateModuleProgress)
+app.post('/moduleProgress', passportConfig.isAuthenticated, check, csrfProtection, userController.postUpdateModuleProgress);
 app.get('/moduleProgress/:classId', passportConfig.isAuthenticated, classController.getModuleProgress);
-app.get('/classReflectionResponses/:classId', passportConfig.isAuthenticated, classController.getReflectionResponses)
-app.get('/classIdList', passportConfig.isAuthenticated, classController.getClassIdList)
+app.get('/classReflectionResponses/:classId', passportConfig.isAuthenticated, classController.getReflectionResponses);
+app.get('/classFreeplayActions/:classId/:modName', passportConfig.isAuthenticated, classController.getClassFreeplayActions);
+app.get('/classIdList', passportConfig.isAuthenticated, classController.getClassIdList);
 /**
  * Error Handler.
  */
