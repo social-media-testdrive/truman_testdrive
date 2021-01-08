@@ -22,7 +22,11 @@ var schedule = require('node-schedule');
 const aws = require('aws-sdk');
 //multer is how we send files (like images) thru web forms
 const multer = require('multer');
-const csrf = require('csurf')
+const csrf = require('csurf');
+const fs = require('fs');
+const util = require('util');
+fs.readFileAsync = util.promisify(fs.readFile);
+
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
@@ -453,10 +457,17 @@ app.get('/tut_guide/:modId', passportConfig.isAuthenticated, csrfProtection, add
   });
 });
 
-app.get('/results/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
+app.get('/results/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, async function (req, res) {
+  let reflectionData;
+  if(req.params.modId === "phishing"){
+    const data = await fs.readFileAsync(`${__dirname}/public2/json/reflectionSectionData.json`)
+    reflectionData = JSON.parse(data.toString());
+  }
   //console.log(req.param("modId") + '/' + req.param("modId")+'_results')
-  res.render(req.param("modId") + '/' + req.param("modId")+'_results', {
-    title: 'Reflection'
+  console.log(reflectionData)
+  res.render(req.params.modId + '/' + req.params.modId +'_results', {
+    title: 'function test',
+    reflectionData
   });
 });
 
