@@ -75,11 +75,13 @@ passport.use('instructor-local', new LocalStrategy({
 
 exports.isAuthenticated = (req, res, next) => {
   const mod = req.path.split('/').slice(-1)[0];
-  if (req.isAuthenticated()) {
+  const isResearchVersion = process.env.isResearchVersion === "true";
+  console.log(isResearchVersion)
+  if ((!isResearchVersion && (req.path === "/" || req.path.startsWith("/intro"))) || req.isAuthenticated()) {
     return next();
   }
   // redirect to the login page if not authenticated
-  res.redirect('/login');
+  res.redirect(isResearchVersion ? '/login' : '/');
 };
 
 /**

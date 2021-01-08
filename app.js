@@ -502,40 +502,44 @@ app.get('/gaming/targeted', passportConfig.isAuthenticated, csrfProtection, addC
 });
 
 
-//Classes
-app.get('/classManagement', passportConfig.isAuthenticated, csrfProtection, addCsrf, classController.getClasses);
-app.get('/viewClass/:classId', passportConfig.isAuthenticated,  csrfProtection, addCsrf, classController.getClass);
-app.post('/createNewClass', passportConfig.isAuthenticated, check, csrfProtection, classController.postCreateClass);
-app.post('/addStudentToClass', passportConfig.isAuthenticated, check, csrfProtection, classController.addStudentToClass);
-app.post('/generateStudentAccounts', passportConfig.isAuthenticated, check, csrfProtection, classController.generateStudentAccounts);
+const enableTeacherDashboard = process.env.enableTeacherDashboard;
+if(enableTeacherDashboard){
+  //Classes
+  app.get('/classManagement', passportConfig.isAuthenticated, csrfProtection, addCsrf, classController.getClasses);
+  app.get('/viewClass/:classId', passportConfig.isAuthenticated,  csrfProtection, addCsrf, classController.getClass);
+  app.post('/createNewClass', passportConfig.isAuthenticated, check, csrfProtection, classController.postCreateClass);
+  app.post('/addStudentToClass', passportConfig.isAuthenticated, check, csrfProtection, classController.addStudentToClass);
+  app.post('/generateStudentAccounts', passportConfig.isAuthenticated, check, csrfProtection, classController.generateStudentAccounts);
 
 
-// Rendering Pages for the Teacher dashboard
-// *********************************************
-// The class overview for the teacher dashboard
-app.get('/classOverview', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
-  //console.log('privacy/privacy_settings')
-  res.render('teacherDashboard/classOverview', {
-    title: 'Class Overview'
+  // Rendering Pages for the Teacher dashboard
+  // *********************************************
+  // The class overview for the teacher dashboard
+  app.get('/classOverview', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
+    //console.log('privacy/privacy_settings')
+    res.render('teacherDashboard/classOverview', {
+      title: 'Class Overview'
+    });
   });
-});
 
-// The module overview for the teacher dashboard
-app.get('/moduleOverview', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
-  //console.log('privacy/privacy_settings')
-  res.render('teacherDashboard/moduleOverview', {
-    title: 'Module Overview'
+  // The module overview for the teacher dashboard
+  app.get('/moduleOverview', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
+    //console.log('privacy/privacy_settings')
+    res.render('teacherDashboard/moduleOverview', {
+      title: 'Module Overview'
+    });
   });
-});
 
-// The module overview for the teacher dashboard
-app.get('/studentReport', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
-  //console.log('privacy/privacy_settings')
-  res.render('teacherDashboard/studentReport', {
-    title: 'Student Report'
+  // The module overview for the teacher dashboard
+  app.get('/studentReport', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
+    //console.log('privacy/privacy_settings')
+    res.render('teacherDashboard/studentReport', {
+      title: 'Student Report'
+    });
   });
-});
-// *********************************************
+  // *********************************************
+}
+
 
 //User's Page
 app.get('/me/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, userController.getMe);

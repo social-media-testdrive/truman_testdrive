@@ -36,7 +36,7 @@ function getStudentCount(classReflectionResponses){
 function countResponsesToPrompt(prompt, classReflectionResponses){
   let responseCount = 0;
   for (const username in classReflectionResponses) {
-    for (let i = 0; i < classReflectionResponses[username].length; i++) {
+    for (let i = 0, l = classReflectionResponses[username].length; i < l; i++) {
       if (classReflectionResponses[username][i].prompt === prompt) {
         // for written repsonses, only count it if not a blank response
         if (classReflectionResponses[username][i].type === 'written'){
@@ -51,12 +51,13 @@ function countResponsesToPrompt(prompt, classReflectionResponses){
 }
 
 // Used to determine axis labels in reflection bar graphs.
-function getCheckboxLabelArray(reflectionJsonData,modName,question){
-  const labelArray = [];
-  for(const checkboxLabel in reflectionJsonData[modName][question].checkboxLabels){
-    labelArray.push(reflectionJsonData[modName][question].checkboxLabels[checkboxLabel]);
-  }
-  return labelArray;
+function getCheckboxLabelArray(reflectionJsonData, modName, question){
+  // const labelArray = [];
+  // for(const checkboxLabel in reflectionJsonData[modName][question].checkboxLabels){
+  //   labelArray.push(reflectionJsonData[modName][question].checkboxLabels[checkboxLabel]);
+  // }
+  // return labelArray;
+  return Object.values(reflectionJsonData[modName][question].checkboxLabels)
 }
 
 // Parse the class's checkbox-type responses to a question into a format that
@@ -78,6 +79,7 @@ function parseClassCheckboxSelectionsForQuestion(questionNumber, numberOfCheckbo
   for(const username in classReflectionResponses) {
     const userResponseList = classReflectionResponses[username];
     // Array.filter() returns an array. There can only be one match, so use the result at index [0].
+    // TODO: use loop w/ break instead, better efficiency
     const searchResultArray = (userResponseList.filter(response => response.prompt === questionPrompt));
     let response = 0;
     if(searchResultArray.length) {
@@ -140,7 +142,6 @@ function createCheckboxTypeChart(chartId, chartLabelArray, studentCount, checkbo
             borderColor: 'rgba(54, 162, 235, 1)',
         }],
         labels: chartLabelArray,
-
       },
       options: {
         legend: {
@@ -285,9 +286,9 @@ function updateStudentProgressChart(chart, completedCount, startedCount, noneCou
 function updateStudentProgressTable(completedUsernames, startedUsernames, noneUsernames){
   const maxLength = getMaxLength(completedUsernames, startedUsernames, noneUsernames);
   for (let i = 0; i < maxLength; i++) {
-    let completed = getValueAtIndex(completedUsernames, i);
-    let started = getValueAtIndex(startedUsernames, i);
-    let none = getValueAtIndex(noneUsernames, i);
+    let completed = completedUsernames[i] || "";
+    let started = startedUsernames[i] || "";
+    let none = noneUsernames[i] || "";
     $("#fillProgressTableBody").append(`
       <tr>
         <td data-label='Completed'>${completed}</td>
@@ -295,8 +296,8 @@ function updateStudentProgressTable(completedUsernames, startedUsernames, noneUs
         <td data-label='None'>${none}</td>
       </tr>
     `);
-    $('#progressTable').show();
   }
+  $('#progressTable').show();
 }
 
 function updateStudentProgressText(completedCount, startedCount, noneCount){
@@ -308,15 +309,16 @@ function updateStudentProgressText(completedCount, startedCount, noneCount){
   $('#studentProgressText').show();
 }
 
-// Used when filling the student progress table
-// Want to return an empty string if accessing an out-of-bounds index
-function getValueAtIndex(array, index){
-  if(array[index] === undefined){
-    return "";
-  } else {
-    return array[index];
-  }
-}
+// // Used when filling the student progress table
+// // Want to return an empty string if accessing an out-of-bounds index
+// function getValueAtIndex(array, index){
+//   return array[index] || "";
+//   // if(array[index] === undefined){
+//   //   return "";
+//   // } else {
+//   //   return array[index];
+//   // }
+// }
 
 // Takes exactly three lists as inputs
 // Return value is used to determine number of rows in student progress table
@@ -328,7 +330,7 @@ function getMaxLength(listOne, listTwo, listThree){
   if(listThree.length > returnValue){
      returnValue = listThree.length;
   }
-  return  returnValue;
+  return returnValue;
 }
 
 // Breaks down the progress data into three lists that indicate each user's status in a module
