@@ -52,11 +52,6 @@ function countResponsesToPrompt(prompt, classReflectionResponses){
 
 // Used to determine axis labels in reflection bar graphs.
 function getCheckboxLabelArray(reflectionJsonData, modName, question){
-  // const labelArray = [];
-  // for(const checkboxLabel in reflectionJsonData[modName][question].checkboxLabels){
-  //   labelArray.push(reflectionJsonData[modName][question].checkboxLabels[checkboxLabel]);
-  // }
-  // return labelArray;
   return Object.values(reflectionJsonData[modName][question].checkboxLabels)
 }
 
@@ -440,12 +435,114 @@ function getTopThreePosts(classFreeplayActions){
   return topPosts;
 }
 
+
+function appendFreeplayRankingHtml(ranking, imageName, postText){
+  const cdn = "https://dhpd030vnpk29.cloudfront.net";
+  $("#topPosts").append(`
+    <div class="row addMargin">
+      <div class="ui items">
+        <div class="item">
+          <div class="ui fluid card">
+            <div class="img post">
+              <img src="${cdn}/post_pictures/${imageName}" style="max-width:100%">
+            </div>
+            <div class="content">
+              <div class="description">${postText}</div>
+            </div>
+          </div>
+          <div class="ui image">
+            <canvas id="topPost${ranking}" width="700" height="200">
+          </div>
+        </div>
+      </div>
+    </div>
+  `)
+}
+
+function getRankingChartLabels(modName, freeplayContentInfo){
+  let labelArray = ['Liked', 'Flagged', 'Replied', 'Interacted with Comments'];
+  // TODO: this works, now figure out how to get the data
+  // if(freeplayContentInfo.modals){
+  //   for (const modalType in freeplayContentInfo.modalInfo){
+  //     labelArray.push(freeplayContentInfo.modalInfo[modalType].label);
+  //   }
+  // }
+  return labelArray;
+}
+
+function getRankingChartData(postId, classFreeplayActions){
+  // TODO: make this dynamic
+  const actionData = [0,0,0,0];
+  for(const username in classFreeplayActions) {
+    for(const actions of classFreeplayActions[username]){
+      if (actions.post === postId) {
+        if (actions.liked) {
+          actionData[0]++;
+        }
+        if (actions.flagged) {
+          actionData[1]++;
+        }
+        // TODO: Make this distinguish between leaving reply and interaction with existing
+        if (actions.comments.length) {
+          actionData[2]++;
+          actionData[3]++;
+        }
+      }
+    }
+  }
+  console.log(actionData);
+  return actionData;
+}
+
+// TODO: get student count.
+function createFreeplayRankingChart(i, chartLabels, chartData){
+  const ctxCheckbox = $(`#topPost${i}`);
+  const newChartCheckbox = new Chart(ctxCheckbox, {
+      type: 'horizontalBar',
+      data: {
+        datasets: [{
+            data: chartData,
+            backgroundColor: 'rgba(54, 162, 235, 1)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+        }],
+        labels: chartLabels,
+      },
+      options: {
+        legend: {
+          display: false
+        },
+        maintainAspectRatio: false,
+        responsive: true,
+        scales: {
+          xAxes: [{
+            ticks: {
+              stepSize: 1,
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+  });
+}
+
 async function visualizeFreeplayActivity(modName, classId){
   const allFreeplayContentInfo = await $.getJSON("/json/freeplaySectionQuickReference.json");
   const freeplayContentInfo = allFreeplayContentInfo[modName];
   const dbData = await $.get(`/classFreeplayActions/${classId}/${modName}`);
   const classFreeplayActions = dbData.classFreeplayActions;
   const topPosts = getTopThreePosts(classFreeplayActions);
+  // For each post, visualize the data
+  let i = 0;
+  for(const postId of topPosts){
+    const singlePostJson = await $.get(`/singlePost/${postId}`);
+    const post = singlePostJson.post;
+    console.log(post);
+    appendFreeplayRankingHtml(i, post.picture, post.body);
+    const chartLabels = getRankingChartLabels(modName, freeplayContentInfo);
+    const chartData = getRankingChartData(postId, classFreeplayActions);
+    createFreeplayRankingChart(i, chartLabels, chartData);
+    i++;
+  }
 }
 
 $(window).on("load", async function(){

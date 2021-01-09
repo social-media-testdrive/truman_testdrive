@@ -43,6 +43,28 @@ exports.getNotificationTimes = (req, res) => {
 };
 
 
+
+/*
+ GET /getSinglePost/:postId
+ Get a single post
+*/
+exports.getSinglePost = (req, res, next) => {
+  Script.findById(req.params.postId)
+  .exec(function(err, post){
+    if (err) {
+      console.log("ERROR");
+      console.log(err);
+      return next(err);
+    }
+    if (post == null){
+      console.log("NULL");
+      var myerr = new Error('Post not found!');
+      return next(myerr);
+    }
+    res.json({post:post});
+  })
+}
+
 /**
  * GET /
  * List of Script posts for Feed

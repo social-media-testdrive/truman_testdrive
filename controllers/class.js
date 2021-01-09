@@ -38,7 +38,7 @@ exports.getClass = (req, res, next) => {
         var myerr = new Error('Class not found!');
         return next(myerr);
       }
-
+      
       res.render('teacherDashboard/viewClass', { found_class: found_class});
 
     });

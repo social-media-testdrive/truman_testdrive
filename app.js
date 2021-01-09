@@ -523,6 +523,7 @@ if(enableTeacherDashboard){
   });
 
   // The module overview for the teacher dashboard
+  app.get('/singlePost/:postId', passportConfig.isAuthenticated, csrfProtection, addCsrf, scriptController.getSinglePost);
   app.get('/moduleOverview', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
     //console.log('privacy/privacy_settings')
     res.render('teacherDashboard/moduleOverview', {
