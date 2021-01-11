@@ -64,18 +64,21 @@
       "type": "checkboxGrouped",
       "prompt": "How would the following posts have a negative impact on digital footprints?",
       "checkboxLabels": {
-        "1A": "The poster was oversharing.",
-        "1B": "The poster was sharing something that they might later regret.",
-        "1C": "The post was not considerate of other people’s digital footprints.",
-        "1D": "This was a responsible post.",
-        "2A": "The poster was oversharing.",
-        "2B": "The poster was sharing something that they might later regret.",
-        "2C": "The post was not considerate of other people’s digital footprints.",
-        "2D": "This was a responsible post.",
-        "3A": "The poster was oversharing.",
-        "3B": "The poster was sharing something that they might later regret.",
-        "3C": "The post was not considerate of other people’s digital footprints.",
-        "3D": "This was a responsible post."
+        "1": "The poster was oversharing.",
+        "2": "The poster was sharing something that they might later regret.",
+        "3": "The post was not considerate of other people’s digital footprints.",
+        "4": "This was a responsible post."
+      },
+      "groupCount": "3",
+      "groupPostImages": {
+        "0": "/post_pictures/angrycat.jpg",
+        "1": "/post_pictures/facepalm.jpg",
+        "2": "/post_pictures/backtoschool.jpg"
+      },
+      "groupPostDescriptions": {
+        "0": "Does this cat remind anyone else of Mrs. Lee?? She's always glaring at us lol. Why does she have to suck SO MUCH",
+        "1": "Lol Danny didn't want me telling anyobody but he tripped over a rock and twisted his ankle. He is literally a meme.",
+        "2": "First day of grade 7! come over to my house at 22 Eastwood dr if you want to hang"
       }
     },
     "Q2": {
@@ -92,15 +95,20 @@
       "type": "checkboxGrouped",
       "prompt": "Did you notice any signs of fake news in these posts?",
       "checkboxLabels": {
-        "1A": "They had clickbait headlines and wild images.",
-        "1B": "They had spelling mistakes or dramatic punctuation.",
-        "1C": "They were from a suspicious website.",
-        "2A": "They had clickbait headlines and wild images.",
-        "2B": "They had spelling mistakes or dramatic punctuation.",
-        "2C": "They were from a suspicious website.",
-        "3A": "They had clickbait headlines and wild images.",
-        "3B": "They had spelling mistakes or dramatic punctuation.",
-        "3C": "They were from a suspicious website."
+        "1": "They had clickbait headlines and wild images.",
+        "2": "They had spelling mistakes or dramatic punctuation.",
+        "3": "They were from a suspicious website."
+      },
+      "groupCount": "3",
+      "groupPostImages": {
+        "0": "/post_pictures/fakenews1.png",
+        "1": "/post_pictures/fakenews2.png",
+        "2": "/post_pictures/fakenews3.png"
+      },
+      "groupPostDescriptions": {
+        "0": "Breaking News: Driving age just lowered to 12. DMV flooded with road test appointments and car companies cannot keep their newest models off the road.",
+        "1": "Craving a donut? Think again! Scientists found that donuts are the leading cause of cancer in young children 😳",
+        "2": "You'll never guess what these are!!!"
       }
     },
     "Q2": {

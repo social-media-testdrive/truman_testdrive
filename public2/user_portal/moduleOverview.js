@@ -334,6 +334,8 @@ function getMaxLength(listOne, listTwo, listThree){
 // startedUsers - array of the usernames of students who started the module
 // noneUsers - array of the usernames of students who have no progress the module
 function getUserStatusesBreakdown(progressData, modName){
+  // remove dashes from modName
+  modName = modName.replace('-','');
   let completedUsers = [];
   let startedUsers = [];
   let noneUsers = [];
@@ -428,7 +430,15 @@ function getTopThreePosts(classFreeplayActions){
       return b[1] - a[1];
   });
   // from largest at [0] to third largest at [2]
-  const topPosts = [sortableArray[0][0],sortableArray[1][0],sortableArray[2][0]];
+  let topPosts;
+  if(sortableArray.length >= 3){
+    topPosts = [sortableArray[0][0],sortableArray[1][0],sortableArray[2][0]];
+  } else {
+    topPosts = [];
+    for(let i=0; i<sortableArray.length; i++){
+      topPosts.push(sortableArray[i][0]);
+    }
+  }
   return topPosts;
 }
 
@@ -456,7 +466,26 @@ function appendFreeplayRankingHtml(ranking, imageName, postText){
   `)
 }
 
-function getRankingChartLabels(modName, freeplayContentInfo){
+function updateRankingChartModalData(postId, chartLabels, chartData, freeplayContentInfo, classFreeplayActions){
+  for (const modalType in freeplayContentInfo.modalInfo){
+    chartLabels.push(freeplayContentInfo.modalInfo[modalType].label);
+    chartData.push(0);
+    const modalName = freeplayContentInfo.modalInfo[modalType].modalName;
+    for(const username in classFreeplayActions) {
+      for(const actions of classFreeplayActions[username]){
+        if ((actions.post === postId) && actions.modal.length) {
+          for(const modal of actions.modal){
+            if(modal.modalName === modalName) {
+              chartData[chartData.length - 1]++;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+function getRankingChartBasicLabels(modName, freeplayContentInfo){
   let labelArray = ['Liked', 'Flagged', 'Replied', 'Interacted with Comments'];
   // TODO: this works, now figure out how to get the modal data
   // if(freeplayContentInfo.modals){
@@ -467,10 +496,12 @@ function getRankingChartLabels(modName, freeplayContentInfo){
   return labelArray;
 }
 
-function getRankingChartData(postId, classFreeplayActions){
-  // TODO: make this dynamic
+function getRankingChartBasicData(chartLabels, postId, classFreeplayActions){
   // TODO: include modal actions
-  const actionData = [0,0,0,0];
+  let actionData = [];
+  for (let i=0, j=chartLabels.length; i<j; i++){
+    actionData.push(0);
+  }
   for(const username in classFreeplayActions) {
     for(const actions of classFreeplayActions[username]){
       if (actions.post === postId) {
@@ -491,6 +522,7 @@ function getRankingChartData(postId, classFreeplayActions){
             }
           }
         }
+
       }
     }
   }
@@ -498,7 +530,6 @@ function getRankingChartData(postId, classFreeplayActions){
 }
 
 function createFreeplayRankingChart(i, chartLabels, chartData, studentCount){
-  console.log(`Student count: ${studentCount}`)
   const ctxCheckbox = $(`#topPost${i}`);
   const newChartCheckbox = new Chart(ctxCheckbox, {
       type: 'horizontalBar',
@@ -531,6 +562,8 @@ function createFreeplayRankingChart(i, chartLabels, chartData, studentCount){
 }
 
 async function visualizeFreeplayActivity(modName, classId, classSize){
+  // clear any existing data
+  $("#topPosts").empty();
   const allFreeplayContentInfo = await $.getJSON("/json/freeplaySectionQuickReference.json");
   const freeplayContentInfo = allFreeplayContentInfo[modName];
   const dbData = await $.get(`/classFreeplayActions/${classId}/${modName}`);
@@ -538,16 +571,23 @@ async function visualizeFreeplayActivity(modName, classId, classSize){
   const topPosts = getTopThreePosts(classFreeplayActions);
   // For each post, visualize the data
   let i = 0;
+  if(!topPosts.length){
+    return;
+  }
   for(const postId of topPosts){
     const singlePostJson = await $.get(`/singlePost/${postId}`);
     const post = singlePostJson.post;
     console.log(post);
     appendFreeplayRankingHtml(i, post.picture, post.body);
-    const chartLabels = getRankingChartLabels(modName, freeplayContentInfo);
-    const chartData = getRankingChartData(postId, classFreeplayActions);
+    let chartLabels = getRankingChartBasicLabels(modName, freeplayContentInfo);
+    let chartData = getRankingChartBasicData(chartLabels, postId, classFreeplayActions);
+    if(freeplayContentInfo.modals){
+      updateRankingChartModalData(postId, chartLabels, chartData, freeplayContentInfo, classFreeplayActions);
+    }
     createFreeplayRankingChart(i, chartLabels, chartData, classSize);
     i++;
   }
+  return;
 }
 
 $(window).on("load", async function(){
