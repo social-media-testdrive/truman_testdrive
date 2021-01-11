@@ -21,14 +21,6 @@ function initializeStudentProgressChart(){
   return studentProgressChart;
 }
 
-function getStudentCount(classReflectionResponses){
-  let studentCount = 0;
-  for (const username in classReflectionResponses){
-    studentCount++;
-  }
-  return studentCount;
-}
-
 // Determines how many students in a given class have responded to a prompt
 // Inputs:
 // prompt - string, exact copy of the prompt
@@ -101,8 +93,13 @@ function appendGroupedCheckboxTypeHtml(questionNumber, itemNumber, questionData)
     <div class="row addMargin">
       <div class="ui items">
         <div class="item">
-          <div class="middle aligned content">
-            <img src=${cdn}${questionData.groupImages[itemNumber]} style='width:100px;height:100px;'>
+          <div class="ui fluid card">
+            <div class="img post">
+              <img src="${cdn}${questionData.groupPostImages[itemNumber]}" style="max-width:100%">
+            </div>
+            <div class="content">
+              <div class="description">${questionData.groupPostDescriptions[itemNumber]}</div>
+            </div>
           </div>
           <div class="ui image">
             <canvas id="groupedCheckboxChart${itemNumber}" width="700" height="200">
@@ -203,7 +200,8 @@ function createWrittenTypeChart(questionNumber, studentCount, responseCount){
   });
 }
 
-async function visualizeStudentReflectionData(modName, classId){
+// returns the student count, for later convenience
+async function visualizeStudentReflectionData(modName, classId, classSize){
   if (!(modName && classId)) {
     console.log('Missing a selection');
     return;
@@ -227,7 +225,6 @@ async function visualizeStudentReflectionData(modName, classId){
   const classReflectionResponses = dbData.reflectionResponses;
   //console.log(`Response data:`)
   //console.log(classReflectionResponses);
-  const studentCount = getStudentCount(classReflectionResponses);
   const modReflectionData = reflectionJsonData[modName];
   for (const questionNumber in modReflectionData) {
     const questionData = modReflectionData[questionNumber];
@@ -236,7 +233,7 @@ async function visualizeStudentReflectionData(modName, classId){
       case "written": {
         const responseCount = countResponsesToPrompt(questionData.prompt, classReflectionResponses);
         appendWrittenTypeHtml(questionNumber, questionData, responseCount);
-        createWrittenTypeChart(questionNumber, studentCount, responseCount);
+        createWrittenTypeChart(questionNumber, classSize, responseCount);
         break;
       }
       case "checkbox": {
@@ -245,7 +242,7 @@ async function visualizeStudentReflectionData(modName, classId){
         const checkboxData = parseClassCheckboxSelectionsForQuestion(questionNumber, numberOfCheckboxes, classReflectionResponses, modReflectionData);
         appendCheckboxTypeHtml(questionNumber, questionData);
         const chartId = `#chart${questionNumber}`;
-        createCheckboxTypeChart(chartId, chartLabelArray, studentCount, checkboxData);
+        createCheckboxTypeChart(chartId, chartLabelArray, classSize, checkboxData);
         break;
       }
       case "checkboxGrouped": {
@@ -265,7 +262,7 @@ async function visualizeStudentReflectionData(modName, classId){
           const subgroupCheckboxData = allGroupsCheckboxData.slice(sliceStart,sliceEnd);
           appendGroupedCheckboxTypeHtml(questionNumber, i, questionData);
           const chartId = `#groupedCheckboxChart${i}`;
-          createCheckboxTypeChart(chartId, chartLabelArray, studentCount, subgroupCheckboxData);
+          createCheckboxTypeChart(chartId, chartLabelArray, classSize, subgroupCheckboxData);
         }
         break;
       }
@@ -461,7 +458,7 @@ function appendFreeplayRankingHtml(ranking, imageName, postText){
 
 function getRankingChartLabels(modName, freeplayContentInfo){
   let labelArray = ['Liked', 'Flagged', 'Replied', 'Interacted with Comments'];
-  // TODO: this works, now figure out how to get the data
+  // TODO: this works, now figure out how to get the modal data
   // if(freeplayContentInfo.modals){
   //   for (const modalType in freeplayContentInfo.modalInfo){
   //     labelArray.push(freeplayContentInfo.modalInfo[modalType].label);
@@ -472,6 +469,7 @@ function getRankingChartLabels(modName, freeplayContentInfo){
 
 function getRankingChartData(postId, classFreeplayActions){
   // TODO: make this dynamic
+  // TODO: include modal actions
   const actionData = [0,0,0,0];
   for(const username in classFreeplayActions) {
     for(const actions of classFreeplayActions[username]){
@@ -482,20 +480,25 @@ function getRankingChartData(postId, classFreeplayActions){
         if (actions.flagged) {
           actionData[1]++;
         }
-        // TODO: Make this distinguish between leaving reply and interaction with existing
         if (actions.comments.length) {
-          actionData[2]++;
-          actionData[3]++;
+          for(const comment of actions.comments){
+            if (comment.new_comment) {
+              // This is a user-made comment
+              actionData[2]++;
+            } else {
+              // This is an interaction with an existing comment
+              actionData[3]++;
+            }
+          }
         }
       }
     }
   }
-  console.log(actionData);
   return actionData;
 }
 
-// TODO: get student count.
-function createFreeplayRankingChart(i, chartLabels, chartData){
+function createFreeplayRankingChart(i, chartLabels, chartData, studentCount){
+  console.log(`Student count: ${studentCount}`)
   const ctxCheckbox = $(`#topPost${i}`);
   const newChartCheckbox = new Chart(ctxCheckbox, {
       type: 'horizontalBar',
@@ -517,7 +520,9 @@ function createFreeplayRankingChart(i, chartLabels, chartData){
           xAxes: [{
             ticks: {
               stepSize: 1,
-              beginAtZero: true
+              beginAtZero: true,
+              suggestedMin: studentCount,
+              suggestedMax: studentCount
             }
           }]
         }
@@ -525,7 +530,7 @@ function createFreeplayRankingChart(i, chartLabels, chartData){
   });
 }
 
-async function visualizeFreeplayActivity(modName, classId){
+async function visualizeFreeplayActivity(modName, classId, classSize){
   const allFreeplayContentInfo = await $.getJSON("/json/freeplaySectionQuickReference.json");
   const freeplayContentInfo = allFreeplayContentInfo[modName];
   const dbData = await $.get(`/classFreeplayActions/${classId}/${modName}`);
@@ -540,7 +545,7 @@ async function visualizeFreeplayActivity(modName, classId){
     appendFreeplayRankingHtml(i, post.picture, post.body);
     const chartLabels = getRankingChartLabels(modName, freeplayContentInfo);
     const chartData = getRankingChartData(postId, classFreeplayActions);
-    createFreeplayRankingChart(i, chartLabels, chartData);
+    createFreeplayRankingChart(i, chartLabels, chartData, classSize);
     i++;
   }
 }
@@ -549,11 +554,13 @@ $(window).on("load", async function(){
   $('#studentProgressText').hide();
   $('#progressTable').hide();
   const studentProgressChart = initializeStudentProgressChart();
-  $('.refreshModSelectionButton').on('click', function(){
+  $('.refreshModSelectionButton').on('click', async function(){
     let modName = ($(".ui.selection.dropdown[name='moduleSelection']").dropdown('get value'));
     let classId = ($(".ui.selection.dropdown[name='classSelection']").dropdown('get value'));
+    const getClassSize = await $.get(`/classSize/${classId}`);
+    const classSize = getClassSize.studentCount;
     visualizeStudentProgressData(studentProgressChart, modName, classId);
-    visualizeStudentReflectionData(modName, classId);
-    visualizeFreeplayActivity(modName, classId);
+    visualizeStudentReflectionData(modName, classId, classSize);
+    visualizeFreeplayActivity(modName, classId, classSize);
   });
 });

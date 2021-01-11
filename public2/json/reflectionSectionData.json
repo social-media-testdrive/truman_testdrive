@@ -175,10 +175,20 @@
         "3": "I did something else."
       },
       "groupCount": "3",
-      "groupImages": {
+      "groupPostImages": {
         "0": "/post_pictures/nintendo_phi.jpg",
         "1": "/post_pictures/accountrisk_phi.png",
         "2": "/post_pictures/giftcard_phi.jpg"
+      },
+      "groupPostDescriptions": {
+        "0": "Get a BRAND new Nintendo Switch only $19.99!!! Hurry up, this offer WILL NOT LAST",
+        "1": "!!&$!ALERT!&$!! Your account MAY BE AT RISK. Click here to resolve",
+        "2": "You won't believe this crazy deal! I filled in a 5 minite survey and got a $500 gift card instantly!! Fill out survey NOW"
+      },
+      "groupPostLinks": {
+        "0": " http://goo.gl/FreeSwitch",
+        "1": "http://testdrive.info/youraccount",
+        "2": "http://bit.ly/FREEGIFTS"
       }
     },
     "Q2": {

@@ -19,6 +19,30 @@ exports.getClasses = (req, res) => {
   }
 };
 
+// Return how many students there are in a specified class
+exports.getClassSize = (req, res, next) => {
+  if (!req.user.isInstructor){
+    res.redirect('/');
+  }
+  Class.findOne({
+    accessCode: req.params.classId,
+    teacher: req.user.id
+  }).exec(function (err, found_class) {
+    if (err) {
+      console.log("ERROR");
+      console.log(err);
+      return next(err);
+    }
+    if (found_class == null){
+      console.log("NULL");
+      var myerr = new Error('Class not found!');
+      return next(myerr);
+    }
+    const studentCount = found_class.students.length;
+    res.json({studentCount: studentCount});
+  });
+}
+
 // Show info on one Class led by the currently logged in instructor
 // For the route /class/:classId
 exports.getClass = (req, res, next) => {
@@ -38,7 +62,7 @@ exports.getClass = (req, res, next) => {
         var myerr = new Error('Class not found!');
         return next(myerr);
       }
-      
+
       res.render('teacherDashboard/viewClass', { found_class: found_class});
 
     });
