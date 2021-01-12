@@ -78,8 +78,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionCheckboxesPrompt
-                  | How would the following posts have a negative impact on 
-                  | digital footprints?
+                  | #{reflectionData.digfoot.Q1.prompt}
               .ui.stackable.two.cards.checkOne
         
                 .ui.fluid.card.dim()#card1
@@ -89,12 +88,10 @@ block content
                       img.ui.avatar.image(src=cdn+'/profile_pictures/user15.jpg')
                       span Keith Hernandez
                   .image
-                    img.post(src=cdn+'/post_pictures/angrycat.jpg')
+                    img.post(src=cdn+reflectionData.digfoot.Q1.groupPostImages[0])
                   .content
                     .description
-                      | Does this cat remind anyone else of Mrs. Lee?? She's 
-                      | always glaring at us lol. Why does she have to suck SO 
-                      | MUCH
+                      | #{reflectionData.digfoot.Q1.groupPostDescriptions[0]}
             
         
                 .ui.fluid.card.dim()
@@ -106,7 +103,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox')
                             label(for='overshare', tabindex='0') 
-                              | The poster was oversharing.
+                              | #{reflectionData.digfoot.Q1.checkboxLabels[0]}
                     hr
                     .ui.form
                       .inline.fields
@@ -115,8 +112,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox', name='regret')
                             label(for='regret', tabindex='0') 
-                              | The poster was sharing something that they might 
-                              | later regret.
+                              | #{reflectionData.digfoot.Q1.checkboxLabels[1]}
                     hr
                     .ui.form
                       .inline.fields
@@ -125,8 +121,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox', name='inconsiderate')
                             label(for='inconsiderate', tabindex='0') 
-                              | The post was not considerate of other people’s 
-                              | digital footprints.
+                              | #{reflectionData.digfoot.Q1.checkboxLabels[2]}
                     hr
                     .ui.form
                       .inline.fields
@@ -135,7 +130,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox', name='responsible')
                             label(for='responsible', tabindex='0') 
-                              | This was a responsible post.
+                              | #{reflectionData.digfoot.Q1.checkboxLabels[3]}
                       
               .ui.stackable.two.cards.checkTwo
               
@@ -146,11 +141,10 @@ block content
                       img.ui.avatar.image(src=cdn+'/profile_pictures/user74.jpg')
                       span Ryan Freyer
                   .image
-                    img.post(src=cdn+'/post_pictures/facepalm.jpg ')
+                    img.post(src=cdn+reflectionData.digfoot.Q1.groupPostImages[1])
                   .content
                     .description 
-                      | Lol Danny didn't want me telling anyobody but he tripped 
-                      | over a rock and twisted his ankle. He is literally a meme. 
+                      | #{reflectionData.digfoot.Q1.groupPostDescriptions[1]}
               
                 .ui.fluid.card.dim.printvis()
                   .content
@@ -161,7 +155,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox')
                             label(for='overshare2', tabindex='0') 
-                              | The poster was oversharing.
+                              | #{reflectionData.digfoot.Q1.checkboxLabels[0]}
                     hr
                     .ui.form
                       .inline.fields
@@ -170,8 +164,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox', name='regret2')
                             label(for='regret2', tabindex='0') 
-                              | The poster was sharing something that they might 
-                              | later regret.
+                              | #{reflectionData.digfoot.Q1.checkboxLabels[1]}
                     hr
                     .ui.form
                       .inline.fields
@@ -180,8 +173,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox', name='inconsiderate2')
                             label(for='inconsiderate2', tabindex='0') 
-                              | The post was not considerate of other people’s 
-                              | digital footprints.
+                              | #{reflectionData.digfoot.Q1.checkboxLabels[2]}
                     hr
                     .ui.form
                       .inline.fields
@@ -190,7 +182,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox', name='responsible2')
                             label(for='responsible2', tabindex='0') 
-                              | This was a responsible post.
+                              | #{reflectionData.digfoot.Q1.checkboxLabels[3]}
                         
               .ui.stackable.two.cards.checkThree
               
@@ -201,11 +193,10 @@ block content
                       img.ui.avatar.image(src=cdn+'/profile_pictures/user25.jpg')
                       span Ella Sroni
                   .image
-                    img.post(src=cdn+'/post_pictures/backtoschool.jpg')
+                    img.post(src=cdn+reflectionData.digfoot.Q1.groupPostImages[2])
                   .content
                     .description 
-                      | First day of grade 7! come over to my house at 22 Eastwood 
-                      | dr if you want to hang
+                      | #{reflectionData.digfoot.Q1.groupPostDescriptions[2]}
               
                 .ui.fluid.card.dim()
                   .content
@@ -216,7 +207,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox')
                             label(for='overshare3', tabindex='0') 
-                              | The poster was oversharing.
+                              | #{reflectionData.digfoot.Q1.checkboxLabels[0]}
                     hr
                     .ui.form
                       .inline.fields
@@ -225,8 +216,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox', name='regret3')
                             label(for='regret3', tabindex='0') 
-                              | The poster was sharing something that they might 
-                              | later regret.
+                              | #{reflectionData.digfoot.Q1.checkboxLabels[1]}
                     hr
                     .ui.form
                       .inline.fields
@@ -235,8 +225,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox', name='inconsiderate3')
                             label(for='inconsiderate3', tabindex='0')  
-                              | The post was not considerate of other people’s 
-                              | digital footprints.
+                              | #{reflectionData.digfoot.Q1.checkboxLabels[2]}
                     hr
                     .ui.form
                       .inline.fields
@@ -245,7 +234,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox', name='responsible3')
                             label(for='responsible3', tabindex='0') 
-                              | This was a responsible post.
+                              | #{reflectionData.digfoot.Q1.checkboxLabels[3]}
     
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
           .ui.raised.segment
@@ -255,8 +244,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt
-                  | What can you do in the future to make sure you have a positive 
-                  | digital footprint on social media? 
+                  | #{reflectionData.digfoot.Q2.prompt}
               .ui.form
                 .inline.fields
                   label
@@ -270,8 +258,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt
-                  | What can you do in the future to be mindful of other people's 
-                  | digital footprints on social media?
+                  | #{reflectionData.digfoot.Q3.prompt}
               .ui.form
                 .inline.fields
                   label

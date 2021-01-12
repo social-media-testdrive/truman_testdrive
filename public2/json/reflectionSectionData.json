@@ -64,10 +64,10 @@
       "type": "checkboxGrouped",
       "prompt": "How would the following posts have a negative impact on digital footprints?",
       "checkboxLabels": {
-        "1": "The poster was oversharing.",
-        "2": "The poster was sharing something that they might later regret.",
-        "3": "The post was not considerate of other people’s digital footprints.",
-        "4": "This was a responsible post."
+        "0": "The poster was oversharing.",
+        "1": "The poster was sharing something that they might later regret.",
+        "2": "The post was not considerate of other people’s digital footprints.",
+        "3": "This was a responsible post."
       },
       "groupCount": "3",
       "groupPostImages": {
@@ -95,9 +95,9 @@
       "type": "checkboxGrouped",
       "prompt": "Did you notice any signs of fake news in these posts?",
       "checkboxLabels": {
-        "1": "They had clickbait headlines and wild images.",
-        "2": "They had spelling mistakes or dramatic punctuation.",
-        "3": "They were from a suspicious website."
+        "0": "They had clickbait headlines and wild images.",
+        "1": "They had spelling mistakes or dramatic punctuation.",
+        "2": "They were from a suspicious website."
       },
       "groupCount": "3",
       "groupPostImages": {
@@ -120,13 +120,17 @@
         "2": "I would find corroboration from other credible sources."
       }
     },
-    "quesiton3": {
+    "Q3": {
       "type": "written",
       "prompt": "What are the benefits and drawbacks of getting news on social media?"
     },
     "Q4": {
       "type": "written",
       "prompt": "Why is it important to evaluate the information you see on social media?"
+    },
+    "Q5": {
+      "type": "written",
+      "prompt": "What would you do in the future on real social media sites to make sure that the information you see is credible?"
     }
   },
   "esteem": {

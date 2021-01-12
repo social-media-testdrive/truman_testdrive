@@ -459,14 +459,11 @@ app.get('/tut_guide/:modId', passportConfig.isAuthenticated, csrfProtection, add
 
 app.get('/results/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, async function (req, res) {
   let reflectionData;
-  if(req.params.modId === "phishing"){
-    const data = await fs.readFileAsync(`${__dirname}/public2/json/reflectionSectionData.json`)
-    reflectionData = JSON.parse(data.toString());
-  }
-  //console.log(req.param("modId") + '/' + req.param("modId")+'_results')
-  console.log(reflectionData)
+  const data = await fs.readFileAsync(`${__dirname}/public2/json/reflectionSectionData.json`)
+  reflectionData = JSON.parse(data.toString());
+
   res.render(req.params.modId + '/' + req.params.modId +'_results', {
-    title: 'function test',
+    title: 'Reflection',
     reflectionData
   });
 });

@@ -11,8 +11,6 @@ block content
             i.question.blue.icon
             .content
               | Reflect
-          h2 
-            | #{reflectionData.phishing.Q1.prompt}
           .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection1
             i.down.arrow.icon
             |   Start
@@ -80,7 +78,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionCheckboxesPrompt
-                  | How did you respond to these posts that were phishing scams?
+                  | #{reflectionData.phishing.Q1.prompt}
               .ui.stackable.two.cards.checkOne
         
                 .ui.fluid.card.dim()#card1
@@ -90,12 +88,12 @@ block content
                       img.ui.avatar.image(src=cdn+'/profile_pictures/user35.jpg')
                       span Lucy Simms
                   .image
-                    img.post(src=cdn+'/post_pictures/nintendo_phi.jpg')
+                    img.post(src=cdn + reflectionData.phishing.Q1.groupPostImages[0])
                   .content
                     .description
-                      | Get a BRAND new Nintendo Switch only $19.99!!! Hurry up,
-                      | this offer WILL NOT LAST
-                      span(style="color:#0000FF;")  http://goo.gl/FreeSwitch
+                      | #{reflectionData.phishing.Q1.groupPostDescriptions[0]}
+                      span(style="color:#0000FF;")  
+                        | #{reflectionData.phishing.Q1.groupPostLinks[0]}
             
         
                 .ui.fluid.card.dim()
@@ -106,7 +104,8 @@ block content
                         .field
                           .ui.checkbox
                             input(type='checkbox')
-                            label(for='overshare', tabindex='0') I flagged the post.
+                            label(for='overshare', tabindex='0') 
+                              | #{reflectionData.phishing.Q1.checkboxLabels[0]}
                     hr
                     .ui.form
                       .inline.fields
@@ -114,7 +113,8 @@ block content
                         .field
                           .ui.checkbox
                             input(type='checkbox', name='inconsiderate')
-                            label(for='inconsiderate', tabindex='0') I clicked on the link.
+                            label(for='inconsiderate', tabindex='0') 
+                              | #{reflectionData.phishing.Q1.checkboxLabels[1]}
                     hr
                     .ui.form
                       .inline.fields
@@ -122,7 +122,8 @@ block content
                         .field
                           .ui.checkbox
                             input(type='checkbox', name='responsible')
-                            label(for='responsible', tabindex='0') I ignored the post.
+                            label(for='responsible', tabindex='0') 
+                              | #{reflectionData.phishing.Q1.checkboxLabels[2]}
                     hr
                     .ui.form
                       .inline.fields
@@ -130,7 +131,8 @@ block content
                         .field
                           .ui.checkbox
                             input(type='checkbox', name='somethingelse')
-                            label(for='somethingelse', tabindex='0') I did something else.
+                            label(for='somethingelse', tabindex='0') 
+                              | #{reflectionData.phishing.Q1.checkboxLabels[3]}
                               
               .ui.stackable.two.cards.checkTwo
               
@@ -141,12 +143,12 @@ block content
                       img.ui.avatar.image(src=cdn+'/profile_pictures/user91.png')
                       span Socail Media Testdrive
                   .image
-                    img.post(src=cdn+'/post_pictures/accountrisk_phi.png')
+                    img.post(src=cdn+reflectionData.phishing.Q1.groupPostImages[1])
                   .content
                     .description
-                      | !!&$!ALERT!&$!! Your account MAY BE AT RISK. 
-                      | Click here to resolve
-                      span(style="color:#0000FF;")  http://testdrive.info/youraccount
+                      | #{reflectionData.phishing.Q1.groupPostDescriptions[1]}
+                      span(style="color:#0000FF;") 
+                        | #{reflectionData.phishing.Q1.groupPostLinks[1]}
                       
                 .ui.fluid.card.dim.printvis()
                   .content
@@ -156,7 +158,8 @@ block content
                         .field
                           .ui.checkbox
                             input(type='checkbox')
-                            label(for='overshare2', tabindex='0') I flagged the post.
+                            label(for='overshare2', tabindex='0') 
+                              | #{reflectionData.phishing.Q1.checkboxLabels[0]}
                     hr
                     .ui.form
                       .inline.fields
@@ -164,7 +167,8 @@ block content
                         .field
                           .ui.checkbox
                             input(type='checkbox', name='inconsiderate2')
-                            label(for='inconsiderate2', tabindex='0') I clicked on the link.
+                            label(for='inconsiderate2', tabindex='0') 
+                              | #{reflectionData.phishing.Q1.checkboxLabels[1]}
                     hr
                     .ui.form
                       .inline.fields
@@ -172,7 +176,8 @@ block content
                         .field
                           .ui.checkbox
                             input(type='checkbox', name='responsible2')
-                            label(for='responsible2', tabindex='0') I ignored the post.
+                            label(for='responsible2', tabindex='0') 
+                              | #{reflectionData.phishing.Q1.checkboxLabels[2]}
                     hr
                     .ui.form
                       .inline.fields
@@ -180,7 +185,8 @@ block content
                         .field
                           .ui.checkbox
                             input(type='checkbox', name='somethingelse')
-                            label(for='somethingelse', tabindex='0') I did something else.
+                            label(for='somethingelse', tabindex='0') 
+                              | #{reflectionData.phishing.Q1.checkboxLabels[3]}
                             
               .ui.stackable.two.cards.checkThree
               
@@ -191,13 +197,12 @@ block content
                       img.ui.avatar.image(src=cdn+'/profile_pictures/user41.jpg')
                       span Emma Garcia
                   .image
-                    img.post(src=cdn+'/post_pictures/giftcard_phi.jpg')
+                    img.post(src=cdn+reflectionData.phishing.Q1.groupPostImages[2])
                   .content
                     .description
-                      | You won't believe this crazy deal! I filled in a 5 minite
-                      | survey and got a $500 gift card instantly!! Fill out 
-                      | survey NOW
-                      span(style="color:#0000FF;")  http://bit.ly/FREEGIFTS
+                      | #{reflectionData.phishing.Q1.groupPostDescriptions[2]}
+                      span(style="color:#0000FF;") 
+                        | #{reflectionData.phishing.Q1.groupPostLinks[2]}
            
               
                 .ui.fluid.card.dim()
@@ -208,7 +213,8 @@ block content
                         .field
                           .ui.checkbox
                             input(type='checkbox')
-                            label(for='overshare3', tabindex='0') I flagged the post.
+                            label(for='overshare3', tabindex='0') 
+                              | #{reflectionData.phishing.Q1.checkboxLabels[0]}
                     hr
                     .ui.form
                       .inline.fields
@@ -216,7 +222,8 @@ block content
                         .field
                           .ui.checkbox
                             input(type='checkbox', name='inconsiderate3')
-                            label(for='inconsiderate3', tabindex='0') I clicked on the link.
+                            label(for='inconsiderate3', tabindex='0') 
+                              | #{reflectionData.phishing.Q1.checkboxLabels[1]}
                     hr
                     .ui.form
                       .inline.fields
@@ -224,7 +231,8 @@ block content
                         .field
                           .ui.checkbox
                             input(type='checkbox', name='responsible3')
-                            label(for='responsible3', tabindex='0') I ignored the post.
+                            label(for='responsible3', tabindex='0') 
+                              | #{reflectionData.phishing.Q1.checkboxLabels[2]}
                     hr
                     .ui.form
                       .inline.fields
@@ -232,7 +240,8 @@ block content
                         .field
                           .ui.checkbox
                             input(type='checkbox', name='somethingelse')
-                            label(for='somethingelse', tabindex='0') I did something else.
+                            label(for='somethingelse', tabindex='0') 
+                              | #{reflectionData.phishing.Q1.checkboxLabels[3]}
                                   
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
           .ui.raised.segment
@@ -242,7 +251,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt
-                  | What are some clues you can use to identify phishing scams?
+                  | #{reflectionData.phishing.Q2.prompt}
               .ui.form
                 .inline.fields
                   label
@@ -256,7 +265,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt
-                  | Why is it important to protect yourself against phishing scams?
+                  | #{reflectionData.phishing.Q3.prompt}
               .ui.form
                 .inline.fields
                   label

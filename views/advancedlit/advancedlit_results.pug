@@ -75,7 +75,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionCheckboxesPrompt
-                  | What did you do when you saw a breaking news story?
+                  | #{reflectionData.advancedlit.Q1.prompt}
               .content.checkOne
                 .ui.form
                   br
@@ -85,7 +85,7 @@ block content
                       .ui.checkbox
                         input(type='checkbox')
                         label(for='wouldRead', tabindex='0') 
-                          | I checked to see if it was an opinion piece
+                          | #{reflectionData.advancedlit.Q1.checkboxLabels[0]}
                 .ui.form
                   .inline.fields
                     label(for='checkSource', name='checkSource') 
@@ -93,7 +93,7 @@ block content
                       .ui.checkbox
                         input(type='checkbox')
                         label(for='checkSource', tabindex='0') 
-                          | I looked at the source(s) of the information in the article
+                          | #{reflectionData.advancedlit.Q1.checkboxLabels[1]}
                 .ui.form
                   .inline.fields
                     label(for='corroboration', name='corroboration') 
@@ -101,7 +101,7 @@ block content
                       .ui.checkbox
                         input(type='checkbox')
                         label(for='corroboration', tabindex='0')
-                          | I checked other sources
+                          | #{reflectionData.advancedlit.Q1.checkboxLabels[2]}
                 .ui.form
                   .inline.fields
                     label(for='interacted', name='interacted') 
@@ -109,7 +109,7 @@ block content
                       .ui.checkbox
                         input(type='checkbox')
                         label(for='interacted', tabindex='0')
-                          | I shared the news article
+                          | #{reflectionData.advancedlit.Q1.checkboxLabels[3]}
                 .ui.form
                   .inline.fields
                     label(for='corroboration', name='wouldViewAd') 
@@ -117,7 +117,7 @@ block content
                       .ui.checkbox
                         input(type='checkbox')
                         label(for='wouldViewAd', tabindex='0') 
-                          | I flagged the post
+                          | #{reflectionData.advancedlit.Q1.checkboxLabels[4]}
                 .ui.form
                   .inline.fields
                     label(for='ignored', name='ignored') 
@@ -125,7 +125,7 @@ block content
                       .ui.checkbox
                         input(type='checkbox')
                         label(for='ignored', tabindex='0') 
-                          | I did not do anything 
+                          | #{reflectionData.advancedlit.Q1.checkboxLabels[5]}
 
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
           .ui.raised.segment
@@ -135,8 +135,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt
-                  | Did you read any of the articles? Did you notice any signs that the 
-                  | article may be inaccurate?
+                  | #{reflectionData.advancedlit.Q2.prompt}
               .ui.form
                 .inline.fields
                   label
@@ -150,8 +149,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt
-                  | Why is it important to get the full story before reacting to or 
-                  | sharing breaking news?
+                  | #{reflectionData.advancedlit.Q3.prompt}
               .ui.form
                 .inline.fields
                   label

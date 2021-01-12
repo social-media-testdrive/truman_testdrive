@@ -77,7 +77,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionCheckboxesPrompt
-                  | Tell us what you did to be an upstander.
+                  | #{reflectionData.cyberbullying.Q1.prompt}
               .content.checkOne
                 .ui.form
                   br
@@ -87,7 +87,7 @@ block content
                       .ui.checkbox
                         input(type='checkbox')
                         label(for='iFlagged', tabindex='0') 
-                          | I flagged the post or comment.
+                          | #{reflectionData.cyberbullying.Q1.checkboxLabels[0]}
                 .ui.form
                   .inline.fields
                     label(for='iLiked', name='iLiked') 
@@ -95,7 +95,7 @@ block content
                       .ui.checkbox
                         input(type='checkbox')
                         label(for='iLiked', tabindex='0') 
-                          | I "liked" the target's post to show support.
+                          | #{reflectionData.cyberbullying.Q1.checkboxLabels[1]}
                 .ui.form
                   .inline.fields
                     label(for='iSupported', name='iSupported') 
@@ -103,7 +103,7 @@ block content
                       .ui.checkbox
                         input(type='checkbox')
                         label(for='iSupported', tabindex='0') 
-                          | I wrote a supportive or defending comment for the target.
+                          | #{reflectionData.cyberbullying.Q1.checkboxLabels[2]}
                 .ui.form
                   .inline.fields
                     label(for='wouldTell', name='wouldTell') 
@@ -111,13 +111,13 @@ block content
                       .ui.checkbox
                         input(type='checkbox')
                         label(for='wouldTell', tabindex='0') 
-                          | I would tell a trusted adult if I saw this kind of post.
+                          | #{reflectionData.cyberbullying.Q1.checkboxLabels[3]}
       
               .ui.basic.segment.noPadding
                 .ui.basic.segment.noPadding.reflectionPromptSegment
                   .ui.label.resultsPromptLabel
                     h4.reflectionPrompt
-                      |  Why did you act this way?
+                      | #{reflectionData.cyberbullying.Q2.prompt}
                   .ui.form
                     .inline.fields
                       label
@@ -131,7 +131,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt
-                  | Why is it important for people to act against cyberbullying?
+                  | #{reflectionData.cyberbullying.Q3.prompt}
               .ui.form
                 .inline.fields
                   label
@@ -145,8 +145,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt
-                  | What will you do in the future to be an upstander if you see 
-                  | cyberbullying?
+                  | #{reflectionData.cyberbullying.Q4.prompt}
               .ui.form
                 .inline.fields
                   label

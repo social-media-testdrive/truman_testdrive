@@ -18,7 +18,7 @@ block content
           .ui.basic.segment.reflectionPromptSegment.hidden  
             .ui.label.resultsPromptLabel
               h4.reflectionPrompt
-                | What are some features of a strong password?
+                | #{reflectionData.accounts.Q1.prompt}
             .ui.form
               .inline.fields
                 label
@@ -32,7 +32,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt
-                  | Why is it important to choose your username carefully?
+                  | #{reflectionData.accounts.Q2.prompt}
               .ui.form
                 .inline.fields
                   label
@@ -46,8 +46,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt
-                  | What kind of information is okay to share on your social media 
-                  | profile?
+                  | #{reflectionData.accounts.Q3.prompt}
               .ui.form
                 .inline.fields
                   label

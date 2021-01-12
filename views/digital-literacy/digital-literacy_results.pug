@@ -155,7 +155,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionCheckboxesPrompt
-                  | Did you notice any signs of fake news in these posts?
+                  | #{reflectionData['digital-literacy'].Q1.prompt}
               
               .ui.stackable.two.cards.checkOne
                 
@@ -166,14 +166,12 @@ block content
                       img.ui.avatar.image(src=cdn+'/profile_pictures/user70.JPG')
                       span Zoe Goodall
                   .img.post
-                    img.transition.visible(src=cdn+'/post_pictures/fakenews1.png', data-src='/fakenews1.png')
+                    img.transition.visible(src=cdn+reflectionData['digital-literacy'].Q1.groupPostImages[0], data-src='/fakenews1.png')
                   .read.rounded.right.floated.info_button(data-info_text="Real facts.com is THE news source for you. Learn about everything that's going on everywhere in real time. You can trust us!")
                     i.info.icon
                   .content
                     .description
-                      | Breaking News: Driving age just lowered to 12. DMV flooded with 
-                      | road test appointments and car companies cannot keep their 
-                      | newest models off the road.
+                      | #{reflectionData['digital-literacy'].Q1.groupPostDescriptions[0]}
             
                 .ui.fluid.card.dim()
                   .content
@@ -185,7 +183,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox')
                             label(for='clickbait', tabindex='0') 
-                              | They had clickbait headlines and wild images.
+                              | #{reflectionData['digital-literacy'].Q1.checkboxLabels[0]}
                     .ui.form
                       .inline.fields
                         label(for='mistakes', name='mistakes') 
@@ -193,7 +191,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox')
                             label(for='mistakes', tabindex='0') 
-                              | They had spelling mistakes or dramatic punctuation.
+                              | #{reflectionData['digital-literacy'].Q1.checkboxLabels[1]}
                     .ui.form
                       .inline.fields
                         label(for='suspicious', name='suspicious') 
@@ -201,7 +199,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox')
                             label(for='suspicious', tabindex='0') 
-                              | They were from a suspicious website.
+                              | #{reflectionData['digital-literacy'].Q1.checkboxLabels[2]}
                       
               .ui.stackable.two.cards.checkTwo
                 
@@ -212,13 +210,12 @@ block content
                       img.ui.avatar.image(src=cdn+'/profile_pictures/user15.jpg')
                       span Keith Hernandez
                   .img.post
-                    img.transition.visible(src=cdn+'/post_pictures/fakenews2.png', data-src='/fakenews2.png')
+                    img.transition.visible(src=cdn+reflectionData['digital-literacy'].Q1.groupPostImages[1], data-src='/fakenews2.png')
                   .read.rounded.right.floated.info_button(data-info_text="ScienceTruth is everyone's favorite and reliable source for science facts.")
                     i.info.icon
                   .content
                     .description
-                      | Craving a donut? Think again! Scientists found that donuts are 
-                      | the leading cause of cancer in young children 😳
+                      | #{reflectionData['digital-literacy'].Q1.groupPostDescriptions[1]}
 
                 .ui.fluid.card.dim()
                   .content
@@ -230,7 +227,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox')
                             label(for='clickbait', tabindex='0') 
-                              | They had clickbait headlines and wild images.
+                              | #{reflectionData['digital-literacy'].Q1.checkboxLabels[0]}
                     .ui.form
                       .inline.fields
                         label(for='mistakes', name='mistakes') 
@@ -238,7 +235,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox')
                             label(for='mistakes', tabindex='0') 
-                              | They had spelling mistakes or dramatic punctuation.
+                              | #{reflectionData['digital-literacy'].Q1.checkboxLabels[1]}
                     .ui.form
                       .inline.fields
                         label(for='suspicious', name='suspicious') 
@@ -246,7 +243,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox')
                             label(for='suspicious', tabindex='0') 
-                              | They were from a suspicious website.
+                              | #{reflectionData['digital-literacy'].Q1.checkboxLabels[2]}
               
               .ui.stackable.two.cards.checkThree
                 
@@ -257,12 +254,12 @@ block content
                       img.ui.avatar.image(src=cdn+'/profile_pictures/user55.jpg')
                       span Lana Reed
                   .img.post
-                    img.transition.visible(src=cdn+'/post_pictures/fakenews3.png', data-src='/fakenews3.png')
+                    img.transition.visible(src=cdn+reflectionData['digital-literacy'].Q1.groupPostImages[2], data-src='/fakenews3.png')
                   .read.rounded.right.floated.info_button(data-info_text="No Information Found !")
                     i.info.icon          
                   .content
                     .description
-                      | You'll never guess what these are!!!
+                      | #{reflectionData['digital-literacy'].Q1.groupPostDescriptions[2]}
                       
                 .ui.fluid.card.dim()
                   .content
@@ -274,7 +271,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox')
                             label(for='clickbait', tabindex='0') 
-                              | They had clickbait headlines and wild images.
+                              | #{reflectionData['digital-literacy'].Q1.checkboxLabels[0]}
                     .ui.form
                       .inline.fields
                         label(for='mistakes', name='mistakes') 
@@ -282,7 +279,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox')
                             label(for='mistakes', tabindex='0') 
-                              | They had spelling mistakes or dramatic punctuation.
+                              | #{reflectionData['digital-literacy'].Q1.checkboxLabels[1]}
                     .ui.form
                       .inline.fields
                         label(for='suspicious', name='suspicious') 
@@ -290,7 +287,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox')
                             label(for='suspicious',tabindex='0') 
-                               | They were from a suspicious website.
+                               | #{reflectionData['digital-literacy'].Q1.checkboxLabels[2]}
                                 
 
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
@@ -301,8 +298,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionCheckboxesPrompt
-                  | Tell us what you would do next to check the credibility of the above 
-                  | articles.
+                  | #{reflectionData['digital-literacy'].Q2.prompt}
               .content.checkFour
                 .ui.form
                   br
@@ -312,7 +308,7 @@ block content
                       .ui.checkbox
                         input(type='checkbox')
                         label(for='wouldRead', tabindex='0') 
-                          | I would read the full article.
+                          | #{reflectionData['digital-literacy'].Q2.checkboxLabels[0]}
                 .ui.form
                   .inline.fields
                     label(for='checkSource', name='checkSource') 
@@ -320,7 +316,7 @@ block content
                       .ui.checkbox
                         input(type='checkbox')
                         label(for='checkSource', tabindex='0') 
-                          | I would check the source.
+                          | #{reflectionData['digital-literacy'].Q2.checkboxLabels[1]}
                 .ui.form
                   .inline.fields
                     label(for='corroboration', name='corroboration') 
@@ -328,7 +324,7 @@ block content
                       .ui.checkbox
                         input(type='checkbox')
                         label(for='corroboration', tabindex='0') 
-                          | I would find corroboration from other credible sources.       
+                          | #{reflectionData['digital-literacy'].Q2.checkboxLabels[2]}      
       
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
           .ui.raised.segment
@@ -338,7 +334,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt
-                  | What are the benefits and drawbacks of getting news on social media?
+                  | #{reflectionData['digital-literacy'].Q3.prompt}
               .ui.form
                 .inline.fields
                   label
@@ -352,8 +348,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt
-                  | Why is it important to evaluate the information you see on social 
-                  | media?
+                  | #{reflectionData['digital-literacy'].Q4.prompt}
               .ui.form
                 .inline.fields
                   label
@@ -367,8 +362,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt
-                  | What would you do in the future on real social media sites to make 
-                  | sure that the information you see is credible?
+                  | #{reflectionData['digital-literacy'].Q5.prompt}
               .ui.form
                 .inline.fields
                   label
