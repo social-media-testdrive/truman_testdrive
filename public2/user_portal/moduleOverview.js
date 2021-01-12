@@ -577,7 +577,6 @@ async function visualizeFreeplayActivity(modName, classId, classSize){
   for(const postId of topPosts){
     const singlePostJson = await $.get(`/singlePost/${postId}`);
     const post = singlePostJson.post;
-    console.log(post);
     appendFreeplayRankingHtml(i, post.picture, post.body);
     let chartLabels = getRankingChartBasicLabels(modName, freeplayContentInfo);
     let chartData = getRankingChartBasicData(chartLabels, postId, classFreeplayActions);
@@ -602,5 +601,8 @@ $(window).on("load", async function(){
     visualizeStudentProgressData(studentProgressChart, modName, classId);
     visualizeStudentReflectionData(modName, classId, classSize);
     visualizeFreeplayActivity(modName, classId, classSize);
+    const result = await $.get(`/classPageTimes/${classId}`);
+    console.log(result.classPageTimes);
   });
+
 });

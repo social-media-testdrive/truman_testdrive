@@ -62,7 +62,6 @@ exports.getClass = (req, res, next) => {
         var myerr = new Error('Class not found!');
         return next(myerr);
       }
-
       res.render('teacherDashboard/viewClass', { found_class: found_class});
 
     });
@@ -116,6 +115,48 @@ exports.getModuleProgress = (req, res, next) => {
     });
   });
 };
+
+exports.getClassPageTimes = (req, res, next) => {
+  if (!req.user.isInstructor) {
+    return res.json({classPageTimes: {}});
+  }
+  Class.findOne({
+    accessCode: req.params.classId,
+    teacher: req.user.id
+  }).populate('students')
+  .exec(function (err, found_class) {
+    if (err) {
+      console.log("ERROR");
+      console.log(err);
+      return next(err);
+    }
+    if (found_class == null){
+      console.log("NULL");
+      var myerr = new Error('Class not found!');
+      return next(myerr);
+    }
+    let outputArray = [];
+    for(const student of found_class.students){
+      const pageLog = student.pageLog;
+      let pageTimeArray = [];
+      for(let i=0, l=pageLog.length-1; i<l; i++) {
+        let timeDurationOnPage = pageLog[i+1].time - pageLog[i].time;
+        const dataToPush = {
+          timeDuration: timeDurationOnPage,
+          subdirectory1: pageLog[i].subdirectory1
+        };
+        if (pageLog[i].subdirectory2) {
+          dataToPush["subdirectory2"] = pageLog[i].subdirectory2;
+        }
+        pageTimeArray.push(dataToPush);
+      }
+      const pushStudentObject = {};
+      pushStudentObject[student.username] = pageTimeArray;
+      outputArray.push(pushStudentObject);
+    }
+    res.json({classPageTimes: outputArray})
+  });
+}
 
 exports.getClassFreeplayActions = (req, res, next) => {
   if (!req.user.isInstructor) {
