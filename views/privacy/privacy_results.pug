@@ -18,7 +18,7 @@ block content
           .ui.basic.segment.reflectionPromptSegment.hidden  
             .ui.label.resultsPromptLabel
               h4.reflectionPrompt
-                | Did you notice any changes in Lily’s profile after you changed the privacy settings?
+                | #{reflectionData.privacy.Q1.prompt}
             .ui.form
               .inline.fields
                 label
@@ -32,7 +32,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt
-                  | Why is it important to know what information websites collect about you?
+                  | #{reflectionData.privacy.Q2.prompt}
               .ui.form
                 .inline.fields
                   label
@@ -46,7 +46,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt
-                  | What are the three things you should ask yourself when reading a privacy policy?
+                  | #{reflectionData.privacy.Q3.prompt}
               .ui.form
                 .inline.fields
                   label
@@ -60,7 +60,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt
-                  | What can you do in the future to protect your privacy on social media?
+                  | #{reflectionData.privacy.Q4.prompt}
               .ui.form
                 .inline.fields
                   label

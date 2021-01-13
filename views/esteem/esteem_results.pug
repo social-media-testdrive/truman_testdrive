@@ -130,7 +130,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt
-                  | Why might these posts cause Jeremy to have a red flag feeling?
+                  | #{reflectionData.esteem.Q1.prompt}
               .ui.form
                 .inline.fields
                   label
@@ -144,8 +144,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt
-                  | Do you remember seeing posts that might have caused Jeremy 
-                  | to feel good? What kinds of posts were they?
+                  | #{reflectionData.esteem.Q2.prompt}
               .ui.form
                 .inline.fields
                   label
@@ -159,8 +158,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt
-                  | What could Jeremy do to feel better after experiencing a red 
-                  | flag feeling on social media?
+                  | #{reflectionData.esteem.Q3.prompt}
               .ui.form
                 .inline.fields
                   label

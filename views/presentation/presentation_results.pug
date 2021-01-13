@@ -73,8 +73,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionCheckboxesPrompt
-                  | How were the posts in Elena’s finsta different from the ones in her 
-                  | main account?
+                  | #{reflectionData.presentation.Q1.prompt}
 
               .ui.form
                 br
@@ -84,8 +83,7 @@ block content
                     .ui.checkbox
                       input(type='checkbox')
                       label(for='certainPeople', tabindex='0') 
-                        | She posted about things that only certain people will be 
-                        | interested in
+                        | #{reflectionData.presentation.Q1.checkboxLabels[0]}
 
               .ui.form
                 .inline.fields
@@ -94,7 +92,7 @@ block content
                     .ui.checkbox
                       input(type='checkbox')
                       label(for='casual', tabindex='0') 
-                        | She posted things that are more casual or personal
+                        | #{reflectionData.presentation.Q1.checkboxLabels[1]}
                 
               .ui.form
                 .inline.fields
@@ -103,7 +101,7 @@ block content
                     .ui.checkbox
                       input(type='checkbox')
                       label(for='meanPost', tabindex='0') 
-                        | She posted mean things about other people
+                        | #{reflectionData.presentation.Q1.checkboxLabels[2]}
   
 
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
@@ -114,18 +112,20 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionRadioPrompt
-                  | Did you create a post on the TestDrive timeline?
+                  | #{reflectionData.presentation.Q2.prompt}
               .ui.form
                 br
                 .inline.fields
                   .field
                     .radio.checkbox
                       input(type='radio', value="yes", name='make', tabindex='0')
-                      label Yes
+                      label 
+                        | #{reflectionData.presentation.Q2.radioLabels[0]}
                   .field
                     .radio.checkbox
                       input(type='radio', value="no", name='make', tabindex='0')
-                      label No
+                      label 
+                        | #{reflectionData.presentation.Q2.radioLabels[1]}
       
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
           .ui.raised.segment
@@ -135,7 +135,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt
-                  | How did you think about the audience when you created your post?
+                  | #{reflectionData.presentation.Q3.prompt}
               .ui.form
                 .inline.fields
                   label
@@ -149,7 +149,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt
-                  | What are the benefits of having multiple social media accounts?
+                  | #{reflectionData.presentation.Q4.prompt}
               .ui.form
                 .inline.fields
                   label
@@ -163,7 +163,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt
-                  | What are the drawbacks of having multiple social media accounts?
+                  | #{reflectionData.presentation.Q5.prompt}
               .ui.form
                 .inline.fields
                   label

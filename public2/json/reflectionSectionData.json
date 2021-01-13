@@ -215,7 +215,7 @@
   "presentation": {
     "Q1": {
       "type": "checkbox",
-      "prompt": "These were the posts on the timeline that were from Elena’s finsta accounts. How many did you notice?",
+      "prompt": "How were the posts in Elena’s finsta different from the ones in her main account?",
       "checkboxLabels": {
         "0": "She posted about things that only certain people will be interested in",
         "1": "She posted things that are more casual or personal",
@@ -237,6 +237,10 @@
     "Q4": {
       "type": "written",
       "prompt": "What are the benefits of having multiple social media accounts?"
+    },
+    "Q5": {
+      "type": "written",
+      "prompt": "What are the drawbacks of having multiple social media accounts?"
     }
   },
   "privacy": {

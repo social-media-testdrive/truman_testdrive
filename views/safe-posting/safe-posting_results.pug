@@ -73,7 +73,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden.checkOne 
               .ui.label.resultsPromptLabel
                 h4.reflectionCheckboxesPrompt
-                  | Why is this post inappropriate for social media?
+                  | #{reflectionData['safe-posting'].Q1.prompt}
               .ui.stackable.two.cards
 
                 .ui.fluid.card.dim()#card3
@@ -96,7 +96,8 @@ block content
                         .field
                           .ui.checkbox
                             input(type='checkbox')
-                            label(for='privateInfo', tabindex='0')  Private information like street address, phone number, school name, or email address was shared
+                            label(for='privateInfo', tabindex='0')
+                              | #{reflectionData['safe-posting'].Q1.checkboxLabels[0]}
                     hr
                     .ui.form
                       .inline.fields
@@ -104,7 +105,8 @@ block content
                         .field
                           .ui.checkbox
                             input(type='checkbox')
-                            label(for='think', tabindex='0')  The person making the post did not think about all the audiences who could see it
+                            label(for='think', tabindex='0')
+                              | #{reflectionData['safe-posting'].Q1.checkboxLabels[1]}
                     hr
                     .ui.form
                       .inline.fields
@@ -112,7 +114,8 @@ block content
                         .field
                           .ui.checkbox
                             input(type='checkbox')
-                            label(for='think', tabindex='0')  It was appropriate for social media
+                            label(for='think', tabindex='0')
+                              | #{reflectionData['safe-posting'].Q1.checkboxLabels[2]}
             
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
           .ui.raised.segment
@@ -122,7 +125,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden.checkTwo 
               .ui.label.resultsPromptLabel
                 h4.reflectionCheckboxesPrompt
-                  | How did you respond to these messages that asked for private information?
+                  | #{reflectionData['safe-posting'].Q2.prompt}
               .ui.stackable.two.cards
 
                 .ui.fluid.card.dim()#card3
@@ -156,7 +159,8 @@ block content
 
                           .ui.checkbox
                             input(type='checkbox')
-                            label(for='changeSub', tabindex='0')  I changed the subject
+                            label(for='changeSub', tabindex='0')
+                              | #{reflectionData['safe-posting'].Q2.checkboxLabels[0]}
                     hr
                     .ui.form
                       .inline.fields
@@ -165,7 +169,8 @@ block content
 
                           .ui.checkbox
                             input(type='checkbox')
-                            label(for='humor', tabindex='0')  I used humor
+                            label(for='humor', tabindex='0')
+                              | #{reflectionData['safe-posting'].Q2.checkboxLabels[1]}
 
                     hr
                     .ui.form
@@ -174,7 +179,8 @@ block content
                         .field
                           .ui.checkbox
                             input(type='checkbox')
-                            label(for='ignore', tabindex='0')  I ignored the message
+                            label(for='ignore', tabindex='0')
+                              | #{reflectionData['safe-posting'].Q2.checkboxLabels[2]}
                             
                     hr
                     .ui.form
@@ -183,7 +189,8 @@ block content
                         .field
                           .ui.checkbox
                             input(type='checkbox')
-                            label(for='direct', tabindex='0')  I was direct
+                            label(for='direct', tabindex='0')
+                              | #{reflectionData['safe-posting'].Q2.checkboxLabels[3]}
                   
                     hr
                     .ui.form
@@ -192,7 +199,8 @@ block content
                         .field
                           .ui.checkbox
                             input(type='checkbox')
-                            label(for='somethingElse', tabindex='0')  I did something else
+                            label(for='somethingElse', tabindex='0')
+                              | #{reflectionData['safe-posting'].Q2.checkboxLabels[4]}
     
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
           .ui.raised.segment
@@ -202,7 +210,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden.checkThree 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt
-                  | What would you do in the future to protect your private information and other people’s private information on social media?
+                  | #{reflectionData['safe-posting'].Q3.prompt}
               .ui.form
                 .inline.fields
                   label

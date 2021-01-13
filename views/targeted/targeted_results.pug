@@ -173,7 +173,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionCheckboxesPrompt
-                  | What did you do when you saw an advertisement or a sponsored post?
+                  | #{reflectionData.targeted.Q1.prompt}
               .content.checkOne
                 .ui.form
                   br
@@ -182,49 +182,56 @@ block content
                     .field
                       .ui.checkbox
                         input(type='checkbox')
-                        label(for='wouldRead', tabindex='0') I hid the advertisement from my timeline.
+                        label(for='wouldRead', tabindex='0')
+                          | #{reflectionData.targeted.Q1.checkboxLabels[0]}
                 .ui.form
                   .inline.fields
                     label(for='checkSource', name='checkSource') 
                     .field
                       .ui.checkbox
                         input(type='checkbox')
-                        label(for='checkSource', tabindex='0') I reported the advertisement to the website.
+                        label(for='checkSource', tabindex='0') 
+                          | #{reflectionData.targeted.Q1.checkboxLabels[1]}
                 .ui.form
                   .inline.fields
                     label(for='corroboration', name='corroboration') 
                     .field
                       .ui.checkbox
                         input(type='checkbox')
-                        label(for='corroboration', tabindex='0') I looked at why I was getting the advertisement. 
+                        label(for='corroboration', tabindex='0')
+                          | #{reflectionData.targeted.Q1.checkboxLabels[2]}
                 .ui.form
                   .inline.fields
                     label(for='interacted', name='interacted') 
                     .field
                       .ui.checkbox
                         input(type='checkbox')
-                        label(for='interacted', tabindex='0') I liked the ad or commented on it.
+                        label(for='interacted', tabindex='0') 
+                          | #{reflectionData.targeted.Q1.checkboxLabels[3]}
                 .ui.form
                   .inline.fields
                     label(for='corroboration', name='wouldViewAd') 
                     .field
                       .ui.checkbox
                         input(type='checkbox')
-                        label(for='wouldViewAd', tabindex='0') I wanted to click on the advertisement.    
+                        label(for='wouldViewAd', tabindex='0')
+                          | #{reflectionData.targeted.Q1.checkboxLabels[4]}  
                 .ui.form
                   .inline.fields
                     label(for='ignored', name='ignored') 
                     .field
                       .ui.checkbox
                         input(type='checkbox')
-                        label(for='ignored', tabindex='0') I ignored the advertisement.    
+                        label(for='ignored', tabindex='0')
+                          | #{reflectionData.targeted.Q1.checkboxLabels[5]}
                 .ui.form
                   .inline.fields
                     label(for='nothing', name='nothing') 
                     .field
                       .ui.checkbox
                         input(type='checkbox')
-                        label(for='nothing', tabindex='0') I didn't notice the advertisement.
+                        label(for='nothing', tabindex='0')
+                          | #{reflectionData.targeted.Q1.checkboxLabels[6]}
 
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
           .ui.raised.segment
@@ -234,7 +241,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt
-                  | Why do companies collect data from people's profiles or online activity?
+                  | #{reflectionData.targeted.Q2.prompt}
               .ui.form
                 .inline.fields
                   label
@@ -248,7 +255,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt
-                  | Why is it important to know how to identify advertisements on social media?
+                  | #{reflectionData.targeted.Q4.prompt}
               .ui.form
                 .inline.fields
                   label
