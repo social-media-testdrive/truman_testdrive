@@ -140,7 +140,8 @@ exports.getClassPageTimes = (req, res, next) => {
       const pageLog = student.pageLog;
       let pageTimeArray = [];
       for(let i=0, l=pageLog.length-1; i<l; i++) {
-        let timeDurationOnPage = pageLog[i+1].time - pageLog[i].time;
+        // convert from ms to minutes
+        let timeDurationOnPage = (pageLog[i+1].time - pageLog[i].time)/60000;
         const dataToPush = {
           timeDuration: timeDurationOnPage,
           subdirectory1: pageLog[i].subdirectory1
@@ -151,7 +152,8 @@ exports.getClassPageTimes = (req, res, next) => {
         pageTimeArray.push(dataToPush);
       }
       const pushStudentObject = {};
-      pushStudentObject[student.username] = pageTimeArray;
+      pushStudentObject['username'] = student.username;
+      pushStudentObject['timeArray'] = pageTimeArray;
       outputArray.push(pushStudentObject);
     }
     res.json({classPageTimes: outputArray})

@@ -7,13 +7,13 @@ block content
 
     .row.addMargin
       .sixteen.wide.column
-        .ui.icon.button.refreshSelectionButton
-          i.redo.alternate.icon
         .ui.selection.dropdown(name="classSelection")
           input(type="hidden")
           i.dropdown.icon
           .default.text Select a Class
           .menu
+        .ui.icon.button.refreshSelectionButton
+          i.redo.alternate.icon
             
     .row.centerText
       h2
@@ -30,9 +30,8 @@ block content
         | Time Spent
     .ui.divider
     .row.addMargin
-      .ui.placeholder.segment.centerText
-        h3 Avg Time Spent to Complete Each Module
-        h5 Goes Here
+      .ui.basic.segment
+        canvas#avgTimeSpentBarChart(width="400" height="400")
         
     .row.centerText
       h2

@@ -7,14 +7,11 @@ block content
 
     .row.addMargin
       .sixteen.wide.column
-        .ui.icon.button.refreshModSelectionButton
-          i.redo.alternate.icon
         .ui.selection.dropdown(name="classSelection")
           input(type="hidden")
           i.dropdown.icon
           .default.text Select a Class
-          .menu
-                
+          .menu    
         .ui.selection.dropdown(name="moduleSelection")
           input(type="hidden")
           i.dropdown.icon
@@ -32,7 +29,8 @@ block content
             .item(data-value="presentation") Online Identities
             .item(data-value="privacy") Social Media Privacy
             .item(data-value="digital-literacy") News in Social Media
-            
+        .ui.icon.button.refreshModSelectionButton
+          i.redo.alternate.icon      
     .row.centerText
       h2
         i.chart.line.icon

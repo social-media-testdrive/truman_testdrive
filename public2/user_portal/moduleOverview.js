@@ -601,8 +601,6 @@ $(window).on("load", async function(){
     visualizeStudentProgressData(studentProgressChart, modName, classId);
     visualizeStudentReflectionData(modName, classId, classSize);
     visualizeFreeplayActivity(modName, classId, classSize);
-    const result = await $.get(`/classPageTimes/${classId}`);
-    console.log(result.classPageTimes);
   });
 
 });
