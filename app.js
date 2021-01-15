@@ -505,6 +505,7 @@ if(enableTeacherDashboard){
   app.get('/classManagement', passportConfig.isAuthenticated, csrfProtection, addCsrf, classController.getClasses);
   app.get('/viewClass/:classId', passportConfig.isAuthenticated,  csrfProtection, addCsrf, classController.getClass);
   app.get('/classSize/:classId', passportConfig.isAuthenticated, csrfProtection, addCsrf, classController.getClassSize);
+  app.get('/classUsernames/:classId', passportConfig.isAuthenticated, csrfProtection, addCsrf, classController.getClassUsernames);
   app.get('/classPageTimes/:classId', passportConfig.isAuthenticated, csrfProtection, addCsrf, classController.getClassPageTimes);
   app.post('/createNewClass', passportConfig.isAuthenticated, check, csrfProtection, classController.postCreateClass);
   app.post('/addStudentToClass', passportConfig.isAuthenticated, check, csrfProtection, classController.addStudentToClass);

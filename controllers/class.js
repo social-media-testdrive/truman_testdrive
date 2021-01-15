@@ -70,6 +70,34 @@ exports.getClass = (req, res, next) => {
   }
 };
 
+exports.getClassUsernames = (req, res, next) => {
+  if (!req.user.isInstructor) {
+    return res.json({classUsernames: []});
+  }
+  Class.findOne({
+    accessCode: req.params.classId,
+    teacher: req.user.id
+  }).populate('students')
+  .exec(function (err, found_class) {
+    if (err) {
+      console.log("ERROR");
+      console.log(err);
+      return next(err);
+    }
+    if (found_class == null){
+      console.log("NULL");
+      var myerr = new Error('Class not found!');
+      return next(myerr);
+    }
+    let usernameArray = [];
+    for(const student of found_class.students){
+      usernameArray.push(student.username);
+    }
+    console.log(usernameArray)
+    res.json({classUsernames: usernameArray});
+  });
+}
+
 // Currently just used for dropdowns
 exports.getClassIdList = (req, res, next) => {
   if (req.user.isInstructor) {

@@ -7,14 +7,21 @@ block content
 
     .row.addMargin
       .sixteen.wide.column
-        .ui.icon.button
-          i.redo.alternate.icon
-        select.ui.search.dropdown
+
+        h2 Step 1: Select Class
+        .ui.selection.dropdown(name="classSelection")
+          input(type="hidden")
+          i.dropdown.icon
+          .default.text Select a Class
+          .menu
+        .ui.icon.button.nextStepButton1
+          i.arrow.right.icon
+        h2.usernameSelectionStepLabel.hidden Step 2: Select Student
+        select.ui.search.dropdown.usernameSelection.hidden(name="usernameSelection")
           option(value='') Search...
-          option(value='0') Student A
-          option(value='1') Student B
-          option(value='2') Student C
-          option(value='3') Student D
+        .ui.icon.button.nextStepButton2.hidden
+          i.arrow.right.icon
+
 
     .row.addMargin
       table.ui.single.lined.table
@@ -42,6 +49,7 @@ block content
         | Download Table
 
 block scripts
+  script(src='/user_portal/teacherDashboardTools.js')
   - var m = '/user_portal/studentReport.js?t=' + (new Date()).getTime().toString();
   script(src=m)
   
