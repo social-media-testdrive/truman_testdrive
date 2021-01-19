@@ -991,6 +991,44 @@ exports.postUpdateModuleProgress = (req, res, next) => {
   });
 };
 
+
+exports.getStudentPageTimes = (req, res, next) => {
+  if (!req.user.isInstructor) {
+    return res.json({studentPageTimes: {}});
+  }
+  User.findOne({
+    accessCode: req.params.classId,
+    username: req.params.username
+  }).exec(function (err, student) {
+    if (err) {
+      console.log("ERROR");
+      console.log(err);
+      return next(err);
+    }
+    if (student == null){
+      console.log("NULL");
+      var myerr = new Error('Student not found!');
+      return next(myerr);
+    }
+    const pageLog = student.pageLog;
+    let pageTimeArray = [];
+    for(let i=0, l=pageLog.length-1; i<l; i++) {
+      // convert from ms to minutes
+      let timeDurationOnPage = (pageLog[i+1].time - pageLog[i].time)/60000;
+      const dataToPush = {
+        timeDuration: timeDurationOnPage,
+        subdirectory1: pageLog[i].subdirectory1
+      };
+      if (pageLog[i].subdirectory2) {
+        dataToPush["subdirectory2"] = pageLog[i].subdirectory2;
+      }
+      pageTimeArray.push(dataToPush);
+    }
+    res.json({studentPageTimes:pageTimeArray});
+  });
+}
+
+
 /**
  * POST /account/profile
  * Update profile information.
