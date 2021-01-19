@@ -289,7 +289,6 @@ function updateStudentProgressTable(completedUsernames, startedUsernames, noneUs
       </tr>
     `);
   }
-  $('#progressTable').show();
 }
 
 function updateStudentProgressText(completedCount, startedCount, noneCount){
@@ -297,8 +296,30 @@ function updateStudentProgressText(completedCount, startedCount, noneCount){
     <h3>${completedCount} students have completed this module.</h3>
     <h3>${startedCount} students have started but not completed this module.</h3>
     <h3>${noneCount} students have not started this module.</h3>
+    <br>
+    <button class="ui right labeled icon button" id="viewProgressTableButton">
+      <i class="down arrow icon"></i>
+      Show Details
+    </button>
   `);
   $('#studentProgressText').show();
+  $('#viewProgressTableButton').on('click', function(){
+    $('#progressTable').transition({
+      animation: 'fade down',
+      onShow: function(){
+        $('#viewProgressTableButton').html(`
+          <i class="up arrow icon"></i>
+          Hide Details
+        `);
+      },
+      onHide: function(){
+        $('#viewProgressTableButton').html(`
+          <i class="down arrow icon"></i>
+          Show Details
+        `);
+      }
+    });
+  });
 }
 
 // // Used when filling the student progress table
@@ -325,30 +346,61 @@ function getMaxLength(listOne, listTwo, listThree){
   return returnValue;
 }
 
-// Breaks down the progress data into three lists that indicate each user's status in a module
+// Breaks down the progress data and counts the number of students with each status
+// Simultaneously updates the progress table (id #progressTable)
 // Inputs:
 // progressData - json, data.classModuleProgress from path /moduleProgress/:classId
 // modName - string that indicates which module we want to know about
 // Return values:
-// completedUsers - array of the usernames of students who completed the module
-// startedUsers - array of the usernames of students who started the module
-// noneUsers - array of the usernames of students who have no progress the module
-function getUserStatusesBreakdown(progressData, modName){
+// completedCount - number of students who completed the module
+// startedCount - number of students who started the module
+// noneCount - number of students who have no progress the module
+function getStatusCountsUpdateTable(progressData, modName){
   // remove dashes from modName
   modName = modName.replace('-','');
-  let completedUsers = [];
-  let startedUsers = [];
-  let noneUsers = [];
+  let completedCount = 0;
+  let startedCount = 0;
+  let noneCount = 0;
   for (const username in progressData) {
     switch(progressData[username][modName]){
       case "completed":
-        completedUsers.push(username);
+        completedCount++;
+        $("#fillProgressTableBody").append(`
+          <tr class="center aligned">
+            <td class="left aligned" data-label='Username'>${username}</td>
+            <td class="positive" data-label='Completed'>
+              <i class="check icon"></i>
+            </td>
+            <td data-label='Started'></td>
+            <td data-label='None'></td>
+          </tr>
+        `);
         break;
       case "started":
-        startedUsers.push(username);
+        startedCount++;
+        $("#fillProgressTableBody").append(`
+          <tr class="center aligned">
+            <td class="left aligned" data-label='Username'>${username}</td>
+            <td data-label='Completed'></td>
+            <td data-label='Started'>
+              <i class="check icon"></i>
+            </td>
+            <td data-label='None'></td>
+          </tr>
+        `);
         break;
       case "none":
-        noneUsers.push(username);
+        noneCount++;
+        $("#fillProgressTableBody").append(`
+          <tr class="center aligned">
+            <td class="left aligned" data-label='Username'>${username}</td>
+            <td data-label='Completed'></td>
+            <td data-label='Started'></td>
+            <td data-label='None'>
+              <i class="check icon"></i>
+            </td>
+          </tr>
+        `);
         break;
       default:
         console.log("There is an error in getModuleProgressBreakdown: unrecognized status")
@@ -356,39 +408,36 @@ function getUserStatusesBreakdown(progressData, modName){
         break;
     }
   }
-  return [completedUsers, startedUsers, noneUsers];
+  return [completedCount, startedCount, noneCount];
 }
 
-function visualizeStudentProgressData(studentProgressChart, modName, classId){
+async function visualizeStudentProgressData(studentProgressChart, modName, classId){
   if (!(modName && classId)) {
     console.log('Missing a selection');
     return;
   }
 
-  let completedUsernames = [];
-  let startedUsernames = [];
-  let noneUsernames = [];
   let completedCount = 0;
   let startedCount = 0;
   let noneCount = 0;
 
   // Clear the progress text and the progress table before inserting new data
   $('#studentProgressText').empty();
-  $("#fillProgressTableBody").empty();
 
-  $.get(`/moduleProgress/${classId}`, function(data){
-    let userStatusesBreakdown = getUserStatusesBreakdown(data.classModuleProgress, modName);
-    completedUsernames = userStatusesBreakdown[0];
-    startedUsernames = userStatusesBreakdown[1];
-    noneUsernames = userStatusesBreakdown[2];
-    completedCount = completedUsernames.length;
-    startedCount = startedUsernames.length;
-    noneCount = noneUsernames.length;
-  }).then(function() {
-    updateStudentProgressText(completedCount, startedCount, noneCount);
-    updateStudentProgressTable(completedUsernames, startedUsernames, noneUsernames);
-    updateStudentProgressChart(studentProgressChart, completedCount, startedCount, noneCount);
+  const classModuleProgress = await $.get(`/moduleProgress/${classId}`).then(function(data){
+    return data.classModuleProgress;
   });
+
+  const userStatusesBreakdown = getStatusCountsUpdateTable(classModuleProgress, modName);
+  completedCount = userStatusesBreakdown[0];
+  startedCount = userStatusesBreakdown[1];
+  noneCount = userStatusesBreakdown[2];
+
+  updateStudentProgressText(completedCount, startedCount, noneCount);
+  updateStudentProgressChart(studentProgressChart, completedCount, startedCount, noneCount);
+
+  //updateStudentProgressTable(completedUsernames, startedUsernames, noneUsernames);
+
 
 }
 
@@ -596,6 +645,11 @@ $(window).on("load", async function(){
   $('.refreshModSelectionButton').on('click', async function(){
     let modName = ($(".ui.selection.dropdown[name='moduleSelection']").dropdown('get value'));
     let classId = ($(".ui.selection.dropdown[name='classSelection']").dropdown('get value'));
+    if(!(modName && classId)){
+      return;
+    }
+    $('#progressTable').hide();
+    $('#fillProgressTableBody').empty();
     const getClassSize = await $.get(`/classSize/${classId}`);
     const classSize = getClassSize.studentCount;
     visualizeStudentProgressData(studentProgressChart, modName, classId);
