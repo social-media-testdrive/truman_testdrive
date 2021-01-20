@@ -1,6 +1,19 @@
-function updateTableHtml(tableId, studentData){
+function updateTableHtml(studentData){
+  $('#studentReportSegment').empty();
+  $('#studentReportSegment').append(`
+    <table class="ui single lined table">
+      <thead>
+        <tr>
+          <th>Module</th>
+          <th>Time Spent to Complete</th>
+          <th>Last Accessed</th>
+        </tr>
+      </thead>
+      <tbody id="studentReportTable"></tbody>
+    </table>
+  `);
   for(const modName of Object.keys(studentData)){
-    $(`#${tableId}`).append(`
+    $(`#studentReportTable`).append(`
       <tr>
         <td>${studentData[modName].modTitle}</td>
         <td>${studentData[modName].timeToComplete ? studentData[modName].timeToComplete + " minutes" : "Not completed"}</td>
@@ -10,11 +23,10 @@ function updateTableHtml(tableId, studentData){
   }
 }
 
-async function getTimeColumns(finalStudentData, classId, username){
-  const studentReportData = await $.get(`/studentReportData/${classId}/${username}`);
+async function getTimeColumns(studentReportData, finalStudentTableData, classId, username){
   const pageTimes = studentReportData.pageTimes;
   const moduleProgress = studentReportData.moduleProgress;
-  for(let modName of Object.keys(finalStudentData)){
+  for(let modName of Object.keys(finalStudentTableData)){
     let timeToComplete = 0;
     let mostRecentVisit = 0;
     for (const timeItem of pageTimes) {
@@ -30,10 +42,10 @@ async function getTimeColumns(finalStudentData, classId, username){
         }
       }
     }
-    finalStudentData[modName]['timeToComplete'] = timeToComplete;
-    finalStudentData[modName]['dateLastVisited'] = mostRecentVisit;
+    finalStudentTableData[modName]['timeToComplete'] = timeToComplete;
+    finalStudentTableData[modName]['dateLastVisited'] = mostRecentVisit;
   }
-  return finalStudentData;
+  return finalStudentTableData;
 }
 
 function initializeDropdowns(){
@@ -74,11 +86,19 @@ async function handleSelectClassDropdown(){
   return classId;
 };
 
+function addLoadingIcon(){
+  $('#studentReportSegment').append(`
+    <div class="ui active inline loader"></div>
+  `);
+}
+
 $(window).on('load', async function(){
   let classId;
   let username;
   initializeDropdowns();
+
   // appearances: hide the username selection dropdown
+
   $(".usernameSelection").addClass('hidden');
 
   $('.nextStepButton1').on('click', async function(){
@@ -90,8 +110,9 @@ $(window).on('load', async function(){
     if(!username){
       return;
     }
-    console.log(`Selected user ${username}`)
-    $('#studentReportTable').empty();
+
+    $('#studentReportSegment').empty();
+    addLoadingIcon();
     let finalStudentTableData = {
       "accounts": {"modTitle":"Accounts and Passwords"},
       "advancedlit": {"modTitle":"Advanced News Literacy"},
@@ -106,9 +127,8 @@ $(window).on('load', async function(){
       "safe-posting": {"modTitle":"Is It Private Information?"},
       "targeted": {"modTitle":"Ads on Social Media"}
     };
-
-    finalStudentTableData = await getTimeColumns(finalStudentTableData, classId, username);
-
-    updateTableHtml('studentReportTable', finalStudentTableData);
+    const studentReportData = await $.get(`/studentReportData/${classId}/${username}`);
+    finalStudentTableData = await getTimeColumns(studentReportData, finalStudentTableData, classId, username);
+    updateTableHtml(finalStudentTableData);
   });
 });
