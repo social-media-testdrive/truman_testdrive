@@ -992,7 +992,7 @@ exports.postUpdateModuleProgress = (req, res, next) => {
 };
 
 
-exports.getStudentPageTimes = (req, res, next) => {
+exports.getStudentReportData = (req, res, next) => {
   if (!req.user.isInstructor) {
     return res.json({studentPageTimes: {}});
   }
@@ -1010,12 +1010,25 @@ exports.getStudentPageTimes = (req, res, next) => {
       var myerr = new Error('Student not found!');
       return next(myerr);
     }
+
+    // get progress on each module
+    // add dashes to the keys that usually have them
+    let moduleProgress = {};
+    moduleProgress["safe-posting"] = student.moduleProgress['safeposting'];
+    moduleProgress["digital-literacy"] = student.moduleProgress['safeposting'];
+    for(const key of Object.keys(student.moduleProgress)){
+      if(key !== "digitalliteracy" && key !== "safeposting")
+      moduleProgress[key] = student.moduleProgress[key];
+    }
+
+    // get page times
     const pageLog = student.pageLog;
     let pageTimeArray = [];
     for(let i=0, l=pageLog.length-1; i<l; i++) {
       // convert from ms to minutes
       let timeDurationOnPage = (pageLog[i+1].time - pageLog[i].time)/60000;
       const dataToPush = {
+        timeOpened: pageLog[i].time,
         timeDuration: timeDurationOnPage,
         subdirectory1: pageLog[i].subdirectory1
       };
@@ -1024,7 +1037,11 @@ exports.getStudentPageTimes = (req, res, next) => {
       }
       pageTimeArray.push(dataToPush);
     }
-    res.json({studentPageTimes:pageTimeArray});
+
+    res.json({
+      pageTimes: pageTimeArray,
+      moduleProgress: moduleProgress
+    });
   });
 }
 

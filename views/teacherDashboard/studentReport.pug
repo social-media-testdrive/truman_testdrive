@@ -30,20 +30,8 @@ block content
             th Module
             th Time Spent to Complete 
             th Last Accessed
-        tbody
-          tr
-            td='Module 1'
-            td='40 min'
-            td='Yesterday'
-          tr
-            td='Module 2'
-            td='42 min'
-            td='3 days ago'
-          tr
-            td='Module 3'
-            td='38 min'
-            td='3 days ago'
-    .row
+        tbody#studentReportTable
+    .row(style="padding-bottom:7em;")
       button.ui.labeled.icon.button.testDriveBlueButton 
         i.download.icon
         | Download Table

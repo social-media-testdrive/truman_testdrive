@@ -1,7 +1,39 @@
+function updateTableHtml(tableId, studentData){
+  for(const modName of Object.keys(studentData)){
+    $(`#${tableId}`).append(`
+      <tr>
+        <td>${studentData[modName].modTitle}</td>
+        <td>${studentData[modName].timeToComplete ? studentData[modName].timeToComplete + " minutes" : "Not completed"}</td>
+        <td>${studentData[modName].dateLastVisited ? humanized_time_span(studentData[modName].dateLastVisited) : ""}</td>
+      </tr>
+    `);
+  }
+}
+
 async function getTimeColumns(finalStudentData, classId, username){
-  let pageTimes = await $.get(`/studentPageTimes/${classId}/${username}`).then(function(data){
-    return data.studentPageTimes;
-  });
+  const studentReportData = await $.get(`/studentReportData/${classId}/${username}`);
+  const pageTimes = studentReportData.pageTimes;
+  const moduleProgress = studentReportData.moduleProgress;
+  for(let modName of Object.keys(finalStudentData)){
+    let timeToComplete = 0;
+    let mostRecentVisit = 0;
+    for (const timeItem of pageTimes) {
+      if (timeItem.subdirectory2 === modName) {
+        if (moduleProgress[modName] === "completed"){
+          timeToComplete = timeToComplete + timeItem.timeDuration;
+        }
+        let dateObj = new Date(timeItem.timeOpened);
+        if(!mostRecentVisit){
+          mostRecentVisit = dateObj;
+        } else if (mostRecentVisit < dateObj) {
+          mostRecentVisit = dateObj;
+        }
+      }
+    }
+    finalStudentData[modName]['timeToComplete'] = timeToComplete;
+    finalStudentData[modName]['dateLastVisited'] = mostRecentVisit;
+  }
+  return finalStudentData;
 }
 
 function initializeDropdowns(){
@@ -59,21 +91,24 @@ $(window).on('load', async function(){
       return;
     }
     console.log(`Selected user ${username}`)
+    $('#studentReportTable').empty();
     let finalStudentTableData = {
-      "accounts": {},
-      "advancedlit": {},
-      "cyberbullying": {},
-      "digfoot": {},
-      "digital-literacy": {},
-      "esteem": {},
-      "habits": {},
-      "phishing": {},
-      "presentation": {},
-      "privacy": {},
-      "safe-posting": {},
-      "targeted": {}
+      "accounts": {"modTitle":"Accounts and Passwords"},
+      "advancedlit": {"modTitle":"Advanced News Literacy"},
+      "cyberbullying": {"modTitle":"How to Be an Upstander"},
+      "digfoot": {"modTitle":"Shaping Your Digital Footprint"},
+      "digital-literacy": {"modTitle":"News in Social Media"},
+      "esteem": {"modTitle":"The Ups and Downs of Social Media"},
+      "habits": {"modTitle":"Healthy Social Media Habits"},
+      "phishing": {"modTitle":"Scams and Phishing"},
+      "presentation": {"modTitle":"Online Identities"},
+      "privacy": {"modTitle":"Social Media Privacy"},
+      "safe-posting": {"modTitle":"Is It Private Information?"},
+      "targeted": {"modTitle":"Ads on Social Media"}
     };
 
-    getTimeColumns(finalStudentTableData, classId, username);
+    finalStudentTableData = await getTimeColumns(finalStudentTableData, classId, username);
+
+    updateTableHtml('studentReportTable', finalStudentTableData);
   });
 });
