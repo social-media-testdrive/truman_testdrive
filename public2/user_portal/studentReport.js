@@ -4,9 +4,15 @@ function updateTableHtml(studentData){
     <table class="ui single lined table">
       <thead>
         <tr>
-          <th>Module</th>
-          <th>Time Spent to Complete</th>
-          <th>Last Accessed</th>
+          <th rowspan="2" class="bottom aligned">Module</th>
+          <th rowspan="2" class="bottom aligned">Time Spent to Complete</th>
+          <th rowspan="2" class="bottom aligned">Last Accessed</th>
+          <th colspan="3" class="center aligned">Explore Timeline Actions</th>
+        </tr>
+        <tr>
+          <th class="center aligned">Like Posts</th>
+          <th class="center aligned">Flag Posts</th>
+          <th class="center aligned">Replies</th>
         </tr>
       </thead>
       <tbody id="studentReportTable"></tbody>
@@ -17,13 +23,44 @@ function updateTableHtml(studentData){
       <tr>
         <td>${studentData[modName].modTitle}</td>
         <td>${studentData[modName].timeToComplete ? studentData[modName].timeToComplete + " minutes" : "Not completed"}</td>
-        <td>${studentData[modName].dateLastVisited ? humanized_time_span(studentData[modName].dateLastVisited) : ""}</td>
+        <td>${studentData[modName].dateLastVisited ? humanized_time_span(studentData[modName].dateLastVisited) : "N/A"}</td>
+        <td class="center aligned">${studentData[modName].likeCount}</td>
+        <td class="center aligned">${studentData[modName].flagCount}</td>
+        <td class="center aligned">${studentData[modName].replyCount}</td>
       </tr>
     `);
   }
-}
+};
 
-async function getTimeColumns(studentReportData, finalStudentTableData, classId, username){
+function getExploreColumns(studentReportData, finalStudentTableData){
+  for(let modName of Object.keys(finalStudentTableData)){
+    let likeCount = 0;
+    let flagCount = 0;
+    let replyCount = 0;
+    const freeplayActions = studentReportData.freeplayActions;
+    for(const post in freeplayActions){
+      if (post.liked) {
+        likeCount++;
+      }
+      if (post.flagged) {
+        flagCount++;
+      }
+      if (post.comments) {
+        for(const comment in post.comments) {
+          if(comment.new_comment){
+            replyCount++;
+          }
+        }
+      }
+    }
+    finalStudentTableData[modName]['likeCount'] = likeCount;
+    finalStudentTableData[modName]['flagCount'] = flagCount;
+    finalStudentTableData[modName]['replyCount'] = replyCount;
+  }
+  return finalStudentTableData;
+};
+
+function getTimeColumns(studentReportData, finalStudentTableData){
   const pageTimes = studentReportData.pageTimes;
   const moduleProgress = studentReportData.moduleProgress;
   for(let modName of Object.keys(finalStudentTableData)){
@@ -46,7 +83,7 @@ async function getTimeColumns(studentReportData, finalStudentTableData, classId,
     finalStudentTableData[modName]['dateLastVisited'] = mostRecentVisit;
   }
   return finalStudentTableData;
-}
+};
 
 function initializeDropdowns(){
   $(".ui.selection.dropdown[name='classSelection']").dropdown({
@@ -90,7 +127,7 @@ function addLoadingIcon(){
   $('#studentReportSegment').append(`
     <div class="ui active inline loader"></div>
   `);
-}
+};
 
 $(window).on('load', async function(){
   let classId;
@@ -128,7 +165,8 @@ $(window).on('load', async function(){
       "targeted": {"modTitle":"Ads on Social Media"}
     };
     const studentReportData = await $.get(`/studentReportData/${classId}/${username}`);
-    finalStudentTableData = await getTimeColumns(studentReportData, finalStudentTableData, classId, username);
+    finalStudentTableData = await getTimeColumns(studentReportData, finalStudentTableData);
+    finalStudentTableData = await getExploreColumns(studentReportData, finalStudentTableData);
     updateTableHtml(finalStudentTableData);
   });
 });

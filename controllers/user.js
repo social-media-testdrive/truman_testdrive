@@ -1010,7 +1010,6 @@ exports.getStudentReportData = (req, res, next) => {
       var myerr = new Error('Student not found!');
       return next(myerr);
     }
-
     // get progress on each module
     // add dashes to the keys that usually have them
     let moduleProgress = {};
@@ -1038,9 +1037,13 @@ exports.getStudentReportData = (req, res, next) => {
       pageTimeArray.push(dataToPush);
     }
 
+    // get freeplay actions
+    const freeplayActions = student.feedAction;
+
     res.json({
       pageTimes: pageTimeArray,
-      moduleProgress: moduleProgress
+      moduleProgress: moduleProgress,
+      freeplayActions: freeplayActions
     });
   });
 }
