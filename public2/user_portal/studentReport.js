@@ -1,6 +1,7 @@
-function updateTableHtml(studentData){
+function updateTableHtml(username, studentData){
   $('#studentReportSegment').empty();
   $('#studentReportSegment').append(`
+    <h2>Viewing Student Report for: ${username}</h2>
     <table class="ui single lined table">
       <thead>
         <tr>
@@ -88,12 +89,12 @@ function getTimeColumns(studentReportData, finalStudentTableData){
 function initializeDropdowns(){
   $(".ui.selection.dropdown[name='classSelection']").dropdown({
     onChange: function(){
-      $('.nextStepButton1').addClass('green');
+      $('.confirmClassButton').addClass('green');
     }
   });
   $(".usernameSelection").dropdown({
     onChange: function(){
-      $('.nextStepButton2').removeClass('hidden').addClass('green');
+      $('.getReportButton').removeClass('hidden').addClass('green');
     }
   });
 };
@@ -104,11 +105,19 @@ async function handleSelectClassDropdown(){
   if(!classId){
     return;
   }
-  // appearances: clear the username dropdown selection, display as "loading"
+  // appearances:
+  // clear the username dropdown selection, display as "loading"
   $('.usernameSelectionStepLabel, .usernameSelection').removeClass('hidden');
   $('.usernameSelection').dropdown("clear");
   $('.usernameSelection .menu').empty();
   $('.usernameSelection').addClass('loading');
+  // Hide the "confirm" button and replace with "select different class" button
+  // Disable the dropdown unless "select different class" button clicked
+  $(".ui.selection.dropdown[name='classSelection']").addClass('disabled')
+  $('.confirmClassButton').addClass('hidden');
+  $('.updateClassButton').removeClass('hidden');
+
+
   // get each username in the class, add it to dropdown options
   const usernameArray = await $.get(`/classUsernames/${classId}`).then(function(data){
     return data.classUsernames;
@@ -130,6 +139,19 @@ function addLoadingIcon(){
 };
 
 $(window).on('load', async function(){
+
+  $('.updateClassButton').on('click', function(){
+    // appearances:
+    // Remove the "select student" options, clear the table
+    // Enable the class selection dropdown
+    // Swap the "select different class" button with "confirm" button
+    $('.usernameSelectionStepLabel, .usernameSelection, .getReportButton').addClass('hidden');
+    $('#studentReportSegment').empty();
+    $(".ui.selection.dropdown[name='classSelection']").removeClass('disabled')
+    $('.confirmClassButton').removeClass('hidden');
+    $('.updateClassButton').addClass('hidden');
+  });
+
   let classId;
   let username;
   initializeDropdowns();
@@ -138,11 +160,11 @@ $(window).on('load', async function(){
 
   $(".usernameSelection").addClass('hidden');
 
-  $('.nextStepButton1').on('click', async function(){
+  $('.confirmClassButton').on('click', async function(){
     classId = await handleSelectClassDropdown();
   });
 
-  $('.nextStepButton2').on('click', async function(){
+  $('.getReportButton').on('click', async function(){
     username = ($(".usernameSelection").dropdown('get text'));
     if(!username){
       return;
@@ -167,6 +189,6 @@ $(window).on('load', async function(){
     const studentReportData = await $.get(`/studentReportData/${classId}/${username}`);
     finalStudentTableData = await getTimeColumns(studentReportData, finalStudentTableData);
     finalStudentTableData = await getExploreColumns(studentReportData, finalStudentTableData);
-    updateTableHtml(finalStudentTableData);
+    updateTableHtml(username, finalStudentTableData);
   });
 });

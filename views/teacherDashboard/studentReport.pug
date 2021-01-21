@@ -9,26 +9,38 @@ block content
       .sixteen.wide.column
 
         h2 Step 1: Select Class
-        .ui.selection.dropdown(name="classSelection")
-          input(type="hidden")
-          i.dropdown.icon
-          .default.text Select a Class
-          .menu
-        .ui.icon.button.nextStepButton1
-          i.arrow.right.icon
-        h2.usernameSelectionStepLabel.hidden Step 2: Select Student
-        select.ui.search.dropdown.usernameSelection.hidden(name="usernameSelection")
-          option(value='') Search...
-        .ui.icon.button.nextStepButton2.hidden
-          i.arrow.right.icon
+        .row
+          .ui.selection.dropdown(name="classSelection")
+            input(type="hidden")
+            i.dropdown.icon
+            .default.text Select a Class
+            .menu
+        .row
+          .ui.labeled.icon.button.confirmClassButton
+            i.check.icon
+            | Confirm
+            
+        .row
+          .ui.testDriveBlueButton.icon.labeled.button.updateClassButton.hidden 
+            i.undo.alternate.icon
+            | Select Different Class
+
+        .row
+          h2.usernameSelectionStepLabel.hidden Step 2: Select Student
+          select.ui.search.dropdown.usernameSelection.hidden(name="usernameSelection")
+            option(value='') Search...
+        .row
+          .ui.icon.labeled.button.getReportButton.hidden 
+            i.check.icon
+            | Get Student Report
 
 
     .row.addMargin
       .ui.basic.segment(style="padding:0;")#studentReportSegment
-    .row(style="padding-bottom:7em;")
-      button.ui.labeled.icon.button.testDriveBlueButton 
-        i.download.icon
-        | Download Table
+    //- .row(style="padding-bottom:7em;")
+    //-   button.ui.labeled.icon.button.testDriveBlueButton 
+    //-     i.download.icon
+    //-     | Download Table
 
 block scripts
   script(src='/user_portal/teacherDashboardTools.js')
@@ -37,3 +49,4 @@ block scripts
   
 block styles
   link(rel='stylesheet', href='/css/teacherDashboard/classOverview.css')
+  link(rel='stylesheet', href='/css/teacherDashboard/studentReport.css')  
