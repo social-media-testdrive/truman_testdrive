@@ -339,7 +339,62 @@ exports.addStudentToClass = (req, res, next) => {
   });
 }
 
-
+exports.removeStudentFromClass = (req, res, next) => {
+  if (req.user.isInstructor) {
+    Class.findOne({
+      accessCode: req.body.accessCode,
+      teacher: req.user.id
+    }).populate('students') // populate lets you reference docs in other collections
+    .exec(function (err, found_class) {
+      if (err) {
+        console.log("ERROR");
+        console.log(err);
+        return next(err);
+      }
+      if (found_class == null){
+        console.log("NULL");
+        var myerr = new Error('Class not found!');
+        return next(myerr);
+      }
+      // remove the student from the class
+      let studentIndex;
+      let studentId; // used later to update student User
+      for(const student in found_class.students){
+        if(found_class.students[student].username === req.body.username) {
+          studentIndex = student;
+          studentId = found_class.students[student]._id;
+        }
+      }
+      found_class.students.splice(studentIndex,1);
+      found_class.save((err) => {
+        if(err) {
+          return next(err);
+        }
+        // student has been removed from the class
+        // now, update the student User model to be "deleted" from the class
+        User.findById(studentId)
+        .exec(function (err, found_student) {
+          if (err) {
+            console.log("ERROR");
+            console.log(err);
+            return next(err);
+          }
+          if (found_student == null){
+            console.log("NULL");
+            var myerr = new Error('Student not found!');
+            return next(myerr);
+          }
+          found_student.deleted = true;
+          found_student.save((err) => {
+            res.redirect(`/viewClass/${req.body.accessCode}`);
+          });
+        });
+      });
+    });
+  } else {
+    res.redirect('/login');
+  }
+};
 
 
 

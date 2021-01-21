@@ -510,6 +510,7 @@ if(enableTeacherDashboard){
   app.get('/studentReportData/:classId/:username', passportConfig.isAuthenticated, csrfProtection, addCsrf, userController.getStudentReportData);
   app.post('/createNewClass', passportConfig.isAuthenticated, check, csrfProtection, classController.postCreateClass);
   app.post('/addStudentToClass', passportConfig.isAuthenticated, check, csrfProtection, classController.addStudentToClass);
+  app.post('/removeStudentFromClass', passportConfig.isAuthenticated, check, csrfProtection, classController.removeStudentFromClass);
   app.post('/generateStudentAccounts', passportConfig.isAuthenticated, check, csrfProtection, classController.generateStudentAccounts);
 
 

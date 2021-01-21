@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 
 const userSchema = new mongoose.Schema({
   // email: {type: String, default: ""},
+  deleted: {type: Boolean, default: false}, // indicates if this account has been "deleted" from a class
   password: String, //hashed and salted
   // passwordResetToken: String,
   // passwordResetExpires: Date,

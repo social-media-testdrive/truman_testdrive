@@ -8,4 +8,16 @@ $(window).on('load', function(){
     $('#generateAccountsModal').modal('show');
   });
 
+  $('.deleteAccountButton').popup();
+  $('#deleteAccountModal').modal({
+    onApprove: function(){
+      $(this).find('form').submit();
+    }
+  });
+  $('.deleteAccountButton').on('click', function(){
+    let username = $(this).closest('td').siblings('.usernameCell').text();
+    $('#confirmDeleteAccountText').text(`Are you sure you want to delete ${username}?`);
+    $("#deleteAccount input[name='username']").attr('value', username);
+    $('#deleteAccountModal').modal('show');
+  })
 })
