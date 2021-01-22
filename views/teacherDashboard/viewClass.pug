@@ -12,14 +12,17 @@ block content
       .active.section=found_class.className
     h3 Viewing Class "#{found_class.className}"
     br
-    table.ui.selectable.celled.padded.table
-      thead
-        tr
-          th Username
-          th Student Name
-          th Options
-      each student in found_class.students
+    .ui.basic.segment(style="padding:0;")
+      .ui.inverted.dimmer#loadingDimmer
+        .ui.text.loader Updating Class...
+      table.ui.selectable.celled.padded.table
+        thead
+          tr
+            th Username
+            th Student Name
+            th Options
         tbody
+        each student in found_class.students
           tr
             td.usernameCell=student.username
             if student.name
@@ -32,13 +35,13 @@ block content
             td
               button.ui.icon.red.button.deleteAccountButton(data-content="Delete Account")
                 i.icon.trash.alternate
-          
-      tfoot.full-width
-        tr
-          th(colspan="3")
-            button.ui.green.button.labeled.icon.green.generateAccountsButton
-              i.plus.icon
-              | Generate accounts in this class
+            
+        tfoot.full-width
+          tr
+            th(colspan="3")
+              button.ui.green.button.labeled.icon.green.generateAccountsButton
+                i.plus.icon
+                | Generate accounts in this class
     //- button.ui.basic.button.green.addStudentButton
     //-   i.plus.icon
     //-   | Add existing student to class
@@ -64,8 +67,12 @@ block content
             label(for='numberOfAccounts') How many accounts would you like to add?
             input(type='text', name='numberOfAccounts', id='numberOfAccounts', placeholder='Enter a Number...')
       .actions
-        input.ui.red.deny.button(type='cancel', value='Cancel')
-        input.ui.green.button(type='submit', value='Submit', form='generateStudentAccounts')
+        .ui.icon.labeled.red.deny.button 
+          i.cancel.icon
+          | Cancel
+        .ui.icon.labeled.green.approve.button
+          i.check.icon
+          | Generate Accounts
           
     .ui.small.modal#deleteAccountModal
       i.close.icon

@@ -9,11 +9,21 @@ $(window).on('load', function(){
   });
 
   $('.deleteAccountButton').popup();
+
   $('#deleteAccountModal').modal({
     onApprove: function(){
       $(this).find('form').submit();
+      $('#loadingDimmer').addClass('active')
     }
   });
+
+  $('#generateAccountsModal').modal({
+    onApprove: function(){
+      $(this).find('form').submit();
+      $('#loadingDimmer').addClass('active')
+    }
+  });
+
   $('.deleteAccountButton').on('click', function(){
     let username = $(this).closest('td').siblings('.usernameCell').text();
     $('#confirmDeleteAccountText').text(`Are you sure you want to delete ${username}?`);

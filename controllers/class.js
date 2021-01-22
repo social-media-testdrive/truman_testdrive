@@ -371,7 +371,10 @@ exports.removeStudentFromClass = (req, res, next) => {
           return next(err);
         }
         // student has been removed from the class
-        // now, update the student User model to be "deleted" from the class
+        // now, update the student User model to be "deleted" from the class (set "deleted"=true)
+        // TODO: if the account is empty and never used, *actually* delete it
+        // TODO: what to check? would an empty pageLog and all module statuses
+        // as "none" be a comprehensive enough check?
         User.findById(studentId)
         .exec(function (err, found_student) {
           if (err) {
