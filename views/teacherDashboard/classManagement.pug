@@ -10,27 +10,35 @@ block content
     br
     h3 Class List
     br
-    table.ui.celled.padded.table
-      thead
-        tr
-          th.single.line Class Name
-          th Access Code
-          th Number of Students
-          th Class Login Link
-      each u in classes
+    .ui.basic.segment(style="padding:0;")
+      .ui.inverted.dimmer#loadingDimmer
+        .ui.text.loader Updating Class...
+      table.ui.selectable.celled.padded.table
+        thead
+          tr
+            th.single.line Class Name
+            th Access Code
+            th Number of Students
+            th Class Login Link
+            th Options
         tbody
+        each u in classes
           tr
             td.classNameColumn
               a.item(href='/viewClass/'+u.accessCode)=u.className
-            td=u.accessCode
+            td.accessCodeColumn=u.accessCode
             td=u.students.length
             td
               p.loginLink http://localhost:3000/classLogin/#{u.accessCode}
-    br
-    br
-    #new_class.ui.big.green.labeled.icon.button
-        i.plus.icon
-        |   Create New Class
+            td
+              button.ui.icon.red.button.deleteClassButton(data-content="Delete Class")
+                i.icon.trash.alternate
+      br
+      br
+      #new_class.ui.big.green.labeled.icon.button
+          i.plus.icon
+          |   Create New Class
+    
     .ui.small.newclass.modal
       i.close.icon
       .header Create New Class
@@ -47,26 +55,44 @@ block content
       .actions
         input.ui.green.button(type='submit', value='Submit', form='classform')
                   
-    .ui.small.modal#addStudentToClassModal
+    .ui.small.modal#deleteClassModal
       i.close.icon
-      .header Add Student to Class
-      .content
-        h3#classNameHeader
-          | Adding to class:
-          span classname
-        form#addStudentForm.ui.form(name="addStudentToClass" action='/addStudentToClass', method='POST')
+      .header Confirm Delete
+      .content.centered
+        h2.center.aligned#confirmDeleteClassText
+        h3.center.aligned This action cannot be undone.
+        form#deleteClass.ui.form(name="deleteClass" action='/deleteClass', method='POST')
           input(type='hidden', name='_csrf', value=csrfToken)
-          input(type='hidden', name='className')
-          .field
-            label(for='studentUsername') Student Username
-            input(type='text', name='studentUsername', id='studentUsername', placeholder='Enter Student Name')
-          .ui.error.message
+          input(type='hidden', name='className' value='')
+          input(type='hidden', name='accessCode' value='')
       .actions
-        input.ui.green.button(type='submit', value='Submit', form='addStudentForm')
+        .ui.icon.labeled.red.deny.button 
+          i.cancel.icon
+          | Cancel
+        .ui.icon.labeled.green.approve.button
+          i.check.icon
+          | Yes, delete this class
+    
+    //- .ui.small.modal#addStudentToClassModal
+    //-   i.close.icon
+    //-   .header Add Student to Class
+    //-   .content
+    //-     h3#classNameHeader
+    //-       | Adding to class:
+    //-       span classname
+    //-     form#addStudentForm.ui.form(name="addStudentToClass" action='/addStudentToClass', method='POST')
+    //-       input(type='hidden', name='_csrf', value=csrfToken)
+    //-       input(type='hidden', name='className')
+    //-       .field
+    //-         label(for='studentUsername') Student Username
+    //-         input(type='text', name='studentUsername', id='studentUsername', placeholder='Enter Student Name')
+    //-       .ui.error.message
+    //-   .actions
+    //-     input.ui.green.button(type='submit', value='Submit', form='addStudentForm')
 
 block scripts
-  script(src="/user_portal/classManagement.js")
-  
+  - var m = '/user_portal/classManagement.js?t=' + (new Date()).getTime().toString();
+  script(src=m)
           
 block styles
   link(rel='stylesheet', href='/css/classes.css')

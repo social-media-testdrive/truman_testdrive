@@ -998,7 +998,8 @@ exports.getStudentReportData = (req, res, next) => {
   }
   User.findOne({
     accessCode: req.params.classId,
-    username: req.params.username
+    username: req.params.username,
+    deleted: false
   }).exec(function (err, student) {
     if (err) {
       console.log("ERROR");

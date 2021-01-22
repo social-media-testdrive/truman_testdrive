@@ -28,7 +28,8 @@ passport.use('student-local', new LocalStrategy({
       username: {
         $regex: '^'+username+'$', $options: 'i'
       },
-      accessCode: req.body.accessCode
+      accessCode: req.body.accessCode,
+      deleted: false
     })
     .exec(function (err, user) {
       if (err) {

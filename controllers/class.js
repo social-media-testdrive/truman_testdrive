@@ -7,10 +7,13 @@ const CSVToJSON = require("csvtojson");
 const _ = require('lodash');
 var async = require('async');
 
-//Get all Classes for a currently logged in instructor
+// Get all Classes for a currently logged in instructor
 exports.getClasses = (req, res) => {
   if (req.user.isInstructor) {
-    Class.find({teacher: req.user.id}, (err, classes) => {
+    Class.find({
+      teacher: req.user.id,
+      deleted: false
+    }, (err, classes) => {
       //classes is array with all classes for this instructor
       res.render('teacherDashboard/classManagement', { classes: classes });
     });
@@ -26,7 +29,8 @@ exports.getClassSize = (req, res, next) => {
   }
   Class.findOne({
     accessCode: req.params.classId,
-    teacher: req.user.id
+    teacher: req.user.id,
+    deleted: false
   }).exec(function (err, found_class) {
     if (err) {
       console.log("ERROR");
@@ -49,7 +53,8 @@ exports.getClass = (req, res, next) => {
   if (req.user.isInstructor) {
     Class.findOne({
       accessCode: req.params.classId,
-      teacher: req.user.id
+      teacher: req.user.id,
+      deleted: false
     }).populate('students') // populate lets you reference docs in other collections
     .exec(function (err, found_class) {
       if (err) {
@@ -70,13 +75,15 @@ exports.getClass = (req, res, next) => {
   }
 };
 
+// Get list of usernames for all students in a class
 exports.getClassUsernames = (req, res, next) => {
   if (!req.user.isInstructor) {
     return res.json({classUsernames: []});
   }
   Class.findOne({
     accessCode: req.params.classId,
-    teacher: req.user.id
+    teacher: req.user.id,
+    deleted: false
   }).populate('students')
   .exec(function (err, found_class) {
     if (err) {
@@ -101,7 +108,10 @@ exports.getClassUsernames = (req, res, next) => {
 // Currently just used for dropdowns
 exports.getClassIdList = (req, res, next) => {
   if (req.user.isInstructor) {
-    Class.find({teacher: req.user.id}, (err, classes) => {
+    Class.find({
+      teacher: req.user.id,
+      deleted: false
+    }, (err, classes) => {
       const outputData = [];
       for (const singleClass in classes) {
         accessCode = classes[singleClass].accessCode;
@@ -119,7 +129,8 @@ exports.getModuleProgress = (req, res, next) => {
   }
   Class.findOne({
     accessCode: req.params.classId,
-    teacher: req.user.id
+    teacher: req.user.id,
+    deleted: false
   }).populate('students') // populate lets you reference docs in other collections
   .exec(function (err, found_class) {
     if (err) {
@@ -150,7 +161,8 @@ exports.getClassPageTimes = (req, res, next) => {
   }
   Class.findOne({
     accessCode: req.params.classId,
-    teacher: req.user.id
+    teacher: req.user.id,
+    deleted: false
   }).populate('students')
   .exec(function (err, found_class) {
     if (err) {
@@ -194,7 +206,8 @@ exports.getClassFreeplayActions = (req, res, next) => {
   }
   Class.findOne({
     accessCode: req.params.classId,
-    teacher: req.user.id
+    teacher: req.user.id,
+    deleted: false
   }).populate('students')
   .exec(function (err, found_class){
     if (err) {
@@ -230,7 +243,8 @@ exports.getReflectionResponses = (req, res, next) => {
   }
   Class.findOne({
     accessCode: req.params.classId,
-    teacher: req.user.id
+    teacher: req.user.id,
+    deleted: false
   }).populate('students') // populate lets you reference docs in other collections
   .exec(function (err, found_class) {
     if (err) {
@@ -261,7 +275,10 @@ exports.getReflectionResponses = (req, res, next) => {
  * Update/Create Instructor's class
  */
 exports.postCreateClass = (req, res, next) => {
-
+  if (!req.user.isInstructor) {
+    req.logout();
+    res.redirect('/login');
+  }
   //Should never needs these checks (will check on Client Side)
   req.assert('classname', 'Class Name cannot be blank').notEmpty();
   req.assert('accesscode', 'Access Code cannot be blank').notEmpty();
@@ -273,7 +290,7 @@ exports.postCreateClass = (req, res, next) => {
     req.flash('errors', errors);
     return res.redirect('/classManagement');
   }
-  // NOTE from Anna: should probably check that user isInstructor if not already checked
+
   User.findById(req.user.id, (err, user) => {
     //somehow user does not exist here
     if (err) {
@@ -287,7 +304,8 @@ exports.postCreateClass = (req, res, next) => {
     });
 
     Class.findOne({
-      accessCode: req.body.accesscode
+      accessCode: req.body.accesscode,
+      deleted: false
     }, (err, existingClass) => {
       if (err) {
         return next(err);
@@ -307,9 +325,72 @@ exports.postCreateClass = (req, res, next) => {
   });
 };
 
+/**
+ * Delete a class
+ */
+exports.postDeleteClass = (req, res, next) => {
+  if (!req.user.isInstructor) {
+    return res.redirect('/login');
+  }
+  Class.findOne({
+    className: req.body.className,
+    accessCode: req.body.accessCode,
+    teacher: req.user._id,
+    deleted: false
+  })
+  .exec(async function(err, found_class){
+    if (err) {
+      console.log("ERROR");
+      console.log(err);
+      return next(err);
+    }
+    if (found_class == null){
+      console.log("NULL");
+      var myerr = new Error('Class not found!');
+      return next(myerr);
+    }
+    // mark the class as deleted=true, but do not remove it
+    found_class.deleted = true;
+    const promiseArray = [];
+    // iterate through each student and update deleted=true, but do not remove them
+    console.log(`###########`);
+    console.log(`Starting the loop............`);
+    for (const studentId of found_class.students) {
+      console.log(`Deleting student ${studentId}...`);
+      let student = await User.findById(studentId)
+      .catch(err => {
+        console.log("Did not find student");
+        return next(err);
+      });
+      console.log(`Found student ${studentId}.`)
+      student.deleted = true;
+      await student.save((err) => {
+        if(err) {
+          return next(err);
+        }
+        console.log(`Saved student ${studentId}.`)
+        console.log(`###########`);
+      });
+
+    }
+    console.log(`At the end of the loop..............`);
+    console.log(`Saving the class change....`)
+    found_class.save((err) => {
+      if(err) {
+        return next(err);
+      }
+      console.log(`Class marked as deleted.`)
+      console.log(`redirecting....`)
+      res.redirect('/classManagement')
+    })
+
+  });
+};
+
 exports.addStudentToClass = (req, res, next) => {
   Class.findOne({
-    className: req.body.className
+    className: req.body.className,
+    deleted: false
   }, (err, existingClass) => {
     if(err) {
       return next(err);
@@ -343,7 +424,8 @@ exports.removeStudentFromClass = (req, res, next) => {
   if (req.user.isInstructor) {
     Class.findOne({
       accessCode: req.body.accessCode,
-      teacher: req.user.id
+      teacher: req.user.id,
+      deleted: false
     }).populate('students') // populate lets you reference docs in other collections
     .exec(function (err, found_class) {
       if (err) {
@@ -424,7 +506,8 @@ async function getUniqueUsername(accessCode, adjectiveArray, nounArray, username
   console.log(`Generated a username... ${username}`);
   let result = await User.findOne({
     username: username,
-    accessCode: accessCode
+    accessCode: accessCode,
+    deleted: false
   });
   if(result !== null){
     // Duplicate found in db. Generating another username...
@@ -442,7 +525,8 @@ async function getUniqueUsername(accessCode, adjectiveArray, nounArray, username
 exports.generateStudentAccounts = async (req, res, next) => {
   // get the current class by its name
   Class.findOne({
-    accessCode: req.body.accessCode
+    accessCode: req.body.accessCode,
+    deleted: false
   }, async (err, existingClass) => {
 
     if(err) {
@@ -506,7 +590,11 @@ exports.generateStudentAccounts = async (req, res, next) => {
 }
 
 async function saveUsernameInExistingClass(req, item, existingClass) {
-  let duplicateUser = await User.findOne({ username: item, accessCode: req.body.accessCode })
+  let duplicateUser = await User.findOne({
+    username: item,
+    accessCode: req.body.accessCode,
+    deleted: false
+  })
     .catch(err => {
       console.log("duplicateUser failed");
       return next(err);
