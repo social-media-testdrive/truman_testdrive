@@ -39,17 +39,19 @@ function getExploreColumns(studentReportData, finalStudentTableData){
     let flagCount = 0;
     let replyCount = 0;
     const freeplayActions = studentReportData.freeplayActions;
-    for(const post in freeplayActions){
-      if (post.liked) {
-        likeCount++;
-      }
-      if (post.flagged) {
-        flagCount++;
-      }
-      if (post.comments) {
-        for(const comment in post.comments) {
-          if(comment.new_comment){
-            replyCount++;
+    for(const post of freeplayActions){
+      if(post.modual === modName){
+        if (post.liked) {
+          likeCount++;
+        }
+        if (post.flagged) {
+          flagCount++;
+        }
+        if (post.comments) {
+          for(const comment of post.comments) {
+            if(comment.new_comment){
+              replyCount++;
+            }
           }
         }
       }
@@ -58,6 +60,7 @@ function getExploreColumns(studentReportData, finalStudentTableData){
     finalStudentTableData[modName]['flagCount'] = flagCount;
     finalStudentTableData[modName]['replyCount'] = replyCount;
   }
+  console.log(finalStudentTableData);
   return finalStudentTableData;
 };
 
