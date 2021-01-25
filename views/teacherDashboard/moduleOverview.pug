@@ -32,16 +32,19 @@ block content
         .ui.icon.button.refreshModSelectionButton
           i.redo.alternate.icon      
     .row.centerText
-      h2
+      h1
         i.chart.line.icon
         | Student Progress
     .ui.divider
     .row.addMargin
-      .ui.stackable.two.column.grid.middle.aligned
-        .column
-          .ui.basic.segment
-            canvas#studentProgress(width="400" height="400")
-        .column#studentProgressText
+      .ui.basic.segment(style="padding:0;")#studentProgressSegment
+        .ui.stackable.two.column.grid.middle.aligned
+          .ui.inverted.dimmer.loadingDimmer
+            .ui.text.loader Loading
+          .column
+            .ui.basic.segment
+              canvas#studentProgress(width="400" height="400")
+          .column#studentProgressText
     
     .row.addMargin
       table.ui.fixed.celled.table#progressTable
@@ -54,7 +57,7 @@ block content
         tbody#fillProgressTableBody
         
     .row.centerText
-      h2
+      h1
         i.stopwatch.icon
         | Time Spent
     .ui.divider
@@ -64,21 +67,26 @@ block content
         h5 Goes Here
         
     .row.centerText
-      h2
+      h1
         i.chart.line.icon
         | Student Activities
     .ui.divider
-    .row.addMargin
-      h3 Exploring the Timeline
-    .row.addMargin#topPosts
-       
-    .row.addMargin
-      h3 Reflection
-    .row.addMargin#groupedCheckboxResponses
-      
-    .row.addMargin#checkboxResponses
-      
-    .row.addMargin#openEndedResponses
+    .ui.basic.segment(style="padding:0;")
+      .ui.basic.segment(style="padding:0;")#exploreSegment
+        .ui.inverted.dimmer.loadingDimmer
+          .ui.text.loader Loading
+        .row.addMargin.centerText#exploreHeading
+        .row.addMargin#topPosts
+      .ui.basic.segment(style="padding:0;")#reflectionSegment
+        .ui.inverted.dimmer.loadingDimmer
+          .ui.text.loader Loading
+        .row.addMargin.centerText#reflectionHeading
+
+        .row.addMargin#groupedCheckboxResponses
+          
+        .row.addMargin#checkboxResponses
+          
+        .row.addMargin#openEndedResponses 
 
             
 

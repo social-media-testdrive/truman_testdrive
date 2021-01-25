@@ -200,6 +200,45 @@ function createWrittenTypeChart(questionNumber, studentCount, responseCount){
   });
 }
 
+function appendSectionLabels(modReflectionData){
+  let written = false;
+  let checkbox = false;
+  let checkboxGrouped = false;
+  // check which types are present
+  for (const questionNumber in modReflectionData) {
+    const questionData = modReflectionData[questionNumber];
+    switch (questionData.type) {
+      case "written": {
+        written = true;
+        break;
+      }
+      case "checkbox": {
+        checkbox = true;
+        break;
+      }
+      case "checkboxGrouped": {
+        checkboxGrouped = true;
+        break;
+      }
+    }
+  }
+  if(written) {
+    $("#openEndedResponses").append(`
+      <h3>Students' answers to the open-ended questions:</h3>
+    `);
+  }
+  if(checkbox) {
+    $("#checkboxResponses").append(`
+      <h3>Students' answers to the checkbox questions:</h3>
+    `);
+  }
+  if(checkboxGrouped) {
+    $("#groupedCheckboxResponses").append(`
+      <h3>Students' answers to the grouped checkbox questions:</h3>
+    `);
+  }
+};
+
 // returns the student count, for later convenience
 async function visualizeStudentReflectionData(modName, classId, classSize){
   if (!(modName && classId)) {
@@ -207,25 +246,21 @@ async function visualizeStudentReflectionData(modName, classId, classSize){
     return;
   }
   // clear any existing charts
+  $("#reflectionHeading").empty();
   $("#openEndedResponses").empty();
   $("#checkboxResponses").empty();
   $("#groupedCheckboxResponses").empty();
   // append section labels
-  $("#openEndedResponses").append(`
-    <h4> Students' answers to the open-ended questions:</h4>
-  `)
-  $("#checkboxResponses").append(`
-    <h4> Students' answers to the checkbox questions:</h4>
-  `)
-  $("#groupedCheckboxResponses").append(`
-    <h4> Students' answers to the grouped checkbox questions:</h4>
-  `)
+  $("#reflectionHeading").append(`
+    <h2>Reflection</h2>
+  `);
   const reflectionJsonData = await $.getJSON("/json/reflectionSectionData.json");
   const dbData = await $.get(`/classReflectionResponses/${classId}`);
   const classReflectionResponses = dbData.reflectionResponses;
   //console.log(`Response data:`)
   //console.log(classReflectionResponses);
   const modReflectionData = reflectionJsonData[modName];
+  appendSectionLabels(modReflectionData);
   for (const questionNumber in modReflectionData) {
     const questionData = modReflectionData[questionNumber];
 
@@ -268,6 +303,7 @@ async function visualizeStudentReflectionData(modName, classId, classSize){
       }
     }
   }
+  $('#reflectionSegment .loadingDimmer').removeClass('active');
 }
 
 function updateStudentProgressChart(chart, completedCount, startedCount, noneCount){
@@ -435,7 +471,7 @@ async function visualizeStudentProgressData(studentProgressChart, modName, class
 
   updateStudentProgressText(completedCount, startedCount, noneCount);
   updateStudentProgressChart(studentProgressChart, completedCount, startedCount, noneCount);
-
+  $('#studentProgressSegment .loadingDimmer').removeClass('active');
   //updateStudentProgressTable(completedUsernames, startedUsernames, noneUsernames);
 
 
@@ -613,6 +649,10 @@ function createFreeplayRankingChart(i, chartLabels, chartData, studentCount){
 async function visualizeFreeplayActivity(modName, classId, classSize){
   // clear any existing data
   $("#topPosts").empty();
+  $("#exploreHeading").empty();
+  $('#exploreHeading').append(`
+    <h2>Exploring the Timeline</h2>
+  `);
   const allFreeplayContentInfo = await $.getJSON("/json/freeplaySectionQuickReference.json");
   const freeplayContentInfo = allFreeplayContentInfo[modName];
   const dbData = await $.get(`/classFreeplayActions/${classId}/${modName}`);
@@ -621,6 +661,9 @@ async function visualizeFreeplayActivity(modName, classId, classSize){
   // For each post, visualize the data
   let i = 0;
   if(!topPosts.length){
+    $("#topPosts").append(`
+      <h3>There has been no activity to report in the freeplay section.</h3>
+    `);
     return;
   }
   for(const postId of topPosts){
@@ -635,6 +678,7 @@ async function visualizeFreeplayActivity(modName, classId, classSize){
     createFreeplayRankingChart(i, chartLabels, chartData, classSize);
     i++;
   }
+  $('#exploreSegment .loadingDimmer').removeClass('active');
   return;
 }
 
@@ -648,8 +692,11 @@ $(window).on("load", async function(){
     if(!(modName && classId)){
       return;
     }
+    // appearances: clear data in the progress table, add dimmers with loading
+    // icons to sections
     $('#progressTable').hide();
     $('#fillProgressTableBody').empty();
+    $('.loadingDimmer').addClass('active');
     const getClassSize = await $.get(`/classSize/${classId}`);
     const classSize = getClassSize.studentCount;
     visualizeStudentProgressData(studentProgressChart, modName, classId);

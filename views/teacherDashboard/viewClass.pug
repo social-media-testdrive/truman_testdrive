@@ -119,5 +119,7 @@ block content
 
       
 block scripts
+  - var n = '/user_portal/teacherDashboardTools.js?t=' + (new Date()).getTime().toString();
+  script(src=n)
   - var m = '/user_portal/viewClass.js?t=' + (new Date()).getTime().toString();
   script(src=m)
