@@ -42,7 +42,7 @@ function initializeTimeBreakdownChart() {
         title: {
           display: true,
           fontSize: 16,
-          fontColor: 'rgba(0,0,0,.87)',
+          fontColor: '#000',
           text: "Time Spent To Complete This Module"
         },
         maintainAspectRatio: false,
@@ -57,6 +57,43 @@ function initializeTimeBreakdownChart() {
       }
   });
   return timeBreakdownChart;
+}
+
+function initializeAvgSectionTimeChart() {
+  const ctx = $('#avgSectionTime');
+  const avgSectionTimeChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        datasets: [{
+          label: 'Minutes',
+          data: [0,0,0,0],
+          backgroundColor: 'rgba(255, 99, 132, 1)',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 1,
+          barPercentage: 1,
+          categoryPercentage: 0.5
+        }],
+        labels: ["Learn","Practice","Explore","Reflect"]
+      },
+      options: {
+        title: {
+          display: true,
+          fontSize: 16,
+          fontColor: '#000',
+          text: "Avg Time Spent to Complete Each Section"
+        },
+        maintainAspectRatio: false,
+        scales: {
+          yAxes: [{
+            ticks: {
+              stepSize: 1,
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+  });
+  return avgSectionTimeChart;
 }
 
 // Determines how many students in a given class have responded to a prompt
@@ -771,6 +808,7 @@ $(window).on("load", async function(){
   $('#progressTable').hide();
   const studentProgressChart = initializeStudentProgressChart();
   const timeBreakdownChart = initializeTimeBreakdownChart();
+  const avgSectionTimeChart = initializeAvgSectionTimeChart();
   $('.refreshModSelectionButton').on('click', async function(){
     let modName = ($(".ui.selection.dropdown[name='moduleSelection']").dropdown('get value'));
     let classId = ($(".ui.selection.dropdown[name='classSelection']").dropdown('get value'));
