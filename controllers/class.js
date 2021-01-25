@@ -328,7 +328,7 @@ exports.postCreateClass = (req, res, next) => {
 /**
  * Delete a class
  */
-exports.postDeleteClass = (req, res, next) => {
+exports.postDeleteClass = async (req, res, next) => {
   if (!req.user.isInstructor) {
     return res.redirect('/login');
   }
@@ -337,8 +337,7 @@ exports.postDeleteClass = (req, res, next) => {
     accessCode: req.body.accessCode,
     teacher: req.user._id,
     deleted: false
-  })
-  .exec(async function(err, found_class){
+  }, async (err, found_class) => {
     if (err) {
       console.log("ERROR");
       console.log(err);
@@ -349,41 +348,26 @@ exports.postDeleteClass = (req, res, next) => {
       var myerr = new Error('Class not found!');
       return next(myerr);
     }
-    // mark the class as deleted=true, but do not remove it
-    found_class.deleted = true;
     const promiseArray = [];
     // iterate through each student and update deleted=true, but do not remove them
-    console.log(`###########`);
-    console.log(`Starting the loop............`);
     for (const studentId of found_class.students) {
-      console.log(`Deleting student ${studentId}...`);
       let student = await User.findById(studentId)
       .catch(err => {
         console.log("Did not find student");
         return next(err);
       });
-      console.log(`Found student ${studentId}.`)
       student.deleted = true;
-      await student.save((err) => {
-        if(err) {
-          return next(err);
-        }
-        console.log(`Saved student ${studentId}.`)
-        console.log(`###########`);
-      });
-
+      promiseArray.push(student.save());
     }
-    console.log(`At the end of the loop..............`);
-    console.log(`Saving the class change....`)
+    await Promise.all(promiseArray);
+    // mark the class as deleted=true, but do not remove it
+    found_class.deleted = true;
     found_class.save((err) => {
       if(err) {
         return next(err);
       }
-      console.log(`Class marked as deleted.`)
-      console.log(`redirecting....`)
       res.redirect('/classManagement')
-    })
-
+    });
   });
 };
 
