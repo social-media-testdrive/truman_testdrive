@@ -155,6 +155,8 @@ exports.getModuleProgress = (req, res, next) => {
   });
 };
 
+// Gets page times for an entire class, only reports logs of completed modules.
+// Optional parameter of modName to further filter page time list.
 exports.getClassPageTimes = (req, res, next) => {
   if (!req.user.isInstructor) {
     return res.json({classPageTimes: {}});
@@ -180,6 +182,19 @@ exports.getClassPageTimes = (req, res, next) => {
       const pageLog = student.pageLog;
       let pageTimeArray = [];
       for(let i=0, l=pageLog.length-1; i<l; i++) {
+        // if a modName is specified, skip pageLog entries that are not for that modName
+        if(req.params.modName){
+          if(pageLog[i].subdirectory2 !== req.params.modName){
+            continue;
+          }
+        }
+        // if the student has not completed the module yet, skip any pageLogs for that module
+        if (pageLog[i].subdirectory2) {
+          const modNameNoDashes = pageLog[i].subdirectory2.replace('-','');
+          if(student.moduleProgress[modNameNoDashes] !== "completed"){
+            continue;
+          }
+        }
         // convert from ms to minutes
         let timeDurationOnPage = (pageLog[i+1].time - pageLog[i].time)/60000;
         const dataToPush = {

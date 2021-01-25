@@ -21,6 +21,44 @@ function initializeStudentProgressChart(){
   return studentProgressChart;
 }
 
+function initializeTimeBreakdownChart() {
+  const ctx = $('#timeBreakdown');
+  const timeBreakdownChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        datasets: [{
+          label: 'Number of Students',
+          data: [0,0,0,0],
+          backgroundColor: 'rgba(54, 162, 235, 1)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1,
+          barPercentage: 1,
+          categoryPercentage: 0.5
+        }],
+        labels: ["0-10", "10-20", "20-30", "30-40"]
+
+      },
+      options: {
+        title: {
+          display: true,
+          fontSize: 16,
+          fontColor: 'rgba(0,0,0,.87)',
+          text: "Time Spent To Complete This Module"
+        },
+        maintainAspectRatio: false,
+        scales: {
+          yAxes: [{
+            ticks: {
+              stepSize: 1,
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+  });
+  return timeBreakdownChart;
+}
+
 // Determines how many students in a given class have responded to a prompt
 // Inputs:
 // prompt - string, exact copy of the prompt
@@ -664,6 +702,7 @@ async function visualizeFreeplayActivity(modName, classId, classSize){
     $("#topPosts").append(`
       <h3>There has been no activity to report in the freeplay section.</h3>
     `);
+    $('#exploreSegment .loadingDimmer').removeClass('active');
     return;
   }
   for(const postId of topPosts){
@@ -682,10 +721,56 @@ async function visualizeFreeplayActivity(modName, classId, classSize){
   return;
 }
 
+function updateTimeBreakdownChart(numberOfStudents, timeBreakdownArray){
+
+}
+
+function getTimeBreakdownArray(classPageTimes) {
+  // Array for the font-end chart:
+  // [0] = 0-10min; [1] = 11-20min; [2] = 21-30min; [3] = 31-40min;
+  let timeBreakdownArray = [0,0,0,0];
+  for (const student of classPageTimes) {
+    if(student.timeArray.length === 0){
+      continue;
+    }
+    let studentTimeMinutes = 0;
+    for (const timeItem of student.timeArray) {
+      studentTimeMinutes = studentTimeMinutes + timeItem.timeDuration;
+    }
+    (0 < studentTimeMinutes && studentTimeMinutes <= 10) ? timeBreakdownArray[0]++
+    : (10 < studentTimeMinutes && studentTimeMinutes <= 20) ? timeBreakdownArray[1]++
+    : (20 < studentTimeMinutes && studentTimeMinutes <= 30) ? timeBreakdownArray[2]++
+    : (30 < studentTimeMinutes && studentTimeMinutes <= 40) ? timeBreakdownArray[3]++
+    : console.log(`Warning: Time longer than 40 minutes recorded`);
+  }
+  return timeBreakdownArray;
+}
+
+function updateTimeBreakdownChart(chart, numberOfStudents, timeBreakdownArray){
+  chart.options.scales.yAxes[0].ticks.suggestedMin = numberOfStudents;
+  chart.options.scales.yAxes[0].ticks.suggestedMax = numberOfStudents;
+  chart.data.datasets[0].data = timeBreakdownArray;
+  chart.update();
+}
+
+async function visualizeTimeData(chart, modName, classId, classSize) {
+  const classPageTimes = await $.get(`/classPageTimes/${classId}/${modName}`).then(function(data){
+    return data.classPageTimes;
+  });
+  const numberOfStudents = Object.keys(classPageTimes).length;
+  // classPageTimes only contains entries within the specified module, and only
+  // includes pagetimes if student completed the module
+  const timeBreakdownArray = getTimeBreakdownArray(classPageTimes)
+  updateTimeBreakdownChart(chart, numberOfStudents, timeBreakdownArray);
+  return;
+}
+
+
 $(window).on("load", async function(){
   $('#studentProgressText').hide();
   $('#progressTable').hide();
   const studentProgressChart = initializeStudentProgressChart();
+  const timeBreakdownChart = initializeTimeBreakdownChart();
   $('.refreshModSelectionButton').on('click', async function(){
     let modName = ($(".ui.selection.dropdown[name='moduleSelection']").dropdown('get value'));
     let classId = ($(".ui.selection.dropdown[name='classSelection']").dropdown('get value'));
@@ -699,9 +784,10 @@ $(window).on("load", async function(){
     $('.loadingDimmer').addClass('active');
     const getClassSize = await $.get(`/classSize/${classId}`);
     const classSize = getClassSize.studentCount;
-    visualizeStudentProgressData(studentProgressChart, modName, classId);
-    visualizeStudentReflectionData(modName, classId, classSize);
-    visualizeFreeplayActivity(modName, classId, classSize);
+    // visualizeStudentProgressData(studentProgressChart, modName, classId);
+    // visualizeStudentReflectionData(modName, classId, classSize);
+    // visualizeFreeplayActivity(modName, classId, classSize);
+    visualizeTimeData(timeBreakdownChart, modName, classId, classSize);
   });
 
 });

@@ -62,9 +62,14 @@ block content
         | Time Spent
     .ui.divider
     .row.addMargin
-      .ui.placeholder.segment.centerText
-        h3 Avg Time Spent to Complete This Module
-        h5 Goes Here
+      .ui.stackable.two.column.grid.middle.aligned
+        .column
+          .ui.basic.segment.centerText(style="padding:0;")
+            canvas#timeBreakdown(width="400" height="400")
+        .column
+          .ui.basic.segment.centerText(style="padding:0;")
+            canvas#avgSectionTime(width="400" height="400")
+
         
     .row.centerText
       h1
