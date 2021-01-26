@@ -86,7 +86,9 @@ function initializeAvgSectionTimeChart() {
         scales: {
           yAxes: [{
             ticks: {
-              stepSize: 1,
+              suggestedMin: 14,
+              suggestedMax: 14,
+              stepSize: 2,
               beginAtZero: true
             }
           }]
@@ -758,9 +760,47 @@ async function visualizeFreeplayActivity(modName, classId, classSize){
   return;
 }
 
-function updateTimeBreakdownChart(numberOfStudents, timeBreakdownArray){
-
+function updateAvgSectionTimeChart(chart, avgSectionTimeArray){
+  chart.data.datasets[0].data = avgSectionTimeArray;
+  chart.update();
 }
+
+async function getAvgSectionTimeArray(classPageTimes, modName) {
+  // Array for the front-end chart:
+  // [0] = Learn; [1] = Practice; [2] = Explore; [3] = Reflect;
+  let totalSectionTimeArray = [0,0,0,0];
+  let avgSectionTimeArray = [0,0,0,0];
+  switch (modName) {
+    case 'cyberbullying':
+    case 'digfoot':
+      jsonPath = "/json/progressDataB.json";
+      break;
+    default:
+      jsonPath = "/json/progressDataA.json";
+      break;
+  }
+  let sectionData = await $.getJSON(jsonPath);
+  let studentCount = 0;
+  for (const student of classPageTimes) {
+    if(student.timeArray.length){
+      studentCount++;
+    }
+    for (const timeItem of student.timeArray) {
+      if(!sectionData[timeItem.subdirectory1]){
+        continue;
+      }
+      if(sectionData[timeItem.subdirectory1] === "end"){
+        continue;
+      }
+      // get the index to add timeDuration to using the sectionData
+      const i = sectionData[timeItem.subdirectory1] - 1;
+      totalSectionTimeArray[i] = totalSectionTimeArray[i] + timeItem.timeDuration;
+    }
+  }
+  // Totals for each section have been calculated, now calculate averages
+  avgSectionTimeArray = totalSectionTimeArray.map(x => Math.round(x / studentCount));
+  return avgSectionTimeArray;
+};
 
 function getTimeBreakdownArray(classPageTimes) {
   // Array for the font-end chart:
@@ -788,9 +828,9 @@ function updateTimeBreakdownChart(chart, numberOfStudents, timeBreakdownArray){
   chart.options.scales.yAxes[0].ticks.suggestedMax = numberOfStudents;
   chart.data.datasets[0].data = timeBreakdownArray;
   chart.update();
-}
+};
 
-async function visualizeTimeData(chart, modName, classId, classSize) {
+async function visualizeTimeData(timeBreakdownChart, avgSectionTimeChart, modName, classId, classSize) {
   const classPageTimes = await $.get(`/classPageTimes/${classId}/${modName}`).then(function(data){
     return data.classPageTimes;
   });
@@ -798,9 +838,11 @@ async function visualizeTimeData(chart, modName, classId, classSize) {
   // classPageTimes only contains entries within the specified module, and only
   // includes pagetimes if student completed the module
   const timeBreakdownArray = getTimeBreakdownArray(classPageTimes)
-  updateTimeBreakdownChart(chart, numberOfStudents, timeBreakdownArray);
+  updateTimeBreakdownChart(timeBreakdownChart, numberOfStudents, timeBreakdownArray);
+  const avgSectionTimeArray = await getAvgSectionTimeArray(classPageTimes, modName);
+  updateAvgSectionTimeChart(avgSectionTimeChart, avgSectionTimeArray);
   return;
-}
+};
 
 
 $(window).on("load", async function(){
@@ -822,10 +864,10 @@ $(window).on("load", async function(){
     $('.loadingDimmer').addClass('active');
     const getClassSize = await $.get(`/classSize/${classId}`);
     const classSize = getClassSize.studentCount;
-    // visualizeStudentProgressData(studentProgressChart, modName, classId);
-    // visualizeStudentReflectionData(modName, classId, classSize);
-    // visualizeFreeplayActivity(modName, classId, classSize);
-    visualizeTimeData(timeBreakdownChart, modName, classId, classSize);
+    visualizeStudentProgressData(studentProgressChart, modName, classId);
+    visualizeStudentReflectionData(modName, classId, classSize);
+    visualizeFreeplayActivity(modName, classId, classSize);
+    visualizeTimeData(timeBreakdownChart, avgSectionTimeChart, modName, classId, classSize);
   });
 
 });
