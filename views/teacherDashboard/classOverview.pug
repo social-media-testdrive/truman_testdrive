@@ -39,9 +39,9 @@ block content
         | Leader Chart
     .ui.divider
     .row.addMargin
-      .ui.placeholder.segment.centerText
-        h3 Leaderboard
-        h5 Goes Here
+      .ui.basic.segment#leaderboardSegment
+
+            
 
 block scripts
   - var n = '/user_portal/teacherDashboardTools.js?t=' + (new Date()).getTime().toString();

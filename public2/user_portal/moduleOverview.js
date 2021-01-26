@@ -760,10 +760,10 @@ async function visualizeFreeplayActivity(modName, classId, classSize){
   return;
 }
 
-function updateAvgSectionTimeChart(chart, avgSectionTimeArray){
+function updateAvgSectionTimeChart(chart, avgSectionTimeArray) {
   chart.data.datasets[0].data = avgSectionTimeArray;
   chart.update();
-}
+};
 
 async function getAvgSectionTimeArray(classPageTimes, modName) {
   // Array for the front-end chart:
@@ -844,7 +844,6 @@ async function visualizeTimeData(timeBreakdownChart, avgSectionTimeChart, modNam
   return;
 };
 
-
 $(window).on("load", async function(){
   $('#studentProgressText').hide();
   $('#progressTable').hide();
@@ -869,5 +868,4 @@ $(window).on("load", async function(){
     visualizeFreeplayActivity(modName, classId, classSize);
     visualizeTimeData(timeBreakdownChart, avgSectionTimeChart, modName, classId, classSize);
   });
-
 });

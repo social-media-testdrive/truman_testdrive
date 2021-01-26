@@ -198,6 +198,7 @@ exports.getClassPageTimes = (req, res, next) => {
         // convert from ms to minutes
         let timeDurationOnPage = (pageLog[i+1].time - pageLog[i].time)/60000;
         const dataToPush = {
+          timeOpened: pageLog[i].time,
           timeDuration: timeDurationOnPage,
           subdirectory1: pageLog[i].subdirectory1
         };

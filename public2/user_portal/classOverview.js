@@ -274,7 +274,6 @@ function getTimeInfo(classPageTimes){
   return Object.values(modDurations);
 }
 
-
 function visualizeAvgTimeSpentData(avgTimeSpentChart, classPageTimes){
   const modTimeInfo = getTimeInfo(classPageTimes);
   const yAxisScale = getYAxisScale(modTimeInfo)
@@ -283,6 +282,104 @@ function visualizeAvgTimeSpentData(avgTimeSpentChart, classPageTimes){
   return;
 }
 
+function updateLeaderboardTableHtml(finalLeaderboardData) {
+  $('#leaderboardSegment').empty();
+  $('#leaderboardSegment').append(`
+    <table class="ui single lined table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Username</th>
+          <th>Modules Completed</th>
+          <th>Avg Time Spent per Module</th>
+          <th>Modules Started</th>
+          <th>Last Accessed</th>
+        </tr>
+      </thead>
+      <tbody id="studentReportTable"></tbody>
+    </table>
+  `);
+  let ranking = 1;
+  for(const rowData of finalLeaderboardData){
+    $(`#studentReportTable`).append(`
+      <tr>
+        <td>${ranking}</td>
+        <td>${rowData.username}</td>
+        <td>${rowData.completed}</td>
+        <td>${rowData.avgTime}</td>
+        <td>${rowData.started}</td>
+        <td>${rowData.lastVisited ? humanized_time_span(rowData.lastVisited) : ""}</td>
+      </tr>
+    `);
+    ranking++;
+  }
+  return;
+}
+
+function getFinalLeaderboardData(moduleProgressData, classPageTimes) {
+  let finalLeaderboardData = [];
+  for(const student of classPageTimes) {
+    let tableRowData = {};
+    tableRowData['username'] = student.username;
+    // get status counts
+    let completedCount = 0;
+    let startedCount = 0;
+    for (const key of Object.keys(moduleProgressData[student.username])) {
+      if (moduleProgressData[student.username][key] === "completed") {
+        completedCount++;
+      } else if (moduleProgressData[student.username][key] === "started") {
+        startedCount++;
+      }
+    }
+    tableRowData['completed'] = completedCount;
+    tableRowData['started'] = startedCount;
+    // get average time spent per completed module
+    const studentIndex = Object.keys(classPageTimes).find(key => classPageTimes[key].username === student.username);
+    const modNameList = Object.keys(moduleProgressData[student.username]);
+    let totalTime = 0;
+    for(const modName of modNameList) {
+      if (moduleProgressData[student.username][modName] === "completed") {
+        for (const timeItem of classPageTimes[studentIndex].timeArray) {
+          if(timeItem.subdirectory2 && (timeItem.subdirectory2 === modName)) {
+            totalTime = totalTime + timeItem.timeDuration;
+          }
+        }
+      }
+    }
+    let avgTimePerModule = 0;
+    if (completedCount > 0) {
+      avgTimePerModule = Math.round(totalTime / completedCount);
+    }
+    tableRowData['avgTime'] = avgTimePerModule;
+    // get most recent visit time
+    let mostRecentVisit = 0;
+    for (const timeItem of classPageTimes[studentIndex].timeArray){
+      let dateObj = new Date(timeItem.timeOpened);
+      if(!mostRecentVisit){
+        mostRecentVisit = dateObj;
+      } else if (mostRecentVisit < dateObj) {
+        mostRecentVisit = dateObj;
+      }
+    }
+    tableRowData['lastVisited'] = mostRecentVisit;
+    finalLeaderboardData.push(tableRowData);
+  }
+  // all data calculated, sort in descending order by number of modules completed
+  // From MDN docs: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+  finalLeaderboardData.sort(function(a, b){
+    return b.completed - a.completed;
+  })
+  // take only the first 5 entries
+  if (finalLeaderboardData.length > 5) {
+    finalLeaderboardData.slice(0,5);
+  }
+  return finalLeaderboardData;
+};
+
+function visualizeLeaderboard(moduleProgressData, classPageTimes){
+   let finalLeaderboardData = getFinalLeaderboardData(moduleProgressData, classPageTimes);
+   updateLeaderboardTableHtml(finalLeaderboardData);
+}
 
 $(window).on('load', async function(){
   const studentActivityBarChart = initializeStudentActivityBarChart();
@@ -300,5 +397,6 @@ $(window).on('load', async function(){
     });
     visualizeStudentActivityData(studentActivityBarChart, moduleProgressData);
     visualizeAvgTimeSpentData(avgTimeSpentChart, classPageTimes);
+    visualizeLeaderboard(moduleProgressData, classPageTimes);
   })
 })
