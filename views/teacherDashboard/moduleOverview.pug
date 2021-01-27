@@ -6,82 +6,93 @@ block content
     include ../partials/teacherDashboardMenu
 
     .row.addMargin
-      .sixteen.wide.column
-        .ui.selection.dropdown(name="classSelection")
-          input(type="hidden")
-          i.dropdown.icon
-          .default.text Select a Class
-          .menu    
-        .ui.selection.dropdown(name="moduleSelection")
-          input(type="hidden")
-          i.dropdown.icon
-          .default.text Select Module
-          .menu
-            .item(data-value="accounts") Accounts and Passwords
-            .item(data-value="esteem") The Ups and Downs of Social Media
-            .item(data-value="advancedlit") Responding to Breaking News!
-            .item(data-value="habits") Healthy Social Media Habits
-            .item(data-value="targeted") Ads on Social Media
-            .item(data-value="phishing") Scams and Phishing
-            .item(data-value="cyberbullying") How to Be an Upstander
-            .item(data-value="safe-posting") Is It Private Information?
-            .item(data-value="digfoot") Shaping Your Digital Footprint
-            .item(data-value="presentation") Online Identities
-            .item(data-value="privacy") Social Media Privacy
-            .item(data-value="digital-literacy") News in Social Media
-        .ui.icon.button.refreshModSelectionButton
-          i.redo.alternate.icon      
-    .row.centerText
-      h1
-        i.chart.line.icon
-        | Student Progress
-    .ui.divider
-    .row.addMargin
-      .ui.basic.segment(style="padding:0;")#studentProgressSegment
-        .ui.stackable.two.column.grid.middle.aligned
+      .sixteen.wide.column.dropdownColumn
+        h2 Select A Class And A Module
+        .row
+          h4 Select Class (by access code)
+          .ui.selection.dropdown(name="classSelection")
+            input(type="hidden")
+            i.dropdown.icon
+            .default.text Select a Class
+            .menu    
+        .row
+          h4 Select Module
+          .ui.selection.dropdown(name="moduleSelection")
+            input(type="hidden")
+            i.dropdown.icon
+            .default.text Select Module
+            .menu
+              .item(data-value="accounts") Accounts and Passwords
+              .item(data-value="esteem") The Ups and Downs of Social Media
+              .item(data-value="advancedlit") Responding to Breaking News!
+              .item(data-value="habits") Healthy Social Media Habits
+              .item(data-value="targeted") Ads on Social Media
+              .item(data-value="phishing") Scams and Phishing
+              .item(data-value="cyberbullying") How to Be an Upstander
+              .item(data-value="safe-posting") Is It Private Information?
+              .item(data-value="digfoot") Shaping Your Digital Footprint
+              .item(data-value="presentation") Online Identities
+              .item(data-value="privacy") Social Media Privacy
+              .item(data-value="digital-literacy") News in Social Media
+        .row
+          .ui.labeled.icon.button.refreshModSelectionButton
+            i.check.icon
+            | Show Overview
+    .ui.basic.segment.hiddenVisibility#studentProgressSegment   
+      .row.centerText
+        h1
+          i.chart.line.icon
+          | Student Progress
+      .ui.divider
+      .row.addMargin
+        .ui.basic.segment(style="padding:0;")
+          .ui.stackable.two.column.grid.middle.aligned
+            .ui.inverted.dimmer.loadingDimmer
+              .ui.text.loader Loading
+            .column
+              .ui.basic.segment
+                canvas#studentProgress(width="400" height="400")
+            .column#studentProgressText
+      
+      .row.addMargin
+        table.ui.fixed.celled.table#progressTable
+          thead
+            tr
+              th.left.aligned Username
+              th Completed
+              th Started but not completed
+              th Have not started
+          tbody#fillProgressTableBody
+    .ui.basic.segment.hiddenVisibility#timeSpentSegment
+      .row.centerText
+        h1
+          i.stopwatch.icon
+          | Time Spent
+      .ui.divider
+      .ui.basic.segment(style="padding:0;")
+        .ui.active.inverted.dimmer
+          .ui.text.loader Loading...
+        .row.addMargin
+          .ui.stackable.two.column.grid.middle.aligned
+            .column
+              .ui.basic.segment.centerText(style="padding:0;")
+                canvas#timeBreakdown(width="400" height="400")
+            .column
+              .ui.basic.segment.centerText(style="padding:0;")
+                canvas#avgSectionTime(width="400" height="400")
+
+    .ui.basic.segment.hiddenVisibility#studentActivtiesSegment
+      .row.centerText
+        h1
+          i.chart.line.icon
+          | Student Activities
+      .ui.divider
+      .ui.basic.segment(style="padding:0;")
+        .ui.basic.segment(style="padding:0;")#exploreSegment
           .ui.inverted.dimmer.loadingDimmer
             .ui.text.loader Loading
-          .column
-            .ui.basic.segment
-              canvas#studentProgress(width="400" height="400")
-          .column#studentProgressText
-    
-    .row.addMargin
-      table.ui.fixed.celled.table#progressTable
-        thead
-          tr
-            th.left.aligned Username
-            th Completed
-            th Started but not completed
-            th Have not started
-        tbody#fillProgressTableBody
-        
-    .row.centerText
-      h1
-        i.stopwatch.icon
-        | Time Spent
-    .ui.divider
-    .row.addMargin
-      .ui.stackable.two.column.grid.middle.aligned
-        .column
-          .ui.basic.segment.centerText(style="padding:0;")
-            canvas#timeBreakdown(width="400" height="400")
-        .column
-          .ui.basic.segment.centerText(style="padding:0;")
-            canvas#avgSectionTime(width="400" height="400")
-
-        
-    .row.centerText
-      h1
-        i.chart.line.icon
-        | Student Activities
-    .ui.divider
-    .ui.basic.segment(style="padding:0;")
-      .ui.basic.segment(style="padding:0;")#exploreSegment
-        .ui.inverted.dimmer.loadingDimmer
-          .ui.text.loader Loading
-        .row.addMargin.centerText#exploreHeading
-        .row.addMargin#topPosts
+          .row.addMargin.centerText#exploreHeading
+          .row.addMargin#topPosts
       .ui.basic.segment(style="padding:0;")#reflectionSegment
         .ui.inverted.dimmer.loadingDimmer
           .ui.text.loader Loading
@@ -105,3 +116,4 @@ block scripts
   
 block styles
   link(rel='stylesheet', href='/css/teacherDashboard/classOverview.css')
+  link(rel='stylesheet', href='/css/teacherDashboard/moduleOverview.css')  

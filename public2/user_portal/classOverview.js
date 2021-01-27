@@ -139,6 +139,14 @@ function initializeAvgTimeSpentChart(){
   return avgTimeSpentBarChart;
 }
 
+function manageConfirmButton(){
+  $(`.ui.selection.dropdown[name='classSelection']`).dropdown({
+    onChange: function(){
+      $('.refreshSelectionButton').addClass('green')
+    }
+  })
+};
+
 function showPageContent(){
   if($('#studentActivitySegment').hasClass('hiddenVisibility')){
     $('#studentActivitySegment').removeClass('hiddenVisibility');
@@ -444,25 +452,17 @@ function visualizeLeaderboard(moduleProgressData, classPageTimes){
   updateLeaderboardTableHtml(finalLeaderboardData);
 }
 
-function manageConfirmAndRefresh(){
-  $(`.ui.selection.dropdown[name='classSelection']`).dropdown({
-    onChange: function(){
-      $('.refreshSelectionButton').addClass('green')
-    }
-  })
-}
-
 $(window).on('load', async function(){
   const studentActivityBarChart = initializeStudentActivityBarChart();
   const avgTimeSpentChart = initializeAvgTimeSpentChart();
-  manageConfirmAndRefresh();
+  manageConfirmButton();
   $('.refreshSelectionButton').on('click', async function(){
-    showPageContent();
-    addLoadingIcons();
     const classId = ($(".ui.selection.dropdown[name='classSelection']").dropdown('get value'));
     if(!classId) {
       return;
     }
+    showPageContent();
+    addLoadingIcons();
     const moduleProgressData = await $.get(`/moduleProgress/${classId}`).then(function(data){
       return data.classModuleProgress;
     });

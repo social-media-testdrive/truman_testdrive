@@ -98,6 +98,18 @@ function initializeAvgSectionTimeChart() {
   return avgSectionTimeChart;
 }
 
+function showPageContent(){
+  if($('#studentProgressSegment ').hasClass('hiddenVisibility')){
+    $('#studentProgressSegment ').removeClass('hiddenVisibility');
+  }
+  if($('#timeSpentSegment').hasClass('hiddenVisibility')){
+    $('#timeSpentSegment').removeClass('hiddenVisibility')
+  }
+  if($('#studentActivtiesSegment').hasClass('hiddenVisibility')){
+    $('#studentActivtiesSegment').removeClass('hiddenVisibility')
+  }
+}
+
 // Determines how many students in a given class have responded to a prompt
 // Inputs:
 // prompt - string, exact copy of the prompt
@@ -841,12 +853,31 @@ async function visualizeTimeData(timeBreakdownChart, avgSectionTimeChart, modNam
   updateTimeBreakdownChart(timeBreakdownChart, numberOfStudents, timeBreakdownArray);
   const avgSectionTimeArray = await getAvgSectionTimeArray(classPageTimes, modName);
   updateAvgSectionTimeChart(avgSectionTimeChart, avgSectionTimeArray);
+  $('#timeSpentSegment .dimmer').removeClass('active');
   return;
 };
+
+function manageConfirmButton(){
+  $(".ui.selection.dropdown[name='moduleSelection']").dropdown({
+    onChange: function(){
+      if($(".ui.selection.dropdown[name='classSelection']").dropdown('get value')){
+        $('.refreshModSelectionButton').addClass('green');
+      }
+    }
+  });
+  $(".ui.selection.dropdown[name='classSelection']").dropdown({
+    onChange: function(){
+      if($(".ui.selection.dropdown[name='moduleSelection']").dropdown('get value')){
+        $('.refreshModSelectionButton').addClass('green');
+      }
+    }
+  });
+}
 
 $(window).on("load", async function(){
   $('#studentProgressText').hide();
   $('#progressTable').hide();
+  manageConfirmButton();
   const studentProgressChart = initializeStudentProgressChart();
   const timeBreakdownChart = initializeTimeBreakdownChart();
   const avgSectionTimeChart = initializeAvgSectionTimeChart();
@@ -856,11 +887,13 @@ $(window).on("load", async function(){
     if(!(modName && classId)){
       return;
     }
+    showPageContent();
     // appearances: clear data in the progress table, add dimmers with loading
     // icons to sections
     $('#progressTable').hide();
     $('#fillProgressTableBody').empty();
     $('.loadingDimmer').addClass('active');
+    $('#timeSpentSegment .dimmer').addClass('active');
     const getClassSize = await $.get(`/classSize/${classId}`);
     const classSize = getClassSize.studentCount;
     visualizeStudentProgressData(studentProgressChart, modName, classId);
