@@ -4,22 +4,22 @@ function initializeStudentActivityBarChart(){
       type: 'bar',
       data: {
           labels: [
-            'Accounts',
-            'Advancedlit',
-            'Cyberbullying',
-            'Digfoot',
-            'Digital literacy',
-            'Esteem',
-            'Habits',
-            'Phishing',
-            'Presentation',
-            'Privacy',
-            'Safe Posting',
-            'Targeted'
+            'Accounts and Passwords',
+            'Responding to Breaking News!',
+            'How to Be an Upstander',
+            'Shaping Your Digital Footprint',
+            'News in Social Media',
+            'The Ups and Downs of Social Media',
+            'Healthy Social Media Habits',
+            'Scams and Phishing',
+            'Online Identities',
+            'Social Media Privacy',
+            'Is It Private Information?',
+            'Ads on Social Media'
           ],
           datasets: [
             {
-              label: '# Started',
+              label: ' # Started',
               data: [0,0,0,0,0,0,0,0,0,0,0,0],
               backgroundColor: 'rgba(54, 162, 235, 1)',
               borderColor: 'rgba(54, 162, 235, 1)',
@@ -28,7 +28,7 @@ function initializeStudentActivityBarChart(){
               categoryPercentage: 0.5
             },
             {
-                label: '# Completed',
+                label: ' # Completed',
                 data: [0,0,0,0,0,0,0,0,0,0,0,0],
                 backgroundColor: 'rgba(255, 99, 132, 1)',
                 borderColor: 'rgba(255, 99, 132, 1)',
@@ -39,9 +39,29 @@ function initializeStudentActivityBarChart(){
           ]
       },
       options: {
+        title: {
+          display: true,
+          fontSize: 16,
+          fontColor: '#000',
+          text: "Class Progress For Each Module"
+        },
         maintainAspectRatio: false,
         scales: {
+          xAxes: [{
+            scaleLabel: {
+              display: true,
+              fontSize: 14,
+              fontColor: '#000',
+              labelString: "Module"
+            }
+          }],
           yAxes: [{
+            scaleLabel: {
+              display: true,
+              fontSize: 14,
+              fontColor: '#000',
+              labelString: "# of Students"
+            },
             ticks: {
               stepSize: 1,
               beginAtZero: true
@@ -59,22 +79,22 @@ function initializeAvgTimeSpentChart(){
       type: 'bar',
       data: {
           labels: [
-            'Accounts',
-            'Advancedlit',
-            'Cyberbullying',
-            'Digfoot',
-            'Digital literacy',
-            'Esteem',
-            'Habits',
-            'Phishing',
-            'Presentation',
-            'Privacy',
-            'Safe Posting',
-            'Targeted'
+            'Accounts and Passwords',
+            'Responding to Breaking News!',
+            'How to Be an Upstander',
+            'Shaping Your Digital Footprint',
+            'News in Social Media',
+            'The Ups and Downs of Social Media',
+            'Healthy Social Media Habits',
+            'Scams and Phishing',
+            'Online Identities',
+            'Social Media Privacy',
+            'Is It Private Information?',
+            'Ads on Social Media'
           ],
           datasets: [
             {
-              label: 'Class Average',
+              label: ' Average Time (minutes)',
               data: [0,0,0,0,0,0,0,0,0,0,0,0],
               backgroundColor: 'rgba(54, 162, 235, 1)',
               borderColor: 'rgba(54, 162, 235, 1)',
@@ -85,9 +105,29 @@ function initializeAvgTimeSpentChart(){
           ]
       },
       options: {
+        title: {
+          display: true,
+          fontSize: 16,
+          fontColor: '#000',
+          text: "Class Average Time Spent to Complete Each Module"
+        },
         maintainAspectRatio: false,
         scales: {
+          xAxes: [{
+            scaleLabel: {
+              display: true,
+              fontSize: 14,
+              fontColor: '#000',
+              labelString: "Module"
+            }
+          }],
           yAxes: [{
+            scaleLabel: {
+              display: true,
+              fontSize: 14,
+              fontColor: '#000',
+              labelString: "Average Time (minutes)"
+            },
             ticks: {
               stepSize: 1,
               beginAtZero: true
@@ -98,6 +138,24 @@ function initializeAvgTimeSpentChart(){
   });
   return avgTimeSpentBarChart;
 }
+
+function showPageContent(){
+  if($('#studentActivitySegment').hasClass('hiddenVisibility')){
+    $('#studentActivitySegment').removeClass('hiddenVisibility');
+  }
+  if($('#avgTimeSegment').hasClass('hiddenVisibility')){
+    $('#avgTimeSegment').removeClass('hiddenVisibility')
+  }
+  if($('#leaderboardParentSegment').hasClass('hidden')){
+    $('#leaderboardParentSegment').removeClass('hidden')
+  }
+}
+
+function addLoadingIcons(){
+  $(`#studentActivitySegment .dimmer`).addClass('active');
+  $(`#avgTimeSegment .dimmer`).addClass('active');
+  $(`#leaderboardParentSegment .loader`).addClass('active');
+};
 
 function getNumberOfStudents(progressData){
   let count = 0;
@@ -197,6 +255,8 @@ function visualizeStudentActivityData(chart, moduleProgressData) {
   startedCounts = getCountArray(moduleProgressData, 'started');
   completedCounts = getCountArray(moduleProgressData, 'completed');
   updateChartValues(chart, classSize, startedCounts, completedCounts);
+  // remove loading icon
+  $(`#studentActivitySegment .dimmer`).removeClass('active');
 };
 
 function updateAvgTimeChartValues(chart, yAxisScale, avgTimesArray){
@@ -279,16 +339,16 @@ function visualizeAvgTimeSpentData(avgTimeSpentChart, classPageTimes){
   const yAxisScale = getYAxisScale(modTimeInfo)
   const avgTimesArray = getAvgTimeArray(modTimeInfo);
   updateAvgTimeChartValues(avgTimeSpentChart, yAxisScale, avgTimesArray);
+  $(`#avgTimeSegment .dimmer`).removeClass('active');
   return;
 }
 
 function updateLeaderboardTableHtml(finalLeaderboardData) {
-  $('#leaderboardSegment').empty();
   $('#leaderboardSegment').append(`
     <table class="ui single lined table">
       <thead>
         <tr>
-          <th></th>
+          <th>Ranking</th>
           <th>Username</th>
           <th>Modules Completed</th>
           <th>Avg Time Spent per Module</th>
@@ -306,7 +366,7 @@ function updateLeaderboardTableHtml(finalLeaderboardData) {
         <td>${ranking}</td>
         <td>${rowData.username}</td>
         <td>${rowData.completed}</td>
-        <td>${rowData.avgTime}</td>
+        <td>${rowData.avgTime ? Math.round(rowData.avgTime) + " minutes": "N/A"}</td>
         <td>${rowData.started}</td>
         <td>${rowData.lastVisited ? humanized_time_span(rowData.lastVisited) : ""}</td>
       </tr>
@@ -377,14 +437,28 @@ function getFinalLeaderboardData(moduleProgressData, classPageTimes) {
 };
 
 function visualizeLeaderboard(moduleProgressData, classPageTimes){
-   let finalLeaderboardData = getFinalLeaderboardData(moduleProgressData, classPageTimes);
-   updateLeaderboardTableHtml(finalLeaderboardData);
+  $('#leaderboardSegment').empty();
+  let finalLeaderboardData = getFinalLeaderboardData(moduleProgressData, classPageTimes);
+  // remove loading icon
+  $('#leaderboardParentSegment .loader').removeClass('active');
+  updateLeaderboardTableHtml(finalLeaderboardData);
+}
+
+function manageConfirmAndRefresh(){
+  $(`.ui.selection.dropdown[name='classSelection']`).dropdown({
+    onChange: function(){
+      $('.refreshSelectionButton').addClass('green')
+    }
+  })
 }
 
 $(window).on('load', async function(){
   const studentActivityBarChart = initializeStudentActivityBarChart();
   const avgTimeSpentChart = initializeAvgTimeSpentChart();
+  manageConfirmAndRefresh();
   $('.refreshSelectionButton').on('click', async function(){
+    showPageContent();
+    addLoadingIcons();
     const classId = ($(".ui.selection.dropdown[name='classSelection']").dropdown('get value'));
     if(!classId) {
       return;

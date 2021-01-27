@@ -19,15 +19,16 @@ function updateTableHtml(username, studentData){
       <tbody id="studentReportTable"></tbody>
     </table>
   `);
+  console.log(studentData)
   for(const modName of Object.keys(studentData)){
     $(`#studentReportTable`).append(`
       <tr>
         <td>${studentData[modName].modTitle}</td>
-        <td>${studentData[modName].timeToComplete ? studentData[modName].timeToComplete + " minutes" : "Not completed"}</td>
+        <td>${studentData[modName].timeToComplete ? Math.round(studentData[modName].timeToComplete) + " minutes" : "Not completed"}</td>
         <td>${studentData[modName].dateLastVisited ? humanized_time_span(studentData[modName].dateLastVisited) : "N/A"}</td>
-        <td class="center aligned">${studentData[modName].likeCount}</td>
-        <td class="center aligned">${studentData[modName].flagCount}</td>
-        <td class="center aligned">${studentData[modName].replyCount}</td>
+        <td class="center aligned">${modName !== "accounts" ? studentData[modName].likeCount : "N/A"}</td>
+        <td class="center aligned">${modName !== "accounts" ? studentData[modName].flagCount : "N/A"}</td>
+        <td class="center aligned">${modName !== "accounts" ? studentData[modName].replyCount : "N/A"}</td>
       </tr>
     `);
   }

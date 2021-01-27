@@ -7,39 +7,59 @@ block content
 
     .row.addMargin
       .sixteen.wide.column
-        .ui.selection.dropdown(name="classSelection")
-          input(type="hidden")
-          i.dropdown.icon
-          .default.text Select a Class
-          .menu
-        .ui.icon.button.refreshSelectionButton
-          i.redo.alternate.icon
+        h2 Select A Class:
+        .row
+          .ui.selection.dropdown(name="classSelection")
+            input(type="hidden")
+            i.dropdown.icon
+            .default.text Select a Class
+            .menu
+        .row
+          .ui.labeled.icon.button.refreshSelectionButton
+            i.check.icon
+            | Show Overview
             
-    .row.centerText
-      h2
-        i.chart.line.icon
-        | Student Activity
-    .ui.divider
-    .row.addMargin
-      .ui.basic.segment
-        canvas#studentActivityBarChart(width="400" height="400")
-        
-    .row.centerText
-      h2
-        i.stopwatch.icon
-        | Time Spent
-    .ui.divider
-    .row.addMargin
-      .ui.basic.segment
-        canvas#avgTimeSpentBarChart(width="400" height="400")
-        
-    .row.centerText
-      h2
-        i.star.outline.icon
-        | Leader Chart
-    .ui.divider
-    .row.addMargin
-      .ui.basic.segment#leaderboardSegment
+        //- h2 Select A Class
+        //- .ui.selection.dropdown(name="classSelection")
+        //-   input(type="hidden")
+        //-   i.dropdown.icon
+        //-   .default.text Select a Class
+        //-   .menu
+        //- .ui.icon.button.refreshSelectionButton
+        //-   i.redo.alternate.icon
+          
+    .ui.basic.segment.hiddenVisibility#studentActivitySegment  
+      .row.centerText
+        h2
+          i.chart.line.icon
+          | Student Activity
+      .ui.divider
+      .row.addMargin
+        .ui.basic.segment
+          .ui.active.inverted.dimmer
+            .ui.text.loader Loading...
+          canvas#studentActivityBarChart(width="400" height="400")
+    .ui.basic.segment.hiddenVisibility#avgTimeSegment 
+      .row.centerText
+        h2
+          i.stopwatch.icon
+          | Time Spent
+      .ui.divider
+      .row.addMargin
+        .ui.basic.segment
+          .ui.active.inverted.dimmer
+            .ui.text.loader Loading...
+          canvas#avgTimeSpentBarChart(width="400" height="400")
+    .ui.basic.segment.hidden#leaderboardParentSegment  
+      .row.centerText
+        h2
+          i.star.outline.icon
+          | Leader Chart
+      .ui.divider
+      .row.loaderRow
+        .ui.centered.inline.text.loader Loading...    
+      .row.addMargin
+        .ui.basic.segment#leaderboardSegment
 
             
 
