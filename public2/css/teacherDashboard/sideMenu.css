@@ -16,3 +16,17 @@
 .hiddenVisibility > :not(.teacherDashboardMenu){
   visibility: hidden;
 }
+
+/* Hide the mobile menu when above tablet screen size */
+@media (min-width: 992px) {
+  .teacherDashboardMobileMenu {
+    display: none !important;
+  }
+}
+
+/* Hide the side menu in favor of a compact mobile menu on screens tablet size and below */
+@media (max-width: 992px) {
+  .teacherDashboardMenu {
+    display: none !important;
+  }
+}

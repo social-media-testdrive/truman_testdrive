@@ -27,7 +27,7 @@ function initializeTimeBreakdownChart() {
       type: 'bar',
       data: {
         datasets: [{
-          label: 'Number of Students',
+          label: '# of Students',
           data: [0,0,0,0],
           backgroundColor: 'rgba(54, 162, 235, 1)',
           borderColor: 'rgba(54, 162, 235, 1)',
@@ -47,7 +47,21 @@ function initializeTimeBreakdownChart() {
         },
         maintainAspectRatio: false,
         scales: {
+          xAxes: [{
+            scaleLabel: {
+              display: true,
+              fontSize: 14,
+              fontColor: '#000',
+              labelString: "Time Range (Minutes)"
+            }
+          }],
           yAxes: [{
+            scaleLabel: {
+              display: true,
+              fontSize: 14,
+              fontColor: '#000',
+              labelString: "# of Students"
+            },
             ticks: {
               stepSize: 1,
               beginAtZero: true
@@ -84,7 +98,21 @@ function initializeAvgSectionTimeChart() {
         },
         maintainAspectRatio: false,
         scales: {
+          xAxes: [{
+            scaleLabel: {
+              display: true,
+              fontSize: 14,
+              fontColor: '#000',
+              labelString: "Section"
+            }
+          }],
           yAxes: [{
+            scaleLabel: {
+              display: true,
+              fontSize: 14,
+              fontColor: '#000',
+              labelString: "Avg Time (Minutes)"
+            },
             ticks: {
               suggestedMin: 14,
               suggestedMax: 14,
@@ -232,13 +260,19 @@ function createCheckboxTypeChart(chartId, chartLabelArray, studentCount, checkbo
         responsive: true,
         scales: {
           xAxes: [{
+            scaleLabel: {
+              display: true,
+              fontSize: 14,
+              fontColor: '#000',
+              labelString: "Number of Students"
+            },
             ticks: {
               stepSize: 1,
               beginAtZero: true,
               suggestedMin: studentCount,
               suggestedMax: studentCount
             }
-          }]
+          }],
         }
       }
   });
