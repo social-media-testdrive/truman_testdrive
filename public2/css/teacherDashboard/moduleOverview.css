@@ -2,10 +2,6 @@
   display: none !important;
 }
 
-.hiddenVisibility {
-  visibility: hidden !important;
-}
-
 .dropdownColumn .row {
   margin: 15px 0 15px 0 !important;
 }

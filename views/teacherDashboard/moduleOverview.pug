@@ -2,7 +2,7 @@ extends ../ui_layout
 
 block content
 
-  .sixteen.wide.column(style="padding-left:50px;") 
+  .sixteen.wide.column.dashboardContentColumn.hiddenVisibility
     include ../partials/teacherDashboardMenu
 
     .row.addMargin
@@ -115,5 +115,7 @@ block scripts
   script(src='/js/lib/chart.js') 
   
 block styles
+  - var o = '/css/teacherDashboard/sideMenu.css?t=' + (new Date()).getTime().toString();
+  link(rel='stylesheet', href=o)
   link(rel='stylesheet', href='/css/teacherDashboard/classOverview.css')
   link(rel='stylesheet', href='/css/teacherDashboard/moduleOverview.css')  

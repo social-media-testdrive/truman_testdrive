@@ -10,10 +10,6 @@
   display: none !important;
 }
 
-.hiddenVisibility {
-  visibility: hidden !important;
-}
-
 .refreshSelectionButton {
   margin: 15px 0 15px 0 !important;
 }

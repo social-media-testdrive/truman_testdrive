@@ -1,6 +1,5 @@
 $(window).on('load', function(){
 
-
   $('.addStudentButton').on('click', function(){
     let classname = $(this).closest('tr').find('a').text()
     $("#addStudentToClassModal").find('input[name="className"]').val(classname);
@@ -28,4 +27,4 @@ $(window).on('load', function(){
       $('#loadingDimmer').addClass('active')
     }
   });
-})
+});

@@ -1,0 +1,18 @@
+/* Adding extra padding when tablet or larger */
+/* Making content container wider on large monitors and above */
+/* @media (min-width: 992px) {
+  .dashboardContentColumn {
+    padding-left: calc(100% - 250px) !important;
+  }
+} */
+
+/* Making content container wider on large monitors and above */
+/* @media (min-width: 1200px) {
+  .dashboardContentColumn {
+    padding left: initial;
+  }
+} */
+
+.hiddenVisibility > :not(.teacherDashboardMenu){
+  visibility: hidden;
+}

@@ -1,8 +1,7 @@
 extends ../ui_layout
 
 block content
-
-  .sixteen.wide.column(style="padding-left:50px;") 
+  .ui.sixteen.wide.column.dashboardContentColumn.hiddenVisibility
     include ../partials/teacherDashboardMenu
     
     .ui.breadcrumb
@@ -72,23 +71,6 @@ block content
         .ui.icon.labeled.green.approve.button
           i.check.icon
           | Yes, delete this class
-    
-    //- .ui.small.modal#addStudentToClassModal
-    //-   i.close.icon
-    //-   .header Add Student to Class
-    //-   .content
-    //-     h3#classNameHeader
-    //-       | Adding to class:
-    //-       span classname
-    //-     form#addStudentForm.ui.form(name="addStudentToClass" action='/addStudentToClass', method='POST')
-    //-       input(type='hidden', name='_csrf', value=csrfToken)
-    //-       input(type='hidden', name='className')
-    //-       .field
-    //-         label(for='studentUsername') Student Username
-    //-         input(type='text', name='studentUsername', id='studentUsername', placeholder='Enter Student Name')
-    //-       .ui.error.message
-    //-   .actions
-    //-     input.ui.green.button(type='submit', value='Submit', form='addStudentForm')
 
 block scripts
   - var n = '/user_portal/teacherDashboardTools.js?t=' + (new Date()).getTime().toString();
@@ -97,4 +79,6 @@ block scripts
   script(src=m)
           
 block styles
+  - var o = '/css/teacherDashboard/sideMenu.css?t=' + (new Date()).getTime().toString();
+  link(rel='stylesheet', href=o)
   link(rel='stylesheet', href='/css/classes.css')
