@@ -378,6 +378,7 @@ async function visualizeStudentReflectionData(modName, classId, classSize){
     <h2>Reflection</h2>
   `);
   const reflectionJsonData = await $.getJSON("/json/reflectionSectionData.json");
+  downloadReflectionData(classId, modName);
   const dbData = await $.get(`/classReflectionResponses/${classId}`);
   const classReflectionResponses = dbData.reflectionResponses;
   //console.log(`Response data:`)
@@ -906,6 +907,12 @@ function manageConfirmButton(){
       }
     }
   });
+}
+
+function downloadReflectionData(classId, modName){
+  $('.downloadReflectionData').on('click', function(){
+    $.get(`/downloadReflectionResponses/${classId}/${modName}`);
+  })
 }
 
 $(window).on("load", async function(){

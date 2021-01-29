@@ -1,11 +1,11 @@
-//const Actor = require('../models/Actor.js');
-//const Script = require('../models/Script.js');
+const fs = require('fs');
 const Class = require('../models/Class.js');
 const User = require('../models/User');
 var ObjectId = require('mongoose').Types.ObjectId;
 const CSVToJSON = require("csvtojson");
 const _ = require('lodash');
 var async = require('async');
+const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
 // Get all Classes for a currently logged in instructor
 exports.getClasses = (req, res) => {
@@ -619,4 +619,112 @@ async function saveUsernameInExistingClass(req, item, existingClass) {
   } catch (err) {
     // ignore
   }
+}
+
+function buildHeaderArray(moduleQuestions){
+  let headerArray = [
+    {id: 'username', title: 'Username'}
+  ]
+  for (const question of Object.keys(moduleQuestions)) {
+    // Handle each type of question: written, checkbox, and checkboxGrouped
+    switch(moduleQuestions[question].type){
+      case 'written': {
+        let newHeaderObject = {};
+        newHeaderObject.id = question;
+        newHeaderObject.title = moduleQuestions[question].prompt;
+        headerArray.push(newHeaderObject);
+        break;
+      }
+      case 'checkbox': {
+        // in this case, need to make a new header object for each checkbox option
+        for (const checkbox of Object.keys(moduleQuestions[question].checkboxLabels)) {
+          let newHeaderObject = {};
+          newHeaderObject.id = `${question}_${checkbox}`;
+          const questionString = moduleQuestions[question].prompt;
+          const checkboxLabel = moduleQuestions[question].checkboxLabels[checkbox];
+          const titleString = `${questionString} ${checkboxLabel}`
+          newHeaderObject.title = titleString;
+          headerArray.push(newHeaderObject);
+        }
+      }
+      case 'checkboxGrouped': {
+        // Groups of questions with the same prompt/checkbox labels,
+        // but a different corresponding post.
+        const groupCount = moduleQuestions[question].groupCount;
+        for (let i=0; i<groupCount; i++) {
+          for (const checkbox of Object.keys(moduleQuestions[question].checkboxLabels)) {
+            let newHeaderObject = {};
+            newHeaderObject.id = `${question}_${i}_${checkbox}`;
+            const groupString = `(Post ${i+1}):` // teachers would likely prefer to have the count start at 1
+            const questionString = moduleQuestions[question].prompt;
+            const checkboxLabel = moduleQuestions[question].checkboxLabels[checkbox];
+            const titleString = `${groupString} ${questionString} ${checkboxLabel}`
+            newHeaderObject.title = titleString;
+            headerArray.push(newHeaderObject);
+          }
+        }
+      }
+    }
+  }
+  return headerArray;
+}
+
+exports.downloadClassReflectionResponses = async (req, res, next) => {
+  if (!req.user.isInstructor) {
+    return res.json({classReflectionResponses: {}});
+  }
+
+  // Use reflectionSecionData.json to define the structure of the output csv
+  // fs.readFile does not return a promise, so promisify it
+  // reference: https://javascript.info/promisify
+  const filePath = './public2/json/reflectionSectionData.json';
+  let readFilePromise = function(filePath) {
+    return new Promise((resolve, reject) => {
+      fs.readFile(filePath, (err, data) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(data);
+      })
+    })
+  }
+  const reflectionJsonBuffer = await readFilePromise(filePath).then(function(data) {
+    return data;
+  });
+  const reflectionJson = JSON.parse(reflectionJsonBuffer);
+  const moduleQuestions = reflectionJson[req.params.modName];
+  // Build the layout of the output csv based on the reflectionJson content
+  const headerArray = buildHeaderArray(moduleQuestions);
+  console.log(headerArray)
+  // const csvWriter = createCsvWriter({
+  //     path: 'classReflectionResponses.csv',
+  //     header: headerArray
+  // });
+  Class.findOne({
+    accessCode: req.params.classId,
+    teacher: req.user.id,
+    deleted: false
+  }).populate('students')
+  .exec(async function (err, found_class) {
+    if (err) {
+      console.log("ERROR");
+      console.log(err);
+      return next(err);
+    }
+    if (found_class == null){
+      console.log("NULL");
+      var myerr = new Error('Class not found!');
+      return next(myerr);
+    }
+
+    const outputData = {};
+    for (var i = 0; i < found_class.students.length; i++) {
+      const reflectionActions = found_class.students[i].reflectionAction.toObject();
+      const username = found_class.students[i].username;
+      outputData[username] = reflectionActions;
+    }
+    res.json({
+      reflectionResponses: outputData
+    });
+  });
 }
