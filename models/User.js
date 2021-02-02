@@ -256,6 +256,7 @@ const userSchema = new mongoose.Schema({
   reflectionAction: [new Schema({
     absoluteTimeContinued: Date, //time that the user left the page by clicking continue
     modual: String, //which lesson mod did this take place in?
+    questionNumber: String, // corresponds with reflectionSectionData.json, i.e. 'Q1', 'Q2', 'Q3'...
     prompt: String,
     type: String, // Which type of response this will be: written, checkbox, radio, habitsUnique
     writtenResponse: String,

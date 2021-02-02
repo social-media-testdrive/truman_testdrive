@@ -911,7 +911,7 @@ function manageConfirmButton(){
 
 function downloadReflectionData(classId, modName){
   $('.downloadReflectionData').on('click', function(){
-    $.get(`/downloadReflectionResponses/${classId}/${modName}`);
+    window.location.href = (`/downloadReflectionResponses/${classId}/${modName}`);
   })
 }
 

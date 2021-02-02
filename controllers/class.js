@@ -631,7 +631,7 @@ function buildHeaderArray(moduleQuestions){
       case 'written': {
         let newHeaderObject = {};
         newHeaderObject.id = question;
-        newHeaderObject.title = moduleQuestions[question].prompt;
+        newHeaderObject.title = `(open-ended) ${moduleQuestions[question].prompt}`;
         headerArray.push(newHeaderObject);
         break;
       }
@@ -642,7 +642,7 @@ function buildHeaderArray(moduleQuestions){
           newHeaderObject.id = `${question}_${checkbox}`;
           const questionString = moduleQuestions[question].prompt;
           const checkboxLabel = moduleQuestions[question].checkboxLabels[checkbox];
-          const titleString = `${questionString} ${checkboxLabel}`
+          const titleString = `(checkbox) ${questionString} : ${checkboxLabel}`
           newHeaderObject.title = titleString;
           headerArray.push(newHeaderObject);
         }
@@ -655,7 +655,7 @@ function buildHeaderArray(moduleQuestions){
           for (const checkbox of Object.keys(moduleQuestions[question].checkboxLabels)) {
             let newHeaderObject = {};
             newHeaderObject.id = `${question}_${i}_${checkbox}`;
-            const groupString = `(Post ${i+1}):` // teachers would likely prefer to have the count start at 1
+            const groupString = `(checkbox, post ${i+1}):` // teachers would likely prefer to have the count start at 1
             const questionString = moduleQuestions[question].prompt;
             const checkboxLabel = moduleQuestions[question].checkboxLabels[checkbox];
             const titleString = `${groupString} ${questionString} ${checkboxLabel}`
@@ -668,6 +668,65 @@ function buildHeaderArray(moduleQuestions){
   }
   return headerArray;
 }
+
+function pushNewRecordInfo(newRecord, action, questionData, headerItem, questionIdSplit) {
+  switch (action.type){
+    case 'written': {
+      newRecord[headerItem.id] = action.writtenResponse;
+      return newRecord;
+      break;
+    }
+    case 'checkbox': {
+      /* Ex. checkbox
+      Q1_2 = splice('_') = ['Q1','2']
+      1*0*100 = 5 checkboxes =
+      [√]
+      *[]*
+      [√]
+      []
+      []
+      number to shift before bitwise comparison = num of checkboxes - splice[1]
+      */
+
+      /* Ex. checkboxGrouped
+      Q1_2_2 = splice('_') = ['Q1','2', '2'] = ["question number", "group #", "checkbox #"]
+      1010 0*1*00 0000 = 12 checkboxes =
+      [√][ ][√][ ]  [ ]*[√]*[ ][ ]  [ ][ ][ ][ ]
+      number to shift before bitwise comparison =
+      [(# groups - group #) * boxes per group] + [boxes per group - check #]
+      */
+      let shiftCount = 0;
+      if (questionData.type === "checkbox") {
+        shiftCount = action.numberOfCheckboxes - questionIdSplit[1];
+      } else if (questionData.type === "checkboxGrouped") {
+        const boxesPerGroup = Object.keys(questionData.checkboxLabels).length;
+        const groupCount = parseInt(questionData.groupCount);
+        if(questionIdSplit[1] === '1'){
+          console.log(`#########`)
+          console.log(questionData);
+          console.log(`Boxes per group: ${boxesPerGroup}`);
+          console.log(`Group Count: ${questionData.groupcount} and type: ${typeof questionData.groupCount}`);
+          console.log(questionIdSplit);
+          console.log(`#########`)
+        }
+
+        shiftCount = ((groupCount - questionIdSplit[1]) * boxesPerGroup) + (boxesPerGroup - questionIdSplit[2]);
+      }
+      console.log(questionIdSplit)
+      console.log(`Shift count for ${questionIdSplit[2]}: ${shiftCount}`);
+      let shiftableResponse = action.checkboxResponse;
+      for(let i=0; i<shiftCount; i++){
+        shiftableResponse = shiftableResponse >> 1;
+      }
+      let checked = shiftableResponse & 1 ? "selected" : "";
+      newRecord[headerItem.id] = checked;
+      return newRecord;
+      break;
+    }
+  }
+  return newRecord;
+}
+
 
 exports.downloadClassReflectionResponses = async (req, res, next) => {
   if (!req.user.isInstructor) {
@@ -695,11 +754,11 @@ exports.downloadClassReflectionResponses = async (req, res, next) => {
   const moduleQuestions = reflectionJson[req.params.modName];
   // Build the layout of the output csv based on the reflectionJson content
   const headerArray = buildHeaderArray(moduleQuestions);
-  console.log(headerArray)
-  // const csvWriter = createCsvWriter({
-  //     path: 'classReflectionResponses.csv',
-  //     header: headerArray
-  // });
+  const csvWriter = createCsvWriter({
+      path: `classReflectionResponses.csv`,
+      header: headerArray
+  });
+  let records = [];
   Class.findOne({
     accessCode: req.params.classId,
     teacher: req.user.id,
@@ -716,15 +775,31 @@ exports.downloadClassReflectionResponses = async (req, res, next) => {
       var myerr = new Error('Class not found!');
       return next(myerr);
     }
-
-    const outputData = {};
-    for (var i = 0; i < found_class.students.length; i++) {
-      const reflectionActions = found_class.students[i].reflectionAction.toObject();
-      const username = found_class.students[i].username;
-      outputData[username] = reflectionActions;
+    for (let student of found_class.students) {
+      let newRecord = {};
+      newRecord['username'] = student.username;
+      for (let action of student.reflectionAction) {
+        if(action.modual !== req.params.modName) {
+          continue;
+        }
+        for (const headerItem of headerArray) {
+          const questionIdSplit = headerItem.id.split('_');
+          const questionNumber = questionIdSplit[0]
+          if(action.questionNumber === questionNumber) {
+            newRecord = pushNewRecordInfo(newRecord, action, moduleQuestions[questionNumber], headerItem, questionIdSplit);
+          }
+        }
+      }
+      records.push(newRecord);
     }
-    res.json({
-      reflectionResponses: outputData
+    await csvWriter.writeRecords(records)
+    res.download(`classReflectionResponses.csv`,'classReflectionResponses.csv', function(err){
+      if(err){
+        console.log(err);
+        next(err);
+      } else {
+        console.log("success");
+      }
     });
   });
 }

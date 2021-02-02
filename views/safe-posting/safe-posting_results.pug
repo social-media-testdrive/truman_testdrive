@@ -72,7 +72,7 @@ block content
               |   Next
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden.checkOne 
               .ui.label.resultsPromptLabel
-                h4.reflectionCheckboxesPrompt
+                h4.reflectionCheckboxesPrompt(data-questionNumber='Q1')
                   | #{reflectionData['safe-posting'].Q1.prompt}
               .ui.stackable.two.cards
 
@@ -124,7 +124,7 @@ block content
               |   Next
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden.checkTwo 
               .ui.label.resultsPromptLabel
-                h4.reflectionCheckboxesPrompt
+                h4.reflectionCheckboxesPrompt(data-questionNumber='Q2')
                   | #{reflectionData['safe-posting'].Q2.prompt}
               .ui.stackable.two.cards
 
@@ -209,7 +209,7 @@ block content
               |   Next
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden.checkThree 
               .ui.label.resultsPromptLabel
-                h4.reflectionPrompt
+                h4.reflectionPrompt(data-questionNumber='Q3')
                   | #{reflectionData['safe-posting'].Q3.prompt}
               .ui.form
                 .inline.fields

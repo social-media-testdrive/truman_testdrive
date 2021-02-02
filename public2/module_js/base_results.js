@@ -8,6 +8,7 @@ function recordResponse(responseType,timestamp){
   cat.modual = subdirectory2
   // prompt with any new line characters removed
   cat.prompt = $(this).text().replace(/\r?\n|\r/, '');
+  cat.questionNumber = $(this).attr('data-questionNumber');
   cat.absoluteTimeContinued = timestamp;
   // adjust variables depending on the response type
   switch(responseType){
