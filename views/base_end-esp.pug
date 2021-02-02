@@ -1,0 +1,57 @@
+extends ui_layout
+
+block content
+
+  .ten.wide.computer.twelve.wide.tablet.sixteen.wide.mobile.column.centered
+    .ui.basic.segment(style="margin-bottom:4em;")
+      
+      h1 ¿Qué te gustaría hacer ahora?
+    
+    
+      .ui.raised.segment
+        h3.ui.header
+          .content
+            | Te gustaría:
+        hr
+        .ui.basic.segment.center.aligned
+          .ui.big.green.labeled.icon.button.finish.endPageButton
+              i.checkmark.icon
+              |   Terminar la lección
+          br
+          br
+          .ui.big.green.labeled.icon.button.finish.endPageButton
+              i.chevron.circle.right.icon
+              |   Ver otros módulos
+          br
+          br
+          a(href='javascript:void(0);', onclick='javascript:startIntro();')
+              .ui.big.green.labeled.icon.button.endPageButton
+                  i.edit.icon
+                  |   Danos feedback
+        
+                
+      .ui.raised.segment
+        h3.ui.header
+          .content
+            | También puedes volver al módulo para:
+        hr
+        .ui.basic.segment.center.aligned
+          .ui.big.blue.labeled.icon.button.cybertutorial.endPageButton
+              i.chevron.circle.left.icon
+              |   Aprender ideas clave
+          br
+          br
+          .ui.big.blue.labeled.icon.button.cybersim.endPageButton
+              i.chevron.circle.left.icon
+              |   Practicar habilidades
+          br
+          br
+          .ui.big.blue.labeled.icon.button.cyber_script.endPageButton
+              i.chevron.circle.left.icon
+              |   Explorar la línea del tiempo
+      
+block scripts
+  script().
+    function startIntro(){       
+      window.open(href='https://cornell.qualtrics.com/jfe/form/SV_9tMszwlpe1TIIxT');
+    };
