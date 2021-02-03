@@ -430,6 +430,7 @@ async function visualizeStudentReflectionData(modName, classId, classSize){
   $('#reflectionSegment .loadingDimmer').removeClass('active');
 }
 
+
 function updateStudentProgressChart(chart, completedCount, startedCount, noneCount){
   chart.data.datasets[0].data = [completedCount, startedCount, noneCount];
   chart.update();
@@ -601,6 +602,7 @@ async function visualizeStudentProgressData(studentProgressChart, modName, class
 
 }
 
+
 function calculateTotalActionCount(actions){
   let actionSum = 0;
   if(actions.liked){
@@ -610,10 +612,14 @@ function calculateTotalActionCount(actions){
     actionSum++;
   }
   if(actions.comments.length){
-    actionSum++;
+    for(const action in actions.comments){
+      actionSum++;
+    }
   }
   if(actions.modal.length){
-    actionSum++;
+    for(const modal in actions.modal) {
+      actionSum++;
+    }
   }
   return actionSum;
 }
@@ -650,7 +656,6 @@ function getTopThreePosts(classFreeplayActions){
   }
   return topPosts;
 }
-
 
 function appendFreeplayRankingHtml(ranking, imageName, postText){
   const cdn = "https://dhpd030vnpk29.cloudfront.net";
@@ -807,6 +812,7 @@ async function visualizeFreeplayActivity(modName, classId, classSize){
   return;
 }
 
+
 function updateAvgSectionTimeChart(chart, avgSectionTimeArray) {
   chart.data.datasets[0].data = avgSectionTimeArray;
   chart.update();
@@ -891,6 +897,7 @@ async function visualizeTimeData(timeBreakdownChart, avgSectionTimeChart, modNam
   $('#timeSpentSegment .dimmer').removeClass('active');
   return;
 };
+
 
 function manageConfirmButton(){
   $(".ui.selection.dropdown[name='moduleSelection']").dropdown({
