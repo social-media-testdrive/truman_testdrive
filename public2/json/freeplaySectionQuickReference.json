@@ -1,11 +1,43 @@
 {
   "advancedlit": {
     "modals": "false",
-    "customContent": "false"
+    "customContent": "false",
+    "relevantPosts": {
+      "0": {
+        "image": "olympic1_an.png",
+        "body": "Wow just heard that we will be hosting the olympics?!?!?"
+      },
+      "1": {
+        "image": "olympic1_an.png",
+        "body": "SO EXCITED!!!! This will be so fun!!!"
+      },
+      "2": {
+        "image": "olympic2_an.png",
+        "body": "Interesting article on how Chestin could host the Olympics"
+      },
+      "3": {
+        "image": "olympic3_an.png",
+        "body": "Woo!! Go Chestin go!!"
+      }
+    }
   },
   "cyberbullying": {
     "modals": "false",
-    "customContent": "false"
+    "customContent": "false",
+    "relevantPosts": {
+      "0": {
+        "image": "blackbkg.jpg",
+        "body": "No one likes you. Why do you come to school? @<a href=\"https://app.socialmediatestdrive.org/user/DylanCrazzzzzy\">Dylan Moore</a>"
+      },
+      "1": {
+        "image": "ewww.jpg",
+        "body": "Dylan smells like he didn't shower for a week"
+      },
+      "2": {
+        "image": "dylansketchbook.jpeg",
+        "body": "omg lollll look at Dylan’s sketchbook he’s such a nerdddd"
+      }
+    }
   },
   "digfoot": {
     "modals": "true",
@@ -15,7 +47,21 @@
         "label": "Clicked Post"
       }
     },
-    "customContent": "false"
+    "customContent": "false",
+    "relevantPosts": {
+      "0": {
+        "image": "angrycat.jpg",
+        "body": "Does this cat remind anyone else of Mrs. Lee?? She's always glaring at us lol. Why does she have to suck SO MUCH"
+      },
+      "1": {
+        "image": "facepalm.jpg ",
+        "body": "Lol Danny didn't want me telling anyobody but he tripped over a rock and twisted his ankle. He is literally a meme."
+      },
+      "2": {
+        "image": "backtoschool.jpg",
+        "body": "First day of grade 7! come over to my house at 22 Eastwood dr if you want to hang"
+      }
+    }
   },
   "digital-literacy": {
     "modals": "true",
@@ -33,7 +79,39 @@
         "label": "flagged"
       }
     },
-    "customContent": "false"
+    "customContent": "false",
+    "relevantPosts": {
+      "0": {
+        "image": "realnews2.png",
+        "body": "Volkswagen's ID Buggy, an electric dune buggy concept, was an eye-catching presence at this week's Geneva International Motor Show. The most surprising thing about it, though, is that VW might actually put it into production.",
+        "newsType": "real"
+      },
+      "1": {
+        "image": "fakenews1.png",
+        "body": "Breaking News: Driving age just lowered to 12. DMV flooded with road test appointments and car companies cannot keep their newest models off the road.",
+        "newsType": "fake"
+      },
+      "2": {
+        "image": "fakenews2.png",
+        "body": "Craving a donut? Think again! Scientists found that donuts are the leading cause of cancer in young children 😳",
+        "newsType": "fake"
+      },
+      "3": {
+        "image": "realnews1.png",
+        "body": "\"According to an accumulating body of research by Dr. Cantley and his team at Weill Cornell Medicine, excess sugar also helps many types of cancer to grow more rapidly.\"",
+        "newsType": "real"
+      },
+      "4": {
+        "image": "fakenews5.png",
+        "body": "You'll never guess what these are!!!",
+        "newsType": "fake"
+      },
+      "5": {
+        "image": "realnews3.png",
+        "body": "The University of Chicago will no longer require ACT or SAT scores from U.S. students",
+        "newsType": "real"
+      }
+    }
   },
   "esteem": {
     "modals": "true",
@@ -43,7 +121,54 @@
         "label": "Clicked Post"
       }
     },
-    "customContent": "true"
+    "customContent": "true",
+    "relevantPosts": {
+      "0": {
+        "image": "bigmatch_se.jpg",
+        "body": "Watching the big match with my BFF!!",
+        "topic": "sports"
+      },
+      "1": {
+        "image": "signedbasket_se.jpg",
+        "body": "Can't believe my parents got me a GENUINE signed ball",
+        "topic": "sports"
+      },
+      "2": {
+        "image": "tryouts_se.jpg",
+        "body": "Wow, can't believe I'm the only one who made it to the next round of soccer tryouts from our group",
+        "topic": "sports"
+      },
+      "3": {
+        "image": "computer-game_se.jpg",
+        "body": "Totally beating everyone",
+        "topic": "gaming"
+      },
+      "4": {
+        "image": "switch_se.jpg",
+        "body": "Just got a new Switch! Any games I should ask my parents to buy me?",
+        "topic": "gaming"
+      },
+      "5": {
+        "image": "nintendo_se.jpg",
+        "body": "Playing online with my best friend",
+        "topic": "gaming"
+      },
+      "6": {
+        "image": "concert-crowd_se.jpg",
+        "body": "We missed you at the concert Jeremy!",
+        "topic": "music"
+      },
+      "7": {
+        "image": "electric_se.jpg",
+        "body": "I just got the best present ever!",
+        "topic": "music"
+      },
+      "8": {
+        "image": "bestguitar_se.JPG",
+        "body": "Inviting the best musicians from camp to make a song together.",
+        "topic": "music"
+      }
+    }
   },
   "habits": {
     "modals": "false",
@@ -57,11 +182,39 @@
         "label": "Clicked Link"
       }
     },
-    "customContent": "false"
+    "customContent": "false",
+    "relevantPosts": {
+      "0": {
+        "image": "nintendo_phi.jpg",
+        "body": "Get a BRAND new Nintendo Switch only $19.99!!! Hurry up, this offer WILL NOT LAST"
+      },
+      "1": {
+        "image": "accountrisk_phi.png",
+        "body": "!!&$!ALERT!&$!! Your account MAY BE AT RISK. Click here to resolve"
+      },
+      "2": {
+        "image": "giftcard_phi.jpg",
+        "body": "You won't believe this crazy deal! I filled in a 5 minite survey and got a $500 gift card instantly!! Fill out survey NOW"
+      }
+    }
   },
   "presentation": {
     "modals": "false",
-    "customContent": "false"
+    "customContent": "false",
+    "relevantPosts": {
+      "0": {
+        "image": "spcrying.jpg",
+        "body": "school really sucks i just wanna quit"
+      },
+      "1": {
+        "image": "spselfie.jpg",
+        "body": "silly selfie what do u think?"
+      },
+      "2": {
+        "image": "spnosering.png",
+        "body": "got a nose ring don't tell my parents they'll flip out lol"
+      }
+    }
   },
   "privacy": {
     "modals": "false",
@@ -69,7 +222,21 @@
   },
   "safe-posting": {
     "modals": "false",
-    "customContent": "false"
+    "customContent": "false",
+    "relevantPosts": {
+      "0": {
+        "image": "safepostga2.jpg",
+        "body": "new phone who dis? my new number is 607-252-6771"
+      },
+      "1": {
+        "image": "house.jpg",
+        "body": "321 Jefferson Ave come hang out guys, I'm bored."
+      },
+      "2": {
+        "image": "coolmovies.jpeg",
+        "body": "Gonna be at the Regal THIS FRIDAY to see the new Marvel movie!! Meet me there at 8 🎥🍿"
+      }
+    }
   },
   "targeted": {
     "modals": "true",
@@ -83,6 +250,53 @@
         "label": "Hid Ad"
       }
     },
-    "customContent": "true"
+    "customContent": "true",
+    "relevantPosts": {
+      "0": {
+        "image": "three_stripes_ad.jpg",
+        "body": "For your next race, choose ThreeStripes. #threestripesoryoureout #sneakerheads #runnerheads",
+        "topic": "sports"
+      },
+      "1": {
+        "image": "three_stripes_ad_2.jpeg",
+        "body": "When's your next big race? Comment down below!",
+        "topic": "sports"
+      },
+      "2": {
+        "image": "club_soccer_ad.jpg",
+        "body": "Spots are filling up fast! Make sure you sign up for club soccer TODAY.",
+        "topic": "sports"
+      },
+      "3": {
+        "image": "burger_ad.jpg",
+        "body": "Yum. 11/10. (📸: @ethan-the-man)",
+        "topic": "food"
+      },
+      "4": {
+        "image": "cereal_ad.jpg",
+        "body": "A spoonful of ______ 🤤#strawberrycrunch",
+        "topic": "food"
+      },
+      "5": {
+        "image": "drink_ad.jpg",
+        "body": "😱Six brand new flavors 😱Coming soon, in-stores near you.",
+        "topic": "food"
+      },
+      "6": {
+        "image": "controller_ad.jpg",
+        "body": "Which team are you on: 🔴or 🔵?",
+        "topic": "gaming"
+      },
+      "7": {
+        "image": "VR_ad.jpg",
+        "body": "Play any game on our VR headsets. Experience the future, now. #VR #tech",
+        "topic": "gaming"
+      },
+      "8": {
+        "image": "roger_ad.jpg",
+        "body": "Download the #1 mobile game in the world. #rogerthat #app",
+        "topic": "gaming"
+      }
+    }
   }
 }

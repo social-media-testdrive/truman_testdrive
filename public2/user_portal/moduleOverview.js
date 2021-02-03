@@ -603,60 +603,6 @@ async function visualizeStudentProgressData(studentProgressChart, modName, class
 }
 
 
-function calculateTotalActionCount(actions){
-  let actionSum = 0;
-  if(actions.liked){
-    actionSum++;
-  }
-  if(actions.flagged){
-    actionSum++;
-  }
-  if(actions.comments.length){
-    for(const action in actions.comments){
-      actionSum++;
-    }
-  }
-  if(actions.modal.length){
-    for(const modal in actions.modal) {
-      actionSum++;
-    }
-  }
-  return actionSum;
-}
-
-function getTopThreePosts(classFreeplayActions){
-  const classwideTotals = {};
-  for(const username in classFreeplayActions) {
-    for(const actions of classFreeplayActions[username]){
-      actions.totalActionCount = calculateTotalActionCount(actions);
-      if(classwideTotals[actions.post]){
-        classwideTotals[actions.post] = classwideTotals[actions.post] + actions.totalActionCount;
-      } else {
-        classwideTotals[actions.post] = actions.totalActionCount;
-      }
-    }
-  }
-  // change to array and sort
-  // references:
-  // https://stackoverflow.com/a/1069840
-  // https://stackoverflow.com/a/38824395
-  const sortableArray = Object.keys(classwideTotals).map((key) => [key, classwideTotals[key]]);
-  sortableArray.sort(function(a, b) {
-      return b[1] - a[1];
-  });
-  // from largest at [0] to third largest at [2]
-  let topPosts;
-  if(sortableArray.length >= 3){
-    topPosts = [sortableArray[0][0],sortableArray[1][0],sortableArray[2][0]];
-  } else {
-    topPosts = [];
-    for(let i=0; i<sortableArray.length; i++){
-      topPosts.push(sortableArray[i][0]);
-    }
-  }
-  return topPosts;
-}
-
 function appendFreeplayRankingHtml(ranking, imageName, postText){
   const cdn = "https://dhpd030vnpk29.cloudfront.net";
   $("#topPosts").append(`
@@ -775,6 +721,90 @@ function createFreeplayRankingChart(i, chartLabels, chartData, studentCount){
   });
 }
 
+function calculateTotalActionCount(actions){
+  let actionSum = 0;
+  if(actions.liked){
+    actionSum++;
+  }
+  if(actions.flagged){
+    actionSum++;
+  }
+  if(actions.comments.length){
+    for(const action in actions.comments){
+      actionSum++;
+    }
+  }
+  if(actions.modal.length){
+    for(const modal in actions.modal) {
+      actionSum++;
+    }
+  }
+  return actionSum;
+}
+
+function getTopThreePosts(classFreeplayActions){
+  const classwideTotals = {};
+  for(const username in classFreeplayActions) {
+    for(const actions of classFreeplayActions[username]){
+      actions.totalActionCount = calculateTotalActionCount(actions);
+      if(classwideTotals[actions.post]){
+        classwideTotals[actions.post] = classwideTotals[actions.post] + actions.totalActionCount;
+      } else {
+        classwideTotals[actions.post] = actions.totalActionCount;
+      }
+    }
+  }
+  // change to array and sort
+  // references:
+  // https://stackoverflow.com/a/1069840
+  // https://stackoverflow.com/a/38824395
+  const sortableArray = Object.keys(classwideTotals).map((key) => [key, classwideTotals[key]]);
+  sortableArray.sort(function(a, b) {
+      return b[1] - a[1];
+  });
+  // from largest at [0] to third largest at [2]
+  let topPosts;
+  if(sortableArray.length >= 3){
+    topPosts = [sortableArray[0][0],sortableArray[1][0],sortableArray[2][0]];
+  } else {
+    topPosts = [];
+    for(let i=0; i<sortableArray.length; i++){
+      topPosts.push(sortableArray[i][0]);
+    }
+  }
+  return topPosts;
+}
+
+function appendRelevantPostHtml(relevantPosts, modName){
+  const cdn = "https://dhpd030vnpk29.cloudfront.net";
+  // Most modules have 3 relevant posts, but there are special cases.
+  if (Object.keys(relevantPosts).length === 3) {
+    // This is the standard case.
+    $('#relevantPosts').append(`
+      <div class="ui basic segment" style="padding:0;">
+        <h3> These were the relevant posts in this module:</h3>
+        <div class="ui three stackable cards" id="relevantPostsCards">
+        </div>
+      </div>
+    `);
+    for(const post of Object.values(relevantPosts)) {
+      $('#relevantPostsCards').append(`
+        <div class="ui fluid card">
+          <div class="image">
+            <img src="${cdn}/post_pictures/${post.image}" style="max-width:100%">
+          </div>
+          <div class="content">
+            <div class="description">
+              ${post.body}
+            </div>
+          </div>
+        </div>
+      `);
+    }
+  }
+  return;
+}
+
 async function visualizeFreeplayActivity(modName, classId, classSize){
   // clear any existing data
   $("#topPosts").empty();
@@ -784,6 +814,11 @@ async function visualizeFreeplayActivity(modName, classId, classSize){
   `);
   const allFreeplayContentInfo = await $.getJSON("/json/freeplaySectionQuickReference.json");
   const freeplayContentInfo = allFreeplayContentInfo[modName];
+  // show the intended relevant posts for this module for easy comparison with top posts
+  $('#relevantPosts').empty();
+  if (Object.keys(freeplayContentInfo.relevantPosts).length) {
+    appendRelevantPostHtml(freeplayContentInfo.relevantPosts, modName);
+  }
   const dbData = await $.get(`/classFreeplayActions/${classId}/${modName}`);
   const classFreeplayActions = dbData.classFreeplayActions;
   const topPosts = getTopThreePosts(classFreeplayActions);
