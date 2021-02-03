@@ -680,12 +680,8 @@ function pushNewRecordInfo(newRecord, action, questionData, headerItem, question
       /* Ex. checkbox
       Q1_2 = splice('_') = ['Q1','2']
       1*0*100 = 5 checkboxes =
-      [√]
-      *[]*
-      [√]
-      []
-      []
-      number to shift before bitwise comparison = num of checkboxes - splice[1]
+      [√]*[ ]*[√][ ][ ]     (note: read boxes from L to R to match orientation on the site)
+      number to shift before bitwise comparison = num of checkboxes - check #
       */
 
       /* Ex. checkboxGrouped
@@ -693,27 +689,20 @@ function pushNewRecordInfo(newRecord, action, questionData, headerItem, question
       1010 0*1*00 0000 = 12 checkboxes =
       [√][ ][√][ ]  [ ]*[√]*[ ][ ]  [ ][ ][ ][ ]
       number to shift before bitwise comparison =
-      [(# groups - group #) * boxes per group] + [boxes per group - check #]
+      [(# groups - group #) * boxesPerGroup] + [boxesPerGroup - check #]
+      [(3 - 2) * 4] + [4 - 2] = 6
       */
       let shiftCount = 0;
       if (questionData.type === "checkbox") {
-        shiftCount = action.numberOfCheckboxes - questionIdSplit[1];
+        const checkNumber = parseInt(questionIdSplit[1]) + 1;
+        shiftCount = action.numberOfCheckboxes - checkNumber;
       } else if (questionData.type === "checkboxGrouped") {
-        const boxesPerGroup = Object.keys(questionData.checkboxLabels).length;
         const groupCount = parseInt(questionData.groupCount);
-        if(questionIdSplit[1] === '1'){
-          console.log(`#########`)
-          console.log(questionData);
-          console.log(`Boxes per group: ${boxesPerGroup}`);
-          console.log(`Group Count: ${questionData.groupcount} and type: ${typeof questionData.groupCount}`);
-          console.log(questionIdSplit);
-          console.log(`#########`)
-        }
-
-        shiftCount = ((groupCount - questionIdSplit[1]) * boxesPerGroup) + (boxesPerGroup - questionIdSplit[2]);
+        const groupNumber = parseInt(questionIdSplit[1]) + 1;
+        const boxesPerGroup = Object.keys(questionData.checkboxLabels).length;
+        const checkNumber = parseInt(questionIdSplit[2]) + 1;
+        shiftCount = ((groupCount - groupNumber) * boxesPerGroup) + (boxesPerGroup - checkNumber);
       }
-      console.log(questionIdSplit)
-      console.log(`Shift count for ${questionIdSplit[2]}: ${shiftCount}`);
       let shiftableResponse = action.checkboxResponse;
       for(let i=0; i<shiftCount; i++){
         shiftableResponse = shiftableResponse >> 1;
@@ -797,8 +786,6 @@ exports.downloadClassReflectionResponses = async (req, res, next) => {
       if(err){
         console.log(err);
         next(err);
-      } else {
-        console.log("success");
       }
     });
   });
