@@ -27,7 +27,7 @@
     "relevantPosts": {
       "0": {
         "image": "blackbkg.jpg",
-        "body": "No one likes you. Why do you come to school? @<a href=\"https://app.socialmediatestdrive.org/user/DylanCrazzzzzy\">Dylan Moore</a>"
+        "body": "No one likes you. Why do you come to school? @Dylan Moore"
       },
       "1": {
         "image": "ewww.jpg",
@@ -122,51 +122,56 @@
       }
     },
     "customContent": "true",
+    "topics": {
+      "0": "Sports",
+      "1": "Gaming",
+      "2": "Music"
+    },
     "relevantPosts": {
       "0": {
         "image": "bigmatch_se.jpg",
         "body": "Watching the big match with my BFF!!",
-        "topic": "sports"
+        "topic": "Sports"
       },
       "1": {
         "image": "signedbasket_se.jpg",
         "body": "Can't believe my parents got me a GENUINE signed ball",
-        "topic": "sports"
+        "topic": "Sports"
       },
       "2": {
         "image": "tryouts_se.jpg",
         "body": "Wow, can't believe I'm the only one who made it to the next round of soccer tryouts from our group",
-        "topic": "sports"
+        "topic": "Sports"
       },
       "3": {
         "image": "computer-game_se.jpg",
         "body": "Totally beating everyone",
-        "topic": "gaming"
+        "topic": "Gaming"
       },
       "4": {
         "image": "switch_se.jpg",
         "body": "Just got a new Switch! Any games I should ask my parents to buy me?",
-        "topic": "gaming"
+        "topic": "Gaming"
       },
       "5": {
         "image": "nintendo_se.jpg",
         "body": "Playing online with my best friend",
-        "topic": "gaming"
+        "topic": "Gaming"
       },
       "6": {
         "image": "concert-crowd_se.jpg",
         "body": "We missed you at the concert Jeremy!",
-        "topic": "music"
+        "topic": "Music"
       },
       "7": {
         "image": "electric_se.jpg",
         "body": "I just got the best present ever!",
-        "topic": "music"
+        "topic": "Music"
       },
       "8": {
         "image": "bestguitar_se.JPG",
         "body": "Inviting the best musicians from camp to make a song together.",
-        "topic": "music"
+        "topic": "Music"
       }
     }
   },
@@ -251,51 +256,56 @@
       }
     },
     "customContent": "true",
+    "topics": {
+      "0": "Sports",
+      "1": "Gaming",
+      "2": "Food"
+    },
     "relevantPosts": {
       "0": {
         "image": "three_stripes_ad.jpg",
         "body": "For your next race, choose ThreeStripes. #threestripesoryoureout #sneakerheads #runnerheads",
-        "topic": "sports"
+        "topic": "Sports"
       },
       "1": {
         "image": "three_stripes_ad_2.jpeg",
         "body": "When's your next big race? Comment down below!",
-        "topic": "sports"
+        "topic": "Sports"
       },
       "2": {
         "image": "club_soccer_ad.jpg",
         "body": "Spots are filling up fast! Make sure you sign up for club soccer TODAY.",
-        "topic": "sports"
+        "topic": "Sports"
       },
       "3": {
         "image": "burger_ad.jpg",
         "body": "Yum. 11/10. (📸: @ethan-the-man)",
-        "topic": "food"
+        "topic": "Food"
       },
       "4": {
         "image": "cereal_ad.jpg",
         "body": "A spoonful of ______ 🤤#strawberrycrunch",
-        "topic": "food"
+        "topic": "Food"
       },
       "5": {
         "image": "drink_ad.jpg",
         "body": "😱Six brand new flavors 😱Coming soon, in-stores near you.",
-        "topic": "food"
+        "topic": "Food"
       },
       "6": {
         "image": "controller_ad.jpg",
         "body": "Which team are you on: 🔴or 🔵?",
-        "topic": "gaming"
+        "topic": "Gaming"
       },
       "7": {
         "image": "VR_ad.jpg",
         "body": "Play any game on our VR headsets. Experience the future, now. #VR #tech",
-        "topic": "gaming"
+        "topic": "Gaming"
       },
       "8": {
         "image": "roger_ad.jpg",
         "body": "Download the #1 mobile game in the world. #rogerthat #app",
-        "topic": "gaming"
+        "topic": "Gaming"
       }
     }
   }

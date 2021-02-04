@@ -37,7 +37,7 @@ block content
         .row
           .ui.labeled.icon.button.refreshModSelectionButton
             i.check.icon
-            | Show Overview    
+            | Show Overview   
     .ui.basic.segment.hiddenVisibility#studentProgressSegment   
       .row.centerText
         h1
@@ -122,7 +122,6 @@ block scripts
   script(src='/js/lib/chart.js') 
   
 block styles
-  - var o = '/css/teacherDashboard/sideMenu.css?t=' + (new Date()).getTime().toString();
-  link(rel='stylesheet', href=o)
+  link(rel='stylesheet', href='/css/teacherDashboard/sideMenu.css')
   link(rel='stylesheet', href='/css/teacherDashboard/classOverview.css')
-  link(rel='stylesheet', href='/css/teacherDashboard/moduleOverview.css')  
+  link(rel='stylesheet', href='/css/teacherDashboard/moduleOverview.css') 

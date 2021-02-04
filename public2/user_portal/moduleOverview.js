@@ -775,7 +775,7 @@ function getTopThreePosts(classFreeplayActions){
   return topPosts;
 }
 
-function appendRelevantPostHtml(relevantPosts, modName){
+function appendRelevantPostHtml(relevantPosts, topics, modName){
   const cdn = "https://dhpd030vnpk29.cloudfront.net";
   // Most modules have 3 relevant posts, but there are special cases.
   if (Object.keys(relevantPosts).length === 3) {
@@ -793,7 +793,7 @@ function appendRelevantPostHtml(relevantPosts, modName){
           <div class="image">
             <img src="${cdn}/post_pictures/${post.image}" style="max-width:100%">
           </div>
-          <div class="content">
+          <div class="content"">
             <div class="description">
               ${post.body}
             </div>
@@ -802,6 +802,103 @@ function appendRelevantPostHtml(relevantPosts, modName){
       `);
     }
   }
+  if (Object.keys(relevantPosts).length === 4) {
+    // This is the case with advanced literacy.
+    $('#relevantPosts').append(`
+      <div class="ui basic segment" style="padding:0;">
+        <h3> These were the relevant posts in this module:</h3>
+        <div class="ui two stackable cards" id="relevantPostsCards">
+        </div>
+      </div>
+    `);
+    for(const post of Object.values(relevantPosts)) {
+      $('#relevantPostsCards').append(`
+        <div class="ui fluid card">
+          <div class="image">
+            <img src="${cdn}/post_pictures/${post.image}" style="max-width:100%">
+          </div>
+          <div class="content"">
+            <div class="description">
+              ${post.body}
+            </div>
+          </div>
+        </div>
+      `);
+    }
+  }
+  if (modName === "targeted" || modName === "esteem"){
+    // These modules have 9 relevant posts, divided across 3 topics (sports, gaming, food)
+    $('#relevantPosts').append(`
+      <h3>These were the relevant posts for each topic:</h3>
+      <div class="ui top attached tabular menu relevantPostsTabs">
+        <a class="active item" data-tab="${topics["0"]}">${topics["0"]}</a>
+        <a class="item" data-tab="${topics["1"]}">${topics["1"]}</a>
+        <a class="item" data-tab="${topics["2"]}">${topics["2"]}</a>
+      </div>
+      <div class="ui active tab bottom attached segment" data-tab="${topics["0"]}">
+        <div class="ui three stackable cards" id="${topics["0"]}TabCards">
+        </div>
+      </div>
+      <div class="ui tab bottom attached segment" data-tab="${topics["1"]}">
+        <div class="ui three stackable cards" id="${topics["1"]}TabCards">
+        </div>
+      </div>
+      <div class="ui tab bottom attached segment" data-tab="${topics["2"]}">
+        <div class="ui three stackable cards" id="${topics["2"]}TabCards">
+        </div>
+      </div>
+    `);
+    for(const post of Object.values(relevantPosts)) {
+      const appendToId = `#${post.topic}TabCards`
+      $(appendToId).append(`
+        <div class="ui fluid card">
+          <div class="image">
+            <img src="${cdn}/post_pictures/${post.image}" style="max-width:100%">
+          </div>
+          <div class="content"">
+            <div class="description">
+              ${post.body}
+            </div>
+          </div>
+        </div>
+      `);
+    }
+  }
+  if (modName === "digital-literacy") {
+    // These modules have 6 relevant posts, 3 real news and 3 fake news
+    $('#relevantPosts').append(`
+      <h3>These were the relevant posts in this module:</h3>
+      <div class="ui top attached tabular menu relevantPostsTabs">
+        <a class="active item" data-tab="fake">Fake News Posts</a>
+        <a class="item" data-tab="real">Real News Posts</a>
+
+      </div>
+      <div class="ui active tab bottom attached segment" data-tab="fake">
+        <div class="ui three stackable cards" id="fakeTabCards">
+        </div>
+      </div>
+      <div class="ui tab bottom attached segment" data-tab="real">
+        <div class="ui three stackable cards" id="realTabCards">
+        </div>
+      </div>
+    `);
+    for(const post of Object.values(relevantPosts)) {
+      const appendToId = `#${post.newsType}TabCards`
+      $(appendToId).append(`
+        <div class="ui fluid card">
+          <div class="image">
+            <img src="${cdn}/post_pictures/${post.image}" style="max-width:100%">
+          </div>
+          <div class="content"">
+            <div class="description">
+              ${post.body}
+            </div>
+          </div>
+        </div>
+      `);
+    }
+  }
+  $('.menu.relevantPostsTabs .item').tab();
   return;
 }
 
@@ -809,6 +906,12 @@ async function visualizeFreeplayActivity(modName, classId, classSize){
   // clear any existing data
   $("#topPosts").empty();
   $("#exploreHeading").empty();
+  // special case: Accounts and Passwords module does not have an explore section.
+  if(modName === "accounts"){
+    // When viewing this module, omit this section.
+    $('#exploreSegment .loadingDimmer').removeClass('active');
+    return;
+  }
   $('#exploreHeading').append(`
     <h2>Exploring the Timeline</h2>
   `);
@@ -816,8 +919,9 @@ async function visualizeFreeplayActivity(modName, classId, classSize){
   const freeplayContentInfo = allFreeplayContentInfo[modName];
   // show the intended relevant posts for this module for easy comparison with top posts
   $('#relevantPosts').empty();
-  if (Object.keys(freeplayContentInfo.relevantPosts).length) {
-    appendRelevantPostHtml(freeplayContentInfo.relevantPosts, modName);
+  let topics = freeplayContentInfo.topics ? freeplayContentInfo.topics : {};
+  if (freeplayContentInfo.relevantPosts) {
+    appendRelevantPostHtml(freeplayContentInfo.relevantPosts, topics, modName);
   }
   const dbData = await $.get(`/classFreeplayActions/${classId}/${modName}`);
   const classFreeplayActions = dbData.classFreeplayActions;
@@ -831,6 +935,9 @@ async function visualizeFreeplayActivity(modName, classId, classSize){
     $('#exploreSegment .loadingDimmer').removeClass('active');
     return;
   }
+  $("#topPosts").append(`
+    <h3>These were the top posts that the class interacted with:</h3>
+  `);
   for(const postId of topPosts){
     const singlePostJson = await $.get(`/singlePost/${postId}`);
     const post = singlePostJson.post;

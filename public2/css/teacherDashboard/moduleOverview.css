@@ -5,3 +5,7 @@
 .dropdownColumn .row {
   margin: 15px 0 15px 0 !important;
 }
+
+#relevantPosts .card {
+  height: fit-content !important;
+}
