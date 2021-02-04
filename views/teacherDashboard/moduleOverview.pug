@@ -80,6 +80,10 @@ block content
             .column
               .ui.basic.segment.centerText(style="padding:0;")
                 canvas#avgSectionTime(width="400" height="400")
+        .row.addMargin.centerText
+          .ui.toggle.checkbox#toggleOutliers
+            input(type="checkbox" name="includeOutliers")
+            label Include outliers
 
     .ui.basic.segment.hiddenVisibility#studentActivtiesSegment
       .row.centerText
