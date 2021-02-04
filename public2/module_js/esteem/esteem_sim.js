@@ -50,9 +50,9 @@ var stepsList=
     element: '#step1',
     intro: `This is Nick's social media timeline. He just got back from school
     and is checking out his feed.
-    Click on "Done" and then look for the blue dots&nbsp;<a role='button' tabindex='0'
+    Click on "Done" and then look for the blue dots&nbsp;&nbsp;<a role='button' tabindex='0'
     class='introjs-hint'><div class='introjs-hint-dot'></div><div class=
-    'introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;to learn more...`,
+    'introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; &nbsp; to learn more...`,
     position: "left",
     scrollTo: 'tooltip',
     audioFile: ['CUSML.1.4.1.mp3']

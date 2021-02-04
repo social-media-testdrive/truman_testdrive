@@ -25,9 +25,9 @@ var stepsList = [
   {
     element: '#blueDotStep',
     intro: `In this activity, you will see how targeted advertisements work.
-    Click on "Done" and then look for the blue dots&nbsp;<a role='button' tabindex='0' class='introjs-hint'>
+    Click on "Done" and then look for the blue dots&nbsp;&nbsp;<a role='button' tabindex='0' class='introjs-hint'>
     <div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a>
-    &nbsp; &nbsp; &nbsp;to learn more...`,
+    &nbsp; &nbsp; &nbsp; &nbsp; to learn more...`,
     scrollTo: 'tooltip',
     position: 'right',
     audioFile: ['CUSML.2.5.3.mp3']
