@@ -28,14 +28,14 @@ function initializeTimeBreakdownChart() {
       data: {
         datasets: [{
           label: '# of Students',
-          data: [0,0,0,0],
+          data: [0,0,0,0,0],
           backgroundColor: 'rgba(54, 162, 235, 1)',
           borderColor: 'rgba(54, 162, 235, 1)',
           borderWidth: 1,
           barPercentage: 1,
           categoryPercentage: 0.5
         }],
-        labels: ["0-10", "10-20", "20-30", "30-40"]
+        labels: ["0-10", "10-20", "20-30", "30-40", "40+"]
 
       },
       options: {
@@ -955,7 +955,7 @@ async function visualizeFreeplayActivity(modName, classId, classSize){
 }
 
 
-function getStandardDeviation(inputArray) {
+function getStandardDevAndAvg(inputArray) {
   if(inputArray.length === 1){
     return 0;
   }
@@ -967,7 +967,7 @@ function getStandardDeviation(inputArray) {
     total += Math.pow((i - avg), 2);
   }
   standardDeviation = Math.sqrt(total/(inputArray.length - 1));
-  return standardDeviation;
+  return [standardDeviation, avg];
 };
 
 function updateAvgSectionTimeChart(chart, avgSectionTimeArray) {
@@ -985,7 +985,7 @@ async function getAvgSectionTimeArray(classPageTimes, modName) {
   let avgSectionTimeArray = [0,0,0,0];
   // variables used to calculate avg after removing outliers larger than 2 standard deviations
   let itemsForStandardDeviation = [[],[],[],[]];
-  let standardDeviations = [0,0,0,0];
+  let standardDeviations = [{"stdDev": 0, "avg": 0},{"stdDev": 0, "avg": 0},{"stdDev": 0, "avg": 0},{"stdDev": 0, "avg": 0}];
   let avgSectionRemovedOutliers = [0,0,0,0];
   switch (modName) {
     case 'cyberbullying':
@@ -999,9 +999,11 @@ async function getAvgSectionTimeArray(classPageTimes, modName) {
   let sectionData = await $.getJSON(jsonPath);
   let studentCount = 0;
   for (const student of classPageTimes) {
-    if(student.timeArray.length){
-      studentCount++;
+    if(!student.timeArray.length){
+      continue;
     }
+    studentCount++;
+    let studentSectionTotals_forStdDev = [0,0,0,0];
     for (const timeItem of student.timeArray) {
       if(!sectionData[timeItem.subdirectory1]){
         continue;
@@ -1011,9 +1013,13 @@ async function getAvgSectionTimeArray(classPageTimes, modName) {
       }
       // get the index to add timeDuration to using the sectionData
       const i = parseInt(sectionData[timeItem.subdirectory1]) - 1;
-      totalSectionTimeArray[i] = totalSectionTimeArray[i] + timeItem.timeDuration;
-      // push the time duration to itemsForStandardDeviation
-      itemsForStandardDeviation[i].push(timeItem.timeDuration);
+      totalSectionTimeArray[i] += timeItem.timeDuration;
+      // push the time duration to studentSectionTotals_forStdDev
+      studentSectionTotals_forStdDev[i] += timeItem.timeDuration;
+    }
+    // push the items in studentSectionTotals_forStdDev to itemsForStandardDeviation
+    for(let i=0; i<studentSectionTotals_forStdDev.length; i++) {
+      itemsForStandardDeviation[i].push(studentSectionTotals_forStdDev[i]);
     }
   }
   // Totals for each section have been calculated, now calculate averages
@@ -1021,12 +1027,16 @@ async function getAvgSectionTimeArray(classPageTimes, modName) {
   // The regular averages, no outliers removed, has been cacluated.
   // Next: calculate the standard deviation:
   for(const i in itemsForStandardDeviation){
-    standardDeviations[i] = getStandardDeviation(itemsForStandardDeviation[i]);
+    let stdDevAndAvg = getStandardDevAndAvg(itemsForStandardDeviation[i]);
+    const stdDev = stdDevAndAvg[0];
+    const avg = stdDevAndAvg[1];
+    standardDeviations[i].stdDev = stdDev;
+    standardDeviations[i].avg = avg;
   }
-  // Revisit the time items, and remove any that are greater than 2 standard deviations
+  // Revisit the time items, and remove any that are greater than the avg + 2 standard deviations
   for(const i in itemsForStandardDeviation) {
     for(const j in itemsForStandardDeviation[i]){
-      if(itemsForStandardDeviation[i][j] >= (standardDeviations[i] * 2)) {
+      if(itemsForStandardDeviation[i][j] >= (standardDeviations[i].avg + (standardDeviations[i].stdDev * 2)) ) {
         (itemsForStandardDeviation[i]).splice(j,1);
       }
     }
@@ -1045,8 +1055,10 @@ async function getAvgSectionTimeArray(classPageTimes, modName) {
 
 function getTimeBreakdownArray(classPageTimes) {
   // Array for the font-end chart:
-  // [0] = 0-10min; [1] = 11-20min; [2] = 21-30min; [3] = 31-40min;
-  let timeBreakdownArray = [0,0,0,0];
+  // [0] = 0-10min; [1] = 10-20min; [2] = 22-30min; [3] = 33-40min; [4] = 40+ min
+  let timeBreakdownArrayOutliers = [0,0,0,0,0];
+  let timeBreakdownArrayNoOutliers = [0,0,0,0,0];
+  let tempHolder = [];
   for (const student of classPageTimes) {
     if(student.timeArray.length === 0){
       continue;
@@ -1055,13 +1067,27 @@ function getTimeBreakdownArray(classPageTimes) {
     for (const timeItem of student.timeArray) {
       studentTimeMinutes = studentTimeMinutes + timeItem.timeDuration;
     }
-    (0 < studentTimeMinutes && studentTimeMinutes <= 10) ? timeBreakdownArray[0]++
-    : (10 < studentTimeMinutes && studentTimeMinutes <= 20) ? timeBreakdownArray[1]++
-    : (20 < studentTimeMinutes && studentTimeMinutes <= 30) ? timeBreakdownArray[2]++
-    : (30 < studentTimeMinutes && studentTimeMinutes <= 40) ? timeBreakdownArray[3]++
-    : console.log(`Warning: Time longer than 40 minutes recorded`);
+    tempHolder.push(studentTimeMinutes);
+    (0 < studentTimeMinutes && studentTimeMinutes <= 10) ? timeBreakdownArrayOutliers[0]++
+    : (10 < studentTimeMinutes && studentTimeMinutes <= 20) ? timeBreakdownArrayOutliers[1]++
+    : (20 < studentTimeMinutes && studentTimeMinutes <= 30) ? timeBreakdownArrayOutliers[2]++
+    : (30 < studentTimeMinutes && studentTimeMinutes <= 40) ? timeBreakdownArrayOutliers[3]++
+    : timeBreakdownArrayOutliers[4]++;
   }
-  return timeBreakdownArray;
+  const stdDevAndAvg = getStandardDevAndAvg(tempHolder);
+  const standardDeviation = stdDevAndAvg[0];
+  const avg = stdDevAndAvg[1];
+  for(const studentTime of tempHolder) {
+    if(studentTime > (avg + (standardDeviation * 2)) ){
+      continue;
+    }
+    (0 < studentTime && studentTime <= 10) ? timeBreakdownArrayNoOutliers[0]++
+    : (10 < studentTime && studentTime <= 20) ? timeBreakdownArrayNoOutliers[1]++
+    : (20 < studentTime && studentTime <= 30) ? timeBreakdownArrayNoOutliers[2]++
+    : (30 < studentTime && studentTime <= 40) ? timeBreakdownArrayNoOutliers[3]++
+    : timeBreakdownArrayNoOutliers[4]++;
+  }
+  return [timeBreakdownArrayOutliers, timeBreakdownArrayNoOutliers];
 }
 
 function updateTimeBreakdownChart(chart, numberOfStudents, timeBreakdownArray){
@@ -1078,13 +1104,16 @@ async function visualizeTimeData(timeBreakdownChart, avgSectionTimeChart, modNam
   const numberOfStudents = Object.keys(classPageTimes).length;
   // classPageTimes only contains entries within the specified module, and only
   // includes pagetimes if student completed the module
-  const timeBreakdownArray = getTimeBreakdownArray(classPageTimes)
-  updateTimeBreakdownChart(timeBreakdownChart, numberOfStudents, timeBreakdownArray);
-  const allAvgSectionTimeArrays = await getAvgSectionTimeArray(classPageTimes, modName, outliers);
-  const avgSectionTimeArray = allAvgSectionTimeArrays[1];
-  updateAvgSectionTimeChart(avgSectionTimeChart, avgSectionTimeArray);
+  const allTimeBreakdownArrays = await getTimeBreakdownArray(classPageTimes)
+  const timeBreakdownArrayOutliers = allTimeBreakdownArrays[0];
+  const timeBreakdownArrayNoOutliers = allTimeBreakdownArrays[1];
+  updateTimeBreakdownChart(timeBreakdownChart, numberOfStudents, timeBreakdownArrayNoOutliers);
+  const allAvgSectionTimeArrays = await getAvgSectionTimeArray(classPageTimes, modName);
+  const avgSectionTimeArrayOutliers = allAvgSectionTimeArrays[0];
+  const avgSectionTimeArrayNoOutliers = allAvgSectionTimeArrays[1];
+  updateAvgSectionTimeChart(avgSectionTimeChart, avgSectionTimeArrayNoOutliers);
   $('#timeSpentSegment .dimmer').removeClass('active');
-  return allAvgSectionTimeArrays;
+  return [timeBreakdownArrayOutliers, timeBreakdownArrayNoOutliers, avgSectionTimeArrayOutliers, avgSectionTimeArrayNoOutliers];
 };
 
 
@@ -1118,7 +1147,8 @@ $(window).on("load", async function(){
   const studentProgressChart = initializeStudentProgressChart();
   const timeBreakdownChart = initializeTimeBreakdownChart();
   const avgSectionTimeChart = initializeAvgSectionTimeChart();
-  let allTimeArrays = [];
+  let allTimeArrays;
+  let classSize = 0;
   $('.refreshModSelectionButton').on('click', async function(){
     let modName = ($(".ui.selection.dropdown[name='moduleSelection']").dropdown('get value'));
     let classId = ($(".ui.selection.dropdown[name='classSelection']").dropdown('get value'));
@@ -1134,7 +1164,7 @@ $(window).on("load", async function(){
     $('.loadingDimmer').addClass('active');
     $('#timeSpentSegment .dimmer').addClass('active');
     const getClassSize = await $.get(`/classSize/${classId}`);
-    const classSize = getClassSize.studentCount;
+    classSize = getClassSize.studentCount;
     visualizeStudentProgressData(studentProgressChart, modName, classId);
     visualizeStudentReflectionData(modName, classId, classSize);
     visualizeFreeplayActivity(modName, classId, classSize);
@@ -1142,11 +1172,15 @@ $(window).on("load", async function(){
   });
 
   $('#toggleOutliers').checkbox({
+    // allTimeArrays =
+    // [timeBreakdownArrayOutliers, timeBreakdownArrayNoOutliers, avgSectionTimeArrayOutliers, avgSectionTimeArrayNoOutliers]
     onChecked: async function(){
-      updateAvgSectionTimeChart(avgSectionTimeChart, allTimeArrays[0]);
+      updateTimeBreakdownChart(timeBreakdownChart, classSize, allTimeArrays[0]);
+      updateAvgSectionTimeChart(avgSectionTimeChart, allTimeArrays[2]);
     },
     onUnchecked: async function(){
-      updateAvgSectionTimeChart(avgSectionTimeChart, allTimeArrays[1]);
+      updateTimeBreakdownChart(timeBreakdownChart, classSize, allTimeArrays[1]);
+      updateAvgSectionTimeChart(avgSectionTimeChart, allTimeArrays[3]);
     }
   });
 });
