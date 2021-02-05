@@ -1,15 +1,19 @@
 const nextPageURL = 'modual';
 const stepsList = [
   {
+    intro: `Click "Next" to begin!`,
+    audioFile: ['']
+  },
+  {
     intro: `Now you get to explore the TestDrive timeline! You can read
     what others have posted, respond, or make your own posts.`,
-    audioFile: ['']
+    audioFile: ['CUSML.10.5.4.mp3']
   },
   {
     intro: `As you look through the timeline, see if you can find
     features that grab your attention and think about what you can do to
     build healthy social media habits.`,
-    audioFile: ['']
+    audioFile: ['CUSML.10.5.5.mp3']
   }
 ];
 

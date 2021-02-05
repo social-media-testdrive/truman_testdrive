@@ -4,7 +4,7 @@ const hintsList = [
     hint: `Most social media sites have settings that you can use to control the
     number of notifications you get. It will look similar to this page.`,
     hintPosition: "middle-middle",
-    audioFile: ['']
+    audioFile: ['CUSML.10.4.08.mp3']
   },
   {
     element: '#hint2',
@@ -12,7 +12,7 @@ const hintsList = [
     different types of content. Try pausing notifications for a while by turning
     this setting on.`,
     hintPosition: "middle-middle",
-    audioFile: ['']
+    audioFile: ['CUSML.10.4.09.mp3']
   }
 ];
 

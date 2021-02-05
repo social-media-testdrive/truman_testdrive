@@ -6,14 +6,14 @@ const hintsList = [
     dots, click Settings on the notification window to see how you can do
     this.`,
     hintPosition: "middle-middle",
-    audioFile: ['']
+    audioFile: ['CUSML.10.4.06.mp3']
   },
   {
     element: '#hint2',
     hint: `Notifications can give you helpful information, but having too many
     can make you feel like you constantly need to check them.`,
     hintPosition: "top-middle",
-    audioFile: ['']
+    audioFile: ['CUSML.10.4.07.mp3']
   }
 ];
 
