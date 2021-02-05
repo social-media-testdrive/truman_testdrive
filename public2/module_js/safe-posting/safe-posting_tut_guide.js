@@ -39,7 +39,7 @@ $('#show_steps a').on('click', function () {
     //$('.ui.big.labeled.icon.button.cybersim').addClass('green');
  });
 
- $('#step1>a').on('click', function () {
+ $('#step1').on('click', function () {
     $('#step1_info').show();
     $('#step1').transition('tada');
     if($('#step1_info').is(":visible") && $('#step2_info').is(":visible") && $('#step3_info').is(":visible") && $('#step4_info').is(":visible")){
@@ -48,7 +48,7 @@ $('#show_steps a').on('click', function () {
     }
 });
 
-$('#step2>a').on('click', function () {
+$('#step2').on('click', function () {
     $('#step2_info').show();
     $('#step2').transition('tada');
     if($('#step1_info').is(":visible") && $('#step2_info').is(":visible") && $('#step3_info').is(":visible") && $('#step4_info').is(":visible")){
@@ -57,7 +57,7 @@ $('#step2>a').on('click', function () {
     }
 });
 
- $('#step3>a').on('click', function () {
+ $('#step3').on('click', function () {
     $('#step3_info').show();
     $('#step3').transition('tada');
     if($('#step1_info').is(":visible") && $('#step2_info').is(":visible") && $('#step3_info').is(":visible") && $('#step4_info').is(":visible")){
@@ -66,7 +66,7 @@ $('#step2>a').on('click', function () {
     }
 });
 
-$('#step4>a').on('click', function () {
+$('#step4').on('click', function () {
     $('#step4_info').show();
     $('#step4').transition('tada');
     if($('#step1_info').is(":visible") && $('#step2_info').is(":visible") && $('#step3_info').is(":visible") && $('#step4_info').is(":visible")){
@@ -89,10 +89,14 @@ $('#safepostSimButton').on('click', function(){
     } else {
       $('#clickLabelsWarning').show();
       animateUnclickedLabels();
-    }  
+    }
   }
 });
 
+
+$(window).on('load', function(){
+  Voiceovers.addVoiceovers();
+})
 //I do not know what this is supposed to do
 /*$("input").change(function(){
   if (($('input:checked').length) ==
