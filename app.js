@@ -515,6 +515,7 @@ if(enableTeacherDashboard){
   app.post('/addStudentToClass', passportConfig.isAuthenticated, check, csrfProtection, classController.addStudentToClass);
   app.post('/removeStudentFromClass', passportConfig.isAuthenticated, check, csrfProtection, classController.removeStudentFromClass);
   app.post('/generateStudentAccounts', passportConfig.isAuthenticated, check, csrfProtection, classController.generateStudentAccounts);
+  app.post('/updateName', passportConfig.isAuthenticated, check, csrfProtection, userController.postName);
 
 
   // Rendering Pages for the Teacher dashboard

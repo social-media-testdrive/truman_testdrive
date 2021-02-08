@@ -1,27 +1,16 @@
 $(window).on('load', function(){
-  $('.addStudentButton').on('click', function(){
-    let classname = $('#className').val();
-    $('#addStudentToClassModal').modal('show');
-  });
+
+  $('.deleteAccountButton, .setNameButton').popup();
 
   $('.generateAccountsButton').on('click', function(){
     $('#generateAccountsModal').modal('show');
   });
 
-  $('.deleteAccountButton').popup();
-
-  $('#deleteAccountModal').modal({
-    onApprove: function(){
-      $(this).find('form').submit();
-      $('#loadingDimmer').addClass('active')
-    }
-  });
-
-  $('#generateAccountsModal').modal({
-    onApprove: function(){
-      $(this).find('form').submit();
-      $('#loadingDimmer').addClass('active')
-    }
+  $('.setNameButton').on('click', function(){
+    let username = $(this).closest('td').siblings('.usernameCell').text();
+    $('#setNameText').text(`Assign a name to account ${username}`);
+    $("#setName input[name='username']").attr('value', username);
+    $('#setNameModal').modal('show');
   });
 
   $('.deleteAccountButton').on('click', function(){
@@ -29,5 +18,12 @@ $(window).on('load', function(){
     $('#confirmDeleteAccountText').text(`Are you sure you want to delete ${username}?`);
     $("#deleteAccount input[name='username']").attr('value', username);
     $('#deleteAccountModal').modal('show');
-  })
-})
+  });
+
+  $('#setNameModal, #deleteAccountModal, #generateAccountsModal').modal({
+    onApprove: function(){
+      $(this).find('form').submit();
+      $('#loadingDimmer').addClass('active');
+    }
+  });
+});

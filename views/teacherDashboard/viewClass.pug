@@ -26,7 +26,10 @@ block content
           tr
             td.usernameCell=student.username
             if student.name
-              td=student.name 
+              td
+                .ui.basic.icon.button.setNameButton(data-content="Edit Name")
+                  i.icon.edit
+                p.nameDiv(style="display:inline-block;")=student.name 
             else
               td  
                 button.ui.button.basic.setNameButton 
@@ -42,9 +45,6 @@ block content
               button.ui.green.button.labeled.icon.green.generateAccountsButton
                 i.plus.icon
                 | Generate accounts in this class
-    //- button.ui.basic.button.green.addStudentButton
-    //-   i.plus.icon
-    //-   | Add existing student to class
 
     //- button.ui.green.button.labeled.icon.downloadList
     //-   i.download.icon
@@ -93,31 +93,26 @@ block content
           i.check.icon
           | Yes, delete this account
           
-        //- .ui.icon.labeled.red.deny.button(type='cancel')
-        //-   i.cancel.icon
-        //-   | Cancel
-        //- //- input.ui.green.confirm.button(type='submit', value='Submit', form='deleteStudent')    
-        //- .ui.icon.labeled.green.approve.button(type='submit', form='removeStudent')
-        //-   i.check.icon
-        //-   | Yes, delete this account
-    //- .ui.small.modal#addStudentToClassModal
-    //-   i.close.icon
-    //-   .header Add Student to Class
-    //-   .content
-    //-     h3#classNameHeader
-    //-       | Adding to class: #{found_class.className}
-    //-     form#addStudentForm.ui.form(name="addStudentToClass" action='/addStudentToClass', method='POST')
-    //-       input(type='hidden', name='_csrf', value=csrfToken)
-    //-       input(type='hidden', name='className' value=found_class.className)
-    //-       input(type='hidden', name='classId' value=found_class.accessCode)
-    //-       .field
-    //-         label(for='studentUsername') Student Username
-    //-         input(type='text', name='studentUsername', id='studentUsername', placeholder='Enter Student Name')
-    //-       .ui.error.message
-    //-   .actions
-    //-     input.ui.green.button(type='submit', value='Submit', form='addStudentForm')
+    .ui.small.modal#setNameModal
+      i.close.icon
+      .header Set Name
+      .content.centered
+        h2.center.aligned#setNameText
+        form#setName.ui.form(name="setName" action='/updateName', method='POST')
+          input(type='hidden', name='_csrf', value=csrfToken)
+          input(type='hidden', name='accessCode' value=found_class.accessCode)
+          input(type='hidden', name='username' value='')
+          .field
+            label(for='name') Please enter the name to assign to this account.
+            input(type='text', name='name', id='name', placeholder='Enter Name...')
+      .actions
+        .ui.icon.labeled.red.deny.button 
+          i.cancel.icon
+          | Cancel
+        .ui.icon.labeled.green.approve.button
+          i.check.icon
+          | Update
 
-      
 block scripts
   - var n = '/user_portal/teacherDashboardTools.js?t=' + (new Date()).getTime().toString();
   script(src=n)
@@ -126,5 +121,10 @@ block scripts
   
   
 block styles
-  - var o = '/css/teacherDashboard/sideMenu.css?t=' + (new Date()).getTime().toString();
-  link(rel='stylesheet', href=o)
+  link(rel='stylesheet', href='/css/teacherDashboard/sideMenu.css')
+  style(type='text/css').
+    .nameDiv {
+      display: inline-block;
+      padding-left: 15px;
+    }
+    

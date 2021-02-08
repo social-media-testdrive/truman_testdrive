@@ -854,6 +854,35 @@ exports.getHabitsTimer = (req, res) => {
       });
 };
 
+/*
+* POST /updateName
+* Update profile information with name input by an instructor
+*/
+exports.postName = (req, res, next) => {
+  User.findOne({
+    accessCode: req.body.accessCode,
+    username: req.body.username
+  }).exec(function(err, student) {
+    if (err) {
+      console.log("ERROR");
+      console.log(err);
+      return next(err);
+    }
+    if (student == null){
+      console.log("NULL");
+      var myerr = new Error('Student not found!');
+      return next(myerr);
+    }
+    student.name = req.body.name;
+    student.save((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect(`/viewClass/${req.body.accessCode}`);
+    });
+  });
+};
+
 /**
  * POST /account/profile
  * Update profile information.Which ad topic did the user pick?
