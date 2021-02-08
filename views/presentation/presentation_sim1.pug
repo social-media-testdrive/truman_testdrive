@@ -253,13 +253,20 @@ block scripts
   script.
     var stepsList = [
       {
-        element: document.querySelectorAll('#hint2')[0],
+        element: '#hint2',
+        intro: `Click "Next" to begin!`,
+        position: 'right',
+        scrollTo: 'tooltip',
+        audioFile: ['']
+      },
+      {
+        element: '#hint2',
         intro: `Click on "Done" and then look for the blue dots&nbsp;&nbsp;<a role='button' tabindex='0'
         class='introjs-hint'><div class='introjs-hint-dot'></div><div
         class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; &nbsp; to learn more...`,
         position:'right',
         scrollTo:'tooltip',
-        audioFile: ['']
+        audioFile: ['CUSML.12.4.03.mp3']
       }
     ];
     
@@ -269,7 +276,7 @@ block scripts
         friends from school follow this account.`,
         element: '#hint2',
         hintPosition: 'top-left',
-        audioFile: ['']
+        audioFile: ['CUSML.12.4.05.mp3']
       },
       {
         hint: `Here, he posts funny pictures and casual things that he would
@@ -277,7 +284,7 @@ block scripts
         to see it.`,
         element: '#hint2',
         hintPosition: 'top-middle',
-        audioFile: ['']
+        audioFile: ['CUSML.12.4.06.mp3']
       },
       {
         hint: `Even though Jake doesn’t name the person, the post is unkind
@@ -285,7 +292,7 @@ block scripts
         account? Remember to be kind and respectful online!`,
         element: '#hint3',
         hintPosition: 'top-middle',
-        audioFile: ['']
+        audioFile: ['CUSML.12.4.07.mp3']
       }
     ];
 

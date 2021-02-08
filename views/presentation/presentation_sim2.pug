@@ -250,13 +250,20 @@ block scripts
   script.
     var stepsList = [
       {
-        element: document.querySelectorAll('#hint2')[0],
+        element: '#hint2',
+        intro: `Click "Next" to begin!`,
+        position: 'right',
+        scrollTo: 'tooltip',
+        audioFile: ['']
+      },
+      {
+        element: '#hint2',
         intro: `Click on "Done" and then look for the blue dots&nbsp;&nbsp;<a role='button' tabindex='0'
         class='introjs-hint'><div class='introjs-hint-dot'></div><div
         class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; &nbsp; to learn more...`,
         scrollTo: 'tooltip',
         position: 'right',
-        audioFile: ['']
+        audioFile: ['CUSML.12.4.03.mp3']
       }
     ];
     
@@ -265,7 +272,7 @@ block scripts
         hint: `Here is another one of Jake’s accounts, minecraftboi23.`,
         element: '#hint2',
         hintPosition: 'top-left',
-        audioFile: ['']
+        audioFile: ['CUSML.12.4.08.mp3']
       },
       {
         hint: `On this account, he only posts about Minecraft, which is one
@@ -273,7 +280,7 @@ block scripts
         account.`,
         element: '#hint2',
         hintPosition: 'top-middle',
-        audioFile: ['']
+        audioFile: ['CUSML.12.4.09.mp3']
       },
       {
         hint: `Would you say the same things in person? If you wouldn’t say
@@ -281,7 +288,7 @@ block scripts
         it!`,
         element: '#hint3',
         hintPosition: 'top-middle',
-        audioFile: ['']
+        audioFile: ['CUSML.12.4.10.mp3']
       }
     ];
 
