@@ -1136,7 +1136,7 @@ function manageConfirmButton(){
 
 function downloadReflectionData(classId, modName){
   $('.downloadReflectionData').on('click', function(){
-    window.location.href = (`/downloadReflectionResponses/${classId}/${modName}`);
+    $.post(`/downloadReflectionResponses/${classId}/${modName}`, {_csrf: $('meta[name="csrf-token"]').attr('content')});
   })
 }
 

@@ -5,7 +5,7 @@ var ObjectId = require('mongoose').Types.ObjectId;
 const CSVToJSON = require("csvtojson");
 const _ = require('lodash');
 var async = require('async');
-const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+const createCsvStringifier = require('csv-writer').createObjectCsvStringifier;
 
 // Get all Classes for a currently logged in instructor
 exports.getClasses = (req, res) => {
@@ -522,6 +522,38 @@ async function getUniqueUsername(accessCode, adjectiveArray, nounArray, username
   return usernameArray;
 }
 
+async function saveUsernameInExistingClass(req, item, existingClass) {
+  let duplicateUser = await User.findOne({
+    username: item,
+    accessCode: req.body.accessCode,
+    deleted: false
+  })
+    .catch(err => {
+      console.log("duplicateUser failed");
+      return next(err);
+    });
+  if (duplicateUser) {
+    return next("Found duplicate user, check getUniqueUsername");
+  }
+  const user = new User({
+    username: item,
+    active: true,
+    start : Date.now(),
+    accessCode: req.body.accessCode
+  });
+  user.profile.name = "Student";
+  user.profile.location = '';
+  user.profile.bio = '';
+  user.profile.picture = 'avatar-icon.svg';
+  console.log("About to save user...")
+  try {
+    await user.save();
+    existingClass.students.push(user._id);
+  } catch (err) {
+    // ignore
+  }
+}
+
 exports.generateStudentAccounts = async (req, res, next) => {
   // get the current class by its name
   Class.findOne({
@@ -587,38 +619,6 @@ exports.generateStudentAccounts = async (req, res, next) => {
       });
     }
   });
-}
-
-async function saveUsernameInExistingClass(req, item, existingClass) {
-  let duplicateUser = await User.findOne({
-    username: item,
-    accessCode: req.body.accessCode,
-    deleted: false
-  })
-    .catch(err => {
-      console.log("duplicateUser failed");
-      return next(err);
-    });
-  if (duplicateUser) {
-    return next("Found duplicate user, check getUniqueUsername");
-  }
-  const user = new User({
-    username: item,
-    active: true,
-    start : Date.now(),
-    accessCode: req.body.accessCode
-  });
-  user.profile.name = "Student";
-  user.profile.location = '';
-  user.profile.bio = '';
-  user.profile.picture = 'avatar-icon.svg';
-  console.log("About to save user...")
-  try {
-    await user.save();
-    existingClass.students.push(user._id);
-  } catch (err) {
-    // ignore
-  }
 }
 
 function buildHeaderArray(moduleQuestions){
@@ -716,8 +716,10 @@ function pushNewRecordInfo(newRecord, action, questionData, headerItem, question
   return newRecord;
 }
 
-
-exports.downloadClassReflectionResponses = async (req, res, next) => {
+// stringify the csv
+// save as string to mongodb
+// download from there in another route
+exports.postClassReflectionResponsesCsv = async (req, res, next) => {
   if (!req.user.isInstructor) {
     return res.json({classReflectionResponses: {}});
   }
@@ -743,8 +745,7 @@ exports.downloadClassReflectionResponses = async (req, res, next) => {
   const moduleQuestions = reflectionJson[req.params.modName];
   // Build the layout of the output csv based on the reflectionJson content
   const headerArray = buildHeaderArray(moduleQuestions);
-  const csvWriter = createCsvWriter({
-      path: `classReflectionResponses.csv`,
+  const csvStringifier = createCsvStringifier({
       header: headerArray
   });
   let records = [];
@@ -781,12 +782,21 @@ exports.downloadClassReflectionResponses = async (req, res, next) => {
       }
       records.push(newRecord);
     }
-    await csvWriter.writeRecords(records)
-    res.download(`classReflectionResponses.csv`,'classReflectionResponses.csv', function(err){
-      if(err){
-        console.log(err);
-        next(err);
+    const reflectionCsv = await csvStringifier.stringifyRecords(records);
+    User.findById(req.user.id, (err, user) => {
+      if (err) {
+        return next(err);
       }
+      if (!req.user.isInstructor) {
+        return res.json({});
+      }
+      user.reflectionCsv = reflectionCsv;
+      user.save((err) => {
+        if(err){
+          return next(err);
+        }
+        res.redirect('/getReflectionCsv');
+      })
     });
   });
 }

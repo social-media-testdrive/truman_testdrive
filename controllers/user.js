@@ -883,6 +883,23 @@ exports.postName = (req, res, next) => {
   });
 };
 
+exports.getReflectionCsv = (req, res, next) => {
+  User.findById(req.user.id, (err, user) =>{
+    if(err) {
+      return next(err);
+    }
+    if(!req.user.isInstructor) {
+      res.redirect('/login');
+    }
+    let reflectionCsv = '';
+    if(user.reflectionCsv) {
+       reflectionCsv = user.reflectionCsv;
+    }
+    res.set('Content-Type', 'text/csv');
+    res.send(reflectionCsv);
+  });
+};
+
 /**
  * POST /account/profile
  * Update profile information.Which ad topic did the user pick?
