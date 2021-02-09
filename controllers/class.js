@@ -782,7 +782,8 @@ exports.postClassReflectionResponsesCsv = async (req, res, next) => {
       }
       records.push(newRecord);
     }
-    const reflectionCsv = await csvStringifier.stringifyRecords(records);
+    let reflectionCsv = csvStringifier.getHeaderString();
+    reflectionCsv += await csvStringifier.stringifyRecords(records);
     User.findById(req.user.id, (err, user) => {
       if (err) {
         return next(err);
@@ -795,7 +796,7 @@ exports.postClassReflectionResponsesCsv = async (req, res, next) => {
         if(err){
           return next(err);
         }
-        res.redirect('/getReflectionCsv');
+        res.send({result:'success'});
       })
     });
   });

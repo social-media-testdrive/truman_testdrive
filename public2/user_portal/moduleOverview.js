@@ -1136,7 +1136,15 @@ function manageConfirmButton(){
 
 function downloadReflectionData(classId, modName){
   $('.downloadReflectionData').on('click', function(){
-    $.post(`/downloadReflectionResponses/${classId}/${modName}`, {_csrf: $('meta[name="csrf-token"]').attr('content')});
+    $('.downloadReflectionData').addClass('loading');
+    $.post(`/downloadReflectionResponses/${classId}/${modName}`,
+      {
+        _csrf: $('meta[name="csrf-token"]').attr('content')
+      }
+    ).then(function(){
+      window.location.href = '/getReflectionCsv';
+      $('.downloadReflectionData').removeClass('loading');
+    });
   })
 }
 
