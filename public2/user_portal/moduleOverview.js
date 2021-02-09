@@ -1124,6 +1124,7 @@ async function visualizeTimeData(timeBreakdownChart, avgSectionTimeChart, modNam
   const avgSectionTimeArrayOutliers = allAvgSectionTimeArrays[0];
   const avgSectionTimeArrayNoOutliers = allAvgSectionTimeArrays[1];
   updateAvgSectionTimeChart(avgSectionTimeChart, avgSectionTimeArrayNoOutliers);
+  downloadTimeData(classPageTimes, classId, modName);
   $('#timeSpentSegment .dimmer').removeClass('active');
   return [timeBreakdownArrayOutliers, timeBreakdownArrayNoOutliers, avgSectionTimeArrayOutliers, avgSectionTimeArrayNoOutliers];
 };
@@ -1144,6 +1145,21 @@ function manageConfirmButton(){
       }
     }
   });
+}
+
+function downloadTimeData(classPageTimes, classId, modName){
+  $('.downloadTimeData').on('click', function(){
+    $('.downloadTimeData').addClass('loading');
+    $.post(`/postClassTimeReportCsv/${classId}/${modName}`,
+      {
+        _csrf: $('meta[name="csrf-token"]').attr('content'),
+        classPageTimes: classPageTimes
+      }
+    ).then(function(){
+      window.location.href = '/getTimeReportCsv';
+      $('.downloadTimeData').removeClass('loading');
+    });
+  })
 }
 
 function downloadReflectionData(classId, modName){

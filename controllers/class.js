@@ -485,10 +485,6 @@ exports.removeStudentFromClass = (req, res, next) => {
   }
 };
 
-
-
-
-
 // Function copied directly from the MDN web docs:
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 // The maximum is exclusive and the minimum is inclusive
@@ -720,9 +716,6 @@ function pushNewRecordInfo(newRecord, action, questionData, headerItem, question
   return newRecord;
 }
 
-// stringify the csv
-// save as string to mongodb
-// download from there in another route
 exports.postClassReflectionResponsesCsv = async (req, res, next) => {
   if (!req.user.isInstructor) {
     return res.json({classReflectionResponses: {}});
@@ -796,6 +789,110 @@ exports.postClassReflectionResponsesCsv = async (req, res, next) => {
         return res.json({});
       }
       user.reflectionCsv = reflectionCsv;
+      user.save((err) => {
+        if(err){
+          return next(err);
+        }
+        res.send({result:'success'});
+      })
+    });
+  });
+}
+
+exports.postClassTimeReportCsv = async (req, res, next) => {
+  if (!req.user.isInstructor) {
+    return res.json({classReflectionResponses: {}});
+  }
+  let headerArray = [
+    {id: 'username', title: 'Username'},
+    {id: 'name', title: "Name"},
+    {id: 'total', title: "Total Time to Complete"},
+    {id: '1', title: "Time Spent in the Learn Section (minutes)"},
+    {id: '2', title: "Time Spent in the Practice Section (minutes)"},
+    {id: '3', title: "Time Spent in the Explore Section (minutes)"},
+    {id: '4', title: "Time Spent in the Reflect Section (minutes)"}
+  ];
+  const csvStringifier = createCsvStringifier({
+      header: headerArray
+  });
+  Class.findOne({
+    accessCode: req.params.classId,
+    teacher: req.user.id,
+    deleted: false
+  }).populate('students')
+  .exec(async function (err, found_class) {
+    if (err) {
+      console.log("ERROR");
+      console.log(err);
+      return next(err);
+    }
+    if (found_class == null){
+      console.log("NULL");
+      var myerr = new Error('Class not found!');
+      return next(myerr);
+    }
+    let filePath = '';
+    switch (req.params.modName) {
+      case 'cyberbullying':
+      case 'digfoot':
+        filePath = "./public2/json/progressDataB.json";
+        break;
+      default:
+        filePath = "./public2/json/progressDataA.json";
+        break;
+    }
+    let readFilePromise = function(filePath) {
+      return new Promise((resolve, reject) => {
+        fs.readFile(filePath, (err, data) => {
+          if (err) {
+            reject(err);
+          }
+          resolve(data);
+        })
+      })
+    }
+    const sectionJsonBuffer = await readFilePromise(filePath).then(function(data) {
+      return data;
+    });
+    const sectionJson = JSON.parse(sectionJsonBuffer);
+    let records = [];
+    // console.log(sectionJson)
+    for(const student of req.body.classPageTimes) {
+      if(!student.timeArray) {
+        continue;
+      }
+      let newRecord = {
+        username: student.username,
+        name: '',
+        total: 0,
+        '1': 0,
+        '2': 0,
+        '3': 0,
+        '4': 0
+      }
+      for(const timeItem of student.timeArray) {
+        if(!sectionJson[timeItem.subdirectory1]){
+          continue;
+        }
+        if(sectionJson[timeItem.subdirectory1] === "end"){
+          continue;
+        }
+        const sectionId = sectionJson[timeItem.subdirectory1];
+        newRecord[sectionId] += parseInt(timeItem.timeDuration);
+        newRecord.total += parseInt(timeItem.timeDuration);
+      }
+      records.push(newRecord);
+    }
+    let timeReportCsv = csvStringifier.getHeaderString();
+    timeReportCsv += csvStringifier.stringifyRecords(records);
+    User.findById(req.user.id, (err, user) => {
+      if (err) {
+        return next(err);
+      }
+      if (!req.user.isInstructor) {
+        return res.json({});
+      }
+      user.timeReportCsv = timeReportCsv;
       user.save((err) => {
         if(err){
           return next(err);

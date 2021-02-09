@@ -20,6 +20,7 @@ const userSchema = new mongoose.Schema({
   accessCode: {type: String, default: ''}, //which class this user belongs to, if a student
   completed: {type: Boolean, default: false}, //not used in TestDrive
   reflectionCsv: {type: String, default: ''},
+  timeReportCsv: {type: String, default: ''},
   moduleProgress: { // marks the progress of each module: none, started, completed
     accounts: {type: String, default: 'none'},
     advancedlit: {type: String, default: 'none'},

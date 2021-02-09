@@ -900,6 +900,23 @@ exports.getReflectionCsv = (req, res, next) => {
   });
 };
 
+exports.getTimeReportCsv = (req, res, next) => {
+  User.findById(req.user.id, (err, user) =>{
+    if(err) {
+      return next(err);
+    }
+    if(!req.user.isInstructor) {
+      res.redirect('/login');
+    }
+    let timeReportCsv = '';
+    if(user.timeReportCsv) {
+       timeReportCsv = user.timeReportCsv;
+    }
+    res.set('Content-Type', 'text/csv');
+    res.send(timeReportCsv);
+  });
+};
+
 /**
  * POST /account/profile
  * Update profile information.Which ad topic did the user pick?
