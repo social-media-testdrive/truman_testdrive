@@ -264,7 +264,7 @@ function createCheckboxTypeChart(chartId, chartLabelArray, studentCount, checkbo
               display: true,
               fontSize: 14,
               fontColor: '#000',
-              labelString: "Number of Students"
+              labelString: "# of Students"
             },
             ticks: {
               stepSize: 1,
@@ -702,6 +702,12 @@ function createFreeplayRankingChart(i, chartLabels, chartData, studentCount){
         labels: chartLabels,
       },
       options: {
+        title: {
+          display: true,
+          fontSize: 16,
+          fontColor: '#000',
+          text: "Actions On This Post"
+        },
         legend: {
           display: false
         },
@@ -709,6 +715,12 @@ function createFreeplayRankingChart(i, chartLabels, chartData, studentCount){
         responsive: true,
         scales: {
           xAxes: [{
+            scaleLabel: {
+              display: true,
+              fontSize: 14,
+              fontColor: '#000',
+              labelString: "# of Students"
+            },
             ticks: {
               stepSize: 1,
               beginAtZero: true,
@@ -956,7 +968,7 @@ async function visualizeFreeplayActivity(modName, classId, classSize){
 
 
 function getStandardDevAndAvg(inputArray) {
-  if(inputArray.length === 1){
+  if(inputArray.length <= 1){
     return 0;
   }
   let total = 0;
