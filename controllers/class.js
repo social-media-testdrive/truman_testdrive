@@ -197,6 +197,10 @@ exports.getClassPageTimes = (req, res, next) => {
         }
         // convert from ms to minutes
         let timeDurationOnPage = (pageLog[i+1].time - pageLog[i].time)/60000;
+        // skip any page times that are longer than 30 minutes
+        if(timeDurationOnPage > 30) {
+          continue;
+        }
         const dataToPush = {
           timeOpened: pageLog[i].time,
           timeDuration: timeDurationOnPage,

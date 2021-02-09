@@ -1073,6 +1073,10 @@ exports.getStudentReportData = (req, res, next) => {
     for(let i=0, l=pageLog.length-1; i<l; i++) {
       // convert from ms to minutes
       let timeDurationOnPage = (pageLog[i+1].time - pageLog[i].time)/60000;
+      // skip any page times longer than 30 minutes
+      if(timeDurationOnPage > 30) {
+        continue;
+      }
       const dataToPush = {
         timeOpened: pageLog[i].time,
         timeDuration: timeDurationOnPage,
