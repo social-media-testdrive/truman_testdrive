@@ -878,8 +878,12 @@ exports.postClassTimeReportCsv = async (req, res, next) => {
           continue;
         }
         const sectionId = sectionJson[timeItem.subdirectory1];
-        newRecord[sectionId] += parseInt(timeItem.timeDuration);
-        newRecord.total += parseInt(timeItem.timeDuration);
+        newRecord[sectionId] += parseFloat(timeItem.timeDuration);
+        newRecord.total += parseFloat(timeItem.timeDuration);
+      }
+      // before pushing the record, round all numbers to nearest int.
+      for(let i=1; i<5; i++){
+        newRecord[i] = Math.round(newRecord[i]);
       }
       records.push(newRecord);
     }
