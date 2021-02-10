@@ -623,7 +623,8 @@ exports.generateStudentAccounts = async (req, res, next) => {
 
 function buildHeaderArray(moduleQuestions){
   let headerArray = [
-    {id: 'username', title: 'Username'}
+    {id: 'username', title: 'Username'},
+    {id: 'name', title: 'Name'}
   ]
   for (const question of Object.keys(moduleQuestions)) {
     // Handle each type of question: written, checkbox, and checkboxGrouped
@@ -765,6 +766,7 @@ exports.postClassReflectionResponsesCsv = async (req, res, next) => {
     for (let student of found_class.students) {
       let newRecord = {};
       newRecord['username'] = student.username;
+      newRecord['name'] = student.name;
       for (let action of student.reflectionAction) {
         if(action.modual !== req.params.modName) {
           continue;
@@ -861,9 +863,20 @@ exports.postClassTimeReportCsv = async (req, res, next) => {
       if(!student.timeArray) {
         continue;
       }
+      // use this to get real name, if one has been added
+      let user = await User.findOne({
+        username: student.username,
+        accessCode: req.params.classId,
+        deleted: false
+      });
+      if(user == null){
+        console.log("NULL");
+        var myerr = new Error('User not found!');
+        return next(myerr);
+      }
       let newRecord = {
         username: student.username,
-        name: '',
+        name: user.name,
         total: 0,
         '1': 0,
         '2': 0,
@@ -885,6 +898,7 @@ exports.postClassTimeReportCsv = async (req, res, next) => {
       for(let i=1; i<5; i++){
         newRecord[i] = Math.round(newRecord[i]);
       }
+      newRecord.total = Math.round(newRecord.total);
       records.push(newRecord);
     }
     let timeReportCsv = csvStringifier.getHeaderString();
