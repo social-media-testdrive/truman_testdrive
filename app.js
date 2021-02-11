@@ -247,8 +247,12 @@ app.get('/guest/:modId', userController.getGuest);
 //   });
 // })
 
-// main route is the module page 
+
 const isResearchVersion = process.env.isResearchVersion === 'true';
+const enableDataCollection = process.env.enableDataCollection === 'true';
+const enableTeacherDashboard = process.env.enableTeacherDashboard === 'true';
+
+// main route is the module page
 app.get('/', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render('mods', {
     title: 'Pick a Lesson',
@@ -444,7 +448,8 @@ app.get('/end/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, 
 
 app.get('/start/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_start', {
-    title: 'Welcome'
+    title: 'Welcome',
+    enableDataCollection
   });
 });
 
@@ -505,7 +510,7 @@ app.get('/gaming/targeted', passportConfig.isAuthenticated, csrfProtection, addC
 });
 
 
-const enableTeacherDashboard = process.env.enableTeacherDashboard;
+
 if(enableTeacherDashboard){
   //Classes
   app.get('/classManagement', passportConfig.isAuthenticated, csrfProtection, addCsrf, classController.getClasses);
@@ -623,8 +628,12 @@ app.get('/bell', passportConfig.isAuthenticated, userController.checkBell);
 
 //getScript
 //app.get('/feed', passportConfig.isAuthenticated, scriptController.getScript);
+
+if (enableDataCollection) {
+  app.post('/startPageAction', passportConfig.isAuthenticated, check, csrfProtection, scriptController.postStartPageAction);
+}
+
 app.post('/feed', passportConfig.isAuthenticated, check, csrfProtection, scriptController.postUpdateFeedAction);
-app.post('/startPageAction', passportConfig.isAuthenticated, check, csrfProtection, scriptController.postStartPageAction);
 app.post('/introjsStep', passportConfig.isAuthenticated, check, csrfProtection, scriptController.postIntrojsStepAction);
 app.post('/reflection', passportConfig.isAuthenticated, check, csrfProtection, scriptController.postReflectionAction);
 app.post('/bluedot', passportConfig.isAuthenticated, check, csrfProtection, scriptController.postBlueDotAction);

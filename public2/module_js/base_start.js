@@ -36,6 +36,10 @@ function clickGotIt(){
 };
 
 function logActionInDB (actionType, keyIdea = '') {
+  // check if data collection is enabled first
+  if (!enableDataCollection) {
+    return;
+  }
   // log action in db
   const cat = new Object();
   cat.subdirectory1 = pathArray[1];
