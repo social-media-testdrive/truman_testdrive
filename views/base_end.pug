@@ -7,7 +7,6 @@ block content
       
       h1 What would you like to do next?
     
-    
       .ui.raised.segment
         h3.ui.header
           .content
@@ -51,7 +50,30 @@ block content
               |   Explore Timeline
       
 block scripts
-  script().
-    function startIntro(){       
+  script.
+    function startIntro(){
       window.open(href='https://cornell.qualtrics.com/jfe/form/SV_9tMszwlpe1TIIxT');
     };
+    
+    $('.ui.big.green.labeled.icon.button.finish')
+      .on('click', function () {
+        const isResearchVersion = #{isResearchVersion};
+        if (isResearchVersion) {
+          const pathArray = window.location.pathname.split('/');
+          const modNameNoDashes = pathArray[2].replace('-','');
+          $.post("/moduleProgress", {
+            module: modNameNoDashes,
+            status: 'completed',
+            _csrf: $('meta[name="csrf-token"]').attr('content')
+          }).then(function(){
+            window.location.href = '/';
+          })
+        } else {
+          $.post("/delete", {_csrf: $('meta[name="csrf-token"]').attr('content') })
+          .done(function(){
+            window.location.href = 'https://socialmediatestdrive.org/modules.html';
+          });
+        }
+    });
+
+    

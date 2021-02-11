@@ -715,22 +715,6 @@ Start button links
       window.location.href = '/tutorial/cyberbullying';
     });
 
-  //finish
-  $('.ui.big.green.labeled.icon.button.finish')
-    .on('click', function () {
-      const pathArray = window.location.pathname.split('/');
-      const modNameNoDashes = pathArray[2].replace('-','');
-      $.post("/moduleProgress", {
-        module: modNameNoDashes,
-        status: 'completed',
-        _csrf: $('meta[name="csrf-token"]').attr('content')
-      }).then(function(){
-        window.location.href = '/';
-      })
-
-    });
-
-
   //Cyberbullying to Transition
   $('.ui.big.green.labeled.icon.button.cybertrans_script')
     .on('click', function () {

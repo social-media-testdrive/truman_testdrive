@@ -236,8 +236,8 @@ app.use('/profile_pictures',express.static(path.join(__dirname, 'profile_picture
  * Primary app routes.
  */
 
-//create Gust account
- //app.get('/guest/:modId', userController.getGuest);
+//create Guest account
+app.get('/guest/:modId', userController.getGuest);
 
 // commented out by Anna
 //main route is the lesson mod selection screen
@@ -247,12 +247,12 @@ app.use('/profile_pictures',express.static(path.join(__dirname, 'profile_picture
 //   });
 // })
 
-// added by Anna
-// main route is the lesson mod selection screen,
-// but the user needs to be logged in before it is visible
+// main route is the module page 
+const isResearchVersion = process.env.isResearchVersion === 'true';
 app.get('/', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render('mods', {
-    title: 'Pick a Lesson'
+    title: 'Pick a Lesson',
+    isResearchVersion
   });
 })
 
@@ -431,11 +431,13 @@ app.get('/free-settings3/privacy', passportConfig.isAuthenticated, csrfProtectio
 app.get('/end/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   if((req.param("modId") === 'accounts') || (req.param("modId") === 'privacy')){
     res.render(req.param("modId") + '/' + req.param("modId")+'_end', {
-      title: 'Finished'
+      title: 'Finished',
+      isResearchVersion
     });
   } else {
     res.render('base_end.pug', {
-      title: 'Finished'
+      title: 'Finished',
+      isResearchVersion
     });
   }
 });
@@ -447,9 +449,13 @@ app.get('/start/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf
 });
 
 app.get('/intro/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
-  res.render('base_intro.pug', {
-    title: 'Welcome'
-  });
+  if (req.param("modId") === "delete") {   // anticipating a specific user behavior that causes 500 errors
+    res.redirect('/');
+  } else {
+    res.render('base_intro.pug', {
+      title: 'Welcome'
+    });
+  }
 });
 app.get('/tut_guide/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_tut_guide', {
@@ -627,9 +633,7 @@ app.post('/deleteUserFeedActions', passportConfig.isAuthenticated, scriptControl
 app.post('/interest', passportConfig.isAuthenticated, check, csrfProtection, userController.postUpdateInterestSelection);
 app.post('/advancedlitInterest', passportConfig.isAuthenticated, check, csrfProtection, userController.postAdvancedlitInterestSelection);
 app.post('/habitsTimer', passportConfig.isAuthenticated, check, csrfProtection, userController.postUpdateHabitsTimer);
-//postDeleteAccount
-//app.post('/deleteAccount', passportConfig.isAuthenticated, userController.getDeleteAccount);
-app.get('/delete', passportConfig.isAuthenticated, userController.getDeleteAccount);
+app.post('/delete', passportConfig.isAuthenticated, userController.getDeleteAccount);
 app.post('/moduleProgress', passportConfig.isAuthenticated, check, csrfProtection, userController.postUpdateModuleProgress);
 app.get('/moduleProgress/:classId', passportConfig.isAuthenticated, classController.getModuleProgress);
 app.get('/classReflectionResponses/:classId', passportConfig.isAuthenticated, classController.getReflectionResponses);

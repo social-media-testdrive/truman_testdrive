@@ -1,5 +1,5 @@
 -var cdn = "https://dhpd030vnpk29.cloudfront.net";
-
+-var isResearchVersion = process.env.isResearchVersion === 'true';
 .computer.only.tablet.only.row 
   .ui.borderless.fixed.menu.testDriveHeader(style="z-index:10000002;")
     .ui.grid.container#myheader
@@ -26,23 +26,27 @@
                 h4.checkmark &#10003
                 span reflect
         .four.wide.column
-          .right.menu.headerDropdownMenu
-            if user
-              a.item.newpost
-                i.big.plus.icon(style="display: none;")
-              if user.isInstructor
-                a.item(href='/classManagement') 
-                  i.big.university.icon
-              .ui.simple.dropdown.item
-                if user.profile.picture
-                  img.ui.mini.spaced.circular.image(src=cdn+'/profile_pictures/'+user.profile.picture)
-                else
-                  img.ui.mini.spaced.circular.image(src=user.gravatar(60))
-                |
-                span= user.username || user.profile.name || user.id
-                i.dropdown.icon
-                .menu
-                  a.item(href='/logout') Logout
+          if isResearchVersion
+            .right.menu.headerDropdownMenu
+              if user
+                a.item.newpost
+                  i.big.plus.icon(style="display: none;")
+                if user.isInstructor
+                  a.item(href='/classManagement') 
+                    i.big.university.icon
+                .ui.simple.dropdown.item
+                  if user.profile.picture
+                    img.ui.mini.spaced.circular.image(src=cdn+'/profile_pictures/'+user.profile.picture)
+                  else
+                    img.ui.mini.spaced.circular.image(src=user.gravatar(60))
+                  |
+                  if isResearchVersion
+                    span= user.username || user.profile.name || user.id
+                  else 
+                    span= user.profile.name || user.username || user.id
+                  i.dropdown.icon
+                  .menu
+                    a.item(href='/logout') Logout
             
 .mobile.only.row
   .ui.fluid.top.fixed.four.item.menu(style="z-index:10000002;")

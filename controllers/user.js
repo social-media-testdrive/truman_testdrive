@@ -383,92 +383,48 @@ exports.postSignupInstructor = (req, res, next) => {
  */
 
 
-// exports.getGuest = (req, res, next) => {
+exports.getGuest = (req, res, next) => {
 
-  // commented out by Anna
-  // modifying so that it creates an account from a provided username
+  if (req.params.modId === "delete") {
+    // avoiding a specific user behavior that causes 500 errors
+    res.send({
+      result: "failure"
+    });
+  }
+  const user = new User({
+    password: "thinkblue",
+    username: "guest"+makeid(10),
+    group: 'no:no',
+    active: true,
+    ui: 'no', //ui or no
+    notify: 'no', //no, low or high
+    isGuest: true,
+    lastNotifyVisit : Date.now()
+  });
 
-  // //console.log("Now Making a Guest");
-  // const user = new User({
-  //   password: "thinkblue",
-  //   username: "guest"+makeid(10),
-  //   group: 'no:no',
-  //   active: true,
-  //   ui: 'no', //ui or no
-  //   notify: 'no', //no, low or high
-  //   isGuest: true,
-  //   lastNotifyVisit : Date.now()
-  // });
-  //
-  // user.profile.name = "Guest";
-  // user.profile.location = "Guest Town";
-  // user.profile.bio = '';
-  // user.profile.picture = 'avatar-icon.svg';
-  // //console.log("New Guest is now: "+ user.profile.name);
-  //
-  // User.findOne({ username: req.body.username }, (err, existingUser) => {
-  //   if (err) { return next(err); }
-  //   if (existingUser) {
-  //     req.flash('errors', { msg: 'Account with that Username already exists.' });
-  //     return res.redirect('/guest/'+req.params.modId);
-  //   }
-  //   user.save((err) => {
-  //     if (err) { return next(err); }
-  //     req.logIn(user, (err) => {
-  //       if (err) {
-  //         return next(err);
-  //       }
-  //       //console.log("All done with Guest making!");
-  //       res.redirect('/intro/'+req.params.modId);
-  //     });
-  //   });
-  // });
+  user.profile.name = "Guest";
+  user.profile.location = "Guest Town";
+  user.profile.bio = '';
+  user.profile.picture = 'avatar-icon.svg';
+  //console.log("New Guest is now: "+ user.profile.name);
 
-  // added by Anna
-  // creating an account from a provided username
-//   req.assert('signupcode', 'Wrong Sign Up Code').notEmpty();
-//   console.log("HEY ANNA");
-//   console.log(req.signupcode);
-//   const user = new User({
-//     //password: "thinkblue",
-//     username: req.signupcode,
-//     //group: 'no:no',
-//     active: true,
-//     //ui: 'no', //ui or no
-//     //notify: 'no', //no, low or high
-//     //isGuest: false,
-//     start : Date.now()
-//   });
-//
-//   user.profile.name = "Guest";
-//   user.profile.location = "Guest Town";
-//   user.profile.bio = '';
-//   user.profile.picture = 'avatar-icon.svg';
-//   //console.log("New Guest is now: "+ user.profile.name);
-//
-//   User.findOne({ username: req.body.username }, (err, existingUser) => {
-//     if (err) { return next(err); }
-//     if (existingUser) {
-//       req.flash('errors', {
-//         msg: 'Account with that Username already exists. Please choose a different one.'
-//       });
-//       //return res.redirect('/guest/'+req.params.modId);
-//       return res.redirect('/signup');
-//     }
-//     user.save((err) => {
-//       if (err) { return next(err); }
-//       req.logIn(user, (err) => {
-//         if (err) {
-//           return next(err);
-//         }
-//         //console.log("All done with Guest making!");
-//         //res.redirect('/intro/'+req.params.modId);
-//         res.redirect('/');
-//       });
-//     });
-//   });
-//
-// };
+  User.findOne({ username: req.body.username }, (err, existingUser) => {
+    if (err) { return next(err); }
+    if (existingUser) {
+      req.flash('errors', { msg: 'Account with that Username already exists.' });
+      return res.redirect('/guest/'+req.params.modId);
+    }
+    user.save((err) => {
+      if (err) { return next(err); }
+      req.logIn(user, (err) => {
+        if (err) {
+          return next(err);
+        }
+        res.redirect('/intro/'+req.params.modId);
+      });
+    });
+  });
+};
 
 /**
  * GET /create_username
