@@ -213,8 +213,9 @@ app.use((req, res, next) => {
 
 //helper function just to see what is in the body
 function check(req, res, next) {
-    //console.log("@@@@@@@@@@@@Body is now ");
-    //console.log(req.body);
+    // console.log("@@@@@@@@@@@@Body is now ");
+    // console.log(req.body);
+    // console.log(req.params);
     next();
 }
 

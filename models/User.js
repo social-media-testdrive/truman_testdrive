@@ -3,6 +3,7 @@ const crypto = require('crypto');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// have 2 consts here, and choose which to export depending on the site version
 const userSchema = new mongoose.Schema({
   // email: {type: String, default: ""},
   deleted: {type: Boolean, default: false}, // indicates if this account has been "deleted" from a class
@@ -524,6 +525,7 @@ userSchema.methods.gravatar = function gravatar(size) {
   return `https://gravatar.com/avatar/${md5}?s=${size}&d=retro`;
 };
 
+//TODO: change here, use ternary operator
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;

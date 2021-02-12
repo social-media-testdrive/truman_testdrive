@@ -1149,30 +1149,49 @@ function manageConfirmButton(){
 
 function downloadTimeData(classPageTimes, classId, modName){
   $('.downloadTimeData').on('click', function(){
-    $('.downloadTimeData').addClass('loading');
-    $.post(`/postClassTimeReportCsv/${classId}/${modName}`,
-      {
-        _csrf: $('meta[name="csrf-token"]').attr('content'),
-        classPageTimes: classPageTimes
-      }
-    ).then(function(){
-      window.location.href = '/getTimeReportCsv';
-      $('.downloadTimeData').removeClass('loading');
-    });
-  })
+    let exportURL = `/postClassTimeReportCsv/${classId}/${modName}`;
+    // $('.downloadReflectionData').addClass('loading');
+    if($('.deleteThis').length > 0) {
+      $('.deleteThis').remove();
+    }
+    $('body').append(
+      `<div class="deleteThis csv-data d-none" style="display:none;">
+        <form name="downloadTimeReportCsv" enctype="application/x-www-form-urlencoded"
+        method="post" action="${exportURL}">
+          <input type="hidden" name="_csrf" value="${$('meta[name="csrf-token"]').attr('content')}"/>
+          <input type="submit" class="submit" value="Download as file" />
+        </form>
+      </div>`
+    );
+    document.downloadTimeReportCsv.submit();
+  });
 }
 
 function downloadReflectionData(classId, modName){
   $('.downloadReflectionData').on('click', function(){
-    $('.downloadReflectionData').addClass('loading');
-    $.post(`/downloadReflectionResponses/${classId}/${modName}`,
-      {
-        _csrf: $('meta[name="csrf-token"]').attr('content')
-      }
-    ).then(function(){
-      window.location.href = '/getReflectionCsv';
-      $('.downloadReflectionData').removeClass('loading');
-    });
+    let exportURL = `/downloadReflectionResponses/${classId}/${modName}`;
+    // $('.downloadReflectionData').addClass('loading');
+    if($('.deleteThis').length > 0) {
+      $('.deleteThis').remove();
+    }
+    $('body').append(
+      `<div class="deleteThis csv-data d-none" style="display:none;">
+        <form name="downloadReflectionCsv" enctype="application/x-www-form-urlencoded"
+        method="post" action="${exportURL}">
+          <input type="hidden" name="_csrf" value="${$('meta[name="csrf-token"]').attr('content')}"/>
+          <input type="submit" class="submit" value="Download as file" />
+        </form>
+      </div>`
+    );
+    document.downloadReflectionCsv.submit();
+    // $.post(`/downloadReflectionResponses/${classId}/${modName}`,
+    //   {
+    //     _csrf: $('meta[name="csrf-token"]').attr('content')
+    //   }
+    // ).then(function(){
+    //   window.location.href = '/getReflectionCsv';
+    //   $('.downloadReflectionData').removeClass('loading');
+    // });
   })
 }
 

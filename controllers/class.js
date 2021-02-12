@@ -5,7 +5,7 @@ var ObjectId = require('mongoose').Types.ObjectId;
 const CSVToJSON = require("csvtojson");
 const _ = require('lodash');
 var async = require('async');
-const createCsvStringifier = require('csv-writer').createObjectCsvStringifier;
+const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
 // Get all Classes for a currently logged in instructor
 exports.getClasses = (req, res) => {
@@ -155,6 +155,49 @@ exports.getModuleProgress = (req, res, next) => {
   });
 };
 
+function getClassPageTimes(found_class, modName) {
+  let classPageTimes = [];
+  for(const student of found_class.students){
+    const pageLog = student.pageLog;
+    let pageTimeArray = [];
+    for(let i=0, l=pageLog.length-1; i<l; i++) {
+      // if a modName is specified, skip pageLog entries that are not for that modName
+      if(modName){
+        if(pageLog[i].subdirectory2 !== modName){
+          continue;
+        }
+      }
+      // if the student has not completed the module yet, skip any pageLogs for that module
+      if (pageLog[i].subdirectory2) {
+        const modNameNoDashes = pageLog[i].subdirectory2.replace('-','');
+        if(student.moduleProgress[modNameNoDashes] !== "completed"){
+          continue;
+        }
+      }
+      // convert from ms to minutes
+      let timeDurationOnPage = (pageLog[i+1].time - pageLog[i].time)/60000;
+      // skip any page times that are longer than 30 minutes
+      if(timeDurationOnPage > 30) {
+        continue;
+      }
+      const dataToPush = {
+        timeOpened: pageLog[i].time,
+        timeDuration: timeDurationOnPage,
+        subdirectory1: pageLog[i].subdirectory1
+      };
+      if (pageLog[i].subdirectory2) {
+        dataToPush["subdirectory2"] = pageLog[i].subdirectory2;
+      }
+      pageTimeArray.push(dataToPush);
+    }
+    const pushStudentObject = {};
+    pushStudentObject['username'] = student.username;
+    pushStudentObject['timeArray'] = pageTimeArray;
+    classPageTimes.push(pushStudentObject);
+  }
+  return classPageTimes;
+};
+
 // Gets page times for an entire class, only reports logs of completed modules.
 // Optional parameter of modName to further filter page time list.
 exports.getClassPageTimes = (req, res, next) => {
@@ -177,46 +220,8 @@ exports.getClassPageTimes = (req, res, next) => {
       var myerr = new Error('Class not found!');
       return next(myerr);
     }
-    let outputArray = [];
-    for(const student of found_class.students){
-      const pageLog = student.pageLog;
-      let pageTimeArray = [];
-      for(let i=0, l=pageLog.length-1; i<l; i++) {
-        // if a modName is specified, skip pageLog entries that are not for that modName
-        if(req.params.modName){
-          if(pageLog[i].subdirectory2 !== req.params.modName){
-            continue;
-          }
-        }
-        // if the student has not completed the module yet, skip any pageLogs for that module
-        if (pageLog[i].subdirectory2) {
-          const modNameNoDashes = pageLog[i].subdirectory2.replace('-','');
-          if(student.moduleProgress[modNameNoDashes] !== "completed"){
-            continue;
-          }
-        }
-        // convert from ms to minutes
-        let timeDurationOnPage = (pageLog[i+1].time - pageLog[i].time)/60000;
-        // skip any page times that are longer than 30 minutes
-        if(timeDurationOnPage > 30) {
-          continue;
-        }
-        const dataToPush = {
-          timeOpened: pageLog[i].time,
-          timeDuration: timeDurationOnPage,
-          subdirectory1: pageLog[i].subdirectory1
-        };
-        if (pageLog[i].subdirectory2) {
-          dataToPush["subdirectory2"] = pageLog[i].subdirectory2;
-        }
-        pageTimeArray.push(dataToPush);
-      }
-      const pushStudentObject = {};
-      pushStudentObject['username'] = student.username;
-      pushStudentObject['timeArray'] = pageTimeArray;
-      outputArray.push(pushStudentObject);
-    }
-    res.json({classPageTimes: outputArray})
+    let classPageTimes = getClassPageTimes(found_class, req.params.modName);
+    res.json({classPageTimes: classPageTimes})
   });
 }
 
@@ -458,9 +463,6 @@ exports.removeStudentFromClass = (req, res, next) => {
         }
         // student has been removed from the class
         // now, update the student User model to be "deleted" from the class (set "deleted"=true)
-        // TODO: if the account is empty and never used, *actually* delete it
-        // TODO: what to check? would an empty pageLog and all module statuses
-        // as "none" be a comprehensive enough check?
         User.findById(studentId)
         .exec(function (err, found_student) {
           if (err) {
@@ -743,7 +745,9 @@ exports.postClassReflectionResponsesCsv = async (req, res, next) => {
   const moduleQuestions = reflectionJson[req.params.modName];
   // Build the layout of the output csv based on the reflectionJson content
   const headerArray = buildHeaderArray(moduleQuestions);
-  const csvStringifier = createCsvStringifier({
+  const outputFilePath = `public2/downloads/classReflectionResponses_${req.user.username}.csv`
+  const csvWriter = createCsvWriter({
+      path: outputFilePath,
       header: headerArray
   });
   let records = [];
@@ -781,22 +785,18 @@ exports.postClassReflectionResponsesCsv = async (req, res, next) => {
       }
       records.push(newRecord);
     }
-    let reflectionCsv = csvStringifier.getHeaderString();
-    reflectionCsv += await csvStringifier.stringifyRecords(records);
-    User.findById(req.user.id, (err, user) => {
+    await csvWriter.writeRecords(records);
+    res.download(outputFilePath, `reflectionResponses_${req.params.classId}.csv`, function(err) {
       if (err) {
+        console.log(err);
         return next(err);
       }
-      if (!req.user.isInstructor) {
-        return res.json({});
-      }
-      user.reflectionCsv = reflectionCsv;
-      user.save((err) => {
-        if(err){
+      fs.unlink(outputFilePath, function(err) {
+        if (err) {
+          console.log(err)
           return next(err);
         }
-        res.send({result:'success'});
-      })
+      });
     });
   });
 }
@@ -814,7 +814,9 @@ exports.postClassTimeReportCsv = async (req, res, next) => {
     {id: '3', title: "Time Spent in the Explore Section (minutes)"},
     {id: '4', title: "Time Spent in the Reflect Section (minutes)"}
   ];
-  const csvStringifier = createCsvStringifier({
+  const timeReportFilepath = `public2/downloads/classTimeReport_${req.user.username}.csv`
+  const csvWriter = createCsvWriter({
+      path: timeReportFilepath,
       header: headerArray
   });
   Class.findOne({
@@ -859,7 +861,9 @@ exports.postClassTimeReportCsv = async (req, res, next) => {
     const sectionJson = JSON.parse(sectionJsonBuffer);
     let records = [];
     // console.log(sectionJson)
-    for(const student of req.body.classPageTimes) {
+    // get class page times
+    let classPageTimes = getClassPageTimes(found_class, req.params.modName);
+    for(const student of classPageTimes) {
       if(!student.timeArray) {
         continue;
       }
@@ -901,22 +905,18 @@ exports.postClassTimeReportCsv = async (req, res, next) => {
       newRecord.total = Math.round(newRecord.total);
       records.push(newRecord);
     }
-    let timeReportCsv = csvStringifier.getHeaderString();
-    timeReportCsv += csvStringifier.stringifyRecords(records);
-    User.findById(req.user.id, (err, user) => {
+    await csvWriter.writeRecords(records);
+    res.download(timeReportFilepath, `timeReport_${req.params.classId}.csv`, function(err) {
       if (err) {
+        console.log(err);
         return next(err);
       }
-      if (!req.user.isInstructor) {
-        return res.json({});
-      }
-      user.timeReportCsv = timeReportCsv;
-      user.save((err) => {
-        if(err){
+      fs.unlink(timeReportFilepath, function(err) {
+        if(err) {
+          console.log(err);
           return next(err);
         }
-        res.send({result:'success'});
-      })
+      });
     });
   });
 }
