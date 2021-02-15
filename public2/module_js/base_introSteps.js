@@ -15,7 +15,6 @@ function startIntro(){
     'scrollToElement':true,
     'doneLabel':'Done &#10003'
   });
-
   /*
   onbeforechange:
   "Given callback function will be called before starting a new step of
@@ -33,6 +32,11 @@ function startIntro(){
       }
     }
 
+    // Skip the remaining code in this function if data collection is disabled.
+    if (!enableDataCollection) {
+      return;
+    }
+    // Data collection is enabled:
     // ._currentStep has the number of the NEXT tutorial box you're moving toward.
     // However, we want to know the number of the step we are LEAVING.
     // We can use ._direction to determine if we are going forward or backward,
@@ -95,6 +99,11 @@ function startIntro(){
       }
     }
 
+    // Skip the remaining code in this function if data collection is disabled.
+    if (!enableDataCollection) {
+      return;
+    }
+    // Data collection is enabled:
     let leavingStep = $(this)[0]._currentStep;
     // edge case: current step will = -1 when the user leaves the page using
     // something like the back button. Don not record that.
@@ -116,7 +125,7 @@ function startIntro(){
       // use the variable nextPageURL defined in the custom js file for the page
       window.location.href = `/${nextPageURL}/${subdirectory2}`
     });
-  })
+  });
 
   intro.start(); //start the intro
   return intro;

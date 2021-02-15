@@ -333,13 +333,15 @@ app.get('/test_sim', function (req, res) {
 
 app.get('/tutorial/:modId',passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")  +'_tutorial', {
-    title: 'Tutorial'
+    title: 'Tutorial',
+    enableDataCollection
   });
 });
 
 app.get('/tutorial2/:modId',passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")  +'_tutorial2', {
-    title: 'Tutorial'
+    title: 'Tutorial',
+    enableDataCollection
   });
 });
 
@@ -387,7 +389,8 @@ app.get('/trans2/:modId', passportConfig.isAuthenticated, csrfProtection, addCsr
 
 app.get('/trans_script/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_trans_script', {
-    title: 'Recap'
+    title: 'Recap',
+    enableDataCollection
   });
 });
 
@@ -465,7 +468,8 @@ app.get('/intro/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf
 });
 app.get('/tut_guide/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_tut_guide', {
-    title: 'Welcome'
+    title: 'Welcome',
+    enableDataCollection
   });
 });
 
