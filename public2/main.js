@@ -12,8 +12,8 @@ function changeActiveProgressTo(activeStep){
   }
 }
 
-$(window).on("load", function () {
-
+$(window).on("load", async function () {
+  const enableDataCollection = await $.get('/isDataCollectionEnabled');
   //recording the current page
   let pathArray = window.location.pathname.split('/');
   $.post("/pageLog", {
@@ -326,14 +326,16 @@ end chat box code
             actionType = 'free play';
             break;
         }
-        $.post("/feed", {
-          actionType: actionType,
-          modual: currentModuleForHeader,
-          postID: postID,
-          new_comment: date,
-          comment_text: text,
-          _csrf: $('meta[name="csrf-token"]').attr('content')
-        });
+        if(actionType === "free play" || enableDataCollection){
+          $.post("/feed", {
+            actionType: actionType,
+            modual: currentModuleForHeader,
+            postID: postID,
+            new_comment: date,
+            comment_text: text,
+            _csrf: $('meta[name="csrf-token"]').attr('content')
+          });
+        }
       }
 
     }
@@ -405,14 +407,16 @@ end chat box code
             _csrf: $('meta[name="csrf-token"]').attr('content')
           });
         else {
-          $.post("/feed", {
-            actionType: actionType,
-            postID: postID,
-            modual: currentModuleForHeader,
-            commentID: commentID,
-            like: like,
-            _csrf: $('meta[name="csrf-token"]').attr('content')
-          });
+          if(actionType === "free play" || enableDataCollection) {
+            $.post("/feed", {
+              actionType: actionType,
+              postID: postID,
+              modual: currentModuleForHeader,
+              commentID: commentID,
+              like: like,
+              _csrf: $('meta[name="csrf-token"]').attr('content')
+            });
+          }
         }
       }
 
@@ -455,14 +459,16 @@ end chat box code
           _csrf: $('meta[name="csrf-token"]').attr('content')
         });
       else
-        $.post("/feed", {
-          actionType: actionType,
-          modual: currentModuleForHeader,
-          postID: postID,
-          commentID: commentID,
-          flag: flag,
-          _csrf: $('meta[name="csrf-token"]').attr('content')
-        });
+        if(actionType === "free play" || enableDataCollection) {
+          $.post("/feed", {
+            actionType: actionType,
+            modual: currentModuleForHeader,
+            postID: postID,
+            commentID: commentID,
+            flag: flag,
+            _csrf: $('meta[name="csrf-token"]').attr('content')
+          });
+        }
 
       introJs().refresh();
       try {
@@ -935,18 +941,19 @@ end button links
             actionType = 'tutorial';
             break;
           default:
-            action = 'free play';
+            actionType = 'free play';
             break;
         }
         let like = Date.now();
-        $.post("/feed", {
-          actionType: actionType,
-          postID: postID,
-          modual: currentModuleForHeader,
-          like: like,
-          _csrf: $('meta[name="csrf-token"]').attr('content')
-        });
-
+        if(actionType === "free play" || enableDataCollection) {
+          $.post("/feed", {
+            actionType: actionType,
+            postID: postID,
+            modual: currentModuleForHeader,
+            like: like,
+            _csrf: $('meta[name="csrf-token"]').attr('content')
+          });
+        }
       }
 
     });
@@ -993,17 +1000,18 @@ end button links
           actionType = 'tutorial';
           break;
         default:
-          actionType = 'free-play';
+          actionType = 'free play';
           break;
       }
-
-      $.post("/feed", {
-        actionType: actionType,
-        postID: postID,
-        modual: currentModuleForHeader,
-        flag: flag,
-        _csrf: $('meta[name="csrf-token"]').attr('content')
-      });
+      if(actionType === "free play" || enableDataCollection) {
+        $.post("/feed", {
+          actionType: actionType,
+          postID: postID,
+          modual: currentModuleForHeader,
+          flag: flag,
+          _csrf: $('meta[name="csrf-token"]').attr('content')
+        });
+      }
       console.log("Removing Post content now!");
       post.find(".ui.dimmer.flag").dimmer({
         closable: false
