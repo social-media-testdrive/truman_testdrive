@@ -49,7 +49,7 @@ function recordHintAction(userClickedGotIt){
 
 // Rather than clicking "got it", the user hid the text by clicking elsewhere.
 // This event still needs to be recorded as a blue dot action in the db.
-function detectImproperlyClosedHint(event){
+function detectImproperlyClosedHint(event, enableDataCollection){
   var target = $(event.target);
   // Check if the click was outside of the tooltip and that a tooltip was open
   if (!target.closest('.introjs-tooltip').length && $('.introjs-tooltip').is(':visible')){
@@ -57,7 +57,9 @@ function detectImproperlyClosedHint(event){
     if($('.introjs-hintReference').length){
       // record this hint action with parameter as false since the user did not click 'got it'
       Voiceovers.pauseVoiceover();
-      recordHintAction(false);
+      if(enableDataCollection){
+        recordHintAction(false);
+      }
     }
   }
 };
@@ -90,7 +92,7 @@ function errorCheck(){
 };
 
 // initialize the blue dots (aka 'hints')
-function startHints(){
+function startHints(enableDataCollection){
   // use the customErrorCheck function if one is provided
   if(typeof customErrorCheck !== 'undefined'){
     $('#cyberTransButton').on('click', customErrorCheck);
@@ -132,7 +134,9 @@ function startHints(){
   hints.onhintclose(function(stepID){
     // record this hint action with parameter as true since the user clicked 'got it'
     Voiceovers.pauseVoiceover();
-    recordHintAction(true);
+    if(enableDataCollection){
+      recordHintAction(true);
+    }
 
     // if a customOnHintCloseFunction is provided, use it
     if(typeof customOnHintCloseFunction !== 'undefined'){
@@ -165,7 +169,7 @@ function startHints(){
 // initialize the tutorial sequence, if there is one. The blue dots get initialized
 // in this function after the tutorial exits.
 
-function startIntro(){
+function startIntro(enableDataCollection){
 
   var intro = introJs().setOptions({
     steps: stepsList,
@@ -187,6 +191,10 @@ function startIntro(){
         console.log("There has been an unexpected error:");
         console.log(error);
       }
+    }
+    if(!enableDataCollection){
+      // if data collection is disabled, skip the rest of the code in this function
+      return;
     }
     let leavingStep = 0;
     if($(this)[0]._direction === "forward") {
@@ -229,22 +237,24 @@ function startIntro(){
         console.log(error);
       }
     }
-    let leavingStep = $(this)[0]._currentStep;
-    let totalTimeOpen = Date.now() - startTimestamp;
-    let cat = new Object();
-    cat.subdirectory1 = subdirectory1;
-    cat.subdirectory2 = subdirectory2;
-    cat.stepNumber = leavingStep;
-    cat.viewDuration = totalTimeOpen;
-    cat.absoluteStartTime = startTimestamp;
-    const jqxhr = $.post("/introjsStep", {
-      action: cat,
-      _csrf: $('meta[name="csrf-token"]').attr('content')
-    });
-    jqhxrArray.push(jqxhr);
+    if (enableDataCollection) {
+      let leavingStep = $(this)[0]._currentStep;
+      let totalTimeOpen = Date.now() - startTimestamp;
+      let cat = new Object();
+      cat.subdirectory1 = subdirectory1;
+      cat.subdirectory2 = subdirectory2;
+      cat.stepNumber = leavingStep;
+      cat.viewDuration = totalTimeOpen;
+      cat.absoluteStartTime = startTimestamp;
+      const jqxhr = $.post("/introjsStep", {
+        action: cat,
+        _csrf: $('meta[name="csrf-token"]').attr('content')
+      });
+      jqhxrArray.push(jqxhr);
+    }
     Promise.all(jqhxrArray).then(function() {
       // changed from base_introStep.js
-      startHints();
+      startHints(enableDataCollection);
       try{
         eventsAfterHints();
       } catch(error) {
@@ -282,14 +292,17 @@ function showHelpMessage(){
   }
 }
 
-$(window).on("load", function(){
+$(window).on("load", async function(){
+  const enableDataCollection = await $.get('/isDataCollectionEnabled');
   addCardIds(); // required for data to record properly
   // reference: https://stackoverflow.com/a/3028037
-  $(document).click(detectImproperlyClosedHint);
+  $(document).click(function(event) {
+    detectImproperlyClosedHint(event, enableDataCollection)
+  });
   try {
     // a tutorial sequence isn't always present. If it isn't, startHints() needs
     // to be called manually.
-    const intro = startIntro();
+    const intro = startIntro(enableDataCollection);
     const tooltipTopOffset = $('.introjs-tooltip').offset().top;
     const tooltipBottomOffset = tooltipTopOffset + $('.introjs-tooltip').outerHeight();
     let scrolledAway = false;
@@ -313,7 +326,7 @@ $(window).on("load", function(){
       console.log(error);
     }
     try {
-      startHints();
+      startHints(enableDataCollection);
       try{
         // an eventsAfterHints function isn't always defined, so call it if it
         // exists
