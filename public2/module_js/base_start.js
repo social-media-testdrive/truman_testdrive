@@ -35,7 +35,7 @@ function clickGotIt(){
   }
 };
 
-function logActionInDB (actionType, keyIdea = '') {
+function logActionInDB (enableDataCollection, actionType, keyIdea = '') {
   // check if data collection is enabled first
   if (!enableDataCollection) {
     return;
@@ -56,16 +56,16 @@ function logActionInDB (actionType, keyIdea = '') {
   actionArray.push(jqxhr);
 };
 
-$(window).on("load", function() {
+$(window).on("load", async function() {
 
   Voiceovers.addVoiceovers();
-
+  const enableDataCollection = await $.get('/isDataCollectionEnabled');
   $('.showLearnSectionButton').on('click', function () {
     $('#clickNextWarning').hide();
     $('.learnSegment').show();
     $('.learnSegment .ui.header').transition('jiggle');
     $('.showLearnSectionButton').parent('.ui.segment').hide();
-    logActionInDB('next_showLearnSection');
+    logActionInDB(enableDataCollection, 'next_showLearnSection');
   });
 
   $('.showKeyTermsButton').on('click', function () {
@@ -76,7 +76,7 @@ $(window).on("load", function() {
     if($(".keyTermDefinition:hidden").length === 0){
       $('.ui.labeled.icon.button').addClass('green');
     }
-    logActionInDB('next_showKeyIdeas');
+    logActionInDB(enableDataCollection, 'next_showKeyIdeas');
   });
 
   $('.keyTerm').on('click', function (event) {
@@ -87,7 +87,7 @@ $(window).on("load", function() {
       $('.ui.labeled.icon.button').addClass('green');
     }
     const vocabTerm = $(event.target).closest('.keyTerm').children('.keyTermLabel').text();
-    logActionInDB('keyIdea', vocabTerm);
+    logActionInDB(enableDataCollection, 'keyIdea', vocabTerm);
   });
 
 });

@@ -4,7 +4,7 @@ const subdirectory1 = pathArrayIntro[1]; // idenify the current page
 const subdirectory2 = pathArrayIntro[2]; // idenify the current module
 let startTimestamp = Date.now();
 
-function startIntro(){
+function startIntro(enableDataCollection){
   var intro = introJs().setOptions({
     steps: stepsList,
     'hidePrev': true,
@@ -31,7 +31,6 @@ function startIntro(){
         console.log(error);
       }
     }
-
     // Skip the remaining code in this function if data collection is disabled.
     if (!enableDataCollection) {
       return;
@@ -151,13 +150,14 @@ function showHelpMessage(){
   }
 }
 
-$(window).on("load", function() {
+$(window).on("load", async function() {
+  const enableDataCollection = await $.get('/isDataCollectionEnabled')
   // if this function is defined in the custom js file, run it
   try {
-    customOnWindowLoad();
+    customOnWindowLoad(enableDataCollection);
   } catch (error) {
     if (error instanceof ReferenceError) {
-      const intro = startIntro();
+      const intro = startIntro(enableDataCollection);
       const tooltipTopOffset = $('.introjs-tooltip').offset().top;
       const tooltipBottomOffset = tooltipTopOffset + $('.introjs-tooltip').outerHeight();
       let scrolledAway = false;

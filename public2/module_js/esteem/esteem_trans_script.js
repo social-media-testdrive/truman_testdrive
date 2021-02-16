@@ -11,7 +11,7 @@ let bot2FirstName = "";
 const nextPageURL = 'modual';
 let stepsList;
 
-function customOnWindowLoad(){
+function customOnWindowLoad(enableDataCollection){
   $.get("/esteemTopic", function( data ) {
     topicSelection = data.esteemTopic;
   }).then( function() {
@@ -96,7 +96,7 @@ function customOnWindowLoad(){
       }
     ];
 
-    startIntro();
+    startIntro(enableDataCollection);
 
   });
 }
