@@ -24,6 +24,14 @@
         "3": "I shared the news article",
         "4": "I flagged the post",
         "5": "I did not do anything"
+      },
+      "responseRequirement": "exact",
+      "correctResponses": {
+        "0": "1",
+        "1": "1",
+        "2": "1",
+        "3": "1",
+        "4": "0"
       }
     },
     "Q2": {
@@ -44,6 +52,13 @@
         "1": "I \"liked\" the target's post to show support.",
         "2": "I wrote a supportive or defending comment for the target.",
         "3": "I would tell a trusted adult if I saw this kind of post."
+      },
+      "responseRequirement": "exact",
+      "correctResponses": {
+        "0": "1",
+        "1": "1",
+        "2": "1",
+        "3": "1"
       }
     },
     "Q2": {
@@ -79,6 +94,27 @@
         "0": "Does this cat remind anyone else of Mrs. Lee?? She's always glaring at us lol. Why does she have to suck SO MUCH",
         "1": "Lol Danny didn't want me telling anyobody but he tripped over a rock and twisted his ankle. He is literally a meme.",
         "2": "First day of grade 7! come over to my house at 22 Eastwood dr if you want to hang"
+      },
+      "responseRequirement": "exact",
+      "correctResponses": {
+        "0": {
+          "0": "1",
+          "1": "1",
+          "2": "1",
+          "3": "0"
+        },
+        "1": {
+          "0": "1",
+          "1": "1",
+          "2": "1",
+          "3": "0"
+        },
+        "2": {
+          "0": "1",
+          "1": "1",
+          "2": "0",
+          "3": "0"
+        }
       }
     },
     "Q2": {
@@ -109,6 +145,24 @@
         "0": "Breaking News: Driving age just lowered to 12. DMV flooded with road test appointments and car companies cannot keep their newest models off the road.",
         "1": "Craving a donut? Think again! Scientists found that donuts are the leading cause of cancer in young children 😳",
         "2": "You'll never guess what these are!!!"
+      },
+      "responseRequirement": "exact",
+      "correctResponses": {
+        "0": {
+          "0": "1",
+          "1": "0",
+          "2": "1"
+        },
+        "1": {
+          "0": "1",
+          "1": "1",
+          "2": "1"
+        },
+        "2": {
+          "0": "1",
+          "1": "1",
+          "2": "1"
+        }
       }
     },
     "Q2": {
@@ -118,6 +172,12 @@
         "0": "I would read the full article.",
         "1": "I would check the source.",
         "2": "I would find corroboration from other credible sources."
+      },
+      "responseRequirement": "exact",
+      "correctResponses": {
+        "0": "1",
+        "1": "1",
+        "2": "1"
       }
     },
     "Q3": {
@@ -155,6 +215,12 @@
         "0": "Notifications",
         "1": "Likes and comments from other people",
         "2": "Time spent on social media"
+      },
+      "responseRequirement": "exact",
+      "correctResponses": {
+        "0": "1",
+        "1": "1",
+        "2": "0"
       }
     },
     "Q2": {
@@ -169,6 +235,13 @@
         "1": "I reduced the number of notifications that I get",
         "2": "I ignored the notifications",
         "3": "I did not do anything to build a healthy social media habit"
+      },
+      "responseRequirement": "exact",
+      "correctResponses": {
+        "0": "1",
+        "1": "1",
+        "2": "1",
+        "3": "0"
       }
     },
     "Q4": {
@@ -201,6 +274,27 @@
         "0": " http://goo.gl/FreeSwitch",
         "1": "http://testdrive.info/youraccount",
         "2": "http://bit.ly/FREEGIFTS"
+      },
+      "responseRequirement": "atLeastOne",
+      "correctResponses": {
+        "0": {
+          "0": "1",
+          "1": "0",
+          "2": "1",
+          "3": "0"
+        },
+        "1": {
+          "0": "1",
+          "1": "0",
+          "2": "1",
+          "3": "0"
+        },
+        "2": {
+          "0": "1",
+          "1": "0",
+          "2": "1",
+          "3": "0"
+        },
       }
     },
     "Q2": {
@@ -220,6 +314,12 @@
         "0": "She posted about things that only certain people will be interested in",
         "1": "She posted things that are more casual or personal",
         "2": "She posted mean things about other people"
+      },
+      "responseRequirement": "exact",
+      "correctResponses": {
+        "0": "0",
+        "1": "1",
+        "2": "0"
       }
     },
     "Q2": {
@@ -228,7 +328,8 @@
       "radioLabels": {
         "0": "Yes",
         "1": "No"
-      }
+      },
+      "responseRequirement": "any"
     },
     "Q3": {
       "type": "written",
@@ -269,6 +370,12 @@
         "0": "Private information like street address, phone number, school name, or email address was shared",
         "1": "The person making the post did not think about all the audiences who could see it",
         "2": "It was appropriate for social media"
+      },
+      "responseRequirement": "exact",
+      "correctResponses": {
+        "0": "1",
+        "1": "1",
+        "2": "0"
       }
     },
     "Q2": {
@@ -280,6 +387,14 @@
         "2": "I ignored the message",
         "3": "I was direct",
         "4": "I did something else"
+      },
+      "responseRequirement": "exact",
+      "correctResponses": {
+        "0": "1",
+        "1": "1",
+        "2": "1",
+        "3": "1",
+        "4": "0"
       }
     },
     "Q3": {
@@ -299,6 +414,16 @@
         "4": "I wanted to click on the advertisement.",
         "5": "I ignored the advertisement.",
         "6": "I didn't notice the advertisement."
+      },
+      "responseRequirement": "atLeastOne",
+      "correctResponse": {
+        "0": "1",
+        "1": "1",
+        "2": "1",
+        "3": "0",
+        "4": "0",
+        "5": "1",
+        "6": "0"
       }
     },
     "Q2": {
