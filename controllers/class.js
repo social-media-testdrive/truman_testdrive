@@ -625,44 +625,45 @@ exports.generateStudentAccounts = async (req, res, next) => {
 
 function buildHeaderArray(moduleQuestions){
   let headerArray = [
-    {id: 'username', title: 'Username'},
-    {id: 'name', title: 'Name'}
+    {id: "col1", title:""},
+    {id: "col2", title:"Questions"},
   ]
   for (const question of Object.keys(moduleQuestions)) {
     // Handle each type of question: written, checkbox, and checkboxGrouped
     switch(moduleQuestions[question].type){
       case 'written': {
-        let newHeaderObject = {};
-        newHeaderObject.id = question;
-        newHeaderObject.title = `(open-ended) ${moduleQuestions[question].prompt}`;
+        const newHeaderObject = {
+          id: question,
+          title: moduleQuestions[question].prompt
+        };
         headerArray.push(newHeaderObject);
         break;
       }
       case 'checkbox': {
-        // in this case, need to make a new header object for each checkbox option
+        /* We need to make the first column title a copy of the question, and
+        the following columns blank for however many checkboxes there will be
+        (refer to a sample layout of the .csv file for an example) */
         for (const checkbox of Object.keys(moduleQuestions[question].checkboxLabels)) {
-          let newHeaderObject = {};
-          newHeaderObject.id = `${question}_${checkbox}`;
-          const questionString = moduleQuestions[question].prompt;
-          const checkboxLabel = moduleQuestions[question].checkboxLabels[checkbox];
-          const titleString = `(checkbox) ${questionString} : ${checkboxLabel}`
-          newHeaderObject.title = titleString;
+          const checkboxNumber = parseInt(checkbox);
+          const newHeaderObject = {
+            id: `${question}_${checkbox}`,
+            title: (checkboxNumber === 0) ? moduleQuestions[question].prompt : ""
+          };
           headerArray.push(newHeaderObject);
         }
       }
       case 'checkboxGrouped': {
-        // Groups of questions with the same prompt/checkbox labels,
-        // but a different corresponding post.
+        /* We need to make the first column title a copy of the question, and
+        the following columns blank for however many checkboxes there will be
+        (refer to a sample layout of the .csv file for an example) */
         const groupCount = moduleQuestions[question].groupCount;
         for (let i=0; i<groupCount; i++) {
           for (const checkbox of Object.keys(moduleQuestions[question].checkboxLabels)) {
-            let newHeaderObject = {};
-            newHeaderObject.id = `${question}_${i}_${checkbox}`;
-            const groupString = `(checkbox, post ${i+1}):` // teachers would likely prefer to have the count start at 1
-            const questionString = moduleQuestions[question].prompt;
-            const checkboxLabel = moduleQuestions[question].checkboxLabels[checkbox];
-            const titleString = `${groupString} ${questionString} ${checkboxLabel}`
-            newHeaderObject.title = titleString;
+            const checkboxNumber = parseInt(checkbox);
+            const newHeaderObject = {
+              id: `${question}_${i}_${checkbox}`,
+              title: (i === 0) && (checkboxNumber === 0) ? moduleQuestions[question].prompt : ""
+            };
             headerArray.push(newHeaderObject);
           }
         }
@@ -672,22 +673,107 @@ function buildHeaderArray(moduleQuestions){
   return headerArray;
 }
 
-function pushNewRecordInfo(newRecord, action, questionData, headerItem, questionIdSplit) {
-  switch (action.type){
-    case 'written': {
-      newRecord[headerItem.id] = action.writtenResponse;
-      return newRecord;
-      break;
+function buildSubHeaderRecords(headerArray, records, moduleQuestions){
+  // first record built in this function lists all the checkbox labels
+  let labelsRecord = {
+    col1: "",
+    col2: "checkbox"
+  };
+  // second record built in this function lists the recommended answers
+  let answersRecord = {
+    col1: "Username",
+    col2: "Recommended Answer"
+  };
+  // build the rest of the records based on the module questions
+  for(const column of headerArray) {
+    if(column.id.includes('col')){
+      // this is one of the constant columns (not dependent on module questions)
+      continue;
     }
-    case 'checkbox': {
-      /* Ex. checkbox
+    const id = column.id;
+    const idSplit = id.split("_");
+    const questionNumber = idSplit[0]; // this always exists
+    let label1 = idSplit[1] ? idSplit[1] : "";
+    let label2 = idSplit[2] ? idSplit[2] : "";
+    let buildString = "";
+    let correctResponse = "";
+    if (label2 !== "") {
+      // If label 2 exists, then we can infer that this is a grouped checkbox
+      const postNumber = parseInt(label1) + 1;
+      const checkboxNumber = parseInt(label2) + 1;
+      buildString = `post ${postNumber} (checkbox ${checkboxNumber}) ${moduleQuestions[questionNumber].checkboxLabels[label2]}`;
+      correctResponse = moduleQuestions[questionNumber].correctResponses[label1][label2] === "1";
+      answersRecord[id] = correctResponse ? "selected" : "not selected";
+    } else if (label1 !== "") {
+      // If label1 exists and label2 doesn't, then we can infer that this is a standard checkbox
+      const checkboxNumber = parseInt(label1) + 1;
+      buildString = `(checkbox ${checkboxNumber}) ${moduleQuestions[questionNumber].checkboxLabels[label1]}`
+      correctResponse = moduleQuestions[questionNumber].correctResponses[label1] === "1";
+      answersRecord[id] = correctResponse ? "selected" : "not selected";
+    } else {
+      // If there is only a question number, then we can infer that this is an open-ended question
+      buildString = "(open-ended)";
+      answersRecord[id] = correctResponse;
+    }
+    labelsRecord[id] = buildString;
+  }
+  records.push(labelsRecord);
+  records.push(answersRecord);
+  return records;
+}
+
+function parseAnswerKeyComparison(responseRequirement, correctAnswer, studentAnswer){
+  let finalAnswerString = "";
+  // TODO: NEED TO HANDLE "ATLEASTONE" case.
+  // for now, treat all as needing "exact" answer...
+  if((studentAnswer === "1") && (correctAnswer === "1")) {
+    finalAnswerString = "selected";
+  } else if ((studentAnswer === "1") && (corectAnswer === "0")) {
+    finalAnswerString = "incorrectly selected";
+  } else if ((studentAnswer === "0") && (correctAnswer === "0")) {
+    finalAnswerString = "not selected";
+  } else if ((studentAnswer === "0") && (correctAnswer === "1")) {
+    finalAnswerString = "missed";
+  } else {
+    finalAnswerString = "";
+  }
+  return finalAnswerString;
+}
+
+function parseResponse(questionIdSplit, questionData, response) {
+  let studentAnswer = "";
+  // determine the type of response
+  switch (questionData.type) {
+    case "written": {
+      studentAnswer = response.writtenResponse;
+      return studentAnswer;
+    }
+    case "checkbox": {
+      /*
+      Ex. checkbox
       Q1_2 = splice('_') = ['Q1','2']
       1*0*100 = 5 checkboxes =
       [√]*[ ]*[√][ ][ ]     (note: read boxes from L to R to match orientation on the site)
       number to shift before bitwise comparison = num of checkboxes - check #
       */
-
-      /* Ex. checkboxGrouped
+      const checkNumberInt = parseInt(questionIdSplit[1]) + 1
+      const shiftCount = response.numberOfCheckboxes - checkNumberInt;
+      let shiftableResponse = response.checkboxResponse;
+      for(let i=0; i<shiftCount; i++){
+        shiftableResponse = shiftableResponse >> 1;
+      }
+      studentAnswer = shiftableResponse & 1 ? "1" : "0";
+      // compare the student answer with the recommended answer to get the final response string
+      // also take into consideration the response requirement, there are different rules
+      const checkboxNumber = questionIdSplit[1];
+      const responseRequirement = questionData.responseRequirement;
+      const correctResponse = questionData.correctResponses[checkboxNumber];
+      let finalAnswerString = parseAnswerKeyComparison(responseRequirement,correctResponse,studentAnswer);
+      return finalAnswerString;
+    }
+    case "checkboxGrouped":
+      /*
+      Ex. checkboxGrouped
       Q1_2_2 = splice('_') = ['Q1','2', '2'] = ["question number", "group #", "checkbox #"]
       1010 0*1*00 0000 = 12 checkboxes =
       [√][ ][√][ ]  [ ]*[√]*[ ][ ]  [ ][ ][ ][ ]
@@ -695,35 +781,97 @@ function pushNewRecordInfo(newRecord, action, questionData, headerItem, question
       [(# groups - group #) * boxesPerGroup] + [boxesPerGroup - check #]
       [(3 - 2) * 4] + [4 - 2] = 6
       */
-      let shiftCount = 0;
-      if (questionData.type === "checkbox") {
-        const checkNumber = parseInt(questionIdSplit[1]) + 1;
-        shiftCount = action.numberOfCheckboxes - checkNumber;
-      } else if (questionData.type === "checkboxGrouped") {
-        const groupCount = parseInt(questionData.groupCount);
-        const groupNumber = parseInt(questionIdSplit[1]) + 1;
-        const boxesPerGroup = Object.keys(questionData.checkboxLabels).length;
-        const checkNumber = parseInt(questionIdSplit[2]) + 1;
-        shiftCount = ((groupCount - groupNumber) * boxesPerGroup) + (boxesPerGroup - checkNumber);
-      }
-      let shiftableResponse = action.checkboxResponse;
+      const groupCount = parseInt(questionData.groupCount);
+      const groupNumber = parseInt(questionIdSplit[1]) + 1;
+      const boxesPerGroup = Object.keys(questionData.checkboxLabels).length;
+      const checkNumber = parseInt(questionIdSplit[2]) + 1;
+      const shiftCount = ((groupCount - groupNumber) * boxesPerGroup) + (boxesPerGroup - checkNumber);
+      let shiftableResponse = response.checkboxResponse;
       for(let i=0; i<shiftCount; i++){
         shiftableResponse = shiftableResponse >> 1;
       }
-      let checked = shiftableResponse & 1 ? "selected" : "";
-      newRecord[headerItem.id] = checked;
-      return newRecord;
-      break;
+      studentAnswer = shiftableResponse & 1 ? "1" : "0";
+      // compare the student answer with the recommended answer to get the final response string
+      // also take into consideration the response requirement, there are different rules
+      const postNumber = questionIdSplit[1];
+      const checkboxNumber = questionIdSplit[2];
+      const responseRequirement = questionData.responseRequirement;
+      const correctResponse = questionData.correctResponses[postNumber][checkboxNumber];
+      let finalAnswerString = parseAnswerKeyComparison(responseRequirement,correctResponse,studentAnswer);
+      return finalAnswerString;
+    default:
+      // todo: how to handle any strange quesions (i.e. radio, habitsUnique)
+      studentAnswer = "";
+      return studentAnswer;
+  }
+}
+
+function filterReflectionActions(modName, reflectionActions){
+  let filteredResponseList = [];
+  if (reflectionActions.length <= 0){
+    return filteredResponseList;
+  }
+  for(const action of reflectionActions) {
+    if(action.modual === modName) {
+      filteredResponseList.push(action);
     }
   }
-  return newRecord;
+  return filteredResponseList;
+}
+
+function addClassReflectionRecords(modName, headerArray, records, moduleQuestions, found_class) {
+  for (const student of found_class.students) {
+    let newRecord = {
+      col1: student.username,
+      col2: ""
+    };
+    // get responseList with only responses for this module
+    // this is an important step because later we search this list using question numbers
+    const responseList = filterReflectionActions(modName, student.reflectionAction);
+    for (const column of headerArray) {
+      if(column.id.includes('col')){
+        // this is one of the constant columns (not dependent on module questions)
+        continue;
+      }
+      const id = column.id;
+      const idSplit = id.split("_");
+      const questionNumber = idSplit[0]; // this always exists
+      let label1 = idSplit[1] ? idSplit[1] : "";
+      let label2 = idSplit[2] ? idSplit[2] : "";
+      let finalResponseString = "";
+      if (responseList.length === 0) {
+        newRecord[id] = finalResponseString;
+        continue;
+      }
+      let mostRecentAnswerTime = 0; // use this for edge case where student has multiple answers for the same question
+      let studentAnswer = "";
+      for(const response of responseList) {
+        if (response.questionNumber === questionNumber) {
+          // check that this is the most recent answer for this question
+          if (mostRecentAnswerTime === 0) {
+            mostRecentAnswerTime = response.absoluteTimeContinued;
+          } else {
+            if (response.absoluteTimeContinued <= mostRecentAnswerTime) {
+              // this is an old response, skip it
+              continue;
+            } else {
+              mostRecentAnswerTime = response.absoluteTimeContinued;
+            }
+          }
+          finalResponseString = parseResponse(idSplit, moduleQuestions[questionNumber], response);
+        }
+      }
+      newRecord[id] = finalResponseString;
+    }
+    records.push(newRecord);
+  }
+  return records;
 }
 
 exports.postClassReflectionResponsesCsv = async (req, res, next) => {
   if (!req.user.isInstructor) {
     return res.json({classReflectionResponses: {}});
   }
-
   // Use reflectionSecionData.json to define the structure of the output csv
   // fs.readFile does not return a promise, so promisify it
   // reference: https://javascript.info/promisify
@@ -741,7 +889,12 @@ exports.postClassReflectionResponsesCsv = async (req, res, next) => {
   const reflectionJsonBuffer = await readFilePromise(filePath).then(function(data) {
     return data;
   });
-  const reflectionJson = JSON.parse(reflectionJsonBuffer);
+  let reflectionJson;
+  try {
+    reflectionJson = JSON.parse(reflectionJsonBuffer);
+  } catch (err) {
+    return next(err);
+  }
   const moduleQuestions = reflectionJson[req.params.modName];
   // Build the layout of the output csv based on the reflectionJson content
   const headerArray = buildHeaderArray(moduleQuestions);
@@ -751,6 +904,7 @@ exports.postClassReflectionResponsesCsv = async (req, res, next) => {
       header: headerArray
   });
   let records = [];
+  records = buildSubHeaderRecords(headerArray, records, moduleQuestions);
   Class.findOne({
     accessCode: req.params.classId,
     teacher: req.user.id,
@@ -767,24 +921,7 @@ exports.postClassReflectionResponsesCsv = async (req, res, next) => {
       var myerr = new Error('Class not found!');
       return next(myerr);
     }
-    for (let student of found_class.students) {
-      let newRecord = {};
-      newRecord['username'] = student.username;
-      newRecord['name'] = student.name;
-      for (let action of student.reflectionAction) {
-        if(action.modual !== req.params.modName) {
-          continue;
-        }
-        for (const headerItem of headerArray) {
-          const questionIdSplit = headerItem.id.split('_');
-          const questionNumber = questionIdSplit[0]
-          if(action.questionNumber === questionNumber) {
-            newRecord = pushNewRecordInfo(newRecord, action, moduleQuestions[questionNumber], headerItem, questionIdSplit);
-          }
-        }
-      }
-      records.push(newRecord);
-    }
+    records = addClassReflectionRecords(req.params.modName, headerArray, records, moduleQuestions, found_class);
     await csvWriter.writeRecords(records);
     res.download(outputFilePath, `reflectionResponses_${req.params.classId}.csv`, function(err) {
       if (err) {
