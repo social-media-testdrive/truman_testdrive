@@ -20,7 +20,6 @@ public/css/main.css
 uploads/user_post
 
 # API keys and secrets
-.env
 
 # Dependency directory
 node_modules
