@@ -108,7 +108,7 @@ mongoose.connection.on('error', (err) => {
  */
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
-//mongoose.set('useNewUrlParser', true);
+mongoose.set('useNewUrlParser', true);
 mongoose.connect(process.env.MONGODB_URI || process.env.MONGOLAB_URI);
 mongoose.connection.on('error', (err) => {
   console.error(err);
