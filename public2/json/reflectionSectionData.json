@@ -416,7 +416,7 @@
         "6": "I didn't notice the advertisement."
       },
       "responseRequirement": "atLeastOne",
-      "correctResponse": {
+      "correctResponses": {
         "0": "1",
         "1": "1",
         "2": "1",

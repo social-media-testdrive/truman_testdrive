@@ -722,26 +722,108 @@ function buildSubHeaderRecords(headerArray, records, moduleQuestions){
   return records;
 }
 
-function parseAnswerKeyComparison(responseRequirement, correctAnswer, studentAnswer){
-  let finalAnswerString = "";
-  // TODO: NEED TO HANDLE "ATLEASTONE" case.
-  // for now, treat all as needing "exact" answer...
-  if((studentAnswer === "1") && (correctAnswer === "1")) {
-    finalAnswerString = "selected";
-  } else if ((studentAnswer === "1") && (corectAnswer === "0")) {
-    finalAnswerString = "incorrectly selected";
-  } else if ((studentAnswer === "0") && (correctAnswer === "0")) {
-    finalAnswerString = "not selected";
-  } else if ((studentAnswer === "0") && (correctAnswer === "1")) {
-    finalAnswerString = "missed";
+function buildObjectKeyString(questionNumber, post) {
+  let returnString = "";
+  if (post) {
+    returnString = `${questionNumber}_${post}`;
+    return returnString;
   } else {
-    finalAnswerString = "";
+    return questionNumber;
   }
-  return finalAnswerString;
 }
 
-function parseResponse(questionIdSplit, questionData, response) {
+function parseAnswerKeyComparison(responseRequirement, correctAnswer, studentAnswer, customRequirements, questionNumber, post=""){
+  let finalAnswerString = "";
+  switch(responseRequirement) {
+    case "exact": {
+      if((studentAnswer === "1") && (correctAnswer === "1")) {
+        finalAnswerString = "selected";
+      } else if ((studentAnswer === "1") && (correctAnswer === "0")) {
+        finalAnswerString = "incorrectly selected";
+      } else if ((studentAnswer === "0") && (correctAnswer === "0")) {
+        finalAnswerString = "not selected";
+      } else if ((studentAnswer === "0") && (correctAnswer === "1")) {
+        finalAnswerString = "missed";
+      } else {
+        finalAnswerString = "";
+      }
+      return finalAnswerString;
+    }
+    case "atLeastOne": {
+      const customKey = buildObjectKeyString(questionNumber, post);
+      if((studentAnswer === "1") && (correctAnswer === "1")) {
+        finalAnswerString = "selected";
+      } else if ((studentAnswer === "1") && (correctAnswer === "0")) {
+        finalAnswerString = "incorrectly selected";
+      } else if ((studentAnswer === "0") && (correctAnswer === "0")) {
+        finalAnswerString = "not selected";
+      } else if ((studentAnswer === "0") && (correctAnswer === "1") && (customRequirements.atLeastOne[customKey])) {
+        finalAnswerString = "";
+      } else if ((studentAnswer === "0") && (correctAnswer === "1") && (!customRequirements.atLeastOne[customKey])) {
+        finalAnswerString = "missed";
+      } else {
+        finalAnswerString = "";
+      }
+      return finalAnswerString;
+    }
+  }
+}
+
+function checkAtLeastOneCustomRequirement(questionIdSplit, questionData, response, customRequirements) {
+  const questionNumber = questionIdSplit[0];
+  if(questionIdSplit.length === 3) {
+    if(customRequirements.atLeastOne[`${questionNumber}_${questionIdSplit[2]}`]){
+      // already determined true, no need to check again
+      return;
+    }
+  }
+  if(customRequirements.atLeastOne[questionNumber]){
+    // already determined true, no need to check again
+    return;
+  }
+  switch(questionData.type) {
+    case "checkbox": {
+      // loop through the response and see if the student selected at least one
+      let shiftableResponse = response.checkboxResponse;
+      for(let i=response.numberOfCheckboxes-1; i >= 0; i--){
+        studentAnswer = shiftableResponse & 1 ? "1" : "0";
+        if((studentAnswer === "1") && (questionData.correctResponses[i] === "1")) {
+          customRequirements.atLeastOne[questionNumber] = true;
+          return;
+        }
+        shiftableResponse = shiftableResponse >> 1;
+      }
+      return;
+    }
+    case "checkboxGrouped": {
+      // loop through the response and see if the student selected at least one
+      // more complex because we are working with one binary number that
+      // represents multiple responses each for different posts
+      const checkboxesPerGroup = Object.keys(questionData.checkboxLabels).length;
+      for (let postNumber=parseInt(questionData.groupCount)-1; postNumber >= 0; postNumber--) {
+        let shiftableResponse = response.checkboxResponse;
+        let bitwiseComparison = 1 << (response.numberOfCheckboxes - (checkboxesPerGroup * (postNumber+1)));
+        for(let i=checkboxesPerGroup-1; i >= 0; i--){
+          studentAnswer = shiftableResponse & bitwiseComparison ? "1" : "0";
+          if((studentAnswer === "1") && (questionData.correctResponses[postNumber][i] === "1")) {
+            const customKey = `${questionNumber}_${postNumber}`;
+            customRequirements.atLeastOne[customKey] = true;
+          }
+          shiftableResponse = shiftableResponse >> 1;
+        }
+      }
+      return;
+    }
+  }
+}
+
+function parseResponse(questionIdSplit, questionData, response, customRequirements) {
   let studentAnswer = "";
+  if(questionData.responseRequirement === "atLeastOne") {
+    // There should a better way to do this -
+    // this really only needs to be called once per question, not for each column in the header
+    checkAtLeastOneCustomRequirement(questionIdSplit, questionData, response, customRequirements);
+  }
   // determine the type of response
   switch (questionData.type) {
     case "written": {
@@ -765,10 +847,11 @@ function parseResponse(questionIdSplit, questionData, response) {
       studentAnswer = shiftableResponse & 1 ? "1" : "0";
       // compare the student answer with the recommended answer to get the final response string
       // also take into consideration the response requirement, there are different rules
+      const questionNumber = questionIdSplit[0];
       const checkboxNumber = questionIdSplit[1];
       const responseRequirement = questionData.responseRequirement;
       const correctResponse = questionData.correctResponses[checkboxNumber];
-      let finalAnswerString = parseAnswerKeyComparison(responseRequirement,correctResponse,studentAnswer);
+      let finalAnswerString = parseAnswerKeyComparison(responseRequirement,correctResponse,studentAnswer,customRequirements,questionNumber);
       return finalAnswerString;
     }
     case "checkboxGrouped":
@@ -781,6 +864,7 @@ function parseResponse(questionIdSplit, questionData, response) {
       [(# groups - group #) * boxesPerGroup] + [boxesPerGroup - check #]
       [(3 - 2) * 4] + [4 - 2] = 6
       */
+      const questionNumber = questionIdSplit[0];
       const groupCount = parseInt(questionData.groupCount);
       const groupNumber = parseInt(questionIdSplit[1]) + 1;
       const boxesPerGroup = Object.keys(questionData.checkboxLabels).length;
@@ -797,7 +881,7 @@ function parseResponse(questionIdSplit, questionData, response) {
       const checkboxNumber = questionIdSplit[2];
       const responseRequirement = questionData.responseRequirement;
       const correctResponse = questionData.correctResponses[postNumber][checkboxNumber];
-      let finalAnswerString = parseAnswerKeyComparison(responseRequirement,correctResponse,studentAnswer);
+      let finalAnswerString = parseAnswerKeyComparison(responseRequirement,correctResponse,studentAnswer,customRequirements,questionNumber,postNumber);
       return finalAnswerString;
     default:
       // todo: how to handle any strange quesions (i.e. radio, habitsUnique)
@@ -819,12 +903,40 @@ function filterReflectionActions(modName, reflectionActions){
   return filteredResponseList;
 }
 
+function findMatchingRequirements(moduleQuestions, requirementToSearch){
+  let objectToReturn = {};
+  for (const question of Object.keys(moduleQuestions)) {
+    if(moduleQuestions[question].responseRequirement === requirementToSearch) {
+      if(moduleQuestions[question].type === "checkboxGrouped") {
+        // include a new key for each post
+        for(let i=0; i<moduleQuestions[question].groupCount; i++){
+          const key = `${question}_${i}`
+          objectToReturn[key] = false;
+        }
+      } else {
+        objectToReturn[question] = false;
+      }
+    }
+  }
+  return objectToReturn;
+};
+
 function addClassReflectionRecords(modName, headerArray, records, moduleQuestions, found_class) {
+
   for (const student of found_class.students) {
     let newRecord = {
       col1: student.username,
       col2: ""
     };
+    // These are to keep track of questions where the answer key states that
+    // multiple options are correct.
+    const atLeastOneRequirement = findMatchingRequirements(moduleQuestions, "atLeastOne");
+    const anyAnswerRequirement = findMatchingRequirements(moduleQuestions, "any");
+    const customRequirements = {
+      atLeastOne: atLeastOneRequirement,
+      any: anyAnswerRequirement
+    };
+
     // get responseList with only responses for this module
     // this is an important step because later we search this list using question numbers
     const responseList = filterReflectionActions(modName, student.reflectionAction);
@@ -858,7 +970,7 @@ function addClassReflectionRecords(modName, headerArray, records, moduleQuestion
               mostRecentAnswerTime = response.absoluteTimeContinued;
             }
           }
-          finalResponseString = parseResponse(idSplit, moduleQuestions[questionNumber], response);
+          finalResponseString = parseResponse(idSplit, moduleQuestions[questionNumber], response, customRequirements);
         }
       }
       newRecord[id] = finalResponseString;
