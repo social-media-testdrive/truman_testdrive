@@ -1,5 +1,5 @@
 function startIntro(){
-    var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false, 'scrollToElement':false, 'doneLabel':'Done &#10003' });
+    var intro = introJs().setOptions({ 'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false, 'showStepNumbers':false, 'showBullets':false, 'scrollToElement':false, 'doneLabel':'Listo &#10003' });
       intro.setOptions({
         steps: [
           {
@@ -9,10 +9,7 @@ function startIntro(){
           },
           {
             element: '#step2',
-            intro: `But sometimes you might see posts that make you feel like
-            you're being left out of the fun or that other people's lives are
-            much more exciting than yours, which can make you feel worried, sad,
-            or anxious.`,
+            intro: `Pero algunas veces puedes ver publicaciones que te hagan sentir que te dejan fuera de la diversión o que la vida de otras personas es mucho más emocionante que la tuya, esto puede hacerte sentir preocupado, triste o angustiado.`,
             position: 'right'
           },
           {

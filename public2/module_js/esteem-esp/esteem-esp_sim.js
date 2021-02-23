@@ -1,7 +1,7 @@
 var hintsList=
 [
   {
-    hint: `Luis y Carmen, los mejores amigos de Ricardo, han publicado que van a salir, pero no invitaron a Ricardo. Dale Clic a la publicación para reflexionar en cómo Ricardo puede sentirse y que puede hacer si está experimentando una sensación de alerta roja.`,
+    hint: `Natalia y Diego, los mejores amigos de Ricardo, han publicado que van a salir, pero no invitaron a Ricardo. Dale Clic a la publicación para reflexionar en cómo Ricardo puede sentirse y que puede hacer si está experimentando una sensación de alerta roja.`,
     element: '#hint1',
     position: 'right',
     hintPosition: 'middle-right'
@@ -32,7 +32,7 @@ var stepsList=
   {
     element: '#step1',
     intro: `Esta es la línea temporal de la red social de Ricardo. Acaba de llegar de la escuela y está revisando su perfil.
-    Dale Clic a “Siguiente” y luego observa los puntos azules&nbsp;<a role='button' tabindex='0'
+    Dale clic a “Siguiente” y luego observa los puntos azules&nbsp;<a role='button' tabindex='0'
     class='introjs-hint'><div class='introjs-hint-dot'></div><div
     class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;
     para aprender más.`,
