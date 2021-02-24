@@ -292,8 +292,8 @@ function showHelpMessage(){
   }
 }
 
-$(window).on("load", async function(){
-  const enableDataCollection = await $.get('/isDataCollectionEnabled');
+$(window).on("load", function(){
+  const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
   addCardIds(); // required for data to record properly
   // reference: https://stackoverflow.com/a/3028037
   $(document).click(function(event) {

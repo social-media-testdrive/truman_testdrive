@@ -56,10 +56,10 @@ function logActionInDB (enableDataCollection, actionType, keyIdea = '') {
   actionArray.push(jqxhr);
 };
 
-$(window).on("load", async function() {
+$(window).on("load", function() {
 
   Voiceovers.addVoiceovers();
-  const enableDataCollection = await $.get('/isDataCollectionEnabled');
+  const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
   $('.showLearnSectionButton').on('click', function () {
     $('#clickNextWarning').hide();
     $('.learnSegment').show();

@@ -12,8 +12,8 @@ function changeActiveProgressTo(activeStep){
   }
 }
 
-$(window).on("load", async function () {
-  const enableDataCollection = await $.get('/isDataCollectionEnabled');
+$(window).on("load", function () {
+  const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
   //recording the current page
   let pathArray = window.location.pathname.split('/');
   $.post("/pageLog", {

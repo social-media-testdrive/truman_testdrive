@@ -150,8 +150,8 @@ function showHelpMessage(){
   }
 }
 
-$(window).on("load", async function() {
-  const enableDataCollection = await $.get('/isDataCollectionEnabled')
+$(window).on("load", function() {
+  const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
   // if this function is defined in the custom js file, run it
   try {
     customOnWindowLoad(enableDataCollection);

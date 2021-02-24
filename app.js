@@ -253,12 +253,6 @@ const isResearchVersion = process.env.isResearchVersion === 'true';
 const enableDataCollection = process.env.enableDataCollection === 'true';
 const enableTeacherDashboard = process.env.enableTeacherDashboard === 'true';
 
-// TODO: rather than doing this here, put it as a field in ui_layout
-// get enableDataCollection
-app.get('/isDataCollectionEnabled', passportConfig.isAuthenticated, csrfProtection, addCsrf, function(req, res){
-  res.send(enableDataCollection);
-})
-
 // main route is the module page
 app.get('/', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render('mods', {
