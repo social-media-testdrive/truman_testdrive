@@ -44,11 +44,9 @@ block content
 
 block scripts
   script(src='/user_portal/teacherDashboardTools.js')
-  - var m = '/user_portal/studentReport.js?t=' + (new Date()).getTime().toString();
-  script(src=m)
+  script(src='/user_portal/studentReport.js')
   
 block styles
-  - var o = '/css/teacherDashboard/sideMenu.css?t=' + (new Date()).getTime().toString();
-  link(rel='stylesheet', href=o)
+  link(rel='stylesheet', href='/css/teacherDashboard/sideMenu.css')
   link(rel='stylesheet', href='/css/teacherDashboard/classOverview.css')
   link(rel='stylesheet', href='/css/teacherDashboard/studentReport.css')  

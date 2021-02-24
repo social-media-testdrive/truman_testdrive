@@ -578,12 +578,12 @@ exports.generateStudentAccounts = async (req, res, next) => {
       adjectiveArray = await CSVToJSON({
             noheader: true,
             output: 'csv'
-      }).fromFile('outputFiles/inputFiles/UsernameAdjectiveComponents.csv');
+      }).fromFile('privateFiles/UsernameAdjectiveComponents.csv');
       adjectiveArray = adjectiveArray[0];
       nounArray = await CSVToJSON({
             noheader: true,
             output: 'csv'
-      }).fromFile('outputFiles/inputFiles/UsernameNounComponents.csv');
+      }).fromFile('privateFiles/UsernameNounComponents.csv');
       nounArray = nounArray[0];
     } catch {
       return next(err);

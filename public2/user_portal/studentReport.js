@@ -19,7 +19,6 @@ function updateTableHtml(username, studentData){
       <tbody id="studentReportTable"></tbody>
     </table>
   `);
-  console.log(studentData)
   for(const modName of Object.keys(studentData)){
     $(`#studentReportTable`).append(`
       <tr>
@@ -61,7 +60,6 @@ function getExploreColumns(studentReportData, finalStudentTableData){
     finalStudentTableData[modName]['flagCount'] = flagCount;
     finalStudentTableData[modName]['replyCount'] = replyCount;
   }
-  console.log(finalStudentTableData);
   return finalStudentTableData;
 };
 
@@ -127,7 +125,6 @@ async function handleSelectClassDropdown(){
     return data.classUsernames;
   });
   for(const username of usernameArray) {
-    console.log(username)
     $('.usernameSelection .menu').append(`
       <div class="item" data-value="${username}">${username}</div>
     `);

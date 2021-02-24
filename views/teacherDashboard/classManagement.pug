@@ -28,7 +28,7 @@ block content
             td.accessCodeColumn=u.accessCode
             td=u.students.length
             td
-              p.loginLink http://localhost:3000/classLogin/#{u.accessCode}
+              p.loginLink https://researchtest.socialmediatestdrive.org/classLogin/#{u.accessCode}
             td
               button.ui.icon.red.button.deleteClassButton(data-content="Delete Class")
                 i.icon.trash.alternate
@@ -73,12 +73,9 @@ block content
           | Yes, delete this class
 
 block scripts
-  - var n = '/user_portal/teacherDashboardTools.js?t=' + (new Date()).getTime().toString();
-  script(src=n)
-  - var m = '/user_portal/classManagement.js?t=' + (new Date()).getTime().toString();
-  script(src=m)
+  script(src='/user_portal/teacherDashboardTools.js')
+  script(src='/user_portal/classManagement.js')
           
 block styles
-  - var o = '/css/teacherDashboard/sideMenu.css?t=' + (new Date()).getTime().toString();
-  link(rel='stylesheet', href=o)
+  link(rel='stylesheet', href='/css/teacherDashboard/sideMenu.css')
   link(rel='stylesheet', href='/css/classes.css')

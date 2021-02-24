@@ -11,7 +11,6 @@ function adjustContentMargin(){
     let marginValue = parseInt($('.ui.vertically.padded.grid.container').css('margin-right'));
     let menuWidth = parseInt($('.teacherDashboardMenu').css('width'));
     if(menuWidth > marginValue) {
-      console.log('true')
       contentMargin = menuWidth - marginValue;
       $('.dashboardContentColumn').css('margin-left', contentMargin);
     }
