@@ -1072,6 +1072,19 @@ exports.getStudentReportData = (req, res, next) => {
   });
 }
 
+exports.getLearnerCompletedModules = (req, res, next) => {
+  if (!req.user.isStudent){
+    return res.send([]);
+  }
+  let completedModules = [];
+  for(const modName of Object.keys(req.user.moduleProgress)) {
+    if(req.user.moduleProgress[modName]=== "completed") {
+      completedModules.push(modName);
+    }
+  }
+  res.send(completedModules)
+}
+
 
 /**
  * POST /account/profile

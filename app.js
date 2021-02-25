@@ -568,6 +568,8 @@ if (enableLearnerDashboard) {
       title: 'Learner Dashboard'
     });
   });
+
+  app.get('/getLearnerCompletedModules', passportConfig.isAuthenticated, csrfProtection, addCsrf, userController.getLearnerCompletedModules);
 }
 
 

@@ -44,6 +44,12 @@
   min-height: 130px;
 }
 
+#learningMapTable i.icons {
+  position: absolute;
+  top: 3px;
+  right: 0;
+}
+
 #learningMapTable i.icon {
   position: absolute;
   top: 3px;

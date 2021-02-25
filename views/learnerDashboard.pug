@@ -22,56 +22,51 @@ block content
           tr
             td.rightBorder.right.aligned.yAxisLabel(data-label='Topic') Privacy
             td.center.aligned(data-label='Basic') 
-              .container
+              .container(data-mapTableMod="phishing")
                 .ui.segment
                   h3 Scams & Phishing
-                i.large.white.circular.icon.trophy
             td.center.aligned(data-label='Intermediate') 
-              .container
+              .container(data-mapTableMod="targeted")
                 .ui.segment
                   h3 Ads on Social Media
-                i.large.white.circular.icon.trophy
             td.center.aligned(data-label='Advanced')
-              .container
+              .container(data-mapTableMod="privacy")
                 .ui.segment
                   h3 Social Media Privacy
-                i.large.white.circular.icon.trophy
           tr
             td.collapsing.rightBorder.right.aligned.yAxisLabel(data-label='Name') Digital Footprint
             td.center.aligned(data-label='Basic')
-              .container
+              .container(data-mapTableMod="accounts")
                 .ui.segment
                   h3 Accounts & Passwords
             td.center.aligned(data-label='Intermediate')
             td.center.aligned(data-label='Advanced')
-              .container
+              .container(data-mapTableMod="digfoot")
                 .ui.segment
                   h3 Shaping your Digital Footprint
-                i.large.white.circular.icon.trophy
           tr
             td.rightBorder.right.aligned.yAxisLabel(data-label='Name') Relationships
             td.center.aligned(data-label='Basic') 
-              .container
+              .container(data-mapTableMod="safeposting")
                 .ui.segment
                   h3 Is It Private Information?
             td.center.aligned(data-label='Intermediate') 
-              .container
+              .container(data-mapTableMod="cyberbullying")
                 .ui.segment
                   h3 How to Be an Upstander
-                i.large.white.circular.icon.trophy
             td.center.aligned(data-label='Advanced') 
-              .container
+              .container(data-mapTableMod="habits")
                 .ui.segment
                   h3 Healthy Social Media Habits
           tr
             td.rightBorder.right.aligned.yAxisLabel(data-label='Name') News Literacy
             td.center.aligned(data-label='Basic') 
-              .container
+              .container(data-mapTableMod="digitalliteracy")
                 .ui.segment
                   h3 News on Social Media
             td.center.aligned(data-label='Intermediate') 
             td.center.aligned(data-label='Advanced') 
-              .container
+              .container(data-mapTableMod="advancedlit")
                 .ui.segment.middle.aligned
                   h3 Responding to Breaking News!
                 i.large.circular.icon.trophy
@@ -87,6 +82,9 @@ block content
     .ui.divider
     .ui.placeholder.segment
       h4.centerText The status of each module will go here    
-    
+  
+block scripts
+  script(src="/user_portal/learnerDashboard.js")
+  
 block styles
   link(rel='stylesheet', href='/css/learnerDashboard.css')
