@@ -252,6 +252,7 @@ app.get('/guest/:modId', userController.getGuest);
 const isResearchVersion = process.env.isResearchVersion === 'true';
 const enableDataCollection = process.env.enableDataCollection === 'true';
 const enableTeacherDashboard = process.env.enableTeacherDashboard === 'true';
+const enableLearnerDashboard = process.env.enableLearnerDashboard === 'true';
 
 // main route is the module page
 app.get('/', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
@@ -559,6 +560,14 @@ if(enableTeacherDashboard){
     });
   });
   // *********************************************
+}
+
+if (enableLearnerDashboard) {
+  app.get('/learnerDashboard', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
+    res.render('learnerDashboard', {
+      title: 'Learner Dashboard'
+    });
+  });
 }
 
 

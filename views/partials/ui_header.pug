@@ -1,5 +1,6 @@
 -var cdn = "https://dhpd030vnpk29.cloudfront.net";
 -var isResearchVersion = process.env.isResearchVersion === 'true';
+-var enableLearnerDashboard = process.env.enableLearnerDashboard === 'true';
 .computer.only.tablet.only.row 
   .ui.borderless.fixed.menu.testDriveHeader(style="z-index:10000002;")
     .ui.grid.container#myheader
@@ -33,6 +34,9 @@
                   i.big.plus.icon(style="display: none;")
                 if user.isInstructor
                   a.item(href='/classManagement') 
+                    i.big.university.icon
+                if (user.isStudent && enableLearnerDashboard)
+                  a.item(href='/learnerDashboard') 
                     i.big.university.icon
                 .ui.simple.dropdown.item
                   if user.profile.picture

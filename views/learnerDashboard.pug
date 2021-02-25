@@ -1,0 +1,31 @@
+extends ui_layout
+
+block content
+  .ui.sixteen.wide.column
+      
+    .row.centerText
+      h2 
+        i.trophy.icon
+        |  My Learning Achievement
+    .ui.divider
+    .ui.placeholder.segment
+      h4.centerText The badges will go here
+      
+    .row.centerText
+      h2 
+        i.compass.outline.icon
+        |  Learning Map
+    .ui.divider
+    .ui.placeholder.segment
+      h4.centerText The learning map will go here
+    
+    .row.centerText
+      h2 
+        i.hourglass.outline.icon
+        |  Module Completion
+    .ui.divider
+    .ui.placeholder.segment
+      h4.centerText The status of each module will go here    
+      
+block styles
+  link(rel='stylesheet', href='/css/learnerDashboard.css')

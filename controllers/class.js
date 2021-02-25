@@ -541,6 +541,7 @@ async function saveUsernameInExistingClass(req, item, existingClass) {
     username: item,
     active: true,
     start : Date.now(),
+    isStudent: true,
     accessCode: req.body.accessCode
   });
   user.profile.name = "Student";
