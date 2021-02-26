@@ -1,5 +1,18 @@
+.newDashboardSection {
+  margin-top:3em;
+}
+
+.removeMargins {
+  margin: 0 !important;
+}
+
 .centerText {
   text-align: center;
+}
+
+.emphasizedText {
+  font-size: larger;
+  font-weight: bold;
 }
 
 .row.addMargin {

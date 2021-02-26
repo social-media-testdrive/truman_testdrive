@@ -3,15 +3,37 @@ extends ui_layout
 block content
   .ui.sixteen.wide.column
       
-    .row.centerText
+    .row.centerText.newDashboardSection
       h2 
         i.trophy.icon
         |  My Learning Achievement
     .ui.divider
-    .ui.placeholder.segment
-      h4.centerText The badges will go here
+    .ui.stackable.two.column.grid.removeMargins
+      .column
+        .ui.placeholder.segment.center.aligned(style="min-height:100%;")
+          h3 The pie chart for number of completed modules will go here
+      .column
+        .ui.basic.segment
+          h3(style="text-align:center;") My badges
+          .ui.items
+            .item
+              .ui.tiny.image
+                img(src='picture.svg')
+              .content.middle.aligned
+                p Detective of scams & phishing
+            .item
+              .ui.tiny.image
+                img(src='picture.svg')
+              .content.middle.aligned
+                p Protector of private information
+            .item
+              .ui.tiny.image
+                img(src='picture.svg')
+              .content.middle.aligned
+                p Upstander to cyberbullying
+          
       
-    .row.centerText
+    .row.centerText.newDashboardSection
       h2 
         i.compass.outline.icon
         |  Learning Map
@@ -75,13 +97,144 @@ block content
             td.center.aligned.topBorder.xAxisLabel(data-label='Basic') Basic
             td.center.aligned.topBorder.xAxisLabel(data-label='Intermediate') Intermediate
             td.center.aligned.topBorder.xAxisLabel(data-label='Advanced') Advanced
-    .row.centerText
+    .row.centerText.newDashboardSection
       h2 
         i.hourglass.outline.icon
         |  Module Completion
     .ui.divider
-    .ui.placeholder.segment
-      h4.centerText The status of each module will go here    
+    .ui.stackable.two.column.grid.removeMargins
+      .column
+        .ui.items
+          .item
+            .ui.image
+              canvas(id='percentage_phishing' width='150' height='100')
+            .middle.aligned.content
+              .header
+                h4 Scams & Phishing
+              .description
+                p Last accessed yesterday
+              .extra
+                .ui.right.floated.button See Details
+          .ui.divider
+          .item
+            .ui.image
+              canvas(id='percentage_privacy' width='150' height='100')
+            .middle.aligned.content
+              header
+                h4 Social Media Privacy
+              .description
+                p Last accessed 2 days ago
+              .extra
+                .ui.right.floated.button See Details
+          .ui.divider
+          .item
+            .ui.image
+              canvas(id='percentage_digitalliteracy' width='150' height='100')
+            .middle.aligned.content
+              header
+                h4 News on Social Media
+              .description
+                p Last accessed 3 days ago
+              .extra
+                .ui.right.floated.button See Details
+          .ui.divider
+          .item
+            .ui.image
+              canvas(id='percentage_targeted' width='150' height='100')
+            .middle.aligned.content
+              header
+                h4 Ads on Social Media
+              .description
+                p Last accessed 1 week ago
+              .extra
+                .ui.right.floated.button See Details
+      .column
+        .ui.top.attached.tabular.menu.moduleCompletionTabs
+          a.active.item(data-tab='time_spent') Time Spent
+          a.item(data-tab='timeline_actions') Timeline Actions
+          a.item(data-tab='reflection') Reflection
+        .ui.active.tab.bottom.attached.segment(data-tab='time_spent')
+          .ui.stackable.two.column.grid.middle.aligned
+            .column
+              .ui.placeholder.segment.center.aligned
+                p The pie chart for time spent will go here
+            .column
+              .ui.basic.segment.left.aligned
+                p 
+                  | In the module&nbsp
+                  span.emphasizedText.setModName (module name goes here)
+                p 
+                  | You spent&nbsp
+                  span.emphasizedText#setTotalTime 40
+                  | &nbsp minutes in total  
+                  | (class average: 
+                  span#setClassAvgTime 30
+                  | &nbsp minutes)
+                p 
+                  | Learn:&nbsp
+                  span.emphasizedText#setLearnTime 10 
+                  | &nbspmin
+                  br
+                  | Practice:&nbsp
+                  span.emphasizedText#setLearnTime 8  
+                  | &nbspmin
+                  br
+                  | Explore:&nbsp
+                  span.emphasizedText#setLearnTime 20  
+                  | &nbspmin
+                  br
+                  | Reflect:&nbsp
+                  span.emphasizedText#setLearnTime 2  
+                  | &nbspmin
+                  
+        .ui.tab.bottom.attached.segment(data-tab='timeline_actions')
+          .ui.basic.segment
+            p 
+              | In the module&nbsp
+              span.emphasizedText.setModName (module name goes here)
+            p Here are your actions in the timeline:
+            p
+              i.big.heart.icon
+              | &nbsp&nbsp&nbspYou liked 
+              span.emphasizedText#setLikeCount 12
+              | &nbspposts
+            p
+              i.big.flag.icon
+              | &nbsp&nbsp&nbspYou flagged 
+              span.emphasizedText#setFlagCount 2
+              | &nbspposts
+            p
+              i.big.reply.icon
+              | &nbsp&nbsp&nbspYou wrote 
+              span.emphasizedText#setReplyCount 10
+              | &nbspreplies
+        .ui.tab.bottom.attached.segment(data-tab='reflection')
+          p 
+            | In the module&nbsp
+            span.emphasizedText.setModName (module name goes here)
+          table.ui.celled.table
+            thead
+              tr 
+                th 
+                th Your Actions
+                th Recommended Actions
+            tbody
+              tr.positive
+                td Q1
+                td I flagged the post
+                td I flagged the post
+              tr.negative
+                td Q2
+                td I liked the post
+                td I flagged the post
+              tr
+                td Open Q1
+                td This module is helpful...
+                td NA
+            
+              
+    .row(style="padding-bottom:7em;")
+      
   
 block scripts
   script(src="/user_portal/learnerDashboard.js")

@@ -9,4 +9,5 @@ async function addLearningMapIcons(){
 
 $(window).on("load", async function() {
   addLearningMapIcons();
+  $('.menu.moduleCompletionTabs .item').tab();
 });
