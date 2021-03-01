@@ -103,51 +103,139 @@ block content
         |  Module Completion
     .ui.divider
     .ui.stackable.two.column.grid.removeMargins
-      .column
+      .column#moduleProgressColumn
         .ui.items
-          .item
+          .item(data-itemModuleName="accounts")
             .ui.image
-              canvas(id='percentage_phishing' width='150' height='100')
+              canvas(id='percentage_accounts' width='100' height='100')
             .middle.aligned.content
               .header
-                h4 Scams & Phishing
+                h4 Accounts and Passwords
               .description
                 p Last accessed yesterday
               .extra
-                .ui.right.floated.button See Details
+                .ui.right.floated.button.refreshModuleCompletion See Details
           .ui.divider
-          .item
+          .item(data-itemModuleName="esteem")
             .ui.image
-              canvas(id='percentage_privacy' width='150' height='100')
+              canvas(id='percentage_esteem' width='100' height='100')
             .middle.aligned.content
               header
-                h4 Social Media Privacy
+                h4 The Ups and Downs of Social Media
               .description
                 p Last accessed 2 days ago
               .extra
-                .ui.right.floated.button See Details
+                .ui.right.floated.button.refreshModuleCompletion See Details
           .ui.divider
-          .item
+          .item(data-itemModuleName="advancedlit")
             .ui.image
-              canvas(id='percentage_digitalliteracy' width='150' height='100')
+              canvas(id='percentage_advancedlit' width='100' height='100')
             .middle.aligned.content
               header
-                h4 News on Social Media
+                h4 Responding to Breaking News!
               .description
                 p Last accessed 3 days ago
               .extra
-                .ui.right.floated.button See Details
+                .ui.right.floated.button.refreshModuleCompletion See Details
           .ui.divider
-          .item
+          .item(data-itemModuleName="habits")
             .ui.image
-              canvas(id='percentage_targeted' width='150' height='100')
+              canvas(id='percentage_habits' width='100' height='100')
+            .middle.aligned.content
+              header
+                h4 Healthy Social Media Habits
+              .description
+                p Last accessed 1 week ago
+              .extra
+                .ui.right.floated.button.refreshModuleCompletion See Details
+          .ui.divider
+          .item(data-itemModuleName="targeted")
+            .ui.image
+              canvas(id='percentage_targeted' width='100' height='100')
             .middle.aligned.content
               header
                 h4 Ads on Social Media
               .description
                 p Last accessed 1 week ago
               .extra
-                .ui.right.floated.button See Details
+                .ui.right.floated.button.refreshModuleCompletion See Details
+          .ui.divider
+          .item(data-itemModuleName="phishing")
+            .ui.image
+              canvas(id='percentage_phishing' width='100' height='100')
+            .middle.aligned.content
+              header
+                h4 Scams and Phishing
+              .description
+                p Last accessed 1 week ago
+              .extra
+                .ui.right.floated.button.refreshModuleCompletion See Details
+          .ui.divider
+          .item(data-itemModuleName="cyberbullying")
+            .ui.image
+              canvas(id='percentage_cyberbullying' width='100' height='100')
+            .middle.aligned.content
+              header
+                h4 How to Be an Upstander
+              .description
+                p Last accessed 1 week ago
+              .extra
+                .ui.right.floated.button.refreshModuleCompletion See Details
+          .ui.divider
+          .item(data-itemModuleName="safe-posting")
+            .ui.image
+              canvas(id='percentage_safeposting' width='100' height='100')
+            .middle.aligned.content
+              header
+                h4 Is It Private Information?
+              .description
+                p Last accessed 1 week ago
+              .extra
+                .ui.right.floated.button.refreshModuleCompletion See Details
+          .ui.divider
+          .item(data-itemModuleName="digfoot")
+            .ui.image
+              canvas(id='percentage_digfoot' width='100' height='100')
+            .middle.aligned.content
+              header
+                h4 Shaping Your Digital Footprint
+              .description
+                p Last accessed 1 week ago
+              .extra
+                .ui.right.floated.button.refreshModuleCompletion See Details
+          .ui.divider
+          .item(data-itemModuleName="presentation")
+            .ui.image
+              canvas(id='percentage_presentation' width='100' height='100')
+            .middle.aligned.content
+              header
+                h4 Online Identities
+              .description
+                p Last accessed 1 week ago
+              .extra
+                .ui.right.floated.button.refreshModuleCompletion See Details
+          .ui.divider
+          .item(data-itemModuleName="privacy")
+            .ui.image
+              canvas(id='percentage_privacy' width='100' height='100')
+            .middle.aligned.content
+              header
+                h4 Social Media Privacy
+              .description
+                p Last accessed 1 week ago
+              .extra
+                .ui.right.floated.button.refreshModuleCompletion See Details
+          .ui.divider
+          .item(data-itemModuleName="digital-literacy")
+            .ui.image
+              canvas(id='percentage_digitalliteracy' width='100' height='100')
+            .middle.aligned.content
+              header
+                h4 News in Social Media
+              .description
+                p Last accessed 1 week ago
+              .extra
+                .ui.right.floated.button.refreshModuleCompletion See Details
       .column
         .ui.top.attached.tabular.menu.moduleCompletionTabs
           a.active.item(data-tab='time_spent') Time Spent
@@ -156,8 +244,8 @@ block content
         .ui.active.tab.bottom.attached.segment(data-tab='time_spent')
           .ui.stackable.two.column.grid.middle.aligned
             .column
-              .ui.placeholder.segment.center.aligned
-                p The pie chart for time spent will go here
+              .ui.basic.segment.center.aligned(style="padding:0;")
+                canvas#moduleTimePieChart(width="200" height="200" style="width:100%;height:100%;")
             .column
               .ui.basic.segment.left.aligned
                 p 
@@ -165,26 +253,26 @@ block content
                   span.emphasizedText.setModName (module name goes here)
                 p 
                   | You spent&nbsp
-                  span.emphasizedText#setTotalTime 40
+                  span.emphasizedText#setTotalTime 0
                   | &nbsp minutes in total  
                   | (class average: 
-                  span#setClassAvgTime 30
+                  span#setClassAvgTime ???
                   | &nbsp minutes)
                 p 
                   | Learn:&nbsp
-                  span.emphasizedText#setLearnTime 10 
+                  span.emphasizedText#setSection0Time 0 
                   | &nbspmin
                   br
                   | Practice:&nbsp
-                  span.emphasizedText#setLearnTime 8  
+                  span.emphasizedText#setSection1Time 0  
                   | &nbspmin
                   br
                   | Explore:&nbsp
-                  span.emphasizedText#setLearnTime 20  
+                  span.emphasizedText#setSection2Time 0  
                   | &nbspmin
                   br
                   | Reflect:&nbsp
-                  span.emphasizedText#setLearnTime 2  
+                  span.emphasizedText#setSection3Time 0  
                   | &nbspmin
                   
         .ui.tab.bottom.attached.segment(data-tab='timeline_actions')
@@ -238,6 +326,6 @@ block content
   
 block scripts
   script(src="/user_portal/learnerDashboard.js")
-  
+  script(src=cdn+'/js/lib/Chart.js')
 block styles
   link(rel='stylesheet', href='/css/learnerDashboard.css')

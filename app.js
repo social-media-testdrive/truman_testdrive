@@ -570,6 +570,7 @@ if (enableLearnerDashboard) {
   });
 
   app.get('/getLearnerCompletedModules', passportConfig.isAuthenticated, csrfProtection, addCsrf, userController.getLearnerCompletedModules);
+  app.get('/getLearnerSectionTimeData/:modName', passportConfig.isAuthenticated, csrfProtection, addCsrf, userController.getLearnerSectionTimeData);
 }
 
 

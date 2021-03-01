@@ -1,3 +1,4 @@
+const fs = require('fs');
 const bluebird = require('bluebird');
 const crypto = bluebird.promisifyAll(require('crypto'));
 const nodemailer = require('nodemailer');
@@ -1084,6 +1085,87 @@ exports.getLearnerCompletedModules = (req, res, next) => {
   }
   res.send(completedModules)
 }
+
+exports.getLearnerSectionTimeData = async (req, res, next) => {
+  if (!req.user.isStudent){
+    return res.send([]);
+  }
+  const modName = req.params.modName;
+  const pageLog = req.user.pageLog;
+  // sectionTimeArray[0] = Learn; sectionTimeArray[1] = Practice;
+  // sectionTimeArray[2] = Explore; sectionTimeArray[3] = Reflect
+  let sectionTimeArray = [0,0,0,0];
+
+  // if module has not been completed, return
+  const modNameNoDashes = modName.replace('-','');
+  if(req.user.moduleProgress[modNameNoDashes] !== "completed"){
+    res.send(sectionTimeArray);
+  }
+  // First, need to get the mappings between module pages and section numbers
+  let filePath = '';
+  switch (modName) {
+    case 'cyberbullying':
+    case 'digfoot':
+      filePath = "./public2/json/progressDataB.json";
+      break;
+    default:
+      filePath = "./public2/json/progressDataA.json";
+      break;
+  }
+  let readFilePromise = function(filePath) {
+    return new Promise((resolve, reject) => {
+      fs.readFile(filePath, (err, data) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(data);
+      })
+    })
+  }
+  const sectionJsonBuffer = await readFilePromise(filePath).then(function(data) {
+    return data;
+  });
+  let sectionJson;
+  try {
+    sectionJson = JSON.parse(sectionJsonBuffer);
+  } catch (err) {
+    return next(err);
+  }
+  // now that we have the mappings, let's do the calculations
+  for(let i=0, l=pageLog.length-1; i<l; i++) {
+    // skip pageLog entries that are not for the specified module
+    if ((!pageLog[i].subdirectory2) || (pageLog[i].subdirectory2 !== modName)) {
+      continue;
+    }
+    // convert from ms to minutes
+    let timeDurationOnPage = (pageLog[i+1].time - pageLog[i].time)/60000;
+    // skip any page times that are longer than 30 minutes
+    if(timeDurationOnPage > 30) {
+      continue;
+    }
+    // add the page time to the appropriate section's total time:
+    const sectionNumber = sectionJson[pageLog[i].subdirectory1];
+    if (sectionNumber === "1") {
+      sectionTimeArray[0] += timeDurationOnPage;
+    } else if (sectionNumber === "2") {
+      sectionTimeArray[1] += timeDurationOnPage;
+    } else if (sectionNumber === "3") {
+      sectionTimeArray[2] += timeDurationOnPage;
+    } else if (sectionNumber === "4") {
+      sectionTimeArray[3] += timeDurationOnPage;
+    } else {
+      continue;
+    }
+  }
+  // round each number using Math.round (note that this is inconsistent with
+  // the teacher dashbord time displays, which all round using Math.floor)
+  // TODO: check which method to use
+  for(const i in sectionTimeArray) {
+    sectionTimeArray[i] = Math.round(sectionTimeArray[i]);
+  }
+  res.send(sectionTimeArray);
+}
+
 
 
 /**
