@@ -91,7 +91,7 @@ function startIntro(){
   });
 
   intro.start().onexit(function() {
-    window.location.href='/modual/esteem';
+    window.location.href='/modual/esteem-esp';
   });
 };
 
