@@ -6,7 +6,7 @@ function onPrint(){
     $(".insertPrint").append(
       `<br>
       <h4>
-        Why might these posts cause Jeremy to have a red flag feeling?
+        ¿Por qué estas publicaciones pueden hacer que Jorge tenga una sensación de bandera roja?
       </h4>`
     );
     var responseOne = document.getElementById("literacy_responseOne").value;
@@ -15,8 +15,7 @@ function onPrint(){
     $(".insertPrint").append(
       `<br>
       <h4>
-        Do you remember seeing posts that might have caused Jeremy to
-        feel good? What kinds of posts were they?
+        ¿Recuerdas haber visto publicaciones que podrían haber hecho que Jorge se sintiera bien? ¿Qué tipo de publicaciones eran?
       </h4>`
     );
     var responseTwo = document.getElementById("literacy_responseTwo").value;
@@ -25,8 +24,7 @@ function onPrint(){
     $(".insertPrint").append(
       `<br>
       <h4>
-        What could Jeremy do to feel better after experiencing a red flag
-        feeling on social media?
+        ¿Qué podría hacer Jorge para sentirse mejor después de experimentar una sensación de bandera roja en las redes sociales?
       </h4>`
     );
     var responseThree = document.getElementById("literacy_responseThree").value;
