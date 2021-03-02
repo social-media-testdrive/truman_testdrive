@@ -1075,7 +1075,7 @@ exports.getStudentReportData = (req, res, next) => {
 
 exports.getLearnerCompletedModules = (req, res, next) => {
   if (!req.user.isStudent){
-    return res.send([]);
+    return res.status(400).send('Bad Request')
   }
   let completedModules = [];
   for(const modName of Object.keys(req.user.moduleProgress)) {
@@ -1083,12 +1083,29 @@ exports.getLearnerCompletedModules = (req, res, next) => {
       completedModules.push(modName);
     }
   }
-  res.send(completedModules)
+  return res.send(completedModules);
+}
+
+exports.getLearnerModuleStatuses = (req, res, next) => {
+  if (!req.user.isStudent){
+    return res.status(400).send('Bad Request')
+  }
+  let moduleStatuses = {};
+  for(const modName of Object.keys(req.user.moduleProgress.toJSON())){
+    if(modName === "digitalliteracy") {
+      moduleStatuses['digital-literacy'] = req.user.moduleProgress[modName];
+    } else if (modName === "safeposting") {
+      moduleStatuses['safe-posting'] = req.user.moduleProgress[modName];
+    } else {
+      moduleStatuses[modName] = req.user.moduleProgress[modName];
+    }
+  }
+  res.send(moduleStatuses)
 }
 
 exports.getLearnerSectionTimeData = async (req, res, next) => {
   if (!req.user.isStudent){
-    return res.send([]);
+    return res.status(400).send('Bad Request')
   }
   const modName = req.params.modName;
   const pageLog = req.user.pageLog;
@@ -1099,7 +1116,7 @@ exports.getLearnerSectionTimeData = async (req, res, next) => {
   // if module has not been completed, return
   const modNameNoDashes = modName.replace('-','');
   if(req.user.moduleProgress[modNameNoDashes] !== "completed"){
-    res.send(sectionTimeArray);
+    return res.send(sectionTimeArray);
   }
   // First, need to get the mappings between module pages and section numbers
   let filePath = '';

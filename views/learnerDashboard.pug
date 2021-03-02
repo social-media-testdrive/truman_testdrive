@@ -9,9 +9,11 @@ block content
         |  My Learning Achievement
     .ui.divider
     .ui.stackable.two.column.grid.removeMargins
-      .column
-        .ui.placeholder.segment.center.aligned(style="min-height:100%;")
-          h3 The pie chart for number of completed modules will go here
+      .column.completionChartColumn
+        .ui.basic.segment.center.aligned
+          div.customChartLabelText
+          .ui.image
+            canvas#moduleCompletionCount(width='350' height='350')
       .column
         .ui.basic.segment
           h3(style="text-align:center;") My badges
@@ -91,7 +93,6 @@ block content
               .container(data-mapTableMod="advancedlit")
                 .ui.segment.middle.aligned
                   h3 Responding to Breaking News!
-                i.large.circular.icon.trophy
           tr
             td.collapsing.xAxisLabel(data-label='Name') 
             td.center.aligned.topBorder.xAxisLabel(data-label='Basic') Basic
@@ -106,8 +107,9 @@ block content
       .column#moduleProgressColumn
         .ui.items
           .item(data-itemModuleName="accounts")
-            .ui.image
-              canvas(id='percentage_accounts' width='100' height='100')
+            .ui.center.aligned.basic.segment.moduleProgressCustomIcon
+              //- i.big.circular.icon.star
+              //- h3 Completed
             .middle.aligned.content
               .header
                 h4 Accounts and Passwords
@@ -117,8 +119,9 @@ block content
                 .ui.right.floated.button.refreshModuleCompletion See Details
           .ui.divider
           .item(data-itemModuleName="esteem")
-            .ui.image
-              canvas(id='percentage_esteem' width='100' height='100')
+            .ui.center.aligned.basic.segment.moduleProgressCustomIcon
+              //- i.big.circular.icon.star.half
+              //- h3 Started
             .middle.aligned.content
               header
                 h4 The Ups and Downs of Social Media
@@ -128,8 +131,7 @@ block content
                 .ui.right.floated.button.refreshModuleCompletion See Details
           .ui.divider
           .item(data-itemModuleName="advancedlit")
-            .ui.image
-              canvas(id='percentage_advancedlit' width='100' height='100')
+            .ui.center.aligned.basic.segment.moduleProgressCustomIcon
             .middle.aligned.content
               header
                 h4 Responding to Breaking News!
@@ -139,8 +141,7 @@ block content
                 .ui.right.floated.button.refreshModuleCompletion See Details
           .ui.divider
           .item(data-itemModuleName="habits")
-            .ui.image
-              canvas(id='percentage_habits' width='100' height='100')
+            .ui.center.aligned.basic.segment.moduleProgressCustomIcon
             .middle.aligned.content
               header
                 h4 Healthy Social Media Habits
@@ -150,8 +151,7 @@ block content
                 .ui.right.floated.button.refreshModuleCompletion See Details
           .ui.divider
           .item(data-itemModuleName="targeted")
-            .ui.image
-              canvas(id='percentage_targeted' width='100' height='100')
+            .ui.center.aligned.basic.segment.moduleProgressCustomIcon
             .middle.aligned.content
               header
                 h4 Ads on Social Media
@@ -161,8 +161,7 @@ block content
                 .ui.right.floated.button.refreshModuleCompletion See Details
           .ui.divider
           .item(data-itemModuleName="phishing")
-            .ui.image
-              canvas(id='percentage_phishing' width='100' height='100')
+            .ui.center.aligned.basic.segment.moduleProgressCustomIcon
             .middle.aligned.content
               header
                 h4 Scams and Phishing
@@ -172,8 +171,7 @@ block content
                 .ui.right.floated.button.refreshModuleCompletion See Details
           .ui.divider
           .item(data-itemModuleName="cyberbullying")
-            .ui.image
-              canvas(id='percentage_cyberbullying' width='100' height='100')
+            .ui.center.aligned.basic.segment.moduleProgressCustomIcon
             .middle.aligned.content
               header
                 h4 How to Be an Upstander
@@ -183,8 +181,7 @@ block content
                 .ui.right.floated.button.refreshModuleCompletion See Details
           .ui.divider
           .item(data-itemModuleName="safe-posting")
-            .ui.image
-              canvas(id='percentage_safeposting' width='100' height='100')
+            .ui.center.aligned.basic.segment.moduleProgressCustomIcon
             .middle.aligned.content
               header
                 h4 Is It Private Information?
@@ -194,8 +191,7 @@ block content
                 .ui.right.floated.button.refreshModuleCompletion See Details
           .ui.divider
           .item(data-itemModuleName="digfoot")
-            .ui.image
-              canvas(id='percentage_digfoot' width='100' height='100')
+            .ui.center.aligned.basic.segment.moduleProgressCustomIcon
             .middle.aligned.content
               header
                 h4 Shaping Your Digital Footprint
@@ -205,8 +201,7 @@ block content
                 .ui.right.floated.button.refreshModuleCompletion See Details
           .ui.divider
           .item(data-itemModuleName="presentation")
-            .ui.image
-              canvas(id='percentage_presentation' width='100' height='100')
+            .ui.center.aligned.basic.segment.moduleProgressCustomIcon
             .middle.aligned.content
               header
                 h4 Online Identities
@@ -216,8 +211,7 @@ block content
                 .ui.right.floated.button.refreshModuleCompletion See Details
           .ui.divider
           .item(data-itemModuleName="privacy")
-            .ui.image
-              canvas(id='percentage_privacy' width='100' height='100')
+            .ui.center.aligned.basic.segment.moduleProgressCustomIcon
             .middle.aligned.content
               header
                 h4 Social Media Privacy
@@ -227,8 +221,7 @@ block content
                 .ui.right.floated.button.refreshModuleCompletion See Details
           .ui.divider
           .item(data-itemModuleName="digital-literacy")
-            .ui.image
-              canvas(id='percentage_digitalliteracy' width='100' height='100')
+            .ui.center.aligned.basic.segment.moduleProgressCustomIcon
             .middle.aligned.content
               header
                 h4 News in Social Media

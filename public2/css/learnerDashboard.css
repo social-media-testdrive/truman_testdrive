@@ -19,6 +19,29 @@
   margin-bottom: 30px;
 }
 
+.completionChartColumn .ui.segment {
+  display: grid;
+}
+
+.completionChartColumn .customChartLabelText {
+  display: flex;
+  position: absolute;
+  text-align: center;
+  align-items: center;
+  width: 34%;
+  left: 33%;
+  height: 34%;
+  top: 33%;
+  font-size: x-large;
+}
+
+.testing {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+
 #learningMapTable {
   border: none;
   background: transparent;
@@ -69,4 +92,15 @@
   right: 0;
   color: rgba(255, 99, 132, 1);
   background-color: white;
+}
+
+
+#moduleProgressColumn .moduleProgressCustomIcon {
+  padding: 0;
+  margin: 0 20px 0 0;
+  min-width: 80px;
+}
+
+#moduleProgressColumn .moduleProgressCustomIcon h3 {
+  margin-top: 5px;
 }
