@@ -94,23 +94,57 @@ function updateModuleStatusIcons(moduleStatuses){
       `);
     }
   });
+};
+
+async function updateTimelineActions(modName){
+  const timelineActions = await $.get(`/getLearnerTimelineActions/${modName}`);
+  $(`#setLikeCount`).text(timelineActions.likes);
+  $(`#setFlagCount`).text(timelineActions.flags);
+  $(`#setReplyCount`).text(timelineActions.replies);
+  return;
+}
+
+function setLearningMapColumnWidths(){
+  const tableWidth = $(`#learningMapTable tbody`).width();
+  const yAxisWidth = $(`#learningMapTable tbody .yAxisLabel`).first().width();
+  const totalPadding = 66; // 11 * 6
+  const idealColumnWidth = Math.round((tableWidth - yAxisWidth - 66) / 3);
+  $(`td:not(.xAxisLabel, .yAxisLabel)`).css('width', idealColumnWidth);
 }
 
 $(window).on("load", async function() {
   const totalModuleCount = 12; // Update this number if there are ever additional modules
+  const moduleNames = {
+    "accounts": "Accounts and Passwords",
+    "advancedlit": "Advanced News Literacy",
+    "cyberbullying": "How to Be an Upstander",
+    "digfoot": "Shaping Your Digital Footprint",
+    "digital-literacy": "News in Social Media",
+    "esteem": "The Ups and Downs of Social Media",
+    "habits": "Healthy Social Media Habits",
+    "phishing": "Scams and Phishing",
+    "presentation": "Online Identities",
+    "privacy": "Social Media Privacy",
+    "safe-posting": "Is It Private Information?",
+    "targeted": "Ads on Social Media"
+  };
   const timePieChart = initializeModuleTimePieChart();
   $('.menu.moduleCompletionTabs .item').tab();
   const completedModules = await $.get('/getLearnerCompletedModules');
   createModuleCompletionCountChart(completedModules, totalModuleCount)
   addLearningMapIcons(completedModules);
+  setLearningMapColumnWidths();
   const moduleStatuses = await $.get('/getLearnerModuleStatuses');
   updateModuleStatusIcons(moduleStatuses);
   $('.refreshModuleCompletion').on('click', async function(){
     const modName = $(this).closest('.item').attr('data-itemModuleName');
     // Update mod name
-    $('.setModName').text(modName);
+    console.log(modName)
+    $('.setModName').text(moduleNames[modName]);
     const roundedSectionTimes = await $.get(`/getLearnerSectionTimeData/${modName}`);
     updatePieChartData(timePieChart, roundedSectionTimes);
     updateTimeTexts(roundedSectionTimes);
+    updateTimelineActions(modName);
+    $('#moduleDetailsColumn').removeClass('hideModuleDetails')
   });
 });

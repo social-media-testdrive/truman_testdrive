@@ -1,3 +1,11 @@
+/* defining cursor appearances */
+
+h2, h3, h4, p, td {
+  cursor: default;
+}
+
+/* general classes */
+
 .newDashboardSection {
   margin-top:3em;
 }
@@ -19,6 +27,8 @@
   margin-bottom: 30px;
 }
 
+/* My Learning Achievement section: module completion pie chart */
+
 .completionChartColumn .ui.segment {
   display: grid;
 }
@@ -35,12 +45,7 @@
   font-size: x-large;
 }
 
-.testing {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-}
-
+/* Learning Map section */
 
 #learningMapTable {
   border: none;
@@ -50,10 +55,6 @@
 #learningMapTable td {
   border: none !important;
   overflow-wrap: break-word;
-}
-
-/* selects all elements aside from the x and y "labels" */
-#learningMapTable td:not(.xAxisLabel, .yAxisLabel) {
 }
 
 #learningMapTable td.rightBorder {
@@ -94,13 +95,30 @@
   background-color: white;
 }
 
+/* Module Completion Section: list of modules*/
+
+#moduleProgressColumn {
+  overflow: auto;
+  max-height: 350px;
+}
 
 #moduleProgressColumn .moduleProgressCustomIcon {
   padding: 0;
   margin: 0 20px 0 0;
-  min-width: 80px;
+  min-width: 90px;
 }
 
 #moduleProgressColumn .moduleProgressCustomIcon h3 {
   margin-top: 5px;
+}
+
+#moduleProgressColumn .moduleProgressCustomIcon .icon {
+  color: rgba(250, 101, 132);
+  background: white;
+}
+
+/* Module Completion Section: individual module details */
+
+.hideModuleDetails {
+  visibility: hidden;
 }

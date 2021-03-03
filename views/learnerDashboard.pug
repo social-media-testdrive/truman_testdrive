@@ -108,27 +108,23 @@ block content
         .ui.items
           .item(data-itemModuleName="accounts")
             .ui.center.aligned.basic.segment.moduleProgressCustomIcon
-              //- i.big.circular.icon.star
-              //- h3 Completed
             .middle.aligned.content
               .header
                 h4 Accounts and Passwords
               .description
                 p Last accessed yesterday
               .extra
-                .ui.right.floated.button.refreshModuleCompletion See Details
+                .ui.right.floated.button.testDriveBlueButton.refreshModuleCompletion See Details
           .ui.divider
           .item(data-itemModuleName="esteem")
             .ui.center.aligned.basic.segment.moduleProgressCustomIcon
-              //- i.big.circular.icon.star.half
-              //- h3 Started
             .middle.aligned.content
               header
                 h4 The Ups and Downs of Social Media
               .description
                 p Last accessed 2 days ago
               .extra
-                .ui.right.floated.button.refreshModuleCompletion See Details
+                .ui.right.floated.button.testDriveBlueButton.refreshModuleCompletion See Details
           .ui.divider
           .item(data-itemModuleName="advancedlit")
             .ui.center.aligned.basic.segment.moduleProgressCustomIcon
@@ -138,7 +134,7 @@ block content
               .description
                 p Last accessed 3 days ago
               .extra
-                .ui.right.floated.button.refreshModuleCompletion See Details
+                .ui.right.floated.button.testDriveBlueButton.refreshModuleCompletion See Details
           .ui.divider
           .item(data-itemModuleName="habits")
             .ui.center.aligned.basic.segment.moduleProgressCustomIcon
@@ -148,7 +144,7 @@ block content
               .description
                 p Last accessed 1 week ago
               .extra
-                .ui.right.floated.button.refreshModuleCompletion See Details
+                .ui.right.floated.button.testDriveBlueButton.refreshModuleCompletion See Details
           .ui.divider
           .item(data-itemModuleName="targeted")
             .ui.center.aligned.basic.segment.moduleProgressCustomIcon
@@ -158,7 +154,7 @@ block content
               .description
                 p Last accessed 1 week ago
               .extra
-                .ui.right.floated.button.refreshModuleCompletion See Details
+                .ui.right.floated.button.testDriveBlueButton.refreshModuleCompletion See Details
           .ui.divider
           .item(data-itemModuleName="phishing")
             .ui.center.aligned.basic.segment.moduleProgressCustomIcon
@@ -168,7 +164,7 @@ block content
               .description
                 p Last accessed 1 week ago
               .extra
-                .ui.right.floated.button.refreshModuleCompletion See Details
+                .ui.right.floated.button.testDriveBlueButton.refreshModuleCompletion See Details
           .ui.divider
           .item(data-itemModuleName="cyberbullying")
             .ui.center.aligned.basic.segment.moduleProgressCustomIcon
@@ -178,7 +174,7 @@ block content
               .description
                 p Last accessed 1 week ago
               .extra
-                .ui.right.floated.button.refreshModuleCompletion See Details
+                .ui.right.floated.button.testDriveBlueButton.refreshModuleCompletion See Details
           .ui.divider
           .item(data-itemModuleName="safe-posting")
             .ui.center.aligned.basic.segment.moduleProgressCustomIcon
@@ -188,7 +184,7 @@ block content
               .description
                 p Last accessed 1 week ago
               .extra
-                .ui.right.floated.button.refreshModuleCompletion See Details
+                .ui.right.floated.button.testDriveBlueButton.refreshModuleCompletion See Details
           .ui.divider
           .item(data-itemModuleName="digfoot")
             .ui.center.aligned.basic.segment.moduleProgressCustomIcon
@@ -198,7 +194,7 @@ block content
               .description
                 p Last accessed 1 week ago
               .extra
-                .ui.right.floated.button.refreshModuleCompletion See Details
+                .ui.right.floated.button.testDriveBlueButton.refreshModuleCompletion See Details
           .ui.divider
           .item(data-itemModuleName="presentation")
             .ui.center.aligned.basic.segment.moduleProgressCustomIcon
@@ -208,7 +204,7 @@ block content
               .description
                 p Last accessed 1 week ago
               .extra
-                .ui.right.floated.button.refreshModuleCompletion See Details
+                .ui.right.floated.button.testDriveBlueButton.refreshModuleCompletion See Details
           .ui.divider
           .item(data-itemModuleName="privacy")
             .ui.center.aligned.basic.segment.moduleProgressCustomIcon
@@ -218,7 +214,7 @@ block content
               .description
                 p Last accessed 1 week ago
               .extra
-                .ui.right.floated.button.refreshModuleCompletion See Details
+                .ui.right.floated.button.testDriveBlueButton.refreshModuleCompletion See Details
           .ui.divider
           .item(data-itemModuleName="digital-literacy")
             .ui.center.aligned.basic.segment.moduleProgressCustomIcon
@@ -228,8 +224,8 @@ block content
               .description
                 p Last accessed 1 week ago
               .extra
-                .ui.right.floated.button.refreshModuleCompletion See Details
-      .column
+                .ui.right.floated.button.testDriveBlueButton.refreshModuleCompletion See Details
+      .column.hideModuleDetails#moduleDetailsColumn
         .ui.top.attached.tabular.menu.moduleCompletionTabs
           a.active.item(data-tab='time_spent') Time Spent
           a.item(data-tab='timeline_actions') Timeline Actions
@@ -277,17 +273,17 @@ block content
             p
               i.big.heart.icon
               | &nbsp&nbsp&nbspYou liked 
-              span.emphasizedText#setLikeCount 12
+              span.emphasizedText#setLikeCount 0
               | &nbspposts
             p
               i.big.flag.icon
               | &nbsp&nbsp&nbspYou flagged 
-              span.emphasizedText#setFlagCount 2
+              span.emphasizedText#setFlagCount 0
               | &nbspposts
             p
               i.big.reply.icon
               | &nbsp&nbsp&nbspYou wrote 
-              span.emphasizedText#setReplyCount 10
+              span.emphasizedText#setReplyCount 0
               | &nbspreplies
         .ui.tab.bottom.attached.segment(data-tab='reflection')
           p 

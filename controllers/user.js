@@ -1183,7 +1183,34 @@ exports.getLearnerSectionTimeData = async (req, res, next) => {
   res.send(sectionTimeArray);
 }
 
-
+exports.getLearnerTimelineActions = (req, res, next) => {
+  if (!req.user.isStudent){
+    return res.status(400).send('Bad Request')
+  }
+  let timelineActionCounts = {
+    "likes": 0,
+    "flags": 0,
+    "replies": 0
+  };
+  for (const post of req.user.feedAction) {
+    // ignore actions that aren't in the relevant module
+    if (post.modual !== req.params.modName) {
+      continue;
+    }
+    if (post.liked) {
+      timelineActionCounts.likes++;
+    }
+    if (post.flagged) {
+      timelineActionCounts.flags++;
+    }
+    for(const comment of post.comments){
+      if(comment.new_comment){
+        timelineActionCounts.replies++;
+      }
+    }
+  }
+  res.send(timelineActionCounts);
+}
 
 /**
  * POST /account/profile
