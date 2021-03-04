@@ -655,6 +655,7 @@ app.post('/interest', passportConfig.isAuthenticated, check, csrfProtection, use
 app.post('/advancedlitInterest', passportConfig.isAuthenticated, check, csrfProtection, userController.postAdvancedlitInterestSelection);
 app.post('/habitsTimer', passportConfig.isAuthenticated, check, csrfProtection, userController.postUpdateHabitsTimer);
 app.post('/delete', passportConfig.isAuthenticated, userController.getDeleteAccount);
+app.post('/postUpdateNewBadge', passportConfig.isAuthenticated, check, csrfProtection, userController.postUpdateNewBadge);
 app.post('/moduleProgress', passportConfig.isAuthenticated, check, csrfProtection, userController.postUpdateModuleProgress);
 app.get('/moduleProgress/:classId', passportConfig.isAuthenticated, classController.getModuleProgress);
 app.get('/classReflectionResponses/:classId', passportConfig.isAuthenticated, classController.getReflectionResponses);

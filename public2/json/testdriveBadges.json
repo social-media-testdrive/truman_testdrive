@@ -1,0 +1,50 @@
+{
+  "completed_accounts": {
+    "title": "Protector of Accounts",
+    "image": "protector_of_accounts.png"
+  },
+  "completed_advancedlit": {
+    "title": "Expert in News",
+    "image": "expert_in_news.png"
+  },
+  "completed_cyberbullying": {
+    "title": "Upstander of Cyberbullying",
+    "image": "upstander_of_cyberbullying.png"
+  },
+  "completed_digfoot": {
+    "title": "Protector of Digital Footprints",
+    "image": "protector_of_digital_footprints.png"
+  },
+  "completed_digital-literacy": {
+    "title": "Detective of Fake News",
+    "image": "detective_of_fake_news.png"
+  },
+  "completed_esteem": {
+    "title": "Master of Balancing",
+    "image": "master_of_balancing.png"
+  },
+  "completed_habits": {
+    "title": "Healthy User of Social Media",
+    "image": "healthy_user_of_social_media.png"
+  },
+  "completed_phishing": {
+    "title": "Detective of Scams and Phishing",
+    "image": "detective_of_scams_and_phishing.png"
+  },
+  "completed_presentation": {
+    "title": "Manager of Online Identities",
+    "image": "manager_of_online_identities.png"
+  },
+  "completed_privacy": {
+    "title": "Expert in Privacy",
+    "image": "expert_in_privacy.png"
+  },
+  "completed_safe-posting": {
+    "title": "Protector of Private Information",
+    "image": "protector_of_private_information.png"
+  },
+  "completed_targeted": {
+    "title": "Detective of Ads",
+    "image": "detective_of_ads.png"
+  }
+}

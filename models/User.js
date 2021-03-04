@@ -36,6 +36,12 @@ const userSchema = new mongoose.Schema({
     safeposting: {type: String, default: 'none'},
     targeted: {type: String, default: 'none'},
   },
+  earnedBadges: [new Schema({
+    badgeId: String,
+    badgeTitle: String,
+    badgeImage: String,
+    dateEarned: Date
+  })],
   numPosts: { type: Number, default: -1 }, //How many posts has this user created? not including replys
   numReplies: { type: Number, default: -1 }, //How many comments has user made
   //numActorReplies: { type: Number, default: -1 }, //How many times has an actor commented on this user

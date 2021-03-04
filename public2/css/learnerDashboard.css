@@ -45,6 +45,13 @@ h2, h3, h4, p, td {
   font-size: x-large;
 }
 
+/* My Learning Achievement section: badge list */
+#badgeItems {
+  overflow: auto;
+  max-height: 300px;
+}
+
+
 /* Learning Map section */
 
 #learningMapTable {
@@ -72,7 +79,7 @@ h2, h3, h4, p, td {
 
 #learningMapTable .container {
   position: relative !important;
-  min-height: 110px;
+  min-height: 90px;
 }
 
 #learningMapTable .segment {
@@ -83,7 +90,8 @@ h2, h3, h4, p, td {
   background: #14a1f6;
   color: white;
   border: none;
-  min-height: 110px;
+  border-radius: 15px;
+  min-height: 90px;
 }
 
 #learningMapTable i.icon {

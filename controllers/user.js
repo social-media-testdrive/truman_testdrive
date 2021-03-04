@@ -1011,6 +1011,34 @@ exports.postUpdateModuleProgress = (req, res, next) => {
   });
 };
 
+exports.postUpdateNewBadge = (req, res, next) => {
+  User.findById(req.user.id, (err, user) => {
+    if (err) {
+      return next(err);
+    }
+    // check if the user already has earned this badge
+    for(const badge of user.earnedBadges){
+      if(badge.badgeId === req.body.badgeId){
+        return res.sendStatus(200);
+      }
+    }
+    // otherwise, create a new badge using the info in the request body
+    const newBadge = {
+      badgeId: req.body.badgeId,
+      badgeTitle: req.body.badgeTitle,
+      badgeImage: req.body.badgeImage,
+      dateEarned: Date.now()
+    }
+    user.earnedBadges.push(newBadge);
+    user.save((err) => {
+      if (err) {
+        return next(err);
+      }
+      return res.sendStatus(200);
+    });
+  });
+}
+
 
 exports.getStudentReportData = (req, res, next) => {
   if (!req.user.isInstructor) {
