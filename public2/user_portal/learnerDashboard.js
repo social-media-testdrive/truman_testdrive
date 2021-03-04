@@ -1,3 +1,5 @@
+// chart initialization/creation
+
 function initializeModuleTimePieChart() {
   const ctx = $('#moduleTimePieChart');
   const timePieChart = new Chart(ctx, {
@@ -53,6 +55,15 @@ function createModuleCompletionCountChart(completedModules, totalModuleCount){
   return;
 }
 
+
+function setLearningMapColumnWidths(){
+  const tableWidth = $(`#learningMapTable tbody`).width();
+  const yAxisWidth = $(`#learningMapTable tbody .yAxisLabel`).first().width();
+  const totalPadding = 66; // 11 * 6
+  const idealColumnWidth = Math.round((tableWidth - yAxisWidth - 66) / 3);
+  $(`td:not(.xAxisLabel, .yAxisLabel)`).css('width', idealColumnWidth);
+}
+
 async function addLearningMapIcons(completedModules){
   for(const modName of completedModules) {
     $(`#learningMapTable .container[data-mapTableMod="${modName}"]`).append(`
@@ -61,6 +72,7 @@ async function addLearningMapIcons(completedModules){
   }
 };
 
+// module completion section, module details tabs
 
 function updatePieChartData(chart, data) {
   chart.data.datasets[0].data = data;
@@ -79,38 +91,35 @@ function updateTimeTexts(roundedSectionTimes) {
   return;
 }
 
-function updateModuleStatusIcons(moduleStatuses){
+async function updateTimelineActions(modName, moduleGeneralData){
+  $(`#setLikeCount`).text(moduleGeneralData[modName].likes);
+  $(`#setFlagCount`).text(moduleGeneralData[modName].flags);
+  $(`#setReplyCount`).text(moduleGeneralData[modName].replies);
+  return;
+}
+
+// module completion section, module list
+
+function updateModuleStatusList(moduleGeneralData){
   $('#moduleProgressColumn .item').each(function(){
     const modName = $(this).attr('data-itemModuleName');
-    if (moduleStatuses[modName] === "completed") {
+    if (moduleGeneralData[modName].status === "completed") {
       $(this).children('.moduleProgressCustomIcon').append(`
         <i class="big circular icon star"></i>
         <h3>Completed</h3>
       `);
-    } else if (moduleStatuses[modName] === "started") {
+    } else if (moduleGeneralData[modName].status === "started") {
       $(this).children('.moduleProgressCustomIcon').append(`
         <i class="big circular icon star half"></i>
         <h3>Started</h3>
       `);
     }
+    // set the last Accessed info
+    if(moduleGeneralData[modName].lastAccessed !== 0) {
+      $(this).find('.description p').text(`Last accessed ${humanized_time_span(moduleGeneralData[modName].lastAccessed)}`)
+    }
   });
 };
-
-async function updateTimelineActions(modName){
-  const timelineActions = await $.get(`/getLearnerTimelineActions/${modName}`);
-  $(`#setLikeCount`).text(timelineActions.likes);
-  $(`#setFlagCount`).text(timelineActions.flags);
-  $(`#setReplyCount`).text(timelineActions.replies);
-  return;
-}
-
-function setLearningMapColumnWidths(){
-  const tableWidth = $(`#learningMapTable tbody`).width();
-  const yAxisWidth = $(`#learningMapTable tbody .yAxisLabel`).first().width();
-  const totalPadding = 66; // 11 * 6
-  const idealColumnWidth = Math.round((tableWidth - yAxisWidth - 66) / 3);
-  $(`td:not(.xAxisLabel, .yAxisLabel)`).css('width', idealColumnWidth);
-}
 
 $(window).on("load", async function() {
   const totalModuleCount = 12; // Update this number if there are ever additional modules
@@ -129,22 +138,33 @@ $(window).on("load", async function() {
     "targeted": "Ads on Social Media"
   };
   const timePieChart = initializeModuleTimePieChart();
+  const moduleGeneralData = await $.get('/getLearnerGeneralModuleData');
+  const allRoundedSectionTimes = await $.get(`/getLearnerSectionTimeData`);
   $('.menu.moduleCompletionTabs .item').tab();
-  const completedModules = await $.get('/getLearnerCompletedModules');
+  let completedModules = [];
+  for (const modName of Object.keys(moduleGeneralData)){
+    if(moduleGeneralData[modName].status === "completed") {
+      completedModules.push(modName);
+    }
+  }
   createModuleCompletionCountChart(completedModules, totalModuleCount)
   addLearningMapIcons(completedModules);
   setLearningMapColumnWidths();
-  const moduleStatuses = await $.get('/getLearnerModuleStatuses');
-  updateModuleStatusIcons(moduleStatuses);
+  updateModuleStatusList(moduleGeneralData);
   $('.refreshModuleCompletion').on('click', async function(){
     const modName = $(this).closest('.item').attr('data-itemModuleName');
-    // Update mod name
-    console.log(modName)
+    const roundedSectionTimes = [
+      allRoundedSectionTimes[modName].learn,
+      allRoundedSectionTimes[modName].practice,
+      allRoundedSectionTimes[modName].explore,
+      allRoundedSectionTimes[modName].reflect
+    ]
+    // Update displayed mod name
     $('.setModName').text(moduleNames[modName]);
-    const roundedSectionTimes = await $.get(`/getLearnerSectionTimeData/${modName}`);
     updatePieChartData(timePieChart, roundedSectionTimes);
     updateTimeTexts(roundedSectionTimes);
-    updateTimelineActions(modName);
+    updateTimelineActions(modName, moduleGeneralData);
+    // module details are initially hidden on window load, unhide 
     $('#moduleDetailsColumn').removeClass('hideModuleDetails')
   });
 });
