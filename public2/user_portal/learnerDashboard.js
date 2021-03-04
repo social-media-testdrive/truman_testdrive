@@ -45,6 +45,9 @@ function createModuleCompletionCountChart(completedModules, totalModuleCount){
       options: {
         cutoutPercentage: 70,
         maintainAspectRatio: false,
+        tooltips: {
+          enabled: false
+        },
         legend: {
           display: false
         }
@@ -105,12 +108,12 @@ function updateModuleStatusList(moduleGeneralData){
     const modName = $(this).attr('data-itemModuleName');
     if (moduleGeneralData[modName].status === "completed") {
       $(this).children('.moduleProgressCustomIcon').append(`
-        <i class="big circular icon star"></i>
+        <i class="big circular icon check"></i>
         <h3>Completed</h3>
       `);
     } else if (moduleGeneralData[modName].status === "started") {
       $(this).children('.moduleProgressCustomIcon').append(`
-        <i class="big circular icon star half"></i>
+        <i class="big circular icon hourglass outline"></i>
         <h3>Started</h3>
       `);
     }
@@ -164,7 +167,7 @@ $(window).on("load", async function() {
     updatePieChartData(timePieChart, roundedSectionTimes);
     updateTimeTexts(roundedSectionTimes);
     updateTimelineActions(modName, moduleGeneralData);
-    // module details are initially hidden on window load, unhide 
+    // module details are initially hidden on window load, unhide
     $('#moduleDetailsColumn').removeClass('hideModuleDetails')
   });
 });

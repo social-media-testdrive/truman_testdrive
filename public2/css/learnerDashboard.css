@@ -72,7 +72,7 @@ h2, h3, h4, p, td {
 
 #learningMapTable .container {
   position: relative !important;
-  min-height: 130px;
+  min-height: 110px;
 }
 
 #learningMapTable .segment {
@@ -83,21 +83,16 @@ h2, h3, h4, p, td {
   background: #14a1f6;
   color: white;
   border: none;
-  min-height: 130px;
-}
-
-#learningMapTable i.icons {
-  position: absolute;
-  top: 3px;
-  right: 0;
+  min-height: 110px;
 }
 
 #learningMapTable i.icon {
   position: absolute;
-  top: 3px;
-  right: 0;
+  top: -15px;
+  right: -15px;
   color: rgba(255, 99, 132, 1);
   background-color: white;
+  box-shadow: 0 0 0 0.1em rgb(255 99 132) inset;
 }
 
 /* Module Completion Section: list of modules*/
@@ -117,10 +112,18 @@ h2, h3, h4, p, td {
   margin-top: 5px;
 }
 
-#moduleProgressColumn .moduleProgressCustomIcon .icon {
-  color: rgba(250, 101, 132);
+#moduleProgressColumn .moduleProgressCustomIcon .check.icon {
+  color: rgba(255, 99, 132, 1);
   background: white;
+  box-shadow: 0 0 0 0.1em rgba(255, 99, 132, 1) inset;
 }
+
+#moduleProgressColumn .moduleProgressCustomIcon .hourglass.icon {
+  color: rgb(0 0 0 / 35%);
+  background: white;
+  box-shadow: 0 0 0 0.1em rgb(0 0 0 / 35%) inset;
+}
+
 
 /* Module Completion Section: individual module details */
 
