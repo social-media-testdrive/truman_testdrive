@@ -1130,8 +1130,9 @@ exports.getLearnerGeneralModuleData = (req, res, next) => {
     }
   }
   for(const modName of allModNames){
+    const modNameNoDashes = modName.replace('-','');
     moduleStatuses[modName] = {};
-    moduleStatuses[modName]['status'] = req.user.moduleProgress[modName];
+    moduleStatuses[modName]['status'] = req.user.moduleProgress[modNameNoDashes];
     moduleStatuses[modName]['lastAccessed'] = getDateLastAccessed(req.user.pageLog, modName);
     moduleStatuses[modName]['likes'] = 0;
     moduleStatuses[modName]['flags'] = 0;
@@ -1255,33 +1256,19 @@ exports.getLearnerSectionTimeData = async (req, res, next) => {
   res.send(allSectionTimeData);
 }
 
-exports.getLearnerTimelineActions = (req, res, next) => {
-  if (!req.user.isStudent){
+exports.getLearnerEarnedBadges = (req, res, next) => {
+  if (!req.user.isStudent) {
     return res.status(400).send('Bad Request')
   }
-  let timelineActionCounts = {
-    "likes": 0,
-    "flags": 0,
-    "replies": 0
-  };
-  for (const post of req.user.feedAction) {
-    // ignore actions that aren't in the relevant module
-    if (post.modual !== req.params.modName) {
-      continue;
-    }
-    if (post.liked) {
-      timelineActionCounts.likes++;
-    }
-    if (post.flagged) {
-      timelineActionCounts.flags++;
-    }
-    for(const comment of post.comments){
-      if(comment.new_comment){
-        timelineActionCounts.replies++;
-      }
-    }
+  let earnedBadges = [];
+  for (const badge of req.user.earnedBadges) {
+    const badgeInfo = {
+      title: badge.badgeTitle,
+      image: badge.badgeImage
+    };
+    earnedBadges.push(badgeInfo);
   }
-  res.send(timelineActionCounts);
+  res.send(earnedBadges);
 }
 
 /**

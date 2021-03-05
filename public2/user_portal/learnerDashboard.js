@@ -124,6 +124,22 @@ function updateModuleStatusList(moduleGeneralData){
   });
 };
 
+async function appendEarnedBadges(){
+  const earnedBadges = await $.get('/getLearnerEarnedBadges');
+  for(const badge of earnedBadges) {
+    $(`#badgeItems`).append(`
+      <div class="item">
+        <div class="ui tiny image">
+          <img src="/badges/${badge.image}"></img>
+        </div>
+        <div class="content middle aligned">
+          <p>${badge.title}</p>
+        </div>
+      </div>
+    `);
+  }
+}
+
 $(window).on("load", async function() {
   const totalModuleCount = 12; // Update this number if there are ever additional modules
   const moduleNames = {
@@ -150,7 +166,8 @@ $(window).on("load", async function() {
       completedModules.push(modName);
     }
   }
-  createModuleCompletionCountChart(completedModules, totalModuleCount)
+  createModuleCompletionCountChart(completedModules, totalModuleCount);
+  appendEarnedBadges();
   addLearningMapIcons(completedModules);
   setLearningMapColumnWidths();
   updateModuleStatusList(moduleGeneralData);
