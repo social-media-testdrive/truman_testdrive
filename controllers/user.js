@@ -1102,6 +1102,14 @@ exports.getStudentReportData = (req, res, next) => {
 }
 
 function getDateLastAccessed(pageLog, modName) {
+  /*
+  New pageLog item added each time a user opens a page.
+  pageLog: [new Schema({
+    time: Date,
+    subdirectory1: String,
+    subdirectory2: String
+  })]
+  */
   let lastAccessed = 0;
   for(const page of pageLog) {
     if (page.subdirectory2 === modName) {
@@ -1118,9 +1126,17 @@ exports.getLearnerGeneralModuleData = (req, res, next) => {
     return res.status(400).send('Bad Request')
   }
   let moduleStatuses = {};
-  // get a list of module names with dashes added where needed
+  // get a list of module names, with dashes added where needed
   let allModNames = [];
   for(const modName of Object.keys(req.user.moduleProgress.toJSON())){
+    /*
+    from the User model:
+    moduleProgress: { // marks the progress of each module: none, started, completed
+      accounts: {type: String, default: 'none'},
+      ...
+      targeted: {type: String, default: 'none'}
+    },
+    */
     if (modName === "digitalliteracy") {
       allModNames.push('digital-literacy');
     } else if (modName === "safeposting") {
@@ -1130,7 +1146,7 @@ exports.getLearnerGeneralModuleData = (req, res, next) => {
     }
   }
   for(const modName of allModNames){
-    const modNameNoDashes = modName.replace('-','');
+    const modNameNoDashes = modName.replace('-','');  // modNames in user.moduleProgress do not have dashes where they usually do
     moduleStatuses[modName] = {};
     moduleStatuses[modName]['status'] = req.user.moduleProgress[modNameNoDashes];
     moduleStatuses[modName]['lastAccessed'] = getDateLastAccessed(req.user.pageLog, modName);
@@ -1187,6 +1203,15 @@ exports.getLearnerSectionTimeData = async (req, res, next) => {
     return res.status(400).send('Bad Request')
   }
   const pageLog = req.user.pageLog;
+  /*
+  New pageLog item added each time a user opens a page.
+  pageLog: [new Schema({
+    time: Date,
+    subdirectory1: String,
+    subdirectory2: String
+  })]
+  */
+
   let allSectionTimeData = {
     'accounts': { 'learn': 0,'explore': 0, 'practice': 0,'reflect': 0},
     'advancedlit': { 'learn': 0,'explore': 0,'practice': 0,'reflect': 0},
@@ -1204,13 +1229,29 @@ exports.getLearnerSectionTimeData = async (req, res, next) => {
   // First, need to get the mappings between module pages and section numbers
   const sectionDataA = await getSectionJsonFromFile("./public2/json/progressDataA.json");
   const sectionDataB = await getSectionJsonFromFile("./public2/json/progressDataB.json");
+  /* Short example of the data in progressDataA and progressDataB:
+    {
+      "start": "1",
+      "sim": "2",
+      "trans_script": "3",
+      "modual": "3",
+      "results": "4",
+      "end": "end"
+    }
+    where the key corresponds to page name, value corresponds to a section number
+    1 = "learn" section
+    2 = "practice" section
+    3 = "explore" section
+    4 = "reflect" section
+  */
   for(const modName of Object.keys(allSectionTimeData)){
     // if module has not been completed, skip it
     const modNameNoDashes = modName.replace('-','');
+    // modNames in user.moduleProgress do not have dashes where they usually do
     if(req.user.moduleProgress[modNameNoDashes] !== "completed"){
       continue;
     }
-    // select the corresponding sectionData, A or B, to use
+    // select the corresponding sectionData, A or B, to use depending on the module
     let sectionJson = {};
     switch (modName) {
       case 'cyberbullying':
@@ -1248,7 +1289,6 @@ exports.getLearnerSectionTimeData = async (req, res, next) => {
     }
     // round each number using Math.round (note that this is inconsistent with
     // the teacher dashbord time displays, which all round using Math.floor)
-    // TODO: check which method to use
     for(const section of Object.keys(allSectionTimeData[modName])) {
       allSectionTimeData[modName][section] = Math.round(allSectionTimeData[modName][section]);
     }
@@ -1262,6 +1302,14 @@ exports.getLearnerEarnedBadges = (req, res, next) => {
   }
   let earnedBadges = [];
   for (const badge of req.user.earnedBadges) {
+    /*
+    earnedBadges: [new Schema({
+      badgeId: String,
+      badgeTitle: String,
+      badgeImage: String,
+      dateEarned: Date
+    })],
+    */
     const badgeInfo = {
       title: badge.badgeTitle,
       image: badge.badgeImage
@@ -1270,6 +1318,7 @@ exports.getLearnerEarnedBadges = (req, res, next) => {
   }
   res.send(earnedBadges);
 }
+
 
 /**
  * POST /account/profile

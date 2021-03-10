@@ -27,6 +27,8 @@ function initializeModuleTimePieChart() {
   return timePieChart;
 }
 
+// "My Achievement" section
+
 function createModuleCompletionCountChart(completedModules, totalModuleCount){
   const completedCount = completedModules.length;
   const incompleteCount = totalModuleCount - completedCount;
@@ -58,6 +60,23 @@ function createModuleCompletionCountChart(completedModules, totalModuleCount){
   return;
 }
 
+async function appendEarnedBadges(){
+  const earnedBadges = await $.get('/getLearnerEarnedBadges');
+  for(const badge of earnedBadges) {
+    $(`#badgeItems`).append(`
+      <div class="item">
+        <div class="ui tiny image">
+          <img src="/badges/${badge.image}"></img>
+        </div>
+        <div class="content middle aligned">
+          <p>${badge.title}</p>
+        </div>
+      </div>
+    `);
+  }
+}
+
+// "Learning Map" section
 
 function setLearningMapColumnWidths(){
   const tableWidth = $(`#learningMapTable tbody`).width();
@@ -75,7 +94,7 @@ async function addLearningMapIcons(completedModules){
   }
 };
 
-// module completion section, module details tabs
+// "Module Completion" section: module details tabs
 
 function updatePieChartData(chart, data) {
   chart.data.datasets[0].data = data;
@@ -101,11 +120,12 @@ async function updateTimelineActions(modName, moduleGeneralData){
   return;
 }
 
-// module completion section, module list
+// "Module Completion" section: module list
 
 function updateModuleStatusList(moduleGeneralData){
   $('#moduleProgressColumn .item').each(function(){
     const modName = $(this).attr('data-itemModuleName');
+    // set the icon depending on module status
     if (moduleGeneralData[modName].status === "completed") {
       $(this).children('.moduleProgressCustomIcon').append(`
         <i class="big circular icon check"></i>
@@ -117,32 +137,16 @@ function updateModuleStatusList(moduleGeneralData){
         <h3>Started</h3>
       `);
     }
-    // set the last Accessed info
+    // set the last accessed info
     if(moduleGeneralData[modName].lastAccessed !== 0) {
       $(this).find('.description p').text(`Last accessed ${humanized_time_span(moduleGeneralData[modName].lastAccessed)}`)
     }
   });
 };
 
-async function appendEarnedBadges(){
-  const earnedBadges = await $.get('/getLearnerEarnedBadges');
-  for(const badge of earnedBadges) {
-    $(`#badgeItems`).append(`
-      <div class="item">
-        <div class="ui tiny image">
-          <img src="/badges/${badge.image}"></img>
-        </div>
-        <div class="content middle aligned">
-          <p>${badge.title}</p>
-        </div>
-      </div>
-    `);
-  }
-}
-
 $(window).on("load", async function() {
-  const totalModuleCount = 12; // Update this number if there are ever additional modules
-  const moduleNames = {
+  const totalModuleCount = 12;
+  const fullModuleNames = {
     "accounts": "Accounts and Passwords",
     "advancedlit": "Advanced News Literacy",
     "cyberbullying": "How to Be an Upstander",
@@ -180,7 +184,7 @@ $(window).on("load", async function() {
       allRoundedSectionTimes[modName].reflect
     ]
     // Update displayed mod name
-    $('.setModName').text(moduleNames[modName]);
+    $('.setModName').text(fullModuleNames[modName]);
     updatePieChartData(timePieChart, roundedSectionTimes);
     updateTimeTexts(roundedSectionTimes);
     updateTimelineActions(modName, moduleGeneralData);
