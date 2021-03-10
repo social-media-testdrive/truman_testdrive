@@ -100,7 +100,6 @@ exports.getClassUsernames = (req, res, next) => {
     for(const student of found_class.students){
       usernameArray.push(student.username);
     }
-    console.log(usernameArray)
     res.json({classUsernames: usernameArray});
   });
 }
@@ -505,7 +504,6 @@ async function getUniqueUsername(accessCode, adjectiveArray, nounArray, username
   let adjective = adjectiveArray[getRandomInt(0, adjectiveArray.length)];
   let noun = nounArray[getRandomInt(0, nounArray.length)];
   let username = `${adjective}${noun}`;
-  console.log(`Generated a username... ${username}`);
   let result = await User.findOne({
     username: username,
     accessCode: accessCode,
@@ -547,7 +545,6 @@ async function saveUsernameInExistingClass(req, item, existingClass) {
   user.profile.location = '';
   user.profile.bio = '';
   user.profile.picture = 'avatar-icon.svg';
-  console.log("About to save user...")
   try {
     await user.save();
     existingClass.students.push(user._id);
@@ -612,7 +609,6 @@ exports.generateStudentAccounts = async (req, res, next) => {
         promiseArray.push(saveUsernameInExistingClass(req,username,existingClass));
       }
       await Promise.all(promiseArray);
-      console.log("About to save class...")
       existingClass.save((err) => {
         if(err) {
           return next(err);
@@ -1011,10 +1007,17 @@ exports.postClassReflectionResponsesCsv = async (req, res, next) => {
   // Build the layout of the output csv based on the reflectionJson content
   const headerArray = buildHeaderArray(moduleQuestions);
   const outputFilePath = `public2/downloads/classReflectionResponses_${req.user.username}.csv`
-  const csvWriter = createCsvWriter({
-      path: outputFilePath,
-      header: headerArray
-  });
+  let csvWriter;
+  try {
+    csvWriter = createCsvWriter({
+        path: outputFilePath,
+        header: headerArray
+    });
+  } catch(err) {
+    console.log(err);
+    return next(err);
+  }
+
   let records = [];
   records = buildSubHeaderRecords(headerArray, records, moduleQuestions);
   Class.findOne({
@@ -1034,7 +1037,13 @@ exports.postClassReflectionResponsesCsv = async (req, res, next) => {
       return next(myerr);
     }
     records = addClassReflectionRecords(req.params.modName, headerArray, records, moduleQuestions, found_class);
-    await csvWriter.writeRecords(records);
+    try {
+      await csvWriter.writeRecords(records);
+    } catch (err) {
+      console.log(err);
+      return next(err);
+    }
+
     res.download(outputFilePath, `reflectionResponses_${req.params.classId}.csv`, function(err) {
       if (err) {
         console.log(err);
@@ -1064,10 +1073,17 @@ exports.postClassTimeReportCsv = async (req, res, next) => {
     {id: '4', title: "Time Spent in the Reflect Section (minutes)"}
   ];
   const timeReportFilepath = `public2/downloads/classTimeReport_${req.user.username}.csv`
-  const csvWriter = createCsvWriter({
-      path: timeReportFilepath,
-      header: headerArray
-  });
+  let csvWriter;
+  try {
+    csvWriter = createCsvWriter({
+        path: timeReportFilepath,
+        header: headerArray
+    });
+  } catch (err) {
+    console.log(err);
+    return next(err);
+  }
+
   Class.findOne({
     accessCode: req.params.classId,
     teacher: req.user.id,
@@ -1154,7 +1170,13 @@ exports.postClassTimeReportCsv = async (req, res, next) => {
       newRecord.total = Math.round(newRecord.total);
       records.push(newRecord);
     }
-    await csvWriter.writeRecords(records);
+    try {
+      await csvWriter.writeRecords(records);
+    } catch (err) {
+      console.log(err);
+      return next(err);
+    }
+
     res.download(timeReportFilepath, `timeReport_${req.params.classId}.csv`, function(err) {
       if (err) {
         console.log(err);

@@ -1034,7 +1034,7 @@ exports.getStudentReportData = (req, res, next) => {
     // add dashes to the keys that usually have them
     let moduleProgress = {};
     moduleProgress["safe-posting"] = student.moduleProgress['safeposting'];
-    moduleProgress["digital-literacy"] = student.moduleProgress['safeposting'];
+    moduleProgress["digital-literacy"] = student.moduleProgress['digitalliteracy'];
     for(const key of Object.keys(student.moduleProgress)){
       if(key !== "digitalliteracy" && key !== "safeposting")
       moduleProgress[key] = student.moduleProgress[key];
