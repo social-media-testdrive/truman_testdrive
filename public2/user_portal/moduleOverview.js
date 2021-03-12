@@ -628,6 +628,11 @@ function appendFreeplayRankingHtml(ranking, imageName, postText){
 
 function updateRankingChartModalData(postId, chartLabels, chartData, freeplayContentInfo, classFreeplayActions){
   for (const modalType in freeplayContentInfo.modalInfo){
+    // in digital-literacy, we want to exclude the modal digital-literacy_flagModal
+    // this is the only modal we ever exclude, so I've added a simple check for it
+    if(freeplayContentInfo.modalInfo[modalType].modalName === "digital-literacy_flagModal") {
+      continue;
+    }
     chartLabels.push(freeplayContentInfo.modalInfo[modalType].label);
     chartData.push(0);
     const modalName = freeplayContentInfo.modalInfo[modalType].modalName;

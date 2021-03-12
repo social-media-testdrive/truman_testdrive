@@ -30,6 +30,7 @@ function recordModalInputs(modalNameAttrStr) {
 
        $.post("/feed", {
          postID: postID,
+         modual: "phishing",
          modalName: modalName,
          modalOpenedTime: modalOpenedTime,
          modalViewTime: modalViewTime,
