@@ -17,7 +17,7 @@ block content
       .column
         .ui.basic.segment
           h3(style="text-align:center;") My badges
-          .ui.items#badgeItems
+        .ui.stackable.three.column.grid.removeMargins#badgeItems
       
     .row.centerText.newDashboardSection
       h2 
@@ -224,7 +224,8 @@ block content
         .ui.top.attached.tabular.menu.moduleCompletionTabs
           a.active.item(data-tab='time_spent') Time Spent
           a.item(data-tab='timeline_actions') Timeline Actions
-          a.item(data-tab='reflection') Reflection
+          //- uncomment once developed
+          //- a.item(data-tab='reflection') Reflection
         .ui.active.tab.bottom.attached.segment(data-tab='time_spent')
           .ui.stackable.two.column.grid.middle.aligned
             .column

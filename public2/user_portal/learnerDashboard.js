@@ -64,12 +64,14 @@ async function appendEarnedBadges(){
   const earnedBadges = await $.get('/getLearnerEarnedBadges');
   for(const badge of earnedBadges) {
     $(`#badgeItems`).append(`
-      <div class="item">
-        <div class="ui tiny image">
-          <img src="/badges/${badge.image}"></img>
-        </div>
-        <div class="content middle aligned">
-          <p>${badge.title}</p>
+      <div class="column">
+        <div class="ui basic segment center aligned">
+          <div class="ui tiny image">
+            <img src="/badges/${badge.image}"></img>
+          </div>
+          <div class="content middle aligned">
+            <p>${badge.title}</p>
+          </div>
         </div>
       </div>
     `);
