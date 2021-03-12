@@ -367,11 +367,15 @@ function updateLeaderboardTableHtml(finalLeaderboardData) {
       <tbody id="studentReportTable"></tbody>
     </table>
   `);
-  let ranking = 1;
-  for(const rowData of finalLeaderboardData){
+  const numberOfStudents = finalLeaderboardData.length;
+  const maxRanking = numberOfStudents < 5 ? numberOfStudents : 5;
+  let i = 0;
+  while(i < maxRanking) {
+    const rowData = finalLeaderboardData[i];
+    const rankingText = i+1;
     $(`#studentReportTable`).append(`
       <tr>
-        <td>${ranking}</td>
+        <td>${rankingText}</td>
         <td>${rowData.username}</td>
         <td>${rowData.completed}</td>
         <td>${rowData.avgTime ? Math.round(rowData.avgTime) + " minutes": "N/A"}</td>
@@ -379,7 +383,7 @@ function updateLeaderboardTableHtml(finalLeaderboardData) {
         <td>${rowData.lastVisited ? humanized_time_span(rowData.lastVisited) : ""}</td>
       </tr>
     `);
-    ranking++;
+    i++;
   }
   return;
 }
