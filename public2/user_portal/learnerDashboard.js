@@ -124,27 +124,56 @@ async function updateTimelineActions(modName, moduleGeneralData){
 
 // "Module Completion" section: module list
 
-function updateModuleStatusList(moduleGeneralData){
+// Used with the old design for the module completion section - remove after
+// new design is approved
+function updateModuleStatusList(allModuleGeneralData){
   $('#moduleProgressColumn .item').each(function(){
     const modName = $(this).attr('data-itemModuleName');
     // set the icon depending on module status
-    if (moduleGeneralData[modName].status === "completed") {
+    if (allModuleGeneralData[modName].status === "completed") {
       $(this).children('.moduleProgressCustomIcon').append(`
         <i class="big circular icon check"></i>
         <h3>Completed</h3>
       `);
-    } else if (moduleGeneralData[modName].status === "started") {
+    } else if (allModuleGeneralData[modName].status === "started") {
       $(this).children('.moduleProgressCustomIcon').append(`
         <i class="big circular icon hourglass outline"></i>
         <h3>Started</h3>
       `);
     }
     // set the last accessed info
-    if(moduleGeneralData[modName].lastAccessed !== 0) {
-      $(this).find('.description p').text(`Last accessed ${humanized_time_span(moduleGeneralData[modName].lastAccessed)}`)
+    if(allModuleGeneralData[modName].lastAccessed !== 0) {
+      $(this).find('.description p').text(`Last accessed ${humanized_time_span(allModuleGeneralData[modName].lastAccessed)}`)
     }
   });
 };
+
+function updateModuleStatus(moduleGeneralData){
+  $('#moduleStatus .moduleProgressCustomIcon').empty();
+  // set the icon depending on module status
+  if (moduleGeneralData.status === "completed") {
+    $('#moduleStatus .moduleProgressCustomIcon').append(`
+      <i class="huge circular icon check"></i>
+      <h2>Completed</h2>
+    `);
+  } else if (moduleGeneralData.status === "started") {
+    $('#moduleStatus .moduleProgressCustomIcon').append(`
+      <i class="huge circular icon hourglass outline"></i>
+      <h2>Started</h2>
+    `);
+  } else {
+    $('#moduleStatus .moduleProgressCustomIcon').append(`
+      <i class="huge circular icon minus"></i>
+      <h2>Not Started</h2>
+    `);
+  }
+
+  // set the last accessed info
+  if(moduleGeneralData.lastAccessed !== 0) {
+    console.log(`set last accessed...`)
+    $('#moduleStatus .description h3').text(`Last accessed ${humanized_time_span(moduleGeneralData.lastAccessed)}`)
+  }
+}
 
 $(window).on("load", async function() {
   const totalModuleCount = 12;
@@ -165,6 +194,7 @@ $(window).on("load", async function() {
   const timePieChart = initializeModuleTimePieChart();
   const moduleGeneralData = await $.get('/getLearnerGeneralModuleData');
   const allRoundedSectionTimes = await $.get(`/getLearnerSectionTimeData`);
+  $('.ui.dropdown').dropdown();
   $('.menu.moduleCompletionTabs .item').tab();
   let completedModules = [];
   for (const modName of Object.keys(moduleGeneralData)){
@@ -176,21 +206,41 @@ $(window).on("load", async function() {
   appendEarnedBadges();
   addLearningMapIcons(completedModules);
   setLearningMapColumnWidths();
-  updateModuleStatusList(moduleGeneralData);
-  $('.refreshModuleCompletion').on('click', async function(){
-    const modName = $(this).closest('.item').attr('data-itemModuleName');
-    const roundedSectionTimes = [
-      allRoundedSectionTimes[modName].learn,
-      allRoundedSectionTimes[modName].practice,
-      allRoundedSectionTimes[modName].explore,
-      allRoundedSectionTimes[modName].reflect
-    ]
-    // Update displayed mod name
-    $('.setModName').text(fullModuleNames[modName]);
-    updatePieChartData(timePieChart, roundedSectionTimes);
-    updateTimeTexts(roundedSectionTimes);
-    updateTimelineActions(modName, moduleGeneralData);
-    // module details are initially hidden on window load, unhide
-    $('#moduleDetailsColumn').removeClass('hideModuleDetails')
+  $('#modSelectDropdown').dropdown({
+    onChange: function(){
+      const modName = $('#modSelectDropdown').dropdown('get value');
+      const roundedSectionTimes = [
+        allRoundedSectionTimes[modName].learn,
+        allRoundedSectionTimes[modName].practice,
+        allRoundedSectionTimes[modName].explore,
+        allRoundedSectionTimes[modName].reflect
+      ]
+      const singleModuleGeneralData = moduleGeneralData[modName];
+      // Update displayed mod name
+      $('.setModName').text(fullModuleNames[modName]);
+      updateModuleStatus(singleModuleGeneralData);
+      updatePieChartData(timePieChart, roundedSectionTimes);
+      updateTimeTexts(roundedSectionTimes);
+      updateTimelineActions(modName, moduleGeneralData);
+    }
   });
+  // Used with the old design for the module completion section - remove after
+  // new design is approved
+  // updateModuleStatusList(moduleGeneralData);
+  // $('.refreshModuleCompletion').on('click', async function(){
+  //   const modName = $(this).closest('.item').attr('data-itemModuleName');
+  //   const roundedSectionTimes = [
+  //     allRoundedSectionTimes[modName].learn,
+  //     allRoundedSectionTimes[modName].practice,
+  //     allRoundedSectionTimes[modName].explore,
+  //     allRoundedSectionTimes[modName].reflect
+  //   ]
+  //   // Update displayed mod name
+  //   $('.setModName').text(fullModuleNames[modName]);
+  //   updatePieChartData(timePieChart, roundedSectionTimes);
+  //   updateTimeTexts(roundedSectionTimes);
+  //   updateTimelineActions(modName, moduleGeneralData);
+  //   // module details are initially hidden on window load, unhide
+  //   $('#moduleDetailsColumn').removeClass('hideModuleDetails')
+  // });
 });
