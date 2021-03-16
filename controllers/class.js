@@ -1064,25 +1064,16 @@ exports.postClassTimeReportCsv = async (req, res, next) => {
     return res.json({classReflectionResponses: {}});
   }
   let headerArray = [
-    {id: 'username', title: 'Username'},
-    {id: 'name', title: "Name"},
-    {id: 'total', title: "Total Time to Complete"},
-    {id: '1', title: "Time Spent in the Learn Section (minutes)"},
-    {id: '2', title: "Time Spent in the Practice Section (minutes)"},
-    {id: '3', title: "Time Spent in the Explore Section (minutes)"},
-    {id: '4', title: "Time Spent in the Reflect Section (minutes)"}
+    "Username",
+    "Name",
+    "Total Time to Complete",
+    "Time Spent in the Learn Section (minutes)",
+    "Time Spent in the Practice Section (minutes)",
+    "Time Spent in the Explore Section (minutes)",
+    "Time Spent in the Reflect Section (minutes)"
   ];
-  const timeReportFilepath = `public2/downloads/classTimeReport_${req.user.username}.csv`
-  let csvWriter;
-  try {
-    csvWriter = createCsvWriter({
-        path: timeReportFilepath,
-        header: headerArray
-    });
-  } catch (err) {
-    console.log(err);
-    return next(err);
-  }
+
+  let csvString = headerArray.join(',') + '\n';
 
   Class.findOne({
     accessCode: req.params.classId,
@@ -1168,26 +1159,11 @@ exports.postClassTimeReportCsv = async (req, res, next) => {
         newRecord[i] = Math.round(newRecord[i]);
       }
       newRecord.total = Math.round(newRecord.total);
-      records.push(newRecord);
+      records.push([newRecord.username,newRecord.name,newRecord.total,newRecord['1'],newRecord['2'],newRecord['3'],newRecord['4']]);
     }
-    try {
-      await csvWriter.writeRecords(records);
-    } catch (err) {
-      console.log(err);
-      return next(err);
-    }
-
-    res.download(timeReportFilepath, `timeReport_${req.params.classId}.csv`, function(err) {
-      if (err) {
-        console.log(err);
-        return next(err);
-      }
-      fs.unlink(timeReportFilepath, function(err) {
-        if(err) {
-          console.log(err);
-          return next(err);
-        }
-      });
-    });
+    csvString += records.join('\n');
+    res.setHeader('Content-disposition', `attachment; filename=classTimeReport_${req.user.username}.csv`);
+    res.set('Content-Type', 'text/csv');
+    res.status(200).send(csvString);
   });
 }
