@@ -5,7 +5,7 @@ var ObjectId = require('mongoose').Types.ObjectId;
 const CSVToJSON = require("csvtojson");
 const _ = require('lodash');
 var async = require('async');
-const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+const createCsvStringifier = require('csv-writer').createObjectCsvStringifier;
 
 // Get all Classes for a currently logged in instructor
 exports.getClasses = (req, res) => {
@@ -978,7 +978,7 @@ function addClassReflectionRecords(modName, headerArray, records, moduleQuestion
 
 exports.postClassReflectionResponsesCsv = async (req, res, next) => {
   if (!req.user.isInstructor) {
-    return res.json({classReflectionResponses: {}});
+    return res.status(400).send('Bad Request')
   }
   // Use reflectionSecionData.json to define the structure of the output csv
   // fs.readFile does not return a promise, so promisify it
@@ -1007,17 +1007,10 @@ exports.postClassReflectionResponsesCsv = async (req, res, next) => {
   // Build the layout of the output csv based on the reflectionJson content
   const headerArray = buildHeaderArray(moduleQuestions);
   const outputFilePath = `public2/downloads/classReflectionResponses_${req.user.username}.csv`
-  let csvWriter;
-  try {
-    csvWriter = createCsvWriter({
-        path: outputFilePath,
-        header: headerArray
-    });
-  } catch(err) {
-    console.log(err);
-    return next(err);
-  }
-
+  let csvOutputString = "";
+  let csvStringifier = createCsvStringifier({
+      header: headerArray
+  });
   let records = [];
   records = buildSubHeaderRecords(headerArray, records, moduleQuestions);
   Class.findOne({
@@ -1037,25 +1030,10 @@ exports.postClassReflectionResponsesCsv = async (req, res, next) => {
       return next(myerr);
     }
     records = addClassReflectionRecords(req.params.modName, headerArray, records, moduleQuestions, found_class);
-    try {
-      await csvWriter.writeRecords(records);
-    } catch (err) {
-      console.log(err);
-      return next(err);
-    }
-
-    res.download(outputFilePath, `reflectionResponses_${req.params.classId}.csv`, function(err) {
-      if (err) {
-        console.log(err);
-        return next(err);
-      }
-      fs.unlink(outputFilePath, function(err) {
-        if (err) {
-          console.log(err)
-          return next(err);
-        }
-      });
-    });
+    csvOutputString = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(records);
+    res.setHeader('Content-disposition', `attachment; filename=classReflectionResults_${req.user.username}.csv`);
+    res.set('Content-Type', 'text/csv');
+    res.status(200).send(csvOutputString);
   });
 }
 
