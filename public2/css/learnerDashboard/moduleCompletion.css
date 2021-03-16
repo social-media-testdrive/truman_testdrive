@@ -1,0 +1,36 @@
+/* Module Completion Section: list of modules*/
+
+/* Used with the old design for the module completion section - remove after
+new design is approved */
+/* #moduleProgressColumn {
+  overflow: auto;
+  max-height: 350px;
+} */
+
+#moduleProgressColumn .moduleProgressCustomIcon {
+  padding: 30px;
+  min-width: 150px;
+}
+
+#moduleProgressColumn .moduleProgressCustomIcon h3 {
+  margin-top: 5px;
+}
+
+#moduleProgressColumn .moduleProgressCustomIcon .check.icon {
+  color: rgba(255, 99, 132, 1);
+  background: white;
+  box-shadow: 0 0 0 0.1em rgba(255, 99, 132, 1) inset;
+}
+
+#moduleProgressColumn .moduleProgressCustomIcon .hourglass.icon,
+#moduleProgressColumn .moduleProgressCustomIcon .minus.icon {
+  color: rgb(0 0 0 / 35%);
+  background: white;
+  box-shadow: 0 0 0 0.1em rgb(0 0 0/ 35%) inset;
+}
+
+/* Module Completion Section: individual module details */
+
+.hideModuleDetails {
+  visibility: hidden;
+}

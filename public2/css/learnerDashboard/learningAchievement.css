@@ -1,0 +1,23 @@
+/* My Learning Achievement section: module completion pie chart */
+
+.completionChartColumn .ui.segment {
+  display: grid;
+}
+
+.completionChartColumn .customChartLabelText {
+  display: flex;
+  position: absolute;
+  text-align: center;
+  align-items: center;
+  width: 34%;
+  left: 33%;
+  height: 34%;
+  top: 33%;
+  font-size: x-large;
+}
+
+/* My Learning Achievement section: badge list */
+#badgeItems {
+  overflow: auto;
+  max-height: 300px;
+}

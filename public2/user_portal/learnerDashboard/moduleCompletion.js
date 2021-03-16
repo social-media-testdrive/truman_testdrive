@@ -27,75 +27,6 @@ function initializeModuleTimePieChart() {
   return timePieChart;
 }
 
-// "My Achievement" section
-
-function createModuleCompletionCountChart(completedModules, totalModuleCount){
-  const completedCount = completedModules.length;
-  const incompleteCount = totalModuleCount - completedCount;
-  const ctx = $('#moduleCompletionCount');
-  const completedCountPieChart = new Chart(ctx, {
-      type: 'doughnut',
-      data: {
-        datasets: [{
-            data: [completedCount, incompleteCount],
-            backgroundColor: [
-              'rgba(250, 101, 132)'
-            ]
-        }],
-        labels: ["Completed", "Not Complete"],
-      },
-      options: {
-        cutoutPercentage: 70,
-        maintainAspectRatio: false,
-        tooltips: {
-          enabled: false
-        },
-        legend: {
-          display: false
-        }
-      }
-  });
-  // add the custom text in the center of the chart
-  $('.completionChartColumn .customChartLabelText').text(`${completedCount} out of ${totalModuleCount} modules completed`)
-  return;
-}
-
-async function appendEarnedBadges(){
-  const earnedBadges = await $.get('/getLearnerEarnedBadges');
-  for(const badge of earnedBadges) {
-    $(`#badgeItems`).append(`
-      <div class="column">
-        <div class="ui basic segment center aligned">
-          <div class="ui tiny image">
-            <img src="/badges/${badge.image}"></img>
-          </div>
-          <div class="content middle aligned">
-            <p>${badge.title}</p>
-          </div>
-        </div>
-      </div>
-    `);
-  }
-}
-
-// "Learning Map" section
-
-function setLearningMapColumnWidths(){
-  const tableWidth = $(`#learningMapTable tbody`).width();
-  const yAxisWidth = $(`#learningMapTable tbody .yAxisLabel`).first().width();
-  const totalPadding = 66; // 11 * 6
-  const idealColumnWidth = Math.round((tableWidth - yAxisWidth - 66) / 3);
-  $(`td:not(.xAxisLabel, .yAxisLabel)`).css('width', idealColumnWidth);
-}
-
-async function addLearningMapIcons(completedModules){
-  for(const modName of completedModules) {
-    $(`#learningMapTable .container[data-mapTableMod="${modName}"]`).append(`
-      <i class="icon large white circular icon check">
-    `);
-  }
-};
-
 // "Module Completion" section: module details tabs
 
 function updatePieChartData(chart, data) {
@@ -202,10 +133,6 @@ $(window).on("load", async function() {
       completedModules.push(modName);
     }
   }
-  createModuleCompletionCountChart(completedModules, totalModuleCount);
-  appendEarnedBadges();
-  addLearningMapIcons(completedModules);
-  setLearningMapColumnWidths();
   $('#modSelectDropdown').dropdown({
     onChange: function(){
       const modName = $('#modSelectDropdown').dropdown('get value');

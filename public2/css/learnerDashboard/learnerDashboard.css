@@ -1,0 +1,32 @@
+/* defining cursor appearances */
+
+h2, h3, h4, p, td {
+  cursor: default;
+}
+
+/* general classes */
+
+.newDashboardSection {
+  margin-top:3em;
+}
+
+.removeMargins {
+  margin: 0 !important;
+}
+
+.removePadding {
+  padding: 0 !important;
+}
+
+.centerText {
+  text-align: center;
+}
+
+.emphasizedText {
+  font-size: larger;
+  font-weight: bold;
+}
+
+.row.addMargin {
+  margin-bottom: 30px;
+}

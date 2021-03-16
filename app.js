@@ -563,15 +563,33 @@ if(enableTeacherDashboard){
 }
 
 if (enableLearnerDashboard) {
-  app.get('/learnerDashboard', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
-    res.render('learnerDashboard', {
-      title: 'Learner Dashboard'
-    });
-  });
-
   app.get('/getLearnerGeneralModuleData', passportConfig.isAuthenticated, csrfProtection, addCsrf, userController.getLearnerGeneralModuleData);
   app.get('/getLearnerSectionTimeData', passportConfig.isAuthenticated, csrfProtection, addCsrf, userController.getLearnerSectionTimeData);
   app.get('/getLearnerEarnedBadges', passportConfig.isAuthenticated, csrfProtection, addCsrf, userController.getLearnerEarnedBadges);
+
+  // Rendering Pages for the Learner dashboard
+  // *********************************************
+  // The Learning Achievement Page
+  app.get('/learningAchievement', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
+    res.render('learnerDashboard/learningAchievement', {
+      title: 'My Learning Achievement'
+    });
+  });
+
+  // The Learning Map Page
+  app.get('/learningMap', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
+    res.render('learnerDashboard/learningMap', {
+      title: 'Learning Map'
+    });
+  });
+
+  // The Module Completion Page
+  app.get('/moduleCompletion', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
+    res.render('learnerDashboard/moduleCompletion', {
+      title: 'Module Completion'
+    });
+  });
+  // *********************************************
 }
 
 
