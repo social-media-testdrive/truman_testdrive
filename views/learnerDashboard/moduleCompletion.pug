@@ -48,8 +48,10 @@ block content
             .description
               h3 
           .ui.center.aligned.basic.segment.moduleProgressCustomIcon
-          
-      .sixteen.wide.column#moduleDetailsColumn
+          button.ui.right.labeled.icon.button.testDriveBlueButton.setDisplayNone#returnToModuleButton 
+            i.right.arrow.icon
+            | Go back to this module
+      .sixteen.wide.column.hiddenVisibility#moduleDetailsColumn
         .ui.top.attached.two.item.tabular.menu.moduleCompletionTabs
           a.active.item(data-tab='time_spent') Time Spent
           a.item(data-tab='timeline_actions') Timeline Actions

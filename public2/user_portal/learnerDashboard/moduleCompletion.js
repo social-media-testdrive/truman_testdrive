@@ -79,7 +79,7 @@ function updateModuleStatusList(allModuleGeneralData){
   });
 };
 
-function updateModuleStatus(moduleGeneralData){
+function updateModuleStatus(modName, moduleGeneralData){
   $('#moduleStatus .moduleProgressCustomIcon').empty();
   // set the icon depending on module status
   if (moduleGeneralData.status === "completed") {
@@ -99,6 +99,15 @@ function updateModuleStatus(moduleGeneralData){
     `);
   }
 
+  // Set the link location for the "return to module" button
+  $('#returnToModuleButton').off();
+  $('#returnToModuleButton').on('click', function(){
+    window.location.href = `/intro/${modName}`;
+  })
+  // show the button to go back to the module if hidden
+  if($('#returnToModuleButton').hasClass('setDisplayNone')){
+    $('#returnToModuleButton').removeClass('setDisplayNone');
+  }
   // set the last accessed info
   if(moduleGeneralData.lastAccessed !== 0) {
     console.log(`set last accessed...`)
@@ -145,10 +154,14 @@ $(window).on("load", async function() {
       const singleModuleGeneralData = moduleGeneralData[modName];
       // Update displayed mod name
       $('.setModName').text(fullModuleNames[modName]);
-      updateModuleStatus(singleModuleGeneralData);
+      updateModuleStatus(modName, singleModuleGeneralData);
       updatePieChartData(timePieChart, roundedSectionTimes);
       updateTimeTexts(roundedSectionTimes);
       updateTimelineActions(modName, moduleGeneralData);
+      // show the tabs if they were hidden
+      if($('#moduleDetailsColumn').hasClass('hiddenVisibility')){
+        $('#moduleDetailsColumn').removeClass('hiddenVisibility');
+      }
     }
   });
   // Used with the old design for the module completion section - remove after

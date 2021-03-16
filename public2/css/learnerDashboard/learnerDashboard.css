@@ -30,3 +30,7 @@ h2, h3, h4, p, td {
 .row.addMargin {
   margin-bottom: 30px;
 }
+
+.setDisplayNone {
+  display: none !important;
+}
