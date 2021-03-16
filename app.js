@@ -242,6 +242,13 @@ app.get('/', function (req, res) {
   });
 })
 
+//main route is the lesson mod selection screen
+app.get('/esp', function (req, res) {
+  res.render('mods-esp', {
+    title: 'Escoge una lección'
+  });
+})
+
 // app.get('/results/cyberbullying', passportConfig.isAuthenticated, scriptController.getCyberbullyingResults);
 
 //main route for getting the simulation (Free Play) for a given lesson mod
