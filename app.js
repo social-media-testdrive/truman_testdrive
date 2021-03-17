@@ -252,6 +252,7 @@ app.get('/guest/:modId', userController.getGuest);
 const isResearchVersion = process.env.isResearchVersion === 'true';
 const enableDataCollection = process.env.enableDataCollection === 'true';
 const enableTeacherDashboard = process.env.enableTeacherDashboard === 'true';
+const enableLearnerDashboard = process.env.enableLearnerDashboard === 'true';
 
 // main route is the module page
 app.get('/', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
@@ -561,6 +562,36 @@ if(enableTeacherDashboard){
   // *********************************************
 }
 
+if (enableLearnerDashboard) {
+  app.get('/getLearnerGeneralModuleData', passportConfig.isAuthenticated, csrfProtection, addCsrf, userController.getLearnerGeneralModuleData);
+  app.get('/getLearnerSectionTimeData', passportConfig.isAuthenticated, csrfProtection, addCsrf, userController.getLearnerSectionTimeData);
+  app.get('/getLearnerEarnedBadges', passportConfig.isAuthenticated, csrfProtection, addCsrf, userController.getLearnerEarnedBadges);
+
+  // Rendering Pages for the Learner dashboard
+  // *********************************************
+  // The Learning Achievement Page
+  app.get('/learningAchievement', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
+    res.render('learnerDashboard/learningAchievement', {
+      title: 'My Learning Achievement'
+    });
+  });
+
+  // The Learning Map Page
+  app.get('/learningMap', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
+    res.render('learnerDashboard/learningMap', {
+      title: 'Learning Map'
+    });
+  });
+
+  // The Module Completion Page
+  app.get('/moduleCompletion', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
+    res.render('learnerDashboard/moduleCompletion', {
+      title: 'Module Completion'
+    });
+  });
+  // *********************************************
+}
+
 
 //User's Page
 app.get('/me/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, userController.getMe);
@@ -643,6 +674,7 @@ app.post('/interest', passportConfig.isAuthenticated, check, csrfProtection, use
 app.post('/advancedlitInterest', passportConfig.isAuthenticated, check, csrfProtection, userController.postAdvancedlitInterestSelection);
 app.post('/habitsTimer', passportConfig.isAuthenticated, check, csrfProtection, userController.postUpdateHabitsTimer);
 app.post('/delete', passportConfig.isAuthenticated, userController.getDeleteAccount);
+app.post('/postUpdateNewBadge', passportConfig.isAuthenticated, check, csrfProtection, userController.postUpdateNewBadge);
 app.post('/moduleProgress', passportConfig.isAuthenticated, check, csrfProtection, userController.postUpdateModuleProgress);
 app.get('/moduleProgress/:classId', passportConfig.isAuthenticated, classController.getModuleProgress);
 app.get('/classReflectionResponses/:classId', passportConfig.isAuthenticated, classController.getReflectionResponses);

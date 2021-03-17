@@ -539,6 +539,7 @@ async function saveUsernameInExistingClass(req, item, existingClass) {
     username: item,
     active: true,
     start : Date.now(),
+    isStudent: true,
     accessCode: req.body.accessCode
   });
   user.profile.name = "Student";
@@ -1007,10 +1008,24 @@ exports.postClassReflectionResponsesCsv = async (req, res, next) => {
   // Build the layout of the output csv based on the reflectionJson content
   const headerArray = buildHeaderArray(moduleQuestions);
   const outputFilePath = `public2/downloads/classReflectionResponses_${req.user.username}.csv`
+<<<<<<< HEAD
   let csvOutputString = "";
   let csvStringifier = createCsvStringifier({
       header: headerArray
   });
+=======
+  // TODO: put a try catch here for debugging, and also where I am writing the records
+  let csvWriter;
+  try {
+    csvWriter = createCsvWriter({
+        path: outputFilePath,
+        header: headerArray
+    });
+  } catch {
+    console.log(err);
+    return next(err);
+  }
+>>>>>>> learner-dashboard
   let records = [];
   records = buildSubHeaderRecords(headerArray, records, moduleQuestions);
   Class.findOne({
@@ -1030,10 +1045,33 @@ exports.postClassReflectionResponsesCsv = async (req, res, next) => {
       return next(myerr);
     }
     records = addClassReflectionRecords(req.params.modName, headerArray, records, moduleQuestions, found_class);
+<<<<<<< HEAD
     csvOutputString = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(records);
     res.setHeader('Content-disposition', `attachment; filename=classReflectionResults_${req.user.username}.csv`);
     res.set('Content-Type', 'text/csv');
     res.status(200).send(csvOutputString);
+=======
+    // TODO: put a try catch here
+    try {
+      await csvWriter.writeRecords(records);
+    } catch (err) {
+      console.log(err);
+      return next(err);
+    }
+
+    res.download(outputFilePath, `reflectionResponses_${req.params.classId}.csv`, function(err) {
+      if (err) {
+        console.log(err);
+        return next(err);
+      }
+      fs.unlink(outputFilePath, function(err) {
+        if (err) {
+          console.log(err)
+          return next(err);
+        }
+      });
+    });
+>>>>>>> learner-dashboard
   });
 }
 
@@ -1050,9 +1088,23 @@ exports.postClassTimeReportCsv = async (req, res, next) => {
     "Time Spent in the Explore Section (minutes)",
     "Time Spent in the Reflect Section (minutes)"
   ];
+<<<<<<< HEAD
 
   let csvString = headerArray.join(',') + '\n';
 
+=======
+  const timeReportFilepath = `public2/downloads/classTimeReport_${req.user.username}.csv`
+  let csvWriter;
+  try {
+    csvWriter = createCsvWriter({
+        path: timeReportFilepath,
+        header: headerArray
+    });
+  } catch(err) {
+    console.log(err);
+    return next(err);
+  }
+>>>>>>> learner-dashboard
   Class.findOne({
     accessCode: req.params.classId,
     teacher: req.user.id,
@@ -1139,9 +1191,31 @@ exports.postClassTimeReportCsv = async (req, res, next) => {
       newRecord.total = Math.round(newRecord.total);
       records.push([newRecord.username,newRecord.name,newRecord.total,newRecord['1'],newRecord['2'],newRecord['3'],newRecord['4']]);
     }
+<<<<<<< HEAD
     csvString += records.join('\n');
     res.setHeader('Content-disposition', `attachment; filename=classTimeReport_${req.user.username}.csv`);
     res.set('Content-Type', 'text/csv');
     res.status(200).send(csvString);
+=======
+    try {
+      await csvWriter.writeRecords(records);
+    } catch (err) {
+      console.log(err);
+      return next(err);
+    }
+
+    res.download(timeReportFilepath, `timeReport_${req.params.classId}.csv`, function(err) {
+      if (err) {
+        console.log(err);
+        return next(err);
+      }
+      fs.unlink(timeReportFilepath, function(err) {
+        if(err) {
+          console.log(err);
+          return next(err);
+        }
+      });
+    });
+>>>>>>> learner-dashboard
   });
 }

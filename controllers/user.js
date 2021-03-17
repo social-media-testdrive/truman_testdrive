@@ -1,3 +1,4 @@
+const fs = require('fs');
 const bluebird = require('bluebird');
 const crypto = bluebird.promisifyAll(require('crypto'));
 const nodemailer = require('nodemailer');
@@ -1010,6 +1011,34 @@ exports.postUpdateModuleProgress = (req, res, next) => {
   });
 };
 
+exports.postUpdateNewBadge = (req, res, next) => {
+  User.findById(req.user.id, (err, user) => {
+    if (err) {
+      return next(err);
+    }
+    // check if the user already has earned this badge
+    for(const badge of user.earnedBadges){
+      if(badge.badgeId === req.body.badgeId){
+        return res.sendStatus(200);
+      }
+    }
+    // otherwise, create a new badge using the info in the request body
+    const newBadge = {
+      badgeId: req.body.badgeId,
+      badgeTitle: req.body.badgeTitle,
+      badgeImage: req.body.badgeImage,
+      dateEarned: Date.now()
+    }
+    user.earnedBadges.push(newBadge);
+    user.save((err) => {
+      if (err) {
+        return next(err);
+      }
+      return res.sendStatus(200);
+    });
+  });
+}
+
 
 exports.getStudentReportData = (req, res, next) => {
   if (!req.user.isInstructor) {
@@ -1070,6 +1099,224 @@ exports.getStudentReportData = (req, res, next) => {
       freeplayActions: freeplayActions
     });
   });
+}
+
+function getDateLastAccessed(pageLog, modName) {
+  /*
+  New pageLog item added each time a user opens a page.
+  pageLog: [new Schema({
+    time: Date,
+    subdirectory1: String,
+    subdirectory2: String
+  })]
+  */
+  let lastAccessed = 0;
+  for(const page of pageLog) {
+    if (page.subdirectory2 === modName) {
+      if (page.time > lastAccessed) {
+        lastAccessed = page.time;
+      }
+    }
+  }
+  return lastAccessed;
+}
+
+exports.getLearnerGeneralModuleData = (req, res, next) => {
+  if (!req.user.isStudent){
+    return res.status(400).send('Bad Request')
+  }
+  let moduleStatuses = {};
+  // get a list of module names, with dashes added where needed
+  let allModNames = [];
+  for(const modName of Object.keys(req.user.moduleProgress.toJSON())){
+    /*
+    from the User model:
+    moduleProgress: { // marks the progress of each module: none, started, completed
+      accounts: {type: String, default: 'none'},
+      ...
+      targeted: {type: String, default: 'none'}
+    },
+    */
+    if (modName === "digitalliteracy") {
+      allModNames.push('digital-literacy');
+    } else if (modName === "safeposting") {
+      allModNames.push('safe-posting');
+    } else {
+      allModNames.push(modName);
+    }
+  }
+  for(const modName of allModNames){
+    const modNameNoDashes = modName.replace('-','');  // modNames in user.moduleProgress do not have dashes where they usually do
+    moduleStatuses[modName] = {};
+    moduleStatuses[modName]['status'] = req.user.moduleProgress[modNameNoDashes];
+    moduleStatuses[modName]['lastAccessed'] = getDateLastAccessed(req.user.pageLog, modName);
+    moduleStatuses[modName]['likes'] = 0;
+    moduleStatuses[modName]['flags'] = 0;
+    moduleStatuses[modName]['replies'] = 0;
+    // get timeline action counts
+    for (const post of req.user.feedAction) {
+      // ignore posts that aren't in the relevant module
+      if (post.modual !== modName) {
+        continue;
+      }
+      if (post.liked) {
+        moduleStatuses[modName].likes++;
+      }
+      if (post.flagged) {
+        moduleStatuses[modName].flags++;
+      }
+      for(const comment of post.comments){
+        if(comment.new_comment){
+          moduleStatuses[modName].replies++;
+        }
+      }
+    }
+  }
+  res.send(moduleStatuses);
+}
+
+async function getSectionJsonFromFile(filePath) {
+  let readFilePromise = function(filePath) {
+    return new Promise((resolve, reject) => {
+      fs.readFile(filePath, (err, data) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(data);
+      })
+    })
+  }
+  const sectionJsonBuffer = await readFilePromise(filePath).then(function(data) {
+    return data;
+  });
+  let sectionJson;
+  try {
+    sectionJson = JSON.parse(sectionJsonBuffer);
+  } catch (err) {
+    return next(err);
+  }
+  return sectionJson;
+}
+
+exports.getLearnerSectionTimeData = async (req, res, next) => {
+  if (!req.user.isStudent){
+    return res.status(400).send('Bad Request')
+  }
+  const pageLog = req.user.pageLog;
+  /*
+  New pageLog item added each time a user opens a page.
+  pageLog: [new Schema({
+    time: Date,
+    subdirectory1: String,
+    subdirectory2: String
+  })]
+  */
+
+  let allSectionTimeData = {
+    'accounts': { 'learn': 0,'explore': 0, 'practice': 0,'reflect': 0},
+    'advancedlit': { 'learn': 0,'explore': 0,'practice': 0,'reflect': 0},
+    'cyberbullying': { 'learn': 0,'explore': 0,'practice': 0,'reflect': 0},
+    'digfoot': { 'learn': 0,'explore': 0,'practice': 0,'reflect': 0},
+    'digital-literacy': { 'learn': 0,'explore': 0,'practice': 0,'reflect': 0},
+    'esteem': { 'learn': 0,'explore': 0,'practice': 0,'reflect': 0},
+    'habits': { 'learn': 0,'explore': 0,'practice': 0,'reflect': 0},
+    'phishing': { 'learn': 0,'explore': 0,'practice': 0,'reflect': 0},
+    'presentation': { 'learn': 0,'explore': 0,'practice': 0,'reflect': 0},
+    'privacy': { 'learn': 0,'explore': 0,'practice': 0,'reflect': 0},
+    'safe-posting': { 'learn': 0,'explore': 0,'practice': 0,'reflect': 0},
+    'targeted': { 'learn': 0,'explore': 0,'practice': 0,'reflect': 0}
+  }
+  // First, need to get the mappings between module pages and section numbers
+  const sectionDataA = await getSectionJsonFromFile("./public2/json/progressDataA.json");
+  const sectionDataB = await getSectionJsonFromFile("./public2/json/progressDataB.json");
+  /* Short example of the data in progressDataA and progressDataB:
+    {
+      "start": "1",
+      "sim": "2",
+      "trans_script": "3",
+      "modual": "3",
+      "results": "4",
+      "end": "end"
+    }
+    where the key corresponds to page name, value corresponds to a section number
+    1 = "learn" section
+    2 = "practice" section
+    3 = "explore" section
+    4 = "reflect" section
+  */
+  for(const modName of Object.keys(allSectionTimeData)){
+    // if module has not been completed, skip it
+    const modNameNoDashes = modName.replace('-','');
+    // modNames in user.moduleProgress do not have dashes where they usually do
+    if(req.user.moduleProgress[modNameNoDashes] !== "completed"){
+      continue;
+    }
+    // select the corresponding sectionData, A or B, to use depending on the module
+    let sectionJson = {};
+    switch (modName) {
+      case 'cyberbullying':
+      case 'digfoot':
+        sectionJson = sectionDataB;
+        break;
+      default:
+        sectionJson = sectionDataA;
+        break;
+    }
+    for(let i=0, l=pageLog.length-1; i<l; i++) {
+      // skip pageLog entries that are not for the specified module
+      if ((!pageLog[i].subdirectory2) || (pageLog[i].subdirectory2 !== modName)) {
+        continue;
+      }
+      // convert from ms to minutes
+      let timeDurationOnPage = (pageLog[i+1].time - pageLog[i].time)/60000;
+      // skip any page times that are longer than 30 minutes
+      if(timeDurationOnPage > 30) {
+        continue;
+      }
+      // add the page time to the appropriate section's total time:
+      const sectionNumber = sectionJson[pageLog[i].subdirectory1];
+      if (sectionNumber === "1") {
+        allSectionTimeData[modName].learn += timeDurationOnPage;
+      } else if (sectionNumber === "2") {
+        allSectionTimeData[modName].practice += timeDurationOnPage;
+      } else if (sectionNumber === "3") {
+        allSectionTimeData[modName].explore += timeDurationOnPage;
+      } else if (sectionNumber === "4") {
+        allSectionTimeData[modName].reflect += timeDurationOnPage;
+      } else {
+        continue;
+      }
+    }
+    // round each number using Math.round (note that this is inconsistent with
+    // the teacher dashbord time displays, which all round using Math.floor)
+    for(const section of Object.keys(allSectionTimeData[modName])) {
+      allSectionTimeData[modName][section] = Math.round(allSectionTimeData[modName][section]);
+    }
+  }
+  res.send(allSectionTimeData);
+}
+
+exports.getLearnerEarnedBadges = (req, res, next) => {
+  if (!req.user.isStudent) {
+    return res.status(400).send('Bad Request')
+  }
+  let earnedBadges = [];
+  for (const badge of req.user.earnedBadges) {
+    /*
+    earnedBadges: [new Schema({
+      badgeId: String,
+      badgeTitle: String,
+      badgeImage: String,
+      dateEarned: Date
+    })],
+    */
+    const badgeInfo = {
+      title: badge.badgeTitle,
+      image: badge.badgeImage
+    };
+    earnedBadges.push(badgeInfo);
+  }
+  res.send(earnedBadges);
 }
 
 

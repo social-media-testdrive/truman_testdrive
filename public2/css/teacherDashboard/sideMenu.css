@@ -13,20 +13,20 @@
   }
 } */
 
-.hiddenVisibility > :not(.teacherDashboardMenu){
+.hiddenVisibility > :not(.teacherDashboardMenu):not(.learnerDashboardMenu) {
   visibility: hidden;
 }
 
 /* Hide the mobile menu when above tablet screen size */
 @media (min-width: 992px) {
-  .teacherDashboardMobileMenu {
+  .teacherDashboardMobileMenu, .learnerDashboardMobileMenu {
     display: none !important;
   }
 }
 
 /* Hide the side menu in favor of a compact mobile menu on screens tablet size and below */
 @media (max-width: 992px) {
-  .teacherDashboardMenu {
+  .teacherDashboardMenu, .learnerDashboardMenu {
     display: none !important;
   }
 }

@@ -1,0 +1,147 @@
+extends ../ui_layout
+
+block content
+  .ui.sixteen.wide.column.dashboardContentColumn.hiddenVisibility
+    include ../partials/learnerDashboardMenu
+    
+    .row.centerText.newDashboardSection
+      h2 
+        i.hourglass.outline.icon
+        |  Module Completion
+    .ui.divider
+    .ui.grid.center.aligned.removeMargins#moduleProgressColumn
+      .six.wide.computer.sixteen.wide.tablet.mobile.column.center.aligned
+        .ui.fluid.search.selection.dropdown#modSelectDropdown
+          input(type='hidden' name='dropdown-moduleSelect')
+          i.dropdown.icon
+          .default.text Select Module
+          .menu
+            .item(data-value='accounts')
+              | Accounts and Passwords
+            .item(data-value='advancedlit')
+              | Responding to Breaking News!
+            .item(data-value='cyberbullying')
+              | How to Be an Upstander
+            .item(data-value='digfoot')
+              | Shaping Your Digital Footprint
+            .item(data-value='digital-literacy')
+              | News on Social Media
+            .item(data-value='esteem')
+              | The Ups and Downs of Social Media
+            .item(data-value='habits')
+              | Healthy Social Media Habits
+            .item(data-value='phishing')
+              | Scams and Phishing
+            .item(data-value='presentation')
+              | Online Identities
+            .item(data-value='privacy')
+              | Social Media Privacy
+            .item(data-value='safe-posting')
+              | Is It Private Information?
+            .item(data-value='targeted')
+              | Ads on Social Media
+      .sixteen.wide.column.center.aligned
+        .ui.basic.segment.removePadding#moduleStatus
+          .middle.aligned.content
+            header
+              h2.setModName 
+            .description
+              h3 
+          .ui.center.aligned.basic.segment.moduleProgressCustomIcon
+          button.ui.right.labeled.icon.button.testDriveBlueButton.setDisplayNone#returnToModuleButton 
+            i.right.arrow.icon
+            | Go back to this module
+      .sixteen.wide.column.hiddenVisibility#moduleDetailsColumn
+        .ui.top.attached.two.item.tabular.menu.moduleCompletionTabs
+          a.active.item(data-tab='time_spent') Time Spent
+          a.item(data-tab='timeline_actions') Timeline Actions
+          //- uncomment once developed
+          //- a.item(data-tab='reflection') Reflection
+        .ui.active.tab.bottom.attached.segment(data-tab='time_spent')
+          .ui.stackable.two.column.grid.middle.aligned
+            .column
+              .ui.basic.segment.center.aligned(style="padding:0;")
+                canvas#moduleTimePieChart(width="200" height="100" style="width:100%;height:100%;")
+            .column
+              .ui.basic.segment.left.aligned
+                p 
+                  | In the module&nbsp
+                  span.emphasizedText.setModName (module name goes here)
+                p 
+                  | You spent&nbsp
+                  span.emphasizedText#setTotalTime 0
+                  | &nbsp minutes in total  
+                  //- | (class average: 
+                  //- span#setClassAvgTime ???
+                  //- | &nbsp minutes)
+                p 
+                  | Learn:&nbsp
+                  span.emphasizedText#setSection0Time 0 
+                  | &nbspmin
+                  br
+                  | Practice:&nbsp
+                  span.emphasizedText#setSection1Time 0  
+                  | &nbspmin
+                  br
+                  | Explore:&nbsp
+                  span.emphasizedText#setSection2Time 0  
+                  | &nbspmin
+                  br
+                  | Reflect:&nbsp
+                  span.emphasizedText#setSection3Time 0  
+                  | &nbspmin
+                  
+        .ui.tab.bottom.attached.segment(data-tab='timeline_actions')
+          .ui.basic.segment
+            p 
+              | In the module&nbsp
+              span.emphasizedText.setModName (module name goes here)
+            p Here are your actions in the timeline:
+            p
+              i.big.heart.icon
+              | &nbsp&nbsp&nbspYou liked 
+              span.emphasizedText#setLikeCount 0
+              | &nbspposts
+            p
+              i.big.flag.icon
+              | &nbsp&nbsp&nbspYou flagged 
+              span.emphasizedText#setFlagCount 0
+              | &nbspposts
+            p
+              i.big.reply.icon
+              | &nbsp&nbsp&nbspYou wrote 
+              span.emphasizedText#setReplyCount 0
+              | &nbspreplies
+        .ui.tab.bottom.attached.segment(data-tab='reflection')
+          p 
+            | In the module&nbsp
+            span.emphasizedText.setModName (module name goes here)
+          table.ui.celled.table
+            thead
+              tr 
+                th 
+                th Your Actions
+                th Recommended Actions
+            tbody
+              tr.positive
+                td Q1
+                td I flagged the post
+                td I flagged the post
+              tr.negative
+                td Q2
+                td I liked the post
+                td I flagged the post
+              tr
+                td Open Q1
+                td This module is helpful...
+                td NA
+                                  
+      
+block scripts
+  script(src='/user_portal/learnerDashboard/learnerDashboardTools.js')
+  script(src="/user_portal/learnerDashboard/moduleCompletion.js")
+  script(src=cdn+'/js/lib/Chart.js')
+block styles
+  link(rel='stylesheet', href = '/css/teacherDashboard/sideMenu.css')
+  link(rel='stylesheet', href='/css/learnerDashboard/learnerDashboard.css')
+  link(rel='stylesheet', href='/css/learnerDashboard/moduleCompletion.css')
