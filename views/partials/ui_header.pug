@@ -34,10 +34,10 @@
                   i.big.plus.icon(style="display: none;")
                 if user.isInstructor
                   a.item(href='/classManagement') 
-                    i.big.university.icon
+                    i.big.home.icon
                 if (user.isStudent && enableLearnerDashboard)
                   a.item(href='/learningAchievement') 
-                    i.big.university.icon
+                    i.big.home.icon
                 .ui.simple.dropdown.item
                   if user.profile.picture
                     img.ui.mini.spaced.circular.image(src=cdn+'/profile_pictures/'+user.profile.picture)

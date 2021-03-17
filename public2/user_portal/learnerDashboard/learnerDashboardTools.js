@@ -27,17 +27,7 @@ function setActiveMenuItem(){
 $(window).on('load', function(){
   adjustContentMargin();
   $('.dashboardContentColumn').removeClass('hiddenVisibility')
-  // $('.teacherDashboardMobileMenu .item').popup({
-  //   position: 'bottom center'
-  // })
   setActiveMenuItem();
-  $('.ui.dropdown').dropdown();
-  $.get(`/classIdList`, function(data){
-    const classIdList = data.classIdList;
-    for (const id of classIdList) {
-     $(`<div class="item" data-value="${id}">${id}</div>`).appendTo( $('.ui.selection.dropdown[name="classSelection"] .menu') )
-    }
-  });
 });
 
 $(window).on('resize', function(){

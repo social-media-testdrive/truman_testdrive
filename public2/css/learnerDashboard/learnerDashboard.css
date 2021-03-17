@@ -6,8 +6,8 @@ h2, h3, h4, p, td {
 
 /* general classes */
 
-.newDashboardSection {
-  margin-top:3em;
+.dashboardContentColumn {
+  padding-bottom: 3em !important;
 }
 
 .removeMargins {

@@ -4,7 +4,7 @@ block content
   .ui.sixteen.wide.column.dashboardContentColumn.hiddenVisibility
     include ../partials/learnerDashboardMenu
     
-    .row.centerText.newDashboardSection
+    .row.centerText
       h2 
         i.hourglass.outline.icon
         |  Module Completion
@@ -90,8 +90,7 @@ block content
                   | Reflect:&nbsp
                   span.emphasizedText#setSection3Time 0  
                   | &nbspmin
-                  
-        .ui.tab.bottom.attached.segment(data-tab='timeline_actions')
+        .ui.tab.bottom.attached.segment.timelineActionsSegment(data-tab='timeline_actions')
           .ui.basic.segment
             p 
               | In the module&nbsp
@@ -112,30 +111,30 @@ block content
               | &nbsp&nbsp&nbspYou wrote 
               span.emphasizedText#setReplyCount 0
               | &nbspreplies
-        .ui.tab.bottom.attached.segment(data-tab='reflection')
-          p 
-            | In the module&nbsp
-            span.emphasizedText.setModName (module name goes here)
-          table.ui.celled.table
-            thead
-              tr 
-                th 
-                th Your Actions
-                th Recommended Actions
-            tbody
-              tr.positive
-                td Q1
-                td I flagged the post
-                td I flagged the post
-              tr.negative
-                td Q2
-                td I liked the post
-                td I flagged the post
-              tr
-                td Open Q1
-                td This module is helpful...
-                td NA
-                                  
+        //- .ui.tab.bottom.attached.segment(data-tab='reflection')
+        //-   p 
+        //-     | In the module&nbsp
+        //-     span.emphasizedText.setModName (module name goes here)
+        //-   table.ui.celled.table
+        //-     thead
+        //-       tr 
+        //-         th 
+        //-         th Your Actions
+        //-         th Recommended Actions
+        //-     tbody
+        //-       tr.positive
+        //-         td Q1
+        //-         td I flagged the post
+        //-         td I flagged the post
+        //-       tr.negative
+        //-         td Q2
+        //-         td I liked the post
+        //-         td I flagged the post
+        //-       tr
+        //-         td Open Q1
+        //-         td This module is helpful...
+        //-         td NA
+        //- 
       
 block scripts
   script(src='/user_portal/learnerDashboard/learnerDashboardTools.js')

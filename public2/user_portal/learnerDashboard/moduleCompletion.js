@@ -110,7 +110,6 @@ function updateModuleStatus(modName, moduleGeneralData){
   }
   // set the last accessed info
   if(moduleGeneralData.lastAccessed !== 0) {
-    console.log(`set last accessed...`)
     $('#moduleStatus .description h3').text(`Last accessed ${humanized_time_span(moduleGeneralData.lastAccessed)}`)
   }
 }

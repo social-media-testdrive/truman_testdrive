@@ -106,19 +106,20 @@ exports.getClassUsernames = (req, res, next) => {
 
 // Currently just used for dropdowns
 exports.getClassIdList = (req, res, next) => {
-  if (req.user.isInstructor) {
-    Class.find({
-      teacher: req.user.id,
-      deleted: false
-    }, (err, classes) => {
-      const outputData = [];
-      for (const singleClass in classes) {
-        accessCode = classes[singleClass].accessCode;
-        outputData.push(accessCode);
-      }
-      res.json({classIdList: outputData});
-    });
+  if (!req.user.isInstructor) {
+    return res.status(400).send("Bad Request");
   }
+  Class.find({
+    teacher: req.user.id,
+    deleted: false
+  }, (err, classes) => {
+    const outputData = [];
+    for (const singleClass in classes) {
+      accessCode = classes[singleClass].accessCode;
+      outputData.push(accessCode);
+    }
+    res.json({classIdList: outputData});
+  });
 }
 
 // Show info on a class such as: student activity
