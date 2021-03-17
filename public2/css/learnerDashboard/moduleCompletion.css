@@ -1,12 +1,5 @@
 /* Module Completion Section: list of modules */
 
-/* Used with the old design for the module completion section - remove after
-new design is approved */
-/* #moduleProgressColumn {
-  overflow: auto;
-  max-height: 350px;
-} */
-
 #moduleProgressColumn .moduleProgressCustomIcon {
   padding: 10px;
   min-width: 150px;
@@ -16,14 +9,19 @@ new design is approved */
   margin-top: 5px;
 }
 
-#moduleProgressColumn .moduleProgressCustomIcon .check.icon {
+#moduleProgressColumn .moduleProgressCustomIcon .completedIcon {
   color: rgba(255, 99, 132, 1);
   background: white;
   box-shadow: 0 0 0 0.1em rgba(255, 99, 132, 1) inset;
 }
 
-#moduleProgressColumn .moduleProgressCustomIcon .hourglass.icon,
-#moduleProgressColumn .moduleProgressCustomIcon .minus.icon {
+#moduleProgressColumn .moduleProgressCustomIcon .startedIcon {
+  color: #14a1f6;
+  background: white;
+  box-shadow: 0 0 0 0.1em #14a1f6 inset;
+}
+
+#moduleProgressColumn .moduleProgressCustomIcon .notStartedIcon {
   color: rgb(0 0 0 / 35%);
   background: white;
   box-shadow: 0 0 0 0.1em rgb(0 0 0/ 35%) inset;

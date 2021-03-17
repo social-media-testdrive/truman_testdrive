@@ -14,6 +14,14 @@ h2, h3, h4, p, td {
   margin: 0 !important;
 }
 
+.addPaddingTop {
+  padding-top: 30px;
+}
+
+.addPaddingBottom {
+  padding-bottom: 30px;
+}
+
 .removePadding {
   padding: 0 !important;
 }

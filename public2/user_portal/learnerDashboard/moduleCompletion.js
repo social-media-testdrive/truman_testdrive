@@ -53,48 +53,24 @@ async function updateTimelineActions(modName, moduleGeneralData){
   return;
 }
 
-// "Module Completion" section: module list
-
-// Used with the old design for the module completion section - remove after
-// new design is approved
-function updateModuleStatusList(allModuleGeneralData){
-  $('#moduleProgressColumn .item').each(function(){
-    const modName = $(this).attr('data-itemModuleName');
-    // set the icon depending on module status
-    if (allModuleGeneralData[modName].status === "completed") {
-      $(this).children('.moduleProgressCustomIcon').append(`
-        <i class="big circular icon check"></i>
-        <h3>Completed</h3>
-      `);
-    } else if (allModuleGeneralData[modName].status === "started") {
-      $(this).children('.moduleProgressCustomIcon').append(`
-        <i class="big circular icon hourglass outline"></i>
-        <h3>Started</h3>
-      `);
-    }
-    // set the last accessed info
-    if(allModuleGeneralData[modName].lastAccessed !== 0) {
-      $(this).find('.description p').text(`Last accessed ${humanized_time_span(allModuleGeneralData[modName].lastAccessed)}`)
-    }
-  });
-};
+// "Module Completion" section: module status
 
 function updateModuleStatus(modName, moduleGeneralData){
   $('#moduleStatus .moduleProgressCustomIcon').empty();
   // set the icon depending on module status
   if (moduleGeneralData.status === "completed") {
     $('#moduleStatus .moduleProgressCustomIcon').append(`
-      <i class="huge circular icon check"></i>
+      <i class="huge circular icon check completedIcon"></i>
       <h2>Completed</h2>
     `);
   } else if (moduleGeneralData.status === "started") {
     $('#moduleStatus .moduleProgressCustomIcon').append(`
-      <i class="huge circular icon hourglass outline"></i>
+      <i class="huge circular icon hourglass outline startedIcon"></i>
       <h2>Started</h2>
     `);
   } else {
     $('#moduleStatus .moduleProgressCustomIcon').append(`
-      <i class="huge circular icon minus"></i>
+      <i class="huge circular icon play notStartedIcon"></i>
       <h2>Not Started</h2>
     `);
   }
@@ -157,8 +133,11 @@ $(window).on("load", async function() {
       updatePieChartData(timePieChart, roundedSectionTimes);
       updateTimeTexts(roundedSectionTimes);
       updateTimelineActions(modName, moduleGeneralData);
-      // show the tabs if they were hidden
-      if($('#moduleDetailsColumn').hasClass('hiddenVisibility')){
+      if(singleModuleGeneralData.status === "none") {
+        // hide the tabs if the module has not been started
+        $('#moduleDetailsColumn').addClass('hiddenVisibility');
+      } else {
+        // show the tabs if they were hidden
         $('#moduleDetailsColumn').removeClass('hiddenVisibility');
       }
     }

@@ -9,15 +9,9 @@
   position: absolute;
   text-align: center;
   align-items: center;
-  width: 34%;
-  left: 33%;
-  height: 34%;
-  top: 33%;
+  width: 20%;
+  left: 40%;
+  height: 20%;
+  top: 40%;
   font-size: x-large;
-}
-
-/* My Learning Achievement section: badge list */
-#badgeItems {
-  overflow: auto;
-  max-height: 300px;
 }
