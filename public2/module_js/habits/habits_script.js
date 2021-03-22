@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  
+
   $('.ui.sticky.newPostSticky')
     .sticky({
       context: '#content',
@@ -13,7 +13,7 @@ $(document).ready(function(){
   /*
   * Misc code
   */
-  $('.big.plus.icon').css({"display": "block"})
+  $('.newpost').css({"visibility": "visible"})
   $('.ui.simple.dropdown.item').css({"display":"inherit"})
   $('.ui.accordion').accordion();
 

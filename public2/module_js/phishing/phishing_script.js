@@ -59,7 +59,7 @@ $('.ui.sticky.newPostSticky')
   });
 
 $('.ui.modal').modal({ closable: false });
-$('.big.plus.icon').css({"display": "block"})
+$('.newpost').css({"visibility": "visible"})
 $('.ui.simple.dropdown.item').css({"display":"inherit"})
 
 //Open the corresponding phishing modal when a phishing link is clicked

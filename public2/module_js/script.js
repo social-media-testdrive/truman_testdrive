@@ -210,7 +210,7 @@ $('.ui.dropdown.icon.item')
 /*
 * Misc code
 */
-$('.big.plus.icon').css({"display": "block"})
+$('.newpost').css({"visibility": "visible"})
 $('.ui.simple.dropdown.item').css({"display":"inherit"})
 $('.ui.accordion').accordion();
 

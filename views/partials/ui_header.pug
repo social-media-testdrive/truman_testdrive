@@ -31,7 +31,7 @@
             .right.menu.headerDropdownMenu
               if user
                 a.item.newpost
-                  i.big.plus.icon(style="display: none;")
+                  i.big.plus.icon
                 if user.isInstructor
                   a.item(href='/classManagement') 
                     i.big.home.icon
@@ -61,7 +61,7 @@
       //-a.item(href='/signup') Create Account
     else
       a.item.newpost
-        i.big.plus.icon(style="display: none;")
+        i.big.plus.icon
       if user.isInstructor
         a.item(href='/classes') 
           i.big.university.icon
