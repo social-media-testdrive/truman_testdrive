@@ -67,11 +67,7 @@ function eventsAfterHints(){
     $('.ui.accordion').accordion('open', 0);
     $('.ui.accordion').accordion('close', 1);
     $('input[type=checkbox]').prop('checked',false);
-    recordSimModalInputs('esteem_simPostModal')
-  });
-
-  $('#nextButton').on('click', function () {
-    $('#modSection2').click();
+    recordSimModalInputs('esteem_simPostModal1')
   });
 };
 

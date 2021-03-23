@@ -18,6 +18,7 @@ function recordSimModalInputs(modalNameAttrStr) {
   $('input[type=checkbox]').prop('checked',false);
 
   $(`.ui.modal[data-modalName=${modalNameAttrStr}]`).modal({
+    allowMultipe: false,
     closable: false,
     onVisible: function(){
       switch(modalNameAttrStr){
@@ -30,31 +31,11 @@ function recordSimModalInputs(modalNameAttrStr) {
         case 'digfoot_normalPostModal':
           Voiceovers.playVoiceover(['CUSML.misc_04.mp3'])
           break;
-        case 'esteem_simPostModal':
-          $('.ui.accordion').accordion('open', 0);
-          $('.ui.accordion').accordion('close', 1);
-          $('.ui.accordion').accordion({
-            onOpen: function(){
-              if($(this).hasClass('esteemModalSection2')){
-                Voiceovers.playVoiceover(['CUSML.misc_06.mp3'])
-              }
-            }
-          })
-          $('input[type=checkbox]').prop('checked',false);
-          Voiceovers.playVoiceover(['CUSML.misc_05.mp3'])
-          break;
-        case 'esteem_postModal':
-          $('.ui.accordion').accordion('open', 0);
-          $('.ui.accordion').accordion('close', 1);
-          $('.ui.accordion').accordion({
-            onOpen: function(){
-              if($(this).hasClass('esteemModalSection2')){
-                Voiceovers.playVoiceover(['CUSML.misc_08.mp3'])
-              }
-            }
-          })
-          $('input[type=checkbox]').prop('checked',false);
+        case 'esteem_postModal1':
           Voiceovers.playVoiceover(['CUSML.misc_07.mp3'])
+          break;
+        case 'esteem_simPostModal1':
+          Voiceovers.playVoiceover(['CUSML.misc_05.mp3'])
           break;
       }
     },
@@ -88,6 +69,57 @@ function recordSimModalInputs(modalNameAttrStr) {
          modalCheckboxesInput: checkboxInputs,
          _csrf: $('meta[name="csrf-token"]').attr('content')
        });
+    },
+    // the following is only relevant in the esteem module:
+    onHidden: function(){
+      if (modalNameAttrStr === "esteem_simPostModal1" || modalNameAttrStr === "esteem_postModal1" ){
+        // if the user has selected a NEGATIVE emotion (indicated by the binary number),
+        // show the second module after the first one closes.
+        if ((checkboxInputs & 0b001101110) !== 0) {
+          const secondModalNameAttr = modalNameAttrStr.replace('1','2');
+          $(`.ui.modal[data-modalName=${secondModalNameAttr}]`).modal({
+            allowMultipe: false,
+            closable: false,
+            onVisible: function(){
+              if (secondModalNameAttr.includes('sim')) {
+                Voiceovers.playVoiceover(['CUSML.misc_06.mp3'])
+              } else {
+                Voiceovers.playVoiceover(['CUSML.misc_07.mp3'])
+              }
+            },
+            onHide: function(){
+              Voiceovers.pauseVoiceover();
+              const modalClosedTime = Date.now();
+              const modalViewTime = modalClosedTime - modalOpenedTime;
+              const pathArrayForHeader = window.location.pathname.split('/');
+              const currentModule = pathArrayForHeader[2];
+              const modalName = $(this).attr('data-modalName');
+              let numberOfCheckboxes = 0;
+              let checkboxInputs2 = 0b0;
+              $(`.ui.modal[data-modalName=${secondModalNameAttr}] .ui.checkbox input`).each(function(){
+                numberOfCheckboxes++;
+                if ($(this).is(":checked")){
+                  checkboxInputs2 = checkboxInputs2 << 1; // shift left and add 1 to mark true
+                  checkboxInputs2++;
+                } else {
+                  checkboxInputs2 = checkboxInputs2 << 1; //shift left
+                }
+              });
+               $.post("/feed", {
+                 actionType: 'guided activity',
+                 postID: postID,
+                 modual: currentModule,
+                 modalName: modalName,
+                 modalOpenedTime: modalOpenedTime,
+                 modalViewTime: modalViewTime,
+                 modalCheckboxesCount: numberOfCheckboxes,
+                 modalCheckboxesInput: checkboxInputs2,
+                 _csrf: $('meta[name="csrf-token"]').attr('content')
+               });
+            }
+          }).modal('show');
+        }
+      }
     }
   }).modal('show');
 };
