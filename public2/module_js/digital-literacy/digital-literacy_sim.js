@@ -68,17 +68,17 @@ $('.ui.accordion').accordion();
 
 function eventsAfterHints(){
 
-  $('.articleLink').on('click', function(){
+  $('.img.post, .newsArticleTitleContainer, .description').on('click', function(){
     recordSimModalInputs('digital-literacy_articleModal');
   });
 
-
-  $(".info_button").click(function () {
+  $(".info_button").click(function (e) {
     var clickedId = '#' + $(this).attr('id');
     let info_header = $(clickedId).next()[0].innerText;
     let info_text = post_info_description.get(info_header.toString().trim()) || 'No Information Found';
     document.getElementById('post_info_body').innerHTML = info_text;
     recordSimModalInputs('digital-literacy_infoModal');
+    e.stopPropagation();
   });
 
   $('.flag.button').on('click', function(){

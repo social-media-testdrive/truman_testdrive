@@ -225,9 +225,10 @@ $('.openPostDigitalLiteracy').on('click', function(){
   recordModalInputs('digital-literacy_articleModal');
 });
 
-$(".modual.info_button").click(function () {
+$(".modual.info_button").click(function (e) {
   recordModalInputs('digital-literacy_articleInfoModal');
   document.getElementById('post_info_text_modual').innerHTML = $(this).data('info_text');
+  e.stopPropagation();
 });
 
 // digfoot

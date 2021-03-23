@@ -50,7 +50,7 @@ const stepsList = [
     audioFile: ['CUSML.2.3.5.mp3']
   },
   {
-    element: '#item1',
+    element: '#item2',
     intro: `If the advertisement is not relevant to you, or you don’t want to
     see it again, you can click “<i>Hide ad</i>” to get rid of the ad from your
     timeline.`,
@@ -59,7 +59,7 @@ const stepsList = [
     audioFile: ['CUSML.2.3.6.mp3']
   },
   {
-    element: '#item1',
+    element: '#item2',
     intro: `If the advertisement is offensive or inappropriate, you can click
     “Report ad” to report it to the website.`,
     position: "right",
@@ -67,7 +67,7 @@ const stepsList = [
     audioFile: ['CUSML.2.3.7.mp3']
   },
   {
-    element: '#item1',
+    element: '#item2',
     intro: `You can click “Why am I seeing this ad?” to learn more about why
     the website decided to show you the advertisement.`,
     position: "right",
@@ -85,7 +85,7 @@ const stepsList = [
 ]
 
 function additionalOnBeforeChange(jqThis) {
-  if((jqThis[0]._currentStep >= 5) && (jqThis[0]._currentStep < 9)){
+  if((jqThis[0]._currentStep >= 6) && (jqThis[0]._currentStep < 9)){
     $('.ui.dropdown.icon.item').dropdown({
       duration: 0
     });

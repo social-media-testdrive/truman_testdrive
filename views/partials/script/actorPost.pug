@@ -33,7 +33,10 @@
     .read.rounded.right.floated.modual.info_button(id="info_"+val.id, data-info_text = val.info_text)
       i.info.icon
   .content
-    .description!=val.body
+    if (val.module == 'digital-literacy' && val.info_text != "")  
+      .description.openPostDigitalLiteracy!=val.body
+    else 
+      .description!=val.body
   .three.ui.bottom.attached.icon.buttons
     .ui.reply.button(tabindex='0')
       i.reply.icon

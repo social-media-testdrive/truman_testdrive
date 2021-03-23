@@ -1,3 +1,13 @@
+/* custom cursor appearances */
+.ui.card .comments :not(.actions){
+  cursor: default;
+}
+
+.ui.card .description,
+.newsArticleTitleContainer {
+  cursor: pointer;
+}
+
 /* sim and results */
 
 .info_button {
@@ -9,6 +19,7 @@
   width:7%;
   height:auto
 }
+
 
 /* tutorial */
 
