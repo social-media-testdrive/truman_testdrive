@@ -57,6 +57,8 @@ var hintsList=
   }
 ];
 
+var clickedArticle = false;
+
 var info_text = 'No Information Found';
 let post_info_description = new Map([
     ['WWW.NEWSNETWORK.COM.CO','News Network provides the most up to date local and national news.'],
@@ -69,6 +71,12 @@ $('.ui.accordion').accordion();
 function eventsAfterHints(){
 
   $('.img.post, .newsArticleTitleContainer, .description').on('click', function(){
+    // update clickedArticle.
+    clickedArticle = true;
+    $('#clickArticleLinkWarning').hide();
+    if(closedHints == numberOfHints) {
+      $("#cyberTransButton").addClass("green");
+    }
     recordSimModalInputs('digital-literacy_articleModal');
   });
 
@@ -85,4 +93,40 @@ function eventsAfterHints(){
     $('input[type=checkbox]').prop('checked',false);
     recordSimModalInputs('digital-literacy_flagModal');
   })
+}
+
+function customErrorCheck(){
+  if(closedHints != numberOfHints){
+    //show the message normally the first time
+    if($('#clickAllDotsWarning').is(":hidden")){
+      $('#clickAllDotsWarning').transition('fade');
+      $('#cyberTransButton').css("margin-bottom", "10em");
+    }else{
+      //otherwise, bounce the message to draw attention to it
+      $('#clickAllDotsWarning').transition('bounce');
+    }
+  }
+  if(!clickedArticle){
+    $('#clickArticleLinkWarning').show();
+  }
+}
+
+function customOnHintCloseFunction() {
+   closedHints++;
+   clickedHints = 0;
+   if($('#removeHidden').is(":visible")){
+     $('#removeHidden').transition('fade');
+     if($('#clickAllDotsWarning').is(":hidden")){
+       $('#cyberTransButton').css("margin-bottom", "4em");
+     }
+   }
+   if(closedHints == numberOfHints) {
+     if($('#clickAllDotsWarning').is(':visible')){
+       $('#clickAllDotsWarning').transition('fade');
+       $('#cyberTransButton').css("margin-bottom", "4em");
+     }
+     if(clickedArticle){
+       $("#cyberTransButton").addClass("green");
+     }
+   }
 }
