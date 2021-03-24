@@ -419,7 +419,12 @@ app.get('/end/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, 
     res.render(req.param("modId") + '/' + req.param("modId")+'_end', {
       title: 'Finished'
     });
-  } else {
+  } else if ((req.param("modId") === 'esteem-esp')) {
+    res.render('base_end-esp.pug', {
+      title: 'Finished'
+    });
+  }
+  else {
     res.render('base_end.pug', {
       title: 'Finished'
     });
@@ -439,12 +444,17 @@ app.get('/start/:modId', passportConfig.isAuthenticated, function (req, res) {
 app.get('/intro/:modId', passportConfig.isAuthenticated,function (req, res) {
   if (req.param("modId") === "delete") {   // anticipating a specific user behavior that causes 500 errors
     res.redirect('/');
+  } else if ((req.param("modId") === 'esteem-esp')) {
+    res.render('base_intro-esp.pug', {
+      title: 'Finished'
+    });
   } else {
     res.render('base_intro.pug', {
       title: 'Welcome'
     });
   }
 });
+
 app.get('/tut_guide/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_tut_guide', {
     title: 'Welcome'
