@@ -675,11 +675,11 @@ function buildSubHeaderRecords(headerArray, records, moduleQuestions){
   // first record built in this function lists all the checkbox labels
   let labelsRecord = {
     col1: "",
-    col2: "checkbox"
+    col2: ""
   };
   // second record built in this function lists the recommended answers
   let answersRecord = {
-    col1: "Username",
+    col1: "",
     col2: "Recommended Answer"
   };
   // build the rest of the records based on the module questions

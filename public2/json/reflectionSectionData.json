@@ -53,7 +53,7 @@
         "2": "I wrote a supportive or defending comment for the target.",
         "3": "I would tell a trusted adult if I saw this kind of post."
       },
-      "responseRequirement": "exact",
+      "responseRequirement": "atLeastOne",
       "correctResponses": {
         "0": "1",
         "1": "1",
