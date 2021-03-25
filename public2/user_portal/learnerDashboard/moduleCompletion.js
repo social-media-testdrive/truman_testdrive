@@ -57,6 +57,7 @@ async function updateTimelineActions(modName, moduleGeneralData){
 
 function updateModuleStatus(modName, moduleGeneralData){
   $('#moduleStatus .moduleProgressCustomIcon').empty();
+  $('#moduleStatus .description h3').empty();
   // set the icon depending on module status
   if (moduleGeneralData.status === "completed") {
     $('#moduleStatus .moduleProgressCustomIcon').append(`
