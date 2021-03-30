@@ -30,14 +30,8 @@
           if isResearchVersion
             .right.menu.headerDropdownMenu
               if user
-                a.item.newpost
+                a.item.newpost.float.right
                   i.big.plus.icon
-                if user.isInstructor
-                  a.item(href='/classManagement') 
-                    i.big.home.icon
-                if (user.isStudent && enableLearnerDashboard)
-                  a.item(href='/learningAchievement') 
-                    i.big.home.icon
                 .ui.simple.dropdown.item
                   if user.profile.picture
                     img.ui.mini.spaced.circular.image(src=cdn+'/profile_pictures/'+user.profile.picture)
@@ -50,6 +44,12 @@
                     span= user.profile.name || user.username || user.id
                   i.dropdown.icon
                   .menu
+                    if user.isInstructor
+                      a.item(href='/classManagement') View Dashboard
+                    if (user.isStudent && enableLearnerDashboard)
+                      a.item(href='/learningAchievement') My Dashboard
+                    a.item(href='/') Module Page
+                    a.item(href='mailto:socialmediatestdrive@gmail.com') Contact Us
                     a.item(href='/logout') Logout
             
 .mobile.only.row
