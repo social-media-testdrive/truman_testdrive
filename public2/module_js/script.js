@@ -97,6 +97,7 @@ function recordModalInputs(modalNameAttrStr) {
         // show the second module after the first one closes.
         if ((checkboxInputs & 0b001101110) !== 0) {
           const secondModalNameAttr = modalNameAttrStr.replace('1','2');
+          const secondModalOpenedTime = Date.now();
           $(`.ui.modal[data-modalName=${secondModalNameAttr}]`).modal({
             allowMultipe: false,
             closable: false,
@@ -110,7 +111,7 @@ function recordModalInputs(modalNameAttrStr) {
             onHide: function(){
               Voiceovers.pauseVoiceover();
               const modalClosedTime = Date.now();
-              const modalViewTime = modalClosedTime - modalOpenedTime;
+              const modalViewTime = modalClosedTime - secondModalOpenedTime;
               const pathArrayForHeader = window.location.pathname.split('/');
               const currentModule = pathArrayForHeader[2];
               const modalName = $(this).attr('data-modalName');
@@ -130,7 +131,7 @@ function recordModalInputs(modalNameAttrStr) {
                 postID: postID,
                 modual: currentModule,
                 modalName: modalName,
-                modalOpenedTime: modalOpenedTime,
+                modalOpenedTime: secondModalOpenedTime,
                 modalViewTime: modalViewTime,
                 modalCheckboxesCount: numberOfCheckboxes,
                 modalCheckboxesInput: checkboxInputs2,

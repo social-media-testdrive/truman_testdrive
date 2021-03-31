@@ -1031,7 +1031,11 @@ end button links
       {
         //console.log("CLICKING ON DIG INGO FLAG");
         $('input[type=checkbox]').prop('checked',false);
-        recordModalInputs('digital-literacy_flagModal');
+        if (actionType === 'free play') {
+          recordModalInputs('digital-literacy_flagModal');
+        } else if (actionType === 'guided activity'){
+          recordSimModalInputs('digital-literacy_flagModal');
+        }
       }
 
 
