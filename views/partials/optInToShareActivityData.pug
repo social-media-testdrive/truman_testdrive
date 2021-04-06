@@ -1,0 +1,33 @@
+.ui.button.testPopupButton Test Opt-In Popup
+br
+.ui.modal.optInToShareActivityDataSegment
+  .content
+    p
+      | The TestDrive team is always looking for ways to improve this platform. 
+      | Please let us know whether you are willing to share your activity data 
+      | with us to improve Social Media TestDrive. We would very much appreciate 
+      | your help!
+    ul.list
+      li 
+        | Activity data include your clicks, comments, and answers to 
+        | questions in this module
+      li 
+        | Your activity data is anonymous. We will NOT collect your personal 
+        | information (name, email, home address etc.)
+      li 
+        | If you have entered personal information anywhere in this module, 
+        | we will delete it before we analyze the data
+      li 
+        | Only TestDrive team can see your activity data. We will NOT share 
+        | your data with other people
+      li 
+        | Please click this 
+        a(href="https://app.socialmediatestdrive.org/privacy") link 
+        | to see more details regarding our data privacy policy
+    .ui.checkbox
+      input(type="checkbox" name="optInToShareActivityData")
+      label 
+        | Yes, I’m willing to share my activity data with the TestDrive team 
+        | to help improve this platform.
+  .actions
+    .ui.positive.button Continue

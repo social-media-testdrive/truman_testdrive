@@ -680,6 +680,28 @@ exports.getMe = (req, res) => {
 
 };
 
+/**
+ * POST /updateOptInToShareActivityData
+ * Update user selection to opt in to share their activity data.
+ */
+exports.postUpdateOptInToShareActivityData = (req, res, next) => {
+  User.findById(req.user.id, (err, user) => {
+
+    if (err) {
+      return next(err);
+    }
+
+    user.optInToShareActivityData = req.body.optInSelection;
+
+    user.save((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.send({result: "success"});
+    });
+  });
+};
+
 exports.getHabitsTimer = (req, res) => {
     User.findById(req.user.id)
       .exec(function (err, user){

@@ -186,6 +186,7 @@ block content
         .inline.fields
           label
           textarea.glowing-border(rows='3' id="safe_responseOne")
+    include ../partials/optInToShareActivityData.pug
     br
     .ui.big.green.labeled.icon.button(onclick="onPrint()")
           i.right.arrow.icon
@@ -199,7 +200,8 @@ block content
       
 block scripts
   script(src="/module_js/safe-posting/safe-posting_results.js")
-
+  script(src='/optInToShareActivityData.js')
 block styles 
   link(rel='stylesheet', href='/css/modules/safe-posting.css')
   link(rel='stylesheet', href='/css/results.css') 
+  link(rel='stylesheet', href='/css/optInToShareActivityData.css')

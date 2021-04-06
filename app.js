@@ -451,7 +451,7 @@ app.get('/tut_guide/:modId', passportConfig.isAuthenticated, csrfProtection, add
   });
 });
 
-app.get('/results/:modId', passportConfig.isAuthenticated, function (req, res) {
+app.get('/results/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   //console.log(req.param("modId") + '/' + req.param("modId")+'_results')
   res.render(req.param("modId") + '/' + req.param("modId")+'_results', {
     title: 'Reflection'
@@ -570,6 +570,7 @@ app.post('/deleteUserFeedActions', passportConfig.isAuthenticated, scriptControl
 app.post('/interest', passportConfig.isAuthenticated, check, csrfProtection, userController.postUpdateInterestSelection);
 app.post('/esteemInterest', passportConfig.isAuthenticated, check, csrfProtection, userController.postEsteemInterestSelection);
 app.post('/habitsTimer', passportConfig.isAuthenticated, check, csrfProtection, userController.postUpdateHabitsTimer);
+app.post('/updateOptInToShareActivityData', passportConfig.isAuthenticated, check, csrfProtection, userController.postUpdateOptInToShareActivityData)
 //postDeleteAccount
 app.post('/delete', passportConfig.isAuthenticated, check, csrfProtection, userController.getDeleteAccount);
 //app.get('/delete', passportConfig.isAuthenticated, check, csrfProtection, userController.getDeleteAccount);

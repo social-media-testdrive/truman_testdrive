@@ -233,7 +233,7 @@ block content
         .inline.fields
           label
           textarea.glowing-border(rows='2' id="literacy_responseTwo")
-
+    include ../partials/optInToShareActivityData.pug
     br
     .ui.big.green.labeled.icon.button(onclick="onPrint()")
           i.right.arrow.icon
@@ -247,8 +247,8 @@ block content
       
 block scripts
   script(src="/module_js/targeted/targeted_results.js")
-  
+  script(src='/optInToShareActivityData.js')
 block styles
   link(rel='stylesheet', href='/css/modules/targeted.css')
   link(rel='stylesheet', href='/css/results.css')
-  
+  link(rel='stylesheet', href='/css/optInToShareActivityData.css')

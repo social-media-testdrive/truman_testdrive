@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
   isAdmin: {type: Boolean, default: false}, //is an Admin? (only changed directly in DB)
   isInstructor: {type: Boolean, default: false}, // is this user an Instructor
   isGuest: {type: Boolean, default: false}, // is this user an Instructor
-
+  optInToShareActivityData: {type: Boolean, default: false}, // if this user has opted in to sharing their activity data 
   completed: {type: Boolean, default: false}, //not used in TestDrive
 
   //I don't believe these are used for TestDrive. It's mainly used for the Notification functionality
