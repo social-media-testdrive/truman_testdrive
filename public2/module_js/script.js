@@ -105,7 +105,7 @@ function recordModalInputs(modalNameAttrStr) {
               if (secondModalNameAttr.includes('sim')) {
                 Voiceovers.playVoiceover(['CUSML.misc_06.mp3'])
               } else {
-                Voiceovers.playVoiceover(['CUSML.misc_07.mp3'])
+                Voiceovers.playVoiceover(['CUSML.misc_08.mp3'])
               }
             },
             onHide: function(){
