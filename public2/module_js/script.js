@@ -177,7 +177,12 @@ function targetedAdDropdownSelection(){
     //hide the post
     var post = $(this).closest(".ui.fluid.card.dim");
     var postID = post.attr("postID");
-    $.post("/feed", { postID: postID, flag: 1, _csrf: $('meta[name="csrf-token"]').attr('content') });
+    $.post("/feed", {
+      postID: postID,
+      modual: currentModule,
+      flag: Date.now(),
+      _csrf: $('meta[name="csrf-token"]').attr('content')
+    });
     post.find(".ui.inverted.dimmer.notflag").dimmer({
       closable: false
     }).dimmer('show')
@@ -194,7 +199,12 @@ function targetedAdDropdownSelection(){
     //flag the post
     var post = $(this).closest(".ui.fluid.card.dim");
     var postID = post.attr("postID");
-    $.post("/feed", { postID: postID, flag: 1, _csrf: $('meta[name="csrf-token"]').attr('content') });
+    $.post("/feed", {
+      postID: postID,
+      flag: Date.now(),
+      modual: currentModule,
+      _csrf: $('meta[name="csrf-token"]').attr('content')
+    });
     post.find(".ui.dimmer.flag").dimmer({
       closable: false
     })

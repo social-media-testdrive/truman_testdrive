@@ -101,6 +101,13 @@ function eventsAfterHints(){
           closable: true
         })
           .dimmer('show');
+        $.post("/feed", {
+          actionType: 'guided activity',
+          postID: postID,
+          flag: Date.now(),
+          modual: 'targeted',
+          _csrf: $('meta[name="csrf-token"]').attr('content')
+        });
         //open hide ad Modal
         recordSimModalInputs('targeted_hideAdModal');
 
@@ -118,7 +125,13 @@ function eventsAfterHints(){
           closable: true
         })
           .dimmer('show');
-
+        $.post("/feed", {
+          actionType: 'guided activity',
+          postID: postID,
+          flag: Date.now(),
+          modual: 'targeted',
+          _csrf: $('meta[name="csrf-token"]').attr('content')
+        });
       } else if (dropdownSelection == 2){
         //get the company name to dynamically use in the modal
         var companyName = $(this).closest(".ui.fluid.card.dim").find("#companyName").text();
