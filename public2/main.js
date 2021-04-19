@@ -435,14 +435,6 @@ Start button links
       window.location.href = '/modual/' + pathArray[2];
     });
 
-  //Cyberbullying end play
-  $('.ui.big.green.labeled.icon.button.cyberbullying_end')
-    .on('click', function () {
-      console.log(window.location.pathname)
-      let pathArray = window.location.pathname.split('/');
-      console.log(pathArray);
-      window.location.href = '/end/' + pathArray[2];
-    });
 
   //Sign Up Info Skip Button
   $('button.ui.button.skip')
