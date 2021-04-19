@@ -903,21 +903,27 @@ exports.postUpdatePassword = (req, res, next) => {
  * Delete user account.
  */
 exports.getDeleteAccount = (req, res, next) => {
-  //console.log("In postDeleteAccount");
-  //is this a guest account?
-  if(typeof req.user.isGuest !== 'undefined' && req.user.isGuest)
-  {
-    //console.log("@#@#@#@Deleting Guest User")
-    User.remove({ _id: req.user.id }, (err) => {
-      if (err) { return next(err); }
+  // Is this a guest account?
+  if(typeof req.user.isGuest !== 'undefined' && req.user.isGuest) {
+    // Check if the user has opted in to sharing their data.
+    // Do not delete their account if optInToShareActivityData === true.
+    if (req.user.optInToShareActivityData) {
       req.logout();
-      //req.flash('info', { msg: 'Your account has been deleted.' });
-      //res.redirect('/');
-      res.send({result:"success"});
-    });
-  }
-  else
-  {
+      res.send({
+        result: "Delete skipped because this user agreed to share their activity data."
+      });
+    } else {
+      User.remove({ _id: req.user.id }, (err) => {
+        if (err) {
+          return next(err);
+        }
+        req.logout();
+        res.send({
+          result: "success"
+        });
+      });
+    }
+  } else {
     //console.log("Deleting user feed posts Actions")
     User.findById(req.user.id, (err, user) => {
       //somehow user does not exist here
