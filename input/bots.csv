@@ -85,28 +85,77 @@ id,username,name,age,location,bio,picture,module
 88,nentindo,Nentindo,,"Tokyo, Japan",Official home of all things Nentindo! Join our family #nentindo.,controller_pfp.jpg,TARGETED ONLY
 89,vrtech,VR Tech ,,"Palo Alto, CA",EXPERIENCE THE FUTURE #VRTech Sign-up for a free trial today.,VR_pfp.jpg,TARGETED ONLY
 90,rogerthatapp,Roger That Mobile App,,"Dallas, TX",Download the world's #1 mobile gaming app.,rogerthat_pfp.jpg,TARGETED ONLY
-91,testdrive,Socail Media Testdrive,,Testdrive Headqarters,This is the official SOcial Media TestDrive administrator account,user91.png,PHISHING ONLY
+91,testdrive,Social Media Testdrive,,Testdrive Headqarters,This is the official SOcial Media TestDrive administrator account,user91.png,PHISHING ONLY
 
-92,triple-amenaza,Sara Segovia,12,"Santiago de Chile, CH",Cantante| Bailarina | Actriz | Modelo | Sirena <33333,user14.jpg,presentation
-93,soyyolucy,Lucía Hernández,12,"Monterrey,MX",Tantos postres tan poco tiempo,user35.jpg,presentation
-94,bffz986,Ana Lucia Sánchez,14,"Quito, Ecuador",<333333,user50.jpg,
-95,danielperez06,Daniel Perez,11,"Buenos Aires, AR",IMG Academy ⚽️🏀⚾️,user67.jpg,cyberbullying
-96,andrestorres_,Andrés Torres,14,"Bogotá, CO",Yo también me stalkearia 😏,user71.JPG,cyberbullying
-97,masplayamenospreocupaciones,Paulo Silva,14,"Sao Paulo, BR",St. Paul’s School| María <3,user33.jpg,presentation
-98,Suzieee,Susana Tapia,12,"Lima, Perú",qué pone la gente en su bio O.o,user40.jpg,
-99,joshradinnn,Jorge Romero,13,"Ciudad de México, MX",😎 manteniendome real desde '04 😎,user68.jpg,
-100,dannyboii-esp,Daniel Melendez,13,"Arequipa, Perú",¯\_(ツ)_/¯,user37.jpg,cyberbullying
-101,asherballer,Alejandro Martinez,12,"Lima, Perú","soy cool, tú no",user48.jpeg,presentation/cyberbullying
-102,anape244,Ana Pereira,12,"Río de Janeiro, BR",Paz Amor Surf,user5.jpeg,presentation
-103,neenz03,Noelia Díaz,15,"Santiago de Chile, CH",viviendo en SCL | 15 años | Taken 🔒❤️ C.M.,user60.jpg,presentation
-105,ngarcia02,Natalia García,11,"Medellín, CO",Familia💕 Animales🐾 Amigos👭,user58.jpg,presentation
-106,ciclista_ana_07,Ana Lopez,14,"Caracas, VN",CITS 2018 🏕,user69.jpg,presentation
-107,asherballer,Alejandro Martinez,12,"Lima, Perú","soy cool, tú no",user48.jpeg,presentation/cyberbullying
-108,gaby82,Gabriela Diaz,12,"Santo Domingo, RD","Amo a Taylor Swift, comida y tortugas!!! 🐢 sc: soyyogaby",user62.jpg,
-109,mari_zambranoxx,María Zambrano,13,"Guayaquil, EC",X.IV.MMIV | follow 4 follow | C/O 2022!!📚📚,user64.jpg,
-110,paredes_pris,Priscilla Paredes,14,"Lima, Perú",Sigue mi canal de belleza y vlogs!!! xx,user38.jpg,presentation
-111,l.ochoa7,Laura Ochoa,14,"Lima, Perú","Depende de ti, LIMA LIMA",user7.jpg,presentation
-112,MA.osodepeluche,María Alejandra Sanchez,11,"Maracaibo, VE",Me encanta actuar. Algún día estaré en Hollywood <3,user23.jpg,cyberbullying
-113,juan_el_tren,Flavio Rojas,13,"Guatemala, GT",yo.,user39.jpg,
-114,cupcake50,Milagros Cardenas,13,"Arequipa, Perú",Amo a Selena Gomez <3,user24.jpg,
-115,vale_vargas,Valeria Vargas,14,"San José, CR",14 | Estudiante de primer año | Chica de CR | Escorpio,user25.jpg,cyberbullying
+100,caro.htt,Carolina Jara,10,"Arequipa, Perú",| Gr. 6 ~ bailando bajo la lluvia,user3.jpg,presentation
+101,mariguez113,María Cristina Rodríguez,11,"Buenos Aires, AR",Futura futbolista <3,user4.jpg,presentation/cyberbullying
+102,apereira244,Ana Pereira,12,"Río de Janeiro, BR",Paz Amor Surf,user5.jpeg,presentation
+103,sandra_06,Sandra Gómez,13,"Medellín, CO","""Todo tiene belleza, pero no todos pueden verla."" -Confucio",user6.jpeg,presentation
+104,l.ochoa17,Laura Ochoa,14,"Lima, Perú","Depende de ti, LIMA LIMA",user7.jpg,presentation
+105,kitty.r,Juana Ramirez,14,"Santo Domingo, RD","cat-lover, soñadora, procrastinadora",user9.jpg,presentation
+106,alonso-el-mejor,Alonso Contreras,12,"Santiago de Chile, CH",¿cómo es que este usuario aún no está en uso?,user10.jpg,presentation
+107,triple-amenaza,Sara Segovia,12,"Monterrey,MX",Tantos postres tan poco tiempo,user14.jpg,presentation
+108,soyyolucia,Lucía Hernández,14,"Quito, Ecuador",<333333,user35.jpg,
+109,bffz986,Ana Lucia Sánchez,11,"Buenos Aires, AR",IMG Academy ⚽️🏀⚾️,user50.jpg,cyberbullying
+110,danielperez06,Daniel Perez,14,"Bogotá, CO",Yo también me stalkearia 😏,user67.jpg,cyberbullying
+111,andrestorres_,Andrés Torres,14,"Sao Paulo, BR",St. Paul’s School| María <3,user71.JPG,presentation
+112,masplayamenospreocupaciones,Paulo Silva,12,"Lima, Perú",qué pone la gente en su bio O.o,user33.jpg,
+113,Suzieee,Susana Tapia,13,"Ciudad de México, MX",😎 manteniendome real desde '04 😎,user40.jpg,
+114,joshradinnn,José Eduardo López,13,"Arequipa, Perú",¯\_(ツ)_/¯,user68.jpg,cyberbullying
+115,dannyboii-esp,Daniel Melendez,12,"Lima, Perú","soy cool, tú no",user37.jpg,presentation/cyberbullying
+116,anape244,Ana Pereira,12,"Río de Janeiro, BR",Paz Amor Surf,user48.jpeg,presentation
+117,neenz03,Noelia Díaz,15,"Santiago de Chile, CH",viviendo en SCL | 15 años | En una relación 🔒❤️ C.M.,user5.jpeg,presentation
+118,ngarcia02,Natalia García,11,"Medellín, CO",Familia💕 Animales🐾 Amigos👭,user58.jpg,presentation
+119,ciclista_ana_07,Ana Lopez,14,"Caracas, VN",Amo montar bici <3,user69.jpg,presentation
+120,alemartinez,Alejandro Martinez,12,"Lima, Perú","soy cool, tú no",user48.jpeg,presentation/cyberbullying
+121,gaby82,Gabriela Diaz,12,"Santo Domingo, RD","Amo a Taylor Swift, comida y tortugas!!! 🐢 sc: soyyogaby",user62.jpg,
+122,maria_zambranoxx,María Zambrano,13,"Guayaquil, EC",X.IV.MMIV | follow 4 follow | C/O 2022!!📚📚,user64.jpg,
+123,rosie_pris,Priscilla Paredes,14,"Lima, Perú",Sigue mi canal de belleza y vlogs!!! xx,user38.jpg,presentation
+125,MA.osodepeluche,María Alejandra Sanchez,11,"Maracaibo,VE",Me encanta actuar. Algún día estaré en Hollywood <3,user23.jpg,cyberbullying
+126,juan_el_tren,Juan Morales,13,"Guatemala, GT",yo.,user39.jpg,
+127,cupcake25,Milagros Cardenas,13,"Arequipa, Perú",Amo a Selena Gomez <3,user24.jpg,
+128,vale_vargas,Valeria Vargas,14,"San José, CR",14 | Estudiante de primer año | Chica de CR | Escorpio,user25.jpg,cyberbullying
+129,osita.maria,Maria Alejandra Sanchez,11,"Maracaibo, VE",Me encanta actuar. Algún día estaré en Hollywood <3,user23.jpg,cyberbullying
+130,cupcake25,Milagros Cardenas,13,"Arequipa, Perú",Amo a Selena Gomez <3,user24.jpg,
+131,vale_vargas,Valeria Vargas,14,"San José, CR",14 | Estudiante de primer año | Chica de CR | Escorpio,user25.jpg,cyberbullying
+132,soy-thiago,Thiago Fernández,10,"Buenos Aires, AR",Thiago | BA |Colegio San Carlos,user26.jpg,cyberbullying
+133,mari-a.alves,María Alves,15,"Río de Janeiro, BR",La vida es una playa. Solo estoy jugando en la arena ,user27.jpg,presentation
+134,king_JD,Juan David Gónzales,11,"Medellín, CO",🏒hockey🏒  ⚽️futbol⚽️  🏀basket🏀,user28.jpg,presentation
+135,maggieg,Margarita García,12,"Ciudad de México, MX","Juego como chica, intenta mantener mi ritmo",user29.jpg,presentation
+136,princesa_lili,Lilian Ureña,13,"Miami, FL","~conoces mi nombre, pero no mi historia~",user30.jpg,presentation
+137,soy_fresca,Francisca Rodriguez,13,"Santo Domingo, RD",Llevame a ver Hamiltom pls,user32.JPG,presentation
+138,masplayamenospreocupaciones,Paulo Silva,14,"Sao Paulo, BR",St. Paul’s School| María <3,user33.jpg,presentation
+139,soyyolucy,Lucía Hernández,12,"Monterrey, MX",Tantos postres tan poco tiempo,user35.jpg,presentation
+140,emememilia,Emilia Li,11,"Santiago de Chile, CH",Hola mundo ^__^,user36.jpg,presentation
+141,dannyboii,Daniel Melendez,13,"Arequipa, Perú",¯\_(ツ)_/¯,user37.jpg,cyberbullying
+142,paredes_pris,Priscilla Paredes,14,"Lima, Perú",Sigue mi canal de belleza y vlogs!!! xx,user38.jpg,presentation
+143,juan_el_tren,Juan Morales,13,"Guatemala, GT",yo.,user39.jpg,
+144,Suzieee,Susana Tapia,12,"Lima, Perú",what do people put in bios O.o,user40.jpg,
+145,bball_guy-esp,Natanael Pineda,12,"Austin, TX",I like basketball & food,user42.jpg,
+146,unapersona,Mi nombre,10,"Medellín, CO",Soy una persona,user43.png,
+147,ReinadelaOscuridad,Reina de la oscuridad,13,"Arequipa, Perú",uNiCa,user44.png,
+148,chicapauli,Paula Gonzáles,11,"Buenos Aires, AR",extraño a mis chicas. amigas por siempre <3,user46.jpg,presentation/cyberbullying
+149,arihearts,María Teresa Hernandez,10,"Caracas, VE",Mi perro es más lindo que el tuyo,user47.jpeg,
+150,chicadelfutbol16,Macarena Gómez,11,"Buenos Aires, AR",chica legendaria #16,user49.jpeg,presentation
+151,bffz986,Ana Lucia Sánchez,14,"Quito, Ecuador",<333333,user50.jpg,
+152,apereira67,Ana Paula Pereira,13,"Sao Paulo, BR",link en mi bio~,user51.jpg,presentation
+153,numba_24,Mateo Muñoz,12,"Santiago de Chile, CH",buena racha: 100,user52.jpg,cyberbullying
+154,estrella75,Sofía Pinedo,13,"Lima, Perú","""mira lo que me hiciste hacer""",user53.jpg,
+155,Nico_Rivas,Nicolás Rivas,12,"Lima, Perú",hincha del fútbol,user54.jpg,presentation
+156,stacy_li_23,Stacy Li,12,"Lima, Perú",12 | Basket🏀 | Sigue tus sueños,user55.jpg,presentation
+157,maludiaz_xx,María Laura Díaz,12,"Buenos Aires, AR",❤️Boca❤️ 1ero Sec 📚 Bailarina ✨,user56.jpg,presentation
+158,jasmine_1110,Francisca Ferreira,14,"Rio de Janeiro, BR",No podrías entenderme aunque viniera con instrucciones,user57.jpg,presentation
+159,ngarcia02,Natalia García,11,"Medellín, CO",Family💕 Animals🐾 Friends👭,user58.jpg,presentation
+160,andre_zambrano1314,Andrea Zambrano,13,"Quito, Ecuador","Disfruta la vida, un día a la vez 🌻🌺",user59.jpg,presentation
+161,noelia03,Noelia Díaz,15,"Santiago de Chile, CH",LA livin | 15 añoz | Taken 🔒❤️ C.M.,user60.jpg,presentation
+162,johan_es_increible15,Johan Vera,14,"Quito, Ecuador",🏈 #15 | sígueme y te sigo 👍🏽,user61.jpg,presentation
+163,gabyyyyyyyy82,Gabriela Díaz,12,"Santo Domingo, RD","Amo a Taylor Swift, comida y tortugas!!! 🐢 sc: soyyogaby",user62.jpg,
+164,chico.cool5386,Jonatán González,10,"Brooklyn, New York",soyy jonatán y me gusta jugar call of duty,user63.jpg,presentation
+165,danna_garciaxx,Danna García,13,"Guayaquil, EC",X.IV.MMIV | follow 4 follow | C/O 2022!!📚📚,user64.jpg,
+166,alexa.garcia-esp,Alexa Garcia,10,"Scarsdale, NY",singing🎶  drama🎭 dance💃,user65.jpg,presentation
+167,michi101,Michelle Ríos,13,"Lima, Perú",Hoy será un buen día y aquí está la razón😉,user66.jpeg,
+168,daniperez06,Daniel Pérez,11,"Buenos Aires, AR",IMG Academy ⚽️🏀⚾️,user67.jpg,cyberbullying
+169,joselopezzz,José Eduardo López,13,"Ciudad de México, MX",😎 manteniendome real desde '04 😎,user68.jpg,
+170,ana_lopez07,Ana Lopez,14,"Caracas, VE",amo montar bici <3,user69.jpg,presentation
+171,ros.s._,Rosa Soto,12,"Santiago de Chile, CH",Alerta ⚠️ Pueden haber imprudencias ⚠️,user70.JPG,
+172,andrestorres_,Andrés Torres,14,"Bogotá, CO",Yo también me stalkearia😏,user71.JPG,cyberbullying
