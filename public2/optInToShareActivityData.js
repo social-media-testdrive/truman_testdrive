@@ -1,22 +1,36 @@
 $(window).on('load', function() {
+  // make sure the buttons don't have residual classes
+  $('.button.resultsContinueButton, .button.printResponsesButton').removeClass('loading disabled');
+
+  // get the current module
+  let pathArray = window.location.pathname.split('/');
+  let currentModule = pathArray[2];
+
   $('.button.resultsContinueButton')
     .on('click', function () {
       $('.optInToShareActivityDataSegment').modal('show');
       $('.optInToShareActivityDataSegment').modal({
         onApprove: function(){
           // change button
-          $('.button.resultsContinueButton, .button.printResponsesButton').addClass('loading', 'disabled');
+          $('.button.resultsContinueButton, .button.printResponsesButton').addClass('loading disabled');
           // get the checkbox status
           const optInSelection = $('.optInToShareActivityDataSegment .ui.checkbox input').is(":checked");
-          // update the status in the db
-          $.post('/updateOptInToShareActivityData', {
-            optInSelection: optInSelection,
-            _csrf: $('meta[name="csrf-token"]').attr('content')
-          }).then(function(){
-            let pathArray = window.location.pathname.split('/');
-            window.location.href = `/end/${pathArray[2]}`;
-          })
+          if (optInSelection) {
+            $.post('/postActivityData', {
+              module: currentModule,
+              _csrf: $('meta[name="csrf-token"]').attr('content')
+            }).then(function(){
+              window.location.href = `/end/${currentModule}`;
+            });
+          } else {
+            $.post('/postDeleteActivityData', {
+              module: currentModule,
+              _csrf: $('meta[name="csrf-token"]').attr('content')
+            }).then(function(){
+              window.location.href = `/end/${currentModule}`;
+            })
+          }
         }
-      })
+      });
     });
 });

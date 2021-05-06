@@ -71,6 +71,7 @@ const useravatarupload= multer({ storage: useravatar_options });
 /**
  * Controllers (route handlers).
  */
+const activityController = require('./controllers/activity');
 const actorsController = require('./controllers/actors');
 const scriptController = require('./controllers/script');
 const classController = require('./controllers/class');
@@ -570,7 +571,8 @@ app.post('/deleteUserFeedActions', passportConfig.isAuthenticated, scriptControl
 app.post('/interest', passportConfig.isAuthenticated, check, csrfProtection, userController.postUpdateInterestSelection);
 app.post('/esteemInterest', passportConfig.isAuthenticated, check, csrfProtection, userController.postEsteemInterestSelection);
 app.post('/habitsTimer', passportConfig.isAuthenticated, check, csrfProtection, userController.postUpdateHabitsTimer);
-app.post('/updateOptInToShareActivityData', passportConfig.isAuthenticated, check, csrfProtection, userController.postUpdateOptInToShareActivityData)
+app.post('/postActivityData', passportConfig.isAuthenticated, check, csrfProtection, activityController.postActivityData);
+app.post('/postDeleteActivityData', passportConfig.isAuthenticated, check, csrfProtection, activityController.postDeleteActivityData);
 //postDeleteAccount
 app.post('/delete', passportConfig.isAuthenticated, check, csrfProtection, userController.getDeleteAccount);
 //app.get('/delete', passportConfig.isAuthenticated, check, csrfProtection, userController.getDeleteAccount);

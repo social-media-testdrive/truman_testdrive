@@ -680,27 +680,6 @@ exports.getMe = (req, res) => {
 
 };
 
-/**
- * POST /updateOptInToShareActivityData
- * Update user selection to opt in to share their activity data.
- */
-exports.postUpdateOptInToShareActivityData = (req, res, next) => {
-  User.findById(req.user.id, (err, user) => {
-
-    if (err) {
-      return next(err);
-    }
-
-    user.optInToShareActivityData = req.body.optInSelection;
-
-    user.save((err) => {
-      if (err) {
-        return next(err);
-      }
-      res.send({result: "success"});
-    });
-  });
-};
 
 exports.getHabitsTimer = (req, res) => {
     User.findById(req.user.id)
@@ -905,24 +884,15 @@ exports.postUpdatePassword = (req, res, next) => {
 exports.getDeleteAccount = (req, res, next) => {
   // Is this a guest account?
   if(typeof req.user.isGuest !== 'undefined' && req.user.isGuest) {
-    // Check if the user has opted in to sharing their data.
-    // Do not delete their account if optInToShareActivityData === true.
-    if (req.user.optInToShareActivityData) {
+    User.remove({ _id: req.user.id }, (err) => {
+      if (err) {
+        return next(err);
+      }
       req.logout();
       res.send({
-        result: "Delete skipped because this user agreed to share their activity data."
+        result: "success"
       });
-    } else {
-      User.remove({ _id: req.user.id }, (err) => {
-        if (err) {
-          return next(err);
-        }
-        req.logout();
-        res.send({
-          result: "success"
-        });
-      });
-    }
+    });
   } else {
     //console.log("Deleting user feed posts Actions")
     User.findById(req.user.id, (err, user) => {
