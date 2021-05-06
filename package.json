@@ -53,7 +53,7 @@
     "tumblr.js": "^1.1.1",
     "twilio": "^3.42.1",
     "twit": "^2.2.11",
-    "ua-parser-js": "^0.7.21",
+    "ua-parser-js": "^0.7.24",
     "useragent": "^2.3.0",
     "validator": "^11.1.0"
   },
