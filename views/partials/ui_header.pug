@@ -1,32 +1,35 @@
 -var cdn = "https://dhpd030vnpk29.cloudfront.net";
 
-.computer.only.tablet.only.row 
+.computer.only.tablet.only.row(style="padding-bottom:40px;")
   .ui.borderless.fixed.menu(style="z-index:10000000;")
     .ui.grid.container#myheader
         .four.wide.column
-          a.item(href='/')
+          a.item(href='https://socialmediatestdrive.org/modules.html')
             img.ui.tiny.image(src=cdn+'/finalLogo.png', id='logo')
         .eight.wide.column
-          .ui.basic.segment.center.aligned.hideHeader
-            ul.progressList
-              li.progressStep#headerStep1
-                h4.number 1
-                h4.checkmark &#10003
-                span learn
-              li.progressStep#headerStep2
-                h4.number 2
-                h4.checkmark &#10003
-                span practice
-              li.progressStep#headerStep3
-                h4.number 3
-                h4.checkmark &#10003
-                span explore
-              li.progressStep#headerStep4
-                h4.number 4
-                h4.checkmark &#10003
-                span reflect
+          .ui.basic.segment.center.aligned.progressHeader.hideHeader
+            .row.moduleTitle
+              span 
+            .row
+              ul.progressList
+                li.progressStep#headerStep1
+                  h4.number 1
+                  h4.checkmark &#10003
+                  span learn
+                li.progressStep#headerStep2
+                  h4.number 2
+                  h4.checkmark &#10003
+                  span practice
+                li.progressStep#headerStep3
+                  h4.number 3
+                  h4.checkmark &#10003
+                  span explore
+                li.progressStep#headerStep4
+                  h4.number 4
+                  h4.checkmark &#10003
+                  span reflect
         .four.wide.column
-          .right.menu
+          .right.menu(style="height:100%;")
             if user
               a.item.newpost
                 i.big.plus.icon(style="display: none;")

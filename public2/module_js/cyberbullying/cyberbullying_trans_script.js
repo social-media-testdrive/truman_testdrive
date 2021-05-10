@@ -10,7 +10,7 @@ function startIntro(){
             intro: `Here is some helpful background before you start:
             <br><a href='/user/DylanCrazzzzzy' target='_blank'>
             <img class='ui avatar image' src='https://dhpd030vnpk29.cloudfront.net/profile_pictures/user19.jpg'>
-            <span>Dylan Goldstein</span></a> just moved into town and is new in
+            <span>Dylan Moore</span></a> just moved into town and is new in
             school. <br>He loves to draw comics and spends most of recess
             sitting by himself drawing in his sketchbook.`
 

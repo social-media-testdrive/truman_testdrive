@@ -35,3 +35,15 @@ bower_components
 # OS metadata
 .DS_Store
 Thumbs.db
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+# Behat and Composer
+composer.json
+composer.lock
+features
+vendor
+selenium-server-standalone-3.141.59.jar

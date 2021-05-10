@@ -1,5 +1,24 @@
+#logo {
+  width: 125px;
+}
+
+.progressHeader {
+  padding: 8px 14px 8px 14px !important;
+}
+
 .hideHeader{
   display:none;
+}
+
+.moduleTitle {
+  padding-top: 4px;
+  padding-bottom: 10px;
+}
+
+.moduleTitle span {
+  color: #333333;
+  font-weight: 600;
+  font-size: large;
 }
 
 .progressList{
@@ -16,6 +35,7 @@
   display: inline-block;
   color: white;
   position: relative;
+  cursor: pointer;
   /* for responsiveness */
   margin: 0 2vw 0 2vw;
 }
@@ -83,6 +103,10 @@
   display:none;
 }
 
+.progressBarActive {
+  cursor: default;
+}
+
 .progressBarActive h4 {
   background: #333333;
 }
@@ -97,6 +121,10 @@
 
 .progressBarActive span {
   color: #333333;
+}
+
+.progressBarActive ~ .progressStep {
+  cursor: default;
 }
 
 .progressBarActive ~ .progressStep h4 {

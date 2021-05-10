@@ -132,7 +132,7 @@ block content
     .header Reply to Post
     .content
       form#replyform.ui.reply.form(action='/post/new', method='POST', enctype='multipart/form-data')
-        input(type='hidden', name='_csrf', value=_csrf)
+        input(type='hidden', name='_csrf', value=csrfToken)
         input#replyInput(type='hidden', name='reply', value='a')
         .field
           textarea(rows='2', placeholder='Add your Reply', name='body')
@@ -145,7 +145,7 @@ block content
       .header Report This User
       .content
         form#reportform.ui.reply.form(action='/user', method='POST')
-          input(type='hidden', name='_csrf', value=_csrf)
+          input(type='hidden', name='_csrf', value=csrfToken)
           input(type='hidden', name='reported', value=actor.username)
           .ui.form
             .grouped.fields

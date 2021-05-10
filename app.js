@@ -22,6 +22,7 @@ var schedule = require('node-schedule');
 const aws = require('aws-sdk');
 //multer is how we send files (like images) thru web forms
 const multer = require('multer');
+const csrf = require('csurf')
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
@@ -80,6 +81,9 @@ const notificationController = require('./controllers/notification');
  * API keys and Passport configuration.
  */
 const passportConfig = require('./config/passport');
+
+// set up route middleware
+var csrfProtection = csrf();
 
 /**
  * Create Express server.
@@ -204,9 +208,14 @@ app.use((req, res, next) => {
 
 //helper function just to see what is in the body
 function check(req, res, next) {
-    //console.log("@@@@@@@@@@@@Body is now ");
-    //console.log(req.body);
+    // console.log("@@@@@@@@@@@@Body is now ");
+    // console.log(req.body);
     next();
+}
+
+function addCsrf(req, res, next) {
+  res.locals.csrfToken = req.csrfToken();
+  next();
 }
 
 
@@ -223,7 +232,7 @@ app.use('/profile_pictures',express.static(path.join(__dirname, 'profile_picture
  * Primary app routes.
  */
 
-//create Gust account
+// create Guest account
  app.get('/guest/:modId', userController.getGuest);
 
 //main route is the lesson mod selection screen
@@ -236,7 +245,7 @@ app.get('/', function (req, res) {
 // app.get('/results/cyberbullying', passportConfig.isAuthenticated, scriptController.getCyberbullyingResults);
 
 //main route for getting the simulation (Free Play) for a given lesson mod
-app.get('/modual/:modId', passportConfig.isAuthenticated, scriptController.getScript);
+app.get('/modual/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, scriptController.getScript);
 
 app.get('/esteemTopic', passportConfig.isAuthenticated, userController.getEsteemTopic);
 app.get('/advancedlitTopic', passportConfig.isAuthenticated, userController.getAdvancedlitTopic);
@@ -249,10 +258,10 @@ app.get('/testing/:modId', scriptController.getScriptFeed);
 
 //post a new user created post s3_upload
 //app.post('/post/new', userpostupload.single('picinput'), check, csrf, scriptController.newPost);
-app.post('/post/new', check, scriptController.newPost);
+app.post('/post/new', check, csrfProtection, scriptController.newPost);
 
 //app.post('/account/profile', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, csrf, userController.postUpdateProfile);
-app.post('/account/profile', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, userController.postUpdateProfile);
+app.post('/account/profile', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, csrfProtection, userController.postUpdateProfile);
 
 //app.post('/api/upload', upload.single('myFile'), apiController.postFileUpload);
 
@@ -303,109 +312,109 @@ app.get('/test_sim', function (req, res) {
   });
 });
 
-app.get('/tutorial/:modId',passportConfig.isAuthenticated, function (req, res) {
+app.get('/tutorial/:modId',passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")  +'_tutorial', {
     title: 'Tutorial'
   });
 });
 
-app.get('/tutorial2/:modId',passportConfig.isAuthenticated, function (req, res) {
+app.get('/tutorial2/:modId',passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")  +'_tutorial2', {
     title: 'Tutorial'
   });
 });
 
-app.get('/sim/:modId', passportConfig.isAuthenticated, function (req, res) {
+app.get('/sim/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_sim', {
     title: 'Guided Activity'
   });
 });
 
-app.get('/sim1/:modId',passportConfig.isAuthenticated, function (req, res) {
+app.get('/sim1/:modId',passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_sim1', {
     title: 'Guided Activity'
   });
 });
 
-app.get('/sim2/:modId', passportConfig.isAuthenticated, function (req, res) {
+app.get('/sim2/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_sim2', {
     title: 'Guided Activity'
   });
 });
 
-app.get('/sim3/:modId', passportConfig.isAuthenticated, function (req, res) {
+app.get('/sim3/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_sim3', {
     title: 'Guided Activity'
   });
 });
 
-app.get('/sim4/:modId', passportConfig.isAuthenticated, function (req, res) {
+app.get('/sim4/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_sim4', {
     title: 'Guided Activity'
   });
 });
 
-app.get('/trans/:modId', passportConfig.isAuthenticated, function (req, res) {
+app.get('/trans/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_trans', {
     title: 'Recap'
   });
 });
 
-app.get('/trans2/:modId', passportConfig.isAuthenticated, function (req, res) {
+app.get('/trans2/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_trans2', {
     title: 'Recap'
   });
 });
 
-app.get('/trans_script/:modId', passportConfig.isAuthenticated, function (req, res) {
+app.get('/trans_script/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_trans_script', {
     title: 'Recap'
   });
 });
 
-app.get('/free-play/privacy', passportConfig.isAuthenticated, function (req, res) {
+app.get('/free-play/privacy', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render('privacy/privacy_free-play', {
     title: 'Free-Play'
   });
 });
 
-app.get('/free-play2/privacy', passportConfig.isAuthenticated, function (req, res) {
+app.get('/free-play2/privacy', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render('privacy/privacy_free-play2', {
     title: 'Free-Play 2'
   });
 });
 
-app.get('/free-play3/privacy', passportConfig.isAuthenticated, function (req, res) {
+app.get('/free-play3/privacy', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render('privacy/privacy_free-play3', {
     title: 'Free-Play 3'
   });
 });
 
-app.get('/free-play4/privacy', passportConfig.isAuthenticated, function (req, res) {
+app.get('/free-play4/privacy', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render('privacy/privacy_free-play4', {
     title: 'Free-Play 4'
   });
 });
 
-app.get('/free-settings/privacy', passportConfig.isAuthenticated, function (req, res) {
+app.get('/free-settings/privacy', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render('privacy/privacy_free-play_settings', {
     title: 'Free-Play Settings'
   });
 });
 
-app.get('/free-settings2/privacy', passportConfig.isAuthenticated, function (req, res) {
+app.get('/free-settings2/privacy', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render('privacy/privacy_free-play_settings2', {
     title: 'Free-Play Settings 2'
   });
 });
 
-app.get('/free-settings3/privacy', passportConfig.isAuthenticated, function (req, res) {
+app.get('/free-settings3/privacy', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render('privacy/privacy_free-play_settings3', {
     title: 'Free-Play Settings 3'
   });
 });
 
-app.get('/end/:modId', passportConfig.isAuthenticated, function (req, res) {
+app.get('/end/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   if((req.param("modId") === 'accounts') || (req.param("modId") === 'privacy')){
     res.render(req.param("modId") + '/' + req.param("modId")+'_end', {
       title: 'Finished'
@@ -418,17 +427,25 @@ app.get('/end/:modId', passportConfig.isAuthenticated, function (req, res) {
 });
 
 app.get('/start/:modId', passportConfig.isAuthenticated, function (req, res) {
-  res.render(req.param("modId") + '/' + req.param("modId")+'_start', {
-    title: 'Welcome'
-  });
+  if (req.param("modId") === "delete") {   // anticipating a specific user behavior that causes 500 errors
+    res.redirect('/');
+  } else {
+    res.render(req.param("modId") + '/' + req.param("modId")+'_start', {
+      title: 'Welcome'
+    });
+  }
 });
 
 app.get('/intro/:modId', passportConfig.isAuthenticated,function (req, res) {
-  res.render('base_intro.pug', {
-    title: 'Welcome'
-  });
+  if (req.param("modId") === "delete") {   // anticipating a specific user behavior that causes 500 errors
+    res.redirect('/');
+  } else {
+    res.render('base_intro.pug', {
+      title: 'Welcome'
+    });
+  }
 });
-app.get('/tut_guide/:modId', passportConfig.isAuthenticated, function (req, res) {
+app.get('/tut_guide/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   res.render(req.param("modId") + '/' + req.param("modId")+'_tut_guide', {
     title: 'Welcome'
   });
@@ -442,7 +459,7 @@ app.get('/results/:modId', passportConfig.isAuthenticated, function (req, res) {
 });
 
 //For privacy settings page that doesnt do anything
-app.get('/settings/privacy', passportConfig.isAuthenticated, function (req, res) {
+app.get('/settings/privacy', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
   //console.log('privacy/privacy_settings')
   res.render('privacy/privacy_settings', {
     title: 'Privacy Settings'
@@ -472,16 +489,17 @@ app.get('/gaming/targeted', passportConfig.isAuthenticated, function (req, res) 
 });
 
 
-//Classes
+// Classes not used in TestDrive
 app.get('/classes', passportConfig.isAuthenticated, classController.getClasses);
 app.get('/class/:classId', passportConfig.isAuthenticated, classController.getClass);
 app.post('/classes', passportConfig.isAuthenticated, classController.postCreateClass);
 
-//User's Page
+// User's Page (this IS used in TestDrive)
 app.get('/me/:modId', passportConfig.isAuthenticated, userController.getMe);
+// Notifications are not used in TestDrive
 app.get('/notifications', passportConfig.isAuthenticated, notificationController.getNotifications);
 
-
+// Account management not used in TestDrive
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 app.get('/logout', userController.logout);
@@ -490,61 +508,71 @@ app.get('/logout', userController.logout);
 //app.get('/reset/:token', userController.getReset);
 //app.post('/reset/:token', userController.postReset);
 
-
+// Account management not used in TestDrive
 app.get('/signup', userController.getSignup);
 app.post('/signup', userController.postSignup);
 
-//Instructor junks
+// Instructor accounts not used in TestDrive
 app.get('/create_instructor', userController.getSignupInstructor);
 app.post('/create_instructor', userController.postSignupInstructor);
 
+// Account management not used in TestDrive
 app.get('/create_username', userController.getSignupUsername);
 app.post('/create_username', userController.postSignupUsername);
 
-//'/create_username_class/'
+// Account management not used in TestDrive
 app.get('/create_username_class/:classId', userController.getSignupUsername);
 app.post('/create_username_class/:classId', userController.postSignupUsernameClass);
 
+// Account management not used in TestDrive
 app.get('/create_password', passportConfig.isAuthenticated, userController.getSignupPassword);
 app.post('/create_password', passportConfig.isAuthenticated, userController.postSignupPassword);
 
+// Account management not used in TestDrive
 app.get('/create_name', passportConfig.isAuthenticated, userController.getSignupName);
 app.post('/create_name', passportConfig.isAuthenticated, userController.postSignupName);
 
+// Account management not used in TestDrive
 app.get('/create_bio', passportConfig.isAuthenticated, userController.getSignupBio);
 app.post('/create_bio', passportConfig.isAuthenticated, userController.postSignupBio);
 
-///review/signup
+// Review not used in TestDrive
 app.get('/review/signup', passportConfig.isAuthenticated, userController.getSignupReview);
 
 //////////////////////////
 
-app.get('/account/signup_info', passportConfig.isAuthenticated, userController.getSignupInfo);
+// This is not used in TestDrive, but is accessible through the URL.
+app.get('/account/signup_info', passportConfig.isAuthenticated, csrfProtection, addCsrf, userController.getSignupInfo);
 //app.post('/account/signup_info_post', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, csrf, userController.postSignupInfo);
-app.post('/account/signup_info_post', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, userController.postSignupInfo);
-
+app.post('/account/signup_info_post', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, csrfProtection, userController.postSignupInfo);
 
 //app.post('/account/profile/:modId', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, csrf, userController.postUpdateProfile);
-app.post('/account/profile/:modId', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, userController.postUpdateProfile);
 
-app.get('/account/:modId', passportConfig.isAuthenticated, userController.getAccount);
+// Profile customization
+app.post('/account/profile/:modId', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, csrfProtection, userController.postUpdateProfile);
+app.get('/account/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, userController.getAccount);
 
-app.get('/user/:userId', passportConfig.isAuthenticated, actorsController.getActor);
-app.post('/user', passportConfig.isAuthenticated, actorsController.postBlockOrReport);
+// Bot profile pages
+app.get('/user/:userId', passportConfig.isAuthenticated, csrfProtection, addCsrf, actorsController.getActor);
+app.post('/user', passportConfig.isAuthenticated, check, csrfProtection, actorsController.postBlockOrReport);
 
+// Notifications not used in TestDrive
 app.get('/bell', passportConfig.isAuthenticated, userController.checkBell);
 
 //getScript
 //app.get('/feed', passportConfig.isAuthenticated, scriptController.getScript);
-app.post('/feed', passportConfig.isAuthenticated, scriptController.postUpdateFeedAction);
+
+// Posting actions on posts within the free-play timeline
+app.post('/feed', passportConfig.isAuthenticated, check, csrfProtection, scriptController.postUpdateFeedAction);
+// This is not used in TestDrive
 app.post('/deleteUserFeedActions', passportConfig.isAuthenticated, scriptController.postDeleteFeedAction);
-app.post('/interest', passportConfig.isAuthenticated, userController.postUpdateInterestSelection);
-app.post('/esteemInterest', passportConfig.isAuthenticated, userController.postEsteemInterestSelection);
-app.post('/advancedlitInterest', passportConfig.isAuthenticated, userController.postAdvancedlitInterestSelection);
-app.post('/habitsTimer', passportConfig.isAuthenticated, userController.postUpdateHabitsTimer);
+// Updating interest selections in various modules
+app.post('/interest', passportConfig.isAuthenticated, check, csrfProtection, userController.postUpdateInterestSelection);
+app.post('/esteemInterest', passportConfig.isAuthenticated, check, csrfProtection, userController.postEsteemInterestSelection);
+app.post('/habitsTimer', passportConfig.isAuthenticated, check, csrfProtection, userController.postUpdateHabitsTimer);
 //postDeleteAccount
-//app.post('/deleteAccount', passportConfig.isAuthenticated, userController.getDeleteAccount);
-app.get('/delete', passportConfig.isAuthenticated, userController.getDeleteAccount);
+app.post('/delete', passportConfig.isAuthenticated, check, csrfProtection, userController.getDeleteAccount);
+//app.get('/delete', passportConfig.isAuthenticated, check, csrfProtection, userController.getDeleteAccount);
 /**
  * Error Handler.
  */

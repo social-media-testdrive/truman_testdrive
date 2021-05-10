@@ -30,6 +30,13 @@ function updateProgressBar(){
       break;
   }
 
+  // Adding the module title to the progress bar
+  $.getJSON('/json/moduleInfo.json', function(data) {
+    if(currentModuleForHeader !== undefined){
+      $('.moduleTitle span').text(data[currentModuleForHeader]["title"]);
+    }
+  });
+
   $.getJSON(jsonPath, function(data) {
     stepNumber = data[currentPageForHeader];
   }).then(function () {
@@ -41,18 +48,76 @@ function updateProgressBar(){
       case '2':
         changeActiveProgressTo("#headerStep2");
         $('.hideHeader').css('display', 'block');
+        $('#headerStep1').on('click', function(){
+          if(currentModuleForHeader === "privacy"){
+            window.location.href = `/tut_guide/${currentModuleForHeader}`
+          } else {
+            window.location.href = `/tutorial/${currentModuleForHeader}`;
+          }
+        });
         break;
       case '3':
         changeActiveProgressTo("#headerStep3");
         $('.hideHeader').css('display', 'block');
+        $('#headerStep1').on('click', function(){
+          if(currentModuleForHeader === "privacy"){
+            window.location.href = `/tut_guide/${currentModuleForHeader}`
+          } else {
+            window.location.href = `/tutorial/${currentModuleForHeader}`;
+          }
+        });
+        $('#headerStep2').on('click', function(){
+          window.location.href = `/sim/${currentModuleForHeader}`;
+        });
         break;
       case '4':
         changeActiveProgressTo("#headerStep4");
         $('.hideHeader').css('display', 'block');
+        $('#headerStep1').on('click', function(){
+          if(currentModuleForHeader === "privacy"){
+            window.location.href = `/tut_guide/${currentModuleForHeader}`
+          } else {
+            window.location.href = `/tutorial/${currentModuleForHeader}`;
+          }
+        });
+        $('#headerStep2').on('click', function(){
+          window.location.href = `/sim/${currentModuleForHeader}`;
+        });
+        $('#headerStep3').on('click', function(){
+          if(currentModuleForHeader === "accounts"){
+            window.location.href = `/sim/${currentModuleForHeader}`;
+          } else if(currentModuleForHeader === "privacy"){
+            window.location.href = `/free-play/${currentModuleForHeader}`;
+          } else {
+            window.location.href = `/modual/${currentModuleForHeader}`;
+          }
+        });
         break;
       case 'end':
         $('#headerStep1, #headerStep2, #headerStep3, #headerStep4').removeClass('progressBarActive');
         $('.hideHeader').css('display', 'block');
+        $('#headerStep1').on('click', function(){
+          if(currentModuleForHeader === "privacy"){
+            window.location.href = `/tut_guide/${currentModuleForHeader}`
+          } else {
+            window.location.href = `/tutorial/${currentModuleForHeader}`;
+          }
+        });
+        $('#headerStep2').on('click', function(){
+          window.location.href = `/sim/${currentModuleForHeader}`;
+        });
+        $('#headerStep3').on('click', function(){
+          if(currentModuleForHeader === "accounts"){
+            window.location.href = `/sim/${currentModuleForHeader}`;
+          } else if(currentModuleForHeader === "privacy"){
+            window.location.href = `/free-play/${currentModuleForHeader}`;
+          } else {
+            window.location.href = `/modual/${currentModuleForHeader}`;
+          }
+        });
+        $('#headerStep4').on('click', function(){
+          window.location.href = `/results/${currentModuleForHeader}`;
+        });
         break;
       default:
         console.log('Progress bar is not visible right now');
@@ -69,7 +134,7 @@ $(window).on("load", function () {
   $('.ui.sticky.sideMenu')
     .sticky({
       context: '#content',
-      offset: 90
+      offset: 115
   });
 
   //close loading dimmer on load
@@ -337,9 +402,11 @@ Start button links
   //finish
   $('.ui.big.green.labeled.icon.button.finish')
     .on('click', function () {
-      //$.post("/deleteAccount", {_csrf: $('meta[name="csrf-token"]').attr('content') });
-      window.location.href = '/delete';
-
+      // Anna: changed delete to a post request
+      $.post("/delete", {_csrf: $('meta[name="csrf-token"]').attr('content') })
+      .done(function(){
+        window.location.href = 'https://socialmediatestdrive.org/modules.html';
+      });
     });
 
 
