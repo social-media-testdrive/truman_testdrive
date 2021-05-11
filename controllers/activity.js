@@ -34,6 +34,11 @@ exports.postActivityData = (req, res, next) => {
     // add body of comments for each post and the postID to freeplayComments.
     // Iterate through feedAction. Each item represents the actions on an existing post.
     for (const actionsOnPost of user.feedAction) {
+      // check if post field exists before using it, it is supposed to exist but
+      // there is a bug where it is sometimes missing
+      if (!actionsOnPost.post) {
+        continue;
+      }
       // check if post is in the current module
       if (actionsOnPost.post.module !== req.body.module) {
         continue;
