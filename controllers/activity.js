@@ -8,7 +8,7 @@ const User = require('../models/User');
  * to share it
  */
 exports.postActivityData = (req, res, next) => {
-  let activityData = new Activity ({
+  const activityData = new Activity ({
     userID: req.user.id,
     module: req.body.module,
     newPosts: [],
@@ -21,8 +21,8 @@ exports.postActivityData = (req, res, next) => {
     model: 'Script'
   })
   .exec(function (err, user){
-    let newPostsArray = []; // will become the value for activityData.newPosts
-    let freeplayCommentsArray = []; // will become the value for activityData.freeplayComments
+    const newPostsArray = []; // will become the value for activityData.newPosts
+    const freeplayCommentsArray = []; // will become the value for activityData.freeplayComments
     // Search for posts created by the user in the current module,
     // add body of each post to newPostsArray.
     for (const newPosts of user.posts){
@@ -47,7 +47,7 @@ exports.postActivityData = (req, res, next) => {
       if (actionsOnPost.comments.length === 0) {
         continue;
       }
-      let userCreatedComments = [];
+      const userCreatedComments = [];
       // iterate through the comment-type actions to find any user-created comments
       for (const comment of actionsOnPost.comments) {
         if (comment.new_comment) {
