@@ -24,8 +24,14 @@ function clickGotIt(){
     if ($(".keyTermDefinition:hidden").length === 0) {
       //everything is good to proceed
       $('#clickLabelsWarning').hide();
+
       Promise.all(actionArray).then(function(){
-        window.location.href='/tutorial/' + pathArray[2];
+        let pathArray = window.location.pathname.split('/');
+        if(pathArray[2] === "privacy"){
+          window.location.href='/tut_guide/' + pathArray[2];
+        } else {
+          window.location.href='/tutorial/' + pathArray[2];
+        }
       });
     } else {
       //User has not clicked all the labels

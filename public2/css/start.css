@@ -21,6 +21,7 @@ i.caret.icon {
 
 .keyTermDefinition{
   font-weight: 600;
+  vertical-align: middle;
 }
 
 .keyTermDefinition ul {

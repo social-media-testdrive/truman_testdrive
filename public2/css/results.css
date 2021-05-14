@@ -19,19 +19,23 @@ label {
   font-size:120% !important;
 }
 
-.noPadding {
-  padding: 0 !important;
+.glowing-border {
+  border: 2px solid #dadada !important;
+  border-radius: 7px !important;
 }
 
-.resultsAddBottomMargin {
-  margin-bottom: 10em;
+.glowing-border:focus {
+  outline: none !important;
+  border-color: #9ecaed !important;
+  box-shadow: 0 0 10px #9ecaed !important;
 }
 
-/*--------SCREENSHOTS----------*/
-@media print{
+/*------- SCREENSHOTS ---------*/
+@media print {
   body * {
     display: none;
   }
+
   .insertPrint,
   .insertPrint * {
     display: block;

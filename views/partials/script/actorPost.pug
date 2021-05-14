@@ -14,7 +14,7 @@
     .right.floated.time.meta= (Date.now() + val.time)
     |  
     a(href='/user/'+val.actor.username)
-      img.ui.avatar.image(src='/picture.svg', data-src=cdn+'/profile_pictures/'+val.actor.profile.picture)
+      img.ui.avatar.image(src='/images/picture.svg', data-src=cdn+'/profile_pictures/'+val.actor.profile.picture)
       span=val.actor.profile.name
   //-div(style="position: relative; z-index: 1;")
     img(src="image.png" style="position: absolute; z-index: 2;")
@@ -28,7 +28,7 @@
     else if (val.module == 'esteem')
       img.imageWithModal.openPostEsteem(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture)
     else
-      img(src='/picture.svg', data-src=cdn+"/post_pictures/"+val.picture)
+      img(src='/images/picture.svg', data-src=cdn+"/post_pictures/"+val.picture)
   if (val.module == 'digital-literacy' && val.info_text != "")
     .read.rounded.right.floated.modual.info_button(id="info_"+val.id, data-info_text = val.info_text)
       i.info.icon
@@ -85,7 +85,7 @@
           else
             .comment(commentID=comment.id)
               a.avatar.image(href='/user/'+comment.actor.username)
-                img(src='/picture.svg', data-src=cdn+'/profile_pictures/'+comment.actor.profile.picture)
+                img(src='/images/picture.svg', data-src=cdn+'/profile_pictures/'+comment.actor.profile.picture)
               .content
                 a.author(href='/user/'+comment.actor.username)=comment.actor.profile.name
                 .metadata

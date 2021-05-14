@@ -47,15 +47,17 @@ block content
             .ui.header There are still blue dots to find!
             p Click through all of the blue dots before going to the activity page
           
-    button.ui.basic.button.notificationsDisplay#settingsButton
-      i.cog.icon
-      |   Settings
-      
-    button.ui.basic.button.notificationsDisplay#activityButton
-      i.clock.icon
-      |   My Activity
-    br
-    br
+    .ui.stackable.secondary.menu(style="margin-top:0")
+      .ui.container
+        .item(style="padding: 7px 0 7px 0")
+          button.ui.basic.button.notificationsDisplay#settingsButton
+            i.cog.icon
+            |   Settings
+        .item(style="padding: 7px 0 7px 0")
+          button.ui.basic.button.notificationsDisplay#activityButton
+            i.clock.icon
+            |   My Activity
+            
     //-Settings display
     .ui.container.settingsDisplay
       h2.ui.header#hint1 Notification Settings

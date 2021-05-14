@@ -39,6 +39,13 @@ $(window).on("load", function () {
       break;
   }
 
+  // Adding the module title to the progress bar
+  $.getJSON('/json/moduleInfo.json', function(data) {
+    if(currentModuleForHeader !== undefined){
+      $('.moduleTitle span').text(data[currentModuleForHeader]["title"]);
+    }
+  });
+
   $.getJSON(jsonPath, function(data) {
     stepNumber = data[currentPageForHeader];
   }).then(function () {
@@ -50,196 +57,101 @@ $(window).on("load", function () {
       case '2':
         changeActiveProgressTo("#headerStep2");
         $('.hideHeader').css('display', 'block');
+        $('#headerStep1').on('click', function(){
+          if(currentModuleForHeader === "privacy"){
+            window.location.href = `/tut_guide/${currentModuleForHeader}`
+          } else {
+            window.location.href = `/tutorial/${currentModuleForHeader}`;
+          }
+        });
         break;
       case '3':
         changeActiveProgressTo("#headerStep3");
         $('.hideHeader').css('display', 'block');
+        $('#headerStep1').on('click', function(){
+          if(currentModuleForHeader === "privacy"){
+            window.location.href = `/tut_guide/${currentModuleForHeader}`
+          } else {
+            window.location.href = `/tutorial/${currentModuleForHeader}`;
+          }
+        });
+        $('#headerStep2').on('click', function(){
+          window.location.href = `/sim/${currentModuleForHeader}`;
+        });
         break;
       case '4':
         changeActiveProgressTo("#headerStep4");
         $('.hideHeader').css('display', 'block');
+        $('#headerStep1').on('click', function(){
+          if(currentModuleForHeader === "privacy"){
+            window.location.href = `/tut_guide/${currentModuleForHeader}`
+          } else {
+            window.location.href = `/tutorial/${currentModuleForHeader}`;
+          }
+        });
+        $('#headerStep2').on('click', function(){
+          window.location.href = `/sim/${currentModuleForHeader}`;
+        });
+        $('#headerStep3').on('click', function(){
+          if(currentModuleForHeader === "accounts"){
+            window.location.href = `/sim/${currentModuleForHeader}`;
+          } else if(currentModuleForHeader === "privacy"){
+            window.location.href = `/free-play/${currentModuleForHeader}`;
+          } else {
+            window.location.href = `/modual/${currentModuleForHeader}`;
+          }
+        });
         break;
       case 'end':
         $('#headerStep1, #headerStep2, #headerStep3, #headerStep4').removeClass('progressBarActive');
         $('.hideHeader').css('display', 'block');
+        $('#headerStep1').on('click', function(){
+          if(currentModuleForHeader === "privacy"){
+            window.location.href = `/tut_guide/${currentModuleForHeader}`
+          } else {
+            window.location.href = `/tutorial/${currentModuleForHeader}`;
+          }
+        });
+        $('#headerStep2').on('click', function(){
+          window.location.href = `/sim/${currentModuleForHeader}`;
+        });
+        $('#headerStep3').on('click', function(){
+          if(currentModuleForHeader === "accounts"){
+            window.location.href = `/sim/${currentModuleForHeader}`;
+          } else if(currentModuleForHeader === "privacy"){
+            window.location.href = `/free-play/${currentModuleForHeader}`;
+          } else {
+            window.location.href = `/modual/${currentModuleForHeader}`;
+          }
+        });
+        $('#headerStep4').on('click', function(){
+          window.location.href = `/results/${currentModuleForHeader}`;
+        });
         break;
       default:
         console.log('Progress bar is not visible right now');
         break;
     }
   });
+}
+
+$(window).on("load", function () {
 
   $('.ui.sticky.sideMenu')
     .sticky({
       context: '#content',
-      offset: 90
-    })
-  ;
-
-/*
-Start chat box code
-*/
-  $('.container.clearfix').each(
-    function () {
-
-    let pathArray = window.location.pathname.split('/');
-    var chatId = this.id
-    console.log("@@@@This is my id: "+chatId);
-
-    var chat = {
-      messageToSend: '',
-      messageResponses: [
-        'OK !!',
-        'OK !!',
-        'OK !!'
-      ],
-      init: function () {
-        this.cacheDOM();
-        this.bindEvents();
-        this.render();
-      },
-      cacheDOM: function () {
-        //var chatId = $('.chat-history').closest('.container').attr('id');
-        console.log("!!!!this is my: "+this.id);
-        //var chatId = $(this).id
-        console.log(chatId);
-        if(chatId){
-          this.$chatHistory = $('#'+chatId +' .chat-history');
-          this.$button = $('#'+chatId +' button');
-          this.$textarea = $('#'+chatId +' #message-to-send');
-          this.$chatHistoryList = this.$chatHistory.find('ul');
-          console.log('#'+chatId +' .chat-history');
-        }
-        else {
-          this.$chatHistory = $('.chat-history');
-          this.$button = $('button');
-          this.$textarea = $('#message-to-send');
-          this.$chatHistoryList = this.$chatHistory.find('ul');
-          console.log('else');
-          console.log(this.$chatHistory);
-        }
-
-      },
-      bindEvents: function () {
-        this.$button.on('click', this.addMessage.bind(this));
-        this.$textarea.on('keyup', this.addMessageEnter.bind(this));
-      },
-      render: function () {
-        this.scrollToBottom();
-        if (this.messageToSend.trim() !== '') {
-          var template = Handlebars.compile($("#message-template").html());
-          var context = {
-            messageOutput: this.messageToSend,
-            time: this.getCurrentTime()
-          };
-
-          this.$chatHistoryList.append(template(context));
-          this.scrollToBottom();
-          this.$textarea.val('');
-
-          // responses
-          var templateResponse = Handlebars.compile($("#message-response-template").html());
-          var contextResponse = {
-            response: this.getRandomItem(this.messageResponses),
-            time: this.getCurrentTime()
-          };
-
-          setTimeout(function () {
-            // this.$chatHistoryList.append(templateResponse(contextResponse));
-            this.scrollToBottom();
-          }.bind(this), 1500);
-
-          /*
-          setTimeout(function () {
-            if(pathArray[1] == 'modual' && pathArray[2] == 'safe-posting' ) {
-              if($('#chatbox1')){
-                // $('#chatbox1').remove();
-                var el = $('#chatbox1').detach();
-              }
-              if($('#chatbox2').is(":hidden")){
-              $($('#chatbox2 .chat-history')[0]).slideToggle(300, 'swing');
-              $($('#chatbox2 .chat-message')[0]).slideToggle(300, 'swing');
-              $($('#chatbox2 .chat-history')[0]).slideToggle(300, 'swing');
-              $($('#chatbox2 .chat-message')[0]).slideToggle(300, 'swing');
-              $('#chatbox2').slideToggle(300, 'swing');
-              }
-              this.cacheDOM();
-              this.bindEvents();
-              $('#loading').after(el);
-              // $('#chatbox1').show();
-
-
-            };
-          }.bind(this), 9000);
-          */
-
-        }
-
-      },
-
-      addMessage: function () {
-        this.messageToSend = this.$textarea.val()
-        this.render();
-      },
-      addMessageEnter: function (event) {
-        // enter was pressed
-        if (event.keyCode === 13) {
-          this.addMessage();
-        }
-      },
-      scrollToBottom: function () {
-        if (this.$chatHistory[0]) {
-          this.$chatHistory.scrollTop(this.$chatHistory[0].scrollHeight);
-        }
-
-      },
-      getCurrentTime: function () {
-        return new Date().toLocaleTimeString().
-          replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3");
-      },
-      getRandomItem: function (arr) {
-        return arr[Math.floor(Math.random() * arr.length)];
-      }
-
-    };
-
-    console.log("START OF CHATS!");
-    console.log(pathArray);
-     if((pathArray[2] == 'safe-posting' ) || (pathArray[2] == 'phishing' )) {
-      chat.init();
-     };
-
+      offset: 115
   });
-
-  //Minimize a chat box
-  $('a.chat-minimize').click(function (e) {
-     e.preventDefault();
-     let chat = $(this).closest('.chat').children('.chat-history');
-     chat.slideToggle(300, 'swing');
-  });
-
-  //Close a chat box
-  $('a.chat-close').click(function (e) {
-     e.preventDefault();
-     let chat = $(this).closest('.chat');
-     chat.fadeOut(300, 'swing');
-  });
-
-/*
-end chat box code
-*/
 
   //close loading dimmer on load
   $('#loading').hide();
   $('#content').attr('style', 'block');
   $('#content').fadeIn('slow');
+
   //close messages from flash message
   $('.message .close')
     .on('click', function () {
-      $(this)
-        .closest('.message')
-        .transition('fade')
-        ;
+      $(this).closest('.message').transition('fade');
     });
 
   //activate checkboxes
@@ -512,33 +424,44 @@ end chat box code
       }
     });
 
-  //validate class form
-  $('#classform.ui.form')
-    .form({
-      on: 'blur',
-      fields: {
-        classname: {
-          identifier: 'classname',
-          rules: [
-            {
-              type: 'empty',
-              prompt: 'Please include a Class Name'
-            }
-          ]
-        },
-        accesscode: {
-          identifier: 'accesscode',
-          rules: [
-            {
-              type: 'empty',
-              prompt: 'Please add an Access Code'
-            }
-          ]
-        }
+  // article info popup in the digital-literacy module
+  $(".modual.info_button").click(function () {
+    console.log("@@@@@@@Clicking info button!!!!");
+    $('.ui.small.popinfo.modal').modal('show');
+    document.getElementById('post_info_text_modual').innerHTML = $(this).data('info_text');
+    console.log("&*&*&*&*&"+$(this).data('info_text'));
+  });
 
-      }
-    })
-    ;
+  // //New Class Button - this is not currently being used
+  // $("#new_class.ui.big.green.labeled.icon.button").click(function () {
+  //   $('.ui.small.newclass.modal').modal('show');
+  // });
+  //
+  // //validate class form - this is not currently being used
+  // $('#classform.ui.form')
+  //   .form({
+  //     on: 'blur',
+  //     fields: {
+  //       classname: {
+  //         identifier: 'classname',
+  //         rules: [
+  //           {
+  //             type: 'empty',
+  //             prompt: 'Please include a Class Name'
+  //           }
+  //         ]
+  //       },
+  //       accesscode: {
+  //         identifier: 'accesscode',
+  //         rules: [
+  //           {
+  //             type: 'empty',
+  //             prompt: 'Please add an Access Code'
+  //           }
+  //         ]
+  //       }
+  //     }
+  //   });
 
   //Picture Preview on Image Selection
   function readURL(input) {
@@ -559,12 +482,14 @@ end chat box code
     readURL(this);
   });
 
+  //
+  // MOVED TO COMMENTS.JS
   //add humanized time to all posts
-  $('.right.floated.time.meta, .date.sim, .time.notificationTime').each(function () {
-    var ms = parseInt($(this).text(), 10);
-    let time = new Date(ms);
-    $(this).text(humanized_time_span(time));
-  });
+  // $('.right.floated.time.meta, .date.sim, .time.notificationTime').each(function () {
+  //   var ms = parseInt($(this).text(), 10);
+  //   let time = new Date(ms);
+  //   $(this).text(humanized_time_span(time));
+  // });
 
   //Sign Up Button
   // $('.ui.big.green.labeled.icon.button.signup')
@@ -860,7 +785,7 @@ end button links
 
   });
 
-  //this is the Block User button
+  //this is the Block User button - this doesn't have consequences in TestDrive
   $('button.ui.button.block')
     .on('click', function () {
 
@@ -969,12 +894,13 @@ end button links
     })
     ;
 
-//this is the Share button
-  $('.ui.share.button')
-    .on('click', function () {
-      $('.ui.small.basic.share.modal')
-        .modal('show');
-  });
+// MOVED TO COMMENTS.JS
+// //this is the Share button
+//   $('.ui.share.button')
+//     .on('click', function () {
+//       $('.ui.small.basic.share.modal')
+//         .modal('show');
+//   });
 
   $(".dimmer.soon").dimmer({
         closable: false

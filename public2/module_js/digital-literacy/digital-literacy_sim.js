@@ -15,10 +15,12 @@ var stepsList = [
     audioFile: ['CUSML.5.6.1.mp3']
   },
   {
+
     element: '#step1',
     intro: `Click on "Done" and then look for the blue dots&nbsp;&nbsp;<a role='button' tabindex='0'
     class='introjs-hint'><div class='introjs-hint-dot'></div><div
-    class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; &nbsp; to learn more...`,
+    class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; &nbsp; to learn more!`,
+
     position:'left',
     scrollTo:'tooltip',
     audioFile: ['CUSML.5.6.2.mp3']

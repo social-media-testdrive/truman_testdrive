@@ -74,7 +74,7 @@ i.caret.icon {
 
 .resultPreviewText{
   margin: 0;
-  padding: 0 0 15px 0;
+  padding: 0 0 35px 0;
   font-size: 16px;
   cursor: default;
 }
@@ -97,4 +97,9 @@ i.caret.icon {
 
 .pointerCursor {
   cursor: pointer;
+}
+
+/* results */
+.descriptionContent {
+  min-height: 68px;
 }

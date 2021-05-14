@@ -1,9 +1,29 @@
+
 .headerDropdownMenu{
   height: 100%;
+
+#logo {
+  width: 125px;
+}
+
+.progressHeader {
+  padding: 8px 14px 8px 14px !important;
+
 }
 
 .hideHeader{
   display:none;
+}
+
+.moduleTitle {
+  padding-top: 4px;
+  padding-bottom: 10px;
+}
+
+.moduleTitle span {
+  color: #333333;
+  font-weight: 600;
+  font-size: large;
 }
 
 .progressList{
@@ -20,6 +40,7 @@
   display: inline-block;
   color: white;
   position: relative;
+  cursor: pointer;
   /* for responsiveness */
   margin: 0 2vw 0 2vw;
 }
@@ -87,6 +108,10 @@
   display:none;
 }
 
+.progressBarActive {
+  cursor: default;
+}
+
 .progressBarActive h4 {
   background: #333333;
 }
@@ -101,6 +126,10 @@
 
 .progressBarActive span {
   color: #333333;
+}
+
+.progressBarActive ~ .progressStep {
+  cursor: default;
 }
 
 .progressBarActive ~ .progressStep h4 {
@@ -131,3 +160,14 @@
 /* used technique provided by user bookcasey in the following post,
 including the technique for responsiveness provided by user AaronDanielson:
 https://stackoverflow.com/questions/19642308/creating-css3-circles-connected-by-lines */
+
+/* extra large desktops, arbitrarily chosen cutoff */
+@media (min-width: 2300px) {
+  .progressStep {
+    margin: 0 1vw 0 1vw;
+  }
+  .progressStep::before{
+    left: -2vw;
+    width: 2vw;
+  }
+}

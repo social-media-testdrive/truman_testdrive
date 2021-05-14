@@ -5,7 +5,7 @@ function onPrint(){
 
     $(".selectPostsQuestion1").clone().appendTo(".insertPrint");
     $(".insertPrint").append('<div class="breakHere"</div>');
-    
+
     $(".insertPrint").append(
       `<br>
       <h4>

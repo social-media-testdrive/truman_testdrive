@@ -1,0 +1,250 @@
+.chat {
+  /*width: 490px;
+  float: left;
+  background: #F2F5F8;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: #434651;*/
+  background: #fff;
+  bottom: 0px;
+  font-size: 12px;
+  right: 24px;
+  position: fixed;
+  width: 275px;
+  float: right;
+}
+
+.chat-close {
+  color: #fff;
+  display: block;
+  float: right;
+  font-size: 10px;
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+}
+
+.chat-minimize {
+  color: #fff;
+  display: block;
+  float: right;
+  font-size: 10px;
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+}
+
+.chat .chat-header {
+  /*padding: 20px;
+  border-bottom: 2px solid white;*/
+  background: #293239;
+  border-radius: 5px 5px 0 0;
+  color: #fff;
+  cursor: pointer;
+  padding: 16px 24px;
+}
+
+.chat .chat-header img {
+  float: left;
+}
+
+.chat .chat-header .chat-about {
+  float: left;
+  padding-left: 10px;
+  margin-top: 6px;
+}
+
+.chat .chat-header .chat-with {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.chat .chat-header .chat-num-messages {
+  color: #92959E;
+}
+
+.chat .chat-header .fa-star {
+  float: right;
+  color: #D8DADF;
+  font-size: 20px;
+  margin-top: 12px;
+}
+
+.chat-history {
+  height: 252px;
+  padding: 8px 24px;
+  overflow-y: scroll;
+}
+
+.chat .chat-history {
+  /*padding: 30px 30px 20px;
+  overflow-y: scroll;
+  height: 575px;*/
+  height: 252px;
+  border-bottom: 2px solid #e0dcdc;
+  padding: 10px 10px;
+  overflow-y: scroll;
+}
+
+.chat .chat-history .message-data {
+  margin-bottom: 15px;
+}
+
+.chat .chat-history .message-data-time {
+  color: #a8aab1;
+  padding-left: 6px;
+}
+
+.chat .chat-history .message {
+  color: white;
+  padding: 10px 10px;
+  line-height: 15px;
+  font-size: 14px;
+  border-radius: 7px;
+  margin-bottom: 8px;
+  width: 100%;
+  position: relative;
+}
+
+.chat .chat-history .message:after {
+  bottom: 100%;
+  left: 7%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-bottom-color: #DCDCDC;
+  border-width: 10px;
+  margin-left: -10px;
+}
+
+.chat .chat-history .my-message {
+  background: #DCDCDC;
+  color: black;
+}
+
+.chat .chat-history .other-message {
+  background: #2185d0;
+}
+
+.chat .chat-history .other-message:after {
+  border-bottom-color: #2185d0;
+  left: 93%;
+}
+
+.chat-message img {
+  border-radius: 50%;
+  float: left;
+}
+
+/* not currently used, but can keep for potential future use */
+.chat-message-counter {
+  background: #e62727;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  display: none;
+  font-size: 12px;
+  font-weight: bold;
+  height: 28px;
+  left: 0;
+  line-height: 28px;
+  margin: -15px 0 0 -15px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 28px;
+}
+
+.chat .chat-message {
+  padding: 15px;
+}
+
+.chat .chat-message textarea {
+  width: 100%;
+  padding: 5px 10px;
+  font: 14px/22px "Lato", Arial, sans-serif;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  resize: none;
+}
+
+.chat .chat-message .fa-file-o, .chat .chat-message .fa-file-image-o {
+  font-size: 16px;
+  color: gray;
+  cursor: pointer;
+}
+
+.chat .chat-message button {
+  float: right;
+  color: #2185d0;
+  font-size: 16px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  background: #F2F5F8;
+}
+
+.chat .chat-message button:hover {
+  color: #75b1e8;
+}
+
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+.chat-history ul {
+  list-style: none;
+  margin: 5px;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+.online, .offline, .me {
+  margin-right: 3px;
+  font-size: 10px;
+}
+
+.online {
+  color: #DCDCDC;
+}
+
+.offline {
+  color: #E38968;
+}
+
+.me {
+  color: #2185d0;
+}
+
+.float-right {
+  float: right;
+}
+
+/* not currently used, but can keep for potential future use */
+.chat-time {
+  float: right;
+  font-size: 10px;
+}
+
+/* not currently used, but can keep for potential future use */
+.chat-feedback {
+  font-style: italic;
+  margin: 0 0 0 80px;
+}
+
+/* not currently used, but can keep for potential future use */
+.chat-message-content {
+  margin-left: 56px;
+}

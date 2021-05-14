@@ -6,16 +6,16 @@ var hintsList = [
     audioFile: ['CUSML.7.8.18.mp3']
   },
   {
-    hint: `She can make her account “<i>Private</i>,” so that only her social
-    media friends can see her posts. Let’s try doing this!`,
+    hint: `She can make her account “Private,” so that only her social media
+    friends can see her posts. Let’s try doing this!`,
     element: '#hint2',
     hintPosition: 'top-middle',
     audioFile: ['CUSML.7.8.19.mp3']
 
   },
   {
-    hint: `Have you changed the account settings to a “<i>Private</i>” account?
-    Click “<i>Let’s Continue!</i>” to see how her profile has changed.`,
+    hint: `Have you changed the account settings to a “Private” account? Click
+    “Let’s Continue!” to see how her profile has changed.`,
     element: '#hint3',
     hintPosition: 'middle-right',
     audioFile: ['CUSML.7.8.20.mp3']

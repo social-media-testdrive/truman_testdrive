@@ -27,7 +27,7 @@ let stepsList = [
 
 let hintsList = [
   {
-    hint: `Think about whether you want to include your part of your name or a
+    hint: `Think about whether you want to include part of your name or a
     nickname. You may or may not want people to know exactly who you are based
     on your username.`,
     element: '#hint1',

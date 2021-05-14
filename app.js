@@ -215,7 +215,6 @@ app.use((req, res, next) => {
 function check(req, res, next) {
     // console.log("@@@@@@@@@@@@Body is now ");
     // console.log(req.body);
-    // console.log(req.params);
     next();
 }
 
@@ -449,9 +448,13 @@ app.get('/end/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, 
 });
 
 app.get('/start/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
-  res.render(req.param("modId") + '/' + req.param("modId")+'_start', {
-    title: 'Welcome'
-  });
+  if (req.param("modId") === "delete") {   // anticipating a specific user behavior that causes 500 errors
+    res.redirect('/');
+  } else {
+    res.render(req.param("modId") + '/' + req.param("modId")+'_start', {
+      title: 'Welcome'
+    });
+  }
 });
 
 app.get('/intro/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
@@ -618,23 +621,27 @@ app.get('/logout', csrfProtection, addCsrf, userController.logout);
 app.get('/create_instructor', userController.getSignupInstructor);
 app.post('/create_instructor', userController.postSignupInstructor);
 
+// Account management not used in TestDrive
 app.get('/create_username', userController.getSignupUsername);
 app.post('/create_username', userController.postSignupUsername);
 
-//'/create_username_class/'
+// Account management not used in TestDrive
 app.get('/create_username_class/:classId', userController.getSignupUsername);
 app.post('/create_username_class/:classId', userController.postSignupUsernameClass);
 
+// Account management not used in TestDrive
 app.get('/create_password', passportConfig.isAuthenticated, userController.getSignupPassword);
 app.post('/create_password', passportConfig.isAuthenticated, userController.postSignupPassword);
 
+// Account management not used in TestDrive
 app.get('/create_name', passportConfig.isAuthenticated, userController.getSignupName);
 app.post('/create_name', passportConfig.isAuthenticated, userController.postSignupName);
 
+// Account management not used in TestDrive
 app.get('/create_bio', passportConfig.isAuthenticated, userController.getSignupBio);
 app.post('/create_bio', passportConfig.isAuthenticated, userController.postSignupBio);
 
-///review/signup
+// Review not used in TestDrive
 app.get('/review/signup', passportConfig.isAuthenticated, userController.getSignupReview);
 
 //////////////////////////
@@ -655,6 +662,7 @@ app.post('/user', passportConfig.isAuthenticated, check, csrfProtection, actorsC
 // TODO: check if csrf is on every page, because of this
 app.post('/pageLog', passportConfig.isAuthenticated, check, csrfProtection, userController.postPageLog);
 
+// Notifications not used in TestDrive
 app.get('/bell', passportConfig.isAuthenticated, userController.checkBell);
 
 //getScript

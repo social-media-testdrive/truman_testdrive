@@ -403,28 +403,31 @@ exports.getGuest = (req, res, next) => {
     lastNotifyVisit : Date.now()
   });
 
-  user.profile.name = "Guest";
-  user.profile.location = "Guest Town";
-  user.profile.bio = '';
-  user.profile.picture = 'avatar-icon.svg';
-  //console.log("New Guest is now: "+ user.profile.name);
+    user.profile.name = "Guest";
+    user.profile.location = "Guest Town";
+    user.profile.bio = '';
+    user.profile.picture = 'avatar-icon.svg';
+    //console.log("New Guest is now: "+ user.profile.name);
 
-  User.findOne({ username: req.body.username }, (err, existingUser) => {
-    if (err) { return next(err); }
-    if (existingUser) {
-      req.flash('errors', { msg: 'Account with that Username already exists.' });
-      return res.redirect('/guest/'+req.params.modId);
-    }
-    user.save((err) => {
+    User.findOne({ username: req.body.username }, (err, existingUser) => {
       if (err) { return next(err); }
-      req.logIn(user, (err) => {
-        if (err) {
-          return next(err);
-        }
-        res.redirect('/intro/'+req.params.modId);
+      if (existingUser) {
+        req.flash('errors', { msg: 'Account with that Username already exists.' });
+        return res.redirect('/guest/'+req.params.modId);
+      }
+      user.save((err) => {
+        if (err) { return next(err); }
+        req.logIn(user, (err) => {
+          if (err) {
+            return next(err);
+          }
+          //console.log("All done with Guest making!");
+          res.redirect('/intro/'+req.params.modId);
+        });
       });
     });
-  });
+  }
+
 };
 
 /**
@@ -735,9 +738,11 @@ exports.postSignupInfo = (req, res, next) => {
  * GET /account
  * Profile page.
  */
+
 exports.getAccount = (req, res) => {
   res.render('account/profile', {
-    title: 'Account Management', mod: req.params.modId
+    title: 'Account Management',
+    mod: req.params.modId
   });
 };
 
@@ -1414,7 +1419,7 @@ exports.getDeleteAccount = (req, res, next) => {
       req.logout();
       //req.flash('info', { msg: 'Your account has been deleted.' });
       //res.redirect('/');
-      res.redirect('/');
+      res.send({result:"success"});
     });
   }
   else
@@ -1434,7 +1439,7 @@ exports.getDeleteAccount = (req, res, next) => {
           }
           return next(err);
         }
-        res.redirect('/');
+        res.send({result:"success"});
       });
     });
   }

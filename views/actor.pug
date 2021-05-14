@@ -93,7 +93,7 @@ block content
                 span=val.actor.profile.name
             .image
               img(src=cdn+"/post_pictures/"+val.picture)
-              //-img(src='/picture.svg', data-src=val.picture)
+              //-img(src='/images/picture.svg', data-src=val.picture)
             .content
               .description=val.body
             .three.ui.bottom.attached.icon.buttons
@@ -132,7 +132,7 @@ block content
     .header Reply to Post
     .content
       form#replyform.ui.reply.form(action='/post/new', method='POST', enctype='multipart/form-data')
-        input(type='hidden', name='_csrf', value=_csrf)
+        input(type='hidden', name='_csrf', value=csrfToken)
         input#replyInput(type='hidden', name='reply', value='a')
         .field
           textarea(rows='2', placeholder='Add your Reply', name='body')
