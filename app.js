@@ -230,7 +230,13 @@ function setHttpResponseHeaders(req, res, next) {
     'Cache-Control': 'no-cache, no-store',
     'Expires': '0',
     'Pragma': 'no-cache',
-    'Content-Type': 'text/html; charset=UTF-8'
+    'Content-Type': 'text/html; charset=UTF-8',
+    'Content-Security-Policy':
+      "script-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/;" +
+      "default-src 'self';" +
+      "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
+      "img-src https://dhpd030vnpk29.cloudfront.net;" +
+      "font-src https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:"
   });
   next();
 }
