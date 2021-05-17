@@ -1,6 +1,5 @@
-//$(document).ready(function() {
-//Before Page load:
-//hide news feed before it is all loaded
+// Before Page load:
+// Hide news feed before it is all loaded
 
 $('#content').hide();
 $('#loading').show();
@@ -39,35 +38,6 @@ $(window).on("load", function () {
       break;
   }
 
-  $.getJSON(jsonPath, function(data) {
-    stepNumber = data[currentPageForHeader];
-  }).then(function () {
-    switch (stepNumber) {
-      case '1':
-        changeActiveProgressTo('#headerStep1');
-        $('.hideHeader').css('display', 'block');
-        break;
-      case '2':
-        changeActiveProgressTo("#headerStep2");
-        $('.hideHeader').css('display', 'block');
-        break;
-      case '3':
-        changeActiveProgressTo("#headerStep3");
-        $('.hideHeader').css('display', 'block');
-        break;
-      case '4':
-        changeActiveProgressTo("#headerStep4");
-        $('.hideHeader').css('display', 'block');
-        break;
-      case 'end':
-        $('#headerStep1, #headerStep2, #headerStep3, #headerStep4').removeClass('progressBarActive');
-        $('.hideHeader').css('display', 'block');
-        break;
-      default:
-        console.log('Progress bar is not visible right now');
-        break;
-    }
-  });
   // Adding the module title to the progress bar
   $.getJSON('/json/moduleInfo.json', function(data) {
     if(currentModuleForHeader !== undefined){
@@ -186,238 +156,10 @@ $(window).on("load", function () {
 
   //get add new reply post modal to show
   $('.reply.button').click(function () {
-
     let parent = $(this).closest(".ui.fluid.card");
     let postID = parent.attr("postID");
-
     parent.find("input.newcomment").focus();
   });
-
-
-  /*
-  focus on new comment prompt if clicked
-  */
-  $("input.newcomment").keyup(function (event) {
-    //i.big.send.link.icon
-    //$(this).siblings( "i.big.send.link.icon")
-    if (event.keyCode === 13) {
-      $(this).siblings("i.big.send.link.icon").click();
-    }
-  });
-
-  //create a new Comment
-  $("i.big.send.link.icon").click(function () {
-    var text = $(this).siblings("input.newcomment").val();
-    var card = $(this).parents(".ui.card");
-    var comments = card.find(".ui.comments")
-    //no comments area - add it
-    console.log("Comments is now " + comments.length)
-    if (!comments.length) {
-      var buttons = card.find(".three.ui.bottom.attached.icon.buttons")
-      buttons.after('<div class="content"><div class="ui comments"></div>');
-      var comments = card.find(".ui.comments")
-    }
-    if (text.trim() !== '') {
-      var date = Date.now();
-      var ava = $(this).siblings('.ui.label').find('img.ui.avatar.image');
-      var ava_img = ava.attr("src");
-      var ava_name = ava.attr("name");
-      //var postID = card.attr("postID");
-
-      var mess =
-        `<div class="comment">
-          <a class="avatar">
-            <img src="${ava_img}">
-          </a>
-          <div class="content">
-            <a class="author">${ava_name}</a>
-            <div class="metadata">
-              <span class="date">${humanized_time_span(date)}</span>
-            </div>
-            <div class="text">${text}</div>
-          </div>
-        </div>`;
-      $(this).siblings("input.newcomment").val('');
-      comments.append(mess);
-
-      if (card.attr("type") == 'userPost') {
-        $.post("/userPost_feed", {
-          postID: postID,
-          new_comment: date,
-          comment_text: text,
-          _csrf: $('meta[name="csrf-token"]').attr('content')
-        });
-      } else {
-        let postID = card.attr('postID');
-        switch(currentPageForHeader){
-          case 'sim':
-          case 'free-play':
-          case 'free-play2':
-          case 'free-play3':
-          case 'free-play4':
-            actionType = 'guided activity';
-            break;
-          case 'tutorial':
-            actionType = 'tutorial';
-            break;
-          default:
-            actionType = 'free play';
-            break;
-        }
-        if(actionType === "free play" || enableDataCollection){
-          $.post("/feed", {
-            actionType: actionType,
-            modual: currentModuleForHeader,
-            postID: postID,
-            new_comment: date,
-            comment_text: text,
-            _csrf: $('meta[name="csrf-token"]').attr('content')
-          });
-        }
-      }
-
-    }
-    try {
-      // We store the page's hints on the body for easy access
-      document.body.hints.refresh();
-    } catch (error) {
-      if( !(error instanceof TypeError) ){
-        console.error(error);
-      }
-    }
-  });
-
-
-
-  //Like a comment
-  $('a.like.comment')
-    .on('click', function () {
-
-      //if already liked, unlike if pressed
-      if ($(this).hasClass("red")) {
-        console.log("***********UNLIKE: post");
-        //Un read Like Button
-        $(this).removeClass("red");
-
-        var comment = $(this).parents(".comment");
-        comment.find("i.heart.icon").removeClass("red");
-
-        var label = comment.find("span.num");
-        label.html(function (i, val) { return val * 1 - 1 });
-      }
-      //since not red, this button press is a LIKE action
-      else {
-        $(this).addClass("red");
-        var comment = $(this).parents(".comment");
-        comment.find("i.heart.icon").addClass("red");
-
-        var label = comment.find("span.num");
-        label.html(function (i, val) { return val * 1 + 1 });
-
-        // var postID = $(this).closest(".ui.fluid.card").attr("postID");
-        var commentID = comment.attr("commentID");
-        var like = Date.now();
-        let postID = $(this).closest(".ui.card").attr("postID");
-        let actionType = 'free play';
-        switch(currentPageForHeader){
-          case 'sim':
-          case 'free-play':
-          case 'free-play2':
-          case 'free-play3':
-          case 'free-play4':
-            actionType = 'guided activity';
-            break;
-          case 'tutorial':
-            actionType = 'tutorial';
-            break;
-          default:
-            actionType = 'free play';
-            break;
-        }
-
-        //console.log("#########COMMENT LIKE:  PostID: " + postID + ", Comment ID: " + commentID + " at time " + like);
-
-        if ($(this).closest(".ui.fluid.card").attr("type") == 'userPost')
-          $.post("/userPost_feed", {
-            postID: postID,
-            commentID: commentID,
-            like: like,
-            _csrf: $('meta[name="csrf-token"]').attr('content')
-          });
-        else {
-          if(actionType === "free play" || enableDataCollection) {
-            $.post("/feed", {
-              actionType: actionType,
-              postID: postID,
-              modual: currentModuleForHeader,
-              commentID: commentID,
-              like: like,
-              _csrf: $('meta[name="csrf-token"]').attr('content')
-            });
-          }
-        }
-      }
-
-    });
-
-  //flag a comment
-  $('a.flag.comment')
-    .on('click', function () {
-
-      var comment = $(this).parents(".comment");
-      let postID = $(this).closest(".ui.card").attr("postID");
-      let actionType = 'free play';
-      switch(currentPageForHeader){
-        case 'sim':
-        case 'free-play':
-        case 'free-play2':
-        case 'free-play3':
-        case 'free-play4':
-          actionType = 'guided activity';
-          break;
-        case 'tutorial':
-          actionType = 'tutorial';
-          break;
-        default:
-          actionType = 'free play';
-          break;
-      }
-      var typeID = $(this).closest(".ui.card").attr("type");
-      var commentID = comment.attr("commentID");
-      comment.replaceWith('<div class="comment" style="background-color:black;color:white"><h5 class="ui inverted header"><span>The admins will review this post further. We are sorry you had this experience.</span></h5></div>');
-      var flag = Date.now();
-
-      console.log("#########COMMENT FLAG:  PostID: " + postID + ", Comment ID: " + commentID + "  TYPE is " + typeID + " at time " + flag);
-
-      if (typeID == 'userPost')
-        $.post("/userPost_feed", {
-          postID: postID,
-          commentID: commentID,
-          flag: flag,
-          _csrf: $('meta[name="csrf-token"]').attr('content')
-        });
-      else
-        if(actionType === "free play" || enableDataCollection) {
-          $.post("/feed", {
-            actionType: actionType,
-            modual: currentModuleForHeader,
-            postID: postID,
-            commentID: commentID,
-            flag: flag,
-            _csrf: $('meta[name="csrf-token"]').attr('content')
-          });
-        }
-
-      introJs().refresh();
-      try {
-        // We store the page's hints on the body for easy access
-        document.body.hints.refresh();
-      } catch (error) {
-        if( !(error instanceof TypeError) ){
-          console.error(error);
-        }
-      }
-    });
 
   //get add new feed post modal to work
   $("#newpost, a.item.newpost, .editProfilePictureButton").click(function () {
@@ -457,37 +199,6 @@ $(window).on("load", function () {
     document.getElementById('post_info_text_modual').innerHTML = $(this).data('info_text');
     console.log("&*&*&*&*&"+$(this).data('info_text'));
   });
-
-  // //New Class Button - this is not currently being used
-  // $("#new_class.ui.big.green.labeled.icon.button").click(function () {
-  //   $('.ui.small.newclass.modal').modal('show');
-  // });
-  //
-  // //validate class form - this is not currently being used
-  // $('#classform.ui.form')
-  //   .form({
-  //     on: 'blur',
-  //     fields: {
-  //       classname: {
-  //         identifier: 'classname',
-  //         rules: [
-  //           {
-  //             type: 'empty',
-  //             prompt: 'Please include a Class Name'
-  //           }
-  //         ]
-  //       },
-  //       accesscode: {
-  //         identifier: 'accesscode',
-  //         rules: [
-  //           {
-  //             type: 'empty',
-  //             prompt: 'Please add an Access Code'
-  //           }
-  //         ]
-  //       }
-  //     }
-  //   });
 
   //Picture Preview on Image Selection
   function readURL(input) {
@@ -856,146 +567,25 @@ end button links
     .modal('show')
     ;
 
-  //this is the LIKE button for posts
-  // like a post
-  $('.like.button')
-    .on('click', function () {
-      console.log("CLICK LIKE");
-      //if already liked, unlike if pressed
-      if ($(this).hasClass("red")) {
-        console.log("***********UNLIKE: post");
-        $(this).removeClass("red");
-        var label = $(this).next("a.ui.basic.red.left.pointing.label.count");
-        label.html(function (i, val) { return val * 1 - 1 });
-      }
-      //since not red, this button press is a LIKE action
-      else {
-        $(this).addClass("red");
-        var label = $(this).next("a.ui.basic.red.left.pointing.label.count");
-        label.html(function (i, val) { return val * 1 + 1 });
-        //var like = Date.now();
-        //console.log("***********LIKE: post " + postID);
-        let postID = $(this).closest(".ui.card").attr("postID");
-        let actionType = 'free play';
-        switch(currentPageForHeader){
-          case 'sim':
-          case 'sim1':
-          case 'sim2':
-          case 'sim3':
-          case 'free-play':
-          case 'free-play2':
-          case 'free-play3':
-          case 'free-play4':
-            actionType = 'guided activity';
-            break;
-          case 'tutorial':
-            actionType = 'tutorial';
-            break;
-          default:
-            actionType = 'free play';
-            break;
-        }
-        let like = Date.now();
-        if(actionType === "free play" || enableDataCollection) {
-          $.post("/feed", {
-            actionType: actionType,
-            postID: postID,
-            modual: currentModuleForHeader,
-            like: like,
-            _csrf: $('meta[name="csrf-token"]').attr('content')
-          });
-        }
-      }
-
-    });
-
   //lazy loading of images
-  $('#content .fluid.card .img img, img.ui.avatar.image, a.avatar.image img')
-    .visibility({
-      type: 'image',
-      offset: 0,
-      onLoad: function (calculations) {
-        $('#content .fluid.card .img img, img.ui.avatar.image, a.avatar.image img').visibility('refresh');
-      }
-    })
-    ;
-
-// MOVED TO COMMENTS.JS
-// //this is the Share button
-//   $('.ui.share.button')
-//     .on('click', function () {
-//       $('.ui.small.basic.share.modal')
-//         .modal('show');
-//   });
+  $(`#content .fluid.card .img img,
+    img.ui.avatar.image,
+    a.avatar.image img`)
+      .visibility({
+        type: 'image',
+        offset: 0,
+        onLoad: function (calculations) {
+          $(`#content .fluid.card .img img,
+            img.ui.avatar.image,
+            a.avatar.image img`)
+              .visibility('refresh');
+        }
+      });
 
   $(".dimmer.soon").dimmer({
         closable: false
       });
 
-
-  // flag a post
-  $('.flag.button')
-    .on('click', function () {
-      let flag = Date.now();
-      var post = $(this).closest(".ui.card");
-      let postID = post.attr("postID");
-      let actionType = 'free play';
-      switch(currentPageForHeader){
-        case 'sim':
-        case 'free-play':
-        case 'free-play2':
-        case 'free-play3':
-        case 'free-play4':
-          actionType = 'guided activity';
-          break;
-        case 'tutorial':
-          actionType = 'tutorial';
-          break;
-        default:
-          actionType = 'free play';
-          break;
-      }
-      if(actionType === "free play" || enableDataCollection) {
-        $.post("/feed", {
-          actionType: actionType,
-          postID: postID,
-          modual: currentModuleForHeader,
-          flag: flag,
-          _csrf: $('meta[name="csrf-token"]').attr('content')
-        });
-      }
-      console.log("Removing Post content now!");
-      post.find(".ui.dimmer.flag").dimmer({
-        closable: false
-      })
-        .dimmer('show');
-      //repeat to ensure its closable
-      post.find(".ui.dimmer.flag").dimmer({
-        closable: true
-      })
-        .dimmer('show');
-
-      let pathArray = window.location.pathname.split('/');
-      let mod = pathArray[2];
-
-      if(mod =="digital-literacy")
-
-      {
-        //console.log("CLICKING ON DIG INGO FLAG");
-        $('input[type=checkbox]').prop('checked',false);
-        if (actionType === 'free play') {
-          recordModalInputs('digital-literacy_flagModal');
-        } else if (actionType === 'guided activity'){
-          recordSimModalInputs('digital-literacy_flagModal');
-        }
-      }
-
-
-    });
-
-
-
   introJs().start();
-
 
 });
