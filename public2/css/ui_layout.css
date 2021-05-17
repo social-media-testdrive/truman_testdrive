@@ -40,12 +40,9 @@ body {
 .glowing-box {
   background-color: #fff !important;
   box-shadow:
-    0 0 60px 30px #fff !important,
-    /* inner white */
-    0 0 100px 60px #f0f !important,
-    /* middle magenta */
-    0 0 140px 90px #0ff !important;
-  /* outer cyan */
+    0 0 60px 30px #fff !important,  /* inner white */
+    0 0 100px 60px #f0f !important, /* middle magenta */
+    0 0 140px 90px #0ff !important; /* outer cyan */
 }
 
 /* ------- END PAGE ------- */
@@ -102,11 +99,20 @@ button {
 /* ----- (BLUE DOTS) ----- */
 
 .introjs-hint-dot {
-  background: #2185d0;
+  background:#2185d0;
+  border: 13px solid rgba(146,146,146,.36);
+  -webkit-animation: introjspulse 2s ease-out;
+  -moz-animation: introjspulse 2s ease-out;
+  animation: introjspulse 2s ease-out;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
 }
 
 .introjs-hint-pulse {
   background: #2185d0;
+  width: 15px;
+  height: 15px;
 }
 
 /* ---- INTROJS STEPS ---- */
@@ -217,6 +223,12 @@ button {
   color: #A9A9A9
 }
 
+/* Button that uses the testdrive color palette */
+.testDriveBlueButton {
+  background-color: #14a1f6 !important;
+  color: white !important;
+}
+
 /* settings page sublabels (privacy module) */
 .settingSmallLabel {
   font-weight: normal;
@@ -228,6 +240,15 @@ button {
   position: absolute;
   bottom: 0;
   width: 100%;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
 }
 
 /* misc alignment classes */

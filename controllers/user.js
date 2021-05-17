@@ -403,30 +403,29 @@ exports.getGuest = (req, res, next) => {
     lastNotifyVisit : Date.now()
   });
 
-    user.profile.name = "Guest";
-    user.profile.location = "Guest Town";
-    user.profile.bio = '';
-    user.profile.picture = 'avatar-icon.svg';
-    //console.log("New Guest is now: "+ user.profile.name);
+  user.profile.name = "Guest";
+  user.profile.location = "Guest Town";
+  user.profile.bio = '';
+  user.profile.picture = 'avatar-icon.svg';
+  //console.log("New Guest is now: "+ user.profile.name);
 
-    User.findOne({ username: req.body.username }, (err, existingUser) => {
+  User.findOne({ username: req.body.username }, (err, existingUser) => {
+    if (err) { return next(err); }
+    if (existingUser) {
+      req.flash('errors', { msg: 'Account with that Username already exists.' });
+      return res.redirect('/guest/'+req.params.modId);
+    }
+    user.save((err) => {
       if (err) { return next(err); }
-      if (existingUser) {
-        req.flash('errors', { msg: 'Account with that Username already exists.' });
-        return res.redirect('/guest/'+req.params.modId);
-      }
-      user.save((err) => {
-        if (err) { return next(err); }
-        req.logIn(user, (err) => {
-          if (err) {
-            return next(err);
-          }
-          //console.log("All done with Guest making!");
-          res.redirect('/intro/'+req.params.modId);
-        });
+      req.logIn(user, (err) => {
+        if (err) {
+          return next(err);
+        }
+        //console.log("All done with Guest making!");
+        res.redirect('/intro/'+req.params.modId);
       });
     });
-  }
+  });
 
 };
 

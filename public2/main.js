@@ -39,6 +39,35 @@ $(window).on("load", function () {
       break;
   }
 
+  $.getJSON(jsonPath, function(data) {
+    stepNumber = data[currentPageForHeader];
+  }).then(function () {
+    switch (stepNumber) {
+      case '1':
+        changeActiveProgressTo('#headerStep1');
+        $('.hideHeader').css('display', 'block');
+        break;
+      case '2':
+        changeActiveProgressTo("#headerStep2");
+        $('.hideHeader').css('display', 'block');
+        break;
+      case '3':
+        changeActiveProgressTo("#headerStep3");
+        $('.hideHeader').css('display', 'block');
+        break;
+      case '4':
+        changeActiveProgressTo("#headerStep4");
+        $('.hideHeader').css('display', 'block');
+        break;
+      case 'end':
+        $('#headerStep1, #headerStep2, #headerStep3, #headerStep4').removeClass('progressBarActive');
+        $('.hideHeader').css('display', 'block');
+        break;
+      default:
+        console.log('Progress bar is not visible right now');
+        break;
+    }
+  });
   // Adding the module title to the progress bar
   $.getJSON('/json/moduleInfo.json', function(data) {
     if(currentModuleForHeader !== undefined){
@@ -133,9 +162,6 @@ $(window).on("load", function () {
         break;
     }
   });
-}
-
-$(window).on("load", function () {
 
   $('.ui.sticky.sideMenu')
     .sticky({
