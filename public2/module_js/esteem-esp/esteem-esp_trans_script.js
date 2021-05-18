@@ -11,41 +11,41 @@ let bot2FirstName = "";
 function startIntro(){
 
   switch (topicSelection) {
-    case 'Sports':
-      eventKeyword = 'soccer game';
+    case 'Deportes':
+      eventKeyword = 'un partido de fútbol';
       bot1Image = 'user53.jpg';
-      bot1FullName = "Brielle Jordan";
-      bot1FirstName = "Brielle";
+      bot1FullName = "Belinda Fernandez";
+      bot1FirstName = "Belinda";
       bot2Image = 'user4.jpg';
-      bot2FullName = "Hayden Abbey";
-      bot2FirstName = "Hayden";
+      bot2FullName = "Humberto Alvarez";
+      bot2FirstName = "Humberto";
       break;
-    case 'Music':
-      eventKeyword = 'music camp';
+    case 'Música':
+      eventKeyword = 'el conjunto';
       bot1Image = 'user5.jpeg';
-      bot1FullName = "Kiki Pualani";
-      bot1FirstName = " Kiki";
+      bot1FullName = "Rosa Díaz";
+      bot1FirstName = " Rosa";
       bot2Image = 'user10.jpg';
-      bot2FullName = "Franklin Robinson";
-      bot2FirstName = "Franklin";
+      bot2FullName = "Carlos Gonzalez";
+      bot2FirstName = "Carlos";
       break;
-    case 'Gaming':
-      eventKeyword = 'gaming club';
+    case 'Videojuegos':
+      eventKeyword = 'el club de videojuegos';
       bot1Image = 'user30.jpg';
-      bot1FullName = "Lindsay Stokes";
-      bot1FirstName = "Lindsay";
+      bot1FullName = "Lourdes Sanchez";
+      bot1FirstName = "Lourdes";
       bot2Image = 'user48.jpeg';
-      bot2FullName = "Asher Michaels";
-      bot2FirstName = "Asher";
+      bot2FullName = "Alejandro Martinez";
+      bot2FirstName = "Alejandro";
       break;
     default:
-      eventKeyword = 'soccer game';
+      eventKeyword = 'un partido de fútbol';
       bot1Image = 'user30.jpg';
-      bot1FullName = "Lindsay Stokes"
-      bot1FirstName = "Lindsay"
+      bot1FullName = "Lourdes Sanchez";
+      bot1FirstName = "Lourdes";
       bot2Image = 'user48.jpeg';
-      bot2FullName = "Asher Michaels"
-      bot2FirstName = "Asher"
+      bot2FullName = "Alejandro Martinez";
+      bot2FirstName = "Alejandro";
       break;
   }
 
@@ -63,28 +63,27 @@ function startIntro(){
   intro.setOptions({
     steps: [
       {
-        intro: `Now you get to explore the TestDrive timeline! You can read
-        what others have posted, respond, or make your own posts.`
+        intro: `Ahora puedes explorar el feed del TestDrive. Puedes leer 
+        lo que otros han publicado, responder o crear tus propias publicaciones.`
       },
       {
-        intro: `Here is some background before you start: Imagine that you are
-        looking at
+        intro: `Aquí hay un poco de información antes de empezar: Imagina que estás viendo el feed de la red social de 
         <span class='noLineBreak'><img class='ui avatar image customCircularAvatar' src='${cdn}/profile_pictures/user77.jpg'>
-        Jeremy Murray's</span>
-        social media timeline.`
+        Jorge García</span>`
       },
       {
-        intro: `Jeremy has two friends,
+        intro: `Jorge tiene dos amigos,
         <span class='noLineBreak'><img class='ui avatar image customCircularAvatar' src='${cdn}/profile_pictures/${bot1Image}'>
-        <span>${bot1FullName}</span></span> and
+        <span>${bot1FullName}</span></span> y
         <span class='noLineBreak'><img class='ui avatar image customCircularAvatar' src='${cdn}/profile_pictures/${bot2Image}'>
-        <span>${bot2FullName}</span></span> whom he met  at a ${eventKeyword}.
-        Look out for posts from ${bot1FirstName} and ${bot2FirstName}.`
+        <span>${bot2FullName}</span></span> a quienes conoció en ${eventKeyword}.
+        Busca las publicaciones de ${bot1FirstName} y ${bot2FirstName}.`
       },
       {
-        intro: `You may also see posts from other friends that could cause
-        Jeremy to have a red flag feeling. Click on these posts to think about
-        how Jeremy might feel and what he can do about it.`
+        intro: `También puedes ver las publicaciones de otros amigos que 
+        han podido ocasionar la sensación de alerta roja en Jorge. Haz clic 
+        en estas publicaciones para pensar en cómo Jorge se está sintiendo y 
+        qué puede hacer al respecto.`
       }
 
     ]

@@ -1,0 +1,41 @@
+extends ui_layout-esp
+block content
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  .ui.container(style="text-align:right;")
+    br
+    form
+      button.circular.ui.small.right.floated.button(formaction='/') 
+        | ENG
+  .ui.container(style="padding:0;")
+    h2 Escoge una lección
+    br
+
+    .ui.four.stackable.link.cards(style="padding-bottom:4em;")
+            
+        a.ui.card(href='/guest/esteem')
+          .image
+            .ui.blue.ribbon.label NUEVO!
+            img(src=cdn+'/esteem.png')
+          .content
+            .header="The Ups and Downs of Social Media" 
+
+        a.ui.card(href='/guest/esteem-esp')
+          .image
+            .ui.blue.ribbon.label NUEVO!
+            img(src=cdn+'/esteem.png')
+          .content
+            .header="Los Altibajos de las Redes Sociales" 
+
+        
+          
+      
+        //- a.ui.card(href='#')
+        //-   .ui.inverted.active.dimmer.soon
+        //-     .content
+        //-       .center
+        //-         h2.ui.header
+        //-           |  Coming Soon!
+        //-   .image(style="filter: blur(1.5px);")
+        //-     img(src=cdn+'/acctandpasswords.png')
+        //-   .content
+        //-     .header="Accounts and Passwords"

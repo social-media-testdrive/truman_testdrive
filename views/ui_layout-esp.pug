@@ -1,0 +1,89 @@
+-var cdn = "https://dhpd030vnpk29.cloudfront.net";
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='theme-color' content='#4DA5F4')
+    meta(name='csrf-token', content=csrfToken)
+    meta(name="HandheldFriendly" content="True")
+    meta(name="apple-mobile-web-app-capable" content="yes")
+    meta(name="mobile-web-app-capable" content="yes")
+    meta(name="msapplication-tap-highlight" content="no")
+    meta(name="content-language" content="es")
+    meta(name='twitter:card' content="summary")
+    meta(name='twitter:title' content="Social Media TestDrive")
+    meta(name='twitter:description' content="Welcome to Social Media TestDrive! Choose a module to get started.")
+    meta(name='twitter:image' content='https://dhpd030vnpk29.cloudfront.net/squareLogo.png')
+    meta(property='og:url' content='https://test.socialmediatestdrive.org/')
+    meta(property='og:title' content="Social Media TestDrive")
+    meta(property='og:description' content='Welcome to Social Media TestDrive! Choose a module to get started.')
+    meta(property='og:image' content='https://dhpd030vnpk29.cloudfront.net/squareLogo.png')
+    title #{title} - Social Media TestDrive
+    link(rel='shortcut icon', href=cdn+'/favicon.ico')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css', integrity='sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=', crossorigin='anonymous')
+    link(rel='stylesheet', href=cdn+'/js/lib/introjs.min.css')
+    link(rel='stylesheet', href='/css/header.css') 
+    link(rel='stylesheet', href='/css/ui_layout.css') 
+    block styles
+      
+  body
+    .ui.vertically.padded.grid.container
+      include partials/ui_header-esp
+      include partials/ui_flash
+      block content
+      .ui.small.basic.share.modal
+        .ui.icon.header
+          i.share.icon
+          |     You have shared this post!
+        .actions(style="text-align:center;")   
+          .ui.green.ok.inverted.button
+            i.checkmark.icon
+            |   Done                      
+    include partials/ui_footer-esp
+    
+    if process.env.instanceType == 'test'
+      script(src=cdn+'/js/lib/jquery-3.1.1.min.js')
+      script(src=cdn+'/js/lib/humanized_time_span.js')
+      script(src=cdn+'/js/lib/lazyload.transpiled.min.js')
+      script(src='//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js')
+      script(src='//cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js')
+      script(src=cdn+'/js/lib/intro.min.js')
+      script(src=cdn+'/js/lib/zxcvbn.js')
+      //script(src='/semantic/dist/semantic.min.js')
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js', integrity='sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=', crossorigin='anonymous')
+      - var t = '/main.js?t=' + (new Date()).getTime().toString();
+      script(src=t)
+    else if process.env.NODE_ENV == 'production'
+      script(src=cdn+'/js/lib/jquery-3.1.1.min.js')
+      script(src=cdn+'/js/lib/humanized_time_span.js')
+      script(src=cdn+'/js/lib/lazyload.transpiled.min.js')
+      script(src='//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js')
+      script(src='//cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js')
+      script(src=cdn+'/js/lib/intro.min.js')
+      script(src=cdn+'/js/lib/zxcvbn.js')
+      //script(src='/semantic/dist/semantic.min.js')
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js', integrity='sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=', crossorigin='anonymous')
+      script(src=cdn+'/js/main.js?v=1')
+    else
+      script(src=cdn+'/js/lib/jquery-3.1.1.min.js')
+      script(src=cdn+'/js/lib/humanized_time_span.js')
+      script(src=cdn+'/js/lib/lazyload.transpiled.min.js')
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js')
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.js')
+      script(src='/js/lib/intro.js')
+      script(src=cdn+'/js/lib/zxcvbn.js')
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.js')
+      - var t = '/main.js?t=' + (new Date()).getTime().toString();
+      script(src=t)
+
+    block scripts
+
+    //- // Google Analytics: change UA-XXXXX-X to be your site's ID
+    script(async='' src='https://www.googletagmanager.com/gtag/js?id=UA-145467622-2')
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-145467622-2');
