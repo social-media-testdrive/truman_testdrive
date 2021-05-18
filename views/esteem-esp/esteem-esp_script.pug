@@ -1,11 +1,11 @@
-extends ../script.pug
+extends ../script-esp.pug
 
 block post
   if (val.type === user.esteemTopic)
     if (val.info_text !== "")
-      include ../partials/script/taggedPost
+      include ../partials/script/taggedPost-esp
     else
-      include ../partials/script/actorPost
+      include ../partials/script/actorPost-esp
   
 block rightColumn
 
