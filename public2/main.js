@@ -13,13 +13,15 @@ function changeActiveProgressTo(activeStep){
 
 $(window).on("load", function () {
   const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
-  //recording the current page
-  let pathArray = window.location.pathname.split('/');
-  $.post("/pageLog", {
-    subdirectory1: pathArray[1],
-    subdirectory2: pathArray[2],
-    _csrf: $('meta[name="csrf-token"]').attr('content')
-  });
+  // Record the current page if data collection is enabled
+  if (enableDataCollection) {
+    let pathArray = window.location.pathname.split('/');
+    $.post("/pageLog", {
+      subdirectory1: pathArray[1],
+      subdirectory2: pathArray[2],
+      _csrf: $('meta[name="csrf-token"]').attr('content')
+    });
+  }
 
   // managing the progress bar in the header
   let pathArrayForHeader = window.location.pathname.split('/');
