@@ -1,0 +1,42 @@
+extends ../script-esp.pug
+
+block post
+  if (val.type === user.esteemTopic)
+    if (val.info_text !== "")
+      include ../partials/script/taggedPost-esp
+    else
+      include ../partials/script/actorPost-esp
+  
+block rightColumn
+
+  .computer.only.four.wide.column
+    .ui.sticky.compact.positive.message.advancedLitReminder
+      case user.esteemTopic
+        when "Música"
+          p 
+            | Recuerda que estás viendo el feed  de Jorge. Presta atención
+            | a las publicaciones de Rosa y Carlos. Todavía puedes hacer 
+            | publicaciones y agregar comentarios en el feed.
+        when "Deportes"
+          p 
+            | Recuerda que estás viendo el feed  de Jorge. Presta atención
+            | a las publicaciones de Belinda y Umberto. Todavía puedes hacer 
+            | publicaciones y agregar comentarios en el feed.
+        when "Juegos"
+          p 
+            | Recuerda que estás viendo el feed  de Jorge. Presta atención
+            | a las publicaciones de Lourdes y Alejandro. Todavía puedes hacer 
+            | publicaciones y agregar comentarios en el feed. 
+        default
+          p 
+            | Recuerda que estás viendo el feed  de Jorge. Presta atención
+            | a las publicaciones de Rosa y Carlos. Todavía puedes hacer 
+            | publicaciones y agregar comentarios en el feed.
+
+block scripts2
+  script.
+    $('.advancedLitReminder')
+    .sticky({
+      context: '#content',
+      offset: 90
+    })
