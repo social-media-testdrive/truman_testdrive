@@ -333,61 +333,61 @@ app.get('/test_sim', function (req, res) {
 });
 
 app.get('/tutorial/:modId',passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
-  res.render(req.param("modId") + '/' + req.param("modId")  +'_tutorial', {
+  res.render(req.params.modId + '/' + req.params.modId  + '_tutorial', {
     title: 'Tutorial'
   });
 });
 
 app.get('/tutorial2/:modId',passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
-  res.render(req.param("modId") + '/' + req.param("modId")  +'_tutorial2', {
+  res.render(req.params.modId + '/' + req.params.modId  + '_tutorial2', {
     title: 'Tutorial'
   });
 });
 
 app.get('/sim/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
-  res.render(req.param("modId") + '/' + req.param("modId")+'_sim', {
+  res.render(req.params.modId + '/' + req.params.modId + '_sim', {
     title: 'Guided Activity'
   });
 });
 
 app.get('/sim1/:modId',passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
-  res.render(req.param("modId") + '/' + req.param("modId")+'_sim1', {
+  res.render(req.params.modId + '/' + req.params.modId + '_sim1', {
     title: 'Guided Activity'
   });
 });
 
 app.get('/sim2/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
-  res.render(req.param("modId") + '/' + req.param("modId")+'_sim2', {
+  res.render(req.params.modId + '/' + req.params.modId + '_sim2', {
     title: 'Guided Activity'
   });
 });
 
 app.get('/sim3/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
-  res.render(req.param("modId") + '/' + req.param("modId")+'_sim3', {
+  res.render(req.params.modId + '/' + req.params.modId + '_sim3', {
     title: 'Guided Activity'
   });
 });
 
 app.get('/sim4/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
-  res.render(req.param("modId") + '/' + req.param("modId")+'_sim4', {
+  res.render(req.params.modId + '/' + req.params.modId + '_sim4', {
     title: 'Guided Activity'
   });
 });
 
 app.get('/trans/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
-  res.render(req.param("modId") + '/' + req.param("modId")+'_trans', {
+  res.render(req.params.modId + '/' + req.params.modId + '_trans', {
     title: 'Recap'
   });
 });
 
 app.get('/trans2/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
-  res.render(req.param("modId") + '/' + req.param("modId")+'_trans2', {
+  res.render(req.params.modId + '/' + req.params.modId + '_trans2', {
     title: 'Recap'
   });
 });
 
 app.get('/trans_script/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
-  res.render(req.param("modId") + '/' + req.param("modId")+'_trans_script', {
+  res.render(req.params.modId + '/' + req.params.modId + '_trans_script', {
     title: 'Recap'
   });
 });
@@ -435,8 +435,8 @@ app.get('/free-settings3/privacy', passportConfig.isAuthenticated, csrfProtectio
 });
 
 app.get('/end/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
-  if((req.param("modId") === 'accounts') || (req.param("modId") === 'privacy')){
-    res.render(req.param("modId") + '/' + req.param("modId")+'_end', {
+  if((req.params.modId === 'accounts') || (req.params.modId === 'privacy')){
+    res.render(req.params.modId + '/' + req.params.modId + '_end', {
       title: 'Finished',
       isResearchVersion
     });
@@ -449,17 +449,17 @@ app.get('/end/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, 
 });
 
 app.get('/start/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
-  if (req.param("modId") === "delete") {   // anticipating a specific user behavior that causes 500 errors
+  if (req.params.modId === "delete") {   // anticipating a specific user behavior that causes 500 errors
     res.redirect('/');
   } else {
-    res.render(req.param("modId") + '/' + req.param("modId")+'_start', {
+    res.render(req.params.modId + '/' + req.params.modId + '_start', {
       title: 'Welcome'
     });
   }
 });
 
 app.get('/intro/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
-  if (req.param("modId") === "delete") {   // anticipating a specific user behavior that causes 500 errors
+  if (req.params.modId === "delete") {   // anticipating a specific user behavior that causes 500 errors
     res.redirect('/');
   } else {
     res.render('base_intro.pug', {
@@ -468,7 +468,7 @@ app.get('/intro/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf
   }
 });
 app.get('/tut_guide/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, function (req, res) {
-  res.render(req.param("modId") + '/' + req.param("modId")+'_tut_guide', {
+  res.render(req.params.modId + '/' + req.params.modId + '_tut_guide', {
     title: 'Welcome'
   });
 });
