@@ -56,7 +56,7 @@ function startIntro(){
     'showStepNumbers':false,
     'showBullets':false,
     'scrollToElement':true,
-    'doneLabel':'Done &#10003',
+    'doneLabel':'Listo &#10003',
     'tooltipClass':'blueTooltip'
   });
 
