@@ -295,8 +295,8 @@ exports.getGuest = (req, res, next) => {
     lastNotifyVisit : Date.now()
   });
 
-  user.profile.name = "Guest";
-  user.profile.location = "Guest Town";
+  user.profile.name = "Invitado/a";
+  user.profile.location = "";
   user.profile.bio = '';
   user.profile.picture = 'avatar-icon.svg';
   //console.log("New Guest is now: "+ user.profile.name);
