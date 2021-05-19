@@ -16,25 +16,26 @@ function clickGotIt(){
     $('.showLearnSectionButton').transition('bounce');
   }
   if ($('.keyIdeasSegment').is(":hidden")) {
-    //User has not yet clicked next
+    // User has not yet clicked next
     $('#clickNextWarning').show();
     $('.showKeyTermsButton').transition('bounce');
   } else {
-    //determine if all the labeles are clicked
+    // Determine if all the labeles are clicked
     if ($(".keyTermDefinition:hidden").length === 0) {
-      //everything is good to proceed
+      // All labels are clicked so everything is good to proceed
       $('#clickLabelsWarning').hide();
-
+      // actionArray should be empty if enableDataCollection = false
       Promise.all(actionArray).then(function(){
         let pathArray = window.location.pathname.split('/');
         if(pathArray[2] === "privacy"){
+          // special case for the privacy module
           window.location.href='/tut_guide/' + pathArray[2];
         } else {
           window.location.href='/tutorial/' + pathArray[2];
         }
       });
     } else {
-      //User has not clicked all the labels
+      // User has not clicked all the labels - show warning and animate unclicked
       $('#clickLabelsWarning').show();
       animateUnclickedLabels();
     }

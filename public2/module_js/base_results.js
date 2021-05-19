@@ -122,6 +122,7 @@ function hideWarning(warningID){
 }
 
 $(window).on("load", function(){
+    const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
     Voiceovers.addVoiceovers();
 
     $('.selectablePosts .card').on('click', function(){
@@ -151,7 +152,12 @@ $(window).on("load", function(){
     $('.results_end').on('click', function () {
       $(".insertPrint").empty();
       if(checkAllPromptsOpened() === true){
-        return iterateOverPrompts();
+        // if data collection is enabled, record the responses
+        if (enableDataCollection) {
+          return iterateOverPrompts();
+        } else {
+          window.location.href = `/end/${pathArray[2]}`
+        }
       } else {
         // slightly different messaging for start vs next buttons
         if($('.voiceover_reflection1').next('.reflectionPromptSegment').is(':hidden')){
