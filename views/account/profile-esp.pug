@@ -1,33 +1,34 @@
-extends ../ui_layout-esp
+//- Note: this is the original profile.pug file
+extends ../ui_layout
 
 block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   .sixteen.wide.column
-    h3.ui.header Información de perfil
+    h3.ui.header Profile Information
     .ui.basic.segment(style="padding:10px 0;")
       img.ui.small.image.profileImage(src=cdn+"/profile_pictures/"+user.profile.picture)
       button.large.ui.labeled.icon.button.editProfilePictureButton(style="margin: 1em 0;")
         i.plus.icon
-        |  Elige una foto de perfil
+        |  Choose a Profile Photo
     form.ui.form(action='/account/profile/'+mod, method='POST', enctype='multipart/form-data')
       input(type='hidden', name='_csrf', value=csrfToken)
       input(type='hidden', name='profilePhoto', value=user.profile.picture)
-      .field(data-tooltip="Recuerda que esta información se almacena en el sitio hasta que termine la lección. Piensa en usar un apodo o un alias en lugar de tu nombre real." data-position="bottom left")
-        label(for='name') Nombre
+      .field(data-tooltip="Remember, this information is stored on the site until you finish the lesson. Think about using a nickname or an alias instead of your real name." data-position="bottom left")
+        label(for='name') Name
         input.form-control(type='text', name='name', id='name', value=user.profile.name)
-      .field(data-tooltip="Recuerda que esta información se almacena en el sitio hasta que termine la lección. Piensa en usar otra ubicación en lugar de tu ubicación real." data-position="bottom left")
-        label(for='location') Ubicación (Ciudad/País)
+      .field(data-tooltip="Remember, this information is stored on the site until you finish the lesson. Think about using another location instead of your real location." data-position="bottom left")
+        label(for='location') Location (City, State)
         input.form-control(type='text', name='location', id='location', value=user.profile.location)
       .field
         label(for='bio') Bio
         textarea(rows='2', name='bio', id='bio')=user.profile.bio
-      button.ui.green.button(type='submit' style="margin-bottom:8em;") Actualiza tu perfil
+      button.ui.green.button(type='submit' style="margin-bottom:8em;") Update Profile
       
       
   //- Profile Picture Selection Modal 
   .ui.small.long.post.modal.profilePictureModal(style="margin:95px 0;")  
     i.close.icon  
-    .header Elige una foto de perfil 
+    .header Choose a Profile Picture 
     .content  
       form.ui.profilePicForm.form 
         .ui.segment
@@ -82,14 +83,14 @@ block content
       
             
         .ui.error.message#noPhotoError 
-          | Por favor, elige una foto de perfil
+          | Please select a photo
     .actions  
       .ui.green.approve.button.labeled.icon
         i.check.icon
-        |  Subir
+        |  Upload
       .ui.red.deny.button.labeled.icon
         i.close.icon
-        |  Cancelar
+        |  Cancel
 
 block scripts
   script.
