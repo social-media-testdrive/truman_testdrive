@@ -5,9 +5,34 @@ function addHumanizedTimeToPost(){
   target.text(humanized_time_span(time));
 }
 
+function getActionType(currentPage){
+  let actionType = 'free play';
+  switch(currentPage){
+    case 'sim':
+    case 'sim1':
+    case 'sim2':
+    case 'sim3':
+    case 'sim4':
+    case 'free-play':
+    case 'free-play2':
+    case 'free-play3':
+    case 'free-play4':
+      actionType = 'guided activity';
+      break;
+    case 'tutorial':
+      actionType = 'tutorial';
+      break;
+    default:
+      actionType = 'free play';
+      break;
+  }
+  return actionType;
+}
+
 // ****** actions on main post *******
 
-function likePost(){
+function likePost(e){
+  const enableDataCollection = e.data.enableDataCollection;
   let target = $(event.target);
   // Determine if the comment is being LIKED or UNLIKED based on the initial
   // button color. Red = UNLIKE, Not Red = LIKE.
@@ -29,25 +54,7 @@ function likePost(){
     let currentPageForHeader = pathArrayForHeader[1];
     let currentModuleForHeader = pathArrayForHeader[2];
     let postID = $(this).closest(".ui.card").attr("postID");
-    let actionType = 'free play';
-    switch(currentPageForHeader){
-      case 'sim':
-      case 'sim1':
-      case 'sim2':
-      case 'sim3':
-      case 'free-play':
-      case 'free-play2':
-      case 'free-play3':
-      case 'free-play4':
-        actionType = 'guided activity';
-        break;
-      case 'tutorial':
-        actionType = 'tutorial';
-        break;
-      default:
-        actionType = 'free play';
-        break;
-    }
+    let actionType = getActionType(currentPageForHeader);
     let like = Date.now();
     if(actionType === "free play" || enableDataCollection) {
       $.post("/feed", {
@@ -61,29 +68,15 @@ function likePost(){
   }
 };
 
-function flagPost(){
+function flagPost(e){
+  const enableDataCollection = e.data.enableDataCollection;
   let flag = Date.now();
   var post = $(this).closest(".ui.card");
   let postID = post.attr("postID");
   let pathArrayForHeader = window.location.pathname.split('/');
   let currentPageForHeader = pathArrayForHeader[1];
   let currentModuleForHeader = pathArrayForHeader[2];
-  let actionType = 'free play';
-  switch(currentPageForHeader){
-    case 'sim':
-    case 'free-play':
-    case 'free-play2':
-    case 'free-play3':
-    case 'free-play4':
-      actionType = 'guided activity';
-      break;
-    case 'tutorial':
-      actionType = 'tutorial';
-      break;
-    default:
-      actionType = 'free play';
-      break;
-  }
+  let actionType = getActionType(currentPageForHeader);
   if(actionType === "free play" || enableDataCollection) {
     $.post("/feed", {
       actionType: actionType,
@@ -93,7 +86,6 @@ function flagPost(){
       _csrf: $('meta[name="csrf-token"]').attr('content')
     });
   }
-  console.log("Removing Post content now!");
   post.find(".ui.dimmer.flag").dimmer({
     closable: false
   })
@@ -176,21 +168,7 @@ async function addNewComment(event) {
         _csrf: $('meta[name="csrf-token"]').attr('content')
       });
     } else {
-      switch(currentPageForHeader){
-        case 'sim':
-        case 'free-play':
-        case 'free-play2':
-        case 'free-play3':
-        case 'free-play4':
-          actionType = 'guided activity';
-          break;
-        case 'tutorial':
-          actionType = 'tutorial';
-          break;
-        default:
-          actionType = 'free play';
-          break;
-      }
+      let actionType = getActionType(currentPageForHeader);
       if(actionType === "free play" || enableDataCollection){
         $.post("/feed", {
           actionType: actionType,
@@ -213,8 +191,8 @@ async function addNewComment(event) {
   }
 }
 
-function likeComment(event) {
-  const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
+function likeComment(e) {
+  const enableDataCollection = e.data.enableDataCollection;
   const target = $(event.target);
   // Determine if the comment is being LIKED or UNLIKED based on the initial
   // button color. Red = UNLIKE, Not Red = LIKE.
@@ -243,22 +221,7 @@ function likeComment(event) {
     let pathArrayForHeader = window.location.pathname.split('/');
     let currentPageForHeader = pathArrayForHeader[1];
     let currentModuleForHeader = pathArrayForHeader[2];
-    let actionType = 'free play';
-    switch(currentPageForHeader){
-      case 'sim':
-      case 'free-play':
-      case 'free-play2':
-      case 'free-play3':
-      case 'free-play4':
-        actionType = 'guided activity';
-        break;
-      case 'tutorial':
-        actionType = 'tutorial';
-        break;
-      default:
-        actionType = 'free play';
-        break;
-    }
+    let actionType = getActionType(currentPageForHeader);
     if ($(this).closest(".ui.fluid.card").attr("type") == 'userPost') {
       $.post("/userPost_feed", {
         postID: postID,
@@ -281,7 +244,8 @@ function likeComment(event) {
   }
 }
 
-function flagComment() {
+function flagComment(e) {
+  const enableDataCollection = e.data.enableDataCollection;
   const comment = $(this).parents('.comment');
   const postID = $(this).closest('.ui.fluid.card').attr('postID');
   const typeID = $(this).closest(".ui.card").attr("type");
@@ -290,22 +254,7 @@ function flagComment() {
   let pathArrayForHeader = window.location.pathname.split('/');
   let currentPageForHeader = pathArrayForHeader[1];
   let currentModuleForHeader = pathArrayForHeader[2];
-  let actionType = 'free play';
-  switch(currentPageForHeader){
-    case 'sim':
-    case 'free-play':
-    case 'free-play2':
-    case 'free-play3':
-    case 'free-play4':
-      actionType = 'guided activity';
-      break;
-    case 'tutorial':
-      actionType = 'tutorial';
-      break;
-    default:
-      actionType = 'free play';
-      break;
-  }
+  let actionType = getActionType(currentPageForHeader);
   comment.replaceWith(
     `<div class='comment' style='background-color:black;color:white;'>
       <h5 class='ui inverted header'>
@@ -348,6 +297,7 @@ function flagComment() {
 
 
 $(window).on('load', () => {
+  const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
   /*
   focus on new comment prompt if clicked
   */
@@ -378,16 +328,16 @@ $(window).on('load', () => {
   $('.right.floated.time.meta, .date.sim, .time.notificationTime').each(addHumanizedTimeToPost);
 
   // like a post
-  $('.like.button').click(likePost);
+  $('.like.button').click({enableDataCollection}, likePost);
 
   // create a new Comment
-  $('i.big.send.link.icon').click(addNewComment);
+  $('i.big.send.link.icon').click({enableDataCollection},addNewComment);
 
   // like a comment
-  $('a.like.comment').click(likeComment);
+  $('a.like.comment').click({enableDataCollection},likeComment);
 
   // flag a comment
-  $('a.flag.comment').click(flagComment);
+  $('a.flag.comment').click({enableDataCollection},flagComment);
 
 
   // only enable certain functionality when not in a tutorial page
@@ -397,7 +347,7 @@ $(window).on('load', () => {
   if(currentPage !== "tutorial"){
 
     // flag a post
-    $('.flag.button').on('click', flagPost);
+    $('.flag.button').on('click', {enableDataCollection}, flagPost);
 
     // share a post
     $('.ui.share.button').on('click', sharePost);

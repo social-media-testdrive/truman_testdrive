@@ -100,6 +100,7 @@ function startIntro(enableDataCollection){
 
     // Skip the remaining code in this function if data collection is disabled.
     if (!enableDataCollection) {
+      window.location.href = `/${nextPageURL}/${subdirectory2}`;
       return;
     }
     // Data collection is enabled:
