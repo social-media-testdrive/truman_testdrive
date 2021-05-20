@@ -109,7 +109,7 @@ mongoose.connection.on('error', (err) => {
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useNewUrlParser', true);
-mongoose.connect("mongodb://hmfabian1:t7jWfFDYlxUaGeUl@cluster0-shard-00-00.wy3tf.mongodb.net:27017,cluster0-shard-00-01.wy3tf.mongodb.net:27017,cluster0-shard-00-02.wy3tf.mongodb.net:27017/SocialMediaTestDrive?ssl=true&replicaSet=atlas-2dskxa-shard-0&authSource=admin&retryWrites=true&w=majority"); // must change this after Heroku deployment
+mongoose.connect(process.env.MONGODB_URI || process.env.MONGOLAB_URI);
 mongoose.connection.on('error', (err) => {
   console.error(err);
   //console.log('%s MongoDB connection error. Please make sure MongoDB is running.', chalk.red('✗'));
