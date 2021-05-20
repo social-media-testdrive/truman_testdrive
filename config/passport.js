@@ -38,8 +38,11 @@ passport.use('student-local', new LocalStrategy({
       if (!user) {
         return done(null, false, { msg: 'Invalid username or login link.' });
       }
+
       // found user, log in complete
-      return done(null, user);
+      req.session.regenerate(function() {
+        return done(null, user);
+      });
     });
 }));
 
@@ -49,20 +52,22 @@ passport.use('student-local', new LocalStrategy({
 
 passport.use('instructor-local', new LocalStrategy({
   usernameField: 'instructor_username',
-  passwordField: 'instructor_password'
-}, (instructor_username, instructor_password, done) => {
-  User.findOne({ username: instructor_username }, (err, user) => {
+  passwordField: 'instructor_password',
+  passReqToCallback: true
+}, (req, instructor_username, instructor_password, done) => {
+  User.findOne({ username: instructor_username }, async (err, user) => {
     if (err) {
       return done(err);
     }
     if (!user) {
       return done(null, false, { msg: 'Invalid username or password.' });
     }
-    user.comparePassword(instructor_password, (err, isMatch) => {
+    user.comparePassword(instructor_password, async (err, isMatch) => {
       if (err) {
         return done(err);
       }
       if (isMatch) {
+        // log in
         return done(null, user);
       }
       return done(null, false, { msg: 'Invalid username or password.' });

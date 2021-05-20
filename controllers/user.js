@@ -155,8 +155,15 @@ exports.postStudentLogin = (req, res, next) => {
     req.logIn(user, (err) => {
       if (err) { return next(err); }
       //req.flash('success', { msg: 'Success! You are logged in.' });
-      user.logUser(Date.now());
-      return res.redirect('/');
+      var temp = req.session.passport; // {user: 1}
+       req.session.regenerate(function(err){
+         //req.session.passport is now undefined
+         req.session.passport = temp;
+         req.session.save(function(err){
+           user.logUser(Date.now());
+           return res.redirect('/');
+         });
+       });
     });
   })(req, res, next);
 };
@@ -191,8 +198,15 @@ exports.postStudentLogin = (req, res, next) => {
      }
      req.logIn(user, (err) => {
        if (err) { return next(err); }
-       //req.flash('success', { msg: 'Success! You are logged in.' });
-       return res.redirect('/');
+       // regenerate the session
+       var temp = req.session.passport; // {user: 1}
+        req.session.regenerate(function(err){
+          //req.session.passport is now undefined
+          req.session.passport = temp;
+          req.session.save(function(err){
+              return res.redirect('/');
+          });
+        });
      });
    })(req, res, next);
  };
@@ -204,7 +218,9 @@ exports.postStudentLogin = (req, res, next) => {
  */
 exports.logout = (req, res) => {
   req.logout();
-  res.redirect('/login');
+  req.session.regenerate(function() {
+    res.redirect('/login');
+  })
 };
 
 /**
@@ -421,8 +437,15 @@ exports.getGuest = (req, res, next) => {
         if (err) {
           return next(err);
         }
-        //console.log("All done with Guest making!");
-        res.redirect('/intro/'+req.params.modId);
+        var temp = req.session.passport; // {user: 1}
+         req.session.regenerate(function(err){
+           //req.session.passport is now undefined
+           req.session.passport = temp;
+           req.session.save(function(err){
+               return res.redirect('/intro/'+req.params.modId);
+           });
+         });
+
       });
     });
   });
