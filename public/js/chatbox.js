@@ -4,7 +4,6 @@ $(window).on("load", function () {
 
     let pathArray = window.location.pathname.split('/');
     var chatId = this.id
-    console.log("@@@@This is my id: "+chatId);
 
     var chat = {
       messageToSend: '',
@@ -121,8 +120,6 @@ $(window).on("load", function () {
       }
     };
 
-    console.log("START OF CHATS!");
-    console.log(pathArray);
      if((pathArray[2] == 'safe-posting' ) || (pathArray[2] == 'phishing' )) {
       chat.init();
      };

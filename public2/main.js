@@ -196,10 +196,9 @@ $(window).on("load", function () {
 
   // article info popup in the digital-literacy module
   $(".modual.info_button").click(function () {
-    console.log("@@@@@@@Clicking info button!!!!");
+
     $('.ui.small.popinfo.modal').modal('show');
     document.getElementById('post_info_text_modual').innerHTML = $(this).data('info_text');
-    console.log("&*&*&*&*&"+$(this).data('info_text'));
   });
 
   //Picture Preview on Image Selection
@@ -240,9 +239,7 @@ $(window).on("load", function () {
   $('.cybertrans')
     .on('click', function (e) {
       if ($(this).hasClass('green')) {
-        console.log(window.location.pathname)
         let pathArray = window.location.pathname.split('/');
-        console.log(pathArray);
         window.location.href = '/trans/' + pathArray[2];
         // window.location.href = '/trans/cyberbullying';
       }
@@ -257,9 +254,7 @@ $(window).on("load", function () {
   $('.cybertrans2')
     .on('click', function (e) {
       if ($(this).hasClass('green')) {
-        console.log(window.location.pathname)
         let pathArray = window.location.pathname.split('/');
-        console.log(pathArray);
         window.location.href = '/trans2/' + pathArray[2];
          //window.location.href = '/trans2/privacy';
       }
@@ -277,104 +272,83 @@ Start button links
   //Cyberbullying to Transition
   $('.ui.big.green.labeled.icon.button.cybertutorial')
     .on('click', function () {
-      console.log(window.location.pathname)
       let pathArray = window.location.pathname.split('/');
-      console.log(pathArray);
       window.location.href = '/tutorial/' + pathArray[2];
     });
 
   //Cyberbullying to Transition (blue button)
   $('.ui.big.blue.labeled.icon.button.cybertutorial')
     .on('click', function () {
-      console.log(window.location.pathname)
       let pathArray = window.location.pathname.split('/');
-      console.log(pathArray);
       window.location.href = '/tutorial/' + pathArray[2];
     });
 
   //Cyberbullying to Transition
   $(document).on('click', '.ui.big.labeled.icon.button.cybersim.green', function () {
-      console.log(window.location.pathname)
       let pathArray = window.location.pathname.split('/');
-      console.log(pathArray);
       window.location.href = '/sim/' + pathArray[2];
     });
 
     //Cyberbullying to Transition (blue button)
     $(document).on('click', '.ui.big.labeled.icon.button.cybersim.blue', function () {
-        console.log(window.location.pathname)
         let pathArray = window.location.pathname.split('/');
-        console.log(pathArray);
         window.location.href = '/sim/' + pathArray[2];
       });
 
   //Cyberbullying to Transition 1
   $(document).on('click', '.ui.big.labeled.icon.button.cybersim1.green', function () {
-      console.log(window.location.pathname)
       let pathArray = window.location.pathname.split('/');
-      console.log(pathArray);
       window.location.href = '/sim1/' + pathArray[2];
     });
 
   //Privacy sim2 to Tutorial
   $(document).on('click', '.ui.big.labeled.icon.button.privacytutorial.green', function () {
-      console.log(window.location.pathname)
       window.location.href = '/tutorial/privacy';
     });
 
   //Privacy sim to trans2
   $(document).on('click', '.ui.big.labeled.icon.button.privacytrans2.green', function () {
-      console.log(window.location.pathname)
       window.location.href = '/trans2/privacy';
     });
 
   //To sim2
   $(document).on('click', '.ui.big.labeled.icon.button.cybersim2.green', function () {
-      console.log(window.location.pathname)
       let pathArray = window.location.pathname.split('/');
-      console.log(pathArray);
       window.location.href = '/sim2/' + pathArray[2];
     });
 
   //Privacy free-play to settings
   $(document).on('click', '.ui.big.labeled.icon.button.free1.green', function () {
-      console.log(window.location.pathname)
       window.location.href = '/free-settings/privacy';
     });
 
   //Privacy settings to free-play2
   $(document).on('click', '.ui.big.labeled.icon.button.settings1.green', function () {
-      console.log(window.location.pathname)
       window.location.href = '/free-play2/privacy';
     });
 
   //Privacy free-play2 to settings3
   $(document).on('click', '.ui.big.labeled.icon.button.settings3.green', function () {
-      console.log(window.location.pathname)
       window.location.href = '/free-settings3/privacy';
     });
 
   //Privacy settings3 to free-play4
   $(document).on('click', '.ui.big.labeled.icon.button.free4.green', function () {
-      console.log(window.location.pathname)
       window.location.href = '/free-play4/privacy';
     });
 
   //Privacy free-play4 to settings2
   $(document).on('click', '.ui.big.labeled.icon.button.settings2.green', function () {
-      console.log(window.location.pathname)
       window.location.href = '/free-settings2/privacy';
     });
 
   //Privacy settings2 to free3
   $(document).on('click', '.ui.big.labeled.icon.button.free3.green', function () {
-      console.log(window.location.pathname)
       window.location.href = '/free-play3/privacy';
     });
 
   //Privacy free3 to results
   $(document).on('click', '.ui.big.labeled.icon.button.privacyresults.green', function () {
-      console.log(window.location.pathname)
       window.location.href = '/results/privacy';
     });
 

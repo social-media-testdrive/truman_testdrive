@@ -43,7 +43,6 @@ function playVoiceover(audioFile, delay = 0) {
     }
   } else {
     pauseVoiceover();
-    console.log(`** No audio filename provided. If this is expected, then ignore this message. **`);
   }
 };
 

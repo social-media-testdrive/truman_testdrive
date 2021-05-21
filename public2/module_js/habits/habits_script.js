@@ -3,7 +3,7 @@ $(document).ready(function(){
   $('.ui.sticky.newPostSticky')
     .sticky({
       context: '#content',
-      offset: 90
+      offset: 115
     });
 
   //activating a normal dropdown (the one used in the habits module settings)

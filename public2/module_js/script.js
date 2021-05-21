@@ -30,6 +30,7 @@ var currentModule = pathArray[2];
 // Function that records popup modal data once it is closed
 // Requires the data-modalName attribute string as a parameter
 function recordModalInputs(modalNameAttrStr) {
+  const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
   let target = $(event.target);
   const post = target.closest(".ui.card");
   const postID = post.attr("postID");
@@ -63,6 +64,9 @@ function recordModalInputs(modalNameAttrStr) {
     },
     onHide: function(){
       Voiceovers.pauseVoiceover();
+      if(!enableDataCollection) {
+        return;
+      }
       const modalClosedTime = Date.now();
       const modalViewTime = modalClosedTime - modalOpenedTime;
       const modalName = $(this).attr('data-modalName');
@@ -110,6 +114,9 @@ function recordModalInputs(modalNameAttrStr) {
             },
             onHide: function(){
               Voiceovers.pauseVoiceover();
+              if(!enableDataCollection) {
+                return;
+              }
               const modalClosedTime = Date.now();
               const modalViewTime = modalClosedTime - secondModalOpenedTime;
               const pathArrayForHeader = window.location.pathname.split('/');
@@ -311,12 +318,12 @@ function setStickyElementsAdvancedlit(){
   $('.ui.sticky.newPostSticky')
     .sticky({
       context: '#content',
-      offset: 90
+      offset: 115
     });
   $('.ui.sticky.sideMenuAdvancedlit')
     .sticky({
       context: '#content',
-      offset: 90
+      offset: 115
     });
   $('.card .img.post img').off("load",setStickyElementsAdvancedlit);
 }
@@ -332,7 +339,7 @@ $(window).on("load", function() {
     $('.ui.sticky.newPostSticky')
       .sticky({
         context: '#content',
-        offset: 90
+        offset: 115
       });
   }
 

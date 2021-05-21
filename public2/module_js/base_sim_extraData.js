@@ -7,6 +7,7 @@ this function.
 */
 
 function recordSimModalInputs(modalNameAttrStr) {
+  const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
   let target = $(event.target);
   //const simPostNumber = target.closest('.ui.card').attr('simPostNumber');
   const post = target.closest(".ui.card");
@@ -29,6 +30,7 @@ function recordSimModalInputs(modalNameAttrStr) {
           Voiceovers.playVoiceover(['CUSML.misc_03.mp3'])
           break;
         case 'digfoot_normalPostModal':
+        case 'digfoot_simModal':
           Voiceovers.playVoiceover(['CUSML.misc_04.mp3'])
           break;
         case 'esteem_postModal1':
@@ -41,6 +43,10 @@ function recordSimModalInputs(modalNameAttrStr) {
     },
     onHide: function(){
       Voiceovers.pauseVoiceover();
+      // Skip the rest of the function if data collection is not enabled
+      if(!enableDataCollection) {
+        return;
+      }
       const modalClosedTime = Date.now();
       const modalViewTime = modalClosedTime - modalOpenedTime;
       const pathArrayForHeader = window.location.pathname.split('/');
@@ -90,6 +96,10 @@ function recordSimModalInputs(modalNameAttrStr) {
             },
             onHide: function(){
               Voiceovers.pauseVoiceover();
+              // Skip the rest of the function if data collection is not enabled
+              if(!enableDataCollection) {
+                return;
+              }
               const modalClosedTime = Date.now();
               const modalViewTime = modalClosedTime - secondModalOpenedTime;
               const pathArrayForHeader = window.location.pathname.split('/');

@@ -680,12 +680,13 @@ app.get('/bell', passportConfig.isAuthenticated, setHttpResponseHeaders, userCon
 
 if (enableDataCollection) {
   app.post('/startPageAction', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postStartPageAction);
+  app.post('/introjsStep', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postIntrojsStepAction);
+  app.post('/bluedot', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postBlueDotAction);
+  app.post('/reflection', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postReflectionAction);
+  app.post('/moduleProgress', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, userController.postUpdateModuleProgress);
 }
 
 app.post('/feed', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postUpdateFeedAction);
-app.post('/introjsStep', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postIntrojsStepAction);
-app.post('/reflection', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postReflectionAction);
-app.post('/bluedot', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postBlueDotAction);
 //app.post('/guidedActivityAction', passportConfig.isAuthenticated, scriptController.postGuidedActivityAction);
 app.post('/deleteUserFeedActions', passportConfig.isAuthenticated, setHttpResponseHeaders,  scriptController.postDeleteFeedAction);
 app.post('/interest', passportConfig.isAuthenticated, check, setHttpResponseHeaders,  csrfProtection, userController.postUpdateInterestSelection);
@@ -693,7 +694,6 @@ app.post('/advancedlitInterest', passportConfig.isAuthenticated, check, setHttpR
 app.post('/habitsTimer', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, userController.postUpdateHabitsTimer);
 app.post('/delete', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.getDeleteAccount);
 app.post('/postUpdateNewBadge', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, userController.postUpdateNewBadge);
-app.post('/moduleProgress', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, userController.postUpdateModuleProgress);
 app.get('/moduleProgress/:classId', passportConfig.isAuthenticated, setHttpResponseHeaders, classController.getModuleProgress);
 app.get('/classReflectionResponses/:classId', passportConfig.isAuthenticated, setHttpResponseHeaders, classController.getReflectionResponses);
 app.get('/classFreeplayActions/:classId/:modName', passportConfig.isAuthenticated, setHttpResponseHeaders, classController.getClassFreeplayActions);

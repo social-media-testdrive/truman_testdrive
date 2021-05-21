@@ -55,7 +55,7 @@ function openPhishingModal(phishingLink){
 $('.ui.sticky.newPostSticky')
   .sticky({
     context: '#content',
-    offset: 90
+    offset: 115
   });
 
 $('.ui.modal').modal({ closable: false });

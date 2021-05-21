@@ -1,10 +1,15 @@
 let actionArray = new Array(); // this array will be handed to Promise.all
+const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
 
 $('.showLearnSectionButton').on('click', function () {
   $('#clickNextWarning').hide();
   $('.learnSegment').show();
   $('.learnSegment .ui.header').transition('jiggle');
   $('.showLearnSectionButton').hide();
+  // stop here unless we are logging the action in the db
+  if(!enableDataCollection){
+    return;
+  }
   // log action in db
   let cat = new Object();
   let pathArray = window.location.pathname.split('/');
@@ -26,7 +31,10 @@ $('#introduction_next').on('click', function () {
   if($(".keyTermDefinition:hidden").length === 0){
     $('.ui.labeled.icon.button').addClass('green');
   }
-
+  // stop here unless we are logging the action in the db
+  if(!enableDataCollection){
+    return;
+  }
   // log action in db
   let cat = new Object();
   let pathArray = window.location.pathname.split('/');
@@ -102,7 +110,10 @@ $('.keyTerm').on('click', function (event) {
       $('.ui.labeled.icon.button').addClass('green');
     }
   }
-
+  // stop here unless we are logging the action in the db
+  if(!enableDataCollection){
+    return;
+  }
   // log action in db
   let cat = new Object();
   let pathArray = window.location.pathname.split('/');
