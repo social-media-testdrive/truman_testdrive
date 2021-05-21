@@ -38,7 +38,15 @@ exports.getNotificationTimes = (req, res) => {
           notifCorrespondingPostArray = parseInt([script_feed[i].info_text]);
         }
       }
-      res.json({notificationTimestamps:notifTimestampArray, notificationText:notifTextArray, notificationPhoto:notifPhotoArray, notifCorrespondingPost:notifCorrespondingPostArray});
+      res.set({
+        'Content-Type': 'application/json; charset=UTF-8',
+      })
+      res.json({
+        notificationTimestamps:notifTimestampArray,
+        notificationText:notifTextArray,
+        notificationPhoto:notifPhotoArray,
+        notifCorrespondingPost:notifCorrespondingPostArray
+      });
     });
 };
 

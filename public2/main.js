@@ -130,7 +130,7 @@ $(window).on("load", function () {
         });
         break;
       default:
-        console.log('Progress bar is not visible right now');
+        // Progress bar is not visible right now
         break;
     }
   });

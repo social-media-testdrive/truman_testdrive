@@ -12,10 +12,8 @@ const nextPageURL = 'modual';
 let stepsList;
 
 function customOnWindowLoad(enableDataCollection){
-  $.get("/esteemTopic", function( data ) {
+  $.get("/esteemTopic").then(function(data){
     topicSelection = data.esteemTopic;
-  }).then( function() {
-
     switch (topicSelection) {
       case 'Sports':
         eventKeyword = 'soccer game';

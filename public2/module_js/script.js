@@ -64,9 +64,6 @@ function recordModalInputs(modalNameAttrStr) {
     },
     onHide: function(){
       Voiceovers.pauseVoiceover();
-      if(!enableDataCollection) {
-        return;
-      }
       const modalClosedTime = Date.now();
       const modalViewTime = modalClosedTime - modalOpenedTime;
       const modalName = $(this).attr('data-modalName');
@@ -81,7 +78,9 @@ function recordModalInputs(modalNameAttrStr) {
           checkboxInputs = checkboxInputs << 1;
         }
       });
-
+      if(!enableDataCollection) {
+        return;
+      }
        $.post("/feed", {
          actionType: 'free play',
          postID: postID,

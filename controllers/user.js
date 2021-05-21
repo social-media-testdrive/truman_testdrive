@@ -833,8 +833,13 @@ exports.getHabitsTimer = (req, res) => {
             totalTimeViewedHabits = totalTimeViewedHabits + user.habitsTimer[i];
           }
         }
-
-        res.json({startTime: startTime, totalTimeViewedHabits:totalTimeViewedHabits});
+        res.set({
+          'Content-Type': 'application/json; charset=UTF-8',
+        })
+        res.json({
+          startTime: startTime,
+          totalTimeViewedHabits:totalTimeViewedHabits
+        });
       });
 };
 
@@ -944,7 +949,10 @@ exports.getEsteemTopic = (req, res) => {
       .exec(function (err, user){
         let selectedTopic = user.esteemTopic[user.esteemTopic.length - 1];
         console.log(`Topic: ${selectedTopic}`);
-        res.json({
+        res.set({
+          'Content-Type': 'application/json; charset=UTF-8',
+        })
+        res.send({
           esteemTopic: selectedTopic
         });
       });

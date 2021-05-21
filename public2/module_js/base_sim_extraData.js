@@ -43,10 +43,6 @@ function recordSimModalInputs(modalNameAttrStr) {
     },
     onHide: function(){
       Voiceovers.pauseVoiceover();
-      // Skip the rest of the function if data collection is not enabled
-      if(!enableDataCollection) {
-        return;
-      }
       const modalClosedTime = Date.now();
       const modalViewTime = modalClosedTime - modalOpenedTime;
       const pathArrayForHeader = window.location.pathname.split('/');
@@ -63,6 +59,11 @@ function recordSimModalInputs(modalNameAttrStr) {
           checkboxInputs = checkboxInputs << 1; //shift left
         }
       });
+
+      // Skip the rest of the function if data collection is not enabled
+      if(!enableDataCollection) {
+        return;
+      }
 
        $.post("/feed", {
          actionType: 'guided activity',

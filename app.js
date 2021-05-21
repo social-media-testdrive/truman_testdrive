@@ -237,7 +237,7 @@ function setHttpResponseHeaders(req, res, next) {
       "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
       "img-src 'self' https://dhpd030vnpk29.cloudfront.net;" +
       "media-src https://dhpd030vnpk29.cloudfront.net;" +
-      "font-src https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:"
+      "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:"
 
   });
   next();
