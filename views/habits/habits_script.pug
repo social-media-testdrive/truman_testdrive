@@ -437,86 +437,8 @@ block content
           
     br
     br
-  
-    //- New Post Modal  
-    .ui.small.post.modal 
-      i.close.icon  
-      .header Add a New Post  
-      .content  
-        form#postform.ui.feed.form(action='/post/new', method='POST')
-          input(type='hidden', name='_csrf', value=csrfToken) 
-          input(type='hidden', name='module', value=mod)  
-          .field  
-            textarea(rows='3',placeholder='What do you want to share?',name='body')
-          .ui.segment
-              .three.fields
-                .field
-                  .ui.radio.checkbox
-                    input#photoOne.hidden(type='radio' name='picinput' value="basketballshoes.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/basketballshoes.jpg" style='width:65%;height:auto;')
-                .field
-                  .ui.radio.checkbox
-                    input#photoTwo.hidden(type='radio' name='picinput' value="typewriter.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/typewriter.jpg" style='width:65%;height:auto;')
-                .field
-                  .ui.radio.checkbox
-                    input#photoThree.hidden(type='radio' name='picinput' value="cat.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/cat.jpg" style='width:65%;height:auto;') 
-              .three.fields
-                .field
-                  .ui.radio.checkbox
-                    input#photoOne.hidden(type='radio' name='picinput' value="cupcakes.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/cupcakes.jpg" style='width:65%;height:auto;')
-                .field
-                  .ui.radio.checkbox
-                    input#photoTwo.hidden(type='radio' name='picinput' value="autumn.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/autumn.jpg" style='width:65%;height:auto;')
-                .field
-                  .ui.radio.checkbox
-                    input#photoThree.hidden(type='radio' name='picinput' value="Disneyland.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/Disneyland.jpg" style='width:65%;height:auto;')  
-              .three.fields
-                .field
-                  .ui.radio.checkbox
-                    input#photoTwo.hidden(type='radio' name='picinput' value="studytime.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/studytime.jpg" style='width:65%;height:auto;')
-                .field
-                  .ui.radio.checkbox
-                    input#photoThree.hidden(type='radio' name='picinput' value="palm_trees.jpeg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/palm_trees.jpeg" style='width:65%;height:auto;') 
-                .field
-                  .ui.radio.checkbox
-                    input#photoOne.hidden(type='radio' name='picinput' value="footballseason.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/footballseason.jpg" style='width:65%;height:auto;')
-              .three.fields
-                .field
-                  .ui.radio.checkbox
-                    input#photoFour.hidden(type='radio' name='picinput' value="Iceland.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/Iceland.jpg" style='width:65%;height:auto;')
-                .field
-                  .ui.radio.checkbox
-                    input#photoFive.hidden(type='radio' name='picinput' value="balloons.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/balloons.jpg" style='width:65%;height:auto;')
-                .field
-                  .ui.radio.checkbox
-                    input#photoSix.hidden(type='radio' name='picinput' value="beachpuppy.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/beachpuppy.jpg" style='width:65%;height:auto;')  
-              
-          .ui.error.message 
-      .actions  
-        input.ui.green.button(type='submit', name="foo", value='Post', form='postform')#submitForm
+      
+    include ../partials/script/modals/newUserPost
                  
     //-Show a post as a popup, used in habits module
     .ui.tiny.long.viewPolicyPopup.modal(style="top:7em; margin-bottom: 4em;")  
@@ -554,4 +476,5 @@ block scripts
   script(src="/module_js/habits/habits_script.js")        
   
 block styles
+  link(rel='stylesheet', href='/css/script.css')    
   link(rel='stylesheet', href='/css/modules/habits/habits_script.css')    

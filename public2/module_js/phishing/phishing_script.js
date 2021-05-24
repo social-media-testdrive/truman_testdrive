@@ -1,4 +1,5 @@
 function recordModalInputs(modalNameAttrStr) {
+  const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
   let target = $(event.target);
   const postNumber = target.closest('.ui.card').attr('postNumber');
   const post = target.closest(".ui.fluid.card");
@@ -12,6 +13,10 @@ function recordModalInputs(modalNameAttrStr) {
   $(`.ui.modal[data-modalName=${modalNameAttrStr}]`).modal({
     closable: false,
     onHide: function(){
+      // Skip the rest of the function if data collection is not enabled
+      if(!enableDataCollection) {
+        return;
+      }
 
       const modalClosedTime = Date.now();
       const modalViewTime = modalClosedTime - modalOpenedTime;

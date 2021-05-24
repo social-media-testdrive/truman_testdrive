@@ -40,9 +40,6 @@ block content
             img.ui.avatar.image(src=user.gravatar(60))
         input(type='text', placeholder='Create a post', style="border-radius:0;")
         i.big.photo.link.icon
-    br
-    br
-    br
   
     each val in script
       //- create a card for each post in val (if by user make the card a little different)
@@ -285,7 +282,8 @@ block content
           
     br
     br
-
+  
+    include ../partials/script/modals/newUserPost
     .ui.large.long.modal#phishingModal1(data-modalName="phishing_surveyScam")
       i.close.icon  
       .ui.center.aligned.header FILL OUT THIS SURVEY TO RECEIVE A FREE GIFT CARD!
@@ -390,83 +388,7 @@ block content
               i.checkmark.icon 
             .ui.negative.right.labeled.icon.button
               | CLOSE
-              i.close.icon 
-               
-    //- New Post Modal  
-    .ui.small.post.modal(style="margin-top:3em; margin-bottom:4em;")    
-      i.close.icon  
-      .header Add a New Post  
-      .content  
-        form#postform.ui.feed.form(action='/post/new', method='POST')  
-          input(type='hidden', name='_csrf', value=csrfToken) 
-          input(type='hidden', name='module', value=mod)  
-          .field  
-            textarea(rows='3',placeholder='What do you want to share?',name='body')
-          .ui.segment
-              .three.fields
-                .field
-                  .ui.radio.checkbox
-                    input#photoOne.hidden(type='radio' name='picinput' value="basketballshoes.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/basketballshoes.jpg" style='width:65%;height:auto;')
-                .field
-                  .ui.radio.checkbox
-                    input#photoTwo.hidden(type='radio' name='picinput' value="typewriter.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/typewriter.jpg" style='width:65%;height:auto;')
-                .field
-                  .ui.radio.checkbox
-                    input#photoThree.hidden(type='radio' name='picinput' value="cat.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/cat.jpg" style='width:65%;height:auto;') 
-              .three.fields
-                .field
-                  .ui.radio.checkbox
-                    input#photoOne.hidden(type='radio' name='picinput' value="cupcakes.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/cupcakes.jpg" style='width:65%;height:auto;')
-                .field
-                  .ui.radio.checkbox
-                    input#photoTwo.hidden(type='radio' name='picinput' value="autumn.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/autumn.jpg" style='width:65%;height:auto;')
-                .field
-                  .ui.radio.checkbox
-                    input#photoThree.hidden(type='radio' name='picinput' value="Disneyland.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/Disneyland.jpg" style='width:65%;height:auto;')  
-              .three.fields
-                .field
-                  .ui.radio.checkbox
-                    input#photoTwo.hidden(type='radio' name='picinput' value="studytime.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/studytime.jpg" style='width:65%;height:auto;')
-                .field
-                  .ui.radio.checkbox
-                    input#photoThree.hidden(type='radio' name='picinput' value="palm_trees.jpeg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/palm_trees.jpeg" style='width:65%;height:auto;') 
-                .field
-                  .ui.radio.checkbox
-                    input#photoOne.hidden(type='radio' name='picinput' value="footballseason.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/footballseason.jpg" style='width:65%;height:auto;')
-              .three.fields
-                .field
-                  .ui.radio.checkbox
-                    input#photoFour.hidden(type='radio' name='picinput' value="Iceland.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/Iceland.jpg" style='width:65%;height:auto;')
-                .field
-                  .ui.radio.checkbox
-                    input#photoFive.hidden(type='radio' name='picinput' value="balloons.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/balloons.jpg" style='width:65%;height:auto;')
-                .field
-                  .ui.radio.checkbox
-                    input#photoSix.hidden(type='radio' name='picinput' value="beachpuppy.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/beachpuppy.jpg" style='width:65%;height:auto;')  
+              i.close.icon               
               
           .ui.error.message 
       .actions  
@@ -477,6 +399,7 @@ block scripts
   script(src="/module_js/phishing/phishing_script.js")
   
 block styles
+  link(rel='stylesheet', href='/css/script.css')
   link(rel='stylesheet', href='/css/modules/phishing.css')
             
     
