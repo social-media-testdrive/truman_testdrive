@@ -74,6 +74,7 @@ var hintsList = [
 ];
 
 function eventsAfterHints(){
+  const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
   //Activate the dropdown
   $('.ui.dropdown.icon.item').dropdown({
     duration: 300
@@ -92,7 +93,6 @@ function eventsAfterHints(){
         $('input[type=checkbox]').prop('checked',false);
         var post = $(this).closest(".ui.fluid.card.dim");
         var postID = post.attr("postID");
-        console.log("***********HIDE: post " + postID);
         post.find(".ui.inverted.dimmer.notflag").dimmer({
           closable: false
         }).dimmer('show')
@@ -101,13 +101,15 @@ function eventsAfterHints(){
           closable: true
         })
           .dimmer('show');
-        $.post("/feed", {
-          actionType: 'guided activity',
-          postID: postID,
-          flag: Date.now(),
-          modual: 'targeted',
-          _csrf: $('meta[name="csrf-token"]').attr('content')
-        });
+        if(enableDataCollection){
+          $.post("/feed", {
+            actionType: 'guided activity',
+            postID: postID,
+            flag: Date.now(),
+            modual: 'targeted',
+            _csrf: $('meta[name="csrf-token"]').attr('content')
+          });
+        }
         //open hide ad Modal
         recordSimModalInputs('targeted_hideAdModal');
 
@@ -115,7 +117,6 @@ function eventsAfterHints(){
         //flag the post
         var post = $(this).closest(".ui.fluid.card.dim");
         var postID = post.attr("postID");
-        console.log("***********FLAG: post " + postID);
         post.find(".ui.dimmer.flag").dimmer({
           closable: false
         })
@@ -125,13 +126,15 @@ function eventsAfterHints(){
           closable: true
         })
           .dimmer('show');
-        $.post("/feed", {
-          actionType: 'guided activity',
-          postID: postID,
-          flag: Date.now(),
-          modual: 'targeted',
-          _csrf: $('meta[name="csrf-token"]').attr('content')
-        });
+        if(enableDataCollection){
+          $.post("/feed", {
+            actionType: 'guided activity',
+            postID: postID,
+            flag: Date.now(),
+            modual: 'targeted',
+            _csrf: $('meta[name="csrf-token"]').attr('content')
+          });
+        }
       } else if (dropdownSelection == 2){
         //get the company name to dynamically use in the modal
         var companyName = $(this).closest(".ui.fluid.card.dim").find("#companyName").text();

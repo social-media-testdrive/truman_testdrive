@@ -14,7 +14,7 @@ var hintsList = [
   },
   {
     hint: `Have you turned off tagging settings and hidden tagged posts from
-    Lily’s timeline? Click “Let’s Continue!” to see how her profile has changed`,
+    Lily’s timeline? Click “Let’s Continue!” to see how her profile has changed.`,
     element: '#hint3',
     hintPosition: 'middle-right',
     audioFile: ['CUSML.7.8.15.mp3']

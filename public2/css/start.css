@@ -1,14 +1,14 @@
-.learnSegment {
-  padding: 14px 0 14px 0 !important;
+.segment.learnSegment {
+  padding: 14px 0 14px 0;
 }
 
-.showLearnSectionButton {
-  margin-top: 14px !important;
-  margin-bottom: 14px !important;
+.button.showLearnSectionButton {
+  margin-top: 14px;
+  margin-bottom: 14px;
 }
 
-.showKeyTermsButton {
-  margin-top: 14px !important;
+.button.showKeyTermsButton {
+  margin-top: 14px;
 }
 
 i.caret.icon {
