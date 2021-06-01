@@ -149,7 +149,7 @@ $(window).on("load", function(){
       }
     });
 
-    $('.results_end').on('click', function () {
+    $('.resultsContinueButton').on('click', function () {
       $(".insertPrint").empty();
       if(checkAllPromptsOpened() === true){
         // if data collection is enabled, record the responses

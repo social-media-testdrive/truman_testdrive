@@ -75,6 +75,7 @@ const useravatarupload= multer({ storage: useravatar_options });
 /**
  * Controllers (route handlers).
  */
+const activityController = require('./controllers/activity');
 const actorsController = require('./controllers/actors');
 const scriptController = require('./controllers/script');
 const classController = require('./controllers/class');
@@ -693,6 +694,8 @@ app.post('/deleteUserFeedActions', passportConfig.isAuthenticated, setHttpRespon
 app.post('/interest', passportConfig.isAuthenticated, check, setHttpResponseHeaders,  csrfProtection, userController.postUpdateInterestSelection);
 app.post('/advancedlitInterest', passportConfig.isAuthenticated, check, setHttpResponseHeaders,  csrfProtection, userController.postAdvancedlitInterestSelection);
 app.post('/habitsTimer', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, userController.postUpdateHabitsTimer);
+app.post('/postActivityData', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, activityController.postActivityData);
+app.post('/postDeleteActivityData', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, activityController.postDeleteActivityData);
 app.post('/delete', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.getDeleteAccount);
 app.post('/postUpdateNewBadge', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, userController.postUpdateNewBadge);
 app.get('/moduleProgress/:classId', passportConfig.isAuthenticated, setHttpResponseHeaders, classController.getModuleProgress);

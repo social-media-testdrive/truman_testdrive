@@ -1439,21 +1439,18 @@ exports.postUpdatePassword = (req, res, next) => {
  * Delete user account.
  */
 exports.getDeleteAccount = (req, res, next) => {
-  //console.log("In postDeleteAccount");
-  //is this a guest account?
-  if(typeof req.user.isGuest !== 'undefined' && req.user.isGuest)
-  {
-    //console.log("@#@#@#@Deleting Guest User")
+  // Is this a guest account?
+  if(typeof req.user.isGuest !== 'undefined' && req.user.isGuest) {
     User.remove({ _id: req.user.id }, (err) => {
-      if (err) { return next(err); }
+      if (err) {
+        return next(err);
+      }
       req.logout();
-      //req.flash('info', { msg: 'Your account has been deleted.' });
-      //res.redirect('/');
-      res.send({result:"success"});
+      res.send({
+        result: "success"
+      });
     });
-  }
-  else
-  {
+  } else {
     //console.log("Deleting user feed posts Actions")
     User.findById(req.user.id, (err, user) => {
       //somehow user does not exist here
