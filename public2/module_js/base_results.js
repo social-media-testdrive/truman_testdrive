@@ -1,11 +1,12 @@
-let pathArray = window.location.pathname.split('/');
-const subdirectory2 = pathArray[2]; // idenifies the current module
-let actionArray = new Array(); // this array will be handed to Promise.all
+const pathArray = window.location.pathname.split('/');
+const currentModule = pathArray[2]; // idenifies the current module
+const actionArray = new Array(); // this array will be handed to Promise.all
 
+// This function is only called if enableDataCollection = true
 function recordResponse(responseType,timestamp){
   // create new object with desired data to pass to the post request
   let cat = new Object();
-  cat.modual = subdirectory2
+  cat.modual = currentModule
   // prompt with any new line characters removed
   cat.prompt = $(this).text().replace(/\r?\n|\r/, '');
   cat.questionNumber = $(this).attr('data-questionNumber');
@@ -67,8 +68,9 @@ function recordResponse(responseType,timestamp){
   actionArray.push(jqxhr);
 }
 
+// This function is only called if enableDataCollection = true
 function iterateOverPrompts() {
-  let timestamp = Date.now();
+  const timestamp = Date.now();
 
   // Search for each prompt type.
   // The types are: written, checkboxes, radio**, and habits_time_entry**.
@@ -93,7 +95,7 @@ function iterateOverPrompts() {
   // wait to change pages until all post requests in actionArray return,
   // otherwise the post requests might get cancelled during the page change
   Promise.all(actionArray).then(function() {
-    window.location.href = `/end/${pathArray[2]}`
+    window.location.href = `/end/${currentModule}`
   });
 }
 
@@ -122,49 +124,102 @@ function hideWarning(warningID){
 }
 
 $(window).on("load", function(){
-    const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
-    Voiceovers.addVoiceovers();
-
-    $('.selectablePosts .card').on('click', function(){
-      $(this).transition('pulse');
-      $(this).toggleClass('selectedCard');
+  // The code assumes that only one of these will be true, not both.
+  const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
+  const enableShareActivityData = $('meta[name="isShareActivityDataEnabled"]').attr('content') === "true";
+  // Add voiceovers from the voiceoverMappings variable
+  Voiceovers.addVoiceovers();
+  // Ensure the print/continue buttons don't have any residual classes
+  // (these classes would be added after viewing sharing activity data popup,
+  // if enabled)
+  $('.button.resultsContinueButton, .button.results_print')
+    .removeClass('loading disabled');
+  // Make any "which ones did you notice?" posts at the top interactable.
+  // Plays an animation and toggles a blue glow around the post.
+  $('.selectablePosts .card').on('click', function(){
+    $(this).transition('pulse');
+    $(this).toggleClass('selectedCard');
+  });
+  // Defining the behavior for the "next" button on each question's segment.
+  $('.reflectionSegmentButton').on('click', function(){
+    let segmentButton = $(this);
+    segmentButton.hide();
+    segmentButton.next('.reflectionPromptSegment').transition({
+      animation: 'fade down',
+      onComplete: function() {
+        segmentButton.parents('.reflectionTopSegment')
+          .next('.reflectionTopSegment')
+          .transition('fade down');
+      }
     });
-
-    $('.reflectionSegmentButton').on('click', function(){
-      let segmentButton = $(this);
-      segmentButton.hide();
-      segmentButton.next('.reflectionPromptSegment').transition({
-        animation: 'fade down',
-        onComplete: function() {
-          segmentButton.parents('.reflectionTopSegment')
-            .next('.reflectionTopSegment')
-            .transition('fade down');
+    hideWarning('.startPromptsWarning');
+    hideWarning('.openAllPromptsWarning');
+    // If this was the last question, all of the prompts should be opened and the
+    // print/continue buttons should be enabled
+    if(checkAllPromptsOpened()){
+      $('.button.results_print, .button.resultsContinueButton')
+        .addClass('green')
+        .transition('jiggle');
+    }
+  });
+  // Defining the behavior for the "continue" button
+  $('.resultsContinueButton').on('click', function () {
+    // Empty .insertPrint to avoid problems with iterating over responses
+    $(".insertPrint").empty();
+    if(!checkAllPromptsOpened()){
+      // All of the questions are not yet visible to the user.
+      // Show slightly different error messaging for start vs next buttons:
+      // If the first question is not visible, show the "start" warning,
+      // otherwise show the default warning.
+      if ($('.voiceover_reflection1')
+        .next('.reflectionPromptSegment')
+        .is(':hidden')) {
+          showWarning('.startPromptsWarning');
+      } else {
+        showWarning('.openAllPromptsWarning');
+      }
+      return;
+    }
+    // All of the questions are now visible to the user.
+    if (enableDataCollection) {
+      // If data collection is enabled, iterate over the prompts to record the
+      // responses.
+      return iterateOverPrompts();
+    } else if (enableShareActivityData) {
+      // If sharing activity data is enabled, show the corresponding popup and
+      // save the user's activity data if the user checks the box.
+      $('.optInToShareActivityDataSegment').modal('show');
+      $('.optInToShareActivityDataSegment').modal({
+        onApprove: function(){
+          // Change the print/continue button appearances
+          $('.button.resultsContinueButton, .button.results_print')
+            .addClass('loading disabled');
+          // Get the checkbox input
+          const optInSelection = $('.optInToShareActivityDataSegment .ui.checkbox input').is(":checked");
+          if (optInSelection) {
+            // Save the user's activity data for the current module
+            $.post('/postActivityData', {
+              module: currentModule,
+              _csrf: $('meta[name="csrf-token"]').attr('content')
+            }).then(function(){
+              window.location.href = `/end/${currentModule}`;
+            });
+          } else {
+            // Delete any data saved from this module for the currently
+            // logged in user
+            $.post('/postDeleteActivityData', {
+              module: currentModule,
+              _csrf: $('meta[name="csrf-token"]').attr('content')
+            }).then(function(){
+              window.location.href = `/end/${currentModule}`;
+            })
+          }
         }
       });
-      hideWarning('.startPromptsWarning');
-      hideWarning('.openAllPromptsWarning');
-      if(checkAllPromptsOpened() === true){
-        $('.ui.big.labeled.icon.button').addClass('green');
-        $('.ui.big.labeled.icon.button').transition('jiggle');
-      }
-    });
-
-    $('.resultsContinueButton').on('click', function () {
-      $(".insertPrint").empty();
-      if(checkAllPromptsOpened() === true){
-        // if data collection is enabled, record the responses
-        if (enableDataCollection) {
-          return iterateOverPrompts();
-        } else {
-          window.location.href = `/end/${pathArray[2]}`
-        }
-      } else {
-        // slightly different messaging for start vs next buttons
-        if($('.voiceover_reflection1').next('.reflectionPromptSegment').is(':hidden')){
-          showWarning('.startPromptsWarning');
-        } else {
-          showWarning('.openAllPromptsWarning');
-        }
-      }
-    });
-})
+    } else {
+      // No additional action needed before navigating away from the
+      // reflection page.
+      window.location.href = `/end/${currentModule}`
+    }
+  });
+});

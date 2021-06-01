@@ -272,6 +272,7 @@ app.get('/guest/:modId', setHttpResponseHeaders, userController.getGuest);
 
 const isResearchVersion = process.env.isResearchVersion === 'true';
 const enableDataCollection = process.env.enableDataCollection === 'true';
+const enableShareActivityData = process.env.enableShareActivityData === 'true';
 const enableTeacherDashboard = process.env.enableTeacherDashboard === 'true';
 const enableLearnerDashboard = process.env.enableLearnerDashboard === 'true';
 
@@ -688,14 +689,17 @@ if (enableDataCollection) {
   app.post('/moduleProgress', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, userController.postUpdateModuleProgress);
 }
 
+if (enableShareActivityData) {
+  app.post('/postActivityData', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, activityController.postActivityData);
+  app.post('/postDeleteActivityData', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, activityController.postDeleteActivityData);
+}
+
 app.post('/feed', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postUpdateFeedAction);
 //app.post('/guidedActivityAction', passportConfig.isAuthenticated, scriptController.postGuidedActivityAction);
 app.post('/deleteUserFeedActions', passportConfig.isAuthenticated, setHttpResponseHeaders,  scriptController.postDeleteFeedAction);
 app.post('/interest', passportConfig.isAuthenticated, check, setHttpResponseHeaders,  csrfProtection, userController.postUpdateInterestSelection);
 app.post('/advancedlitInterest', passportConfig.isAuthenticated, check, setHttpResponseHeaders,  csrfProtection, userController.postAdvancedlitInterestSelection);
 app.post('/habitsTimer', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, userController.postUpdateHabitsTimer);
-app.post('/postActivityData', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, activityController.postActivityData);
-app.post('/postDeleteActivityData', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, activityController.postDeleteActivityData);
 app.post('/delete', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.getDeleteAccount);
 app.post('/postUpdateNewBadge', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, userController.postUpdateNewBadge);
 app.get('/moduleProgress/:classId', passportConfig.isAuthenticated, setHttpResponseHeaders, classController.getModuleProgress);
