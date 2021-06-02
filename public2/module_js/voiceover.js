@@ -51,6 +51,7 @@ function addVoiceovers() {
     const voiceoverInfo = voiceoverMappings[element];
     $(element).on('click', function(){
       pauseVoiceover();
+      resetVoiceoverSequenceCount();
       setTimeout( function() {
         playVoiceover(voiceoverInfo["files"],voiceoverInfo["delay"]);
       }, voiceoverInfo["initialDelay"]);
