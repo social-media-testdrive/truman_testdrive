@@ -11,6 +11,14 @@ body {
   display: none;
 }
 
+.ui.hidden {
+  display: none;
+}
+
+.centerText {
+  text-align: center;
+}
+
 .computer.only.tablet.only.four.wide.column {
   height: auto !important;
 }
@@ -19,34 +27,17 @@ body {
   padding-bottom: 50px;
 }
 
-/* ------ INTRO PAGE ------ */
+/* --- FEEDBACK MESSAGES --- */
 
-.welcomePageCard {
-  width: 350px !important;
+.ui.grid.feedbackMessagesGrid {
+  margin: 0 auto 0 auto;
 }
 
-.ui.steps .step:after {
-  width: 18px !important;
-  height: 18px !important;
-  background-color: inherit !important;
-}
-
-.welcomeButton {
-  font-size: 22px !important;
-}
-
-.glowing-box:hover {
-  outline: none !important;
-  border-color: #9ecaed !important;
-  box-shadow: 0 0 10px #9ecaed !important;
-}
-
-.glowing-box {
-  background-color: #fff !important;
-  box-shadow:
-    0 0 60px 30px #fff !important,  /* inner white */
-    0 0 100px 60px #f0f !important, /* middle magenta */
-    0 0 140px 90px #0ff !important; /* outer cyan */
+.ui.grid.feedbackMessagesGrid .sticky {
+  margin-bottom: 60px;
+  width: 400px;
+  max-width: 100%;
+  z-index: 10000000;
 }
 
 /* ------- END PAGE ------- */
@@ -83,6 +74,14 @@ button {
 
 .locationtag {
   color: #929292;
+}
+
+.grayText {
+  color: #929292;
+}
+
+.blueText {
+  color:#0000FF;
 }
 
 /* only for some digital literacy posts */

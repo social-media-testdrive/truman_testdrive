@@ -2,8 +2,8 @@
   padding: 0;
 }
 
-.selectedCard {
-  box-shadow: 0 0 6px 8px rgba(0,149,255,.4) !important;
+.ui.card.selectedCard {
+  box-shadow: 0 0 6px 8px rgba(0,149,255,.4);
 }
 
 .ui.label {
@@ -15,23 +15,31 @@
   float: left;
 }
 
-i.exclamation.triangle.icon {
-  color: #f9ff00 !important;
+i.icon.yellowIcon {
+  color: #f9ff00;
 }
 
-label {
-  font-size:120% !important;
+.ui.container .grayElement {
+  color: #696969;
 }
 
-.glowing-border {
-  border: 2px solid #dadada !important;
-  border-radius: 7px !important;
+.ui.container label {
+  font-size:120%;
 }
 
-.glowing-border:focus {
-  outline: none !important;
-  border-color: #9ecaed !important;
-  box-shadow: 0 0 10px #9ecaed !important;
+.ui.form .glowing-border {
+  border: 2px solid #dadada;
+  border-radius: 7px;
+}
+
+.ui.form .glowing-border:focus {
+  outline: none;
+  border-color: #9ecaed;
+  box-shadow: 0 0 10px #9ecaed;
+}
+
+.ui.form .restrictMaxWidth {
+  max-width:15em;
 }
 
 /*------- SCREENSHOTS ---------*/

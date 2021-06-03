@@ -15,7 +15,7 @@ block content
           .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection1
             i.down.arrow.icon
             |   Start
-          .ui.basic.segment.reflectionPromptSegment.hidden  
+          .ui.basic.segment.reflectionPromptSegment.hidden.noPadding  
             .ui.label.resultsPromptLabel
               h4.reflectionCheckboxesPrompt(data-questionNumber='Q1')
                 | #{reflectionData.habits.Q1.prompt}
@@ -59,13 +59,13 @@ block content
               .ui.form
                 br
                 .ui.form
-                  .inline.fields(style="max-width:15em;")
+                  .inline.fields.restrictMaxWidth
                     input.glowing-border(type='text' id="habits_responseTwo")
                     label  &nbsp&nbspMinutes
               button.ui.green.button#checkTime Find out the actual time!
               br
-              .ui.header.habitsReflectionCheckTime(style="display:none;")#undoHide You actually spent:
-              .ui.statistics(style="display:none;")
+              .ui.header.habitsReflectionCheckTime.hidden#undoHide You actually spent:
+              .ui.statistics.hidden
                 .statistic
                   .value#habitsActivityTotalTimeMinutes 0
                   .label
@@ -83,7 +83,7 @@ block content
           .ui.raised.segment
             .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection3
               i.down.arrow.icon
-              |   Next
+              | Next
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionCheckboxesPrompt(data-questionNumber='Q3')
@@ -127,7 +127,7 @@ block content
           .ui.raised.segment
             .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection4
               i.down.arrow.icon
-              |   Next
+              | Next
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt(data-questionNumber='Q4')
@@ -147,13 +147,13 @@ block content
     br
     .ui.big.labeled.icon.button.results_print(onclick="onPrint()")
           i.right.arrow.icon
-          |   Print your responses
+          | Print your responses
     br
     br
 
     .ui.big.labeled.icon.button.resultsContinueButton
           i.rocket.icon
-          |   Continue
+          | Continue
           
 block scripts
   script.

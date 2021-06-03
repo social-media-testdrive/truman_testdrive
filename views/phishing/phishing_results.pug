@@ -17,12 +17,10 @@ block content
           .ui.basic.segment.reflectionPromptSegment.hidden.selectPostsQuestion1 
             .ui.label.resultsPromptLabel
               h4
-                i.exclamation.triangle.icon
+                i.exclamation.triangle.icon.yellowIcon
                 | These were the phishing scam posts in the timeline. How many did 
                 | you notice?
-            br
-            br
-            h3.grayElement(style="color:#696969;")
+            h3.grayElement
               i.hand.pointer.icon
               | Click on the ones that you noticed! 
             .ui.stackable.three.cards.selectablePosts
@@ -36,10 +34,10 @@ block content
                 .image
                   img.post(src=cdn+'/post_pictures/nintendo_phi.jpg')
                 .content
-                  .description
-                    | Get a BRAND new Nintendo Switch only $19.99!!! Hurry up,
-                    | this offer WILL NOT LAST 
-                    span(style="color:#0000FF;")  http://goo.gl/FreeSwitch
+                  .description.
+                    Get a BRAND new Nintendo Switch only $19.99!!! Hurry up,
+                    this offer WILL NOT LAST 
+                    #[span(class="blueText") http://goo.gl/FreeSwitch]
           
               .ui.fluid.card.dim()#card2
                 .content
@@ -50,10 +48,10 @@ block content
                 .image
                   img.post(src=cdn+'/post_pictures/accountrisk_phi.png ')
                 .content
-                  .description
-                    | !!&$!ALERT!&$!! Your account MAY BE AT RISK. 
-                    | Click here to resolve
-                    span(style="color:#0000FF;")  http://testdrive.info/youraccount
+                  .description.
+                    !!&$!ALERT!&$!! Your account MAY BE AT RISK. Click here to 
+                    resolve
+                    #[span(class="blueText") http://testdrive.info/youraccount]
 
               .ui.fluid.card.dim()#card3
                 .content
@@ -64,17 +62,16 @@ block content
                 .image
                   img.post(src=cdn+'/post_pictures/giftcard_phi.jpg')
                 .content
-                  .description
-                    | You won't believe this crazy deal! I filled in a 5 minite
-                    | survey and got a $500 gift card instantly!! Fill out 
-                    | survey NOW
-                    span(style="color:#0000FF;")  http://bit.ly/FREEGIFTS
+                  .description.
+                    You won't believe this crazy deal! I filled in a 5 minite
+                    survey and got a $500 gift card instantly!! Fill out 
+                    survey NOW #[span(class="blueText") http://bit.ly/FREEGIFTS]
          
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
           .ui.raised.segment
             .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection2
               i.down.arrow.icon
-              |   Next
+              | Next
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionCheckboxesPrompt(data-questionNumber='Q1')
@@ -90,10 +87,9 @@ block content
                   .image
                     img.post(src=cdn + reflectionData.phishing.Q1.groupPostImages[0])
                   .content
-                    .description
-                      | #{reflectionData.phishing.Q1.groupPostDescriptions[0]}
-                      span(style="color:#0000FF;")  
-                        | #{reflectionData.phishing.Q1.groupPostLinks[0]}
+                    .description.
+                      #{reflectionData.phishing.Q1.groupPostDescriptions[0]}
+                      #[span(class="blueText") #{reflectionData.phishing.Q1.groupPostLinks[0]}]
             
         
                 .ui.fluid.card.dim()
@@ -145,10 +141,10 @@ block content
                   .image
                     img.post(src=cdn+reflectionData.phishing.Q1.groupPostImages[1])
                   .content
-                    .description
-                      | #{reflectionData.phishing.Q1.groupPostDescriptions[1]}
-                      span(style="color:#0000FF;") 
-                        | #{reflectionData.phishing.Q1.groupPostLinks[1]}
+                    .description.
+                      #{reflectionData.phishing.Q1.groupPostDescriptions[1]}
+                      #[span(class="blueText") #{reflectionData.phishing.Q1.groupPostLinks[1]}]
+                      
                       
                 .ui.fluid.card.dim.printvis()
                   .content
@@ -199,10 +195,9 @@ block content
                   .image
                     img.post(src=cdn+reflectionData.phishing.Q1.groupPostImages[2])
                   .content
-                    .description
-                      | #{reflectionData.phishing.Q1.groupPostDescriptions[2]}
-                      span(style="color:#0000FF;") 
-                        | #{reflectionData.phishing.Q1.groupPostLinks[2]}
+                    .description.
+                      #{reflectionData.phishing.Q1.groupPostDescriptions[2]}
+                      #[span(class="blueText") #{reflectionData.phishing.Q1.groupPostLinks[2]}]
            
               
                 .ui.fluid.card.dim()

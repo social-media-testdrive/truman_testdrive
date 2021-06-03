@@ -12,19 +12,17 @@ block content
             i.question.blue.icon
             .content
               | Reflect
-          
+              
           .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection1
             i.down.arrow.icon
             |   Start
-          .ui.basic.segment.reflectionPromptSegment.hidden.selectPostsQuestion1  
+          .ui.basic.segment.reflectionPromptSegment.hidden.noPadding.selectPostsQuestion1  
             .ui.label.resultsPromptLabel
               h4
-                i.exclamation.triangle.icon
+                i.exclamation.triangle.icon.yellowIcon
                 | These were the cyberbullying posts in the timeline. How many did 
                 | you notice?
-            br
-            br
-            h3.grayElement(style="color:#696969;")
+            h3.grayElement
               i.hand.pointer.icon
               | Click on the ones that you noticed!
             .ui.stackable.three.cards.selectablePosts
@@ -52,7 +50,8 @@ block content
                 .image
                   img.post(src=cdn+'/post_pictures/ewww.jpg')
                 .content
-                  .description Dylan smells like he didn&apos;t shower for a week
+                  .description.
+                    Dylan smells like he didn't shower for a week
 
 
               .ui.fluid.card.dim()#card3
@@ -64,9 +63,8 @@ block content
                 .image
                   img.post(src=cdn+'/post_pictures/dylansketchbook.jpeg')
                 .content
-                  .description 
-                    | omg lollll look at Dylan&rsquo;s sketchbook he&rsquo;s such 
-                    | a nerdddd
+                  .description.
+                    omg lollll look at Dylan's sketchbook he's such a nerdddd
            
  
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment

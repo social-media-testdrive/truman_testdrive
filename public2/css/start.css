@@ -1,3 +1,13 @@
+.ui.warning.message {
+  display: none;
+}
+
+/* Learn section */
+
+.segment.removePadding {
+  padding: 0;
+}
+
 .segment.learnSegment {
   padding: 14px 0 14px 0;
 }
@@ -7,12 +17,14 @@
   margin-bottom: 14px;
 }
 
-.button.showKeyTermsButton {
-  margin-top: 14px;
-}
-
 i.caret.icon {
   text-indent:3em;
+}
+
+/* Key terms section */
+
+.button.showKeyTermsButton {
+  margin-top: 14px;
 }
 
 .grayElement{
@@ -26,8 +38,4 @@ i.caret.icon {
 
 .keyTermDefinition ul {
   font-weight: 400;
-}
-
-.ui.warning.message{
-  display: none;
 }

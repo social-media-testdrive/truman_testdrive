@@ -15,15 +15,12 @@ block content
           .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection1
             i.down.arrow.icon
             |   Start
-          .ui.basic.segment.reflectionPromptSegment.hidden.selectPostsQuestion1  
+          .ui.basic.segment.reflectionPromptSegment.hidden.noPadding.selectPostsQuestion1  
             .ui.label.resultsPromptLabel
               h4
-                i.exclamation.triangle.icon
-
+                i.exclamation.triangle.icon.yellowIcon
                 | These were the posts with private information in the timeline. How many did you notice?
-            br
-            br
-            h3.grayElement(style="color:#696969;")
+            h3.grayElement
               i.hand.pointer.icon
               | Click on the ones that you noticed! 
             .ui.stackable.three.cards.selectablePosts
@@ -37,8 +34,8 @@ block content
                 .img.post
                   img.transition.visible(src=cdn+'/post_pictures/safepostga2.jpg', data-src='/safepostga2.jpg')
                 .content
-                  .description
-                    | new phone who dis? my new number is 607-252-6771
+                  .description.
+                    new phone who dis? my new number is 607-252-6771
 
               .ui.fluid.card.dim()#card2
                 .content
@@ -49,8 +46,8 @@ block content
                 .img.post
                   img.transition.visible(src=cdn+'/post_pictures/coolmovies.jpeg', data-src='/coolmovies.jpeg')
                 .content
-                  .description
-                    | Gonna be at the Regal THIS FRIDAY to see the new Marvel movie!! Meet me there at 8 🎥🍿
+                  .description.
+                    Gonna be at the Regal THIS FRIDAY to see the new Marvel movie!! Meet me there at 8 🎥🍿
 
 
               .ui.fluid.card.dim()#card3
@@ -62,8 +59,8 @@ block content
                 .img.post
                   img.transition.visible(src=cdn+'/post_pictures/house.jpg', data-src='/house.jpg')
                 .content
-                  .description
-                    | 321 Jefferson Ave come hang out guys, I'm bored.
+                  .description.
+                    321 Jefferson Ave come hang out guys, I'm bored.
 
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
           .ui.raised.segment
@@ -85,8 +82,8 @@ block content
                     .img.post
                       img.transition.visible(src=cdn+'/post_pictures/house.jpg', data-src='/house.jpg')
                     .content
-                      .description
-                        | 321 Jefferson Ave come hang out guys, I'm bored.
+                      .description.
+                        321 Jefferson Ave come hang out guys, I'm bored.
 
                 .ui.fluid.card.dim()
                   .content
@@ -206,7 +203,7 @@ block content
           .ui.raised.segment
             .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection4
               i.down.arrow.icon
-              |   Next
+              | Next
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden.checkThree 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt(data-questionNumber='Q3')

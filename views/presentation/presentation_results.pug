@@ -15,16 +15,13 @@ block content
           .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection1
             i.down.arrow.icon
             |   Start
-          .ui.basic.segment.reflectionPromptSegment.hidden.selectPostsQuestion1  
+          .ui.basic.segment.reflectionPromptSegment.hidden.noPadding.selectPostsQuestion1  
             .ui.label.resultsPromptLabel
               h4
-                i.exclamation.triangle.icon
-
+                i.exclamation.triangle.icon.yellowIcon
                 | These were the posts on the timeline that were from Elena’s 
                 | finsta accounts. How many did you notice?
-            br
-            br
-            h3.grayElement(style="color:#696969;")
+            h3.grayElement
               i.hand.pointer.icon
               | Click on the ones that you noticed! 
             .ui.stackable.three.cards.selectablePosts
@@ -38,7 +35,8 @@ block content
                 .image
                   img.post(src=cdn+"/post_pictures/spcrying.jpg")
                 .content
-                  .description="school really sucks i just wanna quit!!!"
+                  .description.
+                    school really sucks i just wanna quit!!!
           
             
               .ui.fluid.card.dim()#card2
@@ -50,7 +48,8 @@ block content
                 .image
                   img.post(src=cdn+"/post_pictures/spselfie.jpg")
                 .content
-                  .description="silly selfie what do u think?"
+                  .description.
+                    silly selfie what do u think?
 
 
               .ui.fluid.card.dim()#card3
@@ -62,7 +61,8 @@ block content
                 .image
                   img.post(src=cdn+"/post_pictures/spnosering.png")
                 .content
-                  .description="got a nose ring don't tell my parents they'll flip out lol"
+                  .description.
+                    got a nose ring don't tell my parents they'll flip out lol
  
  
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment

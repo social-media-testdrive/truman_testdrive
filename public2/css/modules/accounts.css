@@ -15,14 +15,6 @@
   height: 50px;
 }
 
-.ui.one.column.centered.grid{
-  padding-top: 1em;
-}
-
-.ui.fixed.bottom.sticky{
-  padding-bottom: 6em;
-}
-
 #removeHidden, #clickAllDotsWarning{
   display: none;
 }

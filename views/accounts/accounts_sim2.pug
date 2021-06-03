@@ -7,16 +7,16 @@ block content
   .computer.only.tablet.only.four.wide.column
 
   .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
-    .ui.one.column.centered.grid(style="padding-top:1em;")
-      .ui.fixed.bottom.sticky(style="padding-bottom:6em;")
-        .ui.icon.compact.message.warning(style="display:none;")#removeHidden
+    .ui.one.column.centered.grid.feedbackMessagesGrid
+      .ui.fixed.bottom.sticky
+        .ui.icon.compact.message.warning.hidden#removeHidden
           i.close.icon
           i.question.icon.float
           .content
             .ui.header Need some help? 
             p Make sure you are clicking "Got it" on the blue dots!
           
-        .ui.icon.message.warning(style="display:none;")#clickAllDotsWarning
+        .ui.icon.message.warning.hidden#clickAllDotsWarning
           i.close.icon
           i.hand.pointer.icon.float
           .content
@@ -24,8 +24,7 @@ block content
             p Click through all of the blue dots to continue.
     .ui.raised.segment
       h2.ui.header#generalStep Create Your Profile
-      
-      .ui.form(style="font-size:130%;")
+      .ui.form
         .field
           label Name
           input(type="text" autocomplete='off')
@@ -48,7 +47,7 @@ block content
         br
 
               
-    button.ui.big.labeled.icon.button.cybertrans#cyberTransButton(style="margin-bottom:4em;")
+    button.ui.big.labeled.icon.button.cybertrans#cyberTransButton
         i.rocket.icon
         |   Let's Continue!     
           

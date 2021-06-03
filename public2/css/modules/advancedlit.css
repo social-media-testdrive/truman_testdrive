@@ -98,8 +98,3 @@ i.caret.icon {
 .pointerCursor {
   cursor: pointer;
 }
-
-/* results */
-.descriptionContent {
-  min-height: 68px;
-}

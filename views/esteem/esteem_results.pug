@@ -17,21 +17,18 @@ block content
           .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection1
             i.down.arrow.icon
             |   Start
-          .ui.basic.segment.reflectionPromptSegment.hidden.selectPostsQuestion1  
+          .ui.basic.segment.reflectionPromptSegment.hidden.noPadding.selectPostsQuestion1  
             .ui.label.resultsPromptLabel
               h4
-                i.exclamation.triangle.icon
+                i.exclamation.triangle.icon.yellowIcon
                 | Here are some posts that might have caused Jeremy to experience 
-                | a red flag feeling, did you notice any of them?
-            br
-            br  
-            h3.grayElement(style="color:#696969;")
+                | a red flag feeling, did you notice any of them?  
+            h3.grayElement
               i.hand.pointer.icon
               | Click on the ones that you noticed!  
             .ui.stackable.three.cards.selectablePosts
               
-              if (chosenTopic == 'Sports')
-                
+              if (chosenTopic == 'Sports')          
                 .ui.fluid.card.dim
                   .content      
                     a.left.floated(href='/user/sassystar75')
@@ -42,10 +39,8 @@ block content
                   .content
                     .description
                       | Watching the big match with my BFF!!
-                      span(style='color:#929292;')
+                      span.grayText
                         |  — with Hayden Abbey
-            
-
                 .ui.fluid.card.dim
                   .content      
                     a.left.floated(href='/user/sassystar75')
@@ -57,11 +52,10 @@ block content
                     .description
                       | Wow, can't believe I'm the only one who made it to the 
                       | next round of soccer tryouts from our group
-                      span(style='color:#929292;')
+                      span.grayText
                         |  — with Hayden Abbey, Jeremy Murray, and Corey King
                       
-              if (chosenTopic == 'Gaming')
-                
+              if (chosenTopic == 'Gaming')  
                 .ui.fluid.card.dim
                   .content      
                     a.left.floated(href='/user/asherballer')
@@ -72,10 +66,8 @@ block content
                   .content
                     .description
                       | Totally beating everyone
-                      span(style='color:#929292;')
+                      span.grayText
                         |  — with Lindsay Stokes and Asher Michaels
-
-
                 .ui.fluid.card.dim
                   .content      
                     a.left.floated(href='/user/asherballer')
@@ -86,11 +78,10 @@ block content
                   .content
                     .description
                       | Playing online with my best friend  
-                      span(style='color:#929292;')
+                      span.grayText
                         |  — with Lindsay Stokes  
                       
               if (chosenTopic == 'Music')
-                
                 .ui.fluid.card.dim
                   .content     
                     a.left.floated(href='/user/frank-the-best')
@@ -101,10 +92,8 @@ block content
                   .content
                     .description
                       | We missed you at the concert Jeremy!
-                      span(style='color:#929292;')
+                      span.grayText
                         |  — with Kiki Pualani
-
-    
                 .ui.fluid.card.dim
                   .content      
                     a.left.floated(href='/user/frank-the-best')
@@ -116,12 +105,9 @@ block content
                     .description
                       | Inviting the best musicians from camp to make a song 
                       | together.
-                      span(style='color:#929292;')
+                      span.grayText
                         |  — with Kiki Pualani and Nick Thomas
-
-            br
-            br
-              
+          
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
           .ui.raised.segment
             .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection2
