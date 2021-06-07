@@ -13,6 +13,16 @@
   }
 } */
 
+.ui.menu.teacherDashboardMenu,
+.ui.menu.learnerDashboardMenu {
+  padding: 100px 0 0 0;
+}
+
+.ui.menu.teacherDashboardMobileMenu
+.ui.menu.learnerDashboardMobileMenu {
+  margin-top: 100px;
+}
+
 .hiddenVisibility > :not(.teacherDashboardMenu):not(.learnerDashboardMenu) {
   visibility: hidden;
 }

@@ -20,7 +20,7 @@ exports.getClasses = (req, res) => {
   } else {
     res.redirect('/');
   }
-};
+}
 
 // Return how many students there are in a specified class
 exports.getClassSize = (req, res, next) => {
@@ -43,6 +43,7 @@ exports.getClassSize = (req, res, next) => {
       return next(myerr);
     }
     const studentCount = found_class.students.length;
+    res.set('Content-Type', 'application/json; charset=UTF-8');
     res.json({studentCount: studentCount});
   });
 }
@@ -68,12 +69,11 @@ exports.getClass = (req, res, next) => {
         return next(myerr);
       }
       res.render('teacherDashboard/viewClass', { found_class: found_class});
-
     });
   } else {
     res.redirect('/');
   }
-};
+}
 
 // Get list of usernames for all students in a class
 exports.getClassUsernames = (req, res, next) => {
@@ -100,6 +100,7 @@ exports.getClassUsernames = (req, res, next) => {
     for(const student of found_class.students){
       usernameArray.push(student.username);
     }
+    res.set('Content-Type', 'application/json; charset=UTF-8');
     res.json({classUsernames: usernameArray});
   });
 }
@@ -118,6 +119,7 @@ exports.getClassIdList = (req, res, next) => {
       accessCode = classes[singleClass].accessCode;
       outputData.push(accessCode);
     }
+    res.set('Content-Type', 'application/json; charset=UTF-8');
     res.json({classIdList: outputData});
   });
 }
@@ -149,11 +151,10 @@ exports.getModuleProgress = (req, res, next) => {
       const username = found_class.students[i].username;
       outputData[username] = modProgressObj;
     }
-    res.json({
-      classModuleProgress: outputData
-    });
+    res.set('Content-Type', 'application/json; charset=UTF-8');
+    res.json({classModuleProgress: outputData});
   });
-};
+}
 
 function getClassPageTimes(found_class, modName) {
   let classPageTimes = [];
@@ -196,7 +197,7 @@ function getClassPageTimes(found_class, modName) {
     classPageTimes.push(pushStudentObject);
   }
   return classPageTimes;
-};
+}
 
 // Gets page times for an entire class, only reports logs of completed modules.
 // Optional parameter of modName to further filter page time list.
@@ -221,7 +222,8 @@ exports.getClassPageTimes = (req, res, next) => {
       return next(myerr);
     }
     let classPageTimes = getClassPageTimes(found_class, req.params.modName);
-    res.json({classPageTimes: classPageTimes})
+    res.set('Content-Type', 'application/json; charset=UTF-8');
+    res.json({classPageTimes: classPageTimes});
   });
 }
 
@@ -255,9 +257,8 @@ exports.getClassFreeplayActions = (req, res, next) => {
         outputData[student.username] = actionList;
       }
     }
-    res.json({
-      classFreeplayActions: outputData
-    });
+    res.set('Content-Type', 'application/json; charset=UTF-8');
+    res.json({classFreeplayActions: outputData});
   });
 }
 
@@ -288,11 +289,10 @@ exports.getReflectionResponses = (req, res, next) => {
       const username = found_class.students[i].username;
       outputData[username] = reflectionActions;
     }
-    res.json({
-      reflectionResponses: outputData
-    });
+    res.set('Content-Type', 'application/json; charset=UTF-8');
+    res.json({reflectionResponses: outputData});
   });
-};
+}
 
 
 /**
@@ -346,9 +346,8 @@ exports.postCreateClass = (req, res, next) => {
         res.redirect('/classManagement');
       });
     });
-
   });
-};
+}
 
 /**
  * Delete a class
@@ -394,7 +393,7 @@ exports.postDeleteClass = async (req, res, next) => {
       res.redirect('/classManagement')
     });
   });
-};
+}
 
 exports.addStudentToClass = (req, res, next) => {
   Class.findOne({
@@ -485,7 +484,7 @@ exports.removeStudentFromClass = (req, res, next) => {
   } else {
     res.redirect('/login');
   }
-};
+}
 
 // Function copied directly from the MDN web docs:
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
@@ -494,7 +493,7 @@ function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min;
-};
+}
 
 // getUniqueUsername is a recursive function that will call itself until it
 // generates a username that both (1) does not exist in the db and (2) is not in
@@ -917,7 +916,7 @@ function findMatchingRequirements(moduleQuestions, requirementToSearch){
     }
   }
   return objectToReturn;
-};
+}
 
 function addClassReflectionRecords(modName, headerArray, records, moduleQuestions, found_class) {
 

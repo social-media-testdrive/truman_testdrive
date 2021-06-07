@@ -1,12 +1,15 @@
 const fs = require('fs');
-const bluebird = require('bluebird');
-const crypto = bluebird.promisifyAll(require('crypto'));
-const nodemailer = require('nodemailer');
 const passport = require('passport');
-const moment = require('moment');
 const User = require('../models/User');
 const Class = require('../models/Class.js');
-const Notification = require('../models/Notification.js');
+/*
+ * Dependencies that were listed but don't appear to be used
+ */
+// const bluebird = require('bluebird');
+// const crypto = bluebird.promisifyAll(require('crypto'));
+// const nodemailer = require('nodemailer');
+// const moment = require('moment');
+// const Notification = require('../models/Notification.js');
 
 //create random id for guest accounts
 function makeid(length) {
@@ -24,15 +27,10 @@ function makeid(length) {
  * Login page.
  */
 exports.getLogin = (req, res) => {
-  // commented out by Anna
-  // if (req.user) {
-  //   return res.redirect('/');
-  // }
   res.render('account/login', {
     title: 'Login'
   });
 };
-
 
 /**
  * GET /classl=Login
@@ -48,78 +46,6 @@ exports.getClassLogin = (req, res) => {
     accessCode: req.params.accessCode
   });
 };
-
-/*************
-Get Notifcation Bell signal
-**************/
-exports.checkBell = (req, res) => {
-if (req.user) {
-
-    var user = req.user;
-
-    Notification.find({ $or: [ { userPost: user.numPosts  }, { userReply: user.numReplies }, { actorReply: user.numActorReplies } ] })
-        .populate('actor')
-        .exec(function (err, notification_feed) {
-
-          if (err) { return next(err); }
-
-          if (notification_feed.length == 0)
-          {
-            //peace out - send empty page -
-            //or deal with replys or something IDK
-            //console.log("No User Posts yet. Bell is black");
-            return res.send({result:false});
-          }
-
-          //We have values we need to check
-          //When this happens
-          else{
-
-            for (var i = 0, len = notification_feed.length; i < len; i++) {
-
-              //Do all things that reference userPost (read,like, actual copy of ActorReply)
-              if (notification_feed[i].userPost >= 0)
-              {
-
-                var userPostID = notification_feed[i].userPost;
-                var user_post = user.getUserPostByID(userPostID);
-                var time_diff = Date.now() - user_post.absTime;
-                if (user.lastNotifyVisit)
-                {
-                  var past_diff = user.lastNotifyVisit - user_post.absTime;
-                }
-
-                else
-                {
-                  var past_diff = 0;
-                }
-
-                if(notification_feed[i].time <= time_diff && notification_feed[i].time > past_diff)
-                {
-                  return res.send({result:true});
-                }
-
-              }//UserPost
-
-            }//for loop
-
-            //end of for loop and no results, so no new stuff
-            //console.log("&&Bell Check&& End of For Loop, no Results")
-            res.send({result:false});
-          }
-
-
-        });//Notification exec
-
-
-  }
-
- else{
-  //console.log("No req.user")
-  return res.send({result:false});
-}
-};
-
 
 /**
  * POST /studentLogin
@@ -172,44 +98,44 @@ exports.postStudentLogin = (req, res, next) => {
  * POST /instructorLogin
  * Sign in using username and password.
  */
- exports.postInstructorLogin = (req, res, next) => {
-   //req.assert('email', 'Email is not valid').isEmail();
-   req.assert('instructor_password', 'Password cannot be blank').notEmpty();
-   req.assert('instructor_username', 'Username cannot be blank').notEmpty();
-   //req.sanitize('email').normalizeEmail({ remove_dots: false });
+exports.postInstructorLogin = (req, res, next) => {
+  //req.assert('email', 'Email is not valid').isEmail();
+  req.assert('instructor_password', 'Password cannot be blank').notEmpty();
+  req.assert('instructor_username', 'Username cannot be blank').notEmpty();
+  //req.sanitize('email').normalizeEmail({ remove_dots: false });
 
-   const errors = req.validationErrors();
+  const errors = req.validationErrors();
 
-   if (errors) {
-     req.flash('errors', errors);
-     return res.redirect('/login');
-   }
+  if (errors) {
+    req.flash('errors', errors);
+    return res.redirect('/login');
+  }
 
-   passport.authenticate('instructor-local', (err, user, info) => {
-     if (err) { return next(err); }
-     if (!user) {
-       req.flash('errors', info);
-       return res.redirect('/login');
-     }
-     if (!(user.active)) {
-       //console.log("FINAL");
-       req.flash('final', { msg: '' });
-       return res.redirect('/login');
-     }
-     req.logIn(user, (err) => {
-       if (err) { return next(err); }
-       // regenerate the session
-       var temp = req.session.passport; // {user: 1}
-        req.session.regenerate(function(err){
-          //req.session.passport is now undefined
-          req.session.passport = temp;
-          req.session.save(function(err){
-              return res.redirect('/');
-          });
+  passport.authenticate('instructor-local', (err, user, info) => {
+    if (err) { return next(err); }
+    if (!user) {
+      req.flash('errors', info);
+      return res.redirect('/login');
+    }
+    if (!(user.active)) {
+      //console.log("FINAL");
+      req.flash('final', { msg: '' });
+      return res.redirect('/login');
+    }
+    req.logIn(user, (err) => {
+      if (err) { return next(err); }
+      // regenerate the session
+      var temp = req.session.passport; // {user: 1}
+      req.session.regenerate(function(err){
+        //req.session.passport is now undefined
+        req.session.passport = temp;
+        req.session.save(function(err){
+            return res.redirect('/');
         });
-     });
-   })(req, res, next);
- };
+      });
+    });
+  })(req, res, next);
+};
 
 /**
  * GET /logout
@@ -224,184 +150,10 @@ exports.logout = (req, res) => {
 };
 
 /**
- * GET /signup
- * Signup page.
- */
-exports.getSignup = (req, res) => {
-  // if (req.user) {
-  //   return res.redirect('/');
-  // }
-  res.render('account/signup', {
-    title: 'Create Account'
-  });
-};
-
-/**
- * POST /signup
- * Create a new local account.
- */
-exports.postSignup = (req, res, next) => {
-  //req.assert('username', 'Username cannot be blank').notEmpty();
-  //req.assert('password', 'Password must be at least 4 characters long').len(4);
-  //req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
-  //xyzzy
-// commented out by Anna
-
-  // req.assert('signupcode', 'Wrong Sign Up Code').notEmpty();
-  //
-  // const errors = req.validationErrors();
-  //
-  // if (errors) {
-  //   req.flash('Sign Up Code Can Not Be Blank. Please Try Again', errors);
-  //   return res.redirect('/signup');
-  // }
-  // //default Student - No Class Assignment
-  // else if (req.body.signupcode == "0451")
-  // {
-  //   res.redirect('/create_username');
-  // }
-  //
-  // //default Student - No Class Assignment
-  // else if (req.body.signupcode == "xyzzy")
-  // {
-  //   res.redirect('/create_instructor');
-  // }
-  //
-  // //Check if belong to Class - if not- then reject and try again
-  // else
-  // {
-  //
-  //   Class.findOne({ accessCode: req.body.signupcode }, (err, existingClass) => {
-  //     if (err) { return next(err); }
-  //     //found the class this belongs to. Continue making account
-  //     if (existingClass) {
-  //       res.redirect('/create_username_class/'+req.body.signupcode);
-  //     }
-  //     else
-  //     {
-  //       req.flash('errors', { msg: 'No Class with that Access Code found. Please try again.' });
-  //       return res.redirect('/signup');
-  //     }
-  //
-  //     });//end of CLASS FIND ONE
-  //
-  // }
-
-  req.assert('signupcode', 'Wrong Sign Up Code').notEmpty();
-  const user = new User({
-    //password: "thinkblue",
-    username: req.body.signupcode,
-    //group: 'no:no',
-    active: true,
-    //ui: 'no', //ui or no
-    //notify: 'no', //no, low or high
-    //isGuest: false,
-    start : Date.now()
-  });
-
-  user.profile.name = "Guest";
-  user.profile.location = "Guest Town";
-  user.profile.bio = '';
-  user.profile.picture = 'avatar-icon.svg';
-  //console.log("New Guest is now: "+ user.profile.name);
-
-  User.findOne({ username: req.body.signupcode }, (err, existingUser) => {
-    if (err) { return next(err); }
-    if (existingUser) {
-      req.flash('errors', {
-        msg: 'This username is taken. Please choose a different one.'
-      });
-      return res.redirect('/signup');
-
-    }
-    user.save((err) => {
-      if (err) { return next(err); }
-      req.logIn(user, (err) => {
-        if (err) {
-          return next(err);
-        }
-        //console.log("All done with Guest making!");
-        //res.redirect('/intro/'+req.params.modId);
-        res.redirect('/');
-      });
-    });
-  });
-
-
-};
-
-/**
- * GET /create_instructor
- * Create instructor page.
- */
-exports.getSignupInstructor = (req, res) => {
-  if (req.user) {
-    return res.redirect('/');
-  }
-  res.render('account/instructor', {
-    title: 'Create Instructor Username'
-  });
-};
-
-/**
- * POST /signup
- * Create a new local account.
- */
-exports.postSignupInstructor = (req, res, next) => {
-  req.assert('username', 'Username cannot be blank').notEmpty();
-  req.assert('password', 'Password must be at least 4 characters long').len(4);
-  req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
-  //req.assert('signupcode', 'Wrong Sign Up Code').equals("0451");
-
-  const errors = req.validationErrors();
-
-  if (errors) {
-    req.flash('errors', errors);
-    return res.redirect('/create_instructor');
-  }
-
-  const user = new User({
-    password: req.body.password,
-    username: req.body.username,
-    group: 'no:no',
-    active: true,
-    ui: 'no', //ui or no
-    notify: 'no', //no, low or high
-    isInstructor: true,
-    lastNotifyVisit : Date.now()
-  });
-
-  user.profile.name = req.body.name || '';
-  user.profile.location = req.body.location || '';
-  user.profile.bio = req.body.bio || '';
-  user.profile.picture = req.body.picture || '';
-
-  User.findOne({ username: req.body.username }, (err, existingUser) => {
-    if (err) { return next(err); }
-    if (existingUser) {
-      req.flash('errors', { msg: 'Account with that Username already exists.' });
-      return res.redirect('/create_username');
-    }
-    user.save((err) => {
-      if (err) { return next(err); }
-      req.logIn(user, (err) => {
-        if (err) {
-          return next(err);
-        }
-        res.redirect('/');
-      });
-    });
-  });
-};
-
-/**
  * get Guest accout
  * Create a new local account.
  */
-
-
 exports.getGuest = (req, res, next) => {
-
   if (req.params.modId === "delete") {
     // avoiding a specific user behavior that causes 500 errors
     res.send({
@@ -449,286 +201,13 @@ exports.getGuest = (req, res, next) => {
       });
     });
   });
-
 };
-
-/**
- * GET /create_username
- * Create Username page.
- */
-exports.getSignupUsername = (req, res) => {
-  if (req.user) {
-    return res.redirect('/');
-  }
-  res.render('account/username', {
-    title: 'Create Username'
-  });
-};
-
-/**
- * POST /signup
- * Create a new local account.
- */
-exports.postSignupUsername = (req, res, next) => {
-  req.assert('username', 'Username cannot be blank').notEmpty();
-  //req.assert('password', 'Password must be at least 4 characters long').len(4);
-  //req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
-  //req.assert('signupcode', 'Wrong Sign Up Code').equals("0451");
-
-  const errors = req.validationErrors();
-
-  if (errors) {
-    req.flash('errors', errors);
-    return res.redirect('/create_username');
-  }
-
-  //random assignment of experimental group
-  const user = new User({
-    password: "thinkblue",
-    username: req.body.username,
-    group: 'no:no',
-    active: true,
-    ui: 'no', //ui or no
-    notify: 'no', //no, low or high
-    lastNotifyVisit : Date.now()
-  });
-
-
-
-  User.findOne({ username: req.body.username }, (err, existingUser) => {
-    if (err) { return next(err); }
-    if (existingUser) {
-      req.flash('errors', { msg: 'Account with that Username already exists.' });
-      return res.redirect('/create_username');
-    }
-    user.save((err) => {
-      if (err) { return next(err); }
-      req.logIn(user, (err) => {
-        if (err) {
-          return next(err);
-        }
-        res.redirect('/create_password');
-      });
-    });
-  });
-};
-
-/**
- * POST /signup
- * Create a new local account.
- */
-exports.postSignupUsernameClass = (req, res, next) => {
-  req.assert('username', 'Username cannot be blank').notEmpty();
-  //req.assert('password', 'Password must be at least 4 characters long').len(4);
-  //req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
-  //req.assert('signupcode', 'Wrong Sign Up Code').equals("0451");
-
-  const errors = req.validationErrors();
-
-  if (errors) {
-    req.flash('errors', errors);
-    return res.redirect('/create_username');
-  }
-
-  //random assignment of experimental group
-  const user = new User({
-    password: "thinkblue",
-    username: req.body.username,
-    group: 'no:no',
-    active: true,
-    ui: 'no', //ui or no
-    notify: 'no', //no, low or high
-    lastNotifyVisit : Date.now()
-  });
-
-
-
-  User.findOne({ username: req.body.username }, (err, existingUser) => {
-    if (err) { return next(err); }
-    if (existingUser) {
-      req.flash('errors', { msg: 'Account with that Username already exists.' });
-      return res.redirect('/create_username');
-    }
-    user.save((err) => {
-      if (err) { return next(err); }
-      req.logIn(user, (err) => {
-
-        if (err) {
-          return next(err);
-        }
-
-        //req.params.classId
-        Class.findOne({ accessCode: req.params.classId }, (err, existingClass) => {
-          if (err) { return next(err); }
-
-          //found the class this belongs to. add student to Class
-          if (existingClass) {
-            existingClass.students.push(user);
-
-            existingClass.save((err) => {
-              if (err) { return next(err); }
-                res.redirect('/create_password');
-            });//exsistingClass.save
-          }//if existingClass
-
-        });//Class.findOne
-
-
-      });//req.logIn
-    });//user.save
-  });//User.findOne
-};
-
-/**
- * GET /create_password
- * Signup password page.
- */
-exports.getSignupPassword = (req, res) => {
-
-  res.render('account/password', {
-    title: 'Create Password'
-  });
-};
-
-/**
- * POST /create_password
- * Update Password information.
- */
-exports.postSignupPassword = (req, res, next) => {
-
-  req.assert('password', 'Password must be at least 4 characters long').len(4);
-  req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
-
-  const errors = req.validationErrors();
-
-  if (errors) {
-    req.flash('errors', errors);
-    return res.redirect('/create_password');
-  }
-
-  User.findById(req.user.id, (err, user) => {
-    if (err) { return next(err); }
-    //user.email = req.body.email || '';
-    user.password = req.body.password;
-    //user.profile.name = req.body.name || '';
-    //user.profile.location = req.body.location || '';
-    //user.profile.bio = req.body.bio || '';
-
-    user.save((err) => {
-      if (err) {
-        if (err.code === 11000) {
-          req.flash('errors', { msg: 'The email address you have entered is already associated with an account.' });
-          return res.redirect('/create_password');
-        }
-        return next(err);
-      }
-      req.flash('success', { msg: 'Password has been created.' });
-      res.redirect('/create_name');
-    });
-  });
-};
-
-/**
- * GET /create_name
- * Signup name page.
- */
-exports.getSignupName = (req, res) => {
-
-  res.render('account/name_picture', {
-    title: 'Create Name'
-  });
-};
-
-/**
- * POST /create_name
- * Update Name information.
- */
-exports.postSignupName = (req, res, next) => {
-
-
-  User.findById(req.user.id, (err, user) => {
-    if (err) { return next(err); }
-    //user.email = req.body.email || '';
-    user.profile.name = req.body.name || '';
-    //user.profile.location = req.body.location || '';
-    //user.profile.bio = req.body.bio || '';
-    user.profile.picture = req.body.picture || '';
-
-    user.save((err) => {
-      if (err) {
-        if (err.code === 11000) {
-          req.flash('errors', { msg: 'The email address you have entered is already associated with an account.' });
-          return res.redirect('/create_name');
-        }
-        return next(err);
-      }
-      req.flash('success', { msg: 'Name and Picture has been updated.' });
-      res.redirect('/create_bio');
-    });
-  });
-};
-
-/**
- * GET /create_bio
- * Signup bio page.
- */
-exports.getSignupBio = (req, res) => {
-
-  res.render('account/bio_location', {
-    title: 'Create Bio'
-  });
-};
-
-/**
- * POST /create_bio
- * Update Bio information.
- */
-exports.postSignupBio = (req, res, next) => {
-
-
-  User.findById(req.user.id, (err, user) => {
-    if (err) { return next(err); }
-    //user.email = req.body.email || '';
-    //user.profile.name = req.body.name || '';
-    user.profile.location = req.body.location || '';
-    user.profile.bio = req.body.bio || '';
-    //user.profile.picture = req.body.picture || '';
-
-    user.save((err) => {
-      if (err) {
-        if (err.code === 11000) {
-          req.flash('errors', { msg: 'The email address you have entered is already associated with an account.' });
-          return res.redirect('/create_name');
-        }
-        return next(err);
-      }
-      req.flash('success', { msg: 'Bio and Location has been updated.' });
-      res.redirect('/review/signup/wait');
-    });
-  });
-};
-
-/**
- * GET /review/signup
- * Profile page.
- */
-exports.getSignupReview= (req, res) => {
-  res.render('account/review', {
-    title: 'Review your Account'
-  });
-};
-
-
-
-
 
 /**
  * POST /account/profile
  * Update profile information.
  */
 exports.postSignupInfo = (req, res, next) => {
-
-
   User.findById(req.user.id, (err, user) => {
     if (err) { return next(err); }
     //user.email = req.body.email || '';
@@ -760,7 +239,6 @@ exports.postSignupInfo = (req, res, next) => {
  * GET /account
  * Profile page.
  */
-
 exports.getAccount = (req, res) => {
   res.render('account/profile', {
     title: 'Account Management',
@@ -769,22 +247,10 @@ exports.getAccount = (req, res) => {
 };
 
 /**
- * GET /signup_info
- * Signup Info page.
- */
-exports.getSignupInfo = (req, res) => {
-
-  res.render('account/signup_info', {
-    title: 'Add Information', mod: req.params.modId
-  });
-};
-
-/**
  * GET /getMe
  * Profile page.
  */
 exports.getMe = (req, res) => {
-
   User.findById(req.user.id)
   .populate({
        path: 'posts.reply',
@@ -795,22 +261,18 @@ exports.getMe = (req, res) => {
        }
     })
   .exec(function (err, user) {
-    if (err) { return next(err); }
-
+    if (err) {
+      return next(err);
+    }
     var allPosts = user.getPostsAndReplies();
-
     res.render('me', { posts: allPosts });
-
   });
-
-
 };
 
 /**
  * post a pageLog
  */
 exports.postPageLog = (req, res, next) => {
-
   User.findById(req.user.id, (err, user) => {
     if (err) { return next(err); }
     user.logPage(Date.now(), req.body.subdirectory1, req.body.subdirectory2);
@@ -818,29 +280,27 @@ exports.postPageLog = (req, res, next) => {
       if (err) {
         return next(err);
       }
+      res.set('Content-Type', 'application/json; charset=UTF-8');
       res.send({result:"success"});
     });
   });
 };
 
 exports.getHabitsTimer = (req, res) => {
-    User.findById(req.user.id)
-      .exec(function (err, user){
-        var startTime = user.firstHabitViewTime;
-        var totalTimeViewedHabits = 0;
-        if(user.habitsTimer){
-          for(var i = 0; i<user.habitsTimer.length; i++){
-            totalTimeViewedHabits = totalTimeViewedHabits + user.habitsTimer[i];
-          }
-        }
-        res.set({
-          'Content-Type': 'application/json; charset=UTF-8',
-        })
-        res.json({
-          startTime: startTime,
-          totalTimeViewedHabits:totalTimeViewedHabits
-        });
-      });
+  User.findById(req.user.id).exec(function (err, user){
+    var startTime = user.firstHabitViewTime;
+    var totalTimeViewedHabits = 0;
+    if(user.habitsTimer){
+      for(var i = 0; i<user.habitsTimer.length; i++){
+        totalTimeViewedHabits = totalTimeViewedHabits + user.habitsTimer[i];
+      }
+    }
+    res.set('Content-Type', 'application/json; charset=UTF-8');
+    res.json({
+      startTime: startTime,
+      totalTimeViewedHabits:totalTimeViewedHabits
+    });
+  });
 };
 
 /*
@@ -874,14 +334,14 @@ exports.postName = (req, res, next) => {
 
 exports.getReflectionCsv = (req, res, next) => {
   User.findById(req.user.id, (err, user) =>{
-    if(err) {
+    if (err) {
       return next(err);
     }
-    if(!req.user.isInstructor) {
+    if (!req.user.isInstructor) {
       res.redirect('/login');
     }
     let reflectionCsv = '';
-    if(user.reflectionCsv) {
+    if (user.reflectionCsv) {
        reflectionCsv = user.reflectionCsv;
     }
     res.set('Content-Type', 'text/csv');
@@ -891,14 +351,14 @@ exports.getReflectionCsv = (req, res, next) => {
 
 exports.getTimeReportCsv = (req, res, next) => {
   User.findById(req.user.id, (err, user) =>{
-    if(err) {
+    if (err) {
       return next(err);
     }
-    if(!req.user.isInstructor) {
+    if (!req.user.isInstructor) {
       res.redirect('/login');
     }
     let timeReportCsv = '';
-    if(user.timeReportCsv) {
+    if (user.timeReportCsv) {
        timeReportCsv = user.timeReportCsv;
     }
     res.set('Content-Type', 'text/csv');
@@ -911,7 +371,6 @@ exports.getTimeReportCsv = (req, res, next) => {
  * Update profile information.Which ad topic did the user pick?
  */
 exports.postUpdateInterestSelection = (req, res, next) => {
-
   User.findById(req.user.id, (err, user) => {
     if (err) {
       return next(err);
@@ -932,30 +391,22 @@ exports.postUpdateInterestSelection = (req, res, next) => {
       // this IS the first topic selected
       userTopic = [req.body.chosenTopic];
     }
-
     user.save((err) => {
       if (err) {
         return next(err);
       }
-      res.send({
-        result:"success"
-      });
+      res.set('Content-Type', 'application/json; charset=UTF-8');
+      res.send({result:"success"});
     });
   });
 };
 
 exports.getEsteemTopic = (req, res) => {
-    User.findById(req.user.id)
-      .exec(function (err, user){
-        let selectedTopic = user.esteemTopic[user.esteemTopic.length - 1];
-        console.log(`Topic: ${selectedTopic}`);
-        res.set({
-          'Content-Type': 'application/json; charset=UTF-8',
-        })
-        res.send({
-          esteemTopic: selectedTopic
-        });
-      });
+  User.findById(req.user.id).exec(function (err, user){
+    let selectedTopic = user.esteemTopic[user.esteemTopic.length - 1];
+    res.set('Content-Type', 'application/json; charset=UTF-8');
+    res.send({esteemTopic: selectedTopic});
+  });
 };
 
 /**
@@ -963,29 +414,27 @@ exports.getEsteemTopic = (req, res) => {
  * Update profile information.Which ad topic did the user pick? Esteem module only.
  */
 exports.postAdvancedlitInterestSelection = (req, res, next) => {
-
   User.findById(req.user.id, (err, user) => {
-    if (err) { return next(err); }
-
+    if (err) {
+      return next(err);
+    }
     user.advancedlitTopic = req.body.chosenTopic || '';
-
     user.save((err) => {
       if (err) {
         return next(err);
       }
-      res.send({
-        result:"success"
-      });
+      res.set('Content-Type', 'application/json; charset=UTF-8');
+      res.send({result:"success"});
     });
   });
 };
 
 exports.getAdvancedlitTopic = (req, res) => {
-    User.findById(req.user.id)
-      .exec(function (err, user){
-        let selectedTopic = user.advancedlitTopic;
-        res.json({advancedlitTopic: selectedTopic});
-      });
+  User.findById(req.user.id).exec(function (err, user){
+    let selectedTopic = user.advancedlitTopic;
+    res.set('Content-Type', 'application/json; charset=UTF-8');
+    res.json({advancedlitTopic: selectedTopic});
+  });
 };
 
 /**
@@ -993,7 +442,6 @@ exports.getAdvancedlitTopic = (req, res) => {
  * Update profile information. How long has the user looked at the free-play section? Habits module only.
  */
 exports.postUpdateHabitsTimer = (req, res, done) => {
-
   User.findById(req.user.id, (err, user) => {
     if (err) { return next(err); }
     if(req.body.habitsTimer){ //we are adding another view time to the array
@@ -1012,6 +460,7 @@ exports.postUpdateHabitsTimer = (req, res, done) => {
       if (err) {
         return next(err);
       }
+      res.set('Content-Type', 'application/json; charset=UTF-8');
       if (req.body.habitsStart){
         res.json({url:'/modual/habits'});
       } else {
@@ -1021,12 +470,10 @@ exports.postUpdateHabitsTimer = (req, res, done) => {
   });
 };
 
-
 /**
  * Post update on module progress
  */
 exports.postUpdateModuleProgress = (req, res, next) => {
-
   User.findById(req.user.id, (err, user) => {
     if (err) {
       return next(err);
@@ -1039,9 +486,8 @@ exports.postUpdateModuleProgress = (req, res, next) => {
       if (err) {
         return next(err);
       }
-      res.send({
-        result:"success"
-      });
+      res.set('Content-Type', 'application/json; charset=UTF-8');
+      res.send({result:"success"});
     });
   });
 };
@@ -1073,7 +519,6 @@ exports.postUpdateNewBadge = (req, res, next) => {
     });
   });
 }
-
 
 exports.getStudentReportData = (req, res, next) => {
   if (!req.user.isInstructor) {
@@ -1128,6 +573,7 @@ exports.getStudentReportData = (req, res, next) => {
     // get freeplay actions
     const freeplayActions = student.feedAction;
 
+    res.set('Content-Type', 'application/json; charset=UTF-8');
     res.json({
       pageTimes: pageTimeArray,
       moduleProgress: moduleProgress,
@@ -1207,6 +653,7 @@ exports.getLearnerGeneralModuleData = (req, res, next) => {
       }
     }
   }
+  res.set('Content-Type', 'application/json; charset=UTF-8');
   res.send(moduleStatuses);
 }
 
@@ -1328,6 +775,7 @@ exports.getLearnerSectionTimeData = async (req, res, next) => {
       allSectionTimeData[modName][section] = Math.round(allSectionTimeData[modName][section]);
     }
   }
+  res.set('Content-Type', 'application/json; charset=UTF-8');
   res.send(allSectionTimeData);
 }
 
@@ -1351,9 +799,9 @@ exports.getLearnerEarnedBadges = (req, res, next) => {
     };
     earnedBadges.push(badgeInfo);
   }
+  res.set('Content-Type', 'application/json; charset=UTF-8');;
   res.send(earnedBadges);
 }
-
 
 /**
  * POST /account/profile
@@ -1451,12 +899,11 @@ exports.getDeleteAccount = (req, res, next) => {
       });
     });
   } else {
-    //console.log("Deleting user feed posts Actions")
     User.findById(req.user.id, (err, user) => {
       //somehow user does not exist here
-      if (err) { return next(err); }
-      //console.log("@@@@@@@@@@@  /deleteUserFeedActions req body  ", req.body);
-
+      if (err) {
+        return next(err);
+      }
       user.feedAction =[];
       user.save((err) => {
         if (err) {
@@ -1466,6 +913,7 @@ exports.getDeleteAccount = (req, res, next) => {
           }
           return next(err);
         }
+        res.set('Content-Type', 'application/json; charset=UTF-8');
         res.send({result:"success"});
       });
     });
@@ -1490,25 +938,473 @@ exports.getOauthUnlink = (req, res, next) => {
   });
 };
 
-/**
- * GET /reset/:token
- * Reset Password page.
+
+/*
+ * These do not seem to be used in TestDrive - they are all likely safe to delete.
+ * Clean up the corresponding routes in app.js as well when these are removed.
  */
-exports.getReset = (req, res, next) => {
-  if (req.isAuthenticated()) {
-    return res.redirect('/');
-  }
-  User
-    .findOne({ passwordResetToken: req.params.token })
-    .where('passwordResetExpires').gt(Date.now())
-    .exec((err, user) => {
-      if (err) { return next(err); }
-      if (!user) {
-        req.flash('errors', { msg: 'Password reset token is invalid or has expired.' });
-        return res.redirect('/forgot');
-      }
-      res.render('account/reset', {
-        title: 'Password Reset'
-      });
-    });
-};
+
+ // /**
+ //  * GET /signup_info
+ //  * Signup Info page.
+ //  */
+ // exports.getSignupInfo = (req, res) => {
+ //   res.render('account/signup_info', {
+ //     title: 'Add Information', mod: req.params.modId
+ //   });
+ // };
+
+ // /*************
+ // Get Notifcation Bell signal
+ // **************/
+ // exports.checkBell = (req, res) => {
+ // if (req.user) {
+ //     var user = req.user;
+ //     Notification.find({ $or: [ { userPost: user.numPosts  }, { userReply: user.numReplies }, { actorReply: user.numActorReplies } ] })
+ //         .populate('actor')
+ //         .exec(function (err, notification_feed) {
+ //           if (err) { return next(err); }
+ //           if (notification_feed.length == 0)
+ //           {
+ //             //peace out - send empty page -
+ //             //or deal with replys or something IDK
+ //             //console.log("No User Posts yet. Bell is black");
+ //             return res.send({result:false});
+ //           }
+ //           //We have values we need to check
+ //           //When this happens
+ //           else{
+ //             for (var i = 0, len = notification_feed.length; i < len; i++) {
+ //               //Do all things that reference userPost (read,like, actual copy of ActorReply)
+ //               if (notification_feed[i].userPost >= 0)
+ //               {
+ //                 var userPostID = notification_feed[i].userPost;
+ //                 var user_post = user.getUserPostByID(userPostID);
+ //                 var time_diff = Date.now() - user_post.absTime;
+ //                 if (user.lastNotifyVisit)
+ //                 {
+ //                   var past_diff = user.lastNotifyVisit - user_post.absTime;
+ //                 }
+ //                 else
+ //                 {
+ //                   var past_diff = 0;
+ //                 }
+ //                 if(notification_feed[i].time <= time_diff && notification_feed[i].time > past_diff)
+ //                 {
+ //                   return res.send({result:true});
+ //                 }
+ //               }//UserPost
+ //             }//for loop
+ //             //end of for loop and no results, so no new stuff
+ //             //console.log("&&Bell Check&& End of For Loop, no Results")
+ //             res.send({result:false});
+ //           }
+ //         });//Notification exec
+ //   }
+ //  else{
+ //   //console.log("No req.user")
+ //   return res.send({result:false});
+ // }
+ // };
+
+ // /**
+ //  * GET /create_bio
+ //  * Signup bio page.
+ //  */
+ //
+ // exports.getSignupBio = (req, res) => {
+ //   res.render('account/bio_location', {
+ //     title: 'Create Bio'
+ //   });
+ // };
+
+ // /**
+ //  * POST /create_bio
+ //  * Update Bio information.
+ //  */
+ // exports.postSignupBio = (req, res, next) => {
+ //   User.findById(req.user.id, (err, user) => {
+ //     if (err) { return next(err); }
+ //     //user.email = req.body.email || '';
+ //     //user.profile.name = req.body.name || '';
+ //     user.profile.location = req.body.location || '';
+ //     user.profile.bio = req.body.bio || '';
+ //     //user.profile.picture = req.body.picture || '';
+ //
+ //     user.save((err) => {
+ //       if (err) {
+ //         if (err.code === 11000) {
+ //           req.flash('errors', { msg: 'The email address you have entered is already associated with an account.' });
+ //           return res.redirect('/create_name');
+ //         }
+ //         return next(err);
+ //       }
+ //       req.flash('success', { msg: 'Bio and Location has been updated.' });
+ //       res.redirect('/review/signup/wait');
+ //     });
+ //   });
+ // };
+
+ // /**
+ //  * GET /create_instructor
+ //  * Create instructor page.
+ //  */
+ // exports.getSignupInstructor = (req, res) => {
+ //   if (req.user) {
+ //     return res.redirect('/');
+ //   }
+ //   res.render('account/instructor', {
+ //     title: 'Create Instructor Username'
+ //   });
+ // };
+
+ // /**
+ //  * POST /signup
+ //  * Create a new local account.
+ //  */
+ // exports.postSignupInstructor = (req, res, next) => {
+ //   req.assert('username', 'Username cannot be blank').notEmpty();
+ //   req.assert('password', 'Password must be at least 4 characters long').len(4);
+ //   req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
+ //   //req.assert('signupcode', 'Wrong Sign Up Code').equals("0451");
+ //
+ //   const errors = req.validationErrors();
+ //
+ //   if (errors) {
+ //     req.flash('errors', errors);
+ //     return res.redirect('/create_instructor');
+ //   }
+ //
+ //   const user = new User({
+ //     password: req.body.password,
+ //     username: req.body.username,
+ //     group: 'no:no',
+ //     active: true,
+ //     ui: 'no', //ui or no
+ //     notify: 'no', //no, low or high
+ //     isInstructor: true,
+ //     lastNotifyVisit : Date.now()
+ //   });
+ //
+ //   user.profile.name = req.body.name || '';
+ //   user.profile.location = req.body.location || '';
+ //   user.profile.bio = req.body.bio || '';
+ //   user.profile.picture = req.body.picture || '';
+ //
+ //   User.findOne({ username: req.body.username }, (err, existingUser) => {
+ //     if (err) { return next(err); }
+ //     if (existingUser) {
+ //       req.flash('errors', { msg: 'Account with that Username already exists.' });
+ //       return res.redirect('/create_username');
+ //     }
+ //     user.save((err) => {
+ //       if (err) { return next(err); }
+ //       req.logIn(user, (err) => {
+ //         if (err) {
+ //           return next(err);
+ //         }
+ //         res.redirect('/');
+ //       });
+ //     });
+ //   });
+ // };
+
+ // /**
+ //  * GET /create_name
+ //  * Signup name page.
+ //  */
+ // exports.getSignupName = (req, res) => {
+ //   res.render('account/name_picture', {
+ //     title: 'Create Name'
+ //   });
+ // };
+
+ // /**
+ //  * POST /create_name
+ //  * Update Name information.
+ //  */
+ // exports.postSignupName = (req, res, next) => {
+ //   User.findById(req.user.id, (err, user) => {
+ //     if (err) { return next(err); }
+ //     //user.email = req.body.email || '';
+ //     user.profile.name = req.body.name || '';
+ //     //user.profile.location = req.body.location || '';
+ //     //user.profile.bio = req.body.bio || '';
+ //     user.profile.picture = req.body.picture || '';
+ //
+ //     user.save((err) => {
+ //       if (err) {
+ //         if (err.code === 11000) {
+ //           req.flash('errors', { msg: 'The email address you have entered is already associated with an account.' });
+ //           return res.redirect('/create_name');
+ //         }
+ //         return next(err);
+ //       }
+ //       req.flash('success', { msg: 'Name and Picture has been updated.' });
+ //       res.redirect('/create_bio');
+ //     });
+ //   });
+ // };
+
+ // /**
+ //  * GET /create_password
+ //  * Signup password page.
+ //  */
+ // exports.getSignupPassword = (req, res) => {
+ //
+ //   res.render('account/password', {
+ //     title: 'Create Password'
+ //   });
+ // };
+
+ // /**
+ //  * POST /create_password
+ //  * Update Password information.
+ //  */
+ // exports.postSignupPassword = (req, res, next) => {
+ //   req.assert('password', 'Password must be at least 4 characters long').len(4);
+ //   req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
+ //
+ //   const errors = req.validationErrors();
+ //
+ //   if (errors) {
+ //     req.flash('errors', errors);
+ //     return res.redirect('/create_password');
+ //   }
+ //
+ //   User.findById(req.user.id, (err, user) => {
+ //     if (err) { return next(err); }
+ //     //user.email = req.body.email || '';
+ //     user.password = req.body.password;
+ //     //user.profile.name = req.body.name || '';
+ //     //user.profile.location = req.body.location || '';
+ //     //user.profile.bio = req.body.bio || '';
+ //
+ //     user.save((err) => {
+ //       if (err) {
+ //         if (err.code === 11000) {
+ //           req.flash('errors', { msg: 'The email address you have entered is already associated with an account.' });
+ //           return res.redirect('/create_password');
+ //         }
+ //         return next(err);
+ //       }
+ //       req.flash('success', { msg: 'Password has been created.' });
+ //       res.redirect('/create_name');
+ //     });
+ //   });
+ // };
+
+ // /**
+ //  * GET /create_username
+ //  * Create Username page.
+ //  */
+ // exports.getSignupUsername = (req, res) => {
+ //   if (req.user) {
+ //     return res.redirect('/');
+ //   }
+ //   res.render('account/username', {
+ //     title: 'Create Username'
+ //   });
+ // };
+
+ // /**
+ //  * POST /signup
+ //  * Create a new local account.
+ //  */
+ // exports.postSignupUsernameClass = (req, res, next) => {
+ //   req.assert('username', 'Username cannot be blank').notEmpty();
+ //   //req.assert('password', 'Password must be at least 4 characters long').len(4);
+ //   //req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
+ //   //req.assert('signupcode', 'Wrong Sign Up Code').equals("0451");
+ //
+ //   const errors = req.validationErrors();
+ //
+ //   if (errors) {
+ //     req.flash('errors', errors);
+ //     return res.redirect('/create_username');
+ //   }
+ //
+ //   //random assignment of experimental group
+ //   const user = new User({
+ //     password: "thinkblue",
+ //     username: req.body.username,
+ //     group: 'no:no',
+ //     active: true,
+ //     ui: 'no', //ui or no
+ //     notify: 'no', //no, low or high
+ //     lastNotifyVisit : Date.now()
+ //   });
+ //
+ //   User.findOne({ username: req.body.username }, (err, existingUser) => {
+ //     if (err) { return next(err); }
+ //     if (existingUser) {
+ //       req.flash('errors', { msg: 'Account with that Username already exists.' });
+ //       return res.redirect('/create_username');
+ //     }
+ //     user.save((err) => {
+ //       if (err) { return next(err); }
+ //       req.logIn(user, (err) => {
+ //
+ //         if (err) {
+ //           return next(err);
+ //         }
+ //
+ //         //req.params.classId
+ //         Class.findOne({ accessCode: req.params.classId }, (err, existingClass) => {
+ //           if (err) { return next(err); }
+ //
+ //           //found the class this belongs to. add student to Class
+ //           if (existingClass) {
+ //             existingClass.students.push(user);
+ //
+ //             existingClass.save((err) => {
+ //               if (err) { return next(err); }
+ //                 res.redirect('/create_password');
+ //             });//exsistingClass.save
+ //           }//if existingClass
+ //
+ //         });//Class.findOne
+ //
+ //
+ //       });//req.logIn
+ //     });//user.save
+ //   });//User.findOne
+ // };
+
+ // /**
+ //  * GET /reset/:token
+ //  * Reset Password page.
+ //  */
+ // exports.getReset = (req, res, next) => {
+ //   if (req.isAuthenticated()) {
+ //     return res.redirect('/');
+ //   }
+ //   User
+ //     .findOne({ passwordResetToken: req.params.token })
+ //     .where('passwordResetExpires').gt(Date.now())
+ //     .exec((err, user) => {
+ //       if (err) { return next(err); }
+ //       if (!user) {
+ //         req.flash('errors', { msg: 'Password reset token is invalid or has expired.' });
+ //         return res.redirect('/forgot');
+ //       }
+ //       res.render('account/reset', {
+ //         title: 'Password Reset'
+ //       });
+ //     });
+ // };
+
+// /**
+//   * GET /review/signup
+//   * Profile page.
+//   */
+//  exports.getSignupReview= (req, res) => {
+//    res.render('account/review', {
+//      title: 'Review your Account'
+//    });
+//  };
+
+// /**
+//  * GET /signup
+//  * Signup page.
+//  */
+// exports.getSignup = (req, res) => {
+//   // if (req.user) {
+//   //   return res.redirect('/');
+//   // }
+//   res.render('account/signup', {
+//     title: 'Create Account'
+//   });
+// };
+
+// /**
+//  * POST /signup
+//  * Create a new local account.
+//  */
+// exports.postSignup = (req, res, next) => {
+//   //req.assert('username', 'Username cannot be blank').notEmpty();
+//   //req.assert('password', 'Password must be at least 4 characters long').len(4);
+//   //req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
+//   //xyzzy
+// // commented out by Anna
+//
+//   // req.assert('signupcode', 'Wrong Sign Up Code').notEmpty();
+//   //
+//   // const errors = req.validationErrors();
+//   //
+//   // if (errors) {
+//   //   req.flash('Sign Up Code Can Not Be Blank. Please Try Again', errors);
+//   //   return res.redirect('/signup');
+//   // }
+//   // //default Student - No Class Assignment
+//   // else if (req.body.signupcode == "0451")
+//   // {
+//   //   res.redirect('/create_username');
+//   // }
+//   //
+//   // //default Student - No Class Assignment
+//   // else if (req.body.signupcode == "xyzzy")
+//   // {
+//   //   res.redirect('/create_instructor');
+//   // }
+//   //
+//   // //Check if belong to Class - if not- then reject and try again
+//   // else
+//   // {
+//   //
+//   //   Class.findOne({ accessCode: req.body.signupcode }, (err, existingClass) => {
+//   //     if (err) { return next(err); }
+//   //     //found the class this belongs to. Continue making account
+//   //     if (existingClass) {
+//   //       res.redirect('/create_username_class/'+req.body.signupcode);
+//   //     }
+//   //     else
+//   //     {
+//   //       req.flash('errors', { msg: 'No Class with that Access Code found. Please try again.' });
+//   //       return res.redirect('/signup');
+//   //     }
+//   //
+//   //     });//end of CLASS FIND ONE
+//   //
+//   // }
+//
+//   req.assert('signupcode', 'Wrong Sign Up Code').notEmpty();
+//   const user = new User({
+//     //password: "thinkblue",
+//     username: req.body.signupcode,
+//     //group: 'no:no',
+//     active: true,
+//     //ui: 'no', //ui or no
+//     //notify: 'no', //no, low or high
+//     //isGuest: false,
+//     start : Date.now()
+//   });
+//
+//   user.profile.name = "Guest";
+//   user.profile.location = "Guest Town";
+//   user.profile.bio = '';
+//   user.profile.picture = 'avatar-icon.svg';
+//   //console.log("New Guest is now: "+ user.profile.name);
+//
+//   User.findOne({ username: req.body.signupcode }, (err, existingUser) => {
+//     if (err) { return next(err); }
+//     if (existingUser) {
+//       req.flash('errors', {
+//         msg: 'This username is taken. Please choose a different one.'
+//       });
+//       return res.redirect('/signup');
+//
+//     }
+//     user.save((err) => {
+//       if (err) { return next(err); }
+//       req.logIn(user, (err) => {
+//         if (err) {
+//           return next(err);
+//         }
+//         //console.log("All done with Guest making!");
+//         //res.redirect('/intro/'+req.params.modId);
+//         res.redirect('/');
+//       });
+//     });
+//   });
+// };

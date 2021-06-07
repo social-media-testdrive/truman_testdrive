@@ -470,16 +470,15 @@ app.post('/delete', passportConfig.isAuthenticated, setHttpResponseHeaders, user
 app.get('/guest/:modId', setHttpResponseHeaders, userController.getGuest);
 
 /*
- * Logins
+ * Logins (only used on research site)
  */
 if (isResearchVersion) {
- app.get('/classLogin/:accessCode', csrfProtection, setHttpResponseHeaders, addCsrf, userController.getClassLogin);
- app.post('/instructorLogin', check, setHttpResponseHeaders, csrfProtection, userController.postInstructorLogin);
- app.post('/studentLogin/:accessCode', check, setHttpResponseHeaders, csrfProtection, userController.postStudentLogin);
-} else {
- app.get('/login', csrfProtection, setHttpResponseHeaders, addCsrf, userController.getLogin);
+  app.get('/login', csrfProtection, setHttpResponseHeaders, addCsrf, userController.getLogin);
+  app.get('/classLogin/:accessCode', csrfProtection, setHttpResponseHeaders, addCsrf, userController.getClassLogin);
+  app.post('/instructorLogin', check, setHttpResponseHeaders, csrfProtection, userController.postInstructorLogin);
+  app.post('/studentLogin/:accessCode', check, setHttpResponseHeaders, csrfProtection, userController.postStudentLogin);
+  app.get('/logout',  setHttpResponseHeaders, csrfProtection, addCsrf, userController.logout);
 }
-app.get('/logout',  setHttpResponseHeaders, csrfProtection, addCsrf, userController.logout);
 
 /*
  * Key functionalities

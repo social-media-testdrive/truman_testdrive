@@ -9,16 +9,15 @@ const aws = require('aws-sdk');
  * GET /
  * Notification timestamps for the habits module
 */
-
-
 exports.getNotificationTimes = (req, res) => {
   Script.find()
-    //.where('time').lte(time_diff)//.gte(time_limit)
     .where('module').equals('habits')
     .where('type').equals('notification')
     .sort('time')
     .exec(function (err, script_feed) {
-      if (err) { return next(err); }
+      if (err) {
+        return next(err);
+      }
 
       var notifTimestampArray = [];
       var notifTextArray = [];
@@ -38,19 +37,15 @@ exports.getNotificationTimes = (req, res) => {
           notifCorrespondingPostArray = parseInt([script_feed[i].info_text]);
         }
       }
-      res.set({
-        'Content-Type': 'application/json; charset=UTF-8',
-      })
+      res.set({'Content-Type': 'application/json; charset=UTF-8'});
       res.json({
-        notificationTimestamps:notifTimestampArray,
-        notificationText:notifTextArray,
-        notificationPhoto:notifPhotoArray,
-        notifCorrespondingPost:notifCorrespondingPostArray
+        notificationTimestamps: notifTimestampArray,
+        notificationText: notifTextArray,
+        notificationPhoto: notifPhotoArray,
+        notifCorrespondingPost: notifCorrespondingPostArray
       });
     });
 };
-
-
 
 /*
  GET /getSinglePost/:postId
@@ -69,7 +64,8 @@ exports.getSinglePost = (req, res, next) => {
       var myerr = new Error('Post not found!');
       return next(myerr);
     }
-    res.json({post:post});
+    res.set({'Content-Type': 'application/json; charset=UTF-8'});
+    res.json({post: post});
   })
 }
 
@@ -78,261 +74,181 @@ exports.getSinglePost = (req, res, next) => {
  * List of Script posts for Feed
 */
 exports.getScript = (req, res, next) => {
-
-  //req.user.createdAt
-  var time_now = Date.now();
-  var time_diff = time_now;
-
-
-
-  var time_limit = time_diff - 86400000;
-
-  var user_ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-  var userAgent = req.headers['user-agent'];
-
-
-  //console.log("$#$#$#$#$#$#$START GET SCRIPT$#$#$$#$#$#$#$#$#$#$#$#$#");
-  //console.log("time_diff  is now "+time_diff);
-  //console.log("time_limit  is now "+time_limit);
-
   User.findById(req.user.id)
   .populate({
-       path: 'posts.reply',
-       model: 'Script',
-       populate: {
-         path: 'actor',
-         model: 'Actor'
-       }
-    })
-  .populate({
-       path: 'posts.actorAuthor',
+     path: 'posts.reply',
+     model: 'Script',
+     populate: {
+       path: 'actor',
        model: 'Actor'
-    })
+     }
+  })
   .populate({
-       path: 'posts.comments.actor',
-       model: 'Actor'
-    })
+     path: 'posts.actorAuthor',
+     model: 'Actor'
+  })
+  .populate({
+     path: 'posts.comments.actor',
+     model: 'Actor'
+  })
   .exec(function (err, user) {
     Script.find()
-      //.where('time').lte(time_diff)//.gte(time_limit)
-      .where('module').equals(req.params.modId)
-      .sort('-time')
-      .populate('actor')
-      .populate({
-       path: 'comments.actor',
-       populate: {
-         path: 'actor',
-         model: 'Actor'
-       }
+    .where('module').equals(req.params.modId)
+    .sort('-time')
+    .populate('actor')
+    .populate({
+      path: 'comments.actor',
+      populate: {
+        path: 'actor',
+        model: 'Actor'
+      }
     })
-      .exec(function (err, script_feed) {
-        if (err) { return next(err); }
-        //Successful, so render
-
-        //update script feed to see if reading and posts has already happened
-        var finalfeed = [];
-
-        var user_posts = [];
-
-        //for the habits module specifically
-        var habitsStartTime = user.firstHabitViewTime;
-
-        //Look up Notifications??? And do this as well?
-
-        //user_posts = user.getPostInPeriod(time_limit, time_diff);
-        user_posts = user.getModPosts(req.params.modId)
-
-        //console.log("@@@@@@@@@@ User Post is size: "+user_posts.length);
-
-        user_posts.sort(function (a, b) {
-            return b.relativeTime - a.relativeTime;
-          });
-
-        while(script_feed.length || user_posts.length) {
-          //console.log(typeof user_posts[0] === 'undefined');
-          //console.log(user_posts[0].relativeTime);
-          //console.log(feed[0].time)
-          if(typeof script_feed[0] === 'undefined') {
-              //console.log("Script_Feed is empty, push user_posts");
-              finalfeed.push(user_posts[0]);
-              user_posts.splice(0,1);
-          }
-          else if(!(typeof user_posts[0] === 'undefined') && (script_feed[0].time < user_posts[0].relativeTime)){
-              //console.log("Push user_posts");
-              finalfeed.push(user_posts[0]);
-              user_posts.splice(0,1);
-          }
-          else{
-
-            //console.log("ELSE PUSH FEED");
-            var feedIndex = _.findIndex(user.feedAction, function(o) { return o.post == script_feed[0].id; });
-
-
-            if(feedIndex!=-1)
-            {
-              //console.log("WE HAVE AN ACTION!!!!!");
-
-              //check to see if there are comments - if so remove ones that are not in time yet.
-              //Do all comment work here for feed
-              //if (Array.isArray(script_feed[0].comments) && script_feed[0].comments.length) {
-              if (Array.isArray(user.feedAction[feedIndex].comments) && user.feedAction[feedIndex].comments)
-              {
-
-                //console.log("WE HAVE COMMENTS!!!!!");
-                //iterate over all comments in post - add likes, flag, etc
-                for (var i = 0; i < user.feedAction[feedIndex].comments.length; i++) {
-                  //i is now user.feedAction[feedIndex].comments index
-
-                    //is this action of new user made comment we have to add???
-                    if (user.feedAction[feedIndex].comments[i].new_comment)
-                    {
-
-                      //console.log("Adding a new Comment by the USER");
-                      var cat = new Object();
-                      cat.body = user.feedAction[feedIndex].comments[i].comment_body;
-                      cat.new_comment = user.feedAction[feedIndex].comments[i].new_comment;
-                      cat.time = user.feedAction[feedIndex].comments[i].absTime;
-                      cat.commentID = user.feedAction[feedIndex].comments[i].new_comment_id;
-                      cat.likes = 0;
-
-                      script_feed[0].comments.push(cat);
-                      //console.log("Already have COMMENT ARRAY");
-
-
-                    }
-
-                    else
-                    {
-                      //Do something
-
-                      var commentIndex = _.findIndex(script_feed[0].comments, function(o) { return o.id == user.feedAction[feedIndex].comments[i].comment; });
-
-                      //If user action on Comment in Script Post
-                      if(commentIndex!=-1)
-                      {
-
-                        //console.log("WE HAVE AN ACTIONS ON COMMENTS!!!!!");
-                        //Action is a like (user liked this comment in this post)
-                        if (user.feedAction[feedIndex].comments[i].liked)
-                        {
-                          script_feed[0].comments[commentIndex].liked = true;
-                          script_feed[0].comments[commentIndex].likes++;
-                          //console.log("Post %o has been LIKED", script_feed[0].id);
-                        }
-
-                        //Action is a FLAG (user Flaged this comment in this post)
-                        if (user.feedAction[feedIndex].comments[i].flagged)
-                        {
-                          //console.log("Comment %o has been LIKED", user.feedAction[feedIndex].comments[i].id);
-                          script_feed[0].comments.splice(commentIndex,1);
-                        }
-                      }
-                    }//end of ELSE
-
-                }//end of for loop
-
-              }//end of IF Comments
-
-              if (user.feedAction[feedIndex].readTime[0])
-              {
-                script_feed[0].read = true;
-                script_feed[0].state = 'read';
-                //console.log("Post: %o has been READ", script_feed[0].id);
-              }
-              else
-              {
-                script_feed[0].read = false;
-                //script_feed[0].state = 'read';
-              }
-
-              if (user.feedAction[feedIndex].liked)
-              {
-                script_feed[0].like = true;
-                script_feed[0].likes++;
-                //console.log("Post %o has been LIKED", script_feed[0].id);
-              }
-
-              if (user.feedAction[feedIndex].replyTime[0])
-              {
-                script_feed[0].reply = true;
-                //console.log("Post %o has been REPLIED", script_feed[0].id);
-              }
-
-              //If this post has been flagged - remove it from FEED array (script_feed)
-              if (user.feedAction[feedIndex].flagTime[0])
-              {
-                script_feed.splice(0,1);
-                //console.log("Post %o has been FLAGGED", script_feed[0].id);
-              }
-
-              //post is from blocked user - so remove  it from feed
-              else if (user.blocked.includes(script_feed[0].actor.username))
-              {
-                script_feed.splice(0,1);
-              }
-
-              else
-              {
-                //console.log("Post is NOT FLAGGED, ADDED TO FINAL FEED");
-                finalfeed.push(script_feed[0]);
-                script_feed.splice(0,1);
-              }
-
-            }//end of IF we found Feed_action
-
-            else
-            {
-              //console.log("NO FEED ACTION SO, ADDED TO FINAL FEED");
-              if (user.blocked.includes(script_feed[0].actor.username))
-              {
-                script_feed.splice(0,1);
-              }
-
-              else
-              {
-                finalfeed.push(script_feed[0]);
-                script_feed.splice(0,1);
-              }
-            }
-            }//else in while loop
-      }//while loop
-
-
-      //shuffle up the list
-      //finalfeed = shuffle(finalfeed);
-
-      user.save((err) => {
-        if (err) {
-          //console.log("ERROR IN USER SAVE IS "+err);
-          return next(err);
-        }
-        //req.flash('success', { msg: 'Profile information has been updated.' });
+    .exec(function (err, script_feed) {
+      if (err) {
+        return next(err);
+      }
+      // Final array of all posts to go in the freeplay feed
+      const finalfeed = [];
+      // Array of any user-made posts in this module
+      const user_posts = user.getModPosts(req.params.modId);
+      // Sort the array by the time the post was created
+      user_posts.sort(function (a, b) {
+        return b.relativeTime - a.relativeTime;
       });
 
-      //console.log("Script Size is now: "+finalfeed.length);
-      if(req.params.modId == "phishing"){
-        res.render('phishing/phishing_script', { script: finalfeed, mod: req.params.modId, habitsStart: habitsStartTime,});
-      }else if(req.params.modId == "habits"){
-        res.render('habits/habits_script', { script: finalfeed, mod: req.params.modId, habitsStart: habitsStartTime,});
-      }else if(req.params.modId == "esteem"){
-        res.render('esteem/esteem_script', { script: finalfeed, mod: req.params.modId});
-      }else if(req.params.modId == "advancedlit"){
-        res.render('advancedlit/advancedlit_script', { script: finalfeed, mod: req.params.modId});
-      }else if(req.params.modId == "targeted"){
-        res.render('targeted/targeted_script', { script: finalfeed, mod: req.params.modId});
-      }else{
-        res.render('script', { script: finalfeed, mod: req.params.modId, habitsStart: habitsStartTime,});
+      // While there are regular posts or user-made posts to add to the final feed
+      while(script_feed.length || user_posts.length) {
+        if (typeof script_feed[0] === 'undefined') {
+            // script_feed is empty, push the first element of user_posts
+            finalfeed.push(user_posts[0]);
+            // remove the element from user_posts
+            user_posts.splice(0,1);
+        } else if (!(typeof user_posts[0] === 'undefined') && (script_feed[0].time < user_posts[0].relativeTime)) {
+            // There are user-made posts that were created sooner than the post
+            // in script_feed, so push them in first
+            finalfeed.push(user_posts[0]);
+            user_posts.splice(0,1);
+        } else {
+          // Looking at the post in script_feed[0] now.
+          // For this post, check if there is a user feedAction matching this
+          // post's ID and get its index.
+          const feedIndex = _.findIndex(user.feedAction, function(o) {
+            return o.post == script_feed[0].id;
+          });
+          if (feedIndex != -1) {
+            // There was a feedAction found for this post.
+            // Perform various checks to determine what actions were taken.
+            // Check to see if there are comment-type actions.
+            if (Array.isArray(user.feedAction[feedIndex].comments) && user.feedAction[feedIndex].comments) {
+              // There are comment-type actions on this post.
+              // For each comment on this post, add likes, flags, etc.
+              for (var i=0; i < user.feedAction[feedIndex].comments.length; i++) {
+                if (user.feedAction[feedIndex].comments[i].new_comment) {
+                  // This is a new, user-made comment. Add it to the comments
+                  // list for this post.
+                  const newComment = new Object();
+                  newComment.body = user.feedAction[feedIndex].comments[i].comment_body;
+                  newComment.new_comment = user.feedAction[feedIndex].comments[i].new_comment;
+                  newComment.time = user.feedAction[feedIndex].comments[i].absTime;
+                  newComment.commentID = user.feedAction[feedIndex].comments[i].new_comment_id;
+                  newComment.likes = 0;
+                  script_feed[0].comments.push(newComment);
+                } else {
+                  // This is not a new, user-created comment.
+                  // Get the comment index that corresponds to the correct comment
+                  const commentIndex = _.findIndex(script_feed[0].comments, function(o) {
+                    return o.id == user.feedAction[feedIndex].comments[i].comment;
+                  });
+                  // If this comment's ID is found in script_feed, add likes, flags, etc.
+                  if(commentIndex!=-1) {
+                    // Check if there is a like recorded for this comment.
+                    if (user.feedAction[feedIndex].comments[i].liked) {
+                      // Update the comment in script_feed.
+                      script_feed[0].comments[commentIndex].liked = true;
+                      script_feed[0].comments[commentIndex].likes++;
+                    }
+                    // Check if there is a flag recorded for this comment.
+                    if (user.feedAction[feedIndex].comments[i].flagged) {
+                      // Remove the comment from the post if it has been flagged.
+                      script_feed[0].comments.splice(commentIndex,1);
+                    }
+                  }
+                }
+              }
+            }
+            // No longer looking at comments on this post.
+            // Now we are looking at the main post.
+            // Check if there is a like recorded for this post.
+            if (user.feedAction[feedIndex].liked) {
+              // Update this post in script_feed.
+              script_feed[0].like = true;
+              script_feed[0].likes++;
+            }
+            // Check for cases where the post should be removed from script_feed.
+            // Check if there is a flag recorded for this post.
+            if (user.feedAction[feedIndex].flagTime[0]) {
+              // Remove this post from script_feed.
+              script_feed.splice(0,1);
+            } else if (user.blocked.includes(script_feed[0].actor.username)) {
+              // This post was from an account that the user blocked.
+              // Remove this post from script_feed.
+              // The 'block' feature is not emphasized in TestDrive, but it is present.
+              script_feed.splice(0,1);
+            } else {
+              // There is no reason to remove this post from the feed
+              // and we have updated this post with any user actions, so
+              // push this post to finalfeed and remove it from script_feed.
+              finalfeed.push(script_feed[0]);
+              script_feed.splice(0,1);
+            }
+          } else {
+            // At this point, there are no user actions on this post.
+            // Check uf this post is not from an account that the user blocked.
+            if (user.blocked.includes(script_feed[0].actor.username)) {
+              // Remove this post from script_feed.
+              // The 'block' feature is not emphasized in TestDrive, but it is present.
+              script_feed.splice(0,1);
+            } else {
+              // There is nothing special to do to this post before adding it
+              // to the final feed and removing it from script_feed.
+              finalfeed.push(script_feed[0]);
+              script_feed.splice(0,1);
+            }
+          }
+        }
       }
+      // This seems unnecesary, but commented out rather than removed.
+      // TODO: Can remove later if it seems fine.
+      // user.save((err) => {
+      //   if (err) {
+      //     return next(err);
+      //   }
+      // });
 
-      });//end of Script.find()
-
-
-  });//end of User.findByID
-
-};//end of .getScript
+      // Render custom script pages for certain modules, otherwise use the default
+      // script page.
+      if (req.params.modId == "advancedlit"){
+        res.render('advancedlit/advancedlit_script', { script: finalfeed, mod: req.params.modId});
+      } else if (req.params.modId == "esteem"){
+        res.render('esteem/esteem_script', { script: finalfeed, mod: req.params.modId});
+      } else if (req.params.modId == "habits"){
+        res.render('habits/habits_script', {
+          script: finalfeed,
+          mod: req.params.modId,
+          habitsStart: user.firstHabitViewTime
+        });
+      } else if  (req.params.modId == "phishing"){
+        res.render('phishing/phishing_script', { script: finalfeed, mod: req.params.modId});
+      } else if (req.params.modId == "targeted"){
+        res.render('targeted/targeted_script', { script: finalfeed, mod: req.params.modId});
+      } else {
+        res.render('script', { script: finalfeed, mod: req.params.modId});
+      }
+    });
+  });
+};
 
 exports.getScriptPost = (req, res) => {
-
 	Script.findOne({ _id: req.params.id}, (err, post) => {
 		//console.log(post);
 		res.render('script_post', { post: post });
@@ -346,8 +262,6 @@ exports.getScriptPost = (req, res) => {
  * Made for testing
 */
 exports.getScriptFeed = (req, res, next) => {
-
-
   //console.log("$#$#$#$#$#$#$START GET FEED$#$#$$#$#$#$#$#$#$#$#$#$#");
   //console.log("time_diff  is now "+time_diff);
   //console.log("time_limit  is now "+time_limit);
@@ -388,28 +302,11 @@ exports.getScriptFeed = (req, res, next) => {
         //update script feed to see if reading and posts has already happened
         var finalfeed = [];
         finalfeed = script_feed;
-
-
-      //shuffle up the list
-      //finalfeed = shuffle(finalfeed);
-
-
-      //console.log("Script Size is now: "+finalfeed.length);
-      res.render('feed', { script: finalfeed});
-
+        //console.log("Script Size is now: "+finalfeed.length);
+        res.render('feed', { script: finalfeed});
       });//end of Script.find()
 
 };//end of .getScript
-
-
-/*
-##############
-Get WAIT page
-##############
-*/
-exports.getWait = (req, res) => {
-    res.render('wait', { sec: req.params.sec, mod: req.params.modId});
-};
 
 /*
 ##############
@@ -888,3 +785,17 @@ exports.postBlueDotAction = (req, res, next) => {
     });
   });
 };
+
+/*
+ * This does not seem to be used in TestDrive - likely safe to delete.
+ * Clean up the corresponding route in app.js as well when this is removed.
+ */
+
+// /*
+// ##############
+// Get WAIT page
+// ##############
+// */
+// exports.getWait = (req, res) => {
+//     res.render('wait', { sec: req.params.sec, mod: req.params.modId});
+// };

@@ -42,7 +42,10 @@ $(window).on("load", function () {
 
   // Adding the module title to the progress bar
   $.getJSON('/json/moduleInfo.json', function(data) {
-    if(currentModuleForHeader !== undefined){
+    if(currentModuleForHeader === undefined) {
+      return;
+    }
+    if(data.hasOwnProperty(currentModuleForHeader)) {
       $('.moduleTitle span').text(data[currentModuleForHeader]["title"]);
     }
   });
