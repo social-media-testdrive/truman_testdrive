@@ -25,6 +25,7 @@ function makeid(length) {
 /**
  * GET /login
  * Login page.
+ * Route only exists if isResearchVersion = true.
  */
 exports.getLogin = (req, res) => {
   res.render('account/login', {
@@ -33,8 +34,9 @@ exports.getLogin = (req, res) => {
 };
 
 /**
- * GET /classl=Login
+ * GET /classLogin/:accessCode
  * Login page for a student in a class.
+ * Route only exists if isResearchVersion = true.
  */
 exports.getClassLogin = (req, res) => {
   // commented out by Anna
@@ -48,8 +50,9 @@ exports.getClassLogin = (req, res) => {
 };
 
 /**
- * POST /studentLogin
+ * POST /studentLogin/:accessCode
  * Sign in using username.
+ * Route only exists if isResearchVersion = true.
  */
 exports.postStudentLogin = (req, res, next) => {
   //req.assert('email', 'Email is not valid').isEmail();
@@ -97,6 +100,7 @@ exports.postStudentLogin = (req, res, next) => {
 /**
  * POST /instructorLogin
  * Sign in using username and password.
+ * Route only exists if isResearchVersion = true.
  */
 exports.postInstructorLogin = (req, res, next) => {
   //req.assert('email', 'Email is not valid').isEmail();
@@ -140,7 +144,6 @@ exports.postInstructorLogin = (req, res, next) => {
 /**
  * GET /logout
  * Log out.
- TODO - add code to take survey?? or check if you have seen experinetal post yet
  */
 exports.logout = (req, res) => {
   req.logout();
@@ -150,8 +153,8 @@ exports.logout = (req, res) => {
 };
 
 /**
- * get Guest accout
- * Create a new local account.
+ * GET /guest/:modId
+ * Create a new local guest account.
  */
 exports.getGuest = (req, res, next) => {
   if (req.params.modId === "delete") {
@@ -235,9 +238,9 @@ exports.postSignupInfo = (req, res, next) => {
   });
 };
 
-/**
- * GET /account
- * Profile page.
+/*
+ * GET /account/:modId
+ * Update profile page.
  */
 exports.getAccount = (req, res) => {
   res.render('account/profile', {
@@ -246,8 +249,8 @@ exports.getAccount = (req, res) => {
   });
 };
 
-/**
- * GET /getMe
+/*
+ * GET /me/:modId
  * Profile page.
  */
 exports.getMe = (req, res) => {
@@ -270,7 +273,8 @@ exports.getMe = (req, res) => {
 };
 
 /**
- * post a pageLog
+ * POST /pageLog
+ * Post a pageLog
  */
 exports.postPageLog = (req, res, next) => {
   User.findById(req.user.id, (err, user) => {
@@ -286,11 +290,15 @@ exports.postPageLog = (req, res, next) => {
   });
 };
 
+/*
+ * GET /habitsTimer
+ * Get the timestamp information for the habits module.
+ */
 exports.getHabitsTimer = (req, res) => {
   User.findById(req.user.id).exec(function (err, user){
     var startTime = user.firstHabitViewTime;
     var totalTimeViewedHabits = 0;
-    if(user.habitsTimer){
+    if (user.habitsTimer) {
       for(var i = 0; i<user.habitsTimer.length; i++){
         totalTimeViewedHabits = totalTimeViewedHabits + user.habitsTimer[i];
       }
@@ -367,8 +375,8 @@ exports.getTimeReportCsv = (req, res, next) => {
 };
 
 /**
- * POST /account/profile
- * Update profile information.Which ad topic did the user pick?
+ * POST /interest
+ * Update user with the topic the user selected in the current module.
  */
 exports.postUpdateInterestSelection = (req, res, next) => {
   User.findById(req.user.id, (err, user) => {
@@ -401,6 +409,10 @@ exports.postUpdateInterestSelection = (req, res, next) => {
   });
 };
 
+/**
+ * GET /esteemTopic
+ * Get the topic the user selected in the esteem module.
+ */
 exports.getEsteemTopic = (req, res) => {
   User.findById(req.user.id).exec(function (err, user){
     let selectedTopic = user.esteemTopic[user.esteemTopic.length - 1];
@@ -410,8 +422,8 @@ exports.getEsteemTopic = (req, res) => {
 };
 
 /**
- * POST /account/profile
- * Update profile information.Which ad topic did the user pick? Esteem module only.
+ * POST /advancedlitTopic
+ * Update Update user with the topic the user selected in the advancedlit module.
  */
 exports.postAdvancedlitInterestSelection = (req, res, next) => {
   User.findById(req.user.id, (err, user) => {
@@ -429,6 +441,10 @@ exports.postAdvancedlitInterestSelection = (req, res, next) => {
   });
 };
 
+/**
+ * GET /advancedlitTopic
+ * Get the topic the user selected in the advancedlit module.
+ */
 exports.getAdvancedlitTopic = (req, res) => {
   User.findById(req.user.id).exec(function (err, user){
     let selectedTopic = user.advancedlitTopic;
@@ -438,8 +454,8 @@ exports.getAdvancedlitTopic = (req, res) => {
 };
 
 /**
- * POST /account/profile
- * Update profile information. How long has the user looked at the free-play section? Habits module only.
+ * POST /habitsTimer
+ * Update the timestamp information for the habits module.
  */
 exports.postUpdateHabitsTimer = (req, res, done) => {
   User.findById(req.user.id, (err, user) => {
@@ -471,7 +487,8 @@ exports.postUpdateHabitsTimer = (req, res, done) => {
 };
 
 /**
- * Post update on module progress
+ * POST /moduleProgress
+ * Update module progress
  */
 exports.postUpdateModuleProgress = (req, res, next) => {
   User.findById(req.user.id, (err, user) => {
@@ -804,13 +821,10 @@ exports.getLearnerEarnedBadges = (req, res, next) => {
 }
 
 /**
- * POST /account/profile
+ * POST /account/profile/:modId
  * Update profile information.
  */
 exports.postUpdateProfile = (req, res, next) => {
-  //req.assert('email', 'Please enter a valid email address.').isEmail();
-  //req.sanitize('email').normalizeEmail({ remove_dots: false });
-
   const errors = req.validationErrors();
 
   if (errors) {
@@ -883,7 +897,7 @@ exports.postUpdatePassword = (req, res, next) => {
 };
 
 /**
- * POST /account/delete
+ * POST /delete
  * Delete user account.
  */
 exports.getDeleteAccount = (req, res, next) => {

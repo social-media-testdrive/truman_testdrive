@@ -11,110 +11,69 @@ exports.getActors = (req, res) => {
   });
 };
 
+/*
+ * GET /user/:userId
+ * Render the profile page for the given actor account.
+ */
 exports.getActor = (req, res, next) => {
+  const time_diff = Date.now() - req.user.createdAt;
 
-  var time_diff = Date.now() - req.user.createdAt;
-
-  //console.log("START HERE Our Paramater is:::::");
-  //console.log(req.params.userId);
-  //console.log("Time Diff");
-  //console.log(time_diff);
-
-  User.findById(req.user.id)
-  .exec(function (err, user) {
-
-	Actor.findOne({ username: req.params.userId}, (err, act) => {
-    if (err) { console.log(err); return next(err); }
-
-    ////this is not solving the problem FUCKKKKK@
-   if (act == null) {console.log("NULLLLLLLLLLL");  var myerr = new Error('Record not found!'); return next(myerr); }
-
-    //console.log(act);
-    //console.log("&&&&&&&&&&&&&&&&&&&&&");
-
-    user.logPage(Date.now(), req.params.userId);
-
-    var isBlocked;
-
-    if (user.blocked.includes(req.params.userId))
-    {
-      isBlocked = true;
-    }
-    else
-    {
-      isBlocked = false;
-    }
-
-    Script.find({ actor: act.id})
-    .where('time').lte(time_diff)
-    .sort('-time')
-    .populate('actor')
-    .populate({
-     path: 'reply',
-     populate: {
-       path: 'actor',
-       model: 'Actor'
-       }
-    })
-    .exec(function (err, script_feed) {
-      if (err) { console.log(err); return next(err); }
-
-
-      for (var i = script_feed.length - 1; i >= 0; i--) {
-
-        var feedIndex = _.findIndex(user.feedAction, function(o) { return o.post == script_feed[i].id; });
-
-
-          if(feedIndex!=-1)
-          {
-            //console.log("WE HAVE AN ACTION!!!!!");
-
-            if (user.feedAction[feedIndex].readTime[0])
-            {
-              script_feed[i].read = true;
-              script_feed[i].state = 'read';
-              //console.log("Post: %o has been READ", script_feed[i].id);
-            }
-
-            if (user.feedAction[feedIndex].liked)
-            {
-              script_feed[i].like = true;
-              script_feed[i].likes++;
-              //console.log("Post %o has been LIKED", script_feed[i].id);
-            }
-
-            if (user.feedAction[feedIndex].replyTime[0])
-            {
-              script_feed[i].reply = true;
-              //console.log("Post %o has been REPLIED", script_feed[i].id);
-            }
-
-            //If this post has been flagged - remove it from FEED array (script_feed)
-            if (user.feedAction[feedIndex].flagTime[0])
-            {
-              script_feed.splice(i,1);
-              //console.log("Post %o has been FLAGGED", script_feed[i].id);
-            }
-
-          }//end of IF we found Feed_action
-
-
-
+  User.findById(req.user.id).exec(function (err, user) {
+  	Actor.findOne({ username: req.params.userId}, (err, act) => {
+      if (err) {
+        return next(err);
       }
-
-      user.save((err) => {
+      if (act == null) {
+        const myerr = new Error('Record not found!');
+        return next(myerr);
+      }
+      // Determine if this actor has been blocked by the user.
+      let isBlocked = false;
+      if (user.blocked.includes(req.params.userId)) {
+        isBlocked = true;
+      }
+      Script.find({ actor: act.id})
+      .where('time').lte(time_diff)
+      .sort('-time')
+      .populate('actor')
+      .populate({
+       path: 'reply',
+       populate: {
+         path: 'actor',
+         model: 'Actor'
+         }
+      })
+      .exec(function (err, script_feed) {
         if (err) {
           return next(err);
         }
+        for (var i = script_feed.length - 1; i >= 0; i--) {
+          const feedIndex = _.findIndex(user.feedAction, function(o) {
+            return o.post == script_feed[i].id;
+          });
+          if(feedIndex === -1) {
+            continue;
+          }
+          // Check if there is a like recorded for this post.
+          if (user.feedAction[feedIndex].liked) {
+            // Update the post in script_feed.
+            script_feed[i].like = true;
+            script_feed[i].likes++;
+          }
+          // Check if there is a flag action recorded for this post.
+          if (user.feedAction[feedIndex].flagTime[0]) {
+            // Remove this post from script_feed.
+            script_feed.splice(i,1);
+          }
+        }
+        res.render('actor', {
+          script: script_feed,
+          actor: act,
+          blocked: isBlocked
+        });
       });
-      //console.log("Is block is now "+isBlocked);
-      res.render('actor', { script: script_feed, actor: act, blocked:isBlocked });
     });
-
- // }
-
-  });//Actor Find One
-});//User.findbyID
+  });
 };
 
 /*

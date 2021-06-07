@@ -6,8 +6,8 @@ const _ = require('lodash');
 const aws = require('aws-sdk');
 
 /**
- * GET /
- * Notification timestamps for the habits module
+ * GET /habitsNotificationTimes
+ * Get the notification timestamps for the habits module
 */
 exports.getNotificationTimes = (req, res) => {
   Script.find()
@@ -70,8 +70,9 @@ exports.getSinglePost = (req, res, next) => {
 }
 
 /**
- * GET /
- * List of Script posts for Feed
+ * GET /modual/:modId
+ * Creates a list of the posts to show in the freeplay newsfeed
+ * and renders the freeplay page.
 */
 exports.getScript = (req, res, next) => {
   User.findById(req.user.id)
@@ -257,10 +258,10 @@ exports.getScriptPost = (req, res) => {
 
 
 /**
- * GET /
- * List of Script posts for Feed
+ * GET /testing/:modId
+ * Get list of Script posts for Feed
  * Made for testing
-*/
+ */
 exports.getScriptFeed = (req, res, next) => {
   //console.log("$#$#$#$#$#$#$START GET FEED$#$#$$#$#$#$#$#$#$#$#$#$#");
   //console.log("time_diff  is now "+time_diff);
@@ -308,110 +309,62 @@ exports.getScriptFeed = (req, res, next) => {
 
 };//end of .getScript
 
-/*
-##############
-NEW POST
-Add a new post to the DB from the user
-#############
-*/
+/**
+ * POST /post/new
+ * Upload a new user-created post to the database.
+ */
 exports.newPost = (req, res) => {
-
-  //console.log("###########NEW POST#############");
   User.findById(req.user.id, (err, user) => {
-    if (err) { return next(err); }
-
-
-    //console.log("Text Body of Post is "+req.body.body);
-
-    var post = new Object();
+    if (err) {
+      return next(err);
+    }
+    const post = new Object();
+    post.type = "user_post";
     post.body = req.body.body;
+    post.picture = req.body.picinput;
     post.module = req.body.module;
     post.absTime = Date.now();
     post.relativeTime = post.absTime - user.createdAt;
-
-    //if numPost/etc never existed yet, make it here - should never happen in new users
-    if (!(user.numPosts) && user.numPosts < -1)
-    {
+    // if numPost/etc never existed yet, make it here - should never happen in new users
+    // Note: Not sure if these 3 checks are really needed, but it doesn't seem
+    // to hurt to keep them.
+    if (!(user.numPosts) && user.numPosts < -1) {
       user.numPosts = -1;
-      //console.log("numPost is "+user.numPosts);
     }
-
-    if (!(user.numReplies) && user.numReplies < -1)
-    {
+    if (!(user.numReplies) && user.numReplies < -1) {
       user.numReplies = -1;
-      //console.log("numReplies is "+user.numReplies);
     }
-
-    if (!(user.numActorReplies) && user.numActorReplies < -1)
-    {
+    if (!(user.numActorReplies) && user.numActorReplies < -1) {
       user.numActorReplies = -1;
-      //console.log("numActorReplies is "+user.numActorReplies);
     }
-
-
-    post.picture = req.body.picinput;
-
     user.numPosts = user.numPosts + 1;
     post.postID = user.numPosts;
-    post.type = "user_post";
 
-    //console.log("numPost is now "+user.numPosts);
     user.posts.unshift(post);
-    //console.log("CREATING NEW POST!!!");
 
     user.save((err) => {
-          if (err) {
-            return next(err);
-          }
-          /*
-          //upload to S3
-          aws.config.update({
-            secretAccessKey: process.env.AWS_SECRET,
-            accessKeyId: process.env.AWS_ACCESS,
-            region: "us-east-2"
-          });
-
-          const s3 = new aws.S3();
-          // call S3 to retrieve upload file to specified bucket
-          var uploadParams = {Bucket: 'testdrive-filesystem', Key: '', ACL:'public-read', Body: ''};
-          var file = "uploads/user_post/"+req.body.picinput;
-          var fileStream = fs.createReadStream(file);
-          fileStream.on('error', function(err) {
-            console.log('File Error', err);
-          });
-          uploadParams.Body = fileStream;
-          var path = require('path');
-          uploadParams.Key = path.basename(req.body.picinput);
-
-          // call S3 to retrieve upload file to specified bucket
-          s3.upload (uploadParams, function (err, data) {
-            if (err) {
-              console.log("Error", err);
-            } if (data) {
-              console.log("Upload Success to s3", data.Location);
-            }
-          });*/
-          res.redirect('/modual/'+req.body.module);
-        });
+      if (err) {
+        return next(err);
+      }
+      res.redirect('/modual/'+req.body.module);
+    });
   });
 };
 
 function _postAction(req, res, next, functionToRun){
   User.findById(req.user.id, (err, user) => {
-
-    // somehow user does not exist here
     if (err) {
       return next(err);
     }
 
     functionToRun(req, user);
 
-    // save to DB
     user.save((err) => {
       if (err) {
         if (err.code === 11000) {
+          // You should never see this error.
           req.flash('errors', {
-            msg: 'Something in feedAction went crazy. You should never see this.'
+            msg: 'Something in feedAction went wrong.'
           });
           return res.redirect('/');
         }
@@ -427,6 +380,7 @@ function _postAction(req, res, next, functionToRun){
 
 function _postUpdateFeedAction(req, user){
   let userAction = user.feedAction;
+  // Determine where this action occurred and set to record it in the appropriate field.
   switch(req.body.actionType) {
     case 'guided activity':
       userAction = user.guidedActivityAction;
@@ -439,7 +393,7 @@ function _postUpdateFeedAction(req, user){
       break;
   }
 
-  // Then find the object from the right post in feed
+  // Then find the object from the right post in feed.
   let feedIndex = _.findIndex(userAction, function(o) {
     return o.post == req.body.postID;
   });
@@ -577,21 +531,22 @@ function _postUpdateFeedAction(req, user){
     }
   }//end of ELSE ANYTHING NOT A COMMENT
 }
-/*
- POST /feed/
- Update user's actions on posts throughout a module.
- All likes, flags, popup interactions, new comments (with actions on those
- comments as well) get added here
+
+/**
+ * POST /feed
+ * Update user's actions on posts throughout a module.
+ * All likes, flags, popup interactions, new comments (with actions on those
+ * comments as well) get added here
 */
 exports.postUpdateFeedAction = (req, res, next) => {
   _postAction(req, res, next, _postUpdateFeedAction);
 };
 
 /**
- * POST /deleteUserFeedActions/
+ * POST /deleteUserFeedActions
  * Delete user's feed posts Actions.
- All likes, flags, new comments (with actions on those comments as well)
- gets deleted here
+ * All likes, flags, new comments (with actions on those comments as well)
+ * gets deleted here. This route is currently not used anywhere.
  */
 exports.postDeleteFeedAction = (req, res, next) => {
   //console.log("Deleting user feed posts Actions")
@@ -615,8 +570,9 @@ exports.postDeleteFeedAction = (req, res, next) => {
 };
 
 /*
- POST /startPageAction/
- Update an action on the start page
+ * POST /startPageAction
+ * Update an action on the start page
+ * TODO: This function should probably be moved to the user controller.
 */
 exports.postStartPageAction = (req, res, next) => {
 
@@ -656,9 +612,10 @@ exports.postStartPageAction = (req, res, next) => {
   });
 };
 
-/*
- POST /introjsStep/
- Update log data for a introjs step
+/**
+ * POST /introjsStep/
+ * Update log data for a introjs step\
+ * TODO: This function should probably be moved to the user controller.
 */
 exports.postIntrojsStepAction = (req, res, next) => {
 
@@ -698,9 +655,10 @@ exports.postIntrojsStepAction = (req, res, next) => {
 };
 
 /*
- POST /reflectionAction/
- Update a response in the reflection section
- Each reflection question gets its own action
+ * POST /reflectionAction
+ * Update a response in the reflection section
+ * Each reflection question gets its own action
+ * TODO: This function should probably be moved to the user controller.
 */
 exports.postReflectionAction = (req, res, next) => {
 
@@ -738,10 +696,10 @@ exports.postReflectionAction = (req, res, next) => {
   });
 };
 
-
-/*
- POST /blueDot/
- Update a blue dot action
+/**
+ * POST /blueDot
+ * Update a blue dot action
+ * TODO: This function should probably be moved to the user controller.
 */
 exports.postBlueDotAction = (req, res, next) => {
 

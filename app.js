@@ -488,7 +488,7 @@ app.post('/post/new', check, setHttpResponseHeaders, csrfProtection, scriptContr
 // Post information about a user action on a post in a freeplay feed section
 app.post('/feed', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postUpdateFeedAction);
 // Delete all recorded feed actions for the current user - currently not used
-app.post('/deleteUserFeedActions', passportConfig.isAuthenticated, setHttpResponseHeaders,  scriptController.postDeleteFeedAction);
+app.post('/deleteUserFeedActions', passportConfig.isAuthenticated, setHttpResponseHeaders, scriptController.postDeleteFeedAction);
 // Record user's topic selection for modules with customized freeplay content
 app.post('/interest', passportConfig.isAuthenticated, check, setHttpResponseHeaders,  csrfProtection, userController.postUpdateInterestSelection);
 app.post('/advancedlitInterest', passportConfig.isAuthenticated, check, setHttpResponseHeaders,  csrfProtection, userController.postAdvancedlitInterestSelection);
