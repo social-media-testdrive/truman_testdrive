@@ -509,6 +509,10 @@ exports.postUpdateModuleProgress = (req, res, next) => {
   });
 };
 
+/*
+ * POST /postUpdateNewBadge
+ * Save a new badge earned by the current user
+ */
 exports.postUpdateNewBadge = (req, res, next) => {
   User.findById(req.user.id, (err, user) => {
     if (err) {

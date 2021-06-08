@@ -7,7 +7,10 @@ const _ = require('lodash');
 var async = require('async');
 const createCsvStringifier = require('csv-writer').createObjectCsvStringifier;
 
-// Get all Classes for a currently logged in instructor
+/*
+ * GET /classManagement
+ * Render the class management page in the teacher dashboard
+ */
 exports.getClasses = (req, res) => {
   if (req.user.isInstructor) {
     Class.find({
@@ -48,8 +51,10 @@ exports.getClassSize = (req, res, next) => {
   });
 }
 
-// Show info on one Class led by the currently logged in instructor
-// For the route /class/:classId
+/*
+ * GET /viewClass/:classId
+ * Render the page to view a single class owned by the current instructor
+ */
 exports.getClass = (req, res, next) => {
   if (req.user.isInstructor) {
     Class.findOne({
@@ -105,7 +110,10 @@ exports.getClassUsernames = (req, res, next) => {
   });
 }
 
-// Currently just used for dropdowns
+/*
+ * GET /classIdList
+ * Get a list of all the classes owned by the current instructor
+ */
 exports.getClassIdList = (req, res, next) => {
   if (!req.user.isInstructor) {
     return res.status(400).send("Bad Request");
