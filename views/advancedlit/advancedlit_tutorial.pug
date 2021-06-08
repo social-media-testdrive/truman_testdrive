@@ -4,15 +4,15 @@ block content
   
   //- insert code for article after RAs provide design
   #content.sixteen.wide.column.centered.removeTopPadding.addBottomMargin
-    .ui.one.column.centered.grid
-      .ui.fixed.bottom.sticky(style="z-index:10000000;")
-        .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
+    .ui.one.column.centered.grid.feedbackMessagesGrid
+      .ui.fixed.bottom.sticky
+        .ui.icon.compact.message.warning.hidden#clickNextHelpMessage
           i.close.icon
           i.question.icon.float
           .content
             .ui.header Need some help?
             p Scroll up and click "Next" to begin!
-        .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
+        .ui.icon.compact.message.warning.hidden#clickNextHelpMessage
           i.close.icon
           i.question.icon.float
           .content
@@ -29,7 +29,7 @@ block content
             .ui.header Click "Go back to the timeline" to continue!
     //- #####################################################
     .ui.active.tab(data-tab="one")
-      .ui.grid(style='margin-bottom:4em;')
+      .ui.grid
         .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.centered
           .ui.fluid.card.dim()#step1A
             .ui.dimmer.flag
@@ -321,7 +321,7 @@ block content
         i.icon.search
         | Search for "Reed County tornado"
       .ui.segment
-        .ui.grid(style='margin-bottom:4em;')          
+        .ui.grid        
           .row
             .column
               h2 
@@ -347,12 +347,12 @@ block content
       button.ui.big.button.homeTab(data-tab='one')
         i.icon.reply
         | Go back to the timeline
-      button.ui.big.button.searchTab#step4(data-tab='three' style='margin-bottom: 4em;')
+      button.ui.big.button.searchTab#step4(data-tab='three')
         i.icon.search
         | Search for "Reed County tornado"          
     //- #####################################################
     .ui.tab(data-tab="three")
-      .ui.grid(style='margin-bottom:4em;')     
+      .ui.grid     
         .row
           .column
             button.ui.big.button.homeTab(data-tab='one')#step6
@@ -365,7 +365,7 @@ block content
           .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.left.floated.column#step5B  
             h2#step5 Search results for "Reed County tornado"
             
-            .ui.basic.segment(style='margin:0;padding:0;') 
+            .ui.basic.segment 
               p.resultURL reedcountyvoice.com
               a
                 h4.resultTitle 

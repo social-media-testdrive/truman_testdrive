@@ -227,9 +227,9 @@ button {
 }
 
 /* Button that uses the testdrive color palette */
-.testDriveBlueButton {
-  background-color: #14a1f6 !important;
-  color: white !important;
+.ui.button.testDriveBlueButton {
+  background-color: #14a1f6;
+  color: white;
 }
 
 /* settings page sublabels (privacy module) */

@@ -1,3 +1,14 @@
+/* create a new post sticky at top of feed */
+.ui.sticky.newPostSticky .ui.input {
+  box-shadow: 7px -2px 6px 18px #f5f8fa;
+  z-index: 800;
+}
+
+.ui.sticky.newPostSticky .ui.label,
+.ui.sticky.newPostSticky input {
+  border-radius: 0;
+}
+
 /* custom tutorial classes */
 .stickyTooltip {
   position: fixed !important;
@@ -90,7 +101,12 @@
 
 /* make a new post modal */
 
-.newPostModal .field img {
+.ui.modal.newPostModal {
+  margin-top: 9em;
+  margin-bottom: 4em;
+}
+
+.ui.modal.newPostModal .field img {
   width: 65%;
   height: auto;
 }

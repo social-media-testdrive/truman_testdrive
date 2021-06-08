@@ -4,14 +4,16 @@ block content
 
   #content.sixteen.wide.column.centered.removeTopPadding.addBottomMargin
    //- #####################################################
-   .ui.one.column.centered.grid
-     .ui.fixed.bottom.sticky(style='z-index:10000000;')
-       .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
+   .ui.one.column.centered.grid.feedbackMessagesGrid
+     .ui.fixed.bottom.sticky
+       
+       .ui.icon.compact.message.warning.hidden#clickNextHelpMessage
          i.close.icon
          i.question.icon.float
          .content
            .ui.header Need some help?
            p Scroll up and click "Next" to begin!
+           
        .ui.icon.compact.message.warning.hidden#removeHidden
          i.close.icon
          i.question.icon.float
@@ -25,11 +27,12 @@ block content
          .content
            .ui.header There are still blue dots to find!
            p Click through all of the blue dots to continue.
+           
        .ui.icon.message.success.hidden#instructionsToContinue
          .content
            .ui.header Click on the article to continue! 
 
-   .ui.grid.gridInsideTab(style="margin-bottom:12em;")  
+   .ui.grid.gridInsideTab 
      .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.centered
        
        .ui.fluid.card.dim()#step1

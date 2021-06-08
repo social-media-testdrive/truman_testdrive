@@ -54,7 +54,7 @@ function customOnHintCloseFunction(stepID){
     if($('#removeHidden').is(":visible")){
       $('#removeHidden').transition('fade');
     }
-    $('.searchTab').removeClass('testDriveLightGray').addClass('green');
+    $('.searchTab').addClass('green');
     $('#instructionsToContinue').show();
 
   } else {

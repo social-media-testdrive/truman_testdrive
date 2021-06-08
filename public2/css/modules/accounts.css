@@ -11,24 +11,27 @@
 /* https://github.com/kylewelsby/dotsfonts */
 
 #customPasswordInput {
-  font-size: 14px;
+  font-size: 1em;
   height: 50px;
+  text-security: disc;
+  -webkit-text-security:disc;
+  font-family: dotsfont;
 }
 
 #removeHidden, #clickAllDotsWarning{
   display: none;
 }
 
-.ui.form{
+.ui.form {
   font-size: 130%;
 }
 
-.addFieldSpacingBottom {
-  margin-bottom: 1em !important;
+.ui.form label.addFieldSpacingBottom {
+  margin-bottom: 1em;
 }
 
-.addFieldSpacingTop{
-  margin-top: 1em !important;
+.ui.form label..addFieldSpacingTop{
+  margin-top: 1em;
 }
 
 .ui.form .ui.warning.message{

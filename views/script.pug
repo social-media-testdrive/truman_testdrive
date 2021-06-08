@@ -28,16 +28,16 @@ block content
       
   #loading.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
     img.ui.centered.small.image(src='/images/heart.svg')
-  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.contentColumn(style='display: none;')  
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.contentColumn.hidden
     //- Input for creating new post at top of feed
-    .ui.sticky.newPostSticky(style="z-index:800 !important;")
-      #newpost.ui.fluid.left.labeled.right.icon.input.habitsHomeDisplay(style="box-shadow: 7px -2px 6px 18px #f5f8fa;")
-        .ui.label(style="border-radius:0;")
+    .ui.sticky.newPostSticky
+      #newpost.ui.fluid.left.labeled.right.icon.input.habitsHomeDisplay
+        .ui.label
           if user.profile.picture
             img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture)
           else
             img.ui.avatar.image(src=user.gravatar(60))
-        input(type='text', placeholder='Create a post', style="border-radius:0;")
+        input(type='text', placeholder='Create a post')
         i.big.photo.link.icon
 
     each val in script
