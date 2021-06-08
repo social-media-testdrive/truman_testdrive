@@ -1,14 +1,8 @@
-const fs = require('fs');
-const passport = require('passport');
 const User = require('../models/User');
 const Class = require('../models/Class.js');
-/*
- * Dependencies that were listed but don't appear to be used
- */
-// const bluebird = require('bluebird');
-// const crypto = bluebird.promisifyAll(require('crypto'));
-// const nodemailer = require('nodemailer');
-// const moment = require('moment');
+const passport = require('passport');
+const fs = require('fs');
+
 // const Notification = require('../models/Notification.js');
 
 //create random id for guest accounts
@@ -206,38 +200,6 @@ exports.getGuest = (req, res, next) => {
   });
 };
 
-/**
- * POST /account/profile
- * Update profile information.
- */
-exports.postSignupInfo = (req, res, next) => {
-  User.findById(req.user.id, (err, user) => {
-    if (err) { return next(err); }
-    //user.email = req.body.email || '';
-    user.profile.name = req.body.name || '';
-    user.profile.location = req.body.location || '';
-    user.profile.bio = req.body.bio || '';
-
-    if (req.file)
-    {
-      //console.log("Changeing Picture now to: "+ req.file.filename);
-      user.profile.picture = req.file.filename;
-    }
-
-    user.save((err) => {
-      if (err) {
-        if (err.code === 11000) {
-          req.flash('errors', { msg: 'The email address you have entered is already associated with an account.' });
-          return res.redirect('/signup_info');
-        }
-        return next(err);
-      }
-      req.flash('success', { msg: 'Profile information has been updated.' });
-      res.redirect('/info');
-    });
-  });
-};
-
 /*
  * GET /account/:modId
  * Update profile page.
@@ -337,40 +299,6 @@ exports.postName = (req, res, next) => {
       }
       res.redirect(`/viewClass/${req.body.accessCode}`);
     });
-  });
-};
-
-exports.getReflectionCsv = (req, res, next) => {
-  User.findById(req.user.id, (err, user) =>{
-    if (err) {
-      return next(err);
-    }
-    if (!req.user.isInstructor) {
-      res.redirect('/login');
-    }
-    let reflectionCsv = '';
-    if (user.reflectionCsv) {
-       reflectionCsv = user.reflectionCsv;
-    }
-    res.set('Content-Type', 'text/csv');
-    res.send(reflectionCsv);
-  });
-};
-
-exports.getTimeReportCsv = (req, res, next) => {
-  User.findById(req.user.id, (err, user) =>{
-    if (err) {
-      return next(err);
-    }
-    if (!req.user.isInstructor) {
-      res.redirect('/login');
-    }
-    let timeReportCsv = '';
-    if (user.timeReportCsv) {
-       timeReportCsv = user.timeReportCsv;
-    }
-    res.set('Content-Type', 'text/csv');
-    res.send(timeReportCsv);
   });
 };
 
@@ -541,6 +469,10 @@ exports.postUpdateNewBadge = (req, res, next) => {
   });
 }
 
+/**
+ * GET /studentReportData/:classId/:username
+ * Get the data used to populate the student report page on the teacher dashboard
+ */
 exports.getStudentReportData = (req, res, next) => {
   if (!req.user.isInstructor) {
     return res.json({studentPageTimes: {}});
@@ -603,6 +535,7 @@ exports.getStudentReportData = (req, res, next) => {
   });
 }
 
+// Helper function to get the Date the user last accessed the given module
 function getDateLastAccessed(pageLog, modName) {
   /*
   New pageLog item added each time a user opens a page.
@@ -623,6 +556,10 @@ function getDateLastAccessed(pageLog, modName) {
   return lastAccessed;
 }
 
+/**
+ * GET /getLearnerGeneralModuleData
+ * Get general data needed to populate the learner dashboard
+ */
 exports.getLearnerGeneralModuleData = (req, res, next) => {
   if (!req.user.isStudent){
     return res.status(400).send('Bad Request')
@@ -678,6 +615,7 @@ exports.getLearnerGeneralModuleData = (req, res, next) => {
   res.send(moduleStatuses);
 }
 
+// Helper function to get the data from the given .json file
 async function getSectionJsonFromFile(filePath) {
   let readFilePromise = function(filePath) {
     return new Promise((resolve, reject) => {
@@ -701,6 +639,10 @@ async function getSectionJsonFromFile(filePath) {
   return sectionJson;
 }
 
+/**
+ * GET /getLearnerSectionTimeData
+ * Get the time data needed to populate the learner dashboard
+ */
 exports.getLearnerSectionTimeData = async (req, res, next) => {
   if (!req.user.isStudent){
     return res.status(400).send('Bad Request')
@@ -800,6 +742,10 @@ exports.getLearnerSectionTimeData = async (req, res, next) => {
   res.send(allSectionTimeData);
 }
 
+/**
+ * GET /getLearnerEarnedBadges
+ * Get the list of badges earned by the current user.
+ */
 exports.getLearnerEarnedBadges = (req, res, next) => {
   if (!req.user.isStudent) {
     return res.status(400).send('Bad Request')
@@ -875,32 +821,6 @@ exports.postUpdateProfile = (req, res, next) => {
 };
 
 /**
- * POST /account/password
- * Update current password.
- */
-exports.postUpdatePassword = (req, res, next) => {
-  req.assert('password', 'Password must be at least 4 characters long').len(4);
-  req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
-
-  const errors = req.validationErrors();
-
-  if (errors) {
-    req.flash('errors', errors);
-    return res.redirect('/account');
-  }
-
-  User.findById(req.user.id, (err, user) => {
-    if (err) { return next(err); }
-    user.password = req.body.password;
-    user.save((err) => {
-      if (err) { return next(err); }
-      req.flash('success', { msg: 'Password has been changed.' });
-      res.redirect('/account');
-    });
-  });
-};
-
-/**
  * POST /delete
  * Delete user account.
  */
@@ -938,28 +858,11 @@ exports.getDeleteAccount = (req, res, next) => {
   }
 };
 
-/**
- * GET /account/unlink/:provider
- * Unlink OAuth provider.
- */
-exports.getOauthUnlink = (req, res, next) => {
-  const provider = req.params.provider;
-  User.findById(req.user.id, (err, user) => {
-    if (err) { return next(err); }
-    user[provider] = undefined;
-    user.tokens = user.tokens.filter(token => token.kind !== provider);
-    user.save((err) => {
-      if (err) { return next(err); }
-      req.flash('info', { msg: `${provider} account has been unlinked.` });
-      res.redirect('/account');
-    });
-  });
-};
-
-
+/* ########################################################################## */
 /*
- * These do not seem to be used in TestDrive - they are all likely safe to delete.
- * Clean up the corresponding routes in app.js as well when these are removed.
+ * These functions do not seem to be used in TestDrive - they are all likely
+ * safe to delete. Clean up the corresponding routes in app.js as well when
+ * these are removed.
  */
 
  // /**
@@ -969,6 +872,38 @@ exports.getOauthUnlink = (req, res, next) => {
  // exports.getSignupInfo = (req, res) => {
  //   res.render('account/signup_info', {
  //     title: 'Add Information', mod: req.params.modId
+ //   });
+ // };
+
+ // /**
+ //  * POST /account/profile
+ //  * Update profile information.
+ //  */
+ // exports.postSignupInfo = (req, res, next) => {
+ //   User.findById(req.user.id, (err, user) => {
+ //     if (err) { return next(err); }
+ //     //user.email = req.body.email || '';
+ //     user.profile.name = req.body.name || '';
+ //     user.profile.location = req.body.location || '';
+ //     user.profile.bio = req.body.bio || '';
+ //
+ //     if (req.file)
+ //     {
+ //       //console.log("Changeing Picture now to: "+ req.file.filename);
+ //       user.profile.picture = req.file.filename;
+ //     }
+ //
+ //     user.save((err) => {
+ //       if (err) {
+ //         if (err.code === 11000) {
+ //           req.flash('errors', { msg: 'The email address you have entered is already associated with an account.' });
+ //           return res.redirect('/signup_info');
+ //         }
+ //         return next(err);
+ //       }
+ //       req.flash('success', { msg: 'Profile information has been updated.' });
+ //       res.redirect('/info');
+ //     });
  //   });
  // };
 

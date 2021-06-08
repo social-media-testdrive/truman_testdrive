@@ -83,7 +83,8 @@ const actorsController = require('./controllers/actors');
 const scriptController = require('./controllers/script');
 const classController = require('./controllers/class');
 const userController = require('./controllers/user');
-const notificationController = require('./controllers/notification');
+// Notifications not currently used in TestDrive.
+// const notificationController = require('./controllers/notification');
 
 /*
  * API keys and Passport configuration.
@@ -540,14 +541,11 @@ if (enableTeacherDashboard) {
   app.get('/classReflectionResponses/:classId', passportConfig.isAuthenticated, setHttpResponseHeaders, classController.getReflectionResponses);
   app.get('/classFreeplayActions/:classId/:modName', passportConfig.isAuthenticated, setHttpResponseHeaders, classController.getClassFreeplayActions);
   app.get('/studentReportData/:classId/:username', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, userController.getStudentReportData);
-  app.get('/getReflectionCsv', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, userController.getReflectionCsv);
-  app.get('/getTimeReportCsv', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, userController.getTimeReportCsv);
   app.get('/singlePost/:postId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, scriptController.getSinglePost);
   app.post('/downloadReflectionResponses/:classId/:modName', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, classController.postClassReflectionResponsesCsv);
   app.post('/postClassTimeReportCsv/:classId/:modName', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, classController.postClassTimeReportCsv);
   app.post('/createNewClass', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, classController.postCreateClass);
   app.post('/deleteClass', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, classController.postDeleteClass);
-  app.post('/addStudentToClass', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, classController.addStudentToClass);
   app.post('/removeStudentFromClass', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, classController.removeStudentFromClass);
   app.post('/generateStudentAccounts', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, classController.generateStudentAccounts);
   app.post('/updateName', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, userController.postName);

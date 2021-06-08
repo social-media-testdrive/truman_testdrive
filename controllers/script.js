@@ -1,9 +1,7 @@
 const Script = require('../models/Script.js');
 const User = require('../models/User');
 const Notification = require('../models/Notification');
-const fs = require('fs')
 const _ = require('lodash');
-const aws = require('aws-sdk');
 
 /**
  * GET /habitsNotificationTimes
@@ -249,18 +247,10 @@ exports.getScript = (req, res, next) => {
   });
 };
 
-exports.getScriptPost = (req, res) => {
-	Script.findOne({ _id: req.params.id}, (err, post) => {
-		//console.log(post);
-		res.render('script_post', { post: post });
-	});
-};
-
-
 /**
  * GET /testing/:modId
  * Get list of Script posts for Feed
- * Made for testing
+ * Made for load testing - not sure if it should be deleted
  */
 exports.getScriptFeed = (req, res, next) => {
   //console.log("$#$#$#$#$#$#$START GET FEED$#$#$$#$#$#$#$#$#$#$#$#$#");
@@ -269,44 +259,34 @@ exports.getScriptFeed = (req, res, next) => {
   //study2_n0_p0
   //console.log("$#$#$#$#$#$#$START GET FEED$#$#$$#$#$#$#$#$#$#$#$#$#");
   var scriptFilter = "";
-
-
-
   var profileFilter = "";
   //study3_n20, study3_n80
-
-
-
   //scriptFilter = req.params.caseId;
-
   //req.params.modId
   //console.log("#############SCRIPT FILTER IS NOW " + scriptFilter);
-
   //{
+  Script.find()
+    //.where('time').lte(time_diff)//.gte(time_limit)
+    .where('module').equals(req.params.modId)
+    .sort('-time')
+    .populate('actor')
+    .populate({
+     path: 'comments.actor',
+     populate: {
+       path: 'actor',
+       model: 'Actor'
+     }
+  })
+    .exec(function (err, script_feed) {
+      if (err) { return next(err); }
+      //Successful, so render
 
-    Script.find()
-      //.where('time').lte(time_diff)//.gte(time_limit)
-      .where('module').equals(req.params.modId)
-      .sort('-time')
-      .populate('actor')
-      .populate({
-       path: 'comments.actor',
-       populate: {
-         path: 'actor',
-         model: 'Actor'
-       }
-    })
-      .exec(function (err, script_feed) {
-        if (err) { return next(err); }
-        //Successful, so render
-
-        //update script feed to see if reading and posts has already happened
-        var finalfeed = [];
-        finalfeed = script_feed;
-        //console.log("Script Size is now: "+finalfeed.length);
-        res.render('feed', { script: finalfeed});
-      });//end of Script.find()
-
+      //update script feed to see if reading and posts has already happened
+      var finalfeed = [];
+      finalfeed = script_feed;
+      //console.log("Script Size is now: "+finalfeed.length);
+      res.render('feed', { script: finalfeed});
+    });//end of Script.find()
 };//end of .getScript
 
 /**
@@ -376,7 +356,6 @@ function _postAction(req, res, next, functionToRun){
     });
   });
 }
-
 
 function _postUpdateFeedAction(req, user){
   let userAction = user.feedAction;
@@ -613,7 +592,7 @@ exports.postStartPageAction = (req, res, next) => {
 };
 
 /**
- * POST /introjsStep/
+ * POST /introjsStep
  * Update log data for a introjs step\
  * TODO: This function should probably be moved to the user controller.
 */
@@ -655,7 +634,7 @@ exports.postIntrojsStepAction = (req, res, next) => {
 };
 
 /*
- * POST /reflectionAction
+ * POST /reflection
  * Update a response in the reflection section
  * Each reflection question gets its own action
  * TODO: This function should probably be moved to the user controller.

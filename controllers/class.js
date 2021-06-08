@@ -1,13 +1,10 @@
-const fs = require('fs');
 const Class = require('../models/Class.js');
 const User = require('../models/User');
-var ObjectId = require('mongoose').Types.ObjectId;
 const CSVToJSON = require("csvtojson");
-const _ = require('lodash');
-var async = require('async');
+const fs = require('fs');
 const createCsvStringifier = require('csv-writer').createObjectCsvStringifier;
 
-/*
+/**
  * GET /classManagement
  * Render the class management page in the teacher dashboard
  */
@@ -25,7 +22,10 @@ exports.getClasses = (req, res) => {
   }
 }
 
-// Return how many students there are in a specified class
+/**
+ * GET /classSize/:classId
+ * Return how many students there are in a specified class
+ */
 exports.getClassSize = (req, res, next) => {
   if (!req.user.isInstructor){
     res.redirect('/');
@@ -80,7 +80,10 @@ exports.getClass = (req, res, next) => {
   }
 }
 
-// Get list of usernames for all students in a class
+/**
+ * GET /classUsernames/:classId
+ * Get list of usernames for all students in a class
+ */
 exports.getClassUsernames = (req, res, next) => {
   if (!req.user.isInstructor) {
     return res.json({classUsernames: []});
@@ -132,7 +135,10 @@ exports.getClassIdList = (req, res, next) => {
   });
 }
 
-// Show info on a class such as: student activity
+/**
+ * GET /moduleProgress/:classId
+ * Get the module progress status for all students in a class
+ */
 exports.getModuleProgress = (req, res, next) => {
   if (!req.user.isInstructor) {
     return res.json({classModuleProgress: {}});
@@ -207,8 +213,11 @@ function getClassPageTimes(found_class, modName) {
   return classPageTimes;
 }
 
-// Gets page times for an entire class, only reports logs of completed modules.
-// Optional parameter of modName to further filter page time list.
+/**
+ * GET /classPageTimes/:classId/:modName
+ * Gets page times for an entire class, only reports logs of completed modules.
+ * Optional parameter of modName to further filter page time list.
+ */
 exports.getClassPageTimes = (req, res, next) => {
   if (!req.user.isInstructor) {
     return res.json({classPageTimes: {}});
@@ -235,6 +244,10 @@ exports.getClassPageTimes = (req, res, next) => {
   });
 }
 
+/**
+ * GET /classFreeplayActions/:classId/:modName
+ * Get the feedAction data within the specified module for each student in the class.
+ */
 exports.getClassFreeplayActions = (req, res, next) => {
   if (!req.user.isInstructor) {
     return res.json({classFreeplayActions: {}});
@@ -270,7 +283,10 @@ exports.getClassFreeplayActions = (req, res, next) => {
   });
 }
 
-// Show info on a class such as: student activity
+/**
+ * GET /classReflectionResponses/:classId
+ * Get all of the reflection responses for each student in the class.
+ */
 exports.getReflectionResponses = (req, res, next) => {
   if (!req.user.isInstructor) {
     return res.json({classReflectionResponses: {}});
@@ -301,7 +317,6 @@ exports.getReflectionResponses = (req, res, next) => {
     res.json({reflectionResponses: outputData});
   });
 }
-
 
 /**
  * POST /class/create
@@ -358,7 +373,11 @@ exports.postCreateClass = (req, res, next) => {
 }
 
 /**
- * Delete a class
+ * POST /deleteClass
+ * Mark a class as "deleted", but do not actually remove it from the database.
+ * The class should gerernally be treated as though it is deleted on the front
+ * end - it should not appear in charts, downloadable csvs, class lists, etc. This
+ * behavior was specifically requested by the researchers.
  */
 exports.postDeleteClass = async (req, res, next) => {
   if (!req.user.isInstructor) {
@@ -403,39 +422,14 @@ exports.postDeleteClass = async (req, res, next) => {
   });
 }
 
-exports.addStudentToClass = (req, res, next) => {
-  Class.findOne({
-    className: req.body.className,
-    deleted: false
-  }, (err, existingClass) => {
-    if(err) {
-      return next(err);
-    }
-    if(!existingClass) {
-      req.flash('errors', {msg: `There was an issue finding the class name. Try again, or click "Contact Us" for assistance.`})
-      res.redirect(`/viewClass/${req.body.classId}`);
-    }
-    User.findOne({username: req.body.studentUsername}, (err, student) => {
-      if(err){
-        return next(err);
-      }
-      if(!student){
-        req.flash('errors', {msg: `No students found with the username '${req.body.studentUsername}'.`})
-        res.redirect(`/viewClass/${req.body.classId}`);
-      }
-      if(student){
-        existingClass.students.push(student._id);
-        existingClass.save((err) => {
-          if (err) {
-            return next(err);
-          }
-          res.redirect(`/viewClass/${req.body.classId}`);
-        });
-      }
-    });
-  });
-}
-
+/**
+ * POST /removeStudentFromClass
+ * Remove a student from the specified class and mark the student as "deleted" in the
+ * database, but do not actually remove the account from the database.
+ * The account should gerernally be treated as though it is deleted on the front
+ * end - it should not appear in charts, downloadable csvs, class lists, etc. This
+ * behavior was specifically requested by the researchers.
+ */
 exports.removeStudentFromClass = (req, res, next) => {
   if (req.user.isInstructor) {
     Class.findOne({
@@ -562,6 +556,10 @@ async function saveUsernameInExistingClass(req, item, existingClass) {
   }
 }
 
+/**
+ * POST /generateStudentAccounts
+ * Generate the specified number of student accounts. Each username must be unique.
+ */
 exports.generateStudentAccounts = async (req, res, next) => {
   // get the current class by its name
   Class.findOne({
@@ -627,6 +625,11 @@ exports.generateStudentAccounts = async (req, res, next) => {
     }
   });
 }
+
+/*
+ * The following funtcions are all helper functions for creating the reflection
+ * response csv.
+ */
 
 function buildHeaderArray(moduleQuestions){
   let headerArray = [
@@ -985,6 +988,11 @@ function addClassReflectionRecords(modName, headerArray, records, moduleQuestion
   return records;
 }
 
+/**
+ * POST /downloadReflectionResponses/:classId/:modName
+ * Create and download a csv with the class's reflection responses for this
+ * module. The responses are compared against an answer key where applicable.
+ */
 exports.postClassReflectionResponsesCsv = async (req, res, next) => {
   if (!req.user.isInstructor) {
     return res.status(400).send('Bad Request')
@@ -1046,6 +1054,10 @@ exports.postClassReflectionResponsesCsv = async (req, res, next) => {
   });
 }
 
+/**
+ * POST /postClassTimeReportCsv/:classId/:modName
+ * Create and download a cav with the class's time report data for this module.
+ */
 exports.postClassTimeReportCsv = async (req, res, next) => {
   if (!req.user.isInstructor) {
     return res.json({classReflectionResponses: {}});

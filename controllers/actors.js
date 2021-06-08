@@ -1,15 +1,7 @@
 const Actor = require('../models/Actor.js');
 const Script = require('../models/Script.js');
 const User = require('../models/User');
-var ObjectId = require('mongoose').Types.ObjectId;
 const _ = require('lodash');
-
-
-exports.getActors = (req, res) => {
-  Actor.find((err, docs) => {
-    res.render('actors', { actors: docs });
-  });
-};
 
 /*
  * GET /user/:userId

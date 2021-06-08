@@ -1,12 +1,12 @@
-const Script = require('../models/Script.js');
-const User = require('../models/User');
-const Notification = require('../models/Notification.js');
-const _ = require('lodash');
-
 /*
  * Notifications are not currently used in TestDrive. Keeping this code in case
  * it may be useful later.
  */
+
+// const Script = require('../models/Script.js');
+// const User = require('../models/User');
+// const Notification = require('../models/Notification.js');
+// const _ = require('lodash');
 
 // /**
 //  * GET /
