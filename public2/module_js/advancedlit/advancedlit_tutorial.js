@@ -276,9 +276,9 @@ function startThirdIntro(){
 
   thirdIntro.onbeforechange( function() {
     let currentStep = $(this)[0]._currentStep;
-    if(currentStep === 1){
+    if(currentStep === 2){
       window.scrollTo(0, 0);
-      $('.ui.big.button.homeTab').addClass('testDriveBlue');
+      $('.ui.big.button.homeTab').addClass('testDriveBlueButton');
     }
   });
 
@@ -287,7 +287,7 @@ function startThirdIntro(){
   });
 
   $('.ui.big.button.homeTab').on('click', function(){
-    if($(this).hasClass('testDriveBlue')){
+    if($(this).hasClass('testDriveBlueButton')){
       thirdIntro.exit();
       $('#instructionsToContinueThree').hide();
       changeActiveTab('home');

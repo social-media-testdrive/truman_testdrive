@@ -8,6 +8,11 @@
   cursor: pointer;
 }
 
+.ui.button.testDriveBlueButton.active {
+  background-color: #14a1f6;
+  color: white;
+}
+
 /* tabs - general */
 
 .ui.tab {
@@ -78,7 +83,8 @@ i.caret.icon {
 
 /* sim */
 
-.ui.grid .removeColumnPadding {
+.ui.grid .removeColumnPadding,
+.ui.grid .column.removeColumnPadding {
   padding: 0;
 }
 
