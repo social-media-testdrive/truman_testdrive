@@ -26,7 +26,6 @@ fs.readFileAsync = util.promisify(fs.readFile);
  */
 // const chalk = require('chalk');
 // const compression = require('compression');
-// const expressStatusMonitor = require('express-status-monitor');
 // var schedule = require('node-schedule');
 // const aws = require('aws-sdk');
 
@@ -133,7 +132,6 @@ mongoose.connection.on('error', (err) => {
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-//app.use(expressStatusMonitor());
 //We do compression on our production server using nginx as a reverse proxy
 //app.use(compression());
 /*
@@ -235,7 +233,7 @@ function setHttpResponseHeaders(req, res, next) {
     'Pragma': 'no-cache',
     'Content-Type': 'text/html; charset=UTF-8',
     'Content-Security-Policy':
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/;" +
+      "script-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/;" +
       "default-src 'self';" +
       "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
       "img-src 'self' https://dhpd030vnpk29.cloudfront.net;" +
@@ -379,6 +377,17 @@ app.get('/results/:modId', passportConfig.isAuthenticated, setHttpResponseHeader
 });
 
 app.get('/sim/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
+  if (req.params.modId === 'safe-posting') {
+    res.set({
+      'Content-Security-Policy':
+        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/;" +
+        "default-src 'self';" +
+        "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
+        "img-src 'self' https://dhpd030vnpk29.cloudfront.net;" +
+        "media-src https://dhpd030vnpk29.cloudfront.net;" +
+        "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:"
+    });
+  }
   res.render(req.params.modId + '/' + req.params.modId + '_sim', {
     title: 'Guided Activity'
   });
@@ -443,6 +452,17 @@ app.get('/trans_script/:modId', passportConfig.isAuthenticated, setHttpResponseH
 });
 
 app.get('/tutorial/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
+  if (req.params.modId === 'safe-posting') {
+    res.set({
+      'Content-Security-Policy':
+        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/;" +
+        "default-src 'self';" +
+        "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
+        "img-src 'self' https://dhpd030vnpk29.cloudfront.net;" +
+        "media-src https://dhpd030vnpk29.cloudfront.net;" +
+        "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:"
+    });
+  }
   res.render(req.params.modId + '/' + req.params.modId  + '_tutorial', {
     title: 'Tutorial'
   });
@@ -455,6 +475,17 @@ app.get('/tutorial2/:modId',passportConfig.isAuthenticated, setHttpResponseHeade
 });
 
 app.get('/tut_guide/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
+  if (req.params.modId === 'safe-posting') {
+    res.set({
+      'Content-Security-Policy':
+        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/;" +
+        "default-src 'self';" +
+        "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
+        "img-src 'self' https://dhpd030vnpk29.cloudfront.net;" +
+        "media-src https://dhpd030vnpk29.cloudfront.net;" +
+        "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:"
+    });
+  }
   res.render(req.params.modId + '/' + req.params.modId + '_tut_guide', {
     title: 'Tutorial'
   });

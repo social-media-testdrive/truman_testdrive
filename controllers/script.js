@@ -241,6 +241,17 @@ exports.getScript = (req, res, next) => {
       } else if (req.params.modId == "targeted"){
         res.render('targeted/targeted_script', { script: finalfeed, mod: req.params.modId});
       } else {
+        if(req.params.modId === 'safe-posting') {
+          res.set({
+            'Content-Security-Policy':
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/;" +
+              "default-src 'self';" +
+              "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
+              "img-src 'self' https://dhpd030vnpk29.cloudfront.net;" +
+              "media-src https://dhpd030vnpk29.cloudfront.net;" +
+              "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:"
+          });
+        }
         res.render('script', { script: finalfeed, mod: req.params.modId});
       }
     });
