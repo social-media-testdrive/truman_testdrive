@@ -154,7 +154,7 @@ app.use(session({
     httpOnly: true,
     secure: false,
     maxAge: 1209600000,
-    sameSite: true
+    sameSite: 'lax'
   },
   secret: process.env.SESSION_SECRET,
   store: new MongoStore({
