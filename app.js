@@ -634,39 +634,6 @@ if (enableLearnerDashboard) {
   });
 }
 
-
-/*
- * These routes do not seem to be used in TestDrive - they are all likely safe to delete.
- * Clean up the controllers as well when these are removed.
- */
-// app.get('/account/signup_info', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, userController.getSignupInfo);
-// app.post('/account/signup_info_post', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, useravatarupload.single('picinput'), check, userController.postSignupInfo);
-// app.post('/api/upload', upload.single('myFile'), apiController.postFileUpload);
-// app.get('/bell', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.checkBell);
-// app.get('/create_bio', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.getSignupBio);
-// app.post('/create_bio', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.postSignupBio);
-// app.get('/create_instructor',  userController.getSignupInstructor);
-// app.post('/create_instructor', userController.postSignupInstructor);
-// app.get('/create_name', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.getSignupName);
-// app.post('/create_name', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.postSignupName);
-// app.get('/create_password', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.getSignupPassword);
-// app.post('/create_password', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.postSignupPassword);
-// app.get('/create_username', setHttpResponseHeaders, userController.getSignupUsername);
-// app.post('/create_username', setHttpResponseHeaders, userController.postSignupUsername);
-// app.get('/create_username_class/:classId', userController.getSignupUsername);
-// app.post('/create_username_class/:classId', userController.postSignupUsernameClass);
-// app.get('/forgot', userController.getForgot);
-// app.post('/forgot', userController.postForgot);
-// app.get('/notifications', passportConfig.isAuthenticated, setHttpResponseHeaders, notificationController.getNotifications);
-// app.get('/reset/:token', userController.getReset);
-// app.post('/reset/:token', userController.postReset);
-// app.get('/review/signup', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.getSignupReview);
-// app.get('/signup', csrfProtection, addCsrf, userController.getSignup);
-// app.post('/signup', check, csrfProtection, userController.postSignup);
-// app.post('/signup', userController.getGuest);
-// app.post('/user', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, actorsController.postBlockOrReport);
-// app.get('/:sec/:modId/wait', passportConfig.isAuthenticated, scriptController.getWait);
-
 /*
  * Error Handler.
  */

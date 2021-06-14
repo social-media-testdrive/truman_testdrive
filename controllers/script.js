@@ -733,17 +733,3 @@ exports.postBlueDotAction = (req, res, next) => {
     });
   });
 };
-
-/*
- * This does not seem to be used in TestDrive - likely safe to delete.
- * Clean up the corresponding route in app.js as well when this is removed.
- */
-
-// /*
-// ##############
-// Get WAIT page
-// ##############
-// */
-// exports.getWait = (req, res) => {
-//     res.render('wait', { sec: req.params.sec, mod: req.params.modId});
-// };
