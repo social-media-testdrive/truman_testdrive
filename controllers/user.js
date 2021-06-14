@@ -791,18 +791,16 @@ exports.postUpdateProfile = (req, res, next) => {
     user.profile.bio = req.body.bio || '';
     user.profile.picture = req.body.profilePhoto;
 
-    // log the change in profileHistory
-
-    let cat = new Object();
-
-    cat.absoluteTimeChanged = Date.now();
-    cat.name = req.body.name || '';
-    cat.location = req.body.location || '';
-    cat.bio = req.body.bio || '';
-    cat.picture= req.body.profilePhoto || '';
-
-    user.profileHistory.push(cat);
-
+    // log the change in profileHistory if data collection is enabled
+    if (req.body.enableDataCollection === "true") {
+      let cat = new Object();
+      cat.absoluteTimeChanged = Date.now();
+      cat.name = req.body.name || '';
+      cat.location = req.body.location || '';
+      cat.bio = req.body.bio || '';
+      cat.picture= req.body.profilePhoto || '';
+      user.profileHistory.push(cat);
+    }
 
     user.save((err) => {
       if (err) {

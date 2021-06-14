@@ -11,6 +11,7 @@ block content
         |  Choose a Profile Photo
     form.ui.form(action='/account/profile/'+mod, method='POST', enctype='multipart/form-data')
       input(type='hidden', name='_csrf', value=csrfToken)
+      input(type='hidden', name='enableDataCollection', value=process.env.enableDataCollection)
       input(type='hidden', name='profilePhoto', value=user.profile.picture)
       .field(data-tooltip="Remember, this information is stored on the site until you finish the lesson. Think about using a nickname or an alias instead of your real name." data-position="bottom left")
         label(for='name') Name
