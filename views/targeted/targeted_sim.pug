@@ -7,8 +7,8 @@ block content
   
   .computer.only.tablet.only.four.wide.column 
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
-    .ui.one.column.centered.grid
-      .ui.fixed.bottom.sticky(style='z-index:10000000;')
+    .ui.one.column.centered.grid.feedbackMessagesGrid
+      .ui.fixed.bottom.sticky
         .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
           i.close.icon
           i.question.icon.float
@@ -39,18 +39,14 @@ block content
               h3.ui.inverted.header
                 span 
                   | The admins will review this ad further. We are sorry you had 
-                  | this experience.
-                
+                  | this experience.              
       .ui.inverted.dimmer.notflag
         .content
           .center
             h2.ui.inverted.icon.header
               i.eye.slash.icon
-              h1.ui.header You&apos;ve hidden this ad!
-            
-
-      .content#hint1
-          
+              h1.ui.header You&apos;ve hidden this ad!  
+      .content#hint1    
         .ui.right.floated.menu#hint2
           .ui.dropdown.icon.item
             i.ellipsis.horizontal.icon
@@ -63,15 +59,12 @@ block content
                 | Report Ad
               .item(data-value='2')
                 i.fitted.circular.question.icon
-                | Why Am I Seeing This Ad?
-                  
+                | Why Am I Seeing This Ad?          
         a.left.floated(href='/user/goldenguitarsca')
           img.ui.avatar.image(src=cdn+'/profile_pictures/golden_guitars_pfp.jpg')
           span#companyName='Golden Guitars'
-
       .image
         img.post(src=cdn+'/post_pictures/golden_guitar_ad.jpg')
-
       #step4.content
         .description#hint3
           | You can be the best with Golden Guitars.
@@ -88,7 +81,6 @@ block content
             i.heart.icon
             |  Like
           a.ui.basic.red.left.pointing.label.count=46
-      
       .content
         .ui.comments
           .comment
@@ -360,7 +352,7 @@ block content
                     
     br
 
-    button.ui.big.labeled.icon.button.cybertrans#cyberTransButton(style="margin-bottom:4em;")
+    button.ui.big.labeled.icon.button.cybertrans#cyberTransButton
         i.rocket.icon
         |   Let's Continue!
         

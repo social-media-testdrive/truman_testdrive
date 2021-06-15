@@ -6,19 +6,15 @@ block content
     br
     
     h2.ui.header
-      //- i.check.square.outline.green.icon
       .content What can you do if you want to prevent targeted advertisements?
         .sub.header 
           br  
-          span(style="color:#000000;") 
+          span.blackText
             | While it's hard to avoid targeted ads altogether, there are some 
             | things you can do to limit the amount of data companies track and 
             | the amount of targeted ads you see.
         
         .sub.header 
-          //- br
-          //- i.eye.icon 
-          //- span Read and check all the boxes
           br
           .ui.compact.segment
             .ui.large.read-only.checked.checkbox.exampleCheckbox
@@ -80,7 +76,7 @@ block content
                 label If it is not required, do not provide your information or link your profile to a website.
                            
     br
-    .ui.warning.message#checkAllBoxesWarning(style="display:none;")
+    .ui.warning.message.hidden#checkAllBoxesWarning
      .header
       | Check all the boxes to proceed
     .ui.big.labeled.icon.button.cybersim#cyberSimButton
@@ -110,6 +106,7 @@ block scripts
   script(src="/module_js/targeted/targeted_tut_guide.js")
   
 block styles
+  link(rel='stylesheet' href='/css/modules/targeted.css')
   link(rel='stylesheet' href='/css/checkbox_activity.css')
 
   
