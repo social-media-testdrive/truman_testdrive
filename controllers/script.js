@@ -244,10 +244,10 @@ exports.getScript = (req, res, next) => {
         if(req.params.modId === 'safe-posting') {
           res.set({
             'Content-Security-Policy':
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/;" +
-              "default-src 'self';" +
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
+              "default-src 'self' https://www.google-analytics.com;" +
               "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
-              "img-src 'self' https://dhpd030vnpk29.cloudfront.net;" +
+              "img-src 'self' https://dhpd030vnpk29.cloudfront.net https://www.googletagmanager.com https://www.google-analytics.com;" +
               "media-src https://dhpd030vnpk29.cloudfront.net;" +
               "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:"
           });
