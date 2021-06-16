@@ -27,6 +27,25 @@ body {
   padding-bottom: 50px;
 }
 
+/* --- POPUP  MODALS --- */
+/* Adjust popup modal margins and heights due to site header and footer */
+
+/* Mobile sizing */
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  .ui.modals {
+    margin-top: 74px;
+    max-height: calc(100vh - 112px);
+  }
+}
+
+/* Tablet and up sizing  */
+@media only screen and (min-width: 768px) {
+  .ui.modals {
+    margin-top: 101px;
+    max-height: calc(100vh - 139px);
+  }
+}
+
 /* --- FEEDBACK MESSAGES --- */
 
 .ui.grid.feedbackMessagesGrid {
