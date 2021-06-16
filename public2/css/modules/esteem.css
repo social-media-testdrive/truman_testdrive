@@ -1,24 +1,8 @@
-/* trans2 */
-
-form label{
-  font-size: 120% !important;
-}
-
-.menu .item {
-  font-size: 100% !important;
-}
-
-#selectTopicError{
-  display: none;
-}
-
-/* trans script */
+/* used in trans script */
 
 .noLineBreak{
   white-space: nowrap;
 }
-
-/* general */
 
 .customCircularAvatar {
   object-fit: cover;
