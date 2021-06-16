@@ -68,6 +68,10 @@ button {
 
 /* --- POST APPEARANCES --- */
 
+.img.post img {
+  max-width:100%;
+}
+
 .ui.fluid.card>.content>.description {
   font-size: 1.30em;
 }
@@ -256,7 +260,7 @@ button {
 
 /* misc alignment classes */
 
-.addBottomMargin {
+.ui.grid .addBottomMargin {
   margin-bottom: 4em;
 }
 

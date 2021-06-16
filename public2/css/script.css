@@ -58,10 +58,6 @@
 
 /* normal actor post */
 
-.img.post img {
-  max-width:100%;
-}
-
 .img.post img.imageWithModal {
   cursor:pointer;
 }

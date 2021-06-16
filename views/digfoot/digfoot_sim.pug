@@ -8,20 +8,20 @@ block content
 
     .ui.one.column.centered.grid.feedbackMessagesGrid
       .ui.fixed.bottom.sticky
-        .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
+        .ui.icon.compact.message.warning.hidden#clickNextHelpMessage
           i.close.icon
           i.question.icon.float
           .content
             .ui.header Need some help?
             p Scroll up and click "Next" to begin!
-        .ui.icon.compact.message.warning#removeHidden
+        .ui.icon.compact.message.warning.hidden#removeHidden
           i.close.icon
           i.question.icon.float
           .content
             .ui.header Need some help? 
             p Make sure you are clicking "Got it" on the blue dots!
           
-        .ui.icon.message.warning#clickAllDotsWarning
+        .ui.icon.message.warning.hidden#clickAllDotsWarning
           i.close.icon
           i.hand.pointer.icon.float
           .content
@@ -70,7 +70,7 @@ block content
           i.checkmark.icon
     
     
-    .ui.fluid.left.labeled.right.icon.input#hint1(style="margin-top:1em;")
+    .ui.fluid.left.labeled.right.icon.input#hint1
       .ui.label
         if user.profile.picture
           img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture)
@@ -307,7 +307,7 @@ block content
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
             
-    button.ui.big.labeled.icon.button.cybertrans#cyberTransButton(style="margin-bottom:4em;")
+    button.ui.big.labeled.icon.button.cybertrans.addBottomMargin#cyberTransButton
           i.rocket.icon
           |   Let's Continue!
 
@@ -319,6 +319,3 @@ block scripts
 
   script(src="/module_js/digfoot/digfoot_sim.js")  
   script(src ="/module_js/base_sim.js")
-  
-block styles
-  link(rel='stylesheet', href='/css/modules/digfoot.css')  
