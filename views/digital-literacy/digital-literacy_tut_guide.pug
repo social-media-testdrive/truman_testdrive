@@ -2,15 +2,13 @@ extends ../ui_layout
 
 block content
   
-  .ui.text.container(style="margin-bottom:4em;")
+  .ui.text.container.addBottomMargin
     br
     
     h2.ui.header
-      //- i.check.square.outline.green.icon
       .content 
         | When you see a news article on social media, always check to make sure 
         | it's credible! Here are a few important things to do:
-      
         .sub.header 
           br
           .ui.compact.segment
@@ -69,7 +67,7 @@ block content
                   | such as Snopes.com, FactCheck.org, and major news websites.
                   
     br
-    .ui.warning.message#checkAllBoxesWarning(style="display:none;")
+    .ui.warning.message.hidden#checkAllBoxesWarning
      .header
       | Check all the boxes to proceed
     .ui.big.labeled.icon.button.cybersim#cyberSimButton

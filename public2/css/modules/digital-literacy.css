@@ -1,38 +1,21 @@
-/* custom cursor appearances */
-.ui.card .comments :not(.actions){
-  cursor: default;
-}
+/* Post appearances */
 
 .ui.card .description,
+.ui.card .img.post,
 .newsArticleTitleContainer {
   cursor: pointer;
 }
 
-/* sim and results */
-
-#clickArticleLinkWarning {
-  display: none;
+.ui.card .newsArticleTitleContainer {
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .info_button {
-  z-index:12;
-  text-align:center;
-  align-self:flex-end;
-  position:relative;
-  bottom:10px;
-  width:7%;
-  height:auto
-}
-
-
-/* tutorial */
-
-.img.post img{
-  max-width: 100%;
-}
-
-/* sim */
-
-.newsArticleTitleContainer {
-  background: rgba(0, 0, 0, 0.05) !important;
+  z-index: 12;
+  text-align: center;
+  align-self: flex-end;
+  position: relative;
+  bottom: 10px;
+  width: 7%;
+  height: auto;
 }

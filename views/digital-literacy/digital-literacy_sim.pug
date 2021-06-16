@@ -7,31 +7,29 @@ block content
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
     .ui.one.column.centered.grid.feedbackMessagesGrid
       .ui.fixed.bottom.sticky
-        .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
+        .ui.icon.compact.message.warning.hidden#clickNextHelpMessage
           i.close.icon
           i.question.icon.float
           .content
             .ui.header Need some help?
             p Scroll up and click "Next" to begin!
-        .ui.icon.compact.message.warning#removeHidden
+        .ui.icon.compact.message.warning.hidden#removeHidden
           i.close.icon
           i.question.icon.float
           .content
             .ui.header Need some help? 
             p Make sure you are clicking "Got it" on the blue dots!
-        .ui.icon.message.warning#clickAllDotsWarning
+        .ui.icon.message.warning.hidden#clickAllDotsWarning
           i.close.icon
           i.hand.pointer.icon.float
           .content
             .ui.header There are still blue dots to find!
             p Click through all of the blue dots to continue.
-        .ui.message.warning#clickArticleLinkWarning
+        .ui.message.warning.hidden#clickArticleLinkWarning
           i.close.icon
           .content
             .ui.header Click on an article before you continue.
-            
-
-        
+                
     #step1.ui.fluid.card.dim()
       .ui.dimmer.flag
         .content
@@ -64,17 +62,17 @@ block content
       .four.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
           i.reply.icon
-          |                             Reply
+          | Reply
         .ui.flag.button(tabindex='0')
           i.flag.icon
-          |                             Flag
+          | Flag
         .ui.share.button(tabindex='0')
           i.share.icon
-          |                             Share
+          | Share
         .ui.labeled.button(tabindex='0')
           .ui.like.button
             i.heart.icon
-            |                                Like
+            | Like
           a.ui.basic.red.left.pointing.label.count 2
       .content
         .ui.comments
@@ -106,9 +104,11 @@ block content
           .center
             h2.ui.inverted.icon.header
               i.red.flag.icon
-              |                                     You&apos;ve flagged this!
+              | You&apos;ve flagged this!
               h3.ui.inverted.header
-                span The admins will review this post further. We are sorry you had this experience.
+                span 
+                  | The admins will review this post further. We are sorry you 
+                  | had this experience.
       .content
         .right.floated.meta= "Yesterday"
         a(href='#')
@@ -128,17 +128,17 @@ block content
       .four.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
           i.reply.icon
-          |                             Reply
+          | Reply
         .ui.flag.button(tabindex='0')
           i.flag.icon
-          |                             Flag
+          | Flag
         .ui.share.button(tabindex='0')
           i.share.icon
-          |                             Share
+          | Share
         .ui.labeled.button(tabindex='0')
           .ui.like.button
             i.heart.icon
-            |                                 Like
+            | Like
           a.ui.basic.red.left.pointing.label.count 2
       .content
         .ui.comments
@@ -172,7 +172,7 @@ block content
           .center
             h2.ui.inverted.icon.header
               i.red.flag.icon
-              |                                     You&apos;ve flagged this!
+              | You&apos;ve flagged this!
               h3.ui.inverted.header
                 span The admins will review this post further. We are sorry you had this experience.
       .content
@@ -195,18 +195,17 @@ block content
       .four.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
           i.reply.icon
-          |                             Reply
+          | Reply
         .ui.flag.button#hint4(tabindex='0')
           i.flag.icon
-          |                             Flag
-        //-.span()          
+          | Flag       
         .ui.share.button(tabindex='0')
           i.share.icon
-          |                             Share
+          | Share
         .ui.labeled.button(tabindex='0')
           .ui.like.button
             i.heart.icon
-            |                                 Like
+            | Like
           a.ui.basic.red.left.pointing.label.count 2
       .content
         .ui.comments
@@ -235,10 +234,9 @@ block content
     .ui.warning.message#clickAllDotsWarning
       .header
         | Click through all of the blue dots to continue
-    button.ui.big.labeled.icon.button.cybertrans#cyberTransButton(style="margin-bottom:4em;")
+    button.ui.big.labeled.icon.button.cybertrans.addBottomMargin#cyberTransButton
         i.rocket.icon
         |   Let's Continue!
-
 
     //- Info Lit Flag Modal  
     .ui.small.info.flag.modal(data-modalName="digital-literacy_flagModal")  
@@ -261,11 +259,15 @@ block content
           .inline.field
             .ui.checkbox
               input(type='checkbox')
-              label The article had spelling errors, ALL CAPS, or dramatic punctuation!!!!
+              label.
+                The article had spelling errors, ALL CAPS, or dramatic 
+                punctuation!!!!
           .inline.field
             .ui.checkbox
               input(type='checkbox')
-              label I didn't see any signs. This could be a real news article. I’m flagging it for another reason
+              label.
+                I didn't see any signs. This could be a real news article. I’m 
+                flagging it for another reason
       
       .actions
         .ui.positive.right.labeled.icon.button
@@ -278,31 +280,36 @@ block content
       .content
           .ui.styled.fluid.accordion
             .title
-              //- .ui.fitted.large.checkbox
-              //-   input.ui(type="checkbox", checked="")#check
               i.dropdown.icon
-              |     Read the full article
+              | Read the full article
             .content
-              p.transition.hidden
-                | Look out for unbelievable claims or wild images. Check for spelling or grammar mistakes, too!
+              p.transition.hidden.
+                Look out for unbelievable claims or wild images. Check for 
+                spelling or grammar mistakes, too!
             .title
               i.dropdown.icon
-              |     Check out the website this article is from
+              | Check out the website this article is from
             .content
-              p
-                | If the website is not part of a credible news, academic, or governmental organization, this is a sign the article might not be trustworthy.
+              p.
+                If the website is not part of a credible news, academic, or 
+                governmental organization, this is a sign the article might not
+                be trustworthy.
             .title
               i.dropdown.icon
-              | Fact-check the article by searching the topic on Snopes.com, FactCheck.org, or major news websites.
+              | Fact-check the article by searching the topic on Snopes.com, 
+              | FactCheck.org, or major news websites.
             .content
-              p
-                | Corroboration from other sources that confirms or supports a news article is a sign that the information is credible.
+              p.
+                Corroboration from other sources that confirms or supports a news 
+                article is a sign that the information is credible.
             .title
               i.dropdown.icon
-              |     Be aware of what you share.
+              | Be aware of what you share.
             .content
-              p
-                | It's easy to quickly like or share something, but you could be spreading fake news! Remember to only like or share articles you know are true.
+              p.
+                It's easy to quickly like or share something, but you could be 
+                spreading fake news! Remember to only like or share articles you 
+                know are true.
 
       .actions
         .ui.positive.right.labeled.icon.button

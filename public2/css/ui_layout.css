@@ -50,20 +50,15 @@ body {
 
 /* --- CURSOR APPEARANCES --- */
 
-a {
+a,
+button,
+.ui.button,
+#newpost.ui.fluid.left.labeled.right.icon.input,{
   cursor: pointer;
 }
 
-button {
-  cursor: pointer;
-}
-
-.ui.button {
-  cursor: pointer;
-}
-
-#newpost.ui.fluid.left.labeled.right.icon.input {
-  cursor: pointer;
+.ui.card .comments :not(.actions){
+  cursor: default;
 }
 
 /* --- POST APPEARANCES --- */
