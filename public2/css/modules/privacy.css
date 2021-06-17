@@ -1,3 +1,7 @@
+.preserveWhitespace {
+  white-space: pre;
+}
+
 /* warning messages */
 .ui.warning.message {
   display: none;
@@ -15,28 +19,31 @@
 
 /* privacy settings page */
 /* tutorial, sim, settings pages */
-.addTop {
-  margin-top: 1em !important ;
+.ui.container.addTopMargin {
+  margin-top: 1em
 }
 
-.sectionTitle {
-  font-size: 140% !important;
+.ui.form .grouped.fields > label.sectionTitle {
+  font-size: 140%
 }
 
-.subsectionTitle {
-  font-size: 120% !important;
+.ui.form .grouped.fields > label.subsectionTitle {
+  font-size: 120%;
 }
 
-.standardLabel {
-  font-size: 100% !important;
+.ui.form .field > label.standardLabel {
+  font-size: 100%;
 }
 
-.standardLabel .div {
+.ui.form .field > label.standardLabel .div {
   width: 200px;
 }
 
-#locationCue1Text, #locationCue2Text, #locationCue3Text,
-#tagCue1Text, #tagCue2Text {
+#locationCue1Text,
+#locationCue2Text,
+#locationCue3Text,
+#tagCue1Text,
+#tagCue2Text {
   display: none;
 }
 

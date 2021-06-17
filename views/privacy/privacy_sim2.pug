@@ -5,20 +5,20 @@ block content
   .ui.text.container
     .ui.one.column.centered.grid.feedbackMessagesGrid
       .ui.fixed.bottom.sticky.warningMessagesSticky
-        .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
+        .ui.icon.compact.message.warning.hidden#clickNextHelpMessage
           i.close.icon
           i.question.icon.float
           .content
             .ui.header Need some help?
             p Scroll up and click "Next" to begin!
-        .ui.icon.compact.message.warning(style="display:none;")#removeHidden
+        .ui.icon.compact.message.warning.hidden#removeHidden
           i.close.icon
           i.question.icon.float
           .content
             .ui.header Need some help? 
             p Make sure you are clicking "Got it" on the blue dots!
           
-        .ui.icon.message.warning(style="display:none;")#clickAllDotsWarning
+        .ui.icon.message.warning.hidden#clickAllDotsWarning
           i.close.icon
           i.hand.pointer.icon.float
           .content
@@ -71,8 +71,8 @@ block content
     p.greyOut From time to time, this Policy may be changed, expanded or amended, and may include the introduction of additional provisions. The effective date appearing at the top of this page indicates when the latest changes were made to this Policy and the Terms of Use, and use of the Service on or after such effective date constitutes your acceptance of the Policy then in effect.
 
     h2 8. Contacting Us
-    p.greyOut(style='white-space:pre;') 
-        |If you have any questions about this Policy, or the practices of the Service, please write to us at: 
+    p.greyOut.preserveWhitespace
+        | If you have any questions about this Policy, or the practices of the Service, please write to us at: 
         | Social Media Lab 
         | 487 Mann Library Building
         | Ithaca, NY 14850
@@ -81,10 +81,10 @@ block content
     br
     p#hint4
     
-    .ui.warning.message#clickAllDotsSim2(style="display:none;")
+    .ui.warning.message.hidden#clickAllDotsSim2
       .header
         | Click through all of the blue dots to continue
-    button.ui.big.labeled.icon.button.privacytutorial#cyberTransButton
+    button.ui.big.labeled.icon.button.privacytutorial.addBottomMargin#cyberTransButton
       i.rocket.icon
       |   Let's Continue!
 
