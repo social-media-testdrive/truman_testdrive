@@ -3,8 +3,6 @@ extends ../ui_layout
   
 block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
-  
-  
 
   .computer.only.tablet.only.four.wide.column 
     .ui.sticky.sideMenu
@@ -39,11 +37,11 @@ block content
             .ui.header Need some help? 
             p Make sure you are clicking "Got it" on the blue dots!
             
-        .ui.message.centered.success#nextPageInstruction
+        .ui.message.centered.success.hidden#nextPageInstruction
           .content
             .ui.header Click the "Settings" button to continue! 
             
-        .ui.icon.message.warning#notificationWarning
+        .ui.icon.message.warning.hidden#notificationWarning
           i.close.icon
           i.hand.pointer.icon.float
           .content
@@ -52,13 +50,13 @@ block content
           
     //-#######################
     //-Notifications page  
-    .ui.stackable.secondary.menu(style="margin-top:0")
+    .ui.stackable.secondary.menu
       .ui.container
-        .item(style="padding: 7px 0 7px 0")
+        .item
           button.ui.basic.button.notificationsDisplay.settingsButton
             i.cog.icon
             |   Settings
-        .item(style="padding: 7px 0 7px 0")
+        .item
           button.ui.basic.button.notificationsDisplay#activityButton
             i.clock.icon
             |   My Activity

@@ -68,3 +68,26 @@
 .event .notificationTime {
   font-weight: normal !important;
 }
+
+/* notification popups */
+/* https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image */
+
+.ui.sticky.notificationPopup .label {
+  overflow: hidden;
+  width: 3em;
+  height:3em;
+}
+
+img.popupNotificationImage {
+  width: 100%;
+  height: 100%;
+  display: inline;
+  margin: 0 auto;
+}
+
+#desktopPopup {
+  padding-bottom:4em;
+  padding-left:1em;
+  padding-right:1em;
+  display:none;
+}

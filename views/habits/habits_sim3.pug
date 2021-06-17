@@ -36,24 +36,24 @@ block content
             .ui.header Need some help? 
             p Make sure you are clicking "Got it" on the blue dots!
             
-        .ui.message.centered.success#nextPageInstruction
+        .ui.message.centered.success.hidden#nextPageInstruction
           .content
             .ui.header Click the "My Activity" button to continue! 
     
-        .ui.icon.message.warning#notificationWarning
+        .ui.icon.message.warning.hidden#notificationWarning
           i.close.icon
           i.hand.pointer.icon.float
           .content
             .ui.header There are still blue dots to find!
             p Click through all of the blue dots before going to the activity page
           
-    .ui.stackable.secondary.menu(style="margin-top:0")
+    .ui.stackable.secondary.menu
       .ui.container
-        .item(style="padding: 7px 0 7px 0")
+        .item
           button.ui.basic.button.notificationsDisplay#settingsButton
             i.cog.icon
             |   Settings
-        .item(style="padding: 7px 0 7px 0")
+        .item
           button.ui.basic.button.notificationsDisplay#activityButton
             i.clock.icon
             |   My Activity
