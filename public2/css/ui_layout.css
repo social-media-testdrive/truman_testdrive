@@ -27,6 +27,11 @@ body {
   padding-bottom: 50px;
 }
 
+.grayElement,
+.ui.container .grayElement {
+  color: #696969;
+}
+
 /* --- POPUP  MODALS --- */
 /* Adjust popup modal margins and heights due to site header and footer */
 

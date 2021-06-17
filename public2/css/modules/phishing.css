@@ -1,32 +1,14 @@
-/* tutorial & sim */
+/* phishing popups in sim & script */
 
-#shortenedURL, #shortenedURL1, #shortenedURL2, #shortenedURL3 {
-  color: #0000FF;
-}
-
-/* tut_guide */
-
-.grayElement {
-  color:#696969;
-}
-
-#checkAllWarning {
-  display: none;
-}
-
-/* modals in sim & script */
-
-.ui.form {
+.ui.modal .ui.form {
   margin-top: 1em;
 }
 
-.cardScamHeader {
-  margin-top: 1em !important;
-  font-size: 200% !important;
+.ui.modal .setBigText {
+  margin-top: 1em;
+  font-size: 200%;
 }
 
-/* trans */
-
-i.caret.icon {
-  text-indent: 3em;
+.setRed {
+  color: red;
 }
