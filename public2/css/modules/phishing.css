@@ -16,15 +16,6 @@
 
 /* modals in sim & script */
 
-.ui.modal{
-  top: 8em;
-}
-
-.ui.modal .ui.grid {
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-
 .ui.form {
   margin-top: 1em;
 }
