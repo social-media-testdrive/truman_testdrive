@@ -16,9 +16,6 @@
     a(href='/user/'+val.actor.username)
       img.ui.avatar.image(src='/images/picture.svg', data-src=cdn+'/profile_pictures/'+val.actor.profile.picture)
       span=val.actor.profile.name
-  //-div(style="position: relative; z-index: 1;")
-    img(src="image.png" style="position: absolute; z-index: 2;")
-    span#overlay_text(style="position: relative; top: -10px; z-index: 3;") OVERLAY
   .img.post
     //-img.post(src="/"+val.picture)
     if (val.module == 'digital-literacy' && val.info_text != "")           

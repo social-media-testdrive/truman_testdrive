@@ -60,6 +60,10 @@
   cursor: default;
 }
 
+.ui.segment.searchItem {
+  padding: 0;
+}
+
 /* tutorial */
 
 .img.post img{

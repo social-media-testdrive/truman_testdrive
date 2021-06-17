@@ -32,6 +32,13 @@ body {
   color: #696969;
 }
 
+/* --- HEADER & FOOTER ---- */
+.ui.menu.testDriveHeader,
+.ui.menu.testDriveFooter {
+  z-index: 10000002;
+}
+
+
 /* --- POPUP  MODALS --- */
 /* Adjust popup modal margins and heights due to site header and footer */
 

@@ -2,7 +2,7 @@
 -var isResearchVersion = process.env.isResearchVersion === 'true';
 -var enableLearnerDashboard = process.env.enableLearnerDashboard === 'true';
 .computer.only.tablet.only.row.testdriveHeaderRow 
-  .ui.borderless.fixed.menu.testDriveHeader(style="z-index:10000002;")
+  .ui.borderless.fixed.menu.testDriveHeader
     .ui.grid.container#myheader
         .four.wide.column
           a.item(href='https://socialmediatestdrive.org/modules.html')
@@ -56,7 +56,7 @@
                     a.item(href='/logout') Logout
             
 .mobile.only.row
-  .ui.fluid.top.fixed.two.item.menu(style="z-index:10000002;")
+  .ui.fluid.top.fixed.two.item.menu.testDriveHeader
     a.item(href='/')
       img.ui.tiny.image(src=cdn+'/finalLogo.png', id='cell_logo')
     if isResearchVersion
