@@ -5,6 +5,11 @@
   max-height: 100%;
 }
 
+.ui.sticky.sideMenu {
+  width: 272px;
+  height: 500px;
+}
+
 .ui.vertical.menu a.item {
   margin-bottom: 0;
 }
