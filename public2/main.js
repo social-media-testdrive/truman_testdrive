@@ -1,7 +1,5 @@
-//$(document).ready(function() {
-
-//Before Page load:
-//hide news feed before it is all loaded
+// Before Page load:
+// Hide news feed before it is all loaded
 
 $('#content').hide();
 $('#loading').show();
@@ -13,7 +11,18 @@ function changeActiveProgressTo(activeStep){
   }
 }
 
-function updateProgressBar(){
+$(window).on("load", function () {
+  const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
+  // Record the current page if data collection is enabled
+  if (enableDataCollection) {
+    let pathArray = window.location.pathname.split('/');
+    $.post("/pageLog", {
+      subdirectory1: pathArray[1],
+      subdirectory2: pathArray[2],
+      _csrf: $('meta[name="csrf-token"]').attr('content')
+    });
+  }
+
   // managing the progress bar in the header
   let pathArrayForHeader = window.location.pathname.split('/');
   let currentPageForHeader = pathArrayForHeader[1];
@@ -25,6 +34,7 @@ function updateProgressBar(){
     case 'cyberbullying':
     case 'digfoot':
       jsonPath = "/json/progressDataB.json";
+      break;
     default:
       jsonPath = "/json/progressDataA.json";
       break;
@@ -32,7 +42,10 @@ function updateProgressBar(){
 
   // Adding the module title to the progress bar
   $.getJSON('/json/moduleInfo.json', function(data) {
-    if(currentModuleForHeader !== undefined){
+    if(currentModuleForHeader === undefined) {
+      return;
+    }
+    if(data.hasOwnProperty(currentModuleForHeader)) {
       $('.moduleTitle span').text(data[currentModuleForHeader]["title"]);
     }
   });
@@ -120,17 +133,11 @@ function updateProgressBar(){
         });
         break;
       default:
-        console.log('Progress bar is not visible right now');
+        // Progress bar is not visible right now
         break;
     }
   });
-}
 
-$(window).on("load", function () {
-
-  updateProgressBar();
-
-  //Activating the sticky functionality for the left column
   $('.ui.sticky.sideMenu')
     .sticky({
       context: '#content',
@@ -149,9 +156,17 @@ $(window).on("load", function () {
     });
 
   //activate checkboxes
-  $('.ui.checkbox').checkbox();
+  $('.ui.checkbox')
+    .checkbox();
 
-  // add new post popup in the freeplay section
+  //get add new reply post modal to show
+  $('.reply.button').click(function () {
+    let parent = $(this).closest(".ui.fluid.card");
+    let postID = parent.attr("postID");
+    parent.find("input.newcomment").focus();
+  });
+
+  //get add new feed post modal to work
   $("#newpost, a.item.newpost, .editProfilePictureButton").click(function () {
     $(' .ui.small.post.modal').modal('show');
     //lazy load the images in the modal
@@ -160,7 +175,12 @@ $(window).on("load", function () {
     });
   });
 
-  // new post validator (picture and text can not be empty)
+  //New Class Button
+  $("#new_class.ui.big.green.labeled.icon.button").click(function () {
+    $('.ui.small.newclass.modal').modal('show');
+  });
+
+  //new post validator (picture and text can not be empty)
   $('.ui.feed.form')
     .form({
       on: 'blur',
@@ -179,42 +199,10 @@ $(window).on("load", function () {
 
   // article info popup in the digital-literacy module
   $(".modual.info_button").click(function () {
-    console.log("@@@@@@@Clicking info button!!!!");
+
     $('.ui.small.popinfo.modal').modal('show');
     document.getElementById('post_info_text_modual').innerHTML = $(this).data('info_text');
-    console.log("&*&*&*&*&"+$(this).data('info_text'));
   });
-
-  // //New Class Button - this is not currently being used
-  // $("#new_class.ui.big.green.labeled.icon.button").click(function () {
-  //   $('.ui.small.newclass.modal').modal('show');
-  // });
-  //
-  // //validate class form - this is not currently being used
-  // $('#classform.ui.form')
-  //   .form({
-  //     on: 'blur',
-  //     fields: {
-  //       classname: {
-  //         identifier: 'classname',
-  //         rules: [
-  //           {
-  //             type: 'empty',
-  //             prompt: 'Please include a Class Name'
-  //           }
-  //         ]
-  //       },
-  //       accesscode: {
-  //         identifier: 'accesscode',
-  //         rules: [
-  //           {
-  //             type: 'empty',
-  //             prompt: 'Please add an Access Code'
-  //           }
-  //         ]
-  //       }
-  //     }
-  //   });
 
   //Picture Preview on Image Selection
   function readURL(input) {
@@ -244,19 +232,17 @@ $(window).on("load", function () {
   //   $(this).text(humanized_time_span(time));
   // });
 
-  // Sign Up Button - not currently used
-  $('.ui.big.green.labeled.icon.button.signup')
-    .on('click', function () {
-      window.location.href = '/signup';
-    });
+  //Sign Up Button
+  // $('.ui.big.green.labeled.icon.button.signup')
+  //   .on('click', function () {
+  //     window.location.href = '/signup';
+  //   });
 
   //Cyberbullying to Transition
   $('.cybertrans')
     .on('click', function (e) {
       if ($(this).hasClass('green')) {
-        console.log(window.location.pathname)
         let pathArray = window.location.pathname.split('/');
-        console.log(pathArray);
         window.location.href = '/trans/' + pathArray[2];
         // window.location.href = '/trans/cyberbullying';
       }
@@ -271,9 +257,7 @@ $(window).on("load", function () {
   $('.cybertrans2')
     .on('click', function (e) {
       if ($(this).hasClass('green')) {
-        console.log(window.location.pathname)
         let pathArray = window.location.pathname.split('/');
-        console.log(pathArray);
         window.location.href = '/trans2/' + pathArray[2];
          //window.location.href = '/trans2/privacy';
       }
@@ -291,104 +275,83 @@ Start button links
   //Cyberbullying to Transition
   $('.ui.big.green.labeled.icon.button.cybertutorial')
     .on('click', function () {
-      console.log(window.location.pathname)
       let pathArray = window.location.pathname.split('/');
-      console.log(pathArray);
       window.location.href = '/tutorial/' + pathArray[2];
     });
 
   //Cyberbullying to Transition (blue button)
   $('.ui.big.blue.labeled.icon.button.cybertutorial')
     .on('click', function () {
-      console.log(window.location.pathname)
       let pathArray = window.location.pathname.split('/');
-      console.log(pathArray);
       window.location.href = '/tutorial/' + pathArray[2];
     });
 
   //Cyberbullying to Transition
   $(document).on('click', '.ui.big.labeled.icon.button.cybersim.green', function () {
-      console.log(window.location.pathname)
       let pathArray = window.location.pathname.split('/');
-      console.log(pathArray);
       window.location.href = '/sim/' + pathArray[2];
     });
 
     //Cyberbullying to Transition (blue button)
     $(document).on('click', '.ui.big.labeled.icon.button.cybersim.blue', function () {
-        console.log(window.location.pathname)
         let pathArray = window.location.pathname.split('/');
-        console.log(pathArray);
         window.location.href = '/sim/' + pathArray[2];
       });
 
   //Cyberbullying to Transition 1
   $(document).on('click', '.ui.big.labeled.icon.button.cybersim1.green', function () {
-      console.log(window.location.pathname)
       let pathArray = window.location.pathname.split('/');
-      console.log(pathArray);
       window.location.href = '/sim1/' + pathArray[2];
     });
 
   //Privacy sim2 to Tutorial
   $(document).on('click', '.ui.big.labeled.icon.button.privacytutorial.green', function () {
-      console.log(window.location.pathname)
       window.location.href = '/tutorial/privacy';
     });
 
   //Privacy sim to trans2
   $(document).on('click', '.ui.big.labeled.icon.button.privacytrans2.green', function () {
-      console.log(window.location.pathname)
       window.location.href = '/trans2/privacy';
     });
 
   //To sim2
   $(document).on('click', '.ui.big.labeled.icon.button.cybersim2.green', function () {
-      console.log(window.location.pathname)
       let pathArray = window.location.pathname.split('/');
-      console.log(pathArray);
       window.location.href = '/sim2/' + pathArray[2];
     });
 
   //Privacy free-play to settings
   $(document).on('click', '.ui.big.labeled.icon.button.free1.green', function () {
-      console.log(window.location.pathname)
       window.location.href = '/free-settings/privacy';
     });
 
   //Privacy settings to free-play2
   $(document).on('click', '.ui.big.labeled.icon.button.settings1.green', function () {
-      console.log(window.location.pathname)
       window.location.href = '/free-play2/privacy';
     });
 
   //Privacy free-play2 to settings3
   $(document).on('click', '.ui.big.labeled.icon.button.settings3.green', function () {
-      console.log(window.location.pathname)
       window.location.href = '/free-settings3/privacy';
     });
 
   //Privacy settings3 to free-play4
   $(document).on('click', '.ui.big.labeled.icon.button.free4.green', function () {
-      console.log(window.location.pathname)
       window.location.href = '/free-play4/privacy';
     });
 
   //Privacy free-play4 to settings2
   $(document).on('click', '.ui.big.labeled.icon.button.settings2.green', function () {
-      console.log(window.location.pathname)
       window.location.href = '/free-settings2/privacy';
     });
 
   //Privacy settings2 to free3
   $(document).on('click', '.ui.big.labeled.icon.button.free3.green', function () {
-      console.log(window.location.pathname)
       window.location.href = '/free-play3/privacy';
     });
 
   //Privacy free3 to results
   $(document).on('click', '.ui.big.labeled.icon.button.privacyresults.green', function () {
-      console.log(window.location.pathname)
       window.location.href = '/results/privacy';
     });
 
@@ -398,17 +361,6 @@ Start button links
     .on('click', function () {
       window.location.href = '/tutorial/cyberbullying';
     });
-
-  //finish
-  $('.ui.big.green.labeled.icon.button.finish')
-    .on('click', function () {
-      // Anna: changed delete to a post request
-      $.post("/delete", {_csrf: $('meta[name="csrf-token"]').attr('content') })
-      .done(function(){
-        window.location.href = 'https://socialmediatestdrive.org/modules.html';
-      });
-    });
-
 
   //Cyberbullying to Transition
   $('.ui.big.green.labeled.icon.button.cybertrans_script')
@@ -586,93 +538,25 @@ end button links
     .modal('show')
     ;
 
-  // MOVED TO COMMENTS.JS
-  // //this is the LIKE button for posts
-  // $('.like.button')
-  //   .on('click', function () {
-  //     console.log("CLICK LIKE");
-  //     //if already liked, unlike if pressed
-  //     if ($(this).hasClass("red")) {
-  //       console.log("***********UNLIKE: post");
-  //       $(this).removeClass("red");
-  //       var label = $(this).next("a.ui.basic.red.left.pointing.label.count");
-  //       label.html(function (i, val) { return val * 1 - 1 });
-  //     }
-  //     //since not red, this button press is a LIKE action
-  //     else {
-  //       $(this).addClass("red");
-  //       var label = $(this).next("a.ui.basic.red.left.pointing.label.count");
-  //       label.html(function (i, val) { return val * 1 + 1 });
-  //       var postID = $(this).closest(".ui.fluid.card.dim").attr("postID");
-  //       //var like = Date.now();
-  //       console.log("***********LIKE: post " + postID);
-  //       $.post("/feed", { postID: postID, like: 1, _csrf: $('meta[name="csrf-token"]').attr('content') });
-  //
-  //     }
-  //
-  //   });
-
   //lazy loading of images
-  $('#content .fluid.card .img img, img.ui.avatar.image, a.avatar.image img')
-    .visibility({
-      type: 'image',
-      offset: 0,
-      onLoad: function (calculations) {
-        console.log("@@@@@@@ Real Image @@@@@@@@@");
-        $('#content .fluid.card .img img, img.ui.avatar.image, a.avatar.image img').visibility('refresh');
-      }
-    })
-    ;
-
-// MOVED TO COMMENTS.JS
-// //this is the Share button
-//   $('.ui.share.button')
-//     .on('click', function () {
-//       $('.ui.small.basic.share.modal')
-//         .modal('show');
-//   });
+  $(`#content .fluid.card .img img,
+    img.ui.avatar.image,
+    a.avatar.image img`)
+      .visibility({
+        type: 'image',
+        offset: 0,
+        onLoad: function (calculations) {
+          $(`#content .fluid.card .img img,
+            img.ui.avatar.image,
+            a.avatar.image img`)
+              .visibility('refresh');
+        }
+      });
 
   $(".dimmer.soon").dimmer({
         closable: false
       });
 
-// MOVED TO COMMENTS.JS
-  // //this is the FLAG button
-  // $('.flag.button')
-  //   .on('click', function () {
-  //
-  //     var post = $(this).closest(".ui.fluid.card.dim");
-  //     var postID = post.attr("postID");
-  //     console.log("***********FLAG: post " + postID);
-  //     $.post("/feed", { postID: postID, flag: 1, _csrf: $('meta[name="csrf-token"]').attr('content') });
-  //     console.log("Removing Post content now!");
-  //     post.find(".ui.dimmer.flag").dimmer({
-  //       closable: false
-  //     })
-  //       .dimmer('show');
-  //     //repeat to ensure its closable
-  //     post.find(".ui.dimmer.flag").dimmer({
-  //       closable: true
-  //     })
-  //       .dimmer('show');
-  //
-  //     let pathArray = window.location.pathname.split('/');
-  //     let mod = pathArray[2];
-  //
-  //     if(mod =="digital-literacy")
-  //
-  //     {
-  //       console.log("CLICKING ON DIG INGO FLAG")
-  //       $('input[type=checkbox]').prop('checked',false);
-  //       $('.ui.small.info.flag.modal').modal('show');
-  //     }
-  //
-  //
-  //   });
-
-
-
   introJs().start();
-
 
 });

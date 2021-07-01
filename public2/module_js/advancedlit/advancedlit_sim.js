@@ -1,11 +1,19 @@
 var stepsList = [
   {
     element: '#step1',
-    intro: `Click on "Done" and then look for the blue dots&nbsp;<a role='button' tabindex='0'
-    class='introjs-hint'><div class='introjs-hint-dot'></div><div
-    class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; 
-    to learn more!`,
-    scrollTo: 'tooltip'
+    intro: `Click "Next" to begin!`,
+    position: 'right',
+    scrollTo: 'tooltip',
+    audioFile: ['']
+  },
+  {
+    element: '#step1',
+    intro: `Click on "Done" and then look for the blue dots&nbsp;&nbsp;<a role='button' tabindex='0'
+    class='introjs-hint'><div class='introjs-hint-dot'></div><div class=
+    'introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; &nbsp; to learn more!`,
+    position: "left",
+    scrollTo: 'tooltip',
+    audioFile: ['CUSML.9.4.01.mp3']
   }
 ]
 
@@ -15,7 +23,8 @@ var hintsList = [
     closing, and it looks like many of your other friends are sharing it as
     well. Click on the article to see what it says.`,
     element: '#hint1',
-    hintPosition: 'middle-middle'
+    hintPosition: 'middle-middle',
+    audioFile: ['CUSML.9.4.02.mp3']
   }
 ];
 

@@ -10,58 +10,65 @@ block content
         .content
           | Learn
       hr
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          | Social media can connect people over the Internet. People use social 
-          | media to share information, their interests, and connect with 
-          | friends and family. They can also use it to talk to new people and 
-          | meet new friends!
- 
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          | On social media, you may be talking to many different people at the 
-          | same time. You might not know some of them in real life. Remember to 
-          | always be careful about the information you share online, especially 
-          | with people you've never met face-to-face.
-      br
-      #introduction_next.button.ui.mini.green.right.labeled.icon.button
-              i.down.arrow.icon
-              |   Next
+      .ui.basic.segment.removePadding
+        .ui.mini.green.right.labeled.icon.button.showLearnSectionButton
+          i.down.arrow.icon
+          |   Next
+      .ui.basic.segment.learnSegment.hidden
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content.
+            Social media can connect people over the Internet. People use social 
+            media to share information, their interests, and connect with 
+            friends and family. They can also use it to talk to new people and 
+            meet new friends!
+   
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content.
+            On social media, you may be talking to many different people at the 
+            same time. You might not know some of them in real life. Remember to 
+            always be careful about the information you share online, especially 
+            with people you've never met face-to-face.
+        br
+        .ui.mini.green.right.labeled.icon.button.showKeyTermsButton
+          i.down.arrow.icon
+          |   Next
     
-    #question.ui.segment.hidden
+    .ui.segment.keyIdeasSegment.hidden
       h3.ui.header
         i.key.blue.icon
         .content Key Ideas
       .sub.header.grayElement 
         i.hand.pointer.icon
-        span Click on each label below to learn more
+        span Click on each word below to learn more
       br   
       .ui.stackable.two.column.grid
         .ui.column
-          .ui.raised.segment.keyTerm
+          .ui.raised.segment.keyTerm.voiceover_keyTerm1
             a.ui.blue.ribbon.label.keyTermLabel
                 span Audience
-            span.hidden.keyTermDefinition 
-              | Anyone who can see information about you or posted by you 
-              | online.
-              ul
-                |This could include strangers or people you haven't met face-to-face.
-
+            span.hidden.keyTermDefinition
+              | Anyone who can see information about you or posted by you online. 
+              ul This could include strangers or people you haven't met face-to-face.
         .ui.column
-          .ui.raised.segment.keyTerm
+          .ui.raised.segment.keyTerm.voiceover_keyTerm2
             a.ui.blue.ribbon.label.keyTermLabel
                 span Private information
-            span.hidden.keyTermDefinition Information about you that can be used to identify you because it is unique to you.
-              ul This can include things like your full name, school, home address, or phone number.
+            span.hidden.keyTermDefinition 
+              | Information about you that can be used to identify you because 
+              | it is unique to you.
+              ul This can include things like your full name, school, home 
+                | address, or phone number.
         
         .ui.column
-          .ui.raised.segment.keyTerm
+          .ui.raised.segment.keyTerm.voiceover_keyTerm3
             a.ui.blue.ribbon.label.keyTermLabel
                 span Risky
-            span.hidden.keyTermDefinition Potentially harmful to one’s emotional or physical well-being.
-              ul It is risky to share private information online. People could share it with others or use it to try to trick or scam you.
+            span.hidden.keyTermDefinition 
+              | Potentially harmful to one’s emotional or physical well-being.
+              ul It is risky to share private information online. People could 
+                | share it with others or use it to try to trick or scam you.
     
     .ui.warning.message#clickNextWarning
       .header
@@ -70,12 +77,36 @@ block content
      .header
       | Click on each label to proceed  
     a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
-        .ui.labeled.icon.button
-            i.rocket.icon
-            |   Got it!
-            
+      .ui.labeled.icon.button
+          i.rocket.icon
+          |   Got it!
+          
 block scripts
+  script.
+    var voiceoverMappings = {
+      '.showLearnSectionButton': {
+        "initialDelay": 700,
+        "delay": 500,
+        "files": ['CUSML.11.1.1.mp3','CUSML.11.1.2.mp3']
+      },
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.11.2.1.mp3']
+      },
+      '.voiceover_keyTerm2': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.11.2.2.mp3']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.11.2.3.mp3']
+      }
+    };
+  script(src='/module_js/voiceover.js')
   script(src="/module_js/base_start.js")
 
 block styles
-  link(rel='stylesheet', href='/css/start.css')
+  link(rel='stylesheet', href='/css/start.css')  

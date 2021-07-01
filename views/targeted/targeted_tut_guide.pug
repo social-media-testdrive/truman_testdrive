@@ -6,75 +6,77 @@ block content
     br
     
     h2.ui.header
-      //- i.check.square.outline.green.icon
       .content What can you do if you want to prevent targeted advertisements?
         .sub.header 
           br  
-          span(style="color:#000000;") 
+          span.blackText
             | While it's hard to avoid targeted ads altogether, there are some 
             | things you can do to limit the amount of data companies track and 
             | the amount of targeted ads you see.
         
         .sub.header 
           br
-          i.eye.icon 
-          span Read and check all the boxes
+          .ui.compact.segment
+            .ui.large.read-only.checked.checkbox.exampleCheckbox
+              input.ui(type="checkbox" id="" checked="")
+              label Read and check all the boxes
+          br
         
     .ui.styled.fluid.accordion
-      #point1.title
+      #point1.title(data-voiceoverIndex='voiceover_tut_guide_1')
         i.dropdown.icon
         |     Turn off cookies in your web browser
       .content.ui.list
           .item
-            #protip1.ui.floated.compact.segment
-              .ui.fitted.large.checkbox#checkbox1
+            #protip1.ui.segment
+              .ui.large.checkbox#checkbox1
                 input.ui(type="checkbox" id="")
-            .label Cookies are used to identify your device and track your behavior. You can go to your browser settings to turn them off.
+                label Cookies are used to identify your device and track your behavior. You can go to your browser settings to turn them off.
 
           .item
-            #protip1.ui.floated.compact.segment
-              .ui.fitted.large.checkbox#checkbox1
+            #protip1.ui.segment
+              .ui.large.checkbox#checkbox1
                 input.ui(type="checkbox" id="")
-            .label But keep in mind, there is a trade-off! Some websites might not work if you turn cookies off.
+                label But keep in mind, there is a trade-off! Some websites might not work if you turn cookies off.
 
           .item
               #point1_button.button.ui.mini.green.right.labeled.icon.button
                 i.down.arrow.icon
                 | Next
                 
-      #point2.title
+      #point2.title(data-voiceoverIndex='voiceover_tut_guide_2')
         i.dropdown.icon
         |     Adjust privacy settings in your apps
       .content.ui.list
           .item
-            #protip2.ui.floated.compact.segment
-              .ui.fitted.large.checkbox#checkbox2
+            #protip2.ui.segment
+              .ui.large.checkbox#checkbox2
                 input.ui(type="checkbox")
-            .label Change your privacy settings so that apps don't collect certain information. 
+                label Change your privacy settings so that apps don't collect certain information. 
           
           .item
-            #protip2.ui.floated.compact.segment
-              .ui.fitted.large.checkbox#checkbox2
+            #protip2.ui.segment
+              .ui.large.checkbox#checkbox2
                 input.ui(type="checkbox")
-            .label You can also make your account private or turn off access to certain information within the privacy settings.
+                label You can also make your account private or turn off access to certain information within the privacy settings.
             
           .item
               #point2_button.button.ui.mini.green.right.labeled.icon.button
                 i.down.arrow.icon
                 | Next
                   
-      #point3.title
+      #point3.title(data-voiceoverIndex='voiceover_tut_guide_3')
         i.dropdown.icon
         |     Limit what you share
       .content.ui.list
           .item
-            #protip3.ui.floated.compact.segment
-              .ui.fitted.large.checkbox#checkbox3
+            #protip3.ui.segment
+              .ui.large.checkbox#checkbox3
                 input.ui(type="checkbox")
-            .label If it is not required, do not provide your information or link your profile to a website.
+                label If it is not required, do not provide your information or link your profile to a website.
                            
     br
-    .ui.warning.message#checkAllBoxesWarning(style="display:none;")
+    .ui.warning.message.hidden#checkAllBoxesWarning
      .header
       | Check all the boxes to proceed
     .ui.big.labeled.icon.button.cybersim#cyberSimButton
@@ -82,7 +84,31 @@ block content
         |   Got it!
 
 block scripts
+  script.
+    var voiceoverMappings = {
+      'voiceover_tut_guide_1': {
+        "initialDelay": 500,
+        "delay": 500,
+        "files": ['CUSML.2.4.03.mp3','CUSML.2.4.04.mp3','CUSML.2.4.05.mp3']
+      },
+      'voiceover_tut_guide_2': {
+        "initialDelay": 700,
+        "delay": 500,
+        "files": ['CUSML.2.4.06.mp3','CUSML.2.4.07.mp3','CUSML.2.4.08.mp3']
+      },
+      'voiceover_tut_guide_3': {
+        "initialDelay": 700,
+        "delay": 500,
+        "files": ['CUSML.2.4.09.mp3','CUSML.2.4.10.mp3']
+      }
+    };
+  script(src="/module_js/voiceover.js")
   script(src="/module_js/targeted/targeted_tut_guide.js")
+  
+block styles
+  link(rel='stylesheet' href='/css/modules/targeted.css')
+  link(rel='stylesheet' href='/css/checkbox_activity.css')
+
   
     
     

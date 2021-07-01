@@ -2,10 +2,6 @@
   padding-top: 1em;
 }
 
-.ui.fixed.bottom.sticky {
-  padding-bottom: 6em;
-}
-
 #removeHidden, #clickAllDotsWarning {
   display: none;
 }

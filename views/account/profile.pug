@@ -2,7 +2,7 @@ extends ../ui_layout
 
 block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
-  .sixteen.wide.column
+  .sixteen.wide.column(style='margin-bottom:4em;')
     h3.ui.header Profile Information
     .ui.basic.segment(style="padding:10px 0;")
       img.ui.small.image.profileImage(src=cdn+"/profile_pictures/"+user.profile.picture)
@@ -11,6 +11,7 @@ block content
         |  Choose a Profile Photo
     form.ui.form(action='/account/profile/'+mod, method='POST', enctype='multipart/form-data')
       input(type='hidden', name='_csrf', value=csrfToken)
+      input(type='hidden', name='enableDataCollection', value=process.env.enableDataCollection)
       input(type='hidden', name='profilePhoto', value=user.profile.picture)
       .field(data-tooltip="Remember, this information is stored on the site until you finish the lesson. Think about using a nickname or an alias instead of your real name." data-position="bottom left")
         label(for='name') Name
@@ -25,7 +26,7 @@ block content
       
       
   //- Profile Picture Selection Modal 
-  .ui.small.long.post.modal.profilePictureModal(style="margin:95px 0;")  
+  .ui.small.long.post.modal.profilePictureModal 
     i.close.icon  
     .header Choose a Profile Picture 
     .content  
@@ -34,49 +35,49 @@ block content
             .three.fields
               .field
                 .ui.radio.checkbox
-                  input#photoOne.hidden(type='radio' name='profilepicinput' value="bballprofpic.png")
+                  input.hidden(type='radio' name='profilepicinput' value="bballprofpic.png")
                   label
                       img.lazy(src='/images/picture.svg' data-src=cdn+"/profile_pictures/bballprofpic.png")
               .field
                 .ui.radio.checkbox
-                  input#photoTwo.hidden(type='radio' name='profilepicinput' value="boatprofpic.png")
+                  input.hidden(type='radio' name='profilepicinput' value="boatprofpic.png")
                   label
                       img.lazy(src='/images/picture.svg' data-src=cdn+"/profile_pictures/boatprofpic.png")
               .field
                 .ui.radio.checkbox
-                  input#photoThree.hidden(type='radio' name='profilepicinput' value="cakeprofpic.png")
+                  input.hidden(type='radio' name='profilepicinput' value="cakeprofpic.png")
                   label
                       img.lazy(src='/images/picture.svg' data-src=cdn+"/profile_pictures/cakeprofpic.png") 
             .three.fields
               .field
                 .ui.radio.checkbox
-                  input#photoOne.hidden(type='radio' name='profilepicinput' value="carprofpic.png")
+                  input.hidden(type='radio' name='profilepicinput' value="carprofpic.png")
                   label
                       img.lazy(src='/images/picture.svg' data-src=cdn+"/profile_pictures/carprofpic.png")
               .field
                 .ui.radio.checkbox
-                  input#photoTwo.hidden(type='radio' name='profilepicinput' value="catprofpic.png")
+                  input.hidden(type='radio' name='profilepicinput' value="catprofpic.png")
                   label
                       img.lazy(src='/images/picture.svg' data-src=cdn+"/profile_pictures/catprofpic.png")
               .field
                 .ui.radio.checkbox
-                  input#photoThree.hidden(type='radio' name='profilepicinput' value="flowerprofpic.png")
+                  input.hidden(type='radio' name='profilepicinput' value="flowerprofpic.png")
                   label
                       img.lazy(src='/images/picture.svg' data-src=cdn+"/profile_pictures/flowerprofpic.png")  
             .three.fields
               .field
                 .ui.radio.checkbox
-                  input#photoOne.hidden(type='radio' name='profilepicinput' value="pencilprofpic.png")
+                  input.hidden(type='radio' name='profilepicinput' value="pencilprofpic.png")
                   label
                       img.lazy(src='/images/picture.svg' data-src=cdn+"/profile_pictures/pencilprofpic.png")
               .field
                 .ui.radio.checkbox
-                  input#photoTwo.hidden(type='radio' name='profilepicinput' value="sparkprofpic.png")
+                  input.hidden(type='radio' name='profilepicinput' value="sparkprofpic.png")
                   label
                       img.lazy(src='/images/picture.svg' data-src=cdn+"/profile_pictures/sparkprofpic.png")
               .field
                 .ui.radio.checkbox
-                  input#photoThree.hidden(type='radio' name='profilepicinput' value="wolfprofpic.png")
+                  input.hidden(type='radio' name='profilepicinput' value="wolfprofpic.png")
                   label
                       img.lazy(src='/images/picture.svg' data-src=cdn+"/profile_pictures/wolfprofpic.png")  
       

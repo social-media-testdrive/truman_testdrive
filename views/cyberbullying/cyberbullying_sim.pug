@@ -5,8 +5,16 @@ block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   .computer.only.tablet.only.four.wide.column 
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
-    .ui.one.column.centered.grid
+    .ui.one.column.centered.grid.feedbackMessagesGrid
       .ui.fixed.bottom.sticky
+        
+        .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header Need some help?
+            p Scroll up and click "Next" to begin!
+        
         .ui.icon.compact.message.warning#removeHidden
           i.close.icon
           i.question.icon.float
@@ -55,7 +63,7 @@ block content
           a.ui.basic.red.left.pointing.label.count 2
       .content
         .ui.comments
-          .comment(commentid='5bbd01d88a48061a73337b96')
+          .comment
             a.avatar
               img(src=cdn+'/profile_pictures/user66.jpeg')
             .content
@@ -64,7 +72,7 @@ block content
                 span.date Yesterday
                 .rating
                   i.heart.icon
-                  span.num=1
+                  span.num 1
                   |  Likes
               .text 
                 | Seriously, you should drop out or repeat grade 7 if you can't 
@@ -113,7 +121,7 @@ block content
           a.ui.basic.red.left.pointing.label.count 2
       .content
         .ui.comments
-          .comment(commentid='5bbd01d88a48061a73337b96')
+          .comment
             a.avatar
               img(src=cdn+'/profile_pictures/user36.jpg')
             .content
@@ -122,7 +130,7 @@ block content
                 span.date Yesterday
                 .rating
                   i.heart.icon
-                  span.num=2
+                  span.num 1
                   |  Likes
               .text omg i’m so scared of physics
               .actions
@@ -212,7 +220,7 @@ block content
           a.ui.basic.red.left.pointing.label.count 2
       .content
         .ui.comments
-          .comment(commentid='5bbd01d88a48061a73337b96')
+          .comment
             a.avatar
               img(src=cdn+'/profile_pictures/user43.jpg')
             .content
@@ -221,7 +229,7 @@ block content
                 span.date Yesterday
                 .rating
                   i.heart.icon
-                  span.num=1
+                  span.num 1
                   |  Likes
               .text Lol it’s true ! I don’t want to see her at school anymore
               .actions
@@ -235,7 +243,7 @@ block content
           input.newcomment#hint4(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
 
-    button.ui.big.labeled.icon.button.cybertrans#cyberTransButton(style="margin-bottom: 4em;")
+    button.ui.big.labeled.icon.button.cybertrans.addBottomMargin#cyberTransButton
           i.rocket.icon
           |   Let's Continue!
 
@@ -247,24 +255,28 @@ block scripts
         hint: `Let’s send a supportive message to the target. Copy and paste the
         following comment: <i>“Lana, a lot of people think math is hard! Don’t
         worry about it”</i>.`,
-        element: '#hint1'
+        element: '#hint1',
+        audioFile: ['CUSML.6.4.6.mp3']
       },
       {
         hint: `Press the <b>“flag”</b> button to report this post to the
         website.`,
         element: '#hint2',
-        hintPosition: "bottom-middle"
+        hintPosition: "bottom-middle",
+        audioFile: ['CUSML.6.4.7.mp3']
       },
       {
         hint: `Press the <b>“flag”</b> button to report this comment to the
         website.`,
-        element: '#hint3'
+        element: '#hint3',
+        audioFile: ['CUSML.6.4.8.mp3']
       },
       {
         hint: `Let’s tell the bully that this behavior is not okay. Copy and
         paste the following comment: <i>“Guys, Sarah will be very upset if she
         sees this post. You should delete it."</i>`,
-        element: '#hint4'
+        element: '#hint4',
+        audioFile: ['CUSML.6.4.9.mp3']
       }
     ]
     
@@ -272,23 +284,32 @@ block scripts
     [
       {
         element: document.querySelectorAll('#step1')[0],
-        intro: "<div> <img class='ui avatar image' src='https://dhpd030vnpk29.cloudfront.net/profile_pictures/user55.jpg'/><b>Lana</b>  &  <img class='ui avatar image' src='https://dhpd030vnpk29.cloudfront.net/profile_pictures/user66.jpg'/><b>Emma</b> </div> <div>are in the same class at school. Recently, Emma has been saying a lot of mean things to Lana.</div>",
+        intro: `Click "Next" to begin!`,
         position:'right',
-        scrollTo: 'tooltip'
+        scrollTo: 'tooltip',
+        audioFile: ['']
       },
       {
         element: document.querySelectorAll('#step1')[0],
-        intro: `Here you will see an example of what's been going on. 
-        Click on "Done" and then look for the blue dots&nbsp;<a role='button' tabindex='0'
-        class='introjs-hint'><div class='introjs-hint-dot'></div><div
-        class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; 
-        to learn more about cyberbullying and what you can do about it!`,
+        intro: "<div> <img class='ui avatar image' src='https://dhpd030vnpk29.cloudfront.net/profile_pictures/user55.jpg'/><b>Lana</b>  &  <img class='ui avatar image' src='https://dhpd030vnpk29.cloudfront.net/profile_pictures/user66.jpg'/><b>Emma</b> </div> <div>are in the same class at school. Recently, Emma has been saying a lot of mean things to Lana.</div>",
         position:'right',
-        scrollTo:'tooltip'
+        scrollTo: 'tooltip',
+        audioFile: ['CUSML.6.4.4.mp3']
+      },
+      {
+        element: document.querySelectorAll('#step1')[0],
+        intro: `Here you will see an example of what's been going on. Click on 
+        "Done" and then look for the blue dots 
+        &nbsp;&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; &nbsp;  
+        to learn more about cyberbullying and what you can do about it.`,
+        position:'right',
+        scrollTo:'tooltip',
+        audioFile: ['CUSML.6.4.5.mp3']
       }
 
     ]
-    
+
+  script(src = "/module_js/voiceover.js")  
   script(src='/postFunctionalities.js')
   script(src = "/module_js/base_sim.js")
   

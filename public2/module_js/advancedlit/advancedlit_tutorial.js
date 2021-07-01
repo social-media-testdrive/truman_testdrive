@@ -1,21 +1,31 @@
 const firstStepsList = [
   {
     element: '#step1A',
+    intro: `Click "Next" to begin!`,
+    position: 'right',
+    scrollTo: 'tooltip',
+    audioFile: ['']
+  },
+  {
+    element: '#step1A',
     intro: `Let's scroll through the timeline to learn how to respond to
     breaking news on social media.`,
-    position: "right"
+    position: "right",
+    audioFile: ['CUSML.9.3.01.mp3']
   },
   {
     element: '#step1',
     intro: `When you see a breaking news story on social media, it's
     important to make sure it is reliable.`,
-    position: "right"
+    position: "right",
+    audioFile: ['CUSML.9.3.02.mp3']
   },
   {
     element: '#step1',
     intro: `Let's learn more about the story before sharing it with others!
     Click on the tornado warning article to see what you can learn.`,
-    position: "right"
+    position: "right",
+    audioFile: ['CUSML.9.3.03.mp3']
   }
 ];
 
@@ -26,7 +36,8 @@ const secondStepsList = [
     piece or a news article. In this example, the title states that this is a
     news article.`,
     position: "bottom",
-    scrollTo: "element"
+    scrollTo: "element",
+    audioFile: ['CUSML.9.3.04.mp3']
   },
   {
     element: '#step3',
@@ -35,7 +46,8 @@ const secondStepsList = [
     include links to the sources that the author used when writing their
     story.`,
     position: "left",
-    scrollTo: "element"
+    scrollTo: "element",
+    audioFile: ['CUSML.9.3.05.mp3']
   },
   {
     element: '#step3B',
@@ -43,7 +55,8 @@ const secondStepsList = [
     not have all the information. Reliable articles will often make this
     clear.`,
     position: "left",
-    scrollTo: "element"
+    scrollTo: "element",
+    audioFile: ['CUSML.9.3.06.mp3']
   },
   {
     element: "#step4",
@@ -51,7 +64,8 @@ const secondStepsList = [
     least one additional source. Click the search button to see if other sites
     are reporting this story.`,
     position: "right",
-    scrollTo: "element"
+    scrollTo: "element",
+    audioFile: ['CUSML.9.3.07.mp3']
   }
 ];
 
@@ -60,21 +74,24 @@ const thirdStepsList = [
     element: "#step5",
     intro: `You can look for additional resources using a search engine.`,
     position: "right",
-    scrollTo: "element"
+    scrollTo: "element",
+    audioFile: ['CUSML.9.3.08.mp3']
   },
   {
     element: "#step5B",
     intro: `Some of the sources you found are reporting the same news as the
     article you saw. This is a sign that the article is reliable.`,
     position: "right",
-    scrollTo: "tooltip"
+    scrollTo: "tooltip",
+    audioFile: ['CUSML.9.3.09.mp3']
   },
   {
     element: "#step6",
     intro: `Click on the "Go back to the timeline" button to see what you can
     do next.`,
     position: "bottom",
-    scrollTo: "element"
+    scrollTo: "element",
+    audioFile: ['CUSML.9.3.10.mp3']
   }
 ]
 
@@ -86,14 +103,16 @@ const fourthStepsList = [
     with your friends.`,
     position: "right",
     scrollTo: "element",
-    scrollPadding: 90
+    scrollPadding: 90,
+    audioFile: ['CUSML.9.3.11.mp3']
   },
   {
     element: '#step1',
     intro: `If you are not sure whether the article is accurate, do not share it
     with others. You don't want others believing something that may not be true!`,
     position: "right",
-    scrollTo: "element"
+    scrollTo: "element",
+    audioFile: ['CUSML.9.3.12.mp3']
   }
 ]
 
@@ -128,7 +147,13 @@ function startIntro(){
     'doneLabel':'Done &#10003'
   });
 
+  intro.onafterchange(function() {
+    Voiceovers.playVoiceover(firstStepsList[$(this)[0]._currentStep].audioFile);
+    hideHelpMessage();
+  });
+
   intro.start().onexit(function() {
+    Voiceovers.pauseVoiceover();
     $('#instructionsToContinueOne').show();
     $(".articleCard").css("box-shadow", "0px 0px 15px #14a1f6")
     $('.ui.card.articleCard').off();
@@ -140,6 +165,7 @@ function startIntro(){
             changeActiveTab('article');
             $('#instructionsToContinueOne').hide();
             startSecondIntro();
+            Voiceovers.playVoiceover(secondStepsList[0].audioFile);
           }
         });
       }
@@ -161,19 +187,21 @@ function startIntro(){
     }
   });
 
-  $('.ui.card.articleCard').on('click', function(){
-    if($(this).hasClass('articleCardClickable')){
-      $(this).transition({
-        animation: 'pulse',
-        onComplete: function(){
-          intro.exit();
-          changeActiveTab('article');
-          $('#instructionsToContinueOne').hide();
-          startSecondIntro();
-        }
-      });
-    }
-  });
+  return intro;
+  // $('.ui.card.articleCard').on('click', function(){
+  //   if($(this).hasClass('articleCardClickable')){
+  //     $(this).transition({
+  //       animation: 'pulse',
+  //       onComplete: function(){
+  //         intro.exit();
+  //         changeActiveTab('article');
+  //         $('#instructionsToContinueOne').hide();
+  //         startSecondIntro();
+  //         Voiceovers.playVoiceover(secondStepsList[0].audioFile);
+  //       }
+  //     });
+  //   }
+  // });
 }
 
 function startSecondIntro(){
@@ -194,6 +222,7 @@ function startSecondIntro(){
   });
 
   secondIntro.start().onexit(function(){
+    Voiceovers.pauseVoiceover();
     $('#instructionsToContinueTwo').show();
   });
 
@@ -208,12 +237,17 @@ function startSecondIntro(){
     }
   });
 
+  secondIntro.onafterchange(function() {
+    Voiceovers.playVoiceover(secondStepsList[$(this)[0]._currentStep].audioFile);
+  });
+
   $('.ui.big.button.searchTab').on('click', function(){
     if($(this).hasClass('green')){
       secondIntro.exit();
       $('#instructionsToContinueTwo').hide();
       changeActiveTab('search');
       startThirdIntro();
+      Voiceovers.playVoiceover(thirdStepsList[0].audioFile);
     }
   });
 };
@@ -236,23 +270,29 @@ function startThirdIntro(){
   });
 
   thirdIntro.start().onexit(function(){
+    Voiceovers.pauseVoiceover();
     $('#instructionsToContinueThree').show();
   });
 
   thirdIntro.onbeforechange( function() {
     let currentStep = $(this)[0]._currentStep;
-    if(currentStep === 1){
+    if(currentStep === 2){
       window.scrollTo(0, 0);
-      $('.ui.big.button.homeTab').addClass('testDriveBlue');
+      $('.ui.big.button.homeTab').addClass('testDriveBlueButton');
     }
   });
 
+  thirdIntro.onafterchange(function() {
+    Voiceovers.playVoiceover(thirdStepsList[$(this)[0]._currentStep].audioFile);
+  });
+
   $('.ui.big.button.homeTab').on('click', function(){
-    if($(this).hasClass('testDriveBlue')){
+    if($(this).hasClass('testDriveBlueButton')){
       thirdIntro.exit();
       $('#instructionsToContinueThree').hide();
       changeActiveTab('home');
       startFourthIntro();
+      Voiceovers.playVoiceover(fourthStepsList[0].audioFile);
     }
   });
 };
@@ -276,18 +316,57 @@ function startFourthIntro(){
     steps: fourthStepsList
   });
 
-  fourthIntro.start().onexit(function(){
-    window.location.href = '/sim/advancedlit';
+  fourthIntro.onafterchange(function() {
+    Voiceovers.playVoiceover(fourthStepsList[$(this)[0]._currentStep].audioFile);
   });
 
-
+  fourthIntro.start().onexit(function(){
+    Voiceovers.pauseVoiceover();
+    window.location.href = '/sim/advancedlit';
+  });
 };
 
+function isTutorialBoxOffScreen(bottomOffset){
+  if (window.scrollY > bottomOffset) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function hideHelpMessage(){
+  if($('#clickNextHelpMessage').is(':visible')){
+    $('#clickNextHelpMessage').transition('fade');
+  }
+}
+
+function showHelpMessage(){
+  if($('#clickNextHelpMessage').is(':hidden')){
+    $('#clickNextHelpMessage').transition('fade down');
+  }
+}
 
 
 
 $(window).on("load", function() {
 
-  startIntro();
+  const intro = startIntro();
+  const tooltipTopOffset = $('.introjs-tooltip').offset().top;
+  const tooltipBottomOffset = tooltipTopOffset + $('.introjs-tooltip').outerHeight();
+  let scrolledAway = false;
+  // When the user scrolls, check that they haven't missed the first tooltip.
+  // If the tooltip is scrolled out of the viewport and the user is still on
+  // the first tooltip step after 4 seconds, show a help message.
+  $(window).scroll(function(){
+    // only want to do this once, so check that scrolledAway is false
+    if (isTutorialBoxOffScreen(tooltipBottomOffset) && (!scrolledAway)) {
+      scrolledAway = true;
+      setTimeout(function(){
+        if(intro._currentStep === 0){
+          showHelpMessage();
+        }
+      }, 4000);
+    }
+  });
 
 });

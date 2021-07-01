@@ -2,7 +2,6 @@ const passport = require('passport');
 const request = require('request');
 const LocalStrategy = require('passport-local').Strategy;
 
-
 const User = require('../models/User');
 
 passport.serializeUser((user, done) => {
@@ -15,25 +14,96 @@ passport.deserializeUser((id, done) => {
   });
 });
 
-/**
- * Sign in using Email and Password.
- */
-passport.use(new LocalStrategy({ usernameField: 'username' }, (username, password, done) => {
-  //User.findOne({ username: username.toLowerCase() }, (err, user) => {
-  User.findOne({ username: username }, (err, user) => {
-    if (err) { return done(err); }
-    if (!user) {
-      return done(null, false, { msg: `Username ${username} not found.` });
+/*
+* Sign in as a student with username.
+*/
+
+passport.use('student-local', new LocalStrategy({
+  usernameField: 'username',
+  passwordField: 'username',
+  passReqToCallback: true
+}, (req, username, password, done) => {
+    User.findOne({
+      // search for username, case insensitive
+      username: {
+        $regex: '^'+username+'$', $options: 'i'
+      },
+      accessCode: req.body.accessCode,
+      deleted: false
+    })
+    .exec(function (err, user) {
+      if (err) {
+        return done(err);
+      }
+      if (!user) {
+        return done(null, false, { msg: 'Invalid username or login link.' });
+      }
+
+      // found user, log in complete
+      req.session.regenerate(function() {
+        return done(null, user);
+      });
+    });
+}));
+
+/*
+* Sign in as an instructor with username and password.
+*/
+
+passport.use('instructor-local', new LocalStrategy({
+  usernameField: 'instructor_username',
+  passwordField: 'instructor_password',
+  passReqToCallback: true
+}, (req, instructor_username, instructor_password, done) => {
+  User.findOne({ username: instructor_username }, async (err, user) => {
+    if (err) {
+      return done(err);
     }
-    user.comparePassword(password, (err, isMatch) => {
-      if (err) { return done(err); }
+    if (!user) {
+      return done(null, false, { msg: 'Invalid username or password.' });
+    }
+    user.comparePassword(instructor_password, async (err, isMatch) => {
+      if (err) {
+        return done(err);
+      }
       if (isMatch) {
+        // log in
         return done(null, user);
       }
       return done(null, false, { msg: 'Invalid username or password.' });
     });
   });
 }));
+
+/**
+* Login Required middleware.
+*/
+
+exports.isAuthenticated = (req, res, next) => {
+  const mod = req.path.split('/').slice(-1)[0];
+  const isResearchVersion = process.env.isResearchVersion === "true";
+  // if ((!isResearchVersion && (req.path === "/" || req.path.startsWith("/intro"))) || req.isAuthenticated()) {
+  if ((!isResearchVersion && req.path === "/") || req.isAuthenticated()) {
+    return next();
+  }
+  console.log(`Not authenticated for the following path: ${req.path}`)
+  // redirect to the appropriate if not authenticated
+  res.redirect(isResearchVersion ? '/login' : `/guest/${mod}`);
+};
+
+/**
+* Authorization Required middleware.
+*/
+
+exports.isAuthorized = (req, res, next) => {
+  const provider = req.path.split('/').slice(-1)[0];
+  const token = req.user.tokens.find(token => token.kind === provider);
+  if (token) {
+    next();
+  } else {
+    res.redirect(`/auth/${provider}`);
+  }
+};
 
 /**
  * OAuth Strategy Overview
@@ -52,7 +122,7 @@ passport.use(new LocalStrategy({ usernameField: 'username' }, (username, passwor
 
 /**
  * Sign in with Facebook.
- 
+
 passport.use(new FacebookStrategy({
   clientID: process.env.FACEBOOK_ID,
   clientSecret: process.env.FACEBOOK_SECRET,
@@ -112,7 +182,7 @@ passport.use(new FacebookStrategy({
 
 /**
  * Sign in with GitHub.
- 
+
 passport.use(new GitHubStrategy({
   clientID: process.env.GITHUB_ID,
   clientSecret: process.env.GITHUB_SECRET,
@@ -224,7 +294,7 @@ passport.use(new TwitterStrategy({
 
 /**
  * Sign in with Google.
- 
+
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_ID,
   clientSecret: process.env.GOOGLE_SECRET,
@@ -282,7 +352,7 @@ passport.use(new GoogleStrategy({
 
 /**
  * Sign in with LinkedIn.
- 
+
 passport.use(new LinkedInStrategy({
   clientID: process.env.LINKEDIN_ID,
   clientSecret: process.env.LINKEDIN_SECRET,
@@ -344,7 +414,7 @@ passport.use(new LinkedInStrategy({
 
 /**
  * Sign in with Instagram.
- 
+
 passport.use(new InstagramStrategy({
   clientID: process.env.INSTAGRAM_ID,
   clientSecret: process.env.INSTAGRAM_SECRET,
@@ -397,7 +467,7 @@ passport.use(new InstagramStrategy({
 
 /**
  * Tumblr API OAuth.
- 
+
 passport.use('tumblr', new OAuthStrategy({
   requestTokenURL: 'http://www.tumblr.com/oauth/request_token',
   accessTokenURL: 'http://www.tumblr.com/oauth/access_token',
@@ -420,7 +490,7 @@ passport.use('tumblr', new OAuthStrategy({
 
 /**
  * Foursquare API OAuth.
- 
+
 passport.use('foursquare', new OAuth2Strategy({
   authorizationURL: 'https://foursquare.com/oauth2/authorize',
   tokenURL: 'https://foursquare.com/oauth2/access_token',
@@ -442,7 +512,7 @@ passport.use('foursquare', new OAuth2Strategy({
 
 /**
  * Steam API OpenID.
- 
+
 passport.use(new OpenIDStrategy({
   apiKey: process.env.STEAM_KEY,
   providerURL: 'http://steamcommunity.com/openid',
@@ -479,7 +549,7 @@ passport.use(new OpenIDStrategy({
 
 /**
  * Pinterest API OAuth.
- 
+
 passport.use('pinterest', new OAuth2Strategy({
   authorizationURL: 'https://api.pinterest.com/oauth/',
   tokenURL: 'https://api.pinterest.com/v1/oauth/token',
@@ -498,28 +568,3 @@ passport.use('pinterest', new OAuth2Strategy({
     });
   }
 )); */
-
-/**
- * Login Required middleware.
- */
-exports.isAuthenticated = (req, res, next) => {
-  const mod = req.path.split('/').slice(-1)[0];
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  //res.redirect('/guest');
-  res.redirect(`/guest/${mod}`);
-}; 
-
-/**
- * Authorization Required middleware.
- */
-exports.isAuthorized = (req, res, next) => {
-  const provider = req.path.split('/').slice(-1)[0];
-  const token = req.user.tokens.find(token => token.kind === provider);
-  if (token) {
-    next();
-  } else {
-    res.redirect(`/auth/${provider}`);
-  }
-};

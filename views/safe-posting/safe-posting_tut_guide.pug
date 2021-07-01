@@ -26,7 +26,7 @@ block content
       br
       #steps.ui.stackable.two.column.grid.hidden
         .ui.column
-          #step1.ui.raised.segment
+          #step1.ui.raised.segment.voiceover_keyTerm1
             a.ui.blue.ribbon.label#step1Label
                 span Ignore the person
             span.hidden.responseSuggestion(id="step1_info") 
@@ -34,14 +34,14 @@ block content
               | private information with someone you haven't met in real life.
 
         .ui.column
-          #step2.ui.raised.segment
+          #step2.ui.raised.segment.voiceover_keyTerm2
             a.ui.blue.ribbon.label#step2Label
                 span Change the Subject
             span.hidden.responseSuggestion(id="step2_info") 
               | One thing you can do is to change the subject.
         
         .ui.column
-          #step3.ui.raised.segment
+          #step3.ui.raised.segment.voiceover_keyTerm3
             a.ui.blue.ribbon.label#step3Label
                 span Be Direct
             span.hidden.responseSuggestion(id="step3_info") 
@@ -49,7 +49,7 @@ block content
               | you my address.”
         
         .ui.column
-          #step4.ui.raised.segment
+          #step4.ui.raised.segment.voiceover_keyTerm4
             a.ui.blue.ribbon.label#step4Label
                 span Talk to a trusted adult
             span.hidden.responseSuggestion(id="step4_info") 
@@ -145,7 +145,32 @@ block content
     br
     br
     br
+    
 block scripts
+  script.
+    var voiceoverMappings = {
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.11.4.1.mp3']
+      },
+      '.voiceover_keyTerm2': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.11.4.2.mp3']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.11.4.3.mp3']
+      },
+      '.voiceover_keyTerm4': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.11.4.4.mp3']
+      }
+    };
+  script(src='/module_js/voiceover.js')
   script(src="/module_js/safe-posting/safe-posting_tut_guide.js")
   script(src=cdn+'/js/chatbox.js')
   

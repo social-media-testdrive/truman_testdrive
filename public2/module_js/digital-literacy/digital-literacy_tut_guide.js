@@ -1,5 +1,17 @@
 $('.ui.accordion').accordion();
 
+$('.ui.accordion .title').on('click',function(){
+  Voiceovers.pauseVoiceover();
+  if(!$(this).hasClass('active')){
+    let voiceoverKey = $(this).attr('data-voiceoverIndex');
+    Voiceovers.resetVoiceoverSequenceCount();
+    const voiceoverInfo = voiceoverMappings[voiceoverKey];
+    setTimeout(function(){
+      Voiceovers.playVoiceover(voiceoverInfo["files"],voiceoverInfo["delay"]);
+    },voiceoverInfo["initialDelay"]);
+  }
+});
+
 setTimeout(function(){
   $('.sub.header').transition('shake');
 }, 1500);

@@ -1,18 +1,27 @@
 let stepsList = [
   {
-    element: document.querySelectorAll('#generalStep')[0],
-    intro: `Let’s practice creating an account on social media.`,
-    position: "right",
-    scrollTo: 'tooltip'
+    element: '#generalStep',
+    intro: `Click "Next" to begin!`,
+    position: 'right',
+    scrollTo: 'tooltip',
+    audioFile: ['']
   },
   {
-    element: document.querySelectorAll('#generalStep')[0],
-    intro: `Click on "Done" and then look for the blue dots&nbsp;<a role='button' tabindex='0'
-    class='introjs-hint'><div class='introjs-hint-dot'></div><div
-    class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp;
-    to learn more!`,
+    element: '#generalStep',
+    intro: `Let’s practice creating an account on social media.`,
     position: "right",
-    scrollTo: 'tooltip'
+    scrollTo: 'tooltip',
+    audioFile: ['CUSML.8.4.01.mp3']
+  },
+  {
+    element: '#generalStep',
+    intro: `Click on "Done" and then look for the blue dots&nbsp;&nbsp;<a role='button' tabindex='0'
+      class='introjs-hint'><div class='introjs-hint-dot'></div>
+      <div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; &nbsp;
+      to learn more...`,
+    position: "right",
+    scrollTo: 'tooltip',
+    audioFile: ['CUSML.8.4.02.mp3']
   }
 ];
 
@@ -20,22 +29,25 @@ let hintsList = [
   {
     hint: `Think about whether you want to include part of your name or a
     nickname. You may or may not want people to know exactly who you are based
-    on your username. `,
+    on your username.`,
     element: '#hint1',
-    hintPosition: 'middle-middle'
+    hintPosition: 'middle-middle',
+    audioFile: ['CUSML.8.4.03.mp3']
   },
   {
     hint: `Make sure you have a strong password that you can easily remember,
     but that is difficult for others to guess!`,
     element: '#hint2',
-    hintPosition: 'middle-middle'
+    hintPosition: 'middle-middle',
+    audioFile: ['CUSML.8.4.04.mp3']
   },
   {
     hint: `You can make your password stronger by including different types of
     characters, such as capital letters, numbers, and symbols. Making your
     password longer can be good too!`,
     element: '#strengthLabel',
-    hintPosition: 'middle-right'
+    hintPosition: 'middle-right',
+    audioFile: ['CUSML.8.4.05.mp3']
   }
 ];
 

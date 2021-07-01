@@ -18,7 +18,7 @@ block content
 
   
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column 
-    .ui.one.column.centered.grid
+    .ui.one.column.centered.grid.feedbackMessagesGrid
       .ui.fixed.bottom.sticky
         .ui.icon.compact.message.warning#removeHidden
           i.close.icon
@@ -389,7 +389,7 @@ block content
           i.big.send.link.icon            
             
       
-    button.ui.big.labeled.icon.button.settings2#cyberTransButton(style="margin-bottom:4em;")
+    button.ui.big.labeled.icon.button.settings2#cyberTransButton
         i.rocket.icon
         |   Let's Continue!
 
@@ -402,15 +402,18 @@ block scripts
         through it, you can see that the tagged posts have been removed from her
         profile.`,
         element: '#hint1',
-        hintPosition: 'middle-middle'
+        hintPosition: 'middle-middle',
+        audioFile: ['CUSML.7.8.16.mp3']
       },
       {
         hint: `However, the public can still see all of her posts.`,
         element: '#hint2',
-        hintPosition: 'middle-middle'
-      },
+        hintPosition: 'middle-middle',
+        audioFile: ['CUSML.7.8.17.mp3']
+      }
     ]
-    
+
+  script(src="/module_js/voiceover.js")  
   script(src='/postFunctionalities.js')
   script(src="/module_js/base_sim.js")
 

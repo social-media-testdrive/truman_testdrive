@@ -1,0 +1,21 @@
+extends ../ui_layout
+
+block content
+  .ui.sixteen.wide.row
+    .ui.sixteen.wide.column
+      h2.loginPageTitle Welcome to the Research Version of Social Media TestDrive!
+  .ui.sixteen.wide.row
+    .eight.wide.column
+      h2.ui.header Login As Student
+      form.ui.form(action='/studentLogin/'+accessCode method='POST')
+        input(type='hidden', name='_csrf', value=csrfToken)
+        input(type='hidden', name='accessCode', id='accessCode' value=accessCode)
+        .field
+          label(for='username' style="font-size:larger;") Username
+          input(type='text', name='username', id='username', placeholder='Username', autofocus, required).field
+        button.ui.big.green.button(type='submit') Login
+      br
+      br  
+
+block styles
+  link(rel='stylesheet', href='/css/login.css')

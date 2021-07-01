@@ -1,0 +1,17 @@
+/* My Learning Achievement section: module completion pie chart */
+
+.completionChartColumn .ui.segment {
+  display: grid;
+}
+
+.completionChartColumn .customChartLabelText {
+  display: flex;
+  position: absolute;
+  text-align: center;
+  align-items: center;
+  width: 20%;
+  left: 40%;
+  height: 20%;
+  top: 40%;
+  font-size: x-large;
+}

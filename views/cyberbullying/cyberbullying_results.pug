@@ -3,144 +3,197 @@ extends ../ui_layout
 block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   
-  .ui.container.addBottomMargin
+  .ui.container.resultsAddBottomMargin
     .ui.stackable.column.grid
       .ui.column
         .insertPrint
-        .ui.raised.segment
+        .ui.raised.segment.reflectionTopSegment
           h3.ui.header
             i.question.blue.icon
             .content
               | Reflect
-          .ui.label
-            h4
-              i.exclamation.triangle.icon
-              | These were the cyberbullying posts in the timeline. How many did 
-              | you notice?
-          br
-          br
-          .ui.stackable.three.cards
-            
-            .ui.fluid.card.dim()#card1
-              .content
-                .right.floated.time 1 hour ago
-                a(href='/user/ella_vaderrr')
-                  img.ui.avatar.image(src=cdn+'/profile_pictures/user25.jpg')
-                  span Ella Sroni
-              .image
-                img.post(src=cdn+'/post_pictures/blackbkg.jpg')
-              .content
-                .description
-                  | No one likes you. Why do you come to school? @
-                  a(href='/user/DylanCrazzzzzy') Dylan Moore
-        
+              
+          .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection1
+            i.down.arrow.icon
+            |   Start
+          .ui.basic.segment.reflectionPromptSegment.hidden.noPadding.selectPostsQuestion1  
+            .ui.label.resultsPromptLabel
+              h4
+                i.exclamation.triangle.icon.yellowIcon
+                | These were the cyberbullying posts in the timeline. How many did 
+                | you notice?
+            h3.grayElement
+              i.hand.pointer.icon
+              | Click on the ones that you noticed!
+            .ui.stackable.three.cards.selectablePosts
+              
+              .ui.fluid.card.dim()#card1
+                .content
+                  .right.floated.time 1 hour ago
+                  a(href='/user/ella_vaderrr')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user25.jpg')
+                    span Ella Sroni
+                .image
+                  img.post(src=cdn+'/post_pictures/blackbkg.jpg')
+                .content
+                  .description
+                    | No one likes you. Why do you come to school? @
+                    a(href='/user/DylanCrazzzzzy') Dylan Jones
           
-            .ui.fluid.card.dim()#card2
-              .content
-                .right.floated.time 1 hour ago
-                a(href='/user/goaliegirl')
-                  img.ui.avatar.image(src=cdn+'/profile_pictures/user29.jpg')
-                  span Breana Summers
-              .image
-                img.post(src=cdn+'/post_pictures/ewww.jpg')
-              .content
-                .description Dylan smells like he didn&apos;t shower for a week
+            
+              .ui.fluid.card.dim()#card2
+                .content
+                  .right.floated.time 1 hour ago
+                  a(href='/user/goaliegirl')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user29.jpg')
+                    span Breana Summers
+                .image
+                  img.post(src=cdn+'/post_pictures/ewww.jpg')
+                .content
+                  .description.
+                    Dylan smells like he didn't shower for a week
 
 
-            .ui.fluid.card.dim()#card3
-              .content
-                .right.floated.time 1 hour ago
-                a(href='/user/memeking')
-                  img.ui.avatar.image(src=cdn+'/profile_pictures/user34.jpg')
-                  span Keegan Scott
-              .image
-                img.post(src=cdn+'/post_pictures/dylansketchbook.jpeg')
-              .content
-                .description 
-                  | omg lollll look at Dylan&rsquo;s sketchbook he&rsquo;s such 
-                  | a nerdddd
-       
+              .ui.fluid.card.dim()#card3
+                .content
+                  .right.floated.time 1 hour ago
+                  a(href='/user/memeking')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user34.jpg')
+                    span Keegan Scott
+                .image
+                  img.post(src=cdn+'/post_pictures/dylansketchbook.jpeg')
+                .content
+                  .description.
+                    omg lollll look at Dylan's sketchbook he's such a nerdddd
+           
  
-    .ui.raised.segment
+        .ui.basic.segment.noPadding.hidden.reflectionTopSegment
+          .ui.raised.segment
+            .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection2
+              i.down.arrow.icon
+              |   Next
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
+              .ui.label.resultsPromptLabel
+                h4.reflectionCheckboxesPrompt(data-questionNumber='Q1')
+                  | #{reflectionData.cyberbullying.Q1.prompt}
+              .content.checkOne
+                .ui.form
+                  br
+                  .inline.fields
+                    label(for='iFlagged', name='iFlagged') 
+                    .field
+                      .ui.checkbox
+                        input(type='checkbox')
+                        label(for='iFlagged', tabindex='0') 
+                          | #{reflectionData.cyberbullying.Q1.checkboxLabels[0]}
+                .ui.form
+                  .inline.fields
+                    label(for='iLiked', name='iLiked') 
+                    .field
+                      .ui.checkbox
+                        input(type='checkbox')
+                        label(for='iLiked', tabindex='0') 
+                          | #{reflectionData.cyberbullying.Q1.checkboxLabels[1]}
+                .ui.form
+                  .inline.fields
+                    label(for='iSupported', name='iSupported') 
+                    .field
+                      .ui.checkbox
+                        input(type='checkbox')
+                        label(for='iSupported', tabindex='0') 
+                          | #{reflectionData.cyberbullying.Q1.checkboxLabels[2]}
+                .ui.form
+                  .inline.fields
+                    label(for='wouldTell', name='wouldTell') 
+                    .field
+                      .ui.checkbox
+                        input(type='checkbox')
+                        label(for='wouldTell', tabindex='0') 
+                          | #{reflectionData.cyberbullying.Q1.checkboxLabels[3]}
       
-      .ui.label
-        h4
-          | Tell us what you did to be an upstander.
-      .content.checkOne
-        .ui.form
-          br
-          .inline.fields
-            label(for='iFlagged', name='iFlagged') 
-            .field
-              .ui.checkbox
-                input(type='checkbox')
-                label(for='iFlagged', tabindex='0') 
-                  | I flagged the post or comment.
-        .ui.form
-          .inline.fields
-            label(for='iLiked', name='iLiked') 
-            .field
-              .ui.checkbox
-                input(type='checkbox')
-                label(for='iLiked', tabindex='0') 
-                  | I "liked" the target's post to show support.
-        .ui.form
-          .inline.fields
-            label(for='iSupported', name='iSupported') 
-            .field
-              .ui.checkbox
-                input(type='checkbox')
-                label(for='iSupported', tabindex='0') 
-                  | I wrote a supportive or defending comment for the target.
-        .ui.form
-          .inline.fields
-            label(for='wouldTell', name='wouldTell') 
-            .field
-              .ui.checkbox
-                input(type='checkbox')
-                label(for='wouldTell', tabindex='0') 
-                  | I would tell a trusted adult if I saw this kind of post.
-      .ui.form
-        .field
-          label(for='like') Why did you act this way?
-          label
-          textarea.glowing-border(rows='4' id="cyber_responseOne") 
+              .ui.basic.segment.noPadding
+                .ui.basic.segment.noPadding.reflectionPromptSegment
+                  .ui.label.resultsPromptLabel
+                    h4.reflectionPrompt(data-questionNumber='Q2')
+                      | #{reflectionData.cyberbullying.Q2.prompt}
+                  .ui.form
+                    .inline.fields
+                      label
+                      textarea.glowing-border(rows='4' id="cyber_responseOne")
+                        
+        .ui.basic.segment.noPadding.hidden.reflectionTopSegment
+          .ui.raised.segment
+            .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection3
+              i.down.arrow.icon
+              |   Next
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
+              .ui.label.resultsPromptLabel
+                h4.reflectionPrompt(data-questionNumber='Q3')
+                  | #{reflectionData.cyberbullying.Q3.prompt}
+              .ui.form
+                .inline.fields
+                  label
+                  textarea.glowing-border(rows='4' id="cyber_responseTwo")
 
-      
-    .ui.raised.segment.responseTwo
-      .ui.label
-        h4
-          | Why is it important for people to act against cyberbullying?
-      .ui.form
-        .inline.fields
-          label
-          textarea.glowing-border(rows='4' id="cyber_responseTwo")
+        .ui.basic.segment.noPadding.hidden.reflectionTopSegment
+          .ui.raised.segment
+            .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection4
+              i.down.arrow.icon
+              |   Next
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
+              .ui.label.resultsPromptLabel
+                h4.reflectionPrompt(data-questionNumber='Q4')
+                  | #{reflectionData.cyberbullying.Q4.prompt}
+              .ui.form
+                .inline.fields
+                  label
+                  textarea.glowing-border(rows='4' id="cyber_responseThree")
 
-    .ui.raised.segment.responseThree
-      .ui.label
-        h4
-          | What will you do in the future to be an upstander if you see 
-          | cyberbullying?
-      .ui.form
-        .inline.fields
-          label
-          textarea.glowing-border(rows='4' id="cyber_responseThree")
-
+    .ui.warning.message.hidden.startPromptsWarning
+      .header
+        | Click "Start"
+    .ui.warning.message.hidden.openAllPromptsWarning
+      .header
+        | Click "Next"
     include ../partials/optInToShareActivityData.pug
     br
-    .ui.big.green.labeled.icon.button.printResponsesButton(onclick="onPrint()")
+    .ui.big.labeled.icon.button.results_print(onclick="onPrint()")
           i.right.arrow.icon
           |   Print your responses
     br
     br
-    .ui.big.green.labeled.icon.button.resultsContinueButton
+    .ui.big.labeled.icon.button.resultsContinueButton
           i.rocket.icon
           |   Continue
-
       
 block scripts
+  script.
+    var voiceoverMappings = {
+      '.voiceover_reflection1': {
+        "initialDelay": 0,
+        "delay": 0,
+        "files": ['CUSML.6.7.1.mp3']
+      },
+      '.voiceover_reflection2': {
+        "initialDelay": 500,
+        "delay": 0,
+        "files": ['CUSML.6.7.2.mp3']
+      },
+      '.voiceover_reflection3': {
+        "initialDelay": 500,
+        "delay": 0,
+        "files": ['CUSML.6.7.3.mp3']
+      },
+      '.voiceover_reflection4': {
+        "initialDelay": 500,
+        "delay": 0,
+        "files": ['CUSML.6.7.4.mp3']
+      }
+    };
   script(src="/module_js/cyberbullying/cyberbullying_results.js")
-  script(src='/optInToShareActivityData.js?v=1')
+  script(src='/module_js/base_results.js?v=1')
+  script(src='/module_js/voiceover.js')
+  
 block styles
   link(rel='stylesheet', href='/css/results.css')
   link(rel='stylesheet', href='/css/optInToShareActivityData.css')

@@ -3,14 +3,16 @@ var hintsList = [
     hint: `Search engines like Google often prioritize results about breaking
     news.`,
     element: '#hint2',
-    hintPosition: 'middle-middle'
+    hintPosition: 'middle-middle',
+    audioFile: ['CUSML.9.4.07.mp3']
   },
   {
     hint: `None of the sources you found are reporting the same news as the
     article you saw on your timeline. This might be an indication that the
     article has inaccurate information.`,
     element: '#hint3',
-    hintPosition: 'middle-right'
+    hintPosition: 'middle-right',
+    audioFile: ['CUSML.9.4.08.mp3']
   }
 ];
 

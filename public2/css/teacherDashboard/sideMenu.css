@@ -1,0 +1,42 @@
+/* Adding extra padding when tablet or larger */
+/* Making content container wider on large monitors and above */
+/* @media (min-width: 992px) {
+  .dashboardContentColumn {
+    padding-left: calc(100% - 250px) !important;
+  }
+} */
+
+/* Making content container wider on large monitors and above */
+/* @media (min-width: 1200px) {
+  .dashboardContentColumn {
+    padding left: initial;
+  }
+} */
+
+.ui.menu.teacherDashboardMenu,
+.ui.menu.learnerDashboardMenu {
+  padding: 100px 0 0 0;
+}
+
+.ui.menu.teacherDashboardMobileMenu
+.ui.menu.learnerDashboardMobileMenu {
+  margin-top: 100px;
+}
+
+.hiddenVisibility > :not(.teacherDashboardMenu):not(.learnerDashboardMenu) {
+  visibility: hidden;
+}
+
+/* Hide the mobile menu when above tablet screen size */
+@media (min-width: 992px) {
+  .teacherDashboardMobileMenu, .learnerDashboardMobileMenu {
+    display: none !important;
+  }
+}
+
+/* Hide the side menu in favor of a compact mobile menu on screens tablet size and below */
+@media (max-width: 992px) {
+  .teacherDashboardMenu, .learnerDashboardMenu {
+    display: none !important;
+  }
+}

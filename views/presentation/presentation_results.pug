@@ -2,155 +2,229 @@ extends ../ui_layout
 
 block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
-  .ui.container(style="margin-bottom:4em;")
+  .ui.container.resultsAddBottomMargin
     .ui.stackable.column.grid
       .ui.column
         .insertPrint
-        .ui.raised.segment
+        .ui.raised.segment.reflectionTopSegment
           h3.ui.header
             i.question.blue.icon
             .content
               | Reflect
-          .ui.label
-            h4
-              i.exclamation.triangle.icon
-
-              | These were the posts on the timeline that were from Elena’s 
-              | finsta accounts. How many did you notice?
-          br
-          br
-          .ui.stackable.three.cards
-            
-            .ui.fluid.card.dim()#card1
-              .content
-                .right.floated.meta 20 minutes ago  
-                a(href='/user/realmellie22')
-                  img.ui.avatar.image(src=cdn+'/profile_pictures/user80.jpg')
-                  span elena who
-              .image
-                img.post(src=cdn+"/post_pictures/spcrying.jpg")
-              .content
-                .description="school really sucks i just wanna quit!!!"
-        
           
-            .ui.fluid.card.dim()#card2
-              .content
-                .right.floated.meta 15 minutes ago  
-                a(href='/user/realmellie22')
-                  img.ui.avatar.image(src=cdn+'/profile_pictures/user80.jpg')
-                  span elena who
-              .image
-                img.post(src=cdn+"/post_pictures/spselfie.jpg")
-              .content
-                .description="silly selfie what do u think?"
+          .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection1
+            i.down.arrow.icon
+            |   Start
+          .ui.basic.segment.reflectionPromptSegment.hidden.noPadding.selectPostsQuestion1  
+            .ui.label.resultsPromptLabel
+              h4
+                i.exclamation.triangle.icon.yellowIcon
+                | These were the posts on the timeline that were from Elena’s 
+                | finsta accounts. How many did you notice?
+            h3.grayElement
+              i.hand.pointer.icon
+              | Click on the ones that you noticed! 
+            .ui.stackable.three.cards.selectablePosts
+              
+              .ui.fluid.card.dim()#card1
+                .content
+                  .right.floated.meta 20 minutes ago  
+                  a(href='/user/realmellie22')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user80.jpg')
+                    span elena who
+                .image
+                  img.post(src=cdn+"/post_pictures/spcrying.jpg")
+                .content
+                  .description.
+                    school really sucks i just wanna quit!!!
+          
+            
+              .ui.fluid.card.dim()#card2
+                .content
+                  .right.floated.meta 15 minutes ago  
+                  a(href='/user/realmellie22')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user80.jpg')
+                    span elena who
+                .image
+                  img.post(src=cdn+"/post_pictures/spselfie.jpg")
+                .content
+                  .description.
+                    silly selfie what do u think?
 
 
-            .ui.fluid.card.dim()#card3
-              .content
-                .right.floated.meta 15 minutes ago  
-                a(href='/user/realmellie22')
-                  img.ui.avatar.image(src=cdn+'/profile_pictures/user80.jpg')
-                  span elena who
-              .image
-                img.post(src=cdn+"/post_pictures/spnosering.png")
-              .content
-                .description="got a nose ring don't tell my parents they'll flip out lol"
+              .ui.fluid.card.dim()#card3
+                .content
+                  .right.floated.meta 15 minutes ago  
+                  a(href='/user/realmellie22')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user80.jpg')
+                    span elena who
+                .image
+                  img.post(src=cdn+"/post_pictures/spnosering.png")
+                .content
+                  .description.
+                    got a nose ring don't tell my parents they'll flip out lol
  
  
-    .ui.raised.segment.checkOne
-      .ui.label
-        h4
-          | How were the posts in Elena’s finsta different from the ones in her 
-          | main account?
+        .ui.basic.segment.noPadding.hidden.reflectionTopSegment
+          .ui.raised.segment.checkOne
+            .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection2
+              i.down.arrow.icon
+              |   Next
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
+              .ui.label.resultsPromptLabel
+                h4.reflectionCheckboxesPrompt(data-questionNumber='Q1')
+                  | #{reflectionData.presentation.Q1.prompt}
 
-      .ui.form
-        br
-        .inline.fields
-          label(for='certainPeople', name='certainPeople') 
-          .field
-            .ui.checkbox
-              input(type='checkbox')
-              label(for='certainPeople', tabindex='0') 
-                | She posted about things that only certain people will be 
-                | interested in
+              .ui.form
+                br
+                .inline.fields
+                  label(for='certainPeople', name='certainPeople') 
+                  .field
+                    .ui.checkbox
+                      input(type='checkbox')
+                      label(for='certainPeople', tabindex='0') 
+                        | #{reflectionData.presentation.Q1.checkboxLabels[0]}
 
-      .ui.form
-        .inline.fields
-          label(for='casual', name='casual') 
-          .field
-            .ui.checkbox
-              input(type='checkbox')
-              label(for='casual', tabindex='0') 
-                | She posted things that are more casual or personal
-        
-
-      .ui.form
-        .inline.fields
-          label(for='meanPost', name='meanPost') 
-          .field
-            .ui.checkbox
-              input(type='checkbox')
-              label(for='meanPost', tabindex='0') 
-                | She posted mean things about other people
+              .ui.form
+                .inline.fields
+                  label(for='casual', name='casual') 
+                  .field
+                    .ui.checkbox
+                      input(type='checkbox')
+                      label(for='casual', tabindex='0') 
+                        | #{reflectionData.presentation.Q1.checkboxLabels[1]}
+                
+              .ui.form
+                .inline.fields
+                  label(for='meanPost', name='meanPost') 
+                  .field
+                    .ui.checkbox
+                      input(type='checkbox')
+                      label(for='meanPost', tabindex='0') 
+                        | #{reflectionData.presentation.Q1.checkboxLabels[2]}
   
 
-    .ui.raised.segment.radioOne
-      .ui.label
-        h4
-          | Did you create a post on the TestDrive timeline?
-      .ui.form
-        br
-        .inline.fields
-          .field
-            .radio.checkbox
-              input(type='radio', value="yes", name='make', tabindex='0')
-              label Yes
-          .field
-            .radio.checkbox
-              input(type='radio', value="no", name='make', tabindex='0')
-              label No
+        .ui.basic.segment.noPadding.hidden.reflectionTopSegment
+          .ui.raised.segment.radioOne
+            .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection3
+              i.down.arrow.icon
+              |   Next
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
+              .ui.label.resultsPromptLabel
+                h4.reflectionRadioPrompt(data-questionNumber='Q2')
+                  | #{reflectionData.presentation.Q2.prompt}
+              .ui.form
+                br
+                .inline.fields
+                  .field
+                    .radio.checkbox
+                      input(type='radio', value="yes", name='make', tabindex='0')
+                      label 
+                        | #{reflectionData.presentation.Q2.radioLabels[0]}
+                  .field
+                    .radio.checkbox
+                      input(type='radio', value="no", name='make', tabindex='0')
+                      label 
+                        | #{reflectionData.presentation.Q2.radioLabels[1]}
       
-    .ui.raised.segment
-      .ui.label
-        h4
-          | How did you think about the audience when you created your post?
-      .ui.form
-        .inline.fields
-          label
-          textarea.glowing-border(rows='3' id="presentation_responseOne")
+        .ui.basic.segment.noPadding.hidden.reflectionTopSegment
+          .ui.raised.segment
+            .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection4
+              i.down.arrow.icon
+              |   Next
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
+              .ui.label.resultsPromptLabel
+                h4.reflectionPrompt(data-questionNumber='Q3')
+                  | #{reflectionData.presentation.Q3.prompt}
+              .ui.form
+                .inline.fields
+                  label
+                  textarea.glowing-border(rows='3' id="presentation_responseOne")
 
-    .ui.raised.segment
-      .ui.label
-        h4
-          | What are the benefits of having multiple social media accounts?
-      .ui.form
-        .inline.fields
-          label
-          textarea.glowing-border(rows='3' id="presentation_responseTwo")
+        .ui.basic.segment.noPadding.hidden.reflectionTopSegment
+          .ui.raised.segment
+            .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection5
+              i.down.arrow.icon
+              |   Next
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
+              .ui.label.resultsPromptLabel
+                h4.reflectionPrompt(data-questionNumber='Q4')
+                  | #{reflectionData.presentation.Q4.prompt}
+              .ui.form
+                .inline.fields
+                  label
+                  textarea.glowing-border(rows='3' id="presentation_responseTwo")
 
-    .ui.raised.segment
-      .ui.label
-        h4
-          | What are the drawbacks of having multiple social media accounts?
-      .ui.form
-        .inline.fields
-          label
-          textarea.glowing-border(rows='3' id="presentation_responseThree")
-    include ../partials/optInToShareActivityData.pug      
+        .ui.basic.segment.noPadding.hidden.reflectionTopSegment
+          .ui.raised.segment
+            .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection6
+              i.down.arrow.icon
+              |   Next
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
+              .ui.label.resultsPromptLabel
+                h4.reflectionPrompt(data-questionNumber='Q5')
+                  | #{reflectionData.presentation.Q5.prompt}
+              .ui.form
+                .inline.fields
+                  label
+                  textarea.glowing-border(rows='3' id="presentation_responseThree")
+            
+    .ui.warning.message.hidden.startPromptsWarning
+      .header
+        | Click "Start"
+    .ui.warning.message.hidden.openAllPromptsWarning
+      .header
+        | Click "Next"
+    include ../partials/optInToShareActivityData.pug  
     br
-    .ui.big.green.labeled.icon.button.printResponsesButton(onclick="onPrint()")
+    .ui.big.labeled.icon.button.results_print(onclick="onPrint()")
           i.right.arrow.icon
           |   Print your responses
     br
     br
-    .ui.big.green.labeled.icon.button.resultsContinueButton
+    .ui.big.labeled.icon.button.resultsContinueButton
           i.rocket.icon
           |   Continue
 
       
 block scripts
+  script.
+    var voiceoverMappings = {
+      '.voiceover_reflection1': {
+        "initialDelay": 0,
+        "delay": 0,
+        "files": ['CUSML.12.6.1.mp3']
+      },
+      '.voiceover_reflection2': {
+        "initialDelay": 500,
+        "delay": 0,
+        "files": ['CUSML.12.6.2.mp3']
+      },
+      '.voiceover_reflection3': {
+        "initialDelay": 500,
+        "delay": 0,
+        "files": ['CUSML.12.6.3.mp3']
+      },
+      '.voiceover_reflection4': {
+        "initialDelay": 500,
+        "delay": 0,
+        "files": ['CUSML.12.6.4.mp3']
+      },
+      '.voiceover_reflection5': {
+        "initialDelay": 500,
+        "delay": 0,
+        "files": ['CUSML.12.6.5.mp3']
+      },
+      '.voiceover_reflection6': {
+        "initialDelay": 500,
+        "delay": 0,
+        "files": ['CUSML.12.6.6.mp3']
+      }
+    };
   script(src="/module_js/presentation/presentation_results.js")
-  script(src='/optInToShareActivityData.js?v=1')
+  script(src='/module_js/base_results.js?v=1')
+  script(src='/module_js/voiceover.js')
+  
 block styles
   link(rel='stylesheet', href='/css/results.css')
   link(rel='stylesheet', href='/css/optInToShareActivityData.css')

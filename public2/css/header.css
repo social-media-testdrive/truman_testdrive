@@ -1,9 +1,18 @@
+.ui.grid>.row.testdriveHeaderRow {
+  padding-bottom: 40px;
+}
+
+.headerDropdownMenu{
+  height: 100%;
+}
+
 #logo {
   width: 125px;
 }
 
-.progressHeader {
-  padding: 8px 14px 8px 14px !important;
+.ui.segment.progressHeader {
+  padding: 8px 14px 8px 14px;
+
 }
 
 .hideHeader{

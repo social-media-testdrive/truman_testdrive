@@ -17,8 +17,14 @@ block content
 
   
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column 
-    .ui.one.column.centered.grid
+    .ui.one.column.centered.grid.feedbackMessagesGrid
       .ui.fixed.bottom.sticky
+        .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header Need some help?
+            p Scroll up and click "Next" to begin!
         .ui.icon.compact.message.warning#removeHidden
           i.close.icon
           i.question.icon.float
@@ -82,7 +88,7 @@ block content
                 | i was there too
               .actions
                 a.like.comment Like
-                a.flag.comment.comment Flag
+                a.flag.comment Flag
           .comment
             a.avatar
               img(src=cdn+'/profile_pictures/user74.jpg')
@@ -98,7 +104,7 @@ block content
                 | we should play more!!!
               .actions
                 a.like.comment Like
-                a.flag.comment.comment Flag
+                a.flag.comment Flag
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
@@ -148,14 +154,14 @@ block content
               .metadata
                 span.date 2 days ago
                 .rating
-                  i.heart.icon 
-                  span.num=2   
+                  i.heart.icon
+                  span.num=2
                   |  Likes
               .text()
                 | Looks interesting!
               .actions
                 a.like.comment Like
-                a.flag.comment.comment Flag
+                a.flag.comment Flag
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
@@ -212,7 +218,7 @@ block content
                 | haha nice shot
               .actions
                 a.like.comment Like
-                a.flag.comment.comment Flag
+                a.flag.comment Flag
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
@@ -220,39 +226,45 @@ block content
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
 
-    button.ui.big.labeled.icon.button.cybersim1#cyberTransButton(style="margin-bottom:4em;")
+    button.ui.big.labeled.icon.button.cybersim1.addBottomMargin#cyberTransButton
         i.rocket.icon
         |   Let's Continue!
-
-
-
-
 
 block scripts
   script.
     var stepsList = [
       {
-        element: document.querySelectorAll('#step1')[0],
+        element: '#step1',
+        intro: `Click "Next" to begin!`,
+        position: 'right',
+        scrollTo: 'tooltip',
+        audioFile: ['']
+      },
+      {
+        element: '#step1',
         intro: `These are posts from the social media accounts of Jake, a 13 year
         old. He has 3 different accounts. His main one (Jake Matthews), as well as
         two other accounts (jakethesnake and minecraftboi23).`,
         position:'right',
-        scrollTo:'tooltip'
+        scrollTo:'tooltip',
+        audioFile: ['CUSML.12.4.01.mp3']
       },
       {
-        element: document.querySelectorAll('#step1')[0],
+        element: '#step1',
         intro: `In this activity, we will look at Jake's different accounts.`,
         position:'right',
-        scrollTo:'tooltip'
+        scrollTo:'tooltip',
+        audioFile: ['CUSML.12.4.02.mp3']
       },
       {
-        element: document.querySelectorAll('#step1')[0],
-        intro: `Click on "Done" and then look for the blue dots&nbsp;<a role='button' tabindex='0'
-        class='introjs-hint'><div class='introjs-hint-dot'></div><div
-        class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; 
-        to learn more!`,
+        element: '#step1',
+        intro: `Click on "Done" and then look for the blue dots&nbsp&nbsp;<a role='button' tabindex='0'
+        class='introjs-hint'><div class='introjs-hint-dot'></div>
+        <div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; &nbsp; to learn
+        more...`,
         position:'right',
-        scrollTo:'tooltip'
+        scrollTo:'tooltip',
+        audioFile: ['CUSML.12.4.03.mp3']
       }
     ];
     
@@ -262,12 +274,13 @@ block scripts
         that he would be okay with all of his social media audience seeing.`,
         element: '#hint1',
         hintPosition: 'middle-middle',
-        scrollTo:'tooltip'
+        scrollTo:'tooltip',
+        audioFile: ['CUSML.12.4.04.mp3']
       }
     ];
-    
+
+  script(src='/module_js/voiceover.js')
   script(src='/postFunctionalities.js')  
-  script(src="/module_js/presentation/presentation_sim.js") 
   script(src="/module_js/base_sim.js")
   
 block styles

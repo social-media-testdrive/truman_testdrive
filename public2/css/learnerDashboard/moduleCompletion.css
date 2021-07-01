@@ -1,0 +1,34 @@
+/* Module Completion Section: list of modules */
+
+#moduleProgressColumn .moduleProgressCustomIcon {
+  padding: 10px;
+  min-width: 150px;
+}
+
+#moduleProgressColumn .moduleProgressCustomIcon h3 {
+  margin-top: 5px;
+}
+
+#moduleProgressColumn .moduleProgressCustomIcon .completedIcon {
+  color: rgba(255, 99, 132, 1);
+  background: white;
+  box-shadow: 0 0 0 0.1em rgba(255, 99, 132, 1) inset;
+}
+
+#moduleProgressColumn .moduleProgressCustomIcon .startedIcon {
+  color: #14a1f6;
+  background: white;
+  box-shadow: 0 0 0 0.1em #14a1f6 inset;
+}
+
+#moduleProgressColumn .moduleProgressCustomIcon .notStartedIcon {
+  color: rgb(0 0 0 / 35%);
+  background: white;
+  box-shadow: 0 0 0 0.1em rgb(0 0 0/ 35%) inset;
+}
+
+/* Module Completion Section: individual module details */
+
+.hideModuleDetails {
+  visibility: hidden;
+}
