@@ -8,9 +8,10 @@ lib-cov
 *.swp
 *.zip
 
-
-
 #Build
+.env
+.env.example
+.gitignore
 public
 post_pictures
 profile_pictures
@@ -45,8 +46,22 @@ Thumbs.db
 addNewInstructor.js
 create-account-batch.js
 create-account-batch-dev.js
+populate.js
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+#Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Behat and Composer
+composer.json
+composer.lock
+debug.log
+features
+vendor
+selenium-server-standalone-3.141.59.jar
