@@ -66,7 +66,7 @@ function eventsAfterHints(){
   $('.ui.fluid.card.test img').on('click', function(){
     $('.ui.accordion').accordion('open', 0);
     $('.ui.accordion').accordion('close', 1);
-    $('input[type=checkbox]').prop('checked',false);
+    $('.ui.modal input[type=checkbox]').prop('checked',false);
     recordSimModalInputs('esteem_simPostModal1')
   });
 };

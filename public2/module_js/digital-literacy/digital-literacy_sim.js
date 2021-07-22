@@ -92,7 +92,7 @@ function eventsAfterHints(){
   });
 
   $('.flag.button').on('click', function(){
-    $('input[type=checkbox]').prop('checked',false);
+    $('.ui.modal input[type=checkbox]').prop('checked',false);
     recordSimModalInputs('digital-literacy_flagModal');
   })
 }
