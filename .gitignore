@@ -50,8 +50,8 @@ create-account-batch-dev.js
 !.elasticbeanstalk/*.global.yml
 
 # Behat and Composer
-composer.json
+#composer.json
 composer.lock
-features
+#features
 vendor
 selenium-server-standalone-3.141.59.jar
