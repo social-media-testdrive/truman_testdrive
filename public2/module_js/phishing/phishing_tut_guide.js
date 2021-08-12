@@ -11,8 +11,8 @@ function animateUnchecked(){
 };
 
 function checkStatus(){
-  if (($('input:checked').length) ==
-        ($('input').length)){
+  if (($('input.checkbox:checked').length) ==
+        ($('input.checkbox').length)){
     $("#checkAllWarning").hide();
     $('.ui.big.labeled.icon.button').addClass('green');
     $('.ui.big.labeled.icon.button').transition('jiggle');
@@ -26,7 +26,7 @@ function clickGotIt(){
   if ($('.reviewSegment').is(':hidden')){
     $('.clickNextWarning').show();
     $('.showReviewSectionButton').transition("bounce");
-  } else if (($('input:checked').length) == ($('input').length)){
+  } else if (($('input.checkbox:checked').length) == ($('input.checkbox').length)){
     window.location.href='/sim/phishing';
   } else {
     $('#checkAllWarning').show();
@@ -40,7 +40,7 @@ setTimeout( function(){
 
 $(window).on("load", function(){
   Voiceovers.addVoiceovers();
-  $("input").change( function() {
+  $("input.checkbox").change( function() {
     checkStatus();
   });
   $("#phishingTutGuideButton").on('click', function() {
