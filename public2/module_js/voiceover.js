@@ -10,6 +10,10 @@ function pauseVoiceover(){
 }
 
 function playVoiceover(audioFile, delay = 0) {
+  const voiceoversDisabled = sessionStorage.getItem('enableVoiceovers') === 'false';
+  if (voiceoversDisabled) {
+    return;
+  }
   const pathArray = window.location.pathname.split('/');
   const subdirectory2 = pathArray[2];
   if (audioFile !== '') {

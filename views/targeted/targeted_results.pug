@@ -2,7 +2,7 @@ extends ../ui_layout
 
 block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
-  -var adType = user.targetedAdTopic;
+  -var adType = user.targetedAdTopic[user.targetedAdTopic.length - 1]
   
   .ui.container.resultsAddBottomMargin
     .ui.stackable.column.grid

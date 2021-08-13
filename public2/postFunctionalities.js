@@ -103,7 +103,7 @@ function flagPost(e){
 
   {
     //console.log("CLICKING ON DIG INGO FLAG");
-    $('input[type=checkbox]').prop('checked',false);
+    $('.ui.modal input[type=checkbox]').prop('checked',false);
     if (actionType === 'free play') {
       recordModalInputs('digital-literacy_flagModal');
     } else if (actionType === 'guided activity'){

@@ -12,6 +12,21 @@ function changeActiveProgressTo(activeStep){
 }
 
 $(window).on("load", function () {
+  let initialVoiceoverState = window.sessionStorage.getItem('enableVoiceovers');
+  if(initialVoiceoverState === 'false') {
+    $('#voiceoverCheckbox input').removeAttr('checked');
+  }
+
+  $('#voiceoverCheckbox').change(function() {
+    if($("input[name='voiceoverCheckbox']").is(":checked")){
+      window.sessionStorage.setItem('enableVoiceovers', 'true');
+    } else {
+      window.sessionStorage.setItem('enableVoiceovers', 'false');
+      Voiceovers.pauseVoiceover();
+    }
+  });
+
+
   const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
   // Record the current page if data collection is enabled
   if (enableDataCollection) {

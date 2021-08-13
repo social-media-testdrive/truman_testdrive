@@ -90,7 +90,7 @@ function eventsAfterHints(){
       if(dropdownSelection == 0){
         $(".inverted.dimmer").css("background-color","rgba(211,211,211,0.95)");
         //hide the post
-        $('input[type=checkbox]').prop('checked',false);
+        $('.ui.modal input[type=checkbox]').prop('checked',false);
         var post = $(this).closest(".ui.fluid.card.dim");
         var postID = post.attr("postID");
         post.find(".ui.inverted.dimmer.notflag").dimmer({
