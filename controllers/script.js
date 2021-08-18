@@ -117,15 +117,44 @@ exports.getScript = (req, res, next) => {
 
       // While there are regular posts or user-made posts to add to the final feed
       while(script_feed.length || user_posts.length) {
-        if (typeof script_feed[0] === 'undefined') {
-            // script_feed is empty, push the first element of user_posts
+        if (typeof script_feed[0] === 'undefined') {            
+            // script_feed is empty, look at the first element of user_posts
+            // For this post, check if there is a user feedAction matching this post's ID and get its index
+            const feedIndex = _.findIndex(user.feedAction, function (o) {
+              return o.post == user_posts[0].id;
+            });
+
+            if (feedIndex != -1) {
+              // There was a feedAction found for this post.
+              // Check if there is a like recorded for this post.
+              if (user.feedAction[feedIndex].liked) {
+                // Update this post in script_feed.
+                user.feedAction[feedIndex].likeTime.length
+                user_posts[0].liked = true;
+              }
+            }
             finalfeed.push(user_posts[0]);
             // remove the element from user_posts
             user_posts.splice(0,1);
         } else if (!(typeof user_posts[0] === 'undefined') && (script_feed[0].time < user_posts[0].relativeTime)) {
             // There are user-made posts that were created sooner than the post
             // in script_feed, so push them in first
-            finalfeed.push(user_posts[0]);
+
+            // For this post, check if there is a user feedAction matching this post's ID and get its index
+            const feedIndex = _.findIndex(user.feedAction, function (o) {
+              return o.post == user_posts[0].id;
+            });
+
+            if (feedIndex != -1) {
+              // There was a feedAction found for this post.
+              // Check if there is a like recorded for this post.
+              if (user.feedAction[feedIndex].liked) {
+                // Update this post in script_feed.
+                user_posts[0].liked = true;
+              }
+            }
+            finalfeed.push(user_posts[0])
+            // remove the element from user_posts
             user_posts.splice(0,1);
         } else {
           // Looking at the post in script_feed[0] now.
@@ -381,6 +410,17 @@ function _postUpdateFeedAction(req, user){
     default:
       userAction = user.feedAction;
       break;
+  }
+
+  // Check to see if req.body.postID is a valid ObjectId
+  // currently checking using regex; might be better to use mongo's object.isValid() function
+  // Check for the special case where the user tries to conduct a feedAction (liking post is the only action available) on a user-made post
+  // req.body.postID is an index, such as '0', '1', but to save a feedAction, feedAction's post attribute needs to be an ObjectID
+  if (!req.body.postID.toString().match(/^[0-9a-fA-F]{24}$/)) {
+    // Find ObjectID of user-made post
+    const user_post = user.posts.find(post => post.postID.toString() === req.body.postID)
+    // edit postID's attribute to corresponding ObjectID
+    req.body.postID = user_post.id
   }
 
   // Then find the object from the right post in feed.
