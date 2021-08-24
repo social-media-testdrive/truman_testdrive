@@ -64,6 +64,11 @@ function recordModalInputs(modalNameAttrStr) {
     },
     onHide: function(){
       Voiceovers.pauseVoiceover();
+      
+       // collapses all 'active' (open) accordion elements in digital-literacy_articleModal
+       $(`.ui.modal[data-modalName=${modalNameAttrStr}] .title.modalDropdown`).removeClass("active");
+       $(`.ui.modal[data-modalName=${modalNameAttrStr}] .content`).removeClass("active");
+
       const modalClosedTime = Date.now();
       const modalViewTime = modalClosedTime - modalOpenedTime;
       const modalName = $(this).attr('data-modalName');
@@ -78,9 +83,11 @@ function recordModalInputs(modalNameAttrStr) {
           checkboxInputs = checkboxInputs << 1;
         }
       });
+
       if(!enableDataCollection) {
         return;
       }
+      
        $.post("/feed", {
          actionType: 'free play',
          postID: postID,

@@ -109,15 +109,19 @@ function startHints(enableDataCollection){
   hints.addHints();
 
   // for providing guidance message on clicking "got it!"
-  //
+  // Called when user clicks on one of the hints
   hints.onhintclick(function(e) {
+    const oldhintNumber = hintNumber;
     hintNumber = $(e).attr('data-step'); // update the current hint number
     hintOpenTimestamp = Date.now(); // update the timestamp for opening a hint
     clickedHints++;
-    if (!$('.introjs-tooltip').is(':visible')) {
+    if (!$('.introjs-tooltip').is(':visible')) { //prior to clicking on the hint, no other hint is open
       Voiceovers.playVoiceover(hintsList[hintNumber].audioFile);
-    } else {
+    } else { //prior to clicking on the hint, another hint is open
       Voiceovers.pauseVoiceover();
+        if (hintNumber !== oldhintNumber){
+          Voiceovers.playVoiceover(hintsList[hintNumber].audioFile);
+        }
     }
     if(clickedHints >= numberOfHints){
       if(clickedHints !== 1){
@@ -131,6 +135,7 @@ function startHints(enableDataCollection){
       }
     }
   });
+  // Called when a single hint is removed from page (e.g. when user clicks on “Got it” button)
   hints.onhintclose(function(stepID){
     // record this hint action with parameter as true since the user clicked 'got it'
     Voiceovers.pauseVoiceover();

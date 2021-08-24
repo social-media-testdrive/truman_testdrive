@@ -71,6 +71,7 @@ function clickGotIt(){
       $('#learn').hide();
       $('#question').hide();
       $('#question2').show();
+      Voiceovers.pauseVoiceover();
     } else {
       //User has not clicked all the labels
       $('#clickLabelsWarning').show();

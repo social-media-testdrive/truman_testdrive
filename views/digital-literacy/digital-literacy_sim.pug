@@ -29,7 +29,8 @@ block content
           i.close.icon
           .content
             .ui.header Click on an article before you continue.
-                
+
+    //-####################### First Post        
     #step1.ui.fluid.card.dim()
       .ui.dimmer.flag
         .content
@@ -97,7 +98,8 @@ block content
             img.ui.avatar.image(src=cdn+'/profile_pictures/'+ user.profile.picture, name=user.profile.name)
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
-    //-#######################
+
+    //-####################### Second Post
     .ui.fluid.card.dim()
       .ui.dimmer.flag
         .content
@@ -165,7 +167,7 @@ block content
           i.big.send.link.icon
 
 
-    //-#######################
+    //-####################### Third Post
     .ui.fluid.card.dim()
       .ui.dimmer.flag
         .content
@@ -279,14 +281,14 @@ block content
       .header You've clicked on this article! Let's explore some things you could do next. 
       .content
           .ui.styled.fluid.accordion
-            .title
+            .title.modalDropdown#dropdown1
               i.dropdown.icon
               | Read the full article
             .content
-              p.transition.hidden.
+              p.
                 Look out for unbelievable claims or wild images. Check for 
                 spelling or grammar mistakes, too!
-            .title
+            .title.modalDropdown#dropdown2
               i.dropdown.icon
               | Check out the website this article is from
             .content
@@ -294,7 +296,7 @@ block content
                 If the website is not part of a credible news, academic, or 
                 governmental organization, this is a sign the article might not
                 be trustworthy.
-            .title
+            .title.modalDropdown#dropdown3
               i.dropdown.icon
               | Fact-check the article by searching the topic on Snopes.com, 
               | FactCheck.org, or major news websites.
@@ -302,7 +304,7 @@ block content
               p.
                 Corroboration from other sources that confirms or supports a news 
                 article is a sign that the information is credible.
-            .title
+            .title.modalDropdown#dropdown4
               i.dropdown.icon
               | Be aware of what you share.
             .content
