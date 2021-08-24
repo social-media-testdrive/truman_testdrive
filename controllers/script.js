@@ -129,7 +129,6 @@ exports.getScript = (req, res, next) => {
               // Check if there is a like recorded for this post.
               if (user.feedAction[feedIndex].liked) {
                 // Update this post in script_feed.
-                user.feedAction[feedIndex].likeTime.length
                 user_posts[0].liked = true;
               }
             }
@@ -413,10 +412,12 @@ function _postUpdateFeedAction(req, user){
   }
 
   // Check to see if req.body.postID is a valid ObjectId
+  // In the tutorial and sim sections, they are not (ex: 'esteem_tutorial_post1'). 
+  // In the free play sections, they are indexes (ex: '0')
   // currently checking using regex; might be better to use mongo's object.isValid() function
   // Check for the special case where the user tries to conduct a feedAction (liking post is the only action available) on a user-made post
   // req.body.postID is an index, such as '0', '1', but to save a feedAction, feedAction's post attribute needs to be an ObjectID
-  if (!req.body.postID.toString().match(/^[0-9a-fA-F]{24}$/)) {
+  if (!req.body.postID.toString().match(/^[0-9a-fA-F]{24}$/) && req.body.actionType === 'free play') {
     // Find ObjectID of user-made post
     const user_post = user.posts.find(post => post.postID.toString() === req.body.postID)
     // edit postID's attribute to corresponding ObjectID
