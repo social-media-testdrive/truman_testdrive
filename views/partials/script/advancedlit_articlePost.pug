@@ -20,13 +20,16 @@
     img(src='/images/picture.svg', data-src=cdn+"/post_pictures/"+val.picture)
   .content
     .description!=val.body
-  .three.ui.bottom.attached.icon.buttons
+  .four.ui.bottom.attached.icon.buttons
     .ui.reply.button(tabindex='0')
       i.reply.icon
       |  Reply
     .ui.flag.button(tabindex='0')
       i.flag.icon
       |  Flag
+    .ui.share.button(tabindex='0')
+      i.share.icon
+      | Share
     if val.like
       .ui.labeled.button(tabindex='0')
         .ui.red.like.button
