@@ -50,9 +50,12 @@ block content
       
       //- This is a tageted ad post in the targeted ads module
       else
-      
-        block post
-          include partials/script/actorPost
+        if(val.info_text !== "" && mod === "digital-literacy")
+          //- can use advancedlit_articlePost since the pug file looks the same
+          include partials/script/advancedlit_articlePost 
+        else
+          block post
+            include partials/script/actorPost
 
   
     -var post_quiz = "/results/"+mod;
