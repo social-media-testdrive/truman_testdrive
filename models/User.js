@@ -275,6 +275,17 @@ const userSchema = new mongoose.Schema({
     checkedActualTime: Boolean, // this is unique to the habits module
   }, {_id: true, versionKey: false })],
 
+  // action in the quiz section
+  quizAction: [new Schema({
+    absoluteTimeContinued: Date, //time that the user left the page by clicking continue
+    modual: String, //which lesson mod did this take place in?
+    questionNumber: String, // corresponds with quizSectionData.json, i.e. 'Q1', 'Q2', 'Q3'...
+    prompt: String,
+    type: String, // Which type of response this will be: It is always "radio"
+    radioSelection: String, 
+    attemptNumber: Number, // this tracks the user's attempt
+  }, {_id: true, versionKey: false })],
+
   // blue dot action in a guided activity
   blueDotAction: [new Schema({
     subdirectory1: String, // which page the user is on

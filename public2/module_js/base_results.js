@@ -95,7 +95,7 @@ function iterateOverPrompts() {
   // wait to change pages until all post requests in actionArray return,
   // otherwise the post requests might get cancelled during the page change
   Promise.all(actionArray).then(function() {
-    window.location.href = `/end/${currentModule}`
+    window.location.href = `/quiz/${currentModule}`
   });
 }
 
@@ -185,41 +185,10 @@ $(window).on("load", function(){
       // If data collection is enabled, iterate over the prompts to record the
       // responses.
       return iterateOverPrompts();
-    } else if (enableShareActivityData) {
-      // If sharing activity data is enabled, show the corresponding popup and
-      // save the user's activity data if the user checks the box.
-      $('.optInToShareActivityDataSegment').modal('show');
-      $('.optInToShareActivityDataSegment').modal({
-        onApprove: function(){
-          // Change the print/continue button appearances
-          $('.button.resultsContinueButton, .button.results_print')
-            .addClass('loading disabled');
-          // Get the checkbox input
-          const optInSelection = $('.optInToShareActivityDataSegment .ui.checkbox input').is(":checked");
-          if (optInSelection) {
-            // Save the user's activity data for the current module
-            $.post('/postActivityData', {
-              module: currentModule,
-              _csrf: $('meta[name="csrf-token"]').attr('content')
-            }).then(function(){
-              window.location.href = `/end/${currentModule}`;
-            });
-          } else {
-            // Delete any data saved from this module for the currently
-            // logged in user
-            $.post('/postDeleteActivityData', {
-              module: currentModule,
-              _csrf: $('meta[name="csrf-token"]').attr('content')
-            }).then(function(){
-              window.location.href = `/end/${currentModule}`;
-            })
-          }
-        }
-      });
     } else {
       // No additional action needed before navigating away from the
       // reflection page.
-      window.location.href = `/end/${currentModule}`
+      window.location.href = `/quiz/${currentModule}`
     }
   });
 });

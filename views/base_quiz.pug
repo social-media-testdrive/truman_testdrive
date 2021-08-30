@@ -1,0 +1,146 @@
+extends ui_layout
+
+block content
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  .ui.container.resultsAddBottomMargin
+    .ui.stackable.column.grid
+      .ui.column
+        .insertPrint
+    each val, key in quizData 
+      if key == "Q1"  
+        .ui.raised.segment.quizTopSegment.radioQuestion 
+          h3.ui.header
+            i.question.blue.icon
+            .content
+              | Quiz
+        
+          .ui.mini.green.right.labeled.icon.button.quizSegmentButton.voiceover_reflection1
+            i.down.arrow.icon
+            |   Start
+
+          .ui.basic.segment.noPadding.quizPromptSegment.hidden
+              .ui.label.resultsPromptLabel
+                h4.quizRadioPrompt(data-questionNumber=key)
+                  | #{val.prompt}
+              .ui.form
+                br
+                .inline.fields
+                  .field
+                    .radio.checkbox
+                      input(type='radio', value= 0, name=key, tabindex='0')
+                      label 
+                        | #{val.radioLabels[0]}
+                .inline.fields
+                  .field
+                    .radio.checkbox
+                      input(type='radio', value= 1, name=key, tabindex='0')
+                      label 
+                        | #{val.radioLabels[1]}
+                .inline.fields
+                  .field
+                    .radio.checkbox
+                      input(type='radio', value= 2, name=key, tabindex='0')
+                      label 
+                        | #{val.radioLabels[2]}
+                .inline.fields
+                  .field
+                    .radio.checkbox
+                      input(type='radio', value= 3, name=key, tabindex='0')
+                      label 
+                        | #{val.radioLabels[3]}  
+                .inline.fields                                          
+                  .field
+                    .radio.checkbox
+                      input(type='radio', value= 4, name=key, tabindex='0')
+                      label 
+                        | #{val.radioLabels[4]}
+              h3.feedBack.hidden
+      else
+        .ui.basic.segment.noPadding.hidden.quizTopSegment
+          .ui.raised.segment.radioQuestion
+            .ui.mini.green.right.labeled.icon.button.quizSegmentButton(class = "voiceover_reflection" + key.substring(1))
+              i.down.arrow.icon
+              |   Next
+            .ui.basic.segment.noPadding.quizPromptSegment.hidden 
+              .ui.label.resultsPromptLabel
+                h4.quizRadioPrompt(data-questionNumber=key)
+                  | #{val.prompt}
+              .ui.form
+                br
+                .inline.fields
+                  .field
+                    .radio.checkbox
+                      input(type='radio', value= 0, name=key, tabindex='0')
+                      label 
+                        | #{val.radioLabels[0]}
+                .inline.fields
+                  .field
+                    .radio.checkbox
+                      input(type='radio', value= 1, name=key, tabindex='0')
+                      label 
+                        | #{quizData.Q1.radioLabels[1]}
+                .inline.fields
+                  .field
+                    .radio.checkbox
+                      input(type='radio', value= 2, name=key, tabindex='0')
+                      label 
+                        | #{val.radioLabels[2]}
+                .inline.fields
+                  .field
+                    .radio.checkbox
+                      input(type='radio', value= 3, name=key, tabindex='0')
+                      label 
+                        | #{val.radioLabels[3]}       
+                .inline.fields                                     
+                  .field
+                    .radio.checkbox
+                      input(type='radio', value= 4, name=key, tabindex='0')
+                      label 
+                         | #{val.radioLabels[4]}
+                h3.feedBack.hidden
+    
+    .ui.warning.message.hidden.startPromptsWarning
+      .header
+        | Click "Start"
+    .ui.warning.message.hidden.openAllPromptsWarning
+      .header
+        | Click "Next"
+    include partials/optInToShareActivityData.pug
+    br
+    .ui.big.labeled.icon.button.quiz_print(onclick="onPrint()")
+          i.right.arrow.icon
+          |   Print your responses
+    br
+    br
+    .ui.big.labeled.icon.button.quizCheckAnswersButton
+        i.rocket.icon
+        |   Check my Answers
+    b
+    .ui.big.labeled.icon.button.green.quizSkipButton
+        i.rocket.icon
+        .skipButtonText
+          |   Skip Quiz
+
+block scripts
+  script.
+    var quizData = !{JSON.stringify(quizData)}
+    var voiceoverMappings = {}
+    for (quizQuestion in quizData){
+      const files = quizData[quizQuestion]["files"]
+      const key = '.voiceover_reflection' + quizQuestion.substring(1);
+      let cat = new Object();
+      cat.initialDelay = (quizQuestion == "Q1") ? 0 : 500
+      cat.delay = 0
+      cat.files = files
+      voiceoverMappings[key] = cat
+    }
+    console.log(voiceoverMappings)
+  script(src='/module_js/base_quiz.js?v=1')
+  script(src='/module_js/voiceover.js') 
+  
+block styles
+  //- use the same css file as results page
+  link(rel='stylesheet', href='/css/results.css')
+  link(rel='stylesheet', href='/css/optInToShareActivityData.css')
+    
+    
