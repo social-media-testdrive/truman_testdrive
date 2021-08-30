@@ -410,6 +410,17 @@ app.get('/results/:modId', passportConfig.isAuthenticated, setHttpResponseHeader
   });
 });
 
+app.get('/quiz/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, async function (req, res) {
+  let quizData;
+  const data = await fs.readFileAsync(`${__dirname}/public2/json/quizSectionData.json`);
+  quizData = JSON.parse(data.toString())[req.params.modId];
+
+  res.render('base_quiz.pug', {
+    title: 'Reflection',
+    quizData,
+  });
+});
+
 app.get('/sim/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function (req, res) {
   if (req.params.modId === 'safe-posting') {
     res.set({
@@ -580,6 +591,7 @@ if (enableDataCollection) {
   app.post('/introjsStep', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postIntrojsStepAction);
   app.post('/bluedot', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postBlueDotAction);
   app.post('/reflection', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postReflectionAction);
+  app.post('/quiz', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postQuizAction);
   app.post('/moduleProgress', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, userController.postUpdateModuleProgress);
 }
 
