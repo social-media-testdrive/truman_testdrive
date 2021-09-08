@@ -16,6 +16,7 @@ $(window).on("load", function () {
   if(initialVoiceoverState === 'false') {
     $('#voiceoverCheckbox input').removeAttr('checked');
   }
+  $('#voiceoverCheckbox').removeClass("hidden")
 
   $('#voiceoverCheckbox').change(function() {
     if($("input[name='voiceoverCheckbox']").is(":checked")){

@@ -43,6 +43,11 @@ function recordSimModalInputs(modalNameAttrStr) {
     },
     onHide: function(){
       Voiceovers.pauseVoiceover();
+
+      // collapses all 'active' (open) accordion elements in digital-literacy_articleModal
+      $(`.ui.modal[data-modalName=${modalNameAttrStr}] .title.modalDropdown`).removeClass("active");
+      $(`.ui.modal[data-modalName=${modalNameAttrStr}] .content`).removeClass("active");
+      
       const modalClosedTime = Date.now();
       const modalViewTime = modalClosedTime - modalOpenedTime;
       const pathArrayForHeader = window.location.pathname.split('/');
