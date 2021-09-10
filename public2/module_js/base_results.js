@@ -140,6 +140,7 @@ $(window).on("load", function(){
     $(this).transition('pulse');
     $(this).toggleClass('selectedCard');
   });
+  
   // Defining the behavior for the "next" button on each question's segment.
   $('.reflectionSegmentButton').on('click', function(){
     let segmentButton = $(this);
@@ -162,6 +163,7 @@ $(window).on("load", function(){
         .transition('jiggle');
     }
   });
+
   // Defining the behavior for the "continue" button
   $('.resultsContinueButton').on('click', function () {
     // Empty .insertPrint to avoid problems with iterating over responses

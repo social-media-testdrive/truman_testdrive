@@ -6,9 +6,11 @@ block content
     .ui.stackable.column.grid
       .ui.column
         .insertPrint
+    .ui.warning.message.hidden.scoreBanner#scoreBannerheader
+      
     each val, key in quizData 
       if key == "Q1"  
-        .ui.raised.segment.quizTopSegment.radioQuestion 
+        .ui.raised.segment.quizTopSegment.radioQuestion
           h3.ui.header
             i.question.blue.icon
             .content
@@ -29,32 +31,42 @@ block content
                     .radio.checkbox
                       input(type='radio', value= 0, name=key, tabindex='0')
                       label 
+                        | &nbsp; A. &nbsp;
                         | #{val.radioLabels[0]}
                 .inline.fields
                   .field
                     .radio.checkbox
                       input(type='radio', value= 1, name=key, tabindex='0')
                       label 
+                        | &nbsp; B. &nbsp;
                         | #{val.radioLabels[1]}
                 .inline.fields
                   .field
                     .radio.checkbox
                       input(type='radio', value= 2, name=key, tabindex='0')
                       label 
+                        | &nbsp; C. &nbsp;
                         | #{val.radioLabels[2]}
                 .inline.fields
                   .field
                     .radio.checkbox
                       input(type='radio', value= 3, name=key, tabindex='0')
                       label 
+                        | &nbsp; D. &nbsp;
                         | #{val.radioLabels[3]}  
                 .inline.fields                                          
                   .field
                     .radio.checkbox
                       input(type='radio', value= 4, name=key, tabindex='0')
                       label 
+                        | &nbsp; E. &nbsp; 
                         | #{val.radioLabels[4]}
-              h3.feedBack.hidden
+              h4.ui.header.feedBack.hidden
+                i.icon.times.red.hidden
+                i.icon.check.green.hidden
+                .content
+                .explanation
+
       else
         .ui.basic.segment.noPadding.hidden.quizTopSegment
           .ui.raised.segment.radioQuestion
@@ -72,32 +84,41 @@ block content
                     .radio.checkbox
                       input(type='radio', value= 0, name=key, tabindex='0')
                       label 
+                        | &nbsp; A. &nbsp; 
                         | #{val.radioLabels[0]}
                 .inline.fields
                   .field
                     .radio.checkbox
                       input(type='radio', value= 1, name=key, tabindex='0')
                       label 
-                        | #{quizData.Q1.radioLabels[1]}
+                        | &nbsp; B. &nbsp; 
+                        | #{val.radioLabels[1]}
                 .inline.fields
                   .field
                     .radio.checkbox
                       input(type='radio', value= 2, name=key, tabindex='0')
                       label 
+                        | &nbsp; C. &nbsp; 
                         | #{val.radioLabels[2]}
                 .inline.fields
                   .field
                     .radio.checkbox
                       input(type='radio', value= 3, name=key, tabindex='0')
                       label 
+                        | &nbsp; D. &nbsp; 
                         | #{val.radioLabels[3]}       
                 .inline.fields                                     
                   .field
                     .radio.checkbox
                       input(type='radio', value= 4, name=key, tabindex='0')
                       label 
+                         | &nbsp; E. &nbsp; 
                          | #{val.radioLabels[4]}
-                h3.feedBack.hidden
+              h4.ui.header.feedBack.hidden
+                i.icon.times.red.hidden
+                i.icon.check.green.hidden
+                .content
+                .explanation
     
     .ui.warning.message.hidden.startPromptsWarning
       .header
@@ -105,17 +126,27 @@ block content
     .ui.warning.message.hidden.openAllPromptsWarning
       .header
         | Click "Next"
+    //- .ui.warning.message.hidden.maxAttemptsReachedWarning
+    //-   .header
+    //-     | You have already completed the quiz the maximum number of 3 times.
+    //- .ui.warning.message.hidden.allQuestionsCorrectWarning
+    //-   .header
+    //-     | Congratulations! You already answered all of the questions correctly.
+    //- .ui.warning.message.hidden.explanationsUnavailableWarning
+    //-   .header
+    //-     | You must first answer all the questions correctly or attempt the quiz 3 times before seeing the answers and explanations.
     include partials/optInToShareActivityData.pug
     br
     .ui.big.labeled.icon.button.quiz_print(onclick="onPrint()")
           i.right.arrow.icon
           |   Print your responses
     br
-    br
     .ui.big.labeled.icon.button.quizCheckAnswersButton
-        i.rocket.icon
+        i.pencil.icon
         |   Check my Answers
-    b
+    .ui.big.labeled.icon.button.blue.showExplanationButton.hidden
+        i.tag.arrow.icon
+        |   Show me the correct answers and explanations
     .ui.big.labeled.icon.button.green.quizSkipButton
         i.rocket.icon
         .skipButtonText
@@ -134,13 +165,12 @@ block scripts
       cat.files = files
       voiceoverMappings[key] = cat
     }
-    console.log(voiceoverMappings)
   script(src='/module_js/base_quiz.js?v=1')
   script(src='/module_js/voiceover.js') 
   
 block styles
   //- use the same css file as results page
-  link(rel='stylesheet', href='/css/results.css')
+  link(rel='stylesheet', href='/css/quiz.css')
   link(rel='stylesheet', href='/css/optInToShareActivityData.css')
     
     

@@ -416,7 +416,7 @@ app.get('/quiz/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, 
   quizData = JSON.parse(data.toString())[req.params.modId];
 
   res.render('base_quiz.pug', {
-    title: 'Reflection',
+    title: 'Quiz',
     quizData,
   });
 });

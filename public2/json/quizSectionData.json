@@ -12,7 +12,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "3", 
-      "files": [""]
+      "files": [""], 
+      "explanation": ""
     },
     "Q2": {
       "type": "radio",
@@ -26,7 +27,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "0", 
-      "files": [""]
+      "files": [""], 
+      "explanation": ""
     },
     "Q3": {
       "type": "radio",
@@ -40,7 +42,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "1", 
-      "files": [""]
+      "files": [""], 
+      "explanation": ""
     },
     "Q4": {
       "type": "radio",
@@ -54,7 +57,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "3", 
-      "files": [""]
+      "files": [""], 
+      "explanation": ""
     },
     "Q5": {
       "type": "radio",
@@ -68,7 +72,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "2", 
-      "files": [""]
+      "files": [""], 
+      "explanation": ""
     }
   },
   "advancedlit": {
@@ -84,7 +89,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "1", 
-      "files": [""]
+      "files": [""], 
+      "explanation": "B is correct: Breaking news is information being reported about an event that has just happened or is currently occurring. \nA is incorrect: Breaking news may be urgent and deserve people’s attention, but we should not share it until we have enough information to confirm that the news is true. \nC is incorrect: Breaking news can be true or false information, we need to fact check to make sure the information is true. \nD is incorrect: \nE is incorrect"
     },
     "Q2": {
       "type": "radio",
@@ -98,7 +104,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "0", 
-      "files": [""]
+      "files": [""], 
+      "explanation": "Fact checking is verifying the information you see in news stories, so A is correct. Fact checking is about determining whether the information is true or false, not whether it is a fact or an opinion. So B is incorrect. When doing fact checking, we should search for reliable information from reliable sources instead of simply checking with friends, so C is incorrect."
     },
     "Q3": {
       "type": "radio",
@@ -112,7 +119,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "3", 
-      "files": [""]
+      "files": [""], 
+      "explanation": "When we do fact checking on a breaking news article, we should check the source of information of that article to see if it comes from reliable sources, so A is correct. To decide whether an article is trustworthy or not, we need to read the whole article and see whether it’s a news piece (something that actually happened) or simply the author’s opinions on something happened, since opinions can be inaccurate. So B is correct. Besides A and B, it’s also important to search online and find other reliable sources that confirm the same story. So C is also correct."
     },
     "Q4": {
       "type": "radio",
@@ -126,7 +134,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "2", 
-      "files": [""]
+      "files": [""],
+      "explanation": "We shouldn’t share breaking news with anyone before we fact check to make sure that the news is trustworthy. So A is incorrect. If we found that the news is indeed trustworthy after fact checking, we shouldn’t flag the article and report it as false information. So B is incorrect. C is the correct way for fact checking. Checking with friends to decide whether a news article is trustworthy is not recommended, because friends may not have the correct information, in other words, friends are not the most reliable source for fact checking. So D is incorrect."
     },
     "Q5": {
       "type": "radio",
@@ -140,7 +149,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "2", 
-      "files": [""]
+      "files": [""], 
+      "explanation": "Before we share any news on social media, be sure to fact check to make sure the information is trustworthy so that you won’t spread false information. If you are not sure if the news is true or not, never share it. Even if the message looks urgent and looks official, it might still be fake news. So C is correct, A and B are incorrect. Even if a lot of people share the news on social media, it doesn’t guarantee the information is true, always double check with other reliable sources to make sure the information is trustworthy. So D is incorrect. "
     }
   },
   "cyberbullying": {},
@@ -160,7 +170,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "2", 
-      "files": [""]
+      "files": [""], 
+      "explanation": ""
     },
     "Q2": {
       "type": "radio",
@@ -174,7 +185,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "2", 
-      "files": [""]
+      "files": [""], 
+      "explanation": ""
     },
     "Q3": {
       "type": "radio",
@@ -188,7 +200,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "2", 
-      "files": [""]
+      "files": [""], 
+      "explanation": ""
     },
     "Q4": {
       "type": "radio",
@@ -202,7 +215,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "3", 
-      "files": [""]
+      "files": [""], 
+      "explanation": ""
     },
     "Q5": {
       "type": "radio",
@@ -216,7 +230,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "2", 
-      "files": [""]
+      "files": [""], 
+      "explanation": ""
     }
   },
   "phishing": {},
@@ -233,7 +248,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "0", 
-      "files": [""]
+      "files": [""], 
+      "explanation": ""
     },
     "Q2": {
       "type": "radio",
@@ -247,7 +263,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "3", 
-      "files": [""]
+      "files": [""], 
+      "explanation": ""
     },
     "Q3": {
       "type": "radio",
@@ -261,7 +278,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "1", 
-      "files": [""]
+      "files": [""], 
+      "explanation": ""
     },
     "Q4": {
       "type": "radio",
@@ -275,7 +293,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "3", 
-      "files": [""]
+      "files": [""], 
+      "explanation": ""
     },
     "Q5": {
       "type": "radio",
@@ -289,7 +308,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "1", 
-      "files": [""]
+      "files": [""], 
+      "explanation": ""
     },
     "Q6": {
       "type": "radio",
@@ -303,7 +323,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "3", 
-      "files": [""]
+      "files": [""], 
+      "explanation": ""
     }
   },
   "privacy": {
@@ -319,7 +340,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "1",
-      "files": ["CUSML.8.6.01.mp3"]
+      "files": [""], 
+      "explanation": ""
     },
     "Q2": {
       "type": "radio",
@@ -333,7 +355,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "3",
-      "files": ["CUSML.2.8.1.mp3"]
+      "files": [""], 
+      "explanation": ""
     },
     "Q3": {
       "type": "radio",
@@ -347,7 +370,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "1",
-      "files": ["CUSML.8.6.01.mp3"]
+      "files": [""], 
+      "explanation": ""
     },
     "Q4": {
       "type": "radio",
@@ -361,7 +385,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "2",
-      "files": ["CUSML.5.9.1.mp3"]
+      "files": [""], 
+      "explanation": ""
     },
     "Q5": {
       "type": "radio",
@@ -375,7 +400,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "3",
-      "files": [""]
+      "files": [""], 
+      "explanation": ""
     }
   },
   "safe-posting": {
@@ -391,7 +417,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "3", 
-      "files": [""]
+      "files": [""], 
+      "explanation": ""
     },
     "Q2": {
       "type": "radio",
@@ -405,7 +432,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "3", 
-      "files": [""]
+      "files": [""], 
+      "explanation": ""
     },
     "Q3": {
       "type": "radio",
@@ -419,7 +447,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "2", 
-      "files": [""]
+      "files": [""], 
+      "explanation": ""
     },
     "Q4": {
       "type": "radio",
@@ -433,7 +462,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "3", 
-      "files": [""]
+      "files": [""], 
+      "explanation": ""
     },
     "Q5": {
       "type": "radio",
@@ -447,7 +477,8 @@
       },
       "responseRequirement": "any",
       "correctResponse": "1", 
-      "files": [""]
+      "files": [""], 
+      "explanation": ""
     }
   },
   "targeted": {}

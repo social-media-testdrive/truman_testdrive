@@ -1,0 +1,113 @@
+.segment.noPadding {
+    padding: 0;
+  }
+  
+  .ui.card.selectedCard {
+    box-shadow: 0 0 6px 8px rgba(0,149,255,.4);
+  }
+  
+  .ui.label {
+    background-color: #2185d08a;
+    color: #000000d1;
+  }
+  
+  .ui.label h4 {
+    float: left;
+  }
+  
+  i.icon.yellowIcon {
+    color: #f9ff00;
+  }
+
+  i.icon.hidden {
+    display:none !important;
+  }
+
+  .content.red {
+      color: red;
+      font-size: 1.25rem !important;
+  }
+
+  .content.green {
+      color: green;
+      font-size: 1.25rem !important;
+  }
+
+  #scoreBannerheader{
+    font-size: 1.15rem !important;
+  }
+  
+  .explanation {
+      margin: 5px;
+  }
+
+  .explanationLight {
+      font-weight: 400;
+  }
+
+  .ui.big.labeled.icon.button {
+    margin: 5px 10px 5px 0px !important;
+  }
+
+  .ui.form .disabled.fields .field,
+  .ui.form .disabled.field,
+  .ui.form .field :disabled {
+    pointer-events: none;
+    opacity: 0.99 !important;
+}
+  
+  .ui.container label {
+    font-size:120%;
+  }
+  
+  .ui.form .glowing-border {
+    border: 2px solid #dadada;
+    border-radius: 7px;
+  }
+  
+  .ui.form .glowing-border:focus {
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
+  }
+  
+  .ui.form .restrictMaxWidth {
+    max-width:15em;
+  }
+  
+  /*------- SCREENSHOTS ---------*/
+  @media print {
+    body * {
+      display: none;
+    }
+  
+    .insertPrint,
+    .insertPrint * {
+      display: block;
+      overflow: visible;
+    }
+    .ui.big.labeled.icon.button {
+      display: none;
+    }
+    .ui.menu {
+      display: none;
+    }
+    .breakHere{
+      page-break-before: always;
+    }
+    .ui.form .disabled.fields .field,
+    .ui.form .disabled.field,
+    .ui.form .field :disabled {
+      pointer-events: none;
+      opacity: 1;
+  }
+
+    #scoreBannerheader{
+        display: none;
+    }
+    
+    .explanation {
+        margin: 5px;
+    }
+  }
+  
