@@ -1,17 +1,38 @@
 const pathArray = window.location.pathname.split('/');
-const currentModule = pathArray[2]; // idenifies the current module
+const currentModule = pathArray[2]; // identifies the current module
+
 const actionArray = new Array(); // this array will be handed to Promise.all
+
+const attemptScoresArray = new Array();
 var attemptNumber = 0;
+const maxAttempt = 2; // maximum number of attempts student can take a quiz (starting at 0)
+// var allCorrect = false;
+
+function boldString(str, substr) {
+  var strRegExp = new RegExp(substr, 'g');
+  return str.replace(strRegExp, '<b>' + substr + '</b>');
+}
 
 // This function is only called if enableDataCollection = true
 function recordResponse(responseType, timestamp) {
+  /* quizAction: {
+    absoluteTimeContinued: Date, //time that the user left the page by clicking continue
+    modual: String, //which lesson mod did this take place in?
+    questionNumber: String, // corresponds with quizSectionData.json, i.e. 'Q1', 'Q2', 'Q3'...
+    prompt: String, // question prompt text
+    type: String, // Which type of response this will be: It is always "radio"
+    radioSelection: String, // radio selection text
+    attemptNumber: Number, // this tracks the user's attempt
+  }
+  */
+
   // create new object with desired data to pass to the post request
   let cat = new Object();
-  cat.modual = currentModule
+  cat.absoluteTimeContinued = timestamp;
+  cat.modual = currentModule;
+  cat.questionNumber = $(this).attr('data-questionNumber');
   // prompt with any new line characters removed
   cat.prompt = $(this).text().replace(/\r?\n|\r/, '');
-  cat.questionNumber = $(this).attr('data-questionNumber');
-  cat.absoluteTimeContinued = timestamp;
   cat.type = responseType; // always "radio"
   let radioSelection = "";
   radioSelection = $(this)
@@ -33,7 +54,7 @@ function iterateOverPrompts() {
   const timestamp = Date.now();
 
   $('.quizRadioPrompt').each(function () {
-    return recordResponse.call($(this), 'radio', timestamp)
+    return recordResponse.call($(this), 'radio', timestamp);
   });
 
   // wait to change page until all post requests in actionArray return,
@@ -63,6 +84,30 @@ function showWarning(warningID) {
 function hideWarning(warningID) {
   if ($(warningID).is(':visible')) {
     $(warningID).transition('fade down');
+  }
+}
+
+function showScoreBanner(score, totalQuestions) {
+  attemptScoresArray.push(score);
+
+  // Append "Good job" message and the score of this attempt to the score banner. 
+  // Do not prompt student to retake quiz if the maximum number of attempts have been reached.
+  let text = "Good job! You answered <b>" + score + "</b> out of <b>" + totalQuestions + "</b>  questions correctly on this quiz attempt.";
+  text += (attemptNumber <= maxAttempt && score !== totalQuestions)
+    ? "</br>You can review and change your answers, and resubmit the quiz (up to a maximum of 3 times) to recheck your answers. </br>"
+    : "</br>";
+
+  // Append the scores for every attempt to the score banner.
+  attemptScoresArray.forEach(function (score, i) {
+    text += "</br> <b> Attempt " + (i + 1) + ": &nbsp;" + score + " </b> out of <b>" + totalQuestions + "</b>"
+  });
+
+  if ($('.scoreBanner').is(':visible')) {
+    $('.scoreBanner').html(text);
+    $('.scoreBanner').transition('bounce');
+  } else {
+    $('.scoreBanner').html(text);
+    $('.scoreBanner').transition('fade down');
   }
 }
 
@@ -120,8 +165,18 @@ $(window).on("load", function () {
       }
       return;
     }
-
     // All of the questions are now visible to the user.
+
+    // if (allCorrect) {
+    //   showWarning('.allQuestionsCorrectWarning');
+    //   return;
+    // }
+
+    // if (attemptNumber > maxAttempt) {
+    //   showWarning('.maxAttemptsReachedWarning');
+    //   return;
+    // }
+
     if (enableDataCollection) {
       // If data collection is enabled, iterate over the prompts to record the
       // responses.
@@ -129,27 +184,103 @@ $(window).on("load", function () {
     }
 
     const answerArray = new Array();
-    $('.quizRadioPrompt').each(function () {
-      let radioSelection = "";
-      radioSelection = $(this)
+    let numCorrect = 0;
+
+    // Iterate over each prompt and append the radio value (0, 1, 2... ) selected to 'answerArray'
+    // and disable radio prompts where the user has already chosen the correct answer.
+    $('.quizRadioPrompt').each(function (index) {
+      const questionNumber = "Q" + (index + 1).toString();
+      let radioSelection = $(this)
         .closest('.ui.segment')
         .find('.radio.checkbox input:checked').val();
+
+      if (radioSelection === quizData[questionNumber]["correctResponse"]) {
+        numCorrect++;
+        $(this)
+          .closest('.ui.segment')
+          .find('.radio.checkbox input').prop("disabled", true);
+      }
       answerArray.push(radioSelection);
     });
 
-    $('h3.feedBack').each(function (index) {
-      const questionNumber = "Q" + (index + 1).toString()
-      $(this)[0].innerHTML = (answerArray[index] === quizData[questionNumber]["correctResponse"])
-        ? "Correct" : "Incorrect";
-      $(this).removeClass("hidden");
+    let numTotal = answerArray.length;
+
+    // Iterate over each prompt and display "Correct" or "Incorrect" 
+    $('h4.ui.header.feedBack').each(function (index) {
+      const questionNumber = "Q" + (index + 1).toString();
+
+      const checkElement = $(this)[0].querySelector('.check');
+      const timesElement = $(this)[0].querySelector('.times');
+      const contentElement = $(this)[0].querySelector('.content');
+      const explanationElement = $(this)[0].querySelector('.explanation');
+
+      if (answerArray[index] === quizData[questionNumber]["correctResponse"]) {
+        $(checkElement).removeClass('hidden')
+        $(timesElement).addClass('hidden')
+
+        $(contentElement).addClass("green");
+        contentElement.innerHTML = "Correct.";
+
+        explanationElement.innerHTML = "";
+      } else {
+        $(timesElement).removeClass('hidden')
+        $(checkElement).addClass('hidden')
+
+        $(contentElement).addClass("red");
+        contentElement.innerHTML = "Incorrect.";
+
+        explanationElement.innerHTML = (attemptNumber < maxAttempt) ? "Would you like to try again?" : "You can view the correct answers and explanations by clicking the blue button at the bottom of the page.";
+      }
+      $(this).removeClass('hidden');
     })
 
-    $('.skipButtonText').html("Continue")
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    //  NEXT ATTEMPT
     attemptNumber++;
+    // Change text of "Skip Quiz" button to "Continue" when student has attempted the quiz
+    $('.skipButtonText').html("Continue");
+
+    // Display the score banner
+    showScoreBanner(numCorrect, numTotal);
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    if (attemptNumber > maxAttempt || numTotal === numCorrect) {
+      $('.button.quizCheckAnswersButton')
+        .transition('fade down');
+      // if (numTotal === numCorrect){
+      //   allCorrect = true;
+      // }
+      $('.button.showExplanationButton')
+        .transition('fade down');
+
+      // Iterate over each prompt and disable radio prompts.
+      $('.quizRadioPrompt').each(function () {
+        $(this)
+          .closest('.ui.segment')
+          .find('.radio.checkbox input').prop("disabled", true);
+      });
+    }
   });
 
-  // Defining the behavior for the "Skip Quiz" button
+  // Defining the behavior for the "Show Correct Answers and Explanations" button
+  $('.showExplanationButton').on('click', function () {
+    // Iterate over each prompt and display "Correct", "Incorrect" and guiding explanations
+    $('h4.ui.header.feedBack').each(function (index) {
+      const questionNumber = "Q" + (index + 1).toString();
+      const explanationElement = $(this)[0].querySelector('.explanation');
+      $(explanationElement).addClass('explanationLight');
+
+      let explanationText = quizData[questionNumber]["explanation"];
+      for (const substr of ["incorrect", "correct", "A ", "B ", "C ", "D ", "E "]) {
+        explanationText = boldString(explanationText, substr);
+      }
+      explanationElement.innerHTML = explanationText.replace(/(\r\n|\r|\n)/g, '<br>');
+    })
+    document.getElementById("scoreBannerheader").scrollIntoView({ behavior: 'smooth'});
+    // window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Defining the behavior for the "Skip Quiz"/ "Continue" button
   $('.quizSkipButton').on('click', function () {
     if (enableShareActivityData) {
       // If sharing activity data is enabled, show the corresponding popup and
@@ -195,6 +326,29 @@ function onPrint() {
     $(".insertPrint").empty();
     $(".insertPrint").css('display', 'block');
 
+    // At the moment of cloning and appending the radio elements to ".insertPrint",
+    // the new element has the same name and id of the original one. 
+    // This causes the original radio input to be unchecked. 
+
+    // A way to avoid this is to save the original radio inputs
+    // and resetting it after the cloning and appending is done. 
+
+    // used to save checked radio inputs
+    const answerArray = new Array();
+
+    // Iterate over each prompt and save the radio value (0, 1, 2... ) selected to 'answerArray'
+    $('.quizRadioPrompt').each(function (index) {
+      let radioSelection = $(this)
+        .closest('.ui.segment')
+        .find('.radio.checkbox input:checked').val();
+      answerArray.push(radioSelection);
+    });
+
+    var scoreBannerText = document.getElementById("scoreBannerheader").innerHTML;
+    console.log(scoreBannerText);
+    let a = $(document.getElementById("scoreBannerheader")).clone()
+    a.innerHTML = scoreBannerText
+    $(".insertPrint").append(a);
     $('.radioQuestion').each(function () {
       $(this).clone().removeClass('quizPromptSegment').appendTo(".insertPrint");
     });
@@ -202,6 +356,14 @@ function onPrint() {
     window.print();
 
     $(".insertPrint").css('display', 'none');
+
+    $(".insertPrint").empty();
+    // reset radio selections to original radio inputs
+    $('.quizRadioPrompt').each(function (index) {
+      $(this)
+        .closest('.ui.segment')
+        .find('.radio.checkbox input[value=' + answerArray[index] + ']').prop("checked", true);
+    });
   } else {
     if ($('.voiceover_reflection1').next('.quizPromptSegment').is(':hidden')) {
       showWarning('.startPromptsWarning');
