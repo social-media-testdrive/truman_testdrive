@@ -11,6 +11,10 @@
   cursor: pointer;
 }
 
+.optInToShareActivityDataSegment .ui.checkbox label {
+  font-weight: bold;
+}
+
 .optInToShareActivityDataSegment .ui.checkbox label:before {
   width: 25px;
   height: 25px;
