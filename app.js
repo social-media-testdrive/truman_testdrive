@@ -593,6 +593,7 @@ if (enableDataCollection) {
   app.post('/reflection', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postReflectionAction);
   app.post('/quiz', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postQuizAction);
   app.post('/moduleProgress', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, userController.postUpdateModuleProgress);
+  app.post('/postViewQuizExplanations', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postViewQuizExplanations);
 }
 
 /*
