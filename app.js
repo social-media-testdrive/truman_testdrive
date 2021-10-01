@@ -421,11 +421,7 @@ app.get('/quiz/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, 
   });
 });
 
-<<<<<<< HEAD
 app.get('/sim/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function (req, res) {
-=======
-app.get('/sim/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
->>>>>>> c6668c29a2c5ab92051e1f32375d5e2b52fd4252
   if (req.params.modId === 'safe-posting') {
     res.set({
       'Content-Security-Policy':
