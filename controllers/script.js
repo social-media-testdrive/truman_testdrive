@@ -255,19 +255,32 @@ exports.getScript = (req, res, next) => {
       // Render custom script pages for certain modules, otherwise use the default
       // script page.
       if (req.params.modId == "advancedlit"){
-        res.render('advancedlit/advancedlit_script', { script: finalfeed, mod: req.params.modId});
+        res.render('advancedlit/advancedlit_script', { 
+          script: finalfeed, 
+          mod: req.params.modId, 
+          title: 'Free Play'});
       } else if (req.params.modId == "esteem"){
-        res.render('esteem/esteem_script', { script: finalfeed, mod: req.params.modId});
+        res.render('esteem/esteem_script', { 
+          script: finalfeed, 
+          mod: req.params.modId, 
+          title: 'Free Play'});
       } else if (req.params.modId == "habits"){
         res.render('habits/habits_script', {
           script: finalfeed,
           mod: req.params.modId,
-          habitsStart: user.firstHabitViewTime
+          habitsStart: user.firstHabitViewTime, 
+          title: 'Free Play'
         });
       } else if  (req.params.modId == "phishing"){
-        res.render('phishing/phishing_script', { script: finalfeed, mod: req.params.modId});
+        res.render('phishing/phishing_script', { 
+          script: finalfeed,
+          mod: req.params.modId, 
+          title: 'Free Play'});
       } else if (req.params.modId == "targeted"){
-        res.render('targeted/targeted_script', { script: finalfeed, mod: req.params.modId});
+        res.render('targeted/targeted_script', { 
+          script: finalfeed, 
+          mod: req.params.modId, 
+          title: 'Free Play'});
       } else {
         if(req.params.modId === 'safe-posting') {
           res.set({
@@ -280,7 +293,7 @@ exports.getScript = (req, res, next) => {
               "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:"
           });
         }
-        res.render('script', { script: finalfeed, mod: req.params.modId});
+        res.render('script', { script: finalfeed, mod: req.params.modId, title: 'Free Play'});
       }
     });
   });
