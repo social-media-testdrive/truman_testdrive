@@ -258,6 +258,8 @@ const enableShareActivityData = process.env.enableShareActivityData === 'true';
 const enableTeacherDashboard = process.env.enableTeacherDashboard === 'true';
 const enableLearnerDashboard = process.env.enableLearnerDashboard === 'true';
 
+const enableConvoAI = process.env.enableConvoAI === 'true';
+
 /*
  * Primary app routes.
  * (In alphabetical order)
@@ -278,6 +280,11 @@ function isValidModId(req, res, next){
     "safe-posting",
     "targeted"
   ]
+
+  if (enableConvoAI){
+    modIds.push("cyberbullying-ai")
+  }
+  
   if (modIds.includes(req.params.modId)){
     next();
   } else {
@@ -301,7 +308,8 @@ function isValidModId(req, res, next){
 app.get('/', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
   res.render('mods', {
     title: 'Pick a Lesson',
-    isResearchVersion
+    isResearchVersion, 
+    enableConvoAI
   });
 });
 
@@ -413,7 +421,8 @@ app.get('/results/:modId', passportConfig.isAuthenticated, setHttpResponseHeader
 app.get('/quiz/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, async function (req, res) {
   let quizData;
   const data = await fs.readFileAsync(`${__dirname}/public2/json/quizSectionData.json`);
-  quizData = JSON.parse(data.toString())[req.params.modId];
+  // for the conversational ai project: the conversational ai version cyberbullying module uses the same questions as original cyberbullying module
+  quizData = JSON.parse(data.toString())[req.params.modId === "cyberbullying-ai" ? "cyberbullying" : req.params.modId];
 
   res.render('base_quiz.pug', {
     title: 'Quiz',

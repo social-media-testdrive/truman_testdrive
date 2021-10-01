@@ -92,7 +92,7 @@ exports.getScript = (req, res, next) => {
   })
   .exec(function (err, user) {
     Script.find()
-    .where('module').equals(req.params.modId)
+    .where('module').equals(req.params.modId === "cyberbullying-ai" ? "cyberbullying" : req.params.modId)
     .sort('-time')
     .populate('actor')
     .populate({

@@ -1,0 +1,106 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container.addBottomMargin
+    br      
+    .ui.raised.segment
+      h3.ui.header
+        i.book.blue.icon
+        .content
+          | Learn
+      hr
+      .ui.basic.segment.removePadding
+        .ui.mini.green.right.labeled.icon.button.showLearnSectionButton
+          i.down.arrow.icon
+          |   Next
+      .ui.basic.segment.learnSegment.hidden
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | <b>Cyberbullying</b> is when someone posts or shares negative things 
+            | about someone else online.
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | The <b>bully</b> may use digital devices, sites, or apps. The bully 
+            | often does this again and again to the same person.  
+        .ui.mini.green.right.labeled.icon.button.showKeyTermsButton
+          i.down.arrow.icon
+          |   Next
+    
+    .ui.segment.keyIdeasSegment.hidden
+      h3.ui.header
+        i.key.blue.icon
+        .content Key Ideas
+      .sub.header 
+        i.hand.pointer.icon.grayElement
+        span.grayElement Click on each word below to learn more
+      br
+      .ui.stackable.two.column.grid
+        .ui.column
+          .keyTerm.ui.raised.segment.voiceover_keyTerm1
+            a.ui.blue.ribbon.label.keyTermLabel
+                span Bully
+            span.hidden.keyTermDefinition  
+              | Someone who hurts a person or a group on purpose more than once.
+        .ui.column
+          .keyTerm.ui.raised.segment.voiceover_keyTerm2
+            a.ui.blue.ribbon.label.keyTermLabel
+                span Target
+            span.hidden.keyTermDefinition 
+              | Someone who is being bullied
+        .ui.column
+          .keyTerm.ui.raised.segment.voiceover_keyTerm3
+            a.ui.blue.ribbon.label.keyTermLabel
+                span Upstander
+            span.hidden.keyTermDefinition 
+              | Someone who acts against bullying.
+              ul 
+                | An upstander might confront the bully or tell a trusted adult. 
+                | An upstander might support the person being bullied by 
+                | checking in with them or defending them.       
+    
+    
+    .ui.warning.message#clickNextWarning
+      .header
+       | Click "Next"
+    .ui.warning.message#clickLabelsWarning
+     .header
+      | Click on each label to proceed   
+    a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
+        .ui.labeled.icon.button
+            i.rocket.icon
+            |   Got it!
+
+block scripts
+  script.
+    var voiceoverMappings = {
+      '.showLearnSectionButton': {
+        "initialDelay": 700,
+        "delay": 500,
+        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
+      },
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.1.mp3']
+      },
+      '.voiceover_keyTerm2': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.2.mp3']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.3.mp3']
+      }
+    };
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_start.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/start.css')  
+    
+    

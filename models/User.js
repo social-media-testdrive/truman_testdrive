@@ -35,6 +35,7 @@ const userSchema = new mongoose.Schema({
     privacy: {type: String, default: 'none'},
     safeposting: {type: String, default: 'none'},
     targeted: {type: String, default: 'none'},
+    cyberbullyingai: {type: String, default: 'none'}
   },
   earnedBadges: [new Schema({
     badgeId: String,

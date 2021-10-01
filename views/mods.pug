@@ -83,3 +83,11 @@ block content
             img(src=cdn+'/news.png')
           .content
             .header="News in Social Media"
+
+        if enableConvoAI
+          a.ui.card(href=`/${path}/cyberbullying-ai`)
+            .image
+              .ui.yellow.ribbon.label CONVO AI
+              img(src=cdn+'/upstander.png')
+            .content
+              .header="Conversational AI: How to Be an Upstander" 
