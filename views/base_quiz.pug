@@ -7,113 +7,39 @@ block content
       .ui.column
         .insertPrint
     .ui.warning.message.hidden.scoreBanner#scoreBannerHeader
-      
-    each val, key in quizData 
-      if key == "Q1"  
-        .ui.raised.segment.quizTopSegment.radioQuestion
-          h3.ui.header
-            i.question.blue.icon
-            .content
-              | Quiz
-        
-          .ui.mini.green.right.labeled.icon.button.quizSegmentButton.voiceover_reflection1
+
+    -var optionLabelDictionary = ["A.", "B.", "C.", "D.", "E."]
+
+    each questionInfo, questionNumber in quizData
+      .ui.basic.segment.noPadding
+        .ui.raised.segment.quizTopSegment.radioQuestion(class=[(questionNumber == "Q1") ? undefined :  "hidden",  questionNumber])
+          if questionNumber == "Q1"
+            h3.ui.header
+              i.question.blue.icon
+              .content
+                | Quiz  
+                
+          .ui.mini.green.right.labeled.icon.button.quizSegmentButton(class="voiceover_reflection" + questionNumber.substring(1))&attributes({'questionNumber': questionNumber})      
             i.down.arrow.icon
-            |   Start
+            if questionNumber == "Q1"
+              |   Start
+            else 
+              |   Next 
 
-          .ui.basic.segment.noPadding.quizPromptSegment.hidden
+          .ui.basic.segment.noPadding.quizPromptSegment.hidden(class=questionNumber)
               .ui.label.resultsPromptLabel
-                h4.quizRadioPrompt(data-questionNumber=key)
-                  | #{val.prompt}
+                h4.quizRadioPrompt(data-questionNumber=questionNumber)
+                  | #{questionInfo.prompt}
               .ui.form
                 br
-                .inline.fields
-                  .field
-                    .radio.checkbox
-                      input(type='radio', value= 0, name=key, tabindex='0')
-                      label 
-                        | &nbsp; A. &nbsp;
-                        | #{val.radioLabels[0]}
-                .inline.fields
-                  .field
-                    .radio.checkbox
-                      input(type='radio', value= 1, name=key, tabindex='0')
-                      label 
-                        | &nbsp; B. &nbsp;
-                        | #{val.radioLabels[1]}
-                .inline.fields
-                  .field
-                    .radio.checkbox
-                      input(type='radio', value= 2, name=key, tabindex='0')
-                      label 
-                        | &nbsp; C. &nbsp;
-                        | #{val.radioLabels[2]}
-                .inline.fields
-                  .field
-                    .radio.checkbox
-                      input(type='radio', value= 3, name=key, tabindex='0')
-                      label 
-                        | &nbsp; D. &nbsp;
-                        | #{val.radioLabels[3]}  
-                .inline.fields                                          
-                  .field
-                    .radio.checkbox
-                      input(type='radio', value= 4, name=key, tabindex='0')
-                      label 
-                        | &nbsp; E. &nbsp; 
-                        | #{val.radioLabels[4]}
-              h4.ui.header.feedBack.hidden
-                i.icon.times.red.hidden
-                i.icon.check.green.hidden
-                .content
-                .explanation
-
-      else
-        .ui.basic.segment.noPadding.hidden.quizTopSegment
-          .ui.raised.segment.radioQuestion
-            .ui.mini.green.right.labeled.icon.button.quizSegmentButton(class = "voiceover_reflection" + key.substring(1))
-              i.down.arrow.icon
-              |   Next
-            .ui.basic.segment.noPadding.quizPromptSegment.hidden 
-              .ui.label.resultsPromptLabel
-                h4.quizRadioPrompt(data-questionNumber=key)
-                  | #{val.prompt}
-              .ui.form
-                br
-                .inline.fields
-                  .field
-                    .radio.checkbox
-                      input(type='radio', value= 0, name=key, tabindex='0')
-                      label 
-                        | &nbsp; A. &nbsp; 
-                        | #{val.radioLabels[0]}
-                .inline.fields
-                  .field
-                    .radio.checkbox
-                      input(type='radio', value= 1, name=key, tabindex='0')
-                      label 
-                        | &nbsp; B. &nbsp; 
-                        | #{val.radioLabels[1]}
-                .inline.fields
-                  .field
-                    .radio.checkbox
-                      input(type='radio', value= 2, name=key, tabindex='0')
-                      label 
-                        | &nbsp; C. &nbsp; 
-                        | #{val.radioLabels[2]}
-                .inline.fields
-                  .field
-                    .radio.checkbox
-                      input(type='radio', value= 3, name=key, tabindex='0')
-                      label 
-                        | &nbsp; D. &nbsp; 
-                        | #{val.radioLabels[3]}       
-                .inline.fields                                     
-                  .field
-                    .radio.checkbox
-                      input(type='radio', value= 4, name=key, tabindex='0')
-                      label 
-                         | &nbsp; E. &nbsp; 
-                         | #{val.radioLabels[4]}
+                each optionText, optionNumber in questionInfo.radioLabels
+                  .inline.fields
+                    .field
+                      .radio.checkbox
+                        input(type='radio', value=optionNumber, name=questionNumber, tabindex='0')
+                        label 
+                          | &nbsp; #{optionLabelDictionary[optionNumber]} &nbsp; 
+                          | #{optionText}
               h4.ui.header.feedBack.hidden
                 i.icon.times.red.hidden
                 i.icon.check.green.hidden
@@ -126,15 +52,6 @@ block content
     .ui.warning.message.hidden.openAllPromptsWarning
       .header
         | Click "Next"
-    //- .ui.warning.message.hidden.maxAttemptsReachedWarning
-    //-   .header
-    //-     | You have already completed the quiz the maximum number of 3 times.
-    //- .ui.warning.message.hidden.allQuestionsCorrectWarning
-    //-   .header
-    //-     | Congratulations! You already answered all of the questions correctly.
-    //- .ui.warning.message.hidden.explanationsUnavailableWarning
-    //-   .header
-    //-     | You must first answer all the questions correctly or attempt the quiz 3 times before seeing the answers and explanations.
     include partials/optInToShareActivityData.pug
     br
     .ui.big.labeled.icon.button.quiz_print(onclick="onPrint()")
@@ -153,24 +70,22 @@ block content
           |   Skip Quiz
 
 block scripts
+  script(src='/module_js/voiceover.js') 
   script.
-    var quizData = !{JSON.stringify(quizData)}
+    var quizData = !{JSON.stringify(quizData)} // add comments where quizData is from (comes from server etc.)
     var voiceoverMappings = {}
     for (quizQuestion in quizData){
       const files = quizData[quizQuestion]["files"]
       const key = '.voiceover_reflection' + quizQuestion.substring(1);
-      let cat = new Object();
+      let cat = {};
       cat.initialDelay = (quizQuestion == "Q1") ? 0 : 500
       cat.delay = 0
       cat.files = files
       voiceoverMappings[key] = cat
     }
   script(src='/module_js/base_quiz.js?v=1')
-  script(src='/module_js/voiceover.js') 
   
 block styles
   //- use the same css file as results page
   link(rel='stylesheet', href='/css/quiz.css')
   link(rel='stylesheet', href='/css/optInToShareActivityData.css')
-    
-    

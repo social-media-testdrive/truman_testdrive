@@ -51,13 +51,13 @@ function playVoiceover(audioFile, delay = 0) {
 };
 
 function addVoiceovers() {
-  for (const element in voiceoverMappings) {
-    const voiceoverInfo = voiceoverMappings[element];
-    $(element).on('click', function(){
+  for (const key in voiceoverMappings) {
+    const voiceoverInfo = voiceoverMappings[key];
+    $(key).on('click', function(){
       pauseVoiceover();
       resetVoiceoverSequenceCount();
       setTimeout( function() {
-        playVoiceover(voiceoverInfo["files"],voiceoverInfo["delay"]);
+        playVoiceover(voiceoverInfo["files"], voiceoverInfo["delay"]);
       }, voiceoverInfo["initialDelay"]);
     });
   }

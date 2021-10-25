@@ -22,7 +22,7 @@ function recordResponse(responseType, timestamp) {
   */
 
   // create new object with desired data to pass to the post request
-  let cat = new Object();
+  let cat = {};
   cat.absoluteTimeContinued = timestamp;
   cat.modual = currentModule;
   cat.questionNumber = $(this).attr('data-questionNumber');
@@ -34,7 +34,7 @@ function recordResponse(responseType, timestamp) {
     .closest('.ui.segment')
     .find('.radio.checkbox input:checked')
     .siblings('label')
-    .text();
+    .text().replace(/\r?\n|\r/, '');
   cat.radioSelection = radioSelection;
   cat.attemptNumber = attemptNumber;
   const jqxhr = $.post("/quiz", {
@@ -127,16 +127,21 @@ $(window).on("load", function () {
 
   // Defining the behavior for the "next" button on each question's segment.
   $('.quizSegmentButton').on('click', function () {
-    let segmentButton = $(this);
+    const segmentButton = $(this);
+    const questionNumber = segmentButton.attr('questionnumber'); // returns questionNumber of question to be displayed next (ex: "Q1", "Q2")
+    const nextQuestionNumber = 'Q'+(parseInt(questionNumber.substring(1))+1)
+  
     segmentButton.hide();
-    segmentButton.next('.quizPromptSegment').transition({
+
+    $(`.quizPromptSegment.${questionNumber}`).transition({
       animation: 'fade down',
-      onComplete: function () {
-        segmentButton.parents('.quizTopSegment')
-          .next('.quizTopSegment')
-          .transition('fade down');
+      onComplete: function(){
+        $(`.quizTopSegment.${nextQuestionNumber}`).transition({
+          animation: 'fade down',
+        })
       }
-    });
+    })
+
     hideWarning('.startPromptsWarning');
     hideWarning('.openAllPromptsWarning');
     // If this was the last question, all of the prompts should be opened and the
@@ -168,16 +173,6 @@ $(window).on("load", function () {
     }
     // All of the questions are now visible to the user.
 
-    // if (allCorrect) {
-    //   showWarning('.allQuestionsCorrectWarning');
-    //   return;
-    // }
-
-    // if (attemptNumber > maxAttempt) {
-    //   showWarning('.maxAttemptsReachedWarning');
-    //   return;
-    // }
-
     if (enableDataCollection) {
       // If data collection is enabled, iterate over the prompts to record the
       // responses.
@@ -190,7 +185,8 @@ $(window).on("load", function () {
     // Iterate over each prompt and append the radio value (0, 1, 2... ) selected to 'answerArray'
     // and disable radio prompts where the user has already chosen the correct answer.
     $('.quizRadioPrompt').each(function (index) {
-      const questionNumber = "Q" + (index + 1).toString();
+      const questionNumber = $(this).attr('data-questionNumber');
+      // const questionNumber = "Q" + (index + 1).toString();
       let radioSelection = $(this)
         .closest('.ui.segment')
         .find('.radio.checkbox input:checked').val();
@@ -209,31 +205,25 @@ $(window).on("load", function () {
     // Iterate over each prompt and display "Correct" or "Incorrect" 
     $('h4.ui.header.feedBack').each(function (index) {
       const questionNumber = "Q" + (index + 1).toString();
-      const numAnswerMapping = {
-        0: "A",
-        1: "B",
-        2: "C",
-        3: "D",
-        4: "E"
-      }
-      const letterAnswer = numAnswerMapping[answerArray[index]];
+      const optionLabelDictionary = ["A", "B", "C", "D", "E"]
+      const letterAnswer = optionLabelDictionary[answerArray[index]];
 
-      const checkElement = $(this)[0].querySelector('.check');
-      const timesElement = $(this)[0].querySelector('.times');
+      const correctIconElement = $(this)[0].querySelector('.check');
+      const incorrectIconElement = $(this)[0].querySelector('.times');
       const contentElement = $(this)[0].querySelector('.content');
       const explanationElement = $(this)[0].querySelector('.explanation');
 
       if (answerArray[index] === quizData[questionNumber]["correctResponse"]) {
-        $(checkElement).removeClass('hidden')
-        $(timesElement).addClass('hidden')
+        $(correctIconElement).removeClass('hidden')
+        $(incorrectIconElement).addClass('hidden')
 
         $(contentElement).addClass("green");
         contentElement.innerHTML = (letterAnswer !== undefined) ? letterAnswer + " is correct." : "";
 
         explanationElement.innerHTML = "";
       } else {
-        $(timesElement).removeClass('hidden')
-        $(checkElement).addClass('hidden')
+        $(incorrectIconElement).removeClass('hidden')
+        $(correctIconElement).addClass('hidden')
 
         $(contentElement).addClass("red");
         contentElement.innerHTML = (letterAnswer !== undefined)
@@ -258,9 +248,6 @@ $(window).on("load", function () {
     if (attemptNumber > maxAttempt || numTotal === numCorrect) {
       $('.button.quizCheckAnswersButton')
         .transition('fade down');
-      // if (numTotal === numCorrect){
-      //   allCorrect = true;
-      // }
       $('.button.showExplanationButton')
         .transition('fade down');
 
