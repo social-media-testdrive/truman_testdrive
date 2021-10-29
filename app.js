@@ -237,17 +237,17 @@ app.use('/profile_pictures',express.static(path.join(__dirname, 'profile_picture
 
 //main route is the lesson mod selection screen
 app.get('/', function (req, res) {
-  res.render('mods', {
-    title: 'Pick a Lesson'
-  });
-})
-
-// Spanish lesson mod selection screen
-app.get('/esp', function (req, res) {
   res.render('mods-esp', {
     title: 'Escoge una lección'
   });
 })
+
+// // Spanish lesson mod selection screen
+// app.get('/esp', function (req, res) {
+//   res.render('mods-esp', {
+//     title: 'Escoge una lección'
+//   });
+// })
 
 // app.get('/results/cyberbullying', passportConfig.isAuthenticated, scriptController.getCyberbullyingResults);
 
