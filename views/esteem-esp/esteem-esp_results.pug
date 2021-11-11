@@ -35,7 +35,7 @@ block content
                   img.post(src=cdn+'/post_pictures/bigmatch_se.jpg')
                 .content
                   .description
-                    | Watching the big match with my BFF!!
+                    | Viendo el partiido con mi mejor amiga!!
                     span(style='color:#929292;')
                       |  — with Hayden Abbey
           
@@ -156,13 +156,17 @@ block content
           |   Imprimir tus respuestas
     br
     br
-    .ui.big.green.labeled.icon.button.cyberbullying_end
-          i.rocket.icon
-          |   Seguir
+    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+      .ui.big.green.labeled.icon.button.cyberbullying_end
+            i.rocket.icon
+            |   Hacer la encuesta
 
-      
 block scripts
   script(src="/module_js/esteem-esp/esteem-esp_results.js")
+  script().
+    function startIntro(){       
+      window.open(href='https://berkeley.qualtrics.com/jfe/form/SV_8nT3mI9Mx5aMwbI');
+    };
   
 block styles 
   link(rel='stylesheet', href='/css/modules/esteem.css')
