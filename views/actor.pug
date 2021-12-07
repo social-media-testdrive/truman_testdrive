@@ -86,7 +86,7 @@ block content
             //- else
             //- not a reply post - visualize like normal
             .content
-              .right.floated.time.meta= (user.createdAt.getTime() + val.time)
+              .right.floated.time.meta= (Date.now() + val.time)
               |  
               a(href='/user/'+val.actor.username)
                 img.ui.avatar.image(src=cdn+'/profile_pictures/'+val.actor.profile.picture)
@@ -209,3 +209,18 @@ block content
           .ui.right.floated.green.ok.inverted.button
             i.undo.icon
             |         Un-Block User
+
+block scripts
+  script. 
+    // add humanized time to all posts
+    function addHumanizedTimeToPost(){
+      let target = $(this);
+      var ms = parseInt(target.text(), 10);
+      let time = new Date(ms);
+      target.text(humanized_time_span(time));
+    };
+    
+  script.
+    $(window).on('load', () => {
+      $('.right.floated.time.meta').each(addHumanizedTimeToPost);
+    });
