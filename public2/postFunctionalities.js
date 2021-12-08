@@ -99,12 +99,11 @@ function flagPost(e) {
     let pathArray = window.location.pathname.split('/');
     let mod = pathArray[2];
 
-    if (mod == "digital-literacy")
-
-    {
-        //console.log("CLICKING ON DIG INGO FLAG");
+    if (mod == "digital-literacy") {
+        //console.log("CLICKING ON DIGITAL LITERACY FLAG");
         $('.ui.modal input[type=checkbox]').prop('checked', false);
-        if (actionType === 'free play') {
+        console.log(post.attr('isarticle'))
+        if (actionType === 'free play' && post.attr('isArticle') !== undefined) { //Checking if post.attr('isArticle') is noot undefined checks to see if the flagged post is an article. The flagModal should only be displayed for article posts (not actor or user posts)
             recordModalInputs('digital-literacy_flagModal');
         } else if (actionType === 'guided activity') {
             recordSimModalInputs('digital-literacy_flagModal');
