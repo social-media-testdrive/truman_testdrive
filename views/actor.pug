@@ -17,6 +17,9 @@ block content
           .description 
             i.marker.icon
             span=actor.profile.location
+      button.ui.big.green.button.goBack
+        i.icon.reply
+        | Go back
         //- .two.ui.bottom.attached.icon.buttons
         //-     button.ui.button.block(data-tooltip='Block User', data-position='bottom left', username=actor.username)
         //-       i.ban.icon
@@ -226,4 +229,7 @@ block scripts
   script.
     $(window).on('load', () => {
       $('.right.floated.time.meta, .date.sim').each(addHumanizedTimeToPost);
+      $('button.ui.big.green.button.goBack').on('click', function () {
+        window.history.back();
+      });
     });
