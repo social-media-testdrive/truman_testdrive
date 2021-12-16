@@ -126,7 +126,7 @@
             "type": "radio",
             "prompt": "Imagine that you see a breaking news article with the title, \"New scientific evidence proves that eating more ice cream leads to cancer.\" The message looks trustworthy, but you're not sure. What should you do next?",
             "radioLabels": {
-                "0": "hare this article with friends so they can find out more about this article.",
+                "0": "Share this article with friends so they can find out more about this article.",
                 "1": "Flag this article.",
                 "2": "Search online to see if other trustworthy websites also reported the same news.",
                 "3": "Check your friends’ Facebook to see if anyone else is sharing the same news.",
