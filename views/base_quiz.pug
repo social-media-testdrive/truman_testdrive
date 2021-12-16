@@ -19,7 +19,7 @@ block content
               .content
                 | Quiz  
                 
-          .ui.mini.green.right.labeled.icon.button.quizSegmentButton(class="voiceover_reflection" + questionNumber.substring(1))&attributes({'questionNumber': questionNumber})      
+          .ui.mini.green.right.labeled.icon.button.quizSegmentButton(class="voiceover_reflection" + questionNumber.substring(1))(questionNumber=questionNumber)     
             i.down.arrow.icon
             if questionNumber == "Q1"
               |   Start
@@ -72,20 +72,19 @@ block content
 block scripts
   script(src='/module_js/voiceover.js') 
   script.
-    var quizData = !{JSON.stringify(quizData)} // add comments where quizData is from (comes from server etc.)
-    var voiceoverMappings = {}
+    var quizData = !{JSON.stringify(quizData)}; // quizData is passed to pug file via render function in app.js
+    var voiceoverMappings = {};
     for (quizQuestion in quizData){
-      const files = quizData[quizQuestion]["files"]
+      const files = quizData[quizQuestion]["files"];
       const key = '.voiceover_reflection' + quizQuestion.substring(1);
       let cat = {};
-      cat.initialDelay = (quizQuestion == "Q1") ? 0 : 500
-      cat.delay = 0
-      cat.files = files
-      voiceoverMappings[key] = cat
+      cat.initialDelay = (quizQuestion == "Q1") ? 0 : 500;
+      cat.delay = 0;
+      cat.files = files;
+      voiceoverMappings[key] = cat;
     }
   script(src='/module_js/base_quiz.js?v=1')
   
 block styles
-  //- use the same css file as results page
   link(rel='stylesheet', href='/css/quiz.css')
   link(rel='stylesheet', href='/css/optInToShareActivityData.css')

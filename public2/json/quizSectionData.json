@@ -1,485 +1,470 @@
 {
-  "accounts": {
-    "Q1": {
-      "type": "radio",
-      "prompt": "What is a “password”?",
-      "radioLabels": {
-        "0": "the name or ID that you use when you log in",
-        "1": "Your personal page on social media that includes information about you",
-        "2": "Your name and your birthday to use to log in",
-        "3": "A secret string of letters, symbols, and numbers that you can use to restrict who can access something digital",
-        "4": "I don't know"
-      },
-      "responseRequirement": "any",
-      "correctResponse": "3", 
-      "files": [""], 
-      "explanation": ""
+    "accounts": {
+        "Q1": {
+            "type": "radio",
+            "prompt": "What is a \"password\"?",
+            "radioLabels": {
+                "0": "The name or ID that you use when you log in.",
+                "1": "Your personal page on social media that includes information about you.",
+                "2": "Your name and your birthday to use to log in.",
+                "3": "A secret string of letters, symbols, and numbers that you can use to restrict who can access something digital.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "3",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>D is correct: A password is a secret string of letters, symbols, and numbers that you can use to restrict who can access something digital.</span> \n<span class = 'inline bold'>A is incorrect:</span> A username is the name or ID that you use when you log in. \n<span class = 'inline bold'>B is incorrect:</span> Your profile is your personal page on social media that includes information about you. \n<span class = 'inline bold'>C is incorrect:</span> You should not use your name and your birthday as a password because it’s easy to guess."
+        },
+        "Q2": {
+            "type": "radio",
+            "prompt": "What is something you don’t want in your password? ",
+            "radioLabels": {
+                "0": "Your name",
+                "1": "Special characters",
+                "2": "Numbers",
+                "3": "Uppercase letters",
+                "4": "I don't know"
+            },
+            "responseRequirement": "any",
+            "correctResponse": "0",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>A is correct: Having your name in your password makes it easier to guess. </span> \n<span class = 'inline bold'>B is incorrect:</span> Having special characters in your password makes it harder to guess.\n<span class = 'inline bold'>C is incorrect:</span> Having numbers in your password makes it harder to guess.\n<span class = 'inline bold'>D is incorrect:</span> Having uppercase letters in your password makes it harder to guess."
+        },
+        "Q3": {
+            "type": "radio",
+            "prompt": "Sally is creating a username for a game. All players in the game will be able to see her username. Which of the following information is safe to include in her username?",
+            "radioLabels": {
+                "0": "Her full name",
+                "1": "Her favorite character’s name",
+                "2": "Her parents’ names",
+                "3": "Her school’s name",
+                "4": "I don't know"
+            },
+            "responseRequirement": "any",
+            "correctResponse": "1",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>B is correct: Her favorite character’s name is something that is common and makes it harder for strangers to identify her.</span> \n<span class = 'inline bold'>A is incorrect:</span> Having her full name is not safe. Anyone on the Internet can find out who she is. \n<span class = 'inline bold'>C is incorrect:</span> Having her parents’ names is not safe for her and for them. Anyone on the internet can find out who they are. \n<span class = 'inline bold'>D is incorrect:</span> Having her school’s name makes it easy to find out her location, her age, and her name."
+        },
+        "Q4": {
+            "type": "radio",
+            "prompt": "Mary has a social media account to post about BTS (musical band). Someone she doesn’t know messages her and offers to help her make new posts for this account. What should Mary do?",
+            "radioLabels": {
+                "0": "Give them the account login information because it is coming from a fan who wants to help out!",
+                "1": "Tell them that she isn’t looking for any help and that they should ask another account.",
+                "2": "Make them promise that they won’t do anything bad to the account.",
+                "3": "Ignore the message and tell a trusted adult about the request.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "3",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>D is correct: Ignoring the message and telling a trusted adult will keep her safe. The adult will know how to handle it properly and keep her from interacting with the stranger.</span> \n<span class = 'inline bold'>A is incorrect:</span> The person may not even be a fan and can just want to steal her account and her information. \n<span class = 'inline bold'>B is incorrect:</span> This puts other accounts at risk. This also starts an interaction with the stranger which could lead to something more dangerous. \n<span class = 'inline bold'>C is incorrect:</span> The promise doesn’t mean anything and they can easily break the promise and steal the account and the information."
+        },
+        "Q5": {
+            "type": "radio",
+            "prompt": "Tom plays League of Legends (online game) and meets someone on it. They are promising to put extra items into his account. Tom just needs to give them his username and password so they can buy the items for him. What should Tom do?",
+            "radioLabels": {
+                "0": "Give them his username and password.",
+                "1": "Ask for their username and password in return.",
+                "2": "Ignore them and report the account.",
+                "3": "Give them his username and password and then change his password later.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "2",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>C is correct: Tom should not interact with someone he doesn't know on the internet, especially if they appear to be a  scammer. Reporting the account keeps him and other people safe.</span> \n<span class = 'inline bold'>A is incorrect:</span> This can cause Tom to lose his account and any information connected to him through the account is at risk. \n<span class = 'inline bold'>B is incorrect:</span> Tom is still giving out his information. The other person could also give fake information. \n<span class = 'inline bold'>D is incorrect:</span> Tom is still giving out his information. The stranger could change it before Tom changes it. The stranger also will have access to his information and steal the account."
+        }
     },
-    "Q2": {
-      "type": "radio",
-      "prompt": "What is something you don’t want in your password?",
-      "radioLabels": {
-        "0": "Your name",
-        "1": "Special characters",
-        "2": "Numbers",
-        "3": "Uppercase letters",
-        "4": "I don't know"
-      },
-      "responseRequirement": "any",
-      "correctResponse": "0", 
-      "files": [""], 
-      "explanation": ""
+    "advancedlit": {
+        "Q1": {
+            "type": "radio",
+            "prompt": "What is breaking news?",
+            "radioLabels": {
+                "0": "Breaking news is urgent news that everybody should share with others right away.",
+                "1": "Breaking news reports an event that has just happened or is currently happening.",
+                "2": "Breaking news is fake news which are often clickbaits.",
+                "3": "All of the above.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "1",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>B is correct: Breaking news is information being reported about an event that has just happened or is currently occurring.</span> \n<span class = 'inline bold'>A is incorrect:</span> Breaking news may be urgent and deserve people’s attention, but we should not share it until we have enough information to confirm that the news is true. \n<span class = 'inline bold'>C is incorrect:</span> Breaking news can be true or false information, we need to fact check to make sure the information is true."
+        },
+        "Q2": {
+            "type": "radio",
+            "prompt": "What is fact checking?",
+            "radioLabels": {
+                "0": "Finding out whether the information you see in news stories is true.",
+                "1": "Deciding whether a news story has biased opinions.",
+                "2": "Checking with friends whether a news story is worth sharing.",
+                "3": "All of the above.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "0",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>A is correct: Fact checking is verifying the information you see in news stories.</span> \n<span class = 'inline bold'>B is incorrect:</span> Fact checking is about determining whether the information is true or false, not whether it is a fact or an opinion. \n<span class = 'inline bold'>C is incorrect:</span> When doing fact checking, we should search for reliable information from reliable sources instead of simply checking with friends."
+        },
+        "Q3": {
+            "type": "radio",
+            "prompt": "Which of the following actions should you take when trying to decide whether a breaking news article is accurate?",
+            "radioLabels": {
+                "0": "Find where or from whom the author got the information in the article.",
+                "1": "Read the article and see whether this article is a news piece or an opinion piece.",
+                "2": "Search online and see if there are other sources reporting this news.",
+                "3": "All of the above.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "3",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>A is correct: When we do fact checking on a breaking news article, we should check the source of information of that article to see if it comes from reliable sources. \nB is correct: To decide whether an article is trustworthy or not, we need to read the whole article and see whether it’s a news piece (something that actually happened) or simply the author’s opinions on something happened, since opinions can be inaccurate. \nC is also correct: it’s also important to search online and find other reliable sources that confirm the same story.</span>"
+        },
+        "Q4": {
+            "type": "radio",
+            "prompt": "Imagine that you see a breaking news article with the title, \"New scientific evidence proves that eating more ice cream leads to cancer.\" The message looks trustworthy, but you're not sure. What should you do next?",
+            "radioLabels": {
+                "0": "hare this article with friends so they can find out more about this article.",
+                "1": "Flag this article.",
+                "2": "Search online to see if other trustworthy websites also reported the same news.",
+                "3": "Check your friends’ Facebook to see if anyone else is sharing the same news.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "2",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>C is correct: It is the correct way for fact checking.</span> \n<span class = 'inline bold'>A is incorrect:</span> we shouldn’t share breaking news with anyone before we fact check to make sure that the news is trustworthy. \n<span class = 'inline bold'>B is incorrect:</span> If we found that the news is indeed trustworthy after fact checking, we shouldn’t flag the article and report it as false information. \n<span class = 'inline bold'>D is incorrect:</span> Checking with friends to decide whether a news article is trustworthy is not recommended, because friends may not have the correct information, in other words, friends are not the most reliable source for fact checking."
+        },
+        "Q5": {
+            "type": "radio",
+            "prompt": "Imagine that you see the following message in your social media: \"Recent COVID vaccines caused heart attack. Please stop getting vaccines and share this news immediately\". You feel it would be important to share the message. Is it OK to share it?",
+            "radioLabels": {
+                "0": "It's OK to share the message because it says, \"Please share immediately.\"",
+                "1": "It's OK to share the message because it looks official and you want others to protect themselves from the side effects of vaccines.",
+                "2": "It's NOT OK to share the message because you're not sure it's true.",
+                "3": "It's NOT OK to share the message because it’s safer to wait till more people share it first.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "2",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>C is correct: If you are not sure if the news is true or not, never share it.</span> \n<span class = 'inline bold'>A and B are incorrect:</span> Before we share any news on social media, be sure to fact check to make sure the information is trustworthy so that you won’t spread false information. If you are not sure if the news is true or not, never share it. Even if the message looks urgent and looks official, it might still be fake news. \n<span class = 'inline bold'>D is incorrect:</span> Even if a lot of people share the news on social media, it doesn’t guarantee the information is true, always double check with other reliable sources to make sure the information is trustworthy."
+        }
     },
-    "Q3": {
-      "type": "radio",
-      "prompt": "Sally is creating a username for a game. All players in the game will be able to see her username. Which of the following information is safe to include in her username?",
-      "radioLabels": {
-        "0": "Her full name",
-        "1": "Her favorite character’s name",
-        "2": "Her parents’ names",
-        "3": "Her school’s name",
-        "4": "I don't know"
-      },
-      "responseRequirement": "any",
-      "correctResponse": "1", 
-      "files": [""], 
-      "explanation": ""
+    "cyberbullying": {},
+    "digfoot": {},
+    "digital-literacy": {},
+    "esteem": {},
+    "habits": {
+        "Q1": {
+            "type": "radio",
+            "prompt": "Which of the following is a sign that you’re spending too much time using social media?",
+            "radioLabels": {
+                "0": "You set how many minutes you are going to stay on social media.",
+                "1": "You use your social media to share resources and fun activities with your friends.",
+                "2": "You check your social media all the time even when you need to concentrate on your homework.",
+                "3": "You turn off the notification button on your phone when you need to concentrate on your homework.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "2",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>C is correct: Social media is taking up too much time when it is distracting you from important tasks.</span> \n<span class = 'inline bold'>A is incorrect:</span> Setting the number of minutes for social media will help you better manage how much time you spend on social media. \n<span class = 'inline bold'>B is incorrect:</span> Using social media to share resources and fun activities with friends is a healthy way to use social media. \n<span class = 'inline bold'>D is incorrect:</span> Turning off notifications when you need to concentrate on homework will prevent you spending too much time on social media."
+        },
+        "Q2": {
+            "type": "radio",
+            "prompt": "What do social media feedback loops do?",
+            "radioLabels": {
+                "0": "It helps you control how long you stay on social media.",
+                "1": "It’s related to the reminders you set for yourself online.",
+                "2": "It gives you pleasure when someone responds to your posts.",
+                "3": "It gives you  pleasure when you learn something new online.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "2",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>C is correct: Social media feedback loops make you feel pleasure when you get a like or comment, making you check back for more responses.</span> \n<span class = 'inline bold'>A is incorrect:</span> Social media feedback loops make you stay on social media even longer than you intended. \n<span class = 'inline bold'>B and D are incorrect:</span> Both reminders and wanting to learn new things might make you check your social media accounts, but social media feedback loops are related to the responses (such as a like or comments) from other people that give you pleasure and make you check your social media accounts more."
+        },
+        "Q3": {
+            "type": "radio",
+            "prompt": "Ivonne is a fan of the Golden State Warriors (basketball team). She uses her social media to receive updates about games and players. The updates and notifications are endless and make her feel as if she may miss something if she is not online. Which of the following would help Ivonne create a more balanced use of social media?",
+            "radioLabels": {
+                "0": "She could stop using social media.",
+                "1": "She could use the settings to increase the number of notifications.",
+                "2": "She could use the notifications settings to limit the number of daily notifications.",
+                "3": "She could follow a different basketball team on social media.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "2",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>C is correct: Limiting the number of daily notifications would prevent Ivonne from checking for updates as often.</span> \n<span class = 'inline bold'>A is incorrect:</span> Quitting social media would not be more balanced because Ivonne would not use social media at all. \n<span class = 'inline bold'>B is incorrect:</span> Increasing the number of notifications would make Ivonne check her phone even more. \n<span class = 'inline bold'>D is incorrect:</span> Following a different basketball team would not help Ivonne control her overall use of social media. She would check for updates just as much."
+        },
+        "Q4": {
+            "type": "radio",
+            "prompt": "John is very active on his social media and receives a lot of great comments on his posts. To reply to all the comments, he has started to turn down invitations from close friends to play soccer, his favorite sport. How can John best manage his social media use for a balanced lifestyle?",
+            "radioLabels": {
+                "0": "There is nothing John can do about it because he needs to reply to his online friends.",
+                "1": "John can ask his soccer team friends to help him with the replies.",
+                "2": "John can reply to his online friends late at night even if that means missing some sleep time.",
+                "3": "John can decide not to respond to everyone immediately.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "3",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>D is correct: John can play soccer with his friends, and then respond to comments at a later time.</span> \n<span class = 'inline bold'>A is incorrect:</span> John does not have to reply to his online friends immediately. He can check their comments later. \n<span class = 'inline bold'>B is incorrect:</span> Asking his soccer team friends would distract him and his friends from playing soccer. \n<span class = 'inline bold'>C is incorrect:</span> John does not need to respond to all of the comments at the same time before bed. He can spread out his replies for a more balanced lifestyle."
+        },
+        "Q5": {
+            "type": "radio",
+            "prompt": "The first thing Lucy does in the morning is look at her social media for notifications. When she doesn’t receive a lot of reactions to her posts, she becomes sad and feels that people don’t really like her. As Lucy’s friend, what advice would you give Lucy to support her well-being?",
+            "radioLabels": {
+                "0": "Just keep posting stuff, I’m sure you will get it right eventually.",
+                "1": "Delete your last post, people are not interested in what you have been up to.",
+                "2": "Don’t take this personally. Even if people don’t like a post, it doesn’t mean they don’t like you.",
+                "3": "Stay connected all day long and you will get more reactions to your posts.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "2",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>C is correct: Not receiving many reactions does not mean that people don’t like Lucy. People cannot like every single post they see.</span> \n<span class = 'inline bold'>A is incorrect:</span> Encouraging Lucy to post more may make her feel more disappointed if she still doesn’t receive reactions from others. \n<span class = 'inline bold'>B is incorrect:</span> Telling Lucy to delete her post may make her feel that people dislike her and make her feel bad about herself. \n<span class = 'inline bold'>D is incorrect:</span> Staying on social media all day long is unhealthy. She would develop an unbalanced social media habit."
+        }
     },
-    "Q4": {
-      "type": "radio",
-      "prompt": "Mary has a social media account to post about BTS (musical band). Someone she doesn’t know messages her and offers to help her make new posts for this account. What should Mary do?",
-      "radioLabels": {
-        "0": "Give them the account login information because it is coming from a fan who wants to help out!",
-        "1": "Tell them that she isn’t looking for any help and that they should ask another account",
-        "2": "Make them promise that they won’t do anything bad to the account",
-        "3": "Ignore the message and tell a trusted adult about the request",
-        "4": "I don't know"
-      },
-      "responseRequirement": "any",
-      "correctResponse": "3", 
-      "files": [""], 
-      "explanation": ""
+    "phishing": {},
+    "presentation": {
+        "Q1": {
+            "type": "radio",
+            "prompt": "Which of the following is true about social media audiences?",
+            "radioLabels": {
+                "0": "Multiple accounts can help you manage what different people will see about you.",
+                "1": "Once you open an account, you always have full control over who sees your posts.",
+                "2": "You have no control over your social media audience no matter what you do.",
+                "3": "Social media is for sharing, so you don’t have to worry about who will see your posts.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "0",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>A is correct: People can have separate accounts for different types of content and audiences.</span> \n<span class = 'inline bold'>B is incorrect:</span> You do not always have full control over who sees your post, since other users can share your posts. \n<span class = 'inline bold'>C is incorrect:</span> You can control who follows you on social media. However, you do not have full control over your social media audience. \n<span class = 'inline bold'>D is incorrect:</span> Social media is for sharing, but private information should not be shared with everyone."
+        },
+        "Q2": {
+            "type": "radio",
+            "prompt": "Why would some people want to create different social media accounts?",
+            "radioLabels": {
+                "0": "To interact with different types of groups such as friends, family, or people with similar interests.",
+                "1": "To see and share specific types of content such as games, sports, books, etc.",
+                "2": "To participate in online interactions without revealing their true identities.",
+                "3": "All of the above.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "3",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>D is correct: A, B, and C are all reasons to create different social media accounts. People would want different social media accounts to interact with different groups of people, have accounts for specific content, and to keep their identities anonymous.</span> "
+        },
+        "Q3": {
+            "type": "radio",
+            "prompt": "What is true about anonymous accounts?",
+            "radioLabels": {
+                "0": "People can never find out who you are.",
+                "1": "People can still find out who you are based on your posts.",
+                "2": "It’s never a good idea to use an anonymous account.",
+                "3": "It’s always a good idea to use an anonymous account.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "1",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>B is correct: Even if you are anonymous, what you post may give clues to your identity.</span> \n<span class = 'inline bold'>A is incorrect:</span> Even if you are anonymous, people can find out who you are based on what you post or your friends on social media. \n<span class = 'inline bold'>C is incorrect:</span> It can be a good idea to use an anonymous account to post specific content without revealing your identity. \n<span class = 'inline bold'>D is incorrect:</span> It is not always a good idea to use an anonymous account in case you want an account to connect with your friends or family."
+        },
+        "Q4": {
+            "type": "radio",
+            "prompt": "Olivia has noticed that her friend Laura is using an anonymous account to say mean things about their classmates. Which of the following actions should Olivia take?",
+            "radioLabels": {
+                "0": "Olivia should not say anything. This is Laura’s account after all.",
+                "1": "She can tell Laura to only say mean things about people who are mean.",
+                "2": "She can ask Laura to use her real account if she wants to say mean things about someone.",
+                "3": "She can tell Laura that it’s not nice to post those comments even if she is using an anonymous account.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "3",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>D is correct: Olivia should tell Laura that it is hurtful to comment or post mean things even from an anonymous account.</span> \n<span class = 'inline bold'>A is incorrect:</span> Olivia should ask Laura to never comment or post mean things. \n<span class = 'inline bold'>B is incorrect:</span> Olivia can explain to Laura that it’s hurtful to say mean things about people, even if the people are mean. \n<span class = 'inline bold'>C is incorrect:</span> Laura should not use any account to say mean things about people."
+        },
+        "Q5": {
+            "type": "radio",
+            "prompt": "You are okay with your grandma sharing and tagging you in videos of you as a baby in her social media account. However, you are concerned that some friends may start making fun of you. A practical and responsible way to manage this issue would be:",
+            "radioLabels": {
+                "0": "Deleting your social media account.",
+                "1": "Asking grandma to delete her account.",
+                "2": "Telling grandma that you don’t like those videos.",
+                "3": "Creating a private social media account for the family.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "3",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>D is correct: You can create a separate account for family, so your family can still share content without your friends seeing.</span> \n<span class = 'inline bold'>A is incorrect:</span> If you delete your social media account, you won't be able to stay connected with your family and friends. \n<span class = 'inline bold'>B is incorrect:</span> If you tell your grandma to delete her account, she might feel hurt and would not be able to share posts with others. \n<span class = 'inline bold'>C is incorrect:</span> You could tell your grandma that you don’ t like when she shares those videos on her public account."
+        }
     },
-    "Q5": {
-      "type": "radio",
-      "prompt": "Tom plays League of Legends (game) and meets someone on it. They are promising to put extra items into his account. Tom just needs to give them his username and password so they can buy the items for him. What should Tom do?",
-      "radioLabels": {
-        "0": "Give them his username and password",
-        "1": "Ask for their username and password in return",
-        "2": "Ignore them and report the account",
-        "3": "Give them his username and password and then change his password later",
-        "4": "I don't know"
-      },
-      "responseRequirement": "any",
-      "correctResponse": "2", 
-      "files": [""], 
-      "explanation": ""
-    }
-  },
-  "advancedlit": {
-    "Q1": {
-      "type": "radio",
-      "prompt": "What is breaking news?",
-      "radioLabels": {
-        "0": "Breaking news are urgent news that everybody should share with others right away.",
-        "1": "Breaking news report an event that has just happened or is currently happening.",
-        "2": "Breaking news are fake news which are often clickbaits.",
-        "3": "All of the above",
-        "4": "I don't know"
-      },
-      "responseRequirement": "any",
-      "correctResponse": "1", 
-      "files": [""], 
-      "explanation": "<span class = 'inline bold green'> B is correct: Breaking news is information being reported about an event that has just happened or is currently occurring. </span> \n<span class = 'inline bold'> A is incorrect: </span> Breaking news may be urgent and deserve people’s attention, but we should not share it until we have enough information to confirm that the news is true. \n<span class = 'inline bold'> C is incorrect: </span> Breaking news can be true or false information, we need to fact check to make sure the information is true. "
+    "privacy": {
+        "Q1": {
+            "type": "radio",
+            "prompt": "Where can you change what information is visible to other users and companies?",
+            "radioLabels": {
+                "0": "Direct messages",
+                "1": "Privacy settings",
+                "2": "Friend's page",
+                "3": "You can't",
+                "4": "I don't know"
+            },
+            "responseRequirement": "any",
+            "correctResponse": "1",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>B is correct: You can change what information is visible to other users and companies in privacy settings.</span> \n<span class = 'inline bold'>A is incorrect:</span> Direct messages are where you can talk to your friends. You cannot change what information is visible to other users and companies. \n<span class = 'inline bold'>C is incorrect:</span> Your friend’s page has their information visible. Only your friend can change that information. \n<span class = 'inline bold'>D is incorrect:</span> You can change what information is visible by using your privacy settings."
+        },
+        "Q2": {
+            "type": "radio",
+            "prompt": "Jennie is reading Instagram’s privacy policy before signing up for an account. What should she ask herself when analyzing it?",
+            "radioLabels": {
+                "0": "What will be accessed or collected by Instagram?",
+                "1": "What will be shared with other companies?",
+                "2": "What could be known about me if I use Instagram?",
+                "3": "All of the above.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "3",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>D is correct: A, B, and C are part of the acronym ASK which is used when analyzing a privacy policy. These questions would help Jennie think about what will be accessed or collected by the company, what will be shared with other companies, and what could be known about her if she creates an account.</span>"
+        },
+        "Q3": {
+            "type": "radio",
+            "prompt": "Irene’s brother posted a picture of her and tagged her in it. Irene doesn’t want her friends to see that picture when they go to her profile. What should Irene do?",
+            "radioLabels": {
+                "0": "Tell her friends to not look at her tagged pictures.",
+                "1": "Edit her privacy settings so that tagged pictures do not show up on her profile.",
+                "2": "Delete her account.",
+                "3": "Ask her brother to never post pictures of her again.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "1",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>B is correct: Irene can change what information is visible to others by editing her privacy settings.</span> \n<span class = 'inline bold'>A is incorrect:</span> This won’t have an effect on who will see the pictures. Her friends can still go to her profile and look at the pictures. \n<span class = 'inline bold'>C is incorrect:</span> This is a dramatic measure for something that can be changed easily in the privacy settings. \n<span class = 'inline bold'>D is incorrect:</span> If Irene is only concerned about her friends seeing the pictures, she can solve the issue by changing her privacy settings."
+        },
+        "Q4": {
+            "type": "radio",
+            "prompt": "Jamie has a private social media account for friends and family. Someone she doesn’t know requests to follow her and messages her trying to get to know her. What should she do?",
+            "radioLabels": {
+                "0": "Delete the message but accept the follow request.",
+                "1": "Follow them back and start chatting with them.",
+                "2": "Do not accept the follow request and tell a trusted adult.",
+                "3": "Message them and ask them who they are.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "2",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>C is correct: She should not interact with that person because it could be dangerous. Telling a trusted adult will keep her safe and the adult can take actions to keep her safe.</span> \n<span class = 'inline bold'>A is incorrect:</span> Accepting the follow request will give the stranger access to her posts and information, which is unsafe. \n<span class = 'inline bold'>B is incorrect:</span> It is not safe to interact with strangers. \n<span class = 'inline bold'>D is incorrect:</span> It is not safe to interact with strangers."
+        },
+        "Q5": {
+            "type": "radio",
+            "prompt": "Your friend asks you to join a social media site to communicate with each other. You read in their privacy policy that they sell your information to anyone and are not responsible for any consequences. What should you do?",
+            "radioLabels": {
+                "0": "Make the account anyways. What are the chances your information will be taken?",
+                "1": "Make the account but don’t put anything personal on it.",
+                "2": "Ask your friend about it.",
+                "3": "Ask a trusted adult about the situation before making an account.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "3",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>D is correct: A trusted adult can help you choose if creating the account is a good idea for you or not. A trusted adult can also read the privacy policy clearly and see if there is anything wrong.</span> \n<span class = 'inline bold'>A is incorrect:</span> The chances that your information will be taken is higher than you think. A small risk is still a risk and you should think it through first. \n<span class = 'inline bold'>B is incorrect:</span> There is more information than what you input into it. Your email and your password is considered sensitive information. Your IP address could also be tracked. \n<span class = 'inline bold'>C is incorrect:</span> Your friend might not know the dangers of the whole situation. Asking a trusted adult is the best option for an opinion."
+        }
     },
-    "Q2": {
-      "type": "radio",
-      "prompt": "What is fact checking?",
-      "radioLabels": {
-        "0": "Finding out whether the information you see in news stories is true.",
-        "1": "Deciding whether a news story is a fact or an opinion",
-        "2": "Checking with friends whether a news story is worth sharing.",
-        "3": "All of the above",
-        "4": "I don't know"
-      },
-      "responseRequirement": "any",
-      "correctResponse": "0", 
-      "files": [""], 
-      "explanation": "<span class = 'inline bold green'> A is correct: Fact checking is verifying the information you see in news stories. </span> \n<span class = 'inline bold'> B is incorrect: </span> Fact checking is about determining whether the information is true or false, not whether it is a fact or an opinion. \n<span class = 'inline bold'> C is incorrect: </span> When doing fact checking, we should search for reliable information from reliable sources instead of simply checking with friends."
+    "safe-posting": {
+        "Q1": {
+            "type": "radio",
+            "prompt": "What type of information is NOT safe to share online with strangers?",
+            "radioLabels": {
+                "0": "Your favorite Minecraft characters.",
+                "1": "Your pet’s name.",
+                "2": "Your favorite ice-cream flavors.",
+                "3": "Your home address or real name.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "3",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>D is correct: Your home address and real name are private information and should not be shared with strangers. \n</span> <span class = 'inline bold'>A, B and C are incorrect:</span> Your favorite Minecraft characters, pet’s name, and favorite ice-cream flavors are safe to share with anyone because they are not private information. "
+        },
+        "Q2": {
+            "type": "radio",
+            "prompt": "Why is it risky to share private information online with strangers?",
+            "radioLabels": {
+                "0": "You don’t know what people will do with your information.",
+                "1": "Some people may use your information to trick you.",
+                "2": "Some people may use your information to spam you.",
+                "3": "All of the above.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "3",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>D is correct: A, B, and C are all reasons why sharing private information online with strangers is risky. You don’t know what people will do with information you share, and they may trick you or spam you.</span> "
+        },
+        "Q3": {
+            "type": "radio",
+            "prompt": "How can you respond when someone you don’t know well and have not met in person asks you for private information?",
+            "radioLabels": {
+                "0": "Send the information in a direct message so others will not see it.",
+                "1": "Ask to meet the person first.",
+                "2": "Ignore the message and tell a trusted adult about the request.",
+                "3": "Ask why the person wants to know.",
+                "4": "Send the information and then tell a trusted adult about the request."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "2",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>C is correct: Ignoring the message will prevent the person from gaining information from you. Tell a trusted adult, so they can assess the situation and decide how to proceed.</span> \n<span class = 'inline bold'>A is incorrect:</span> Sending the private information to the person you don’ t know that well may be risky because they may have bad intentions. \n<span class = 'inline bold'>B is incorrect:</span> Sharing your location and meeting someone you don’ t know is dangerous. \n<span class = 'inline bold'>D is incorrect:</span> The person may trick you into revealing your private information.You should not continue talking to them. \n<span class = 'inline bold'>E is incorrect:</span> It’ s important to tell a trusted adult about the request before sharing any private information."
+        },
+        "Q4": {
+            "type": "radio",
+            "prompt": "Sam is your online friend whom you have never met in person. You know a little about what she likes but nothing else. One day, Sam asks for your home address. Which of the following responses is the safest to use?",
+            "radioLabels": {
+                "0": "Sure. I’ll send it to you via email.",
+                "1": "I will send it later today.",
+                "2": "I will share my home address only after you send me yours.",
+                "3": "I don’t share this type of information online.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "3",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>D is correct: Since you have never met Sam in person, you should not share your home address or any other private information.</span> \n<span class = 'inline bold'>A, B, and C are incorrect:</span> It’s not safe to share your home address. You should be clear that you don’t share private information, so she will not keep asking you for it."
+        },
+        "Q5": {
+            "type": "radio",
+            "prompt": "Your best friend is eager to talk about summer plans and has shared his phone number in a chat with the entire school. As his friend, what should you tell him?",
+            "radioLabels": {
+                "0": "I’ll share my number in the chat too so people can invite me for summer activities.",
+                "1": "Please delete your message. It’s not safe to share your private information with people you don’t know.",
+                "2": "How many people have replied to your message?",
+                "3": "Great idea. Let’s ask everyone to share their phone numbers!",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "1",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>B is correct: Your friend should delete the message, so less people will see it. Sharing a phone number is not safe, and people may use it with bad intentions.</span> \n<span class = 'inline bold'>A is incorrect:</span> You should not share your number, and then tell your friend it’ s not safe to share private information with the entire school. \n<span class = 'inline bold'>C is incorrect:</span> The number of replies is important to know how many people have your friend’ s number, but you should also tell your friend not to share their private information. \n<span class = 'inline bold'>D is incorrect:</span> You should not encourage your friend to share private information.It is also dangerous for everyone to send their phone numbers in the group chat."
+        }
     },
-    "Q3": {
-      "type": "radio",
-      "prompt": "Which of the following actions should you take when trying to decide whether a breaking news article is accurate?",
-      "radioLabels": {
-        "0": "Find where or from whom the author got the information in the article.",
-        "1": "Read the article and see whether this article is a news piece or an opinion piece.",
-        "2": "Search online and see if there are other sources reporting this news.",
-        "3": "All of the above",
-        "4": "I don't know"
-      },
-      "responseRequirement": "any",
-      "correctResponse": "3", 
-      "files": [""], 
-      "explanation": "<span class = 'inline bold green'> A is correct: When we do fact checking on a breaking news article, we should check the source of information of that article to see if it comes from reliable sources. </span> \n<span class = 'inline bold green'> B is correct: To decide whether an article is trustworthy or not, we need to read the whole article and see whether it’s a news piece (something that actually happened) or simply the author’s opinions on something happened, since opinions can be inaccurate. </span> \n<span class = 'inline bold green'> C is also correct: It’s also important to search online and find other reliable sources that confirm the same story. </span>"
-    },
-    "Q4": {
-      "type": "radio",
-      "prompt": "Imagine that you see a breaking news article with the title, \"New scientific evidence proves that eating more ice cream leads to cancer.\" The message looks trustworthy, but you're not sure. What should you do next?",
-      "radioLabels": {
-        "0": "Share this article with friends so they can find out more about this article",
-        "1": "Flag this article",
-        "2": "Search online to see if other trustworthy websites also reported the same news.",
-        "3": "Check your friends’ Facebook to see if anyone else is sharing the same news.",
-        "4": "I don't know"
-      },
-      "responseRequirement": "any",
-      "correctResponse": "2", 
-      "files": [""],
-      "explanation": "<span class = 'inline bold green'> C is correct: It is the way for fact checking. </span> \n<span class = 'inline bold'> A is incorrect: </span> We shouldn’t share breaking news with anyone before we fact check to make sure that the news is trustworthy. \n<span class = 'inline bold'> B is incorrect: </span> If we found that the news is indeed trustworthy after fact checking, we shouldn’t flag the article and report it as false information. \n<span class = 'inline bold'> D is incorrect: </span> Checking with friends to decide whether a news article is trustworthy is not recommended, because friends may not have the correct information, in other words, friends are not the most reliable source for fact checking."
-    },
-    "Q5": {
-      "type": "radio",
-      "prompt": "Imagine that you see the following message in your social media: \"Recent COVID vaccines caused heart attack. Please stop getting vaccines and share this news immediately\". You feel it would be important to share the message. Is it OK to share it? ",
-      "radioLabels": {
-        "0": "It's OK to share the message because it says, \"Please share immediately.\"",
-        "1": "It's OK to share the message because it looks official and you want others to protect themselves from the side effects of vaccines.",
-        "2": "It's not OK to share the message because you're not sure it's true.",
-        "3": "It's not OK to share the message because it’s safer to wait till more people share it first.",
-        "4": "I don't know"
-      },
-      "responseRequirement": "any",
-      "correctResponse": "2", 
-      "files": [""], 
-      "explanation": "<span class = 'inline bold green'> C is correct: If you are not sure if the news is true or not, never share it.</span> \n<span class = 'inline bold'> A and B are incorrect: </span> Before we share any news on social media, be sure to fact check to make sure the information is trustworthy so that you won’t spread false information. If you are not sure if the news is true or not, never share it. Even if the message looks urgent and looks official, it might still be fake news. \n<span class = 'inline bold'> D is incorrect: </span> Even if a lot of people share the news on social media, it doesn’t guarantee the information is true, always double check with other reliable sources to make sure the information is trustworthy."
-    }
-  },
-  "cyberbullying": {},
-  "digfoot": {},
-  "digital-literacy": {},
-  "esteem": {},
-  "habits": {
-    "Q1": {
-      "type": "radio",
-      "prompt": "Which of the following is a sign that you’re spending too much time using social media?",
-      "radioLabels": {
-        "0": "You set how many minutes you are going to stay on social media.",
-        "1": "You use your social media to share resources and fun activities with your friends.",
-        "2": "You check your social media all the time even when you need to concentrate on your homework.",
-        "3": "You turn off the notification button on your phone when you need to concentrate on your homework.",
-        "4": "I don't know"
-      },
-      "responseRequirement": "any",
-      "correctResponse": "2", 
-      "files": [""], 
-      "explanation": ""
-    },
-    "Q2": {
-      "type": "radio",
-      "prompt": "What do social media feedback loops do?",
-      "radioLabels": {
-        "0": "It helps you control how long you stay on social media.",
-        "1": "It’s related to the reminders you set for yourself online.",
-        "2": "It’s for making sure you feel pleasure when someone responds to your posts.",
-        "3": "It’s for making you feel pleasure when you learn something new online.",
-        "4": "I don't know"
-      },
-      "responseRequirement": "any",
-      "correctResponse": "2", 
-      "files": [""], 
-      "explanation": ""
-    },
-    "Q3": {
-      "type": "radio",
-      "prompt": "Ivonne is a fan of the Golden State Warriors (basketball team). She uses her social media to receive updates about games and players. The updates and notifications are endless and make her feel as if she may miss something if she is not online. Which of the following would help Ivonne create a more balanced use of social media?",
-      "radioLabels": {
-        "0": "She could stop using social media.",
-        "1": "She could use the settings to increase the number of notifications.",
-        "2": "She could use the notifications settings to limit the number of daily notifications.",
-        "3": "She could follow a different basketball team on social media.",
-        "4": "I don't know"
-      },
-      "responseRequirement": "any",
-      "correctResponse": "2", 
-      "files": [""], 
-      "explanation": ""
-    },
-    "Q4": {
-      "type": "radio",
-      "prompt": "John is very active on his social media and receives a lot of great comments on his posts. To reply to all the comments, he has started to turn down invitations from close friends to play soccer, his favorite sport. How can John best manage his social media use for a balanced lifestyle?",
-      "radioLabels": {
-        "0": "There is nothing John can do about it because he needs to reply to his online friends.",
-        "1": "John can ask his soccer team friends to help him with the replies.",
-        "2": "John can reply to his online friends late at night even if that means missing some sleep time.",
-        "3": "John can decide not to respond to everyone immediately.",
-        "4": "I don't know"
-      },
-      "responseRequirement": "any",
-      "correctResponse": "3", 
-      "files": [""], 
-      "explanation": ""
-    },
-    "Q5": {
-      "type": "radio",
-      "prompt": "The first thing Lucy does in the morning is look at her social media for notifications. When she doesn’t receive a lot of reactions to her posts, she becomes sad and feels that people don’t really like her. As Lucy’s friend, what advice would you give Lucy to support her well-being?",
-      "radioLabels": {
-        "0": "Just keep posting stuff, I’m sure you will get it right eventually.",
-        "1": "Delete your last post, people are not interested in what you have been up to.",
-        "2": "Don’t take this personally. Even if people don’t like a post, it doesn’t mean they don’t like you.",
-        "3": "Stay connected all day long and you will get more reactions to your posts.",
-        "4": "I don't know"
-      },
-      "responseRequirement": "any",
-      "correctResponse": "2", 
-      "files": [""], 
-      "explanation": ""
-    }
-  },
-  "phishing": {},
-  "presentation": {
-    "Q1": {
-      "type": "radio",
-      "prompt": "Which of the following is true about social media audiences?",
-      "radioLabels": {
-        "0": "Multiple accounts can help you manage what different people will see about you.",
-        "1": "Once you open an account, you always have full control over who sees your posts.",
-        "2": "You have no control over your social media audience no matter what you do.",
-        "3": "Social media is for sharing, so you don’t have to worry about who will see your posts.",
-        "4": "I don't know"
-      },
-      "responseRequirement": "any",
-      "correctResponse": "0", 
-      "files": [""], 
-      "explanation": ""
-    },
-    "Q2": {
-      "type": "radio",
-      "prompt": "Why would some people want to create different social media accounts?",
-      "radioLabels": {
-        "0": "To interact with different types of groups such as friends, family, or people with similar interests.",
-        "1": "To see and share specific types of content such as games, sports, books, etc.",
-        "2": "To participate in online interactions without revealing their true identities.",
-        "3": "All of the above",
-        "4": "I don't know"
-      },
-      "responseRequirement": "any",
-      "correctResponse": "3", 
-      "files": [""], 
-      "explanation": ""
-    },
-    "Q3": {
-      "type": "radio",
-      "prompt": "What is true about anonymous accounts?",
-      "radioLabels": {
-        "0": "People can never find out who you are.",
-        "1": "People can still find out who you are based on your posts.",
-        "2": "It’s never a good idea to use an anonymous account.",
-        "3": "It’s always a good idea to use an anonymous account.",
-        "4": "I don't know"
-      },
-      "responseRequirement": "any",
-      "correctResponse": "1", 
-      "files": [""], 
-      "explanation": ""
-    },
-    "Q4": {
-      "type": "radio",
-      "prompt": "Olivia has noticed that her friend Laura is using an anonymous account to say mean things about their classmates. Which of the following actions should Olivia take?",
-      "radioLabels": {
-        "0": "Olivia should not say anything. This is Laura’s account after all.",
-        "1": "She can tell Laura to only say mean things about people who are mean.",
-        "2": "She can ask Laura not to use her real account if she wants to say mean things about someone.",
-        "3": "She can tell Laura that it’s not nice to post those comments even if she is using an anonymous account.",
-        "4": "I don't know"
-      },
-      "responseRequirement": "any",
-      "correctResponse": "3", 
-      "files": [""], 
-      "explanation": ""
-    },
-    "Q5": {
-      "type": "radio",
-      "prompt": "Mike loves the game “Among Us” and is always happy to share some tips on how to find the impostor. However, his friends are no longer interested in the game. Which would be a safe and practical approach for Mike to find an ideal audience for this topic?",
-      "radioLabels": {
-        "0": "Continue to post about the game even if most of his friends don’t like it.",
-        "1": "Create a specific account to interact with other people who share his excitement about the game.",
-        "2": "Use his official social media account to interact with other people, even strangers, who love the game.",
-        "3": "Delete his current account and create a new account called “Among Us Forever",
-        "4": "I don't know"
-      },
-      "responseRequirement": "any",
-      "correctResponse": "1", 
-      "files": [""], 
-      "explanation": ""
-    },
-    "Q6": {
-      "type": "radio",
-      "prompt": "You are okay with your grandma sharing and tagging you in videos of you as a baby in her social media account. However, you are concerned that some friends may start making fun of you. A practical and responsible way to manage this issue would be:",
-      "radioLabels": {
-        "0": "Deleting your social media account.",
-        "1": "Asking grandma to delete her account.",
-        "2": "Telling grandma that you don’t like those videos.",
-        "3": "Creating a private social media account for the family.",
-        "4": "I don't know"
-      },
-      "responseRequirement": "any",
-      "correctResponse": "3", 
-      "files": [""], 
-      "explanation": ""
-    }
-  },
-  "privacy": {
-    "Q1": {
-      "type": "radio",
-      "prompt": "Where can you change what information is visible to other users and companies?",
-      "radioLabels": {
-        "0": "Direct messages",
-        "1": "Privacy settings",
-        "2": "Friend's page",
-        "3": "You can't",
-        "4": "I don't know"
-      },
-      "responseRequirement": "any",
-      "correctResponse": "1",
-      "files": [""], 
-      "explanation": ""
-    },
-    "Q2": {
-      "type": "radio",
-      "prompt": "Jennie is reading Instagram’s privacy policy before signing up for an account. What should she ask herself when analyzing it?",
-      "radioLabels": {
-        "0": "What will be accessed or collected by Instagram?",
-        "1": "What will be shared with other companies?",
-        "2": "What could be known about me if I use Instagram?",
-        "3": "All of the above",
-        "4": "I don't know"
-      },
-      "responseRequirement": "any",
-      "correctResponse": "3",
-      "files": [""], 
-      "explanation": ""
-    },
-    "Q3": {
-      "type": "radio",
-      "prompt": "Irene’s brother posted a picture of her and tagged her in it. Irene doesn’t want her friends to see that picture when they go to her profile. What should Irene do?",
-      "radioLabels": {
-        "0": "Tell her friends to not look at her tagged pictures",
-        "1": "Edit her privacy settings so that tagged pictures do not show up on her profile",
-        "2": "Delete her account",
-        "3": "Ask her brother to never post pictures of her again",
-        "4": "I don't know"
-      },
-      "responseRequirement": "any",
-      "correctResponse": "1",
-      "files": [""], 
-      "explanation": ""
-    },
-    "Q4": {
-      "type": "radio",
-      "prompt": "Jamie has a private social media account for friends and family. Someone she doesn’t know requests to follow her and messages her trying to get to know her. What should she do?",
-      "radioLabels": {
-        "0": "Delete the message but accept the follow request",
-        "1": "Follow them back and start chatting with them",
-        "2": "Do not accept the follow request and tell a trusted adult",
-        "3": "Message them and ask them who they are",
-        "4": "I don't know"
-      },
-      "responseRequirement": "any",
-      "correctResponse": "2",
-      "files": [""], 
-      "explanation": ""
-    },
-    "Q5": {
-      "type": "radio",
-      "prompt": "Your friend asks you to join a social media website to communicate with each other. You read in their privacy policy that they sell your information to anyone and are not responsible for any consequences. What should you do?",
-      "radioLabels": {
-        "0": "Make the account anyways. What are the chances your information will be taken?",
-        "1": "Make the account but don’t put anything personal on it",
-        "2": "Ask your friend about it",
-        "3": "Ask a trusted adult about the situation before making an account",
-        "4": "I don't know"
-      },
-      "responseRequirement": "any",
-      "correctResponse": "3",
-      "files": [""], 
-      "explanation": ""
-    }
-  },
-  "safe-posting": {
-    "Q1": {
-      "type": "radio",
-      "prompt": "What type of  information is not safe to share online with strangers?",
-      "radioLabels": {
-        "0": "Your favorite Minecraft characters.",
-        "1": "Your pet’s name.",
-        "2": "Your favorite ice-cream flavors.",
-        "3": "Your home address or real name.",
-        "4": "I don't know"
-      },
-      "responseRequirement": "any",
-      "correctResponse": "3", 
-      "files": [""], 
-      "explanation": ""
-    },
-    "Q2": {
-      "type": "radio",
-      "prompt": "Why is it risky to share private information online with strangers? ",
-      "radioLabels": {
-        "0": "You don’t know what people will do with your information.",
-        "1": "Some people may use your information to trick you.",
-        "2": "Some people may use your information to spam you.",
-        "3": "All of the above",
-        "4": "I don't know"
-      },
-      "responseRequirement": "any",
-      "correctResponse": "3", 
-      "files": [""], 
-      "explanation": ""
-    },
-    "Q3": {
-      "type": "radio",
-      "prompt": "How can you respond when someone you don’t know well and have not met in person asks you for private information?",
-      "radioLabels": {
-        "0": "Send the information in a direct message so others will not see it.",
-        "1": "Ask to meet the person first.",
-        "2": "Ignore the message and tell a trusted adult about the request.",
-        "3": "Ask why the person wants to know.",
-        "4": "Send the information and then tell a trusted adult about the request."
-      },
-      "responseRequirement": "any",
-      "correctResponse": "2", 
-      "files": [""], 
-      "explanation": ""
-    },
-    "Q4": {
-      "type": "radio",
-      "prompt": "Sam is your online friend whom you have never met in person. You know a little about what she likes but nothing else. One day, Sam asks for your home address. Which of the following responses is the safest to use?",
-      "radioLabels": {
-        "0": "Sure. I’ll send it to you via email.",
-        "1": "I will send it later today.",
-        "2": "I will share my home address only after you send me yours.",
-        "3": "I don’t share this type of information online.",
-        "4": "I don't know"
-      },
-      "responseRequirement": "any",
-      "correctResponse": "3", 
-      "files": [""], 
-      "explanation": ""
-    },
-    "Q5": {
-      "type": "radio",
-      "prompt": "Your best friend is eager to talk about summer plans and has shared his phone number in a chat with the entire school. As his friend, what should you tell him?",
-      "radioLabels": {
-        "0": "Cool. I’ll send you my number too.",
-        "1": "Please delete your message. It’s not safe to share your private information with people you don’t know.",
-        "2": "How many people have replied to your message?",
-        "3": "Great idea. Let’s ask everyone to share their phone numbers!",
-        "4": "I don't know"
-      },
-      "responseRequirement": "any",
-      "correctResponse": "1", 
-      "files": [""], 
-      "explanation": ""
-    }
-  },
-  "targeted": {}
+    "targeted": {}
 }

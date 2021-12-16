@@ -770,7 +770,7 @@ exports.postQuizAction = (req, res, next) => {
             if (err) {
                 if (err.code === 11000) {
                     req.flash('errors', {
-                        msg: 'Something in reflectionAction went crazy. You should never see this.'
+                        msg: 'Something in quizAction went crazy. You should never see this.'
                     });
                     return res.redirect('/');
                 }
@@ -834,8 +834,8 @@ exports.postBlueDotAction = (req, res, next) => {
 
 /*
  * POST /postViewQuizExplanations
- * Add a quiz response in the quiz section
- * Each quiz question gets its own action
+ * Log time user clicked to view quiz explanations
+ * Each click to view quiz explanations gets its own action
  * TODO: This function should probably be moved to the user controller.
  */
 exports.postViewQuizExplanations = (req, res, next) => {
@@ -860,7 +860,7 @@ exports.postViewQuizExplanations = (req, res, next) => {
             if (err) {
                 if (err.code === 11000) {
                     req.flash('errors', {
-                        msg: 'Something in reflectionAction went crazy. You should never see this.'
+                        msg: 'Something in postViewQuizExplanation went crazy. You should never see this.'
                     });
                     return res.redirect('/');
                 }
