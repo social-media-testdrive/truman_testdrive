@@ -21,21 +21,26 @@ block content
         .one.ui.bottom.attached.icon.buttons
             button.ui.editprofile.button(data-tooltip='Update Your Profile', data-position='bottom left')
               i.write.icon
+      button.ui.big.green.button.goBack
+        i.icon.reply
+        | Go back
 
 
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
+    if posts.length === 0
+      h3.centerText No Posts Yet
     each val in posts
       .ui.fluid.card
         if val.reply
           .content
             .right.floated.time.meta= (user.createdAt.getTime() + val.relativeTime)
             |  
-            a.ui.avatar.image(href='/me')
+            a.ui.avatar.image(href='')
               if user.profile.picture
                 img(src=cdn+'/profile_pictures/'+user.profile.picture)
               else
                 img(src=user.gravatar(60))
-              a(href='/me')
+              a(href='')
                 span=user.profile.name || user.email || user.id
           .content
             .description=val.body
@@ -74,12 +79,12 @@ block content
           .content
             .right.floated.time.meta= (user.createdAt.getTime() + val.relativeTime)
             |  
-            a.ui.avatar.image(href='/me')
+            a.ui.avatar.image(href='')
               if user.profile.picture
                 img(src=cdn+'/profile_pictures/'+user.profile.picture)
               else
                 img(src=user.gravatar(60))
-            a(href='/me')
+            a(href='')
               span=user.profile.name || user.email || user.id
           .image
             img(src=cdn+'/post_pictures/'+val.picture)
@@ -121,5 +126,8 @@ block scripts
     
   script.
     $(window).on('load', () => {
-      $('.right.floated.time.meta').each(addHumanizedTimeToPost);
+      $('.right.floated.time.meta, .date.sim').each(addHumanizedTimeToPost);
+      $('button.ui.big.green.button.goBack').on('click', function () {
+        window.history.back();
+      });
     });
