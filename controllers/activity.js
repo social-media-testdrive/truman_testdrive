@@ -13,6 +13,7 @@ exports.postActivityData = (req, res, next) => {
         module: req.body.module,
         newPosts: [],
         freeplayComments: [],
+        reflectionAnswers: [],
         quizAnswers: [],
         viewQuizExplanations: false
     });
@@ -25,6 +26,7 @@ exports.postActivityData = (req, res, next) => {
         .exec(function(err, user) {
             const newPostsArray = []; // will become the value for activityData.newPosts
             const freeplayCommentsArray = []; // will become the value for activityData.freeplayComments
+            const reflectionAnswersArray = []; // will become the value for activityData.reflectionAnswers
             const quizAnswersArray = []; // will become the value for activityData.quizAnswers
             let viewQuizExplanationsBoolean = false; // will become the value for activityData.checkQuizAnswers
 
@@ -35,6 +37,7 @@ exports.postActivityData = (req, res, next) => {
                     newPostsArray.push(newPosts.body);
                 }
             }
+
             // Search for comments created by the user in the current module,
             // add body of comments for each post and the postID to freeplayComments.
             // Iterate through feedAction. Each item represents the actions on an existing post.
@@ -71,12 +74,25 @@ exports.postActivityData = (req, res, next) => {
                     freeplayCommentsArray.push(postComments);
                 }
             }
-            // // Search for quiz answers created by the user in the current module
-            // const quizAnswersArray = user.quizAction.filter(quizObject => quizObject.modual === req.body.module) // will become the value for activityData.quizAnswers
 
-            // Search for quiz answers created by the user in the current module
-            // add questionNumber, prompt, selection, and attempt to quizAnswers.
-            // Iterate through quizAction. Each item represents an answer submitted.
+            // Search for reflection answers created by the user in the current module,
+            // add answers.
+            // Iterate through reflectionAction. Each item represents a submission. 
+            // Typically, there will only be 1 per module; unless user submits reflection answers more than once.
+            for (const reflectionAction of user.reflectionAction) {
+                // check if post is in the current module
+                if (reflectionAction.modual !== req.body.module) {
+                    continue;
+                }
+                let cat = {};
+                cat.attemptDuration = reflectionAction.attemptDuration;
+                cat.answers = reflectionAction.answers;
+                reflectionAnswersArray.push(cat);
+            }
+
+            // Search for quiz answers created by the user in the current module,
+            // add attemptNumber, attemptDuration, answers, and numCorrect to each answer.
+            // Iterate through quizAction. Each item represents an attempt submitted.
             for (const quizAction of user.quizAction) {
                 // check if post is in the current module
                 if (quizAction.modual !== req.body.module) {
@@ -91,11 +107,13 @@ exports.postActivityData = (req, res, next) => {
                 quizAnswersArray.push(cat);
             }
 
+            // Check to see if user viewed quiz explanations in the current module 
             viewQuizExplanationsBoolean = (user.viewQuizExplanations.find(record => record.module === req.body.module && record.click === true) !== undefined)
 
             // update activityData values
             activityData.newPosts = newPostsArray;
             activityData.freeplayComments = freeplayCommentsArray;
+            activityData.reflectionAnswers = reflectionAnswersArray;
             activityData.quizAnswers = quizAnswersArray;
             activityData.viewQuizExplanations = viewQuizExplanationsBoolean;
 

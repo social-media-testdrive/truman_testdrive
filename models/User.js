@@ -270,29 +270,20 @@ const userSchema = new mongoose.Schema({
 
     // action in the reflection section
     reflectionAction: [new Schema({
-        absoluteTimeContinued: Date, //time that the user left the page by clicking continue
-        modual: String, //which lesson mod did this take place in?
-        questionNumber: String, // corresponds with reflectionSectionData.json, i.e. 'Q1', 'Q2', 'Q3'...
-        prompt: String,
-        type: String, // Which type of response this will be: written, checkbox, radio, habitsUnique
-        writtenResponse: String,
-        radioSelection: String, // this is for the presentation module
-        numberOfCheckboxes: Number,
-        checkboxResponse: Number,
-        checkedActualTime: Boolean, // this is unique to the habits module
+        absoluteTimeContinued: Date, // time that the user left the page by clicking continue
+        modual: String, // which lesson mod did this take place in?
+        attemptDuration: Number, // how long the user took for the reflection attempt (milliseconds)
+        answers: [new Schema({
+            questionNumber: String, // corresponds with reflectionSectionData.json, i.e. 'Q1', 'Q2', 'Q3'...
+            prompt: String,
+            type: String, // Which type of response this will be: written, checkbox, radio, habitsUnique
+            writtenResponse: String,
+            radioSelection: String, // this is for the presentation module
+            numberOfCheckboxes: Number,
+            checkboxResponse: Number,
+            checkedActualTime: Boolean, // this is unique to the habits module
+        })]
     }, { _id: true, versionKey: false })],
-
-    // action in the quiz section
-    // quizAction: [new Schema({
-    //     absoluteTimeContinued: Date, //time that the user submitted their answers by clicking "Check My Answers"
-    //     modual: String, // the modual corresponding to the quiz answers
-    //     questionNumber: String, // corresponds with quizSectionData.json, i.e. 'Q1', 'Q2', 'Q3'...
-    //     prompt: String, // question prompt text
-    //     type: String, // Which type of response this will be: It is always "radio"
-    //     radioSelectionIndex: Number, // radio selection index
-    //     radioSelection: String, // radio selection text
-    //     attemptNumber: Number, // this tracks the user's attempt
-    // }, { _id: true, versionKey: false })],
 
     // action in the quiz section
     quizAction: [new Schema({

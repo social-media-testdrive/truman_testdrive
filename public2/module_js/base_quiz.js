@@ -199,6 +199,7 @@ $(window).on("load", function() {
 
         // Iterate over each prompt and append the radio value (0, 1, 2... ) selected to 'answerArray'
         // and disable radio prompts where the user has already chosen the correct answer.
+        // TO DO: Could refactor by adding it into the recordResponse function called above
         $('.quizRadioPrompt').each(function(index) {
             const questionNumber = $(this).attr('data-questionNumber');
             // const questionNumber = "Q" + (index + 1).toString();

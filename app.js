@@ -621,6 +621,8 @@ app.post('/post/new', check, setHttpResponseHeaders, csrfProtection, scriptContr
 app.post('/feed', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postUpdateFeedAction);
 // Delete all recorded feed actions for the current user - currently not used
 app.post('/deleteUserFeedActions', passportConfig.isAuthenticated, setHttpResponseHeaders, scriptController.postDeleteFeedAction);
+// Post information about a user's reflection answers in the reflection section 
+app.post('/reflection', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postReflectionAction);
 // Post information about a user's quiz answers in the quiz section
 app.post('/quiz', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postQuizAction);
 app.post('/postViewQuizExplanations', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postViewQuizExplanations);
@@ -648,7 +650,6 @@ if (enableDataCollection) {
     app.post('/startPageAction', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postStartPageAction);
     app.post('/introjsStep', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postIntrojsStepAction);
     app.post('/bluedot', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postBlueDotAction);
-    app.post('/reflection', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postReflectionAction);
     app.post('/moduleProgress', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, userController.postUpdateModuleProgress);
 }
 

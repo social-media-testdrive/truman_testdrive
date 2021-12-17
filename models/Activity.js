@@ -10,6 +10,19 @@ const activitySchema = new mongoose.Schema({
         postBody: { type: String, default: '', trim: true }, // body of the post the user interacted with
         userComments: [{ type: String, trim: true }], // list containing the body of each user comment
     })],
+    reflectionAnswers: [new Schema({
+        attemptDuration: Number, // how long the user took for the reflection attempt (milliseconds)
+        answers: [new Schema({
+            questionNumber: String, // corresponds with reflectionSectionData.json, i.e. 'Q1', 'Q2', 'Q3'...
+            prompt: String,
+            type: String, // Which type of response this will be: written, checkbox, radio, habitsUnique
+            writtenResponse: String,
+            radioSelection: String, // this is for the presentation module
+            numberOfCheckboxes: Number,
+            checkboxResponse: Number,
+            checkedActualTime: Boolean, // this is unique to the habits module
+        })]
+    })],
     quizAnswers: [new Schema({
         attemptNumber: Number, // this tracks the user's attempt (i.e. 0, 1, 2)
         attemptDuration: Number, // how long the user took for the quiz attempt (milliseconds),
