@@ -75,22 +75,20 @@ exports.postActivityData = (req, res, next) => {
             // const quizAnswersArray = user.quizAction.filter(quizObject => quizObject.modual === req.body.module) // will become the value for activityData.quizAnswers
 
             // Search for quiz answers created by the user in the current module
-            // add questionNumber, prompt, selection, and and attempt to quizAnswers.
+            // add questionNumber, prompt, selection, and attempt to quizAnswers.
             // Iterate through quizAction. Each item represents an answer submitted.
             for (const quizAction of user.quizAction) {
                 // check if post is in the current module
                 if (quizAction.modual !== req.body.module) {
                     continue;
                 }
+                let cat = {};
+                cat.attemptNumber = quizAction.attemptNumber;
+                cat.attemptDuration = quizAction.attemptDuration;
+                cat.answers = quizAction.answers;
+                cat.numCorrect = quizAction.numCorrect;
 
-                const quizAnswer = {
-                    questionNumber: quizAction.questionNumber,
-                    prompt: quizAction.prompt,
-                    radioSelectionIndex: quizAction.radioSelectionIndex,
-                    radioSelection: quizAction.radioSelection,
-                    attemptNumber: quizAction.attemptNumber
-                }
-                quizAnswersArray.push(quizAnswer);
+                quizAnswersArray.push(cat);
             }
 
             viewQuizExplanationsBoolean = (user.viewQuizExplanations.find(record => record.module === req.body.module && record.click === true) !== undefined)

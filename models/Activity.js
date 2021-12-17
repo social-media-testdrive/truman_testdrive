@@ -11,11 +11,16 @@ const activitySchema = new mongoose.Schema({
         userComments: [{ type: String, trim: true }], // list containing the body of each user comment
     })],
     quizAnswers: [new Schema({
-        questionNumber: String,
-        prompt: String,
-        radioSelectionIndex: Number,
-        radioSelection: String,
-        attemptNumber: Number
+        attemptNumber: Number, // this tracks the user's attempt (i.e. 0, 1, 2)
+        attemptDuration: Number, // how long the user took for the quiz attempt (milliseconds),
+        answers: [new Schema({
+            questionNumber: String, // corresponds with quizSectionData.json, i.e. 'Q1', 'Q2', 'Q3'...
+            prompt: String, // question prompt text
+            // type: String, // Which type of response this will be: It is always "radio"
+            radioSelectionIndex: Number, // radio selection index
+            radioSelection: String, // radio selection text
+        })],
+        numCorrect: Number // the number of questions they answered correctly
     })],
     viewQuizExplanations: { type: Boolean, default: false }
 });

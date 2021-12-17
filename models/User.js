@@ -283,15 +283,31 @@ const userSchema = new mongoose.Schema({
     }, { _id: true, versionKey: false })],
 
     // action in the quiz section
+    // quizAction: [new Schema({
+    //     absoluteTimeContinued: Date, //time that the user submitted their answers by clicking "Check My Answers"
+    //     modual: String, // the modual corresponding to the quiz answers
+    //     questionNumber: String, // corresponds with quizSectionData.json, i.e. 'Q1', 'Q2', 'Q3'...
+    //     prompt: String, // question prompt text
+    //     type: String, // Which type of response this will be: It is always "radio"
+    //     radioSelectionIndex: Number, // radio selection index
+    //     radioSelection: String, // radio selection text
+    //     attemptNumber: Number, // this tracks the user's attempt
+    // }, { _id: true, versionKey: false })],
+
+    // action in the quiz section
     quizAction: [new Schema({
-        absoluteTimeContinued: Date, //time that the user submitted their answers by clicking "Check My Answers"
+        absoluteTimeContinued: Date, // time that the user submitted their answers by clicking "Check My Answers"
         modual: String, // the modual corresponding to the quiz answers
-        questionNumber: String, // corresponds with quizSectionData.json, i.e. 'Q1', 'Q2', 'Q3'...
-        prompt: String, // question prompt text
-        type: String, // Which type of response this will be: It is always "radio"
-        radioSelectionIndex: Number, // radio selection index
-        radioSelection: String, // radio selection text
-        attemptNumber: Number, // this tracks the user's attempt
+        attemptNumber: Number, // this tracks the user's attempt (i.e. 0, 1, 2)
+        attemptDuration: Number, // how long the user took for the quiz attempt (milliseconds)
+        answers: [new Schema({
+            questionNumber: String, // corresponds with quizSectionData.json, i.e. 'Q1', 'Q2', 'Q3'...
+            prompt: String, // question prompt text
+            // type: String, // Which type of response this will be: It is always "radio"
+            radioSelectionIndex: Number, // radio selection index
+            radioSelection: String, // radio selection text
+        }, { _id: true, versionKey: false })],
+        numCorrect: Number // the number of questions they answered correctly
     }, { _id: true, versionKey: false })],
 
     // blue dot action in a guided activity

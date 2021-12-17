@@ -1,63 +1,73 @@
 const pathArray = window.location.pathname.split('/');
 const currentModule = pathArray[2]; // identifies the current module
 
-const actionArray = new Array(); // this array will be handed to Promise.all
+const actionArray = []; // this array will be handed to Promise.all
 
-const attemptScoresArray = new Array();
+const attemptScoresArray = [];
 var attemptNumber = 0;
 const maxAttempt = 2; // maximum number of attempts student can take a quiz (starting at 0)
-// var allCorrect = false;
 
-// This function is only called if enableDataCollection = true
-function recordResponse(responseType, timestamp) {
-    /* Sample quizAction object:
-      quizAction: {
+function recordResponse(startTime) {
+    /*   
+    Sample quizAction object: 
+    quizAction: {
         absoluteTimeContinued: Date, //time that the user submitted their answers by clicking "Check My Answers"
         modual: String, // the modual corresponding to the quiz answers
-        questionNumber: String, // corresponds with quizSectionData.json, i.e. 'Q1', 'Q2', 'Q3'...
-        prompt: String, // question prompt text
-        type: String, // Which type of response this will be: It is always "radio"
-        radioSelectionIndex: Number, // radio selection index
-        radioSelection: String, // radio selection text
-        attemptNumber: Number, // this tracks the user's attempt
-      }
-    */
+        attemptNumber: Number, // this tracks the user's attempt (i.e. 0, 1, 2)
+        attemptDuration: Number, // how long the user took for the quiz attempt (milliseconds)
+        answers: [{
+            questionNumber: String, // corresponds with quizSectionData.json, i.e. 'Q1', 'Q2', 'Q3'...
+            prompt: String, // question prompt text
+            radioSelectionIndex: Number, // radio selection index
+            radioSelection: String, // radio selection text
+        }], 
+        numCorrect: Number // number of questions answered correctly
+    }
+     */
+    const timestamp = Date.now();
 
     // create new object with desired data to pass to the post request
     let cat = {};
     cat.absoluteTimeContinued = timestamp;
     cat.modual = currentModule;
-    cat.questionNumber = $(this).attr('data-questionNumber');
-    // prompt with any new line characters removed
-    cat.prompt = $(this).text().replace(/\r?\n|\r/, '');
-    cat.type = responseType; // always "radio"
-    let radioSelection = "";
-    radioSelection = $(this)
-        .closest('.ui.segment')
-        .find('.radio.checkbox input:checked')
-        .siblings('label')
-        .text().replace(/\r?\n|\r/, '');
-    let radioSelectionIndex = $(this)
-        .closest('.ui.segment')
-        .find('.radio.checkbox input:checked')
-        .val();
-    cat.radioSelectionIndex = radioSelectionIndex;
-    cat.radioSelection = radioSelection;
     cat.attemptNumber = attemptNumber;
+    cat.attemptDuration = timestamp - startTime;
+
+    let answers = [];
+    let numCorrect = 0;
+    $('.quizRadioPrompt').each(function() {
+        let answer = {};
+
+        answer.questionNumber = $(this).attr('data-questionNumber');
+        // prompt with any new line characters removed
+        answer.prompt = $(this).text().replace(/\r?\n|\r/, '');
+        // answer.type = "radio"; // always "radio"
+        let radioSelection = $(this)
+            .closest('.ui.segment')
+            .find('.radio.checkbox input:checked')
+            .siblings('label')
+            .text().replace(/\r?\n|\r/, '');
+        let radioSelectionIndex = $(this)
+            .closest('.ui.segment')
+            .find('.radio.checkbox input:checked')
+            .val();
+        answer.radioSelectionIndex = radioSelectionIndex;
+        answer.radioSelection = radioSelection;
+        answers.push(answer);
+
+        if (radioSelectionIndex === quizData[answer.questionNumber]["correctResponse"]) {
+            numCorrect++;
+        }
+    });
+
+    cat.answers = answers;
+    cat.numCorrect = numCorrect;
+
     const jqxhr = $.post("/quiz", {
         action: cat,
         _csrf: $('meta[name="csrf-token"]').attr('content')
     });
     actionArray.push(jqxhr);
-}
-
-// This function is only called if enableDataCollection = true
-function iterateOverPrompts() {
-    const timestamp = Date.now();
-
-    $('.quizRadioPrompt').each(function() {
-        return recordResponse.call($(this), 'radio', timestamp);
-    });
 
     // wait to change page until all post requests in actionArray return,
     // otherwise the post requests might get cancelled during the page change
@@ -119,6 +129,8 @@ function showScoreBanner(score, totalQuestions) {
 }
 
 $(window).on("load", function() {
+    // startTime is used to track the start time of each attempt, to later calculate the duration/time the user spent on each attempt
+    let startTime = Date.now();
     // The code assumes that only one of these will be true, not both.
     const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
     const enableShareActivityData = $('meta[name="isShareActivityDataEnabled"]').attr('content') === "true";
@@ -177,11 +189,10 @@ $(window).on("load", function() {
         }
         // All of the questions are now visible to the user.
 
-        // if (enableDataCollection) {
-        // If data collection is enabled, iterate over the prompts to record the
-        // responses.
-        iterateOverPrompts();
-        // }
+        recordResponse(startTime);
+
+        // Update the startTime
+        startTime = Date.now();
 
         const answerArray = new Array();
         let numCorrect = 0;
@@ -266,8 +277,6 @@ $(window).on("load", function() {
 
     // Defining the behavior for the "Show Correct Answers and Explanations" button
     $('.showExplanationButton').on('click', function() {
-        // if (enableDataCollection) {
-        // If data collection is enabled, log that user clicked to view explanations
         let cat = {};
         cat.module = currentModule;
         cat.click = true;
@@ -277,7 +286,7 @@ $(window).on("load", function() {
             viewAction: cat,
             _csrf: $('meta[name="csrf-token"]').attr('content')
         }).then(function() {});
-        // }
+
         // Iterate over each prompt and display "Correct", "Incorrect" and guiding explanations
         $('h4.ui.header.feedBack').each(function(index) {
             const questionNumber = "Q" + (index + 1).toString();
@@ -288,7 +297,6 @@ $(window).on("load", function() {
             explanationElement.innerHTML = explanationText.replace(/(\r\n|\r|\n)/g, '<br>');
         });
         document.getElementById("scoreBannerHeader").scrollIntoView({ behavior: 'smooth' });
-        // window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     // Defining the behavior for the "Skip Quiz"/ "Continue" button
