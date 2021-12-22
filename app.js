@@ -690,13 +690,13 @@ if (enableLearnerDashboard) {
 /*
  * Error Handler.
  */
-if (process.env.instanceType === 'test') {
-    // only use in local development
-    // local development: process.env.instanceType === 'test'
-    // production site: NODE_ENV === 'production'
-    // test development site: N/A
-    app.use(errorHandler());
-} else {
+// if (process.env.instanceType === 'test') {
+//     // only use in local development
+//     // local development: process.env.instanceType === 'test'
+//     // production site: NODE_ENV === 'production'
+//     // test development site: N/A
+//     app.use(errorHandler());
+// } else {
     // error handler
     app.use(function(err, req, res, next) {
         // No routes handled the request and no system error, that means 404 issue.
@@ -736,7 +736,7 @@ if (process.env.instanceType === 'test') {
         res.status(err.status);
         res.render('error');
     });
-}
+// }
 
 /*
  * Start Express server.
