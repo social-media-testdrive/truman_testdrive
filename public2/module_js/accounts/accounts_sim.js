@@ -117,24 +117,28 @@ function eventsAfterHints() {
                 $('#passwordStrength').progress({ value: 3 });
                 $("#strengthLabel").text("Password Strength: Moderate");
                 hideFieldMessage('#passwordWarning');
+                hideFieldMessage('#passwordHintCheck');
                 displayFeedback(result);
                 break;
             case 3:
                 $('#passwordStrength').progress({ value: 4 });
                 $("#strengthLabel").text("Password Strength: Strong");
                 hideFieldMessage('#passwordWarning');
+                hideFieldMessage('#passwordHintCheck');
                 displayFeedback(result);
                 break;
             case 4:
                 $('#passwordStrength').progress({ value: 5 });
                 $("#strengthLabel").text("Password Strength: Very Strong");
                 hideFieldMessage('#passwordWarning');
+                hideFieldMessage('#passwordHintCheck');
                 displayFeedback(result);
                 break;
             default:
                 $('#passwordStrength').progress('reset');
                 $("#strengthLabel").text("Password Strength");
                 hideFieldMessage('#passwordWarning');
+                hideFieldMessage('#passwordHintCheck');
                 displayFeedback(result);
                 break;
         }

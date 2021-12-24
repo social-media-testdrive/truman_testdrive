@@ -48,6 +48,9 @@ block content
 
       #passwordStrength.ui.indicating.small.progress(data-value='0' data-total='5')
         .bar
+      .ui.message.warning.hidden#passwordHintCheck
+        .ui.header 
+          | This password seems weak and easy to guess, are you sure you want to use it? 
       h3#strengthLabel Password Strength
       .ui.message.hidden#feedbackMessage
         ul#feedbackSuggestion

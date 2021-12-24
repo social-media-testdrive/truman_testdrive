@@ -333,6 +333,17 @@ Start button links
   //To sim2
   $(document).on('click', '.ui.big.labeled.icon.button.cybersim2.green', function () {
       let pathArray = window.location.pathname.split('/');
+      // Special Case: When a user clicks "Let's Continue" in the accounts module, but has a Very Weak or Weak password,
+      // prompt the user: "This password seems weak and easy to guess, are you sure you want to use it?"
+      if (pathArray[2] === "accounts"){
+        let result = zxcvbn($('input[name="password"]').val());
+        if (result.score == 0 || result.score == 1) {
+          if ($('#passwordHintCheck').is(":hidden")){
+            $('#passwordHintCheck').show();
+            return;
+          }
+        }
+      }
       window.location.href = '/sim2/' + pathArray[2];
     });
 
