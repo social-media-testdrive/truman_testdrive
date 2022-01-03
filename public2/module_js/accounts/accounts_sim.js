@@ -117,28 +117,28 @@ function eventsAfterHints() {
                 $('#passwordStrength').progress({ value: 3 });
                 $("#strengthLabel").text("Password Strength: Moderate");
                 hideFieldMessage('#passwordWarning');
-                hideFieldMessage('#passwordHintCheck');
+                hideFieldMessage('#confirmContinueCheck');
                 displayFeedback(result);
                 break;
             case 3:
                 $('#passwordStrength').progress({ value: 4 });
                 $("#strengthLabel").text("Password Strength: Strong");
                 hideFieldMessage('#passwordWarning');
-                hideFieldMessage('#passwordHintCheck');
+                hideFieldMessage('#confirmContinueCheck');
                 displayFeedback(result);
                 break;
             case 4:
                 $('#passwordStrength').progress({ value: 5 });
                 $("#strengthLabel").text("Password Strength: Very Strong");
                 hideFieldMessage('#passwordWarning');
-                hideFieldMessage('#passwordHintCheck');
+                hideFieldMessage('#confirmContinueCheck');
                 displayFeedback(result);
                 break;
             default:
                 $('#passwordStrength').progress('reset');
                 $("#strengthLabel").text("Password Strength");
                 hideFieldMessage('#passwordWarning');
-                hideFieldMessage('#passwordHintCheck');
+                hideFieldMessage('#confirmContinueCheck');
                 displayFeedback(result);
                 break;
         }
@@ -184,8 +184,10 @@ function customOnHintCloseFunction() {
             $('#clickAllDotsWarning').transition('fade');
             $('#cyberTransButton').css("margin-bottom", "4em");
         }
-        if (($('input[name="password"]').val() !== "") && ($('input[name="username"]').val() !== "")) {
+        if (($('input[name="password"]').val() !== "") && ($('input[name="input1"]').val() !== "")) {
             $("#cyberTransButton").addClass("green");
+        } else {
+            $('#cyberTransButton').removeClass('green');
         }
     }
 }

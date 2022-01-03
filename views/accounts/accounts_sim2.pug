@@ -27,30 +27,34 @@ block content
       .ui.form
         .field
           label Name
-          input(type="text" autocomplete='off')
+          input(type="text" autocomplete='off' name='name')#input
         .field
           label Bio
-          textarea(type="text" rows="3" autocomplete='off')   
+          textarea(type="text" rows="3" autocomplete='off' name='bio')#input   
         .field
           label Birthday
-          input(type="text" autocomplete='off')     
+          input(type="text" autocomplete='off' name='birthday')#input     
         div#locationStep
           .field
             label Current City
-            input(type="text" autocomplete='off') 
+            input(type="text" autocomplete='off' name='city')#input 
           .field
             label Hometown
-            input(type="text" autocomplete='off')
+            input(type="text" autocomplete='off' name='hometown')#input
           .field
             label School
-            input(type="text" autocomplete='off') 
+            input(type="text" autocomplete='off' name='school')#input 
         br
         .field
           label Upload a Profile Picture...
           .ui.basic.segment(style="padding:10px 0;")
+            input(type='hidden', name='profilePhoto', value='avatar-icon.svg')
             img.ui.small.image.profileImage(src=cdn+"/profile_pictures/"+"avatar-icon.svg")
             button.ui.icon.button.editProfilePictureButton(style="margin: 1em 0;")
               i.plus.icon
+      .ui.message.warning.hidden#confirmContinueCheck
+        .ui.header 
+          | It seems you did not complete any profile information fields. Are you sure you would like to continue? 
               
     button.ui.big.labeled.icon.button.cybertrans#cyberTransButton
         i.rocket.icon
@@ -142,18 +146,18 @@ block scripts
     ];
   script(src="/module_js/base_sim.js")
   script(src="/module_js/voiceover.js")
+  script(src="/module_js/accounts/accounts_sim2.js")
   script.
     const cdn = "https://dhpd030vnpk29.cloudfront.net"
     $('.editProfilePictureButton').on('click', function(){
       $('.profilePictureModal').modal({
         onApprove: function() {
           let imageName = $('input[name="profilepicinput"]:checked').val();
-          console.log(imageName);
           if(imageName !== undefined){
             $('#noPhotoError').hide();
             let srcString = cdn + '/profile_pictures/' + imageName;
             $('.profileImage').attr('src', srcString);
-            $('input[name="profilePhoto"]').val(imageName);
+            $('input[name="profilePhoto"]').val(imageName).trigger('input');
             return true;
           } else {
             $('#noPhotoError').show();

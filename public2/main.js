@@ -259,14 +259,22 @@ $(window).on("load", function () {
     .on('click', function (e) {
       if ($(this).hasClass('green')) {
         let pathArray = window.location.pathname.split('/');
+        // Special Case: When a user clicks "Let's Continue" in the accounts module, but has not completed any profile fields
+        // prompt the user: "It seems you did not fill out any profile information fields. Are you sure you would like to continue? "
+        if (pathArray[2] === "accounts") {
+          if ($('#input').val() === "" && $('input[name="profilePhoto"]').val() === 'avatar-icon.svg') {
+            
+            if ($('#confirmContinueCheck').is(":hidden")) {
+              $('#confirmContinueCheck').show();
+              return;
+            }
+          }
+        }
         window.location.href = '/trans/' + pathArray[2];
-        // window.location.href = '/trans/cyberbullying';
       }
       else {
         e.preventDefault();
-        //alert('Please go through each blue dot to proceed further !');
       }
-
     });
 
   //cyberbullying to transition 2
@@ -338,8 +346,8 @@ Start button links
       if (pathArray[2] === "accounts"){
         let result = zxcvbn($('input[name="password"]').val());
         if (result.score == 0 || result.score == 1) {
-          if ($('#passwordHintCheck').is(":hidden")){
-            $('#passwordHintCheck').show();
+          if ($('#confirmContinueCheck').is(":hidden")){
+            $('#confirmContinueCheck').show();
             return;
           }
         }
