@@ -272,7 +272,7 @@ $(window).on("load", function() {
                         }
                     }
                     // Special Case: When a user clicks "Let's Continue" in the digfoot module, but has not clicked on any post to think about how it will affect someone's digital footprint,
-                    // prompt the user: It seems you did not click on any posts to think more about how a post can impact someone's digital footprint. Are you sure you do not want to click on a post?
+                    // prompt the user: "It seems you did not click on any posts to think more about how a post can impact someone's digital footprint. Are you sure you do not want to click on a post before continuing?"
                 } else if (pathArray[2] === "digfoot") {
                     if (!clickPost && $('#confirmContinueCheck').is(":hidden")) {
                         $('#confirmContinueCheck').show()
@@ -347,6 +347,17 @@ $(window).on("load", function() {
 
     //Privacy sim to trans2
     $(document).on('click', '.ui.big.labeled.icon.button.privacytrans2.green', function() {
+        // Special Case: When a user clicks "Let's Continue" in the privacy module, but has not toggled any settings
+        // prompt the user: Are you sure you do not want to try changing some privacy settings before continuing?
+        if (!clickAction && $('#confirmContinueCheck').is(":hidden")) {
+            $('#confirmContinueCheck').show();
+            $('#confirmContinueCheck')[0].scrollIntoView({
+                behavior: "smooth", // or "auto" or "instant"
+                block: "center", // defines vertical alignment
+                inline: "nearest" // defines horizontal alignment
+            });;
+            return;
+        }
         window.location.href = '/trans2/privacy';
     });
 
