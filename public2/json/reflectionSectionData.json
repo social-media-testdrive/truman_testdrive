@@ -1,438 +1,438 @@
 {
-  "accounts": {
-    "Q1": {
-      "type": "written",
-      "prompt": "What are some features of a strong password?"
-    },
-    "Q2": {
-      "type": "written",
-      "prompt": "Why is it important to choose your username carefully?"
-    },
-    "Q3": {
-      "type": "written",
-      "prompt": "What kind of information is okay to share on your social media profile?"
-    }
-  },
-  "advancedlit": {
-    "Q1": {
-      "type": "checkbox",
-      "prompt": "What did you do when you saw a breaking news story?",
-      "checkboxLabels": {
-        "0": "I checked to see if it was an opinion piece",
-        "1": "I looked at the source(s) of the information in the article",
-        "2": "I checked other sources",
-        "3": "I shared the news article",
-        "4": "I flagged the post",
-        "5": "I did not do anything"
-      },
-      "responseRequirement": "exact",
-      "correctResponses": {
-        "0": "1",
-        "1": "1",
-        "2": "1",
-        "3": "1",
-        "4": "0"
-      }
-    },
-    "Q2": {
-      "type": "written",
-      "prompt": "Did you read any of the articles? Did you notice any signs that the article may be inaccurate?"
-    },
-    "Q3": {
-      "type": "written",
-      "prompt": "Why is it important to get the full story before reacting to or sharing breaking news?"
-    }
-  },
-  "cyberbullying": {
-    "Q1": {
-      "type": "checkbox",
-      "prompt": "Tell us what you did to be an upstander.",
-      "checkboxLabels": {
-        "0": "I flagged the post or comment.",
-        "1": "I \"liked\" the target's post to show support.",
-        "2": "I wrote a supportive or defending comment for the target.",
-        "3": "I would tell a trusted adult if I saw this kind of post."
-      },
-      "responseRequirement": "atLeastOne",
-      "correctResponses": {
-        "0": "1",
-        "1": "1",
-        "2": "1",
-        "3": "1"
-      }
-    },
-    "Q2": {
-      "type": "written",
-      "prompt": "Why did you act this way?"
-    },
-    "Q3": {
-      "type": "written",
-      "prompt": "Why is it important for people to act against cyberbullying?"
-    },
-    "Q4": {
-      "type": "written",
-      "prompt": "What will you do in the future to be an upstander if you see cyberbullying?"
-    }
-  },
-  "digfoot": {
-    "Q1": {
-      "type": "checkboxGrouped",
-      "prompt": "How would the following posts have a negative impact on digital footprints?",
-      "checkboxLabels": {
-        "0": "The poster was oversharing.",
-        "1": "The poster was sharing something that they might later regret.",
-        "2": "The post was not considerate of other people’s digital footprints.",
-        "3": "This was a responsible post."
-      },
-      "groupCount": "3",
-      "groupPostImages": {
-        "0": "/post_pictures/angrycat2.jpg",
-        "1": "/post_pictures/facepalm.jpg",
-        "2": "/post_pictures/backtoschool.jpg"
-      },
-      "groupPostDescriptions": {
-        "0": "Does this cat remind anyone else of Mrs. Lee?? She's always glaring at us lol. Why does she have to suck SO MUCH",
-        "1": "Lol Danny didn't want me telling anyobody but he tripped over a rock and twisted his ankle. He is literally a meme.",
-        "2": "First day of grade 7! come over to my house at 22 Eastwood dr if you want to hang"
-      },
-      "responseRequirement": "exact",
-      "correctResponses": {
-        "0": {
-          "0": "1",
-          "1": "1",
-          "2": "1",
-          "3": "0"
+    "accounts": {
+        "Q1": {
+            "type": "written",
+            "prompt": "What are some features of a strong password?"
         },
-        "1": {
-          "0": "1",
-          "1": "1",
-          "2": "1",
-          "3": "0"
+        "Q2": {
+            "type": "written",
+            "prompt": "Why is it important to choose your username carefully?"
         },
-        "2": {
-          "0": "1",
-          "1": "1",
-          "2": "0",
-          "3": "0"
+        "Q3": {
+            "type": "written",
+            "prompt": "What kind of information is okay to share on your social media profile?"
         }
-      }
     },
-    "Q2": {
-      "type": "written",
-      "prompt": "What can you do in the future to make sure you have a positive digital footprint on social media?"
-    },
-    "Q3": {
-      "type": "written",
-      "prompt": "What can you do in the future to be mindful of other people's digital footprints on social media?"
-    }
-  },
-  "digital-literacy": {
-    "Q1": {
-      "type": "checkboxGrouped",
-      "prompt": "Did you notice any signs of fake news in these posts?",
-      "checkboxLabels": {
-        "0": "They had clickbait headlines and wild images.",
-        "1": "They had spelling mistakes or dramatic punctuation.",
-        "2": "They were from a suspicious website."
-      },
-      "groupCount": "3",
-      "groupPostImages": {
-        "0": "/post_pictures/fakenews1.png",
-        "1": "/post_pictures/fakenews2.png",
-        "2": "/post_pictures/fakenews3.png"
-      },
-      "groupPostDescriptions": {
-        "0": "Breaking News: Driving age just lowered to 12. DMV flooded with road test appointments and car companies cannot keep their newest models off the road.",
-        "1": "Craving a donut? Think again! Scientists found that donuts are the leading cause of cancer in young children 😳",
-        "2": "You'll never guess what these are!!!"
-      },
-      "responseRequirement": "exact",
-      "correctResponses": {
-        "0": {
-          "0": "1",
-          "1": "0",
-          "2": "1"
+    "advancedlit": {
+        "Q1": {
+            "type": "checkbox",
+            "prompt": "What did you do when you saw a breaking news story?",
+            "checkboxLabels": {
+                "0": "I checked to see if it was an opinion piece",
+                "1": "I looked at the source(s) of the information in the article",
+                "2": "I checked other sources",
+                "3": "I shared the news article",
+                "4": "I flagged the post",
+                "5": "I did not do anything"
+            },
+            "responseRequirement": "exact",
+            "correctResponses": {
+                "0": "1",
+                "1": "1",
+                "2": "1",
+                "3": "1",
+                "4": "0"
+            }
         },
-        "1": {
-          "0": "1",
-          "1": "1",
-          "2": "1"
+        "Q2": {
+            "type": "written",
+            "prompt": "Did you read any of the articles? Did you notice any signs that the article may be inaccurate?"
         },
-        "2": {
-          "0": "1",
-          "1": "1",
-          "2": "1"
+        "Q3": {
+            "type": "written",
+            "prompt": "Why is it important to get the full story before reacting to or sharing breaking news?"
         }
-      }
     },
-    "Q2": {
-      "type": "checkbox",
-      "prompt": "Tell us what you would do next to check the credibility of the above articles.",
-      "checkboxLabels": {
-        "0": "I would read the full article.",
-        "1": "I would check the source.",
-        "2": "I would find corroboration from other credible sources."
-      },
-      "responseRequirement": "exact",
-      "correctResponses": {
-        "0": "1",
-        "1": "1",
-        "2": "1"
-      }
-    },
-    "Q3": {
-      "type": "written",
-      "prompt": "What are the benefits and drawbacks of getting news on social media?"
-    },
-    "Q4": {
-      "type": "written",
-      "prompt": "Why is it important to evaluate the information you see on social media?"
-    },
-    "Q5": {
-      "type": "written",
-      "prompt": "What would you do in the future on real social media sites to make sure that the information you see is credible?"
-    }
-  },
-  "esteem": {
-    "Q1": {
-      "type": "written",
-      "prompt": "Why might these posts cause Jeremy to have a red flag feeling?"
-    },
-    "Q2": {
-      "type": "written",
-      "prompt": "Do you remember seeing posts that might have caused Jeremy to feel good? What kinds of posts were they?"
-    },
-    "Q3": {
-      "type": "written",
-      "prompt": "What could Jeremy do to feel better after experiencing a red flag feeling on social media?"
-    }
-  },
-  "habits": {
-    "Q1": {
-      "type": "checkbox",
-      "prompt": "How many of these attention-grabbing design features did you notice?",
-      "checkboxLabels": {
-        "0": "Notifications",
-        "1": "Likes and comments from other people",
-        "2": "Time spent on social media"
-      },
-      "responseRequirement": "exact",
-      "correctResponses": {
-        "0": "1",
-        "1": "1",
-        "2": "0"
-      }
-    },
-    "Q2": {
-      "type": "habitsUnique",
-      "prompt": "How many minutes do you think you spent on the TestDrive timeline?"
-    },
-    "Q3": {
-      "type": "checkbox",
-      "prompt": "On the TestDrive timeline, what did you do to build a healthy social media habit?",
-      "checkboxLabels": {
-        "0": "I reviewed the time spent on the site",
-        "1": "I reduced the number of notifications that I get",
-        "2": "I ignored the notifications",
-        "3": "I did not do anything to build a healthy social media habit"
-      },
-      "responseRequirement": "exact",
-      "correctResponses": {
-        "0": "1",
-        "1": "1",
-        "2": "1",
-        "3": "0"
-      }
-    },
-    "Q4": {
-      "type": "written",
-      "prompt": "Why is it important to build healthy social media habits?"
-    }
-  },
-  "phishing": {
-    "Q1": {
-      "type": "checkboxGrouped",
-      "prompt": "How did you respond to these posts that were phishing scams?",
-      "checkboxLabels": {
-        "0": "I flagged the post.",
-        "1": "I clicked on the link.",
-        "2": "I ignored the post.",
-        "3": "I did something else."
-      },
-      "groupCount": "3",
-      "groupPostImages": {
-        "0": "/post_pictures/nintendo_phi.jpg",
-        "1": "/post_pictures/accountrisk_phi.png",
-        "2": "/post_pictures/giftcard_phi.jpg"
-      },
-      "groupPostDescriptions": {
-        "0": "Get a BRAND new Nintendo Switch only $19.99!!! Hurry up, this offer WILL NOT LAST",
-        "1": "!!&$!ALERT!&$!! Your account MAY BE AT RISK. Click here to resolve",
-        "2": "You won't believe this crazy deal! I filled in a 5 minite survey and got a $500 gift card instantly!! Fill out survey NOW"
-      },
-      "groupPostLinks": {
-        "0": " http://goo.gl/FreeSwitch",
-        "1": "http://testdrive.info/youraccount",
-        "2": "http://bit.ly/FREEGIFTS"
-      },
-      "responseRequirement": "atLeastOne",
-      "correctResponses": {
-        "0": {
-          "0": "1",
-          "1": "0",
-          "2": "1",
-          "3": "0"
+    "cyberbullying": {
+        "Q1": {
+            "type": "checkbox",
+            "prompt": "Tell us what you did to be an upstander.",
+            "checkboxLabels": {
+                "0": "I flagged the post or comment.",
+                "1": "I \"liked\" the target's post to show support.",
+                "2": "I wrote a supportive or defending comment for the target.",
+                "3": "I would tell a trusted adult if I saw this kind of post."
+            },
+            "responseRequirement": "atLeastOne",
+            "correctResponses": {
+                "0": "1",
+                "1": "1",
+                "2": "1",
+                "3": "1"
+            }
         },
-        "1": {
-          "0": "1",
-          "1": "0",
-          "2": "1",
-          "3": "0"
+        "Q2": {
+            "type": "written",
+            "prompt": "Why did you act this way?"
         },
-        "2": {
-          "0": "1",
-          "1": "0",
-          "2": "1",
-          "3": "0"
+        "Q3": {
+            "type": "written",
+            "prompt": "Why is it important for people to act against cyberbullying?"
+        },
+        "Q4": {
+            "type": "written",
+            "prompt": "What will you do in the future to be an upstander if you see cyberbullying?"
         }
-      }
     },
-    "Q2": {
-      "type": "written",
-      "prompt": "What are some clues you can use to identify phishing scams?"
+    "digfoot": {
+        "Q1": {
+            "type": "checkboxGrouped",
+            "prompt": "How would the following posts have a negative impact on digital footprints?",
+            "checkboxLabels": {
+                "0": "The poster was oversharing.",
+                "1": "The poster was sharing something that they might later regret.",
+                "2": "The post was not considerate of other people’s digital footprints.",
+                "3": "This was a responsible post."
+            },
+            "groupCount": "3",
+            "groupPostImages": {
+                "0": "/post_pictures/angrycat2.jpg",
+                "1": "/post_pictures/facepalm.jpg",
+                "2": "/post_pictures/backtoschool.jpg"
+            },
+            "groupPostDescriptions": {
+                "0": "Does this cat remind anyone else of Mrs. Lee?? She's always glaring at us lol. Why does she have to suck SO MUCH",
+                "1": "Lol Danny didn't want me telling anyobody but he tripped over a rock and twisted his ankle. He is literally a meme.",
+                "2": "First day of grade 7! come over to my house at 22 Eastwood dr if you want to hang"
+            },
+            "responseRequirement": "exact",
+            "correctResponses": {
+                "0": {
+                    "0": "1",
+                    "1": "1",
+                    "2": "1",
+                    "3": "0"
+                },
+                "1": {
+                    "0": "1",
+                    "1": "1",
+                    "2": "1",
+                    "3": "0"
+                },
+                "2": {
+                    "0": "1",
+                    "1": "1",
+                    "2": "0",
+                    "3": "0"
+                }
+            }
+        },
+        "Q2": {
+            "type": "written",
+            "prompt": "What can you do in the future to make sure you have a positive digital footprint on social media?"
+        },
+        "Q3": {
+            "type": "written",
+            "prompt": "What can you do in the future to be mindful of other people's digital footprints on social media?"
+        }
     },
-    "Q3": {
-      "type": "written",
-      "prompt": "Why is it important to protect yourself against phishing scams?"
+    "digital-literacy": {
+        "Q1": {
+            "type": "checkboxGrouped",
+            "prompt": "Did you notice any signs of fake news in these posts?",
+            "checkboxLabels": {
+                "0": "They had clickbait headlines and wild images.",
+                "1": "They had spelling mistakes or dramatic punctuation.",
+                "2": "They were from a suspicious website."
+            },
+            "groupCount": "3",
+            "groupPostImages": {
+                "0": "/post_pictures/fakenews1.png",
+                "1": "/post_pictures/fakenews2.png",
+                "2": "/post_pictures/fakenews3.png"
+            },
+            "groupPostDescriptions": {
+                "0": "Breaking News: Driving age just lowered to 12. DMV flooded with road test appointments and car companies cannot keep their newest models off the road.",
+                "1": "Craving a donut? Think again! Scientists found that donuts are the leading cause of cancer in young children 😳",
+                "2": "You'll never guess what these are!!!"
+            },
+            "responseRequirement": "exact",
+            "correctResponses": {
+                "0": {
+                    "0": "1",
+                    "1": "0",
+                    "2": "1"
+                },
+                "1": {
+                    "0": "1",
+                    "1": "1",
+                    "2": "1"
+                },
+                "2": {
+                    "0": "1",
+                    "1": "1",
+                    "2": "1"
+                }
+            }
+        },
+        "Q2": {
+            "type": "checkbox",
+            "prompt": "Tell us what you would do next to check the credibility of the above articles.",
+            "checkboxLabels": {
+                "0": "I would read the full article.",
+                "1": "I would check the source.",
+                "2": "I would find corroboration from other credible sources."
+            },
+            "responseRequirement": "exact",
+            "correctResponses": {
+                "0": "1",
+                "1": "1",
+                "2": "1"
+            }
+        },
+        "Q3": {
+            "type": "written",
+            "prompt": "What are the benefits and drawbacks of getting news on social media?"
+        },
+        "Q4": {
+            "type": "written",
+            "prompt": "Why is it important to evaluate the information you see on social media?"
+        },
+        "Q5": {
+            "type": "written",
+            "prompt": "What would you do in the future on real social media sites to make sure that the information you see is credible?"
+        }
+    },
+    "esteem": {
+        "Q1": {
+            "type": "written",
+            "prompt": "Why might these posts cause Jeremy to have a red flag feeling?"
+        },
+        "Q2": {
+            "type": "written",
+            "prompt": "Do you remember seeing posts that might have caused Jeremy to feel good? What kinds of posts were they?"
+        },
+        "Q3": {
+            "type": "written",
+            "prompt": "What could Jeremy do to feel better after experiencing a red flag feeling on social media?"
+        }
+    },
+    "habits": {
+        "Q1": {
+            "type": "checkbox",
+            "prompt": "How many of these attention-grabbing design features did you notice?",
+            "checkboxLabels": {
+                "0": "Notifications",
+                "1": "Likes and comments from other people",
+                "2": "Time spent on social media"
+            },
+            "responseRequirement": "exact",
+            "correctResponses": {
+                "0": "1",
+                "1": "1",
+                "2": "0"
+            }
+        },
+        "Q2": {
+            "type": "habitsUnique",
+            "prompt": "How many minutes do you think you spent on the TestDrive timeline?"
+        },
+        "Q3": {
+            "type": "checkbox",
+            "prompt": "On the TestDrive timeline, what did you do to build a healthy social media habit?",
+            "checkboxLabels": {
+                "0": "I reviewed the time spent on the site",
+                "1": "I reduced the number of notifications that I get",
+                "2": "I ignored the notifications",
+                "3": "I did not do anything to build a healthy social media habit"
+            },
+            "responseRequirement": "exact",
+            "correctResponses": {
+                "0": "1",
+                "1": "1",
+                "2": "1",
+                "3": "0"
+            }
+        },
+        "Q4": {
+            "type": "written",
+            "prompt": "Why is it important to build healthy social media habits?"
+        }
+    },
+    "phishing": {
+        "Q1": {
+            "type": "checkboxGrouped",
+            "prompt": "How did you respond to these posts that were phishing scams?",
+            "checkboxLabels": {
+                "0": "I flagged the post.",
+                "1": "I clicked on the link.",
+                "2": "I ignored the post.",
+                "3": "I did something else."
+            },
+            "groupCount": "3",
+            "groupPostImages": {
+                "0": "/post_pictures/nintendo_phi.jpg",
+                "1": "/post_pictures/accountrisk_phi.png",
+                "2": "/post_pictures/giftcard_phi.jpg"
+            },
+            "groupPostDescriptions": {
+                "0": "Get a BRAND new Nintendo Switch only $19.99!!! Hurry up, this offer WILL NOT LAST",
+                "1": "!!&$!ALERT!&$!! Your account MAY BE AT RISK. Click here to resolve",
+                "2": "You won't believe this crazy deal! I filled in a 5 minite survey and got a $500 gift card instantly!! Fill out survey NOW"
+            },
+            "groupPostLinks": {
+                "0": " http://goo.gl/FreeSwitch",
+                "1": "http://testdrive.info/youraccount",
+                "2": "http://bit.ly/FREEGIFTS"
+            },
+            "responseRequirement": "atLeastOne",
+            "correctResponses": {
+                "0": {
+                    "0": "1",
+                    "1": "0",
+                    "2": "1",
+                    "3": "0"
+                },
+                "1": {
+                    "0": "1",
+                    "1": "0",
+                    "2": "1",
+                    "3": "0"
+                },
+                "2": {
+                    "0": "1",
+                    "1": "0",
+                    "2": "1",
+                    "3": "0"
+                }
+            }
+        },
+        "Q2": {
+            "type": "written",
+            "prompt": "What are some clues you can use to identify phishing scams?"
+        },
+        "Q3": {
+            "type": "written",
+            "prompt": "Why is it important to protect yourself against phishing scams?"
+        }
+    },
+    "presentation": {
+        "Q1": {
+            "type": "checkbox",
+            "prompt": "How were the posts in Elena’s finsta different from the ones in her main account?",
+            "checkboxLabels": {
+                "0": "She posted about things that only certain people will be interested in",
+                "1": "She posted things that are more casual or personal",
+                "2": "She posted mean things about other people"
+            },
+            "responseRequirement": "exact",
+            "correctResponses": {
+                "0": "0",
+                "1": "1",
+                "2": "0"
+            }
+        },
+        "Q2": {
+            "type": "radio",
+            "prompt": "Did you create a post on the TestDrive timeline?",
+            "radioLabels": {
+                "0": "Yes",
+                "1": "No"
+            },
+            "responseRequirement": "any"
+        },
+        "Q3": {
+            "type": "written",
+            "prompt": "If you created a post, how did you think about the audience when you created your post?"
+        },
+        "Q4": {
+            "type": "written",
+            "prompt": "What are the benefits of having multiple social media accounts?"
+        },
+        "Q5": {
+            "type": "written",
+            "prompt": "What are the drawbacks of having multiple social media accounts?"
+        }
+    },
+    "privacy": {
+        "Q1": {
+            "type": "written",
+            "prompt": "Did you notice any changes in Lily’s profile after you changed the privacy settings?"
+        },
+        "Q2": {
+            "type": "written",
+            "prompt": "Why is it important to know what information websites collect about you?"
+        },
+        "Q3": {
+            "type": "written",
+            "prompt": "What are the three things you should ask yourself when reading a privacy policy?"
+        },
+        "Q4": {
+            "type": "written",
+            "prompt": "What can you do in the future to protect your privacy on social media?"
+        }
+    },
+    "safe-posting": {
+        "Q1": {
+            "type": "checkbox",
+            "prompt": "Why is this post inappropriate for social media?",
+            "checkboxLabels": {
+                "0": "Private information like street address, phone number, school name, or email address was shared",
+                "1": "The person making the post did not think about all the audiences who could see it",
+                "2": "It was appropriate for social media"
+            },
+            "responseRequirement": "exact",
+            "correctResponses": {
+                "0": "1",
+                "1": "1",
+                "2": "0"
+            }
+        },
+        "Q2": {
+            "type": "checkbox",
+            "prompt": "How did you respond to these messages that asked for private information?",
+            "checkboxLabels": {
+                "0": "I changed the subject",
+                "1": "I used humor",
+                "2": "I ignored the message",
+                "3": "I was direct",
+                "4": "I did something else"
+            },
+            "responseRequirement": "exact",
+            "correctResponses": {
+                "0": "1",
+                "1": "1",
+                "2": "1",
+                "3": "1",
+                "4": "0"
+            }
+        },
+        "Q3": {
+            "type": "written",
+            "prompt": "What would you do in the future to protect your private information and other people’s private information on social media?"
+        }
+    },
+    "targeted": {
+        "Q1": {
+            "type": "checkbox",
+            "prompt": "What did you do when you saw an advertisement or a sponsored post?",
+            "checkboxLabels": {
+                "0": "I hid the advertisement from my timeline.",
+                "1": "I reported the advertisement to the website.",
+                "2": "I looked at why I was getting the advertisement.",
+                "3": "I liked the ad or commented on it.",
+                "4": "I wanted to click on the advertisement.",
+                "5": "I ignored the advertisement.",
+                "6": "I didn't notice the advertisement."
+            },
+            "responseRequirement": "atLeastOne",
+            "correctResponses": {
+                "0": "1",
+                "1": "1",
+                "2": "1",
+                "3": "0",
+                "4": "0",
+                "5": "1",
+                "6": "0"
+            }
+        },
+        "Q2": {
+            "type": "written",
+            "prompt": "Why do companies collect data from people's profiles or online activity?"
+        },
+        "Q3": {
+            "type": "written",
+            "prompt": "Why is it important to know how to identify advertisements on social media?"
+        }
     }
-  },
-  "presentation": {
-    "Q1": {
-      "type": "checkbox",
-      "prompt": "How were the posts in Elena’s finsta different from the ones in her main account?",
-      "checkboxLabels": {
-        "0": "She posted about things that only certain people will be interested in",
-        "1": "She posted things that are more casual or personal",
-        "2": "She posted mean things about other people"
-      },
-      "responseRequirement": "exact",
-      "correctResponses": {
-        "0": "0",
-        "1": "1",
-        "2": "0"
-      }
-    },
-    "Q2": {
-      "type": "radio",
-      "prompt": "Did you create a post on the TestDrive timeline?",
-      "radioLabels": {
-        "0": "Yes",
-        "1": "No"
-      },
-      "responseRequirement": "any"
-    },
-    "Q3": {
-      "type": "written",
-      "prompt": "How did you think about the audience when you created your post?"
-    },
-    "Q4": {
-      "type": "written",
-      "prompt": "What are the benefits of having multiple social media accounts?"
-    },
-    "Q5": {
-      "type": "written",
-      "prompt": "What are the drawbacks of having multiple social media accounts?"
-    }
-  },
-  "privacy": {
-    "Q1": {
-      "type": "written",
-      "prompt": "Did you notice any changes in Lily’s profile after you changed the privacy settings?"
-    },
-    "Q2": {
-      "type": "written",
-      "prompt": "Why is it important to know what information websites collect about you?"
-    },
-    "Q3": {
-      "type": "written",
-      "prompt": "What are the three things you should ask yourself when reading a privacy policy?"
-    },
-    "Q4": {
-      "type": "written",
-      "prompt": "What can you do in the future to protect your privacy on social media?"
-    }
-  },
-  "safe-posting": {
-    "Q1": {
-      "type": "checkbox",
-      "prompt": "Why is this post inappropriate for social media?",
-      "checkboxLabels": {
-        "0": "Private information like street address, phone number, school name, or email address was shared",
-        "1": "The person making the post did not think about all the audiences who could see it",
-        "2": "It was appropriate for social media"
-      },
-      "responseRequirement": "exact",
-      "correctResponses": {
-        "0": "1",
-        "1": "1",
-        "2": "0"
-      }
-    },
-    "Q2": {
-      "type": "checkbox",
-      "prompt": "How did you respond to these messages that asked for private information?",
-      "checkboxLabels": {
-        "0": "I changed the subject",
-        "1": "I used humor",
-        "2": "I ignored the message",
-        "3": "I was direct",
-        "4": "I did something else"
-      },
-      "responseRequirement": "exact",
-      "correctResponses": {
-        "0": "1",
-        "1": "1",
-        "2": "1",
-        "3": "1",
-        "4": "0"
-      }
-    },
-    "Q3": {
-      "type": "written",
-      "prompt": "What would you do in the future to protect your private information and other people’s private information on social media?"
-    }
-  },
-  "targeted": {
-    "Q1": {
-      "type": "checkbox",
-      "prompt": "What did you do when you saw an advertisement or a sponsored post?",
-      "checkboxLabels": {
-        "0": "I hid the advertisement from my timeline.",
-        "1": "I reported the advertisement to the website.",
-        "2": "I looked at why I was getting the advertisement.",
-        "3": "I liked the ad or commented on it.",
-        "4": "I wanted to click on the advertisement.",
-        "5": "I ignored the advertisement.",
-        "6": "I didn't notice the advertisement."
-      },
-      "responseRequirement": "atLeastOne",
-      "correctResponses": {
-        "0": "1",
-        "1": "1",
-        "2": "1",
-        "3": "0",
-        "4": "0",
-        "5": "1",
-        "6": "0"
-      }
-    },
-    "Q2": {
-      "type": "written",
-      "prompt": "Why do companies collect data from people's profiles or online activity?"
-    },
-    "Q3": {
-      "type": "written",
-      "prompt": "Why is it important to know how to identify advertisements on social media?"
-    }
-  }
 }
