@@ -29,6 +29,8 @@ block content
 
 
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
+    if script.length === 0
+      h3.centerText No Posts Yet
     each val in script
       if(val.type !== 'notification')
         .ui.fluid.card.dim(postID=val.id, ui=user.ui, notify=user.notify, state=val.state || 'unread', type='actor')
@@ -79,13 +81,15 @@ block content
                     if comment.new_comment
                       -console.log("New COMMENT AREA");
                       .comment(commentID=comment.new_comment_id)
-                        a.avatar.image(href='/me/'+mod)
+                        //- a.avatar.image(href='/me'+mod)
+                        a.avatar.image
                           if user.profile.picture
                             img(src=cdn+'/profile_pictures/'+user.profile.picture)
                           else
                             img(src=user.gravatar(60))
                         .content
-                          a.author(href='/me/'+mod)=user.profile.name || user.username || user.id
+                          //- a.author(href='/me/'+mod)=user.profile.name || user.username || user.id
+                          a.author=user.profile.name || user.username || user.id
                           .metadata
                             span.date.sim=(comment.time)
                             //- .rating

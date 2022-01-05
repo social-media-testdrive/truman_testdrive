@@ -242,6 +242,12 @@ block content
             img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
           input.newcomment#hint4(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
+    .ui.message.warning.hidden#confirmContinueCheck
+      .ui.header 
+        | It seems you did not flag or leave any comments on the cyberbullying posts and comments. 
+        br 
+        br
+        | Are you sure you do not want to flag or comment before continuing?
 
     button.ui.big.labeled.icon.button.cybertrans.addBottomMargin#cyberTransButton
           i.rocket.icon
@@ -312,6 +318,11 @@ block scripts
   script(src = "/module_js/voiceover.js")  
   script(src='/postFunctionalities.js')
   script(src = "/module_js/base_sim.js")
+  script. 
+    //- clickPost is a boolean used to track if a user completed any of the recommended actions from the blue dots. 
+    //- If the user did, it is set to true.
+    //- If the user didn't, it remains false, and then it is used to display a message: "It seems you did not flag any cyberbullying posts or comments, or leave any comments. Are you sure you would like to continue?"
+    let clickPost = false; 
   
 block styles
   link(rel='stylesheet', href='/css/sim.css')

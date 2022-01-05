@@ -89,8 +89,6 @@ function errorCheck() {
             //otherwise, bounce the message to draw attention to it
             $('#clickAllDotsWarning').transition('bounce');
         }
-        console.log(closedHints);
-        console.log(numberOfHints);
         // Scroll to the first blue dot that is still visible
         $('.introjs-hint:visible')[0].scrollIntoView({
             behavior: "smooth", // or "auto" or "instant"

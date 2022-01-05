@@ -17,14 +17,16 @@ exports.getActor = (req, res, next) => {
                     return next(err);
                 }
                 if (act == null) {
-                    const myerr = new Error('Record not found!');
-                    return next(myerr);
+                    // const myerr = new Error('Record not found!');
+                    // return next(myerr);
+                    return next();
                 }
                 // Determine if this actor has been blocked by the user.
                 let isBlocked = false;
                 if (user.blocked.includes(req.params.userId)) {
                     isBlocked = true;
                 }
+                const username = act.username;
                 Script.find({ actor: act.id })
                     // .where('-time').lte(-time_diff) uncommented because modual sections display all posts by an actor, regardless of when the user was created in relation to the time of an actor's post
                     .sort('-time')
@@ -43,8 +45,6 @@ exports.getActor = (req, res, next) => {
 
                         // Final array of all posts to go in the actor's profile page feed
                         const finalfeed = [];
-
-                        const name = script_feed[0].actor.profile.name;
 
                         // While there are actor posts to add to the final feed
                         while (script_feed.length) {
@@ -126,7 +126,7 @@ exports.getActor = (req, res, next) => {
                             script: finalfeed,
                             actor: act,
                             blocked: isBlocked,
-                            title: name
+                            title: username
                         });
                     });
             });

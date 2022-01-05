@@ -100,14 +100,17 @@ function flagPost(e) {
     let mod = pathArray[2];
 
     if (mod == "digital-literacy") {
-        //console.log("CLICKING ON DIGITAL LITERACY FLAG");
         $('.ui.modal input[type=checkbox]').prop('checked', false);
-        console.log(post.attr('isarticle'))
-        if (actionType === 'free play' && post.attr('isArticle') !== undefined) { //Checking if post.attr('isArticle') is noot undefined checks to see if the flagged post is an article. The flagModal should only be displayed for article posts (not actor or user posts)
+        if (actionType === 'free play' && post.attr('isArticle') !== undefined) { // post.attr('isArticle') is not undefined only when flagged post is an article. The flagModal should only be displayed for article posts (not actor or user posts).
             recordModalInputs('digital-literacy_flagModal');
         } else if (actionType === 'guided activity') {
             recordSimModalInputs('digital-literacy_flagModal');
         }
+    }
+
+    if (currentModuleForHeader === "cyberbullying" && (postID === "cyberbullying_sim_post3" || postID === "cyberbullying_sim_post4")) {
+        clickPost = true; //see cyberbullying_sim.pug for initialization and comments
+        $("#confirmContinueCheck").hide();
     }
 };
 
@@ -186,6 +189,10 @@ async function addNewComment(event) {
             if (!(error instanceof TypeError)) {
                 console.error(error);
             }
+        }
+        if (currentModuleForHeader === "cyberbullying" && (postID === "cyberbullying_sim_post1" || postID === "cyberbullying_sim_post3" || postID === "cyberbullying_sim_post4")) {
+            clickPost = true; //see cyberbullying_sim.pug for initialization and comments
+            $("#confirmContinueCheck").hide();
         }
     }
 }
@@ -289,6 +296,10 @@ function flagComment(e) {
         if (!(error instanceof TypeError)) {
             console.error(error);
         }
+    }
+    if (currentModuleForHeader === "cyberbullying" && (commentID === "cyberbullying_sim_post4_comment1" || commentID === "cyberbullying_sim_post1_comment1")) {
+        clickPost = true; //see cyberbullying_sim.pug for initialization and comments
+        $("#confirmContinueCheck").hide();
     }
 }
 
