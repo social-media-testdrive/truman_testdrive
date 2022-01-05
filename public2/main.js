@@ -271,9 +271,9 @@ $(window).on("load", function() {
                             return;
                         }
                     }
-                    // Special Case: When a user clicks "Let's Continue" in the digfoot module, but has not clicked on any post to think about how it will affect someone's digital footprint,
-                    // prompt the user: "It seems you did not click on any posts to think more about how a post can impact someone's digital footprint. Are you sure you do not want to click on a post before continuing?"
-                } else if (pathArray[2] === "digfoot") {
+                    // Special Case: When a user clicks "Let's Continue" in the digfoot, esteem module, but has not clicked on any post
+                    // prompt the user: "It seems you did not click on any posts to ... Are you sure you do not want to click on a post before continuing?"
+                } else if (pathArray[2] === "digfoot" || pathArray[2] === "esteem") {
                     if (!clickPost && $('#confirmContinueCheck').is(":hidden")) {
                         $('#confirmContinueCheck').show()
                         $('#confirmContinueCheck')[0].scrollIntoView({
