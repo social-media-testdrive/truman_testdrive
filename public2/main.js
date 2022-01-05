@@ -273,7 +273,7 @@ $(window).on("load", function() {
                     }
                     // Special Case: When a user clicks "Let's Continue" in the digfoot, esteem, targeted module, but has not clicked on any post
                     // prompt the user: "It seems you did not click on any posts to ... Are you sure you do not want to click on a post before continuing?"
-                } else if (pathArray[2] === "digfoot" || pathArray[2] === "esteem" || pathArray[2] === "targeted") {
+                } else if (pathArray[2] === "digfoot" || pathArray[2] === "esteem" || pathArray[2] === "targeted" || pathArray[2] === "cyberbullying") {
                     if (!clickPost && $('#confirmContinueCheck').is(":hidden")) {
                         $('#confirmContinueCheck').show()
                         $('#confirmContinueCheck')[0].scrollIntoView({
