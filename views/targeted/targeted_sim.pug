@@ -349,9 +349,12 @@ block content
             img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
-                    
-    br
-
+    .ui.message.warning.hidden#confirmContinueCheck
+      .ui.header 
+        | It seems you did not click the three dots on any of the ads.
+        br 
+        br
+        | Are you sure you do not want to try clicking them before continuing?
     button.ui.big.labeled.icon.button.cybertrans#cyberTransButton
         i.rocket.icon
         |   Let's Continue!
