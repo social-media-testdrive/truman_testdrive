@@ -5,104 +5,104 @@ const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/User');
 
 passport.serializeUser((user, done) => {
-  done(null, user.id);
+    done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
-  User.findById(id, (err, user) => {
-    done(err, user);
-  });
+    User.findById(id, (err, user) => {
+        done(err, user);
+    });
 });
 
 /*
-* Sign in as a student with username.
-*/
+ * Sign in as a student with username.
+ */
 
 passport.use('student-local', new LocalStrategy({
-  usernameField: 'username',
-  passwordField: 'username',
-  passReqToCallback: true
+    usernameField: 'username',
+    passwordField: 'username',
+    passReqToCallback: true
 }, (req, username, password, done) => {
     User.findOne({
-      // search for username, case insensitive
-      username: {
-        $regex: '^'+username+'$', $options: 'i'
-      },
-      accessCode: req.body.accessCode,
-      deleted: false
-    })
-    .exec(function (err, user) {
-      if (err) {
-        return done(err);
-      }
-      if (!user) {
-        return done(null, false, { msg: 'Invalid username or login link.' });
-      }
+            // search for username, case insensitive
+            username: {
+                $regex: '^' + username + '$',
+                $options: 'i'
+            },
+            accessCode: req.body.accessCode,
+            deleted: false
+        })
+        .exec(function(err, user) {
+            if (err) {
+                return done(err);
+            }
+            if (!user) {
+                return done(null, false, { msg: 'Invalid username or login link.' });
+            }
 
-      // found user, log in complete
-      req.session.regenerate(function() {
-        return done(null, user);
-      });
-    });
+            // found user, log in complete
+            req.session.regenerate(function() {
+                return done(null, user);
+            });
+        });
 }));
 
 /*
-* Sign in as an instructor with username and password.
-*/
+ * Sign in as an instructor with username and password.
+ */
 
 passport.use('instructor-local', new LocalStrategy({
-  usernameField: 'instructor_username',
-  passwordField: 'instructor_password',
-  passReqToCallback: true
+    usernameField: 'instructor_username',
+    passwordField: 'instructor_password',
+    passReqToCallback: true
 }, (req, instructor_username, instructor_password, done) => {
-  User.findOne({ username: instructor_username }, async (err, user) => {
-    if (err) {
-      return done(err);
-    }
-    if (!user) {
-      return done(null, false, { msg: 'Invalid username or password.' });
-    }
-    user.comparePassword(instructor_password, async (err, isMatch) => {
-      if (err) {
-        return done(err);
-      }
-      if (isMatch) {
-        // log in
-        return done(null, user);
-      }
-      return done(null, false, { msg: 'Invalid username or password.' });
+    User.findOne({ username: instructor_username }, async(err, user) => {
+        if (err) {
+            return done(err);
+        }
+        if (!user) {
+            return done(null, false, { msg: 'Invalid username or password.' });
+        }
+        user.comparePassword(instructor_password, async(err, isMatch) => {
+            if (err) {
+                return done(err);
+            }
+            if (isMatch) {
+                // log in
+                return done(null, user);
+            }
+            return done(null, false, { msg: 'Invalid username or password.' });
+        });
     });
-  });
 }));
 
 /**
-* Login Required middleware.
-*/
+ * Login Required middleware.
+ */
 
 exports.isAuthenticated = (req, res, next) => {
-  const mod = req.path.split('/').slice(-1)[0];
-  const isResearchVersion = process.env.isResearchVersion === "true";
-  // if ((!isResearchVersion && (req.path === "/" || req.path.startsWith("/intro"))) || req.isAuthenticated()) {
-  if ((!isResearchVersion && req.path === "/") || req.isAuthenticated()) {
-    return next();
-  }
-  console.log(`Not authenticated for the following path: ${req.path}`)
-  // redirect to the appropriate if not authenticated
-  res.redirect(isResearchVersion ? '/login' : `/guest/${mod}`);
+    const isResearchVersion = process.env.isResearchVersion === "true";
+    // if ((!isResearchVersion && (req.path === "/" || req.path.startsWith("/intro"))) || req.isAuthenticated()) {
+    if ((!isResearchVersion && req.path === "/") || req.isAuthenticated()) {
+        return next();
+    }
+    console.log(`Not authenticated for the following path: ${req.path}`)
+        // redirect to the appropriate if not authenticated
+    res.redirect(isResearchVersion ? '/login' : `/guest/${mod}`);
 };
 
 /**
-* Authorization Required middleware.
-*/
+ * Authorization Required middleware.
+ */
 
 exports.isAuthorized = (req, res, next) => {
-  const provider = req.path.split('/').slice(-1)[0];
-  const token = req.user.tokens.find(token => token.kind === provider);
-  if (token) {
-    next();
-  } else {
-    res.redirect(`/auth/${provider}`);
-  }
+    const provider = req.path.split('/').slice(-1)[0];
+    const token = req.user.tokens.find(token => token.kind === provider);
+    if (token) {
+        next();
+    } else {
+        res.redirect(`/auth/${provider}`);
+    }
 };
 
 /**

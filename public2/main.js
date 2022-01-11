@@ -29,8 +29,10 @@ $(window).on("load", function() {
 
 
     const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
+    const isResearchVersion = $('meta[name="isResearchVersion"]').attr('content') === "true";
     // Record the current page if data collection is enabled
-    if (enableDataCollection) {
+    // AND if it's not the home page for the public site (because prior to clicking a module card, no "guest" account has been created to log pageLog to)
+    if (enableDataCollection && !(!isResearchVersion && window.location.pathname === "/")) {
         let pathArray = window.location.pathname.split('/');
         $.post("/pageLog", {
             subdirectory1: pathArray[1],
