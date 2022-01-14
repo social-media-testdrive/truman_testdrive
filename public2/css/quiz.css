@@ -40,6 +40,10 @@ i.icon.hidden {
     font-weight: 400;
 }
 
+.underline {
+    text-decoration: underline;
+}
+
 .inline.bold {
     display: inline;
     font-weight: bold

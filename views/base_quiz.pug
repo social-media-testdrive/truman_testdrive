@@ -29,7 +29,7 @@ block content
           .ui.basic.segment.noPadding.quizPromptSegment.hidden(class=questionNumber)
               .ui.label.resultsPromptLabel
                 h4.quizRadioPrompt(data-questionNumber=questionNumber)
-                  | #{questionInfo.prompt}
+                  | !{questionInfo.prompt.replace(/<span class = 'underline'>/g, '<span class = "underline">').replace(/<\/span>/g, '</span>')}
               .ui.form
                 br
                 each optionText, optionNumber in questionInfo.radioLabels
@@ -38,8 +38,8 @@ block content
                       .radio.checkbox
                         input(type='radio', value=optionNumber, name=questionNumber, tabindex='0')
                         label 
-                          | &nbsp; #{optionLabelDictionary[optionNumber]} &nbsp; 
-                          | #{optionText}
+                          | &nbsp; #{optionLabelDictionary[optionNumber]} &nbsp;
+                          | !{optionText.replace(/<span class = 'inline bold underline'>/g, '<span class = "inline bold underline">').replace(/<\/span>/g, '</span>')}
               h4.ui.header.feedBack.hidden
                 i.icon.times.red.hidden
                 i.icon.check.green.hidden

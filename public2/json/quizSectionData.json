@@ -141,10 +141,10 @@
             "type": "radio",
             "prompt": "Imagine that you see the following message in your social media: \"Recent COVID vaccines caused heart attack. Please stop getting vaccines and share this news immediately\". You feel it would be important to share the message. Is it OK to share it?",
             "radioLabels": {
-                "0": "It's OK to share the message because it says, \"Please share immediately.\"",
-                "1": "It's OK to share the message because it looks official and you want others to protect themselves from the side effects of vaccines.",
-                "2": "It's NOT OK to share the message because you're not sure it's true.",
-                "3": "It's NOT OK to share the message because it’s safer to wait till more people share it first.",
+                "0": "It's <span class = 'inline bold underline'>OK</span> to share the message because it says, \"Please share immediately.\"",
+                "1": "It's <span class = 'inline bold underline'>OK</span> to share the message because it looks official and you want others to protect themselves from the side effects of vaccines.",
+                "2": "It's <span class = 'inline bold underline'>NOT OK</span> to share the message because you're not sure it's true.",
+                "3": "It's <span class = 'inline bold underline'>NOT OK</span> to share the message because it’s safer to wait till more people share it first.",
                 "4": "I don’t know."
             },
             "responseRequirement": "any",
@@ -153,10 +153,304 @@
             "explanation": "<span class = 'inline bold green'>C is correct: If you are not sure if the news is true or not, never share it.</span> \n<span class = 'inline bold'>A and B are incorrect:</span> Before we share any news on social media, be sure to fact check to make sure the information is trustworthy so that you won’t spread false information. If you are not sure if the news is true or not, never share it. Even if the message looks urgent and looks official, it might still be fake news. \n<span class = 'inline bold'>D is incorrect:</span> Even if a lot of people share the news on social media, it doesn’t guarantee the information is true, always double check with other reliable sources to make sure the information is trustworthy."
         }
     },
-    "cyberbullying": {},
-    "digfoot": {},
-    "digital-literacy": {},
-    "esteem": {},
+    "cyberbullying": {
+        "Q1": {
+            "type": "radio",
+            "prompt": "Cyberbullying is a very problematic behavior that can cause severe harm to the victim.",
+            "radioLabels": {
+                "0": "True",
+                "1": "False",
+                "2": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "0",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>A is correct:  Cyberbullying can affect the victim very severely. Harmful words and posts can cause a lot of hurt and pain for the victim of cyberbullying.\n</span>"
+        },
+        "Q2": {
+            "type": "radio",
+            "prompt": "What is cyberbullying?",
+            "radioLabels": {
+                "0": "Cyberbullying is when someone posts or shares negative things about someone else online.",
+                "1": "Cyberbullying is a video game that can be played by several players at the same time.",
+                "2": "Cyberbullying is when someone treats someone else badly or mocks someone else at school.",
+                "3": "Cyberbullying is a crime where scammers try to steal your private information.",
+                "4": "I don't know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "0",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>A is correct: Cyberbullying is when a person posts or shares negative information about another person online.</span> \n<span class = 'inline bold'>B is incorrect:</span> Cyberbullying is not a video game, although players may bully others in video games. \n<span class = 'inline bold'>C is incorrect:</span> Cyberbullying always happens online, although people can go online using mobile devices at school. \n<span class = 'inline bold'>D is incorrect:</span> It is called phishing when scammers try to steal your private information, not cyberbullying."
+        },
+        "Q3": {
+            "type": "radio",
+            "prompt": "A bully is someone who hurts another person on purpose.",
+            "radioLabels": {
+                "0": "True",
+                "1": "False",
+                "2": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "0",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>A is correct: A bully is someone who hurts a person or a group on purpose more than once.</span>"
+        },
+        "Q4": {
+            "type": "radio",
+            "prompt": "Which of the following people can be considered an upstander?",
+            "radioLabels": {
+                "0": "A person who sees a cyberbullying incident.",
+                "1": "A person who bullies another person.",
+                "2": "The person being bullied.",
+                "3": "A person who confronts the bully.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "3",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>D is correct: An upstander is someone who acts against the bully.</span> \n<span class = 'inline bold'>A is incorrect:</span> An upstander has to be someone who takes action after seeing an incident. \n<span class = 'inline bold'>B is incorrect:</span> Upstanders act against the bully. \n<span class = 'inline bold'>C is incorrect:</span> The person being bullied is considered a target or the victim of cyberbullying."
+        },
+        "Q5": {
+            "type": "radio",
+            "prompt": "On Instagram, Michael keeps on making fun of Sarah in his stories. Because those stories are deleted after a while, it is hard to flag them or reply to them. What could you do to be an upstander?",
+            "radioLabels": {
+                "0": "Nothing, because the stories have been deleted.",
+                "1": "You can post a story to make fun of Michael on your own Instagram page.",
+                "2": "You can delete Michael’s story. You just have to find the right button.",
+                "3": "You should tell a trusted adult about Michael’s behavior.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "3",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>D is correct: Telling a trusted adult can be a safe way to take action and be an upstander.</span> \n<span class = 'inline bold'>A is incorrect:</span> Even though it is deleted, other people may have screenshots of the story or have already seen them. \n<span class = 'inline bold'>B is incorrect:</span> If you post a story to make fun of Michael, you would be participating in cyberbullying. Upstanders do not bully other people in return. \n<span class = 'inline bold'>C is incorrect:</span> You are unable to delete someone else’s story."
+        }
+    },
+    "digfoot": {
+        "Q1": {
+            "type": "radio",
+            "prompt": "Sharing private photos on Instagram is not a problem. Nothing bad ever happens.",
+            "radioLabels": {
+                "0": "True",
+                "1": "False",
+                "2": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "1",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>B is correct: Sharing private photos is permanent and adds to your digital footprint, which includes any information you share about yourself and any posts you have created. So, it is important to be careful when sharing photos on social media.\n</span>"
+        },
+        "Q2": {
+            "type": "radio",
+            "prompt": "Which of the following is safe to share online?",
+            "radioLabels": {
+                "0": "Your address and phone number.",
+                "1": "The name of the school you go to.",
+                "2": "Your favorite animal.",
+                "3": "Your first and last name.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "2",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>C is correct: Your favorite animal is safe to share since it is most likely cannot be traced back to you. A lot of people may like the same animal.</span> \n<span class = 'inline bold'>A is incorrect:</span> This is unsafe to share online, since what you post can be permanent and visible to people you do not trust. \n<span class = 'inline bold'>B is incorrect:</span> The name of your school is unsafe to share since it can be used to identify you. \n<span class = 'inline bold'>D is incorrect:</span> IYour first and last name should not be shared online since it may be visible to people who may use that information for unsafe and illegal purposes."
+        },
+        "Q3": {
+            "type": "radio",
+            "prompt": "It is important to think about who might have access to the things you share online.",
+            "radioLabels": {
+                "0": "True",
+                "1": "False",
+                "2": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "0",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>A is correct:  It is important to think about who has access to what you share since you only want people you trust and know in real life to see what you post and share online.  </span>"
+        },
+        "Q4": {
+            "type": "radio",
+            "prompt": "You are registering an account to play a video game. The game website asks you to fill in a lot of personal information. What information should you <span class = 'underline'>NOT</span> give out?",
+            "radioLabels": {
+                "0": "Your nickname.",
+                "1": "Your favorite food.",
+                "2": "Your phone number.",
+                "3": "Your favorite video game.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "2",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>C is correct: Your phone number is unsafe to give out since it can lead to scam calls and strangers trying to talk to you on the phone.</span> \n<span class = 'inline bold'>A is incorrect:</span> Your nickname is safe to give out, when it does not contain personal information. \n<span class = 'inline bold'>B is incorrect:</span> Your favorite food is safe to share since it is not personal information. \n<span class = 'inline bold'>D is incorrect:</span> Your favorite food is safe to share since it is not personal information."
+        },
+        "Q5": {
+            "type": "radio",
+            "prompt": "Priya and Chloe went to a concert last weekend and took pictures with a group of people they met. In some of the pictures, their new friends were making rude gestures. Priya wants to post these pictures on social media. Why should she be careful in deciding which pictures she posts?",
+            "radioLabels": {
+                "0": "She may not know how to connect to the accounts of her new friends.",
+                "1": "Posting the pictures might affect the digital footprints of her new friends.",
+                "2": "The pictures could use a better filter.",
+                "3": "Priya could be cyberbullied by Chloe if she posts the pictures.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "1",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>B is correct: Priya should be careful since she has a responsibility to think about her friends’ digital footprints. She should not post embarrassing pictures of her friends online.</span> \n<span class = 'inline bold'>A is incorrect:</span> Even if the accounts are not connected to the post, the photos can still be traced back to her friends. This means that the pictures would become a part of her friends’ digital footprints. \n<span class = 'inline bold'>C is incorrect:</span> The pictures could still be embarrassing even with a better filter. Priya should not post embarrassing photos of her friends because it adds to their digital footprint and can negatively affect their reputation. \n<span class = 'inline bold'>D is incorrect:</span> People will not cyberbully you just because you posted a photo with them. "
+        }
+    },
+    "digital-literacy": {
+        "Q1": {
+            "type": "radio",
+            "prompt": "It is important to check the source, which is the website, organization, or person who published the article.",
+            "radioLabels": {
+                "0": "True",
+                "1": "False",
+                "2": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "0",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>A is correct: Checking the source is a good way to determine the credibility or trustworthiness of an article.</span>"
+        },
+        "Q2": {
+            "type": "radio",
+            "prompt": "If you come across articles that are proven to be fake news, what you should <span class = 'underline'>NOT</span> do?",
+            "radioLabels": {
+                "0": "Flag it.",
+                "1": "Share it.",
+                "2": "Report it.",
+                "3": "Dislike it.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "1",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>B is correct: You should not share articles that are proven to be fake news, as you would be spreading false information.</span> \n<span class = 'inline bold'>A is incorrect:</span> You should flag fake news articles as this will help admins of the site review the site and potentially take it down. \n<span class = 'inline bold'>C is incorrect:</span> You should report fake news articles since that may result in it being taken down from the site. \n<span class = 'inline bold'>D is incorrect:</span> You should dislike fake news articles since dislikes might prevent the article from appearing as much on the site."
+        },
+        "Q3": {
+            "type": "radio",
+            "prompt": "What should you do when trying to decide whether a news article is trustworthy?",
+            "radioLabels": {
+                "0": "Share the article on social media before reading it.",
+                "1": "Read the article and try to fact-check the information in the article.",
+                "2": "Trust that the writer of the article is telling the truth.",
+                "3": "Ignore the article if you think the author might be biased.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "1",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>B is correct: It is always a good idea to fact-check what you read in articles with fact checking websites (ex: FactCheck.org) or major news websites.</span> \n<span class = 'inline bold'>A is incorrect:</span> You should not share articles on your social media accounts before determining whether it is trustworthy or fake. \n<span class = 'inline bold'>C is incorrect:</span> You should not merely trust articles to be credible and trustworthy. \n<span class = 'inline bold'>D is incorrect:</span> Ignoring articles that seem biased will limit your sources of information, so it is best to check the source and fact-check rather than just ignoring it."
+        },
+        "Q4": {
+            "type": "radio",
+            "prompt": "Which of the following is a clue that something might be clickbait?",
+            "radioLabels": {
+                "0": "It cites credible sources in the title.",
+                "1": "It tries to shock you by using language like \"You Won't Believe This\"!",
+                "2": "It is about a celebrity or a popular topic.",
+                "3": "It is written by a famous journalist.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "1",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>B is correct: Fake news articles often use shocking and exaggerated headlines and images to get you to click on them. Often, the headline will try to make you curious and lure you like bait to click on it.</span> \n<span class = 'inline bold'>A is incorrect:</span> Credible sources are believable and trustworthy, so it is likely not clickbait. \n<span class = 'inline bold'>C is incorrect:</span> Not all articles regarding celebrities or popular topics are clickbait. \n<span class = 'inline bold'>D is incorrect:</span> An article being written by a famous journalist doesn’t automatically make it clickbait."
+        },
+        "Q5": {
+            "type": "radio",
+            "prompt": "Lea wants to find expert-recommended diets for weight loss online. She searched on Facebook and found an article titled \"Six surprising diets that will help you lose 20 pounds in ONE week, according to health experts that came from the website healthtips666.com.co\". What would you advise her to do?",
+            "radioLabels": {
+                "0": "Report this article because there are signs showing it’s fake news.",
+                "1": "Click into the article and find out whether it’s written by real health experts.",
+                "2": "Share this article on Facebook and ask her friends to check it out.",
+                "3": "Write a comment on the article asking people if they have tried the diet.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "0",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>A is correct: Lea should report the article because there are clear signs that it is fake news such as the fake website and the web address ending in 'com.co.' </span> \n<span class = 'inline bold'>B is incorrect:</span> The suspicious web address makes it clear that it is fake news, so Lea should not click into the article. \n<span class = 'inline bold'>C is incorrect:</span> You should not share a suspicious article on your social media accounts. You would potentially be sharing false information with your friends. \n<span class = 'inline bold'>D is incorrect:</span> Commenting on the article is not a good idea, as fake replies can be created. You should check other credible sites to fact-check instead."
+        }
+    },
+    "esteem": {
+        "Q1": {
+            "type": "radio",
+            "prompt": "Which of the following is a red flag feeling?",
+            "radioLabels": {
+                "0": "Feeling satisfied.",
+                "1": "Feeling uncomfortable.",
+                "2": " Feeling energetic.",
+                "3": "Feeling sleepy.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "1",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>B is correct: Feeling uncomfortable is one possible red flag feeling.</span> \n<span class = 'inline bold'>A is incorrect:</span> Feeling satisfied is unrelated to red flag feelings. \n<span class = 'inline bold'>C is incorrect:</span> Feeling energetic is unrelated to red flag feelings. \n<span class = 'inline bold'>D is incorrect:</span> Feeling sleepy is unrelated to red flag feelings."
+        },
+        "Q2": {
+            "type": "radio",
+            "prompt": "What is an example of having good media balance?",
+            "radioLabels": {
+                "0": "Get off social media and call friends to catch up.",
+                "1": "Get off social media and go playing basketball.",
+                "2": "Having hobbies that do not involve being online.",
+                "3": "All of the above.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "3",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>A is correct: Getting off social media and calling friends can help you balance your media usage with other activities you enjoy.\nB is also correct: Playing basketball is also an enjoyable activity that can help you have a good media balance, so you aren’t spending too much time on social media.\nC is also correct: It is important to have hobbies that aren’t online, so you aren’t spending too much time online, creating an imbalance.</span>"
+        },
+        "Q3": {
+            "type": "radio",
+            "prompt": "When Keisha sees her friend Chloe posts about a fun trip she had with her best friend, what red flag feeling might Keisha have?",
+            "radioLabels": {
+                "0": "Satisfaction",
+                "1": "Excitement",
+                "2": "Jealousy",
+                "3": "Curiosity",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "2",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>C is correct: Jealousy is a red flag feeling that may occur when you are on social media and see your friend post about having fun, when you weren’t there.</span> \n<span class = 'inline bold'>A is incorrect:</span> Satisfaction is a positive feeling and is not a red flag feeling. \n<span class = 'inline bold'>B is incorrect:</span> Excitement is a positive feeling and is not a red flag feeling. \n<span class = 'inline bold'>D is incorrect:</span> Curiosity is a positive feeling and is not a red flag feeling."
+        },
+        "Q4": {
+            "type": "radio",
+            "prompt": "Which of the following actions might help Keisha feel better about her friends taking a trip together that she did not know about?",
+            "radioLabels": {
+                "0": "Complain about it on her social media account.",
+                "1": "Stop talking to her friends on or off social media.",
+                "2": "Going on a trip with another friend and sharing about it on social media so her friends might also feel jealous.",
+                "3": "Take a pause from social media to calm down and then share her feelings with her friends privately.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "3",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>D is correct: Taking a pause from social media can help Keisha to think about how she’s feeling and what she can do to feel better.</span> \n<span class = 'inline bold'>A is incorrect:</span> Complaining about it may cause more misunderstandings between Keisha and her friends since social media is public. \n<span class = 'inline bold'>B is incorrect:</span> Not talking to her friends is not a good idea since Keisha is not addressing her red flag feelings. \n<span class = 'inline bold'>C is incorrect:</span> Posting about a trip with another friend is not a good idea since it is not kind to want to have other people feel red flag feelings."
+        },
+        "Q5": {
+            "type": "radio",
+            "prompt": "Karen saw a photo on Facebook that three of her best friends were hanging out without her, which made her very upset. Which of the following should Karen <span class = 'underline'>NOT</span> do?",
+            "radioLabels": {
+                "0": "Get off social media and hang out with family.",
+                "1": "Stay on social media and look to see if her friends post more photos.",
+                "2": "Go for a walk outside.",
+                "3": "Call her cousin and catch up.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "1",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>B is correct: Staying on social media is not a good idea, as it can create more red flag feelings.</span> \n<span class = 'inline bold'>A is incorrect:</span> Hanging out with family can be an enjoyable activity for Karen to take her mind off the Facebook posts. \n<span class = 'inline bold'>B is incorrect:</span> Going for a walk is a good idea, as it can reset Karen’s mind as she takes a pause from social media. \n<span class = 'inline bold'>D is incorrect:</span> Calling her cousin is a good option, as Karen can take a break from social media and have a good balance."
+        }
+    },
     "habits": {
         "Q1": {
             "type": "radio",
@@ -234,7 +528,83 @@
             "explanation": "<span class = 'inline bold green'>C is correct: Not receiving many reactions does not mean that people don’t like Lucy. People cannot like every single post they see.</span> \n<span class = 'inline bold'>A is incorrect:</span> Encouraging Lucy to post more may make her feel more disappointed if she still doesn’t receive reactions from others. \n<span class = 'inline bold'>B is incorrect:</span> Telling Lucy to delete her post may make her feel that people dislike her and make her feel bad about herself. \n<span class = 'inline bold'>D is incorrect:</span> Staying on social media all day long is unhealthy. She would develop an unbalanced social media habit."
         }
     },
-    "phishing": {},
+    "phishing": {
+        "Q1": {
+            "type": "radio",
+            "prompt": "When someone tries to trick you into sharing your password or personal information, that’s called _____.",
+            "radioLabels": {
+                "0": "Cyberbullying",
+                "1": "Encryption",
+                "2": "2-step verification",
+                "3": "Phishing",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "3",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>D is correct: Phishing is when someone tries to trick you into sharing important private information.</span> \n<span class = 'inline bold'>A is incorrect:</span> Cyberbullying is when a person posts or shares negative information about another person online.\n<span class = 'inline bold'>B is incorrect:</span> Encryption has to do with protecting your information with a password. \n<span class = 'inline bold'>C is incorrect:</span> 2-step verification is when you add an extra layer of security to protect your account when you log-in."
+        },
+        "Q2": {
+            "type": "radio",
+            "prompt": "What should you do if you have fallen for a phishing scam?",
+            "radioLabels": {
+                "0": "Change your password to the website immediately.",
+                "1": "Report to the website about the phishing scam.",
+                "2": "Tell a trusted adult so that they can help you.",
+                "3": "All of the above.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "3",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>D is correct: A, B, and C are all actions you should take if you fall for a phishing scam.</span>"
+        },
+        "Q3": {
+            "type": "radio",
+            "prompt": "You see a post on social media that says \"CLICK HERE to receive a free trial for our newest online multiplayer game! FREE subscription to everyone who clicks!\" What should you do?",
+            "radioLabels": {
+                "0": "Click on the link.",
+                "1": "Click on the link and then send the link to your friends.",
+                "2": "Ask your gamer friend if this is real or not.",
+                "3": "Ignore the post.",
+                "4": "I don't know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "3",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>D is correct: Ignoring the post is a good idea to protect your information from scammers.</span> \n<span class = 'inline bold'>A is incorrect:</span> It is not a good idea to click on a suspicious post. Scammers often offer free items or giveaways to trick people into clicking. \n<span class = 'inline bold'>B is incorrect:</span> Sharing a suspicious link that may be a scam is not a good idea, since your friends may get phished or scammed. \n<span class = 'inline bold'>C is incorrect:</span> Your gamer friend may not be the best person to ask. A trusted adult would be a better person to ask advice from."
+        },
+        "Q4": {
+            "type": "radio",
+            "prompt": "You see a contest that reads \"Win $10,000 instantly! Click this link to sign up!\" You click on the link, and the website asks for your name, address, and email to enter the contest. What should you do?",
+            "radioLabels": {
+                "0": "Put in fake personal information.",
+                "1": "Don’t give any personal information. Because someone could steal your information to create a fake identity pretending to be you.",
+                "2": "Put in your personal information, because you’ll have the chance to win a lot of money.",
+                "3": "Post the link on your Facebook page and ask your friend to sign up for the contest.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "1",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>B is correct: Not giving away any personal information is the safest option since your personal information can be stolen by scammers.</span> \n<span class = 'inline bold'>A is incorrect:</span> Putting in fake information is not safe as well since they could be tracking your location and the website may have unsafe links. \n<span class = 'inline bold'>C is incorrect:</span> It is not safe to give away your personal information as someone can steal your identity. \n<span class = 'inline bold'>D is incorrect:</span> Sharing the link to your facebook page is not a good idea since your friends can also have their information stolen."
+        },
+        "Q5": {
+            "type": "radio",
+            "prompt": "Your friend Jane sends you an email asking you to send her your address. But somehow the email doesn’t sound like Jane at all. Which of the following actions is unsafe?",
+            "radioLabels": {
+                "0": "Ask Jane whether she actually sent the email.",
+                "1": "Ask a trusted adult what to do next.",
+                "2": "Don’t worry too much, just give her your address.",
+                "3": "Don’t respond to the email.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "2",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>C is correct: It is not safe to give her your information, scammers can pretend to be your friend and even send emails from Jane’s account.</span> \n<span class = 'inline bold'>A is incorrect:</span> It is a good idea to confirm with Jane. \n<span class = 'inline bold'>B is incorrect:</span> A trusted adult can give you helpful advice. \n<span class = 'inline bold'>D is incorrect:</span> Responding can lead to dangerous situations where your information may be stolen."
+        }
+    },
     "presentation": {
         "Q1": {
             "type": "radio",
@@ -466,5 +836,77 @@
             "explanation": "<span class = 'inline bold green'>B is correct: Your friend should delete the message, so less people will see it. Sharing a phone number is not safe, and people may use it with bad intentions.</span> \n<span class = 'inline bold'>A is incorrect:</span> You should not share your number, and then tell your friend it’ s not safe to share private information with the entire school. \n<span class = 'inline bold'>C is incorrect:</span> The number of replies is important to know how many people have your friend’ s number, but you should also tell your friend not to share their private information. \n<span class = 'inline bold'>D is incorrect:</span> You should not encourage your friend to share private information.It is also dangerous for everyone to send their phone numbers in the group chat."
         }
     },
-    "targeted": {}
+    "targeted": {
+        "Q1": {
+            "type": "radio",
+            "prompt": "What is a \"targeted advertisement\"?",
+            "radioLabels": {
+                "0": "It means companies are collecting information about you and using it to show you ads for things that you like.",
+                "1": "It means companies are making advertisements very entertaining.",
+                "2": "It means advertisements shown on large billboards next to highways.",
+                "3": "It is just another term for all advertisements on the Internet.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "0",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>A is correct:  Companies collect data (your visited sites, clicks, etc.)  about you, so they can show you ads for things that they think you will like.</span> \n<span class = 'inline bold'>B is incorrect:</span> What is entertaining is different for each person, so companies must collect data to see what each person finds entertaining and what they might like. \n</span> <span class = 'inline bold'>C is incorrect:</span> Large billboards are not targeted advertisements. \n</span> <span class = 'inline bold'>D is incorrect:</span> Targeted advertisements refer to the specific advertisements that certain apps and sites show you, not all advertisements on the Internet."
+        },
+        "Q2": {
+            "type": "radio",
+            "prompt": "Advertisements on social media are based on your preferences.",
+            "radioLabels": {
+                "0": "True",
+                "1": "False",
+                "2": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "0",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>A is correct: Advertisements on social media are based on data that companies have collected about you, to see what you might prefer.</span> "
+        },
+        "Q3": {
+            "type": "radio",
+            "prompt": "Companies collect all sorts of data about you online to show you targeted advertisements, even though you may not realize it.",
+            "radioLabels": {
+                "0": "True",
+                "1": "False",
+                "2": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "0",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>A is correct: Companies want to show you ads of products you might like, so they collect data about you. But you may not realize your data is being collected such as your clicks on websites and apps.</span>"
+        },
+        "Q4": {
+            "type": "radio",
+            "prompt": "What is a “sponsored” post on a social media site?",
+            "radioLabels": {
+                "0": "It is a post that is particularly interesting.",
+                "1": "It is a post that has a lot of likes.",
+                "2": "It is a post that is paid for by a company.",
+                "3": "It is a post from a very popular user.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "2",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>C is correct: Companies pay for “sponsored” posts on social media to advertise their product, but they look a lot like posts from the average person.</span> \n<span class = 'inline bold'>A is incorrect:</span> Posts can be interesting without being a sponsored post. \n<span class = 'inline bold'>B is incorrect:</span> Social media influencers and celebrities can receive lots of likes on their posts even if the posts are not sponsored. \n<span class = 'inline bold'>D is incorrect:</span> Not all sponsored posts are from very popular users."
+        },
+        "Q5": {
+            "type": "radio",
+            "prompt": "Jeremy was looking for new shoes on an online shopping website yesterday. Today, he saw ads for the type of shoes he likes on his Facebook page. What could Jeremy do to prevent these ads from targeting him?",
+            "radioLabels": {
+                "0": "Look for different types of shoes online.",
+                "1": "Turn off the cookies in his web browser.",
+                "2": "Like the ads on his Facebook page.",
+                "3": "Turn off his phone.",
+                "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "1",
+            "files": [""],
+            "explanation": "<span class = 'inline bold green'>B is correct: Cookies are used to identify your device and track your behavior on websites. Turning off cookies in the web browser makes the companies unable to track your behaviors, so it may help prevent targeted advertisements.</span> \n<span class = 'inline bold'>A is incorrect:</span> Looking for different types of shoes may lead to more ads appearing on his Facebook page as his behavior may be tracked by cookies. \n<span class = 'inline bold'>C is incorrect:</span> Liking ads may result in more targeted ads since likes may be tracked as part of data that companies collect. \n<span class = 'inline bold'>D is incorrect:</span> Turning off his phone would help him to not see ads when the phone is off. But when Jeremy turns on his phone to use it, the ads will likely reappear."
+        }
+    }
 }
