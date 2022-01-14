@@ -600,6 +600,7 @@ if (enableDataCollection) {
     app.post('/bluedot', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postBlueDotAction);
     app.post('/reflection', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postReflectionAction);
     app.post('/moduleProgress', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, userController.postUpdateModuleProgress);
+    app.post('/accountsAction', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postAccountsAction);
 }
 
 /*
@@ -697,45 +698,45 @@ if (enableLearnerDashboard) {
 //     // test development site: N/A
 //     app.use(errorHandler());
 // } else {
-    // error handler
-    app.use(function(err, req, res, next) {
-        // No routes handled the request and no system error, that means 404 issue.
-        // Forward to next middleware to handle it.
-        if (!err) return next();
+// error handler
+app.use(function(err, req, res, next) {
+    // No routes handled the request and no system error, that means 404 issue.
+    // Forward to next middleware to handle it.
+    if (!err) return next();
 
-        console.error(err);
+    console.error(err);
 
-        // set locals, only providing error stack and message in development
-        // Express app.get('env') returns 'development' if NODE_ENV is not defined
-        err.status = err.status || 500;
-        err.stack = req.app.get('env') === 'development' ? err.stack : '';
-        err.message = req.app.get('env') === 'development' ? err.message : " Oops! Something went wrong.";
+    // set locals, only providing error stack and message in development
+    // Express app.get('env') returns 'development' if NODE_ENV is not defined
+    err.status = err.status || 500;
+    err.stack = req.app.get('env') === 'development' ? err.stack : '';
+    err.message = req.app.get('env') === 'development' ? err.message : " Oops! Something went wrong.";
 
-        res.locals.message = err.message;
-        res.locals.error = err;
+    res.locals.message = err.message;
+    res.locals.error = err;
 
-        // render the error page
-        res.status(err.status);
-        res.render('error');
-    });
+    // render the error page
+    res.status(err.status);
+    res.render('error');
+});
 
-    // catch 404. 404 should be considered as a default behavior, not a system error.
-    app.use(function(req, res, next) {
-        var err = new Error('Page Not Found.');
-        err.status = 404;
+// catch 404. 404 should be considered as a default behavior, not a system error.
+app.use(function(req, res, next) {
+    var err = new Error('Page Not Found.');
+    err.status = 404;
 
-        console.log(err);
+    console.log(err);
 
-        // set locals, only providing error stack in development
-        err.stack = req.app.get('env') === 'development' ? err.stack : '';
+    // set locals, only providing error stack in development
+    err.stack = req.app.get('env') === 'development' ? err.stack : '';
 
-        res.locals.message = err.message + " Oops! We can't seem to find the page you're looking for.";
-        res.locals.error = err;
+    res.locals.message = err.message + " Oops! We can't seem to find the page you're looking for.";
+    res.locals.error = err;
 
-        // render the error page
-        res.status(err.status);
-        res.render('error');
-    });
+    // render the error page
+    res.status(err.status);
+    res.render('error');
+});
 // }
 
 /*

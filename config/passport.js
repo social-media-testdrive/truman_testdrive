@@ -81,6 +81,7 @@ passport.use('instructor-local', new LocalStrategy({
  */
 
 exports.isAuthenticated = (req, res, next) => {
+    const mod = req.path.split('/').slice(-1)[0];
     const isResearchVersion = process.env.isResearchVersion === "true";
     // if ((!isResearchVersion && (req.path === "/" || req.path.startsWith("/intro"))) || req.isAuthenticated()) {
     if ((!isResearchVersion && req.path === "/") || req.isAuthenticated()) {

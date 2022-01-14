@@ -789,3 +789,45 @@ exports.postBlueDotAction = (req, res, next) => {
         });
     });
 };
+
+/*
+ * POST /accountsAction
+ * Update an accounts action, unique to accounts module only
+ * Used only in the sim section for now, to record responses to input fields
+ * TODO: This function should probably be moved to the user controller.
+ */
+exports.postAccountsAction = (req, res, next) => {
+
+    User.findById(req.user.id, (err, user) => {
+
+        // somehow user does not exist here
+        if (err) {
+            return next(err);
+        }
+
+        // Define the push location
+        let userAction = user.accountsAction;
+
+        //Post does not exist yet in User DB, so we have to add it now
+        let cat = new Object();
+        cat = req.body.action;
+        // add new post into correct location
+        userAction.push(cat);
+
+        // save to DB
+        user.save((err) => {
+            if (err) {
+                if (err.code === 11000) {
+                    req.flash('errors', {
+                        msg: 'Something in reflectionAction went crazy. You should never see this.'
+                    });
+                    return res.redirect('/');
+                }
+                return next(err);
+            }
+            res.send({
+                result: "success"
+            });
+        });
+    });
+};

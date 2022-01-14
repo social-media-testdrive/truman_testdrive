@@ -259,10 +259,13 @@ $(window).on("load", function() {
         .on('click', function(e) {
             if ($(this).hasClass('green')) {
                 let pathArray = window.location.pathname.split('/');
+                if (typeof customOnClickGreenContinue !== 'undefined') {
+                    customOnClickGreenContinue();
+                };
                 // Special Case: When a user clicks "Let's Continue" in the accounts module, but has not completed any profile fields
                 // prompt the user: "It seems you did not fill out any profile information fields. Are you sure you would like to continue? "
                 if (pathArray[2] === "accounts") {
-                    if ($('#input').val() === "" && $('input[name="profilePhoto"]').val() === 'avatar-icon.svg') {
+                    if ($('input[type=text], textarea[type=text]').filter(function() { return $(this).val() == ""; }).length === 6 && $('input[name="profilePhoto"]').val() === 'avatar-icon.svg') {
                         if ($('#confirmContinueCheck').is(":hidden")) {
                             $('#confirmContinueCheck').show();
                             $('#confirmContinueCheck')[0].scrollIntoView({
@@ -271,25 +274,25 @@ $(window).on("load", function() {
                                 inline: "nearest" // defines horizontal alignment
                             });;
                             return;
-                        }
-                    }
+                        };
+                    };
                     // Special Case: When a user clicks "Let's Continue" in the digfoot, esteem, targeted module, but has not clicked on any post
                     // prompt the user: "It seems you did not click on any posts to ... Are you sure you do not want to click on a post before continuing?"
                 } else if (pathArray[2] === "digfoot" || pathArray[2] === "esteem" || pathArray[2] === "targeted" || pathArray[2] === "cyberbullying") {
                     if (!clickPost && $('#confirmContinueCheck').is(":hidden")) {
-                        $('#confirmContinueCheck').show()
+                        $('#confirmContinueCheck').show();
                         $('#confirmContinueCheck')[0].scrollIntoView({
                             behavior: "smooth", // or "auto" or "instant"
                             block: "center", // defines vertical alignment
                             inline: "nearest" // defines horizontal alignment
                         });;
                         return;
-                    }
-                }
+                    };
+                };
                 window.location.href = '/trans/' + pathArray[2];
             } else {
                 e.preventDefault();
-            }
+            };
         });
 
     //cyberbullying to transition 2
@@ -366,6 +369,9 @@ $(window).on("load", function() {
     //To sim2
     $(document).on('click', '.ui.big.labeled.icon.button.cybersim2.green', function() {
         let pathArray = window.location.pathname.split('/');
+        if (typeof customOnClickGreenContinue !== 'undefined') {
+            customOnClickGreenContinue();
+        }
         // Special Case: When a user clicks "Let's Continue" in the accounts module, but has a Very Weak or Weak password,
         // prompt the user: "This password seems weak and easy to guess, are you sure you want to use it?"
         if (pathArray[2] === "accounts") {
