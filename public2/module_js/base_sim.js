@@ -190,6 +190,7 @@ function startIntro(enableDataCollection) {
         'hidePrev': true,
         'hideNext': true,
         'exitOnOverlayClick': false,
+        'exitOnEsc': false,
         'showStepNumbers': false,
         'showBullets': false,
         'scrollToElement': true,
