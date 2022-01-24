@@ -120,7 +120,7 @@
             "responseRequirement": "any",
             "correctResponse": "3",
             "files": [""],
-            "explanation": "<span class = 'inline bold green'>A is correct: When we do fact checking on a breaking news article, we should check the source of information of that article to see if it comes from reliable sources. \nB is correct: To decide whether an article is trustworthy or not, we need to read the whole article and see whether it’s a news piece (something that actually happened) or simply the author’s opinions on something happened, since opinions can be inaccurate. \nC is also correct: it’s also important to search online and find other reliable sources that confirm the same story.</span>"
+            "explanation": "<span class = 'inline bold green'>A is correct: When we do fact checking on a breaking news article, we should check the source of information of that article to see if it comes from reliable sources. \nB is correct: To decide whether an article is trustworthy or not, we need to read the whole article and see whether it’s a news piece (something that actually happened) or simply the author’s opinions on something that happened, since opinions can be inaccurate. \nC is also correct: It’s also important to search online and find other reliable sources that confirm the same story.</span>"
         },
         "Q4": {
             "type": "radio",
@@ -135,7 +135,7 @@
             "responseRequirement": "any",
             "correctResponse": "2",
             "files": [""],
-            "explanation": "<span class = 'inline bold green'>C is correct: It is the correct way for fact checking.</span> \n<span class = 'inline bold'>A is incorrect:</span> we shouldn’t share breaking news with anyone before we fact check to make sure that the news is trustworthy. \n<span class = 'inline bold'>B is incorrect:</span> If we found that the news is indeed trustworthy after fact checking, we shouldn’t flag the article and report it as false information. \n<span class = 'inline bold'>D is incorrect:</span> Checking with friends to decide whether a news article is trustworthy is not recommended, because friends may not have the correct information, in other words, friends are not the most reliable source for fact checking."
+            "explanation": "<span class = 'inline bold green'>C is correct: It is the correct way for fact checking.</span> \n<span class = 'inline bold'>A is incorrect:</span> We shouldn’t share breaking news with anyone before we fact check to make sure that the news is trustworthy. \n<span class = 'inline bold'>B is incorrect:</span> If we found that the news is indeed trustworthy after fact checking, we shouldn’t flag the article and report it as false information. \n<span class = 'inline bold'>D is incorrect:</span> Checking with friends to decide whether a news article is trustworthy is not recommended, because friends may not have the correct information. In other words, friends are not the most reliable source for fact checking."
         },
         "Q5": {
             "type": "radio",
@@ -150,7 +150,7 @@
             "responseRequirement": "any",
             "correctResponse": "2",
             "files": [""],
-            "explanation": "<span class = 'inline bold green'>C is correct: If you are not sure if the news is true or not, never share it.</span> \n<span class = 'inline bold'>A and B are incorrect:</span> Before we share any news on social media, be sure to fact check to make sure the information is trustworthy so that you won’t spread false information. If you are not sure if the news is true or not, never share it. Even if the message looks urgent and looks official, it might still be fake news. \n<span class = 'inline bold'>D is incorrect:</span> Even if a lot of people share the news on social media, it doesn’t guarantee the information is true, always double check with other reliable sources to make sure the information is trustworthy."
+            "explanation": "<span class = 'inline bold green'>C is correct: If you are not sure if the news is true or not, never share it.</span> \n<span class = 'inline bold'>A and B are incorrect:</span> Before we share any news on social media, be sure to fact check to make sure the information is trustworthy so that you won’t spread false information. If you are not sure if the news is true or not, never share it. Even if the message looks urgent and looks official, it might still be fake news. \n<span class = 'inline bold'>D is incorrect:</span> Even if a lot of people share the news on social media, it doesn’t guarantee the information is true. Always double check with other reliable sources to make sure the information is trustworthy."
         }
     },
     "cyberbullying": {
@@ -223,7 +223,7 @@
             "responseRequirement": "any",
             "correctResponse": "3",
             "files": [""],
-            "explanation": "<span class = 'inline bold green'>D is correct: Telling a trusted adult can be a safe way to take action and be an upstander.</span> \n<span class = 'inline bold'>A is incorrect:</span> Even though it is deleted, other people may have screenshots of the story or have already seen them. \n<span class = 'inline bold'>B is incorrect:</span> If you post a story to make fun of Michael, you would be participating in cyberbullying. Upstanders do not bully other people in return. \n<span class = 'inline bold'>C is incorrect:</span> You are unable to delete someone else’s story."
+            "explanation": "<span class = 'inline bold green'>D is correct: Telling a trusted adult can be a safe way to take action and be an upstander.</span> \n<span class = 'inline bold'>A is incorrect:</span> Even though it is deleted, other people may have already seen the story or have screenshots of it. \n<span class = 'inline bold'>B is incorrect:</span> If you post a story to make fun of Michael, you would be participating in cyberbullying. Upstanders do not bully other people in return. \n<span class = 'inline bold'>C is incorrect:</span> You are unable to delete someone else’s story."
         }
     },
     "digfoot": {
@@ -465,7 +465,7 @@
             "responseRequirement": "any",
             "correctResponse": "2",
             "files": [""],
-            "explanation": "<span class = 'inline bold green'>C is correct: Social media is taking up too much time when it is distracting you from important tasks.</span> \n<span class = 'inline bold'>A is incorrect:</span> Setting the number of minutes for social media will help you better manage how much time you spend on social media. \n<span class = 'inline bold'>B is incorrect:</span> Using social media to share resources and fun activities with friends is a healthy way to use social media. \n<span class = 'inline bold'>D is incorrect:</span> Turning off notifications when you need to concentrate on homework will prevent you spending too much time on social media."
+            "explanation": "<span class = 'inline bold green'>C is correct: Social media is taking up too much time when it is distracting you from important tasks.</span> \n<span class = 'inline bold'>A is incorrect:</span> Setting the number of minutes for social media will help you better manage how much time you spend on social media. \n<span class = 'inline bold'>B is incorrect:</span> Using social media to share resources and fun activities with friends is a healthy way to use social media. \n<span class = 'inline bold'>D is incorrect:</span> Turning off notifications when you need to concentrate on homework will prevent you from spending too much time on social media."
         },
         "Q2": {
             "type": "radio",
@@ -833,7 +833,7 @@
             "responseRequirement": "any",
             "correctResponse": "1",
             "files": [""],
-            "explanation": "<span class = 'inline bold green'>B is correct: Your friend should delete the message, so less people will see it. Sharing a phone number is not safe, and people may use it with bad intentions.</span> \n<span class = 'inline bold'>A is incorrect:</span> You should not share your number, and then tell your friend it’ s not safe to share private information with the entire school. \n<span class = 'inline bold'>C is incorrect:</span> The number of replies is important to know how many people have your friend’ s number, but you should also tell your friend not to share their private information. \n<span class = 'inline bold'>D is incorrect:</span> You should not encourage your friend to share private information.It is also dangerous for everyone to send their phone numbers in the group chat."
+            "explanation": "<span class = 'inline bold green'>B is correct: Your friend should delete the message, so less people will see it. Sharing a phone number is not safe, and people may use it with bad intentions.</span> \n<span class = 'inline bold'>A is incorrect:</span> You should not share your number, and then tell your friend it’ s not safe to share private information with the entire school. \n<span class = 'inline bold'>C is incorrect:</span> The number of replies is important to know how many people have your friend’ s number, but you should also tell your friend not to share their private information. \n<span class = 'inline bold'>D is incorrect:</span> You should not encourage your friend to share private information. It is also dangerous for everyone to send their phone numbers in the group chat."
         }
     },
     "targeted": {
