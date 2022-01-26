@@ -271,6 +271,13 @@ app.get('/', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtect
   });
 });
 
+app.get('/esp', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
+  res.render('mods-esp', {
+    title: 'Elije una lección',
+    isResearchVersion
+  });
+});
+
 // Current user's account page
 app.get('/account/:modId', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, userController.getAccount);
 
