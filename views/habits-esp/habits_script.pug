@@ -1,0 +1,444 @@
+extends ../ui_layout
+  
+block content
+
+  
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  -var s3 = "https://testdrive-filesystem.s3.us-east-2.amazonaws.com/"
+  -//var cdn = "";
+  .computer.only.tablet.only.four.wide.column
+    .ui.sticky.sideMenu
+      .ui.vertical.menu
+        a.active.item(data-value='feed')#feedsteps 
+          i.icon.home
+          |  Home
+        a.item(data-value='notifications')#notificationsteps
+          i.icon.bell
+          |  Notifications
+          .ui.red.right.pointing.label !
+          
+      .ui.card
+        .image
+          if user.profile.picture
+            img(src=cdn+'/profile_pictures/'+user.profile.picture)
+          else
+            img(src=user.gravatar(60))
+        .content
+          a.header.myProfileLink(href='/me/'+mod)= user.profile.name || user.email || user.id
+          .meta="@Guest"
+          .description=user.profile.bio
+          .description
+            if user.profile.location
+              i.marker.icon
+              span=user.profile.location
+        .one.ui.bottom.attached.icon.buttons
+            button.ui.habitsEditprofile.button(data-tooltip='Update Your Profile', data-position='bottom left')
+                i.write.icon
+      
+            
+  //-mobile only version of the menu
+  .mobile.only.sixteen.wide.column
+    .ui.top.fixed.vertical.menu
+      a.active.item(data-value='feed')#feedsteps
+        i.icon.home
+        |  Home
+      a.item(data-value='notifications')#notificationsteps      
+        i.icon.bell
+        |  Notifications
+        .ui.red.right.pointing.label !
+    br
+    br
+
+  #loading.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
+    img.ui.centered.small.image(src='/images/heart.svg')
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column 
+
+    //- Input for creating new post at top of feed
+    .ui.sticky.newPostSticky
+      #newpost.ui.fluid.left.labeled.right.icon.input.habitsHomeDisplay
+        .ui.label
+          if user.profile.picture
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture)
+          else
+            img.ui.avatar.image(src=user.gravatar(60))
+        input(type='text', placeholder='Create a post')
+        i.big.photo.link.icon
+        
+    //- Habits module specific ui
+    
+    //-Buttons at the top of the notifications page (and settings and activity pages)
+    button.ui.basic.button.habitsNotificationsDisplay.habitsSettingsButton.hidden
+      i.cog.icon
+      |   Settings                    
+    button.ui.basic.button.habitsNotificationsDisplay.habitsActivityButton.hidden
+      i.clock.icon
+      |   My Activity
+      
+    //-Buttons at the top of the notifications page (and settings and activity pages)
+    button.ui.basic.button.habitsSettingsDisplay.habitsSettingsButton.hidden
+      i.cog.icon
+      |   Settings                    
+    button.ui.basic.button.habitsSettingsDisplay.habitsActivityButton.hidden
+      i.clock.icon
+      |   My Activity
+
+      
+    //-Buttons at the top of the notifications page (and settings and activity pages)
+    button.ui.basic.button.habitsActivityDisplay.habitsSettingsButton.hidden
+      |   Settings                    
+    button.ui.basic.button.habitsActivityDisplay.habitsActivityButton.hidden
+      i.clock.icon
+      |   My Activity
+      
+    //-Settings page
+    .ui.container.habitsSettingsDisplay.hidden
+      h2.ui.header Notification Settings
+      .ui.divider
+      br
+      form.ui.form
+        .field
+          br
+          .ui.toggle.checkbox(name='popupAlertsCheckbox')
+            input(type='checkbox' name='popupAlerts')
+            label Pause All
+        span.settingLabel This will pause all notifications.
+        br
+        br
+        br
+        .field#pauseTimeSelectField
+          label How long would you like to pause notifications for?
+            br
+            br
+            .ui.selection.dropdown(name='pauseTimeSelect')
+              input(type='hidden')
+              i.dropdown.icon
+              .default.text 
+              .menu
+                .item(data-value='15 minutes') 15 minutes
+                .item(data-value='1 hour') 1 hour
+                .item(data-value='2 hours') 2 hours
+                .item(data-value='4 hours') 4 hours
+                .item(data-value='8 hours') 8 hours
+        br
+        br    
+        
+    //-activity page
+    .ui.container.habitsActivityDisplay.hidden
+      h2.ui.header My Activity
+      .ui.divider
+
+      h2.ui.header Time on TestDrive:
+      .ui.statistics
+        .statistic
+          .value#habitsActivityTotalTimeMinutes 0
+          .label
+            | min 
+        .statistic  
+          .value :
+          .label
+        .statistic
+          .value#habitsActivityTotalTimeSeconds 0
+          .label
+            | sec
+        
+      h2.ui.header Manage My Time:
+      br
+      .field#reminderTimeSelectField
+        label Set Daily Reminder
+          br
+          br
+          .ui.selection.dropdown(name='reminderTimeSelect')
+            input(type='hidden')
+            i.dropdown.icon
+            .default.text 
+            .menu
+              .item(data-value='remind 15 minutes') 15 minutes
+              .item(data-value='remind 1 hour') 1 hour
+              .item(data-value='remind 2 hours') 2 hours
+              .item(data-value='remind 4 hours') 4 hours
+              .item(data-value='remind 8 hours') 8 hours
+      br
+      span We'll send you a reminder once you've reached the time you set for yourself.
+
+
+    each val in script
+      //- create a card for each post in val (if by user make the card a little different)
+      //- for the habits module specifically, notifications are treated a little different (different UI)
+      //- if val.relativeTime - then post came from user_post (so user post, user reply to actor reply to user post)
+      
+      //-notifications display, habits
+      if (val.type == 'notification')
+        .ui.raised.segment.habitsNotificationItem.hidden(correspondingPost=val.info_text)
+          .ui.feed
+           .event
+             //-CSS properties: https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
+             .label
+               img(src=cdn + '/profile_pictures/' +val.actor.profile.picture)
+             .content
+               .summary=val.body
+                .time.notificationTime=(habitsStart + val.time)
+                .time.millisecondType.hidden=(val.time)
+                    
+      else if val.relativeTime
+        -var u_class;
+        -if (val.actorAuthor) {u_class = "actorReply"}
+        -else if (val.reply) {u_class = "userReply"}
+        -else {u_class = "userPost"}
+        .ui.fluid.card.habitsHomeDisplay(u_postID=val.id, ui=user.ui, notify=user.notify, type=u_class, postID=val.postID)
+          
+          //- This is a User made post
+          .content
+            .right.floated.time.meta= ((Date.now() - (Date.now() - val.absTime)))
+            |  
+            a.ui.avatar.image.myProfileLink(href='/me/'+mod)
+              if user.profile.picture
+                img(src=cdn+'/profile_pictures/'+user.profile.picture)
+              else
+                img(src=user.gravatar(60))
+            a.myProfileLink(href='/me/'+mod)
+              span=user.profile.name || user.email || user.id
+          if val.picture
+            .image
+              img(src=cdn+"/post_pictures/"+val.picture)
+          .content
+            .description=val.body
+          .two.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            if val.liked
+              .ui.red.like.button
+                i.heart.icon
+                |  Like
+            else
+              .ui.like.button
+                i.heart.icon
+                |  Like
+          if val.comments.length > 0
+            .content
+              .ui.comments
+                each comment in val.comments
+                  //-IF this comment is USER made, do this
+                  if (Date.now() + comment.time) < Date.now()
+                    if !comment.flagged
+                      if comment.new_comment
+                        -console.log("New COMMENT AREA");
+                        .comment(commentID=comment.commentID)
+                          a.avatar.image(href='/me/'+mod)
+                            if user.profile.picture
+                              img(src=cdn+'/profile_pictures/'+user.profile.picture)
+                            else
+                              img(src=user.gravatar(60))
+                          .content
+                            a.author(href='/me/'+mod)=user.profile.name || user.username || user.id
+                            .metadata
+                              span.date.sim=(comment.time)
+                              //- .rating
+                              //-   if comment.liked
+                              //-     i.red.heart.icon
+                              //-     span=comment.likes
+                              //-     | Likes 
+                              //-   else
+                              //-     i.heart.icon
+                              //-     span.num=comment.likes
+                              //-     |  Likes
+                            .text=comment.body
+                            //- .actions
+                            //-   if comment.liked
+                            //-     a.red.like.comment Like
+                            //-   else
+                            //-     a.like.comment Like
+                            //-   a.flag.comment Flag
+                      //- Else this is a normal comment from the script
+                      else
+                        .comment(commentID=comment.commentID)
+                          a.avatar(href='/user/'+comment.actor.username)
+                            img(src='/images/picture.svg', data-src=cdn+'/profile_pictures/'+comment.actor.profile.picture)
+                          .content
+                            a.author(href='/user/'+comment.actor.username)=comment.actor.profile.name
+                            .metadata
+                              span.date.sim=(Date.now() + comment.time)
+                              .rating
+                                if comment.liked
+                                  i.red.heart.icon
+                                  span=comment.likes
+                                  | Likes 
+                                else
+                                  i.heart.icon
+                                  span.num=comment.likes
+                                  |  Likes
+                            .text=comment.body
+                            .actions
+                              if comment.liked
+                                a.red.like.comment Like
+                              else
+                                a.like.comment Like
+                              a.flag.comment Flag
+
+      //- Now we are making posts by Actors, not the USER
+      
+      //- This is a tageted ad post in the targeted ads module
+      else
+        
+        //-this is a totally normal actor post
+        .ui.fluid.card.dim.habitsHomeDisplay(postNumber = val.post_id, postID=val.id, ui=user.ui, transparency=user.transparency, notify=user.notify, state=val.state || 'unread', type='actor', actor_un = val.actor.username, actor_name = val.actor.profile.name, actor_pic = val.actor.profile.picture)
+          //- dimmer DIV for flagging
+          .ui.dimmer.flag
+                .content
+                  .center
+                    h2.ui.inverted.icon.header
+                      i.red.flag.icon
+                      |  You&apos;ve flagged this!
+                      h3.ui.inverted.header
+                        span="The admins will review this post further. We are sorry you had this experience."
+          //- Normal Base Post
+          .content
+            .right.floated.time.meta= (Date.now() + val.time)
+            |  
+            a.actorLink(href='/user/'+val.actor.username)
+              img.ui.avatar.image(src='/images/picture.svg', data-src=cdn+'/profile_pictures/'+val.actor.profile.picture)
+              span=val.actor.profile.name
+          .img.post
+            if (val.module == 'digital-literacy' && val.info_text != "")           
+              img(src='/images/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPost()')
+            else if (val.module == 'digfoot')
+              img(src='/images/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPostDigfoot()')
+            else
+              img(src='/images/picture.svg', data-src=cdn+"/post_pictures/"+val.picture)
+          if (val.module == 'digital-literacy' && val.info_text != "")
+            .read.rounded.right.floated.modual.info_button(id="info_"+val.id, data-info_text = val.info_text)
+              i.info.icon
+          .content
+            .description!=val.body
+          .three.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            .ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Flag
+            if val.like
+              .ui.labeled.button(tabindex='0')
+                .ui.red.like.button
+                  i.heart.icon
+                  |  Like
+                a.ui.basic.red.left.pointing.label=val.likes
+            else
+              .ui.labeled.button(tabindex='0')
+                .ui.like.button
+                  i.heart.icon
+                  |  Like
+                a.ui.basic.red.left.pointing.label.count=val.likes
+          if val.comments.length > 0
+            .content
+              .ui.comments
+                each comment in val.comments
+                  //-IF this comment is USER made, do this
+                  if comment.new_comment
+                    -console.log("New COMMENT AREA");
+                    .comment(commentID=comment.new_comment_id)
+                      a.avatar.image(href='/me/'+mod)
+                        if user.profile.picture
+                          img(src=cdn+'/profile_pictures/'+user.profile.picture)
+                        else
+                          img(src=user.gravatar(60))
+                      .content
+                        a.author(href='/me/'+mod)=user.profile.name || user.username || user.id
+                        .metadata
+                          span.date.sim=(comment.time)
+                        .text=comment.body
+                  //- Else this is a normal comment from the script
+                  else
+                    .comment(commentID=comment.id)
+                      a.avatar.image.actorLink(href='/user/'+comment.actor.username)
+                        img(src='/images/picture.svg', data-src=cdn+'/profile_pictures/'+comment.actor.profile.picture)
+                      .content
+                        a.author.actorLink(href='/user/'+comment.actor.username)=comment.actor.profile.name
+                        .metadata
+                          span.date.sim=(Date.now() + comment.time)
+                          .rating
+                            if comment.liked
+                              i.red.heart.icon
+                              span=comment.likes
+                              |  Likes 
+                            else
+                              i.heart.icon
+                              span.num=comment.likes
+                              |  Likes
+                        .text=comment.body
+                        .actions
+                          if comment.liked
+                            a.red.like.comment Like
+                          else
+                            a.like.comment Like
+                          a.flag.comment Flag
+          .extra.content
+            if user.comment_prompt == "yes"
+              .description="How is "+val.actor.profile.name+" Feeling?"
+              .ui.fluid.left.labeled.right.icon.input
+                .ui.label            
+                  if user.profile.picture
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name || user.username || user.id)
+                  else
+                    img.ui.avatar.image(src=user.gravatar(60), name=user.profile.name || user.username || user.id)
+                input.newcomment(type='text', placeholder='Write a Comment')
+                i.big.send.link.icon
+            else
+              .ui.fluid.left.labeled.right.icon.input
+                .ui.label
+                  if user.profile.picture
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name || user.username || user.id)
+                  else
+                    img.ui.avatar.image(src=user.gravatar(60), name=user.profile.name || user.username || user.id)            
+                input.newcomment(type='text', placeholder='Write a Comment')
+                i.big.send.link.icon  
+                     
+
+    -var post_quiz = "/results/"+mod;
+    a.ui.fluid.card.habitsHomeDisplay
+      .content
+        .ui.big.green.labeled.icon.button.script.habitsHomeDisplay
+          i.rocket.icon
+          |   Let's Continue!
+          
+    br
+    br
+      
+    include ../partials/script/modals/newUserPost
+                 
+    //-Show a post as a popup, used in habits module
+    .ui.tiny.long.viewPolicyPopup.modal  
+      .ui.segment 
+        .ui.fluid.card
+        .actions
+         .ui.positive.button Back
+   
+    //-Mobile version of the notification popup
+    .ui.fixed.bottom.sticky.notificationPopup.hidden#mobilePopup(correspondingpost=0)
+      .ui.info.message#removeHiddenMobile
+        i.close.icon
+        .ui.feed
+         .event
+           .label
+             img.popupNotificationImage(src=cdn + '/profile_pictures/user39.jpg')
+           .content
+             .summary Thomas Rogers commented on Hannah Lee’s post: “I love ribs”.        
+
+  .computer.only.tablet.only.two.wide.column 
+    .ui.fixed.bottom.sticky.notificationPopup#desktopPopup(correspondingpost=0)
+     .ui.info.message#removeHidden
+       i.close.icon
+       .ui.feed
+        .event
+          .label
+            img.popupNotificationImage(src=cdn + '/profile_pictures/user39.jpg')
+          .content
+            .summary Thomas Rogers commented on Hannah Lee’s post: “I love ribs”.               
+
+block scripts
+  script(src='/postFunctionalities.js')
+  script(src="/module_js/habits/habits_script.js")        
+  
+block styles
+  link(rel='stylesheet', href='/css/script.css')    
+  link(rel='stylesheet', href='/css/modules/habits/habits_script.css')    

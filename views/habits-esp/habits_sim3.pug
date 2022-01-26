@@ -1,0 +1,102 @@
+extends ../ui_layout
+  
+block content
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+
+  .computer.only.tablet.only.four.wide.column 
+    .ui.sticky.sideMenu
+      .ui.vertical.menu
+        a.item(data-value='feed')#feedsteps 
+          i.icon.home
+          |  Home
+        a.active.item(data-value='notifications')#notificationsteps
+          i.icon.bell
+          |  Notifications
+    
+  //-mobile only version of the menu
+  .mobile.only.sixteen.wide.column
+    .ui.top.fixed.vertical.menu
+      a.item(data-value='feed')#feedsteps
+        i.icon.home
+        |  Home
+      a.active.item(data-value='notifications')#notificationsteps      
+        i.icon.bell
+        |  Notifications
+        .ui.red.right.pointing.label !
+    br
+    br
+
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
+    .ui.one.column.centered.grid.feedbackMessagesGrid
+      .ui.fixed.bottom.sticky
+        .ui.icon.compact.message.warning#removeHidden
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header Need some help? 
+            p Make sure you are clicking "Got it" on the blue dots!
+            
+        .ui.message.centered.success.hidden#nextPageInstruction
+          .content
+            .ui.header Click the "My Activity" button to continue! 
+    
+        .ui.icon.message.warning.hidden#notificationWarning
+          i.close.icon
+          i.hand.pointer.icon.float
+          .content
+            .ui.header There are still blue dots to find!
+            p Click through all of the blue dots before going to the activity page
+          
+    .ui.stackable.secondary.menu
+      .ui.container
+        .item
+          button.ui.basic.button.notificationsDisplay#settingsButton
+            i.cog.icon
+            |   Settings
+        .item
+          button.ui.basic.button.notificationsDisplay#activityButton
+            i.clock.icon
+            |   My Activity
+            
+    //-Settings display
+    .ui.container.settingsDisplay
+      h2.ui.header#hint1 Notification Settings
+      .ui.divider
+      br
+      form.ui.form#addBottomMargin
+        .field#hint2
+          br
+          .ui.toggle.checkbox(name='popupAlertsCheckbox')
+            input(type='checkbox' name='popupAlerts')
+            label Pause All
+        span.settingLabel This will pause all notifications.
+        br
+        br
+        br
+        .field#pauseTimeSelectField
+          label How long would you like to pause notifications for?
+            br
+            br
+            .ui.selection.dropdown(name='pauseTimeSelect')
+              input(type='hidden')
+              i.dropdown.icon
+              .default.text 
+              .menu
+                .item(data-value='15 minutes') 15 minutes
+                .item(data-value='1 hour') 1 hour
+                .item(data-value='2 hours') 2 hours
+                .item(data-value='4 hours') 4 hours
+                .item(data-value='8 hours') 8 hours
+        br
+        br    
+
+block scripts
+  script(src="/module_js/habits/habits_sim3.js")
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_sim.js")
+  
+block styles 
+  link(rel='stylesheet', href='/css/modules/habits/habits_sim.css')
+  link(rel='stylesheet', href='/css/sim.css')
+      
+    
