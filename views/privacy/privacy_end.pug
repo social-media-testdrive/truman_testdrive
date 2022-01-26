@@ -3,11 +3,9 @@ extends ../ui_layout
 block content
 
   .ten.wide.computer.twelve.wide.tablet.sixteen.wide.mobile.column.centered
-    .ui.basic.segment(style="margin-bottom:4em;")
-      
+    
+    .ui.basic.segment.addBottomMargin
       h1 What would you like to do next?
-    
-    
       .ui.raised.segment
         h3.ui.header
           .content
@@ -29,7 +27,6 @@ block content
                   i.edit.icon
                   |   Give Us Feedback
         
-
       .ui.raised.segment
         h3.ui.header
           .content
@@ -51,9 +48,9 @@ block content
               .ui.big.blue.labeled.icon.button.endPageButton
                   i.chevron.circle.left.icon
                   |  Explore Timeline
-
       
 block scripts
+  script(src='/module_js/base_end.js')
   script().
   
     function startIntroOne(){       

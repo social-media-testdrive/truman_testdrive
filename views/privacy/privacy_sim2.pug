@@ -2,17 +2,23 @@ extends ../ui_layout
 
 block content
 
-  .ui.text.container(style="margin-bottom:4em;")
-    .ui.one.column.centered.grid(style="padding-top:1em;")
-      .ui.fixed.bottom.sticky(style="padding-bottom:6em;")
-        .ui.icon.compact.message.warning(style="display:none;")#removeHidden
+  .ui.text.container
+    .ui.one.column.centered.grid.feedbackMessagesGrid
+      .ui.fixed.bottom.sticky.warningMessagesSticky
+        .ui.icon.compact.message.warning.hidden#clickNextHelpMessage
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header Need some help?
+            p Scroll up and click "Next" to begin!
+        .ui.icon.compact.message.warning.hidden#removeHidden
           i.close.icon
           i.question.icon.float
           .content
             .ui.header Need some help? 
             p Make sure you are clicking "Got it" on the blue dots!
           
-        .ui.icon.message.warning(style="display:none;")#clickAllDotsWarning
+        .ui.icon.message.warning.hidden#clickAllDotsWarning
           i.close.icon
           i.hand.pointer.icon.float
           .content
@@ -65,8 +71,8 @@ block content
     p.greyOut From time to time, this Policy may be changed, expanded or amended, and may include the introduction of additional provisions. The effective date appearing at the top of this page indicates when the latest changes were made to this Policy and the Terms of Use, and use of the Service on or after such effective date constitutes your acceptance of the Policy then in effect.
 
     h2 8. Contacting Us
-    p.greyOut(style='white-space:pre;') 
-        |If you have any questions about this Policy, or the practices of the Service, please write to us at: 
+    p.greyOut.preserveWhitespace
+        | If you have any questions about this Policy, or the practices of the Service, please write to us at: 
         | Social Media Lab 
         | 487 Mann Library Building
         | Ithaca, NY 14850
@@ -75,10 +81,10 @@ block content
     br
     p#hint4
     
-    .ui.warning.message#clickAllDotsSim2(style="display:none;")
+    .ui.warning.message.hidden#clickAllDotsSim2
       .header
         | Click through all of the blue dots to continue
-    button.ui.big.labeled.icon.button.privacytutorial#cyberTransButton
+    button.ui.big.labeled.icon.button.privacytutorial.addBottomMargin#cyberTransButton
       i.rocket.icon
       |   Let's Continue!
 
@@ -87,18 +93,24 @@ block scripts
   script.
     var stepsList = [
       {
+        intro: `Click "Next" to begin!`,
+        audioFile: ['']
+      },
+      {
         intro: `Now that we have learned about the <b>ASK method</b>, let’s try
-        analyzing a Privacy Policy!`
+        analyzing a Privacy Policy!`,
+        audioFile: ['CUSML.7.4.1.mp3']
       },
       {
         intro: `This is TestDrive’s Privacy Policy. See if you can find out what
-        information TestDrive collects about you when you use it.`
+        information TestDrive collects about you when you use it.`,
+        audioFile: ['CUSML.7.4.2.mp3']
       },
       {
-        intro: `Click on "Done" and then look for the blue dots&nbsp;<a role='button' tabindex='0'
+        intro: `Click on "Done" and then look for the blue dots &nbsp;<a role='button' tabindex='0'
         class='introjs-hint'><div class='introjs-hint-dot'></div><div
-        class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; 
-        to learn more!`,
+        class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; &nbsp; to learn more...`,
+        audioFile: ['CUSML.7.4.3.mp3']
       }
     ];
     
@@ -108,27 +120,35 @@ block scripts
         hint: `What information will be <b>accessed</b> by TestDrive? Read this
         section to find out!`,
         element: '#hint1',
-        hintPosition: 'middle-middle'
+        hintPosition: 'middle-middle',
+        audioFile: ['CUSML.7.4.4.mp3']
       },
       {
         hint: `What will be <b>known</b> about me if I use TestDrive? Read this
         section to find out!`,
         element: '#hint2',
-        hintPosition: 'left-top'
+        hintPosition: 'left-top',
+        audioFile: ['CUSML.7.4.5.mp3']
       },
       {
         hint: `What will be <b>shared</b> with other people or companies? Read this
         section to find out!`,
         element: '#hint3',
-        hintPosition: 'middle-middle'
+        hintPosition: 'middle-middle',
+        audioFile: ['CUSML.7.4.6.mp3']
       },
       {
         hint: `To summarize, TestDrive does not collect any personal information. It
         also does not share personal information with other companies.`,
         element: '#hint4',
-        hintPosition: 'middle-middle'
+        hintPosition: 'middle-middle',
+        audioFile: ['CUSML.7.4.7.mp3']
       }
     ];
+  script(src="/module_js/voiceover.js")
   script(src="/module_js/base_sim.js")
+  
+block styles
+  link(rel='stylesheet' href='/css/modules/privacy.css')
   
   

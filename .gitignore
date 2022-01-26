@@ -11,6 +11,7 @@ lib-cov
 pids
 logs
 results
+outputFiles
 tmp
 
 #Build
@@ -21,6 +22,7 @@ uploads/user_post
 
 # API keys and secrets
 .env
+privateFiles
 
 # Dependency directory
 node_modules
@@ -36,7 +38,20 @@ bower_components
 .DS_Store
 Thumbs.db
 
+
+# misc files
+addNewInstructor.js
+create-account-batch.js
+create-account-batch-dev.js
+
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+# Behat and Composer
+composer.json
+composer.lock
+features
+vendor
+selenium-server-standalone-3.141.59.jar

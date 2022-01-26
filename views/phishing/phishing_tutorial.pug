@@ -8,7 +8,14 @@ block content
 
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.addBottomMargin
     //-feed
-
+    .ui.one.column.centered.grid.feedbackMessagesGrid
+      .ui.fixed.bottom.sticky
+        .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header Need some help?
+            p Scroll up and click "Next" to begin!
     .ui.fluid.card.test.feedDisplay#step0
           .content
             .right.floated.meta= "Yesterday"
@@ -22,7 +29,7 @@ block content
             .description
               | CLicK NoW to get FREE movie tickets for a year!! 
               | Only 30 spots left 
-              span#shortenedURL http://bit.ly/FREEMOVIES
+              span.blueText#shortenedURL http://bit.ly/FREEMOVIES
           .three.ui.bottom.attached.icon.buttons
             .ui.reply.button(tabindex='0')
               i.reply.icon
@@ -45,9 +52,10 @@ block content
                   a.author Maya Rein
                   .metadata
                     span.date Yesterday
-                    i.heart.icon
-                    span.num=3
-                    |  Likes
+                    .rating
+                      i.heart.icon
+                      span.num=3
+                      |  Likes
                   .text()
                     | great deal
                   .actions
@@ -60,9 +68,10 @@ block content
                   a.author Keegan Scott
                   .metadata
                     span.date Yesterday
-                    i.heart.icon
-                    span.num=2
-                    |  Likes
+                    .rating
+                      i.heart.icon
+                      span.num=2
+                      |  Likes
                   .text()
                     | nice
                   .actions
@@ -87,7 +96,7 @@ block content
           .content
             .description
               | !!WARNING!! Your account has been deactivated. Click here to reactivate:  
-              span#shortenedURL2 testdrive.co/activate.
+              span.blueText#shortenedURL2 testdrive.co/activate.
               | This is a verified post by offical TestDrive administator account.
             //-.right.floated.meta
               i.icon.checkmark
@@ -124,7 +133,7 @@ block content
           #step4.content
             .description
               | Need ca$H FAST? The frist 500 people get $500!! Fill out survey NOW: 
-              span#shortenedURL3 http://give.away/quickca$h
+              span.blueText#shortenedURL3 http://give.away/quickca$h
           .three.ui.bottom.attached.icon.buttons
             .ui.reply.button(tabindex='0')
               i.reply.icon
@@ -147,9 +156,10 @@ block content
                   a.author Samantha Bautista
                   .metadata
                     span.date Yesterday
-                    i.heart.icon
-                    span.num=2
-                    |  Likes
+                    .rating
+                      i.heart.icon
+                      span.num=2
+                      |  Likes
                   .text()
                     | is this legit?
                   .actions
@@ -162,9 +172,10 @@ block content
                   a.author Andrew Thomas
                   .metadata
                     span.date Yesterday
-                    i.heart.icon
-                    span.num=2
-                    |  Likes
+                    .rating
+                      i.heart.icon
+                      span.num=2
+                      |  Likes
                   .text()
                     | Thanksss
                   .actions
@@ -180,7 +191,6 @@ block content
 block scripts
   script(src='/postFunctionalities.js')
   script(src="/module_js/phishing/phishing_tutorial.js")
-
-block styles
-  link(rel='stylesheet', href='/css/modules/phishing.css')
-    
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_introSteps.js")
+  script(src='/module_js/base_tutorial.js')

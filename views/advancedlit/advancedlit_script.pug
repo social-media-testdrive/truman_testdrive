@@ -1,8 +1,6 @@
 extends ../ui_layout
   
 block content
-
-  
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   -var s3 = "https://testdrive-filesystem.s3.us-east-2.amazonaws.com/"
   
@@ -33,16 +31,17 @@ block content
         
       #loading.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
         img.ui.centered.small.image(src='/images/heart.svg')
-      #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.trackHeightOffset(style='display: none;')  
+      #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.trackHeightOffset
         //- Input for creating new post at top of feed
-        #newpost.ui.fluid.left.labeled.right.icon.input.habitsHomeDisplay
-          .ui.label
-            if user.profile.picture
-              img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture)
-            else
-              img.ui.avatar.image(src=user.gravatar(60))
-          input(type='text', placeholder='Create a post')
-          i.big.photo.link.icon
+        .ui.sticky.newPostSticky
+          #newpost.ui.fluid.left.labeled.right.icon.input.habitsHomeDisplay
+            .ui.label
+              if user.profile.picture
+                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture)
+              else
+                img.ui.avatar.image(src=user.gravatar(60))
+            input(type='text', placeholder='Create a post')
+            i.big.photo.link.icon
 
         each val in script
           //- create a card for each post in val (if by user make the card a little different)
@@ -63,62 +62,64 @@ block content
         br
         br
           
+        include ../partials/script/modals/newUserPost    
+          
   //- #########################################################################
   
-  .ui.tab(data-tab="article1" style="width:inherit; margin-bottom:8em;")
-    button.ui.big.testDriveBlue.button.timelineTab(data-tab='timeline')
+  .ui.tab(data-tab="article1")
+    button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
       i.icon.reply
       | Return to the timeline
     button.ui.big.green.button.searchTab(data-tab='search1')
       i.icon.search
       span.searchButtonText 
     include ../partials/script/advancedlit_articleTab
-    button.ui.big.testDriveBlue.button.timelineTab(data-tab='timeline')
+    button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
       i.icon.reply
       | Return to the timeline
     button.ui.big.green.button.searchTab(data-tab='search1')
       i.icon.search
       span.searchButtonText 
       
-  .ui.tab(data-tab="article2" style="width:inherit; margin-bottom:8em;")
-    button.ui.big.testDriveBlue.button.timelineTab(data-tab='timeline')
+  .ui.tab(data-tab="article2")
+    button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
       i.icon.reply
       | Return to the timeline
     button.ui.big.green.button.searchTab(data-tab='search2')
       i.icon.search
       span.searchButtonText 
     include ../partials/script/advancedlit_articleTab
-    button.ui.big.testDriveBlue.button.timelineTab(data-tab='timeline')
+    button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
       i.icon.reply
       | Return to the timeline
     button.ui.big.green.button.searchTab(data-tab='search2')
       i.icon.search
       span.searchButtonText 
     
-  .ui.tab(data-tab="article3" style="width:inherit; margin-bottom:8em;")
-    button.ui.big.testDriveBlue.button.timelineTab(data-tab='timeline')
+  .ui.tab(data-tab="article3")
+    button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
       i.icon.reply
       | Return to the timeline
     button.ui.big.green.button.searchTab(data-tab='search3')
       i.icon.search
       span.searchButtonText 
     include ../partials/script/advancedlit_articleTab
-    button.ui.big.testDriveBlue.button.timelineTab(data-tab='timeline')
+    button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
       i.icon.reply
       | Return to the timeline
     button.ui.big.green.button.searchTab(data-tab='search3')
       i.icon.search
       span.searchButtonText 
       
-  .ui.tab(data-tab="article4" style="width:inherit; margin-bottom:8em;")
-    button.ui.big.testDriveBlue.button.timelineTab(data-tab='timeline')
+  .ui.tab(data-tab="article4")
+    button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
       i.icon.reply
       | Return to the timeline
     button.ui.big.green.button.searchTab(data-tab='search4')
       i.icon.search
       span.searchButtonText 
     include ../partials/script/advancedlit_articleTab
-    button.ui.big.testDriveBlue.button.timelineTab(data-tab='timeline')
+    button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
       i.icon.reply
       | Return to the timeline
     button.ui.big.green.button.searchTab(data-tab='search4')
@@ -127,83 +128,83 @@ block content
     
   //- #########################################################################
   
-  .ui.tab(data-tab="search1" style="margin-bottom:8em;")
-    .ui.grid.gridInsideTab(style="margin-bottom:4em;")         
+  .ui.tab(data-tab="search1")
+    .ui.grid.gridInsideTab      
       .row
         .column
-          button.ui.big.testDriveBlue.button.timelineTab(data-tab='timeline')
+          button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
             i.icon.reply
             | Go back to the timeline
-          button.ui.big.testDriveBlue.button.articleTab(data-tab='article1')
+          button.ui.big.testDriveBlueButton.button.articleTab(data-tab='article1')
             i.icon.reply
             | Go back to the article
       include ../partials/script/advancedlit_searchTab
       .row
         .column
-          button.ui.big.testDriveBlue.button.timelineTab(data-tab='timeline')
+          button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
             i.icon.reply
             | Go back to the timeline
-          button.ui.big.testDriveBlue.button.articleTab(data-tab='article1')
+          button.ui.big.testDriveBlueButton.button.articleTab(data-tab='article1')
             i.icon.reply
             | Go back to the article
       
-  .ui.tab(data-tab="search2" style="margin-bottom:8em;")
-    .ui.grid.gridInsideTab(style="margin-bottom:4em;")          
+  .ui.tab(data-tab="search2")
+    .ui.grid.gridInsideTab          
       .row
         .column
-          button.ui.big.testDriveBlue.button.timelineTab(data-tab='timeline')
+          button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
             i.icon.reply
             | Go back to the timeline
-          button.ui.big.testDriveBlue.button.articleTab(data-tab='article2')
+          button.ui.big.testDriveBlueButton.button.articleTab(data-tab='article2')
             i.icon.reply
             | Go back to the article
       include ../partials/script/advancedlit_searchTab
       .row
         .column
-          button.ui.big.testDriveBlue.button.timelineTab(data-tab='timeline')
+          button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
             i.icon.reply
             | Go back to the timeline
-          button.ui.big.testDriveBlue.button.articleTab(data-tab='article2')
+          button.ui.big.testDriveBlueButton.button.articleTab(data-tab='article2')
             i.icon.reply
             | Go back to the article
   
-  .ui.tab(data-tab="search3" style="margin-bottom:8em;")
-    .ui.grid.gridInsideTab(style="margin-bottom:4em;")          
+  .ui.tab(data-tab="search3")
+    .ui.grid.gridInsideTab          
       .row
         .column
-          button.ui.big.testDriveBlue.button.timelineTab(data-tab='timeline')
+          button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
             i.icon.reply
             | Go back to the timeline
-          button.ui.big.testDriveBlue.button.articleTab(data-tab='article3')
+          button.ui.big.testDriveBlueButton.button.articleTab(data-tab='article3')
             i.icon.reply
             | Go back to the article
       include ../partials/script/advancedlit_searchTab
       .row
         .column
-          button.ui.big.testDriveBlue.button.timelineTab(data-tab='timeline')
+          button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
             i.icon.reply
             | Go back to the timeline
-          button.ui.big.testDriveBlue.button.articleTab(data-tab='article3')
+          button.ui.big.testDriveBlueButton.button.articleTab(data-tab='article3')
             i.icon.reply
             | Go back to the article
             
-  .ui.tab(data-tab="search4" style="margin-bottom:8em;")
-    .ui.grid.gridInsideTab(style="margin-bottom:4em;")          
+  .ui.tab(data-tab="search4")
+    .ui.grid.gridInsideTab          
       .row
         .column
-          button.ui.big.testDriveBlue.button.timelineTab(data-tab='timeline')
+          button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
             i.icon.reply
             | Go back to the timeline
-          button.ui.big.testDriveBlue.button.articleTab(data-tab='article4')
+          button.ui.big.testDriveBlueButton.button.articleTab(data-tab='article4')
             i.icon.reply
             | Go back to the article
       include ../partials/script/advancedlit_searchTab
       .row
         .column
-          button.ui.big.testDriveBlue.button.timelineTab(data-tab='timeline')
+          button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
             i.icon.reply
             | Go back to the timeline
-          button.ui.big.testDriveBlue.button.articleTab(data-tab='article4')
+          button.ui.big.testDriveBlueButton.button.articleTab(data-tab='article4')
             i.icon.reply
             | Go back to the article
       

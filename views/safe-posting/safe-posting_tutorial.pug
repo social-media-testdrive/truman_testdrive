@@ -35,14 +35,14 @@ block content
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
           i.reply.icon
-          |                             Reply
+          | Reply
         .ui.flag.button(tabindex='0')
           i.flag.icon
-          |                             Flag
+          | Flag
         .ui.labeled.button(tabindex='0')
           .ui.like.button
             i.heart.icon
-            |                                 Like
+            | Like
           a.ui.basic.red.left.pointing.label.count 2
       .content
         .ui.comments
@@ -82,8 +82,6 @@ block content
             img.ui.avatar.image(src=cdn+'/profile_pictures/user21.jpg')
           .chat-about
             .chat-with Chat with Sam Hill
-            //- .chat-num-messages already 1 902 messages
-          //- i.fa.fa-star
         // end chat-header
         .chat-history
           ul
@@ -147,6 +145,9 @@ block scripts
   script(src='/postFunctionalities.js')
   script(src=cdn+'/js/chatbox.js')
   script(src="/module_js/safe-posting/safe-posting_tutorial.js")
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_introSteps.js")
+  script(src='/module_js/base_tutorial.js')
   
 block styles
   link(rel='stylesheet', href='/css/modules/safe-posting.css')

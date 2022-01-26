@@ -1,30 +1,28 @@
-function startIntro(){
-    var intro = introJs().setOptions({
-      'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false,
-      'showStepNumbers':false, 'showBullets':false, 'scrollToElement':true,
-      'doneLabel':'Done &#10003', 'tooltipClass':'blueTooltip'});
-      intro.setOptions({
-        steps: [
-          {
-            intro: `Now you get to explore the TestDrive timeline! You can read
-            what others have posted, respond, or make your own posts.`
-          },
-          {
-            intro: `As you look through the timeline, see if you can find
-            features that grab your attention and think about what you can do to
-            build healthy social media habits.`
+const nextPageURL = 'modual';
+const stepsList = [
+  {
+    intro: `Click "Next" to begin!`,
+    audioFile: ['']
+  },
+  {
+    intro: `Now you get to explore the TestDrive timeline! You can read
+    what others have posted, respond, or make your own posts.`,
+    audioFile: ['CUSML.10.5.4.mp3']
+  },
+  {
+    intro: `As you look through the timeline, see if you can find
+    features that grab your attention and think about what you can do to
+    build healthy social media habits.`,
+    audioFile: ['CUSML.10.5.5.mp3']
+  }
+];
 
-          }
-        ]
-      });
-      intro.start().onexit(function() {
-        freePlayPageViewTimer = Date.now();
-        //record this date as the start of the habits timeline
-        $.post("/habitsTimer", { habitsStart: freePlayPageViewTimer, _csrf : $('meta[name="csrf-token"]').attr('content') }).then(function(data){
-          window.location.href=data.url;
-        });
-    });
-
-
-  };
-$(window).on("load", function() {startIntro();});
+function additionalOnBeforeExit() {
+  freePlayPageViewTimer = Date.now();
+  //record this date as the start of the habits timeline
+  const jqhxr = $.post("/habitsTimer", {
+    habitsStart: freePlayPageViewTimer,
+    _csrf : $('meta[name="csrf-token"]').attr('content')
+  });
+  jqhxrArray.push(jqhxr);
+}

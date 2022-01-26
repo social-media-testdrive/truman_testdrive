@@ -11,41 +11,64 @@ body {
   display: none;
 }
 
+.ui.hidden {
+  display: none;
+}
+
+.centerText {
+  text-align: center;
+}
+
 .computer.only.tablet.only.four.wide.column {
   height: auto !important;
 }
 
-/* ------ INTRO PAGE ------ */
-
-.welcomePageCard {
-  width: 350px !important;
+.grid.container.addBottomPaddingToGrid {
+  padding-bottom: 50px;
 }
 
-.ui.steps .step:after {
-  width: 18px !important;
-  height: 18px !important;
-  background-color: inherit !important;
+.grayElement,
+.ui.container .grayElement {
+  color: #696969;
 }
 
-.welcomeButton {
-  font-size: 22px !important;
+/* --- HEADER & FOOTER ---- */
+.ui.menu.testDriveHeader,
+.ui.menu.testDriveFooter {
+  z-index: 10000002;
 }
 
-.glowing-box:hover {
-  outline: none !important;
-  border-color: #9ecaed !important;
-  box-shadow: 0 0 10px #9ecaed !important;
+
+/* --- POPUP  MODALS --- */
+/* Adjust popup modal margins and heights due to site header and footer */
+
+/* Mobile sizing */
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  .ui.modals {
+    margin-top: 74px;
+    max-height: calc(100vh - 112px);
+  }
 }
 
-.glowing-box {
-  background-color: #fff !important;
-  box-shadow:
-    0 0 60px 30px #fff !important,
-    /* inner white */
-    0 0 100px 60px #f0f !important,
-    /* middle magenta */
-    0 0 140px 90px #0ff !important;
-  /* outer cyan */
+/* Tablet and up sizing  */
+@media only screen and (min-width: 768px) {
+  .ui.modals {
+    margin-top: 101px;
+    max-height: calc(100vh - 139px);
+  }
+}
+
+/* --- FEEDBACK MESSAGES --- */
+
+.ui.grid.feedbackMessagesGrid {
+  margin: 0 auto 0 auto;
+}
+
+.ui.grid.feedbackMessagesGrid .sticky {
+  margin-bottom: 60px;
+  width: 400px;
+  max-width: 100%;
+  z-index: 10000000;
 }
 
 /* ------- END PAGE ------- */
@@ -58,23 +81,22 @@ body {
 
 /* --- CURSOR APPEARANCES --- */
 
-a {
+a,
+button,
+.ui.button,
+#newpost.ui.fluid.left.labeled.right.icon.input,{
   cursor: pointer;
 }
 
-button {
-  cursor: pointer;
-}
-
-.ui.button {
-  cursor: pointer;
-}
-
-#newpost.ui.fluid.left.labeled.right.icon.input {
-  cursor: pointer;
+.ui.card .comments :not(.actions){
+  cursor: default;
 }
 
 /* --- POST APPEARANCES --- */
+
+.img.post img {
+  max-width:100%;
+}
 
 .ui.fluid.card>.content>.description {
   font-size: 1.30em;
@@ -82,6 +104,14 @@ button {
 
 .locationtag {
   color: #929292;
+}
+
+.grayText {
+  color: #929292;
+}
+
+.blueText {
+  color:#0000FF;
 }
 
 /* only for some digital literacy posts */
@@ -102,11 +132,20 @@ button {
 /* ----- (BLUE DOTS) ----- */
 
 .introjs-hint-dot {
-  background: #2185d0;
+  background:#2185d0;
+  border: 13px solid rgba(146,146,146,.36);
+  -webkit-animation: introjspulse 2s ease-out;
+  -moz-animation: introjspulse 2s ease-out;
+  animation: introjspulse 2s ease-out;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
 }
 
 .introjs-hint-pulse {
   background: #2185d0;
+  width: 15px;
+  height: 15px;
 }
 
 /* ---- INTROJS STEPS ---- */
@@ -217,6 +256,12 @@ button {
   color: #A9A9A9
 }
 
+/* Button that uses the testdrive color palette */
+.ui.button.testDriveBlueButton {
+  background-color: #14a1f6;
+  color: white;
+}
+
 /* settings page sublabels (privacy module) */
 .settingSmallLabel {
   font-weight: normal;
@@ -230,9 +275,18 @@ button {
   width: 100%;
 }
 
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
 /* misc alignment classes */
 
-.addBottomMargin {
+.ui.grid .addBottomMargin {
   margin-bottom: 4em;
 }
 

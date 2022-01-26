@@ -5,13 +5,15 @@ const hintsList = [
     number of notifications that you get. After you've clicked all the blue
     dots, click Settings on the notification window to see how you can do
     this.`,
-    hintPosition: "middle-middle"
+    hintPosition: "middle-middle",
+    audioFile: ['CUSML.10.4.06.mp3']
   },
   {
     element: '#hint2',
     hint: `Notifications can give you helpful information, but having too many
     can make you feel like you constantly need to check them.`,
-    hintPosition: "top-middle"
+    hintPosition: "top-middle",
+    audioFile: ['CUSML.10.4.07.mp3']
   }
 ];
 

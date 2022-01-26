@@ -1,0 +1,48 @@
+.ui.segment.mainIntroSegment{
+  width: 100%;
+  margin: 10px auto 0 0;
+}
+
+.ui.header.gradientBackground {
+  background: linear-gradient(to right, #FCF6BD 0%, #D0F4DE 25%,#A9DEF9 50%,#E4C1F9 100%);
+}
+
+.ui.card.welcomePageCard {
+  display:inline-block;
+  width: 350px;
+}
+
+.ui.button.getStartedButton {
+  font-size: 22px;
+}
+
+/* Steps */
+
+.ui.steps .glowing-box:hover {
+  outline: none;
+  border-color: #9ecaed;
+  box-shadow: 0 0 10px #9ecaed;
+}
+
+.ui.steps .paleYellow {
+  background-color: #FCF6BD;
+}
+
+.ui.steps .paleGreen {
+  background-color: #D0F4DE;
+}
+
+.ui.steps .paleBlue {
+  background-color: #A9DEF9;
+}
+
+.ui.steps .palePurple {
+  background-color: #E4C1F9;
+}
+
+/* For the small arrows between the 4 steps */
+.ui.steps .step:after {
+  width: 18px;
+  height: 18px;
+  background-color: inherit;
+}

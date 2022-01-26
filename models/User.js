@@ -3,41 +3,66 @@ const crypto = require('crypto');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// have 2 consts here, and choose which to export depending on the site version
 const userSchema = new mongoose.Schema({
-  email: {type: String, default: ""}, //user e-mail (not used in TestDrive)
+  // email: {type: String, default: ""},
+  deleted: {type: Boolean, default: false}, // indicates if this account has been "deleted" from a class
   password: String, //hashed and salted
-  passwordResetToken: String,
-  passwordResetExpires: Date,
+  // passwordResetToken: String,
+  // passwordResetExpires: Date,
   username: { type: String, unique: true }, //username, must be unique
+  name: {type: String, default: ''}, // Real name associated with account
   active: {type: Boolean, default: true}, //currently active? Not used in TestDrive
   isAdmin: {type: Boolean, default: false}, //is an Admin? (only changed directly in DB)
   isInstructor: {type: Boolean, default: false}, // is this user an Instructor
+  isStudent: {type: Boolean, default: false},
   isGuest: {type: Boolean, default: false}, // is this user an Instructor
-
+  //className: {type: String, default: ''}, // which class this user belongs to, if a student
+  accessCode: {type: String, default: ''}, //which class this user belongs to, if a student
   completed: {type: Boolean, default: false}, //not used in TestDrive
-
-  //I don't believe these are used for TestDrive. It's mainly used for the Notification functionality
+  reflectionCsv: {type: String, default: ''},
+  timeReportCsv: {type: String, default: ''},
+  moduleProgress: { // marks the progress of each module: none, started, completed
+    accounts: {type: String, default: 'none'},
+    advancedlit: {type: String, default: 'none'},
+    cyberbullying: {type: String, default: 'none'},
+    digfoot: {type: String, default: 'none'},
+    digitalliteracy: {type: String, default: 'none'},
+    esteem: {type: String, default: 'none'},
+    habits: {type: String, default: 'none'},
+    phishing: {type: String,default: 'none'},
+    presentation: {type: String, default: 'none'},
+    privacy: {type: String, default: 'none'},
+    safeposting: {type: String, default: 'none'},
+    targeted: {type: String, default: 'none'},
+  },
+  earnedBadges: [new Schema({
+    badgeId: String,
+    badgeTitle: String,
+    badgeImage: String,
+    dateEarned: Date
+  })],
   numPosts: { type: Number, default: -1 }, //How many posts has this user created? not including replys
   numReplies: { type: Number, default: -1 }, //How many comments has user made
-  numActorReplies: { type: Number, default: -1 }, //How many times has an actor commented on this user
+  //numActorReplies: { type: Number, default: -1 }, //How many times has an actor commented on this user
 
   lastNotifyVisit: Date, //date user last visited the site
 
   mturkID: String, //not used in TestDrive
 
-//Experimental group of this user
-//Not used in TestDrive
-  group: String, //full group type
-  ui: String,    //just UI type (no or ui)
-  notify: String, //notification type (no, low or high)
+  //Experimental group of this user
+  //Not used in TestDrive
+  // group: String, //full group type
+  // ui: String,    //just UI type (no or ui)
+  // notify: String, //notification type (no, low or high)
 
-  tokens: Array,
+  // tokens: Array,
 
   blocked: [String], //actors user has blocked
   reported: [String], //actors user has reported
 
-  targetedAdTopic: {type: String, default: ""}, //Food, Gaming, or Sports
-  esteemTopic: {type: String, default: ""}, //Food, Gaming, or Sports
+  targetedAdTopic: [String], //Food, Gaming, or Sports
+  esteemTopic: [String], //Food, Gaming, or Sports
   advancedlitTopic: {type: String, default: ""}, //Music, Gaming, or Sports
   habitsTimer: [Number], //How long the user has been on the free-play page each time they visit, use sum of this array to get a total time.
   firstHabitViewTime: { type: Number, default: -1}, //The time that the user first opened the free-play section of the habits module
@@ -50,15 +75,15 @@ const userSchema = new mongoose.Schema({
     body: {type: String, default: '', trim: true}, //body of post or reply
     picture: String, //picture for post
 
-    replyID: Number, //use this for User Replies (not used in TestDrive)
-    reply: {type: Schema.ObjectId, ref: 'Script'}, //Actor Post reply is to =>
-
-    //not used in testDrive
-    actorReplyID: Number, //An Actor reply to a User Post
-    actorReplyOBody: String, //Original Body of User Post
-    actorReplyOPicture: String, //Original Picture of User Post
-    actorReplyORelativeTime: Number,
-    actorAuthor: {type: Schema.ObjectId, ref: 'Actor'},
+    // replyID: Number, //use this for User Replies (not used in TestDrive)
+    // reply: {type: Schema.ObjectId, ref: 'Script'}, //Actor Post reply is to =>
+    //
+    // //not used in testDrive
+    // actorReplyID: Number, //An Actor reply to a User Post
+    // actorReplyOBody: String, //Original Body of User Post
+    // actorReplyOPicture: String, //Original Picture of User Post
+    // actorReplyORelativeTime: Number,
+    // actorAuthor: {type: Schema.ObjectId, ref: 'Actor'},
 
     //Actor Comments for User Made Posts
     comments: [new Schema({
@@ -76,33 +101,32 @@ const userSchema = new mongoose.Schema({
 
     absTime: Date, //absolute date (time in real world), this post took place in
     relativeTime: {type: Number}
-    })],
+  })],
 
   //logins user made to site
   log: [new Schema({
     time: Date,
-    userAgent: String,
-    ipAddress: String
     })],
 
-  //quiz results (new workflow will not have this)
-  quiz: [new Schema({
-    type: String,
-    modual: String,
-    score: Number
-    })],
-  //evaluation quiz results (not in new workflow, may be added later)
-  eval_quiz: [new Schema({
-    question: String,
-    type: String,
-    modual: String,
-    val: Number
-    })],
+  // //quiz results (new workflow will not have this)
+  // quiz: [new Schema({
+  //   type: String,
+  //   modual: String,
+  //   score: Number
+  //   })],
+  // //evaluation quiz results (not in new workflow, may be added later)
+  // eval_quiz: [new Schema({
+  //   question: String,
+  //   type: String,
+  //   modual: String,
+  //   val: Number
+  //   })],
 
   //pages user has visited. Not sure if this is used in TestDrive
   pageLog: [new Schema({
     time: Date,
-    page: String
+    subdirectory1: String,
+    subdirectory2: String
     })],
 
   //When and why someone reported an actor
@@ -115,43 +139,168 @@ const userSchema = new mongoose.Schema({
 
   //all actions a user can make in a feed
   feedAction: [new Schema({
-        post: {type: Schema.ObjectId, ref: 'Script'}, //which post did the user interact with?
-        modual: String, //which lesson mod did this take place in?
-        postClass: String, //class of the post itself (don't think this is used anymore)
-        rereadTimes: Number, //number of times post has been viewed by user (not used in TestDrive)
-        startTime: Number, //always the newest startTime (full date in ms) (not used in TestDrive)
-        liked: {type: Boolean, default: false}, //did the user like this post in the feed?
-        readTime : [Number], //array of how long a user read a post. Each read is a new element in this array
-        flagTime  : [Number], //same but for flagging
-        likeTime  : [Number], //same but for liking
-        replyTime  : [Number], //same but for commenting
+    post: {type: Schema.ObjectId, ref: 'Script'}, //which post did the user interact with?
+    modual: String, //which lesson mod did this take place in?
+    postClass: String, //class of the post itself (don't think this is used anymore)
+    rereadTimes: Number, //number of times post has been viewed by user (not used in TestDrive)
+    startTime: Number, //always the newest startTime (full date in ms) (not used in TestDrive)
+    liked: {type: Boolean, default: false}, //did the user like this post in the feed?
+    flagged: {type: Boolean, default: false}, //did the user flag this post in the feed?
+    readTime : [Number], //array of how long a user read a post. Each read is a new element in this array
+    flagTime  : [Date], //same but for flagging
+    likeTime  : [Date], //same but for liking
+    replyTime  : [Date], //same but for commenting
 
-        //user created comment on an actor's post (fake post)
-        comments: [new Schema({
-          comment: {type: Schema.ObjectId},//ID Reference for Script post comment
-          liked: {type: Boolean, default: false}, //is liked?
-          flagged: {type: Boolean, default: false},//is Flagged?
-          flagTime  : [Number], //array of flag times
-          likeTime  : [Number], //array of like times
+    // popup modal info
+    modal: [new Schema({
+      modalName: String,
+      modalOpened: {type: Boolean, default: false},
+      modalOpenedTime: Number,
+      modalViewTime: Number,
+      modalCheckboxesCount: Number,
+      modalCheckboxesInput: Number
+    },{_id: false, versionKey: false })],
 
-          new_comment: {type: Boolean, default: false}, //is new comment
-          new_comment_id: Number,//ID for comment
-          comment_body: String, //Original Body of User Post
-          absTime: Date,
-          commentTime: {type: Number},
-          time: {type: Number}
-          },{_id: true, versionKey: false })]
+    //user created comment on an actor's post (fake post)
+    comments: [new Schema({
+      comment: {type: Schema.ObjectId},//ID Reference for Script post comment
+      liked: {type: Boolean, default: false}, //is liked?
+      flagged: {type: Boolean, default: false},//is Flagged?
+      flagTime  : [Date], //array of flag times
+      likeTime  : [Date], //array of like times
+
+      new_comment: {type: Boolean, default: false}, //is new comment
+      new_comment_id: Number,//ID for comment
+      comment_body: String, //Original Body of User Post
+      absTime: Date,
+      commentTime: {type: Number},
+      // time: {type: Number}
+      },{_id: true, versionKey: false })]
     }, {_id: true, versionKey: false })],
+
+  // start page log data
+  startPageAction: [new Schema({
+    subdirectory1: String, // which page the user is on
+    subdirectory2: String, // which module the user is on
+    actionType: {type: String}, // Next or Term
+    vocabTerm: {type: String}, // none if actionType is "next"
+    absoluteTimestamp: Date // time the actuon occurred in the real world
+  }, {_id: true, versionKey: false})],
+
+  // step log data (for any walkthrough-style text bubbles)
+  introjsStepAction: [new Schema({
+    subdirectory1: String, // which page the user is on
+    subdirectory2: String, // which module the user is on
+    stepNumber: Number, // which step this action is on (steps start from 0)
+    viewDuration: Number, // how long the user was on this step (milliseconds)
+    absoluteStartTime: Date // time the step opened in the real world
+  }, {_id: true, versionKey: false })],
+
+  // all actions a user can make in the tutorial (not including introjs steps)
+  tutorialAction: [new Schema({
+    post: String, //which post did the user interact with?
+    modual: String, //which lesson mod did this take place in?
+    startTime: Number, //always the newest startTime (full date in ms) (not used in TestDrive)
+    liked: {type: Boolean, default: false}, //did the user like this post in the feed?
+    flagged: {type: Boolean, default: false}, //did the user flag this post in the feed?
+    flagTime  : [Date], //same but for flagging
+    likeTime  : [Date], //same but for liking
+    replyTime  : [Date], //same but for commenting
+    comments: [new Schema({
+      comment: String,
+      liked: {type: Boolean, default: false}, //is liked?
+      flagged: {type: Boolean, default: false},//is Flagged?
+      flagTime  : [Date], //array of flag times
+      likeTime  : [Date], //array of like times
+
+      new_comment: {type: Boolean, default: false}, //is new comment
+      new_comment_id: String,//ID for comment
+      comment_body: String, //Original Body of User Post
+      absTime: Date,
+      commentTime: {type: Number},
+      // time: {type: Number}
+    },{_id: true, versionKey: false })]
+  }, {_id: true, versionKey: false })],
+
+  // all actions a user can make in the guided activity (not blue dots)
+  guidedActivityAction: [new Schema({
+    post: String, //which post did the user interact with?
+    modual: String, //which lesson mod did this take place in?
+    startTime: Number, //always the newest startTime (full date in ms) (not used in TestDrive)
+    liked: {type: Boolean, default: false}, //did the user like this post in the feed?
+    flagged: {type: Boolean, default: false}, //did the user flag this post in the feed?
+    flagTime  : [Date], //same but for flagging
+    likeTime  : [Date], //same but for liking
+    replyTime  : [Date], //same but for commenting
+
+    // popup modal info
+    modal: [new Schema({
+      modalName: String,
+      modalOpened: {type: Boolean, default: false},
+      modalOpenedTime: Number,
+      modalViewTime: Number,
+      modalCheckboxesCount: Number,
+      modalCheckboxesInput: Number
+    },{_id: false, versionKey: false })],
+
+    //user created comment on an actor's post (fake post)
+    comments: [new Schema({
+      //comment: {type: Schema.ObjectId},//ID Reference for Script post comment
+      comment: String,
+      liked: {type: Boolean, default: false}, //is liked?
+      flagged: {type: Boolean, default: false},//is Flagged?
+      flagTime  : [Date], //array of flag times
+      likeTime  : [Date], //array of like times
+
+      new_comment: {type: Boolean, default: false}, //is new comment
+      new_comment_id: String,//ID for comment
+      comment_body: String, //Original Body of User Post
+      absTime: Date,
+      commentTime: {type: Number},
+      // time: {type: Number}
+    },{_id: true, versionKey: false })]
+  }, {_id: true, versionKey: false })],
+
+  // action in the reflection section
+  reflectionAction: [new Schema({
+    absoluteTimeContinued: Date, //time that the user left the page by clicking continue
+    modual: String, //which lesson mod did this take place in?
+    questionNumber: String, // corresponds with reflectionSectionData.json, i.e. 'Q1', 'Q2', 'Q3'...
+    prompt: String,
+    type: String, // Which type of response this will be: written, checkbox, radio, habitsUnique
+    writtenResponse: String,
+    radioSelection: String, // this is for the presentation module
+    numberOfCheckboxes: Number,
+    checkboxResponse: Number,
+    checkedActualTime: Boolean, // this is unique to the habits module
+  }, {_id: true, versionKey: false })],
+
+  // blue dot action in a guided activity
+  blueDotAction: [new Schema({
+    subdirectory1: String, // which page the user is on
+    subdirectory2: String, // which module the user is on
+    dotNumber: Number, // which dot was opened
+    absoluteTimeOpened: Date, // date of when the dot was opened
+    viewDuration: Number, // how long the user viewed the dot (milliseconds)
+    clickedGotIt: Boolean
+  }, {_id: true, versionKey: false })],
 
   //users profile
   profile: {
     name: String,
-    gender: String,
     location: String,
     bio: String,
-    website: String, //I don't believe this has ever been used
     picture: String
-  }
+  },
+
+  // history of all changes to the user profile
+  profileHistory: [new Schema({
+    absoluteTimeChanged: Date,
+    name: String,
+    location: String,
+    bio: String,
+    picture: String
+  }, {_id: true, versionKey: false })],
 }, { timestamps: true });
 
 /**
@@ -180,39 +329,36 @@ userSchema.methods.comparePassword = function comparePassword(candidatePassword,
 };
 
 /**
- * Add Log to User if access is 1 hour from last use.
+ * Add Log to User regardless of when last access was
  */
-userSchema.methods.logUser = function logUser(time, agent, ip) {
-
-  if(this.log.length > 0)
-  {
-    var log_time = new Date(this.log[this.log.length -1].time);
-
-    if(time >= (log_time.getTime() + 3600000))
-    {
-      var log = {};
-      log.time = time;
-      log.userAgent = agent;
-      log.ipAddress = ip;
-      this.log.push(log);
-    }
-  }
-  else if(this.log.length == 0)
-  {
+userSchema.methods.logUser = function logUser(time) {
+  if(this.log.length > 0) {
     var log = {};
     log.time = time;
-    log.userAgent = agent;
-    log.ipAddress = ip;
     this.log.push(log);
   }
-
+  else if(this.log.length == 0) {
+    var log = {};
+    log.time = time;
+    this.log.push(log);
+  }
+  this.save((err) => {
+    if (err) {
+      return next(err);
+    }
+  });
 };
 
-userSchema.methods.logPage = function logPage(time, page) {
-
+userSchema.methods.logPage = function logPage(time, subdirectory1, subdirectory2) {
     let log = {};
     log.time = time;
-    log.page = page;
+    if(subdirectory1 !== undefined){
+      log.subdirectory1 = subdirectory1;
+      log.subdirectory2 = subdirectory2;
+    } else {
+      log.subdirectory1 = "home";
+      log.subdirectory2 = "";
+    }
     this.pageLog.push(log);
 };
 
@@ -385,6 +531,7 @@ userSchema.methods.gravatar = function gravatar(size) {
   return `https://gravatar.com/avatar/${md5}?s=${size}&d=retro`;
 };
 
+//TODO: change here, use ternary operator
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;

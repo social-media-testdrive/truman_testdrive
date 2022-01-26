@@ -4,251 +4,308 @@ block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   -var adType = user.targetedAdTopic;
   
-  .ui.container.addBottomMargin
+  .ui.container.resultsAddBottomMargin
     .ui.stackable.column.grid
       .ui.column
         .insertPrint
-        .ui.raised.segment
+        .ui.raised.segment.reflectionTopSegment
           h3.ui.header
             i.question.blue.icon
             .content
               | Reflect
-          .ui.label
-            h4
-              i.exclamation.triangle.icon
-
-              | These were the advertisements in the timeline. How many did you notice?
-          br
-          br
-          .ui.stackable.three.cards
-            
-            if (adType == 'Sports')
-              
-              .ui.fluid.card.dim()#card1
-                .content      
-                  .ui.right.floated.menu
-                    .ui.dropdown.icon.item
-                      i.ellipsis.horizontal.icon
-                  a.left.floated(href='/user/3striiipes')
-                    img.ui.avatar.image(src=cdn+'/profile_pictures/three_stripes_pfp.jpg')
-                    span='Three Stripes Shoes'
-                .image
-                  img.post(src=cdn+'/post_pictures/three_stripes_ad.jpg')
-                #step4.content
-                  .description#hashtag
-                    | For your next race, choose ThreeStripes. 
-                    span #sneakerheads #runnerheads #ad
           
-              .ui.fluid.card.dim()#card2
-                .content      
-                  .ui.right.floated.menu
-                    .ui.dropdown.icon.item
-                      i.ellipsis.horizontal.icon
-                  a.left.floated(href='/user/3striiipes')
-                    img.ui.avatar.image(src=cdn+'/profile_pictures/three_stripes_pfp.jpg')
-                    span='Three Stripes Shoes'
-                .image
-                  img.post(src=cdn+'/post_pictures/three_stripes_ad_2.jpeg')
-                #step4.content
-                  .description#hashtag
-                    | When's your next big race? Comment down below! 
-
-              .ui.fluid.card.dim()#card3
-                .content      
-                  .ui.right.floated.menu
-                    .ui.dropdown.icon.item
-                      i.ellipsis.horizontal.icon
-                  a.left.floated(href='/user/rockvilleclubsoccer')
-                    img.ui.avatar.image(src=cdn+'/profile_pictures/club_soccer_pfp.jpg')
-                    span='Rockville Club Soccer'
-                .image
-                  img.post(src=cdn+'/post_pictures/club_soccer_ad.jpg')
-                #step4.content
-                  .description#hashtag
-                    | Spots are filling up fast! Make sure you sign up for club soccer TODAY.
-                    
-            if (adType == 'Gaming')
+          .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection1
+            i.down.arrow.icon
+            |   Start
+          .ui.basic.segment.reflectionPromptSegment.hidden.noPadding.selectPostsQuestion1   
+            .ui.label.resultsPromptLabel
+              h4
+                i.exclamation.triangle.icon.yellowIcon
+                | These were the advertisements in the timeline. How many did you notice?
+            h3.grayElement
+              i.hand.pointer.icon
+              | Click on the ones that you noticed! 
+            .ui.stackable.three.cards.selectablePosts
               
-              .ui.fluid.card.dim()#card1
-                .content      
-                  .ui.right.floated.menu
-                    .ui.dropdown.icon.item
-                      i.ellipsis.horizontal.icon
-                  a.left.floated(href='/user/nentindo')
-                    img.ui.avatar.image(src=cdn+'/profile_pictures/controller_pfp.jpg')
-                    span='Nentindo'
-                .image
-                  img.post(src=cdn+'/post_pictures/controller_ad.jpg')
-                #step4.content
-                  .description#hashtag
-                    | Which team are you on: 🔴or 🔵?
+              if (adType == 'Sports')
+                
+                .ui.fluid.card.dim()#card1
+                  .content      
+                    .ui.right.floated.menu
+                      .ui.dropdown.icon.item
+                        i.ellipsis.horizontal.icon
+                    a.left.floated(href='/user/3striiipes')
+                      img.ui.avatar.image(src=cdn+'/profile_pictures/three_stripes_pfp.jpg')
+                      span='Three Stripes Shoes'
+                  .image
+                    img.post(src=cdn+'/post_pictures/three_stripes_ad.jpg')
+                  #step4.content
+                    .description#hashtag
+                      | For your next race, choose ThreeStripes. 
+                      span #sneakerheads #runnerheads #ad
+            
+                .ui.fluid.card.dim()#card2
+                  .content      
+                    .ui.right.floated.menu
+                      .ui.dropdown.icon.item
+                        i.ellipsis.horizontal.icon
+                    a.left.floated(href='/user/3striiipes')
+                      img.ui.avatar.image(src=cdn+'/profile_pictures/three_stripes_pfp.jpg')
+                      span='Three Stripes Shoes'
+                  .image
+                    img.post(src=cdn+'/post_pictures/three_stripes_ad_2.jpeg')
+                  #step4.content
+                    .description#hashtag
+                      | When's your next big race? Comment down below! 
 
-              .ui.fluid.card.dim()#card2
-                .content      
-                  .ui.right.floated.menu
-                    .ui.dropdown.icon.item
-                      i.ellipsis.horizontal.icon
-                  a.left.floated(href='/user/vrtech')
-                    img.ui.avatar.image(src=cdn+'/profile_pictures/VR_pfp.jpg')
-                    span='VR Tech'
-                .image
-                  img.post(src=cdn+'/post_pictures/VR_ad.jpg')
-                #step4.content
-                  .description#hashtag
-                    | Play any game on our VR headsets. Experience the future, now. #VR #tech 
+                .ui.fluid.card.dim()#card3
+                  .content      
+                    .ui.right.floated.menu
+                      .ui.dropdown.icon.item
+                        i.ellipsis.horizontal.icon
+                    a.left.floated(href='/user/rockvilleclubsoccer')
+                      img.ui.avatar.image(src=cdn+'/profile_pictures/club_soccer_pfp.jpg')
+                      span='Rockville Club Soccer'
+                  .image
+                    img.post(src=cdn+'/post_pictures/club_soccer_ad.jpg')
+                  #step4.content
+                    .description#hashtag
+                      | Spots are filling up fast! Make sure you sign up for club soccer TODAY.
+                      
+              if (adType == 'Gaming')
+                
+                .ui.fluid.card.dim()#card1
+                  .content      
+                    .ui.right.floated.menu
+                      .ui.dropdown.icon.item
+                        i.ellipsis.horizontal.icon
+                    a.left.floated(href='/user/nentindo')
+                      img.ui.avatar.image(src=cdn+'/profile_pictures/controller_pfp.jpg')
+                      span='Nentindo'
+                  .image
+                    img.post(src=cdn+'/post_pictures/controller_ad.jpg')
+                  #step4.content
+                    .description#hashtag
+                      | Which team are you on: 🔴or 🔵?
 
-              .ui.fluid.card.dim()#card3
-                .content      
-                  .ui.right.floated.menu
-                    .ui.dropdown.icon.item
-                      i.ellipsis.horizontal.icon
-                  a.left.floated(href='/user/rogerthatapp')
-                    img.ui.avatar.image(src=cdn+'/profile_pictures/rogerthat_pfp.jpg')
-                    span='Roger That Mobile App'
-                .image
-                  img.post(src=cdn+'/post_pictures/roger_ad.jpg')
-                #step4.content
-                  .description#hashtag
-                    | Download the #1 mobile game in the world. #rogerthat #app
-                    
-            if (adType == 'Food')
-              
-              .ui.fluid.card.dim()#card1
-                .content      
-                  .ui.right.floated.menu
-                    .ui.dropdown.icon.item
-                      i.ellipsis.horizontal.icon
-                  a.left.floated(href='/user/mcburgers')
-                    img.ui.avatar.image(src=cdn+'/profile_pictures/burger_ad_pfp.jpg')
-                    span='McBurgers'
-                .image
-                  img.post(src=cdn+'/post_pictures/burger_ad.jpg')
-                #step4.content
-                  .description#hashtag
-                    | Yum. 11/10. (📸: @ethan-the-man)
-  
-              .ui.fluid.card.dim()#card2
-                .content      
-                  .ui.right.floated.menu
-                    .ui.dropdown.icon.item
-                      i.ellipsis.horizontal.icon
-                  a.left.floated(href='/user/crunchflakes')
-                    img.ui.avatar.image(src=cdn+'/profile_pictures/crunch_flakes_pfp.jpg')
-                    span='Crunch Flakes Cereal'
-                .image
-                  img.post(src=cdn+'/post_pictures/cereal_ad.jpg')
-                #step4.content
-                  .description#hashtag
-                    | A spoonful of ______ 🤤#strawberrycrunch
-  
-              .ui.fluid.card.dim()#card3
-                .content      
-                  .ui.right.floated.menu
-                    .ui.dropdown.icon.item
-                      i.ellipsis.horizontal.icon
-                  a.left.floated(href='/user/popdrinks')
-                    img.ui.avatar.image(src=cdn+'/profile_pictures/pop_drinks_pfp.jpg')
-                    span='Pop Drinks'
-                .image
-                  img.post(src=cdn+'/post_pictures/drink_ad.jpg')
-                #step4.content
-                  .description#hashtag
-                    | 😱Six brand new flavors 😱Coming soon, in-stores near you. 
+                .ui.fluid.card.dim()#card2
+                  .content      
+                    .ui.right.floated.menu
+                      .ui.dropdown.icon.item
+                        i.ellipsis.horizontal.icon
+                    a.left.floated(href='/user/vrtech')
+                      img.ui.avatar.image(src=cdn+'/profile_pictures/VR_pfp.jpg')
+                      span='VR Tech'
+                  .image
+                    img.post(src=cdn+'/post_pictures/VR_ad.jpg')
+                  #step4.content
+                    .description#hashtag
+                      | Play any game on our VR headsets. Experience the future, now. #VR #tech 
 
-          br
-          br
+                .ui.fluid.card.dim()#card3
+                  .content      
+                    .ui.right.floated.menu
+                      .ui.dropdown.icon.item
+                        i.ellipsis.horizontal.icon
+                    a.left.floated(href='/user/rogerthatapp')
+                      img.ui.avatar.image(src=cdn+'/profile_pictures/rogerthat_pfp.jpg')
+                      span='Roger That Mobile App'
+                  .image
+                    img.post(src=cdn+'/post_pictures/roger_ad.jpg')
+                  #step4.content
+                    .description#hashtag
+                      | Download the #1 mobile game in the world. #rogerthat #app
+                      
+              if (adType == 'Food')
+                
+                .ui.fluid.card.dim()#card1
+                  .content      
+                    .ui.right.floated.menu
+                      .ui.dropdown.icon.item
+                        i.ellipsis.horizontal.icon
+                    a.left.floated(href='/user/mcburgers')
+                      img.ui.avatar.image(src=cdn+'/profile_pictures/burger_ad_pfp.jpg')
+                      span='McBurgers'
+                  .image
+                    img.post(src=cdn+'/post_pictures/burger_ad.jpg')
+                  #step4.content
+                    .description#hashtag
+                      | Yum. 11/10. (📸: @ethan-the-man)
+    
+                .ui.fluid.card.dim()#card2
+                  .content      
+                    .ui.right.floated.menu
+                      .ui.dropdown.icon.item
+                        i.ellipsis.horizontal.icon
+                    a.left.floated(href='/user/crunchflakes')
+                      img.ui.avatar.image(src=cdn+'/profile_pictures/crunch_flakes_pfp.jpg')
+                      span='Crunch Flakes Cereal'
+                  .image
+                    img.post(src=cdn+'/post_pictures/cereal_ad.jpg')
+                  #step4.content
+                    .description#hashtag
+                      | A spoonful of ______ 🤤#strawberrycrunch
+    
+                .ui.fluid.card.dim()#card3
+                  .content      
+                    .ui.right.floated.menu
+                      .ui.dropdown.icon.item
+                        i.ellipsis.horizontal.icon
+                    a.left.floated(href='/user/popdrinks')
+                      img.ui.avatar.image(src=cdn+'/profile_pictures/pop_drinks_pfp.jpg')
+                      span='Pop Drinks'
+                  .image
+                    img.post(src=cdn+'/post_pictures/drink_ad.jpg')
+                  #step4.content
+                    .description#hashtag
+                      | 😱Six brand new flavors 😱Coming soon, in-stores near you. 
 
+            br
+            br
 
+        .ui.basic.segment.noPadding.hidden.reflectionTopSegment
+          .ui.raised.segment
+            .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection2
+              i.down.arrow.icon
+              |   Next
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
+              .ui.label.resultsPromptLabel
+                h4.reflectionCheckboxesPrompt(data-questionNumber='Q1')
+                  | #{reflectionData.targeted.Q1.prompt}
+              .content.checkOne
+                .ui.form
+                  br
+                  .inline.fields
+                    label(for='wouldRead', name='wouldRead') 
+                    .field
+                      .ui.checkbox
+                        input(type='checkbox')
+                        label(for='wouldRead', tabindex='0')
+                          | #{reflectionData.targeted.Q1.checkboxLabels[0]}
+                .ui.form
+                  .inline.fields
+                    label(for='checkSource', name='checkSource') 
+                    .field
+                      .ui.checkbox
+                        input(type='checkbox')
+                        label(for='checkSource', tabindex='0') 
+                          | #{reflectionData.targeted.Q1.checkboxLabels[1]}
+                .ui.form
+                  .inline.fields
+                    label(for='corroboration', name='corroboration') 
+                    .field
+                      .ui.checkbox
+                        input(type='checkbox')
+                        label(for='corroboration', tabindex='0')
+                          | #{reflectionData.targeted.Q1.checkboxLabels[2]}
+                .ui.form
+                  .inline.fields
+                    label(for='interacted', name='interacted') 
+                    .field
+                      .ui.checkbox
+                        input(type='checkbox')
+                        label(for='interacted', tabindex='0') 
+                          | #{reflectionData.targeted.Q1.checkboxLabels[3]}
+                .ui.form
+                  .inline.fields
+                    label(for='corroboration', name='wouldViewAd') 
+                    .field
+                      .ui.checkbox
+                        input(type='checkbox')
+                        label(for='wouldViewAd', tabindex='0')
+                          | #{reflectionData.targeted.Q1.checkboxLabels[4]}  
+                .ui.form
+                  .inline.fields
+                    label(for='ignored', name='ignored') 
+                    .field
+                      .ui.checkbox
+                        input(type='checkbox')
+                        label(for='ignored', tabindex='0')
+                          | #{reflectionData.targeted.Q1.checkboxLabels[5]}
+                .ui.form
+                  .inline.fields
+                    label(for='nothing', name='nothing') 
+                    .field
+                      .ui.checkbox
+                        input(type='checkbox')
+                        label(for='nothing', tabindex='0')
+                          | #{reflectionData.targeted.Q1.checkboxLabels[6]}
 
-    .ui.raised.segment
-      .ui.label
-        h4
-          | What did you do when you saw an advertisement or a sponsored post?
-      .content.checkOne
-        .ui.form
-          br
-          .inline.fields
-            label(for='wouldRead', name='wouldRead') 
-            .field
-              .ui.checkbox
-                input(type='checkbox')
-                label(for='wouldRead', tabindex='0') I hid the advertisement from my timeline.
-        .ui.form
-          .inline.fields
-            label(for='checkSource', name='checkSource') 
-            .field
-              .ui.checkbox
-                input(type='checkbox')
-                label(for='checkSource', tabindex='0') I reported the advertisement to the website.
-        .ui.form
-          .inline.fields
-            label(for='corroboration', name='corroboration') 
-            .field
-              .ui.checkbox
-                input(type='checkbox')
-                label(for='corroboration', tabindex='0') I looked at why I was getting the advertisement. 
-        .ui.form
-          .inline.fields
-            label(for='interacted', name='interacted') 
-            .field
-              .ui.checkbox
-                input(type='checkbox')
-                label(for='interacted', tabindex='0') I liked the ad or commented on it.
-        .ui.form
-          .inline.fields
-            label(for='corroboration', name='wouldViewAd') 
-            .field
-              .ui.checkbox
-                input(type='checkbox')
-                label(for='wouldViewAd', tabindex='0') I wanted to click on the advertisement.    
-        .ui.form
-          .inline.fields
-            label(for='ignored', name='ignored') 
-            .field
-              .ui.checkbox
-                input(type='checkbox')
-                label(for='ignored', tabindex='0') I ignored the advertisement.    
-        .ui.form
-          .inline.fields
-            label(for='nothing', name='nothing') 
-            .field
-              .ui.checkbox
-                input(type='checkbox')
-                label(for='nothing', tabindex='0') I didn't notice the advertisement.
+        .ui.basic.segment.noPadding.hidden.reflectionTopSegment
+          .ui.raised.segment
+            .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection3
+              i.down.arrow.icon
+              |   Next
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
+              .ui.label.resultsPromptLabel
+                h4.reflectionPrompt(data-questionNumber='Q2')
+                  | #{reflectionData.targeted.Q2.prompt}
+              .ui.form
+                .inline.fields
+                  label
+                  textarea.glowing-border(rows='2' id="literacy_responseOne")
 
-    .ui.raised.segment
-      .ui.label
-        h4
-          | Why do companies collect data from people's profiles or online activity?
-      .ui.form
-        .inline.fields
-          label
-          textarea.glowing-border(rows='2' id="literacy_responseOne")
+        .ui.basic.segment.noPadding.hidden.reflectionTopSegment
+          .ui.raised.segment
+            .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection4
+              i.down.arrow.icon
+              |   Next
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
+              .ui.label.resultsPromptLabel
+                h4.reflectionPrompt(data-questionNumber='Q3')
+                  | #{reflectionData.targeted.Q3.prompt}
+              .ui.form
+                .inline.fields
+                  label
+                  textarea.glowing-border(rows='2' id="literacy_responseTwo")
 
-    .ui.raised.segment
-      .ui.label
-        h4
-          | Why is it important to know how to identify advertisements on social media?
-      .ui.form
-        .inline.fields
-          label
-          textarea.glowing-border(rows='2' id="literacy_responseTwo")
-
+    .ui.warning.message.hidden.startPromptsWarning
+      .header
+        | Click "Start"
+    .ui.warning.message.hidden.openAllPromptsWarning
+      .header
+        | Click "Next"
+    include ../partials/optInToShareActivityData.pug
     br
-    .ui.big.green.labeled.icon.button(onclick="onPrint()")
+    .ui.big.labeled.icon.button.results_print(onclick="onPrint()")
           i.right.arrow.icon
           |   Print your responses
     br
     br
-    .ui.big.green.labeled.icon.button.cyberbullying_end
+    .ui.big.labeled.icon.button.resultsContinueButton
           i.rocket.icon
           |   Continue
 
       
 block scripts
+  script.
+    var voiceoverMappings = {
+      '.voiceover_reflection1': {
+        "initialDelay": 0,
+        "delay": 0,
+        "files": ['CUSML.2.8.1.mp3']
+      },
+      '.voiceover_reflection2': {
+        "initialDelay": 500,
+        "delay": 0,
+        "files": ['CUSML.2.8.2.mp3']
+      },
+      '.voiceover_reflection3': {
+        "initialDelay": 500,
+        "delay": 0,
+        "files": ['CUSML.2.8.3.mp3']
+      },
+      '.voiceover_reflection4': {
+        "initialDelay": 500,
+        "delay": 0,
+        "files": ['CUSML.2.8.4.mp3']
+      }
+    };
   script(src="/module_js/targeted/targeted_results.js")
+  script(src='/module_js/base_results.js?v=1')
+  script(src='/module_js/voiceover.js')
   
 block styles
   link(rel='stylesheet', href='/css/modules/targeted.css')
   link(rel='stylesheet', href='/css/results.css')
-  
+  link(rel='stylesheet', href='/css/optInToShareActivityData.css')

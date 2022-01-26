@@ -1,22 +1,25 @@
-const hintsList = [
+var hintsList = [
   {
     hint: `Lily would like to hide her location information from the public on
     the internet. Which privacy settings would she have to change?`,
     element: '#hint1',
-    hintPosition: 'top-middle'
+    hintPosition: 'top-middle',
+    audioFile: ['CUSML.7.8.08.mp3']
   },
   {
     hint: `She can <b>turn off location sharing</b> and restrict who can see her
     location to <b>“Friends” only</b>. Let’s try doing this!`,
     element: '#hint2',
-    hintPosition: 'top-middle'
+    hintPosition: 'top-middle',
+    audioFile: ['CUSML.7.8.09.mp3']
   },
   {
     hint: `Have you turned off location sharing and changed who can see Lily’s
     location? Click “<i>Let’s Continue!</i>” to see how her profile has
     changed.`,
     element: '#hint3',
-    hintPosition: 'middle-right'
+    hintPosition: 'middle-right',
+    audioFile: ['CUSML.7.8.10.mp3']
   }
 ];
 

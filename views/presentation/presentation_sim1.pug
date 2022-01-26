@@ -17,8 +17,14 @@ block content
 
   
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column 
-    .ui.one.column.centered.grid
+    .ui.one.column.centered.grid.feedbackMessagesGrid
       .ui.fixed.bottom.sticky
+        .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header Need some help?
+            p Scroll up and click on "Done" to begin!
         .ui.icon.compact.message.warning#removeHidden
           i.close.icon
           i.question.icon.float
@@ -75,13 +81,13 @@ block content
                 span.date Yesterday
                 .rating
                   i.heart.icon
-                  span.num 2
-                  |     Likes
+                  span.num=2
+                  |  Likes
               .text()
                 | same. or maybe a sloth
               .actions
                 a.like.comment Like
-                a.flag.comment.comment Flag
+                a.flag.comment Flag
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
@@ -132,13 +138,13 @@ block content
                 span.date 2 days ago
                 .rating
                   i.heart.icon
-                  span.num 0
-                  |     Likes
+                  span.num=0
+                  |  Likes
               .text()
                 | shadyyyy
               .actions
                 a.like.comment Like
-                a.flag.comment.comment Flag
+                a.flag.comment Flag
           .comment
             a.avatar
               img(src=cdn+'/profile_pictures/user43.png')
@@ -148,13 +154,13 @@ block content
                 span.date 2 days ago
                 .rating
                   i.heart.icon
-                  span.num 1
-                  |     Likes
+                  span.num=1
+                  |  Likes
               .text()
                 | lol u think ur so cool
               .actions
                 a.like.comment Like
-                a.flag.comment.comment Flag
+                a.flag.comment Flag
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
@@ -205,13 +211,13 @@ block content
                 span.date 3 days ago
                 .rating
                   i.heart.icon
-                  span.num 1
-                  |     Likes
+                  span.num=1
+                  |  Likes
               .text()
                 | srsly dude
               .actions
                 a.like.comment Like
-                a.flag.comment.comment Flag
+                a.flag.comment Flag
           .comment
             a.avatar
               img(src=cdn+'/profile_pictures/user43.png')
@@ -221,13 +227,13 @@ block content
                 span.date 3 days ago
                 .rating
                   i.heart.icon
-                  span.num 0
-                  |     Likes
+                  span.num=0
+                  |  Likes
               .text()
                 | yeah i want him to leave lol
               .actions
                 a.like.comment Like
-                a.flag.comment.comment Flag
+                a.flag.comment Flag
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
@@ -235,25 +241,28 @@ block content
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
 
-    button.ui.big.labeled.icon.button.cybersim2#cyberTransButton(style="margin-bottom:4em;")
+    button.ui.big.labeled.icon.button.cybersim2.addBottomMargin#cyberTransButton
         i.rocket.icon
         |   Let's Continue!
-
-
-
-
 
 block scripts
   script.
     var stepsList = [
       {
-        element: document.querySelectorAll('#hint2')[0],
-        intro: `Click on "Done" and then look for the blue dots&nbsp;<a role='button' tabindex='0'
+        element: '#hint2',
+        intro: `Click "Next" to begin!`,
+        position: 'right',
+        scrollTo: 'tooltip',
+        audioFile: ['']
+      },
+      {
+        element: '#hint2',
+        intro: `Click on "Done" and then look for the blue dots&nbsp;&nbsp;<a role='button' tabindex='0'
         class='introjs-hint'><div class='introjs-hint-dot'></div><div
-        class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; 
-        to learn more!`,
+        class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; &nbsp; to learn more...`,
         position:'right',
-        scrollTo:'tooltip'
+        scrollTo:'tooltip',
+        audioFile: ['CUSML.12.4.03.mp3']
       }
     ];
     
@@ -262,26 +271,29 @@ block scripts
         hint: `Here’s Jake’s finsta, jakethesnake. Only 16 of his closest
         friends from school follow this account.`,
         element: '#hint2',
-        hintPosition: 'top-left'
+        hintPosition: 'top-left',
+        audioFile: ['CUSML.12.4.05.mp3']
       },
       {
         hint: `Here, he posts funny pictures and casual things that he would
         not post on his main account because he only wants his best friends
         to see it.`,
         element: '#hint2',
-        hintPosition: 'top-middle'
+        hintPosition: 'top-middle',
+        audioFile: ['CUSML.12.4.06.mp3']
       },
       {
         hint: `Even though Jake doesn’t name the person, the post is unkind
         and stirs up drama. Would Jake post the same thing on his public
         account? Remember to be kind and respectful online!`,
         element: '#hint3',
-        hintPosition: 'top-middle'
+        hintPosition: 'top-middle',
+        audioFile: ['CUSML.12.4.07.mp3']
       }
     ];
-    
+
+  script(src='/module_js/voiceover.js')    
   script(src='/postFunctionalities.js')
-  script(src="/module_js/presentation/presentation_sim1.js")
   script(src="/module_js/base_sim.js")
   
 block styles

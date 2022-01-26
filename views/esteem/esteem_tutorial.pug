@@ -5,6 +5,14 @@ block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   .computer.only.tablet.only.four.wide.column 
   .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.addBottomMargin
+    .ui.one.column.centered.grid.feedbackMessagesGrid
+      .ui.fixed.bottom.sticky
+        .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header Need some help?
+            p Scroll up and click "Next" to begin!
     .ui.fluid.card.test#step1
       .content
         .right.floated.meta= "Yesterday"
@@ -27,8 +35,7 @@ block content
           .ui.like.button
             i.heart.icon
             |  Like
-          a.ui.basic.red.left.pointing.label.count=2
-      
+          a.ui.basic.red.left.pointing.label.count=2  
       .content
         .ui.comments
           .comment
@@ -38,9 +45,10 @@ block content
               a.author Lucy Simms
               .metadata
                 span.date 5 hours ago
-                i.heart.icon
-                span.num=3
-                |  Likes
+                .rating
+                  i.heart.icon
+                  span.num=3
+                  |  Likes
               .text()
                 | so cute!!
               .actions
@@ -53,9 +61,10 @@ block content
               a.author Jenny Schmidt
               .metadata
                 span.date 5 hours ago
-                i.heart.icon
-                span.num=3
-                |  Likes
+                .rating
+                  i.heart.icon
+                  span.num=3
+                  |  Likes
               .text()
                 | When was this? haha
               .actions
@@ -79,7 +88,6 @@ block content
         img.post(src=cdn+"/post_pictures/hang_se.jpg")
       .content
         .description="we hanging @ the mall"
-
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
           i.reply.icon
@@ -91,8 +99,7 @@ block content
           .ui.like.button
             i.heart.icon
             |  Like
-          a.ui.basic.red.left.pointing.label.count=2
-      
+          a.ui.basic.red.left.pointing.label.count=2  
       .content
         .ui.comments
           .comment
@@ -102,15 +109,15 @@ block content
               a.author Andrew Thomas
               .metadata
                 span.date 1 minute ago
-                i.heart.icon
-                span.num=0
-                |  Likes
+                .rating
+                  i.heart.icon
+                  span.num=0
+                  |  Likes
               .text()
                 | fun times
               .actions
                 a.comment.like Like
                 a.comment.flag Flag
-      
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
@@ -118,7 +125,7 @@ block content
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
             
-    .ui.fluid.card.test.addBottomMargin#step3
+    .ui.fluid.card.test#step3
       .content
         .right.floated.meta= "15 Minutes Ago"
         |
@@ -129,7 +136,6 @@ block content
         img.post(src=cdn+"/post_pictures/maui_se.png")
       .content
         .description="maui vacay with the fam🏝️"
-
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
           i.reply.icon
@@ -142,7 +148,6 @@ block content
             i.heart.icon
             |  Like
           a.ui.basic.red.left.pointing.label.count=2
-      
       .content
         .ui.comments
           .comment
@@ -152,9 +157,10 @@ block content
               a.author Susan Turner
               .metadata
                 span.date 1 minute ago
-                i.heart.icon
-                span.num=0
-                |  Likes
+                .rating
+                  i.heart.icon
+                  span.num=0
+                  |  Likes
               .text()
                 | Wow so beautiful!!🌺
               .actions
@@ -167,9 +173,10 @@ block content
               a.author Josh Radin
               .metadata
                 span.date 1 minute ago
-                i.heart.icon
-                span.num=0
-                |  Likes
+                .rating
+                  i.heart.icon
+                  span.num=0
+                  |  Likes
               .text()
                 | 😎
               .actions
@@ -182,7 +189,7 @@ block content
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
       
-    .ui.fluid.card.test.addBottomMargin#step3B
+    .ui.fluid.card.test#step3B
       .content
         .right.floated.meta= "15 Minutes Ago"
         |
@@ -208,7 +215,6 @@ block content
             i.heart.icon
             |  Like
           a.ui.basic.red.left.pointing.label.count=2
-      
       .content
         .ui.comments
           .comment
@@ -232,9 +238,7 @@ block content
             img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
-                
-               
-                 
+                               
     .ui.fluid.card.test#step4
       .content
         .right.floated.meta= "15 Minutes Ago"
@@ -246,7 +250,6 @@ block content
         img.post(src=cdn+"/post_pictures/joy_se.jpg")
       .content
         .description="My motto"
-
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
           i.reply.icon
@@ -258,8 +261,7 @@ block content
           .ui.like.button
             i.heart.icon
             |  Like
-          a.ui.basic.red.left.pointing.label.count=2
-      
+          a.ui.basic.red.left.pointing.label.count=2    
       .content
         .ui.comments
           .comment
@@ -269,25 +271,25 @@ block content
               a.author Nina Ruiz
               .metadata
                 span.date 1 minute ago
-                i.heart.icon
-                span.num=0
-                |  Likes
+                .rating
+                  i.heart.icon
+                  span.num=0
+                  |  Likes
               .text()
                 | good one
               .actions
                 a.comment.like Like
-                a.comment.flag Flag
-          
+                a.comment.flag Flag      
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
             img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
           input.newcomment(type='text' placeholder='Write a Comment')
-          i.big.send.link.icon
-  //-#######################
-    
+          i.big.send.link.icon  
 
 block scripts
   script(src='/postFunctionalities.js')
   script(src="/module_js/esteem/esteem_tutorial.js")
-    
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_introSteps.js")
+  script(src='/module_js/base_tutorial.js')

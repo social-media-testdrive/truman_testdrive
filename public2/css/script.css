@@ -1,3 +1,25 @@
+/* create a new post sticky at top of feed */
+.ui.sticky.newPostSticky .ui.input {
+  box-shadow: 7px -2px 6px 18px #f5f8fa;
+  z-index: 800;
+}
+
+.ui.sticky.newPostSticky .ui.label,
+.ui.sticky.newPostSticky input {
+  border-radius: 0;
+}
+
+/* custom tutorial classes */
+.stickyTooltip {
+  position: fixed !important;
+  top: 85px !important;
+}
+
+.stickyTooltip + .introjs-fixedTooltip{
+  position: fixed !important;
+  top: 85px !important;
+}
+
 /* user made post */
 
 .userMadePost .two.attached.buttons {
@@ -35,10 +57,6 @@
 }
 
 /* normal actor post */
-
-.img.post img {
-  max-width:100%;
-}
 
 .img.post img.imageWithModal {
   cursor:pointer;
@@ -79,7 +97,12 @@
 
 /* make a new post modal */
 
-.newPostModal .field img {
+.ui.modal.newPostModal {
+  margin-top: 9em;
+  margin-bottom: 4em;
+}
+
+.ui.modal.newPostModal .field img {
   width: 65%;
   height: auto;
 }

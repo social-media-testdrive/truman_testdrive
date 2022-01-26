@@ -5,7 +5,7 @@ block content
   
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   -var s3 = "https://testdrive-filesystem.s3.us-east-2.amazonaws.com/"
-  -//var cdn = "";
+  -var phishingWarningText = "This is a phishing website! You should not enter any private information.";
   .computer.only.tablet.only.four.wide.column
     .ui.sticky.sideMenu
       .ui.card
@@ -29,17 +29,16 @@ block content
   #loading.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
     img.ui.centered.small.image(src='/images/heart.svg')
       
-  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column(style='display: none;')  
-  
-    //- Input for creating new post at top of feed
-    #newpost.ui.fluid.left.labeled.right.icon.input
-      .ui.label
-        if user.profile.picture
-          img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture)
-        else
-          img.ui.avatar.image(src=user.gravatar(60))
-      input(type='text', placeholder='Create a post')
-      i.big.photo.link.icon
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.hidden  
+    .ui.sticky.newPostSticky
+      #newpost.ui.fluid.left.labeled.right.icon.input.habitsHomeDisplay
+        .ui.label
+          if user.profile.picture
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture)
+          else
+            img.ui.avatar.image(src=user.gravatar(60))
+        input(type='text', placeholder='Create a post')
+        i.big.photo.link.icon
   
     each val in script
       //- create a card for each post in val (if by user make the card a little different)
@@ -68,7 +67,7 @@ block content
               img(src=cdn+"/post_pictures/"+val.picture)
           .content
             .description=val.body
-          .two.ui.bottom.attached.icon.buttons(style="z-index:0;")
+          .two.ui.bottom.attached.icon.buttons
             .ui.reply.button(tabindex='0')
               i.reply.icon
               |  Reply
@@ -98,23 +97,23 @@ block content
                           .content
                             a.author(href='/me/'+mod)=user.profile.name || user.username || user.id
                             .metadata
-                              span.date.sim=(Date.now() + comment.time)
-                              .rating
-                                if comment.liked
-                                  i.red.heart.icon
-                                  span=comment.likes
-                                  | Likes 
-                                else
-                                  i.heart.icon
-                                  span.num=comment.likes
-                                  |  Likes
+                              span.date.sim=(comment.time)
+                              //- .rating
+                              //-   if comment.liked
+                              //-     i.red.heart.icon
+                              //-     span=comment.likes
+                              //-     | Likes 
+                              //-   else
+                              //-     i.heart.icon
+                              //-     span.num=comment.likes
+                              //-     |  Likes
                             .text=comment.body
-                            .actions
-                              if comment.liked
-                                a.red.like.comment Like
-                              else
-                                a.like.comment Like
-                              a.flag.comment Flag
+                            //- .actions
+                            //-   if comment.liked
+                            //-     a.red.like.comment Like
+                            //-   else
+                            //-     a.like.comment Like
+                            //-   a.flag.comment Flag
                       //- Else this is a normal comment from the script
                       else
                         .comment(commentID=comment.commentID)
@@ -140,34 +139,11 @@ block content
                               else
                                 a.like.comment Like
                               a.flag.comment Flag
-          //- .extra.content
-          //-   if user.comment_prompt == "yes"
-          //-     .description(style="text-align:center;background:#E8E8E8")="How is "+(user.profile.name || user.username || user.id)+" Feeling?"
-          //-     .ui.fluid.left.labeled.right.icon.input
-          //-       .ui.label            
-          //-         if user.profile.picture
-          //-           img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name || user.username || user.id)
-          //-         else
-          //-           img.ui.avatar.image(src=user.gravatar(60), name=user.profile.name || user.username || user.id)
-          //-       input.newcomment(type='text', placeholder='Write a Comment')
-          //-       i.big.send.link.icon
-          //-   else
-          //-     .ui.fluid.left.labeled.right.icon.input
-          //-       .ui.label
-          //-         if user.profile.picture
-          //-           img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name || user.username || user.id)
-          //-         else
-          //-           img.ui.avatar.image(src=user.gravatar(60), name=user.profile.name || user.username || user.id)            
-          //-       input.newcomment(type='text', placeholder='Write a Comment')
-          //-       i.big.send.link.icon
-
+        
       //- Now we are making posts by Actors, not the USER
-      
       else
-      
         //-this is a totally normal actor post
         .ui.fluid.card.dim(postNumber = val.post_id, postID=val.id, ui=user.ui, transparency=user.transparency, notify=user.notify, state=val.state || 'unread', type='actor', actor_un = val.actor.username, actor_name = val.actor.profile.name, actor_pic = val.actor.profile.picture)
-          //- dimmer DIV for flagging
           .ui.dimmer.flag
                 .content
                   .center
@@ -185,15 +161,15 @@ block content
               span=val.actor.profile.name
           .img.post
             if (val.module == 'digital-literacy' && val.info_text != "")           
-              img(src='/images/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPost()',style="max-width:100%;cursor:pointer")
+              img(src='/images/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPost()')
             else
-              img(src='/images/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, style="max-width:100%;")
+              img(src='/images/picture.svg', data-src=cdn+"/post_pictures/"+val.picture)
           .content
             .description!=val.body 
               if(val.info_text != "")
                 | &nbsp
-                span.phishingLink(phishingPostType=val.type, style="color:#0000FF;")=val.info_text
-          .three.ui.bottom.attached.icon.buttons(style="z-index:0;")
+                span.phishingLink.blueText(phishingPostType=val.type)=val.info_text
+          .three.ui.bottom.attached.icon.buttons
             .ui.reply.button(tabindex='0')
               i.reply.icon
               |  Reply
@@ -228,15 +204,15 @@ block content
                       .content
                         a.author(href='/me/'+mod)=user.profile.name || user.username || user.id
                         .metadata
-                          span.date.sim=(Date.now() + comment.time)
-                          .rating
-                            i.heart.icon
-                            span.num=0
-                            |  Likes
+                          span.date.sim=(comment.time)
+                          //- .rating
+                          //-   i.heart.icon
+                          //-   span.num=0
+                          //-   |  Likes
                         .text=comment.body
-                        .actions
-                          a.like.comment Like
-                          a.flag.comment Flag
+                        //- .actions
+                        //-   a.like.comment Like
+                        //-   a.flag.comment Flag
                   //- Else this is a normal comment from the script
                   else
                     .comment(commentID=comment.id)
@@ -282,12 +258,13 @@ block content
           
     br
     br
-
-    .ui.large.long.modal#phishingModal1(style="margin-bottom:4em;")
+  
+    include ../partials/script/modals/newUserPost
+    .ui.large.long.modal#phishingModal1(data-modalName="phishing_surveyScam")
       i.close.icon  
       .ui.center.aligned.header FILL OUT THIS SURVEY TO RECEIVE A FREE GIFT CARD!
       .content
-        .ui.one.column.centered.grid(style="margin-top:1em; margin-bottom:1em;")
+        .ui.one.column.centered.grid
           .ui.green.large.statistic
             .label Fill out this survey to receive a gift card worth    
             .value
@@ -295,36 +272,36 @@ block content
             .label to any store you want!
 
         .ui.form
-          .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
+          .field(data-tooltip=phishingWarningText data-position="bottom left")
             label First Name
             input(readonly='')
-          .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
+          .field(data-tooltip=phishingWarningText data-position="bottom left")
             label Last Name
             input(readonly='')
-          .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
+          .field(data-tooltip=phishingWarningText data-position="bottom left")
             label Birth Date
             input(readonly='')
-          .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
+          .field(data-tooltip=phishingWarningText data-position="bottom left")
             label Email Address
             input(readonly='')
-          .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
+          .field(data-tooltip=phishingWarningText data-position="bottom left")
             label Home Address
             input(readonly='')
           br
           .actions
-           .ui.right.labeled.icon.button(data-tooltip="This is a phishing website! You should not enter any private information." data-position="top left")
+           .ui.right.labeled.icon.button(data-tooltip=phishingWarningText data-position="top left")
              | Submit
              i.checkmark.icon 
            .ui.negative.right.labeled.icon.button
              | Cancel
              i.close.icon 
                
-    .ui.large.long.modal#phishingModal2(style="margin-bottom:4em;")
+    .ui.large.long.modal#phishingModal2(data-modalName="phishing_loginScam")
       i.close.icon  
       .ui.center.aligned.header 
-        span(style="color:red;") !WARNING! 
+        span.setRed !WARNING! 
         | Our systems show that your TestDrive account is 
-        span(style="color:red;") AT RISK!
+        span.setRed AT RISK!
 
       .content
         .ui.error.icon.message
@@ -334,22 +311,22 @@ block content
               | Enter your login information to prove that it's you
 
         .ui.form
-          .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
+          .field(data-tooltip=phishingWarningText data-position="bottom left")
             label Username
             input(readonly='' placeholder='Enter your username...')
-          .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
+          .field(data-tooltip=phishingWarningText data-position="bottom left")
             label Password
             input(readonly='' placeholder='Enter your password...')
           br
           .actions
-            .ui.right.labeled.icon.button(data-tooltip="This is a phishing website! You should not enter any private information." data-position="top left")
+            .ui.right.labeled.icon.button(data-tooltip=phishingWarningText data-position="top left")
               | Submit
               i.checkmark.icon 
             .ui.negative.right.labeled.icon.button
               | Cancel
               i.close.icon 
               
-    .ui.large.long.modal#phishingModal3(style="margin-bottom:4em;")
+    .ui.large.long.modal#phishingModal3(data-modalName="phishing_creditCardScam")
       i.close.icon  
       .ui.center.aligned.header WOW! Get a new Switch for just $19.99!!
       .ui.one.column.centered.grid
@@ -357,123 +334,44 @@ block content
          .ui.medium.centered.image
            img(src=cdn+'/post_pictures/nintendo_phi.jpg')
          .description
-           .ui.header.cardScamHeader This deal will NOT LAST!! 
+           .ui.header.setBigText This deal will NOT LAST!! 
            .ui.header 
              | HURRY - only
-             span(style="color:red;")  3
+             span.setRed  3
              |  left!!!
       .content
        .ui.header Enter your information to place an order for this CRAZY deal! 
        .ui.form
-          .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
+          .field(data-tooltip=phishingWarningText data-position="bottom left")
             label First Name
             input(readonly='')
-          .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
+          .field(data-tooltip=phishingWarningText data-position="bottom left")
             label Last Name
             input(readonly='')
-          .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
+          .field(data-tooltip=phishingWarningText data-position="bottom left")
             label Birth Date
             input(readonly='')
-          .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
+          .field(data-tooltip=phishingWarningText data-position="bottom left")
             label Email Address
             input(readonly='')
-          .field(data-tooltip="This is a phishing website! You should not enter any private information." data-position="bottom left")
+          .field(data-tooltip=phishingWarningText data-position="bottom left")
             label Home Address
             input(readonly='')
           br
           .actions
-            .ui.right.labeled.icon.button(data-tooltip="This is a phishing website! You should not enter any private information." data-position="top left")
+            .ui.right.labeled.icon.button(data-tooltip=phishingWarningText data-position="top left")
               | PLACE ORDER
               i.checkmark.icon 
             .ui.negative.right.labeled.icon.button
               | CLOSE
-              i.close.icon 
-               
-    //- New Post Modal  
-    .ui.small.post.modal  
-      i.close.icon  
-      .header Add a New Post  
-      .content  
-        form#postform.ui.feed.form(action='/post/new', method='POST')  
-          input(type='hidden', name='_csrf', value=_csrf) 
-          input(type='hidden', name='module', value=mod)  
-          .field  
-            textarea(rows='3',placeholder='What do you want to share?',name='body')
-          .ui.segment
-              .three.fields
-                .field
-                  .ui.radio.checkbox
-                    input#photoOne.hidden(type='radio' name='picinput' value="basketballshoes.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/basketballshoes.jpg" style='width:65%;height:auto;')
-                .field
-                  .ui.radio.checkbox
-                    input#photoTwo.hidden(type='radio' name='picinput' value="typewriter.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/typewriter.jpg" style='width:65%;height:auto;')
-                .field
-                  .ui.radio.checkbox
-                    input#photoThree.hidden(type='radio' name='picinput' value="cat.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/cat.jpg" style='width:65%;height:auto;') 
-              .three.fields
-                .field
-                  .ui.radio.checkbox
-                    input#photoOne.hidden(type='radio' name='picinput' value="cupcakes.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/cupcakes.jpg" style='width:65%;height:auto;')
-                .field
-                  .ui.radio.checkbox
-                    input#photoTwo.hidden(type='radio' name='picinput' value="autumn.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/autumn.jpg" style='width:65%;height:auto;')
-                .field
-                  .ui.radio.checkbox
-                    input#photoThree.hidden(type='radio' name='picinput' value="Disneyland.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/Disneyland.jpg" style='width:65%;height:auto;')  
-              .three.fields
-                .field
-                  .ui.radio.checkbox
-                    input#photoTwo.hidden(type='radio' name='picinput' value="studytime.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/studytime.jpg" style='width:65%;height:auto;')
-                .field
-                  .ui.radio.checkbox
-                    input#photoThree.hidden(type='radio' name='picinput' value="palm_trees.jpeg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/palm_trees.jpeg" style='width:65%;height:auto;') 
-                .field
-                  .ui.radio.checkbox
-                    input#photoOne.hidden(type='radio' name='picinput' value="footballseason.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/footballseason.jpg" style='width:65%;height:auto;')
-              .three.fields
-                .field
-                  .ui.radio.checkbox
-                    input#photoFour.hidden(type='radio' name='picinput' value="Iceland.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/Iceland.jpg" style='width:65%;height:auto;')
-                .field
-                  .ui.radio.checkbox
-                    input#photoFive.hidden(type='radio' name='picinput' value="balloons.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/balloons.jpg" style='width:65%;height:auto;')
-                .field
-                  .ui.radio.checkbox
-                    input#photoSix.hidden(type='radio' name='picinput' value="beachpuppy.jpg")
-                    label
-                        img.lazy(src='/images/picture.svg' data-src=cdn+"/post_pictures/beachpuppy.jpg" style='width:65%;height:auto;')  
-              
-          .ui.error.message 
-      .actions  
-        input.ui.green.button(type='submit', name="foo", value='Post', form='postform')
+              i.close.icon               
           
 block scripts
   script(src='/postFunctionalities.js')
   script(src="/module_js/phishing/phishing_script.js")
   
 block styles
+  link(rel='stylesheet', href='/css/script.css')
   link(rel='stylesheet', href='/css/modules/phishing.css')
             
     

@@ -1,48 +1,21 @@
-/* sim and results */
+/* Post appearances */
+
+.ui.card .description,
+.ui.card .img.post,
+.newsArticleTitleContainer {
+  cursor: pointer;
+}
+
+.ui.card .newsArticleTitleContainer {
+  background: rgba(0, 0, 0, 0.05);
+}
 
 .info_button {
-  z-index:12;
-  text-align:center;
-  align-self:flex-end;
-  position:relative;
-  bottom:10px;
-  width:7%;
-  height:auto
-}
-
-/* tutorial */
-
-.img.post img{
-  max-width: 100%;
-}
-
-/* sim */
-
-.newsArticleTitleContainer {
-  background: rgba(0, 0, 0, 0.05) !important;
-}
-
-/* results */
-
-.resultsPromptLabel{
-  background-color:#2185d08a !important;
-  color:#000000d1 !important;
-}
-
-.resultsPromptLabel h4 {
-  float: left;
-}
-
-.resultsPromptLabel .exclamation.triangle.icon{
-  color: #f9ff00 !important;
-}
-
-.img.post img {
-  max-width: 100%;
-  cursor: pointer;
-  display: inline !important;
-}
-
-.ui.checkbox label, .inlineFields label {
-  font-size: 120%;
+  z-index: 9;
+  text-align: center;
+  align-self: flex-end;
+  position: relative;
+  bottom: 10px;
+  width: 7%;
+  height: auto;
 }

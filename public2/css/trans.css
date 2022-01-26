@@ -1,0 +1,12 @@
+i.icon.addIndent {
+  text-indent: 3em;
+}
+
+.ui.container .reviewSegment {
+  padding: 14px 0 14px 0;
+}
+
+.ui.container .showReviewSectionButton {
+  margin-top: 14px;
+  margin-bottom: 14px;
+}

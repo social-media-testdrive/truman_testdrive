@@ -1,4 +1,11 @@
 $(document).ready(function(){
+
+  $('.ui.sticky.newPostSticky')
+    .sticky({
+      context: '#content',
+      offset: 115
+    });
+
   //activating a normal dropdown (the one used in the habits module settings)
   $('.ui.selection.dropdown[name="pauseTimeSelect"]').dropdown('set selected', '1 hour');
   $('.ui.selection.dropdown[name="reminderTimeSelect"]').dropdown();
@@ -6,7 +13,7 @@ $(document).ready(function(){
   /*
   * Misc code
   */
-  $('.big.plus.icon').css({"display": "block"})
+  $('.newpost').css({"visibility": "visible"})
   $('.ui.simple.dropdown.item').css({"display":"inherit"})
   $('.ui.accordion').accordion();
 

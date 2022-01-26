@@ -28,17 +28,17 @@ block content
       
   #loading.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
     img.ui.centered.small.image(src='/images/heart.svg')
-  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column(style='display: none;')  
-
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.contentColumn.hidden
     //- Input for creating new post at top of feed
-    #newpost.ui.fluid.left.labeled.right.icon.input.habitsHomeDisplay
-      .ui.label
-        if user.profile.picture
-          img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture)
-        else
-          img.ui.avatar.image(src=user.gravatar(60))
-      input(type='text', placeholder='Create a post')
-      i.big.photo.link.icon
+    .ui.sticky.newPostSticky
+      #newpost.ui.fluid.left.labeled.right.icon.input.habitsHomeDisplay
+        .ui.label
+          if user.profile.picture
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture)
+          else
+            img.ui.avatar.image(src=user.gravatar(60))
+        input(type='text', placeholder='Create a post')
+        i.big.photo.link.icon
 
     each val in script
       //- create a card for each post in val (if by user make the card a little different)
@@ -60,23 +60,19 @@ block content
       .content
         .ui.big.green.labeled.icon.button.script
           i.rocket.icon
-          |   Lyer!
+          |   Let's Continue!
           
     br
     br
   
     include partials/script/chatBox
-    
     include partials/script/modals/newUserPost
-    
     include partials/script/modals/digitalLiteracyFlag
-
     include partials/script/modals/digitalLiteracyArticle
-  
     include partials/script/modals/esteemPost
     
     //- View Post Info Modal
-    .ui.small.popinfo.modal
+    .ui.small.popinfo.modal(data-modalName='digital-literacy_articleInfoModal')
       i.close.icon  
       h3.ui.header
         i.info.circle.icon 
@@ -90,8 +86,9 @@ block content
           | Done
           i.checkmark.icon
             
-    //- digfoot post checklist Modal      
-    .ui.small.modal#digfoot_post_modual
+    //- digfoot post checklist Modal 
+    //- name in DB: digfoot_normalPostModal
+    .ui.small.modal(data-modalName='digfoot_normalPostModal')
       i.close.icon  
       .header How would this post influence digital footprints?
       .content
@@ -126,11 +123,11 @@ block content
     .ui.small.modal#whyAmISeeingThisAdModal(data-modalName="targeted_whyAdModal")
       i.close.icon
       .header Why am I seeing this ad?
-      if (user.targetedAdTopic == 'Sports')
+      if (user.targetedAdTopic[user.targetedAdTopic.length - 1] == 'Sports')
         .content(id="sports")
-      else if (user.targetedAdTopic == 'Food')
+      else if (user.targetedAdTopic[user.targetedAdTopic.length - 1] == 'Food')
         .content(id="food")
-      else if (user.targetedAdTopic == 'Gaming')
+      else if (user.targetedAdTopic[user.targetedAdTopic.length - 1] == 'Gaming')
         .content(id="gaming")
     
     //-Hide ad modal, used in targeted ads module. 
@@ -152,18 +149,20 @@ block content
                  input(type='checkbox')
                  label The ad was inappropriate
              br
-      .actions
-        .ui.positive.right.labeled.icon.button
-          | Done
-          i.checkmark.icon          
-               
+             .actions
+               .ui.positive.right.labeled.icon.button
+                 | Done
+                 i.checkmark.icon          
+            
   block rightColumn
     -
                  
 block scripts
+  script(src='/module_js/voiceover.js')
   script(src='/postFunctionalities.js')
   script(src=cdn+'/js/chatbox.js')
   script(src='/module_js/script.js')
+  //script(src='/module_js/base_introSteps.js')
   block scripts2
     -         
     

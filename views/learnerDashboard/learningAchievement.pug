@@ -1,0 +1,29 @@
+extends ../ui_layout
+
+block content
+  .ui.sixteen.wide.column.dashboardContentColumn.hiddenVisibility
+    include ../partials/learnerDashboardMenu
+    .row.centerText
+      h2 
+        i.trophy.icon
+        |  My Learning Achievement
+    .ui.divider
+    .row.centerText.completionChartColumn
+      .ui.basic.segment.center.aligned
+        div.customChartLabelText
+        .ui.image
+          canvas#moduleCompletionCount(width='350' height='350')
+    .row.addPaddingTop.addPaddingBottom
+      .ui.segment
+        .ui.basic.segment
+          h2.centerText My badges
+        .ui.stackable.six.column.grid.removeMargins#badgeItems
+    
+block scripts
+  script(src='/user_portal/learnerDashboard/learnerDashboardTools.js')
+  script(src='/user_portal/learnerDashboard/learningAchievement.js')
+  script(src=cdn+'/js/lib/Chart.js')
+block styles
+  link(rel='stylesheet', href = '/css/teacherDashboard/sideMenu.css')
+  link(rel='stylesheet', href='/css/learnerDashboard/learnerDashboard.css')
+  link(rel='stylesheet', href='/css/learnerDashboard/learningAchievement.css')    

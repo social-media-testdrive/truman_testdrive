@@ -1,37 +1,48 @@
 function onPrint(){
+  if($('.results_print').hasClass('green')){
+    $(".insertPrint").empty();
+    $(".insertPrint").css('display','block');
 
-  $(".insertPrint").empty();
-  $(".insertPrint").css('display','block');
 
-  $(".checkOne").clone().appendTo(".insertPrint");
-  $(".insertPrint").append('<div class="breakHere"</div>');
-  $(".checkTwo").clone().appendTo(".insertPrint");
-  $(".insertPrint").append('<div class="breakHere"</div>');
-  $(".checkThree").clone().appendTo(".insertPrint");
-  $(".insertPrint").append('<div class="breakHere"</div><br>');
+    $(".selectPostsQuestion1").clone().appendTo(".insertPrint");
+    $(".insertPrint").append('<div class="breakHere"</div>');
 
-  $(".insertPrint").append("<h4>What can you do in the future to make sure you have a positive digital footprint on social media?</h4>");
-  var responseOne = document.getElementById("digfoot_responseOne").value;
-  $(".insertPrint").append(responseOne);
+    $(".checkOne").clone().removeClass('reflectionPromptSegment').appendTo(".insertPrint");
+    $(".insertPrint").append('<div class="breakHere"</div>');
+    $(".checkTwo").clone().removeClass('reflectionPromptSegment').appendTo(".insertPrint");
+    $(".insertPrint").append('<div class="breakHere"</div>');
+    $(".checkThree").clone().removeClass('reflectionPromptSegment').appendTo(".insertPrint");
+    $(".insertPrint").append('<div class="breakHere"</div><br>');
 
-  $(".insertPrint").append("<h4>What can you do in the future to be mindful of other people's digital footprints on social media?</h4>");
-  var responseTwo = document.getElementById("digfoot_responseTwo").value;
-  $(".insertPrint").append(responseTwo);
+    $(".insertPrint").append("<h4>What can you do in the future to make sure you have a positive digital footprint on social media?</h4>");
+    var responseOne = document.getElementById("digfoot_responseOne").value;
+    $(".insertPrint").append(responseOne);
 
-  window.print();
+    $(".insertPrint").append("<h4>What can you do in the future to be mindful of other people's digital footprints on social media?</h4>");
+    var responseTwo = document.getElementById("digfoot_responseTwo").value;
+    $(".insertPrint").append(responseTwo);
 
-  $(".insertPrint").css('display','none');
+    window.print();
+
+    $(".insertPrint").css('display','none');
+  } else {
+    if($('.voiceover_reflection1').next('.reflectionPromptSegment').is(':hidden')){
+      showWarning('.startPromptsWarning');
+    } else {
+      showWarning('.openAllPromptsWarning');
+    }
+  }
 }
 
-setTimeout(function(){
-  $('.ui.label').transition('bounce');
-}, 1000);
-
-
-setTimeout(function(){
-  $('#card1,#card2,#card3').transition({
-  animation : 'jiggle',
-  duration  : 800,
-  interval  : 200
-  });
-}, 2000);
+// setTimeout(function(){
+//   $('.ui.label').transition('bounce');
+// }, 1000);
+//
+//
+// setTimeout(function(){
+//   $('#card1,#card2,#card3').transition({
+//   animation : 'jiggle',
+//   duration  : 800,
+//   interval  : 200
+//   });
+// }, 2000);

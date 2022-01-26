@@ -23,19 +23,33 @@ function checkStatus(){
 };
 
 function clickGotIt(){
-  if (($('input:checked').length) == ($('input').length)){
-        window.location.href='/sim/phishing';
-  }
-  else{
+  if ($('.reviewSegment').is(':hidden')){
+    $('.clickNextWarning').show();
+    $('.showReviewSectionButton').transition("bounce");
+  } else if (($('input:checked').length) == ($('input').length)){
+    window.location.href='/sim/phishing';
+  } else {
     $('#checkAllWarning').show();
     animateUnchecked();
   }
 };
 
-setTimeout(function(){
+setTimeout( function(){
   $('.sub.header').transition('shake');
 }, 1500);
 
-
-$("input").change(function(){ checkStatus(); });
-$("#phishingTutGuideButton").on('click', function() { clickGotIt() });
+$(window).on("load", function(){
+  Voiceovers.addVoiceovers();
+  $("input").change( function() {
+    checkStatus();
+  });
+  $("#phishingTutGuideButton").on('click', function() {
+    clickGotIt()
+  });
+  $('.showReviewSectionButton').on('click', function(){
+    $('.reviewSegment').show();
+    $('.clickNextWarning').hide();
+    $('.showReviewSectionButton').css('display','none');
+    $('.gotItButton').addClass('green');
+  })
+})

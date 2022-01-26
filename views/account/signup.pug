@@ -1,20 +1,26 @@
 extends ../ui_layout
 
 block content
-  .computer.only.tablet.only.eight.wide.column
-    img.ui.fluid.image(src='/internet.png')
+  
+  //- .computer.only.tablet.only.eight.wide.column(style="margin-bottom: 4em;")
+  //-   img.ui.fluid.image(src='/internet.png')
   
 
-  .eight.wide.computer.eight.wide.tablet.sixteen.wide.mobile.column
-    h2.ui.header Sign Up
-    p="Before you can create an account, enter the access code given my your instructor."
+  //-.eight.wide.computer.eight.wide.tablet.sixteen.wide.mobile.column
+  .ten.wide.column
+    h2.ui.header Create an Account
+    p
+      | Please create a unique username. This is what you will use to sign in to 
+      | your account (we do not require a password).
     form.ui.form(id='signup-form', method='POST')
-      input(type='hidden', name='_csrf', value=_csrf)
+      input(type='hidden', name='_csrf', value=csrfToken)
       .field
-        label(for='signupcode') Sign Up Code
-        input(type='text', name='signupcode', id='signupcode', placeholder='Sign Up Code', required)
-      button.ui.button(type='submit') Signup
+        label(for='signupcode') Username
+        input(type='text', name='signupcode', id='signupcode', placeholder='Enter a username...', autofocus, required)
+      button.ui.button(type='submit') Create Account
+      br
+      br
+      a(href="/privacy")="Privacy policy"
   br
   br
   br
-  a(href="/privacy")="Privacy policy"

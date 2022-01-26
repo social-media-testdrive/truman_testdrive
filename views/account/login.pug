@@ -1,28 +1,24 @@
 extends ../ui_layout
 
 block content
-  .computer.only.tablet.only.eight.wide.column
-    img.ui.fluid.image(src='/internet.png')
-  
-
-  .eight.wide.computer.eight.wide.tablet.sixteen.wide.mobile.column
-    h2.ui.header Sign in
-    form.ui.form(method='POST')
-      input(type='hidden', name='_csrf', value=_csrf)
-      .field
-        label(for='username') Username
-        input(type='text', name='username', id='username', placeholder='Email', autofocus, required).field
-      .field
-        label(for='password') Password
-        input(type='password', name='password', id='password', placeholder='Password', required)
-      button.ui.button(type='submit') Login
-    .ui.horizontal.divider
-      | Or
-    .center.aligned.column
-      .ui.big.green.labeled.icon.button.signup
-        i.signup.icon
-        |   Sign Up
-  br
-  br
-  br
-  a(href="/privacy")="Privacy policy"
+  .ui.sixteen.wide.row
+    .ui.sixteen.wide.column
+      h2.loginPageTitle Welcome to the Research Version of Social Media TestDrive!
+  .ui.sixteen.wide.row 
+    .eight.wide.column.isntructorLoginColumn
+      h2.ui.header Login As Instructor
+      form.ui.form(action="/instructorLogin", method='POST')
+        input(type='hidden', name='_csrf', value=csrfToken)
+        .field
+          label(for='instructor_username' style="font-size:larger;") Username
+          input(type='text', name='instructor_username', id='instructor_username', placeholder='Username', required).field
+          label(for='instructor_password' style="font-size:larger;") Password
+          input(type='password', name='instructor_password', id='instructor_password', placeholder='Password', required).field
+        button.ui.big.green.button(type='submit') Login
+        p Don't have an account yet? Contact us to get an account.
+      br  
+      h2 Are You a Student?
+      h4 Use the login link your teacher gave you.
+        
+block styles
+  link(rel='stylesheet', href='/css/login.css')

@@ -1,0 +1,44 @@
+/* defining cursor appearances */
+
+h2, h3, h4, p, td {
+  cursor: default;
+}
+
+/* general classes */
+
+.dashboardContentColumn {
+  padding-bottom: 3em !important;
+}
+
+.removeMargins {
+  margin: 0 !important;
+}
+
+.addPaddingTop {
+  padding-top: 30px;
+}
+
+.addPaddingBottom {
+  padding-bottom: 30px;
+}
+
+.removePadding {
+  padding: 0 !important;
+}
+
+.centerText {
+  text-align: center;
+}
+
+.emphasizedText {
+  font-size: larger;
+  font-weight: bold;
+}
+
+.row.addMargin {
+  margin-bottom: 30px;
+}
+
+.setDisplayNone {
+  display: none !important;
+}

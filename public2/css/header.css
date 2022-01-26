@@ -1,5 +1,33 @@
+.ui.grid>.row.testdriveHeaderRow {
+  padding-bottom: 40px;
+}
+
+.headerDropdownMenu{
+  height: 100%;
+}
+
+#logo {
+  width: 125px;
+}
+
+.ui.segment.progressHeader {
+  padding: 8px 14px 8px 14px;
+
+}
+
 .hideHeader{
   display:none;
+}
+
+.moduleTitle {
+  padding-top: 4px;
+  padding-bottom: 10px;
+}
+
+.moduleTitle span {
+  color: #333333;
+  font-weight: 600;
+  font-size: large;
 }
 
 .progressList{

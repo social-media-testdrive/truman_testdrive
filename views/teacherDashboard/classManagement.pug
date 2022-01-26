@@ -1,0 +1,81 @@
+extends ../ui_layout
+
+block content
+  .ui.sixteen.wide.column.dashboardContentColumn.hiddenVisibility
+    include ../partials/teacherDashboardMenu
+    
+    .ui.breadcrumb
+      .active.section(href='/classManagement') Class Management
+    br
+    h3 Class List
+    br
+    .ui.basic.segment(style="padding:0;")
+      .ui.inverted.dimmer#loadingDimmer
+        .ui.text.loader Updating Class...
+      table.ui.selectable.celled.padded.table
+        thead
+          tr
+            th.single.line Class Name
+            th Access Code
+            th Number of Students
+            th Class Login Link
+            th Options
+        tbody
+        each u in classes
+          tr
+            td.classNameColumn
+              a.item(href='/viewClass/'+u.accessCode)=u.className
+            td.accessCodeColumn=u.accessCode
+            td=u.students.length
+            td
+              p.loginLink https://researchtest.socialmediatestdrive.org/classLogin/#{u.accessCode}
+            td
+              button.ui.icon.red.button.deleteClassButton(data-content="Delete Class")
+                i.icon.trash.alternate
+      br
+      br
+      #new_class.ui.big.green.labeled.icon.button
+          i.plus.icon
+          |   Create New Class
+    
+    .ui.small.newclass.modal
+      i.close.icon
+      .header Create New Class
+      .content
+        form#classform.ui.form(action='/createNewClass', method='POST')
+          input(type='hidden', name='_csrf', value=csrfToken)
+          .field
+            label(for='classname') Class Name
+            input.addHere(type='text', name='classname', id='classname', placeholder='Enter Class Name')
+          .field
+            label(for='accesscode') Access Code
+            input(type='text', name='accesscode', id='accesscode', placeholder='Enter Access Code')
+          .ui.error.message
+      .actions
+        input.ui.green.button(type='submit', value='Submit', form='classform')
+                  
+    .ui.small.modal#deleteClassModal
+      i.close.icon
+      .header Confirm Delete
+      .content.centered
+        h2.center.aligned#confirmDeleteClassText
+        h3.center.aligned This action cannot be undone.
+        form#deleteClass.ui.form(name="deleteClass" action='/deleteClass', method='POST')
+          input(type='hidden', name='_csrf', value=csrfToken)
+          input(type='hidden', name='className' value='')
+          input(type='hidden', name='accessCode' value='')
+      .actions
+        .ui.icon.labeled.red.deny.button 
+          i.cancel.icon
+          | Cancel
+        .ui.icon.labeled.green.approve.button
+          i.check.icon
+          | Yes, delete this class
+
+block scripts
+  script(src='/user_portal/teacherDashboardTools.js')
+  script(src='/user_portal/classManagement.js')
+          
+block styles
+  link(rel='stylesheet', href='/css/teacherDashboard/sideMenu.css')
+  link(rel='stylesheet', href='/css/classes.css')

@@ -1,7 +1,10 @@
 function onPrint(){
-
+  if($('.results_print').hasClass('green')){
     $(".insertPrint").empty();
     $(".insertPrint").css('display','block');
+
+    $(".selectPostsQuestion1").clone().appendTo(".insertPrint");
+    $(".insertPrint").append('<div class="breakHere"</div>');
 
     $(".insertPrint").append(
       `<br>
@@ -15,8 +18,8 @@ function onPrint(){
     $(".insertPrint").append(
       `<br>
       <h4>
-        Do you remember seeing posts that might have caused Jeremy to
-        feel good? What kinds of posts were they?
+      Do you remember seeing posts that might have caused Jeremy to feel good?
+      What kinds of posts were they?
       </h4>`
     );
     var responseTwo = document.getElementById("literacy_responseTwo").value;
@@ -25,8 +28,8 @@ function onPrint(){
     $(".insertPrint").append(
       `<br>
       <h4>
-        What could Jeremy do to feel better after experiencing a red flag
-        feeling on social media?
+        What could Jeremy do to feel better after experiencing a red flag feeling
+        on social media?
       </h4>`
     );
     var responseThree = document.getElementById("literacy_responseThree").value;
@@ -35,8 +38,15 @@ function onPrint(){
     window.print();
 
     $(".insertPrint").css('display','none');
+  } else {
+    if($('.voiceover_reflection1').next('.reflectionPromptSegment').is(':hidden')){
+      showWarning('.startPromptsWarning');
+    } else {
+      showWarning('.openAllPromptsWarning');
+    }
+  }
 }
 
-setTimeout(function(){
-  $('.ui.label').transition('bounce');
-}, 1000);
+// setTimeout(function(){
+//   $('.ui.label').transition('bounce');
+// }, 1000);

@@ -10,103 +10,141 @@ block content
         .content
           | Learn
       hr
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          | Social media is a great way to get news quickly and easily. Your 
-          | friends may like or share articles that are interesting to you. 
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          | But you have to be careful! Sometimes people share articles on 
-          | social media that look like accurate news but actually include false 
-          | or untrustworthy information.
-      br
-      #ideas_next.button.ui.mini.green.right.labeled.icon.button
-              i.down.arrow.icon
-              |   Next
+      .ui.mini.green.right.labeled.icon.button.showLearnSectionButton
+        i.down.arrow.icon
+        |   Next
+      .ui.basic.segment.learnSegment.hidden
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | Social media is a great way to get news quickly and easily. Your 
+            | friends may like or share articles that are interesting to you. 
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | But you have to be careful! Sometimes people share articles on 
+            | social media that look like accurate news but actually include false 
+            | or untrustworthy information.
+        br
+        #introduction_next.button.ui.mini.green.right.labeled.icon.button
+          i.down.arrow.icon
+          |   Next
     
-
-    
-    #key_ideas.ui.segment.hidden
+    #question.ui.segment.hidden
       h3.ui.header
         i.key.blue.icon
         .content Key Ideas
       .sub.header 
-        i.hand.pointer.icon(style="color:gray;")
-        span(style="color: gray;") Click on each label below to learn more
-      br
-      //- .ui.segments     
+        i.hand.pointer.icon.grayElement
+        span.grayElement Click on each word below to learn more
+      br  
       .ui.stackable.two.column.grid
         .ui.column
-          #source.ui.raised.segment
-            a.ui.blue.ribbon.label#sourceLabel
-                //- i.dollar.sign.icon 
-                span Source
-            span.hidden(id="source_info", style="font-weight:600") 
+          .keyTerm.ui.raised.segment.voiceover_keyTerm1
+            a.ui.blue.ribbon.label.keyTermLabel
+              span Source
+            span.hidden.part1.keyTermDefinition  
               | The website, organization, or person the information comes from.
         .ui.column
-          #credible.ui.raised.segment
-            a.ui.blue.ribbon.label#credibleLabel
-                //- i.magic.icon 
-                span Credible
-            span.hidden(id="credible_info",style="font-weight:600") 
+          .keyTerm.ui.raised.segment.voiceover_keyTerm2
+            a.ui.blue.ribbon.label.keyTermLabel
+              span Credible
+            span.hidden.part1.keyTermDefinition 
               | Believable and trustworthy
         .ui.column
-          #news.ui.raised.segment
-            a.ui.blue.ribbon.label#newsLabel
-                //- i.magic.icon 
-                span Fake news
-            span.hidden(id="news_info",style="font-weight:600") 
+          .keyTerm.ui.raised.segment.voiceover_keyTerm3
+            a.ui.blue.ribbon.label.keyTermLabel
+              span Fake news
+            span.hidden.part1.keyTermDefinition 
               | A news story that looks real but has been made up.
         .ui.column
-          #clickbait.ui.raised.segment
-            a.ui.blue.ribbon.label#clickbaitLabel
-                //- i.magic.icon 
-                span Clickbait
-            span.hidden(id="clickbait_info",style="font-weight:600") 
+          .keyTerm.ui.raised.segment.voiceover_keyTerm4
+            a.ui.blue.ribbon.label.keyTermLabel
+              span Clickbait
+            span.hidden.part1.keyTermDefinition 
               | An article that has a catchy headline to get people to click on it.
-
-    #question.ui.segment.hidden
+              
+    #question2.ui.segment.hidden
       h3.ui.header
         i.question.circle.outline.blue.icon
         .content Why does fake news exist?
           .sub.header 
             i.hand.pointer.icon 
-            span Click on each label below to learn more
+            span Click on each word below to learn more
       //- .ui.segments     
       .ui.stackable.two.column.grid
         .ui.column
-          #money.ui.raised.segment
-            a.ui.blue.ribbon.label#moneyLabel
+          .keyTerm.ui.raised.segment.voiceover_keyTerm5
+            a.ui.blue.ribbon.label.keyTermLabel
                 i.dollar.sign.icon 
                 span Money
-            span.hidden(id="money_info", style="font-weight:600") 
+            span.hidden.part2.keyTermDefinition
               | Each time someone clicks on a news article, the website makes 
               | more money. So, websites create news articles that draw people's 
               | attention. They don't care whether the information is true or 
               | not.
         .ui.column
-          #influence.ui.raised.segment
-            a.ui.blue.ribbon.label#influenceLabel
+          .keyTerm.ui.raised.segment.voiceover_keyTerm6
+            a.ui.blue.ribbon.label.keyTermLabel
                 i.magic.icon 
                 span Influence
-            span.hidden(id="influence_info",style="font-weight:600") 
+            span.hidden.part2.keyTermDefinition
               | Other times, people write misleading articles to spread their 
               | beliefs, presenting their opinions as facts.            
       br
-    .ui.warning.message#clickNextWarning(style="display:none;")
+    .ui.warning.message#clickNextWarning
       .header
        | Click "Next"
-    .ui.warning.message#clickLabelsWarning(style="display:none;")
+    .ui.warning.message#clickLabelsWarning
      .header
       | Click on each label to proceed   
-    a(href='javascript:void(0);', onclick='javascript:startIntro();')
-      .ui.labeled.icon.button
-          i.rocket.icon
-          |   Got it!   
+    a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
+        .ui.labeled.icon.button
+            i.rocket.icon
+            |   Got it!   
           
       
 block scripts
+  script.
+    var voiceoverMappings = {
+      '.showLearnSectionButton': {
+        "initialDelay": 700,
+        "delay": 1000,
+        "files": ['CUSML.5.1.1.mp3','CUSML.5.1.2.mp3']
+      },
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.5.2.1.mp3']
+      },
+      '.voiceover_keyTerm2': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.5.2.2.mp3']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.5.2.3.mp3']
+      },
+      '.voiceover_keyTerm4': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.5.2.4.mp3']
+      },
+      '.voiceover_keyTerm5': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.5.3.2.mp3']
+      },
+      '.voiceover_keyTerm6': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.5.3.3.mp3']
+      }
+    };
+  script(src='/module_js/voiceover.js')
   script(src="/module_js/digital-literacy/digital-literacy_start.js")
   
+block styles
+  link(rel='stylesheet', href='/css/start.css')  

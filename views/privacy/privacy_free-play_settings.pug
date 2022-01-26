@@ -4,7 +4,7 @@ block content
   
   .computer.only.tablet.only.four.wide.column 
   .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
-    .ui.one.column.centered.grid
+    .ui.one.column.centered.grid.feedbackMessagesGrid
       .ui.fixed.bottom.sticky
         .ui.icon.compact.message.warning#removeHidden
           i.close.icon
@@ -20,7 +20,7 @@ block content
             .ui.header There are still blue dots to find!
             p Click through all of the blue dots to continue.
             
-    .ui.container.addTop#hint1
+    .ui.container.addTopMargin#hint1
       h2.ui.header Privacy Settings
       br
       .ui.divider
@@ -164,13 +164,14 @@ block content
     .ui.warning.message#locationCue3Text
       .header
         | Click through all of the blue dots
-    button.ui.big.labeled.icon.button.settings1#cyberTransButton(style="margin-bottom:4em;")
+    button.ui.big.labeled.icon.button.settings1#cyberTransButton
         i.rocket.icon
         |   Let's Continue!
         
         
 block scripts
   script(src="/module_js/privacy/privacy_free-play_settings.js")
+  script(src="/module_js/voiceover.js")
   script(src="/module_js/base_sim.js")
   
 block styles

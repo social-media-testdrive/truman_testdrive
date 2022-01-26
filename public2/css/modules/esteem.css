@@ -1,47 +1,8 @@
-/* trans2 */
-
-form label{
-  font-size: 120% !important;
-}
-
-.menu .item {
-  font-size: 100% !important;
-}
-
-#selectTopicError{
-  display: none;
-}
-
-/* trans script */
+/* used in trans script */
 
 .noLineBreak{
   white-space: nowrap;
 }
-
-/* results */
-
-.resultsPromptLabel{
-  background-color:#2185d08a !important;
-  color:#000000d1 !important;
-}
-
-.resultsPromptLabel h4{
-  float:left;
-}
-
-.exclamation.triangle.icon{
-  color: #f9ff00 !important;
-}
-
-.card a span{
-  vertical-align: middle;
-}
-
-.ui.checkbox label, .inline.fields label{
-  font-size: 120%;
-}
-
-/* general */
 
 .customCircularAvatar {
   object-fit: cover;
