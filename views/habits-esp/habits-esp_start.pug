@@ -8,38 +8,39 @@ block content
       h3.ui.header
         i.book.blue.icon
         .content
-          | Learn
+          | Aprender
       hr
       .ui.basic.segment.removePadding
         .ui.mini.green.right.labeled.icon.button.showLearnSectionButton
           i.down.arrow.icon
-          |   Next
+          | Comenzar
       .ui.basic.segment.learnSegment.hidden
         h5.ui.header
           i.arrow.circle.right.blue.icon
           .content
-            | Using social media can be fun and interesting. In fact, the features within social media apps are designed to capture your attention.
+            | Usar las redes sociales puede ser divertido y entretenido. De hecho, las redes sociales han sido diseñadas para capturar nuestra atención.
+
         h5.ui.header
           i.arrow.circle.right.blue.icon
           .content
-            | It benefits social media companies for users to spend time on social media, so it is up to you to be sure you are balancing your social media time with other meaningful things in your life.
+            | Las empresas que crearon las redes sociales les beneficia que las personas pasen tiempo utilizandolas, por eso queda en ti encontrar el balance entre el tiempo que pasas en las redes sociales y otras cosas importantes en tu vida.
         h5.ui.header
           i.arrow.circle.right.blue.icon
           .content
-            | Today, you are going to learn about media balance and explore what you can do to build healthy social media habits.
+            | Hoy vas a aprender sobre cómo mantener el equilibrio en el uso de las redes sociales y cómo crear hábitos saludables.
 
         br
         .ui.mini.green.right.labeled.icon.button.showKeyTermsButton
           i.down.arrow.icon
-          |   Next
+          | Seguir
     
     .ui.segment.keyIdeasSegment.hidden
       h3.ui.header
         i.key.blue.icon
-        .content Key Ideas
+        .content Vocabulario clave
       .sub.header.grayElement 
         i.hand.pointer.icon
-        span Click on each word below to learn more
+        span Selecciona cada palabra para aprender más
       br
       //- .ui.segments     
       .ui.stackable.two.column.grid
@@ -47,34 +48,41 @@ block content
           .keyTerm.ui.raised.segment.voiceover_keyTerm1
             a.ui.blue.ribbon.label.keyTermLabel
                 //- i.dollar.sign.icon 
-                span Habit
-            span.hidden.keyTermDefinition Something we do automatically without thinking.
-              ul Social media <i>habits</i> can include things like checking social media regularly or scrolling through your social media feed as soon as you wake up.
+                span Hábito
+            span.hidden.keyTermDefinition 
+              | Algo que hacemos de manera automática sin pensarlo. Los hábitos en las redes 
+              | sociales pueden ser: revisarlas de manera frecuente o al  despertar. 
+
+        .ui.column
+          .keyTerm.ui.raised.segment.voiceover_keyTerm3
+            a.ui.blue.ribbon.label.keyTermLabel
+                //- i.magic.icon 
+                span Ciclo de retroalimentación
+            span.hidden.keyTermDefinition 
+              | El placer que experimentas cuando recibes una respuesta a algo que haces o un 
+              | post que  publicas, esto hace que quieras volver y publicar más.
 
         .ui.column
           .keyTerm.ui.raised.segment.voiceover_keyTerm2
             a.ui.blue.ribbon.label.keyTermLabel
                 //- i.magic.icon 
-                span Attention-grabbing design
-            span.hidden.keyTermDefinition  Features of a device or app that are intended to encourage users to use it frequently.
-              ul Some features include notifications for new content, autoplay on videos, and endless scrolling.
-        .ui.column
-          .keyTerm.ui.raised.segment.voiceover_keyTerm3
-            a.ui.blue.ribbon.label.keyTermLabel
-                //- i.magic.icon 
-                span Feedback loop
-            span.hidden.keyTermDefinition The pleasure you experience when you get a response to something you do or post online, making you want to go back and post more.
+                span Diseño atractivo
+            span.hidden.keyTermDefinition  
+              | Características de un dispositivo o aplicación que intentan llamar la atención 
+              | para que la persona lo use de manera frecuente. Algunas de estas características 
+              | son: las notificaciones sobre nuevo contenido, reproducción automática de videos 
+              | y poder navegar de manera interminable.
             
     .ui.warning.message#clickNextWarning
       .header
-       | Click "Next"
+       | Haz clic en "Seguir"
     .ui.warning.message#clickLabelsWarning
      .header
-      | Click on each label to proceed  
+      | Haz clic en cada etiqueta para seguir
     a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
         .ui.labeled.icon.button
             i.rocket.icon
-            |   Got it!
+            | ¡Listo!
             
 block scripts
   script.
@@ -82,22 +90,22 @@ block scripts
       '.showLearnSectionButton': {
         "initialDelay": 700,
         "delay": 500,
-        "files": ['CUSML.10.1.1.mp3','CUSML.10.1.2.mp3','CUSML.10.1.3.mp3']
+        //- "files": ['CUSML.10.1.1.mp3','CUSML.10.1.2.mp3','CUSML.10.1.3.mp3']
       },
       '.voiceover_keyTerm1': {
         "initialDelay": 700,
         "delay": 0,
-        "files": ['CUSML.10.2.1.mp3']
+        //- "files": ['CUSML.10.2.1.mp3']
       },
       '.voiceover_keyTerm2': {
         "initialDelay": 700,
         "delay": 0,
-        "files": ['CUSML.10.2.2.mp3']
+        //- "files": ['CUSML.10.2.2.mp3']
       },
       '.voiceover_keyTerm3': {
         "initialDelay": 700,
         "delay": 0,
-        "files": ['CUSML.10.2.3.mp3']
+        //- "files": ['CUSML.10.2.3.mp3']
       }
     };
   script(src='/module_js/voiceover.js')

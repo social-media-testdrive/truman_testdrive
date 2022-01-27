@@ -352,7 +352,7 @@ app.get('/gaming/targeted', passportConfig.isAuthenticated, setHttpResponseHeade
 app.get('/intro/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
   if (req.params.modId === "delete") {   // anticipating a specific user behavior that causes 500 errors
     res.redirect('/');
-  } else if (req.params.modId === "esteem-esp") {
+  } else if (req.params.modId === "esteem-esp" || "habits-esp") {
     res.render('base_intro-esp.pug', {
       title: 'Bienvenidos'
     });
