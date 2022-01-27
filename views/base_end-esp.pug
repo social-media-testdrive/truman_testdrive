@@ -1,13 +1,11 @@
-extends ui_layout-esp
+extends ui_layout
 
 block content
 
   .ten.wide.computer.twelve.wide.tablet.sixteen.wide.mobile.column.centered
-    .ui.basic.segment(style="margin-bottom:4em;")
-      
+    
+    .ui.basic.segment.addBottomMargin
       h1 ¿Qué te gustaría hacer ahora?
-    
-    
       .ui.raised.segment
         h3.ui.header
           .content
@@ -28,8 +26,7 @@ block content
               .ui.big.green.labeled.icon.button.endPageButton
                   i.edit.icon
                   |   Contarnos tu opinión
-        
-                
+                    
       .ui.raised.segment
         h3.ui.header
           .content
@@ -48,10 +45,11 @@ block content
           br
           .ui.big.blue.labeled.icon.button.cyber_script.endPageButton
               i.chevron.circle.left.icon
-              |   Explorar la línea temporal
+              |   Explorar el feed
       
 block scripts
-  script().
-    function startIntro(){       
+  script(src='/module_js/base_end.js')
+  script.
+    function startIntro(){
       window.open(href='https://cornell.qualtrics.com/jfe/form/SV_9tMszwlpe1TIIxT');
     };
