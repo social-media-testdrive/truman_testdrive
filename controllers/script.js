@@ -231,7 +231,7 @@ exports.getScript = (req, res, next) => {
       } else if (req.params.modId == "esteem"){
         res.render('esteem/esteem_script', { script: finalfeed, mod: req.params.modId});
       } else if (req.params.modId == "esteem") {
-        res.render('esteem-esp/esteem_script-esp', { script: finalfeed, mod: req.params.modId});
+        res.render('esteem-esp/esteem-esp_script', { script: finalfeed, mod: req.params.modId});
       } else if (req.params.modId == "habits"){
         res.render('habits/habits_script', {
           script: finalfeed,
