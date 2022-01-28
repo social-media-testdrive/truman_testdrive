@@ -299,6 +299,42 @@ const enableLearnerDashboard = process.env.enableLearnerDashboard === 'true';
  * Primary app routes.
  * (In alphabetical order)
  */
+
+function isValidModId(req, res, next) {
+    const modIds = [
+        "accounts",
+        "advancedlit",
+        "cyberbullying",
+        "digfoot",
+        "digital-literacy",
+        "esteem",
+        "habits",
+        "phishing",
+        "presentation",
+        "privacy",
+        "safe-posting",
+        "targeted"
+    ]
+
+    if (modIds.includes(req.params.modId)) {
+        next();
+    } else {
+        var err = new Error('Page Not Found.');
+        err.status = 404;
+
+        console.log(err);
+
+        // set locals, only providing error stack in development
+        err.stack = req.app.get('env') === 'development' ? err.stack : '';
+
+        res.locals.message = err.message + " Oops! We can't seem to find the page you're looking for.";
+        res.locals.error = err;
+
+        // render the error page
+        res.status(err.status);
+        res.render('error');
+    }
+}
 // Main route is the module page
 app.get('/', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
     res.render('mods', {
@@ -415,6 +451,17 @@ app.get('/results/:modId', passportConfig.isAuthenticated, setHttpResponseHeader
     res.render(req.params.modId + '/' + req.params.modId + '_results', {
         title: 'Reflection',
         reflectionData
+    });
+});
+
+app.get('/quiz/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, async function(req, res) {
+    let quizData;
+    const data = await fs.readFileAsync(`${__dirname}/public2/json/quizSectionData.json`);
+    quizData = JSON.parse(data.toString())[req.params.modId];
+
+    res.render('base_quiz.pug', {
+        title: 'Quiz',
+        quizData,
     });
 });
 
@@ -574,6 +621,11 @@ app.post('/post/new', check, setHttpResponseHeaders, csrfProtection, scriptContr
 app.post('/feed', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postUpdateFeedAction);
 // Delete all recorded feed actions for the current user - currently not used
 app.post('/deleteUserFeedActions', passportConfig.isAuthenticated, setHttpResponseHeaders, scriptController.postDeleteFeedAction);
+// Post information about a user's reflection answers in the reflection section 
+app.post('/reflection', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postReflectionAction);
+// Post information about a user's quiz answers in the quiz section
+app.post('/quiz', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postQuizAction);
+app.post('/postViewQuizExplanations', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postViewQuizExplanations);
 // Record user's topic selection for modules with customized freeplay content
 app.post('/interest', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, userController.postUpdateInterestSelection);
 app.post('/advancedlitInterest', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, userController.postAdvancedlitInterestSelection);
@@ -598,7 +650,6 @@ if (enableDataCollection) {
     app.post('/startPageAction', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postStartPageAction);
     app.post('/introjsStep', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postIntrojsStepAction);
     app.post('/bluedot', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postBlueDotAction);
-    app.post('/reflection', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postReflectionAction);
     app.post('/moduleProgress', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, userController.postUpdateModuleProgress);
     app.post('/accountsAction', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postAccountsAction);
 }
@@ -691,13 +742,15 @@ if (enableLearnerDashboard) {
 /*
  * Error Handler.
  */
-// if (process.env.instanceType === 'test') {
-//     // only use in local development
-//     // local development: process.env.instanceType === 'test'
-//     // production site: NODE_ENV === 'production'
-//     // test development site: N/A
-//     app.use(errorHandler());
-// } else {
+// Commented out: Do not have to use https://www.npmjs.com/package/errorhandler for local development
+// if (process.env.instanceType === 'test'){
+//   // only use in local development
+//   // local development: process.env.instanceType === 'test'
+//   // production site: NODE_ENV === 'production'
+//   // test development site: N/A
+//   app.use(errorHandler()); // possibly don't need to use this at all 
+// }
+//  else {
 // error handler
 app.use(function(err, req, res, next) {
     // No routes handled the request and no system error, that means 404 issue.
@@ -721,6 +774,7 @@ app.use(function(err, req, res, next) {
 });
 
 // catch 404. 404 should be considered as a default behavior, not a system error.
+// Necessary to include because in express, 404 responses are not the result of an error, so the error-handler middleware will not capture them. https://expressjs.com/en/starter/faq.html 
 app.use(function(req, res, next) {
     var err = new Error('Page Not Found.');
     err.status = 404;

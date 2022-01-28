@@ -1,0 +1,90 @@
+extends ui_layout
+
+block content
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  .ui.container.resultsAddBottomMargin
+    .ui.stackable.column.grid
+      .ui.column
+        .insertPrint
+    .ui.warning.message.hidden.scoreBanner#scoreBannerHeader
+
+    -var optionLabelDictionary = ["A.", "B.", "C.", "D.", "E."]
+
+    each questionInfo, questionNumber in quizData
+      .ui.basic.segment.noPadding
+        .ui.raised.segment.quizTopSegment.radioQuestion(class=[(questionNumber == "Q1") ? undefined :  "hidden",  questionNumber])
+          if questionNumber == "Q1"
+            h3.ui.header
+              i.question.blue.icon
+              .content
+                | Quiz  
+                
+          .ui.mini.green.right.labeled.icon.button.quizSegmentButton(class="voiceover_reflection" + questionNumber.substring(1))(questionNumber=questionNumber)     
+            i.down.arrow.icon
+            if questionNumber == "Q1"
+              |   Start
+            else 
+              |   Next 
+
+          .ui.basic.segment.noPadding.quizPromptSegment.hidden(class=questionNumber)
+              .ui.label.resultsPromptLabel
+                h4.quizRadioPrompt(data-questionNumber=questionNumber)
+                  | !{questionInfo.prompt.replace(/<span class = 'underline'>/g, '<span class = "underline">').replace(/<\/span>/g, '</span>')}
+              .ui.form
+                br
+                each optionText, optionNumber in questionInfo.radioLabels
+                  .inline.fields
+                    .field
+                      .radio.checkbox
+                        input(type='radio', value=optionNumber, name=questionNumber, tabindex='0')
+                        label 
+                          | &nbsp; #{optionLabelDictionary[optionNumber]} &nbsp;
+                          | !{optionText.replace(/<span class = 'inline bold underline'>/g, '<span class = "inline bold underline">').replace(/<\/span>/g, '</span>')}
+              h4.ui.header.feedBack.hidden
+                i.icon.times.red.hidden
+                i.icon.check.green.hidden
+                .content
+                .explanation
+    
+    .ui.warning.message.hidden.startPromptsWarning
+      .header
+        | Click "Start"
+    .ui.warning.message.hidden.openAllPromptsWarning
+      .header
+        | Click "Next"
+    include partials/optInToShareActivityData.pug
+    br
+    .ui.big.labeled.icon.button.quiz_print(onclick="onPrint()")
+          i.right.arrow.icon
+          |   Print your responses
+    br
+    .ui.big.labeled.icon.button.quizCheckAnswersButton
+        i.pencil.icon
+        |   Check my Answers
+    .ui.big.labeled.icon.button.blue.showExplanationButton.hidden
+        i.tag.arrow.icon
+        |   Show me the correct answers and explanations
+    .ui.big.labeled.icon.button.green.quizSkipButton
+        i.rocket.icon
+        .skipButtonText
+          |   Skip Quiz
+
+block scripts
+  script(src='/module_js/voiceover.js') 
+  script.
+    var quizData = !{JSON.stringify(quizData)}; // quizData is passed to pug file via render function in app.js
+    var voiceoverMappings = {};
+    for (quizQuestion in quizData){
+      const files = quizData[quizQuestion]["files"];
+      const key = '.voiceover_reflection' + quizQuestion.substring(1);
+      let cat = {};
+      cat.initialDelay = (quizQuestion == "Q1") ? 0 : 500;
+      cat.delay = 0;
+      cat.files = files;
+      voiceoverMappings[key] = cat;
+    }
+  script(src='/module_js/base_quiz.js?v=1')
+  
+block styles
+  link(rel='stylesheet', href='/css/quiz.css')
+  link(rel='stylesheet', href='/css/optInToShareActivityData.css')

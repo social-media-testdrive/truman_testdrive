@@ -66,6 +66,13 @@ const userSchema = new mongoose.Schema({
     advancedlitTopic: { type: String, default: "" }, //Music, Gaming, or Sports
     habitsTimer: [Number], //How long the user has been on the free-play page each time they visit, use sum of this array to get a total time.
     firstHabitViewTime: { type: Number, default: -1 }, //The time that the user first opened the free-play section of the habits module
+    //if the user clicked to view quiz explanations
+    viewQuizExplanations: [new Schema({
+        module: String, //Which lesson module does this belong to
+        click: Boolean, //Did user click to view explanations?
+        absoluteTime: Date, // the absolute date the user clicked to view explanations
+    })],
+
     //User created posts
     posts: [new Schema({
         type: String, //post, reply, actorReply (in TestDrive, it's always just a post)
@@ -273,16 +280,35 @@ const userSchema = new mongoose.Schema({
 
     // action in the reflection section
     reflectionAction: [new Schema({
-        absoluteTimeContinued: Date, //time that the user left the page by clicking continue
-        modual: String, //which lesson mod did this take place in?
-        questionNumber: String, // corresponds with reflectionSectionData.json, i.e. 'Q1', 'Q2', 'Q3'...
-        prompt: String,
-        type: String, // Which type of response this will be: written, checkbox, radio, habitsUnique
-        writtenResponse: String,
-        radioSelection: String, // this is for the presentation module
-        numberOfCheckboxes: Number,
-        checkboxResponse: Number,
-        checkedActualTime: Boolean, // this is unique to the habits module
+        absoluteTimeContinued: Date, // time that the user left the page by clicking continue
+        modual: String, // which lesson mod did this take place in?
+        attemptDuration: Number, // how long the user took for the reflection attempt (milliseconds)
+        answers: [new Schema({
+            questionNumber: String, // corresponds with reflectionSectionData.json, i.e. 'Q1', 'Q2', 'Q3'...
+            prompt: String,
+            type: String, // Which type of response this will be: written, checkbox, radio, habitsUnique
+            writtenResponse: String,
+            radioSelection: String, // this is for the presentation module
+            numberOfCheckboxes: Number,
+            checkboxResponse: Number,
+            checkedActualTime: Boolean, // this is unique to the habits module
+        })]
+    }, { _id: true, versionKey: false })],
+
+    // action in the quiz section
+    quizAction: [new Schema({
+        absoluteTimeContinued: Date, // time that the user submitted their answers by clicking "Check My Answers"
+        modual: String, // the modual corresponding to the quiz answers
+        attemptNumber: Number, // this tracks the user's attempt (i.e. 0, 1, 2)
+        attemptDuration: Number, // how long the user took for the quiz attempt (milliseconds)
+        answers: [new Schema({
+            questionNumber: String, // corresponds with quizSectionData.json, i.e. 'Q1', 'Q2', 'Q3'...
+            prompt: String, // question prompt text
+            // type: String, // Which type of response this will be: It is always "radio"
+            radioSelectionIndex: Number, // radio selection index
+            radioSelection: String, // radio selection text
+        }, { _id: true, versionKey: false })],
+        numCorrect: Number // the number of questions they answered correctly
     }, { _id: true, versionKey: false })],
 
     // blue dot action in a guided activity
