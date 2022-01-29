@@ -27,134 +27,131 @@ $(window).on("load", function() {
     stepsList = [
       {
         element: '#step0',
-        intro: `Click "Next" to begin!`,
+        intro: `¡Haz clic en "Seguir" para comenzar!`,
         position: 'right',
         scrollTo: 'tooltip',
         audioFile: ['']
       },
       {
         element: '#step0',
-        intro: `Have you ever seen notifications from social media that pop up
-        and buzz on your phone?`,
+        intro: `¿Alguna vez tu celular ha vibrado y luego ha aparecido una notificación?`,
         position: "right",
         scrollTo: 'tooltip',
         audioFile: ['CUSML.10.3.1.mp3']
       },
       {
         element: '#notificationsteps',
-        intro: `Notifications use bright colors that look urgent to grab your
-        attention. It can make you feel like you have to go on the site to
-        check what it’s about.`,
+        intro: `Las notificaciones tienen un color llamativo que las hacen parecer urgentes 
+        para capturar tu atención. Así, esto te puede hacer sentir que tienes que ir a la 
+        página para revisar qué es.`,
         position: "right",
         scrollTo: "tooltip",
         audioFile: ['CUSML.10.3.2.mp3']
       },
       {
         element: '#step2',
-        intro: `We all love getting likes and comments on the things that we
-        post. It gives us a feeling of being valued and accepted by other
-        people.`,
+        intro: `A todos nos gusta que nos den “me gusta” y comenten en nuestras publicaciones. 
+        Esto nos da la sensación de ser valorados y aceptados por las otras personas.`,
         position: "left",
         scrollTo: "tooltip",
         audioFile: ['CUSML.10.3.3.mp3']
       },
       {
         element: '#step2',
-        intro: `Likes and comments can create a feedback loop that makes you
-        check again and again to see if you got anything new.`,
+        intro: `Los “me gusta” y los comentarios pueden crear un ciclo de retroalimentación 
+        que te haga revisar una y otra vez si algo nuevo aparece.`,
         position: "right",
         scrollTo: "tooltip",
         audioFile: ['CUSML.10.3.4.mp3']
       },
       {
         element: '#step5',
-        intro: `Another feature that may keep you drawn into apps is autoplay,
-        which starts playing another video as soon as you've finished the one
-        you were watching.`,
+        intro: `Otra característica que puede hacer que te sientas atraído por las aplicaciones 
+        es la reproducción automática, esto hace que se reproduzca otro video después que 
+        termine el que estabas viendo.`,
         position: "right",
         scrollTo: "tooltip",
         audioFile: ['CUSML.10.3.5.mp3']
       },
       {
         element: '#step5',
-        intro: `This makes it tempting to keep watching, even if you have
-        other things you want or need to do!`,
+        intro: `Esto hace que sea tentador seguir mirando, aún así tengas algo que hacer en 
+        el momento.`,
         position: "right",
         audioFile: ['CUSML.10.3.6.mp3']
       },
       {
         element: '#step6',
-        intro: `Also, in a real social media site, the timeline has no end!
-        This keeps you engaged, but you could end up scrolling for hours,
-        possibly spending more time than you had hoped to.`,
+        intro: `Además, en una red social real las publicaciones no tienen fin. Esto hace que 
+        te quedes enganchado al punto de revisarlas por horas, pasando más tiempo del que 
+        esperabas.`,
         position: "right",
         scrollTo: "tooltip",
         audioFile: ['CUSML.10.3.7.mp3']
       }
     ]
   } else if ( $('.ui.menu.mobileView').is(":visible") ) {
-    steptsList = [
+    stepsList = [
       {
         element: '#step0',
-        intro: `Click "Next" to begin!`,
+        intro: `¡Haz clic en "Seguir" para comenzar!`,
         position: 'right',
         scrollTo: 'tooltip',
         audioFile: ['']
       },
       {
         element: '#step0',
-        intro: `Have you ever had notifications buzz on your phone or seen
-        them pop up on your phone's home screen?`,
+        intro: `¿Alguna vez tu celular ha vibrado y luego ha aparecido una notificación?`,
         position: "right",
         scrollTo: 'tooltip',
         audioFile: ['CUSML.10.3.1.mp3']
       },
       {
-        element: '#notificationstepsMobile',
-        intro: `Notifications use bright colors that look urgent to grab your
-        attention. It can make you feel like you have to go on the app to
-        check what it’s about.`,
+        element: '#notificationsteps',
+        intro: `Las notificaciones tienen un color llamativo que las hacen parecer urgentes 
+        para capturar tu atención. Así, esto te puede hacer sentir que tienes que ir a la 
+        página para revisar qué es.`,
         position: "right",
         scrollTo: "tooltip",
         audioFile: ['CUSML.10.3.2.mp3']
       },
       {
         element: '#step2',
-        intro: `We all love getting likes and comments on the things that we
-        post. It gives us a sense of being validated by other people.`,
+        intro: `A todos nos gusta que nos den “me gusta” y comenten en nuestras publicaciones. 
+        Esto nos da la sensación de ser valorados y aceptados por las otras personas.`,
         position: "left",
         scrollTo: "tooltip",
         audioFile: ['CUSML.10.3.3.mp3']
       },
       {
         element: '#step2',
-        intro: `Likes and comments can create a feedback loop that makes you
-        check again and again to see if you got anything new.`,
+        intro: `Los “me gusta” y los comentarios pueden crear un ciclo de retroalimentación 
+        que te haga revisar una y otra vez si algo nuevo aparece.`,
         position: "right",
         scrollTo: "tooltip",
         audioFile: ['CUSML.10.3.4.mp3']
       },
       {
         element: '#step5',
-        intro: `Another feature that may keep you drawn into apps is autoplay,
-        which starts playing another video as soon as you've finished the one
-        you were watching.`,
+        intro: `Otra característica que puede hacer que te sientas atraído por las aplicaciones 
+        es la reproducción automática, esto hace que se reproduzca otro video después que 
+        termine el que estabas viendo.`,
         position: "right",
         scrollTo: "tooltip",
         audioFile: ['CUSML.10.3.5.mp3']
       },
       {
         element: '#step5',
-        intro: `This makes it tempting to keep watching, even if you have
-        other things you want or need to do!`,
+        intro: `Esto hace que sea tentador seguir mirando, aún así tengas algo que hacer en 
+        el momento.`,
         position: "right",
         audioFile: ['CUSML.10.3.6.mp3']
       },
       {
         element: '#step6',
-        intro: `Also, in a real social media site, the timeline has no end!
-        This keeps you engaged, but you could end up scrolling for hours,
-        possibly spending more time than you had hoped to.`,
+        intro: `Además, en una red social real las publicaciones no tienen fin. Esto hace que 
+        te quedes enganchado al punto de revisarlas por horas, pasando más tiempo del que 
+        esperabas.`,
         position: "right",
         scrollTo: "tooltip",
         audioFile: ['CUSML.10.3.7.mp3']
