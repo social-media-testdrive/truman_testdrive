@@ -40,7 +40,7 @@ function customOnHintCloseFunction() {
 
     //enable the settings button
     $('.settingsButton').on('click', function(){
-      window.location.href='/sim3/habits';
+      window.location.href='/sim3/habits-esp';
     });
 
     //do the glowing animation every 2 seconds

@@ -8,20 +8,20 @@ block content
       .ui.vertical.menu
         a.item(data-value='feed')#feedsteps 
           i.icon.home
-          |  Home
+          |  Página principal
         a.active.item(data-value='notifications')#notificationsteps
           i.icon.bell
-          |  Notifications
+          |  Notificaciones
     
   //-mobile only version of the menu
   .mobile.only.sixteen.wide.column
     .ui.top.fixed.vertical.menu
       a.item(data-value='feed')#feedsteps
         i.icon.home
-        |  Home
+        |  Página principal
       a.active.item(data-value='notifications')#notificationsteps      
         i.icon.bell
-        |  Notifications
+        |  Notificaciones
         .ui.red.right.pointing.label !
     br
     br
@@ -33,34 +33,34 @@ block content
           i.close.icon
           i.question.icon.float
           .content
-            .ui.header Need some help? 
-            p Make sure you are clicking "Got it" on the blue dots!
+            .ui.header ¿Necesitas ayuda?
+            p ¡Asegúrate de que estás haciendo clic en "Entendido" en los puntos azules!
             
         .ui.message.centered.success.hidden#nextPageInstruction
           .content
-            .ui.header Click the "My Activity" button to continue! 
+            .ui.header ¡Haz clic en "Mi actividad" para seguir! 
     
         .ui.icon.message.warning.hidden#notificationWarning
           i.close.icon
           i.hand.pointer.icon.float
           .content
-            .ui.header There are still blue dots to find!
-            p Click through all of the blue dots before going to the activity page
+            .ui.header ¡Todavía quedan puntos azules!
+            p Haz clic en todos los puntos azules antes de ir a la página de ajustes.
           
     .ui.stackable.secondary.menu
       .ui.container
         .item
           button.ui.basic.button.notificationsDisplay#settingsButton
             i.cog.icon
-            |   Settings
+            |   Ajustes
         .item
           button.ui.basic.button.notificationsDisplay#activityButton
             i.clock.icon
-            |   My Activity
+            |   Mi actividad
             
     //-Settings display
     .ui.container.settingsDisplay
-      h2.ui.header#hint1 Notification Settings
+      h2.ui.header#hint1 Configuración de notificaciones
       .ui.divider
       br
       form.ui.form#addBottomMargin
@@ -68,13 +68,13 @@ block content
           br
           .ui.toggle.checkbox(name='popupAlertsCheckbox')
             input(type='checkbox' name='popupAlerts')
-            label Pause All
-        span.settingLabel This will pause all notifications.
+            label Pausar todas las notificaciones
+        span.settingLabel Esto parará todas las notificaciones.
         br
         br
         br
         .field#pauseTimeSelectField
-          label How long would you like to pause notifications for?
+          label ¿Durante cuánto tiempo deseas pausar las notificaciones?
             br
             br
             .ui.selection.dropdown(name='pauseTimeSelect')
@@ -82,18 +82,18 @@ block content
               i.dropdown.icon
               .default.text 
               .menu
-                .item(data-value='15 minutes') 15 minutes
-                .item(data-value='1 hour') 1 hour
-                .item(data-value='2 hours') 2 hours
-                .item(data-value='4 hours') 4 hours
-                .item(data-value='8 hours') 8 hours
+                .item(data-value='15 minutes') 15 minutos
+                .item(data-value='1 hour') 1 hora
+                .item(data-value='2 hours') 2 horas 
+                .item(data-value='4 hours') 4 horas
+                .item(data-value='8 hours') 8 horas
         br
         br    
 
 block scripts
-  script(src="/module_js/habits/habits_sim3.js")
+  script(src="/module_js/habits-esp/habits-esp_sim3.js")
   script(src='/module_js/voiceover.js')
-  script(src="/module_js/base_sim.js")
+  script(src="/module_js/base_sim-esp.js")
   
 block styles 
   link(rel='stylesheet', href='/css/modules/habits/habits_sim.css')
