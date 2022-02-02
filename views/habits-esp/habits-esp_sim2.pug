@@ -9,20 +9,20 @@ block content
       .ui.vertical.menu
         a.item(data-value='feed')#feedsteps 
           i.icon.home
-          |  Home
+          |  Página principal
         a.active.item(data-value='notifications')#notificationsteps
           i.icon.bell
-          |  Notifications
+          |  Notificaciones
           
   //-mobile only version of the menu
   .mobile.only.sixteen.wide.column
     .ui.top.fixed.vertical.menu
       a.active.item(data-value='feed')#feedsteps
         i.icon.home
-        |  Home
+        |  Página principal
       a.item(data-value='notifications')#notificationsteps      
         i.icon.bell
-        |  Notifications
+        |  Notificaciones
         .ui.red.right.pointing.label !
     br
     br
@@ -34,19 +34,19 @@ block content
           i.close.icon
           i.question.icon.float
           .content
-            .ui.header Need some help? 
-            p Make sure you are clicking "Got it" on the blue dots!
+            .ui.header ¿Necesitas ayuda?
+            p ¡Asegúrate de que estás haciendo clic en "Entendido" en los puntos azules!
             
         .ui.message.centered.success.hidden#nextPageInstruction
           .content
-            .ui.header Click the "Settings" button to continue! 
+            .ui.header ¡Haz clic en "Ajustes" para seguir! 
             
         .ui.icon.message.warning.hidden#notificationWarning
           i.close.icon
           i.hand.pointer.icon.float
           .content
-            .ui.header There are still blue dots to find!
-            p Click through all of the blue dots before going to the settings page.
+            .ui.header ¡Todavía quedan puntos azules!
+            p Haz clic en todos los puntos azules antes de ir a la página de ajustes.
           
     //-#######################
     //-Notifications page  
@@ -55,11 +55,11 @@ block content
         .item
           button.ui.basic.button.notificationsDisplay.settingsButton
             i.cog.icon
-            |   Settings
+            |   Ajustes
         .item
           button.ui.basic.button.notificationsDisplay#activityButton
             i.clock.icon
-            |   My Activity
+            |   Mi actividad
       
     .ui.raised.segment.notificationsDisplay#hint2
      .ui.feed
@@ -119,9 +119,9 @@ block content
     br
     br
 block scripts
-  script(src="/module_js/habits/habits_sim2.js")
+  script(src="/module_js/habits-esp/habits-esp_sim2.js")
   script(src='/module_js/voiceover.js')
-  script(src="/module_js/base_sim.js")
+  script(src="/module_js/base_sim-esp.js")
   
 block styles
   link(rel='stylesheet', href='/css/modules/habits/habits_sim.css')
