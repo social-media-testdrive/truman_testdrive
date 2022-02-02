@@ -77,7 +77,7 @@ function customOnHintCloseFunction() {
 
    //enable the notifications button
    $('a.item[data-value="notifications"]').on('click', function(){
-     window.location.href='/sim2/habits';
+     window.location.href='/sim2/habits-esp';
    });
 
    function glowNotifications(){
