@@ -1,18 +1,19 @@
 const hintsList = [
   {
     element: '#hint1',
-    hint: `Most social media sites have settings that you can use to control the
-    number of notifications you get. It will look similar to this page.`,
+    hint: `La mayoría de las redes sociales cuentan con la opción de “Ajustes”, 
+    a través de esta puedes controlar el número de notificaciones que te pueden 
+    llegar. Esta se verá similar a esta página.`,
     hintPosition: "middle-middle",
-    audioFile: ['CUSML.10.4.08.mp3']
+    // audioFile: ['CUSML.10.4.08.mp3']
   },
   {
     element: '#hint2',
-    hint: `Here, you can change the number of notifications you get for
-    different types of content. Try pausing notifications for a while by turning
-    this setting on.`,
+    hint: `Aquí puedes cambiar el número de notificaciones que te pueden llegar 
+    de diferentes tipos de publicaciones. Intenta ponerlas en pausa por un 
+    tiempo, activa esta función.`,
     hintPosition: "middle-middle",
-    audioFile: ['CUSML.10.4.09.mp3']
+    // audioFile: ['CUSML.10.4.09.mp3']
   }
 ];
 
