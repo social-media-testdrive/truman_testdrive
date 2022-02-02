@@ -1,35 +1,36 @@
 const stepsList = [
   {
     element: '#step0',
-    intro: `Click "Next" to begin!`,
+    intro: `¡Haz clic en "Seguir" para comenzar!`,
     position: 'right',
     scrollTo: 'tooltip',
     audioFile: ['']
   },
   {
     element: '#step0',
-    intro: `Thinking about your media choices and the habits you form while using
-    them is important. Good habits help us build healthy and happy lives. Bad
-    habits can make our lives more difficult.`,
+    intro: `Es importante pensar en nuestras elecciones de redes sociales y hábitos 
+    que se pueden formar al usarlas. Los buenos hábitos nos ayudan a construir vidas 
+    saludables y felices. En cambio, los malos hábitos pueden complicarnos la vida.`,
     position: "right",
     scrollTo: 'tooltip',
     audioFile: ['CUSML.10.4.01.mp3']
   },
   {
     element: '#step0',
-    intro: `While apps use certain features to grab your attention and keep you
-    using them for as long as possible, it's important to think about how you
-    can form good habits and be in control of your media use!`,
+    intro: `Aunque las aplicaciones tienen ciertas características que buscan captar 
+    tu atención y mantenerte en ellas el mayor tiempo posible. Es importante que 
+    pienses en cómo puedes formar buenos hábitos y tener el control en el uso de tus 
+    redes sociales!`,
     position: "right",
     scrollTo: 'tooltip',
     audioFile: ['CUSML.10.4.02.mp3']
   },
   {
     element: '#step0',
-    intro: `Let's learn some strategies to build healthy social media habits.
-    Click on \"Done\" and then look for the blue dots&nbsp;&nbsp;<a role='button' tabindex='0' class='introjs-hint'>
+    intro: `Vamos a aprender algunas estrategias para crear hábitos saludables en las redes sociales.
+    Haz clic en \"Listo\" y revisa los puntos azules&nbsp;&nbsp;<a role='button' tabindex='0' class='introjs-hint'>
     <div class='introjs-hint-dot'></div>
-    <div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; &nbsp; to learn more...`,
+    <div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; &nbsp; para aprender más...`,
     position: "right",
     scrollTo: 'tooltip',
     audioFile: ['CUSML.10.4.03.mp3']
@@ -39,15 +40,15 @@ const stepsList = [
 const hintsList = [
   {
     element: '#hint1',
-    hint: `This is a social media timeline. You will get notifications when
-    your friends like or comment on your posts.`,
+    hint: `Este es el feed de una red social. Recibirás notificaciones cuando tus 
+    amigos le den “me gusta” o comenten tus publicaciones.`,
     hintPosition: "middle-middle",
     audioFile: ['CUSML.10.4.04.mp3']
   },
   {
     element: '#hint2',
-    hint: `Once you've clicked all the blue dots, click on the Notifications tab
-    to see what notifications you have received!`,
+    hint: `¡Una vez le hayas dado clic a todos los puntos azules, dale clic a la 
+    pestaña de notificaciones para ver qué notificaciones has recibido!`,
     hintPosition: "middle-middle",
     audioFile: ['CUSML.10.4.05.mp3']
   }
