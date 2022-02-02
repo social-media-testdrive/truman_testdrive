@@ -1,19 +1,19 @@
 const hintsList = [
   {
     element: '.settingsButton',
-    hint: `One way you can build a healthy habit is to turn off or reduce the
-    number of notifications that you get. After you've clicked all the blue
-    dots, click Settings on the notification window to see how you can do
-    this.`,
+    hint: `Una manera de crear hábitos saludables es desactivando o reduciendo 
+    el número de notificaciones que recibes. Después de darle clic a todos 
+    los puntos azules, haz clic en "Ajustes" en la pestaña de notificaciones 
+    para ver cómo puedes hacerlo .`,
     hintPosition: "middle-middle",
-    audioFile: ['CUSML.10.4.06.mp3']
+    // audioFile: ['CUSML.10.4.06.mp3']
   },
   {
     element: '#hint2',
-    hint: `Notifications can give you helpful information, but having too many
-    can make you feel like you constantly need to check them.`,
+    hint: `Las notificaciones pueden darte información importante, pero tener 
+    demasiadas pueden hacer que sientas la necesidad de revisarlas constantemente.`,
     hintPosition: "top-middle",
-    audioFile: ['CUSML.10.4.07.mp3']
+    // audioFile: ['CUSML.10.4.07.mp3']
   }
 ];
 
