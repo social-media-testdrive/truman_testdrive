@@ -4,7 +4,7 @@ const stepsList = [
     intro: `¡Haz clic en "Seguir" para comenzar!`,
     position: 'right',
     scrollTo: 'tooltip',
-    audioFile: ['']
+    // audioFile: ['']
   },
   {
     element: '#step0',
@@ -13,7 +13,7 @@ const stepsList = [
     saludables y felices. En cambio, los malos hábitos pueden complicarnos la vida.`,
     position: "right",
     scrollTo: 'tooltip',
-    audioFile: ['CUSML.10.4.01.mp3']
+    // audioFile: ['CUSML.10.4.01.mp3']
   },
   {
     element: '#step0',
@@ -23,7 +23,7 @@ const stepsList = [
     redes sociales!`,
     position: "right",
     scrollTo: 'tooltip',
-    audioFile: ['CUSML.10.4.02.mp3']
+    // audioFile: ['CUSML.10.4.02.mp3']
   },
   {
     element: '#step0',
@@ -33,7 +33,7 @@ const stepsList = [
     <div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; &nbsp; para aprender más...`,
     position: "right",
     scrollTo: 'tooltip',
-    audioFile: ['CUSML.10.4.03.mp3']
+    // audioFile: ['CUSML.10.4.03.mp3']
   }
 ];
 
@@ -43,14 +43,14 @@ const hintsList = [
     hint: `Este es el feed de una red social. Recibirás notificaciones cuando tus 
     amigos le den “me gusta” o comenten tus publicaciones.`,
     hintPosition: "middle-middle",
-    audioFile: ['CUSML.10.4.04.mp3']
+    // audioFile: ['CUSML.10.4.04.mp3']
   },
   {
     element: '#hint2',
     hint: `¡Una vez le hayas dado clic a todos los puntos azules, dale clic a la 
     pestaña de notificaciones para ver qué notificaciones has recibido!`,
     hintPosition: "middle-middle",
-    audioFile: ['CUSML.10.4.05.mp3']
+    // audioFile: ['CUSML.10.4.05.mp3']
   }
 ];
 
