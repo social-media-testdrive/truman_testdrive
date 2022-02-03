@@ -221,9 +221,9 @@ const userSchema = new mongoose.Schema({
 
             new_comment: { type: Boolean, default: false }, //is new comment
             new_comment_id: String, //ID for comment
-            comment_body: String, //Original Body of User Post
+            comment_body: String, // Text the user wrote (if the comment was user-made)
             absTime: Date, // Real-life timestamp of when the comment was made (user-made only)
-            commentTime: { type: Number }, // Not used in TestDrive
+            // commentTime: { type: Number }, / / Not used in TestDrive
             // time: {type: Number}
         }, { _id: true, versionKey: false })]
     }, { _id: true, versionKey: false })],
@@ -243,7 +243,7 @@ const userSchema = new mongoose.Schema({
         modal: [new Schema({
             modalName: String, // Name of modal opened
             modalOpened: { type: Boolean, default: false }, // Whether them modal was opened
-            modalOpenedTime: Number, // Real-life time when modal was opened
+            modalOpenedTime: Date, // Real-life time when modal was opened
             modalViewTime: Number, // Duration of time that the modal was open (in milliseconds)
             modalCheckboxesCount: Number, // How many checkboxes are present in the modal
             modalCheckboxesInput: Number, // Number which, when converted to binary format, corresponds to which checkboxes were checked
@@ -261,7 +261,7 @@ const userSchema = new mongoose.Schema({
 
             new_comment: { type: Boolean, default: false }, // is new comment
             new_comment_id: String, // ID for comment
-            comment_body: String, // Original Body of User Post
+            comment_body: String, // Text the user wrote (if the comment was user-made)
             absTime: Date, // Real-life timestamp of when the comment was made (user-made only)
             commentTime: { type: Number }, // Not used in TestDrive
             // time: {type: Number}
@@ -286,7 +286,7 @@ const userSchema = new mongoose.Schema({
         modal: [new Schema({
             modalName: String, // Name of modal opened
             modalOpened: { type: Boolean, default: false }, // Whether them modal was opened
-            modalOpenedTime: Number, // Real-life time when modal was opened
+            modalOpenedTime: Date, // Real-life time when modal was opened
             modalViewTime: Number, // Duration of time that the modal was open (in milliseconds)
             modalCheckboxesCount: Number, // How many checkboxes are present in the modal
             modalCheckboxesInput: Number, // Number which, when converted to binary format, corresponds to which checkboxes were checked
@@ -304,7 +304,7 @@ const userSchema = new mongoose.Schema({
 
             new_comment: { type: Boolean, default: false }, // is new comment
             new_comment_id: Number, // ID for comment
-            comment_body: String, // Original Body of User Post
+            comment_body: String, // Text the user wrote (if the comment was user-made)
             absTime: Date, // Real-life timestamp of when the comment was made (user-made only)
             commentTime: { type: Number }, // Not used in TestDrive
             // time: {type: Number}

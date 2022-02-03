@@ -3,15 +3,17 @@ const Script = require('../models/Script.js');
 const User = require('../models/User');
 const _ = require('lodash');
 
-// Returns an array of objects that belongs to the module specified
-// and that only keep the properties specified
+// Search for items in the array that belong to the module,
+// Filter to include only the specified keys in the objects of the array. 
+// Return the array.
 function getfilterObjects(array, properties, module, moduleDBkey) {
-    if (array === undefined) {
-        return [];
-    }
-    const filteredArray = array.filter(item => item[moduleDBkey] == module);
-    const result = filteredArray.map(item => _.pick(item, properties));
-    return result;
+    // using reduce, rather than filter + map, is faster.
+    return array.reduce(function(newArray, item) {
+        if (item[moduleDBkey] === module) {
+            newArray.push(_.pick(item, properties))
+        }
+        return newArray;
+    }, []);
 }
 
 /**
@@ -56,32 +58,19 @@ exports.postActivityData = (req, res, next) => {
         .exec(function(err, user) {
             const module = req.body.module;
 
-            const newPostsArray = []; // will become the value for activityData.newPosts
-            const freeplayCommentsArray = []; // will become the value for activityData.freeplayComments
-
-            const chatActionArray = []; // wil become the value for activityData.chatAction
-            const tutorialActionArray = []; // wil become the value for activityData.tutorialAction
-            const guidedActivityActionArray = []; // wil become the value for activityData.guidedActivityAction
-            const feedActionArray = []; // wil become the value for activityData.feedAction
-
-            // const reflectionAnswersArray = []; // will become the value for activityData.reflectionAnswers
-            // const quizAnswersArray = []; // will become the value for activityData.quizAnswers
-            // let viewQuizExplanationsBoolean = false; // will become the value for activityData.checkQuizAnswers
-
             // Search for posts created by the user in the current module,
             // add body of each post to newPostsArray.
-            for (const newPosts of user.posts) {
-                if (newPosts.module === module) {
-                    newPostsArray.push(newPosts.body);
-                }
-            }
+            // Variable will become the value for activityData.newPosts
+            const newPostsArray = user.posts
+                .filter((post) => post.module === module)
+                .map((post) => post.body);
 
             // Search for comments created by the user in the current module,
             // add body of comments for each post and the postID to freeplayComments.
             // Iterate through feedAction. Each item represents the actions on an existing post.
+            const freeplayCommentsArray = [];
             for (const actionsOnPost of user.feedAction) {
-                // check if post field exists before using it, it is supposed to exist but
-                // there is a bug where it is sometimes missing
+                // when post field is undefined, it means user conducted an action a post they made themself
                 if (!actionsOnPost.post) {
                     continue;
                 }
@@ -113,82 +102,84 @@ exports.postActivityData = (req, res, next) => {
                 }
             }
 
-            const chosenTopicArray = (module === "targeted") ? user.targetedAdTopic : (module === "esteem") ? user.esteemTopic : []; // will become the value for activityData.chosenTopic
+            // Assign the chosenTopic array according to the current module the user is in.
+            const chosenTopicArray =
+                (module === "targeted") ? user.targetedAdTopic :
+                (module === "esteem") ? user.esteemTopic : [];
 
-            const habitsTimerArray = (module === "habits") ? user.habitsTimer : []; // will become the value for activityData.habitsTimer
+            // Assign habitsTimerArray if the module is habits
+            const habitsTimerArray =
+                (module === "habits") ? user.habitsTimer : [];
 
-            const postsArray = getfilterObjects(user.posts, ['body', 'picture'], module, 'module'); // will become the value for activityData.posts
+            // Variable will become the value for activityData.posts
+            const postsArray = getfilterObjects(user.posts, ['postID', 'body', 'picture', 'absTime', 'relativeTime', "_id"], module, 'module');
 
-            const pageLogArray = getfilterObjects(user.pageLog, ['time', 'subdirectory1'], module, 'subdirectory2'); // will become the value for activityData.pageLog
+            // Variable will become the value for activityData.pageLog
+            const pageLogArray = getfilterObjects(user.pageLog, ['time', 'subdirectory1'], module, 'subdirectory2');
 
-            const startPageActionArray = getfilterObjects(user.pageLog, ['subdirectory1', 'actionType', 'vocabTerm', 'absoluteTimestamp']); // will become the value for activityData.startPageAction
+            // Variable will become the value for activityData.pageLog
+            const startPageActionArray = getfilterObjects(user.startPageAction, ['subdirectory1', 'actionType', 'vocabTerm', 'absoluteTimestamp'], module, 'subdirectory2');
 
-            const introjsStepActionArray = getfilterObjects(user.introjsStepAction, ['subdirectory1', 'stepNumber', 'viewDuration'], module, 'subdirectory2'); // will become the value for activityData.introjsStepAction
+            // Variable will become the value for activityData.introjsStepAction
+            const introjsStepActionArray = getfilterObjects(user.introjsStepAction, ['subdirectory1', 'stepNumber', 'viewDuration', 'absoluteStartTime'], module, 'subdirectory2');
 
-            const blueDotActionArray = getfilterObjects(user.blueDotAction, ['subdirectory1', 'dotNumber', 'viewDuration', 'clickedGotIt'], module, 'subdirectory2'); // will become the value for activityData.blueDotAction
+            // Variable will become the value for activityData.blueDotAction
+            const blueDotActionArray = getfilterObjects(user.blueDotAction, ['subdirectory1', 'dotNumber', 'absoluteTimeOpened', 'viewDuration', 'clickedGotIt'], module, 'subdirectory2');
 
-            const accountsActionArray = (module === 'accounts') ? getfilterObjects(user.accountsAction, ['subdirectory1', 'inputField', 'inputText', 'passwordStrength'], module, 'subdirectory2') : []; // will become the value for activityData.accountsAction
+            // Get actions made in accounts module only if current module is accounts
+            // Variable will become the value for activityData.accountsAction
+            const accountsActionArray = (module === 'accounts') ?
+                getfilterObjects(user.accountsAction, ['subdirectory1', 'inputField', 'inputText', 'passwordStrength', 'absoluteTimestamp'], module, 'subdirectory2') : [];
 
-            const habitsActionArray = (module === 'habits') ? getfilterObjects(user.habitsAction, ['subdirectory1', 'actionType', 'setValue'], module, 'subdirectory2') : []; // will become the value for activityData.habitsAction
+            // Get actions made in habits module only if current module is habits
+            // Variable will become the value for activityData.habitsAction
+            const habitsActionArray = (module === 'habits') ? getfilterObjects(user.habitsAction, ['subdirectory1', 'actionType', 'setValue', 'absoluteTimestamp'], module, 'subdirectory2') : [];
 
-            const privacyActionArray = (module === 'privacy') ? getfilterObjects(user.privacyAction, ['subdirectory1', 'inputField', 'inputText'], module, 'subdirectory2') : []; // will become the value for activityData.privacyAction
+            // Get actions made in privacy module only if current module is privacy
+            // Variable will become the value for activityData.privacyAction
+            const privacyActionArray = (module === 'privacy') ? getfilterObjects(user.privacyAction, ['subdirectory1', 'inputField', 'inputText', 'absoluteTimestamp'], module, 'subdirectory2') : []; // will become the value for activityData.privacyAction
 
-            for (const chatAction of user.chatAction) {
-                // check if post is in the current module
-                if (chatAction.subdirectory2 !== module) {
-                    continue;
-                }
-                let cat = _.pick(chatAction, ['chatId', 'subdirectory1', 'minimized', 'closed', 'minimizedTime', 'closedTime']);
-                const userMessages = chatAction.messages.map(item => item.message);
-                cat.messages = userMessages;
-                chatActionArray.push(cat);
-            }
+            // Variable will become the value for activityData.chatAction
+            const chatActionArray = getfilterObjects(user.chatAction, ['chatId', 'subdirectory1', 'messages', 'minimized', 'closed', 'minimizedTime', 'closedTime'], module, 'subdirectory2');
 
-            for (const tutorialAction of user.tutorialAction) {
-                // check if post is in the current module
-                if (tutorialAction.modual !== module) {
-                    continue;
-                }
-                let cat = _.pick(tutorialAction, ['post', 'liked', 'flagged']);
-                const userComments = _.pick(tutorialAction.comments, ['comment', 'liked', 'flagged', 'new_comment', 'new_comment_id', 'comment_body']);
-                cat.comments = userComments;
-                tutorialActionArray.push(cat);
-            }
+            // Variable will become the value for activityData.tutorialAction
+            const tutorialActionArray =
+                getfilterObjects(user.tutorialAction, ['post', 'liked', 'flagged', 'flagTime', 'likeTime', 'replyTime', 'comments'], module, 'modual');
 
-            for (const guidedActivityAction of user.guidedActivityAction) {
-                // check if post is in the current module
-                if (guidedActivityAction.modual !== module) {
-                    continue;
-                }
-                let cat = _.pick(guidedActivityAction, ['post', 'liked', 'flagged']);
-                const userModals = _.pick(guidedActivityAction.modal, ['modalName', 'modalOpened', 'modalViewTime', 'modalCheckboxesCount', 'modalCheckboxesInput', 'modalDropdownCount', 'modalDropdownClick']);
-                const userComments = _.pick(guidedActivityAction.comments, ['comment', 'liked', 'flagged', 'new_comment', 'new_comment_id', 'comment_body']);
-                cat.modal = userModals;
-                cat.comments = userComments;
-                guidedActivityActionArray.push(cat);
-            }
+            // Variable will become the value for activityData.guidedActivityAction
+            const guidedActivityActionArray =
+                getfilterObjects(user.guidedActivityAction, ['post', 'liked', 'flagged', 'flagTime', 'likeTime', 'replyTime', 'modal', 'comments'], module, 'modual');
 
-            for (const feedAction of user.feedAction) {
-                // check if post is in the current module
-                if (feedAction.modual !== module) {
-                    continue;
-                }
-                let cat = _.pick(feedAction, ['liked', 'flagged']);
-                const userModals = _.pick(feedAction.modal, ['modalName', 'modalOpened', 'modalViewTime', 'modalCheckboxesCount', 'modalCheckboxesInput', 'modalDropdownCount', 'modalDropdownClick']);
-                const userComments = _.pick(feedAction.comments, ['comment', 'liked', 'flagged', 'new_comment', 'new_comment_id', 'comment_body']);
-                cat.modal = userModals;
-                cat.comments = userComments;
-                cat.postID = feedAction.post._id;
-                cat.postBody = feedAction.post.body;
-                feedActionArray.push(cat);
-            }
+            // Variable will become the value for activityData.feedAction
+            const feedActionArray =
+                getfilterObjects(user.feedAction, ['post', 'liked', 'flagged', 'flagTime', 'likeTime', 'replyTime', 'modal', 'comments'], module, 'modual')
+                .map(function(feedAction) {
+                    if (!feedAction.post) {
+                        feedAction.postBody = "user_post"
+                        return feedAction;
+                    }
+                    feedAction.postID = feedAction.post._id;
+                    feedAction.postBody = feedAction.post.body;
 
-            const reflectionActionArray = getfilterObjects(user.reflectionAction, ['attemptDuration', 'answers'], module, 'modual') // will become the value for activityData.reflectionAction
+                    // For interactions the user had with comments,
+                    // Find and add the comment text
+                    feedAction.comments.map(function(comment) {
+                        if (!comment.new_comment && feedAction.post.comments.length !== 0) {
+                            let comment_obj = feedAction.post.comments.find(post_comment => post_comment._id.equals(comment.comment));
+                            comment.comment_body = comment_obj.body;
+                        }
+                    })
+                    return feedAction;
+                });
 
-            const quizActionArray = getfilterObjects(user.quizAction, ['attemptNumber', 'attemptDuration', 'answers', 'numCorrect'], module, 'modual') // will become the value for activityData.quizAction
+            // Variable will become the value for activityData.reflectionAnswers
+            const reflectionAnswersArray = getfilterObjects(user.reflectionAction, ['attemptDuration', 'answers'], module, 'modual');
+
+            // Variable will become the value for activityData.quizAnswers
+            const quizAnswersArray = getfilterObjects(user.quizAction, ['attemptNumber', 'attemptDuration', 'answers', 'numCorrect'], module, 'modual');
 
             // Check to see if user viewed quiz explanations in the current module 
-            viewQuizExplanationsBoolean = (user.viewQuizExplanations.find(record => record.module === module && record.click === true) !== undefined)
+            viewQuizExplanationsBoolean = (user.viewQuizExplanations.find(record => record.module === module && record.click === true) !== undefined);
 
             // update activityData values
             activityData.newPosts = newPostsArray;
@@ -209,7 +200,7 @@ exports.postActivityData = (req, res, next) => {
             activityData.chatAction = chatActionArray;
 
             activityData.tutorialAction = tutorialActionArray;
-            activityData.guidedActivityAction = guidedActivityAction;
+            activityData.guidedActivityAction = guidedActivityActionArray;
             activityData.feedAction = feedActionArray;
 
             activityData.reflectionAnswers = reflectionAnswersArray;
