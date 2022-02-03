@@ -22,8 +22,8 @@ block content
           label.sectionTitle(for='account') Account Settings
             .field
               br
-              .ui.toggle.checkbox
-                input(type='checkbox' name='public')
+              .ui.toggle.checkbox(name='publicToggle')
+                input(type='checkbox' name='isPrivate')
                 label Private account
             span.settingSmallLabel When your account is private, only people you approve can see your posts.
             br
@@ -41,7 +41,7 @@ block content
                 br
                 label.standardLabel Allow friend requests from
                   .div
-                  .ui.selection.dropdown
+                  .ui.selection.dropdown(name='friendRequestsDropdown')
                     input(type='hidden' name='friendRequests')
                     i.dropdown.icon
                     .default.text Select
@@ -52,7 +52,7 @@ block content
               .field
                 label.standardLabel Who can see my friends list?
                   .div
-                  .ui.selection.dropdown
+                  .ui.selection.dropdown(name='friendListDropdown')
                     input(type='hidden' name='friendList')
                     i.dropdown.icon
                     .default.text Select
@@ -67,8 +67,8 @@ block content
                 br
                 label.standardLabel Allow comments from
                   .div
-                  .ui.selection.dropdown
-                    input(type='hidden' name='friendRequests')
+                  .ui.selection.dropdown(name='commentsListDropdown')
+                    input(type='hidden' name='commentsList')
                     i.dropdown.icon
                     .default.text Select
                     .default.
@@ -81,7 +81,7 @@ block content
               .field
                 label.standardLabel Block comments from
                 .div
-                  select.ui.fluid.search.dropdown(multiple='')
+                  select.ui.fluid.search.dropdown.blocklistDropdown(multiple='')
                     option Fake N. Ame
                     option Ima Robot
                     option Cloe Hansen
@@ -112,12 +112,12 @@ block content
               label.subsectionTitle(for='tags') Tags
                 .field
                   br
-                  .ui.toggle.checkbox
-                    input(type='checkbox' name='public' checked='checked')
+                  .ui.toggle.checkbox(name='tagToggle1')
+                    input(type='checkbox' name='allowTags' checked='checked')
                     label Allow people to tag me in their posts
                 .field
-                  .ui.toggle.checkbox
-                    input(type='checkbox' name='public' checked='checked')
+                  .ui.toggle.checkbox(name='tagToggle2')
+                    input(type='checkbox' name='addTags' checked='checked')
                     label Automatically add tagged posts in my timeline
                     br
                     br
@@ -128,14 +128,14 @@ block content
             label.sectionTitle(for='information') Location Sharing Settings
               .field
                 br
-                .ui.toggle.checkbox
-                  input(type='checkbox' name='locationShare' checked='checked')
+                .ui.toggle.checkbox(name='locationToggle')
+                  input(type='checkbox' name='shareLocation' checked='checked')
                   label Turn on location sharing
             .field
               br
               label.standardLabel Share my location with
                 .div
-                .ui.selection.dropdown
+                .ui.selection.dropdown(name='shareLocationWithToggle')
                   input(type='hidden' name='shareLocationWith')
                   i.dropdown.icon
                   .default.text Select

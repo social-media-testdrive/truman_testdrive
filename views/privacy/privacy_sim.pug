@@ -37,7 +37,7 @@ block content
             .field#hint2
               br
               .ui.toggle.checkbox(name='publicToggle')
-                  input(type='checkbox' name='public')
+                  input(type='checkbox' name='isPrivate')
                   label Private account
             span.settingSmallLabel When your account is private, only people you approve can see your posts.
             br
@@ -125,11 +125,11 @@ block content
               .field
                 br
                 .ui.toggle.checkbox(name='tagToggle1')
-                  input(type='checkbox' name='public' checked='checked')
+                  input(type='checkbox' name='allowTags' checked='checked')
                   label Allow people to tag me in their posts
               .field
                 .ui.toggle.checkbox(name='tagToggle2')
-                  input(type='checkbox' name='public' checked='checked')
+                  input(type='checkbox' name='addTags' checked='checked')
                   label Automatically add tagged posts in my timeline
                   br
                   br
@@ -141,7 +141,7 @@ block content
               .field#hint4
                 br
                 .ui.toggle.checkbox(name='locationToggle')
-                  input(type='checkbox' name='locationShare' checked='checked')
+                  input(type='checkbox' name='shareLocation' checked='checked')
                   label Turn on location sharing
             .field#hint5
               br

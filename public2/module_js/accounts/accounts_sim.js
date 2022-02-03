@@ -210,6 +210,7 @@ function customOnClickGreenContinue() {
 
         const jqxhr = $.post("/accountsAction", {
             action: cat,
+            actionType: 'accounts',
             _csrf: $('meta[name="csrf-token"]').attr('content')
         });
         actionArray.push(jqxhr);

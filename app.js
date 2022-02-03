@@ -651,7 +651,10 @@ if (enableDataCollection) {
     app.post('/introjsStep', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postIntrojsStepAction);
     app.post('/bluedot', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postBlueDotAction);
     app.post('/moduleProgress', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, userController.postUpdateModuleProgress);
-    app.post('/accountsAction', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postAccountsAction);
+    app.post('/accountsAction', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postUpdateUniqueFeedAction);
+    app.post('/habitsAction', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postUpdateUniqueFeedAction);
+    app.post('/privacyAction', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postUpdateUniqueFeedAction);
+    app.post('/chatAction', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postUpdateChatAction);
 }
 
 /*
