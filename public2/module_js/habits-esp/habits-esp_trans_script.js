@@ -1,19 +1,19 @@
 const nextPageURL = 'modual';
 const stepsList = [
+  // {
+  //   intro: `¡Haz clic en "Seguir" para comenzar!`,
+  //   // audioFile: ['']
+  // },
   {
-    intro: `Click "Next" to begin!`,
-    audioFile: ['']
+    intro: `¡Ahora puedes explorar el feed del TestDrive! Puedes leer lo 
+    que otros han publicado, responder o crear tus propias publicaciones.`,
+    // audioFile: ['CUSML.10.5.4.mp3']
   },
   {
-    intro: `Now you get to explore the TestDrive timeline! You can read
-    what others have posted, respond, or make your own posts.`,
-    audioFile: ['CUSML.10.5.4.mp3']
-  },
-  {
-    intro: `As you look through the timeline, see if you can find
-    features that grab your attention and think about what you can do to
-    build healthy social media habits.`,
-    audioFile: ['CUSML.10.5.5.mp3']
+    intro: `Mientras ves este feed, intenta encontrar si hay algo que te 
+    llama la atención y piensa en lo que puedes hacer para construir hábitos 
+    saludables en las redes sociales.`,
+    // audioFile: ['CUSML.10.5.5.mp3']
   }
 ];
 
