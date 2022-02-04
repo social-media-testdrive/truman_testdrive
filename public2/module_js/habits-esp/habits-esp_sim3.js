@@ -40,7 +40,7 @@ function customOnHintCloseFunction() {
 
    //enable the activity button
    $('#activityButton').on('click', function(){
-     window.location.href='/sim4/habits';
+     window.location.href='/sim4/habits-esp';
    });
 
    //do the glowing animation every 2 seconds
