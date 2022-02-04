@@ -1,34 +1,36 @@
 const hintsList = [
   {
     element: '#hint1',
-    hint: `Some social media sites also have a page where you can track the time
-    you have spent using the site or app. You can even set daily time limit
-    reminders!`,
+    hint: `Algunas redes sociales también tienen una página donde puedes 
+    controlar el tiempo que las usas, ya sea desde el navegador o en la 
+    aplicación. ¡Incluso puedes establecer recordatorios con límites de 
+    tiempo de uso diario!`,
     hintPosition: "middle-middle",
-    audioFile: ['CUSML.10.4.10.mp3']
+    // audioFile: ['CUSML.10.4.10.mp3']
   },
   {
     element: '#hint2',
-    hint: `It’s important to be mindful of how much time you spend on social
-    media. Think about how to balance social media use with the time you spend
-    on other activities, like hanging out with your friends face-to-face!`,
+    hint: `Es importante ser consciente de cuánto tiempo necesitas estar en 
+    las redes sociales. Piensa en cómo encontrar un balance entre el tiempo 
+    que pasas en ellas y el que le dedicas a realizar otras actividades, ¡como 
+    salir con tus amigos y hablar cara a cara!`,
     hintPosition: "middle-middle",
-    audioFile: ['CUSML.10.4.11.mp3']
+    // audioFile: ['CUSML.10.4.11.mp3']
   },
   {
     element: '#hint3',
-    hint: `Signs that you need a break from social media might include things
-    like missing time with family or friends, feeling sad, anxious, or tired, or
-    struggling to stay on top of homework and chores.`,
+    hint: `Algunos señales que indican que necesitas tomarte un descanso de 
+    las redes sociales son: No pasar tanto tiempo con tu familia o amigos, sentirte 
+    triste, ansioso o cansado, y tener dificultades para estar al día con tus deberes.`,
     hintPosition: "middle-middle",
-    audioFile: ['CUSML.10.4.12.mp3']
+    // audioFile: ['CUSML.10.4.12.mp3']
   },
   {
     element: '#reminderTimeSelectField',
-    hint: `Take a break or disconnect if you think you have been using it too
-    much!`,
+    hint: `¡Tómate un descanso para poder desconectarte si piensas que las estás usando 
+    demasiado!`,
     hintPosition: "middle-middle",
-    audioFile: ['CUSML.10.4.13.mp3']
+    // audioFile: ['CUSML.10.4.13.mp3']
   }
 ];
 
