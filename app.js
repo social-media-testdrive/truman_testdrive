@@ -287,7 +287,13 @@ app.get('/end/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, c
       title: 'Finished',
       isResearchVersion
     });
-  } else {
+  } else if((req.params.modId === 'esteem-esp') || (req.params.modId === 'habits-esp')){
+    res.render('base_end-esp.pug', {
+      title: 'Terminado',
+      isResearchVersion
+    });
+  }
+  else {
     res.render('base_end.pug', {
       title: 'Finished',
       isResearchVersion
