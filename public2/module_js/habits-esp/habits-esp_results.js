@@ -14,11 +14,11 @@ function onPrint(){
     $(".insertPrint").empty();
     $(".insertPrint").css('display','block');
 
-    $(".insertPrint").append("<br><h4>How many of these attention-grabbing design features did you notice?</h4>");
+    $(".insertPrint").append("<br><h4>¿Cuántas de estas características de diseño llamativas notaste?</h4>");
     $(".checkOne").clone().removeClass('reflectionPromptSegment').appendTo(".insertPrint");
 
-    $(".insertPrint").append("<br><h4>How many minutes do you think you spent on the TestDrive timeline?</h4>");
-    var responseTwo = document.getElementById("habits_responseTwo").value;
+    $(".insertPrint").append("<br><h4>¿Cuántos minutos piensas que pasaste en el feed de TestDrive?</h4>");
+    var responseTwo = document.getElementById("habitsesp_responseTwo").value;
     $(".insertPrint").append(responseTwo);
 
     if($('.ui.statistics').is(":visible")){
@@ -29,11 +29,11 @@ function onPrint(){
       $('.insertPrint').append(stringToAppend);
     }
 
-    $(".insertPrint").append("<br><h4>What did you do when you saw an advertisement or a sponsored post?</h4>");
+    $(".insertPrint").append("<br><h4>¿Qué hiciste cuando viste un anuncio o una publicacción patrocinada?</h4>");
     $(".checkTwo").clone().removeClass('reflectionPromptSegment').appendTo(".insertPrint");
 
-    $(".insertPrint").append("<h4>Why is it important to build healthy social media habits?</h4>");
-    var responseFour = document.getElementById("habits_responseFour").value;
+    $(".insertPrint").append("<h4>¿Por qué es importante establecer hábitos saludables de las redes sociales?</h4>");
+    var responseFour = document.getElementById("habitsesp_responseFour").value;
     $(".insertPrint").append(responseFour);
 
     window.print();

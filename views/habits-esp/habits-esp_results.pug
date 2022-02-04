@@ -18,7 +18,7 @@ block content
           .ui.basic.segment.reflectionPromptSegment.hidden.noPadding  
             .ui.label.resultsPromptLabel
               h4.reflectionCheckboxesPrompt(data-questionNumber='Q1')
-                | #{reflectionData.habits.Q1.prompt}
+                | #{reflectionData.habitsesp.Q1.prompt}
             .content.checkOne
               .ui.form
                 br
@@ -28,7 +28,7 @@ block content
                     .ui.checkbox
                       input(type='checkbox')
                       label(for='notifications', tabindex='0') 
-                        | #{reflectionData.habits.Q1.checkboxLabels[0]}
+                        | #{reflectionData.habitsesp.Q1.checkboxLabels[0]}
               .ui.form
                 .inline.fields
                   label(for='likes', name='likes') 
@@ -36,7 +36,7 @@ block content
                     .ui.checkbox
                       input(type='checkbox')
                       label(for='likes', tabindex='0') 
-                        | #{reflectionData.habits.Q1.checkboxLabels[1]}
+                        | #{reflectionData.habitsesp.Q1.checkboxLabels[1]}
               .ui.form
                 .inline.fields
                   label(for='timeSpent', name='timeSpent') 
@@ -44,7 +44,7 @@ block content
                     .ui.checkbox
                       input(type='checkbox')
                       label(for='timeSpent', tabindex='0') 
-                        | #{reflectionData.habits.Q1.checkboxLabels[2]}
+                        | #{reflectionData.habitsesp.Q1.checkboxLabels[2]}
 
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
           .ui.raised.segment
@@ -54,17 +54,17 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionHabitsTimeEntryPrompt(data-questionNumber='Q2')
-                  | #{reflectionData.habits.Q2.prompt}
+                  | #{reflectionData.habitsesp.Q2.prompt}
             
               .ui.form
                 br
                 .ui.form
                   .inline.fields.restrictMaxWidth
-                    input.glowing-border(type='text' id="habits_responseTwo")
+                    input.glowing-border(type='text' id="habitsesp_responseTwo")
                     label  &nbsp&nbspMinutos
-              button.ui.green.button#checkTime Find out the actual time!
+              button.ui.green.button#checkTime ¡Descubre el tiempo real!
               br
-              .ui.header.habitsReflectionCheckTime.hidden#undoHide You actually spent:
+              .ui.header.habitsReflectionCheckTime.hidden#undoHide En realidad pasaste:
               .ui.statistics.hidden
                 .statistic
                   .value#habitsActivityTotalTimeMinutes 0
@@ -87,7 +87,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionCheckboxesPrompt(data-questionNumber='Q3')
-                  | #{reflectionData.habits.Q3.prompt}
+                  | #{reflectionData.habitsesp.Q3.prompt}
               .content.checkTwo
                 .ui.form
                   br
@@ -97,7 +97,7 @@ block content
                       .ui.checkbox
                         input(type='checkbox')
                         label(for='wouldRead', tabindex='0') 
-                          | #{reflectionData.habits.Q3.checkboxLabels[0]}
+                          | #{reflectionData.habitsesp.Q3.checkboxLabels[0]}
                 .ui.form
                   .inline.fields
                     label(for='checkSource', name='checkSource') 
@@ -105,7 +105,7 @@ block content
                       .ui.checkbox
                         input(type='checkbox')
                         label(for='checkSource', tabindex='0') 
-                          | #{reflectionData.habits.Q3.checkboxLabels[1]}
+                          | #{reflectionData.habitsesp.Q3.checkboxLabels[1]}
                 .ui.form
                   .inline.fields
                     label(for='corroboration', name='corroboration') 
@@ -113,7 +113,7 @@ block content
                       .ui.checkbox
                         input(type='checkbox')
                         label(for='corroboration', tabindex='0') 
-                          | #{reflectionData.habits.Q3.checkboxLabels[2]}
+                          | #{reflectionData.habitsesp.Q3.checkboxLabels[2]}
                 .ui.form
                   .inline.fields
                     label(for='corroboration', name='wouldViewAd') 
@@ -121,7 +121,7 @@ block content
                       .ui.checkbox
                         input(type='checkbox')
                         label(for='wouldViewAd', tabindex='0') 
-                          | #{reflectionData.habits.Q3.checkboxLabels[3]}
+                          | #{reflectionData.habitsesp.Q3.checkboxLabels[3]}
           
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
           .ui.raised.segment
@@ -131,11 +131,11 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt(data-questionNumber='Q4')
-                  | #{reflectionData.habits.Q4.prompt}
+                  | #{reflectionData.habitsesp.Q4.prompt}
               .ui.form
                 .inline.fields
                   label
-                  textarea.glowing-border(rows='2' id="habits_responseFour")
+                  textarea.glowing-border(rows='2' id="habitsesp_responseFour")
         
     .ui.warning.message.hidden.startPromptsWarning
       .header

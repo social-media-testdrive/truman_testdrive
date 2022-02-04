@@ -249,6 +249,48 @@
       "prompt": "Why is it important to build healthy social media habits?"
     }
   },
+  "habitsesp": {
+    "Q1": {
+      "type": "checkbox",
+      "prompt": "¿Cuántas de estas características de diseño llamativas notaste?",
+      "checkboxLabels": {
+        "0": "Notificaciones",
+        "1": "Me gusta y comentarios de otros usuarios",
+        "2": "Tiempo pasado en las reded sociales"
+      },
+      "responseRequirement": "exact",
+      "correctResponses": {
+        "0": "1",
+        "1": "1",
+        "2": "0"
+      }
+    },
+    "Q2": {
+      "type": "habitsUnique",
+      "prompt": "¿Cuántos minutos piensas que pasaste en el feed de TestDrive?"
+    },
+    "Q3": {
+      "type": "checkbox",
+      "prompt": "En el feed de TestDrive, ¿que hiciste para establecer hábitos saludables de las redes sociales?",
+      "checkboxLabels": {
+        "0": "Revisé el tiempo pasado en el sitio",
+        "1": "Reduje el número de notificaciones que recibo",
+        "2": "Ignoro las notificaciones",
+        "3": "No hice nada para establecer hábitos saludables de las redes sociales"
+      },
+      "responseRequirement": "exact",
+      "correctResponses": {
+        "0": "1",
+        "1": "1",
+        "2": "1",
+        "3": "0"
+      }
+    },
+    "Q4": {
+      "type": "written",
+      "prompt": "¿Por qué es importante establecer hábitos saludables de las redes sociales?"
+    }
+  },
   "phishing": {
     "Q1": {
       "type": "checkboxGrouped",
