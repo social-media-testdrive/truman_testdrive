@@ -386,7 +386,7 @@ exports.getAdvancedlitTopic = (req, res) => {
  * POST /habitsTimer
  * Update the timestamp information for the habits module.
  */
-exports.postUpdateHabitsTimer = (req, res, done) => {
+exports.postUpdateHabitsTimer = (req, res, next) => {
     User.findById(req.user.id, (err, user) => {
         if (err) { return next(err); }
         if (req.body.habitsTimer) { //we are adding another view time to the array
@@ -411,6 +411,31 @@ exports.postUpdateHabitsTimer = (req, res, done) => {
             } else {
                 res.send({ result: "success" });
             }
+        });
+    });
+};
+
+/**
+ * POST /voiceoverTimer
+ * Update the durations voiceover is turned on
+ */
+exports.postUpdateVoiceoverTimer = (req, res, next) => {
+    User.findById(req.user.id, (err, user) => {
+        if (err) { return next(err); }
+        if (req.body.voiceoverTimer) { //we are adding another voiceover duration to the array
+            if (user.voiceoverTimer) {
+                user.voiceoverTimer.push(req.body.voiceoverTimer);
+            } else {
+                user.voiceoverTimer = [req.body.voiceoverTimer];
+            }
+        }
+
+        user.save((err) => {
+            if (err) {
+                return next(err);
+            }
+            res.set('Content-Type', 'application/json; charset=UTF-8');
+            res.send({ result: "success" });
         });
     });
 };

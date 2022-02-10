@@ -13,6 +13,7 @@ const activitySchema = new mongoose.Schema({
 
     chosenTopic: [String], // Food, Gaming, or Sports, either from User.targetedAdTopic or User.esteemTopic
     habitsTimer: [Number], // How long the user has been on the free-play page each time they visit in habits free-play sections, use sum of this array to get a total time.
+    voiceoverTimer: [Number], // How long the user has kept the voiceover on, use sum of this array to get a total time
 
     // User created posts 
     posts: [new Schema({

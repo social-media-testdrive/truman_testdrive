@@ -30,6 +30,7 @@ exports.postActivityData = (req, res, next) => {
 
         chosenTopic: [],
         habitsTimer: [],
+        voiceoverTimer: [],
         posts: [],
         pageLog: [],
 
@@ -187,6 +188,7 @@ exports.postActivityData = (req, res, next) => {
 
             activityData.chosenTopic = chosenTopicArray;
             activityData.habitsTimer = habitsTimerArray;
+            activityData.voiceoverTimer = user.voiceoverTimer;
 
             activityData.posts = postsArray;
             activityData.pageLog = pageLogArray;

@@ -661,6 +661,7 @@ if (enableDataCollection) {
     app.post('/habitsAction', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postUpdateUniqueFeedAction);
     app.post('/privacyAction', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postUpdateUniqueFeedAction);
     app.post('/chatAction', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postUpdateChatAction);
+    app.post('/voiceoverTimer', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, userController.postUpdateVoiceoverTimer);
 }
 
 /*

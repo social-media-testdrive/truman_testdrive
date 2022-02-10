@@ -67,6 +67,7 @@ const userSchema = new mongoose.Schema({
     habitsTimer: [Number], // How long the user has been on the free-play page each time they visit, use sum of this array to get a total time.
     firstHabitViewTime: { type: Number, default: -1 }, // The time that the user first opened the free-play section of the habits module
     // if the user clicked to view quiz explanations
+    voiceoverTimer: [Number], // How long the user has kept the voiceover on, use sum of this array to get a total time
     viewQuizExplanations: [new Schema({
         module: String, // Which lesson module does this belong to
         click: Boolean, // Did user click to view explanations?
