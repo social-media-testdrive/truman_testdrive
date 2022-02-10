@@ -1,5 +1,5 @@
 //-this is a totally normal actor post
-.ui.fluid.card.dim(postNumber = val.post_id, postID=val.id, ui=user.ui, transparency=user.transparency, notify=user.notify, state=val.state || 'unread', type='actor', actor_un = val.actor.username, actor_name = val.actor.profile.name, actor_pic = val.actor.profile.picture)
+.ui.fluid.card.dim(isArticle= val.info_text!=="", postNumber = val.post_id, postID=val.id, ui=user.ui, transparency=user.transparency, notify=user.notify, state=val.state || 'unread', type='actor', actor_un = val.actor.username, actor_name = val.actor.profile.name, actor_pic = val.actor.profile.picture)
   //- dimmer DIV for flagging
   .ui.dimmer.flag
         .content
@@ -34,25 +34,49 @@
       .description.openPostDigitalLiteracy!=val.body
     else 
       .description!=val.body
-  .three.ui.bottom.attached.icon.buttons
-    .ui.reply.button(tabindex='0')
-      i.reply.icon
-      |  Reply
-    .ui.flag.button(tabindex='0')
-      i.flag.icon
-      |  Flag
-    if val.like
-      .ui.labeled.button(tabindex='0')
-        .ui.red.like.button
-          i.heart.icon
-          |  Like
-        a.ui.basic.red.left.pointing.label=val.likes
-    else
-      .ui.labeled.button(tabindex='0')
-        .ui.like.button
-          i.heart.icon
-          |  Like
-        a.ui.basic.red.left.pointing.label.count=val.likes
+  if (val.module == 'digital-literacy' && val.info_text != "")
+    .four.ui.bottom.attached.icon.buttons
+      .ui.reply.button(tabindex='0')
+        i.reply.icon
+        |  Reply
+      .ui.flag.button(tabindex='0')
+        i.flag.icon
+        |  Flag
+      .ui.share.button(tabindex='0')
+        i.share.icon
+        | Share
+      if val.like
+        .ui.labeled.button(tabindex='0')
+          .ui.red.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label=val.likes
+      else
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=val.likes
+  else 
+    .three.ui.bottom.attached.icon.buttons
+      .ui.reply.button(tabindex='0')
+        i.reply.icon
+        |  Reply
+      .ui.flag.button(tabindex='0')
+        i.flag.icon
+        |  Flag
+      if val.like
+        .ui.labeled.button(tabindex='0')
+          .ui.red.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label=val.likes
+      else
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=val.likes
   if val.comments.length > 0
     .content
       .ui.comments

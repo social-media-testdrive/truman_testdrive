@@ -1,59 +1,64 @@
 @font-face {
-    font-family:'dotsfont';
-    src:url('/fonts/dotsfont.eot');
-    src:url('/fonts/dotsfont.eot?#iefix')  format('embedded-opentype'),
-        url('/fonts/dotsfont.svg#font')    format('svg'),
-        url('/fonts/dotsfont.woff')        format('woff'),
-        url('/fonts/dotsfont.ttf')         format('truetype');
-    font-weight:normal;
-    font-style:normal;
+    font-family: 'dotsfont';
+    src: url('/fonts/dotsfont.eot');
+    src: url('/fonts/dotsfont.eot?#iefix') format('embedded-opentype'), url('/fonts/dotsfont.svg#font') format('svg'), url('/fonts/dotsfont.woff') format('woff'), url('/fonts/dotsfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
+
+
 /* https://github.com/kylewelsby/dotsfonts */
 
 #customPasswordInput {
-  font-size: 1em;
-  height: 50px;
-  text-security: disc;
-  -webkit-text-security:disc;
-  font-family: dotsfont;
+    font-size: 1em;
+    height: 50px;
+    text-security: disc;
+    -webkit-text-security: disc;
+    font-family: dotsfont;
 }
 
-#removeHidden, #clickAllDotsWarning{
-  display: none;
+#removeHidden,
+#clickAllDotsWarning {
+    display: none;
 }
 
 .ui.form {
-  font-size: 130%;
+    font-size: 130%;
 }
 
 .ui.form label.addFieldSpacingBottom {
-  margin-bottom: 1em;
+    margin-bottom: 1em;
 }
 
-.ui.form input.addFieldSpacingTop{
-  margin-top: 1em;
+.ui.form input.addFieldSpacingTop {
+    margin-top: 1em;
 }
 
-.ui.form .ui.warning.message{
-  margin-bottom:18px;
-  font-size:16px;
+.ui.form .ui.warning.message {
+    margin-bottom: 18px;
+    font-size: 16px;
 }
 
-.ui.indicating.progress{
-  margin-top:.5em;
+.ui.indicating.progress {
+    margin-top: .5em;
 }
 
-#strengthLabel{
-  font-weight: bold;
-  font-size:120%;
+#strengthLabel {
+    font-weight: bold;
+    font-size: 120%;
 }
 
-#feedbackMessage{
-  margin-bottom: 18px;
-  font-size: 16px;
+#feedbackMessage {
+    margin-bottom: 18px;
+    font-size: 16px;
 }
 
-#feedbackSuggestion{
-  padding-left: 28px;
-  margin-top: 0;
+#feedbackSuggestion {
+    padding-left: 28px;
+    margin-top: 0;
+}
+
+.lazy {
+    width: 90%;
+    height: 90%;
 }

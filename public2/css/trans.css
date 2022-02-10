@@ -1,12 +1,17 @@
 i.icon.addIndent {
-  text-indent: 3em;
+    text-indent: 3em;
+}
+
+.circle.bullet {
+    text-indent: 8em !important;
+    font-size: 8px !important;
 }
 
 .ui.container .reviewSegment {
-  padding: 14px 0 14px 0;
+    padding: 14px 0 14px 0;
 }
 
 .ui.container .showReviewSectionButton {
-  margin-top: 14px;
-  margin-bottom: 14px;
+    margin-top: 14px;
+    margin-bottom: 14px;
 }

@@ -18,6 +18,8 @@ const hintsList = [
 
 let literacy_counter = 0;
 
+let clickedPause = false;
+
 function customOnHintCloseFunction() {
  clickedHints = 0; //The user knows to click "got it"
  if($('#removeHidden').is(":visible")){
@@ -39,7 +41,13 @@ function customOnHintCloseFunction() {
 
    //enable the activity button
    $('#activityButton').on('click', function(){
-     window.location.href='/sim4/habits';
+     // Special Case: When a user clicks "My Activity", but has not tried pausing all notifications
+      // prompt the user: "Are you sure you don't want to try pausing notifications before continuing?"
+     if (clickedPause || $('#confirmContinueCheck').is(":visible")){
+       window.location.href = '/sim4/habits';
+     } else {
+       $("#confirmContinueCheck").show();
+     }
    });
 
    //do the glowing animation every 2 seconds
@@ -57,9 +65,10 @@ $('.ui.selection.dropdown').dropdown('set selected', '1 hour');
 
 //hiding the pause time select unless pause is turned on (in notification settings)
 $(".ui.toggle.checkbox[name='popupAlertsCheckbox']").change(function() {
-  console.log("CHANGE");
+  $("#confirmContinueCheck").hide();
   if($("input[name='popupAlerts']").is(":checked")){
    $('#pauseTimeSelectField').show();
+    clickedPause = true;
   } else {
    $('#pauseTimeSelectField').hide();
   }

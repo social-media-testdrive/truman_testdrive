@@ -87,8 +87,9 @@ block content
                 .item(data-value='2 hours') 2 hours
                 .item(data-value='4 hours') 4 hours
                 .item(data-value='8 hours') 8 hours
-        br
-        br    
+        .ui.message.warning.hidden#confirmContinueCheck
+          .ui.header 
+            | Are you sure you don't want to try pausing notifications before continuing?
 
 block scripts
   script(src="/module_js/habits/habits_sim3.js")
