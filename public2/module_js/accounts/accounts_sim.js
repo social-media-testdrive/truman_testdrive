@@ -72,7 +72,7 @@ function displayFeedback(result) {
 function hideFieldMessage(messageID) {
     $(messageID).hide();
     if ((closedHints === numberOfHints) &&
-        ($('input[name="input1"]').val() !== "") &&
+        ($('input[name="username"]').val() !== "") &&
         ($('input[name="password"]').val() !== "")) {
         $('#cyberTransButton').addClass('green');
     } else {
@@ -82,10 +82,10 @@ function hideFieldMessage(messageID) {
 
 function eventsAfterHints() {
 
-    $('input[name="input1"]').removeAttr('readonly');
+    $('input[name="username"]').removeAttr('readonly');
     $('input[name="password"]').removeAttr('readonly');
 
-    $('input[name="input1"]').on('input', function() {
+    $('input[name="username"]').on('input', function() {
         hideFieldMessage('#usernameWarning');
     });
 
@@ -159,15 +159,17 @@ function customErrorCheck() {
     if ($('input[name="password"]').val() === "") {
         $('#passwordWarning').show();
     }
-    if ($('input[name="input1"]').val() === "") {
+    if ($('input[name="username"]').val() === "") {
         $('#usernameWarning').show();
     }
     // Scroll to the first blue dot that is still visible
-    $('.introjs-hint:visible')[0].scrollIntoView({
-        behavior: "smooth", // or "auto" or "instant"
-        block: "center", // defines vertical alignment
-        inline: "nearest" // defines horizontal alignment
-    });
+    if ($('.introjs-hint:visible')[0]) { //Check if undefined. Undefined when there are no more visible blue dots.
+        $('.introjs-hint:visible')[0].scrollIntoView({
+            behavior: "smooth", // or "auto" or "instant"
+            block: "center", // defines vertical alignment
+            inline: "nearest" // defines horizontal alignment
+        });
+    };
 }
 
 function customOnHintCloseFunction() {
@@ -184,10 +186,35 @@ function customOnHintCloseFunction() {
             $('#clickAllDotsWarning').transition('fade');
             $('#cyberTransButton').css("margin-bottom", "4em");
         }
-        if (($('input[name="password"]').val() !== "") && ($('input[name="input1"]').val() !== "")) {
+        if (($('input[name="password"]').val() !== "") && ($('input[name="username"]').val() !== "")) {
             $("#cyberTransButton").addClass("green");
         } else {
             $('#cyberTransButton').removeClass('green');
         }
     }
+}
+
+function customOnClickGreenContinue() {
+    actionArray = [];
+    passwordDictionary = ["Very Weak", "Weak", "Moderate", "Strong", "Very Strong"];
+    $('input[type=text]').each(function() {
+        let cat = {};
+        cat.inputField = $(this).attr('name');
+        cat.inputText = $(this).val();
+        cat.subdirectory1 = 'sim';
+        cat.subdirectory2 = 'accounts';
+        if (cat.inputField === 'password') {
+            cat.passwordStrength = passwordDictionary[result.score];
+        }
+        cat.absoluteTimestamp = Date.now();
+
+        const jqxhr = $.post("/accountsAction", {
+            action: cat,
+            actionType: 'accounts',
+            _csrf: $('meta[name="csrf-token"]').attr('content')
+        });
+        actionArray.push(jqxhr);
+    });
+
+    Promise.all(actionArray);
 }

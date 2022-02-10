@@ -350,6 +350,12 @@ app.get('/', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtect
     });
 });
 
+// Get current csrf token; COMMENTED OUT FOR NOW-- will work on it later
+// app.get('/getCSRFToken', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
+//     console.log(res.locals.csrfToken)
+//     res.send(res.locals.csrfToken);
+// });
+
 // Render current user's account page, which is module specific (all modules)
 app.get('/account/:modId', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, isValidModId, userController.getAccount);
 
@@ -659,6 +665,11 @@ if (enableDataCollection) {
     app.post('/introjsStep', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postIntrojsStepAction);
     app.post('/bluedot', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postBlueDotAction);
     app.post('/moduleProgress', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, userController.postUpdateModuleProgress);
+    app.post('/accountsAction', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postUpdateUniqueFeedAction);
+    app.post('/habitsAction', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postUpdateUniqueFeedAction);
+    app.post('/privacyAction', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postUpdateUniqueFeedAction);
+    app.post('/chatAction', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postUpdateChatAction);
+    app.post('/voiceoverTimer', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, userController.postUpdateVoiceoverTimer);
 }
 
 /*
@@ -751,13 +762,32 @@ if (enableLearnerDashboard) {
  */
 // Commented out: Do not have to use https://www.npmjs.com/package/errorhandler for local development
 // if (process.env.instanceType === 'test'){
-//   // only use in local development
-//   // local development: process.env.instanceType === 'test'
-//   // production site: NODE_ENV === 'production'
-//   // test development site: N/A
-//   app.use(errorHandler()); // possibly don't need to use this at all 
+//   app.use(errorHandler()); 
 // }
 //  else {
+
+// error handler
+// COMMENTED OUT FOR NOW -- WILL WORK ON IT LATER; error handler for csrf invalid id error
+// app.use(function(err, req, res, next) {
+//     if (err.code !== 'EBADCSRFTOKEN') return next(err)
+
+//     // handle CSRF token errors here
+//     console.log("CSRF TOKEN ERROR");
+//     console.log(err);
+//     addCsrf();
+//     console.log(res.locals.csrfToken);
+//     // res.method = 'GET';
+//     // res.url = '/getCSRFToken';
+//     // res.send();
+//     // // if (jqXHR.status === 403 && jqXHR.responseText.includes('invalid csrf token')) {
+//     // const newCsrf = $.get("/getCSRFToken");
+//     // //     _logStartPageAction(cat, newCsrf, --retryCount);
+//     // // }
+//     // console.log(res.locals.csrfToken);
+//     // console.log(newCsrf)
+//     res.send({ method: 'GET', url: ['/getCSRFToken'] });
+// })
+
 // error handler
 app.use(function(err, req, res, next) {
     // No routes handled the request and no system error, that means 404 issue.

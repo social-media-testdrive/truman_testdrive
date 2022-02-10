@@ -63,15 +63,10 @@ function recordResponse(startTime) {
     cat.answers = answers;
     cat.numCorrect = numCorrect;
 
-    const jqxhr = $.post("/quiz", {
+    $.post("/quiz", {
         action: cat,
         _csrf: $('meta[name="csrf-token"]').attr('content')
     });
-    actionArray.push(jqxhr);
-
-    // wait to change page until all post requests in actionArray return,
-    // otherwise the post requests might get cancelled during the page change
-    Promise.all(actionArray).then(function() {});
 }
 
 function checkAllPromptsOpened() {
