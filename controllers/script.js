@@ -238,6 +238,12 @@ exports.getScript = (req, res, next) => {
           mod: req.params.modId,
           habitsStart: user.firstHabitViewTime
         });
+      } else if (req.params.modId == "habits-esp"){
+        res.render('habits-esp/habits-esp_script', {
+          script: finalfeed,
+          mod: req.params.modId,
+          habitsStart: user.firstHabitViewTime
+        });
       } else if  (req.params.modId == "phishing"){
         res.render('phishing/phishing_script', { script: finalfeed, mod: req.params.modId});
       } else if (req.params.modId == "targeted"){
