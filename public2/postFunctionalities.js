@@ -149,19 +149,54 @@ async function addNewComment(event) {
 
         const mess = (
             `<div class="comment">
-        <a class="avatar"> <img src="${ava_img}"> </a>
-        <div class="content">
-          <a class="author">${ava_name}</a>
-          <div class="metadata">
-            <span class="date">${humanized_time_span(date)}</span>
-            <i class="heart icon"></i> 0 Likes
-          </div>
-          <div class="text">${text}</div>
-        </div>
-      </div>`
+                <a class="avatar"> <img src="${ava_img}"> </a>
+                <div class="content">
+                <a class="author">${ava_name}</a>
+                <div class="metadata">
+                    <span class="date">${(currentModuleForHeader === 'cyberbullying-ai') ? "<1 minute ago" : humanized_time_span(date)}</span>
+                    <i class="heart icon"></i> 0 Likes
+                </div>
+                <div class="text">${text}</div>
+                </div>
+            </div>`
         );
         target.siblings('input.newcomment').val('');
         comments.append(mess);
+
+        // For the cyberbullying-ai module, call the API to get the profanity score back
+        if (currentPageForHeader == "modual" && currentModuleForHeader == "cyberbullying-ai") {
+            console.log("ConvoAI")
+            $.post("http://localhost:5000/profanity", {
+                text: text,
+                _csrf: $('meta[name="csrf-token"]').attr('content')
+            }).then(function(response) {
+                response_message = (response["profanity"] > 0.8) ? "Please do not use that kind of language here. Please remember to follow our community guidelines." : "Thank you for your positive contribution to our community."
+                let convoai_mess = (
+                    `<div class="comment">
+                            <a class="avatar"> <img src="https://dhpd030vnpk29.cloudfront.net/profile_pictures/ai_bot.gif"> </a>
+                            <div class="content">
+                            <a class="author">Conversational AI Agent</a>
+                            <div class="metadata">
+                                <span class="date">${humanized_time_span(Date.now())}</span>
+                                <i class="heart icon"></i> 0 Likes
+                            </div>
+                            <div class="text">${response_message}</div>
+                            </div>
+                        </div>`
+                );
+                target.siblings('input.newcomment').val('');
+                comments.append(convoai_mess);
+
+                $.post("/feed", {
+                    actionType: getActionType(currentPageForHeader),
+                    modual: currentModuleForHeader,
+                    postID: postID,
+                    bot_comment: date,
+                    comment_text: response_message,
+                    _csrf: $('meta[name="csrf-token"]').attr('content')
+                });
+            })
+        }
         if (card.attr('type') == 'userPost') {
             await $.post('/userPost_feed', {
                 postID: postID,
@@ -190,7 +225,7 @@ async function addNewComment(event) {
                 console.error(error);
             }
         }
-        if (currentModuleForHeader === "cyberbullying" && (postID === "cyberbullying_sim_post1" || postID === "cyberbullying_sim_post3" || postID === "cyberbullying_sim_post4")) {
+        if (postID === "cyberbullying_sim_post1" || postID === "cyberbullying_sim_post3" || postID === "cyberbullying_sim_post4") {
             clickPost = true; //see cyberbullying_sim.pug for initialization and comments
             $("#confirmContinueCheck").hide();
         }

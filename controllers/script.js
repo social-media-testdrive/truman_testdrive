@@ -180,6 +180,16 @@ exports.getScript = (req, res, next) => {
                                             newComment.commentID = user.feedAction[feedIndex].comments[i].new_comment_id;
                                             newComment.likes = 0;
                                             script_feed[0].comments.push(newComment);
+                                        } else if (user.feedAction[feedIndex].comments[i].bot_comment) {
+                                            // This is a convo-ai comment. Add it to the comments
+                                            // list for this post.
+                                            const newComment = new Object();
+                                            newComment.body = user.feedAction[feedIndex].comments[i].comment_body;
+                                            newComment.bot_comment = user.feedAction[feedIndex].comments[i].bot_comment;
+                                            newComment.time = user.feedAction[feedIndex].comments[i].absTime;
+                                            newComment.commentID = user.feedAction[feedIndex].comments[i].new_comment_id;
+                                            newComment.likes = 0;
+                                            script_feed[0].comments.push(newComment);
                                         } else {
                                             // This is not a new, user-created comment.
                                             // Get the comment index that corresponds to the correct comment
@@ -201,6 +211,7 @@ exports.getScript = (req, res, next) => {
                                                 }
                                             }
                                         }
+                                        console.log(script_feed[0].comments)
                                     }
                                 }
                                 // No longer looking at comments on this post.
@@ -251,7 +262,6 @@ exports.getScript = (req, res, next) => {
                     //     return next(err);
                     //   }
                     // });
-
                     // Render custom script pages for certain modules, otherwise use the default
                     // script page.
                     if (req.params.modId == "advancedlit") {
@@ -479,9 +489,13 @@ function _postUpdateFeedAction(req, user) {
     }
 
     // create a new Comment
-    if (req.body.new_comment) {
+    if (req.body.new_comment || req.body.bot_comment) {
         let cat = new Object();
-        cat.new_comment = true;
+        if (req.body.new_comment) {
+            cat.new_comment = true;
+        } else {
+            cat.bot_comment = true;
+        }
         user.numReplies = user.numReplies + 1;
         cat.new_comment_id = user.numReplies;
         cat.comment_body = req.body.comment_text;

@@ -78,12 +78,14 @@
             |  Like
           a.ui.basic.red.left.pointing.label.count=val.likes
   if val.comments.length > 0
+    //- -console.log(val.comments)
     .content
       .ui.comments
         each comment in val.comments
           //-IF this comment is USER made, do this
           if comment.new_comment
             -console.log("New COMMENT AREA");
+            -console.log(comment.new_comment)
             .comment(commentID=comment.new_comment_id)
               a.avatar.image(href='/me/'+mod)
                 if user.profile.picture
@@ -92,6 +94,24 @@
                   img(src=user.gravatar(60))
               .content
                 a.author(href='/me/'+mod)=user.profile.name || user.username || user.id
+                .metadata
+                  span.date.sim=(comment.time)
+                  //- .rating
+                  //-   i.heart.icon
+                  //-   span.num=0
+                  //-   |  Likes
+                .text=comment.body
+                //- .actions
+                //-   a.like.comment Like
+                //-   a.flag.comment Flag
+          //-IF this comment is convo ai made, do this
+          else if comment.bot_comment
+            -console.log("New BOTCOMMENT AREA");
+            .comment(commentID=comment.new_comment_id)
+              a.avatar.image(href='')
+                img(src=cdn+'/profile_pictures/ai_bot.gif')
+              .content
+                a.author Conversational AI Agent
                 .metadata
                   span.date.sim=(comment.time)
                   //- .rating

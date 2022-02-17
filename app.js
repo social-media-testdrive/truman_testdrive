@@ -7,7 +7,6 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const bodyParser = require('body-parser');
 const logger = require('morgan');
-const errorHandler = require('errorhandler');
 const lusca = require('lusca');
 const dotenv = require('dotenv');
 const flash = require('express-flash');
@@ -20,10 +19,12 @@ const multer = require('multer');
 const csrf = require('csurf');
 const fs = require('fs');
 const util = require('util');
+// const cors = require('cors');
 fs.readFileAsync = util.promisify(fs.readFile);
 /*
  * Dependencies that were listed but don't appear to be used
  */
+// const errorHandler = require('errorhandler');
 // const chalk = require('chalk');
 // const compression = require('compression');
 // var schedule = require('node-schedule');
@@ -31,7 +32,7 @@ fs.readFileAsync = util.promisify(fs.readFile);
 
 
 /*
- * Load environment variables from .env file, where API keys and passwords are configured.
+ * Load environment variables from .env file, where keys and passwords are configured.
  */
 dotenv.config({ path: '.env' });
 
@@ -169,6 +170,13 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+// var corsOptions = {
+//     origin: 'http://10.48.136.224:1080',
+//     credentials: true,
+//     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+// }
+// app.use(cors(corsOptions));
+// // app.use(cors());
 
 //this allows us to no check CSRF when uploading an image. Its a weird issue that
 //multer and lusca no not play well together
@@ -202,13 +210,9 @@ app.use((req, res, next) => {
         req.path !== '/bell' &&
         !req.path.match(/^\/auth/) &&
         !req.path.match(/\./)) {
-        //console.log("@@@@@path is now");
-        //console.log(req.path);
         req.session.returnTo = req.path;
     } else if (req.user &&
         req.path == '/account') {
-        //console.log("!!!!!!!path is now");
-        //console.log(req.path);
         req.session.returnTo = req.path;
     }
     next();
@@ -240,6 +244,7 @@ function setHttpResponseHeaders(req, res, next) {
             "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
             "img-src 'self' https://dhpd030vnpk29.cloudfront.net https://www.googletagmanager.com https://www.google-analytics.com;" +
             "media-src https://dhpd030vnpk29.cloudfront.net;" +
+            "connect-src 'self' http://localhost:5000 https://convoai-api.herokuapp.com/;" +
             "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:"
     });
     next();

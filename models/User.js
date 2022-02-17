@@ -304,6 +304,7 @@ const userSchema = new mongoose.Schema({
             likeTime: [Date], // array of like times
 
             new_comment: { type: Boolean, default: false }, // is new comment
+            bot_comment: { type: Boolean, default: false }, // is convo-ai comment in the cyberbullying-ai module
             new_comment_id: Number, // ID for comment
             comment_body: String, // Text the user wrote (if the comment was user-made)
             absTime: Date, // Real-life timestamp of when the comment was made (user-made only)
