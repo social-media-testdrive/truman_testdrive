@@ -290,11 +290,11 @@ $(window).on("load", function() {
 
     //Cyberbullying to Transition
     $('.cybertrans')
-        .on('click', function(e) {
+        .on('click', async function(e) {
             if ($(this).hasClass('green')) {
                 let pathArray = window.location.pathname.split('/');
                 if (typeof customOnClickGreenContinue !== 'undefined') {
-                    customOnClickGreenContinue();
+                    await customOnClickGreenContinue();
                 };
                 // Special Case: When a user clicks "Let's Continue" in the accounts module, but has not completed any profile fields
                 // prompt the user: "It seems you did not fill out any profile information fields. Are you sure you would like to continue? "
@@ -401,10 +401,10 @@ $(window).on("load", function() {
     });
 
     //To sim2
-    $(document).on('click', '.ui.big.labeled.icon.button.cybersim2.green', function() {
+    $(document).on('click', '.ui.big.labeled.icon.button.cybersim2.green', async function() {
         let pathArray = window.location.pathname.split('/');
         if (typeof customOnClickGreenContinue !== 'undefined') {
-            customOnClickGreenContinue();
+            await customOnClickGreenContinue();
         }
         // Special Case: When a user clicks "Let's Continue" in the accounts module, but has a Very Weak or Weak password,
         // prompt the user: "This password seems weak and easy to guess, are you sure you want to use it?"

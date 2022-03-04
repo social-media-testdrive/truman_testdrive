@@ -21,26 +21,29 @@ function eventsAfterHints() {
 }
 
 function customOnClickGreenContinue() {
-    actionArray = [];
-    $('input[type=text], textarea[type=text], input[name="profilePhoto"]').each(function() {
-        let cat = {};
-        cat.inputField = $(this).attr('name');
-        if (cat.inputField === 'profilePhoto') {
-            cat.inputText = $(this).val() !== 'avatar-icon.svg' ? "true" : "false";
-        } else {
-            cat.inputText = $(this).val() !== "" ? "true" : "false";
-        }
-        cat.subdirectory1 = 'sim2';
-        cat.subdirectory2 = 'accounts';
-        cat.absoluteTimestamp = Date.now();
+    const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
+    if (enableDataCollection) {
+        actionArray = [];
+        $('input[type=text], textarea[type=text], input[name="profilePhoto"]').each(function() {
+            let cat = {};
+            cat.inputField = $(this).attr('name');
+            if (cat.inputField === 'profilePhoto') {
+                cat.inputText = $(this).val() !== 'avatar-icon.svg' ? "true" : "false";
+            } else {
+                cat.inputText = $(this).val() !== "" ? "true" : "false";
+            }
+            cat.subdirectory1 = 'sim2';
+            cat.subdirectory2 = 'accounts';
+            cat.absoluteTimestamp = Date.now();
 
-        const jqxhr = $.post("/accountsAction", {
-            action: cat,
-            actionType: 'accounts',
-            _csrf: $('meta[name="csrf-token"]').attr('content')
+            const jqxhr = $.post("/accountsAction", {
+                action: cat,
+                actionType: 'accounts',
+                _csrf: $('meta[name="csrf-token"]').attr('content')
+            });
+            actionArray.push(jqxhr);
         });
-        actionArray.push(jqxhr);
-    });
 
-    Promise.all(actionArray);
+        return Promise.all(actionArray);
+    }
 }

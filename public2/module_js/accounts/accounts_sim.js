@@ -195,26 +195,29 @@ function customOnHintCloseFunction() {
 }
 
 function customOnClickGreenContinue() {
-    actionArray = [];
-    passwordDictionary = ["Very Weak", "Weak", "Moderate", "Strong", "Very Strong"];
-    $('input[type=text]').each(function() {
-        let cat = {};
-        cat.inputField = $(this).attr('name');
-        cat.inputText = $(this).val();
-        cat.subdirectory1 = 'sim';
-        cat.subdirectory2 = 'accounts';
-        if (cat.inputField === 'password') {
-            cat.passwordStrength = passwordDictionary[result.score];
-        }
-        cat.absoluteTimestamp = Date.now();
+    const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
+    if (enableDataCollection) {
+        actionArray = [];
+        passwordDictionary = ["Very Weak", "Weak", "Moderate", "Strong", "Very Strong"];
+        $('input[type=text]').each(function() {
+            let cat = {};
+            cat.inputField = $(this).attr('name');
+            cat.inputText = $(this).val();
+            cat.subdirectory1 = 'sim';
+            cat.subdirectory2 = 'accounts';
+            if (cat.inputField === 'password') {
+                cat.passwordStrength = passwordDictionary[result.score];
+            }
+            cat.absoluteTimestamp = Date.now();
 
-        const jqxhr = $.post("/accountsAction", {
-            action: cat,
-            actionType: 'accounts',
-            _csrf: $('meta[name="csrf-token"]').attr('content')
+            const jqxhr = $.post("/accountsAction", {
+                action: cat,
+                actionType: 'accounts',
+                _csrf: $('meta[name="csrf-token"]').attr('content')
+            });
+            actionArray.push(jqxhr);
         });
-        actionArray.push(jqxhr);
-    });
 
-    Promise.all(actionArray);
+        return Promise.all(actionArray);
+    }
 }
