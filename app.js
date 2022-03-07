@@ -460,7 +460,7 @@ app.get('/results/:modId', passportConfig.isAuthenticated, setHttpResponseHeader
     });
 });
 
-app.get('/quiz/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, async function(req, res) {
+app.get('/quiz/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, async function(req, res) {
     let quizData;
     const data = await fs.readFileAsync(`${__dirname}/public2/json/quizSectionData.json`);
     quizData = JSON.parse(data.toString())[req.params.modId];
