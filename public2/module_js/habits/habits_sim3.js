@@ -104,7 +104,7 @@ $('#activityButton').on('click', function() {
 //if "pause notifications" value is changed
 $(".ui.selection.dropdown[name='pauseTimeSelect']").change(function() {
     let cat = {};
-    cat.subdirectory1 = 'modual';
+    cat.subdirectory1 = 'sim3';
     cat.subdirectory2 = 'habits';
     cat.absoluteTimestamp = Date.now();
     cat.actionType = 'setPauseNotifications';
