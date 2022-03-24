@@ -69,8 +69,79 @@ $('.ui.dropdown').dropdown('set selected', '0');
 
 let clickAction = false;
 
-// Triggered when any setting is changed
-$(".ui.toggle.checkbox[name='publicToggle'], .ui.selection.dropdown[name='friendRequestsDropdown'], .ui.selection.dropdown[name='friendListDropdown'], .ui.selection.dropdown[name='commentsListDropdown'], .blocklistDropdown, .ui.toggle.checkbox[name='tagToggle1'], .ui.toggle.checkbox[name='tagToggle2'], .ui.toggle.checkbox[name='locationToggle'], .ui.selection.dropdown[name='shareLocationWithToggle']").change(function() {
+// Defining multi-select onAdd and onRemove functions, triggered when a dropdown multi-select is changed
+$('.blocklistDropdown').dropdown({
+    onAdd: function(addedValue, addedText, $addedChoice) {
+        clickAction = true;
+        $('#confirmContinueCheck').hide();
+        let cat = {};
+        cat.subdirectory1 = 'sim';
+        cat.subdirectory2 = 'privacy';
+        cat.inputField = 'blockList- add';
+        cat.absoluteTimestamp = Date.now();
+        cat.inputText = addedValue;
+
+        $.post("/privacyAction", {
+            action: cat,
+            actionType: 'privacy',
+            _csrf: $('meta[name="csrf-token"]').attr('content')
+        });
+    },
+    onRemove: function(addedValue, removedText, $removedChoice) {
+        clickAction = true;
+        $('#confirmContinueCheck').hide();
+
+        let cat = {};
+        cat.subdirectory1 = 'sim';
+        cat.subdirectory2 = 'privacy';
+        cat.inputField = 'blockList- remove';
+        cat.absoluteTimestamp = Date.now();
+        cat.inputText = addedValue;
+
+        $.post("/privacyAction", {
+            action: cat,
+            actionType: 'privacy',
+            _csrf: $('meta[name="csrf-token"]').attr('content')
+        });
+    }
+});
+
+//Triggered when a dropdown select is changed
+$('.ui.selection.dropdown:not(.blocklistDropdown)').dropdown({
+    onChange: function(value, text, $choice) {
+        clickAction = true;
+        $('#confirmContinueCheck').hide();
+
+        let cat = {};
+        cat.subdirectory1 = 'sim';
+        cat.subdirectory2 = 'privacy';
+        cat.inputField = $(this).find('input').attr('name');
+        cat.absoluteTimestamp = Date.now();
+        cat.inputText = text;
+
+        $.post("/privacyAction", {
+            action: cat,
+            actionType: 'privacy',
+            _csrf: $('meta[name="csrf-token"]').attr('content')
+        });
+    }
+});
+
+//Triggered when a toggle is changed
+$('.ui.toggle.checkbox input').change(function() {
     clickAction = true;
     $('#confirmContinueCheck').hide();
-});
+
+    let cat = {};
+    cat.subdirectory1 = 'sim';
+    cat.subdirectory2 = 'privacy';
+    cat.inputField = $(this).attr('name');
+    cat.absoluteTimestamp = Date.now();
+    cat.inputText = $(this).is(':checked') ? "true" : "false";
+
+    $.post("/privacyAction", {
+        action: cat,
+        actionType: 'privacy',
+        _csrf: $('meta[name="csrf-token"]').attr('content')
+    });
+})

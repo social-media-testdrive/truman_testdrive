@@ -312,18 +312,8 @@ exports.getScript = (req, res, next) => {
  * Made for load testing - not sure if it should be deleted
  */
 exports.getScriptFeed = (req, res, next) => {
-    //console.log("$#$#$#$#$#$#$START GET FEED$#$#$$#$#$#$#$#$#$#$#$#$#");
-    //console.log("time_diff  is now "+time_diff);
-    //console.log("time_limit  is now "+time_limit);
-    //study2_n0_p0
-    //console.log("$#$#$#$#$#$#$START GET FEED$#$#$$#$#$#$#$#$#$#$#$#$#");
     var scriptFilter = "";
     var profileFilter = "";
-    //study3_n20, study3_n80
-    //scriptFilter = req.params.caseId;
-    //req.params.modId
-    //console.log("#############SCRIPT FILTER IS NOW " + scriptFilter);
-    //{
     Script.find()
         //.where('time').lte(time_diff)//.gte(time_limit)
         .where('module').equals(req.params.modId)
@@ -343,7 +333,6 @@ exports.getScriptFeed = (req, res, next) => {
             //update script feed to see if reading and posts has already happened
             var finalfeed = [];
             finalfeed = script_feed;
-            //console.log("Script Size is now: "+finalfeed.length);
             res.render('feed', { script: finalfeed });
         }); //end of Script.find()
 }; //end of .getScript
@@ -439,9 +428,9 @@ function _postUpdateFeedAction(req, user) {
     // req.body.postID is an index, such as '0', '1', but to save a feedAction, feedAction's post attribute needs to be an ObjectID
     if (!req.body.postID.toString().match(/^[0-9a-fA-F]{24}$/) && req.body.actionType === 'free play') {
         // Find ObjectID of user-made post
-        const user_post = user.posts.find(post => post.postID.toString() === req.body.postID)
-            // edit postID's attribute to corresponding ObjectID
-        req.body.postID = user_post.id
+        const user_post = user.posts.find(post => post.postID.toString() === req.body.postID);
+        // edit postID's attribute to corresponding ObjectID
+        req.body.postID = user_post.id;
     }
 
     // Then find the object from the right post in feed.
@@ -473,6 +462,8 @@ function _postUpdateFeedAction(req, user) {
         modalInfo.modalViewTime = req.body.modalViewTime;
         modalInfo.modalCheckboxesCount = req.body.modalCheckboxesCount;
         modalInfo.modalCheckboxesInput = req.body.modalCheckboxesInput;
+        modalInfo.modalDropdownCount = req.body.modalDropdownCount;
+        modalInfo.modalDropdownClick = req.body.modalDropdownClick;
         userAction[feedIndex].modal.push(modalInfo);
     }
 
@@ -588,6 +579,97 @@ exports.postUpdateFeedAction = (req, res, next) => {
     _postAction(req, res, next, _postUpdateFeedAction);
 };
 
+function _postUpdateUniqueFeedAction(req, user) {
+    let userAction = user.feedAction;
+    switch (req.body.actionType) {
+        case 'accounts':
+            userAction = user.accountsAction;
+            break;
+        case 'habits':
+            userAction = user.habitsAction;
+            break;
+        case 'privacy':
+            userAction = user.privacyAction;
+            break;
+        default:
+            userAction = user.feedAction;
+            break;
+    }
+
+    //Post does not exist yet in User DB, so we have to add it now
+    let cat = req.body.action;
+    // add new post into correct location
+    userAction.push(cat);
+}
+
+/**
+ * POST /habitsAction, /accountsAction, /privacyAction
+ * Update user's actions (that are unique to the module) throughout a module.
+ * ex: a user's clicks, input fields on forms, toggles, selections on dropdown menus
+ */
+exports.postUpdateUniqueFeedAction = (req, res, next) => {
+    _postAction(req, res, next, _postUpdateUniqueFeedAction);
+};
+
+function _postUpdateChatAction(req, user) {
+    let userAction = user.chatAction;
+
+    // Find the object from the right chat in chatAction.
+    let feedIndex = _.findIndex(userAction, function(o) {
+        return o.chatId == req.body.chatId && o.subdirectory1 === req.body.subdirectory1;
+    });
+
+    if (feedIndex == -1) {
+        //Post does not exist yet in User DB, so we have to add it now
+        let cat = {};
+        cat.subdirectory1 = req.body.subdirectory1;
+        cat.subdirectory2 = req.body.subdirectory2;
+        cat.chatId = req.body.chatId;
+
+        // add new post into correct location
+        feedIndex = userAction.push(cat) - 1;
+    }
+
+    // userAction is the correct action array
+    // we found the right post
+    // and feedIndex is the correct index for that chat in the action array
+
+    // create a new message
+    if (req.body.message) {
+        let cat = {};
+        cat.message = req.body.message;
+        cat.absTime = req.body.absTime;
+        userAction[feedIndex].messages.push(cat);
+    }
+    // chat was minimized
+    else if (req.body.minimized) {
+        userAction[feedIndex].minimized = true;
+        let minimizeTime = req.body.absTime;
+
+        if ((!userAction[feedIndex].minimizedTime)) {
+            userAction[feedIndex].minimizedTime = [minimizeTime];
+        } //Already have a minimizedTime Array, new Minimized event, need to add this to minimizeTime array
+        else {
+            userAction[feedIndex].minimizedTime.push(minimizeTime);
+        }
+    }
+    // chat was closed 
+    else if (req.body.closed) {
+        userAction[feedIndex].closed = true;
+        let closeTime = req.body.absTime;
+        userAction[feedIndex].closedTime = closeTime;
+    }
+}
+
+/**
+ * POST /chatAction
+ * Update user's actions on chats throughout a module.
+ * All messages, minimize and close chat behavior is added here
+ */
+exports.postUpdateChatAction = (req, res, next) => {
+    _postAction(req, res, next, _postUpdateChatAction);
+}
+
 /**
  * POST /deleteUserFeedActions
  * Delete user's feed posts Actions.
@@ -595,11 +677,9 @@ exports.postUpdateFeedAction = (req, res, next) => {
  * gets deleted here. This route is currently not used anywhere.
  */
 exports.postDeleteFeedAction = (req, res, next) => {
-    //console.log("Deleting user feed posts Actions")
     User.findById(req.user.id, (err, user) => {
         //somehow user does not exist here
         if (err) { return next(err); }
-        //console.log("@@@@@@@@@@@  /deleteUserFeedActions req body  ", req.body);
 
         user.feedAction = [];
         user.save((err) => {
@@ -633,9 +713,7 @@ exports.postStartPageAction = (req, res, next) => {
         let userAction = user.startPageAction;
 
         //Post does not exist yet in User DB, so we have to add it now
-        let cat = new Object();
-
-        cat = req.body.action;
+        let cat = req.body.action;
 
         // add new post into correct location
         userAction.push(cat);
@@ -676,8 +754,7 @@ exports.postIntrojsStepAction = (req, res, next) => {
         let userAction = user.introjsStepAction;
 
         // create new object to push to the DB
-        let cat = new Object();
-        cat = req.body.action;
+        let cat = req.body.action;
 
         // add new post into correct location
         userAction.push(cat);
@@ -688,6 +765,47 @@ exports.postIntrojsStepAction = (req, res, next) => {
                 if (err.code === 11000) {
                     req.flash('errors', {
                         msg: 'Something in introjsStepAction went crazy. You should never see this.'
+                    });
+                    return res.redirect('/');
+                }
+                return next(err);
+            }
+            res.send({
+                result: "success"
+            });
+        });
+    });
+};
+
+/**
+ * POST /blueDot
+ * Update a blue dot action
+ * TODO: This function should probably be moved to the user controller.
+ */
+exports.postBlueDotAction = (req, res, next) => {
+
+    User.findById(req.user.id, (err, user) => {
+
+        // somehow user does not exist here
+        if (err) {
+            return next(err);
+        }
+
+        // Define the push location
+        let userAction = user.blueDotAction;
+
+        //Post does not exist yet in User DB, so we have to add it now
+        let cat = req.body.action;
+
+        // add new post into correct location
+        userAction.push(cat);
+
+        // save to DB
+        user.save((err) => {
+            if (err) {
+                if (err.code === 11000) {
+                    req.flash('errors', {
+                        msg: 'Something in blueDotAction went crazy. You should never see this.'
                     });
                     return res.redirect('/');
                 }
@@ -719,8 +837,7 @@ exports.postReflectionAction = (req, res, next) => {
         let userAction = user.reflectionAction;
 
         //Post does not exist yet in User DB, so we have to add it now
-        let cat = new Object();
-        cat = req.body.action;
+        let cat = req.body.action;
         // add new post into correct location
         userAction.push(cat);
 
@@ -760,8 +877,7 @@ exports.postQuizAction = (req, res, next) => {
         let userAction = user.quizAction;
 
         //Post does not exist yet in User DB, so we have to add it now
-        let cat = new Object();
-        cat = req.body.action;
+        let cat = req.body.action;
         // add new post into correct location
         userAction.push(cat);
 
@@ -782,55 +898,6 @@ exports.postQuizAction = (req, res, next) => {
         });
     });
 };
-
-/**
- * POST /blueDot
- * Update a blue dot action
- * TODO: This function should probably be moved to the user controller.
- */
-exports.postBlueDotAction = (req, res, next) => {
-
-    User.findById(req.user.id, (err, user) => {
-
-        // somehow user does not exist here
-        if (err) {
-            return next(err);
-        }
-
-        // Define the push location
-        let userAction = user.blueDotAction;
-
-        //Post does not exist yet in User DB, so we have to add it now
-        let cat = new Object();
-
-        cat.subdirectory1 = req.body.action.subdirectory1;
-        cat.subdirectory2 = req.body.action.subdirectory2;
-        cat.dotNumber = req.body.action.dotNumber;
-        cat.absoluteTimeOpened = req.body.action.absoluteTimeOpened;
-        cat.viewDuration = req.body.action.viewDuration;
-        cat.clickedGotIt = req.body.action.clickedGotIt;
-
-        // add new post into correct location
-        userAction.push(cat);
-
-        // save to DB
-        user.save((err) => {
-            if (err) {
-                if (err.code === 11000) {
-                    req.flash('errors', {
-                        msg: 'Something in blueDotAction went crazy. You should never see this.'
-                    });
-                    return res.redirect('/');
-                }
-                return next(err);
-            }
-            res.send({
-                result: "success"
-            });
-        });
-    });
-};
-
 
 /*
  * POST /postViewQuizExplanations

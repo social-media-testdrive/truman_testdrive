@@ -90,11 +90,13 @@ function errorCheck() {
             $('#clickAllDotsWarning').transition('bounce');
         }
         // Scroll to the first blue dot that is still visible
-        $('.introjs-hint:visible')[0].scrollIntoView({
-            behavior: "smooth", // or "auto" or "instant"
-            block: "center", // defines vertical alignment
-            inline: "nearest" // defines horizontal alignment
-        });
+        if ($('.introjs-hint:visible')[0]) { //Check if undefined. Undefined when there are no more visible blue dots.
+            $('.introjs-hint:visible')[0].scrollIntoView({
+                behavior: "smooth", // or "auto" or "instant"
+                block: "center", // defines vertical alignment
+                inline: "nearest" // defines horizontal alignment
+            });
+        };
     }
 };
 
@@ -188,6 +190,7 @@ function startIntro(enableDataCollection) {
         'hidePrev': true,
         'hideNext': true,
         'exitOnOverlayClick': false,
+        'exitOnEsc': false,
         'showStepNumbers': false,
         'showBullets': false,
         'scrollToElement': true,

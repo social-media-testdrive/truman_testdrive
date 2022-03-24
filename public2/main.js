@@ -12,25 +12,61 @@ function changeActiveProgressTo(activeStep) {
 }
 
 $(window).on("load", function() {
-    let initialVoiceoverState = window.sessionStorage.getItem('enableVoiceovers');
+    const timePageLoaded = Date.now();
+
+    const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
+    const isResearchVersion = $('meta[name="isResearchVersion"]').attr('content') === "true";
+
+    const initialVoiceoverState = window.sessionStorage.getItem('enableVoiceovers');
+    let voiceoverChangeTime = window.sessionStorage.getItem('voiceoverChangeTime'); // null if it is a new session
+
+    window.sessionStorage.setItem('voiceoverChangeTime', Date.now());
+
     if (initialVoiceoverState === 'false') {
         $('#voiceoverCheckbox input').removeAttr('checked');
     }
     $('#voiceoverCheckbox').removeClass("hidden")
 
+    // If the current page is not the first page of a new session (https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage), 
+    // log the time between the last time the voiceover was logged to be "on" and this page load (if the voiceover is on) 
+    if (enableDataCollection && voiceoverChangeTime !== null) {
+        if ($("input[name='voiceoverCheckbox']").is(":checked")) {
+            const timeDuration = timePageLoaded - voiceoverChangeTime;
+            if (enableDataCollection && !(!isResearchVersion && window.location.pathname === "/")) {
+                // Record the time the voiceover was on ONLY if data collection is enabled AND if it's not the home page for the public site 
+                // (because prior to clicking a module card, no "guest" account has been created to log voiceoverTimer to)
+                $.post("/voiceoverTimer", {
+                    voiceoverTimer: timeDuration,
+                    _csrf: $('meta[name="csrf-token"]').attr('content')
+                });
+            };
+        }
+    }
+
     $('#voiceoverCheckbox').change(function() {
         if ($("input[name='voiceoverCheckbox']").is(":checked")) {
             window.sessionStorage.setItem('enableVoiceovers', 'true');
+            window.sessionStorage.setItem('voiceoverChangeTime', Date.now());
         } else {
             window.sessionStorage.setItem('enableVoiceovers', 'false');
+            voiceoverChangeTime = window.sessionStorage.getItem('voiceoverChangeTime');
+            const timeDuration = Date.now() - voiceoverChangeTime;
+            // Record the time the voiceover was on ONLY if data collection is enabled AND if it's not the home page for the public site 
+            if (enableDataCollection && !(!isResearchVersion && window.location.pathname === "/")) {
+                $.post("/voiceoverTimer", {
+                    voiceoverTimer: timeDuration,
+                    _csrf: $('meta[name="csrf-token"]').attr('content')
+                });
+            }
+            window.sessionStorage.setItem('voiceoverChangeTime', Date.now());
+
             Voiceovers.pauseVoiceover();
         }
     });
 
-
-    const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
     // Record the current page if data collection is enabled
-    if (enableDataCollection) {
+    // AND if it's not the home page for the public site (because prior to clicking a module card, no "guest" account has been created to log pageLog to)
+    if (enableDataCollection && !(!isResearchVersion && window.location.pathname === "/")) {
         let pathArray = window.location.pathname.split('/');
         $.post("/pageLog", {
             subdirectory1: pathArray[1],
@@ -254,13 +290,16 @@ $(window).on("load", function() {
 
     //Cyberbullying to Transition
     $('.cybertrans')
-        .on('click', function(e) {
+        .on('click', async function(e) {
             if ($(this).hasClass('green')) {
                 let pathArray = window.location.pathname.split('/');
+                if (typeof customOnClickGreenContinue !== 'undefined') {
+                    await customOnClickGreenContinue();
+                };
                 // Special Case: When a user clicks "Let's Continue" in the accounts module, but has not completed any profile fields
                 // prompt the user: "It seems you did not fill out any profile information fields. Are you sure you would like to continue? "
                 if (pathArray[2] === "accounts") {
-                    if ($('#input').val() === "" && $('input[name="profilePhoto"]').val() === 'avatar-icon.svg') {
+                    if ($('input[type=text], textarea[type=text]').filter(function() { return $(this).val() == ""; }).length === 6 && $('input[name="profilePhoto"]').val() === 'avatar-icon.svg') {
                         if ($('#confirmContinueCheck').is(":hidden")) {
                             $('#confirmContinueCheck').show();
                             $('#confirmContinueCheck')[0].scrollIntoView({
@@ -269,25 +308,25 @@ $(window).on("load", function() {
                                 inline: "nearest" // defines horizontal alignment
                             });;
                             return;
-                        }
-                    }
+                        };
+                    };
                     // Special Case: When a user clicks "Let's Continue" in the digfoot, esteem, targeted module, but has not clicked on any post
                     // prompt the user: "It seems you did not click on any posts to ... Are you sure you do not want to click on a post before continuing?"
                 } else if (pathArray[2] === "digfoot" || pathArray[2] === "esteem" || pathArray[2] === "targeted" || pathArray[2] === "cyberbullying") {
                     if (!clickPost && $('#confirmContinueCheck').is(":hidden")) {
-                        $('#confirmContinueCheck').show()
+                        $('#confirmContinueCheck').show();
                         $('#confirmContinueCheck')[0].scrollIntoView({
                             behavior: "smooth", // or "auto" or "instant"
                             block: "center", // defines vertical alignment
                             inline: "nearest" // defines horizontal alignment
                         });;
                         return;
-                    }
-                }
+                    };
+                };
                 window.location.href = '/trans/' + pathArray[2];
             } else {
                 e.preventDefault();
-            }
+            };
         });
 
     //cyberbullying to transition 2
@@ -362,8 +401,11 @@ $(window).on("load", function() {
     });
 
     //To sim2
-    $(document).on('click', '.ui.big.labeled.icon.button.cybersim2.green', function() {
+    $(document).on('click', '.ui.big.labeled.icon.button.cybersim2.green', async function() {
         let pathArray = window.location.pathname.split('/');
+        if (typeof customOnClickGreenContinue !== 'undefined') {
+            await customOnClickGreenContinue();
+        }
         // Special Case: When a user clicks "Let's Continue" in the accounts module, but has a Very Weak or Weak password,
         // prompt the user: "This password seems weak and easy to guess, are you sure you want to use it?"
         if (pathArray[2] === "accounts") {

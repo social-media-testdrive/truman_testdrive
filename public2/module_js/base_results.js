@@ -109,15 +109,10 @@ function iterateOverPrompts(startTime) {
     });
     cat.answers = answers;
 
-    const jqxhr = $.post("/reflection", {
+    $.post("/reflection", {
         action: cat,
         _csrf: $('meta[name="csrf-token"]').attr('content')
-    });
-    actionArray.push(jqxhr);
-
-    // wait to change pages until all post requests in actionArray return,
-    // otherwise the post requests might get cancelled during the page change
-    Promise.all(actionArray).then(function() {
+    }).then(function() {
         window.location.href = `/quiz/${currentModule}`
     });
 }

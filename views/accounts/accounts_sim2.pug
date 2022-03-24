@@ -27,23 +27,23 @@ block content
       .ui.form
         .field
           label Name
-          input(type="text" autocomplete='off' name='name')#input
+          input(type="text" autocomplete='off' name='name' value ='')
         .field
           label Bio
-          textarea(type="text" rows="3" autocomplete='off' name='bio')#input   
+          textarea(type="text" rows="3" autocomplete='off' name='bio' value ='')
         .field
           label Birthday
-          input(type="text" autocomplete='off' name='birthday')#input     
+          input(type="text" autocomplete='off' name='birthday' value ='')  
         div#locationStep
           .field
             label Current City
-            input(type="text" autocomplete='off' name='city')#input 
+            input(type="text" autocomplete='off' name='city' value ='') 
           .field
             label Hometown
-            input(type="text" autocomplete='off' name='hometown')#input
+            input(type="text" autocomplete='off' name='hometown' value ='')
           .field
             label School
-            input(type="text" autocomplete='off' name='school')#input 
+            input(type="text" autocomplete='off' name='school' value ='')
         br
         .field
           label Upload a Profile Picture...
@@ -61,7 +61,7 @@ block content
         |   Let's Continue!     
 
   //- Profile Picture Selection Modal 
-  .ui.small.long.post.modal.profilePictureModal(style="margin: 2em 0;")
+  .ui.small.long.post.modal.profilePictureModal
     i.close.icon  
     .header Choose a Profile Picture 
     .content  
@@ -127,26 +127,9 @@ block content
         |  Cancel
 
 block scripts
-  script.
-    var hintsList = [
-      {
-        hint: `Fill out the profile information. Remember to not share too many
-          details about who you are.`,
-        element: '#generalStep',
-        hintPosition: 'top-middle',
-        audioFile: ['CUSML.8.4.06.mp3']
-      },
-      {
-        hint: `Start off by sharing only a little bit of information about
-          yourself. You can always add more information later if you need to.`,
-        element: '#generalStep',
-        hintPosition: 'top-right',
-        audioFile: ['CUSML.8.4.07.mp3']
-      }
-    ];
+  script(src="/module_js/accounts/accounts_sim2.js")
   script(src="/module_js/base_sim.js")
   script(src="/module_js/voiceover.js")
-  script(src="/module_js/accounts/accounts_sim2.js")
   script.
     const cdn = "https://dhpd030vnpk29.cloudfront.net"
     $('.editProfilePictureButton').on('click', function(){

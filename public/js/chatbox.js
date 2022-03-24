@@ -1,141 +1,163 @@
-$(window).on("load", function () {
-
-  $('.container.clearfix').each(function () {
-
+$(window).on("load", function() {
     let pathArray = window.location.pathname.split('/');
-    var chatId = this.id
 
-    var chat = {
-      messageToSend: '',
-      messageResponses: [
-        'OK !!',
-        'OK !!',
-        'OK !!'
-      ],
-      init: function () {
-        this.cacheDOM();
-        this.bindEvents();
-        this.render();
-      },
-      cacheDOM: function () {
-        //var chatId = $('.chat-history').closest('.container').attr('id');
-        console.log("!!!!this is my: "+this.id);
-        //var chatId = $(this).id
-        console.log(chatId);
-        if(chatId){
-          this.$chatHistory = $('#'+chatId +' .chat-history');
-          this.$button = $('#'+chatId +' button');
-          this.$textarea = $('#'+chatId +' #message-to-send');
-          this.$chatHistoryList = this.$chatHistory.find('ul');
-          console.log('#'+chatId +' .chat-history');
-        } else {
-          this.$chatHistory = $('.chat-history');
-          this.$button = $('button');
-          this.$textarea = $('#message-to-send');
-          this.$chatHistoryList = this.$chatHistory.find('ul');
-          console.log('else');
-          console.log(this.$chatHistory);
-        }
-      },
-      bindEvents: function () {
-        this.$button.on('click', this.addMessage.bind(this));
-        this.$textarea.on('keyup', this.addMessageEnter.bind(this));
-      },
-      render: function () {
-        this.scrollToBottom();
-        if (this.messageToSend.trim() !== '') {
-          var template = Handlebars.compile($("#message-template").html());
-          var context = {
-            messageOutput: this.messageToSend,
-            time: this.getCurrentTime()
-          };
+    $('.container.clearfix').each(function() {
 
-          this.$chatHistoryList.append(template(context));
-          this.scrollToBottom();
-          this.$textarea.val('');
+        var chatId = this.id;
 
-          // responses
-          var templateResponse = Handlebars.compile($("#message-response-template").html());
-          var contextResponse = {
-            response: this.getRandomItem(this.messageResponses),
-            time: this.getCurrentTime()
-          };
+        var chat = {
+            messageToSend: '',
+            messageResponses: [
+                'OK !!',
+                'OK !!',
+                'OK !!'
+            ],
+            init: function() {
+                this.cacheDOM();
+                this.bindEvents();
+                this.render();
+            },
+            cacheDOM: function() {
+                if (chatId) {
+                    this.$chatHistory = $('#' + chatId + ' .chat-history');
+                    this.$button = $('#' + chatId + ' button');
+                    this.$textarea = $('#' + chatId + ' #message-to-send');
+                    this.$chatHistoryList = this.$chatHistory.find('ul');
+                } else {
+                    this.$chatHistory = $('.chat-history');
+                    this.$button = $('button');
+                    this.$textarea = $('#message-to-send');
+                    this.$chatHistoryList = this.$chatHistory.find('ul');
+                }
+            },
+            bindEvents: function() {
+                this.$button.on('click', this.addMessage.bind(this));
+                this.$textarea.on('keyup', this.addMessageEnter.bind(this));
+            },
+            render: function() {
+                this.scrollToBottom();
+                if (this.messageToSend.trim() !== '') {
+                    var template = Handlebars.compile($("#message-template").html());
+                    var context = {
+                        messageOutput: this.messageToSend,
+                        time: this.getCurrentTime()
+                    };
 
-          setTimeout(function () {
-            // this.$chatHistoryList.append(templateResponse(contextResponse));
-            this.scrollToBottom();
-          }.bind(this), 1500);
+                    this.$chatHistoryList.append(template(context));
+                    this.scrollToBottom();
+                    this.$textarea.val('');
 
-          /*
-          setTimeout(function () {
-            if(pathArray[1] == 'modual' && pathArray[2] == 'safe-posting' ) {
-              if($('#chatbox1')){
-                // $('#chatbox1').remove();
-                var el = $('#chatbox1').detach();
-              }
-              if($('#chatbox2').is(":hidden")){
-              $($('#chatbox2 .chat-history')[0]).slideToggle(300, 'swing');
-              $($('#chatbox2 .chat-message')[0]).slideToggle(300, 'swing');
-              $($('#chatbox2 .chat-history')[0]).slideToggle(300, 'swing');
-              $($('#chatbox2 .chat-message')[0]).slideToggle(300, 'swing');
-              $('#chatbox2').slideToggle(300, 'swing');
-              }
-              this.cacheDOM();
-              this.bindEvents();
-              $('#loading').after(el);
-              // $('#chatbox1').show();
+                    // responses
+                    var templateResponse = Handlebars.compile($("#message-response-template").html());
+                    var contextResponse = {
+                        response: this.getRandomItem(this.messageResponses),
+                        time: this.getCurrentTime()
+                    };
+
+                    setTimeout(function() {
+                        // this.$chatHistoryList.append(templateResponse(contextResponse));
+                        this.scrollToBottom();
+                    }.bind(this), 1500);
+
+                    /*
+                    setTimeout(function () {
+                      if(pathArray[1] == 'modual' && pathArray[2] == 'safe-posting' ) {
+                        if($('#chatbox1')){
+                          // $('#chatbox1').remove();
+                          var el = $('#chatbox1').detach();
+                        }
+                        if($('#chatbox2').is(":hidden")){
+                        $($('#chatbox2 .chat-history')[0]).slideToggle(300, 'swing');
+                        $($('#chatbox2 .chat-message')[0]).slideToggle(300, 'swing');
+                        $($('#chatbox2 .chat-history')[0]).slideToggle(300, 'swing');
+                        $($('#chatbox2 .chat-message')[0]).slideToggle(300, 'swing');
+                        $('#chatbox2').slideToggle(300, 'swing');
+                        }
+                        this.cacheDOM();
+                        this.bindEvents();
+                        $('#loading').after(el);
+                        // $('#chatbox1').show();
 
 
-            };
-          }.bind(this), 9000);
-          */
-        }
-      },
+                      };
+                    }.bind(this), 9000);
+                    */
+                }
+            },
 
-      addMessage: function () {
-        this.messageToSend = this.$textarea.val()
-        this.render();
-      },
+            addMessage: function() {
+                this.messageToSend = this.$textarea.val();
 
-      addMessageEnter: function (event) {
-        // enter was pressed
-        if (event.keyCode === 13) {
-          this.addMessage();
-        }
-      },
+                $.post("/chatAction", {
+                    message: this.$textarea.val(),
+                    absTime: Date.now(),
+                    chatId: (chatId) ? chatId : 'chatbox1',
+                    subdirectory1: pathArray[1],
+                    subdirectory2: pathArray[2],
+                    _csrf: $('meta[name="csrf-token"]').attr('content')
+                });
+                this.render();
+            },
 
-      scrollToBottom: function () {
-        if (this.$chatHistory[0]) {
-          this.$chatHistory.scrollTop(this.$chatHistory[0].scrollHeight);
-        }
-      },
+            addMessageEnter: function(event) {
+                // enter was pressed
+                if (event.keyCode === 13) {
+                    this.addMessage();
+                }
+            },
 
-      getCurrentTime: function () {
-        return new Date().toLocaleTimeString().
-          replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3");
-      },
+            scrollToBottom: function() {
+                if (this.$chatHistory[0]) {
+                    this.$chatHistory.scrollTop(this.$chatHistory[0].scrollHeight);
+                }
+            },
 
-      getRandomItem: function (arr) {
-        return arr[Math.floor(Math.random() * arr.length)];
-      }
-    };
+            getCurrentTime: function() {
+                return new Date().toLocaleTimeString().
+                replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3");
+            },
 
-     if((pathArray[2] == 'safe-posting' ) || (pathArray[2] == 'phishing' )) {
-      chat.init();
-     };
-  });
+            getRandomItem: function(arr) {
+                return arr[Math.floor(Math.random() * arr.length)];
+            }
+        };
 
-  //Minimize a chat box
-  $('a.chat-minimize').click(function (e) {
-     e.preventDefault();
-     let chat = $(this).closest('.chat').children('.chat-history');
-     chat.slideToggle(300, 'swing');
-  });
+        if ((pathArray[2] == 'safe-posting') || (pathArray[2] == 'phishing')) {
+            chat.init();
+        };
+    });
 
-  //Close a chat box
-  $('a.chat-close').click(function (e) {
-     e.preventDefault();
-     let chat = $(this).closest('.chat');
-     chat.fadeOut(300, 'swing');
-  });
+    //Minimize a chat box
+    $('a.chat-minimize').click(function(e) {
+        e.preventDefault();
+        let chat = $(this).closest('.chat').children('.chat-history');
+        chat.slideToggle(300, 'swing');
+        var chatId = $(this).closest('.container.clearfix')[0].id;
+
+        $.post("/chatAction", {
+            absTime: Date.now(),
+            chatId: (chatId) ? chatId : 'chatbox1',
+            subdirectory2: pathArray[2],
+            subdirectory1: pathArray[1],
+            minimized: true,
+            _csrf: $('meta[name="csrf-token"]').attr('content')
+        });
+    });
+
+    //Close a chat box
+    $('a.chat-close').click(function(e) {
+        e.preventDefault();
+        let chat = $(this).closest('.chat');
+        chat.fadeOut(300, 'swing');
+        var chatId = $(this).closest('.container.clearfix')[0].id;
+
+        $.post("/chatAction", {
+            absTime: Date.now(),
+            chatId: (chatId) ? chatId : 'chatbox1',
+            subdirectory2: pathArray[2],
+            subdirectory1: pathArray[1],
+            closed: true,
+            _csrf: $('meta[name="csrf-token"]').attr('content')
+        });
+    });
 });
