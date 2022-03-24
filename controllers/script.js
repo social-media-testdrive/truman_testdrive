@@ -312,18 +312,8 @@ exports.getScript = (req, res, next) => {
  * Made for load testing - not sure if it should be deleted
  */
 exports.getScriptFeed = (req, res, next) => {
-    //console.log("$#$#$#$#$#$#$START GET FEED$#$#$$#$#$#$#$#$#$#$#$#$#");
-    //console.log("time_diff  is now "+time_diff);
-    //console.log("time_limit  is now "+time_limit);
-    //study2_n0_p0
-    //console.log("$#$#$#$#$#$#$START GET FEED$#$#$$#$#$#$#$#$#$#$#$#$#");
     var scriptFilter = "";
     var profileFilter = "";
-    //study3_n20, study3_n80
-    //scriptFilter = req.params.caseId;
-    //req.params.modId
-    //console.log("#############SCRIPT FILTER IS NOW " + scriptFilter);
-    //{
     Script.find()
         //.where('time').lte(time_diff)//.gte(time_limit)
         .where('module').equals(req.params.modId)
@@ -343,7 +333,6 @@ exports.getScriptFeed = (req, res, next) => {
             //update script feed to see if reading and posts has already happened
             var finalfeed = [];
             finalfeed = script_feed;
-            //console.log("Script Size is now: "+finalfeed.length);
             res.render('feed', { script: finalfeed });
         }); //end of Script.find()
 }; //end of .getScript
@@ -437,8 +426,6 @@ function _postUpdateFeedAction(req, user) {
     // currently checking using regex; might be better to use mongo's object.isValid() function
     // Check for the special case where the user tries to conduct a feedAction (liking post is the only action available) on a user-made post
     // req.body.postID is an index, such as '0', '1', but to save a feedAction, feedAction's post attribute needs to be an ObjectID
-    console.log("_postUpdateFeedAction function called");
-    console.log(req.body.postID);
     if (!req.body.postID.toString().match(/^[0-9a-fA-F]{24}$/) && req.body.actionType === 'free play') {
         // Find ObjectID of user-made post
         const user_post = user.posts.find(post => post.postID.toString() === req.body.postID);
@@ -690,11 +677,9 @@ exports.postUpdateChatAction = (req, res, next) => {
  * gets deleted here. This route is currently not used anywhere.
  */
 exports.postDeleteFeedAction = (req, res, next) => {
-    //console.log("Deleting user feed posts Actions")
     User.findById(req.user.id, (err, user) => {
         //somehow user does not exist here
         if (err) { return next(err); }
-        //console.log("@@@@@@@@@@@  /deleteUserFeedActions req body  ", req.body);
 
         user.feedAction = [];
         user.save((err) => {
