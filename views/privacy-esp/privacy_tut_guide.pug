@@ -1,0 +1,94 @@
+extends ../ui_layout
+
+block content
+  
+  .ui.text.container
+    br
+    .ui.raised.segment
+      .button.ui.mini.green.right.labeled.icon.button#tut_guide_start
+        i.down.arrow.icon
+        | Start    
+      .ui.basic.segment.hidden
+        h2.ui.header
+          .content What are some things I can do to protect my privacy?
+            br
+            h5.ui.header
+              i.arrow.circle.right.blue.icon
+              .content.
+                Before you can protect your information, you need to understand 
+                what companies are collecting about you.
+            h5.ui.header
+              i.arrow.circle.right.blue.icon
+              .content.
+                Social media sites have a privacy policy that explains what 
+                information they collect about you and what they do with it.
+        br
+        .button.ui.mini.green.right.labeled.icon.button#tut_guide_next
+          i.down.arrow.icon
+          | Next    
+    br  
+    #instructionSegment.content.hidden
+      .ui.compact.segment
+        .ui.large.read-only.checked.checkbox.exampleCheckbox
+          input.ui(type="checkbox" id="" checked="")
+          label Read and check all the boxes below
+    #askQuestion.ui.raised.segment.hidden
+      .ui.basic.segment
+        h2.ui.header#point3
+          .content
+            | Remember the word ASK when you analyze a privacy policy. ASK yourself…
+        .content.ui.list
+            .item
+              .ui.segment.requiredCheckbox
+                .ui.checkbox
+                  input.requiredCheckboxInput(type="checkbox")
+                  label.
+                    Accessed: What will be #[b accessed] or collected by the company?
+            .item
+              .ui.segment.requiredCheckbox
+                .ui.checkbox
+                  input.requiredCheckboxInput(type="checkbox")
+                  label.
+                    Shared: What will be #[b shared] with other companies?
+            .item
+              .ui.segment.requiredCheckbox
+                .ui.checkbox
+                  input.requiredCheckboxInput(type="checkbox")
+                  label.
+                    Known: What could be #[b known] about me if I use this?              
+    .ui.warning.message#checkAllWarning
+      .header
+        | Check all the boxes to proceed
+    .ui.warning.message#clickStartWarning
+      .header
+        | Click "Start"
+    .ui.warning.message#clickNextWarning
+      .header
+        | Click "Next"
+    .ui.big.labeled.icon.button.cybersim2#privacyTutGuideButton
+        i.rocket.icon
+        |   Got it!
+
+block scripts
+  script.
+    var voiceoverMappings = {
+      '#tut_guide_start': {
+        'initialDelay': 700,
+        'delay': 500,
+        'files': ['CUSML.7.3.1.mp3','CUSML.7.3.2.mp3','CUSML.7.3.3.mp3']
+      },
+      '#tut_guide_next': {
+        'initialDelay': 700,
+        'delay': 500,
+        'files': ['CUSML.7.3.4.mp3','CUSML.7.3.5.mp3','CUSML.7.3.6.mp3','CUSML.7.3.7.mp3']
+      }
+    };
+  script(src="/module_js/privacy/privacy_tut_guide.js")
+  script(src='/module_js/voiceover.js')
+
+block styles
+  link(rel='stylesheet' href='/css/checkbox_activity.css')
+  link(rel='stylesheet' href='/css/modules/privacy.css')
+  
+    
+    

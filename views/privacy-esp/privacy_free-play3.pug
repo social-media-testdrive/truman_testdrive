@@ -1,0 +1,84 @@
+
+extends ../ui_layout
+  
+block content
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  .computer.only.tablet.only.four.wide.column 
+    .ui.card
+      .image
+        img(src=cdn+"/post_pictures/lilyprofpic.png")
+      .content
+        a.header= 'Lily Hui'
+        .meta="@"+'hui_lily'
+        .description="😍🤩😝😁" 
+        .description
+          i.marker.icon
+          span="Ithaca, NY"
+
+  
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
+    .ui.one.column.centered.grid.feedbackMessagesGrid
+      .ui.fixed.bottom.sticky
+        .ui.icon.compact.message.warning#removeHidden
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header Need some help? 
+            p Make sure you are clicking "Got it" on the blue dots!
+          
+        .ui.icon.message.warning#clickAllDotsWarning
+          i.close.icon
+          i.hand.pointer.icon.float
+          .content
+            .ui.header There are still blue dots to find!
+            p Click through all of the blue dots to continue.
+
+    .ui.fluid.card.test
+      .content
+        .center.aligned.description#hint1 This account is private.
+      
+            
+    br
+    .content#hint2
+    br
+    br
+    br
+    .content#hint3
+    br 
+    
+
+    button.ui.big.labeled.icon.button.privacyresults.addBottomMargin#cyberTransButton
+        i.rocket.icon
+        |   Let's Continue!
+
+block scripts
+  script.
+    var hintsList = [
+      {
+        hint: `All of Lily’s posts have been hidden to strangers. Only her social
+        media friends can see her posts now.`,
+        element: '#hint1',
+        hintPosition: 'middle-left',
+        audioFile: ['CUSML.7.8.21.mp3']
+      },
+      {
+        hint: `A private profile can protect your information and keep it safe. If
+        you have your information available to the public, you don’t have control
+        over who sees your content.`,
+        element: '#hint2',
+        hintPosition: 'middle-middle',
+        audioFile: ['CUSML.7.8.22.mp3']
+      },
+      {
+        hint: `Make sure to think about what you want to share, and whether you want
+        it to be public or private on the internet.`,
+        element: '#hint3',
+        hintPosition: 'middle-middle',
+        audioFile: ['CUSML.7.8.23.mp3']
+      }
+    ];
+  script(src="/module_js/voiceover.js")
+  script(src="/module_js/base_sim.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/sim.css')

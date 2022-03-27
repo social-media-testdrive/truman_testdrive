@@ -1,0 +1,422 @@
+
+extends ../ui_layout
+  
+block content
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  .computer.only.tablet.only.four.wide.column 
+    .ui.sticky.sideMenu
+      .ui.card
+        .image
+          img(src=cdn+"/post_pictures/lilyprofpic.png")
+        .content
+          a.header= 'Lily Hui'
+          .meta="@"+'hui_lily'
+          .description="😍🤩😝😁" 
+          .description 
+            i.marker.icon
+            span="Ithaca, NY"
+
+  
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column 
+    .ui.one.column.centered.grid.feedbackMessagesGrid
+      .ui.fixed.bottom.sticky
+        .ui.icon.compact.message.warning#removeHidden
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header Need some help? 
+            p Make sure you are clicking "Got it" on the blue dots!
+          
+        .ui.icon.message.warning#clickAllDotsWarning
+          i.close.icon
+          i.hand.pointer.icon.float
+          .content
+            .ui.header There are still blue dots to find!
+            p Click through all of the blue dots to continue.
+
+    .ui.fluid.card.dim.test()
+      .ui.dimmer.flag
+            .content
+              .center
+                h2.ui.inverted.icon.header
+                  i.red.flag.icon
+                  |  You&apos;ve flagged this!
+                  h3.ui.inverted.header
+                    span="The admins will review this post further. We are sorry you had this experience."
+      .content#hint1
+        .right.floated.meta= "Yesterday"
+        img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
+        |   <b>Lily Hui</b>
+      .img.post
+        img(src=cdn+"/post_pictures/nyctrip.jpg")
+      .content
+        .description
+          | On a trip to nyc with my family😃
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+      
+      .content
+        .ui.comments
+          .comment
+            a.avatar.image
+              img(src=cdn+'/profile_pictures/user71.JPG')
+            .content
+              a.author Melissa Williams
+              .metadata
+                span.date Yesterday
+                .rating
+                  i.heart.icon
+                  span.num 1
+                  |     Likes
+              .text()
+                | wow so jealous!
+              .actions
+                a.like.comment Like
+                a.flag.comment Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+
+    .ui.fluid.card.dim.test()
+      .ui.dimmer.flag
+            .content
+              .center
+                h2.ui.inverted.icon.header
+                  i.red.flag.icon
+                  |  You&apos;ve flagged this!
+                  h3.ui.inverted.header
+                    span="The admins will review this post further. We are sorry you had this experience."
+      .content#hint2
+        .right.floated.meta= "4 days ago"
+        |
+        img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
+        |   <b>Lily Hui</b>
+      .img.post
+        img(src=cdn+"/post_pictures/prettyflowers.png")
+      .content
+        .description
+          | pretty flowers in my back yard
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+      
+      .content
+        .ui.comments
+          .comment
+            a.avatar.image
+              img(src=cdn+'/profile_pictures/user47.jpeg')
+            .content
+              a.author(href="/user/arihearts") Ariel Simon
+              .metadata
+                span.date 4 days ago
+                .rating
+                  i.heart.icon
+                  span.num 1
+                  |     Likes
+              .text()
+                | prettyyyyyy
+              .actions
+                a.like.comment Like
+                a.flag.comment.comment Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+            
+    .ui.fluid.card.dim.test()
+      .ui.dimmer.flag
+            .content
+              .center
+                h2.ui.inverted.icon.header
+                  i.red.flag.icon
+                  |  You&apos;ve flagged this!
+                  h3.ui.inverted.header
+                    span="The admins will review this post further. We are sorry you had this experience."
+      .content
+        .right.floated.meta= "1 week ago"
+        |
+        img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
+        |   <b>Lily Hui</b>
+      .img.post
+        img(src=cdn+"/post_pictures/friendshipbracelet.png")
+      .content
+        .description
+          | Making friendship bracelets❤️
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+      .content
+        .ui.comments
+          .comment
+            a.avatar.image
+              img(src=cdn+'/profile_pictures/user41.jpg')
+            .content
+              a.author(href="/user/emmaaaaa") Emma Garcia
+              .metadata
+                span.date 5 days ago
+                .rating
+                  i.heart.icon
+                  span.num 1
+                  |     Likes
+              .text()
+                | i remember this @_@
+              .actions
+                a.like.comment Like
+                a.flag.comment.comment Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+            
+    .ui.fluid.card.dim.test()
+      .ui.dimmer.flag
+            .content
+              .center
+                h2.ui.inverted.icon.header
+                  i.red.flag.icon
+                  |  You&apos;ve flagged this!
+                  h3.ui.inverted.header
+                    span="The admins will review this post further. We are sorry you had this experience."
+      .content
+        .right.floated.meta= "2 weeks ago"
+        |
+        img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
+        |   <b>Lily Hui</b>
+      .img.post
+        img(src=cdn+"/post_pictures/healthyeating.png")
+      .content
+        .description
+          | healthy eating
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+      
+      .content
+        .ui.comments
+          .comment
+            a.avatar.image
+              img(src=cdn+'/profile_pictures/user7.jpg')
+            .content
+              a.author(href="/user/l.wakefield17")  Lauren Wakefield
+              .metadata
+                span.date 2 weeks ago
+                .rating
+                  i.heart.icon
+                  span.num 1
+                  |     Likes
+              .text()
+                | Was it good?
+              .actions
+                a.like.comment Like
+                a.flag.comment Flag
+          .comment
+            a.avatar.image
+              img(src=cdn+'/profile_pictures/user47.jpeg')
+            .content
+              a.author(href="/user/arihearts") Ariel Simon
+              .metadata
+                span.date 2 weeks ago
+                .rating
+                  i.heart.icon
+                  span.num 1
+                  |     Likes
+              .text()
+                | very healthy
+              .actions
+                a.like.comment Like
+                a.flag.comment Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+        
+    .ui.fluid.card.dim.test()
+      .ui.dimmer.flag
+            .content
+              .center
+                h2.ui.inverted.icon.header
+                  i.red.flag.icon
+                  |  You&apos;ve flagged this!
+                  h3.ui.inverted.header
+                    span="The admins will review this post further. We are sorry you had this experience."
+      .content
+        .right.floated.meta= "2 weeks ago"
+        |
+        img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
+        |   <b>Lily Hui</b>
+      .img.post
+        img(src=cdn+"/post_pictures/zoomonkey.jpg")
+      .content
+        .description
+          | monkey!
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+
+            
+    .ui.fluid.card.dim.test()
+      .ui.dimmer.flag
+            .content
+              .center
+                h2.ui.inverted.icon.header
+                  i.red.flag.icon
+                  |  You&apos;ve flagged this!
+                  h3.ui.inverted.header
+                    span="The admins will review this post further. We are sorry you had this experience."
+      .content
+        .right.floated.meta= "2 weeks ago"
+        |
+        img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
+        |   <b>Lily Hui</b>
+      .img.post
+        img(src=cdn+"/post_pictures/lilypicture.png")
+      .content
+        .description
+          | hey it's me 
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=3
+      
+      .content
+        .ui.comments
+          .comment
+            a.avatar.image
+              img(src=cdn+'/profile_pictures/user7.jpg')
+            .content
+              a.author(href="/user/l.wakefield17")  Lauren Wakefield
+              .metadata
+                span.date 2 weeks ago
+                .rating
+                  i.heart.icon
+                  span.num 1
+                  |     Likes
+              .text()
+                | pretty pic ^^
+              .actions
+                a.like.comment Like
+                a.flag.comment Flag
+          .comment
+            a.avatar.image
+              img(src=cdn+'/post_pictures/lilyprofpic.png')
+            .content
+              a.author Lily Hui
+              .metadata
+                span.date 2 weeks ago
+                .rating
+                  i.heart.icon
+                  span.num 1
+                  |     Likes
+              .text()
+                | Thankss 🙂
+              .actions
+                a.like.comment Like
+                a.flag.comment Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon            
+            
+      
+    button.ui.big.labeled.icon.button.settings2#cyberTransButton
+        i.rocket.icon
+        |   Let's Continue!
+
+
+block scripts
+  script.
+    var hintsList = [
+      {
+        hint: `This is what Lily’s profile now looks like to the public. If you look
+        through it, you can see that the tagged posts have been removed from her
+        profile.`,
+        element: '#hint1',
+        hintPosition: 'middle-middle',
+        audioFile: ['CUSML.7.8.16.mp3']
+      },
+      {
+        hint: `However, the public can still see all of her posts.`,
+        element: '#hint2',
+        hintPosition: 'middle-middle',
+        audioFile: ['CUSML.7.8.17.mp3']
+      }
+    ]
+
+  script(src="/module_js/voiceover.js")  
+  script(src='/postFunctionalities.js')
+  script(src="/module_js/base_sim.js")
+
+block styles
+  link(rel='stylesheet', href='/css/modules/privacy.css')
+  link(rel='stylesheet', href='/css/sim.css')
