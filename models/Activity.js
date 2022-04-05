@@ -151,6 +151,7 @@ const activitySchema = new mongoose.Schema({
 
     feedAction: [new Schema({
         postID: { type: Schema.ObjectId, ref: 'Script' }, // ID of the post the user interacted with
+        postID_num: Number, //post ID used in the CSV input file
         postBody: { type: String, default: '', trim: true }, // body of the post the user interacted with
         liked: { type: Boolean, default: false }, // did the user like this post in the feed?
         flagged: { type: Boolean, default: false }, // did the user flag this post in the feed?
@@ -181,11 +182,12 @@ const activitySchema = new mongoose.Schema({
             new_comment: { type: Boolean, default: false }, // is new comment
             new_comment_id: Number, // ID for comment
             comment_body: String, // Text the user wrote (if the comment was user-made), or text of the comment the user interacted with (if the comment was actor made)
+            comment_index: Number, // Index of comment on post
             absTime: Date, // Real-life timestamp of when the comment was made (user-made only)
         }, { _id: false, versionKey: false })]
     }, { _id: false, versionKey: false })],
 
-    reflectionAnswers: [new Schema({
+    reflectionAction: [new Schema({
         attemptDuration: Number, // how long the user took for the reflection attempt (milliseconds)
         answers: [new Schema({
             questionNumber: String, // corresponds with reflectionSectionData.json, i.e. 'Q1', 'Q2', 'Q3'...
@@ -198,7 +200,7 @@ const activitySchema = new mongoose.Schema({
             checkedActualTime: Boolean, // this is unique to the habits module
         })]
     })],
-    quizAnswers: [new Schema({
+    quizAction: [new Schema({
         attemptNumber: Number, // this tracks the user's attempt (i.e. 0, 1, 2)
         attemptDuration: Number, // how long the user took for the quiz attempt (milliseconds),
         answers: [new Schema({

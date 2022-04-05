@@ -460,6 +460,7 @@ app.get('/results/:modId', passportConfig.isAuthenticated, setHttpResponseHeader
     });
 });
 
+// Render the quiz page (all modules).
 app.get('/quiz/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, async function(req, res) {
     let quizData;
     const data = await fs.readFileAsync(`${__dirname}/public2/json/quizSectionData.json`);

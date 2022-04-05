@@ -22,6 +22,7 @@ function getfilterObjects(array, properties, module, moduleDBkey) {
  * to share it
  */
 exports.postActivityData = (req, res, next) => {
+    const currentTime = Date.now();
     const activityData = new Activity({
         userID: req.user.id,
         module: req.body.module,
@@ -117,6 +118,10 @@ exports.postActivityData = (req, res, next) => {
 
             // Variable will become the value for activityData.pageLog
             const pageLogArray = getfilterObjects(user.pageLog, ['time', 'subdirectory1'], module, 'subdirectory2');
+            pageLogArray.push({
+                "time": currentTime,
+                "subdirectory1": "end"
+            });
 
             // Variable will become the value for activityData.pageLog
             const startPageActionArray = getfilterObjects(user.startPageAction, ['subdirectory1', 'actionType', 'vocabTerm', 'absoluteTimestamp'], module, 'subdirectory2');
@@ -152,26 +157,28 @@ exports.postActivityData = (req, res, next) => {
                 getfilterObjects(user.guidedActivityAction, ['post', 'liked', 'flagged', 'flagTime', 'likeTime', 'replyTime', 'modal', 'comments'], module, 'modual');
 
             // Variable will become the value for activityData.feedAction
-            const feedActionArray =
-                getfilterObjects(user.feedAction, ['post', 'liked', 'flagged', 'flagTime', 'likeTime', 'replyTime', 'modal', 'comments'], module, 'modual')
-                .map(function(feedAction) {
-                    if (!feedAction.post) {
-                        feedAction.postBody = "user_post"
-                        return feedAction;
-                    }
-                    feedAction.postID = feedAction.post._id;
-                    feedAction.postBody = feedAction.post.body;
-
-                    // For interactions the user had with comments,
-                    // Find and add the comment text
-                    feedAction.comments.map(function(comment) {
-                        if (!comment.new_comment && feedAction.post.comments.length !== 0) {
-                            let comment_obj = feedAction.post.comments.find(post_comment => post_comment._id.equals(comment.comment));
-                            comment.comment_body = comment_obj.body;
-                        }
-                    })
+            const feedActionArray = getfilterObjects(user.feedAction, ['post', 'liked', 'flagged', 'flagTime', 'likeTime', 'replyTime', 'modal', 'comments'], module, 'modual');
+            feedActionArray.map(function(feedAction) {
+                if (!feedAction.post) {
+                    feedAction.postBody = "user_post"
                     return feedAction;
-                });
+                }
+                feedAction.postID = feedAction.post._id;
+                feedAction.postID_num = feedAction.post.post_id;
+                feedAction.postBody = feedAction.post.body;
+
+                // For interactions the user had with comments,
+                // Find and add the comment text
+                feedAction.comments.map(function(comment) {
+                    if (!comment.new_comment && feedAction.post.comments.length !== 0) {
+                        let comment_obj = feedAction.post.comments.find(post_comment => post_comment._id.equals(comment.comment));
+                        let index = feedAction.post.comments.findIndex(post_comment => post_comment._id.equals(comment.comment));
+                        comment.comment_index = index;
+                        comment.comment_body = comment_obj.body;
+                    }
+                })
+                return feedAction;
+            });
 
             // Variable will become the value for activityData.reflectionAnswers
             const reflectionAnswersArray = getfilterObjects(user.reflectionAction, ['attemptDuration', 'answers'], module, 'modual');
@@ -205,8 +212,8 @@ exports.postActivityData = (req, res, next) => {
             activityData.guidedActivityAction = guidedActivityActionArray;
             activityData.feedAction = feedActionArray;
 
-            activityData.reflectionAnswers = reflectionAnswersArray;
-            activityData.quizAnswers = quizAnswersArray;
+            activityData.reflectionAction = reflectionAnswersArray;
+            activityData.quizAction = quizAnswersArray;
             activityData.viewQuizExplanations = viewQuizExplanationsBoolean;
 
             activityData.save((err) => {

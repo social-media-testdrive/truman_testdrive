@@ -306,6 +306,7 @@ const userSchema = new mongoose.Schema({
             new_comment: { type: Boolean, default: false }, // is new comment
             new_comment_id: Number, // ID for comment
             comment_body: String, // Text the user wrote (if the comment was user-made)
+            comment_index: Number, // Index of comment on post
             absTime: Date, // Real-life timestamp of when the comment was made (user-made only)
             commentTime: { type: Number }, // Not used in TestDrive
             // time: {type: Number}
