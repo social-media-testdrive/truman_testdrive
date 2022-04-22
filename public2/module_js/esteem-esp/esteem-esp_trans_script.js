@@ -21,7 +21,7 @@ function startIntro(){
       bot2FirstName = "Humberto";
       break;
     case 'Música':
-      eventKeyword = 'el conjunto';
+      eventKeyword = 'un campamento de música';
       bot1Image = 'user5.jpeg';
       bot1FullName = "Rosa Díaz";
       bot1FirstName = " Rosa";
