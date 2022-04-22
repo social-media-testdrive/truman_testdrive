@@ -1,0 +1,117 @@
+extends ../ui_layout
+
+block content
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  .ui.container.addBottomMargin
+    .ui.stackable.column.grid
+      .ui.column
+        .insertPrint
+        .ui.raised.segment.reflectionTopSegment
+          h3.ui.header
+            i.question.blue.icon
+            .content
+              | Reflect
+          
+          .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection1
+            i.down.arrow.icon
+            |   Start
+          .ui.basic.segment.noPadding.reflectionPromptSegment.hidden  
+            .ui.label.resultsPromptLabel
+              h4.reflectionPrompt(data-questionNumber='Q1')
+                | #{reflectionData.privacy.Q1.prompt}
+            .ui.form
+              .inline.fields
+                label
+                textarea.glowing-border(rows='2' id="privacy_responseOne")
+
+        .ui.basic.segment.noPadding.hidden.reflectionTopSegment
+          .ui.raised.segment
+            .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection2
+              i.down.arrow.icon
+              |   Next
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
+              .ui.label.resultsPromptLabel
+                h4.reflectionPrompt(data-questionNumber='Q2')
+                  | #{reflectionData.privacy.Q2.prompt}
+              .ui.form
+                .inline.fields
+                  label
+                  textarea.glowing-border(rows='2' id="privacy_responseTwo")
+
+        .ui.basic.segment.noPadding.hidden.reflectionTopSegment
+          .ui.raised.segment
+            .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection3
+              i.down.arrow.icon
+              |   Next
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
+              .ui.label.resultsPromptLabel
+                h4.reflectionPrompt(data-questionNumber='Q3')
+                  | #{reflectionData.privacy.Q3.prompt}
+              .ui.form
+                .inline.fields
+                  label
+                  textarea.glowing-border(rows='2' id="privacy_responseThree")
+            
+        .ui.basic.segment.noPadding.hidden.reflectionTopSegment
+          .ui.raised.segment
+            .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection4
+              i.down.arrow.icon
+              |   Next
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
+              .ui.label.resultsPromptLabel
+                h4.reflectionPrompt(data-questionNumber='Q4')
+                  | #{reflectionData.privacy.Q4.prompt}
+              .ui.form
+                .inline.fields
+                  label
+                  textarea.glowing-border(rows='2' id="privacy_responseFour")
+          
+    .ui.warning.message.hidden.startPromptsWarning
+      .header
+        | Click "Start"
+    .ui.warning.message.hidden.openAllPromptsWarning
+      .header
+        | Click "Next"
+    include ../partials/optInToShareActivityData.pug
+    br
+    .ui.big.labeled.icon.button.results_print(onclick="onPrint()")
+          i.right.arrow.icon
+          |   Print your responses
+    br
+    br
+    .ui.big.labeled.icon.button.resultsContinueButton
+          i.rocket.icon
+          |   Continue
+
+          
+block scripts
+  script.
+    var voiceoverMappings = {
+      '.voiceover_reflection1': {
+        "initialDelay": 0,
+        "delay": 0,
+        "files": ['CUSML.7.9.1.mp3']
+      },
+      '.voiceover_reflection2': {
+        "initialDelay": 500,
+        "delay": 0,
+        "files": ['CUSML.7.9.2.mp3']
+      },
+      '.voiceover_reflection3': {
+        "initialDelay": 500,
+        "delay": 0,
+        "files": ['CUSML.7.9.3.mp3']
+      },
+      '.voiceover_reflection4': {
+        "initialDelay": 500,
+        "delay": 0,
+        "files": ['CUSML.7.9.4.mp3']
+      }
+    };
+  script(src="/module_js/privacy/privacy_results.js")
+  script(src='/module_js/base_results.js?v=1')
+  script(src='/module_js/voiceover.js')
+  
+block styles
+  link(rel='stylesheet', href='/css/results.css')
+  link(rel='stylesheet', href='/css/optInToShareActivityData.css')  
