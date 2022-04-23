@@ -1,63 +1,82 @@
 -var cdn = "https://dhpd030vnpk29.cloudfront.net";
-
-.computer.only.tablet.only.row 
-  .ui.borderless.fixed.menu(style="z-index:10000000;")
+-var isResearchVersion = process.env.isResearchVersion === 'true';
+-var enableLearnerDashboard = process.env.enableLearnerDashboard === 'true';
+.computer.only.tablet.only.row.testdriveHeaderRow 
+  .ui.borderless.fixed.menu.testDriveHeader
     .ui.grid.container#myheader
         .four.wide.column
           a.item(href='/')
             img.ui.tiny.image(src=cdn+'/finalLogo.png', id='logo')
         .eight.wide.column
-          .ui.basic.segment.center.aligned.hideHeader
-            ul.progressList
-              li.progressStep#headerStep1
-                h4.number 1
-                h4.checkmark &#10003
-                span aprender
-              li.progressStep#headerStep2
-                h4.number 2
-                h4.checkmark &#10003
-                span practicar
-              li.progressStep#headerStep3
-                h4.number 3
-                h4.checkmark &#10003
-                span explorar
-              li.progressStep#headerStep4
-                h4.number 4
-                h4.checkmark &#10003
-                span reflexionar
+          .ui.basic.segment.center.aligned.progressHeader.hideHeader
+            .row.moduleTitle
+              span 
+            .row
+              ul.progressList
+                li.progressStep#headerStep1
+                  h4.number 1
+                  h4.checkmark &#10003
+                  span aprender
+                li.progressStep#headerStep2
+                  h4.number 2
+                  h4.checkmark &#10003
+                  span practicar
+                li.progressStep#headerStep3
+                  h4.number 3
+                  h4.checkmark &#10003
+                  span explorar
+                li.progressStep#headerStep4
+                  h4.number 4
+                  h4.checkmark &#10003
+                  span reflexionar
         .four.wide.column
-          .right.menu
-            if user
-              a.item.newpost
-                i.big.plus.icon(style="display: none;")
-              if user.isInstructor
-                a.item(href='/classes') 
-                  i.big.university.icon
-              .ui.simple.dropdown.item(style="display: none;")
-                if user.profile.picture
-                  img.ui.mini.spaced.circular.image(src=cdn+'/profile_pictures/'+user.profile.picture)
-                else
-                  img.ui.mini.spaced.circular.image(src=user.gravatar(60))
-                |
-                span= user.profile.name || user.username || user.id
-
+          if isResearchVersion
+            .right.menu.headerDropdownMenu
+              if user
+                //- a.item.newpost.float.right
+                //-   i.big.plus.icon
+                .ui.simple.dropdown.item
+                  if user.profile.picture
+                    img.ui.mini.spaced.circular.image(src=cdn+'/profile_pictures/'+user.profile.picture)
+                  else
+                    img.ui.mini.spaced.circular.image(src=user.gravatar(60))
+                  |
+                  if isResearchVersion
+                    span= user.username || user.profile.name || user.id
+                  else 
+                    span= user.profile.name || user.username || user.id
+                  i.dropdown.icon
+                  .menu
+                    if user.isInstructor
+                      a.item(href='/classManagement') View Dashboard
+                    if (user.isStudent && enableLearnerDashboard)
+                      a.item(href='/learningAchievement') My Dashboard
+                    a.item(href='/') Module Page
+                    a.item(href='mailto:socialmediatestdrive@gmail.com') Contact Us
+                    a.item(href='/logout') Logout
             
 .mobile.only.row
-  .ui.fluid.top.fixed.four.item.menu(style="z-index:10000002;")
+  .ui.fluid.top.fixed.two.item.menu.testDriveHeader
     a.item(href='/')
       img.ui.tiny.image(src=cdn+'/finalLogo.png', id='cell_logo')
-    if !user
-      //-a.item(href='/login') Login
-      //-a.item(href='/signup') Create Account
-    else
-      a.item.newpost
-        i.big.plus.icon(style="display: none;")
-      if user.isInstructor
-        a.item(href='/classes') 
-          i.big.university.icon
-      .ui.simple.dropdown.item(style="display:none;")
-        if user.profile.picture
-          img.ui.mini.spaced.circular.image(src=cdn+'/profile_pictures/'+user.profile.picture)
-        else
-          img.ui.mini.spaced.circular.image(src=user.gravatar(60))
+    if isResearchVersion
+        if user
+          //- a.item.newpost.float.right
+          //-   i.big.plus.icon
+          .item
+            .right.menu.headerDropdownMenu
+              .ui.simple.dropdown.item
+                if isResearchVersion
+                  span= user.username || user.profile.name || user.id
+                else 
+                  span= user.profile.name || user.username || user.id
+                i.dropdown.icon
+                .menu
+                  if user.isInstructor
+                    a.item(href='/classManagement') View Dashboard
+                  if (user.isStudent && enableLearnerDashboard)
+                    a.item(href='/learningAchievement') My Dashboard
+                  a.item(href='/') Module Page
+                  a.item(href='mailto:socialmediatestdrive@gmail.com') Contact Us
+                  a.item(href='/logout') Logout
           
