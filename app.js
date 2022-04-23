@@ -265,18 +265,18 @@ const enableLearnerDashboard = process.env.enableLearnerDashboard === 'true';
 
 // Main route is the module page
 app.get('/', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
-  res.render('mods', {
-    title: 'Pick a Lesson',
-    isResearchVersion
-  });
-});
-
-app.get('/esp', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
   res.render('mods-esp', {
     title: 'Elije una lección',
     isResearchVersion
   });
 });
+
+// app.get('/esp', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
+//   res.render('mods-esp', {
+//     title: 'Elije una lección',
+//     isResearchVersion
+//   });
+// });
 
 // Current user's account page
 app.get('/account/:modId', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, userController.getAccount);

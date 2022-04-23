@@ -107,7 +107,7 @@ var totalTimeViewedHabits = 0;
 
 //Send a new view time when the "let's continue" button is clicked
 $('.ui.big.green.labeled.icon.button.script.habitsHomeDisplay').on('click', function(){
-  recordNewViewTime('/results/habits');
+  recordNewViewTime('/results/habits-esp');
 });
 
 //send a new time when an actor profile is visited
