@@ -1,12 +1,15 @@
 function onPrint(){
-
+  if($('.results_print').hasClass('green')){
     $(".insertPrint").empty();
     $(".insertPrint").css('display','block');
+
+    $(".selectPostsQuestion1").clone().appendTo(".insertPrint");
+    $(".insertPrint").append('<div class="breakHere"</div>');
 
     $(".insertPrint").append(
       `<br>
       <h4>
-        ¿Por qué estas publicaciones pueden hacer que Jorge tenga una sensación de bandera roja?
+      ¿Por qué estas publicaciones pueden hacer que Jorge tenga una sensación de bandera roja?
       </h4>`
     );
     var responseOne = document.getElementById("literacy_responseOne").value;
@@ -15,7 +18,7 @@ function onPrint(){
     $(".insertPrint").append(
       `<br>
       <h4>
-        ¿Recuerdas haber visto publicaciones que podrían haber hecho que Jorge se sintiera bien? ¿Qué tipo de publicaciones eran?
+      ¿Recuerdas haber visto publicaciones que podrían haber hecho que Jorge se sintiera bien? ¿Qué tipo de publicaciones eran?
       </h4>`
     );
     var responseTwo = document.getElementById("literacy_responseTwo").value;
@@ -24,7 +27,7 @@ function onPrint(){
     $(".insertPrint").append(
       `<br>
       <h4>
-        ¿Qué podría hacer Jorge para sentirse mejor después de experimentar una sensación de bandera roja en las redes sociales?
+      ¿Qué podría hacer Jorge para sentirse mejor después de experimentar una sensación de bandera roja en las redes sociales?
       </h4>`
     );
     var responseThree = document.getElementById("literacy_responseThree").value;
@@ -33,8 +36,15 @@ function onPrint(){
     window.print();
 
     $(".insertPrint").css('display','none');
+  } else {
+    if($('.voiceover_reflection1').next('.reflectionPromptSegment').is(':hidden')){
+      showWarning('.startPromptsWarning');
+    } else {
+      showWarning('.openAllPromptsWarning');
+    }
+  }
 }
 
-setTimeout(function(){
-  $('.ui.label').transition('bounce');
-}, 1000);
+// setTimeout(function(){
+//   $('.ui.label').transition('bounce');
+// }, 1000);
