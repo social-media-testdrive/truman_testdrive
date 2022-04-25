@@ -13,7 +13,7 @@ function startIntro(enableDataCollection){
     'showStepNumbers':false,
     'showBullets':false,
     'scrollToElement':true,
-    'doneLabel':'Listo &#10003'
+    'doneLabel':'Done &#10003'
   });
   /*
   onbeforechange:
