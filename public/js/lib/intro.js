@@ -45,13 +45,13 @@
 
     this._options = {
       /* Next button label in tooltip box */
-      nextLabel: 'Next &rarr;',
+      nextLabel: 'Seguir &rarr;',
       /* Previous button label in tooltip box */
-      prevLabel: '&larr; Back',
+      prevLabel: '&larr; Volver',
       /* Skip button label in tooltip box */
-      skipLabel: 'Skip',
+      skipLabel: 'Saltar',
       /* Done button label in tooltip box */
-      doneLabel: 'Done',
+      doneLabel: 'Listo',
       /* Hide previous button in the first step? Otherwise, it will be disabled button. */
       hidePrev: false,
       /* Hide next button in the last step? Otherwise, it will be disabled button. */
@@ -97,7 +97,7 @@
       /* Default hint position */
       hintPosition: 'top-middle',
       /* Hint button label */
-      hintButtonLabel: 'Got it',
+      hintButtonLabel: 'Entendido',
       /* Adding animation to hints? */
       hintAnimation: true,
       /* additional classes to put on the buttons */

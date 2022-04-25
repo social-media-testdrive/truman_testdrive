@@ -15,82 +15,75 @@ function customOnWindowLoad(enableDataCollection){
   $.get("/esteemTopic").then(function(data){
     topicSelection = data.esteemTopic;
     switch (topicSelection) {
-      case 'Sports':
-        eventKeyword = 'soccer game';
+      case 'Deportes':
+        eventKeyword = 'un partido de fútbol';
         bot1Image = 'user53.jpg';
-        bot1FullName = "Brielle Jordan";
-        bot1FirstName = "Brielle";
+        bot1FullName = "Belinda Fernandez";
+        bot1FirstName = "Belinda";
         bot2Image = 'user4.jpg';
-        bot2FullName = "Hayden Abbey";
-        bot2FirstName = "Hayden";
-        customAudioFile = ["CUSML.1.7.3.mp3"];
+        bot2FullName = "Humberto Alvarez";
+        bot2FirstName = "Humberto";
+        // customAudioFile = ["CUSML.1.7.3.mp3"];
         break;
-      case 'Music':
-        eventKeyword = 'music camp';
+      case 'Música':
+        eventKeyword = 'un campamento de música';
         bot1Image = 'user5.jpeg';
-        bot1FullName = "Kiki Pualani";
-        bot1FirstName = " Kiki";
+        bot1FullName = "Rosa Díaz";
+        bot1FirstName = " Rosa";
         bot2Image = 'user10.jpg';
-        bot2FullName = "Franklin Robinson";
-        bot2FirstName = "Franklin";
-        customAudioFile = ["CUSML.1.6.3.mp3"];
+        bot2FullName = "Carlos Gonzalez";
+        bot2FirstName = "Carlos";
+        // customAudioFile = ["CUSML.1.6.3.mp3"];
         break;
-      case 'Gaming':
-        eventKeyword = 'gaming club';
+      case 'Videojuegos':
+        eventKeyword = 'el club de videojuegos';
         bot1Image = 'user30.jpg';
-        bot1FullName = "Lindsay Stokes";
-        bot1FirstName = "Lindsay";
+        bot1FullName = "Lourdes Sanchez";
+        bot1FirstName = "Lourdes";
         bot2Image = 'user48.jpeg';
-        bot2FullName = "Asher Michaels";
-        bot2FirstName = "Asher";
-        customAudioFile = ["CUSML.1.8.3.mp3"];
+        bot2FullName = "Alejandro Martinez";
+        bot2FirstName = "Alejandro";
+        // customAudioFile = ["CUSML.1.8.3.mp3"];
         break;
       default:
-        eventKeyword = 'gaming club';
+        eventKeyword = 'un partido de fútbol';
         bot1Image = 'user30.jpg';
-        bot1FullName = "Lindsay Stokes"
-        bot1FirstName = "Lindsay"
+        bot1FullName = "Lourdes Sanchez";
+        bot1FirstName = "Lourdes";
         bot2Image = 'user48.jpeg';
-        bot2FullName = "Asher Michaels"
-        bot2FirstName = "Asher"
-        customAudioFile = ["CUSML.1.8.3.mp3"];
+        bot2FullName = "Alejandro Martinez";
+        bot2FirstName = "Alejandro";
+        // customAudioFile = ["CUSML.1.8.3.mp3"];
         break;
     }
 
     stepsList = [
       {
-        intro: `Click "Next" to begin!`,
+        intro: `¡Haz clic en "Seguir" para comenzar!`,
         position: 'right',
         scrollTo: 'tooltip',
         audioFile: ['']
       },
       {
-        intro: `Now you get to explore the TestDrive timeline! You can read
-        what others have posted, respond, or make your own posts.`,
-        audioFile: ['CUSML.1.6.1.mp3']
+        intro: `Ahora puedes explorar el feed del TestDrive. Puedes leer lo que otros han publicado, responder o crear tus propias publicaciones.`,
+        // audioFile: ['CUSML.1.6.1.mp3']
       },
       {
-        intro: `Here is some background before you start: Imagine that you are
-        looking at
-        <span class='noLineBreak'><img class='ui avatar image customCircularAvatar' src='${cdn}/profile_pictures/user77.jpg'>
-        Jeremy Murray's</span>
-        social media timeline.`,
-        audioFile: ['CUSML.1.6.2.mp3']
+        intro: `Aquí hay un poco de información antes de empezar: Imagina que estás viendo el feed de la red social de <span class='noLineBreak'><img class='ui avatar image customCircularAvatar' src='${cdn}/profile_pictures/user77.jpg'>Jorge García</span>`,
+        // audioFile: ['CUSML.1.6.2.mp3']
       },
       {
-        intro: `Jeremy has two friends,
+        intro: `Jorge tiene dos amigos,
         <span class='noLineBreak'><img class='ui avatar image customCircularAvatar' src='${cdn}/profile_pictures/${bot1Image}'>
-        <span>${bot1FullName}</span></span> and
+        <span>${bot1FullName}</span></span> y
         <span class='noLineBreak'><img class='ui avatar image customCircularAvatar' src='${cdn}/profile_pictures/${bot2Image}'>
-        <span>${bot2FullName}</span></span> whom he met  at a ${eventKeyword}.
-        Look out for posts from ${bot1FirstName} and ${bot2FirstName}.`,
-        audioFile: [`${customAudioFile}`]
+        <span>${bot2FullName}</span></span> a quienes conoció en ${eventKeyword}.
+        Busca las publicaciones de ${bot1FirstName} y ${bot2FirstName}.`,
+        // audioFile: [`${customAudioFile}`]
       },
       {
-        intro: `You may also see posts from other friends that could cause
-        Jeremy to have a red flag feeling. Click on these posts to think about
-        how Jeremy might feel and what he can do about it.`,
-        audioFile: ['CUSML.1.6.4.mp3']
+        intro: `También puedes ver las publicaciones de otros amigos que han podido ocasionar la sensación de alerta roja en Jorge. Haz clic en estas publicaciones para pensar en cómo Jorge se está sintiendo y qué puede hacer al respecto.`,
+        // audioFile: ['CUSML.1.6.4.mp3']
       }
     ];
 
