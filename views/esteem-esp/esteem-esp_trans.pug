@@ -2,7 +2,7 @@ extends ../ui_layout-esp
 
 block content
 
-  .ui.text.container(style="margin-bottom:4em;")
+  .ui.text.container.addBottomMargin
     br
     .column
       .ui.raised.segment
@@ -11,36 +11,51 @@ block content
             i.history.icon
             | &nbsp ¡Revisemos!
         br
-          
-        h5.ui.header
-          i.arrow.circle.right.blue.icon
-          .content
-            | Una sensación de alerta es cuando sucede algo en las redes sociales
-            | que te hace sentir incómodo, preocupado, triste o ansioso.
+        .ui.mini.green.right.labeled.icon.button.showReviewSectionButton
+          i.down.arrow.icon
+          |   Seguir  
+        .ui.basic.segment.reviewSegment.hidden  
+          h5.ui.header
+            i.arrow.circle.right.blue.icon
+            .content
+              | Una sensación de alerta es cuando sucede algo en las redes sociales
+              | que te hace sentir incómodo, preocupado, triste o ansioso.
 
-        h5.ui.header
-          i.arrow.circle.right.blue.icon
-          .content
-            | Si tienes una sensación de alerta roja en las redes sociales, haz
-            | una pausa y piensa cómo te sientes y qué puedes hacer para sentirte
-            | mejor.
-                    
-        h5.ui.header
-          i.arrow.circle.right.blue.icon
-          .content
-            | Recuerda usar los medios de forma positiva y en equilibrio con el 
-            | resto de otras actividades que disfrutes.
-        br
-  
+          h5.ui.header
+            i.arrow.circle.right.blue.icon
+            .content
+              | Si tienes una sensación de alerta roja en las redes sociales, haz
+              | una pausa y piensa cómo te sientes y qué puedes hacer para sentirte
+              | mejor.
+                      
+          h5.ui.header
+            i.arrow.circle.right.blue.icon
+            .content
+              | Recuerda usar los medios de forma positiva y en equilibrio con el 
+              | resto de otras actividades que disfrutes.
+          br
     br
     br
-    a(href='javascript:void(0);', onclick='javascript:startIntro();')
-        .ui.big.green.labeled.icon.button
-            i.rocket.icon
-            |   ¡Entendido!
+    .ui.warning.message.clickNextWarning.hidden
+      .header
+       | Haz clic en "Seguir"
+    a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
+      .ui.big.labeled.icon.button.gotItButton
+          i.rocket.icon
+          |   ¡Entendido!
             
 block scripts
-  script().
-    function startIntro(){
-      window.location.href='/trans2/esteem-esp';
+  script.
+    var voiceoverMappings = {
+      '.showReviewSectionButton': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.1.5.1.mp3','CUSML.1.5.2.mp3','CUSML.1.5.3.mp3']
+      }
     };
+    var nextPage = 'trans2';
+  script(src="/module_js/voiceover.js")  
+  script(src="/module_js/base_trans.js")
+    
+block styles
+  link(rel='stylesheet', href='/css/trans.css') 
