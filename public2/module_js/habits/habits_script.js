@@ -22,7 +22,7 @@ $(document).ready(function() {
         cat.subdirectory1 = 'modual';
         cat.subdirectory2 = 'habits';
         cat.absoluteTimestamp = Date.now();
-        cat.actionType = 'setPauseNotifications';
+        cat.actionType = 'togglePauseNotifications';
 
         if ($("input[name='popupAlerts']").is(":checked")) {
             $('#pauseTimeSelectField').show();

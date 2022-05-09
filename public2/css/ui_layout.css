@@ -3,367 +3,421 @@
 /* ---- GENERAL ---- */
 
 body {
-  background-color: #F5F8FA;
-  padding: 0em;
+    background-color: #F5F8FA;
+    padding: 0em;
 }
 
 .hidden {
-  display: none;
+    display: none;
 }
 
 .ui.hidden {
-  display: none;
+    display: none;
 }
 
 .centerText {
-  text-align: center;
+    text-align: center;
 }
 
 .computer.only.tablet.only.four.wide.column {
-  height: auto !important;
+    height: auto !important;
 }
 
 .grid.container.addBottomPaddingToGrid {
-  padding-bottom: 50px;
+    padding-bottom: 50px;
 }
 
 .grayElement,
 .ui.container .grayElement {
-  color: #696969;
+    color: #696969;
 }
 
+
 /* --- HEADER & FOOTER ---- */
+
 .ui.menu.testDriveHeader,
 .ui.menu.testDriveFooter {
-  z-index: 10000002;
+    z-index: 10000002;
 }
 
 
 /* --- POPUP  MODALS --- */
+
+
 /* Adjust popup modal margins and heights due to site header and footer */
 
+
 /* Mobile sizing */
+
 @media only screen and (min-width: 320px) and (max-width: 767px) {
-  .ui.modals {
-    margin-top: 74px;
-    max-height: calc(100vh - 112px);
-  }
+    .ui.modals {
+        margin-top: 74px;
+        max-height: calc(100vh - 112px);
+    }
 }
 
+
 /* Tablet and up sizing  */
+
 @media only screen and (min-width: 768px) {
-  .ui.modals {
-    margin-top: 101px;
-    max-height: calc(100vh - 139px);
-  }
+    .ui.modals {
+        margin-top: 101px;
+        max-height: calc(100vh - 139px);
+    }
 }
+
 
 /* --- FEEDBACK MESSAGES --- */
 
 .ui.grid.feedbackMessagesGrid {
-  margin: 0 auto 0 auto;
+    margin: 0 auto 0 auto;
 }
 
 .ui.grid.feedbackMessagesGrid .sticky {
-  margin-bottom: 60px;
-  width: 400px;
-  max-width: 100%;
-  z-index: 10000000;
+    margin-bottom: 60px;
+    width: 400px;
+    max-width: 100%;
+    z-index: 10000000;
 }
+
 
 /* ------- END PAGE ------- */
 
 .endPageButton {
-  max-width: 100%;
-  width: 260px;
-  text-align: left !important;
+    max-width: 100%;
+    width: 260px;
+    text-align: left !important;
 }
+
 
 /* --- CURSOR APPEARANCES --- */
 
 a,
 button,
 .ui.button,
-#newpost.ui.fluid.left.labeled.right.icon.input,{
-  cursor: pointer;
+#newpost.ui.fluid.left.labeled.right.icon.input {
+    cursor: pointer;
 }
 
-.ui.card .comments :not(.actions){
-  cursor: default;
+.ui.card .comments :not(.actions) {
+    cursor: default;
 }
+
 
 /* --- POST APPEARANCES --- */
 
 .img.post img {
-  max-width:100%;
+    max-width: 100%;
 }
 
 .ui.fluid.card>.content>.description {
-  font-size: 1.30em;
+    font-size: 1.30em;
 }
 
 .locationtag {
-  color: #929292;
+    color: #929292;
 }
 
 .grayText {
-  color: #929292;
+    color: #929292;
 }
 
 .blueText {
-  color:#0000FF;
+    color: #0000FF;
 }
+
 
 /* only for some digital literacy posts */
+
 .info_button {
-  border-radius: 14px;
-  border: 2px solid #cacacab0;
-  box-sizing: border-box;
-  color: #2185d0;
-  background-color: #ffffff;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  z-index: 9;
-  text-align: center;
-  overflow: hidden;
-  cursor: pointer;
+    border-radius: 14px;
+    border: 2px solid #cacacab0;
+    box-sizing: border-box;
+    color: #2185d0;
+    background-color: #ffffff;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    z-index: 9;
+    text-align: center;
+    overflow: hidden;
+    cursor: pointer;
 }
 
+
 /* ---- INTROJS HINTS ---- */
+
+
 /* ----- (BLUE DOTS) ----- */
 
 .introjs-hint-dot {
-  background:#2185d0;
-  border: 13px solid rgba(146,146,146,.36);
-  -webkit-animation: introjspulse 2s ease-out;
-  -moz-animation: introjspulse 2s ease-out;
-  animation: introjspulse 2s ease-out;
-  -webkit-animation-iteration-count: infinite;
-  -moz-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
+    background: #2185d0;
+    border: 13px solid rgba(146, 146, 146, .36);
+    -webkit-animation: introjspulse 2s ease-out;
+    -moz-animation: introjspulse 2s ease-out;
+    animation: introjspulse 2s ease-out;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
 }
 
 .introjs-hint-pulse {
-  background: #2185d0;
-  width: 15px;
-  height: 15px;
+    background: #2185d0;
+    width: 15px;
+    height: 15px;
 }
+
 
 /* ---- INTROJS STEPS ---- */
+
+
 /* ----- (TUTORIAL) ------ */
 
+
 /* removes a gray overlay that covers everything but the selected element */
+
 .introjs-overlay {
-  visibility: hidden;
+    visibility: hidden;
 }
+
 
 /* the box highlighting the selected element */
+
 .introjs-helperLayer {
-  border: 1px solid rgba(0, 149, 255, .5);
-  box-shadow: 0 2px 20px rgba(0, 149, 255, .4);
-  background-color: rgba(255, 255, 255, 0);
+    border: 1px solid rgba(0, 149, 255, .5);
+    box-shadow: 0 2px 20px rgba(0, 149, 255, .4);
+    background-color: rgba(255, 255, 255, 0);
 }
+
 
 /* custom tooltips that have a blue border */
+
 .blueTooltip {
-  border: 1px solid rgba(0, 149, 255, .5);
-  box-shadow: 0 2px 20px rgba(0, 149, 255, .4);
+    border: 1px solid rgba(0, 149, 255, .5);
+    box-shadow: 0 2px 20px rgba(0, 149, 255, .4);
 }
+
 
 /* avoid editing this, fixes issues with content being hidden under things */
+
+
 /* brings the tooltip forward on z-axis */
+
 .introjs-tooltipReferenceLayer {
-  z-index: 10000005;
+    z-index: 10000005;
 }
 
+
 /* adjusts the tooltip text appearance */
+
 .introjs-tooltiptext {
-  line-height: 120%;
-  font-size: 135%;
+    line-height: 120%;
+    font-size: 135%;
 }
 
 .introjs-fixedTooltip {
-  position: absolute;
+    position: absolute;
 }
 
 .introjs-fixParent {
-  position: static;
+    position: static;
 }
+
 
 /* customizing the back, next, and done buttons on steps */
+
+
 /* -  -  -  -  - */
-.introjs-skipbutton.introjs-donebutton, .introjs-skipbutton.introjs-donebutton:hover {
-  height: 22px;
-  line-height: 22px !important;
-  visibility: visible;
-  float: right;
-  border-radius: 5px;
-  color: rgba(255, 255, 255, .9);
-  background-image: linear-gradient(#21ba45, #21ba45);
-  text-shadow: 0px 0px 0 #fff;
-  margin-left: 5px;
-  border: 0px solid #d4d4d4;
-  font: 16px sans-serif;
+
+.introjs-skipbutton.introjs-donebutton,
+.introjs-skipbutton.introjs-donebutton:hover {
+    height: 22px;
+    line-height: 22px !important;
+    visibility: visible;
+    float: right;
+    border-radius: 5px;
+    color: rgba(255, 255, 255, .9);
+    background-image: linear-gradient(#21ba45, #21ba45);
+    text-shadow: 0px 0px 0 #fff;
+    margin-left: 5px;
+    border: 0px solid #d4d4d4;
+    font: 16px sans-serif;
 }
 
-.introjs-button.introjs-nextbutton, .introjs-button.introjs-nextbutton:hover {
-  height: 22px;
-  line-height: 22px !important;
-  border-radius: 5px;
-  visibility: visible;
-  color: rgba(255, 255, 255, .9);
-  background-image: linear-gradient(#2185D0, #2185D0);
-  text-shadow: 0px 0px 0 #fff;
-  margin-left: 5px;
-  border: 0px solid #d4d4d4;
-  font: 16px sans-serif;
+.introjs-button.introjs-nextbutton,
+.introjs-button.introjs-nextbutton:hover {
+    height: 22px;
+    line-height: 22px !important;
+    border-radius: 5px;
+    visibility: visible;
+    color: rgba(255, 255, 255, .9);
+    background-image: linear-gradient(#2185D0, #2185D0);
+    text-shadow: 0px 0px 0 #fff;
+    margin-left: 5px;
+    border: 0px solid #d4d4d4;
+    font: 16px sans-serif;
 }
 
-.introjs-button.introjs-prevbutton, .introjs-button.introjs-prevbutton:hover {
-  height: 22px;
-  line-height: 22px !important;
-  border-radius: 5px;
-  visibility: visible;
-  color: rgba(255, 255, 255, .9);
-  background-image: linear-gradient(#2185D0, #2185D0);
-  text-shadow: 0px 0px 0 #fff;
-  margin-left: 5px;
-  border: 0px solid #d4d4d4;
-  font: 16px sans-serif;
+.introjs-button.introjs-prevbutton,
+.introjs-button.introjs-prevbutton:hover {
+    height: 22px;
+    line-height: 22px !important;
+    border-radius: 5px;
+    visibility: visible;
+    color: rgba(255, 255, 255, .9);
+    background-image: linear-gradient(#2185D0, #2185D0);
+    text-shadow: 0px 0px 0 #fff;
+    margin-left: 5px;
+    border: 0px solid #d4d4d4;
+    font: 16px sans-serif;
 }
 
-.introjs-button, .introjs-button:hover {
-  height: 22px;
-  line-height: 22px !important;
-  border-radius: 5px;
-  visibility: visible;
-  color: rgba(255, 255, 255, .9);
-  background-image: linear-gradient(#21ba45, #21ba45);
-  text-shadow: 0px 0px 0 #fff;
-  margin-left: 5px;
-  border: none;
-  font: 16px sans-serif;
+.introjs-button,
+.introjs-button:hover {
+    height: 22px;
+    line-height: 22px !important;
+    border-radius: 5px;
+    visibility: visible;
+    color: rgba(255, 255, 255, .9);
+    background-image: linear-gradient(#21ba45, #21ba45);
+    text-shadow: 0px 0px 0 #fff;
+    margin-left: 5px;
+    border: none;
+    font: 16px sans-serif;
 }
 
 .introjs-skipbutton {
-  visibility: hidden;
+    visibility: hidden;
 }
+
+
 /* -  -  -  -  - */
+
 
 /* ----- OTHER ------ */
 
+
 /* gray out text*/
+
 .greyOut {
-  color: #A9A9A9
+    color: #A9A9A9
 }
+
 
 /* Button that uses the testdrive color palette */
+
 .ui.button.testDriveBlueButton {
-  background-color: #14a1f6;
-  color: white;
+    background-color: #14a1f6;
+    color: white;
 }
 
+
 /* settings page sublabels (privacy module) */
+
 .settingSmallLabel {
-  font-weight: normal;
-  font-size: 65%;
+    font-weight: normal;
+    font-size: 65%;
 }
 
 .ui.footer {
-  /* Increased specificity for SO snippet priority */
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+    /* Increased specificity for SO snippet priority */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 .clearfix:after {
-  visibility: hidden;
-  display: block;
-  font-size: 0;
-  content: " ";
-  clear: both;
-  height: 0;
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
 }
+
 
 /* misc alignment classes */
 
 .ui.grid .addBottomMargin {
-  margin-bottom: 4em;
+    margin-bottom: 4em;
 }
 
 .align-left {
-  text-align: left;
+    text-align: left;
 }
 
 .align-right {
-  text-align: right;
+    text-align: right;
 }
+
 
 /* highlight on hover */
 
 .highlightOnHover {
-  color: black;
-  background-color: #FFFFA6;
+    color: black;
+    background-color: #FFFFA6;
 }
 
 .highlightOnHover:hover {
-  color: black;
-  background-color: #FFFF00;
+    color: black;
+    background-color: #FFFF00;
 }
+
 
 /* most likely used in the habits module menus */
 
 .ui.vertical.menu a.item {
-  color: black;
-  background: rgba(0, 0, 0, .05);
+    color: black;
+    background: rgba(0, 0, 0, .05);
 }
 
 .ui.vertical.menu a.item:hover {
-  color: black;
-  background: white;
+    color: black;
+    background: white;
 }
 
 .ui.vertical.menu a.item.active {
-  color: black;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, .5);
-  background: white;
+    color: black;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, .5);
+    background: white;
 }
 
 .ui.vertical.menu a.item.active:hover {
-  color: black;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, .5);
-  background: white;
+    color: black;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, .5);
+    background: white;
 }
+
 
 /* Enlarge text on hover */
 
 .bigTextOnHover {
-  color: black;
-  font-size: 100%;
+    color: black;
+    font-size: 100%;
 }
 
 .bigTextOnHover:hover {
-  color: black;
-  font-size: 125%;
+    color: black;
+    font-size: 125%;
 }
+
 
 /* --- POSSIBLY UNUSED? --- */
 
 .main.container {
-  margin-top: 5em;
+    margin-top: 5em;
 }
 
 .ui.menu .item img.logo {
-  margin-left: 3.5em;
+    margin-left: 3.5em;
 }
 
 .wireframe {
-  margin-top: 2em;
+    margin-top: 2em;
 }
 
 .image-upload img {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .image-upload>input {
-  display: none;
+    display: none;
 }

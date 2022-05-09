@@ -71,47 +71,36 @@ exports.postActivityData = (req, res, next) => {
             // add body of comments for each post and the postID to freeplayComments.
             // Iterate through feedAction. Each item represents the actions on an existing post.
             const freeplayCommentsArray = [];
-            for (const actionsOnPost of user.feedAction) {
-                // when post field is undefined, it means user conducted an action a post they made themself
-                if (!actionsOnPost.post) {
-                    continue;
-                }
-                // check if post is in the current module
-                if (actionsOnPost.post.module !== module) {
-                    continue;
-                }
-                // check if there are any comment-type actions on this post
-                if (actionsOnPost.comments.length === 0) {
-                    continue;
-                }
-                const userCreatedComments = [];
-                // iterate through the comment-type actions to find any user-created comments
-                for (const comment of actionsOnPost.comments) {
-                    if (comment.new_comment) {
-                        // this is a user-created comment
-                        userCreatedComments.push(comment.comment_body)
-                    }
-                }
-                // check if any user-created comments were found
-                if (userCreatedComments.length > 0) {
-                    // create a new object to push to freeplayCommentsArray
+
+            user.feedAction.reduce(function(newArray, actionsOnPost) {
+                if (actionsOnPost.post && actionsOnPost.post.module === module && actionsOnPost.comments.length > 0) {
+                    const userComments = actionsOnPost.comments.reduce((array, comment) => {
+                        if (comment.new_comment) {
+                            array.push(comment.comment_body);
+                        }
+                        return array;
+                    }, []);
                     const postComments = {
                         postID: actionsOnPost.post._id,
                         postBody: actionsOnPost.post.body,
-                        userComments: userCreatedComments
+                        userComments: userComments
                     }
-                    freeplayCommentsArray.push(postComments);
+                    newArray.push(postComments);
                 }
-            }
+                return newArray;
+            }, freeplayCommentsArray);
 
             // Assign the chosenTopic array according to the current module the user is in.
-            const chosenTopicArray =
-                (module === "targeted") ? user.targetedAdTopic :
-                (module === "esteem") ? user.esteemTopic : [];
+            if (module === "targeted") {
+                activityData.chosenTopic = user.targetedAdTopic;
+            } else if (module === "esteem") {
+                activityData.chosenTopic = user.esteemTopic;
+            }
 
             // Assign habitsTimerArray if the module is habits
-            const habitsTimerArray =
-                (module === "habits") ? user.habitsTimer : [];
+            if (module === "habits") {
+                activityData.habitsTimer = user.habitsTimer;
+            }
 
             // Variable will become the value for activityData.posts
             const postsArray = getfilterObjects(user.posts, ['postID', 'body', 'picture', 'absTime', 'relativeTime', "_id"], module, 'module');
@@ -134,19 +123,24 @@ exports.postActivityData = (req, res, next) => {
 
             // Get actions made in accounts module only if current module is accounts
             // Variable will become the value for activityData.accountsAction
-            const accountsActionArray = (module === 'accounts') ?
-                getfilterObjects(user.accountsAction, ['subdirectory1', 'inputField', 'inputText', 'passwordStrength', 'absoluteTimestamp'], module, 'subdirectory2') : [];
+            if (module === "accounts") {
+                activityData.accountsAction = getfilterObjects(user.accountsAction, ['subdirectory1', 'inputField', 'inputText', 'passwordStrength', 'absoluteTimestamp'], module, 'subdirectory2');
+            }
 
             // Get actions made in habits module only if current module is habits
             // Variable will become the value for activityData.habitsAction
-            const habitsActionArray = (module === 'habits') ? getfilterObjects(user.habitsAction, ['subdirectory1', 'actionType', 'setValue', 'absoluteTimestamp'], module, 'subdirectory2') : [];
+            if (module === "habits") {
+                activityData.habitsAction = getfilterObjects(user.habitsAction, ['subdirectory1', 'actionType', 'setValue', 'absoluteTimestamp'], module, 'subdirectory2');
+            }
 
             // Get actions made in privacy module only if current module is privacy
             // Variable will become the value for activityData.privacyAction
-            const privacyActionArray = (module === 'privacy') ? getfilterObjects(user.privacyAction, ['subdirectory1', 'inputField', 'inputText', 'absoluteTimestamp'], module, 'subdirectory2') : []; // will become the value for activityData.privacyAction
+            if (module === "privacy") {
+                activityData.privacyAction = getfilterObjects(user.privacyAction, ['subdirectory1', 'inputField', 'inputText', 'absoluteTimestamp'], module, 'subdirectory2');
+            }
 
             // Variable will become the value for activityData.chatAction
-            const chatActionArray = getfilterObjects(user.chatAction, ['chatId', 'subdirectory1', 'messages', 'minimized', 'closed', 'minimizedTime', 'closedTime'], module, 'subdirectory2');
+            activityData.chatAction = getfilterObjects(user.chatAction, ['chatId', 'subdirectory1', 'messages', 'minimized', 'closed', 'minimizedTime', 'closedTime'], module, 'subdirectory2');
 
             // Variable will become the value for activityData.tutorialAction
             const tutorialActionArray =
@@ -158,10 +152,10 @@ exports.postActivityData = (req, res, next) => {
 
             // Variable will become the value for activityData.feedAction
             const feedActionArray = getfilterObjects(user.feedAction, ['post', 'liked', 'flagged', 'flagTime', 'likeTime', 'replyTime', 'modal', 'comments'], module, 'modual');
-            feedActionArray.map(function(feedAction) {
+            for (let feedAction of feedActionArray) {
                 if (!feedAction.post) {
                     feedAction.postBody = "user_post"
-                    return feedAction;
+                    continue;
                 }
                 feedAction.postID = feedAction.post._id;
                 feedAction.postID_num = feedAction.post.post_id;
@@ -169,16 +163,15 @@ exports.postActivityData = (req, res, next) => {
 
                 // For interactions the user had with comments,
                 // Find and add the comment text
-                feedAction.comments.map(function(comment) {
+                for (let comment of feedAction.comments) {
                     if (!comment.new_comment && feedAction.post.comments.length !== 0) {
                         let comment_obj = feedAction.post.comments.find(post_comment => post_comment._id.equals(comment.comment));
                         let index = feedAction.post.comments.findIndex(post_comment => post_comment._id.equals(comment.comment));
                         comment.comment_index = index;
                         comment.comment_body = comment_obj.body;
                     }
-                })
-                return feedAction;
-            });
+                }
+            }
 
             // Variable will become the value for activityData.reflectionAnswers
             const reflectionAnswersArray = getfilterObjects(user.reflectionAction, ['attemptDuration', 'answers'], module, 'modual');
@@ -193,8 +186,6 @@ exports.postActivityData = (req, res, next) => {
             activityData.newPosts = newPostsArray;
             activityData.freeplayComments = freeplayCommentsArray;
 
-            activityData.chosenTopic = chosenTopicArray;
-            activityData.habitsTimer = habitsTimerArray;
             activityData.voiceoverTimer = user.voiceoverTimer;
 
             activityData.posts = postsArray;
@@ -203,10 +194,6 @@ exports.postActivityData = (req, res, next) => {
             activityData.startPageAction = startPageActionArray;
             activityData.introjsStepAction = introjsStepActionArray;
             activityData.blueDotAction = blueDotActionArray;
-            activityData.accountsAction = accountsActionArray;
-            activityData.habitsAction = habitsActionArray;
-            activityData.privacyAction = privacyActionArray;
-            activityData.chatAction = chatActionArray;
 
             activityData.tutorialAction = tutorialActionArray;
             activityData.guidedActivityAction = guidedActivityActionArray;

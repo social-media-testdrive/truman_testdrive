@@ -70,7 +70,7 @@ $(".ui.toggle.checkbox[name='popupAlertsCheckbox']").change(function() {
     cat.subdirectory1 = 'sim3';
     cat.subdirectory2 = 'habits';
     cat.absoluteTimestamp = Date.now();
-    cat.actionType = 'setPauseNotifications';
+    cat.actionType = 'togglePauseNotifications';
 
     if ($("input[name='popupAlerts']").is(":checked")) {
         $('#pauseTimeSelectField').show();

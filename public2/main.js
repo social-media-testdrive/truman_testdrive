@@ -11,37 +11,54 @@ function changeActiveProgressTo(activeStep) {
     }
 }
 
-$(window).on("load", function() {
-    const timePageLoaded = Date.now();
+let enableDataCollection;
+let isResearchVersion;
 
-    const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
-    const isResearchVersion = $('meta[name="isResearchVersion"]').attr('content') === "true";
+function addVoiceoverTime() {
+    const voiceoverChangeTime = window.sessionStorage.getItem('voiceoverChangeTime');
+    // Record the time the voiceover was on ONLY if data collection is enabled AND if it's not the home page for the public site 
+    // (becuase prior to clicking a module card, no "guest" account has been created to log voiceoverTimer to)
+    if (enableDataCollection && voiceoverChangeTime !== null && !(!isResearchVersion && window.location.pathname === "/")) {
+        const timeDuration = Date.now() - voiceoverChangeTime;
+        $.post("/voiceoverTimer", {
+            voiceoverTimer: timeDuration,
+            _csrf: $('meta[name="csrf-token"]').attr('content')
+        }).catch(function(err) {
+            console.log(err);
+        });
+    }
+}
+
+$(window).on("load", function() {
+    enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
+    isResearchVersion = $('meta[name="isResearchVersion"]').attr('content') === "true";
 
     const initialVoiceoverState = window.sessionStorage.getItem('enableVoiceovers');
-    let voiceoverChangeTime = window.sessionStorage.getItem('voiceoverChangeTime'); // null if it is a new session
-
-    window.sessionStorage.setItem('voiceoverChangeTime', Date.now());
-
     if (initialVoiceoverState === 'false') {
         $('#voiceoverCheckbox input').removeAttr('checked');
     }
-    $('#voiceoverCheckbox').removeClass("hidden")
+    $('#voiceoverCheckbox').removeClass("hidden");
+
+    // null if it is a new session (https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) 
+    if (window.sessionStorage.getItem('voiceoverChangeTime') === null) {
+        window.sessionStorage.setItem('voiceoverChangeTime', Date.now());
+    }
 
     // If the current page is not the first page of a new session (https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage), 
     // log the time between the last time the voiceover was logged to be "on" and this page load (if the voiceover is on) 
-    if (enableDataCollection && voiceoverChangeTime !== null) {
-        if ($("input[name='voiceoverCheckbox']").is(":checked")) {
-            const timeDuration = timePageLoaded - voiceoverChangeTime;
-            if (enableDataCollection && !(!isResearchVersion && window.location.pathname === "/")) {
-                // Record the time the voiceover was on ONLY if data collection is enabled AND if it's not the home page for the public site 
-                // (because prior to clicking a module card, no "guest" account has been created to log voiceoverTimer to)
-                $.post("/voiceoverTimer", {
-                    voiceoverTimer: timeDuration,
-                    _csrf: $('meta[name="csrf-token"]').attr('content')
-                });
-            };
-        }
-    }
+    // if (enableDataCollection && voiceoverChangeTime !== null) {
+    //     if ($("input[name='voiceoverCheckbox']").is(":checked")) {
+    //         const timeDuration = timePageLoaded - voiceoverChangeTime;
+    //         if (enableDataCollection && !(!isResearchVersion && window.location.pathname === "/")) {
+    //             // Record the time the voiceover was on ONLY if data collection is enabled AND if it's not the home page for the public site 
+    //             // (because prior to clicking a module card, no "guest" account has been created to log voiceoverTimer to)
+    //             $.post("/voiceoverTimer", {
+    //                 voiceoverTimer: timeDuration,
+    //                 _csrf: $('meta[name="csrf-token"]').attr('content')
+    //             });
+    //         };
+    //     }
+    // }
 
     $('#voiceoverCheckbox').change(function() {
         if ($("input[name='voiceoverCheckbox']").is(":checked")) {
@@ -49,16 +66,7 @@ $(window).on("load", function() {
             window.sessionStorage.setItem('voiceoverChangeTime', Date.now());
         } else {
             window.sessionStorage.setItem('enableVoiceovers', 'false');
-            voiceoverChangeTime = window.sessionStorage.getItem('voiceoverChangeTime');
-            const timeDuration = Date.now() - voiceoverChangeTime;
-            // Record the time the voiceover was on ONLY if data collection is enabled AND if it's not the home page for the public site 
-            if (enableDataCollection && !(!isResearchVersion && window.location.pathname === "/")) {
-                $.post("/voiceoverTimer", {
-                    voiceoverTimer: timeDuration,
-                    _csrf: $('meta[name="csrf-token"]').attr('content')
-                });
-            }
-            window.sessionStorage.setItem('voiceoverChangeTime', Date.now());
+            addVoiceoverTime();
 
             Voiceovers.pauseVoiceover();
         }
@@ -660,3 +668,9 @@ $(window).on("load", function() {
     introJs().start();
 
 });
+
+$(window).on("beforeunload", function() {
+    if ($("input[name='voiceoverCheckbox']").is(":checked")) {
+        addVoiceoverTime();
+    }
+})
