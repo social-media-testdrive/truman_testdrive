@@ -73,7 +73,7 @@
             "responseRequirement": "any",
             "correctResponse": "2",
             "files": [""],
-            "explanation": "<span class = 'inline bold green'>C is correct: Tom should not interact with someone he doesn't know on the internet, especially if they appear to be a  scammer. Reporting the account keeps him and other people safe.</span> \n<span class = 'inline bold'>A is incorrect:</span> This can cause Tom to lose his account and any information connected to him through the account is at risk. \n<span class = 'inline bold'>B is incorrect:</span> Tom is still giving out his information. The other person could also give fake information. \n<span class = 'inline bold'>D is incorrect:</span> Tom is still giving out his information. The stranger could change it before Tom changes it. The stranger also will have access to his information and steal the account."
+            "explanation": "<span class = 'inline bold green'>C is correct: Tom should not interact with someone he doesn't know on the internet, especially if they appear to be a  scammer. Reporting the account keeps him and other people safe.</span> \n<span class = 'inline bold'>A is incorrect:</span> This can cause Tom to lose his account and any information connected to him. \n<span class = 'inline bold'>B is incorrect:</span> Tom is still giving out his information. The other person could also give fake information. \n<span class = 'inline bold'>D is incorrect:</span> Tom is still giving out his information. The stranger could change it before Tom changes it. The stranger also will have access to his information and steal the account."
         }
     },
     "advancedlit": {

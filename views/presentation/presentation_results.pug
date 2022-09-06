@@ -118,13 +118,13 @@ block content
                 .inline.fields
                   .field
                     .radio.checkbox
-                      input(type='radio', value="yes", name='make', tabindex='0')
-                      label 
+                      input(type='radio', value="yes", name='make', tabindex='0', id="make_yes")
+                      label(for="make_yes") 
                         | #{reflectionData.presentation.Q2.radioLabels[0]}
                   .field
                     .radio.checkbox
-                      input(type='radio', value="no", name='make', tabindex='0')
-                      label 
+                      input(type='radio', value="no", name='make', tabindex='0', id="make_no")
+                      label(for="make_no") 
                         | #{reflectionData.presentation.Q2.radioLabels[1]}
       
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
