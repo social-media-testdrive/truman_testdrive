@@ -1,9 +1,10 @@
 .ui.bottom.fixed.small.borderless.menu.testDriveFooter
   .left.menu
     .item
-      .ui.toggle.checkbox.hidden#voiceoverCheckbox
-        input(type="checkbox", name="voiceoverCheckbox" id='voiceoverCheckbox' checked)
-        label(for='voiceoverCheckbox') Voiceovers
+      if mod!=='extended-fp'
+        .ui.toggle.checkbox.hidden#voiceoverCheckbox
+          input(type="checkbox", name="voiceoverCheckbox" id='voiceoverCheckbox' checked)
+          label(for='voiceoverCheckbox') Voiceovers
   .right.menu
     a.item(href='https://socialmediatestdrive.org/terms.html') Terms of Service 
     //- a.item(href='/privacy') Privacy Policy  
