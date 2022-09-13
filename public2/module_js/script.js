@@ -305,7 +305,8 @@ $('.openPostDigitalLiteracy').on('click', function() {
 });
 
 $(".modual.info_button").click(function(e) {
-    recordModalInputs('digital-literacy_articleInfoModal');
+    const modalName = $(this).data('modual') === 'digital-literacy' ? 'digital-literacy_articleInfoModal' : 'extended-fp_articleInfoModal';
+    recordModalInputs(modalName);
     document.getElementById('post_info_text_modual').innerHTML = $(this).data('info_text');
     e.stopPropagation();
 });

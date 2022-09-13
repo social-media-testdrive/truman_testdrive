@@ -54,12 +54,12 @@ block content
 
   
     -var post_quiz = "/results/"+mod;
-    a.ui.fluid.card
-      .content
-        .ui.big.green.labeled.icon.button.script
-          i.rocket.icon
-          |   Let's Continue!
-          
+    if mod!=='extended-fp'
+      a.ui.fluid.card
+        .content
+          .ui.big.green.labeled.icon.button.script
+            i.rocket.icon
+            |   Let's Continue!
     br
     br
   
@@ -70,7 +70,7 @@ block content
     include partials/script/modals/esteemPost
     
     //- View Post Info Modal
-    .ui.small.popinfo.modal(data-modalName='digital-literacy_articleInfoModal')
+    .ui.small.popinfo.modal(data-modalName=mod+'_articleInfoModal')
       i.close.icon  
       h3.ui.header
         i.info.circle.icon 

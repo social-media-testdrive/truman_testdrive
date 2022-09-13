@@ -315,6 +315,9 @@ function isValidModId(req, res, next) {
         "safe-posting",
         "targeted"
     ]
+    if (isResearchVersion) {
+        modIds.push("extended-fp");
+    }
 
     if (modIds.includes(req.params.modId)) {
         next();

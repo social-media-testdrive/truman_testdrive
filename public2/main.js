@@ -257,8 +257,7 @@ $(window).on("load", function() {
 
     // article info popup in the digital-literacy module
     $(".modual.info_button").click(function() {
-
-        $('.ui.small.popinfo.modal').modal('show');
+        $(`.ui.small.popinfo.modal[data-modalName=${$(this).data('modual')}]`).modal('show');
         document.getElementById('post_info_text_modual').innerHTML = $(this).data('info_text');
     });
 
