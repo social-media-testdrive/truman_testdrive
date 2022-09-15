@@ -247,18 +247,7 @@ function setHttpResponseHeaders(req, res, next) {
 
 function isValidModId(req, res, next) {
     const modIds = [
-        "accounts",
-        "advancedlit",
-        "cyberbullying",
-        "digfoot",
-        "digital-literacy",
-        "esteem",
-        "habits",
-        "phishing",
-        "presentation",
-        "privacy",
-        "safe-posting",
-        "targeted"
+        "cyberbullying"
     ]
     if (modIds.includes(req.params.modId)) {
         next();
@@ -302,18 +291,7 @@ const enableLearnerDashboard = process.env.enableLearnerDashboard === 'true';
 
 function isValidModId(req, res, next) {
     const modIds = [
-        "accounts",
-        "advancedlit",
-        "cyberbullying",
-        "digfoot",
-        "digital-literacy",
-        "esteem",
-        "habits",
-        "phishing",
-        "presentation",
-        "privacy",
-        "safe-posting",
-        "targeted"
+        "cyberbullying"
     ]
 
     if (modIds.includes(req.params.modId)) {
