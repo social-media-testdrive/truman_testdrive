@@ -6,3 +6,8 @@ The DART Learn is a a web-based online learning platform with learning modules b
 This current iteration is to practise building the DART Learn.
 
 Special thanks to Sahat Yalkabov and his [Hackathon Starter](https://github.com/sahat/hackathon-starter) project, which provided the basic organization for this project.
+
+
+Install DART
+=======================
+To install DART in local, please follow this tutorial: https://docs.google.com/document/d/1li4ZuqGzivha9MD24sF4sVXoqHNllKCR97BJCRThvXY/edit?usp=sharing
