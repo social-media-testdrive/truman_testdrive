@@ -361,68 +361,6 @@ app.get('/end/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, c
     });
 });
 
-// Render page with sample targeted ads (food) in the targeted ads module
-app.get('/food/targeted', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
-    res.render('targeted/targeted_food', {
-        title: 'Interest Page'
-    });
-});
-
-// Render Page 1 of the free play section in the privacy module
-app.get('/free-play/privacy', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
-    res.render('privacy/privacy_free-play', {
-        title: 'Free-Play'
-    });
-});
-
-// Render Page 3 of the free play section in the privacy module
-app.get('/free-play2/privacy', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
-    res.render('privacy/privacy_free-play2', {
-        title: 'Free-Play 2'
-    });
-});
-
-// Render Page 7 of the free play section in the privacy module
-app.get('/free-play3/privacy', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
-    res.render('privacy/privacy_free-play3', {
-        title: 'Free-Play 3'
-    });
-});
-
-// Render Page 5 of the free play section in the privacy module
-app.get('/free-play4/privacy', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
-    res.render('privacy/privacy_free-play4', {
-        title: 'Free-Play 4'
-    });
-});
-
-// Render Page 2 of the free play section in the privacy module
-app.get('/free-settings/privacy', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
-    res.render('privacy/privacy_free-play_settings', {
-        title: 'Free-Play Settings'
-    });
-});
-
-// Render Page 6 of the free play section in the privacy module
-app.get('/free-settings2/privacy', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
-    res.render('privacy/privacy_free-play_settings2', {
-        title: 'Free-Play Settings 2'
-    });
-});
-
-// Render Page 4 of the free play section in the privacy module
-app.get('/free-settings3/privacy', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
-    res.render('privacy/privacy_free-play_settings3', {
-        title: 'Free-Play Settings 3'
-    });
-});
-
-// Render page with sample targeted ads (gaming) in the targeted ads module
-app.get('/gaming/targeted', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
-    res.render('targeted/targeted_gaming', {
-        title: 'Interest Page'
-    });
-});
 
 // Render intro page (all modules)
 app.get('/intro/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
@@ -517,12 +455,6 @@ app.get('/sim4/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, 
     });
 });
 
-// Render page with sample targeted ads (sports) in the targeted ads module
-app.get('/sports/targeted', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
-    res.render('targeted/targeted_sports', {
-        title: 'Interest Page'
-    });
-});
 
 // Render start page (all modules)
 app.get('/start/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
@@ -639,10 +571,6 @@ app.post('/advancedlitInterest', passportConfig.isAuthenticated, check, setHttpR
 // Routes to get topic selections for modules with customized freeplay content
 app.get('/esteemTopic', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.getEsteemTopic);
 app.get('/advancedlitTopic', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.getAdvancedlitTopic);
-// Routes to facilitate features in the habits module
-app.get('/habitsTimer', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.getHabitsTimer);
-app.post('/habitsTimer', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, userController.postUpdateHabitsTimer);
-app.get('/habitsNotificationTimes', passportConfig.isAuthenticated, setHttpResponseHeaders, scriptController.getNotificationTimes);
 // This was for load testing - not sure if it should be deleted
 app.get('/testing/:modId', isValidModId, scriptController.getScriptFeed);
 // Update user profile information
