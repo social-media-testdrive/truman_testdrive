@@ -22,6 +22,12 @@ const userSchema = new mongoose.Schema({
     completed: { type: Boolean, default: false }, // Not used in TestDrive
     reflectionCsv: { type: String, default: '' },
     timeReportCsv: { type: String, default: '' },
+    assignedModules: {
+        module1: { type: String, default: "" },
+        module2: { type: String, default: "survey-1" },
+        module3: { type: String, default: "extended-fp" },
+        module4: { type: String, default: "survey-2" }
+    },
     moduleProgress: { // marks the progress of each module: none, started, completed
         accounts: { type: String, default: 'none' },
         advancedlit: { type: String, default: 'none' },
@@ -35,7 +41,28 @@ const userSchema = new mongoose.Schema({
         privacy: { type: String, default: 'none' },
         safeposting: { type: String, default: 'none' },
         targeted: { type: String, default: 'none' },
+        extendedfp: { type: String, default: 'none' },
+        survey1: { type: String, default: 'none' },
+        survey2: { type: String, default: 'none' }
     },
+    moduleProgressTimestamps: {
+        accounts: { type: Date, default: null },
+        advancedlit: { type: Date, default: null },
+        cyberbullying: { type: Date, default: null },
+        digfoot: { type: Date, default: null },
+        "digital-literacy": { type: Date, default: null },
+        esteem: { type: Date, default: null },
+        habits: { type: Date, default: null },
+        phishing: { type: Date, default: null },
+        presentation: { type: Date, default: null },
+        privacy: { type: Date, default: null },
+        "safe-posting": { type: Date, default: null },
+        targeted: { type: Date, default: null },
+        "extended-fp": { type: Date, default: null },
+        "survey-1": { type: Date, default: null },
+        "survey-2": { type: Date, default: null }
+    },
+    control: { type: Boolean, default: false },
     earnedBadges: [new Schema({ // list of badges earned by the user, see testdriveBadges.json file
         badgeId: String,
         badgeTitle: String,
@@ -66,8 +93,8 @@ const userSchema = new mongoose.Schema({
     advancedlitTopic: { type: String, default: "" }, // Music, Gaming, or Sports, Not used currently
     habitsTimer: [Number], // How long the user has been on the free-play page each time they visit, use sum of this array to get a total time.
     firstHabitViewTime: { type: Number, default: -1 }, // The time that the user first opened the free-play section of the habits module
-    // if the user clicked to view quiz explanations
     voiceoverTimer: [Number], // How long the user has kept the voiceover on, use sum of this array to get a total time
+    // if the user clicked to view quiz explanations
     viewQuizExplanations: [new Schema({
         module: String, // Which lesson module does this belong to
         click: Boolean, // Did user click to view explanations?
@@ -120,7 +147,8 @@ const userSchema = new mongoose.Schema({
     pageLog: [new Schema({
         time: Date,
         subdirectory1: String,
-        subdirectory2: String
+        subdirectory2: String,
+        artificialVisit: { type: Boolean, default: false }
     })],
 
     // When and why someone reported an actor, Not used in TestDrive
@@ -413,7 +441,7 @@ userSchema.methods.logUser = function logUser(time) {
 userSchema.methods.logPage = function logPage(time, subdirectory1, subdirectory2) {
     let log = {};
     log.time = time;
-    if (subdirectory1 !== undefined) {
+    if (subdirectory1 !== undefined && subdirectory1 !== "") {
         log.subdirectory1 = subdirectory1;
         log.subdirectory2 = subdirectory2;
     } else {

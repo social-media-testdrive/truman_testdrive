@@ -55,7 +55,11 @@ $(window).on("load", async function() {
     let completedModules = [];
     for (const modName of Object.keys(moduleGeneralData)) {
         if (moduleGeneralData[modName].status === "completed") {
-            completedModules.push(modName);
+            // Unique to Outcome Evaluation 3 
+            // because pre and post survey and extended-fp are treated like individual modules
+            if (!["extendedfp", "survey1", "survey2"].includes(modName)) {
+                completedModules.push(modName);
+            }
         }
     }
     createModuleCompletionCountChart(completedModules, totalModuleCount);

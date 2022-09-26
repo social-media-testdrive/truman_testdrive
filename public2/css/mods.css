@@ -1,0 +1,54 @@
+.setDisplayNone {
+    display: none !important;
+}
+
+.removePadding {
+    padding: 0 !important;
+}
+
+.addPaddingBottom {
+    padding-bottom: 30px;
+}
+
+.setVisibilityHidden {
+    visibility: hidden !important;
+}
+
+.success.message {
+    margin-top: 20px !important;
+}
+
+.success.message .icon {
+    box-shadow: 0 0 0 0.1em #2c662d inset;
+}
+
+.activeModuleSegment,
+.inactiveModulesSegment {
+    padding: 0 !important;
+}
+
+.activeModuleSegment h2,
+.inactiveModulesSegment h2 {
+    cursor: default;
+    margin: 40px 0px 25px 0px !important;
+}
+
+.inactiveCard {
+    cursor: default !important;
+    -webkit-transform: none !important;
+    transform: none !important;
+}
+
+.inactiveCardImage {
+    filter: grayscale(1);
+}
+
+.inactiveCardLabel {
+    z-index: 1;
+}
+
+.ui.four.cards>.card {
+    width: calc(25% - 2.5em);
+    margin-left: 1.25em;
+    margin-right: 1.25em;
+}

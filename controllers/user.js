@@ -449,10 +449,15 @@ exports.postUpdateModuleProgress = (req, res, next) => {
         if (err) {
             return next(err);
         }
+        const modName = req.body.module;
+        /* modname must have any dashes removed to match the schema. This should be
+        changed because it is inconsistent - dashes are fine in every other case. */
+        const modNameNoDashes = modName.replace('-', '');
         // Once marked completed, do not update status again.
-        if (user.moduleProgress[req.body.module] !== 'completed') {
-            user.moduleProgress[req.body.module] = req.body.status;
+        if (user.moduleProgress[modNameNoDashes] !== 'completed') {
+            user.moduleProgress[modNameNoDashes] = req.body.status;
         }
+        user.moduleProgressTimestamps[modName] = Date.now();
         user.save((err) => {
             if (err) {
                 return next(err);
@@ -462,6 +467,131 @@ exports.postUpdateModuleProgress = (req, res, next) => {
         });
     });
 };
+
+function pushVisibleModule(assignedModule, moduleStatus, visibleModules) {
+    const visibleModule = {
+        name: assignedModule,
+        status: moduleStatus
+    }
+    visibleModules.push(visibleModule);
+    return;
+}
+
+/*
+Specific to the outcome evaluation (Study 3) in October 2022.
+
+There is 1 module, 1 extended freeplay assigned to each student.
+The extended freeplay is treated as a module.
+They need to become available sequentially on the homepage, as they are completed.
+
+Look through each of the assigned modules for the currently logged in student,
+and then return a list of all the modules that should be visible on the homepage
+at the time of the request. A module may be in this list if:
+
+- It is the first module in the sequence,
+- It has been started/completed,
+- It is the "active" module,
+- It is "upcoming" to be completed.
+
+Statuses:
+
+"active":
+This is the module the student should complete at this time. Only one module
+should ever be active at a time. It is possible that no modules are active.
+
+"upcoming":
+The other remaining modules will be displayed as "upcoming". The module that is
+"upcoming" will become clickable once the previous module has been completed, or if it 
+is the extended freeplay, after 7 days or *168* hours has passed since the previous
+module was completed. The "upcoming" module may have a preview
+until then, so it is included in the list of visible modules.
+
+"completed":
+The module has been completed. This will always be visible.
+
+"started"
+The module has started. This will always be visible.
+Outcome Evaluation #3: There is no time limit to completing the module.
+*/
+exports.getVisibleModules = (req, res, next) => {
+    let visibleModules = [];
+    if (!req.user.isStudent) {
+        return res.send(visibleModules);
+    }
+    // iterate through the assigned modules in order, 1-4.
+    for (let i = 1; i <= 4; i++) {
+        const assignedModuleKey = `module${i}`;
+        const assignedModule = req.user.assignedModules[assignedModuleKey];
+        // check the status of this module from the db (none/started/completed).
+        // recall that user.moduleProgress properties are modNames without dashes.
+        const assignedModuleNoDashes = assignedModule.replace('-', '');
+        const moduleStatus = req.user.moduleProgress[assignedModuleNoDashes];
+        if (moduleStatus === "completed") {
+            // Automatically add this module to the list of displayed modules.
+            // Use the status "completed".
+            pushVisibleModule(assignedModule, moduleStatus, visibleModules);
+        } else if (moduleStatus === "started") {
+            pushVisibleModule(assignedModule, moduleStatus, visibleModules);
+        } else {
+            // This module has not been started.
+            if (i === 1) {
+                // This is the first module, which can be automatically added to the list of displayed modules.
+                // Mark the status as "active", since this is the module the student
+                // should see as available.
+                // If the user is in the control group, they will see the first module. If not, they will not see it.
+                if (!req.user.control) {
+                    pushVisibleModule(assignedModule, "active", visibleModules);
+                }
+            } else {
+                console.log(i);
+                // If the user is in the control group, they should automatically see the survey.
+                if (req.user.control && i === 2) {
+                    pushVisibleModule(assignedModule, "active", visibleModules);
+                    continue;
+                }
+
+                // Not started, and not the first module.
+                // Need to check if previous module has been completed.
+                const prevAssignedModKey = `module${i-1}`
+                const prevAssignedModule = req.user.assignedModules[prevAssignedModKey];
+                const prevAssignedModuleNoDashes = prevAssignedModule.replace('-', '');
+                const prevAssignedModuleStatus = req.user.moduleProgress[prevAssignedModuleNoDashes];
+                const prevModStatusChangeTime = req.user.moduleProgressTimestamps[prevAssignedModule];
+                console.log(prevAssignedModuleStatus)
+                if (prevAssignedModuleStatus === "completed") {
+                    // If the previous module has been completed, this module should be active. 
+                    // If it is the last module (extended-fp),
+                    // Wait 7 days since the completion of the last module before making it active.
+                    const currentTime = Date.now();
+                    if (assignedModule === "extended-fp" && (currentTime - prevModStatusChangeTime) < 604800000) {
+                        pushVisibleModule(assignedModule, "upcoming", visibleModules);
+                    } else {
+                        pushVisibleModule(assignedModule, "active", visibleModules);
+                    }
+                } else {
+                    pushVisibleModule(assignedModule, "upcoming", visibleModules);
+                }
+            }
+        }
+    }
+    console.log(visibleModules)
+    return res.send(visibleModules);
+}
+
+exports.getSurveyParameters = (req, res, next) => {
+    if (req.user.isStudent) {
+        const surveyParameters = {
+            classCode: req.user.accessCode,
+            username: req.user.username,
+            module: req.user.assignedModules.module1
+        }
+        return res.send(surveyParameters);
+    } else {
+        // indicates that there should not be a survey link for this account.
+        const surveyParameters = false;
+        return res.send(surveyParameters);
+    }
+}
 
 /*
  * POST /postUpdateNewBadge

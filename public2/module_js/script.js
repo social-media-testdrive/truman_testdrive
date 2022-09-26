@@ -270,9 +270,57 @@ function targetedAdDropdownSelection() {
     }
 };
 
+// This function is only called if isResearchVersion = true
+async function updateModuleProgressCompleted() {
+    await $.post("/moduleProgress", {
+        module: currentModule,
+        status: 'completed',
+        _csrf: $('meta[name="csrf-token"]').attr('content')
+    });
+    await $.post("/moduleProgress", {
+        module: 'survey-2',
+        status: 'completed',
+        _csrf: $('meta[name="csrf-token"]').attr('content')
+    });
+}
+
 // activating the "let's continue" button at the scrollToBottom
-$('.ui.big.green.labeled.icon.button.script').on('click', function() {
-    window.location.href = "/results/" + currentModule;
+$('a.ui.fluid.card').on('click', async function() {
+    if (currentModule !== "extended-fp") {
+        window.location.href = `/results/${currentModule}`;
+    } else {
+        // Specific to the Outcome Evaluation Study #3
+        // Redirect to Qualtrics Survey if module is extended free play
+        await updateModuleProgressCompleted(); // Mark extended free play and survey-2 as completed
+        const surveyParameters = await $.get('/surveyParameters');
+        if (surveyParameters) {
+            const qualtricsLinks = {
+                "cyberbullying": "https://cornell.yul1.qualtrics.com/survey-builder/SV_5attrGlv4XnEWZU/edit",
+                "digital-literacy": "https://cornell.yul1.qualtrics.com/survey-builder/SV_5ikqADXFG1rMZWC/edit",
+                "digfoot": "https://cornell.yul1.qualtrics.com/survey-builder/SV_eqD2FeixUmwW8Si/edit",
+                "phishing": "https://cornell.yul1.qualtrics.com/survey-builder/SV_bmaUpHZrUnPZeFE/edit",
+            };
+            const qualtricsUrl = `${qualtricsLinks[surveyParameters["module"]]}?GroupCode=${surveyParameters.classCode}&Username=${surveyParameters.username}`;
+            /* Need to add a "visit" to the end page for various functionalities to work:
+              + calculating the time spent on the reflection page
+              + calculating the time spent completing the entire module
+              Calculating 'time spent' uses the difference between adjacent pageLog entries,
+              and now that the Qualtrics link is linked here, the 'end' page is no longer visited.
+              Adding an artificial "visit" to that page will fix a multitude of issues.
+            */
+            await $.post("/pageLog", {
+                subdirectory1: "end",
+                subdirectory2: pathArray[2],
+                artificialVisit: true,
+                _csrf: $('meta[name="csrf-token"]').attr('content')
+            });
+            window.location.href = qualtricsUrl;
+            // surveyParameters will return false if the currently logged in user is not a
+            // student.
+        } else {
+            window.location.href = `/`;
+        }
+    }
 });
 
 // activating a normal dropdown (the one used in the habits module settings)
@@ -301,7 +349,8 @@ $('.ui.accordion').accordion();
 // digital-literacy
 
 $('.openPostDigitalLiteracy').on('click', function() {
-    recordModalInputs('digital-literacy_articleModal');
+    const modalName = $(this).data('modual') === 'digital-literacy' ? 'digital-literacy_articleModal' : 'extended-fp_digital-literacy_articleModal';
+    recordModalInputs(modalName);
 });
 
 $(".modual.info_button").click(function(e) {

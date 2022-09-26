@@ -18,23 +18,25 @@
       span=val.actor.profile.name
   .img.post.image
     //-img.post(src="/"+val.picture)
-    if (val.module == 'digital-literacy' && val.info_text != "")           
-      img.imageWithModal.openPostDigitalLiteracy(src='/images/picture.svg', data-src=cdn+"/post_pictures/"+val.picture)
+    if (val.module == 'digital-literacy' && val.info_text != "" || val.module == 'extended-fp' && val.class == 'targeted_news')           
+      img.imageWithModal.openPostDigitalLiteracy(src='/images/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, data-modual = val.module)
     else if (val.module == 'digfoot')
       img.imageWithModal.openPostDigfoot(src='/images/picture.svg', data-src=cdn+"/post_pictures/"+val.picture)
     else if (val.module == 'esteem')
       img.imageWithModal.openPostEsteem(src='/images/picture.svg', data-src=cdn+"/post_pictures/"+val.picture)
     else
       img(src='/images/picture.svg', data-src=cdn+"/post_pictures/"+val.picture)
-    if (val.module == 'digital-literacy' && val.info_text != "" || val.module == 'extended-fp' && val.info_text != "")
+    if (val.module == 'digital-literacy' && val.info_text != "" || val.module == 'extended-fp' && val.class == 'targeted_news')
       .read.rounded.right.floated.modual.info_button(id="info_"+val.id, data-info_text = val.info_text, data-modual = val.module)
         i.info.icon
   .content
-    if (val.module == 'digital-literacy' && val.info_text != "" || val.module == 'extended-fp' && val.info_text != "")  
+    if (val.module == 'digital-literacy' && val.info_text != "")  
       .description.openPostDigitalLiteracy!=val.body
     else 
       .description!=val.body
-  if (val.module == 'digital-literacy' && val.info_text != "" || val.module == 'extended-fp' && val.info_text != "")
+        if (val.module == 'extended-fp' && val.class == 'targeted_phishing')
+          span.blueText  #{val.info_text}
+  if (val.module == 'digital-literacy' && val.info_text != "" || val.module == 'extended-fp' && val.class == 'targeted_news')
     .four.ui.bottom.attached.icon.buttons
       .ui.reply.button(tabindex='0')
         i.reply.icon

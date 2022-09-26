@@ -339,9 +339,13 @@ function isValidModId(req, res, next) {
     }
 }
 // Main route is the module page
-app.get('/', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
+app.get('/', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, async function(req, res) {
+    let moduleData;
+    const data = await fs.readFileAsync(`${__dirname}/public2/json/moduleInfo.json`)
+    moduleData = JSON.parse(data.toString());
     res.render('mods', {
         title: 'Pick a Lesson',
+        moduleData,
         isResearchVersion
     });
 });
@@ -751,6 +755,10 @@ if (enableLearnerDashboard) {
             title: 'Module Completion'
         });
     });
+
+    // Specific to the Outcome Evaluation Study #3
+    app.get('/getVisibleModules', passportConfig.isAuthenticated, csrfProtection, addCsrf, userController.getVisibleModules);
+    app.get('/surveyParameters', passportConfig.isAuthenticated, userController.getSurveyParameters);
 }
 
 /*
@@ -761,28 +769,6 @@ if (enableLearnerDashboard) {
 //   app.use(errorHandler()); 
 // }
 //  else {
-
-// error handler
-// COMMENTED OUT FOR NOW -- WILL WORK ON IT LATER; error handler for csrf invalid id error
-// app.use(function(err, req, res, next) {
-//     if (err.code !== 'EBADCSRFTOKEN') return next(err)
-
-//     // handle CSRF token errors here
-//     console.log("CSRF TOKEN ERROR");
-//     console.log(err);
-//     addCsrf();
-//     console.log(res.locals.csrfToken);
-//     // res.method = 'GET';
-//     // res.url = '/getCSRFToken';
-//     // res.send();
-//     // // if (jqXHR.status === 403 && jqXHR.responseText.includes('invalid csrf token')) {
-//     // const newCsrf = $.get("/getCSRFToken");
-//     // //     _logStartPageAction(cat, newCsrf, --retryCount);
-//     // // }
-//     // console.log(res.locals.csrfToken);
-//     // console.log(newCsrf)
-//     res.send({ method: 'GET', url: ['/getCSRFToken'] });
-// })
 
 // error handler
 app.use(function(err, req, res, next) {

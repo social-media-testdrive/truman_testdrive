@@ -361,7 +361,6 @@ $(window).on('load', () => {
 
         // share a post
         $('.ui.share.button').on('click', sharePost);
-
     }
 
 });

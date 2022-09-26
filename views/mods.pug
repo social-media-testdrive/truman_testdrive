@@ -2,84 +2,34 @@ extends ui_layout
 block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   -var path = isResearchVersion ? 'intro' : 'guest';
-  
-  .ui.container(style="padding:0;")
-    br
-    h2 Pick a Module
-    br
-    .ui.four.stackable.link.cards(style="padding-bottom:4em;")
-      
-        a.ui.card(href=`/${path}/accounts`)
-          .image
-            //- .ui.blue.ribbon.label NEW!
-            img(src=cdn+'/acctandpasswords.png')
-          .content
-            .header="Accounts and Passwords" 
-            
-        a.ui.card(href=`/${path}/esteem`)
-          .image  
-            //- .ui.blue.ribbon.label NEW!
-            img(src=cdn+'/esteem.png')
-          .content
-            .header="The Ups and Downs of Social Media" 
-            
-        a.ui.card(href=`/${path}/advancedlit`)
-          .image
-            //- .ui.blue.ribbon.label NEW!
-            img(src=cdn+'/advancednews.png')
-          .content
-            .header="Responding to Breaking News!" 
-        
-        a.ui.card(href=`/${path}/habits`)
-          .image
-            img(src=cdn+'/smhabits.png')
-          .content
-            .header="Healthy Social Media Habits"
-            
-        a.ui.card(href=`/${path}/targeted`)
-          .image
-            img(src=cdn+'/targetedads.png')
-          .content
-            .header="Ads on Social Media"
-            
-        a.ui.card(href=`/${path}/phishing`)
-          .image
-            img(src=cdn+'/phishing.png')
-          .content
-            .header="Scams and Phishing"
-            
-        a.ui.card(href=`/${path}/cyberbullying`)
-          .image
-            img(src=cdn+'/upstander.png')
-          .content
-            .header="How to Be an Upstander"
-            
-        a.ui.card(href=`/${path}/safe-posting`)
-          .image
-            img(src=cdn+'/privateinfo.png')
-          .content
-            .header="Is It Private Information?"
-            
-        a.ui.card(href=`/${path}/digfoot`)
-          .image
-            img(src=cdn+'/digfoot.png')
-          .content
-            .header="Shaping Your Digital Footprint"
-            
-        a.ui.card(href=`/${path}/presentation`)
-          .image
-            img(src=cdn+'/onlineidentity.png')
-          .content
-            .header="Online Identities"
-            
-        a.ui.card(href=`/${path}/privacy`)
-          .image
-            img(src=cdn+'/smprivacy.png')
-          .content
-            .header="Social Media Privacy" 
-             
-        a.ui.card(href=`/${path}/digital-literacy`)
-          .image
-            img(src=cdn+'/news.png')
-          .content
-            .header="News in Social Media"
+  -var moduleOrder = ["accounts", "esteem", "advancedlit", "habits", "targeted", "phishing", "cyberbullying", "safe-posting", "digfoot", "presentation", "privacy", "digital-literacy"];
+
+  .ui.container.removePadding
+    if user.isStudent
+      .ui.success.huge.icon.message.noModsRemainingMessage.setDisplayNone
+        i.circular.check.icon
+        .header There are no remaining steps to complete. Nice work!
+      .ui.basic.segment.activeModuleSegment
+        h2 Next Steps
+        .ui.four.doubling.stackable.link.cards.activeModules.addPaddingBottom
+      .ui.basic.segment.inactiveModulesSegment  
+        h2.setVisibilityHidden Completed
+        .ui.four.doubling.stackable.link.cards.inactiveModules.addPaddingBottom
+    else
+      br
+      h2 Pick a Module
+      br
+      .ui.four.stackable.link.cards(style="padding-bottom:4em;")
+        each module in moduleOrder
+          a.ui.card(href=`/${path}/${module}`)
+            .image
+              //- .ui.blue.ribbon.label NEW!
+              img(src=cdn+'/'+moduleData[module]["image"])
+            .content 
+              .header=moduleData[module]["title"]
+
+block scripts
+  script(src="/module_js/mods.js")
+
+block styles
+  link(rel='stylesheet', href='/css/mods.css')

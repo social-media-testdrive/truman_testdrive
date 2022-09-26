@@ -1,5 +1,4 @@
 let actionArray = new Array(); // this array will be handed to Promise.all
-const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
 
 $('.showLearnSectionButton').on('click', function() {
     $('#clickNextWarning').hide();

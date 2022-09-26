@@ -1,0 +1,31 @@
+//- Unique to Outcome Evaluation Study #3
+.ui.small.info.flag.modal(data-modalName='extended-fp_digital-literacy_articleModal')  
+  i.close.icon  
+  .header You've clicked on this article! What will you do next? You can choose multiple.  
+  .content
+    form.ui.form()  
+      .inline.field
+        .ui.checkbox
+          input.hidden(type='checkbox', tabindex='0')
+          label Read the full article.
+      .inline.field
+        .ui.checkbox
+          input.hidden(type='checkbox', tabindex='0')
+          label Check out the website this article is from.
+        label
+      .inline.field
+        .ui.checkbox
+          input.hidden(type='checkbox', tabindex='0')
+          label Go to 
+            span.blueText Snopes.com
+            | , 
+            span.blueText FactCheck.org 
+            | or major news website to fact-check this article
+      .inline.field
+        .ui.checkbox
+          input.hidden(type='checkbox', tabindex='0')
+          label NOT share the article, if the article is fake news.
+  .actions
+    .ui.positive.right.labeled.icon.button
+      | Submit
+      i.checkmark.icon

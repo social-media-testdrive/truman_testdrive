@@ -51,15 +51,11 @@ block content
       else
         block post
           include partials/script/actorPost
-
-  
-    -var post_quiz = "/results/"+mod;
-    if mod!=='extended-fp'
-      a.ui.fluid.card
-        .content
-          .ui.big.green.labeled.icon.button.script
-            i.rocket.icon
-            |   Let's Continue!
+    a.ui.fluid.card
+      .content
+        .ui.big.green.labeled.icon.button.script
+          i.rocket.icon
+          |   Let's Continue!
     br
     br
   
@@ -68,6 +64,8 @@ block content
     include partials/script/modals/digitalLiteracyFlag
     include partials/script/modals/digitalLiteracyArticle
     include partials/script/modals/esteemPost
+    //- Unique to Outcome Evaluation 3 only
+    include partials/script/modals/extendedFPArticle
     
     //- View Post Info Modal
     .ui.small.popinfo.modal(data-modalName=mod+'_articleInfoModal')
@@ -163,7 +161,6 @@ block scripts
   block scripts2
     -         
     
-     
 block styles
   link(rel='stylesheet', href='/css/script.css')
   link(rel='stylesheet', href='/css/chatbox.css')

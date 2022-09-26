@@ -1,61 +1,67 @@
 .segment.noPadding {
-  padding: 0;
+    padding: 0;
 }
 
 .ui.card.selectedCard {
-  box-shadow: 0 0 6px 8px rgba(0,149,255,.4);
+    box-shadow: 0 0 6px 8px rgba(0, 149, 255, .4);
 }
 
 .ui.label {
-  background-color: #2185d08a;
-  color: #000000d1;
+    background-color: #2185d08a;
+    color: #000000d1;
 }
 
 .ui.label h4 {
-  float: left;
+    float: left;
 }
 
 i.icon.yellowIcon {
-  color: #f9ff00;
+    color: #f9ff00;
 }
 
 .ui.container label {
-  font-size:120%;
+    font-size: 120%;
 }
 
 .ui.form .glowing-border {
-  border: 2px solid #dadada;
-  border-radius: 7px;
+    border: 2px solid #dadada;
+    border-radius: 7px;
 }
 
 .ui.form .glowing-border:focus {
-  outline: none;
-  border-color: #9ecaed;
-  box-shadow: 0 0 10px #9ecaed;
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
 }
 
 .ui.form .restrictMaxWidth {
-  max-width:15em;
+    max-width: 15em;
 }
 
-/*------- SCREENSHOTS ---------*/
-@media print {
-  body * {
-    display: none;
-  }
+.ui.card>.content>.description,
+.ui.cards>.card>.content>.description {
+    word-wrap: break-word;
+}
 
-  .insertPrint,
-  .insertPrint * {
-    display: block;
-    overflow: visible;
-  }
-  .ui.big.labeled.icon.button {
-    display: none;
-  }
-  .ui.menu {
-    display: none;
-  }
-  .breakHere{
-    page-break-before: always;
-  }
+
+/*------- SCREENSHOTS ---------*/
+
+@media print {
+    body * {
+        display: none;
+    }
+    .insertPrint,
+    .insertPrint * {
+        display: block;
+        overflow: visible;
+    }
+    .ui.big.labeled.icon.button {
+        display: none;
+    }
+    .ui.menu {
+        display: none;
+    }
+    .breakHere {
+        page-break-before: always;
+    }
 }

@@ -2,6 +2,35 @@ const pathArray = window.location.pathname.split('/');
 const currentModule = pathArray[2]; // idenifies the current module
 const actionArray = new Array(); // this array will be handed to Promise.all
 
+// This function is only called if isResearchVersion = true
+async function postNewCompletedBadge(modName) {
+    const completedTypeBadges = await $.getJSON('/json/testdriveBadges.json');
+    const badgeId = `completed_${modName}`;
+    const badgeTitle = completedTypeBadges[badgeId].title;
+    const badgeImage = completedTypeBadges[badgeId].image;
+    await $.post('/postUpdateNewBadge', {
+        badgeId: badgeId,
+        badgeTitle: badgeTitle,
+        badgeImage: badgeImage,
+        _csrf: $('meta[name="csrf-token"]').attr('content')
+    });
+    return;
+}
+
+// This function is only called if isResearchVersion = true
+async function updateModuleProgressCompleted() {
+    await $.post("/moduleProgress", {
+        module: currentModule,
+        status: 'completed',
+        _csrf: $('meta[name="csrf-token"]').attr('content')
+    });
+    await $.post("/moduleProgress", {
+        module: 'survey-1',
+        status: 'completed',
+        _csrf: $('meta[name="csrf-token"]').attr('content')
+    });
+}
+
 // This function is only called if enableDataCollection = true
 function recordResponse(responseType) {
     // create new answer object with desired data to append to answers which will be part of object passed to the post request
@@ -63,7 +92,7 @@ function recordResponse(responseType) {
 }
 
 // This function is only called if enableDataCollection = true
-function iterateOverPrompts(startTime) {
+async function iterateOverPrompts(startTime) {
     /* Sample reflectionAction object: 
       reflectionAction: {
           absoluteTimeContinued: Date, //time that the user left the page by clicking continue
@@ -109,12 +138,46 @@ function iterateOverPrompts(startTime) {
     });
     cat.answers = answers;
 
-    $.post("/reflection", {
+    await $.post("/reflection", {
         action: cat,
         _csrf: $('meta[name="csrf-token"]').attr('content')
-    }).then(function() {
-        window.location.href = `/quiz/${currentModule}`
     });
+    // Specific to the Outcome Evaluation Study #3
+    // If Research Site, skip quiz and redirect to Qualtrics Survey
+    const isResearchVersion = $('meta[name="isResearchVersion"]').attr('content') === "true";
+    if (isResearchVersion) {
+        await updateModuleProgressCompleted(); //Mark module and survey-1 as complete
+        const surveyParameters = await $.get('/surveyParameters');
+        if (surveyParameters) {
+            const qualtricsLinks = {
+                "cyberbullying": "https://cornell.yul1.qualtrics.com/survey-builder/SV_8hKlrhnpuimJFwq/edit",
+                "digital-literacy": "https://cornell.yul1.qualtrics.com/survey-builder/SV_0BrtbQGXJDHzxdk/edit",
+                "digfoot": "https://cornell.yul1.qualtrics.com/survey-builder/SV_eqD2FeixUmwW8Si/edit",
+                "phishing": "https://cornell.yul1.qualtrics.com/survey-builder/SV_egJPIvhZQ8eJjgi/edit",
+            };
+            const qualtricsUrl = `${qualtricsLinks[currentModule]}?GroupCode=${surveyParameters.classCode}&Username=${surveyParameters.username}`;
+            /* Need to add a "visit" to the end page for various functionalities to work:
+              + calculating the time spent on the reflection page
+              + calculating the time spent completing the entire module
+              Calculating 'time spent' uses the difference between adjacent pageLog entries,
+              and now that the Qualtrics link is linked here, the 'end' page is no longer visited.
+              Adding an artificial "visit" to that page will fix a multitude of issues.
+            */
+            await $.post("/pageLog", {
+                subdirectory1: "end",
+                subdirectory2: pathArray[2],
+                artificialVisit: true,
+                _csrf: $('meta[name="csrf-token"]').attr('content')
+            });
+            window.location.href = qualtricsUrl;
+            // surveyParameters will return false if the currently logged in user is not a
+            // student.
+        } else {
+            window.location.href = `/end/${currentModule}`;
+        }
+    } else {
+        window.location.href = `/quiz/${currentModule}`
+    }
 }
 
 function checkAllPromptsOpened() {
@@ -144,9 +207,6 @@ function hideWarning(warningID) {
 $(window).on("load", function() {
     // startTime is used to track the start time of each attempt, to later calculate the duration/time the user spent on each attempt
     let startTime = Date.now();
-    // The code assumes that only one of these will be true, not both.
-    const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
-    const enableShareActivityData = $('meta[name="isShareActivityDataEnabled"]').attr('content') === "true";
     // Add voiceovers from the voiceoverMappings variable
     Voiceovers.addVoiceovers();
     // Ensure the print/continue buttons don't have any residual classes
@@ -203,7 +263,6 @@ $(window).on("load", function() {
             return;
         }
         // All of the questions are now visible to the user.
-
         iterateOverPrompts(startTime);
     });
 });

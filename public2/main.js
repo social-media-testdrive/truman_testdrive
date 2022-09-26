@@ -14,13 +14,13 @@ function changeActiveProgressTo(activeStep) {
 let enableDataCollection;
 let isResearchVersion;
 
-function addVoiceoverTime() {
+async function addVoiceoverTime() {
     const voiceoverChangeTime = window.sessionStorage.getItem('voiceoverChangeTime');
     // Record the time the voiceover was on ONLY if data collection is enabled AND if it's not the home page for the public site 
     // (becuase prior to clicking a module card, no "guest" account has been created to log voiceoverTimer to)
     if (enableDataCollection && voiceoverChangeTime !== null && !(!isResearchVersion && window.location.pathname === "/")) {
         const timeDuration = Date.now() - voiceoverChangeTime;
-        $.post("/voiceoverTimer", {
+        await $.post("/voiceoverTimer", {
             voiceoverTimer: timeDuration,
             _csrf: $('meta[name="csrf-token"]').attr('content')
         }).catch(function(err) {

@@ -497,6 +497,28 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
+// Fisher-Yates Shuffle
+// Function copied from: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+function shuffle(array) {
+    let currentIndex = array.length,
+        randomIndex;
+
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]
+        ];
+    }
+
+    return array;
+}
+
 // getUniqueUsername is a recursive function that will call itself until it
 // generates a username that both (1) does not exist in the db and (2) is not in
 // the array of usernames to add in this batch.
@@ -524,7 +546,28 @@ async function getUniqueUsername(accessCode, adjectiveArray, nounArray, username
     return usernameArray;
 }
 
-async function saveUsernameInExistingClass(req, item, existingClass) {
+function makeRandomizedModules(size) {
+    // list of modules that are going to be included in the study
+    const moduleList = [
+        "digital-literacy",
+        "cyberbullying",
+        "phishing"
+    ];
+    shuffle(moduleList);
+
+    const multiplier = Math.floor(size / moduleList.length) + 1;
+    let array = [];
+    for (let i = 1; i <= multiplier; i++) {
+        array = array.concat(moduleList);
+    }
+    array = array.slice(0, size);
+
+    // shuffle the order of the module assignments
+    shuffle(array);
+    return array;
+}
+
+async function saveUsernameInExistingClass(req, item, module, existingClass) {
     let duplicateUser = await User.findOne({
             username: item,
             accessCode: req.body.accessCode,
@@ -542,7 +585,10 @@ async function saveUsernameInExistingClass(req, item, existingClass) {
         active: true,
         start: Date.now(),
         isStudent: true,
-        accessCode: req.body.accessCode
+        accessCode: req.body.accessCode,
+        assignedModules: {
+            module1: module
+        }
     });
     user.profile.name = "Student";
     user.profile.location = '';
@@ -610,11 +656,12 @@ exports.generateStudentAccounts = async(req, res, next) => {
             for (let i = 0; i < requestedNumberOfAccounts; i++) {
                 await getUniqueUsername(req.body.accessCode, adjectiveArray, nounArray, usernameArray);
             }
+            const moduleAssignments = makeRandomizedModules(requestedNumberOfAccounts);
             // async.each is waiting for each call to getUsername to return and runs callback for each of those
             let promiseArray = [];
-            for (let username of usernameArray) {
-                promiseArray.push(saveUsernameInExistingClass(req, username, existingClass));
-            }
+            usernameArray.forEach((username, index) => {
+                promiseArray.push(saveUsernameInExistingClass(req, username, moduleAssignments[index], existingClass));
+            })
             await Promise.all(promiseArray);
             existingClass.save((err) => {
                 if (err) {
