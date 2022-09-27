@@ -543,7 +543,6 @@ exports.getVisibleModules = (req, res, next) => {
                     pushVisibleModule(assignedModule, "active", visibleModules);
                 }
             } else {
-                console.log(i);
                 // If the user is in the control group, they should automatically see the survey.
                 if (req.user.control && i === 2) {
                     pushVisibleModule(assignedModule, "active", visibleModules);
@@ -557,7 +556,7 @@ exports.getVisibleModules = (req, res, next) => {
                 const prevAssignedModuleNoDashes = prevAssignedModule.replace('-', '');
                 const prevAssignedModuleStatus = req.user.moduleProgress[prevAssignedModuleNoDashes];
                 const prevModStatusChangeTime = req.user.moduleProgressTimestamps[prevAssignedModule];
-                console.log(prevAssignedModuleStatus)
+
                 if (prevAssignedModuleStatus === "completed") {
                     // If the previous module has been completed, this module should be active. 
                     // If it is the last module (extended-fp),
@@ -574,7 +573,6 @@ exports.getVisibleModules = (req, res, next) => {
             }
         }
     }
-    console.log(visibleModules)
     return res.send(visibleModules);
 }
 

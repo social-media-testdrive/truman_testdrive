@@ -52,3 +52,7 @@
     margin-left: 1.25em;
     margin-right: 1.25em;
 }
+
+.underlineText {
+    text-decoration: underline;
+}

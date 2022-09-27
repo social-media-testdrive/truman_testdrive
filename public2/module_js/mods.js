@@ -14,13 +14,14 @@ async function updateModuleProgressStarted(modName) {
 
 function addCompletedModuleCard(cdn, modName, cardInfo) {
     const htmlToAppend = `
-      <div class="ui card inactiveCard">
+      <div class="ui card inactiveCard ${cardInfo.week === "Week 1:"? "blue" : "red"}>
         <div class="image">
         <div class="ui huge green ribbon label inactiveCardLabel">Completed!</div>
           <img class="inactiveCardImage" src=${cdn}/${cardInfo.image}></img>
         </div>
         <div class="content">
           <div class="header">
+            <span class="underlineText">${cardInfo.week}</span>
             ${cardInfo.title}
           </div>
         </div>
@@ -31,12 +32,13 @@ function addCompletedModuleCard(cdn, modName, cardInfo) {
 
 function addActiveModuleCard(cdn, modName, cardInfo) {
     const htmlToAppend = `
-      <a class="ui card ${cardInfo.type}" href="${cardInfo.url}" ${cardInfo.type === "link"? "id="+modName : ""}>
+      <a class="ui card ${cardInfo.type} ${cardInfo.week === "Week 1:"? "blue" : "red"}" href="${cardInfo.url}" ${cardInfo.type === "link"? "id="+modName : ""}>
         <div class="image">
           <img src=${cdn}/${cardInfo.image}></img>
         </div>
         <div class="content">
           <div class="header">
+            <span class="underlineText">${cardInfo.week}</span>
             ${cardInfo.title}
           </div>
         </div>
@@ -47,13 +49,14 @@ function addActiveModuleCard(cdn, modName, cardInfo) {
 
 function addUpcomingModuleCard(cdn, modName, cardInfo) {
     const htmlToAppend = `
-      <a class="ui card inactiveCard" data-content="${cardInfo.string}" data-position="bottom left">
+      <a class="ui card inactiveCard ${cardInfo.week === "Week 1:"? "blue" : "red"}" data-content="${cardInfo.string}" data-position="bottom left">
         <div class="image">
-          <div class="ui huge blue ribbon label inactiveCardLabel">Available Soon</div>
+          <div class="ui huge ${cardInfo.week === "Week 1:"? "blue" : "red"} ribbon label inactiveCardLabel">Available Soon</div>
           <img class="inactiveCardImage" src=${cdn}/${cardInfo.image}></img>
         </div>
         <div class="content">
           <div class="header">
+            <span class="underlineText">${cardInfo.week}</span>
             ${cardInfo.title}
           </div>
         </div>
@@ -65,12 +68,13 @@ function addUpcomingModuleCard(cdn, modName, cardInfo) {
 function addActiveStartedModuleCard(cdn, modName, cardInfo) {
     let htmlToAppend = "";
     htmlToAppend = `
-     <a class="ui card ${cardInfo.type}" href="${cardInfo.url}" ${cardInfo.type === "link"? "id="+modName : ""}>
+     <a class="ui card ${cardInfo.type} ${cardInfo.week === "Week 1:"? "blue" : "red"}" href="${cardInfo.url}" ${cardInfo.type === "link"? "id="+modName : ""}>
        <div class="image">
          <img src=${cdn}/${cardInfo.image}></img>
        </div>
        <div class="content">
          <div class="header">
+            <span class="underlineText">${cardInfo.week}</span>
            ${cardInfo.title}
          </div>
        </div>
@@ -102,6 +106,7 @@ async function showVisibleModules(visibleModules) {
     const moduleCardDictionary = {
         "phishing": {
             "image": "phishing.png",
+            "week": "Week 1:",
             "title": "Scams and Phishing",
             "string": "Click to start this module.",
             "url": "/intro/phishing",
@@ -109,6 +114,7 @@ async function showVisibleModules(visibleModules) {
         },
         "cyberbullying": {
             "image": "upstander.png",
+            "week": "Week 1:",
             "title": "How to Be an Upstander",
             "string": "Click to start this module.",
             "url": "/intro/cyberbullying",
@@ -116,6 +122,7 @@ async function showVisibleModules(visibleModules) {
         },
         "digital-literacy": {
             "image": "news.png",
+            "week": "Week 1:",
             "title": "News in Social Media",
             "string": "Click to start this module.",
             "url": "/intro/digital-literacy",
@@ -123,6 +130,7 @@ async function showVisibleModules(visibleModules) {
         },
         "survey-1": {
             "image": "post_pictures/outcome-eval-3/survey.jpg",
+            "week": "Week 1:",
             "title": "Knowledge Assessment Survey",
             "string": "Complete the module first to start this survey.",
             "url": `${surveyDictionary["survey-1"][surveyParameters.module]}`,
@@ -130,6 +138,7 @@ async function showVisibleModules(visibleModules) {
         },
         "extended-fp": {
             "image": "post_pictures/outcome-eval-3/extendedfp.jpg",
+            "week": "Week 2:",
             "title": "Behavioral Assessment",
             "string": "Come back again later to explore this timeline.",
             "url": "/modual/extended-fp",
@@ -137,7 +146,8 @@ async function showVisibleModules(visibleModules) {
         },
         "survey-2": {
             "image": "post_pictures/outcome-eval-3/survey.jpg",
-            "title": "Behavioral Assessment Survey",
+            "week": "Week 2:",
+            "title": "Knowledge Assessment Survey",
             "string": "Come back again later to start this survey.",
             "url": `${surveyDictionary["survey-2"][surveyParameters.module]}`,
             "type": "link"
