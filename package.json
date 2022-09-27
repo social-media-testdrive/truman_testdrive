@@ -37,6 +37,7 @@
     "express-session": "^1.17.0",
     "express-validator": "^5.3.1",
     "gulp": "^4.0.2",
+    "html": "^1.0.0",
     "jshint": "^2.11.0",
     "lob": "^3.9.0",
     "lodash": "^4.17.21",
@@ -57,7 +58,8 @@
     "twit": "^2.2.11",
     "ua-parser-js": "^0.7.24",
     "useragent": "^2.3.0",
-    "validator": "^11.1.0"
+    "validator": "^11.1.0",
+    "xmldom": "^0.6.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
