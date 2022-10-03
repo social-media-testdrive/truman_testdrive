@@ -144,14 +144,14 @@ exports.postActivityData = (req, res, next) => {
 
             // Variable will become the value for activityData.tutorialAction
             const tutorialActionArray =
-                getfilterObjects(user.tutorialAction, ['post', 'liked', 'flagged', 'flagTime', 'likeTime', 'replyTime', 'comments'], module, 'modual');
+                getfilterObjects(user.tutorialAction, ['post', 'liked', 'flagged', 'shared', 'flagTime', 'likeTime', 'shareTime', 'replyTime', 'comments'], module, 'modual');
 
             // Variable will become the value for activityData.guidedActivityAction
             const guidedActivityActionArray =
-                getfilterObjects(user.guidedActivityAction, ['post', 'liked', 'flagged', 'flagTime', 'likeTime', 'replyTime', 'modal', 'comments'], module, 'modual');
+                getfilterObjects(user.guidedActivityAction, ['post', 'liked', 'flagged', 'shared', 'flagTime', 'likeTime', 'shareTime', 'replyTime', 'modal', 'comments'], module, 'modual');
 
             // Variable will become the value for activityData.feedAction
-            const feedActionArray = getfilterObjects(user.feedAction, ['post', 'liked', 'flagged', 'flagTime', 'likeTime', 'replyTime', 'modal', 'comments'], module, 'modual');
+            const feedActionArray = getfilterObjects(user.feedAction, ['post', 'liked', 'flagged', 'shared', 'flagTime', 'likeTime', 'shareTime', 'replyTime', 'modal', 'comments'], module, 'modual');
             for (let feedAction of feedActionArray) {
                 if (!feedAction.post) {
                     feedAction.postBody = "user_post"

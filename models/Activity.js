@@ -97,9 +97,11 @@ const activitySchema = new mongoose.Schema({
         post: String, // which post did the user interact with?
         liked: { type: Boolean, default: false }, // did the user like this post in the feed?
         flagged: { type: Boolean, default: false }, // did the user flag this post in the feed?
+        shared: { type: Boolean, default: false }, //did the user share this post in the feed?
         flagTime: [Date], //same but for flagging
         likeTime: [Date], //same but for liking
         replyTime: [Date], //same but for commenting
+        shareTime: [Date], //same but for sharing
         comments: [new Schema({
             comment: String,
             liked: { type: Boolean, default: false }, // is liked?
@@ -118,9 +120,11 @@ const activitySchema = new mongoose.Schema({
         post: String, // which post did the user interact with?
         liked: { type: Boolean, default: false }, // did the user like this post in the feed?
         flagged: { type: Boolean, default: false }, // did the user flag this post in the feed?
+        shared: { type: Boolean, default: false }, //did the user share this post in the feed?
         flagTime: [Date], //same but for flagging
         likeTime: [Date], //same but for liking
         replyTime: [Date], //same but for commenting
+        shareTime: [Date], //same but for sharing
 
         // popup modal info
         modal: [new Schema({
@@ -155,9 +159,11 @@ const activitySchema = new mongoose.Schema({
         postBody: { type: String, default: '', trim: true }, // body of the post the user interacted with
         liked: { type: Boolean, default: false }, // did the user like this post in the feed?
         flagged: { type: Boolean, default: false }, // did the user flag this post in the feed?
+        shared: { type: Boolean, default: false }, //did the user share this post in the feed?
         flagTime: [Date], // same but for flagging
         likeTime: [Date], // same but for liking
         replyTime: [Date], // same but for commenting
+        shareTime: [Date], //same but for sharing
 
         // popup modal info
         modal: [new Schema({

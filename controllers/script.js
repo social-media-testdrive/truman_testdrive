@@ -286,6 +286,7 @@ exports.getScript = (req, res, next) => {
                             title: 'Free Play'
                         });
                     } else {
+                        console.log(finalfeed);
                         if (req.params.modId === 'safe-posting') {
                             res.set({
                                 'Content-Security-Policy': "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
@@ -563,6 +564,20 @@ function _postUpdateFeedAction(req, user) {
             let like = req.body.like;
             userAction[feedIndex].likeTime.push(like);
             userAction[feedIndex].liked = true;
+        }
+
+        // array of shareTime is empty and we have a new (first) Share event
+        else if ((!userAction[feedIndex].shareTime) && req.body.share) {
+            let share = req.body.share;
+            userAction[feedIndex].shareTime = [share];
+            userAction[feedIndex].shared = true;
+        }
+
+        // Already have a shareTime array, New Share event, need to add this to shareTime array
+        else if ((userAction[feedIndex].shareTime) && req.body.share) {
+            let share = req.body.share;
+            userAction[feedIndex].shareTime.push(share);
+            userAction[feedIndex].shared = true;
         } else {
             //console.log("Got a POST that did not fit anything. Possible Error.")
         }

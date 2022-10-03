@@ -114,11 +114,28 @@ function flagPost(e) {
     }
 };
 
-function sharePost() {
+function sharePost(e) {
+    $('.ui.small.basic.share.modal').modal('show');
+
+    const enableDataCollection = e.data.enableDataCollection;
+    let share = Date.now();
+    var post = $(this).closest(".ui.card");
+    let postID = post.attr("postID");
+    let pathArrayForHeader = window.location.pathname.split('/');
+    let currentPageForHeader = pathArrayForHeader[1];
+    let currentModuleForHeader = pathArrayForHeader[2];
+    let actionType = getActionType(currentPageForHeader);
+    if (actionType === "free play" || enableDataCollection) {
+        $.post("/feed", {
+            actionType: actionType,
+            postID: postID,
+            modual: currentModuleForHeader,
+            share: share,
+            _csrf: $('meta[name="csrf-token"]').attr('content')
+        });
+    }
     $('.ui.small.basic.share.modal').modal('show');
 };
-
-// ***********************************
 
 // ****** actions on a comment *******
 
@@ -303,22 +320,16 @@ function flagComment(e) {
     }
 }
 
-// **********************************
-
-
 $(window).on('load', () => {
     const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
-    /*
-    focus on new comment prompt if clicked
-    */
+
+    // Focus new comment element if "Reply" button is clicked
     $('.reply.button').click(function() {
         let parent = $(this).closest('.ui.fluid.card');
-        // let postID = parent.attr('postID');
-
         parent.find('input.newcomment').focus();
     });
 
-    // press enter to submit a comment
+    // Press enter to submit a comment
     // Note that this listener has to be added to the window and
     // specified for the capture phase of the event loop so that
     // it precedes intro.js's own event handler and prevents it
@@ -328,7 +339,7 @@ $(window).on('load', () => {
     // https://signalvnoise.com/posts/3137-using-event-capturing-to-improve-basecamp-page-load-times
     window.addEventListener('keydown', function(event) {
         // console.log(event.target);
-        if (event.keyCode === 13 && event.target.className == 'newcomment') {
+        if (event.key === 'Enter' && event.target.className == 'newcomment') {
             event.stopImmediatePropagation();
             addNewComment(event);
         }
@@ -340,7 +351,7 @@ $(window).on('load', () => {
     // like a post
     $('.like.button').click({ enableDataCollection }, likePost);
 
-    // create a new Comment
+    // create a new comment
     $('i.big.send.link.icon').click({ enableDataCollection }, addNewComment);
 
     // like a comment
@@ -349,19 +360,15 @@ $(window).on('load', () => {
     // flag a comment
     $('a.flag.comment').click({ enableDataCollection }, flagComment);
 
-
     // only enable certain functionality when not in a tutorial page
     // TODO: double check with Yoon that this is intended behavior
     let pathArray = window.location.pathname.split('/');
     let currentPage = pathArray[1];
     if (currentPage !== "tutorial") {
-
         // flag a post
         $('.flag.button').on('click', { enableDataCollection }, flagPost);
-
         // share a post
-        $('.ui.share.button').on('click', sharePost);
-
+        $('.ui.share.button').on('click', { enableDataCollection }, sharePost);
     }
 
 });
