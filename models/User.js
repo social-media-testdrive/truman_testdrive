@@ -238,8 +238,10 @@ const userSchema = new mongoose.Schema({
         startTime: Number, //always the newest startTime (full date in ms) (not used in TestDrive)
         liked: { type: Boolean, default: false }, //did the user like this post in the feed?
         flagged: { type: Boolean, default: false }, //did the user flag this post in the feed?
+        shared: { type: Boolean, default: false }, //did the user share this post in the feed?
         flagTime: [Date], //same but for flagging
         likeTime: [Date], //same but for liking
+        shareTime: [Date], //same but for sharing
         replyTime: [Date], //same but for commenting
         comments: [new Schema({
             comment: String,
@@ -264,8 +266,10 @@ const userSchema = new mongoose.Schema({
         startTime: Number, //always the newest startTime (full date in ms) (not used in TestDrive)
         liked: { type: Boolean, default: false }, //did the user like this post in the feed?
         flagged: { type: Boolean, default: false }, //did the user flag this post in the feed?
+        shared: { type: Boolean, default: false }, //did the user share this post in the feed?
         flagTime: [Date], //same but for flagging
         likeTime: [Date], //same but for liking
+        shareTime: [Date], //same but for sharing
         replyTime: [Date], //same but for commenting
 
         // popup modal info
@@ -306,9 +310,11 @@ const userSchema = new mongoose.Schema({
         startTime: Number, // always the newest startTime (full date in ms) (not used in TestDrive)
         liked: { type: Boolean, default: false }, // did the user like this post in the feed?
         flagged: { type: Boolean, default: false }, // did the user flag this post in the feed?
+        shared: { type: Boolean, default: false }, //did the user share this post in the feed?
         readTime: [Number], // array of how long a user read a post. Each read is a new element in this array
         flagTime: [Date], // same but for flagging
         likeTime: [Date], // same but for liking
+        shareTime: [Date], //same but for sharing
         replyTime: [Date], // same but for commenting
 
         // popup modal info
