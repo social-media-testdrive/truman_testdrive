@@ -760,6 +760,7 @@ if (enableLearnerDashboard) {
     // Specific to the Outcome Evaluation Study #3
     app.get('/getVisibleModules', passportConfig.isAuthenticated, csrfProtection, addCsrf, userController.getVisibleModules);
     app.get('/surveyParameters', passportConfig.isAuthenticated, userController.getSurveyParameters);
+    app.get('/fromSurvey/:modId', passportConfig.isAuthenticated, userController.getFromSurvey);
 }
 
 /*

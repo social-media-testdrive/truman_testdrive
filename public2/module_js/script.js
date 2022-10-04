@@ -279,7 +279,7 @@ async function updateModuleProgressCompleted() {
     });
     await $.post("/moduleProgress", {
         module: 'survey-2',
-        status: 'completed',
+        status: 'started',
         _csrf: $('meta[name="csrf-token"]').attr('content')
     });
 }
@@ -289,6 +289,7 @@ $('a.ui.fluid.card').on('click', async function() {
     if (currentModule !== "extended-fp") {
         window.location.href = `/results/${currentModule}`;
     } else {
+        $('.ui.big.green.labeled.icon.button.script').addClass('loading');
         // Specific to the Outcome Evaluation Study #3
         // Redirect to Qualtrics Survey if module is extended free play
         await updateModuleProgressCompleted(); // Mark extended free play and survey-2 as completed

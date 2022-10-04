@@ -1,13 +1,13 @@
 async function updateModuleProgressStarted(modName) {
     let status;
-    if (modName === 'survey-1' || modName === 'survey-2') {
-        status = 'completed';
-    } else {
-        status = 'started';
-    }
+    // if (modName === 'survey-1' || modName === 'survey-2') {
+    //     status = 'completed';
+    // } else {
+    //     status = 'started';
+    // }
     await $.post("/moduleProgress", {
         module: modName,
-        status: status,
+        status: "started",
         _csrf: $('meta[name="csrf-token"]').attr('content')
     });
 }

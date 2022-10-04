@@ -215,6 +215,35 @@ exports.getGuest = (req, res, next) => {
     });
 };
 
+/**
+ * GET /fromSurvey/:modId
+ * Mark provided modId as completed.
+ */
+exports.getFromSurvey = (req, res, next) => {
+    User.findById(req.user.id, (err, user) => {
+        if (err) {
+            return next(err);
+        }
+        const modName = req.params.modId;
+        /* modname must have any dashes removed to match the schema. This should be
+        changed because it is inconsistent - dashes are fine in every other case. */
+        const modNameNoDashes = modName.replace('-', '');
+        // Once marked completed, do not update status again.
+        if (user.moduleProgress[modNameNoDashes] !== 'completed') {
+            user.moduleProgress[modNameNoDashes] = 'completed';
+        }
+        user.moduleProgressTimestamps[modName] = Date.now();
+        user.save((err) => {
+            if (err) {
+                return next(err);
+            }
+            // res.set('Content-Type', 'application/json; charset='UTF-8');
+            // res.send({ result: "success" });
+            return res.redirect('/');
+        });
+    });
+};
+
 /*
  * GET /account/:modId
  * Update profile page.

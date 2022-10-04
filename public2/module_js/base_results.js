@@ -26,7 +26,7 @@ async function updateModuleProgressCompleted() {
     });
     await $.post("/moduleProgress", {
         module: 'survey-1',
-        status: 'completed',
+        status: 'started',
         _csrf: $('meta[name="csrf-token"]').attr('content')
     });
 }
@@ -263,6 +263,7 @@ $(window).on("load", function() {
             return;
         }
         // All of the questions are now visible to the user.
+        $(this).addClass('loading');
         iterateOverPrompts(startTime);
     });
 });
