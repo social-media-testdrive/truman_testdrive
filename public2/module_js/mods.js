@@ -14,14 +14,14 @@ async function updateModuleProgressStarted(modName) {
 
 function addCompletedModuleCard(cdn, modName, cardInfo) {
     const htmlToAppend = `
-      <div class="ui card inactiveCard ${cardInfo.week === "Week 1:"? "blue" : "red"}>
+      <div class="ui card inactiveCard ${cardInfo.week === "Week 1:"? "blue" : "red"}">
         <div class="image">
-        <div class="ui huge green ribbon label inactiveCardLabel">Completed!</div>
+          <div class="ui huge green ribbon label inactiveCardLabel">Completed!</div>
           <img class="inactiveCardImage" src=${cdn}/${cardInfo.image}></img>
         </div>
         <div class="content">
           <div class="header">
-            <span class="underlineText">${cardInfo.week}</span>
+            <span class="underlineText">${cardInfo.week}</span><br/>
             ${cardInfo.title}
           </div>
         </div>
@@ -38,7 +38,7 @@ function addActiveModuleCard(cdn, modName, cardInfo) {
         </div>
         <div class="content">
           <div class="header">
-            <span class="underlineText">${cardInfo.week}</span>
+            <span class="underlineText">${cardInfo.week}</span><br/>
             ${cardInfo.title}
           </div>
         </div>
@@ -56,7 +56,7 @@ function addUpcomingModuleCard(cdn, modName, cardInfo) {
         </div>
         <div class="content">
           <div class="header">
-            <span class="underlineText">${cardInfo.week}</span>
+            <span class="underlineText">${cardInfo.week}</span><br/>
             ${cardInfo.title}
           </div>
         </div>
@@ -74,7 +74,7 @@ function addActiveStartedModuleCard(cdn, modName, cardInfo) {
        </div>
        <div class="content">
          <div class="header">
-            <span class="underlineText">${cardInfo.week}</span>
+            <span class="underlineText">${cardInfo.week}</span><br/>
            ${cardInfo.title}
          </div>
        </div>
@@ -131,7 +131,7 @@ async function showVisibleModules(visibleModules) {
         "survey-1": {
             "image": "post_pictures/outcome-eval-3/survey.jpg",
             "week": "Week 1:",
-            "title": "Knowledge Assessment Survey",
+            "title": "Survey",
             "string": "Complete the module first to start this survey.",
             "url": `${surveyDictionary["survey-1"][surveyParameters.module]}`,
             "type": "link"
@@ -139,7 +139,7 @@ async function showVisibleModules(visibleModules) {
         "extended-fp": {
             "image": "post_pictures/outcome-eval-3/extendedfp.jpg",
             "week": "Week 2:",
-            "title": "Behavioral Assessment",
+            "title": "Explore the Timeline",
             "string": "Come back again later to explore this timeline.",
             "url": "/modual/extended-fp",
             "type": "link"
@@ -147,7 +147,7 @@ async function showVisibleModules(visibleModules) {
         "survey-2": {
             "image": "post_pictures/outcome-eval-3/survey.jpg",
             "week": "Week 2:",
-            "title": "Knowledge Assessment Survey",
+            "title": "Survey",
             "string": "Come back again later to start this survey.",
             "url": `${surveyDictionary["survey-2"][surveyParameters.module]}`,
             "type": "link"

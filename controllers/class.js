@@ -170,6 +170,49 @@ exports.getModuleProgress = (req, res, next) => {
         });
 }
 
+/**
+ * GET /assignedModuleProgress/:classId
+ * Get the module progress status for all students in a class
+ */
+// Unique to Outcome Evaluation Study #3
+exports.getAssignedModuleProgress = (req, res, next) => {
+    if (!req.user.isInstructor) {
+        return res.json({ classModuleProgress: {} });
+    }
+    Class.findOne({
+            accessCode: req.params.classId,
+            teacher: req.user.id,
+            deleted: false
+        }).populate('students') // populate lets you reference docs in other collections
+        .exec(function(err, found_class) {
+            if (err) {
+                console.log("ERROR");
+                console.log(err);
+                return next(err);
+            }
+            if (found_class == null) {
+                console.log("NULL");
+                var myerr = new Error('Class not found!');
+                return next(myerr);
+            }
+            const outputData = {};
+            for (const student of found_class.students) {
+                let assignedModProgressObj = {};
+                const modProgressObj = student.moduleProgress;
+                if (!found_class.control) {
+                    assignedModProgressObj["module"] = modProgressObj[student.assignedModules.module1];
+                }
+                assignedModProgressObj["survey1"] = modProgressObj["survey1"];
+                assignedModProgressObj["extendedfp"] = modProgressObj["extendedfp"];
+                assignedModProgressObj["survey2"] = modProgressObj["survey2"];
+                const username = student.username;
+                outputData[username] = assignedModProgressObj;
+            }
+            res.set('Content-Type', 'application/json; charset=UTF-8');
+            res.json({ classAssignedModuleProgress: outputData });
+        });
+}
+
 function getClassPageTimes(found_class, modName) {
     let classPageTimes = [];
     for (const student of found_class.students) {
@@ -348,7 +391,8 @@ exports.postCreateClass = (req, res, next) => {
         const new_class = new Class({
             className: req.body.classname,
             teacher: user,
-            accessCode: req.body.accesscode
+            accessCode: req.body.accesscode,
+            control: req.user.control // Unique to Outcome Evaluation #3
         });
 
         Class.findOne({
@@ -594,6 +638,7 @@ async function saveUsernameInExistingClass(req, item, module, existingClass) {
     user.profile.location = '';
     user.profile.bio = '';
     user.profile.picture = 'avatar-icon.svg';
+    user.control = existingClass.control; // Unique to Outcome Evaluation Study #3
     try {
         await user.save();
         existingClass.students.push(user._id);

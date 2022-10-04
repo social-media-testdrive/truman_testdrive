@@ -62,7 +62,7 @@ const userSchema = new mongoose.Schema({
         "survey-1": { type: Date, default: null },
         "survey-2": { type: Date, default: null }
     },
-    control: { type: Boolean, default: false },
+    control: { type: Boolean, default: false }, // Unique to Outcome Evaluation #3: Is student part of a control group? Does teacher have control group as class?
     earnedBadges: [new Schema({ // list of badges earned by the user, see testdriveBadges.json file
         badgeId: String,
         badgeTitle: String,

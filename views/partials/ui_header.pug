@@ -52,7 +52,7 @@
                       a.item(href='/classManagement') View Dashboard
                     if (user.isStudent && enableLearnerDashboard)
                       a.item(href='/learningAchievement') My Dashboard
-                    a.item(href='/') Module Page
+                      a.item(href='/') Module Page
                     a.item(href='mailto:socialmediatestdrive@gmail.com') Contact Us
                     a.item(href='/logout') Logout
             
@@ -77,7 +77,8 @@
                     a.item(href='/classManagement') View Dashboard
                   if (user.isStudent && enableLearnerDashboard)
                     a.item(href='/learningAchievement') My Dashboard
-                  a.item(href='/') Module Page
+                  if (user.isStudent && enableLearnerDashboard)
+                    a.item(href='/') Module Page
                   a.item(href='mailto:socialmediatestdrive@gmail.com') Contact Us
                   a.item(href='/logout') Logout
           

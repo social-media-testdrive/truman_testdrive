@@ -43,7 +43,7 @@ async function updateStudentAccounts() {
     Class.findOne({
             accessCode: classCode,
             deleted: false
-        }).populate('students')
+        }).populate('students teacher')
         .exec(async function(err, found_class) {
             if (err) {
                 console.log(color_error, err);
@@ -55,7 +55,7 @@ async function updateStudentAccounts() {
                 return;
             }
             const promiseArray = [];
-            // iterate through each student and update deleted=true, but do not remove them
+            // iterate through each student and update control=true
             for (const studentId of found_class.students) {
                 let student = await User.findById(studentId)
                     .catch(err => {
@@ -65,6 +65,24 @@ async function updateStudentAccounts() {
                 student.control = true;
                 promiseArray.push(student.save());
             }
+
+            // update control=true for the teacher of the class
+            // Slightly hacky, since a teacher will be control=true, if just 1 class is control 
+            let teacher = await User.findById(found_class.teacher).catch(err => {
+                console.log("Did not find teacher");
+                return next(err);
+            });
+            teacher.control = true;
+            promiseArray.push(teacher.save());
+
+            // update control=true for class
+            let class1 = await Class.findById(found_class).catch(err => {
+                console.log("Did not find class");
+                return next(err);
+            });
+            class1.control = true;
+            promiseArray.push(class1.save());
+
             await Promise.all(promiseArray);
             console.log(color_success, `Successfully updated every student in class. Closing db connection.`);
             mongoose.connection.close();
