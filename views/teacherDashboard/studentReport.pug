@@ -2,13 +2,13 @@ extends ../ui_layout
 
 block content
 
-  .sixteen.wide.column.dashboardContentColumn.hiddenVisibility
+  .sixteen.wide.column.dashboardContentColumn.hiddenVisibility(style="padding:30px")
     include ../partials/teacherDashboardMenu
 
     .row.addMargin
       .sixteen.wide.column
 
-        h2 Step 1: Select Class
+        h2 Select Class:
         .row
           .ui.selection.dropdown(name="classSelection")
             input(type="hidden")
@@ -26,7 +26,7 @@ block content
             | Select Different Class
 
         .row
-          h2.usernameSelectionStepLabel.hidden Step 2: Select Student
+          h2.usernameSelectionStepLabel.hidden Select Student:
           select.ui.search.dropdown.usernameSelection.hidden(name="usernameSelection")
             option(value='') Search...
         .row

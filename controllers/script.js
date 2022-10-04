@@ -286,7 +286,6 @@ exports.getScript = (req, res, next) => {
                             title: 'Free Play'
                         });
                     } else {
-                        console.log(finalfeed);
                         if (req.params.modId === 'safe-posting') {
                             res.set({
                                 'Content-Security-Policy': "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +

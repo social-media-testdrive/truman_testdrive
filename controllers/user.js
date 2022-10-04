@@ -129,7 +129,13 @@ exports.postInstructorLogin = (req, res, next) => {
                 req.session.passport = temp;
                 req.session.save(function(err) {
                     user.logUser(Date.now());
-                    return res.redirect('/');
+                    if (req.user.isStudent) {
+                        return res.redirect('/');
+                    } else if (req.user.isInstructor) {
+                        return res.redirect('/classManagement');
+                    } else {
+                        return res.redirect('/');
+                    }
                 });
             });
         });
@@ -141,10 +147,18 @@ exports.postInstructorLogin = (req, res, next) => {
  * Log out.
  */
 exports.logout = (req, res) => {
-    req.logout();
-    req.session.regenerate(function() {
-        res.redirect('/login');
-    })
+    if (req.user.isStudent) {
+        const classCode = req.user.accessCode;
+        req.logout();
+        req.session.regenerate(function() {
+            res.redirect(`/classLogin/${classCode}`);
+        })
+    } else {
+        req.logout();
+        req.session.regenerate(function() {
+            res.redirect('/login');
+        })
+    }
 };
 
 /**
