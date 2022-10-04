@@ -2,12 +2,12 @@ extends ../ui_layout
 
 block content
 
-  .sixteen.wide.column.dashboardContentColumn.hiddenVisibility
+  .sixteen.wide.column.dashboardContentColumn.hiddenVisibility(style="padding:30px")
     include ../partials/teacherDashboardMenu
 
     .row.addMargin
       .sixteen.wide.column.dropdownColumn
-        h2 Select A Class And A Module
+        h2 Select a Class and a Module:
         .row
           h4 Select Class (by access code)
           .ui.selection.dropdown(name="classSelection")
