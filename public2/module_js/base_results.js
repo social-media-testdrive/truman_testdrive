@@ -263,7 +263,7 @@ $(window).on("load", function() {
             return;
         }
         // All of the questions are now visible to the user.
-        $(this).addClass('loading');
+        $(this).addClass('loading disabled');
         iterateOverPrompts(startTime);
     });
 });

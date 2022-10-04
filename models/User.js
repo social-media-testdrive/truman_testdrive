@@ -63,6 +63,7 @@ const userSchema = new mongoose.Schema({
         "survey-2": { type: Date, default: null }
     },
     control: { type: Boolean, default: false }, // Unique to Outcome Evaluation #3: Is student part of a control group? Does teacher have control group as class?
+    consent: { type: Boolean, default: false }, // Unique to Outcome Evaluation #3: Did the student give consent?
     earnedBadges: [new Schema({ // list of badges earned by the user, see testdriveBadges.json file
         badgeId: String,
         badgeTitle: String,

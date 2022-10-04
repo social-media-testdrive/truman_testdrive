@@ -759,8 +759,9 @@ if (enableLearnerDashboard) {
 
     // Specific to the Outcome Evaluation Study #3
     app.get('/getVisibleModules', passportConfig.isAuthenticated, csrfProtection, addCsrf, userController.getVisibleModules);
-    app.get('/surveyParameters', passportConfig.isAuthenticated, userController.getSurveyParameters);
-    app.get('/fromSurvey/:modId', passportConfig.isAuthenticated, userController.getFromSurvey);
+    app.get('/surveyParameters', passportConfig.isAuthenticated, csrfProtection, addCsrf, userController.getSurveyParameters);
+    app.get('/fromSurvey/:modId', passportConfig.isAuthenticated, csrfProtection, addCsrf, userController.getFromSurvey);
+    app.post('/postConsent', passportConfig.isAuthenticated, csrfProtection, addCsrf, userController.postConsent);
 }
 
 /*

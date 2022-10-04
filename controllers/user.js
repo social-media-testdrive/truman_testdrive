@@ -130,7 +130,7 @@ exports.postInstructorLogin = (req, res, next) => {
                 req.session.save(function(err) {
                     user.logUser(Date.now());
                     if (req.user.isStudent) {
-                        return res.redirect('/');
+                        return res.redirect('/', { consent: user.consent });
                     } else if (req.user.isInstructor) {
                         return res.redirect('/classManagement');
                     } else {
@@ -240,6 +240,33 @@ exports.getFromSurvey = (req, res, next) => {
             // res.set('Content-Type', 'application/json; charset='UTF-8');
             // res.send({ result: "success" });
             return res.redirect('/');
+        });
+    });
+};
+
+/*
+ * POST /postConsent
+ * Update consent to true.
+ */
+exports.postConsent = (req, res, next) => {
+    User.findById(req.user.id).exec(function(err, user) {
+        if (err) {
+            console.log("ERROR");
+            console.log(err);
+            return next(err);
+        }
+        if (user == null) {
+            console.log("NULL");
+            var myerr = new Error('Student not found!');
+            return next(myerr);
+        }
+        user.consent = true;
+        user.save((err) => {
+            if (err) {
+                return next(err);
+            }
+            res.set('Content-Type', 'application/json; charset=UTF-8');
+            res.send({ result: "success" });
         });
     });
 };

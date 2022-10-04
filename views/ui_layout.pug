@@ -42,6 +42,7 @@ html
     link(rel='stylesheet', href=cdn+'/js/lib/introjs.min.css')
     link(type='text/css', rel='stylesheet', href='/css/header.css') 
     link(type='text/css', rel='stylesheet', href='/css/ui_layout.css') 
+    link(rel='stylesheet', href='/css/optInToShareActivityData.css')
     block styles
 
   body
@@ -49,6 +50,9 @@ html
       include partials/ui_header
       include partials/ui_flash
       block content
+      if (user !== undefined)
+        if (user.isStudent && !user.consent && enableLearnerDashboard)
+          include partials/optInToShareActivityData_researchVersion.pug
       .ui.small.basic.share.modal
         .ui.icon.header
           i.share.icon

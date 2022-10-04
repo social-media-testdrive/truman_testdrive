@@ -255,6 +255,15 @@ $(window).on("load", function() {
             }
         });
 
+    // Unique to the Outcome Evaluation Study
+    $('.optInToShareActivityDataSegment').modal('setting', 'closable', false).modal('show');
+    $('.optInToShareActivityDataSegment').modal({
+        onApprove: function() {
+            $.post('/postConsent', {
+                _csrf: $('meta[name="csrf-token"]').attr('content')
+            })
+        }
+    });
     // article info popup in the digital-literacy module
     $(".modual.info_button").click(function() {
         $('.ui.small.popinfo.modal').modal('show');

@@ -1,50 +1,55 @@
 .optInToShareActivityDataSegment {
-  /* border: solid #8398bc !important;
+    /* border: solid #8398bc !important;
   border-radius: 0px !important; */
-  /* background-color: #f6f9fb !important; */
-  font-size: 120% !important;
-  cursor: default;
+    /* background-color: #f6f9fb !important; */
+    font-size: 120% !important;
+    cursor: default;
 }
 
 .optInToShareActivityDataSegment .ui.checkbox {
-  width: 100%;
-  cursor: pointer;
+    width: 100%;
+    cursor: pointer;
 }
 
 .optInToShareActivityDataSegment .ui.checkbox label {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .optInToShareActivityDataSegment .ui.checkbox label:before {
-  width: 25px;
-  height: 25px;
-  top: -3px;
-  vertical-align: middle;
+    width: 25px;
+    height: 25px;
+    top: -3px;
+    vertical-align: middle;
 }
 
 .optInToShareActivityDataSegment .ui.checkbox input:checked~.box:after,
 .optInToShareActivityDataSegment .ui.checkbox input:checked~label:after {
-  /* color: #21ba45; */
-  color: #333333;
-  top: 0px;
-  font-size: x-large;
+    /* color: #21ba45; */
+    color: #333333;
+    top: 0px;
+    font-size: x-large;
 }
 
 .optInToShareActivityDataSegment .ui.checkbox label {
-  padding-left: 40px;
-  font-size: initial;
+    padding-left: 40px;
+    font-size: initial;
 }
 
 .optInToShareActivityDataSegment .ui.checkbox .box:before,
 .optInToShareActivityDataSegment .ui.checkbox label:before {
-  border: 2px solid #333333;
+    border: 2px solid #333333;
 }
 
 .optInToShareActivityDataSegment .ui.checkbox input:checked~label:before {
-  border: 2px solid #333333;
+    border: 2px solid #333333;
 }
 
 .optInToShareActivityDataSegment .ui.checkbox .box:after,
 .optInToShareActivityDataSegment .ui.checkbox label:after {
-  top: 3px;
+    top: 3px;
+}
+
+.optInToShareActivityDataSegment .italicText.negative {
+    font-style: italic;
+    margin-top: 1em;
 }

@@ -5,8 +5,15 @@
   .ui.borderless.fixed.menu.testDriveHeader
     .ui.grid.container#myheader
         .four.wide.column
-          a.item(href='https://socialmediatestdrive.org/modules.html')
-            img.ui.tiny.image(src=cdn+'/finalLogo.png', id='logo')
+          if !isResearchVersion
+            a.item(href='https://socialmediatestdrive.org/modules.html')
+              img.ui.tiny.image(src=cdn+'/finalLogo.png', id='logo')
+          else if user.isInstructor 
+            a.item(href='/classManagement')
+              img.ui.tiny.image(src=cdn+'/finalLogo.png', id='logo')
+          else 
+            a.item(href='/')
+              img.ui.tiny.image(src=cdn+'/finalLogo.png', id='logo')
         .eight.wide.column
           if mod!== 'extended-fp'
             .ui.basic.segment.center.aligned.progressHeader.hideHeader
