@@ -445,9 +445,10 @@ userSchema.methods.logUser = function logUser(time) {
     });
 };
 
-userSchema.methods.logPage = function logPage(time, subdirectory1, subdirectory2) {
+userSchema.methods.logPage = function logPage(time, subdirectory1, subdirectory2, artificialVisit) {
     let log = {};
     log.time = time;
+    log.artificialVisit = artificialVisit;
     if (subdirectory1 !== undefined && subdirectory1 !== "") {
         log.subdirectory1 = subdirectory1;
         log.subdirectory2 = subdirectory2;

@@ -146,7 +146,8 @@ async function iterateOverPrompts(startTime) {
     // If Research Site, skip quiz and redirect to Qualtrics Survey
     const isResearchVersion = $('meta[name="isResearchVersion"]').attr('content') === "true";
     if (isResearchVersion) {
-        await updateModuleProgressCompleted(); //Mark module and survey-1 as complete
+        await updateModuleProgressCompleted(); // Mark module as complete
+        await postNewCompletedBadge(pathArray[2]);
         const surveyParameters = await $.get('/surveyParameters');
         if (surveyParameters) {
             const qualtricsLinks = surveyParameters.control ? {

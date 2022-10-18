@@ -200,11 +200,12 @@ exports.getAssignedModuleProgress = (req, res, next) => {
                 let assignedModProgressObj = {};
                 const modProgressObj = student.moduleProgress;
                 if (!found_class.control) {
-                    assignedModProgressObj["module"] = modProgressObj[student.assignedModules.module1];
+                    assignedModProgressObj["module"] = modProgressObj[student.assignedModules.module1.replace("-", "")];
                 }
                 assignedModProgressObj["survey1"] = modProgressObj["survey1"];
                 assignedModProgressObj["extendedfp"] = modProgressObj["extendedfp"];
                 assignedModProgressObj["survey2"] = modProgressObj["survey2"];
+                assignedModProgressObj["name"] = student.name;
                 const username = student.username;
                 outputData[username] = assignedModProgressObj;
             }

@@ -292,7 +292,7 @@ $('a.ui.fluid.card').on('click', async function() {
         $('.ui.big.green.labeled.icon.button.script').addClass('loading disabled');
         // Specific to the Outcome Evaluation Study #3
         // Redirect to Qualtrics Survey if module is extended free play
-        await updateModuleProgressCompleted(); // Mark extended free play and survey-2 as completed
+        await updateModuleProgressCompleted(); // Mark extended free play as completed
         const surveyParameters = await $.get('/surveyParameters');
         if (surveyParameters) {
             const qualtricsLinks = surveyParameters.control ? {
@@ -353,7 +353,7 @@ $('.ui.accordion').accordion();
 // digital-literacy
 
 $('.openPostDigitalLiteracy').on('click', function() {
-    const modalName = $(this).data('modual') === 'digital-literacy' ? 'digital-literacy_articleModal' : 'extended-fp_digital-literacy_articleModal';
+    const modalName = $(this).data('modual') === 'digital-literacy' ? 'digital-literacy_articleModal' : 'extended-fp_articleModal';
     recordModalInputs(modalName);
 });
 

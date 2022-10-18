@@ -400,6 +400,9 @@ function getFinalLeaderboardData(moduleProgressData, classPageTimes) {
         let completedCount = 0;
         let startedCount = 0;
         for (const key of Object.keys(moduleProgressData[student.username])) {
+            if (key === "survey1" || key === "survey2" || key === "extendedfp") {
+                continue;
+            }
             if (moduleProgressData[student.username][key] === "completed") {
                 completedCount++;
             } else if (moduleProgressData[student.username][key] === "started") {
@@ -476,6 +479,7 @@ function updateStudentProgressTableHtml(finalStudentProgressData) {
         $(`#studentProgressTable`).append(`
           <tr>
             <td>${student.username}</td>
+            <td>${student.name}</td>
             ${student.module !== undefined ? "<td class='centerText-override'>"+getStatusIcon(student.module)+"</td>" : ""}
             <td class='centerText-override'>${getStatusIcon(student.survey1)}</td>
             <td class='centerText-override'>${getStatusIcon(student.extendedfp)}</td>
@@ -504,9 +508,9 @@ function getFinalStudentProgressData(moduleProgressData) {
     }
     // all data calculated, sort in descending order by number of modules completed
     // From MDN docs: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
-    finalStudentProgressData.sort(function(a, b) {
-        return b.completed - a.completed;
-    });
+    // finalStudentProgressData.sort(function(a, b) {
+    //     return b.completed - a.completed;
+    // });
     return finalStudentProgressData;
 };
 
