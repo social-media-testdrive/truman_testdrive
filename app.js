@@ -198,7 +198,7 @@ app.use((req, res, next) => {
     // After successful login, redirect back to the intended page
     if (!req.user &&
         req.path !== '/login' &&
-        req.path !== '/signup' &&
+        req.path !== '//up' &&
         req.path !== '/bell' &&
         !req.path.match(/^\/auth/) &&
         !req.path.match(/\./)) {
@@ -350,6 +350,21 @@ app.get('/intro/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders,
         });
     }
 });
+
+// Render facilitator login page (all modules)
+app.get('/facilitatorLogin', setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
+    res.render('facilitatorLogin.pug', {
+        title: 'Facilitator Login'
+    });
+});
+
+// Render student login page (all modules)
+app.get('/studentLogin', setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
+    res.render('studentLogin.pug', {
+        title: 'Student Login'
+    });
+});
+
 
 // Render user's profile page, which is module-specific.
 app.get('/me/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, userController.getMe);
