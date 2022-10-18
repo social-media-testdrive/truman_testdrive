@@ -149,11 +149,14 @@ async function iterateOverPrompts(startTime) {
         await updateModuleProgressCompleted(); //Mark module and survey-1 as complete
         const surveyParameters = await $.get('/surveyParameters');
         if (surveyParameters) {
-            const qualtricsLinks = {
-                "cyberbullying": "https://cornell.yul1.qualtrics.com/survey-builder/SV_8hKlrhnpuimJFwq/edit",
-                "digital-literacy": "https://cornell.yul1.qualtrics.com/survey-builder/SV_0BrtbQGXJDHzxdk/edit",
-                "digfoot": "https://cornell.yul1.qualtrics.com/survey-builder/SV_eqD2FeixUmwW8Si/edit",
-                "phishing": "https://cornell.yul1.qualtrics.com/survey-builder/SV_egJPIvhZQ8eJjgi/edit",
+            const qualtricsLinks = surveyParameters.control ? {
+                "cyberbullying": "https://cornell.ca1.qualtrics.com/jfe/form/SV_4GXxnU4ywZNfdRQ",
+                "digital-literacy": "https://cornell.ca1.qualtrics.com/jfe/form/SV_eQkBjBUd0Bq9T8O",
+                "phishing": "https://cornell.ca1.qualtrics.com/jfe/form/SV_ezIwjZf2SGIMPga",
+            } : {
+                "cyberbullying": "https://cornell.ca1.qualtrics.com/jfe/form/SV_8GKWzWokVMdqQd0",
+                "digital-literacy": "https://cornell.ca1.qualtrics.com/jfe/form/SV_09BYaQ2qOasR57o",
+                "phishing": "https://cornell.ca1.qualtrics.com/jfe/form/SV_bC8Eye9nUWhpMwK",
             };
             const qualtricsUrl = `${qualtricsLinks[currentModule]}?GroupCode=${surveyParameters.classCode}&Username=${surveyParameters.username}`;
             /* Need to add a "visit" to the end page for various functionalities to work:

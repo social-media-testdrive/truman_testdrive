@@ -8,10 +8,10 @@
           if !isResearchVersion
             a.item(href='https://socialmediatestdrive.org/modules.html')
               img.ui.tiny.image(src=cdn+'/finalLogo.png', id='logo')
-          else if user.isInstructor 
+          if user !==undefined && user.isInstructor 
             a.item(href='/classManagement')
               img.ui.tiny.image(src=cdn+'/finalLogo.png', id='logo')
-          else 
+          else
             a.item(href='/')
               img.ui.tiny.image(src=cdn+'/finalLogo.png', id='logo')
         .eight.wide.column

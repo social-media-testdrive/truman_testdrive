@@ -88,19 +88,30 @@ async function showVisibleModules(visibleModules) {
     const cdn = "https://dhpd030vnpk29.cloudfront.net";
 
     // Survey dictionary 
-    const surveyDictionary = {
+    const surveyDictionary = surveyParameters.control ? {
         "survey-1": {
-            "phishing": `https://cornell.yul1.qualtrics.com/survey-builder/SV_egJPIvhZQ8eJjgi/edit?GroupCode=${surveyParameters.classCode}&Username=${surveyParameters.username}`,
-            "cyberbullying": `https://cornell.yul1.qualtrics.com/survey-builder/SV_8hKlrhnpuimJFwq/edit?GroupCode=${surveyParameters.classCode}&Username=${surveyParameters.username}`,
-            "digital-literacy": `https://cornell.yul1.qualtrics.com/survey-builder/SV_0BrtbQGXJDHzxdk/edit?GroupCode=${surveyParameters.classCode}&Username=${surveyParameters.username}`
+            "cyberbullying": `https://cornell.ca1.qualtrics.com/jfe/form/SV_4GXxnU4ywZNfdRQ?GroupCode=${surveyParameters.classCode}&Username=${surveyParameters.username}`,
+            "digital-literacy": `https://cornell.ca1.qualtrics.com/jfe/form/SV_eQkBjBUd0Bq9T8O?GroupCode=${surveyParameters.classCode}&Username=${surveyParameters.username}`,
+            "phishing": `https://cornell.ca1.qualtrics.com/jfe/form/SV_ezIwjZf2SGIMPga?GroupCode=${surveyParameters.classCode}&Username=${surveyParameters.username}`,
         },
         "survey-2": {
-            "phishing": `https://cornell.ca1.qualtrics.com/jfe/form/SV_ekXVMiHv0016UfA?GroupCode=${surveyParameters.classCode}&Username=${surveyParameters.username}`,
-            "cyberbullying": `https://cornell.ca1.qualtrics.com/jfe/form/SV_6gvfzZ9lbnmeMoC?GroupCode=${surveyParameters.classCode}&Username=${surveyParameters.username}`,
-            "digital-literacy": `https://cornell.ca1.qualtrics.com/jfe/form/SV_cuMDJCaay8x3lKm?GroupCode=${surveyParameters.classCode}&Username=${surveyParameters.username}`
+            "cyberbullying": `https://cornell.ca1.qualtrics.com/jfe/form/SV_5attrGlv4XnEWZU?GroupCode=${surveyParameters.classCode}&Username=${surveyParameters.username}`,
+            "digital-literacy": `https://cornell.ca1.qualtrics.com/jfe/form/SV_5ikqADXFG1rMZWC?GroupCode=${surveyParameters.classCode}&Username=${surveyParameters.username}`,
+            "phishing": `https://cornell.ca1.qualtrics.com/jfe/form/SV_bmaUpHZrUnPZeFE?GroupCode=${surveyParameters.classCode}&Username=${surveyParameters.username}`
 
         }
-    }
+    } : {
+        "survey-1": {
+            "cyberbullying": `https://cornell.ca1.qualtrics.com/jfe/form/SV_8GKWzWokVMdqQd0?GroupCode=${surveyParameters.classCode}&Username=${surveyParameters.username}`,
+            "digital-literacy": `https://cornell.ca1.qualtrics.com/jfe/form/SV_09BYaQ2qOasR57o?GroupCode=${surveyParameters.classCode}&Username=${surveyParameters.username}`,
+            "phishing": `https://cornell.ca1.qualtrics.com/jfe/form/SV_bC8Eye9nUWhpMwK?GroupCode=${surveyParameters.classCode}&Username=${surveyParameters.username}`
+        },
+        "survey-2": {
+            "cyberbullying": `https://cornell.ca1.qualtrics.com/jfe/form/SV_4VL4vrYiSb4wBy6?GroupCode=${surveyParameters.classCode}&Username=${surveyParameters.username}`,
+            "digital-literacy": `https://cornell.ca1.qualtrics.com/jfe/form/SV_dbDsPdswnhrzase?GroupCode=${surveyParameters.classCode}&Username=${surveyParameters.username}`,
+            "phishing": `https://cornell.ca1.qualtrics.com/jfe/form/SV_6sWIX6dIAepeRZY?GroupCode=${surveyParameters.classCode}&Username=${surveyParameters.username}`
+        }
+    };
 
     // Module card dictionary
     const moduleCardDictionary = {

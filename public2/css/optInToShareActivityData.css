@@ -49,7 +49,7 @@
     top: 3px;
 }
 
-.optInToShareActivityDataSegment .italicText.negative {
+.optInToShareActivityDataSegment .italicText {
     font-style: italic;
     margin-top: 1em;
 }

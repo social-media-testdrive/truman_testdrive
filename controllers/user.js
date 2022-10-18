@@ -651,7 +651,8 @@ exports.getSurveyParameters = (req, res, next) => {
         const surveyParameters = {
             classCode: req.user.accessCode,
             username: req.user.username,
-            module: req.user.assignedModules.module1
+            module: req.user.assignedModules.module1,
+            control: req.user.control
         }
         return res.send(surveyParameters);
     } else {
