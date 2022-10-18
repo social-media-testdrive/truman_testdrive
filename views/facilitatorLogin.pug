@@ -10,10 +10,10 @@ block content
       form.ui.form(action="/facilitatorLogin", method='POST')
         input(type='hidden', name='_csrf', value=csrfToken)
         .field.six.wide.column
-          label(for='instructor_username' style="font-size:larger;") Username
-          input(type='text', name='instructor_username', id='instructor_username', placeholder='Username', required).field
-          label(for='instructor_password' style="font-size:larger;") Password
-          input(type='password', name='instructor_password', id='instructor_password', placeholder='Password', required).field
+          label(for='facilitator_username' style="font-size:larger;") Username
+          input(type='text', name='facilitator_username', id='facilitator_username', placeholder='Username', required).field
+          label(for='facilitator_password' style="font-size:larger;") Password
+          input(type='password', name='facilitator_password', id='facilitator_password', placeholder='Password', required).field
         button.ui.big.green.button(type='submit') Login
         
 block styles

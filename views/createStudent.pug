@@ -1,22 +1,24 @@
 extends ui_layout
 
 block content
-  .ui.sixteen.wide.row
-    .ui.sixteen.wide.column
-      h2.loginPageTitle Welcome to the Research Version of DART!
   .ui.sixteen.wide.row 
     .ui.sixteen.wide.column
-      h2.ui.header Login as Student
-      form.ui.form(action="/studentLogin", method='POST')
+      h2.ui.header Student Account Creation
+      form.ui.form(action="/createStudent", method='POST')
         input(type='hidden', name='_csrf', value=csrfToken)
         .field.six.wide.column
-          label(for='username' style="font-size:larger;") Username
+          label(for='username' style="font-size:larger;") Enter Student Username
           input(type='text', name='username', id='username', placeholder='Username', required).field
-          label(for='password' style="font-size:larger;") Password
+          br
+          br
+          label(for='password' style="font-size:larger;") Enter Student Password
           input(type='password', name='password', id='password', placeholder='Password', required).field
-        button.ui.big.green.button(type='submit') Login
+        h3=user.username 
+        h3.ui.header is the Facilitator assigned to this account. They will be available in case you are in need of assistance. 
+        button.ui.big.green.button(type='submit') Create
         
 block styles
+    
       
 block scripts
   script(src='/module_js/base_end.js')

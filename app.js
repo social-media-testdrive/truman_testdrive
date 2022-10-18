@@ -358,6 +358,13 @@ app.get('/facilitatorLogin', setHttpResponseHeaders, csrfProtection, addCsrf, fu
     });
 });
 
+// Render facilitator login page (all modules)
+app.get('/facilitatorHome', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
+    res.render('facilitatorHome.pug', {
+        title: 'Facilitator Home'
+    });
+});
+
 // Render student login page (all modules)
 app.get('/studentLogin', setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
     res.render('studentLogin.pug', {
@@ -365,6 +372,12 @@ app.get('/studentLogin', setHttpResponseHeaders, csrfProtection, addCsrf, functi
     });
 });
 
+// Render create student page (all modules)
+app.get('/createStudent', setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
+    res.render('createStudent.pug', {
+        title: 'Create Student'
+    });
+});
 
 // Render user's profile page, which is module-specific.
 app.get('/me/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, userController.getMe);
@@ -540,7 +553,10 @@ if (isResearchVersion) {
     app.get('/login', csrfProtection, setHttpResponseHeaders, addCsrf, userController.getLogin);
     app.get('/classLogin/:accessCode', csrfProtection, setHttpResponseHeaders, addCsrf, userController.getClassLogin);
     app.post('/instructorLogin', check, setHttpResponseHeaders, csrfProtection, userController.postInstructorLogin);
-    app.post('/studentLogin/:accessCode', check, setHttpResponseHeaders, csrfProtection, userController.postStudentLogin);
+    app.post('/facilitatorLogin', check, setHttpResponseHeaders, csrfProtection, userController.postFacilitatorLogin);
+    app.post('/studentLogin', check, setHttpResponseHeaders, csrfProtection, userController.postStudentLogin);
+    app.post('/createStudent', check, setHttpResponseHeaders, csrfProtection, userController.postCreateStudent);
+    // app.post('/studentLogin/:accessCode', check, setHttpResponseHeaders, csrfProtection, userController.postStudentLogin);
     app.get('/logout', setHttpResponseHeaders, csrfProtection, addCsrf, userController.logout);
 }
 
