@@ -126,6 +126,11 @@ button,
     color: #0000FF;
 }
 
+.blueText.phishingLink:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 
 /* only for some digital literacy posts */
 

@@ -389,6 +389,21 @@ $('.esteemModalNextButton').on('click', function() {
     $('.esteemModalSection2').click();
 });
 
+// phishing 
+//Open the corresponding phishing modal when a phishing link is clicked
+$('.phishingLink').on('click', function() {
+    // Unique to Outcome Evaluation Study #3
+    // don't need to check if modal is opened in phishing module or extended-fp, because phishing module uses phishing_script.js
+    const phishingLink = $(this);
+    if (phishingLink.attr('phishingPostType') === "surveyScam") {
+        recordModalInputs('extended-fp_surveyScam');
+    } else if (phishingLink.attr('phishingPostType') === "loginScam") {
+        recordModalInputs('extended-fp_loginScam');
+    } else if (phishingLink.attr('phishingPostType') === "creditCardScam") {
+        recordModalInputs('extended-fp_creditCardScam');
+    }
+});
+
 /**
  * End code to open modals
  */

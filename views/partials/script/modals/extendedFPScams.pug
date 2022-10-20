@@ -1,0 +1,106 @@
+.ui.large.long.modal(data-modalName="extended-fp_creditCardScam")
+    i.close.icon  
+    .ui.center.aligned.header WOW! Get FREE TICKETS TO BIGGEST california AMUSEMENT PARK!!! 
+    .content
+        .ui.one.column.centered.grid
+            .content
+                .ui.medium.centered.image
+                    img(src=cdn+'/post_pictures/outcome-eval-3/phishing_1.jpg')
+                .description
+                    .ui.header.setBigText This deal will NOT LAST!! 
+                    .ui.header 
+                        | HURRY - only
+                        span.setRed  3
+                        |  left!!!
+        .ui.header Enter your information to get your tickets for this CRAZY deal! 
+        .ui.form
+            .field
+                label First Name
+                input
+            .field
+                label Last Name
+                input
+            .field
+                label Birth Date
+                input
+            .field
+                label Email Address
+                input
+            .field
+                label Home Address
+                input
+            br
+            .actions
+                .ui.positive.right.labeled.icon.button
+                    | PLACE ORDER
+                    i.checkmark.icon 
+                .ui.negative.right.labeled.icon.button
+                    | CLOSE
+                    i.close.icon    
+
+.ui.large.long.modal(data-modalName="extended-fp_surveyScam")
+    i.close.icon  
+    .ui.center.aligned.header FILL OUT THIS SURVEY TO RECEIVE FREE MONEY!
+    .content
+        .ui.one.column.centered.grid
+            .ui.green.large.statistic
+                .label Fill out this survey to receive 
+                .value
+                    | $5000
+        .ui.form
+          .field
+                label First Name
+                input
+          .field
+                label Last Name
+                input
+          .field
+                label Birth Date
+                input
+          .field
+                label Email Address
+                input
+          .field
+                label Home Address
+                input
+          br
+          .actions
+            .ui.positive.right.labeled.icon.button
+                | Submit
+                i.checkmark.icon 
+            .ui.negative.right.labeled.icon.button
+                | Cancel
+                i.close.icon 
+               
+.ui.large.long.modal(data-modalName="extended-fp_loginScam")
+    i.close.icon  
+    .ui.center.aligned.header 
+        span.setRed !WARNING! 
+        | Our systems show that your account is 
+        span.setRed AT RISK!
+    .content
+        .ui.error.icon.message
+            i.circle.exclamation.icon
+            .content
+                .header
+                    | Enter your login information to prove that it's you
+        .ui.form
+            .field
+                label Username
+                input(placeholder='Enter your username...')
+            .field
+                label Password
+                input(rplaceholder='Enter your password...')
+            br
+            .actions
+                .ui.positive.right.labeled.icon.button
+                    | Submit
+                    i.checkmark.icon 
+                .ui.negative.right.labeled.icon.button
+                    | Cancel
+                    i.close.icon 
+
+
+link(rel='stylesheet', href='/css/modules/phishing.css')
+            
+    

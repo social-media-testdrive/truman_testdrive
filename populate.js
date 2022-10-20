@@ -219,7 +219,8 @@ function createPostInstances() {
                 } //if ACT
                 else {
                     //Else no ACTOR Found
-                    console.log("No Actor Found!!!");
+                    console.log("################ Error IN: " + new_post.id);
+                    console.log("No Actor Found!!! " + new_post.actor);
                     callback();
                 }
                 // console.log("BOTTOM OF SAVE");
@@ -301,7 +302,7 @@ function createPostRepliesInstances() {
                         else {
                             //Else no ACTOR Found
                             console.log("############Error IN: " + new_replies.id);
-                            console.log("No POST Found!!!");
+                            console.log("No POST Found!!! " + new_replies.reply);
                             callback();
                         }
                     }); //Script.findOne
@@ -309,7 +310,7 @@ function createPostRepliesInstances() {
                 else {
                     //Else no ACTOR Found
                     console.log("****************Error IN: " + new_replies.id);
-                    console.log("No Actor Found!!!");
+                    console.log("No Actor Found!!! " + new_replies.actor);
                     callback();
                 }
                 // console.log("BoTTom REPLY for: "+new_replies.id);
