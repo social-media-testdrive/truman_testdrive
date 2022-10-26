@@ -77,24 +77,6 @@ passport.use('student-local', new LocalStrategy({
 }));
 
 /*
-  Create a new student with a username and password
-  */
- 
-// passport.use('create-student', new LocalStrategy({
-//   usernameField: 'username',
-//   passReqToCallback: true
-// }, (req, username, password, done) => {
-//   User.findOne({ username: username, isStudent: true }, async(err, user) => {
-//       if (err) {
-//           return done(err);
-//       }
-//       if (user) {
-//           return done(null, false, { msg: 'Username already exists. Try again.' });
-//       }
-//   });
-// }));
-
-/*
  * Sign in as an instructor with username and password.
  */
 

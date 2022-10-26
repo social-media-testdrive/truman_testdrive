@@ -270,7 +270,9 @@ exports.postInstructorLogin = (req, res, next) => {
  * Log out.
  */
 exports.logout = (req, res) => {
-    req.logout();
+    req.logout(function(err) {
+        if (err) { return next(err); }
+      });
     req.session.regenerate(function() {
         res.redirect('/login');
     })
