@@ -51,8 +51,8 @@ exports.getClassLogin = (req, res) => {
 exports.postStudentLogin = (req, res, next) => {
     //req.assert('email', 'Email is not valid').isEmail();
     // commented out by Anna
-    //req.assert('password', 'Password cannot be blank').notEmpty();
-    req.assert('username', 'Please enter your username.').notEmpty();
+    req.assert('password', 'Password cannot be blank').notEmpty();
+    req.assert('username', 'Username cannto be blank.').notEmpty();
     //req.sanitize('email').normalizeEmail({ remove_dots: false });
 
     const errors = req.validationErrors();
@@ -202,68 +202,68 @@ exports.postInstructorLogin = (req, res, next) => {
         return res.redirect('/createStudent');
     }
 
-    const async = require('async');
-    const dotenv = require('dotenv');
-    const mongoose = require('mongoose');
-    const fs = require('fs');
-    const CSVToJSON = require("csvtojson");
-    const csvWriter = require('csv-write-stream');
-    dotenv.config({ path: '.env' });
+    console.log(`Creating new student...`);
 
-    // establish initial Mongoose connection
-    mongoose.connect(process.env.PRO_MONGODB_URI, { useNewUrlParser: true });
-    // listen for errors after establishing initial connection
-    const db = mongoose.connection;
-    db.on('error', (err) => {
-        console.error(err);
-        console.log('%s MongoDB connection error.');
-        process.exit(1);
-    });
-
-    const color_start = '\x1b[33m%s\x1b[0m'; // yellow
-    const color_success = '\x1b[32m%s\x1b[0m'; // green
-    const color_error = '\x1b[31m%s\x1b[0m'; // red
-
-    const username = 'username';
-    const password = 'password';
-    console.log(color_start, `Creating new student...`);
-
-    const facilitator_username = user.username;
-
-    const new_user = new User({
-        username: username,
-        password: password,
+    const user = new User({
+        username: req.body.username,
+        password: req.body.password,
         active: true,
         start : Date.now(),
         isStudent: true,
-        facilitator: facilitator_username
+        facilitator: req.body.facilitator
     });
     user.profile.name = "Guest";
     user.profile.location = "Guest Town";
     user.profile.bio = '';
     user.profile.picture = 'avatar-icon.svg';
 
+    // passport.authenticate('create-student', (err, user, info) => {
+    //     if (err) { return next(err); }
+    //     if (user) {
+    //         req.flash('errors', info);
+    //         return res.redirect('/createStudent');
+    //     }
+    //     })(req, res, next);
+
     User.findOne({
-    username: username
+    username: req.body.username
     }, (err, existingUser) => {
-        if (err) {
-        return next(err);
-        }
-        if (existingUser) {
-        console.log(color_error, `ERROR: This username is already taken.`);
-        mongoose.connection.close();
-        return;
-        }
-        user.save((err) => {
         if (err) {
             return next(err);
         }
-        console.log(color_success, `Account successfully created. Closing db connection.`);
-        mongoose.connection.close();
-        res.redirect("/facilitatorHome");
+        if (existingUser) {
+            req.flash('errors', {
+                msg: 'Username already taken. Try again.'
+            });
+            res.redirect("/createStudent");
+            return;
+        }
+        user.save((err) => {
+            if (err) {
+                return next(err);
+            }
+            else {
+                User.findOne({
+                    username: req.body.facilitator
+                    }, (err, existingUser) => {
+                        if (err) {
+                        return next(err);
+                        }
+                        if (existingUser) {
+                            existingUser.students.push(req.body.username);
+                            existingUser.save((err) => {
+                                if (err) {
+                                    return next(err);
+                                }
+                                });
+                        } 
+                    });
+            }
+            console.log(`Account successfully created. Closing db connection.`);
+            res.redirect("/facilitatorHome");
         });
     });
-};
+}; 
 
 /**
  * GET /logout

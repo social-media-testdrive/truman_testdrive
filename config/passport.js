@@ -48,7 +48,7 @@ passport.deserializeUser((id, done) => {
 // }));
 
 /*
- * Sign in as an instructor with username and password.
+ * Sign in as a student with username and password.
  */
 
 passport.use('student-local', new LocalStrategy({
@@ -77,6 +77,24 @@ passport.use('student-local', new LocalStrategy({
 }));
 
 /*
+  Create a new student with a username and password
+  */
+ 
+// passport.use('create-student', new LocalStrategy({
+//   usernameField: 'username',
+//   passReqToCallback: true
+// }, (req, username, password, done) => {
+//   User.findOne({ username: username, isStudent: true }, async(err, user) => {
+//       if (err) {
+//           return done(err);
+//       }
+//       if (user) {
+//           return done(null, false, { msg: 'Username already exists. Try again.' });
+//       }
+//   });
+// }));
+
+/*
  * Sign in as an instructor with username and password.
  */
 
@@ -85,7 +103,7 @@ passport.use('instructor-local', new LocalStrategy({
     passwordField: 'instructor_password',
     passReqToCallback: true
 }, (req, instructor_username, instructor_password, done) => {
-    User.findOne({ username: instructor_username, isFacilitator: true }, async(err, user) => {
+    User.findOne({ username: instructor_username, isInstructor: true }, async(err, user) => {
         if (err) {
             return done(err);
         }
@@ -114,7 +132,7 @@ passport.use('facilitator-local', new LocalStrategy({
   passwordField: 'facilitator_password',
   passReqToCallback: true
 }, (req, facilitator_username, facilitator_password, done) => {
-  User.findOne({ username: facilitator_username }, async(err, user) => {
+  User.findOne({ username: facilitator_username, isFacilitator: true }, async(err, user) => {
       if (err) {
           return done(err);
       }

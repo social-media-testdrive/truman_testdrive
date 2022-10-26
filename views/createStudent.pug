@@ -5,6 +5,7 @@ block content
     .ui.sixteen.wide.column
       h2.ui.header Student Account Creation
       form.ui.form(action="/createStudent", method='POST')
+        input(type='hidden', name='facilitator', value=user.username)
         input(type='hidden', name='_csrf', value=csrfToken)
         .field.six.wide.column
           label(for='username' style="font-size:larger;") Enter Student Username
@@ -13,8 +14,7 @@ block content
           br
           label(for='password' style="font-size:larger;") Enter Student Password
           input(type='password', name='password', id='password', placeholder='Password', required).field
-        h3=user.username 
-        h3.ui.header is the Facilitator assigned to this account. They will be available in case you are in need of assistance. 
+        h3.ui.header="The Facilitator assigned to this account is " + user.username +". They will be available in case you are in need of assistance." 
         button.ui.big.green.button(type='submit') Create
         
 block styles
