@@ -1,13 +1,13 @@
 async function updateModuleProgressStarted(modName) {
     let status;
-    // if (modName === 'survey-1' || modName === 'survey-2') {
-    //     status = 'completed';
-    // } else {
-    //     status = 'started';
-    // }
+    if (modName === 'survey-1' || modName === 'survey-2') {
+        status = 'completed';
+    } else {
+        status = 'started';
+    }
     await $.post("/moduleProgress", {
         module: modName,
-        status: "started",
+        status: status,
         _csrf: $('meta[name="csrf-token"]').attr('content')
     });
 }
@@ -159,7 +159,7 @@ async function showVisibleModules(visibleModules) {
             "image": "post_pictures/outcome-eval-3/survey.jpg",
             "week": "Week 2:",
             "title": "Survey",
-            "string": "Come back again later to start this survey.",
+            "string": "Complete Exploring The Timeline to start this survey.",
             "url": `${surveyDictionary["survey-2"][surveyParameters.module]}`,
             "type": "link"
         }
@@ -214,7 +214,7 @@ $(window).on('load', async function() {
         $('.noModsRemainingMessage').removeClass('setDisplayNone');
     }
     // For extended-fp card
-    // When clicked, update moduleProgress to "started"
+    // When clicked, update moduleProgress to "completed"
     $('.ui.card.link').click(async function(e) {
         e.preventDefault();
         const id = $(this).attr('id');

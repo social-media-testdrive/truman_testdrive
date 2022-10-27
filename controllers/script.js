@@ -115,6 +115,24 @@ exports.getScript = (req, res, next) => {
                         return b.relativeTime - a.relativeTime;
                     });
 
+                    // Unique to Outcome Evaluation Study #3: 
+                    // In the extended free play, only include the target module's posts
+                    if (user.isStudent && req.params.modId === 'extended-fp') {
+                        const module = user.assignedModules["module1"];
+                        let postTypes;
+                        switch (module) {
+                            case "cyberbullying":
+                                postTypes = ["targeted_cyberbullying", "neutral"];
+                                break;
+                            case "digital-literacy":
+                                postTypes = ["targeted_news", "neutral"];
+                                break;
+                            case "phishing":
+                                postTypes = ["creditCardScam", "surveyScam", "loginScam", "neutral"];
+                                break;
+                        }
+                        script_feed = script_feed.filter(post => postTypes.includes(post.type));
+                    }
                     // While there are regular posts or user-made posts to add to the final feed
                     while (script_feed.length || user_posts.length) {
                         if (typeof script_feed[0] === 'undefined') {

@@ -575,7 +575,6 @@ async function getUniqueUsername(accessCode, adjectiveArray, nounArray, username
     let username = `${adjective}${noun}`;
     let result = await User.findOne({
         username: username,
-        accessCode: accessCode,
         deleted: false
     });
     if (result !== null) {
@@ -607,8 +606,9 @@ function makeRandomizedModules(size) {
     }
     array = array.slice(0, size);
 
+    console.log(array);
     // shuffle the order of the module assignments
-    shuffle(array);
+    // shuffle(array);
     return array;
 }
 

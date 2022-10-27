@@ -26,7 +26,7 @@ async function updateModuleProgressCompleted() {
     });
     await $.post("/moduleProgress", {
         module: 'survey-1',
-        status: 'started',
+        status: 'completed',
         _csrf: $('meta[name="csrf-token"]').attr('content')
     });
 }
