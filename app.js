@@ -1,5 +1,6 @@
 /*
  * Module dependencies
+ * Joss Tripoli
  */
 const express = require('express');
 const _ = require('lodash');
