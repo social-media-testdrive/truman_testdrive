@@ -3,45 +3,48 @@ extends ui_layout
 block content
   .twelve.wide.computer.fourteen.wide.tablet.sixteen.wide.mobile.column.centered
     .ui.raised.segment.mainIntroSegment.centerText
-      h3.ui.block.center.aligned.header.gradientBackground
-        | Welcome to Social Media TestDrive!
-      a.ui.card.welcomePageCard(href='javascript:void(0);', onclick='javascript:startIntro();')
-        .image
-          img#cardImage
-        .content
-          .header#cardTitle
+      h1.ui.block.center.aligned.header
+        | Welcome to DART!
+      //- a.ui.left.aligned.card.welcomePageCard(href='javascript:void(0);', onclick='javascript:startIntro();')
+      //-   .image.left.aligned
+      //-     img#cardImage
+      //-   .content
+      //-     .header#cardTitle
       
-      h3.ui.center.aligned.header
-        | Here's what you're about to do!
-        
-      .ui.tiny.four.steps
-        .step.glowing-box.paleYellow#learn
-          i.book.icon
-          .content
-            .title LEARN
-            .title key ideas
-        .step.glowing-box.paleGreen#practice
-          i.edit.icon
-          .content
-            .title PRACTICE
-            .title social media skills
-        .step.glowing-box.paleBlue#explore
-          i.binoculars.icon
-          .content
-            .title EXPLORE
-            .title the social media timeline
-        .step.glowing-box.palePurple#reflect
-          i.question.icon
-          .content
-            .title REFLECT
-            .title on what you did
-            
-    .ui.basic.segment.centerText
-      a(href='javascript:void(0);', onclick='javascript:startIntro();')
-        .ui.big.green.labeled.icon.button.getStartedButton
-            i.rocket.icon
-            |   Click here to get started!
-   
+      h1.ui.center.aligned.header
+        | Phishing Scams
+      .ui.stackable.two.column.grid
+        .ui.column
+            h3.ui.center.aligned.header
+              | Agenda
+            .ui.tiny.steps.vertical
+              .step.glowing-box.paleYellow#learn
+                i.book.icon
+                .content
+                  .title LEARN
+                  .title key ideas
+              .step.glowing-box.paleGreen#practice
+                i.edit.icon
+                .content
+                  .title PRACTICE
+                  .title social media skills
+              .step.glowing-box.paleBlue#explore
+                i.binoculars.icon
+                .content
+                  .title EXPLORE
+                  .title the social media timeline
+              .step.glowing-box.palePurple#reflect
+                i.question.icon
+                .content
+                  .title REFLECT
+                  .title on what you did  
+        .ui.column
+          .ui.basic.segment.centerText
+            a(href='javascript:void(0);', onclick='javascript:startIntro();')
+              .ui.big.green.labeled.icon.button.getStartedButton
+                i.rocket.icon
+                | Click here to get started!!
+    
 block scripts
   script(src="/module_js/base_intro.js")
   

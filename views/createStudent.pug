@@ -1,0 +1,49 @@
+extends ui_layout
+
+block content
+  .ui.sixteen.wide.row 
+    .ui.sixteen.wide.column
+      h2.ui.header Student Account Creation
+      form.ui.form(action="/createStudent", method='POST')
+        input(type='hidden', name='facilitator', value=user.username)
+        input(type='hidden', name='_csrf', value=csrfToken)
+        .field.six.wide.column
+          label(for='username' style="font-size:larger;") Enter Student Username
+          .ui.pointing.below.label.basic.red
+              .header Create a simple username: 
+                br
+                br
+                li Avoid using your full name or email address. 
+          input(type='text', name='username', id='username', placeholder='Username', required).field.left 
+
+          br
+          br
+          label(for='password' style="font-size:larger;") Enter Student Password
+          .ui.pointing.below.label.basic.red
+            .header Create a secure password: 
+              br
+              br
+              li The longer the password, the better. A minimum of 12 characters is ideal.
+              br
+              li Avoid personal information like birthdays or common password patterns, e.g. Dragon123 or 123456789.
+              br
+              li Store you passwords in a password manager app for ease of access!
+          input(type='password', name='password', id='password', placeholder='Password', required).field
+        h3.ui.header.blue="*The Facilitator assigned to this account is " + user.username +". They will be available in case you are in need of assistance." 
+        button.ui.big.green.button.buttonid(type='submit') Create
+        
+block styles
+    
+      
+block scripts
+  script(src='/module_js/base_end.js')
+  script(src='/module_js/base_start.js')
+  script(src='/module_js/base_tutorial.js')
+  script(src='/module_js/base_introSteps.js')
+  script.
+    function openFeedback(){
+      window.open(href='https://cornell.qualtrics.com/jfe/form/SV_9tMszwlpe1TIIxT');
+    };
+    function toPrivacyFreePlay(){       
+      window.location.href='/free-play/privacy';
+    };

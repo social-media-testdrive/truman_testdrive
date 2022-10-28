@@ -1,0 +1,29 @@
+extends ui_layout
+
+block content
+  .ui.sixteen.wide.row
+    .ui.sixteen.wide.column
+      h2.loginPageTitle Welcome to the Research Version of DART!
+  .ui.sixteen.wide.row 
+    .ui.sixteen.wide.column
+      h2.ui.header Login as Student
+      form.ui.form(action="/studentLogin", method='POST')
+        input(type='hidden', name='_csrf', value=csrfToken)
+        .field.six.wide.column
+          label(for='username' style="font-size:larger;") Username
+          input(type='text', name='username', id='username', placeholder='Username', required).field
+          label(for='password' style="font-size:larger;") Password
+          input(type='password', name='password', id='password', placeholder='Password', required).field
+        button.ui.big.green.button(type='submit') Login
+        
+block styles
+      
+block scripts
+  script(src='/module_js/base_end.js')
+  script.
+    function openFeedback(){
+      window.open(href='https://cornell.qualtrics.com/jfe/form/SV_9tMszwlpe1TIIxT');
+    };
+    function toPrivacyFreePlay(){       
+      window.location.href='/free-play/privacy';
+    };
