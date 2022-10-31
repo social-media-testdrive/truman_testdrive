@@ -655,7 +655,7 @@ $(window).on("load", function() {
         .modal('show');
 
     //lazy loading of images
-    $(`
+    $(`#content .fluid.card .img img,
     img.ui.avatar.image,
     a.avatar.image img`)
         .visibility({

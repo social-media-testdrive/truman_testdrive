@@ -6,7 +6,7 @@ block content
 
   .ui.container.removePadding
     //- Unique to Outcome Evaluation Study #3
-    if user.isStudent
+    if user!==undefined && user.isStudent
       .ui.success.huge.icon.message.noModsRemainingMessage.setDisplayNone
         i.circular.check.icon
         .header There are no remaining steps to complete. Nice work!

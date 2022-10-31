@@ -8,7 +8,7 @@
           if !isResearchVersion
             a.item(href='https://socialmediatestdrive.org/modules.html')
               img.ui.tiny.image(src=cdn+'/finalLogo.png', id='logo')
-          if user !==undefined && user.isInstructor 
+          else if user !==undefined && user.isInstructor 
             a.item(href='/classManagement')
               img.ui.tiny.image(src=cdn+'/finalLogo.png', id='logo')
           else
