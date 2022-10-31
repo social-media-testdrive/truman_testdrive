@@ -368,7 +368,7 @@ exports.newPost = (req, res) => {
         user.numPosts = user.numPosts + 1;
         post.postID = user.numPosts;
 
-        user.posts.unshift(post);
+        user.posts.push(post);
 
         user.save((err) => {
             if (err) {

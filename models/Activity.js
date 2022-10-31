@@ -17,7 +17,7 @@ const activitySchema = new mongoose.Schema({
 
     // User created posts 
     posts: [new Schema({
-        postID: Number, // Number for this post (1, 2, 3)
+        postID: Number, // Number for this post (0, 1, 2, 3)
         body: { type: String, default: '', trim: true }, // body of post or reply
         picture: String, // picture for post
         absTime: Date, // absolute date (time in real world), this post took place in
