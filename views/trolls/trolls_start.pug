@@ -1,0 +1,122 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container.addBottomMargin
+    br      
+    .ui.raised.segment
+      h3.ui.header
+        i.book.blue.icon
+        .content
+          | Learn
+      hr
+      .ui.basic.segment.removePadding
+        .ui.mini.green.right.labeled.icon.button.showLearnSectionButton
+          i.down.arrow.icon
+          |   Next
+      .ui.basic.segment.learnSegment.hidden
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | A <b>Troll</b> is a fake social media account that spreads misinformation.
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | A troll account is designed to seem like a real human's account. However, these 
+            | accounts can be identified using a few tricks and tips.  
+        .ui.mini.green.right.labeled.icon.button.showKeyTermsButton
+          i.down.arrow.icon
+          |   Next
+    
+    .ui.segment.keyIdeasSegment.hidden
+      h3.ui.header
+        i.key.blue.icon
+        .content Key Tactics to Spot a Troll
+      .sub.header 
+        i.hand.pointer.icon.grayElement
+        span.grayElement Click to reveal each tactic
+      br
+      .ui.stackable.two.column.grid
+        .ui.column
+          .keyTerm.ui.raised.segment.voiceover_keyTerm1
+            a.ui.blue.ribbon.label.keyTermLabel
+                span Tactic 1
+            span.hidden.keyTermDefinition  
+              | Explore a user's profile. Check for the following:
+              ul
+                li an account name that seems automatically generated 
+                li a profile photo that seems like a stock image from the web
+                li a missing bio or profile photo
+        .ui.column
+          .keyTerm.ui.raised.segment.voiceover_keyTerm2
+            a.ui.blue.ribbon.label.keyTermLabel
+                span Tactic 2
+            span.hidden.keyTermDefinition 
+              | Inspect the wording on a user's post. Check for the following:
+              ul
+                li repetitive comments
+                li use of many common phrases
+                li rapid and random changes in conversation
+        .ui.column
+          .keyTerm.ui.raised.segment.voiceover_keyTerm3
+            a.ui.blue.ribbon.label.keyTermLabel
+                span Tactic 3
+            span.hidden.keyTermDefinition 
+              | Investigate the times of a user's posts: Check if their posts occur: 
+              ul 
+                li too frequently and at an impossible rate
+                li at strange times
+                li too regularly
+        .ui.column
+          .keyTerm.ui.raised.segment.voiceover_keyTerm3
+            a.ui.blue.ribbon.label.keyTermLabel
+                span Tactic 4
+            span.hidden.keyTermDefinition 
+              | Examine a user's followers/following. Check if:
+              ul 
+                li the user's followers/following is a very small number of accounts 
+                li the user's followers/following seem to be troll accounts as well
+                li the user's followers/following do not seem to align with the views and posts of the user's account  
+    
+    .ui.warning.message#clickNextWarning
+      .header
+       | Click "Next"
+    .ui.warning.message#clickLabelsWarning
+     .header
+      | Click on each label to proceed   
+    a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
+        .ui.labeled.icon.button
+            i.rocket.icon
+            |   Got it!
+
+block scripts
+  script.
+    var voiceoverMappings = {
+      '.showLearnSectionButton': {
+        "initialDelay": 700,
+        "delay": 500,
+        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
+      },
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.1.mp3']
+      },
+      '.voiceover_keyTerm2': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.2.mp3']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.3.mp3']
+      }
+    };
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_start.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/start.css')  
+    
+    
