@@ -18,7 +18,7 @@ function insertPrint() {
 async function onPrint() {
     if ($('.results_print').hasClass('green')) {
         await insertPrint();
-        window.print();
+        // window.print();
 
         $(".insertPrint").css('display', 'none');
     } else {
