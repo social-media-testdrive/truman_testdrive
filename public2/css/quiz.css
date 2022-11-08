@@ -70,6 +70,11 @@ i.icon.hidden {
     font-size: 120%;
 }
 
+.insertPrint,
+.insertPrint * {
+    display: none !important;
+}
+
 
 /*------- SCREENSHOTS ---------*/
 
@@ -79,14 +84,15 @@ i.icon.hidden {
     }
     .insertPrint,
     .insertPrint * {
-        display: block;
-        overflow: visible;
+        display: block !important;
+        overflow: visible !important;
+    }
+    .ui.mini.green.right.labeled.icon.button.quizSegmentButton,
+    .ui.mini.green.right.labeled.icon.button.quizSegmentButton * {
+        display: none !important;
     }
     .ui.big.labeled.icon.button {
         display: none;
-    }
-    .ui.big.labeled.icon.button.blue.showExplanationButton {
-        visibility: hidden !important;
     }
     #scoreBannerHeader {
         visibility: hidden !important;
@@ -102,5 +108,22 @@ i.icon.hidden {
     .ui.form .field :disabled {
         pointer-events: none;
         opacity: 1;
+    }
+    label {
+        float: left;
+        clear: none;
+        display: block;
+    }
+    input[type=radio] {
+        float: left;
+        clear: none;
+        margin-top: 3px;
+    }
+    h4 i,
+    h3 i {
+        float: left;
+    }
+    span.inline {
+        display: inline !important;
     }
 }

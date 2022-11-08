@@ -66,7 +66,7 @@ block content
  
  
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
-          .ui.raised.segment.checkOne
+          .ui.raised.segment
             .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection2
               i.down.arrow.icon
               |   Next
@@ -74,38 +74,36 @@ block content
               .ui.label.resultsPromptLabel
                 h4.reflectionCheckboxesPrompt(data-questionNumber='Q1')
                   | #{reflectionData.presentation.Q1.prompt}
+              .content.checkOne
+                .ui.form
+                  .inline.fields(style="margin-top:10px")
+                    label(for='certainPeople', name='certainPeople') 
+                    .field
+                      .ui.checkbox
+                        input(type='checkbox')
+                        label(for='certainPeople', tabindex='0') 
+                          | #{reflectionData.presentation.Q1.checkboxLabels[0]}
 
-              .ui.form
-                br
-                .inline.fields
-                  label(for='certainPeople', name='certainPeople') 
-                  .field
-                    .ui.checkbox
-                      input(type='checkbox')
-                      label(for='certainPeople', tabindex='0') 
-                        | #{reflectionData.presentation.Q1.checkboxLabels[0]}
-
-              .ui.form
-                .inline.fields
-                  label(for='casual', name='casual') 
-                  .field
-                    .ui.checkbox
-                      input(type='checkbox')
-                      label(for='casual', tabindex='0') 
-                        | #{reflectionData.presentation.Q1.checkboxLabels[1]}
-                
-              .ui.form
-                .inline.fields
-                  label(for='meanPost', name='meanPost') 
-                  .field
-                    .ui.checkbox
-                      input(type='checkbox')
-                      label(for='meanPost', tabindex='0') 
-                        | #{reflectionData.presentation.Q1.checkboxLabels[2]}
-  
-
+                .ui.form
+                  .inline.fields
+                    label(for='casual', name='casual') 
+                    .field
+                      .ui.checkbox
+                        input(type='checkbox')
+                        label(for='casual', tabindex='0') 
+                          | #{reflectionData.presentation.Q1.checkboxLabels[1]}
+                  
+                .ui.form
+                  .inline.fields
+                    label(for='meanPost', name='meanPost') 
+                    .field
+                      .ui.checkbox
+                        input(type='checkbox')
+                        label(for='meanPost', tabindex='0') 
+                          | #{reflectionData.presentation.Q1.checkboxLabels[2]}
+    
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
-          .ui.raised.segment.radioOne
+          .ui.raised.segment
             .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection3
               i.down.arrow.icon
               |   Next
@@ -113,9 +111,8 @@ block content
               .ui.label.resultsPromptLabel
                 h4.reflectionRadioPrompt(data-questionNumber='Q2')
                   | #{reflectionData.presentation.Q2.prompt}
-              .ui.form
-                br
-                .inline.fields
+              .ui.form.radioOne
+                .inline.fields(style="margin-top:10px")
                   .field
                     .radio.checkbox
                       input(type='radio', value="yes", name='make', tabindex='0', id="make_yes")

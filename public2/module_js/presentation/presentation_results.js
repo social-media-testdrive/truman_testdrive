@@ -4,8 +4,9 @@ function onPrint() {
         $(".insertPrint").css('display', 'block');
 
         $(".selectPostsQuestion1").clone().appendTo(".insertPrint");
-        $(".insertPrint").append('<div class="breakHere"</div>');
 
+
+        $(".insertPrint").append("<br><h4>How were the posts in Elena's finsta different from the ones in her main account?</h4>");
         $(".checkOne").clone().removeClass('reflectionPromptSegment').appendTo(".insertPrint");
 
         // At the moment of cloning and appending a radio element to ".insertPrint",
@@ -20,6 +21,7 @@ function onPrint() {
             .closest('.ui.segment')
             .find('.radio.checkbox input:checked').val();
 
+        $(".insertPrint").append("<h4>Did you create a post on the TestDrive timeline ?</h4>");
         $(".radioOne").clone().removeClass('reflectionPromptSegment').appendTo(".insertPrint");
 
         $(".insertPrint").append("<h4>How did you think about the audience when you created your post?</h4>");

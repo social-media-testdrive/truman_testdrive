@@ -38,6 +38,16 @@ i.icon.yellowIcon {
     max-width: 15em;
 }
 
+.ui.card>.content>.description,
+.ui.cards>.card>.content>.description {
+    word-wrap: break-word;
+}
+
+.insertPrint,
+.insertPrint * {
+    display: none !important;
+}
+
 
 /*------- SCREENSHOTS ---------*/
 
@@ -58,5 +68,14 @@ i.icon.yellowIcon {
     }
     .breakHere {
         page-break-before: always;
+    }
+    .ui.stackable.three.cards,
+    .inline {
+        display: flex !important;
+        flex-direction: row !important;
+    }
+    h4 i,
+    h3 i {
+        float: left;
     }
 }
