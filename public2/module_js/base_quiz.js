@@ -363,17 +363,16 @@ function onPrint() {
         var scoreBannerText = document.getElementById("scoreBannerHeader").innerHTML;
         let scoreBannerToAppend = $(document.getElementById("scoreBannerHeader")).clone().removeAttr('id');
         scoreBannerToAppend.innerHTML = scoreBannerText;
-        $(".insertPrint").append(scoreBannerToAppend);
+        if (scoreBannerText !== undefined && scoreBannerText !== '') {
+            $(".insertPrint").append(scoreBannerToAppend);
+        }
 
         $('.radioQuestion').each(function() {
             $(this).clone().removeClass('quizPromptSegment').appendTo(".insertPrint");
         });
-
         window.print();
 
         $(".insertPrint").css('display', 'none');
-        $(".insertPrint").empty();
-
         // reset radio selections to original radio inputs
         $('.quizRadioPrompt').each(function(index) {
             $(this)

@@ -78,4 +78,7 @@ i.icon.yellowIcon {
     h3 i {
         float: left;
     }
+    .ui.label {
+        background-color: transparent !important;
+    }
 }

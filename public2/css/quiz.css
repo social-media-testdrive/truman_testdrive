@@ -126,4 +126,7 @@ i.icon.hidden {
     span.inline {
         display: inline !important;
     }
+    .ui.label {
+        background-color: transparent !important;
+    }
 }
