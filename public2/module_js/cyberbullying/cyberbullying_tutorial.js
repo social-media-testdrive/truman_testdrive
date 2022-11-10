@@ -3,26 +3,28 @@ const nextPageURL = 'tut_guide';
 const stepsList = [
   {
     element: '#step1',
-    intro: `Click "Next" to begin!`,
+    intro: `NEW Click "Next" to begin!`,
     position: 'right',
     scrollTo: 'tooltip',
     audioFile: ['']
   },
   {
     element: '#step1',
-    intro: `You have recently seen that some people keep saying mean
-    things about Dylan. A group of friends from school are bullying
-    Dylan on social media.`,
+    // intro: `You have recently seen that some people keep saying mean
+    // things about Dylan. A group of friends from school are bullying
+    // Dylan on social media.`,
+    intro: `You were looking through your friend requests on social media and came across a user named Harmony Anderson who has requested to be your friend.`,
     position: 'right',
     scrollTo: 'tooltip',
     audioFile: ['CUSML.6.3.1.mp3']
   },
   {
     element: '#step1',
-    intro: `<b>Cyberbullying</b> is when someone posts or shares
-    negative things about someone else online. <br>The <b>bully</b> may
-    use digital devices, sites, or apps. The bully often does this again
-    and again to the same person.`,
+    // intro: `<b>Cyberbullying</b> is when someone posts or shares
+    // negative things about someone else online. <br>The <b>bully</b> may
+    // use digital devices, sites, or apps. The bully often does this again
+    // and again to the same person.`,
+    intro: `A <b>troll</b> is a fake social media account, often created to spread misleading information.`,
     position: 'right',
     scrollTo: 'tooltip',
     audioFile: ['CUSML.6.3.2.mp3']
