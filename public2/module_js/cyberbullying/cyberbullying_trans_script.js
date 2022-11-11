@@ -6,7 +6,7 @@ const stepsList = [
     audioFile: ``
   },
   {
-    intro: `Changed Now you get to explore the TestDrive timeline! You can read
+    intro: `Now you get to explore the TestDrive timeline! You can read
     what others have posted, respond, or make your own posts.`,
     audioFile: [`CUSML.6.6.1.mp3`]
   },

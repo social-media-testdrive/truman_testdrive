@@ -421,3 +421,72 @@ button,
 .image-upload>input {
     display: none;
 }
+
+#harmonyBox {
+    width: 545px;
+    height: 146px;
+    background-color: transparent;
+    z-index: 999999999;
+    position: absolute;
+    top: 265px;
+}
+
+#nextPage {
+    width: 150%;
+    margin-left: -132px;
+    margin-top: 20px;
+}
+
+#populated-data {
+    width: 240px;
+    height: 160px;
+    background-color: transparent;
+    /* background-color: rgba(0,0,128,0.2); */
+    z-index: 999999999;
+    position: absolute;
+    top: 395px;
+    left: 50px;
+}
+
+#harmony-pic {
+    position: absolute;
+    top: 220px;
+    left: 64px;
+    width: 165px;
+    height: 165px;
+    border-radius: 50% !important;
+    background-color: transparent;
+    z-index: 999999999;
+}
+
+#tweets-number {
+    width: 220px;
+    height: 40px;
+    background-color: transparent;
+    z-index: 999999999;
+    position: absolute;
+    top: 320px;
+    left: 310px;
+}
+
+#opinions {
+    width: 400px;
+    height: 84px;
+    /* background-color: rgba(0,0,128,0.2); */
+    background-color: transparent;
+    z-index: 999999999;
+    position: absolute;
+    top: 450px;
+    left: 350px;
+}
+
+#reactions {
+    width: 175px;
+    height: 18px;
+    /* background-color: rgba(0,0,128,0.2); */
+    background-color: transparent;
+    z-index: 999999999;
+    position: absolute;
+    top: 540px;
+    left: 353px;
+}

@@ -1,7 +1,3 @@
-/*
- * Module dependencies
- * Joss Tripoli
- */
 const express = require('express');
 const _ = require('lodash');
 const session = require('express-session');
