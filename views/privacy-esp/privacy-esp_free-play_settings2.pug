@@ -1,0 +1,171 @@
+extends ../ui_layout
+
+block content
+  
+  .computer.only.tablet.only.four.wide.column 
+  .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
+    .ui.one.column.centered.grid.feedbackMessagesGrid
+      .ui.fixed.bottom.sticky
+        .ui.icon.compact.message.warning#removeHidden
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header ¿Necesitas ayuda? 
+            p ¡Asegúrate de hacer clic en "Listo" en los puntos azules!
+          
+        .ui.icon.message.warning#clickAllDotsWarning
+          i.close.icon
+          i.hand.pointer.icon.float
+          .content
+            .ui.header ¡Todavía quedan puntos azules por encontrar!
+            p Haz clic en todos los puntos azules para continuar.
+    
+    .ui.container.addTopMargin#hint1
+      h2.ui.header#topOfPage Configuraciónes de privacidad
+      br
+      .ui.divider
+      br
+      form.ui.form
+        .grouped.fields
+          label.sectionTitle(for='account') Configuraciónes de cuenta
+            .field#hint2
+              br
+              .ui.warning.message#privateAccountCueText
+                .header
+                  | Active la configuración de "cuenta privada"
+              .ui.toggle.checkbox#privateAccountCue(name='togglePrivateAccount')
+                input(type='checkbox' name='toggleValue')
+                label Cuenta Privada
+            span.settingSmallLabel Cuando su cuenta es privada, solo las personas que usted aprueba pueden ver sus publicaciones.
+            br
+            br
+            
+      .ui.divider
+      br
+      form.ui.form
+        .grouped.fields
+            label.sectionTitle(for='interaction') Configuraciónes de Interacción
+            br
+            br
+            label.subsectionTitle(for='contacts') Contactos
+            .field
+              br
+              label.standardLabel Permitir solicitudes de amistad de
+                .div
+                .ui.selection.disabled.dropdown
+                  input(type='hidden' name='friendRequests')
+                  i.dropdown.icon
+                  .default.text Seleccionar
+                  .menu
+                    .item(data-value='0') Todos
+                    .item(data-value='1') Amigos de amigos
+            br
+            .field
+              label.standardLabel ¿Quién puede ver mi lista de amigos?
+                .div
+                .ui.selection.disabled.dropdown
+                  input(type='hidden' name='friendList')
+                  i.dropdown.icon
+                  .default.text Seleccionar
+                  .menu
+                    .item(data-value='0') Todos
+                    .item(data-value='1') Amigos de amigos
+                    .item(data-value='2') Amigos
+                    .item(data-value='3') Solo yo
+            br
+            label.subsectionTitle(for='comments') Comentarios
+            .field
+              br
+              label.standardLabel Permitir comentarios de
+                .div
+                .ui.selection.disabled.dropdown
+                  input(type='hidden' name='friendRequests')
+                  i.dropdown.icon
+                  .default.text Seleccionar
+                  .menu
+                    .item(data-value='0') Todos
+                    .item(data-value='1') Amigos de amigos
+                    .item(data-value='2') Amigos
+                    .item(data-value='3') Solo yo
+            br
+            .field
+              label.standardLabel Bloquear comentarios de
+              .div
+                select.ui.fluid.search.disabled.dropdown(multiple='')
+                  option Nombre F. 
+                  option Soyun Robot
+                  option Carolina Jara
+                  option María Cristina Rodríguez
+                  option Ana Pereira
+                  option Sandra Gómez
+                  option Laura Ochoa
+                  option Roberto Sánchez
+                  option Juana Ramirez
+                  option Alonso Contreras
+                  option Camilo Rojas
+                  option Carmen García
+                  option Julio César Hernandez
+                  option Sara Segovia
+                  option Luis Alberto Torres
+                  option Eugenia Espósito
+                  option María Villalobos
+                  option Antonio Da Silva
+                  option Daniel Ríos
+                  option David López
+                  option Valery Reyes
+                  option Maria Alejandra Sanchez
+                  option Milagros Cardenas
+                  option Valeria Vargas
+            br
+            label.subsectionTitle(for='tags') Etiquetas
+              .field
+                br
+                .ui.toggle.read-only.checkbox
+                  input(type='checkbox' name='public')
+                  label Permitir etiquetas
+              .field
+                .ui.toggle.read-only.checkbox
+                  input(type='checkbox' name='public')
+                  label Agregar automáticamente publicaciones etiquetadas a mi feed
+                  br
+                  br
+      .ui.divider
+      br
+      form.ui.form
+        .grouped.fields
+            label.sectionTitle(for='information') Configuraciónes de ubicación
+              .field
+                br
+                .ui.toggle.read-only.checkbox
+                  input(type='checkbox' name='locationShare')
+                  label Activar la función de compartir ubicación
+            .field
+              br
+              label.standardLabel Compartir mi ubicación con
+                .div
+                .ui.selection.disabled.dropdown#locationDropdown
+                  input(type='hidden' name='resetDropdownSelection')
+                  i.dropdown.icon
+                  .default.text Seleccionar
+                  .menu
+                    .item(data-value='0') Todos
+                    .item(data-value='1') Amigos de amigos
+                    .item(data-value='2') Amigos
+                    .item(data-value='3') Solo yo
+            br
+            .ui.divider
+            br#hint3
+
+    button.ui.big.labeled.icon.button.free3.addBottomMargin#cyberTransButton
+        i.rocket.icon
+        |   ¡Listo!
+        
+        
+block scripts
+  script(src="/module_js/privacy-esp/privacy-esp_free-play_settings2.js")
+  script(src="/module_js/voiceover.js")
+  script(src="/module_js/base_sim.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/sim.css')
+  link(rel='stylesheet', href='/css/modules/privacy.css')

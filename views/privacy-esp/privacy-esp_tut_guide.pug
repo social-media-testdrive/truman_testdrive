@@ -7,67 +7,65 @@ block content
     .ui.raised.segment
       .button.ui.mini.green.right.labeled.icon.button#tut_guide_start
         i.down.arrow.icon
-        | Start    
+        | Comenzar   
       .ui.basic.segment.hidden
         h2.ui.header
-          .content What are some things I can do to protect my privacy?
+          .content ¿Cuáles son algunas cosas que puedo hacer para proteger mi privacidad?
             br
             h5.ui.header
               i.arrow.circle.right.blue.icon
               .content.
-                Before you can protect your information, you need to understand 
-                what companies are collecting about you.
+                Antes de proteger tu información, tienes que entender qué recopilan las empresas sobre ti.
             h5.ui.header
               i.arrow.circle.right.blue.icon
               .content.
-                Social media sites have a privacy policy that explains what 
-                information they collect about you and what they do with it.
+                Las redes sociales tienen una política de privacidad que explica qué información recopila sobre ti y qué hacen con ella.
         br
         .button.ui.mini.green.right.labeled.icon.button#tut_guide_next
           i.down.arrow.icon
-          | Next    
+          | Seguir   
     br  
     #instructionSegment.content.hidden
       .ui.compact.segment
         .ui.large.read-only.checked.checkbox.exampleCheckbox
           input.ui(type="checkbox" id="" checked="")
-          label Read and check all the boxes below
+          label Lee y haz check privacy.en las opciones que aparecen a continuación
     #askQuestion.ui.raised.segment.hidden
       .ui.basic.segment
         h2.ui.header#point3
           .content
-            | Remember the word ASK when you analyze a privacy policy. ASK yourself…
+            | Recuerda la palabra PREGUNTAR cuando analices una política de privacidad. Pregúntate a ti mismo...
         .content.ui.list
             .item
               .ui.segment.requiredCheckbox
                 .ui.checkbox
                   input.requiredCheckboxInput(type="checkbox")
                   label.
-                    Accessed: What will be #[b accessed] or collected by the company?
+                    Acceso: ¿Qué información recopilará o tendrá #[b acceso] la empresa?
             .item
               .ui.segment.requiredCheckbox
                 .ui.checkbox
                   input.requiredCheckboxInput(type="checkbox")
                   label.
-                    Shared: What will be #[b shared] with other companies?
+                    Compartir: ¿Qué se #[b compartirá] con otras compañías?
             .item
               .ui.segment.requiredCheckbox
                 .ui.checkbox
                   input.requiredCheckboxInput(type="checkbox")
                   label.
-                    Known: What could be #[b known] about me if I use this?              
+                    Saber: ¿Qué se puede #[b saber] de mí si uso esto?              
     .ui.warning.message#checkAllWarning
       .header
-        | Check all the boxes to proceed
+        | Revisa todas las opciones para seguir
     .ui.warning.message#clickStartWarning
       .header
-        | Click "Start"
+        | Haz clic en "Comenzar"
     .ui.warning.message#clickNextWarning
       .header
-        | Click "Next"
+        | Haz clic "Seguir"
     .ui.big.labeled.icon.button.cybersim2#privacyTutGuideButton
         i.rocket.icon
-        |   Got it!
+        |   ¡Listo!
 
 block scripts
   script.
@@ -83,7 +81,7 @@ block scripts
         'files': ['CUSML.7.3.4.mp3','CUSML.7.3.5.mp3','CUSML.7.3.6.mp3','CUSML.7.3.7.mp3']
       }
     };
-  script(src="/module_js/privacy/privacy_tut_guide.js")
+  script(src="/module_js/privacy-esp/privacy-esp_tut_guide.js")
   script(src='/module_js/voiceover.js')
 
 block styles

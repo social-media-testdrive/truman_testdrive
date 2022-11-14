@@ -5,49 +5,49 @@ block content
   .ten.wide.computer.twelve.wide.tablet.sixteen.wide.mobile.column.centered
     
     .ui.basic.segment.addBottomMargin
-      h1 What would you like to do next?
+      h1 ¿Que te gustaría hacer?
       .ui.raised.segment
         h3.ui.header
           .content
-            | Would you like to:
+            | Te gustaría:
         hr
         .ui.basic.segment.center.aligned
           .ui.big.green.labeled.icon.button.finish.endPageButton
               i.checkmark.icon
-              |   Finish Lesson
+              |   Finalizar la lección
           br
           br
           .ui.big.green.labeled.icon.button.finish.endPageButton
               i.chevron.circle.right.icon
-              |   See Other Modules
+              |   Ver otro módulos
           br
           br
           a(href='javascript:void(0);', onclick='javascript:startIntroOne();')
               .ui.big.green.labeled.icon.button.endPageButton
                   i.edit.icon
-                  |   Give Us Feedback
+                  |   Contarnos tu opinión
         
       .ui.raised.segment
         h3.ui.header
           .content
-            | You can also go back into the module to:
+            | También puedes regresar al módulo para:
 
         hr
         .ui.basic.segment.center.aligned
           .ui.big.blue.labeled.icon.button.cybertutorial.endPageButton
               i.chevron.circle.left.icon
-              |   Learn Key Ideas
+              |   Aprender el vocabulario clave
           br
           br
           .ui.big.blue.labeled.icon.button.cybersim.endPageButton
               i.chevron.circle.left.icon
-              |   Practice Skills
+              |   Practicar tus habilidades
           br
           br
           a(href='javascript:void(0);', onclick='javascript:startIntroTwo();')
               .ui.big.blue.labeled.icon.button.endPageButton
                   i.chevron.circle.left.icon
-                  |  Explore Timeline
+                  |  Explorar el feed
       
 block scripts
   script(src='/module_js/base_end.js')
@@ -58,5 +58,5 @@ block scripts
     };
     
     function startIntroTwo(){       
-          window.location.href='/free-play/privacy';
+          window.location.href='/free-play/privacy-esp';
         };
