@@ -24,10 +24,6 @@ block content
             span.hidden.keyTermDefinition  
               | A troll is a fake social media account that spreads misinformation.
         brbr
-        //- h5.ui.header
-        //-   i.arrow.circle.right.blue.icon
-        //-   .content
-        //-     | A <b>Troll</b> is a fake social media account that spreads misinformation.
         .ui.mini.green.right.labeled.icon.button.showKeyTermsButton
           i.down.arrow.icon
           |   Next
@@ -38,103 +34,162 @@ block content
         i.key.blue.icon
         .content Key Tactics to Spot a Troll
       hr
-      //- .sub.header 
-      //-   i.hand.pointer.icon.grayElement
-      //-   span.grayElement Click to reveal each tactic
-      h3 Explore a user's profile. Check for the following:
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
+      h3 Explore a user's profile. 
+      //- Check for the following:
+      //- h5.ui.header
+      //-   i.arrow.circle.right.blue.icon
+      //-   .content
+      //-     p account name that seems automatically generated 
+      //- h5.ui.header
+      //-   i.arrow.circle.right.blue.icon
+      //-   .content
+      //-     p a profile photo that seems like a stock image from the web
+      //- h5.ui.header
+      //-   i.arrow.circle.right.blue.icon
+      //-   .content
+      //-     p a missing bio or profile photo
+      //- img.ui.fluid.image(src='/images/troll_profile.png')
+      .ui.centered.card
+        .card
+          .content
+            img.right.floated.ui.image(src='/images/stock_image.png')
+            .strong.header
+              | Karen Smith
+            .meta
+              | @asdfkjjklj
+            .description
+              | Bio
+          .extra.content
+            .ui.two.buttons
+              .ui.basic.black.button 15 followers
+              .ui.basic.black.button 10 following
+      h3 Inspect the wording on a user's post. 
+      //- Check for the following:
+      //- h5.ui.header
+      //-   i.arrow.circle.right.blue.icon
+      //-   .content
+      //-     p repetitive comments
+      //- h5.ui.header
+      //-   i.arrow.circle.right.blue.icon
+      //-   .content
+      //-     p use of many common phrases
+      //- h5.ui.header
+      //-   i.arrow.circle.right.blue.icon
+      //-   .content
+      //-     p rapid and random changes in conversation
+      .ui.centered.card
         .content
-          p account name that seems automatically generated 
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          p a profile photo that seems like a stock image from the web
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          p a missing bio or profile photo
-      img(src='./troll_profile.png')
-      h3 Inspect the wording on a user's post. Check for the following:
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          p repetitive comments
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          p use of many common phrases
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          p rapid and random changes in conversation
+          img.right.floated.mini.ui.image(src='/images/stock_image.png')
+          .header 
+            | Karen Smith
+          .meta 
+            | @asdfkjjklj
+          .description
+            p It's a cult!
+        .extra.content
+          span.left.floated.like
+            i.like.icon
+            |       Like
+          p.right.floated
+            |       5:12 PM - October 5, 2020
+      //- img.ui.fluid.image(src='/images/troll_post.png')
       h3 Investigate the times of a user's posts: Check if their posts occur: 
+      //- h5.ui.header
+      //-   i.arrow.circle.right.blue.icon
+      //-   .content
+      //-     p too frequently and at an impossible rate
+      //- h5.ui.header
+      //-   i.arrow.circle.right.blue.icon
+      //-   .content
+      //-     p at strange times
+      //- h5.ui.header
+      //-   i.arrow.circle.right.blue.icon
+      //-   .content
+      //-     p too regularly
+      .ui.three.column.grid
+        .column
+          .ui.centered.card
+            .content
+              img.right.floated.mini.ui.image(src='/images/stock_image.png')
+              .header 
+                | Karen Smith
+              .meta 
+                | @asdfkjjklj
+              .description
+                p “A paranoid is someone who knows a little of what's going on. ” ― William S. Burroughs
+            .extra.content
+              span.left.floated.like
+                i.like.icon
+                |       Like
+              p.right.floated
+                |       3:34 AM - May 4, 2022
+        .column
+          .ui.centered.card
+            .content
+              img.right.floated.mini.ui.image(src='/images/stock_image.png')
+              .header 
+                | Karen Smith
+              .meta 
+                | @asdfkjjklj
+              .description
+                p Don't ask what meaning of life is. You define it. #quote #true
+            .extra.content
+              span.left.floated.like
+                i.like.icon
+                |       Like
+              p.right.floated
+                |       3:35 AM - May 4, 2022
+        .column
+          .ui.centered.card
+            .content
+              img.right.floated.mini.ui.image(src='/images/stock_image.png')
+              .header 
+                | Karen Smith
+              .meta 
+                | @asdfkjjklj
+              .description
+                p Man forging a check to get groceries in a crisis = "criminal"
+            .extra.content
+              span.left.floated.like
+                i.like.icon
+                |       Like
+              p.right.floated
+                |       12:00 PM - May 5, 2022
+      //- img.ui.fluid.image(src='/images/troll_posts.png')
+      h3 Examine a user's followers/following. Check if the user's followers/following:
       h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          p too frequently and at an impossible rate
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          p at strange times
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          p too regularly
-      h3 Examine a user's followers/following. Check if the user's followers/follwing:
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          p is a very small number of accounts 
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          p seem to be troll accounts as well
-      h5.ui.header
-        i.arrow.circle.right.blue.icon
-        .content
-          p do not seem to align with the views and posts of the user's account 
-      //- .ui.stackable.two.column.grid
-      //-   .ui.column
-      //-     .keyTerm.ui.raised.segment.voiceover_keyTerm1
-      //-       a.ui.blue.ribbon.label.keyTermLabel
-      //-           span Tactic 1
-      //-       span.hidden.keyTermDefinition  
-      //-         | Explore a user's profile. Check for the following:
-      //-         ul
-      //-           li an account name that seems automatically generated 
-      //-           li a profile photo that seems like a stock image from the web
-      //-           li a missing bio or profile photo
-      //-   .ui.column
-      //-     .keyTerm.ui.raised.segment.voiceover_keyTerm2
-      //-       a.ui.blue.ribbon.label.keyTermLabel
-      //-           span Tactic 2
-      //-       span.hidden.keyTermDefinition 
-      //-         | Inspect the wording on a user's post. Check for the following:
-      //-         ul
-      //-           li repetitive comments
-      //-           li use of many common phrases
-      //-           li rapid and random changes in conversation
-      //-   .ui.column
-      //-     .keyTerm.ui.raised.segment.voiceover_keyTerm3
-      //-       a.ui.blue.ribbon.label.keyTermLabel
-      //-           span Tactic 3
-      //-       span.hidden.keyTermDefinition 
-      //-         | Investigate the times of a user's posts: Check if their posts occur: 
-      //-         ul 
-      //-           li too frequently and at an impossible rate
-      //-           li at strange times
-      //-           li too regularly
-      //-   .ui.column
-      //-     .keyTerm.ui.raised.segment.voiceover_keyTerm3
-      //-       a.ui.blue.ribbon.label.keyTermLabel
-      //-           span Tactic 4
-      //-       span.hidden.keyTermDefinition 
-      //-         | Examine a user's followers/following. Check if the user's followers/follwing:
-      //-         ul 
-      //-           li the user's followers/following is a very small number of accounts 
-      //-           li the user's followers/following seem to be troll accounts as well
-      //-           li the user's followers/following do not seem to align with the views and posts of the user's account  
+      //-   i.arrow.circle.right.blue.icon
+      //-   .content
+      //-     p is a very small number of accounts 
+      //- h5.ui.header
+      //-   i.arrow.circle.right.blue.icon
+      //-   .content
+      //-     p seem to be troll accounts as well
+      //- h5.ui.header
+      //-   i.arrow.circle.right.blue.icon
+      //-   .content
+      //-     p do not seem to align with the views and posts of the user's account
+      .ui.centered.card
+        .card
+          .content
+            img.right.floated.mini.ui.image(src='/images/missing_photo.png')
+            .strong.header
+              | Joe Kelly
+            .meta
+              | @politicslover123
+            //- .description
+            //-   | Bio
+          .extra.content
+            .ui.two.buttons
+              .ui.basic.black.button 15,000 followers
+              .ui.basic.black.button 4 following
+            .ui.two.buttons
+              .ui.basic.grey.button
+              .ui.basic.grey.button 
+                | @asdkfaj
+                | @random_person36
+                | @b0t_xox4456
+                | @ryan_r_8991
     
     .ui.warning.message#clickNextWarning
       .header
