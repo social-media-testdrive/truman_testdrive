@@ -448,16 +448,7 @@ button,
     left: 50px;
 }
 
-#harmony-pic {
-    position: absolute;
-    top: 220px;
-    left: 64px;
-    width: 165px;
-    height: 165px;
-    border-radius: 50% !important;
-    background-color: transparent;
-    z-index: 999999999;
-}
+
 
 #tweets-number {
     width: 220px;
@@ -489,4 +480,45 @@ button,
     position: absolute;
     top: 540px;
     left: 353px;
+}
+
+#harmony-page {
+    width: 150% !important;
+    margin-left: -132px;
+
+    background-color: #e7edf0;
+}
+
+#buttons-menu {
+    background-color: white;
+    height: 60px;
+    top: -15px;
+    z-index: 0;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
+}
+
+#toploggedin {
+    background-color: white;
+}
+
+#round-pic-container{
+    position: absolute;
+    top: 130px;
+    left: 65px;
+    z-index: 10;
+    /* background-color: green; */
+    width: 170px;
+    height: 170px;
+}
+
+#pic-border {
+    box-sizing: border-box;
+    padding: 4px;
+    background-color: white;
+}
+
+#pic-border, #harmony-pic {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
 }

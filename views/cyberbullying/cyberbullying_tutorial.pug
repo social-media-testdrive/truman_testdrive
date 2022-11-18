@@ -170,40 +170,58 @@ block content
       #opinions
       #reactions
 
-  .ui.fluid.card.dim(style = "margin-bottom:0px")
-    .profile_title(style='position: relative; top: 0; left: 0; ')
-      img(style='width:100%; z-index: 0;position: relative;\
-top: 0;\
-left: 0;\
-solid; z-index = -1' src='/profile_pictures/Z-backgoundAndres.jpg')
-      img(style='border-radius: 50%; width:30%; z-index: 2; position: absolute;\
-top: 55%;\
-left: 3%;\
-border: 4px white solid;z-index: 1' src='/profile_pictures/user81.jpg')
-    .bio(style=' width:100%;\
-padding-left: 25px; margin-top: 4%;z-index: 1')
-      .ui.button(style='float: right;margin-right: 25px;')
-          | follow
-      .br  Harmony Anderson 
-      .br  @HarmonyAnders
-      .br  The college girl who managed to stay conservative #prolife #pro2A #AmericaFirst This is my 2nd account where I share my political and social views
-      .br  Ankeny, Iowa
-      .br Joined September 2019
-    .three.ui.bottom.attached.icon.buttons
-      .ui.reply.button(tabindex='0')
-        | Tweets
-      .ui.flag.button()
-        | Tweets&Replies
-      .ui.labeled.button(tabindex='0')
-        .ui.like.button
-          | Likes
+    //- #nextPage.ui.fluid.card.test       
 
-  //- #nextPage      
-  //- block content 
+    #harmony-page.ui.fluid.card.dim(style = "margin-bottom:0px")
+      #toploggedin.content
+        .right.floated.meta= "2:07pm"
+        |
+        a(href='')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user55.jpg')
+          span='Logged In'
+      .profile_title(style='position: relative; top: 0; left: 0; ')
+        img(style='height:10%;width:100%; z-index: 0;position: relative;\
+  top: 0;\
+  left: 0;\
+  solid; z-index = -1' src='/profile_pictures/harmony-bg.jpg')
+        #round-pic-container
+          #pic-border
+            img(id="harmony-pic" src='/profile_pictures/user81.jpg')
+        //- #buttons-menu.four.ui.bottom.attached.icon.buttons
+        //-       .ui.reply.button(tabindex='0')
+        //-         | Blah
+        //-       .ui.flag.button()
+        //-         | Tweets&Replies
+        //-       .ui.labeled.button(tabindex='0')
+        //-         .ui.like.button
+        //-           | Likes
+        //-       .ui.flag.button()
+        //-         | Tweets&Replies
+        #buttons-menu.four.ui.bottom.attached.icon.buttons
+      .bio(style=' width:100%;\
+  padding-left: 25px; margin-top: 15%;z-index: 1')
+        .ui.button(style='float: right;margin-right: 25px;')
+            | follow
+        .br  Harmony Anderson 
+        .br  @HarmonyAnders
+        .br  The college girl who managed to stay conservative #prolife #pro2A #AmericaFirst This is my 2nd account where I share my political and social views
+        .br  Ankeny, Iowa
+        .br Joined September 2019
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          | Tweets
+        .ui.flag.button()
+          | Tweets&Replies
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            | Likes
 
-  //-   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
-    
-  //-     //-####################### title
+    //- #nextPage      
+    //- block content 
+
+    //-   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+      
+    //-     //-####################### title
   //-     .ui.fluid.card.dim(style = "margin-bottom:0px")
   //-       .profile_title(style='position: relative; top: 0; left: 0; ')
   //-       img(style='width:100%; z-index: 0;position: relative;\
