@@ -13,17 +13,17 @@ block content
           .content
             .ui.header Need some help?
             p Scroll up and click "Next" to begin!
-    #step1.ui.fluid.card.test       
-      .content
-        .right.floated.meta= "2:05pm"
-        |
-        a(href='')
-          img.ui.avatar.image(src=cdn+'/profile_pictures/user55.jpg')
-          span='Logged In'
-        h1 Your Friend Requests
-      .image
-        img.post(src="/images/friend-request.png")
-      #harmonyBox
+    //- ui.fluid.card.test       
+    //-   .content
+    //-     .right.floated.meta= "2:05pm"
+    //-     |
+    //-     a(href='')
+    //-       img.ui.avatar.image(src=cdn+'/profile_pictures/user55.jpg')
+    //-       span='Logged In'
+    //-     h1 Your Friend Requests
+    //-   .image
+    //-     img.post(src="/images/friend-request.png")
+    //-   #harmonyBox
       //- .content
       //-   .description="Wow, look at these new awesome kicks!!! :D "
       //- .three.ui.bottom.attached.icon.buttons
@@ -83,22 +83,79 @@ block content
       #opinions
       #reactions
 
-      //- .content
-      //-   .description="Wow, look at these new awesome kicks!!! :D "
-      //- .three.ui.bottom.attached.icon.buttons
-      //-   .ui.reply.button(tabindex='0')
-      //-     i.reply.icon
-      //-     |  Reply
-      //-   .ui.flag.button(tabindex='0')
-      //-     i.flag.icon
-      //-     |  Flag
-      //-   .ui.labeled.button(tabindex='0')
-      //-     .ui.like.button
-      //-       i.heart.icon
-      //-       |  Like
-      //-     a.ui.basic.red.left.pointing.label.count=2
-          
-      
+      .content
+        .description="Wow, look at these new awesome kicks!!! :D "
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+
+
+    #step1.ui.fluid.card.test       
+      .content
+        .right.floated.meta= "2:05pm"
+        |
+        a(href='')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user55.jpg')
+          span='Logged In'
+        h1 Your Friend Requests
+      //- .image
+      //-   img.post(src="/images/friend-request.png")
+      //- #harmonyBox
+
+      .ui.centered.cards#step2
+        .card
+          .content
+            img.right.floated.medium.ui.image(src='/images/harmony-pic.jpg')
+            .header
+              | Harmony Anderson
+            .meta
+              | 2 mutual friends
+            .description
+              | Harmony has requested to be your friend
+          .extra.content
+            .ui.two.buttons
+              .ui.basic.green.button Approve
+              .ui.basic.red.button Decline
+        .card
+          .content
+            img.right.floated.medium.ui.image(src='/images/elvis-pic.jpeg')
+            .header
+              | Elvis Pres1ey
+            .meta
+              | 0 mutual friends
+            .description
+              | Elvis Pres1ey has requested to be your friend 
+          .extra.content
+            .ui.two.buttons
+              .ui.basic.green.button Approve
+              .ui.basic.red.button Decline
+
+        .card
+          .content
+            img.right.floated.medium.ui.image(src='/images/chris-pic.jpg')
+            .header
+              | Christopher Worrick
+            .meta
+              | 16 mutual friends
+            .description
+              | Christopher Worrick has requested to be your friend 
+          .extra.content
+            .ui.two.buttons
+              .ui.basic.green.button Approve
+              .ui.basic.red.button Decline
+            
+
+
+        
 
 
 block scripts

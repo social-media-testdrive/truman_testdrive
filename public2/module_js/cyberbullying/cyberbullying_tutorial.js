@@ -3,13 +3,13 @@ const nextPageURL = 'tut_guide';
 const stepsList = [
   {
     element: '#step1',
-    intro: `NEW Click "Next" to begin!`,
+    intro: `Click "Next" to begin!`,
     position: 'right',
     scrollTo: 'tooltip',
     audioFile: ['']
   },
   {
-    element: '#harmonyBox',
+    element: '#step2',
     // intro: `You have recently seen that some people keep saying mean
     // things about Dylan. A group of friends from school are bullying
     // Dylan on social media.`,
