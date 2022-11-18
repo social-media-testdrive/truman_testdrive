@@ -19,7 +19,7 @@ const stepsList = [
     audioFile: ['CUSML.6.3.1.mp3']
   },
   {
-    element: '#nextPage',
+    element: '#step2',
     // intro: `<b>Cyberbullying</b> is when someone posts or shares
     // negative things about someone else online. <br>The <b>bully</b> may
     // use digital devices, sites, or apps. The bully often does this again
