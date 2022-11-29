@@ -531,6 +531,7 @@ button,
     padding-left: 8vh !important;
     height: 33vh;
     font-size: .9em;
+    /* background-color: pink; */
 }
 
 #userName {
@@ -589,4 +590,33 @@ button,
     border-radius: 18px;
     height: 40px;
     margin-left: 100px;
+}
+
+#feed {
+    background-color: white;
+    width: 465px;
+    height: 225px;
+    position: absolute;
+    top:340px;
+    right:40px;
+}
+
+hr {
+    height: 1px;
+    /* background-color: rgb(213, 14, 14); */
+    background-color: #e0e4e8;
+    /* background-color: #e1e6ea; */
+    border: none !important;
+}
+
+.feed-nav {
+    color: black;
+    font-weight: bold;
+    font-size: 1em;
+    margin-top: 10px;
+    margin-left: 12px;
+}
+
+.feed-nav span{
+    color: #21a6f2;
 }
