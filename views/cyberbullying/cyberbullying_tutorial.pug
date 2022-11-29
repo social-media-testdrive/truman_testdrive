@@ -209,15 +209,40 @@ block content
         .userDetails
           .br  Ankeny, Iowa
           .br Joined September 2019
-      .three.ui.bottom.attached.icon.buttons
-        .ui.reply.button(tabindex='0')
-          | Tweets
-        .ui.flag.button()
-          | Tweets&Replies
-        .ui.labeled.button(tabindex='0')
-          .ui.like.button
-            | Likes
+      //- .three.ui.bottom.attached.icon.buttons
+      //-   .ui.reply.button(tabindex='0')
+      //-     | Tweets
+      //-   .ui.flag.button()
+      //-     | Tweets&Replies
+      //-   .ui.labeled.button(tabindex='0')
+      //-     .ui.like.button
+      //-       | Likes
+      //- .navbar 
+      //-   h3 Tweets
+      //-   h3 Following
+      //-   h3 Followers 
+      //-   h3 Likes
 
+      #twitterNav.ui.secondary.pointing.menu
+        .right.menu
+        a.item.active
+          | Home <br/>
+          | 688
+        a.item
+          | Messages <br/>
+          | 3,162
+        a.item
+          | Friends <br/>
+          | 4,216
+        a.item
+          | Likes <br/>
+          | 393
+          button.ui#followingbutton.button.primary.basic Follow
+        //- .right.menu
+        //-   a.ui.item
+        //-     | Logout
+      //- .ui.segment
+      //-   p
     //- #nextPage      
     //- block content 
 

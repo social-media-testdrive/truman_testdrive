@@ -557,3 +557,36 @@ button,
     color: #8196ad;
     padding-top: 0.75vh;
 }
+
+.navbar {
+    background-color: rebeccapurple;
+    color: red;
+    font-size: 3em;
+    display: inline;
+    display:inline-block;
+    float:left;
+    padding:5px;
+}
+
+#twitterNav {
+    /* margin-right: 15vw; */
+    position: absolute;
+    text-align: center;
+    /* top: 36vh;
+    right: 15vw; */
+    top: 263px;
+    right: 25px;
+    /* background-color: rebeccapurple; */
+
+}
+
+#twitterNav .active {
+    color: #21a6f2;
+}
+
+#followingbutton {
+    background-color: green;
+    border-radius: 18px;
+    height: 40px;
+    margin-left: 100px;
+}
