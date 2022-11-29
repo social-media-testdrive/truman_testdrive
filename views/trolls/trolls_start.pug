@@ -5,85 +5,64 @@ block content
   .ui.text.container.addBottomMargin
     br      
     .ui.raised.segment
-      h3.ui.header
+      #step1.h3.ui.header
         i.book.blue.icon
         .content
           | Learn
       hr
-      .ui.basic.segment.removePadding
-        .ui.mini.green.right.labeled.icon.button.showLearnSectionButton
-          i.down.arrow.icon
-          |   Next
-      .ui.basic.segment.learnSegment.hidden
+      .ui.basic.segment.learnSegment
         .ui.column
-          h3 Click on the question below to display the definition.
-          .keyTerm.ui.raised.segment.voiceover_keyTerm1
+          #step2.keyTerm.ui.raised.segment
             a.ui.blue.ribbon.label.keyTermLabel
                 span Definition
             h1 What is a troll?
-            span.hidden.keyTermDefinition  
+            span.keyTermDefinition  
               | A troll is a fake social media account that spreads misinformation.
         brbr
-        .ui.mini.green.right.labeled.icon.button.showKeyTermsButton
-          i.down.arrow.icon
-          |   Next
         
     
-    .ui.segment.keyIdeasSegment.hidden
+    .ui.segment.keyIdeasSegment
       h3.ui.header
-        i.key.blue.icon
-        .content Key Tactics to Spot a Troll
+        i.flag.red.icon
+        #redflags.content Red Flags - Key Tactics to Spot a Troll
       hr
-      h3 Explore a user's profile. 
-      //- Check for the following:
-      //- h5.ui.header
-      //-   i.arrow.circle.right.blue.icon
-      //-   .content
-      //-     p account name that seems automatically generated 
-      //- h5.ui.header
-      //-   i.arrow.circle.right.blue.icon
-      //-   .content
-      //-     p a profile photo that seems like a stock image from the web
-      //- h5.ui.header
-      //-   i.arrow.circle.right.blue.icon
-      //-   .content
-      //-     p a missing bio or profile photo
-      //- img.ui.fluid.image(src='/images/troll_profile.png')
-      .ui.centered.card
-        .card
-          .content
-            img.right.floated.ui.image(src='/images/stock_image.png')
-            .strong.header
-              | Karen Smith
-            .meta
-              | @asdfkjjklj
-            .description
-              | Bio
-          .extra.content
-            .ui.two.buttons
-              .ui.basic.black.button 15 followers
-              .ui.basic.black.button 10 following
-      h3 Inspect the wording on a user's post. 
-      //- Check for the following:
-      //- h5.ui.header
-      //-   i.arrow.circle.right.blue.icon
-      //-   .content
-      //-     p repetitive comments
-      //- h5.ui.header
-      //-   i.arrow.circle.right.blue.icon
-      //-   .content
-      //-     p use of many common phrases
-      //- h5.ui.header
-      //-   i.arrow.circle.right.blue.icon
-      //-   .content
-      //-     p rapid and random changes in conversation
+      #profile
+        h3 Explore a user's profile. 
       .ui.centered.card
         .content
-          img.right.floated.mini.ui.image(src='/images/stock_image.png')
-          .header 
+          #step3
+            img.ui.circular.image(src='/images/stock_image4.png') 
+          .header
             | Karen Smith
-          .meta 
+          #step4.meta
             | @asdfkjjklj
+          #step5.description
+            | Enter bio here 
+          span.left.floated.like
+            i.calendar.location.arrow.icon
+            |     San Franciso, California
+          span.left.floated.like
+            i.calendar.alternate.icon
+            |     Joined September 2019
+        .content
+          p.left.floated 
+            b 15,000 
+            | followers
+          p.right.floated
+            b 10,000 
+            | following
+
+      #wording
+        h3 Inspect the wording on a user's post. 
+      #step6.ui.centered.card
+        .content
+          img.left.floated.mini.ui.circular.image(src='/images/stock_image3_cropped.png')
+          .header.left.floated
+            | Lori Williams
+          .ui.button.tiny.right.floated
+            | Follow
+          .meta
+            | @jkklkj
           .description
             p It's a cult!
         .extra.content
@@ -92,140 +71,150 @@ block content
             |       Like
           p.right.floated
             |       5:12 PM - October 5, 2020
-      //- img.ui.fluid.image(src='/images/troll_post.png')
-      h3 Investigate the times of a user's posts: Check if their posts occur: 
-      //- h5.ui.header
-      //-   i.arrow.circle.right.blue.icon
-      //-   .content
-      //-     p too frequently and at an impossible rate
-      //- h5.ui.header
-      //-   i.arrow.circle.right.blue.icon
-      //-   .content
-      //-     p at strange times
-      //- h5.ui.header
-      //-   i.arrow.circle.right.blue.icon
-      //-   .content
-      //-     p too regularly
-      .ui.three.column.grid
+
+      #time
+        h3 Investigate the times of a user's posts.
+      p
+        | 
+      .ui.two.column.grid
         .column
           .ui.centered.card
             .content
-              img.right.floated.mini.ui.image(src='/images/stock_image.png')
-              .header 
-                | Karen Smith
+              img.left.floated.mini.ui.circular.image(src='/images/stock_image2.png')
+              .header.left.floated
+                | Matthew Green
+              .ui.button.tiny.right.floated
+                | Follow
               .meta 
-                | @asdfkjjklj
+                | @matty_g_1827
               .description
-                p “A paranoid is someone who knows a little of what's going on. ” ― William S. Burroughs
+                p “Sometimes paranoia's just having all the facts. ” ― William S. Burroughs
             .extra.content
               span.left.floated.like
                 i.like.icon
                 |       Like
-              p.right.floated
+              #step7.p.right.floated
                 |       3:34 AM - May 4, 2022
         .column
           .ui.centered.card
             .content
-              img.right.floated.mini.ui.image(src='/images/stock_image.png')
-              .header 
-                | Karen Smith
+              img.left.floated.mini.ui.circular.image(src='/images/stock_image2.png')
+              .header.left.floated
+                | Matthew Green
+              .ui.button.tiny.right.floated
+                | Follow
               .meta 
-                | @asdfkjjklj
+                | @matty_g_1827
               .description
                 p Don't ask what meaning of life is. You define it. #quote #true
             .extra.content
               span.left.floated.like
                 i.like.icon
                 |       Like
-              p.right.floated
+              #step8.p.right.floated
                 |       3:35 AM - May 4, 2022
         .column
           .ui.centered.card
             .content
-              img.right.floated.mini.ui.image(src='/images/stock_image.png')
-              .header 
-                | Karen Smith
+              img.left.floated.mini.ui.circular.image(src='/images/stock_image2.png')
+              brbr
+              .header.left.floated
+                | Matthew Green
+              .ui.button.tiny.right.floated
+                | Follow
               .meta 
-                | @asdfkjjklj
+                | @matty_g_1827
               .description
                 p Man forging a check to get groceries in a crisis = "criminal"
             .extra.content
               span.left.floated.like
                 i.like.icon
                 |       Like
-              p.right.floated
+              #step9.p.right.floated
                 |       12:00 PM - May 5, 2022
-      //- img.ui.fluid.image(src='/images/troll_posts.png')
-      h3 Examine a user's followers/following. Check if the user's followers/following:
+        .column
+          .ui.centered.card
+            .content
+              img.left.floated.mini.ui.circular.image(src='/images/stock_image2.png')
+              brbr
+              .header.left.floated
+                | Matthew Green
+              .ui.button.mini.right.floated
+                | Follow
+              .meta 
+                | @matty_g_1827
+              .description
+                p An art gallery is diagnosed with clinical depression.
+            .extra.content
+              span.left.floated.like
+                i.like.icon
+                |       Like
+              p.right.floated
+                |       1:30 PM - May 5, 2022
+      p
+        |
+      #followers
+        h3 Examine a user's followers/following.
       h5.ui.header
-      //-   i.arrow.circle.right.blue.icon
-      //-   .content
-      //-     p is a very small number of accounts 
-      //- h5.ui.header
-      //-   i.arrow.circle.right.blue.icon
-      //-   .content
-      //-     p seem to be troll accounts as well
-      //- h5.ui.header
-      //-   i.arrow.circle.right.blue.icon
-      //-   .content
-      //-     p do not seem to align with the views and posts of the user's account
       .ui.centered.card
-        .card
-          .content
-            img.right.floated.mini.ui.image(src='/images/missing_photo.png')
-            .strong.header
-              | Joe Kelly
-            .meta
-              | @politicslover123
-            //- .description
-            //-   | Bio
-          .extra.content
-            .ui.two.buttons
-              .ui.basic.black.button 15,000 followers
-              .ui.basic.black.button 4 following
-            .ui.two.buttons
-              .ui.basic.grey.button
-              .ui.basic.grey.button 
-                | @asdkfaj
-                | @random_person36
-                | @b0t_xox4456
-                | @ryan_r_8991
-    
+        .content
+          img.left.floated.mini.ui.circular.image(src='/images/missing_photo.png')
+          .header.left.floated
+            | Joe Kelly
+          .ui.button.tiny.right.floated
+            | Follow
+          .meta
+            | @politicslover123
+        .content
+          center
+            b Following
+          #step10.ui.list
+            .item @asdkfaj
+              i.check.square.icon
+            .item @random_person36
+              i.check.square.icon
+            .item @b0t_xox4456
+              i.check.square.icon
+            .item @ryan_r_8991
+              i.check.square.icon 
+
+    #step11.ui.segment.keyIdeasSegment
+      h3.ui.header
+        i.flag.green.icon
+        .content Green Flags - Key Characteristics of a Real Account
+        .keyTerm.ui.raised.segment
+          a.ui.blue.ribbon.label.keyTermLabel
+              span #1
+          span.keyTermDefinition  
+            | A verification checkmark
+        .keyTerm.ui.raised.segment
+          a.ui.blue.ribbon.label.keyTermLabel
+              span #2
+          span.keyTermDefinition 
+            | Mutual followers
+        .keyTerm.ui.raised.segment
+          a.ui.blue.ribbon.label.keyTermLabel
+              span #3
+          span.keyTermDefinition 
+            | Personalized pictures and posts
+      
     .ui.warning.message#clickNextWarning
       .header
        | Click "Next"
     .ui.warning.message#clickLabelsWarning
      .header
       | Click on each label to proceed   
-    a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
-        .ui.labeled.icon.button
-            i.rocket.icon
-            |   Got it!
+    //- a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
+    //-     .ui.labeled.icon.button
+    //-         i.rocket.icon
+    //-         |   Got it!
 
 block scripts
-  script.
-    var voiceoverMappings = {
-      '.showLearnSectionButton': {
-        "initialDelay": 700,
-        "delay": 500,
-        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
-      },
-      '.voiceover_keyTerm1': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.6.2.1.mp3']
-      },
-      '.voiceover_keyTerm2': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.6.2.2.mp3']
-      },
-      '.voiceover_keyTerm3': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.6.2.3.mp3']
-      }
-    };
+  script(src='/postFunctionalities.js')
+  script(src="/module_js/trolls/trolls_learn.js")
+  script(src="/module_js/voiceover.js")
+  script(src="/module_js/base_introSteps.js")
+  script(src='/module_js/base_tutorial.js')
   script(src='/module_js/voiceover.js')
   script(src="/module_js/base_start.js")
   
