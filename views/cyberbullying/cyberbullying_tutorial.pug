@@ -200,13 +200,15 @@ block content
         #buttons-menu.four.ui.bottom.attached.icon.buttons
       .bio(style=' width:100%;\
   padding-left: 25px; margin-top: 15%;z-index: 1')
-        .ui.button(style='float: right;margin-right: 25px;')
-            | follow
-        .br  Harmony Anderson 
-        .br  @HarmonyAnders
-        .br  The college girl who managed to stay conservative #prolife #pro2A #AmericaFirst This is my 2nd account where I share my political and social views
-        .br  Ankeny, Iowa
-        .br Joined September 2019
+        //- .ui.button(style='float: right;margin-right: 25px;')
+        //-     | follow
+        #userName.br  Harmony Anderson 
+        #profileAt.br  @HarmonyAnders
+        #userAbout.br  The college girl who managed to stay conservative <span class="hashtags">#prolife #truth</span>
+        | <span class="hashtags">#AmericaFirst</span> This is my 2nd account where I share my political and social views
+        .userDetails
+          .br  Ankeny, Iowa
+          .br Joined September 2019
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
           | Tweets

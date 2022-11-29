@@ -522,3 +522,38 @@ button,
     width: 100%;
     height: 100%;
 }
+
+.bio {
+    /* background-color: red; */
+    width: 19.9vw !important;
+    margin-top: -2.2vh !important;
+    padding-top: 6vh !important;
+    padding-left: 8vh !important;
+    height: 33vh;
+    font-size: .9em;
+}
+
+#userName {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#profileAt {
+    font-weight: lighter;
+    color: #8196ad;
+}
+
+#userAbout {
+    padding-top: 1vh;
+    font-weight: normal;
+}
+
+.hashtags {
+    color: #21a6f2;
+}
+
+.userDetails {
+    font-weight: lighter;
+    color: #8196ad;
+    padding-top: 0.75vh;
+}
