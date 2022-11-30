@@ -17,8 +17,8 @@ const userSchema = new mongoose.Schema({
     isInstructor: { type: Boolean, default: false }, // is this user an Instructor
     isFacilitator: { type: Boolean, default: false }, // is this user a Facilitator
     isStudent: { type: Boolean, default: false }, // is this user a student
-    students: [{ type: String}],
-    facilitator: { type: String, default: 'none'},
+    students: [{ type: Schema.ObjectId, ref: 'User' }],
+    facilitator: { type: Schema.ObjectId, ref: 'User'},
     isGuest: { type: Boolean, default: false }, // is this user a guest
     // className: {type: String, default: ''}, // which class this user belongs to, if a student
     accessCode: { type: String, default: '' }, // which class this user belongs to, if a student
