@@ -210,7 +210,7 @@ exports.postInstructorLogin = (req, res, next) => {
         active: true,
         start : Date.now(),
         isStudent: true,
-        facilitator: req.body.facilitator
+        // facilitator: req.body.facilitator
     });
     user.profile.name = "Guest";
     user.profile.location = "Guest Town";
@@ -238,30 +238,31 @@ exports.postInstructorLogin = (req, res, next) => {
             res.redirect("/createStudent");
             return;
         }
-        user.save((err) => {
-            if (err) {
-                return next(err);
-            }
-            else {
-                User.findOne({
-                    username: req.body.facilitator
-                    }, (err, existingUser) => {
-                        if (err) {
-                        return next(err);
-                        }
-                        if (existingUser) {
-                            existingUser.students.push(req.body.username);
-                            existingUser.save((err) => {
-                                if (err) {
-                                    return next(err);
-                                }
-                                });
-                        } 
-                    });
-            }
-            console.log(`Account successfully created. Closing db connection.`);
-            res.redirect("/facilitatorHome");
-        });
+        else {
+            User.findOne({
+                username: req.body.facilitator
+                }, (err, existingUser) => {
+                    if (err) {
+                    return next(err);
+                    }
+                    if (existingUser) {
+                        user.facilitator = existingUser._id;
+                        user.save((err) => {
+                            if (err) {
+                                return next(err);
+                            }
+                            });
+                        existingUser.students.push(user._id);
+                        existingUser.save((err) => {
+                            if (err) {
+                                return next(err);
+                            }
+                            });
+                        console.log(`Account successfully created. Closing db connection.`);
+                        res.redirect("/facilitatorHome");
+                    } 
+                });
+        }
     });
 }; 
 
