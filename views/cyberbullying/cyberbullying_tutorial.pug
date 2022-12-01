@@ -13,55 +13,449 @@ block content
           .content
             .ui.header Need some help?
             p Scroll up and click "Next" to begin!
+    //- ui.fluid.card.test       
+    //-   .content
+    //-     .right.floated.meta= "2:05pm"
+    //-     |
+    //-     a(href='')
+    //-       img.ui.avatar.image(src=cdn+'/profile_pictures/user55.jpg')
+    //-       span='Logged In'
+    //-     h1 Your Friend Requests
+    //-   .image
+    //-     img.post(src="/images/friend-request.png")
+    //-   #harmonyBox
+      //- .content
+      //-   .description="Wow, look at these new awesome kicks!!! :D "
+      //- .three.ui.bottom.attached.icon.buttons
+      //-   .ui.reply.button(tabindex='0')
+      //-     i.reply.icon
+      //-     |  Reply
+      //-   .ui.flag.button(tabindex='0')
+      //-     i.flag.icon
+      //-     |  Flag
+      //-   .ui.labeled.button(tabindex='0')
+      //-     .ui.like.button
+      //-       i.heart.icon
+      //-       |  Like
+      //-     a.ui.basic.red.left.pointing.label.count=2
+          
+      //- .content
+      //-   .ui.comments
+      //-     .comment
+      //-       a.avatar
+      //-         img(src=cdn+'/profile_pictures/user66.jpeg')
+      //-       .content
+      //-         a.author Emma Hanson
+      //-         .metadata
+      //-           span.date Yesterday
+      //-           .rating
+      //-             i.heart.icon
+      //-             span.num=0
+      //-             |  Likes
+      //-         #step3.text()
+      //-           | When will you get it into your head that nobody wants to 
+      //-           | hear from you!.
+      //-         #step5.actions
+      //-           a.comment.like Like
+      //-           a.flag Flag
+      //- .content
+      //-   #step7.ui.fluid.left.labeled.right.icon.input()
+      //-     .ui.label
+      //-       img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+      //-     input.newcomment(type='text' placeholder='Write a Comment')
+      //-     i.big.send.link.icon
+
+
+
+    //- #nextPage.ui.fluid.card.test       
+    //-   .content
+    //-     .right.floated.meta= "2:07pm"
+    //-     |
+    //-     a(href='')
+    //-       img.ui.avatar.image(src=cdn+'/profile_pictures/user55.jpg')
+    //-       span='Logged In'
+    //-     //- h1 Your Friend Requests
+    //-   .image
+    //-     img.post(src="/images/harmony-profile.png")
+    //-   #populated-data
+    //-   #harmony-pic
+    //-   #tweets-number
+    //-   #opinions
+    //-   #reactions
+
+    //-   .content
+    //-     .description="Wow, look at these new awesome kicks!!! :D "
+    //-   .three.ui.bottom.attached.icon.buttons
+    //-     .ui.reply.button(tabindex='0')
+    //-       i.reply.icon
+    //-       |  Reply
+    //-     .ui.flag.button(tabindex='0')
+    //-       i.flag.icon
+    //-       |  Flag
+    //-     .ui.labeled.button(tabindex='0')
+    //-       .ui.like.button
+    //-         i.heart.icon
+    //-         |  Like
+    //-       a.ui.basic.red.left.pointing.label.count=2
+
+
     #step1.ui.fluid.card.test       
       .content
-        .right.floated.meta= "Yesterday"
+        .right.floated.meta= "2:05pm"
         |
         a(href='')
           img.ui.avatar.image(src=cdn+'/profile_pictures/user55.jpg')
-          span='Dylan Jones'
+          span='Logged In'
+        h1 Your Friend Requests
+      //- .image
+      //-   img.post(src="/images/friend-request.png")
+      //- #harmonyBox
+
+      .ui.centered.cards
+        #step2.card
+          #step3.content
+            img.right.floated.medium.ui.image(src='/images/harmony-pic.jpg')
+            .header
+              | Harmony Anderson
+            .meta
+              | 2 mutual friends
+            .description
+              | Harmony has requested to be your friend
+          .extra.content
+            .ui.two.buttons
+              .ui.basic.green.button Approve
+              .ui.basic.red.button Decline
+        .card
+          .content
+            img.right.floated.medium.ui.image(src='/images/elvis-pic.jpeg')
+            .header
+              | Elvis Pres1ey
+            .meta
+              | 0 mutual friends
+            .description
+              | Elvis Pres1ey has requested to be your friend 
+          .extra.content
+            .ui.two.buttons
+              .ui.basic.green.button Approve
+              .ui.basic.red.button Decline
+
+        .card
+          .content
+            img.right.floated.medium.ui.image(src='/images/chris-pic.jpg')
+            .header
+              | Christopher Worrick
+            .meta
+              | 16 mutual friends
+            .description
+              | Christopher Worrick has requested to be your friend 
+          .extra.content
+            .ui.two.buttons
+              .ui.basic.green.button Approve
+              .ui.basic.red.button Decline
+
+
+    #nextPage.ui.fluid.card.test       
+      .content
+        .right.floated.meta= "2:07pm"
+        |
+        a(href='')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user55.jpg')
+          span='Logged In'
+        //- h1 Your Friend Requests
       .image
-        img.post(src=cdn+"/post_pictures/basketballshoes.jpg")
-      .content
-        .description="Wow, look at these new awesome kicks!!! :D "
-      .three.ui.bottom.attached.icon.buttons
-        .ui.reply.button(tabindex='0')
-          i.reply.icon
-          |  Reply
-        .ui.flag.button(tabindex='0')
-          i.flag.icon
-          |  Flag
-        .ui.labeled.button(tabindex='0')
-          .ui.like.button
-            i.heart.icon
-            |  Like
-          a.ui.basic.red.left.pointing.label.count=2
+        img.post(src="/images/harmony-profile.png")
+      #populated-data
+      #harmony-pic
+      #tweets-number
+      #opinions
+      #reactions
+
+    //- #nextPage.ui.fluid.card.test       
+
+    #harmony-page.ui.fluid.card.dim(style = "margin-bottom:0px")
+      #toploggedin.content
+        .right.floated.meta= "2:07pm"
+        |
+        a(href='')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user55.jpg')
+          span='Logged In'
+      .profile_title(style='position: relative; top: 0; left: 0; ')
+        img(style='height:10%;width:100%; z-index: 0;position: relative;\
+  top: 0;\
+  left: 0;\
+  solid; z-index = -1' src='/profile_pictures/harmony-bg.jpg')
+        #round-pic-container
+          #pic-border
+            img(id="harmony-pic" src='/profile_pictures/user81.jpg')
+        //- #buttons-menu.four.ui.bottom.attached.icon.buttons
+        //-       .ui.reply.button(tabindex='0')
+        //-         | Blah
+        //-       .ui.flag.button()
+        //-         | Tweets&Replies
+        //-       .ui.labeled.button(tabindex='0')
+        //-         .ui.like.button
+        //-           | Likes
+        //-       .ui.flag.button()
+        //-         | Tweets&Replies
+        #buttons-menu.four.ui.bottom.attached.icon.buttons
+      .bio(style=' width:100%;\
+  padding-left: 25px; margin-top: 15%;z-index: 1')
+        //- .ui.button(style='float: right;margin-right: 25px;')
+        //-     | follow
+        #userName Harmony Anderson 
+        #profileAt  @HarmonyAnders
+        #userAbout  The college girl who managed to stay conservative <span class="hashtags">#prolife #truth</span>
+        | <span class="hashtags">#AmericaFirst</span> This is my 2nd account where I share my political and social views
+        .userDetails
+          #location
+            i.map.marker.alternate.icon
+            | Ankeny, Iowa
+          #joined-date
+            i.calendar.alternate.outline.icon
+            | Joined September 2019
           
-      .content
-        .ui.comments
-          .comment
-            a.avatar
-              img(src=cdn+'/profile_pictures/user66.jpeg')
-            .content
-              a.author Emma Hanson
-              .metadata
-                span.date Yesterday
-                .rating
-                  i.heart.icon
-                  span.num=0
-                  |  Likes
-              #step3.text()
-                | When will you get it into your head that nobody wants to 
-                | hear from you!.
-              #step5.actions
-                a.comment.like Like
-                a.flag Flag
-      .content
-        #step7.ui.fluid.left.labeled.right.icon.input()
-          .ui.label
-            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment(type='text' placeholder='Write a Comment')
-          i.big.send.link.icon
+      //- .three.ui.bottom.attached.icon.buttons
+      //-   .ui.reply.button(tabindex='0')
+      //-     | Tweets
+      //-   .ui.flag.button()
+      //-     | Tweets&Replies
+      //-   .ui.labeled.button(tabindex='0')
+      //-     .ui.like.button
+      //-       | Likes
+      //- .navbar 
+      //-   h3 Tweets
+      //-   h3 Following
+      //-   h3 Followers 
+      //-   h3 Likes
+
+      #twitterNav.ui.secondary.pointing.menu
+        .right.menu
+        a.item.active
+          | Home <br/>
+          | 688
+        a.item
+          | Messages <br/>
+          | 3,162
+        a.item
+          | Friends <br/>
+          | 4,216
+        a.item
+          | Likes <br/>
+          | 393
+          button.ui#followingbutton.button.primary.basic Follow
+      
+      #feed   
+        .feed-nav Tweets
+          | 
+          span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tweets & replies&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Media
+        <hr> 
+
+        #feedPinned 
+          i.map.pin.icon
+          span#pinned Pinned Tweet
+          p
+          //- p Pinned Tweet
+          span#feedName Harmony Anderson 
+            | 
+            span @HarmonyAnders 27 Nov 2022
+          #tweet-1 First we were called Deplorable...
+          | And now we are called a Cult. 
+          #space 
+          |  &nbsp;
+          #tweet-2 Yes, I'm in the cult. The Cult of Lower Taxes, Free Speech, Second Amendment, Powerful Military & Strong Borders!<span class="hashtags"> #Cult45</span> 
+          img(id="harmony-pic" src='/profile_pictures/user81.jpg')
+          //- .feed-nav 
+          //-   | 
+          //-   <i class="comment outline icon">31</i>
+          //-   <i class="share square outline icon">191</i>
+          //-   <i class="heart outline icon">366</i>
+          #actions
+            .ui.labeled.button
+              .ui.button
+                i.comment.outline.icon
+                //- |  Comment
+              a.ui.basic.label
+                | 31
+            span.firstAction
+              .ui.labeled.button
+                .ui.button
+                  i.share.square.outline.icon
+                  //- |  Reshare
+                a.ui.basic.label
+                  | 191
+            span.firstAction
+              .ui.labeled.button
+                .ui.button
+                  i.heart.outline.icon
+                  //- |  Like
+                a.ui.basic.label
+                  | 366
+
+
+
+        //- .right.menu
+        //-   a.ui.item
+        //-     | Logout
+      //- .ui.segment
+      //-   p
+    //- #nextPage      
+    //- block content 
+
+    //-   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+      
+    //-     //-####################### title
+  //-     .ui.fluid.card.dim(style = "margin-bottom:0px")
+  //-       .profile_title(style='position: relative; top: 0; left: 0; ')
+  //-       img(style='width:100%; z-index: 0;position: relative;\
+  //-   top: 0;\
+  //-   left: 0;\
+  //-   solid; z-index = -1' src='/profile_pictures/Z-backgoundAndres.jpg')
+  //-       img(style='border-radius: 50%; width:30%; z-index: 2; position: absolute;\
+  //-   top: 55%;\
+  //-   left: 3%;\
+  //-   border: 4px white solid;z-index: 1' src='/profile_pictures/user81.jpg')
+  //-       .bio(style=' width:100%;\
+  //- padding-left: 25px; margin-top: 4%;z-index: 1')
+            .ui.button(style='float: right;margin-right: 25px;')
+                | follow
+            .br  Harmony Anderson 
+            .br  @HarmonyAnders
+            .br  The college girl who managed to stay conservative #prolife #pro2A #AmericaFirst This is my 2nd account where I share my political and social views
+            .br  Ankeny, Iowa
+            .br Joined September 2019
+        .three.ui.bottom.attached.icon.buttons
+          .ui.reply.button(tabindex='0')
+            | Tweets
+          .ui.flag.button()
+            | Tweets&Replies
+          .ui.labeled.button(tabindex='0')
+            .ui.like.button
+              | Likes
+      //-####################### first
+      .ui.fluid.card.dim(style ="margin-top:0px;margin-bottom:0px")
+        .ui.dimmer.flag
+          .content
+            .center
+              h2.ui.inverted.icon.header
+                i.red.flag.icon
+                | You&apos;ve flagged this!
+                h3.ui.inverted.header
+                  span 
+                    | The admins will review this post further. We are sorry you 
+                    | had this experience.
+        .content
+          .right.floated.meta= "Yesterday"
+          a(href='#')
+                img.ui.avatar.image(src='/profile_pictures/user81.jpg')
+                span='Harmony Anderson'
+                .br &nbsp  &nbsp &nbsp &nbsp &nbsp @HarmonyAnders
+        .content
+          .description 
+            .br Pennsylvania voter rolls near Pittsburgh are full of inaccuracies:
+            .br —1,583 dead people registered to vote
+            .br —7,500 flagged as duplicate voters
+            .br —Nearly 50 born in the 1800s 2020 runs through Pennsylvania RT for national voter ID NOW!
+            .br 🇺🇸🇺🇸Trump2020
+        .img.post
+          img(src='/profile_pictures/Z-video.jpg',style=' width:100%;')
+        .three.ui.bottom.attached.icon.buttons
+          .ui.reply.button(tabindex='0')
+            i.reply.icon
+            | Reply
+          .ui.flag.button()
+            i.flag.icon
+            | Flag
+          .ui.labeled.button(tabindex='0')
+            .ui.like.button
+              i.heart.icon
+              | Like
+            a.ui.basic.red.left.pointing.label.count 2
+        .content
+          .ui.comments
+            .comment
+              a.avatar
+                img(src=cdn+'/profile_pictures/user43.jpg')
+              .content
+                a.author Susan Turner
+                .metadata
+                  span.date Yesterday
+                  .rating
+                    i.heart.icon
+                    span.num 1
+                    |  Likes
+                .text I agree.
+                .actions
+                  a.like.comment Like
+                  a.flag.comment Flag
+                  a#hint3
+        .extra.content
+          .ui.fluid.left.labeled.right.icon.input
+            .ui.label
+              img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            input.newcomment#hint4(type='text' placeholder='Write a Comment')
+            i.big.send.link.icon
+
+      //-####################### second
+      .ui.fluid.card.dim(style ="margin-top:0px;margin-bottom:0px")
+        .ui.dimmer.flag
+          .content
+            .center
+              h2.ui.inverted.icon.header
+                i.red.flag.icon
+                | You&apos;ve flagged this!
+                h3.ui.inverted.header
+                  span 
+                    | The admins will review this post further. We are sorry you 
+                    | had this experience.
+        .content
+          .right.floated.meta= "Yesterday"
+          a(href='#')
+                img.ui.avatar.image(src='/profile_pictures/user81.jpg')
+                span='Harmony Anderson'
+                .br &nbsp  &nbsp &nbsp &nbsp &nbsp @HarmonyAnders
+        .content
+          .description 
+            .br Thank you Sarvodaya School for welcoming me with the lovely Tilak & Aarti tradition!
+        .img.post
+          img(src='/profile_pictures/Z-twtter.jpg')
+        .three.ui.bottom.attached.icon.buttons
+          .ui.reply.button(tabindex='0')
+            i.reply.icon
+            | Reply
+          .ui.flag.button()
+            i.flag.icon
+            | Flag
+          .ui.labeled.button(tabindex='0')
+            .ui.like.button
+              i.heart.icon
+              | Like
+            a.ui.basic.red.left.pointing.label.count 2
+        .content
+          .ui.comments
+            .comment
+              a.avatar
+                img(src=cdn+'/profile_pictures/user43.jpg')
+              .content
+                a.author Susan Turner
+                .metadata
+                  span.date Yesterday
+                  .rating
+                    i.heart.icon
+                    span.num 1
+                    |  Likes
+                .text I agree.
+                .actions
+                  a.like.comment Like
+                  a.flag.comment Flag
+                  a#hint3
+        .extra.content
+          .ui.fluid.left.labeled.right.icon.input
+            .ui.label
+              img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            input.newcomment#hint4(type='text' placeholder='Write a Comment')
+            i.big.send.link.icon
+
+        
 
 
 block scripts

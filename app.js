@@ -1,6 +1,3 @@
-/*
- * Module dependencies
- */
 const express = require('express');
 const _ = require('lodash');
 const session = require('express-session');

@@ -420,3 +420,299 @@ button,
 .image-upload>input {
     display: none;
 }
+
+#harmonyBox {
+    width: 545px;
+    height: 146px;
+    background-color: transparent;
+    z-index: 999999999;
+    position: absolute;
+    top: 265px;
+}
+
+#nextPage {
+    width: 150%;
+    margin-left: -132px;
+    margin-top: 20px;
+}
+
+#populated-data {
+    width: 240px;
+    height: 160px;
+    background-color: transparent;
+    /* background-color: rgba(0,0,128,0.2); */
+    z-index: 999999999;
+    position: absolute;
+    top: 395px;
+    left: 50px;
+}
+
+
+
+#tweets-number {
+    width: 220px;
+    height: 40px;
+    background-color: transparent;
+    z-index: 999999999;
+    position: absolute;
+    top: 320px;
+    left: 310px;
+}
+
+#opinions {
+    width: 400px;
+    height: 84px;
+    /* background-color: rgba(0,0,128,0.2); */
+    background-color: transparent;
+    z-index: 999999999;
+    position: absolute;
+    top: 450px;
+    left: 350px;
+}
+
+#reactions {
+    width: 175px;
+    height: 18px;
+    /* background-color: rgba(0,0,128,0.2); */
+    background-color: transparent;
+    z-index: 999999999;
+    position: absolute;
+    top: 540px;
+    left: 353px;
+}
+
+#harmony-page {
+    width: 150% !important;
+    margin-left: -132px;
+
+    background-color: #e7edf0;
+}
+
+#buttons-menu {
+    background-color: white;
+    height: 60px;
+    top: -15px;
+    z-index: 0;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
+}
+
+#toploggedin {
+    background-color: white;
+}
+
+#round-pic-container{
+    position: absolute;
+    top: 130px;
+    left: 65px;
+    z-index: 10;
+    /* background-color: green; */
+    width: 170px;
+    height: 170px;
+}
+
+#pic-border {
+    box-sizing: border-box;
+    padding: 4px;
+    background-color: white;
+}
+
+#pic-border, #harmony-pic {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+}
+
+.bio {
+    /* background-color: red; */
+    width: 19.9vw !important;
+    margin-top: -2.2vh !important;
+    padding-top: 6vh !important;
+    padding-left: 8vh !important;
+    height: 33vh;
+    font-size: .9em;
+    /* background-color: pink; */
+}
+
+#userName {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#profileAt {
+    font-weight: lighter;
+    color: #8196ad;
+}
+
+#userAbout {
+    padding-top: 1vh;
+    font-weight: normal;
+}
+
+.hashtags {
+    color: #21a6f2;
+}
+
+.userDetails {
+    font-weight: lighter;
+    color: #8196ad;
+    padding-top: 0.75vh;
+}
+
+.navbar {
+    background-color: rebeccapurple;
+    color: red;
+    font-size: 3em;
+    display: inline;
+    display:inline-block;
+    float:left;
+    padding:5px;
+}
+
+#twitterNav {
+    /* margin-right: 15vw; */
+    position: absolute;
+    text-align: center;
+    /* top: 36vh;
+    right: 15vw; */
+    top: 263px;
+    right: 25px;
+    /* background-color: rebeccapurple; */
+
+}
+
+#twitterNav .active {
+    color: #21a6f2;
+}
+
+#followingbutton {
+    background-color: green;
+    border-radius: 18px;
+    height: 40px;
+    margin-left: 100px;
+}
+
+#feed {
+    background-color: white;
+    width: 465px;
+    height: 225px;
+    position: absolute;
+    top:340px;
+    right:40px;
+}
+
+hr {
+    height: 1px;
+    /* background-color: rgb(213, 14, 14); */
+    background-color: #e0e4e8;
+    /* background-color: #e1e6ea; */
+    border: none !important;
+}
+
+.feed-nav {
+    color: black;
+    font-weight: bold;
+    font-size: 1em;
+    margin-top: 10px;
+    margin-left: 12px;
+}
+
+.feed-nav span{
+    color: #21a6f2;
+}
+
+#tweet-2 span {
+    color: #21a6f2;
+}
+
+/* fix spacing between like, reshare, and comment buttons and labels */
+.firstAction {
+    margin-left: -20px !important;
+}
+
+#actions {
+    margin-left: -50px !important;
+    /* background-color: blue; */
+    position: absolute;
+    left: 0px;
+}
+
+#feedPinned {
+    /* background-color: rgb(208, 255, 208); */
+    height: 150px;
+    width: 380px;
+    margin-left: 50px;
+    margin-top: -2px;
+    font-size: .8em;
+}
+
+#feedPinned img {
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    top: 65px;
+    left: 10px;
+}
+
+#feedPinned p {
+    margin-bottom: -1px;
+}
+
+#feedPinned span {
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+#feedPinned span span{
+    font-weight: lighter;
+}
+
+#feedName {
+    font-weight: bolder !important;
+    font-size: 1.1em !important;
+}
+
+#feedName span {
+    color: #8196ad;
+    font-size: 0.9em;
+}
+
+#feedPinned p {
+    font-weight: lighter;
+    font-size: 0.9em;
+    color: #8196ad;
+}
+
+#actions .ui.button {
+    width: 30px;
+    margin-left: 50px;
+    background-color: transparent !important;
+    outline: none;
+}
+
+
+#actions a.ui.basic.label{
+    border: none;
+    font-weight: bold;
+    font-size: x-small !important;
+    margin-left: -10px !important;
+}
+
+#actions {
+    /* background-color: green; */
+    margin-left: -68px !important;
+}
+
+
+a.ui.basic.label#fixspace {
+    /* background-color: blue; */
+}
+
+i.map.pin.icon {
+    color: #21a6f2;
+    margin-left: -18px !important;
+}
+
+#pinned {
+    color: #8196ad;
+    font-weight: lighter !important;
+}
