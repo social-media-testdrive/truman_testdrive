@@ -202,13 +202,18 @@ block content
   padding-left: 25px; margin-top: 15%;z-index: 1')
         //- .ui.button(style='float: right;margin-right: 25px;')
         //-     | follow
-        #userName.br  Harmony Anderson 
-        #profileAt.br  @HarmonyAnders
-        #userAbout.br  The college girl who managed to stay conservative <span class="hashtags">#prolife #truth</span>
+        #userName Harmony Anderson 
+        #profileAt  @HarmonyAnders
+        #userAbout  The college girl who managed to stay conservative <span class="hashtags">#prolife #truth</span>
         | <span class="hashtags">#AmericaFirst</span> This is my 2nd account where I share my political and social views
         .userDetails
-          .br  Ankeny, Iowa
-          .br Joined September 2019
+          #location
+            i.map.marker.alternate.icon
+            | Ankeny, Iowa
+          #joined-date
+            i.calendar.alternate.outline.icon
+            | Joined September 2019
+          
       //- .three.ui.bottom.attached.icon.buttons
       //-   .ui.reply.button(tabindex='0')
       //-     | Tweets
@@ -244,7 +249,50 @@ block content
           | 
           span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tweets & replies&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Media
         <hr> 
-       
+
+        #feedPinned 
+          i.map.pin.icon
+          span#pinned Pinned Tweet
+          p
+          //- p Pinned Tweet
+          span#feedName Harmony Anderson 
+            | 
+            span @HarmonyAnders 27 Nov 2022
+          #tweet-1 First we were called Deplorable...
+          | And now we are called a Cult. 
+          #space 
+          |  &nbsp;
+          #tweet-2 Yes, I'm in the cult. The Cult of Lower Taxes, Free Speech, Second Amendment, Powerful Military & Strong Borders!<span class="hashtags"> #Cult45</span> 
+          img(id="harmony-pic" src='/profile_pictures/user81.jpg')
+          //- .feed-nav 
+          //-   | 
+          //-   <i class="comment outline icon">31</i>
+          //-   <i class="share square outline icon">191</i>
+          //-   <i class="heart outline icon">366</i>
+          #actions
+            .ui.labeled.button
+              .ui.button
+                i.comment.outline.icon
+                //- |  Comment
+              a.ui.basic.label
+                | 31
+            span.firstAction
+              .ui.labeled.button
+                .ui.button
+                  i.share.square.outline.icon
+                  //- |  Reshare
+                a.ui.basic.label
+                  | 191
+            span.firstAction
+              .ui.labeled.button
+                .ui.button
+                  i.heart.outline.icon
+                  //- |  Like
+                a.ui.basic.label
+                  | 366
+
+
+
         //- .right.menu
         //-   a.ui.item
         //-     | Logout

@@ -620,3 +620,100 @@ hr {
 .feed-nav span{
     color: #21a6f2;
 }
+
+#tweet-2 span {
+    color: #21a6f2;
+}
+
+/* fix spacing between like, reshare, and comment buttons and labels */
+.firstAction {
+    margin-left: -20px !important;
+}
+
+#actions {
+    margin-left: -50px !important;
+    /* background-color: blue; */
+    position: absolute;
+    left: 0px;
+}
+
+#feedPinned {
+    /* background-color: rgb(208, 255, 208); */
+    height: 150px;
+    width: 380px;
+    margin-left: 50px;
+    margin-top: -2px;
+    font-size: .8em;
+}
+
+#feedPinned img {
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    top: 65px;
+    left: 10px;
+}
+
+#feedPinned p {
+    margin-bottom: -1px;
+}
+
+#feedPinned span {
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+#feedPinned span span{
+    font-weight: lighter;
+}
+
+#feedName {
+    font-weight: bolder !important;
+    font-size: 1.1em !important;
+}
+
+#feedName span {
+    color: #8196ad;
+    font-size: 0.9em;
+}
+
+#feedPinned p {
+    font-weight: lighter;
+    font-size: 0.9em;
+    color: #8196ad;
+}
+
+#actions .ui.button {
+    width: 30px;
+    margin-left: 50px;
+    background-color: transparent !important;
+    outline: none;
+}
+
+
+#actions a.ui.basic.label{
+    border: none;
+    font-weight: bold;
+    font-size: x-small !important;
+    margin-left: -10px !important;
+}
+
+#actions {
+    /* background-color: green; */
+    margin-left: -68px !important;
+}
+
+
+a.ui.basic.label#fixspace {
+    /* background-color: blue; */
+}
+
+i.map.pin.icon {
+    color: #21a6f2;
+    margin-left: -18px !important;
+}
+
+#pinned {
+    color: #8196ad;
+    font-weight: lighter !important;
+}
