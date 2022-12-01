@@ -15,7 +15,10 @@ const userSchema = new mongoose.Schema({
     active: { type: Boolean, default: true }, // currently active? Not used in TestDrive
     isAdmin: { type: Boolean, default: false }, // is an Admin? (only changed directly in DB)
     isInstructor: { type: Boolean, default: false }, // is this user an Instructor
+    isFacilitator: { type: Boolean, default: false }, // is this user a Facilitator
     isStudent: { type: Boolean, default: false }, // is this user a student
+    students: [{ type: Schema.ObjectId, ref: 'User' }],
+    facilitator: { type: Schema.ObjectId, ref: 'User'},
     isGuest: { type: Boolean, default: false }, // is this user a guest
     // className: {type: String, default: ''}, // which class this user belongs to, if a student
     accessCode: { type: String, default: '' }, // which class this user belongs to, if a student

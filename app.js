@@ -198,7 +198,7 @@ app.use((req, res, next) => {
     // After successful login, redirect back to the intended page
     if (!req.user &&
         req.path !== '/login' &&
-        req.path !== '/signup' &&
+        req.path !== '//up' &&
         req.path !== '/bell' &&
         !req.path.match(/^\/auth/) &&
         !req.path.match(/\./)) {
@@ -247,7 +247,8 @@ function setHttpResponseHeaders(req, res, next) {
 
 function isValidModId(req, res, next) {
     const modIds = [
-        "cyberbullying"
+        "cyberbullying",
+        "trolls"
     ]
     if (modIds.includes(req.params.modId)) {
         next();
@@ -291,7 +292,8 @@ const enableLearnerDashboard = process.env.enableLearnerDashboard === 'true';
 
 function isValidModId(req, res, next) {
     const modIds = [
-        "cyberbullying"
+        "cyberbullying",
+        "trolls"
     ]
 
     if (modIds.includes(req.params.modId)) {
@@ -349,6 +351,34 @@ app.get('/intro/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders,
             title: 'Welcome'
         });
     }
+});
+
+// Render facilitator login page (all modules)
+app.get('/facilitatorLogin', setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
+    res.render('facilitatorLogin.pug', {
+        title: 'Facilitator Login'
+    });
+});
+
+// Render facilitator login page (all modules)
+app.get('/facilitatorHome', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
+    res.render('facilitatorHome.pug', {
+        title: 'Facilitator Home'
+    });
+});
+
+// Render student login page (all modules)
+app.get('/studentLogin', setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
+    res.render('studentLogin.pug', {
+        title: 'Student Login'
+    });
+});
+
+// Render create student page (all modules)
+app.get('/createStudent', setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
+    res.render('createStudent.pug', {
+        title: 'Create Student'
+    });
 });
 
 // Render user's profile page, which is module-specific.
@@ -525,7 +555,10 @@ if (isResearchVersion) {
     app.get('/login', csrfProtection, setHttpResponseHeaders, addCsrf, userController.getLogin);
     app.get('/classLogin/:accessCode', csrfProtection, setHttpResponseHeaders, addCsrf, userController.getClassLogin);
     app.post('/instructorLogin', check, setHttpResponseHeaders, csrfProtection, userController.postInstructorLogin);
-    app.post('/studentLogin/:accessCode', check, setHttpResponseHeaders, csrfProtection, userController.postStudentLogin);
+    app.post('/facilitatorLogin', check, setHttpResponseHeaders, csrfProtection, userController.postFacilitatorLogin);
+    app.post('/studentLogin', check, setHttpResponseHeaders, csrfProtection, userController.postStudentLogin);
+    app.post('/createStudent', check, setHttpResponseHeaders, csrfProtection, userController.postCreateStudent);
+    // app.post('/studentLogin/:accessCode', check, setHttpResponseHeaders, csrfProtection, userController.postStudentLogin);
     app.get('/logout', setHttpResponseHeaders, csrfProtection, addCsrf, userController.logout);
 }
 

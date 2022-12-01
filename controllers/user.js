@@ -51,15 +51,16 @@ exports.getClassLogin = (req, res) => {
 exports.postStudentLogin = (req, res, next) => {
     //req.assert('email', 'Email is not valid').isEmail();
     // commented out by Anna
-    //req.assert('password', 'Password cannot be blank').notEmpty();
-    req.assert('username', 'Please enter your username.').notEmpty();
+    req.assert('password', 'Password cannot be blank').notEmpty();
+    req.assert('username', 'Username cannto be blank.').notEmpty();
     //req.sanitize('email').normalizeEmail({ remove_dots: false });
 
     const errors = req.validationErrors();
 
     if (errors) {
         req.flash('errors', errors);
-        return res.redirect(`/classLogin/${req.params.accessCode}`);
+        return res.redirect('/studentLogin');
+        // return res.redirect(`/classLogin/${req.params.accessCode}`);
     }
 
     passport.authenticate('student-local', (err, user, info) => {
@@ -68,12 +69,14 @@ exports.postStudentLogin = (req, res, next) => {
         }
         if (!user) {
             req.flash('errors', info);
-            return res.redirect(`/classLogin/${req.params.accessCode}`);
+            return res.redirect('/studentLogin');
+            // return res.redirect(`/classLogin/${req.params.accessCode}`);
         }
         if (!(user.active)) {
             //console.log("FINAL");
             req.flash('final', { msg: '' });
-            return res.redirect(`/classLogin/${req.params.accessCode}`);
+            return res.redirect('/studentLogin');
+            // return res.redirect(`/classLogin/${req.params.accessCode}`);
         }
         req.logIn(user, (err) => {
             if (err) { return next(err); }
@@ -137,11 +140,140 @@ exports.postInstructorLogin = (req, res, next) => {
 };
 
 /**
+ * POST /facilitatorLogin
+ * Sign in using username and password.
+ * Route only exists if isResearchVersion = true.
+ */
+ exports.postFacilitatorLogin = (req, res, next) => {
+    //req.assert('email', 'Email is not valid').isEmail();
+    req.assert('facilitator_password', 'Password cannot be blank').notEmpty();
+    req.assert('facilitator_username', 'Username cannot be blank').notEmpty();
+    //req.sanitize('email').normalizeEmail({ remove_dots: false });
+
+    const errors = req.validationErrors();
+
+    if (errors) {
+        req.flash('errors', errors);
+        return res.redirect('/facilitatorLogin');
+    }
+
+    passport.authenticate('facilitator-local', (err, user, info) => {
+        if (err) { return next(err); }
+        if (!user) {
+            req.flash('errors', info);
+            return res.redirect('/facilitatorLogin');
+        }
+        if (!(user.active)) {
+            //console.log("FINAL");
+            req.flash('final', { msg: '' });
+            return res.redirect('/facilitatorLogin');
+        }
+        req.logIn(user, (err) => {
+            if (err) { return next(err); }
+            // regenerate the session
+            var temp = req.session.passport; // {user: 1}
+            req.session.regenerate(function(err) {
+                //req.session.passport is now undefined
+                req.session.passport = temp;
+                req.session.save(function(err) {
+                    user.logUser(Date.now());
+                    return res.redirect('/facilitatorHome');
+                });
+            });
+        });
+    })(req, res, next);
+};
+
+/**
+ * POST /createStudent
+ * Create a new student with facilitator.
+ * Route only exists if isResearchVersion = true.
+ */
+ exports.postCreateStudent = (req, res, next) => {
+    //req.assert('email', 'Email is not valid').isEmail();
+    req.assert('password', 'Password cannot be blank').notEmpty();
+    req.assert('username', 'Username cannot be blank').notEmpty();
+    //req.sanitize('email').normalizeEmail({ remove_dots: false });
+
+    const errors = req.validationErrors();
+
+    if (errors) {
+        req.flash('errors', errors);
+        return res.redirect('/createStudent');
+    }
+
+    console.log(`Creating new student...`);
+
+    const user = new User({
+        username: req.body.username,
+        password: req.body.password,
+        active: true,
+        start : Date.now(),
+        isStudent: true,
+        // facilitator: req.body.facilitator
+    });
+    user.profile.name = "Guest";
+    user.profile.location = "Guest Town";
+    user.profile.bio = '';
+    user.profile.picture = 'avatar-icon.svg';
+
+    // passport.authenticate('create-student', (err, user, info) => {
+    //     if (err) { return next(err); }
+    //     if (user) {
+    //         req.flash('errors', info);
+    //         return res.redirect('/createStudent');
+    //     }
+    //     })(req, res, next);
+
+    User.findOne({
+    username: req.body.username
+    }, (err, existingUser) => {
+        if (err) {
+            return next(err);
+        }
+        if (existingUser) {
+            req.flash('errors', {
+                msg: 'Username already taken. Try again.'
+            });
+            res.redirect("/createStudent");
+            return;
+        }
+        else {
+            User.findOne({
+                username: req.body.facilitator
+                }, (err, existingUser) => {
+                    if (err) {
+                    return next(err);
+                    }
+                    if (existingUser) {
+                        user.facilitator = existingUser._id;
+                        user.save((err) => {
+                            if (err) {
+                                return next(err);
+                            }
+                            });
+                        existingUser.students.push(user._id);
+                        existingUser.save((err) => {
+                            if (err) {
+                                return next(err);
+                            }
+                            });
+                        console.log(`Account successfully created. Closing db connection.`);
+                        res.redirect("/facilitatorHome");
+                    } 
+                });
+        }
+    });
+}; 
+
+/**
  * GET /logout
  * Log out.
  */
 exports.logout = (req, res) => {
-    req.logout();
+    req.logout(function(err) {
+        if (err) { return next(err); }
+      });
     req.session.regenerate(function() {
         res.redirect('/login');
     })

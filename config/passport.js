@@ -18,33 +18,62 @@ passport.deserializeUser((id, done) => {
  * Sign in as a student with username.
  */
 
-passport.use('student-local', new LocalStrategy({
-    usernameField: 'username',
-    passwordField: 'username',
-    passReqToCallback: true
-}, (req, username, password, done) => {
-    User.findOne({
-            // search for username, case insensitive
-            username: {
-                $regex: '^' + username + '$',
-                $options: 'i'
-            },
-            accessCode: req.body.accessCode,
-            deleted: false
-        })
-        .exec(function(err, user) {
-            if (err) {
-                return done(err);
-            }
-            if (!user) {
-                return done(null, false, { msg: 'Invalid username or login link.' });
-            }
+// passport.use('student-local', new LocalStrategy({
+//     usernameField: 'username',
+//     passwordField: 'username',
+//     passReqToCallback: true
+// }, (req, username, password, done) => {
+//     User.findOne({
+//             // search for username, case insensitive
+//             username: {
+//                 $regex: '^' + username + '$',
+//                 $options: 'i'
+//             },
+//             accessCode: req.body.accessCode,
+//             deleted: false
+//         })
+//         .exec(function(err, user) {
+//             if (err) {
+//                 return done(err);
+//             }
+//             if (!user) {
+//                 return done(null, false, { msg: 'Invalid username or login link.' });
+//             }
 
-            // found user, log in complete
-            req.session.regenerate(function() {
-                return done(null, user);
-            });
-        });
+//             // found user, log in complete
+//             req.session.regenerate(function() {
+//                 return done(null, user);
+//             });
+//         });
+// }));
+
+/*
+ * Sign in as a student with username and password.
+ */
+
+passport.use('student-local', new LocalStrategy({
+  usernameField: 'username',
+  passwordField: 'password',
+  passReqToCallback: true
+}, (req, username, password, done) => {
+  User.findOne({ username: username, isStudent: true }, async(err, user) => {
+      if (err) {
+          return done(err);
+      }
+      if (!user) {
+          return done(null, false, { msg: 'Invalid username or password.' });
+      }
+      user.comparePassword(password, async(err, isMatch) => {
+          if (err) {
+              return done(err);
+          }
+          if (isMatch) {
+              // log in
+              return done(null, user);
+          }
+          return done(null, false, { msg: 'Invalid username or password.' });
+      });
+  });
 }));
 
 /*
@@ -56,7 +85,7 @@ passport.use('instructor-local', new LocalStrategy({
     passwordField: 'instructor_password',
     passReqToCallback: true
 }, (req, instructor_username, instructor_password, done) => {
-    User.findOne({ username: instructor_username }, async(err, user) => {
+    User.findOne({ username: instructor_username, isInstructor: true }, async(err, user) => {
         if (err) {
             return done(err);
         }
@@ -74,6 +103,35 @@ passport.use('instructor-local', new LocalStrategy({
             return done(null, false, { msg: 'Invalid username or password.' });
         });
     });
+}));
+
+/*
+ * Sign in as an instructor with username and password.
+ */
+
+passport.use('facilitator-local', new LocalStrategy({
+  usernameField: 'facilitator_username',
+  passwordField: 'facilitator_password',
+  passReqToCallback: true
+}, (req, facilitator_username, facilitator_password, done) => {
+  User.findOne({ username: facilitator_username, isFacilitator: true }, async(err, user) => {
+      if (err) {
+          return done(err);
+      }
+      if (!user) {
+          return done(null, false, { msg: 'Invalid username or password.' });
+      }
+      user.comparePassword(facilitator_password, async(err, isMatch) => {
+          if (err) {
+              return done(err);
+          }
+          if (isMatch) {
+              // log in
+              return done(null, user);
+          }
+          return done(null, false, { msg: 'Invalid username or password.' });
+      });
+  });
 }));
 
 /**
