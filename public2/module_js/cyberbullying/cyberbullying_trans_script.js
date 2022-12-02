@@ -6,11 +6,11 @@ const stepsList = [
     audioFile: ``
   },
   {
-    intro: `Now you get to explore the TestDrive timeline! You can read
-    what others have posted, respond, or make your own posts.`,
+    intro: `Now you get to explore the trolls! You can distinguish accounts and make decision on
+     whether to accept or decline friend requests.`,
     audioFile: [`CUSML.6.6.1.mp3`]
   },
-  {
+  /* {
     intro: `Here is some helpful background before you start:
     <br><a href='/user/DylanCrazzzzzy' target='_blank'>
     <img class='ui avatar image' src='https://dhpd030vnpk29.cloudfront.net/profile_pictures/user19.jpg'>
@@ -38,10 +38,9 @@ const stepsList = [
     on social media.`,
     audioFile: [`CUSML.6.6.4.mp3`]
 
-  },
+  }, */
   {
-    intro: `Now, let’s apply what you have learned! <br>Try to <b>spot
-    and respond to cyberbullying posts or comments</b> on the TestDrive
+    intro: `Now, let’s apply what you have learned! <br>Try to <b>distinguish trolls</b> on the DART
     timeline. When you get to the end of the timeline, click
     “Let's Continue” to move to the next part of the lesson.`,
     audioFile: [`CUSML.6.6.5.mp3`]

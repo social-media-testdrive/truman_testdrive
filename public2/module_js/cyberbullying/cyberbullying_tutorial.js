@@ -1,4 +1,4 @@
-const nextPageURL = 'tut_guide';
+const nextPageURL = 'trans_script';
 
 const stepsList = [
   {
