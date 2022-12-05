@@ -38,7 +38,7 @@ const stepsList = [
   },
   {
     element: '#step4',
-    intro: `Account usernames that seem automatically generated is another red flag.`,
+    intro: `Account usernames that seem automatically generated or contain misspellings is another red flag.`,
     position: 'right',
     scrollTo: 'tooltip',
     audioFile: ['']
