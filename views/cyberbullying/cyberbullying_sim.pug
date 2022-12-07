@@ -1,177 +1,43 @@
 
 extends ../ui_layout
-  
+
 block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   .computer.only.tablet.only.four.wide.column 
   .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
     .ui.one.column.centered.grid.feedbackMessagesGrid
       .ui.fixed.bottom.sticky
-        .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
-          i.close.icon
-          i.question.icon.float
-          .content
-            .ui.header Need some help?
-            p Scroll up and click "Next" to begin!
-    //- ui.fluid.card.test       
-    //-   .content
-    //-     .right.floated.meta= "2:05pm"
-    //-     |
-    //-     a(href='')
-    //-       img.ui.avatar.image(src=cdn+'/profile_pictures/user55.jpg')
-    //-       span='Logged In'
-    //-     h1 Your Friend Requests
-    //-   .image
-    //-     img.post(src="/images/friend-request.png")
-    //-   #harmonyBox
-      //- .content
-      //-   .description="Wow, look at these new awesome kicks!!! :D "
-      //- .three.ui.bottom.attached.icon.buttons
-      //-   .ui.reply.button(tabindex='0')
-      //-     i.reply.icon
-      //-     |  Reply
-      //-   .ui.flag.button(tabindex='0')
-      //-     i.flag.icon
-      //-     |  Flag
-      //-   .ui.labeled.button(tabindex='0')
-      //-     .ui.like.button
-      //-       i.heart.icon
-      //-       |  Like
-      //-     a.ui.basic.red.left.pointing.label.count=2
-          
-      //- .content
-      //-   .ui.comments
-      //-     .comment
-      //-       a.avatar
-      //-         img(src=cdn+'/profile_pictures/user66.jpeg')
-      //-       .content
-      //-         a.author Emma Hanson
-      //-         .metadata
-      //-           span.date Yesterday
-      //-           .rating
-      //-             i.heart.icon
-      //-             span.num=0
-      //-             |  Likes
-      //-         #step3.text()
-      //-           | When will you get it into your head that nobody wants to 
-      //-           | hear from you!.
-      //-         #step5.actions
-      //-           a.comment.like Like
-      //-           a.flag Flag
-      //- .content
-      //-   #step7.ui.fluid.left.labeled.right.icon.input()
-      //-     .ui.label
-      //-       img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-      //-     input.newcomment(type='text' placeholder='Write a Comment')
-      //-     i.big.send.link.icon
-
-
-
-    //- #nextPage.ui.fluid.card.test       
-    //-   .content
-    //-     .right.floated.meta= "2:07pm"
-    //-     |
-    //-     a(href='')
-    //-       img.ui.avatar.image(src=cdn+'/profile_pictures/user55.jpg')
-    //-       span='Logged In'
-    //-     //- h1 Your Friend Requests
-    //-   .image
-    //-     img.post(src="/images/harmony-profile.png")
-    //-   #populated-data
-    //-   #harmony-pic
-    //-   #tweets-number
-    //-   #opinions
-    //-   #reactions
-
-    //-   .content
-    //-     .description="Wow, look at these new awesome kicks!!! :D "
-    //-   .three.ui.bottom.attached.icon.buttons
-    //-     .ui.reply.button(tabindex='0')
-    //-       i.reply.icon
-    //-       |  Reply
-    //-     .ui.flag.button(tabindex='0')
-    //-       i.flag.icon
-    //-       |  Flag
-    //-     .ui.labeled.button(tabindex='0')
-    //-       .ui.like.button
-    //-         i.heart.icon
-    //-         |  Like
-    //-       a.ui.basic.red.left.pointing.label.count=2
-
-
-    #step1.ui.fluid.card.test       
+        //- .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
+        //-   i.close.icon
+        //-   i.question.icon.float
+        //-   .content
+        //-     .ui.header Need some help?
+        //-     p Scroll up and click "Next" to begin!
+    #step1.ui.fluid.card.test.padBottom    
       .content
         .right.floated.meta= "2:05pm"
         |
         a(href='')
           img.ui.avatar.image(src=cdn+'/profile_pictures/user55.jpg')
           span='Logged In'
+        hr
         h1 Your Friend Requests
-      //- .image
-      //-   img.post(src="/images/friend-request.png")
-      //- #harmonyBox
 
       .ui.centered.cards
         #step2.card
           #step3.content
-            img.right.floated.medium.ui.image(src='/images/harmony-pic.jpg')
-            .header
-              | Harmony Anderson
-            .meta
-              | 2 mutual friends
-            .description
-              | Harmony has requested to be your friend
-          .extra.content
-            .ui.two.buttons
-              .ui.basic.green.button Approve
-              .ui.basic.red.button Decline
-        .card
-          .content
             img.right.floated.medium.ui.image(src='/images/elvis-pic.jpeg')
             .header
               | Elvis Pres1ey
-            .meta
+            .meta#mutual
               | 0 mutual friends
             .description
               | Elvis Pres1ey has requested to be your friend 
           .extra.content
-            .ui.two.buttons
-              .ui.basic.green.button Approve
-              .ui.basic.red.button Decline
-
-        .card
-          .content
-            img.right.floated.medium.ui.image(src='/images/chris-pic.jpg')
-            .header
-              | Christopher Worrick
-            .meta
-              | 16 mutual friends
-            .description
-              | Christopher Worrick has requested to be your friend 
-          .extra.content
-            .ui.two.buttons
-              .ui.basic.green.button Approve
-              .ui.basic.red.button Decline
-
-
-    #nextPage.ui.fluid.card.test       
-      .content
-        .right.floated.meta= "2:07pm"
-        |
-        a(href='')
-          img.ui.avatar.image(src=cdn+'/profile_pictures/user55.jpg')
-          span='Logged In'
-        //- h1 Your Friend Requests
-      .image
-        img.post(src="/images/harmony-profile.png")
-      #populated-data
-      #harmony-pic
-      #tweets-number
-      #opinions
-      #reactions
-
-    //- #nextPage.ui.fluid.card.test       
-
+            .ui.two.buttons.approveDeclineBtns
+              button#accept.ui.basic.green.button Approve
+              button#decline.ui.basic.red.button(onclick='completeTutorial()') Decline  
+          
     #harmony-page.ui.fluid.card.dim(style = "margin-bottom:0px")
       #toploggedin.content
         .right.floated.meta= "2:07pm"
@@ -183,286 +49,165 @@ block content
         img(style='height:10%;width:100%; z-index: 0;position: relative;\
   top: 0;\
   left: 0;\
-  solid; z-index = -1' src='/profile_pictures/harmony-bg.jpg')
+  solid; z-index = -1' src='/profile_pictures/elvisbg.png')
         #round-pic-container
           #pic-border
-            img(id="harmony-pic" src='/profile_pictures/user81.jpg')
-        //- #buttons-menu.four.ui.bottom.attached.icon.buttons
-        //-       .ui.reply.button(tabindex='0')
-        //-         | Blah
-        //-       .ui.flag.button()
-        //-         | Tweets&Replies
-        //-       .ui.labeled.button(tabindex='0')
-        //-         .ui.like.button
-        //-           | Likes
-        //-       .ui.flag.button()
-        //-         | Tweets&Replies
-        #buttons-menu.four.ui.bottom.attached.icon.buttons
-      .bio(style=' width:100%;\
+            img(id="harmony-pic" src='/images/elvis-pic.jpeg')
+        #buttons-menu.elvisFixNav.four.ui.bottom.attached.icon.buttons
+      .bio.elvisBio(style=' width:100%;\
   padding-left: 25px; margin-top: 15%;z-index: 1')
-        //- .ui.button(style='float: right;margin-right: 25px;')
-        //-     | follow
-        #userName Harmony Anderson 
-        #profileAt  @HarmonyAnders
-        #userAbout  The college girl who managed to stay conservative <span class="hashtags">#prolife #truth</span>
-        | <span class="hashtags">#AmericaFirst</span> This is my 2nd account where I share my political and social views
-        .userDetails
-          #location
-            i.map.marker.alternate.icon
-            | Ankeny, Iowa
-          #joined-date
-            i.calendar.alternate.outline.icon
-            | Joined September 2019
-          
-      //- .three.ui.bottom.attached.icon.buttons
-      //-   .ui.reply.button(tabindex='0')
-      //-     | Tweets
-      //-   .ui.flag.button()
-      //-     | Tweets&Replies
-      //-   .ui.labeled.button(tabindex='0')
-      //-     .ui.like.button
-      //-       | Likes
-      //- .navbar 
-      //-   h3 Tweets
-      //-   h3 Following
-      //-   h3 Followers 
-      //-   h3 Likes
 
-      #twitterNav.ui.secondary.pointing.menu
-        .right.menu
-        a.item.active
-          | Home <br/>
-          | 688
-        a.item
-          | Messages <br/>
-          | 3,162
-        a.item
-          | Friends <br/>
-          | 4,216
-        a.item
-          | Likes <br/>
-          | 393
-          button.ui#followingbutton.button.primary.basic Follow
-      
+        .populatedBio
+          #userName Elvis Pres1ey 
+          #profileAt  @TheRealElvisEstate
+          #userAbout  king of rock 'n' roll! Visit <a>http://E1vis.com</a>
+          |  for more about the king.
+          .userDetails
+            #location
+              i.map.marker.alternate.icon
+              | Memphis, Tennessee
+            #joined-date
+              i.calendar.alternate.outline.icon
+              | Joined January 2022
+        #twitterNav.ui.secondary.pointing.menu
+          .right.menu
+          //- a.item.active
+          //-   | Home <br/>
+          //-   | 688
+          a.item.active
+            | Posts <br/>
+            | 3,162
+          a.item#numFollowers
+            | Followers <br/>
+            | 393
+          a.item
+            | Following <br/>
+            | 8,216
+        button#followingbutton.ui.button.primary.basic(onclick='updateFollow()') Follow
+        
       #feed   
-        .feed-nav Tweets
+        .feed-nav Posts
           | 
-          span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tweets & replies&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Media
+          span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posts & replies&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Media
         <hr> 
 
         #feedPinned 
           i.map.pin.icon
-          span#pinned Pinned Tweet
+          span#pinned Pinned Post
           p
           //- p Pinned Tweet
-          span#feedName Harmony Anderson 
+          span#feedName Elvis Pres1ey 
             | 
-            span @HarmonyAnders 27 Nov 2022
-          #tweet-1 First we were called Deplorable...
-          | And now we are called a Cult. 
-          #space 
-          |  &nbsp;
-          #tweet-2 Yes, I'm in the cult. The Cult of Lower Taxes, Free Speech, Second Amendment, Powerful Military & Strong Borders!<span class="hashtags"> #Cult45</span> 
-          img(id="harmony-pic" src='/profile_pictures/user81.jpg')
-          //- .feed-nav 
-          //-   | 
-          //-   <i class="comment outline icon">31</i>
-          //-   <i class="share square outline icon">191</i>
-          //-   <i class="heart outline icon">366</i>
-          #actions
-            .ui.labeled.button
-              .ui.button
-                i.comment.outline.icon
-                //- |  Comment
-              a.ui.basic.label
-                | 31
-            span.firstAction
-              .ui.labeled.button
-                .ui.button
-                  i.share.square.outline.icon
-                  //- |  Reshare
-                a.ui.basic.label
-                  | 191
-            span.firstAction
-              .ui.labeled.button
-                .ui.button
-                  i.heart.outline.icon
-                  //- |  Like
-                a.ui.basic.label
-                  | 366
-
-
-
-        //- .right.menu
-        //-   a.ui.item
-        //-     | Logout
-      //- .ui.segment
-      //-   p
-    //- #nextPage      
-    //- block content 
-
-    //-   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
-      
-    //-     //-####################### title
-  //-     .ui.fluid.card.dim(style = "margin-bottom:0px")
-  //-       .profile_title(style='position: relative; top: 0; left: 0; ')
-  //-       img(style='width:100%; z-index: 0;position: relative;\
-  //-   top: 0;\
-  //-   left: 0;\
-  //-   solid; z-index = -1' src='/profile_pictures/Z-backgoundAndres.jpg')
-  //-       img(style='border-radius: 50%; width:30%; z-index: 2; position: absolute;\
-  //-   top: 55%;\
-  //-   left: 3%;\
-  //-   border: 4px white solid;z-index: 1' src='/profile_pictures/user81.jpg')
-  //-       .bio(style=' width:100%;\
-  //- padding-left: 25px; margin-top: 4%;z-index: 1')
-            .ui.button(style='float: right;margin-right: 25px;')
-                | follow
-            .br  Harmony Anderson 
-            .br  @HarmonyAnders
-            .br  The college girl who managed to stay conservative #prolife #pro2A #AmericaFirst This is my 2nd account where I share my political and social views
-            .br  Ankeny, Iowa
-            .br Joined September 2019
-        .three.ui.bottom.attached.icon.buttons
-          .ui.reply.button(tabindex='0')
-            | Tweets
-          .ui.flag.button()
-            | Tweets&Replies
-          .ui.labeled.button(tabindex='0')
-            .ui.like.button
-              | Likes
-      //-####################### first
-      .ui.fluid.card.dim(style ="margin-top:0px;margin-bottom:0px")
-        .ui.dimmer.flag
-          .content
-            .center
-              h2.ui.inverted.icon.header
-                i.red.flag.icon
-                | You&apos;ve flagged this!
-                h3.ui.inverted.header
-                  span 
-                    | The admins will review this post further. We are sorry you 
-                    | had this experience.
-        .content
-          .right.floated.meta= "Yesterday"
-          a(href='#')
-                img.ui.avatar.image(src='/profile_pictures/user81.jpg')
-                span='Harmony Anderson'
-                .br &nbsp  &nbsp &nbsp &nbsp &nbsp @HarmonyAnders
-        .content
-          .description 
-            .br Pennsylvania voter rolls near Pittsburgh are full of inaccuracies:
-            .br —1,583 dead people registered to vote
-            .br —7,500 flagged as duplicate voters
-            .br —Nearly 50 born in the 1800s 2020 runs through Pennsylvania RT for national voter ID NOW!
-            .br 🇺🇸🇺🇸Trump2020
-        .img.post
-          img(src='/profile_pictures/Z-video.jpg',style=' width:100%;')
-        .three.ui.bottom.attached.icon.buttons
-          .ui.reply.button(tabindex='0')
-            i.reply.icon
-            | Reply
-          .ui.flag.button()
-            i.flag.icon
-            | Flag
-          .ui.labeled.button(tabindex='0')
-            .ui.like.button
-              i.heart.icon
-              | Like
-            a.ui.basic.red.left.pointing.label.count 2
-        .content
-          .ui.comments
-            .comment
-              a.avatar
-                img(src=cdn+'/profile_pictures/user43.jpg')
-              .content
-                a.author Susan Turner
-                .metadata
-                  span.date Yesterday
-                  .rating
-                    i.heart.icon
-                    span.num 1
-                    |  Likes
-                .text I agree.
-                .actions
-                  a.like.comment Like
-                  a.flag.comment Flag
-                  a#hint3
-        .extra.content
-          .ui.fluid.left.labeled.right.icon.input
-            .ui.label
-              img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-            input.newcomment#hint4(type='text' placeholder='Write a Comment')
-            i.big.send.link.icon
-
-      //-####################### second
-      .ui.fluid.card.dim(style ="margin-top:0px;margin-bottom:0px")
-        .ui.dimmer.flag
-          .content
-            .center
-              h2.ui.inverted.icon.header
-                i.red.flag.icon
-                | You&apos;ve flagged this!
-                h3.ui.inverted.header
-                  span 
-                    | The admins will review this post further. We are sorry you 
-                    | had this experience.
-        .content
-          .right.floated.meta= "Yesterday"
-          a(href='#')
-                img.ui.avatar.image(src='/profile_pictures/user81.jpg')
-                span='Harmony Anderson'
-                .br &nbsp  &nbsp &nbsp &nbsp &nbsp @HarmonyAnders
-        .content
-          .description 
-            .br Thank you Sarvodaya School for welcoming me with the lovely Tilak & Aarti tradition!
-        .img.post
-          img(src='/profile_pictures/Z-twtter.jpg')
-        .three.ui.bottom.attached.icon.buttons
-          .ui.reply.button(tabindex='0')
-            i.reply.icon
-            | Reply
-          .ui.flag.button()
-            i.flag.icon
-            | Flag
-          .ui.labeled.button(tabindex='0')
-            .ui.like.button
-              i.heart.icon
-              | Like
-            a.ui.basic.red.left.pointing.label.count 2
-        .content
-          .ui.comments
-            .comment
-              a.avatar
-                img(src=cdn+'/profile_pictures/user43.jpg')
-              .content
-                a.author Susan Turner
-                .metadata
-                  span.date Yesterday
-                  .rating
-                    i.heart.icon
-                    span.num 1
-                    |  Likes
-                .text I agree.
-                .actions
-                  a.like.comment Like
-                  a.flag.comment Flag
-                  a#hint3
-        .extra.content
-          .ui.fluid.left.labeled.right.icon.input
-            .ui.label
-              img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-            input.newcomment#hint4(type='text' placeholder='Write a Comment')
-            i.big.send.link.icon
-
-        
-
+            span @TheRealElvisEstate 1 Dec 2022
+          #opinion
+            #tweet-1 Click the link below to enter in 'Elvis' #1 fan giveaway!'
+            | You’ll be able to enter to win some great exclusive Elvis merchandise! Good luck!
+            #space 
+            |  &nbsp;
+            #tweet-2  <a>http://sweepstakes/elvis.com</a> 
+          img(id="harmony-pic" src='/images/elvis-pic.jpeg')
+          #postButtons
+              .ui.labeled.button.postButton(tabindex="0" alt="Comment" title="Comment" onclick='updateComment()')
+                .ui.button.postIconBox 
+                  i.comment.outline.icon#commentIcon
+                a.ui.basic.label#commentLabel
+                  | 0
+              .ui.labeled.button.postButton(tabindex="0" alt="Share" title="Share" onclick='updateShare()')
+                .ui.button.postIconBox
+                  i.share.square.outline.icon#shareIcon
+                a.ui.basic.label#shareLabel
+                  | 2
+              .ui.labeled.button.postButton(tabindex="0" alt="Like" title="Like" onclick='updateLike()')
+                .ui.button.postIconBox
+                  i.heart.outline.icon#likeIcon
+                a.ui.basic.label#likeLabel
+                  | 107
 
 block scripts
   script(src='/postFunctionalities.js')
-  script(src="/module_js/cyberbullying/cyberbullying_tutorial.js")
+  script(src="/module_js/cyberbullying/cyberbullying_sim1.js")
   script(src="/module_js/voiceover.js")
   script(src="/module_js/base_introSteps.js")
-  script(src='/module_js/base_tutorial.js')
+  script(src='/module_js/base_sim.js')
+  script.
+    function updateFollow() {
+        //- console.log("follow updating...");
+        let elem = document.getElementById("followingbutton");
+        let followerNum = document.getElementById("numFollowers");
+
+        let checkText = elem.innerHTML;
+        console.log(checkText);
+        if(checkText === "Follow"){
+          //- console.log("num 11111");
+          elem.style.cssText = "background-color:#1676be !important; color: white !important"; 
+          elem.innerHTML = "Following";
+          followerNum.innerHTML = "Followers <br> 394";
+        } else {
+          //- console.log("num 22222");
+          elem.style.cssText = "background-color:white !important; color: #1676be !important"; 
+          elem.innerHTML = "Follow";
+          followerNum.innerHTML = "Followers <br> 393";
+        }
+    }
+  script.
+    function updateComment() {
+        //- console.log("comment updating...");
+        let element = document.getElementById("commentIcon");
+        let label = document.getElementById("commentLabel");
+
+        if(label.innerHTML === "0"){
+          element.classList.remove("outline");
+          element.classList.add("blue");
+          label.innerHTML = "1";
+        } else {
+          element.classList.remove("blue");
+          element.classList.add("outline");
+          label.innerHTML = "0";
+        }
+    }
+  script.
+    function updateShare() {
+        //- console.log("share updating...");
+        let element = document.getElementById("shareIcon");
+        let label = document.getElementById("shareLabel");
+      
+        if(label.innerHTML === "2"){
+          element.classList.remove("outline");
+          element.classList.add("green");
+          label.innerHTML = "3";
+        } else {
+          element.classList.remove("green");
+          element.classList.add("outline");
+          label.innerHTML = "2";
+        }
+    }
+  script.
+    function updateLike() {
+        console.log("like updating...");
+
+        let element = document.getElementById("likeIcon");
+        let label = document.getElementById("likeLabel");
+
+        if(label.innerHTML === "107"){
+          element.classList.remove("outline");
+          element.classList.add("red");
+          label.innerHTML = "108";
+        } else {
+          element.classList.remove("red");
+          element.classList.add("outline");
+          label.innerHTML = "107";
+        }
+    }
+  script.
+    function completeTutorial() {
+      let element = document.getElementsByClassName('introjs-donebutton');
+      //- console.log(element[0]);
+      if(element[0] === undefined){
+        // not yet at last step, don't complete the tutorial
+      } else {
+        // done button exists signifying last step, complete tutorial and move on to next page
+        // window.location.href="/tutorial/learn2";
+      }
+    }
 
     

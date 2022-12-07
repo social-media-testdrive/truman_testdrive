@@ -18,7 +18,6 @@ const stepsList = [
   {
     element: '#redflags',
     intro: `Now that you know the definition of a troll, let's go through some tactics to identify trolls.`,
-    position: 'right',
     scrollTo: 'tooltip',
     audioFile: ['']
   },

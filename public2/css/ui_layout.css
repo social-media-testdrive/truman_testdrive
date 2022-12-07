@@ -32,6 +32,7 @@ body {
     color: #696969;
 }
 
+
 /* --- HEADER & FOOTER ---- */
 
 .ui.menu.testDriveHeader,
@@ -482,10 +483,14 @@ button,
 }
 
 #harmony-page {
+    margin-top: 50px;;
     width: 150% !important;
     margin-left: -132px;
-
     background-color: #e7edf0;
+}
+
+.elvisFixNav {
+    top: -64px !important;
 }
 
 #buttons-menu {
@@ -495,6 +500,8 @@ button,
     z-index: 0;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
 }
+
+
 
 #toploggedin {
     background-color: white;
@@ -520,6 +527,7 @@ button,
     border-radius: 50%;
     width: 100%;
     height: 100%;
+    z-index: 0;
 }
 
 .bio {
@@ -531,6 +539,12 @@ button,
     height: 33vh;
     font-size: .9em;
     /* background-color: pink; */
+}
+
+.elvisBio {
+    /* background-color: green !important; */
+    margin-top: -9.8vh !important;
+    z-index: 0;
 }
 
 #userName {
@@ -559,8 +573,7 @@ button,
 }
 
 .navbar {
-    background-color: rebeccapurple;
-    color: red;
+    /* background-color: rebeccapurple; */
     font-size: 3em;
     display: inline;
     display:inline-block;
@@ -575,20 +588,59 @@ button,
     /* top: 36vh;
     right: 15vw; */
     top: 263px;
-    right: 25px;
+    right: 250px;
     /* background-color: rebeccapurple; */
 
 }
 
+/* .ElvisWhiteFix {
+    background-color: pink !important;
+} */
+
 #twitterNav .active {
-    color: #21a6f2;
+    color: #21a6f2 !important;
 }
 
 #followingbutton {
-    background-color: green;
     border-radius: 18px;
     height: 40px;
     margin-left: 100px;
+    width: 100px;
+    position: absolute;
+    top: 280px;
+    right: 40px;
+    z-index: 0;
+}
+
+#followingbuttonChris {
+    border-radius: 18px;
+    height: 40px;
+    margin-left: 100px;
+    width: 100px;
+    position: absolute;
+    top: 3px;
+    right: 200px;
+    z-index: 99999;
+}
+
+/* Stop intro js from moving underlying element positioning */
+/* .introjs-relativePosition {
+    position: initial;
+} */
+
+#actionsOverlay {
+    position: absolute;
+    /* background-color: green; */
+    height: 25px;
+    width: 172px;
+    top: 190px;
+    right: 245px;
+}
+
+#react {
+    /* background-color: red !important; */
+    height: 40px;
+    width: 175px;
 }
 
 #feed {
@@ -598,6 +650,20 @@ button,
     position: absolute;
     top:340px;
     right:40px;
+}
+
+#chrisFeed  {
+    background-color: white;
+    width: 465px;
+    height: 440px;
+    position: absolute;
+    top:340px;
+    right:40px;
+}
+
+.chrisPage {
+    /* background-color: blue !important; */
+    padding-bottom: 220px !important;
 }
 
 hr {
@@ -620,9 +686,47 @@ hr {
     color: #21a6f2;
 }
 
+/* Remove done button so that we can force them to click decline instead 
+.introjs-donebutton {
+    pointer-events: none !important; 
+    display: none !important; 
+}
+
+.extra #decline:active {
+    background-color: #dc2c2c !important;
+    color: #fff !important;
+}
+
+.extra #decline:focus {
+    background-color: #dc2c2c !important;
+    color: #fff !important;
+}
+
+.extra #decline:visited {
+    background-color: darkred !important;
+    color: #fff !important;
+}
+
+#followingbutton:focus {
+    background-color: darkred !important;
+    color: #fff !important;
+} 
+
+
+#accept:active {
+    background-color: #24bc44 !important;
+    color: #fff !important;
+}
+
+#accept:focus {
+    background-color: #24bc44 !important;
+    color: #fff !important;
+} */
+
 #tweet-2 span {
     color: #21a6f2;
-}
+    font-weight: lighter;
+} 
 
 /* fix spacing between like, reshare, and comment buttons and labels */
 .firstAction {
@@ -666,6 +770,39 @@ hr {
     font-weight: lighter;
 }
 
+/* Chris feed */
+#chrisFeedPinned {
+    /* background-color: rgb(208, 255, 208);
+    height: 300px; */
+    width: 380px;
+    margin-left: 50px;
+    margin-top: -2px;
+    font-size: .8em;
+}
+
+#chrisFeedPinned #chrisFeedPic {
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    top: 65px;
+    left: 10px;
+    border-radius: 50%;
+}
+
+#chrisFeedPinned p {
+    margin-bottom: -1px;
+}
+
+#chrisFeedPinned span {
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+#chrisFeedPinned span span{
+    font-weight: lighter;
+}
+
+
 #feedName {
     font-weight: bolder !important;
     font-size: 1.1em !important;
@@ -689,7 +826,6 @@ hr {
     outline: none;
 }
 
-
 #actions a.ui.basic.label{
     border: none;
     font-weight: bold;
@@ -697,10 +833,38 @@ hr {
     margin-left: -10px !important;
 }
 
-#actions {
-    /* background-color: green; */
-    margin-left: -68px !important;
+#postButtons {
+    /* background-color: red !important; */
+    width: 57%;
+    margin-left: -10px;
 }
+
+.postIconBox {
+    background-color: transparent !important;
+    /* width: 20px; */
+    padding-left: 15px !important;
+    padding-right: 4px !important;
+    font-size: small !important;
+}
+
+/* #postButtons a.ui.basic.label{
+    border: none;
+    font-weight: bold;
+    font-size: x-small !important;
+    padding-left: 5 !important;
+    padding-right: 5 !important;
+} */
+
+#postButtons a.ui.basic.label{
+    background-color: transparent !important;
+    border: none;
+    font-weight: bold;
+    font-size: small !important;
+    padding-left: 0 !important;
+    padding-right: 5 !important;
+    pointer-events: none;
+}
+
 
 
 a.ui.basic.label#fixspace {
@@ -715,4 +879,42 @@ i.map.pin.icon {
 #pinned {
     color: #8196ad;
     font-weight: lighter !important;
+}
+
+
+
+a.item {
+    font-weight: bold !important;
+    color: #6e7686 !important;
+}
+
+
+#FollowersMenu {
+    background-color: white !important;
+    width: 500px;
+    padding-bottom: 15px !important;
+    z-index: 999999999 !important;
+}
+
+.exitButton {
+    background-color: white;
+    border: none;
+    margin-top: 1px;
+    /* margin-right: 1px; */
+}
+
+.followerHeader {
+    margin-top: 15px !important;
+}
+
+.followListBtn {
+    margin-right: 15px;
+}
+
+.item .ui.tiny.image {
+    margin-left: 15px;
+}
+
+.padBottom {
+    padding-bottom: 30px !important;
 }
