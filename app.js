@@ -508,6 +508,41 @@ app.get('/tutorial/:modId', passportConfig.isAuthenticated, setHttpResponseHeade
     });
 });
 
+// Render explore page
+app.get('/Saeed_Ahmed/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    if (req.params.modId === 'safe-posting') {
+        res.set({
+            'Content-Security-Policy': "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
+                "default-src 'self' https://www.google-analytics.com;" +
+                "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
+                "img-src 'self' https://dhpd030vnpk29.cloudfront.net https://www.googletagmanager.com https://www.google-analytics.com;" +
+                "media-src https://dhpd030vnpk29.cloudfront.net;" +
+                "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:"
+        });
+    }
+    res.render(req.params.modId + '/' + req.params.modId + '_Saeed_Ahmed', {
+        title: 'Explore'
+    });
+});
+
+app.get('/HarmonyAnderson/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/' + req.params.modId + '_HarmonyAnderson', {
+        title: 'Explore'
+    });
+});
+
+app.get('/BlueLiveMatter1/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/' + req.params.modId + '_BlueLiveMatter1', {
+        title: 'Explore'
+    });
+});
+
+app.get('/Christopher/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/' + req.params.modId + '_Christopher', {
+        title: 'Explore'
+    });
+});
+
 // Render learn page 
 app.get('/tutorial2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
     res.render(req.params.modId + '/' + req.params.modId + '_tutorial2', {
