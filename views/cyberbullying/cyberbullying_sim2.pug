@@ -31,7 +31,7 @@ block content
 
       .ui.centered.cards
         #step2.card
-          #step3.content
+          a#step3.content
             img.right.floated.medium.ui.image(src='/images/chris-pic.jpg')
             .header
               | Christopher Worrick
@@ -42,30 +42,11 @@ block content
           .extra.content
             .ui.two.buttons.approveDeclineBtns
               button#accept.ui.basic.green.button(onclick='completeTutorial()') Approve
-              button#decline.ui.basic.red.button Decline  
-
-
-
-    //- #nextPage.ui.fluid.card.test       
-    //-   .content
-    //-     .right.floated.meta= "2:07pm"
-    //-     |
-    //-     a(href='')
-    //-       img.ui.avatar.image(src=cdn+'/profile_pictures/user55.jpg')
-    //-       span='Logged In'
-    //-     //- h1 Your Friend Requests
-    //-   .image
-    //-     img.post(src="/images/harmony-profile.png")
-    //-   #populated-data
-    //-   //- #harmony-pic
-    //-   #tweets-number
-    //-   #opinions
-    //-   #reactions
-
-    //- #nextPage.ui.fluid.card.test       
-
+              button#decline.ui.basic.red.button Decline   
     #harmony-page.chrisPage.ui.fluid.card.dim(style = "margin-bottom:0px")
       #toploggedin.content
+        a
+          i#backBtn.big.arrow.left.icon
         .right.floated.meta= "2:07pm"
         |
         a(href='')

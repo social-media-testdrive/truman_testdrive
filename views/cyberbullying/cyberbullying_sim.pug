@@ -239,13 +239,13 @@ block scripts
   //-   }
   //- disable done buttons just for the sim page so the other intro js stuff isn't messed up
   script.
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'Enter') {
-        setTimeout(function() {
-          // Code to run after one-minute delay goes here
-        }, 60000);
-      }
-    });
+    //- document.addEventListener('keydown', function(event) {
+    //-   if (event.key === 'Enter') {
+    //-     setTimeout(function() {
+    //-       // Code to run after one-minute delay goes here
+    //-     }, 60000);
+    //-   }
+    //- });
               
     var doneCssRules =
         '.introjs-donebutton {pointer-events: none;display: none;}.extra #decline:active {background-color: #dc2c2c !important;color: #fff !important;}.extra #decline:focus {background-color: #dc2c2c !important;color: #fff !important;}.extra #decline:visited {background-color: darkred !important;color: #fff !important;}#accept:active {background-color: #24bc44 !important;color: #fff !important;}#accept:focus {background-color: #24bc44 !important;color: #fff !important;}';

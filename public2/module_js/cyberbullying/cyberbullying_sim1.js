@@ -119,8 +119,8 @@ const stepsList = [
     },
     {
       element: '#backBtn',
-      intro: `We've seen enough to know this is a troll you will want to avoid! <b>Press the back button</b> to return to the friend request where you will be able to respond to it.`,
-      position: 'right',
+      intro: `We've seen enough to know this is a <b>troll</b> you will want to avoid! <b>Press the arrow button</b> to return to the friend request where you will be able to respond to it.`,
+      position: 'left',
       scrollTo: 'tooltip'
     //   audioFile: ['CUSML.6.3.6.mp3']
     },
