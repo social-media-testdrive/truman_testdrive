@@ -484,7 +484,8 @@ button,
 
 /* the character's page (after the request) in the practice pages */
 #harmony-page {
-    margin-top: 12px;;
+    /* background-color: red !important; */
+    margin-top: 5px;
     width: 150% !important;
     margin-left: -132px;
     background-color: #e7edf0;
@@ -922,6 +923,9 @@ a.item {
     padding-bottom: 30px !important;
 }
 
+.padTop {
+    margin-top: -10px !important;
+}
 #step1 {
     display: block;
 }
@@ -929,3 +933,12 @@ a.item {
 a#step3:active {
     opacity: 0.5;
 }
+
+.elvisFixPadding {
+    margin-top: unset;
+    margin-top: 8px !important;
+}
+
+/* #numFollowers {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+} */

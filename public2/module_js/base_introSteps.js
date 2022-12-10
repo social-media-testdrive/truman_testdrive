@@ -246,11 +246,142 @@ function startIntro(enableDataCollection) {
               })
         }
 
-         // at last step disable back button, they must click decline
+        // at last step disable back button, they must click decline
         if(subdirectory1 === "sim2" && subdirectory2 === "cyberbullying" && intro._currentStep === 10) { // your disabled step 2 for example {
             var original_onclick = $('.introjs-prevbutton').get(0).onclick;
             let elements = document.getElementsByTagName('a');
             elements[26].style.filter = "grayscale(100%)";
+
+
+            // $('.introjs-nextbutton').style.backgroundColor = "red";  
+            $('.introjs-prevbutton').addClass('introjs-disabled');
+            $('.introjs-prevbutton').get(0).onclick = null;
+        }
+
+        // SIM 3 Customization
+        // disable the next btn for harmony when we want them to click the profile page instead
+        if(subdirectory1 === "sim3" && subdirectory2 === "cyberbullying" && intro._currentStep === 2) { // your disabled step 2 for example {
+            // alert("this has been activated hehehe");
+            // console.log($('.introjs-nextbutton'));
+
+            var original_onclick = $('.introjs-nextbutton').get(0).onclick;
+            let elements = document.getElementsByTagName('a');
+            console.log(elements);
+            // console.log(elements[27]);
+            elements[34].style.filter = "grayscale(100%)";
+
+
+            // $('.introjs-nextbutton').style.backgroundColor = "red";  
+            $('.introjs-nextbutton').addClass('introjs-disabled');
+            $('.introjs-nextbutton').get(0).onclick = null;
+            $('#step3').on('click', function() {
+                // reset next button for future use
+                elements[34].style.filter = "";
+                $('.introjs-nextbutton').removeClass('introjs-disabled');
+                $('.introjs-nextbutton').get(0).onclick = original_onclick;
+                
+                // activate the click for the user too so we can automatically move them along!!
+                elements[34].click();
+              })
+        }
+
+        // at next step disable back button
+        if(subdirectory1 === "sim3" && subdirectory2 === "cyberbullying" && intro._currentStep === 3) { // your disabled step 2 for example {
+            // console.log("the click: ");
+            var original_onclick = $('.introjs-prevbutton').get(0).onclick;
+            // console.log(original_onclick);            
+            let elements = document.getElementsByTagName('a');
+            // console.log(elements);
+            elements[33].style.filter = "grayscale(100%)";
+
+
+            // $('.introjs-nextbutton').style.backgroundColor = "red";  
+            $('.introjs-prevbutton').addClass('introjs-disabled');
+            $('.introjs-prevbutton').get(0).onclick = null;
+            $('.introjs-nextbutton').on('click', function() {
+                elements[33].style.filter = "";
+                $('.introjs-prevbutton').removeClass('introjs-disabled');
+                $('.introjs-prevbutton').get(0).onclick = original_onclick;
+            })
+        }
+
+        // disable next so you look into harmony's follower list
+        if(subdirectory1 === "sim3" && subdirectory2 === "cyberbullying" && intro._currentStep === 6) { // your disabled step 2 for example {
+            console.log("at 6");
+
+            var original_onclick = $('.introjs-nextbutton').get(0).onclick;
+            let elements = document.getElementsByTagName('a');
+            console.log(elements);
+            // console.log(elements[27]);
+            elements[34].style.filter = "grayscale(100%)";
+            elements[7].style.boxShadow = '0 0 5px rgba(81, 203, 238, 1)';
+
+            // $('.introjs-nextbutton').style.backgroundColor = "red";  
+            $('.introjs-nextbutton').addClass('introjs-disabled');
+            $('.introjs-nextbutton').get(0).onclick = null;
+            $('#numFollowers').on('click', function() {
+                // go to next step explaining the follower list while it is open
+                $('.introjs-nextbutton').removeClass('introjs-disabled');
+                $('.introjs-nextbutton').get(0).onclick = original_onclick;
+                elements[34].click();
+                $('.introjs-nextbutton').addClass('introjs-disabled');
+                $('.introjs-nextbutton').get(0).onclick = null;
+              })
+
+            // exiting follow list so move on
+            $('.exitButton').on('click', function() {
+                // reset next button for future use
+                elements[34].style.filter = "";
+                $('.introjs-nextbutton').removeClass('introjs-disabled');
+                $('.introjs-nextbutton').get(0).onclick = original_onclick;
+                // activate the click for the user too so we can automatically move them along!!
+
+                // disable viewing follower list in future
+                elements[7].style.pointerEvents = "none";
+                elements[7].style.boxShadow = 'none';
+                elements[34].click();
+            })
+        }
+
+         // disable back button so can't mess up steps after viewing list
+         if(subdirectory1 === "sim3" && subdirectory2 === "cyberbullying" && intro._currentStep === 8) { // your disabled step 2 for example {
+            var original_onclick = $('.introjs-prevbutton').get(0).onclick;
+            let elements = document.getElementsByTagName('a');
+            elements[33].style.filter = "grayscale(100%)";
+
+
+            // $('.introjs-nextbutton').style.backgroundColor = "red";  
+            $('.introjs-prevbutton').addClass('introjs-disabled');
+            $('.introjs-prevbutton').get(0).onclick = null;
+        }
+
+
+        // make user hit left arrow back button to return to friend request
+        if(subdirectory1 === "sim3" && subdirectory2 === "cyberbullying" && intro._currentStep === 10) { // your disabled step 2 for example {
+            var original_onclick = $('.introjs-nextbutton').get(0).onclick;
+            let elements = document.getElementsByTagName('a');
+            elements[34].style.filter = "grayscale(100%)";
+
+
+            // $('.introjs-nextbutton').style.backgroundColor = "red";  
+            $('.introjs-nextbutton').addClass('introjs-disabled');
+            $('.introjs-nextbutton').get(0).onclick = null;
+            $('#backBtn').on('click', function() {
+                // reset next button for future use
+                elements[34].style.filter = "";
+                $('.introjs-nextbutton').removeClass('introjs-disabled');
+                $('.introjs-nextbutton').get(0).onclick = original_onclick;
+                
+                // activate the click for the user too so we can automatically move them along!!
+                elements[34].click();
+                })
+        }
+
+         // at last step disable back button, they must click decline
+         if(subdirectory1 === "sim3" && subdirectory2 === "cyberbullying" && intro._currentStep === 11) { // your disabled step 2 for example {
+            var original_onclick = $('.introjs-prevbutton').get(0).onclick;
+            let elements = document.getElementsByTagName('a');
+            elements[33].style.filter = "grayscale(100%)";
 
 
             // $('.introjs-nextbutton').style.backgroundColor = "red";  

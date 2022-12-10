@@ -13,7 +13,7 @@ const stepsList = [
     // intro: `You have recently seen that some people keep saying mean
     // things about Dylan. A group of friends from school are bullying
     // Dylan on social media.`,
-    intro: `You were looking through your friend requests on social media and came across a user named Harmony Anderson who has requested to be your friend.`,
+    intro: `You were looking through your friend requests on social media and came across a user named Harmony Anderson has requested to be your friend.`,
     position: 'right',
     scrollTo: 'tooltip',
     audioFile: ['CUSML.6.3.1.mp3']

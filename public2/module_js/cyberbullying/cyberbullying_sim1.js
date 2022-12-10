@@ -45,7 +45,7 @@ const stepsList = [
       },
     {
       element: '#step2',
-      intro: `Click their request so that you can go to their account and learn more about them!`,
+      intro: `<b>Click their request</b> so that you can go to their account and <b>learn more</b> about them!`,
       position: 'right',
       // myBeforeChangeFunction: function() { 
       //   alert('this is a before change loaded function');

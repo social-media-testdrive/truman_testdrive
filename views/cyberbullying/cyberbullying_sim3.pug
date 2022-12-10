@@ -14,13 +14,14 @@ block content
             .ui.header Need some help?
             p Scroll up and click "Next" to begin!
 
-    #step1.ui.fluid.card.test       
+    #step1.ui.fluid.card.test.padBottom.padTop         
       .content
         .right.floated.meta= "2:05pm"
         |
         a(href='')
           img.ui.avatar.image(src=cdn+'/profile_pictures/user55.jpg')
           span='Logged In'
+        hr
         h1 Your Friend Requests
       //- .image
       //-   img.post(src="/images/friend-request.png")
@@ -28,7 +29,7 @@ block content
 
       .ui.centered.cards
         #step2.card
-          #step3.content
+          a#step3.content
             img.right.floated.medium.ui.image(src='/images/harmony-pic.jpg')
             .header
               | Harmony Anderson
@@ -41,8 +42,10 @@ block content
               button#accept.ui.basic.green.button Approve
               button#decline.ui.basic.red.button(onclick='completeTutorial()') Decline  
           
-    #harmony-page.ui.fluid.card.dim(style = "margin-bottom:0px")
+    #harmony-page.ui.fluid.card.dim.padTop(style = "margin-bottom:0px")
       #toploggedin.content
+        a
+          i#backBtn.big.arrow.left.icon
         .right.floated.meta= "2:07pm"
         |
         a(href='')
