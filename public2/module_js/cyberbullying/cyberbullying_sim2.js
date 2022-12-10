@@ -60,7 +60,7 @@ const stepsList = [
       {
         element: '#accept',
         intro: `This is not a troll, you should accept this request`,
-        position: 'right',
+        position: 'left',
         scrollTo: 'tooltip',
         audioFile: ['CUSML.6.3.6.mp3']
       }

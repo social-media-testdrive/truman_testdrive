@@ -186,6 +186,12 @@ block content
 
 
 block scripts
+  script.
+    var doneCssRules =
+        '.introjs-donebutton {pointer-events: none !important;display: none !important;}.extra #decline:active {background-color: #dc2c2c !important;color: #fff !important;}.extra #decline:focus {background-color: #dc2c2c !important;color: #fff !important;}.extra #decline:visited {background-color: darkred !important;color: #fff !important;}#accept:active {background-color: #24bc44 !important;color: #fff !important;}#accept:focus {background-color: #24bc44 !important;color: #fff !important;}';
+    var styleElement = document.createElement('style');
+    styleElement.appendChild(document.createTextNode(doneCssRules));
+    document.getElementsByTagName('head')[0].appendChild(styleElement);
   script(src='/postFunctionalities.js')
   script(src="/module_js/cyberbullying/cyberbullying_sim3.js")
   script(src="/module_js/voiceover.js")
@@ -268,8 +274,8 @@ block scripts
         // not yet at last step, don't complete the tutorial
       } else {
         // done button exists signifying last step, complete tutorial and move on to next page
-        // let tempSub = "cyberbullying";
-        // window.location.href = `/${nextPageURL}/${tempSub}`;
+        let tempSub = "cyberbullying";
+        window.location.href = `/${nextPageURL}/${tempSub}`;
       }
     }
   script.

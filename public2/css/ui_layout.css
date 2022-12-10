@@ -686,6 +686,7 @@ hr {
     color: #21a6f2;
 }
 
+
 /* Remove done button so that we can force them to click decline instead 
 .introjs-donebutton {
     pointer-events: none !important; 

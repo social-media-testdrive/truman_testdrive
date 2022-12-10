@@ -6,7 +6,7 @@ function initializeStudentActivityBarChart(){
           labels: [
             'Accounts and Passwords',
             'Responding to Breaking News!',
-            'How to Be an Upstander',
+            'How to Avoid Trolls',
             'Shaping Your Digital Footprint',
             'News in Social Media',
             'The Ups and Downs of Social Media',
@@ -81,7 +81,7 @@ function initializeAvgTimeSpentChart(){
           labels: [
             'Accounts and Passwords',
             'Responding to Breaking News!',
-            'How to Be an Upstander',
+            'How to Avoid Trolls',
             'Shaping Your Digital Footprint',
             'News in Social Media',
             'The Ups and Downs of Social Media',

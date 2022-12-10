@@ -44,6 +44,13 @@ const stepsList = [
         // audioFile: ['CUSML.6.3.3.mp3']
       },
     {
+      element: '#step2',
+      intro: `Click their request so that you can go to their account and learn more about them!`,
+      position: 'right',
+      scrollTo: 'tooltip'
+    //   audioFile: ['CUSML.6.3.3.mp3']
+    },
+    {
     element: '#harmony-pic',
     intro: `They pose as a well known <b>celebrity</b>. Scammers often pretend to be celebrities you look up to and trust in an attempt to manipulate you`,
     position: 'left',
