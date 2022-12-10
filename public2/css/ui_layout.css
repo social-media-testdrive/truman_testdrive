@@ -482,11 +482,13 @@ button,
     left: 353px;
 }
 
+/* the character's page (after the request) in the practice pages */
 #harmony-page {
-    margin-top: 50px;;
+    margin-top: 12px;;
     width: 150% !important;
     margin-left: -132px;
     background-color: #e7edf0;
+    display: none;
 }
 
 .elvisFixNav {
@@ -918,4 +920,12 @@ a.item {
 
 .padBottom {
     padding-bottom: 30px !important;
+}
+
+#step1 {
+    display: block;
+}
+
+a#step3:active {
+    opacity: 0.5;
 }

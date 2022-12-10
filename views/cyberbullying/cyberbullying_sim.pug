@@ -25,7 +25,7 @@ block content
 
       .ui.centered.cards
         #step2.card
-          #step3.content
+          a#step3.content
             img.right.floated.medium.ui.image(src='/images/elvis-pic.jpeg')
             .header
               | Elvis Pres1ey
@@ -34,12 +34,14 @@ block content
             .description
               | Elvis Pres1ey has requested to be your friend 
           .extra.content
-            .ui.two.buttons.approveDeclineBtns
-              button#accept.ui.basic.green.button Approve
+            .ui.two.buttons.approveDeclineBtns       
+              button#accept.ui.basic.green.button(onclick='checkTutorialStep()') Approve
               button#decline.ui.basic.red.button(onclick='completeTutorial()') Decline  
           
     #harmony-page.ui.fluid.card.dim(style = "margin-bottom:0px")
       #toploggedin.content
+        a
+          i#backBtn.big.arrow.left.icon
         .right.floated.meta= "2:07pm"
         |
         a(href='')
@@ -124,13 +126,6 @@ block content
                   | 107
 
 block scripts
-  //- disable done buttons just for the sim page so the other intro js stuff isn't messed up
-  script.
-    var doneCssRules =
-        '.introjs-donebutton {pointer-events: none !important;display: none !important;}.extra #decline:active {background-color: #dc2c2c !important;color: #fff !important;}.extra #decline:focus {background-color: #dc2c2c !important;color: #fff !important;}.extra #decline:visited {background-color: darkred !important;color: #fff !important;}#accept:active {background-color: #24bc44 !important;color: #fff !important;}#accept:focus {background-color: #24bc44 !important;color: #fff !important;}';
-    var styleElement = document.createElement('style');
-    styleElement.appendChild(document.createTextNode(doneCssRules));
-    document.getElementsByTagName('head')[0].appendChild(styleElement);
   script(src='/postFunctionalities.js')
   script(src="/module_js/cyberbullying/cyberbullying_sim1.js")
   script(src="/module_js/voiceover.js")
@@ -216,7 +211,48 @@ block scripts
         window.location.href="/sim2/cyberbullying";
       }
     }
- 
+  //- script.
+  //-   function checkTutorialStep() {
+  //-     let element = document.getElementsByClassName('introjs-tooltiptext');
+  //-     if(element[0] === undefined){
+  //-       //- console.log("Nope, its undefined")
+  //-     } else {
+  //-       //- console.log(element[0].innerHTML);
 
+  //-       //- if at a certain step, to an action
+  //-       //- if(element[0].innerHTML === "Click their request so that you can go to their account and learn more about them!") {
+  //-       //-   //- console.log("Hello, going to show the page now!")
+  //-       //-   let showProfilePage = document.getElementById("harmony-page");
+  //-       //-   showProfilePage.style.visibility = "visible";
 
-    
+  //-       //-   let hideRequest = document.getElementById("step1");
+  //-       //-   hideRequest.style.display = "none";
+
+  //-       //- }
+  //-     }
+  //-   }
+  //- script.
+  //-   function addCheckStepToNextBtn() {
+  //-     let introjsDiv2 = document.getElementsByClassName("introjs-tooltipbuttons");
+  //-     let nextBtn2 = introjsDiv2[0].getElementsByClassName("introjs-nextbutton");
+  //-     nextBtn2[0].addEventListener("click", checkTutorialStep);
+  //-   }
+  //- disable done buttons just for the sim page so the other intro js stuff isn't messed up
+  script.
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        setTimeout(function() {
+          // Code to run after one-minute delay goes here
+        }, 60000);
+      }
+    });
+              
+    var doneCssRules =
+        '.introjs-donebutton {pointer-events: none;display: none;}.extra #decline:active {background-color: #dc2c2c !important;color: #fff !important;}.extra #decline:focus {background-color: #dc2c2c !important;color: #fff !important;}.extra #decline:visited {background-color: darkred !important;color: #fff !important;}#accept:active {background-color: #24bc44 !important;color: #fff !important;}#accept:focus {background-color: #24bc44 !important;color: #fff !important;}';
+    var styleElement = document.createElement('style');
+    styleElement.appendChild(document.createTextNode(doneCssRules));
+    document.getElementsByTagName('head')[0].appendChild(styleElement);
+
+    // delay adding it a little bit so there is enough time for the page to load
+    //- setTimeout(addCheckStepToNextBtn, 1000);
+

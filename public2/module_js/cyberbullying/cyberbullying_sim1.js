@@ -47,6 +47,24 @@ const stepsList = [
       element: '#step2',
       intro: `Click their request so that you can go to their account and learn more about them!`,
       position: 'right',
+      // myBeforeChangeFunction: function() { 
+      //   alert('this is a before change loaded function');
+      // },
+      // myChangeFunction: function() { 
+      //     alert('this is a change loaded function');
+      // },
+      // onbeforechange: function(){
+      //   console.log("before change");
+
+      //   let showProfilePage = document.getElementById("harmony-page");
+      //   showProfilePage.style.visibility = "visible";
+
+      //   let hideRequest = document.getElementById("step1");
+      //   hideRequest.style.display = "none";
+      // },
+      // onchange: function(){
+      //   console.log("onchange");
+      // },
       scrollTo: 'tooltip'
     //   audioFile: ['CUSML.6.3.3.mp3']
     },
@@ -54,7 +72,14 @@ const stepsList = [
     element: '#harmony-pic',
     intro: `They pose as a well known <b>celebrity</b>. Scammers often pretend to be celebrities you look up to and trust in an attempt to manipulate you`,
     position: 'left',
-    scrollTo: 'tooltip'
+    myBeforeChangeFunction: function() { 
+      let showProfilePage = document.getElementById("harmony-page");
+      showProfilePage.style.display = "block";
+
+      let hideRequest = document.getElementById("step1");
+      hideRequest.style.display = "none";    
+    },
+    scrollTo: 'tooltip',
     //   audioFile: ['CUSML.6.3.5.mp3']
     },
     {
@@ -93,9 +118,25 @@ const stepsList = [
     //   audioFile: ['CUSML.6.3.6.mp3']
     },
     {
-      element: '#decline',
-      intro: `This is a troll, you should decline this request.<br><br> <em>Press the <b>decline</b> button to continue</em>`,
+      element: '#backBtn',
+      intro: `We've seen enough to know this is a troll you will want to avoid! <b>Press the back button</b> to return to the friend request where you will be able to respond to it.`,
       position: 'right',
+      scrollTo: 'tooltip'
+    //   audioFile: ['CUSML.6.3.6.mp3']
+    },
+    {
+      element: '#decline',
+      intro: `Decline this request.<br><br> <em>Press the <b>decline</b> button to continue</em>`,
+      position: 'right',
+      myBeforeChangeFunction: function() { 
+        let showProfilePage = document.getElementById("harmony-page");
+        showProfilePage.style.display = "none";
+  
+        let hideRequest = document.getElementById("step1");
+        hideRequest.style.display = "block";    
+      },
       scrollTo: 'element',         
     }
   ];
+
+  
