@@ -14,7 +14,9 @@ block content
             .ui.header Need some help?
             p Scroll up and click "Next" to begin!
 
-    #step1.ui.fluid.card.test.padBottom.padTop         
+
+
+    #step1.ui.fluid.card.test.padBottom.padTop       
       .content
         .right.floated.meta= "2:05pm"
         |
@@ -30,19 +32,18 @@ block content
       .ui.centered.cards
         #step2.card
           a#step3.content
-            img.right.floated.medium.ui.image(src='/images/harmony-pic.jpg')
+            img.right.floated.medium.ui.image(src='/images/chris-pic.jpg')
             .header
-              | Harmony Anderson
-            .meta
-              | 2 mutual friends
+              | Christopher Worrick
+            .meta#mutual
+              | 16 mutual friends
             .description
-              | Harmony has requested to be your friend
+              | Christopher Worrick has requested to be your friend 
           .extra.content
             .ui.two.buttons.approveDeclineBtns
-              button#accept.ui.basic.green.button Approve
-              button#decline.ui.basic.red.button(onclick='completeTutorial()') Decline  
-          
-    #harmony-page.ui.fluid.card.dim.padTop(style = "margin-bottom:0px")
+              button#accept.ui.basic.green.button(onclick='completeTutorial()') Accept
+              button#decline.ui.basic.red.button Decline   
+    #harmony-page.chrisPage.ui.fluid.card.dim.padTop(style = "margin-bottom:0px")
       #toploggedin.content
         a
           i#backBtn.big.arrow.left.icon
@@ -55,38 +56,25 @@ block content
         img(style='height:10%;width:100%; z-index: 0;position: relative;\
   top: 0;\
   left: 0;\
-  solid; z-index = -1' src='/profile_pictures/harmony-bg.jpg')
+  solid; z-index = -1' src='/images/chris-bg.png')#backgrounPic
         #round-pic-container
           #pic-border
-            img(id="harmony-pic" src='/profile_pictures/user81.jpg')
-        //- #buttons-menu.four.ui.bottom.attached.icon.buttons
-        //-       .ui.reply.button(tabindex='0')
-        //-         | Blah
-        //-       .ui.flag.button()
-        //-         | Tweets&Replies
-        //-       .ui.labeled.button(tabindex='0')
-        //-         .ui.like.button
-        //-           | Likes
-        //-       .ui.flag.button()
-        //-         | Tweets&Replies
-        #buttons-menu.four.ui.bottom.attached.icon.buttons
-      .bio(style=' width:100%;\
+            img(id="harmony-pic" src='/images/chris-pic.jpg')
+        #buttons-menu.elvisFixNav.four.ui.bottom.attached.icon.buttons
+      .bio.elvisBio(style=' width:100%;\
   padding-left: 25px; margin-top: 15%;z-index: 1')
-        //- .ui.button(style='float: right;margin-right: 25px;')
-        //-     | follow
-        #userName Harmony Anderson 
-        #profileAt  @HarmonyAnders
-        #userAbout  The college girl who managed to stay conservative <span class="hashtags">#prolife #truth</span>
-        | <span class="hashtags">#AmericaFirst</span> This is my 2nd account where I share my political and social views
-        .userDetails
-          #location
-            i.map.marker.alternate.icon
-            | Ankeny, Iowa
-          #joined-date
-            i.calendar.alternate.outline.icon
-            | Joined September 2019
-          
-
+        .populatedBio
+          #userName Christopher Worrick 
+          #profileAt  @ChristopherWorrick
+          #userAbout  Husband, proud father of 2 girls
+          //- |  for more about the king.
+          .userDetails
+            #location
+              i.map.marker.alternate.icon
+              | Columbia, Indiana
+            #joined-date
+              i.calendar.alternate.outline.icon
+              | Joined April 2008
       #twitterNav.ui.secondary.pointing.menu
         .right.menu
         //- a.item.active
@@ -94,99 +82,105 @@ block content
         //-   | 688
         a.item.active
           | Posts <br/>
-          | 2,073
+          | 598
         a.item#numFollowers(onclick='openFollowerList()')
           | Followers <br/>
-          | 4,592
-        a.item#numFollowing
+          | 1,301
+        a.item(onclick='openFolloweringList()')
           | Following <br/>
-          | 5,016
+          | 1,356
       button#followingbutton.ui.button.primary.basic(onclick='updateFollow()') Follow
       
-      #feed   
+      #chrisFeed   
         .feed-nav Posts
           | 
           span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Posts & replies&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Media
         <hr> 
 
-        #feedPinned 
+        #chrisFeedPinned 
           i.map.pin.icon
           span#pinned Pinned Post
           p
           //- p Pinned Tweet
-          span#feedName Harmony Anderson 
+          span#feedName Christopher Worrick
             | 
-            span @HarmonyAnders 27 Nov 2022
+            span @Christopher Worrick 1 Dec 2022
           #opinion
-            #tweet-1 First we were called Deplorable...
-            | And now we are called a Cult. 
-            #space 
-            |  &nbsp;
-            #tweet-2 Yes, I'm in the cult. The Cult of Lower Taxes, Free Speech, Second Amendment, Powerful Military & Strong Borders!<span class="hashtags"> #Cult45</span> 
-          img(id="harmony-pic" src='/profile_pictures/user81.jpg')
+            #tweet-1 Don't forget about this place for lunch!
+          img(id="chrisFeedPic" src='/images/chris-pic.jpg')
+
+          img.ui.medium.image(src='/images/lunchSpot.jpg')
 
           #postButtons
               .ui.labeled.button.postButton(tabindex="0" alt="Comment" title="Comment" onclick='updateComment()')
                 .ui.button.postIconBox 
                   i.comment.outline.icon#commentIcon
                 a.ui.basic.label#commentLabel
-                  | 7
+                  | 27
               .ui.labeled.button.postButton(tabindex="0" alt="Share" title="Share" onclick='updateShare()')
                 .ui.button.postIconBox
                   i.share.square.outline.icon#shareIcon
                 a.ui.basic.label#shareLabel
-                  | 62
+                  | 203
               .ui.labeled.button.postButton(tabindex="0" alt="Like" title="Like" onclick='updateLike()')
                 .ui.button.postIconBox
                   i.heart.outline.icon#likeIcon
                 a.ui.basic.label#likeLabel
-                  | 98
-      .ui.dimmer
-        .content#FollowersMenu
-          .ui.right.floated
-            button.exitButton(onclick='closeFollowerList()')
-              i.large.close.icon
-          .center
-            h2.ui.icon.header.followerHeader
-              | Followers
-            hr
-          .ui.items.left.aligned
-            .item
-              a.ui.tiny.image
-                img(src='/profile_pictures/user3.jpg')
-              .content
-                a.header Heather Cook 
-                .ui.right.floated.followListBtn
-                  button.ui.button(onclick='')
-                    | Follow
-                .description
-                  p @heatherCook
-                  p Travel, theatre, & lifestyle blogger
-            .item
-              a.ui.tiny.image
-                img(src='/profile_pictures/user58.jpg')
-              .content
-                a.header Veronika Ossi
-                .ui.right.floated.followListBtn 
-                  button.ui.button(onclick='')
-                    | Follow
-                .description
-                  p @kittenLover19
-                  p
-                    | Love to party and have fun
-            .item
-              a.ui.tiny.image
-                img(src='/profile_pictures/user66.jpg')
-              .content
-                a.header Jenny Hess
-                .ui.right.floated.followListBtn
-                  button.ui.button(onclick='')
-                    | Follow
-                .description
-                  p @jenny_hess2
-                  p
-                    | Conservative and proud
+                  | 504
+      //- .ui.dimmer
+      //-   .content#FollowersMenu
+      //-     .ui.right.floated
+      //-       button.exitButton(onclick='closeFollowerList()')
+      //-         i.large.close.icon
+      //-     .center
+      //-       h2.ui.icon.header.followerHeader
+      //-         | Followers
+      //-       hr
+      //-     .ui.items.left.aligned
+      //-       .item
+      //-         a.ui.tiny.image
+      //-           img(src='/profile_pictures/user3.jpg')
+      //-         .content
+      //-           a.header Heather Cook 
+      //-           .ui.right.floated.followListBtn
+      //-             button.ui.button(onclick='')
+      //-               | Follow
+      //-           .description
+      //-             p @heatherCook
+      //-             p Travel, theatre, & lifestyle blogger
+      //-       .item
+      //-         a.ui.tiny.image
+      //-           img(src='/profile_pictures/user16.jpg')
+      //-         .content
+      //-           a.header Veronika Ossi
+      //-           .ui.right.floated.followListBtn 
+      //-             button.ui.button(onclick='')
+      //-               | Follow
+      //-           .description
+      //-             p @kittenLover23
+      //-             p
+      //-               | Enjoys kittens, music, and partying
+      //-       .item
+      //-         a.ui.tiny.image
+      //-           img(src='/profile_pictures/user66.jpg')
+      //-         .content
+      //-           a.header Jenny Hess
+      //-           .ui.right.floated.followListBtn
+      //-             button.ui.button(onclick='')
+      //-               | Follow
+      //-           .description
+      //-             p @jenny_hess2
+      //-             p
+      //-               | Studying Media Management at university
+    //- .ui.page.dimmer
+    //- button.ui.button(onclick='openDimmer()')
+    //-   | Show
 
+//- <script>
+//-     const openDimmer = () => {
+//-         $('.dimmer').dimmer('show');
+//-     }
+//- </script>
 
 block scripts
   script.
@@ -196,7 +190,7 @@ block scripts
     styleElement.appendChild(document.createTextNode(doneCssRules));
     document.getElementsByTagName('head')[0].appendChild(styleElement);
   script(src='/postFunctionalities.js')
-  script(src="/module_js/cyberbullying/cyberbullying_sim3.js")
+  script(src="/module_js/trolls/trolls_sim2.js")
   script(src="/module_js/voiceover.js")
   script(src="/module_js/base_introSteps.js")
   script(src='/module_js/base_sim.js')
@@ -212,12 +206,12 @@ block scripts
           //- console.log("num 11111");
           elem.style.cssText = "background-color:#1676be !important; color: white !important"; 
           elem.innerHTML = "Following";
-          followerNum.innerHTML = "Followers <br> 4,593";
+          followerNum.innerHTML = "Followers <br> 1,302";
         } else {
           //- console.log("num 22222");
           elem.style.cssText = "background-color:white !important; color: #1676be !important"; 
           elem.innerHTML = "Follow";
-          followerNum.innerHTML = "Followers <br> 4,592";
+          followerNum.innerHTML = "Followers <br> 1,301";
         }
     }
   script.
@@ -226,14 +220,14 @@ block scripts
         let element = document.getElementById("commentIcon");
         let label = document.getElementById("commentLabel");
 
-        if(label.innerHTML === "7"){
+        if(label.innerHTML === "26"){
           element.classList.remove("outline");
           element.classList.add("blue");
-          label.innerHTML = "8";
+          label.innerHTML = "27";
         } else {
           element.classList.remove("blue");
           element.classList.add("outline");
-          label.innerHTML = "7";
+          label.innerHTML = "26";
         }
     }
   script.
@@ -242,14 +236,14 @@ block scripts
         let element = document.getElementById("shareIcon");
         let label = document.getElementById("shareLabel");
       
-        if(label.innerHTML === "62"){
+        if(label.innerHTML === "203"){
           element.classList.remove("outline");
           element.classList.add("green");
-          label.innerHTML = "63";
+          label.innerHTML = "204";
         } else {
           element.classList.remove("green");
           element.classList.add("outline");
-          label.innerHTML = "62";
+          label.innerHTML = "203";
         }
     }
   script.
@@ -259,14 +253,14 @@ block scripts
         let element = document.getElementById("likeIcon");
         let label = document.getElementById("likeLabel");
 
-        if(label.innerHTML === "98"){
+        if(label.innerHTML === "504"){
           element.classList.remove("outline");
           element.classList.add("red");
-          label.innerHTML = "99";
+          label.innerHTML = "505";
         } else {
           element.classList.remove("red");
           element.classList.add("outline");
-          label.innerHTML = "98";
+          label.innerHTML = "504";
         }
     }
   script.
@@ -277,15 +271,26 @@ block scripts
         // not yet at last step, don't complete the tutorial
       } else {
         // done button exists signifying last step, complete tutorial and move on to next page
-        let tempSub = "cyberbullying";
-        window.location.href = `/${nextPageURL}/${tempSub}`;
+        window.location.href="/sim3/trolls";
       }
     }
-  script.
-    function openFollowerList() {
-      $('.dim').dimmer('show');
-    }
-  script.
-    function closeFollowerList() {
-      $('.dim').dimmer('hide');
-    }
+  //- script.
+  //-   function openFollowerList() {
+  //-     $('.dim').dimmer('show');
+  //-   }
+  //- script.
+  //-   function closeFollowerList() {
+  //-     $('.dim').dimmer('hide');
+  //-   }
+  //- script.
+  //-   function openFollowingList() {
+  //-     $('.dim').dimmer2('show');
+  //-   }
+  //- script.
+  //-   function closeFollowingList() {
+  //-     $('.dim').dimmer2('hide');
+  //-   }
+    //- // left button
+    //- $('.dim').dimmer('show');
+    //- // right button
+    //- $('.dim').dimmer('hide');

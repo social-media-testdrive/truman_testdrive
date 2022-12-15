@@ -44,7 +44,7 @@
             "prompt": "Why is it important to get the full story before reacting to or sharing breaking news?"
         }
     },
-    "cyberbullying": {
+    "trolls": {
         "Q1": {
             "type": "checkbox",
             "prompt": "Tell us what you did to be an upstander.",
@@ -68,11 +68,11 @@
         },
         "Q3": {
             "type": "written",
-            "prompt": "Why is it important for people to act against cyberbullying?"
+            "prompt": "Why is it important for people to act against trolls?"
         },
         "Q4": {
             "type": "written",
-            "prompt": "What will you do in the future to be an upstander if you see cyberbullying?"
+            "prompt": "What will you do in the future to be an upstander if you see trolls?"
         }
     },
     "digfoot": {

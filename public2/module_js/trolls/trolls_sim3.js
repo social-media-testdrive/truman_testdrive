@@ -7,7 +7,7 @@ const stepsList = [
     intro: `You have one last friend request!`,
     position: 'right',
     scrollTo: 'tooltip',
-    // audioFile: ['']
+    audioFile: ['']
   },
   {
     element: '#step2',
@@ -21,7 +21,7 @@ const stepsList = [
   },
   {
     element: '#step3',
-    // intro: `<b>Cyberbullying</b> is when someone posts or shares
+    // intro: `<b>trolls</b> is when someone posts or shares
     // negative things about someone else online. <br>The <b>bully</b> may
     // use digital devices, sites, or apps. The bully often does this again
     // and again to the same person.`,
@@ -95,8 +95,8 @@ const stepsList = [
   },
   {
     element: '#decline',
-    intro: `Decline this request to complete our practice.<br><br> <em>Press the <b>decline</b> button</em>`,
-    position: 'right',
+    intro: `Decline this request to complete our practice.<br><br> <em>Press the <b>Decline</b> button</em>`,
+    position: 'top',
     myBeforeChangeFunction: function() { 
       let showProfilePage = document.getElementById("harmony-page");
       showProfilePage.style.display = "none";

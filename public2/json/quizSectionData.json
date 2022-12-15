@@ -153,10 +153,10 @@
             "explanation": "<span class = 'inline bold green'>C is correct: If you are not sure if the news is true or not, never share it.</span> \n<span class = 'inline bold'>A and B are incorrect:</span> Before we share any news on social media, be sure to fact check to make sure the information is trustworthy so that you won’t spread false information. If you are not sure if the news is true or not, never share it. Even if the message looks urgent and looks official, it might still be fake news. \n<span class = 'inline bold'>D is incorrect:</span> Even if a lot of people share the news on social media, it doesn’t guarantee the information is true. Always double check with other reliable sources to make sure the information is trustworthy."
         }
     },
-    "cyberbullying": {
+    "trolls": {
         "Q1": {
             "type": "radio",
-            "prompt": "Cyberbullying is a very problematic behavior that can cause severe harm to the victim.",
+            "prompt": "trolls is a very problematic behavior that can cause severe harm to the victim.",
             "radioLabels": {
                 "0": "True",
                 "1": "False",
@@ -165,22 +165,22 @@
             "responseRequirement": "any",
             "correctResponse": "0",
             "files": [""],
-            "explanation": "<span class = 'inline bold green'>A is correct:  Cyberbullying can affect the victim very severely. Harmful words and posts can cause a lot of hurt and pain for the victim of cyberbullying.\n</span>"
+            "explanation": "<span class = 'inline bold green'>A is correct:  trolls can affect the victim very severely. Harmful words and posts can cause a lot of hurt and pain for the victim of trolls.\n</span>"
         },
         "Q2": {
             "type": "radio",
-            "prompt": "What is cyberbullying?",
+            "prompt": "What is trolls?",
             "radioLabels": {
-                "0": "Cyberbullying is when someone posts or shares negative things about someone else online.",
-                "1": "Cyberbullying is a video game that can be played by several players at the same time.",
-                "2": "Cyberbullying is when someone treats someone else badly or mocks someone else at school.",
-                "3": "Cyberbullying is a crime where scammers try to steal your private information.",
+                "0": "trolls is when someone posts or shares negative things about someone else online.",
+                "1": "trolls is a video game that can be played by several players at the same time.",
+                "2": "trolls is when someone treats someone else badly or mocks someone else at school.",
+                "3": "trolls is a crime where scammers try to steal your private information.",
                 "4": "I don't know."
             },
             "responseRequirement": "any",
             "correctResponse": "0",
             "files": [""],
-            "explanation": "<span class = 'inline bold green'>A is correct: Cyberbullying is when a person posts or shares negative information about another person online.</span> \n<span class = 'inline bold'>B is incorrect:</span> Cyberbullying is not a video game, although players may bully others in video games. \n<span class = 'inline bold'>C is incorrect:</span> Cyberbullying always happens online, although people can go online using mobile devices at school. \n<span class = 'inline bold'>D is incorrect:</span> It is called phishing when scammers try to steal your private information, not cyberbullying."
+            "explanation": "<span class = 'inline bold green'>A is correct: trolls is when a person posts or shares negative information about another person online.</span> \n<span class = 'inline bold'>B is incorrect:</span> trolls is not a video game, although players may bully others in video games. \n<span class = 'inline bold'>C is incorrect:</span> trolls always happens online, although people can go online using mobile devices at school. \n<span class = 'inline bold'>D is incorrect:</span> It is called phishing when scammers try to steal your private information, not trolls."
         },
         "Q3": {
             "type": "radio",
@@ -199,7 +199,7 @@
             "type": "radio",
             "prompt": "Which of the following people can be considered an upstander?",
             "radioLabels": {
-                "0": "A person who sees a cyberbullying incident.",
+                "0": "A person who sees a trolls incident.",
                 "1": "A person who bullies another person.",
                 "2": "The person being bullied.",
                 "3": "A person who confronts the bully.",
@@ -208,7 +208,7 @@
             "responseRequirement": "any",
             "correctResponse": "3",
             "files": [""],
-            "explanation": "<span class = 'inline bold green'>D is correct: An upstander is someone who acts against the bully.</span> \n<span class = 'inline bold'>A is incorrect:</span> An upstander has to be someone who takes action after seeing an incident. \n<span class = 'inline bold'>B is incorrect:</span> Upstanders act against the bully. \n<span class = 'inline bold'>C is incorrect:</span> The person being bullied is considered a target or the victim of cyberbullying."
+            "explanation": "<span class = 'inline bold green'>D is correct: An upstander is someone who acts against the bully.</span> \n<span class = 'inline bold'>A is incorrect:</span> An upstander has to be someone who takes action after seeing an incident. \n<span class = 'inline bold'>B is incorrect:</span> Upstanders act against the bully. \n<span class = 'inline bold'>C is incorrect:</span> The person being bullied is considered a target or the victim of trolls."
         },
         "Q5": {
             "type": "radio",
@@ -223,7 +223,7 @@
             "responseRequirement": "any",
             "correctResponse": "3",
             "files": [""],
-            "explanation": "<span class = 'inline bold green'>D is correct: Telling a trusted adult can be a safe way to take action and be an upstander.</span> \n<span class = 'inline bold'>A is incorrect:</span> Even though it is deleted, other people may have already seen the story or have screenshots of it. \n<span class = 'inline bold'>B is incorrect:</span> If you post a story to make fun of Michael, you would be participating in cyberbullying. Upstanders do not bully other people in return. \n<span class = 'inline bold'>C is incorrect:</span> You are unable to delete someone else’s story."
+            "explanation": "<span class = 'inline bold green'>D is correct: Telling a trusted adult can be a safe way to take action and be an upstander.</span> \n<span class = 'inline bold'>A is incorrect:</span> Even though it is deleted, other people may have already seen the story or have screenshots of it. \n<span class = 'inline bold'>B is incorrect:</span> If you post a story to make fun of Michael, you would be participating in trolls. Upstanders do not bully other people in return. \n<span class = 'inline bold'>C is incorrect:</span> You are unable to delete someone else’s story."
         }
     },
     "digfoot": {
@@ -533,7 +533,7 @@
             "type": "radio",
             "prompt": "When someone tries to trick you into sharing your password or personal information, that’s called _____.",
             "radioLabels": {
-                "0": "Cyberbullying",
+                "0": "trolls",
                 "1": "Encryption",
                 "2": "2-step verification",
                 "3": "Phishing",
@@ -542,7 +542,7 @@
             "responseRequirement": "any",
             "correctResponse": "3",
             "files": [""],
-            "explanation": "<span class = 'inline bold green'>D is correct: Phishing is when someone tries to trick you into sharing important private information.</span> \n<span class = 'inline bold'>A is incorrect:</span> Cyberbullying is when a person posts or shares negative information about another person online.\n<span class = 'inline bold'>B is incorrect:</span> Encryption has to do with protecting your information with a password. \n<span class = 'inline bold'>C is incorrect:</span> 2-step verification is when you add an extra layer of security to protect your account when you log-in."
+            "explanation": "<span class = 'inline bold green'>D is correct: Phishing is when someone tries to trick you into sharing important private information.</span> \n<span class = 'inline bold'>A is incorrect:</span> trolls is when a person posts or shares negative information about another person online.\n<span class = 'inline bold'>B is incorrect:</span> Encryption has to do with protecting your information with a password. \n<span class = 'inline bold'>C is incorrect:</span> 2-step verification is when you add an extra layer of security to protect your account when you log-in."
         },
         "Q2": {
             "type": "radio",

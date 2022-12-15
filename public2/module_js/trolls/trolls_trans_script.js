@@ -8,7 +8,7 @@ const stepsList = [
   {
     intro: `Now you get to explore the trolls! You can distinguish accounts and make decision on
      whether to accept or decline friend requests.`,
-    audioFile: [`CUSML.6.6.1.mp3`]
+    // audioFile: [`CUSML.6.6.1.mp3`]
   },
   /* {
     intro: `Here is some helpful background before you start:
@@ -43,6 +43,6 @@ const stepsList = [
     intro: `Now, let’s apply what you have learned! <br>Try to <b>distinguish trolls</b> on the DART
     timeline. When you get to the end of the timeline, click
     “Let's Continue” to move to the next part of the lesson.`,
-    audioFile: [`CUSML.6.6.5.mp3`]
+    // audioFile: [`CUSML.6.6.5.mp3`]
   }
 ];

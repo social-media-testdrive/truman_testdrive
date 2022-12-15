@@ -58,7 +58,7 @@ function startIntro(){
     if(clickedAllLabels == true){
       //everything is good to proceed
       $('#clickLabelsWarning').hide();
-      window.location.href='/tutorial/cyberbullying';
+      window.location.href='/tutorial/trolls';
     } else {
       //User has not clicked all the labels
       $('#clickLabelsWarning').show();

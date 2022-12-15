@@ -818,7 +818,7 @@ exports.getLearnerSectionTimeData = async(req, res, next) => {
     let allSectionTimeData = {
             'accounts': { 'learn': 0, 'explore': 0, 'practice': 0, 'reflect': 0 },
             'advancedlit': { 'learn': 0, 'explore': 0, 'practice': 0, 'reflect': 0 },
-            'cyberbullying': { 'learn': 0, 'explore': 0, 'practice': 0, 'reflect': 0 },
+            'trolls': { 'learn': 0, 'explore': 0, 'practice': 0, 'reflect': 0 },
             'digfoot': { 'learn': 0, 'explore': 0, 'practice': 0, 'reflect': 0 },
             'digital-literacy': { 'learn': 0, 'explore': 0, 'practice': 0, 'reflect': 0 },
             'esteem': { 'learn': 0, 'explore': 0, 'practice': 0, 'reflect': 0 },
@@ -857,7 +857,7 @@ exports.getLearnerSectionTimeData = async(req, res, next) => {
         // select the corresponding sectionData, A or B, to use depending on the module
         let sectionJson = {};
         switch (modName) {
-            case 'cyberbullying':
+            case 'trolls':
             case 'digfoot':
                 sectionJson = sectionDataB;
                 break;

@@ -108,8 +108,8 @@ function flagPost(e) {
         }
     }
 
-    if (currentModuleForHeader === "cyberbullying" && (postID === "cyberbullying_sim_post3" || postID === "cyberbullying_sim_post4")) {
-        clickPost = true; //see cyberbullying_sim.pug for initialization and comments
+    if (currentModuleForHeader === "trolls" && (postID === "trolls_sim_post3" || postID === "trolls_sim_post4")) {
+        clickPost = true; //see trolls_sim.pug for initialization and comments
         $("#confirmContinueCheck").hide();
     }
 };
@@ -190,8 +190,8 @@ async function addNewComment(event) {
                 console.error(error);
             }
         }
-        if (currentModuleForHeader === "cyberbullying" && (postID === "cyberbullying_sim_post1" || postID === "cyberbullying_sim_post3" || postID === "cyberbullying_sim_post4")) {
-            clickPost = true; //see cyberbullying_sim.pug for initialization and comments
+        if (currentModuleForHeader === "trolls" && (postID === "trolls_sim_post1" || postID === "trolls_sim_post3" || postID === "trolls_sim_post4")) {
+            clickPost = true; //see trolls_sim.pug for initialization and comments
             $("#confirmContinueCheck").hide();
         }
     }
@@ -297,8 +297,8 @@ function flagComment(e) {
             console.error(error);
         }
     }
-    if (currentModuleForHeader === "cyberbullying" && (commentID === "cyberbullying_sim_post4_comment1" || commentID === "cyberbullying_sim_post1_comment1")) {
-        clickPost = true; //see cyberbullying_sim.pug for initialization and comments
+    if (currentModuleForHeader === "trolls" && (commentID === "trolls_sim_post4_comment1" || commentID === "trolls_sim_post1_comment1")) {
+        clickPost = true; //see trolls_sim.pug for initialization and comments
         $("#confirmContinueCheck").hide();
     }
 }

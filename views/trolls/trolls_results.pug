@@ -30,41 +30,38 @@ block content
               .ui.fluid.card.dim()#card1
                 .content
                   .right.floated.time 1 hour ago
-                  a(href='/user/ella_vaderrr')
+                  a(href='/HarmonyAnderson/trolls')
                     img.ui.avatar.image(src='/profile_pictures/user81.jpg')
-                    span 
+                    span Harmony Anderson
                 .image
-                  img.post(src=cdn+'/post_pictures/blackbkg.jpg')
+                  img.post(src='/profile_pictures/Z-backgoundAndres.jpg' style='height:150px;')
                 .content
                   .description
-                    | No one likes you. Why do you come to school? @
-                    a(href='/user/DylanCrazzzzzy') Dylan Jones
           
             
               .ui.fluid.card.dim()#card2
                 .content
                   .right.floated.time 1 hour ago
-                  a(href='/user/goaliegirl')
-                    img.ui.avatar.image(src=cdn+'/profile_pictures/user29.jpg')
-                    span Breana Summers
+                  a(href='/Saeed_Ahmed/trolls')
+                    img.ui.avatar.image(src='/profile_pictures/LDAzIrVA_400x400.jpg')
+                    span Saeed Ahmed
                 .image
-                  img.post(src=cdn+'/post_pictures/ewww.jpg')
+                  img.post(src='/profile_pictures/1500x500_background.jpg' style='height:150px;')
                 .content
                   .description.
-                    Dylan smells like he didn't shower for a week
+                    
 
 
               .ui.fluid.card.dim()#card3
                 .content
                   .right.floated.time 1 hour ago
-                  a(href='/user/memeking')
-                    img.ui.avatar.image(src=cdn+'/profile_pictures/user34.jpg')
-                    span Keegan Scott
+                  a(href='/BlueLiveMatter1/trolls')
+                    img.ui.avatar.image(src='/profile_pictures/blue_live.jpg')
+                    span BlueLiveMatter1
                 .image
-                  img.post(src=cdn+'/post_pictures/dylansketchbook.jpeg')
+                  img.post(src='/profile_pictures/blue_live_background.jpg' style='height:150px;')
                 .content
                   .description.
-                    omg lollll look at Dylan's sketchbook he's such a nerdddd
            
  
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
@@ -75,7 +72,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionCheckboxesPrompt(data-questionNumber='Q1')
-                  | #{reflectionData.cyberbullying.Q1.prompt}
+                  | Tell us what you did to distinguish trolls:
               .content.checkOne
                 .ui.form
                   br
@@ -85,7 +82,7 @@ block content
                       .ui.checkbox
                         input(type='checkbox')
                         label(for='iFlagged', tabindex='0') 
-                          | #{reflectionData.cyberbullying.Q1.checkboxLabels[0]}
+                          | Missing a profile photo or contain a photo that looks like a stock image from the Internet.
                 .ui.form
                   .inline.fields
                     label(for='iLiked', name='iLiked') 
@@ -93,7 +90,7 @@ block content
                       .ui.checkbox
                         input(type='checkbox')
                         label(for='iLiked', tabindex='0') 
-                          | #{reflectionData.cyberbullying.Q1.checkboxLabels[1]}
+                          | Account usernames that seem automatically generated or contain misspellings is another red flag.
                 .ui.form
                   .inline.fields
                     label(for='iSupported', name='iSupported') 
@@ -101,7 +98,7 @@ block content
                       .ui.checkbox
                         input(type='checkbox')
                         label(for='iSupported', tabindex='0') 
-                          | #{reflectionData.cyberbullying.Q1.checkboxLabels[2]}
+                          | Lacking a biography.
                 .ui.form
                   .inline.fields
                     label(for='wouldTell', name='wouldTell') 
@@ -109,13 +106,13 @@ block content
                       .ui.checkbox
                         input(type='checkbox')
                         label(for='wouldTell', tabindex='0') 
-                          | #{reflectionData.cyberbullying.Q1.checkboxLabels[3]}
+                          | Use divisive and inflammatory language so as to spark debate and cause frustration for other users.
       
               .ui.basic.segment.noPadding
                 .ui.basic.segment.noPadding.reflectionPromptSegment
                   .ui.label.resultsPromptLabel
                     h4.reflectionPrompt(data-questionNumber='Q2')
-                      | #{reflectionData.cyberbullying.Q2.prompt}
+                      | What other clues did you recognize?
                   .ui.form
                     .inline.fields
                       label
@@ -129,7 +126,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt(data-questionNumber='Q3')
-                  | #{reflectionData.cyberbullying.Q3.prompt}
+                  | #{reflectionData.trolls.Q3.prompt}
               .ui.form
                 .inline.fields
                   label
@@ -143,7 +140,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt(data-questionNumber='Q4')
-                  | #{reflectionData.cyberbullying.Q4.prompt}
+                  | What will you do in the future if you see trolls?
               .ui.form
                 .inline.fields
                   label
@@ -172,25 +169,26 @@ block scripts
       '.voiceover_reflection1': {
         "initialDelay": 0,
         "delay": 0,
-        "files": ['CUSML.6.7.1.mp3']
+        "files": ['']
       },
       '.voiceover_reflection2': {
         "initialDelay": 500,
         "delay": 0,
-        "files": ['CUSML.6.7.2.mp3']
+        "files": ['']
       },
       '.voiceover_reflection3': {
         "initialDelay": 500,
         "delay": 0,
-        "files": ['CUSML.6.7.3.mp3']
+        "files": ['']
       },
       '.voiceover_reflection4': {
         "initialDelay": 500,
         "delay": 0,
-        "files": ['CUSML.6.7.4.mp3']
+        "files": ['']
       }
     };
-  script(src="/module_js/cyberbullying/cyberbullying_results.js")
+    
+  script(src="/module_js/trolls/trolls_results.js")
   script(src='/module_js/base_results.js?v=1')
   script(src='/module_js/voiceover.js')
   

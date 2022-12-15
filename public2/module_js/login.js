@@ -19,7 +19,7 @@ const stepsList = [
   },
   {
     element: '#step1',
-    intro: `<b>Cyberbullying</b> is when someone posts or shares
+    intro: `<b>trolls</b> is when someone posts or shares
     negative things about someone else online. <br>The <b>bully</b> may
     use digital devices, sites, or apps. The bully often does this again
     and again to the same person.`,
@@ -29,14 +29,14 @@ const stepsList = [
   },
   {
     element: '#step3.text',
-    intro: `This is an example of <b>cyberbullying.</b>`,
+    intro: `This is an example of <b>trolls.</b>`,
     position: 'right',
     scrollTo: 'tooltip',
     audioFile: ['CUSML.6.3.3.mp3']
   },
   {
     element: 'a.flag',
-    intro: `One way you can act against cyberbullying is by pressing the
+    intro: `One way you can act against trolls is by pressing the
     <b>“Flag”</b> button.`,
     position: 'right',
     scrollTo: 'tooltip',
@@ -53,7 +53,7 @@ const stepsList = [
   },
   {
     element: '#step7',
-    intro: `Another way you can act against cyberbullying is by writing
+    intro: `Another way you can act against trolls is by writing
     a <b>supportive comment</b> to the target.`,
     position: 'left',
     scrollTo: 'tooltip',
@@ -61,7 +61,7 @@ const stepsList = [
   },
   {
     element: '#step7',
-    intro: `Another way you can act against cyberbullying is by
+    intro: `Another way you can act against trolls is by
     <b>confronting the bully</b>.`,
     position: 'left',
     scrollTo: 'tooltip',

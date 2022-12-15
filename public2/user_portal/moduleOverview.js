@@ -1005,7 +1005,7 @@ async function getAvgSectionTimeArray(classPageTimes, modName) {
   let standardDeviations = [{"stdDev": 0, "avg": 0},{"stdDev": 0, "avg": 0},{"stdDev": 0, "avg": 0},{"stdDev": 0, "avg": 0}];
   let avgSectionRemovedOutliers = [0,0,0,0];
   switch (modName) {
-    case 'cyberbullying':
+    case 'trolls':
     case 'digfoot':
       jsonPath = "/json/progressDataB.json";
       break;

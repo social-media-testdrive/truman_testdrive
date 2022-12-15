@@ -5,7 +5,7 @@ const scriptSchema = new mongoose.Schema({
   body: {type: String, default: '', trim: true}, //body of the post
   post_id: Number, //post ID used in the CSV input file
   class: String, //experimental or normal (not used in TestDrive)
-  module: String, //name of lesson mod for this script (i.e. cyberbullying, etc)
+  module: String, //name of lesson mod for this script (i.e. trolls, etc)
   type: String, //type of post (neutral, Food/Gaming/Sports) only used in targeted ads
   picture: String, //filename of the image for this post
   highread: Number, //not used in TestDrive (should kill)

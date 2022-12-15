@@ -14,11 +14,11 @@ function onPrint(){
 
     $(".insertPrint").append('<div class="breakHere"</div>');
 
-    $(".insertPrint").append("<h4>Why is it important for people to act against cyberbullying?</h4>");
+    $(".insertPrint").append("<h4>Why is it important for people to act against trolls?</h4>");
     var responseOne = document.getElementById("cyber_responseTwo").value;
     $(".insertPrint").append(responseOne);
 
-    $(".insertPrint").append("<h4>What will you do in the future to be an upstander if you see cyberbullying?</h4>");
+    $(".insertPrint").append("<h4>What will you do in the future to be an upstander if you see trolls?</h4>");
     var responseThree = document.getElementById("cyber_responseThree").value;
     $(".insertPrint").append(responseThree);
 

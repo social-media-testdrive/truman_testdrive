@@ -179,7 +179,7 @@ function getNewModNameDictionary(dashes){
     modNameDictionary = {
       "accounts": 0,
       "advancedlit": 0,
-      "cyberbullying": 0,
+      "trolls": 0,
       "digfoot": 0,
       "digital-literacy": 0,
       "esteem": 0,
@@ -194,7 +194,7 @@ function getNewModNameDictionary(dashes){
     modNameDictionary = {
       "accounts": 0,
       "advancedlit": 0,
-      "cyberbullying": 0,
+      "trolls": 0,
       "digfoot": 0,
       "digitalliteracy": 0,
       "esteem": 0,
@@ -227,7 +227,7 @@ function updateChartValues(chart, classSize, startedCounts, completedCounts){
   chart.data.datasets[0].data = [
     startedCounts["accounts"],
     startedCounts["advancedlit"],
-    startedCounts["cyberbullying"],
+    startedCounts["trolls"],
     startedCounts["digfoot"],
     startedCounts["digitalliteracy"],
     startedCounts["esteem"],
@@ -241,7 +241,7 @@ function updateChartValues(chart, classSize, startedCounts, completedCounts){
   chart.data.datasets[1].data = [
     completedCounts["accounts"],
     completedCounts["advancedlit"],
-    completedCounts["cyberbullying"],
+    completedCounts["trolls"],
     completedCounts["digfoot"],
     completedCounts["digitalliteracy"],
     completedCounts["esteem"],
@@ -299,7 +299,7 @@ function getTimeInfo(classPageTimes){
   let modDurations = {
     "accounts": {"totalTime":0,"studentCount":0,"avgTime":0},
     "advancedlit": {"totalTime":0,"studentCount":0,"avgTime":0},
-    "cyberbullying": {"totalTime":0,"studentCount":0,"avgTime":0},
+    "trolls": {"totalTime":0,"studentCount":0,"avgTime":0},
     "digfoot": {"totalTime":0,"studentCount":0,"avgTime":0},
     "digital-literacy": {"totalTime":0,"studentCount":0,"avgTime":0},
     "esteem": {"totalTime":0,"studentCount":0,"avgTime":0},
