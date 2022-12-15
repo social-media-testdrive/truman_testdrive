@@ -525,8 +525,8 @@ app.get('/Saeed_Ahmed/:modId', passportConfig.isAuthenticated, setHttpResponseHe
     });
 });
 
-app.get('/HarmonyAnderson/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/' + req.params.modId + '_HarmonyAnderson', {
+app.get('/AmyG/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/' + req.params.modId + '_AmyG', {
         title: 'Explore'
     });
 });

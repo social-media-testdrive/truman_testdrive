@@ -162,7 +162,7 @@ $(window).on("load", function() {
                     } else if (currentModuleForHeader === "privacy") {
                         window.location.href = `/free-play/${currentModuleForHeader}`;
                     } else {
-                        window.location.href = `/HarmonyAnderson/${currentModuleForHeader}`;
+                        window.location.href = `/AmyG/${currentModuleForHeader}`;
                     }
                 });
                 break;
@@ -185,7 +185,7 @@ $(window).on("load", function() {
                     } else if (currentModuleForHeader === "privacy") {
                         window.location.href = `/free-play/${currentModuleForHeader}`;
                     } else {
-                        window.location.href = `/HarmonyAnderson/${currentModuleForHeader}`;
+                        window.location.href = `/AmyG/${currentModuleForHeader}`;
                     }
                 });
                 $('#headerStep4').on('click', function() {
@@ -488,7 +488,7 @@ $(window).on("load", function() {
             console.log(window.location.pathname)
             let pathArray = window.location.pathname.split('/');
             console.log(pathArray);
-            window.location.href = '/HarmonyAnderson/' + pathArray[2];
+            window.location.href = '/AmyG/' + pathArray[2];
         });
 
     //trolls Transition to freeplay (blue button)
@@ -497,7 +497,7 @@ $(window).on("load", function() {
             console.log(window.location.pathname)
             let pathArray = window.location.pathname.split('/');
             console.log(pathArray);
-            window.location.href = '/HarmonyAnderson/' + pathArray[2];
+            window.location.href = '/AmyG/' + pathArray[2];
         });
 
 
