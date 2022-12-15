@@ -1,6 +1,10 @@
 .ui.bottom.fixed.small.borderless.menu.testDriveFooter
   .left.menu 
     a.item(href='/esp') Español
+    .item
+      .ui.toggle.checkbox.hidden#voiceoverCheckbox
+        input(type="checkbox", name="voiceoverCheckbox" id='voiceoverCheckbox' checked)
+        label(for='voiceoverCheckbox') Voiceovers
   .right.menu
     a.item(href='https://socialmediatestdrive.org/terms.html') Terms of Service 
     //- a.item(href='/privacy') Privacy Policy  

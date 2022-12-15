@@ -1,36 +1,35 @@
-function onPrint(){
-  if($('.results_print').hasClass('green')){
-    $(".insertPrint").empty();
-    $(".insertPrint").css('display','block');
+function onPrint() {
+    if ($('.results_print').hasClass('green')) {
+        $(".insertPrint").empty();
+        $(".insertPrint").css('display', 'block');
 
-    $(".selectPostsQuestion1").clone().appendTo(".insertPrint");
-    $(".insertPrint").append('<div class="breakHere"</div>');
+        $(".selectPostsQuestion1").clone().appendTo(".insertPrint");
+        $(".insertPrint").append('<div class="breakHere"</div>');
 
-    $(".checkOne").clone().removeClass('reflectionPromptSegment').appendTo(".insertPrint");
-    $(".insertPrint").append('<div class="breakHere"</div>');
-    $(".checkTwo").clone().removeClass('reflectionPromptSegment').appendTo(".insertPrint");
-    $(".insertPrint").append('<div class="breakHere"</div>');
-    $(".checkThree").clone().removeClass('reflectionPromptSegment').appendTo(".insertPrint");
-    $(".insertPrint").append('<div class="breakHere"</div><br>');
+        $(".checkOne").clone().removeClass('reflectionPromptSegment').appendTo(".insertPrint");
+        $(".insertPrint").append('<div class="breakHere"</div>');
+        $(".checkTwo").clone().removeClass('reflectionPromptSegment').appendTo(".insertPrint");
+        $(".insertPrint").append('<div class="breakHere"</div>');
+        $(".checkThree").clone().removeClass('reflectionPromptSegment').appendTo(".insertPrint");
 
-    $(".insertPrint").append("<h4>What are some clues you can use to identify phishing scams?</h4>");
-    var responseOne = document.getElementById("digfoot_responseOne").value;
-    $(".insertPrint").append(responseOne);
+        $(".insertPrint").append("<h4>What are some clues you can use to identify phishing scams?</h4>");
+        var responseOne = document.getElementById("digfoot_responseOne").value;
+        $(".insertPrint").append(responseOne);
 
-    $(".insertPrint").append("<h4>Why is it important to protect yourself against phishing scams?</h4>");
-    var responseTwo = document.getElementById("digfoot_responseTwo").value;
-    $(".insertPrint").append(responseTwo);
+        $(".insertPrint").append("<br><h4>Why is it important to protect yourself against phishing scams?</h4>");
+        var responseTwo = document.getElementById("digfoot_responseTwo").value;
+        $(".insertPrint").append(responseTwo);
 
-    window.print();
+        window.print();
 
-    $(".insertPrint").css('display','none');
-  } else {
-    if($('.voiceover_reflection1').next('.reflectionPromptSegment').is(':hidden')){
-      showWarning('.startPromptsWarning');
+        $(".insertPrint").css('display', 'none');
     } else {
-      showWarning('.openAllPromptsWarning');
+        if ($('.voiceover_reflection1').next('.reflectionPromptSegment').is(':hidden')) {
+            showWarning('.startPromptsWarning');
+        } else {
+            showWarning('.openAllPromptsWarning');
+        }
     }
-  }
 };
 
 // function animateQuestions(){

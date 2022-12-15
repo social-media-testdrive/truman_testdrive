@@ -1,17 +1,14 @@
 extends ../ui_layout
 
 block content
-
-  .sixteen.wide.column.dashboardContentColumn.hiddenVisibility
+  .sixteen.wide.column.dashboardContentColumn.hiddenVisibility(style="padding:30px")
     include ../partials/teacherDashboardMenu
-    br
-    
+
     .ui.breadcrumb
       a.section(href='/classManagement') Class Management
       i.class.right.arrow.icon.divider
       .active.section=found_class.className
-    h3 Viewing Class "#{found_class.className}"
-    br
+    h2 Viewing Class: "#{found_class.className}"
     .ui.basic.segment(style="padding:0;")
       .ui.inverted.dimmer#loadingDimmer
         .ui.text.loader Updating Class...
@@ -38,11 +35,10 @@ block content
             td
               button.ui.icon.red.button.deleteAccountButton(data-content="Delete Account")
                 i.icon.trash.alternate
-            
         tfoot.full-width
           tr
             th(colspan="3")
-              button.ui.green.button.labeled.icon.green.generateAccountsButton
+              button.ui.large.green.button.labeled.icon.green.generateAccountsButton
                 i.plus.icon
                 | Generate accounts in this class
 
@@ -50,11 +46,6 @@ block content
     //-   i.download.icon
     //-   | Download list as excel file
   
-    
-    br
-    br
-    br
-      
     .ui.small.modal#generateAccountsModal
       i.close.icon
       .header Create Accounts in Class: #{found_class.className}

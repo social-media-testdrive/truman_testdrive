@@ -1,37 +1,40 @@
 .ui.warning.message {
-  display: none;
+    display: none;
 }
+
 
 /* Learn section */
 
 .segment.removePadding {
-  padding: 0;
+    padding: 0;
 }
 
 .segment.learnSegment {
-  padding: 14px 0 14px 0;
+    padding: 14px 0 14px 0;
 }
 
 .button.showLearnSectionButton {
-  margin-top: 14px;
-  margin-bottom: 14px;
+    margin-top: 14px;
+    margin-bottom: 14px;
 }
 
-i.caret.icon {
-  text-indent:3em;
+.circle.bullet {
+    text-indent: 8em !important;
+    font-size: 8px !important;
 }
+
 
 /* Key terms section */
 
 .button.showKeyTermsButton {
-  margin-top: 14px;
+    margin-top: 14px;
 }
 
-.keyTermDefinition{
-  font-weight: 600;
-  vertical-align: middle;
+.keyTermDefinition {
+    font-weight: 600;
+    vertical-align: middle;
 }
 
 .keyTermDefinition ul {
-  font-weight: 400;
+    font-weight: 400;
 }

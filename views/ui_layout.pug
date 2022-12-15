@@ -77,7 +77,8 @@ html
       script(src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js', integrity="sha256-v8vuH0gf888S01qYrvK2hDq/RfE2au7WOLbqlPzDwOQ=" crossorigin="anonymous")
       script(src=cdn+'/js/lib/intro.min.js')
       script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js', integrity='sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=', crossorigin='anonymous')
-      script(src=cdn+'/js/main17.js?v=1')
+      script(src=cdn+'/js/main23.js?v=1')
+      //- script(src='/module_js/js/main.js')
     else
       script(src=cdn+'/js/lib/jquery-3.1.1.min.js')
       script(src=cdn+'/js/lib/humanized_time_span.js')
@@ -99,7 +100,19 @@ html
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'UA-145467622-1');
+        script(async='' src='https://www.googletagmanager.com/gtag/js?id=G-ZCVVLE1T7B')
+        script.
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-ZCVVLE1T7B');
       else if process.env.instanceType !== 'test'
+        script(async='' src='https://www.googletagmanager.com/gtag/js?id=G-RRB8FEMM6V')
+        script.
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-RRB8FEMM6V');
         script(async='' src='https://www.googletagmanager.com/gtag/js?id=UA-145467622-2')
         script.
           window.dataLayer = window.dataLayer || [];

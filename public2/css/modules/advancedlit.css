@@ -1,103 +1,110 @@
 /* general */
 
 #content.column.removeTopPadding {
-  padding-top: 0;
+    padding-top: 0;
 }
 
 .pointerCursor {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .ui.button.testDriveBlueButton.active {
-  background-color: #14a1f6;
-  color: white;
+    background-color: #14a1f6;
+    color: white;
 }
+
 
 /* tabs - general */
 
 .ui.tab {
-  margin-top: 1em;
+    margin-top: 1em;
 }
 
 .ui.tab:not([data-tab="timeline"]) {
-  margin-bottom: 8em;
+    margin-bottom: 8em;
 }
 
 .ui.grid.gridInsideTab {
-  margin-bottom: 4em;
+    margin-bottom: 4em;
 }
+
 
 /* article tab */
 
 .articleImage {
-  cursor: pointer;
+    cursor: pointer;
 }
+
 
 /* search results tab */
 
 .button.homeTab {
-  margin: 0 5px 5px 0;
+    margin: 0 5px 5px 0;
 }
 
-.resultURL{
-  margin: 0 0 0 0;
-  padding: 15px 0 0 0;
-  font-size: 16px;
-  cursor: default;
+.resultURL {
+    margin: 0 0 0 0;
+    padding: 15px 0 0 0;
+    font-size: 16px;
+    cursor: default;
 }
 
 .resultTitle {
-  margin: 0;
-  padding: 10px 0;
-  font-size: 22px;
-  cursor: default;
+    margin: 0;
+    padding: 10px 0;
+    font-size: 22px;
+    cursor: default;
 }
 
 .resultPreviewText {
-  margin: 0;
-  padding: 0 0 35px 0;
-  font-size: 16px;
-  cursor: default;
+    margin: 0;
+    padding: 0 0 35px 0;
+    font-size: 16px;
+    cursor: default;
 }
 
 .ui.segment.searchItem {
-  padding: 0;
+    padding: 0;
 }
+
 
 /* tutorial */
 
-.img.post img{
-  max-width: 100%;
+.img.post img {
+    max-width: 100%;
 }
 
-.fullArticleImage{
-  max-width: 100%;
-  margin-right: 3em !important;
+.fullArticleImage {
+    max-width: 100%;
+    margin-right: 3em !important;
 }
 
 .articleText {
-  font-size: 22px;
+    font-size: 22px;
 }
+
 
 /* trans */
 
-i.caret.icon {
-  text-indent: 3em;
+.bullet.icon {
+    text-indent: 8em !important;
+    font-size: 8px !important;
 }
+
 
 /* sim */
 
 .ui.grid .removeColumnPadding,
 .ui.grid .column.removeColumnPadding {
-  padding: 0;
+    padding: 0;
 }
 
 .ui.segment .articlePublisher {
-  padding: 0 0 15px 0;
-  margin: 0;
+    padding: 0 0 15px 0;
+    margin: 0;
 }
 
 .ui.segment .articleHeadline,
 .ui.segment .articleBody {
-  padding: 0 0 15px 0;
+    padding: 0 0 15px 0;
 }

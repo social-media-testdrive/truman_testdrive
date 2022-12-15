@@ -1,29 +1,31 @@
-function onPrint(){
-  if($('.results_print').hasClass('green')){
-    $(".insertPrint").empty();
-    $(".insertPrint").css('display','block');
+function onPrint() {
+    if ($('.results_print').hasClass('green')) {
+        $(".insertPrint").empty();
+        $(".insertPrint").css('display', 'block');
 
-    $(".selectPostsQuestion1").clone().appendTo(".insertPrint");
-    $(".insertPrint").append('<div class="breakHere"</div>');
-    
-    $(".checkOne").clone().removeClass('reflectionPromptSegment').appendTo(".insertPrint");
-    $(".checkTwo").clone().removeClass('reflectionPromptSegment').appendTo(".insertPrint");
+        $(".selectPostsQuestion1").clone().appendTo(".insertPrint");
+        $(".insertPrint").append('<div class="breakHere"</div>');
 
-    $(".insertPrint").append('<div class="breakHere"</div><br>');
-    $(".insertPrint").append("<h4>What would you do in the future to protect your private information and other people’s private information on social media?</h4>");
-    var responseOne = document.getElementById("safe_responseOne").value;
-    $(".insertPrint").append(responseOne);
+        $(".insertPrint").append("<h4>Why is this post inappropriate for social media?</h4>");
+        $(".checkOne").clone().removeClass('reflectionPromptSegment').appendTo(".insertPrint");
+        $(".insertPrint").append('<div class="breakHere"</div><br>');
+        $(".insertPrint").append("<h4>How did you respond to these messages that asked for private information?</h4>");
+        $(".checkTwo").clone().removeClass('reflectionPromptSegment').appendTo(".insertPrint");
 
-    window.print();
+        $(".insertPrint").append("<br><h4>What would you do in the future to protect your private information and other people’s private information on social media?</h4>");
+        var responseOne = document.getElementById("safe_responseOne").value;
+        $(".insertPrint").append(responseOne);
 
-    $(".insertPrint").css('display','none');
-  } else {
-    if($('.voiceover_reflection1').next('.reflectionPromptSegment').is(':hidden')){
-      showWarning('.startPromptsWarning');
+        window.print();
+
+        $(".insertPrint").css('display', 'none');
     } else {
-      showWarning('.openAllPromptsWarning');
+        if ($('.voiceover_reflection1').next('.reflectionPromptSegment').is(':hidden')) {
+            showWarning('.startPromptsWarning');
+        } else {
+            showWarning('.openAllPromptsWarning');
+        }
     }
-  }
 }
 // setTimeout(function(){
 //   $('.ui.label').transition('bounce');

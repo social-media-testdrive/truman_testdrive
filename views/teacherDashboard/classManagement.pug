@@ -1,14 +1,13 @@
 extends ../ui_layout
 
 block content
-  .ui.sixteen.wide.column.dashboardContentColumn.hiddenVisibility
+  .ui.sixteen.wide.column.dashboardContentColumn.hiddenVisibility(style="padding:30px")
     include ../partials/teacherDashboardMenu
     
     .ui.breadcrumb
       .active.section(href='/classManagement') Class Management
-    br
-    h3 Class List
-    br
+      i.class.right.arrow.icon.divider
+    h2 Class List
     .ui.basic.segment(style="padding:0;")
       .ui.inverted.dimmer#loadingDimmer
         .ui.text.loader Updating Class...
@@ -32,8 +31,6 @@ block content
             td
               button.ui.icon.red.button.deleteClassButton(data-content="Delete Class")
                 i.icon.trash.alternate
-      br
-      br
       #new_class.ui.big.green.labeled.icon.button
           i.plus.icon
           |   Create New Class

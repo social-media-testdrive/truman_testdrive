@@ -41,16 +41,14 @@ block content
         i.big.photo.link.icon
 
     each val in script
-      //- create a card for each post in val (if by user make the card a little different)
-      //- if val.relativeTime - then post came from user_post (so user post, user reply to actor reply to user post)
+      //- create a card for each post in script
 
+      //- if val.relativeTime - then post came from user_post (so user post, user reply to actor reply to user post)
       if val.relativeTime
         include partials/script/userPost
-      //- Now we are making posts by Actors, not the USER
-      
-      //- This is a tageted ad post in the targeted ads module
+
+      //- Now we are making posts by Actors, not the USER    
       else
-      
         block post
           include partials/script/actorPost
 
@@ -113,7 +111,6 @@ block content
                .ui.checkbox
                  input(type='checkbox')
                  label This was a responsible post that will create a positive digital footprint.
-
       .actions
         .ui.positive.right.labeled.icon.button
           | Done
@@ -160,7 +157,7 @@ block content
 block scripts
   script(src='/module_js/voiceover.js')
   script(src='/postFunctionalities.js')
-  script(src=cdn+'/js/chatbox.js')
+  script(src=cdn+'/js/chatbox2.js')
   script(src='/module_js/script.js')
   //script(src='/module_js/base_introSteps.js')
   block scripts2

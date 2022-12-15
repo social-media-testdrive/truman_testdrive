@@ -67,12 +67,11 @@ block content
             .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection2
               i.down.arrow.icon
               |   Next
-            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden.checkOne 
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden
               .ui.label.resultsPromptLabel
                 h4.reflectionCheckboxesPrompt(data-questionNumber='Q1')
                   | #{reflectionData['safe-posting'].Q1.prompt}
-              .ui.stackable.two.cards
-
+              .ui.stackable.two.cards.checkOne
                 .ui.fluid.card.dim()#card3
                     .content
                       .right.floated.meta 1 hour ago
@@ -119,12 +118,11 @@ block content
             .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection3
               i.down.arrow.icon
               |   Next
-            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden.checkTwo 
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden
               .ui.label.resultsPromptLabel
                 h4.reflectionCheckboxesPrompt(data-questionNumber='Q2')
                   | #{reflectionData['safe-posting'].Q2.prompt}
-              .ui.stackable.two.cards
-
+              .ui.stackable.two.cards.checkTwo
                 .ui.fluid.card.dim()#card3
                   .content
                     .chat
@@ -218,7 +216,7 @@ block content
     .ui.warning.message.hidden.openAllPromptsWarning
       .header
         | Click "Next"
-    include ../partials/optInToShareActivityData.pug
+    //- include ../partials/optInToShareActivityData.pug
     br
     .ui.big.labeled.icon.button.results_print(onclick="onPrint()")
           i.right.arrow.icon
@@ -261,4 +259,4 @@ block scripts
 block styles 
   link(rel='stylesheet', href='/css/modules/safe-posting.css')
   link(rel='stylesheet', href='/css/results.css') 
-  link(rel='stylesheet', href='/css/optInToShareActivityData.css')
+  //- link(rel='stylesheet', href='/css/optInToShareActivityData.css')

@@ -1,0 +1,132 @@
+.segment.noPadding {
+    padding: 0;
+}
+
+.ui.label {
+    background-color: #2185d08a;
+    color: #000000d1;
+}
+
+.ui.label h4 {
+    float: left;
+}
+
+
+/* for Quiz Feedback elements */
+
+i.icon.hidden {
+    display: none !important;
+}
+
+.content.red {
+    color: red;
+    font-size: 1.25rem !important;
+}
+
+.content.green {
+    color: green;
+    font-size: 1.25rem !important;
+}
+
+#scoreBannerHeader {
+    font-size: 1.15rem !important;
+}
+
+.explanation {
+    margin: 5px;
+}
+
+.explanationLight {
+    font-weight: 400;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.inline.bold {
+    display: inline;
+    font-weight: bold
+}
+
+.inline.bold.green {
+    display: inline;
+    font-weight: bold;
+    color: green
+}
+
+.ui.big.labeled.icon.button {
+    margin: 7px 14px 7px 0px !important;
+}
+
+.ui.form .disabled.fields .field,
+.ui.form .disabled.field,
+.ui.form .field :disabled {
+    pointer-events: none;
+    opacity: 0.99 !important;
+}
+
+.ui.container label {
+    font-size: 120%;
+}
+
+.insertPrint,
+.insertPrint * {
+    display: none !important;
+}
+
+
+/*------- SCREENSHOTS ---------*/
+
+@media print {
+    body * {
+        display: none;
+    }
+    .insertPrint,
+    .insertPrint * {
+        display: block !important;
+        overflow: visible !important;
+    }
+    .ui.mini.green.right.labeled.icon.button.quizSegmentButton,
+    .ui.mini.green.right.labeled.icon.button.quizSegmentButton * {
+        display: none !important;
+    }
+    .ui.big.labeled.icon.button {
+        display: none;
+    }
+    #scoreBannerHeader {
+        visibility: hidden !important;
+    }
+    .ui.menu {
+        display: none;
+    }
+    .breakHere {
+        page-break-before: always;
+    }
+    .ui.form .disabled.fields .field,
+    .ui.form .disabled.field,
+    .ui.form .field :disabled {
+        pointer-events: none;
+        opacity: 1;
+    }
+    label {
+        float: left;
+        clear: none;
+        display: block;
+    }
+    input[type=radio] {
+        float: left;
+        clear: none;
+        margin-top: 3px;
+    }
+    h4 i,
+    h3 i {
+        float: left;
+    }
+    span.inline {
+        display: inline !important;
+    }
+    .ui.label {
+        background-color: transparent !important;
+    }
+}

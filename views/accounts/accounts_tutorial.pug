@@ -22,15 +22,12 @@ block content
           input(type="text" disabled="" name='username' placeholder="username")
         .field#passwordStep
           label Password
-          input(type="password" disabled="" name="password" placeholder="password" onfocus="$(this).removeAttr('readonly');")    
-
-    button.ui.big.labeled.icon.button.addBottomMargin#continueTutorial
-        i.rocket.icon
-        |   Let's Continue!      
+          input(type="password" disabled="" name="password" placeholder="password" onfocus="$(this).removeAttr('readonly');")         
           
 block scripts
   script(src="/module_js/accounts/accounts_tutorial.js")
   script(src='/module_js/voiceover.js')
-  
+  script(src="/module_js/base_introSteps.js")
+
 block styles
   link(rel='stylesheet', href='/css/modules/accounts.css')

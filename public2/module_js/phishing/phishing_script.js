@@ -8,7 +8,7 @@ function recordModalInputs(modalNameAttrStr) {
   let checkboxInputs = 0b0;
 
   $(`.ui.modal[data-modalName=${modalNameAttrStr}] .ui.checkbox`).removeClass("checked");
-  $('input[type=checkbox]').prop('checked',false);
+  $('.ui.modal input[type=checkbox]').prop('checked',false);
 
   $(`.ui.modal[data-modalName=${modalNameAttrStr}]`).modal({
     closable: false,

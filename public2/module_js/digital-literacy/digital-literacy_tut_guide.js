@@ -34,9 +34,9 @@ $('#point1_button').on('click', function () {
 
 
 
-$("input").change(function(){
-  if (($('input:checked').length) ==
-        ($('input').length)){
+$("input.checkbox").change(function(){
+  if (($('input.checkbox:checked').length) ==
+        ($('input.checkbox').length)){
     $("#checkAllBoxesWarning").hide();
     $('.ui.big.labeled.icon.button.cybersim').addClass('green');
     $('.ui.big.labeled.icon.button.cybersim').transition('jiggle');
@@ -47,7 +47,7 @@ $("input").change(function(){
 });
 
 $("#cyberSimButton").on('click', function() {
-  if(($('input:checked').length) != ($('input').length)){
+  if(($('input.checkbox:checked').length) != ($('input.checkbox').length)){
     $("#checkAllBoxesWarning").show();
   }
 });

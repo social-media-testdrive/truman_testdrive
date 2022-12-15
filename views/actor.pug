@@ -17,6 +17,9 @@ block content
           .description 
             i.marker.icon
             span=actor.profile.location
+      button.ui.big.green.button.goBack
+        i.icon.reply
+        | Go back
         //- .two.ui.bottom.attached.icon.buttons
         //-     button.ui.button.block(data-tooltip='Block User', data-position='bottom left', username=actor.username)
         //-       i.ban.icon
@@ -26,6 +29,8 @@ block content
 
 
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
+    if script.length === 0
+      h3.centerText No Posts Yet
     each val in script
       if(val.type !== 'notification')
         .ui.fluid.card.dim(postID=val.id, ui=user.ui, notify=user.notify, state=val.state || 'unread', type='actor')
@@ -38,55 +43,8 @@ block content
                         |  You&apos;ve flagged this!
                         h3.ui.inverted.header
                           span="The admins will review this post further. We are sorry you had this experience."
-            //- if val.reply
-            //-   //- if post is a reply post - add the post and populate the reply as well
-            //-   .content
-            //-     .right.floated.time.meta= (user.createdAt.getTime() + val.time)
-            //-     |
-            //-     a.ui.avatar.image(href='/user/'+val.actor.username)
-            //-       img(src=cdn+'/profile_pictures/'+val.actor.profile.picture)
-            //-     a(href='/user/'+val.actor.username)
-            //-       span=val.actor.profile.name
-            //-   .content
-            //-     .description=val.body
-            //-   .extra.content
-            //-     .ui.fluid.card
-            //-       .content
-            //-         .right.floated.time.meta= (user.createdAt.getTime() + val.reply.time)
-            //-         |
-            //-         a(href='/user/'+val.reply.actor.username)   
-            //-           img.ui.avatar.image(src=cdn+'/profile_pictures/'+val.reply.actor.profile.picture)
-            //-           span=val.reply.actor.profile.name
-            //-       if val.reply.picture
-            //-         .image
-            //-           img(src=cdn+"/"+val.reply.picture)
-            //-       .content
-            //-         .description=val.reply.body
-            //-   .three.ui.bottom.attached.icon.buttons
-            //-     .ui.reply.button(tabindex='0')
-            //-       i.reply.icon
-            //-       |  Reply
-            //-     .ui.flag.button(tabindex='0')
-            //-       i.flag.icon
-            //-       |  Flag
-            //-     if val.like
-            //-       .ui.labeled.button(tabindex='0')
-            //-         .ui.red.like.button
-            //-           i.heart.icon
-            //-           |  Like
-            //-         a.ui.basic.red.left.pointing.label=val.likes
-            //-           | 15
-            //-     else
-            //-       .ui.labeled.button(tabindex='0')
-            //-         .ui.like.button
-            //-           i.heart.icon
-            //-           |  Like
-            //-         a.ui.basic.red.left.pointing.label.count=val.likes
-            //- 
-            //- else
-            //- not a reply post - visualize like normal
             .content
-              .right.floated.time.meta= (user.createdAt.getTime() + val.time)
+              .right.floated.time.meta= (Date.now() + val.time)
               |  
               a(href='/user/'+val.actor.username)
                 img.ui.avatar.image(src=cdn+'/profile_pictures/'+val.actor.profile.picture)
@@ -115,97 +73,167 @@ block content
                     i.heart.icon
                     |  Like
                   a.ui.basic.red.left.pointing.label.count=val.likes
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
+            if val.comments.length > 0
+              .content
+                .ui.comments
+                  each comment in val.comments
+                    //-IF this comment is USER made, do this
+                    if comment.new_comment
+                      -console.log("New COMMENT AREA");
+                      .comment(commentID=comment.new_comment_id)
+                        //- a.avatar.image(href='/me'+mod)
+                        a.avatar.image
+                          if user.profile.picture
+                            img(src=cdn+'/profile_pictures/'+user.profile.picture)
+                          else
+                            img(src=user.gravatar(60))
+                        .content
+                          //- a.author(href='/me/'+mod)=user.profile.name || user.username || user.id
+                          a.author=user.profile.name || user.username || user.id
+                          .metadata
+                            span.date.sim=(comment.time)
+                            //- .rating
+                            //-   i.heart.icon
+                            //-   span.num=0
+                            //-   |  Likes
+                          .text=comment.body
+                          //- .actions
+                          //-   a.like.comment Like
+                          //-   a.flag.comment Flag
+                    //- Else this is a normal comment from the script
+                    else
+                      .comment(commentID=comment.id)
+                        a.avatar.image(href='/user/'+comment.actor.username)
+                          img(src='/images/picture.svg', data-src=cdn+'/profile_pictures/'+comment.actor.profile.picture)
+                        .content
+                          a.author(href='/user/'+comment.actor.username)=comment.actor.profile.name
+                          .metadata
+                            span.date.sim=(Date.now() + comment.time)
+                            .rating
+                              if comment.liked
+                                i.red.heart.icon
+                                span=comment.likes
+                                |  Likes 
+                              else
+                                i.heart.icon
+                                span.num=comment.likes
+                                |  Likes
+                          .text=comment.body
+                          .actions
+                            if comment.liked
+                              a.red.like.comment Like
+                            else
+                              a.like.comment Like
+                            a.flag.comment Flag
+    //- br
+    //- br
+    //- br
+    //- br
+    //- br
+    //- br
+    //- br
+    //- br
+    //- br
+    //- br
+    //- br
   //- New Reply Modal
-  .ui.small.reply.modal
-    i.close.icon
-    .header Reply to Post
-    .content
-      form#replyform.ui.reply.form(action='/post/new', method='POST', enctype='multipart/form-data')
-        input(type='hidden', name='_csrf', value=csrfToken)
-        input#replyInput(type='hidden', name='reply', value='a')
-        .field
-          textarea(rows='2', placeholder='Add your Reply', name='body')
-        .ui.error.message
-    .actions
-      input.ui.green.button(type='submit', value='Submit', form='replyform')
+  //- .ui.small.reply.modal
+  //-   i.close.icon
+  //-   .header Reply to Post
+  //-   .content
+  //-     form#replyform.ui.reply.form(action='/post/new', method='POST', enctype='multipart/form-data')
+  //-       input(type='hidden', name='_csrf', value=csrfToken)
+  //-       input#replyInput(type='hidden', name='reply', value='a')
+  //-       .field
+  //-         textarea(rows='2', placeholder='Add your Reply', name='body')
+  //-       .ui.error.message
+  //-   .actions
+  //-     input.ui.green.button(type='submit', value='Submit', form='replyform')
 
-  .ui.small.report.coupled.modal
-      i.close.icon
-      .header Report This User
-      .content
-        form#reportform.ui.reply.form(action='/user', method='POST')
-          input(type='hidden', name='_csrf', value=csrfToken)
-          input(type='hidden', name='reported', value=actor.username)
-          .ui.form
-            .grouped.fields
-              label(for='report_issue') Help us understand the issue. What's the problem with this account?
-              .field
-                .ui.radio.checkbox
-                  input.hidden(type='radio', name='report_issue', value="interested", tabindex='0')
-                  label I'm not interested in this account
-              .field
-                .ui.radio.checkbox
-                  input.hidden(type='radio', name='report_issue', value="spam",tabindex='0')
-                  label They are posting spam
-              .field
-                .ui.radio.checkbox
-                  input.hidden(type='radio', name='report_issue', value="bully", tabindex='0')
-                  label They're being abusive or harmful
-              .field
-                .ui.radio.checkbox
-                  input.hidden(type='radio', name='report_issue', value="hacked", tabindex='0')
-                  label Their account may be hacked
-            .ui.error.message
-      .actions
-        input.ui.green.button(type='submit', value='Submit', form='reportform')
-  .ui.small.second.coupled.modal
-      .header
-        | Report Has Been Sent!
-      .content
-        .description
-          p This user has been reported to the admins. Thank you for helping the community!
-      .actions
-        .ui.approve.button
-          i.checkmark.icon
-          |         Continue
-  if blocked
-    .ui.on.small.basic.blocked.modal
-        .ui.icon.header
-          i.ban.icon
-          |       You Have Blocked This User
-        .content
-          p
-            | You will no longer receive posts from this user. You can choose to report this user or un-block them. 
-        .actions
-          //-.ui.left.floated.red.cancel.inverted.button
-            i.flag.icon
-            |         Report User
-          .ui.green.ok.inverted.button
-            i.undo.icon
-            |         Un-Block User
-  else
-    .ui.small.basic.blocked.modal
-        .ui.icon.header
-          i.ban.icon
-          |       You Have Blocked This User
-        .content
-          p
-            | You will no longer receive posts from this user. You can choose to report this user or un-block them. 
-        .actions
-          .ui.left.floated.red.cancel.inverted.button
-            i.flag.icon
-            |         Report User
-          .ui.right.floated.green.ok.inverted.button
-            i.undo.icon
-            |         Un-Block User
+  //- .ui.small.report.coupled.modal
+  //-     i.close.icon
+  //-     .header Report This User
+  //-     .content
+  //-       form#reportform.ui.reply.form(action='/user', method='POST')
+  //-         input(type='hidden', name='_csrf', value=csrfToken)
+  //-         input(type='hidden', name='reported', value=actor.username)
+  //-         .ui.form
+  //-           .grouped.fields
+  //-             label(for='report_issue') Help us understand the issue. What's the problem with this account?
+  //-             .field
+  //-               .ui.radio.checkbox
+  //-                 input.hidden(type='radio', name='report_issue', value="interested", tabindex='0')
+  //-                 label I'm not interested in this account
+  //-             .field
+  //-               .ui.radio.checkbox
+  //-                 input.hidden(type='radio', name='report_issue', value="spam",tabindex='0')
+  //-                 label They are posting spam
+  //-             .field
+  //-               .ui.radio.checkbox
+  //-                 input.hidden(type='radio', name='report_issue', value="bully", tabindex='0')
+  //-                 label They're being abusive or harmful
+  //-             .field
+  //-               .ui.radio.checkbox
+  //-                 input.hidden(type='radio', name='report_issue', value="hacked", tabindex='0')
+  //-                 label Their account may be hacked
+  //-           .ui.error.message
+  //-     .actions
+  //-       input.ui.green.button(type='submit', value='Submit', form='reportform')
+  //- .ui.small.second.coupled.modal
+  //-     .header
+  //-       | Report Has Been Sent!
+  //-     .content
+  //-       .description
+  //-         p This user has been reported to the admins. Thank you for helping the community!
+  //-     .actions
+  //-       .ui.approve.button
+  //-         i.checkmark.icon
+  //-         |         Continue
+  //- if blocked
+  //-   .ui.on.small.basic.blocked.modal
+  //-       .ui.icon.header
+  //-         i.ban.icon
+  //-         |       You Have Blocked This User
+  //-       .content
+  //-         p
+  //-           | You will no longer receive posts from this user. You can choose to report this user or un-block them. 
+  //-       .actions
+  //-         //-.ui.left.floated.red.cancel.inverted.button
+  //-           i.flag.icon
+  //-           |         Report User
+  //-         .ui.green.ok.inverted.button
+  //-           i.undo.icon
+  //-           |         Un-Block User
+  //- else
+  //-   .ui.small.basic.blocked.modal
+  //-       .ui.icon.header
+  //-         i.ban.icon
+  //-         |       You Have Blocked This User
+  //-       .content
+  //-         p
+  //-           | You will no longer receive posts from this user. You can choose to report this user or un-block them. 
+  //-       .actions
+  //-         .ui.left.floated.red.cancel.inverted.button
+  //-           i.flag.icon
+  //-           |         Report User
+  //-         .ui.right.floated.green.ok.inverted.button
+  //-           i.undo.icon
+  //-           |         Un-Block User
+
+block scripts
+  script. 
+    // add humanized time to all posts
+    function addHumanizedTimeToPost(){
+      let target = $(this);
+      var ms = parseInt(target.text(), 10);
+      let time = new Date(ms);
+      target.text(humanized_time_span(time));
+    };
+    
+  script.
+    $(window).on('load', () => {
+      $('.right.floated.time.meta, .date.sim').each(addHumanizedTimeToPost);
+      $('button.ui.big.green.button.goBack').on('click', function () {
+        window.history.back();
+      });
+    });
