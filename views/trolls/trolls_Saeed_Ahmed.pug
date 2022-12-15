@@ -18,7 +18,7 @@ block content
   top: 50%;\
   left: 3%;\
   border: 4px white solid;padding: -1px;padding: 5px white solid;z-index: 1' src=user_info[0].profile_pic)
-      .bio(style=' width:100%;padding-left: 25px; margin-top: 0%;z-index: 1')
+      .user_profile(style=' width:100%;padding-left: 25px; margin-top: 0%;z-index: 1')
           button.ui.secondary.button(style='margin-top: 0%;float: right;margin-right: 25px;')
               | follow
           <p> </p>
@@ -107,8 +107,8 @@ block content
                     .p(style = "text-color: white") 
                     | &nbsp
                     .ui.blue.button(style='position:absolute; top: 80%; left:35%; width: 32%;' onclick = "window.location.href= '/BlueLiveMatter1/trolls'") Next
-  .ui.blue.button#myBtn(style = "" ) Next
   .ui.blue.button#myBtn(style = "" onclick = "window.location.href= '/HarmonyAnderson/trolls'") Back
+  .ui.blue.button#myBtn_next(style = "") Next
 block scripts
   script(src='/NavBar.js')
   link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
@@ -218,15 +218,13 @@ block scripts
     var height = Math.max( body.scrollHeight, body.offsetHeight, 
                        html.clientHeight, html.scrollHeight, html.offsetHeight );
     var modal = document.getElementById('myModal_');
-    var btn = document.getElementById("myBtn");
-
-    window.onclick = function(event) {
+    var btn = document.getElementById("myBtn_next");
+    //#pop up window trigger
+    btn.onclick = function (event) {
+    modal.style.display = "block";
     if (event.target == modal) {
     modal.style.display = "none";
     }
-    }
-    btn.onclick = function() {
-    modal.style.display = "block";
     }
     console.log("Doc Height = " + document.body.offsetHeight);
     console.log("win Height = " + document.documentElement.clientHeight);

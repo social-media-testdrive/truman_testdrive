@@ -20,8 +20,8 @@ block content
   top: 50%;\
   left: 3%;\
   border: 4px white solid;padding: -1px;padding: 5px white solid;z-index: 1' src=user_info[0].profile_pic)
-      .bio(style=' width:100%;padding-left: 25px; margin-top: 0%;z-index: 1')
-          button.ui.secondary.button(style='margin-top: 0%;float: right;margin-right: 25px;')
+      .user_profile(style=' width:100%;padding-left: 25px; margin-top: 0%;z-index: 1')
+          button.ui.secondary.button(style='margin-top: 0% !important;float: right !important;margin-right: 25px !important')
               | follow
           <p> </p>
           <br/>
@@ -91,15 +91,15 @@ block content
                   .description
                    | BlueLiveMatter1 has requested to be your friend
                   .extra.content      
-                    .ui.green.button(style=' width: 32%;' onclick = "window.location.href= '/Christopher/trolls'") Accept
-                    .ui.basic.red.button(style=' width: 32%;' onclick = "window.location.href= '/Christopher/trolls'") Decline
+                    .ui.green.button(style=' width: 32%;' onclick = "window.location.href= '/results/trolls'") Accept
+                    .ui.basic.red.button(style=' width: 32%;' onclick = "window.location.href= '/results/trolls'") Decline
                     .ui.outline.button(style=' width:32%;' onclick='unhide_()') Report
                   .exp1
                     .btn-group2(style = "position:absolute;top: 30%; z-index: 1;width:91%")
                        button(onclick='unhide()' style = "text-align:left;font-family: 'Chirp', 'sans-serif'") It's a spam
                        button(onclick='unhide()' style = "text-align:left;font-family: 'Chirp', 'sans-serif'") False information
                        button(onclick='unhide()' style = "text-align:left;font-family: 'Chirp', 'sans-serif';") Scam or fraud 
-                       button(onclick = "window.location.href= '/Christopher/trolls'" style = "text-align:left;font-family: 'ChirpExtended', 'sans-serif") Misclicked... Let's go next.
+                       button(onclick = "window.location.href= '/results/trolls'" style = "text-align:left;font-family: 'ChirpExtended', 'sans-serif") Misclicked... Let's go next.
                     p(style = "position:absolute;font-weight:bold;top: 20%; z-index: 1;font-family: 'Arial', 'Helvetica', sans-serif;")
                       | Why are you reporting this account?
                     .p 
@@ -108,9 +108,10 @@ block content
                     img(src ='/profile_pictures/report_msg.png' style = "position:absolute;top: 20%; z-index: 1;width:91%" )
                     .p(style = "text-color: white") 
                     | &nbsp
-                    .ui.blue.button(style='position:absolute; top: 80%; left:35%; width: 32%;' onclick = "window.location.href= '/Christopher/trolls'") Next
-  .ui.blue.button#myBtn(style = "" ) Next
+                    .ui.blue.button(style='position:absolute; top: 80%; left:35%; width: 32%;' onclick = "window.location.href= '/results/trolls'") Next
+  
   .ui.blue.button#myBtn(style = "" onclick = "window.location.href= '/Saeed_Ahmed/trolls'") Back
+  .ui.blue.button#myBtn_next(style = "") Next
 block scripts
   script(src='/NavBar.js')
   link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
@@ -220,15 +221,13 @@ block scripts
     var height = Math.max( body.scrollHeight, body.offsetHeight, 
                        html.clientHeight, html.scrollHeight, html.offsetHeight );
     var modal = document.getElementById('myModal_');
-    var btn = document.getElementById("myBtn");
-
-    window.onclick = function(event) {
+    var btn = document.getElementById("myBtn_next");
+    //#pop up window trigger
+    btn.onclick = function (event) {
+    modal.style.display = "block";
     if (event.target == modal) {
     modal.style.display = "none";
     }
-    }
-    btn.onclick = function() {
-    modal.style.display = "block";
     }
     console.log("Doc Height = " + document.body.offsetHeight);
     console.log("win Height = " + document.documentElement.clientHeight);

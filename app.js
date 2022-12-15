@@ -537,12 +537,6 @@ app.get('/BlueLiveMatter1/:modId', passportConfig.isAuthenticated, setHttpRespon
     });
 });
 
-app.get('/Christopher/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/' + req.params.modId + '_Christopher', {
-        title: 'Explore'
-    });
-});
-
 // Render learn page 
 app.get('/tutorial2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
     res.render(req.params.modId + '/' + req.params.modId + '_tutorial2', {
