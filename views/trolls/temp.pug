@@ -1,45 +1,46 @@
-
 extends ../ui_layout
 
 block content
-  -var user_post = []
-  -var user_info = [{profile_pic : "/profile_pictures/amy.jpg",background_pic : "/profile_pictures/amy_back.jpg",user_name : "Amy G",user_id : "@amyg__g",bio : "Daughter. Sister. Proud Black American. I tend to get political.",location : "New York, NY",join_date : "Joined January 2019"}]
-  -user_post.push({post_id:0,post_pic:"/profile_pictures/5-1.jpg",post_content:"Republicans better hope the coronavirus isn't spread from kissing ass...",post_date:"Mar 3, 2020"})
-  -user_post.push({post_id:1,post_pic:"/profile_pictures/5-2.jpg",post_content:"'You don't have to say anything to the haters. You don't have to acknowledge them at all. You just wake up every morning and be the best you can be. And that usually tends to shut them up'~Michelle Obama.",post_date:"Feb 23, 2020"})
-  -user_post.push({post_id:2,post_pic:"/profile_pictures/5-3.jpg",post_content:"On Tuesday, November 3, 2020, we make America great again by voting this nightmare out of office! #TrumpIsARussianAsset #RussianInterference",post_date:"Feb 21, 2020"})
-  -user_post.push({post_id:2,post_pic:"/profile_pictures/5-4.jpg",post_content:"American Injustice:<\p>Crystal Mason - Black Texas woman, ACCIDENTALLY VOTED while on probation, didn't know it was illegal. -5 years in prison<\p>Roger Stone - Rich white man, KNOWINGLY lied to congress, tampered with witnesses, threatened the federal judge. -Only 3 years in prison",post_date:"Feb 20, 2020"})
-  -user_post.push({post_id:2,post_pic:"/profile_pictures/5-5.jpg",post_content:"'Is I going to jail?'<\p>💔This 6-year-old was held at a mental health facility for 2 days and reportedly sedated without her mother's permission after allegedly having a 'tantrum' at school<\p>This is OUTRAGEOUS SHE IS 6!",post_date:"Feb 19, 2020"})
+
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+    //-####################### navbar
+    //-.topnav(style='width:100%')
+      a.active(href='javascript:void(0);' onclick='myFunction()') H
+      #myLinks
+        a(href='/Christopher/spot_the_troll') Christopher
+        a(href='/power_to_women/spot_the_troll') power_to_women
+        a(href='/HarmonyAnderson/spot_the_troll') HarmonyAnderson
+        a(href='/ChloeEvan/spot_the_troll') ChloeEvan
+      a.icon(href='javascript:void(0);' onclick='myFunction()') 
+        i.fa.fa-bars  &nbsp   &nbsp  Switch Twitter Profile*/
     //-####################### title
-  
-    .ui.fluid.card.dim(style = "margin-top:0px;margin-bottom:0px;")
-      .profile_title(style='position: relative; top: 0; left: 0;')
+    .ui.fluid.card.dim(style = "margin-top:0px;margin-bottom:0px")
+      .profile_title(style='position: relative; top: 0; left: 0; ')
        img(style='width:100%;height:80%; z-index: 0;position: relative;\
   top: 0;\
   left: 0;\
-  solid; z-index = -1' src=user_info[0].background_pic)
+  solid; z-index = -1' src='/profile_pictures/Z-backgoundAndres.jpg')
        img(style='border-radius: 50%; width:20%; z-index: 2; position: absolute;\
-  top: 50%;\
+  top: 65%;\
   left: 3%;\
-  border: 4px white solid;padding: -1px;padding: 5px white solid;z-index: 1' src=user_info[0].profile_pic)
+  border: 4px white solid;z-index: 1' src='/profile_pictures/user81.jpg')
       .user_profile(style=' width:100%;padding-left: 25px; margin-top: 0%;z-index: 1')
-          button.ui.secondary.button(style='margin-top: 0%;float: right;margin-right: 25px;')
+          button.ui.secondary.button(style='margin-top: 0% ;float: right;margin-right: 25px;')
               | follow
-          <p> </p>
-          <br/>
-          .br !{user_info[0].user_name}
-          .br  !{user_info[0].user_id}
-          .br !{user_info[0].bio}
-          .br  !{user_info[0].location}
-          .br Joined !{user_info[0].join_date}
+          .br  Harmony Anderson 
+          .br  @HarmonyAnders
+          .br  The college girl who managed to stay conservative #prolife #pro2A #AmericaFirst 
+          .br This is my 2nd account where I share my political and social views
+          .br  Ankeny, Iowa
+          .br Joined September 2019
       .btn-group
           button(style=' width: 25%;') Tweets
           button(style=' width: 25%;') Replies
           button(style=' width: 25%;') Media          
           button(style=' width: 25%;') Likes
-    //-####################### post
-  if user_post.length !=0
-   each val in Array.from(Array(user_post.length).keys())
+
+    //-####################### first
+    
     .ui.fluid.card.dim(style ="margin-top:0px;margin-bottom:0px")
       .ui.dimmer.flag
         .content
@@ -52,16 +53,20 @@ block content
                   | The admins will review this post further. We are sorry you 
                   | had this experience.
       .content
-        .right.floated.meta= user_post[val].post_date
+        .right.floated.meta= "Yesterday"
         a(href='#')
-              img.ui.avatar.image(src=user_info[0].profile_pic)
-              span=user_info[0].user_name
-              .br &nbsp  &nbsp &nbsp &nbsp &nbsp !{user_info[0].user_id}
-      .content
-        .description 
-          .br !{user_post[val].post_content}
+              img.ui.avatar.image(src='/profile_pictures/user81.jpg')
+              span='Harmony Anderson'
+              .br &nbsp  &nbsp &nbsp &nbsp &nbsp @HarmonyAnders
+      a.content
+         .description 
+          .br Pennsylvania voter rolls near Pittsburgh are full of inaccuracies:
+          .br —1,583 dead people registered to vote
+          .br —7,500 flagged as duplicate voters
+          .br —Nearly 50 born in the 1800s 2020 runs through Pennsylvania RT for national voter ID NOW!
+          .br 🇺🇸🇺🇸Trump2020
       .img.post
-        img(src=user_post[val].post_pic,style=' width:100%;')
+        img(src='/profile_pictures/Z-video.jpg',style=' width:100%;')
         .ui.reply.black.basic.button(tabindex='0',style=' margin-left:5px; width:32%')
           i.comment.outline.icon
           | Reply
@@ -73,24 +78,104 @@ block content
             i.heart.outline.icon
             | Like
           a.ui.basic.red.left.pointing.label.count 2
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user43.jpg')
+            .content
+              a.author Susan Turner
+              .metadata
+                span.date Yesterday
+                .rating
+                  i.heart.outline.icon
+                  span.num 1
+                  |  Likes
+              .text I agree.
+              .actions
+                a.like.comment Like
+                a.flag.comment Flag
+                a#hint3
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
             img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
           input.newcomment#hint4(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
-  #myModal_.modal
+
+    //-####################### second
+    .ui.fluid.card.dim(style ="margin-top:0px;margin-bottom:0px")
+      .ui.dimmer.flag
+        .content
+          .center
+            h2.ui.inverted.icon.header
+              i.red.flag.icon
+              | You&apos;ve flagged this!
+              h3.ui.inverted.header
+                span 
+                  | The admins will review this post further. We are sorry you 
+                  | had this experience.
+      .content
+        .right.floated.meta= "Yesterday"
+        a(href='#')
+              img.ui.avatar.image(src='/profile_pictures/user81.jpg')
+              span='Harmony Anderson' 
+              .h &nbsp  &nbsp &nbsp &nbsp &nbsp @HarmonyAnders
+      .content
+        .description 
+          .br Thank you Sarvodaya School for welcoming me with the lovely Tilak & Aarti tradition!
+      .img.post
+        img(src='/profile_pictures/Z-twtter.jpg' style=' width:100%;')
+        .ui.reply.black.basic.button(tabindex='0',style='margin-left:5px; width:32%')
+          i.comment.outline.icon
+          | Reply
+        .ui.flag.black.basic.button(style=' width:32%;')
+          i.flag.outline.icon
+          | Flag
+        .ui.labeled.button(tabindex='0',style='width:32%;')
+          .ui.like.black.basic.button(style=' width:100%;')
+            i.heart.outline.icon
+            | Like
+          a.ui.basic.red.left.pointing.label.count 2
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user43.jpg')
+            .content
+              a.author Susan Turner
+              .metadata
+                span.date Yesterday
+                .rating
+                  i.heart.outline.icon
+                  span.num 1
+                  |  Likes
+              .text I agree.
+              .actions
+                a.like.comment Like
+                a.flag.comment Flag
+                a#hint3
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment#hint4(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+
+
+    #myModal_.modal
       .modal-content
             .ui.centered.cards
               .card
                 .content(style = "position: relative")
                  .exp
-                  img.right.floated.medium.ui.image(style='border-radius: 50%;' src=user_info[0].profile_pic)
-                  .header !{user_info[0].user_name}
+                  img.right.floated.medium.ui.image(style='border-radius: 50%;' src='/profile_pictures/user81.jpg')
+                  .header
+                    | Harmony Anderson
                   .meta
                     | 0 mutual friends
-                  .description !{user_info[0].user_name}
-                   | &nbsp has requested to be your friend
+                  .description
+                   | Harmony has requested to be your friend
                   .extra.content      
                     .ui.basic.green.button(style=' width: 32%;' onclick = "window.location.href= '/Saeed_Ahmed/trolls'") Accept
                     .ui.red.button(style=' width: 32%;' onclick = "window.location.href= '/Saeed_Ahmed/trolls'") Decline
@@ -110,10 +195,12 @@ block content
                     .p(style = "text-color: white") 
                     | &nbsp
                     .ui.blue.button(style='position:absolute; top: 80%; left:35%; width: 32%;' onclick = "window.location.href= '/Saeed_Ahmed/trolls'") Next
-  .ui.blue.button#myBtn_next(style = "") Next
+    .ui.blue.button#myBtn(style = "" ) Next
 block scripts
   script(src='/NavBar.js')
   link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+  .style 
+    link(rel='stylesheet' href='https://www.w3schools.com/w3css/4/w3.css')
   style.
     .exp{visibility: visible;}
     .exp1{visibility: hidden;}
@@ -187,8 +274,11 @@ block scripts
     .btn-group2 button:hover {
     background-color: #f0f2f1;
     }
+  //-#script(src="/module_js/spot_the_troll/spot_the_troll_tur.js")
+  //-#script(src="/module_js/base_introSteps.js")
+  //-#script(src="/module_js/voiceover.js")
+  //-#script(src='/module_js/base_tutorial.js')
   .script 
-  link(href='https://fonts.cdnfonts.com/css/chirp-2' rel='stylesheet')
   script.
     function unhide() {
       var hid = document.getElementsByClassName("exp");
@@ -220,13 +310,15 @@ block scripts
     var height = Math.max( body.scrollHeight, body.offsetHeight, 
                        html.clientHeight, html.scrollHeight, html.offsetHeight );
     var modal = document.getElementById('myModal_');
-    var btn = document.getElementById("myBtn_next");
-    //#pop up window trigger
-    btn.onclick = function (event) {
-    modal.style.display = "block";
+    var btn = document.getElementById("myBtn");
+
+    window.onclick = function(event) {
     if (event.target == modal) {
     modal.style.display = "none";
     }
+    }
+    btn.onclick = function() {
+    modal.style.display = "block";
     }
     console.log("Doc Height = " + document.body.offsetHeight);
     console.log("win Height = " + document.documentElement.clientHeight);
@@ -248,6 +340,6 @@ block scripts
     }, 50);
     }; 
     */
+
 block styles
   link(rel='stylesheet', href = '/css/NavBar/NavBar.css')
-  
