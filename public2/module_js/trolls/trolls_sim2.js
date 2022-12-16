@@ -81,7 +81,7 @@ const stepsList = [
         {
           element: '#accept',
           intro: `Accept this request<br><br> <em>Press the <b>Accept</b> button to continue</em>`,
-          position: 'top',
+          position: 'left',
           myBeforeChangeFunction: function() { 
             let showProfilePage = document.getElementById("harmony-page");
             showProfilePage.style.display = "none";

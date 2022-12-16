@@ -6,7 +6,7 @@ const stepsList = [
       intro: `Click "Next" to begin!`,
       position: 'right',
       scrollTo: 'tooltip',
-      audioFile: ['']
+    //   audioFile: ['']
     },
     {
       element: '#step2',
@@ -126,8 +126,8 @@ const stepsList = [
     },
     {
       element: '#decline',
-      intro: `Decline this request.<br><br> <em>Press the <b>Decline</b> button to continue</em>`,
-      position: 'top',
+      intro: `Decline this request.<br><br> <em>Press the <b>decline</b> button to continue</em>`,
+      position: 'right',
       myBeforeChangeFunction: function() { 
         let showProfilePage = document.getElementById("harmony-page");
         showProfilePage.style.display = "none";

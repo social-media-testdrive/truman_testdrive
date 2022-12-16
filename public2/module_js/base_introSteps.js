@@ -93,11 +93,14 @@ function startIntro(enableDataCollection) {
         startTimestamp = Date.now();
         hideHelpMessage();
 
+        console.log("BEYONCE HERE!");
+
         // SIM 1 Customization
         // disable the step for elvis when we want them to click the profile page instead
-        if(subdirectory1 === "sim" && subdirectory2 === "cyberbullying" && intro._currentStep === 6) { // your disabled step 2 for example {
+        if(subdirectory1 === "sim" && subdirectory2 === "trolls" && intro._currentStep === 6) { // your disabled step 2 for example {
             // alert("this has been activated hehehe");
             // console.log($('.introjs-nextbutton'));
+            console.log("HELLO IS THIS HERE?");
 
             var original_onclick = $('.introjs-nextbutton').get(0).onclick;
             let elements = document.getElementsByTagName('a');
@@ -121,7 +124,7 @@ function startIntro(enableDataCollection) {
         }
 
         // at next step disable back button
-        if(subdirectory1 === "sim" && subdirectory2 === "cyberbullying" && intro._currentStep === 7) { // your disabled step 2 for example {
+        if(subdirectory1 === "sim" && subdirectory2 === "trolls" && intro._currentStep === 7) { // your disabled step 2 for example {
             console.log("the click: ");
             var original_onclick = $('.introjs-prevbutton').get(0).onclick;
             console.log(original_onclick);            
@@ -141,7 +144,7 @@ function startIntro(enableDataCollection) {
         }
 
         // make them hit back button to return to friend request
-        if(subdirectory1 === "sim" && subdirectory2 === "cyberbullying" && intro._currentStep === 13) { // your disabled step 2 for example {
+        if(subdirectory1 === "sim" && subdirectory2 === "trolls" && intro._currentStep === 13) { // your disabled step 2 for example {
             var original_onclick = $('.introjs-nextbutton').get(0).onclick;
             let elements = document.getElementsByTagName('a');
             // console.log(elements);
@@ -164,7 +167,7 @@ function startIntro(enableDataCollection) {
         }
 
         // at last step disable back button, they must click decline
-        if(subdirectory1 === "sim" && subdirectory2 === "cyberbullying" && intro._currentStep === 14) { // your disabled step 2 for example {
+        if(subdirectory1 === "sim" && subdirectory2 === "trolls" && intro._currentStep === 14) { // your disabled step 2 for example {
             var original_onclick = $('.introjs-prevbutton').get(0).onclick;
             let elements = document.getElementsByTagName('a');
             // console.log(elements[32]);
@@ -178,7 +181,7 @@ function startIntro(enableDataCollection) {
 
         // SIM 2 Customization
         // disable the next btn for chris when we want them to click the profile page instead
-        if(subdirectory1 === "sim2" && subdirectory2 === "cyberbullying" && intro._currentStep === 3) { // your disabled step 2 for example {
+        if(subdirectory1 === "sim2" && subdirectory2 === "trolls" && intro._currentStep === 3) { // your disabled step 2 for example {
             // alert("this has been activated hehehe");
             // console.log($('.introjs-nextbutton'));
 
@@ -204,7 +207,7 @@ function startIntro(enableDataCollection) {
         }
 
         // at next step disable back button
-        if(subdirectory1 === "sim2" && subdirectory2 === "cyberbullying" && intro._currentStep === 4) { // your disabled step 2 for example {
+        if(subdirectory1 === "sim2" && subdirectory2 === "trolls" && intro._currentStep === 4) { // your disabled step 2 for example {
             // console.log("the click: ");
             var original_onclick = $('.introjs-prevbutton').get(0).onclick;
             // console.log(original_onclick);            
@@ -224,7 +227,7 @@ function startIntro(enableDataCollection) {
         }
 
         // make user hit left arrow back button to return to friend request
-        if(subdirectory1 === "sim2" && subdirectory2 === "cyberbullying" && intro._currentStep === 9) { // your disabled step 2 for example {
+        if(subdirectory1 === "sim2" && subdirectory2 === "trolls" && intro._currentStep === 9) { // your disabled step 2 for example {
             var original_onclick = $('.introjs-nextbutton').get(0).onclick;
             let elements = document.getElementsByTagName('a');
             // console.log(elements);
@@ -247,7 +250,7 @@ function startIntro(enableDataCollection) {
         }
 
         // at last step disable back button, they must click decline
-        if(subdirectory1 === "sim2" && subdirectory2 === "cyberbullying" && intro._currentStep === 10) { // your disabled step 2 for example {
+        if(subdirectory1 === "sim2" && subdirectory2 === "trolls" && intro._currentStep === 10) { // your disabled step 2 for example {
             var original_onclick = $('.introjs-prevbutton').get(0).onclick;
             let elements = document.getElementsByTagName('a');
             elements[26].style.filter = "grayscale(100%)";
@@ -260,7 +263,7 @@ function startIntro(enableDataCollection) {
 
         // SIM 3 Customization
         // disable the next btn for harmony when we want them to click the profile page instead
-        if(subdirectory1 === "sim3" && subdirectory2 === "cyberbullying" && intro._currentStep === 2) { // your disabled step 2 for example {
+        if(subdirectory1 === "sim3" && subdirectory2 === "trolls" && intro._currentStep === 2) { // your disabled step 2 for example {
             // alert("this has been activated hehehe");
             // console.log($('.introjs-nextbutton'));
 
@@ -286,7 +289,7 @@ function startIntro(enableDataCollection) {
         }
 
         // at next step disable back button
-        if(subdirectory1 === "sim3" && subdirectory2 === "cyberbullying" && intro._currentStep === 3) { // your disabled step 2 for example {
+        if(subdirectory1 === "sim3" && subdirectory2 === "trolls" && intro._currentStep === 3) { // your disabled step 2 for example {
             // console.log("the click: ");
             var original_onclick = $('.introjs-prevbutton').get(0).onclick;
             // console.log(original_onclick);            
@@ -306,7 +309,7 @@ function startIntro(enableDataCollection) {
         }
 
         // disable next so you look into harmony's follower list
-        if(subdirectory1 === "sim3" && subdirectory2 === "cyberbullying" && intro._currentStep === 6) { // your disabled step 2 for example {
+        if(subdirectory1 === "sim3" && subdirectory2 === "trolls" && intro._currentStep === 6) { // your disabled step 2 for example {
             console.log("at 6");
 
             var original_onclick = $('.introjs-nextbutton').get(0).onclick;
@@ -344,7 +347,7 @@ function startIntro(enableDataCollection) {
         }
 
          // disable back button so can't mess up steps after viewing list
-         if(subdirectory1 === "sim3" && subdirectory2 === "cyberbullying" && intro._currentStep === 8) { // your disabled step 2 for example {
+         if(subdirectory1 === "sim3" && subdirectory2 === "trolls" && intro._currentStep === 8) { // your disabled step 2 for example {
             var original_onclick = $('.introjs-prevbutton').get(0).onclick;
             let elements = document.getElementsByTagName('a');
             elements[33].style.filter = "grayscale(100%)";
@@ -357,7 +360,7 @@ function startIntro(enableDataCollection) {
 
 
         // make user hit left arrow back button to return to friend request
-        if(subdirectory1 === "sim3" && subdirectory2 === "cyberbullying" && intro._currentStep === 10) { // your disabled step 2 for example {
+        if(subdirectory1 === "sim3" && subdirectory2 === "trolls" && intro._currentStep === 10) { // your disabled step 2 for example {
             var original_onclick = $('.introjs-nextbutton').get(0).onclick;
             let elements = document.getElementsByTagName('a');
             elements[34].style.filter = "grayscale(100%)";
@@ -378,7 +381,7 @@ function startIntro(enableDataCollection) {
         }
 
          // at last step disable back button, they must click decline
-         if(subdirectory1 === "sim3" && subdirectory2 === "cyberbullying" && intro._currentStep === 11) { // your disabled step 2 for example {
+         if(subdirectory1 === "sim3" && subdirectory2 === "trolls" && intro._currentStep === 11) { // your disabled step 2 for example {
             var original_onclick = $('.introjs-prevbutton').get(0).onclick;
             let elements = document.getElementsByTagName('a');
             elements[33].style.filter = "grayscale(100%)";

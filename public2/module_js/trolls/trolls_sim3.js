@@ -96,7 +96,7 @@ const stepsList = [
   {
     element: '#decline',
     intro: `Decline this request to complete our practice.<br><br> <em>Press the <b>Decline</b> button</em>`,
-    position: 'top',
+    position: 'right',
     myBeforeChangeFunction: function() { 
       let showProfilePage = document.getElementById("harmony-page");
       showProfilePage.style.display = "none";
