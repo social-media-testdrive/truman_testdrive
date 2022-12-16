@@ -8,6 +8,9 @@ block content
   -user_post.push({post_id:1,post_pic:"/profile_pictures/FhDDo7jWAAAtDZB.jpg",post_content:"It’s #ElectionDay2022",post_date:"Nov 8, 2022"})
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
     //-####################### title
+  .computer.only.tablet.only.four.wide.column 
+  .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
+    .ui.one.column.centered.grid.feedbackMessagesGrid
     .ui.fluid.card.dim(style = "margin-top:0px;margin-bottom:0px")
       .profile_title(style='position: relative; top: 0; left: 0; ')
        img(style='width:100%;height:80%; z-index: 0;position: relative;\
@@ -34,47 +37,49 @@ block content
           button(style=' width: 25%;') Media          
           button(style=' width: 25%;') Likes
     //-####################### post
-  if user_post.length !=0
-   each val in Array.from(Array(user_post.length).keys())
-    .ui.fluid.card.dim(style ="margin-top:0px;margin-bottom:0px")
-      .ui.dimmer.flag
+    if user_post.length !=0
+    each val in Array.from(Array(user_post.length).keys())
+      .ui.fluid.card.dim(style ="margin-top:0px;margin-bottom:0px")
+        .ui.dimmer.flag
+          .content
+            .center
+              h2.ui.inverted.icon.header
+                i.red.flag.icon
+                | You&apos;ve flagged this!
+                h3.ui.inverted.header
+                  span 
+                    | The admins will review this post further. We are sorry you 
+                    | had this experience.
         .content
-          .center
-            h2.ui.inverted.icon.header
-              i.red.flag.icon
-              | You&apos;ve flagged this!
-              h3.ui.inverted.header
-                span 
-                  | The admins will review this post further. We are sorry you 
-                  | had this experience.
-      .content
-        .right.floated.meta= user_post[val].post_date
-        a(href='#')
-              img.ui.avatar.image(src=user_info[0].profile_pic)
-              span=user_info[0].user_name
-              .br &nbsp  &nbsp &nbsp &nbsp &nbsp !{user_info[0].user_id}
-      .content
-        .description 
-          .br !{user_post[val].post_content}
-      .img.post
-        img(src=user_post[val].post_pic,style=' width:100%;')
-        .ui.reply.black.basic.button(tabindex='0',style=' margin-left:5px; width:32%')
-          i.comment.outline.icon
-          | Reply
-        .ui.flag.black.basic.button(style=' width:32%;')
-          i.flag.outline.icon
-          | Flag
-        .ui.labeled.button(tabindex='0',style=' width:32%;')
-          .ui.like.black.basic.button(style=' width:100%;')
-            i.heart.outline.icon
-            | Like
-          a.ui.basic.red.left.pointing.label.count 2
-      .extra.content
-        .ui.fluid.left.labeled.right.icon.input
-          .ui.label
-            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment#hint4(type='text' placeholder='Write a Comment')
-          i.big.send.link.icon
+          .right.floated.meta= user_post[val].post_date
+          a(href='#')
+                img.ui.avatar.image(src=user_info[0].profile_pic)
+                span=user_info[0].user_name
+                .br &nbsp  &nbsp &nbsp &nbsp &nbsp !{user_info[0].user_id}
+        .content
+          .description 
+            .br !{user_post[val].post_content}
+        .img.post
+          img(src=user_post[val].post_pic,style=' width:100%;')
+          .ui.reply.black.basic.button(tabindex='0',style=' margin-left:5px; width:32%')
+            i.comment.outline.icon
+            | Reply
+          .ui.flag.black.basic.button(style=' width:32%;')
+            i.flag.outline.icon
+            | Flag
+          .ui.labeled.button(tabindex='0',style=' width:32%;')
+            .ui.like.black.basic.button(style=' width:100%;')
+              i.heart.outline.icon
+              | Like
+            a.ui.basic.red.left.pointing.label.count 2
+        .extra.content
+          .ui.fluid.left.labeled.right.icon.input
+            .ui.label
+              img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            input.newcomment#hint4(type='text' placeholder='Write a Comment')
+            i.big.send.link.icon
+    .ui.blue.button#myBtn(style = "" onclick = "window.location.href= '/AmyG/trolls'") Back
+    .ui.blue.button#myBtn_next(style = "") Next
   #myModal_.modal
       .modal-content
             .ui.centered.cards
@@ -107,8 +112,7 @@ block content
                     .p(style = "text-color: white") 
                     | &nbsp
                     .ui.blue.button(style='position:absolute; top: 80%; left:35%; width: 32%;' onclick = "window.location.href= '/BlueLiveMatter1/trolls'") Next
-  .ui.blue.button#myBtn(style = "" onclick = "window.location.href= '/AmyG/trolls'") Back
-  .ui.blue.button#myBtn_next(style = "") Next
+  
 block scripts
   script(src='/NavBar.js')
   link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
