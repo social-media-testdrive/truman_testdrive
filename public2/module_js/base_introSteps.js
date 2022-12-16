@@ -88,24 +88,20 @@ function startIntro(enableDataCollection) {
     an argument."
     */
     intro.onafterchange(function() {
-        Voiceovers.playVoiceover(stepsList[$(this)[0]._currentStep].audioFile);
+        // Voiceovers.playVoiceover(stepsList[$(this)[0]._currentStep].audioFile);
         // reset the timestamp for the next step
         startTimestamp = Date.now();
         hideHelpMessage();
-
-        console.log("BEYONCE HERE!");
 
         // SIM 1 Customization
         // disable the step for elvis when we want them to click the profile page instead
         if(subdirectory1 === "sim" && subdirectory2 === "trolls" && intro._currentStep === 6) { // your disabled step 2 for example {
             // alert("this has been activated hehehe");
             // console.log($('.introjs-nextbutton'));
-            console.log("HELLO IS THIS HERE?");
-
             var original_onclick = $('.introjs-nextbutton').get(0).onclick;
             let elements = document.getElementsByTagName('a');
             // console.log(elements);
-            console.log(elements[33]);
+            // console.log(elements[33]);
             elements[33].style.filter = "grayscale(100%)";
 
 
@@ -125,11 +121,11 @@ function startIntro(enableDataCollection) {
 
         // at next step disable back button
         if(subdirectory1 === "sim" && subdirectory2 === "trolls" && intro._currentStep === 7) { // your disabled step 2 for example {
-            console.log("the click: ");
+            // console.log("the click: ");
             var original_onclick = $('.introjs-prevbutton').get(0).onclick;
-            console.log(original_onclick);            
+            // console.log(original_onclick);            
             let elements = document.getElementsByTagName('a');
-            console.log(elements[32]);
+            // console.log(elements[32]);
             elements[32].style.filter = "grayscale(100%)";
 
 
@@ -148,7 +144,7 @@ function startIntro(enableDataCollection) {
             var original_onclick = $('.introjs-nextbutton').get(0).onclick;
             let elements = document.getElementsByTagName('a');
             // console.log(elements);
-            console.log(elements[33]);
+            // console.log(elements[33]);
             elements[33].style.filter = "grayscale(100%)";
 
 
@@ -269,7 +265,7 @@ function startIntro(enableDataCollection) {
 
             var original_onclick = $('.introjs-nextbutton').get(0).onclick;
             let elements = document.getElementsByTagName('a');
-            console.log(elements);
+            // console.log(elements);
             // console.log(elements[27]);
             elements[34].style.filter = "grayscale(100%)";
 
@@ -310,11 +306,11 @@ function startIntro(enableDataCollection) {
 
         // disable next so you look into harmony's follower list
         if(subdirectory1 === "sim3" && subdirectory2 === "trolls" && intro._currentStep === 6) { // your disabled step 2 for example {
-            console.log("at 6");
+            // console.log("at 6");
 
             var original_onclick = $('.introjs-nextbutton').get(0).onclick;
             let elements = document.getElementsByTagName('a');
-            console.log(elements);
+            // console.log(elements);
             // console.log(elements[27]);
             elements[34].style.filter = "grayscale(100%)";
             elements[7].style.boxShadow = '0 0 5px rgba(81, 203, 238, 1)';
