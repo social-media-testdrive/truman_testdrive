@@ -631,15 +631,6 @@ button,
     position: initial;
 } */
 
-.introjs-helperNumberLayer{
-    left: 0px!important;
-    top: -10px!important;
-}
-.introjs-tooltip{
-    margin-top: 60px!important;
-    margin-right: 30px!important;
-}
-
 #actionsOverlay {
     position: absolute;
     /* background-color: green; */
