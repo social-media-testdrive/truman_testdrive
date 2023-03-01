@@ -1,10 +1,26 @@
-.ui.bottom.fixed.small.borderless.menu.testDriveFooter
+#footer.ui.bottom.fixed.small.borderless.menu.testDriveFooter
   .left.menu
     .item
       .ui.toggle.checkbox.hidden#voiceoverCheckbox
         input(type="checkbox", name="voiceoverCheckbox" id='voiceoverCheckbox' checked)
         label(for='voiceoverCheckbox') Voiceovers
+    .item
+      button#showModal.ui.button.green Accessibility Menu
   .right.menu
     a.item(href='/') Terms of Service 
     //- a.item(href='/privacy') Privacy Policy  
     a.item(href='mailto:socialmediatestdrive@gmail.com') Contact Us
+
+ 
+
+script.
+  document.getElementById('showModal').onclick = show;
+
+  function show(){
+    window.sessionStorage.setItem('modalMode', 'true');
+    window.location.reload();
+  }
+
+
+
+

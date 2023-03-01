@@ -16,6 +16,7 @@ function startIntro(enableDataCollection) {
         'scrollToElement': true,
         'doneLabel': 'Done &#10003'
     });
+
     /*
     onbeforechange:
     "Given callback function will be called before starting a new step of
@@ -66,6 +67,7 @@ function startIntro(enableDataCollection) {
             });
             jqhxrArray.push(jqxhr);
         }
+
     });
 
     /*

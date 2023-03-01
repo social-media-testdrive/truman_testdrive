@@ -2,7 +2,7 @@ extends ../ui_layout
 
 block content
 
-  .ui.text.container.addBottomMargin
+  #container.ui.text.container.addBottomMargin
     br      
     #step1.ui.raised.segment
       h1 Welcome to the Trolls Module!
@@ -11,7 +11,7 @@ block content
       brbr
       h3 Trolls are important to be aware of because they can negatively affect harmony in society and cause confusion among users.
       brbr
-      h4 To learn about trolls, you are going to move through a series of sections as described below:
+      h4 To learn about trolls, you are going to move through a series of sections:
         ul
           li Learn - a guided lesson on defining and spotting trolls
           li Practice - a guided practice on identifying real-life troll accounts using learned tactics
@@ -28,7 +28,7 @@ block content
       .ui.column
         #step2.keyTerm.ui.raised.segment
           a.ui.blue.ribbon.label.keyTermLabel
-              span Definition
+              span.ribbons Definition
           h1 What is a troll?
           span.keyTermDefinition  
             | A troll is a fake social media account that spreads misinformation.
@@ -36,7 +36,7 @@ block content
         
     
     .ui.segment.keyIdeasSegment
-      #redflags.h3.ui.header
+      h3.ui.header#redflags
         i.flag.red.icon
         .content Red Flags - Key Tactics to Spot a Troll
       hr
@@ -46,11 +46,11 @@ block content
         .content
           #step3
             img.ui.circular.image(src='/images/stock_image4.png') 
-          .header
+          p.header
             | Karen Smith
-          #step4.meta
+          p#step4.meta
             | @asdfkjjklj
-          #step5.description
+          p#step5.description
             | Enter bio here 
           span.left.floated.like
             i.calendar.location.arrow.icon
@@ -71,11 +71,11 @@ block content
       #step6.ui.centered.card
         .content
           img.left.floated.mini.ui.circular.image(src='/images/stock_image3_cropped.png')
-          .header.left.floated
+          p.header.left.floated
             | Lori Williams
-          .ui.button.tiny.right.floated
+          p.ui.button.tiny.right.floated
             | Follow
-          .meta
+          p.meta
             | @jkklkj
           .description
             p It's a cult!
@@ -95,11 +95,11 @@ block content
           .ui.centered.card
             .content
               img.left.floated.mini.ui.circular.image(src='/images/stock_image2.png')
-              .header.left.floated
+              p.header.left.floated
                 | Matthew Green
-              .ui.button.tiny.right.floated
+              p.ui.button.tiny.right.floated
                 | Follow
-              .meta 
+              p.meta 
                 | @matty_g_1827
               .description
                 p “Sometimes paranoia's just having all the facts. ” ― William S. Burroughs
@@ -107,17 +107,17 @@ block content
               span.left.floated.like
                 i.like.icon
                 |       Like
-              #step7.p.right.floated
+              p.right.floated#step7
                 |       3:34 AM - May 4, 2022
         .column
           .ui.centered.card
             .content
               img.left.floated.mini.ui.circular.image(src='/images/stock_image2.png')
-              .header.left.floated
+              p.header.left.floated
                 | Matthew Green
-              .ui.button.tiny.right.floated
+              p.ui.button.tiny.right.floated
                 | Follow
-              .meta 
+              p.meta 
                 | @matty_g_1827
               .description
                 p Don't ask what meaning of life is. You define it. #quote #true
@@ -125,18 +125,18 @@ block content
               span.left.floated.like
                 i.like.icon
                 |       Like
-              #step8.p.right.floated
+              p.right.floated#step8
                 |       3:35 AM - May 4, 2022
         .column
           .ui.centered.card
             .content
               img.left.floated.mini.ui.circular.image(src='/images/stock_image2.png')
               brbr
-              .header.left.floated
+              p.header.left.floated
                 | Matthew Green
-              .ui.button.tiny.right.floated
+              p.ui.button.tiny.right.floated
                 | Follow
-              .meta 
+              p.meta 
                 | @matty_g_1827
               .description
                 p Man forging a check to get groceries in a crisis = "criminal"
@@ -144,18 +144,18 @@ block content
               span.left.floated.like
                 i.like.icon
                 |       Like
-              #step9.p.right.floated
+              p.right.floated#step9
                 |       12:00 PM - May 5, 2022
         .column
           .ui.centered.card
             .content
               img.left.floated.mini.ui.circular.image(src='/images/stock_image2.png')
               brbr
-              .header.left.floated
+              p.header.left.floated
                 | Matthew Green
-              .ui.button.mini.right.floated
+              p.ui.button.mini.right.floated
                 | Follow
-              .meta 
+              p.meta 
                 | @matty_g_1827
               .description
                 p An art gallery is diagnosed with clinical depression.
@@ -173,42 +173,42 @@ block content
       .ui.centered.card
         .content
           img.left.floated.mini.ui.circular.image(src='/images/missing_photo.png')
-          .header.left.floated
+          p.header.left.floated
             | Joe Kelly
-          .ui.button.tiny.right.floated
+          p.ui.button.tiny.right.floated
             | Follow
-          .meta
+          p.meta
             | @politicslover123
         .content
           center
             b Following
           #step10.ui.list
-            .item @asdkfaj
+            p.item @asdkfaj
               i.check.square.blue.right.floated.icon
-            .item @random_person36
+            p.item @random_person36
               i.check.square.blue.right.floated.icon
-            .item @b0t_xox4456
+            p.item @b0t_xox4456
               i.check.square.blue.right.floated.icon
-            .item @ryan_r_8991
+            p.item @ryan_r_8991
               i.check.square.blue.right.floated.icon 
 
     #step11.ui.segment.keyIdeasSegment
-      h3.ui.header
+      .ui.header
         i.flag.green.icon
-        .content Green Flags - Key Characteristics of a Real Account
+        h3.content Green Flags - Key Characteristics of a Real Account
         .keyTerm.ui.raised.segment
           a.ui.blue.ribbon.label.keyTermLabel
-              span #1
+              span.ribbons #1
           span.keyTermDefinition  
             | A verification checkmark
         .keyTerm.ui.raised.segment
           a.ui.blue.ribbon.label.keyTermLabel
-              span #2
+              span.ribbons #2
           span.keyTermDefinition 
             | Mutual followers
         .keyTerm.ui.raised.segment
           a.ui.blue.ribbon.label.keyTermLabel
-              span #3
+              span.ribbons #3
           span.keyTermDefinition 
             | Personalized pictures and posts
       
@@ -218,10 +218,6 @@ block content
     .ui.warning.message#clickLabelsWarning
      .header
       | Click on each label to proceed   
-    //- a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
-    //-     .ui.labeled.icon.button
-    //-         i.rocket.icon
-    //-         |   Got it!
 
 block scripts
   script(src='/postFunctionalities.js')
