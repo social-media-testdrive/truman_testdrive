@@ -1,4 +1,4 @@
-.ui.menu#access(style='width:40%; background-color:white; color: black; border:1.5px solid black; display: none; padding: 10px; margin: auto;')
+.ui.menu#access(style='width:100%; background-color:white; color: black; border:1.5px solid black; display: none; padding: 10px; margin: auto;')
     h3 Accessibility Options
     .ui.grid
         .six.wide.row.centered
@@ -185,28 +185,32 @@ script.
     }
 
     function changeToSmall() {
-        let tags = ["h1","h3","h4", "ul", "li", "a", "span", "i", "p", "b"];
+        let tags = ["h1","h3","h4", "ul", "li", "a", "span", "i", "p", "b", "h2"];
         newFontSize = 1.14285714 * .75;
 
-        for(var j = 0; j < tags.length; j++){
-        let collection = document.getElementById("container").getElementsByTagName(tags[j]);
-        for (var i = 0; i < collection.length; i++) {
-            collection[i].style.fontSize = newFontSize + "rem";
-        }
+        if(document.getElementById("container") != null){
+            for(var j = 0; j < tags.length; j++){
+            let collection = document.getElementById("container").getElementsByTagName(tags[j]);
+                for (var i = 0; i < collection.length; i++) {
+                    collection[i].style.fontSize = newFontSize + "rem";
+                }
+            }
         }
         document.body.style.fontSize = newFontSize + "rem";
         return false;
     }
 
     function changeToMedium() {
-        let tags = ["h1","h3","h4", "ul", "li", "a", "span", "i", "p", "b"];
+        let tags = ["h1","h3","h4", "ul", "li", "a", "span", "i", "p", "b", "h2"];
         newFontSize = 1.14285714 * 1.25;
 
-        for(var j = 0; j < tags.length; j++){
-        let collection = document.getElementById("container").getElementsByTagName(tags[j]);
-        for (var i = 0; i < collection.length; i++) {
-            collection[i].style.fontSize = newFontSize + "rem";
-        }
+        if(document.getElementById("container") != null){
+            for(var j = 0; j < tags.length; j++){
+                let collection = document.getElementById("container").getElementsByTagName(tags[j]);
+                for (var i = 0; i < collection.length; i++) {
+                    collection[i].style.fontSize = newFontSize + "rem";
+                }
+            }
         }
         document.body.style.fontSize = newFontSize + "rem";
         return false;
@@ -214,14 +218,16 @@ script.
 
     function changeToLarge() {
         window.sessionStorage.setItem('textMode', 'large');
-        let tags = ["h1","h3","h4", "ul", "li", "a", "span", "i", "p", "b"];
+        let tags = ["h1","h3","h4", "ul", "li", "a", "span", "i", "p", "b", "h2"];
         newFontSize = 1.14285714 * 1.75;
 
-        for(var j = 0; j < tags.length; j++){
-        let collection = document.getElementById("container").getElementsByTagName(tags[j]);
-        for (var i = 0; i < collection.length; i++) {
-            collection[i].style.fontSize = newFontSize + "rem";
-        }
+        if(document.getElementById("container") != null){
+            for(var j = 0; j < tags.length; j++){
+                let collection = document.getElementById("container").getElementsByTagName(tags[j]);
+                for (var i = 0; i < collection.length; i++) {
+                    collection[i].style.fontSize = newFontSize + "rem";
+                }
+            }
         }
         document.body.style.fontSize = newFontSize + "rem";
         return false;
