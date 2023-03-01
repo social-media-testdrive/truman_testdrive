@@ -6,40 +6,44 @@ block content
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
     .ui.one.column.centered.grid.feedbackMessagesGrid
       .ui.fixed.bottom.sticky
-        #clickNextHelpMessage.ui.icon.compact.hidden.message.warning
+        #clickSiguienteHelpMessage.ui.icon.compact.hidden.message.warning
           i.close.icon
           i.question.icon.float
           .content
-            .ui.header Need some help?
-            p Scroll up and click "Next" to begin!
+            .ui.header ¿Necesitas ayuda?
+            p Subir y Dale clic a "Siguiente" para comenzar
 
     #step3.ui.fluid.card.test
       .content
-        .right.floated.meta= "Yesterday"
+        .right.floated.meta= "Ayer"
         |
+
         a(href="/user/andrewthomas_")
           img.ui.avatar.image(src=cdn + "/profile_pictures/user71.JPG")
-          span= "Andrew Thomas"
+          span= "Andrés Torres"
       .image
         img.post(src=cdn + "/post_pictures/digfootga1.jpg")
       #step4.content
         .description
-          | the first day after my bday and guess what i HAVE to do? clean
-          | your room says my mom i hate her so much!!!
+          | un día después de mi cumpleaños y adivina qué tengo que hacer. Limpia tu cuarto dice mi mamá, la odio!!!
+
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex="0")
           i.reply.icon
           |
-          | Reply
+          | Responder
+
         .ui.flag.button(tabindex="0")
           i.flag.icon
           |
-          | Flag
+          | Reportar
+
         .ui.labeled.button(tabindex="0")
           .ui.like.button
             i.heart.icon
             |
             | Like
+
           a.ui.basic.red.left.pointing.label.count= 2
 
       .content
@@ -48,19 +52,21 @@ block content
             a.avatar
               img(src=cdn + "/profile_pictures/user52.jpg")
             .content
-              a.author Connor McCormick
+              a.author Mateo Muñoz
               .metadata
-                span.date 5 hours ago
+                span.date hace 5 horas
                 .rating
                   i.heart.icon
                   span.num= 1
                   |
                   | Likes
+
               .text
-                | haha that sucks
+                | jaja, eso apesta
+
               .actions
                 a.comment.like Like
-                a.comment.flag Flag
+                a.comment.flag Reportar
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
@@ -75,27 +81,31 @@ block content
       .content
         .right.floated.meta= "15 Minutes Ago"
         |
+
         a(href="/user/Suzieee")
           img.ui.avatar.image(src=cdn + "/profile_pictures/user40.jpg")
-          span= "Susan Turner"
+          span= "Susana Tapia"
       .image
         img.post(src=cdn + "/post_pictures/digfootga3.jpg")
       .content
-        .description= "omg Lindsay I love you but you look ridiculous! lol"
+        .description= "OPD Lucía, te quiero, pero te ves ridícula. LOL"
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex="0")
           i.reply.icon
           |
-          | Reply
+          | Responder
+
         .ui.flag.button(tabindex="0")
           i.flag.icon
           |
-          | Flag
+          | Reportar
+
         .ui.labeled.button(tabindex="0")
           .ui.like.button
             i.heart.icon
             |
             | Like
+
           a.ui.basic.red.left.pointing.label.count= 2
 
       .content
@@ -104,19 +114,21 @@ block content
             a.avatar
               img(src=cdn + "/profile_pictures/user66.jpeg")
             .content
-              a.author Michelle Rose
+              a.author Michelle Ríos
               .metadata
-                span.date 1 minute ago
+                span.date Hace 1 minuto
                 .rating
                   i.heart.icon
                   span.num= 0
                   |
                   | Likes
+
               .text
                 | lol!!
+
               .actions
                 a.comment.like Like
-                a.comment.flag Flag
+                a.comment.flag Reportar
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
@@ -129,7 +141,7 @@ block content
 
 block scripts
   script(src="/postFunctionalities.js")
-  script(src="/module_js/digfoot/digfoot_tutorial.js")
+  script(src="/module_js/digfoot-esp/digfoot-esp_tutorial.js")
   script(src="/module_js/voiceover.js")
   script(src="/module_js/base_introSteps.js") 
   script(src="/module_js/base_tutorial.js")

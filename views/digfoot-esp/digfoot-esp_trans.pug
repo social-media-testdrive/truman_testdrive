@@ -1,0 +1,59 @@
+extends ../ui_layout
+
+block content
+  .ui.text.container.addBottomMargin
+    br
+    .column
+      .ui.raised.segment
+        .ui.blue.ribbon.label
+          h3
+            i.history.icon
+            | &nbsp ¡Repasemos!
+
+        br
+        .ui.mini.green.right.labeled.icon.button.showReviewSectionButton
+          i.down.arrow.icon
+          |
+          | Siguiente
+
+        .ui.basic.segment.reviewSegment.hidden
+          h5.ui.header
+            i.arrow.circle.right.blue.icon
+            .content
+              | Todas tus acciones en las redes sociales crean una <b>huella digital</b>. Esto incluye cualquier información que compartas y cualquier publicación que hayas creado.
+
+          h5.ui.header
+            i.arrow.circle.right.blue.icon
+            .content
+              | ¡Recuerde que debes pensar antes de publicar! Trata de evitar compartir demasiado sobre ti y los demás.
+
+          h5.ui.header
+            i.arrow.circle.right.blue.icon
+            .content
+              | ¡Piensa en formas en las que puedas crear una huella digital positiva!
+
+          br
+
+    br
+    br
+    a(href="javascript:void(0);", onclick="javascript:clickGotIt();")
+      .ui.big.labeled.icon.button.gotItButton
+        i.rocket.icon
+        |
+        | ¡Entendido!
+
+block scripts
+  script.
+    var voiceoverMappings = {
+      ".showReviewSectionButton": {
+        initialDelay: 700,
+        delay: 1000,
+        //- "files": ['CUSML.4.5.1.mp3','CUSML.4.5.2.mp3','CUSML.4.5.3.mp3']
+      },
+    };
+    var nextPage = "trans_script";
+  script(src="/module_js/voiceover.js") 
+  script(src="/module_js/base_trans.js")
+
+block styles
+  link(rel="stylesheet", href="/css/trans.css") 

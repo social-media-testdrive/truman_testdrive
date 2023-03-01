@@ -161,7 +161,7 @@ app.use(session({
     },
     secret: process.env.SESSION_SECRET,
     store: new MongoStore({
-        url: process.env.PRO_MONGODB_URI || process.env.PRO_MONGOLAB_URI,
+        url: process.env.MONGODB_URI || process.env.MONGOLAB_URI,
         autoReconnect: true,
         clear_interval: 3600
     })
@@ -244,7 +244,7 @@ function setHttpResponseHeaders(req, res, next) {
     });
     next();
 }
-
+/*
 function isValidModId(req, res, next) {
     const modIds = [
         "accounts",
@@ -279,7 +279,7 @@ function isValidModId(req, res, next) {
         res.render('error');
     }
 }
-
+*/
 // All of our static files that express will automatically server for us.
 // In production, we have nginx server this instead to take the load off out Node app
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
@@ -300,6 +300,7 @@ const enableLearnerDashboard = process.env.enableLearnerDashboard === 'true';
  * (In alphabetical order)
  */
 
+
 function isValidModId(req, res, next) {
     const modIds = [
         "accounts",
@@ -335,6 +336,7 @@ function isValidModId(req, res, next) {
         res.render('error');
     }
 }
+
 // Main route is the module page
 app.get('/', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
   res.render('mods-esp', {
@@ -354,23 +356,25 @@ app.get('/', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtect
 app.get('/account/:modId', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, userController.getAccount);
 
 app.get('/end/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
-  if((req.params.modId === 'accounts') || (req.params.modId === 'privacy')){
-    res.render(req.params.modId + '/' + req.params.modId + '_end', {
-      title: 'Finished',
-      isResearchVersion
-    });
-  } else if((req.params.modId === 'esteem-esp') || (req.params.modId === 'habits-esp')){
-    res.render('base_end-esp.pug', {
-      title: 'Terminado',
-      isResearchVersion
-    });
-  }
-  else {
-    res.render('base_end.pug', {
+    if((req.params.modId === 'accounts') || (req.params.modId === 'privacy')){
+        res.render(req.params.modId + '/' + req.params.modId + '_end', {
         title: 'Finished',
-        modId: req.params.modId,
         isResearchVersion
-    });
+        });
+    } else if((req.params.modId === 'esteem-esp') || (req.params.modId === 'habits-esp') || (req.params.modId === 'digfoot-esp')){
+        res.render('base_end-esp.pug', {
+        title: 'Terminado',
+        isResearchVersion
+        });
+        console.log(isResearchVersion);
+    }
+    else {
+        res.render('base_end.pug', {
+            title: 'Finished',
+            // modId: req.params.modId,
+            isResearchVersion
+        });
+    }
 });
 
 app.get('/food/targeted', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
@@ -428,17 +432,18 @@ app.get('/gaming/targeted', passportConfig.isAuthenticated, setHttpResponseHeade
 });
 
 app.get('/intro/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
-  if (req.params.modId === "delete") {   // anticipating a specific user behavior that causes 500 errors
-    res.redirect('/');
-  } else if (req.params.modId === "esteem-esp" || "habits-esp") {
-    res.render('base_intro-esp.pug', {
-      title: 'Bienvenidos'
-    });
-  }
-  else {
-    res.render('base_intro.pug', {
-      title: 'Welcome'
-    });
+    if (req.params.modId === "delete") {   // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else if (req.params.modId === "esteem-esp" || req.params.modId === "habits-esp" || req.params.modId === "digfoot-esp") {
+        res.render('base_intro-esp.pug', {
+        title: 'Bienvenidos'
+        });
+    }
+    else {
+        res.render('base_intro.pug', {
+        title: 'Welcome'
+        });
+    }
 });
 
 // Render Page 1 of the free play section in the privacy module
@@ -498,10 +503,16 @@ app.get('/gaming/targeted', passportConfig.isAuthenticated, setHttpResponseHeade
 });
 
 // Render intro page (all modules)
-app.get('/intro/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+app.get('/intro/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
     if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
         res.redirect('/');
-    } else {
+    } else if (req.params.modId === "esteem-esp" || req.params.modId === "habits-esp" || req.params.modId === "digfoot-esp") {
+        res.render('base_intro-esp.pug', {
+        title: 'Bienvenidos'
+        });
+    } 
+    
+    else {
         res.render('base_intro.pug', {
             title: 'Welcome'
         });
@@ -509,10 +520,10 @@ app.get('/intro/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders,
 });
 
 // Render user's profile page, which is module-specific.
-app.get('/me/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, userController.getMe);
+app.get('/me/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, userController.getMe);
 
 // Main route for rendering the free play page for a given module (only 'accounts' and 'privacy' modules do not have this page)
-app.get('/modual/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, scriptController.getScript);
+app.get('/modual/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, scriptController.getScript);
 
 // Render privacy policy page.
 app.get('/privacy', setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
@@ -522,22 +533,33 @@ app.get('/privacy', setHttpResponseHeaders, csrfProtection, addCsrf, function(re
 });
 
 // Render the reflection page (all modules).
-app.get('/results/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, async function(req, res) {
-    let reflectionData;
-    const data = await fs.readFileAsync(`${__dirname}/public2/json/reflectionSectionData.json`)
-    reflectionData = JSON.parse(data.toString());
+app.get('/results/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, async function(req, res) {
+    if (req.params.modId === 'digfoot-esp') {
+        const data = await fs.readFileAsync(`${__dirname}/public2/json/esp-reflectionSectionData.json`)
+        const reflectionData = JSON.parse(data.toString());
+        res.render(req.params.modId + '/' + req.params.modId + '_results', {
+            title: 'Reflexionar',
+            reflectionData
+        });
+    } else {
+        let reflectionData;
+        const data = await fs.readFileAsync(`${__dirname}/public2/json/reflectionSectionData.json`)
+        reflectionData = JSON.parse(data.toString());
 
-    res.render(req.params.modId + '/' + req.params.modId + '_results', {
-        title: 'Reflection',
-        reflectionData
-    });
+        res.render(req.params.modId + '/' + req.params.modId + '_results', {
+            title: 'Reflection',
+            reflectionData
+        });
+    }
 });
 
 // Render the quiz page (all modules).
-app.get('/quiz/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, async function(req, res) {
+app.get('/quiz/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, async function(req, res) {
     let quizData;
     const data = await fs.readFileAsync(`${__dirname}/public2/json/quizSectionData.json`);
-    quizData = JSON.parse(data.toString())[req.params.modId];
+    // console.log('data: ' + JSON.stringify(JSON.parse(data.toString())));
+    quizData = JSON.parse(data.toString())[req.params.modId.replace('-esp', '')];
+    // console.log('quizData: ' + JSON.stringify(quizData));
 
     res.render('base_quiz.pug', {
         title: 'Quiz',
@@ -546,7 +568,7 @@ app.get('/quiz/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, 
 });
 
 // Main route for rendering the practice page for a given module.
-app.get('/sim/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+app.get('/sim/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
     if (req.params.modId === 'safe-posting') {
         res.set({
             'Content-Security-Policy': "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
@@ -563,28 +585,28 @@ app.get('/sim/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, c
 });
 
 // Render page in the practice section
-app.get('/sim1/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+app.get('/sim1/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
     res.render(req.params.modId + '/' + req.params.modId + '_sim1', {
         title: 'Guided Activity'
     });
 });
 
 // Render page in the practice section 
-app.get('/sim2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+app.get('/sim2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
     res.render(req.params.modId + '/' + req.params.modId + '_sim2', {
         title: 'Guided Activity'
     });
 });
 
 // Render page in the practice section 
-app.get('/sim3/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+app.get('/sim3/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
     res.render(req.params.modId + '/' + req.params.modId + '_sim3', {
         title: 'Guided Activity'
     });
 });
 
 // Render page in the practice section
-app.get('/sim4/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+app.get('/sim4/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
     res.render(req.params.modId + '/' + req.params.modId + '_sim4', {
         title: 'Guided Activity'
     });
@@ -598,7 +620,7 @@ app.get('/sports/targeted', passportConfig.isAuthenticated, setHttpResponseHeade
 });
 
 // Render start page (all modules)
-app.get('/start/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+app.get('/start/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
     if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
         res.redirect('/');
     } else {
@@ -609,28 +631,28 @@ app.get('/start/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders,
 });
 
 // Render transition review page
-app.get('/trans/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+app.get('/trans/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
     res.render(req.params.modId + '/' + req.params.modId + '_trans', {
         title: 'Review'
     });
 });
 
 // Render transition review page
-app.get('/trans2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+app.get('/trans2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
     res.render(req.params.modId + '/' + req.params.modId + '_trans2', {
         title: 'Review'
     });
 });
 
 // Render transition review page
-app.get('/trans_script/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+app.get('/trans_script/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
     res.render(req.params.modId + '/' + req.params.modId + '_trans_script', {
         title: 'Review'
     });
 });
 
 // Main route for rendering the learn page for a given module
-app.get('/tutorial/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+app.get('/tutorial/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
     if (req.params.modId === 'safe-posting') {
         res.set({
             'Content-Security-Policy': "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
@@ -647,14 +669,14 @@ app.get('/tutorial/:modId', passportConfig.isAuthenticated, setHttpResponseHeade
 });
 
 // Render learn page 
-app.get('/tutorial2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+app.get('/tutorial2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
     res.render(req.params.modId + '/' + req.params.modId + '_tutorial2', {
         title: 'Tutorial'
     });
 });
 
 // Render tutorial guide page
-app.get('/tut_guide/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+app.get('/tut_guide/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
     if (req.params.modId === 'safe-posting') {
         res.set({
             'Content-Security-Policy': "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/  https://www.googletagmanager.com https://www.google-analytics.com;" +
@@ -679,7 +701,7 @@ app.get('/user/:userId', passportConfig.isAuthenticated, csrfProtection, setHttp
 // Delete guest account, or feedAction of account
 app.post('/delete', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.getDeleteAccount);
 // Create a new guest account
-app.get('/guest/:modId', setHttpResponseHeaders, isValidModId, userController.getGuest);
+app.get('/guest/:modId', setHttpResponseHeaders, userController.getGuest);
 
 /*
  * Logins (only used on research site)
@@ -717,7 +739,7 @@ app.get('/habitsTimer', passportConfig.isAuthenticated, setHttpResponseHeaders, 
 app.post('/habitsTimer', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, userController.postUpdateHabitsTimer);
 app.get('/habitsNotificationTimes', passportConfig.isAuthenticated, setHttpResponseHeaders, scriptController.getNotificationTimes);
 // This was for load testing - not sure if it should be deleted
-app.get('/testing/:modId', isValidModId, scriptController.getScriptFeed);
+app.get('/testing/:modId', scriptController.getScriptFeed);
 // Update user profile information
 app.post('/account/profile', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, setHttpResponseHeaders, csrfProtection, userController.postUpdateProfile);
 app.post('/account/profile/:modId', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, setHttpResponseHeaders, csrfProtection, userController.postUpdateProfile);

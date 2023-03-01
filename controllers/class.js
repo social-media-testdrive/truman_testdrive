@@ -1102,7 +1102,7 @@ exports.postClassTimeReportCsv = async(req, res, next) => {
             let filePath = '';
             switch (req.params.modName) {
                 case 'cyberbullying':
-                case 'digfoot':
+                case 'digfoot' || 'digfoot-esp':
                     filePath = "./public2/json/progressDataB.json";
                     break;
                 default:

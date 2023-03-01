@@ -28,7 +28,7 @@ $('.ui.big.green.labeled.icon.button.finish')
     } else {
       $.post("/delete", {_csrf: $('meta[name="csrf-token"]').attr('content') })
       .done(function(){
-        window.location.href = 'https://socialmediatestdrive.org/modules.html';
+        window.location.href = 'https://es.socialmediatestdrive.org/';
       });
     }
 });

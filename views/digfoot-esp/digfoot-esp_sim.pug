@@ -1,0 +1,380 @@
+extends ../ui_layout
+
+block content
+  - var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  .computer.only.tablet.only.four.wide.column 
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
+    .ui.one.column.centered.grid.feedbackMessagesGrid
+      .ui.fixed.bottom.sticky
+        #clickSiguienteHelpMessage.ui.icon.compact.message.warning.hidden
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header ¿Necesitas ayuda?
+            p Subir y Dale clic a "Siguiente" para comenzar
+        #removeHidden.ui.icon.compact.message.warning.hidden
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header ¿Necesitas ayuda?
+            p Asegúrate de hacer clic en "Entendido" en los puntos azules!
+
+        #clickAllDotsWarning.ui.icon.message.warning.hidden
+          i.close.icon
+          i.hand.pointer.icon.float
+          .content
+            .ui.header Todavía hay puntos azules por descubrir!
+            p Haz clic en todos los puntos azules para continuar.
+
+    #digfoot_sim_modal.ui.small.modal(data-modalName="digfoot_simModal")
+      i.close.icon 
+      .header ¿Cómo influiría este post en las huellas digitales?
+      .content
+        .ui.form
+          .field
+            .ui.checkbox
+              input(type="checkbox")
+              label
+                | El post tendrá un impacto negativo en la huella digital de esta persona.
+
+          .field
+            .ui.checkbox
+              input(type="checkbox")
+              label
+                | Esta persona estaba compartiendo algo de lo que más tarde podría arrepentirse.
+
+          .field
+            .ui.checkbox
+              input(type="checkbox")
+              label
+                | El post no toma en cuenta la huella digital de los demás.
+
+          .field
+            .ui.checkbox
+              input(type="checkbox")
+              label
+                | El post no tendrá un impacto negativo en la huella digital de esta persona.
+
+          .field
+            .ui.checkbox
+              input(type="checkbox")
+              label
+                | Este fue un post responsable que creará una huella digital positiva.
+
+      .actions
+        .ui.positive.right.labeled.icon.button
+          | Listo
+
+          i.checkmark.icon
+
+    #hint1.ui.fluid.left.labeled.right.icon.input
+      .ui.label
+        if user.profile.picture
+          img.ui.avatar.image(
+            src=cdn + "/profile_pictures/" + user.profile.picture
+          )
+        else
+          img.ui.avatar.image(src=cdn + user.gravatar(60))
+      input(type="text", placeholder="Create a post")
+      i.big.photo.link.icon
+
+    #step1.ui.fluid.card.test.dim(simPostNumber="1")
+      .ui.dimmer.flag
+        .content
+          .center
+            h2.ui.inverted.icon.header
+              i.red.flag.icon
+              | ¡Has reportado esto!
+
+              h3.ui.inverted.header
+                span
+                  | Los administradores del TestDrive van a revisar el post luego.
+
+      .content
+        .right.floated.meta= "Ayer"
+        a(href="#")
+          img.ui.avatar.image(src=cdn + "/profile_pictures/user71.JPG")
+          span= "Andrés Torres"
+      .img.post
+        img(src=cdn + "/post_pictures/digfootga1new.jpg")
+      .content
+        #hint2.description
+          | Dale like al post si crees que las matemáticas son estúpidas. Jaja, ¿alguien me presta su tarea para copiarla?
+
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex="0")
+          i.reply.icon
+          |
+          | Responder
+
+        .ui.flag.button(tabindex="0")
+          i.flag.icon
+          |
+          | Reportar
+
+        .ui.labeled.button(tabindex="0")
+          .ui.like.button
+            i.heart.icon
+            |
+            | Like
+
+          a.ui.basic.red.left.pointing.label.count 2
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn + "/profile_pictures/user52.jpg")
+            .content
+              a.author Mateo Muñoz
+              .metadata
+                span.date Ayer
+                .rating
+                  i.heart.icon
+                  span.num= 1
+                  |
+                  | Likes
+
+              .text siii, las matemáticas apestan
+              .actions
+                a.like.comment Like
+                a.flag.comment Reportar
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(
+              src=cdn + "/profile_pictures/" + user.profile.picture,
+              name=user.profile.name
+            )
+          input.newcomment(type="text", placeholder="Write a Comment")
+          i.big.send.link.icon
+
+    .ui.fluid.card.dim(simPostNumber="2")
+      .ui.dimmer.flag
+        .content
+          .center
+            h2.ui.inverted.icon.header
+              i.red.flag.icon
+              | ¡Has reportado esto!
+
+              h3.ui.inverted.header
+                span
+                  | Los administradores del TestDrive van a revisar el post luego.
+
+      #hint3.content
+        .right.floated.meta= "Ayer"
+        a(href="#")
+          img.ui.avatar.image(src=cdn + "/profile_pictures/user50.jpg")
+          span= "Ana Lucia Sánchez"
+      .img.post
+        img(src=cdn + "/post_pictures/digfootga2.jpg")
+      .content
+        .description Una foto de mi gato!! <3
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex="0")
+          i.reply.icon
+          |
+          | Responder
+
+        .ui.flag.button(tabindex="0")
+          i.flag.icon
+          |
+          | Reportar
+
+        .ui.labeled.button(tabindex="0")
+          .ui.like.button
+            i.heart.icon
+            |
+            | Like
+
+          a.ui.basic.red.left.pointing.label.count 2
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn + "/profile_pictures/user24.jpg")
+            .content
+              a.author Milagros Cardenas
+              .metadata
+                span.date Ayer
+                .rating
+                  i.heart.icon
+                  span.num= 1
+                  |
+                  | Likes
+
+              .text awww, es hermoso 😍
+              .actions
+                a.like.comment Like
+                a.flag.comment Reportar
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(
+              src=cdn + "/profile_pictures/" + user.profile.picture,
+              name=user.profile.name
+            )
+          input.newcomment(type="text", placeholder="Write a Comment")
+          i.big.send.link.icon
+
+    .ui.fluid.card.test.dim(simPostNumber="3")
+      .ui.dimmer.flag
+        .content
+          .center
+            h2.ui.inverted.icon.header
+              i.red.flag.icon
+              | ¡Has reportado esto!
+
+              h3.ui.inverted.header
+                span
+                  | Los administradores del TestDrive van a revisar el post luego.
+
+      #hint4.content
+        .right.floated.meta= "Ayer"
+        a(href="#")
+          img.ui.avatar.image(src=cdn + "/profile_pictures/user40.jpg")
+          span= "Susana Tapia"
+      .img.post
+        img(src=cdn + "/post_pictures/digfootga3new.jpg")
+      .content
+        #hint5.description
+          | Una foto del recuerdo!! de cuando Gabriela y yo nos escapamos del colegio y fuimos a Starbucks 😂
+
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex="0")
+          i.reply.icon
+          |
+          | Responder
+
+        .ui.flag.button(tabindex="0")
+          i.flag.icon
+          |
+          | Reportar
+
+        .ui.labeled.button(tabindex="0")
+          .ui.like.button
+            i.heart.icon
+            |
+            | Like
+
+          a.ui.basic.red.left.pointing.label.count 2
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn + "/profile_pictures/user66.jpeg")
+            .content
+              a.author Michelle Ríos
+              .metadata
+                span.date Ayer
+                .rating
+                  i.heart.icon
+                  span.num= 1
+                  |
+                  | Likes
+
+              .text lol!!
+              .actions
+                a.like.comment Like
+                a.flag.comment Reportar
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(
+              src=cdn + "/profile_pictures/" + user.profile.picture,
+              name=user.profile.name
+            )
+          input.newcomment(type="text", placeholder="Write a Comment")
+          i.big.send.link.icon
+
+    .ui.fluid.card.dim(simPostNumber="4")
+      .ui.dimmer.flag
+        .content
+          .center
+            h2.ui.inverted.icon.header
+              i.red.flag.icon
+              | ¡Has reportado esto!
+
+              h3.ui.inverted.header
+                span
+                  | Los administradores del TestDrive van a revisar el post luego.
+
+      .content
+        .right.floated.meta= "Ayer"
+        a(href="#")
+          img.ui.avatar.image(src=cdn + "/profile_pictures/user24.jpg")
+          span= "Milagros Cardenas"
+      .img.post
+        img(src=cdn + "/post_pictures/digfootga4.jpg")
+      .content
+        .description No quiero que el verano se termine!!
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex="0")
+          i.reply.icon
+          |
+          | Responder
+
+        .ui.flag.button
+          i.flag.icon
+          |
+          | Reportar
+
+        .ui.labeled.button(tabindex="0")
+          .ui.like.button
+            i.heart.icon
+            |
+            | Like
+
+          a.ui.basic.red.left.pointing.label.count 2
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn + "/profile_pictures/user63.jpg")
+            .content
+              a.author Jonathan Muñoz
+              .metadata
+                span.date Ayer
+                .rating
+                  i.heart.icon
+                  span.num= 1
+                  |
+                  | Likes
+
+              .text de vuelta al cole pronto 🙁
+              .actions
+                a.like.comment Like
+                a.flag.comment Reportar
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(
+              src=cdn + "/profile_pictures/" + user.profile.picture,
+              name=user.profile.name
+            )
+          input.newcomment(type="text", placeholder="Write a Comment")
+          i.big.send.link.icon
+    #confirmContinuarCheck.ui.message.warning.hidden
+      .ui.header 
+        |
+        |
+        |
+        |
+        |
+        | It seems you did not click on any of the posts to think more about how a post can impact someone's huella digital.
+
+        br 
+        br
+        | Are you sure you do not want to click on a post before continuing?
+
+    button#cyberTransButton.ui.big.labeled.icon.button.cybertrans.addBottomMargin
+      i.rocket.icon
+      |
+      | Continuar!
+
+block scripts
+  script(src="/module_js/base_sim_extraData.js")
+  script(src="/module_js/voiceover.js")
+  script(src="/postFunctionalities.js")
+
+  script(src="/module_js/digfoot-esp/digfoot-esp_sim.js") 
+  script(src="/module_js/base_sim.js")
