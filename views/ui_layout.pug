@@ -46,6 +46,7 @@ html
     .ui.vertically.padded.grid.container.addBottomPaddingToGrid
       include partials/ui_header
       include partials/ui_flash
+      include partials/modal           
       block content
       .ui.small.basic.share.modal
         .ui.icon.header
@@ -54,7 +55,7 @@ html
         .actions(style="text-align:center;")   
           .ui.green.ok.inverted.button
             i.checkmark.icon
-            |   Done                      
+            |   Done
     include partials/ui_footer
     
     if process.env.instanceType == 'test'
