@@ -50,8 +50,8 @@ $(window).on("load", function() {
     }
 
     const gameState = window.sessionStorage.getItem('gameMode');
-    if (gameState === 'true') {
-        // changeToDark();
+    if (gameState === 'false') {
+        changeToLearn();
     }
 
     const textState = window.sessionStorage.getItem('textMode');
