@@ -49,6 +49,11 @@ $(window).on("load", function() {
         changeToDark();
     }
 
+    const gameState = window.sessionStorage.getItem('gameMode');
+    if (gameState === 'true') {
+        // changeToDark();
+    }
+
     const textState = window.sessionStorage.getItem('textMode');
     if (textState === 'large') {
         changeToLarge();

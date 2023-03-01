@@ -1,20 +1,25 @@
 .ui.menu#access(style='width:100%; background-color:white; color: black; border:2.5px solid black; display: none; padding: 10px;')
     h3 Accessibility Options
-    .ui.medium.buttons
-        button#large.ui.button.green.large Large Text
-        .or
-        button#medium.ui.button.green.medium Medium Text
-        .or
-        button#small.ui.button.green.small Small Text
-    .ui.medium.buttons
-        button#dark.ui.button.black Dark Mode
-        .or
-        button#light.ui.button.white Light Mode
-    .ui.medium.buttons
-        button#dark.ui.button.blue Game Mode
-        .or
-        button#light.ui.button.white Learn Mode
-    button#close.ui.button.red.right.floated Close
+    .ui.grid
+        .six.wide.row.centered
+            .ui.medium.buttons
+                button#large.ui.button.green.large Large Text
+                .or
+                button#medium.ui.button.green.medium Medium Text
+                .or
+                button#small.ui.button.green.small Small Text
+        .four.wide.row.centered
+            .ui.medium.buttons
+                button#dark.ui.button.black Dark Mode
+                .or
+                button#light.ui.button.white Light Mode
+        .four.wide.row.centered
+            .ui.medium.buttons
+                button#gameOn.ui.button.blue Game Mode
+                .or
+                button#gameOff.ui.button.white Learn Mode
+    button#close.ui.icon.button.red.right.floated 
+        i.window.close.outline.icon
 
 script.
     document.getElementById('dark').onclick = dark;
@@ -22,10 +27,23 @@ script.
     document.getElementById('small').onclick = small;
     document.getElementById('medium').onclick = medium;
     document.getElementById('large').onclick = large;
+    document.getElementById('gameOn').onclick = on;
+    document.getElementById('gameOff').onclick = off;
+
     document.getElementById('close').onclick = function() {
       window.sessionStorage.setItem('modalMode', 'false');
       window.location.reload();
     };
+
+    function on(){
+        window.sessionStorage.setItem('gameMode', 'true');
+        window.location.reload();
+    }
+
+    function off(){
+        window.sessionStorage.setItem('gameMode', 'false');
+        window.location.reload();
+    }
 
     function dark(){
         window.sessionStorage.setItem('darkMode', 'true');
