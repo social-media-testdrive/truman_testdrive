@@ -1,0 +1,59 @@
+.help-outer-container {
+    width: 99%;
+    position: absolute;
+    bottom: 0;
+    margin: 0 auto;
+    margin-bottom: 45px;
+}
+
+#help-button {
+    cursor: pointer;
+    display: block;
+    width: 100px;
+    margin: 0 auto;
+    padding: 15px 0;
+    background: #2d2d2a;
+    color: #fff;
+    border: 0;
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    transition: 0.5s;
+
+    font-family: 'Itim', cursive;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    font-size: large;
+}
+
+#help-container {
+    background: #2d2d2a;
+    color: #fff;
+    text-align: center;
+    /* padding-top: 30px; */
+    transition: 0.5s;
+    overflow: hidden;
+    height: 0;
+    font-family: 'Itim', cursive;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto Slab', serif;
+    font-size: x-large;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* opacity: 0; */
+}
+
+#dartie-img {
+    width: 250px;
+    float: left;
+    position: absolute;
+    left: 120px;
+    bottom: 0px;
+    display: none;
+    transition: opacity 1s ease-out;
+    transition: opacity 0.5s ease-in;
+
+    /* transition: opacity 1s ease-out; */
+}
