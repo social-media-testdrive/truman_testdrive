@@ -5,6 +5,7 @@ const moduleCards = {
   "advancedlit":["advancednews.png", "Responding to Breaking News!"],
   "cyberbullying":["upstander.png","How to Be an Upstander"],
   "digfoot":["digfoot.png","Shaping Your Digital Footprint"],
+  "digfoot-esp":["digfoot.png","Moldeando tu huella digital"],
   "digital-literacy":["news.png","News in Social Media"],
   "habits":["smhabits.png","Healthy Social Media Habits"],
   "habits-esp":["smhabits.png","Hábitos saludables de las redes sociales"],

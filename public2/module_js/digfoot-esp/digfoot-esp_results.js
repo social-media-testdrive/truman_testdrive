@@ -8,7 +8,7 @@ function onPrint() {
         $(".insertPrint").append('<div class="breakHere"</div>');
 
 
-        $(".insertPrint").append("<br><h4>How would the following posts have a negative impact on digital footprints?</h4><br>");
+        $(".insertPrint").append("<br><h4>¿Cómo tendrían las siguientes publicaciones un impacto negativo en las huellas digitales?</h4><br>");
         $(".checkOne").clone().removeClass('reflectionPromptSegment').appendTo(".insertPrint");
         $(".insertPrint").append('<div class="breakHere"</div><br>');
         $(".checkTwo").clone().removeClass('reflectionPromptSegment').appendTo(".insertPrint");

@@ -2,60 +2,49 @@ const nextPageURL = 'sim';
 
 const stepsList = [
   {
-    element: '#step3',
-    intro: `Clic "Siguiente" to begin!`,
-    position: 'right',
-    scrollTo: 'tooltip',
-    audioFile: ['']
+  element: '#step3',
+  intro: `Clic "Siguiente" to begin!`,
+  position: 'right',
+  scrollTo: 'tooltip',
   },
   {
-    element: '#step3',
-    intro: `How can you shape your digital footprint?`,
-    position: "right",
-    scrollTo: 'tooltip',
-    // audioFile: ['CUSML.4.3.1.mp3']
+  element: '#step3',
+  intro: `¿Cómo puedes formar tu huella digital?`,
+  position: "right",
+  scrollTo: 'tooltip',
   },
   {
-    element: '#step3',
-    intro: `Think before you post, because many things you do online
-    will add to your digital footprint.`,
-    position: "right",
-    scrollTo: "tooltip",
-    // audioFile: ['CUSML.4.3.2.mp3']
+  element: '#step3',
+  intro: `Piensa bien antes de publicar algo porque muchas de 
+  las cosas que haces en línea le aumentarán a tu huella digital`,
+  position: "right",
+  scrollTo: "tooltip",
   },
   {
-    element: '#step4',
-    intro: `Think about whether you are sharing too much personal or
-    private information. Would you be ok with this being a part of your
-    digital footprint?`,
-    position: "left",
-    scrollTo: "tooltip",
-    // audioFile: ['CUSML.4.3.3.mp3']
+  element: '#step4',
+  intro: `Piensa si estas compartiendo demasiada información personal o 
+  privada. ¿Te parece bien que esto sea parte de tu huella digital?`,
+  position: "left",
+  scrollTo: "tooltip",
   },
   {
-    element: '#step5',
-    intro: `How can you be responsible for other people's digital
-    footprints?`,
-    position: "right",
-    scrollTo: "tooltip",
-    // audioFile: ['CUSML.4.3.4.mp3']
+  element: '#step5',
+  intro: `¿Cómo puedes ser responsable por las huellas digitales de los demás?`,
+  position: "right",
+  scrollTo: "tooltip",
   },
   {
-    element: '#step5',
-    intro: `Think about your friends' digital footprints, too! It's your
-    responsibility to not post embarrassing pictures, gossip, or hateful
-    things about others.`,
-    position: "right",
-    scrollTo: "tooltip",
-    // audioFile: ['CUSML.4.3.5.mp3']
+  element: '#step5',
+  intro: `¡Piensa también en las huellas digitales de tus amigos! Es tu responsabilidad 
+  no publicar imágenes vergonzosas, chismes o cosas odiosas sobre los demás.`,
+  position: "right",
+  scrollTo: "tooltip",
   },
   {
-    element: '#step5',
-    intro: `If someone posts something you don't want to have as part of
-    your digital footprint, you can ask them to delete it through a
-    private message.`,
-    position: "right",
-    scrollTo: "tooltip",
-    // audioFile: ['CUSML.4.3.6.mp3']
+  element: '#step5',
+  intro: `Si alguien publica algo que no deseas tener como parte de tu huella digital, 
+  puedes pedirle que lo borren a través de un mensaje privado.`,
+  position: "right",
+  scrollTo: "tooltip",
   }
-];
+  ];

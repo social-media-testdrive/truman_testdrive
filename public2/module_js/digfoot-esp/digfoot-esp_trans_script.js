@@ -6,20 +6,20 @@ const stepsList = [
     audioFile: ['']
   },
   {
-    intro: `Now you get to explore the TestDrive timeline! You can read
-    what others have posted, respond, or make your own posts.`,
+    intro: `¡Ahora puedes explorar el feed de TestDrive! Puedes leer 
+    lo que otros han publicado, responder o hacer tus propias posts.`,
     // audioFile: ['CUSML.4.6.1.mp3']
   },
   {
-    intro: `As you look through the timeline, see if you can spot posts
-    that would create a negative digital footprint. If you find one,
-    click on the post to think about its impact on digital footprints.`,
+    intro: `Mientras miras el feed, fíjate si puedes detectar posts 
+    que crearían una huella digital negativa. Si encuentras uno, haz 
+    clic en el post para pensar en su impacto en las huellas digitales.`,
     // audioFile: ['CUSML.4.6.2.mp3']
   },
   {
-    intro: `You can also practice creating posts that would have a
-    positive impact on your and other people's digital footprints. When
-    you get to the end of the page, click “Let's Continue” to move on.`,
+    intro: `También puedes practicar crear posts que tendrían un impacto 
+    positivo en tu huella digital y la de otras personas. Cuando llegues 
+    al final de la página, haz clic en 'Continuar!' para seguir.`,
     // audioFile: ['CUSML.4.6.3.mp3']
   }
 ];

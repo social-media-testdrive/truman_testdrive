@@ -1,49 +1,47 @@
 extends ui_layout-esp
 block content
-  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
-  -var path = isResearchVersion ? 'intro' : 'guest';
-  
-  .ui.container(style="padding:0;")
+  - var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  - var path = isResearchVersion ? "intro" : "guest";
+
+  .ui.container(style="padding: 0")
     br
     br
     h2 Elije una lección
     br
-    .ui.four.stackable.link.cards(style="padding-bottom:4em;")
-      
-        a.ui.card(href=`/${path}/esteem-esp`)
-          .image
-            img(src=cdn+'/esteem.png')
+    .ui.four.stackable.link.cards(style="padding-bottom: 4em")
+      a.ui.card(href=`/${path}/esteem-esp`)
+        .image
+          img(src=cdn + "/esteem.png")
+        .content
+          .header= "Los altibajos de las redes sociales"
+
+      a.ui.card(href=`/${path}/habits-esp`)
+        .image
+          img(src=cdn + "/smhabits.png")
+        .content
+          .header= "Hábitos saludables de las redes sociales"
+
+      a.ui.card(href=`/${path}/digfoot-esp`)
+        .image
+          img(src=cdn + "/digfoot.png")
+        .content
+          .header= "Moldeando tu huella digital"
+
+      //- a.ui.card(href=`/${path}/privacy-esp`)
+      //-   .image
+      //-     .ui.blue.ribbon.label ¡NUEVO!
+      //-     img(src=cdn+'/smprivacy.png')
+      //-   .content
+      //-     .header="La privacidad en las redes sociales" 
+
+      a.ui.card(href="#")
+        .ui.inverted.active.dimmer.soon
           .content
-            .header="Los altibajos de las redes sociales" 
-
-        a.ui.card(href=`/${path}/habits-esp`)
-          .image
-            img(src=cdn+'/smhabits.png')
-          .content
-            .header="Hábitos saludables de las redes sociales" 
-
-
-        a.ui.card(href=`/${path}/digfoot-esp`)
-          .image
-            img(src=cdn+'/digfoot.png')
-          .content
-            .header="Moldeando tu huella digital"
-
-
-        //- a.ui.card(href=`/${path}/privacy-esp`)
-        //-   .image
-        //-     .ui.blue.ribbon.label ¡NUEVO!
-        //-     img(src=cdn+'/smprivacy.png')
-        //-   .content
-        //-     .header="La privacidad en las redes sociales" 
-
-        a.ui.card(href='#')
-          .ui.inverted.active.dimmer.soon
-            .content
-              .center
-                h2.ui.header
-                  |  ¡PRÓXIMAMENTE!
-          .image(style="filter: blur(1.5px);")
-            img(src=cdn+'/smprivacy.png')
-          .content
-            .header="La privacidad en redes sociales"
+            .center
+              h2.ui.header
+                |
+                | ¡PRÓXIMAMENTE!
+        .image(style="filter: blur(1.5px)")
+          img(src=cdn + "/smprivacy.png")
+        .content
+          .header= "La privacidad en redes sociales"
