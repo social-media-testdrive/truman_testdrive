@@ -14,26 +14,9 @@ block content
 
           .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection1
             i.down.arrow.icon
-            |
             | comenzar
 
           .ui.basic.segment.reflectionPromptSegment.hidden.selectPostsQuestion1 
-            |
-            |
-            |
-            |
-            |
-            |
-            |
-            |
-            |
-            |
-            |
-            |
-            |
-            |
-            |
-            |
             .ui.label.resultsPromptLabel
               h4
                 i.exclamation.triangle.icon.yellowIcon
@@ -44,7 +27,7 @@ block content
               | ¡Haz clic en las que notaste!
 
             .ui.stackable.three.cards.selectablePosts
-              #card1.ui.fluid.card.dim
+              .ui.fluid.card.dim()#card1
                 .content
                   .right.floated.time 30 minutes ago
                   a(href="/user/k.r.h345")
@@ -58,7 +41,7 @@ block content
                   .description
                     | ¿A alguien más le recuerda este gato a la profesora Martina? Ella siempre nos está observando LOL. Por qué tiene que ser tan molestosa
 
-              #card2.ui.fluid.card.dim
+              .ui.fluid.card.dim()#card2
                 .content
                   .right.floated.time Hace 48 minutos
                   a(href="/user/ryguy76")
@@ -70,25 +53,9 @@ block content
                   img.post(src=cdn + "/post_pictures/facepalm.jpg ")
                 .content
                   .description 
-                    |
-                    |
-                    |
-                    |
-                    |
-                    |
-                    |
-                    |
-                    |
-                    |
-                    |
-                    |
-                    |
-                    |
-                    |
-                    |
                     | Lol Daniel no quería que se lo dijera a nadie, pero él se tropezó con una piedra y se dobló el tobillo. Él es literalmente un meme.
 
-              #card3.ui.fluid.card.dim
+              .ui.fluid.card.dim()#card3
                 .content
                   .right.floated.time Hace una hora
                   a(href="/user/ella_vaderrr")
@@ -100,42 +67,21 @@ block content
                   img.post(src=cdn + "/post_pictures/backtoschool.jpg")
                 .content
                   .description 
-                    |
-                    |
-                    |
-                    |
-                    |
-                    |
-                    |
-                    |
-                    |
-                    |
-                    |
-                    |
-                    |
-                    |
-                    |
-                    |
                     | ¡Mi primer día en secundaria! Ven a mi casa en Calle Blancos si quieres pasar el rato
 
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
           .ui.raised.segment
             .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection2
               i.down.arrow.icon
-              |
               | Siguiente
 
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
-              |
-              |
-              |
-              |
               .ui.label.resultsPromptLabel
                 h4.reflectionCheckboxesPrompt(data-questionNumber="Q1")
                   | #{ reflectionData.digfoot.Q1.prompt }
 
               .ui.stackable.two.cards.checkOne
-                #card1.ui.fluid.card.dim
+                .ui.fluid.card.dim()#card1
                   .content
                     .right.floated.time 30 minutes ago
                     a(href="/user/k.r.h345")
@@ -160,10 +106,6 @@ block content
                           .ui.checkbox
                             input(type="checkbox")
                             label(for="overshare", tabindex="0") 
-                              |
-                              |
-                              |
-                              |
                               | #{ reflectionData.digfoot.Q1.checkboxLabels[0] }
 
                     hr
@@ -174,10 +116,6 @@ block content
                           .ui.checkbox
                             input(type="checkbox", name="regret")
                             label(for="regret", tabindex="0") 
-                              |
-                              |
-                              |
-                              |
                               | #{ reflectionData.digfoot.Q1.checkboxLabels[1] }
 
                     hr
@@ -188,10 +126,6 @@ block content
                           .ui.checkbox
                             input(type="checkbox", name="inconsiderate")
                             label(for="inconsiderate", tabindex="0") 
-                              |
-                              |
-                              |
-                              |
                               | #{ reflectionData.digfoot.Q1.checkboxLabels[2] }
 
                     hr
@@ -202,14 +136,10 @@ block content
                           .ui.checkbox
                             input(type="checkbox", name="responsible")
                             label(for="responsible", tabindex="0") 
-                              |
-                              |
-                              |
-                              |
                               | #{ reflectionData.digfoot.Q1.checkboxLabels[3] }
 
               .ui.stackable.two.cards.checkTwo
-                #card2.ui.fluid.card.dim
+                .ui.fluid.card.dim()#card2
                   .content
                     .right.floated.time Hace 48 minutos
                     a(href="/user/ryguy76")
@@ -223,10 +153,6 @@ block content
                     )
                   .content
                     .description 
-                      |
-                      |
-                      |
-                      |
                       | #{ reflectionData.digfoot.Q1.groupPostDescriptions[1] }
 
                 .ui.fluid.card.dim.printvis
@@ -238,10 +164,6 @@ block content
                           .ui.checkbox
                             input(type="checkbox")
                             label(for="overshare2", tabindex="0") 
-                              |
-                              |
-                              |
-                              |
                               | #{ reflectionData.digfoot.Q1.checkboxLabels[0] }
 
                     hr
@@ -252,10 +174,6 @@ block content
                           .ui.checkbox
                             input(type="checkbox", name="regret2")
                             label(for="regret2", tabindex="0") 
-                              |
-                              |
-                              |
-                              |
                               | #{ reflectionData.digfoot.Q1.checkboxLabels[1] }
 
                     hr
@@ -266,10 +184,6 @@ block content
                           .ui.checkbox
                             input(type="checkbox", name="inconsiderate2")
                             label(for="inconsiderate2", tabindex="0") 
-                              |
-                              |
-                              |
-                              |
                               | #{ reflectionData.digfoot.Q1.checkboxLabels[2] }
 
                     hr
@@ -280,14 +194,10 @@ block content
                           .ui.checkbox
                             input(type="checkbox", name="responsible2")
                             label(for="responsible2", tabindex="0") 
-                              |
-                              |
-                              |
-                              |
                               | #{ reflectionData.digfoot.Q1.checkboxLabels[3] }
 
               .ui.stackable.two.cards.checkThree
-                #card3.ui.fluid.card.dim
+                .ui.fluid.card.dim()#card3
                   .content
                     .right.floated.time Hace una hora
                     a(href="/user/ella_vaderrr")
@@ -300,11 +210,7 @@ block content
                       src=cdn + reflectionData.digfoot.Q1.groupPostImages[2]
                     )
                   .content
-                    .description 
-                      |
-                      |
-                      |
-                      |
+                    .description
                       | #{ reflectionData.digfoot.Q1.groupPostDescriptions[2] }
 
                 .ui.fluid.card.dim
@@ -316,10 +222,6 @@ block content
                           .ui.checkbox
                             input(type="checkbox")
                             label(for="overshare3", tabindex="0") 
-                              |
-                              |
-                              |
-                              |
                               | #{ reflectionData.digfoot.Q1.checkboxLabels[0] }
 
                     hr
@@ -330,10 +232,6 @@ block content
                           .ui.checkbox
                             input(type="checkbox", name="regret3")
                             label(for="regret3", tabindex="0") 
-                              |
-                              |
-                              |
-                              |
                               | #{ reflectionData.digfoot.Q1.checkboxLabels[1] }
 
                     hr
@@ -344,10 +242,6 @@ block content
                           .ui.checkbox
                             input(type="checkbox", name="inconsiderate3")
                             label(for="inconsiderate3", tabindex="0") 
-                              |
-                              |
-                              |
-                              |
                               | #{ reflectionData.digfoot.Q1.checkboxLabels[2] }
 
                     hr
@@ -358,23 +252,15 @@ block content
                           .ui.checkbox
                             input(type="checkbox", name="responsible3")
                             label(for="responsible3", tabindex="0") 
-                              |
-                              |
-                              |
-                              |
                               | #{ reflectionData.digfoot.Q1.checkboxLabels[3] }
 
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
           .ui.raised.segment
             .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection3
               i.down.arrow.icon
-              |
               | Siguiente
 
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
-              |
-              |
-              |
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt(data-questionNumber="Q2")
                   | #{ reflectionData.digfoot.Q2.prompt }
@@ -388,12 +274,9 @@ block content
           .ui.raised.segment
             .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection4
               i.down.arrow.icon
-              |
               | Siguiente
 
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
-              |
-              |
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt(data-questionNumber="Q3")
                   | #{ reflectionData.digfoot.Q3.prompt }
@@ -415,14 +298,12 @@ block content
     br
     .ui.big.labeled.icon.button.results_print(onclick="onPrint()")
       i.right.arrow.icon
-      |
       | Imprimir tus respuestas
 
     br
     br
     .ui.big.labeled.icon.button.resultsContinuarButton
       i.rocket.icon
-      |
       | Continuar
 
 block scripts

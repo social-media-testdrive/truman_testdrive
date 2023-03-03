@@ -13,7 +13,6 @@ block content
       .ui.basic.segment.removePadding
         .ui.mini.green.right.labeled.icon.button.showLearnSectionButton
           i.down.arrow.icon
-          |
           | Siguiente
 
       .ui.basic.segment.learnSegment.hidden
@@ -30,7 +29,6 @@ block content
         br
         .ui.mini.green.right.labeled.icon.button.showKeyTermsButton
           i.down.arrow.icon
-          |
           | Siguiente
 
     .ui.segment.keyIdeasSegment.hidden
@@ -38,8 +36,6 @@ block content
         i.key.blue.icon
         .content Vocabulario Clave
       .sub.header 
-        |
-        |
         i.hand.pointer.icon.grayElement
         span.grayElement Selecciona cada palabra para aprender más
       br
@@ -51,10 +47,7 @@ block content
               //- i.magic.icon 
               span Huella Digital
             span.hidden.keyTermDefinition 
-              |
-              |
               | Toda información en línea sobre una persona publicada por esa persona u otras personas, de forma intencionada o no.
-
               ul
                 | Su huella digital puede afectar su reputación en línea y fuera de línea.¡Es importante manejarlo lo mejor que puedas!
 
@@ -64,8 +57,6 @@ block content
               //- i.magic.icon 
               span Audiencia
             span.hidden.keyTermDefinition 
-              |
-              |
               | Cualquiera que pueda ver información sobre ti o publicaciones realizadas por ti en línea.
 
               ul
@@ -77,25 +68,22 @@ block content
               //- i.dollar.sign.icon 
               span Compartir en exceso
             span.hidden.keyTermDefinition 
-              |
-              |
               | Cuando las personas comparten algo de lo que luego se arrepienten.
 
               ul
                 | Esto puede ocurrir cuando las personas comparten demasiada información privada o personal sobre sí mismas.
 
-    #clickSiguienteWarning.ui.warning.message
+    .ui.warning.message#clickNextWarning
       .header
         | Clic "Siguiente"
 
-    #clickLabelsWarning.ui.warning.message
+    .ui.warning.message#clickLabelsWarning
       .header
         | Dale clic a cada etiqueta para continuar
 
     a(href="javascript:void(0);", onclick="javascript:clickGotIt();")
       .ui.labeled.icon.button
         i.rocket.icon
-        |
         | ¡Entendido!
 
 block scripts
