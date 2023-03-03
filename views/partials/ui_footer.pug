@@ -1,10 +1,40 @@
-.ui.bottom.fixed.small.borderless.menu.testDriveFooter
+.wrapper#help-dartie-menu
+  footer.help-outer-container
+    button#help-button Help
+    #help-container
+      #rpg-content
+        img#dartie-img(src='/images/Dartie.png' alt='Happy Dartie the hedgehog character wearing blue')
+        p Great job getting past security! <strong> Click a mission</strong>  to get started!
+#footer.ui.bottom.fixed.small.borderless.menu.testDriveFooter
   .left.menu
     .item
       .ui.toggle.checkbox.hidden#voiceoverCheckbox
         input(type="checkbox", name="voiceoverCheckbox" id='voiceoverCheckbox' checked)
         label(for='voiceoverCheckbox') Voiceovers
+    .item
+      button#showModal.ui.button.green Accessibility Menu
   .right.menu
     a.item(href='/') Terms of Service 
     //- a.item(href='/privacy') Privacy Policy  
     a.item(href='mailto:socialmediatestdrive@gmail.com') Contact Us
+
+ 
+block scripts
+  script(src="/js/help.js")
+
+block styles
+  link(rel='stylesheet', href='/css/help.css')  
+
+
+
+script.
+  document.getElementById('showModal').onclick = show;
+
+  function show(){
+    window.sessionStorage.setItem('modalMode', 'true');
+    window.location.reload();
+  }
+
+
+
+

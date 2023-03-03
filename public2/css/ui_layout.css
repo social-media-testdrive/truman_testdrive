@@ -3,7 +3,8 @@
 /* ---- GENERAL ---- */
 
 body {
-    background-color: #F5F8FA;
+    /* SET THE MAIN BACKGROUND COLOR HERE */
+    background-color: #2165AE;
     padding: 0em;
 }
 
@@ -421,6 +422,7 @@ button,
 .image-upload>input {
     display: none;
 }
+
 
 #harmonyBox {
     width: 545px;
@@ -942,3 +944,4 @@ a#step3:active {
 /* #numFollowers {
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
 } */
+

@@ -40,12 +40,15 @@ html
     link(rel='stylesheet', href=cdn+'/js/lib/introjs.min.css')
     link(type='text/css', rel='stylesheet', href='/css/header.css') 
     link(type='text/css', rel='stylesheet', href='/css/ui_layout.css') 
+    link(type='text/css', rel='stylesheet', href='/css/help.css') 
+
     block styles
 
   body
     .ui.vertically.padded.grid.container.addBottomPaddingToGrid
       include partials/ui_header
       include partials/ui_flash
+      include partials/modal           
       block content
       .ui.small.basic.share.modal
         .ui.icon.header
@@ -54,10 +57,11 @@ html
         .actions(style="text-align:center;")   
           .ui.green.ok.inverted.button
             i.checkmark.icon
-            |   Done                      
+            |   Done
     include partials/ui_footer
     
     if process.env.instanceType == 'test'
+      script(src="/js/help.js")
       script(src=cdn+'/js/lib/jquery-3.1.1.min.js')
       script(src=cdn+'/js/lib/humanized_time_span.js')
       script(src=cdn+'/js/lib/lazyload.transpiled.min.js')

@@ -79,6 +79,7 @@ function startIntro(enableDataCollection) {
             });
             jqhxrArray.push(jqxhr);
         }
+
     });
 
     /*
