@@ -1,6 +1,6 @@
 .help-outer-container {
     width: 99%;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     margin: 0 auto;
     margin-bottom: 45px;
