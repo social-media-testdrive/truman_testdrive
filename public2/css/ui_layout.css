@@ -33,6 +33,7 @@ body {
     color: #696969;
 }
 
+
 /* --- HEADER & FOOTER ---- */
 
 .ui.menu.testDriveHeader,
@@ -421,3 +422,526 @@ button,
 .image-upload>input {
     display: none;
 }
+
+
+#harmonyBox {
+    width: 545px;
+    height: 146px;
+    background-color: transparent;
+    z-index: 999999999;
+    position: absolute;
+    top: 265px;
+}
+
+#nextPage {
+    width: 150%;
+    margin-left: -132px;
+    margin-top: 20px;
+}
+
+#populated-data {
+    width: 240px;
+    height: 160px;
+    background-color: transparent;
+    /* background-color: rgba(0,0,128,0.2); */
+    z-index: 999999999;
+    position: absolute;
+    top: 395px;
+    left: 50px;
+}
+
+
+
+#tweets-number {
+    width: 220px;
+    height: 40px;
+    background-color: transparent;
+    z-index: 999999999;
+    position: absolute;
+    top: 320px;
+    left: 310px;
+}
+
+#opinions {
+    width: 400px;
+    height: 84px;
+    /* background-color: rgba(0,0,128,0.2); */
+    background-color: transparent;
+    z-index: 999999999;
+    position: absolute;
+    top: 450px;
+    left: 350px;
+}
+
+#reactions {
+    width: 175px;
+    height: 18px;
+    /* background-color: rgba(0,0,128,0.2); */
+    background-color: transparent;
+    z-index: 999999999;
+    position: absolute;
+    top: 540px;
+    left: 353px;
+}
+
+/* the character's page (after the request) in the practice pages */
+#harmony-page {
+    /* background-color: red !important; */
+    margin-top: 5px;
+    width: 150% !important;
+    margin-left: -132px;
+    background-color: #e7edf0;
+    display: none;
+}
+
+.elvisFixNav {
+    top: -64px !important;
+}
+
+#buttons-menu {
+    background-color: white;
+    height: 60px;
+    top: -15px;
+    z-index: 0;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
+}
+
+
+
+#toploggedin {
+    background-color: white;
+}
+
+#round-pic-container{
+    position: absolute;
+    top: 130px;
+    left: 65px;
+    z-index: 10;
+    /* background-color: green; */
+    width: 170px;
+    height: 170px;
+}
+
+#pic-border {
+    box-sizing: border-box;
+    padding: 4px;
+    background-color: white;
+}
+
+#pic-border, #harmony-pic {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.bio {
+    /* background-color: red; */
+    width: 19.9vw !important;
+    margin-top: -2.2vh !important;
+    padding-top: 6vh !important;
+    padding-left: 8vh !important;
+    height: 33vh;
+    font-size: .9em;
+    /* background-color: pink; */
+}
+
+.elvisBio {
+    /* background-color: green !important; */
+    margin-top: -9.8vh !important;
+    z-index: 0;
+}
+
+#userName {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#profileAt {
+    font-weight: lighter;
+    color: #8196ad;
+}
+
+#userAbout {
+    padding-top: 1vh;
+    font-weight: normal;
+}
+
+.hashtags {
+    color: #21a6f2;
+}
+
+.userDetails {
+    font-weight: lighter;
+    color: #8196ad;
+    padding-top: 0.75vh;
+}
+
+.navbar {
+    /* background-color: rebeccapurple; */
+    font-size: 3em;
+    display: inline;
+    display:inline-block;
+    float:left;
+    padding:5px;
+}
+
+#twitterNav {
+    /* margin-right: 15vw; */
+    position: absolute;
+    text-align: center;
+    /* top: 36vh;
+    right: 15vw; */
+    top: 263px;
+    right: 250px;
+    /* background-color: rebeccapurple; */
+
+}
+
+/* .ElvisWhiteFix {
+    background-color: pink !important;
+} */
+
+#twitterNav .active {
+    color: #21a6f2 !important;
+}
+
+#followingbutton {
+    border-radius: 18px;
+    height: 40px;
+    margin-left: 100px;
+    width: 100px;
+    position: absolute;
+    top: 280px;
+    right: 40px;
+    z-index: 0;
+}
+
+#followingbuttonChris {
+    border-radius: 18px;
+    height: 40px;
+    margin-left: 100px;
+    width: 100px;
+    position: absolute;
+    top: 3px;
+    right: 200px;
+    z-index: 99999;
+}
+
+/* Stop intro js from moving underlying element positioning */
+/* .introjs-relativePosition {
+    position: initial;
+} */
+
+#actionsOverlay {
+    position: absolute;
+    /* background-color: green; */
+    height: 25px;
+    width: 172px;
+    top: 190px;
+    right: 245px;
+}
+
+#react {
+    /* background-color: red !important; */
+    height: 40px;
+    width: 175px;
+}
+
+#feed {
+    background-color: white;
+    width: 465px;
+    height: 225px;
+    position: absolute;
+    top:340px;
+    right:40px;
+}
+
+#chrisFeed  {
+    background-color: white;
+    width: 465px;
+    height: 440px;
+    position: absolute;
+    top:340px;
+    right:40px;
+}
+
+.chrisPage {
+    /* background-color: blue !important; */
+    padding-bottom: 220px !important;
+}
+
+hr {
+    height: 1px;
+    /* background-color: rgb(213, 14, 14); */
+    background-color: #e0e4e8;
+    /* background-color: #e1e6ea; */
+    border: none !important;
+}
+
+.feed-nav {
+    color: black;
+    font-weight: bold;
+    font-size: 1em;
+    margin-top: 10px;
+    margin-left: 12px;
+}
+
+.feed-nav span{
+    color: #21a6f2;
+}
+
+
+/* Remove done button so that we can force them to click decline instead 
+.introjs-donebutton {
+    pointer-events: none !important; 
+    display: none !important; 
+}
+
+.extra #decline:active {
+    background-color: #dc2c2c !important;
+    color: #fff !important;
+}
+
+.extra #decline:focus {
+    background-color: #dc2c2c !important;
+    color: #fff !important;
+}
+
+.extra #decline:visited {
+    background-color: darkred !important;
+    color: #fff !important;
+}
+
+#followingbutton:focus {
+    background-color: darkred !important;
+    color: #fff !important;
+} 
+
+
+#accept:active {
+    background-color: #24bc44 !important;
+    color: #fff !important;
+}
+
+#accept:focus {
+    background-color: #24bc44 !important;
+    color: #fff !important;
+} */
+
+#tweet-2 span {
+    color: #21a6f2;
+    font-weight: lighter;
+} 
+
+/* fix spacing between like, reshare, and comment buttons and labels */
+.firstAction {
+    margin-left: -20px !important;
+}
+
+#actions {
+    margin-left: -50px !important;
+    /* background-color: blue; */
+    position: absolute;
+    left: 0px;
+}
+
+#feedPinned {
+    /* background-color: rgb(208, 255, 208); */
+    height: 150px;
+    width: 380px;
+    margin-left: 50px;
+    margin-top: -2px;
+    font-size: .8em;
+}
+
+#feedPinned img {
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    top: 65px;
+    left: 10px;
+}
+
+#feedPinned p {
+    margin-bottom: -1px;
+}
+
+#feedPinned span {
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+#feedPinned span span{
+    font-weight: lighter;
+}
+
+/* Chris feed */
+#chrisFeedPinned {
+    /* background-color: rgb(208, 255, 208);
+    height: 300px; */
+    width: 380px;
+    margin-left: 50px;
+    margin-top: -2px;
+    font-size: .8em;
+}
+
+#chrisFeedPinned #chrisFeedPic {
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    top: 65px;
+    left: 10px;
+    border-radius: 50%;
+}
+
+#chrisFeedPinned p {
+    margin-bottom: -1px;
+}
+
+#chrisFeedPinned span {
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+#chrisFeedPinned span span{
+    font-weight: lighter;
+}
+
+
+#feedName {
+    font-weight: bolder !important;
+    font-size: 1.1em !important;
+}
+
+#feedName span {
+    color: #8196ad;
+    font-size: 0.9em;
+}
+
+#feedPinned p {
+    font-weight: lighter;
+    font-size: 0.9em;
+    color: #8196ad;
+}
+
+#actions .ui.button {
+    width: 30px;
+    margin-left: 50px;
+    background-color: transparent !important;
+    outline: none;
+}
+
+#actions a.ui.basic.label{
+    border: none;
+    font-weight: bold;
+    font-size: x-small !important;
+    margin-left: -10px !important;
+}
+
+#postButtons {
+    /* background-color: red !important; */
+    width: 57%;
+    margin-left: -10px;
+}
+
+.postIconBox {
+    background-color: transparent !important;
+    /* width: 20px; */
+    padding-left: 15px !important;
+    padding-right: 4px !important;
+    font-size: small !important;
+}
+
+/* #postButtons a.ui.basic.label{
+    border: none;
+    font-weight: bold;
+    font-size: x-small !important;
+    padding-left: 5 !important;
+    padding-right: 5 !important;
+} */
+
+#postButtons a.ui.basic.label{
+    background-color: transparent !important;
+    border: none;
+    font-weight: bold;
+    font-size: small !important;
+    padding-left: 0 !important;
+    padding-right: 5 !important;
+    pointer-events: none;
+}
+
+
+
+a.ui.basic.label#fixspace {
+    /* background-color: blue; */
+}
+
+i.map.pin.icon {
+    color: #21a6f2;
+    margin-left: -18px !important;
+}
+
+#pinned {
+    color: #8196ad;
+    font-weight: lighter !important;
+}
+
+
+
+a.item {
+    font-weight: bold !important;
+    color: #6e7686 !important;
+}
+
+
+#FollowersMenu {
+    background-color: white !important;
+    width: 500px;
+    padding-bottom: 15px !important;
+    z-index: 999999999 !important;
+}
+
+.exitButton {
+    background-color: white;
+    border: none;
+    margin-top: 1px;
+    /* margin-right: 1px; */
+}
+
+.followerHeader {
+    margin-top: 15px !important;
+}
+
+.followListBtn {
+    margin-right: 15px;
+}
+
+.item .ui.tiny.image {
+    margin-left: 15px;
+}
+
+.padBottom {
+    padding-bottom: 30px !important;
+}
+
+.padTop {
+    margin-top: -10px !important;
+}
+#step1 {
+    display: block;
+}
+
+a#step3:active {
+    opacity: 0.5;
+}
+
+.elvisFixPadding {
+    margin-top: unset;
+    margin-top: 8px !important;
+}
+
+/* #numFollowers {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+} */
+

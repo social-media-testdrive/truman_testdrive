@@ -139,7 +139,7 @@ $(window).on("load", function() {
 
     // Defining the behavior for the "next" button on each question's segment.
     $('.quizSegmentButton').on('click', function() {
-        const segmentButton = $(this);
+        /* const segmentButton = $(this);
         const questionNumber = segmentButton.attr('questionnumber'); // returns questionNumber of question to be displayed next (ex: "Q1", "Q2")
         const nextQuestionNumber = 'Q' + (parseInt(questionNumber.substring(1)) + 1)
 
@@ -248,7 +248,7 @@ $(window).on("load", function() {
 
         //  NEXT ATTEMPT
         attemptNumber++;
-        // Change text of "Skip Quiz" button to "Exit Quiz" when student has attempted the quiz
+    */    // Change text of "Skip Quiz" button to "Exit Quiz" when student has attempted the quiz
         $('.skipButtonText').html("Exit Quiz");
 
         // Display the score banner

@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema({
     moduleProgress: { // marks the progress of each module: none, started, completed
         accounts: { type: String, default: 'none' },
         advancedlit: { type: String, default: 'none' },
-        cyberbullying: { type: String, default: 'none' },
+        trolls: { type: String, default: 'none' },
         digfoot: { type: String, default: 'none' },
         digitalliteracy: { type: String, default: 'none' },
         esteem: { type: String, default: 'none' },

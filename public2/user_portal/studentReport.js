@@ -176,7 +176,7 @@ $(window).on('load', async function(){
     let finalStudentTableData = {
       "accounts": {"modTitle":"Accounts and Passwords"},
       "advancedlit": {"modTitle":"Advanced News Literacy"},
-      "cyberbullying": {"modTitle":"How to Be an Upstander"},
+      "trolls": {"modTitle":"How to Avoid Trolls"},
       "digfoot": {"modTitle":"Shaping Your Digital Footprint"},
       "digital-literacy": {"modTitle":"News in Social Media"},
       "esteem": {"modTitle":"The Ups and Downs of Social Media"},

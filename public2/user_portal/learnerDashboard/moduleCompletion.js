@@ -96,7 +96,7 @@ $(window).on("load", async function() {
   const fullModuleNames = {
     "accounts": "Accounts and Passwords",
     "advancedlit": "Advanced News Literacy",
-    "cyberbullying": "How to Be an Upstander",
+    "trolls": "How to Avoid Trolls",
     "digfoot": "Shaping Your Digital Footprint",
     "digital-literacy": "News in Social Media",
     "esteem": "The Ups and Downs of Social Media",

@@ -1,0 +1,257 @@
+
+extends ../ui_layout
+
+block content
+  -var user_post = []
+  -var user_info = [{profile_pic : "/profile_pictures/amy.jpg",background_pic : "/profile_pictures/amy_back.jpg",user_name : "Amy G",user_id : "@amyg__g",bio : "Daughter. Sister. Proud Black American. I tend to get political.",location : "New York, NY",join_date : "Joined January 2019"}]
+  -user_post.push({post_id:0,post_pic:"/profile_pictures/5-1.jpg",post_content:"Republicans better hope the coronavirus isn't spread from kissing ass...",post_date:"Mar 3, 2020"})
+  -user_post.push({post_id:1,post_pic:"/profile_pictures/5-2.jpg",post_content:"'You don't have to say anything to the haters. You don't have to acknowledge them at all. You just wake up every morning and be the best you can be. And that usually tends to shut them up'~Michelle Obama.",post_date:"Feb 23, 2020"})
+  -user_post.push({post_id:2,post_pic:"/profile_pictures/5-3.jpg",post_content:"On Tuesday, November 3, 2020, we make America great again by voting this nightmare out of office! #TrumpIsARussianAsset #RussianInterference",post_date:"Feb 21, 2020"})
+  -user_post.push({post_id:2,post_pic:"/profile_pictures/5-4.jpg",post_content:"American Injustice:<\p>Crystal Mason - Black Texas woman, ACCIDENTALLY VOTED while on probation, didn't know it was illegal. -5 years in prison<\p>Roger Stone - Rich white man, KNOWINGLY lied to congress, tampered with witnesses, threatened the federal judge. -Only 3 years in prison",post_date:"Feb 20, 2020"})
+  -user_post.push({post_id:2,post_pic:"/profile_pictures/5-5.jpg",post_content:"'Is I going to jail?'<\p>💔This 6-year-old was held at a mental health facility for 2 days and reportedly sedated without her mother's permission after allegedly having a 'tantrum' at school<\p>This is OUTRAGEOUS SHE IS 6!",post_date:"Feb 19, 2020"})
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+    //-####################### title
+  .computer.only.tablet.only.four.wide.column 
+  .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
+    .ui.one.column.centered.grid.feedbackMessagesGrid
+    .ui.fluid.card.dim(style = "margin-top:0px;margin-bottom:0px;")
+      .profile_title(style='position: relative; top: 0; left: 0;')
+       img(style='width:100%;height:80%; z-index: 0;position: relative;\
+  top: 0;\
+  left: 0;\
+  solid; z-index = -1' src=user_info[0].background_pic)
+       img(style='border-radius: 50%; width:20%; z-index: 2; position: absolute;\
+  top: 50%;\
+  left: 3%;\
+  border: 4px white solid;padding: -1px;padding: 5px white solid;z-index: 1' src=user_info[0].profile_pic)
+      .user_profile(style=' width:100%;padding-left: 25px; margin-top: 0%;z-index: 1')
+          button.ui.secondary.button(style='margin-top: 0%;float: right;margin-right: 25px;')
+              | follow
+          <p> </p>
+          <br/>
+          .br !{user_info[0].user_name}
+          .br  !{user_info[0].user_id}
+          .br !{user_info[0].bio}
+          .br  !{user_info[0].location}
+          .br Joined !{user_info[0].join_date}
+      .btn-group
+          button(style=' width: 25%;') Tweets
+          button(style=' width: 25%;') Replies
+          button(style=' width: 25%;') Media          
+          button(style=' width: 25%;') Likes
+    //-####################### post
+  
+    if user_post.length !=0
+    each val in Array.from(Array(user_post.length).keys())
+      .ui.fluid.card.dim(style ="margin-top:0px;margin-bottom:0px")
+        .ui.dimmer.flag
+          .content
+            .center
+              h2.ui.inverted.icon.header
+                i.red.flag.icon
+                | You&apos;ve flagged this!
+                h3.ui.inverted.header
+                  span 
+                    | The admins will review this post further. We are sorry you 
+                    | had this experience.
+        .content
+          .right.floated.meta= user_post[val].post_date
+          a(href='#')
+                img.ui.avatar.image(src=user_info[0].profile_pic)
+                span=user_info[0].user_name
+                .br &nbsp  &nbsp &nbsp &nbsp &nbsp !{user_info[0].user_id}
+        .content
+          .description 
+            .br !{user_post[val].post_content}
+        .img.post
+          img(src=user_post[val].post_pic,style=' width:100%;')
+          .ui.reply.black.basic.button(tabindex='0',style=' margin-left:5px; width:32%')
+            i.comment.outline.icon
+            | Reply
+          .ui.flag.black.basic.button(style=' width:32%;')
+            i.flag.outline.icon
+            | Flag
+          .ui.labeled.button(tabindex='0',style=' width:32%;')
+            .ui.like.black.basic.button(style=' width:100%;')
+              i.heart.outline.icon
+              | Like
+            a.ui.basic.red.left.pointing.label.count 2
+        .extra.content
+          .ui.fluid.left.labeled.right.icon.input
+            .ui.label
+              img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            input.newcomment#hint4(type='text' placeholder='Write a Comment')
+            i.big.send.link.icon
+    .ui.blue.button#myBtn_next(style = "") Next
+  #myModal_.modal
+      .modal-content
+            .ui.centered.cards
+              .card
+                .content(style = "position: relative")
+                 .exp
+                  img.right.floated.medium.ui.image(style='border-radius: 50%;' src=user_info[0].profile_pic)
+                  .header !{user_info[0].user_name}
+                  .meta
+                    | 0 mutual friends
+                  .description !{user_info[0].user_name}
+                   | &nbsp has requested to be your friend
+                  .extra.content      
+                    .ui.basic.green.button(style=' width: 32%;' onclick = "window.location.href= '/Saeed_Ahmed/trolls'") Accept
+                    .ui.red.button(style=' width: 32%;' onclick = "window.location.href= '/Saeed_Ahmed/trolls'") Decline
+                    .ui.outline.button(style=' width:32%;' onclick='unhide_()') Report
+                  .exp1
+                    .btn-group2(style = "position:absolute;top: 30%; z-index: 1;width:91%")
+                     button(onclick='unhide()' style = "text-align:left;font-family: 'Chirp', 'sans-serif'") It's a spam
+                     button(onclick='unhide()' style = "text-align:left;font-family: 'Chirp', 'sans-serif'") False information
+                     button(onclick='unhide()' style = "text-align:left;font-family: 'Chirp', 'sans-serif';") Scam or fraud 
+                     button(onclick = "window.location.href= '/Saeed_Ahmed/trolls'" style = "text-align:left;font-family: 'ChirpExtended', 'sans-serif") Misclicked... Let's go next.
+                    p(style = "position:absolute;font-weight:bold;top: 20%; z-index: 1;font-family: 'Arial', 'Helvetica', sans-serif;")
+                      | Why are you reporting this account?
+                    .p 
+                      | &nbsp
+                  .exp2
+                    img(src ='/profile_pictures/report_msg.png' style = "position:absolute;top: 20%; z-index: 1;width:91%" )
+                    .p(style = "text-color: white") 
+                    | &nbsp
+                    .ui.blue.button(style='position:absolute; top: 80%; left:35%; width: 32%;' onclick = "window.location.href= '/Saeed_Ahmed/trolls'") Next
+  
+block scripts
+  script(src='/NavBar.js')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+  style.
+    .exp{visibility: visible;}
+    .exp1{visibility: hidden;}
+    .exp2{visibility: hidden;}
+    /* The Modal (background) */
+    .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+    /* Modal Content */
+    .modal-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+    }
+    /* Add Animation */
+    @-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+    }
+    @keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+    }
+    .btn-group button {
+    background-color: white; /* Green background */
+    border: 0px solid black; /* Green border */
+    color: black; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+    }
+    /* Clear floats (clearfix hack) */
+    .btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+    }
+    .btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+    }
+    /* Add a background color on hover */
+    .btn-group button:hover {
+    background-color: #f0f2f1;
+    } 
+    .btn-group2 button {
+    background-color: white; /* Green background */
+    border: 1px solid #f0f2f1; /* Green border */
+    height:30px;
+    color: black; /* White text */
+    cursor: pointer; /* Pointer/hand icon */
+    width: 100%; /* Set a width if needed */
+    display: block; /* Make the buttons appear below each other */
+    }
+    .btn-group2 button:not(:last-child) {
+    border-bottom: none; /* Prevent double borders */
+    }
+    /* Add a background color on hover */
+    .btn-group2 button:hover {
+    background-color: #f0f2f1;
+    }
+  .script 
+  link(href='https://fonts.cdnfonts.com/css/chirp-2' rel='stylesheet')
+  script.
+    function unhide() {
+      var hid = document.getElementsByClassName("exp");
+      if(hid[0].offsetWidth > 0 && hid[0].offsetHeight > 0) {
+        hid[0].style.visibility = "hidden";
+      }
+      var hid = document.getElementsByClassName("exp1");
+      if(hid[0].offsetWidth > 0 && hid[0].offsetHeight > 0) {
+        hid[0].style.visibility = "hidden";
+      }
+      var hid = document.getElementsByClassName("exp2");
+      if(hid[0].offsetWidth > 0 && hid[0].offsetHeight > 0) {
+        hid[0].style.visibility = "visible";
+      }
+       }
+    function unhide_() {
+      var hid = document.getElementsByClassName("exp1");
+      if(hid[0].offsetWidth > 0 && hid[0].offsetHeight > 0) {
+        hid[0].style.visibility = "visible";
+      }
+      var hid = document.getElementsByClassName("exp");
+      if(hid[0].offsetWidth > 0 && hid[0].offsetHeight > 0) {
+        hid[0].style.visibility = "hidden";
+      }
+       }
+    var body = document.body,
+      html = document.documentElement;
+
+    var height = Math.max( body.scrollHeight, body.offsetHeight, 
+                       html.clientHeight, html.scrollHeight, html.offsetHeight );
+    var modal = document.getElementById('myModal_');
+    var btn = document.getElementById("myBtn_next");
+    //#pop up window trigger
+    btn.onclick = function (event) {
+    modal.style.display = "block";
+    if (event.target == modal) {
+    modal.style.display = "none";
+    }
+    }
+    console.log("Doc Height = " + document.body.offsetHeight);
+    console.log("win Height = " + document.documentElement.clientHeight);
+    var timeout;
+    /* scroll to the end and pop up function
+    window.onscroll = function (ev) {
+    var docHeight = document.body.offsetHeight;
+    docHeight = docHeight == undefined ? window.document.documentElement.scrollHeight : docHeight;
+    var winheight = window.innerHeight;
+    winheight = winheight == undefined ? document.documentElement.clientHeight : winheight;
+    var scrollpoint = window.scrollY;
+    scrollpoint = scrollpoint == undefined ? window.document.documentElement.scrollTop : scrollpoint;
+    clearTimeout(timeout);
+    timeout = setTimeout(function() {
+    if (this.oldScroll <= this.scrollY && (scrollpoint + winheight) >= height-10) {
+    modal.style.display = "block";
+    }
+    this.oldScroll = this.scrollY;
+    }, 50);
+    }; 
+    */
+block styles
+  link(rel='stylesheet', href = '/css/NavBar/NavBar.css')
+  

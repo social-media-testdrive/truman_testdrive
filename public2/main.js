@@ -116,7 +116,7 @@ $(window).on("load", function() {
     let jsonPath = '/json/progressDataA.json';
 
     switch (currentModuleForHeader) {
-        case 'cyberbullying':
+        case 'trolls':
         case 'digfoot':
             jsonPath = "/json/progressDataB.json";
             break;
@@ -150,7 +150,7 @@ $(window).on("load", function() {
                     if (currentModuleForHeader === "privacy") {
                         window.location.href = `/tut_guide/${currentModuleForHeader}`
                     } else {
-                        window.location.href = `/tutorial/${currentModuleForHeader}`;
+                        window.location.href = `/start/${currentModuleForHeader}`;
                     }
                 });
                 break;
@@ -161,7 +161,7 @@ $(window).on("load", function() {
                     if (currentModuleForHeader === "privacy") {
                         window.location.href = `/tut_guide/${currentModuleForHeader}`
                     } else {
-                        window.location.href = `/tutorial/${currentModuleForHeader}`;
+                        window.location.href = `/start/${currentModuleForHeader}`;
                     }
                 });
                 $('#headerStep2').on('click', function() {
@@ -175,7 +175,7 @@ $(window).on("load", function() {
                     if (currentModuleForHeader === "privacy") {
                         window.location.href = `/tut_guide/${currentModuleForHeader}`
                     } else {
-                        window.location.href = `/tutorial/${currentModuleForHeader}`;
+                        window.location.href = `/start/${currentModuleForHeader}`;
                     }
                 });
                 $('#headerStep2').on('click', function() {
@@ -187,7 +187,7 @@ $(window).on("load", function() {
                     } else if (currentModuleForHeader === "privacy") {
                         window.location.href = `/free-play/${currentModuleForHeader}`;
                     } else {
-                        window.location.href = `/modual/${currentModuleForHeader}`;
+                        window.location.href = `/AmyG/${currentModuleForHeader}`;
                     }
                 });
                 break;
@@ -198,7 +198,7 @@ $(window).on("load", function() {
                     if (currentModuleForHeader === "privacy") {
                         window.location.href = `/tut_guide/${currentModuleForHeader}`
                     } else {
-                        window.location.href = `/tutorial/${currentModuleForHeader}`;
+                        window.location.href = `/start/${currentModuleForHeader}`;
                     }
                 });
                 $('#headerStep2').on('click', function() {
@@ -210,7 +210,7 @@ $(window).on("load", function() {
                     } else if (currentModuleForHeader === "privacy") {
                         window.location.href = `/free-play/${currentModuleForHeader}`;
                     } else {
-                        window.location.href = `/modual/${currentModuleForHeader}`;
+                        window.location.href = `/AmyG/${currentModuleForHeader}`;
                     }
                 });
                 $('#headerStep4').on('click', function() {
@@ -321,7 +321,7 @@ $(window).on("load", function() {
     //     window.location.href = '/signup';
     //   });
 
-    //Cyberbullying to Transition
+    //trolls to Transition
     $('.cybertrans')
         .on('click', async function(e) {
             if ($(this).hasClass('green')) {
@@ -345,7 +345,7 @@ $(window).on("load", function() {
                     };
                     // Special Case: When a user clicks "Let's Continue" in the digfoot, esteem, targeted module, but has not clicked on any post
                     // prompt the user: "It seems you did not click on any posts to ... Are you sure you do not want to click on a post before continuing?"
-                } else if (pathArray[2] === "digfoot" || pathArray[2] === "esteem" || pathArray[2] === "targeted" || pathArray[2] === "cyberbullying") {
+                } else if (pathArray[2] === "digfoot" || pathArray[2] === "esteem" || pathArray[2] === "targeted" || pathArray[2] === "trolls") {
                     if (!clickPost && $('#confirmContinueCheck').is(":hidden")) {
                         $('#confirmContinueCheck').show();
                         $('#confirmContinueCheck')[0].scrollIntoView({
@@ -362,7 +362,7 @@ $(window).on("load", function() {
             };
         });
 
-    //cyberbullying to transition 2
+    //trolls to transition 2
     $('.cybertrans2')
         .on('click', function(e) {
             if ($(this).hasClass('green')) {
@@ -380,33 +380,33 @@ $(window).on("load", function() {
     Start button links
     */
 
-    //Cyberbullying to Transition
+    //trolls to Transition
     $('.ui.big.green.labeled.icon.button.cybertutorial')
         .on('click', function() {
             let pathArray = window.location.pathname.split('/');
-            window.location.href = '/tutorial/' + pathArray[2];
+            window.location.href = '/start/' + pathArray[2];
         });
 
-    //Cyberbullying to Transition (blue button)
+    //trolls to Transition (blue button)
     $('.ui.big.blue.labeled.icon.button.cybertutorial')
         .on('click', function() {
             let pathArray = window.location.pathname.split('/');
-            window.location.href = '/tutorial/' + pathArray[2];
+            window.location.href = '/start/' + pathArray[2];
         });
 
-    //Cyberbullying to Transition
+    //trolls to Transition
     $(document).on('click', '.ui.big.labeled.icon.button.cybersim.green', function() {
         let pathArray = window.location.pathname.split('/');
         window.location.href = '/sim/' + pathArray[2];
     });
 
-    //Cyberbullying to Transition (blue button)
+    //trolls to Transition (blue button)
     $(document).on('click', '.ui.big.labeled.icon.button.cybersim.blue', function() {
         let pathArray = window.location.pathname.split('/');
         window.location.href = '/sim/' + pathArray[2];
     });
 
-    //Cyberbullying to Transition 1
+    //trolls to Transition 1
     $(document).on('click', '.ui.big.labeled.icon.button.cybersim1.green', function() {
         let pathArray = window.location.pathname.split('/');
         window.location.href = '/sim1/' + pathArray[2];
@@ -494,35 +494,35 @@ $(window).on("load", function() {
     });
 
 
-    //Cyberbullying Start to Tutorial
+    //trolls Start to Tutorial
     $('.ui.big.green.labeled.icon.button.cyberstart')
         .on('click', function() {
-            window.location.href = '/tutorial/cyberbullying';
+            window.location.href = '/tutorial/trolls';
         });
 
-    //Cyberbullying to Transition
+    //trolls to Transition
     $('.ui.big.green.labeled.icon.button.cybertrans_script')
         .on('click', function() {
-            window.location.href = '/trans_script/cyberbullying';
+            window.location.href = '/trans_script/trolls';
         });
 
     ///modual/:modId
-    //Cyberbullying Transition to freeplay
+    //trolls Transition to freeplay
     $('.ui.big.green.labeled.icon.button.cyber_script')
         .on('click', function() {
             console.log(window.location.pathname)
             let pathArray = window.location.pathname.split('/');
             console.log(pathArray);
-            window.location.href = '/modual/' + pathArray[2];
+            window.location.href = '/AmyG/' + pathArray[2];
         });
 
-    //Cyberbullying Transition to freeplay (blue button)
+    //trolls Transition to freeplay (blue button)
     $('.ui.big.blue.labeled.icon.button.cyber_script')
         .on('click', function() {
             console.log(window.location.pathname)
             let pathArray = window.location.pathname.split('/');
             console.log(pathArray);
-            window.location.href = '/modual/' + pathArray[2];
+            window.location.href = '/AmyG/' + pathArray[2];
         });
 
 

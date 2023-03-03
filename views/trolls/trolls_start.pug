@@ -29,6 +29,7 @@ block content
         #step2.keyTerm.ui.raised.segment
           a.ui.blue.ribbon.label.keyTermLabel
               span.ribbons Definition
+              span Definition
           h1 What is a troll?
           span.keyTermDefinition  
             | A troll is a fake social media account that spreads misinformation.
@@ -218,11 +219,14 @@ block content
     .ui.warning.message#clickLabelsWarning
      .header
       | Click on each label to proceed   
+//-    a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
+         .ui.labeled.icon.button
+             i.rocket.icon
+             |   Got it!
 
 block scripts
   script(src='/postFunctionalities.js')
   script(src="/module_js/trolls/trolls_learn.js")
-  script(src="/module_js/voiceover.js")
   script(src="/module_js/base_introSteps.js")
   script(src='/module_js/base_tutorial.js')
   script(src='/module_js/voiceover.js')
