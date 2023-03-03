@@ -3,21 +3,21 @@ var hintsList = [{
       ¡Puedes publicar cosas relacionadas con tus pasatiempos, actividades 
       escolares u otros intereses!`,
     element: '#hint1',
-    // audioFile: ['CUSML.4.4.2.mp3']
+    audioFile: ['']
 },
 {
       hint: `Lee este post y luego haz clic en él para pensar más acerca 
       de cómo un post como este impacta la huella digital de alguien.`,
     element: '#hint2',
     hintPosition: 'bottom-right',
-    // audioFile: ['CUSML.4.4.3.mp3']
+    audioFile: ['']
 },
 {
       hint: `Lee este post y luego haz clic en él para pensar más acerca de 
       cómo un post como este impacta la huella digital de alguien.`,
     element: '#hint3',
     hintPosition: 'middle-middle',
-    // audioFile: ['CUSML.4.4.3.mp3']
+    audioFile: ['']
 },
 {
       hint: `Recuerda, tu huella digital puede afectar tu reputación tanto en 
@@ -25,14 +25,14 @@ var hintsList = [{
       cómo podrían verte como resultado.`,
     element: '#hint4',
     hintPosition: 'middle-middle',
-    // audioFile: ['CUSML.4.4.4.mp3']
+    audioFile: ['']
 },
 {
       hint: `Si alguien publica algo que no quieres que forme parte de tu huella 
       digital, puedes pedirle que lo elimine a través de un mensaje privado.`,
     element: '#hint5',
     hintPosition: 'bottom-right',
-    // audioFile: ['CUSML.4.4.5.mp3']
+    audioFile: ['']
 }
 ];
 
@@ -41,7 +41,7 @@ var stepsList = [{
       intro: `¡Haz clic en "Siguiente" para comenzar!`,
     position: 'left',
     scrollTo: 'tooltip',
-    // audioFile: ['']
+    audioFile: ['']
 },
 {
     element: '#step1',
@@ -50,7 +50,7 @@ var stepsList = [{
   'introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; &nbsp; para obtener más información...`,
     position: "left",
     scrollTo: 'tooltip',
-    // audioFile: ['CUSML.4.4.1.mp3']
+    audioFile: ['']
 }
 ];
 
