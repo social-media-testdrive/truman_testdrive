@@ -71,115 +71,118 @@ script.
     }
 
     function changeToDark() {
-        let collection = document.getElementById("container").getElementsByClassName("segment");
-        for (var i = 0; i < collection.length; i++) {
-        collection[i].style.backgroundColor = "black";
-        }
-        collection = document.getElementById("container").getElementsByClassName("card");
-        for (var i = 0; i < collection.length; i++) {
-        collection[i].style.backgroundColor = "black";
-        }
+        if(document.getElementById("container") != null){
+            let collection = document.getElementById("container").getElementsByClassName("segment");
+            for (var i = 0; i < collection.length; i++) {
+            collection[i].style.backgroundColor = "black";
+            }
+            collection = document.getElementById("container").getElementsByClassName("card");
+            for (var i = 0; i < collection.length; i++) {
+            collection[i].style.backgroundColor = "black";
+            }
 
-        let tags = ["h1","h3","h4", "ul", "li", "a", "span", "i", "p", "b"];
-        for(var j = 0; j < tags.length; j++){
-        let collection = document.getElementById("container").getElementsByTagName(tags[j]);
-        for (var i = 0; i < collection.length; i++) {
+            let tags = ["h1","h3","h4", "ul", "li", "a", "span", "i", "p", "b"];
+            for(var j = 0; j < tags.length; j++){
+            let collection = document.getElementById("container").getElementsByTagName(tags[j]);
+            for (var i = 0; i < collection.length; i++) {
+                collection[i].style.color = "white";
+            }
+            }
+            collection = document.getElementById("container").getElementsByClassName("button");
+            for (var i = 0; i < collection.length; i++) {
+            collection[i].style.color = "black";
+            }
+            collection = document.getElementsByClassName("introjs-tooltip");
+            for (var i = 0; i < collection.length; i++) {
+            collection[i].style.backgroundColor = "dimgray";
             collection[i].style.color = "white";
-        }
-        }
-        collection = document.getElementById("container").getElementsByClassName("button");
-        for (var i = 0; i < collection.length; i++) {
-        collection[i].style.color = "black";
-        }
-        collection = document.getElementsByClassName("introjs-tooltip");
-        for (var i = 0; i < collection.length; i++) {
-        collection[i].style.backgroundColor = "dimgray";
-        collection[i].style.color = "white";
-        }
-        collection = document.getElementsByClassName("introjs-arrow top");
-        for (var i = 0; i < collection.length; i++) {
-        collection[i].style.borderTopColor = "transparent";
-        collection[i].style.borderRightColor = "transparent";
-        collection[i].style.borderBottomColor = "dimgray";
-        collection[i].style.borderLeftColor = "transparent";
-        }
-        collection = document.getElementsByClassName("introjs-arrow left");
-        for (var i = 0; i < collection.length; i++) {
-        collection[i].style.borderTopColor = "transparent";
-        collection[i].style.borderRightColor = "dimgray";
-        collection[i].style.borderBottomColor = "transparent";
-        collection[i].style.borderLeftColor = "transparent";
-        }
-        collection = document.getElementsByClassName("introjs-arrow bottom");
-        for (var i = 0; i < collection.length; i++) {
-        collection[i].style.borderTopColor = "dimgray";
-        collection[i].style.borderRightColor = "transparent";
-        collection[i].style.borderBottomColor = "transparent";
-        collection[i].style.borderLeftColor = "transparent";
-        }
-        collection = document.getElementsByClassName("introjs-arrow right");
-        for (var i = 0; i < collection.length; i++) {
-        collection[i].style.borderTopColor = "transparent";
-        collection[i].style.borderRightColor = "transparent";
-        collection[i].style.borderBottomColor = "transparent";
-        collection[i].style.borderLeftColor = "dimgray";
+            }
+            collection = document.getElementsByClassName("introjs-arrow top");
+            for (var i = 0; i < collection.length; i++) {
+            collection[i].style.borderTopColor = "transparent";
+            collection[i].style.borderRightColor = "transparent";
+            collection[i].style.borderBottomColor = "dimgray";
+            collection[i].style.borderLeftColor = "transparent";
+            }
+            collection = document.getElementsByClassName("introjs-arrow left");
+            for (var i = 0; i < collection.length; i++) {
+            collection[i].style.borderTopColor = "transparent";
+            collection[i].style.borderRightColor = "dimgray";
+            collection[i].style.borderBottomColor = "transparent";
+            collection[i].style.borderLeftColor = "transparent";
+            }
+            collection = document.getElementsByClassName("introjs-arrow bottom");
+            for (var i = 0; i < collection.length; i++) {
+            collection[i].style.borderTopColor = "dimgray";
+            collection[i].style.borderRightColor = "transparent";
+            collection[i].style.borderBottomColor = "transparent";
+            collection[i].style.borderLeftColor = "transparent";
+            }
+            collection = document.getElementsByClassName("introjs-arrow right");
+            for (var i = 0; i < collection.length; i++) {
+            collection[i].style.borderTopColor = "transparent";
+            collection[i].style.borderRightColor = "transparent";
+            collection[i].style.borderBottomColor = "transparent";
+            collection[i].style.borderLeftColor = "dimgray";
+            }
         }
         return false;
     }
 
     function changeToLight() {
-        let collection = document.getElementById("container").getElementsByClassName("segment");
-        for (var i = 0; i < collection.length; i++) {
-        collection[i].style.backgroundColor = "white";
-        }
-        collection = document.getElementById("container").getElementsByClassName("card");
-        for (var i = 0; i < collection.length; i++) {
-        collection[i].style.backgroundColor = "white";
-        }
-
-        let tags = ["h1","h3","h4", "ul", "li", "a", "span", "i", "p", "b"];
-        for(var j = 0; j < tags.length; j++){
-        let collection = document.getElementById("container").getElementsByTagName(tags[j]);
-        for (var i = 0; i < collection.length; i++) {
+        if(document.getElementById("container") != null){
+            let collection = document.getElementById("container").getElementsByClassName("segment");
+            for (var i = 0; i < collection.length; i++) {
+            collection[i].style.backgroundColor = "white";
+            }
+            collection = document.getElementById("container").getElementsByClassName("card");
+            for (var i = 0; i < collection.length; i++) {
+            collection[i].style.backgroundColor = "white";
+            }
+            let tags = ["h1","h3","h4", "ul", "li", "a", "span", "i", "p", "b"];
+            for(var j = 0; j < tags.length; j++){
+            let collection = document.getElementById("container").getElementsByTagName(tags[j]);
+            for (var i = 0; i < collection.length; i++) {
+                collection[i].style.color = "black";
+            }
+            }
+            collection = document.getElementById("container").getElementsByClassName("ribbons");
+            for (var i = 0; i < collection.length; i++) {
+            collection[i].style.color = "white";
+            }
+            collection = document.getElementsByClassName("introjs-tooltip");
+            for (var i = 0; i < collection.length; i++) {
+            collection[i].style.backgroundColor = "white";
             collection[i].style.color = "black";
-        }
-        }
-        collection = document.getElementById("container").getElementsByClassName("ribbons");
-        for (var i = 0; i < collection.length; i++) {
-        collection[i].style.color = "white";
-        }
-        collection = document.getElementsByClassName("introjs-tooltip");
-        for (var i = 0; i < collection.length; i++) {
-        collection[i].style.backgroundColor = "white";
-        collection[i].style.color = "black";
-        }
-        collection = document.getElementsByClassName("introjs-arrow top");
-        for (var i = 0; i < collection.length; i++) {
-        collection[i].style.borderTopColor = "transparent";
-        collection[i].style.borderRightColor = "transparent";
-        collection[i].style.borderBottomColor = "white";
-        collection[i].style.borderLeftColor = "transparent";
-        }
-        collection = document.getElementsByClassName("introjs-arrow left");
-        for (var i = 0; i < collection.length; i++) {
-        collection[i].style.borderTopColor = "transparent";
-        collection[i].style.borderRightColor = "white";
-        collection[i].style.borderBottomColor = "transparent";
-        collection[i].style.borderLeftColor = "transparent";
-        }
-        collection = document.getElementsByClassName("introjs-arrow bottom");
-        for (var i = 0; i < collection.length; i++) {
-        collection[i].style.borderTopColor = "white";
-        collection[i].style.borderRightColor = "transparent";
-        collection[i].style.borderBottomColor = "transparent";
-        collection[i].style.borderLeftColor = "transparent";
-        }
-        collection = document.getElementsByClassName("introjs-arrow right");
-        for (var i = 0; i < collection.length; i++) {
-        collection[i].style.borderTopColor = "transparent";
-        collection[i].style.borderRightColor = "transparent";
-        collection[i].style.borderBottomColor = "transparent";
-        collection[i].style.borderLeftColor = "white";
+            }
+            collection = document.getElementsByClassName("introjs-arrow top");
+            for (var i = 0; i < collection.length; i++) {
+            collection[i].style.borderTopColor = "transparent";
+            collection[i].style.borderRightColor = "transparent";
+            collection[i].style.borderBottomColor = "white";
+            collection[i].style.borderLeftColor = "transparent";
+            }
+            collection = document.getElementsByClassName("introjs-arrow left");
+            for (var i = 0; i < collection.length; i++) {
+            collection[i].style.borderTopColor = "transparent";
+            collection[i].style.borderRightColor = "white";
+            collection[i].style.borderBottomColor = "transparent";
+            collection[i].style.borderLeftColor = "transparent";
+            }
+            collection = document.getElementsByClassName("introjs-arrow bottom");
+            for (var i = 0; i < collection.length; i++) {
+            collection[i].style.borderTopColor = "white";
+            collection[i].style.borderRightColor = "transparent";
+            collection[i].style.borderBottomColor = "transparent";
+            collection[i].style.borderLeftColor = "transparent";
+            }
+            collection = document.getElementsByClassName("introjs-arrow right");
+            for (var i = 0; i < collection.length; i++) {
+            collection[i].style.borderTopColor = "transparent";
+            collection[i].style.borderRightColor = "transparent";
+            collection[i].style.borderBottomColor = "transparent";
+            collection[i].style.borderLeftColor = "white";
+            }
         }
         return false;
     }
