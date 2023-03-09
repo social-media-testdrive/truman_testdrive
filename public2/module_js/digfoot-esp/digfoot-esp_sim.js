@@ -38,7 +38,7 @@ var hintsList = [{
 
 var stepsList = [{
     element: '#step1',
-      intro: `¡Haz clic en "Siguiente" para comenzar!`,
+      intro: `¡Dale clic a “Siguiente” para comenzar!`,
     position: 'left',
     scrollTo: 'tooltip',
     audioFile: ['']

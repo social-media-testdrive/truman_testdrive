@@ -1,9 +1,9 @@
 const nextPageURL = 'modual';
 const stepsList = [
-  // {
-  //   intro: `¡Haz clic en "Seguir" para comenzar!`,
-  //   // audioFile: ['']
-  // },
+  {
+    intro: `¡Dale clic a “Siguiente” para comenzar!`,
+    // audioFile: ['']
+  },
   {
     intro: `¡Ahora puedes explorar el feed del TestDrive! Puedes leer lo 
     que otros han publicado, responder o crear tus propias publicaciones.`,

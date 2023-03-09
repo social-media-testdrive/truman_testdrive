@@ -340,7 +340,7 @@ function isValidModId(req, res, next) {
 // Main route is the module page
 app.get('/', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
   res.render('mods-esp', {
-    title: 'Elije una lección',
+    title: 'Elige una lección',
     isResearchVersion
   });
 });

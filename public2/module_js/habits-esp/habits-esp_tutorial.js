@@ -27,7 +27,7 @@ $(window).on("load", function() {
     stepsList = [
       {
         element: '#step0',
-        intro: `¡Haz clic en "Seguir" para comenzar!`,
+        intro: `¡Dale clic a “Siguiente” para comenzar!`,
         position: 'right',
         scrollTo: 'tooltip',
         // audioFile: ['']
@@ -50,7 +50,7 @@ $(window).on("load", function() {
       },
       {
         element: '#step2',
-        intro: `A todos nos gusta que nos den “me gusta” y comenten en nuestras publicaciones. 
+        intro: `A todos nos gusta que nos den “Like” y comenten en nuestras publicaciones. 
         Esto nos da la sensación de ser valorados y aceptados por las otras personas.`,
         position: "left",
         scrollTo: "tooltip",
@@ -58,7 +58,7 @@ $(window).on("load", function() {
       },
       {
         element: '#step2',
-        intro: `Los “me gusta” y los comentarios pueden crear un ciclo de retroalimentación 
+        intro: `Los “Like” y los comentarios pueden crear un ciclo de retroalimentación 
         que te haga revisar una y otra vez si algo nuevo aparece.`,
         position: "right",
         scrollTo: "tooltip",
@@ -94,7 +94,7 @@ $(window).on("load", function() {
     stepsList = [
       {
         element: '#step0',
-        intro: `¡Haz clic en "Seguir" para comenzar!`,
+        intro: `¡Dale clic a “Siguiente” para comenzar!`,
         position: 'right',
         scrollTo: 'tooltip',
         audioFile: ['']
@@ -104,7 +104,7 @@ $(window).on("load", function() {
         intro: `¿Alguna vez tu celular ha vibrado y luego ha aparecido una notificación?`,
         position: "right",
         scrollTo: 'tooltip',
-        audioFile: ['CUSML.10.3.1.mp3']
+        // audioFile: ['CUSML.10.3.1.mp3']
       },
       {
         element: '#notificationsteps',
@@ -113,23 +113,23 @@ $(window).on("load", function() {
         página para revisar qué es.`,
         position: "right",
         scrollTo: "tooltip",
-        audioFile: ['CUSML.10.3.2.mp3']
+        // audioFile: ['CUSML.10.3.2.mp3']
       },
       {
         element: '#step2',
-        intro: `A todos nos gusta que nos den “me gusta” y comenten en nuestras publicaciones. 
+        intro: `A todos nos gusta que nos den “Like” y comenten en nuestras publicaciones. 
         Esto nos da la sensación de ser valorados y aceptados por las otras personas.`,
         position: "left",
         scrollTo: "tooltip",
-        audioFile: ['CUSML.10.3.3.mp3']
+        // audioFile: ['CUSML.10.3.3.mp3']
       },
       {
         element: '#step2',
-        intro: `Los “me gusta” y los comentarios pueden crear un ciclo de retroalimentación 
+        intro: `Los “Like” y los comentarios pueden crear un ciclo de retroalimentación 
         que te haga revisar una y otra vez si algo nuevo aparece.`,
         position: "right",
         scrollTo: "tooltip",
-        audioFile: ['CUSML.10.3.4.mp3']
+        // audioFile: ['CUSML.10.3.4.mp3']
       },
       {
         element: '#step5',
@@ -138,14 +138,14 @@ $(window).on("load", function() {
         termine el que estabas viendo.`,
         position: "right",
         scrollTo: "tooltip",
-        audioFile: ['CUSML.10.3.5.mp3']
+        // audioFile: ['CUSML.10.3.5.mp3']
       },
       {
         element: '#step5',
         intro: `Esto hace que sea tentador seguir mirando, aún así tengas algo que hacer en 
         el momento.`,
         position: "right",
-        audioFile: ['CUSML.10.3.6.mp3']
+        // audioFile: ['CUSML.10.3.6.mp3']
       },
       {
         element: '#step6',
@@ -154,7 +154,7 @@ $(window).on("load", function() {
         esperabas.`,
         position: "right",
         scrollTo: "tooltip",
-        audioFile: ['CUSML.10.3.7.mp3']
+        // audioFile: ['CUSML.10.3.7.mp3']
       }
     ];
   }

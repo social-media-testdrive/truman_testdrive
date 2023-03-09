@@ -47,13 +47,13 @@
       .ui.labeled.button(tabindex='0')
         .ui.red.like.button
           i.heart.icon
-          |  Me gusta
+          |  Like
         a.ui.basic.red.left.pointing.label=val.likes
     else
       .ui.labeled.button(tabindex='0')
         .ui.like.button
           i.heart.icon
-          |  Me gusta
+          |  Like
         a.ui.basic.red.left.pointing.label.count=val.likes
   if val.comments.length > 0
     .content
@@ -75,10 +75,10 @@
                   .rating
                     i.heart.icon
                     span.num=0
-                    |  Me gusta
+                    |  Like
                 .text=comment.body
                 .actions
-                  a.like.comment Me gusta
+                  a.like.comment Like
                   a.flag.comment Reportar
           //- Else this is a normal comment from the script
           else
@@ -93,17 +93,17 @@
                     if comment.liked
                       i.red.heart.icon
                       span=comment.likes
-                      |  Me gusta
+                      |  Like
                     else
                       i.heart.icon
                       span.num=comment.likes
-                      |  Me gusta
+                      |  Like
                 .text=comment.body
                 .actions
                   if comment.liked
-                    a.red.like.comment Me gusta
+                    a.red.like.comment Like
                   else
-                    a.like.comment Me gusta
+                    a.like.comment Like
                   a.flag.comment Reportar
   .extra.content
     if user.comment_prompt == "yes"

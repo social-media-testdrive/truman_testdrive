@@ -59,10 +59,10 @@ function customOnWindowLoad(enableDataCollection){
 
     stepsList = [
       {
-        intro: `¡Haz clic en "Seguir" para comenzar!`,
+        intro: `¡Dale clic a “Siguiente” para comenzar!`,
         position: 'right',
         scrollTo: 'tooltip',
-        audioFile: ['']
+        // audioFile: ['']
       },
       {
         intro: `Ahora puedes explorar el feed del TestDrive. Puedes leer lo que otros han publicado, responder o crear tus propias publicaciones.`,
@@ -88,6 +88,5 @@ function customOnWindowLoad(enableDataCollection){
     ];
 
     startIntro(enableDataCollection);
-
   });
 }

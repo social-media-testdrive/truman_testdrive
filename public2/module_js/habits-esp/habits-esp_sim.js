@@ -1,7 +1,7 @@
 const stepsList = [
   {
     element: '#step0',
-    intro: `¡Haz clic en "Seguir" para comenzar!`,
+    intro: `¡Dale clic a “Siguiente” para comenzar!`,
     position: 'right',
     scrollTo: 'tooltip',
     // audioFile: ['']
@@ -41,7 +41,7 @@ const hintsList = [
   {
     element: '#hint1',
     hint: `Este es el feed de una red social. Recibirás notificaciones cuando tus 
-    amigos le den “me gusta” o comenten tus publicaciones.`,
+    amigos le den “Like” o comenten tus publicaciones.`,
     hintPosition: "middle-middle",
     // audioFile: ['CUSML.10.4.04.mp3']
   },

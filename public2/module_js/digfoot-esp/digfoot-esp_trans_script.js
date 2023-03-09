@@ -2,7 +2,7 @@ const nextPageURL = 'modual';
 
 const stepsList = [
   {
-    intro: `Click "Next" to begin!`,
+    intro: `¡Dale clic a “Siguiente” para comenzar!`,
     audioFile: ['']
   },
   {
