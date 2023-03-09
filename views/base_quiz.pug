@@ -1,4 +1,4 @@
-extends ui_layout
+extends ui_layout-esp 
 
 block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
@@ -17,14 +17,14 @@ block content
             h3.ui.header
               i.question.blue.icon
               .content
-                | Quiz  
+                | Examen  
                 
           .ui.mini.green.right.labeled.icon.button.quizSegmentButton(class="voiceover_reflection" + questionNumber.substring(1))(questionNumber=questionNumber)     
             i.down.arrow.icon
             if questionNumber == "Q1"
-              |   Start
+              |   Comenzar
             else 
-              |   Next 
+              |   Siguiente
 
           .ui.basic.segment.noPadding.quizPromptSegment.hidden(class=questionNumber)
               .ui.label.resultsPromptLabel
@@ -48,26 +48,26 @@ block content
     
     .ui.warning.message.hidden.startPromptsWarning
       .header
-        | Click "Start"
+        | Comenzar
     .ui.warning.message.hidden.openAllPromptsWarning
       .header
-        | Click "Next"
+        | Siguiente
     include partials/optInToShareActivityData.pug
     br
     .ui.big.labeled.icon.button.quiz_print(onclick="onPrint()")
           i.right.arrow.icon
-          |   Print your responses
+          |   Imprimir tus respuestas
     br
     .ui.big.labeled.icon.button.quizCheckAnswersButton
         i.pencil.icon
-        |   Check my Answers
+        |   Revisa tus respuestas
     .ui.big.labeled.icon.button.blue.showExplanationButton.hidden
         i.tag.arrow.icon
-        |   Show me the correct answers and explanations
+        |   Enseñame las respuestas correctas y las explicaciones
     .ui.big.labeled.icon.button.green.quizSkipButton
         i.rocket.icon
         .skipButtonText
-          |   Skip Quiz
+          |   Saltar Examen
 
 block scripts
   script(src='/module_js/voiceover.js') 
