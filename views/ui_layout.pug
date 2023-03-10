@@ -61,6 +61,7 @@ html
     include partials/ui_footer
     
     if process.env.instanceType == 'test'
+      script(src="/js/modalMode.js")
       script(src="/js/help.js")
       script(src=cdn+'/js/lib/jquery-3.1.1.min.js')
       script(src=cdn+'/js/lib/humanized_time_span.js')
