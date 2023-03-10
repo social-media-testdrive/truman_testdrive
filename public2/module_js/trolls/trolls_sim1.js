@@ -69,9 +69,9 @@ const stepsList = [
     //   audioFile: ['CUSML.6.3.3.mp3']
     },
     {
-    element: '#harmony-pic',
-    intro: `They pose as a well known <b>celebrity</b>. Scammers often pretend to be celebrities you look up to and trust in an attempt to manipulate you`,
-    position: 'left',
+    element: '#harmony-page',
+    intro: `Let's take a close look at his profile page. Click "next" and then find the red flags on his page by clicking each of the blue dots.`,
+    position: 'right',
     myBeforeChangeFunction: function() { 
       let showProfilePage = document.getElementById("harmony-page");
       showProfilePage.style.display = "block";
@@ -82,44 +82,44 @@ const stepsList = [
     scrollTo: 'tooltip',
     //   audioFile: ['CUSML.6.3.5.mp3']
     },
-    {
-      element: '.populatedBio',
-      intro: `The troll’s account is <b>populated</b> with data that makes them look believable and fit the <b>narrative</b> that the malicious actor wants to push (e.g. a famous musician).`,
-      position: 'left',
-      scrollTo: 'tooltip'             
-    //   audioFile: ['CUSML.6.3.4.mp3']
-    },
-    {
-        element: '#userName',
-        intro: `Paying attention to the the <b>spelling</b> throughout the profile can help you identify a troll. The celebrity's real name is usually taken so trolls will use slight variations in the name to bypass this. Here the number one is used instead of the letter "L".`,
-        position: 'left',
-        scrollTo: 'tooltip',             
-        // audioFile: ['CUSML.6.3.4.mp3']
-      },
-    {
-      element: '#twitterNav',
-      intro: `Notice his profile statistics. He has a <b>lot of messages</b> for only being on Twitter for one months! Also, the <b>ratio</b> of following to followers is off. You would expect a celebrity to have more followers since they're famous.`,
-      position: 'top',
-      scrollTo: 'tooltip'
-    //   audioFile: ['CUSML.6.3.6.mp3']
-    },
-    {
-      element: '#opinion',
-      intro: `He has very suspicious posts where he is trying to get people to click a link. You should <b>not click links</b> found on social media unless you're 100% sure they're safe as they can be malicious.`,
-      position: 'right',
-      scrollTo: 'tooltip'
-    //   audioFile: ['CUSML.6.3.7.mp3']
-    },
-    {
-      element: '#postButtons',
-      intro: `Lastly, the message has few likes, reshares, and comments which is a sign that this isn't a real person with authentic connections as they have thousands of followers but very little <b>engagement</b>.`,
-      position: 'right',
-      scrollTo: 'tooltip'
-    //   audioFile: ['CUSML.6.3.6.mp3']
-    },
+    // {
+    //   element: '.hintDisplay',
+    //   intro: `The troll’s account is <b>populated</b> with data that makes them look believable and fit the <b>narrative</b> that the malicious actor wants to push (e.g. a famous musician).`,
+    //   position: 'right',
+    //   scrollTo: 'tooltip'             
+    // //   audioFile: ['CUSML.6.3.4.mp3']
+    // },
+    // {
+    //     element: '#harmony-page',
+    //     intro: `Paying attention to the the <b>spelling</b> throughout the profile can help you identify a troll. The celebrity's real name is usually taken so trolls will use slight variations in the name to bypass this. Here the number one is used instead of the letter "L".`,
+    //     position: 'right',
+    //     scrollTo: 'tooltip',             
+    //     // audioFile: ['CUSML.6.3.4.mp3']
+    //   },
+    // {
+    //   element: '#harmony-page',
+    //   intro: `Notice his profile statistics. He has a <b>lot of messages</b> for only being on Twitter for one months! Also, the <b>ratio</b> of following to followers is off. You would expect a celebrity to have more followers since they're famous.`,
+    //   position: 'right',
+    //   scrollTo: 'tooltip'
+    // //   audioFile: ['CUSML.6.3.6.mp3']
+    // },
+    // {
+    //   element: '#harmony-page',
+    //   intro: `He has very suspicious posts where he is trying to get people to click a link. You should <b>not click links</b> found on social media unless you're 100% sure they're safe as they can be malicious.`,
+    //   position: 'right',
+    //   scrollTo: 'tooltip'
+    // //   audioFile: ['CUSML.6.3.7.mp3']
+    // },
+    // {
+    //   element: '#harmony-page',
+    //   intro: `Lastly, the message has few likes, reshares, and comments which is a sign that this isn't a real person with authentic connections as they have thousands of followers but very little <b>engagement</b>.`,
+    //   position: 'right',
+    //   scrollTo: 'tooltip'
+    // //   audioFile: ['CUSML.6.3.6.mp3']
+    // },
     {
       element: '#backBtn',
-      intro: `We've seen enough to know this is a <b>troll</b> you will want to avoid! <b>Press the arrow button</b> to return to the friend request where you will be able to respond to it.`,
+      intro: `After viewing all hints, we've seen enough to know this is a <b>troll</b> you will want to avoid! <b>Press the arrow button</b> to return to the friend request where you will be able to respond to it.`,
       position: 'left',
       scrollTo: 'tooltip'
     //   audioFile: ['CUSML.6.3.6.mp3']

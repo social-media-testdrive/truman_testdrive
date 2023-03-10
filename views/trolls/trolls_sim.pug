@@ -38,7 +38,7 @@ block content
               button#accept.ui.basic.green.button(onclick='checkTutorialStep()') Accept
               button#decline.ui.basic.red.button(onclick='completeTutorial()') Decline  
           
-    #harmony-page.ui.fluid.card.dim(style = "margin-bottom:0px")
+    #harmony-page.hintDisplay.ui.fluid.card.dim(style = "margin-bottom:0px")
       #toploggedin.content
         a
           i#backBtn.big.arrow.left.icon
@@ -52,7 +52,7 @@ block content
   top: 0;\
   left: 0;\
   solid; z-index = -1' src='/profile_pictures/elvisbg.png')
-        #round-pic-container
+        #round-pic-container(data-hint='Paying attention to the the <b>spelling</b> throughout the profile can help you identify a troll. The celebrity\'s real name is usually taken so trolls will use slight variations in the name to bypass this. Here the number one is used instead of the letter "L".' data-hint-position='top')
           #pic-border
             img(id="harmony-pic" src='/images/elvis-pic.jpeg')
         #buttons-menu.elvisFixNav.four.ui.bottom.attached.icon.buttons
@@ -60,7 +60,7 @@ block content
   padding-left: 25px; margin-top: 15%;z-index: 1')
 
         .populatedBio
-          #userName Elvis Pres1ey 
+          #userName(data-hint='They pose as a well known <b>celebrity</b>. Scammers often pretend to be celebrities you look up to and trust in an attempt to manipulate you' data-hint-position='top-left') Elvis Pres1ey 
           #profileAt  @TheRealElvisEstate
           #userAbout  king of rock 'n' roll! Visit <a>http://E1vis.com</a>
           |  for more about the king.
@@ -82,7 +82,7 @@ block content
           a.item#numFollowers
             | Followers <br/>
             | 393
-          a.item
+          a.item(data-hint='He has a <b>lot of messages</b> for only being on Twitter for one months! Also, the <b>ratio</b> of following to followers is off. You would expect a celebrity to have more followers since they are famous.' data-hint-position='top') 
             | Following <br/>
             | 8,216
         button#followingbutton.ui.button.primary.basic(onclick='updateFollow()') Follow
@@ -106,7 +106,7 @@ block content
             | You’ll be able to enter to win some great exclusive Elvis merchandise! Good luck!
             #space 
             |  &nbsp;
-            #tweet-2  <a>http://sweepstakes/elvis.com</a> 
+            #tweet-2(data-hint='He has very <b>suspicious posts</b> where he is trying to get people to click a link. You should <b>not click links</b> found on social media unless you are 100% sure they are safe as they can be malicious.' data-hint-position='top')  <a>http://sweepstakes/elvis.com</a> 
           img(id="harmony-pic" src='/images/elvis-pic.jpeg')
           #postButtons
               .ui.labeled.button.postButton(tabindex="0" alt="Comment" title="Comment" onclick='updateComment()')
