@@ -21,7 +21,7 @@ function startIntro(){
 
     // change page identity takes you to 
     if(modNameNoDashes == "identity") {
-      window.location.href='/identity_new_page';
+      window.location.href='/identity_home';
     } else {
       window.location.href='/start/' + pathArray[2];
     }

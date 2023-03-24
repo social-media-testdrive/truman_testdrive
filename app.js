@@ -370,6 +370,28 @@ app.get('/identity_new_page', passportConfig.isAuthenticated, setHttpResponseHea
     }
 });
 
+app.get('/identity_new_page2', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_new_page2.pug', {
+            title: 'My New Page 2'
+        });
+    }
+});
+
+app.get('/identity_home', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_home.pug', {
+            title: 'My New Page'
+        });
+    }
+});
+
 // Render facilitator login page (all modules)
 app.get('/facilitatorHome', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
     res.render('facilitatorHome.pug', {
