@@ -245,6 +245,7 @@ function setHttpResponseHeaders(req, res, next) {
 function isValidModId(req, res, next) {
     const modIds = [
         "trolls",
+        "identity"
     ]
     if (modIds.includes(req.params.modId)) {
         next();
@@ -289,6 +290,7 @@ const enableLearnerDashboard = process.env.enableLearnerDashboard === 'true';
 function isValidModId(req, res, next) {
     const modIds = [
         "trolls",
+        "identity"
     ]
 
     if (modIds.includes(req.params.modId)) {
@@ -353,6 +355,19 @@ app.get('/facilitatorLogin', setHttpResponseHeaders, csrfProtection, addCsrf, fu
     res.render('facilitatorLogin.pug', {
         title: 'Facilitator Login'
     });
+});
+
+
+// ******************* Render new identity theft pages ****************************
+app.get('/identity_new_page', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_new_page.pug', {
+            title: 'My New Page'
+        });
+    }
 });
 
 // Render facilitator login page (all modules)

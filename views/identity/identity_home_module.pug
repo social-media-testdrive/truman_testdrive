@@ -1,0 +1,131 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container.addBottomMargin
+    br      
+    .ui.raised.segment
+      h1.ui.header
+        .content
+            | Identity Theft Module Hompage
+          p Welcome to the world of anti-scam! Identity theft is a serious problem that affects millions of people every year. In this module, you will learn:
+          ol
+            li What is Identity theft and what are the consequences?
+            li What are the tricks scammers use to steal our personal information? How to recognize the tricks of scammers?
+            li How to protect our identity information from the tricks?
+          p After learning the three essential topics, you can continue to explore the topics further and take a post-quiz to test your understanding and retention of the concepts you have learned. Upon completion of the module, you will be knowledgeable and skilled in protecting themselves from scammers.
+          p Before beginning your lesson, please take a pre-quiz. This quiz will only consist of five questions, but it will be a great way to measure your improvement after learning.
+
+    //-   h3.ui.header
+    //-     i.book.blue.icon
+    //-     .content
+    //-       iframe(type='text/html' width='540' height='289'
+    //-         src='videos/identity-video.mp4'
+    //-         frameborder='0')
+    //-   hr
+    //-   .ui.basic.segment.removePadding
+    //-     .ui.mini.green.right.labeled.icon.button.showLearnSectionButton
+    //-       i.down.arrow.icon
+    //-       |   Next
+    //-   .ui.basic.segment.learnSegment.hidden
+    //-     h5.ui.header
+    //-       i.arrow.circle.right.blue.icon
+    //-       .content
+    //-         | <b>Online Shopping</b> has become popular due to its convenience and simplicity
+    //-     h5.ui.header
+    //-       i.arrow.circle.right.blue.icon
+    //-       .content
+    //-         | As more people turn to digital shopping, there are concerns about their safety as this medium is susceptible to threats 
+    //-     h5.ui.header
+    //-       i.arrow.circle.right.blue.icon
+    //-       .content
+    //-         | Online shoping security threats include Unecrypted Data, Adware, Identity Theft, and Data Breaches 
+    //-     .ui.mini.green.right.labeled.icon.button.showKeyTermsButton
+    //-       i.down.arrow.icon
+    //-       |   Next
+    
+    //- .ui.segment.keyIdeasSegment.hidden
+    //-   h3.ui.header
+    //-     i.key.blue.icon
+    //-     .content Key Ideas
+    //-   .sub.header 
+    //-     i.hand.pointer.icon.grayElement
+    //-     span.grayElement Click on each word below to learn more
+    //-   br
+    //-   .ui.stackable.two.column.grid
+    //-     .ui.column
+    //-       .keyTerm.ui.raised.segment.voiceover_keyTerm1
+    //-         a.ui.blue.ribbon.label.keyTermLabel
+    //-             span Unecrypted Data
+    //-         span.hidden.keyTermDefinition  
+    //-           | unprotected information that is easily readable
+    //-           ul 
+    //-             | When you input sensitive data like your credit card details on a website, you expect that your data is secured with proper encryption within the web application. But that's not always the case. 
+    //-     .ui.column
+    //-       .keyTerm.ui.raised.segment.voiceover_keyTerm2
+    //-         a.ui.blue.ribbon.label.keyTermLabel
+    //-             span Adware
+    //-         span.hidden.keyTermDefinition 
+    //-           | software that automatically displays or downloads unwanted advertising material
+    //-           ul 
+    //-             | Cybercriminals can use adware it to launch attacks. Adware could be encrypted with malware to lure you to malicious websites. When you arrive on the website, they'll request your personal information—including your credit card details. 
+    //-     .ui.column
+    //-       .keyTerm.ui.raised.segment.voiceover_keyTerm3
+    //-         a.ui.blue.ribbon.label.keyTermLabel
+    //-             span Identity Theft
+    //-         span.hidden.keyTermDefinition 
+    //-           | When someone uses another person's personal identifying information, like their name, identifying number, or credit card number
+    //-           ul 
+    //-             | One of the most common security risks of online shopping is identity theft. Cybercriminals can hack into private websites and steal users’ login credentials or credit card details. If they aren't impersonating users by making unauthorized purchases, they’re selling off their personal information online.  
+    //-     .ui.column
+    //-       .keyTerm.ui.raised.segment.voiceover_keyTerm3
+    //-         a.ui.blue.ribbon.label.keyTermLabel
+    //-             span Data Breaches 
+    //-         span.hidden.keyTermDefinition 
+    //-           | A security violation, in which sensitive, protected or confidential data is copied, transmitted, viewed, stolen or used by an individual unauthorized to do so
+    //-           ul 
+    //-             | A data breach occurs when hackers gain unauthorized access to data in web applications. When you enter your personal information into websites as you shop online, you stand a risk of having your information exposed in the event of a data breach.  
+    
+    
+    //- .ui.warning.message#clickNextWarning
+    //-   .header
+    //-    | Click "Next"
+    //- .ui.warning.message#clickLabelsWarning
+    //-  .header
+    //-   | Click on each label to proceed   
+    //- a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
+    //-     .ui.labeled.icon.button
+    //-         i.rocket.icon
+    //-         |   Got it!
+
+block scripts
+  script.
+    var voiceoverMappings = {
+      '.showLearnSectionButton': {
+        "initialDelay": 700,
+        "delay": 500,
+        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
+      },
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.1.mp3']
+      },
+      '.voiceover_keyTerm2': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.2.mp3']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.3.mp3']
+      }
+    };
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_start.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/start.css')  
+    
+    
