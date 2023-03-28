@@ -233,7 +233,7 @@ function setHttpResponseHeaders(req, res, next) {
         'Pragma': 'no-cache',
         'Content-Type': 'text/html; charset=UTF-8',
         'Content-Security-Policy': "script-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
-            "default-src 'self' https://www.google-analytics.com;" +
+            "default-src 'self' https://www.google-analytics.com http://3.19.31.168:8080/webhooks/rest/webhook;" +
             "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
             "img-src 'self' https://dhpd030vnpk29.cloudfront.net https://www.googletagmanager.com https://www.google-analytics.com;" +
             "media-src https://dhpd030vnpk29.cloudfront.net;" +
@@ -571,6 +571,8 @@ app.get('/user/:userId', passportConfig.isAuthenticated, csrfProtection, setHttp
 app.post('/delete', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.getDeleteAccount);
 // Create a new guest account
 app.get('/guest/:modId', setHttpResponseHeaders, isValidModId, userController.getGuest);
+
+app.post('/chatbot', check, setHttpResponseHeaders, csrfProtection, userController.postChatbotConnect);
 
 /*
  * Logins (only used on research site)
