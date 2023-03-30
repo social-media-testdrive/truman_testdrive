@@ -1,25 +1,41 @@
 extends ui_layout
 
 block content
-  .ui.sixteen.wide.row
-    .ui.sixteen.wide.column
-      h2.loginPageTitle Welcome to the Research Version of DART!
   .ui.sixteen.wide.row 
-    .ui.sixteen.wide.column
-      h2.ui.header Login as Student
-      form.ui.form(action="/studentLogin", method='POST')
-        input(type='hidden', name='_csrf', value=csrfToken)
-        .field.six.wide.column
-          label(for='username' style="font-size:larger;") Username
-          input(type='text', name='username', id='username', placeholder='Username', required).field
-          label(for='password' style="font-size:larger;") Password
-          input(type='password', name='password', id='password', placeholder='Password', required).field
-        button.ui.big.green.button(type='submit') Login
-        
+    .ui.sixteen.wide.column(style="display: flex; flex-direction: column; justify-content: center; align-items: center;")
+      .login-box
+        h2.ui.header(style="text-align: left !important; margin:5px 0px") Welcome Back!
+        h2(style="font-size: 15px; text-align: left !important; margin:0 0 15px 0px ") please enter your details.
+
+        form.ui.form(action="/studentLogin", method='POST')
+          input(type='hidden', name='_csrf', value=csrfToken)
+          .field
+            label(for='username' style="font-size:larger;") Username
+            input(style="margin:5px 0px; width: 100%; border-radius: 5px; border: 2px solid grey !important; background-color: #fff !!important; color: #000 !important;" type='text', name='username', id='username', placeholder='Username', required).field
+            label(for='password' style="font-size:larger;") Password
+            input(style="width: 100%; border-radius: 5px; border: 2px solid grey !important; background-color: #fff !!important; color: #000 !important;" type='password', name='password', id='password', placeholder='Password', required).field
+
+          div.checkbox-container(style="display: flex; justify-content: space-between;")
+            label.remember-me(style="display: flex; font-size: 18px; align-items: center;")
+              input(type='checkbox', name='remember-me')
+              span Remember Me
+            a.forgot(href='forgotPassword', style="text-align: right;") Forgot Password?
+          
+          button.ui.big.blue.button(type='submit', style="width: 100%; border-radius: 20px; margin: 15px 0 0 0;") Login
+          a.ui.button.big.white(href="/getGuest", style="padding:14.1429px !important; display: block; width: 100%; border-radius: 20px; background-color: #fff; border: 1px solid blue; text-align: center; padding: 10px; margin-top: 10px;")  Guest Login
+          a.ui.button.big.white(href="/createStudent", style="padding:14.1429px !important; display: block; width: 100%; border-radius: 20px; background-color: #fff; border: 1px solid blue; text-align: center; padding: 10px; margin-top: 10px;")  Sign Up
+          
+          form(action="/auth/google" method="GET")
+            button
+              a(href='/auth') Login With Google
+              
 block styles
       
 block scripts
+
+  link(rel='stylesheet', href='/css/style.css')
   script(src='/module_js/base_end.js')
+  script(src='https://kit.fontawesome.com/585fda3aab.js' crossorigin='anonymous')
   script.
     function openFeedback(){
       window.open(href='https://cornell.qualtrics.com/jfe/form/SV_9tMszwlpe1TIIxT');

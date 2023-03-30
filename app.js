@@ -17,6 +17,7 @@ const multer = require('multer');
 const csrf = require('csurf');
 const fs = require('fs');
 const util = require('util');
+const cookieSession = require('cookie-session');
 fs.readFileAsync = util.promisify(fs.readFile);
 /*
  * Dependencies that were listed but don't appear to be used
@@ -31,6 +32,26 @@ fs.readFileAsync = util.promisify(fs.readFile);
  * Load environment variables from .env file, where API keys and passwords are configured.
  */
 dotenv.config({ path: '.env' });
+
+const GoogleStrategy = require('passport-google-oauth2').Strategy;
+
+passport.serializeUser((user , done) => {
+    done(null , user);
+})
+passport.deserializeUser(function(user, done) {
+    done(null, user);
+});
+
+passport.use(new GoogleStrategy({
+    clientID:"896039841801-tdh0a2hsl53671t5ruirn1kls9cob9aa.apps.googleusercontent.com", // Your Credentials here.
+    clientSecret:"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", // Your Credentials here.
+    callbackURL:"http://localhost:3000/auth/callback",
+    passReqToCallback:true
+  },
+  function(request, accessToken, refreshToken, profile, done) {
+    return done(null, profile);
+  }
+));
 
 /*
 aws.config.update({
@@ -191,6 +212,55 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use(session({
+    secret: 'secret', // change this to a secret key
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get('/x', (req, res) => {
+    res.send("<button><a href='/auth'>Login With Google</a></button>")
+});
+
+// Auth 
+app.get('/auth', passport.authenticate('google', { 
+    scope: ['email', 'profile'] 
+}));
+
+// Auth Callback
+app.get('/auth/callback',
+    passport.authenticate('google', {
+        successRedirect: '/auth/callback/success',
+        failureRedirect: '/auth/callback/failure'
+    })
+);
+
+// Success 
+app.get('/auth/callback/success', (req, res) => {
+    if (!req.user) {
+        res.redirect('/auth/callback/failure');
+    } else {
+        res.send("Welcome " + req.user.email +
+        "<button><a href='/logout'>Logout</a></button>"
+        );
+    }
+});
+
+/** 
+app.get('/logout', (req, res) => {
+    req.logout();
+    res.redirect('/');
+});
+*/
+
+// failure
+app.get('/auth/callback/failure', (req, res) => {
+    res.send("Error");
+});
+
+
 app.use((req, res, next) => {
     // After successful login, redirect back to the intended page
     if (!req.user &&
@@ -282,6 +352,56 @@ const enableShareActivityData = process.env.enableShareActivityData === 'true';
 const enableTeacherDashboard = process.env.enableTeacherDashboard === 'true';
 const enableLearnerDashboard = process.env.enableLearnerDashboard === 'true';
 
+
+/**create one time link */
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+//get from database or something like it
+const allowedUUIDs = ['d5407341-3a54-4e30-acf1-09d2174b3e23',
+              '7811c8bf-ddf7-4439-a193-93dca12a0656',  
+              'cef82390-9c0a-43e9-93e8-1a80aa5eced5',
+              '86520485-9d09-48ba-b65c-9bab0ff2e3a2'
+            ];
+
+//test your UUID (access token)
+function checkSingleAccess(requestUUID) {
+  const index = allowedUUIDs.indexOf(requestUUID);
+  const UUIDExists = index > -1;
+
+  if(UUIDExists){
+    //remove from array, or your database
+    allowedUUIDs.splice(index, 1);
+  }
+
+  console.log(UUIDExists);
+
+  return UUIDExists;
+}
+
+//set a path parameter with :uuid
+app.use('/temporary-link/:uuid', function(req, res, next) {
+  //get your path parameter
+  const requestUUID = req.params.uuid;
+
+  //test if allowed
+  if(checkSingleAccess(requestUUID)){
+    //res.send(`UUID ${requestUUID} allowed` );
+    res.render('changePassword.pug', {
+        title: 'changePassword'
+    });
+  }else{
+    //if not build an error
+    const errorResponse = `404`;
+    res.status(403, errorResponse);
+    res.send(errorResponse);
+  }
+});
+
+module.exports = app;
+
+
 /*
  * Primary app routes.
  * (In alphabetical order)
@@ -357,6 +477,12 @@ app.get('/facilitatorLogin', setHttpResponseHeaders, csrfProtection, addCsrf, fu
     });
 });
 
+//forgoy password
+app.get('/forgotPassword', setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
+    res.render('forgotPassword.pug', {
+        title: 'forgotPassword'
+    })
+})
 
 // ******************* Render new identity theft pages ****************************
 app.get('/identity_new_page', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
@@ -712,14 +838,18 @@ app.get('/guest/:modId', setHttpResponseHeaders, isValidModId, userController.ge
  * Logins (only used on research site)
  */
 if (isResearchVersion) {
+    app.post('/forgotPassword', check, setHttpResponseHeaders, csrfProtection,userController.forgotPassword);
     app.get('/login', csrfProtection, setHttpResponseHeaders, addCsrf, userController.getLogin);
     app.get('/classLogin/:accessCode', csrfProtection, setHttpResponseHeaders, addCsrf, userController.getClassLogin);
     app.post('/instructorLogin', check, setHttpResponseHeaders, csrfProtection, userController.postInstructorLogin);
     app.post('/facilitatorLogin', check, setHttpResponseHeaders, csrfProtection, userController.postFacilitatorLogin);
     app.post('/studentLogin', check, setHttpResponseHeaders, csrfProtection, userController.postStudentLogin);
+    app.post('/guestLogin', check, setHttpResponseHeaders, csrfProtection, userController.postGuestLogin);
     app.post('/createStudent', check, setHttpResponseHeaders, csrfProtection, userController.postCreateStudent);
     // app.post('/studentLogin/:accessCode', check, setHttpResponseHeaders, csrfProtection, userController.postStudentLogin);
     app.get('/logout', setHttpResponseHeaders, csrfProtection, addCsrf, userController.logout);
+    app.get('/getGuest', setHttpResponseHeaders, csrfProtection, addCsrf, userController.getGuest);
+
 }
 
 /*
@@ -747,6 +877,8 @@ app.get('/testing/:modId', isValidModId, scriptController.getScriptFeed);
 // Update user profile information
 app.post('/account/profile', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, setHttpResponseHeaders, csrfProtection, userController.postUpdateProfile);
 app.post('/account/profile/:modId', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, setHttpResponseHeaders, csrfProtection, userController.postUpdateProfile);
+
+
 
 /*
  * Recording various user activities if data collection is enabled
