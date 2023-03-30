@@ -19,6 +19,7 @@ const fs = require('fs');
 const util = require('util');
 const cookieSession = require('cookie-session');
 fs.readFileAsync = util.promisify(fs.readFile);
+const User = require('./models/User');
 /*
  * Dependencies that were listed but don't appear to be used
  */
@@ -226,8 +227,10 @@ app.get('/x', (req, res) => {
 
 // Auth 
 app.get('/auth', passport.authenticate('google', { 
-    scope: ['email', 'profile'] 
-}));
+    scope: ['email', 'profile']    
+}
+)
+);
 
 // Auth Callback
 app.get('/auth/callback',
@@ -238,22 +241,49 @@ app.get('/auth/callback',
 );
 
 // Success 
-app.get('/auth/callback/success', (req, res) => {
+app.get('/auth/callback/success', (req, res, next) => {
     if (!req.user) {
         res.redirect('/auth/callback/failure');
     } else {
-        res.send("Welcome " + req.user.email +
-        "<button><a href='/logout'>Logout</a></button>"
-        );
+        const user = new User({
+            password: "thinkblue",
+            username: req.user.email,
+            group: 'no:no',
+            active: true,
+            ui: 'no', //ui or no
+            notify: 'no', //no, low or high
+            isGuest: true,
+            lastNotifyVisit: Date.now()
+        });
+
+        user.profile.name = "Guest";
+        user.profile.location = "Guest Town";
+        user.profile.bio = '';
+        user.profile.picture = 'avatar-icon.svg';
+
+        User.findOne({ username: req.user.email }, (err, existingUser) => {
+            if (err) { return next(err); }
+            if (existingUser) {
+                req.logIn(user, (err) => {
+                    if (err) {
+                        return next(err);
+                    }
+                    return res.redirect('/');
+                });
+            }
+            user.save((err) => {
+                if (err) { return next(err); }
+                req.logIn(user, (err) => {
+                    if (err) {
+                        return next(err);
+                    }
+                    return res.redirect('/');
+                });
+            });
+        });
     }
 });
 
-/** 
-app.get('/logout', (req, res) => {
-    req.logout();
-    res.redirect('/');
-});
-*/
 
 // failure
 app.get('/auth/callback/failure', (req, res) => {

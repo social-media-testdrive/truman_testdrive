@@ -22,12 +22,13 @@ block content
             a.forgot(href='forgotPassword', style="text-align: right;") Forgot Password?
           
           button.ui.big.blue.button(type='submit', style="width: 100%; border-radius: 20px; margin: 15px 0 0 0;") Login
-          a.ui.button.big.white(href="/getGuest", style="padding:14.1429px !important; display: block; width: 100%; border-radius: 20px; background-color: #fff; border: 1px solid blue; text-align: center; padding: 10px; margin-top: 10px;")  Guest Login
-          a.ui.button.big.white(href="/createStudent", style="padding:14.1429px !important; display: block; width: 100%; border-radius: 20px; background-color: #fff; border: 1px solid blue; text-align: center; padding: 10px; margin-top: 10px;")  Sign Up
+          a.ui.button.big.white(href="/getGuest", style="padding:14.1429px !important; display: block; width: 100%; border-radius: 20px; background-color: #fff; border: 1px solid #2884d4; text-align: center; padding: 10px; margin-top: 10px;")  Guest Login
+          a.ui.button.big.white(href="/createStudent", style="padding:14.1429px !important; display: block; width: 100%; border-radius: 20px; background-color: #fff; border: 1px solid #2884d4; text-align: center; padding: 10px; margin-top: 10px;")  Sign Up
           
           form(action="/auth/google" method="GET")
-            button
-              a(href='/auth') Login With Google
+            input(type='hidden', name='_csrf', value=csrfToken)
+            button(style="background-color: transparent; border: none;  width: 100%; padding: 0px")
+              a.ui.button.big.white(href='/auth' style="padding:14.1429px !important; display: block; width: 100%; border-radius: 20px; background-color: #fff; border: 1px solid #2884d4; text-align: center; padding: 10px; margin-top: 10px;") Login With Google
               
 block styles
       
