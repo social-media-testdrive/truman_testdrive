@@ -414,6 +414,17 @@ app.get('/identity_prequiz_finish', passportConfig.isAuthenticated, setHttpRespo
     }
 });
 
+app.get('/identity_learn_page0', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_learn_page0.pug', {
+            title: 'My New Page'
+        });
+    }
+});
+
 app.get('/identity_learn_page1', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
     if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
         res.redirect('/');
@@ -486,6 +497,83 @@ app.get('/identity_learn_page7', passportConfig.isAuthenticated, setHttpResponse
     } else {
         // use relative not absolute
         res.render('identity/identity_learn_page7.pug', {
+            title: 'My New Page'
+        });
+    }
+});
+
+app.get('/identity_learn_page8', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_learn_page8.pug', {
+            title: 'My New Page'
+        });
+    }
+});
+
+app.get('/identity_learn_page9', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_learn_page9.pug', {
+            title: 'My New Page'
+        });
+    }
+});
+
+app.get('/identity_learn_page10', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_learn_page10.pug', {
+            title: 'My New Page'
+        });
+    }
+});
+
+app.get('/identity_learn_page11', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_learn_page11.pug', {
+            title: 'My New Page'
+        });
+    }
+});
+
+app.get('/identity_learn_page12', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_learn_page12.pug', {
+            title: 'My New Page'
+        });
+    }
+});
+
+app.get('/identity_learn_page13', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_learn_page13.pug', {
+            title: 'My New Page'
+        });
+    }
+});
+
+app.get('/identity_learn_page14', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_learn_page14.pug', {
             title: 'My New Page'
         });
     }

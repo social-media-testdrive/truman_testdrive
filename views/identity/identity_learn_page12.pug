@@ -1,0 +1,17 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container.addBottomMargin
+    br      
+    .ui.raised.segment
+      h1.ui.header
+        .content
+            | Explore
+      p Concept blah blah
+     
+    button.btn(style="background-color: green; color: white; font-size: 24px; padding: 10px 20px; border: none; border-radius: 5px; float: right;" onclick="location.href='/identity_learn_page13';") Start Explore
+  script.
+    localStorage.setItem('progress', 80);
+    localStorage.setItem('theft-path', "/identity_learn_page12");
+

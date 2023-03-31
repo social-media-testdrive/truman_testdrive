@@ -15,13 +15,55 @@ block content
           .content
             .header="How to Avoid Trolls"
 
-        a.ui.card(href=`/${path}/identity`)
+        a.ui.card#theft-link(href=`/${path}/identity`)
           .image
             img(src='/images/identity-mod-pic.png' style='height:165px;')
+          #theft-progress.ui.small.progress(style='margin:0;padding:0;' data-percent='33')
+            .bar(style='width: 33%')
+              .progress
+            //- .label Completion
           .content
             .header="Identity Theft"        
             p(style="color: black;")  Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
-         
+          //- .ui.bottom.attached.progress
+          //-   .bar
+        button#reset-progress(onclick="localStorage.setItem('progress', 0); localStorage.setItem('theft-path', '/intro/identity'); location.reload();") Reset Progress
+
+  script.
+    let theftPath = localStorage.getItem('theft-path');
+    console.log("theftPath is: " + theftPath);
+    if (theftPath === null) {
+    } else {
+      console.log("change link");
+      const link = document.getElementById('theft-link');
+      link.setAttribute('href', theftPath);
+    }
+
+    // Check if the "progress" variable has been assigned a value yet
+    let progress = localStorage.getItem('progress');
+    if (progress === null) {
+      // If the variable has not been assigned yet, set it to 0
+      progress = 0;
+      localStorage.setItem('progress', progress);
+    } else {
+      // If the variable has been assigned, parse the value from local storage
+      progress = parseInt(progress);
+    }
+    console.log("Progress is: " + progress);
+
+    const progressBar = document.getElementById('theft-progress');
+    if (progressBar) {
+      progressBar.setAttribute('data-percent', progress);
+      progressBar.querySelector('.bar').style.width = progress + "%";
+      if(progress > 0 && progress < 100){
+        progressBar.querySelector('.bar').style.backgroundColor = 'green';
+      } else if(progress == 100) {
+        progressBar.querySelector('.bar').style.backgroundColor = 'blue';
+      }
+      progressBar.querySelector('.progress').textContent = progress + "%";
+    } else {
+      console.error('Could not find progress bar element');
+    }
         
             
        
