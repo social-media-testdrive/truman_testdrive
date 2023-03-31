@@ -480,12 +480,12 @@ app.get('/identity_learn_page6', passportConfig.isAuthenticated, setHttpResponse
     }
 });
 
-app.get('/identity_learn_page7', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+app.get('/identity_reflection', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
     if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
         res.redirect('/');
     } else {
         // use relative not absolute
-        res.render('identity/identity_learn_page7.pug', {
+        res.render('identity/identity_reflection.pug', {
             title: 'My New Page'
         });
     }
