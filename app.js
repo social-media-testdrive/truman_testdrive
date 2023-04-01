@@ -255,10 +255,10 @@ app.get('/auth/callback/success', (req, res, next) => {
             isGuest: true,
             lastNotifyVisit: Date.now()
         });
-
-        user.profile.name = "Guest";
-        user.profile.location = "Guest Town";
-        user.profile.bio = '';
+        console.log(req.user.displayName)
+        user.profile.name = req.user.given_name;
+        user.profile.location = "New York";
+        user.profile.bio = 'There is no input or content provided by this person.';
         user.profile.picture = 'avatar-icon.svg';
 
         User.findOne({ username: req.user.email }, (err, existingUser) => {
@@ -477,7 +477,7 @@ app.get('/', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtect
 // });
 
 // Render current user's account page, which is module specific (all modules)
-app.get('/account/:modId', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, isValidModId, userController.getAccount);
+app.get('/account', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, userController.getAccount);
 
 // Render end page (all modules)
 app.get('/end/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {

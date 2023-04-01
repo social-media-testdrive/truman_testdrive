@@ -255,9 +255,9 @@ exports.postInstructorLogin = (req, res, next) => {
         isStudent: true,
         // facilitator: req.body.facilitator
     });
-    user.profile.name = "Guest";
-    user.profile.location = "Guest Town";
-    user.profile.bio = '';
+    user.profile.name = req.body.username;
+    user.profile.location = "New York";
+    user.profile.bio = 'There is no input or content provided by this person.';
     user.profile.picture = 'avatar-icon.svg';
     User.findOne({
     username: req.body.username
@@ -342,7 +342,7 @@ exports.getGuest = (req, res, next) => {
 
     user.profile.name = "Guest";
     user.profile.location = "Guest Town";
-    user.profile.bio = '';
+    user.profile.bio = 'There is no input or content provided by this person.';
     user.profile.picture = 'avatar-icon.svg';
     //console.log("New Guest is now: "+ user.profile.name);
 
@@ -379,7 +379,7 @@ exports.getGuest = (req, res, next) => {
 exports.getAccount = (req, res) => {
     res.render('account/profile', {
         title: 'Account Management',
-        mod: req.params.modId
+        //mod: req.params.modId
     });
 };
 
