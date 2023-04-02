@@ -1,0 +1,52 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container.addBottomMargin
+    br     
+    p The concept and consequences of identity theft (submodule 1)          
+    p Learn 2/4
+    .ui.raised.segment
+      h1.ui.header
+        .content
+            | Identity Theft Learn Page 2
+      p Personal Information refers to 
+      p (1) any information that can be used to distinguish or trace an individual's identity, such as name, social security number, date and place of birth, mother's maiden name, or biometric records; and 
+      p (2) any other information that is linked or linkable to an individual, such as medical, educational, financial, and employment information." 
+      p (Source: https://www.wikiwand.com/en/Personal_data)
+    button.btn(style="background-color: green; color: white; font-size: 24px; padding: 10px 20px; border: none; border-radius: 5px; float: right;" onclick="location.href='/identity_learn_page3';") Next
+
+
+
+
+block scripts
+  script.
+    var voiceoverMappings = {
+      '.showLearnSectionButton': {
+        "initialDelay": 700,
+        "delay": 500,
+        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
+      },
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.1.mp3']
+      },
+      '.voiceover_keyTerm2': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.2.mp3']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.3.mp3']
+      }
+    };
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_start.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/start.css')  
+    
+    

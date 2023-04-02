@@ -4,6 +4,7 @@
     bottom: 0;
     margin: 0 auto;
     margin-bottom: 45px;
+    z-index: 9999999;
 }
 
 #help-button {

@@ -5,7 +5,7 @@ const subdirectory2 = pathArrayIntro[2]; // idenify the current module
 let startTimestamp = Date.now();
 
 function startIntro(enableDataCollection) {
-    var intro = introJs().setOptions({
+    let intro = introJs().setOptions({
         steps: stepsList,
         'hidePrev': true,
         'hideNext': true,
@@ -14,8 +14,37 @@ function startIntro(enableDataCollection) {
         'showStepNumbers': false,
         'showBullets': false,
         'scrollToElement': true,
-        'doneLabel': 'Done &#10003'
+        'doneLabel': 'Done &#10003',
+        hints: [
+            {
+              element: document.querySelector('#harmony-pic'),
+              hint: "They celebrity",
+              hintPosition: 'top-middle'
+            },
+            {
+              element: '.populatedBio',
+              hint: 'Their bio is fake',
+              position: 'left'
+            },
+            {
+              element: '#twitterNav',
+              hint: "Profile stats are bad",
+              hintPosition: 'top-middle'
+            }
+          ]
     });
+    // intro.addHints();
+
+    // intro.onhintsadded(function() {
+    //     console.log('all hints added');
+    // });
+    // intro.onhintclick(function(hintElement, item, stepId) {
+    //     console.log('hint clicked', hintElement, item, stepId);
+    // });
+    // intro.onhintclose(function (stepId) {
+    //     console.log('hint closed', stepId);
+    // });
+    // intro.addHints();
 
     /*
     onbeforechange:
@@ -101,9 +130,9 @@ function startIntro(enableDataCollection) {
             // console.log($('.introjs-nextbutton'));
             var original_onclick = $('.introjs-nextbutton').get(0).onclick;
             let elements = document.getElementsByTagName('a');
-            // console.log(elements);
-            // console.log(elements[33]);
-            elements[33].style.filter = "grayscale(100%)";
+            console.log(elements);
+            console.log(elements[28]);
+            elements[28].style.filter = "grayscale(100%)";
 
 
             // $('.introjs-nextbutton').style.backgroundColor = "red";  
@@ -111,42 +140,41 @@ function startIntro(enableDataCollection) {
             $('.introjs-nextbutton').get(0).onclick = null;
             $('#step3').on('click', function() {
                 // reset next button for future use
-                elements[33].style.filter = "";
+                elements[28].style.filter = "";
                 $('.introjs-nextbutton').removeClass('introjs-disabled');
                 $('.introjs-nextbutton').get(0).onclick = original_onclick;
                 
                 // activate the click for the user too so we can automatically move them along!!
-                elements[33].click();
+                elements[28].click();
               })
         }
+
 
         // at next step disable back button
         if(subdirectory1 === "sim" && subdirectory2 === "trolls" && intro._currentStep === 7) { // your disabled step 2 for example {
-            // console.log("the click: ");
-            var original_onclick = $('.introjs-prevbutton').get(0).onclick;
-            // console.log(original_onclick);            
-            let elements = document.getElementsByTagName('a');
-            // console.log(elements[32]);
-            elements[32].style.filter = "grayscale(100%)";
 
 
-            // $('.introjs-nextbutton').style.backgroundColor = "red";  
-            $('.introjs-prevbutton').addClass('introjs-disabled');
-            $('.introjs-prevbutton').get(0).onclick = null;
-            $('.introjs-nextbutton').on('click', function() {
-                elements[32].style.filter = "";
-                $('.introjs-prevbutton').removeClass('introjs-disabled');
-                $('.introjs-prevbutton').get(0).onclick = original_onclick;
-              })
+            introJs().addHints();
         }
 
+        // if(subdirectory1 === "sim" && subdirectory2 === "trolls" && intro._currentStep === 8) { // your disabled step 2 for example {
+        //     introJs().addHints();
+        //     // intro.addHints();
+            
+        // }
+
+        // if(subdirectory1 === "sim" && subdirectory2 === "trolls" && intro._currentStep === 9) { // your disabled step 2 for example {
+        //     introJs.hideHints();
+        // }
+
+
         // make them hit back button to return to friend request
-        if(subdirectory1 === "sim" && subdirectory2 === "trolls" && intro._currentStep === 13) { // your disabled step 2 for example {
+        if(subdirectory1 === "sim" && subdirectory2 === "trolls" && intro._currentStep === 8) { // your disabled step 2 for example {
             var original_onclick = $('.introjs-nextbutton').get(0).onclick;
             let elements = document.getElementsByTagName('a');
             // console.log(elements);
-            // console.log(elements[33]);
-            elements[33].style.filter = "grayscale(100%)";
+            // console.log(elements[28]);
+            elements[28].style.filter = "grayscale(100%)";
 
 
             // $('.introjs-nextbutton').style.backgroundColor = "red";  
@@ -154,21 +182,21 @@ function startIntro(enableDataCollection) {
             $('.introjs-nextbutton').get(0).onclick = null;
             $('#backBtn').on('click', function() {
                 // reset next button for future use
-                elements[33].style.filter = "";
+                elements[28].style.filter = "";
                 $('.introjs-nextbutton').removeClass('introjs-disabled');
                 $('.introjs-nextbutton').get(0).onclick = original_onclick;
                 
                 // activate the click for the user too so we can automatically move them along!!
-                elements[33].click();
+                elements[28].click();
               })
         }
 
         // at last step disable back button, they must click decline
-        if(subdirectory1 === "sim" && subdirectory2 === "trolls" && intro._currentStep === 14) { // your disabled step 2 for example {
+        if(subdirectory1 === "sim" && subdirectory2 === "trolls" && intro._currentStep === 9) { // your disabled step 2 for example {
             var original_onclick = $('.introjs-prevbutton').get(0).onclick;
             let elements = document.getElementsByTagName('a');
             // console.log(elements[32]);
-            elements[32].style.filter = "grayscale(100%)";
+            elements[27].style.filter = "grayscale(100%)";
 
 
             // $('.introjs-nextbutton').style.backgroundColor = "red";  

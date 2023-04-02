@@ -17,7 +17,14 @@ function startIntro(){
       window.location.href='/start/' + pathArray[2];
     })
   } else {
-    window.location.href='/start/' + pathArray[2];
+    const modNameNoDashes = pathArray[2].replace('-','');
+
+    // change page identity takes you to 
+    if(modNameNoDashes == "identity") {
+      window.location.href='/identity_home';
+    } else {
+      window.location.href='/start/' + pathArray[2];
+    }
   }
 };
 
@@ -27,6 +34,9 @@ $(window).on('load', function() {
   const moduleName = pathArray[2];
   $.getJSON('/json/moduleInfo.json', function(data) {
     $("#cardImage").attr("src", cdn + data[moduleName]["image"]);
+    if(data[moduleName] == "shopping"){
+      $("#cardImage").attr("src", '/images/shopping.jpg');
+    }
     $("#cardTitle").text(data[moduleName]["title"]);
   });
   // Add animation to the tabs on click
