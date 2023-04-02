@@ -4,21 +4,22 @@
     #help-container
       #rpg-content
         img#dartie-img(src='/images/Dartie.png' alt='Happy Dartie the hedgehog character wearing blue')
-        //- p Great job getting past security! <strong> Click a mission</strong>  to get started!
         p#question What can I help you with?
-        form#myForm.ui.form(action='/chatbot', method='POST')
+        form#myForm1.ui.form(action='/chatbot', method='POST', style='float: left')
           input(type='hidden', name='_csrf', value=csrfToken)
           input(type='hidden', name='sender', value='test_user')
           input(type='hidden', name='message' value='Hi')
-          button#modules.ui.button.blue(type='submit') Where can I view my completed modules?
-        //- form.ui.form(action='/chatbot', method='POST')
-        //-   input(type='hidden', name='sender', value='test_user')
-        //-   input(type='hidden', name='message' value='Where can I change the text size?')
-        //-   button#accessibility.ui.button.blue(type='submit') Where can I change the text size?
-        //- form.ui.form(action='/chatbot', method='POST')
-        //-   input(type='hidden', name='sender', value='test_user')
-        //-   input(type='hidden', name='message' value='Hi')
-        //-   button#account.ui.button.blue(type='submit') How do I change my account information?
+          button#modules.ui.button.blue(type='submit', onclick='postQuestion("Where can I view my completed modules?")') Where can I view my completed modules?
+        form#myForm2.ui.form(action='/chatbot', method='POST', style='float: left')
+          input(type='hidden', name='_csrf', value=csrfToken)
+          input(type='hidden', name='sender', value='test_user')
+          input(type='hidden', name='message' value='Hi')
+          button#accessibility.ui.button.blue(type='submit', onclick='postQuestion("Where can I change the text size?")') Where can I change the text size?
+        form#myForm3.ui.form(action='/chatbot', method='POST', style='float: left')
+          input(type='hidden', name='_csrf', value=csrfToken)
+          input(type='hidden', name='sender', value='test_user')
+          input(type='hidden', name='message' value='Hi')
+          button#account.ui.button.blue(type='submit', onclick='postQuestion("How do I change my account information?")') How do I change my account information?
         p#chatResponse(style="display: none") This is a hidden message.
 #footer.ui.bottom.fixed.small.borderless.menu.testDriveFooter
   .left.menu
@@ -48,46 +49,70 @@ script.
     window.location.reload();
   }
 
-  //- document.getElementById('modules').onclick = function() { showResponse();};
-  //- document.getElementById('accessibility').onclick = function() { chatbot("Where can I change the text size?"); };
-  //- document.getElementById('account').onclick = function() { chatbot("How do I change my account information?"); };
-
-  function showResponse(){
-    document.getElementById('modules').style.display = "none";
-    //- document.getElementById('accessibility').style.display = "none";
-    //- document.getElementById('account').style.display = "none";
-    document.getElementById('question').style.display = "none";
-    //- document.getElementById('chatResponse').innerHTML = json;
-    document.getElementById('chatResponse').style.display = "block";
+  function postQuestion(question){
+    document.getElementById('question').innerHTML = question;
   }
 
-  //- document.forms['myForm'].addEventListener('submit', (event) => {
-  //-   event.preventDefault();
-  //-   console.log("FORM SUBMITTED");
-  //-   fetch(event.target.action, {
-  //-       method: 'POST',
-  //-       body: new URLSearchParams(new FormData(event.target)) 
-  //-   }).then((response) => {
-  //-       if (!response.ok) {
-  //-         throw new Error(`HTTP error! Status: ${response.status}`);
-  //-       }
-  //-       console.log(response);
-  //-       return response.json();
-  //-   }).then((body) => {
-  //-       // TODO handle body
-  //-       console.log("HERE");
-  //-       console.log(body);
-  //-       document.getElementById('modules').style.display = "none";
-  //-       document.getElementById('question').style.display = "none";
-  //-       document.getElementById('chatResponse').style.display = "block";
-  //-   }).catch((error) => {
-  //-       // TODO handle error
-  //-   });
-  //-   console.log("EXITING");
-  //- });
+  document.forms['myForm1'].addEventListener('submit', (event) => {
+    event.preventDefault();
+    fetch(event.target.action, {
+        method: 'POST',
+        body: new URLSearchParams(new FormData(event.target)) 
+    }).then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    }).then((body) => {
+        document.getElementById('modules').style.display = "none";
+        document.getElementById('accessibility').style.display = "none";
+        document.getElementById('account').style.display = "none";
+        document.getElementById('chatResponse').innerHTML = body[0].text;
+        document.getElementById('chatResponse').style.display = "block";
+    }).catch((error) => {
+        // TODO handle error
+    });
+  });
 
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "/chatbot"); 
-  xhr.onload = function(event){ 
-      alert("Success, server responded with: " + event.target.response); // raw response
-  }; 
+  document.forms['myForm2'].addEventListener('submit', (event) => {
+    event.preventDefault();
+    fetch(event.target.action, {
+        method: 'POST',
+        body: new URLSearchParams(new FormData(event.target)) 
+    }).then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    }).then((body) => {
+        document.getElementById('modules').style.display = "none";
+        document.getElementById('accessibility').style.display = "none";
+        document.getElementById('account').style.display = "none";
+        document.getElementById('chatResponse').innerHTML = body[0].text;
+        document.getElementById('chatResponse').style.display = "block";
+    }).catch((error) => {
+        // TODO handle error
+    });
+  });
+
+  document.forms['myForm3'].addEventListener('submit', (event) => {
+    event.preventDefault();
+    fetch(event.target.action, {
+        method: 'POST',
+        body: new URLSearchParams(new FormData(event.target)) 
+    }).then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    }).then((body) => {
+        document.getElementById('modules').style.display = "none";
+        document.getElementById('accessibility').style.display = "none";
+        document.getElementById('account').style.display = "none";
+        document.getElementById('chatResponse').innerHTML = body[0].text;
+        document.getElementById('chatResponse').style.display = "block";
+    }).catch((error) => {
+        // TODO handle error
+    });
+  });
+
