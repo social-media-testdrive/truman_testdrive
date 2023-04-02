@@ -184,6 +184,20 @@ exports.postInstructorLogin = (req, res, next) => {
     })(req, res, next);
 };
 
+exports.postChatbotConnect = (req, res, next) => {
+    var request = require('request');
+    request.post(
+        'http://3.19.31.168:8080/webhooks/rest/webhook',
+        { json: { 'sender': req.body.sender, 'message': req.body.message} },
+        function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                console.log(body);
+                res.json(body);
+            }
+        }
+    );
+};
+
 /**
  * POST /createStudent
  * Create a new student with facilitator.
