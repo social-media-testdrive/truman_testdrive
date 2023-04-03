@@ -3,39 +3,44 @@ extends ../ui_layout
 block content
 
   .ui.text.container.addBottomMargin
-    h2 Reflection: 
-    p How did you feel about the first sub-module? Are you confident that you know about the consequences? 
-    h2 Confidence Rating:  
-    .ui.form(style="width: 100%")
+    h2 Practice
+    p 
+      b 
+        | If you receive the email below, WHAT SHOULD YOU BE THINKING? Select all that apply.
+    img.ui.image(src='/images/practice_question.png')
+    .ui.form(style="width: 100%" action='checkQuestion()')
       .field
-        .ui.radio.checkbox(style='border-style: solid; border-color: grey; padding: 15px; width: 100%')
-          input.hidden(type='radio' name='confidence' value = 'not_confident' id='radio1')
-          label I don't understand
+        #b1.ui.checkbox(style='border-style: solid; border-color: grey; padding: 15px; width: 100%')
+          input.hidden(type='checkbox' id = 'c1' name='answer1' value = 'a1')
+          label When this email asks you to click a link, being alert. That could be a scam.
       .field
-        .ui.radio.checkbox(style='border-style: solid; border-color: grey; padding: 15px; width: 100%')
-          input.hidden(type='radio' name='confidence' value = 'okay_confident')
-          label I'm okay
+        #b2.ui.checkbox(style='border-style: solid; border-color: gray; padding: 15px; width: 100% ; color: green')
+          input.hidden(type='checkbox' id = 'c2' name='answer2' value = 'a2')
+          label Ask the question: do I have the account with the company? Did you submit a ticket to the company?
+            | If the answer is no, deleter the email immediately.
       .field
-        .ui.radio.checkbox(style='border-style: solid; border-color: grey; padding: 15px; width: 100%')
-          input.hidden(type='radio' name='confidence' value = 'yes_confident')
-          label I'm confident
-    h1
-    #avatar.ui.one.column.centered.grid(styl="margin: 50px")
-      .ui.huge.right.pointing.circular.label
-        p(style="padding-top: 50px") Do you need any clarifications?
-        button#nohelp.ui.tiny.button No
-        button#help.ui.tiny.button(onclick="showModal()") Yes
-      img.ui.small.image.right.floated(src='/images/avatar-pic.png')
+        #b3.ui.checkbox(style='border-style: solid; border-color: grey; padding: 15px; width: 100%')
+          input.hidden(type='checkbox' id = 'c3' name='answer3' value = 'a3')
+          label If you have the account with this company, carefully examine the sender's email address. 
+            | If the email address is not correct, delete the email.
+      .field
+        #b4.ui.checkbox(style='border-style: solid; border-color: grey; padding: 15px; width: 100%')
+          input.hidden(type='checkbox' id = 'c4' name='answer4' value = 'a4')
+          label If you still could not identify whether the email address is authentic or not, contact the company to inform. 
+            | Remember using a phone number or website you know is real -- not the information in the email.
+      .field
+        input#submitQuestion.ui.green.button(type='submit' value='Submit' style='float: right' onclick='checkQuestion()')
+    #correctness.ui.label(style='clear: both; width: 100%; float: right; display: none')
+      p#score(style='float:right') 1.0/1 points
     brbr
-    h1
-    .div
+    .div(style='clear: both; margin-top: 20px')
       button.ui.button.left.floated(onclick="location.href='/identity_learn_quiz';") 
         i.arrow.left.icon 
         | Back
       button.ui.button.left.floated(onclick="location.href='/;") Save & Exit
       button.circular.ui.icon.button.right.floated(onclick="showModal()")
         i.wechat.icon
-      button.ui.button.right.floated(onclick="location.href='/identity_learn_page1';")
+      button.ui.button.right.floated(onclick="location.href='/identity_reflection';")
         | Next
         i.arrow.right.icon
     #chatModal.ui.modal
@@ -49,13 +54,13 @@ block content
           .ui.large.left.pointing.label(style='float: left')
             p Hi User! Welcome to the Chat! I am so happy you're here! 
               | You requested clarification. Luckily for you, in here, you can ask any questions you have about the material covered.
-        .ui.large.left.pointing.label(style='float: left; display: block; clear:both')
+        .ui.large.left.pointing.label(style='float: left; display: block')
           p Before we start, I want to be clear that I am an AI chat-bot and not a human being. 
             | However, I will do my best to help you with what you need assistance on!
-        .ui.large.left.pointing.label(style='float: left; clear:both')
+        .ui.large.left.pointing.label(style='float: left')
           p You can feel free to save and exit the chat through the botton on the bottom left of you screen. 
             | You can always re-enter as well. Does all of this make sense? Select a button below.
-        button#understand_button.ui.small.blue.button(onclick="showYes()" style='float: right; clear:both') Yes.
+        button#understand_button.ui.small.blue.button(onclick="showYes()" style='float: right') Yes.
         #understand.ui.large.blue.right.pointing.label(style='float: right; visibility: hidden; clear: both')
           p Yes.
         #yay.ui.large.left.pointing.label(style="visibility: hidden; float: left; clear: both")
@@ -96,6 +101,33 @@ block scripts
       hid.style.visibility = "visible";
       hid = document.getElementById("topic_response2");
       hid.style.visibility = "visible";
+    }
+
+    function checkQuestion(){
+      document.getElementById("submitQuestion").style.display = "none";
+      let x = 0;
+      if(document.getElementById("c1").checked) {
+        document.getElementById("b1").style.borderColor="green";
+        x = x + .25;
+      }
+      else document.getElementById("b1").style.borderColor="red";
+      if(document.getElementById("c2").checked) {
+        document.getElementById("b2").style.borderColor="green";
+         x = x + .25;
+      }
+      else document.getElementById("b2").style.borderColor="red";
+      if(document.getElementById("c3").checked) {
+         document.getElementById("b3").style.borderColor="green";
+          x = x + .25;
+      }
+      else document.getElementById("b3").style.borderColor="red";
+      if(document.getElementById("c4").checked) {
+        document.getElementById("b4").style.borderColor="green";
+         x = x + .25;
+      }
+      else document.getElementById("b4").style.borderColor="red";
+      document.getElementById("score").innerHTML = x + " / 1.0 points";
+      document.getElementById("correctness").style.display = "block";
     }
 
     function showModal(){
