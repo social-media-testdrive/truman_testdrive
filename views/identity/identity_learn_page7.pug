@@ -5,24 +5,20 @@ block content
   .ui.text.container.addBottomMargin
     h2 Reflection: 
     p How did you feel about the first sub-module? Are you confident that you know about the consequences? 
-    h2 Confidence Rating: 
-    #progressBar.ui.green.tiny.progress(data-percent='74')
-      .bar 
-    .ui.one.column.centered.grid
-      .ui.form(style="width: 100%")
-        .inline.fields
-          .field(style="width: 33%")
-            .ui.radio.checkbox
-              input.hidden(type='radio' name='confidence' value = 'not_confident' id='radio1')
-              label I don't understand
-          .field(style="width: 33%")
-            .ui.radio.checkbox
-              input.hidden(type='radio' name='confidence' value = 'okay_confident')
-              label I'm okay
-          .field.right.floated(style="width: 33%")
-            .ui.radio.checkbox
-              input.hidden(type='radio' name='confidence' value = 'yes_confident')
-              label I'm confident
+    h2 Confidence Rating:  
+    .ui.form(style="width: 100%")
+      .field
+        .ui.radio.checkbox(style='border-style: solid; border-color: grey; padding: 15px; width: 100%')
+          input.hidden(type='radio' name='confidence' value = 'not_confident' id='radio1')
+          label I don't understand
+      .field
+        .ui.radio.checkbox(style='border-style: solid; border-color: grey; padding: 15px; width: 100%')
+          input.hidden(type='radio' name='confidence' value = 'okay_confident')
+          label I'm okay
+      .field
+        .ui.radio.checkbox(style='border-style: solid; border-color: grey; padding: 15px; width: 100%')
+          input.hidden(type='radio' name='confidence' value = 'yes_confident')
+          label I'm confident
     h1
     #avatar.ui.one.column.centered.grid(styl="margin: 50px")
       .ui.huge.right.pointing.circular.label
@@ -33,82 +29,51 @@ block content
     brbr
     h1
     .div
-      button.ui.button.left.floated(onclick="location.href='/identity_learn_quiz';") 
+      button.ui.button.left.floated(onclick="location.href='/identity_learn_page6';") 
         i.arrow.left.icon 
         | Back
-      button.ui.button.left.floated(onclick="location.href='/;") Save & Exit
+      button.ui.button.left.floated(onclick="location.href='/';") Save & Exit
       button.circular.ui.icon.button.right.floated(onclick="showModal()")
         i.wechat.icon
-      button.ui.button.right.floated(onclick="location.href='/identity_learn_page1';")
+      button.ui.green.button.right.floated(onclick="location.href='/identity_learn_page8';")
         | Next
         i.arrow.right.icon
-    .ui.modal
+    #chatModal.ui.modal
       i.close.icon
       .ui.large.header(style="background-color: grey; color: white;")
         img.ui.circular.image(src='/images/avatar-pic.jpg' style='margin: 25px')
         | Chat with Intrepid
       .content(style="background-color: #d3d3d3;")
-        .ui.two.column.grid
-          .column
-            img.ui.tiny.circular.image.left.floated(src='/images/avatar-pic.jpg' style='margin: 25px')
-            .ui.large.left.pointing.label.right.floated
-              p Hi User! Welcome to the Chat! I am so happy you're here! 
-                | You requested clarification. Luckily for you, in here, you can ask any questions you have about the material covered.
-            h3
-            .ui.large.left.pointing.label
-              p Before we start, I want to be clear that I am an AI chat-bot and not a human being. 
-                | However, I will do my best to help you with what you need assistance on!
-            h3
-            .ui.large.left.pointing.label
-              p You can feel free to save and exit the chat through the botton on the bottom left of you screen. 
-                | You can always re-enter as well. Does all of this make sense? Select a button below.
-            .ui.large.blue.right.pointing.right.floated.label(style="visibility: hidden") 
-              p topic selected
-            button.ui.small.blue.button.right.floated(style="display: none") Yes.
-            h3
-            #yay.ui.large.left.pointing.label(style="visibility: hidden")
-              p Yay! Let's begin. Please select a button below what you would like clarification on.
-            h3
-            .ui.vertical.buttons.right.floated(style="visibility: hidden")
-              button.ui.small.blue.button(onclick="showTopic('Consequences of finanical identity theft')") Consequences of financial identity theft
-              button.ui.small.blue.button(onclick="showTopic('Idenifying a troll')") Identifying a troll
-              button.ui.small.blue.button(onclick="showTopic('Other')") Other
-            #topic_response1.ui.large.left.pointing.label(style="visibility: hidden") 
-              p This can definitely be a hard topic to grasp, so I understand completely!
-            h3
-            #topic_response2.ui.large.left.pointing.label(style="visibility: hidden") 
-              p I want to help you as best as I can, so please click the learning option you feel would most help you reach understanding. 
-              | We can start with this.
-          .column
-            img.ui.tiny.circular.image.left.floated(src='/images/avatar-pic.jpg' style='margin: 25px; visibility: hidden')
-            .ui.large.left.pointing.label.right.floated(style="visibility: hidden")
-              p Hi User! Welcome to the Chat! I am so happy you're here! 
-                | You requested clarification. Luckily for you, in here, you can ask any questions you have about the material covered.
-            h3
-            .ui.large.left.pointing.label(style="visibility: hidden")
-              p Before we start, I want to be clear that I am an AI chat-bot and not a human being.
-                |  However, I will do my best to help you with what you need assistance on! 
-            h3
-            .ui.large.left.pointing.label(style="visibility: hidden")
-              p You can feel free to save and exit the chat through the botton on the bottom left of you screen.
-                | You can always re-enter a
-            button#understand_button.ui.small.blue.button.right.floated(onclick="showYes()") Yes
-            #understand.ui.large.blue.right.pointing.right.floated.label(style="visibility: hidden") 
-              p Yes.
-            .ui.large.left.pointing.label(style="visibility: hidden")
-              p Yay! Let's begin. Please select a button below what you would like clarification on.
-            #topics_group.ui.vertical.buttons.right.floated(style="visibility: hidden")
-              button.ui.small.blue.button(onclick="showTopic('Consequences of finanical identity theft')") Consequences of financial identity theft
-              button.ui.small.blue.button(onclick="showTopic('Idenifying a troll')") Identifying a troll
-              button.ui.small.blue.button(onclick="showTopic('Other')") Other
-            #topic.ui.large.blue.right.pointing.right.floated.label(style="visibility: hidden") 
-              p#topic_text 
-        
+        .div(style='overflow: hidden; float: left')
+          img.ui.tiny.circular.image(src='/images/avatar-pic.jpg' style='float: left; margin-bottom: 25px; display: block')
+          .ui.large.left.pointing.label(style='float: left')
+            p Hi User! Welcome to the Chat! I am so happy you're here! 
+              | You requested clarification. Luckily for you, in here, you can ask any questions you have about the material covered.
+        .ui.large.left.pointing.label(style='float: left; display: block; clear:both')
+          p Before we start, I want to be clear that I am an AI chat-bot and not a human being. 
+            | However, I will do my best to help you with what you need assistance on!
+        .ui.large.left.pointing.label(style='float: left; clear:both')
+          p You can feel free to save and exit the chat through the botton on the bottom left of you screen. 
+            | You can always re-enter as well. Does all of this make sense? Select a button below.
+        button#understand_button.ui.small.blue.button(onclick="showYes()" style='float: right; clear:both') Yes.
+        #understand.ui.large.blue.right.pointing.label(style='float: right; visibility: hidden; clear: both')
+          p Yes.
+        #yay.ui.large.left.pointing.label(style="visibility: hidden; float: left; clear: both")
+          p Yay! Let's begin. Please select a button below what you would like clarification on.
+        #topics_group(style="visibility: hidden; clear: both; float: right")
+          button.ui.small.blue.button(onclick="showTopic('Consequences of finanical identity theft')") Consequences of financial identity theft
+          button.ui.small.blue.button(onclick="showTopic('Identifying a troll')") Identifying a troll
+          button.ui.small.blue.button(onclick="showTopic('Other')") Other
+        #topic.ui.large.blue.right.pointing.label(style="visibility: hidden; clear: both; float: right") 
+          p#topic_text 
+        #topic_response1.ui.large.left.pointing.label(style="visibility: hidden; clear: both; float: left") 
+          p This can definitely be a hard topic to grasp, so I understand completely!
+        #topic_response2.ui.large.left.pointing.label(style="visibility: hidden; clear: both; float: left") 
+          p I want to help you as best as I can, so please click the learning option you feel would most help you reach understanding. 
+          | We can start with this.
 
 block scripts
   script.
-
-    //- $('#radio1').click(function(){smallProgress()});  
 
     function showYes(){
       var hid = document.getElementById("understand");
@@ -134,20 +99,10 @@ block scripts
     }
 
     function showModal(){
-      $('.ui.modal')
+      $('#chatModal.ui.modal')
         .modal('show')
       ;
     }
-
-    //- $('#progressBar').progress({
-    //-   percent: 50
-    //-   });  
-
-    //- function smallProgress(){
-    //-   $('#progressBar').progress({
-    //-   percent: 80
-    //-   });
-    //- }
 
     var voiceoverMappings = {
       '.showLearnSectionButton': {
