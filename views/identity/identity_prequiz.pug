@@ -14,22 +14,21 @@ block content
     .ui.container
       h1 Quiz
             
-      form#quiz-form
+      form#quiz-form.ui.form(style="width: 100%;")
         img.ui.centered.image(src='/images/identity_prequiz_1.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:0px;margin-bottom: 0px;")
         .ui.segment
           h3(style='display: inline-block; font-weight: bold;') 
             span(style='color: red; margin-right: 5px;') * 
             | 1. Is this email a scam? 
-          .ui.form(style="width: 100%;")
-            div.ui.inline.fields(style='display: flex;margin-bottom: -30px;')
-              .field.fieldStyle
-                .ui.radio.checkbox.radioContainer
-                  input(type='radio' name='q1' value = 'yes')
-                  label Yes
-              .field.fieldStyle
-                .ui.radio.checkbox.radioContainer
-                  input(type='radio' name='q1' value = 'no')
-                  label No
+          div.ui.inline.fields(style='display: flex;margin-bottom: -30px;')
+            .field.fieldStyle
+              .ui.radio.checkbox.radioContainer
+                input(type='radio' name='q1' value = 'yes')
+                label Yes
+            .field.fieldStyle
+              .ui.radio.checkbox.radioContainer
+                input(type='radio' name='q1' value = 'no')
+                label No
           input(type='hidden', name='q1')
 
         hr
@@ -39,16 +38,15 @@ block content
           h3(style='display: inline-block; font-weight: bold;') 
             span(style='color: red; margin-right: 5px;') * 
             | 2. Is this email a scam? 
-          .ui.form(style="width: 100%;")
-            div.ui.inline.fields(style='display: flex;margin-bottom: -30px;')
-              .field.fieldStyle
-                .ui.radio.checkbox.radioContainer
-                  input(type='radio' name='q2' value = 'yes')
-                  label Yes
-              .field.fieldStyle
-                .ui.radio.checkbox.radioContainer
-                  input(type='radio' name='q2' value = 'no')
-                  label No
+          div.ui.inline.fields(style='display: flex;margin-bottom: -30px;')
+            .field.fieldStyle
+              .ui.radio.checkbox.radioContainer
+                input(type='radio' name='q2' value = 'yes')
+                label Yes
+            .field.fieldStyle
+              .ui.radio.checkbox.radioContainer
+                input(type='radio' name='q2' value = 'no')
+                label No
           input(type='hidden', name='q2')
 
         hr
@@ -58,16 +56,15 @@ block content
           h3(style='display: inline-block; font-weight: bold;') 
             span(style='color: red; margin-right: 5px;') * 
             | 3. Is this email a scam? 
-          .ui.form(style="width: 100%;")
-            div.ui.inline.fields(style='display: flex;margin-bottom: -30px;')
-              .field.fieldStyle
-                .ui.radio.checkbox.radioContainer
-                  input(type='radio' name='q3' value = 'yes')
-                  label Yes
-              .field.fieldStyle
-                .ui.radio.checkbox.radioContainer
-                  input(type='radio' name='q3' value = 'no')
-                  label No
+          div.ui.inline.fields(style='display: flex;margin-bottom: -30px;')
+            .field.fieldStyle
+              .ui.radio.checkbox.radioContainer
+                input(type='radio' name='q3' value = 'yes')
+                label Yes
+            .field.fieldStyle
+              .ui.radio.checkbox.radioContainer
+                input(type='radio' name='q3' value = 'no')
+                label No
           input(type='hidden', name='q3')
 
         hr
@@ -77,16 +74,15 @@ block content
           h3(style='display: inline-block; font-weight: bold;') 
             span(style='color: red; margin-right: 5px;') * 
             | 4. Is this email a scam? 
-          .ui.form(style="width: 100%;")
-            div.ui.inline.fields(style='display: flex;margin-bottom: -30px;')
-              .field.fieldStyle
-                .ui.radio.checkbox.radioContainer
-                  input(type='radio' name='q4' value = 'yes')
-                  label Yes
-              .field.fieldStyle
-                .ui.radio.checkbox.radioContainer
-                  input(type='radio' name='q4' value = 'no')
-                  label No
+          div.ui.inline.fields(style='display: flex;margin-bottom: -30px;')
+            .field.fieldStyle
+              .ui.radio.checkbox.radioContainer
+                input(type='radio' name='q4' value = 'yes')
+                label Yes
+            .field.fieldStyle
+              .ui.radio.checkbox.radioContainer
+                input(type='radio' name='q4' value = 'no')
+                label No
           input(type='hidden', name='q4')
         hr
 
@@ -94,28 +90,27 @@ block content
           h3(style='display: inline-block; font-weight: bold;') 
             span(style='color: red; margin-right: 5px;') * 
             | 5. What could occur if your identity is stolen? Select all that apply. 
-          .ui.form
-            .grouped.fields
-              .field
-                div.ui.checkbox
-                  input(type='checkbox', name='q2-option-1', value='1')
-                  label Loss of money
-              .field
-                div.ui.checkbox
-                  input(type='checkbox', name='q2-option-2', value='1')
-                  label Loss of tax refund
-              .field
-                div.ui.checkbox
-                  input(type='checkbox', name='q2-option-3', value='1')
-                  label Be charged as a criminal
-              .field
-                div.ui.checkbox
-                  input(type='checkbox', name='q2-option-4', value='1')
-                  label Denials of loans and mortgages
-              .field
-                div.ui.checkbox
-                  input(type='checkbox', name='q2-option-5', value='1')
-                  label Loss of medical care
+          .grouped.fields
+            .field
+              div.ui.checkbox
+                input(type='checkbox', name='q2-option-1', value='1')
+                label Loss of money
+            .field
+              div.ui.checkbox
+                input(type='checkbox', name='q2-option-2', value='1')
+                label Loss of tax refund
+            .field
+              div.ui.checkbox
+                input(type='checkbox', name='q2-option-3', value='1')
+                label Be charged as a criminal
+            .field
+              div.ui.checkbox
+                input(type='checkbox', name='q2-option-4', value='1')
+                label Denials of loans and mortgages
+            .field
+              div.ui.checkbox
+                input(type='checkbox', name='q2-option-5', value='1')
+                label Loss of medical care
     .div(style='margin-top:20px;')
       button.ui.large.button.left.floated(onclick="location.href='/identity_home';") 
         i.arrow.left.icon 

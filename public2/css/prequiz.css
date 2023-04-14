@@ -6,7 +6,7 @@
 
 .ui.radio.checkbox.radioContainer {
     border-radius: 999px; 
-    border: 2px solid black;
+    border: 2px solid gray;
     width: 100%;
     text-align: left;
     padding: 20px;
