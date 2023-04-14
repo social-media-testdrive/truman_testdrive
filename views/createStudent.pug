@@ -1,25 +1,34 @@
 extends ui_layout
 
+<<<<<<< HEAD
 block content
   .ui.sixteen.wide.row 
     .ui.sixteen.wide.column
       h2.ui.header Student Account Creation
       .ui.form(action="/createStudent", method='POST')
         input(type='hidden', name='facilitator', value=user.username)
+=======
+block content 
+  .ui.sixteen.wide.row
+    .ui.sixteen.wide.column(style="display: flex; flex-direction: column; justify-content: center; align-items: center;")
+     .login-box
+      h2.ui.header(style="text-align: left !important; margin:5px 0px") Create an account
+      h2(style="font-size: 15px; text-align: left !important; margin:0 0 15px 0px ") please enter your details.
+      form.ui.form(action="/createStudent", method='POST')
+        input(type='hidden', name='facilitator')
+>>>>>>> 925b56f0f8ab9291d274028e3835f440a74b5625
         input(type='hidden', name='_csrf', value=csrfToken)
-        .field.six.wide.column
-          label(for='username' style="font-size:larger;") Enter Student Username
-          .ui.pointing.below.label.basic.red
+        .field
+          label(for='username' style="font-size:larger;") Enter Username
+          .ui.pointing.below.label.basic.username-red
               .header Create a simple username: 
                 br
                 br
                 li Avoid using your full name or email address. 
-          input(type='text', name='username', id='username', placeholder='Username', required).field.left 
+          input(style="margin:5px 0px; width: 100%; border-radius: 5px; border: 2px solid grey !important; background-color: #fff !!important; color: #000 !important;" type='text', name='username', id='username', placeholder='Username', required).field.left 
 
-          br
-          br
-          label(for='password' style="font-size:larger;") Enter Student Password
-          .ui.pointing.below.label.basic.red
+          label(for='password' style="font-size:larger; margin:0px") Password
+          .ui.pointing.below.label.basic.password-red
             .header Create a secure password: 
               br
               br
@@ -27,23 +36,45 @@ block content
               br
               li Avoid personal information like birthdays or common password patterns, e.g. Dragon123 or 123456789.
               br
-              li Store you passwords in a password manager app for ease of access!
-          input(type='password', name='password', id='password', placeholder='Password', required).field
-        h3.ui.header.blue="*The Facilitator assigned to this account is @" + user.username +". They will be available in case you are in need of assistance." 
-        button.ui.big.green.button.buttonid(type='submit') Create
+              li Store your passwords in a password manager app for ease of access!
+          input(style="margin:5px 0px; width: 100%; border-radius: 5px; border: 2px solid grey !important; background-color: #fff !!important; color: #000 !important;" type='password', name='password', id='password', placeholder='Password', required).field
+          label(for='password' style="font-size:larger;") Confirm Password
+
+          input(style="margin:5px 0px; width: 100%; border-radius: 5px; border: 2px solid grey !important; background-color: #fff !!important; color: #000 !important;" type='password', name='confirm-password', id='confirm-password', placeholder='Confirm Password', required).field
+
+        div.checkbox-container(style="display: flex; justify-content: space-between;")
+            label.remember-me(style="display: flex; font-size: 18px; align-items: center;")
+              input(type='checkbox', name='remember-me')
+              span Remember Me
+            a.forgot(href='#', style="text-align: right;") Forgot Password?
         
+        a.ui.button.big.blue(href="/studentLogin", style="padding:14.1429px !important; display: block; width: 100%; border-radius: 20px; background-color: #2884d4; border: 1px solid #2884d4; text-align: center; padding: 10px; margin-top: 10px;")  Login
+        
+        button.ui.big.white.button(type='submit', style="background-color: #fff; border: 1px solid #2884d4; width: 100%; border-radius: 20px; margin: 15px 0;") Sign up
 block styles
-    
+  style.
+    .ui.pointing.below.label.basic.username-red, .ui.pointing.below.label.basic.password-red {
+      display: none;
+    }
+    .ui.pointing.below.label.active.username-red, .ui.pointing.below.label.active.password-red {
+      display: block;
+    }
       
 block scripts
+  link(rel='stylesheet', href='/css/style.css')
   script(src='/module_js/base_end.js')
   script(src='/module_js/base_start.js')
   script(src='/module_js/base_tutorial.js')
   script(src='/module_js/base_introSteps.js')
   script.
-    function openFeedback(){
-      window.open(href='https://cornell.qualtrics.com/jfe/form/SV_9tMszwlpe1TIIxT');
-    };
-    function toPrivacyFreePlay(){       
-      window.location.href='/free-play/privacy';
-    };
+    // Add and remove classes to show/hide red labels
+    $('#username').on('focus', function() {
+      $('.ui.pointing.below.label.username-red').addClass('active');
+    }).on('blur', function() {
+      $('.ui.pointing.below.label.username-red').removeClass('active');
+    });
+    $('#password').on('focus', function() {
+      $('.ui.pointing.below.label.password-red').addClass('active');
+    }).on('blur', function() {
+      $('.ui.pointing.below.label.password-red').removeClass('active');
+    });
