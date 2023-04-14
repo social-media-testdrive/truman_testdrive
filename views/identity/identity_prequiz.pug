@@ -11,66 +11,25 @@ block content
             | Identity Theft Pre-Quiz
       p Test Your Knowledge
 
-    .ui.form(style="width: 100%;")
-      div.ui.inline.fields(style='display: flex;')
-        .field.fieldStyle
-          .ui.radio.checkbox.radioContainer
-            input(type='radio' name='answer' value = 'yes')
-            label Yes
-        .field.fieldStyle
-          .ui.radio.checkbox.radioContainer
-            input.hidden(type='radio' name='answer' value = 'no')
-            label No
-
-    .ui.form
-      div.ui.inline.fields
-        .field
-          .ui.radio.checkbox.radioContainer
-            input.hidden(type='radio' name='answer' value = 'yes')
-            label Yes
-        .field
-          .ui.radio.checkbox.radioContainer
-            input.hidden(type='radio' name='answer' value = 'no')
-            label No
-
-      div.ui.inline.fields(style='display: flex;')
-        div.ui.radio.checkbox
-          input#radio1(type='radio' name='radio')
-          label(for='radio1' style='border-radius: 999px; border: 2px solid red; padding: 10px 20px;')
-            | Radio 1
-        div.ui.radio.checkbox
-          input#radio2(type='radio' name='radio')
-          label(for='radio2' style='border-radius: 999px; border: 2px solid red; padding: 10px 20px;')
-            | Radio 2
-
-      //- form.ui.form
-      //-   .inline.fields
-      //-     .field(style="width: 50%; border-radius: 5px 0 0 5px; border: 1px solid red; background-color: gray;")
-      //-       .ui.radio.checkbox
-      //-         input(type='radio', name='answer', value='yes')
-      //-         label Yes
-      //-     .field(style="width: 50%; border-radius: 0 5px 5px 0; border: 1px solid red; background-color: gray;")
-      //-       .ui.radio.checkbox
-      //-         input(type='radio', name='answer', value='no')
-      //-         label No
-
-
-
     .ui.container
       h1 Quiz
+            
       form#quiz-form
         img.ui.centered.image(src='/images/identity_prequiz_1.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:0px;margin-bottom: 0px;")
         .ui.segment
           h3(style='display: inline-block; font-weight: bold;') 
             span(style='color: red; margin-right: 5px;') * 
             | 1. Is this email a scam? 
-          .ui.two.buttons(style='display:flex;')
-            button.ui.button(type='button', id='yes1-button', style='flex:1;border-radius:20px;background:none;color:#000;border:2px solid #000;margin-right:10px;text-align:left;', onclick="handleButtonClick('yes', 1);")
-              i.circle.outline.icon(style='margin-right:10px;', id='yes1-circle')
-              | Yes
-            button.ui.button(type='button', id='no1-button', style='flex:1;border-radius:20px;background:none;color:#000;border:2px solid #000;text-align:left;', onclick="handleButtonClick('no', 1);")
-              i.circle.outline.icon(style='margin-right:10px;', id='no1-circle')
-              | No
+          .ui.form(style="width: 100%;")
+            div.ui.inline.fields(style='display: flex;margin-bottom: -30px;')
+              .field.fieldStyle
+                .ui.radio.checkbox.radioContainer
+                  input(type='radio' name='q1' value = 'yes')
+                  label Yes
+              .field.fieldStyle
+                .ui.radio.checkbox.radioContainer
+                  input(type='radio' name='q1' value = 'no')
+                  label No
           input(type='hidden', name='q1')
 
         hr
@@ -80,13 +39,16 @@ block content
           h3(style='display: inline-block; font-weight: bold;') 
             span(style='color: red; margin-right: 5px;') * 
             | 2. Is this email a scam? 
-          .ui.two.buttons(style='display:flex;')
-            button.ui.button(type='button', id='yes2-button', style='flex:1;border-radius:20px;background:none;color:#000;border:2px solid #000;margin-right:10px;text-align:left;', onclick="handleButtonClick('yes', 2);")
-              i.circle.outline.icon(style='margin-right:10px;', id='yes2-circle')
-              | Yes
-            button.ui.button(type='button', id='no2-button', style='flex:1;border-radius:20px;background:none;color:#000;border:2px solid #000;text-align:left;', onclick="handleButtonClick('no', 2);")
-              i.circle.outline.icon(style='margin-right:10px;', id='no2-circle')
-              | No
+          .ui.form(style="width: 100%;")
+            div.ui.inline.fields(style='display: flex;margin-bottom: -30px;')
+              .field.fieldStyle
+                .ui.radio.checkbox.radioContainer
+                  input(type='radio' name='q2' value = 'yes')
+                  label Yes
+              .field.fieldStyle
+                .ui.radio.checkbox.radioContainer
+                  input(type='radio' name='q2' value = 'no')
+                  label No
           input(type='hidden', name='q2')
 
         hr
@@ -96,13 +58,16 @@ block content
           h3(style='display: inline-block; font-weight: bold;') 
             span(style='color: red; margin-right: 5px;') * 
             | 3. Is this email a scam? 
-          .ui.two.buttons(style='display:flex;')
-            button.ui.button(type='button', id='yes3-button', style='flex:1;border-radius:20px;background:none;color:#000;border:2px solid #000;margin-right:10px;text-align:left;', onclick="handleButtonClick('yes', 3);")
-              i.circle.outline.icon(style='margin-right:10px;', id='yes3-circle')
-              | Yes
-            button.ui.button(type='button', id='no3-button', style='flex:1;border-radius:20px;background:none;color:#000;border:2px solid #000;text-align:left;', onclick="handleButtonClick('no', 3);")
-              i.circle.outline.icon(style='margin-right:10px;', id='no3-circle')
-              | No
+          .ui.form(style="width: 100%;")
+            div.ui.inline.fields(style='display: flex;margin-bottom: -30px;')
+              .field.fieldStyle
+                .ui.radio.checkbox.radioContainer
+                  input(type='radio' name='q3' value = 'yes')
+                  label Yes
+              .field.fieldStyle
+                .ui.radio.checkbox.radioContainer
+                  input(type='radio' name='q3' value = 'no')
+                  label No
           input(type='hidden', name='q3')
 
         hr
@@ -112,13 +77,16 @@ block content
           h3(style='display: inline-block; font-weight: bold;') 
             span(style='color: red; margin-right: 5px;') * 
             | 4. Is this email a scam? 
-          .ui.two.buttons(style='display:flex;')
-            button.ui.button(type='button', id='yes4-button', style='flex:1;border-radius:20px;background:none;color:#000;border:2px solid #000;margin-right:10px;text-align:left;', onclick="handleButtonClick('yes', 4);")
-              i.circle.outline.icon(style='margin-right:10px;', id='yes4-circle')
-              | Yes
-            button.ui.button(type='button', id='no4-button', style='flex:1;border-radius:20px;background:none;color:#000;border:2px solid #000;text-align:left;', onclick="handleButtonClick('no', 4);")
-              i.circle.outline.icon(style='margin-right:10px;', id='no4-circle')
-              | No
+          .ui.form(style="width: 100%;")
+            div.ui.inline.fields(style='display: flex;margin-bottom: -30px;')
+              .field.fieldStyle
+                .ui.radio.checkbox.radioContainer
+                  input(type='radio' name='q4' value = 'yes')
+                  label Yes
+              .field.fieldStyle
+                .ui.radio.checkbox.radioContainer
+                  input(type='radio' name='q4' value = 'no')
+                  label No
           input(type='hidden', name='q4')
         hr
 
@@ -165,50 +133,6 @@ block content
 
 block scripts
   script.
-    var activeButtons = {};
-
-    function handleButtonClick(buttonId, questionNum) {
-      console.log("ButtonID: " + buttonId);
-      console.log("questionNum: " + questionNum);
-
-
-      var questionId = buttonId + questionNum;
-      var circleId = questionId + '-circle';
-      var circle = document.getElementById(circleId);
-      console.log("QuestionID: " + questionId);
-      console.log("CircleID: " + circleId);
-      console.log("circle: " + circle);
-
-      console.log("Values in active buttons array: ");
-      for (var key in activeButtons) {
-        console.log(activeButtons[key]);
-
-        //- if (activeButtons[key] === ('no' + questionNum) ) {
-        //-   // Undo fill if button was already clicked
-        //-   circle.classList.remove('blue');
-        //-   circle.classList.add('outline');
-        //-   activeButtons[questionId] = null;
-        //- }
-      }
-
-      if (activeButtons[questionId] === buttonId) {
-        // Undo fill if button was already clicked
-        circle.classList.remove('blue');
-        circle.classList.add('outline');
-        activeButtons[questionId] = null;
-      } else {
-        // Toggle button fill and clear previously active button
-        if (activeButtons[questionId]) {
-          var activeCircleId = activeButtons[questionId] + '-circle';
-          var activeCircle = document.getElementById(activeCircleId);
-          activeCircle.classList.remove('blue');
-          activeCircle.classList.add('outline');
-        }
-        circle.classList.remove('outline');
-        circle.classList.add('blue');
-        activeButtons[questionId] = buttonId;
-      }
-    }
     var voiceoverMappings = {
       '.showLearnSectionButton': {
         "initialDelay": 700,
