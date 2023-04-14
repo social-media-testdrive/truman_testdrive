@@ -16,10 +16,17 @@ block content
           iframe(type='text/html' width='540' height='289'
             src='videos/identity-video.mp4'
             frameborder='0')
-      p Identity theft happens when someone steals your personal information to commit fraud. The identity thief may use your information to apply for credit, file taxes, or get medical services. These acts can damage your credit status and cost you time and money to restore your good name. 
+      p <strong>Identity theft</strong> happens when someone steals your personal information to commit fraud. The identity thief may use your information to apply for credit, file taxes, or get medical services. These acts can damage your credit status and cost you time and money to restore your good name. 
 
       p (Source: https://www.usa.gov/identity-theft)
-    button.btn(style="background-color: green; color: white; font-size: 24px; padding: 10px 20px; border: none; border-radius: 5px; float: right;" onclick="location.href='/identity_learn_page2';") Next
+    .div(style='margin-top:20px;')
+      button.ui.large.button.left.floated(onclick="location.href='/identity_prequiz_finish';") 
+        i.arrow.left.icon 
+        | Back
+      button.ui.large.button.left.floated(onclick="location.href='/';") Save & Exit
+      button.ui.large.green.button.right.floated(onclick="location.href='/identity_learn_page2';")
+        | Next
+        i.arrow.right.icon
 
 
 
