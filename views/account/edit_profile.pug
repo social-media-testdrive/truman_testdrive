@@ -2,6 +2,7 @@ extends ../ui_layout
 
 block content
   -var user_post = []
+  -var textSize = 0;
   -var user_info = [{profile_pic : "/profile_pictures/amy.jpg",background_pic : "/profile_pictures/blueToWhite.png",user_name : "Amy G",user_id : "@amyg__g",bio : "Daughter. Sister. Proud Black American. I tend to get political.",location : "New York, NY",join_date : "Joined January 2019"}]
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
     //-####################### title
@@ -10,9 +11,20 @@ block content
     .ui.one.column.centered.grid.feedbackMessagesGrid
     .ui.fluid.card.dim(style = "margin-top:0px;margin-bottom:0px;")
 
-      span.br(style="font-size: 25px; margin-left: 5%; margin-top: 5%; font-weight: bold;") Hello #{user.profile.name},
-      span.br(style="font-size: 18px; margin-left: 5%; margin-top: 3%; font-weight: bold; margin-bottom: 3%") Before starting, would you like to select one of our agents to learn with you?
+      span.br( style="font-size: 25px; margin-left: 5%;margin-bottom: 5%; margin-top: 5%; font-weight: bold;") Edit Profile
+      form.ui.form(style="margin-right: 10%; margin-left: 10%;")
+        .field
+           
+            label(for='password' style="font-size:larger;") ID: &nbsp;#{user.username},
+            div(style="display: flex; align-items: center;")
+                label(for='username' style="font-size:larger;") Name: &nbsp;
+                input(style="margin:5px 0px; margin-bottom: 5%; width: 70%; border-radius: 5px; border: 2px solid grey !important; background-color: #fff !important; color: #000 !important;" type='text', name='username', id='username', placeholder='Username', required).field
+            a.forgot(href='forgotPassword', style="text-align: right;") Forgot Password?
+      span#textSizeDisplay.br(style="font-size: 25px; margin-left: 5%;margin-bottom: 5%; margin-top: 5%; font-weight: bold;") Text size: #{textSize}
+      input(style="width:70%; margin-right: 10%; margin-bottom: 10%; margin-left: 10%;" type='range', name='textSize', id='textSize', min='1', max='100', step='1', value='24', required, oninput="updateTextSizeDisplay()")
+
       
+
       form.ui.profilePicForm.form 
         .ui.segment
             .two.fields
@@ -45,6 +57,15 @@ block content
       
       button.ui.secondary.button(style="margin-top: 1%") I prefer to have the journey myself
 block scripts
+  script.
+    function updateTextSizeDisplay() {
+        const textSizeInput = document.getElementById('textSize');
+        const textSizeDisplay = document.getElementById('textSizeDisplay');
+        textSizeDisplay.textContent = `Text size: ${textSizeInput.value}px`;
+        textSizeDisplay.style.fontSize = `${textSizeInput.value}px`;
+    }
+    updateTextSizeDisplay();
+
 
 block styles
   style(type='text/css').
