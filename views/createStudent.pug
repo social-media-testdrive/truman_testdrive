@@ -4,7 +4,7 @@ block content
   .ui.sixteen.wide.row 
     .ui.sixteen.wide.column
       h2.ui.header Student Account Creation
-      form.ui.form(action="/createStudent", method='POST')
+      .ui.form(action="/createStudent", method='POST')
         input(type='hidden', name='facilitator', value=user.username)
         input(type='hidden', name='_csrf', value=csrfToken)
         .field.six.wide.column

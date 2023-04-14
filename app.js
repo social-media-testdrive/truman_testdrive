@@ -798,6 +798,10 @@ app.get('/guest/:modId', setHttpResponseHeaders, isValidModId, userController.ge
 
 app.post('/chatbot', check, setHttpResponseHeaders, csrfProtection, userController.postChatbotConnect);
 
+app.post('/saveIdentityQuizScore', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityQuizScore);
+
+app.post('/identityConfidenceRating', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityConfidenceRating);
+
 /*
  * Logins (only used on research site)
  */

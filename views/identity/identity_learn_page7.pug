@@ -6,7 +6,9 @@ block content
     h2 Reflection: 
     p How did you feel about the first sub-module? Are you confident that you know about the consequences? 
     h2 Confidence Rating:  
-    .ui.form(style="width: 100%")
+    form.ui.form(style="width: 100%", action='/identityConfidenceRating', method='POST')
+      input(type='hidden', name='username', value=user.username)
+      input(type='hidden', name='_csrf', value=csrfToken)
       .field
         .ui.radio.checkbox(style='border-style: solid; border-color: grey; padding: 15px; width: 100%')
           input.hidden(type='radio' name='confidence' value = 'not_confident' id='radio1')
@@ -19,15 +21,18 @@ block content
         .ui.radio.checkbox(style='border-style: solid; border-color: grey; padding: 15px; width: 100%')
           input.hidden(type='radio' name='confidence' value = 'yes_confident')
           label I'm confident
-    h1
-    #avatar.ui.one.column.centered.grid(styl="margin: 50px")
-      .ui.huge.right.pointing.circular.label
-        p(style="padding-top: 50px") Do you need any clarifications?
-        button#nohelp.ui.tiny.button No
-        button#help.ui.tiny.button(onclick="showModal()") Yes
-      img.ui.small.image.right.floated(src='/images/avatar-pic.png')
-    brbr
-    h1
+      h1
+      #avatar.ui.one.column.centered.grid(style="margin: 50px")
+        .ui.huge.right.pointing.circular.label
+          p(style="padding-top: 50px") Do you need any clarifications?
+          button#nohelp.ui.tiny.button No
+          button#help.ui.tiny.button(onclick="showModal()") Yes
+        img.ui.small.image.right.floated(src='/images/avatar-pic.png')
+      brbr
+      h1
+      button.ui.green.button.right.floated(type='submit')
+          | Next
+          i.arrow.right.icon
     .div
       button.ui.button.left.floated(onclick="location.href='/identity_learn_page6';") 
         i.arrow.left.icon 
@@ -35,9 +40,7 @@ block content
       button.ui.button.left.floated(onclick="location.href='/';") Save & Exit
       button.circular.ui.icon.button.right.floated(onclick="showModal()")
         i.wechat.icon
-      button.ui.green.button.right.floated(onclick="location.href='/identity_learn_page8';")
-        | Next
-        i.arrow.right.icon
+        
     #chatModal.ui.modal
       i.close.icon
       .ui.large.header(style="background-color: grey; color: white;")
