@@ -11,6 +11,51 @@ block content
             | Identity Theft Pre-Quiz
       p Test Your Knowledge
 
+    .ui.form(style="width: 100%;")
+      div.ui.inline.fields(style='display: flex;')
+        .field.fieldStyle
+          .ui.radio.checkbox.radioContainer
+            input(type='radio' name='answer' value = 'yes')
+            label Yes
+        .field.fieldStyle
+          .ui.radio.checkbox.radioContainer
+            input.hidden(type='radio' name='answer' value = 'no')
+            label No
+
+    .ui.form
+      div.ui.inline.fields
+        .field
+          .ui.radio.checkbox.radioContainer
+            input.hidden(type='radio' name='answer' value = 'yes')
+            label Yes
+        .field
+          .ui.radio.checkbox.radioContainer
+            input.hidden(type='radio' name='answer' value = 'no')
+            label No
+
+      div.ui.inline.fields(style='display: flex;')
+        div.ui.radio.checkbox
+          input#radio1(type='radio' name='radio')
+          label(for='radio1' style='border-radius: 999px; border: 2px solid red; padding: 10px 20px;')
+            | Radio 1
+        div.ui.radio.checkbox
+          input#radio2(type='radio' name='radio')
+          label(for='radio2' style='border-radius: 999px; border: 2px solid red; padding: 10px 20px;')
+            | Radio 2
+
+      //- form.ui.form
+      //-   .inline.fields
+      //-     .field(style="width: 50%; border-radius: 5px 0 0 5px; border: 1px solid red; background-color: gray;")
+      //-       .ui.radio.checkbox
+      //-         input(type='radio', name='answer', value='yes')
+      //-         label Yes
+      //-     .field(style="width: 50%; border-radius: 0 5px 5px 0; border: 1px solid red; background-color: gray;")
+      //-       .ui.radio.checkbox
+      //-         input(type='radio', name='answer', value='no')
+      //-         label No
+
+
+
     .ui.container
       h1 Quiz
       form#quiz-form
@@ -191,5 +236,6 @@ block scripts
   
 block styles
   link(rel='stylesheet', href='/css/start.css')  
-    
+  link(rel='stylesheet', href='/css/prequiz.css')  
+
     

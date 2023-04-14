@@ -1,0 +1,16 @@
+
+.fieldStyle {
+    width: 50%;
+    height: 100px;
+}
+
+.ui.radio.checkbox.radioContainer {
+    border-radius: 999px; 
+    border: 2px solid black;
+    width: 100%;
+    text-align: left;
+    padding: 20px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+  }
