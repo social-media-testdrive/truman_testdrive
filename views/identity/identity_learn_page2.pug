@@ -7,15 +7,25 @@ block content
     p The concept and consequences of identity theft (submodule 1)          
     p Learn 2/4
     .ui.raised.segment
-      h1.ui.header
-        .content
-            | Identity Theft Learn Page 2
-      p Personal Information refers to 
-      p (1) any information that can be used to distinguish or trace an individual's identity, such as name, social security number, date and place of birth, mother's maiden name, or biometric records; and 
-      p (2) any other information that is linked or linkable to an individual, such as medical, educational, financial, and employment information." 
-      p (Source: https://www.wikiwand.com/en/Personal_data)
-    button.btn(style="background-color: green; color: white; font-size: 24px; padding: 10px 20px; border: none; border-radius: 5px; float: right;" onclick="location.href='/identity_learn_page3';") Next
+      #avatar.ui.one.column.centered.grid(style="margin: 50px")
+        .ui.huge.right.pointing.circular.label
+          p(style="padding-top: 20px") Key concept: 
+          p Personal Information! 
+          p <strong>Please  Protect it!</strong>
+        img.ui.small.image.right.floated(src='/images/avatar-pic.png')
 
+      p Personal Information refers to:
+      p (1) any information that can be used to distinguish or trace an individual's identity, such as <strong>name, social security number, date and place of birth, mother's maiden name, or biometric records;</strong> and 
+      p (2) any other information that is linked or linkable to an individual, such as <strong>medical, educational, financial, and employment information.</strong>" 
+      p (Source: https://www.wikiwand.com/en/Personal_data)
+    .div(style='margin-top:20px;')
+      button.ui.large.button.left.floated(onclick="location.href='/identity_learn_page1';") 
+        i.arrow.left.icon 
+        | Back
+      button.ui.large.button.left.floated(onclick="location.href='/';") Save & Exit
+      button.ui.large.green.button.right.floated(onclick="location.href='/identity_learn_page3';")
+        | Next
+        i.arrow.right.icon
 
 
 
