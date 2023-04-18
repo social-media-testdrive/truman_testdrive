@@ -185,7 +185,6 @@ exports.postInstructorLogin = (req, res, next) => {
 };
 
 exports.postIdentityQuizScore = (req, res, next) => {
-    console.log("HEREEEEE\n");
     req.assert('username', 'Username cannot be blank').notEmpty();
     const errors = req.validationErrors();
 
@@ -204,7 +203,7 @@ exports.postIdentityQuizScore = (req, res, next) => {
                 });
         }
     });
-    res.redirect('/identity_learn_page7'); 
+    res.redirect('/identity_learn_page28'); 
 }; 
 
 exports.postIdentityConfidenceRating = (req, res, next) => {
@@ -227,7 +226,7 @@ exports.postIdentityConfidenceRating = (req, res, next) => {
                 });
         }
     });
-    res.redirect('/identity_learn_page8'); 
+    res.redirect('/identity_learn_page29'); 
 }; 
 
 exports.postChatbotConnect = (req, res, next) => {
