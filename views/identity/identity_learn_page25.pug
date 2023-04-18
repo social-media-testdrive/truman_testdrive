@@ -1,0 +1,59 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container.addBottomMargin
+    .ui.raised.segment
+        img.ui.medium.image(src='/images/learning_progress_bar.png' style='margin-left: auto; margin-right: auto')
+        h2.ui.header
+            .content
+                b Example 1
+        img.ui.large.image(src='/images/methodOfProtectionEx1.png' style='margin-left: auto; margin-right: auto')
+        h4
+            b If you receive the message above, WHAT SHOULD YOU BE THINKING?
+        ul
+            li Am I aware of the rules/regulations of this sweepstakes?
+            br
+            li This link looks suspicious... I shouldn't click it!
+            br
+            li Does it sound too good to be true? Probably untrustworthy!
+            br
+        button.ui.button.left.floated(onclick="location.href='/identity_learn_page24';") 
+            i.arrow.left.icon 
+            | Back
+        button.ui.button.left.floated(onclick="location.href='/;") Save & Exit
+        button.ui.button.right.floated(onclick="location.href='/identity_learn_page26';")
+            | Next
+            i.arrow.right.icon
+
+block scripts
+  script.
+    var voiceoverMappings = {
+      '.showLearnSectionButton': {
+        "initialDelay": 700,
+        "delay": 500,
+        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
+      },
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.1.mp3']
+      },
+      '.voiceover_keyTerm2': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.2.mp3']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.3.mp3']
+      }
+    };
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_start.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/start.css')  
+    
+    

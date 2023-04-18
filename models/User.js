@@ -26,6 +26,7 @@ const userSchema = new mongoose.Schema({
     reflectionCsv: { type: String, default: '' },
     timeReportCsv: { type: String, default: '' },
     identityQuizScore: { type: Number, default: 0},
+    confidenceRating: { type: String, default: ''},
     moduleProgress: { // marks the progress of each module: none, started, completed
         accounts: { type: String, default: 'none' },
         advancedlit: { type: String, default: 'none' },

@@ -579,6 +579,105 @@ app.get('/identity_learn_page14', passportConfig.isAuthenticated, setHttpRespons
     }
 });
 
+app.get('/identity_learn_page21', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_learn_page21.pug', {
+            title: 'My New Page'
+        });
+    }
+});
+
+app.get('/identity_learn_page22', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_learn_page22.pug', {
+            title: 'My New Page'
+        });
+    }
+});
+
+app.get('/identity_learn_page23', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_learn_page23.pug', {
+            title: 'My New Page'
+        });
+    }
+});
+
+app.get('/identity_learn_page24', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_learn_page24.pug', {
+            title: 'My New Page'
+        });
+    }
+});
+
+app.get('/identity_learn_page25', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_learn_page25.pug', {
+            title: 'My New Page'
+        });
+    }
+});
+
+app.get('/identity_learn_page26', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_learn_page26.pug', {
+            title: 'My New Page'
+        });
+    }
+});
+
+app.get('/identity_learn_page27', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_learn_page27.pug', {
+            title: 'My New Page'
+        });
+    }
+});
+
+app.get('/identity_learn_page28', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_learn_page28.pug', {
+            title: 'My New Page'
+        });
+    }
+});
+
+app.get('/identity_learn_page29', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_learn_page29.pug', {
+            title: 'My New Page'
+        });
+    }
+});
+
 // Render facilitator login page (all modules)
 app.get('/facilitatorHome', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
     res.render('facilitatorHome.pug', {
@@ -797,6 +896,10 @@ app.post('/delete', passportConfig.isAuthenticated, setHttpResponseHeaders, user
 app.get('/guest/:modId', setHttpResponseHeaders, isValidModId, userController.getGuest);
 
 app.post('/chatbot', check, setHttpResponseHeaders, csrfProtection, userController.postChatbotConnect);
+
+app.post('/saveIdentityQuizScore', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityQuizScore);
+
+app.post('/identityConfidenceRating', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityConfidenceRating);
 
 /*
  * Logins (only used on research site)

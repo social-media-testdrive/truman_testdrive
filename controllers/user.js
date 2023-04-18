@@ -184,6 +184,52 @@ exports.postInstructorLogin = (req, res, next) => {
     })(req, res, next);
 };
 
+exports.postIdentityQuizScore = (req, res, next) => {
+    console.log("HEREEEEE\n");
+    req.assert('username', 'Username cannot be blank').notEmpty();
+    const errors = req.validationErrors();
+
+    User.findOne({
+    username: req.body.username
+    }, (err, existingUser) => {
+        if (err) {
+            return next(err);
+        }
+        if (existingUser) {
+            existingUser.identityQuizScore = req.body.score;
+            existingUser.save((err) => {
+                if (err) {
+                    return next(err);
+                }
+                });
+        }
+    });
+    res.redirect('/identity_learn_page7'); 
+}; 
+
+exports.postIdentityConfidenceRating = (req, res, next) => {
+    req.assert('username', 'Username cannot be blank').notEmpty();
+
+    const errors = req.validationErrors();
+
+    User.findOne({
+    username: req.body.username
+    }, (err, existingUser) => {
+        if (err) {
+            return next(err);
+        }
+        if (existingUser) {
+            existingUser.confidenceRating = req.body.confidence;
+            existingUser.save((err) => {
+                if (err) {
+                    return next(err);
+                }
+                });
+        }
+    });
+    res.redirect('/identity_learn_page8'); 
+}; 
+
 exports.postChatbotConnect = (req, res, next) => {
     var request = require('request');
     request.post(
