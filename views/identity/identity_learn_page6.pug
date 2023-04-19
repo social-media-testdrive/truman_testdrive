@@ -3,143 +3,92 @@ extends ../ui_layout
 block content
 
   .ui.text.container.addBottomMargin
-    h2 Practice
-    p 
-      b 
-        | If you receive the email below, WHAT SHOULD YOU BE THINKING? Select all that apply.
-    img.ui.image(src='/images/practice_question.png')
-    .ui.form(style="width: 100%", action='/saveIdentityQuizScore', method='POST', form name="questionForm")
-      input(type='hidden', name='username', value=user.username)
-      input(type='hidden', name='_csrf', value=csrfToken)
-      .field
-        #b1.ui.checkbox(style='border-style: solid; border-color: grey; padding: 15px; width: 100%')
-          input.hidden(type='checkbox' id = 'c1' name='answer1' value = 'a1')
-          label When this email asks you to click a link, being alert. That could be a scam.
-      .field
-        #b2.ui.checkbox(style='border-style: solid; border-color: gray; padding: 15px; width: 100% ; color: green')
-          input.hidden(type='checkbox' id = 'c2' name='answer2' value = 'a2')
-          label Ask the question: do I have the account with the company? Did you submit a ticket to the company?
-            | If the answer is no, deleter the email immediately.
-      .field
-        #b3.ui.checkbox(style='border-style: solid; border-color: grey; padding: 15px; width: 100%')
-          input.hidden(type='checkbox' id = 'c3' name='answer3' value = 'a3')
-          label If you have the account with this company, carefully examine the sender's email address. 
-            | If the email address is not correct, delete the email.
-      .field
-        #b4.ui.checkbox(style='border-style: solid; border-color: grey; padding: 15px; width: 100%')
-          input.hidden(type='checkbox' id = 'c4' name='answer4' value = 'a4')
-          label If you still could not identify whether the email address is authentic or not, contact the company to inform. 
-            | Remember using a phone number or website you know is real -- not the information in the email.
-      #submitQuestion.ui.green.button(onclick ='checkQuestion()', style='float: right') Check Answers
-      #correctness.ui.label.right.floated(style='clear: both; width: 100%; float: right; display: none')
-        p#score(style='float:right') 1.0/1 points
-      input(type='hidden', name='scoreInput', value='0', id='scoreInput')
-      h1
-      h1
-      button#testing.ui.green.button.right.floated(type='submit', style='clear: both')
-        | Next
-        i.arrow.right.icon
-    brbr
-    .div
-      button.ui.button.left.floated(onclick="location.href='/identity_learn_page5';") 
-        i.arrow.left.icon 
-        | Back
-      button.ui.button.left.floated(onclick="location.href='/';") Save & Exit
-      button.circular.ui.icon.button.right.floated(onclick="showModal()")
-        i.wechat.icon
-      
-    #chatModal.ui.modal
-      i.close.icon
-      .ui.large.header(style="background-color: grey; color: white;")
-        img.ui.circular.image(src='/images/avatar-pic.jpg' style='margin: 25px')
-        | Chat with Intrepid
-      .content(style="background-color: #d3d3d3;")
-        .div(style='overflow: hidden; float: left')
-          img.ui.tiny.circular.image(src='/images/avatar-pic.jpg' style='float: left; margin-bottom: 25px; display: block')
-          .ui.large.left.pointing.label(style='float: left')
-            p Hi User! Welcome to the Chat! I am so happy you're here! 
-              | You requested clarification. Luckily for you, in here, you can ask any questions you have about the material covered.
-        .ui.large.left.pointing.label(style='float: left; display: block')
-          p Before we start, I want to be clear that I am an AI chat-bot and not a human being. 
-            | However, I will do my best to help you with what you need assistance on!
-        .ui.large.left.pointing.label(style='float: left')
-          p You can feel free to save and exit the chat through the botton on the bottom left of you screen. 
-            | You can always re-enter as well. Does all of this make sense? Select a button below.
-        button#understand_button.ui.small.blue.button(onclick="showYes()" style='float: right') Yes.
-        #understand.ui.large.blue.right.pointing.label(style='float: right; visibility: hidden; clear: both')
-          p Yes.
-        #yay.ui.large.left.pointing.label(style="visibility: hidden; float: left; clear: both")
-          p Yay! Let's begin. Please select a button below what you would like clarification on.
-        #topics_group(style="visibility: hidden; clear: both; float: right")
-          button.ui.small.blue.button(onclick="showTopic('Consequences of finanical identity theft')") Consequences of financial identity theft
-          button.ui.small.blue.button(onclick="showTopic('Identifying a troll')") Identifying a troll
-          button.ui.small.blue.button(onclick="showTopic('Other')") Other
-        #topic.ui.large.blue.right.pointing.label(style="visibility: hidden; clear: both; float: right") 
-          p#topic_text 
-        #topic_response1.ui.large.left.pointing.label(style="visibility: hidden; clear: both; float: left") 
-          p This can definitely be a hard topic to grasp, so I understand completely!
-        #topic_response2.ui.large.left.pointing.label(style="visibility: hidden; clear: both; float: left") 
-          p I want to help you as best as I can, so please click the learning option you feel would most help you reach understanding. 
-          | We can start with this.
+    .ui.raised.segment
+      img.ui.medium.image(src='/images/practice_progress_bar.png' style='margin-left: auto; margin-right: auto')
+      form.ui.form(style="width: 100%" action='/postIdentityTheftModOneQuizScore', method='POST')
+        input(type='hidden', name='username', value=user.username)
+        input(type='hidden', name='_csrf', value=csrfToken)
+        h3 1. Which of the following situations can be characterized as identity theft?
+        .field
+          #b1.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
+            input(type='radio' name='q1' value = 'a' id='radio1')
+            label When someone steals your personal information to commit fraud
+        .field
+          #b2.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
+            input(type='radio' id = 'c2' name='q1' value = 'b')
+            label Unauthorized use or attempted use of an existing account
+        .field
+          #b3.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
+            input(type='radio' id = 'c3' name='q1' value = 'c')
+            label Unauthorized use or attempted use personal information to open a new account
+        .field
+          #b4.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
+            input(type='radio' id = 'c4' name='q1' value = 'd')
+            label All of the above
+
+        h3 2. Please select all the items that you think are considered personal information.
+          .grouped.fields
+            .field
+              img.ui.centered.image(src='/images/ssn.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:20px;margin-bottom: 20px;")
+              div#b5.ui.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
+                input(type='checkbox', id='q2c1', name='q2-option-1', value='1')
+                label Social Security Number
+            .field
+              img.ui.centered.image(src='/images/dob.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:20px;margin-bottom: 20px;")
+              div#b6.ui.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
+                input(type='checkbox', id='q2c2', name='q2-option-2', value='1')
+                label Date and place of birth
+            .field
+              img.ui.centered.image(src='/images/cvc.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:20px;margin-bottom: 20px;")
+              div#b7.ui.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
+                input(type='checkbox', id='q2c3', name='q2-option-3', value='1')
+                label Credit card info: CVC, expiration date, and password
+          #submitQuestion.ui.green.button(onclick ='checkQuestion()', style='float: right') Check Answers
+          #correctness.ui.label.right.floated(style='clear: both; width: 100%; float: right; display: none')
+            p#score(style='float:right') 1.0/1 points
+          input(type='hidden', name='scoreInput', value='0', id='scoreInput')
+          h1
+          h1
+          button#testing.ui.button.right.floated(type='submit', style='clear: both')
+              | Next
+              i.arrow.right.icon
+        .ui.div
+            button.ui.button.left.floated(onclick="location.href='/identity_learn_page25';") 
+                i.arrow.left.icon 
+                | Back
+            button.ui.button.left.floated(onclick="location.href='/';") Save & Exit
+
+
 
 block scripts
   script.
-
-    function showYes(){
-      var hid = document.getElementById("understand");
-      hid.style.visibility = "visible";
-      hid = document.getElementById("understand_button");
-      hid.style.visibility = "hidden";
-      hid = document.getElementById("yay");
-      hid.style.visibility = "visible";
-      hid = document.getElementById("topics_group");
-      hid.style.visibility = "visible";
-    }
-
-    function showTopic(name){
-      document.getElementById("topic_text").innerHTML = name;
-      var hid = document.getElementById("topics_group");
-      hid.style.visibility = "hidden";
-      hid = document.getElementById("topic");
-      hid.style.visibility = "visible";
-      hid = document.getElementById("topic_response1");
-      hid.style.visibility = "visible";
-      hid = document.getElementById("topic_response2");
-      hid.style.visibility = "visible";
-    }
-
     function checkQuestion(){
       document.getElementById("submitQuestion").style.display = "none";
       let x = 0;
-      if(document.getElementById("c1").checked) {
-        document.getElementById("b1").style.borderColor="green";
-        x = x + .25;
-      }
-      else document.getElementById("b1").style.borderColor="red";
-      if(document.getElementById("c2").checked) {
-        document.getElementById("b2").style.borderColor="green";
-         x = x + .25;
-      }
-      else document.getElementById("b2").style.borderColor="red";
-      if(document.getElementById("c3").checked) {
-         document.getElementById("b3").style.borderColor="green";
-          x = x + .25;
-      }
-      else document.getElementById("b3").style.borderColor="red";
       if(document.getElementById("c4").checked) {
-        document.getElementById("b4").style.borderColor="green";
-         x = x + .25;
-      }
-      else document.getElementById("b4").style.borderColor="red";
-      document.getElementById("score").innerHTML = x + " / 1.0 points";
-      document.getElementById("correctness").style.display = "block";
-      document.getElementById('scoreInput').value = x;
-    }
+        x++;
+      } 
+      document.getElementById("b1").style.borderColor="red";
+      document.getElementById("b2").style.borderColor="red";
+      document.getElementById("b3").style.borderColor="red";
+      document.getElementById("b4").style.borderColor="green";
 
-    function showModal(){
-      $('#chatModal.ui.modal')
-        .modal('show')
-      ;
+      if(document.getElementById("q2c1").checked) {
+        x = x + 0.33333333333;
+      } 
+      if(document.getElementById("q2c2").checked) {
+        x = x + 0.33333333333;
+      } 
+      if(document.getElementById("q2c3").checked) {
+        x = x + 0.33333333333;
+      } 
+      document.getElementById("b5").style.borderColor="green";
+      document.getElementById("b6").style.borderColor="green";
+      document.getElementById("b7").style.borderColor="green";
+
+      document.getElementById("score").innerHTML = x.toFixed(2) + " / 2.00 points";
+      document.getElementById("correctness").style.display = "block";
+      document.getElementById('scoreInput').value = x +  " / 2.00 points";
     }
 
     var voiceoverMappings = {
@@ -164,7 +113,6 @@ block scripts
         "files": ['CUSML.6.2.3.mp3']
       }
     };
-
   script(src='/module_js/voiceover.js')
   script(src="/module_js/base_start.js")
   

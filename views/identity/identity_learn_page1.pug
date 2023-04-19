@@ -3,30 +3,38 @@ extends ../ui_layout
 block content
 
   .ui.text.container.addBottomMargin
-    br  
-    p The concept and consequences of identity theft (submodule 1)          
-    p Learn 1/4
     .ui.raised.segment
-      h1.ui.header
-        .content
-            | Identity Theft Learn Page 1
-      h3.ui.header
-        i.book.blue.icon
-        .content
-          iframe(type='text/html' width='540' height='289'
-            src='videos/identity-video.mp4'
-            frameborder='0')
-      p <strong>Identity theft</strong> happens when someone steals your personal information to commit fraud. The identity thief may use your information to apply for credit, file taxes, or get medical services. These acts can damage your credit status and cost you time and money to restore your good name. 
-
-      p (Source: https://www.usa.gov/identity-theft)
-    .div(style='margin-top:20px;')
-      button.ui.large.button.left.floated(onclick="location.href='/identity_prequiz_finish';") 
-        i.arrow.left.icon 
-        | Back
-      button.ui.large.button.left.floated(onclick="location.href='/';") Save & Exit
-      button.ui.large.green.button.right.floated(onclick="location.href='/identity_learn_page2';")
-        | Next
-        i.arrow.right.icon
+      iframe(type='text/html' width='540' height='289'
+        src='videos/identity-video.mp4'
+        frameborder='0' style='display: block; margin: auto;')
+      br
+      br
+      p This module is designed for your to have a deeper understanding of <strong>identity theft scams</strong>, and their risks and warning signs. Our goal is to assist you to better protect yourself from them.
+      .ui.centered.grid(style="display: block; margin: auto")
+        .four.wide.column
+          .ui.large.label(style='diplay: block; margin: auto;')
+            p(style='text-align: center') Concepts & Consequences
+          p(style='text-align: center') Section 1:
+            |  Concepts & Consequences
+        .four.wide.column
+          .ui.huge.label(style='diplay: block; margin: auto;')
+            i.big.lock.icon(style='margin: auto; display: block')
+          p(style='text-align: center') Section 2:
+            |  Scam techniques and
+            | Recognize the techniques
+        .four.wide.column
+          .ui.huge.label(style='diplay: block; margin: auto;')
+            i.big.lock.icon(style='margin: auto; display: block')
+          p(style='text-align: center') Section 3:
+            |  Methods of Protection
+      .div(style='margin-top:20px;')
+        button.ui.button.left.floated(onclick="location.href='/identity_prequiz_finish';") 
+          i.arrow.left.icon 
+          | Back
+        button.ui.button.left.floated(onclick="location.href='/';") Save & Exit
+        button.ui.button.right.floated(onclick="location.href='/identity_learn_page3';")
+          | Next
+          i.arrow.right.icon
 
 
 

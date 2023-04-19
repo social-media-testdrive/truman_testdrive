@@ -9,7 +9,7 @@ block content
             .content
                 b If you receive the email above, WHAT SHOULD YOU BE THINKING? Select all that apply. 
         img.ui.image(src='/images/methodOfProtectionPracticeQuestion.png')
-        form.ui.form(style="width: 100%", action='/saveIdentityQuizScore', method='POST', form name="questionForm")
+        form.ui.form(style="width: 100%", action='/postIdentityTheftModThreeQuizScore', method='POST', form name="questionForm")
             input(type='hidden', name='username', value=user.username)
             input(type='hidden', name='_csrf', value=csrfToken)
             .field
@@ -92,9 +92,9 @@ block scripts
          x = x + .25;
       }
       else document.getElementById("b4").style.borderColor="red";
-      document.getElementById("score").innerHTML = x + " / 1.0 points";
+      document.getElementById("score").innerHTML = x + " / 1.00 points";
       document.getElementById("correctness").style.display = "block";
-      document.getElementById('scoreInput').value = x;
+      document.getElementById('scoreInput').value = x +  " / 1.00 points";
     }
 
     var voiceoverMappings = {
