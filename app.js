@@ -496,6 +496,14 @@ app.get('/selection', passportConfig.isAuthenticated, csrfProtection, setHttpRes
     });
 });
 
+// Render selection
+app.get('/edit_profile', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+    res.render('account/edit_profile', {
+        title: 'edit_profile'
+    });
+});
+
+
 // Render intro page (all modules)
 app.get('/intro/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
     if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
