@@ -27,16 +27,16 @@
   .ui.grid
       .six.wide.row.centered
           .ui.medium.buttons
-              button#large.ui.button.green.large Large Text
+              button#large.ui.button.green.large(onclick='changeToLarge()') Large Text
               .or
-              button#medium.ui.button.green.medium Medium Text
+              button#medium.ui.button.green.medium(onclick='changeToMedium()') Medium Text
               .or
-              button#small.ui.button.green.small Small Text
+              button#small.ui.button.green.small(onclick='changeToSmall()') Small Text
       .four.wide.row.centered
           .ui.medium.buttons
-              button#dark.ui.button.black Dark Mode
+              button#dark.ui.button.black(onclick='changeToDark()') Dark Mode
               .or
-              button#light.ui.button.white Light Mode
+              button#light.ui.button.white(onclick='changeToLight()') Light Mode
       .four.wide.row.centered
           .ui.medium.buttons
               button#gameOn.ui.button.blue Game Mode
@@ -193,134 +193,35 @@ script.
 
   function changeToDark() {
     document.getElementById('segmentation').style.backgroundColor = 'black';
-      if(document.getElementById("container") != null){
-          let collection = document.getElementById("container").getElementById('segmentation');
-          collection.style.backgroundColor = "black";
-  //-         let collection = document.getElementById("container").getElementsByClassName("segment");
-  //-         for (var i = 0; i < collection.length; i++) {
-  //-         collection[i].style.backgroundColor = "black";
-  //-         }
-  //-         collection = document.getElementById("container").getElementsByClassName("card");
-  //-         for (var i = 0; i < collection.length; i++) {
-  //-         collection[i].style.backgroundColor = "black";
-  //-         }
+    let tags = ["h1","h3","h4", "ul", "li", "a", "span", "p", "b"];
+      for(var j = 0; j < tags.length; j++){
+        let collection = document.getElementById("segmentation").getElementsByTagName(tags[j]);
+        for (var i = 0; i < collection.length; i++) {
+            collection[i].style.color = "white";
+        }
+      }
+        return false;
+    }
 
-  //-         let tags = ["h1","h3","h4", "ul", "li", "a", "span", "i", "p", "b"];
-  //-         for(var j = 0; j < tags.length; j++){
-  //-         let collection = document.getElementById("container").getElementsByTagName(tags[j]);
-  //-         for (var i = 0; i < collection.length; i++) {
-  //-             collection[i].style.color = "white";
-  //-         }
-  //-         }
-  //-         collection = document.getElementById("container").getElementsByClassName("button");
-  //-         for (var i = 0; i < collection.length; i++) {
-  //-         collection[i].style.color = "black";
-  //-         }
-  //-         collection = document.getElementsByClassName("introjs-tooltip");
-  //-         for (var i = 0; i < collection.length; i++) {
-  //-         collection[i].style.backgroundColor = "dimgray";
-  //-         collection[i].style.color = "white";
-  //-         }
-  //-         collection = document.getElementsByClassName("introjs-arrow top");
-  //-         for (var i = 0; i < collection.length; i++) {
-  //-         collection[i].style.borderTopColor = "transparent";
-  //-         collection[i].style.borderRightColor = "transparent";
-  //-         collection[i].style.borderBottomColor = "dimgray";
-  //-         collection[i].style.borderLeftColor = "transparent";
-  //-         }
-  //-         collection = document.getElementsByClassName("introjs-arrow left");
-  //-         for (var i = 0; i < collection.length; i++) {
-  //-         collection[i].style.borderTopColor = "transparent";
-  //-         collection[i].style.borderRightColor = "dimgray";
-  //-         collection[i].style.borderBottomColor = "transparent";
-  //-         collection[i].style.borderLeftColor = "transparent";
-  //-         }
-  //-         collection = document.getElementsByClassName("introjs-arrow bottom");
-  //-         for (var i = 0; i < collection.length; i++) {
-  //-         collection[i].style.borderTopColor = "dimgray";
-  //-         collection[i].style.borderRightColor = "transparent";
-  //-         collection[i].style.borderBottomColor = "transparent";
-  //-         collection[i].style.borderLeftColor = "transparent";
-  //-         }
-  //-         collection = document.getElementsByClassName("introjs-arrow right");
-  //-         for (var i = 0; i < collection.length; i++) {
-  //-         collection[i].style.borderTopColor = "transparent";
-  //-         collection[i].style.borderRightColor = "transparent";
-  //-         collection[i].style.borderBottomColor = "transparent";
-  //-         collection[i].style.borderLeftColor = "dimgray";
-  //-         }
-  //-     }
-  //-     return false;
-  //- }
-
-  //- function changeToLight() {
-  //-     if(document.getElementById("container") != null){
-  //-         let collection = document.getElementById("container").getElementsByClassName("segment");
-  //-         for (var i = 0; i < collection.length; i++) {
-  //-         collection[i].style.backgroundColor = "white";
-  //-         }
-  //-         collection = document.getElementById("container").getElementsByClassName("card");
-  //-         for (var i = 0; i < collection.length; i++) {
-  //-         collection[i].style.backgroundColor = "white";
-  //-         }
-  //-         let tags = ["h1","h3","h4", "ul", "li", "a", "span", "i", "p", "b"];
-  //-         for(var j = 0; j < tags.length; j++){
-  //-         let collection = document.getElementById("container").getElementsByTagName(tags[j]);
-  //-         for (var i = 0; i < collection.length; i++) {
-  //-             collection[i].style.color = "black";
-  //-         }
-  //-         }
-  //-         collection = document.getElementById("container").getElementsByClassName("ribbons");
-  //-         for (var i = 0; i < collection.length; i++) {
-  //-         collection[i].style.color = "white";
-  //-         }
-  //-         collection = document.getElementsByClassName("introjs-tooltip");
-  //-         for (var i = 0; i < collection.length; i++) {
-  //-         collection[i].style.backgroundColor = "white";
-  //-         collection[i].style.color = "black";
-  //-         }
-  //-         collection = document.getElementsByClassName("introjs-arrow top");
-  //-         for (var i = 0; i < collection.length; i++) {
-  //-         collection[i].style.borderTopColor = "transparent";
-  //-         collection[i].style.borderRightColor = "transparent";
-  //-         collection[i].style.borderBottomColor = "white";
-  //-         collection[i].style.borderLeftColor = "transparent";
-  //-         }
-  //-         collection = document.getElementsByClassName("introjs-arrow left");
-  //-         for (var i = 0; i < collection.length; i++) {
-  //-         collection[i].style.borderTopColor = "transparent";
-  //-         collection[i].style.borderRightColor = "white";
-  //-         collection[i].style.borderBottomColor = "transparent";
-  //-         collection[i].style.borderLeftColor = "transparent";
-  //-         }
-  //-         collection = document.getElementsByClassName("introjs-arrow bottom");
-  //-         for (var i = 0; i < collection.length; i++) {
-  //-         collection[i].style.borderTopColor = "white";
-  //-         collection[i].style.borderRightColor = "transparent";
-  //-         collection[i].style.borderBottomColor = "transparent";
-  //-         collection[i].style.borderLeftColor = "transparent";
-  //-         }
-  //-         collection = document.getElementsByClassName("introjs-arrow right");
-  //-         for (var i = 0; i < collection.length; i++) {
-  //-         collection[i].style.borderTopColor = "transparent";
-  //-         collection[i].style.borderRightColor = "transparent";
-  //-         collection[i].style.borderBottomColor = "transparent";
-  //-         collection[i].style.borderLeftColor = "white";
-  //-         }
+  function changeToLight() {
+    document.getElementById('segmentation').style.backgroundColor = 'white';
+    let tags = ["h1","h3","h4", "ul", "li", "a", "span", "p", "b"];
+      for(var j = 0; j < tags.length; j++){
+        let collection = document.getElementById("segmentation").getElementsByTagName(tags[j]);
+        for (var i = 0; i < collection.length; i++) {
+            collection[i].style.color = "black";
+        }
       }
       return false;
-  }
+    }
 
   function changeToSmall() {
-      let tags = ["h1","h3","h4", "ul", "li", "a", "span", "i", "p", "b", "h2"];
+      let tags = ["h1","h3","h4", "ul", "li", "a", "span", "p", "b", "h2"];
       newFontSize = 1.14285714 * .75;
-
-      if(document.getElementById("container") != null){
-          for(var j = 0; j < tags.length; j++){
-          let collection = document.getElementById("container").getElementsByTagName(tags[j]);
-              for (var i = 0; i < collection.length; i++) {
-                  collection[i].style.fontSize = newFontSize + "rem";
-              }
+      for(var j = 0; j < tags.length; j++){
+      let collection = document.getElementById("segmentation").getElementsByTagName(tags[j]);
+          for (var i = 0; i < collection.length; i++) {
+              collection[i].style.fontSize = newFontSize + "rem";
           }
       }
       document.body.style.fontSize = newFontSize + "rem";
@@ -328,15 +229,12 @@ script.
   }
 
   function changeToMedium() {
-      let tags = ["h1","h3","h4", "ul", "li", "a", "span", "i", "p", "b", "h2"];
+      let tags = ["h1","h3","h4", "ul", "li", "a", "span", "p", "b", "h2"];
       newFontSize = 1.14285714 * 1.25;
-
-      if(document.getElementById("container") != null){
-          for(var j = 0; j < tags.length; j++){
-              let collection = document.getElementById("container").getElementsByTagName(tags[j]);
-              for (var i = 0; i < collection.length; i++) {
-                  collection[i].style.fontSize = newFontSize + "rem";
-              }
+      for(var j = 0; j < tags.length; j++){
+          let collection = document.getElementById("segmentation").getElementsByTagName(tags[j]);
+          for (var i = 0; i < collection.length; i++) {
+              collection[i].style.fontSize = newFontSize + "rem";
           }
       }
       document.body.style.fontSize = newFontSize + "rem";
@@ -344,16 +242,12 @@ script.
   }
 
   function changeToLarge() {
-      window.sessionStorage.setItem('textMode', 'large');
-      let tags = ["h1","h3","h4", "ul", "li", "a", "span", "i", "p", "b", "h2"];
+      let tags = ["h1","h3","h4", "ul", "li", "a", "span", "p", "b", "h2"];
       newFontSize = 1.14285714 * 1.75;
-
-      if(document.getElementById("container") != null){
-          for(var j = 0; j < tags.length; j++){
-              let collection = document.getElementById("container").getElementsByTagName(tags[j]);
-              for (var i = 0; i < collection.length; i++) {
-                  collection[i].style.fontSize = newFontSize + "rem";
-              }
+      for(var j = 0; j < tags.length; j++){
+          let collection = document.getElementById("segmentation").getElementsByTagName(tags[j]);
+          for (var i = 0; i < collection.length; i++) {
+              collection[i].style.fontSize = newFontSize + "rem";
           }
       }
       document.body.style.fontSize = newFontSize + "rem";

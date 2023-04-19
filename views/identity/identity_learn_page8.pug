@@ -3,11 +3,11 @@ extends ../ui_layout
 block content
 
   .ui.text.container.addBottomMargin
-    .ui.raised.segment
+    #segmentation.ui.raised.segment
         img.ui.medium.image(src='/images/reflect_progress_bar.png' style='margin-left: auto; margin-right: auto')
         h3.ui.header
             .content
-                b Reflection;
+                b Reflection:
         p How did you feel about the content you have learned? Do you feel confient recognizing identity theft and understanding its consequences?
         h3 Confidence Rating:  
         form.ui.form(style="width: 100%", action='/postIdentityTheftModOneConfidenceRating', method='POST')
