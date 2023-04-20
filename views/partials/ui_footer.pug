@@ -166,32 +166,8 @@ script.
       window.location.reload();
   }
 
-  function dark(){
-      window.sessionStorage.setItem('darkMode', 'true');
-      window.location.reload();
-  }
-
-  function light(){
-      window.sessionStorage.setItem('darkMode', 'false');
-      window.location.reload();
-  }
-
-  function small(){
-      window.sessionStorage.setItem('textMode', 'small');
-      window.location.reload();
-  }
-
-  function medium(){
-      window.sessionStorage.setItem('textMode', 'medium');
-      window.location.reload();
-  }
-
-  function large(){
-      window.sessionStorage.setItem('textMode', 'large');
-      window.location.reload();
-  }
-
   function changeToDark() {
+    window.sessionStorage.setItem('darkMode', 'true');
     document.getElementById('segmentation').style.backgroundColor = 'black';
     let tags = ["h1","h3","h4", "ul", "li", "a", "span", "p", "b"];
       for(var j = 0; j < tags.length; j++){
@@ -204,6 +180,7 @@ script.
     }
 
   function changeToLight() {
+    window.sessionStorage.setItem('darkMode', 'false');
     document.getElementById('segmentation').style.backgroundColor = 'white';
     let tags = ["h1","h3","h4", "ul", "li", "a", "span", "p", "b"];
       for(var j = 0; j < tags.length; j++){
@@ -216,6 +193,7 @@ script.
     }
 
   function changeToSmall() {
+      window.sessionStorage.setItem('textMode', 'small');
       let tags = ["h1","h3","h4", "ul", "li", "a", "span", "p", "b", "h2"];
       newFontSize = 1.14285714 * .75;
       for(var j = 0; j < tags.length; j++){
@@ -229,6 +207,7 @@ script.
   }
 
   function changeToMedium() {
+      window.sessionStorage.setItem('textMode', 'medium');
       let tags = ["h1","h3","h4", "ul", "li", "a", "span", "p", "b", "h2"];
       newFontSize = 1.14285714 * 1.25;
       for(var j = 0; j < tags.length; j++){
@@ -242,6 +221,7 @@ script.
   }
 
   function changeToLarge() {
+      window.sessionStorage.setItem('textMode', 'large');
       let tags = ["h1","h3","h4", "ul", "li", "a", "span", "p", "b", "h2"];
       newFontSize = 1.14285714 * 1.75;
       for(var j = 0; j < tags.length; j++){
