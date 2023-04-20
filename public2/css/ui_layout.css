@@ -946,3 +946,7 @@ a#step3:active {
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
 } */
 
+#module-navigation-buttons {
+    margin-top: 100px;
+    background-color: green !important;
+}

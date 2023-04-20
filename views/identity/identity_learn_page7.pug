@@ -30,16 +30,16 @@ block content
         img.ui.small.image.right.floated(src='/images/avatar-pic.png')
       brbr
       h1
-      button.ui.green.button.right.floated(type='submit')
-          | Next
-          i.arrow.right.icon
-    .div
-      button.ui.button.left.floated(onclick="location.href='/identity_learn_page6';") 
-        i.arrow.left.icon 
-        | Back
-      button.ui.button.left.floated(onclick="location.href='/';") Save & Exit
-      button.circular.ui.icon.button.right.floated(onclick="showModal()")
-        i.wechat.icon
+    //-   button.ui.green.button.right.floated(type='submit')
+    //-       | Next
+    //-       i.arrow.right.icon
+    //- .div
+    //-   button.ui.button.left.floated(onclick="location.href='/identity_learn_page6';") 
+    //-     i.arrow.left.icon 
+    //-     | Back
+    //-   button.ui.button.left.floated(onclick="location.href='/';") Save & Exit
+    //-   button.circular.ui.icon.button.right.floated(onclick="showModal()")
+    //-     i.wechat.icon
         
     #chatModal.ui.modal
       i.close.icon
@@ -74,6 +74,15 @@ block content
         #topic_response2.ui.large.left.pointing.label(style="visibility: hidden; clear: both; float: left") 
           p I want to help you as best as I can, so please click the learning option you feel would most help you reach understanding. 
           | We can start with this.
+    .div(style='margin-top:20px;')
+      button.ui.medium.button.left.floated(onclick="location.href='/identity_learn_page6';") 
+        i.arrow.left.icon 
+        | Back
+      button.ui.medium.button.left.floated(onclick="location.href='/';") Save & Exit
+      button.ui.medium.button.right.floated(onclick="location.href='/identity_learn_page8';")
+        | Next
+        i.arrow.right.icon
+
 
 block scripts
   script.
