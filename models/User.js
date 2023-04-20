@@ -26,9 +26,13 @@ const userSchema = new mongoose.Schema({
     reflectionCsv: { type: String, default: '' },
     timeReportCsv: { type: String, default: '' },
     identityQuizScore: { type: Number, default: 0},
+    CharacterData: { type: String, default:''},
+    TextSize: { type: Number, default:0},
+    identityTheftProgress:{ type: Number, default:0},
     confidenceRating: { type: String, default: ''},
     moduleProgress: { // marks the progress of each module: none, started, completed
         accounts: { type: String, default: 'none' },
+        identityTheft: { type: String, default: 'none' },
         advancedlit: { type: String, default: 'none' },
         trolls: { type: String, default: 'none' },
         digfoot: { type: String, default: 'none' },

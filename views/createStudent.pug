@@ -1,13 +1,5 @@
 extends ui_layout
 
-<<<<<<< HEAD
-block content
-  .ui.sixteen.wide.row 
-    .ui.sixteen.wide.column
-      h2.ui.header Student Account Creation
-      .ui.form(action="/createStudent", method='POST')
-        input(type='hidden', name='facilitator', value=user.username)
-=======
 block content 
   .ui.sixteen.wide.row
     .ui.sixteen.wide.column(style="display: flex; flex-direction: column; justify-content: center; align-items: center;")
@@ -16,7 +8,6 @@ block content
       h2(style="font-size: 15px; text-align: left !important; margin:0 0 15px 0px ") please enter your details.
       form.ui.form(action="/createStudent", method='POST')
         input(type='hidden', name='facilitator')
->>>>>>> 925b56f0f8ab9291d274028e3835f440a74b5625
         input(type='hidden', name='_csrf', value=csrfToken)
         .field
           label(for='username' style="font-size:larger;") Enter Username

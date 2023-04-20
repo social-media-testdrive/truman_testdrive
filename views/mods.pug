@@ -52,6 +52,7 @@ block content
     console.log("Progress is: " + progress);
 
     const progressBar = document.getElementById('theft-progress');
+    
     if (progressBar) {
       progressBar.setAttribute('data-percent', progress);
       progressBar.querySelector('.bar').style.width = progress + "%";

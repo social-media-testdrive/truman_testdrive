@@ -225,7 +225,7 @@ app.get('/x', (req, res) => {
     res.send("<button><a href='/auth'>Login With Google</a></button>")
 });
 
-// Auth 
+// google Auth 
 app.get('/auth', passport.authenticate('google', { 
     scope: ['email', 'profile']    
 }
@@ -264,14 +264,16 @@ app.get('/auth/callback/success', (req, res, next) => {
         User.findOne({ username: req.user.email }, (err, existingUser) => {
             if (err) { return next(err); }
             if (existingUser) {
+                console.log("existingUser")
                 req.logIn(user, (err) => {
                     if (err) {
                         return next(err);
                     }
                     return res.redirect('/');
                 });
-            }
+            }else{
             user.save((err) => {
+                console.log("not existingUser")
                 if (err) { return next(err); }
                 req.logIn(user, (err) => {
                     if (err) {
@@ -280,6 +282,7 @@ app.get('/auth/callback/success', (req, res, next) => {
                     return res.redirect('/');
                 });
             });
+        }
         });
     }
 });
@@ -972,6 +975,15 @@ app.post('/chatbot', check, setHttpResponseHeaders, csrfProtection, userControll
 app.post('/saveIdentityQuizScore', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityQuizScore);
 
 app.post('/identityConfidenceRating', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityConfidenceRating);
+
+//brian added. user profile functions.
+app.post('/saveidentityTheftProgress', check, setHttpResponseHeaders, csrfProtection, userController.postidentityTheftProgress);
+
+app.post('/saveCharacterData', check, setHttpResponseHeaders, csrfProtection, userController.postCharacterData);
+
+app.post('/saveTextSize', check, setHttpResponseHeaders, csrfProtection, userController.postTextSizee);
+
+app.post('/saveModuleProgress_identityTheft', check, setHttpResponseHeaders, csrfProtection, userController.postModuleProgress_identityTheft);
 
 /*
  * Logins (only used on research site)
