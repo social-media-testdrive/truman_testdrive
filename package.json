@@ -63,9 +63,6 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb-base": "^11.3.2",
-    "eslint-plugin-import": "^2.24.0",
     "mocha": "^6.2.3",
     "nodemon": "^2.0.12",
     "sinon": "^2.4.1",
@@ -75,17 +72,5 @@
   "engines": {
     "node": ">=8.16.0",
     "npm": ">=6.4.1"
-  },
-  "eslintConfig": {
-    "extends": "airbnb-base",
-    "rules": {
-      "comma-dangle": 0,
-      "consistent-return": 0,
-      "no-param-reassign": 0,
-      "no-underscore-dangle": 0,
-      "no-shadow": 0,
-      "no-console": 0,
-      "no-plusplus": 0
-    }
   }
 }
