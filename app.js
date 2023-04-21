@@ -979,7 +979,7 @@ app.get('/facilitatorHome', passportConfig.isAuthenticated, setHttpResponseHeade
 });
 
 // Render student login page (all modules)
-app.get('/studentLogin', setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
+app.get('/studentLogin', setHttpResponseHeaders, csrfProtection, function(req, res) {
     res.render('studentLogin.pug', {
         title: 'Student Login'
     });
