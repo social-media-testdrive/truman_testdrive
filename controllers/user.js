@@ -273,7 +273,7 @@ exports.postIdentityTheftModTwoQuizScore = (req, res, next) => {
 
 exports.postIdentityTheftModThreeQuizScore = (req, res, next) => {
     req.assert('username', 'Username cannot be blank').notEmpty();
-    res.redirect('/identity_learn_page7'); 
+    res.redirect('/identity_learn_page28'); 
 }; 
 
 exports.postIdentityConfidenceRating = (req, res, next) => {
@@ -287,8 +287,6 @@ exports.postIdentityConfidenceRating = (req, res, next) => {
                     return next(err);
                 }
                 });
-        }
-    });
     res.redirect('/identity_learn_page28'); 
 }; 
 
@@ -727,7 +725,6 @@ exports.postUpdateVoiceoverTimer = (req, res, next) => {
                 user.voiceoverTimer = [req.body.voiceoverTimer];
             }
         }
-
         user.save((err) => {
             if (err) {
                 return next(err);
