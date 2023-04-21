@@ -3,7 +3,7 @@
     button#help-button Help
     #help-container
       #rpg-content
-        img#dartie-img(src='/images/Dartie.png' alt='Happy Dartie the hedgehog character wearing blue')
+        img#dartie-img(src="/profile_pictures/Intrepid_PT_Determined.png" alt='Happy Dartie the hedgehog character wearing blue')
         p#question What can I help you with?
         form#myForm1.ui.form(action='/chatbot', method='POST', style='float: left')
           input(type='hidden', name='_csrf', value=csrfToken)
@@ -260,6 +260,20 @@ script.
         // TODO handle error
     });
   });
+  document.addEventListener('DOMContentLoaded', function() {
+    const dartieImg = document.getElementById('dartie-img');
+    const character = localStorage.getItem('character');
+
+    if (character) {
+      dartieImg.src = "/profile_pictures/" + character;
+    }
+  });
+
+
+
+
+
+
 
   document.forms['myForm2'].addEventListener('submit', (event) => {
     event.preventDefault();

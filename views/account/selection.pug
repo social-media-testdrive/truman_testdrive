@@ -6,45 +6,63 @@ block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
     //-####################### title
   .computer.only.tablet.only.four.wide.column 
-  .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column( style="margin-bottom:5%")
+  .sixteen.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column( style="margin-bottom:5%")
     .ui.one.column.centered.grid.feedbackMessagesGrid
     .ui.fluid.card.dim(style = "margin-top:0px;margin-bottom:0px;")
 
       span.br(style="font-size: 25px; margin-left: 5%; margin-top: 5%; font-weight: bold;") Hello #{user.profile.name},
       span.br(style="font-size: 18px; margin-left: 5%; margin-top: 3%; font-weight: bold; margin-bottom: 3%") Before starting, would you like to select one of our agents to learn with you?
       
-      form.ui.profilePicForm.form 
+      .ui.profilePicForm.form 
         .ui.segment
             .two.fields
               .field
                 .ui.radio.checkbox
-                  input.hidden(type='radio' name='profilepicinput' value="Daring_PT_Determined.png")
-                  label
                       img.lazy(src="/profile_pictures/"+"Daring_PT_Determined.png" data-src="/profile_pictures/"+"Daring_PT_Determined.png")
-                      button.ui.secondary.button(onclick="window.location.href='/account'" style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);") Select
+                      button.ui.secondary.button(style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);", onclick="saveButton1()") Save
               .field
                 .ui.radio.checkbox
-                  input.hidden(type='radio' name='profilepicinput' value="Dartie_Happy_3.png")
-                  label
                       img.lazy(src="/profile_pictures/"+"Dartie_Happy_3.png" style="width: 120%;" data-src="/profile_pictures/Dartie_Happy_3.png")
-                      button.ui.secondary.button(onclick="window.location.href='/account'" style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);") Select
+                      button.ui.secondary.button(style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);", onclick="saveButton2()") Save
             .two.fields
               .field
                 .ui.radio.checkbox
-                  input.hidden(type='radio' name='profilepicinput' value="Intrepid_PT_Determined.png")
-                  label
                       img.lazy(src="/profile_pictures/"+"Intrepid_PT_Determined.png"  data-src="/profile_pictures/Intrepid_PT_Determined.png")
-                      button.ui.secondary.button(onclick="window.location.href='/account'" style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%) ;")  Select
+                      button.ui.secondary.button(style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);", onclick="saveButton3()") Save
               .field
                 .ui.radio.checkbox
-                  input.hidden(type='radio' name='profilepicinput' value="Valiant_PT_Determined.png")
-                  label
                       img.lazy(src="/profile_pictures/Valiant_PT_Determined.png" data-src="/profile_pictures/Valiant_PT_Determined.png")
-                      button.ui.secondary.button(onclick="window.location.href='/account'" style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);") Select
-
+                      button.ui.secondary.button(style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);", onclick="saveButton4()") Save
       
-      button.ui.secondary.button(style="margin-top: 1%") I prefer to have the journey myself
+      button.ui.secondary.button(style="margin-top: 1%" onclick="saveButton5()" ) I prefer to have the journey myself
+
 block scripts
+  script.
+    function saveButton1() {
+      localStorage.setItem('character', 'Daring_PT_Determined.png');
+      location.reload();
+
+    }
+    function saveButton2() {
+      localStorage.setItem('character', 'Dartie_Happy_3.png');
+      location.reload();
+    }
+
+    function saveButton3() {
+      localStorage.setItem('character', 'Intrepid_PT_Determined.png');
+      location.reload();
+    }
+
+    function saveButton4() {
+      localStorage.setItem('character', 'Valiant_PT_Determined.png');
+      location.reload();
+    }
+
+    function saveButton5() {
+      localStorage.setItem('character', 'transparent.png');
+      location.reload();
+    }
+
 
 block styles
   style(type='text/css').

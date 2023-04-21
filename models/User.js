@@ -29,8 +29,10 @@ const userSchema = new mongoose.Schema({
     identityTheftModOneConfidenceRating: { type: String, default: ''},
     identityTheftModThreeQuizScore: { type: String, default: ''},
     identityTheftModThreeConfidenceRating: { type: String, default: ''},
+
     moduleProgress: { // marks the progress of each module: none, started, completed
         accounts: { type: String, default: 'none' },
+        identityTheft: { type: String, default: 'none' },
         advancedlit: { type: String, default: 'none' },
         trolls: { type: String, default: 'none' },
         digfoot: { type: String, default: 'none' },

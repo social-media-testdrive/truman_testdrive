@@ -276,6 +276,94 @@ exports.postIdentityTheftModThreeQuizScore = (req, res, next) => {
     res.redirect('/identity_learn_page28'); 
 }; 
 
+exports.postidentityTheftProgress = (req, res, next) => {
+    //console.log("HEREEEEE\n");
+    //req.assert('username', 'Username cannot be blank').notEmpty();
+    const errors = req.validationErrors();
+    User.findOne({
+    username: req.body.username
+    }, (err, existingUser) => {
+        if (err) {
+            return next(err);
+        }
+        if (existingUser) {
+            existingUser.identityTheftProgress = 10;
+            existingUser.save((err) => {
+                if (err) {
+                    return next(err);
+                }
+                });
+        }
+    });
+}; 
+
+
+exports.postCharacterData = (req, res, next) => {
+    //console.log("HEREEEEE\n");
+    //req.assert('username', 'Username cannot be blank').notEmpty();
+    console.log(req.params.Data)
+    const errors = req.validationErrors();
+    User.findOne({
+    username: req.body.username
+    }, (err, existingUser) => {
+        if (err) {
+            return next(err);
+        }
+        if (existingUser) {
+            existingUser.CharacterData = req.params.Data;
+            existingUser.save((err) => {
+                if (err) {
+                    return next(err);
+                }
+                });
+                
+        }
+
+    });
+}; 
+
+exports.postTextSizee = (req, res, next) => {
+    //console.log("HEREEEEE\n");
+    //req.assert('username', 'Username cannot be blank').notEmpty();
+    const errors = req.validationErrors();
+    User.findOne({
+    username: req.body.username
+    }, (err, existingUser) => {
+        if (err) {
+            return next(err);
+        }
+        if (existingUser) {
+            existingUser.TextSizee = 10;
+            existingUser.save((err) => {
+                if (err) {
+                    return next(err);
+                }
+                });
+        }
+    });
+}; 
+
+exports.postModuleProgress_identityTheft = (req, res, next) => {
+    //console.log("HEREEEEE\n");
+    //req.assert('username', 'Username cannot be blank').notEmpty();
+    const errors = req.validationErrors();
+    User.findOne({
+    username: req.body.username
+    }, (err, existingUser) => {
+        if (err) {
+            return next(err);
+        }
+        if (existingUser) {
+            existingUser.ModuleProgress_identityTheft = "hello";
+            existingUser.save((err) => {
+                if (err) {
+                    return next(err);
+                }
+                });
+        }
+    });
+}; 
+
 exports.postIdentityConfidenceRating = (req, res, next) => {
     req.assert('username', 'Username cannot be blank').notEmpty();
 
@@ -294,7 +382,7 @@ exports.postIdentityTheftModOneConfidenceRating = (req, res, next) => {
     req.assert('username', 'Username cannot be blank').notEmpty();
 
     const errors = req.validationErrors();
-
+    console.log(req.body.confidence)
     User.findOne({
     username: req.body.username
     }, (err, existingUser) => {
