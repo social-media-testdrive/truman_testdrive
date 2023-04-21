@@ -2,7 +2,19 @@ const User = require('../models/User');
 const Class = require('../models/Class.js');
 const passport = require('passport');
 const fs = require('fs');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
+/**nodemailer */
+const nodemailer = require("nodemailer");
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user:"DartLehigh@gmail.com",
+    pass: "cmtkjdyfebzhddbw"
+  }
+});
+
+/**end of nodemailer */
 // const Notification = require('../models/Notification.js');
 
 //create random id for guest accounts
@@ -15,7 +27,21 @@ function makeid(length) {
     }
     return result;
 }
-
+/**
+ * Forgot password
+ */
+exports.forgotPassword = (req, res) => {
+    //send passwordresetLink()
+    transporter.sendMail({
+        from: 'DartLehigh@gmail.com',
+        to: req.body.username,
+        subject: "hello here is the link for resetting password",
+        text: "please enter the following link to reset your password: http://localhost:3000/temporary-link/d5407341-3a54-4e30-acf1-09d2174b3e23"
+      });
+      return res.redirect('/studentLogin');
+        //console.log(req.body.username)
+    };
+    
 /**
  * GET /login
  * Login page.
@@ -48,6 +74,22 @@ exports.getClassLogin = (req, res) => {
  * Sign in using username.
  * Route only exists if isResearchVersion = true.
  */
+
+exports.postGuestLogin = (req, res, next) => {
+    passport.authenticate(['basic', 'anonymous'], { session: false }),
+    function(req, res) {
+      let user = "";
+      if (req.user) {
+        user = req.user.username
+        //res.json({ name: req.user.username });
+      } else {
+        user = 'anonymous'
+        //res.json({ name: 'anonymous' });
+      }
+    };
+};
+
+
 exports.postStudentLogin = (req, res, next) => {
     //req.assert('email', 'Email is not valid').isEmail();
     // commented out by Anna
@@ -123,6 +165,7 @@ exports.postInstructorLogin = (req, res, next) => {
             req.flash('final', { msg: '' });
             return res.redirect('/login');
         }
+        
         req.logIn(user, (err) => {
             if (err) { return next(err); }
             // regenerate the session
@@ -230,16 +273,15 @@ exports.postIdentityTheftModTwoQuizScore = (req, res, next) => {
 
 exports.postIdentityTheftModThreeQuizScore = (req, res, next) => {
     req.assert('username', 'Username cannot be blank').notEmpty();
-    const errors = req.validationErrors();
+    res.redirect('/identity_learn_page7'); 
+}; 
 
-    User.findOne({
-    username: req.body.username
-    }, (err, existingUser) => {
-        if (err) {
-            return next(err);
-        }
-        if (existingUser) {
+exports.postIdentityConfidenceRating = (req, res, next) => {
+    req.assert('username', 'Username cannot be blank').notEmpty();
+
+
             existingUser.identityTheftModThreeQuizScore = req.body.scoreInput;
+
             existingUser.save((err) => {
                 if (err) {
                     return next(err);
@@ -308,6 +350,7 @@ exports.postChatbotConnect = (req, res, next) => {
             }
         }
     );
+    return;
 };
 
 /**
@@ -338,19 +381,10 @@ exports.postChatbotConnect = (req, res, next) => {
         isStudent: true,
         // facilitator: req.body.facilitator
     });
-    user.profile.name = "Guest";
-    user.profile.location = "Guest Town";
-    user.profile.bio = '';
+    user.profile.name = req.body.username;
+    user.profile.location = "New York";
+    user.profile.bio = 'There is no input or content provided by this person.';
     user.profile.picture = 'avatar-icon.svg';
-
-    // passport.authenticate('create-student', (err, user, info) => {
-    //     if (err) { return next(err); }
-    //     if (user) {
-    //         req.flash('errors', info);
-    //         return res.redirect('/createStudent');
-    //     }
-    //     })(req, res, next);
-
     User.findOne({
     username: req.body.username
     }, (err, existingUser) => {
@@ -365,29 +399,30 @@ exports.postChatbotConnect = (req, res, next) => {
             return;
         }
         else {
-            User.findOne({
-                username: req.body.facilitator
-                }, (err, existingUser) => {
-                    if (err) {
-                    return next(err);
-                    }
-                    if (existingUser) {
-                        user.facilitator = existingUser._id;
-                        user.save((err) => {
-                            if (err) {
-                                return next(err);
-                            }
+            User.findOne({ username: req.body.username }, (err, existingUser) => {
+                if (err) { return next(err); }
+                if (existingUser) {
+                    req.flash('errors', { msg: 'Account with that Username already exists.' });
+                    return res.redirect("/createStudent");
+                }
+                user.save((err) => {
+                    if (err) { return next(err); }
+                    req.logIn(user, (err) => {
+                        if (err) {
+                            return next(err);
+                        }
+                        var temp = req.session.passport; // {user: 1}
+                        req.session.regenerate(function(err) {
+                            //req.session.passport is now undefined
+                            req.session.passport = temp;
+                            req.session.save(function(err) {
+                                return res.redirect('/');
                             });
-                        existingUser.students.push(user._id);
-                        existingUser.save((err) => {
-                            if (err) {
-                                return next(err);
-                            }
-                            });
-                        console.log(`Account successfully created. Closing db connection.`);
-                        res.redirect("/facilitatorHome");
-                    } 
+                        });
+        
+                    });
                 });
+            });
         }
     });
 }; 
@@ -403,12 +438,16 @@ exports.logout = (req, res) => {
     req.session.regenerate(function() {
         res.redirect('/login');
     })
+
+    //res.clearCookie("connect.sid");
+
 };
 
 /**
  * GET /guest/:modId
  * Create a new local guest account.
  */
+
 exports.getGuest = (req, res, next) => {
     if (req.params.modId === "delete") {
         // avoiding a specific user behavior that causes 500 errors
@@ -429,7 +468,7 @@ exports.getGuest = (req, res, next) => {
 
     user.profile.name = "Guest";
     user.profile.location = "Guest Town";
-    user.profile.bio = '';
+    user.profile.bio = 'There is no input or content provided by this person.';
     user.profile.picture = 'avatar-icon.svg';
     //console.log("New Guest is now: "+ user.profile.name);
 
@@ -437,7 +476,7 @@ exports.getGuest = (req, res, next) => {
         if (err) { return next(err); }
         if (existingUser) {
             req.flash('errors', { msg: 'Account with that Username already exists.' });
-            return res.redirect('/guest/' + req.params.modId);
+            return res.redirect('/studentLogin');
         }
         user.save((err) => {
             if (err) { return next(err); }
@@ -450,7 +489,7 @@ exports.getGuest = (req, res, next) => {
                     //req.session.passport is now undefined
                     req.session.passport = temp;
                     req.session.save(function(err) {
-                        return res.redirect('/intro/' + req.params.modId);
+                        return res.redirect('/');
                     });
                 });
 
@@ -466,9 +505,10 @@ exports.getGuest = (req, res, next) => {
 exports.getAccount = (req, res) => {
     res.render('account/profile', {
         title: 'Account Management',
-        mod: req.params.modId
+        //mod: req.params.modId
     });
 };
+
 
 /*
  * GET /me/:modId
@@ -498,9 +538,9 @@ exports.getMe = (req, res) => {
  * Post a pageLog
  */
 exports.postPageLog = (req, res, next) => {
-    User.findById(req.user.id, (err, user) => {
+/*     User.findById(req.user.id, (err, user) => {
         if (err) { return next(err); }
-        user.logPage(Date.now(), req.body.subdirectory1, req.body.subdirectory2);
+        //user.logPage(Date.now(), req.body.subdirectory1, req.body.subdirectory2);
         user.save((err) => {
             if (err) {
                 return next(err);
@@ -508,7 +548,7 @@ exports.postPageLog = (req, res, next) => {
             res.set('Content-Type', 'application/json; charset=UTF-8');
             res.send({ result: "success" });
         });
-    });
+    }); */
 };
 
 /*
@@ -678,7 +718,7 @@ exports.postUpdateHabitsTimer = (req, res, next) => {
  * Update the durations voiceover is turned on
  */
 exports.postUpdateVoiceoverTimer = (req, res, next) => {
-    User.findById(req.user.id, (err, user) => {
+/*     User.findById(req.user.id, (err, user) => {
         if (err) { return next(err); }
         if (req.body.voiceoverTimer) { //we are adding another voiceover duration to the array
             if (user.voiceoverTimer) {
@@ -695,7 +735,7 @@ exports.postUpdateVoiceoverTimer = (req, res, next) => {
             res.set('Content-Type', 'application/json; charset=UTF-8');
             res.send({ result: "success" });
         });
-    });
+    }); */
 };
 
 /**

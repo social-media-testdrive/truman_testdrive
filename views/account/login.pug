@@ -6,19 +6,18 @@ block content
       h2.loginPageTitle Welcome to the Research Version of DART!
   .ui.sixteen.wide.row 
     .ui.sixteen.wide.column
-      a(href='/facilitatorLogin')
-        button.ui.big.green.labeled.icon.button
-            i.chevron.circle.right.icon
-            |   Login as a Facilitator
-      br
-      br
       a(href='/studentLogin')
         button.ui.big.green.labeled.icon.button
             i.chevron.circle.right.icon
-            |   Login as a Student
+            |   Login
       br
       br
-      p Are you a facilitator without an account? Please contact us.
+      a(href='/createStudent')
+        button.ui.big.green.labeled.icon.button
+            i.chevron.circle.right.icon
+            |   Signup
+      br
+      br
         
 block styles
   link(rel='stylesheet', href='/css/login.css')
