@@ -6,41 +6,49 @@ block content
     .ui.fluid.tiny.three.item.fluid.menu
       .item.active(style='background-color: #6BBCC7; color: white; border-right: 2px solid white;')
         | Concept & Consequences
-      .item(style='background-color: darkgray; color: white; border-right: 2px solid white;')
+      .item(style='background-color: #6BBCC7; color: white; border-right: 2px solid white;')
         | Tricks and Recognize Tricks
-      .item(style='background-color: darkgray; color: white;')
+      .item(style='background-color: #6BBCC7; color: white;')
         | Method and Protection
     #segmentation.ui.raised.segment
-        img.ui.medium.image(src='/images/reflect_progress_bar.png' style='margin-left: auto; margin-right: auto')
+        img.ui.medium.image(src='/images/practice_progress_bar.png' style='margin-left: auto; margin-right: auto')
         h3.ui.header
             .content
-                b Reflection:
-        p How did you feel about the content you have learned? Do you feel confient recognizing identity theft and understanding its consequences?
-        h3 Confidence Rating:  
-        form.ui.form(style="width: 100%", action='/postIdentityTheftModOneConfidenceRating', method='POST')
+                b If you receive the email above, WHAT SHOULD YOU BE THINKING? Select all that apply. 
+        img.ui.image(src='/images/methodOfProtectionPracticeQuestion.png')
+        form.ui.form(style="width: 100%", action='/postIdentityTheftModThreeQuizScore', method='POST', form name="questionForm")
             input(type='hidden', name='username', value=user.username)
             input(type='hidden', name='_csrf', value=csrfToken)
             .field
-                .ui.radio.checkbox(style='border-style: solid; border-color: grey; padding: 15px; width: 100%')
-                    input.hidden(type='radio' name='confidence' value = 'not_confident' id='radio1')
-                    label I don't understand
+                #b1.ui.checkbox(style='border-style: solid; border-color: grey; padding: 15px; width: 100%')
+                    input.hidden(type='checkbox' id = 'c1' name='answer1' value = 'a1')
+                    label When this email asks you to click a link, be alert. That could be a scam.
             .field
-                .ui.radio.checkbox(style='border-style: solid; border-color: grey; padding: 15px; width: 100%')
-                    input.hidden(type='radio' name='confidence' value = 'okay_confident')
-                    label I'm okay
+                #b2.ui.checkbox(style='border-style: solid; border-color: gray; padding: 15px; width: 100% ; color: green')
+                    input.hidden(type='checkbox' id = 'c2' name='answer2' value = 'a2')
+                    label Ask the question: do I have the account with the company? Did you submit a ticket to the company? If the answer is no, deleter the email immediately.
             .field
-                .ui.radio.checkbox(style='border-style: solid; border-color: grey; padding: 15px; width: 100%')
-                    input.hidden(type='radio' name='confidence' value = 'yes_confident')
-                    label I'm confident
-            br
-    .div(style='margin-top:20px;')
-      button.ui.medium.button.left.floated(onclick="location.href='/identity_learn_page6';") 
-        i.arrow.left.icon 
-        | Back
-      button.ui.medium.button.left.floated(onclick="location.href='/';") Save & Exit
-      button.ui.medium.button.right.floated(onclick="location.href='/identity_learn_page9';")
-        | Next
-        i.arrow.right.icon
+                #b3.ui.checkbox(style='border-style: solid; border-color: grey; padding: 15px; width: 100%')
+                    input.hidden(type='checkbox' id = 'c3' name='answer3' value = 'a3')
+                    label If you have the account with this company, carefully examine the sender's email address. If the email address is not correct, delete the email.
+            .field
+                #b4.ui.checkbox(style='border-style: solid; border-color: grey; padding: 15px; width: 100%')
+                    input.hidden(type='checkbox' id = 'c4' name='answer4' value = 'a4')
+                    label If you still could not identify whether the email address is authentic or not, contact the company to inform. Remember using a phone number or website you know is real -- not the information in the email.
+            #submitQuestion.ui.green.button(onclick ='checkQuestion()', style='float: right') Check Answers
+            #correctness.ui.label.right.floated(style='clear: both; width: 100%; float: right; display: none')
+                p#score(style='float:right') 1.0/1 points
+            input(type='hidden', name='scoreInput', value='0', id='scoreInput')
+            h1
+            h1
+            button#testing.ui.button.right.floated(type='submit', style='clear: both')
+                | Next
+                i.arrow.right.icon
+        .ui.div
+            button.ui.button.left.floated(onclick="location.href='/identity_learn_page25';") 
+                i.arrow.left.icon 
+                | Back
+            button.ui.button.left.floated(onclick="location.href='/';") Save & Exit
 
 block scripts
   script.
@@ -91,9 +99,9 @@ block scripts
          x = x + .25;
       }
       else document.getElementById("b4").style.borderColor="red";
-      document.getElementById("score").innerHTML = x + " / 1.0 points";
+      document.getElementById("score").innerHTML = x + " / 1.00 points";
       document.getElementById("correctness").style.display = "block";
-      document.getElementById('scoreInput').value = x;
+      document.getElementById('scoreInput').value = x +  " / 1.00 points";
     }
 
     var voiceoverMappings = {

@@ -3,28 +3,44 @@ extends ../ui_layout
 block content
 
   .ui.text.container.addBottomMargin
-    br  
-    p The concept and consequences of identity theft (submodule 1)          
-    p Learn 1/4
-    .ui.raised.segment
-      h1.ui.header
-        .content
-            | Identity Theft Learn Page 1
-      h3.ui.header
-        i.book.blue.icon
-        .content
-          iframe(type='text/html' width='540' height='289'
-            src='videos/identity-video.mp4'
-            frameborder='0')
-      p <strong>Identity theft</strong> happens when someone steals your personal information to commit fraud. The identity thief may use your information to apply for credit, file taxes, or get medical services. These acts can damage your credit status and cost you time and money to restore your good name. 
+    .ui.fluid.tiny.three.item.fluid.menu
+      .item.active(style='background-color: #6BBCC7; color: white; border-right: 2px solid white;')
+        | Concept & Consequences
+      .item(style='background-color: darkgray; color: white; border-right: 2px solid white;')
+        | Tricks and Recognize Tricks
+      .item(style='background-color: darkgray; color: white;')
+        | Method and Protection
+    #segmentation.ui.raised.segment
+      iframe(type='text/html' width='540' height='289'
+        src='videos/identity-video.mp4'
+        frameborder='0' style='display: block; margin: auto;')
+      br
+      br
+      p This module is designed for your to have a deeper understanding of <strong>identity theft scams</strong>, and their risks and warning signs. Our goal is to assist you to better protect yourself from them.
 
-      p (Source: https://www.usa.gov/identity-theft)
+      .ui.centered.grid(style="margin: auto")
+        .four.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;")
+          .ui.large.label(style='text-align: center;')
+            p Concepts & 
+            | Consequences
+            br
+          p(style='text-align: center; margin-top: 0.5em;') Section 1: Concepts & Consequences
+        .four.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;")
+          .ui.huge.label(style='text-align: center;')
+            i.big.lock.icon(style='margin: 0 auto;')
+          p(style='text-align: center; margin-top: 0.5em;') Section 2: Recognize tricks
+        .four.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;")
+          .ui.huge.label(style='text-align: center;')
+            i.big.lock.icon(style='margin: 0 auto;')
+          p(style='text-align: center; margin-top: 0.5em;') Section 3: Methods of Protection
+
+
     .div(style='margin-top:20px;')
-      button.ui.large.button.left.floated(onclick="location.href='/identity_prequiz_finish';") 
+      button.ui.button.left.floated(onclick="location.href='/identity_prequiz_finish';") 
         i.arrow.left.icon 
         | Back
-      button.ui.large.button.left.floated(onclick="location.href='/';") Save & Exit
-      button.ui.large.green.button.right.floated(onclick="location.href='/identity_learn_page2';")
+      button.ui.button.left.floated(onclick="location.href='/';") Save & Exit
+      button.ui.button.right.floated(onclick="location.href='/identity_learn_page3';")
         | Next
         i.arrow.right.icon
 
