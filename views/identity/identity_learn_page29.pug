@@ -3,44 +3,28 @@ extends ../ui_layout
 block content
 
   .ui.text.container.addBottomMargin
-    .ui.fluid.tiny.three.item.fluid.menu
-      .item.active(style='background-color: #6BBCC7; color: white; border-right: 2px solid white;')
-        | Concept & Consequences
-      .item(style='background-color: darkgray; color: white; border-right: 2px solid white;')
-        | Tricks and Recognize Tricks
-      .item(style='background-color: darkgray; color: white;')
-        | Method and Protection
     #segmentation.ui.raised.segment
-        img.ui.medium.image(src='/images/reflect_progress_bar.png' style='margin-left: auto; margin-right: auto')
-        h3.ui.header
-            .content
-                b Reflection:
-        p How did you feel about the content you have learned? Do you feel confient recognizing identity theft and understanding its consequences?
-        h3 Confidence Rating:  
-        form.ui.form(style="width: 100%", action='/postIdentityTheftModOneConfidenceRating', method='POST')
-            input(type='hidden', name='username', value=user.username)
-            input(type='hidden', name='_csrf', value=csrfToken)
-            .field
-                .ui.radio.checkbox(style='border-style: solid; border-color: grey; padding: 15px; width: 100%')
-                    input.hidden(type='radio' name='confidence' value = 'not_confident' id='radio1')
-                    label I don't understand
-            .field
-                .ui.radio.checkbox(style='border-style: solid; border-color: grey; padding: 15px; width: 100%')
-                    input.hidden(type='radio' name='confidence' value = 'okay_confident')
-                    label I'm okay
-            .field
-                .ui.radio.checkbox(style='border-style: solid; border-color: grey; padding: 15px; width: 100%')
-                    input.hidden(type='radio' name='confidence' value = 'yes_confident')
-                    label I'm confident
-            br
-    .div(style='margin-top:20px;')
-      button.ui.medium.button.left.floated(onclick="location.href='/identity_learn_page6';") 
-        i.arrow.left.icon 
-        | Back
-      button.ui.medium.button.left.floated(onclick="location.href='/';") Save & Exit
-      button.ui.medium.button.right.floated(onclick="location.href='/identity_learn_page9';")
-        | Next
-        i.arrow.right.icon
+        img.ui.large.image(src='/images/identityTheftLearnFinishProgressBar.png' style='margin-left: auto; margin-right: auto')
+        br
+        h2(style="text-align: center") Great job! You have learned the most important three topics regarding Identity Theft.
+        br
+        br
+        h1(style="text-align: center") Let's explore more!
+        button.ui.secondary.basic.button(onclick="location.href='/identity_learn_page30';" style="clear: both; margin: auto; display: block") 
+            b Start Explore
+            i.arrow.right.icon
+        br
+        br
+        br
+        div(style="clear: both")
+            button.ui.button.left.floated(onclick="location.href='/identity_learn_page28';") 
+                i.arrow.left.icon 
+                | Back
+            button.ui.button.left.floated(onclick="location.href='/;") Save & Exit
+            button.ui.button.right.floated( onclick="location.href='/identity_learn_page30';")
+                | Skip Explore
+                i.arrow.right.icon
+
 
 block scripts
   script.

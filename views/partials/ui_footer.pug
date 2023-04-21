@@ -21,18 +21,78 @@
           input(type='hidden', name='message' value='Hi')
           button#account.ui.button.blue(type='submit', onclick='postQuestion("How do I change my account information?")') How do I change my account information?
         p#chatResponse(style="display: none") This is a hidden message.
-#footer.ui.bottom.fixed.small.borderless.menu.testDriveFooter
+#access.ui.modal
+  i.close.icon
+  h3(style='margin: 10px') Accessibility Options
+  .ui.grid
+      .six.wide.row.centered
+          .ui.medium.buttons
+              button#large.ui.button.green.large(onclick='changeToLarge()') Large Text
+              .or
+              button#medium.ui.button.green.medium(onclick='changeToMedium()') Medium Text
+              .or
+              button#small.ui.button.green.small(onclick='changeToSmall()') Small Text
+      .four.wide.row.centered
+          .ui.medium.buttons
+              button#dark.ui.button.black(onclick='changeToDark()') Dark Mode
+              .or
+              button#light.ui.button.white(onclick='changeToLight()') Light Mode
+      .four.wide.row.centered
+          .ui.medium.buttons
+              button#gameOn.ui.button.blue Game Mode
+              .or
+              button#gameOff.ui.button.white Learn Mode
+  br
+
+#chatModal.ui.modal
+      i.close.icon
+      .ui.large.header(style="background-color: grey; color: white;")
+        img.ui.circular.image(src='/images/avatar-pic.jpg' style='margin: 25px')
+        | Chat with Intrepid
+      .content(style="background-color: #d3d3d3;")
+        .div(style='overflow: hidden; float: left')
+          img.ui.tiny.circular.image(src='/images/avatar-pic.jpg' style='float: left; margin-bottom: 25px; display: block')
+          .ui.large.left.pointing.label(style='float: left')
+            p Hi User! Welcome to the Chat! I am so happy you're here! 
+              | You requested clarification. Luckily for you, in here, you can ask any questions you have about the material covered.
+        .ui.large.left.pointing.label(style='float: left; display: block; clear:both')
+          p Before we start, I want to be clear that I am an AI chat-bot and not a human being. 
+            | However, I will do my best to help you with what you need assistance on!
+        .ui.large.left.pointing.label(style='float: left; clear:both')
+          p You can feel free to save and exit the chat through the botton on the bottom left of you screen. 
+            | You can always re-enter as well. Does all of this make sense? Select a button below.
+        button#understand_button.ui.small.blue.button(onclick="showYes()" style='float: right; clear:both') Yes.
+        #understand.ui.large.blue.right.pointing.label(style='float: right; visibility: hidden; clear: both')
+          p Yes.
+        #yay.ui.large.left.pointing.label(style="visibility: hidden; float: left; clear: both")
+          p Yay! Let's begin. Please select a button below what you would like clarification on.
+        #topics_group(style="visibility: hidden; clear: both; float: right")
+          button.ui.small.blue.button(onclick="showTopic('Consequences of finanical identity theft')") Consequences of financial identity theft
+          button.ui.small.blue.button(onclick="showTopic('Identifying a troll')") Identifying a troll
+          button.ui.small.blue.button(onclick="showTopic('Other')") Other
+        #topic.ui.large.blue.right.pointing.label(style="visibility: hidden; clear: both; float: right") 
+          p#topic_text 
+        #topic_response1.ui.large.left.pointing.label(style="visibility: hidden; clear: both; float: left") 
+          p This can definitely be a hard topic to grasp, so I understand completely!
+        #topic_response2.ui.large.left.pointing.label(style="visibility: hidden; clear: both; float: left") 
+          p I want to help you as best as I can, so please click the learning option you feel would most help you reach understanding. 
+          | We can start with this.
+#footer.ui.bottom.fixed.small.borderless.menu.testDriveFooter(style='background-color:#dbdbdb')
   .left.menu
     .item
-      .ui.toggle.checkbox.hidden#voiceoverCheckbox
-        input(type="checkbox", name="voiceoverCheckbox" id='voiceoverCheckbox' checked)
-        label(for='voiceoverCheckbox') Voiceovers
-    .item
-      button#showModal.ui.button.green Accessibility Menu
+      p Contact Information: dart@learn.com
+      //- .ui.toggle.checkbox.hidden#voiceoverCheckbox
+      //-   input(type="checkbox", name="voiceoverCheckbox" id='voiceoverCheckbox' checked)
+      //-   label(for='voiceoverCheckbox') Voiceovers
   .right.menu
-    a.item(href='/') Terms of Service 
+    .item
+      button.circular.ui.icon.grey.button.right.floated(onclick="showChatModal()")
+        i.wechat.icon
+    .item
+      button.ui.button.blue(onclick="showAccessibilityModal()") Accessibility Menu
+    //- a.item(href='/') Terms of Service 
     //- a.item(href='/privacy') Privacy Policy  
-    a.item(href='mailto:socialmediatestdrive@gmail.com') Contact Us
+    //- a.item(href='mailto:socialmediatestdrive@gmail.com') Contact Us
 
 block scripts
   script(src="/js/help.js")
@@ -51,6 +111,133 @@ script.
 
   function postQuestion(question){
     document.getElementById('question').innerHTML = question;
+  }
+
+  function showYes(){
+    var hid = document.getElementById("understand");
+    hid.style.visibility = "visible";
+    hid = document.getElementById("understand_button");
+    hid.style.visibility = "hidden";
+    hid = document.getElementById("yay");
+    hid.style.visibility = "visible";
+    hid = document.getElementById("topics_group");
+    hid.style.visibility = "visible";
+  }
+
+  function showTopic(name){
+    document.getElementById("topic_text").innerHTML = name;
+    var hid = document.getElementById("topics_group");
+    hid.style.visibility = "hidden";
+    hid = document.getElementById("topic");
+    hid.style.visibility = "visible";
+    hid = document.getElementById("topic_response1");
+    hid.style.visibility = "visible";
+    hid = document.getElementById("topic_response2");
+    hid.style.visibility = "visible";
+  }
+
+  function showChatModal(){
+    $('#chatModal.ui.modal')
+      .modal('show')
+    ;
+  }
+
+  function showAccessibilityModal(){
+    $('#access.ui.modal')
+      .modal('show')
+    ;
+  }
+
+  document.getElementById('dark').onclick = dark;
+  document.getElementById('light').onclick = light;
+  document.getElementById('small').onclick = small;
+  document.getElementById('medium').onclick = medium;
+  document.getElementById('large').onclick = large;
+  document.getElementById('gameOn').onclick = on;
+  document.getElementById('gameOff').onclick = off;
+
+  function on(){
+      window.sessionStorage.setItem('gameMode', 'true');
+      window.location.reload();
+  }
+
+  function off(){
+      window.sessionStorage.setItem('gameMode', 'false');
+      window.location.reload();
+  }
+
+  function changeToDark() {
+    window.sessionStorage.setItem('darkMode', 'true');
+    document.getElementById('segmentation').style.backgroundColor = 'black';
+    let tags = ["h1","h3","h4", "ul", "li", "a", "span", "p", "b"];
+      for(var j = 0; j < tags.length; j++){
+        let collection = document.getElementById("segmentation").getElementsByTagName(tags[j]);
+        for (var i = 0; i < collection.length; i++) {
+            collection[i].style.color = "white";
+        }
+      }
+        return false;
+    }
+
+  function changeToLight() {
+    window.sessionStorage.setItem('darkMode', 'false');
+    document.getElementById('segmentation').style.backgroundColor = 'white';
+    let tags = ["h1","h3","h4", "ul", "li", "a", "span", "p", "b"];
+      for(var j = 0; j < tags.length; j++){
+        let collection = document.getElementById("segmentation").getElementsByTagName(tags[j]);
+        for (var i = 0; i < collection.length; i++) {
+            collection[i].style.color = "black";
+        }
+      }
+      return false;
+    }
+
+  function changeToSmall() {
+      window.sessionStorage.setItem('textMode', 'small');
+      let tags = ["h1","h3","h4", "ul", "li", "a", "span", "p", "b", "h2"];
+      newFontSize = 1.14285714 * .75;
+      for(var j = 0; j < tags.length; j++){
+      let collection = document.getElementById("segmentation").getElementsByTagName(tags[j]);
+          for (var i = 0; i < collection.length; i++) {
+              collection[i].style.fontSize = newFontSize + "rem";
+          }
+      }
+      document.body.style.fontSize = newFontSize + "rem";
+      return false;
+  }
+
+  function changeToMedium() {
+      window.sessionStorage.setItem('textMode', 'medium');
+      let tags = ["h1","h3","h4", "ul", "li", "a", "span", "p", "b", "h2"];
+      newFontSize = 1.14285714 * 1.25;
+      for(var j = 0; j < tags.length; j++){
+          let collection = document.getElementById("segmentation").getElementsByTagName(tags[j]);
+          for (var i = 0; i < collection.length; i++) {
+              collection[i].style.fontSize = newFontSize + "rem";
+          }
+      }
+      document.body.style.fontSize = newFontSize + "rem";
+      return false;
+  }
+
+  function changeToLarge() {
+      window.sessionStorage.setItem('textMode', 'large');
+      let tags = ["h1","h3","h4", "ul", "li", "a", "span", "p", "b", "h2"];
+      newFontSize = 1.14285714 * 1.75;
+      for(var j = 0; j < tags.length; j++){
+          let collection = document.getElementById("segmentation").getElementsByTagName(tags[j]);
+          for (var i = 0; i < collection.length; i++) {
+              collection[i].style.fontSize = newFontSize + "rem";
+          }
+      }
+      document.body.style.fontSize = newFontSize + "rem";
+      return false;
+  }
+
+  function changeToLearn(){
+      const helpMenu = document.querySelector('#help-dartie-menu');
+      helpMenu.style.display = 'none';
+      document.body.style.backgroundColor = "#F5F8FA";
   }
 
   document.forms['myForm1'].addEventListener('submit', (event) => {
