@@ -6,13 +6,14 @@ block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
     //-####################### title
   .computer.only.tablet.only.four.wide.column 
-  .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
+  .sixteen.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
     .ui.one.column.centered.grid.feedbackMessagesGrid
     .ui.fluid.card.dim(style = "margin-top:0px;margin-bottom:0px;")
       .profile_title(style='position: relative; top: 0; left: 0;')
        div(style="position: relative; display: inline-block;")
-        img(style='width: 100%; height: 80%; z-index: 0; object-fit: cover;' src=user_info[0].background_pic)
-        button.ui.secondary.button(onclick="window.location.href='/edit_profile'" style="position: absolute; bottom: 10px; right: 10px;") Edit Profile
+        img(style='width: 171.3%; height: 80%; z-index: 0; object-fit: relative;' src=user_info[0].background_pic)
+        
+        button.ui.secondary.button(onclick="window.location.href='/edit_profile'" style="z-index:2;position: absolute; bottom: 10px; right: 10px;margin-right: -400px") Edit Profile
 
       .user_profile(style=' width:100%;padding-left: 25px; margin-top: -5%;z-index: 1')
           img.editProfilePictureButton(style='cursor:pointer; \
@@ -20,19 +21,19 @@ block content
   border-radius: 50%; width:20%; height 20%; z-index: 2;\
   top: 50%;\
   left: 3%;\
-  border: 2px white solid;padding: -1px;padding: 5px white solid;z-index: 1;background-color: white;' src="/profile_pictures/"+"Dartie_Happy_3.png")
+  border: 2px white solid;padding: -1px;padding: 5px white solid;z-index: 1;background-color: white;' src="/profile_pictures/"+"old_man.png")
           
           div(style='position: relative; margin-left: 20%; margin-top: -7%; display: flex; flex-direction: column; align-items: flex-start;')
             span.br(style='font-size: 23px; margin-top: -5%; margin-left: 2%;')= user.profile.name
-            div(style='margin-left: 2%;') make learning since #{user.createdAt.toString().substring(0, 10).replace(/-/g, "/").split("/").join("/") }
             div(style='margin-left: -25% ;display: flex; justify-content: flex-start; align-items: center; margin-top: 4%;')
-              button.btn(style='padding: 6px; border: none; margin-left: 0%; border-radius: 50px; white-space: nowrap;') 1 module completed
+              button.btn(style='padding: 6px; border: none; margin-left: 105%; border-radius: 50px; white-space: nowrap;') 1 module completed
               button.btn(style='padding: 6px; border: none; margin-left: 5%; border-radius: 50px; white-space: nowrap;') Top learner
 
 
 
       span.br(style="font-size: 25px; margin-left: 5%; margin-top: 5%; font-weight: bold;") My Courses
-      span.br(style="font-size: 18px; margin-left: 5%; margin-top: 3%; font-weight: bold;") In-Progress (90%)
+      span.br#progressDisplay(style="font-size: 18px; margin-left: 5%; margin-top: 3%; font-weight: bold;")
+
 
       
       div.ui.special.cards(style="margin-top:2%;margin-left:3%;width:100%")
@@ -42,8 +43,9 @@ block content
             a.header Identity Theft
             div.meta
               span Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
-            button.ui.secondary.button(style="margin-top: 1%" onclick="window.location.href='/intro/trolls'") Learn Now →
-          div(style="border-top: 8px solid green; width: 90%; position: absolute; left: 0;")
+            
+            button.ui.secondary.button(style="margin-top: 1%" onclick="window.location.href='/identity_home'" ) Learn Now →
+          div#progressBar(style="border-top: 8px solid green; width: 90%; position: absolute; left: 0;")
       span.br(style="font-size: 18px; margin-left: 5%; margin-top: 5%; font-weight: bold;") Completed (100%)
       
 
@@ -55,7 +57,7 @@ block content
               span.date Trolls are individuals who seek to harass, provoke, and upset others in online communities, using various methods such as inflammatory comments, misleading information, and personal attacks.
             button.ui.secondary.button(style="margin-top: 1%") View Certificate 
             button.ui.secondary.button(style="margin-top: 1%") Share Certificate 
-            button.ui.secondary.button(style="margin-top: 1%" onclick="window.location.href='/intro/identity'" ) Learn Now →
+            button.ui.secondary.button(style="margin-top: 1%" onclick="window.location.href='/intro/trolls'") Learn Now →
 
           div(style="border-top: 8px solid green; width: 100%; position: absolute; left: 0;")
       span.br(style="font-size: 28px; margin-left: 5%; margin-top: 5%; font-weight: bold;") Learning Materials 
@@ -116,6 +118,43 @@ block content
 
 block scripts
   script.
+    (function() {
+      // Check if the "progress" variable has been assigned a value yet
+      let progress = localStorage.getItem('progress');
+      if (progress === null) {
+        // If the variable has not been assigned yet, set it to 0
+        progress = 0;
+        localStorage.setItem('progress', progress);
+      } else {
+        // If the variable has been assigned, parse the value from local storage
+        progress = parseInt(progress);
+      }
+      console.log("Progress is: " + progress);
+
+      const updateProgressDisplay = () => {
+        const progressSpan = document.getElementById('progressDisplay');
+      
+        if (progress === 0) {
+          progressSpan.innerText = "Start right now";
+        } else if (progress === 100) {
+          progressSpan.innerText = "Completed";
+        } else {
+          progressSpan.innerText = `Progress: (${progress}%)`;
+        }
+
+        const progressBar = document.getElementById('progressBar');
+        progressBar.style.width = `${progress}%`;
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', updateProgressDisplay);
+    } else {
+      updateProgressDisplay();
+    }
+    })();
+
+        
+            
     const cdn = "https://dhpd030vnpk29.cloudfront.net"
     $('.editProfilePictureButton').on('click', function(){
       $('.profilePictureModal').modal({

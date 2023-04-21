@@ -979,7 +979,7 @@ app.post('/identityConfidenceRating', check, setHttpResponseHeaders, csrfProtect
 //brian added. user profile functions.
 app.post('/saveidentityTheftProgress', check, setHttpResponseHeaders, csrfProtection, userController.postidentityTheftProgress);
 
-app.post('/saveCharacterData', check, setHttpResponseHeaders, csrfProtection, userController.postCharacterData);
+app.post('/saveCharacterData/:Data', check, setHttpResponseHeaders, csrfProtection, userController.postCharacterData);
 
 app.post('/saveTextSize', check, setHttpResponseHeaders, csrfProtection, userController.postTextSizee);
 

@@ -275,6 +275,7 @@ exports.postidentityTheftProgress = (req, res, next) => {
 exports.postCharacterData = (req, res, next) => {
     //console.log("HEREEEEE\n");
     //req.assert('username', 'Username cannot be blank').notEmpty();
+    console.log(req.params.Data)
     const errors = req.validationErrors();
     User.findOne({
     username: req.body.username
@@ -283,13 +284,15 @@ exports.postCharacterData = (req, res, next) => {
             return next(err);
         }
         if (existingUser) {
-            existingUser.CharacterData = "hello";
+            existingUser.CharacterData = req.params.Data;
             existingUser.save((err) => {
                 if (err) {
                     return next(err);
                 }
                 });
+                
         }
+
     });
 }; 
 
