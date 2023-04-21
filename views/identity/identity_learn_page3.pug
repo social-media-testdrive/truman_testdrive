@@ -3,6 +3,13 @@ extends ../ui_layout
 block content
 
   .ui.text.container.addBottomMargin
+    .ui.fluid.tiny.three.item.fluid.menu
+      .item.active(style='background-color: #6BBCC7; color: white; border-right: 2px solid white;')
+        | Concept & Consequences
+      .item(style='background-color: darkgray; color: white; border-right: 2px solid white;')
+        | Tricks and Recognize Tricks
+      .item(style='background-color: darkgray; color: white;')
+        | Method and Protection
     #segmentation.ui.raised.segment
       img.ui.medium.image(src='/images/learning_progress_bar.png' style='margin-left: auto; margin-right: auto')
       ul
@@ -18,9 +25,8 @@ block content
             li Personal address information: street address, or email address
             li Personal telephone numbers
       .ui.one.column.centered.grid(style="margin: 50px")
-        .ui.large.pointing.below.circular.label(style="float: left;")
-            p(style="padding: 10px") Key concept here is 
-              b Personal Identifiable Information (PII)
+        .ui.large.right.pointing.circular.label(style="display: flex; align-items: center; float: left;width:50%;")
+          p(style="padding: 0px; text-align: center; margin: 0;") Key concept here is <strong>Personal Identifiable Information (PII)</strong>
         img.ui.small.image.right.floated(src='/images/avatar-pic.png' style="float: right")
     .div(style='margin-top:20px;')
       button.ui.medium.button.left.floated(onclick="location.href='/identity_learn_page1';") 

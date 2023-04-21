@@ -3,6 +3,13 @@ extends ../ui_layout
 block content
 
   .ui.text.container.addBottomMargin
+    .ui.fluid.tiny.three.item.fluid.menu
+      .item.active(style='background-color: #6BBCC7; color: white; border-right: 2px solid white;')
+        | Concept & Consequences
+      .item(style='background-color: darkgray; color: white; border-right: 2px solid white;')
+        | Tricks and Recognize Tricks
+      .item(style='background-color: darkgray; color: white;')
+        | Method and Protection
     #segmentation.ui.raised.segment
       img.ui.medium.image(src='/images/practice_progress_bar.png' style='margin-left: auto; margin-right: auto')
       form.ui.form(style="width: 100%" action='/postIdentityTheftModOneQuizScore', method='POST')
@@ -54,7 +61,7 @@ block content
         i.arrow.left.icon 
         | Back
       button.ui.medium.button.left.floated(onclick="location.href='/';") Save & Exit
-      button.ui.medium.button.right.floated(onclick="location.href='/identity_learn_page7';")
+      button.ui.medium.button.right.floated(onclick="location.href='/identity_learn_page8';")
         | Next
         i.arrow.right.icon
 

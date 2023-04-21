@@ -3,15 +3,18 @@ extends ../ui_layout
 block content
 
   .ui.text.container.addBottomMargin
-    br     
-    p The concept and consequences of identity theft (submodule 1)          
-    p Learn 2/4
-    .ui.raised.segment
+    .ui.fluid.tiny.three.item.fluid.menu
+      .item.active(style='background-color: #6BBCC7; color: white; border-right: 2px solid white;')
+        | Concept & Consequences
+      .item(style='background-color: darkgray; color: white; border-right: 2px solid white;')
+        | Tricks and Recognize Tricks
+      .item(style='background-color: darkgray; color: white;')
+        | Method and Protection
+    #segmentation.ui.raised.segment
       #avatar.ui.one.column.centered.grid(style="margin: 50px")
-        .ui.huge.right.pointing.circular.label
+        .ui.huge.right.pointing.circular.label(style="width: 50%")
           p(style="padding-top: 20px") Key concept: 
-          p Personal Information! 
-          p <stroextends ../ui_layout
+          | Personal Information! 
 
 block content
 
