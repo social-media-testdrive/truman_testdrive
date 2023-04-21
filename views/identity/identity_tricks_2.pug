@@ -1,0 +1,73 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container.addBottomMargin
+    .ui.fluid.tiny.three.item.fluid.menu
+      .item(style='background-color: #6BBCC7; color: white; border-right: 2px solid white;')
+        | Concept & Consequences
+      .item.active(style='background-color: #6BBCC7; color: white; border-right: 2px solid white;')
+        | Tricks and Recognize Tricks
+      .item(style='background-color: darkgray; color: white;')
+        | Method and Protection
+    #segmentation.ui.raised.segment
+      img.ui.medium.image(src='/images/learning_progress_bar.png' style='margin-left: auto; margin-right: auto')
+      br
+      p It is crucial for you to know the common techniques scammers use for identity theft. Remember to trust your instincts whenever you feel suspicious.
+      h1(style='display: block; text-align: center; margin: auto;margin-top: 20px;')
+        b How can you recognize the techniques of scammers?
+      img.ui.centered.image(src='/images/blank_illustrations.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:40px;margin-bottom: 0px;")
+      ul.ui.list
+        li Common warning signs of identity theft
+         p 
+         p Emails, messages, or phone calls that:
+        ul.ui.list
+            li Say they’ve noticed some suspicious activity or log-in attempts — they haven’t
+            li Claim there’s a problem with your account or your payment information — there isn’t
+            li Say you need to confirm some personal or financial information — you don’t
+            li Say you’re eligible to register for a government refund — it’s a scam
+            li Offer a coupon for free stuff — it’s not real
+            li Include an invoice you don’t recognize — it’s fake
+            li Want you to click on a link to make a payment — but the link has malware
+    .div(style='margin-top:20px;')
+      button.ui.medium.button.left.floated(onclick="location.href='/identity_tricks_1';") 
+        i.arrow.left.icon 
+        | Back
+      button.ui.medium.button.left.floated(onclick="location.href='/';") Save & Exit
+      button.ui.medium.button.right.floated(onclick="location.href='/identity_tricks_3';")
+        | Next
+        i.arrow.right.icon
+
+
+
+block scripts
+  script.
+    var voiceoverMappings = {
+      '.showLearnSectionButton': {
+        "initialDelay": 700,
+        "delay": 500,
+        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
+      },
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.1.mp3']
+      },
+      '.voiceover_keyTerm2': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.2.mp3']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.3.mp3']
+      }
+    };
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_start.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/start.css')  
+    
+    

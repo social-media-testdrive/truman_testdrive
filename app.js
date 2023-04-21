@@ -579,6 +579,116 @@ app.get('/identity_learn_page14', passportConfig.isAuthenticated, setHttpRespons
     }
 });
 
+app.get('/identity_tricks_1', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_tricks_1.pug', {
+            title: 'My New Page'
+        });
+    }
+});
+
+app.get('/identity_tricks_2', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_tricks_2.pug', {
+            title: 'My New Page'
+        });
+    }
+});
+
+app.get('/identity_tricks_3', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_tricks_3.pug', {
+            title: 'My New Page'
+        });
+    }
+});
+
+app.get('/identity_tricks_4', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_tricks_4.pug', {
+            title: 'My New Page'
+        });
+    }
+});
+
+app.get('/identity_tricks_5', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_tricks_5.pug', {
+            title: 'My New Page'
+        });
+    }
+});
+
+app.get('/identity_tricks_6', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_tricks_6.pug', {
+            title: 'My New Page'
+        });
+    }
+});
+
+app.get('/identity_tricks_7', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_tricks_7.pug', {
+            title: 'My New Page'
+        });
+    }
+});
+
+app.get('/identity_tricks_8', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_tricks_8.pug', {
+            title: 'My New Page'
+        });
+    }
+});
+
+app.get('/identity_tricks_9', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_tricks_9.pug', {
+            title: 'My New Page'
+        });
+    }
+});
+
+app.get('/identity_protection_1', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_protection_1.pug', {
+            title: 'My New Page'
+        });
+    }
+});
+
 app.get('/identity_learn_page21', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
     if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
         res.redirect('/');
@@ -898,6 +1008,8 @@ app.get('/guest/:modId', setHttpResponseHeaders, isValidModId, userController.ge
 app.post('/chatbot', check, setHttpResponseHeaders, csrfProtection, userController.postChatbotConnect);
 
 app.post('/postIdentityTheftModOneQuizScore', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityTheftModOneQuizScore);
+
+app.post('/postIdentityTheftModTwoQuizScore', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityTheftModTwoQuizScore);
 
 app.post('/postIdentityTheftModOneConfidenceRating', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityTheftModOneConfidenceRating);
 

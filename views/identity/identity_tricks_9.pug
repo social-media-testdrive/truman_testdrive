@@ -8,16 +8,16 @@ block content
         | Concept & Consequences
       .item(style='background-color: #6BBCC7; color: white; border-right: 2px solid white;')
         | Tricks and Recognize Tricks
-      .item(style='background-color: #6BBCC7; color: white;')
+      .item(style='background-color: darkgray; color: white;')
         | Method and Protection
     #segmentation.ui.raised.segment
         img.ui.medium.image(src='/images/reflect_progress_bar.png' style='margin-left: auto; margin-right: auto')
         h3.ui.header
             .content
-                b Reflection;
+                b Reflection:
         p How did you feel about the content you have learned? Do you feel confient recognizing identity theft and understanding its consequences?
         h3 Confidence Rating:  
-        form.ui.form(style="width: 100%", action='/postIdentityTheftModThreeConfidenceRating', method='POST')
+        form.ui.form(style="width: 100%", action='/postIdentityTheftModOneConfidenceRating', method='POST')
             input(type='hidden', name='username', value=user.username)
             input(type='hidden', name='_csrf', value=csrfToken)
             .field
@@ -33,14 +33,14 @@ block content
                     input.hidden(type='radio' name='confidence' value = 'yes_confident')
                     label I'm confident
             br
-            button.ui.button.right.floated(type='submit')
-                | Next
-                i.arrow.right.icon
-        .div
-        button.ui.button.left.floated(onclick="location.href='/identity_learn_page26';") 
-            i.arrow.left.icon 
-            | Back
-        button.ui.button.left.floated(onclick="location.href='/';") Save & Exit
+    .div(style='margin-top:20px;')
+      button.ui.medium.button.left.floated(onclick="location.href='/identity_trick_8';") 
+        i.arrow.left.icon 
+        | Back
+      button.ui.medium.button.left.floated(onclick="location.href='/';") Save & Exit
+      button.ui.medium.button.right.floated(onclick="location.href='/identity_protection_1';")
+        | Next
+        i.arrow.right.icon
 
 block scripts
   script.
@@ -67,7 +67,35 @@ block scripts
       hid = document.getElementById("topic_response2");
       hid.style.visibility = "visible";
     }
-    
+
+    function checkQuestion(){
+      document.getElementById("submitQuestion").style.display = "none";
+      let x = 0;
+      if(document.getElementById("c1").checked) {
+        document.getElementById("b1").style.borderColor="green";
+        x = x + .25;
+      }
+      else document.getElementById("b1").style.borderColor="red";
+      if(document.getElementById("c2").checked) {
+        document.getElementById("b2").style.borderColor="green";
+         x = x + .25;
+      }
+      else document.getElementById("b2").style.borderColor="red";
+      if(document.getElementById("c3").checked) {
+         document.getElementById("b3").style.borderColor="green";
+          x = x + .25;
+      }
+      else document.getElementById("b3").style.borderColor="red";
+      if(document.getElementById("c4").checked) {
+        document.getElementById("b4").style.borderColor="green";
+         x = x + .25;
+      }
+      else document.getElementById("b4").style.borderColor="red";
+      document.getElementById("score").innerHTML = x + " / 1.0 points";
+      document.getElementById("correctness").style.display = "block";
+      document.getElementById('scoreInput').value = x;
+    }
+
     var voiceoverMappings = {
       '.showLearnSectionButton': {
         "initialDelay": 700,
