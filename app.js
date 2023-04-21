@@ -432,6 +432,9 @@ app.use('/temporary-link/:uuid', function(req, res, next) {
   }
 });
 
+
+
+
 module.exports = app;
 
 
@@ -488,6 +491,12 @@ app.get('/end/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, c
         title: 'Finished',
         modId: req.params.modId,
         isResearchVersion
+    });
+});
+
+app.get('/explore_page', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
+    res.render('explore_page.pug', {
+        title: 'explore_page',
     });
 });
 

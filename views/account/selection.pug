@@ -19,23 +19,50 @@ block content
               .field
                 .ui.radio.checkbox
                       img.lazy(src="/profile_pictures/"+"Daring_PT_Determined.png" data-src="/profile_pictures/"+"Daring_PT_Determined.png")
-                      button.ui.secondary.button(onclick=`fetch('/saveCharacterData/Daring_PT_Determined.png',{method:'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: new URLSearchParams({username: '${user.username}', _csrf: '${csrfToken}'}).toString()})` style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);") Save
+                      button.ui.secondary.button(style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);", onclick="saveButton1()") Save
               .field
                 .ui.radio.checkbox
                       img.lazy(src="/profile_pictures/"+"Dartie_Happy_3.png" style="width: 120%;" data-src="/profile_pictures/Dartie_Happy_3.png")
-                      button.ui.secondary.button(onclick=`fetch('/saveCharacterData/Dartie_Happy_3.png',{method:'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: new URLSearchParams({username: '${user.username}', _csrf: '${csrfToken}'}).toString()})` style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);") Save
+                      button.ui.secondary.button(style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);", onclick="saveButton2()") Save
             .two.fields
               .field
                 .ui.radio.checkbox
                       img.lazy(src="/profile_pictures/"+"Intrepid_PT_Determined.png"  data-src="/profile_pictures/Intrepid_PT_Determined.png")
-                      button.ui.secondary.button(onclick=`fetch('/saveCharacterData/Intrepid_PT_Determined.png',{method:'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: new URLSearchParams({username: '${user.username}', _csrf: '${csrfToken}'}).toString()})` style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);") Save
+                      button.ui.secondary.button(style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);", onclick="saveButton3()") Save
               .field
                 .ui.radio.checkbox
                       img.lazy(src="/profile_pictures/Valiant_PT_Determined.png" data-src="/profile_pictures/Valiant_PT_Determined.png")
-                      button.ui.secondary.button(onclick=`fetch('/saveCharacterData/Valiant_PT_Determined.png',{method:'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: new URLSearchParams({username: '${user.username}', _csrf: '${csrfToken}'}).toString()})` style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);") Save
+                      button.ui.secondary.button(style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);", onclick="saveButton4()") Save
       
-      button.ui.secondary.button(style="margin-top: 1%" onclick=`fetch('/saveCharacterData/transparent.png',{method:'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: new URLSearchParams({username: '${user.username}', _csrf: '${csrfToken}'}).toString()})` ) I prefer to have the journey myself
+      button.ui.secondary.button(style="margin-top: 1%" onclick="saveButton5()" ) I prefer to have the journey myself
+
 block scripts
+  script.
+    function saveButton1() {
+      localStorage.setItem('character', 'Daring_PT_Determined.png');
+      location.reload();
+
+    }
+    function saveButton2() {
+      localStorage.setItem('character', 'Dartie_Happy_3.png');
+      location.reload();
+    }
+
+    function saveButton3() {
+      localStorage.setItem('character', 'Intrepid_PT_Determined.png');
+      location.reload();
+    }
+
+    function saveButton4() {
+      localStorage.setItem('character', 'Valiant_PT_Determined.png');
+      location.reload();
+    }
+
+    function saveButton5() {
+      localStorage.setItem('character', 'transparent.png');
+      location.reload();
+    }
+
 
 block styles
   style(type='text/css').

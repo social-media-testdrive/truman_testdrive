@@ -1,0 +1,58 @@
+extends ui_layout
+
+block content
+
+  .ui.text.container.addBottomMargin
+    //- br   
+    //- p Entire module homepage   
+    .ui.raised.segment
+      
+      img(src='/images/module-steps.png' style="max-width:100%;max-height:100%;text-align:center;margin-left: 20px;margin-top:20px;margin-bottom: 20px;")
+      div 
+      div 
+      div 
+      img(src="/profile_pictures/"+"image_19.png" style="max-width:100%;max-height:100%;text-align:center;margin-left: 0px;margin-top:50px;margin-bottom: 50px;")
+
+    .div
+      button.ui.large.button.left.floated(onclick="location.href='/';") 
+        i.arrow.left.icon 
+        | Back
+      button.ui.large.button.left.floated(onclick="location.href='/identity_learn_page0';") Save & Quit
+      //- button.circular.ui.icon.button.right.floated(onclick="showModal()")
+      //-   i.wechat.icon
+      button.ui.black.large.button.right.floated(onclick="location.href='/identity_prequiz';")
+        | Next
+        i.arrow.right.icon
+
+    
+block scripts
+  script.
+    var voiceoverMappings = {
+      '.showLearnSectionButton': {
+        "initialDelay": 700,
+        "delay": 500,
+        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
+      },
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.1.mp3']
+      },
+      '.voiceover_keyTerm2': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.2.mp3']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.3.mp3']
+      }
+    };
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_start.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/start.css')  
+    
+    
