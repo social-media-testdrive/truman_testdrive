@@ -4,11 +4,23 @@ block content
 
   .ui.text.container.addBottomMargin
     #segmentation.ui.raised.segment
- 
       img.ui.medium.image(src='/images/reflection_progress.png' style='margin-left: auto; margin-right: auto;width: 65%;')
-      br  
-      h1 Complete Identity Theft Module
-    button.btn(style="background-color: green; color: white; font-size: 24px; padding: 10px 20px; border: none; border-radius: 5px; float: right;" onclick="location.href='/'; localStorage.setItem('progress', 100);") Finish
+    #chatModal.ui.divider(style="background-color: white;")
+      .ui.large.header(style="background-color: grey; color: white;")
+        img.ui.circular.image(src='/images/avatar-pic.jpg' style='margin: 25px')
+        | Chat with Intrepid
+      .content(style="background-color: #dbdbdb; display: block")
+        .div(style='overflow: hidden; float: left; background-color: #dbdbdb')
+          br
+          br
+          .ui.grid
+            .three.wide.column
+              img.ui.tiny.circular.image(src='/images/avatar-pic.jpg' style='float: left; margin-bottom: 25px; margin-left: 10px; display: block')
+            .ten.wide.column
+              .ui.large.blue.left.pointing.label(style='float: right')
+                p Congratulations Sam! You have completed all the content for identity theft! Do you feel ready to protect yourself in the real world? Do you think you are able to help your families and friends from the scams?
+          input#fname(type='text' name='fname' value='' placeholder='Please input your question...' style="float: right; width: 100%; border: solid; border-color: gray; background-color: white; color: black; height: 100px; vertical-align: top")
+    button.btn(style="margin-top: 10px; background-color: green; color: white; font-size: 24px; padding: 10px 20px; border: none; border-radius: 5px; float: right; clear: both" onclick="location.href='/'; localStorage.setItem('progress', 100);") Finish
  
 block scripts
   script.

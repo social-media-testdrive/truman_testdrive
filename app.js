@@ -1173,19 +1173,21 @@ app.get('/guest/:modId', setHttpResponseHeaders, isValidModId, userController.ge
 
 app.post('/chatbot', check, setHttpResponseHeaders, csrfProtection, userController.postChatbotConnect);
 
-app.post('/postIdentityTheftPreQuizScore', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityTheftModOneQuizScore);
+app.post('/postIdentityTheftPreQuizScore', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityTheftPreQuizScore);
 
 app.post('/postIdentityTheftModOneQuizScore', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityTheftModOneQuizScore);
 
 app.post('/postIdentityTheftModTwoQuizScore', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityTheftModTwoQuizScore);
 
+app.post('/postIdentityTheftModThreeQuizScore', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityTheftModThreeQuizScore);
+
 app.post('/postIdentityTheftModOneConfidenceRating', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityTheftModOneConfidenceRating);
 
-app.post('/postIdentityTheftModThreeQuizScore', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityTheftModThreeQuizScore);
+app.post('/postIdentityTheftModTwoConfidenceRating', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityTheftModTwoConfidenceRating);
 
 app.post('/postIdentityTheftModThreeConfidenceRating', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityTheftModThreeConfidenceRating);
 
-app.post('/postIdentityTheftPostQuizScore', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityTheftModOneQuizScore);
+app.post('/postIdentityTheftPostQuizScore', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityTheftPostQuizScore);
 
 /*
  * Logins (only used on research site)

@@ -195,7 +195,7 @@ exports.postIdentityTheftPreQuizScore = (req, res, next) => {
             return next(err);
         }
         if (existingUser) {
-            existingUser.identityTheftModOneQuizScore = req.body.scoreInput;
+            existingUser.identityTheftPreQuizScore = req.body.scoreInput;
             existingUser.save((err) => {
                 if (err) {
                     return next(err);
@@ -247,7 +247,7 @@ exports.postIdentityTheftModTwoQuizScore = (req, res, next) => {
                 });
         }
     });
-    res.redirect('/identity_learn_page8'); 
+    res.redirect('/identity_tricks_9'); 
 }; 
 
 exports.postIdentityTheftModThreeQuizScore = (req, res, next) => {
@@ -272,7 +272,6 @@ exports.postIdentityTheftModThreeQuizScore = (req, res, next) => {
     res.redirect('/identity_learn_page28'); 
 }; 
 
-
 exports.postIdentityTheftPostQuizScore = (req, res, next) => {
     req.assert('username', 'Username cannot be blank').notEmpty();
     const errors = req.validationErrors();
@@ -284,7 +283,7 @@ exports.postIdentityTheftPostQuizScore = (req, res, next) => {
             return next(err);
         }
         if (existingUser) {
-            existingUser.identityTheftModOneQuizScore = req.body.scoreInput;
+            existingUser.identityTheftPostQuizScore = req.body.scoreInput;
             existingUser.save((err) => {
                 if (err) {
                     return next(err);
@@ -292,7 +291,7 @@ exports.postIdentityTheftPostQuizScore = (req, res, next) => {
                 });
         }
     });
-    res.redirect('/identity_reflect'); 
+    res.redirect('/identity_reflection'); 
 }; 
 
 exports.postIdentityTheftModOneConfidenceRating = (req, res, next) => {
@@ -316,6 +315,29 @@ exports.postIdentityTheftModOneConfidenceRating = (req, res, next) => {
         }
     });
     res.redirect('/identity_learn_page9'); 
+}; 
+
+exports.postIdentityTheftModTwoConfidenceRating = (req, res, next) => {
+    req.assert('username', 'Username cannot be blank').notEmpty();
+
+    const errors = req.validationErrors();
+
+    User.findOne({
+    username: req.body.username
+    }, (err, existingUser) => {
+        if (err) {
+            return next(err);
+        }
+        if (existingUser) {
+            existingUser.identityTheftModTwoConfidenceRating = req.body.confidence;
+            existingUser.save((err) => {
+                if (err) {
+                    return next(err);
+                }
+                });
+        }
+    });
+    res.redirect('/identity_protection_1'); 
 }; 
 
 exports.postIdentityTheftModThreeConfidenceRating = (req, res, next) => {
