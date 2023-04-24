@@ -2,18 +2,17 @@ extends ../ui_layout
 
 block content
   -var user_post = []
-  -var user_info = [{profile_pic : "/profile_pictures/amy.jpg",background_pic : "/profile_pictures/blueToWhite.png",user_name : "Amy G",user_id : "@amyg__g",bio : "Daughter. Sister. Proud Black American. I tend to get political.",location : "New York, NY",join_date : "Joined January 2019"}]
+  -var user_info = [{profile_pic : "/profile_pictures/amy.jpg",background_pic : "/profile_pictures/blue_background.png",user_name : "Amy G",user_id : "@amyg__g",bio : "Daughter. Sister. Proud Black American. I tend to get political.",location : "New York, NY",join_date : "Joined January 2019"}]
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
     //-####################### title
-  .computer.only.tablet.only.four.wide.column 
-  .sixteen.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
+  .twelve.wide.computer.fourteen.wide.tablet.sixteen.wide.mobile.column.centered
     .ui.one.column.centered.grid.feedbackMessagesGrid
     .ui.fluid.card.dim(style = "margin-top:0px;margin-bottom:0px;")
       .profile_title(style='position: relative; top: 0; left: 0;')
        div(style="position: relative; display: inline-block;")
         img(style='width: 100%; height: 80%; z-index: 0; object-fit: relative;' src=user_info[0].background_pic)
         
-        button.ui.secondary.button(onclick="window.location.href='/edit_profile'" style="z-index:2;position: absolute; bottom: 10px; right: 10px;margin-right: -400px") Edit Profile
+        button.ui.secondary.button(onclick="window.location.href='/edit_profile'" style="z-index:2;position: absolute; bottom: 10px; right: 10px") Edit Profile
 
       .user_profile(style=' width:100%;padding-left: 25px; margin-top: -5%;z-index: 1')
           img.editProfilePictureButton(style='cursor:pointer; \
@@ -26,7 +25,7 @@ block content
           div(style='position: relative; margin-left: 20%; margin-top: -7%; display: flex; flex-direction: column; align-items: flex-start;')
             span.br(style='font-size: 23px; margin-top: -5%; margin-left: 2%;')= user.profile.name
             div(style='margin-left: -25% ;display: flex; justify-content: flex-start; align-items: center; margin-top: 4%;')
-              button.btn(style='padding: 6px; border: none; margin-left: 105%; border-radius: 50px; white-space: nowrap;') 1 module completed
+              button.btn(style='padding: 6px; border: none; margin-left: 80%; border-radius: 50px; white-space: nowrap;') 1 module completed
               button.btn(style='padding: 6px; border: none; margin-left: 5%; border-radius: 50px; white-space: nowrap;') Top learner
 
 
