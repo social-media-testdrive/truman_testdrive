@@ -102,6 +102,16 @@ block styles
   link(rel='stylesheet', href='/css/help.css')  
 
 script.
+  document.addEventListener('DOMContentLoaded', function() {
+    const dartieImg = document.getElementById('dartie-img');
+    const character = localStorage.getItem('character');
+
+    if (character) {
+      dartieImg.src = "/profile_pictures/" + character;
+    }
+  });
+
+
   document.getElementById('showModal').onclick = show;
 
   function show(){
@@ -260,20 +270,6 @@ script.
         // TODO handle error
     });
   });
-  document.addEventListener('DOMContentLoaded', function() {
-    const dartieImg = document.getElementById('dartie-img');
-    const character = localStorage.getItem('character');
-
-    if (character) {
-      dartieImg.src = "/profile_pictures/" + character;
-    }
-  });
-
-
-
-
-
-
 
   document.forms['myForm2'].addEventListener('submit', (event) => {
     event.preventDefault();
