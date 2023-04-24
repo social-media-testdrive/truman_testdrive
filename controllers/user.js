@@ -184,6 +184,132 @@ exports.postInstructorLogin = (req, res, next) => {
     })(req, res, next);
 };
 
+exports.postIdentityTheftModOneQuizScore = (req, res, next) => {
+    req.assert('username', 'Username cannot be blank').notEmpty();
+    const errors = req.validationErrors();
+
+    User.findOne({
+    username: req.body.username
+    }, (err, existingUser) => {
+        if (err) {
+            return next(err);
+        }
+        if (existingUser) {
+            existingUser.identityTheftModOneQuizScore = req.body.scoreInput;
+            existingUser.save((err) => {
+                if (err) {
+                    return next(err);
+                }
+                });
+        }
+    });
+    res.redirect('/identity_learn_page8'); 
+}; 
+
+exports.postIdentityTheftModTwoQuizScore = (req, res, next) => {
+    req.assert('username', 'Username cannot be blank').notEmpty();
+    const errors = req.validationErrors();
+
+    User.findOne({
+    username: req.body.username
+    }, (err, existingUser) => {
+        if (err) {
+            return next(err);
+        }
+        if (existingUser) {
+            existingUser.identityTheftModTwoQuizScore = req.body.scoreInput;
+            existingUser.save((err) => {
+                if (err) {
+                    return next(err);
+                }
+                });
+        }
+    });
+    res.redirect('/identity_learn_page8'); 
+}; 
+
+exports.postIdentityTheftModThreeQuizScore = (req, res, next) => {
+    req.assert('username', 'Username cannot be blank').notEmpty();
+    const errors = req.validationErrors();
+
+    User.findOne({
+    username: req.body.username
+    }, (err, existingUser) => {
+        if (err) {
+            return next(err);
+        }
+        if (existingUser) {
+            existingUser.identityTheftModThreeQuizScore = req.body.scoreInput;
+            existingUser.save((err) => {
+                if (err) {
+                    return next(err);
+                }
+                });
+        }
+    });
+    res.redirect('/identity_learn_page28'); 
+}; 
+
+exports.postIdentityTheftModOneConfidenceRating = (req, res, next) => {
+    req.assert('username', 'Username cannot be blank').notEmpty();
+
+    const errors = req.validationErrors();
+
+    User.findOne({
+    username: req.body.username
+    }, (err, existingUser) => {
+        if (err) {
+            return next(err);
+        }
+        if (existingUser) {
+            existingUser.identityTheftModOneConfidenceRating = req.body.confidence;
+            existingUser.save((err) => {
+                if (err) {
+                    return next(err);
+                }
+                });
+        }
+    });
+    res.redirect('/identity_learn_page9'); 
+}; 
+
+exports.postIdentityTheftModThreeConfidenceRating = (req, res, next) => {
+    req.assert('username', 'Username cannot be blank').notEmpty();
+
+    const errors = req.validationErrors();
+
+    User.findOne({
+    username: req.body.username
+    }, (err, existingUser) => {
+        if (err) {
+            return next(err);
+        }
+        if (existingUser) {
+            existingUser.identityTheftModThreeConfidenceRating = req.body.confidence;
+            existingUser.save((err) => {
+                if (err) {
+                    return next(err);
+                }
+                });
+        }
+    });
+    res.redirect('/identity_learn_page29'); 
+}; 
+
+exports.postChatbotConnect = (req, res, next) => {
+    var request = require('request');
+    request.post(
+        'http://3.19.31.168:8080/webhooks/rest/webhook',
+        { json: { 'sender': req.body.sender, 'message': req.body.message} },
+        function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                console.log(body);
+                res.json(body);
+            }
+        }
+    );
+};
+
 /**
  * POST /createStudent
  * Create a new student with facilitator.

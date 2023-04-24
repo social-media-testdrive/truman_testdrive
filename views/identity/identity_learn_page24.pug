@@ -1,0 +1,100 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container.addBottomMargin
+    .ui.fluid.tiny.three.item.fluid.menu
+      .item.active(style='background-color: #6BBCC7; color: white; border-right: 2px solid white;')
+        | Concept & Consequences
+      .item(style='background-color: #6BBCC7; color: white; border-right: 2px solid white;')
+        | Tricks and Recognize Tricks
+      .item(style='background-color: #6BBCC7; color: white;')
+        | Method and Protection
+    #segmentation.ui.raised.segment
+        img.ui.medium.image(src='/images/learning_progress_bar.png' style='margin-left: auto; margin-right: auto')
+        h2.ui.header(style='margin-left: auto; margin-right: auto; text-align: center')
+            .content
+                b When you have your identity stolen
+        ul
+            li When you have your identity stolen
+            ul(style="list-style-type:disc;")
+                li If you think your identity got stolen, report identity theft and get a recovery plan from Federal Trade Commission by clicking here. You can also report it by phone at 1-877-438-4338.
+                li Contact your local polic department.
+                li Tell your family, friends, and other people who can help you to minimize the damage and subsequent identity theft.
+                li Change password for other accounts.
+            br 
+            li For 
+                u Financial Identity Theft 
+            ul(style="list-style-type:disc;")
+                li Contact your financial institution immediately if you suspect an unauthorized transaction from your account or for a list/stolen debit card. Follow the necessary steps put forth by your financial institution's fraud department to protect your account from future fraudulent activity.
+                li Follow the necessary steps to avoid future fraud.
+                ul(style="list-style-type:disc;")
+                    li Contact the finanical institution or business to dispute the account and request closure.
+                    li Place fraud alert on financial activities.
+            br 
+            li For 
+                u Tax Identity Theft
+            ul(style="list-style-type:disc;")
+                li If you know or suspect you are a victim of tax-related identity theft, the IRS recommends these actions:
+                ul(style="list-style-type:disc;")
+                    li Respond immediately to any IRS notice: Call the IRS number provided.
+                    li Visit 
+                        u IRS Identity Theft Central
+                        |  if any fraudulent activities regarding tax are made. You can also call 800-908-4490 for assistance.
+            br 
+            li For 
+                u Medical ID Theft
+            ul(style="list-style-type:disc;")
+                li Contact your health care provider first to see if it's a mistake. Your health care provider must respond to your request within 30 and must notify other health care providers who may have had the same mistake in their records.
+                li If your issues is not resolved by your provider, report the questionable charges to 1-800-MEDICARE or contact your local Senior Medicare Patrol for assistance: 1-877-808-2468 or 
+                    a(href='https://www.SMPResource.org/') www.SMPResource.org
+                li Suspect Medicare Fraud? Contact OIG's fraud hotline.
+                li Online: 
+                    a(href='https://www.oig.hhs.gov/fraud/hotline/') oig.hhs.gov/fraud/hotline
+                    | ; Phone: 1-800-447-8477 (1-800-HHS-TIPS)
+                li TTY: 1-800-377-4950 | Fax 1-800-223-8164
+        .ui.one.column.centered.grid(style="margin: 50px")
+          .ui.large.right.pointing.circular.label(style="float: left;")
+              p(style="padding-top: 50px") You can experience identity theft in modern days.
+              p(style="padding: 10px") Just remember: it is not a shame to be victimized.
+          img.ui.small.image.right.floated(src='/images/avatar-pic.png' style="float: right")
+    .div(style='margin-top:20px;')
+      button.ui.medium.button.left.floated(onclick="location.href='/identity_learn_page23;") 
+        i.arrow.left.icon 
+        | Back
+      button.ui.medium.button.left.floated(onclick="location.href='/';") Save & Exit
+      button.ui.medium.button.right.floated(onclick="location.href='/identity_learn_page25';")
+        | Next
+        i.arrow.right.icon
+
+block scripts
+  script.
+    var voiceoverMappings = {
+      '.showLearnSectionButton': {
+        "initialDelay": 700,
+        "delay": 500,
+        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
+      },
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.1.mp3']
+      },
+      '.voiceover_keyTerm2': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.2.mp3']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.3.mp3']
+      }
+    };
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_start.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/start.css')  
+    
+    

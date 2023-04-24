@@ -1,0 +1,88 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container.addBottomMargin
+    .ui.fluid.tiny.three.item.fluid.menu
+      .item(style='background-color: #6BBCC7; color: white; border-right: 2px solid white;')
+        | Concept & Consequences
+      .item.active(style='background-color: #6BBCC7; color: white; border-right: 2px solid white;')
+        | Tricks and Recognize Tricks
+      .item(style='background-color: darkgray; color: white;')
+        | Method and Protection
+    #segmentation.ui.raised.segment
+      img.ui.medium.image(src='/images/learning_progress_bar.png' style='margin-left: auto; margin-right: auto')
+      br
+      p It is crucial for you to know the common techniques scammers use for identity theft. Remember to trust your instincts whenever you feel suspicious.
+      h1(style='display: block; text-align: center; margin: auto;margin-top: 20px;')
+        b How can you recognize the techniques of scammers?
+      h2
+        i.icon.triangle.exclamation
+        | Common warning signs of identity theft
+      #avatar.ui.one.column.centered.grid(style="margin: 50px")
+        .ui.large.right.pointing.circular.label(style="width: 50%;display: flex; align-items: center; float: left;")
+          p(style='padding: 20px;') So what would be examples of common warning signs of identity theft scams?
+            br
+            br
+            | Let’s go find them out together! We’ll start with this email.
+        img.ui.small.image.right.floated(src='/images/avatar-pic.png' style="float: right")
+      h3 Example 1 : Claim there’s a problem with your account or your payment information via email.
+      img.ui.centered.image(src='/images/tricks_netflix.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:40px;margin-bottom: 0px;")
+      ul 
+        li Email scams can be tricky to spot, especially when they look like they come from a legitimate company you know. 
+        br
+        li Here are some common signs why this email is not legitimate:
+          ul(style="list-style-type:disc;")
+            li  <u>Generic greeting:</u>  if the email starts with a generic greeting like 'Dear Customer' instead of your name, it could be a sign that the email is not legitimate.
+            li  <u>Suspicious claim:</u> if the email claims that your account is on hold or you have a billing problem without providing specific details about the issue, it could be a scam.
+            li  <u>Phishing link:</u>if the email invites you to click on a new link to update your payment details, the link can be a phishing link.
+      #avatar.ui.one.column.centered.grid(style="margin: 50px")
+        .ui.large.right.pointing.circular.label(style="width: 65%;display: flex; align-items: center; float: left;")
+          p(style='padding: 20px;') Legitimate companies won’t email or text you with a link to update your payment information. 
+            br
+            br
+            | Be careful when pressing links or filling up forms from emails as it may lead to a phishing website designed to steal your personal information.
+        img.ui.small.image.right.floated(src='/images/avatar-pic.png' style="float: right")
+
+    .div(style='margin-top:20px;')
+      button.ui.medium.button.left.floated(onclick="location.href='/identity_tricks_2';") 
+        i.arrow.left.icon 
+        | Back
+      button.ui.medium.button.left.floated(onclick="location.href='/';") Save & Exit
+      button.ui.medium.button.right.floated(onclick="location.href='/identity_tricks_4';")
+        | Next
+        i.arrow.right.icon
+
+
+
+block scripts
+  script.
+    var voiceoverMappings = {
+      '.showLearnSectionButton': {
+        "initialDelay": 700,
+        "delay": 500,
+        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
+      },
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.1.mp3']
+      },
+      '.voiceover_keyTerm2': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.2.mp3']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.3.mp3']
+      }
+    };
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_start.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/start.css')  
+    
+    

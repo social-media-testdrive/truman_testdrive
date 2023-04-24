@@ -3,21 +3,46 @@ extends ../ui_layout
 block content
 
   .ui.text.container.addBottomMargin
-    br      
+    //- br   
+    //- p Entire module homepage   
     .ui.raised.segment
-      h1.ui.header
+      h1.ui.header.huge(style="display: inline-block;")
         .content
-            | Identity Theft Module Hompage
-      p Welcome to the world of anti-scam! Identity theft is a serious problem that affects millions of people every year. In this module, you will learn:
-      ol
+          | Identity Theft
+      div(style="background-color: #EEEEEE; padding: 8px; border-radius: 20px; display: inline-block; margin-left: 20px;")
+        | 100 learners today
+      div(style="background-color: #EEEEEE; padding: 8px; border-radius: 20px; display: inline-block; margin-left: 20px;")
+        | #1 most popular module
+      p(style="margin-top: 20px;") Welcome to the world of anti-scam! Identity theft is a serious problem that affects millions of people every year. In this module, you will learn:
+      ol(style="font-weight: bold;margin-top: 20px;margin-bottom: 20px;")
         li What is Identity theft and what are the consequences?
         li What are the tricks scammers use to steal our personal information? How to recognize the tricks of scammers?
         li How to protect our identity information from the tricks?
-      p After learning the three essential topics, you can continue to explore the topics further and take a post-quiz to test your understanding and retention of the concepts you have learned. Upon completion of the module, you will be knowledgeable and skilled in protecting themselves from scammers.
+      p After learning the three essential topics, you can continue to <strong>explore</strong> the topics further and take a <strong>post-quiz</strong> to test your understanding and retention of the concepts you have learned. 
+      p The following diagram outlines the steps in this module:
+      img(src='/images/module-steps.png' style="max-width:100%;max-height:100%;text-align:center;margin-left: 20px;margin-top:20px;margin-bottom: 20px;")
+      p Upon completion of the module, you will be knowledgeable and skilled in protecting yourself from scammers!
+
+      div.ui.grid(style="margin-bottom: 10px;")
+        div.six.wide.column
+          h2 Learning materials
+        div.ten.wide.column.text-right
+          button.ui.button.gray Download Resources
+
       p Before beginning your lesson, please take a pre-quiz. This quiz will only consist of five questions, but it will be a great way to measure your improvement after learning.
-    button.btn(style="background-color: green; color: white; font-size: 24px; padding: 10px 20px; border: none; border-radius: 5px; float: right;" onclick="location.href='/identity_prequiz';") Take the pre-quiz
+    .div
+      button.ui.large.button.left.floated(onclick="location.href='/';") 
+        i.arrow.left.icon 
+        | Back
+      button.ui.large.button.left.floated(onclick="location.href='http://localhost:3000/identity_learn_page0';") Skip pre-quiz & continue to Learn
+      //- button.circular.ui.icon.button.right.floated(onclick="showModal()")
+      //-   i.wechat.icon
+      button.ui.large.green.button.right.floated(onclick="location.href='/identity_prequiz';")
+        | Take the pre-quiz
+        i.arrow.right.icon
 
-
+    
+    //- button.btn(style="background-color: green; color: white; font-size: 24px; padding: 10px 20px; border: none; border-radius: 5px; float: right;" onclick="location.href='/identity_prequiz';") Take the pre-quiz
 
 
     //-   h3.ui.header

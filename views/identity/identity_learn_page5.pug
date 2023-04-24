@@ -3,36 +3,48 @@ extends ../ui_layout
 block content
 
   .ui.text.container.addBottomMargin
-    br     
-    p The concept and consequences of identity theft (submodule 1)          
-    p practice part 1/2
-    .ui.raised.segment
-      h1.ui.header
-        .content
-            | Identity Theft learn Page 5
-      p What are the following situation can be identified as  Identity theft? Select all that apply.
-      ol
-        li A. When someone steals your personal information to commit fraud
-        li B.  Unauthorized use or attempted use of an existing account
-        li C. Unauthorized use or attempted use of personal information to open a new account
-        li D. All of the above
-      p What Could be happened if your identity is stolen?
-      ol 
-        li A. Losing money
-        li B. XXXXX
-        li C. XXXXXXXX
-        li D. All of the above
-      p Please select all the items that you think are considered personal information.
-      ol 
-        li Social Security Number
-        li Date and place of birth
-        li Credit card info: CVC and Expiration date, and password
-        li Your favorite restaurant's website 
-
-
-
-    button.btn(style="background-color: green; color: white; font-size: 24px; padding: 10px 20px; border: none; border-radius: 5px; float: right;" onclick="location.href='/identity_learn_page6';") Next
-
+    .ui.fluid.tiny.three.item.fluid.menu
+      .item.active(style='background-color: #6BBCC7; color: white; border-right: 2px solid white;')
+        | Concept & Consequences
+      .item(style='background-color: darkgray; color: white; border-right: 2px solid white;')
+        | Tricks and Recognize Tricks
+      .item(style='background-color: darkgray; color: white;')
+        | Method and Protection
+    #segmentation.ui.raised.segment
+      img.ui.medium.image(src='/images/learning_progress_bar.png' style='margin-left: auto; margin-right: auto')
+      h2(style='display: block; text-align: center; margin: auto;margin-top: 20px;')
+        b What are the consequences when 
+        p personal information is stolen?
+      br
+      iframe(type='text/html' width='540' height='289'
+        src='videos/identity-video.mp4'
+        frameborder='0' style='display: block; margin: auto;')
+      br
+      .div(style='margin-top: 20px;')
+        .ui.large.blue.label KEY POINTS
+        br
+        br
+        p With your personal identifiable information, a scammer could...
+        ul
+          li fraudulently apply for loans and credt cards, resulting in financial losses, decreases in credit scores, and future difficulty receiving loans
+          li withdraw your money from you bank accounts, resulting in financial loss
+          li steal yout tax refund
+          li steal your health care benefits
+          li commit crimes under your name or by using your email accounts
+          li hack you social media accounts
+          li commit other subsequent identity thefts, like accessing PII of your family members
+      #avatar.ui.one.column.centered.grid(style="margin: 50px")
+        .ui.large.right.pointing.circular.label(style="width: 50%;display: flex; align-items: center; float: left;")
+            p(style='padding: 20px;') Please keep in mind that this list is not exhaustive. Scammers can be exploit your identity for their own good in many different ways!
+        img.ui.small.image.right.floated(src='/images/avatar-pic.png' style="float: right")
+    .div(style='margin-top:20px;margin-bottom:125px;')
+      button.ui.medium.button.left.floated(onclick="location.href='/identity_learn_page4';") 
+        i.arrow.left.icon 
+        | Back
+      button.ui.medium.button.left.floated(onclick="location.href='/';") Save & Exit
+      button.ui.medium.button.right.floated(onclick="location.href='/identity_learn_page6';")
+        | Next
+        i.arrow.right.icon
 
 
 

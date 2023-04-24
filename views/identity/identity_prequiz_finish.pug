@@ -4,14 +4,22 @@ block content
 
   .ui.text.container.addBottomMargin
     br
-    p pre-quiz 2/2
     .ui.raised.segment
       h1.ui.header
         .content
-            | Identity Theft Pre-Quiz Finished
+            | Great Job
       p Thank you for taking the time to complete this pre-quiz. Your feedback is invaluable and will help us to ensure that everyone is adequately prepared for the upcoming lesson. 
       p The results of the pre-quiz will be presented along with the post-quiz results at the end of the lesson, so you will be able to see your own progress and achievement!
-    button.btn(style="background-color: green; color: white; font-size: 24px; padding: 10px 20px; border: none; border-radius: 5px; float: right;" onclick="location.href='/identity_learn_page1';") Start Submodule 1
+    .div(style='margin-top:20px;')
+      button.ui.large.button.left.floated(onclick="location.href='/identity_prequiz';") 
+        i.arrow.left.icon 
+        | Back
+      button.ui.large.button.left.floated(onclick="location.href='/';") Save & Exit
+      button.ui.large.green.button.right.floated(onclick="location.href='/identity_learn_page0';")
+        | Next
+        i.arrow.right.icon
+
+    
 
 
 

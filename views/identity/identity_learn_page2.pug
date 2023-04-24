@@ -3,19 +3,104 @@ extends ../ui_layout
 block content
 
   .ui.text.container.addBottomMargin
-    br     
-    p The concept and consequences of identity theft (submodule 1)          
-    p Learn 2/4
-    .ui.raised.segment
-      h1.ui.header
-        .content
-            | Identity Theft Learn Page 2
-      p Personal Information refers to 
-      p (1) any information that can be used to distinguish or trace an individual's identity, such as name, social security number, date and place of birth, mother's maiden name, or biometric records; and 
-      p (2) any other information that is linked or linkable to an individual, such as medical, educational, financial, and employment information." 
-      p (Source: https://www.wikiwand.com/en/Personal_data)
-    button.btn(style="background-color: green; color: white; font-size: 24px; padding: 10px 20px; border: none; border-radius: 5px; float: right;" onclick="location.href='/identity_learn_page3';") Next
+    .ui.fluid.tiny.three.item.fluid.menu
+      .item.active(style='background-color: #6BBCC7; color: white; border-right: 2px solid white;')
+        | Concept & Consequences
+      .item(style='background-color: darkgray; color: white; border-right: 2px solid white;')
+        | Tricks and Recognize Tricks
+      .item(style='background-color: darkgray; color: white;')
+        | Method and Protection
+    #segmentation.ui.raised.segment
+      #avatar.ui.one.column.centered.grid(style="margin: 50px")
+        .ui.huge.right.pointing.circular.label(style="width: 50%")
+          p(style="padding-top: 20px") Key concept: 
+          | Personal Information! 
 
+block content
+
+  .ui.text.container.addBottomMargin
+    #segmentation.ui.raised.segment
+      iframe(type='text/html' width='540' height='289'
+        src='videos/identity-video.mp4'
+        frameborder='0')
+      br
+      br
+      p This module is designed for your to have a deeper understanding of <strong>identity theft scams</strong>, and their risks and warning signs. Our goal is to assist you to better protect yourself from them.
+      .ui.centered.grid(style="display: block; margin: auto")
+        .four.wide.column
+          .ui.large.label(style='border-style: solid;')
+            p(style='text-align: center') Concepts & Consequences
+          p(style='text-align: center') Section 1:
+            |  Concepts & Consequences
+        .four.wide.column
+          .ui.huge.label
+            i.huge.lock.icon(style='margin: auto; display: block')
+          p(style='text-align: center') Section 2:
+            |  Scam techniques and
+            | Recognize the techniques
+        .four.wide.column
+          .ui.huge.label(style='diplay: block; margin: auto;')
+            i.big.lock.icon(style='margin: auto; display: block')
+          p(style='text-align: center') Section 3:
+            |  Methods of Protection
+      .div(style='margin-top:20px;')
+        button.ui.button.left.floated(onclick="location.href='/identity_prequiz_finish';") 
+          i.arrow.left.icon 
+          | Back
+        button.ui.button.left.floated(onclick="location.href='/';") Save & Exit
+        button.ui.button.right.floated(onclick="location.href='/identity_learn_page2';")
+          | Next
+          i.arrow.right.icon
+
+
+
+
+block scripts
+  script.
+    var voiceoverMappings = {
+      '.showLearnSectionButton': {
+        "initialDelay": 700,
+        "delay": 500,
+        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
+      },
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.1.mp3']
+      },
+      '.voiceover_keyTerm2': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.2.mp3']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.3.mp3']
+      }
+    };
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_start.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/start.css')  
+    
+    
+ng>Please  Protect it!</strong>
+        img.ui.small.image.right.floated(src='/images/avatar-pic.png')
+
+      p Personal Information refers to:
+      p (1) any information that can be used to distinguish or trace an individual's identity, such as <strong>name, social security number, date and place of birth, mother's maiden name, or biometric records;</strong> and 
+      p (2) any other information that is linked or linkable to an individual, such as <strong>medical, educational, financial, and employment information.</strong>" 
+      p (Source: https://www.wikiwand.com/en/Personal_data)
+    .div(style='margin-top:20px;')
+      button.ui.large.button.left.floated(onclick="location.href='/identity_learn_page1';") 
+        i.arrow.left.icon 
+        | Back
+      button.ui.large.button.left.floated(onclick="location.href='/';") Save & Exit
+      button.ui.large.green.button.right.floated(onclick="location.href='/identity_learn_page3';")
+        | Next
+        i.arrow.right.icon
 
 
 

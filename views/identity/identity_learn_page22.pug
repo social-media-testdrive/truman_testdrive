@@ -1,0 +1,95 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container.addBottomMargin
+    .ui.fluid.tiny.three.item.fluid.menu
+      .item.active(style='background-color: #6BBCC7; color: white; border-right: 2px solid white;')
+        | Concept & Consequences
+      .item(style='background-color: #6BBCC7; color: white; border-right: 2px solid white;')
+        | Tricks and Recognize Tricks
+      .item(style='background-color: #6BBCC7; color: white;')
+        | Method and Protection
+    #segmentation.ui.raised.segment
+        img.ui.medium.image(src='/images/learning_progress_bar.png' style='margin-left: auto; margin-right: auto')
+        h2.ui.header(style='margin-left: auto; margin-right: auto; text-align: center')
+            .content
+                b Protect your ID information from the Internet or phone calls
+        h3
+            b Please remember:
+        ul
+            li Preventative measures 
+                b 
+                    u before
+                |  contacting scammers
+            ul(style="list-style-type:disc;")
+                li Protect your personal identifiable information by following do's and dont's
+                br
+                ul(style="list-style-type:disc;")
+                    li Dos: 
+                    ul(style="list-style-type:disc;")
+                        li Secure your social security number and only give out when neccessary and safe.
+                        li Shred old documents, receipts, credit offers, account statements, and expired credit cards, and blackout sensitive information.
+                        li Collect your mail everyday and place a hold on it when away for several days.
+                        li Review your credit card and bank account statements regularly.
+                        li Compare receipts with account statements.
+                        li Store personal information in a safe place.
+                        li Ignore unauthorized transactions.
+                        li Protect your personal identifiable information from the Internetor phone calls.
+                        li Set up two-factor authentication on any account that allows it.
+                        li Create complex passwords
+                        ul(style="list-style-type:disc;")
+                            li Always create passwords with more than 8 characters; also try to incorporate numbers and symbols.
+                            li Try not to repeat the same password for multiple accounts.
+                        li Log out completely and close the browser after computer use.
+                        li Be careful with the information you share on social media (e.g., the schools you attended, your birthday, or your pet name). Scammers can use that as answers to security questions for finding passwords. 
+                    br
+                    li Don'ts
+                    ul(style="list-style-type:disc;")
+                        li Don't carry your social security card in your wallet
+                        li Don't share personal, sensitive informaiton because someone just asks for it
+                        li Don't leave your mail where people can access it
+        .ui.one.column.centered.grid(style="margin: 50px")
+            .ui.large.pointing.below.circular.label(style="float: left;")
+                p(style="padding: 10px") These are the preventative measures you can take before having contact with scammers. Already doing all these? You are protecting yourself pretty well!
+            img.ui.small.image.right.floated(src='/images/avatar-pic.png' style="float: right")
+    .div(style='margin-top:20px;')
+      button.ui.medium.button.left.floated(onclick="location.href='/identity_learn_page21;") 
+        i.arrow.left.icon 
+        | Back
+      button.ui.medium.button.left.floated(onclick="location.href='/';") Save & Exit
+      button.ui.medium.button.right.floated(onclick="location.href='/identity_learn_page23';")
+        | Next
+        i.arrow.right.icon
+
+block scripts
+  script.
+    var voiceoverMappings = {
+      '.showLearnSectionButton': {
+        "initialDelay": 700,
+        "delay": 500,
+        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
+      },
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.1.mp3']
+      },
+      '.voiceover_keyTerm2': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.2.mp3']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.3.mp3']
+      }
+    };
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_start.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/start.css')  
+    
+    

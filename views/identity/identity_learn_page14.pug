@@ -1,0 +1,16 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container.addBottomMargin
+    br      
+    .ui.raised.segment
+      h1.ui.header
+        .content
+            | Conclusion
+      p Reflect
+     
+    button.btn(style="background-color: green; color: white; font-size: 24px; padding: 10px 20px; border: none; border-radius: 5px; float: right;" onclick="location.href='/';localStorage.setItem('progress', 100);") Complete Theft Module
+  script.
+    localStorage.setItem('theft-path', "/identity_learn_page14");
+
