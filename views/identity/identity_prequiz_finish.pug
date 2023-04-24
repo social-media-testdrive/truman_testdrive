@@ -26,6 +26,8 @@ block content
 
 block scripts
   script.
+    localStorage.setItem('progress', 5);
+    localStorage.setItem('theft-path', "/identity_prequiz_finish");
     var voiceoverMappings = {
       '.showLearnSectionButton': {
         "initialDelay": 700,
@@ -50,7 +52,7 @@ block scripts
     };
   script(src='/module_js/voiceover.js')
   script(src="/module_js/base_start.js")
-  
+
 block styles
   link(rel='stylesheet', href='/css/start.css')  
     
