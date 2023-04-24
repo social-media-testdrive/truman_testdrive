@@ -5,7 +5,6 @@ block content
     .ui.sixteen.wide.column(style="display: flex; flex-direction: column; justify-content: center; align-items: center;")
       .login-box
         h2.ui.header(style="text-align: left !important; margin:5px 0px") Welcome Back!
-        h2(style="font-size: 15px; text-align: left !important; margin:0 0 15px 0px ") please enter your details.
 
         form.ui.form(action="/studentLogin", method='POST')
           input(type='hidden', name='_csrf', value=csrfToken)
@@ -16,24 +15,33 @@ block content
             input(style="width: 100%; border-radius: 5px; border: 2px solid grey !important; background-color: #fff !!important; color: #000 !important;" type='password', name='password', id='password', placeholder='Password', required).field
 
           div.checkbox-container(style="display: flex; justify-content: space-between;")
-            label.remember-me(style="display: flex; font-size: 18px; align-items: center;")
-              input(type='checkbox', name='remember-me')
-              span Remember Me
-            a.forgot(href='forgotPassword', style="text-align: right;") Forgot Password?
+            button.ui.big.blue.button(type='submit', style="width: 50%; margin: 0px 0 0 0;") Login
+            a.forgot(href='forgotPassword', style="margin: 10px 0 0 0; text-align: right;") Forgot Password?
           
-          button.ui.big.blue.button(type='submit', style="width: 100%; border-radius: 20px; margin: 15px 0 0 0;") Login
-          a.ui.button.big.white(href="/getGuest", style="padding:14.1429px !important; display: block; width: 100%; border-radius: 20px; background-color: #fff; border: 1px solid #2884d4; text-align: center; padding: 10px; margin-top: 10px;")  Guest Login
-          a.ui.button.big.white(href="/createStudent", style="padding:14.1429px !important; display: block; width: 100%; border-radius: 20px; background-color: #fff; border: 1px solid #2884d4; text-align: center; padding: 10px; margin-top: 10px;")  Sign Up
+          
+          a.ui.button.big.white(href="/getGuest", style="padding:14.1429px !important; display: block; width: 100%; background-color: #fff; border: 1px solid #2884d4; text-align: center; padding: 10px; margin-top: 10px;")  
+                span
+                  img(src='/profile_pictures/avatar-icon.svg', alt="Google logo", style="height:25px; vertical-align: middle; margin-right: 10px;")
+                  span( style="vertical-align: middle;") Guest Login
+
+          
+          
           
           form(action="/auth/google" method="GET")
             input(type='hidden', name='_csrf', value=csrfToken)
             button(style="background-color: transparent; border: none;  width: 100%; padding: 0px")
-              a.ui.button.big.white(href='/auth' style="padding:14.1429px !important; display: block; width: 100%; border-radius: 20px; background-color: #fff; border: 1px solid #2884d4; text-align: center; padding: 10px; margin-top: 10px;") Login With Google
+              
+
+              a.ui.button.big.white(href='/auth', style="padding:14.1429px !important; display: block; width: 100%; background-color: #fff; border: 1px solid #2884d4; text-align: center; padding: 10px; margin-top: 10px;") 
+                span
+                  img(src='/profile_pictures/g-logo.png', alt="Google logo", style="height:25px; vertical-align: middle; margin-right: 10px;")
+                  span( style="vertical-align: middle;") Sign in With Google
+
+          a.ui.button.big.green(href="/createStudent", style="padding:14.1429px !important; display: block; width: 100%; border: 1px solid #2884d4; text-align: center; padding: 10px; margin-top: 10px;")  Create Account
               
 block styles
       
 block scripts
-
   link(rel='stylesheet', href='/css/style.css')
   script(src='/module_js/base_end.js')
   script(src='https://kit.fontawesome.com/585fda3aab.js' crossorigin='anonymous')

@@ -11,7 +11,7 @@ block content
     .ui.fluid.card.dim(style = "margin-top:0px;margin-bottom:0px;")
       .profile_title(style='position: relative; top: 0; left: 0;')
        div(style="position: relative; display: inline-block;")
-        img(style='width: 171.3%; height: 80%; z-index: 0; object-fit: relative;' src=user_info[0].background_pic)
+        img(style='width: 100%; height: 80%; z-index: 0; object-fit: relative;' src=user_info[0].background_pic)
         
         button.ui.secondary.button(onclick="window.location.href='/edit_profile'" style="z-index:2;position: absolute; bottom: 10px; right: 10px;margin-right: -400px") Edit Profile
 
@@ -21,12 +21,12 @@ block content
   border-radius: 50%; width:20%; height 20%; z-index: 2;\
   top: 50%;\
   left: 3%;\
-  border: 2px white solid;padding: -1px;padding: 5px white solid;z-index: 1;background-color: white;' src="/profile_pictures/"+"old_man.png")
+  border: 2px white solid;padding: -1px;padding: 5px white solid;z-index: 1;background-color: white;' src="/profile_pictures/avatar-icon.svg")
           
           div(style='position: relative; margin-left: 20%; margin-top: -7%; display: flex; flex-direction: column; align-items: flex-start;')
             span.br(style='font-size: 23px; margin-top: -5%; margin-left: 2%;')= user.profile.name
             div(style='margin-left: -25% ;display: flex; justify-content: flex-start; align-items: center; margin-top: 4%;')
-              button.btn(style='padding: 6px; border: none; margin-left: 55%; border-radius: 50px; white-space: nowrap;') 1 module completed
+              button.btn(style='padding: 6px; border: none; margin-left: 105%; border-radius: 50px; white-space: nowrap;') 1 module completed
               button.btn(style='padding: 6px; border: none; margin-left: 5%; border-radius: 50px; white-space: nowrap;') Top learner
 
 

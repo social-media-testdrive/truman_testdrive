@@ -5,11 +5,12 @@ block content
     .ui.sixteen.wide.column(style="display: flex; flex-direction: column; justify-content: center; align-items: center;")
      .login-box
       h2.ui.header(style="text-align: left !important; margin:5px 0px") Create an account
-      h2(style="font-size: 15px; text-align: left !important; margin:0 0 15px 0px ") please enter your details.
+      
       form.ui.form(action="/createStudent", method='POST')
         input(type='hidden', name='facilitator')
         input(type='hidden', name='_csrf', value=csrfToken)
         .field
+          a.forgot(href='/studentLogin', style="text-align: left !important;") ← back
           label(for='username' style="font-size:larger;") Enter Username
           .ui.pointing.below.label.basic.username-red
               .header Create a simple username: 
@@ -32,16 +33,8 @@ block content
           label(for='password' style="font-size:larger;") Confirm Password
 
           input(style="margin:5px 0px; width: 100%; border-radius: 5px; border: 2px solid grey !important; background-color: #fff !!important; color: #000 !important;" type='password', name='confirm-password', id='confirm-password', placeholder='Confirm Password', required).field
-
-        div.checkbox-container(style="display: flex; justify-content: space-between;")
-            label.remember-me(style="display: flex; font-size: 18px; align-items: center;")
-              input(type='checkbox', name='remember-me')
-              span Remember Me
-            a.forgot(href='#', style="text-align: right;") Forgot Password?
-        
-        a.ui.button.big.blue(href="/studentLogin", style="padding:14.1429px !important; display: block; width: 100%; border-radius: 20px; background-color: #2884d4; border: 1px solid #2884d4; text-align: center; padding: 10px; margin-top: 10px;")  Login
-        
-        button.ui.big.white.button(type='submit', style="background-color: #fff; border: 1px solid #2884d4; width: 100%; border-radius: 20px; margin: 15px 0;") Sign up
+                
+        button.ui.big.blue.button(type='submit', style="border: 1px solid #2884d4; width: 100%; margin: 15px 0;") Sign up
 block styles
   style.
     .ui.pointing.below.label.basic.username-red, .ui.pointing.below.label.basic.password-red {

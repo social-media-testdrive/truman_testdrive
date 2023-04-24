@@ -979,7 +979,7 @@ app.get('/facilitatorHome', passportConfig.isAuthenticated, setHttpResponseHeade
 });
 
 // Render student login page (all modules)
-app.get('/studentLogin', setHttpResponseHeaders, csrfProtection, function(req, res) {
+app.get('/studentLogin', setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
     res.render('studentLogin.pug', {
         title: 'Student Login'
     });
@@ -1219,7 +1219,7 @@ if (isResearchVersion) {
     app.get('/classLogin/:accessCode', csrfProtection, setHttpResponseHeaders, addCsrf, userController.getClassLogin);
     app.post('/instructorLogin', check, setHttpResponseHeaders, csrfProtection, userController.postInstructorLogin);
     app.post('/facilitatorLogin', check, setHttpResponseHeaders, csrfProtection, userController.postFacilitatorLogin);
-    app.post('/studentLogin', check, setHttpResponseHeaders, csrfProtection, userController.postStudentLogin);
+    app.post('/studentLogin', check, setHttpResponseHeaders, userController.postStudentLogin);
     app.post('/guestLogin', check, setHttpResponseHeaders, csrfProtection, userController.postGuestLogin);
     app.post('/createStudent', check, setHttpResponseHeaders, csrfProtection, userController.postCreateStudent);
     // app.post('/studentLogin/:accessCode', check, setHttpResponseHeaders, csrfProtection, userController.postStudentLogin);
