@@ -184,6 +184,28 @@ exports.postInstructorLogin = (req, res, next) => {
     })(req, res, next);
 };
 
+exports.postIdentityTheftPreQuizScore = (req, res, next) => {
+    req.assert('username', 'Username cannot be blank').notEmpty();
+    const errors = req.validationErrors();
+
+    User.findOne({
+    username: req.body.username
+    }, (err, existingUser) => {
+        if (err) {
+            return next(err);
+        }
+        if (existingUser) {
+            existingUser.identityTheftModOneQuizScore = req.body.scoreInput;
+            existingUser.save((err) => {
+                if (err) {
+                    return next(err);
+                }
+                });
+        }
+    });
+    res.redirect('/identity_prequiz_finish'); 
+}; 
+
 exports.postIdentityTheftModOneQuizScore = (req, res, next) => {
     req.assert('username', 'Username cannot be blank').notEmpty();
     const errors = req.validationErrors();
@@ -248,6 +270,29 @@ exports.postIdentityTheftModThreeQuizScore = (req, res, next) => {
         }
     });
     res.redirect('/identity_learn_page28'); 
+}; 
+
+
+exports.postIdentityTheftPostQuizScore = (req, res, next) => {
+    req.assert('username', 'Username cannot be blank').notEmpty();
+    const errors = req.validationErrors();
+
+    User.findOne({
+    username: req.body.username
+    }, (err, existingUser) => {
+        if (err) {
+            return next(err);
+        }
+        if (existingUser) {
+            existingUser.identityTheftModOneQuizScore = req.body.scoreInput;
+            existingUser.save((err) => {
+                if (err) {
+                    return next(err);
+                }
+                });
+        }
+    });
+    res.redirect('/identity_reflect'); 
 }; 
 
 exports.postIdentityTheftModOneConfidenceRating = (req, res, next) => {
