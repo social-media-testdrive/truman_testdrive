@@ -678,6 +678,17 @@ app.get('/identity_tricks_9', passportConfig.isAuthenticated, setHttpResponseHea
     }
 });
 
+app.get('/identity_explore_1', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+        res.redirect('/');
+    } else {
+        // use relative not absolute
+        res.render('identity/identity_explore_1.pug', {
+            title: 'My New Page'
+        });
+    }
+});
+
 app.get('/identity_protection_1', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
     if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
         res.redirect('/');

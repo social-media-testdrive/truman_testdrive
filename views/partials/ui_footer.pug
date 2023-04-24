@@ -41,7 +41,7 @@
           .ui.medium.buttons
               button#large.ui.button.green.large(onclick='changeToLarge()') Large Text
               .or
-              button#medium.ui.button.green.medium(onclick='changeToMedium()') Medium Text
+              button#medium.ui.button.green.medium(onclick='changeToMedium()') Default Text
               .or
               button#small.ui.button.green.small(onclick='changeToSmall()') Small Text
       .four.wide.row.centered
@@ -232,22 +232,24 @@ script.
 
   function changeToMedium() {
       window.sessionStorage.setItem('textMode', 'medium');
-
-      let segmentation = document.getElementById('segmentation');
-      if (segmentation === null) {
-        return false;
-      } 
-
-      let tags = ["h1","h3","h4", "ul", "li", "a", "span", "p", "b", "h2"];
-      newFontSize = 1.14285714 * 1.25;
-      for(var j = 0; j < tags.length; j++){
-          let collection = document.getElementById("segmentation").getElementsByTagName(tags[j]);
-          for (var i = 0; i < collection.length; i++) {
-              collection[i].style.fontSize = newFontSize + "rem";
-          }
-      }
-      document.body.style.fontSize = newFontSize + "rem";
+      // keep it default text
       return false;
+
+      //- let segmentation = document.getElementById('segmentation');
+      //- if (segmentation === null) {
+      //-   return false;
+      //- } 
+
+      //- let tags = ["h1","h3","h4", "ul", "li", "a", "span", "p", "b", "h2"];
+      //- newFontSize = 1.14285714 * 1.25;
+      //- for(var j = 0; j < tags.length; j++){
+      //-     let collection = document.getElementById("segmentation").getElementsByTagName(tags[j]);
+      //-     for (var i = 0; i < collection.length; i++) {
+      //-         collection[i].style.fontSize = newFontSize + "rem";
+      //-     }
+      //- }
+      //- document.body.style.fontSize = newFontSize + "rem";
+      //- return false;
   }
 
   function changeToLarge() {
