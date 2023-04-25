@@ -1,0 +1,61 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container.addBottomMargin
+    #segmentation.ui.raised.segment
+      img.ui.medium.image(src='/images/explore_progress.png' style='margin-left: auto; margin-right: auto;width: 65%;')
+      br
+      p Please click on the three dots to explore this email 
+      //- h1(style='display: block; text-align: center; margin: auto;margin-top: 20px;')
+      //-   b How can you recognize the techniques of scammers?
+      #norton
+        img.ui.centered.image(src='/images/identity_explore.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:40px;margin-bottom: 0px;")
+        div(data-hint='Go to Norton LLC official website to check if the email address it correct.' data-hint-position='top-right' style='position: absolute; top: 33%; right: 16%; width: 100%; height: 20px; background-color: transparent;')
+        div(data-hint='Message was automatically sent to spam. Spam filters emails that are not sent from a trust source.' data-hint-position='top-right'  style='position: absolute; top: 42%; left: 10%; width: 100%; height: 20px; background-color: transparent;')
+        div(data-hint='Please think of the following questions: Did you purchase what the email told you to? Do you see a charge on your credit/debit card statements? Did it appear in spam?' data-hint-position='top-right'  style='position: absolute; bottom: 20%; left: 10%; width: 100%; height: 20px; background-color: transparent;')
+    .div(style='margin-top:20px;')
+        button.ui.medium.button.left.floated(onclick="location.href='/identity_learn_page29';") 
+          i.arrow.left.icon 
+          | Back
+        //- button.ui.medium.button.left.floated(onclick="location.href='/';") Save & Exit 
+
+    button.btn(style="background-color: green; color: white; font-size: 24px; padding: 10px 20px; border: none; border-radius: 5px; float: right;" onclick="location.href='/identity_postquiz';") Finish
+
+
+
+block scripts
+  script.
+    localStorage.setItem('progress', 70);
+    localStorage.setItem('theft-path', "/identity_explore_1");
+    introJs().addHints();
+    var voiceoverMappings = {
+      '.showLearnSectionButton': {
+        "initialDelay": 700,
+        "delay": 500,
+        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
+      },
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.1.mp3']
+      },
+      '.voiceover_keyTerm2': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.2.mp3']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.3.mp3']
+      }
+    };
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_start.js")
+
+
+block styles
+  link(rel='stylesheet', href='/css/start.css')  
+    
+    

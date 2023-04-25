@@ -16,8 +16,17 @@ block content
             .content
                 b Reflection:
         p How did you feel about the content you have learned? Do you feel confient recognizing identity theft and understanding its consequences?
+        br
+        br
+        #avatar.ui.one.column.centered.grid(styl="margin: 50px")
+          .ui.huge.right.pointing.circular.label
+            p(style="padding-top: 50px") Do you need any clarifications?
+            .ui.tiny.button(onclick="document.getElementById('avatar').style.display='none'") No
+            .ui.tiny.button(onclick="showChatModal()") Yes
+          img.ui.small.image.right.floated(src='/images/avatar-pic.png')
+        br
         h3 Confidence Rating:  
-        form.ui.form(style="width: 100%", action='/postIdentityTheftModOneConfidenceRating', method='POST')
+        form.ui.form(style="width: 100%", action='/postIdentityTheftModTwoConfidenceRating', method='POST')
             input(type='hidden', name='username', value=user.username)
             input(type='hidden', name='_csrf', value=csrfToken)
             .field
@@ -33,17 +42,62 @@ block content
                     input.hidden(type='radio' name='confidence' value = 'yes_confident')
                     label I'm confident
             br
+            .circular.ui.icon.grey.button.right.floated(style="float: right" onclick="showChatModal()")
+              i.wechat.icon
+            button#submitButton.ui.tiny.green.button(type='submit' style="float: right") Submit
+            br
+            br
     .div(style='margin-top:20px;')
-      button.ui.medium.button.left.floated(onclick="location.href='/identity_trick_8';") 
+      button.ui.medium.button.left.floated(onclick="location.href='/identity_tricks_8';") 
         i.arrow.left.icon 
         | Back
-      button.ui.medium.button.left.floated(onclick="location.href='/';") Save & Exit
-      button.ui.medium.button.right.floated(onclick="location.href='/identity_protection_1';")
-        | Next
-        i.arrow.right.icon
+      //- button.ui.medium.button.left.floated(onclick="location.href='/';") Save & Exit
+      //- button.ui.medium.button.right.floated(onclick="location.href='/identity_protection_1';")
+      //-   | Next
+      //-   i.arrow.right.icon
+
+  #chatModal.ui.modal
+    i.close.icon
+    .ui.large.header(style="background-color: grey; color: white;")
+      img.ui.circular.image(src='/images/avatar-pic.jpg' style='margin: 25px')
+      | Chat with Intrepid
+    .content(style="background-color: #d3d3d3; display: block")
+      .div(style='overflow: hidden; float: left')
+        img.ui.tiny.circular.image(src='/images/avatar-pic.jpg' style='float: left; margin-bottom: 25px; display: block')
+        .ui.large.left.pointing.label(style='float: left')
+          p Hi User! Welcome to the Chat! I am so happy you're here! 
+            | You requested clarification. Luckily for you, in here, you can ask any questions you have about the material covered.
+        .ui.large.left.pointing.label(style='float: left; display: block; clear:both')
+          p Before we start, I want to be clear that I am an AI chat-bot and not a human being. 
+            | However, I will do my best to help you with what you need assistance on!
+        .ui.large.left.pointing.label(style='float: left; clear:both')
+          p You can feel free to save and exit the chat through the botton on the bottom left of you screen. 
+            | You can always re-enter as well. Does all of this make sense? Select a button below.
+      button#understand_button.ui.small.blue.button(onclick="showYes()" style='float: right; clear:both') Yes.
+      #understand.ui.large.blue.right.pointing.label(style='float: right; visibility: hidden; clear: both')
+        p Yes.
+      #yay.ui.large.left.pointing.label(style="visibility: hidden; float: left; clear: both")
+        p Yay! Let's begin. Please select a button below what you would like clarification on.
+      #topics_group(style="visibility: hidden; clear: both; float: right")
+        button.ui.small.blue.button(onclick="showTopic('Consequences of finanical identity theft')") Consequences of financial identity theft
+        button.ui.small.blue.button(onclick="showTopic('Identifying a troll')") Identifying a troll
+        button.ui.small.blue.button(onclick="showTopic('Other')") Other
+      #topic.ui.large.blue.right.pointing.label(style="visibility: hidden; clear: both; float: right") 
+        p#topic_text 
+      #topic_response1.ui.large.left.pointing.label(style="visibility: hidden; clear: both; float: left") 
+        p This can definitely be a hard topic to grasp, so I understand completely!
+      #topic_response2.ui.large.left.pointing.label(style="visibility: hidden; clear: both; float: left") 
+        p I want to help you as best as I can, so please click the learning option you feel would most help you reach understanding. 
+        | We can start with this.
 
 block scripts
   script.
+    
+    function showChatModal(){
+      $('#chatModal.ui.modal')
+        .modal('show')
+      ;
+    }
 
     function showYes(){
       var hid = document.getElementById("understand");

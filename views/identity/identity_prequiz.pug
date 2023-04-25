@@ -13,7 +13,10 @@ block content
     .ui.container
       h1 Quiz
             
-      form#quiz-form.ui.form(style="width: 100%;")
+      form#quiz-form.ui.form(style="width: 100%;"  action='/postIdentityTheftPreQuizScore', method='POST')
+        input(type='hidden', name='username', value=user.username)
+        input(type='hidden', name='_csrf', value=csrfToken)
+
         img.ui.centered.image(src='/images/identity_prequiz_1.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:0px;margin-bottom: 0px;")
         .ui.segment
           h3(style='display: inline-block; font-weight: bold;') 
@@ -110,16 +113,16 @@ block content
               div.ui.checkbox
                 input(type='checkbox', name='q2-option-5', value='1')
                 label Loss of medical care
-    .div(style='margin-top:20px;')
-      button.ui.large.button.left.floated(onclick="location.href='/identity_home';") 
-        i.arrow.left.icon 
-        | Back
-      button.ui.large.button.left.floated(onclick="location.href='/identity_learn_page0';") Skip Quiz
-      //- button.circular.ui.icon.button.right.floated(onclick="showModal()")
-      //-   i.wechat.icon
-      button.ui.large.green.button.right.floated(onclick="location.href='/identity_prequiz_finish';")
-        | Submit Quiz
-        i.arrow.right.icon
+        .div(style='margin-top:20px;')
+          button.ui.large.button.left.floated(onclick="location.href='/identity_home';") 
+            i.arrow.left.icon 
+            | Back
+          button.ui.large.button.left.floated(onclick="location.href='/identity_learn_page0';") Skip Quiz
+          //- button.circular.ui.icon.button.right.floated(onclick="showModal()")
+          //-   i.wechat.icon
+          button.ui.large.green.button.right.floated(type='submit')
+            | Submit Quiz
+            i.arrow.right.icon
     //- button.btn(style="background-color: green; color: white; font-size: 24px; padding: 10px 20px; border: none; border-radius: 5px; float: right;" onclick="location.href='/identity_prequiz_finish';") Submit Quiz
 
 

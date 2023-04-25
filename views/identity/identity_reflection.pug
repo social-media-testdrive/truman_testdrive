@@ -1,0 +1,55 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container.addBottomMargin
+    #segmentation.ui.raised.segment
+      img.ui.medium.image(src='/images/reflection_progress.png' style='margin-left: auto; margin-right: auto;width: 65%;')
+    #chatModal.ui.divider(style="background-color: white;")
+      .ui.large.header(style="background-color: grey; color: white;")
+        img.ui.circular.image(src='/images/avatar-pic.jpg' style='margin: 25px')
+        | Chat with Intrepid
+      .content(style="background-color: #dbdbdb; display: block")
+        .div(style='overflow: hidden; float: left; background-color: #dbdbdb')
+          br
+          br
+          .ui.grid
+            .three.wide.column
+              img.ui.tiny.circular.image(src='/images/avatar-pic.jpg' style='float: left; margin-bottom: 25px; margin-left: 10px; display: block')
+            .ten.wide.column
+              .ui.large.blue.left.pointing.label(style='float: right')
+                p Congratulations Sam! You have completed all the content for identity theft! Do you feel ready to protect yourself in the real world? Do you think you are able to help your families and friends from the scams?
+          input#fname(type='text' name='fname' value='' placeholder='Please input your question...' style="float: right; width: 100%; border: solid; border-color: gray; background-color: white; color: black; height: 100px; vertical-align: top")
+    button.btn(style="margin-top: 10px; background-color: green; color: white; font-size: 24px; padding: 10px 20px; border: none; border-radius: 5px; float: right; clear: both" onclick="location.href='/'; localStorage.setItem('progress', 100);") Finish
+ 
+block scripts
+  script.
+    var voiceoverMappings = {
+      '.showLearnSectionButton': {
+        "initialDelay": 700,
+        "delay": 500,
+        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
+      },
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.1.mp3']
+      },
+      '.voiceover_keyTerm2': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.2.mp3']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.3.mp3']
+      }
+    };
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_start.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/start.css')  
+    
+    

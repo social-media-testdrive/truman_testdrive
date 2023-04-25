@@ -1,0 +1,174 @@
+extends ../ui_layout
+
+block content
+
+  .ui.text.container.addBottomMargin
+    br    
+    .ui.raised.segment
+      img.ui.medium.image(src='/images/postquiz_progress.png' style='margin-left: auto; margin-right: auto;width: 65%')
+      h1.ui.header
+        .content
+            | Identity Theft Post-Quiz
+      p Test Your Knowledge
+
+    .ui.container
+      h1 Quiz
+            
+      form#quiz-form.ui.form(style="width: 100%;"  action='/postIdentityTheftPostQuizScore', method='POST')
+        input(type='hidden', name='username', value=user.username)
+        input(type='hidden', name='_csrf', value=csrfToken)
+        .ui.segment
+            h3 1. Which of the following information is not personal information that can be used to steal your identity?
+            .field
+              #b1.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
+                input(type='radio' id='c1' name='q1' value = 'q1' )
+                label Dietary Preferences
+            .field
+              #b2.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
+                input(type='radio' id = 'c2' name='q1' value = 'b')
+                label Social Security Number
+            .field
+              #b3.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
+                input(type='radio' id = 'c3' name='q1' value = 'c')
+                label Medical Information
+            .field
+              #b4.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
+                input(type='radio' id = 'c4' name='q1' value = 'd')
+                label Date and place of birth
+
+        br
+        .ui.segment
+            h3 2. What are not the methods to protect yourself from identity theft?
+            .field
+              #b5.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
+                input(type='radio' id='c5' name='q2' value = 'q2' )
+                label Shred mails with personal information
+            .field
+              #b6.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
+                input(type='radio' id = 'c6' name='q2' value = 'b')
+                label Send in personal information if authorized employees contact you
+            .field
+              #b7.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
+                input(type='radio' id = 'c7' name='q2' value = 'c')
+                label Set up two factor authentication
+            .field
+              #b8.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
+                input(type='radio' id = 'c8' name='q2' value = 'd')
+                label Be cautious with sharing personal information in open space
+
+
+        br
+        .ui.segment
+            h3 3. How would you react if identity theft has happened?
+            .field
+              #b9.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
+                input(type='radio' id='c9' name='q3' value = 'q3' )
+                label Explore the unsolicited email or text message by following the instructions to know more about the content.
+            .field
+              #b10.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
+                input(type='radio' id = 'c10' name='q3' value = 'b')
+                label Call the number in the suspicious email or text to ask questions to the authority. 
+            .field
+              #b11.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
+                input(type='radio' id = 'c11' name='q3' value = 'c')
+                label Remind yourself that companies generally don’t contact you to ask for your username or password.
+            .field
+              #b12.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
+                input(type='radio' id = 'c12' name='q3' value = 'd')
+                label Being contacted means I have an account with the company, so follow the instructions.
+        #submitQuestion.ui.green.button(onclick ='checkQuestion()', style='float: right') Check Answers
+        #correctness.ui.label.right.floated(style='clear: both; width: 100%; float: right; display: none')
+          p#score(style='float:right') 1.0/1 points
+        br
+        br
+        button.ui.blue.button(style="float: right; clear: both" type='submit') Finish
+        input(type='hidden', name='scoreInput', value='0', id='scoreInput')
+        br
+        br
+
+
+    .div(style='margin-top:20px;')
+      button.ui.large.button.left.floated(onclick="location.href='/identity_explore_1';") 
+        i.arrow.left.icon 
+        | Back
+      //- button.ui.large.button.left.floated(onclick="location.href='/identity_learn_page0';") Skip Quiz
+      //- button.circular.ui.icon.button.right.floated(onclick="showModal()")
+      //-   i.wechat.icon
+      //- button.ui.large.green.button.right.floated(onclick="location.href='/identity_postquiz';")
+      //-   | Submit Quiz
+      //-   i.arrow.right.icon
+    //- button.btn(style="background-color: green; color: white; font-size: 24px; padding: 10px 20px; border: none; border-radius: 5px; float: right;" onclick="location.href='/identity_prequiz_finish';") Submit Quiz
+
+
+
+
+block scripts
+  script.
+    localStorage.setItem('progress', 90);
+    localStorage.setItem('theft-path', "/identity_postquiz");
+    function checkQuestion(){
+      document.getElementById("submitQuestion").style.display = "none";
+      let x = 0;
+      if(document.getElementById("c4").checked) {
+        x++;
+      } 
+      document.getElementById("b1").style.borderColor="green";
+      document.getElementById("b2").style.borderColor="red";
+      document.getElementById("b3").style.borderColor="red";
+      document.getElementById("b4").style.borderColor="red";
+
+      document.getElementById("b5").style.borderColor="red";
+      document.getElementById("b6").style.borderColor="green";
+      document.getElementById("b7").style.borderColor="red";
+      document.getElementById("b8").style.borderColor="red";
+
+      document.getElementById("b9").style.borderColor="red";
+      document.getElementById("b10").style.borderColor="red";
+      document.getElementById("b11").style.borderColor="green";
+      document.getElementById("b12").style.borderColor="red";
+
+      if(document.getElementById("c1").checked) {
+        x++;
+      } 
+      if(document.getElementById("c6").checked) {
+        x++;
+      } 
+      if(document.getElementById("c11").checked) {
+        x++;
+      } 
+      document.getElementById("score").innerHTML = x.toFixed(2) + " / 3.00 points";
+      document.getElementById("correctness").style.display = "block";
+      document.getElementById('scoreInput').value = x +  " / 3.00 points";
+    }
+
+
+    var voiceoverMappings = {
+      '.showLearnSectionButton': {
+        "initialDelay": 700,
+        "delay": 500,
+        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
+      },
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.1.mp3']
+      },
+      '.voiceover_keyTerm2': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.2.mp3']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.3.mp3']
+      }
+    };
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_start.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/start.css')  
+  link(rel='stylesheet', href='/css/prequiz.css')  
+
+    

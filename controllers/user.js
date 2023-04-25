@@ -227,6 +227,28 @@ exports.postInstructorLogin = (req, res, next) => {
     })(req, res, next);
 };
 
+exports.postIdentityTheftPreQuizScore = (req, res, next) => {
+    req.assert('username', 'Username cannot be blank').notEmpty();
+    const errors = req.validationErrors();
+
+    User.findOne({
+    username: req.body.username
+    }, (err, existingUser) => {
+        if (err) {
+            return next(err);
+        }
+        if (existingUser) {
+            existingUser.identityTheftPreQuizScore = req.body.scoreInput;
+            existingUser.save((err) => {
+                if (err) {
+                    return next(err);
+                }
+                });
+        }
+    });
+    res.redirect('/identity_prequiz_finish'); 
+}; 
+
 exports.postIdentityTheftModOneQuizScore = (req, res, next) => {
     req.assert('username', 'Username cannot be blank').notEmpty();
     const errors = req.validationErrors();
@@ -268,18 +290,13 @@ exports.postIdentityTheftModTwoQuizScore = (req, res, next) => {
                 });
         }
     });
-    res.redirect('/identity_learn_page8'); 
+    res.redirect('/identity_tricks_9'); 
 }; 
 
 exports.postIdentityTheftModThreeQuizScore = (req, res, next) => {
     req.assert('username', 'Username cannot be blank').notEmpty();
-    res.redirect('/identity_learn_page28'); 
-}; 
-
-exports.postidentityTheftProgress = (req, res, next) => {
-    //console.log("HEREEEEE\n");
-    //req.assert('username', 'Username cannot be blank').notEmpty();
     const errors = req.validationErrors();
+
     User.findOne({
     username: req.body.username
     }, (err, existingUser) => {
@@ -287,102 +304,44 @@ exports.postidentityTheftProgress = (req, res, next) => {
             return next(err);
         }
         if (existingUser) {
-            existingUser.identityTheftProgress = 10;
-            existingUser.save((err) => {
-                if (err) {
-                    return next(err);
-                }
-                });
-        }
-    });
-}; 
-
-
-exports.postCharacterData = (req, res, next) => {
-    //console.log("HEREEEEE\n");
-    //req.assert('username', 'Username cannot be blank').notEmpty();
-    console.log(req.params.Data)
-    const errors = req.validationErrors();
-    User.findOne({
-    username: req.body.username
-    }, (err, existingUser) => {
-        if (err) {
-            return next(err);
-        }
-        if (existingUser) {
-            existingUser.CharacterData = req.params.Data;
-            existingUser.save((err) => {
-                if (err) {
-                    return next(err);
-                }
-                });
-                
-        }
-
-    });
-}; 
-
-exports.postTextSizee = (req, res, next) => {
-    //console.log("HEREEEEE\n");
-    //req.assert('username', 'Username cannot be blank').notEmpty();
-    const errors = req.validationErrors();
-    User.findOne({
-    username: req.body.username
-    }, (err, existingUser) => {
-        if (err) {
-            return next(err);
-        }
-        if (existingUser) {
-            existingUser.TextSizee = 10;
-            existingUser.save((err) => {
-                if (err) {
-                    return next(err);
-                }
-                });
-        }
-    });
-}; 
-
-exports.postModuleProgress_identityTheft = (req, res, next) => {
-    //console.log("HEREEEEE\n");
-    //req.assert('username', 'Username cannot be blank').notEmpty();
-    const errors = req.validationErrors();
-    User.findOne({
-    username: req.body.username
-    }, (err, existingUser) => {
-        if (err) {
-            return next(err);
-        }
-        if (existingUser) {
-            existingUser.ModuleProgress_identityTheft = "hello";
-            existingUser.save((err) => {
-                if (err) {
-                    return next(err);
-                }
-                });
-        }
-    });
-}; 
-
-exports.postIdentityConfidenceRating = (req, res, next) => {
-    req.assert('username', 'Username cannot be blank').notEmpty();
-
-
             existingUser.identityTheftModThreeQuizScore = req.body.scoreInput;
-
             existingUser.save((err) => {
                 if (err) {
                     return next(err);
                 }
                 });
+        }
+    });
     res.redirect('/identity_learn_page28'); 
+}; 
+
+exports.postIdentityTheftPostQuizScore = (req, res, next) => {
+    req.assert('username', 'Username cannot be blank').notEmpty();
+    const errors = req.validationErrors();
+
+    User.findOne({
+    username: req.body.username
+    }, (err, existingUser) => {
+        if (err) {
+            return next(err);
+        }
+        if (existingUser) {
+            existingUser.identityTheftPostQuizScore = req.body.scoreInput;
+            existingUser.save((err) => {
+                if (err) {
+                    return next(err);
+                }
+                });
+        }
+    });
+    res.redirect('/identity_reflection'); 
 }; 
 
 exports.postIdentityTheftModOneConfidenceRating = (req, res, next) => {
     req.assert('username', 'Username cannot be blank').notEmpty();
 
     const errors = req.validationErrors();
-    console.log(req.body.confidence)
+
     User.findOne({
     username: req.body.username
     }, (err, existingUser) => {
@@ -399,6 +358,29 @@ exports.postIdentityTheftModOneConfidenceRating = (req, res, next) => {
         }
     });
     res.redirect('/identity_learn_page9'); 
+}; 
+
+exports.postIdentityTheftModTwoConfidenceRating = (req, res, next) => {
+    req.assert('username', 'Username cannot be blank').notEmpty();
+
+    const errors = req.validationErrors();
+
+    User.findOne({
+    username: req.body.username
+    }, (err, existingUser) => {
+        if (err) {
+            return next(err);
+        }
+        if (existingUser) {
+            existingUser.identityTheftModTwoConfidenceRating = req.body.confidence;
+            existingUser.save((err) => {
+                if (err) {
+                    return next(err);
+                }
+                });
+        }
+    });
+    res.redirect('/identity_protection_1'); 
 }; 
 
 exports.postIdentityTheftModThreeConfidenceRating = (req, res, next) => {
@@ -436,7 +418,6 @@ exports.postChatbotConnect = (req, res, next) => {
             }
         }
     );
-    return;
 };
 
 /**
