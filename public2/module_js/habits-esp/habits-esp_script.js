@@ -173,7 +173,7 @@ $(".ui.vertical.menu a.item").on('click', function(){
       $('.habitsNotificationItem').each(function(index){ //for each notification, check if it is within the time elapsed
         var notifTimestamp = parseInt($(this).find('.time.millisecondType').html(), 10);
         if(notifTimestamp < timeElapsed){
-          $(this).find('.time.notificationTime').html(humanized_time_span(habitsStart + notifTimestamp));
+          $(this).find('.time.notificationTime').html(humanized_time_span(habitsStart + notifTimestamp, null, date_formats, time_units));
           $(this).show();
         }
       });

@@ -43,6 +43,7 @@ const hintsList = [
     hint: `Este es el feed de una red social. Recibirás notificaciones cuando tus 
     amigos le den “Like” o comenten tus publicaciones.`,
     hintPosition: "middle-middle",
+    'hintButtonLabel': 'Entiendo',
     // audioFile: ['CUSML.10.4.04.mp3']
   },
   {
@@ -50,6 +51,7 @@ const hintsList = [
     hint: `¡Una vez le hayas dado clic a todos los puntos azules, dale clic a la 
     pestaña de notificaciones para ver qué notificaciones has recibido!`,
     hintPosition: "middle-middle",
+    hintButtonLabel: 'Entiendo',
     // audioFile: ['CUSML.10.4.05.mp3']
   }
 ];

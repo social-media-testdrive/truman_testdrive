@@ -5,6 +5,7 @@ const hintsList = [
     a través de esta puedes controlar el número de notificaciones que te pueden 
     llegar. Esta se verá similar a esta página.`,
     hintPosition: "middle-middle",
+    hintButtonLabel: 'Entiendo',
     // audioFile: ['CUSML.10.4.08.mp3']
   },
   {
@@ -13,6 +14,7 @@ const hintsList = [
     de diferentes tipos de publicaciones. Intenta ponerlas en pausa por un 
     tiempo, activa esta función.`,
     hintPosition: "middle-middle",
+    hintButtonLabel: 'Entiendo',
     // audioFile: ['CUSML.10.4.09.mp3']
   }
 ];

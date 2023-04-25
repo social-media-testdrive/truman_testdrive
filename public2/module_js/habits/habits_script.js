@@ -233,6 +233,36 @@ $(".ui.vertical.menu a.item").on('click', function() {
         cat.absoluteTimestamp = Date.now();
         cat.actionType = 'clickNotificationsTab';
 
+
+    date_formats = {
+        past: [
+          { ceiling: 60, text: "Hace $seconds segundos" },
+          { ceiling: 3600, text: "Hace $minutes minuto" },
+          { ceiling: 86400, text: "Hace $hours horas" },
+          { ceiling: 2629744, text: "Hace $days días" },
+          { ceiling: 31556926, text: "Hace $months meses" },
+          { ceiling: null, text: "Hace $years años" }      
+        ],
+        future: [
+          { ceiling: 60, text: "En $seconds segundos" },
+          { ceiling: 3600, text: "En $minutes minuto" },
+          { ceiling: 86400, text: "En $hours horas" },
+          { ceiling: 2629744, text: "En $days días" },
+          { ceiling: 31556926, text: "En $months meses" },
+          { ceiling: null, text: "En $years años" }
+        ]
+      };
+
+      // Time units must be be ordered largest -> smallest
+      time_units = [
+        [31556926, 'años'],
+        [2629744, 'meses'],
+        [86400, 'días'],
+        [3600, 'horas'],
+        [60, 'minuto'],
+        [1, 'segundos']
+      ];
+
         //get the start time, i.e. when the user first opened the free-play section
         $.get("/habitsTimer", function(data) {
             var timeNow = Date.now();
@@ -242,7 +272,7 @@ $(".ui.vertical.menu a.item").on('click', function() {
             $('.habitsNotificationItem').each(function(index) { //for each notification, check if it is within the time elapsed
                 var notifTimestamp = parseInt($(this).find('.time.millisecondType').html(), 10);
                 if (notifTimestamp < timeElapsed) {
-                    $(this).find('.time.notificationTime').html(humanized_time_span(habitsStart + notifTimestamp));
+                    $(this).find('.time.notificationTime').html(humanized_time_span(habitsStart + notifTimestamp, null, date_formats, time_units));
                     $(this).show();
                 }
             });

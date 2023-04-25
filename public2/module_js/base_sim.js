@@ -112,7 +112,12 @@ function startHints(enableDataCollection) {
     window.scrollTo(0, 0);
 
     var hints = introJs().setOptions({
-        hints: hintsList
+        hints: hintsList,
+        'doneLabel': 'Listo &#10003',
+        'nextLabel': 'Seguir &rarr;', 
+        'prevLabel': '&larr; Volver',
+        'skipLabel': 'Suprimir',
+        'hintButtonLabel': 'Entiendo',
     });
 
     hints.addHints();
@@ -194,7 +199,11 @@ function startIntro(enableDataCollection) {
         'showStepNumbers': false,
         'showBullets': false,
         'scrollToElement': true,
-        'doneLabel': 'Done &#10003'
+        'doneLabel': 'Listo &#10003',
+        'nextLabel': 'Seguir &rarr;', 
+        'prevLabel': '&larr; Volver',
+        'skipLabel': 'Suprimir',
+        'hintButtonLabel': 'Entiendo',
     });
 
     // *************** code copied over from base_introStep.js *******************

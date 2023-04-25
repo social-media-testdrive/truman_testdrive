@@ -14,7 +14,11 @@ function startIntro(enableDataCollection) {
         'showStepNumbers': false,
         'showBullets': false,
         'scrollToElement': true,
-        'doneLabel': 'Done &#10003'
+        'doneLabel': 'Listo &#10003',
+        'nextLabel': 'Seguir &rarr;', 
+        'prevLabel': '&larr; Volver',
+        'skipLabel': 'Suprimir',
+        'hintButtonLabel': 'Entiendo',
     });
     /*
     onbeforechange:

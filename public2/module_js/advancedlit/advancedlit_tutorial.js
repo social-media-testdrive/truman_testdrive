@@ -147,7 +147,11 @@ function startIntro(enableDataCollection) {
         'exitOnEsc': false,
         'showStepNumbers': false,
         'showBullets': false,
-        'doneLabel': 'Done &#10003'
+        'doneLabel': 'Listo &#10003',
+        'nextLabel': 'Seguir &rarr;', 
+        'prevLabel': '&larr; Volver',
+        'skipLabel': 'Suprimir',
+        'hintButtonLabel': 'Entiendo',
     });
     /*
     onbeforechange:
@@ -292,7 +296,11 @@ function startSecondIntro(enableDataCollection) {
         'showStepNumbers': false,
         'showBullets': false,
         'scrollToElement': true,
-        'doneLabel': 'Done &#10003'
+        'doneLabel': 'Listo &#10003',
+        'nextLabel': 'Seguir &rarr;', 
+        'prevLabel': '&larr; Volver',
+        'skipLabel': 'Suprimir',
+        'hintButtonLabel': 'Entiendo',
     });
 
     /*
@@ -428,7 +436,10 @@ function startThirdIntro(enableDataCollection) {
         'showStepNumbers': false,
         'showBullets': false,
         'scrollToElement': true,
-        'doneLabel': 'Done &#10003'
+        'doneLabel': 'Listo &#10003',
+        'nextLabel': 'Seguir &rarr;', 
+        'prevLabel': '&larr; Volver',
+        'skipLabel': 'Suprimir'
     });
 
     /*
@@ -563,7 +574,10 @@ function startFourthIntro(enableDataCollection) {
         'showStepNumbers': false,
         'showBullets': false,
         'scrollToElement': true,
-        'doneLabel': 'Done &#10003'
+        'doneLabel': 'Listo &#10003',
+        'nextLabel': 'Seguir &rarr;', 
+        'prevLabel': '&larr; Volver',
+        'skipLabel': 'Suprimir'
     });
 
     /*

@@ -8,8 +8,10 @@ const _ = require('lodash');
  * Get the notification timestamps for the habits module
  */
 exports.getNotificationTimes = (req, res) => {
+
+    console.log('noti mod id = ' + req.params.modId);
     Script.find()
-        .where('module').equals('habits')
+        .where('module').equals('habits-esp')
         .where('type').equals('notification')
         .sort('time')
         .exec(function(err, script_feed) {
@@ -106,10 +108,12 @@ exports.getScript = (req, res, next) => {
                     if (err) {
                         return next(err);
                     }
+                    console.log("mod id = " + req.params.modId);
                     // Final array of all posts to go in the freeplay feed
                     const finalfeed = [];
                     // Array of any user-made posts in this module
                     const user_posts = user.getModPosts(req.params.modId);
+                    console.log("user_posts = " + JSON.stringify(user_posts));
                     // Sort the array by the time the post was created
                     user_posts.sort(function(a, b) {
                         return b.relativeTime - a.relativeTime;

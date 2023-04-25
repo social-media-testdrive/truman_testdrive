@@ -1,9 +1,29 @@
 function addHumanizedTimeToPost() {
     let target = $(this);
-    var ms = parseInt(target.text(), 10);
+    let ms = parseInt(target.text(), 10);
     let time = new Date(ms);
-    target.text(humanized_time_span(time));
-}
+    
+    date_formats = {
+        past: [
+          { ceiling: 60, text: "Hacee $seconds segundos" },
+          { ceiling: 3600, text: "Hace $minutes minutos" },
+          { ceiling: 86400, text: "Hace $hours horas" },
+          { ceiling: 2629744, text: "Hace $days días" },
+          { ceiling: 31556926, text: "Hace $months meses" },
+          { ceiling: null, text: "Hace $years años" }      
+        ],
+        future: [
+          { ceiling: 60, text: "En $seconds segundos" },
+          { ceiling: 3600, text: "En $minutes minutos" },
+          { ceiling: 86400, text: "En $hours horas" },
+          { ceiling: 2629744, text: "En $days días" },
+          { ceiling: 31556926, text: "En $months meses" },
+          { ceiling: null, text: "En $years años" }
+        ]
+      };
+    
+    target.text(humanized_time_span(time, Date.now(), date_formats));
+  }
 
 function getActionType(currentPage) {
     let actionType = 'free play';
@@ -164,13 +184,41 @@ async function addNewComment(event) {
         const ava_name = ava.attr('name');
         const postID = card.attr('postID');
 
+    date_formats = {
+        past: [
+          { ceiling: 60, text: "Hace $seconds segundos" },
+          { ceiling: 3600, text: "Hace $minutes minuto" },
+          { ceiling: 86400, text: "Hace $hours horas" },
+          { ceiling: 2629744, text: "Hace $days días" },
+          { ceiling: 31556926, text: "Hace $months meses" },
+          { ceiling: null, text: "Hace $years años" }      
+        ],
+        future: [
+          { ceiling: 60, text: "En $seconds segundos" },
+          { ceiling: 3600, text: "En $minutes minuto" },
+          { ceiling: 86400, text: "En $hours horas" },
+          { ceiling: 2629744, text: "En $days días" },
+          { ceiling: 31556926, text: "En $months meses" },
+          { ceiling: null, text: "En $years años" }
+        ]
+      };
+      //Time units must be be ordered largest -> smallest
+      time_units = [
+        [31556926, 'años'],
+        [2629744, 'meses'],
+        [86400, 'días'],
+        [3600, 'horas'],
+        [60, 'minuto'],
+        [1, 'segundos']
+      ];
+
         const mess = (
             `<div class="comment">
         <a class="avatar"> <img src="${ava_img}"> </a>
         <div class="content">
           <a class="author">${ava_name}</a>
           <div class="metadata">
-            <span class="date">${humanized_time_span(date)}</span>
+            <span class="date">${humanized_time_span(time, null, date_formats, time_units)}</span>
             <i class="heart icon"></i> 0 Likes
           </div>
           <div class="text">${text}</div>

@@ -46,7 +46,10 @@ function endIntro() {
         'showBullets': false,
         'showStepNumbers': false,
         'scrollToElement': true,
-        'doneLabel': 'Done &#10003'
+        'doneLabel': 'Listo &#10003',
+        'nextLabel': 'Seguir &rarr;', 
+        'prevLabel': '&larr; Volver',
+        'skipLabel': 'Suprimir'
     });
     intro.setOptions({
         steps: [{

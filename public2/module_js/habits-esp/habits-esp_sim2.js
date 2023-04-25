@@ -6,6 +6,7 @@ const hintsList = [
     los puntos azules, haz clic en "Ajustes" en la pestaña de notificaciones 
     para ver cómo puedes hacerlo .`,
     hintPosition: "middle-middle",
+    hintButtonLabel: 'Entiendo',
     // audioFile: ['CUSML.10.4.06.mp3']
   },
   {
@@ -13,6 +14,7 @@ const hintsList = [
     hint: `Las notificaciones pueden darte información importante, pero tener 
     demasiadas pueden hacer que sientas la necesidad de revisarlas constantemente.`,
     hintPosition: "top-middle",
+    hintButtonLabel: 'Entiendo',
     // audioFile: ['CUSML.10.4.07.mp3']
   }
 ];

@@ -36,7 +36,11 @@ function startHints() {
   window.scrollTo(0, 0);
 
   var hints = introJs().setOptions({
-    hints: hintsList
+    hints: hintsList,
+    'doneLabel': 'Listo &#10003',
+    'nextLabel': 'Seguir &rarr;', 
+    'prevLabel': '&larr; Volver',
+    'hintButtonLabel': 'Entiendo',
   });
 
   hints.addHints();
@@ -89,7 +93,10 @@ function startIntro() {
   var intro = introJs().setOptions({
     'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false,
     'showStepNumbers': false, 'showBullets': false, 'scrollToElement': true,
-    'doneLabel': 'Listo &#10003'
+    'doneLabel': 'Listo &#10003',
+    'nextLabel': 'Seguir &rarr;', 
+    'prevLabel': '&larr; Volver',
+    'hintButtonLabel': 'Entiendo',
   });
   intro.setOptions({
     steps: stepsList
