@@ -269,7 +269,7 @@ app.get('/auth/callback/success', (req, res, next) => {
                     if (err) {
                         return next(err);
                     }
-                    return res.redirect('/');
+                    return res.redirect('/selection');
                 });
             }else{
             user.save((err) => {
@@ -279,7 +279,7 @@ app.get('/auth/callback/success', (req, res, next) => {
                     if (err) {
                         return next(err);
                     }
-                    return res.redirect('/');
+                    return res.redirect('/selection');
                 });
             });
         }

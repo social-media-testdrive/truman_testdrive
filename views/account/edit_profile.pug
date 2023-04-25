@@ -17,19 +17,10 @@ block content
             label(for='password' style="font-size:larger; ") ID: &nbsp;#{user.username},
             div(style="display: flex; align-items: center;")
                 label(for='username' style="font-size:larger; margin-top: -5%") Name: &nbsp;
-                input(style="margin:5px 0px; margin-bottom: 5%; width: 70%; border-radius: 5px; border: 2px solid grey !important; background-color: #fff !important; color: #000 !important;" type='text', name='username', id='username', placeholder='Username', required).field
+                input(style="margin:5px 0px; margin-bottom: 5%; width: 70%; border-radius: 5px; border: 2px solid grey !important; background-color: #fff !important; color: #000 !important;" type='text', name='username', id='username', placeholder='Username').field
                 br
-            a.forgot(href='forgotPassword', style="display: block;") Forgot Password?
+            a.forgot(href='forgotPassword', style="display: block; margin-bottom: 25px") Forgot Password?
             
-            
-    
-        .three.wide.row
-          .ui.medium.buttons
-              button#large.ui.button.green.large(style="margin-bottom: 5%;" onclick='changeToLarge()') Large Text
-              .or
-              button#medium.ui.button.green.medium(style="margin-bottom: 5%;"  onclick='changeToMedium()') Medium Text
-              .or
-              button#small.ui.button.green.small(style="margin-bottom: 5%;"  onclick='changeToSmall()') Small Text
               
       .ui.profilePicForm.form 
         .ui.segment

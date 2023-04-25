@@ -129,7 +129,7 @@ exports.postStudentLogin = (req, res, next) => {
                 req.session.passport = temp;
                 req.session.save(function(err) {
                     user.logUser(Date.now());
-                    return res.redirect('/');
+                    return res.redirect('/selection');
                 });
             });
         });
@@ -502,7 +502,7 @@ exports.postChatbotConnect = (req, res, next) => {
                             //req.session.passport is now undefined
                             req.session.passport = temp;
                             req.session.save(function(err) {
-                                return res.redirect('/');
+                                return res.redirect('/selection');
                             });
                         });
         
@@ -575,7 +575,7 @@ exports.getGuest = (req, res, next) => {
                     //req.session.passport is now undefined
                     req.session.passport = temp;
                     req.session.save(function(err) {
-                        return res.redirect('/');
+                        return res.redirect('/selection');
                     });
                 });
 
