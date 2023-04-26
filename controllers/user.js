@@ -572,7 +572,7 @@ exports.getGuest = (req, res, next) => {
 exports.getAccount = (req, res) => {
     res.render('account/profile', {
         title: 'Account Management',
-        //mod: req.params.modId
+        mod: req.params.modId
     });
 };
 
