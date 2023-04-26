@@ -8,12 +8,6 @@ block content
     h2 Pick a Module
     br
     .ui.four.stackable.link.cards(style="padding-bottom:4em;")
-            
-        a.ui.card(href=`/${path}/trolls`)
-          .image
-            img(src='images/troll.png')
-          .content
-            .header="How to Avoid Trolls"
 
         a.ui.card#theft-link(href=`/identity_home`)
           .image
@@ -27,7 +21,7 @@ block content
             p(style="color: black;")  Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
           //- .ui.bottom.attached.progress
           //-   .bar
-        //- button#reset-progress(onclick="localStorage.setItem('progress', 0); localStorage.setItem('theft-path', '/identity_home'); location.reload();") Reset Progress
+        button#reset-progress(onclick="localStorage.setItem('progress', 0); localStorage.setItem('theft-path', '/identity_home'); location.reload();") Reset Progress
 
   script.
     let theftPath = localStorage.getItem('theft-path');
