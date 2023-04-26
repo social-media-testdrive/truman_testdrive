@@ -21,6 +21,7 @@
   background-color: transparent;
 }
 img.ui.image {
+  object-fit:contain;
   display: block;
 }
 .ui.image svg,

@@ -11402,6 +11402,7 @@ i.icon.times.rectangle.outline:before {
 }
 
 img.ui.image {
+  object-fit:contain;
   display: block;
 }
 
