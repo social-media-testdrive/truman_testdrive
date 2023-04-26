@@ -50,15 +50,4 @@ block scripts
   script(src='/module_js/base_start.js')
   script(src='/module_js/base_tutorial.js')
   script(src='/module_js/base_introSteps.js')
-  script.
-    // Add and remove classes to show/hide red labels
-    $('#username').on('focus', function() {
-      $('.ui.pointing.below.label.username-red').addClass('active');
-    }).on('blur', function() {
-      $('.ui.pointing.below.label.username-red').removeClass('active');
-    });
-    $('#password').on('focus', function() {
-      $('.ui.pointing.below.label.password-red').addClass('active');
-    }).on('blur', function() {
-      $('.ui.pointing.below.label.password-red').removeClass('active');
-    });
+
