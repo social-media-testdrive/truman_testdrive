@@ -25,6 +25,8 @@ const userSchema = new mongoose.Schema({
     completed: { type: Boolean, default: false }, // Not used in TestDrive
     reflectionCsv: { type: String, default: '' },
     timeReportCsv: { type: String, default: '' },
+
+
     identityTheftPreQuizScore: { type: String, default: ''},
     identityTheftModOneQuizScore: { type: String, default: ''},
     identityTheftModOneConfidenceRating: { type: String, default: ''},
@@ -33,6 +35,8 @@ const userSchema = new mongoose.Schema({
     identityTheftModThreeQuizScore: { type: String, default: ''},
     identityTheftModThreeConfidenceRating: { type: String, default: ''},
     identityTheftPostQuizScore: { type: String, default: ''},
+
+    
     moduleProgress: { // marks the progress of each module: none, started, completed
         accounts: { type: String, default: 'none' },
         identityTheft: { type: String, default: 'none' },
