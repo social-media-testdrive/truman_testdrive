@@ -27,7 +27,7 @@ block content
       .ui.one.column.centered.grid(style="margin: 50px")
         .ui.large.right.pointing.circular.label(style="display: flex; align-items: center; float: left;width:50%;")
           p(style="padding: 0px; text-align: center; margin: 0;") Key concept here is <strong>Personal Identifiable Information (PII)</strong>
-        img.ui.small.image.right.floated(src='/images/avatar-pic.png' style="float: right")
+        img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png' style="float: right")
     .div(style='margin-top:20px;')
       button.ui.medium.button.left.floated(onclick="location.href='/identity_learn_page1';") 
         i.arrow.left.icon 
@@ -40,6 +40,16 @@ block content
 
 
 block scripts
+  script.
+    document.addEventListener('DOMContentLoaded', function() {
+      const dartieImg = document.getElementById('dart_image1');
+      const character = localStorage.getItem('character');
+
+      if (character) {
+        dartieImg.src = "/profile_pictures/" + character;
+      }
+    }
+    );
   script.
     var voiceoverMappings = {
       '.showLearnSectionButton': {

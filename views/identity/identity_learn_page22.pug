@@ -52,7 +52,7 @@ block content
         .ui.one.column.centered.grid(style="margin: 50px")
             .ui.large.pointing.below.circular.label(style="float: left;")
                 p(style="padding: 10px") These are the preventative measures you can take before having contact with scammers. Already doing all these? You are protecting yourself pretty well!
-            img.ui.small.image.right.floated(src='/images/avatar-pic.png' style="float: right")
+            img#dart_image2.ui.small.image.right.floated(src='/profile_pictures/transparent.png' style="float: right")
     .div(style='margin-top:20px;')
       button.ui.medium.button.left.floated(onclick="location.href='/identity_learn_page21';") 
         i.arrow.left.icon 
@@ -63,6 +63,16 @@ block content
         i.arrow.right.icon
 
 block scripts
+  script.
+    document.addEventListener('DOMContentLoaded', function() {
+      const dartieImg = document.getElementById('dart_image2');
+      const character = localStorage.getItem('character');
+
+      if (character) {
+        dartieImg.src = "/profile_pictures/" + character;
+      }
+    }
+    );
   script.
     var voiceoverMappings = {
       '.showLearnSectionButton': {

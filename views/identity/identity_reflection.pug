@@ -7,7 +7,7 @@ block content
       img.ui.medium.image(src='/images/reflection_progress.png' style='margin-left: auto; margin-right: auto;width: 65%;')
     #chatModal.ui.divider(style="background-color: white;")
       .ui.large.header(style="background-color: grey; color: white;")
-        img.ui.circular.image(src='/images/avatar-pic.jpg' style='margin: 25px')
+        img#dart_image1.ui.circular.image(src='/profile_pictures/transparent.png' style='margin: 25px')
         | Chat with Intrepid
       .content(style="background-color: #dbdbdb; display: block")
         .div(style='overflow: hidden; float: left; background-color: #dbdbdb')
@@ -15,7 +15,7 @@ block content
           br
           .ui.grid
             .three.wide.column
-              img.ui.tiny.circular.image(src='/images/avatar-pic.jpg' style='float: left; margin-bottom: 25px; margin-left: 10px; display: block')
+              img#dart_image2.ui.tiny.circular.image(src='/profile_pictures/transparent.png' style='float: left; margin-bottom: 25px; margin-left: 10px; display: block')
             .ten.wide.column
               .ui.large.blue.left.pointing.label(style='float: right')
                 p Congratulations Sam! You have completed all the content for identity theft! Do you feel ready to protect yourself in the real world? Do you think you are able to help your families and friends from the scams?
@@ -23,6 +23,25 @@ block content
     button.btn(style="margin-top: 10px; background-color: green; color: white; font-size: 24px; padding: 10px 20px; border: none; border-radius: 5px; float: right; clear: both" onclick="location.href='/'; localStorage.setItem('progress', 100);") Finish
  
 block scripts
+  script.
+    document.addEventListener('DOMContentLoaded', function() {
+      const dartieImg = document.getElementById('dart_image1');
+      const character = localStorage.getItem('character');
+
+      if (character) {
+        dartieImg.src = "/profile_pictures/" + character;
+      }
+    }
+    );
+    document.addEventListener('DOMContentLoaded', function() {
+      const dartieImg = document.getElementById('dart_image2');
+      const character = localStorage.getItem('character');
+
+      if (character) {
+        dartieImg.src = "/profile_pictures/" + character;
+      }
+    }
+    );
   script.
     var voiceoverMappings = {
       '.showLearnSectionButton': {

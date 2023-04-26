@@ -23,7 +23,7 @@ block content
             p(style="padding-top: 50px") Do you need any clarifications?
             .ui.tiny.button(onclick="document.getElementById('avatar').style.display='none'") No
             .ui.tiny.button(onclick="showChatModal()") Yes
-          img.ui.small.image.right.floated(src='/images/avatar-pic.png')
+          img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
         br
         h3 Confidence Rating:  
         form.ui.form(style="width: 100%", action='/postIdentityTheftModOneConfidenceRating', method='POST')
@@ -58,11 +58,11 @@ block content
   #chatModal.ui.modal
     i.close.icon
     .ui.large.header(style="background-color: grey; color: white;")
-      img.ui.circular.image(src='/images/avatar-pic.jpg' style='margin: 25px')
+      img#dart_image2.ui.circular.image(src='/profile_pictures/transparent.png' style='margin: 25px')
       | Chat with Intrepid
     .content(style="background-color: #d3d3d3; display: block")
       .div(style='overflow: hidden; float: left')
-        img.ui.tiny.circular.image(src='/images/avatar-pic.jpg' style='float: left; margin-bottom: 25px; display: block')
+        img#dart_image3.ui.tiny.circular.image(src='/profile_pictures/transparent.png' style='float: left; margin-bottom: 25px; display: block')
         .ui.large.left.pointing.label(style='float: left')
           p Hi User! Welcome to the Chat! I am so happy you're here! 
             | You requested clarification. Luckily for you, in here, you can ask any questions you have about the material covered.
@@ -90,6 +90,34 @@ block content
         | We can start with this.
 
 block scripts
+  script.
+    document.addEventListener('DOMContentLoaded', function() {
+      const dartieImg = document.getElementById('dart_image1');
+      const character = localStorage.getItem('character');
+
+      if (character) {
+        dartieImg.src = "/profile_pictures/" + character;
+      }
+    }
+    );
+    document.addEventListener('DOMContentLoaded', function() {
+      const dartieImg = document.getElementById('dart_image2');
+      const character = localStorage.getItem('character');
+
+      if (character) {
+        dartieImg.src = "/profile_pictures/" + character;
+      }
+    }
+    );
+    document.addEventListener('DOMContentLoaded', function() {
+      const dartieImg = document.getElementById('dart_image3');
+      const character = localStorage.getItem('character');
+
+      if (character) {
+        dartieImg.src = "/profile_pictures/" + character;
+      }
+    }
+    );
   script.
     
     function showChatModal(){

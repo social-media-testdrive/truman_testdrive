@@ -1,5 +1,6 @@
 #helpModal.ui.modal
   i.close.icon
+  
   img#dartie-image1.ui.small.image.right.floated(src='/images/Dartie.png' style="float: left")
   h1#question(style="margin: 10px") What can I help you with?
   .ui.grid.centered(style="clear: both")
@@ -144,7 +145,15 @@
       button#help.ui.button.black(onclick="showHelpModal()") Help
 
 script.
+  document.addEventListener('DOMContentLoaded', function() {
+    const dartieImg = document.getElementById('dartie-image1');
+    const character = localStorage.getItem('character');
 
+    if (character) {
+      dartieImg.src = "/profile_pictures/" + character;
+    }
+  });
+  
   function showYes(){
     var hid = document.getElementById("understand");
     hid.style.visibility = "visible";

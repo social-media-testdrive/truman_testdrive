@@ -23,7 +23,7 @@ block content
             br
             br
             | Let’s look into this one.
-        img.ui.small.image.right.floated(src='/images/avatar-pic.png' style="float: right")
+        img#dart_image2.ui.small.image.right.floated(src='/profile_pictures/transparent.png' style="float: right")
       h3 Example 2 : Claim that they know you via email 
       img.ui.centered.image(src='/images/tricks_bruce.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:40px;margin-bottom: 0px;")
       ul 
@@ -35,7 +35,7 @@ block content
       #avatar.ui.one.column.centered.grid(style="margin: 50px")
         .ui.large.right.pointing.circular.label(style="width: 65%;display: flex; align-items: center; float: left;")
           p(style='padding: 20px;') Safe emails will typically identify your name as the recipient; Safe emails will never send you a link to update your personal information or payment information.
-        img.ui.small.image.right.floated(src='/images/avatar-pic.png' style="float: right")
+        img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png' style="float: right")
 
     .div(style='margin-top:20px;')
       button.ui.medium.button.left.floated(onclick="location.href='/identity_tricks_3';") 
@@ -49,6 +49,25 @@ block content
 
 
 block scripts
+  script.
+    document.addEventListener('DOMContentLoaded', function() {
+      const dartieImg = document.getElementById('dart_image2');
+      const character = localStorage.getItem('character');
+
+      if (character) {
+        dartieImg.src = "/profile_pictures/" + character;
+      }
+    }
+    );
+    document.addEventListener('DOMContentLoaded', function() {
+      const dartieImg = document.getElementById('dart_image1');
+      const character = localStorage.getItem('character');
+
+      if (character) {
+        dartieImg.src = "/profile_pictures/" + character;
+      }
+    }
+    );
   script.
     var voiceoverMappings = {
       '.showLearnSectionButton': {
