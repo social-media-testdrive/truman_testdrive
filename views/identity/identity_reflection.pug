@@ -8,7 +8,7 @@ block content
     #chatModal.ui.divider(style="background-color: white;")
       .ui.large.header(style="background-color: grey; color: white;")
         img#dart_image1.ui.circular.image(src='/profile_pictures/transparent.png' style='margin: 25px')
-        | Chat with Intrepid
+        span#characterName Chat with Us
       .content(style="background-color: #dbdbdb; display: block")
         .div(style='overflow: hidden; float: left; background-color: #dbdbdb')
           br
@@ -24,12 +24,38 @@ block content
  
 block scripts
   script.
+      // Retrieve character name from local storage
+      let characterName = localStorage.getItem('character');
+      
+      // If a character name is found, update the h1 element
+      if (characterName) {
+        const characterNameElement = document.getElementById('characterName');
+        if (characterName == "Dartie_Happy_3.png"){
+          characterName ="Dartie";
+        }
+       if (characterName == "Daring_PT_Determined.png"){
+          characterName ="Daring";
+        }
+       if (characterName == "Intrepid_PT_Determined.png"){
+          characterName ="Intrepid";
+        }
+       if (characterName == "Valiant_PT_Determined.png"){
+          characterName ="Valiant";
+        }
+       if (characterName == "transparent.png"){
+          characterName ="Us";
+        }
+        characterNameElement.textContent = 'Chat with ' + characterName;
+      }
+  script.
     document.addEventListener('DOMContentLoaded', function() {
       const dartieImg = document.getElementById('dart_image1');
       const character = localStorage.getItem('character');
 
       if (character) {
-        dartieImg.src = "/profile_pictures/" + character;
+        const newCharacter = character.replace('.png', '1.png');
+
+        dartieImg.src = "/profile_pictures/" + newCharacter;
       }
     }
     );
