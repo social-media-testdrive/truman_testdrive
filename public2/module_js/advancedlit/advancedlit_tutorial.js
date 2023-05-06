@@ -148,7 +148,7 @@ function startIntro(enableDataCollection) {
         'showStepNumbers': false,
         'showBullets': false,
         'doneLabel': 'Listo &#10003',
-        'nextLabel': 'Seguir &rarr;', 
+        'nextLabel': 'Siguiente &rarr;', 
         'prevLabel': '&larr; Volver',
         'skipLabel': 'Suprimir',
         'hintButtonLabel': 'Entiendo',
@@ -297,7 +297,7 @@ function startSecondIntro(enableDataCollection) {
         'showBullets': false,
         'scrollToElement': true,
         'doneLabel': 'Listo &#10003',
-        'nextLabel': 'Seguir &rarr;', 
+        'nextLabel': 'Siguiente &rarr;', 
         'prevLabel': '&larr; Volver',
         'skipLabel': 'Suprimir',
         'hintButtonLabel': 'Entiendo',
@@ -437,7 +437,7 @@ function startThirdIntro(enableDataCollection) {
         'showBullets': false,
         'scrollToElement': true,
         'doneLabel': 'Listo &#10003',
-        'nextLabel': 'Seguir &rarr;', 
+        'nextLabel': 'Siguiente &rarr;', 
         'prevLabel': '&larr; Volver',
         'skipLabel': 'Suprimir'
     });
@@ -575,7 +575,7 @@ function startFourthIntro(enableDataCollection) {
         'showBullets': false,
         'scrollToElement': true,
         'doneLabel': 'Listo &#10003',
-        'nextLabel': 'Seguir &rarr;', 
+        'nextLabel': 'Siguiente &rarr;', 
         'prevLabel': '&larr; Volver',
         'skipLabel': 'Suprimir'
     });

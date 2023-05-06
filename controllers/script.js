@@ -8,8 +8,6 @@ const _ = require('lodash');
  * Get the notification timestamps for the habits module
  */
 exports.getNotificationTimes = (req, res) => {
-
-    console.log('noti mod id = ' + req.params.modId);
     Script.find()
         .where('module').equals('habits-esp')
         .where('type').equals('notification')
@@ -591,7 +589,7 @@ function _postUpdateUniqueFeedAction(req, user) {
         case 'accounts':
             userAction = user.accountsAction;
             break;
-        case 'habits':
+        case 'habits' || 'habits-esp':
             userAction = user.habitsAction;
             break;
         case 'privacy':

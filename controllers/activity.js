@@ -98,7 +98,7 @@ exports.postActivityData = (req, res, next) => {
             }
 
             // Assign habitsTimerArray if the module is habits
-            if (module === "habits") {
+            if (module === "habits" || module === "habits-esp") {
                 activityData.habitsTimer = user.habitsTimer;
             }
 
@@ -129,7 +129,7 @@ exports.postActivityData = (req, res, next) => {
 
             // Get actions made in habits module only if current module is habits
             // Variable will become the value for activityData.habitsAction
-            if (module === "habits") {
+            if (module === "habits" || module === "habits-esp") {
                 activityData.habitsAction = getfilterObjects(user.habitsAction, ['subdirectory1', 'actionType', 'setValue', 'absoluteTimestamp'], module, 'subdirectory2');
             }
 

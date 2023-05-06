@@ -5,7 +5,9 @@ function addHumanizedTimeToPost() {
     
     date_formats = {
         past: [
-          { ceiling: 60, text: "Hacee $seconds segundos" },
+          { ceiling: 2, text: "Hace $seconds segundo" },
+          { ceiling: 60, text: "Hace $seconds segundos" },
+          { ceiling: 120, text: "Hace $minutes minuto" },
           { ceiling: 3600, text: "Hace $minutes minutos" },
           { ceiling: 86400, text: "Hace $hours horas" },
           { ceiling: 2629744, text: "Hace $days días" },
@@ -13,7 +15,9 @@ function addHumanizedTimeToPost() {
           { ceiling: null, text: "Hace $years años" }      
         ],
         future: [
+          { ceiling: 2, text: "En $seconds segundo" },
           { ceiling: 60, text: "En $seconds segundos" },
+          { ceiling: 120, text: "En $minutes minuto" },
           { ceiling: 3600, text: "En $minutes minutos" },
           { ceiling: 86400, text: "En $hours horas" },
           { ceiling: 2629744, text: "En $days días" },
@@ -330,7 +334,7 @@ function flagComment(e) {
         `<div class='comment' style='background-color:black;color:white;'>
       <h5 class='ui inverted header'>
         <span>
-          The admins will review this comment further. We are sorry you had this experience.
+        Los administradores de TestDrive revisaran este comentario pronto. Lamentamos que hayas tenido esta experiencia.
         </span>
       </h5>
     </div>`);

@@ -15,7 +15,7 @@ function startIntro(enableDataCollection) {
         'showBullets': false,
         'scrollToElement': true,
         'doneLabel': 'Listo &#10003',
-        'nextLabel': 'Seguir &rarr;', 
+        'nextLabel': 'Siguiente &rarr;', 
         'prevLabel': '&larr; Volver',
         'skipLabel': 'Suprimir',
         'hintButtonLabel': 'Entiendo',

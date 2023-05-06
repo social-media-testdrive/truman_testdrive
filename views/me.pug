@@ -12,7 +12,7 @@ block content
             img(src=user.gravatar(60))
         .content
           a.header= user.profile.name || user.email || user.id
-          .meta="@Guest"
+          .meta="@Invitado/a"
           .description=user.profile.bio
           .description
             if user.profile.location

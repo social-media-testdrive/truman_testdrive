@@ -38,7 +38,7 @@ function startHints() {
   var hints = introJs().setOptions({
     hints: hintsList,
     'doneLabel': 'Listo &#10003',
-    'nextLabel': 'Seguir &rarr;', 
+    'nextLabel': 'Siguiente &rarr;', 
     'prevLabel': '&larr; Volver',
     'hintButtonLabel': 'Entiendo',
   });
@@ -94,7 +94,7 @@ function startIntro() {
     'hidePrev': true, 'hideNext': true, 'exitOnOverlayClick': false,
     'showStepNumbers': false, 'showBullets': false, 'scrollToElement': true,
     'doneLabel': 'Listo &#10003',
-    'nextLabel': 'Seguir &rarr;', 
+    'nextLabel': 'Siguiente &rarr;', 
     'prevLabel': '&larr; Volver',
     'hintButtonLabel': 'Entiendo',
   });

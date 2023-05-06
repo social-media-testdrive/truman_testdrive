@@ -101,17 +101,17 @@ function showScoreBanner(score, totalQuestions) {
     // Do not prompt student to retake quiz if they have answered all the questions correctly,
     // or they have reached the maximum number of attempts.
     let text = "";
-    text += (score >= 3) ? "Good job! " : "";
-    text += "You answered <span class = 'inline bold'>" + score + "</span> out of <span class = 'inline bold'>" + totalQuestions + "</span>  questions correctly on this quiz attempt.";
+    text += (score >= 3) ? "¡Buen trabajo! " : "";
+    text += "En este intento contestaste <span class = 'inline bold'>" + score + "</span> de <span class = 'inline bold'>" + totalQuestions + "</span> preguntas correctamente.";
     text += (attemptNumber <= maxAttempt && score !== totalQuestions) ?
-        "</br>You can review and change your answers, and resubmit the quiz (up to a maximum of 3 times) to recheck your answers. </br>" :
+        "</br>Puedes revisar y cambiar tus respuestas, luego volver a someter el examen un máximo de 3 veces. </br>" :
         (score === totalQuestions) ?
-        "</br> You are ready to check the explanations for each of the questions! </br>" :
+        "</br> ¡Las explicaciones están listas para que las revises! </br>" :
         "</br>";
 
     // Append the scores for every attempt to the score banner.
     attemptScoresArray.forEach(function(score, i) {
-        text += "</br> <span class = 'inline bold'> Attempt " + (i + 1) + ": &nbsp;" + score + " </span> out of <span class = 'inline bold'>" + totalQuestions + "</span> questions answered correctly"
+        text += "</br> <span class = 'inline bold'> Intento " + (i + 1) + ": &nbsp;" + score + " </span> de <span class = 'inline bold'>" + totalQuestions + "</span> preguntas contestadas correctamente"
     });
 
     if ($('.scoreBanner').is(':visible')) {
@@ -229,7 +229,7 @@ $(window).on("load", function() {
                 $(incorrectIconElement).addClass('hidden')
 
                 $(contentElement).addClass("green");
-                contentElement.innerHTML = (letterAnswer !== undefined) ? letterAnswer + " is correct." : "";
+                contentElement.innerHTML = (letterAnswer !== undefined) ? letterAnswer + " es correcto." : "";
 
                 explanationElement.innerHTML = "";
             } else {
@@ -238,10 +238,10 @@ $(window).on("load", function() {
 
                 $(contentElement).addClass("red");
                 contentElement.innerHTML = (letterAnswer !== undefined) ?
-                    letterAnswer + " is incorrect." :
-                    "Please choose an answer.";
+                    letterAnswer + " es incorrecto." :
+                    "Por favor elige una respuesta.";
 
-                explanationElement.innerHTML = (attemptNumber < maxAttempt) ? "Would you like to try again? Please re-select your answer above." : "You can view the correct answers and explanations by clicking the blue button at the bottom of the page.";
+                explanationElement.innerHTML = (attemptNumber < maxAttempt) ? "¿Quieres volverlo a intentar? Por favor vuelve a seleccionar tu respuesta." : "Puedes ver las respuestas correctas y las explicaciones haciendo clic en el botón azul en la parte de abajo de esta página.";
             }
             $(this).removeClass('hidden');
         })
@@ -249,7 +249,7 @@ $(window).on("load", function() {
         //  NEXT ATTEMPT
         attemptNumber++;
         // Change text of "Skip Quiz" button to "Exit Quiz" when student has attempted the quiz
-        $('.skipButtonText').html("Exit Quiz");
+        $('.skipButtonText').html("Salir del Preguntas");
 
         // Display the score banner
         showScoreBanner(numCorrect, numTotal);

@@ -3,7 +3,7 @@ const nextPageURL = 'sim';
 const stepsList = [
   {
     element: '#step1',
-    intro: `Dale clic en "Seguir" para empezar.`,
+    intro: `Dale clic en "Siguiente" para empezar.`,
     position: 'left',
     scrollTo: 'tooltip',
     // audioFile: ['']

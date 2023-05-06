@@ -21,9 +21,9 @@ const hintsList = [
   },
   {
     element: '#hint3',
-    hint: `Algunos señales que indican que necesitas tomarte un descanso de 
+    hint: `Algunas señales que indican que necesitas tomarte un descanso de 
     las redes sociales son: No pasar tanto tiempo con tu familia o amigos, sentirte 
-    triste, ansioso o cansado, y tener dificultades para estar al día con tus deberes.`,
+    triste, ansioso o cansado, y tener dificultades para estar al día con tus tareas.`,
     hintPosition: "middle-middle",
     hintButtonLabel: 'Entiendo',
     // audioFile: ['CUSML.10.4.12.mp3']
