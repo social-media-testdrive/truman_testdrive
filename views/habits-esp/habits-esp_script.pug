@@ -330,46 +330,51 @@ block content
           if val.comments.length > 0
             .content
               .ui.comments
+                - var displayedComments = []
                 each comment in val.comments
-                  //-IF this comment is USER made, do this
-                  if comment.new_comment
-                    -console.log("New COMMENT AREA");
-                    .comment(commentID=comment.new_comment_id)
-                      a.avatar.image(href='/me/'+mod)
-                        if user.profile.picture
-                          img(src=cdn+'/profile_pictures/'+user.profile.picture)
-                        else
-                          img(src=user.gravatar(60))
-                      .content
-                        a.author(href='/me/'+mod)=user.profile.name || user.username || user.id
-                        .metadata
-                          span.date.sim=(comment.time)
-                        .text=comment.body
-                  //- Else this is a normal comment from the script
-                  else
-                    .comment(commentID=comment.id)
-                      a.avatar.image.actorLink(href='/user/'+comment.actor.username)
-                        img(src='/images/picture.svg', data-src=cdn+'/profile_pictures/'+comment.actor.profile.picture)
-                      .content
-                        a.author.actorLink(href='/user/'+comment.actor.username)=comment.actor.profile.name
-                        .metadata
-                          span.date.sim=(Date.now() + comment.time)
-                          .rating
-                            if comment.liked
-                              i.red.heart.icon
-                              span=comment.likes
-                              |  Like 
-                            else
-                              i.heart.icon
-                              span.num=comment.likes
-                              |  Like
-                        .text=comment.body
-                        .actions
-                          if comment.liked
-                            a.red.like.comment Like
+                  // Check if comment.body is not in displayedComments
+                  if !displayedComments.includes(comment.body + comment.time)
+                    //-IF this comment is USER made, do this
+                    if comment.new_comment
+                      -console.log("New COMMENT AREA");
+                      .comment(commentID=comment.new_comment_id)
+                        a.avatar.image(href='/me/'+mod)
+                          if user.profile.picture
+                            img(src=cdn+'/profile_pictures/'+user.profile.picture)
                           else
-                            a.like.comment Like
-                          a.flag.comment Reportar
+                            img(src=user.gravatar(60))
+                        .content
+                          a.author(href='/me/'+mod)=user.profile.name || user.username || user.id
+                          .metadata
+                            span.date.sim=(comment.time)
+                          .text=comment.body
+                    //- Else this is a normal comment from the script
+                    else
+                      .comment(commentID=comment.id)
+                        a.avatar.image.actorLink(href='/user/'+comment.actor.username)
+                          img(src='/images/picture.svg', data-src=cdn+'/profile_pictures/'+comment.actor.profile.picture)
+                        .content
+                          a.author.actorLink(href='/user/'+comment.actor.username)=comment.actor.profile.name
+                          .metadata
+                            span.date.sim=(Date.now() + comment.time)
+                            .rating
+                              if comment.liked
+                                i.red.heart.icon
+                                span=comment.likes
+                                |  Like 
+                              else
+                                i.heart.icon
+                                span.num=comment.likes
+                                |  Like
+                          .text=comment.body
+                          .actions
+                            if comment.liked
+                              a.red.like.comment Like
+                            else
+                              a.like.comment Like
+                            a.flag.comment Reportar
+                    //- Add comment.body to displayedComments
+                    - displayedComments.push(comment.body + comment.time)
           .extra.content
             if user.comment_prompt == "yes"
               .description="How is "+val.actor.profile.name+" Feeling?"
