@@ -1,13 +1,13 @@
 //- New Post Modal  
 .ui.small.long.post.modal.newPostModal 
   i.close.icon  
-  .header Add a New Post  
+  .header Agregar un nuevo post
   .content  
     form#postform.ui.feed.form(action='/post/new', method='POST')  
       input(type='hidden', name='_csrf', value=csrfToken) 
       input(type='hidden', name='module', value=mod)  
       .field  
-        textarea(rows='3',placeholder='What do you want to share?',name='body')
+        textarea(rows='3',placeholder='¿Qué quieres compartir?',name='body')
       .ui.segment
           .three.fields
             .field

@@ -249,7 +249,7 @@ $(window).on("load", function() {
         //  NEXT ATTEMPT
         attemptNumber++;
         // Change text of "Skip Quiz" button to "Exit Quiz" when student has attempted the quiz
-        $('.skipButtonText').html("Salir del Preguntas");
+        $('.skipButtonText').html("Acabar con Preguntas");
 
         // Display the score banner
         showScoreBanner(numCorrect, numTotal);
