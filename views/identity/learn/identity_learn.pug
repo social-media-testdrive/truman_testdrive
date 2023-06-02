@@ -1,4 +1,4 @@
-extends ../ui_layout
+extends ../../ui_layout
 
 block content
   .ui.text.container.addBottomMargin
@@ -14,6 +14,25 @@ block content
         .content
             | Concepts & Consequences
       p Submodule 1
+      .row
+        ul.progressList
+          li.progressStep#headerStep1
+            h4.number 1
+            h4.checkmark &#10003
+            span learn
+          li.progressStep#headerStep2
+            h4.number 2
+            h4.checkmark &#10003
+            span practice
+          li.progressStep#headerStep3
+            h4.number 3
+            h4.checkmark &#10003
+            span explore
+          li.progressStep#headerStep4
+            h4.number 4
+            h4.checkmark &#10003
+            span reflect
+
     
     button.btn(style="background-color: green; color: white; font-size: 24px; padding: 10px 20px; border: none; border-radius: 5px; float: right;" onclick="location.href='/identity_learn_page1';") Start Submodule 1
 
