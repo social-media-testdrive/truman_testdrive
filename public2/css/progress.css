@@ -1,0 +1,76 @@
+.progress-wrapper {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .progress-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+  
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
+  }
+  
+  .progress-item::before {
+    position: absolute;
+    content: "";
+    border-bottom: 4px solid #ccc;
+    width: 100%;
+    top: 20px;
+    left: -50%;
+    z-index: 2;
+  }
+  
+  .progress-item::after {
+    position: absolute;
+    content: "";
+    border-bottom: 4px solid #ccc;
+    width: 100%;
+    top: 20px;
+    left: 50%;
+    z-index: 2;
+  }
+  
+  .progress-item .step-counter {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ccc;
+    margin-bottom: 6px;
+    
+  }
+  
+  .progress-item.active {
+    font-weight: bold;
+  }
+  
+  .progress-item.completed .step-counter {
+    background-color: blue;
+  }
+  
+  .progress-item.completed::after {
+    position: absolute;
+    content: "";
+    border-bottom: 4px solid blue;
+    width: 100%;
+    top: 20px;
+    left: 50%;
+    z-index: 3;
+  }
+  
+  .progress-item:first-child::before {
+    content: none;
+  }
+  .progress-item:last-child::after {
+    content: none;
+  }
