@@ -221,7 +221,7 @@ app.get('/x', (req, res) => {
 passport.use(new GoogleStrategy({
     clientID:"896039841801-tdh0a2hsl53671t5ruirn1kls9cob9aa.apps.googleusercontent.com", // Your Credentials here.
     clientSecret:"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", // Your Credentials here.
-    callbackURL: "https://3.91.23.188.nip.io/auth/callback", // Your base URL + path.
+    callbackURL: "https://3.91.23.188.nip.io/temporary-link/auth/callback", // Your base URL + path.
     passReqToCallback:true
   },
   function(request, accessToken, refreshToken, profile, done) {
@@ -250,8 +250,8 @@ app.get('/auth/callback/success', (req, res, next) => {
         res.redirect('/auth/callback/failure');
     } else {
         const user = new User({
-            password: "thinkblue",
             username: req.user.email,
+            password: "thinkblue",
             group: 'no:no',
             active: true,
             ui: 'no', //ui or no
@@ -1729,6 +1729,7 @@ if (isResearchVersion) {
                 }
                 console.log("password changed")
             });
+            return res.redirect('/login');
         })
     });
 

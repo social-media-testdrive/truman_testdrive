@@ -56,7 +56,7 @@ passport.use('student-local', new LocalStrategy({
   passwordField: 'password',
   passReqToCallback: true
 }, (req, username, password, done) => {
-  User.findOne({ username: username, isStudent: true }, async(err, user) => {
+  User.findOne({ username: username }, async(err, user) => {
       if (err) {
           return done(err);
       }
