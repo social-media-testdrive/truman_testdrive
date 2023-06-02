@@ -20,6 +20,8 @@ const util = require('util');
 const cookieSession = require('cookie-session');
 fs.readFileAsync = util.promisify(fs.readFile);
 const User = require('./models/User');
+
+
 /*
  * Dependencies that were listed but don't appear to be used
  */
@@ -387,6 +389,13 @@ const enableShareActivityData = process.env.enableShareActivityData === 'true';
 const enableTeacherDashboard = process.env.enableTeacherDashboard === 'true';
 const enableLearnerDashboard = process.env.enableLearnerDashboard === 'true';
 
+function generateUUID() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random() * 16 | 0,
+            v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
+}
 
 /**create one time link */
 
@@ -394,51 +403,68 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //get from database or something like it
-const allowedUUIDs = ['d5407341-3a54-4e30-acf1-09d2174b3e23',
-              '7811c8bf-ddf7-4439-a193-93dca12a0656',  
-              'cef82390-9c0a-43e9-93e8-1a80aa5eced5',
-              '86520485-9d09-48ba-b65c-9bab0ff2e3a2'
-            ];
+const allowedUUIDs = [];
+
 
 //test your UUID (access token)
 function checkSingleAccess(requestUUID) {
-  const index = allowedUUIDs.indexOf(requestUUID);
+  const uuids = Object.values(allowedUUIDs);
+  console.log(uuids)
+  const index = uuids.indexOf(requestUUID);
   const UUIDExists = index > -1;
-
+  let deletedEmail = UUIDExists;
+  
   if(UUIDExists){
     //remove from array, or your database
-    allowedUUIDs.splice(index, 1);
+    //allowedUUIDs.splice(index, 1);
+    for (let email in allowedUUIDs) {
+        if (allowedUUIDs[email] === requestUUID) {
+          
+          delete allowedUUIDs[email];
+          deletedEmail = email;
+          break;
+        }
+      }
   }
+  //console.log(deletedEmail)
+  //console.log(UUIDExists);
 
-  console.log(UUIDExists);
-
-  return UUIDExists;
+  return deletedEmail;
 }
 
+/**
+     let quizData;
+    const data = await fs.readFileAsync(`${__dirname}/public2/json/quizSectionData.json`);
+    quizData = JSON.parse(data.toString())[req.params.modId];
+
+    res.render('base_quiz.pug', {
+        title: 'Quiz',
+        quizData,
+    });
+
+ */
 //set a path parameter with :uuid
 app.use('/temporary-link/:uuid', function(req, res, next) {
   //get your path parameter
   const requestUUID = req.params.uuid;
-
   //test if allowed
-  if(checkSingleAccess(requestUUID)){
+  const email = checkSingleAccess(requestUUID)
+  if(email){
     //res.send(`UUID ${requestUUID} allowed` );
     res.render('changePassword.pug', {
-        title: 'changePassword'
+        title: 'changePassword',
+        email,
     });
+
   }else{
     //if not build an error
-    const errorResponse = `404`;
+    const errorResponse = `404. This temporary link is no longer avaliable`;
     res.status(403, errorResponse);
     res.send(errorResponse);
   }
 });
 
-
-
-
 module.exports = app;
-
 
 /*
  * Primary app routes.
@@ -536,7 +562,7 @@ app.get('/facilitatorLogin', setHttpResponseHeaders, csrfProtection, addCsrf, fu
     });
 });
 
-//forgoy password
+//forgot password
 app.get('/forgotPassword', setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
     res.render('forgotPassword.pug', {
         title: 'forgotPassword'
@@ -1660,11 +1686,68 @@ app.post('/postIdentityTheftModThreeConfidenceRating', check, setHttpResponseHea
 
 app.post('/postIdentityTheftPostQuizScore', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityTheftPostQuizScore);
 
+/**nodemailer */
+const nodemailer = require("nodemailer");
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user:"DartLehigh@gmail.com",
+    pass: "cmtkjdyfebzhddbw"
+  }
+});
+
+/**end of nodemailer */
 /*
  * Logins (only used on research site)
  */
 if (isResearchVersion) {
-    app.post('/forgotPassword', check, setHttpResponseHeaders, csrfProtection,userController.forgotPassword);
+    app.post('/forgotPassword', check, setHttpResponseHeaders, csrfProtection, function(req, res) {
+        const new_token = generateUUID()
+        transporter.sendMail({
+            from: 'DartLehigh@gmail.com',
+            to: req.body.username,
+            subject: "hello here is the link for resetting password",
+            text: "please enter the following link to reset your password: https://3.91.23.188.nip.io/temporary-link/"+new_token,
+          });
+          allowedUUIDs[req.body.username] = new_token;
+          console.log(allowedUUIDs)
+          
+          
+          return res.redirect('/studentLogin');
+    });
+    app.post('/changePassword', check, setHttpResponseHeaders, function(req, res) {
+        console.log("password changing")
+        req.assert('password', 'Password cannot be blank').notEmpty();
+        console.log(req.body.password)
+        console.log(req.body.username)
+        User.findOne({ username: req.body.username }, (err, user) => {
+            user.password = req.body.password;
+            
+            user.save((err) => {
+                if (err) {
+                    return next(err);
+                }
+                console.log("password changed")
+            });
+        })
+    });
+
+            /**
+                req.logIn(user, (err) => {
+                    if (err) {
+                        return next(err);
+                    }
+                    var temp = req.session.passport; // {user: 1}
+                    req.session.regenerate(function(err) {
+                        //req.session.passport is now undefined
+                        req.session.passport = temp;
+                        req.session.save(function(err) {
+                            return res.redirect('/selection');
+                        });
+                    });
+    
+                });
+             */
     app.get('/login', csrfProtection, setHttpResponseHeaders, addCsrf, userController.getLogin);
     app.get('/classLogin/:accessCode', csrfProtection, setHttpResponseHeaders, addCsrf, userController.getClassLogin);
     app.post('/instructorLogin', check, setHttpResponseHeaders, csrfProtection, userController.postInstructorLogin);

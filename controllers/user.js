@@ -4,17 +4,6 @@ const passport = require('passport');
 const fs = require('fs');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
-/**nodemailer */
-const nodemailer = require("nodemailer");
-var transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user:"DartLehigh@gmail.com",
-    pass: "cmtkjdyfebzhddbw"
-  }
-});
-
-/**end of nodemailer */
 // const Notification = require('../models/Notification.js');
 
 //create random id for guest accounts
@@ -27,21 +16,7 @@ function makeid(length) {
     }
     return result;
 }
-/**
- * Forgot password
- */
-exports.forgotPassword = (req, res) => {
-    //send passwordresetLink()
-    transporter.sendMail({
-        from: 'DartLehigh@gmail.com',
-        to: req.body.username,
-        subject: "hello here is the link for resetting password",
-        text: "please enter the following link to reset your password: http://localhost:3000/temporary-link/d5407341-3a54-4e30-acf1-09d2174b3e23"
-      });
-      return res.redirect('/studentLogin');
-        //console.log(req.body.username)
-    };
-    
+
 /**
  * GET /login
  * Login page.
@@ -431,16 +406,12 @@ exports.postChatbotConnect = (req, res, next) => {
     req.assert('password', 'Password cannot be blank').notEmpty();
     req.assert('username', 'Username cannot be blank').notEmpty();
     //req.sanitize('email').normalizeEmail({ remove_dots: false });
-
     const errors = req.validationErrors();
-
     if (errors) {
         req.flash('errors', errors);
         return res.redirect('/createStudent');
     }
-
     console.log(`Creating new student...`);
-
     const user = new User({
         username: req.body.username,
         password: req.body.password,
@@ -506,9 +477,7 @@ exports.logout = (req, res) => {
     req.session.regenerate(function() {
         res.redirect('/login');
     })
-
     //res.clearCookie("connect.sid");
-
 };
 
 /**
