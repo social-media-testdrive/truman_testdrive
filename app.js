@@ -43,16 +43,6 @@ passport.deserializeUser(function(user, done) {
     done(null, user);
 });
 
-passport.use(new GoogleStrategy({
-    clientID:"896039841801-tdh0a2hsl53671t5ruirn1kls9cob9aa.apps.googleusercontent.com", // Your Credentials here.
-    clientSecret:"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", // Your Credentials here.
-    callbackURL: "https://3.91.23.188.nip.io/auth/callback", // Your base URL + path.
-    passReqToCallback:true
-  },
-  function(request, accessToken, refreshToken, profile, done) {
-    return done(null, profile);
-  }
-));
 
 /*
 aws.config.update({
@@ -226,6 +216,18 @@ app.get('/x', (req, res) => {
 });
 
 // google Auth 
+passport.use(new GoogleStrategy({
+    clientID:"896039841801-tdh0a2hsl53671t5ruirn1kls9cob9aa.apps.googleusercontent.com", // Your Credentials here.
+    clientSecret:"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", // Your Credentials here.
+    callbackURL: "/auth/callback", // Your base URL + path.
+    passReqToCallback:true
+  },
+  function(request, accessToken, refreshToken, profile, done) {
+    return done(null, profile);
+  }
+));
+
+
 app.get('/auth', passport.authenticate('google', { 
     scope: ['email', 'profile']    
 }
