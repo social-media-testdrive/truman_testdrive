@@ -474,7 +474,8 @@ module.exports = app;
 function isValidModId(req, res, next) {
     const modIds = [
         "trolls",
-        "identity"
+        "identity",
+        "phishing"
     ]
 
     if (modIds.includes(req.params.modId)) {
@@ -543,18 +544,6 @@ app.get('/edit_profile', passportConfig.isAuthenticated, csrfProtection, setHttp
     });
 });
 
-
-// Render intro page (all modules)
-app.get('/intro/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
-        res.redirect('/');
-    } else {
-        res.render('base_intro.pug', {
-            title: 'Welcome'
-        });
-    }
-});
-
 // Render facilitator login page (all modules)
 app.get('/facilitatorLogin', setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
     res.render('facilitatorLogin.pug', {
@@ -568,6 +557,33 @@ app.get('/forgotPassword', setHttpResponseHeaders, csrfProtection, addCsrf, func
         title: 'forgotPassword'
     })
 })
+
+// ******************* Summer Render All Module Pages ****************************
+
+// Render intro page (all modules)
+// - For example for identity the route is: /intro/identity
+app.get('/intro/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    /* Renders the intro page for the module
+    The modules are in the *views* folder 
+    Then the intro page is in the module's *intro* folder
+    So for the identity module the path to the intro pug file is: identity/intro/identity_intro */
+    res.render(req.params.modId + '/intro/' + req.params.modId + '_intro', {
+        title: 'Intro'
+    });
+});
+
+// Render prequiz (all modules)
+app.get('/prequiz/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/prequiz/' + req.params.modId + '_prequiz', {
+        title: 'Prequiz'
+    });
+});
+
+app.get('/prequiz2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/prequiz/' + req.params.modId + '_prequiz', {
+        title: 'Prequiz'
+    });
+});
 
 // ******************* Render new identity theft pages ****************************
 app.get('/identity_new_page', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
@@ -592,16 +608,16 @@ app.get('/identity_new_page2', passportConfig.isAuthenticated, setHttpResponseHe
     }
 });
 
-app.get('/identity_home', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
-    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
-        res.redirect('/');
-    } else {
-        // use relative not absolute
-        res.render('identity/identity_home.pug', {
-            title: 'My New Page'
-        });
-    }
-});
+// app.get('/identity_home', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
+//     if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
+//         res.redirect('/');
+//     } else {
+//         // use relative not absolute
+//         res.render('identity/identity_home.pug', {
+//             title: 'My New Page'
+//         });
+//     }
+// });
 
 app.get('/identity_prequiz', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
     if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors

@@ -9,7 +9,7 @@ block content
     br
     .ui.four.stackable.link.cards(style="padding-bottom:4em;")
 
-        a.ui.card#theft-link(href=`/identity_home`)
+        a.ui.card#theft-link(href=`/intro/identity`)
           .image
             img(src='/images/identity-mod-pic.png' style='height:165px;')
           #theft-progress.ui.small.progress(style='margin:0;padding:0;' data-percent='33')
@@ -21,8 +21,14 @@ block content
             p(style="color: black;")  Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
           //- .ui.bottom.attached.progress
           //-   .bar
-        button#reset-progress(onclick="localStorage.setItem('progress', 0); localStorage.setItem('theft-path', '/identity_home'); location.reload();") Reset Progress
+        button#reset-progress(onclick="localStorage.setItem('progress', 0); localStorage.setItem('theft-path', 'intro/identity'); location.reload();") Reset Progress
 
+        a.ui.card(href=`/${path}/phishing`)
+          .image
+            img(src=cdn+'/phishing.png')
+          .content
+            .header="Scams and Phishing"
+            p(style="color: black;")  Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media. 
   script.
     let theftPath = localStorage.getItem('theft-path');
     console.log("theftPath is: " + theftPath);

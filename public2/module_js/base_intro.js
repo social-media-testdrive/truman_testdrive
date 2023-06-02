@@ -18,13 +18,6 @@ function startIntro(){
     })
   } else {
     const modNameNoDashes = pathArray[2].replace('-','');
-
-    // change page identity takes you to 
-    if(modNameNoDashes == "identity") {
-      window.location.href='/identity_home';
-    } else {
-      window.location.href='/start/' + pathArray[2];
-    }
   }
 };
 
