@@ -572,6 +572,13 @@ app.get('/intro/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders,
     });
 });
 
+app.get('/intro2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/intro/' + req.params.modId + '_intro2', {
+        title: 'Intro'
+    });
+});
+
+
 // Render prequiz (all modules) ******************************
 app.get('/prequiz/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
     res.render(req.params.modId + '/prequiz/' + req.params.modId + '_prequiz', {

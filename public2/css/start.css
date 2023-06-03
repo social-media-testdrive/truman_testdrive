@@ -7,6 +7,10 @@
     margin-left: 20px;
 }
 
+#badgesGrid .column .content {
+    /* background-color: red; */
+    text-align: center;
+}
 
 /* OLD CSS From Truman  Start Pages Below */
 /* 

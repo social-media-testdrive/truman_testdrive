@@ -44,125 +44,18 @@ block content
             .step-name Post-quiz
           .progress-item
             .step-counter 5
-            .step-name Reflect
-
-      p There are six amazing badges waiting for you to earn throughout this module!
-
-      //- semantic ui grid to organize the badges properly
-      .ui.grid  
-        .four.column.row
-          .column 
-            img(src='/badges/identity/mystery_badge.png')
-            p Challenge 
-              br
-              | Conqueror
-          .column
-            img(src='/badges/identity/mystery_badge2.png')
-            p Foundations 
-              br
-              | Achiever
-          .column
-            img(src='/badges/identity/mystery_badge2.png')
-            p Progress 
-              br
-              | Master
-          .column
-            img(src='/badges/identity/mystery_badge2.png')
-            p Champion of
-              br
-              | Completion
-        .four.column.row
-          .column
-          .column 
-            img(src='/badges/identity/mystery_badge3.png')
-            p Intrepid
-              br
-              | Investigator
-          .column
-            img(src='/badges/identity/mystery_badge4.png')
-            p Adventure
-              br
-              | Achiever
-          .column
-
-
-
-      //- .ui.grid
-      //-   .row
-      //-     .four.wide.column 
-      //-       .ui.fluid.card
-      //-         .content
-      //-           .header
-      //-             img(src='/badges/identity/mystery_badge.png')
-      //-             p 1. Pre-quiz
-      //-           .description
-      //-             | Complete the pre-quiz to earn this badge!
-      //-     .four.wide.column
-      //-       .ui.fluid.card
-      //-         .content
-      //-           .header
-      //-             img(src='/badges/identity/mystery_badge2.png')
-      //-             p 2. Learn
-      //-           .description
-      //-             | Complete the Learn section to earn this badge!
-      //-     .four.wide.column
-      //-       .ui.fluid.card
-      //-         .content
-      //-           .header
-      //-             img(src='/badges/identity/mystery_badge2.png')
-      //-             p 3. Explore
-      //-           .description
-      //-             | Complete the Explore section to earn this badge!
-      //-     .four.wide.column
-      //-       .ui.fluid.card
-      //-         .content
-      //-           .header
-      //-             img(src='/badges/identity/mystery_badge2.png')
-      //-             p 4. Post-quiz
-      //-           .description
-      //-             | Complete the post-quiz to earn this badge!
-      //-   .row
-      //-     .two.wide.column
-      //-       .ui.fluid.card
-      //-         .content
-      //-           .header
-      //-             img(src='/badges/identity/mystery_badge3.png')
-      //-             p 5. Reflect
-      //-           .description
-      //-             | Complete the Reflect section to earn this badge!
-      //-     .two.wide.column
-      //-       .ui.fluid.card
-      //-         .content
-      //-           .header
-      //-             img(src='/badges/identity/mystery_badge4.png')
-      //-             p 6. Chat
-      //-           .description
-      //-             | Complete the Chat section to earn this badge!
-
-    
+            .step-name Reflect    
       p Upon completion of the module, you will be knowledgeable and skilled in protecting yourself from scammers!
-
-      div.ui.grid(style="margin-bottom: 10px;")
-        div.six.wide.column
-          h2 Learning Materials
-        div.ten.wide.column.text-right
-          button.ui.button.gray Download Resources
-      p Before we start the lesson, would you like to start with a small challenge to help you better understand your current knowledge of the topic and earn your first badge? If you prefer not to take it, you can skip it and proceed directly to the lesson.
-      .ui.one.column.centered.grid#avatarGrid
-        .ui.large.right.pointing.circular.label#speechBubble
-          p#speechText Remember that you can take a break anytime and pick up where you left off when you return!
-        img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png' style="float: right")
-
     
     .div
-      button.ui.large.button.left.floated(onclick="location.href='/';") 
+      button.ui.large.basic.button.left.floated#backButton(onclick="location.href='/';") 
         i.arrow.left.icon 
         | Back
-      button.ui.large.button.left.floated(onclick="location.href='/identity_learn_page0';") Skip pre-quiz & continue to Learn
+      //- button.ui.large.button.left.floated(onclick="location.href='/identity_learn_page0';") Skip pre-quiz & continue to Learn
       //- button.circular.ui.icon.button.right.floated(onclick="showModal()")
       //-   i.wechat.icon
-      button.ui.large.green.button.right.floated(onclick="location.href='/prequiz/identity';")
-        | Take the pre-quiz
+      button.ui.large.blue.button.right.floated#nextButton(onclick="location.href='/intro2/identity';")
+        | Start
         i.arrow.right.icon
 
 block scripts
@@ -206,6 +99,7 @@ block styles
   link(rel='stylesheet', href='/css/start.css') 
   link(rel='stylesheet', href='/css/progress.css')  
   link(rel='stylesheet', href='/css/avatar.css')  
- 
+  link(rel='stylesheet', href='/css/nav_buttons.css') 
+
 
 

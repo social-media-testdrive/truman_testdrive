@@ -1,0 +1,32 @@
+#backButton {
+    border-radius: 20px !important;  
+    color: #495057 !important;
+    border: 1px solid #495057;
+    /* background-color: red; */
+    padding-left: 30px;
+    padding-right: 30px;
+    transition: transform 0.3s ease;
+}
+
+/* when hovering move back button to the left */
+#backButton:hover {
+    transform: translateX(-10px);
+}
+  
+
+#nextButton {
+    border-radius: 20px !important;  
+    /* color: #495057 !important;
+    border: 1px solid #495057; */
+    background-color: #2165AE !important;
+    color: white !important;
+    padding-left: 30px;
+    padding-right: 30px;
+    transition: transform 0.3s ease;
+}
+
+/* when hovering move start button to the right*/
+#nextButton:hover {
+    transform: translateX(10px);
+    border: 2px solid #00c3ff;
+}
