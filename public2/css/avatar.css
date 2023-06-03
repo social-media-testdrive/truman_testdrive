@@ -1,0 +1,16 @@
+#avatarGrid {
+    margin: 50px;
+}
+
+#speechBubble {
+    display: flex; 
+    align-items: center; 
+    float: left;
+    width:50%;
+}
+
+#speechText {
+    padding: 0px; 
+    text-align: center; 
+    margin: 0;
+}

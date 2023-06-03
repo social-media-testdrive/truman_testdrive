@@ -1,9 +1,18 @@
-.ui.warning.message {
-    display: none;
+.bubbleText {
+    background-color: white; 
+    border: 1px solid #2165AE;
+    padding: 8px; 
+    border-radius: 20px; 
+    display: inline-block; 
+    margin-left: 20px;
 }
 
 
-/* Learn section */
+/* OLD CSS From Truman  Start Pages Below */
+/* 
+.ui.warning.message {
+    display: none;
+}
 
 .segment.removePadding {
     padding: 0;
@@ -24,7 +33,7 @@
 }
 
 
-/* Key terms section */
+// Key terms section 
 
 .button.showKeyTermsButton {
     margin-top: 14px;
@@ -37,4 +46,4 @@
 
 .keyTermDefinition ul {
     font-weight: 400;
-}
+} */

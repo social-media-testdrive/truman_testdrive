@@ -9,16 +9,16 @@ block content
       h1.ui.header.huge(style="display: inline-block;")
         .content
           | Identity Theft
-      div(style="background-color: #EEEEEE; padding: 8px; border-radius: 20px; display: inline-block; margin-left: 20px;")
+      div.bubbleText
         | 100 learners today
-      div(style="background-color: #EEEEEE; padding: 8px; border-radius: 20px; display: inline-block; margin-left: 20px;")
+      div.bubbleText
         | #1 most popular module
       p(style="margin-top: 20px;") Welcome to the world of anti-scam! Identity theft is a serious problem that affects millions of people every year. In this module, you will learn:
       ol(style="font-weight: bold;margin-top: 20px;margin-bottom: 20px;")
         li What is Identity theft and what are the consequences?
-        li What are the tricks scammers use to steal our personal information? How to recognize the tricks of scammers?
+        li The techniques scammers use to steal our personal information and ways to recognize the techniques of the scammers
         li How to protect our identity information from the tricks?
-      p After learning the three essential topics, you can continue to <strong>explore</strong> the topics further and take a <strong>post-quiz</strong> to test your understanding and retention of the concepts you have learned. 
+      p After learning the three essential topics, you can continue to <strong>explore</strong> the topics further and take a <strong>post-quiz</strong> to test your understanding and retention of the concepts you have learned.
       p The following diagram outlines the steps in this module:
 
       #module-steps(style="max-width:100%;max-height:100%;text-align:center;")
@@ -45,19 +45,115 @@ block content
           .progress-item
             .step-counter 5
             .step-name Reflect
-    
 
-      
-      
+      p There are six amazing badges waiting for you to earn throughout this module!
+
+      //- semantic ui grid to organize the badges properly
+      .ui.grid  
+        .four.column.row
+          .column 
+            img(src='/badges/identity/mystery_badge.png')
+            p Challenge 
+              br
+              | Conqueror
+          .column
+            img(src='/badges/identity/mystery_badge2.png')
+            p Foundations 
+              br
+              | Achiever
+          .column
+            img(src='/badges/identity/mystery_badge2.png')
+            p Progress 
+              br
+              | Master
+          .column
+            img(src='/badges/identity/mystery_badge2.png')
+            p Champion of
+              br
+              | Completion
+        .four.column.row
+          .column
+          .column 
+            img(src='/badges/identity/mystery_badge3.png')
+            p Intrepid
+              br
+              | Investigator
+          .column
+            img(src='/badges/identity/mystery_badge4.png')
+            p Adventure
+              br
+              | Achiever
+          .column
+
+
+
+      //- .ui.grid
+      //-   .row
+      //-     .four.wide.column 
+      //-       .ui.fluid.card
+      //-         .content
+      //-           .header
+      //-             img(src='/badges/identity/mystery_badge.png')
+      //-             p 1. Pre-quiz
+      //-           .description
+      //-             | Complete the pre-quiz to earn this badge!
+      //-     .four.wide.column
+      //-       .ui.fluid.card
+      //-         .content
+      //-           .header
+      //-             img(src='/badges/identity/mystery_badge2.png')
+      //-             p 2. Learn
+      //-           .description
+      //-             | Complete the Learn section to earn this badge!
+      //-     .four.wide.column
+      //-       .ui.fluid.card
+      //-         .content
+      //-           .header
+      //-             img(src='/badges/identity/mystery_badge2.png')
+      //-             p 3. Explore
+      //-           .description
+      //-             | Complete the Explore section to earn this badge!
+      //-     .four.wide.column
+      //-       .ui.fluid.card
+      //-         .content
+      //-           .header
+      //-             img(src='/badges/identity/mystery_badge2.png')
+      //-             p 4. Post-quiz
+      //-           .description
+      //-             | Complete the post-quiz to earn this badge!
+      //-   .row
+      //-     .two.wide.column
+      //-       .ui.fluid.card
+      //-         .content
+      //-           .header
+      //-             img(src='/badges/identity/mystery_badge3.png')
+      //-             p 5. Reflect
+      //-           .description
+      //-             | Complete the Reflect section to earn this badge!
+      //-     .two.wide.column
+      //-       .ui.fluid.card
+      //-         .content
+      //-           .header
+      //-             img(src='/badges/identity/mystery_badge4.png')
+      //-             p 6. Chat
+      //-           .description
+      //-             | Complete the Chat section to earn this badge!
+
+    
       p Upon completion of the module, you will be knowledgeable and skilled in protecting yourself from scammers!
 
       div.ui.grid(style="margin-bottom: 10px;")
         div.six.wide.column
-          h2 Learning materials
+          h2 Learning Materials
         div.ten.wide.column.text-right
           button.ui.button.gray Download Resources
+      p Before we start the lesson, would you like to start with a small challenge to help you better understand your current knowledge of the topic and earn your first badge? If you prefer not to take it, you can skip it and proceed directly to the lesson.
+      .ui.one.column.centered.grid#avatarGrid
+        .ui.large.right.pointing.circular.label#speechBubble
+          p#speechText Remember that you can take a break anytime and pick up where you left off when you return!
+        img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png' style="float: right")
 
-      p Before beginning your lesson, please take a pre-quiz. This quiz will only consist of five questions, but it will be a great way to measure your improvement after learning.
+    
     .div
       button.ui.large.button.left.floated(onclick="location.href='/';") 
         i.arrow.left.icon 
@@ -70,6 +166,16 @@ block content
         i.arrow.right.icon
 
 block scripts
+  script.
+    document.addEventListener('DOMContentLoaded', function() {
+      const dartieImg = document.getElementById('dart_image1');
+      const character = localStorage.getItem('character');
+
+      if (character) {
+        dartieImg.src = "/profile_pictures/" + character;
+      }
+    }
+    );
   script.
     var voiceoverMappings = {
       '.showLearnSectionButton': {
@@ -97,7 +203,9 @@ block scripts
   script(src="/module_js/base_start.js")
   
 block styles
-  link(rel='stylesheet', href='/css/start.css')  
+  link(rel='stylesheet', href='/css/start.css') 
   link(rel='stylesheet', href='/css/progress.css')  
+  link(rel='stylesheet', href='/css/avatar.css')  
+ 
 
-    
+
