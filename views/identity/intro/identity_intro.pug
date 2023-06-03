@@ -20,7 +20,35 @@ block content
         li How to protect our identity information from the tricks?
       p After learning the three essential topics, you can continue to <strong>explore</strong> the topics further and take a <strong>post-quiz</strong> to test your understanding and retention of the concepts you have learned. 
       p The following diagram outlines the steps in this module:
-      img(src='/images/module-steps.png' style="max-width:100%;max-height:100%;text-align:center;margin-left: 20px;margin-top:20px;margin-bottom: 20px;")
+
+      #module-steps(style="max-width:100%;max-height:100%;text-align:center;")
+        .row#steps-icons  
+          img(src='/images/quiz-icon.png')
+          img(src='/images/learn-icon.png')
+          img(src='/images/explore-icon.png')
+          img(src='/images/quiz-icon.png')
+          img(src='/images/reflect-icon.png')
+
+        .progress-wrapper
+          .progress-item
+            .step-counter 1
+            .step-name Pre-quiz
+          .progress-item
+            .step-counter 2
+            .step-name Learn
+          .progress-item
+            .step-counter 3
+            .step-name Explore
+          .progress-item
+            .step-counter 4
+            .step-name Post-quiz
+          .progress-item
+            .step-counter 5
+            .step-name Reflect
+    
+
+      
+      
       p Upon completion of the module, you will be knowledgeable and skilled in protecting yourself from scammers!
 
       div.ui.grid(style="margin-bottom: 10px;")
@@ -70,5 +98,6 @@ block scripts
   
 block styles
   link(rel='stylesheet', href='/css/start.css')  
-    
+  link(rel='stylesheet', href='/css/progress.css')  
+
     

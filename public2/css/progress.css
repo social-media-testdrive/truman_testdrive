@@ -3,40 +3,41 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
-  }
-  .progress-item {
+}
+
+.progress-item {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     flex: 1;
-  
+
     @media (max-width: 768px) {
-      font-size: 12px;
+        font-size: 12px;
     }
-  }
-  
-  .progress-item::before {
+}
+
+.progress-item::before {
     position: absolute;
     content: "";
-    border-bottom: 4px solid #ccc;
+    border-bottom: 4px solid #939393;
     width: 100%;
     top: 20px;
     left: -50%;
     z-index: 2;
-  }
-  
-  .progress-item::after {
+}
+
+.progress-item::after {
     position: absolute;
     content: "";
-    border-bottom: 4px solid #ccc;
+    border-bottom: 4px solid #939393;
     width: 100%;
     top: 20px;
     left: 50%;
     z-index: 2;
-  }
-  
-  .progress-item .step-counter {
+}
+
+.progress-item .step-counter {
     position: relative;
     z-index: 5;
     display: flex;
@@ -45,32 +46,67 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #ccc;
+    background: white;
     margin-bottom: 6px;
-    
-  }
-  
-  .progress-item.active {
+    border: 2px solid #939393;
+}
+
+.progress-item.active {
     font-weight: bold;
-  }
-  
-  .progress-item.completed .step-counter {
-    background-color: blue;
-  }
-  
-  .progress-item.completed::after {
-    position: absolute;
+}
+
+.progress-item.active .step-counter:after {
+    z-index: -1;
     content: "";
-    border-bottom: 4px solid blue;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    top: 20px;
-    left: 50%;
-    z-index: 3;
-  }
-  
-  .progress-item:first-child::before {
-    content: none;
-  }
-  .progress-item:last-child::after {
-    content: none;
-  }
+    height: 100%;
+    background-color: #2165ae2d;
+    border-radius: 50%;
+}
+
+/* Make solid white behind transparent active circle so that the lines aren't visible*/
+.progress-item.active .step-counter {
+z-index: 8;
+background-color: white;
+}
+
+.progress-item.completed .step-counter {
+z-index: 7;
+background-color: #2165AE;
+border: 2px solid #2165AE;
+color: white;
+}
+
+.progress-item.completed::after {
+z-index: 3;
+position: absolute;
+content: "";
+border-bottom: 4px solid #2165AE;
+width: 100%;
+top: 20px;
+left: 50%;
+}
+
+.progress-item:first-child::before {
+content: none;
+}
+.progress-item:last-child::after {
+content: none;
+}
+
+#steps-icons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    /* margin-left: 20px; */
+    padding-left: 40px;
+    padding-right: 50px;
+    margin-right: -2px;
+}
+
+#steps-icons img{
+    margin-right: 6px;
+}
