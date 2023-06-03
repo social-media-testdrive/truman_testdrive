@@ -4,14 +4,15 @@ block content
   .ui.sixteen.wide.row
     .ui.sixteen.wide.column(style="display: flex; flex-direction: column; justify-content: center; align-items: center;")
      .login-box
-      h2.ui.header(style="text-align: left !important; margin:5px 0px") Create an account
+      h2.ui.header(style="text-align: left !important; margin:5px 0px; font-family:'Noto Sans', sans-serif;") Create your account
       
       form.ui.form(action="/createStudent", method='POST')
         input(type='hidden', name='facilitator')
         input(type='hidden', name='_csrf', value=csrfToken)
         .field
-          a.forgot(href='/studentLogin', style="text-align: left !important;") ← back
-          label(for='username' style="font-size:larger;") Enter Username
+          span(style="font-size: 17px; font-family:'Arial', Serif;") Don't have an account? 
+          a(style="font-size: 17px;" href="/studentLogin") Log In Now
+          label(for='username' style="margin-top:15px; font-size:larger;") Enter Username
           .ui.pointing.below.label.basic.username-red
               .header Create a simple username: 
                 br
@@ -33,8 +34,9 @@ block content
           label(for='password' style="font-size:larger;") Confirm Password
 
           input(style="margin:5px 0px; width: 100%; border-radius: 5px; border: 2px solid grey !important; background-color: #fff !!important; color: #000 !important;" type='password', name='confirm-password', id='confirm-password', placeholder='Confirm Password', required).field
-                
-        button.ui.big.blue.button(type='submit', style="border: 1px solid #2884d4; width: 100%; margin: 15px 0;") Sign up
+          div.checkbox-container(style="display: flex; justify-content: space-between;")
+            a.forgot(href='forgotPassword', style="margin: 0px 0 0 0; margin-top:10px; text-align: right;") Forgot Password?
+        button.ui.big.blue.button(type='submit', style="font-family:'Noto Sans', sans-serif; height:46.28px; border-radius: 17px; width: 100%; margin: 0px 0 0 0;") Sign up
 block styles
   style.
     .ui.pointing.below.label.basic.username-red, .ui.pointing.below.label.basic.password-red {
@@ -43,7 +45,15 @@ block styles
     .ui.pointing.below.label.active.username-red, .ui.pointing.below.label.active.password-red {
       display: block;
     }
-      
+  style.
+    .login-box {
+    }
+    @media (max-width: 600px) {
+      .login-box {
+        margin-top: -35px;
+      }
+    }
+
 block scripts
   link(rel='stylesheet', href='/css/style.css')
   script(src='/module_js/base_end.js')

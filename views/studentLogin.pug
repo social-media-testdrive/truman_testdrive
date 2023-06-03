@@ -4,42 +4,48 @@ block content
   .ui.sixteen.wide.row 
     .ui.sixteen.wide.column(style="display: flex; flex-direction: column; justify-content: center; align-items: center;")
       .login-box
-        h2.ui.header(style="text-align: left !important; margin:5px 0px") Welcome Back!
-
+        h2.ui.header(style="text-align: left !important; margin:5px 0px; font-family:'Noto Sans', sans-serif;") Log in to your account
         form.ui.form(action="/studentLogin", method='POST')
           input(type='hidden', name='_csrf', value=csrfToken)
           .field
-            label(for='username' style="font-size:larger;") Username
-            input(style="margin:5px 0px; width: 100%; border-radius: 5px; border: 2px solid grey !important; background-color: #fff !!important; color: #000 !important;" type='text', name='username', id='username', placeholder='Username', required).field
-            label(for='password' style="font-size:larger;") Password
+            span(style="font-size: 17px; font-family:'Arial', Serif;") Don't have an account? 
+            a(style="font-size: 17px;" href="/createStudent") Sign Up Now
+            label(for='username' style="margin-top:15px; font-size:larger;") Email:
+            input(style="margin:5px 0px; width: 100%; border-radius: 5px; border: 2px solid grey !important; background-color: #fff !!important; color: #000 !important;" type='text', name='username', id='username', placeholder='Email', required).field
+            label(for='password' style="font-size:larger;") Password:
             input(style="width: 100%; border-radius: 5px; border: 2px solid grey !important; background-color: #fff !!important; color: #000 !important;" type='password', name='password', id='password', placeholder='Password', required).field
 
           div.checkbox-container(style="display: flex; justify-content: space-between;")
-            button.ui.big.blue.button(type='submit', style="width: 100%; margin: 0px 0 0 0;") Login
-            a.forgot(href='forgotPassword', style="margin: 10px 0 0 0; text-align: right;") Forgot Password?
-
+            a.forgot(href='forgotPassword', style="margin: 0px 0 10px 0; text-align: right;") Forgot Password?
+          button.ui.big.blue.button(type='submit', style="font-family:'Noto Sans', sans-serif; height:46.28px; border-radius: 17px; width: 100%; margin: 0px 0 0 0;") Log In
           img(style='margin-top:5px; z-index: 0;' src="/profile_pictures/or_divider.png")
-          
-          a.ui.button.big.white(href="/getGuest", style="padding:14.1429px !important; display: block; width: 100%; background-color: #fff; border: 1px solid #2884d4; text-align: center; padding: 10px; margin-top: 10px;")  
+          a.ui.button.big.white(href="/getGuest", style="font-family:'Noto Sans', sans-serif; height:46.28px; border-radius: 17px; margin: 0px 0 0 0; padding:14.1429px !important; display: block; width: 100%; background-color: #fff; border: 1px solid #2884d4; text-align: center;")  
                 span
-                  img(src='/profile_pictures/avatar-icon.svg', alt="Google logo", style="height:25px; vertical-align: middle; margin-right: 10px;")
-                  span( style="vertical-align: middle;") Guest Login
+                  img(src='/profile_pictures/avatar-icon.svg', alt="Google logo", style="height:20px; vertical-align: middle; margin-right: 10px;")
+                  span( style="vertical-align: middle;") Sign In As Guest
 
           
           img(style='margin-top:5px; z-index: 0;' src="/profile_pictures/or_divider.png")
 
           form
             input(type='hidden', name='_csrf', value=csrfToken)              
-            a.ui.button.big.white(href='/auth', style="padding:14.1429px !important; display: block; width: 100%; background-color: #fff; border: 1px solid #2884d4; text-align: center; padding: 10px; margin-top: 10px;")   
+            a.ui.button.big.white(href='/auth', style="font-family:'Noto Sans', sans-serif; height:46.28px; border-radius: 17px; padding:14.1429px !important; display: block; width: 100%; background-color: #fff; border: 1px solid #2884d4; text-align: center; padding: 10px;")   
               span
-                img(src='/profile_pictures/g-logo.png', alt="Google logo", style="height:25px; vertical-align: middle; margin-right: 10px;")
-                span( style="vertical-align: middle;") Sign in With Google
-          img(style='margin-top:5px; z-index: 0;' src="/profile_pictures/or_divider.png")
+                img(src='/profile_pictures/g-logo.png', alt="Google logo", style="height:20px; vertical-align: middle; margin-right: 10px;")
+                span( style="vertical-align: middle;") Sign In With Google
+//-          img(style='margin-top:5px; z-index: 0;' src="/profile_pictures/or_divider.png")
 
-          a.ui.button.big.green(href="/createStudent", style="padding:14.1429px !important; display: block; width: 100%; border: 1px solid #2884d4; text-align: center; padding: 10px; margin-top: 10px;")  Create Account
+//-          a.ui.button.big.green(href="/createStudent", style="font-family:'Noto Sans', sans-serif; height:46.28px; border-radius: 17px; padding:14.1429px !important; display: block; width: 100%; border: 1px solid #2884d4; text-align: center; padding: 10px; ")  Sign Up
               
 block styles
-
+  style.
+    .login-box {
+    }
+    @media (max-width: 600px) {
+      .login-box {
+        margin-top: -35px;
+      }
+    }
 block scripts
   
   link(rel='stylesheet', href='/css/style.css')
@@ -53,3 +59,4 @@ block scripts
       window.location.href='/free-play/privacy';
     };
     
+

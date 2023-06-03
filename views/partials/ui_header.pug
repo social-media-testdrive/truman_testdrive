@@ -55,11 +55,14 @@
                     a.item(href='/account') Profile Page
                     a.item(href='mailto:socialmediatestdrive@gmail.com') Contact Us
                     a.item(href='/logout') Logout
-            
+              else 
+                    a.item(href='/studentLogin')
+                      span Login
 .mobile.only.row
-  .ui.fluid.top.fixed.two.item.menu.testDriveHeader
-    a.item(href='/')
-      img.ui.tiny.image(src='/images/DARTLogo.png', id='cell_logo')
+  .ui.fluid.top.fixed.two.item.menu.testDriveHeader(style='justify-content:start')
+    a.item( style='justify-content:start;' href='/')
+      img.ui.tiny.image(style="margin-left:20px" src='/images/DARTLogo.png', id='cell_logo')
+
     if isResearchVersion
         if user
           //- a.item.newpost.float.right
@@ -81,4 +84,10 @@
                   a.item(href='/account') Profile Page
                   a.item(href='mailto:socialmediatestdrive@gmail.com') Contact Us
                   a.item(href='/logout') Logout
-          
+        else 
+                  a.item(href='/studentLogin')
+                    span Login
+style.
+  a.item::before {
+    display: none;
+  }
