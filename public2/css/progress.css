@@ -1,3 +1,4 @@
+/* Tutorial referenced: https://devrecipes.net/step-progres-bar-with-pure-css/ */
 .progress-wrapper {
     margin-top: auto;
     display: flex;
@@ -108,5 +109,5 @@ content: none;
 }
 
 #steps-icons img{
-    margin-right: 6px;
+    margin-right: 3px;
 }

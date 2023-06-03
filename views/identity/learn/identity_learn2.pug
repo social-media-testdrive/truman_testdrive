@@ -1,4 +1,4 @@
-extends ../ui_layout
+extends ../../ui_layout
 
 block content
 
@@ -12,7 +12,7 @@ block content
         | Method and Protection
     #segmentation.ui.raised.segment
       iframe(type='text/html' width='540' height='289'
-        src='videos/identity-video.mp4'
+        src='../videos/identity-video.mp4'
         frameborder='0' style='display: block; margin: auto;')
       br
       br
@@ -35,11 +35,11 @@ block content
 
 
     .div(style='margin-top:20px;')
-      button.ui.button.left.floated(onclick="location.href='/identity_prequiz_finish';") 
+      button.ui.button.left.floated(onclick="location.href='/learn/identity';") 
         i.arrow.left.icon 
         | Back
       //- button.ui.button.left.floated(onclick="location.href='/';") Save & Exit
-      button.ui.button.right.floated(onclick="location.href='/identity_learn_page3';")
+      button.ui.button.right.floated(onclick="location.href='/learn3/identity';")
         | Next
         i.arrow.right.icon
 

@@ -616,6 +616,96 @@ app.get('/learn5/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders
     });
 });
 
+app.get('/learn6/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn6', {
+        title: 'Learn'
+    });
+});
+
+app.get('/learn7/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn7', {
+        title: 'Learn'
+    });
+});
+
+app.get('/learn8/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn8', {
+        title: 'Learn'
+    });
+});
+
+app.get('/learn9/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn9', {
+        title: 'Learn'
+    });
+});
+
+app.get('/learn10/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn10', {
+        title: 'Learn'
+    });
+});
+
+app.get('/learn11/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn11', {
+        title: 'Learn'
+    });
+});
+
+app.get('/learn12/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn12', {
+        title: 'Learn'
+    });
+});
+
+app.get('/learn13/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn13', {
+        title: 'Learn'
+    });
+});
+
+app.get('/learn14/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn14', {
+        title: 'Learn'
+    });
+});
+
+app.get('/learn15/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn15', {
+        title: 'Learn'
+    });
+});
+
+app.get('/learn16/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn16', {
+        title: 'Learn'
+    });
+});
+
+app.get('/learn17/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn17', {
+        title: 'Learn'
+    });
+});
+
+app.get('/learn18/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn18', {
+        title: 'Learn'
+    });
+});
+
+app.get('/learn19/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn19', {
+        title: 'Learn'
+    });
+});
+
+app.get('/learn20/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn20', {
+        title: 'Learn'
+    });
+});
+
 // ******************* Render new identity theft pages ****************************
 app.get('/identity_new_page', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf,  function(req, res) {
     if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors

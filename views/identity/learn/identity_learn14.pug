@@ -1,4 +1,4 @@
-extends ../ui_layout
+extends ../../ui_layout
 
 block content
 
@@ -7,9 +7,10 @@ block content
     .ui.raised.segment
       h1.ui.header
         .content
-            | Explore
-      p Concept blah blah
+            | Conclusion
+      p Reflect
      
-    button.btn(style="background-color: green; color: white; font-size: 24px; padding: 10px 20px; border: none; border-radius: 5px; float: right;" onclick="location.href='/identity_learn_page14';") Complete Explore
-
+    button.btn(style="background-color: green; color: white; font-size: 24px; padding: 10px 20px; border: none; border-radius: 5px; float: right;" onclick="location.href='/';localStorage.setItem('progress', 100);") Complete Theft Module
+  script.
+    localStorage.setItem('theft-path', "/identity_learn_page14");
 
