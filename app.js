@@ -221,7 +221,7 @@ app.get('/x', (req, res) => {
 passport.use(new GoogleStrategy({
     clientID:"896039841801-tdh0a2hsl53671t5ruirn1kls9cob9aa.apps.googleusercontent.com", // Your Credentials here.
     clientSecret:"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", // Your Credentials here.
-    callbackURL: "https://3.91.23.188.nip.io/auth/callback", // Your base URL + path.
+    callbackURL: "https://dart.socialsandbox.xyz/auth/callback", // Your base URL + path.
     passReqToCallback:true
   },
   function(request, accessToken, refreshToken, profile, done) {
@@ -1707,7 +1707,7 @@ if (isResearchVersion) {
             from: 'DartLehigh@gmail.com',
             to: req.body.username,
             subject: "hello here is the link for resetting password",
-            text: "please enter the following link to reset your password: https://3.91.23.188.nip.io/temporary-link/"+new_token,
+            text: "please enter the following link to reset your password: https://dart.socialsandbox.xyz/temporary-link/"+new_token,
           });
           allowedUUIDs[req.body.username] = new_token;
           console.log(allowedUUIDs)
