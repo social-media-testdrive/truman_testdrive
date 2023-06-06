@@ -41,13 +41,13 @@
 .progress-item .step-counter {
     position: relative;
     z-index: 5;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     /* border-radius: 50%; */
     /* margin-bottom: 2px; */
     /* border: 2px solid #939393; */
     border: 2px solid transparent;
-    background-color: transparent;
+    background-color: white;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -134,15 +134,15 @@
     /* margin-top: 0px; */
 }
 
-#grey-icon {
-    color: #7D7C7C !important;
-    background-color: white !important;
+#challenge-icon, #learn-icon, #explore-icon, #evaluate-icon, #reflect-icon {
+    background-color: white;
     z-index: 100;
+    fill: #7D7C7C;
 }
 
-#blue-icon {
-    color: #6BBCC7 !important;
-    background-color: white !important;
-    z-index: 100;
-}
 
+
+
+#great-job {
+    visibility: hidden;
+}
