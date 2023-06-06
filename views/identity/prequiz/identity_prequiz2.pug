@@ -78,6 +78,9 @@ block content
       button.ui.large.green.button.right.floated(onclick="location.href='/learn/identity';")
         | Next
         i.arrow.right.icon
+      iframe(type='text/html' width='200' height='100'
+        src='../../videos/trumpets.mp3'
+        frameborder='0' style='display: block; margin: auto;' allow='autoplay')
 
     
 
@@ -96,6 +99,9 @@ block scripts
   //-   }
   //-   );
   script.
+    let sound = new Audio('../../videos/trumpets.mp3');
+    sound.play();
+
     let progressItems = document.getElementsByClassName('progress-item');
     //- for (var i = 0; i < progressItems.length; i++) {
     //-   console.log(i);
@@ -110,6 +116,9 @@ block scripts
       //- make challenge icon blue
       let challengeIcon = document.getElementById('challenge-icon');
       challengeIcon.style.fill = "#6BBCC7";
+
+
+
     }, 1000);
 
     setTimeout(function() {
