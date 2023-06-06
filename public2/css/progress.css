@@ -21,7 +21,7 @@
 .progress-item::before {
     position: absolute;
     content: "";
-    border-bottom: 4px solid #939393;
+    border-bottom: 4px solid #7D7C7C;
     width: 100%;
     top: 30px;
     left: -50%;
@@ -31,7 +31,7 @@
 .progress-item::after {
     position: absolute;
     content: "";
-    border-bottom: 4px solid #939393;
+    border-bottom: 4px solid #7D7C7C;
     width: 100%;
     top: 30px;
     left: 50%;
@@ -41,16 +41,20 @@
 .progress-item .step-counter {
     position: relative;
     z-index: 5;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    margin-bottom: 6px;
+    width: 40px;
+    height: 40px;
+    /* border-radius: 50%; */
+    /* margin-bottom: 2px; */
     /* border: 2px solid #939393; */
     border: 2px solid transparent;
-    background-color: white;
-    display: flex;
+    background-color: transparent;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    margin-top: 5%;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
 }
 
 .progress-item.active {
@@ -79,14 +83,13 @@
     z-index: 7;
     /* background-color: #2165AE; */
     /* color: white; */
-    color: #6BBCC7;
 }
 
 .progress-item.completed::after {
     z-index: 3;
     position: absolute;
     content: "";
-    border-bottom: 4px solid #2165AE;
+    border-bottom: 4px solid #6BBCC7;
     width: 100%;
     top: 30px;
     left: 50%;
@@ -114,14 +117,32 @@
 }
 
 .progress-wrapper .icon {
-    font-size: 40px;
+    font-size: 30px;
     text-align: center;
-    margin-bottom: 20px;
-    margin-left: 3px;
+    /* margin-bottom: 20px;
+    margin-left: 3px; */
+    color: #7D7C7C;
+}
+
+.progress-item.completed .step-counter .icon{
+    color: #6BBCC7;
 }
 
 .step-name {
     font-weight: bold;
-    font-size: medium
+    font-size: medium;
+    /* margin-top: 0px; */
+}
+
+#grey-icon {
+    color: #7D7C7C !important;
+    background-color: white !important;
+    z-index: 100;
+}
+
+#blue-icon {
+    color: #6BBCC7 !important;
+    background-color: white !important;
+    z-index: 100;
 }
 
