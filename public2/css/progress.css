@@ -23,7 +23,7 @@
     content: "";
     border-bottom: 4px solid #939393;
     width: 100%;
-    top: 20px;
+    top: 30px;
     left: -50%;
     z-index: 2;
 }
@@ -33,7 +33,7 @@
     content: "";
     border-bottom: 4px solid #939393;
     width: 100%;
-    top: 20px;
+    top: 30px;
     left: 50%;
     z-index: 2;
 }
@@ -41,22 +41,23 @@
 .progress-item .step-counter {
     position: relative;
     z-index: 5;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 6px;
+    /* border: 2px solid #939393; */
+    border: 2px solid transparent;
+    background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: white;
-    margin-bottom: 6px;
-    border: 2px solid #939393;
 }
 
 .progress-item.active {
     font-weight: bold;
 }
 
-.progress-item.active .step-counter:after {
+/* .progress-item.active .step-counter:after {
     z-index: -1;
     content: "";
     position: absolute;
@@ -66,36 +67,36 @@
     height: 100%;
     background-color: #2165ae2d;
     border-radius: 50%;
-}
+} */
 
 /* Make solid white behind transparent active circle so that the lines aren't visible*/
 .progress-item.active .step-counter {
-z-index: 8;
-background-color: white;
+    z-index: 8;
+    background-color: white;
 }
 
 .progress-item.completed .step-counter {
-z-index: 7;
-background-color: #2165AE;
-border: 2px solid #2165AE;
-color: white;
+    z-index: 7;
+    /* background-color: #2165AE; */
+    /* color: white; */
+    color: #6BBCC7;
 }
 
 .progress-item.completed::after {
-z-index: 3;
-position: absolute;
-content: "";
-border-bottom: 4px solid #2165AE;
-width: 100%;
-top: 20px;
-left: 50%;
+    z-index: 3;
+    position: absolute;
+    content: "";
+    border-bottom: 4px solid #2165AE;
+    width: 100%;
+    top: 30px;
+    left: 50%;
 }
 
 .progress-item:first-child::before {
-content: none;
+    content: none;
 }
 .progress-item:last-child::after {
-content: none;
+    content: none;
 }
 
 #steps-icons {
@@ -111,3 +112,16 @@ content: none;
 #steps-icons img{
     margin-right: 3px;
 }
+
+.progress-wrapper .icon {
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-left: 3px;
+}
+
+.step-name {
+    font-weight: bold;
+    font-size: medium
+}
+

@@ -7,6 +7,8 @@
     align-items: center; 
     float: left;
     width:50%;
+    background-color: #E1F2F4;
+    border: 1px solid #6BBCC7;
 }
 
 #speechText {

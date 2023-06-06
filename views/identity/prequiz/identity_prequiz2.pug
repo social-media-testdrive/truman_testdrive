@@ -2,28 +2,64 @@ extends ../../ui_layout
 
 block content
 
-  .ui.text.container.addBottomMargin
+  .ui.text.container.addBottomMargin.center.aligned.content
     br
     .ui.raised.segment
+      #module-steps(style="max-width:100%;max-height:100%;text-align:center;")
+        //- .row#steps-icons  
+        //-   img(src='/images/quiz-icon.png')
+        //-   img(src='/images/learn-icon.png')
+        //-   img(src='/images/explore-icon.png')
+        //-   img(src='/images/quiz-icon.png')
+        //-   img(src='/images/reflect-icon.png')
+        .progress-wrapper
+          .progress-item.completed
+            .step-counter
+              i.user.secret.icon
+            .step-name Challenge
+          .progress-item
+            .step-counter
+              i.book.open.icon
+            .step-name Learn
+          .progress-item
+            .step-counter
+              i.compass.outline.icon
+            .step-name Explore
+          .progress-item
+            .step-counter
+              i.edit.outline.icon 
+            .step-name Evaluate
+          .progress-item
+            .step-counter
+              i.lightbulb.outline.icon
+            .step-name Reflect
       h1.ui.header
         .content
             | Great Job!
-      p Thank you for taking the time to complete this pre-quiz. Your feedback is invaluable and will help us to ensure that everyone is adequately prepared for the upcoming lesson. 
-      .ui.one.column.centered.grid(style="margin: 50px")
-        .ui.large.right.pointing.circular.label(style="display: flex; align-items: center; float: left;width:50%;")
-          p(style="padding: 0px; text-align: center; margin: 0;") The results of the pre-quiz will be presented along with the post-quiz results at the end of the lesson.
-            br
-            br
-            | You will be able to see your own 
-            br
-            | progress and achievement!
-        img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png' style="float: right")
+      //- p Thank you for taking the time to complete this pre-quiz. Your feedback is invaluable and will help us to ensure that everyone is adequately prepared for the upcoming lesson. 
+      //- .ui.one.column.centered.grid(style="margin: 50px")
+      //-   .ui.large.right.pointing.circular.label(style="display: flex; align-items: center; float: left;width:50%;")
+      //-     p(style="padding: 0px; text-align: center; margin: 0;") The results of the pre-quiz will be presented along with the post-quiz results at the end of the lesson.
+      //-       br
+      //-       br
+      //-       | You will be able to see your own 
+      //-       br
+      //-       | progress and achievement!
+      //-   img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png' style="float: right")
 
       
-      //- p Fantastic work! You've successfully completed the Challenge and earned your very first Badge!  But that's not all—there are still five more Badges for you to earn. 
-      //- p Keep up the great work, and let's start your exciting journey! We can't wait to see all the amazing things you'll achieve!
-      //- p Challenge Conqueror
-      
+      p Fantastic work! You've successfully completed the Challenge and earned your very first Badge!  But that's not all—there are still five more Badges for you to earn. 
+      p Keep up the great work, and let's start your exciting journey! We can't wait to see all the amazing things you'll achieve!      
+
+      .ui.grid#badgesGrid
+        .one.column.row
+          .column
+            .content
+              img#earned_badge(src='/badges/identity/challenge_conqueror.png')
+              p <strong>Challenge</strong>
+                br
+                | <strong>Conqueror</strong>
+
     .div(style='margin-top:20px;')
       button.ui.large.button.left.floated(onclick="location.href='/prequiz/identity';") 
         i.arrow.left.icon 
@@ -80,5 +116,5 @@ block scripts
 
 block styles
   link(rel='stylesheet', href='/css/start.css')  
-    
+  link(rel='stylesheet', href='/css/progress.css')   
     

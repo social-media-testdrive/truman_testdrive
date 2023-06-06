@@ -10,7 +10,7 @@
 
 /* when hovering move back button to the left */
 #backButton:hover {
-    transform: translateX(-10px);
+    transform: translateX(-5px);
 }
   
 
@@ -27,6 +27,6 @@
 
 /* when hovering move start button to the right*/
 #nextButton:hover {
-    transform: translateX(10px);
-    border: 2px solid #00c3ff;
+    transform: translateX(5px);
+    border: 2px solid #6BBCC7;
 }
