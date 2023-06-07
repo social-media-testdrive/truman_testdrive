@@ -1,0 +1,24 @@
+/* Set font size for all page content to 1.5rem, ~23px, which is what the National Institute on Aging uses for their page's body text */
+html {
+    font-size: 1rem;
+}
+
+.ui.raised.segment {
+    font-size: 1.5rem;
+    /* width: 120%; */
+}
+
+/* Want around 80 characters per line */
+#page-content-container {
+    background-color: aqua;
+    width: 70%; 
+}
+
+.ui.vertically.padded.grid.container.addBottomPaddingToGrid {
+    background-color: brown;
+}
+
+
+
+
+/* Set font size for all page content to 1.5rem which is what the National Institute on Aging uses for their page's body text */
