@@ -56,19 +56,18 @@ block content
       //-       br
       //-       | progress and achievement!
       //-   img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png' style="float: right")
-
-      
-      p Fantastic work! You've successfully completed the Challenge and earned your very first Badge!  But that's not all—there are still five more Badges for you to earn. 
-      p Keep up the great work, and let's start your exciting journey! We can't wait to see all the amazing things you'll achieve!      
-
       .ui.grid#badgesGrid
         .one.column.row
           .column
             .content
-              img#earned_badge(src='/badges/identity/challenge_conqueror.png')
+              img#earned_badge(onmouseenter="animateBadge()" src='/badges/identity/challenge_conqueror.png')
               p <strong>Challenge</strong>
                 br
                 | <strong>Conqueror</strong>
+
+      #text
+        p You've completed the Challenge and earned your very first Badge!  But that's not all—there are still five more Badges for you to earn. Keep up the great work, and let's start your exciting journey! We can't wait to see all the amazing things you'll achieve!      
+
 
     .div(style='margin-top:20px;')
       button.ui.large.button.left.floated(onclick="location.href='/prequiz/identity';") 
@@ -78,9 +77,16 @@ block content
       button.ui.large.green.button.right.floated(onclick="location.href='/learn/identity';")
         | Next
         i.arrow.right.icon
-      iframe(type='text/html' width='200' height='100'
-        src='../../videos/trumpets.mp3'
-        frameborder='0' style='display: block; margin: auto;' allow='autoplay')
+      //- iframe(type='text/html' width='200' height='100'
+      //-   src='../../videos/trumpets.mp3'
+      //-   frameborder='0' style='display: block; margin: auto;' allow='autoplay')
+      //- audio(controls='', autoplay='')
+      //-   source(src='../../videos/trumpets.mp3', type='audio/mpeg')
+
+
+      <iframe id="audio-frame" allow="autoplay"  src="../../sound/progress.mp3" frameborder="0" style="display:none"></iframe>
+      //- <iframe id="audio-frame2" src="../../sound/unlock.wav" frameborder="0" style="display:none"></iframe>
+
 
     
 
@@ -88,6 +94,8 @@ block content
 
 
 block scripts
+
+
   //- script.
   //-   document.addEventListener('DOMContentLoaded', function() {
   //-     const dartieImg = document.getElementById('dart_image1');
@@ -99,8 +107,33 @@ block scripts
   //-   }
   //-   );
   script.
-    let sound = new Audio('../../videos/trumpets.mp3');
-    sound.play();
+    function playAudio() {
+      var iframe = document.getElementById('audio-frame');
+      var audioElement = iframe.contentWindow.document.querySelector('audio');
+      audioElement.play();
+      console.log("progress audio played")
+    }
+
+    //- function playAudio2() {
+    //-   var iframe = document.getElementById('audio-frame2');
+    //-   var audioElement = iframe.contentWindow.document.querySelector('audio');
+    //-   audioElement.play();
+    //-   console.log("badge unlock audio played")
+    //- }
+
+    function animateBadge() {
+      $('#earned_badge')
+        .transition('jiggle in')
+      ;
+    }
+    
+
+    //- trumpets.addEventListener('load', function() {
+    //-   trumpets.contentWindow.document.querySelector('audio').play();
+    //- });
+
+    //- let sound = new Audio('../../videos/trumpets.mp3');
+    //- sound.play();
 
     let progressItems = document.getElementsByClassName('progress-item');
     //- for (var i = 0; i < progressItems.length; i++) {
@@ -109,17 +142,20 @@ block scripts
     //- }
 
     $('#challenge-icon')
-      .transition('flash')
+      .transition({
+        animation: 'flash',
+        duration: '0.5s',
+      })
     ;
-    // Show progress after 4 seconds
+
+    // Show progress after 1 second
     setTimeout(function() {
       //- make challenge icon blue
       let challengeIcon = document.getElementById('challenge-icon');
       challengeIcon.style.fill = "#6BBCC7";
+    }, 600);
 
-
-
-    }, 1000);
+          
 
     setTimeout(function() {
       let progressItems = document.getElementsByClassName('progress-item');
@@ -134,12 +170,43 @@ block scripts
     setTimeout(function() {
       $('#great-job')
         .transition({
-          animation: 'fade up in',
-          duration: '5s',
+          animation: 'scale in',
+          duration: '0.5s',
         })
       ;
     }, 3000);
     
+    setTimeout(function() {
+      // Create the iframe element
+      var iframe = document.createElement('iframe');
+
+      // Set the attributes
+      iframe.id = 'audio-frame2';
+      iframe.src = '../../sound/unlock.wav';
+      iframe.frameBorder = '0';
+      iframe.style.display = 'none';
+
+      // Append the iframe to the document body or any other desired container
+      document.body.appendChild(iframe);
+
+      var audio = new Audio('../../sound/unlock.wav');
+      audio.play();
+      $('#badgesGrid')
+        .transition({
+          animation: 'tada in',
+          duration: '1s',
+        })
+      ;
+    }, 4500);
+
+    setTimeout(function() {
+      $('#text')
+        .transition({
+          animation: 'fade in',
+          duration: '1s',
+        })
+      ;
+    }, 6000);
 
     localStorage.setItem('progress', 5);
     localStorage.setItem('theft-path', "/identity_prequiz_finish");
@@ -169,6 +236,6 @@ block scripts
   //- script(src="/module_js/base_start.js")
 
 block styles
-  link(rel='stylesheet', href='/css/start.css')  
+  link(rel='stylesheet', href='/css/prequiz.css')  
   link(rel='stylesheet', href='/css/progress.css')   
-    
+
