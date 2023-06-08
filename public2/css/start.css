@@ -5,10 +5,9 @@
 /* semantic ui ordered lists don't have dots after numbers, so I'm using the normal lists but imported the needed semantic ui styles here*/
 .learning-objectives {
     font-weight: bold;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     margin-left: 50px;
-    margin: 1em 0em;
     padding: 0em 0em;
 }
 

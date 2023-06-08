@@ -3,6 +3,9 @@
     margin-top: auto;
     display: flex;
     justify-content: space-between;
+    /* background-color: pink; */
+    width: 80%;
+    margin: 0 auto;
     margin-bottom: 20px;
 }
 
