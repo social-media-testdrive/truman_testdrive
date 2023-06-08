@@ -8,14 +8,21 @@
     margin-bottom: 20px;
 }
 
+.bubble-container {
+    display: inline-block; 
+    position: absolute;
+    margin-left: 10px;
+}
+
 .bubbleText {
     background-color: white; 
-    border: 1px solid #2165AE;
-    padding: 8px; 
+    border: 1px solid #6BBCC7;
+    font-size: 0.8rem;
+    padding: 6px; 
     border-radius: 20px; 
-    display: inline-block; 
     margin-left: 20px;
 }
+
 
 #banner_pic {
     margin-top: 5px;
@@ -58,27 +65,36 @@ a.ui.fluid.labeled.icon.button {
 }
 
 .banner {
+    /* background-color: blue; */
     height: 200px;
     width: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
     position: relative;
   }
-
-.banner img {
-    height: auto;
+  
+  .banner img {
+    height: 100%;
     width: 100%;
     /* allow us to adjust position of picture inside of the banner */
     position: absolute;
-    bottom: -20px;
     /* center horizontally */
     left: 50%;
     transform: translateX(-50%);
-    /* keep image's original size */
-    object-fit: none;
+
+    /* scaled proportionally to completely cover the entire container cropping some parts of the content */
+    object-fit: cover;
     /* Adjust the percent here to move img up/down to select portion of it you want visible */
-    object-position: center 0%;
+    object-position: center 35%;
+
+    /* object-position: center; */
+
+    /* keep image's original size */
+    /* object-fit: none; */
+    /* Adjust the percent here to move img up/down to select portion of it you want visible */
+    /* object-position: center 0%; */
+
+  }
   
-}
 
 #earned_badge {
     width: 50px;

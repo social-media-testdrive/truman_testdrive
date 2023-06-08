@@ -1,23 +1,62 @@
+/* #myheader {
+  background-color: red !important;
+  width: 60% !important;
+} */
+/* #header {
+  background-color: red !important;
+} */
+
+#outer-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: orange !important; */
+}
+
+#inner-header {
+  width: 65%; 
+  /* width: 955px; */
+  /* background-color: pink !important; */
+  /* remove semantic ui raised menu background */
+  /* background: none; */
+  box-shadow: none;
+  border: none;
+}
+
+/* header font size referenced National Institute of Aging Website which uses 1.5rem body text and 1.2 rem nav buttons */
+a.item {
+  font-size: 1.2rem;
+}
+
+a.item.dart-blue {
+  color: #2165AE !important;
+}
+#myheader {
+  /* background-color: green !important; */
+  width: 70% !important;
+} 
+
+
 .ui.grid>.row.testdriveHeaderRow {
   padding-bottom: 40px;
 }
 
+#logo {
+  padding-left: 10px !important;
+
+}
 .headerDropdownMenu{
   height: 100%;
-}
-
-#logo {
-  width: 125px;
+  padding-left: 10px !important;
 }
 
 .ui.segment.progressHeader {
   padding: 8px 14px 8px 14px;
-
 }
 
-.hideHeader{
+/* .hideHeader{
   display:none;
-}
+} */
 
 .moduleTitle {
   padding-top: 4px;
@@ -175,3 +214,4 @@ https://stackoverflow.com/questions/19642308/creating-css3-circles-connected-by-
     width: 2vw;
   }
 }
+

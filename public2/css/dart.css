@@ -10,14 +10,24 @@ html {
 
 /* Want around 80 characters per line */
 #page-content-container {
-    background-color: aqua;
-    width: 70%; 
+    /* background-color: aqua; */
+    /* width: 85%;  */
+    /* same width as the header allows for ~80 characters per line at 1.5rem font */
+    /* width: 955px; */
+    width: 65%; 
+    padding: 0;
+    padding-bottom: 15px;
 }
 
 .ui.vertically.padded.grid.container.addBottomPaddingToGrid {
-    background-color: brown;
+    /* background-color: brown; */
+    width: 100% !important;
 }
 
+#mod-title {
+    display: inline-block;
+    font-size: 2.25rem;
+}
 
 
 

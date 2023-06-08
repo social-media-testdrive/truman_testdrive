@@ -2,64 +2,114 @@
 -var isResearchVersion = process.env.isResearchVersion === 'true';
 -var enableLearnerDashboard = process.env.enableLearnerDashboard === 'true';
 .computer.only.tablet.only.row.testdriveHeaderRow 
-  #header.ui.borderless.fixed.menu.testDriveHeader
-    .ui.grid.container#myheader
-        .four.wide.column
-          a.item(href='/')
-            img.ui.tiny.image(src='/images/DARTLogo.png', id='logo')
-        .eight.wide.column
-          .ui.basic.segment.center.aligned.progressHeader.hideHeader
-            .row.moduleTitle
-              span 
-            .row
-              ul.progressList
-                li.progressStep#headerStep1
-                  h4.number 1
-                  h4.checkmark &#10003
-                  span learn
-                li.progressStep#headerStep2
-                  h4.number 2
-                  h4.checkmark &#10003
-                  span practice
-                li.progressStep#headerStep3
-                  h4.number 3
-                  h4.checkmark &#10003
-                  span explore
-                li.progressStep#headerStep4
-                  h4.number 4
-                  h4.checkmark &#10003
-                  span reflect
-        .four.wide.column
-          if isResearchVersion
-            .right.menu.headerDropdownMenu
-              if user
-                //- a.item.newpost.float.right
-                //-   i.big.plus.icon
-                .ui.simple.dropdown.item
-                  if user.profile.picture
-                    img.ui.mini.spaced.circular.image(src=cdn+'/profile_pictures/'+user.profile.picture)
-                  else
-                    img.ui.mini.spaced.circular.image(src=user.gravatar(60))
-                  |
-                  if isResearchVersion
-                    span= user.username || user.profile.name || user.id
-                  else 
-                    span= user.profile.name || user.username || user.id
-                  i.dropdown.icon
-                  .menu
-                    if user.isInstructor
-                      a.item(href='/classManagement') View Dashboard
-                    if (user.isStudent && enableLearnerDashboard)
-                      a.item(href='/learningAchievement') My Dashboard
-                    a.item(href='/') Module Page
-                    a.item(href='/account') Profile Page
-                    a.item(href='mailto:socialmediatestdrive@gmail.com') Contact Us
-                    a.item(href='/logout') Logout
+  .ui.borderless.fixed.menu
+    #outer-header.ui.borderless.fixed.menu.testDriveHeader
+      #inner-header.ui.menu   
+        a.item(href='/')
+          img.ui.small.image(src='/images/dart-logo.png', id='logo')
+        .right.menu
+          a.item(href='/').dart-blue
+            | Home
+          a.item(href='/account').dart-blue
+            | Profile
+          a.item(href='/learningAchievement')
+            | Logout
+        //- if isResearchVersion
+        //-   .right.menu.headerDropdownMenu
+        //-     if user
+        //-       //- a.item.newpost.float.right
+        //-       //-   i.big.plus.icon
+        //-       .ui.simple.dropdown.item
+        //-         if user.profile.picture
+        //-           img.ui.mini.spaced.circular.image(src=cdn+'/profile_pictures/'+user.profile.picture)
+        //-         else
+        //-           img.ui.mini.spaced.circular.image(src=user.gravatar(60))
+        //-         |
+        //-         if isResearchVersion
+        //-           span= user.username || user.profile.name || user.id
+        //-         else 
+        //-           span= user.profile.name || user.username || user.id
+        //-         i.dropdown.icon
+        //-         .menu
+        //-           if user.isInstructor
+        //-             a.item(href='/classManagement') View Dashboard
+        //-           if (user.isStudent && enableLearnerDashboard)
+        //-             a.item(href='/learningAchievement') My Dashboard
+        //-           a.item(href='/') Module Page
+        //-           a.item(href='/account') Profile Page
+        //-           a.item(href='mailto:socialmediatestdrive@gmail.com') Contact Us
+        //-           a.item(href='/logout') Logout
+
+      //- .ui.menu
+      //-   .header.item
+      //-     | Our Company
+      //-   a.item.active
+      //-     | About Us
+      //-   a.item
+      //-     | Jobs
+      //-   a.item
+      //-     | Locations
+
+
+    //- .ui.grid.container#myheader
+    //-     .three.wide.column
+    //-       a.item(href='/')
+    //-         img.ui.huge.image(src='/images/dart-logo.png', id='logo')
+    //-     .seven.wide.column
+
+    //-     //- .eight.wide.column
+    //-     //-   .ui.basic.segment.center.aligned.progressHeader.hideHeader
+    //-     //-     .row.moduleTitle
+    //-     //-       span 
+    //-     //-     .row
+    //-     //-       ul.progressList
+    //-     //-         li.progressStep#headerStep1
+    //-     //-           h4.number 1
+    //-     //-           h4.checkmark &#10003
+    //-     //-           span learn
+    //-     //-         li.progressStep#headerStep2
+    //-     //-           h4.number 2
+    //-     //-           h4.checkmark &#10003
+    //-     //-           span practice
+    //-     //-         li.progressStep#headerStep3
+    //-     //-           h4.number 3
+    //-     //-           h4.checkmark &#10003
+    //-     //-           span explore
+    //-     //-         li.progressStep#headerStep4
+    //-     //-           h4.number 4
+    //-     //-           h4.checkmark &#10003
+    //-     //-           span reflect
+    //-     .four.wide.column
+    //-       if isResearchVersion
+    //-         .right.menu.headerDropdownMenu
+    //-           if user
+    //-             //- a.item.newpost.float.right
+    //-             //-   i.big.plus.icon
+    //-             .ui.simple.dropdown.item
+    //-               if user.profile.picture
+    //-                 img.ui.mini.spaced.circular.image(src=cdn+'/profile_pictures/'+user.profile.picture)
+    //-               else
+    //-                 img.ui.mini.spaced.circular.image(src=user.gravatar(60))
+    //-               |
+    //-               if isResearchVersion
+    //-                 span= user.username || user.profile.name || user.id
+    //-               else 
+    //-                 span= user.profile.name || user.username || user.id
+    //-               i.dropdown.icon
+    //-               .menu
+    //-                 if user.isInstructor
+    //-                   a.item(href='/classManagement') View Dashboard
+    //-                 if (user.isStudent && enableLearnerDashboard)
+    //-                   a.item(href='/learningAchievement') My Dashboard
+    //-                 a.item(href='/') Module Page
+    //-                 a.item(href='/account') Profile Page
+    //-                 a.item(href='mailto:socialmediatestdrive@gmail.com') Contact Us
+    //-                 a.item(href='/logout') Logout
             
 .mobile.only.row
   .ui.fluid.top.fixed.two.item.menu.testDriveHeader
     a.item(href='/')
-      img.ui.tiny.image(src='/images/DARTLogo.png', id='cell_logo')
+      img.ui.small.image(src='/images/dart-logo.png', id='cell_logo')
     if isResearchVersion
         if user
           //- a.item.newpost.float.right

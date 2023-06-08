@@ -40,9 +40,13 @@ html
     link(rel='stylesheet', href=cdn+'/js/lib/introjs.min.css')
     link(type='text/css', rel='stylesheet', href='/css/header.css') 
     link(type='text/css', rel='stylesheet', href='/css/ui_layout.css') 
-    link(type='text/css', rel='stylesheet', href='/css/dart.css') 
+    //- Need to fix profile and other pages before applying the new more accessible large text css theme to the whole site
+    //- for now I will import this individually to the identity theft module
+    //- link(type='text/css', rel='stylesheet', href='/css/dart.css') 
+
 
     block styles
+
 
   body
     .ui.vertically.padded.grid.container.addBottomPaddingToGrid
@@ -60,6 +64,25 @@ html
             |   Done
     include partials/ui_footer
     
+    script.
+      // add dart.css style sheet to indentity pages (they end in /identity)
+      let url = window.location.href;
+      var module = url.split("/").pop();
+      if(module === 'identity') {
+        console.log("THE MODULE: " + module)
+        // Create a link element
+        var linkElement = document.createElement('link');
+
+        // Set the attributes of the link element
+        linkElement.rel = 'stylesheet';
+        linkElement.type=' text/css';
+        linkElement.href = '/css/dart.css';
+
+        // Append the link element to the head section of the document
+        document.head.appendChild(linkElement);
+        console.log("dart.css added to identity page")
+      }
+
     if process.env.instanceType == 'test'
       script(src="/js/modalMode.js")
       script(src=cdn+'/js/lib/jquery-3.1.1.min.js')
@@ -93,6 +116,7 @@ html
       script(src=t)
 
     block scripts
+
     // Google Analytics
     if process.env.isResearchVersion !== 'true'
       if process.env.NODE_ENV === 'production'
@@ -109,4 +133,3 @@ html
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'UA-145467622-2');
-
