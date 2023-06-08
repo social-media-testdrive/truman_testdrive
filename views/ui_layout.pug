@@ -39,6 +39,7 @@ html
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css', integrity='sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=', crossorigin='anonymous')
     link(rel='stylesheet', href=cdn+'/js/lib/introjs.min.css')
     link(type='text/css', rel='stylesheet', href='/css/header.css') 
+    link(type='text/css', rel='stylesheet', href='/css/footer.css') 
     link(type='text/css', rel='stylesheet', href='/css/ui_layout.css') 
     //- Need to fix profile and other pages before applying the new more accessible large text css theme to the whole site
     //- for now I will import this individually to the identity theft module
@@ -53,17 +54,17 @@ html
       include partials/ui_header
       include partials/ui_flash
       block content
-      include partials/modal
-      .ui.small.basic.share.modal
-        .ui.icon.header
-          i.share.icon
-          |     You have shared this post!
-        .actions(style="text-align:center;")   
-          .ui.green.ok.inverted.button
-            i.checkmark.icon
-            |   Done
-    include partials/ui_footer
-    
+      //- include partials/modal
+      //- .ui.small.basic.share.modal
+      //-   .ui.icon.header
+      //-     i.share.icon
+      //-     |     You have shared this post!
+      //-   .actions(style="text-align:center;")   
+      //-     .ui.green.ok.inverted.button
+      //-       i.checkmark.icon
+      //-       |   Done
+      include partials/ui_footer
+ 
     script.
       // add dart.css style sheet to indentity pages (they end in /identity)
       let url = window.location.href;

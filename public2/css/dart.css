@@ -19,7 +19,7 @@ html {
     padding-bottom: 15px;
 }
 
-.ui.vertically.padded.grid.container.addBottomPaddingToGrid {
+.ui.vertically.padded.grid.container {
     /* background-color: brown; */
     width: 100% !important;
 }

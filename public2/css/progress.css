@@ -143,8 +143,8 @@
 
 .step-name {
     font-weight: bold;
-    font-size: medium;
-    /* margin-top: 0px; */
+    font-size: 1.3rem;
+    margin-top: 10px;
 }
 
 #challenge-icon, #learn-icon, #explore-icon, #evaluate-icon, #reflect-icon {

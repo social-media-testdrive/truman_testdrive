@@ -6,6 +6,12 @@
   background-color: red !important;
 } */
 
+.ui.menu.fixed.not-fixed-header {
+  position: absolute !important;
+  z-index: 101;
+}
+
+
 #outer-header {
   display: flex;
   justify-content: center;

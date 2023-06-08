@@ -25,9 +25,9 @@ body {
     height: auto !important;
 }
 
-.grid.container.addBottomPaddingToGrid {
+/* .grid.container.addBottomPaddingToGrid {
     padding-bottom: 50px;
-}
+} */
 
 .grayElement,
 .ui.container .grayElement {
