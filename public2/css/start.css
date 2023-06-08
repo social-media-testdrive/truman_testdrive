@@ -2,11 +2,30 @@
     margin-top: 15px;
 }
 
-.learning_objectives {
+/* semantic ui ordered lists don't have dots after numbers, so I'm using the normal lists but imported the needed semantic ui styles here*/
+.learning-objectives {
     font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 50px;
+    margin: 1em 0em;
+    padding: 0em 0em;
+}
+
+/* from sementic ui, see note above in .learning-objectives comment */
+li {
+    display: list-item;
+    table-layout: fixed;
+    /* list-style-type: none; */
+    list-style-position: outside;
+    padding: 0.21428571em 0em;
+    line-height: 1.14285714em;
+}
+
+/* .learning-objectives li { 
     margin-top: 20px;
     margin-bottom: 20px;
-}
+} */
 
 .bubble-container {
     display: inline-block; 

@@ -1,0 +1,14 @@
+#outer-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: yellow; */
+}
+  
+#inner-footer {
+    /* switch width to 66% to be inline with page content and header boxes */
+    width: 100%; 
+    box-shadow: none;
+    border: none;
+    /* background-color: blueviolet; */
+}

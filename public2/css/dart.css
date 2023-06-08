@@ -9,6 +9,7 @@ html {
 }
 
 /* Want around 80 characters per line */
+/* includedes everything in middle column, such as the raised segment and the back and next buttons underneath */
 #page-content-container {
     /* background-color: aqua; */
     /* width: 85%;  */
@@ -19,15 +20,19 @@ html {
     padding-bottom: 15px;
 }
 
+/* content below header and before footer */
 .ui.vertically.padded.grid.container {
     /* background-color: brown; */
     width: 100% !important;
+    /* make it so that footer is at very bottom even on pages with less content than fills the page */
+    min-height: 100vh;
 }
 
 #mod-title {
     display: inline-block;
     font-size: 2.25rem;
 }
+
 
 
 
