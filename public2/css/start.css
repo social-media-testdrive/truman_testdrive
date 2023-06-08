@@ -46,9 +46,18 @@ li {
     margin-top: 5px;
 }
 
+/* entire badge grid */
+#badgesGrid {
+    /* background-color: green; */
+    margin: 0 auto;
+    width: 75%;
+}
+
+/* square for each badge */
 #badgesGrid .column .content {
     /* background-color: red; */
     text-align: center;
+    font-size: 1.2rem;
 }
 
 #downloadGrid .button{

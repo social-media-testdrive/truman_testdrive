@@ -1,5 +1,7 @@
 #avatarGrid {
-    margin: 50px;
+    /* margin: 50px; */
+    margin-bottom: 15px;
+    /* background-color: red; */
 }
 
 #speechBubble {
@@ -15,4 +17,6 @@
     padding: 0px; 
     text-align: center; 
     margin: 0;
+    font-size: 1.2rem;
+    font-weight: normal;
 }
