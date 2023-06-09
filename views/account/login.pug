@@ -1,31 +1,51 @@
 extends ../ui_layout
 
 block content
-  .ui.sixteen.wide.row
-    .ui.sixteen.wide.column(style="text-align: center;")
-      h2.loginPageTitle(style="margin:5px 0px; font-family:'Noto Sans', sans-serif;") Welcome to the Deception Awareness and Resilience Training (DART) learning platform
-      span(style="font-size: 17px; font-family:'Arial', Serif;") A platform that aims to help senior people navigate the online world. It c It offers easy- to-understand resources and training to help you spot false information and avoid scams. 
-      iframe(type='text/html' width='540' height='289'
-          src='videos/dart_intro.mp4'
-          frameborder='0' )
 
+  .ui.sixteen.wide.row
+    .ui.sixteen.wide.column
+
+      h2.loginPageTitle(style="text-align: center; margin:5px 0px; font-family:'Noto Sans', sans-serif;") Welcome to the Deception Awareness and Resilience Training (DART) learning platform
+      span(style="text-align: center; font-size: 17px; font-family:'Arial', Serif;") A platform that aims to help senior people navigate the online world. It offers easy-to-understand resources and training to help you spot false information and avoid scams. 
+      
+      .div(style="text-align: center;")
+        iframe(type='text/html' width='750px' height='400px'
+          src='videos/dart_intro.mp4'
+          frameborder='0' style="align-items: center;" )
+      h2.loginPageTitle(style="text-align: center; margin:5px 0px; font-family:'Noto Sans', sans-serif;") Our Mission 
+      span(style="text-align: left !important; font-size: 17px; font-family:'Arial', Serif;") The primary aim of the platform is to empower older adults with increased resilience against the detrimental effects of scams, ensuring that you can effectively safeguard yourself and others from falling victim to deception. 
+      
+      div.ui.special.cards(style="margin-top:20px;width:100%;  margin-bottom:20px;")
+        
+        div.card(style="  box-shadow: 0px 0px 0px rgba(0,0,0,0.5);margin-left: 55px; margin-top: 2%; width: 86%; position: relative; border: solid #d3d3d3; 1px;  border-top: none;  border-top-left-radius: 0px; border-top-right-radius: 0px")
+
+          img-crop(style="width:100%; height:250px;overflow: hidden;border-radius:0px !important ;")
+            img( style="width:100%; height:auto; margin-top: -120px;" src="/profile_pictures/backgournd_img.png")
+          div.content
+            
+            a.header(style="font-family:'Noto Sans', sans-serif; font-size:25px") Identity Theft
+            div.meta
+              span(style="font-family:'Noto Sans', sans-serif; font-size:20px") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+            .div(style="display: flex; float:right")
+              a.ui.button.big.white(href="/identity_home", style=" font-family:'Noto Sans', sans-serif; height:46.28px; border-radius: 17px; margin: 0px 0 0 0; padding:14.1429px !important; display: block; width: 250px; background-color: #fff; border: 1px solid #2884d4; text-align: center; margin-right:10px;")  
+                span
+                  span( style="vertical-align: middle;") Share Certificate 
+                  img(src='/profile_pictures/award.png', alt="Google logo", style="height:20px; vertical-align: middle; margin-right: 10px;")
+              button.ui.big.blue.button(onclick="window.location.href='/identity_home'" style="font-family:'Noto Sans', sans-serif; height:46.28px; border-radius: 17px; width: 200px; margin: 0px 0 0 0; ") Learn Again → 
+              
 
   .ui.sixteen.wide.row 
     .ui.sixteen.wide.column
 
-
-      a(href='/studentLogin')
-        button.ui.big.green.labeled.icon.button
-            i.chevron.circle.right.icon
-            |   Login
-      br
-      br
-      a(href='/createStudent')
-        button.ui.big.green.labeled.icon.button
+      a(href='/createStudent' style='display: flex; justify-content: center; align-items: center; width: 100%;')
+        button.ui.big.blue.labeled.icon.button
             i.chevron.circle.right.icon
             |   Signup
-      br
-      br
-        
+
+block scripts
+  script.
+    document.body.style.backgroundColor = 'white';
+    
 block styles
   link(rel='stylesheet', href='/css/login.css')
+

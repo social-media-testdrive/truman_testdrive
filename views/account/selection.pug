@@ -12,28 +12,31 @@ block content
       span.br(style="font-size: 25px; margin-left: 5%; margin-top: 5%; font-weight: bold;") Hello #{user.profile.name},
       span.br(style="font-size: 18px; margin-left: 5%; margin-top: 3%; font-weight: bold; margin-bottom: 3%") Before starting, would you like to select one of our agents to learn with you?
       
-      .ui.profilePicForm.form 
-        .ui.segment
-            .two.fields(style="display: flex; margin-left: 10%;")
-              .field
-                .ui.radio.checkbox(style="flex: 1; position: relative; overflow: hidden;")
-                      img.lazy(src="/profile_pictures/Daring_PT_Determined1.png" data-src="/profile_pictures/Daring_PT_Determined.png")
-                      button.ui.secondary.button(style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);", onclick="saveButton1()") Select
-              .field
+      .ui.grid(style="margin:30px;")
+        .four.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center; ")
                 .ui.radio.checkbox
-                      img.lazy(src="/profile_pictures/"+"Dartie_Happy_31.png" data-src="/profile_pictures/Dartie_Happy_3.png")
-                      button.ui.secondary.button(style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);", onclick="saveButton2()") Select
-            .two.fields(style="display: flex; margin-left: 10%;")
-              .field
+                      img.lazy(style='border: 2px solid  #2884d4 !important; border-radius: 15px;' src="/profile_pictures/Daring_PT_Determined2.png" data-src="/profile_pictures/Daring_PT_Determined.png")
+                      button.ui.primary.basic.button(style="border-radius: 15px; background:white !important;position: absolute; bottom: 20%; left: 48%; transform: translateX(-50%);", onclick="saveButton1()") Select
+                      button.ui.inverted.basic.button(style=" cursor: default; color: black !important; border-radius: 15px; position: absolute; bottom: -7%; left: 48%; transform: translateX(-50%);") Daring
+
+        .four.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;")
                 .ui.radio.checkbox
-                      img.lazy(src="/profile_pictures/"+"Intrepid_PT_Determined1.png"  data-src="/profile_pictures/Intrepid_PT_Determined.png")
-                      button.ui.secondary.button(style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);", onclick="saveButton3()") Select
-              .field
+                      img.lazy(style=' border: 2px solid  #2884d4 !important; border-radius: 15px;' src="/profile_pictures/Valiant_PT_Determined2.png" data-src="/profile_pictures/Valiant_PT_Determined.png")
+                      button.ui.primary.basic.button(style="border-radius: 15px; background:white !important;position: absolute; bottom: 20%; left: 48%; transform: translateX(-50%);", onclick="saveButton4()") Select
+                      button.ui.inverted.basic.button(style=" cursor: default; color: black !important; border-radius: 15px; position: absolute; bottom: -7%; left: 48%; transform: translateX(-50%);") Valiant
+
+        .four.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;")
                 .ui.radio.checkbox
-                      img.lazy(src="/profile_pictures/Valiant_PT_Determined1.png" data-src="/profile_pictures/Valiant_PT_Determined.png")
-                      button.ui.secondary.button(style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);", onclick="saveButton4()") Select
-      
-      button.ui.secondary.button(style="margin-top: 1%" onclick="saveButton5()" ) I prefer to have the journey myself
+                      img.lazy(style=' border: 2px solid  #2884d4 !important; border-radius: 15px;' src="/profile_pictures/"+"Intrepid_PT_Determined2.png"  data-src="/profile_pictures/Intrepid_PT_Determined.png")
+                      button.ui.primary.basic.button(style="border-radius: 15px; background:white !important;position: absolute; bottom: 20%; left: 48%; transform: translateX(-50%);", onclick="saveButton3()") Select
+                      button.ui.inverted.basic.button(style=" cursor: default; color: black !important; border-radius: 15px; position: absolute; bottom: -7%; left: 48%; transform: translateX(-50%);") Intrepid
+        .four.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;")
+                .ui.radio.checkbox
+                      img.lazy(style=' border: 2px solid  #2884d4 !important; border-radius: 15px;' src="/profile_pictures/"+"Dartie_Happy_32.png" data-src="/profile_pictures/Dartie_Happy_3.png")
+                      button.ui.primary.basic.button(style="border-radius: 15px; background:white !important;position: absolute; bottom: 20%; left: 48%; transform: translateX(-50%);", onclick="saveButton2()") Select
+                      button.ui.inverted.basic.button(style=" cursor: default; color: black !important; border-radius: 15px; position: absolute; bottom: -7%; left: 48%; transform: translateX(-50%);") Dartie
+
+      button.ui.primary.basic.button(style="margin: auto; margin-bottom:50px; width:50%; border-radius: 15px !important; margin-top: 1%" onclick="saveButton5()" ) I prefer to have the journey myself!
 
 block scripts
   script.

@@ -7,86 +7,40 @@
         .four.wide.column
           a.item(href='/')
             img.ui.tiny.image(src='/images/DARTLogo.png', id='logo')
-        .eight.wide.column
-          .ui.basic.segment.center.aligned.progressHeader.hideHeader
-            .row.moduleTitle
-              span 
-            .row
-              ul.progressList
-                li.progressStep#headerStep1
-                  h4.number 1
-                  h4.checkmark &#10003
-                  span learn
-                li.progressStep#headerStep2
-                  h4.number 2
-                  h4.checkmark &#10003
-                  span practice
-                li.progressStep#headerStep3
-                  h4.number 3
-                  h4.checkmark &#10003
-                  span explore
-                li.progressStep#headerStep4
-                  h4.number 4
-                  h4.checkmark &#10003
-                  span reflect
-        .four.wide.column
+        if user
+         .four.wide.column.right.floated(style='left: -20%')
           if isResearchVersion
             .right.menu.headerDropdownMenu
-              if user
-                //- a.item.newpost.float.right
-                //-   i.big.plus.icon
-                .ui.simple.dropdown.item
-                  if user.profile.picture
-                    img.ui.mini.spaced.circular.image(src=cdn+'/profile_pictures/'+user.profile.picture)
-                  else
-                    img.ui.mini.spaced.circular.image(src=user.gravatar(60))
-                  |
-                  if isResearchVersion
-                    span= user.username || user.profile.name || user.id
-                  else 
-                    span= user.profile.name || user.username || user.id
-                  i.dropdown.icon
-                  .menu
-                    if user.isInstructor
-                      a.item(href='/classManagement') View Dashboard
-                    if (user.isStudent && enableLearnerDashboard)
-                      a.item(href='/learningAchievement') My Dashboard
-                    a.item(href='/') Module Page
-                    a.item(href='/account') Profile Page
-                    a.item(href='mailto:socialmediatestdrive@gmail.com') Contact Us
-                    a.item(href='/logout') Logout
-              else 
-                    a.item(href='/studentLogin')
+              
+                  .one.wide.column(style='margin:15px;')
+                    a.item(style=' color:#2884d4 !important;' href='/') Home
+                  .one.wide.column(style='margin:15px')
+                    a.item(style=' color:#2884d4 !important;' href='/account') Profile
+                  .one.wide.column(style='margin:15px;')
+                    a.item(style=' color:#2884d4 !important; border-radius: 40px !important; border: 2px solid grey !important; ' href='/logout') Logout
+        else 
+         .four.wide.column.right.floated
+          if isResearchVersion
+            .right.menu.headerDropdownMenu
+                  .one.wide.column(style='margin:15px;')
+                    a.item(style=' color:#2884d4 !important; border-radius: 40px !important; border: 2px solid grey !important; ' href='/studentLogin')
                       span Login
 .mobile.only.row
   .ui.fluid.top.fixed.two.item.menu.testDriveHeader(style='justify-content:start')
     a.item( style='justify-content:start;' href='/')
       img.ui.tiny.image(style="margin-left:20px" src='/images/DARTLogo.png', id='cell_logo')
-
-    if isResearchVersion
-        if user
-          //- a.item.newpost.float.right
-          //-   i.big.plus.icon
-          .item
-            .right.menu.headerDropdownMenu
-              .ui.simple.dropdown.item
-                if isResearchVersion
-                  span= user.username || user.profile.name || user.id
-                else 
-                  span= user.profile.name || user.username || user.id
-                i.dropdown.icon
-                .menu
-                  if user.isInstructor
-                    a.item(href='/classManagement') View Dashboard
-                  if (user.isStudent && enableLearnerDashboard)
-                    a.item(href='/learningAchievement') My Dashboard
-                  a.item(href='/') Module Page
-                  a.item(href='/account') Profile Page
-                  a.item(href='mailto:socialmediatestdrive@gmail.com') Contact Us
-                  a.item(href='/logout') Logout
-        else 
-                  a.item(href='/studentLogin')
-                    span Login
+    .four.wide.column.right.floated
+      if isResearchVersion
+              if user
+                  .one.wide.column(style='margin:15px')
+                    a.item(style=' color:#2884d4 !important;' href='/') Home
+                  .one.wide.column(style='margin:15px')
+                    a.item(style=' color:#2884d4 !important;' href='/account') Profile
+                  .one.wide.column(style='margin:15px')
+                    a.item(style=' color:#2884d4 !important; ' href='/logout') Logout
+              else 
+                    a.item(style=' color:#2884d4 !important; border-radius: 40px !important; border: 2px solid grey !important; ' href='/studentLogin')
+                      span Login
 style.
   a.item::before {
     display: none;

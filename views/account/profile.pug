@@ -2,80 +2,90 @@ extends ../ui_layout
 
 block content
   -var user_post = []
-  -var user_info = [{profile_pic : "/profile_pictures/amy.jpg",background_pic : "/profile_pictures/blue_background.png",user_name : "Amy G",user_id : "@amyg__g",bio : "Daughter. Sister. Proud Black American. I tend to get political.",location : "New York, NY",join_date : "Joined January 2019"}]
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
     //-####################### title
-  .twelve.wide.computer.fourteen.wide.tablet.sixteen.wide.mobile.column.centered
-    .ui.one.column.centered.grid.feedbackMessagesGrid
-    .ui.fluid.card.dim(style = "margin-top:0px;margin-bottom:0px;")
+  //-.twelve.wide.computer.fourteen.wide.tablet.sixteen.wide.mobile.column.centered
+  .ui.sixteen.wide.row
+    .ui.sixteen.wide.column
       .profile_title(style='position: relative; top: 0; left: 0;')
        div(style="position: relative; display: inline-block;")
-        img(style='width: 100%; height: 80%; z-index: 0; object-fit: relative;' src=user_info[0].background_pic)
-        
-        button.ui.secondary.button(onclick="window.location.href='/edit_profile'" style="z-index:2;position: absolute; bottom: 10px; right: 10px") Edit Profile
 
-      .user_profile(style=' width:100%;padding-left: 25px; margin-top: -5%;z-index: 1')
-          img.editProfilePictureButton(style='cursor:pointer; \
-  margin-top: -5%;\
-  border-radius: 50%; width:20%; height 20%; z-index: 2;\
+      .example(style=' width:100%;padding-left: 25px; margin-top: 0%;z-index: 1')
+          .example-layout
+            
+            .row
+              .col-1 
+                div(style=' position: relative; display: flex; flex-direction: column; align-items: flex-start;')
+                  span.br(style='margin:3px; font-size: 23px;')= user.profile.name
+                  span.br(style='margin:3px; font-size: 23px;')= "Learning since "+user.createdAt.split('T')[0].split('-').reverse().join('/')
+                  div(style='margin:3px; display: flex; justify-content: flex-start; align-items: center;')
+                    button.btn(style='padding: 6px; border: 1px solid #2884d4; border-radius: 50px; white-space: nowrap;') 1 module completed
+                    button.btn(style='margin-left:5px; padding: 6px; border: 1px solid #2884d4; border-radius: 50px; white-space: nowrap;') top learner
+              .col-2 
+                img.editProfilePictureButton(style='cursor:pointer; \
+  border-radius: 50%; width:100px; height 100px; z-index: 2;\
   top: 50%;\
   left: 3%;\
   border: 2px white solid;padding: -1px;padding: 5px white solid;z-index: 1;background-color: white;' src="/profile_pictures/avatar-icon.svg")
-          
-          div(style='position: relative; margin-left: 20%; margin-top: -7%; display: flex; flex-direction: column; align-items: flex-start;')
-            span.br(style='font-size: 23px; margin-top: -5%; margin-left: 2%;')= user.profile.name
-            div(style='margin-left: -25% ;display: flex; justify-content: flex-start; align-items: center; margin-top: 4%;')
-              button.btn(style='padding: 6px; border: none; margin-left: 80%; border-radius: 50px; white-space: nowrap;') 1 module completed
-              button.btn(style='padding: 6px; border: none; margin-left: 5%; border-radius: 50px; white-space: nowrap;') Top learner
-
-
-
-      span.br(style="font-size: 25px; margin-left: 5%; margin-top: 5%; font-weight: bold;") My Courses
-      span.br#progressDisplay(style="font-size: 18px; margin-left: 5%; margin-top: 3%; font-weight: bold;")
+              .col-3 
+                 img(onclick="window.location.href='/edit_profile'" style="margin-right:50%;float: right;cursor:pointer; width:50px; height 50px;" src="/profile_pictures/Gear-icon.png")
+              
+      div(style=' padding-left: 25px; position: relative; display: flex; flex-direction: column; align-items: flex-start;')
+        span#progressDisplay(style="margin:3px; margin-top:-20px; margin-bottom:15px; font-size: 25px; font-weight: bold;") 
 
 
       
-      div.ui.special.cards(style="margin-top:2%;margin-left:3%;width:100%")
+      div.ui.special.cards(style="margin-top:20px;width:100%;  margin-bottom:20px;")
         
-        div.card(style="margin-top: 2%; width: 91%; position: relative;")
+        div.card(style="  box-shadow: 0px 0px 0px rgba(0,0,0,0.5);margin-left: 55px; margin-top: 2%; width: 86%; position: relative; border: solid #d3d3d3; 1px;  border-top: none;  border-top-left-radius: 0px; border-top-right-radius: 0px")
+
+          img-crop(style="width:100%; height:250px;overflow: hidden;border-radius:0px !important ;")
+            img( style="width:100%; height:auto; margin-top: -120px;" src="/profile_pictures/backgournd_img.png")
           div.content
-            a.header Identity Theft
-            div.meta
-              span Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
             
-            button.ui.secondary.button(style="margin-top: 1%" onclick="window.location.href='/identity_home'" ) Learn Now →
-          div#progressBar(style="border-top: 8px solid green; width: 90%; position: absolute; left: 0;")
-      span.br(style="font-size: 18px; margin-left: 5%; margin-top: 5%; font-weight: bold;") Completed (100%)
-      
-
-      div.ui.special.cards(style="margin-top:2%;margin-left:3%;width:100%")
-        div.card(style="margin-top: 2%; width: 91%; position: relative;")
-          div.content
-            a.header How to Avoid Trolls
+            a.header(style="font-family:'Noto Sans', sans-serif; font-size:25px") Identity Theft
             div.meta
-              span.date Trolls are individuals who seek to harass, provoke, and upset others in online communities, using various methods such as inflammatory comments, misleading information, and personal attacks.
-            button.ui.secondary.button(style="margin-top: 1%") View Certificate 
-            button.ui.secondary.button(style="margin-top: 1%") Share Certificate 
-            button.ui.secondary.button(style="margin-top: 1%" onclick="window.location.href='/intro/trolls'") Learn Now →
+              span(style="font-family:'Noto Sans', sans-serif; font-size:20px") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+            .div(style="display: flex; float:right")
+              a.ui.button.big.white(href="/identity_home", style=" font-family:'Noto Sans', sans-serif; height:46.28px; border-radius: 17px; margin: 0px 0 0 0; padding:14.1429px !important; display: block; width: 250px; background-color: #fff; border: 1px solid #2884d4; text-align: center; margin-right:10px;")  
+                span
+                  span( style="vertical-align: middle;") Share Certificate 
+                  img(src='/profile_pictures/award.png', alt="Google logo", style="height:20px; vertical-align: middle; margin-right: 10px;")
+              button.ui.big.blue.button(onclick="window.location.href='/identity_home'" style="font-family:'Noto Sans', sans-serif; height:46.28px; border-radius: 17px; width: 200px; margin: 0px 0 0 0; ") Learn Again → 
+              
 
-          div(style="border-top: 8px solid green; width: 100%; position: absolute; left: 0;")
-      span.br(style="font-size: 28px; margin-left: 5%; margin-top: 5%; font-weight: bold;") Learning Materials 
+            
+          div#progressBar(style="border-top-left-radius: 5px !important;  border-bottom-left-radius: 0px !important; border-bottom-right-radius: 0px !important;margin-top:-8px; border-top: 8px solid #2884d4; width: 85%; position: absolute; left: 0;")
+
          
-      div(style="display: flex;")
+      span.br(style="margin:30px; font-size: 25px; font-weight: bold;") My Badges:
+
+      .ui.grid(style="margin:30px;")
+        .three.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;")
+          .ui.huge.label(style='background-color:white; text-align: center;')
+            img(src='/profile_pictures/certificate1.png', style="height:20px; vertical-align: middle; margin-right: 10px;")
+          p(style='text-align: center; margin-top: 0.5em;') Challenge Conqueror
+        .three.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;")
+          .ui.huge.label(style='background-color:white; text-align: center;')
+            img(src='/profile_pictures/certificate2.png', style="height:20px; vertical-align: middle; margin-right: 10px;")
+          p(style='text-align: center; margin-top: 0.5em;') Foundations Achiever
+        .three.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;")
+          .ui.huge.label(style='background-color:white; text-align: center;')
+            img(src='/profile_pictures/certificate3.png', style="height:20px; vertical-align: middle; margin-right: 10px;")
+          p(style='text-align: center; margin-top: 0.5em;') Progress Master
+        .three.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;")
+          .ui.huge.label(style='background-color:white; text-align: center;')
+            img(src='/profile_pictures/certificate4.png', style="height:20px; vertical-align: middle; margin-right: 10px;")
+          p(style='text-align: center; margin-top: 0.5em;') Champion of Completion
+        .three.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;")
+          .ui.huge.label(style='background-color:white; text-align: center;')
+            img(src='/profile_pictures/certificate5.png', style="height:20px; vertical-align: middle; margin-right: 10px;")
+          p(style='text-align: center; margin-top: 0.5em;') Interpid Inverstigator
+        .three.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;")
+          .ui.huge.label(style='background-color:white; text-align: center;')
+            img(src='/profile_pictures/certificate6.png', style="height:20px; vertical-align: middle; margin-right: 10px;")
+          p(style='text-align: center; margin-top: 0.5em;') Adventure Achiever
           
-
-        div(style="margin: 5%; display: flex; flex-direction: column; align-items: center; width: 200px;")
-          img.ui.small.image.profileImage(src="/profile_pictures/"+"troll_1.png", style="width: 100%; object-fit: cover;")
-          p(style="background-image: linear-gradient(to right, white , #FAF9F6); width: 100%; text-align: center;") Identity Theft.pdf 
-        div(style="margin: 5%; display: flex; flex-direction: column; align-items: center; width: 200px;")
-
-          img.ui.small.image.profileImage(src="/profile_pictures/"+"identity-mod-pic_1.png", style="width: 100%; object-fit: cover;")
-          p(style="background-image: linear-gradient(to right, white , #FAF9F6); width: 100%; text-align: center;") How to Avoid Trolls.pdf ↓
-
-
-
-
-      
   //- Profile Picture Selection Modal 
   .ui.small.long.post.modal.profilePictureModal 
     i.close.icon  
@@ -119,6 +129,7 @@ block content
 
 block scripts
   script.
+    document.body.style.backgroundColor = "white";
     (function() {
       // Check if the "progress" variable has been assigned a value yet
       let progress = localStorage.getItem('progress');
@@ -138,9 +149,9 @@ block scripts
         if (progress === 0) {
           progressSpan.innerText = "Start right now";
         } else if (progress === 100) {
-          progressSpan.innerText = "Completed";
+          progressSpan.innerText = "My Courses: (Completed)";
         } else {
-          progressSpan.innerText = `Progress: (${progress}%)`;
+          progressSpan.innerText = `My Courses: (${progress}%)`;
         }
 
         const progressBar = document.getElementById('progressBar');
@@ -195,3 +206,49 @@ block styles
     margin-top: 30px !important;
     margin-bottom: 30px !important;
     }
+    .example {
+      display: flex;
+      flex-direction: column;
+    }
+    .example h2 {
+      background: black;
+      color: white;
+    }
+
+    .example-layout {
+      display: flex;
+      flex-direction: column;
+      height: 130px;
+    }
+    .example-layout header,
+    .example-layout footer {
+      padding: 20px;
+      background: #666;
+      color: white;
+    }
+    .example-layout .row {
+      display: flex;
+      flex-grow: 1;
+    }
+    .example-layout .row .col-1 {
+      flex-grow: 1;
+    }
+    .example-layout .row .col-2 {
+      width: 160px;
+      order: -1;
+    }
+    .example-layout .row .col-3 {
+
+      width: 160px;
+    }
+    div.card::before {
+      content: "";
+      position: absolute;
+      top: -8px;
+      left: -2px;
+      right: -3px;
+      height: 8px;
+      border: solid #F3F3F3 3px;
+      border-bottom: none;
+
+    } 

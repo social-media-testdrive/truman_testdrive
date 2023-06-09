@@ -4,12 +4,11 @@ block content
   .ui.sixteen.wide.row 
     .ui.sixteen.wide.column(style="display: flex; flex-direction: column; justify-content: center; align-items: center;")
       .login-box
-        h2.ui.header(style="text-align: left !important; margin:5px 0px; font-family:'Noto Sans', sans-serif;") Log in to your account
+        h2.ui.header(style="text-align: left !important; margin:5px 0px; font-family:'Noto Sans', sans-serif;") Welcome back!
         form.ui.form(action="/studentLogin", method='POST')
           input(type='hidden', name='_csrf', value=csrfToken)
           .field
-            span(style="font-size: 17px; font-family:'Arial', Serif;") Don't have an account? 
-            a(style="font-size: 17px;" href="/createStudent") Sign Up Now
+            span(style="font-size: 17px; font-family:'Arial', Serif;") Please enter your details
             label(for='username' style="margin-top:15px; font-size:larger;") Email:
             input(style="margin:5px 0px; width: 100%; border-radius: 5px; border: 2px solid grey !important; background-color: #fff !!important; color: #000 !important;" type='text', name='username', id='username', placeholder='Email', required).field
             label(for='password' style="font-size:larger;") Password:
@@ -33,9 +32,9 @@ block content
               span
                 img(src='/profile_pictures/g-logo.png', alt="Google logo", style="height:20px; vertical-align: middle; margin-right: 10px;")
                 span( style="vertical-align: middle;") Sign In With Google
-//-          img(style='margin-top:5px; z-index: 0;' src="/profile_pictures/or_divider.png")
+          img(style='margin-top:5px; z-index: 0;' src="/profile_pictures/or_divider.png")
 
-//-          a.ui.button.big.green(href="/createStudent", style="font-family:'Noto Sans', sans-serif; height:46.28px; border-radius: 17px; padding:14.1429px !important; display: block; width: 100%; border: 1px solid #2884d4; text-align: center; padding: 10px; ")  Sign Up
+          a.ui.button.big.green(href="/createStudent", style="font-family:'Noto Sans', sans-serif; height:46.28px; border-radius: 17px; padding:14.1429px !important; display: block; width: 100%; border: 1px solid #2884d4; text-align: center; padding: 10px; ")  Sign Up
               
 block styles
   style.
