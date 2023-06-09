@@ -40,48 +40,27 @@ html
     link(rel='stylesheet', href=cdn+'/js/lib/introjs.min.css')
     link(type='text/css', rel='stylesheet', href='/css/header.css') 
     link(type='text/css', rel='stylesheet', href='/css/footer.css') 
-    //- link(type='text/css', rel='stylesheet', href='/css/ui_layout.css') 
+    link(type='text/css', rel='stylesheet', href='/css/ui_layout.css') 
     link(type='text/css', rel='stylesheet', href='/css/dart.css') 
 
-
     block styles
-
 
   body
     .ui.vertically.padded.grid.container.addBottomPaddingToGrid
       include partials/ui_header
       include partials/ui_flash
       block content
-      //- include partials/modal
-      //- .ui.small.basic.share.modal
-      //-   .ui.icon.header
-      //-     i.share.icon
-      //-     |     You have shared this post!
-      //-   .actions(style="text-align:center;")   
-      //-     .ui.green.ok.inverted.button
-      //-       i.checkmark.icon
-      //-       |   Done
-      include partials/ui_footer
- 
-    script.
-      // add dart.css style sheet to indentity pages (they end in /identity)
-      //- let url = window.location.href;
-      //- var module = url.split("/").pop();
-      //- if(module === 'identity') {
-      //-   console.log("THE MODULE: " + module)
-      //-   // Create a link element
-      //-   var linkElement = document.createElement('link');
-
-      //-   // Set the attributes of the link element
-      //-   linkElement.rel = 'stylesheet';
-      //-   linkElement.type=' text/css';
-      //-   linkElement.href = '/css/dart.css';
-
-      //-   // Append the link element to the head section of the document
-      //-   document.head.appendChild(linkElement);
-      //-   console.log("dart.css added to identity page")
-      //- }
-
+      include partials/modal
+      .ui.small.basic.share.modal
+        .ui.icon.header
+          i.share.icon
+          |     You have shared this post!
+        .actions(style="text-align:center;")   
+          .ui.green.ok.inverted.button
+            i.checkmark.icon
+            |   Done
+    include partials/ui_footer
+    
     if process.env.instanceType == 'test'
       script(src="/js/modalMode.js")
       script(src=cdn+'/js/lib/jquery-3.1.1.min.js')
@@ -115,7 +94,6 @@ html
       script(src=t)
 
     block scripts
-
     // Google Analytics
     if process.env.isResearchVersion !== 'true'
       if process.env.NODE_ENV === 'production'
@@ -132,3 +110,4 @@ html
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'UA-145467622-2');
+

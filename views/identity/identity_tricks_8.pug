@@ -3,106 +3,133 @@ extends ../ui_layout
 block content
 
   .ui.text.container.addBottomMargin
-    .ui.fluid.tiny.three.item.fluid.menu
-      .item.active(style='background-color: #6BBCC7; color: white; border-right: 2px solid white;')
-        | Concept & Consequences
-      .item(style='background-color: #6BBCC7; color: white; border-right: 2px solid white;')
-        | Tricks and Recognize Tricks
-      .item(style='background-color: darkgray; color: white;')
-        | Method and Protection
-    #segmentation.ui.raised.segment
-      img.ui.medium.image(src='/images/practice_progress_bar.png' style='margin-left: auto; margin-right: auto')
-      img.ui.centered.image(src='/images/tricks_dollar.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:20px;margin-bottom: 20px;")
-      form.ui.form(style="width: 100%" action='/postIdentityTheftModTwoQuizScore', method='POST')
+    br    
+    .ui.raised.segment
+      h1.ui.header
+        .content
+            | Identity Theft Pre-Quiz
+      p Test Your Knowledge
+
+    .ui.container
+      h1 Quiz
+            
+      form#quiz-form.ui.form(style="width: 100%;"  action='/postIdentityTheftPreQuizScore', method='POST')
         input(type='hidden', name='username', value=user.username)
         input(type='hidden', name='_csrf', value=csrfToken)
-        h3 1. Is this a Reward scam email?
+
+        img.ui.centered.image(src='/images/identity_prequiz_1.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:0px;margin-bottom: 0px;")
+        .ui.segment
+          h3(style='display: inline-block; font-weight: bold;') 
+            span(style='color: red; margin-right: 5px;') * 
+            | 1. Is this email a scam? 
           div.ui.inline.fields(style='display: flex;margin-bottom: -30px;')
             .field.fieldStyle
-              #b1.ui.radio.checkbox.radioContainer
-                input(type='radio' id="c1" name='q1' value = 'yes')
+              .ui.radio.checkbox.radioContainer
+                input(type='radio' name='q1' value = 'yes')
                 label Yes
             .field.fieldStyle
-              #b2.ui.radio.checkbox.radioContainer
-                input(type='radio' id="c2" name='q1' value = 'no')
+              .ui.radio.checkbox.radioContainer
+                input(type='radio' name='q1' value = 'no')
+                label No
+          input(type='hidden', name='q1')
+
+        hr
+
+        img.ui.centered.image(src='/images/identity_prequiz_2.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:40px;margin-bottom: 0px;")
+        .ui.segment
+          h3(style='display: inline-block; font-weight: bold;') 
+            span(style='color: red; margin-right: 5px;') * 
+            | 2. Is this email a scam? 
+          div.ui.inline.fields(style='display: flex;margin-bottom: -30px;')
+            .field.fieldStyle
+              .ui.radio.checkbox.radioContainer
+                input(type='radio' name='q2' value = 'yes')
+                label Yes
+            .field.fieldStyle
+              .ui.radio.checkbox.radioContainer
+                input(type='radio' name='q2' value = 'no')
                 label No
           input(type='hidden', name='q2')
 
-        h3 2. Explain why? Select all that apply
+        hr
+
+        img.ui.centered.image(src='/images/identity_prequiz_3.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:40px;margin-bottom: 0px;")
+        .ui.segment
+          h3(style='display: inline-block; font-weight: bold;') 
+            span(style='color: red; margin-right: 5px;') * 
+            | 3. Is this email a scam? 
+          div.ui.inline.fields(style='display: flex;margin-bottom: -30px;')
+            .field.fieldStyle
+              .ui.radio.checkbox.radioContainer
+                input(type='radio' name='q3' value = 'yes')
+                label Yes
+            .field.fieldStyle
+              .ui.radio.checkbox.radioContainer
+                input(type='radio' name='q3' value = 'no')
+                label No
+          input(type='hidden', name='q3')
+
+        hr
+
+        img.ui.centered.image(src='/images/identity_prequiz_4.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:40px;margin-bottom: 0px;")
+        .ui.segment
+          h3(style='display: inline-block; font-weight: bold;') 
+            span(style='color: red; margin-right: 5px;') * 
+            | 4. Is this email a scam? 
+          div.ui.inline.fields(style='display: flex;margin-bottom: -30px;')
+            .field.fieldStyle
+              .ui.radio.checkbox.radioContainer
+                input(type='radio' name='q4' value = 'yes')
+                label Yes
+            .field.fieldStyle
+              .ui.radio.checkbox.radioContainer
+                input(type='radio' name='q4' value = 'no')
+                label No
+          input(type='hidden', name='q4')
+        hr
+
+        .ui.segment(style='margin-top:40px;') 
+          h3(style='display: inline-block; font-weight: bold;') 
+            span(style='color: red; margin-right: 5px;') * 
+            | 5. What could occur if your identity is stolen? Select all that apply. 
           .grouped.fields
             .field
-              div#b3.ui.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
-                input(type='checkbox', id='q2c1', name='q2-option-1', value='1')
-                label Insecure email address domain
+              div.ui.checkbox
+                input(type='checkbox', name='q2-option-1', value='1')
+                label Loss of money
             .field
-              div#b4.ui.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
-                input(type='checkbox', id='q2c2', name='q2-option-2', value='1')
-                label Sense of urgency
+              div.ui.checkbox
+                input(type='checkbox', name='q2-option-2', value='1')
+                label Loss of tax refund
             .field
-              div#b5.ui.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
-                input(type='checkbox', id='q2c3', name='q2-option-3', value='1')
-                label Incorrect brand name font
+              div.ui.checkbox
+                input(type='checkbox', name='q2-option-3', value='1')
+                label Be charged as a criminal
             .field
-              div#b6.ui.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
-                input(type='checkbox', id='q2c4', name='q2-option-4', value='1')
-                label Use of green
+              div.ui.checkbox
+                input(type='checkbox', name='q2-option-4', value='1')
+                label Denials of loans and mortgages
             .field
-              div#b7.ui.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
-                input(type='checkbox', id='q2c5', name='q2-option-5', value='1')
-                label Typos
-          #submitQuestion.ui.green.button(onclick ='checkQuestion()', style='float: right') Check Answers
-          #correctness.ui.label.right.floated(style='clear: both; width: 100%; float: right; display: none')
-            p#score(style='float:right') 1.0/1 points
-          input(type='hidden', name='scoreInput', value='0', id='scoreInput')
-          br
-          br
-          button.ui.blue.button(style="float: right; clear: both" type='submit') Finish
-          h1
-          h1
-    .div(style='margin-top:20px;')
-      button.ui.medium.button.left.floated(onclick="location.href='/identity_tricks_7';") 
-        i.arrow.left.icon 
-        | Back
-      //- button.ui.medium.button.left.floated(onclick="location.href='/';") Save & Exit
-      //- button.ui.medium.button.right.floated(onclick="location.href='/identity_tricks_9';")
-      //-   | Next
-      //-   i.arrow.right.icon
+              div.ui.checkbox
+                input(type='checkbox', name='q2-option-5', value='1')
+                label Loss of medical care
+        .div(style='margin-top:20px;')
+          button.ui.large.button.left.floated(onclick="location.href='/identity_home';") 
+            i.arrow.left.icon 
+            | Back
+          button.ui.large.button.left.floated(onclick="location.href='/identity_learn_page0';") Skip Quiz
+          //- button.circular.ui.icon.button.right.floated(onclick="showModal()")
+          //-   i.wechat.icon
+          button.ui.large.green.button.right.floated(type='submit')
+            | Submit Quiz
+            i.arrow.right.icon
+    //- button.btn(style="background-color: green; color: white; font-size: 24px; padding: 10px 20px; border: none; border-radius: 5px; float: right;" onclick="location.href='/identity_prequiz_finish';") Submit Quiz
+
 
 
 
 block scripts
   script.
-    function checkQuestion(){
-      document.getElementById("submitQuestion").style.display = "none";
-      let x = 0;
-      if(document.getElementById("c1").checked) {
-        x++;
-      } 
-      document.getElementById("b1").style.borderColor="green";
-      document.getElementById("b2").style.borderColor="red";
-
-
-      if(document.getElementById("q2c1").checked) {
-        x = x + 0.33333333333;
-      } 
-      if(document.getElementById("q2c2").checked) {
-        x = x + 0.33333333333;
-      } 
-      if(document.getElementById("q2c3").checked) {
-        x = x + 0.33333333333;
-      } 
-      document.getElementById("b3").style.borderColor="green";
-      document.getElementById("b4").style.borderColor="green";
-      document.getElementById("b5").style.borderColor="green";
-      document.getElementById("b6").style.borderColor="red";
-      document.getElementById("b7").style.borderColor="red";
-
-      document.getElementById("score").innerHTML = x.toFixed(2) + " / 2.00 points";
-      document.getElementById("correctness").style.display = "block";
-      document.getElementById('scoreInput').value = x +  " / 2.00 points";
-    }
-
-
     var voiceoverMappings = {
       '.showLearnSectionButton': {
         "initialDelay": 700,
@@ -129,7 +156,7 @@ block scripts
   script(src="/module_js/base_start.js")
   
 block styles
-  link(rel='stylesheet', href='/css/start.css')  
+  //- link(rel='stylesheet', href='/css/start.css')  
   link(rel='stylesheet', href='/css/prequiz.css')  
 
     
