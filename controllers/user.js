@@ -222,7 +222,7 @@ exports.postIdentityTheftPreQuizScore = (req, res, next) => {
                 });
         }
     });
-    res.redirect('/prequiz2/identity'); 
+    res.redirect('/evaluate3/identity'); 
 }; 
 
 exports.postIdentityTheftModOneQuizScore = (req, res, next) => {

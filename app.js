@@ -580,138 +580,288 @@ app.get('/intro2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders
 
 
 // Render prequiz (all modules) ******************************
-app.get('/prequiz/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/prequiz/' + req.params.modId + '_prequiz', {
-        title: 'Prequiz'
+app.get('/evaluate/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/evaluate/' + req.params.modId + '_evaluate', {
+        title: 'Evaluate'
     });
 });
 
-app.get('/prequiz2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/prequiz/' + req.params.modId + '_prequiz2', {
-        title: 'Prequiz'
+app.get('/evaluate2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/evaluate/' + req.params.modId + '_evaluate2', {
+        title: 'Evaluate'
     });
 });
 
-// Render learn (all modules) ******************************
-app.get('/learn/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn', {
+app.get('/evaluate3/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/evaluate/' + req.params.modId + '_evaluate3', {
+        title: 'Evaluate'
+    });
+});
+
+// Render learn submod 1 (all modules) ******************************
+app.get('/submod/learn/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod/' + req.params.modId + '_sub_learn', {
         title: 'Learn'
     });
 });
 
-app.get('/learn2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn2', {
+app.get('/submod/learn2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod/' + req.params.modId + '_sub_learn2', {
         title: 'Learn'
     });
 });
 
-app.get('/learn3/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn3', {
+app.get('/submod/learn3/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod/' + req.params.modId + '_sub_learn3', {
         title: 'Learn'
     });
 });
 
-app.get('/learn4/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn4', {
+app.get('/submod/learn4/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod/' + req.params.modId + '_sub_learn4', {
         title: 'Learn'
     });
 });
 
-app.get('/learn5/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn5', {
+app.get('/submod/learn5/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod/' + req.params.modId + '_sub_learn5', {
         title: 'Learn'
     });
 });
 
-app.get('/learn6/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn6', {
+app.get('/submod/learn6/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod/' + req.params.modId + '_sub_learn6', {
         title: 'Learn'
     });
 });
 
-app.get('/learn7/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn7', {
+app.get('/submod/learn7/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod/' + req.params.modId + '_sub_learn7', {
         title: 'Learn'
     });
 });
 
-app.get('/learn8/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn8', {
+app.get('/submod/learn8/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod/' + req.params.modId + '_sub_learn8', {
         title: 'Learn'
     });
 });
 
-app.get('/learn9/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn9', {
+app.get('/submod/learn9/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod/' + req.params.modId + '_sub_learn9', {
         title: 'Learn'
     });
 });
 
-app.get('/learn10/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn10', {
+app.get('/submod/learn10/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod/' + req.params.modId + '_sub_learn10', {
         title: 'Learn'
     });
 });
 
-app.get('/learn11/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn11', {
+// Render learn submod 2 (all modules) ******************************
+app.get('/submod2/learn/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod2/' + req.params.modId + '_sub2_learn', {
         title: 'Learn'
     });
 });
 
-app.get('/learn12/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn12', {
+app.get('/submod2/learn2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod2/' + req.params.modId + '_sub2_learn2', {
         title: 'Learn'
     });
 });
 
-app.get('/learn13/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn13', {
+app.get('/submod2/learn3/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod2/' + req.params.modId + '_sub2_learn3', {
         title: 'Learn'
     });
 });
 
-app.get('/learn14/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn14', {
+app.get('/submod2/learn4/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod2/' + req.params.modId + '_sub2_learn4', {
         title: 'Learn'
     });
 });
 
-app.get('/learn15/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn15', {
+app.get('/submod2/learn5/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod2/' + req.params.modId + '_sub2_learn5', {
         title: 'Learn'
     });
 });
 
-app.get('/learn16/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn16', {
+app.get('/submod2/learn6/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod2/' + req.params.modId + '_sub2_learn6', {
         title: 'Learn'
     });
 });
 
-app.get('/learn17/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn17', {
+app.get('/submod2/learn7/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod2/' + req.params.modId + '_sub2_learn7', {
         title: 'Learn'
     });
 });
 
-app.get('/learn18/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn18', {
+app.get('/submod2/learn8/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod2/' + req.params.modId + '_sub2_learn8', {
         title: 'Learn'
     });
 });
 
-app.get('/learn19/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn19', {
+app.get('/submod2/learn9/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod2/' + req.params.modId + '_sub2_learn9', {
         title: 'Learn'
     });
 });
 
-app.get('/learn20/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/learn/' + req.params.modId + '_learn20', {
+app.get('/submod2/learn10/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod2/' + req.params.modId + '_sub2_learn10', {
         title: 'Learn'
     });
 });
+
+
+// Render learn submod 3 (all modules) ******************************
+app.get('/submod3/learn/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod3/' + req.params.modId + '_sub3_learn', {
+        title: 'Learn'
+    });
+});
+
+app.get('/submod3/learn2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod3/' + req.params.modId + '_sub3_learn2', {
+        title: 'Learn'
+    });
+});
+
+app.get('/submod3/learn3/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod3/' + req.params.modId + '_sub3_learn3', {
+        title: 'Learn'
+    });
+});
+
+app.get('/submod3/learn4/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod3/' + req.params.modId + '_sub3_learn4', {
+        title: 'Learn'
+    });
+});
+
+app.get('/submod3/learn5/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod3/' + req.params.modId + '_sub3_learn5', {
+        title: 'Learn'
+    });
+});
+
+app.get('/submod3/learn6/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod3/' + req.params.modId + '_sub3_learn6', {
+        title: 'Learn'
+    });
+});
+
+app.get('/submod3/learn7/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod3/' + req.params.modId + '_sub3_learn7', {
+        title: 'Learn'
+    });
+});
+
+app.get('/submod3/learn8/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod3/' + req.params.modId + '_sub3_learn8', {
+        title: 'Learn'
+    });
+});
+
+app.get('/submod3/learn9/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod3/' + req.params.modId + '_sub3_learn9', {
+        title: 'Learn'
+    });
+});
+
+app.get('/submod3/learn10/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod3/' + req.params.modId + '_sub3_learn10', {
+        title: 'Learn'
+    });
+});
+
+// Render explore (all modules) ******************************
+app.get('/explore/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/explore/' + req.params.modId + '_explore', {
+        title: 'Explore'
+    });
+});
+
+// Render challenge (all modules) ******************************
+app.get('/challenge/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/challenge/' + req.params.modId + '_challenge', {
+        title: 'Challenge'
+    });
+});
+
+// Render reflect (all modules) ******************************
+app.get('/reflect/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/reflect/' + req.params.modId + '_reflect', {
+        title: 'Reflect'
+    });
+});
+
+// app.get('/learn11/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+//     res.render(req.params.modId + '/learn/' + req.params.modId + '_learn11', {
+//         title: 'Learn'
+//     });
+// });
+
+// app.get('/learn12/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+//     res.render(req.params.modId + '/learn/' + req.params.modId + '_learn12', {
+//         title: 'Learn'
+//     });
+// });
+
+// app.get('/learn13/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+//     res.render(req.params.modId + '/learn/' + req.params.modId + '_learn13', {
+//         title: 'Learn'
+//     });
+// });
+
+// app.get('/learn14/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+//     res.render(req.params.modId + '/learn/' + req.params.modId + '_learn14', {
+//         title: 'Learn'
+//     });
+// });
+
+// app.get('/learn15/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+//     res.render(req.params.modId + '/learn/' + req.params.modId + '_learn15', {
+//         title: 'Learn'
+//     });
+// });
+
+// app.get('/learn16/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+//     res.render(req.params.modId + '/learn/' + req.params.modId + '_learn16', {
+//         title: 'Learn'
+//     });
+// });
+
+// app.get('/learn17/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+//     res.render(req.params.modId + '/learn/' + req.params.modId + '_learn17', {
+//         title: 'Learn'
+//     });
+// });
+
+// app.get('/learn18/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+//     res.render(req.params.modId + '/learn/' + req.params.modId + '_learn18', {
+//         title: 'Learn'
+//     });
+// });
+
+// app.get('/learn19/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+//     res.render(req.params.modId + '/learn/' + req.params.modId + '_learn19', {
+//         title: 'Learn'
+//     });
+// });
+
+// app.get('/learn20/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+//     res.render(req.params.modId + '/learn/' + req.params.modId + '_learn20', {
+//         title: 'Learn'
+//     });
+// });
 
 
 

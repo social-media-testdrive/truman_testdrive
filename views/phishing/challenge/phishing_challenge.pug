@@ -1,0 +1,74 @@
+extends ../../ui_layout
+
+block content
+
+  .ui.container#page-content-container.short-page-fix
+    .ui.raised.segment
+      h1.ui.header.large#mod-title
+        .content
+          | Phishing Challenge
+      p Before we begin the lesson, would you like to start with a knowledge check to help us customize the content based on your current understanding? 
+      .ui.grid#to_earn_badge
+        .three.column.row
+          .column
+            .content
+              img(src='/badges/identity/mystery_badge.png')
+              p <strong>Energized</strong>
+                br
+                | <strong>Evaluation</strong>
+      p This will also give you an opportunity to earn your first badge! 
+      p If you prefer not to take it, you can skip it and proceed directly to the default lesson.
+    .div
+      button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/explore/phishing';") 
+        i.arrow.left.icon 
+        | Back
+      button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/reflect/phishing';")
+        | Next
+    br
+    br
+    br
+    br
+    br
+    br
+    br
+    br
+    br
+
+
+
+block scripts
+  script.
+  
+
+
+    var voiceoverMappings = {
+      '.showLearnSectionButton': {
+        "initialDelay": 700,
+        "delay": 500,
+        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
+      },
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.1.mp3']
+      },
+      '.voiceover_keyTerm2': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.2.mp3']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.3.mp3']
+      }
+    };
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_start.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/start.css')  
+  link(rel='stylesheet', href='/css/evaluate.css')  
+  link(rel='stylesheet', href='/css/short-page-footer-fixed.css')  
+
+    

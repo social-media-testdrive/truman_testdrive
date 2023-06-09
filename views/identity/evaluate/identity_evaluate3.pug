@@ -61,21 +61,19 @@ block content
           .column
             .content
               img#earned_badge(onmouseenter="animateBadge()" src='/badges/identity/challenge_conqueror.png')
-              p <strong>Challenge</strong>
+              p <strong>Energized</strong>
                 br
-                | <strong>Conqueror</strong>
+                | <strong>Evaluation</strong>
 
       #text
         p You've completed the Challenge and earned your very first Badge!  But that's not all—there are still five more Badges for you to earn. Keep up the great work, and let's start your exciting journey! We can't wait to see all the amazing things you'll achieve!      
 
-
-    .div(style='margin-top:20px;')
-      button.ui.large.button.left.floated(onclick="location.href='/prequiz/identity';") 
+    .div
+      button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/evaluate2/identity';") 
         i.arrow.left.icon 
         | Back
-      //- button.ui.large.button.left.floated(onclick="location.href='/';") Save & Exit
-      button.ui.large.green.button.right.floated(onclick="location.href='/learn/identity';")
-        | Next
+      button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/submod/learn/identity';")
+        | Learn
         i.arrow.right.icon
       //- iframe(type='text/html' width='200' height='100'
       //-   src='../../videos/trumpets.mp3'
@@ -209,7 +207,7 @@ block scripts
     }, 6000);
 
     localStorage.setItem('progress', 5);
-    localStorage.setItem('theft-path', "/identity_prequiz_finish");
+    localStorage.setItem('theft-path', "/evaluate3/identity");
   //-   var voiceoverMappings = {
   //-     '.showLearnSectionButton': {
   //-       "initialDelay": 700,

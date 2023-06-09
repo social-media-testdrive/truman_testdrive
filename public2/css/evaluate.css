@@ -22,3 +22,17 @@
     display: flex;
     align-items: center;
 }
+
+#to_earn_badge {
+    /* background-color: red; */
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+#to_earn_badge img{
+    width: 50px;
+}
+
+

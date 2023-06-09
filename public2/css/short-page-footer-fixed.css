@@ -1,0 +1,10 @@
+#outer-footer {
+    position: fixed;
+    bottom: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+/* body {
+    overflow-y: hidden !important;
+} */

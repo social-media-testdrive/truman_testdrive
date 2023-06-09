@@ -1,4 +1,4 @@
-extends ../../ui_layout
+extends ../../../ui_layout
 
 block content
 
@@ -12,37 +12,28 @@ block content
         | Method and Protection
     #segmentation.ui.raised.segment
       img.ui.medium.image(src='/images/learning_progress_bar.png' style='margin-left: auto; margin-right: auto')
-      h2(style='display: block; text-align: center; margin: auto;margin-top: 20px;')
-        b What are the consequences when 
-        p personal information is stolen?
-      br
-      iframe(type='text/html' width='540' height='289'
-        src='../videos/identity-video.mp4'
-        frameborder='0' style='display: block; margin: auto;')
-      br
-      .div(style='margin-top: 20px;')
-        .ui.large.blue.label KEY POINTS
-        br
-        br
-        p With your personal identifiable information, a scammer could...
-        ul
-          li fraudulently apply for loans and credt cards, resulting in financial losses, decreases in credit scores, and future difficulty receiving loans
-          li withdraw your money from you bank accounts, resulting in financial loss
-          li steal yout tax refund
-          li steal your health care benefits
-          li commit crimes under your name or by using your email accounts
-          li hack you social media accounts
-          li commit other subsequent identity thefts, like accessing PII of your family members
-      #avatar.ui.one.column.centered.grid(style="margin: 50px")
-        .ui.large.right.pointing.circular.label(style="width: 50%;display: flex; align-items: center; float: left;")
-            p(style='padding: 20px;') Please keep in mind that this list is not exhaustive. Scammers can be exploit your identity for their own good in many different ways!
+      ul
+        li <b>Definition</b>
+        ul(style="list-style-type:disc;")
+          li <u>Identity theft</u> is when your personal identifiable information (PII) is stolen and used against you.
+          li <u>Personal Identifiable Information (PII)</u> is information uniquely associated with you, which can be directly or indirectly used to identify you.
+          br
+          li Here are some specific examples of PII:
+          ul(style="list-style-type:disc;")
+            li Name: full name, maiden name, mother’s maiden name, or alias
+            li Personal identification numbers: social security number (SSN), passport number, driver’s license number, taxpayer identification number, patient identification number, financial account number, or credit card number
+            li Personal address information: street address, or email address
+            li Personal telephone numbers
+      .ui.one.column.centered.grid(style="margin: 50px")
+        .ui.large.right.pointing.circular.label(style="display: flex; align-items: center; float: left;width:50%;")
+          p(style="padding: 0px; text-align: center; margin: 0;") Key concept here is <strong>Personal Identifiable Information (PII)</strong>
         img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png' style="float: right")
-    .div(style='margin-top:20px;margin-bottom:125px;')
-      button.ui.medium.button.left.floated(onclick="location.href='/learn4/identity';") 
+    .div(style='margin-top:20px;')
+      button.ui.medium.button.left.floated(onclick="location.href='/submod/learn/identity';") 
         i.arrow.left.icon 
         | Back
       //- button.ui.medium.button.left.floated(onclick="location.href='/';") Save & Exit
-      button.ui.medium.button.right.floated(onclick="location.href='/learn6/identity';")
+      button.ui.medium.button.right.floated(onclick="location.href='/submod/learn3/identity';")
         | Next
         i.arrow.right.icon
 
@@ -87,5 +78,4 @@ block scripts
   
 block styles
   link(rel='stylesheet', href='/css/start.css')  
-    
     
