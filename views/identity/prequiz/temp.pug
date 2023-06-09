@@ -1,0 +1,164 @@
+extends ../../ui_layout
+
+block content
+
+  .ui.text.container.addBottomMargin
+    br    
+    .ui.raised.segment
+      h1.ui.header
+        .content
+            | Identity Theft Pre-Quiz
+      p Test Your Knowledge
+
+    .ui.container
+      h1 Quiz
+            
+      form#quiz-form.ui.form(style="width: 100%;"  action='/postIdentityTheftPreQuizScore', method='POST')
+        input(type='hidden', name='username', value=user.username)
+        input(type='hidden', name='_csrf', value=csrfToken)
+
+        img.ui.centered.image(src='/images/identity_prequiz_1.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:0px;margin-bottom: 0px;")
+        .ui.segment
+          h3(style='display: inline-block; font-weight: bold;') 
+            span(style='color: red; margin-right: 5px;') * 
+            | 1. Is this email a scam? 
+          div.ui.inline.fields(style='display: flex;margin-bottom: -30px;')
+            .field.fieldStyle
+              .ui.radio.checkbox.radioContainer
+                input(type='radio' name='q1' value = 'yes')
+                label Yes
+            .field.fieldStyle
+              .ui.radio.checkbox.radioContainer
+                input(type='radio' name='q1' value = 'no')
+                label No
+          input(type='hidden', name='q1')
+
+        hr
+
+        img.ui.centered.image(src='/images/identity_prequiz_2.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:40px;margin-bottom: 0px;")
+        .ui.segment
+          h3(style='display: inline-block; font-weight: bold;') 
+            span(style='color: red; margin-right: 5px;') * 
+            | 2. Is this email a scam? 
+          div.ui.inline.fields(style='display: flex;margin-bottom: -30px;')
+            .field.fieldStyle
+              .ui.radio.checkbox.radioContainer
+                input(type='radio' name='q2' value = 'yes')
+                label Yes
+            .field.fieldStyle
+              .ui.radio.checkbox.radioContainer
+                input(type='radio' name='q2' value = 'no')
+                label No
+          input(type='hidden', name='q2')
+
+        hr
+
+        img.ui.centered.image(src='/images/identity_prequiz_3.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:40px;margin-bottom: 0px;")
+        .ui.segment
+          h3(style='display: inline-block; font-weight: bold;') 
+            span(style='color: red; margin-right: 5px;') * 
+            | 3. Is this email a scam? 
+          div.ui.inline.fields(style='display: flex;margin-bottom: -30px;')
+            .field.fieldStyle
+              .ui.radio.checkbox.radioContainer
+                input(type='radio' name='q3' value = 'yes')
+                label Yes
+            .field.fieldStyle
+              .ui.radio.checkbox.radioContainer
+                input(type='radio' name='q3' value = 'no')
+                label No
+          input(type='hidden', name='q3')
+
+        hr
+
+        img.ui.centered.image(src='/images/identity_prequiz_4.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:40px;margin-bottom: 0px;")
+        .ui.segment
+          h3(style='display: inline-block; font-weight: bold;') 
+            span(style='color: red; margin-right: 5px;') * 
+            | 4. Is this email a scam? 
+          div.ui.inline.fields(style='display: flex;margin-bottom: -30px;')
+            .field.fieldStyle
+              .ui.radio.checkbox.radioContainer
+                input(type='radio' name='q4' value = 'yes')
+                label Yes
+            .field.fieldStyle
+              .ui.radio.checkbox.radioContainer
+                input(type='radio' name='q4' value = 'no')
+                label No
+          input(type='hidden', name='q4')
+        hr
+
+        .ui.segment(style='margin-top:40px;') 
+          h3(style='display: inline-block; font-weight: bold;') 
+            span(style='color: red; margin-right: 5px;') * 
+            | 5. What could occur if your identity is stolen? Select all that apply. 
+          .grouped.fields
+            .field
+              div.ui.checkbox
+                input(type='checkbox', name='q2-option-1', value='1')
+                label Loss of money
+            .field
+              div.ui.checkbox
+                input(type='checkbox', name='q2-option-2', value='1')
+                label Loss of tax refund
+            .field
+              div.ui.checkbox
+                input(type='checkbox', name='q2-option-3', value='1')
+                label Be charged as a criminal
+            .field
+              div.ui.checkbox
+                input(type='checkbox', name='q2-option-4', value='1')
+                label Denials of loans and mortgages
+            .field
+              div.ui.checkbox
+                input(type='checkbox', name='q2-option-5', value='1')
+                label Loss of medical care
+        .div(style='margin-top:20px;')
+          button.ui.large.button.left.floated(onclick="location.href='/identity_home';") 
+            i.arrow.left.icon 
+            | Back
+          button.ui.large.button.left.floated(onclick="location.href='/identity_learn_page0';") Skip Quiz
+          //- button.circular.ui.icon.button.right.floated(onclick="showModal()")
+          //-   i.wechat.icon
+
+          //- Instead of having an onclick here the redirect is done by the form action calling postIdentityTheftPreQuizScore() in controllers -> user.js
+          button.ui.large.green.button.right.floated(type='submit')
+            | Submit Quiz
+            i.arrow.right.icon
+    //- button.btn(style="background-color: green; color: white; font-size: 24px; padding: 10px 20px; border: none; border-radius: 5px; float: right;" onclick="location.href='/identity_prequiz_finish';") Submit Quiz
+
+
+
+
+block scripts
+  script.
+    var voiceoverMappings = {
+      '.showLearnSectionButton': {
+        "initialDelay": 700,
+        "delay": 500,
+        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
+      },
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.1.mp3']
+      },
+      '.voiceover_keyTerm2': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.2.mp3']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.3.mp3']
+      }
+    };
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_start.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/start.css')  
+  link(rel='stylesheet', href='/css/prequiz.css')  
+
+    

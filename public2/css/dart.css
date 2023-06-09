@@ -16,6 +16,8 @@ html {
     /* same width as the header allows for ~80 characters per line at 1.5rem font */
     /* width: 955px; */
     width: 65%; 
+    /* so zooming out doesnt mess it up */
+    max-width: 955px; /* Set a maximum width */
     padding: 0;
     padding-bottom: 15px;
 }
