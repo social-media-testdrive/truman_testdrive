@@ -1,9 +1,11 @@
 extends ui_layout
 
 block content 
-  .ui.sixteen.wide.row
-    .ui.sixteen.wide.column(style="display: flex; flex-direction: column; justify-content: center; align-items: center;")
-     .login-box
+ .ui.sixteen.wide.row
+  .ui.sixteen.wide.column(style="display: flex; flex-direction: column; justify-content: center; align-items: center;")
+   .ui.fluid.card.dim(style = "margin-top:0px;margin-bottom:0px; ")
+    .gradientdiv
+     .login-box(style="margin:auto !important;margin-top:30px !important")
       h2.ui.header(style="text-align: left !important; margin:5px 0px; font-family:'Noto Sans', sans-serif;") Create your account
       
       form.ui.form(action="/createStudent", method='POST')
@@ -12,24 +14,11 @@ block content
         .field
           span(style="font-size: 17px; font-family:'Arial', Serif;") Don't have an account? 
           a(style="font-size: 17px;" href="/studentLogin") Log In Now
-          label(for='username' style="margin-top:15px; font-size:larger;") Enter Username
-          .ui.pointing.below.label.basic.username-red
-              .header Create a simple username: 
-                br
-                br
-                li Avoid using your full name or email address. 
-          input(style="margin:5px 0px; width: 100%; border-radius: 5px; border: 2px solid grey !important; background-color: #fff !!important; color: #000 !important;" type='text', name='username', id='username', placeholder='Username', required).field.left 
+          label(for='username' style="margin-top:15px; font-size:larger;") Enter Email
+          input(style="margin:5px 0px; width: 100%; border-radius: 5px; border: 2px solid grey !important; background-color: #fff !!important; color: #000 !important;" type='text', name='username', id='username', placeholder='Email', required).field.left 
 
           label(for='password' style="font-size:larger; margin:0px") Password
-          .ui.pointing.below.label.basic.password-red
-            .header Create a secure password: 
-              br
-              br
-              li The longer the password, the better. A minimum of 12 characters is ideal.
-              br
-              li Avoid personal information like birthdays or common password patterns, e.g. Dragon123 or 123456789.
-              br
-              li Store your passwords in a password manager app for ease of access!
+
           input(style="margin:5px 0px; width: 100%; border-radius: 5px; border: 2px solid grey !important; background-color: #fff !!important; color: #000 !important;" type='password', name='password', id='password', placeholder='Password', required).field
           label(for='password' style="font-size:larger;") Confirm Password
 
@@ -61,3 +50,10 @@ block scripts
   script(src='/module_js/base_tutorial.js')
   script(src='/module_js/base_introSteps.js')
 
+block styles
+  link(rel='stylesheet', href='/css/login.css')
+  style(type='text/css').
+    .gradientdiv {
+      height: 75vh; /* adjust this to the height you want */
+      background: linear-gradient(to bottom, #2884d4 0%, black 100%);
+    }

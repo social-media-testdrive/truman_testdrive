@@ -5,19 +5,20 @@ block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
     //-####################### title
   //-.twelve.wide.computer.fourteen.wide.tablet.sixteen.wide.mobile.column.centered 2023-06-01T17:00:59.070+00:00 2023-06-01T16:59:47.223+00:00
-  .ui.sixteen.wide.row
-    .ui.sixteen.wide.column
+  .div
+     .ui.one.column.centered.grid.feedbackMessagesGrid
+     .ui.fluid.card.dim(style = "margin-top:0px;margin-bottom:0px;")
       .profile_title(style='position: relative; top: 0; left: 0;')
        div(style="position: relative; display: inline-block;")
 
       .example(style=' width:100%;padding-left: 25px; margin-top: 0%;z-index: 1')
-          .example-layout
+          .example-layout(style="margin:20px; margin-top:30px")
             
             .row
               .col-1 
                 div(style=' position: relative; display: flex; flex-direction: column; align-items: flex-start;')
                   span.br(style='margin:3px; font-size: 23px;')= user.profile.name
-                  span.br(style='margin:3px; font-size: 23px;')= "Learning since "+user.createdAt.split('T')[0]
+                  span.br(style='margin:3px; font-size: 23px;')= "Learning since "+user.lastNotifyVisit.split('T')[0]
                   div(style='margin:3px; display: flex; justify-content: flex-start; align-items: center;')
                     button.btn(style='padding: 6px; border: 1px solid #2884d4; border-radius: 50px; white-space: nowrap;') 1 module completed
                     button.btn(style='margin-left:5px; padding: 6px; border: 1px solid #2884d4; border-radius: 50px; white-space: nowrap;') top learner
@@ -28,7 +29,7 @@ block content
   left: 3%;\
   border: 2px white solid;padding: -1px;padding: 5px white solid;z-index: 1;background-color: white;' src="/profile_pictures/avatar-icon.svg")
               .col-3 
-                 img(onclick="window.location.href='/edit_profile'" style="margin-right:50%;float: right;cursor:pointer; width:50px; height 50px;" src="/profile_pictures/Gear-icon.png")
+                 img(onclick="window.location.href='/edit_profile'" style="margin-right:10%;float: right;cursor:pointer; width:50px; height 50px;" src="/profile_pictures/Gear-icon.png")
               
       div(style=' padding-left: 25px; position: relative; display: flex; flex-direction: column; align-items: flex-start;')
         span#progressDisplay(style="margin:3px; margin-top:-20px; margin-bottom:15px; font-size: 25px; font-weight: bold;") 
@@ -37,7 +38,7 @@ block content
       
       div.ui.special.cards(style="margin-top:20px;width:100%;  margin-bottom:20px;")
         
-        div.card(style="  box-shadow: 0px 0px 0px rgba(0,0,0,0.5);margin-left: 55px; margin-top: 2%; width: 86%; position: relative; border: solid #d3d3d3; 1px;  border-top: none;  border-top-left-radius: 0px; border-top-right-radius: 0px")
+        div.card(style="  box-shadow: 0px 0px 0px rgba(0,0,0,0.5);margin-left: 5%; margin-top: 2%; width: 90%; position: relative; border: solid #d3d3d3; 1px;  border-top: none;  border-top-left-radius: 0px; border-top-right-radius: 0px")
 
           img-crop(style="width:100%; height:250px;overflow: hidden;border-radius:0px !important ;")
             img( style="width:100%; height:auto; margin-top: -120px;" src="/profile_pictures/backgournd_img.png")
@@ -129,7 +130,7 @@ block content
 
 block scripts
   script.
-    document.body.style.backgroundColor = "white";
+
     (function() {
       // Check if the "progress" variable has been assigned a value yet
       let progress = localStorage.getItem('progress');
@@ -239,7 +240,7 @@ block styles
     }
     .example-layout .row .col-3 {
 
-      width: 160px;
+      width: 80px;
     }
     div.card::before {
       content: "";
@@ -252,3 +253,8 @@ block styles
       border-bottom: none;
 
     } 
+
+    div.card::before {
+    content: "";
+    border: 0px;
+    }

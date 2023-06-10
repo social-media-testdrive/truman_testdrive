@@ -6,32 +6,19 @@ block content
   -var user_info = [{profile_pic : "/profile_pictures/amy.jpg",background_pic : "/profile_pictures/blueToWhite.png",user_name : "Amy G",user_id : "@amyg__g",bio : "Daughter. Sister. Proud Black American. I tend to get political.",location : "New York, NY",join_date : "Joined January 2019"}]
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
     //-####################### title
-  .twelve.wide.computer.fourteen.wide.tablet.sixteen.wide.mobile.column.centered( style="margin-bottom:5%")
+  .div
     .ui.one.column.centered.grid.feedbackMessagesGrid
     .ui.fluid.card.dim(style = "margin-top:0px;margin-bottom:0px;")
       a(style='margin-top: 5%; margin-bottom: 5%;' href="/account")
         span.br( style="font-size: 25px; margin-left: 5%;margin-bottom: 5%; margin-top: 5%; font-weight: bold;") ← Edit Profile
-      form.ui.form(style="margin-right: 10%; margin-left: 5%;")
+
+      form.ui.form(action="/changePassword", method='POST' style="margin-left:5%;margin-right:5%")
+        input(type='hidden', name='_csrf', value=csrfToken)
         .field
-            label(for='username' style="margin-top:15px; font-size:larger;") Email:
-            input(style="margin:5px 0px; width: 100%; border-radius: 5px; border: 2px solid grey !important; background-color: #fff !!important; color: #000 !important;" type='text', name='username', id='username', placeholder=user.username, required).field
-            if user.email
-              .br
-              label(for='password' style="font-size:larger; ") Email Address: 
-
-              span &nbsp; #{user.email}
-              
-            else
-              label(for='password' style="font-size:larger; ") Email Address: 
-
-              span &nbsp; #{user.email}
-              form.ui.form(action="/changePassword", method='POST')
-                input(type='hidden', name='_csrf', value=csrfToken)
-                .field
-                  label(for='password' style="margin-top:15px; font-size:larger;") Enter Your New Password
-                  input(type='hidden', name='username', id='username', value=user.email)
-                  input(style="margin:5px 0px; width: 100%; border-radius: 5px; border: 2px solid grey !important; background-color: #fff !!important; color: #000 !important;" type='password', name='password', id='password', placeholder='Password', required).field
-                button.ui.big.blue.button(type='submit', style="width: 100%; border-radius: 20px;") Confirm
+          label(for='password' style="margin-top:15px; font-size:larger;") Enter Your New Password
+          input(type='hidden', name='username', id='username', value=user.username)
+          input(style="margin:5px 0px; width: 100%; border-radius: 5px; border: 2px solid grey !important; background-color: #fff !!important; color: #000 !important;" type='password', name='password', id='password', placeholder='Password', required).field
+        button.ui.big.blue.button(type='submit', style="width: 100%; border-radius: 20px;") Confirm
       br
             
       .ui.grid(style="margin:30px;")

@@ -2,23 +2,21 @@ extends ../ui_layout
 
 block content
 
-  .ui.sixteen.wide.row
-    .ui.sixteen.wide.column
-
-      h2.loginPageTitle(style="text-align: center; margin:5px 0px; font-family:'Noto Sans', sans-serif;") Welcome to the Deception Awareness and Resilience Training (DART) learning platform
-      span(style="text-align: center; font-size: 17px; font-family:'Arial', Serif;") A platform that aims to help senior people navigate the online world. It offers easy-to-understand resources and training to help you spot false information and avoid scams. 
-      
-      .div(style="text-align: center;")
-        iframe(type='text/html' width='750px' height='400px'
+     .ui.fluid.card.dim(style = "margin-top:0px;margin-bottom:0px; ")
+      .gradientdiv
+       h2.loginPageTitle(style="text-align: center; margin:5px 0px; font-family:'Noto Sans', sans-serif; margin:40px;margin-bottom:15px;color:white") Welcome to the Deception Awareness and Resilience Training (DART) learning platform
+       p(style=" text-align: center; font-size: 17px; font-family:'Arial', Serif;margin:30px;color:white ") A platform that aims to help senior people navigate the online world. It offers easy-to-understand resources and training to help you spot false information and avoid scams. 
+       .div(style="text-align: center;")
+        iframe(type='text/html' width='600px' height='340px'
           src='videos/dart_intro.mp4'
-          frameborder='0' style="align-items: center;" )
-      h2.loginPageTitle(style="text-align: center; margin:5px 0px; font-family:'Noto Sans', sans-serif;") Our Mission 
-      span(style="text-align: left !important; font-size: 17px; font-family:'Arial', Serif;") The primary aim of the platform is to empower older adults with increased resilience against the detrimental effects of scams, ensuring that you can effectively safeguard yourself and others from falling victim to deception. 
+          frameborder='0' style="align-items: center;margin-bottom:20px" )
+       h2.loginPageTitle(style="text-align: center; margin:5px 0px; font-family:'Noto Sans', sans-serif;") Our Mission 
+      p(style="text-align: left !important; font-size: 17px; font-family:'Arial', Serif;margin:20px; margin-left:30px;margin-right:30px;margin-top:-100px ") The primary aim of the platform is to empower older adults with increased resilience against the detrimental effects of scams, ensuring that you can effectively safeguard yourself and others from falling victim to deception. 
       
-      div.ui.special.cards(style="margin-top:20px;width:100%;  margin-bottom:20px;")
+       div.ui.special.cards(style="margin-top:20px;width:100%;  margin-bottom:20px;")
         
-        div.card(style="  box-shadow: 0px 0px 0px rgba(0,0,0,0.5);margin-left: 55px; margin-top: 2%; width: 86%; position: relative; border: solid #d3d3d3; 1px;  border-top: none;  border-top-left-radius: 0px; border-top-right-radius: 0px")
-
+        div.card(style="  box-shadow: 0px 0px 0px rgba(0,0,0,0.5);margin-left: 55px; margin-top: 0%; width: 85%; position: relative; border: solid #d3d3d3; 1px;  border-top: none;  border-top-left-radius: 0px; border-top-right-radius: 0px")
+        
           img-crop(style="width:100%; height:250px;overflow: hidden;border-radius:0px !important ;")
             img( style="width:100%; height:auto; margin-top: -120px;" src="/profile_pictures/backgournd_img.png")
           div.content
@@ -32,15 +30,11 @@ block content
                   span( style="vertical-align: middle;") Share Certificate 
                   img(src='/profile_pictures/award.png', alt="Google logo", style="height:20px; vertical-align: middle; margin-right: 10px;")
               button.ui.big.blue.button(onclick="window.location.href='/identity_home'" style="font-family:'Noto Sans', sans-serif; height:46.28px; border-radius: 17px; width: 200px; margin: 0px 0 0 0; ") Learn Again → 
-              
+       
+       a(href='/createStudent' style='display: flex; justify-content: center; align-items: center; width: 100%;margin-bottom:20px; ')
+        
+        button.ui.big.blue.button(style="font-family:'Noto Sans', sans-serif; height:46.28px; border-radius: 17px; width: 200px; margin: 0px 0 0 0; ") Sign up → 
 
-  .ui.sixteen.wide.row 
-    .ui.sixteen.wide.column
-
-      a(href='/createStudent' style='display: flex; justify-content: center; align-items: center; width: 100%;')
-        button.ui.big.blue.labeled.icon.button
-            i.chevron.circle.right.icon
-            |   Signup
 
 block scripts
   script.
@@ -48,4 +42,8 @@ block scripts
     
 block styles
   link(rel='stylesheet', href='/css/login.css')
-
+  style(type='text/css').
+    .gradientdiv {
+      height: 75vh; /* adjust this to the height you want */
+      background: linear-gradient(to bottom, #2884d4 0%, black 50%, white 50%, white 100%);
+    }

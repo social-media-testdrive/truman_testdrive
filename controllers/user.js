@@ -418,6 +418,7 @@ exports.postChatbotConnect = (req, res, next) => {
         active: true,
         start : Date.now(),
         isStudent: true,
+        lastNotifyVisit: Date.now()
         // facilitator: req.body.facilitator
     });
     user.profile.name = req.body.username;

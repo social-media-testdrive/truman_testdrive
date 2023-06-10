@@ -1,9 +1,12 @@
 extends ui_layout
 
 block content
+
   .ui.sixteen.wide.row 
     .ui.sixteen.wide.column(style="display: flex; flex-direction: column; justify-content: center; align-items: center;")
-      .login-box
+     .ui.fluid.card.dim(style = "margin-top:0px;margin-bottom:0px; ")
+      .gradientdiv
+       .login-box(style="margin:auto !important;margin-top:30px !important")
         h2.ui.header(style="text-align: left !important; margin:5px 0px; font-family:'Noto Sans', sans-serif;") Welcome back!
         form.ui.form(action="/studentLogin", method='POST')
           input(type='hidden', name='_csrf', value=csrfToken)
@@ -59,3 +62,10 @@ block scripts
     };
     
 
+block styles
+  link(rel='stylesheet', href='/css/login.css')
+  style(type='text/css').
+    .gradientdiv {
+      height: 75vh; /* adjust this to the height you want */
+      background: linear-gradient(to bottom, #2884d4 0%, black 100%);
+    }

@@ -5,7 +5,7 @@
   #header.ui.borderless.fixed.menu.testDriveHeader
     .ui.grid.container#myheader
         .four.wide.column
-          a.item(href='/')
+          a.item(href='/Login')
             img.ui.tiny.image(src='/images/DARTLogo.png', id='logo')
         if user
          .four.wide.column.right.floated(style='left: -20%')
@@ -17,6 +17,7 @@
                   .one.wide.column(style='margin:15px')
                     a.item(style=' color:#2884d4 !important;' href='/account') Profile
                   .one.wide.column(style='margin:15px;')
+                    
                     a.item(style=' color:#2884d4 !important; border-radius: 40px !important; border: 2px solid grey !important; ' href='/logout') Logout
         else 
          .four.wide.column.right.floated
@@ -27,7 +28,7 @@
                       span Login
 .mobile.only.row
   .ui.fluid.top.fixed.two.item.menu.testDriveHeader(style='justify-content:start')
-    a.item( style='justify-content:start;' href='/')
+    a.item( style='justify-content:start;' href='/Login')
       img.ui.tiny.image(style="margin-left:20px" src='/images/DARTLogo.png', id='cell_logo')
     .four.wide.column.right.floated
       if isResearchVersion

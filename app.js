@@ -221,7 +221,7 @@ app.get('/x', (req, res) => {
 passport.use(new GoogleStrategy({
     clientID:"896039841801-tdh0a2hsl53671t5ruirn1kls9cob9aa.apps.googleusercontent.com", // Your Credentials here.
     clientSecret:"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", // Your Credentials here.
-    callbackURL: "https://dart.socialsandbox.xyz/auth/callback", // Your base URL + path.
+    callbackURL: "/auth/callback", // Your base URL + path.
     passReqToCallback:true
   },
   function(request, accessToken, refreshToken, profile, done) {
@@ -257,8 +257,9 @@ app.get('/auth/callback/success', (req, res, next) => {
             ui: 'no', //ui or no
             notify: 'no', //no, low or high
             isGuest: true,
-            lastNotifyVisit: Date.now()
+            lastNotifyVisit: Date.now(),
         });
+
         console.log(req.user.displayName)
         user.profile.name = req.user.given_name;
         user.profile.location = "New York";
@@ -449,6 +450,7 @@ app.use('/temporary-link/:uuid', function(req, res, next) {
   const requestUUID = req.params.uuid;
   //test if allowed
   const email = checkSingleAccess(requestUUID)
+  console.log("email:",email)
   if(email){
     //res.send(`UUID ${requestUUID} allowed` );
     res.render('changePassword.pug', {
