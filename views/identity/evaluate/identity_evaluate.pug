@@ -2,40 +2,43 @@ extends ../../ui_layout
 
 block content
 
-  .ui.container#page-content-container.short-page-fix
-    .ui.raised.segment
-      h1.ui.header.large#mod-title
-        .content
-          | Evaluation
-      p Before we begin the lesson, would you like to start with a knowledge check to help us customize the content based on your current understanding? 
-      .ui.grid#to_earn_badge
-        .three.column.row
-          .column
+  .ui.container
+    .ui.grid(style="display: flex;justify-content: center;align-items: center;")
+      .thirteen.wide.column
+        .ui.raised.segment
+          h1.ui.header.large#mod-title
             .content
-              img(src='/badges/identity/mystery_badge.png')
-              p <strong>Energized</strong>
-                br
-                | <strong>Evaluation</strong>
-      p This will also give you an opportunity to earn your first badge! 
-      p If you prefer not to take it, you can skip it and proceed directly to the default lesson.
-    .div
-      button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/intro2/identity';") 
-        i.arrow.left.icon 
-        | Back
-      button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/evaluate2/identity';")
-        | Take
-        i.arrow.right.icon
-      button.ui.huge.basic.button.right.floated#skipButton(onclick="location.href='/learn/identity';")
-        | Skip
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
+              | Evaluation
+          p Before we begin the lesson, would you like to start with a knowledge check to help us customize the content based on your current understanding? 
+          .ui.grid#to_earn_badge
+            .three.column.row
+              .column
+                .content
+                  img(src='/badges/identity/mystery_badge.png')
+                  p <strong>Energized</strong>
+                    br
+                    | <strong>Evaluation</strong>
+          p This will also give you an opportunity to earn your first badge! 
+          p If you prefer not to take it, you can skip it and proceed directly to the default lesson.
+        .div
+          button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/intro2/identity';") 
+            i.arrow.left.icon 
+            | Back
+          button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/evaluate2/identity';")
+            | Take
+            i.arrow.right.icon
+          button.ui.huge.basic.button.right.floated#skipButton(onclick="location.href='/learn/identity';")
+            | Skip
+        br
+        br
+        br
+        br
+        br
+        br
+        br
+        br
+        br
+        br
 
 
 
@@ -72,6 +75,6 @@ block scripts
 block styles
   link(rel='stylesheet', href='/css/start.css')  
   link(rel='stylesheet', href='/css/evaluate.css')  
-  link(rel='stylesheet', href='/css/short-page-footer-fixed.css')  
+  //- link(rel='stylesheet', href='/css/short-page-footer-fixed.css')  
 
     

@@ -14,8 +14,8 @@ html {
     /* background-color: aqua; */
     /* width: 85%;  */
     /* same width as the header allows for ~80 characters per line at 1.5rem font */
-    /* width: 955px; */
-    width: 65%; 
+    width: 970px;
+    /* width: 65%;  */
     /* so zooming out doesnt mess it up */
     max-width: 955px; /* Set a maximum width */
     padding: 0;
@@ -37,6 +37,3 @@ html {
 }
 
 
-
-
-/* Set font size for all page content to 1.5rem which is what the National Institute on Aging uses for their page's body text */
