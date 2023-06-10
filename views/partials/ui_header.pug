@@ -1,7 +1,32 @@
 -var cdn = "https://dhpd030vnpk29.cloudfront.net";
 -var isResearchVersion = process.env.isResearchVersion === 'true';
 -var enableLearnerDashboard = process.env.enableLearnerDashboard === 'true';
-.computer.only.tablet.only.row.testdriveHeaderRow 
+.computer.only.row.testdriveHeaderRow 
+  #header.ui.borderless.fixed.menu.testDriveHeader
+    .ui.grid.container#myheader
+        .four.wide.column
+          a.item(href='/Login')
+            img.ui.tiny.image(src='/images/DARTLogo.png', id='logo')
+        if user
+         .four.wide.column.right.floated(style='left: 0%')
+          if isResearchVersion
+            .right.menu.headerDropdownMenu()
+              
+                  .one.wide.column(style='margin:15px;')
+                    a.item(style=' color:#2884d4 !important;' href='/') Home
+                  .one.wide.column(style='margin:15px')
+                    a.item(style=' color:#2884d4 !important;' href='/account') Profile
+                  .one.wide.column(style='margin:15px;')
+                    
+                    a.item(style=' color:#2884d4 !important; border-radius: 40px !important; border: 2px solid grey !important; ' href='/logout') Logout
+        else 
+         .four.wide.column.right.floated
+          if isResearchVersion
+            .right.menu.headerDropdownMenu
+                  .one.wide.column(style='margin-top:20px; margin-left:auto !important;')
+                    a.item(style='color:#2884d4 !important; border-radius: 40px !important; border: 2px solid grey !important; ' href='/studentLogin')
+                      span Login
+.tablet.only.row
   #header.ui.borderless.fixed.menu.testDriveHeader
     .ui.grid.container#myheader
         .four.wide.column
@@ -10,7 +35,7 @@
         if user
          .four.wide.column.right.floated(style='left: -20%')
           if isResearchVersion
-            .right.menu.headerDropdownMenu
+            .right.menu.headerDropdownMenu()
               
                   .one.wide.column(style='margin:15px;')
                     a.item(style=' color:#2884d4 !important;' href='/') Home
