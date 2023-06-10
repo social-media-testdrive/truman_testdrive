@@ -259,7 +259,6 @@ app.get('/auth/callback/success', (req, res, next) => {
             isGuest: true,
             lastNotifyVisit: Date.now(),
         });
-
         console.log(req.user.displayName)
         user.profile.name = req.user.given_name;
         user.profile.location = "New York";
@@ -450,7 +449,6 @@ app.use('/temporary-link/:uuid', function(req, res, next) {
   const requestUUID = req.params.uuid;
   //test if allowed
   const email = checkSingleAccess(requestUUID)
-  console.log("email:",email)
   if(email){
     //res.send(`UUID ${requestUUID} allowed` );
     res.render('changePassword.pug', {
