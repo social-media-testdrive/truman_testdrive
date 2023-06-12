@@ -49,20 +49,21 @@ html
     block styles
 
   body
-    .ui.vertically.padded.grid.container.addBottomPaddingToGrid
-      include partials/ui_header
-      include partials/ui_flash
-      block content
-      include partials/modal
-      .ui.small.basic.share.modal
-        .ui.icon.header
-          i.share.icon
-          |     You have shared this post!
-        .actions(style="text-align:center;")   
-          .ui.green.ok.inverted.button
-            i.checkmark.icon
-            |   Done
-    include partials/ui_footer
+    #page-container
+      .ui.vertically.padded.grid.container.addBottomPaddingToGrid#content-wrap
+        include partials/ui_header
+        include partials/ui_flash
+        block content
+        include partials/modal
+        .ui.small.basic.share.modal
+          .ui.icon.header
+            i.share.icon
+            |     You have shared this post!
+          .actions(style="text-align:center;")   
+            .ui.green.ok.inverted.button
+              i.checkmark.icon
+              |   Done
+      include partials/ui_footer
     
     if process.env.instanceType == 'test'
       script(src="/js/modalMode.js")
