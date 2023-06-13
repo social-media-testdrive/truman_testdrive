@@ -17,12 +17,14 @@
   justify-content: center;
   align-items: center;
   /* background-color: orange !important; */
-  margin-top: 50px !important;
+  /* margin-top: 50px !important; */
+  height: 5rem;
 }
 
 #inner-header {
-  width: 58.5%; 
+  /* width: 58.5%;  */
   /* width: 955px; */
+  width: 55vw;
   /* background-color: pink !important; */
   /* remove semantic ui raised menu background */
   /* background: none; */
