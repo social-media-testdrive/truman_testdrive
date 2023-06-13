@@ -38,9 +38,9 @@ html
     link(rel='shortcut icon', href='/images/favicon.png')
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css', integrity='sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=', crossorigin='anonymous')
     link(rel='stylesheet', href=cdn+'/js/lib/introjs.min.css')
-    link(type='text/css', rel='stylesheet', href='/css/header.css') 
-    link(type='text/css', rel='stylesheet', href='/css/footer.css') 
-    link(type='text/css', rel='stylesheet', href='/css/ui_layout.css') 
+    //- link(type='text/css', rel='stylesheet', href='/css/header.css') 
+    //- link(type='text/css', rel='stylesheet', href='/css/footer.css') 
+    //- link(type='text/css', rel='stylesheet', href='/css/ui_layout.css') 
     link(type='text/css', rel='stylesheet', href='/css/dart.css') 
     link(rel='stylesheet', href='/css/progress.css')  
     link(rel='stylesheet', href='/css/avatar.css') 
@@ -48,25 +48,17 @@ html
 
     block styles
 
+
   body
-    #page-container
-      #content-wrap
-        include partials/ui_header
-        include partials/ui_flash
-        block content
-        include partials/modal
-        .ui.small.basic.share.modal
-          .ui.icon.header
-            i.share.icon
-            |     You have shared this post!
-          .actions(style="text-align:center;")   
-            .ui.green.ok.inverted.button
-              i.checkmark.icon
-              |   Done
-      include partials/ui_footer
+    //- Flexbox layout 
+    #page-header
+      p header
+    #page-article
+      block content
+    #page-footer
+      p footer
     
     if process.env.instanceType == 'test'
-      script(src="/js/modalMode.js")
       script(src=cdn+'/js/lib/jquery-3.1.1.min.js')
       script(src=cdn+'/js/lib/humanized_time_span.js')
       script(src=cdn+'/js/lib/lazyload.transpiled.min.js')

@@ -24,11 +24,10 @@ html {
 }
 
 /* Source for page styling to get footer positioned properly: https://www.freecodecamp.org/news/how-to-keep-your-footer-where-it-belongs-59c6aa05c59c/ */
-
+/* 
 #page-container {
     position: relative;
     min-height: 100vh;
-    /* background-color: aqua; */
 }
 
 
@@ -36,20 +35,16 @@ html {
     padding: 0;
     margin: 0;
     width: 100% !important;
-    /* background-color: pink !important; */
-    padding-bottom: 3rem !important;    /* Footer height */
-    /* space between header and the module content */
-    padding-top: 3rem !important;       /* Header height */ 
-}
+    padding-bottom: 3rem !important;    
+    padding-top: 3rem !important;      
+} */
 
-/* Tablet */
-@media (max-width: 768px){
-    .ui.raised.segment#raised-content {
-        width: 90vw;
-    }
-}
 
-/* Mobile */
-@media (max-width: 425px){
+body{ min-height: 100vh; margin:0; background:  #F5F8FA;}
 
-}
+#page-header{ min-height:50px; background:lightcyan !important; }
+#page-footer{ min-height:50px; background:PapayaWhip !important; }
+
+/* The article fills all the space between header & footer */
+body{ display:flex; flex-direction:column; }
+#page-article{ flex:1; }
