@@ -52,11 +52,11 @@ html
   body
     //- Flexbox layout 
     #page-header
-      p header
+      include partials/ui_header
     #page-article
       block content
     #page-footer
-      p footer
+      include partials/ui_footer
     
     if process.env.instanceType == 'test'
       script(src=cdn+'/js/lib/jquery-3.1.1.min.js')
