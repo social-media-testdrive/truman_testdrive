@@ -2,13 +2,13 @@ extends ../../ui_layout
 
 block content
 
-  .ui.container
-    .ui.grid(style="display: flex;justify-content: center;align-items: center;")
-      .thirteen.wide.column
-        .ui.raised.segment
-          h1.ui.header.large#mod-title
-            .content
-              | Identity Theft
+  .ui.container#raised-container
+    .ui.raised.segment
+      #raised-content
+        h1.ui.header.large#mod-title
+          .content
+            | Identity Theft
+        .limit
           p There are six amazing badges waiting for you to earn!
 
           //- semantic ui grid to organize the badges properly
@@ -53,42 +53,20 @@ block content
                     br
                     | Achiever
               .column
-          //- h2 Learning Materials
-          //- p If you would like to learn the material offline, you can download the content here:
-          //- div.ui.two.column.grid#downloadGrid 
-          //-   .column
-          //-     h4.glossary.pdf
-          //-     a.ui.inline.fluid.labeled.icon.button
-          //-       i.download.icon.graySquare
-          //-       .inline
-          //-         p glossary.pdf
-          //-           i.large.download.icon
-          //-   .column
-          //-     h4.glossary.pdf
-          //-     a.ui.inline.fluid.labeled.icon.button
-          //-       i.download.icon.graySquare
-          //-       .inline
-          //-         p glossary.pdf
-          //-           i.large.download.icon
-                //- .ui.basic.segment
-                //-   i.large.microphone.icon
-
-
-          //- br
-          //- p Before we start the lesson, would you like to start with a small challenge to help you better understand your current knowledge of the topic and earn your first badge? If you prefer not to take it, you can skip it and proceed directly to the lesson.
           
-          .ui.one.column.centered.grid#avatarGrid
-            .ui.large.right.pointing.circular.label#speechBubble
-              p#speechText(style="font-size: 1.3rem") Remember that you can take a break anytime and pick up where you left off when you return!
-            img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png' style="float: right")
+        .ui.one.column.centered.grid#avatarGrid
+          .ui.large.right.pointing.circular.label#speechBubble
+            p#speechText(style="font-size: 1.3rem") Remember that you can take a break anytime and pick up where you left off when you return!
+          img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png' style="float: right")
+    .ui.container#nav-container
+      .div#nav-menu
+        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/intro/identity';") 
+          i.arrow.left.icon 
+          | Back
+        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/evaluate/identity';")
+          | Evaluation
+          i.arrow.right.icon
 
-        .div#nav-menu
-          button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/intro/identity';") 
-            i.arrow.left.icon 
-            | Back
-          button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/evaluate/identity';")
-            | Evaluation
-            i.arrow.right.icon
 
     //- .div
     //-   button.ui.large.button.left.floated(onclick="location.href='/intro/identity';") 

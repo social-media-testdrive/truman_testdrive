@@ -28,11 +28,16 @@ header a.item.dart-blue {
     margin-top: 50px;
 }
 
+.short-page-margin {
+    margin-top: 23px !important;
+    /* background-color: saddlebrown; */
+}
+
 #raised-content {
     font-size: 1.5rem;
     /* width: 800px; */
     /* width: 55vw; */
-    margin: 0 auto;
+    /* margin: 0 auto; */
     /* background-color: green; */
 }
 
@@ -88,7 +93,7 @@ header a.item.dart-blue {
 
 /* Flexbox method to position the header, page content / article, and footer correctly*/
 /* Source: https://stackoverflow.com/questions/643879/css-to-make-html-page-footer-stay-at-bottom-of-the-page-with-a-minimum-height-b */
-body{ min-height: 100vh; margin:0; background:  #F5F8FA;}
+body{ min-height: 100vh; margin:0; background:  #F5F8FA;     overflow-y: scroll !important;}
 
 #page-header{ min-height:50px;}
 #page-footer{ min-height:50px;}
