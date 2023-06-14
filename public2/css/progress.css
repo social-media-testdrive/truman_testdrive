@@ -157,4 +157,11 @@
 }
 
 
+@media (max-width: 550px) {
+    .step-name {
+        font-weight: normal !important;
+        font-size: 1rem !important;
+        margin-top: 5px !important;
+    }
+}
 

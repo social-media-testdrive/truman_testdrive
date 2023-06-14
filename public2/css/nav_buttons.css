@@ -1,6 +1,6 @@
 #nav-menu {
-    margin-bottom: 125px !important;
-    width: 55vw;
+    margin-bottom: 25px !important;
+    width: 90vw;
     /* background-color: yellowgreen !important; */
     /* background-color: aqua !important;
     display: flex; */
@@ -16,7 +16,7 @@
     margin: 0 auto !important;
     text-align: center !important;
     justify-content: center !important;
-    padding-top: 30px !important;
+    padding-top: 10px !important;
 }
 
 #backButton {
@@ -64,4 +64,20 @@
     /* background-color: white; */
     padding-left: 30px;
     padding-right: 30px;
+}
+
+
+@media (max-width: 430px) {
+    #nextButton {
+        padding-left: 10px;
+        padding-right: 10px;
+    } 
+    #skipButton {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    #backButton {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }

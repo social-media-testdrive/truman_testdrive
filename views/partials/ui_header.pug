@@ -1,4 +1,4 @@
-header.ui.borderless.menu
+header.ui.borderless.menu.tablet-and-computer   
     .ui.container   
         #logo
             img.ui.small.image(src='/images/dart-logo.png')
@@ -9,6 +9,23 @@ header.ui.borderless.menu
                 | Profile
             a.item(href='/logout')
                 | Logout
+.mobile-only
+  .ui.fluid.top.two.item.menu
+    a.item(href='/')
+      img.ui.small.image(src='/images/dart-logo.png', id='cell_logo')
+    .item
+        .menu.headerDropdownMenu
+            .ui.simple.dropdown.item
+                if isResearchVersion
+                    span= user.username || user.profile.name || user.id
+                else 
+                    span= user.profile.name || user.username || user.id
+                i.dropdown.icon
+                .menu
+                    a.item(href='/') Home
+                    a.item(href='/account') Profile
+                    a.item(href='logout') Logout
+
 
 //- .ui.top.small.borderless.menu(style="height: 4rem")
 //-   .ui.grid.container

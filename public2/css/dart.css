@@ -24,7 +24,7 @@ header a.item.dart-blue {
 }
 
 #raised-container {
-    background-color: white;
+    /* background-color: white; */
     margin-top: 50px;
 }
 
@@ -36,11 +36,6 @@ header a.item.dart-blue {
     /* background-color: green; */
 }
 
-.page-text-container {
-    width: 55vw;
-    margin: 0 auto;
-    /* background-color: blanchedalmond; */
-}
 
 #logo {
     display: flex;
@@ -54,19 +49,49 @@ header a.item.dart-blue {
 
 }
 
-/* hide bubbles so they don't get squished */
-@media (max-width: 430px) {
-    .bubble-container {
-        display: none !important;
+.limit {
+    position: relative;
+    padding-left: 9rem; 
+    padding-right: 9rem;
+    margin: 0 auto;
+}
+
+/* Adjust text raised segment text padding */
+@media (max-width: 1200px) {
+    .limit {
+        padding-left: 2rem; 
+        padding-right: 2rem;
+    }
+}
+
+/* Adjust text raised segment text padding */
+@media (max-width: 920px) {
+    .limit {
+        padding-left: 1rem; 
+        padding-right: 1rem;
     }
 }
 
 
+@media (max-width: 430px) {
+    /* hide bubbles so they don't get squished */
+    .bubble-container {
+        display: none !important;
+    }
 
+    .limit {
+        padding-left: 0rem; 
+        padding-right: 0rem;
+    }
+}
+
+
+/* Flexbox method to position the header, page content / article, and footer correctly*/
+/* Source: https://stackoverflow.com/questions/643879/css-to-make-html-page-footer-stay-at-bottom-of-the-page-with-a-minimum-height-b */
 body{ min-height: 100vh; margin:0; background:  #F5F8FA;}
 
-#page-header{ min-height:50px; background:lightcyan !important; }
-#page-footer{ min-height:50px; background:PapayaWhip !important; }
+#page-header{ min-height:50px;}
+#page-footer{ min-height:50px;}
 
 /* The article fills all the space between header & footer */
 body{ display:flex; flex-direction:column; }
