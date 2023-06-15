@@ -23,6 +23,11 @@
     align-items: center;
 }
 
+.ui.radio.checkbox.radioContainer:hover {
+    border: 2px solid #804477;
+    background-color: rgb(197, 17, 185);
+}
+
 #to_earn_badge {
     /* background-color: red; */
     justify-content: center;
@@ -35,4 +40,19 @@
     width: 50px;
 }
 
+.ui.raised.segments,
+.ui.segment,
+label {
+    font-size: 1.5rem !important;
+}
 
+.required-question {
+    display: inline-block; 
+    font-weight: bolder;
+    font-size: 1.7rem !important;
+}
+
+.purple-text {
+    color: #804477;
+    font-weight: bold;
+}

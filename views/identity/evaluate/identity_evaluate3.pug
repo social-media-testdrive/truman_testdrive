@@ -2,10 +2,10 @@ extends ../../ui_layout
 
 block content
 
-  .ui.container
-    .ui.grid(style="display: flex;justify-content: center;align-items: center;")
-      .thirteen.wide.column
-        .ui.raised.segment
+  .ui.container#raised-container.short-page-margin2
+    .ui.raised.segment
+      #raised-content
+        .limit
           #module-steps(style="max-width:100%;max-height:100%;text-align:center;")
             //- .row#steps-icons  
             //-   img(src='/images/quiz-icon.png')
@@ -44,7 +44,7 @@ block content
                     path(d='M480-80q-27 0-47.5-13T406-129h-14q-24 0-42-18t-18-42v-143q-66-43-104-110t-38-148q0-121 84.5-205.5T480-880q121 0 205.5 84.5T770-590q0 81-38 148T628-332v143q0 24-18 42t-42 18h-14q-6 23-26.5 36T480-80Zm-88-109h176v-44H392v44Zm0-84h176v-40H392v40Zm-9-100h74v-137l-92-92 31-31 84 84 84-84 31 31-92 92v137h74q60-28 96.5-87T710-590q0-97-66.5-163.5T480-820q-97 0-163.5 66.5T250-590q0 71 36.5 130t96.5 87Zm97-176Zm0-48Z')
                 //- i.bordered.inverted.lightbulb.icon#reflect
                 .step-name Reflect
-          h1.ui.header(style="margin:0 auto; text-align: center;")
+          h1.ui.header(style="margin:0 auto; text-align: center;margin-top:35px;")
             .content#great-job
                 | Great Job!
           //- p Thank you for taking the time to complete this pre-quiz. Your feedback is invaluable and will help us to ensure that everyone is adequately prepared for the upcoming lesson. 
@@ -67,21 +67,15 @@ block content
                     | <strong>Evaluation</strong>
 
           #text
-            p You've completed the Challenge and earned your very first Badge!  But that's not all—there are still five more Badges for you to earn. Keep up the great work, and let's start your exciting journey! We can't wait to see all the amazing things you'll achieve!      
-
-        .div#nav-menu
-          button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/evaluate2/identity';") 
-            i.arrow.left.icon 
-            | Back
-          button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/submod/learn/identity';")
-            | Learn
-            i.arrow.right.icon
-          //- iframe(type='text/html' width='200' height='100'
-          //-   src='../../videos/trumpets.mp3'
-          //-   frameborder='0' style='display: block; margin: auto;' allow='autoplay')
-          //- audio(controls='', autoplay='')
-          //-   source(src='../../videos/trumpets.mp3', type='audio/mpeg')
-
+            p You've completed the Challenge and earned your very first Badge!  But that's not all—there are still five more badges for you to earn. Keep up the great work as we head into Learn!      
+    .ui.container#nav-container
+      .div#nav-menu
+        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/evaluate2/identity';") 
+          i.arrow.left.icon 
+          | Back
+        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/submod/learn/identity';")
+          | Learn
+          i.arrow.right.icon
 
           <iframe id="audio-frame" allow="autoplay"  src="../../sound/progress.mp3" frameborder="0" style="display:none"></iframe>
           //- <iframe id="audio-frame2" src="../../sound/unlock.wav" frameborder="0" style="display:none"></iframe>

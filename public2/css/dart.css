@@ -33,6 +33,10 @@ header a.item.dart-blue {
     /* background-color: saddlebrown; */
 }
 
+.short-page-margin2 {
+    margin-top: 50px !important;
+}
+
 #raised-content {
     font-size: 1.5rem;
     /* width: 800px; */

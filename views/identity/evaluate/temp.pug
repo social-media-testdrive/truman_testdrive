@@ -2,12 +2,51 @@ extends ../../ui_layout
 
 block content
 
+  .ui.container#raised-container
+    .ui.raised.segment
+      #raised-content
+        h1.ui.header.large#mod-title
+          .content
+            | Identity Theft Knowledge Check
+        .limit
+          .ui.container
+            .ui.segment
+              .ui.header Apple Email
+            .ui.segment
+              p Thanks for choosing Apple.
+              p Hi,
+              p I wanted to follow up with you regarding our previous correspondence. Have you been able to get the information that I requested in my last email?
+              p I've copied my previous email below for your reference.
+              .ui.segment
+                blockquote
+                  p Device and software details including the iOS version. You can find this information in Settings > General > About on your device.
+              p After you have the information that I've requested, you can reply to this email with the
+              | information attached.
+              p Thanks,
+              p Jose
+              p iTunes Store Customer Support
+              p
+                a(href='http://www.apple.com/support/itunes/ww') http://www.apple.com/support/itunes/ww
+            .ui.segment
+              p © 2023 Apple Inc. All rights reserved.
+
+
+
+    .ui.container#nav-container
+      .div#nav-menu          
+        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/evaluate/identity';") 
+          i.arrow.left.icon 
+          | Back
+        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/evaluate3/identity';")
+          | Take
+          i.arrow.right.icon
+
   .ui.text.container.addBottomMargin
     br    
     .ui.raised.segment
       h1.ui.header
         .content
-            | Identity Theft Pre-Quiz
+            | Identity Theft Knowledge Check
       p Test Your Knowledge
 
     .ui.container
@@ -113,7 +152,7 @@ block content
               div.ui.checkbox
                 input(type='checkbox', name='q2-option-5', value='1')
                 label Loss of medical care
-        .div(style='margin-top:20px;')
+        .div(style='margin-top:20px;')#nav-menu
           button.ui.large.button.left.floated(onclick="location.href='/identity_home';") 
             i.arrow.left.icon 
             | Back
@@ -159,6 +198,6 @@ block scripts
   
 block styles
   link(rel='stylesheet', href='/css/start.css')  
-  link(rel='stylesheet', href='/css/prequiz.css')  
+  link(rel='stylesheet', href='/css/evaluate.css')  
 
     

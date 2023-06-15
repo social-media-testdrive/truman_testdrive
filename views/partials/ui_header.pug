@@ -7,7 +7,7 @@ header.ui.borderless.menu.tablet-and-computer
                 | Home
             a.item(href='/account').dart-blue
                 | Profile
-            a.item(href='/logout')
+            a.item(href='/logout' style="color: #7D7C7C;")
                 | Logout
 .mobile-only
   .ui.fluid.top.two.item.menu
@@ -15,16 +15,17 @@ header.ui.borderless.menu.tablet-and-computer
       img.ui.small.image(src='/images/dart-logo.png', id='cell_logo')
     .item
         .menu.headerDropdownMenu
-            .ui.simple.dropdown.item
-                if isResearchVersion
-                    span= user.username || user.profile.name || user.id
-                else 
-                    span= user.profile.name || user.username || user.id
-                i.dropdown.icon
-                .menu
-                    a.item(href='/') Home
-                    a.item(href='/account') Profile
-                    a.item(href='logout') Logout
+            if user
+                .ui.simple.dropdown.item
+                    if isResearchVersion
+                        span= user.username || user.profile.name || user.id
+                    else 
+                        span= user.profile.name || user.username || user.id
+                    i.dropdown.icon
+                    .menu
+                        a.item(href='/') Home
+                        a.item(href='/account') Profile
+                        a.item(href='logout') Logout
 
 
 //- .ui.top.small.borderless.menu(style="height: 4rem")
