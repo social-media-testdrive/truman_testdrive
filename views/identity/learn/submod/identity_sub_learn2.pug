@@ -2,7 +2,7 @@ extends ../../../ui_layout
 
 block content
 
-  .ui.text.container.addBottomMargin
+  .ui.container#raised-container
     .ui.fluid.tiny.three.item.fluid.menu
       .item.active(style='background-color: #6BBCC7; color: white; border-right: 2px solid white;')
         | Concept & Consequences
@@ -10,32 +10,41 @@ block content
         | Tricks and Recognize Tricks
       .item(style='background-color: darkgray; color: white;')
         | Method and Protection
-    #segmentation.ui.raised.segment
-      img.ui.medium.image(src='/images/learning_progress_bar.png' style='margin-left: auto; margin-right: auto')
-      ul
-        li <b>Definition</b>
-        ul(style="list-style-type:disc;")
-          li <u>Identity theft</u> is when your personal identifiable information (PII) is stolen and used against you.
-          li <u>Personal Identifiable Information (PII)</u> is information uniquely associated with you, which can be directly or indirectly used to identify you.
-          br
-          li Here are some specific examples of PII:
+    .ui.raised.segment
+      #raised-content
+        h1.ui.header.large#mod-title
+          .content
+            | Definitions
+        .limit
           ul(style="list-style-type:disc;")
-            li Name: full name, maiden name, mother’s maiden name, or alias
-            li Personal identification numbers: social security number (SSN), passport number, driver’s license number, taxpayer identification number, patient identification number, financial account number, or credit card number
-            li Personal address information: street address, or email address
-            li Personal telephone numbers
-      .ui.one.column.centered.grid(style="margin: 50px")
-        .ui.large.right.pointing.circular.label(style="display: flex; align-items: center; float: left;width:50%;")
-          p(style="padding: 0px; text-align: center; margin: 0;") Key concept here is <strong>Personal Identifiable Information (PII)</strong>
-        img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png' style="float: right")
-    .div(style='margin-top:20px;')
-      button.ui.medium.button.left.floated(onclick="location.href='/submod/learn/identity';") 
-        i.arrow.left.icon 
-        | Back
-      //- button.ui.medium.button.left.floated(onclick="location.href='/';") Save & Exit
-      button.ui.medium.button.right.floated(onclick="location.href='/submod/learn3/identity';")
-        | Next
-        i.arrow.right.icon
+            li <u>Identity theft</u> is when your personal identifiable information (PII) is stolen and used against you.
+            li <u>Personal Identifiable Information (PII)</u> is information uniquely associated with you, which can be directly or indirectly used to identify you.
+            br
+            li Here are some specific examples of PII:
+            ul(style="list-style-type:disc;")
+              li 
+                strong Name: 
+                | full name, maiden name, mother’s maiden name, or alias
+              li 
+                strong Personal identification numbers: 
+                | social security number (SSN), passport number, driver’s license number, taxpayer identification number, patient identification number, financial account number, or credit card number
+              li 
+                strong Personal address information: 
+                | street address, or email address
+              li 
+                strong Personal account information: 
+                | bank account, social media account, shopping platform account, and the corresponding passwords.
+              li 
+                strong Personal telephone numbers
+      img.ui.image(src='/images/learn-2.png' style='margin-left: auto; margin-right: auto')
+    .ui.container#nav-container
+      .div#nav-menu          
+        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/submod/learn/identity';") 
+          i.arrow.left.icon 
+          | Back
+        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/submod/learn3/identity';")
+          | Next
+          i.arrow.right.icon
 
 
 

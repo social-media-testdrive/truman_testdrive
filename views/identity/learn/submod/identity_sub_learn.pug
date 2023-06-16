@@ -2,7 +2,7 @@ extends ../../../ui_layout
 
 block content
 
-  .ui.text.container.addBottomMargin
+  .ui.container#raised-container.short-page-margin
     .ui.fluid.tiny.three.item.fluid.menu
       .item.active(style='background-color: #6BBCC7; color: white; border-right: 2px solid white;')
         | Concept & Consequences
@@ -10,39 +10,40 @@ block content
         | Tricks and Recognize Tricks
       .item(style='background-color: darkgray; color: white;')
         | Method and Protection
-    #segmentation.ui.raised.segment
-      iframe(type='text/html' width='540' height='289'
-        src='../../videos/identity-video.mp4'
-        frameborder='0' style='display: block; margin: auto;')
-      br
-      br
-      p This module is designed for your to have a deeper understanding of <strong>identity theft scams</strong>, and their risks and warning signs. Our goal is to assist you to better protect yourself from them.
+    .ui.raised.segment
+      #raised-content
+        h1.ui.header.large#mod-title
+          .content
+            | Learn
+        iframe(type='text/html' width='540' height='289'
+          src='../../videos/identity-video.mp4'
+          frameborder='0' style='display: block; margin: auto;')
+        br
+        br
+        .limit
+          p This module is designed for your to have a deeper understanding of <strong>identity theft scams</strong>, and their risks and warning signs. Our goal is to assist you to better protect yourself from them.
 
-      .ui.centered.grid(style="margin: auto")
-        .four.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;")
-          .ui.large.label(style='text-align: center;')
-            p Concepts & 
-            p Consequences
-          p(style='text-align: center; margin-top: 0.5em;') Section 1: Concepts & Consequences
-        .four.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;")
-          .ui.huge.label(style='text-align: center;')
-            i.big.lock.icon(style='margin: 0 auto;')
-          p(style='text-align: center; margin-top: 0.5em;') Section 2: Recognize tricks
-        .four.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;")
-          .ui.huge.label(style='text-align: center;')
-            i.big.lock.icon(style='margin: 0 auto;')
-          p(style='text-align: center; margin-top: 0.5em;') Section 3: Methods of Protection
-
-
-    .div(style='margin-top:20px;')
-      button.ui.button.left.floated(onclick="location.href='/evaluate3/identity';") 
-        i.arrow.left.icon 
-        | Back
-      //- button.ui.button.left.floated(onclick="location.href='/';") Save & Exit
-      button.ui.button.right.floated(onclick="location.href='/submod/learn2/identity';")
-        | Next
-        i.arrow.right.icon
-
+          .ui.centered.grid(style="margin: auto")
+            .four.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 30px;")
+              .ui.huge.label(style='text-align: center;background: #2165AE;border: 3px solid #6BBCC7; border-radius: 10px; padding: 40px 80px;')
+                i.big.unlock.icon(style='margin: 0 auto; color: white')
+              p(style='text-align: center; margin-top: 0.5em;') Section 1: Concepts & Consequences
+            .four.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;  margin-right: 30px;")
+              .ui.huge.label(style='text-align: center;background: #2165AE;border: 3px solid #2165AE; border-radius: 10px; padding: 40px 80px;')
+                i.big.lock.icon(style='margin: 0 auto; color: white')
+              p(style='text-align: center; margin-top: 0.5em;') Section 2: Recognize tricks
+            .four.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;  margin-right: 30px;")
+              .ui.huge.label(style='text-align: center;background: #2165AE;border: 3px solid #2165AE; border-radius: 10px; padding: 40px 80px;')
+                i.big.lock.icon(style='margin: 0 auto; color: white')
+              p(style='text-align: center; margin-top: 0.5em;') Section 3: Methods of Protection
+    .ui.container#nav-container
+      .div#nav-menu          
+        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/evaluate3/identity';") 
+          i.arrow.left.icon 
+          | Back
+        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/submod/learn2/identity';")
+          | Next
+          i.arrow.right.icon
 
 
 
