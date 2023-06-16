@@ -221,7 +221,7 @@ app.get('/x', (req, res) => {
 passport.use(new GoogleStrategy({
     clientID:"896039841801-tdh0a2hsl53671t5ruirn1kls9cob9aa.apps.googleusercontent.com", // Your Credentials here.
     clientSecret:"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", // Your Credentials here.
-    callbackURL: "https://dart.socialsandbox.xyz/auth/callback", // Your base URL + path.
+    callbackURL: "/auth/callback", // Your base URL + path.
     passReqToCallback:true
   },
   function(request, accessToken, refreshToken, profile, done) {
@@ -256,7 +256,6 @@ app.get('/auth/callback/success', (req, res, next) => {
             active: true,
             ui: 'no', //ui or no
             notify: 'no', //no, low or high
-            isGuest: true,
             lastNotifyVisit: Date.now(),
         });
         console.log(req.user.displayName)
@@ -269,11 +268,20 @@ app.get('/auth/callback/success', (req, res, next) => {
             if (err) { return next(err); }
             if (existingUser) {
                 console.log("existingUser")
-                req.logIn(user, (err) => {
+                console.log(existingUser)
+                req.logIn(existingUser, (err) => {
                     if (err) {
                         return next(err);
                     }
-                    return res.redirect('/selection');
+                    var temp = req.session.passport; // {user: 1}
+                    req.session.regenerate(function(err) {
+                        //req.session.passport is now undefined
+                        req.session.passport = temp;
+                        req.session.save(function(err) {
+                        
+                            return res.redirect('/selection');
+                        });
+                    });
                 });
             }else{
             user.save((err) => {
@@ -283,7 +291,15 @@ app.get('/auth/callback/success', (req, res, next) => {
                     if (err) {
                         return next(err);
                     }
-                    return res.redirect('/selection');
+                    var temp = req.session.passport; // {user: 1}
+                    req.session.regenerate(function(err) {
+                        //req.session.passport is now undefined
+                        req.session.passport = temp;
+                        req.session.save(function(err) {
+                            return res.redirect('/selection');
+                        });
+                    });
+                    
                 });
             });
         }
@@ -504,6 +520,8 @@ app.get('/', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtect
     });
 });
 
+
+
 // Get current csrf token; COMMENTED OUT FOR NOW-- will work on it later
 // app.get('/getCSRFToken', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
 //     console.log(res.locals.csrfToken)
@@ -543,6 +561,11 @@ app.get('/edit_profile', passportConfig.isAuthenticated, csrfProtection, setHttp
     });
 });
 
+app.get('/gmail', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+    res.render('account/gmail', {
+        title: 'gmail'
+    });
+});
 
 // Render intro page (all modules)
 app.get('/intro/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {

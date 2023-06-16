@@ -378,6 +378,9 @@ const userSchema = new mongoose.Schema({
         bio: String,
         picture: String
     }, { _id: true, versionKey: false })],
+    createdAt: Date, // date user createdAt
+    updatedAt: Date, // date user updatedAt
+
 }, { timestamps: true });
 
 /**
