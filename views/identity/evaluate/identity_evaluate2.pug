@@ -4,66 +4,67 @@ block content
 
   .ui.container#raised-container
     .ui.raised.segment
-      #raised-content
-        h1.ui.header.large#mod-title
-          .content
-            | Identity Theft Knowledge Check
-        p
-          | Please examine the email provided below and proceed to answer the subsequent question.
-        .limit
-          .ui.raised.segments
-            .ui.looping.pulsating.transition.accordion(onclick="stopPulse(this)") 
-              .title(onclick="toggleIcon(this)")
-                .ui.basic.segment
-                  i.envelope.outline.icon
-                  | Customer Service Follow-up
-              .content
-                .ui.segment
-                  i.apple.big.icon(style='position: absolute; top: 10px; right: 10px; color: #A5A6AE;')
-                  .ui.header.centered.aligned(style='font-weight: bolder;') Thanks for choosing Apple.
-                  p Hi,
-                  p I wanted to follow up with you regarding our previous correspondence. Have you been able to get the information that I requested in my last email?
-                  p I've copied my previous email below for your reference:
-                  .ui.segment#fix-font(style='font-size: 0.5px !important;')
-                    .accordion
-                      .title(onclick="toggleIcon2(this)")
-                        .ui.basic.segment
-                          i.envelope.outline.icon
-                          | Request for Device and Software Details
-                        //- .ui.header Request for Device and Software Details
-                      .content
-                        p Dear Customer,
-                        p Thank you for contacting Apple Customer Service. We are committed to providing you with the best assistance possible. To better understand your device setup and address your inquiry effectively, we kindly request the following information:
-                        ol
-                          li Device Details:
-                            ul
-                              li Device Model: [e.g., iPhone 12, iPad Pro, MacBook Air]
-                              li Serial Number: [if available]
-                          li iOS Version:
-                            | To find your iOS version, please follow these steps on your device:
-                            ul
-                              li Open "Settings" from the home screen.
-                              li Tap "General."
-                              li Tap "About."
-                              li Locate the "Software Version" or "iOS Version" field and provide the version number.
-                          p By providing us with this information, we can ensure that our support team has a comprehensive understanding of your device configuration, enabling us to assist you more effectively.
-                          p Thank you for your cooperation. We look forward to assisting you further.
-                          p Best regards,
-                          p Sarah (she/her)
-                          p iTunes Store Customer Support
-                  p.purple-text After you have the information that I've requested, you can reply to this email with the information attached.
-                  p.purple-text Thank you,
-                  p.purple-text Sarah (she/her)
-                  p.purple-text iTunes Store Customer Support
-                  p
-                    a(href='' style="pointer-events: none;") http://www.apple.com/support/itunes
-                //- .ui.segment
-                //-   p © 2023 Apple Inc. All rights reserved.
-     
       form#quiz-form.ui.form(action='/postIdentityTheftPreQuizScore', method='POST')
         input(type='hidden', name='username', value=user.username)
         input(type='hidden', name='_csrf', value=csrfToken)
 
+
+        //- Question 1
+        #raised-content
+          h1.ui.header.large#mod-title
+            .content
+              | Identity Theft Knowledge Check
+          p
+            | Please examine the email provided below and proceed to answer the subsequent question.
+          .limit
+            .ui.raised.segments
+              .ui.looping.pulsating.transition.accordion(onclick="stopPulse(this)") 
+                .title(onclick="toggleIcon(this)")
+                  .ui.basic.segment
+                    i.envelope.outline.icon
+                    | Customer Service Follow-up
+                .content
+                  .ui.segment
+                    i.apple.big.icon(style='position: absolute; top: 10px; right: 10px; color: #A5A6AE;')
+                    .ui.header.centered.aligned(style='font-weight: bolder;') Thanks for choosing Apple.
+                    p Hi,
+                    p I wanted to follow up with you regarding our previous correspondence. Have you been able to get the information that I requested in my last email?
+                    p I've copied my previous email below for your reference:
+                    .ui.segment#fix-font(style='font-size: 0.5px !important;')
+                      .accordion
+                        .title(onclick="toggleIcon2(this)")
+                          .ui.basic.segment
+                            i.envelope.outline.icon
+                            | Request for Device and Software Details
+                          //- .ui.header Request for Device and Software Details
+                        .content
+                          p Dear Customer,
+                          p Thank you for contacting Apple Customer Service. We are committed to providing you with the best assistance possible. To better understand your device setup and address your inquiry effectively, we kindly request the following information:
+                          ol
+                            li Device Details:
+                              ul
+                                li Device Model: [e.g., iPhone 12, iPad Pro, MacBook Air]
+                                li Serial Number: [if available]
+                            li iOS Version:
+                              | To find your iOS version, please follow these steps on your device:
+                              ul
+                                li Open "Settings" from the home screen.
+                                li Tap "General."
+                                li Tap "About."
+                                li Locate the "Software Version" or "iOS Version" field and provide the version number.
+                            p By providing us with this information, we can ensure that our support team has a comprehensive understanding of your device configuration, enabling us to assist you more effectively.
+                            p Thank you for your cooperation. We look forward to assisting you further.
+                            p Best regards,
+                            p Sarah (she/her)
+                            p iTunes Store Customer Support
+                    p.purple-text After you have the information that I've requested, you can reply to this email with the information attached.
+                    p.purple-text Thank you,
+                    p.purple-text Sarah (she/her)
+                    p.purple-text iTunes Store Customer Support
+                    p
+                      a(href='' style="pointer-events: none;") http://www.apple.com/support/itunes
+                  //- .ui.segment
+                  //-   p © 2023 Apple Inc. All rights reserved.
         .ui.segment
           h3(style='font-size:2rem; display: inline-block; font-weight: bolder;') 
             span(style='color: red; margin-right: 5px;') * 
@@ -78,13 +79,121 @@ block content
                 input(type='radio' name='q1' value = 'yes')
                 label Yes
           input(type='hidden', name='q1')
+
+        br
+
+        //- Question 2
+        #raised-content
+          //- h1.ui.header.large#mod-title
+          //-   .content
+          //-     | Identity Theft Knowledge Check
+          //- p
+          //-   | Please examine the email provided below and proceed to answer the subsequent question.
+
+          .limit
+            .ui.raised.segments
+              .ui.looping.pulsating.transition.accordion(onclick="stopPulse(this)") 
+                .title(onclick="toggleIcon(this)")
+                  .ui.basic.segment
+                    i.envelope.outline.icon
+                    | Your account on the verge of closure!
+                .content
+                  .ui.segment(style="background: #F3F3FF; margin: 0; padding: 0")
+                    //- i.apple.big.icon(style='position: absolute; top: 10px; right: 10px; color: #A5A6AE;')
+                    .ui.header(style='font-weight: bolder; color: #253B80;font-style: italic;') Pay.
+                      span(style='color: #189BD7;') Service
+                      span(style='color: #A5A6AE; font-size: 0.8rem; font-style: normal')  Secure
+                    p Dear Client,
+                    p Recently, your account was reviewed and flagged because of a potential connection to some fraudulent transactions. To avoid an eventual restriction to your account, please verify your informations by logging in to our Litigations Manager.
+                    br
+                    button.ui.button.basic.circular(style='background-color: #16AEFF; color: white; pointer-events: none;font-weight:bold')
+                      | Check my account
+        .ui.segment
+          h3(style='display: inline-block; font-weight: bold;') 
+            span(style='color: red; margin-right: 5px;') * 
+            | 2. Is this email a scam? 
+          div.ui.inline.fields(style='display: flex;margin-bottom: -30px;')
+            .field.fieldStyle
+              .ui.radio.checkbox.radioContainer
+                input(type='radio' name='q2' value = 'yes')
+                label Yes
+            .field.fieldStyle
+              .ui.radio.checkbox.radioContainer
+                input(type='radio' name='q2' value = 'no')
+                label No
+          input(type='hidden', name='q2')
+
+        //- Question 3
+      img.ui.centered.image(src='/images/identity_prequiz_3.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:40px;margin-bottom: 0px;")
+      .ui.segment
+        h3(style='display: inline-block; font-weight: bold;') 
+          span(style='color: red; margin-right: 5px;') * 
+          | 3. Is this email a scam? 
+        div.ui.inline.fields(style='display: flex;margin-bottom: -30px;')
+          .field.fieldStyle
+            .ui.radio.checkbox.radioContainer
+              input(type='radio' name='q3' value = 'yes')
+              label Yes
+          .field.fieldStyle
+            .ui.radio.checkbox.radioContainer
+              input(type='radio' name='q3' value = 'no')
+              label No
+        input(type='hidden', name='q3')
+
+
+      img.ui.centered.image(src='/images/identity_prequiz_4.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:40px;margin-bottom: 0px;")
+      .ui.segment
+        h3(style='display: inline-block; font-weight: bold;') 
+          span(style='color: red; margin-right: 5px;') * 
+          | 4. Is this email a scam? 
+        div.ui.inline.fields(style='display: flex;margin-bottom: -30px;')
+          .field.fieldStyle
+            .ui.radio.checkbox.radioContainer
+              input(type='radio' name='q4' value = 'yes')
+              label Yes
+          .field.fieldStyle
+            .ui.radio.checkbox.radioContainer
+              input(type='radio' name='q4' value = 'no')
+              label No
+        input(type='hidden', name='q4')
+
+      .ui.segment(style='margin-top:40px;') 
+        h3(style='display: inline-block; font-weight: bold;') 
+          span(style='color: red; margin-right: 5px;') * 
+          | 5. What could occur if your identity is stolen? Select all that apply. 
+        .grouped.fields
+          .field
+            div.ui.checkbox
+              input(type='checkbox', name='q2-option-1', value='1')
+              label Loss of money
+          br
+          .field
+            div.ui.checkbox
+              input(type='checkbox', name='q2-option-2', value='1')
+              label Loss of tax refund
+          br
+          .field
+            div.ui.checkbox
+              input(type='checkbox', name='q2-option-3', value='1')
+              label Be charged as a criminal
+          br
+          .field
+            div.ui.checkbox
+              input(type='checkbox', name='q2-option-4', value='1')
+              label Denials of loans and mortgages
+          br
+          .field
+            div.ui.checkbox
+              input(type='checkbox', name='q2-option-5', value='1')
+              label Loss of medical care
+
     .ui.container#nav-container
       .div#nav-menu          
         button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/evaluate/identity';") 
           i.arrow.left.icon 
           | Back
         button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/evaluate3/identity';")
-          | Next
+          | Submit
           i.arrow.right.icon
 
   //- .ui.text.container.addBottomMargin
