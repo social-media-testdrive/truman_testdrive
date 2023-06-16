@@ -22,71 +22,70 @@ block content
         span.material-icons(style='pointer-events: none;')   
         span.material-icons(style='pointer-events: none;')   
         span.material-icons(style='pointer-events: none;')   
+
   .emailList(style="height:100vh")
-    .emailList__sections
-      .section.section__selected
-        span.material-icons(style='height:20px;margin:0px;padding:0px') inbox 
-        h4(style='height:20px;margin:0px;padding:0px;margin-top:10px;margin-left:10px') Primary
-      .section(style='pointer-events: none;')
-      .section(style='pointer-events: none;')
+    .example
+      h2(onclick="window.location.href='/gmail'" style="cursor: pointer") ←
+      
+    .example-layout
 
-    .emailList__list 
-      .emailRow(onclick="window.location.href='/mail1'" style="cursor: pointer") 
-        .emailRow__options
-          input(type='checkbox' name='' id='')
-          span.material-icons  star_border 
-        .emailRow__message
-          h4
-            | Walmrt
-            span.emailRow__description  - Hi customer. This is an URGENT message! 
-        p.emailRow__time 04/05/23
-      .emailRow(onclick="window.location.href='/mail2'" style="cursor: pointer") 
-        .emailRow__options
-          input(type='checkbox' name='' id='')
-          span.material-icons  star_border 
-        .emailRow__message
-          h4
-            | irs gov
-            span.emailRow__description  - irs Identity Verification Service Dear Tax..
-        p.emailRow__time 04/25/23
-      .emailRow(onclick="window.location.href='/mail6'" style="cursor: pointer") 
-        .emailRow__options
-          input(type='checkbox' name='' id='')
-          span.material-icons  star_border 
-        .emailRow__message
-          h4
-            | NCUUstudent
-            span.emailRow__description  - Re: Hi --- Favor. How are you doing? ...
-        p.emailRow__time 04/25/23
-      .emailRow(onclick="window.location.href='/mail3'" style="cursor: pointer") 
-        .emailRow__options
-          input(type='checkbox' name='' id='')
-          span.material-icons  star_border 
-        .emailRow__message
-          h4
-            | Dropbox
-            span.emailRow__description  - on Your Channel Future Coders 
-        p.emailRow__time 10pm
-      .emailRow(onclick="window.location.href='/mail4'" style="cursor: pointer") 
-        .emailRow__options
-          input(type='checkbox' name='' id='')
-          span.material-icons  star_border 
-        .emailRow__message
-          h4
-            | Amazon
-            span.emailRow__description  - on Your Channel Future Coders 
-        p.emailRow__time 10pm
-      .emailRow(onclick="window.location.href='/mail5'" style="cursor: pointer") 
-        .emailRow__options
-          input(type='checkbox' name='' id='')
-          span.material-icons  star_border 
-        .emailRow__message
-          h4
-            | iphone 14
-            span.emailRow__description  - on Your Channel Future Coders 
-        p.emailRow__time 10pm
+      .row
+        .col-1 
+          h2 irs Identity Verification Service
+        .col-2 
+        .col-3(style="margin-top:auto")  
+          span 04/25/23
+
+      .row
+        .col-1 
+          p 
+            strong(style="font-size:17px") irs gov 
+            | &lt;irsgov@gmail.com&gt;
+            br
+            | to me
+        .col-2 
+          img(style='cursor:pointer; border-radius: 50%; width:50px; height 50px; z-index: 2;top: 50%;left: 3%; border: 2px white solid;padding: -1px;padding: 5px white solid;z-index: 1;background-color: white;' src="/profile_pictures/Profile_Pic.png")
+
+        .col-3 
+      .row
+        .col-1 
+          span Dear Tax Payer,
+          br
+          br
+          span We’ve noticed your account information is missing or
+          br 
+          span incorrect. We need to verify your account information to file your Tax Refund.
+          br
+          span Please follow this link to verify your info.
+          br
+          span Thanks,
+          br
+          br
+          span IRS team
+          br
+          span 2016 IRS all right reserved.
+          br
+          img(style='cursor:pointer; width:50px; height 50px; z-index: 2;top: 50%;left: 3%; border: 2px white solid;padding: -1px;padding: 5px white solid;z-index: 1;background-color: white;' src="/profile_pictures/irs.png")
+          br
+          span IMPORTANT NOTE: If you receive this message in spam or junk it is 
+          br
+          span a result of your network provider. Please move this message to your inbox and follow the instruction above.
+        .col-2 
+
+        .col-3
+
+      .row
+        .col-1 
+          button.btn(style='padding: 6px; border: 1px solid grey; border-radius: 50px; white-space: nowrap; margin-right:10px; margin-bottom:5px; margin-top:15px;background-color:white;width:120px !important') Reply
+          button.btn(style='padding: 6px; border: 1px solid grey; border-radius: 50px; white-space: nowrap; margin-right:10px; margin-bottom:5px; margin-top:15px;background-color:white;width:120px !important') Blcok Sender
+          button.btn(style='padding: 6px; border: 1px solid grey; border-radius: 50px; white-space: nowrap; margin-right:10px; margin-bottom:5px; margin-top:15px;background-color:white;width:120px !important') Report Scam
+          button.btn(style='padding: 6px; border: 1px solid grey; border-radius: 50px; white-space: nowrap; margin-right:10px; margin-bottom:5px; margin-top:15px;background-color:white;width:120px !important') Delete Email
+        .col-2 
+
+        .col-3
 
 
+      
 block scripts
   script.
     

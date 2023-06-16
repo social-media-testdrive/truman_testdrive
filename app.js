@@ -567,6 +567,42 @@ app.get('/gmail', passportConfig.isAuthenticated, csrfProtection, setHttpRespons
     });
 });
 
+app.get('/mail1', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+    res.render('account/mail1', {
+        title: 'mail1'
+    });
+});
+
+app.get('/mail2', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+    res.render('account/mail2', {
+        title: 'mail2'
+    });
+});
+
+app.get('/mail3', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+    res.render('account/mail3', {
+        title: 'mail3'
+    });
+});
+
+app.get('/mail4', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+    res.render('account/mail4', {
+        title: 'mail4'
+    });
+});
+
+app.get('/mail5', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+    res.render('account/mail5', {
+        title: 'mail5'
+    });
+});
+
+app.get('/mail6', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+    res.render('account/mail6', {
+        title: 'mail5'
+    });
+});
+
 // Render intro page (all modules)
 app.get('/intro/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
     if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
