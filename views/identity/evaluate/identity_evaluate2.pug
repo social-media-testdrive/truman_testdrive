@@ -11,47 +11,50 @@ block content
         p
           | Please examine the email provided below and proceed to answer the subsequent question.
         .limit
-          .ui.raised.segments
-            .ui.segment
-              i.envelope.open.outline.icon
-              | Customer Service Follow-up
-            .ui.segment
-              i.apple.big.icon(style='position: absolute; top: 10px; right: 10px; color: #A5A6AE;')
-              .ui.header.centered.aligned(style='font-weight: bolder;') Thanks for choosing Apple.
-              p Hi,
-              p I wanted to follow up with you regarding our previous correspondence. Have you been able to get the information that I requested in my last email?
-              p I've copied my previous email below for your reference:
-              .ui.segment
-                //- .ui.header Request for Device and Software Details
-                p Dear Customer,
-                p Thank you for contacting Apple Customer Service. We are committed to providing you with the best assistance possible. To better understand your device setup and address your inquiry effectively, we kindly request the following information:
-                ol
-                  li Device Details:
-                    ul
-                      li Device Model: [e.g., iPhone 12, iPad Pro, MacBook Air]
-                      li Serial Number: [if available]
-                  li iOS Version:
-                    | To find your iOS version, please follow these steps on your device:
-                    ul
-                      li Open "Settings" from the home screen.
-                      li Tap "General."
-                      li Tap "About."
-                      li Locate the "Software Version" or "iOS Version" field and provide the version number.
-                p By providing us with this information, we can ensure that our support team has a comprehensive understanding of your device configuration, enabling us to assist you more effectively.
-                p Thank you for your cooperation. We look forward to assisting you further.
-                p Best regards,
-                p Sarah (she/her)
-                p iTunes Store Customer Support
-              p.purple-text After you have the information that I've requested, you can reply to this email with the information attached.
-              p.purple-text Note: The information provided will be used solely for the purpose of assisting you with your inquiry and will be handled in accordance with our privacy policy.
+          .ui.raised.segments.jiggle
+            .ui.accordion 
+              .title(onclick="toggleIcon(this)")
+                .ui.basic.segment
+                  i.envelope.outline.icon
+                  | Customer Service Follow-up
+              .content
+                .ui.segment
+                  i.apple.big.icon(style='position: absolute; top: 10px; right: 10px; color: #A5A6AE;')
+                  .ui.header.centered.aligned(style='font-weight: bolder;') Thanks for choosing Apple.
+                  p Hi,
+                  p I wanted to follow up with you regarding our previous correspondence. Have you been able to get the information that I requested in my last email?
+                  p I've copied my previous email below for your reference:
+                  .ui.segment
+                    //- .ui.header Request for Device and Software Details
+                    p Dear Customer,
+                    p Thank you for contacting Apple Customer Service. We are committed to providing you with the best assistance possible. To better understand your device setup and address your inquiry effectively, we kindly request the following information:
+                    ol
+                      li Device Details:
+                        ul
+                          li Device Model: [e.g., iPhone 12, iPad Pro, MacBook Air]
+                          li Serial Number: [if available]
+                      li iOS Version:
+                        | To find your iOS version, please follow these steps on your device:
+                        ul
+                          li Open "Settings" from the home screen.
+                          li Tap "General."
+                          li Tap "About."
+                          li Locate the "Software Version" or "iOS Version" field and provide the version number.
+                    p By providing us with this information, we can ensure that our support team has a comprehensive understanding of your device configuration, enabling us to assist you more effectively.
+                    p Thank you for your cooperation. We look forward to assisting you further.
+                    p Best regards,
+                    p Sarah (she/her)
+                    p iTunes Store Customer Support
+                  p.purple-text After you have the information that I've requested, you can reply to this email with the information attached.
+                  p.purple-text Note: The information provided will be used solely for the purpose of assisting you with your inquiry and will be handled in accordance with our privacy policy.
 
-              p.purple-text Thank you,
-              p.purple-text Sarah (she/her)
-              p.purple-text iTunes Store Customer Support
-              p
-                a(href='' style="pointer-events: none;") http://www.apple.com/support/itunes/ww
-            //- .ui.segment
-            //-   p © 2023 Apple Inc. All rights reserved.
+                  p.purple-text Thank you,
+                  p.purple-text Sarah (she/her)
+                  p.purple-text iTunes Store Customer Support
+                  p
+                    a(href='' style="pointer-events: none;") http://www.apple.com/support/itunes/ww
+                //- .ui.segment
+                //-   p © 2023 Apple Inc. All rights reserved.
             
       form#quiz-form.ui.form(action='/postIdentityTheftPreQuizScore', method='POST')
         input(type='hidden', name='username', value=user.username)
@@ -213,6 +216,36 @@ block content
 
 block scripts
   script.
+    let opened = false;
+
+    $('.ui.accordion').accordion();
+    function toggleIcon(element) {
+      var iconElement = $(element).find('i');
+      iconElement.toggleClass('envelope outline');
+      iconElement.toggleClass('envelope open outline');
+      opened = true;
+    }
+
+
+    function greet() {
+      console.log('Hello!');
+      $('.jiggle').transition({
+          animation: 'shake',
+      });
+    }
+
+    while(!opened) {
+      setInterval(greet, 4000);
+    }
+    
+    //- $(document).ready(function() {
+    //-   setInterval(function() {
+    //-     $('.jiggle').transition('jiggle');
+    //-   }, 1000);
+    //- });
+
+
+
     var voiceoverMappings = {
       '.showLearnSectionButton': {
         "initialDelay": 700,
