@@ -13,9 +13,9 @@ block content
         #raised-content
           h1.ui.header.large#mod-title
             .content
-              | Identity Theft Knowledge Check
+              | Challenge
           p
-            | Please examine the email provided below and proceed to answer the subsequent question.
+            | Click on the email below to open it. After reviewing the email, proceed to answer the subsequent question.
           .limit
             .ui.raised.segments
               .ui.looping.pulsating.transition.accordion(onclick="stopPulse(this)") 
@@ -189,10 +189,10 @@ block content
 
     .ui.container#nav-container
       .div#nav-menu          
-        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/evaluate/identity';") 
+        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/challenge/identity';") 
           i.arrow.left.icon 
           | Back
-        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/evaluate3/identity';")
+        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/challenge3/identity';")
           | Submit
           i.arrow.right.icon
 

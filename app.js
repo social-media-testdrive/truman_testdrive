@@ -579,52 +579,52 @@ app.get('/intro2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders
 });
 
 
-// Render evaluate / prequiz (all modules) ******************************
-app.get('/evaluate/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/evaluate/' + req.params.modId + '_evaluate', {
-        title: 'Evaluate'
+// Render challenge / prequiz (all modules) ******************************
+app.get('/challenge/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/challenge/' + req.params.modId + '_challenge', {
+        title: 'Challenge'
     });
 });
 
-app.get('/evaluate2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/evaluate/' + req.params.modId + '_evaluate2', {
-        title: 'Evaluate'
+app.get('/challenge2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/challenge/' + req.params.modId + '_challenge2', {
+        title: 'Challenge'
     });
 });
 
-app.get('/evaluate3/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/evaluate/' + req.params.modId + '_evaluate3', {
-        title: 'Evaluate'
+app.get('/challenge3/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/challenge/' + req.params.modId + '_challenge3', {
+        title: 'Challenge'
     });
 });
 
-app.get('/evaluate4/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/evaluate/' + req.params.modId + '_evaluate4', {
-        title: 'Evaluate'
+app.get('/challenge4/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/challenge/' + req.params.modId + '_challenge4', {
+        title: 'Challenge'
     });
 });
 
-app.get('/evaluate5/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/evaluate/' + req.params.modId + '_evaluate5', {
-        title: 'Evaluate'
+app.get('/challenge5/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/challenge/' + req.params.modId + '_challenge5', {
+        title: 'Challenge'
     });
 });
 
-app.get('/evaluate6/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/evaluate/' + req.params.modId + '_evaluate6', {
-        title: 'Evaluate'
+app.get('/challenge6/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/challenge/' + req.params.modId + '_challenge6', {
+        title: 'Challenge'
     });
 });
 
-app.get('/evaluate7/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/evaluate/' + req.params.modId + '_evaluate7', {
-        title: 'Evaluate'
+app.get('/challenge7/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/challenge/' + req.params.modId + '_challenge', {
+        title: 'Challenge'
     });
 });
 
-app.get('/evaluate8/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/evaluate/' + req.params.modId + '_evaluate8', {
-        title: 'Evaluate'
+app.get('/challenge8/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/challenge/' + req.params.modId + '_evaluate8', {
+        title: 'challenge'
     });
 });
 
@@ -819,10 +819,10 @@ app.get('/explore/:modId', passportConfig.isAuthenticated, setHttpResponseHeader
     });
 });
 
-// Render challenge (all modules) ******************************
-app.get('/challenge/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/challenge/' + req.params.modId + '_challenge', {
-        title: 'Challenge'
+// Render evaluate (all modules) ******************************
+app.get('/evaluate/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/evaluate/' + req.params.modId + '_evaluate', {
+        title: 'Evaluate'
     });
 });
 

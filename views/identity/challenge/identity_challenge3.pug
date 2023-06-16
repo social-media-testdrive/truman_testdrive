@@ -19,7 +19,7 @@ block content
                   svg(xmlns='http://www.w3.org/2000/svg' fill='currentcolor' height='48' viewbox='0 -960 960 960' width='48')#challenge-icon
                     path(d='M543-340q16.595 0 28.798-12.202Q584-364.405 584-381t-12.202-28.798Q559.595-422 543-422t-28.798 12.202Q502-397.595 502-381t12.202 28.798Q526.405-340 543-340Zm-25-126h47q2-29 8.5-43t32.5-39q27-26 37.5-45.395Q654-612.79 654-639q0-45.882-31.5-74.941Q591-743 540-743q-38 0-68 20.5T428-665l45 19q11-25 27.5-38t39.5-13q29.778 0 48.389 17Q607-663 607-637q0 20-9 35t-32 32q-32 29-40 46.5t-8 57.5ZM260-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h560q24 0 42 18t18 42v560q0 24-18 42t-42 18H260Zm0-60h560v-560H260v560ZM140-80q-24 0-42-18t-18-42v-620h60v620h620v60H140Zm120-740v560-560Z')
                 //- i.bordered.inverted.user.secret.icon#challenge
-                .step-name Evaluate
+                .step-name Challenge
               .progress-item
                 .step-counter
                   svg(xmlns='http://www.w3.org/2000/svg' fill='currentcolor' height='48' viewbox='0 -960 960 960' width='48')#learn-icon
@@ -37,7 +37,7 @@ block content
                   svg(xmlns='http://www.w3.org/2000/svg' fill='currentcolor' height='48' viewbox='0 -960 960 960' width='48')#evaluate-icon
                     path(d='M543-340q16.595 0 28.798-12.202Q584-364.405 584-381t-12.202-28.798Q559.595-422 543-422t-28.798 12.202Q502-397.595 502-381t12.202 28.798Q526.405-340 543-340Zm-25-126h47q2-29 8.5-43t32.5-39q27-26 37.5-45.395Q654-612.79 654-639q0-45.882-31.5-74.941Q591-743 540-743q-38 0-68 20.5T428-665l45 19q11-25 27.5-38t39.5-13q29.778 0 48.389 17Q607-663 607-637q0 20-9 35t-32 32q-32 29-40 46.5t-8 57.5ZM260-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h560q24 0 42 18t18 42v560q0 24-18 42t-42 18H260Zm0-60h560v-560H260v560ZM140-80q-24 0-42-18t-18-42v-620h60v620h620v60H140Zm120-740v560-560Z')
                 //- i.bordered.inverted.edit.icon#evaluate
-                .step-name Challenge
+                .step-name Evaluate
               .progress-item
                 .step-counter
                   svg(xmlns='http://www.w3.org/2000/svg' fill='currentcolor' height='48' viewbox='0 -960 960 960' width='48')#reflect-icon
@@ -70,7 +70,7 @@ block content
             p You've completed the Challenge and earned your very first Badge!  But that's not all—there are still five more badges for you to earn. Keep up the great work as we head into Learn!      
     .ui.container#nav-container
       .div#nav-menu
-        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/evaluate2/identity';") 
+        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/challenge2/identity';") 
           i.arrow.left.icon 
           | Back
         button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/submod/learn/identity';")
@@ -202,7 +202,7 @@ block scripts
     }, 6000);
 
     localStorage.setItem('progress', 5);
-    localStorage.setItem('theft-path', "/evaluate3/identity");
+    localStorage.setItem('theft-path', "/challenge3/identity");
   //-   var voiceoverMappings = {
   //-     '.showLearnSectionButton': {
   //-       "initialDelay": 700,
