@@ -579,7 +579,7 @@ app.get('/intro2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders
 });
 
 
-// Render prequiz (all modules) ******************************
+// Render evaluate / prequiz (all modules) ******************************
 app.get('/evaluate/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
     res.render(req.params.modId + '/evaluate/' + req.params.modId + '_evaluate', {
         title: 'Evaluate'
@@ -594,6 +594,36 @@ app.get('/evaluate2/:modId', passportConfig.isAuthenticated, setHttpResponseHead
 
 app.get('/evaluate3/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
     res.render(req.params.modId + '/evaluate/' + req.params.modId + '_evaluate3', {
+        title: 'Evaluate'
+    });
+});
+
+app.get('/evaluate4/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/evaluate/' + req.params.modId + '_evaluate4', {
+        title: 'Evaluate'
+    });
+});
+
+app.get('/evaluate5/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/evaluate/' + req.params.modId + '_evaluate5', {
+        title: 'Evaluate'
+    });
+});
+
+app.get('/evaluate6/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/evaluate/' + req.params.modId + '_evaluate6', {
+        title: 'Evaluate'
+    });
+});
+
+app.get('/evaluate7/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/evaluate/' + req.params.modId + '_evaluate7', {
+        title: 'Evaluate'
+    });
+});
+
+app.get('/evaluate8/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/evaluate/' + req.params.modId + '_evaluate8', {
         title: 'Evaluate'
     });
 });
