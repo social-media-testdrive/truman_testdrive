@@ -19,6 +19,10 @@ header a.item.dart-blue {
     color: #2165AE !important;
 }
 
+.dart-gray {
+    color: #7D7C7C !important;
+}
+
 .ui.container#-raised-container {
     width: 100%;
 }

@@ -3,130 +3,158 @@ extends ../ui_layout
 block content
   -var user_post = []
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
-    //-####################### title
-  //-.twelve.wide.computer.fourteen.wide.tablet.sixteen.wide.mobile.column.centered 2023-06-01T17:00:59.070+00:00 2023-06-01T16:59:47.223+00:00
-  .twelve.wide.computer.fourteen.wide.tablet.sixteen.wide.mobile.column.centered( style="margin-bottom:5%")
-     .ui.one.column.centered.grid.feedbackMessagesGrid
-     .ui.fluid.card.dim(style = "margin-top:0px;margin-bottom:0px;")
-      .profile_title(style='position: relative; top: 0; left: 0;')
-       div(style="position: relative; display: inline-block;")
+  .ui.container#raised-container
+    .ui(style="margin-top: 85px;")
+      .twelve.wide.computer.fourteen.wide.tablet.sixteen.wide.mobile.column.centered( style="margin-bottom:5%")
+        .ui.one.column.centered.grid.feedbackMessagesGrid
+        .ui.fluid.card.dim(style = "margin-top:0px;margin-bottom:0px;")
+          .profile_title(style='position: relative; top: 0; left: 0;')
+          div(style="position: relative; display: inline-block;")
 
-      .example(style=' width:100%;padding-left: 25px; margin-top: 0%;z-index: 1')
-          .example-layout(style="margin:20px; margin-top:30px")
-            
-            .row
-              .col-1 
-                div(style=' position: relative; display: flex; flex-direction: column; align-items: flex-start;')
-                  span.br(style='margin:3px; font-size: 23px;')= user.profile.name
-                  span.br(style='margin:3px; font-size: 23px;')= "Learning since "+user.createdAt.split('T')[0]
-                  div(style='margin:3px; display: flex; justify-content: flex-start; align-items: center; margin-top:10px')
-                    button.btn(style='padding: 6px; border: 1px solid #2884d4; border-radius: 50px; white-space: nowrap;') 1 module completed
-                    button.btn(style='margin-left:5px; padding: 6px; border: 1px solid #2884d4; border-radius: 50px; white-space: nowrap;') top learner
-              .col-2 
-                img.editProfilePictureButton(style='cursor:pointer; \
-  border-radius: 50%; width:100px; height 100px; z-index: 2;\
-  top: 50%;\
-  left: 3%;\
-  border: 2px white solid;padding: -1px;padding: 5px white solid;z-index: 1;background-color: white;' src="/profile_pictures/avatar-icon.svg")
-              .col-3 
-                 img(onclick="window.location.href='/edit_profile'" style="margin-right:10%;float: right;cursor:pointer; width:50px; height 50px;" src="/profile_pictures/Gear-icon.png")
-              
-      div(style=' padding-left: 25px; position: relative; display: flex; flex-direction: column; align-items: flex-start;')
-        span#progressDisplay(style="margin:3px; margin-top:-20px; margin-bottom:15px; font-size: 25px; font-weight: bold;") 
+          .example(style=' width:100%;padding-left: 25px; margin-top: 0%;z-index: 1')
+              .example-layout(style="margin:20px; margin-top:30px")
+                
+                .row
+                  .col-1 
+                    div(style=' position: relative; display: flex; flex-direction: column; align-items: flex-start;')
+                      span.br(style='margin:3px; font-size: 23px;')= user.profile.name
+                      span.br(style='margin:3px; font-size: 23px;')= "Learning since "+user.createdAt.split('T')[0]
+                      div(style='margin:3px; display: flex; justify-content: flex-start; align-items: center; margin-top:10px')
+                        button.btn(style='padding: 6px; border: 1px solid #2884d4; border-radius: 50px; white-space: nowrap;') 1 module completed
+                        button.btn(style='margin-left:5px; padding: 6px; border: 1px solid #2884d4; border-radius: 50px; white-space: nowrap;') top learner
+                  .col-2 
+                    img.editProfilePictureButton(style='cursor:pointer; \
+      border-radius: 50%; width:100px; height 100px; z-index: 2;\
+      top: 50%;\
+      left: 3%;\
+      border: 2px white solid;padding: -1px;padding: 5px white solid;z-index: 1;background-color: white;' src="/profile_pictures/avatar-icon.svg")
+                  .col-3 
+                    img(onclick="window.location.href='/edit_profile'" style="margin-right:10%;float: right;cursor:pointer; width:50px; height 50px;" src="/profile_pictures/Gear-icon.png")
+                  
+          div(style=' padding-left: 25px; position: relative; display: flex; flex-direction: column; align-items: flex-start;')
+            span#progressDisplay(style="margin:3px; margin-top:-20px; margin-bottom:15px; font-size: 25px; font-weight: bold;") 
 
 
-      
-      div.ui.special.cards(style="margin-top:20px;width:100%;  margin-bottom:20px;")
-        
-        div.card(style="  box-shadow: 0px 0px 0px rgba(0,0,0,0.5);margin-left: 5%; margin-top: 2%; width: 90%; position: relative; border: solid #d3d3d3; 1px;  border-top: none;  border-top-left-radius: 0px; border-top-right-radius: 0px")
-
-          img-crop(style="width:100%; height:250px;overflow: hidden;border-radius:0px !important ;")
-            img( style="width:100%; height:auto; margin-top: -120px;" src="/profile_pictures/backgournd_img.png")
-          div.content
-            
-            a.header(style="font-family:'Noto Sans', sans-serif; font-size:25px") Identity Theft
-            div.meta
-              span(style="font-family:'Noto Sans', sans-serif; font-size:20px") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
-            .div(style="display: flex; float:right")
-              a.ui.button.big.white(href="/identity_home", style=" font-family:'Noto Sans', sans-serif; height:46.28px; border-radius: 17px; margin: 0px 0 0 0; padding:14.1429px !important; display: block; width: 250px; background-color: #fff; border: 1px solid #2884d4; text-align: center; margin-right:10px;")  
-                span
-                  span( style="vertical-align: middle;") Share Certificate 
-                  img(src='/profile_pictures/award.png', alt="Google logo", style="height:20px; vertical-align: middle; margin-right: 10px;")
-              button.ui.big.blue.button(onclick="window.location.href='/identity_home'" style="font-family:'Noto Sans', sans-serif; height:46.28px; border-radius: 17px; width: 200px; margin: 0px 0 0 0; ") Learn Again → 
-              
-
-            
-          div#progressBar(style="border-top-left-radius: 5px !important;  border-bottom-left-radius: 0px !important; border-bottom-right-radius: 0px !important;margin-top:-8px; border-top: 8px solid #2884d4; width: 85%; position: absolute; left: 0;")
-
-         
-      span.br(style="margin:30px; font-size: 25px; font-weight: bold;") My Badges:
-
-      .ui.grid(style="margin:30px;")
-        .three.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;")
-          .ui.huge.label(style='background-color:white; text-align: center;')
-            img(src='/profile_pictures/certificate1.png', style="height:20px; vertical-align: middle; margin: auto;")
-          p(style='text-align: center; margin: auto;') Challenge Conqueror
-        .three.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;")
-          .ui.huge.label(style='background-color:white; text-align: center;')
-            img(src='/profile_pictures/certificate2.png', style="height:20px; vertical-align: middle; margin: auto;")
-          p(style='text-align: center; margin: auto;') Foundations Achiever
-        .three.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;")
-          .ui.huge.label(style='background-color:white; text-align: center;')
-            img(src='/profile_pictures/certificate3.png', style="height:20px; vertical-align: middle; margin: auto;")
-          p(style='text-align: center; margin: auto;') Progress Master
-        .three.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;")
-          .ui.huge.label(style='background-color:white; text-align: center;')
-            img(src='/profile_pictures/certificate4.png', style="height:20px; vertical-align: middle; margin: auto;")
-          p(style='text-align: center; margin: auto;') Champion of Completion
-        .three.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;")
-          .ui.huge.label(style='background-color:white; text-align: center;')
-            img(src='/profile_pictures/certificate5.png', style="height:20px; vertical-align: middle; margin: auto;")
-          p(style='text-align: center; margin: auto;') Interpid Inverstigator
-        .three.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;")
-          .ui.huge.label(style='background-color:white; text-align: center;')
-            img(src='/profile_pictures/certificate6.png', style="height:20px; vertical-align: middle; margin: auto;")
-          p(style='text-align: center; margin: auto;') Adventure Achiever
           
-  //- Profile Picture Selection Modal 
-  .ui.small.long.post.modal.profilePictureModal 
-    i.close.icon  
-    .header Choose a Profile Picture 
-    .content  
-      form.ui.profilePicForm.form 
-        .ui.segment
-            .two.fields
-              .field
-                .ui.radio.checkbox
-                  input.hidden(type='radio' name='profilepicinput' value="Daring_PT_Determined.png")
-                  label
-                      img.lazy(src='/images/picture.svg' data-src="/profile_pictures/Daring_PT_Determined.png")
-              .field
-                .ui.radio.checkbox
-                  input.hidden(type='radio' name='profilepicinput' value="Dartie_Happy_3.png")
-                  label
-                      img.lazy(src='/images/picture.svg' data-src="/profile_pictures/Dartie_Happy_3.png")
-            .two.fields
-              .field
-                .ui.radio.checkbox
-                  input.hidden(type='radio' name='profilepicinput' value="Intrepid_PT_Determined.png")
-                  label
-                      img.lazy(src='/images/picture.svg' data-src="/profile_pictures/Intrepid_PT_Determined.png")
-              .field
-                .ui.radio.checkbox
-                  input.hidden(type='radio' name='profilepicinput' value="Valiant_PT_Determined.png")
-                  label
-                      img.lazy(src='/images/picture.svg' data-src="/profile_pictures/Valiant_PT_Determined.png")
-      
+          div.ui.special.cards(style="margin-top:20px;width:100%;  margin-bottom:20px;")
             
-        .ui.error.message#noPhotoError 
-          | Please select a photo
-    .actions  
-      .ui.green.approve.button.labeled.icon
-        i.check.icon
-        |  Upload
-      .ui.red.deny.button.labeled.icon
-        i.close.icon
-        |  Cancel
+            div.card(style="  box-shadow: 0px 0px 0px rgba(0,0,0,0.5);margin-left: 5%; margin-top: 2%; width: 90%; position: relative; border: solid #d3d3d3; 1px;  border-top: none;  border-top-left-radius: 0px; border-top-right-radius: 0px")
+
+              img-crop(style="width:100%; height:250px;overflow: hidden;border-radius:0px !important ;")
+                img( style="width:100%; height:auto; margin-top: -120px;" src="/profile_pictures/backgournd_img.png")
+              div.content
+                
+                a.header(style="font-family:'Noto Sans', sans-serif; font-size:25px") Identity Theft
+                div.meta
+                  span(style="font-family:'Noto Sans', sans-serif; font-size:20px") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+                .div(style="display: flex; float:right")
+                  a.ui.button.big.white(href="/identity_home", style=" font-family:'Noto Sans', sans-serif; height:46.28px; border-radius: 17px; margin: 0px 0 0 0; padding:14.1429px !important; display: block; width: 250px; background-color: #fff; border: 1px solid #2884d4; text-align: center; margin-right:10px;")  
+                    span
+                      span( style="vertical-align: middle;") Share Certificate 
+                      img(src='/profile_pictures/award.png', alt="Google logo", style="height:20px; vertical-align: middle; margin-right: 10px;")
+                  button.ui.big.blue.button(onclick="window.location.href='/identity_home'" style="font-family:'Noto Sans', sans-serif; height:46.28px; border-radius: 17px; width: 200px; margin: 0px 0 0 0; ") Learn Again → 
+                  
+
+                
+              div#progressBar(style="border-top-left-radius: 5px !important;  border-bottom-left-radius: 0px !important; border-bottom-right-radius: 0px !important;margin-top:-8px; border-top: 8px solid #2884d4; width: 85%; position: absolute; left: 0;")
+
+            
+          span.br(style="margin:30px; font-size: 25px; font-weight: bold;") My Badges:
+
+          .ui.stackable.grid#badgesGrid
+            .four.column.row
+              .column 
+                .content
+                  img(src='/badges/identity/mystery_badge.png')
+                  //- p Challenge
+                  //-   br
+                  //-   | Conqueror
+                  p 
+                  i.big.icon.lock
+              .column
+                .content
+                  img(src='/badges/identity/mystery_badge2.png')
+                  //- p Foundations 
+                  //-   br
+                  //-   | Achiever
+                  p 
+                  i.big.icon.lock
+              .column
+                .content
+                  img(src='/badges/identity/mystery_badge2.png')
+                  //- p Progress 
+                  //-   br
+                  //-   | Master
+                  p 
+                  i.big.icon.lock
+              .column
+                .content
+                  img(src='/badges/identity/mystery_badge2.png')
+                  //- p Champion of
+                  //-   br
+                  //-   | Completion
+                  p 
+                  i.big.icon.lock
+            .four.column.centered.row
+              .column
+              .column 
+                .content
+                  img(src='/badges/identity/mystery_badge3.png')
+                  //- p Intrepid
+                  //-   br
+                  //-   | Investigator
+                  p 
+                  i.big.icon.lock
+              .column
+                .content
+                  img(src='/badges/identity/mystery_badge4.png')
+                  //- p Adventure
+                  //-   br
+                  //-   | Achiever
+                  p 
+                  i.big.icon.lock
+              .column
+              
+      //- Profile Picture Selection Modal 
+      .ui.small.long.post.modal.profilePictureModal 
+        i.close.icon  
+        .header Choose a Profile Picture 
+        .content  
+          form.ui.profilePicForm.form 
+            .ui.segment
+                .two.fields
+                  .field
+                    .ui.radio.checkbox
+                      input.hidden(type='radio' name='profilepicinput' value="Daring_PT_Determined.png")
+                      label
+                          img.lazy(src='/images/picture.svg' data-src="/profile_pictures/Daring_PT_Determined.png")
+                  .field
+                    .ui.radio.checkbox
+                      input.hidden(type='radio' name='profilepicinput' value="Dartie_Happy_3.png")
+                      label
+                          img.lazy(src='/images/picture.svg' data-src="/profile_pictures/Dartie_Happy_3.png")
+                .two.fields
+                  .field
+                    .ui.radio.checkbox
+                      input.hidden(type='radio' name='profilepicinput' value="Intrepid_PT_Determined.png")
+                      label
+                          img.lazy(src='/images/picture.svg' data-src="/profile_pictures/Intrepid_PT_Determined.png")
+                  .field
+                    .ui.radio.checkbox
+                      input.hidden(type='radio' name='profilepicinput' value="Valiant_PT_Determined.png")
+                      label
+                          img.lazy(src='/images/picture.svg' data-src="/profile_pictures/Valiant_PT_Determined.png")
+          
+                
+            .ui.error.message#noPhotoError 
+              | Please select a photo
+        .actions  
+          .ui.green.approve.button.labeled.icon
+            i.check.icon
+            |  Upload
+          .ui.red.deny.button.labeled.icon
+            i.close.icon
+            |  Cancel
 
 block scripts
   script.
@@ -196,65 +224,4 @@ block scripts
     });
 
 block styles
-  style(type='text/css').
-    .lazy {
-      width: 90%;
-      height: 90%;
-    }
-
-    .profilePictureModal {
-    height: calc(100% - 50px);
-    margin-top: 30px !important;
-    margin-bottom: 30px !important;
-    }
-    .example {
-      display: flex;
-      flex-direction: column;
-    }
-    .example h2 {
-      background: black;
-      color: white;
-    }
-
-    .example-layout {
-      display: flex;
-      flex-direction: column;
-      height: 130px;
-    }
-    .example-layout header,
-    .example-layout footer {
-      padding: 20px;
-      background: #666;
-      color: white;
-    }
-    .example-layout .row {
-      display: flex;
-      flex-grow: 1;
-    }
-    .example-layout .row .col-1 {
-      flex-grow: 1;
-    }
-    .example-layout .row .col-2 {
-      width: 160px;
-      order: -1;
-    }
-    .example-layout .row .col-3 {
-
-      width: 80px;
-    }
-    div.card::before {
-      content: "";
-      position: absolute;
-      top: -8px;
-      left: -2px;
-      right: -3px;
-      height: 8px;
-      border: solid #F3F3F3 3px;
-      border-bottom: none;
-
-    } 
-
-    div.card::before {
-    content: "";
-    border: 0px;
-    }
+  link(rel='stylesheet', href='/css/profile.css')  

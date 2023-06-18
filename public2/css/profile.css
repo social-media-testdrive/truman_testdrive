@@ -1,0 +1,79 @@
+/* entire badge grid */
+#badgesGrid {
+    /* background-color: green; */
+    margin: 0 auto;
+    width: 75%;
+}
+
+/* square for each badge */
+#badgesGrid .column .content {
+    /* background-color: red; */
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+i.big.icon.lock {
+    margin-top: -15px;
+    color: #7D7C7C;
+}
+
+.lazy {
+    width: 90%;
+    height: 90%;
+}
+
+.profilePictureModal {
+    height: calc(100% - 50px);
+    margin-top: 30px !important;
+    margin-bottom: 30px !important;
+}
+.example {
+    display: flex;
+    flex-direction: column;
+}
+.example h2 {
+    background: black;
+    color: white;
+}
+
+.example-layout {
+    display: flex;
+    flex-direction: column;
+    height: 130px;
+}
+.example-layout header,
+.example-layout footer {
+    padding: 20px;
+    background: #666;
+    color: white;
+}
+.example-layout .row {
+    display: flex;
+    flex-grow: 1;
+}
+.example-layout .row .col-1 {
+    flex-grow: 1;
+}
+.example-layout .row .col-2 {
+    width: 160px;
+    order: -1;
+}
+.example-layout .row .col-3 {
+    width: 80px;
+}
+
+div.card::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: -2px;
+    right: -3px;
+    height: 8px;
+    border: solid #F3F3F3 3px;
+    border-bottom: none;
+} 
+
+div.card::before {
+    content: "";
+    border: 0px;
+}

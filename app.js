@@ -604,17 +604,6 @@ app.get('/mail6', passportConfig.isAuthenticated, csrfProtection, setHttpRespons
     });
 });
 
-// Render intro page (all modules)
-app.get('/intro/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
-        res.redirect('/');
-    } else {
-        res.render('base_intro.pug', {
-            title: 'Welcome'
-        });
-    }
-});
-
 // Render facilitator login page (all modules)
 app.get('/facilitatorLogin', setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
     res.render('facilitatorLogin.pug', {
