@@ -5,7 +5,7 @@ html {
 
 header,
 footer {
-    z-index: 100000002;
+    z-index: 9999999999 !important;
     /* background-color: red !important; */
 }
 

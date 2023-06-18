@@ -1,5 +1,69 @@
-.loginPageTitle {
-  font-size: x-large;
+/* #page-article {
+  background: linear-gradient(to bottom, #2165AE, #091D32, white);
+
+  z-index: -1 !important;
+} */
+
+body {
+  background-color: transparent !important;
+}
+
+.background-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background-attachment: fixed;
+
+}
+
+.gradient-section {
+  height: 70vh;
+  background: linear-gradient(to bottom, #2165AE, #091D32);
+}
+
+.white-section {
+  height: 30vh;
+  background-color: white;
+}
+
+
+h1.ui.header {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: white;
+  /* font-size: x-large;
+  text-align: center; 
+  margin:5px 0px; 
+  font-family:'Noto Sans', 
+  sans-serif; 
+  margin:40px;
+  margin-bottom:15px;
+  color:white */
+}
+
+.about-dart {
+  color: white;
+  /* text-align: center; 
+  font-size: 17px; 
+  font-family:'Arial', Serif;
+  margin:30px;
+  color:white ") */
+}
+
+.mission {
+  /* text-align: center; */
+  /* text-align: center; 
+  margin:5px 0px; 
+  font-family:'Noto Sans', sans-serif; */
+}
+
+.video-container {
+  text-align: center;
+  /* half of height fo video which is 340px */
+  margin-top: -170px !important;
 }
 
 .studentLoginColumn {
