@@ -1,9 +1,139 @@
-.ui.warning.message {
-    display: none;
+#welcome {
+    margin-top: 15px;
+}
+
+/* semantic ui ordered lists don't have dots after numbers, so I'm using the normal lists but imported the needed semantic ui styles here*/
+.learning-objectives {
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 50px;
+    padding: 0em 0em;
+}
+
+/* from sementic ui, see note above in .learning-objectives comment */
+li {
+    display: list-item;
+    table-layout: fixed;
+    /* list-style-type: none; */
+    list-style-position: outside;
+    padding: 0.21428571em 0em;
+    line-height: 1.14285714em;
+}
+
+/* .learning-objectives li { 
+    margin-top: 20px;
+    margin-bottom: 20px;
+} */
+
+.bubble-container {
+    display: inline-block; 
+    position: absolute;
+    margin-left: 10px;
+}
+
+.bubbleText {
+    background-color: white; 
+    border: 1px solid #6BBCC7;
+    font-size: 0.8rem;
+    padding: 6px; 
+    border-radius: 20px; 
+    margin-left: 20px;
 }
 
 
-/* Learn section */
+#banner_pic {
+    margin-top: 5px;
+}
+
+/* entire badge grid */
+#badgesGrid {
+    /* background-color: green; */
+    margin: 0 auto;
+    width: 75%;
+}
+
+/* square for each badge */
+#badgesGrid .column .content {
+    /* background-color: red; */
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+#downloadGrid .button{
+    border: 1px solid #6BBCC7;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+
+    /* background-color: white !important;
+    color: darkgray !important; */
+}
+
+a.ui.fluid.labeled.icon.button {
+    background-color: white;
+}
+
+.graySquare {
+    background-color: #D9D9D9 !important;
+    color: transparent;
+    padding-left: 30%;
+    margin-right: 100px !important;
+
+}
+
+.inline .download {
+    position: absolute;
+    right: 15px;
+    /* padding-left: 100px !important; */
+
+    /* padding-left: 50px !important;
+    padding-bottom: 35px !important; */
+}
+
+.banner {
+    /* background-color: blue; */
+    height: 200px;
+    width: 100%;
+    max-width: 1200px;    
+    /* overflow: hidden; */
+    position: relative;
+}
+  
+.banner img {
+    height: 100%;
+    width: 100%;
+    max-width: 1200px;
+    /* allow us to adjust position of picture inside of the banner */
+    position: absolute;
+    /* center horizontally */
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* scaled proportionally to completely cover the entire container cropping some parts of the content */
+    object-fit: cover;
+    /* Adjust the percent here to move img up/down to select portion of it you want visible */
+    object-position: center 35%;
+
+    /* object-position: center; */
+
+    /* keep image's original size */
+    /* object-fit: none; */
+    /* Adjust the percent here to move img up/down to select portion of it you want visible */
+    /* object-position: center 0%; */
+
+}
+  
+
+#earned_badge {
+    width: 50px;
+}
+
+/* OLD CSS From Truman  Start Pages Below */
+/* 
+.ui.warning.message {
+    display: none;
+}
 
 .segment.removePadding {
     padding: 0;
@@ -24,7 +154,7 @@
 }
 
 
-/* Key terms section */
+// Key terms section 
 
 .button.showKeyTermsButton {
     margin-top: 14px;
@@ -37,4 +167,4 @@
 
 .keyTermDefinition ul {
     font-weight: 400;
-}
+} */

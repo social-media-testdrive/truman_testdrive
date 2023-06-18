@@ -1,0 +1,168 @@
+/* Tutorial referenced: https://devrecipes.net/step-progres-bar-with-pure-css/ */
+.progress-wrapper {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    /* background-color: pink; */
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.progress-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+
+    @media (max-width: 768px) {
+        font-size: 12px;
+    }
+}
+
+.progress-item::before {
+    position: absolute;
+    content: "";
+    border-bottom: 4px solid #7D7C7C;
+    width: 100%;
+    top: 30px;
+    left: -50%;
+    z-index: 2;
+}
+
+.progress-item::after {
+    position: absolute;
+    content: "";
+    border-bottom: 4px solid #7D7C7C;
+    width: 100%;
+    top: 30px;
+    left: 50%;
+    z-index: 2;
+}
+
+.progress-item .step-counter {
+    position: relative;
+    z-index: 5;
+    width: 50px;
+    height: 50px;
+    /* border-radius: 50%; */
+    /* margin-bottom: 2px; */
+    /* border: 2px solid #939393; */
+    border: 2px solid transparent;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 5%;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+.progress-item.active {
+    font-weight: bold;
+}
+
+/* .progress-item.active .step-counter:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #2165ae2d;
+    border-radius: 50%;
+} */
+
+/* Make solid white behind transparent active circle so that the lines aren't visible*/
+.progress-item.active .step-counter {
+    z-index: 8;
+    background-color: white;
+}
+
+.progress-item.completed .step-counter {
+    z-index: 7;
+    /* background-color: #2165AE; */
+    /* color: white; */
+}
+
+.progress-item.completed::after {
+    z-index: 3;
+    position: absolute;
+    content: "";
+    border-bottom: 4px solid #6BBCC7;
+    width: 100%;
+    top: 30px;
+    left: 50%;
+
+    background: linear-gradient(to right, #7D7C7C, #6BBCC7);
+    animation: fillAnimation 1s linear forwards;  
+}
+
+@keyframes fillAnimation {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 100%;
+    }
+}
+  
+
+.progress-item:first-child::before {
+    content: none;
+}
+.progress-item:last-child::after {
+    content: none;
+}
+
+#steps-icons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    /* margin-left: 20px; */
+    padding-left: 40px;
+    padding-right: 50px;
+    margin-right: -2px;
+}
+
+#steps-icons img{
+    margin-right: 3px;
+}
+
+.progress-wrapper .icon {
+    font-size: 30px;
+    text-align: center;
+    /* margin-bottom: 20px;
+    margin-left: 3px; */
+    color: #7D7C7C;
+}
+
+.progress-item.completed .step-counter .icon{
+    color: #6BBCC7;
+}
+
+.step-name {
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin-top: 10px;
+    color: #7D7C7C
+}
+
+#challenge-icon, #learn-icon, #explore-icon, #evaluate-icon, #reflect-icon {
+    background-color: white;
+    z-index: 100;
+    fill: #7D7C7C;
+}
+
+
+@media (max-width: 550px) {
+    .step-name {
+        font-weight: normal !important;
+        font-size: 1rem !important;
+        margin-top: 5px !important;
+    }
+}
+

@@ -1,0 +1,107 @@
+/* Set font size for all page content to 1.5rem, ~23px, which is what the National Institute on Aging uses for their page's body text */
+html {
+    font-size: 1rem;
+}
+
+header,
+footer {
+    z-index: 100000002;
+    /* background-color: red !important; */
+}
+
+header a.item {
+    font-size: 1.3rem;
+    font-weight: 900 !important;
+    /* background-color: yellow !important; */
+}
+  
+header a.item.dart-blue {
+    color: #2165AE !important;
+}
+
+.ui.container#-raised-container {
+    width: 100%;
+}
+
+#raised-container {
+    /* background-color: white; */
+    margin-top: 50px;
+}
+
+.short-page-margin {
+    margin-top: 23px !important;
+    /* background-color: saddlebrown; */
+}
+
+.short-page-margin2 {
+    margin-top: 50px !important;
+}
+
+#raised-content {
+    font-size: 1.5rem;
+    /* width: 800px; */
+    /* width: 55vw; */
+    /* margin: 0 auto; */
+    /* background-color: green; */
+}
+
+
+#logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#mod-title {
+    display: inline-block;
+    font-size: 2.25rem;
+
+}
+
+.limit {
+    position: relative;
+    padding-left: 9rem; 
+    padding-right: 9rem;
+    margin: 0 auto;
+}
+
+/* Adjust text raised segment text padding */
+@media (max-width: 1200px) {
+    .limit {
+        padding-left: 2rem; 
+        padding-right: 2rem;
+    }
+}
+
+/* Adjust text raised segment text padding */
+@media (max-width: 920px) {
+    .limit {
+        padding-left: 1rem; 
+        padding-right: 1rem;
+    }
+}
+
+
+@media (max-width: 430px) {
+    /* hide bubbles so they don't get squished */
+    .bubble-container {
+        display: none !important;
+    }
+
+    .limit {
+        padding-left: 0rem; 
+        padding-right: 0rem;
+    }
+}
+
+
+/* Flexbox method to position the header, page content / article, and footer correctly*/
+/* Source: https://stackoverflow.com/questions/643879/css-to-make-html-page-footer-stay-at-bottom-of-the-page-with-a-minimum-height-b */
+body{ min-height: 100vh; margin:0; background:  #F5F8FA;     overflow-y: scroll !important;}
+
+#page-header{ min-height:50px;}
+#page-footer{ min-height:50px;}
+
+/* The article fills all the space between header & footer */
+body{ display:flex; flex-direction:column; }
+#page-article{ flex:1; }

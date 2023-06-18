@@ -44,30 +44,7 @@ $(window).on("load", function() {
         window.sessionStorage.setItem('voiceoverChangeTime', Date.now());
     }
 
-    const colorState = window.sessionStorage.getItem('darkMode');
-    if (colorState === 'true') {
-        changeToDark();
-    }
 
-    const gameState = window.sessionStorage.getItem('gameMode');
-    if (gameState === 'false') {
-        changeToLearn();
-    }
-
-    const textState = window.sessionStorage.getItem('textMode');
-    if (textState === 'large') {
-        changeToLarge();
-    }
-    else if (textState === 'medium') {
-        changeToMedium();
-    }
-    else if (textState === 'small') {
-        changeToSmall();
-    }
-
-    const modalState = window.sessionStorage.getItem('modalMode');
-    if(modalState === 'true') document.getElementById("access").style.display="block";
-    else document.getElementById("access").style.display="none";
 
     // If the current page is not the first page of a new session (https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage), 
     // log the time between the last time the voiceover was logged to be "on" and this page load (if the voiceover is on) 

@@ -222,7 +222,7 @@ exports.postIdentityTheftPreQuizScore = (req, res, next) => {
                 });
         }
     });
-    res.redirect('/identity_prequiz_finish'); 
+    res.redirect('/evaluate3/identity'); 
 }; 
 
 exports.postIdentityTheftModOneQuizScore = (req, res, next) => {
@@ -333,7 +333,7 @@ exports.postIdentityTheftModOneConfidenceRating = (req, res, next) => {
                 });
         }
     });
-    res.redirect('/identity_learn_page9'); 
+    res.redirect('learn9/identity'); 
 }; 
 
 exports.postIdentityTheftModTwoConfidenceRating = (req, res, next) => {

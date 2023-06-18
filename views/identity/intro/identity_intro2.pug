@@ -1,0 +1,126 @@
+extends ../../ui_layout
+
+block content
+
+  .ui.container#raised-container
+    .ui.raised.segment
+      #raised-content
+        h1.ui.header.large#mod-title
+          .content
+            | Identity Theft
+        .limit
+          p There are six amazing badges waiting for you to earn!
+
+          //- semantic ui grid to organize the badges properly
+          .ui.grid#badgesGrid
+            .four.column.row
+              .column 
+                .content
+                  img(src='/badges/identity/mystery_badge.png')
+                  p Challenge
+                    br
+                    | Conqueror
+              .column
+                .content
+                  img(src='/badges/identity/mystery_badge2.png')
+                  p Foundations 
+                    br
+                    | Achiever
+              .column
+                .content
+                  img(src='/badges/identity/mystery_badge2.png')
+                  p Progress 
+                    br
+                    | Master
+              .column
+                .content
+                  img(src='/badges/identity/mystery_badge2.png')
+                  p Champion of
+                    br
+                    | Completion
+            .four.column.centered.row
+              .column
+              .column 
+                .content
+                  img(src='/badges/identity/mystery_badge3.png')
+                  p Intrepid
+                    br
+                    | Investigator
+              .column
+                .content
+                  img(src='/badges/identity/mystery_badge4.png')
+                  p Adventure
+                    br
+                    | Achiever
+              .column
+        br
+        br
+        .ui.one.column.centered.grid#avatarGrid
+          .ui.large.right.pointing.circular.label#speechBubble
+            p#speechText(style="font-size: 1.3rem") Remember that you can take a break anytime and pick up where you left off when you return!
+          img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png' style="float: right")
+    .ui.container#nav-container
+      .div#nav-menu
+        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/intro/identity';") 
+          i.arrow.left.icon 
+          | Back
+        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/challenge/identity';")
+          | Challenge
+          i.arrow.right.icon
+
+
+    //- .div
+    //-   button.ui.large.button.left.floated(onclick="location.href='/intro/identity';") 
+    //-     i.arrow.left.icon 
+    //-     | Back
+    //-   button.ui.large.button.left.floated(onclick="location.href='/identity_learn_page0';") Skip pre-quiz & continue to Learn
+    //-   //- button.circular.ui.icon.button.right.floated(onclick="showModal()")
+    //-   //-   i.wechat.icon
+    //-   button.ui.large.green.button.right.floated(onclick="location.href='/prequiz/identity';")
+    //-     | Take the pre-quiz
+    //-     i.arrow.right.icon
+
+block scripts
+  script.
+    document.addEventListener('DOMContentLoaded', function() {
+      const dartieImg = document.getElementById('dart_image1');
+      const character = localStorage.getItem('character');
+
+      if (character) {
+        dartieImg.src = "/profile_pictures/" + character;
+      }
+    }
+    );
+  script.
+    var voiceoverMappings = {
+      '.showLearnSectionButton': {
+        "initialDelay": 700,
+        "delay": 500,
+        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
+      },
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.1.mp3']
+      },
+      '.voiceover_keyTerm2': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.2.mp3']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.3.mp3']
+      }
+    };
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_start.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/start.css') 
+
+ 
+ 
+
+

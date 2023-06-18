@@ -25,9 +25,9 @@ body {
     height: auto !important;
 }
 
-.grid.container.addBottomPaddingToGrid {
+/* .grid.container.addBottomPaddingToGrid {
     padding-bottom: 50px;
-}
+} */
 
 .grayElement,
 .ui.container .grayElement {
@@ -425,6 +425,8 @@ button,
 }
 
 
+
+/* CUSTOM TROLLS CSS ******************************** */
 #harmonyBox {
     width: 545px;
     height: 146px;

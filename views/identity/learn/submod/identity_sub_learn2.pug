@@ -1,0 +1,90 @@
+extends ../../../ui_layout
+
+block content
+
+  .ui.container#raised-container
+    .ui.fluid.tiny.three.item.fluid.menu
+      .item.active(style='background-color: #6BBCC7; color: white; border-right: 2px solid white;')
+        | Concept & Consequences
+      .item(style='background-color: darkgray; color: white; border-right: 2px solid white;')
+        | Tricks and Recognize Tricks
+      .item(style='background-color: darkgray; color: white;')
+        | Method and Protection
+    .ui.raised.segment
+      #raised-content
+        h1.ui.header.large#mod-title
+          .content
+            | Definitions
+        .limit
+          ul(style="list-style-type:disc;")
+            li <u>Identity theft</u> is when your personal identifiable information (PII) is stolen and used against you.
+            li <u>Personal Identifiable Information (PII)</u> is information uniquely associated with you, which can be directly or indirectly used to identify you.
+            br
+            li Here are some specific examples of PII:
+            ul(style="list-style-type:disc;")
+              li 
+                strong Name: 
+                | full name, maiden name, mother’s maiden name, or alias
+              li 
+                strong Personal identification numbers: 
+                | social security number (SSN), passport number, driver’s license number, taxpayer identification number, patient identification number, financial account number, or credit card number
+              li 
+                strong Personal address information: 
+                | street address, or email address
+              li 
+                strong Personal account information: 
+                | bank account, social media account, shopping platform account, and the corresponding passwords.
+              li 
+                strong Personal telephone numbers
+      img.ui.image(src='/images/learn-2.png' style='margin-left: auto; margin-right: auto')
+    .ui.container#nav-container
+      .div#nav-menu          
+        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/submod/learn/identity';") 
+          i.arrow.left.icon 
+          | Back
+        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/submod/learn3/identity';")
+          | Next
+          i.arrow.right.icon
+
+
+
+block scripts
+  script.
+    document.addEventListener('DOMContentLoaded', function() {
+      const dartieImg = document.getElementById('dart_image1');
+      const character = localStorage.getItem('character');
+
+      if (character) {
+        dartieImg.src = "/profile_pictures/" + character;
+      }
+    }
+    );
+  script.
+    var voiceoverMappings = {
+      '.showLearnSectionButton': {
+        "initialDelay": 700,
+        "delay": 500,
+        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
+      },
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.1.mp3']
+      },
+      '.voiceover_keyTerm2': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.2.mp3']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.3.mp3']
+      }
+    };
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_start.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/start.css')  
+    

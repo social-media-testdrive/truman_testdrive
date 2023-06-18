@@ -1,0 +1,83 @@
+#nav-menu {
+    margin-bottom: 25px !important;
+    width: 90vw;
+    /* background-color: yellowgreen !important; */
+    /* background-color: aqua !important;
+    display: flex; */
+    /* margin: 0 auto !important;
+    text-align: center !important;
+    justify-content: center !important; */
+}
+
+#nav-container {
+    width: 100%;
+    /* background-color: aqua !important; */
+    display: flex;
+    margin: 0 auto !important;
+    text-align: center !important;
+    justify-content: center !important;
+    padding-top: 10px !important;
+}
+
+#backButton {
+    border-radius: 30px !important;  
+    color: #495057 !important;
+    border: 1px solid #495057;
+    /* background-color: red; */
+    padding-left: 30px;
+    padding-right: 30px;
+    transition: transform 0.3s ease;
+}
+
+/* when hovering move back button to the left */
+#backButton:hover {
+    transform: translateX(-5px);
+}
+
+#nextButton {
+    border-radius: 30px !important;  
+    /* color: #495057 !important;
+    border: 1px solid #495057; */
+    background-color: #2165AE !important;
+    color: white !important;
+    padding-left: 30px;
+    padding-right: 30px;
+    transition: transform 0.3s ease;
+}
+
+/* when hovering move start button to the right*/
+/* #nextButton:hover {
+    transform: translateX(5px);
+    border: 2px solid #6BBCC7;
+} */
+
+#nextButton:hover {
+    transform: translateX(5px);
+    /* inset shadow instead of border used so that it doesn't doesn't affect the layout (push everything over 2px)*/
+    box-shadow: inset 0 0 0 2px #6BBCC7;
+}
+
+#skipButton {
+    border-radius: 30px !important;  
+    color: #2165AE !important;
+    border: 1px solid #2165AE;
+    /* background-color: white; */
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+
+@media (max-width: 430px) {
+    #nextButton {
+        padding-left: 10px;
+        padding-right: 10px;
+    } 
+    #skipButton {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    #backButton {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}

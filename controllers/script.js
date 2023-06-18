@@ -454,18 +454,18 @@ function _postUpdateFeedAction(req, user) {
     // and feedIndex is the correct index for that post in the action array
 
     // interaction with a popup modal
-    if (req.body.modalName) {
-        let modalInfo = new Object();
-        modalInfo.modalOpened = true;
-        modalInfo.modalName = req.body.modalName;
-        modalInfo.modalOpenedTime = req.body.modalOpenedTime;
-        modalInfo.modalViewTime = req.body.modalViewTime;
-        modalInfo.modalCheckboxesCount = req.body.modalCheckboxesCount;
-        modalInfo.modalCheckboxesInput = req.body.modalCheckboxesInput;
-        modalInfo.modalDropdownCount = req.body.modalDropdownCount;
-        modalInfo.modalDropdownClick = req.body.modalDropdownClick;
-        userAction[feedIndex].modal.push(modalInfo);
-    }
+    // if (req.body.modalName) {
+    //     let modalInfo = new Object();
+    //     modalInfo.modalOpened = true;
+    //     modalInfo.modalName = req.body.modalName;
+    //     modalInfo.modalOpenedTime = req.body.modalOpenedTime;
+    //     modalInfo.modalViewTime = req.body.modalViewTime;
+    //     modalInfo.modalCheckboxesCount = req.body.modalCheckboxesCount;
+    //     modalInfo.modalCheckboxesInput = req.body.modalCheckboxesInput;
+    //     modalInfo.modalDropdownCount = req.body.modalDropdownCount;
+    //     modalInfo.modalDropdownClick = req.body.modalDropdownClick;
+    //     userAction[feedIndex].modal.push(modalInfo);
+    // }
 
     // create a new Comment
     if (req.body.new_comment) {
