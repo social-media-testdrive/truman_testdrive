@@ -1,80 +1,45 @@
-/* #page-article {
-  background: linear-gradient(to bottom, #2165AE, #091D32, white);
 
-  z-index: -1 !important;
-} */
-
-body {
-  background-color: transparent !important;
-}
-
-.background-section {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-  background-attachment: fixed;
-
-}
-
-.gradient-section {
-  height: 70vh;
+#blue-upper {
   background: linear-gradient(to bottom, #2165AE, #091D32);
+  color: white;
+  z-index: -1;
+  padding-top: 60px;
 }
 
-.white-section {
-  height: 30vh;
+#white-lower {
   background-color: white;
+  color: black;
+  z-index: -1;
+  padding-top: 200px;
 }
-
 
 h1.ui.header {
   font-size: 2.5rem;
-  font-weight: 900;
   color: white;
-  /* font-size: x-large;
-  text-align: center; 
-  margin:5px 0px; 
-  font-family:'Noto Sans', 
-  sans-serif; 
-  margin:40px;
-  margin-bottom:15px;
-  color:white */
 }
 
-.about-dart {
-  color: white;
-  /* text-align: center; 
-  font-size: 17px; 
-  font-family:'Arial', Serif;
-  margin:30px;
-  color:white ") */
+.ui.container {
+  font-size: 1.5rem;
 }
 
-.mission {
-  /* text-align: center; */
-  /* text-align: center; 
-  margin:5px 0px; 
-  font-family:'Noto Sans', sans-serif; */
+/* Add the following styles */
+#video-overlay {
+  position: relative;
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.video-container {
-  text-align: center;
-  /* half of height fo video which is 340px */
-  margin-top: -170px !important;
+#video-overlay .inner-video {
+  position: absolute;
+  top: -170px;
 }
 
-.studentLoginColumn {
-  border-right: solid #333333;
+p#about {
+  margin-top: 50px;
 }
 
-.field label {
-  padding-top: 1em;
-}
-
-.testDriveBlue {
-  background-color: #14a1f6 !important;
-  color: white !important;
+p#aim {
+  padding-bottom: 50px;
 }
