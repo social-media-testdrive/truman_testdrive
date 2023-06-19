@@ -1,0 +1,21 @@
+#feature-container i.icon {
+    /* background-color: red; */
+    float: left;
+    padding-right: 6vw !important;
+}
+
+#feature-container .ui.row {
+    /* background: green; */
+    display: flex; 
+    justify-content: center;
+}
+
+#feature-container .feature { 
+    /* background: blue;  */
+    width: 70%;
+    margin-right: 6vw;
+}
+
+.wide-content {
+    width: 87%;
+}

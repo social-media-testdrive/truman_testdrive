@@ -1,0 +1,106 @@
+extends ../ui_layout
+
+block content
+
+  .ui.container#raised-container
+    .ui.raised.segment
+      #raised-content
+        //- h1.ui.header.large#mod-title
+        //-   .content
+        //-     | Identity Theft
+        .limit
+            .ui.large.pointing.below.label#speechBubble(style="float: none; width: 100%;")
+                p#speechText(style="font-size: 1.5rem; text-align: left") 
+                    | Hello #{user.profile.name}, I am 
+                    span#name Dartie!             
+                    | ! Thank you for choosing me to join you on your learning journey! I am here to offer support as we progress through the modules together.
+                    br
+                    br
+                    | Before we start, I want to be clear that <strong>I am an AI chat-bot, and not a human being.</strong> However, I will do my absolute best to help you with what you need assistance on! 
+                    br
+                    br
+                    | DART uses a number of features designed to make our website easier for everyone to navigate and read. Checkout the 
+                    a(href='/accessibility')  Accessibilty page 
+                    | to learn more about this!
+            img#dart_image1.ui.small.image(src='/profile_pictures/transparent.png' style="margin: 0 auto;")
+        br
+        br
+    .ui.container#nav-container
+      .div#nav-menu
+        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/selection';") 
+          i.arrow.left.icon 
+          | Back
+        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/';")
+          | Let's Begin
+          i.arrow.right.icon
+
+
+    //- .div
+    //-   button.ui.large.button.left.floated(onclick="location.href='/intro/identity';") 
+    //-     i.arrow.left.icon 
+    //-     | Back
+    //-   button.ui.large.button.left.floated(onclick="location.href='/identity_learn_page0';") Skip pre-quiz & continue to Learn
+    //-   //- button.circular.ui.icon.button.right.floated(onclick="showModal()")
+    //-   //-   i.wechat.icon
+    //-   button.ui.large.green.button.right.floated(onclick="location.href='/prequiz/identity';")
+    //-     | Take the pre-quiz
+    //-     i.arrow.right.icon
+
+block scripts
+  script.
+    document.addEventListener('DOMContentLoaded', function() {
+        const dartieImg = document.getElementById('dart_image1');
+        const character = localStorage.getItem('character');
+
+        let charName = "Dartie";
+        if (character == 'Daring_PT_Determined.png') {
+            charName = "Daring";
+        } else if (character == 'Dartie_Happy_3.png') {
+            charName = "Dartie";
+        } else if (character == 'Intrepid_PT_Determined.png') {
+            charName = "Intrepid";
+        } else if (character == 'Valiant_PT_Determined.png') {
+            charName = "Valiant";
+        } else {
+            charName = "Dartie";
+        }
+
+        if (character) {
+            dartieImg.src = "/profile_pictures/" + character;
+            document.getElementById("name").innerHTML = charName;
+        }
+    }
+    );
+  script.
+    var voiceoverMappings = {
+      '.showLearnSectionButton': {
+        "initialDelay": 700,
+        "delay": 500,
+        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
+      },
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.1.mp3']
+      },
+      '.voiceover_keyTerm2': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.2.mp3']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.3.mp3']
+      }
+    };
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_start.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/start.css') 
+
+ 
+ 
+
+

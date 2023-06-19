@@ -1,4 +1,5 @@
 #outer-footer {
+    z-index: 1000 !important;
     display: flex;
     justify-content: center;
     align-items: center;

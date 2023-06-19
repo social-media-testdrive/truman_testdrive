@@ -555,6 +555,21 @@ app.get('/selection', passportConfig.isAuthenticated, csrfProtection, setHttpRes
     });
 });
 
+// Render character intro
+app.get('/character', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+    res.render('account/character_intro', {
+        title: 'Hello'
+    });
+});
+
+// Render accessibility page
+app.get('/accessibility', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+    res.render('account/accessibility', {
+        title: 'Accessibility'
+    });
+});
+
+
 // Render selection
 app.get('/edit_profile', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
     res.render('account/edit_profile', {

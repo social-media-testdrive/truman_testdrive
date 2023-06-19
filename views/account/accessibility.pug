@@ -1,0 +1,104 @@
+extends ../ui_layout
+
+block content
+
+
+  .ui.container#raised-container
+    .ui.raised.segment
+      #raised-content
+        h1.ui.header.large#mod-title
+          .content
+            | Accessibility
+        .ui.container#feature-container
+          .ui.grid
+            .ui.row
+              p.wide-content At DART, we are committed to providing an inclusive learning experience that is usable by all people, regardless of ability. Our website has been designed to fully support your operating system (software that you use to interact with your device, e.g. Windows, macOS, Android, or Linux.) and browser (software that you use to view websites, e.g. Chrome, Internet Explorer, Safari, or FireFox.) settings for a seamless learning experience.
+              br
+
+            .ui.row
+              i.text.height.large.icon
+              .feature
+                h2 Browser Font Size Support
+                p Font sizes from "very small" to "very large" are supported. Adjustments can be made to the text size by opening your browser settings and then selecting your preferred font size.
+          
+            .ui.row
+              i.search.plus.large.icon
+              .feature
+                h2 Zoom Control
+                p Zoom from 25% to 500% is supported. Adjustments can be made to the text size by opening the toolbar (often represented by three dots or a gear image), then selecting Zoom, and then Zoom In or Zoom Out. Text adjustment can also be competed by clicking the Control and +/- buttons at the same time. 
+
+            .ui.row
+              i.adjust.large.icon
+              .feature
+                h2 High Contrast Mode
+                p If you are visually impaired or have trouble reading on a screen, try using high contrast mode. This setting lets you view our site with a dark background and light text, which can make it easier to read. You can turn on high contrast mode under the accessibility settings on your computer or mobile device.
+
+            .ui.row
+              i.shipping.large.fast.icon
+              .feature
+                h2 "Prefers Reduced Motion" Setting
+                p Our website works with your browser or device’s “prefers reduced motion” setting. If you have vertigo or motion sickness when you see sudden movement (like clicking a link that jumps you down the page suddenly), try using this setting to reduce or stop animations and motions on webpages.
+
+            .ui.row
+              i.file.pdf.large.icon
+              .feature
+                h2 PDF Files of Lesson Materials
+                p In addition to the online content, we offer downloadable Portable Document Format (PDF) files of lesson materials. This allows users to access the course content offline, catering to different learning preferences. PDF files require the free 
+                  a(href='http://www.adobe.com/products/acrobat/readstep2.html') Adobe Acrobat Reader software 
+                  | for viewing. If you have a visual impairment, please visit 
+                  a(href='http://access.adobe.com/') access.adobe.com 
+                  | for help in working more effectively with PDF files.
+            
+            .ui.row
+              p.wide-content  We strive to comply with accessibility standards and best practices, including the Web Content Accessibility Guidelines (WCAG) 2.1, in order to provide an inclusive learning environment for all users. While we continuously work to improve accessibility, we understand that there may be areas where further enhancements are needed. Therefore, we encourage users to provide feedback and report any accessibility issues they encounter, so we can address them promptly and improve the overall user experience.
+              br
+
+    .ui.container#nav-container
+      .div#nav-menu          
+        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/intro2/identity';") 
+          i.arrow.left.icon 
+          | Back
+        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/challenge2/identity';")
+          | Take
+          i.arrow.right.icon
+        button.ui.huge.basic.button.right.floated#skipButton(onclick="location.href='/submod/learn/identity';")
+            | Skip
+
+
+
+
+block scripts
+  script.
+  
+
+
+    var voiceoverMappings = {
+      '.showLearnSectionButton': {
+        "initialDelay": 700,
+        "delay": 500,
+        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
+      },
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.1.mp3']
+      },
+      '.voiceover_keyTerm2': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.2.mp3']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.3.mp3']
+      }
+    };
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_start.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/accessibility.css')  
+ 
+
+    

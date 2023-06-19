@@ -4,69 +4,73 @@ block content
   -var user_post = []
   -var user_info = [{profile_pic : "/profile_pictures/amy.jpg",background_pic : "/profile_pictures/blueToWhite.png",user_name : "Amy G",user_id : "@amyg__g",bio : "Daughter. Sister. Proud Black American. I tend to get political.",location : "New York, NY",join_date : "Joined January 2019"}]
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
-    //-####################### title
-  .twelve.wide.computer.fourteen.wide.tablet.sixteen.wide.mobile.column.centered( style="margin-bottom:5%")
-    .ui.one.column.centered.grid.feedbackMessagesGrid
-    .ui.fluid.card.dim(style = "margin-top:0px;margin-bottom:0px;")
+  .ui.container#raised-container(style="padding-bottom: 50px;")
+    .ui.raised.segment
+      #raised-content
+        .twelve.wide.computer.fourteen.wide.tablet.sixteen.wide.mobile.column.centered( style="margin-bottom:5%")
+          .ui.one.column.grid.feedbackMessagesGrid
+            h1.ui.header.large#mod-title(style="font-size: 2.5rem; margin: 20px;")
+              | Character Select
+            h4.ui.header.large#mod-title(style="font-size: 1.5rem; margin: 20px; margin-top: -5px;")
+              | Before starting, would you like to select one of our agents to learn with you?
+            //- span(style="font-size: 25px; margin-left: 5%; margin-top: 5%; font-weight: bold;") Hello #{user.profile.name},
+            //- span(style="font-size: 18px; margin-left: 5%; margin-top: 3%; font-weight: bold; margin-bottom: 3%") Before starting, would you like to select one of our agents to learn with you?
+            
+            .ui.grid(style="margin:30px;")
+              .four.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center; ")
+                      .ui.radio.checkbox
+                            img.lazy(style='border: 2px solid  #2884d4 !important; border-radius: 15px;' src="/profile_pictures/Daring_PT_Determined2.png" data-src="/profile_pictures/Daring_PT_Determined.png")
+                            button.ui.primary.basic.button(style="border-radius: 15px; background:white !important;position: absolute; bottom: 20%; left: 48%; transform: translateX(-50%);", onclick="saveButton1()") Select
+                            button.ui.inverted.basic.button(style=" cursor: default; color: black !important; border-radius: 15px; position: absolute; bottom: -7%; left: 48%; transform: translateX(-50%);") Daring
 
-      span.br(style="font-size: 25px; margin-left: 5%; margin-top: 5%; font-weight: bold;") Hello #{user.profile.name},
-      span.br(style="font-size: 18px; margin-left: 5%; margin-top: 3%; font-weight: bold; margin-bottom: 3%") Before starting, would you like to select one of our agents to learn with you?
-      
-      .ui.grid(style="margin:30px;")
-        .four.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center; ")
-                .ui.radio.checkbox
-                      img.lazy(style='border: 2px solid  #2884d4 !important; border-radius: 15px;' src="/profile_pictures/Daring_PT_Determined2.png" data-src="/profile_pictures/Daring_PT_Determined.png")
-                      button.ui.primary.basic.button(style="border-radius: 15px; background:white !important;position: absolute; bottom: 20%; left: 48%; transform: translateX(-50%);", onclick="saveButton1()") Select
-                      button.ui.inverted.basic.button(style=" cursor: default; color: black !important; border-radius: 15px; position: absolute; bottom: -7%; left: 48%; transform: translateX(-50%);") Daring
+              .four.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;")
+                      .ui.radio.checkbox
+                            img.lazy(style=' border: 2px solid  #2884d4 !important; border-radius: 15px;' src="/profile_pictures/Valiant_PT_Determined2.png" data-src="/profile_pictures/Valiant_PT_Determined.png")
+                            button.ui.primary.basic.button(style="border-radius: 15px; background:white !important;position: absolute; bottom: 20%; left: 48%; transform: translateX(-50%);", onclick="saveButton4()") Select
+                            button.ui.inverted.basic.button(style=" cursor: default; color: black !important; border-radius: 15px; position: absolute; bottom: -7%; left: 48%; transform: translateX(-50%);") Valiant
 
-        .four.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;")
-                .ui.radio.checkbox
-                      img.lazy(style=' border: 2px solid  #2884d4 !important; border-radius: 15px;' src="/profile_pictures/Valiant_PT_Determined2.png" data-src="/profile_pictures/Valiant_PT_Determined.png")
-                      button.ui.primary.basic.button(style="border-radius: 15px; background:white !important;position: absolute; bottom: 20%; left: 48%; transform: translateX(-50%);", onclick="saveButton4()") Select
-                      button.ui.inverted.basic.button(style=" cursor: default; color: black !important; border-radius: 15px; position: absolute; bottom: -7%; left: 48%; transform: translateX(-50%);") Valiant
+              .four.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;")
+                      .ui.radio.checkbox
+                            img.lazy(style=' border: 2px solid  #2884d4 !important; border-radius: 15px;' src="/profile_pictures/"+"Intrepid_PT_Determined2.png"  data-src="/profile_pictures/Intrepid_PT_Determined.png")
+                            button.ui.primary.basic.button(style="border-radius: 15px; background:white !important;position: absolute; bottom: 20%; left: 48%; transform: translateX(-50%);", onclick="saveButton3()") Select
+                            button.ui.inverted.basic.button(style=" cursor: default; color: black !important; border-radius: 15px; position: absolute; bottom: -7%; left: 48%; transform: translateX(-50%);") Intrepid
+              .four.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;")
+                      .ui.radio.checkbox
+                            img.lazy(style=' border: 2px solid  #2884d4 !important; border-radius: 15px;' src="/profile_pictures/"+"Dartie_Happy_32.png" data-src="/profile_pictures/Dartie_Happy_3.png")
+                            button.ui.primary.basic.button(style="border-radius: 15px; background:white !important;position: absolute; bottom: 20%; left: 48%; transform: translateX(-50%);", onclick="saveButton2()") Select
+                            button.ui.inverted.basic.button(style=" cursor: default; color: black !important; border-radius: 15px; position: absolute; bottom: -7%; left: 48%; transform: translateX(-50%);") Dartie
 
-        .four.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;")
-                .ui.radio.checkbox
-                      img.lazy(style=' border: 2px solid  #2884d4 !important; border-radius: 15px;' src="/profile_pictures/"+"Intrepid_PT_Determined2.png"  data-src="/profile_pictures/Intrepid_PT_Determined.png")
-                      button.ui.primary.basic.button(style="border-radius: 15px; background:white !important;position: absolute; bottom: 20%; left: 48%; transform: translateX(-50%);", onclick="saveButton3()") Select
-                      button.ui.inverted.basic.button(style=" cursor: default; color: black !important; border-radius: 15px; position: absolute; bottom: -7%; left: 48%; transform: translateX(-50%);") Intrepid
-        .four.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;")
-                .ui.radio.checkbox
-                      img.lazy(style=' border: 2px solid  #2884d4 !important; border-radius: 15px;' src="/profile_pictures/"+"Dartie_Happy_32.png" data-src="/profile_pictures/Dartie_Happy_3.png")
-                      button.ui.primary.basic.button(style="border-radius: 15px; background:white !important;position: absolute; bottom: 20%; left: 48%; transform: translateX(-50%);", onclick="saveButton2()") Select
-                      button.ui.inverted.basic.button(style=" cursor: default; color: black !important; border-radius: 15px; position: absolute; bottom: -7%; left: 48%; transform: translateX(-50%);") Dartie
-
-      button.ui.primary.basic.button(style="margin: auto; margin-bottom:50px; width:50%; border-radius: 15px !important; margin-top: 1%" onclick="saveButton5()" ) I prefer to have the journey myself!
+            button.ui.primary.basic.button(style="margin: auto; margin-bottom:50px; width:50%; border-radius: 15px !important; margin-top: 1%" onclick="saveButton5()" ) I prefer to have the journey myself!
 
 block scripts
   script.
     function saveButton1() {
       localStorage.setItem('character', 'Daring_PT_Determined.png');
       location.reload();
-      window.location.href = '/';
+      window.location.href = '/character';
     }
     function saveButton2() {
       localStorage.setItem('character', 'Dartie_Happy_3.png');
       location.reload();
-      window.location.href = '/';
+      window.location.href = '/character';
     }
 
     function saveButton3() {
       localStorage.setItem('character', 'Intrepid_PT_Determined.png');
       location.reload();
-      window.location.href = '/';
+      window.location.href = '/character';
     }
 
     function saveButton4() {
       localStorage.setItem('character', 'Valiant_PT_Determined.png');
       location.reload();
-      window.location.href = '/';
+      window.location.href = '/character';
     }
 
     function saveButton5() {
       localStorage.setItem('character', 'transparent.png');
       location.reload();
-      window.location.href = '/';
+      window.location.href = '/character';
     }
 
 

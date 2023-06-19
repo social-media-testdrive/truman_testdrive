@@ -1,14 +1,19 @@
-header.ui.borderless.menu.tablet-and-computer   
-    .ui.container   
+header.ui.borderless.menu.tablet-and-computer 
+    .ui.container  
         #logo
             img.ui.small.image(src='/images/dart-logo.png')
-        .right.menu
-            a.item(href='/').dart-blue
-                | Home
-            a.item(href='/account').dart-blue
-                | Profile
-            a.item(href='/logout').dart-gray
-                | Logout
+        if user
+            .right.menu
+                a.item(href='/').dart-blue
+                    | Home
+                a.item(href='/account').dart-blue
+                    | Profile
+                a.item(href='/logout').dart-gray
+                    | Logout
+        else 
+            .right.menu
+                a.item(href='/studentLogin').dart-blue
+                    | Login
 header.mobile-only
   .ui.fluid.top.two.item.menu
     a.item(href='/')
@@ -26,7 +31,9 @@ header.mobile-only
                         a.item(href='/') Home
                         a.item(href='/account') Profile
                         a.item(href='logout') Logout
-
+            else 
+                a.item(href='/studentLogin').dart-blue
+                    | Login
 
 //- .ui.top.small.borderless.menu(style="height: 4rem")
 //-   .ui.grid.container
