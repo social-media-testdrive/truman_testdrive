@@ -34,29 +34,50 @@ block content
           div(style=' padding-left: 25px; position: relative; display: flex; flex-direction: column; align-items: flex-start;')
             span#progressDisplay(style="margin:3px; margin-top:-20px; margin-bottom:15px; font-size: 25px; font-weight: bold;") 
 
+          br
+          br
+          .ui.container
+            .limit(style="padding-bottom: 40px;")
+              h2.ui.header#in-progress Courses:
+              a.ui#theft-link(href=`/intro/identity` alt="Begin identity theft module")
+                .ui.raised.segment
+                  .ui.fluid.container(style="height: 200px;")
+                    .ui.image.banner
+                      img(src="/images/identity-theft-banner.jpg", alt="Identity Theft Banner Image")
 
-          
-          div.ui.special.cards(style="margin-top:20px;width:100%;  margin-bottom:20px;")
+                      #theft-progress.ui.bottom.attatched.small.progress(style='margin:0;padding:0;' data-percent='33')
+                        .bar(style='border-radius: 0 !important;')
+                          .progress
+                  #raised-content(style="padding-top: 20px;")
+                    h3.ui.header.large#mod-title
+                      .contentconsequences
+                        | Identity Theft
+                    p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+                    button.ui.huge.blue.button.right.floated#nextButton
+                      | Learn Now
+                      i.arrow.right.icon
+      
+          //- div.ui.special.cards(style="margin-top:20px;width:100%;  margin-bottom:20px;")
             
-            div.card(style="  box-shadow: 0px 0px 0px rgba(0,0,0,0.5);margin-left: 5%; margin-top: 2%; width: 90%; position: relative; border: solid #d3d3d3; 1px;  border-top: none;  border-top-left-radius: 0px; border-top-right-radius: 0px")
+          //-   div.card(style="  box-shadow: 0px 0px 0px rgba(0,0,0,0.5);margin-left: 5%; margin-top: 2%; width: 90%; position: relative; border: solid #d3d3d3; 1px;  border-top: none;  border-top-left-radius: 0px; border-top-right-radius: 0px")
 
-              img-crop(style="width:100%; height:250px;overflow: hidden;border-radius:0px !important ;")
-                img( style="width:100%; height:auto; margin-top: -120px;" src="/profile_pictures/backgournd_img.png")
-              div.content
+          //-     img-crop(style="width:100%; height:250px;overflow: hidden;border-radius:0px !important ;")
+          //-       img( style="width:100%; height:auto; margin-top: -120px;" src="/profile_pictures/backgournd_img.png")
+          //-     div.content
                 
-                a.header(style="font-family:'Noto Sans', sans-serif; font-size:25px") Identity Theft
-                div.meta
-                  span(style="font-family:'Noto Sans', sans-serif; font-size:20px") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
-                .div(style="display: flex; float:right")
-                  a.ui.button.big.white(href="/identity_home", style=" font-family:'Noto Sans', sans-serif; height:46.28px; border-radius: 17px; margin: 0px 0 0 0; padding:14.1429px !important; display: block; width: 250px; background-color: #fff; border: 1px solid #2884d4; text-align: center; margin-right:10px;")  
-                    span
-                      span( style="vertical-align: middle;") Share Certificate 
-                      img(src='/profile_pictures/award.png', alt="Google logo", style="height:20px; vertical-align: middle; margin-right: 10px;")
-                  button.ui.big.blue.button(onclick="window.location.href='/identity_home'" style="font-family:'Noto Sans', sans-serif; height:46.28px; border-radius: 17px; width: 200px; margin: 0px 0 0 0; ") Learn Again → 
+          //-       a.header(style="font-family:'Noto Sans', sans-serif; font-size:25px") Identity Theft
+          //-       div.meta
+          //-         span(style="font-family:'Noto Sans', sans-serif; font-size:20px") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+          //-       .div(style="display: flex; float:right")
+          //-         a.ui.button.big.white(href="/identity_home", style=" font-family:'Noto Sans', sans-serif; height:46.28px; border-radius: 17px; margin: 0px 0 0 0; padding:14.1429px !important; display: block; width: 250px; background-color: #fff; border: 1px solid #2884d4; text-align: center; margin-right:10px;")  
+          //-           span
+          //-             span( style="vertical-align: middle;") Share Certificate 
+          //-             img(src='/profile_pictures/award.png', alt="Google logo", style="height:20px; vertical-align: middle; margin-right: 10px;")
+          //-         button.ui.big.blue.button(onclick="window.location.href='/identity_home'" style="font-family:'Noto Sans', sans-serif; height:46.28px; border-radius: 17px; width: 200px; margin: 0px 0 0 0; ") Learn Again → 
                   
 
                 
-              div#progressBar(style="border-top-left-radius: 5px !important;  border-bottom-left-radius: 0px !important; border-bottom-right-radius: 0px !important;margin-top:-8px; border-top: 8px solid #2884d4; width: 85%; position: absolute; left: 0;")
+          //-     div#progressBar(style="border-top-left-radius: 5px !important;  border-bottom-left-radius: 0px !important; border-bottom-right-radius: 0px !important;margin-top:-8px; border-top: 8px solid #2884d4; width: 85%; position: absolute; left: 0;")
 
             
           span.br(style="margin:30px; font-size: 25px; font-weight: bold;") My Badges:
@@ -158,7 +179,42 @@ block content
 
 block scripts
   script.
+    let theftPath = localStorage.getItem('theft-path');
+    console.log("theftPath is: " + theftPath);
+    if (theftPath === null) {
+    } else {
+      console.log("change link");
+      const link = document.getElementById('theft-link');
+      link.setAttribute('href', theftPath);
+    }
 
+    // Check if the "progress" variable has been assigned a value yet
+    let progress = localStorage.getItem('progress');
+    if (progress === null) {
+      // If the variable has not been assigned yet, set it to 0
+      progress = 0;
+      localStorage.setItem('progress', progress);
+    } else {
+      // If the variable has been assigned, parse the value from local storage
+      progress = parseInt(progress);
+    }
+    console.log("Progress is: " + progress);
+
+    const progressBar = document.getElementById('theft-progress');
+    if (progressBar) {
+      progressBar.setAttribute('data-percent', progress);
+      progressBar.querySelector('.bar').style.width = progress + "%";
+      if(progress > 0 && progress < 100){
+        progressBar.querySelector('.bar').style.backgroundColor = '#6BBCC7';
+      } else if(progress == 100) {
+        progressBar.querySelector('.bar').style.backgroundColor = 'blue';
+      }
+      progressBar.querySelector('.progress').textContent = progress + "%";
+    } else {
+      console.error('Could not find progress bar element');
+    }
+        
+            
     (function() {
       // Check if the "progress" variable has been assigned a value yet
       let progress = localStorage.getItem('progress');
@@ -176,7 +232,7 @@ block scripts
         const progressSpan = document.getElementById('progressDisplay');
       
         if (progress === 0) {
-          progressSpan.innerText = "Start right now";
+          progressSpan.innerText = "Start Learning Now:";
         } else if (progress === 100) {
           progressSpan.innerText = "My Courses: (Completed)";
         } else {
@@ -225,3 +281,4 @@ block scripts
 
 block styles
   link(rel='stylesheet', href='/css/profile.css')  
+  link(rel='stylesheet', href='/css/login.css')  

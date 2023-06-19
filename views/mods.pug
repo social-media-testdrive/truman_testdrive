@@ -17,14 +17,17 @@ block content
       .sixteen.wide.column
         .ui.container
           .limit(style="padding-bottom: 40px;")
-            h2.ui.header#in-progress Courses In Progress:
+            h2.ui.header#in-progress Courses:
             a.ui#theft-link(href=`/intro/identity` alt="Begin identity theft module")
               .ui.raised.segment
                 .ui.fluid.container(style="height: 200px;")
                   .ui.image.banner
                     img(src="/images/identity-theft-banner.jpg", alt="Identity Theft Banner Image")
-                hr
-                #raised-content
+
+                    #theft-progress.ui.bottom.attatched.small.progress(style='margin:0;padding:0;' data-percent='33')
+                      .bar(style='border-radius: 0 !important;')
+                        .progress
+                #raised-content(style="padding-top: 20px;")
                   h3.ui.header.large#mod-title
                     .contentconsequences
                       | Identity Theft
@@ -83,7 +86,7 @@ block scripts
       progressBar.setAttribute('data-percent', progress);
       progressBar.querySelector('.bar').style.width = progress + "%";
       if(progress > 0 && progress < 100){
-        progressBar.querySelector('.bar').style.backgroundColor = 'green';
+        progressBar.querySelector('.bar').style.backgroundColor = '#6BBCC7';
       } else if(progress == 100) {
         progressBar.querySelector('.bar').style.backgroundColor = 'blue';
       }
