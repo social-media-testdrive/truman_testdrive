@@ -76,9 +76,9 @@ a.ui.fluid.labeled.icon.button {
 
 .graySquare {
     background-color: #D9D9D9 !important;
-    color: transparent;
-    padding-left: 30%;
-    margin-right: 100px !important;
+    /* color: transparent; */
+    /* padding-left: 30%;
+    margin-right: 300px !important; */
 
 }
 
@@ -106,14 +106,9 @@ a.ui.fluid.labeled.icon.button {
     max-width: 1200px;
     /* allow us to adjust position of picture inside of the banner */
     position: absolute;
-    /* center horizontally */
-    left: 50%;
-    transform: translateX(-50%);
 
     /* scaled proportionally to completely cover the entire container cropping some parts of the content */
     object-fit: cover;
-    /* Adjust the percent here to move img up/down to select portion of it you want visible */
-    object-position: center 35%;
 
     /* object-position: center; */
 
