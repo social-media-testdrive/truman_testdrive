@@ -50,27 +50,24 @@ block content
                   | for help in working more effectively with PDF files.
             
             .ui.row
-              p.wide-content  We strive to comply with accessibility standards and best practices, including the Web Content Accessibility Guidelines (WCAG) 2.1, in order to provide an inclusive learning environment for all users. While we continuously work to improve accessibility, we understand that there may be areas where further enhancements are needed. Therefore, we encourage users to provide feedback and report any accessibility issues they encounter, so we can address them promptly and improve the overall user experience.
+              p.wide-content  We strive to comply with accessibility standards and best practices, including the Web Content Accessibility Guidelines (WCAG) 2.1, in order to provide an inclusive learning environment for all users. While we continuously work to improve accessibility, we understand that there may be areas where further enhancements are needed. Therefore, we encourage users to provide feedback and report any accessibility issues they encounter, so we can address them promptly and improve the overall user experience. <br> Contact: 
+                span
+                  a(href="mailto:socialdesigndartlearn@gmail.com?subject=Dart Website Accessibility Issue Report" id="email") socialdesigndartlearn@gmail.com
+
               br
 
     .ui.container#nav-container
       .div#nav-menu          
-        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/intro2/identity';") 
-          i.arrow.left.icon 
-          | Back
-        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/challenge2/identity';")
-          | Take
+        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/';")
+          | Home
           i.arrow.right.icon
-        button.ui.huge.basic.button.right.floated#skipButton(onclick="location.href='/submod/learn/identity';")
-            | Skip
+
 
 
 
 
 block scripts
   script.
-  
-
 
     var voiceoverMappings = {
       '.showLearnSectionButton': {
