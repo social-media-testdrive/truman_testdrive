@@ -401,10 +401,11 @@ exports.postChatbotConnect = (req, res, next) => {
  * Create a new student with facilitator.
  * Route only exists if isResearchVersion = true.
  */
- exports.postCreateStudent = (req, res, next) => {
+exports.postCreateStudent = (req, res, next) => {
     //req.assert('email', 'Email is not valid').isEmail();
     req.assert('password', 'Password cannot be blank').notEmpty();
     req.assert('username', 'Username cannot be blank').notEmpty();
+    req.assert('profilename', 'profilename cannot be blank').notEmpty();
     //req.sanitize('email').normalizeEmail({ remove_dots: false });
     const errors = req.validationErrors();
     if (errors) {
@@ -421,7 +422,7 @@ exports.postChatbotConnect = (req, res, next) => {
         lastNotifyVisit: Date.now()
         // facilitator: req.body.facilitator
     });
-    user.profile.name = req.body.username;
+    user.profile.name = req.body.profilename;
     user.profile.location = "New York";
     user.profile.bio = 'There is no input or content provided by this person.';
     user.profile.picture = 'avatar-icon.svg';
@@ -459,13 +460,12 @@ exports.postChatbotConnect = (req, res, next) => {
                                 return res.redirect('/selection');
                             });
                         });
-        
                     });
                 });
             });
         }
     });
-}; 
+};
 
 /**
  * GET /logout
