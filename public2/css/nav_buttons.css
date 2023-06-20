@@ -58,6 +58,24 @@
     padding-right: 30px;
 }
 
+button.ui.small.button.chatBotButton {
+    border-radius: 30px !important; 
+    background-color: white; 
+    color: black !important;
+    border: 1px solid #6BBCC7;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+button.ui.small.button.chatBotButton:hover {
+    background-color: #6BBCC7; 
+}
+
+.ui.large.white.right.pointing.label {
+    background: #6BBCC7 !important;
+    color: black;
+}
+
 #sign-up-button {
     border-radius: 30px !important;  
     background-color: #2165AE !important;
