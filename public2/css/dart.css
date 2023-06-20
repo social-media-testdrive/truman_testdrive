@@ -56,12 +56,6 @@ header a.item.dart-blue {
     justify-content: center;
 }
 
-#mod-title {
-    display: inline-block;
-    font-size: 2.25rem;
-
-}
-
 .limit {
     position: relative;
     padding-left: 9rem; 

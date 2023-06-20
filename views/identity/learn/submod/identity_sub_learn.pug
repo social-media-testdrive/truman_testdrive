@@ -3,27 +3,26 @@ extends ../../../ui_layout
 block content
 
   .ui.container#raised-container.short-page-margin
-    .ui.fluid.tiny.three.item.fluid.menu
-      .item.active(style='background-color: #6BBCC7; color: white; border-right: 2px solid white;')
+    .ui.fluid.tiny.three.item.fluid.menu#submod-progress-bar
+      .item.active
         | Concept & Consequences
-      .item(style='background-color: darkgray; color: white; border-right: 2px solid white;')
+      .item
         | Tricks and Recognize Tricks
-      .item(style='background-color: darkgray; color: white;')
+      .item
         | Method and Protection
     .ui.raised.segment
       #raised-content
-        h1.ui.header.large#mod-title
-          .content
-            | Learn
-        iframe(type='text/html' width='540' height='289'
-          src='../../videos/identity-video.mp4'
-          frameborder='0' style='display: block; margin: auto;')
-        br
-        br
         .limit
-          p This module is designed for your to have a deeper understanding of <strong>identity theft scams</strong>, and their risks and warning signs. Our goal is to assist you to better protect yourself from them.
+          h1.ui.header.large#learn-title
+            .content
+              | Learn
+          iframe(type='text/html' width='540' height='289'
+            src='../../videos/identity-video.mp4'
+            frameborder='0' style='display: block; margin: auto;')
+          br
+          p This module has been thoughtfully designed to help you gain a comprehensive understanding of identity theft scams, including their risks, warning signs and practical methods. Our primary objective is to empower you with the knowledge and methods necessary to safeguard yourself effectively. Throughout this module, you will explore three sections that cover the following topics:
 
-          .ui.centered.grid(style="margin: auto")
+          .ui.centered.stackable.grid(style="margin: auto")
             .four.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 30px;")
               .ui.huge.label(style='text-align: center;background: #2165AE;border: 3px solid #6BBCC7; border-radius: 10px; padding: 40px 80px;')
                 i.big.unlock.icon(style='margin: 0 auto; color: white')
@@ -38,11 +37,11 @@ block content
               p(style='text-align: center; margin-top: 0.5em;') Section 3: Methods of Protection
     .ui.container#nav-container
       .div#nav-menu          
-        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/evaluate3/identity';") 
+        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/challenge3/identity';") 
           i.arrow.left.icon 
           | Back
         button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/submod/learn2/identity';")
-          | Next
+          | Start Section 1
           i.arrow.right.icon
 
 
@@ -75,6 +74,6 @@ block scripts
   script(src="/module_js/base_start.js")
   
 block styles
-  link(rel='stylesheet', href='/css/start.css')  
-    
+  link(rel='stylesheet', href='/css/module.css')  
+
     

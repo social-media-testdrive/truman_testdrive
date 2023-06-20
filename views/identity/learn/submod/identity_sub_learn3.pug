@@ -3,20 +3,17 @@ extends ../../../ui_layout
 block content
 
   .ui.container#raised-container.short-page-margin
-    .ui.fluid.tiny.three.item.fluid.menu
-      .item.active(style='background-color: #6BBCC7; color: white; border-right: 2px solid white;')
+    .ui.fluid.tiny.three.item.fluid.menu#submod-progress-bar
+      .item.active
         | Concept & Consequences
-      .item(style='background-color: darkgray; color: white; border-right: 2px solid white;')
+      .item
         | Tricks and Recognize Tricks
-      .item(style='background-color: darkgray; color: white;')
+      .item
         | Method and Protection
     .ui.raised.segment
       #raised-content
-        h1.ui.header.large#mod-title
-          .content
-            | Learn
         .limit
-          h1.ui.header.large#mod-title
+          h1.ui.header.large#learn-title
             .content
               | What are the consequences when personal information is stolen?
           iframe(type='text/html' width='540' height='289'
@@ -36,7 +33,7 @@ block content
                 | for loans and credt cards, resulting in financial losses, decreases in credit scores, and future difficulty receiving loans
               li 
                 strong withdraw your money 
-                | from you bank accounts, resulting in financial loss
+                | from your bank accounts without your permission
               li 
                 strong steal yout tax refund
               li 
@@ -92,6 +89,6 @@ block scripts
   script(src="/module_js/base_start.js")
   
 block styles
-  link(rel='stylesheet', href='/css/start.css')  
+  link(rel='stylesheet', href='/css/module.css')  
     
     
