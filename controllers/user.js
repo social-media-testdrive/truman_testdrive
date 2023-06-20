@@ -86,7 +86,7 @@ exports.postStudentLogin = (req, res, next) => {
         }
         if (!user) {
             req.flash('errors', info);
-            return res.redirect('/studentLogin');
+            return res.redirect('/studentLogin_error');
             // return res.redirect(`/classLogin/${req.params.accessCode}`);
         }
         if (!(user.active)) {
@@ -96,7 +96,7 @@ exports.postStudentLogin = (req, res, next) => {
             // return res.redirect(`/classLogin/${req.params.accessCode}`);
         }
         req.logIn(user, (err) => {
-            if (err) { return next(err); }
+            if (err) { return res.redirect('/studentLogin_error'); }
             //req.flash('success', { msg: 'Success! You are logged in.' });
             var temp = req.session.passport; // {user: 1}
             req.session.regenerate(function(err) {
@@ -420,8 +420,8 @@ exports.postCreateStudent = (req, res, next) => {
         start : Date.now(),
         isStudent: true,
         lastNotifyVisit: Date.now()
-        // facilitator: req.body.facilitator
     });
+    
     user.profile.name = req.body.profilename;
     user.profile.location = "New York";
     user.profile.bio = 'There is no input or content provided by this person.';
@@ -433,10 +433,12 @@ exports.postCreateStudent = (req, res, next) => {
             return next(err);
         }
         if (existingUser) {
+            console.log("user name already taken")
             req.flash('errors', {
                 msg: 'Username already taken. Try again.'
             });
-            res.redirect("/createStudent");
+
+            res.redirect("/createStudent_error");
             return;
         }
         else {

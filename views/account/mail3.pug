@@ -4,34 +4,35 @@ block content
  -var user_post = []
  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
 
- .ui.sixteen.wide.row.fluid.card.dim
-  .ui.sixteen.wide.column(style="display: flex; flex-direction: column; justify-content: center; align-items: center;")
-
-  .sidebar
-    .sidebarOption.sidebarOption__active
+ .ui.container#raised-container(style="margin-top: 20px;")
+  .ui.sixteen.wide.row.fluid.card.dim.co
+   .ui.sixteen.wide.column(style="display: flex !important; flex-direction: column; justify-content: center; align-items: center;")
+   div(style='display: flex; margin:10px')
+    .sidebar(style="width:20%")
+     .sidebarOption.sidebarOption__active
       span.material-icons(style='height:20px;margin:0px;padding:0px')  inbox 
       h3(style='height:20px;margin:0px;padding:0px;margin-top:10px;margin-left:10px') Inbox
-    .sidebarOption(style='pointer-events: none;')
-    .sidebarOption(style='pointer-events: none;')
-    .sidebarOption(style='pointer-events: none;')
-    .sidebarOption(style='pointer-events: none;')
-    .sidebarOption(style='pointer-events: none;')
-    .sidebarOption(style='pointer-events: none;')
-    .sidebar__footer
+     .sidebarOption(style='pointer-events: none;')
+     .sidebarOption(style='pointer-events: none;')
+     .sidebarOption(style='pointer-events: none;')
+     .sidebarOption(style='pointer-events: none;')
+     .sidebarOption(style='pointer-events: none;')
+     .sidebarOption(style='pointer-events: none;')
+     .sidebar__footer
       .sidebar__footerIcons
         span.material-icons(style='pointer-events: none;')   
         span.material-icons(style='pointer-events: none;')   
         span.material-icons(style='pointer-events: none;')   
 
-  .emailList(style="height:100vh")
-    .example
+    .emailList(style="height:80vh")
+     .example
       h2(onclick="window.location.href='/gmail'" style="cursor: pointer") ←
       
-    .example-layout
+     .example-layout
 
       .row
         .col-1 
-          h2 URGENT
+          h2 Congrats on your new iPhone 14 Pro
         .col-2 
         .col-3(style="margin-top:auto")  
           span 04/05/23
@@ -39,8 +40,8 @@ block content
       .row
         .col-1 
           p 
-            strong(style="font-size:17px") Walmart
-            | &lt;walmart@gmail.com&gt;
+            strong(style="font-size:17px") iPhone 14
+            | &lt;4kbug82ob.anderson.yrnlaw.com&gt;
             br
             | to me
         .col-2 
@@ -49,14 +50,8 @@ block content
         .col-3 
       .row
         .col-1 
-          span Hi customer. This is an URGENT message! 
-          br
-          br
-          span Your payment was decline on a recent purchase.
-          br 
-          span Resubmit your credit card details at this link below within 24 hours 
-          br
-          span CLick here NOW! http://jdksj6879sh.com
+          img(style='cursor:pointer; width:400px; height 400px; z-index: 2;top: 50%;left: 3%; border: 2px white solid;padding: -1px;padding: 5px white solid;z-index: 1;background-color: white;' src="/profile_pictures/fakedropbox.png")
+
         .col-2 
 
         .col-3
@@ -75,14 +70,12 @@ block content
       
 block scripts
   script.
-    
 block styles
  link(href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet')
  style(type='text/css').
   /* Sidebar */
   .sidebar {
-    flex: 0.3;
-    max-width: 300px;
+    width: 20%;
     padding-right: 20px;
   }
   
@@ -163,7 +156,7 @@ block styles
   
   /* email list */
   .emailList {
-    flex: 1;
+    width:80%
   }
   
   .emailList__settings {
@@ -311,6 +304,7 @@ block styles
   .example-layout .row .col-1 {
     background: white;
     flex-grow: 1;
+    width: 350px;
   }
   .example-layout .row .col-2 {
     background: white;
@@ -319,5 +313,5 @@ block styles
   }
   .example-layout .row .col-3 {
     background: white;
-    width: 160px;
+    width: 80px;
   }

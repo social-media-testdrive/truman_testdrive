@@ -2,7 +2,7 @@
   .row
     br
     if messages.errors
-      .ui.negative.message
+      .ui.negative.message(style="position:relative !important;z-index:10 !important")
         i.close.icon
         for error in messages.errors
           div= error.msg

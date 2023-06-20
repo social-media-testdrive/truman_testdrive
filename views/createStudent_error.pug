@@ -1,0 +1,68 @@
+extends ui_layout
+
+block content 
+ .ui.sixteen.wide.row
+  .ui.sixteen.wide.column(style="display: flex; flex-direction: column; justify-content: center; align-items: center;")
+
+     .login-box(style="margin:auto !important;margin-top:30px !important")
+      h2.ui.header(style="text-align: left !important; margin:5px 0px; font-family:'Noto Sans', sans-serif;") Create an account
+      
+      form.ui.form(action="/createStudent", method='POST')
+        input(type='hidden', name='facilitator')
+        input(type='hidden', name='_csrf', value=csrfToken)
+        .field
+
+          span(style="font-size: 17px; font-family:'Arial', Serif;") Please enter your details.
+          
+          label(for='username' style="margin-top:15px; font-size:larger;") Enter Email
+
+          input(style="margin:5px 0px; width: 100%; border-radius: 5px; border: 2px solid grey !important; background-color: #fff !!important; color: #000 !important;" type='text', name='username', id='username', placeholder='Email', required).field.left 
+          .ui.pointing.below.label.basic.username-red
+            .header 
+                li Email is already taken
+          .br
+          label(for='profilename' style="margin-top:0px; font-size:larger;") Enter Username
+          input(style="margin:5px 0px; width: 100%; border-radius: 5px; border: 2px solid grey !important; background-color: #fff !!important; color: #000 !important;" type='text', name='profilename', id='profilename', placeholder='username', required).field.left
+          label(for='password' style="font-size:larger; margin:0px") Password 
+
+           
+          input(style="margin:5px 0px; width: 100%; border-radius: 5px; border: 2px solid grey !important; background-color: #fff !!important; color: #000 !important;" type='password', name='password', id='password', placeholder='Password', required).field
+          label(for='password' style="font-size:larger;") Confirm Password
+
+          input(style="margin:5px 0px; width: 100%; border-radius: 5px; border: 2px solid grey !important; background-color: #fff !!important; color: #000 !important;" type='password', name='confirm-password', id='confirm-password', placeholder='Confirm Password', required).field
+          div.checkbox-container(style="display: flex; justify-content: space-between;")
+            a.forgot(href='forgotPassword', style="margin: 0px 0 0 0; margin-top:10px; text-align: right;") Forgot Password?
+        button.ui.big.blue.button(type='submit', style="font-family:'Noto Sans', sans-serif; height:46.28px; border-radius: 17px; width: 100%; margin-bottom: 15px !important;") Sign up
+        span(style="font-size: 17px; font-family:'Arial', Serif; ") Already have an account? 
+        a(style="font-size: 17px;" href="/studentLogin") Log In Now
+
+block styles
+  style.
+    .ui.pointing.below.label.basic.username-red, .ui.pointing.below.label.basic.password-red {
+      display: none;
+    }
+    .ui.pointing.below.label.active.username-red, .ui.pointing.below.label.active.password-red {
+      display: block;
+    }
+  style.
+    .login-box {
+    }
+    @media (max-width: 600px) {
+      .login-box {
+        margin-top: -35px;
+      }
+    }
+
+block scripts
+  link(rel='stylesheet', href='/css/style.css')
+  script(src='/module_js/base_end.js')
+  script(src='/module_js/base_start.js')
+  script(src='/module_js/base_tutorial.js')
+  script(src='/module_js/base_introSteps.js')
+
+block styles
+  link(rel='stylesheet', href='/css/login.css')
+  style(type='text/css').
+    body {
+      background: linear-gradient(to bottom, #2165AE, #091D32);
+    }

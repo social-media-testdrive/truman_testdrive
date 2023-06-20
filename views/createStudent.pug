@@ -11,13 +11,15 @@ block content
         input(type='hidden', name='facilitator')
         input(type='hidden', name='_csrf', value=csrfToken)
         .field
+
           span(style="font-size: 17px; font-family:'Arial', Serif;") Please enter your details.
           label(for='username' style="margin-top:15px; font-size:larger;") Enter Email
           input(style="margin:5px 0px; width: 100%; border-radius: 5px; border: 2px solid grey !important; background-color: #fff !!important; color: #000 !important;" type='text', name='username', id='username', placeholder='Email', required).field.left 
           label(for='profilename' style="margin-top:0px; font-size:larger;") Enter Username
           input(style="margin:5px 0px; width: 100%; border-radius: 5px; border: 2px solid grey !important; background-color: #fff !!important; color: #000 !important;" type='text', name='profilename', id='profilename', placeholder='username', required).field.left
-          label(for='password' style="font-size:larger; margin:0px") Password
+          label(for='password' style="font-size:larger; margin:0px") Password 
 
+           
           input(style="margin:5px 0px; width: 100%; border-radius: 5px; border: 2px solid grey !important; background-color: #fff !!important; color: #000 !important;" type='password', name='password', id='password', placeholder='Password', required).field
           label(for='password' style="font-size:larger;") Confirm Password
 

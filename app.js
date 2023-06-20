@@ -207,7 +207,7 @@ app.use((req, res, next) => {
 
 app.use(session({
     secret: 'secret', // change this to a secret key
-    resave: false,
+    resave: true,
     saveUninitialized: false
 }));
 app.use(passport.initialize());
@@ -986,9 +986,21 @@ app.get('/studentLogin', setHttpResponseHeaders, csrfProtection, addCsrf, functi
     });
 });
 
+app.get('/studentLogin_error', setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
+    res.render('studentLogin_error.pug', {
+        title: 'Student Login'
+    });
+});
+
 // Render create student page (all modules)
 app.get('/createStudent', setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
     res.render('createStudent.pug', {
+        title: 'Create Student'
+    });
+});
+
+app.get('/createStudent_error', setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
+    res.render('createStudent_error.pug', {
         title: 'Create Student'
     });
 });

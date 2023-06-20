@@ -1,7 +1,8 @@
 header.ui.borderless.menu.tablet-and-computer 
     .ui.container  
         #logo
-            img.ui.small.image(src='/images/dart-logo.png')
+            a.item(href='/login')
+                img.ui.small.image(src='/images/dart-logo.png')
         if user
             .right.menu
                 a.item(href='/').dart-blue
@@ -16,7 +17,7 @@ header.ui.borderless.menu.tablet-and-computer
                     | Login
 header.mobile-only
   .ui.fluid.top.two.item.menu
-    a.item(href='/')
+    a.item(href='/login')
       img.ui.small.image(src='/images/dart-logo.png', id='cell_logo')
     .item
         .menu.headerDropdownMenu
