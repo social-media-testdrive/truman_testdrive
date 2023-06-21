@@ -244,7 +244,7 @@ exports.postIdentityTheftModOneQuizScore = (req, res, next) => {
                 });
         }
     });
-    res.redirect('/identity_learn_page8'); 
+    res.redirect('/submod/learn7/identity'); 
 }; 
 
 exports.postIdentityTheftModTwoQuizScore = (req, res, next) => {

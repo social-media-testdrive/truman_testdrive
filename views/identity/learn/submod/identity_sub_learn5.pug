@@ -2,105 +2,44 @@ extends ../../../ui_layout
 
 block content
 
-  .ui.text.container.addBottomMargin
-    .ui.fluid.tiny.three.item.fluid.menu
-      .item.active(style='background-color: #6BBCC7; color: white; border-right: 2px solid white;')
+  .ui.container#raised-container.short-page-margin
+    .ui.fluid.tiny.three.item.fluid.menu#submod-progress-bar
+      .item.active
         | Concept & Consequences
-      .item(style='background-color: darkgray; color: white; border-right: 2px solid white;')
+      .item
         | Tricks and Recognize Tricks
-      .item(style='background-color: darkgray; color: white;')
+      .item
         | Method and Protection
-    #segmentation.ui.raised.segment
-      img.ui.medium.image(src='/images/practice_progress_bar.png' style='margin-left: auto; margin-right: auto')
-      form.ui.form(style="width: 100%" action='/postIdentityTheftModOneQuizScore', method='POST')
-        input(type='hidden', name='username', value=user.username)
-        input(type='hidden', name='_csrf', value=csrfToken)
-        h3 1. Which of the following situations can be characterized as identity theft?
-        .field
-          #b1.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
-            input(type='radio' name='q1' value = 'a' id='radio1')
-            label When someone steals your personal information to commit fraud
-        .field
-          #b2.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
-            input(type='radio' id = 'c2' name='q1' value = 'b')
-            label Unauthorized use or attempted use of an existing account
-        .field
-          #b3.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
-            input(type='radio' id = 'c3' name='q1' value = 'c')
-            label Unauthorized use or attempted use personal information to open a new account
-        .field
-          #b4.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
-            input(type='radio' id = 'c4' name='q1' value = 'd')
-            label All of the above
-
-        h3 2. Please select all the items that you think are considered personal information.
-          .grouped.fields
-            .field
-              img.ui.centered.image(src='/images/ssn.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:20px;margin-bottom: 20px;")
-              div#b5.ui.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
-                input(type='checkbox', id='q2c1', name='q2-option-1', value='1')
-                label Social Security Number
-            .field
-              img.ui.centered.image(src='/images/dob.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:20px;margin-bottom: 20px;")
-              div#b6.ui.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
-                input(type='checkbox', id='q2c2', name='q2-option-2', value='1')
-                label Date and place of birth
-            .field
-              img.ui.centered.image(src='/images/cvc.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:20px;margin-bottom: 20px;")
-              div#b7.ui.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
-                input(type='checkbox', id='q2c3', name='q2-option-3', value='1')
-                label Credit card info: CVC, expiration date, and password
-          #submitQuestion.ui.green.button(onclick ='checkQuestion()', style='float: right') Check Answers
-          #correctness.ui.label.right.floated(style='clear: both; width: 100%; float: right; display: none')
-            p#score(style='float:right') 1.0/1 points
-          input(type='hidden', name='scoreInput', value='0', id='scoreInput')
-          br
-          br
-          button.ui.blue.button(style="float: right; clear: both" type='submit') Submit
-          h1
-          h1
-    .div(style='margin-top:20px;')
-      button.ui.medium.button.left.floated(onclick="location.href='/submod/learn4/identity';") 
-        i.arrow.left.icon 
-        | Back
-      //- button.ui.medium.button.left.floated(onclick="location.href='/';") Save & Exit
-      //- button.ui.medium.button.right.floated(onclick="location.href='/identity_learn_page8';")
-      //-   | Next
-      //-   i.arrow.right.icon
-
+    .ui.raised.segment
+      #raised-content
+        .limit
+            .ui.large.pointing.below.label#speechBubble(style="float: none; width: 100%;")
+                p#speechText(style="font-size: 1.5rem; text-align: left") 
+                    | Well done! You've learned two important concepts: 
+                    strong Identity theft, 
+                    | which occurs when someone steals your personal identifiable information and exploits it for malicious purposes, and 
+                    strong personal identifiable information, 
+                    | which is the information uniquely associated with you, which can be directly or indirectly used to identify you.
+                    br
+                    br
+                    | Moreover, you have gained insight into the severe consequences that can arise when someone steals your identity.
+                    br
+                    br
+                    | Now, let's put our newfound knowledge into practice and reinforce what we've learned!
+            img#dart_image1.ui.small.image(src='/profile_pictures/transparent.png' style="margin: 0 auto;")
+    .ui.container#nav-container
+      .div#nav-menu          
+        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/submod/learn4/identity';") 
+          i.arrow.left.icon 
+          | Back
+        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/submod/learn6/identity';")
+          | Practice
+          i.arrow.right.icon
 
 
 block scripts
+  script(src='/js/character.js')
   script.
-    function checkQuestion(){
-      document.getElementById("submitQuestion").style.display = "none";
-      let x = 0;
-      if(document.getElementById("c4").checked) {
-        x++;
-      } 
-      document.getElementById("b1").style.borderColor="red";
-      document.getElementById("b2").style.borderColor="red";
-      document.getElementById("b3").style.borderColor="red";
-      document.getElementById("b4").style.borderColor="green";
-
-      if(document.getElementById("q2c1").checked) {
-        x = x + 0.33333333333;
-      } 
-      if(document.getElementById("q2c2").checked) {
-        x = x + 0.33333333333;
-      } 
-      if(document.getElementById("q2c3").checked) {
-        x = x + 0.33333333333;
-      } 
-      document.getElementById("b5").style.borderColor="green";
-      document.getElementById("b6").style.borderColor="green";
-      document.getElementById("b7").style.borderColor="green";
-
-      document.getElementById("score").innerHTML = x.toFixed(2) + " / 2.00 points";
-      document.getElementById("correctness").style.display = "block";
-      document.getElementById('scoreInput').value = x +  " / 2.00 points";
-    }
-
     var voiceoverMappings = {
       '.showLearnSectionButton': {
         "initialDelay": 700,
@@ -123,11 +62,10 @@ block scripts
         "files": ['CUSML.6.2.3.mp3']
       }
     };
-
   script(src='/module_js/voiceover.js')
   script(src="/module_js/base_start.js")
   
 block styles
-  link(rel='stylesheet', href='/css/start.css')  
+  link(rel='stylesheet', href='/css/module.css')  
     
     
