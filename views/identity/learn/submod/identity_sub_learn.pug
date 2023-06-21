@@ -7,9 +7,9 @@ block content
       .item.active
         | Concept & Consequences
       .item
-        | Tricks and Recognize Tricks
+        | How To Recognize Techniques
       .item
-        | Method and Protection
+        | Methods of Protection
     .ui.raised.segment
       #raised-content
         .limit
@@ -22,19 +22,19 @@ block content
           br
           p This module has been thoughtfully designed to help you gain a comprehensive understanding of identity theft scams, including their risks, warning signs and practical methods. Our primary objective is to empower you with the knowledge and methods necessary to safeguard yourself effectively. Throughout this module, you will explore three sections that cover the following topics:
 
-          .ui.centered.stackable.grid(style="margin: auto")
-            .four.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 30px;")
-              .ui.huge.label(style='text-align: center;background: #2165AE;border: 3px solid #6BBCC7; border-radius: 10px; padding: 40px 80px;')
-                i.big.unlock.icon(style='margin: 0 auto; color: white')
-              p(style='text-align: center; margin-top: 0.5em;') Section 1: Concepts & Consequences
-            .four.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;  margin-right: 30px;")
-              .ui.huge.label(style='text-align: center;background: #2165AE;border: 3px solid #2165AE; border-radius: 10px; padding: 40px 80px;')
-                i.big.lock.icon(style='margin: 0 auto; color: white')
-              p(style='text-align: center; margin-top: 0.5em;') Section 2: Recognize tricks
-            .four.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;  margin-right: 30px;")
-              .ui.huge.label(style='text-align: center;background: #2165AE;border: 3px solid #2165AE; border-radius: 10px; padding: 40px 80px;')
-                i.big.lock.icon(style='margin: 0 auto; color: white')
-              p(style='text-align: center; margin-top: 0.5em;') Section 3: Methods of Protection
+          .ui.centered.stackable.grid#section-grid
+            .four.wide.column
+              .ui.huge.label.lockContainer.unlocked
+                i.big.unlock.icon
+              p Section 1: Concepts & Consequences
+            .four.wide.column
+              .ui.huge.label.lockContainer.unlocked
+                i.big.unlock.icon
+              p Section 2: Recognize Tricks
+            .four.wide.column
+              .ui.huge.label.lockContainer
+                i.big.lock.icon
+              p Section 3: Methods of Protection    
     .ui.container#nav-container
       .div#nav-menu          
         button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/challenge3/identity';") 

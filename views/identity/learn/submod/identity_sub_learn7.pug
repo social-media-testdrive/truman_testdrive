@@ -7,13 +7,13 @@ block content
       .item.active
         | Concept & Consequences
       .item
-        | Tricks and Recognize Tricks
+        | How To Recognize Techniques
       .item
-        | Method and Protection
+        | Methods of Protection
     .ui.raised.segment
-      #raised-content(style="min-height: 1000px;")
+      #raised-content
         .limit
-          .ui.raised.segment(style="padding: 0 !important;")
+          .ui.raised.segment.chat-container
             .ui.large.header
               .container#cropped-circular-image
                 .ui.segment(style="background-color: #7D7C7C !important;")
@@ -21,97 +21,101 @@ block content
                     img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
                   span(style="font-size: 2.5rem; margin-left: 20px;color:white;") Chat with 
                     span#name ‎
+              br
               .content.text-message
                 .ui.circular.tiny.image 
                   img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
                 .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
-                  p Excellent work, #{user.profile.name}! You've finished the first sub-module! May I ask you a question? Have you ever encountered a scam before?   
+                  p Excellent work, #{user.profile.name}! You've finished the first section! May I ask you a question? Have you ever encountered a scam before?
+              #encounter_container
+                div#encounter_label
+                  .ui.large.right.pointing.label
+                    p#encounter_text 
+                  .ui.circular.tiny.image(style="background: white !important")
+                    img(src='/profile_pictures/avatar-icon.svg', alt='user text message profile picture')
 
-              .content.text-message
+                #encounter_response(style='clear: both;')
+                  button.ui.big.button.chatBotButton(onclick="showTopic('Yes')") Yes
+                  button.ui.big.button.chatBotButton(onclick="showTopic('No')") No
+                  button.ui.big.button.chatBotButton(onclick="showTopic('I\\'m not sure')") I'm not sure
+
+
+              //- bot yes reply
+              #yes_reply.content.text-message(style="display: none")
                 .ui.circular.tiny.image 
                   img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
                 .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
-                  p It's perfectly fine if you prefer not to answer. Please click 'Next' to continue learning.
-                #topics_group(style="visibility: visible; clear: both; float: right")
-                  button.ui.small.button.chatBotButton(onclick="showTopic('yes')") Yes
-                  button.ui.small.button.chatBotButton(onclick="showTopic('no')") No
-                  button.ui.small.button.chatBotButton(onclick="showTopic('sure')") I'm not sure
-                #yesLabel.ui.large.white.right.pointing.label(style='float: right; visibility: visible;')
-                  p Yes
-                #noLabel.ui.large.white.right.pointing.label(style='float: right; visibility: visible;')
-                  p No
-                #sureLabel.ui.large.white.right.pointing.label(style='float: right; visibility: visible;')
-                  p I'm not sure
-              //- img.ui.circular.image(src='/images/avatar-pic.jpg' style='margin: 25px')
-              //- | Chat with Intrepid
-              //- .content(style="background-color: #F1EDED;")
-              //-   .div(style='overflow: hidden; float: left')
-              //-     img.ui.tiny.circular.image(src='/images/avatar-pic.jpg' style='float: left; margin-bottom: 25px; display: block')
-              //-     .ui.large.left.pointing.label(style='float: left')
-              //-       p Excellent work, #{user.profile.name}! You've finished the first sub-module! May I ask you a question? Have you ever encountered a scam before?   
-                //- .ui.large.left.pointing.label(style='float: left; display: block; clear:both')
-                //-   p Before we start, I want to be clear that I am an AI chat-bot and not a human being. 
-                //-     | However, I will do my best to help you with what you need assistance on!
-                //- .ui.large.left.pointing.label(style='float: left; clear:both')
-                //-   p You can feel free to save and exit the chat through the botton on the bottom left of you screen. 
-                //-     | You can always re-enter as well. Does all of this make sense? Select a button below.
-                //- button#understand_button.ui.small.blue.button(onclick="showYes()" style='float: right; clear:both') Yes.
-                //- #understand.ui.large.blue.right.pointing.label(style='float: right; visibility: hidden; clear: both')
-                //-   p Yes.
-                //- #yay.ui.large.left.pointing.label(style="visibility: hidden; float: left; clear: both")
-                //-   p Yay! Let's begin. Please select a button below what you would like clarification on.
-                //- #topics_group(style="visibility: hidden; clear: both; float: right")
-                //-   button.ui.small.blue.button(onclick="showTopic('Consequences of finanical identity theft')") Consequences of financial identity theft
-                //-   button.ui.small.blue.button(onclick="showTopic('Identifying a troll')") Identifying a troll
-                //-   button.ui.small.blue.button(onclick="showTopic('Other')") Other
-                //- #topic.ui.large.blue.right.pointing.label(style="visibility: hidden; clear: both; float: right") 
-                //-   p#topic_text 
-                //- #topic_response1.ui.large.left.pointing.label(style="visibility: hidden; clear: both; float: left") 
-                //-   p This can definitely be a hard topic to grasp, so I understand completely!
-                //- #topic_response2.ui.large.left.pointing.label(style="visibility: hidden; clear: both; float: left") 
-                //-   p I want to help you as best as I can, so please click the learning option you feel would most help you reach understanding. 
-                //-   | We can start with this.
+                  p Thank you for your response. If you don't mind me asking, could you please share more about your experience with the scam? Did you undergo any financial loss or other types of loss due to the scam? 
+                  p Please type your response below and hit the "send" button.
 
-      //- i.close.icon
-      //- .ui.large.header(style="background-color: grey; color: white;")
-      //-   img.ui.circular.image(src='/images/avatar-pic.jpg' style='margin: 25px')
-      //-   | Chat with Intrepid
-      //- .content(style="background-color: #d3d3d3;")
-      //-   .div(style='overflow: hidden; float: left')
-      //-     img.ui.tiny.circular.image(src='/images/avatar-pic.jpg' style='float: left; margin-bottom: 25px; display: block')
-      //-     .ui.large.left.pointing.label(style='float: left')
-      //-       p Hi User! Welcome to the Chat! I am so happy you're here! 
-      //-         | You requested clarification. Luckily for you, in here, you can ask any questions you have about the material covered.
-      //-   .ui.large.left.pointing.label(style='float: left; display: block; clear:both')
-      //-     p Before we start, I want to be clear that I am an AI chat-bot and not a human being. 
-      //-       | However, I will do my best to help you with what you need assistance on!
-      //-   .ui.large.left.pointing.label(style='float: left; clear:both')
-      //-     p You can feel free to save and exit the chat through the botton on the bottom left of you screen. 
-      //-       | You can always re-enter as well. Does all of this make sense? Select a button below.
-      //-   button#understand_button.ui.small.blue.button(onclick="showYes()" style='float: right; clear:both') Yes.
-      //-   #understand.ui.large.blue.right.pointing.label(style='float: right; visibility: hidden; clear: both')
-      //-     p Yes.
-      //-   #yay.ui.large.left.pointing.label(style="visibility: hidden; float: left; clear: both")
-      //-     p Yay! Let's begin. Please select a button below what you would like clarification on.
-      //-   #topics_group(style="visibility: hidden; clear: both; float: right")
-      //-     button.ui.small.blue.button(onclick="showTopic('Consequences of finanical identity theft')") Consequences of financial identity theft
-      //-     button.ui.small.blue.button(onclick="showTopic('Identifying a troll')") Identifying a troll
-      //-     button.ui.small.blue.button(onclick="showTopic('Other')") Other
-      //-   #topic.ui.large.blue.right.pointing.label(style="visibility: hidden; clear: both; float: right") 
-      //-     p#topic_text 
-      //-   #topic_response1.ui.large.left.pointing.label(style="visibility: hidden; clear: both; float: left") 
-      //-     p This can definitely be a hard topic to grasp, so I understand completely!
-      //-   #topic_response2.ui.large.left.pointing.label(style="visibility: hidden; clear: both; float: left") 
-      //-     p I want to help you as best as I can, so please click the learning option you feel would most help you reach understanding. 
-      //-     | We can start with this.
+              //- bot no reply
+              #no_reply.content.text-message(style="display: none")
+                .ui.circular.tiny.image 
+                  img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+                .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
+                  p Thank you for your response. It's great to hear that you've never encountered scams! Please click the "Complete Section 1" button on the bottom right of the page to continue learning. 
+                br
+                br
+
+              //- bot not sure reply
+              #sure_reply.content.text-message(style="display: none")
+                .ui.circular.tiny.image 
+                  img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+                .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
+                  p Thank you for your response. If you don't mind me asking, could you please share a little about what the suspicious interaction looked like? What did you encounter? 
+                  p Please type your response below and hit the "send" button.
+              
+
+              //- final response from the user
+              #final_container(style="clear: both; float: right; margin-top: 40px;")
+                div#final_label
+                  .ui.large.right.pointing.label
+                    p#sent_message 
+                      span
+                        i.ellipsis.horizontal.icon
+                  .ui.circular.tiny.image(style="background: white !important")
+                    img(src='/profile_pictures/avatar-icon.svg', alt='user text message profile picture')
+                br
+                br
+                br
+
+
+
+
+              //- suspicion question reply (the one after not sure)
+              #sus_reply.content.text-message(style="display: none")
+                .ui.circular.tiny.image 
+                  img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+                .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
+                  p That sounds like a scam! I'm glad you were able to recognize it and avoid it. 
+                  p It was great talking with you! Please click the "Complete Section 1" button on the bottom right of the page to continue learning. 
+                br
+                br
+
+              //- experience question reply (the one after yes)
+              #experience_reply.content.text-message(style="display: none")
+                .ui.circular.tiny.image 
+                  img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+                .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
+                  p I'm sorry to hear that you had to go through that. I hope you were able to recover from the scam.
+                  p It was great talking with you! Please click the "Complete Section 1" button on the bottom right of the page to continue learning. 
+                br
+                br
+          //- .ui.fluid.action.input
+          //-   input(type='text' placeholder='Search...')
+          //-   .ui.button Send 
+          .ui.fluid.action.icon.input(style="margin-top: -15px;")
+            input.message-input(type="text" placeholder="Type your message..." id="message-input")
+            i.paper.plane.big.icon(style="color: #6BBCC7; margin-right: 60px;z-index:100;")
+            .ui.button#send-button Send 
 
     .ui.container#nav-container
-      .div#nav-menu          
-        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/submod/learn4/identity';") 
+      div#nav-menu          
+        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/submod/learn6/identity';") 
           i.arrow.left.icon 
           | Back
-        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/submod/learn6/identity';")
-          | Practice
+        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/submod/learn8/identity';")
+          | Complete Section 1
           i.arrow.right.icon
         
 
@@ -119,28 +123,102 @@ block content
 block scripts
   script(src='/js/update_character_name.js')
   script.
-    function showYes(){
-      var hid = document.getElementById("understand");
-      hid.style.visibility = "visible";
-      hid = document.getElementById("understand_button");
-      hid.style.visibility = "hidden";
-      hid = document.getElementById("yay");
-      hid.style.visibility = "visible";
-      hid = document.getElementById("topics_group");
-      hid.style.visibility = "visible";
-    }
+    let accept_sending = false;
+    let final_response_number = 0;
+
+    $(document).ready(function() {
+      $('#send-button').click(function() {
+        if(accept_sending) {
+          var userResponse = $('input#message-input').val();
+          //- console.log(userResponse);
+
+          var messageText = document.getElementById("sent_message");
+          messageText.innerHTML = userResponse;
+
+          // show final response to the users message
+          if (final_response_number == 1) {
+            document.getElementById("experience_reply").style.display = "";
+
+          } else if (final_response_number == 2) {
+            document.getElementById("sus_reply").style.display = "";
+          }
+        
+        // Scroll the chat container to the bottom
+        $('.chat-container').scrollTop($('.chat-container')[0].scrollHeight);
+
+          $('input#message-input').val('');        
+        }
+
+        // disable sending messages after the user has sent a message
+        accept_sending = false;
+      });
+    });
+
+
+    // event listener to the input field submitting via enter key
+    document.getElementById('message-input').addEventListener('keypress', function(event) {
+      // Check if the enter key is pressed (key code 13)
+      if (event.keyCode === 13 && accept_sending) {
+        // Get the input value
+        var inputValue = this.value;
+        
+        // set message text from the three elipses to the input value
+        //- console.log(inputValue);
+        var messageText = document.getElementById("sent_message");
+        messageText.innerHTML = inputValue;
+
+        // show final response to the users message
+        if (final_response_number == 1) {
+          document.getElementById("experience_reply").style.display = "";
+        } else if (final_response_number == 2) {
+          document.getElementById("sus_reply").style.display = "";
+        }
+
+        // Scroll the chat container to the bottom
+        $('.chat-container').scrollTop($('.chat-container')[0].scrollHeight);
+
+        // Clear the input field
+        this.value = '';
+
+        
+        // disable sending messages after the user has sent a message
+        accept_sending = false;
+      }
+    });
 
     function showTopic(name){
-      document.getElementById("topic_text").innerHTML = name;
-      var hid = document.getElementById("topics_group");
-      hid.style.visibility = "hidden";
-      hid = document.getElementById("topic");
-      hid.style.visibility = "visible";
-      hid = document.getElementById("topic_response1");
-      hid.style.visibility = "visible";
-      hid = document.getElementById("topic_response2");
-      hid.style.visibility = "visible";
+      var showMe = document.getElementById("encounter_text");
+      showMe.innerHTML = name;
+      document.getElementById("encounter_label").style.display = "flex";
+      
+      var hideMe = document.getElementById("encounter_response");
+      hideMe.style.visibility = "hidden";
+      console.log("Name: " + name)
+
+      if (name == "No") {
+        document.getElementById("no_reply").style.display = "";
+      }
+
+      if (name == "Yes") {
+        document.getElementById("yes_reply").style.display = "";
+        document.getElementById("final_label").style.display = "flex";
+        accept_sending = true;
+        final_response_number = 1;
+      }
+
+      if (name == "I'm not sure") {
+        document.getElementById("sure_reply").style.display = "";
+        document.getElementById("final_label").style.display = "flex";
+        accept_sending = true;
+        final_response_number = 2;
+      }
+
+      // Scroll the chat container to the bottom
+      $('.chat-container').scrollTop($('.chat-container')[0].scrollHeight);
     }
+
+
+
 
     var voiceoverMappings = {
       '.showLearnSectionButton': {
@@ -165,12 +243,6 @@ block scripts
       }
     };
 
-    document.getElementById('nohelp').onclick = hideAvatar;
-
-    function hideAvatar(){
-      var hid = document.getElementById("avatar");
-      hid.style.display = "none";
-    }
   script(src='/module_js/voiceover.js')
   script(src="/module_js/base_start.js")
   

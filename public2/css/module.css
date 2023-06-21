@@ -164,16 +164,16 @@ u {
     background: #C4C4C4 !important;
     overflow: hidden;
     border-radius: 50%;
-    width: 200px; 
-    height: 200px;
+    width: 100px; 
+    height: 100px;
 }
 
 .ui.circular.tiny.image {
     background: #C4C4C4 !important;
     overflow: hidden;
     border-radius: 50%;
-    width: 100px; 
-    height: 100px;
+    width: 50px; 
+    height: 50px;
     margin: 15px;
 }
 
@@ -182,9 +182,75 @@ u {
     color: white;
 }
 
+.ui.raised.segment.chat-container {
+    height: 500px;
+    overflow-y: scroll;
+    position: relative; 
+    padding: 0 !important;
+    background-color: #F1EDED; 
+}
+
 .text-message {
     background-color: #F1EDED; 
     width: 100%;
+}
+
+.chat-container p {
+    font-size: 1.5rem;
+}
+
+#encounter_container,
+#final_container {
+    clear: both; 
+    float: right; 
+    margin-top: 20px;
+}
+
+#encounter_label,
+#final_label {
+    float: right; 
+    display: none; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+#section-grid {
+    margin: auto;
+}
+
+#section-grid .four.wide.column {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    margin-right: 30px;
+}
+
+#section-grid .four.wide.column p {
+    text-align: center; 
+    margin-top: 0.5em;
+}
+
+.ui.huge.label.lockContainer {
+    text-align: center;
+    background: #2165AE;
+    border: 3px solid #2165AE; 
+    border-radius: 10px; 
+    padding: 40px 80px;
+}
+
+.ui.huge.label.lockContainer.unlocked {
+    text-align: center;
+    background: #2165AE;
+    border: 3px solid #6BBCC7; 
+    border-radius: 10px; 
+    padding: 40px 80px;
+}
+
+i.big.lock.icon,
+i.big.unlock.icon {
+    margin: 0 auto; 
+    color: white;
 }
 /* OLD CSS From Truman  Start Pages Below */
 /* 

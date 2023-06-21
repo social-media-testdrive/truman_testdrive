@@ -58,7 +58,7 @@
     padding-right: 30px;
 }
 
-button.ui.small.button.chatBotButton {
+button.ui.big.button.chatBotButton {
     border-radius: 30px !important; 
     background-color: white; 
     color: black !important;
@@ -67,13 +67,14 @@ button.ui.small.button.chatBotButton {
     padding-right: 30px;
 }
 
-button.ui.small.button.chatBotButton:hover {
+button.ui.big.button.chatBotButton:hover {
     background-color: #6BBCC7; 
 }
 
-.ui.large.white.right.pointing.label {
+.chat-container .ui.large.right.pointing.label {
     background: #6BBCC7 !important;
     color: black;
+    float: left;
 }
 
 #sign-up-button {

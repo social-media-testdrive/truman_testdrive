@@ -101,6 +101,7 @@
     animation: fillAnimation 1s linear forwards;  
 }
 
+
 @keyframes fillAnimation {
     0% {
       width: 0%;
@@ -110,6 +111,20 @@
     }
 }
   
+
+.progress-item.completedBefore::after {
+    z-index: 3;
+    position: absolute;
+    content: "";
+    border-bottom: 4px solid #6BBCC7;
+    width: 100%;
+    top: 30px;
+    left: 50%;
+}
+
+.blueIcon path {
+    fill: #6BBCC7;
+}
 
 .progress-item:first-child::before {
     content: none;
