@@ -160,7 +160,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressValidator());
 // Define our session.
 app.use(session({
-    resave: true,
+    resave: false,
     saveUninitialized: true,
     rolling: false,
     cookie: {

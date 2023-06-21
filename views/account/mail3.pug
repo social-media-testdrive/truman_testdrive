@@ -5,7 +5,7 @@ block content
  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
 
  .ui.container#raised-container(style="margin-top: 20px;")
-  .ui.sixteen.wide.row.fluid.card.dim.co
+  .ui.sixteen.wide.row.fluid.card.dim
    .ui.sixteen.wide.column(style="display: flex !important; flex-direction: column; justify-content: center; align-items: center;")
    div(style='display: flex; margin:10px')
     .sidebar(style="width:20%")
@@ -32,16 +32,16 @@ block content
 
       .row
         .col-1 
-          h2 Congrats on your new iPhone 14 Pro
+          h2 We noticed a new sign in
         .col-2 
-        .col-3(style="margin-top:auto")  
+        .col-3(style="margin-top:auto;")  
           span 04/05/23
 
       .row
         .col-1 
           p 
-            strong(style="font-size:17px") iPhone 14
-            | &lt;4kbug82ob.anderson.yrnlaw.com&gt;
+            strong(style="font-size:17px") Dropbox
+            | &lt;no-reply@dropbox.com&gt;
             br
             | to me
         .col-2 
@@ -49,8 +49,10 @@ block content
 
         .col-3 
       .row
-        .col-1 
-          img(style='cursor:pointer; width:400px; height 400px; z-index: 2;top: 50%;left: 3%; border: 2px white solid;padding: -1px;padding: 5px white solid;z-index: 1;background-color: white;' src="/profile_pictures/fakedropbox.png")
+        .col-1(style="display: flex !important; flex-direction: column; justify-content: center; align-items: center;")
+         .ui.container#raised-container(style="margin-top: 20px;")
+          .ui.sixteen.wide.row.fluid.card.dim
+            img(style='cursor:pointer; max-width:100% !important; height auto !important; max-height:550px; z-index: 2;top: 50%;left: 3%; border: 2px white solid;padding: -1px;padding: 5px white solid;z-index: 1;background-color: white;' src="/profile_pictures/fakedropbox.png")
 
         .col-2 
 
@@ -58,18 +60,129 @@ block content
 
       .row
         .col-1 
-          button.btn(style='padding: 6px; border: 1px solid grey; border-radius: 50px; white-space: nowrap; margin-right:10px; margin-bottom:5px; margin-top:15px;background-color:white;width:120px !important') Reply
-          button.btn(style='padding: 6px; border: 1px solid grey; border-radius: 50px; white-space: nowrap; margin-right:10px; margin-bottom:5px; margin-top:15px;background-color:white;width:120px !important') Blcok Sender
-          button.btn(style='padding: 6px; border: 1px solid grey; border-radius: 50px; white-space: nowrap; margin-right:10px; margin-bottom:5px; margin-top:15px;background-color:white;width:120px !important') Report Scam
-          button.btn(style='padding: 6px; border: 1px solid grey; border-radius: 50px; white-space: nowrap; margin-right:10px; margin-bottom:5px; margin-top:15px;background-color:white;width:120px !important') Delete Email
+          button.reply.btn(style='cursor:pointer; padding: 6px; border: 1px solid grey; border-radius: 50px; white-space: nowrap; margin-right:10px; margin-bottom:5px; margin-top:15px;background-color:white;width:120px !important') Reply
+          button.block.btn(style='cursor:pointer; padding: 6px; border: 1px solid grey; border-radius: 50px; white-space: nowrap; margin-right:10px; margin-bottom:5px; margin-top:15px;background-color:white;width:120px !important') Blcok Sender
+          button.report.btn(style='cursor:pointer; padding: 6px; border: 1px solid grey; border-radius: 50px; white-space: nowrap; margin-right:10px; margin-bottom:5px; margin-top:15px;background-color:white;width:120px !important') Report Scam
+          button.delete.btn(style='cursor:pointer; padding: 6px; border: 1px solid grey; border-radius: 50px; white-space: nowrap; margin-right:10px; margin-bottom:5px; margin-top:15px;background-color:white;width:120px !important') Delete Email
         .col-2 
 
         .col-3
 
+      .ui.small.long.post.modal.reply_modal 
+        
+        .header(style="padding-bottom:0px;border:none; display: flex !important; flex-direction: column; justify-content: center; align-items: center;") 
+          div(style="display:flex")
+            img(style='idth:50px; height 50px; z-index: 2;top: 50%;left: 3%; border: 2px white solid;padding: -1px;padding: 5px white solid;z-index: 1;background-color: white;' src="/profile_pictures/icon_good.png")
+            span(style='font-size:25px !important') &nbsp; Good Job
+        i.close.icon
+        .content(style='padding-top:10px;border:none;')
+          span(style='font-size:20px !important') Replying is okay because this email is legitimate and can be trusted. We can look into why this is not a scam.
+          button.btn.close_modal(style='cursor:pointer; padding: 6px; border: 1px solid grey; border-radius: 50px; white-space: nowrap; margin-right:10px; margin-bottom:5px; margin-top:15px;background-color:white;width:100% !important;height:40px') Continue Exploring
 
-      
+        .action  
+
+      .ui.small.long.post.modal.block_modal 
+        
+        .header(style="padding-bottom:0px;border:none; display: flex !important; flex-direction: column; justify-content: center; align-items: center;") 
+          div(style="display:flex")
+            img(style='idth:50px; height 50px; z-index: 2;top: 50%;left: 3%; border: 2px white solid;padding: -1px;padding: 5px white solid;z-index: 1;background-color: white;' src="/profile_pictures/icon_warning.png")
+            span(style='font-size:25px !important') &nbsp; Warning
+        i.close.icon
+        .content(style='padding-top:10px;border:none;')
+          span(style='font-size:20px !important') Blocking the sender is not needed for this email because it comes from a legitimate source and can be trusted. We can look into why this is not a scam.
+          button.btn.close_modal(style='cursor:pointer; padding: 6px; border: 1px solid grey; border-radius: 50px; white-space: nowrap; margin-right:10px; margin-bottom:5px; margin-top:15px;background-color:white;width:100% !important;height:40px') Continue Exploring
+
+        .action  
+
+      .ui.small.long.post.modal.report_modal 
+        
+        .header(style="padding-bottom:0px; border:none; display: flex !important; flex-direction: column; justify-content: center; align-items: center;") 
+          div(style="display:flex")
+            img(style='idth:50px; height 50px; z-index: 2;top: 50%;left: 3%; border: 2px white solid;padding: -1px;padding: 5px white solid;z-index: 1;background-color: white;' src="/profile_pictures/icon_warning.png")
+            span(style='font-size:25px !important') &nbsp; Warning
+        i.close.icon
+        .content(style='padding-top:10px;border:none;')
+          span(style='font-size:20px !important') Reporting as a scam is not needed for this email because it comes from a legitimate source and can be trusted. We can look into why this is not a scam.
+          button.btn.close_modal(style='cursor:pointer; padding: 6px; border: 1px solid grey; border-radius: 50px; white-space: nowrap; margin-right:10px; margin-bottom:5px; margin-top:15px;background-color:white;width:100% !important;height:40px') Continue Exploring
+
+        .action  
+     
+      .ui.small.long.post.modal.delete_modal 
+        
+        .header(style="padding-bottom:0px;border:none; display: flex !important; flex-direction: column; justify-content: center; align-items: center;") 
+          div(style="display:flex")
+            img(style='idth:50px; height 50px; z-index: 2;top: 50%;left: 3%; border: 2px white solid;padding: -1px;padding: 5px white solid;z-index: 1;background-color: white;' src="/profile_pictures/icon_warning.png")
+            span(style='font-size:25px !important') &nbsp; Warning
+        i.close.icon
+        .content(style='padding-top:10px;border:none;')
+          span(style='font-size:20px !important') Deleting is not needed for this email because it comes from a legitimate source and can be trusted. We can look into why this is not a scam.
+          button.btn.close_modal(style='cursor:pointer; padding: 6px; border: 1px solid grey; border-radius: 50px; white-space: nowrap; margin-right:10px; margin-bottom:5px; margin-top:15px;background-color:white;width:100% !important;height:40px') Continue Exploring
+
+        .action 
 block scripts
   script.
+    document.querySelector('.ui.borderless.menu.tablet-and-computer').style.setProperty('z-index', 'auto', 'important');
+     $('.reply').on('click', function(){
+      $('.reply_modal').modal({
+        onDeny: function(){
+          return true;
+        }
+      }).modal('show');
+    });
+    $('.close_modal').on('click', function(){
+      $('.reply_modal').modal({
+        onDeny: function(){
+          return true;
+        }
+      }).modal('hide');
+    });
+
+    $('.block').on('click', function(){
+      $('.block_modal').modal({
+        onDeny: function(){
+          return true;
+        }
+      }).modal('show');
+    });
+      
+    $('.close_modal').on('click', function(){
+      $('.block_modal').modal({
+        onDeny: function(){
+          return true;
+        }
+      }).modal('hide');
+    });
+      
+    $('.report').on('click', function(){
+      $('.report_modal').modal({
+        onDeny: function(){
+          return true;
+        }
+      }).modal('show');
+    });
+    $('.close_modal').on('click', function(){
+      $('.report_modal').modal({
+        onDeny: function(){
+          return true;
+        }
+      }).modal('hide');
+    });
+    $('.delete').on('click', function(){
+      $('.delete_modal').modal({
+        onDeny: function(){
+          return true;
+        }
+      }).modal('show');
+    });
+    $('.close_modal').on('click', function(){
+      $('.delete_modal').modal({
+        onDeny: function(){
+          return true;
+        }
+      }).modal('hide');
+    });
+
+
 block styles
  link(href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet')
  style(type='text/css').
