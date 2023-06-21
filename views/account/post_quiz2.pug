@@ -1,0 +1,64 @@
+extends ../ui_layout
+
+block content
+
+  .ui.container#raised-container.short-page-margin
+    .ui.raised.segment(style="margin-top:50px")
+      #raised-content
+        .limit
+          form.ui.form(style="width: 100%" action='/postIdentityTheftModOneQuizScore', method='POST')
+            input(type='hidden', name='username', value=user.username)
+            input(type='hidden', name='_csrf', value=csrfToken)
+            h3 2.What is not a method to protect yourself from identity theft? 
+            .field
+              #b1.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
+                input(type='radio' name='q1' value = 'a' id='radio1')
+                label Shred mails with personal information
+            .field
+              #b2.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
+                input(type='radio' id = 'c2' name='q1' value = 'b')
+                label Send in personal information if authorized employees contact you
+            .field
+              #b3.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
+                input(type='radio' id = 'c3' name='q1' value = 'c')
+                label Set up two factor authentication
+            .field
+              #b4.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
+                input(type='radio' id = 'c4' name='q1' value = 'd')
+                label Be cautious with sharing personal information in open space
+                
+              #correctness.ui.label.right.floated(style='clear: both; width: 100%; float: right; display: none')
+                p#score(style='float:right') 1.0/1 points
+              input(type='hidden', name='scoreInput', value='0', id='scoreInput')
+              br
+              br
+              h1
+              h1
+    .ui.container#nav-container
+      .div#nav-menu          
+        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/post_quiz';") 
+          i.arrow.left.icon 
+          | Back
+        button.ui.huge.blue.button.right.floated#submitQuestion(style="border-radius:40px" onclick ='checkQuestion()')
+          | Submit
+        button.ui.huge.blue.button.right.floated#nextButton(style="display:none" onclick="location.href='/post_quiz3';")
+          | Next
+          i.arrow.right.icon
+//- next location is in user.js postIdentityTheftModOneQuizScore
+
+block scripts
+  script.
+    function checkQuestion(){
+      document.getElementById("submitQuestion").style.display = "none";
+      document.getElementById("nextButton").style.display = "unset";
+      document.getElementById("b1").style.borderColor="red";
+      document.getElementById("b2").style.borderColor="green";
+      document.getElementById("b3").style.borderColor="red";
+      document.getElementById("b4").style.borderColor="red";
+
+    }
+  
+block styles
+  link(rel='stylesheet', href='/css/module.css')  
+    
+    
