@@ -101,6 +101,7 @@
     animation: fillAnimation 1s linear forwards;  
 }
 
+
 @keyframes fillAnimation {
     0% {
       width: 0%;
