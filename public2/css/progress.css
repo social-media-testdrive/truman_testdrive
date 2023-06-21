@@ -96,7 +96,6 @@
     width: 100%;
     top: 30px;
     left: 50%;
-
     background: linear-gradient(to right, #7D7C7C, #6BBCC7);
     animation: fillAnimation 1s linear forwards;  
 }

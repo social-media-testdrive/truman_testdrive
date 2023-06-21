@@ -619,6 +619,72 @@ app.get('/mail6', passportConfig.isAuthenticated, csrfProtection, setHttpRespons
     });
 });
 
+app.get('/post_quiz', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+    res.render('account/post_quiz', {
+        title: 'post_quiz'
+    });
+});
+
+app.get('/post_quiz2', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+    res.render('account/post_quiz2', {
+        title: 'post_quiz2'
+    });
+});
+app.get('/post_quiz3', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+    res.render('account/post_quiz3', {
+        title: 'post_quiz3'
+    });
+});
+app.get('/post_quiz4', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+    res.render('account/post_quiz4', {
+        title: 'post_quiz4'
+    });
+});
+app.get('/post_quiz5', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+    res.render('account/post_quiz5', {
+        title: 'post_quiz5'
+    });
+});
+app.get('/post_quiz6', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+    res.render('account/post_quiz6', {
+        title: 'post_quiz6'
+    });
+});
+app.get('/post_quiz7', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+    res.render('account/post_quiz7', {
+        title: 'post_quiz7'
+    });
+});
+app.get('/post_quiz8', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+    res.render('account/post_quiz8', {
+        title: 'post_quiz7'
+    });
+});
+app.get('/post_quiz9', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+    res.render('account/post_quiz9', {
+        title: 'post_quiz9'
+    });
+});
+app.get('/post_quiz10', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+    res.render('account/post_quiz10', {
+        title: 'post_quiz10'
+    });
+});
+app.get('/post_quiz11', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+    res.render('account/post_quiz11', {
+        title: 'post_quiz11'
+    });
+});
+app.get('/post_quiz12', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+    res.render('account/post_quiz12', {
+        title: 'post_quiz12'
+    });
+});
+app.get('/exploration_begin', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+    res.render('account/exploration_begin', {
+        title: 'exploration_begin'
+    });
+});
 // Render facilitator login page (all modules)
 app.get('/facilitatorLogin', setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
     res.render('facilitatorLogin.pug', {
