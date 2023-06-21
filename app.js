@@ -680,6 +680,11 @@ app.get('/post_quiz12', passportConfig.isAuthenticated, csrfProtection, setHttpR
         title: 'post_quiz12'
     });
 });
+app.get('/exploration_begin', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+    res.render('account/exploration_begin', {
+        title: 'exploration_begin'
+    });
+});
 // Render facilitator login page (all modules)
 app.get('/facilitatorLogin', setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
     res.render('facilitatorLogin.pug', {

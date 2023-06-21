@@ -38,36 +38,25 @@ block content
                     path(d='M480-80q-27 0-47.5-13T406-129h-14q-24 0-42-18t-18-42v-143q-66-43-104-110t-38-148q0-121 84.5-205.5T480-880q121 0 205.5 84.5T770-590q0 81-38 148T628-332v143q0 24-18 42t-42 18h-14q-6 23-26.5 36T480-80Zm-88-109h176v-44H392v44Zm0-84h176v-40H392v40Zm-9-100h74v-137l-92-92 31-31 84 84 84-84 31 31-92 92v137h74q60-28 96.5-87T710-590q0-97-66.5-163.5T480-820q-97 0-163.5 66.5T250-590q0 71 36.5 130t96.5 87Zm97-176Zm0-48Z')
                 //- i.bordered.inverted.lightbulb.icon#reflect
                 .step-name Reflect
-          h1.ui.header(style="margin:0 auto; text-align: center;margin-top:35px;")
-            .content#great-job
-                | Great Job!
-
-
           #text
-            p You've completed the Challenge and earned your very first Badge!  But that's not all—there are still five more badges for you to earn. Keep up the great work as we head into Learn!      
-          .ui.grid#badgesGrid(style="margin:0 auto; text-align: center;")
-            .one.column.row
-              .column
-                .content
-                  img#earned_badge(onmouseenter="animateBadge()" src='/badges/identity/Adventure_achiever.png')
-                  p <strong>Energized</strong>
-                    br
-                    | <strong>Evaluation</strong>
+            p(style="font-size:18px") Congratulations on successfully completing all the sections in this module! Now, let's take your learning to the next level by exploring some real-world scenarios together. Get ready to apply your newly acquired knowledge to practical situations and excel even further! 
+            br
+            
+            p(style="font-size:18px") Of course, if you prefer to evaluate what you've learned next time, feel free to skip this section. Congratulations once again! 
 
           img.dart_image.ui.small.image(src='/profile_pictures/transparent.png' style="margin-left: auto;")  
-
     .ui.container#nav-container
       .div#nav-menu
-        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/post_quiz10';") 
+        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/login';") 
           i.arrow.left.icon 
           | Back
-        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/account';")
+        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/gmail';")
           | Continue
           i.arrow.right.icon
 
+
 block scripts
   script(src='/js/update_character_name.js')
-
   script.
 
     function animateBadge() {
@@ -78,7 +67,7 @@ block scripts
     
     let progressItems = document.getElementsByClassName('progress-item');
 
-    $('#evaluate-icon')
+    $('#explore-icon')
       .transition({
         animation: 'jiggle',
         duration: '1s',
@@ -88,8 +77,8 @@ block scripts
     // Show progress after 1 second
     setTimeout(function() {
       //- make challenge icon blue
-      let reflectIcon = document.getElementById('evaluate-icon');
-      reflectIcon.style.fill = "#6BBCC7";
+      let exploreIcon = document.getElementById('explore-icon');
+      exploreIcon.style.fill = "#6BBCC7";
     }, 800);
 
           
@@ -98,10 +87,10 @@ block scripts
     setTimeout(function() {
       let progressItems = document.getElementsByClassName('progress-item');
       progressItems[0].classList.add('done');
-      progressItems[1].classList.add('done');
+      
       //- make line after challenge blue
-      if (progressItems[2]) {
-        progressItems[2].classList.add('completed');
+      if (progressItems[1]) {
+        progressItems[1].classList.add('done');
         console.log("completed class added");
       }
     }, );

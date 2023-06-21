@@ -23,7 +23,7 @@ block content
         span.material-icons(style='pointer-events: none;')   
         span.material-icons(style='pointer-events: none;')   
         span.material-icons(style='pointer-events: none;')   
-    .emailList(style="height:80vh")
+    .emailList(style="height:70vh")
      .emailList__sections
       .section.section__selected
         span.material-icons(style='height:20px;margin:0px;padding:0px') inbox 
@@ -88,6 +88,15 @@ block content
             | NCUUstudent
             span.emailRow__description  - Re: Hi --- Favor. How are you doing? ...
         p.emailRow__time 04/25/23
+ .ui.container#nav-container
+      .div#nav-menu          
+        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/exploration_begin';") 
+          i.arrow.left.icon 
+          | Back
+        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/post_quiz12';")
+          | Next
+          i.arrow.right.icon
+//- next location is in user.js postIdentityTheftModOneQuizScore
 block scripts
   script.
     

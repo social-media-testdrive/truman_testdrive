@@ -96,11 +96,26 @@
     width: 100%;
     top: 30px;
     left: 50%;
-
     background: linear-gradient(to right, #7D7C7C, #6BBCC7);
     animation: fillAnimation 1s linear forwards;  
 }
 
+.progress-item.done .step-counter {
+    z-index: 7;
+    /* background-color: #2165AE; */
+    /* color: white; */
+}
+
+.progress-item.done::after {
+    z-index: 3;
+    position: absolute;
+    content: "";
+    border-bottom: 4px solid #6BBCC7;
+    width: 100%;
+    top: 30px;
+    left: 50%;
+    background: linear-gradient(to right, #7D7C7C, #6BBCC7);
+}
 
 @keyframes fillAnimation {
     0% {
