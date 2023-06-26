@@ -46,6 +46,11 @@ html
     link(rel='stylesheet', href='/css/progress.css')  
     link(rel='stylesheet', href='/css/avatar.css') 
     link(rel='stylesheet', href='/css/nav_buttons.css') 
+    //- Google Fonts: Inter (for headers) and Armata (for body text)
+    link(rel='preconnect' href='https://fonts.googleapis.com')
+    link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
+    link(href='https://fonts.googleapis.com/css2?family=Armata&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap' rel='stylesheet')
+
 
     block styles
 
@@ -53,11 +58,13 @@ html
   body
     //- Flexbox layout 
     #page-header
-      include partials/ui_header
+      block header
+        include partials/ui_header
     #page-article
       block content
     #page-footer
-      include partials/ui_footer
+      block footer
+        include partials/ui_footer
     
     if process.env.instanceType == 'test'
       script(src=cdn+'/js/lib/jquery-3.1.1.min.js')

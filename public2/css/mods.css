@@ -83,4 +83,12 @@ hr {
 
 #in-progress {
     font-size: 2.75rem;
+    font-weight: 600;
+    font-family: 'Armata', sans-serif;
+}
+
+.home-mod-title {
+    font-size: 2rem !important;
+    font-weight: 600 !important;
+    font-family: 'Armata', sans-serif !important;
 }
