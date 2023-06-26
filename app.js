@@ -564,7 +564,7 @@ app.get('/character', passportConfig.isAuthenticated, csrfProtection, setHttpRes
 
 // Render accessibility page
 app.get('/accessibility', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
-    res.render('account/accessibility', {
+    res.render('accessibility.pug', {
         title: 'Accessibility'
     });
 });
