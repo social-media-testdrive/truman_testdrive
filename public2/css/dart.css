@@ -122,3 +122,11 @@ body{
 #page-article{ 
     flex:1; 
 }
+
+
+
+
+img.ui.small.image.dart-logo {
+padding: 0 !important;
+    margin: 0 !important;
+}

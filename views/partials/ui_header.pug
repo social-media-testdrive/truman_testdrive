@@ -2,7 +2,7 @@ header.ui.borderless.menu.tablet-and-computer
     .ui.container
         #logo
             a.item(href='/login')
-                img.ui.small.image(src='/images/dart-logo.png')
+                img.ui.small.image.dart-logo(src='/images/dart-logo.svg')
         if user
             .right.menu
                 a.item(href='/').dart-blue
@@ -18,7 +18,7 @@ header.ui.borderless.menu.tablet-and-computer
 header.mobile-only(style="z-index: auto !important;")
   .ui.fluid.top.two.item.menu
     a.item(href='/login')
-      img.ui.small.image(src='/images/dart-logo.png', id='cell_logo')
+      img.ui.small.image.dart-logo(src='/images/dart-logo.svg', id='cell_logo')
     .item
         .menu.headerDropdownMenu
             if user
@@ -40,7 +40,7 @@ header.mobile-only(style="z-index: auto !important;")
 //-   .ui.grid.container
 //-     .three.wide.column
 //-         a.item(href='/')
-//-             img.ui.small.image(src='/images/dart-logo.png', id='logo')
+//-             img.ui.small.image(src='/images/dart-logo.svg', id='logo')
 //-     .seven.wide.column
 //-     .two.wide.column
 //-         a.item(href='/').dart-blue
@@ -72,7 +72,7 @@ header.mobile-only(style="z-index: auto !important;")
 //-   #outer-header.ui.borderless.fixed.menu.testDriveHeader.not-fixed-header
 //-     #inner-header.ui.menu   
 //-       a.item(href='/')
-//-         img.ui.small.image(src='/images/dart-logo.png', id='logo')
+//-         img.ui.small.image(src='/images/dart-logo.svg', id='logo')
 //-       .right.menu
 //-         a.item(href='/').dart-blue
 //-           | Home
@@ -83,7 +83,7 @@ header.mobile-only(style="z-index: auto !important;")
 //- .mobile.only.row
 //-   .ui.fluid.top.fixed.two.item.menu.testDriveHeader
 //-     a.item(href='/')
-//-       img.ui.small.image(src='/images/dart-logo.png', id='cell_logo')
+//-       img.ui.small.image(src='/images/dart-logo.svg', id='cell_logo')
 //-     if isResearchVersion
 //-         if user
 //-           //- a.item.newpost.float.right

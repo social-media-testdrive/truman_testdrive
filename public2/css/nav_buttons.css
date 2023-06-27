@@ -20,6 +20,7 @@
     padding-left: 30px;
     padding-right: 30px;
     transition: transform 0.3s ease;
+    font-family: 'Armata', sans-serif; 
 }
 
 /* when hovering move back button to the left */
@@ -36,6 +37,7 @@
     padding-left: 30px;
     padding-right: 30px;
     transition: transform 0.3s ease;
+    font-family: 'Armata', sans-serif; 
 }
 
 /* when hovering move start button to the right*/
@@ -56,6 +58,7 @@
     border: 1px solid #2165AE;
     padding-left: 30px;
     padding-right: 30px;
+    font-family: 'Armata', sans-serif; 
 }
 
 button.ui.big.button.chatBotButton {

@@ -5,37 +5,57 @@ block content
 
   .ui.grid
     .row#blue-upper
-      .sixteen.wide.column
-        .ui.container
-          if user.profile.name != "Guest"
-            h1.ui.header.center.aligned Welcome back #{user.profile.name} !
-          else 
-            h1.ui.header.center.aligned Welcome!
-          .limit(style="padding-bottom: 40px; text-align: center;")
-            p#about What would you like to learn today?
-    .row#white-lower
-      .sixteen.wide.column
-        .ui.container
-          .limit(style="padding-bottom: 40px;")
-            h2.ui.header#in-progress Courses:
-            a.ui#theft-link(href=`/intro/identity` alt="Begin identity theft module")
-              .ui.raised.segment
-                .ui.fluid.container(style="height: 200px;")
-                  .ui.image.banner
-                    img(src="/images/identity-theft-banner.jpg", alt="Identity Theft Banner Image")
+      .ui.container
+        if user.profile.name != "Guest"
+          h1.ui.header.center.aligned Welcome back #{user.profile.name} !
+        else 
+          h1.ui.header.center.aligned Welcome!
+        .limit(style="padding-bottom: 40px; text-align: center;")
+          p#about What would you like to learn today?
+          button.ui.inverted.button(style="margin-right: 20px;")
+            | Courses in Progress
+          button.ui.inverted.button
+            | New Courses
 
-                    #theft-progress.ui.bottom.attatched.small.progress(style='margin:0;padding:0;' data-percent='33')
-                      .bar(style='border-radius: 0 !important;')
-                        .progress
-                #raised-content(style="padding-top: 20px;")
-                  h3.ui.header.large.home-mod-title
-                    | Identity Theft
-                  p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
-                  button.ui.huge.blue.button.right.floated#nextButton
-                    | Learn Now
-                    i.arrow.right.icon
-          .ui.basic.segment(style="text-align: center; margin-top: -15px;")
-            button.ui.center.aligned.huge.basic.button#reset-progress(onclick="localStorage.setItem('progress', 0); localStorage.setItem('theft-path', 'intro/identity'); location.reload();") Reset Identity Theft Progress
+
+    .row#white-lower
+      .ui.container
+        .limit(style="padding-bottom: 40px;")
+          h2.ui.header#in-progress DART Alert Hub:
+          a.ui#theft-link(href=`/intro/identity` alt="Begin identity theft module")
+            .ui.raised.segment
+              div#raised-content(style="padding-top: 20px;")
+                div.ui.header.hub-alert
+                  i.exclamation.circle.small.icon(style="color: #D61A69;")
+                  | Rise in Fake Gift Cards
+
+                p(style="color:black") Gift cards are a fraudster’s favorite payment method. Since 2018, consumers have lost nearly $245 million to gift card scams.
+                button.ui.huge.button.right.floated(style="color: black;font-weight:lighter;background: transparent;")
+                  span(style='text-decoration: underline;') Learn More
+                  i.arrow.right.icon
+
+  
+      .ui.container
+        .limit(style="padding-bottom: 40px;")
+          h2.ui.header#in-progress Courses:
+          a.ui#theft-link(href=`/intro/identity` alt="Begin identity theft module")
+            .ui.raised.segment
+              .ui.fluid.container(style="height: 200px;")
+                .ui.image.banner
+                  img(src="/images/identity-theft-banner.jpg", alt="Identity Theft Banner Image")
+
+                  #theft-progress.ui.bottom.attatched.small.progress(style='margin:0;padding:0;' data-percent='33')
+                    .bar(style='border-radius: 0 !important;')
+                      .progress
+              #raised-content(style="padding-top: 20px;")
+                h3.ui.header.large.home-mod-title
+                  | Identity Theft
+                p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+                button.ui.huge.blue.button.right.floated#nextButton
+                  | Learn Now
+                  i.arrow.right.icon
+        .ui.basic.segment(style="text-align: center; margin-top: -15px;")
+          button.ui.center.aligned.huge.basic.button#reset-progress(onclick="localStorage.setItem('progress', 0); localStorage.setItem('theft-path', 'intro/identity'); location.reload();") Reset Identity Theft Progress
 
 block styles
   link(rel='stylesheet', href='/css/mods.css')
