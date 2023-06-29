@@ -219,9 +219,9 @@ app.get('/x', (req, res) => {
 
 // google Auth 
 passport.use(new GoogleStrategy({
-    clientID:"896039841801-tdh0a2hsl53671t5ruirn1kls9cob9aa.apps.googleusercontent.com", // Your Credentials here.
-    clientSecret:"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", // Your Credentials here.
-    callbackURL: "https://dart.socialsandbox.xyz/auth/callback", // Your base URL + path.
+    clientID: process.env.GOOGLE_CLIENT_ID, 
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: "http://localhost:3000/auth/callback", // Your base URL + path.
     passReqToCallback:true
   },
   function(request, accessToken, refreshToken, profile, done) {
