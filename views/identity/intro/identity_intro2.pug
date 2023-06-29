@@ -59,26 +59,7 @@ block content
           .ui.large.right.pointing.circular.label#speechBubble
             p#speechText(style="font-size: 1.3rem") Remember that you can take a break anytime and pick up where you left off when you return!
           img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png' style="float: right")
-    .ui.container#nav-container
-      .div#nav-menu
-        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/intro/identity';") 
-          i.arrow.left.icon 
-          | Back
-        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/challenge/identity';")
-          | Challenge
-          i.arrow.right.icon
-
-
-    //- .div
-    //-   button.ui.large.button.left.floated(onclick="location.href='/intro/identity';") 
-    //-     i.arrow.left.icon 
-    //-     | Back
-    //-   button.ui.large.button.left.floated(onclick="location.href='/identity_learn_page0';") Skip pre-quiz & continue to Learn
-    //-   //- button.circular.ui.icon.button.right.floated(onclick="showModal()")
-    //-   //-   i.wechat.icon
-    //-   button.ui.large.green.button.right.floated(onclick="location.href='/prequiz/identity';")
-    //-     | Take the pre-quiz
-    //-     i.arrow.right.icon
+    +navButtons('/intro/identity', '/challenge/identity', 'Back', 'Challenge')  
 
 block scripts
   script(src='/js/character.js')

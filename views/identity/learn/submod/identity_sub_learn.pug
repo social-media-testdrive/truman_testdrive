@@ -34,15 +34,16 @@ block content
             .four.wide.column
               .ui.huge.label.lockContainer
                 i.big.lock.icon
-              p Section 3: Methods of Protection    
-    .ui.container#nav-container
-      .div#nav-menu          
-        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/challenge3/identity';") 
-          i.arrow.left.icon 
-          | Back
-        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/submod/learn2/identity';")
-          | Start Section 1
-          i.arrow.right.icon
+              p Section 3: Methods of Protection  
+    +navButtons('/challenge3/identity', '/submod/learn2/identity', 'Back', 'Start Section 1')  
+    //- .ui.container#nav-container
+    //-   .div#nav-menu          
+    //-     button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/challenge3/identity';") 
+    //-       i.arrow.left.icon 
+    //-       | Back
+    //-     button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/submod/learn2/identity';")
+    //-       | Start Section 1
+    //-       i.arrow.right.icon
 
 
 

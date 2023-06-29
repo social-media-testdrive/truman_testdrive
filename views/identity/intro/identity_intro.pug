@@ -86,17 +86,15 @@ block content
                 p glossary.pdf
                   //- i.large.download.icon
         br
-    .ui.container#nav-container
-      .div#nav-menu
-        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/';") 
-          i.arrow.left.icon 
-          | Home
-        //- button.ui.large.button.left.floated(onclick="location.href='/identity_learn_page0';") Skip pre-quiz & continue to Learn
-        //- button.circular.ui.icon.button.right.floated(onclick="showModal()")
-        //-   i.wechat.icon
-        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/intro2/identity';")
-          | Start
-          i.arrow.right.icon
+    +navButtons('/', '/intro2/identity', 'Home', 'Start')  
+    //- .ui.container#nav-container
+    //-   .div#nav-menu
+    //-     button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/';") 
+    //-       i.arrow.left.icon 
+    //-       | Home
+    //-     button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/intro2/identity';")
+    //-       | Start
+    //-       i.arrow.right.icon
 
 block scripts
   script.

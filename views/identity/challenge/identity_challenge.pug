@@ -21,18 +21,7 @@ block content
                     | <strong>Conqueror</strong>
           p This will also give you an opportunity to earn your first badge! 
           p If you prefer not to take it press the "skip" button to proceed directly to the default DART Learn lesson.
-    .ui.container#nav-container
-      .div#nav-menu          
-        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/intro2/identity';") 
-          i.arrow.left.icon 
-          | Back
-        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/challenge2/identity';")
-          | Take
-          i.arrow.right.icon
-        button.ui.huge.basic.button.right.floated#skipButton(onclick="location.href='/submod/learn/identity';")
-            | Skip
-
-
+    +navButtons('/intro2/identity', '/challenge2/identity', 'Back' , 'Take', true, '/submod/learn/identity')  
 
 
 block scripts

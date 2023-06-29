@@ -9,7 +9,7 @@ block content
           .limit(style="padding-bottom: 50px;")
             .ui.sixteen.wide.column(style="display: flex; flex-direction: column; justify-content: center; align-items: center;")
               .login-box(style="margin:auto !important;margin-top:15px !important;")
-                h2.ui.header(style="text-align: left !important; margin:5px 0px; font-family:'Noto Sans', sans-serif;") Welcome back!
+                h2.ui.header(style="text-align: left !important; margin:5px 0px; sans-serif;") Welcome back!
                 p.instruction Log-in to your account
                 form.ui.form(action="/studentLogin", method='POST')
                   input(type='hidden', name='_csrf', value=csrfToken)
@@ -21,9 +21,9 @@ block content
 
                   div.checkbox-container(style="display: flex; justify-content: space-between;")
                     a.forgot(href='forgotPassword', style="margin: 0px 0 10px 0; text-align: right;") Forgot Password?
-                  button.ui.big.blue.button(type='submit', style="font-family:'Noto Sans', sans-serif; height:46.28px; border-radius: 17px; width: 100%; margin: 0px 0 0 0;") Log In
+                  button.ui.big.blue.button(type='submit', style="height:46.28px; border-radius: 17px; width: 100%; margin: 0px 0 0 0;") Log In
                   img(style='margin-top:5px; z-index: 0;' src="/profile_pictures/or_divider.png")
-                  a.ui.button.big.white(href="/getGuest", style="font-family:'Noto Sans', sans-serif; height:46.28px; border-radius: 17px; margin: 0px 0 0 0; padding:14.1429px !important; display: block; width: 100%; background-color: #fff; border: 1px solid #2884d4; text-align: center;")  
+                  a.ui.button.big.white(href="/getGuest", style="height:46.28px; border-radius: 17px; margin: 0px 0 0 0; padding:14.1429px !important; display: block; width: 100%; background-color: #fff; border: 1px solid #2884d4; text-align: center;")  
                         span
                           img(src='/profile_pictures/avatar-icon.svg', alt="Google logo", style="height:20px; vertical-align: middle; margin-right: 10px;")
                           span( style="vertical-align: middle;") Sign In As Guest
@@ -33,13 +33,13 @@ block content
 
                   form
                     input(type='hidden', name='_csrf', value=csrfToken)              
-                    a.ui.button.big.white(href='/auth', style="font-family:'Noto Sans', sans-serif; height:46.28px; border-radius: 17px; padding:14.1429px !important; display: block; width: 100%; background-color: #fff; border: 1px solid #2884d4; text-align: center; padding: 10px;")   
+                    a.ui.button.big.white(href='/auth', style="height:46.28px; border-radius: 17px; padding:14.1429px !important; display: block; width: 100%; background-color: #fff; border: 1px solid #2884d4; text-align: center; padding: 10px;")   
                       span
                         img(src='/profile_pictures/g-logo.png', alt="Google logo", style="height:20px; vertical-align: middle; margin-right: 10px;")
                         span( style="vertical-align: middle;") Sign In With Google
                   img(style='margin-top:5px; z-index: 0;' src="/profile_pictures/or_divider.png")
 
-                  a.ui.button.big.green(href="/createStudent", style="font-family:'Noto Sans', sans-serif; height:46.28px; border-radius: 17px; padding:14.1429px !important; display: block; width: 100%; border: 1px solid #2884d4; text-align: center; padding: 10px; ")  Sign Up
+                  a.ui.button.big.green(href="/createStudent", style="height:46.28px; border-radius: 17px; padding:14.1429px !important; display: block; width: 100%; border: 1px solid #2884d4; text-align: center; padding: 10px; ")  Sign Up
 
 
 
@@ -95,7 +95,6 @@ block scripts
   
   link(rel='stylesheet', href='/css/style.css')
   script(src='/module_js/base_end.js')
-  script(src='https://kit.fontawesome.com/585fda3aab.js' crossorigin='anonymous')
   script.
     function openFeedback(){
       window.open(href='https://cornell.qualtrics.com/jfe/form/SV_9tMszwlpe1TIIxT');

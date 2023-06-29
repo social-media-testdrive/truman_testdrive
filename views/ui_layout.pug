@@ -1,4 +1,18 @@
 -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+
+mixin navButtons(backLink, nextLink, backText='Back', nextText='Next', skipBtn=false, skipLink)
+  .ui.container#nav-container
+    .div#nav-menu
+      button.ui.huge.basic.button.left.floated#backButton(onclick!="location.href='" + backLink + "';")
+        i.arrow.left.icon
+        | #{backText}
+      button.ui.huge.blue.button.right.floated#nextButton(onclick!="location.href='" + nextLink + "';")
+        | #{nextText}
+        i.arrow.right.icon
+      if skipBtn
+        button.ui.huge.basic.button.right.floated#skipButton(onclick!="location.href='" + skipLink + "';")
+          | Skip
+
 doctype html
 html
   head

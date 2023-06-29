@@ -68,15 +68,7 @@ block content
 
           #text
             p You've completed the Challenge and earned your very first Badge!  But that's not all—there are still five more badges for you to earn. Keep up the great work as we head into Learn!      
-    .ui.container#nav-container
-      .div#nav-menu
-        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/challenge2/identity';") 
-          i.arrow.left.icon 
-          | Back
-        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/submod/learn/identity';")
-          | Learn
-          i.arrow.right.icon
-
+    +navButtons('/challenge2/identity', '/submod/learn/identity', 'Back', 'Learn')  
           <iframe id="audio-frame" allow="autoplay"  src="../../sound/progress.mp3" frameborder="0" style="display:none"></iframe>
           //- <iframe id="audio-frame2" src="../../sound/unlock.wav" frameborder="0" style="display:none"></iframe>
 

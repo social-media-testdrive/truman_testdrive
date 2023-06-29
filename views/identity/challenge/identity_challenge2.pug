@@ -186,15 +186,7 @@ block content
             div.ui.checkbox
               input(type='checkbox', name='q2-option-5', value='1')
               label Loss of medical care
-
-    .ui.container#nav-container
-      .div#nav-menu          
-        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/challenge/identity';") 
-          i.arrow.left.icon 
-          | Back
-        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/challenge3/identity';")
-          | Submit
-          i.arrow.right.icon
+    +navButtons('/challenge/identity', '/challenge3/identity', 'Back', 'Submit')  
 
   //- .ui.text.container.addBottomMargin
   //-   br    
