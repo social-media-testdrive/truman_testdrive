@@ -358,7 +358,7 @@ function setHttpResponseHeaders(req, res, next) {
         'Content-Security-Policy': "script-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
             "default-src 'self' https://www.google-analytics.com http://3.19.31.168:8080/webhooks/rest/webhook;" +
             "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
-            "img-src 'self' https://dhpd030vnpk29.cloudfront.net https://www.googletagmanager.com https://www.google-analytics.com;" +
+            "img-src 'self' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
             "media-src https://dhpd030vnpk29.cloudfront.net;" +
             "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:"
     });
@@ -1193,7 +1193,7 @@ app.get('/tutorial/:modId', passportConfig.isAuthenticated, setHttpResponseHeade
             'Content-Security-Policy': "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
                 "default-src 'self'  https://www.google-analytics.com;" +
                 "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
-                "img-src 'self' https://dhpd030vnpk29.cloudfront.net  https://www.googletagmanager.com https://www.google-analytics.com;" +
+                "img-src 'self' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
                 "media-src https://dhpd030vnpk29.cloudfront.net;" +
                 "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:"
         });
@@ -1210,7 +1210,7 @@ app.get('/Saeed_Ahmed/:modId', passportConfig.isAuthenticated, setHttpResponseHe
             'Content-Security-Policy': "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
                 "default-src 'self' https://www.google-analytics.com;" +
                 "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
-                "img-src 'self' https://dhpd030vnpk29.cloudfront.net https://www.googletagmanager.com https://www.google-analytics.com;" +
+                "img-src 'self' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
                 "media-src https://dhpd030vnpk29.cloudfront.net;" +
                 "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:"
         });
@@ -1246,7 +1246,7 @@ app.get('/tut_guide/:modId', passportConfig.isAuthenticated, setHttpResponseHead
             'Content-Security-Policy': "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/  https://www.googletagmanager.com https://www.google-analytics.com;" +
                 "default-src 'self' https://www.google-analytics.com;" +
                 "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
-                "img-src 'self' https://dhpd030vnpk29.cloudfront.net  https://www.googletagmanager.com https://www.google-analytics.com;" +
+                "img-src 'self' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
                 "media-src https://dhpd030vnpk29.cloudfront.net;" +
                 "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:"
         });

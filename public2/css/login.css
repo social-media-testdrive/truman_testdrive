@@ -85,3 +85,22 @@ hr {
   margin-top: -20px;
   margin-bottom: 30px;
 }
+
+
+
+
+
+
+.slide-holder{
+  /* height:300px; */
+  background:gray;
+  border:1px dashed green;
+  color:#fff;
+  /* text-align:center !important;
+  margin: 0 auto !important; */
+}
+
+.slide-holder img {
+  position: relative;
+  width: 80%;
+}

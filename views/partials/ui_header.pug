@@ -10,11 +10,15 @@ header.ui.borderless.menu.tablet-and-computer
                 a.item(href='/account').dart-blue
                     | Profile
                 a.item(href='/logout').dart-gray
-                    | Logout
+                    | Log out
         else 
             .right.menu
                 a.item(href='/studentLogin').dart-blue
-                    | Login
+                    | Courses
+                a.item(href='/studentLogin').dart-blue
+                    | Log in
+                a.item(href='/createStudent').dart-blue
+                    | Sign up
 header.mobile-only(style="z-index: auto !important;")
   .ui.fluid.top.two.item.menu
     a.item(href='/login')
@@ -31,10 +35,10 @@ header.mobile-only(style="z-index: auto !important;")
                     .menu
                         a.item(href='/') Home
                         a.item(href='/account') Profile
-                        a.item(href='logout') Logout
+                        a.item(href='logout') Log out
             else 
                 a.item(href='/studentLogin').dart-blue
-                    | Login
+                    | Log in
 
 //- .ui.top.small.borderless.menu(style="height: 4rem")
 //-   .ui.grid.container

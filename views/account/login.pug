@@ -4,35 +4,154 @@ block content
   .ui.grid
     .row#blue-upper
       .ui.container
-        h1.ui.header.center.aligned Welcome to the Deception Awareness and Resilience Training (DART) learning platform
-        .limit(style="padding-bottom: 200px;")
-          p#about A platform that aims to help senior people navigate the online world. It offers easy-to-understand resources and training to help you spot false information and avoid scams. 
-    .row#video-overlay(style="background: transparent;")
-      .inner-video
-        iframe#intro-video(type='text/html' width='600px' height='340px' src='videos/dart_intro.mp4' frameborder='0')
+        h1.ui.header.center.aligned Learn to spot online deception and stay scam-free
+        .limit(style="padding-bottom: 18px;")
+          .home-img-container(style="text-align: center;")
+            img(src="/images/dart-home.png", alt="Illustration of older adults safely navigating the online world" style="width: 600px; height: 340px;")
+          p#aim(style="margin-top: 15px; width: 108%;") The Deception Awareness and Resilience Training (DART) learning platform aims to help older adults navigate the online world. It offers easy-to-understand resources and training to help you spot false information and avoid scams. 
+
+          //- p#about A platform that aims to help senior people navigate the online world. It offers easy-to-understand resources and training to help you spot false information and avoid scams. 
+          .user-actions(style="margin-top: -40px; justify-content: center; display: flex; flex-direction: row; ")
+            button.ui.blue.huge.button(style="margin-right: 20px;")
+              | Log in
+            button.ui.blue.huge.button(style="margin-right: 20px;")
+              | Sign up 
+            //- button.ui.inverted.huge.button
+            //-   | View Video
+
+    //- .row#video-overlay(style="background: transparent;")
+    //-   .inner-video
+    //-     iframe#intro-video(type='text/html' width='600px' height='340px' src='videos/dart_intro.mp4' frameborder='0')
     .row#white-lower
       .ui.container
-        h2.ui.header.center.aligned#our-mission Our Mission 
+        //- h2.ui.header.center.aligned#our-mission Our Mission 
         .limit(style="padding-bottom: 40px;")
-          p#aim The primary aim of the platform is to empower older adults with increased resilience against the detrimental effects of scams, ensuring that you can effectively safeguard yourself and others from falling victim to deception.
-          .ui.raised.segment
-            .ui.fluid.container(style="height: 200px;")
-              .ui.image.banner
-                img(src="/images/identity-theft-banner.jpg", alt="Identity Theft Banner Image")
-            hr
-            #raised-content
-              h3.ui.header.large#mod-title Identity Theft
-              p Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
-              button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/getGuest';")
-                | Learn Now
-                i.arrow.right.icon
+          //- p#about A platform that aims to help senior people navigate the online world. It offers easy-to-understand resources and training to help you spot false information and avoid scams. 
+          //- .user-actions(style="justify-content: center; display: flex; flex-direction: row; ")
+          //-   button.ui.huge.blue.button(style="margin-right: 20px;")
+          //-     | Log in
+          //-   button.ui.huge.blue.button(style="margin-right: 20px;")
+          //-     | Sign up 
+            //- button.ui.blue.button
+            //-   | Continue As Guest
+
+          //- Courses
+          h2.ui.header#in-progress Explore Courses:
+          a.ui#theft-link(href=`/intro/identity` alt="Begin identity theft module")
+            .ui.raised.segment
+              .ui.fluid.container(style="height: 200px;")
+                .ui.image.banner
+                  img(src="/images/identity-theft-banner.jpg", alt="Identity Theft Banner Image")
+
+                  //- #theft-progress.ui.bottom.attatched.small.progress(style='margin:0;padding:0;' data-percent='33')
+                  //-   .bar(style='border-radius: 0 !important;')
+                  //-     .progress
+              hr
+              #raised-content(style="padding-top: 20px;")
+                h3.ui.header.large.home-mod-title
+                  | Identity Theft
+                p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+                button.ui.huge.blue.button.right.floated#nextButton
+                  | Learn Now
+                  i.arrow.right.icon
+          br
+          br
+          br
+          a.ui#theft-link(href=`/intro/identity` alt="Begin identity theft module")
+            .ui.raised.segment
+              .ui.fluid.container(style="height: 200px;")
+                .ui.image.banner
+                  img(src="/images/identity-theft-banner.jpg", alt="Identity Theft Banner Image")
+
+                  //- #theft-progress.ui.bottom.attatched.small.progress(style='margin:0;padding:0;' data-percent='33')
+                  //-   .bar(style='border-radius: 0 !important;')
+                  //-     .progress
+              hr
+              #raised-content(style="padding-top: 20px;")
+                h3.ui.header.large.home-mod-title
+                  | Romance Scams
+                p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+                button.ui.huge.blue.button.right.floated#nextButton
+                  | Learn Now
+                  i.arrow.right.icon
+          br
+          br
+          br
+          a.ui#theft-link(href=`/intro/identity` alt="Begin identity theft module")
+            .ui.raised.segment
+              .ui.fluid.container(style="height: 200px;")
+                .ui.image.banner
+                  img(src="/images/identity-theft-banner.jpg", alt="Identity Theft Banner Image")
+
+                  //- #theft-progress.ui.bottom.attatched.small.progress(style='margin:0;padding:0;' data-percent='33')
+                  //-   .bar(style='border-radius: 0 !important;')
+                  //-     .progress
+              hr
+              #raised-content(style="padding-top: 20px;")
+                h3.ui.header.large.home-mod-title
+                  | Phishing
+                p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+                button.ui.huge.blue.button.right.floated#nextButton
+                  | Learn Now
+                  i.arrow.right.icon
+
+          .ui.segment
+            p App Demo
+            img(src="/images/phone-bg.png", alt="Phone screen" style="width: 300px; height: 512px;position: absolute;top:51px;left:1px;z-index:100;")
+            .ui.container(style="background: red; display: flex;justify-content: left;")
+              .containerz(style="width: 350px !important; height: 530px;")
+                .single-item
+                  .slide-holder
+                      //- p 1 
+                      img(src="/images/demo.png", alt="DART app's logo screen;")
+                  .slide-holder 
+                      //- p 2 
+                      img(src="/images/demo2.png", alt="Puzzle match minigame")
+                  .slide-holder 
+                      //- p 3 
+                      img(src="/images/demo3.png", alt="Cryptogram complete the sentence minigame")
+                  .slide-holder 
+                      //- p 4
+                      img(src="/images/demo4.png", alt="Dot connect wordfinder minigame")
+
+
+          //- p#aim The Deception Awareness and Resilience Training (DART) learning platform aims to help senior people navigate the online world. It offers easy-to-understand resources and training to help you spot false information and avoid scams. 
+          //- //- p#aim The primary aim of the platform is to empower older adults with increased resilience against the detrimental effects of scams, ensuring that you can effectively safeguard yourself and others from falling victim to deception.
+          //- .ui.raised.segment
+          //-   .ui.fluid.container(style="height: 200px;")
+          //-     .ui.image.banner
+          //-       img(src="/images/identity-theft-banner.jpg", alt="Identity Theft Banner Image")
+          //-   hr
+          //-   #raised-content
+          //-     h3.ui.header.large#mod-title Identity Theft
+          //-     p Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+          //-     button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/getGuest';")
+          //-       | Learn Now
+          //-       i.arrow.right.icon
+
           p(style="padding-top:30px") To stay up-to-date on the latest scam cases and keep track of what you're learning, click the button below to create an account.
           .ui.basic.segment(style="text-align: center; margin-top: -15px;")
             button.ui.huge.blue.button#sign-up-button(onclick="location.href='/createStudent';")
               | Sign Up Now
               i.arrow.right.icon
 
+block scripts
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js')
+  script.
+      $(document).ready(function(){
+          $('.single-item').slick({
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              dots: false,
+              arrows: false,
+              infinite: true,
+              autoplay: true,
+              autoplaySpeed: 3000 // milliseconds
+          });
+      });
 
-                    
+                      
 block styles
+  link(rel='stylesheet', href='/css/mods.css')
+  link(rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css')
   link(rel='stylesheet', href='/css/login.css')

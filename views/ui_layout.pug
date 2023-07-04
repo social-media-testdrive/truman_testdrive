@@ -3,14 +3,14 @@
 mixin navButtons(backLink, nextLink, backText='Back', nextText='Next', skipBtn=false, skipLink)
   .ui.container#nav-container
     .div#nav-menu
-      button.ui.huge.basic.button.left.floated#backButton(onclick!="location.href='" + backLink + "';")
+      button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='" + backLink + "';")
         i.arrow.left.icon
         | #{backText}
-      button.ui.huge.blue.button.right.floated#nextButton(onclick!="location.href='" + nextLink + "';")
+      button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='" + nextLink + "';")
         | #{nextText}
         i.arrow.right.icon
       if skipBtn
-        button.ui.huge.basic.button.right.floated#skipButton(onclick!="location.href='" + skipLink + "';")
+        button.ui.huge.basic.button.right.floated#skipButton(onclick="location.href='" + skipLink + "';")
           | Skip
 
 doctype html
@@ -81,33 +81,33 @@ html
         include partials/ui_footer
     
     if process.env.instanceType == 'test'
-      script(src=cdn+'/js/lib/jquery-3.1.1.min.js')
-      script(src=cdn+'/js/lib/humanized_time_span.js')
-      script(src=cdn+'/js/lib/lazyload.transpiled.min.js')
-      script(src='https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js', integrity="sha256-ZUdSt2scSiBqI3Tso+Al3lcqkBvgRShVrUc1pvvGGVE=" crossorigin="anonymous")
-      script(src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js', integrity="sha256-v8vuH0gf888S01qYrvK2hDq/RfE2au7WOLbqlPzDwOQ=" crossorigin="anonymous")
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js')
+      //- script(src=cdn+'/js/lib/humanized_time_span.js')
+      //- script(src=cdn+'/js/lib/lazyload.transpiled.min.js')
+      //- script(src='https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js', integrity="sha256-ZUdSt2scSiBqI3Tso+Al3lcqkBvgRShVrUc1pvvGGVE=" crossorigin="anonymous")
+      //- script(src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js', integrity="sha256-v8vuH0gf888S01qYrvK2hDq/RfE2au7WOLbqlPzDwOQ=" crossorigin="anonymous")
       script(src=cdn+'/js/lib/intro.min.js')
       //- script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js', integrity='sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=', crossorigin='anonymous')
       script(src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.js")
       - var t = '/main.js?t=' + (new Date()).getTime().toString();
       script(src=t)
     else if process.env.NODE_ENV == 'production'
-      script(src=cdn+'/js/lib/jquery-3.1.1.min.js')
-      script(src=cdn+'/js/lib/humanized_time_span.js')
-      script(src=cdn+'/js/lib/lazyload.transpiled.min.js')
-      script(src='https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js', integrity="sha256-ZUdSt2scSiBqI3Tso+Al3lcqkBvgRShVrUc1pvvGGVE=" crossorigin="anonymous")
-      script(src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js', integrity="sha256-v8vuH0gf888S01qYrvK2hDq/RfE2au7WOLbqlPzDwOQ=" crossorigin="anonymous")
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js')
+      //- script(src=cdn+'/js/lib/humanized_time_span.js')
+      //- script(src=cdn+'/js/lib/lazyload.transpiled.min.js')
+      //- script(src='https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js', integrity="sha256-ZUdSt2scSiBqI3Tso+Al3lcqkBvgRShVrUc1pvvGGVE=" crossorigin="anonymous")
+      //- script(src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js', integrity="sha256-v8vuH0gf888S01qYrvK2hDq/RfE2au7WOLbqlPzDwOQ=" crossorigin="anonymous")
       script(src=cdn+'/js/lib/intro.min.js')
       //- script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js', integrity='sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=', crossorigin='anonymous')
       script(src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.js")
       script(src=cdn+'/js/main23.js?v=1')
       //- script(src='/module_js/js/main.js')
     else
-      script(src=cdn+'/js/lib/jquery-3.1.1.min.js')
-      script(src=cdn+'/js/lib/humanized_time_span.js')
-      script(src=cdn+'/js/lib/lazyload.transpiled.min.js')
-      script(src='https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js', integrity="sha256-ZUdSt2scSiBqI3Tso+Al3lcqkBvgRShVrUc1pvvGGVE=", crossorigin="anonymous")
-      script(src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.js', integrity="sha256-uMIfMa67pYMwbPxTsdF1v1dvkFLfZ9DPZpjGQfi+6DI=", crossorigin="anonymous")
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js')
+      //- script(src=cdn+'/js/lib/humanized_time_span.js')
+      //- script(src=cdn+'/js/lib/lazyload.transpiled.min.js')
+      //- script(src='https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js', integrity="sha256-ZUdSt2scSiBqI3Tso+Al3lcqkBvgRShVrUc1pvvGGVE=" crossorigin="anonymous")
+      //- script(src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js', integrity="sha256-v8vuH0gf888S01qYrvK2hDq/RfE2au7WOLbqlPzDwOQ=" crossorigin="anonymous")
       script(src=cdn+'/js/lib/intro.min.js')
       //- script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.js', integrity="sha256-qs5p0BFSqSvrstBxPvex+zdyrzcyGdHNeNmAirO2zc0=", crossorigin="anonymous")
       script(src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.js")
