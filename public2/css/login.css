@@ -10,7 +10,7 @@
   background-color: transparent;
   color: black;
   z-index: 0;
-  padding-top: 200px;
+  padding-top: 75px;
 }
 
 h1.ui.header {
@@ -104,4 +104,104 @@ hr {
   position: relative;
   width: 100%;
   height: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Referenced Source: https://codepen.io/dannyarty/pen/JjKrPOL */
+
+.wrap .slider {
+position: relative;
+z-index: 200;
+padding: 0 0px;
+margin: 5rem auto;
+max-width: 1200px;
+width: 100%;
+}
+
+.wrap .slick-arrow {
+position: absolute;
+top: 50%;
+width: 40px;
+height: 50px;
+line-height: 50px;
+margin-top: -25px;
+border: none;
+background: transparent;
+color: #235799;
+font-family: monospace;
+font-size: 5rem;
+z-index: 300;
+outline: none;
+}
+
+.wrap .slick-prev {
+left: -50px;
+text-align: left;
+}
+
+.wrap .slick-next {
+right: -50px;
+text-align: right;
+}
+
+.wrap .item.slick-slide {
+  /* width of the slides */
+width: 700px;
+height: 400px !important;
+transition: transform .5s ease;
+position: relative;
+}
+
+.wrap .slick-slide:after {
+content:'';
+position: absolute;
+z-index: 2;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: rgba(0,0,0,.5);
+transition: transform .4s;
+}
+
+.wrap .item.slick-slide {
+transform: scale(0.7)  translate(640px);
+}
+
+.wrap .item.slick-slide.slick-center + .slick-slide {
+transform: scale(0.8) translate(-250px);
+z-index: 10;
+}
+
+.wrap .item.slick-slide.slick-center + .slick-slide + .item.slick-slide {
+transform: scale(0.7)  translate(-640px);
+z-index: 5;
+}
+
+.wrap .item.slick-slide.slick-active {
+transform: scale(0.8) translate(250px);
+}
+
+.wrap .item.slick-slide.slick-center {
+/* margin: 0 -10%; */
+transform: scale(1);
+z-index: 30;
+
+}
+
+.wrap .slick-center:after {
+opacity: 0;
+margin:10px;
+padding:10px;
 }
