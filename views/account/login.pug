@@ -41,7 +41,7 @@ block content
               img(src="/images/simulation3.png" alt="Image description" style="width: 90%")
             .eight.wide.column
               //- h2(style="font-family: 'Armata', sans-serif; font-weight: 900;") Prepare yourself for the online world
-              h2(style="font-family: 'Armata', sans-serif; font-weight: 900;") Engaging Hands-On Learning
+              h2(style="font-family: 'Armata', sans-serif; font-weight: 900;") Engaging hands-on learning
               p DART simulates realistic digital dilemmas and scenarios that older adults may encounter while navigating online platforms and services.
               p Each module teaches essential digital citizenship concepts, covering topics such as privacy, online identities, common scams, and more.
 
@@ -79,15 +79,70 @@ block content
           //- Referenced Source: https://codepen.io/dannyarty/pen/JjKrPOL 
           .wrap
               .slider
-                  .item
-                      img(src='/images/identity-card.png' alt='')
-                  .item
-                      img(src='/images/identity-card.png' alt='')
-                  .item
-                      img(src='/images/identity-card.png' alt='')
-                  .item
-                      img(src='/images/identity-card.png' alt='')
-
+                  .item(style="position: relative; ")
+                    .border(style="border: #235799 4px solid; ")
+                      .ui.in-slider(style="position: relative;")
+                        img(src='/images/identity-theft-banner.jpg' alt='' style="position: relative")
+                        hr
+                        .white-container(style="margin: 0; padding: 0; width: 100%; background: white; margin-top: 150px;")
+                          #raised-content(style="padding-top: 20px;")
+                            h3.ui.header.large.home-mod-title(style="margin-top: 10px;")
+                              | Identity Theft
+                            p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+                        .white(style="background: white; width: 100%; margin: 0; padding: 0; min-height: 77px;")
+                          button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/getGuest';" style="z-index: 10000;position: relative; margin-right: 20px;" )
+                            | Learn Now
+                            i.arrow.right.icon
+                          br
+                  .item(style="position: relative; ")
+                    .border(style="border: #235799 4px solid; ")
+                      .ui.in-slider(style="position: relative;")
+                        img(src='/images/romance-scam.jpg' alt='' style="position: relative")
+                        hr
+                        .white-container(style="margin: 0; padding: 0; width: 100%; background: white; margin-top: 150px;")
+                          #raised-content(style="padding-top: 20px;")
+                            h3.ui.header.large.home-mod-title(style="margin-top: 10px;")
+                              | Romance Scams
+                            p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+                        .white(style="background: white; width: 100%; margin: 0; padding: 0; min-height: 77px;")
+                          button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/getGuest';" style="z-index: 10000;position: relative; margin-right: 20px;" )
+                            | Learn Now
+                            i.arrow.right.icon
+                          br
+                  .item(style="position: relative; ")
+                    .border(style="border: #235799 4px solid; ")
+                      .ui.in-slider(style="position: relative;")
+                        img(src='/images/phishing-scam.jpg' alt='' style="position: relative")
+                        hr
+                        .white-container(style="margin: 0; padding: 0; width: 100%; background: white; margin-top: 150px;")
+                          #raised-content(style="padding-top: 20px;")
+                            h3.ui.header.large.home-mod-title(style="margin-top: 10px;")
+                              | Phishing
+                            p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+                        .white(style="background: white; width: 100%; margin: 0; padding: 0; min-height: 77px;")
+                          button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/getGuest';" style="z-index: 10000;position: relative; margin-right: 20px;" )
+                            | Learn Now
+                            i.arrow.right.icon
+                          br
+                  .item(style="position: relative; ")
+                    .border(style="border: #235799 4px solid; ")
+                      .ui.in-slider(style="position: relative;")
+                        img(src='/images/sales-scam.jpg' alt='' style="position: relative")
+                        hr
+                        .white-container(style="margin: 0; padding: 0; width: 100%; background: white; margin-top: 150px;")
+                          #raised-content(style="padding-top: 20px;")
+                            h3.ui.header.large.home-mod-title(style="margin-top: 10px;")
+                              | Sales Scam
+                            p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+                        .white(style="background: white; width: 100%; margin: 0; padding: 0; min-height: 77px;")
+                          button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/getGuest';" style="z-index: 10000;position: relative; margin-right: 20px;" )
+                            | Learn Now
+                            i.arrow.right.icon
+                          br
+        .ui.basic.segment(style="text-align: center; margin-top: -15px;")
+          button.ui.huge.blue.button#sign-up-button(onclick="location.href='/createStudent';")
+            | Learn Now
+            i.arrow.right.icon
 
 
         //- a.ui#theft-link(href=`/intro/identity` alt="Begin identity theft module")
@@ -233,29 +288,30 @@ block scripts
 
           /* Referenced Source: https://codepen.io/dannyarty/pen/JjKrPOL */
           $('.slider').slick({
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          arrows: true,
-          dots: false,
-          centerMode: true,
-          variableWidth: true,
-          infinite: true,
-          focusOnSelect: true,
-          cssEase: 'linear',
-          touchMove: true,
-          prevArrow:'<button class="slick-prev"> < </button>',
-          nextArrow:'<button class="slick-next"> > </button>',
-          
-          //         responsive: [                        
-          //             {
-          //               breakpoint: 576,
-          //               settings: {
-          //                 centerMode: false,
-          //                 variableWidth: false,
-          //               }
-          //             },
-          //         ]
-          });
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            zIndex: 1,
+            accessibility: true,
+            arrows: true,
+            dots: false,
+            centerMode: true,
+            variableWidth: true,
+            infinite: true,
+            focusOnSelect: true,
+            cssEase: 'linear',
+            touchMove: true,
+            prevArrow:'<button class="slick-prev"> < </button>',
+            nextArrow:'<button class="slick-next"> > </button>',
+            responsive: [                        
+                {
+                  breakpoint: 576,
+                  settings: {
+                    centerMode: false,
+                    variableWidth: false,
+                  }
+                },
+            ]
+            });
 
 
           var imgs = $('.slider img');
@@ -275,6 +331,5 @@ block scripts
 
                       
 block styles
-  link(rel='stylesheet', href='/css/mods.css')
   link(rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css')
   link(rel='stylesheet', href='/css/login.css')

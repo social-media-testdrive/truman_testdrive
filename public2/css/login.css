@@ -48,6 +48,12 @@ p#aim {
   font-size: 2.25rem;
 }
 
+#in-progress {
+  font-size: 2.75rem;
+  font-weight: 600;
+  font-family: 'Armata', sans-serif;
+}
+
 .ui.raised.segment {
   position: relative !important;
   overflow: hidden !important;
@@ -56,36 +62,28 @@ p#aim {
 #raised-content {
   margin-left: 15px;
   margin-right: 15px;
+  overflow:  hidden !important;
 }
 
-.ui.raised.segment .ui.image.banner {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 200px !important;
 
-}
-
-.ui.raised.segment .ui.image.banner img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-hr {
+.in-slider hr {
   border: none;
-  height: 15px;
+  height: 10px;
   background-color: #6BBCC7;
   margin: 0;
-  width: 125%;
-  margin-left: -50px;
-  margin-top: -20px;
-  margin-bottom: 30px;
+  width: 100%;
+  position: absolute;
+  /* margin-left: -50px;
+  margin-top: -20px; */
+  /* margin-bottom: 30px; */
 }
 
+
+.home-mod-title {
+  font-size: 2rem !important;
+  font-weight: 600 !important;
+  font-family: 'Armata', sans-serif !important;
+}
 
 
 
@@ -121,87 +119,106 @@ hr {
 /* Referenced Source: https://codepen.io/dannyarty/pen/JjKrPOL */
 
 .wrap .slider {
-position: relative;
-z-index: 200;
-padding: 0 0px;
-margin: 5rem auto;
-max-width: 1200px;
-width: 100%;
+  position: relative;
+  z-index: 200;
+  padding: 0 0px;
+  margin: 5rem auto;
+  max-width: 1200px;
+  width: 100%;
 }
 
 .wrap .slick-arrow {
-position: absolute;
-top: 50%;
-width: 40px;
-height: 50px;
-line-height: 50px;
-margin-top: -25px;
-border: none;
-background: transparent;
-color: #235799;
-font-family: monospace;
-font-size: 5rem;
-z-index: 300;
-outline: none;
+  position: absolute;
+  top: 50%;
+  width: 40px;
+  height: 50px;
+  line-height: 50px;
+  margin-top: -25px;
+  border: none;
+  background: transparent;
+  color: #235799;
+  font-family: monospace;
+  font-size: 5rem;
+  z-index: 300;
+  outline: none;
 }
 
 .wrap .slick-prev {
-left: -50px;
-text-align: left;
+  left: -50px;
+  text-align: left;
 }
 
 .wrap .slick-next {
-right: -50px;
-text-align: right;
+  right: -50px;
+  text-align: right;
 }
 
 .wrap .item.slick-slide {
   /* width of the slides */
-width: 700px;
-height: 400px !important;
-transition: transform .5s ease;
-position: relative;
+  width: 700px;
+  height: 425px !important;
+  transition: transform .5s ease;
+  position: relative;
+  /* border: #235799 4px solid; */
+  /* box-shadow: inset 0 0 0 4px #235799; */
+
 }
 
 .wrap .slick-slide:after {
-content:'';
-position: absolute;
-z-index: 2;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background: rgba(0,0,0,.5);
-transition: transform .4s;
+  content:'';
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.5);
+  transition: transform .4s;
 }
 
 .wrap .item.slick-slide {
-transform: scale(0.7)  translate(640px);
+  transform: scale(0.7)  translate(640px);
 }
 
 .wrap .item.slick-slide.slick-center + .slick-slide {
-transform: scale(0.8) translate(-250px);
-z-index: 10;
+  transform: scale(0.8) translate(-250px);
+  z-index: 10;
 }
 
 .wrap .item.slick-slide.slick-center + .slick-slide + .item.slick-slide {
-transform: scale(0.7)  translate(-640px);
-z-index: 5;
+  transform: scale(0.7)  translate(-640px);
+  z-index: 5;
 }
 
 .wrap .item.slick-slide.slick-active {
-transform: scale(0.8) translate(250px);
+  transform: scale(0.8) translate(250px);
 }
 
 .wrap .item.slick-slide.slick-center {
-/* margin: 0 -10%; */
-transform: scale(1);
-z-index: 30;
+  /* margin: 0 -10%; */
+  transform: scale(1);
+  z-index: 1050;
 
 }
 
 .wrap .slick-center:after {
-opacity: 0;
-margin:10px;
-padding:10px;
+  opacity: 0;
+  margin:10px;
+  padding:10px;
 }
+
+/* .wrap .slick-slide a{
+  display: block !important;
+  background-color: red;
+} */
+
+.wrap .item.slick-slide img {
+  object-fit: cover;
+  height: 150px;
+  width: 100%;
+}
+
+
+/* #slick-banner {
+  height: 150px !important;
+} */
