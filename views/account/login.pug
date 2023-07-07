@@ -76,6 +76,7 @@ block content
 
         .row(style="margin-top: 20vh;")
           h2.ui.header#in-progress Popular Courses:
+
           //- Referenced Source: https://codepen.io/dannyarty/pen/JjKrPOL 
           .wrap
               .slider
@@ -139,10 +140,7 @@ block content
                             | Learn Now
                             i.arrow.right.icon
                           br
-        .ui.basic.segment(style="text-align: center; margin-top: -15px;")
-          button.ui.huge.blue.button#sign-up-button(onclick="location.href='/createStudent';")
-            | Learn Now
-            i.arrow.right.icon
+          h2.ui.header#in-progress DART Play App
 
 
         //- a.ui#theft-link(href=`/intro/identity` alt="Begin identity theft module")
@@ -224,19 +222,16 @@ block content
         //-         | Learn Now
         //-         i.arrow.right.icon
 
+    //- .row(style="background: linear-gradient(to bottom, #2165AE, #091D32);color:white;")
 
-
-
-
-
-        .row(style="margin-top: 20vh;")
-          h2.ui.header#in-progress App Demo
-          .ui.segment
-            p App Demo
-            img(src="/images/phone-bg.png", alt="Phone screen" style="width: 250px;height:450px;position: absolute;top:43px;left:3px;z-index:100;pointer-events:none;")
-            .ui.container(style="background: red; display: flex;justify-content: left;")
+    .row(style="background: #6bbcc721;")
+      .ui.container(style="padding-top: 20px; padding-bottom: 20px;")
+        .ui.stackable.grid
+          .four.wide.column
+            img(src="/images/phone-bg.png", alt="Phone screen" style="width: 250px;height:450px;position: absolute;top:65px;left:3px;z-index:100;pointer-events:none;")
+            .ui.container(style="display: flex;justify-content: left;")
               .containerz
-                .single-item(style="width: 225px;")
+                .single-item(style="width: 225px;position: absolute;top:77px;")
                   .slide-holder
                       //- p 1 
                       img(src="/images/demo.png", alt="DART app's logo screen;")
@@ -249,6 +244,48 @@ block content
                   .slide-holder 
                       //- p 4
                       img(src="/images/demo4.png", alt="Dot connect wordfinder minigame")
+          .twelve.wide.column(style="margin: 0; padding: 0; display: flex; align-items: center;")
+            .text-container(style="display: block; margin-left: 50px;")
+              h2 Download Our Companion App: Deepcover
+              p Unleash your inner spy as you embark on thrilling missions to take down rogue agent Walter Vile and his cunning organization, VILE. Engage in captivating gameplay set across the globe, from the vibrant streets of New York to the enchanting landscapes of Paris and Tokyo.
+              p But here's the best part: DART Play is more than just a game. It's a gateway to mastering online security. Seamlessly linked with DART Learn, you'll reinforce your knowledge while having a blast. Unleash your skills, level up, and unlock exclusive rewards as you protect against online deception.
+              p Join the ranks of savvy spies and safeguard the digital world. Play. Learn. Protect. Available on Google Play and the Apple App Store, dive into DART Play today!
+
+              img(src='/images/app-store.png' alt='Download dart app in the appstore' style="position: relative; height: 50px;")
+
+
+
+        //- .row(style="margin-top: 20vh;")
+        //-   h2.ui.header#in-progress DART Play App
+        //-   .ui.raised.segment
+        //-     //- p App Demo
+        //-     img(src="/images/phone-bg.png", alt="Phone screen" style="width: 250px;height:450px;position: absolute;top:65px;left:3px;z-index:100;pointer-events:none;")
+        //-     .ui.container(style="display: flex;justify-content: left;")
+        //-       .containerz
+        //-         .single-item(style="width: 225px;")
+        //-           .slide-holder
+        //-               //- p 1 
+        //-               img(src="/images/demo.png", alt="DART app's logo screen;")
+        //-           .slide-holder 
+        //-               //- p 2 
+        //-               img(src="/images/demo2.png", alt="Puzzle match minigame")
+        //-           .slide-holder 
+        //-               //- p 3 
+        //-               img(src="/images/demo3.png", alt="Cryptogram complete the sentence minigame")
+        //-           .slide-holder 
+        //-               //- p 4
+        //-               img(src="/images/demo4.png", alt="Dot connect wordfinder minigame")
+        //-       .text-container(style="display: block; margin-left: 50px;")
+        //-         //- h2 Calling all experienced adventurers!
+        //-         h2 Download Our Companion App: Deepcover
+                
+        //-         p Unleash your inner spy as you embark on thrilling missions to take down rogue agent Walter Vile and his cunning organization, VILE. Engage in captivating gameplay set across the globe, from the vibrant streets of New York to the enchanting landscapes of Paris and Tokyo.
+                
+        //-         p But here's the best part: DART Play is more than just a game. It's a gateway to mastering online security. Seamlessly linked with DART Learn, you'll reinforce your knowledge while having a blast. Unleash your skills, level up, and unlock exclusive rewards as you protect against online deception.
+                
+        //-         p Join the ranks of savvy spies and safeguard the digital world. Play. Learn. Protect. Available on Google Play and the Apple App Store, dive into DART Play today!
+
+        //-         img(src='/images/app-store.png' alt='Download dart app in the appstore' style="position: relative; height: 50px;")
 
 
         //- p#aim The Deception Awareness and Resilience Training (DART) learning platform aims to help senior people navigate the online world. It offers easy-to-understand resources and training to help you spot false information and avoid scams. 
@@ -264,12 +301,15 @@ block content
         //-     button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/getGuest';")
         //-       | Learn Now
         //-       i.arrow.right.icon
+    .row
+      .ui.container
 
         p(style="padding-top:30px") To stay up-to-date on the latest scam cases and keep track of what you're learning, click the button below to create an account.
         .ui.basic.segment(style="text-align: center; margin-top: -15px;")
           button.ui.huge.blue.button#sign-up-button(onclick="location.href='/createStudent';")
             | Sign Up Now
             i.arrow.right.icon
+        br
 
 block scripts
   script(src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js')
