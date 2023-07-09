@@ -59,10 +59,12 @@ p#aim {
   overflow: hidden !important;
 }
 
-#raised-content {
+.raised-content {
+  font-size: 1.5rem;
   margin-left: 15px;
   margin-right: 15px;
   overflow:  hidden !important;
+  padding-top: 20px;
 }
 
 
@@ -86,7 +88,66 @@ p#aim {
 }
 
 
+.popular-course-title {
+  font-size: 2rem !important;
+  font-weight: 600 !important;
+  font-family: 'Armata', sans-serif !important;
+  margin-top: 10px !important;
+}
 
+.learn-now-container {
+  background: white; 
+  width: 100%; 
+  margin: 0; 
+  padding: 0; 
+  min-height: 77px; 
+  margin-top: -1px;
+}
+
+.round-learn-now {
+    z-index: 10000;
+    position: relative !important; 
+    margin-right: 20px !important;
+    border-radius: 30px !important;  
+    /* color: #495057 !important;
+    border: 1px solid #495057; */
+    background-color: #2165AE !important;
+    color: white !important;
+    padding-left: 30px;
+    padding-right: 30px;
+    transition: transform 0.3s ease !important;
+    font-family: 'Armata', sans-serif !important; 
+}
+
+.round-learn-now:hover {
+    transform: translateX(5px);
+    /* inset shadow instead of border used so that it doesn't doesn't affect the layout (push everything over 2px)*/
+    box-shadow: inset 0 0 0 2px #6BBCC7 !important;
+}
+
+.slider {
+  position: relative;
+}
+
+.border {
+  border: #235799 4px solid; 
+}
+
+.ui.in-slider {
+  position: relative;
+}
+
+.ui.in-slider img {
+  position: relative;
+}
+
+.slider-module-text-container {
+  margin: 0; 
+  padding: 0; 
+  width: 100%; 
+  background: white; 
+  margin-top: 150px;
+}
 
 
 .slide-holder{
@@ -156,7 +217,7 @@ p#aim {
 .wrap .item.slick-slide {
   /* width of the slides */
   width: 700px;
-  height: 425px !important;
+  height: 424px !important;
   transition: transform .5s ease;
   position: relative;
   /* border: #235799 4px solid; */
