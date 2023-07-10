@@ -12,7 +12,7 @@ block content
 
           //- p#about A platform that aims to help senior people navigate the online world. It offers easy-to-understand resources and training to help you spot false information and avoid scams. 
           .user-actions(style="margin-top: -50px; justify-content: center; display: flex; flex-direction: row; ")
-            button.ui.blue.huge.button
+            button.ui.blue.huge.button(onclick="location.href='/getGuest';" )
               | Learn Now
             //- button.ui.blue.huge.button(style="margin-right: 20px;")
             //-   | Sign up 
@@ -318,6 +318,7 @@ block scripts
   script(src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js')
   script.
       $(document).ready(function(){
+           //- for app demo slider
           $('.single-item').slick({
               slidesToShow: 1,
               slidesToScroll: 1,
@@ -328,7 +329,7 @@ block scripts
               autoplaySpeed: 3000 // milliseconds
           });
 
-
+          //- For popular courses slider
           /* Referenced Source: https://codepen.io/dannyarty/pen/JjKrPOL */
           $('.slider').slick({
             slidesToShow: 3,
@@ -355,47 +356,6 @@ block scripts
                 },
             ]
             });
-
-
-          var imgs = $('.slider img');
-          imgs.each(function(){
-          var item = $(this).closest('.item');
-          item.css({
-              'background-image': 'url(' + $(this).attr('src') + ')', 
-              'background-position': 'center',            
-              '-webkit-background-size': 'cover',
-              'background-size': 'cover', 
-          });
-          $(this).hide();
-          });
-
-
-          //-  $('.slider').on('init', function(event, slick, currentSlide) {
-          //-   var current = (currentSlide ? currentSlide : 0);
-          //-   if (current == 0) {
-          //-     $('.prev').click(function() {
-          //-       $('#slider').slick('slickGoTo', (slick.slideCount - 1));
-          //-     })
-          //-   }
-          //- }); 
-
-          //- $('.slider').on('afterChange', function(event, slick, currentSlide, nextSlide) {
-          //-   if ((slick.slideCount - 1) == currentSlide) {
-          //-     $('.next').click(function() {
-          //-       $('#slider').slick('slickGoTo', 0);
-          //-     })
-          //-   }
-          //- });
-
-          //- $('.slider').on('afterChange', function(event, slick, currentSlide, nextSlide){
-          //-   mainSlider = slick;
-          //-   if((slick.slideCount - 1) == currentSlide){
-          //-     setTimeout(function(){
-          //-       mainSlider.goTo(0);
-          //-     }, mainSlider.getOption('autoplaySpeed'));
-          //-   }
-          //- });
-
       });
 
                       

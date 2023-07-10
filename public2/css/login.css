@@ -146,7 +146,7 @@ p#aim {
   padding: 0; 
   width: 100%; 
   background: white; 
-  margin-top: 150px;
+  /* margin-top: 150px; */
 }
 
 
@@ -268,11 +268,6 @@ p#aim {
   padding:10px;
 }
 
-/* .wrap .slick-slide a{
-  display: block !important;
-  background-color: red;
-} */
-
 .wrap .item.slick-slide img {
   object-fit: cover;
   height: 150px;
@@ -280,6 +275,3 @@ p#aim {
 }
 
 
-/* #slick-banner {
-  height: 150px !important;
-} */
