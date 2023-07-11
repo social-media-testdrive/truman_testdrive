@@ -1,7 +1,7 @@
 #feature-container i.icon {
     /* background-color: red; */
     float: left;
-    padding-right: 6vw !important;
+    /* padding-right: 6vw !important; */
 }
 
 #feature-container .ui.row {
@@ -13,9 +13,39 @@
 #feature-container .feature { 
     /* background: blue;  */
     width: 70%;
-    margin-right: 6vw;
+    /* margin-right: 6vw; */
 }
 
 .wide-content {
     width: 87%;
+}
+
+.ui.row .icon-container {
+    position:absolute;
+    left:6.5%;
+}
+
+@media (max-width: 767px) {
+    .ui.row .icon-container {
+        left: 0;
+    }
+
+    #feature-container .feature { 
+        /* background: blue;  */
+        width: 80%;
+    }
+}
+
+
+@media (max-width: 400px) {
+    .ui.row .icon-container {
+        left: -8%;
+        top: 4%;
+        font-size: medium;
+    }
+
+    #feature-container .feature { 
+        /* background: green;  */
+        width: 95%;
+    }
 }

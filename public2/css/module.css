@@ -6,6 +6,7 @@
 #mod-title {
     display: inline-block;
     font-size: 2.25rem;
+    font-family: 'Inter', sans-serif; 
 }
 
 #learn-title {
@@ -241,7 +242,7 @@ u {
 
 .ui.huge.label.lockContainer.unlocked {
     text-align: center;
-    background: #2165AE;
+    background: #6BBCC7;
     border: 3px solid #6BBCC7; 
     border-radius: 10px; 
     padding: 40px 80px;

@@ -3,40 +3,331 @@ extends ../ui_layout
 block content
   .ui.grid
     .row#blue-upper
-      .sixteen.wide.column
-        .ui.container
-          h1.ui.header.center.aligned Welcome to the Deception Awareness and Resilience Training (DART) learning platform
-          .limit(style="padding-bottom: 200px;")
-            p#about A platform that aims to help senior people navigate the online world. It offers easy-to-understand resources and training to help you spot false information and avoid scams. 
-    .row#video-overlay(style="background: transparent;")
-      .inner-video
-        iframe#intro-video(type='text/html' width='600px' height='340px' src='videos/dart_intro.mp4' frameborder='0')
+      .ui.container
+        h1.ui.header.center.aligned Learn to spot online deception and stay scam-free
+        .limit(style="padding-bottom: 10px;")
+          .home-img-container(style="text-align: center;")
+            img(src="/images/dart-home.png", alt="Illustration of older adults safely navigating the online world" style="width: 70%;")
+          p#aim(style="margin-top: 15px; width: 108%;") The Deception Awareness and Resilience Training (DART) learning platform offers easy-to-understand resources and training to help you spot false information and avoid scams. 
+
+          //- p#about A platform that aims to help senior people navigate the online world. It offers easy-to-understand resources and training to help you spot false information and avoid scams. 
+          .user-actions(style="margin-top: -50px; justify-content: center; display: flex; flex-direction: row; ")
+            button.ui.blue.huge.button(onclick="location.href='/getGuest';" )
+              | Learn Now
+            //- button.ui.blue.huge.button(style="margin-right: 20px;")
+            //-   | Sign up 
+            //- button.ui.inverted.huge.button
+            //-   | View Video
+
+    //- .row#video-overlay(style="background: transparent;")
+    //-   .inner-video
+    //-     iframe#intro-video(type='text/html' width='600px' height='340px' src='videos/dart_intro.mp4' frameborder='0')
     .row#white-lower
-      .sixteen.wide.column
-        .ui.container
-          h2.ui.header.center.aligned Our Mission 
-          .limit(style="padding-bottom: 40px;")
-            p#aim The primary aim of the platform is to empower older adults with increased resilience against the detrimental effects of scams, ensuring that you can effectively safeguard yourself and others from falling victim to deception.
-            .ui.raised.segment
-              .ui.fluid.container(style="height: 200px;")
-                .ui.image.banner
-                  img(src="/images/identity-theft-banner.jpg", alt="Identity Theft Banner Image")
-              hr
-              #raised-content
-                h3.ui.header.large#mod-title
-                  .contentconsequences
-                    | Identity Theft
-                p Understand the  of identity theft and learn how to identify and take action against scams on social media.
-                button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/getGuest';")
-                  | Learn Now
-                  i.arrow.right.icon
-            p(style="padding-top:30px") To stay up-to-date on the latest scam cases and keep track of what you're learning, click the button below to create an account.
-            .ui.basic.segment(style="text-align: center; margin-top: -15px;")
-              button.ui.huge.blue.button#sign-up-button(onclick="location.href='/createStudent';")
-                | Sign Up Now
-                i.arrow.right.icon
+      .ui.container
+        //- h2.ui.header.center.aligned#our-mission Our Mission 
+        .ui.stackable.grid
+          //- First section with text on the left and image on the right
+          .row.computer.only.tablet.only
+            .eight.wide.column
+              h2(style="font-family: 'Armata', sans-serif; font-weight: 900;") Prepare yourself for the online world
+              p Embracing the internet opens up a vast realm of knowledge, entertainment, and connections that can greatly enrich your life. However, it can also pose certain risks and dangers.
+              p DART provides valuable insights and practical strategies to help you stay informed about online security measures, enabling you to protect yourself against potential risks.
+            .eight.wide.column(style="margin: 0; padding: 0; display: flex; align-items: center;")
+              img(src="/images/simulation.png" alt="Image description" style="width: 100%")
+          .row.mobile.only
+            .eight.wide.column(style="margin: 0; padding: 0; display: flex; align-items: center;padding-bottom: 15px;")
+              img(src="/images/simulation.png" alt="Image description" style="width: 100%;")
+            .eight.wide.column
+              h2(style="font-family: 'Armata', sans-serif; font-weight: 900;") Prepare yourself for the online world
+              p Embracing the internet opens up a vast realm of knowledge, entertainment, and connections that can greatly enrich your life. However, it can also pose certain risks and dangers.
+              p DART provides valuable insights and practical strategies to help you stay informed about online security measures, enabling you to protect yourself against potential risks.
+         
 
+          //- Second section with image on the right and text on the left
+          .row(style="margin-top: 20vh;")
+            .eight.wide.column
+              img(src="/images/simulation3.png" alt="Image description" style="width: 90%")
+            .eight.wide.column
+              //- h2(style="font-family: 'Armata', sans-serif; font-weight: 900;") Prepare yourself for the online world
+              h2(style="font-family: 'Armata', sans-serif; font-weight: 900;") Engaging hands-on learning
+              p DART simulates realistic digital dilemmas and scenarios that older adults may encounter while navigating online platforms and services.
+              p Each module teaches essential digital citizenship concepts, covering topics such as privacy, online identities, common scams, and more.
 
-                    
+          //- Popular courses gallery for computer 
+          .row.computer.only(style="margin-top: 15vh; margin-bottom: 15vh;")
+            h2.ui.header#in-progress(style="margin-bottom: -30px;") Popular Courses:
+
+            //- Referenced Source: https://codepen.io/dannyarty/pen/JjKrPOL 
+            .wrap
+                .slider
+                    .item
+                      .border
+                        .ui.in-slider
+                          img(src='/images/identity-theft-banner.jpg' alt='')
+                          hr
+                          .slider-module-text-container
+                            .raised-content
+                              h3.ui.header.large.popular-course-title
+                                | Identity Theft
+                              p Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+                          .learn-now-container
+                            button.ui.huge.blue.button.right.floated.round-learn-now(onclick="location.href='/getGuest';" )
+                              | Learn Now
+                              i.arrow.right.icon
+                            br
+                    .item
+                      .border
+                        .ui.in-slider
+                          img(src='/images/romance-scam.jpg' alt='')
+                          hr
+                          .slider-module-text-container
+                            .raised-content
+                              h3.ui.header.large.popular-course-title
+                                | Romance Scams
+                              p Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+                          .learn-now-container
+                            button.ui.huge.blue.button.right.floated.round-learn-now(onclick="location.href='/getGuest';" )
+                              | Learn Now
+                              i.arrow.right.icon
+                            br
+                    .item
+                      .border
+                        .ui.in-slider
+                          img(src='/images/phishing-scam.jpg' alt='')
+                          hr
+                          .slider-module-text-container
+                            .raised-content
+                              h3.ui.header.large.popular-course-title
+                                | Phishing
+                              p Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+                          .learn-now-container
+                            button.ui.huge.blue.button.right.floated.round-learn-now(onclick="location.href='/getGuest';" )
+                              | Learn Now
+                              i.arrow.right.icon
+                            br
+                    .item
+                      .border
+                        .ui.in-slider
+                          img(src='/images/sales-scam.jpg' alt='')
+                          hr
+                          .slider-module-text-container
+                            .raised-content
+                              h3.ui.header.large.popular-course-title
+                                | Sales Scam
+                              p Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+                          .learn-now-container
+                            button.ui.huge.blue.button.right.floated.round-learn-now(onclick="location.href='/getGuest';" )
+                              | Learn Now
+                              i.arrow.right.icon
+                            br
+          //- Popular courses without gallery for tablet and mobile
+          .row.tablet.only.mobile.only(style="margin-top: 15vh;")
+            h2.ui.header#in-progress Popular Courses:
+            .ui.container
+              a.ui#theft-link(href=`/intro/identity` alt="Begin identity theft module")
+                .ui.raised.segment
+                  .ui.fluid.container(style="height: 200px;")
+                    .ui.image.banner
+                      img(src="/images/identity-theft-banner.jpg", alt="Identity Theft Banner Image")
+
+                      //- #theft-progress.ui.bottom.attatched.small.progress(style='margin:0;padding:0;' data-percent='33')
+                      //-   .bar(style='border-radius: 0 !important;')
+                      //-     .progress
+                  hr
+                  #raised-content(style="padding-top: 20px;")
+                    h3.ui.header.large.home-mod-title
+                      | Identity Theft
+                    p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+                    button.ui.huge.blue.button.right.floated#nextButton
+                      | Learn Now
+                      i.arrow.right.icon
+              br
+              br
+              br
+              a.ui#romance-link(href=`/intro/identity` alt="Begin identity theft module")
+                .ui.raised.segment
+                  .ui.fluid.container(style="height: 200px;")
+                    .ui.image.banner
+                      img(src="/images/romance-scam.jpg", alt="Identity Theft Banner Image")
+
+                      //- #theft-progress.ui.bottom.attatched.small.progress(style='margin:0;padding:0;' data-percent='33')
+                      //-   .bar(style='border-radius: 0 !important;')
+                      //-     .progress
+                  hr
+                  #raised-content(style="padding-top: 20px;")
+                    h3.ui.header.large.home-mod-title
+                      | Romance Scams
+                    p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+                    button.ui.huge.blue.button.right.floated#nextButton
+                      | Learn Now
+                      i.arrow.right.icon
+              br
+              br
+              br
+              a.ui#phishing-link(href=`/intro/identity` alt="Begin identity theft module")
+                .ui.raised.segment
+                  .ui.fluid.container(style="height: 200px;")
+                    .ui.image.banner
+                      img(src="/images/phishing-scam.jpg", alt="Identity Theft Banner Image")
+
+                      //- #theft-progress.ui.bottom.attatched.small.progress(style='margin:0;padding:0;' data-percent='33')
+                      //-   .bar(style='border-radius: 0 !important;')
+                      //-     .progress
+                  hr
+                  #raised-content(style="padding-top: 20px;")
+                    h3.ui.header.large.home-mod-title
+                      | Phishing
+                    p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+                    button.ui.huge.blue.button.right.floated#nextButton
+                      | Learn Now
+                      i.arrow.right.icon
+
+              br
+              br
+              br
+              a.ui#theft-link(href=`/intro/identity` alt="Begin identity theft module")
+                .ui.raised.segment
+                  .ui.fluid.container(style="height: 200px;")
+                    .ui.image.banner
+                      img(src="/images/sales-scam.jpg", alt="Identity Theft Banner Image")
+
+                      //- #theft-progress.ui.bottom.attatched.small.progress(style='margin:0;padding:0;' data-percent='33')
+                      //-   .bar(style='border-radius: 0 !important;')
+                      //-     .progress
+                  hr
+                  #raised-content(style="padding-top: 20px;")
+                    h3.ui.header.large.home-mod-title
+                      | Sales Scam
+                    p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+                    button.ui.huge.blue.button.right.floated#nextButton
+                      | Learn Now
+                      i.arrow.right.icon
+
+          br
+          br
+          br
+          h2.ui.header#in-progress DART Play App
+
+    .row(style="background: #6bbcc721;")
+      .ui.container(style="padding-top: 20px; padding-bottom: 20px;")
+        .ui.stackable.grid
+          .four.wide.column.computer.only
+            img(src="/images/phone-bg.png", alt="Phone screen" style="width: 250px;height:450px;position: absolute;top:65px;left:3px;z-index:100;pointer-events:none;")
+            .ui.container(style="display: flex;justify-content: left;")
+              .containerz
+                .single-item(style="width: 225px;position: absolute;top:77px;")
+                  .slide-holder
+                      //- p 1 
+                      img(src="/images/demo.png", alt="DART app's logo screen;")
+                  .slide-holder 
+                      //- p 2 
+                      img(src="/images/demo2.png", alt="Puzzle match minigame")
+                  .slide-holder 
+                      //- p 3 
+                      img(src="/images/demo3.png", alt="Cryptogram complete the sentence minigame")
+                  .slide-holder 
+                      //- p 4
+                      img(src="/images/demo4.png", alt="Dot connect wordfinder minigame")
+          //- show phone demo above rather then besides for tablet
+          .tablet.only.row 
+            img(src="/images/phone-bg.png", alt="Phone screen" style="width: 250px;height:450px;position: absolute;top:3.8px;left:33.5%;z-index:100;pointer-events:none;")
+            .ui.container
+              .single-item(style="width: 225px; margin: 0 auto;")
+                .slide-holder
+                    //- p 1 
+                    img(src="/images/demo.png", alt="DART app's logo screen;")
+                .slide-holder 
+                    //- p 2 
+                    img(src="/images/demo2.png", alt="Puzzle match minigame")
+                .slide-holder 
+                    //- p 3 
+                    img(src="/images/demo3.png", alt="Cryptogram complete the sentence minigame")
+                .slide-holder 
+                    //- p 4
+                    img(src="/images/demo4.png", alt="Dot connect wordfinder minigame")
+          .mobile.only.row.hide-small-phone
+            .mobile-demo-container(style="width: 30%; height: 30%;")
+            img(src="/images/phone-bg.png", alt="Phone screen" style="width: 250px;height:450px;position: absolute;top:-12px;left:32%;z-index:100;pointer-events:none;")
+            .ui.container
+              .single-item(style="width: 225px; margin: 0 auto;")
+                .slide-holder
+                    //- p 1 
+                    img(src="/images/demo.png", alt="DART app's logo screen;")
+                .slide-holder 
+                    //- p 2 
+                    img(src="/images/demo2.png", alt="Puzzle match minigame")
+                .slide-holder 
+                    //- p 3 
+                    img(src="/images/demo3.png", alt="Cryptogram complete the sentence minigame")
+                .slide-holder 
+                    //- p 4
+                    img(src="/images/demo4.png", alt="Dot connect wordfinder minigame")
+              br
+          .sixteen.wide.mobile.only.sixteen.wide.tablet.only.twelve.wide.computer.only.column(style="margin: 0; padding: 0; display: flex; align-items: center;")
+            .text-container(style="display: block; margin-left: 50px;")
+              h2 Download Our Companion App: Deepcover
+              p Unleash your inner spy as you embark on thrilling missions to take down rogue agent Walter Vile and his cunning organization, VILE. Engage in captivating gameplay set across the globe, from the vibrant streets of New York to the enchanting landscapes of Paris and Tokyo.
+              p But here's the best part: DART Play is more than just a game. It's a gateway to mastering online security. Seamlessly linked with DART Learn, you'll reinforce your knowledge while having a blast. Unleash your skills, level up, and unlock exclusive rewards as you protect against online deception.
+              p Join the ranks of savvy spies and safeguard the digital world. Play. Learn. Protect. Available on Google Play and the Apple App Store, dive into DART Play today!
+
+              img(src='/images/app-store.png' alt='Download dart app in the appstore' style="position: relative; height: 50px;")
+
+    .row
+      .ui.container
+
+        p(style="padding-top:30px") To stay up-to-date on the latest scam cases and keep track of what you're learning, click the button below to create an account.
+        .ui.basic.segment(style="text-align: center; margin-top: -15px;")
+          button.ui.huge.blue.button#sign-up-button(onclick="location.href='/createStudent';")
+            | Sign Up Now
+            i.arrow.right.icon
+        br
+
+block scripts
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js')
+  script.
+      $(document).ready(function(){
+           //- for app demo slider
+          $('.single-item').slick({
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              dots: false,
+              arrows: false,
+              infinite: true,
+              autoplay: true,
+              autoplaySpeed: 3000 // milliseconds
+          });
+
+          //- For popular courses slider
+          /* Referenced Source: https://codepen.io/dannyarty/pen/JjKrPOL */
+          $('.slider').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            zIndex: 1,
+            accessibility: true,
+            arrows: true,
+            dots: false,
+            centerMode: true,
+            variableWidth: true,
+            infinite: true,
+            focusOnSelect: true,
+            cssEase: 'linear',
+            touchMove: true,
+            prevArrow:'<button class="slick-prev"> < </button>',
+            nextArrow:'<button class="slick-next"> > </button>',
+            responsive: [                        
+                {
+                  breakpoint: 576,
+                  settings: {
+                    centerMode: false,
+                    variableWidth: false,
+                  }
+                },
+            ]
+            });
+      });
+
+                      
 block styles
+  link(rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css')
+  //- link(rel='stylesheet', href='/css/mods.css')
   link(rel='stylesheet', href='/css/login.css')

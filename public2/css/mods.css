@@ -3,7 +3,7 @@
     background: linear-gradient(to bottom, #2165AE, #091D32);
     color: white;
     z-index: 0;
-    padding-top: 60px;
+    padding-top: 80px;
 }
 
 #white-lower {
@@ -37,7 +37,7 @@ h1.ui.header {
 }
 
 p#about {
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 p#aim {
@@ -81,6 +81,55 @@ hr {
     margin-bottom: 30px;
 }
 
+
+
 #in-progress {
     font-size: 2.75rem;
+    font-weight: 600;
+    font-family: 'Armata', sans-serif;
 }
+
+.home-mod-title {
+    font-size: 2rem !important;
+    font-weight: 600 !important;
+    font-family: 'Armata', sans-serif !important;
+}
+
+/* Dart alert hub styles */
+
+.hub-container {
+    padding-bottom: 40px;
+}
+
+.hub-container #raised-content {
+    padding-top: 15px;
+}
+
+div.ui.header.hub-alert {
+    font-size: 1.6rem; 
+    font-family: 'Armata', sans-serif;
+}
+
+i.exclamation.circle.icon {
+    color: #D61A69; 
+    font-size: 1.8rem;
+}
+
+.alert-info {
+    color:black; 
+    margin-bottom: 0px;
+}
+
+.alert-learn-more { 
+    color: black;
+    font-weight:lighter;
+    background: transparent !important; 
+    padding: 10px; 
+    margin-right: -15px; 
+}
+
+.alert-learn-more span {
+    text-decoration: underline; 
+    font-weight: bold;
+}
+
