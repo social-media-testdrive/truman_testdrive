@@ -203,9 +203,33 @@ exports.postInstructorLogin = (req, res, next) => {
     })(req, res, next);
 };
 
+
+exports.postModuleProgress = (req, res, next) => {
+    req.assert('username', 'Username cannot be blank').notEmpty();
+    // const errors = req.validationErrors();
+
+    User.findOne({
+    username: req.body.username
+    }, (err, existingUser) => {
+        if (err) {
+            return next(err);
+        }
+        if (existingUser) {
+            existingUser.moduleProgress.identity.percent = req.body.percent;
+            existingUser.save((err) => {
+                if (err) {
+                    return next(err);
+                }
+                });
+        }
+    });
+    // res.redirect('/evaluate3/identity'); 
+}; 
+
+
 exports.postIdentityTheftPreQuizScore = (req, res, next) => {
     req.assert('username', 'Username cannot be blank').notEmpty();
-    const errors = req.validationErrors();
+    // const errors = req.validationErrors();
 
     User.findOne({
     username: req.body.username
@@ -222,7 +246,7 @@ exports.postIdentityTheftPreQuizScore = (req, res, next) => {
                 });
         }
     });
-    res.redirect('/evaluate3/identity'); 
+    // res.redirect('/evaluate3/identity'); 
 }; 
 
 exports.postIdentityTheftModOneQuizScore = (req, res, next) => {

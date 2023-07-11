@@ -27,6 +27,90 @@ const userSchema = new mongoose.Schema({
     timeReportCsv: { type: String, default: '' },
 
 
+    // moduleProgress: [{
+    //     module: {
+    //       type: String, // module name or identifier
+    //       enum: ['identity', 'phishing', 'romance', 'grandparent', 'sales'],
+    //       required: true
+    //     },
+    //     progress: {
+    //       type: Number,
+    //       default: 0 // progress percent complete
+    //     },
+    //     link: {
+    //       type: String,
+    //       default: 'none' // link to the last page the user was on in module
+    //     },
+    //     prequiz: {
+    //       type: Number,
+    //       default: 0
+    //     },
+    //     submodOne: {
+    //       type: Number,
+    //       default: 0
+    //     },
+    //     submodTwo: {
+    //       type: Number,
+    //       default: 0
+    //     },
+    //     submodThree: {
+    //       type: Number,
+    //       default: 0
+    //     },
+    //     postquiz: {
+    //       type: Number,
+    //       default: 0
+    //     }
+    //   }]
+    
+    moduleProgress: { // marks the progress of each module
+        identity: {
+            percent: { type: Number, default: 0 }, // percent complete
+            link: { type: String, default: 'none' }, // link to the last page the user was on in module
+            prequiz: { type: Number, default: 0},
+            submodOne: { type: Number, default: 0 },
+            submodTwo: { type: Number, default: 0 },
+            submodThree: { type: Number, default: 0 },
+            postquiz: { type: Number, default: 0 },
+        },       
+        romance: {
+            percent: { type: Number, default: 0 }, // percent complete
+            link: { type: String, default: 'none' }, // link to the last page the user was on in module
+            prequiz: { type: Number, default: 0},
+            submodOne: { type: Number, default: 0 },
+            submodTwo: { type: Number, default: 0 },
+            submodThree: { type: Number, default: 0 },
+            postquiz: { type: Number, default: 0 },
+        },       
+        phishing: {
+            percent: { type: Number, default: 0 }, // percent complete
+            link: { type: String, default: 'none' }, // link to the last page the user was on in module
+            prequiz: { type: Number, default: 0},
+            submodOne: { type: Number, default: 0 },
+            submodTwo: { type: Number, default: 0 },
+            submodThree: { type: Number, default: 0 },
+            postquiz: { type: Number, default: 0 },
+        },       
+        grandparent: {
+            percent: { type: Number, default: 0 }, // percent complete
+            link: { type: String, default: 'none' }, // link to the last page the user was on in module
+            prequiz: { type: Number, default: 0},
+            submodOne: { type: Number, default: 0 },
+            submodTwo: { type: Number, default: 0 },
+            submodThree: { type: Number, default: 0 },
+            postquiz: { type: Number, default: 0 },
+        },       
+        sales: {
+            percent: { type: Number, default: 0 }, // percent complete
+            link: { type: String, default: 'none' }, // link to the last page the user was on in module
+            prequiz: { type: Number, default: 0},
+            submodOne: { type: Number, default: 0 },
+            submodTwo: { type: Number, default: 0 },
+            submodThree: { type: Number, default: 0 },
+            postquiz: { type: Number, default: 0 },
+        },          
+    },
+    
     identityTheftPreQuizScore: { type: String, default: ''},
     identityTheftModOneQuizScore: { type: String, default: ''},
     identityTheftModOneConfidenceRating: { type: String, default: ''},
@@ -37,27 +121,28 @@ const userSchema = new mongoose.Schema({
     identityTheftPostQuizScore: { type: String, default: ''},
 
     
-    moduleProgress: { // marks the progress of each module: none, started, completed
-        accounts: { type: String, default: 'none' },
-        identityTheft: { type: String, default: 'none' },
-        advancedlit: { type: String, default: 'none' },
-        trolls: { type: String, default: 'none' },
-        digfoot: { type: String, default: 'none' },
-        digitalliteracy: { type: String, default: 'none' },
-        esteem: { type: String, default: 'none' },
-        habits: { type: String, default: 'none' },
-        phishing: { type: String, default: 'none' },
-        presentation: { type: String, default: 'none' },
-        privacy: { type: String, default: 'none' },
-        safeposting: { type: String, default: 'none' },
-        targeted: { type: String, default: 'none' },
-    },
-    earnedBadges: [new Schema({ // list of badges earned by the user, see testdriveBadges.json file
-        badgeId: String,
-        badgeTitle: String,
-        badgeImage: String,
-        dateEarned: Date
-    })],
+    // moduleProgress: { // marks the progress of each module: none, started, completed
+    //     accounts: { type: String, default: 'none' },
+    //     identityTheft: { type: String, default: 'none' },
+    //     advancedlit: { type: String, default: 'none' },
+    //     trolls: { type: String, default: 'none' },
+    //     digfoot: { type: String, default: 'none' },
+    //     digitalliteracy: { type: String, default: 'none' },
+    //     esteem: { type: String, default: 'none' },
+    //     habits: { type: String, default: 'none' },
+    //     phishing: { type: String, default: 'none' },
+    //     presentation: { type: String, default: 'none' },
+    //     privacy: { type: String, default: 'none' },
+    //     safeposting: { type: String, default: 'none' },
+    //     targeted: { type: String, default: 'none' },
+    // },
+    // earnedBadges: [new Schema({ // list of badges earned by the user, see testdriveBadges.json file
+    //     badgeId: String,
+    //     badgeTitle: String,
+    //     badgeImage: String,
+    //     dateEarned: Date
+    // })],
+
     numPosts: { type: Number, default: -1 }, // How many posts has this user created? not including replys
     numReplies: { type: Number, default: -1 }, // How many comments has user made
     // numActorReplies: { type: Number, default: -1 }, // How many times has an actor commented on this user
