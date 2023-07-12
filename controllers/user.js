@@ -209,7 +209,7 @@ exports.postModuleProgress = (req, res, next) => {
     // console.log(req.body)
     // console.log("In POST module progess request user***********")
     // console.log(req.user)
-    
+
     let module_to_update = req.body.modID;
 
     User.findOne({
@@ -230,7 +230,42 @@ exports.postModuleProgress = (req, res, next) => {
     });
 }; 
 
+exports.getModuleProgress = (req, res, next) => {
+    // console.log(req.params)
+    // console.log("ModuleToGet: " + moduleToGet);
+    // console.log(req.user.username);
+    const moduleToGet = req.params.modId; // Accessing the value of :modId
 
+    User.findOne({ username: req.user.username }, (err, existingUser) => {
+        if (err) {
+          return next(err);
+        }
+
+        try {
+            if (existingUser) {
+                // console.log("The user exists! Here is the module progress:")
+                // console.log(existingUser.moduleProgress[moduleToGet])
+
+                // ensure the value exists before trying to access it
+                if (existingUser.moduleProgress[moduleToGet]) {
+                    console.log("GET Module Progress SUCCESSFUL");
+                    res.json(existingUser.moduleProgress[moduleToGet]);
+                } else {
+                    console.log(`Module progress for ${moduleToGet} not found`);
+                    res.status(404).json({ message: 'Module progress not found' });
+                }
+                
+            } else {
+                console.log('User not found');
+                res.status(404).json({ message: 'User not found' });
+            }
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal server error' });
+        }            
+      });  
+};
+  
 
 exports.postIdentityTheftPreQuizScore = (req, res, next) => {
     req.assert('username', 'Username cannot be blank').notEmpty();

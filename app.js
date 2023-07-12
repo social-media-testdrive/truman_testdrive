@@ -1269,6 +1269,8 @@ app.get('/guest/:modId', setHttpResponseHeaders, isValidModId, userController.ge
 
 app.post('/chatbot', check, setHttpResponseHeaders, csrfProtection, userController.postChatbotConnect);
 
+app.get('/moduleprogress/:modId', check, setHttpResponseHeaders, csrfProtection, userController.getModuleProgress);
+
 app.post('/postModuleProgress', check, setHttpResponseHeaders, csrfProtection, userController.postModuleProgress);
 
 app.post('/postIdentityTheftPreQuizScore', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityTheftPreQuizScore);

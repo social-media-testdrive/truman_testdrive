@@ -62,40 +62,64 @@ block styles
   link(rel='stylesheet', href='/css/mods.css')
 
 block scripts
-  script.
-    let theftPath = localStorage.getItem('theft-path');
-    console.log("theftPath is: " + theftPath);
-    if (theftPath === null) {
-    } else {
-      console.log("change link");
-      const link = document.getElementById('theft-link');
-      link.setAttribute('href', theftPath);
-    }
+  script. 
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-    // Check if the "progress" variable has been assigned a value yet
-    let progress = localStorage.getItem('progress');
-    if (progress === null) {
-      // If the variable has not been assigned yet, set it to 0
-      progress = 0;
-      localStorage.setItem('progress', progress);
-    } else {
-      // If the variable has been assigned, parse the value from local storage
-      progress = parseInt(progress);
-    }
-    console.log("Progress is: " + progress);
+    //- const userId = 'jct324@lehigh.edu'; // Replace with the actual user ID
+    const moduleId = 'identity'; // Replace with the actual module ID
 
-    const progressBar = document.getElementById('theft-progress');
-    if (progressBar) {
-      progressBar.setAttribute('data-percent', progress);
-      progressBar.querySelector('.bar').style.width = progress + "%";
-      if(progress > 0 && progress < 100){
-        progressBar.querySelector('.bar').style.backgroundColor = '#6BBCC7';
-      } else if(progress == 100) {
-        progressBar.querySelector('.bar').style.backgroundColor = 'blue';
+    fetch(`/moduleprogress/${moduleId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': csrfToken
       }
-      progressBar.querySelector('.progress').textContent = progress + "%";
-    } else {
-      console.error('Could not find progress bar element');
-    }
-        
+    })
+    .then(response => {
+      if (response.ok) {
+        // Request was successful
+        return response.json();
+      } else {
+        // Handle error response
+        throw new Error('Failed to retrieve module progress');
+      }
+    })
+    .then(data => {
+      // Handle the retrieved module progress data
+      const moduleProgressData = data;
+
+      // Access the module progress data
+      const progress = moduleProgressData.percent;
+      const link = moduleProgressData.link;
+
+      // update the indentity theft link
+      const identity_link = document.getElementById('theft-link');
+      identity_link.setAttribute('href', link);
+
+      // update the indentity theft progress bar
+      const progressBar = document.getElementById('theft-progress');
+      if (progressBar) {
+        progressBar.setAttribute('data-percent', progress);
+        progressBar.querySelector('.bar').style.width = progress + "%";
+        if(progress > 0 && progress < 100){
+          progressBar.querySelector('.bar').style.backgroundColor = '#6BBCC7';
+        } else if(progress == 100) {
+          progressBar.querySelector('.bar').style.backgroundColor = 'blue';
+        }
+        progressBar.querySelector('.progress').textContent = progress + "%";
+      } else {
+        console.error('Could not find progress bar element');
+      }
+
+
+
+      console.log(`Module progress for ${moduleId}:`);
+      console.log(`Percent: ${progress}`);
+      console.log(`Link: ${link}`);
+    })
+    .catch(error => {
+      // Handle network or fetch error
+      console.error(error);
+    });
+
             
