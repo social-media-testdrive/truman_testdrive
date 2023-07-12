@@ -220,7 +220,7 @@ exports.postModuleProgress = (req, res, next) => {
         }
         if (existingUser) {
             // don't revert progress when they user presses back buttons to review
-            if (req.body.percent > existingUser.moduleProgress.identity.percent) {
+            if (req.body.percent == 0 || req.body.percent > existingUser.moduleProgress.identity.percent) {
                 existingUser.moduleProgress[module_to_update].percent = req.body.percent;
             }
             existingUser.moduleProgress[module_to_update].link = req.body.link;
