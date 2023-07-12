@@ -205,17 +205,22 @@ exports.postInstructorLogin = (req, res, next) => {
 
 
 exports.postModuleProgress = (req, res, next) => {
-    req.assert('username', 'Username cannot be blank').notEmpty();
-    // const errors = req.validationErrors();
+    // console.log("In POST module progess request body***********")
+    // console.log(req.body)
+    // console.log("In POST module progess request user***********")
+    // console.log(req.user)
+    
+    let module_to_update = req.body.modID;
 
     User.findOne({
-    username: req.body.username
+        username: req.user.username
     }, (err, existingUser) => {
         if (err) {
             return next(err);
         }
         if (existingUser) {
-            existingUser.moduleProgress.identity.percent = req.body.percent;
+            existingUser.moduleProgress[module_to_update].percent = req.body.percent;
+            existingUser.moduleProgress[module_to_update].link = req.body.link;
             existingUser.save((err) => {
                 if (err) {
                     return next(err);
@@ -223,22 +228,29 @@ exports.postModuleProgress = (req, res, next) => {
                 });
         }
     });
-    // res.redirect('/evaluate3/identity'); 
 }; 
+
 
 
 exports.postIdentityTheftPreQuizScore = (req, res, next) => {
     req.assert('username', 'Username cannot be blank').notEmpty();
+
+    // console.log(req.body.username);
+
+    // console.log("BEYONCE REQUEST: ******************************************");
+    // console.log(req);
+    // console.log(req.body);
     // const errors = req.validationErrors();
 
     User.findOne({
-    username: req.body.username
+    username: req.user.username
     }, (err, existingUser) => {
         if (err) {
             return next(err);
         }
         if (existingUser) {
-            existingUser.identityTheftPreQuizScore = req.body.scoreInput;
+            existingUser.moduleProgress.identity.percent = req.body.percent;
+            existingUser.moduleProgress.identity.link = req.body.link;
             existingUser.save((err) => {
                 if (err) {
                     return next(err);

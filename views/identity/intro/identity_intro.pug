@@ -97,48 +97,39 @@ block content
     //-       i.arrow.right.icon
 
 block scripts
-  script.
-    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    
-    console.log("hello: " + csrfToken)
+  script(src='/js/progress.js' percent=3 link="intro/identity")
+  //- script.
+  //-   const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-    // Execute the POST request when the page loads
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log("Ready to fetch!");
-      // Assuming the value is within an HTML element with id "username"
-      //- const temp = #{user.username}
-      //- console.log(#{user.profile.name});
-
-      console.log(user.username)
-      //- let email = #{user.username};
-      //- console.log(userProfileName); // Output: the value of #{user.profile.name} as a string
-
-      fetch('/postIdentityTheftPreQuizScore', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRF-Token': csrfToken
-        },
-        //data to be sent in the request body
-        body: JSON.stringify({
-          "username": "jipodtouch9@gmail.com",
-          "percent": 25
-        })
-      })
-      .then(response => {
-        if (response.ok) {
-          // Request was successful
-          console.log('Module progress posted successfully!');
-        } else {
-          // Handle error response
-          console.error('Failed to post module progress');
-        }
-      })
-      .catch(error => {
-        // Handle network or fetch error
-        console.error(error);
-      });
-    });
+  //-   // Execute the POST request when the page loads
+  //-   document.addEventListener('DOMContentLoaded', function() {
+  //-     fetch('/postModuleProgress', {
+  //-       method: 'POST',
+  //-       headers: {
+  //-         'Content-Type': 'application/json',
+  //-         'X-CSRF-Token': csrfToken
+  //-       },
+  //-       //data to be sent in the request body
+  //-       body: JSON.stringify({
+  //-         //"username": "jct324@lehigh.edu", // email of user so we can identify them in the database
+  //-         "percent": 99, // percent of the module completed
+  //-         "link": "/intro4/identity", // link to the current page
+  //-       })
+  //-     })
+  //-     .then(response => {
+  //-       if (response.ok) {
+  //-         // Request was successful
+  //-         console.log('Module progress posted successfully!');
+  //-       } else {
+  //-         // Handle error response
+  //-         console.error('Failed to post module progress');
+  //-       }
+  //-     })
+  //-     .catch(error => {
+  //-       // Handle network or fetch error
+  //-       console.error(error);
+  //-     });
+  //-   });
   
   script.
     var voiceoverMappings = {
