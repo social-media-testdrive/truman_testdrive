@@ -1,0 +1,50 @@
+{
+    "identity": {
+        "Q1": {
+            "type": "radio",
+            "prompt": "What is a password?",
+            "radioLabels": {
+              "0": "The name or ID that you use when you log in.",
+              "1": "Your personal page on social media that includes information about you.",
+              "2": "Your name and your birthday to use to log in.",
+              "3": "A secret string of letters, symbols, and numbers that you can use to restrict who can access something digital.",
+              "4": "I don’t know."
+            },
+            "responseRequirement": "any",
+            "correctResponse": "3",
+            "files": [""],
+            "explanation": "<span class='inline bold green'>D is correct: A password is a secret string of letters, symbols, and numbers that you can use to restrict who can access something digital.</span>\n<span class='inline bold'>A is incorrect:</span> A username is the name or ID that you use when you log in.\n<span class='inline bold'>B is incorrect:</span> Your profile is your personal page on social media that includes information about you.\n<span class='inline bold'>C is incorrect:</span> You should not use your name and your birthday as a password because it’s easy to guess."
+          },
+        "Q2": {
+            "type": "radio",
+            "prompt": "What is something you dont want in your password?",
+            "radioLabels": {
+              "0": "Your name",
+              "1": "Special characters",
+              "2": "Numbers",
+              "3": "Uppercase letters",
+              "4": "I don't know"
+            },
+            "responseRequirement": "any",
+            "correctResponse": "0",
+            "files": [""],
+            "explanation": "<span class='inline bold green'>A is correct: Having your name in your password makes it easier to guess.</span>\n<span class='inline bold'>B is incorrect:</span> Having special characters in your password makes it harder to guess.\n<span class='inline bold'>C is incorrect:</span> Having numbers in your password makes it harder to guess.\n<span class='inline bold'>D is incorrect:</span> Having uppercase letters in your password makes it harder to guess."
+        },
+        "Q3": {
+            "type": "radio",
+            "prompt": "Sally is creating a username for a game. All players in the game will be able to see her username. Which of the following information is safe to include in her username?",
+            "radioLabels": {
+              "0": "Her full name",
+              "1": "Her favorite character name",
+              "2": "Her parents names",
+              "3": "Her schools name",
+              "4": "I don't know"
+            },
+            "responseRequirement": "any",
+            "correctResponse": "1",
+            "files": [""],
+            "explanation": "<span class='inline bold green'>B is correct: Her favorite character’s name is something that is common and makes it harder for strangers to identify her.</span>\n<span class='inline bold'>A is incorrect:</span> Having her full name is not safe. Anyone on the Internet can find out who she is.\n<span class='inline bold'>C is incorrect:</span> Having her parents’ names is not safe for her and for them. Anyone on the internet can find out who they are.\n<span class='inline bold'>D is incorrect:</span> Having her school’s name makes it easy to find out her location, her age, and her name."
+        }
+      
+    }
+  }
