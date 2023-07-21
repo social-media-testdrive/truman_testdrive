@@ -1,4 +1,12 @@
 #raised-container {
-    margin-top: 80px;
-    margin-bottom: 120px;
+    /* margin-top: 80px;
+    margin-bottom: 80px; */
+}
+
+body {
+    /* background-color: #919191; */
+    /* background-color: white; */
+    background-color: #F5F8FA;
+        overflow-y: hidden !important;
+
 }

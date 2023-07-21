@@ -8,12 +8,12 @@ block content
       .ui.container
         if user.profile.name != "Guest"
           h1.ui.header.center.aligned Welcome back #{user.profile.name} !
-          h1 The module progress percent: #{user.moduleProgress.identity.percent}
-          h1 The link progress link: #{user.moduleProgress.identity.link}
+          //- h1 The module progress percent: #{user.moduleProgress.identity.percent}
+          //- h1 The link progress link: #{user.moduleProgress.identity.link}
         else 
           h1.ui.header.center.aligned Welcome!
-          h1 The module progress percent: #{user.moduleProgress.identity.percent}
-          h1 The link progress link: #{user.moduleProgress.identity.link}
+          //- h1 The module progress percent: #{user.moduleProgress.identity.percent}
+          //- h1 The link progress link: #{user.moduleProgress.identity.link}
         .limit(style="padding-bottom: 40px; text-align: center;")
           p#about What would you like to learn today?
           button.ui.inverted.button(style="margin-right: 20px;")

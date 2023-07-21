@@ -9,6 +9,28 @@ body{
     overflow-y: hidden !important;
 }
 
+/* Set the background color to a non-transparent color */
+.ui.progress {
+    background-color: #e0e0e0;
+    /* background-color: rgb(73, 107, 113); */
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.08), 0 2px 4px 0 rgba(0, 0, 0, 0.18);
+}
+
+.ui.fixed.borderless.menu#module-header {
+    border: none;
+    box-shadow: none;
+}
+
+#module-footer {
+    background: #F5F8FA;
+    padding-top: 10px;
+}
+
+header {
+    border: none;
+    box-shadow: none;
+}
+
 #welcome {
     margin-top: 15px;
 }
