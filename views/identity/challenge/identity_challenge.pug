@@ -1,4 +1,4 @@
-extends ../../ui_layout
+extends ../../module_layout
 
 block content
 
@@ -21,7 +21,14 @@ block content
                     | <strong>Conqueror</strong>
           p This will also give you an opportunity to earn your first badge! 
           p If you prefer not to take it press the "skip" button to proceed directly to the default DART Learn lesson.
-    +navButtons('/intro2/identity', '/challenge2/identity', 'Back' , 'Take', true, '/submod/learn/identity')  
+    //- +navButtons('/intro2/identity', '/challenge2/identity', 'Back' , 'Take', true, '/submod/learn/identity')  
+    //- Fill progress bar to correct percent and color 
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+  +navButtons('/intro2/identity', '/challenge2/identity', 'Back' , 'Take', true, '/submod/learn/identity')
 
 
 block scripts

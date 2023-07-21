@@ -66,7 +66,7 @@ const userSchema = new mongoose.Schema({
     moduleProgress: { // marks the progress of each module
         identity: {
             percent: { type: Number, default: 0 }, // percent complete
-            link: { type: String, default: 'none' }, // link to the last page the user was on in module
+            link: { type: String, default: '/intro/identity' }, // link to the last page the user was on in module
             prequiz: { type: Number, default: 0},
             submodOne: { type: Number, default: 0 },
             submodTwo: { type: Number, default: 0 },
@@ -75,7 +75,7 @@ const userSchema = new mongoose.Schema({
         },       
         romance: {
             percent: { type: Number, default: 0 }, // percent complete
-            link: { type: String, default: 'none' }, // link to the last page the user was on in module
+            link: { type: String, default: '/intro/romance' }, // link to the last page the user was on in module
             prequiz: { type: Number, default: 0},
             submodOne: { type: Number, default: 0 },
             submodTwo: { type: Number, default: 0 },
@@ -84,7 +84,7 @@ const userSchema = new mongoose.Schema({
         },       
         phishing: {
             percent: { type: Number, default: 0 }, // percent complete
-            link: { type: String, default: 'none' }, // link to the last page the user was on in module
+            link: { type: String, default: '/intro/phishing' }, // link to the last page the user was on in module
             prequiz: { type: Number, default: 0},
             submodOne: { type: Number, default: 0 },
             submodTwo: { type: Number, default: 0 },
@@ -93,7 +93,7 @@ const userSchema = new mongoose.Schema({
         },       
         grandparent: {
             percent: { type: Number, default: 0 }, // percent complete
-            link: { type: String, default: 'none' }, // link to the last page the user was on in module
+            link: { type: String, default: '/intro/grandparent' }, // link to the last page the user was on in module
             prequiz: { type: Number, default: 0},
             submodOne: { type: Number, default: 0 },
             submodTwo: { type: Number, default: 0 },
@@ -102,7 +102,7 @@ const userSchema = new mongoose.Schema({
         },       
         sales: {
             percent: { type: Number, default: 0 }, // percent complete
-            link: { type: String, default: 'none' }, // link to the last page the user was on in module
+            link: { type: String, default: '/intro/sales' }, // link to the last page the user was on in module
             prequiz: { type: Number, default: 0},
             submodOne: { type: Number, default: 0 },
             submodTwo: { type: Number, default: 0 },

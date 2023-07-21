@@ -1,3 +1,5 @@
+//- layout for module pages (e.g. all the pages in the module after the module intro page at /intro/:modId)
+
 -var cdn = "https://dhpd030vnpk29.cloudfront.net";
 
 mixin navButtons(backLink, nextLink, backText='Back', nextText='Next', skipBtn=false, skipLink)
@@ -57,6 +59,9 @@ html
     //- link(type='text/css', rel='stylesheet', href='/css/footer.css') 
     //- link(type='text/css', rel='stylesheet', href='/css/ui_layout.css') 
     link(type='text/css', rel='stylesheet', href='/css/dart.css') 
+    link(type='text/css', rel='stylesheet' href='/css/module.css') 
+    link(type='text/css', rel='stylesheet', media='screen and (max-width: 1024px)',  href='/css/module-tablet-mobile.css') 
+    link(type='text/css', rel='stylesheet', media='screen and (min-width: 1025px)',  href='/css/module-computer.css') 
     link(rel='stylesheet', href='/css/progress.css')  
     link(rel='stylesheet', href='/css/avatar.css') 
     link(rel='stylesheet', href='/css/nav_buttons.css') 
@@ -73,12 +78,19 @@ html
     //- Flexbox layout 
     #page-header
       block header
-        include partials/ui_header
-    #page-article
+        include partials/module_header
+
+      //- progress bar stuff
+      //-   include partials/ui_header
+    #page-article(style="overflow-y: scroll !important;")
       block content
     #page-footer
-      block footer
-        include partials/ui_footer
+      include partials/module_footer
+        block footer
+
+      
+        //- navigation buttons
+        //- include partials/ui_footer
     
     if process.env.instanceType == 'test'
       script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js')
@@ -91,9 +103,6 @@ html
       script(src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.js")
       - var t = '/main.js?t=' + (new Date()).getTime().toString();
       script(src=t)
-      //- Set the 'user' object as a global JavaScript variable
-      script.
-        var user = !{JSON.stringify(user)};
     else if process.env.NODE_ENV == 'production'
       script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js')
       //- script(src=cdn+'/js/lib/humanized_time_span.js')
@@ -116,6 +125,19 @@ html
       script(src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.js")
       - var t = '/main.js?t=' + (new Date()).getTime().toString();
       script(src=t)
+
+    script.
+      $('#exit-button').click(function() {
+        $('#exit-modal').modal('show');
+      });
+
+      $('#no-button').click(function() {
+        $('#exit-modal').modal('hide');
+      });
+
+      $('#yes-button').click(function() {
+        window.location.href = '/'; 
+      });
 
     block scripts
     // Google Analytics

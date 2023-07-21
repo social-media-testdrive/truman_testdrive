@@ -4,9 +4,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let percent_to_post = this_js_script.attr('percent');   
     let link_to_post = this_js_script.attr('link');   
 
-    // console.log("In progress.js");
-    // console.log(percent_to_post);
-    // console.log(link_to_post);
+    console.log("In progress.js");
+    console.log(percent_to_post);
+    console.log(link_to_post);
 
     let pathArray = window.location.pathname.split('/');
     let subdirectory1 = pathArray[1]; // e.g. "intro"

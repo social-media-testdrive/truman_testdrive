@@ -204,10 +204,13 @@ exports.postInstructorLogin = (req, res, next) => {
 };
 
 
-exports.postModuleProgress = (req, res, next) => {
+exports.postModuleProgress = (req, updatedUser, next) => {
     // console.log("In POST module progess request body***********")
     // console.log(req.body)
-    // console.log("In POST module progess request user***********")
+    // console.log("BEFORE In POST module progess request user***********")
+    console.log(req.user)
+    // req.user.moduleProgress.identity.link = "/BEYONCE"
+    // console.log("AFTER In POST module progess request user***********")
     // console.log(req.user)
 
     let module_to_update = req.body.modID;
@@ -222,13 +225,48 @@ exports.postModuleProgress = (req, res, next) => {
             // don't revert progress when they user presses back buttons to review
             if (req.body.percent == 0 || req.body.percent > existingUser.moduleProgress.identity.percent) {
                 existingUser.moduleProgress[module_to_update].percent = req.body.percent;
+                // How can I update the stored variables without having to log in and out? This doesnt work, doesnt know what "user" is 
+                //user.moduleProgress.identity.percent =  req.body.percent;
             }
             existingUser.moduleProgress[module_to_update].link = req.body.link;
+            // How can I update the stored variables without having to log in and out? This doesnt work 
+           // user.moduleProgress.identity.link =  req.body.link;
+            
+
+            // save to mongodb database
             existingUser.save((err) => {
                 if (err) {
                     return next(err);
                 }
                 });
+
+
+            // update requested user
+            req.user.moduleProgress.identity.percent =  req.body.percent;
+            req.user.moduleProgress.identity.link =  req.body.link;
+
+            // FAIL trying to store in current session so it updates without having to log in and out?
+            // req.login(req.user, function(err) {
+            //     if (err) {
+            //       // Handle error
+            //     }
+            //     // The updated user data should now be stored in the session
+            //   });
+
+            req.session.passport.user = req.user;
+
+            // Save the updated session to the session store
+            // need to use await to make sure doesn't move on until
+            req.session.save((err) => {
+                if (err) {
+                    return next(err);
+                }
+                // Optional: You can include additional logic here after the session is saved.
+                // For example, sending a response back to the client indicating success.
+                res.status(200).json({ message: 'Progress updated successfully!' });
+            });
+     
+            
         }
     });
 }; 

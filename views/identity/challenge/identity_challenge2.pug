@@ -1,25 +1,36 @@
-extends ../../ui_layout
+extends ../../module_layout
 
 block content
 
-  .ui.container#raised-container
-    .ui.raised.segment 
-      - if (quizData)
-            p #{quizData}
-            p #{JSON.stringify(quizData)}
-            each question, key in quizData
-                .ui.segment
-                    h3= question.prompt
-                    .ui.form
-                    each label, value in question.radioLabels
-                        .grouped.fields
-                        .field
-                            .ui.radio.checkbox
-                            input(type="radio" name=key id=`${key}_${value}` value=value)
-                            label(for=`${key}_${value}`)= label
+    .ui.container#raised-container
+        .ui.raised.segment 
+            - if (quizData)
+                //- p #{quizData}
+                //- p #{JSON.stringify(quizData)}
+                each question, key in quizData
+                    .ui.segment
+                        h3= question.prompt
+                        .ui.form
+                        each label, value in question.radioLabels
+                            .grouped.fields
+                            .field
+                                .ui.radio.checkbox
+                                input(type="radio" name=key id=`${key}_${value}` value=value)
+                                label(for=`${key}_${value}`)= label
 
-      - else
-        p No quiz data available.
+            - else
+            p No quiz data available.
+
+        //- +navButtons('/challenge/identity', '/challenge3/identity', 'Back', 'Next')  
+    //- Fill progress bar to correct percent and color 
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+  +navButtons('/challenge/identity', '/challenge3/identity', 'Back', 'Next')  
+
+
 
 
 block scripts

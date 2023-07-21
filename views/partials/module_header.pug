@@ -1,44 +1,38 @@
-header.ui.borderless.menu.tablet-and-computer
-    .ui.container
-        #logo
-            a.item(href='/')
-                img.ui.small.image.dart-logo(src='/images/dart-logo.svg')
-        if user
+header(style="z-index: 1000 !important;background-color: transparent !important;")
+    .ui.fixed.borderless.menu#module-header
+        .ui.container
+            .left.menu
+                .item  
+                    h1#header-title Identity Theft 
             .right.menu
-                a.item(href='/').dart-blue
-                    | Home
-                a.item(href='/account').dart-blue
-                    | Profile
-                a.item(href='/logout').dart-gray
-                    | Log out
-        else 
-            .right.menu
-                a.item(href='/studentLogin').dart-blue
-                    | Courses
-                a.item(href='/studentLogin').dart-blue
-                    | Log in
-                a.item(href='/createStudent').dart-blue
-                    | Sign up
-header.mobile-only(style="z-index: auto !important;")
-  .ui.fluid.top.two.item.menu
-    a.item(href='/')
-      img.ui.small.image.dart-logo(src='/images/dart-logo.svg', id='cell_logo')
-    .item
-        .menu.headerDropdownMenu
-            if user
-                .ui.simple.dropdown.item
-                    if isResearchVersion
-                        span= user.username || user.profile.name || user.id
-                    else 
-                        span= user.profile.name || user.username || user.id
-                    i.dropdown.icon
-                    .menu
-                        a.item(href='/') Home
-                        a.item(href='/account') Profile
-                        a.item(href='logout') Log out
-            else 
-                a.item(href='/studentLogin').dart-blue
-                    | Log in
+                a.item#exit-button
+                    i.times.large.icon
+    #theft-progress.ui.bottom.progress(style='z-index: -1; position: absolute; top: 72px; width: 100%;' data-percent='33')
+        .bar(style='border-radius: 0 !important;')
+            .progress
+//- Modal
+.ui.modal#exit-modal(style="z-index: 999999; width: 400px;")
+    .header Are you sure you want to exit?
+    .content
+        p You can come back and resume from where you left off at any time.
+    .actions(style="text-align: center;")
+        .ui.negative.huge.button#no-button No
+        .ui.positive.huge.button#yes-button Yes
+
+    //- .ui.fluid.progress(data-percent='75', style="position: absolute; top: 70px; width: 100%")
+    //-     .bar(style='width: 75%;')
+    //-         | 75% Complete
+
+//- .ui.container
+//-     #theft-progress.ui.bottom.attatched.small.progress(style='' data-percent='7')
+//-         .bar(style='border-radius: 0 !important;')
+//-             .progress
+            //- a.item(href='/studentLogin').dart-blue
+            //-     | Courses
+            //- a.item(href='/studentLogin').dart-blue
+            //-     | Log in
+            //- a.item(href='/createStudent').dart-blue
+            //-     | Sign up
 
 //- .ui.top.small.borderless.menu(style="height: 4rem")
 //-   .ui.grid.container

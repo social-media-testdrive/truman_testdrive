@@ -365,10 +365,16 @@ function setHttpResponseHeaders(req, res, next) {
     next();
 }
 
+// function updateSessionUserData(req, updatedUser) {
+
+// });
+
+
 function isValidModId(req, res, next) {
     const modIds = [
         "trolls",
-        "identity"
+        "identity",
+        "temp"
     ]
     if (modIds.includes(req.params.modId)) {
         next();
@@ -491,7 +497,7 @@ function isValidModId(req, res, next) {
     const modIds = [
         "trolls",
         "identity",
-        "phishing"
+        "temp"
     ]
 
     if (modIds.includes(req.params.modId)) {
@@ -718,6 +724,26 @@ app.get('/intro2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders
         title: 'Intro'
     });
 });
+
+app.get('/intro3/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/intro/' + req.params.modId + '_intro2', {
+        title: 'Intro'
+    });
+});
+
+app.get('/intro4/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/intro/' + req.params.modId + '_intro2', {
+        title: 'Intro'
+    });
+});
+
+app.get('/intro5/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/intro/' + req.params.modId + '_intro2', {
+        title: 'Intro'
+    });
+});
+
+
 
 
 // Render challenge / prequiz (all modules) ******************************
@@ -1109,6 +1135,14 @@ app.get('/privacy', setHttpResponseHeaders, csrfProtection, addCsrf, function(re
         title: 'Privacy Policy'
     });
 });
+
+// Render terms and conditions page.
+app.get('/terms', setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
+    res.render('terms', {
+        title: 'Terms'
+    });
+});
+
 
 // Render the reflection page (all modules).
 app.get('/results/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, async function(req, res) {

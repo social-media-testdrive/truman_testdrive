@@ -8,8 +8,12 @@ block content
       .ui.container
         if user.profile.name != "Guest"
           h1.ui.header.center.aligned Welcome back #{user.profile.name} !
+          h1 The module progress percent: #{user.moduleProgress.identity.percent}
+          h1 The link progress link: #{user.moduleProgress.identity.link}
         else 
           h1.ui.header.center.aligned Welcome!
+          h1 The module progress percent: #{user.moduleProgress.identity.percent}
+          h1 The link progress link: #{user.moduleProgress.identity.link}
         .limit(style="padding-bottom: 40px; text-align: center;")
           p#about What would you like to learn today?
           button.ui.inverted.button(style="margin-right: 20px;")
@@ -39,13 +43,13 @@ block content
         //- Courses
         .limit
           h2.ui.header#in-progress Courses:
-          a.ui#theft-link(href=`/intro/identity` alt="Begin identity theft module")
+          a.ui#theft-link(href=user.moduleProgress.identity.link alt="Begin identity theft module")
             .ui.raised.segment
               .ui.fluid.container(style="height: 200px;")
                 .ui.image.banner
                   img(src="/images/identity-theft-banner.jpg", alt="Identity Theft Banner Image")
 
-                  #theft-progress.ui.bottom.attatched.small.progress(style='margin:0;padding:0;' data-percent='33')
+                  #theft-progress.ui.bottom.small.progress(style='margin:0;padding:0;' data-percent=user.moduleProgress.identity.percent)
                     .bar(style='border-radius: 0 !important;')
                       .progress
               #raised-content(style="padding-top: 20px;")
@@ -55,13 +59,39 @@ block content
                 button.ui.huge.blue.button.right.floated#nextButton
                   | Learn Now
                   i.arrow.right.icon
+
+
+          br
+          br
+          a.ui(href=`/intro/temp` alt="Testing features")
+            .ui.raised.segment
+              .ui.fluid.container
+                .ui.image.banner
+                  //- img(src="/images/identity-theft-banner.jpg", alt="Identity Theft Banner Image")
+
+                  //- #theft-progress.ui.bottom.attatched.small.progress(style='margin:0;padding:0;' data-percent='33')
+                  //-   .bar(style='border-radius: 0 !important;')
+                  //-     .progress
+              #raised-content
+                h3.ui.header.large.home-mod-title
+                  | Feature Testing
+                p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+                button.ui.huge.blue.button.right.floated#nextButton
+                  | See Features
+                  i.arrow.right.icon
+
         .ui.basic.segment(style="text-align: center; margin-top: -15px;")
           button.ui.center.aligned.huge.basic.button#reset-progress(onclick="resetIdentityProgress()") Reset Identity Theft Progress
+  script.
+    var progress = #{user.moduleProgress.identity.percent}
+  script(src='/js/setProgressBar.js')  
+
 
 block styles
   link(rel='stylesheet', href='/css/mods.css')
 
-block scripts
+block scripts  
+  //- Temporary reset function for testing purposes
   script. 
     function resetIdentityProgress() {
       let subdirectory2 = "identity"; 
@@ -102,63 +132,73 @@ block scripts
       location.reload();
     }
 
-    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
-    //- const userId = 'jct324@lehigh.edu'; // Replace with the actual user ID
-    const moduleId = 'identity'; // Replace with the actual module ID
-
-    fetch(`/moduleprogress/${moduleId}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-Token': csrfToken
-      }
-    })
-    .then(response => {
-      if (response.ok) {
-        // Request was successful
-        return response.json();
-      } else {
-        // Handle error response
-        throw new Error('Failed to retrieve module progress');
-      }
-    })
-    .then(data => {
-      // Handle the retrieved module progress data
-      const moduleProgressData = data;
-
-      // Access the module progress data
-      const progress = moduleProgressData.percent;
-      const link = moduleProgressData.link;
-
-      // update the indentity theft link
-      const identity_link = document.getElementById('theft-link');
-      identity_link.setAttribute('href', link);
-
-      // update the indentity theft progress bar
-      const progressBar = document.getElementById('theft-progress');
-      if (progressBar) {
-        progressBar.setAttribute('data-percent', progress);
-        progressBar.querySelector('.bar').style.width = progress + "%";
-        if(progress > 0 && progress < 100){
-          progressBar.querySelector('.bar').style.backgroundColor = '#6BBCC7';
-        } else if(progress == 100) {
-          progressBar.querySelector('.bar').style.backgroundColor = 'blue';
-        }
-        progressBar.querySelector('.progress').textContent = progress + "%";
-      } else {
-        console.error('Could not find progress bar element');
-      }
 
 
+    //- const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-      console.log(`Module progress for ${moduleId}:`);
-      console.log(`Percent: ${progress}`);
-      console.log(`Link: ${link}`);
-    })
-    .catch(error => {
-      // Handle network or fetch error
-      console.error(error);
-    });
+    //- //- const userId = 'jct324@lehigh.edu'; // Replace with the actual user ID
+    //- const moduleId = 'identity'; // Replace with the actual module ID
+
+    //- fetch(`/moduleprogress/${moduleId}`, {
+    //-   method: 'GET',
+    //-   headers: {
+    //-     'Content-Type': 'application/json',
+    //-     'X-CSRF-Token': csrfToken
+    //-   }
+    //- })
+    //- .then(response => {
+    //-   if (response.ok) {
+    //-     // Request was successful
+    //-     return response.json();
+    //-   } else {
+    //-     // Handle error response
+    //-     throw new Error('Failed to retrieve module progress');
+    //-   }
+    //- })
+    //- .then(data => {
+    //-   // Handle the retrieved module progress data
+    //-   const moduleProgressData = data;
+
+    //-   // Access the module progress data
+    //-   let progress = moduleProgressData.percent;
+    //-   let link = moduleProgressData.link;
+
+    //-   console.log("DB PROG");
+    //-   console.log(progress);
+    //-   console.log("DB Link");
+    //-   console.log(link);
+    //-   //- if (link == "" || link == "none") {
+    //-   //-   link = "/intro/identity";
+    //-   //- }
+
+    //-   //- // update the indentity theft link
+    //-   //- const identity_link = document.getElementById('theft-link');
+    //-   //- identity_link.setAttribute('href', link);
+
+    //-   //- // update the indentity theft progress bar
+    //-   //- const progressBar = document.getElementById('theft-progress');
+    //-   //- if (progressBar) {
+    //-   //-   progressBar.setAttribute('data-percent', progress);
+    //-   //-   progressBar.querySelector('.bar').style.width = progress + "%";
+    //-   //-   if(progress > 0 && progress < 100){
+    //-   //-     progressBar.querySelector('.bar').style.backgroundColor = '#6BBCC7';
+    //-   //-   } else if(progress == 100) {
+    //-   //-     progressBar.querySelector('.bar').style.backgroundColor = 'blue';
+    //-   //-   }
+    //-   //-   progressBar.querySelector('.progress').textContent = progress + "%";
+    //-   //- } else {
+    //-   //-   console.error('Could not find progress bar element');
+    //-   //- }
+
+
+
+    //-   //- console.log(`Module progress for ${moduleId}:`);
+    //-   //- console.log(`Percent: ${progress}`);
+    //-   //- console.log(`Link: ${link}`);
+    //- })
+    //- .catch(error => {
+    //-   // Handle network or fetch error
+    //-   console.error(error);
+    //- });
 
             
