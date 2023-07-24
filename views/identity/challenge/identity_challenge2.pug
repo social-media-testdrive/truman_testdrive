@@ -29,7 +29,7 @@ block content
 
 block append footer
   .ui.container
-    +navButtons('/challenge/identity', '/challenge3/identity', 'Back', 'Next')  
+    +navButtons('/challenge/identity', '/challenge3/identity', 8, 'Back', 'Next')  
 
 
 
@@ -54,7 +54,6 @@ block scripts
         //- console.log("shuffledQuestions")
         //- console.log(shuffledQuestions);
 
-    script(src='/js/progress.js' percent=8 link="/challenge2/identity")  
   
 block styles
     link(rel='stylesheet', href='/css/module.css')  

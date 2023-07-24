@@ -118,6 +118,8 @@ block scripts
       if (response.ok) {
           // Request was successful
           console.log('Module progress reset successfully!');
+          //- reload the page
+          location.reload();
       } else {
           // Handle error response
           console.error('Failed to reset module progress');
@@ -128,8 +130,7 @@ block scripts
       console.error(error);
       });
 
-      //- reload the page
-      location.reload();
+
     }
 
 

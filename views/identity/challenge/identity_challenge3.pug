@@ -79,7 +79,7 @@ block content
 
 block append footer
   .ui.container
-    +navButtons('/challenge2/identity', '/submod/learn/identity', 'Back', 'Learn')  
+    +navButtons('/challenge2/identity', '/submod/learn/identity', 10, 'Back', 'Learn')  
 
 
     
@@ -202,10 +202,8 @@ block scripts
       ;
     }, 6000);
 
-    localStorage.setItem('progress', 5);
-    localStorage.setItem('theft-path', "/challenge3/identity");
-  script(src='/js/progress.js' percent=10 link="/challenge3/identity")  
-
+    //- localStorage.setItem('progress', 5);
+    //- localStorage.setItem('theft-path', "/challenge3/identity");
 
 block styles
   link(rel='stylesheet', href='/css/evaluate.css')  

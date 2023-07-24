@@ -29,12 +29,9 @@ block content
 
 block append footer
   .ui.container
-    +navButtons('/intro2/identity', '/challenge2/identity', 'Back' , 'Take', true, '/submod/learn/identity')
+    +navButtons('/intro2/identity', '/challenge2/identity', 6, 'Back' , 'Take', true, '/submod/learn/identity')
 
 
-block scripts
-  script(src='/js/progress.js' percent=6 link="/challenge/identity")  
-  
 block styles
   link(rel='stylesheet', href='/css/module.css')  
   link(rel='stylesheet', href='/css/evaluate.css')  

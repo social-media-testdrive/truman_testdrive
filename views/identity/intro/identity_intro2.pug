@@ -66,11 +66,11 @@ block content
 
 block append footer
   .ui.container
-    +navButtons('/intro/identity', '/challenge/identity', 'Back', 'Challenge')  
+    +navButtons('/intro/identity', '/challenge/identity', 4, 'Back', 'Challenge')  
 
 block append scripts
   script(src='/js/character.js')
-  script(src='/js/progress.js' percent=4 link="/intro2/identity")  
+  //- script(src='/js/progress.js' percent=4 link="/intro2/identity")  
   
 block styles
   link(rel='stylesheet', href='/css/module.css') 

@@ -2,18 +2,8 @@
 
 -var cdn = "https://dhpd030vnpk29.cloudfront.net";
 
-mixin navButtons(backLink, nextLink, backText='Back', nextText='Next', skipBtn=false, skipLink)
-  .ui.container#nav-container
-    .div#nav-menu
-      button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='" + backLink + "';")
-        i.arrow.left.icon
-        | #{backText}
-      button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='" + nextLink + "';")
-        | #{nextText}
-        i.arrow.right.icon
-      if skipBtn
-        button.ui.huge.basic.button.right.floated#skipButton(onclick="location.href='" + skipLink + "';")
-          | Skip
+//- Same in module layout and ui layout. mixin with nav buttons for back, next, skip and posting module progress with the next button
+include partials/ui_nav_buttons
 
 doctype html
 html
@@ -126,7 +116,8 @@ html
       script(src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.js")
       - var t = '/main.js?t=' + (new Date()).getTime().toString();
       script(src=t)
-
+    
+    script(src="/js/progress.js")  
     script.
       $('#exit-button').click(function() {
         $('#exit-modal').modal('show');
