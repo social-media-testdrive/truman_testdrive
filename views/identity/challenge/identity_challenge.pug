@@ -4,23 +4,21 @@ block content
 
 
   .ui.container#raised-container
-    .ui.raised.segment
-      #raised-content
-        .limit
-          h1.ui.header.large#mod-title
+    .limit
+      h1.ui.header.large#mod-title
+        .content
+          | Challenge
+      p Want to try a challenge before we start? 
+      .ui.grid#to_earn_badge
+        .three.column.row
+          .column
             .content
-              | Challenge
-          p Before we begin the lesson, would you like to start with a challenge to help us customize the content based on your current understanding? 
-          .ui.grid#to_earn_badge
-            .three.column.row
-              .column
-                .content
-                  img(src='/badges/identity/mystery_badge.png')
-                  p <strong>Challenge</strong>
-                    br
-                    | <strong>Conqueror</strong>
-          p This will also give you an opportunity to earn your first badge! 
-          p If you prefer not to take it press the "skip" button to proceed directly to the default DART Learn lesson.
+              img(src='/badges/identity/mystery_badge.png')
+              p <strong>Challenge</strong>
+                br
+                | <strong>Conqueror</strong>
+      p Earn your first badge by completing this task! 
+      p If you'd rather proceed directly to the DART Learn lesson, click "Skip"
     //- +navButtons('/intro2/identity', '/challenge2/identity', 'Back' , 'Take', true, '/submod/learn/identity')  
     //- Fill progress bar to correct percent and color 
     script.

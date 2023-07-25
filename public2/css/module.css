@@ -5,6 +5,17 @@
     }
 } */
 
+
+#raised-container { 
+    /* background: yellow;  */
+    margin-top: 20px; 
+    padding-top: 0;
+}
+
+.limit {
+    font-size: 1.5rem;
+}
+
 body{ 
     /* overflow-y: hidden !important; */
     background-color: white;
@@ -52,7 +63,8 @@ header {
 /* inline so the bubbles like 100 learners today will show up next to it */
 #mod-title {
     display: inline-block;
-    font-size: 1.75rem;
+    font-size: 2rem;
+    font-weight: 600;
     font-family: 'Inter', sans-serif; 
 }
 
