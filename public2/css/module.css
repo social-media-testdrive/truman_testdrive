@@ -6,8 +6,18 @@
 } */
 
 body{ 
-    overflow-y: hidden !important;
+    /* overflow-y: hidden !important; */
+    background-color: white;
 }
+
+#raised-container .ui.raised.segment {
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding-top: 40px;
+    /* background-color: red !important; */
+}
+
 
 /* Set the background color to a non-transparent color */
 .ui.progress {
@@ -42,7 +52,7 @@ header {
 /* inline so the bubbles like 100 learners today will show up next to it */
 #mod-title {
     display: inline-block;
-    font-size: 2.25rem;
+    font-size: 1.75rem;
     font-family: 'Inter', sans-serif; 
 }
 

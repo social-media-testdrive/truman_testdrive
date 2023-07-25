@@ -121,6 +121,9 @@ body{
 /*  flex 1 to grow and shrink as necessary to fill available space in the flex container */
 #page-article{ 
     flex:1; 
+    /* background-color: green !important; */
+    /* margin-top: 0;
+    padding-top: 0; */
 }
 
 

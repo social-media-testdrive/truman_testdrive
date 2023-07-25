@@ -7,11 +7,18 @@ body{
     font-family: 'Inter', sans-serif;
 }
 
+#raised-container {
+    position: relative;
+    /* margin-top: 0px; */
+}
+
+#raised-container .ui.raised.segment {
+    padding-top: 0px;
+}
+
 #page-header{ 
     min-height:30px;
 }
-
-
 
 #page-footer{ 
     min-height:50px;
@@ -35,20 +42,8 @@ body{
     font-family: 'Inter', sans-serif; 
 }
 
-#raised-container {
-    margin-top: 95px;
-}
-
-#raised-container .ui.raised.segment {
-    background: none;border: none;box-shadow: none
-}
-
-#module-header {
-    /* margin: 0;
-    padding: 0;
-    position: relative; */
-}
-
-module-footer {
-
+#theft-progress {
+    position: absolute; 
+    top: 70px; 
+    width: 100%;;
 }

@@ -118,18 +118,8 @@ html
       script(src=t)
     
     script(src="/js/progress.js")  
-    script.
-      $('#exit-button').click(function() {
-        $('#exit-modal').modal('show');
-      });
+    script(src="/js/module_exit.js")  
 
-      $('#no-button').click(function() {
-        $('#exit-modal').modal('hide');
-      });
-
-      $('#yes-button').click(function() {
-        window.location.href = '/'; 
-      });
 
     block scripts
     // Google Analytics
