@@ -355,11 +355,12 @@ function setHttpResponseHeaders(req, res, next) {
         'Expires': '0',
         'Pragma': 'no-cache',
         'Content-Type': 'text/html; charset=UTF-8',
-        'Content-Security-Policy': "script-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
-            "default-src 'self' https://www.google-analytics.com http://3.19.31.168:8080/webhooks/rest/webhook;" +
+        'Content-Security-Policy': "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com https://app.wotnot.io;" +
+            "default-src 'self' https://www.google-analytics.com http://3.19.31.168:8080/webhooks/rest/webhook https://app.wotnot.io;" +
             "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
             "img-src 'self' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
             "media-src https://dhpd030vnpk29.cloudfront.net;" +
+            "connect-src 'self' https://app.wotnot.io;" +
             "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:"
     });
     next();
@@ -726,19 +727,19 @@ app.get('/intro2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders
 });
 
 app.get('/intro3/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/intro/' + req.params.modId + '_intro2', {
+    res.render(req.params.modId + '/intro/' + req.params.modId + '_intro3', {
         title: 'Intro'
     });
 });
 
 app.get('/intro4/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/intro/' + req.params.modId + '_intro2', {
+    res.render(req.params.modId + '/intro/' + req.params.modId + '_intro4', {
         title: 'Intro'
     });
 });
 
 app.get('/intro5/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/intro/' + req.params.modId + '_intro2', {
+    res.render(req.params.modId + '/intro/' + req.params.modId + '_intro5', {
         title: 'Intro'
     });
 });
