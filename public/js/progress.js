@@ -1,7 +1,8 @@
-function postModuleProgress(link_to_post, percent_to_post) {
+function postModuleProgress(module_id, link_to_post, percent_to_post) {
+    // console.log("In postModuleProgress function *****************************************************************");
+    // console.log("THE MODULE ID IS: " + module_id);
     // console.log("THE NEXT LINX IS: " + link_to_post);
     // console.log("THE PERCENT TO POST IS: " + percent_to_post);    
-    
     // resource: https://stackoverflow.com/questions/2190801/passing-parameters-to-javascript-files
     // let this_js_script = $('script[src*=progress]');
     // let percent_to_post = this_js_script.attr('percent');   
@@ -11,9 +12,9 @@ function postModuleProgress(link_to_post, percent_to_post) {
     // console.log(percent_to_post);
     // console.log(link_to_post);
 
-    let pathArray = window.location.pathname.split('/');
-    let subdirectory1 = pathArray[1]; // e.g. "intro"
-    let subdirectory2 = pathArray[2]; // e.g. "identity"
+    // let pathArray = window.location.pathname.split('/');
+    // let subdirectory1 = pathArray[1]; // e.g. "intro"
+    // let subdirectory2 = pathArray[2]; // e.g. "identity"
 
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
@@ -26,7 +27,7 @@ function postModuleProgress(link_to_post, percent_to_post) {
         },
         //data to be sent in the request body
         body: JSON.stringify({
-            "modID": subdirectory2, // current module ID so we can update the right module in the database
+            "modID": module_id, // current module ID so we can update the right module in the database
             "percent": percent_to_post, // percent of the module completed
             "link": link_to_post, // link to the current page
         })

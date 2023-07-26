@@ -4,17 +4,65 @@
       display: none !important;
     }
 } */
+html {
+    font-size: 1rem;
+}
 
+header,
+footer {
+    z-index: 9999999999 !important;
+}
+
+
+
+/* Flexbox method to position the header, page content / article, and footer correctly*/
+/* Source: https://stackoverflow.com/questions/643879/css-to-make-html-page-footer-stay-at-bottom-of-the-page-with-a-minimum-height-b */
+body{ 
+    min-height: 100vh; 
+    /* margin:0;  */
+    background: white;   
+    /* fix so that the whole page doesn't shift on the "short" pages due to scroll bar being absent */
+    overflow-y: scroll !important;
+    font-family: 'Inter', sans-serif;
+}
+
+#page-header{ 
+    min-height:50px;
+}
+
+#page-footer{ 
+    min-height: 50px;
+}
+
+/* The article fills all the space between header & footer */
+body{ 
+    display:flex; 
+    flex-direction:column; 
+}
+
+/*  flex 1 to grow and shrink as necessary to fill available space in the flex container */
+#page-article{ 
+    flex:1; 
+
+    /* padding to stop it from clipping under the header progress bar */
+    padding-top: 20px;
+
+}
+
+
+
+
+
+#raised-content {
+    font-size: 1.5rem;
+}
 
 #raised-container { 
     /* background: yellow;  */
-    margin-top: 20px; 
-    padding-top: 0;
+    margin-top: 0px; 
+    padding-top: 0px;
 }
 
-.limit {
-    font-size: 1.5rem;
-}
 
 body{ 
     /* overflow-y: hidden !important; */
@@ -63,9 +111,13 @@ header {
 /* inline so the bubbles like 100 learners today will show up next to it */
 #mod-title {
     display: inline-block;
-    font-size: 2rem;
+    font-size: 2.15rem;
     font-weight: 600;
     font-family: 'Inter', sans-serif; 
+}
+
+li strong, li u {
+    font-weight: 600;
 }
 
 #learn-title {
@@ -283,7 +335,7 @@ u {
     flex-direction: column; 
     align-items: center; 
     justify-content: center; 
-    margin-right: 30px;
+    margin-right: 50px;
 }
 
 #section-grid .four.wide.column p {
@@ -351,3 +403,63 @@ i.big.unlock.icon {
 .keyTermDefinition ul {
     font-weight: 400;
 } */
+
+
+
+.limit {
+    font-size: 1.5rem;
+    position: relative;
+    padding-left: 9rem; 
+    padding-right: 9rem;
+    margin: 0 auto;
+}
+
+/* Adjust text raised segment text padding */
+@media (max-width: 1200px) {
+    .limit {
+        padding-left: 2rem; 
+        padding-right: 2rem;
+    }
+
+    #page-article{ 
+        /* padding to stop it from clipping under the header progress bar */
+        padding-top: 60px;
+        /* background-color: red; */
+    }
+    
+}
+
+/* Adjust text raised segment text padding */
+@media (max-width: 920px) {
+    .limit {
+        padding-left: 1rem; 
+        padding-right: 1rem;
+    }
+
+    #page-article{ 
+        /* padding to stop it from clipping under the header progress bar */
+        /* padding-top: 60px; */
+        /* background-color: orange; */
+
+    }
+}
+
+
+@media (max-width: 430px) {
+    /* hide bubbles so they don't get squished */
+    .bubble-container {
+        display: none !important;
+    }
+
+    .limit {
+        padding-left: 0rem; 
+        padding-right: 0rem;
+    }
+
+    #page-article{ 
+        /* padding to stop it from clipping under the header progress bar */
+        /* padding-top: 65px;
+        background-color: yellow; */
+
+    }
+}

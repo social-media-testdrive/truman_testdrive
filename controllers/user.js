@@ -205,10 +205,10 @@ exports.postInstructorLogin = (req, res, next) => {
 
 
 exports.postModuleProgress = (req, res, next) => { // response second
-    // console.log("In POST module progess request body***********")
+    // console.log("In POST module progess request body***********************YOOOOO****")
     // console.log(req.body)
     // console.log("BEFORE In POST module progess request user***********")
-    console.log(req.user)
+    // console.log(req.user)
     // req.user.moduleProgress.identity.link = "/BEYONCE"
     // console.log("AFTER In POST module progess request user***********")
     // console.log(req.user)

@@ -8,7 +8,8 @@ block content
       h1.ui.header.large#mod-title
         .content
           | Challenge
-      p Want to try a challenge before we start? 
+      p Want to try a challenge and earn your first badge? 
+      p If you'd rather proceed directly to the DART Learn lesson, click "Skip"
       .ui.grid#to_earn_badge
         .three.column.row
           .column
@@ -17,8 +18,8 @@ block content
               p <strong>Challenge</strong>
                 br
                 | <strong>Conqueror</strong>
-      p Earn your first badge by completing this task! 
-      p If you'd rather proceed directly to the DART Learn lesson, click "Skip"
+
+
     //- +navButtons('/intro2/identity', '/challenge2/identity', 'Back' , 'Take', true, '/submod/learn/identity')  
     //- Fill progress bar to correct percent and color 
     script.
@@ -27,12 +28,11 @@ block content
 
 block append footer
   .ui.container
-    +navButtons('/intro2/identity', '/challenge2/identity', 6, 'Back' , 'Take', true, '/submod/learn/identity')
+    +navButtons('identity', '/intro2/identity', '/challenge2/identity', 6, 'Back' , 'Challenge', true, '/submod/learn/identity')
 
 
 block styles
-  link(rel='stylesheet', href='/css/module.css')  
-  link(rel='stylesheet', href='/css/evaluate.css')  
+  link(rel='stylesheet', href='/css/challenge.css')  
   //- link(rel='stylesheet', href='/css/short-page-footer-fixed.css')  
 
     

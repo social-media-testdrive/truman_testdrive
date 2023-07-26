@@ -1,10 +1,14 @@
-mixin navButtons(backLink, nextLink, percent, backText='Back', nextText='Next', skipBtn=false, skipLink)
+mixin navButtons(modId, backLink, nextLink, percent, backText='Back', nextText='Next', skipBtn=false, skipLink)
   .ui.container#nav-container
+    //- p modId: #{modId}
+    //- p backLink: #{backLink}
+    //- p nextLink: #{nextLink}
+    //- p percent: #{percent}
     .div#nav-menu
       button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='" + backLink + "';")
         i.arrow.left.icon
         | #{backText}
-      button.ui.huge.blue.button.right.floated#nextButton(onclick="postModuleProgress('" + nextLink + "', '" + percent + "');")
+      button.ui.huge.blue.button.right.floated#nextButton(onclick="postModuleProgress('" + modId + "', '" + nextLink + "', '" + percent + "');")
         | #{nextText}
         i.arrow.right.icon
       if skipBtn

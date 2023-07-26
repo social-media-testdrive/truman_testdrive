@@ -32,14 +32,13 @@ header a.item.dart-blue {
     margin-top: 50px;
 }
 
-.short-page-margin {
+/* .short-page-margin {
     margin-top: 23px !important;
-    /* background-color: saddlebrown; */
 }
 
 .short-page-margin2 {
     margin-top: 50px !important;
-}
+} */
 
 #raised-content {
     font-size: 1.5rem;
@@ -130,6 +129,6 @@ body{
 
 
 img.ui.small.image.dart-logo {
-padding: 0 !important;
+    padding: 0 !important;
     margin: 0 !important;
 }

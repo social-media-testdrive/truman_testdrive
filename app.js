@@ -755,17 +755,17 @@ app.get('/challenge/:modId', passportConfig.isAuthenticated, setHttpResponseHead
 
 app.get('/challenge2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, async function(req, res) {
     let quizData;
-    console.log("the dir name");
-    console.log(__dirname)
+    // console.log("the dir name");
+    // console.log(__dirname)
     const data = await fs.readFileAsync(`${__dirname}/public2/json/quizData.json`);
-    console.log("the data is");
-    console.log(data);
-    console.log("modID")
-    console.log(req.params.modId)
+    // console.log("the data is");
+    // console.log(data);
+    // console.log("modID")
+    // console.log(req.params.modId)
 
     quizData = JSON.parse(data.toString())[req.params.modId];
 
-    console.log("BEYONCE quiz data: " + quizData)
+    // console.log("BEYONCE quiz data: " + quizData)
 
     res.render(req.params.modId + '/challenge/' + req.params.modId + '_challenge2', {
         title: 'Quiz',
