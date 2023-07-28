@@ -23,11 +23,24 @@ block content
           u Medical identity theft
           |  happens when scammers use your personal identifiable information to submit fraudulent claims to Medicare or other health insurers without your authorization.
     
-      .ui.one.column.centered.grid#avatarGrid
-        .ui.large.right.pointing.label#speechBubble
-          span
-            p#speechText(style="font-size: 1.3rem; text-align: left") Please remember that there are numerous ways in which identity theft can occur other than these three types. You can check out <a href="https://www.aarp.org/money/scams-fraud/">AARP’s Fraud Resources </a> for more information about different types of scams.
-        img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png' style="float: right")
+      //- .ui.one.column.centered.grid#avatarGrid
+      //-   .ui.large.right.pointing.label#speechBubble
+      //-     span
+      //-       p#speechText(style="font-size: 1.3rem; text-align: left") Please remember that there are numerous ways in which identity theft can occur other than these three types. You can check out <a href="https://www.aarp.org/money/scams-fraud/">AARP’s Fraud Resources </a> for more information about different types of scams.
+      //-   img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png' style="float: right")
+      
+      .ui.icon.blue.message(style="padding-top: 2px;padding-bottom: 2px; padding-right: 2px; padding-left: 0; margin-left: 0;")
+        //- i.info.circle.icon
+                  .avatar(style="width: 100%; height: 100%; overflow: hidden; position: relative;background: red !important; border: 2px solid green;")
+        .icon(style="height: 125px !important; width: 175px; overflow: hidden;")
+          img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png' style="width: 200px; height: 200px; object-fit: cover; object-position: top center;")
+        .content(style="background: white; height: 100%;padding: 10px;padding-left: 15px;")
+          .header
+            //- i.info.circle.icon
+            | Important
+          p Check out <a href="https://www.aarp.org/money/scams-fraud/">AARP’s Fraud Resources </a> for more information about different types of scams.
+      
+      
       br
     script.
         var progress = #{user.moduleProgress.identity.percent}

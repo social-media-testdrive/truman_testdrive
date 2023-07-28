@@ -21,7 +21,7 @@ block content
         ul
           li 
             strong fraudulently apply 
-            | for loans and credt cards, resulting in financial losses, decreases in credit scores, and future difficulty receiving loans
+            | for loans and credit cards, resulting in financial losses, decreases in credit scores, and future difficulty receiving loans
           li 
             strong withdraw your money 
             | from your bank accounts without your permission
@@ -32,10 +32,17 @@ block content
           li 
             strong commit crimes 
             | under your name or by using your email accounts
-      .ui.one.column.centered.grid#avatarGrid
-        .ui.large.right.pointing.label#speechBubble
-          p#speechText(style="font-size: 1.3rem; text-align: left") Please keep in mind that this list is not exhaustive. Scammers can misuse your identity for their own benefit in many different ways!
-        img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png' style="float: right")
+      .ui.icon.blue.message(style="padding-top: 2px;padding-bottom: 2px; padding-right: 2px; padding-left: 0; margin-left: 0;")
+        //- i.info.circle.icon
+                  .avatar(style="width: 100%; height: 100%; overflow: hidden; position: relative;background: red !important; border: 2px solid green;")
+        .icon(style="height: 125px !important; width: 175px; overflow: hidden;")
+          img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png' style="width: 200px; height: 200px; object-fit: cover; object-position: top center;")
+        .content(style="background: white; height: 100%;padding: 10px;padding-left: 15px;")
+          .header
+            //- i.info.circle.icon
+            | Important
+          p Scammers can misuse your identity for their own benefit in many different ways!
+      
       br
 
     script.
