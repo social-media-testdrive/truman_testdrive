@@ -758,19 +758,19 @@ app.get('/challenge2/:modId', passportConfig.isAuthenticated, setHttpResponseHea
     let quizData;
     // console.log("the dir name");
     // console.log(__dirname)
-    const data = await fs.readFileAsync(`${__dirname}/public2/json/quizData.json`);
+    const data = await fs.readFileAsync(`${__dirname}/public2/json/` +  req.params.modId + `/challenge.json`);
     // console.log("the data is");
     // console.log(data);
     // console.log("modID")
     // console.log(req.params.modId)
 
-    quizData = JSON.parse(data.toString())[req.params.modId];
+    quizData = JSON.parse(data.toString());
 
     // console.log("BEYONCE quiz data: " + quizData)
 
     res.render(req.params.modId + '/challenge/' + req.params.modId + '_challenge2', {
         title: 'Quiz',
-        quizData,
+        quizData
     });
 });
 
@@ -1330,7 +1330,7 @@ app.get('/guest/:modId', setHttpResponseHeaders, isValidModId, userController.ge
 
 app.post('/chatbot', check, setHttpResponseHeaders, csrfProtection, userController.postChatbotConnect);
 
-app.get('/moduleprogress/:modId', check, setHttpResponseHeaders, csrfProtection, userController.getModuleProgress);
+// app.get('/moduleprogress/:modId', check, setHttpResponseHeaders, csrfProtection, userController.getModuleProgress);
 
 app.post('/postModuleProgress', check, setHttpResponseHeaders, csrfProtection, userController.postModuleProgress);
 
@@ -1489,7 +1489,7 @@ if (enableTeacherDashboard) {
     app.get('/classUsernames/:classId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, classController.getClassUsernames);
     app.get('/classPageTimes/:classId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, classController.getClassPageTimes);
     app.get('/classPageTimes/:classId/:modName', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, classController.getClassPageTimes);
-    app.get('/moduleProgress/:classId', passportConfig.isAuthenticated, setHttpResponseHeaders, classController.getModuleProgress);
+    // app.get('/moduleProgress/:classId', passportConfig.isAuthenticated, setHttpResponseHeaders, classController.getModuleProgress);
     app.get('/classReflectionResponses/:classId', passportConfig.isAuthenticated, setHttpResponseHeaders, classController.getReflectionResponses);
     app.get('/classFreeplayActions/:classId/:modName', passportConfig.isAuthenticated, setHttpResponseHeaders, classController.getClassFreeplayActions);
     app.get('/studentReportData/:classId/:username', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, userController.getStudentReportData);

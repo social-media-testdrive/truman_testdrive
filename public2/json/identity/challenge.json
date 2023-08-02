@@ -1,0 +1,73 @@
+{
+  "Q1": {
+    "type": "radio",
+    "image": "q1.png",
+    "prompt": "Is identity theft bad?",
+    "radioLabels": {
+        "0": {
+            "text": "Losing money.",
+            "explanation": "Explanation for q1 0"
+        },
+        "1": {
+            "text": "Losing medical care",
+            "explanation": "Explanation for q1 1"
+        },
+        "2": {
+            "text": "Getting arrested by a wrong charge.",
+            "explanation": "Explanation for q1 2"
+        },
+        "3": {
+          "text": "This correct answer",
+          "explanation": "Explanation for q1 3"
+        }
+    },
+    "correctResponse": "3"
+  },
+  "Q2": {
+      "type": "true_false",
+      "image": "/images/identity/challenge/q2",
+      "prompt": "Is this email a scam?",
+      "trueFalseLabels": {
+        "true": {
+          "text": "True",
+          "explanation": "Explanation for the true statement."
+        },
+        "false": {
+          "text": "False",
+          "explanation": "Explanation for the false statement."
+        }
+      },
+      "correctResponse": "true"
+  },
+  "Q3": {
+      "type": "multi_select",
+      "prompt": "What could occur if your identity is stolen? Select all that apply.",
+      "checkboxLabels": {
+          "0": {
+            "text": "Loss of money",
+            "explanation": "If your identity is stolen, you may experience financial losses as the thief might gain access to your bank accounts or use your credit cards."
+          },
+          "1": {
+            "text": "Loss of tax refund",
+            "explanation": "Identity thieves may fraudulently claim and receive your tax refund, leading to financial losses and potential complications with the tax authorities."
+          },
+          "2": {
+            "text": "Be charged as a criminal",
+            "explanation": "In some cases of identity theft, the thief may commit crimes using your identity, which could result in you being wrongfully charged for those offenses."
+          },
+          "3": {
+            "text": "Denial of loans",
+            "explanation": "Identity theft can damage your credit score and history, leading to loan denials or unfavorable loan terms when you legitimately apply for credit."
+          },
+          "4": {
+            "text": "Loss of medical care",
+            "explanation": "If someone else uses your identity for medical services, it can lead to confusion in medical records and even denial of access to your own healthcare services."
+          },
+          "5": {
+            "text": "Be refused employment",
+            "explanation": "Identity theft can negatively impact your background checks and employment verification, leading to potential job rejections."
+          }
+      },
+      "correctResponse": ["0", "1", "2", "3", "4", "5"]
+    }            
+}

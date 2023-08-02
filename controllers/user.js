@@ -205,8 +205,8 @@ exports.postInstructorLogin = (req, res, next) => {
 
 
 exports.postModuleProgress = (req, res, next) => { // response second
-    // console.log("In POST module progess request body***********************YOOOOO****")
-    // console.log(req.body)
+    console.log("In POST module progess request body***********************YOOOOO****")
+    console.log(req.body)
     // console.log("BEFORE In POST module progess request user***********")
     // console.log(req.user)
     // req.user.moduleProgress.identity.link = "/BEYONCE"
@@ -223,9 +223,9 @@ exports.postModuleProgress = (req, res, next) => { // response second
         }
         if (existingUser) {
             // don't revert progress when they user presses back buttons to review
-            if (req.body.percent == 0 || req.body.percent > existingUser.moduleProgress.identity.percent) {
-                existingUser.moduleProgress[module_to_update].percent = req.body.percent;
-            }
+            // if (req.body.percent == 0 || req.body.percent > existingUser.moduleProgress.identity.percent) {
+            existingUser.moduleProgress[module_to_update].percent = req.body.percent;
+            // }
             existingUser.moduleProgress[module_to_update].link = req.body.link;            
 
             // save to mongodb database
@@ -254,41 +254,41 @@ exports.postModuleProgress = (req, res, next) => { // response second
     });
 }; 
 
-exports.getModuleProgress = (req, res, next) => {
-    // console.log(req.params)
-    // console.log("ModuleToGet: " + moduleToGet);
-    // console.log(req.user.username);
-    const moduleToGet = req.params.modId; // Accessing the value of :modId
+// exports.getModuleProgress = (req, res, next) => {
+//     // console.log(req.params)
+//     // console.log("ModuleToGet: " + moduleToGet);
+//     // console.log(req.user.username);
+//     const moduleToGet = req.params.modId; // Accessing the value of :modId
 
-    User.findOne({ username: req.user.username }, (err, existingUser) => {
-        if (err) {
-          return next(err);
-        }
+//     User.findOne({ username: req.user.username }, (err, existingUser) => {
+//         if (err) {
+//           return next(err);
+//         }
 
-        try {
-            if (existingUser) {
-                // console.log("The user exists! Here is the module progress:")
-                // console.log(existingUser.moduleProgress[moduleToGet])
+//         try {
+//             if (existingUser) {
+//                 // console.log("The user exists! Here is the module progress:")
+//                 // console.log(existingUser.moduleProgress[moduleToGet])
 
-                // ensure the value exists before trying to access it
-                if (existingUser.moduleProgress[moduleToGet]) {
-                    console.log("GET Module Progress SUCCESSFUL");
-                    res.json(existingUser.moduleProgress[moduleToGet]);
-                } else {
-                    console.log(`Module progress for ${moduleToGet} not found`);
-                    res.status(404).json({ message: 'Module progress not found' });
-                }
+//                 // ensure the value exists before trying to access it
+//                 if (existingUser.moduleProgress[moduleToGet]) {
+//                     console.log("GET Module Progress SUCCESSFUL");
+//                     res.json(existingUser.moduleProgress[moduleToGet]);
+//                 } else {
+//                     console.log(`Module progress for ${moduleToGet} not found`);
+//                     res.status(404).json({ message: 'Module progress not found' });
+//                 }
                 
-            } else {
-                console.log('User not found');
-                res.status(404).json({ message: 'User not found' });
-            }
-        } catch (error) {
-            console.error(error);
-            res.status(500).json({ message: 'Internal server error' });
-        }            
-      });  
-};
+//             } else {
+//                 console.log('User not found');
+//                 res.status(404).json({ message: 'User not found' });
+//             }
+//         } catch (error) {
+//             console.error(error);
+//             res.status(500).json({ message: 'Internal server error' });
+//         }            
+//       });  
+// };
   
 
 exports.postIdentityTheftPreQuizScore = (req, res, next) => {

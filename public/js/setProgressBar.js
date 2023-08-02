@@ -1,6 +1,3 @@
-console.log("hello frome her");
-console.log(progress);
-
 // update the indentity theft progress bar
 const progressBar = document.getElementById('theft-progress');
 if (progressBar) {

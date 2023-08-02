@@ -1,32 +1,37 @@
 extends ../../module_layout
-
 block content
+  .ui.container#raised-container
+    .limit
+        each questionKey in Object.keys(quizData)
+            - const question = quizData[questionKey]
+            .ui.segment.question
+                img(src=question.image, alt=`Question ${questionKey}`)
+                .prompt= question.prompt
 
-    .ui.container#raised-container
-        .ui.raised.segment 
-            - if (quizData)
-                //- p #{quizData}
-                //- p #{JSON.stringify(quizData)}
-                each question, key in quizData
-                    .ui.segment
-                        h3= question.prompt
-                        .ui.form
-                        each label, value in question.radioLabels
-                            .grouped.fields
-                            .field
-                                .ui.radio.checkbox
-                                input(type="radio" name=key id=`${key}_${value}` value=value)
-                                label(for=`${key}_${value}`)= label
+                if question.type === "radio"
+                    each key in Object.keys(question.radioLabels)
+                        label
+                            input(type="radio" name=questionKey value=key)
+                            span= question.radioLabels[key].text
+                    p.explanation= question.radioLabels[question.correctResponse].explanation
 
-            - else
-            p No quiz data available.
+                else if question.type === "true_false"
+                    each key in Object.keys(question.trueFalseLabels)
+                        label
+                            input(type="radio" name=questionKey value=key)
+                            span= question.trueFalseLabels[key].text
+                    p.explanation= question.trueFalseLabels[question.correctResponse].explanation
 
-        //- +navButtons('/challenge/identity', '/challenge3/identity', 'Back', 'Next')  
-    //- Fill progress bar to correct percent and color 
-    script.
-        var progress = #{user.moduleProgress.identity.percent}
-    script(src='/js/setProgressBar.js')  
-
+                else if question.type === "multi_select"
+                    each key in Object.keys(question.checkboxLabels)
+                        label
+                            input(type="checkbox" name=questionKey value=key)
+                            span= question.checkboxLabels[key].text
+                    p.explanation
+                        | Correct options:
+                        each key in question.correctResponse
+                            br
+                            span= question.checkboxLabels[key].text
 block append footer
   .ui.container
     +navButtons('identity', '/challenge/identity', '/challenge3/identity', 8, 'Back', 'Next')  
