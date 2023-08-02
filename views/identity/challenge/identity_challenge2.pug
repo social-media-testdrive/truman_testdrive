@@ -1,49 +1,69 @@
 extends ../../module_layout
 block content
-  .ui.container#raised-container
-    .limit
-        each questionKey in Object.keys(quizData)
-            - const question = quizData[questionKey]
-            .ui.segment.question
-                img(src=question.image, alt=`Question ${questionKey}`)
-                .prompt= question.prompt
+    //- img(src='/images/identity/challenge/q1.png')
+    .ui.container#raised-container
+        .limit
+            br
+            each questionKey in Object.keys(quizData)
+                - const question = quizData[questionKey]
+                .ui.segment.question
+                    h3 Question #{questionKey}
+                    //- img(src='/images/identity/challenge/' + question.image, alt=`Question ${questionKey}`)
+                    .prompt= question.prompt
 
-                if question.type === "radio"
-                    each key in Object.keys(question.radioLabels)
-                        label
-                            input(type="radio" name=questionKey value=key)
-                            span= question.radioLabels[key].text
-                    p.explanation= question.radioLabels[question.correctResponse].explanation
+                    if question.type === "radio"
+                        each key in Object.keys(question.radioLabels)
+                            label
+                                input(type="radio" name=questionKey value=key)
+                                span= question.radioLabels[key].text
+                        p.explanation= question.radioLabels[question.correctResponse].explanation
 
-                else if question.type === "true_false"
-                    each key in Object.keys(question.trueFalseLabels)
-                        label
-                            input(type="radio" name=questionKey value=key)
-                            span= question.trueFalseLabels[key].text
-                    p.explanation= question.trueFalseLabels[question.correctResponse].explanation
+                    else if question.type === "yes_no"
+                        br
+                        img(src='/images/identity/challenge/' + question.image, alt=`Question ${questionKey}`)
+                        br
+                        each key in Object.keys(question.yesNoLabels)
+                            label
+                                input(type="radio" name=questionKey value=key)
+                                span= question.yesNoLabels[key].text
+                        //- p.explanation= question.yesNoLabels[question.correctResponse].explanation
 
-                else if question.type === "multi_select"
-                    each key in Object.keys(question.checkboxLabels)
-                        label
-                            input(type="checkbox" name=questionKey value=key)
-                            span= question.checkboxLabels[key].text
-                    p.explanation
-                        | Correct options:
-                        each key in question.correctResponse
-                            br
-                            span= question.checkboxLabels[key].text
-block append footer
-  .ui.container
-    +navButtons('identity', '/challenge/identity', '/challenge3/identity', 8, 'Back', 'Next')  
-
-
-
-
-block scripts
+                    else if question.type === "multi_select"
+                        each key in Object.keys(question.checkboxLabels)
+                            label
+                                input(type="checkbox" name=questionKey value=key)
+                                span= question.checkboxLabels[key].text
+                        p.explanation
+                            | Correct options:
+                            each key in question.correctResponse
+                                br
+                                span= question.checkboxLabels[key].text
     script.
-        var quizData = !{JSON.stringify(quizData)}; // quizData is passed to pug file via render function in app.js
-        console.log("quizData in pug challenge 2 file");
-        console.log(quizData);
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+    .ui.container
+        //- +navButtons('identity', '/challenge/identity', '/challenge3/identity', 8, 'Back', 'Next')  
+        .ui.container#nav-container
+            .div#nav-menu
+                button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/challenge/identity';") 
+                    i.arrow.left.icon 
+                    | Back
+                button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/challenge3/identity';")
+                    | Next
+                    i.arrow.right.icon
+
+
+
+
+
+
+//- block scripts
+//-     script.
+//-         var quizData = !{JSON.stringify(quizData)}; // quizData is passed to pug file via render function in app.js
+//-         console.log("quizData in pug challenge 2 file");
+//-         console.log(quizData);
         //- const shuffledQuestions = shuffleArray(questions);
         //- function shuffleArray(array) {
         //-     let currentIndex = array.length, randomIndex;

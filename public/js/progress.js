@@ -9,12 +9,12 @@ function postModuleProgress(module_id, link_to_post, percent_to_post, current_pe
     // let link_to_post = this_js_script.attr('link');   
 
 
-    console.log("VALUE CHECK: " + (percent_to_post > current_percent));
-    if(percent_to_post < current_percent) { 
-        console.log("***Percent to post (" + percent_to_post + ") is NOT greater than current percent (" + current_percent + "). So don't update in database ***");
-    } else {
-        console.log("***Percent to post (" + percent_to_post + ") is greater than current percent " + current_percent + ". So do update in database ***");
-    }
+    // console.log("VALUE CHECK: " + (percent_to_post > current_percent));
+    // if(percent_to_post < current_percent) { 
+    //     console.log("***Percent to post (" + percent_to_post + ") is NOT greater than current percent (" + current_percent + "). So don't update in database ***");
+    // } else {
+    //     console.log("***Percent to post (" + percent_to_post + ") is greater than current percent " + current_percent + ". So do update in database ***");
+    // }
 
     // console.log("In progress.js");
     // console.log(percent_to_post);
@@ -24,7 +24,8 @@ function postModuleProgress(module_id, link_to_post, percent_to_post, current_pe
     // let subdirectory1 = pathArray[1]; // e.g. "intro"
     // let subdirectory2 = pathArray[2]; // e.g. "identity"
 
-    if(percent_to_post < current_percent && percent_to_post < 100) {
+    // if(percent_to_post > current_percent && percent_to_post < 100) {
+    if(percent_to_post > current_percent) {
         const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
         // POST module progress to database

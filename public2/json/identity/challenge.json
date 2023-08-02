@@ -1,45 +1,69 @@
 {
-  "Q1": {
-    "type": "radio",
+  "1": {
+    "type": "yes_no",
     "image": "q1.png",
-    "prompt": "Is identity theft bad?",
-    "radioLabels": {
-        "0": {
-            "text": "Losing money.",
-            "explanation": "Explanation for q1 0"
-        },
-        "1": {
-            "text": "Losing medical care",
-            "explanation": "Explanation for q1 1"
-        },
-        "2": {
-            "text": "Getting arrested by a wrong charge.",
-            "explanation": "Explanation for q1 2"
-        },
-        "3": {
-          "text": "This correct answer",
-          "explanation": "Explanation for q1 3"
-        }
+    "prompt": "Is this email a scam?",
+    "yesNoLabels": {
+      "yes": {
+        "text": "Yes",
+        "explanation": "Explanation for the yes statement."
+      },
+      "no": {
+        "text": "No",
+        "explanation": "Explanation for the no statement."
+      }
     },
-    "correctResponse": "3"
-  },
-  "Q2": {
-      "type": "true_false",
-      "image": "/images/identity/challenge/q2",
+    "correctResponse": "Yes"
+},
+  "2": {
+      "type": "yes_no",
+      "image": "q2.png",
       "prompt": "Is this email a scam?",
-      "trueFalseLabels": {
-        "true": {
-          "text": "True",
-          "explanation": "Explanation for the true statement."
+      "yesNoLabels": {
+        "yes": {
+          "text": "Yes",
+          "explanation": "Explanation for the yes statement."
         },
-        "false": {
-          "text": "False",
-          "explanation": "Explanation for the false statement."
+        "no": {
+          "text": "No",
+          "explanation": "Explanation for the no statement."
         }
       },
-      "correctResponse": "true"
+      "correctResponse": "Yes"
   },
-  "Q3": {
+  "3": {
+    "type": "yes_no",
+    "image": "q3.png",
+    "prompt": "Is this message a scam?",
+    "yesNoLabels": {
+      "yes": {
+        "text": "Yes",
+        "explanation": "Explanation for the yes statement."
+      },
+      "no": {
+        "text": "No",
+        "explanation": "Explanation for the no statement."
+      }
+    },
+    "correctResponse": "Yes"
+  },
+  "4": {
+    "type": "yes_no",
+    "image": "q4.png",
+    "prompt": "Is this message a scam?",
+    "yesNoLabels": {
+      "yes": {
+        "text": "Yes",
+        "explanation": "Explanation for the yes statement."
+      },
+      "no": {
+        "text": "No",
+        "explanation": "Explanation for the no statement."
+      }
+    },
+    "correctResponse": "Yes"
+  },
+  "5": {
       "type": "multi_select",
       "prompt": "What could occur if your identity is stolen? Select all that apply.",
       "checkboxLabels": {
@@ -60,14 +84,14 @@
             "explanation": "Identity theft can damage your credit score and history, leading to loan denials or unfavorable loan terms when you legitimately apply for credit."
           },
           "4": {
-            "text": "Loss of medical care",
-            "explanation": "If someone else uses your identity for medical services, it can lead to confusion in medical records and even denial of access to your own healthcare services."
+            "text": "Improved online security",
+            "explanation": "Identity theft weakens security by compromising personal information and enabling unauthorized access rather than enhancing protection."
           },
           "5": {
-            "text": "Be refused employment",
-            "explanation": "Identity theft can negatively impact your background checks and employment verification, leading to potential job rejections."
+            "text": "Getting a discount on online shopping",
+            "explanation": "Identity theft typically leads to financial losses for the victim, not benefits like discounts."
           }
       },
-      "correctResponse": ["0", "1", "2", "3", "4", "5"]
+      "correctResponse": ["0", "1", "2", "3"]
     }            
 }
