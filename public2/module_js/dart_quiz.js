@@ -41,19 +41,19 @@ function displayCurrentQuestion()
     $(".question").text(questionPrompt);
 
     // Create and append the image element
-    const imageContainer = $(".image");
-    const imageSrc = '/images/identity/challenge/' + question.image;
-    const imageElement = $("<img>").attr("src", imageSrc);
-    imageContainer.append(imageElement);
+    // const imageContainer = $(".image");
+    // const imageSrc = '/images/identity/challenge/' + question.image;
+    // const imageElement = $("<img>").attr("src", imageSrc);
+    // imageContainer.append(imageElement);
 
-    const pugImageContainer = $(".pugImage");
+    const htmlImageContainer = $(".htmlImage");
     // const pugImageSrc = 'include ../../partials/identity/challenge/' + question.partial;
     // const pugImageElement = $("<include>")
 
     //     http://localhost:3000/quizPartials/identity/challenge/q1.html
-    $.get("/quizPartials/identity/challenge/q1.html", function(data) {
+    $.get("/quizPartials/identity/challenge/" + question.partial, function(data) {
         // 'data' contains the content of the Pug template
-        pugImageContainer.append(data);
+        htmlImageContainer.append(data);
     });
 
     // Remove all current <li> elements (if any)

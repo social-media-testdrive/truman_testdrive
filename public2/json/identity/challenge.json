@@ -1,8 +1,7 @@
 {
   "1": {
     "type": "yes_no",
-    "partial": "PUT HERE",
-    "image": "q1.png",
+    "partial": "q1.html",
     "prompt": "1. Is this email a scam?",
     "choices": {
       "yes": {
@@ -18,7 +17,6 @@
 },
   "2": {
       "type": "yes_no",
-      "image": "q2.png",
       "prompt": "2. Is this email a scam?",
       "choices": {
         "yes": {
@@ -34,7 +32,6 @@
   },
   "3": {
     "type": "yes_no",
-    "image": "q3.png",
     "prompt": "3. Is this message a scam?",
     "choices": {
       "yes": {
@@ -50,7 +47,6 @@
   },
   "4": {
     "type": "yes_no",
-    "image": "q4.png",
     "prompt": "4. Is this message a scam?",
     "choices": {
       "yes": {

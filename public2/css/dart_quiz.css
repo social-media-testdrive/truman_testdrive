@@ -16,7 +16,7 @@
 .choiceList .ui.radio.checkbox{
     border-radius: 10px; 
     border: 2px solid gray;
-    width: 30%;
+    width: 350px;
     text-align: left;
     padding: 20px;
 
@@ -40,7 +40,7 @@ label {
     font-size: 1.5rem !important;
 }
 
-i.apple.large.icon {
+i.apple.big.icon {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -52,7 +52,7 @@ i.apple.large.icon {
 }
 
 #q1-quiz-partial p {
-    font-size: 1.2rem !important;
+    font-size: 1.5rem !important;
 }
 
 ui.header.centered.aligned {
