@@ -1,46 +1,118 @@
 extends ../../module_layout
 block content
     //- img(src='/images/identity/challenge/q1.png')
-    .ui.container#raised-container
+    .ui.container.quizContainer#raised-container
         .limit
             br
-            each questionKey in Object.keys(quizData)
-                - const question = quizData[questionKey]
-                .ui.segment.question
-                    h3 Question #{questionKey}
-                    //- img(src='/images/identity/challenge/' + question.image, alt=`Question ${questionKey}`)
-                    .prompt= question.prompt
+            br
+            .question 
+            .pugImage
+            .image
+            .choiceList
+            .quizMessage
+            .result
+            br
+            br
+            br
+            br
+            button.preButton Previous Question
+            button.nextButton Next Question
 
-                    if question.type === "radio"
-                        each key in Object.keys(question.radioLabels)
-                            label
-                                input(type="radio" name=questionKey value=key)
-                                span= question.radioLabels[key].text
-                        p.explanation= question.radioLabels[question.correctResponse].explanation
+            //- include partials/identity/challenge/q1.pug
 
-                    else if question.type === "yes_no"
-                        br
-                        img(src='/images/identity/challenge/' + question.image, alt=`Question ${questionKey}`)
-                        br
-                        each key in Object.keys(question.yesNoLabels)
-                            label
-                                input(type="radio" name=questionKey value=key)
-                                span= question.yesNoLabels[key].text
-                        //- p.explanation= question.yesNoLabels[question.correctResponse].explanation
+            //- .ui.raised.segments
+            //-     //- .title
+            //-     //-     .ui.basic.segment
+            //-     //-     i.envelope.outline.icon
+            //-     //-     | Customer Service Follow-up
+            //-     .content
+            //-         .ui.segment
+            //-             i.apple.big.icon
+            //-             .ui.header.centered.aligned(style='font-weight: bolder;') Thanks for choosing Apple.
+            //-             p Dear Customer,
+            //-             p Thank you for contacting Apple Customer Service. We understand that you're facing some issues with your Apple device, and we're here to help!
+            //-             p Could you please provide us with more details about the problem you're experiencing? This will help us better understand the situation and provide you with the appropriate solution.
+            //-             p.purple-text You can reply to this email with the information attached.
+            //-             p.purple-text Thank you,
+            //-             p.purple-text Sarah (she/her)
+            //-             p.purple-text iTunes Store Customer Support
+            //-             p
+            //-                 a(href='' style="pointer-events: none;") http://www.apple.com/support/itunes
 
-                    else if question.type === "multi_select"
-                        each key in Object.keys(question.checkboxLabels)
-                            label
-                                input(type="checkbox" name=questionKey value=key)
-                                span= question.checkboxLabels[key].text
-                        p.explanation
-                            | Correct options:
-                            each key in question.correctResponse
-                                br
-                                span= question.checkboxLabels[key].text
+            //- br
+            //- each questionKey in Object.keys(quizData)
+            //-     - const question = quizData[questionKey]
+            //-     .ui.segment.question
+            //-         h3 Question #{questionKey}
+            //-         //- img(src='/images/identity/challenge/' + question.image, alt=`Question ${questionKey}`)
+            //-         .prompt= question.prompt
+
+            //-         if question.type === "radio"
+            //-             each key in Object.keys(question.radioLabels)
+            //-                 label
+            //-                     input(type="radio" name=questionKey value=key)
+            //-                     span= question.radioLabels[key].text
+            //-             p.explanation= question.radioLabels[question.correctResponse].explanation
+
+            //-         else if question.type === "yes_no"
+            //-             br
+            //-             img(src='/images/identity/challenge/' + question.image, alt=`Question ${questionKey}`)
+            //-             br
+            //-             each key in Object.keys(question.yesNoLabels)
+            //-                 label
+            //-                     input(type="radio" name=questionKey value=key)
+            //-                     span= question.yesNoLabels[key].text
+            //-             //- p.explanation= question.yesNoLabels[question.correctResponse].explanation
+
+            //-         else if question.type === "multi_select"
+            //-             each key in Object.keys(question.checkboxLabels)
+            //-                 label
+            //-                     input(type="checkbox" name=questionKey value=key)
+            //-                     span= question.checkboxLabels[key].text
+            //-             p.explanation
+            //-                 | Correct options:
+            //-                 each key in question.correctResponse
+            //-                     br
+            //-                     span= question.checkboxLabels[key].text
     script.
+        //- set variable the setProgressBar.js script will use to set the progress bar
         var progress = #{user.moduleProgress.identity.percent}
+
+
+        //- var questionIndexElement = document.querySelector("h3[data-question-index]");
+        //- if (questionIndexElement) {
+        //-     currentQuestionIndex = parseInt(questionIndexElement.getAttribute("data-question-index"));
+        //- }
+
     script(src='/js/setProgressBar.js')  
+
+    //- script.
+    //-     var questions = #{JSON.stringify(Object.values(quizData))};
+    //-     console.log("questions");
+    //-     console.log(questions);
+    //-     var currentQuestionIndex = 0;
+
+        //- function updateQuestion() {
+        //-     var currentQuestion = questions[currentQuestionIndex];
+        //-     if (currentQuestion) {
+        //-         // Update the content of the question element with currentQuestion data
+        //-         // You'll need to replace the content update logic according to your template structure
+
+        //-         var nextButton = document.getElementById("nextButton");
+        //-         nextButton.innerText = (currentQuestionIndex === questions.length - 1) ? "Submit" : "Next";
+        //-     }
+        //- }
+
+        //- var nextButton = document.getElementById("nextButton");
+        //- nextButton.addEventListener("click", function() {
+        //-     currentQuestionIndex++;
+        //-     if (currentQuestionIndex < questions.length) {
+        //-         updateQuestion();
+        //-     } else {
+        //-         // Handle quiz submission or further actions
+        //-     }
+        //- });
+
 
 block append footer
     .ui.container
@@ -54,6 +126,38 @@ block append footer
                     | Next
                     i.arrow.right.icon
 
+block scripts
+  script(src='/module_js/voiceover.js') 
+  script.
+    var questionData = !{JSON.stringify(quizData)}; // quizData is passed to pug file via render function in app.js
+    console.log("questionData in pug challenge 2 file");
+    console.log(questionData);
+    //- console.log(questionData[1].prompt);
+  script(src='/module_js/dart_quiz.js?v=1')
+
+//- block scripts 
+//-     script. 
+//-         var currentQuestionIndex = 0;
+
+//- block scripts
+//-     script.
+//-         var quizData = !{JSON.stringify(quizData)}; // quizData is passed to pug file via render function in app.js
+//-         console.log("quizData in pug challenge 2 file");
+//-         console.log(quizData);
+        //- const shuffledQuestions = shuffleArray(questions);
+        //- function shuffleArray(array) {
+        //-     let currentIndex = array.length, randomIndex;
+        //-     while (currentIndex !== 0) {
+        //-         randomIndex = Math.floor(Math.random() * currentIndex);
+        //-         currentIndex--;
+        //-         [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+        //-     }
+        //-     return array;
+        //- }
+        //- //- console.log("quizData")
+        //- //- console.log(quizData);
+        //- console.log("shuffledQuestions")
+        //- console.log(shuffledQuestions);
 
 
 
@@ -81,6 +185,7 @@ block append footer
 
   
 block styles
-    link(rel='stylesheet', href='/css/challenge.css')  
+    //- link(rel='stylesheet', href='/css/challenge.css')  
+    link(rel='stylesheet', href='/css/dart_quiz.css')  
 
     

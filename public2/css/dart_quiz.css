@@ -1,0 +1,61 @@
+/* Styles for displaying quiz questions */
+.question {
+    font-weight: bold;
+}
+
+.choiceList {
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-top: 20px;
+    /* align-items: center; */
+}
+
+.choiceList .ui.radio.checkbox{
+    border-radius: 10px; 
+    border: 2px solid gray;
+    width: 30%;
+    text-align: left;
+    padding: 20px;
+
+}
+
+.choiceList .ui.radio.checkbox:hover {
+    border: 2px solid black;
+    background-color: #F5F8FA;
+}
+
+/* Styles for identity challenge question 1 apple email */
+
+.purple-text {
+    color: #804477;
+    font-weight: bold;
+}
+
+.ui.raised.segments,
+.ui.segment,
+label {
+    font-size: 1.5rem !important;
+}
+
+i.apple.large.icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #A5A6AE;
+}
+
+.ui.header.centered.aligned {
+   font-weight: bolder;
+}
+
+#q1-quiz-partial p {
+    font-size: 1.2rem !important;
+}
+
+ui.header.centered.aligned {
+    font-weight: bolder;
+    font-size: 1.2rem !important;
+}

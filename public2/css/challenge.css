@@ -43,13 +43,7 @@
 .ui.raised.segments,
 .ui.segment,
 label {
-    font-size: 1.5rem !important;
-}
-
-.required-question {
-    display: inline-block; 
-    font-weight: bolder;
-    font-size: 1.7rem !important;
+    font-size: 1.5rem;
 }
 
 .purple-text {

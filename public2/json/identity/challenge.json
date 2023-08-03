@@ -1,9 +1,10 @@
 {
   "1": {
     "type": "yes_no",
+    "partial": "PUT HERE",
     "image": "q1.png",
-    "prompt": "Is this email a scam?",
-    "yesNoLabels": {
+    "prompt": "1. Is this email a scam?",
+    "choices": {
       "yes": {
         "text": "Yes",
         "explanation": "Explanation for the yes statement."
@@ -18,8 +19,8 @@
   "2": {
       "type": "yes_no",
       "image": "q2.png",
-      "prompt": "Is this email a scam?",
-      "yesNoLabels": {
+      "prompt": "2. Is this email a scam?",
+      "choices": {
         "yes": {
           "text": "Yes",
           "explanation": "Explanation for the yes statement."
@@ -34,8 +35,8 @@
   "3": {
     "type": "yes_no",
     "image": "q3.png",
-    "prompt": "Is this message a scam?",
-    "yesNoLabels": {
+    "prompt": "3. Is this message a scam?",
+    "choices": {
       "yes": {
         "text": "Yes",
         "explanation": "Explanation for the yes statement."
@@ -50,8 +51,8 @@
   "4": {
     "type": "yes_no",
     "image": "q4.png",
-    "prompt": "Is this message a scam?",
-    "yesNoLabels": {
+    "prompt": "4. Is this message a scam?",
+    "choices": {
       "yes": {
         "text": "Yes",
         "explanation": "Explanation for the yes statement."
@@ -65,8 +66,8 @@
   },
   "5": {
       "type": "multi_select",
-      "prompt": "What could occur if your identity is stolen? Select all that apply.",
-      "checkboxLabels": {
+      "prompt": "5. What could occur if your identity is stolen? Select all that apply.",
+      "choices": {
           "0": {
             "text": "Loss of money",
             "explanation": "If your identity is stolen, you may experience financial losses as the thief might gain access to your bank accounts or use your credit cards."
