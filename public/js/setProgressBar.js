@@ -8,7 +8,7 @@ if (progressBar) {
     } else if(progress == 100) {
     progressBar.querySelector('.bar').style.backgroundColor = 'blue';
     }
-    // progressBar.querySelector('.progress').textContent = progress + "%";
+    progressBar.querySelector('.progress').textContent = progress + "%";
 } else {
     console.error('Could not find progress bar element');
 }

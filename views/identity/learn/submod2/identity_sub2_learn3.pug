@@ -1,0 +1,22 @@
+extends ../../../module_layout
+
+block content
+
+  .ui.container#raised-container
+    .limit
+      h1.ui.header.large#learn-title
+        .content
+          | What are the techniques scammers use to steal your personal information?
+      p Online: Scammers often mimic a legitimate site or email address by using a slight variation in spelling. Or an email may look like it came from a legitimate company, but the actual email address is suspicious.
+                
+      br
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+  .ui.container
+    +navButtons('identity', '/submod2/learn2/identity', '/submod2/learn4/identity', 32)  
+
+block scripts
+  script(src='/js/character.js')

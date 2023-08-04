@@ -1,72 +1,68 @@
-extends ../../../ui_layout
+extends ../../../module_layout
 
 block content
 
-  .ui.container#raised-container.short-page-margin
-    .ui.fluid.tiny.three.item.fluid.menu#submod-progress-bar
-      .item.active
-        | Concept & Consequences
-      .item
-        | How To Recognize Techniques
-      .item
-        | Methods of Protection
-    .ui.raised.segment
-      #raised-content
-        .limit
-          img.ui.medium.image(src='/images/practice_progress_bar.png' style='margin-left: auto; margin-right: auto')
-          form.ui.form(style="width: 100%" action='/postIdentityTheftModOneQuizScore', method='POST')
-            input(type='hidden', name='username', value=user.username)
-            input(type='hidden', name='_csrf', value=csrfToken)
-            h3 1. Which of the following situations can be characterized as identity theft?
-            .field
-              #b1.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
-                input(type='radio' name='q1' value = 'a' id='radio1')
-                label When someone steals your personal information to commit fraud
-            .field
-              #b2.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
-                input(type='radio' id = 'c2' name='q1' value = 'b')
-                label Unauthorized use or attempted use of an existing account
-            .field
-              #b3.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
-                input(type='radio' id = 'c3' name='q1' value = 'c')
-                label Unauthorized use or attempted use personal information to open a new account
-            .field
-              #b4.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
-                input(type='radio' id = 'c4' name='q1' value = 'd')
-                label All of the above
+  .ui.container#raised-container
+    .limit
+      form.ui.form(style="width: 100%" action='/postIdentityTheftModOneQuizScore', method='POST')
+        input(type='hidden', name='username', value=user.username)
+        input(type='hidden', name='_csrf', value=csrfToken)
+        h3 1. Which of the following situations can be characterized as identity theft?
+        .field
+          #b1.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
+            input(type='radio' name='q1' value = 'a' id='radio1')
+            label When someone steals your personal information to commit fraud
+        .field
+          #b2.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
+            input(type='radio' id = 'c2' name='q1' value = 'b')
+            label Unauthorized use or attempted use of an existing account
+        .field
+          #b3.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
+            input(type='radio' id = 'c3' name='q1' value = 'c')
+            label Unauthorized use or attempted use personal information to open a new account
+        .field
+          #b4.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
+            input(type='radio' id = 'c4' name='q1' value = 'd')
+            label All of the above
 
-            h3 2. Please select all the items that you think are considered personal information.
-              .grouped.fields
-                .field
-                  img.ui.centered.image(src='/images/ssn.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:20px;margin-bottom: 20px;")
-                  div#b5.ui.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
-                    input(type='checkbox', id='q2c1', name='q2-option-1', value='1')
-                    label Social Security Number
-                .field
-                  img.ui.centered.image(src='/images/dob.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:20px;margin-bottom: 20px;")
-                  div#b6.ui.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
-                    input(type='checkbox', id='q2c2', name='q2-option-2', value='1')
-                    label Date and place of birth
-                .field
-                  img.ui.centered.image(src='/images/cvc.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:20px;margin-bottom: 20px;")
-                  div#b7.ui.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
-                    input(type='checkbox', id='q2c3', name='q2-option-3', value='1')
-                    label Credit card info: CVC, expiration date, and password
-              #submitQuestion.ui.green.button(onclick ='checkQuestion()', style='float: right') Check Answers
-              #correctness.ui.label.right.floated(style='clear: both; width: 100%; float: right; display: none')
-                p#score(style='float:right') 1.0/1 points
-              input(type='hidden', name='scoreInput', value='0', id='scoreInput')
-              br
-              br
-              button.ui.blue.button(style="float: right; clear: both" type='submit') Submit
-              h1
-              h1
-    .ui.container#nav-container
-      .div#nav-menu          
-        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/submod/learn5/identity';") 
-          i.arrow.left.icon 
-          | Back
-//- next location is in user.js postIdentityTheftModOneQuizScore
+        h3 2. Please select all the items that you think are considered personal information.
+          .grouped.fields
+            .field
+              img.ui.centered.image(src='/images/ssn.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:20px;margin-bottom: 20px;")
+              div#b5.ui.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
+                input(type='checkbox', id='q2c1', name='q2-option-1', value='1')
+                label Social Security Number
+            .field
+              img.ui.centered.image(src='/images/dob.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:20px;margin-bottom: 20px;")
+              div#b6.ui.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
+                input(type='checkbox', id='q2c2', name='q2-option-2', value='1')
+                label Date and place of birth
+            .field
+              img.ui.centered.image(src='/images/cvc.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:20px;margin-bottom: 20px;")
+              div#b7.ui.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
+                input(type='checkbox', id='q2c3', name='q2-option-3', value='1')
+                label Credit card info: CVC, expiration date, and password
+          #submitQuestion.ui.green.button(onclick ='checkQuestion()', style='float: right') Check Answers
+          #correctness.ui.label.right.floated(style='clear: both; width: 100%; float: right; display: none')
+            p#score(style='float:right') 1.0/1 points
+          input(type='hidden', name='scoreInput', value='0', id='scoreInput')
+          br
+          br
+          button.ui.blue.button(style="float: right; clear: both" type='submit') Submit
+          h1
+          h1
+    //- .ui.container#nav-container
+    //-   .div#nav-menu          
+    //-     button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/submod/learn5/identity';") 
+    //-       i.arrow.left.icon 
+    //-       | Back
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+  .ui.container
+    +navButtons('identity', '/submod/learn5/identity', '/submod/learn7/identity', 22)  
 
 block scripts
   script.

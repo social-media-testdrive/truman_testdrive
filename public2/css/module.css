@@ -63,6 +63,10 @@ body{
     padding-top: 0px;
 }
 
+#raised-container.top-padding {
+    padding-top: 30px;
+}
+
 
 body{ 
     /* overflow-y: hidden !important; */
@@ -362,6 +366,37 @@ i.big.lock.icon,
 i.big.unlock.icon {
     margin: 0 auto; 
     color: white;
+}
+
+
+
+/* Avatar Call Out Important Notes / Admonitions CSS */
+.ui.icon.blue.message {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 2px;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.ui.icon.blue.message .icon {
+    height: 125px !important;
+    width: 175px;
+    overflow: hidden;
+}
+
+.ui.icon.blue.message .icon img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    object-position: top center;
+}
+
+.ui.icon.blue.message .content {
+    background: white;
+    height: 100%;
+    padding: 10px;
+    padding-left: 15px;
 }
 /* OLD CSS From Truman  Start Pages Below */
 /* 

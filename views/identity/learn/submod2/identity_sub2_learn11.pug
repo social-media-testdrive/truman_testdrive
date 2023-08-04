@@ -1,0 +1,21 @@
+extends ../../../module_layout
+
+block content
+
+  .ui.container#raised-container
+    .limit
+      h1.ui.header.large#learn-title
+        .content
+          | Medical ID Theft
+      p Info
+          
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+  .ui.container
+    +navButtons('identity', '/submod2/learn10/identity', '/submod2/learn12/identity', 48)  
+
+block scripts
+  script(src='/js/character.js')

@@ -1,0 +1,23 @@
+extends ../../../module_layout
+
+block content
+
+  .ui.container#raised-container
+    .limit
+      h1.ui.header.large#learn-title
+        .content
+          | What are the techniques scammers use to steal your personal information?
+      p In person: “shoulder surfing” – watching you from a nearby location as you punch in your telephone number or credit card number – or listen in on your conversation if you give your credit card number over the telephone.
+          
+      
+      br
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+  .ui.container
+    +navButtons('identity', '/submod2/learn/identity', '/submod2/learn3/identity', 30)  
+
+block scripts
+  script(src='/js/character.js')

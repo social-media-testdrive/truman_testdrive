@@ -1,0 +1,21 @@
+extends ../../../module_layout
+
+block content
+
+  .ui.container#raised-container
+    .limit
+      h1.ui.header.large#learn-title
+        .content
+          | How can you recognize the techniques of scammers?
+      p Example 4 Info
+          
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+  .ui.container
+    +navButtons('identity', '/submod2/learn6/identity', '/submod2/learn8/identity', 40)  
+
+block scripts
+  script(src='/js/character.js')
