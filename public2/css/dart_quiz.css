@@ -3,28 +3,67 @@
     font-weight: bold;
 }
 
+/* .choiceList {
+    margin-top: 30px;
+}
+
+.choiceList .ui.radio.checkbox:nth-child(2) {
+    margin-left: 70px;
+} */
+/* something about the button padding breaks the clicking fuctionality */
 .choiceList {
     width: 100%;
-    /* background-color: red; */
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
     margin-top: 20px;
-    /* align-items: center; */
 }
+
+
 
 .choiceList .ui.radio.checkbox{
     border-radius: 10px; 
     border: 2px solid gray;
     width: 350px;
+    height: 60px;
     text-align: left;
     padding: 20px;
-
 }
 
 .choiceList .ui.radio.checkbox:hover {
     border: 2px solid black;
     background-color: #F5F8FA;
+}
+
+.checkboxChoices {
+    display: grid;
+}
+
+.ui.checkbox.listChoices {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px; 
+    border: 2px solid gray;
+    width: 100%;
+    height: 60px;
+    text-align: left;
+    padding: 20px;
+}
+
+input[type=checkbox] {
+    width: 850px !important;
+    height: 60px !important;
+}
+
+/* input[type=radio]  */
+/* fix input field to cover padding so whole button is clickable */
+#yes, #no {
+    width: 350px;
+    height: 60px;
+}
+
+.image {
+    text-align: center;
 }
 
 /* Styles for identity challenge question 1 apple email */
@@ -58,4 +97,20 @@ i.apple.big.icon {
 ui.header.centered.aligned {
     font-weight: bolder;
     font-size: 1.2rem !important;
+}
+
+
+.quizMessage {
+    background-color: peachpuff;
+    border-radius: 6px;
+    width: 20%;
+    margin: auto;
+    text-align: center;
+    padding: 5px;
+	/* font-size:20px; */
+	font-weight:bold;
+    color: red;
+	position:absolute;
+	top:90%;
+	left:40%;
 }
