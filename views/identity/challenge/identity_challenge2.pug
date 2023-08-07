@@ -4,6 +4,72 @@ block content
     .ui.container.quizContainer#raised-container
         .limit
             br
+
+            .ui.container(style="max-width: 400px; margin: 0 auto;")
+                .ui.raised.segments(style="border: 1px solid #ccc; border-radius: 10px; padding: 10px;  padding-left: 20px; padding-right: 20px; ")
+                    .ui.comments
+                        .comment(style="margin-bottom: 10px;")
+                            .content
+                                .text.left-pointing-bubble
+                                    p ATM card is suspended
+                        .comment(style="margin-bottom: 10px; text-align: right;")
+                            .content
+                                .text.right-pointing-bubble
+                                    p really, why?
+
+            h1 Chat Bubbles - iOS style
+            .ui.container.ios-chat-container
+                .ui.raised.segments.chat
+                    //- .mine.messages
+                    //-     .message.last
+                    //-         | Dude
+                    .yours.messages
+                        //- .message
+                        //-     | Hey!
+                        //- .message
+                        //-     | You there?
+                        .message.last
+                            | ATM/CHECK-card is SUSPENDED! Please 
+                            br
+                            | Continue -> www.bofa.com/support.bofa.htm
+                            //- | Hello, how&apos;s it going?
+                    .mine.messages
+                        .message
+                            | Great thanks!
+                        .message.last
+                            | How about you?
+
+            .smartphone
+                .content
+                    .texter(style="background: #F5F5F5;width: 328px;padding-top: 5px; padding-bottom: 5px;border-bottom: 2px solid #D4D4D4;text-align: center")
+                        i.user.circle.big.icon(style="color: #9397A2;")
+                        p(style="font-size: 1rem;font-weight: bold;") 867543 
+                            span(style="color: grey; font-weight: normal;") >
+                    .time(style="width: 328px;text-align: center;font-size: 0.9rem; padding-top: 20px;")
+                        p Today #{currentTime}
+                    .ios-chat-container
+                        .chat
+                            //- .mine.messages
+                            //-     .message.last
+                            //-         | Dude
+                            .yours.messages
+                                //- .message
+                                //-     | Hey!
+                                //- .message
+                                //-     | You there?
+                                .message.last
+                                    | ATM/CHECK-card is SUSPENDED! Please 
+                                    br
+                                    | Continue -> www.bofa.com/support.
+                                    | bofa.com.htm
+                                    //- | Hello, how&apos;s it going?
+                            .mine.messages
+                                .message
+                                    | Great thanks!
+                                .message.last
+                                    | How about you?
+                    //- iframe(src='' style='width:100%;border:none;height:100%')
+
             br
             .question 
             br

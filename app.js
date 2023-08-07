@@ -754,6 +754,17 @@ app.get('/challenge/:modId', passportConfig.isAuthenticated, setHttpResponseHead
     });
 });
 
+// get time for phone text message like: 12:48 PM 
+function getCurrentTime() {
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const meridiem = hours >= 12 ? 'PM' : 'AM';
+    const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
+    const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+    return `${formattedHours}:${formattedMinutes} ${meridiem}`;
+}
+
 app.get('/challenge2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, async function(req, res) {
     let quizData;
     // console.log("the dir name");
@@ -768,9 +779,14 @@ app.get('/challenge2/:modId', passportConfig.isAuthenticated, setHttpResponseHea
 
     // console.log("BEYONCE quiz data: " + quizData)
 
+
+    // Calculate the current time
+    const currentTime = getCurrentTime();
+
     res.render(req.params.modId + '/challenge/' + req.params.modId + '_challenge2', {
         title: 'Quiz',
-        quizData
+        quizData,
+        currentTime
     });
 });
 

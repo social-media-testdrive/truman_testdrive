@@ -89,6 +89,7 @@ $(document).ready(function() {
 // This displays the current question AND the choices
 function displayCurrentQuestion() 
 {
+    window.scrollTo(0, 0);
     console.log("In display current Question");
     console.log("Current Question: " + currentQuestion);
     // let question = questionData[1].prompt;

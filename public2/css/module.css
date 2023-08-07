@@ -497,3 +497,217 @@ i.big.unlock.icon {
 
     }
 }
+
+
+
+
+
+/* Custom styles for left pointing bubble */
+.text.left-pointing-bubble {
+    background-color: #007bff;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    display: inline-block;
+    max-width: 70%;
+    position: relative;
+  }
+  
+  .text.left-pointing-bubble::before {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0px;
+    border-width: 10px 10px 10px 10px;
+    border-style: solid;
+    border-color: #007bff transparent transparent transparent;
+    transform: rotate(-55deg);
+  }
+  
+  /* Custom styles for right pointing bubble */
+  .text.right-pointing-bubble {
+    background-color: rgb(215, 215, 215);
+    color: black;
+    border-radius: 10px;
+    padding: 10px;
+    display: inline-block;
+    max-width: 70%;
+    position: relative;
+  }
+  
+  .text.right-pointing-bubble::before {
+    content: "";
+    position: absolute;
+    bottom: 8px;
+    right: -4px;
+    border-width: 10px 0 0 10px;
+    border-style: solid;
+    border-color: transparent transparent transparent rgb(215, 215, 215);
+    transform: rotate(-135deg);
+  }
+  
+  
+
+
+/* ios chat styles */
+/* Source: https://codepen.io/swards/pen/gxQmbj */
+  .ios-chat-container {
+    font-family: helvetica;
+    display: flex ;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .chat {
+    width: 329px;
+    /* border: solid 1px #EEE; */
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    /* background-color: red; */
+    margin-left: -30px;
+  }
+  
+  .messages {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .messages:first-child {
+    margin-top: 0px;
+  }
+  
+  .message {
+    border-radius: 20px;
+    padding: 8px 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+    line-height: 1.1; 
+
+  }
+  
+  .yours {
+    align-items: flex-start;
+  }
+  
+  .yours .message {
+    margin-right: 25%;
+    background-color: #E6E5EB;
+    position: relative;
+  }
+  
+  .yours .message.last:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    left: -7px;
+    height: 20px;
+    width: 20px;
+    background: #E6E5EB;
+    border-bottom-right-radius: 15px;
+  }
+  .yours .message.last:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: -10px;
+    width: 10px;
+    height: 20px;
+    background: white;
+    border-bottom-right-radius: 10px;
+  }
+  
+  .mine {
+    align-items: flex-end;
+  }
+  
+  .mine .message {
+    color: white;
+    margin-left: 25%;
+    background: linear-gradient(to bottom, #00D0EA 0%, #2165AE 100%);
+    background-attachment: fixed;
+    position: relative;
+  }
+  
+  .mine .message.last:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    right: -8px;
+    height: 20px;
+    width: 20px;
+    background: linear-gradient(to bottom, #00D0EA 0%, #2165AE 100%);
+    background-attachment: fixed;
+    border-bottom-left-radius: 15px;
+  }
+  
+  .mine .message.last:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    right: -9px;
+    width: 9px;
+    height: 21px;
+    background: white;
+    border-bottom-left-radius: 10px;
+  }
+
+  .message.last {
+    max-width: 300px;
+  }
+  
+
+  /* Source: https://www.w3schools.com/howto/howto_css_devices.asp */
+
+  .smartphone {
+    position: relative;
+    width: 360px;
+    height: 640px;
+    margin: auto;
+    border: 16px black solid;
+    border-top-width: 60px;
+    border-bottom-width: 60px;
+    border-radius: 36px;
+  }
+  
+  /* The horizontal line on the top of the device */
+  .smartphone:before {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 5px;
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #333;
+    border-radius: 10px;
+  }
+  
+  /* The circle on the bottom of the device */
+  .smartphone:after {
+    content: '';
+    display: block;
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    left: 50%;
+    bottom: -65px;
+    transform: translate(-50%, -50%);
+    background: #333;
+    border-radius: 50%;
+  }
+  
+  /* The screen (or content) of the device */
+  .smartphone .content {
+    width: 360px;
+    height: 640px;
+    /* background: white; */
+  }
+  
