@@ -125,28 +125,36 @@ function displayCurrentQuestion()
     //     http://localhost:3000/quizPartials/identity/challenge/q1.html
 
     // later have all html, no pngs
-    if(currentQuestion == 1 || currentQuestion == 2) {
+    if(question.partial != "none") {
         $.get("/quizPartials/identity/challenge/" + question.partial, function(data) {
             // 'data' contains the content of the Pug template
             htmlImageContainer.html(data);
 
-            // htmlImageContainer.append(data);
+            // Update the current time if it exists in the partial
+            const currentTimeSpan = document.getElementById('current-time');
+            if (currentTimeSpan) {
+                currentTimeSpan.textContent = currentTime;
+            } else {
+                console.log("Element with ID 'current-time' not found.");
+            }
         });
-    } else if (currentQuestion == 3){
-        $(document).find(".htmlImage").hide();
-        const imageContainer = $(".image");
-        const imageSrc = '/quizPartials/identity/challenge/' + question.partial;
-        const imageElement = $("<img>").attr("src", imageSrc);
-        imageContainer.append(imageElement);
-    } else if (currentQuestion == 4){
-        $(".image").empty();
-        const imageContainer = $(".image");
-        $(document).find(".htmlImage").hide();
-        const imageSrc = '/quizPartials/identity/challenge/' + question.partial;
-        const imageElement = $("<img>").attr("src", imageSrc);
-        imageContainer.append(imageElement);
-
+    } else {
+        htmlImageContainer.empty();
     }
+    // else if (currentQuestion == 3){
+    //     $(document).find(".htmlImage").hide();
+    //     const imageContainer = $(".image");
+    //     const imageSrc = '/quizPartials/identity/challenge/' + question.partial;
+    //     const imageElement = $("<img>").attr("src", imageSrc);
+    //     imageContainer.append(imageElement);
+    // } else if (currentQuestion == 4){
+    //     $(".image").empty();
+    //     const imageContainer = $(".image");
+    //     $(document).find(".htmlImage").hide();
+    //     const imageSrc = '/quizPartials/identity/challenge/' + question.partial;
+    //     const imageElement = $("<img>").attr("src", imageSrc);
+    //     imageContainer.append(imageElement);
+    // }
 
 
     let choiceContainer;

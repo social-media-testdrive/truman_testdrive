@@ -500,56 +500,39 @@ i.big.unlock.icon {
 
 
 
-
-
-/* Custom styles for left pointing bubble */
-.text.left-pointing-bubble {
-    background-color: #007bff;
-    color: white;
-    border-radius: 10px;
-    padding: 10px;
-    display: inline-block;
-    max-width: 70%;
-    position: relative;
-  }
-  
-  .text.left-pointing-bubble::before {
-    content: "";
-    position: absolute;
-    bottom: -10px;
-    left: 0px;
-    border-width: 10px 10px 10px 10px;
-    border-style: solid;
-    border-color: #007bff transparent transparent transparent;
-    transform: rotate(-55deg);
-  }
-  
-  /* Custom styles for right pointing bubble */
-  .text.right-pointing-bubble {
-    background-color: rgb(215, 215, 215);
-    color: black;
-    border-radius: 10px;
-    padding: 10px;
-    display: inline-block;
-    max-width: 70%;
-    position: relative;
-  }
-  
-  .text.right-pointing-bubble::before {
-    content: "";
-    position: absolute;
-    bottom: 8px;
-    right: -4px;
-    border-width: 10px 0 0 10px;
-    border-style: solid;
-    border-color: transparent transparent transparent rgb(215, 215, 215);
-    transform: rotate(-135deg);
-  }
-  
-  
-
-
 /* ios chat styles */
+
+/* texter account info */
+.texter {
+    background: #F5F5F5;
+    width: 328px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #D4D4D4;
+    text-align: center;
+}
+
+.texter i.user.circle.big.icon {
+    color: #9397A2
+}
+
+.texter p { 
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.texter p span {
+    color: grey;
+    font-weight: normal;
+}
+
+.ios-time {
+    width: 328px;
+    text-align: center;
+    font-size: 0.9rem;
+    padding-top: 20px;
+}
+
 /* Source: https://codepen.io/swards/pen/gxQmbj */
   .ios-chat-container {
     font-family: helvetica;
@@ -658,9 +641,10 @@ i.big.unlock.icon {
     border-bottom-left-radius: 10px;
   }
 
-  .message.last {
-    max-width: 300px;
-  }
+.message.last {
+    /* background-color: red; */
+    width: 280px;
+}
   
 
   /* Source: https://www.w3schools.com/howto/howto_css_devices.asp */

@@ -33,7 +33,7 @@
   },
   "3": {
     "type": "yes_no",
-    "partial": "q3.png",
+    "partial": "q3.html",
     "prompt": "3. Is this message a scam?",
     "choices": {
       "yes": {
@@ -49,7 +49,7 @@
   },
   "4": {
     "type": "yes_no",
-    "partial": "q4.png",
+    "partial": "q4.html", 
     "prompt": "4. Is this message a scam?",
     "choices": {
       "yes": {
