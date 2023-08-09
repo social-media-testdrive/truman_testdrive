@@ -3,11 +3,16 @@ let currentQuestion = 1;
 let viewingAnswer = false;
 let correctAnswers = 0;
 let quizOver = false;
+let numQuestions = Object.keys(questionData).length;
 // stores selected answers for each question, indexed by the question number ie index.
-var iSelectedAnswer = [];
+let selectedAnswer = [];
+let questionScores = [];
 
 $(document).ready(function() {
-    // console.log("In dart_quiz.js");
+    console.log("In dart_quiz.js");
+    console.log("Question Data: " + questionData);
+    console.log("num questions: " + numQuestions);
+
     // console.log("Solange Data: " + questionData);
     // console.log("after");
 
@@ -17,32 +22,100 @@ $(document).ready(function() {
     $(this).find(".preButton").attr('disabled', 'disabled');
 
 
+	$(this).find(".preButton").on("click", function () 
+	{		
+		
+        if (!quizOver) {
+			if(currentQuestion == 0) { return false; }
+	
+			if(currentQuestion == 1) {
+			  $(".preButton").attr('disabled', 'disabled');
+			}
+			
+            currentQuestion--; // Since we have already displayed the first question on DOM ready
+            if (currentQuestion < numQuestions) {
+                displayCurrentQuestion();
+            } 					
+		} else {
+			// if(viewingAns == 3) { return false; }
+			// currentQuestion = 0; viewingAns = 3;
+			// viewResults();		
+		}
+    });
+
+
 
 	// On clicking next, display the next question
     $(this).find(".nextButton").on("click", function () {
         if (!quizOver) {
-            let val = $("input[type='radio']:checked").val();
-            console.log("Val: " + val);
-            // if (questionData[currentQuestion].type === "yes_no") {
-            //     let temp = questionData[currentQuestion].correctResponse
-            // } else if  (questionData[currentQuestion].type === "yes_no") {
-            
-            // }
-            // console.log("Temp: " + temp);
+            // let val = $("input[type='radio']:checked").val();
+            // console.log("Val: " + val);
+            // console.log("Answer: " + questionData[currentQuestion].correctResponse)
 
-            if (val == undefined) 
-			{
+            let val;
+
+            // Get user selections 
+            if (questionData[currentQuestion].type === "yes_no") {
+                val = $("input[type='radio']:checked").val();
+            } else if  (questionData[currentQuestion].type === "multi_select") {
+                val = [];
+                $("input[type='checkbox']:checked").each(function() {
+                    val.push($(this).val());
+                });
+            }
+            console.log("Val: " + val);
+
+            // Ensure user selected an answer and then score and add to selected answers array (doing all this now so don't have to iterate through questions again later)
+            if (val == undefined) {
                 $(document).find(".quizMessage").text("Please select an answer");
                 $(document).find(".quizMessage").show();
-            } 
-			else 
-			{
+            } else {
+                // Remove warning and Grade the question apporpriately 
                 $(document).find(".quizMessage").hide();
-                // keep track of correct, need to account for question type
-				// if (val == questionData[currentQuestion].correctResponse) {
-				// 	correctAnswers++;
-				// }
-				// iSelectedAnswer[currentQuestion] = val;
+
+                if (questionData[currentQuestion].type === "yes_no") {
+                    // simple yes/no question so if correct add 1 point if wrong add 0 points
+                    if (val === questionData[currentQuestion].correctResponse) {
+                        console.log("Correct Answer!")
+                        questionScores[currentQuestion - 1] = 1;
+                        correctAnswers++;
+                    } else {
+                        questionScores[currentQuestion - 1] = 0;
+                    }
+
+                    // question 1 answer stored in array index 0
+                    selectedAnswer[currentQuestion - 1] = val;
+                    console.log("selectedAnswer: " + selectedAnswer);
+                    console.log("questionScores: " + questionScores);
+                } else if  (questionData[currentQuestion].type === "multi_select") {
+                    // multi select question grading based on how canvas does it: https://canvas.iastate.edu/courses/64978/files/14202040/download?download_frd=1
+                    // question is 1 point total. Correct answers are worth 1 / number correct point each. Incorrect answers are worth a negative value of this. Result cannot be negative.
+                    const totalOptions = questionData[currentQuestion].correctResponse.length;
+                    const correctScore = 1 / totalOptions; // Score for each correct response
+                    const incorrectScore = -correctScore;  // Score for each incorrect response
+                    
+                    let multiScore = 0;
+                    
+                    for (const response of val) {
+                        if (questionData[currentQuestion].correctResponse.includes(response)) {
+                            multiScore += correctScore;
+                        } else {
+                            multiScore += incorrectScore;
+                        }
+                    }
+                    
+                    // Ensure the score is not negative
+                    multiScore = Math.max(multiScore, 0);
+                    
+                    console.log(`Total Score: ${multiScore}`);
+                    
+                    selectedAnswer[currentQuestion - 1] = val;
+                    questionScores[currentQuestion - 1] = multiScore;
+                    console.log("selectedAnswer: " + selectedAnswer);
+                    console.log("questionScores: " + questionScores);
+
+                }
+
 
 				// Since we have already displayed the first question on DOM ready
 				currentQuestion++; 
@@ -51,27 +124,27 @@ $(document).ready(function() {
 				}
 				// if (currentQuestion < Object.keys(questionData[currentQuestion].choices).length) 
                 // display questions 1-5
-                if (currentQuestion <= Object.keys(questionData).length) {
+                if (currentQuestion <= numQuestions) {
 					displayCurrentQuestion();
 				} 
-				// else 
-				// {
-				// 	displayScore();
-				// 	$('#iTimeShow').html('Quiz Time Completed!');
-				// 	$('#timer').html("You scored: " + correctAnswers + " out of: " + questions.length);
-				// 	c=185;
-				// 	$(document).find(".preButton").text("View Answer");
-				// 	$(document).find(".nextButton").text("Play Again?");
-				// 	quizOver = true;
-				// 	return false;
+				else 
+				{
+					displayScore();
+					$('#iTimeShow').html('Quiz Time Completed!');
+					// $('#timer').html("You scored: " + correctAnswers + " out of: " + questions.length);
+					// c=185;
+					$(document).find(".preButton").text("View Answers");
+					$(document).find(".nextButton").text("Play Again?");
+					quizOver = true;
+					return false;
 					
-				// }
+				}
 			}
 					
 		}	
 		else 
 		{ // quiz is over and clicked the next button (which now displays 'Play Again?'
-			// quizOver = false; $('#iTimeShow').html('Time Remaining:'); iSelectedAnswer = [];
+			// quizOver = false; $('#iTimeShow').html('Time Remaining:'); selectedAnswer = [];
 			// $(document).find(".nextButton").text("Next Question");
 			// $(document).find(".preButton").text("Previous Question");
 			//  $(".preButton").attr('disabled', 'disabled');
@@ -102,12 +175,18 @@ function displayCurrentQuestion()
     // let numChoices = Object.keys(questionData[currentQuestion].choices).length;
     // console.log("Num Choices: " + numChoices);
 
+    const htmlImageContainer = $(".htmlImage");
+    const checkBoxesContainer = $(".checkboxChoices");
+
+
     // current question we want to display
     const question = questionData[currentQuestion];
 
-    // Remove all previous choices
-    // $(".choiceList .ui.radio.checkbox").remove();
+    // Remove all previous question content so we can display the needed question (whether it be a previous one or new one)
     $(".choiceList").empty();
+    htmlImageContainer.empty();
+    checkBoxesContainer.empty();
+
 
     // Set the questionClass text to the current question
     $(".question").text(questionPrompt);
@@ -118,7 +197,6 @@ function displayCurrentQuestion()
     // const imageElement = $("<img>").attr("src", imageSrc);
     // imageContainer.append(imageElement);
 
-    const htmlImageContainer = $(".htmlImage");
     // const pugImageSrc = 'include ../../partials/identity/challenge/' + question.partial;
     // const pugImageElement = $("<include>")
 
@@ -233,7 +311,7 @@ function displayCurrentQuestion()
 	// {
     //     choice = questionData[currentQuestion].choices[i];
 		
-	// 	if(iSelectedAnswer[currentQuestion] == i) {
+	// 	if(selectedAnswer[currentQuestion] == i) {
 	// 		$('<li><input type="radio" class="radio-inline" checked="checked"  value=' + i + ' name="dynradio" />' +  ' ' + choice  + '</li>').appendTo(choiceList);
 	// 	} else {
 	// 		$('<li><input type="radio" class="radio-inline" value=' + i + ' name="dynradio" />' +  ' ' + choice  + '</li>').appendTo(choiceList);
@@ -258,10 +336,23 @@ function displayCurrentQuestion()
 	// {
     //     choice = questions[currentQuestion].choices[i];
 		
-	// 	if(iSelectedAnswer[currentQuestion] == i) {
+	// 	if(selectedAnswer[currentQuestion] == i) {
 	// 		$('<li><input type="radio" class="radio-inline" checked="checked"  value=' + i + ' name="dynradio" />' +  ' ' + choice  + '</li>').appendTo(choiceList);
 	// 	} else {
 	// 		$('<li><input type="radio" class="radio-inline" value=' + i + ' name="dynradio" />' +  ' ' + choice  + '</li>').appendTo(choiceList);
 	// 	}
     // }
+}
+
+
+function displayScore() {
+    console.log("In display score!");
+    for(let i = 0; i <= selectedAnswer.length; i++) {
+        console.log("Index: " + i + " selectedAnswer: " + selectedAnswer[i]);
+    }
+
+
+    
+    $(document).find(".quizContainer > .result").text("You scored: " + correctAnswers + " out of: " + numQuestions);
+    $(document).find(".quizContainer > .result").show();
 }

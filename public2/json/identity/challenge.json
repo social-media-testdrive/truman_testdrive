@@ -13,7 +13,7 @@
         "explanation": "Explanation for the no statement."
       }
     },
-    "correctResponse": "Yes"
+    "correctResponse": "no"
 },
   "2": {
       "type": "yes_no",
@@ -29,7 +29,7 @@
           "explanation": "Explanation for the no statement."
         }
       },
-      "correctResponse": "Yes"
+      "correctResponse": "yes"
   },
   "3": {
     "type": "yes_no",
@@ -45,7 +45,7 @@
         "explanation": "Explanation for the no statement."
       }
     },
-    "correctResponse": "Yes"
+    "correctResponse": "yes"
   },
   "4": {
     "type": "yes_no",
@@ -61,7 +61,7 @@
         "explanation": "Explanation for the no statement."
       }
     },
-    "correctResponse": "Yes"
+    "correctResponse": "yes"
   },
   "5": {
       "type": "multi_select",
