@@ -6,9 +6,46 @@ block content
     .limit
       h1.ui.header.large#learn-title
         .content
-          | Warning Signs for specific Identity Theft Scams
-      p Info
+          | Recognize the Techniques of Scammers
+      h2 Example3:  Messages or Emails offer a coupon or gift card
+
+      .imessage
+        p.from-them
+          | Congratulations! You’ve won a $1,000 Walmart gift card. Go to 
+          u http://bit.ly/145634 
+          | to claim now.
+
+      p Here are signs that this message is a scam:
+      ul
+          li 
+            | This message offers a coupon for a $1000 gift card. Is that too good to be true?
+          li  
+            | This message does not demonstrate an official source of Walmart.
+          li 
+            | This message invites you to click on a shortened foreign link. Legitimate links:
+          ul
+            li 
+              | should be https://
+            li 
+              | should not shortened
+            li 
+              | should have no typos or misspelling
+          li  
+            | This message fails to provide fine prints, such as the expiration data or the exceptions to the sale. A legitimate coupon usually lists the details.
           
+    .ui.icon.blue.message
+        .icon
+          img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
+        .content
+          .header
+            //- i.info.circle.icon
+            | Important!
+          ul 
+            li
+              | If there's no fine print, the coupon is likely not legitimate.
+            li 
+              | No legitimate company will ask for personal information in exchange for a coupon. A popular scam is to offer coupons in exchange for completing surveys.
+    
     script.
         var progress = #{user.moduleProgress.identity.percent}
     script(src='/js/setProgressBar.js')  
@@ -19,3 +56,6 @@ block append footer
 
 block scripts
   script(src='/js/character.js')
+
+block styles
+  link(rel='stylesheet', href='/css/learn2.css')
