@@ -47,6 +47,9 @@ $(document).ready(function() {
                 displayCurrentQuestion();
             } 					
 		} else {
+            // quiz is over and clicked the previous button (which is now the try again button)
+
+            resetQuiz();
 			// if(viewingAns == 3) { return false; }
 			// currentQuestion = 0; viewingAns = 3;
 			// viewResults();		
@@ -397,8 +400,23 @@ function displayScore() {
 
     for(let i = 0; i <= selectedAnswer.length; i++) {
         console.log("Index: " + i + " selectedAnswer: " + selectedAnswer[i]);
-    }
+    }    
+}
+
+function resetQuiz() {
+    $(document).find(".result").hide();
+    $(document).find(".avatar-container").hide();
+
+    currentQuestion = 1;
+    correctAnswers = 0;
+    quizOver = false;
+    selectedAnswer = [];
+    questionScores = [];
+    viewingAnswer = false;
+    $(document).find(".preButton").text("Previous Question");
+    $(document).find(".nextButton").text("Next Question");
 
 
-    
+    // Display the first question
+    displayCurrentQuestion();
 }
