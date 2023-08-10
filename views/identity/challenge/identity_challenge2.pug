@@ -4,9 +4,9 @@ block content
     .ui.container.quizContainer#raised-container
         .limit
             br
-            .circleResults
-                strong
-                //- p This is a special notification which you can dismiss if you&apos;re bored with it.
+
+
+                    //- p This is a special notification which you can dismiss if you&apos;re bored with it.
 
 
             //- .smartphone
@@ -42,10 +42,15 @@ block content
             .htmlImage
             .image
             .choiceList
-            .checkboxChoices
+            .checkboxChoices            
+            br
+            br
             .result
-            br
-            br
+                .circleResults
+                    strong
+                .resultText     
+                br
+                br
             .quizMessage
                 .ui.red.center.aligned.message
                     i.close.icon
@@ -53,7 +58,8 @@ block content
             .quizButtonContainer
                 .ui.blue.huge.button.preButton Previous Question
                 .ui.blue.huge.button.nextButton Next Question
-
+        .avatar-container
+            img#dart_image1.ui.medium.image(src='/profile_pictures/transparent.png')
 
 
             //- .ui.raised.segments
@@ -198,7 +204,7 @@ block scripts
     //- script.
     //-     const currentTimeSpan = document.getElementById('current-time');
     //-     currentTimeSpan.textContent = currentTime;
-
+    script(src='/js/character.js')
 //- block scripts 
 //-     script. 
 //-         var currentQuestionIndex = 0;

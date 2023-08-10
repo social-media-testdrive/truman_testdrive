@@ -8,15 +8,7 @@ let numQuestions = Object.keys(questionData).length;
 let selectedAnswer = [];
 let questionScores = [];
 
-$(document).ready(function() {
-    $('.circleResults').circleProgress({
-        value: 0.75,
-        size: 300,
-        fill: "#6BBCC7"
-        }).on('circle-animation-progress', function(event, progress) {
-        $(this).find('strong').html(Math.round(100 * progress) + '<i>%</i>');
-    });
-    
+$(document).ready(function() {    
     console.log("In dart_quiz.js");
     console.log("Question Data: " + questionData);
     console.log("num questions: " + numQuestions);
@@ -28,7 +20,9 @@ $(document).ready(function() {
     displayCurrentQuestion();
 
     // hide warning and next nav button and disable previous quiz nav button
-    $(this).find(".quizMessage").hide();
+    $(".quizMessage").hide();
+    $(".result").hide();
+    $(".avatar-container").hide();
     $("#nextButton").css("filter", "grayscale(100%)");
     $("#nextButton").prop("disabled", true);    
 
@@ -127,6 +121,7 @@ $(document).ready(function() {
                     
                     selectedAnswer[currentQuestion - 1] = val;
                     questionScores[currentQuestion - 1] = multiScore;
+                    correctAnswers += multiScore;
                     console.log("selectedAnswer: " + selectedAnswer);
                     console.log("questionScores: " + questionScores);
 
@@ -147,15 +142,14 @@ $(document).ready(function() {
 				} 
 				else 
 				{
+                    $(".choiceList").empty();
+                    $(".checkboxChoices").empty();
+                    $(".question").empty();
 					displayScore();
-					$('#iTimeShow').html('Quiz Time Completed!');
-					// $('#timer').html("You scored: " + correctAnswers + " out of: " + questions.length);
-					// c=185;
-					$(document).find(".preButton").text("View Answers");
-					$(document).find(".nextButton").text("Play Again?");
+					$(document).find(".preButton").text("Try Again");
+					$(document).find(".nextButton").text("View Answers");
 					quizOver = true;
 					return false;
-					
 				}
 			}
 					
@@ -370,12 +364,28 @@ function displayCurrentQuestion()
 
 function displayScore() {
     console.log("In display score!");
+
+    $(document).find(".resultText").text("You got " + correctAnswers + " out of " + numQuestions + " questions correct!");
+
+    const finalScore = correctAnswers / numQuestions;
+    // fill: { gradient: ["#32C38B", "#B8E2B6"] } 
+
+    $('.circleResults').circleProgress({
+        value: finalScore,
+        size: 300,
+        fill: "#32C38B"
+        }).on('circle-animation-progress', function(event, progress) {
+        $(this).find('strong').html(Math.round(100 * finalScore) + '<i>%</i>');
+    });
+
+    $(".result").show();
+    $(".avatar-container").show();
+
+
     for(let i = 0; i <= selectedAnswer.length; i++) {
         console.log("Index: " + i + " selectedAnswer: " + selectedAnswer[i]);
     }
 
 
     
-    $(document).find(".quizContainer > .result").text("You scored: " + correctAnswers + " out of: " + numQuestions);
-    $(document).find(".quizContainer > .result").show();
 }
