@@ -88,7 +88,6 @@ $(document).ready(function() {
                     if (val === questionData[currentQuestion].correctResponse) {
                         console.log("Correct Answer!")
                         questionScores[currentQuestion - 1] = 1;
-                        correctAnswers++;
                     } else {
                         questionScores[currentQuestion - 1] = 0;
                     }
@@ -121,7 +120,6 @@ $(document).ready(function() {
                     
                     selectedAnswer[currentQuestion - 1] = val;
                     questionScores[currentQuestion - 1] = multiScore;
-                    correctAnswers += multiScore;
                     console.log("selectedAnswer: " + selectedAnswer);
                     console.log("questionScores: " + questionScores);
 
@@ -219,7 +217,6 @@ function displayCurrentQuestion()
 
     //     http://localhost:3000/quizPartials/identity/challenge/q1.html
 
-    // later have all html, no pngs
     if(question.partial != "none") {
         $.get("/quizPartials/identity/challenge/" + question.partial, function(data) {
             // 'data' contains the content of the Pug template
@@ -266,15 +263,20 @@ function displayCurrentQuestion()
     
             const checkboxDiv = document.createElement("div");    
             const input = document.createElement("input");
+            // console.log("currentQuestion: " + currentQuestion)
+            // console.log("choice: " + choice)
+            // console.log("choiceKey: " + choiceKey);
+            // console.log("selectedAnswer - 1: " + selectedAnswer[currentQuestion - 1])
 
+   
+                        
             if (questionData[currentQuestion].type === "yes_no") {
                 checkboxDiv.classList.add("ui", "radio", "checkbox");
-                input.type = "radio";
+                input.type = "radio";   
             } else if  (questionData[currentQuestion].type === "multi_select") {
                 checkboxDiv.classList.add("ui", "checkbox", "listChoices");
                 input.type = "checkbox";
                 $(".choiceList").attr("style", "");
-
             }
             input.name = "q" + currentQuestion; // Use the specified question ID
             input.id = choiceKey;
@@ -287,6 +289,11 @@ function displayCurrentQuestion()
             checkboxDiv.append(labelElement);
             
             choiceContainer.append(checkboxDiv);
+
+            // when going to previous questions, fill in with their previous answers
+            if(choiceKey === selectedAnswer[currentQuestion - 1]) {
+                document.getElementById(choiceKey).checked = true;
+            } 
         });
     }
     
@@ -363,6 +370,12 @@ function displayCurrentQuestion()
 
 
 function displayScore() {
+    // add up scores
+    for (const score of questionScores) {
+        correctAnswers += score;
+    }
+
+
     console.log("In display score!");
 
     $(document).find(".resultText").text("You got " + correctAnswers + " out of " + numQuestions + " questions correct!");
