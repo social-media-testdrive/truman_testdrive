@@ -100,7 +100,8 @@ ui.header.centered.aligned {
 }
 
 
-.quizMessage {
+.quizMessage, 
+.explanation {
     margin-top: 15px;
     margin-bottom: 15px;
     /* background-color: peachpuff;
@@ -116,9 +117,12 @@ ui.header.centered.aligned {
 	left:40%; */
 }
 
-.quizMessage .ui.red.center.aligned.message {
+.quizMessage .ui.red.center.aligned.message,
+.explanation .ui.red.center.aligned.message,
+.explanation .ui.green.center.aligned.message {
     width: 100%;
 }
+
 
 .ui.blue.huge.button {
     border-radius: 30px !important;
@@ -168,4 +172,19 @@ ui.header.centered.aligned {
 
 img#dart_image1.ui.medium.image {
     float: right;
+}
+
+.metadata {
+    /* margin-top: 20px; */
+    /* margin-bottom: 20px; */
+    /* background-color: #F3F4F5; */
+    background-color: rgb(243,244,245);
+}
+
+.metadata p {
+    line-height: 1rem;
+}
+
+.metadata p strong {
+    font-weight: 600;
 }

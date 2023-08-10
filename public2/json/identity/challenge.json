@@ -61,7 +61,7 @@
         "explanation": "Explanation for the no statement."
       }
     },
-    "correctResponse": "yes"
+    "correctResponse": "no"
   },
   "5": {
       "type": "multi_select",

@@ -765,6 +765,15 @@ function getCurrentTime() {
     return `${formattedHours}:${formattedMinutes} ${meridiem}`;
 }
 
+// get date for emails like: 8/10/2023
+function getCurrentDate() {
+    const now = new Date();
+    const month = now.getMonth() + 1; // Months are 0-based, so adding 1
+    const day = now.getDate();
+    const year = now.getFullYear();
+    return `${month}/${day}/${year}`;
+}
+
 app.get('/challenge2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, async function(req, res) {
     let quizData;
     // console.log("the dir name");
@@ -782,11 +791,13 @@ app.get('/challenge2/:modId', passportConfig.isAuthenticated, setHttpResponseHea
 
     // Calculate the current time
     const currentTime = getCurrentTime();
+    const currentDate = getCurrentDate();
 
     res.render(req.params.modId + '/challenge/' + req.params.modId + '_challenge2', {
-        title: 'Quiz',
+        title: 'Challenge',
         quizData,
-        currentTime
+        currentTime,
+        currentDate
     });
 });
 

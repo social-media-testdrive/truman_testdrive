@@ -23,8 +23,9 @@ $(document).ready(function() {
     $(".quizMessage").hide();
     $(".result").hide();
     $(".avatar-container").hide();
-    $("#nextButton").css("filter", "grayscale(100%)");
-    $("#nextButton").prop("disabled", true);    
+    $("#nextButton").hide();
+    // $("#nextButton").css("filter", "grayscale(100%)");
+    // $("#nextButton").prop("disabled", true);    
 
     // $(".preButton").css("filter", "grayscale(100%)");
     // $(".preButton").addClass("disabled");
@@ -48,11 +49,7 @@ $(document).ready(function() {
             } 					
 		} else {
             // quiz is over and clicked the previous button (which is now the try again button)
-
             resetQuiz();
-			// if(viewingAns == 3) { return false; }
-			// currentQuestion = 0; viewingAns = 3;
-			// viewResults();		
 		}
     });
 
@@ -148,31 +145,27 @@ $(document).ready(function() {
                     $(".question").empty();
 					displayScore();
 					$(document).find(".preButton").text("Try Again");
-					$(document).find(".nextButton").text("View Answers");
+                    $(document).find(".nextButton").text("Complete Quiz");
+
+					// $(document).find(".nextButton").text("View Answers");
 					quizOver = true;
 					return false;
 				}
 			}
 					
 		}	
-		else 
-		{ // quiz is over and clicked the next button (which now displays 'Play Again?'
-			// quizOver = false; $('#iTimeShow').html('Time Remaining:'); selectedAnswer = [];
-			// $(document).find(".nextButton").text("Next Question");
-			// $(document).find(".preButton").text("Previous Question");
-			//  $(".preButton").attr('disabled', 'disabled');
-			// resetQuiz();
-			// viewingAns = 1;
-			// displayCurrentQuestion();
-			// hideScore();
+		else { // quiz is over and clicked the next button (which now displays 'Complete Quiz')
+            // save info into database
+                // take user to next page (in db call at end)
+            window.location.href = "/challenge3/identity";
+			// currentQuestion = 1;
+			// viewResults();		
 		}
     });
     
 
 });
 
-
-// This displays the current question AND the choices
 function displayCurrentQuestion() 
 {
     if(currentQuestion == 1) {
@@ -227,11 +220,25 @@ function displayCurrentQuestion()
 
             // Update the current time if it exists in the partial
             const currentTimeSpan = document.getElementById('current-time');
+            const currentDateSpan = document.getElementById('current-date');
+            const userNameSpan = document.getElementById('user-name');
+            const userEmailSpane = document.getElementById('user-email');
+
             if (currentTimeSpan) {
                 currentTimeSpan.textContent = currentTime;
-            } else {
-                console.log("Element with ID 'current-time' not found.");
-            }
+            } 
+
+            if (currentDateSpan) {
+                currentDateSpan.textContent = currentDate;
+            } 
+
+            if (userNameSpan) {
+                userNameSpan.textContent = username;
+            } 
+
+            if (userEmailSpane) {
+                userEmailSpane.textContent = email;
+            } 
         });
     } else {
         htmlImageContainer.empty();
@@ -370,6 +377,8 @@ function displayCurrentQuestion()
 	// 	}
     // }
 }
+
+
 
 
 function displayScore() {
