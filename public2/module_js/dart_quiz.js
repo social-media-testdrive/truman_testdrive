@@ -9,6 +9,14 @@ let selectedAnswer = [];
 let questionScores = [];
 
 $(document).ready(function() {
+    $('.circleResults').circleProgress({
+        value: 0.75,
+        size: 300,
+        fill: "#6BBCC7"
+        }).on('circle-animation-progress', function(event, progress) {
+        $(this).find('strong').html(Math.round(100 * progress) + '<i>%</i>');
+    });
+    
     console.log("In dart_quiz.js");
     console.log("Question Data: " + questionData);
     console.log("num questions: " + numQuestions);

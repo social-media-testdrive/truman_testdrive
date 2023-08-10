@@ -133,3 +133,20 @@ ui.header.centered.aligned {
     justify-content: space-between;
     margin-bottom: 40px;
 }
+
+/* circular progress */
+.circleResults {
+    position: relative;
+    display: inline-block;
+    margin: 20px;
+}
+
+.circleResults strong {
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    font-weight: bold;
+}
