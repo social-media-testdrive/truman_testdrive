@@ -101,16 +101,35 @@ ui.header.centered.aligned {
 
 
 .quizMessage {
-    background-color: peachpuff;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    /* background-color: peachpuff;
     border-radius: 6px;
     width: 20%;
     margin: auto;
     text-align: center;
     padding: 5px;
-	/* font-size:20px; */
 	font-weight:bold;
     color: red;
 	position:absolute;
 	top:90%;
-	left:40%;
+	left:40%; */
+}
+
+.quizMessage .ui.red.center.aligned.message {
+    width: 100%;
+}
+
+.ui.blue.huge.button {
+    border-radius: 30px !important;
+}
+/* 
+.ui.blue.huge.button {
+    margin-right: 100px;
+} */
+
+.quizButtonContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
 }

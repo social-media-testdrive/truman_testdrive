@@ -4,6 +4,9 @@ block content
     .ui.container.quizContainer#raised-container
         .limit
             br
+                //- p This is a special notification which you can dismiss if you&apos;re bored with it.
+
+
             //- .smartphone
             //-     .content
             //-         .texter
@@ -38,12 +41,17 @@ block content
             .image
             .choiceList
             .checkboxChoices
-            .quizMessage
             .result
             br
             br
-            button.preButton Previous Question
-            button.nextButton Next Question
+            .quizMessage
+                .ui.red.center.aligned.message
+                    i.close.icon
+                    .errorMessage.header
+            .quizButtonContainer
+                .ui.blue.huge.button.preButton Previous Question
+                .ui.blue.huge.button.nextButton Next Question
+
 
 
             //- .ui.raised.segments
@@ -172,6 +180,13 @@ block append footer
 block scripts
     script.
         var currentTime = "#{currentTime}";
+        $('.message .close')
+        .on('click', function() {
+            $(this).closest('.message').fadeOut(); 
+            //- $(this)
+            //-     .closest('.message')
+            //-     .transition('fade');
+        });
     script.
         var questionData = !{JSON.stringify(quizData)}; // quizData is passed to pug file via render function in app.js
         console.log("questionData in pug challenge 2 file");

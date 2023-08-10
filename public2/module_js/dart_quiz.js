@@ -18,8 +18,15 @@ $(document).ready(function() {
 
     // Display the first question
     displayCurrentQuestion();
+
+    // hide warning and next nav button and disable previous quiz nav button
     $(this).find(".quizMessage").hide();
-    $(this).find(".preButton").attr('disabled', 'disabled');
+    $("#nextButton").css("filter", "grayscale(100%)");
+    $("#nextButton").prop("disabled", true);    
+
+    // $(".preButton").css("filter", "grayscale(100%)");
+    // $(".preButton").addClass("disabled");
+    // $(this).find(".preButton").attr('disabled', 'disabled');
 
 
 	$(this).find(".preButton").on("click", function () 
@@ -28,9 +35,10 @@ $(document).ready(function() {
         if (!quizOver) {
 			if(currentQuestion == 0) { return false; }
 	
-			if(currentQuestion == 1) {
-			  $(".preButton").attr('disabled', 'disabled');
-			}
+			// if(currentQuestion == 1) {
+            //     $(".preButton").css("filter", "grayscale(100%)");
+            //     $(".preButton").addClass("disabled");
+            // }
 			
             currentQuestion--; // Since we have already displayed the first question on DOM ready
             if (currentQuestion < numQuestions) {
@@ -67,7 +75,7 @@ $(document).ready(function() {
 
             // Ensure user selected an answer and then score and add to selected answers array (doing all this now so don't have to iterate through questions again later)
             if (val == undefined) {
-                $(document).find(".quizMessage").text("Please select an answer");
+                $(document).find(".errorMessage").text("Please select an answer");
                 $(document).find(".quizMessage").show();
             } else {
                 // Remove warning and Grade the question apporpriately 
@@ -119,9 +127,11 @@ $(document).ready(function() {
 
 				// Since we have already displayed the first question on DOM ready
 				currentQuestion++; 
-				if(currentQuestion >= 1) {
-					  $('.preButton').prop("disabled", false);
-				}
+				if(currentQuestion >= 2) {
+                    $(".preButton").css("filter", "none");
+                    $(".preButton").removeClass("disabled");
+                
+                }
 				// if (currentQuestion < Object.keys(questionData[currentQuestion].choices).length) 
                 // display questions 1-5
                 if (currentQuestion <= numQuestions) {
@@ -162,6 +172,11 @@ $(document).ready(function() {
 // This displays the current question AND the choices
 function displayCurrentQuestion() 
 {
+    if(currentQuestion == 1) {
+        $(".preButton").css("filter", "grayscale(100%)");
+        $(".preButton").addClass("disabled");
+    }
+
     window.scrollTo(0, 0);
     console.log("In display current Question");
     console.log("Current Question: " + currentQuestion);
