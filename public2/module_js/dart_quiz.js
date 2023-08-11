@@ -199,7 +199,7 @@ $(document).ready(function() {
                 console.error(error);
             });
     
-            window.location.href = "/challenge3/identity";
+            // window.location.href = "/challenge3/identity";
 
 
 

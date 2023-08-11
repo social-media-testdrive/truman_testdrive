@@ -218,15 +218,15 @@ exports.postQuizScore = (req, res, next) => { // response second
         }
         if (existingUser) {
             // prequiz attempt data
-            const prequizAttempt = {
+            const challengeAttempt = {
                 timestamp: new Date(),
                 scoreTotal: scoreTotal,
                 questionScores: questionScores,
                 questionChoices: selectedAnswer,
             };
 
-            // Add the prequiz attempt to the prequizAttempts array
-            existingUser.moduleProgress[modID].prequizAttempts.push(prequizAttempt);
+            // Add the prequiz attempt to the challengeAttempts array
+            existingUser.moduleProgress[modID].challengeAttempts.push(challengeAttempt);
 
             // existingUser.moduleProgress[modID].percent = req.body.percent;
             // existingUser.moduleProgress[modID].link = req.body.link;            
@@ -237,6 +237,7 @@ exports.postQuizScore = (req, res, next) => { // response second
                     return next(err);
                 }
             });
+
 
             // // update current logged in the session
             // req.user.moduleProgress.identity.percent =  req.body.percent;
@@ -253,8 +254,9 @@ exports.postQuizScore = (req, res, next) => { // response second
      
         }
     });
-
+    console.log("about to redirect here")
     res.redirect('/challenge3/identity'); 
+
 }; 
 
 exports.postModuleProgress = (req, res, next) => { // response second
