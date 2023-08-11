@@ -105,7 +105,7 @@ const userController = require('./controllers/user');
 const passportConfig = require('./config/passport');
 
 // set up route middleware
-//var csrfProtection = csrf();
+//va = csrf();
 
 /*
  * Create Express server.
@@ -343,7 +343,7 @@ function check(req, res, next) {
     next();
 }
 
-/*function addCsrf(req, res, next) {
+/*functio(req, res, next) {
     res.locals.csrfToken = req.csrfToken();
     next();
 }*/
@@ -532,7 +532,7 @@ app.get('/', passportConfig.isAuthenticated, setHttpResponseHeaders, function(re
 // });
 
 // Render current user's account page, which is module specific (all modules)
-app.get('/account', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, userController.getAccount);
+app.get('/account', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.getAccount);
 
 // Render end page (all modules)
 app.get('/end/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
@@ -551,21 +551,21 @@ app.get('/explore_page', passportConfig.isAuthenticated, setHttpResponseHeaders,
 
 
 // Render selection
-app.get('/selection', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+app.get('/selection', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
     res.render('account/selection', {
         title: 'Selection'
     });
 });
 
 // Render character intro
-app.get('/character', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+app.get('/character', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
     res.render('account/character_intro', {
         title: 'Hello'
     });
 });
 
 // Render accessibility page
-app.get('/accessibility', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+app.get('/accessibility', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
     res.render('accessibility.pug', {
         title: 'Accessibility'
     });
@@ -573,116 +573,116 @@ app.get('/accessibility', passportConfig.isAuthenticated, csrfProtection, setHtt
 
 
 // Render selection
-app.get('/edit_profile', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+app.get('/edit_profile', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
     res.render('account/edit_profile', {
         title: 'edit_profile'
     });
 });
 
-app.get('/gmail', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+app.get('/gmail', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
     res.render('account/gmail', {
         title: 'gmail'
     });
 });
 
-app.get('/mail1', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+app.get('/mail1', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
     res.render('account/mail1', {
         title: 'mail1'
     });
 });
 
-app.get('/mail2', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+app.get('/mail2', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
     res.render('account/mail2', {
         title: 'mail2'
     });
 });
 
-app.get('/mail3', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+app.get('/mail3', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
     res.render('account/mail3', {
         title: 'mail3'
     });
 });
 
-app.get('/mail4', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+app.get('/mail4', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
     res.render('account/mail4', {
         title: 'mail4'
     });
 });
 
-app.get('/mail5', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+app.get('/mail5', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
     res.render('account/mail5', {
         title: 'mail5'
     });
 });
 
-app.get('/mail6', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+app.get('/mail6', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
     res.render('account/mail6', {
         title: 'mail5'
     });
 });
 
-app.get('/post_quiz', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+app.get('/post_quiz', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
     res.render('account/post_quiz', {
         title: 'post_quiz'
     });
 });
 
-app.get('/post_quiz2', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+app.get('/post_quiz2', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
     res.render('account/post_quiz2', {
         title: 'post_quiz2'
     });
 });
-app.get('/post_quiz3', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+app.get('/post_quiz3', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
     res.render('account/post_quiz3', {
         title: 'post_quiz3'
     });
 });
-app.get('/post_quiz4', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+app.get('/post_quiz4', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
     res.render('account/post_quiz4', {
         title: 'post_quiz4'
     });
 });
-app.get('/post_quiz5', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+app.get('/post_quiz5', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
     res.render('account/post_quiz5', {
         title: 'post_quiz5'
     });
 });
-app.get('/post_quiz6', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+app.get('/post_quiz6', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
     res.render('account/post_quiz6', {
         title: 'post_quiz6'
     });
 });
-app.get('/post_quiz7', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+app.get('/post_quiz7', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
     res.render('account/post_quiz7', {
         title: 'post_quiz7'
     });
 });
-app.get('/post_quiz8', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+app.get('/post_quiz8', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
     res.render('account/post_quiz8', {
         title: 'post_quiz7'
     });
 });
-app.get('/post_quiz9', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+app.get('/post_quiz9', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
     res.render('account/post_quiz9', {
         title: 'post_quiz9'
     });
 });
-app.get('/post_quiz10', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+app.get('/post_quiz10', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
     res.render('account/post_quiz10', {
         title: 'post_quiz10'
     });
 });
-app.get('/post_quiz11', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+app.get('/post_quiz11', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
     res.render('account/post_quiz11', {
         title: 'post_quiz11'
     });
 });
-app.get('/post_quiz12', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+app.get('/post_quiz12', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
     res.render('account/post_quiz12', {
         title: 'post_quiz12'
     });
 });
-app.get('/exploration_begin', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, function(req, res) {
+app.get('/exploration_begin', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
     res.render('account/exploration_begin', {
         title: 'exploration_begin'
     });
@@ -1259,7 +1259,7 @@ app.get('/tut_guide/:modId', passportConfig.isAuthenticated, setHttpResponseHead
 });
 
 // Render the profile page for the given actor
-app.get('/user/:userId', passportConfig.isAuthenticated, csrfProtection, setHttpResponseHeaders, addCsrf, actorsController.getActor);
+app.get('/user/:userId', passportConfig.isAuthenticated, setHttpResponseHeaders, actorsController.getActor);
 
 /*
  * Account creation & deletion
@@ -1269,23 +1269,23 @@ app.post('/delete', passportConfig.isAuthenticated, setHttpResponseHeaders, user
 // Create a new guest account
 app.get('/guest/:modId', setHttpResponseHeaders, isValidModId, userController.getGuest);
 
-app.post('/chatbot', check, setHttpResponseHeaders, csrfProtection, userController.postChatbotConnect);
+app.post('/chatbot', check, setHttpResponseHeaders, userController.postChatbotConnect);
 
-app.post('/postIdentityTheftPreQuizScore', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityTheftPreQuizScore);
+app.post('/postIdentityTheftPreQuizScore', check, setHttpResponseHeaders, userController.postIdentityTheftPreQuizScore);
 
-app.post('/postIdentityTheftModOneQuizScore', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityTheftModOneQuizScore);
+app.post('/postIdentityTheftModOneQuizScore', check, setHttpResponseHeaders, userController.postIdentityTheftModOneQuizScore);
 
-app.post('/postIdentityTheftModTwoQuizScore', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityTheftModTwoQuizScore);
+app.post('/postIdentityTheftModTwoQuizScore', check, setHttpResponseHeaders, userController.postIdentityTheftModTwoQuizScore);
 
-app.post('/postIdentityTheftModThreeQuizScore', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityTheftModThreeQuizScore);
+app.post('/postIdentityTheftModThreeQuizScore', check, setHttpResponseHeaders, userController.postIdentityTheftModThreeQuizScore);
 
-app.post('/postIdentityTheftModOneConfidenceRating', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityTheftModOneConfidenceRating);
+app.post('/postIdentityTheftModOneConfidenceRating', check, setHttpResponseHeaders, userController.postIdentityTheftModOneConfidenceRating);
 
-app.post('/postIdentityTheftModTwoConfidenceRating', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityTheftModTwoConfidenceRating);
+app.post('/postIdentityTheftModTwoConfidenceRating', check, setHttpResponseHeaders, userController.postIdentityTheftModTwoConfidenceRating);
 
-app.post('/postIdentityTheftModThreeConfidenceRating', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityTheftModThreeConfidenceRating);
+app.post('/postIdentityTheftModThreeConfidenceRating', check, setHttpResponseHeaders, userController.postIdentityTheftModThreeConfidenceRating);
 
-app.post('/postIdentityTheftPostQuizScore', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityTheftPostQuizScore);
+app.post('/postIdentityTheftPostQuizScore', check, setHttpResponseHeaders, userController.postIdentityTheftPostQuizScore);
 
 /**nodemailer */
 const nodemailer = require("nodemailer");
@@ -1302,7 +1302,7 @@ var transporter = nodemailer.createTransport({
  * Logins (only used on research site)
  */
 if (isResearchVersion) {
-    app.post('/forgotPassword', check, setHttpResponseHeaders, csrfProtection, function(req, res) {
+    app.post('/forgotPassword', check, setHttpResponseHeaders, function(req, res) {
         const new_token = generateUUID()
         transporter.sendMail({
             from: 'DartLehigh@gmail.com',
@@ -1350,14 +1350,14 @@ if (isResearchVersion) {
     
                 });
              */
-    app.get('/login', csrfProtection, setHttpResponseHeaders, addCsrf, userController.getLogin);
-    app.get('/classLogin/:accessCode', csrfProtection, setHttpResponseHeaders, addCsrf, userController.getClassLogin);
-    app.post('/instructorLogin', check, setHttpResponseHeaders, csrfProtection, userController.postInstructorLogin);
-    app.post('/facilitatorLogin', check, setHttpResponseHeaders, csrfProtection, userController.postFacilitatorLogin);
+    app.get('/login', setHttpResponseHeaders, userController.getLogin);
+    app.get('/classLogin/:accessCode', setHttpResponseHeaders, userController.getClassLogin);
+    app.post('/instructorLogin', check, setHttpResponseHeaders, userController.postInstructorLogin);
+    app.post('/facilitatorLogin', check, setHttpResponseHeaders, userController.postFacilitatorLogin);
     app.post('/studentLogin', check, setHttpResponseHeaders, userController.postStudentLogin);
-    app.post('/guestLogin', check, setHttpResponseHeaders, csrfProtection, userController.postGuestLogin);
-    app.post('/createStudent', check, setHttpResponseHeaders, csrfProtection, userController.postCreateStudent);
-    // app.post('/studentLogin/:accessCode', check, setHttpResponseHeaders, csrfProtection, userController.postStudentLogin);
+    app.post('/guestLogin', check, setHttpResponseHeaders, userController.postGuestLogin);
+    app.post('/createStudent', check, setHttpResponseHeaders, userController.postCreateStudent);
+    // app.post('/studentLogin/:accessCode', check, setHttpResponseHeaders, userController.postStudentLogin);
     app.get('/logout', setHttpResponseHeaders, userController.logout);
     app.get('/getGuest', setHttpResponseHeaders, userController.getGuest);
 
@@ -1367,27 +1367,27 @@ if (isResearchVersion) {
  * Key functionalities
  */
 // Post a new user-created post
-app.post('/post/new', check, setHttpResponseHeaders, csrfProtection, scriptController.newPost);
+app.post('/post/new', check, setHttpResponseHeaders, scriptController.newPost);
 // Post information about a user action on a post in a freeplay feed section
-app.post('/feed', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postUpdateFeedAction);
+app.post('/feed', passportConfig.isAuthenticated, check, setHttpResponseHeaders, scriptController.postUpdateFeedAction);
 // Delete all recorded feed actions for the current user - currently not used
 app.post('/deleteUserFeedActions', passportConfig.isAuthenticated, setHttpResponseHeaders, scriptController.postDeleteFeedAction);
 // Post information about a user's reflection answers in the reflection section 
-app.post('/reflection', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postReflectionAction);
+app.post('/reflection', passportConfig.isAuthenticated, check, setHttpResponseHeaders, scriptController.postReflectionAction);
 // Post information about a user's quiz answers in the quiz section
-app.post('/quiz', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postQuizAction);
-app.post('/postViewQuizExplanations', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postViewQuizExplanations);
+app.post('/quiz', passportConfig.isAuthenticated, check, setHttpResponseHeaders, scriptController.postQuizAction);
+app.post('/postViewQuizExplanations', passportConfig.isAuthenticated, check, setHttpResponseHeaders, scriptController.postViewQuizExplanations);
 // Record user's topic selection for modules with customized freeplay content
-app.post('/interest', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, userController.postUpdateInterestSelection);
-app.post('/advancedlitInterest', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, userController.postAdvancedlitInterestSelection);
+app.post('/interest', passportConfig.isAuthenticated, check, setHttpResponseHeaders, userController.postUpdateInterestSelection);
+app.post('/advancedlitInterest', passportConfig.isAuthenticated, check, setHttpResponseHeaders, userController.postAdvancedlitInterestSelection);
 // Routes to get topic selections for modules with customized freeplay content
 app.get('/esteemTopic', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.getEsteemTopic);
 app.get('/advancedlitTopic', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.getAdvancedlitTopic);
 // This was for load testing - not sure if it should be deleted
 app.get('/testing/:modId', isValidModId, scriptController.getScriptFeed);
 // Update user profile information
-app.post('/account/profile', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, setHttpResponseHeaders, csrfProtection, userController.postUpdateProfile);
-app.post('/account/profile/:modId', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, setHttpResponseHeaders, csrfProtection, userController.postUpdateProfile);
+app.post('/account/profile', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, setHttpResponseHeaders, userController.postUpdateProfile);
+app.post('/account/profile/:modId', passportConfig.isAuthenticated, useravatarupload.single('picinput'), check, setHttpResponseHeaders, userController.postUpdateProfile);
 
 
 
@@ -1395,24 +1395,24 @@ app.post('/account/profile/:modId', passportConfig.isAuthenticated, useravatarup
  * Recording various user activities if data collection is enabled
  */
 if (enableDataCollection) {
-    app.post('/pageLog', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, userController.postPageLog);
-    app.post('/startPageAction', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postStartPageAction);
-    app.post('/introjsStep', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postIntrojsStepAction);
-    app.post('/bluedot', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postBlueDotAction);
-    app.post('/moduleProgress', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, userController.postUpdateModuleProgress);
-    app.post('/accountsAction', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postUpdateUniqueFeedAction);
-    app.post('/habitsAction', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postUpdateUniqueFeedAction);
-    app.post('/privacyAction', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postUpdateUniqueFeedAction);
-    app.post('/chatAction', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, scriptController.postUpdateChatAction);
-    app.post('/voiceoverTimer', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, userController.postUpdateVoiceoverTimer);
+    app.post('/pageLog', passportConfig.isAuthenticated, check, setHttpResponseHeaders, userController.postPageLog);
+    app.post('/startPageAction', passportConfig.isAuthenticated, check, setHttpResponseHeaders, scriptController.postStartPageAction);
+    app.post('/introjsStep', passportConfig.isAuthenticated, check, setHttpResponseHeaders, scriptController.postIntrojsStepAction);
+    app.post('/bluedot', passportConfig.isAuthenticated, check, setHttpResponseHeaders, scriptController.postBlueDotAction);
+    app.post('/moduleProgress', passportConfig.isAuthenticated, check, setHttpResponseHeaders, userController.postUpdateModuleProgress);
+    app.post('/accountsAction', passportConfig.isAuthenticated, check, setHttpResponseHeaders, scriptController.postUpdateUniqueFeedAction);
+    app.post('/habitsAction', passportConfig.isAuthenticated, check, setHttpResponseHeaders, scriptController.postUpdateUniqueFeedAction);
+    app.post('/privacyAction', passportConfig.isAuthenticated, check, setHttpResponseHeaders, scriptController.postUpdateUniqueFeedAction);
+    app.post('/chatAction', passportConfig.isAuthenticated, check, setHttpResponseHeaders, scriptController.postUpdateChatAction);
+    app.post('/voiceoverTimer', passportConfig.isAuthenticated, check, setHttpResponseHeaders, userController.postUpdateVoiceoverTimer);
 }
 
 /*
  * Recording specific user activities if the user selects to share their activity data
  */
 if (enableShareActivityData) {
-    app.post('/postActivityData', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, activityController.postActivityData);
-    app.post('/postDeleteActivityData', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, activityController.postDeleteActivityData);
+    app.post('/postActivityData', passportConfig.isAuthenticated, check, setHttpResponseHeaders, activityController.postActivityData);
+    app.post('/postDeleteActivityData', passportConfig.isAuthenticated, check, setHttpResponseHeaders, activityController.postDeleteActivityData);
 }
 
 /*
@@ -1431,13 +1431,13 @@ if (enableTeacherDashboard) {
     app.get('/classFreeplayActions/:classId/:modName', passportConfig.isAuthenticated, setHttpResponseHeaders, classController.getClassFreeplayActions);
     app.get('/studentReportData/:classId/:username', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.getStudentReportData);
     app.get('/singlePost/:postId', passportConfig.isAuthenticated, setHttpResponseHeaders, scriptController.getSinglePost);
-    app.post('/downloadReflectionResponses/:classId/:modName', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, classController.postClassReflectionResponsesCsv);
-    app.post('/postClassTimeReportCsv/:classId/:modName', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, classController.postClassTimeReportCsv);
-    app.post('/createNewClass', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, classController.postCreateClass);
-    app.post('/deleteClass', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, classController.postDeleteClass);
-    app.post('/removeStudentFromClass', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, classController.removeStudentFromClass);
-    app.post('/generateStudentAccounts', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, classController.generateStudentAccounts);
-    app.post('/updateName', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, userController.postName);
+    app.post('/downloadReflectionResponses/:classId/:modName', passportConfig.isAuthenticated, check, setHttpResponseHeaders, classController.postClassReflectionResponsesCsv);
+    app.post('/postClassTimeReportCsv/:classId/:modName', passportConfig.isAuthenticated, check, setHttpResponseHeaders, classController.postClassTimeReportCsv);
+    app.post('/createNewClass', passportConfig.isAuthenticated, check, setHttpResponseHeaders, classController.postCreateClass);
+    app.post('/deleteClass', passportConfig.isAuthenticated, check, setHttpResponseHeaders, classController.postDeleteClass);
+    app.post('/removeStudentFromClass', passportConfig.isAuthenticated, check, setHttpResponseHeaders, classController.removeStudentFromClass);
+    app.post('/generateStudentAccounts', passportConfig.isAuthenticated, check, setHttpResponseHeaders, classController.generateStudentAccounts);
+    app.post('/updateName', passportConfig.isAuthenticated, check, setHttpResponseHeaders, userController.postName);
 
     // The class overview page on the teacher dashboard
     app.get('/classOverview', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
@@ -1468,7 +1468,7 @@ if (enableLearnerDashboard) {
     app.get('/getLearnerGeneralModuleData', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.getLearnerGeneralModuleData);
     app.get('/getLearnerSectionTimeData', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.getLearnerSectionTimeData);
     app.get('/getLearnerEarnedBadges', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.getLearnerEarnedBadges);
-    app.post('/postUpdateNewBadge', passportConfig.isAuthenticated, check, setHttpResponseHeaders, csrfProtection, userController.postUpdateNewBadge);
+    app.post('/postUpdateNewBadge', passportConfig.isAuthenticated, check, setHttpResponseHeaders, userController.postUpdateNewBadge);
 
     // The learning achievement page on the learner dashboard
     app.get('/learningAchievement', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
@@ -1509,7 +1509,7 @@ if (enableLearnerDashboard) {
 //     // handle CSRF token errors here
 //     console.log("CSRF TOKEN ERROR");
 //     console.log(err);
-//     addCsrf();
+//   ();
 //     console.log(res.locals.csrfToken);
 //     // res.method = 'GET';
 //     // res.url = '/getCSRFToken';
