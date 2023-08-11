@@ -6,17 +6,14 @@ block content
     .limit
       h1.ui.header.large#learn-title
         .content
-          | How can you recognize the techniques of scammers?
-      p Example 1 info 
-          
-      .ui.icon.blue.message
-        .icon
-          img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
-        .content
-          .header
-            //- i.info.circle.icon
-            | Important
-          p  Legitimate companies won’t email or text you with a link to update your payment information. 
+          | What are the techniques scammers use to steal your personal information?
+      img.ui.fluid.image(src='/images/learn2-4.png' style='margin-left: auto; margin-right: auto')
+      br  
+      p Fake Social Security Administration (SSA) employees may claim to have found alleged problems with your Social Security number — for example, warning that it's been linked to criminal activity and suspended. These scammers may then ask you to confirm your number so they can reactivate it or claim they can issue you a new one for a fee.
+
+      p Fake SSA employees may call/message/email you with good news — say, an increase in your benefits. To get the extra money, you just have to pay a fee, or verify your name, date of birth and Social Security number.
+       
+      
     script.
         var progress = #{user.moduleProgress.identity.percent}
     script(src='/js/setProgressBar.js')  

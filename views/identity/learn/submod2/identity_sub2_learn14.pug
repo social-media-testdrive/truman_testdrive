@@ -1,0 +1,32 @@
+extends ../../../module_layout
+
+block content
+
+  .ui.container#raised-container
+    .limit
+      .ui.large.pointing.below.label#speechBubble(style="float: none; width: 100%;")
+          p#speechText(style="font-size: 1.5rem; text-align: left") 
+              | Well done! You've learned two important concepts: 
+              strong Identity Theft, 
+              | which occurs when someone steals your personal information and exploits it for malicious purposes, and 
+              strong personal information, 
+              | which is the information uniquely associated with you, which can be directly or indirectly used to identify you.
+              br 
+              br
+              | Moreover, you have gained insight into the severe consequences that can arise when someone steals your identity.
+              br
+              br
+              | Now, let's put our newfound knowledge into practice and reinforce what we've learned!
+      img#dart_image1.ui.small.image(src='/profile_pictures/transparent.png' style="margin: 0 auto;")
+      br
+          
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+  .ui.container
+    +navButtons('identity', '/submod2/learn13/identity', '/submod2/learn14/identity', 54)  
+
+block scripts
+  script(src='/js/character.js')
