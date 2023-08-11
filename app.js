@@ -880,9 +880,19 @@ app.get('/submod/learn5/:modId', passportConfig.isAuthenticated, setHttpResponse
     });
 });
 
-app.get('/submod/learn6/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+app.get('/submod/learn6/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, async function(req, res) {
+    let quizData;
+    const data = await fs.readFileAsync(`${__dirname}/public2/json/` +  req.params.modId + `/submod.json`);
+    quizData = JSON.parse(data.toString());
+
+    const currentTime = getCurrentTime();
+    const currentDate = getCurrentDate();
+
     res.render(req.params.modId + '/learn/submod/' + req.params.modId + '_sub_learn6', {
-        title: 'Learn'
+        title: 'Learn',
+        quizData,
+        currentTime,
+        currentDate
     });
 });
 

@@ -1,6 +1,8 @@
 /* Styles for displaying quiz questions */
 .question {
     font-weight: bold;
+    line-height: 2.25rem !important;
+
 }
 
 /* .choiceList {

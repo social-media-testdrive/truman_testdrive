@@ -10,6 +10,12 @@ let questionScores = [];
 let attempts = 0;
 let scoreTotal = 0;
 
+let this_js_script = $('script[src*=dart_quiz]');
+let currentSection = this_js_script.attr('current-section');   
+let nextLink = this_js_script.attr('next-link');   
+console.log("currentSection: " + currentSection);
+console.log("nextLink: " + nextLink);
+
 $(document).ready(function() {    
     console.log("In dart_quiz.js");
     console.log("Question Data: " + questionData);
@@ -181,6 +187,8 @@ $(document).ready(function() {
                     "scoreTotal": scoreTotal,
                     "selectedAnswer": selectedAnswer,
                     "questionScores": questionScores,
+                    "nextLink": nextLink,
+                    "currentSection": currentSection,
                 })
             })
             .then(response => {
@@ -188,7 +196,7 @@ $(document).ready(function() {
                     // Request was successful
                     console.log('Quiz attempt posted successfully!');
                     // Now can navigate to the next page
-                    window.location.href = "/challenge3/identity";
+                    window.location.href = nextLink;
                 } else {
                     // Handle error response
                     console.error('Failed to post quiz attempt');

@@ -1,0 +1,98 @@
+{
+    "1": {
+      "type": "multi_select",
+      "partial": "none",
+      "prompt": "1. Which of the following situations can be characterized as identity theft? Select all that apply:",
+      "choices": {
+        "0": {
+            "text": "Someone makes purchases with your credit card",
+            "explanation": "Correct: This is a clear case of identity theft, as someone is using your financial information without authorization."
+        },
+        "1": {
+          "text": "A bank account is opened under your own name",
+          "explanation": "Incorrect: This is a legitimate use of personal information for financial purposes."
+        },
+        "2": {
+          "text": "You give your Social Security to a website for a prize",
+          "explanation": "Correct: This is identity theft, often referred to as phishing, where personal information is obtained under false pretenses."
+        },
+        "3": {
+          "text": "Sharing your email address with a colleague for work",
+          "explanation": "Incorrect: This is not identity theft—it's a normal exchange of contact information."
+        },
+        "4": {
+            "text": "You share your Netflix password with your family members",
+            "explanation": "Incorrect: While sharing passwords might be against terms of service, this situation does not involve identity theft.."
+        },
+        "5": {
+            "text": "Using a stolen driver's license during a traffic stop",
+            "explanation": "Correct: Impersonating someone using their stolen identification in a real-world situation like a traffic stop constitutes identity theft."
+        }
+},
+    "correctResponse": ["0", "2", "5"]
+    },
+    "2": {
+        "type": "multi_select",
+        "partial": "none",
+        "prompt": "2. Select all sensitive personal information vulnerable to identity theft:",
+        "choices": {
+            "0": {
+                "text": "First name",
+                "explanation": "Correct: This is considered personal information as it is a part of an individual's identity and can be used in combination with other data to potentially steal their identity."
+            },
+            "1": {
+                "text": "Mother's maiden name",
+                "explanation": "Correct: This information is often used as a security question and can be used by identity thieves to gain access to accounts."
+            },
+            "2": {
+                "text": "Preferred pizza topping",
+                "explanation": "Incorrect: This information is generally not considered sensitive enough to be used for identity theft. It's a personal preference rather than a unique identifier."
+            },
+            "3": {
+              "text": "Home address",
+              "explanation": "Correct: A home address is personal information that can be used for various purposes, including identity theft."
+            },
+            "4": {
+                "text": "Date of birth",
+                "explanation": "Correct: Date of birth is crucial personal information that, when combined with other data, can help thieves steal an individual's identity."
+            },
+            "5": {
+                "text": "Cell phone number",
+                "explanation": "Correct: Cell phone numbers are often tied to various accounts and can be used for unauthorized access or phishing attacks."
+            }
+        },
+        "correctResponse": ["0", "1", "3", "4", "5"]
+},
+    "3": {
+      "type": "multi_select",
+      "partial": "none",
+      "prompt": "3. What could happen if your personal information is stolen? Select all that apply:",
+      "choices": {
+        "0": {
+            "text": "Increase social media followers",
+            "explanation": "Incorrect: Stolen personal info can be used to take over accounts, but hackers do harm not gain followers."
+        },
+        "1": {
+            "text": "Maxed out credit cards",
+            "explanation": "Correct: Thieves can use stolen personal information to make unauthorized purchases and financial transactions."
+        },
+        "2": {
+            "text": "Identity impersonation",
+            "explanation": "Correct: Stolen personal information can be used to impersonate you for fraudulent activities."
+        },
+        "3": {
+            "text": "Legal Troubles",
+            "explanation": "Correct: Stolen information can be used to open fraudulent accounts, including bank accounts."
+        },
+        "4": {
+            "text": "Save on taxes",
+            "explanation": "Incorrect: Identity theft won't aid taxes. Instead, thieves can use your info to file a false return and claim your refund."
+        },
+        "5": {
+            "text": "A stranger's medical procedure conducted under your health insurance",
+            "explanation": "Correct: This is an example of medical identity theft where stolen information is misused to access health insurance and cover medical procedures belonging to someone else."
+        }
+    },
+    "correctResponse": ["1", "2", "3", "5"]
+    }
+}

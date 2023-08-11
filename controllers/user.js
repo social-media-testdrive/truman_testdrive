@@ -208,7 +208,7 @@ exports.postInstructorLogin = (req, res, next) => {
 exports.postQuizScore = (req, res, next) => { // response second
     console.log("In POST quiz score request body***********************hiii****");
 
-    const { modID, scoreTotal, selectedAnswer, questionScores } = req.body;
+    const { modID, scoreTotal, selectedAnswer, questionScores, nextLink, currentSection } = req.body;
 
     User.findOne({
         username: req.user.username
@@ -218,15 +218,17 @@ exports.postQuizScore = (req, res, next) => { // response second
         }
         if (existingUser) {
             // prequiz attempt data
-            const challengeAttempt = {
+            const attempt = {
                 timestamp: new Date(),
                 scoreTotal: scoreTotal,
                 questionScores: questionScores,
                 questionChoices: selectedAnswer,
             };
 
-            // Add the prequiz attempt to the challengeAttempts array
-            existingUser.moduleProgress[modID].challengeAttempts.push(challengeAttempt);
+            let sectionAttempts = currentSection + "Attempts";
+
+            // Add the prequiz attempt to the challengeAttempts/submod1Attempts/etc array
+            existingUser.moduleProgress[modID][sectionAttempts].push(attempt);
 
             // existingUser.moduleProgress[modID].percent = req.body.percent;
             // existingUser.moduleProgress[modID].link = req.body.link;            
@@ -254,8 +256,8 @@ exports.postQuizScore = (req, res, next) => { // response second
      
         }
     });
-    console.log("about to redirect here")
-    res.redirect('/challenge3/identity'); 
+    console.log("about to redirect in post quiz score")
+    res.redirect(nextLink); 
 
 }; 
 
