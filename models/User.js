@@ -67,7 +67,12 @@ const userSchema = new mongoose.Schema({
         identity: {
             percent: { type: Number, default: 0 }, // percent complete
             link: { type: String, default: '/intro/identity' }, // link to the last page the user was on in module
-            prequiz: { type: Number, default: 0},
+            prequizAttempts: [{
+                timestamp: { type: Date, default: Date.now },
+                scoreTotal: { type: Number, default: 0 },
+                questionScores: [{ type: Number }],
+                questionChoices: Schema.Types.Mixed,
+            }],
             submodOne: { type: Number, default: 0 },
             submodTwo: { type: Number, default: 0 },
             submodThree: { type: Number, default: 0 },

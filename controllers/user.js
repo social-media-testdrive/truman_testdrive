@@ -204,8 +204,61 @@ exports.postInstructorLogin = (req, res, next) => {
 };
 
 
+
+exports.postQuizScore = (req, res, next) => { // response second
+    console.log("In POST quiz score request body***********************hiii****");
+
+    const { modID, scoreTotal, selectedAnswer, questionScores } = req.body;
+
+    User.findOne({
+        username: req.user.username
+    }, (err, existingUser) => {
+        if (err) {
+            return next(err);
+        }
+        if (existingUser) {
+            // prequiz attempt data
+            const prequizAttempt = {
+                timestamp: new Date(),
+                scoreTotal: scoreTotal,
+                questionScores: questionScores,
+                questionChoices: selectedAnswer,
+            };
+
+            // Add the prequiz attempt to the prequizAttempts array
+            existingUser.moduleProgress[modID].prequizAttempts.push(prequizAttempt);
+
+            // existingUser.moduleProgress[modID].percent = req.body.percent;
+            // existingUser.moduleProgress[modID].link = req.body.link;            
+
+            // save to mongodb database
+            existingUser.save((err) => {
+                if (err) {
+                    return next(err);
+                }
+            });
+
+            // // update current logged in the session
+            // req.user.moduleProgress.identity.percent =  req.body.percent;
+            // req.user.moduleProgress.identity.link =  req.body.link;
+            // req.session.passport.user = req.user;
+
+            // // Save the updated session to the session store
+            // req.session.save((err) => {
+            //     if (err) {
+            //         return next(err);
+            //     }
+            //     res.status(200).json({ message: 'Progress updated successfully!' });
+            // });
+     
+        }
+    });
+
+    res.redirect('/challenge3/identity'); 
+}; 
+
 exports.postModuleProgress = (req, res, next) => { // response second
-    console.log("In POST module progess request body***********************YOOOOO****")
+    // console.log("In POST module progess request body***********************YOOOOO****")
     console.log(req.body)
     // console.log("BEFORE In POST module progess request user***********")
     // console.log(req.user)

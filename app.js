@@ -1391,6 +1391,8 @@ app.post('/chatbot', check, setHttpResponseHeaders, csrfProtection, userControll
 
 app.post('/postModuleProgress', check, setHttpResponseHeaders, csrfProtection, userController.postModuleProgress);
 
+app.post('/postQuizScore', check, setHttpResponseHeaders, csrfProtection, userController.postQuizScore);
+
 app.post('/postIdentityTheftPreQuizScore', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityTheftPreQuizScore);
 
 app.post('/postIdentityTheftModOneQuizScore', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityTheftModOneQuizScore);

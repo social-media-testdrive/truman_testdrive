@@ -7,6 +7,8 @@ let numQuestions = Object.keys(questionData).length;
 // stores selected answers for each question, indexed by the question number ie index.
 let selectedAnswer = [];
 let questionScores = [];
+let attempts = 0;
+let scoreTotal = 0;
 
 $(document).ready(function() {    
     console.log("In dart_quiz.js");
@@ -49,6 +51,7 @@ $(document).ready(function() {
             } 					
 		} else {
             // quiz is over and clicked the previous button (which is now the try again button)
+            attempts++;
             resetQuiz();
 		}
     });
@@ -156,8 +159,50 @@ $(document).ready(function() {
 		}	
 		else { // quiz is over and clicked the next button (which now displays 'Complete Quiz')
             // save info into database
-                // take user to next page (in db call at end)
+            // window.location.href = "/challenge3/identity";
+            // let correctAnswers = 0;
+            // let scoreTotal = 40;
+            // let selectedAnswer = ['yes', 'no', 'yes', 'no', [1,2,3,4]];
+            // let questionScores = [0, 0, 1, 1, 0];
+            let modID = "identity";
+            console.log("Posting quiz attempt to database!");
+            console.log("ScoreTotal is: " + scoreTotal);
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+            fetch('/postQuizScore', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-Token': csrfToken
+                },
+                //data to be sent in the request body
+                body: JSON.stringify({
+                    "modID": modID,
+                    "scoreTotal": scoreTotal,
+                    "selectedAnswer": selectedAnswer,
+                    "questionScores": questionScores,
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Request was successful
+                    console.log('Quiz attempt posted successfully!');
+                    // Now can navigate to the next page
+                    window.location.href = "/challenge3/identity";
+                } else {
+                    // Handle error response
+                    console.error('Failed to post quiz attempt');
+                }
+            })
+            .catch(error => {
+                // Handle network or fetch error
+                console.error(error);
+            });
+    
             window.location.href = "/challenge3/identity";
+
+
+
 			// currentQuestion = 1;
 			// viewResults();		
 		}
@@ -392,15 +437,15 @@ function displayScore() {
 
     $(document).find(".resultText").text("You got " + correctAnswers + " out of " + numQuestions + " questions correct!");
 
-    const finalScore = correctAnswers / numQuestions;
+    scoreTotal = correctAnswers / numQuestions;
     // fill: { gradient: ["#32C38B", "#B8E2B6"] } 
 
     $('.circleResults').circleProgress({
-        value: finalScore,
+        value: scoreTotal,
         size: 300,
         fill: "#32C38B"
         }).on('circle-animation-progress', function(event, progress) {
-        $(this).find('strong').html(Math.round(100 * finalScore) + '<i>%</i>');
+        $(this).find('strong').html(Math.round(100 * scoreTotal) + '<i>%</i>');
     });
 
     $(".result").show();
