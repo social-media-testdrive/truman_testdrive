@@ -21,8 +21,8 @@
           "explanation": "Incorrect: This is not identity theft—it's a normal exchange of contact information."
         },
         "4": {
-            "text": "You share your Netflix password with your family members",
-            "explanation": "Incorrect: While sharing passwords might be against terms of service, this situation does not involve identity theft.."
+            "text": "You share your Netflix password with your family",
+            "explanation": "Incorrect: While sharing passwords might be against terms of service, this situation does not involve identity theft."
         },
         "5": {
             "text": "Using a stolen driver's license during a traffic stop",
@@ -89,7 +89,7 @@
             "explanation": "Incorrect: Identity theft won't aid taxes. Instead, thieves can use your info to file a false return and claim your refund."
         },
         "5": {
-            "text": "A stranger's medical procedure conducted under your health insurance",
+            "text": "Unknown person uses your health insurance for a procedure.",
             "explanation": "Correct: This is an example of medical identity theft where stolen information is misused to access health insurance and cover medical procedures belonging to someone else."
         }
     },

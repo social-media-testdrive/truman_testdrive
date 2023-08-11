@@ -267,7 +267,7 @@ function displayCurrentQuestion()
     //     http://localhost:3000/quizPartials/identity/challenge/q1.html
 
     if(question.partial != "none") {
-        $.get("/quizPartials/identity/challenge/" + question.partial, function(data) {
+        $.get("/quizPartials/identity/" + currentSection + "/" + question.partial, function(data) {
             // 'data' contains the content of the Pug template
             htmlImageContainer.html(data);
 

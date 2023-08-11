@@ -1005,12 +1005,27 @@ app.get('/submod2/learn14/:modId', passportConfig.isAuthenticated, setHttpRespon
     });
 });
 
-app.get('/submod2/learn15/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+app.get('/submod2/learn15/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, async function(req, res) {
+    let quizData;
+    const data = await fs.readFileAsync(`${__dirname}/public2/json/` +  req.params.modId + `/submodTwo.json`);
+    quizData = JSON.parse(data.toString());
+
+    const currentTime = getCurrentTime();
+    const currentDate = getCurrentDate();
+
     res.render(req.params.modId + '/learn/submod2/' + req.params.modId + '_sub2_learn15', {
-        title: 'Learn'
+        title: 'Learn',
+        quizData,
+        currentTime,
+        currentDate
     });
 });
 
+app.get('/submod2/learn16/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod2/' + req.params.modId + '_sub2_learn16', {
+        title: 'Learn'
+    });
+});
 
 // Render learn submod 3 (all modules) ******************************
 app.get('/submod3/learn/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {

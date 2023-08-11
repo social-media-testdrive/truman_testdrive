@@ -1,0 +1,66 @@
+{
+    "1": {
+      "type": "yes_no",
+      "partial": "q1.html",
+      "prompt": "1. Is this email a scam?",
+      "choices": {
+        "yes": {
+          "text": "Yes",
+          "explanation": "Explanation for the yes statement."
+        },
+        "no": {
+          "text": "No",
+          "explanation": "Explanation for the no statement."
+        }
+      },
+      "correctResponse": "yes"
+  },
+    "2": {
+        "type": "yes_no",
+        "partial": "q2.html",
+        "prompt": "2. Is this email a scam?",
+        "choices": {
+          "yes": {
+            "text": "Yes",
+            "explanation": "Explanation for the yes statement."
+          },
+          "no": {
+            "text": "No",
+            "explanation": "Explanation for the no statement."
+          }
+        },
+        "correctResponse": "yes"
+    },
+    "3": {
+        "type": "multi_select",
+        "partial": "none",
+        "prompt": "3. Which of the following techniques do scammers mainly utilize? Select all that apply:",
+        "choices": {
+            "0": {
+              "text": "Fear and threats in scam messaging",
+              "explanation": "Correct: Explanation."
+            },
+            "1": {
+              "text": "Tempting offers that are too good to be true",
+              "explanation": "Correct: Explanation."
+            },
+            "2": {
+              "text": "Using sympathy and kindness",
+              "explanation": "Correct: Explanation."
+            },
+            "3": {
+              "text": "Weather Forecasting",
+              "explanation": "Incorrect: Weather forecasting is entirely unrelated to identity theft and is not a technique utilized by scammers for their malicious activities."
+            },
+            "4": {
+              "text": "Robocalling",
+              "explanation": "Correct: Explanation."
+            },
+            "5": {
+              "text": "Ask you to click a link",
+              "explanation": "Correct: Explanation."
+            }
+        },
+        "correctResponse": ["0", "1", "2", "4", "5"]
+      }            
+  }
