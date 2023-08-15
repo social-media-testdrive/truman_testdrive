@@ -168,7 +168,7 @@ app.use(session({
         httpOnly: true,
         secure: false,
         maxAge: 1209600000,
-        sameSite: 'lax'
+        sameSite: 'None; Secure'
     },
     secret: process.env.SESSION_SECRET,
     store: new MongoStore({
@@ -350,18 +350,6 @@ function check(req, res, next) {
 
 function setHttpResponseHeaders(req, res, next) {
     // TODO: rework chatbox so that 'unsafe-eval' in script-src is not required.
-    res.set({
-        'Cache-Control': 'no-cache, no-store',
-        'Expires': '0',
-        'Pragma': 'no-cache',
-        'Content-Type': 'text/html; charset=UTF-8',
-        'Content-Security-Policy': "script-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
-            "default-src 'self' https://www.google-analytics.com http://3.19.31.168:8080/webhooks/rest/webhook;" +
-            "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
-            "img-src 'self' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
-            "media-src https://dhpd030vnpk29.cloudfront.net;" +
-            "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:"
-    });
     next();
 }
 
@@ -1112,16 +1100,7 @@ app.get('/quiz/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, 
 
 // Main route for rendering the practice page for a given module.
 app.get('/sim/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
-    if (req.params.modId === 'safe-posting') {
-        res.set({
-            'Content-Security-Policy': "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
-                "default-src 'self' https://www.google-analytics.com;" +
-                "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
-                "img-src 'self' https://dhpd030vnpk29.cloudfront.net https://www.googletagmanager.com https://www.google-analytics.com;" +
-                "media-src https://dhpd030vnpk29.cloudfront.net;" +
-                "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:"
-        });
-    }
+
     res.render(req.params.modId + '/' + req.params.modId + '_sim', {
         title: 'Guided Activity'
     });
@@ -1190,16 +1169,6 @@ app.get('/trans_script/:modId', passportConfig.isAuthenticated, setHttpResponseH
 
 // Main route for rendering the learn page for a given module
 app.get('/tutorial/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
-    if (req.params.modId === 'safe-posting') {
-        res.set({
-            'Content-Security-Policy': "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
-                "default-src 'self'  https://www.google-analytics.com;" +
-                "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
-                "img-src 'self' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
-                "media-src https://dhpd030vnpk29.cloudfront.net;" +
-                "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:"
-        });
-    }
     res.render(req.params.modId + '/' + req.params.modId + '_tutorial', {
         title: 'Tutorial'
     });
@@ -1207,16 +1176,6 @@ app.get('/tutorial/:modId', passportConfig.isAuthenticated, setHttpResponseHeade
 
 // Render explore page
 app.get('/Saeed_Ahmed/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
-    if (req.params.modId === 'safe-posting') {
-        res.set({
-            'Content-Security-Policy': "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
-                "default-src 'self' https://www.google-analytics.com;" +
-                "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
-                "img-src 'self' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
-                "media-src https://dhpd030vnpk29.cloudfront.net;" +
-                "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:"
-        });
-    }
     res.render(req.params.modId + '/' + req.params.modId + '_Saeed_Ahmed', {
         title: 'Explore'
     });
@@ -1243,16 +1202,6 @@ app.get('/tutorial2/:modId', passportConfig.isAuthenticated, setHttpResponseHead
 
 // Render tutorial guide page
 app.get('/tut_guide/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
-    if (req.params.modId === 'safe-posting') {
-        res.set({
-            'Content-Security-Policy': "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/  https://www.googletagmanager.com https://www.google-analytics.com;" +
-                "default-src 'self' https://www.google-analytics.com;" +
-                "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
-                "img-src 'self' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
-                "media-src https://dhpd030vnpk29.cloudfront.net;" +
-                "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:"
-        });
-    }
     res.render(req.params.modId + '/' + req.params.modId + '_tut_guide', {
         title: 'Tutorial'
     });
