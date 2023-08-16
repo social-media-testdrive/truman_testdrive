@@ -19,6 +19,7 @@ html
     meta(name="mobile-web-app-capable" content="yes")
     meta(name="msapplication-tap-highlight" content="no")
     meta(name="content-language" content="en_US")
+    meta(http-equiv='Permissions-Policy' content="interest-cohort=(), browsing-topics=()")
     meta(name='twitter:card' content="summary")
     if (process.env.isResearchVersion === "true")
       if (process.env.NODE_ENV === "production")
@@ -58,8 +59,9 @@ html
 
     block styles
 
+  //- script(src='//code.tidio.co/9hsbjpd1hrzzesxxbfvcdo0rdtafhzmb.js' async='')
   script(src='https://app.wotnot.io/chat-widget/79V9VnbBQMxM062228268676IdMJdpQW.js' defer crossorigin="anonymous")
-
+  
   body
     //- Flexbox layout 
     #page-header
@@ -67,6 +69,7 @@ html
         include partials/ui_header
     #page-article
       block content
+      //- iframe(width='640' height='480' src='https://embed.wotnot.io/79V9VnbBQMxM062228268676IdMJdpQW/bot/42SBy2c4MQBw062925850588OHwYcj3y?display_header=false&history_retention=false' frameborder='0')
     #page-footer
       block footer
         include partials/ui_footer
@@ -108,7 +111,11 @@ html
       - var t = '/main.js?t=' + (new Date()).getTime().toString();
       script(src=t)
 
+<<<<<<< HEAD
     script(src="/js/progress.js")  
+=======
+    //- script(src='https://app.wotnot.io/chat-widget/79V9VnbBQMxM062228268676IdMJdpQW.js')
+>>>>>>> chatbot_builder
 
     block scripts
     // Google Analytics
