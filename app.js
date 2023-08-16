@@ -715,19 +715,19 @@ app.get('/intro2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders
     });
 });
 
-app.get('/intro3/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+app.get('/intro3/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
     res.render(req.params.modId + '/intro/' + req.params.modId + '_intro3', {
         title: 'Intro'
     });
 });
 
-app.get('/intro4/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+app.get('/intro4/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
     res.render(req.params.modId + '/intro/' + req.params.modId + '_intro4', {
         title: 'Intro'
     });
 });
 
-app.get('/intro5/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+app.get('/intro5/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
     res.render(req.params.modId + '/intro/' + req.params.modId + '_intro5', {
         title: 'Intro'
     });
@@ -790,7 +790,7 @@ app.get('/challenge2/:modId', passportConfig.isAuthenticated, setHttpResponseHea
     });
 });
 
-// app.get('/challenge2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, async function(req, res) {
+// app.get('/challenge2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, async function(req, res) {
 //     let quizData;
 //     const data = await fs.readFileAsync(`${__dirname}/public2/json/quizSectionData.json`);
 //     quizData = JSON.parse(data.toString())[req.params.modId];
@@ -802,7 +802,7 @@ app.get('/challenge2/:modId', passportConfig.isAuthenticated, setHttpResponseHea
 //     });
 // });
 
-app.get('/challenge3/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+app.get('/challenge3/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
     res.render(req.params.modId + '/challenge/' + req.params.modId + '_challenge3', {
         title: 'Challenge'
     });
@@ -869,7 +869,7 @@ app.get('/submod/learn5/:modId', passportConfig.isAuthenticated, setHttpResponse
     });
 });
 
-app.get('/submod/learn6/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, async function(req, res) {
+app.get('/submod/learn6/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, async function(req, res) {
     let quizData;
     const data = await fs.readFileAsync(`${__dirname}/public2/json/` +  req.params.modId + `/submod.json`);
     quizData = JSON.parse(data.toString());
@@ -970,31 +970,31 @@ app.get('/submod2/learn10/:modId', passportConfig.isAuthenticated, setHttpRespon
     });
 });
 
-app.get('/submod2/learn11/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+app.get('/submod2/learn11/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
     res.render(req.params.modId + '/learn/submod2/' + req.params.modId + '_sub2_learn11', {
         title: 'Learn'
     });
 });
 
-app.get('/submod2/learn12/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+app.get('/submod2/learn12/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
     res.render(req.params.modId + '/learn/submod2/' + req.params.modId + '_sub2_learn12', {
         title: 'Learn'
     });
 });
 
-app.get('/submod2/learn13/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+app.get('/submod2/learn13/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
     res.render(req.params.modId + '/learn/submod2/' + req.params.modId + '_sub2_learn13', {
         title: 'Learn'
     });
 });
 
-app.get('/submod2/learn14/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+app.get('/submod2/learn14/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
     res.render(req.params.modId + '/learn/submod2/' + req.params.modId + '_sub2_learn14', {
         title: 'Learn'
     });
 });
 
-app.get('/submod2/learn15/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, async function(req, res) {
+app.get('/submod2/learn15/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, async function(req, res) {
     let quizData;
     const data = await fs.readFileAsync(`${__dirname}/public2/json/` +  req.params.modId + `/submodTwo.json`);
     quizData = JSON.parse(data.toString());
@@ -1010,7 +1010,7 @@ app.get('/submod2/learn15/:modId', passportConfig.isAuthenticated, setHttpRespon
     });
 });
 
-app.get('/submod2/learn16/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+app.get('/submod2/learn16/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
     res.render(req.params.modId + '/learn/submod2/' + req.params.modId + '_sub2_learn16', {
         title: 'Learn'
     });
@@ -1209,7 +1209,7 @@ app.get('/privacy', setHttpResponseHeaders, function(req, res) {
 });
 
 // Render terms and conditions page.
-app.get('/terms', setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
+app.get('/terms', setHttpResponseHeaders, function(req, res) {
     res.render('terms', {
         title: 'Terms'
     });
@@ -1362,13 +1362,13 @@ app.get('/guest/:modId', setHttpResponseHeaders, isValidModId, userController.ge
 
 app.post('/chatbot', check, setHttpResponseHeaders, userController.postChatbotConnect);
 
-// app.get('/moduleprogress/:modId', check, setHttpResponseHeaders, csrfProtection, userController.getModuleProgress);
+// app.get('/moduleprogress/:modId', check, setHttpResponseHeaders, userController.getModuleProgress);
 
-app.post('/postModuleProgress', check, setHttpResponseHeaders, csrfProtection, userController.postModuleProgress);
+app.post('/postModuleProgress', check, setHttpResponseHeaders, userController.postModuleProgress);
 
-app.post('/postQuizScore', check, setHttpResponseHeaders, csrfProtection, userController.postQuizScore);
+app.post('/postQuizScore', check, setHttpResponseHeaders, userController.postQuizScore);
 
-app.post('/postIdentityTheftPreQuizScore', check, setHttpResponseHeaders, csrfProtection, userController.postIdentityTheftPreQuizScore);
+app.post('/postIdentityTheftPreQuizScore', check, setHttpResponseHeaders, userController.postIdentityTheftPreQuizScore);
 
 app.post('/postIdentityTheftModOneQuizScore', check, setHttpResponseHeaders, userController.postIdentityTheftModOneQuizScore);
 

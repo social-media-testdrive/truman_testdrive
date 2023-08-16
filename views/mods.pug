@@ -98,14 +98,11 @@ block scripts
       let percent_to_post = 0;
       let link_to_post = "/intro/identity";
 
-      const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
       //- reset module progress in database
       fetch('/postModuleProgress', {
       method: 'POST',
       headers: {
-          'Content-Type': 'application/json',
-          'X-CSRF-Token': csrfToken
+          'Content-Type': 'application/json'
       },
       //data to be sent in the request body
       body: JSON.stringify({

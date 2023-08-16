@@ -26,14 +26,14 @@ function postModuleProgress(module_id, link_to_post, percent_to_post, current_pe
 
     // if(percent_to_post > current_percent && percent_to_post < 100) {
     if(parseInt(percent_to_post) > parseInt(current_percent) && parseInt(percent_to_post) < 100) {
-        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        // const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
         // POST module progress to database
         fetch('/postModuleProgress', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-Token': csrfToken
+                'Content-Type': 'application/json'
+                // 'X-CSRF-Token': csrfToken
             },
             //data to be sent in the request body
             body: JSON.stringify({

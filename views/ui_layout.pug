@@ -10,7 +10,6 @@ html
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(name='theme-color' content='#4DA5F4')
-    meta(name='csrf-token', content=csrfToken)
     meta(name='isDataCollectionEnabled', content=process.env.enableDataCollection)
     meta(name='isShareActivityDataEnabled', content=process.env.enableShareActivityData)
     meta(name='isResearchVersion', content=process.env.isResearchVersion)
@@ -111,11 +110,7 @@ html
       - var t = '/main.js?t=' + (new Date()).getTime().toString();
       script(src=t)
 
-<<<<<<< HEAD
     script(src="/js/progress.js")  
-=======
-    //- script(src='https://app.wotnot.io/chat-widget/79V9VnbBQMxM062228268676IdMJdpQW.js')
->>>>>>> chatbot_builder
 
     block scripts
     // Google Analytics
