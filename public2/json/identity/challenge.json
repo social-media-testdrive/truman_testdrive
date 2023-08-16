@@ -69,27 +69,27 @@
       "prompt": "5. What could occur if your identity is stolen? Select all that apply:",
       "choices": {
           "0": {
-            "text": "Loss of money",
+            "text": "A. Loss of money",
             "explanation": "If your identity is stolen, you may experience financial losses as the thief might gain access to your bank accounts or use your credit cards."
           },
           "1": {
-            "text": "Loss of tax refund",
+            "text": "B. Loss of tax refund",
             "explanation": "Identity thieves may fraudulently claim and receive your tax refund, leading to financial losses and potential complications with the tax authorities."
           },
           "2": {
-            "text": "Be charged as a criminal",
+            "text": "C. Be charged as a criminal",
             "explanation": "In some cases of identity theft, the thief may commit crimes using your identity, which could result in you being wrongfully charged for those offenses."
           },
           "3": {
-            "text": "Denial of loans",
+            "text": "D. Denial of loans",
             "explanation": "Identity theft can damage your credit score and history, leading to loan denials or unfavorable loan terms when you legitimately apply for credit."
           },
           "4": {
-            "text": "Improved online security",
+            "text": "E. Improved online security",
             "explanation": "Identity theft weakens security by compromising personal information and enabling unauthorized access rather than enhancing protection."
           },
           "5": {
-            "text": "Getting a discount on online shopping",
+            "text": "F. Getting a discount on online shopping",
             "explanation": "Identity theft typically leads to financial losses for the victim, not benefits like discounts."
           }
       },

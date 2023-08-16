@@ -103,7 +103,8 @@ ui.header.centered.aligned {
 
 
 .quizMessage, 
-.explanation {
+.explanationCorrect,
+.explanationIncorrect {
     margin-top: 15px;
     margin-bottom: 15px;
     /* background-color: peachpuff;
@@ -120,9 +121,24 @@ ui.header.centered.aligned {
 }
 
 .quizMessage .ui.red.center.aligned.message,
-.explanation .ui.red.center.aligned.message,
-.explanation .ui.green.center.aligned.message {
+.explanationIncorrect .ui.red.center.aligned.message,
+.explanationCorrect .ui.green.center.aligned.message {
     width: 100%;
+}
+
+.explanationCorrect h2.ui.header .icon,
+.explanationIncorrect h2.ui.header .icon {
+    margin-top: -8px;
+}
+
+.incorrectChoice {
+    background-color: #FFE8E6;
+    border: 2px solid black !important;
+}
+
+.correctChoice {
+    background-color: #E5F9E7;
+    border: 2px solid black !important;
 }
 
 

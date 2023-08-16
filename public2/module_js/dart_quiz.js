@@ -28,7 +28,10 @@ $(document).ready(function() {
     displayCurrentQuestion();
 
     // hide warning and next nav button and disable previous quiz nav button
+    $(".viewAnswers").hide();
     $(".quizMessage").hide();
+    $(".explanationCorrect").hide();
+    $(".explanationIncorrect").hide();
     $(".result").hide();
     $(".avatar-container").hide();
     $("#nextButton").hide();
@@ -40,9 +43,7 @@ $(document).ready(function() {
     // $(this).find(".preButton").attr('disabled', 'disabled');
 
 
-	$(this).find(".preButton").on("click", function () 
-	{		
-		
+	$(this).find(".preButton").on("click", function () {		
         if (!quizOver) {
 			if(currentQuestion == 0) { return false; }
 	
@@ -58,10 +59,10 @@ $(document).ready(function() {
 		} else {
             // quiz is over and clicked the previous button (which is now the try again button)
             attempts++;
+            viewingAnswer = false;
             resetQuiz();
 		}
     });
-
 
 
 	// On clicking next, display the next question
@@ -86,11 +87,11 @@ $(document).ready(function() {
 
             // Ensure user selected an answer and then score and add to selected answers array (doing all this now so don't have to iterate through questions again later)
             if (val == undefined || val.length === 0) {
-                $(document).find(".errorMessage").text("Please select an answer");
-                $(document).find(".quizMessage").show();
+                $(".errorMessage").text("Please select an answer");
+                $(".quizMessage").show();
             } else {
                 // Remove warning and Grade the question apporpriately 
-                $(document).find(".quizMessage").hide();
+                $(".quizMessage").hide();
 
                 if (questionData[currentQuestion].type === "yes_no") {
                     // simple yes/no question so if correct add 1 point if wrong add 0 points
@@ -153,10 +154,10 @@ $(document).ready(function() {
                     $(".checkboxChoices").empty();
                     $(".question").empty();
 					displayScore();
-					$(document).find(".preButton").text("Try Again");
-                    $(document).find(".nextButton").text("Complete Quiz");
+					$(".preButton").text("Try Again");
+                    $(".nextButton").text("Complete Quiz");
 
-					// $(document).find(".nextButton").text("View Answers");
+					// $(".nextButton").text("View Answers");
 					quizOver = true;
 					return false;
 				}
@@ -173,13 +174,12 @@ $(document).ready(function() {
             let modID = "identity";
             console.log("Posting quiz attempt to database!");
             console.log("ScoreTotal is: " + scoreTotal);
-            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            // const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
             fetch('/postQuizScore', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-Token': csrfToken
+                    'Content-Type': 'application/json'
                 },
                 //data to be sent in the request body
                 body: JSON.stringify({
@@ -216,7 +216,16 @@ $(document).ready(function() {
 		}
     });
     
+	$(this).find(".viewAnswers").on("click", function () {
+        console.log("View Answers Clicked!");
+        viewingAnswer = true;
 
+        // disable ability to change selectedAnswers
+        $(".choiceList").css("pointer-events", "none");
+        $(".checkboxChoices").css("pointer-events", "none");
+
+        resetQuiz();
+    });
 });
 
 function displayCurrentQuestion() 
@@ -233,8 +242,8 @@ function displayCurrentQuestion()
 
     let questionPrompt = questionData[currentQuestion].prompt;
     // console.log("Question: " + question);
-    // let questionClass = $(document).find(".quizContainer > .question");
-    let choiceList = $(document).find(".quizContainer > .choiceList");
+    // let questionClass = $(".quizContainer > .question");
+    let choiceList = $(".quizContainer > .choiceList");
     console.log("Choice List: " + choiceList)
     // let numChoices = Object.keys(questionData[currentQuestion].choices).length;
     // console.log("Num Choices: " + numChoices);
@@ -250,7 +259,8 @@ function displayCurrentQuestion()
     $(".choiceList").empty();
     htmlImageContainer.empty();
     checkBoxesContainer.empty();
-
+    $(".explanationCorrect").hide();
+    $(".explanationIncorrect").hide();
 
     // Set the questionClass text to the current question
     $(".question").text(questionPrompt);
@@ -275,7 +285,7 @@ function displayCurrentQuestion()
             const currentTimeSpan = document.getElementById('current-time');
             const currentDateSpan = document.getElementById('current-date');
             const userNameSpan = document.getElementById('user-name');
-            const userEmailSpane = document.getElementById('user-email');
+            const userEmailSpan = document.getElementById('user-email');
 
             if (currentTimeSpan) {
                 currentTimeSpan.textContent = currentTime;
@@ -289,15 +299,15 @@ function displayCurrentQuestion()
                 userNameSpan.textContent = username;
             } 
 
-            if (userEmailSpane) {
-                userEmailSpane.textContent = email;
+            if (userEmailSpan) {
+                userEmailSpan.textContent = email;
             } 
         });
     } else {
         htmlImageContainer.empty();
     }
     // else if (currentQuestion == 3){
-    //     $(document).find(".htmlImage").hide();
+    //     $(".htmlImage").hide();
     //     const imageContainer = $(".image");
     //     const imageSrc = '/quizPartials/identity/challenge/' + question.partial;
     //     const imageElement = $("<img>").attr("src", imageSrc);
@@ -305,7 +315,7 @@ function displayCurrentQuestion()
     // } else if (currentQuestion == 4){
     //     $(".image").empty();
     //     const imageContainer = $(".image");
-    //     $(document).find(".htmlImage").hide();
+    //     $(".htmlImage").hide();
     //     const imageSrc = '/quizPartials/identity/challenge/' + question.partial;
     //     const imageElement = $("<img>").attr("src", imageSrc);
     //     imageContainer.append(imageElement);
@@ -354,10 +364,38 @@ function displayCurrentQuestion()
             choiceContainer.append(checkboxDiv);
 
             // when going to previous questions, fill in with their previous answers
-            if(choiceKey === selectedAnswer[currentQuestion - 1]) {
+            if(choiceKey === selectedAnswer[currentQuestion - 1] && viewingAnswer === false) { 
                 document.getElementById(choiceKey).checked = true;
             } 
         });
+
+        
+        if(viewingAnswer === true) {
+            console.log("We have to be viewing the answer");
+            for(let i = 0; i <= selectedAnswer.length; i++) {
+                console.log("Index: " + i + " selectedAnswer: " + selectedAnswer[i]);
+            }    
+            for(let i = 0; i <= questionScores.length; i++) {
+                console.log("Index: " + i + " questionScores: " + questionScores[i]);
+            }   
+
+            document.getElementById(selectedAnswer[currentQuestion - 1]).checked = true;
+
+            // console.log("WHATTTTT: " +  questionData[currentQuestion].choices.yes.explanation);
+            console.log("Current selected answer: " + selectedAnswer[currentQuestion - 1])
+            if(questionScores[currentQuestion - 1] === 1) {
+                document.getElementById(selectedAnswer[currentQuestion - 1]).parentNode.classList.add("correctChoice");
+                $(".correctScore").text("Score: " + questionScores[currentQuestion - 1] + "/1");
+                // selectedAnswer[currentQuestion - 1] is yes or no
+                $(".correctExplanation").text(questionData[currentQuestion].choices[selectedAnswer[currentQuestion - 1]].explanation);
+                $(".explanationCorrect").show();
+            } else if(questionScores[currentQuestion - 1] === 0) {
+                document.getElementById(selectedAnswer[currentQuestion - 1]).parentNode.classList.add("incorrectChoice");
+                $(".incorrectScore").text("Score: " + questionScores[currentQuestion - 1] + "/1");
+                $(".incorrectExplanation").text(questionData[currentQuestion].choices[selectedAnswer[currentQuestion - 1]].explanation);
+                $(".explanationIncorrect").show();
+            }
+        }
     }
     
 
@@ -409,8 +447,8 @@ function displayCurrentQuestion()
 
     
     // var question = questions[currentQuestion].question;
-    // var questionClass = $(document).find(".quizContainer > .question");
-    // var choiceList = $(document).find(".quizContainer > .choiceList");
+    // var questionClass = $(".quizContainer > .question");
+    // var choiceList = $(".quizContainer > .choiceList");
     // var numChoices = questions[currentQuestion].choices.length;
     // // Set the questionClass text to the current question
     // $(questionClass).text(question);
@@ -443,7 +481,7 @@ function displayScore() {
 
     console.log("In display score!");
     let dipslayScore = (correctAnswers).toFixed(2)
-    $(document).find(".resultText").text("You got " + dipslayScore + " out of " + numQuestions + " questions correct!");
+    $(".resultText").text("You got " + dipslayScore + " out of " + numQuestions + " questions correct!");
 
     scoreTotal = (correctAnswers / numQuestions).toFixed(2);
     // fill: { gradient: ["#32C38B", "#B8E2B6"] } 
@@ -457,6 +495,7 @@ function displayScore() {
     });
 
     $(".result").show();
+    $(".viewAnswers").show();
     $(".avatar-container").show();
 
 
@@ -466,19 +505,21 @@ function displayScore() {
 }
 
 function resetQuiz() {
-    $(document).find(".result").hide();
-    $(document).find(".avatar-container").hide();
-
+    $(".result").hide();
+    $(".avatar-container").hide();
+    $(".viewAnswers").hide();
+    $(".preButton").text("Previous Question");
+    $(".nextButton").text("Next Question");
     currentQuestion = 1;
     correctAnswers = 0;
     quizOver = false;
-    selectedAnswer = [];
-    questionScores = [];
-    viewingAnswer = false;
-    $(document).find(".preButton").text("Previous Question");
-    $(document).find(".nextButton").text("Next Question");
+    // only clear selectedAnswer if not viewing answers
+    if(viewingAnswer === false) {
+        selectedAnswer = [];
+        questionScores = [];
+    }
 
-
+    // viewingAnswer = false;
     // Display the first question
     displayCurrentQuestion();
 }
