@@ -364,36 +364,123 @@ function displayCurrentQuestion()
             choiceContainer.append(checkboxDiv);
 
             // when going to previous questions, fill in with their previous answers
-            if(choiceKey === selectedAnswer[currentQuestion - 1] && viewingAnswer === false) { 
-                document.getElementById(choiceKey).checked = true;
-            } 
+            if (questionData[currentQuestion].type === "yes_no") {
+                if(choiceKey === selectedAnswer[currentQuestion - 1] && viewingAnswer === false) { 
+                    document.getElementById(choiceKey).checked = true;
+                } 
+            } else if  (questionData[currentQuestion].type === "multi_select") {
+                // console.log("**********************JAYZUS**********************")
+                // console.log("choiceKey: " + choiceKey);
+                // console.log("selectedAnswer[currentQuestion - 1]: " + selectedAnswer[currentQuestion - 1]);
+
+                // check that previous answers exist
+                if(selectedAnswer[currentQuestion - 1] != undefined) {
+                    // console.log("PREVIOUSE ANSWERS EXIST")
+                    // console.log("selectedAnswer[currentQuestion - 1]: " + selectedAnswer[currentQuestion - 1]);
+                    // console.log("choiceKey: " + choiceKey);
+                    // console.log("selectedAnswer[currentQuestion - 1].includes(choiceKey): " + selectedAnswer[currentQuestion - 1].includes(choiceKey));
+                    
+                    // check that the current checkbox choice to display is in the string of previously selected checkboxes
+                    if(selectedAnswer[currentQuestion - 1].includes(choiceKey)) {
+                        document.getElementById(choiceKey).checked = true;
+                    }
+
+                    // functionality to add mark the graded multi select question 
+                    // when viewing answers is true, also add class to make green/red 
+                    if(viewingAnswer === true) {
+                        if(selectedAnswer[currentQuestion - 1].includes(choiceKey) && questionData[currentQuestion].correctResponse.includes(choiceKey)) {
+                            // if user selected it and its a correct choice
+                            let correctChoice = document.getElementById(choiceKey).parentNode;
+                            correctChoice.classList.add("correctChoice");
+                            let labelElement = $(correctChoice).find("label"); 
+                            $('<i class="check circle green icon gradedIcon"></i>').prependTo(labelElement);
+                            // console.log("CORRECT CHOICE: " + choiceKey);
+                        } else if (selectedAnswer[currentQuestion - 1].includes(choiceKey)) {
+                            // if user selected it and its a incorrect choice
+                            let wrongChoice = document.getElementById(choiceKey).parentNode;
+                            wrongChoice.classList.add("incorrectChoice");
+                            let labelElement = $(wrongChoice).find("label"); 
+                            $('<i class="times circle red icon gradedIcon"></i>').prependTo(labelElement);
+                        }else if (questionData[currentQuestion].correctResponse.includes(choiceKey)) {
+                            // if its a correct choice the user did not select, mark it missed
+                            let missedChoice = document.getElementById(choiceKey).parentNode;
+                            missedChoice.classList.add("missedChoice");
+                            let labelElement = $(missedChoice).find("label"); // Use missedChoice here
+                            $('<i class="times circle red icon gradedIcon"></i>').prependTo(labelElement);
+                            // console.log("Missed CHOICE: " + choiceKey);
+                        }
+                    }
+
+                }
+
+                // var selectedAnswersArray = selectedAnswer[currentQuestion - 1].split(',').map(function(item) {
+                //     // parse the string number to base 10 integers
+                //     return parseInt(item, 10);
+                // });
+                
+                // console.log("The arrary!!!: " + selectedAnswersArray); // Output: [2, 7, 4]
+                // console.log(selectedAnswersArray[0]); 
+
+
+
+                // if(choiceKey === selectedAnswer[currentQuestion - 1] && viewingAnswer === false) { 
+                //     console.log("YO IN HERE FOR MULTISELECT")
+                //     $("input[type='checkbox']:checked").each(function() {
+                //         let temp = $(this).val();
+                //         console.log("the value is: " + temp);
+                //         document.getElementById(temp).checked = true;
+                //     });
+                // } 
+            }
         });
 
         
         if(viewingAnswer === true) {
-            console.log("We have to be viewing the answer");
-            for(let i = 0; i <= selectedAnswer.length; i++) {
-                console.log("Index: " + i + " selectedAnswer: " + selectedAnswer[i]);
-            }    
-            for(let i = 0; i <= questionScores.length; i++) {
-                console.log("Index: " + i + " questionScores: " + questionScores[i]);
-            }   
+            // console.log("We have to be viewing the answer");
+            // for(let i = 0; i <= selectedAnswer.length; i++) {
+            //     console.log("Index: " + i + " selectedAnswer: " + selectedAnswer[i]);
+            // }    
+            // for(let i = 0; i <= questionScores.length; i++) {
+            //     console.log("Index: " + i + " questionScores: " + questionScores[i]);
+            // }   
+            if(questionData[currentQuestion].type === "yes_no") {
+                if(selectedAnswer[currentQuestion - 1] != undefined) {
+                    document.getElementById(selectedAnswer[currentQuestion - 1]).checked = true;
+                } 
+                console.log("Current selected answer: " + selectedAnswer[currentQuestion - 1])
 
-            document.getElementById(selectedAnswer[currentQuestion - 1]).checked = true;
 
-            // console.log("WHATTTTT: " +  questionData[currentQuestion].choices.yes.explanation);
-            console.log("Current selected answer: " + selectedAnswer[currentQuestion - 1])
-            if(questionScores[currentQuestion - 1] === 1) {
-                document.getElementById(selectedAnswer[currentQuestion - 1]).parentNode.classList.add("correctChoice");
-                $(".correctScore").text("Score: " + questionScores[currentQuestion - 1] + "/1");
-                // selectedAnswer[currentQuestion - 1] is yes or no
-                $(".correctExplanation").text(questionData[currentQuestion].choices[selectedAnswer[currentQuestion - 1]].explanation);
-                $(".explanationCorrect").show();
-            } else if(questionScores[currentQuestion - 1] === 0) {
-                document.getElementById(selectedAnswer[currentQuestion - 1]).parentNode.classList.add("incorrectChoice");
-                $(".incorrectScore").text("Score: " + questionScores[currentQuestion - 1] + "/1");
-                $(".incorrectExplanation").text(questionData[currentQuestion].choices[selectedAnswer[currentQuestion - 1]].explanation);
-                $(".explanationIncorrect").show();
+                // console.log("WHATTTTT: " +  questionData[currentQuestion].choices.yes.explanation);
+            
+                if(questionScores[currentQuestion - 1] === 1) {
+                    document.getElementById(selectedAnswer[currentQuestion - 1]).parentNode.classList.add("correctChoice");
+                    $(".correctScore").text("Score: " + questionScores[currentQuestion - 1] + "/1");
+                    // selectedAnswer[currentQuestion - 1] is yes or no
+                    $(".correctExplanation").text(questionData[currentQuestion].choices[selectedAnswer[currentQuestion - 1]].explanation);
+                    $(".explanationCorrect").show();
+                } else if(questionScores[currentQuestion - 1] === 0) {
+                    document.getElementById(selectedAnswer[currentQuestion - 1]).parentNode.classList.add("incorrectChoice");
+                    $(".incorrectScore").text("Score: " + questionScores[currentQuestion - 1] + "/1");
+                    $(".incorrectExplanation").text(questionData[currentQuestion].choices[selectedAnswer[currentQuestion - 1]].explanation);
+                    $(".explanationIncorrect").show();
+                } else {
+                    console.log("HELLOOO??????")
+                    // document.getElementById(selectedAnswer[currentQuestion - 1]).parentNode.classList.add("incorrectChoice");
+                    // $(".incorrectScore").text("Score: " + questionScores[currentQuestion - 1] + "/1");
+                    // $(".explanationIncorrect").show();
+                }
+            } else if (questionData[currentQuestion].type === "multi_select") {
+                if(questionScores[currentQuestion - 1] === 1) {
+                    $(".correctScore").text("Score: " + questionScores[currentQuestion - 1] + "/1");
+                    $(".explanationCorrect").show();
+                } else if(questionScores[currentQuestion - 1] === 0) {
+                    $(".incorrectScore").text("Score: " + questionScores[currentQuestion - 1] + "/1");
+                    $(".explanationIncorrect").show();
+                } else {
+                    $(".incorrectScore").text("Score: " + questionScores[currentQuestion - 1] + "/1");
+                    $(".explanationIncorrect").show();
+                }
+
             }
         }
     }

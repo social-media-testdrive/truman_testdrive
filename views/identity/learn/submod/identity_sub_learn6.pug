@@ -35,14 +35,15 @@ block content
             //-                     | Check my account
 
             //- .explanation
-            //-     .ui.red.center.aligned.message
-            //-         //- i.close.icon
-            //-         i.check.circle.icon
-            //-         .errorMessage.header Incorrect
-            //-         p The correct answer is 'yes'
             //-     .ui.green.center.aligned.message 
-            //-         i.times.circle.icon 
-            //-         .errorMessage.header Correct
+            //-         h2.ui.header
+            //-             i.check.circle.large.icon
+            //-             | Correct
+            //-         p The correct answer is 'yes'
+            //-     .ui.red.center.aligned.message 
+            //-         h2.ui.header
+            //-             i.times.circle.large.icon
+            //-             | Incorrect
             //-         p The correct answer is 'yes'
 
             //- .smartphone
@@ -91,8 +92,23 @@ block content
                 .ui.red.center.aligned.message
                     i.close.icon
                     .errorMessage.header
+            .explanationCorrect
+                p.correctScore
+                .ui.green.center.aligned.message 
+                    h2.ui.header
+                        i.check.circle.large.icon
+                        | Correct
+                    p.correctExplanation
+            .explanationIncorrect
+                p.incorrectScore
+                .ui.red.center.aligned.message 
+                    h2.ui.header
+                        i.times.circle.large.icon
+                        | Incorrect
+                    p.incorrectExplanation
             .quizButtonContainer
                 .ui.blue.huge.button.preButton Previous Question
+                .ui.blue.huge.button.viewAnswers View Answers
                 .ui.blue.huge.button.nextButton Next Question
         .avatar-container
             img#dart_image1.ui.medium.image(src='/profile_pictures/transparent.png')
