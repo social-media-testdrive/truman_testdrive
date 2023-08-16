@@ -82,10 +82,10 @@ $(document).ready(function() {
                     val.push($(this).val());
                 });
             }
-            console.log("Val: " + val);
+            // console.log("Val: " + val);
 
             // Ensure user selected an answer and then score and add to selected answers array (doing all this now so don't have to iterate through questions again later)
-            if (val == undefined) {
+            if (val == undefined || val.length === 0) {
                 $(document).find(".errorMessage").text("Please select an answer");
                 $(document).find(".quizMessage").show();
             } else {
@@ -442,10 +442,10 @@ function displayScore() {
 
 
     console.log("In display score!");
+    let dipslayScore = (correctAnswers).toFixed(2)
+    $(document).find(".resultText").text("You got " + dipslayScore + " out of " + numQuestions + " questions correct!");
 
-    $(document).find(".resultText").text("You got " + correctAnswers + " out of " + numQuestions + " questions correct!");
-
-    scoreTotal = correctAnswers / numQuestions;
+    scoreTotal = (correctAnswers / numQuestions).toFixed(2);
     // fill: { gradient: ["#32C38B", "#B8E2B6"] } 
 
     $('.circleResults').circleProgress({
