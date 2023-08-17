@@ -531,9 +531,16 @@ function displayScore() {
     }
 
 
-    console.log("In display score!");
-    let dipslayScore = (correctAnswers).toFixed(2)
-    $(".resultText").text("You got " + dipslayScore + " out of " + numQuestions + " questions correct!");
+    let cleanScore = 0;
+
+    // only show 2 decimal places if the score is a decimal
+    if(correctAnswers % 1 === 0) {
+        cleanScore = correctAnswers;
+    } else {
+        cleanScore = (correctAnswers).toFixed(2)
+    }
+
+    $(".resultText").text("You got " + cleanScore + " out of " + numQuestions + " questions correct!");
 
     scoreTotal = (correctAnswers / numQuestions).toFixed(2);
     // fill: { gradient: ["#32C38B", "#B8E2B6"] } 

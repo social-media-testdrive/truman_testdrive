@@ -57,9 +57,13 @@
 }
 
 .ui.checkbox label p {
-    margin-top: -6px;
+    margin-top: -8px;
 }
 
+input[type=checkbox] {
+    width: 850px !important;
+    height: 60px !important;
+}
 
 
 /* input[type=radio]  */
