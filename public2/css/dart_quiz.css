@@ -39,23 +39,28 @@
 
 .checkboxChoices {
     display: grid;
-}
-
+  }
+  
 .ui.checkbox.listChoices {
     margin-top: 10px;
     margin-bottom: 10px;
-    border-radius: 10px; 
+    border-radius: 10px;
     border: 2px solid gray;
     width: 100%;
-    height: 60px;
     text-align: left;
     padding: 20px;
+    /* subtract 6 pixels as */
+    padding-bottom: 14px;
+
+    display: flex; 
+    align-items: center; 
 }
 
-input[type=checkbox] {
-    width: 850px !important;
-    height: 60px !important;
+.ui.checkbox label p {
+    margin-top: -6px;
 }
+
+
 
 /* input[type=radio]  */
 /* fix input field to cover padding so whole button is clickable */
@@ -105,7 +110,7 @@ ui.header.centered.aligned {
 .quizMessage, 
 .explanationCorrect,
 .explanationIncorrect {
-    margin-top: 15px;
+    margin-top: -15px;
     margin-bottom: 15px;
     /* background-color: peachpuff;
     border-radius: 6px;
@@ -163,6 +168,36 @@ p.incorrectScore {
     margin-bottom: 20px; */
 }
 
+.explanationIncorrect .theAnswers {
+    margin-top: -25px;
+}
+
+
+.explanationCorrect h2.ui.header,
+.explanationIncorrect h2.ui.header {
+    font-size: 1.75rem;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.explanationIncorrect button.ui.basic.blue.right.labeled.icon.button {
+    float: right;
+    /* border: none !important;  */
+    box-shadow: none !important;
+    font-size: 1.5rem !important;
+    padding-right: 55px !important;
+    margin-right: 0px !important;
+    margin-right: -20px !important;
+}
+
+.explanationIncorrect i.right.arrow.icon {
+    background: none !important;
+    margin-right: 0px !important;
+}
+
+.explanationIncorrect a {
+    text-decoration: underline;
+}
 
 .ui.blue.huge.button {
     border-radius: 30px !important;

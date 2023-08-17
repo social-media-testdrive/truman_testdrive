@@ -100,14 +100,17 @@ block content
                         | Correct
                     p.correctExplanation
             .explanationIncorrect
+                button.ui.basic.blue.right.labeled.icon.button.explainButton
+                    i.right.arrow.icon
+                    a Show Explanations
                 p.incorrectScore
-                .ui.red.center.aligned.message 
-                    h2.ui.header
-                        i.times.circle.large.icon
-                        | Incorrect
-                    p.incorrectExplanation
-                    p.yourAnswers
-                    p.theAnswers
+                h2.ui.header
+                    i.times.circle.red.small.icon
+                    | Incorrect
+                p.yourAnswers
+                p.theAnswers
+                //- .ui.red.center.aligned.message 
+                //-     p.incorrectExplanation
             .quizButtonContainer
                 .ui.blue.huge.button.preButton Previous Question
                 .ui.blue.huge.button.viewAnswers View Answers

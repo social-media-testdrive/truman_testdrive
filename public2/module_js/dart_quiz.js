@@ -126,9 +126,12 @@ $(document).ready(function() {
                     
                     // Ensure the score is not negative
                     multiScore = Math.max(multiScore, 0);
+                    multiScore = Number(multiScore.toFixed(2));
+
                     
                     console.log(`Total Score: ${multiScore}`);
-                    
+                    console.log(typeof multiScore);
+
                     selectedAnswer[currentQuestion - 1] = val;
                     questionScores[currentQuestion - 1] = multiScore;
                     console.log("selectedAnswer: " + selectedAnswer);
@@ -226,6 +229,10 @@ $(document).ready(function() {
         $(".checkboxChoices").css("pointer-events", "none");
 
         resetQuiz();
+    });
+
+	$(this).find(".explainButton").on("click", function () {
+        console.log("Show explanations clicked!");
     });
 });
 
@@ -357,8 +364,10 @@ function displayCurrentQuestion()
             input.value = choiceKey;
     
             const labelElement = document.createElement("label");
-            labelElement.textContent = choice.text;
-    
+            const choiceText = document.createElement("p");
+            choiceText.textContent = choice.text;
+            labelElement.appendChild(choiceText);
+
             checkboxDiv.append(input);
             checkboxDiv.append(labelElement);
             
@@ -462,7 +471,7 @@ function displayCurrentQuestion()
                 } else if(questionScores[currentQuestion - 1] === 0) {
                     document.getElementById(selectedAnswer[currentQuestion - 1]).parentNode.classList.add("incorrectChoice");
                     $(".incorrectScore").text("Score: " + questionScores[currentQuestion - 1] + "/1");
-                    $(".incorrectExplanation").text(questionData[currentQuestion].choices[selectedAnswer[currentQuestion - 1]].explanation);
+                    // $(".incorrectExplanation").text(questionData[currentQuestion].choices[selectedAnswer[currentQuestion - 1]].explanation);
                     $(".explanationIncorrect").show();
                 } 
             } else if (questionData[currentQuestion].type === "multi_select") {
