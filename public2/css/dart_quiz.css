@@ -155,6 +155,14 @@ ui.header.centered.aligned {
     top: -2px;
 }
 
+p.correctScore,
+p.incorrectScore {
+    font-size: 1.75rem;
+    font-weight: bold;
+    /* margin-top: 20px;
+    margin-bottom: 20px; */
+}
+
 
 .ui.blue.huge.button {
     border-radius: 30px !important;

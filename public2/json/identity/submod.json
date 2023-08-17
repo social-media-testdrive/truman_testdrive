@@ -28,9 +28,10 @@
             "text": "F. Using a stolen driver's license during a traffic stop",
             "explanation": "Correct: Impersonating someone using their stolen identification in a real-world situation like a traffic stop constitutes identity theft."
         }
-},
-    "correctResponse": ["0", "2", "5"]
     },
+    "correctResponse": ["0", "2", "5"],
+    "theAnswers": "A, C, F"
+},
     "2": {
         "type": "multi_select",
         "partial": "none",
@@ -61,7 +62,8 @@
                 "explanation": "Correct: Cell phone numbers are often tied to various accounts and can be used for unauthorized access or phishing attacks."
             }
         },
-        "correctResponse": ["0", "1", "3", "4", "5"]
+        "correctResponse": ["0", "1", "3", "4", "5"],
+        "theAnswers": "A, B, D, E, F"
 },
     "3": {
       "type": "multi_select",
@@ -93,6 +95,7 @@
             "explanation": "Correct: This is an example of medical identity theft where stolen information is misused to access health insurance and cover medical procedures belonging to someone else."
         }
     },
-    "correctResponse": ["1", "2", "3", "5"]
+    "correctResponse": ["1", "2", "3", "5"],
+    "theAnswers": "B, C, D, F"
     }
 }

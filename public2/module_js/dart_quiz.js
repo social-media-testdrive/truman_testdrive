@@ -18,6 +18,7 @@ console.log("nextLink: " + nextLink);
 
 $(document).ready(function() {    
     console.log("In dart_quiz.js");
+
     console.log("Question Data: " + questionData);
     console.log("num questions: " + numQuestions);
 
@@ -463,100 +464,55 @@ function displayCurrentQuestion()
                     $(".incorrectScore").text("Score: " + questionScores[currentQuestion - 1] + "/1");
                     $(".incorrectExplanation").text(questionData[currentQuestion].choices[selectedAnswer[currentQuestion - 1]].explanation);
                     $(".explanationIncorrect").show();
-                } else {
-                    console.log("HELLOOO??????")
-                    // document.getElementById(selectedAnswer[currentQuestion - 1]).parentNode.classList.add("incorrectChoice");
-                    // $(".incorrectScore").text("Score: " + questionScores[currentQuestion - 1] + "/1");
-                    // $(".explanationIncorrect").show();
-                }
+                } 
             } else if (questionData[currentQuestion].type === "multi_select") {
                 if(questionScores[currentQuestion - 1] === 1) {
-                    $(".correctScore").text("Score: " + questionScores[currentQuestion - 1] + "/1");
+                    $(".correctScore").text("Score: " + questionScores[currentQuestion - 1] + "/1");                
+
+                    // let userAnswerLetters = convertSelectedAnswerToLetters(selectedAnswer[currentQuestion - 1]);
+                    // $(".yourAnswers").text("You answered: " + userAnswerLetters);
+                    // $(".theAnswers").text("The correct answers are: " + questionData[currentQuestion].theAnswers);
                     $(".explanationCorrect").show();
-                } else if(questionScores[currentQuestion - 1] === 0) {
-                    $(".incorrectScore").text("Score: " + questionScores[currentQuestion - 1] + "/1");
-                    $(".explanationIncorrect").show();
                 } else {
                     $(".incorrectScore").text("Score: " + questionScores[currentQuestion - 1] + "/1");
+
+                    // console.log("BEYONCE THE Selected answer now is: " + selectedAnswer[currentQuestion - 1]);
+                    // convert object into string of user choices like: ["2","3","5"]
+
+
+                    let userAnswerLetters = convertSelectedAnswerToLetters(selectedAnswer[currentQuestion - 1]);
+                    // console.log("userAnswerLetters: " + userAnswerLetters);
+
+
+                    $(".yourAnswers").text("You answered: " + userAnswerLetters);
+                    $(".theAnswers").text("The correct answers are: " + questionData[currentQuestion].theAnswers);
                     $(".explanationIncorrect").show();
-                }
+                } 
 
             }
         }
     }
     
-
-    // const choiceContainer = document.getElementById("raised-container"); // Replace with the actual ID of the container element
-
-    // const qid = "1"; // Replace with the actual question ID
-    
-    // for (const questionKey in questionData) {
-    //     if (questionData.hasOwnProperty(questionKey)) {
-    //         const question = questionData[questionKey];
-    //         Object.keys(question.choices).forEach((choiceKey) => {
-    //             const choice = question.choices[choiceKey];
-    
-    //             const checkboxDiv = document.createElement("div");
-    //             checkboxDiv.classList.add("ui", "radio", "checkbox");
-    
-    //             const input = document.createElement("input");
-    //             input.type = "radio";
-    //             input.name = `question_${qid}_${questionKey}`; // Include question key in the name
-    //             input.value = choiceKey;
-    
-    //             const labelElement = document.createElement("label");
-    //             labelElement.textContent = choice.text;
-    
-    //             checkboxDiv.appendChild(input);
-    //             checkboxDiv.appendChild(labelElement);
-    
-    //             choiceContainer.appendChild(checkboxDiv);
-    //         });
-    //     }
-    // }
-    
-
-
-    // let choice;
-
-    // for (i = 0; i < numChoices; i++) 
-	// {
-    //     choice = questionData[currentQuestion].choices[i];
-		
-	// 	if(selectedAnswer[currentQuestion] == i) {
-	// 		$('<li><input type="radio" class="radio-inline" checked="checked"  value=' + i + ' name="dynradio" />' +  ' ' + choice  + '</li>').appendTo(choiceList);
-	// 	} else {
-	// 		$('<li><input type="radio" class="radio-inline" value=' + i + ' name="dynradio" />' +  ' ' + choice  + '</li>').appendTo(choiceList);
-	// 	}
-    // }
-
     console.log("End of display current Question");
-
-    
-    // var question = questions[currentQuestion].question;
-    // var questionClass = $(".quizContainer > .question");
-    // var choiceList = $(".quizContainer > .choiceList");
-    // var numChoices = questions[currentQuestion].choices.length;
-    // // Set the questionClass text to the current question
-    // $(questionClass).text(question);
-    // // Remove all current <li> elements (if any)
-    // $(choiceList).find("li").remove();
-    // var choice;
-	
-	
-    // for (i = 0; i < numChoices; i++) 
-	// {
-    //     choice = questions[currentQuestion].choices[i];
-		
-	// 	if(selectedAnswer[currentQuestion] == i) {
-	// 		$('<li><input type="radio" class="radio-inline" checked="checked"  value=' + i + ' name="dynradio" />' +  ' ' + choice  + '</li>').appendTo(choiceList);
-	// 	} else {
-	// 		$('<li><input type="radio" class="radio-inline" value=' + i + ' name="dynradio" />' +  ' ' + choice  + '</li>').appendTo(choiceList);
-	// 	}
-    // }
 }
 
+// change user's selected answers to the corresponding letters. E.g. if they chose multiselect options "0,1,3,4,5" it would return "A, B, D, E, F"
+function convertSelectedAnswerToLetters(userAnswersObj) {
+    const userAnswers = JSON.stringify(userAnswersObj);
+    // console.log(typeof userAnswers);
+    // console.log("AFTER STRINGIFY userAnswers: " + userAnswers);
 
+    // remove the brackets and quotes from the string so its like: 2,3,5
+    var cleanedString = userAnswers.replace(/["\[\]]/g, '');
+    // console.log("cleanedString: " + cleanedString);
+
+    const mapping = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // A corresponds to 0, B corresponds to 1, and so on
+    const numbersArray = cleanedString.split(',').map(Number);
+    
+    const lettersArray = numbersArray.map(number => mapping[number]);
+    const result = lettersArray.join(', ');
+    return result;
+}
 
 
 function displayScore() {
