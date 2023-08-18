@@ -12,7 +12,6 @@
 .choiceList .ui.radio.checkbox:nth-child(2) {
     margin-left: 70px;
 } */
-/* something about the button padding breaks the clicking fuctionality */
 .choiceList {
     width: 100%;
     display: flex;
@@ -39,9 +38,9 @@
 
 .checkboxChoices {
     display: grid;
-  }
-  
-.ui.checkbox.listChoices {
+}
+
+.checkboxChoices .ui.checkbox.listChoices {
     margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 10px;
@@ -56,10 +55,11 @@
     align-items: center; 
 }
 
-.ui.checkbox label p {
+.checkboxChoices  .ui.checkbox label p {
     margin-top: -8px;
 }
 
+/* make it so user can click anywhere in choice box to select it */
 input[type=checkbox] {
     width: 850px !important;
     height: 60px !important;
@@ -147,10 +147,11 @@ ui.header.centered.aligned {
     margin-top: -8px;
 }
 
-.ui.checkbox {
+.checkboxChoices .ui.checkbox {
     z-index: 10;
     background-color: white;
 }
+
 .incorrectChoice {
     /* background-color: #FFE8E6; */
     border: 2px solid black !important;

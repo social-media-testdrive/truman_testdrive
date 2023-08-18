@@ -13,8 +13,8 @@ let scoreTotal = 0;
 let this_js_script = $('script[src*=dart_quiz]');
 let currentSection = this_js_script.attr('current-section');   
 let nextLink = this_js_script.attr('next-link');   
-console.log("currentSection: " + currentSection);
-console.log("nextLink: " + nextLink);
+console.log("**currentSection: " + currentSection);
+console.log("**nextLink: " + nextLink);
 
 $(document).ready(function() {    
     console.log("In dart_quiz.js");
@@ -63,6 +63,13 @@ $(document).ready(function() {
             viewingAnswer = false;
             resetQuiz();
 		}
+
+        // If viewing answer reset the show explanation button if going back to previous question
+        if(viewingAnswer) {
+            $(".explainButton a").text("Show Explanation");
+            $(".explainButton i").removeClass("down caret icon").addClass("right caret icon");
+            $(".showExplaination").remove();
+        }
     });
 
 
@@ -213,14 +220,15 @@ $(document).ready(function() {
                 // Handle network or fetch error
                 console.error(error);
             });
-    
-            // window.location.href = "/challenge3/identity";
-
-
-
-			// currentQuestion = 1;
-			// viewResults();		
 		}
+
+
+        // If viewing answer reset the show explanation button when going to next question
+        if(viewingAnswer) {
+            $(".explainButton a").text("Show Explanation");
+            $(".explainButton i").removeClass("down caret icon").addClass("right caret icon");
+            $(".showExplaination").remove();
+        }
     });
     
 	$(this).find(".viewAnswers").on("click", function () {
@@ -436,11 +444,19 @@ function displayCurrentQuestion()
             input.name = "q" + currentQuestion; // Use the specified question ID
             input.id = choiceKey;
             input.value = choiceKey;
-    
-            const labelElement = document.createElement("label");
-            const choiceText = document.createElement("p");
-            choiceText.textContent = choice.text;
-            labelElement.appendChild(choiceText);
+            
+            let labelElement;
+            if(questionData[currentQuestion].type === "yes_no") {
+                labelElement = document.createElement("label");
+                labelElement.textContent = choice.text;
+            } else if  (questionData[currentQuestion].type === "multi_select") {
+                // make label a p element so we can style it for multiline text for the long multi-select question prompts
+                labelElement = document.createElement("label");
+                const choiceText = document.createElement("p");
+                choiceText.textContent = choice.text;
+                labelElement.appendChild(choiceText);
+            }
+
 
             checkboxDiv.append(input);
             checkboxDiv.append(labelElement);
