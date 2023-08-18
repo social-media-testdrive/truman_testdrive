@@ -115,7 +115,7 @@ ui.header.centered.aligned {
 .explanationCorrect,
 .explanationIncorrect {
     margin-top: -15px;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     /* background-color: peachpuff;
     border-radius: 6px;
     width: 20%;
@@ -129,10 +129,17 @@ ui.header.centered.aligned {
 	left:40%; */
 }
 
-.quizMessage .ui.red.center.aligned.message,
-.explanationIncorrect .ui.red.center.aligned.message,
-.explanationCorrect .ui.green.center.aligned.message {
+/* for both the quizMessage warning that pops up when they didnt select something and the explanation messages when viewing answers*/
+.ui.red.center.aligned.message,
+.ui.green.center.aligned.message {
     width: 100%;
+}
+
+/* indent the multiselect explanation answer and position them under the choices*/
+.showExplanationContainer {
+    margin-left: 40px;
+    margin-top: -20px;
+    margin-bottom: 25px;
 }
 
 .explanationCorrect h2.ui.header .icon,
@@ -140,22 +147,34 @@ ui.header.centered.aligned {
     margin-top: -8px;
 }
 
+.ui.checkbox {
+    z-index: 10;
+    background-color: white;
+}
 .incorrectChoice {
-    background-color: #FFE8E6;
+    /* background-color: #FFE8E6; */
     border: 2px solid black !important;
 }
 
 .correctChoice {
-    background-color: #E5F9E7;
+    /* background-color: #E5F9E7; */
     border: 2px solid black !important;
 }
+
+/* .redExplanation,
+.greenExplanation {
+    text-align: left !important;
+} */
 
 .missedChoice {
     /* background-color: #e6e7e8; */
     /* border: 3px dashed green !important; */
     border: 2px dashed red !important;
     border-spacing: 10px !important; 
+}
 
+.addShadow {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .gradedIcon {
@@ -194,7 +213,7 @@ p.incorrectScore {
     margin-right: -20px !important;
 }
 
-.explanationIncorrect i.right.arrow.icon {
+.explanationIncorrect i.caret.icon {
     background: none !important;
     margin-right: 0px !important;
 }

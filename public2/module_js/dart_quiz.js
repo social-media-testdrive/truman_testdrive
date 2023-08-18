@@ -18,9 +18,9 @@ console.log("nextLink: " + nextLink);
 
 $(document).ready(function() {    
     console.log("In dart_quiz.js");
-
-    console.log("Question Data: " + questionData);
-    console.log("num questions: " + numQuestions);
+    // console.log("explanation data example:" + questionData[1].choices[3].explanation);
+    // console.log("Question Data: " + questionData);
+    // console.log("num questions: " + numQuestions);
 
     // console.log("Solange Data: " + questionData);
     // console.log("after");
@@ -157,6 +157,9 @@ $(document).ready(function() {
                     $(".choiceList").empty();
                     $(".checkboxChoices").empty();
                     $(".question").empty();
+                    $(".explanationCorrect").hide();
+                    $(".explanationIncorrect").hide();
+                    $(".quizMessage").hide();
 					displayScore();
 					$(".preButton").text("Try Again");
                     $(".nextButton").text("Complete Quiz");
@@ -233,6 +236,77 @@ $(document).ready(function() {
 
 	$(this).find(".explainButton").on("click", function () {
         console.log("Show explanations clicked!");
+
+        // toggle button to for show/hide functionality 
+        let currentButtonText = $(".explainButton a").text();
+        if (currentButtonText === "Show Explanation") {
+            // toggle button to hide and add explanations
+            $(".explainButton a").text("Hide Explanation");
+            $(".explainButton i").removeClass("right caret icon").addClass("down caret icon");
+
+            // dynamically add explanations
+            $(".checkboxChoices .ui.checkbox.listChoices").each(function() {
+                const checkbox = $(this);
+                checkbox.addClass("addShadow");
+                const explanationDiv = $("<div>").addClass("explanation showExplanationContainer").addClass(getExplanationColor(checkbox)).append(
+                  $("<div>").addClass("ui message showExplaination").addClass(getExplanationColor(checkbox)).append(
+                    $("<h2>").addClass("ui header").append(
+                    //   $("<i>").addClass(getExplanationColor(checkbox) + " circle large icon")
+                    ).append(getExplanationTitle(checkbox))
+                  ).append(
+                    $("<p>").addClass(getExplanationColor(checkbox) + "Explanation").text(getExplanationText(checkbox))
+                  )
+                );
+                explanationDiv.insertAfter(checkbox);
+            });
+
+            // Scroll to the top of the page so user can see the explanations
+            window.scrollTo(0, 0);
+            
+            function getExplanationColor(checkbox) {
+                if (checkbox.hasClass("missedChoice") || checkbox.hasClass("incorrectChoice")) {
+                    return "red";
+                } else {
+                    return "green";
+                }
+            }
+            
+            function getExplanationTitle(checkbox) {
+                if (checkbox.hasClass("missedChoice")) {
+                    return "This should have been selected";
+                } else if (checkbox.hasClass("incorrectChoice")) {
+                    return "This should <u>not</u> have been selected";
+                } else {
+                    return "Correct";
+                }
+            }
+            
+            function getExplanationText(checkbox) {
+                // console.log("the checkbox: " + checkbox);
+
+                const inputElement = checkbox.find("input");
+
+                const checkboxValue = inputElement.val();
+                // console.log("checkboxValue: " + checkboxValue);
+
+                // *debugging to see everything in the inspect element console instead of just [object Object]
+                // for (const property in checkbox) {
+                //     console.log(property, checkbox[property]);
+                // }
+                    
+                
+                return questionData[currentQuestion].choices[checkboxValue].explanation;
+            }    
+
+
+        } else {
+            // toggle button to show and remove explanations
+            $(".explainButton a").text("Show Explanation");
+            $(".explainButton i").removeClass("down caret icon").addClass("right caret icon");
+            $(".showExplaination").remove();
+        }
+      
+                        
     });
 });
 
@@ -572,10 +646,13 @@ function resetQuiz() {
     currentQuestion = 1;
     correctAnswers = 0;
     quizOver = false;
+
     // only clear selectedAnswer if not viewing answers
     if(viewingAnswer === false) {
         selectedAnswer = [];
-        questionScores = [];
+        questionScores = [];    
+        $(".choiceList").css("pointer-events", "auto");
+        $(".checkboxChoices").css("pointer-events", "auto");
     }
 
     // viewingAnswer = false;
