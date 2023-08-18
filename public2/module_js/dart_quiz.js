@@ -66,16 +66,9 @@ $(document).ready(function() {
 
         // If viewing answer reset the show explanation button if going back to previous question
         if(viewingAnswer) {
-
-            // let currentButtonText = $("h2 .ui.header").text();
-            // if (currentButtonText === "Correct") {
-            // }
-
-
-            $(".explainButtonIncorrect a").text("Show Explanations");
-            $(".explainButtonIncorrect i").removeClass("down caret icon").addClass("right caret icon");
+            $(".explainButtonIncorrect a, .explainButtonCorrect a").text("Show Explanations");
+            $(".explainButtonIncorrect i, .explainButtonCorrect i").removeClass("down caret icon").addClass("right caret icon");
             $(".showExplaination").remove();
-
         }
     });
 
@@ -232,8 +225,8 @@ $(document).ready(function() {
 
         // If viewing answer reset the show explanation button when going to next question
         if(viewingAnswer) {
-            $(".explainButtonIncorrect a").text("Show Explanations");
-            $(".explainButtonIncorrect i").removeClass("down caret icon").addClass("right caret icon");
+            $(".explainButtonIncorrect a, .explainButtonCorrect a").text("Show Explanations");
+            $(".explainButtonIncorrect i, .explainButtonCorrect i").removeClass("down caret icon").addClass("right caret icon");
             $(".showExplaination").remove();
         }
     });
@@ -348,7 +341,7 @@ function displayCurrentQuestion()
     $(".choiceList").empty();
     htmlImageContainer.empty();
     checkBoxesContainer.empty();
-    $(".explanationCorrect").hide();
+    $(".explanationCorrectMulti").hide();
     $(".explanationIncorrectMulti").hide();
 
     // Set the questionClass text to the current question
