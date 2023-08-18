@@ -31,8 +31,8 @@ $(document).ready(function() {
     // hide warning and next nav button and disable previous quiz nav button
     $(".viewAnswers").hide();
     $(".quizMessage").hide();
-    $(".explanationCorrect").hide();
-    $(".explanationIncorrect").hide();
+    $(".explanationCorrectMulti").hide();
+    $(".explanationIncorrectMulti").hide();
     $(".result").hide();
     $(".avatar-container").hide();
     $("#nextButton").hide();
@@ -66,9 +66,16 @@ $(document).ready(function() {
 
         // If viewing answer reset the show explanation button if going back to previous question
         if(viewingAnswer) {
-            $(".explainButton a").text("Show Explanation");
-            $(".explainButton i").removeClass("down caret icon").addClass("right caret icon");
+
+            // let currentButtonText = $("h2 .ui.header").text();
+            // if (currentButtonText === "Correct") {
+            // }
+
+
+            $(".explainButtonIncorrect a").text("Show Explanations");
+            $(".explainButtonIncorrect i").removeClass("down caret icon").addClass("right caret icon");
             $(".showExplaination").remove();
+
         }
     });
 
@@ -164,8 +171,8 @@ $(document).ready(function() {
                     $(".choiceList").empty();
                     $(".checkboxChoices").empty();
                     $(".question").empty();
-                    $(".explanationCorrect").hide();
-                    $(".explanationIncorrect").hide();
+                    $(".explanationCorrectMulti").hide();
+                    $(".explanationIncorrectMulti").hide();
                     $(".quizMessage").hide();
 					displayScore();
 					$(".preButton").text("Try Again");
@@ -225,8 +232,8 @@ $(document).ready(function() {
 
         // If viewing answer reset the show explanation button when going to next question
         if(viewingAnswer) {
-            $(".explainButton a").text("Show Explanation");
-            $(".explainButton i").removeClass("down caret icon").addClass("right caret icon");
+            $(".explainButtonIncorrect a").text("Show Explanations");
+            $(".explainButtonIncorrect i").removeClass("down caret icon").addClass("right caret icon");
             $(".showExplaination").remove();
         }
     });
@@ -242,79 +249,71 @@ $(document).ready(function() {
         resetQuiz();
     });
 
-	$(this).find(".explainButton").on("click", function () {
+    $(this).find(".explainButtonIncorrect, .explainButtonCorrect").on("click", function () {
         console.log("Show explanations clicked!");
-
-        // toggle button to for show/hide functionality 
-        let currentButtonText = $(".explainButton a").text();
-        if (currentButtonText === "Show Explanation") {
-            // toggle button to hide and add explanations
-            $(".explainButton a").text("Hide Explanation");
-            $(".explainButton i").removeClass("right caret icon").addClass("down caret icon");
-
-            // dynamically add explanations
+    
+        // Toggle button for show/hide functionality
+        let currentButtonText = $(this).find("a").text();
+        const iconElement = $(this).find("i");
+    
+        if (currentButtonText === "Show Explanations") {
+            // Toggle button to hide and add explanations
+            $(this).find("a").text("Hide Explanation");
+            iconElement.removeClass("right caret icon").addClass("down caret icon");
+    
+            // Dynamically add explanations
             $(".checkboxChoices .ui.checkbox.listChoices").each(function() {
                 const checkbox = $(this);
                 checkbox.addClass("addShadow");
-                const explanationDiv = $("<div>").addClass("explanation showExplanationContainer").addClass(getExplanationColor(checkbox)).append(
-                  $("<div>").addClass("ui message showExplaination").addClass(getExplanationColor(checkbox)).append(
-                    $("<h2>").addClass("ui header").append(
-                    //   $("<i>").addClass(getExplanationColor(checkbox) + " circle large icon")
-                    ).append(getExplanationTitle(checkbox))
-                  ).append(
-                    $("<p>").addClass(getExplanationColor(checkbox) + "Explanation").text(getExplanationText(checkbox))
-                  )
-                );
+                const explanationDiv = $("<div>").addClass("explanation showExplanationContainer")
+                    .addClass(getExplanationColor(checkbox)).append(
+                        $("<div>").addClass("ui message showExplaination")
+                            .addClass(getExplanationColor(checkbox)).append(
+                                $("<h2>").addClass("ui header").append(getExplanationTitle(checkbox))
+                            ).append(
+                                $("<p>").addClass(getExplanationColor(checkbox) + "Explanation")
+                                    .text(getExplanationText(checkbox))
+                            )
+                    );
                 explanationDiv.insertAfter(checkbox);
             });
-
+    
             // Scroll to the top of the page so user can see the explanations
             window.scrollTo(0, 0);
-            
-            function getExplanationColor(checkbox) {
-                if (checkbox.hasClass("missedChoice") || checkbox.hasClass("incorrectChoice")) {
-                    return "red";
-                } else {
-                    return "green";
-                }
-            }
-            
-            function getExplanationTitle(checkbox) {
-                if (checkbox.hasClass("missedChoice")) {
-                    return "This should have been selected";
-                } else if (checkbox.hasClass("incorrectChoice")) {
-                    return "This should <u>not</u> have been selected";
-                } else {
-                    return "Correct";
-                }
-            }
-            
-            function getExplanationText(checkbox) {
-                // console.log("the checkbox: " + checkbox);
-
-                const inputElement = checkbox.find("input");
-
-                const checkboxValue = inputElement.val();
-                // console.log("checkboxValue: " + checkboxValue);
-
-                // *debugging to see everything in the inspect element console instead of just [object Object]
-                // for (const property in checkbox) {
-                //     console.log(property, checkbox[property]);
-                // }
-                    
-                
-                return questionData[currentQuestion].choices[checkboxValue].explanation;
-            }    
-
-
         } else {
-            // toggle button to show and remove explanations
-            $(".explainButton a").text("Show Explanation");
-            $(".explainButton i").removeClass("down caret icon").addClass("right caret icon");
+            // Toggle button to show and remove explanations
+            $(this).find("a").text("Show Explanations");
+            iconElement.removeClass("down caret icon").addClass("right caret icon");
             $(".showExplaination").remove();
         }
-      
-                        
+    
+        function getExplanationColor(checkbox) {
+            if (checkbox.hasClass("missedChoice") || checkbox.hasClass("incorrectChoice")) {
+                return "red";
+            } else {
+                return "green";
+            }
+        }
+    
+        function getExplanationTitle(checkbox) {
+            if (checkbox.hasClass("missedChoice")) {
+                return "This should have been selected";
+            } else if (checkbox.hasClass("incorrectChoice")) {
+                return "This should <u>not</u> have been selected";
+            } else {
+                return "Correct";
+            }
+        }
+    
+        function getExplanationText(checkbox) {
+            // *debugging to see everything in the inspect element console instead of just [object Object]
+            // for (const property in checkbox) {
+            //     console.log(property, checkbox[property]);
+            // }
+            const inputElement = checkbox.find("input");
+            const checkboxValue = inputElement.val();
+            return questionData[currentQuestion].choices[checkboxValue].explanation;
+        }
     });
 });
 
@@ -350,7 +349,7 @@ function displayCurrentQuestion()
     htmlImageContainer.empty();
     checkBoxesContainer.empty();
     $(".explanationCorrect").hide();
-    $(".explanationIncorrect").hide();
+    $(".explanationIncorrectMulti").hide();
 
     // Set the questionClass text to the current question
     $(".question").text(questionPrompt);
@@ -557,12 +556,12 @@ function displayCurrentQuestion()
                     $(".correctScore").text("Score: " + questionScores[currentQuestion - 1] + "/1");
                     // selectedAnswer[currentQuestion - 1] is yes or no
                     $(".correctExplanation").text(questionData[currentQuestion].choices[selectedAnswer[currentQuestion - 1]].explanation);
-                    $(".explanationCorrect").show();
+                    $(".explanationCorrectMulti").show();
                 } else if(questionScores[currentQuestion - 1] === 0) {
                     document.getElementById(selectedAnswer[currentQuestion - 1]).parentNode.classList.add("incorrectChoice");
                     $(".incorrectScore").text("Score: " + questionScores[currentQuestion - 1] + "/1");
                     // $(".incorrectExplanation").text(questionData[currentQuestion].choices[selectedAnswer[currentQuestion - 1]].explanation);
-                    $(".explanationIncorrect").show();
+                    $(".explanationIncorrectMulti").show();
                 } 
             } else if (questionData[currentQuestion].type === "multi_select") {
                 if(questionScores[currentQuestion - 1] === 1) {
@@ -571,7 +570,7 @@ function displayCurrentQuestion()
                     // let userAnswerLetters = convertSelectedAnswerToLetters(selectedAnswer[currentQuestion - 1]);
                     // $(".yourAnswers").text("You answered: " + userAnswerLetters);
                     // $(".theAnswers").text("The correct answers are: " + questionData[currentQuestion].theAnswers);
-                    $(".explanationCorrect").show();
+                    $(".explanationCorrectMulti").show();
                 } else {
                     $(".incorrectScore").text("Score: " + questionScores[currentQuestion - 1] + "/1");
 
@@ -585,7 +584,7 @@ function displayCurrentQuestion()
 
                     $(".yourAnswers").text("You answered: " + userAnswerLetters);
                     $(".theAnswers").text("The correct answers are: " + questionData[currentQuestion].theAnswers);
-                    $(".explanationIncorrect").show();
+                    $(".explanationIncorrectMulti").show();
                 } 
 
             }

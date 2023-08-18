@@ -92,25 +92,45 @@ block content
                 .ui.red.center.aligned.message
                     i.close.icon
                     .errorMessage.header
-            .explanationCorrect
+            .explanationCorrectMulti
+                button.ui.basic.blue.right.labeled.icon.button.explainButtonCorrect
+                    i.right.caret.icon
+                    a Show Explanations
                 p.correctScore
-                .ui.green.center.aligned.message 
-                    h2.ui.header
-                        i.check.circle.large.icon
-                        | Correct
-                    p.correctExplanation
-            .explanationIncorrect
-                button.ui.basic.blue.right.labeled.icon.button.explainButton
+                h2.ui.header.correctOrIncorrect
+                    i.check.circle.green.large.icon
+                    | Correct
+                //- .ui.green.center.aligned.message 
+                //-     p.correctExplanation
+            .explanationIncorrectMulti
+                button.ui.basic.blue.right.labeled.icon.button.explainButtonIncorrect
                     i.right.caret.icon
                     a Show Explanations
                 p.incorrectScore
-                h2.ui.header
-                    i.times.circle.red.small.icon
+                h2.ui.header.correctOrIncorrect
+                    i.times.circle.red.large.icon
                     | Incorrect
                 p.yourAnswers
                 p.theAnswers
                 //- .ui.red.center.aligned.message 
                 //-     p.incorrectExplanation
+            //- .explanationCorrectYesNo
+            //-     p.correctScore
+            //-     h2.ui.header
+            //-         i.check.circle.green.large.icon
+            //-         | Correct
+            //-     .ui.green.center.aligned.message 
+            //-         p.correctExplanation
+            //- .explanationIncorrectYesNo
+            //-     button.ui.basic.blue.right.labeled.icon.button.explainButton
+            //-         i.right.caret.icon
+            //-         a Show Explanations
+            //-     p.incorrectScore
+            //-     h2.ui.header
+            //-         i.times.circle.red.large.icon
+            //-         | Incorrect
+            //-     p.yourAnswers
+            //-     p.theAnswers
             .quizButtonContainer
                 .ui.blue.huge.button.preButton Previous Question
                 .ui.blue.huge.button.viewAnswers View Answers

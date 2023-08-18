@@ -93,6 +93,7 @@
             "explanation": "Identity theft typically leads to financial losses for the victim, not benefits like discounts."
           }
       },
-      "correctResponse": ["0", "1", "2", "3"]
+      "correctResponse": ["0", "1", "2", "3"],
+      "theAnswers": "A, B, C, D"
     }            
 }

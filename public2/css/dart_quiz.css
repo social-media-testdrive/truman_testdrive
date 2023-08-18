@@ -112,8 +112,8 @@ ui.header.centered.aligned {
 
 
 .quizMessage, 
-.explanationCorrect,
-.explanationIncorrect {
+.explanationCorrectMulti,
+.explanationIncorrectMulti {
     margin-top: -15px;
     margin-bottom: 30px;
     /* background-color: peachpuff;
@@ -142,8 +142,8 @@ ui.header.centered.aligned {
     margin-bottom: 25px;
 }
 
-.explanationCorrect h2.ui.header .icon,
-.explanationIncorrect h2.ui.header .icon {
+.explanationCorrectMulti h2.ui.header .icon,
+.explanationIncorrectMulti h2.ui.header .icon {
     margin-top: -8px;
 }
 
@@ -192,19 +192,20 @@ p.incorrectScore {
     margin-bottom: 20px; */
 }
 
-.explanationIncorrect .theAnswers {
+.explanationIncorrectMulti .theAnswers {
     margin-top: -25px;
 }
 
 
-.explanationCorrect h2.ui.header,
-.explanationIncorrect h2.ui.header {
+.explanationCorrectMulit h2.ui.header,
+.explanationIncorrectMulti h2.ui.header {
     font-size: 1.75rem;
     font-weight: bold;
     margin-bottom: 0px;
 }
 
-.explanationIncorrect button.ui.basic.blue.right.labeled.icon.button {
+.explanationIncorrectMulti button.ui.basic.blue.right.labeled.icon.button,
+.explanationCorrectMulti button.ui.basic.blue.right.labeled.icon.button {
     float: right;
     /* border: none !important;  */
     box-shadow: none !important;
@@ -214,12 +215,14 @@ p.incorrectScore {
     margin-right: -20px !important;
 }
 
-.explanationIncorrect i.caret.icon {
+.explanationIncorrectMulti i.caret.icon,
+.explanationCorrectMulti i.caret.icon {
     background: none !important;
     margin-right: 0px !important;
 }
 
-.explanationIncorrect a {
+.explanationIncorrectMulti a,
+.explanationCorrectMulti a {
     text-decoration: underline;
 }
 
