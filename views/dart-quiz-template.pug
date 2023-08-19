@@ -1,7 +1,7 @@
 extends module_layout
 block content
     //- img(src='/images/identity/challenge/q1.png')
-    .ui.container.quizContainer#raised-container
+    .ui.container.quizContainer#raised-container(style="padding: 0px;")
         .limit
             br
             //- .metadata
@@ -114,23 +114,20 @@ block content
                 p.theAnswers
                 //- .ui.red.center.aligned.message 
                 //-     p.incorrectExplanation
-            //- .explanationCorrectYesNo
-            //-     p.correctScore
-            //-     h2.ui.header
-            //-         i.check.circle.green.large.icon
-            //-         | Correct
-            //-     .ui.green.center.aligned.message 
-            //-         p.correctExplanation
-            //- .explanationIncorrectYesNo
-            //-     button.ui.basic.blue.right.labeled.icon.button.explainButton
-            //-         i.right.caret.icon
-            //-         a Show Explanations
-            //-     p.incorrectScore
-            //-     h2.ui.header
-            //-         i.times.circle.red.large.icon
-            //-         | Incorrect
-            //-     p.yourAnswers
-            //-     p.theAnswers
+            .explanationCorrectYesNo
+                p.correctScore
+                h2.ui.header
+                    i.check.circle.green.large.icon
+                    | Correct
+                .ui.green.center.aligned.message 
+                    p.correctExplanation
+            .explanationIncorrectYesNo
+                p.incorrectScore
+                h2.ui.header
+                    i.times.circle.red.large.icon
+                    | Incorrect
+                .ui.red.center.aligned.message 
+                    p.incorrectExplanation
             .quizButtonContainer
                 .ui.blue.huge.button.preButton Previous Question
                 .ui.blue.huge.button.viewAnswers View Answers

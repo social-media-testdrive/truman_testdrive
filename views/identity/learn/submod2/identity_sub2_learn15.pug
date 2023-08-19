@@ -1,301 +1,250 @@
 extends ../../../module_layout
+
 block content
-    //- img(src='/images/identity/challenge/q1.png')
-    .ui.container.quizContainer#raised-container
-        .limit
-            br
-            //- .metadata
-            //-     p
-            //-         strong From: 
-            //-         | Apple <
-            //-         span support@apple.com
-            //-         | >
-            //-     p
-            //-         strong To: 
-            //-         span#user-email
-            //-     p
-            //-         strong Date: 
-            //-         span#current-time
-            //-     p
-            //-         strong Subject: 
-            //-         | Customer Support Follow-up
-            //- .ui.raised.segments
-            //-     .content
-            //-         .ui.segment(style="background: #F3F3FF; margin: 0; padding: 0;")
-            //-             //- i.apple.big.icon(style='position: absolute; top: 10px; right: 10px; color: #A5A6AE;')
-            //-             .whiteTop(style="background: white; width: 100%; padding: 1em 1em;")
-            //-                 .ui.header(style='font-weight: bolder; color: #253B80;font-style: italic;') Pay.
-            //-                     span(style='color: #189BD7;') Service
-            //-                     span(style='color: #A5A6AE; font-size: 0.8rem; font-style: normal')  Secure
-            //-             .emailContent(style="padding: 1em 1em;")
-            //-                 p Dear Client,
-            //-                 p Recently, your account was reviewed and flagged because of a potential connection to some fraudulent transactions. To avoid an eventual restriction to your account, please verify your informations by logging in to our Litigations Manager.
-            //-             .whiteTop(style="background: white; width: 100%; padding: 1em 1em;")
-            //-                 button.ui.button.basic.circular(style='background-color: #16AEFF; color: white; pointer-events: none;font-weight:bold')
-            //-                     | Check my account
 
-            //- .explanation
-            //-     .ui.red.center.aligned.message
-            //-         //- i.close.icon
-            //-         i.check.circle.icon
-            //-         .errorMessage.header Incorrect
-            //-         p The correct answer is 'yes'
-            //-     .ui.green.center.aligned.message 
-            //-         i.times.circle.icon 
-            //-         .errorMessage.header Correct
-            //-         p The correct answer is 'yes'
+  .ui.container#raised-container.top-padding
+    .limit
+      .ui.raised.segment.chat-container(style="background-color: #F1EDED;")
+        .ui.large.header
+          .container#cropped-circular-image
+            .ui.segment(style="background-color: #7D7C7C !important;")
+              .ui.circular.small.image
+                img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+              span(style="font-size: 2.5rem; margin-left: 20px;color:white;") Chat with 
+                span#name ‎
+          br
+          .content.text-message
+            .ui.circular.tiny.image 
+              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+            .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
+              p Excellent work, #{user.profile.name}! You've finished the first section! May I ask you a question? Have you ever encountered a scam before?
+          #encounter_container
+            div#encounter_label
+              .ui.large.right.pointing.label
+                p#encounter_text 
+              .ui.circular.tiny.image(style="background: white !important")
+                img(src='/profile_pictures/avatar-icon.svg', alt='user text message profile picture')
 
-            //- .smartphone
-            //-     .content
-            //-         .texter
-            //-             i.user.circle.big.icon
-            //-             p 867543 
-            //-                 span >
-            //-         .ios-time
-            //-             p Today #{currentTime}
-            //-         .ios-chat-container
-            //-             .chat
-            //-                 //- .mine.messages
-            //-                 //-     .message.last
-            //-                 //-         | Dude
-            //-                 .yours.messages
-            //-                     //- .message
-            //-                     //-     | Hey!
-            //-                     //- .message
-            //-                     //-     | You there?
-            //-                     .message.last
-            //-                         | Venmo here! NEVER share your code via call/text. ONLY YOU should enter this code. BEWARE: if someone asks for the code, it's a scam. Code: 568601.
-            //-                         //- | Hello, how&apos;s it going?
-            //-                 //- .mine.messages
-            //-                 //-     .message
-            //-                 //-         | Great thanks!
-            //-                 //-     .message.last
-            //-                 //-         | How about you?
+            #encounter_response(style='clear: both;')
+              button.ui.big.button.chatBotButton(onclick="showTopic('Yes')") Yes
+              button.ui.big.button.chatBotButton(onclick="showTopic('No')") No
+              button.ui.big.button.chatBotButton(onclick="showTopic('I\\'m not sure')") I'm not sure
 
-            br
-            .question 
-            br
-            .htmlImage
-            .image
-            .choiceList
-            .checkboxChoices            
+
+          //- bot yes reply
+          #yes_reply.content.text-message(style="display: none")
+            .ui.circular.tiny.image 
+              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+            .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
+              p Thank you for your response. If you don't mind me asking, could you please share more about your experience with the scam? Did you undergo any financial loss or other types of loss due to the scam? 
+              p Please type your response below and hit the "send" button.
+
+          //- bot no reply
+          #no_reply.content.text-message(style="display: none")
+            .ui.circular.tiny.image 
+              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+            .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
+              p Thank you for your response. It's great to hear that you've never encountered scams! Please click the "Complete Section 1" button on the bottom right of the page to continue learning. 
             br
             br
-            .result
-                .circleResults
-                    strong
-                .resultText     
-                br
-                br
-            .quizMessage
-                .ui.red.center.aligned.message
-                    i.close.icon
-                    .errorMessage.header
-            .quizButtonContainer
-                .ui.blue.huge.button.preButton Previous Question
-                .ui.blue.huge.button.nextButton Next Question
-        .avatar-container
-            img#dart_image1.ui.medium.image(src='/profile_pictures/transparent.png')
+
+          //- bot not sure reply
+          #sure_reply.content.text-message(style="display: none")
+            .ui.circular.tiny.image 
+              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+            .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
+              p Thank you for your response. If you don't mind me asking, could you please share a little about what the suspicious interaction looked like? What did you encounter? 
+              p Please type your response below and hit the "send" button.
+          
+
+          //- final response from the user
+          #final_container(style="clear: both; float: right; margin-top: 40px;")
+            div#final_label
+              .ui.large.right.pointing.label
+                p#sent_message 
+                  span
+                    i.ellipsis.horizontal.icon
+              .ui.circular.tiny.image(style="background: white !important")
+                img(src='/profile_pictures/avatar-icon.svg', alt='user text message profile picture')
+            br
+            br
+            br
 
 
-            //- .ui.raised.segments
-            //-     .content
-            //-         .ui.segment(style="background: #F3F3FF; margin: 0; padding: 0;")
-            //-             //- i.apple.big.icon(style='position: absolute; top: 10px; right: 10px; color: #A5A6AE;')
-            //-             .whiteTop(style="background: white; width: 100%; padding: 1em 1em;")
-            //-                 .ui.header(style='font-weight: bolder; color: #253B80;font-style: italic;') Pay.
-            //-                     span(style='color: #189BD7;') Service
-            //-                     span(style='color: #A5A6AE; font-size: 0.8rem; font-style: normal')  Secure
-            //-             .emailContent(style="padding: 1em 1em;")
-            //-                 p Dear Client,
-            //-                 p Recently, your account was reviewed and flagged because of a potential connection to some fraudulent transactions. To avoid an eventual restriction to your account, please verify your informations by logging in to our Litigations Manager.
-            //-             .whiteTop(style="background: white; width: 100%; padding: 1em 1em;")
-            //-                 button.ui.button.basic.circular(style='background-color: #16AEFF; color: white; pointer-events: none;font-weight:bold')
-            //-                     | Check my account
 
-            //- include partials/identity/challenge/q1.pug
 
-            //- .ui.raised.segments
-            //-     //- .title
-            //-     //-     .ui.basic.segment
-            //-     //-     i.envelope.outline.icon
-            //-     //-     | Customer Service Follow-up
-            //-     .content
-            //-         .ui.segment
-            //-             i.apple.big.icon
-            //-             .ui.header.centered.aligned(style='font-weight: bolder;') Thanks for choosing Apple.
-            //-             p Dear Customer,
-            //-             p Thank you for contacting Apple Customer Service. We understand that you're facing some issues with your Apple device, and we're here to help!
-            //-             p Could you please provide us with more details about the problem you're experiencing? This will help us better understand the situation and provide you with the appropriate solution.
-            //-             p.purple-text You can reply to this email with the information attached.
-            //-             p.purple-text Thank you,
-            //-             p.purple-text Sarah (she/her)
-            //-             p.purple-text iTunes Store Customer Support
-            //-             p
-            //-                 a(href='' style="pointer-events: none;") http://www.apple.com/support/itunes
+          //- suspicion question reply (the one after not sure)
+          #sus_reply.content.text-message(style="display: none")
+            .ui.circular.tiny.image 
+              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+            .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
+              p That sounds like a scam! I'm glad you were able to recognize it and avoid it. 
+              p It was great talking with you! Please click the "Complete Section 1" button on the bottom right of the page to continue learning. 
+            br
+            br
 
-            //- br
-            //- each questionKey in Object.keys(quizData)
-            //-     - const question = quizData[questionKey]
-            //-     .ui.segment.question
-            //-         h3 Question #{questionKey}
-            //-         //- img(src='/images/identity/challenge/' + question.image, alt=`Question ${questionKey}`)
-            //-         .prompt= question.prompt
-
-            //-         if question.type === "radio"
-            //-             each key in Object.keys(question.radioLabels)
-            //-                 label
-            //-                     input(type="radio" name=questionKey value=key)
-            //-                     span= question.radioLabels[key].text
-            //-             p.explanation= question.radioLabels[question.correctResponse].explanation
-
-            //-         else if question.type === "yes_no"
-            //-             br
-            //-             img(src='/images/identity/challenge/' + question.image, alt=`Question ${questionKey}`)
-            //-             br
-            //-             each key in Object.keys(question.yesNoLabels)
-            //-                 label
-            //-                     input(type="radio" name=questionKey value=key)
-            //-                     span= question.yesNoLabels[key].text
-            //-             //- p.explanation= question.yesNoLabels[question.correctResponse].explanation
-
-            //-         else if question.type === "multi_select"
-            //-             each key in Object.keys(question.checkboxLabels)
-            //-                 label
-            //-                     input(type="checkbox" name=questionKey value=key)
-            //-                     span= question.checkboxLabels[key].text
-            //-             p.explanation
-            //-                 | Correct options:
-            //-                 each key in question.correctResponse
-            //-                     br
-            //-                     span= question.checkboxLabels[key].text
+          //- experience question reply (the one after yes)
+          #experience_reply.content.text-message(style="display: none")
+            .ui.circular.tiny.image 
+              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+            .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
+              p I'm sorry to hear that you had to go through that. I hope you were able to recover from the scam.
+              p It was great talking with you! Please click the "Complete Section 1" button on the bottom right of the page to continue learning. 
+            br
+            br
+      //- .ui.fluid.action.input
+      //-   input(type='text' placeholder='Search...')
+      //-   .ui.button Send 
+      .ui.fluid.action.icon.input(style="margin-top: -15px;")
+        input.message-input(type="text" placeholder="Type your message..." id="message-input")
+        i.paper.plane.big.icon(style="color: #6BBCC7; margin-right: 60px;z-index:100;")
+        .ui.button#send-button Send 
+    br
+    //- .ui.container#nav-container
+    //-   div#nav-menu          
+    //-     button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/submod/learn6/identity';") 
+    //-       i.arrow.left.icon 
+    //-       | Back
+    //-     button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/submod/learn8/identity';")
+    //-       | Complete Section 1
+    //-       i.arrow.right.icon
     script.
-        //- set variable the setProgressBar.js script will use to set the progress bar
         var progress = #{user.moduleProgress.identity.percent}
-
-
-        //- var questionIndexElement = document.querySelector("h3[data-question-index]");
-        //- if (questionIndexElement) {
-        //-     currentQuestionIndex = parseInt(questionIndexElement.getAttribute("data-question-index"));
-        //- }
-
     script(src='/js/setProgressBar.js')  
-
-    //- script.
-    //-     var questions = #{JSON.stringify(Object.values(quizData))};
-    //-     console.log("questions");
-    //-     console.log(questions);
-    //-     var currentQuestionIndex = 0;
-
-        //- function updateQuestion() {
-        //-     var currentQuestion = questions[currentQuestionIndex];
-        //-     if (currentQuestion) {
-        //-         // Update the content of the question element with currentQuestion data
-        //-         // You'll need to replace the content update logic according to your template structure
-
-        //-         var nextButton = document.getElementById("nextButton");
-        //-         nextButton.innerText = (currentQuestionIndex === questions.length - 1) ? "Submit" : "Next";
-        //-     }
-        //- }
-
-        //- var nextButton = document.getElementById("nextButton");
-        //- nextButton.addEventListener("click", function() {
-        //-     currentQuestionIndex++;
-        //-     if (currentQuestionIndex < questions.length) {
-        //-         updateQuestion();
-        //-     } else {
-        //-         // Handle quiz submission or further actions
-        //-     }
-        //- });
 
 
 block append footer
-    .ui.container
-        //- +navButtons('identity', '/challenge/identity', '/challenge3/identity', 8, 'Back', 'Next')  
-        .ui.container#nav-container
-            .div#nav-menu
-                button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/submod2/learn14/identity';") 
-                    i.arrow.left.icon 
-                    | Back
-                button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/submod/learn16/identity';")
-                    | Next
-                    i.arrow.right.icon
+  .ui.container
+    +navButtons('identity', '/submod2/learn15/identity', '/submod3/learn/identity', 60, 'Back', 'Complete Section 2')  
+
 
 block scripts
-    script.
-        var currentTime = "#{currentTime}";
-        var currentDate = "#{currentDate}";
-        var email = "#{user.username}";
-        var username = "#{user.profile.name}";
+  script(src='/js/update_character_name.js')
+  script.
+    let accept_sending = false;
+    let final_response_number = 0;
 
-        $('.message .close')
-        .on('click', function() {
-            $(this).closest('.message').fadeOut(); 
-            //- $(this)
-            //-     .closest('.message')
-            //-     .transition('fade');
-        });
-    script.
-        var questionData = !{JSON.stringify(quizData)}; // quizData is passed to pug file via render function in app.js
-        console.log("questionData in pug challenge 2 file");
-        console.log(questionData);
-        //- console.log(questionData[1].prompt);
-    script(src='/module_js/dart_quiz.js', current-section="submodTwo", next-link="/submod2/learn16/identity")
-    //- script.
-    //-     const currentTimeSpan = document.getElementById('current-time');
-    //-     currentTimeSpan.textContent = currentTime;
-    script(src='/js/character.js')
-//- block scripts 
-//-     script. 
-//-         var currentQuestionIndex = 0;
+    $(document).ready(function() {
+      $('#send-button').click(function() {
+        if(accept_sending) {
+          var userResponse = $('input#message-input').val();
+          //- console.log(userResponse);
 
-//- block scripts
-//-     script.
-//-         var quizData = !{JSON.stringify(quizData)}; // quizData is passed to pug file via render function in app.js
-//-         console.log("quizData in pug challenge 2 file");
-//-         console.log(quizData);
-        //- const shuffledQuestions = shuffleArray(questions);
-        //- function shuffleArray(array) {
-        //-     let currentIndex = array.length, randomIndex;
-        //-     while (currentIndex !== 0) {
-        //-         randomIndex = Math.floor(Math.random() * currentIndex);
-        //-         currentIndex--;
-        //-         [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
-        //-     }
-        //-     return array;
-        //- }
-        //- //- console.log("quizData")
-        //- //- console.log(quizData);
-        //- console.log("shuffledQuestions")
-        //- console.log(shuffledQuestions);
+          var messageText = document.getElementById("sent_message");
+          messageText.innerHTML = userResponse;
+
+          // show final response to the users message
+          if (final_response_number == 1) {
+            document.getElementById("experience_reply").style.display = "";
+
+          } else if (final_response_number == 2) {
+            document.getElementById("sus_reply").style.display = "";
+          }
+        
+        // Scroll the chat container to the bottom
+        $('.chat-container').scrollTop($('.chat-container')[0].scrollHeight);
+
+          $('input#message-input').val('');        
+        }
+
+        // disable sending messages after the user has sent a message
+        accept_sending = false;
+      });
+    });
 
 
+    // event listener to the input field submitting via enter key
+    document.getElementById('message-input').addEventListener('keypress', function(event) {
+      // Check if the enter key is pressed (key code 13)
+      if (event.keyCode === 13 && accept_sending) {
+        // Get the input value
+        var inputValue = this.value;
+        
+        // set message text from the three elipses to the input value
+        //- console.log(inputValue);
+        var messageText = document.getElementById("sent_message");
+        messageText.innerHTML = inputValue;
+
+        // show final response to the users message
+        if (final_response_number == 1) {
+          document.getElementById("experience_reply").style.display = "";
+        } else if (final_response_number == 2) {
+          document.getElementById("sus_reply").style.display = "";
+        }
+
+        // Scroll the chat container to the bottom
+        $('.chat-container').scrollTop($('.chat-container')[0].scrollHeight);
+
+        // Clear the input field
+        this.value = '';
+
+        
+        // disable sending messages after the user has sent a message
+        accept_sending = false;
+      }
+    });
+
+    function showTopic(name){
+      var showMe = document.getElementById("encounter_text");
+      showMe.innerHTML = name;
+      document.getElementById("encounter_label").style.display = "flex";
+      
+      var hideMe = document.getElementById("encounter_response");
+      hideMe.style.visibility = "hidden";
+      console.log("Name: " + name)
+
+      if (name == "No") {
+        document.getElementById("no_reply").style.display = "";
+      }
+
+      if (name == "Yes") {
+        document.getElementById("yes_reply").style.display = "";
+        document.getElementById("final_label").style.display = "flex";
+        accept_sending = true;
+        final_response_number = 1;
+      }
+
+      if (name == "I'm not sure") {
+        document.getElementById("sure_reply").style.display = "";
+        document.getElementById("final_label").style.display = "flex";
+        accept_sending = true;
+        final_response_number = 2;
+      }
+
+      // Scroll the chat container to the bottom
+      $('.chat-container').scrollTop($('.chat-container')[0].scrollHeight);
+    }
 
 
 
-//- block scripts
-//-     script.
-//-         var quizData = !{JSON.stringify(quizData)}; // quizData is passed to pug file via render function in app.js
-//-         console.log("quizData in pug challenge 2 file");
-//-         console.log(quizData);
-        //- const shuffledQuestions = shuffleArray(questions);
-        //- function shuffleArray(array) {
-        //-     let currentIndex = array.length, randomIndex;
-        //-     while (currentIndex !== 0) {
-        //-         randomIndex = Math.floor(Math.random() * currentIndex);
-        //-         currentIndex--;
-        //-         [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
-        //-     }
-        //-     return array;
-        //- }
-        //- //- console.log("quizData")
-        //- //- console.log(quizData);
-        //- console.log("shuffledQuestions")
-        //- console.log(shuffledQuestions);
 
+    var voiceoverMappings = {
+      '.showLearnSectionButton': {
+        "initialDelay": 700,
+        "delay": 500,
+        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
+      },
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.1.mp3']
+      },
+      '.voiceover_keyTerm2': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.2.mp3']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.3.mp3']
+      }
+    };
+
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_start.js")
   
 block styles
-    //- link(rel='stylesheet', href='/css/challenge.css')  
-    link(rel='stylesheet', href='/css/dart_quiz.css')  
-
+  link(rel='stylesheet', href='/css/module.css')  
+    
     

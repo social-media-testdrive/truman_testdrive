@@ -33,6 +33,9 @@ $(document).ready(function() {
     $(".quizMessage").hide();
     $(".explanationCorrectMulti").hide();
     $(".explanationIncorrectMulti").hide();
+    $(".explanationCorrectYesNo").hide();
+    $(".explanationIncorrectYesNo").hide();
+    
     $(".result").hide();
     $(".avatar-container").hide();
     $("#nextButton").hide();
@@ -166,6 +169,8 @@ $(document).ready(function() {
                     $(".question").empty();
                     $(".explanationCorrectMulti").hide();
                     $(".explanationIncorrectMulti").hide();
+                    $(".explanationCorrectYesNo").hide();
+                    $(".explanationIncorrectYesNo").hide();
                     $(".quizMessage").hide();
 					displayScore();
 					$(".preButton").text("Try Again");
@@ -232,7 +237,7 @@ $(document).ready(function() {
     });
     
 	$(this).find(".viewAnswers").on("click", function () {
-        console.log("View Answers Clicked!");
+        // console.log("View Answers Clicked!");
         viewingAnswer = true;
 
         // disable ability to change selectedAnswers
@@ -251,7 +256,7 @@ $(document).ready(function() {
     
         if (currentButtonText === "Show Explanations") {
             // Toggle button to hide and add explanations
-            $(this).find("a").text("Hide Explanation");
+            $(this).find("a").text("Hide Explanations");
             iconElement.removeClass("right caret icon").addClass("down caret icon");
     
             // Dynamically add explanations
@@ -343,6 +348,8 @@ function displayCurrentQuestion()
     checkBoxesContainer.empty();
     $(".explanationCorrectMulti").hide();
     $(".explanationIncorrectMulti").hide();
+    $(".explanationCorrectYesNo").hide();
+    $(".explanationIncorrectYesNo").hide();
 
     // Set the questionClass text to the current question
     $(".question").text(questionPrompt);
@@ -536,6 +543,7 @@ function displayCurrentQuestion()
             //     console.log("Index: " + i + " questionScores: " + questionScores[i]);
             // }   
             if(questionData[currentQuestion].type === "yes_no") {
+                // fill in the user's selected answer to this question
                 if(selectedAnswer[currentQuestion - 1] != undefined) {
                     document.getElementById(selectedAnswer[currentQuestion - 1]).checked = true;
                 } 
@@ -543,18 +551,18 @@ function displayCurrentQuestion()
 
 
                 // console.log("WHATTTTT: " +  questionData[currentQuestion].choices.yes.explanation);
-            
+                // Fill in the explanation 
                 if(questionScores[currentQuestion - 1] === 1) {
                     document.getElementById(selectedAnswer[currentQuestion - 1]).parentNode.classList.add("correctChoice");
                     $(".correctScore").text("Score: " + questionScores[currentQuestion - 1] + "/1");
                     // selectedAnswer[currentQuestion - 1] is yes or no
                     $(".correctExplanation").text(questionData[currentQuestion].choices[selectedAnswer[currentQuestion - 1]].explanation);
-                    $(".explanationCorrectMulti").show();
+                    $(".explanationCorrectYesNo").show();
                 } else if(questionScores[currentQuestion - 1] === 0) {
                     document.getElementById(selectedAnswer[currentQuestion - 1]).parentNode.classList.add("incorrectChoice");
                     $(".incorrectScore").text("Score: " + questionScores[currentQuestion - 1] + "/1");
                     // $(".incorrectExplanation").text(questionData[currentQuestion].choices[selectedAnswer[currentQuestion - 1]].explanation);
-                    $(".explanationIncorrectMulti").show();
+                    $(".explanationIncorrectYesNo").show();
                 } 
             } else if (questionData[currentQuestion].type === "multi_select") {
                 if(questionScores[currentQuestion - 1] === 1) {
@@ -636,7 +644,12 @@ function displayScore() {
     });
 
     $(".result").show();
-    $(".viewAnswers").show();
+
+    // don't let user view answers on the challenge prequiz
+    if(currentSection !== "challenge") {
+        $(".viewAnswers").show();
+    }
+    
     $(".avatar-container").show();
 
 

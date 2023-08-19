@@ -49,10 +49,6 @@ body{
 
 }
 
-
-
-
-
 #raised-content {
     font-size: 1.5rem;
 }
@@ -63,10 +59,15 @@ body{
     padding-top: 0px;
 }
 
-#raised-container.top-padding {
+/* #raised-container.top-padding {
     padding-top: 30px;
-}
+} */
 
+#raised-container {
+    /* margin-top: 50px; */
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
 
 body{ 
     /* overflow-y: hidden !important; */
@@ -448,7 +449,12 @@ i.big.unlock.icon {
     margin: 0 auto;
 }
 
-/* Adjust text raised segment text padding */
+/* @media screen and (min-width: 1201px) {
+    .ui.container#raised-container.desktop-no-padding {
+        padding: 0px; 
+    }
+} */
+
 @media (max-width: 1200px) {
     .limit {
         padding-left: 2rem; 
@@ -457,13 +463,13 @@ i.big.unlock.icon {
 
     #page-article{ 
         /* padding to stop it from clipping under the header progress bar */
-        padding-top: 60px;
-        /* background-color: red; */
+        padding-top: 50px;
+        /* background-color: green; */
     }
     
 }
 
-/* Adjust text raised segment text padding */
+
 @media (max-width: 920px) {
     .limit {
         padding-left: 1rem; 
@@ -472,7 +478,7 @@ i.big.unlock.icon {
 
     #page-article{ 
         /* padding to stop it from clipping under the header progress bar */
-        /* padding-top: 60px; */
+        padding-top: 60px;
         /* background-color: orange; */
 
     }
@@ -492,8 +498,8 @@ i.big.unlock.icon {
 
     #page-article{ 
         /* padding to stop it from clipping under the header progress bar */
-        /* padding-top: 65px;
-        background-color: yellow; */
+        /* padding-top: 65px; */
+        /* background-color: yellow; */
 
     }
 }

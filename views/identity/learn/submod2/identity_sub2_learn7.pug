@@ -7,16 +7,31 @@ block content
       h1.ui.header.large#learn-title
         .content
           | Recognize the Techniques of Scammers
-      h2 Example 2 : Claim that they know you via email 
+      h2 Example 3:  Messages or Emails offer a coupon or gift card
 
-      img.ui.fluid.image(src='/images/learn2-6.png' style='margin-left: auto; margin-right: auto')
-      p Here are signs that this email is a scam, (even though it looks like it comes from someone you know):
+      .imessage
+        p.from-them
+          | Congratulations! You’ve won a $1,000 Walmart gift card. Go to 
+          u http://bit.ly/145634 
+          | to claim now.
+
+      p Here are signs that this message is a scam:
       ul
           li 
-            | Scam emails fail to identify the receiver’s name.
+            | This message offers a coupon for a $1000 gift card. Is that too good to be true?
           li  
-            | Scam emails invite you to click on a new link, redirecting you to an illegitimate website. Be careful when pressing links or filling out forms from emails as it may lead to a phishing website designed to steal your personal information.
-
+            | This message does not demonstrate an official source of Walmart.
+          li 
+            | This message invites you to click on a shortened foreign link. Legitimate links:
+          ul
+            li 
+              | should be https://
+            li 
+              | should not shortened
+            li 
+              | should have no typos or misspelling
+          li  
+            | This message fails to provide fine prints, such as the expiration data or the exceptions to the sale. A legitimate coupon usually lists the details.
       .ui.icon.blue.message
         .icon
           img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
@@ -24,9 +39,8 @@ block content
           .header
             //- i.info.circle.icon
             | Important
-          p  Safe emails will typically identify your name as the recipient; 
-          | Safe emails will never send you a link to update your personal information or payment information. 
-      br
+          p Legitimate companies won't ask for personal info in exchange for coupons or gift cards.
+
     script.
         var progress = #{user.moduleProgress.identity.percent}
     script(src='/js/setProgressBar.js')  
@@ -37,3 +51,6 @@ block append footer
 
 block scripts
   script(src='/js/character.js')
+
+block styles
+  link(rel='stylesheet', href='/css/learn2.css')

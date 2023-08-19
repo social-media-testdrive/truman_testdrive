@@ -7,7 +7,16 @@ block content
       h1.ui.header.large#learn-title
         .content
           | Recognize the Techniques of Scammers
-          
+      h2 Example 2 : Claim that they know you via email 
+
+      img.ui.fluid.image(src='/images/learn2-6.png' style='margin-left: auto; margin-right: auto')
+      p Here are signs that this email is a scam, (even though it looks like it comes from someone you know):
+      ul
+          li 
+            | Scam emails fail to identify the receiver’s name.
+          li  
+            | Scam emails invite you to click on a new link, redirecting you to an illegitimate website. Be careful when pressing links or filling out forms from emails as it may lead to a phishing website designed to steal your personal information.
+
       .ui.icon.blue.message
         .icon
           img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
@@ -15,26 +24,8 @@ block content
           .header
             //- i.info.circle.icon
             | Important
-          p  Legitimate companies won’t email or text you with a link to update your payment information.
-
-      img.ui.image(src='/images/learn2-5.png' style='margin-left: auto; margin-right: auto')
-      h2 Example 1 : Claim there’s a problem with your account or your payment information via email.
-
-      p  Email scams can be tricky to spot, especially when they look like they come from a legitimate company you know. 
-
-      p Here are some common signs why this email is not legitimate:
-      ul
-          li 
-            u Generic greeting: 
-            | if the email starts with a generic greeting like 'Dear Customer' instead of your name, it could be a sign that the email is not legitimate.
-          li 
-            u Suspicious claim: 
-            | if the email claims that your account is on hold or you have a billing problem without providing specific details about the issue, it could be a scam.
-          li 
-            u Phishing link: 
-            | if the email invites you to click on a new link to update your payment details, the link can be a phishing link.
-
-          
+          p  Safe emails typically address you by name and do not include links for updating personal or payment information 
+      br
     script.
         var progress = #{user.moduleProgress.identity.percent}
     script(src='/js/setProgressBar.js')  

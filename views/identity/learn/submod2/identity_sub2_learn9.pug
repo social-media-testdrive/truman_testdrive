@@ -6,43 +6,28 @@ block content
     .limit
       h1.ui.header.large#learn-title
         .content
-          | How can you recognize the techniques of scammers?
-      h2 Example 4: Messages or Emails say they’ve noticed some suspicious activity or log-in attempts 
+          | Warning Signs for specific Identity Theft Scams
 
-      .imessage
-        p.from-them
-          | BMO: ALERT For security reasons, your account has been temporarily suspended. Please verify your information:  
-          u bit.ly/123340
-
-      .imessage
-        p.from-them
-          | Wells Fargo Bank: Your account has been temporarily blocked. Please log in to 
-          u http://goo.gl/23489 
-
-      p Here are signs that indicate the two messages are scams:
-        ul
-          li 
-            | These two messages claim there’s a problem with your account or your payment information without specific information.
-          li  
-            | These two messages induce a sense of threat or urgency and compels you to click on the provided link.
-          li 
-            | These two messages fail to demonstrate official sources.
-    
-          
-    .ui.icon.blue.message
+      iframe(type='text/html' width='540' height='289'
+        src='../../videos/identity-video.mp4'
+        frameborder='0' style='display: block; margin: auto;')
+      
+      .ui.icon.blue.message
         .icon
           img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
         .content
           .header
             //- i.info.circle.icon
-            | Important!
-          ul 
-            li
-              | Legitimate companies will never ask for your personal information through a link in messages, especially if the tone of the message sounds urgent or serious. 
+            | 
+          p Lets learn more about warning signs for specific identity theft scams:
+            br
+            strong Financial Identity Theft
+            br
+            strong Tax Identity Theft
+            br
+            strong Medical Identity Theft
+      br
 
-            li 
-              | So, be cautious and don't give out your personal information to anyone who asks for it through a message. Stay safe!If there's no fine print, the coupon is likely not legitimate.
-          
           
     script.
         var progress = #{user.moduleProgress.identity.percent}
@@ -54,6 +39,3 @@ block append footer
 
 block scripts
   script(src='/js/character.js')
-
-block styles
-  link(rel='stylesheet', href='/css/learn2.css')

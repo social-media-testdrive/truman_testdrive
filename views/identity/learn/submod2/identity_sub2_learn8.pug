@@ -7,49 +7,40 @@ block content
       h1.ui.header.large#learn-title
         .content
           | Recognize the Techniques of Scammers
-      h2 Example3:  Messages or Emails offer a coupon or gift card
+      h2 Example 4: Messages or Emails say they’ve noticed some suspicious activity or log-in attempts 
 
       .imessage
         p.from-them
-          | Congratulations! You’ve won a $1,000 Walmart gift card. Go to 
-          u http://bit.ly/145634 
-          | to claim now.
+          | BMO: ALERT For security reasons, your account has been temporarily suspended. Please verify your information:  
+          u bit.ly/123340
 
-      p Here are signs that this message is a scam:
-      ul
+      .imessage
+        p.from-them
+          | Wells Fargo Bank: Your account has been temporarily blocked. Please log in to 
+          u http://goo.gl/23489 
+
+      p Here are signs that indicate the two messages are scams:
+        ul
           li 
-            | This message offers a coupon for a $1000 gift card. Is that too good to be true?
+            | These two messages claim there’s a problem with your account or your payment information without specific information.
           li  
-            | This message does not demonstrate an official source of Walmart.
+            | These two messages induce a sense of threat or urgency and compels you to click on the provided link.
           li 
-            | This message invites you to click on a shortened foreign link. Legitimate links:
-          ul
-            li 
-              | should be https://
-            li 
-              | should not shortened
-            li 
-              | should have no typos or misspelling
-          li  
-            | This message fails to provide fine prints, such as the expiration data or the exceptions to the sale. A legitimate coupon usually lists the details.
+            | These two messages fail to demonstrate official sources.
+    
           
-    .ui.icon.blue.message
+      .ui.icon.blue.message
         .icon
           img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
         .content
           .header
             //- i.info.circle.icon
-            | Important!
-          ul 
-            li
-              | If there's no fine print, the coupon is likely not legitimate.
-            li 
-              | No legitimate company will ask for personal information in exchange for a coupon. A popular scam is to offer coupons in exchange for completing surveys.
-    
+            | Important
+          p Beware of urgent requests for personal information. Legitimate companies don't ask for it this way.
+
     script.
         var progress = #{user.moduleProgress.identity.percent}
     script(src='/js/setProgressBar.js')  
-
 block append footer
   .ui.container
     +navButtons('identity', '/submod2/learn7/identity', '/submod2/learn9/identity', 42)  

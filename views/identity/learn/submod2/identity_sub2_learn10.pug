@@ -6,29 +6,30 @@ block content
     .limit
       h1.ui.header.large#learn-title
         .content
-          | Warning Signs for specific Identity Theft Scams
+          | Financial Identity Theft 
+      ul 
+        li
+          | You see 
+          strong unfamiliar or unexpected charges 
+          | on your bank statement or credit card charges that you didn’t make.
+        li 
+          | You notice 
+          strong new credit cards or loans issued in your name.
+        li 
+          | You get 
+          strong unexpected calls from debt collectors.
+        li 
+          | You receive 
+          strong denied credit, sudden drop in credit score, or errors 
+          | in your credit report.
+        li 
+          | You notice 
+          strong bounced checks 
+          | (if you know you have available funds).
+        li 
+          | You have 
+          strong missing mail/email from bank.
 
-      iframe(type='text/html' width='540' height='289'
-        src='../../videos/identity-video.mp4'
-        frameborder='0' style='display: block; margin: auto;')
-      
-      .ui.icon.blue.message
-        .icon
-          img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
-        .content
-          .header
-            //- i.info.circle.icon
-            | 
-          p Lets learn more about warning signs for specific identity theft scams:
-            br
-            strong Financial Identity Theft
-            br
-            strong Tax Identity Theft
-            br
-            strong Medical Identity Theft
-
-      br
-          
     script.
         var progress = #{user.moduleProgress.identity.percent}
     script(src='/js/setProgressBar.js')  

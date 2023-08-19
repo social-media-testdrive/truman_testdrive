@@ -775,7 +775,7 @@ app.get('/challenge2/:modId', passportConfig.isAuthenticated, setHttpResponseHea
     const currentDate = getCurrentDate();
     req.params.modId 
     res.render('dart-quiz-template.pug', {
-        title: 'Learn',
+        title: 'Challenge',
         quizData,
         currentSection,
         backLink,
@@ -864,7 +864,7 @@ app.get('/submod/learn6/:modId', passportConfig.isAuthenticated, setHttpResponse
     const currentDate = getCurrentDate();
     req.params.modId 
     res.render('dart-quiz-template.pug', {
-        title: 'Learn',
+        title: 'Quiz',
         quizData,
         currentSection,
         backLink,
@@ -977,25 +977,31 @@ app.get('/submod2/learn13/:modId', passportConfig.isAuthenticated, setHttpRespon
     });
 });
 
-app.get('/submod2/learn14/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/learn/submod2/' + req.params.modId + '_sub2_learn14', {
-        title: 'Learn'
-    });
-});
-
-app.get('/submod2/learn15/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, async function(req, res) {
+app.get('/submod2/learn14/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, async function(req, res) {
     let quizData;
+    let currentSection = "submodTwo"
+    let backLink = "/submod2/learn13/identity"
+    let nextLink = "/submod2/learn14/identity"
     const data = await fs.readFileAsync(`${__dirname}/public2/json/` +  req.params.modId + `/submodTwo.json`);
     quizData = JSON.parse(data.toString());
 
     const currentTime = getCurrentTime();
     const currentDate = getCurrentDate();
-
-    res.render(req.params.modId + '/learn/submod2/' + req.params.modId + '_sub2_learn15', {
-        title: 'Learn',
+    req.params.modId 
+    res.render('dart-quiz-template.pug', {
+        title: 'Quiz',
         quizData,
+        currentSection,
+        backLink,
+        nextLink,
         currentTime,
         currentDate
+    });
+});
+
+app.get('/submod2/learn15/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, async function(req, res) {
+    res.render(req.params.modId + '/learn/submod2/' + req.params.modId + '_sub2_learn15', {
+        title: 'Learn'
     });
 });
 
