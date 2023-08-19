@@ -701,3 +701,43 @@ i.big.unlock.icon {
     /* background: white; */
   }
   
+
+
+  /* submod 2 q1.html partial */
+.make-italic {
+    font-style: italic;
+}
+.selected-customers {
+    font-weight: bold;
+}
+
+.htmlImage .dollar-tree-border .green {
+    color: #589E3C;
+    font-weight: bold;
+}
+
+.htmlImage .dollar-tree-border {
+    border: 6px solid #589E3C;
+    margin: 10px;
+    border-radius: 15px; 
+}
+
+
+
+.htmlImage #confirmButton {
+    background-color: #589E3C;
+    color: white;
+    border-radius: 15px; 
+    width: 400px;
+    pointer-events: none;
+}
+
+.htmlImage #netflix-logo {
+    width: 200px;
+    display: block;
+    margin: 0 auto;
+}
+
+.htmlImage #netflixSignIn {
+    color: #E50914;
+}

@@ -83,6 +83,11 @@ $(document).ready(function() {
             // console.log("Val: " + val);
             // console.log("Answer: " + questionData[currentQuestion].correctResponse)
 
+            // if on last question, change next button text to "complete quiz"
+            if(currentQuestion === numQuestions - 1) {
+                $(".nextButton").text("Submit Quiz");
+            }
+
             let val;
 
             // Get user selections 
@@ -373,6 +378,7 @@ function displayCurrentQuestion()
             // Update the current time if it exists in the partial
             const currentTimeSpan = document.getElementById('current-time');
             const currentDateSpan = document.getElementById('current-date');
+            const futureDateSpan = document.getElementById('future-date');
             const userNameSpan = document.getElementById('user-name');
             const userEmailSpan = document.getElementById('user-email');
 
@@ -382,6 +388,10 @@ function displayCurrentQuestion()
 
             if (currentDateSpan) {
                 currentDateSpan.textContent = currentDate;
+            } 
+
+            if (futureDateSpan) {
+                futureDateSpan.textContent = futureDate;
             } 
 
             if (userNameSpan) {
@@ -556,11 +566,12 @@ function displayCurrentQuestion()
                     document.getElementById(selectedAnswer[currentQuestion - 1]).parentNode.classList.add("correctChoice");
                     $(".correctScore").text("Score: " + questionScores[currentQuestion - 1] + "/1");
                     // selectedAnswer[currentQuestion - 1] is yes or no
-                    $(".correctExplanation").text(questionData[currentQuestion].choices[selectedAnswer[currentQuestion - 1]].explanation);
+                    $(".correctExplanation").html(questionData[currentQuestion].explanation);
                     $(".explanationCorrectYesNo").show();
                 } else if(questionScores[currentQuestion - 1] === 0) {
                     document.getElementById(selectedAnswer[currentQuestion - 1]).parentNode.classList.add("incorrectChoice");
                     $(".incorrectScore").text("Score: " + questionScores[currentQuestion - 1] + "/1");
+                    $(".incorrectExplanation").html(questionData[currentQuestion].explanation);
                     // $(".incorrectExplanation").text(questionData[currentQuestion].choices[selectedAnswer[currentQuestion - 1]].explanation);
                     $(".explanationIncorrectYesNo").show();
                 } 

@@ -763,6 +763,21 @@ function getCurrentDate() {
     return `${month}/${day}/${year}`;
 }
 
+function getFutureDate() {
+    // get date a week from the current date for the scam quiz emails 
+    // for example if currentDate is 8/19/2023 this function will return 8/26/2023
+    const today = new Date();
+    const oneWeekLater = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000); // Adding 7 days in milliseconds
+    
+    const month = String(oneWeekLater.getMonth() + 1).padStart(2, '0');
+    const day = String(oneWeekLater.getDate()).padStart(2, '0');
+    const year = oneWeekLater.getFullYear();
+    
+    // make string in MM/DD/YYYY format
+    return `${month}/${day}/${year}`;  
+}
+  
+
 app.get('/challenge2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, async function(req, res) {
     let quizData;
     let currentSection = "challenge"
@@ -987,6 +1002,8 @@ app.get('/submod2/learn14/:modId', passportConfig.isAuthenticated, setHttpRespon
 
     const currentTime = getCurrentTime();
     const currentDate = getCurrentDate();
+    const futureDate = getFutureDate();
+
     req.params.modId 
     res.render('dart-quiz-template.pug', {
         title: 'Quiz',
@@ -995,7 +1012,8 @@ app.get('/submod2/learn14/:modId', passportConfig.isAuthenticated, setHttpRespon
         backLink,
         nextLink,
         currentTime,
-        currentDate
+        currentDate,
+        futureDate
     });
 });
 
