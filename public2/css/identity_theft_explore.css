@@ -1,0 +1,118 @@
+.emailHeader {
+    background-color: #F5F5F5;
+    color: #2165AE;
+    border-bottom: 4px solid #2165AE;
+    padding: 20px;
+    margin: 0;
+}
+
+.emailHeader span {
+    position: relative;
+    top: 3px;
+    font-size: 1.75rem;
+    font-weight: bold;
+}
+
+p, h3, span {
+    font-family: Arial, sans-serif;
+    font-size: 1.5rem;
+}
+
+#subjectLine {
+    font-size: 2rem;
+    margin-left: 100px;
+}
+
+span.subject {
+    color: #747471;
+    font-weight: lighter;
+}
+
+
+.senderInfo {
+    font-size: 1.6rem;
+}
+
+.senderInfo span {
+    font-size: 1.6rem;
+}
+
+.fromEmail {
+    color: #747471;
+    font-weight: lighter;
+    font-size: 1.6rem;
+
+}
+
+.ui.vertical.segment .row {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+a {
+    color: black;
+    cursor: pointer;
+}
+
+a:hover {
+    color: black;
+}
+
+a:visited {
+    color: forestgreen;
+    text-decoration-color: hotpink;
+}
+
+.ui.right.floated.header.numContainer {
+    margin-top: 5px;
+}
+
+#inboxLabel {
+    margin-left: 10px;
+}
+
+span.pageNum {
+    position: relative;
+    top: 5px;
+    font-size: 2rem;
+    /* margin-top: 100px;
+    background-color: red;
+    padding-top: 50px; */
+
+}
+
+.ui.icon.message {
+    background-color: white !important;
+    box-shadow: none !important;
+}
+button.ui.circular.icon.button.closeEmailArrow {
+    margin-left: 0px;
+    margin-right: 40px;
+}
+
+button.ui.circular.icon.button {
+    color: black;
+    background-color: white;
+}
+
+button.ui.circular.icon.button:hover {
+    background-color: #e0e0e0;
+}
+
+.ui.vertical.segment:hover {
+    /* top & sides solid border, bottom shadow*/
+    box-shadow: 
+    inset 0 0 0 1px rgba(0, 0, 0, 0.24),
+    0 4px 4px -1px rgba(0, 0, 0, 0.24);
+
+
+/*  Thicker border
+    box-shadow: 
+    inset 0 0 0 2px rgba(0, 0, 0, 0.24),
+    0 4px 4px -2px rgba(0, 0, 0, 0.24); */
+
+}
+
+#emailContent {
+    margin-left: 100px;
+}

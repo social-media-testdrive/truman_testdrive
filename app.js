@@ -996,7 +996,7 @@ app.get('/submod2/learn14/:modId', passportConfig.isAuthenticated, setHttpRespon
     let quizData;
     let currentSection = "submodTwo"
     let backLink = "/submod2/learn13/identity"
-    let nextLink = "/submod2/learn14/identity"
+    let nextLink = "/submod2/learn15/identity"
     const data = await fs.readFileAsync(`${__dirname}/public2/json/` +  req.params.modId + `/submodTwo.json`);
     quizData = JSON.parse(data.toString());
 
@@ -1090,9 +1090,51 @@ app.get('/submod3/learn10/:modId', passportConfig.isAuthenticated, setHttpRespon
     });
 });
 
+
 // Render explore (all modules) ******************************
 app.get('/explore/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
     res.render(req.params.modId + '/explore/' + req.params.modId + '_explore', {
+        title: 'Explore'
+    });
+});
+
+function formatDate(date) {
+    const options = { month: 'short', day: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
+}
+
+app.get('/explore2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
+    const currentDate = new Date();
+    const currentTime = getCurrentTime();
+
+    const oneDayAgo = new Date(currentDate.getTime() - 24 * 60 * 60 * 1000);
+  
+    const emails = [
+      { index: 0, sender: "Walmart", subject: "URGENT!", date: currentTime, from:"<walmart@gmail.com>", content: "Your payment was declined on a recent purchase. Resubmit your credit card details at this link below within 24 hours." },
+      { index: 1, sender: "irs gov", subject: "Identity Verification Service", date: formatDate(oneDayAgo), from:"<irsgov@gmail.com>", content: "We’ve noticed your account information is missing orincorrect. We need to verify your account information to file your Tax Refund.Please follow this link to verify your info." },
+      { index: 2, sender: "Dropbox", subject: "New Sign In", date: formatDate(oneDayAgo), from:"<irsgov@gmail.com>", content: "We’ve noticed your account information is missing orincorrect. We need to verify your account information to file your Tax Refund.Please follow this link to verify your info." }
+    ];  
+
+    res.render(req.params.modId + '/explore/' + req.params.modId + '_explore2', {
+        title: 'Explore',
+        emails
+    });
+});
+
+app.get('/explore3/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/explore/' + req.params.modId + '_explore3', {
+        title: 'Explore'
+    });
+});
+
+app.get('/explore4/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/explore/' + req.params.modId + '_explore4', {
+        title: 'Explore'
+    });
+});
+
+app.get('/explore5/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/explore/' + req.params.modId + '_explore5', {
         title: 'Explore'
     });
 });

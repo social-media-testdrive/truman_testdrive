@@ -1,79 +1,32 @@
-extends ../../../ui_layout
+extends ../../../module_layout
 
 block content
 
-  .ui.container#raised-container.short-page-margin
-    .ui.fluid.tiny.three.item.fluid.menu#submod-progress-bar
-      .item.active
-        | Concept & Consequences
-      .item.active
-        | How To Recognize Techniques
-      .item.active
-        | Methods of Protection
-    .ui.raised.segment
-      #raised-content
-        .limit
-          h1.ui.header.large#learn-title
-            .content
-              | Methods of Protection
-          //- iframe(type='text/html' width='540' height='289'
-          //-   src='../../videos/identity-video.mp4'
-          //-   frameborder='0' style='display: block; margin: auto;')
-          br
-          p This module has been thoughtfully designed to help you gain a comprehensive understanding of identity theft scams, including their risks, warning signs and practical methods. Our primary objective is to empower you with the knowledge and methods necessary to safeguard yourself effectively. Throughout this module, you will explore three sections that cover the following topics:
+  .ui.container#raised-container
+    .limit
+      h1.ui.header.large#mod-title
+        .content
+          | Section 3: Methods of Protection
+      br
+      //- p This module has been thoughtfully designed to help you gain a comprehensive understanding of identity theft scams, including their risks, warning signs and practical methods. Our primary objective is to empower you with the knowledge and methods necessary to safeguard yourself effectively. Throughout this module, you will explore three sections that cover the following topics:
+      p In this section we will explore various tricks employed by cybercriminals. Learn to spot these tactics and strengthen your defense.
+      .ui.centered.stackable.grid#section-grid
+        .four.wide.column
+          .ui.huge.label.lockContainer.unlocked
+            i.big.unlock.icon
+          p Section 1: Concepts & Consequences
+        .four.wide.column
+          .ui.huge.label.lockContainer.unlocked
+            i.big.unlock.icon
+          p Section 2: Recognize Tricks
+        .four.wide.column
+          .ui.huge.label.lockContainer.unlocked
+            i.big.unlock.icon
+          p Section 3: Methods of Protection  
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
 
-          .ui.centered.stackable.grid#section-grid
-            .four.wide.column
-              .ui.huge.label.lockContainer.unlocked
-                i.big.unlock.icon
-              p Section 1: Concepts & Consequences
-            .four.wide.column
-              .ui.huge.label.lockContainer.unlocked
-                i.big.unlock.icon
-              p Section 2: Recognize Tricks
-            .four.wide.column
-              .ui.huge.label.lockContainer.unlocked
-                i.big.unlock.icon
-              p Section 3: Methods of Protection
-    .ui.container#nav-container
-      .div#nav-menu          
-        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/submod/learn8/identity';") 
-          i.arrow.left.icon 
-          | Back
-        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/gmail';")
-          | Complete Section 3
-          i.arrow.right.icon
-
-
-
-block scripts
-  script.
-    var voiceoverMappings = {
-      '.showLearnSectionButton': {
-        "initialDelay": 700,
-        "delay": 500,
-        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
-      },
-      '.voiceover_keyTerm1': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.6.2.1.mp3']
-      },
-      '.voiceover_keyTerm2': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.6.2.2.mp3']
-      },
-      '.voiceover_keyTerm3': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.6.2.3.mp3']
-      }
-    };
-  script(src='/module_js/voiceover.js')
-  script(src="/module_js/base_start.js")
-  
-block styles
-  link(rel='stylesheet', href='/css/module.css')  
-
-    
+block append footer
+  .ui.container
+    +navButtons('identity', '/submod2/learn15/identity', '/explore/identity', 62, 'Back', 'Complete Section 3')  
