@@ -6,6 +6,11 @@
     margin: 0;
 }
 
+i.user.circle.icon {
+    color: #2165AE;
+}
+
+
 .emailHeader span {
     position: relative;
     top: 3px;
@@ -68,13 +73,15 @@ a:visited {
 }
 
 #inboxLabel {
-    margin-left: 10px;
+    margin-top: -5px;
+    margin-left: 15px;
+    padding: 3px;
 }
 
 span.pageNum {
     position: relative;
     top: 5px;
-    font-size: 2rem;
+    font-size: 1.5rem;
     /* margin-top: 100px;
     background-color: red;
     padding-top: 50px; */
@@ -114,5 +121,21 @@ button.ui.circular.icon.button:hover {
 }
 
 #emailContent {
+    margin-left: 100px;
+}
+
+#openDate {
+    /* margin-right: 20px; */
+}
+
+#ban {
+    margin-left: 3px;
+}
+
+#reply {
+    border-radius: 20px;
+    color: #444746 !important;
+    border: 1px solid #444746 !important;
+    /* margin-top: 20px; */
     margin-left: 100px;
 }

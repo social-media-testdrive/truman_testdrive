@@ -132,3 +132,18 @@ img.ui.small.image.dart-logo {
     padding: 0 !important;
     margin: 0 !important;
 }
+
+/* .dimmable.modal-open.dimmed,
+.dimmable.dimmed {
+    margin-right: 0 !important;
+    overflow-y: scroll !important;
+} */
+
+body.animating.in.dimmable, body.dimmed.dimmable {
+    overflow: inherit;
+}
+
+.modal-open {
+    overflow-y: hidden !important;
+    margin: 0 !important;
+}

@@ -1110,7 +1110,7 @@ app.get('/explore2/:modId', passportConfig.isAuthenticated, setHttpResponseHeade
     const oneDayAgo = new Date(currentDate.getTime() - 24 * 60 * 60 * 1000);
   
     const emails = [
-      { index: 0, sender: "Walmart", subject: "URGENT!", date: currentTime, from:"<walmart@gmail.com>", content: "Your payment was declined on a recent purchase. Resubmit your credit card details at this link below within 24 hours." },
+      { index: 0, sender: "Walmart", subject: "URGENT!", date: currentTime, from:"<walmrt@gmail.com>", content: "Your payment was declined on a recent purchase. Resubmit your credit card details at this link below within 24 hours." },
       { index: 1, sender: "irs gov", subject: "Identity Verification Service", date: formatDate(oneDayAgo), from:"<irsgov@gmail.com>", content: "We’ve noticed your account information is missing orincorrect. We need to verify your account information to file your Tax Refund.Please follow this link to verify your info." },
       { index: 2, sender: "Dropbox", subject: "New Sign In", date: formatDate(oneDayAgo), from:"<irsgov@gmail.com>", content: "We’ve noticed your account information is missing orincorrect. We need to verify your account information to file your Tax Refund.Please follow this link to verify your info." }
     ];  
