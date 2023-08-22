@@ -46,7 +46,7 @@ span.subject {
     color: #747471;
     font-weight: lighter;
     font-size: 1.6rem;
-
+    margin-left: 10px;
 }
 
 .ui.vertical.segment .row {

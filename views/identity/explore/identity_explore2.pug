@@ -26,17 +26,10 @@ block content
                     i.left.arrow.big.icon
                 button.ui.circular.icon.button#report
                     i.bullhorn.large.icon     
-
-                    //- i.flag.outline.large.icon     
                 button.ui.circular.icon.button#ban
                     i.ban.large.icon
                 button.ui.circular.icon.button#delete
                     i.trash.alternate.outline.large.icon
-                //- .ui.right.floated.header.numContainer
-                //-     span.pageNum 1 of 3 
-                //-     span
-                //-         i.angle.left.large.icon 
-                //-         i.angle.right.large.icon
                 .ui.horizontal.divider
                 each email in emails
                     if email.index === 0
@@ -53,9 +46,9 @@ block content
                             .content.senderInfo
                                 .header #{email.sender} <span class="fromEmail">#{email.from}</span>
                         p#emailContent #{email.content}
-                        button.ui.basic.button#reply
-                            i.reply.icon
-                            | Reply
+                            button.ui.basic.button#reply
+                                i.reply.icon
+                                | Reply
 
 
     script.
