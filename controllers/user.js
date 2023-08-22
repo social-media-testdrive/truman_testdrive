@@ -203,18 +203,170 @@ exports.postInstructorLogin = (req, res, next) => {
     })(req, res, next);
 };
 
-exports.postIdentityTheftPreQuizScore = (req, res, next) => {
-    req.assert('username', 'Username cannot be blank').notEmpty();
-    const errors = req.validationErrors();
+
+
+exports.postQuizScore = (req, res, next) => { // response second
+    console.log("In POST quiz score request body***********************hiii****");
+
+    const { modID, scoreTotal, selectedAnswer, questionScores, nextLink, currentSection } = req.body;
 
     User.findOne({
-    username: req.body.username
+        username: req.user.username
     }, (err, existingUser) => {
         if (err) {
             return next(err);
         }
         if (existingUser) {
-            existingUser.identityTheftPreQuizScore = req.body.scoreInput;
+            // prequiz attempt data
+            const attempt = {
+                timestamp: new Date(),
+                scoreTotal: scoreTotal,
+                questionScores: questionScores,
+                questionChoices: selectedAnswer,
+            };
+
+            let sectionAttempts = currentSection + "Attempts";
+
+            // Add the prequiz attempt to the challengeAttempts/submod1Attempts/etc array
+            existingUser.moduleProgress[modID][sectionAttempts].push(attempt);
+
+            // existingUser.moduleProgress[modID].percent = req.body.percent;
+            // existingUser.moduleProgress[modID].link = req.body.link;            
+
+            // save to mongodb database
+            existingUser.save((err) => {
+                if (err) {
+                    return next(err);
+                }
+            });
+
+
+            // // update current logged in the session
+            // req.user.moduleProgress.identity.percent =  req.body.percent;
+            // req.user.moduleProgress.identity.link =  req.body.link;
+            // req.session.passport.user = req.user;
+
+            // // Save the updated session to the session store
+            // req.session.save((err) => {
+            //     if (err) {
+            //         return next(err);
+            //     }
+            //     res.status(200).json({ message: 'Progress updated successfully!' });
+            // });
+     
+        }
+    });
+    console.log("about to redirect in post quiz score")
+    res.redirect(nextLink); 
+
+}; 
+
+exports.postModuleProgress = (req, res, next) => { // response second
+    // console.log("In POST module progess request body***********************YOOOOO****")
+    console.log(req.body)
+    // console.log("BEFORE In POST module progess request user***********")
+    // console.log(req.user)
+    // req.user.moduleProgress.identity.link = "/BEYONCE"
+    // console.log("AFTER In POST module progess request user***********")
+    // console.log(req.user)
+
+    let module_to_update = req.body.modID;
+
+    User.findOne({
+        username: req.user.username
+    }, (err, existingUser) => {
+        if (err) {
+            return next(err);
+        }
+        if (existingUser) {
+            // don't revert progress when they user presses back buttons to review
+            // if (req.body.percent == 0 || req.body.percent > existingUser.moduleProgress.identity.percent) {
+            existingUser.moduleProgress[module_to_update].percent = req.body.percent;
+            // }
+            existingUser.moduleProgress[module_to_update].link = req.body.link;            
+
+            // save to mongodb database
+            existingUser.save((err) => {
+                if (err) {
+                    return next(err);
+                }
+            });
+
+            // update current logged in the session
+            req.user.moduleProgress.identity.percent =  req.body.percent;
+            req.user.moduleProgress.identity.link =  req.body.link;
+
+
+            req.session.passport.user = req.user;
+
+            // Save the updated session to the session store
+            req.session.save((err) => {
+                if (err) {
+                    return next(err);
+                }
+                res.status(200).json({ message: 'Progress updated successfully!' });
+            });
+     
+        }
+    });
+}; 
+
+// exports.getModuleProgress = (req, res, next) => {
+//     // console.log(req.params)
+//     // console.log("ModuleToGet: " + moduleToGet);
+//     // console.log(req.user.username);
+//     const moduleToGet = req.params.modId; // Accessing the value of :modId
+
+//     User.findOne({ username: req.user.username }, (err, existingUser) => {
+//         if (err) {
+//           return next(err);
+//         }
+
+//         try {
+//             if (existingUser) {
+//                 // console.log("The user exists! Here is the module progress:")
+//                 // console.log(existingUser.moduleProgress[moduleToGet])
+
+//                 // ensure the value exists before trying to access it
+//                 if (existingUser.moduleProgress[moduleToGet]) {
+//                     console.log("GET Module Progress SUCCESSFUL");
+//                     res.json(existingUser.moduleProgress[moduleToGet]);
+//                 } else {
+//                     console.log(`Module progress for ${moduleToGet} not found`);
+//                     res.status(404).json({ message: 'Module progress not found' });
+//                 }
+                
+//             } else {
+//                 console.log('User not found');
+//                 res.status(404).json({ message: 'User not found' });
+//             }
+//         } catch (error) {
+//             console.error(error);
+//             res.status(500).json({ message: 'Internal server error' });
+//         }            
+//       });  
+// };
+  
+
+exports.postIdentityTheftPreQuizScore = (req, res, next) => {
+    req.assert('username', 'Username cannot be blank').notEmpty();
+
+    // console.log(req.body.username);
+
+    // console.log("BEYONCE REQUEST: ******************************************");
+    // console.log(req);
+    // console.log(req.body);
+    // const errors = req.validationErrors();
+
+    User.findOne({
+    username: req.user.username
+    }, (err, existingUser) => {
+        if (err) {
+            return next(err);
+        }
+        if (existingUser) {
+            existingUser.moduleProgress.identity.percent = req.body.percent;
+            existingUser.moduleProgress.identity.link = req.body.link;
             existingUser.save((err) => {
                 if (err) {
                     return next(err);
@@ -222,7 +374,7 @@ exports.postIdentityTheftPreQuizScore = (req, res, next) => {
                 });
         }
     });
-    res.redirect('/evaluate3/identity'); 
+    // res.redirect('/evaluate3/identity'); 
 }; 
 
 exports.postIdentityTheftModOneQuizScore = (req, res, next) => {

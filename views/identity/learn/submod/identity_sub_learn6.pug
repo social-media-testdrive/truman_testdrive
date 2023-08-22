@@ -1,131 +1,322 @@
-extends ../../../ui_layout
-
+extends ../../../module_layout
 block content
-
-  .ui.container#raised-container.short-page-margin
-    .ui.fluid.tiny.three.item.fluid.menu#submod-progress-bar
-      .item.active
-        | Concept & Consequences
-      .item
-        | How To Recognize Techniques
-      .item
-        | Methods of Protection
-    .ui.raised.segment
-      #raised-content
+    //- img(src='/images/identity/challenge/q1.png')
+    .ui.container.quizContainer#raised-container
         .limit
-          img.ui.medium.image(src='/images/practice_progress_bar.png' style='margin-left: auto; margin-right: auto')
-          form.ui.form(style="width: 100%" action='/postIdentityTheftModOneQuizScore', method='POST')
-            input(type='hidden', name='username', value=user.username)
-            input(type='hidden', name='_csrf', value=csrfToken)
-            h3 1. Which of the following situations can be characterized as identity theft?
-            .field
-              #b1.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
-                input(type='radio' name='q1' value = 'a' id='radio1')
-                label When someone steals your personal information to commit fraud
-            .field
-              #b2.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
-                input(type='radio' id = 'c2' name='q1' value = 'b')
-                label Unauthorized use or attempted use of an existing account
-            .field
-              #b3.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
-                input(type='radio' id = 'c3' name='q1' value = 'c')
-                label Unauthorized use or attempted use personal information to open a new account
-            .field
-              #b4.ui.radio.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
-                input(type='radio' id = 'c4' name='q1' value = 'd')
-                label All of the above
+            br
+            //- .metadata
+            //-     p
+            //-         strong From: 
+            //-         | Apple <
+            //-         span support@apple.com
+            //-         | >
+            //-     p
+            //-         strong To: 
+            //-         span#user-email
+            //-     p
+            //-         strong Date: 
+            //-         span#current-time
+            //-     p
+            //-         strong Subject: 
+            //-         | Customer Support Follow-up
+            //- .ui.raised.segments
+            //-     .content
+            //-         .ui.segment(style="background: #F3F3FF; margin: 0; padding: 0;")
+            //-             //- i.apple.big.icon(style='position: absolute; top: 10px; right: 10px; color: #A5A6AE;')
+            //-             .whiteTop(style="background: white; width: 100%; padding: 1em 1em;")
+            //-                 .ui.header(style='font-weight: bolder; color: #253B80;font-style: italic;') Pay.
+            //-                     span(style='color: #189BD7;') Service
+            //-                     span(style='color: #A5A6AE; font-size: 0.8rem; font-style: normal')  Secure
+            //-             .emailContent(style="padding: 1em 1em;")
+            //-                 p Dear Client,
+            //-                 p Recently, your account was reviewed and flagged because of a potential connection to some fraudulent transactions. To avoid an eventual restriction to your account, please verify your informations by logging in to our Litigations Manager.
+            //-             .whiteTop(style="background: white; width: 100%; padding: 1em 1em;")
+            //-                 button.ui.button.basic.circular(style='background-color: #16AEFF; color: white; pointer-events: none;font-weight:bold')
+            //-                     | Check my account
 
-            h3 2. Please select all the items that you think are considered personal information.
-              .grouped.fields
-                .field
-                  img.ui.centered.image(src='/images/ssn.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:20px;margin-bottom: 20px;")
-                  div#b5.ui.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
-                    input(type='checkbox', id='q2c1', name='q2-option-1', value='1')
-                    label Social Security Number
-                .field
-                  img.ui.centered.image(src='/images/dob.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:20px;margin-bottom: 20px;")
-                  div#b6.ui.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
-                    input(type='checkbox', id='q2c2', name='q2-option-2', value='1')
-                    label Date and place of birth
-                .field
-                  img.ui.centered.image(src='/images/cvc.png' style="max-width:100%;max-height:100%;text-align:center;margin-top:20px;margin-bottom: 20px;")
-                  div#b7.ui.checkbox(style='border: 2px solid gray; border-radius: 5px; padding: 15px; width: 100%')
-                    input(type='checkbox', id='q2c3', name='q2-option-3', value='1')
-                    label Credit card info: CVC, expiration date, and password
-              #submitQuestion.ui.green.button(onclick ='checkQuestion()', style='float: right') Check Answers
-              #correctness.ui.label.right.floated(style='clear: both; width: 100%; float: right; display: none')
-                p#score(style='float:right') 1.0/1 points
-              input(type='hidden', name='scoreInput', value='0', id='scoreInput')
-              br
-              br
-              button.ui.blue.button(style="float: right; clear: both" type='submit') Submit
-              h1
-              h1
-    .ui.container#nav-container
-      .div#nav-menu          
-        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/submod/learn5/identity';") 
-          i.arrow.left.icon 
-          | Back
-//- next location is in user.js postIdentityTheftModOneQuizScore
+            //- .explanation
+            //-     .ui.green.center.aligned.message 
+            //-         h2.ui.header
+            //-             i.check.circle.large.icon
+            //-             | Correct
+            //-         p The correct answer is 'yes'
+            //-     .ui.red.center.aligned.message 
+            //-         h2.ui.header
+            //-             i.times.circle.large.icon
+            //-             | Incorrect
+            //-         p The correct answer is 'yes'
+
+            //- .smartphone
+            //-     .content
+            //-         .texter
+            //-             i.user.circle.big.icon
+            //-             p 867543 
+            //-                 span >
+            //-         .ios-time
+            //-             p Today #{currentTime}
+            //-         .ios-chat-container
+            //-             .chat
+            //-                 //- .mine.messages
+            //-                 //-     .message.last
+            //-                 //-         | Dude
+            //-                 .yours.messages
+            //-                     //- .message
+            //-                     //-     | Hey!
+            //-                     //- .message
+            //-                     //-     | You there?
+            //-                     .message.last
+            //-                         | Venmo here! NEVER share your code via call/text. ONLY YOU should enter this code. BEWARE: if someone asks for the code, it's a scam. Code: 568601.
+            //-                         //- | Hello, how&apos;s it going?
+            //-                 //- .mine.messages
+            //-                 //-     .message
+            //-                 //-         | Great thanks!
+            //-                 //-     .message.last
+            //-                 //-         | How about you?
+
+            br
+            .question 
+            br
+            .htmlImage
+            .image
+            .choiceList
+            .checkboxChoices            
+            br
+            br
+            .result
+                .circleResults
+                    strong
+                .resultText     
+                br
+                br
+            .quizMessage
+                .ui.red.center.aligned.message
+                    i.close.icon
+                    .errorMessage.header
+            .explanationCorrect
+                p.correctScore
+                h2.ui.header
+                    i.check.circle.large.icon
+                    | Correct
+                .ui.green.center.aligned.message 
+                    p.correctExplanation
+            .explanationIncorrect
+                button.ui.basic.blue.right.labeled.icon.button.explainButton
+                    i.right.caret.icon
+                    a Show Explanations
+                p.incorrectScore
+                h2.ui.header
+                    i.times.circle.red.small.icon
+                    | Incorrect
+                p.yourAnswers
+                p.theAnswers
+                //- .ui.red.center.aligned.message 
+                //-     p.incorrectExplanation
+            .quizButtonContainer
+                .ui.blue.huge.button.preButton Previous Question
+                .ui.blue.huge.button.viewAnswers View Answers
+                .ui.blue.huge.button.nextButton Next Question
+        .avatar-container
+            img#dart_image1.ui.medium.image(src='/profile_pictures/transparent.png')
+
+
+            //- .ui.raised.segments
+            //-     .content
+            //-         .ui.segment(style="background: #F3F3FF; margin: 0; padding: 0;")
+            //-             //- i.apple.big.icon(style='position: absolute; top: 10px; right: 10px; color: #A5A6AE;')
+            //-             .whiteTop(style="background: white; width: 100%; padding: 1em 1em;")
+            //-                 .ui.header(style='font-weight: bolder; color: #253B80;font-style: italic;') Pay.
+            //-                     span(style='color: #189BD7;') Service
+            //-                     span(style='color: #A5A6AE; font-size: 0.8rem; font-style: normal')  Secure
+            //-             .emailContent(style="padding: 1em 1em;")
+            //-                 p Dear Client,
+            //-                 p Recently, your account was reviewed and flagged because of a potential connection to some fraudulent transactions. To avoid an eventual restriction to your account, please verify your informations by logging in to our Litigations Manager.
+            //-             .whiteTop(style="background: white; width: 100%; padding: 1em 1em;")
+            //-                 button.ui.button.basic.circular(style='background-color: #16AEFF; color: white; pointer-events: none;font-weight:bold')
+            //-                     | Check my account
+
+            //- include partials/identity/challenge/q1.pug
+
+            //- .ui.raised.segments
+            //-     //- .title
+            //-     //-     .ui.basic.segment
+            //-     //-     i.envelope.outline.icon
+            //-     //-     | Customer Service Follow-up
+            //-     .content
+            //-         .ui.segment
+            //-             i.apple.big.icon
+            //-             .ui.header.centered.aligned(style='font-weight: bolder;') Thanks for choosing Apple.
+            //-             p Dear Customer,
+            //-             p Thank you for contacting Apple Customer Service. We understand that you're facing some issues with your Apple device, and we're here to help!
+            //-             p Could you please provide us with more details about the problem you're experiencing? This will help us better understand the situation and provide you with the appropriate solution.
+            //-             p.purple-text You can reply to this email with the information attached.
+            //-             p.purple-text Thank you,
+            //-             p.purple-text Sarah (she/her)
+            //-             p.purple-text iTunes Store Customer Support
+            //-             p
+            //-                 a(href='' style="pointer-events: none;") http://www.apple.com/support/itunes
+
+            //- br
+            //- each questionKey in Object.keys(quizData)
+            //-     - const question = quizData[questionKey]
+            //-     .ui.segment.question
+            //-         h3 Question #{questionKey}
+            //-         //- img(src='/images/identity/challenge/' + question.image, alt=`Question ${questionKey}`)
+            //-         .prompt= question.prompt
+
+            //-         if question.type === "radio"
+            //-             each key in Object.keys(question.radioLabels)
+            //-                 label
+            //-                     input(type="radio" name=questionKey value=key)
+            //-                     span= question.radioLabels[key].text
+            //-             p.explanation= question.radioLabels[question.correctResponse].explanation
+
+            //-         else if question.type === "yes_no"
+            //-             br
+            //-             img(src='/images/identity/challenge/' + question.image, alt=`Question ${questionKey}`)
+            //-             br
+            //-             each key in Object.keys(question.yesNoLabels)
+            //-                 label
+            //-                     input(type="radio" name=questionKey value=key)
+            //-                     span= question.yesNoLabels[key].text
+            //-             //- p.explanation= question.yesNoLabels[question.correctResponse].explanation
+
+            //-         else if question.type === "multi_select"
+            //-             each key in Object.keys(question.checkboxLabels)
+            //-                 label
+            //-                     input(type="checkbox" name=questionKey value=key)
+            //-                     span= question.checkboxLabels[key].text
+            //-             p.explanation
+            //-                 | Correct options:
+            //-                 each key in question.correctResponse
+            //-                     br
+            //-                     span= question.checkboxLabels[key].text
+    script.
+        //- set variable the setProgressBar.js script will use to set the progress bar
+        var progress = #{user.moduleProgress.identity.percent}
+
+
+        //- var questionIndexElement = document.querySelector("h3[data-question-index]");
+        //- if (questionIndexElement) {
+        //-     currentQuestionIndex = parseInt(questionIndexElement.getAttribute("data-question-index"));
+        //- }
+
+    script(src='/js/setProgressBar.js')  
+
+    //- script.
+    //-     var questions = #{JSON.stringify(Object.values(quizData))};
+    //-     console.log("questions");
+    //-     console.log(questions);
+    //-     var currentQuestionIndex = 0;
+
+        //- function updateQuestion() {
+        //-     var currentQuestion = questions[currentQuestionIndex];
+        //-     if (currentQuestion) {
+        //-         // Update the content of the question element with currentQuestion data
+        //-         // You'll need to replace the content update logic according to your template structure
+
+        //-         var nextButton = document.getElementById("nextButton");
+        //-         nextButton.innerText = (currentQuestionIndex === questions.length - 1) ? "Submit" : "Next";
+        //-     }
+        //- }
+
+        //- var nextButton = document.getElementById("nextButton");
+        //- nextButton.addEventListener("click", function() {
+        //-     currentQuestionIndex++;
+        //-     if (currentQuestionIndex < questions.length) {
+        //-         updateQuestion();
+        //-     } else {
+        //-         // Handle quiz submission or further actions
+        //-     }
+        //- });
+
+
+block append footer
+    .ui.container
+        //- +navButtons('identity', '/challenge/identity', '/challenge3/identity', 8, 'Back', 'Next')  
+        .ui.container#nav-container
+            .div#nav-menu
+                button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/submod/learn5/identity';") 
+                    i.arrow.left.icon 
+                    | Back
+                button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/submod/learn7/identity';")
+                    | Next
+                    i.arrow.right.icon
 
 block scripts
-  script.
-    function checkQuestion(){
-      document.getElementById("submitQuestion").style.display = "none";
-      let x = 0;
-      if(document.getElementById("c4").checked) {
-        x++;
-      } 
-      document.getElementById("b1").style.borderColor="red";
-      document.getElementById("b2").style.borderColor="red";
-      document.getElementById("b3").style.borderColor="red";
-      document.getElementById("b4").style.borderColor="green";
+    script.
+        var currentTime = "#{currentTime}";
+        var currentDate = "#{currentDate}";
+        var email = "#{user.username}";
+        var username = "#{user.profile.name}";
 
-      if(document.getElementById("q2c1").checked) {
-        x = x + 0.33333333333;
-      } 
-      if(document.getElementById("q2c2").checked) {
-        x = x + 0.33333333333;
-      } 
-      if(document.getElementById("q2c3").checked) {
-        x = x + 0.33333333333;
-      } 
-      document.getElementById("b5").style.borderColor="green";
-      document.getElementById("b6").style.borderColor="green";
-      document.getElementById("b7").style.borderColor="green";
+        $('.message .close')
+        .on('click', function() {
+            $(this).closest('.message').fadeOut(); 
+            //- $(this)
+            //-     .closest('.message')
+            //-     .transition('fade');
+        });
+    script.
+        var questionData = !{JSON.stringify(quizData)}; // quizData is passed to pug file via render function in app.js
+        console.log("questionData in pug challenge 2 file");
+        console.log(questionData);
+        //- console.log(questionData[1].prompt);
+    script(src='/module_js/dart_quiz.js', current-section="submodOne", next-link="/submod/learn7/identity")
+    //- script.
+    //-     const currentTimeSpan = document.getElementById('current-time');
+    //-     currentTimeSpan.textContent = currentTime;
+    script(src='/js/character.js')
+//- block scripts 
+//-     script. 
+//-         var currentQuestionIndex = 0;
 
-      document.getElementById("score").innerHTML = x.toFixed(2) + " / 2.00 points";
-      document.getElementById("correctness").style.display = "block";
-      document.getElementById('scoreInput').value = x +  " / 2.00 points";
-    }
+//- block scripts
+//-     script.
+//-         var quizData = !{JSON.stringify(quizData)}; // quizData is passed to pug file via render function in app.js
+//-         console.log("quizData in pug challenge 2 file");
+//-         console.log(quizData);
+        //- const shuffledQuestions = shuffleArray(questions);
+        //- function shuffleArray(array) {
+        //-     let currentIndex = array.length, randomIndex;
+        //-     while (currentIndex !== 0) {
+        //-         randomIndex = Math.floor(Math.random() * currentIndex);
+        //-         currentIndex--;
+        //-         [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+        //-     }
+        //-     return array;
+        //- }
+        //- //- console.log("quizData")
+        //- //- console.log(quizData);
+        //- console.log("shuffledQuestions")
+        //- console.log(shuffledQuestions);
 
-    var voiceoverMappings = {
-      '.showLearnSectionButton': {
-        "initialDelay": 700,
-        "delay": 500,
-        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
-      },
-      '.voiceover_keyTerm1': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.6.2.1.mp3']
-      },
-      '.voiceover_keyTerm2': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.6.2.2.mp3']
-      },
-      '.voiceover_keyTerm3': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.6.2.3.mp3']
-      }
-    };
 
-  script(src='/module_js/voiceover.js')
-  script(src="/module_js/base_start.js")
+
+
+
+//- block scripts
+//-     script.
+//-         var quizData = !{JSON.stringify(quizData)}; // quizData is passed to pug file via render function in app.js
+//-         console.log("quizData in pug challenge 2 file");
+//-         console.log(quizData);
+        //- const shuffledQuestions = shuffleArray(questions);
+        //- function shuffleArray(array) {
+        //-     let currentIndex = array.length, randomIndex;
+        //-     while (currentIndex !== 0) {
+        //-         randomIndex = Math.floor(Math.random() * currentIndex);
+        //-         currentIndex--;
+        //-         [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+        //-     }
+        //-     return array;
+        //- }
+        //- //- console.log("quizData")
+        //- //- console.log(quizData);
+        //- console.log("shuffledQuestions")
+        //- console.log(shuffledQuestions);
+
   
 block styles
-  link(rel='stylesheet', href='/css/module.css')  
-    
+    //- link(rel='stylesheet', href='/css/challenge.css')  
+    link(rel='stylesheet', href='/css/dart_quiz.css')  
+
     

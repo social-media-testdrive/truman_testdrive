@@ -1,0 +1,101 @@
+{   
+    "1": {
+      "type": "multi_select",
+      "partial": "none",
+      "prompt": "1. Which of the following situations can be characterized as identity theft? Select all that apply:",
+      "choices": {
+        "0": {
+            "text": "A. Someone steals your personal information to commit fraud",
+            "explanation": "This is identity theft as personal information is being stolen for fraudulent purpose which."
+        },
+        "1": {
+            "text": "B. Someone makes purchases with your credit card",
+            "explanation": "This is identity theft as someone is using your financial information without authorization."
+        },
+        "2": {
+            "text": "C. You share your Netflix password with your family",
+            "explanation": "This is not identity theft as the password is being voluntarily provided by the owner of the account for entertainment. The information access is not unauthorized nor used for fraudulent or malicious purposes."
+        },
+        "3": {
+          "text": "D. You give your Social Security to a website for a prize",
+          "explanation": "This is identity theft, often referred to as phishing, where personal information is obtained under false pretenses."
+        },
+        "4": {
+          "text": "E. You give your email address to a colleague at work",
+          "explanation": "This is not identity theft, it's a normal exchange of contact information."
+        },
+        "5": {
+            "text": "F. Impersonating someone to access their online accounts",
+            "explanation": "This is identity theft because it involves pretending to be someone else to gain unauthorized access to their online accounts."
+        }
+    },
+    "correctResponse": ["0", "1", "3", "5"],
+    "theAnswers": "A, B, D, F"
+},
+    "2": {
+        "type": "multi_select",
+        "partial": "none",
+        "prompt": "2. Select all sensitive personal information vulnerable to identity theft:",
+        "choices": {
+            "0": {
+                "text": "A. First name",
+                "explanation": "Identity theft thieves can use your first name to impersonate you in various situations, such as opening fraudulent accounts, making unauthorized purchases, or attempting to gain access to your personal information."
+            },
+            "1": {
+                "text": "B. Mother's maiden name",
+                "explanation": "Often used as a security question, identity theft thieves can exploit your mother's maiden name to access accounts or reset passwords, potentially gaining unauthorized access to your sensitive information and accounts."
+            },
+            "2": {
+                "text": "C. Preferred pizza topping",
+                "explanation": "This information is generally not considered sensitive enough to be used for identity theft. It's a personal preference rather than a unique identifier."
+            },
+            "3": {
+              "text": "D. Home address",
+              "explanation": "Identity theft thieves could use your home address to commit various types of fraud, such as applying for credit cards or loans in your name, redirecting mail, or engaging in scams that target your physical residence."
+            },
+            "4": {
+                "text": "E. Date of birth",
+                "explanation": "Your date of birth can be a key piece of information for identity theft thieves to carry out various malicious activities, such as applying for credit, opening accounts, or committing fraud, as it helps them establish your identity."
+            },
+            "5": {
+                "text": "F. Cell phone number",
+                "explanation": "Identity theft thieves might use your cell phone number to intercept authentication codes or reset password links sent via SMS, gaining unauthorized access to your online accounts and personal information, or even attempting to carry out scams through text messages."
+            }
+        },
+        "correctResponse": ["0", "1", "3", "4", "5"],
+        "theAnswers": "A, B, D, E, F"
+},
+    "3": {
+      "type": "multi_select",
+      "partial": "none",
+      "prompt": "3. What could happen if your personal information is stolen? Select all that apply:",
+      "choices": {
+        "0": {
+            "text": "A. Decreased credit score",
+            "explanation": "If your personal information is stolen, identity thieves could use it to open fraudulent accounts, max out credit cards, or default on loans, resulting in missed payments and a decreased credit score due to the negative financial activities carried out in your name."
+        },
+        "1": {
+            "text": "B. Save on taxes",
+            "explanation": "Identity theft won't aid taxes. Instead, thieves can use your info to file a false return and claim your refund."
+        },
+        "2": {
+            "text": "C. Identity impersonation",
+            "explanation": "Stolen personal information can be used to impersonate you, assuming your identity to conduct fraudulent activities."
+        },
+        "3": {
+            "text": "D. Legal Troubles",
+            "explanation": "Legal troubles can arise when your personal information is stolen because criminals might use your identity to commit crimes, leaving a trail that law enforcement could associate with you."
+        },
+        "4": {
+            "text": "E. Your personal information sold on the dark web",
+            "explanation": "Identity thieves might sell your personal information on the dark web, where it could be purchased by other cybercriminals for various malicious purposes, including identity theft, fraud, and scams, leading to potential financial and reputational harm."
+        },
+        "5": {
+            "text": "F. Unknown person uses your health insurance for a procedure",
+            "explanation": "Stolen personal information could be used by someone else to access your health insurance benefits for medical procedures, resulting in improper billing, potential financial liability, and complications in your medical records due to unauthorized use of your insurance coverage."
+        }
+    },
+    "correctResponse": ["0", "2", "3", "4", "5"],
+    "theAnswers": "A, C, D, E, F"
+    }
+}

@@ -1,0 +1,18 @@
+mixin navButtons(modId, backLink, nextLink, percent, backText='Back', nextText='Next', skipBtn=false, skipLink)
+  .ui.container#nav-container
+    //- p modId: #{modId}
+    //- p backLink: #{backLink}
+    //- p nextLink: #{nextLink}
+    //- p percent to post: #{percent}
+    //- p current percent: #{user.moduleProgress.identity.percent}
+
+    .div#nav-menu
+      button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='" + backLink + "';")
+        i.arrow.left.icon
+        | #{backText}
+      button.ui.huge.blue.button.right.floated#nextButton(onclick="postModuleProgress('" + modId + "', '" + nextLink + "', '" + percent + "', '" + user.moduleProgress.identity.percent + "');")
+        | #{nextText}
+        i.arrow.right.icon
+      if skipBtn
+        button.ui.huge.basic.button.right.floated#skipButton(onclick="location.href='" + skipLink + "';")
+          | Skip

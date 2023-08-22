@@ -1,0 +1,153 @@
+extends module_layout
+block content
+    .ui.container.quizContainer#raised-container(style="padding: 0px;")
+        .limit
+            .loading-screen-container(id="loadingScreen") 
+                .ui.active.inverted.dimmer
+                    .ui.active.blue.large.elastic.loader 
+                    h1 Loading...
+            .quiz-container.hidden            
+                br
+                br
+                .question
+                br
+                .htmlImage
+                .image
+                .choiceList
+                .fourChoices 
+                    //- .choice1
+                    //-     .ui.radio.checkbox
+                    //-         input(type="radio", name="choice", value="1")
+                    //-         label
+                    //- .choice2
+                    //-     .ui.radio.checkbox
+                    //-         input(type="radio", name="choice", value="2")
+                    //-         label
+                    //- .choice3
+                    //-     .ui.radio.checkbox
+                    //-         input(type="radio", name="choice", value="3")
+                    //-         label
+                    //- .choice4
+                    //-     .ui.radio.checkbox
+                    //-         input(type="radio", name="choice", value="4")
+                    //-         label
+                .checkboxChoices            
+                br
+                br
+                .result
+                    .circleResults
+                        strong
+                    .resultText     
+                    br
+                    br
+                .quizMessage
+                    .ui.red.center.aligned.message
+                        i.close.icon
+                        .errorMessage.header
+                .explanationCorrectMulti
+                    button.ui.basic.blue.right.labeled.icon.button.explainButtonCorrect
+                        i.right.caret.icon
+                        a Show Explanations
+                    p.correctScore
+                    h2.ui.header.correctOrIncorrect
+                        i.check.circle.green.large.icon
+                        | Correct
+                .explanationIncorrectMulti
+                    button.ui.basic.blue.right.labeled.icon.button.explainButtonIncorrect
+                        i.right.caret.icon
+                        a Show Explanations
+                    p.incorrectScore
+                    h2.ui.header.correctOrIncorrect
+                        i.times.circle.red.large.icon
+                        | Incorrect
+                    p.yourAnswers
+                    p.theAnswers
+                .explanationCorrectYesNo
+                    p.correctScore
+                    h2.ui.header
+                        i.check.circle.green.large.icon
+                        | Correct
+                    .ui.green.message 
+                        p.correctExplanation
+                    br
+                    br
+                .explanationIncorrectYesNo
+                    p.incorrectScore
+                    h2.ui.header
+                        i.times.circle.red.large.icon
+                        | Incorrect
+                    .ui.red.message 
+                        p.incorrectExplanation
+                    br
+                    br
+                .quizButtonContainer
+                    .ui.blue.huge.button.preButton Previous Question
+                    .ui.blue.huge.button.viewAnswers View Answers
+                    .ui.blue.huge.button.nextButton Next Question
+            .avatar-container
+                img#dart_image1.ui.medium.image(src='/profile_pictures/transparent.png')
+
+    script.
+        //- set variable the setProgressBar.js script will use to set the progress bar
+        var progress = #{user.moduleProgress.identity.percent}
+
+
+    script(src='/js/setProgressBar.js')  
+
+
+block append footer
+    .ui.container
+        //- +navButtons('identity', '/challenge/identity', '/challenge3/identity', 8, 'Back', 'Next')  
+        .ui.container#nav-container
+            .div#nav-menu
+                button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='" + backLink + "';")
+                    i.arrow.left.icon 
+                    | Back
+                button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='" + nextLink + "';")
+                    | Next
+                    i.arrow.right.icon
+
+block scripts
+    script.
+        window.addEventListener('load', function() {
+            // Simulate a delayed loading process for demonstration
+            //- setTimeout(function() {
+                var loadingScreen = document.getElementById('loadingScreen');
+                loadingScreen.style.display = 'none'; // Hide the loader when everything is loaded
+
+                var revealMe = document.querySelector('.quiz-container');
+                revealMe.classList.remove('hidden'); // Show the content when everything is loaded
+            //- }, 6000); 
+
+        });
+    script.
+        var currentTime = "#{currentTime}";
+        var currentDate = "#{currentDate}";
+        var futureDate = "#{futureDate}"; 
+        var email = "#{user.username}";
+        var username = "#{user.profile.name}";
+
+        $('.message .close')
+        .on('click', function() {
+            $(this).closest('.message').fadeOut(); 
+            //- $(this)
+            //-     .closest('.message')
+            //-     .transition('fade');
+        });
+    script.
+        var questionData = !{JSON.stringify(quizData)}; // quizData is passed to pug file via render function in app.js
+        console.log("questionData in pug challenge 2 file");
+        console.log(questionData);
+        //- console.log(questionData[1].prompt);
+    script(src='/module_js/dart_quiz.js', current-section=currentSection, next-link=nextLink)
+    //- script.
+    //-     const currentTimeSpan = document.getElementById('current-time');
+    //-     currentTimeSpan.textContent = currentTime;
+    script(src='/js/character.js')
+
+  
+block styles
+    //- link(rel='stylesheet', href='/css/challenge.css')  
+    link(rel='stylesheet', href='/css/dart_quiz.css')  
+
+    

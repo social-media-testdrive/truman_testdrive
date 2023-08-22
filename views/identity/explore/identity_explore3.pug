@@ -1,0 +1,69 @@
+extends ../../module_layout
+
+block content
+  .ui.container#raised-container
+    .limit
+        .emailSimContainer#emailsim
+            .emailHeader
+                i.inbox.large.icon
+                span  Inbox
+            .emailListContainer
+                each email, index in emails
+                    a(onclick=`showEmail(${index})`)    
+                        .ui.vertical.segment(id=`email-${index}`)
+                            .ui.grid
+                                .row
+                                    .one.wide.column
+                                        i.envelope.outline.large.icon
+                                    .eleven.wide.column
+                                        h3= email.sender
+                                            span.subject= " - " + email.subject
+                                    .four.wide.column.right.aligned
+                                        p= email.date
+
+        //- .openEmailContainer
+        //-     .ui.padded.segment
+        //-         button.ui.circular.icon.button.closeEmailArrow(onclick='closeEmail()')
+        //-             i.left.arrow.big.icon
+        //-         button.ui.circular.icon.button#report
+        //-             i.bullhorn.large.icon     
+        //-         button.ui.circular.icon.button#ban
+        //-             i.ban.large.icon
+        //-         button.ui.circular.icon.button#delete
+        //-             i.trash.alternate.outline.large.icon
+        //-         .ui.horizontal.divider
+        //-         each email in emails
+        //-             if email.index === 0
+        //-                 .ui.left.floated.header
+        //-                     span#subjectLine #{email.subject}
+        //-                         .ui.label#inboxLabel
+        //-                             | Inbox
+        //-                             i.delete.icon
+        //-                 .ui.right.floated.header
+        //-                     span#openDate #{email.date}
+        //-                 .ui.horizontal.divider
+        //-                 .ui.icon.message
+        //-                     i.user.circle.icon
+        //-                     .content.senderInfo
+        //-                         .header #{email.sender} <span class="fromEmail">#{email.from}</span>
+        //-                 p#emailContent #{email.content}
+        //-                     button.ui.basic.button#reply
+        //-                         i.reply.icon
+        //-                         | Reply
+
+
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+  .ui.container
+    +navButtons('identity', '/explore2/identity', '/explore4/identity', 80, 'Back', 'Next')  
+
+block scripts
+    script.
+        var username = "#{user.profile.name}";
+    script(src='/module_js/identity_theft_explore.js', emailData=emails)
+
+block styles
+    link(rel='stylesheet', href='/css/identity_theft_explore.css')  

@@ -1,123 +1,121 @@
-extends ../../../ui_layout
+extends ../../../module_layout
 
 block content
 
-  .ui.container#raised-container.short-page-margin
-    .ui.fluid.tiny.three.item.fluid.menu#submod-progress-bar
-      .item.active
-        | Concept & Consequences
-      .item
-        | How To Recognize Techniques
-      .item
-        | Methods of Protection
-    .ui.raised.segment
-      #raised-content
-        .limit
-          .ui.raised.segment.chat-container
-            .ui.large.header
-              .container#cropped-circular-image
-                .ui.segment(style="background-color: #7D7C7C !important;")
-                  .ui.circular.small.image
-                    img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
-                  span(style="font-size: 2.5rem; margin-left: 20px;color:white;") Chat with 
-                    span#name ‎
-              br
-              .content.text-message
-                .ui.circular.tiny.image 
-                  img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
-                .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
-                  p Excellent work, #{user.profile.name}! You've finished the first section! May I ask you a question? Have you ever encountered a scam before?
-              #encounter_container
-                div#encounter_label
-                  .ui.large.right.pointing.label
-                    p#encounter_text 
-                  .ui.circular.tiny.image(style="background: white !important")
-                    img(src='/profile_pictures/avatar-icon.svg', alt='user text message profile picture')
+  .ui.container#raised-container
+    .limit
+      .ui.raised.segment.chat-container(style="background-color: #F1EDED;")
+        .ui.large.header
+          .container#cropped-circular-image
+            .ui.segment(style="background-color: #7D7C7C !important;")
+              .ui.circular.small.image
+                img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+              span(style="font-size: 2.5rem; margin-left: 20px;color:white;") Chat with 
+                span#name ‎
+          br
+          .content.text-message
+            .ui.circular.tiny.image 
+              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+            .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
+              p Excellent work, #{user.profile.name}! You've finished the first section! May I ask you a question? Have you ever encountered a scam before?
+          #encounter_container
+            div#encounter_label
+              .ui.large.right.pointing.label
+                p#encounter_text 
+              .ui.circular.tiny.image(style="background: white !important")
+                img(src='/profile_pictures/avatar-icon.svg', alt='user text message profile picture')
 
-                #encounter_response(style='clear: both;')
-                  button.ui.big.button.chatBotButton(onclick="showTopic('Yes')") Yes
-                  button.ui.big.button.chatBotButton(onclick="showTopic('No')") No
-                  button.ui.big.button.chatBotButton(onclick="showTopic('I\\'m not sure')") I'm not sure
+            #encounter_response(style='clear: both;')
+              button.ui.big.button.chatBotButton(onclick="showTopic('Yes')") Yes
+              button.ui.big.button.chatBotButton(onclick="showTopic('No')") No
+              button.ui.big.button.chatBotButton(onclick="showTopic('I\\'m not sure')") I'm not sure
 
 
-              //- bot yes reply
-              #yes_reply.content.text-message(style="display: none")
-                .ui.circular.tiny.image 
-                  img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
-                .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
-                  p Thank you for your response. If you don't mind me asking, could you please share more about your experience with the scam? Did you undergo any financial loss or other types of loss due to the scam? 
-                  p Please type your response below and hit the "send" button.
+          //- bot yes reply
+          #yes_reply.content.text-message(style="display: none")
+            .ui.circular.tiny.image 
+              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+            .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
+              p Thank you for your response. If you don't mind me asking, could you please share more about your experience with the scam? Did you undergo any financial loss or other types of loss due to the scam? 
+              p Please type your response below and hit the "send" button.
 
-              //- bot no reply
-              #no_reply.content.text-message(style="display: none")
-                .ui.circular.tiny.image 
-                  img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
-                .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
-                  p Thank you for your response. It's great to hear that you've never encountered scams! Please click the "Complete Section 1" button on the bottom right of the page to continue learning. 
-                br
-                br
+          //- bot no reply
+          #no_reply.content.text-message(style="display: none")
+            .ui.circular.tiny.image 
+              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+            .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
+              p Thank you for your response. It's great to hear that you've never encountered scams! Please click the "Complete Section 1" button on the bottom right of the page to continue learning. 
+            br
+            br
 
-              //- bot not sure reply
-              #sure_reply.content.text-message(style="display: none")
-                .ui.circular.tiny.image 
-                  img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
-                .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
-                  p Thank you for your response. If you don't mind me asking, could you please share a little about what the suspicious interaction looked like? What did you encounter? 
-                  p Please type your response below and hit the "send" button.
-              
+          //- bot not sure reply
+          #sure_reply.content.text-message(style="display: none")
+            .ui.circular.tiny.image 
+              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+            .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
+              p Thank you for your response. If you don't mind me asking, could you please share a little about what the suspicious interaction looked like? What did you encounter? 
+              p Please type your response below and hit the "send" button.
+          
 
-              //- final response from the user
-              #final_container(style="clear: both; float: right; margin-top: 40px;")
-                div#final_label
-                  .ui.large.right.pointing.label
-                    p#sent_message 
-                      span
-                        i.ellipsis.horizontal.icon
-                  .ui.circular.tiny.image(style="background: white !important")
-                    img(src='/profile_pictures/avatar-icon.svg', alt='user text message profile picture')
-                br
-                br
-                br
+          //- final response from the user
+          #final_container(style="clear: both; float: right; margin-top: 40px;")
+            div#final_label
+              .ui.large.right.pointing.label
+                p#sent_message 
+                  span
+                    i.ellipsis.horizontal.icon
+              .ui.circular.tiny.image(style="background: white !important")
+                img(src='/profile_pictures/avatar-icon.svg', alt='user text message profile picture')
+            br
+            br
+            br
 
 
 
 
-              //- suspicion question reply (the one after not sure)
-              #sus_reply.content.text-message(style="display: none")
-                .ui.circular.tiny.image 
-                  img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
-                .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
-                  p That sounds like a scam! I'm glad you were able to recognize it and avoid it. 
-                  p It was great talking with you! Please click the "Complete Section 1" button on the bottom right of the page to continue learning. 
-                br
-                br
+          //- suspicion question reply (the one after not sure)
+          #sus_reply.content.text-message(style="display: none")
+            .ui.circular.tiny.image 
+              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+            .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
+              p That sounds like a scam! I'm glad you were able to recognize it and avoid it. 
+              p It was great talking with you! Please click the "Complete Section 1" button on the bottom right of the page to continue learning. 
+            br
+            br
 
-              //- experience question reply (the one after yes)
-              #experience_reply.content.text-message(style="display: none")
-                .ui.circular.tiny.image 
-                  img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
-                .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
-                  p I'm sorry to hear that you had to go through that. I hope you were able to recover from the scam.
-                  p It was great talking with you! Please click the "Complete Section 1" button on the bottom right of the page to continue learning. 
-                br
-                br
-          //- .ui.fluid.action.input
-          //-   input(type='text' placeholder='Search...')
-          //-   .ui.button Send 
-          .ui.fluid.action.icon.input(style="margin-top: -15px;")
-            input.message-input(type="text" placeholder="Type your message..." id="message-input")
-            i.paper.plane.big.icon(style="color: #6BBCC7; margin-right: 60px;z-index:100;")
-            .ui.button#send-button Send 
+          //- experience question reply (the one after yes)
+          #experience_reply.content.text-message(style="display: none")
+            .ui.circular.tiny.image 
+              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+            .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
+              p I'm sorry to hear that you had to go through that. I hope you were able to recover from the scam.
+              p It was great talking with you! Please click the "Complete Section 1" button on the bottom right of the page to continue learning. 
+            br
+            br
+      //- .ui.fluid.action.input
+      //-   input(type='text' placeholder='Search...')
+      //-   .ui.button Send 
+      .ui.fluid.action.icon.input(style="margin-top: -15px;")
+        input.message-input(type="text" placeholder="Type your message..." id="message-input")
+        i.paper.plane.big.icon(style="color: #6BBCC7; margin-right: 60px;z-index:100;")
+        .ui.button#send-button Send 
+    br
+    //- .ui.container#nav-container
+    //-   div#nav-menu          
+    //-     button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/submod/learn6/identity';") 
+    //-       i.arrow.left.icon 
+    //-       | Back
+    //-     button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/submod/learn8/identity';")
+    //-       | Complete Section 1
+    //-       i.arrow.right.icon
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
 
-    .ui.container#nav-container
-      div#nav-menu          
-        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/submod/learn6/identity';") 
-          i.arrow.left.icon 
-          | Back
-        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/submod/learn8/identity';")
-          | Complete Section 1
-          i.arrow.right.icon
-        
+
+block append footer
+  .ui.container
+    +navButtons('identity', '/submod/learn6/identity', '/submod/learn8/identity', 24, 'Back', 'Complete Section 1')  
 
 
 block scripts

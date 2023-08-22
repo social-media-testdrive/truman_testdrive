@@ -1,96 +1,116 @@
-extends ../../ui_layout
+extends ../../module_layout
 
 block content
 
   .ui.container#raised-container
-    .ui.raised.segment
-      #raised-content
-        h1.ui.header.large#mod-title
-          .content
-            | Identity Theft
-        .limit
-          p There are six amazing badges waiting for you to earn!
+    .limit
+      p There are six amazing badges waiting for you to earn!
 
-          //- semantic ui grid to organize the badges properly
-          .ui.stackable.grid#badgesGrid
-            .four.column.row
-              .column 
-                .content
-                  img(src='/badges/identity/mystery_badge.png')
-                  p Challenge
-                    br
-                    | Conqueror
-              .column
-                .content
-                  img(src='/badges/identity/mystery_badge2.png')
-                  p Foundations 
-                    br
-                    | Achiever
-              .column
-                .content
-                  img(src='/badges/identity/mystery_badge2.png')
-                  p Progress 
-                    br
-                    | Master
-              .column
-                .content
-                  img(src='/badges/identity/mystery_badge2.png')
-                  p Champion of
-                    br
-                    | Completion
-            .four.column.centered.row
-              .column
-              .column 
-                .content
-                  img(src='/badges/identity/mystery_badge3.png')
-                  p Intrepid
-                    br
-                    | Investigator
-              .column
-                .content
-                  img(src='/badges/identity/mystery_badge4.png')
-                  p Adventure
-                    br
-                    | Achiever
-              .column
-        br
-        br
-        .ui.one.column.centered.grid#avatarGrid
-          .ui.large.right.pointing.circular.label#speechBubble
-            p#speechText(style="font-size: 1.3rem") Remember that you can take a break anytime and pick up where you left off when you return!
-          img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png' style="float: right")
-    +navButtons('/intro/identity', '/challenge/identity', 'Back', 'Challenge')  
+      //- semantic ui grid to organize the badges properly
+      .ui.computer.only.tablet.only.grid#badgesGrid
+        .four.column.row
+          .column 
+            .content
+              img(src='/badges/identity/mystery_badge.png')
+              p Challenge
+                br
+                | Conqueror
+          .column
+            .content
+              img(src='/badges/identity/mystery_badge2.png')
+              p Foundations 
+                br
+                | Achiever
+          .column
+            .content
+              img(src='/badges/identity/mystery_badge2.png')
+              p Progress 
+                br
+                | Master
+          .column
+            .content
+              img(src='/badges/identity/mystery_badge2.png')
+              p Champion of
+                br
+                | Completion
+        .four.column.centered.row
+          .column
+          .column 
+            .content
+              img(src='/badges/identity/mystery_badge3.png')
+              p Intrepid
+                br
+                | Investigator
+          .column
+            .content
+              img(src='/badges/identity/mystery_badge4.png')
+              p Adventure
+                br
+                | Achiever
+          .column
+      //- mobile only badge display
+      .ui.mobile.only.grid#badgesGrid
+        .two.column.row
+          .column 
+            .content
+              img(src='/badges/identity/mystery_badge.png')
+              p Challenge
+                br
+                | Conqueror
+          .column
+            .content
+              img(src='/badges/identity/mystery_badge2.png')
+              p Foundations 
+                br
+                | Achiever
+        .two.column.row
+          .column
+            .content
+              img(src='/badges/identity/mystery_badge2.png')
+              p Progress 
+                br
+                | Master
+          .column
+            .content
+              img(src='/badges/identity/mystery_badge2.png')
+              p Champion of
+                br
+                | Completion
+        .two.column.row
+          .column 
+            .content
+              img(src='/badges/identity/mystery_badge3.png')
+              p Intrepid
+                br
+                | Investigator
+          .column
+            .content
+              img(src='/badges/identity/mystery_badge4.png')
+              p Adventure
+                br
+                | Achiever
+    //- br
+    //- br
+    //- .ui.one.column.centered.grid#avatarGrid
+    //-   .ui.large.right.pointing.circular.label#speechBubble
+    //-     p#speechText(style="font-size: 1.3rem") Remember that you can take a break anytime and pick up where you left off when you return!
+    //-   img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png' style="float: right")
 
-block scripts
-  script(src='/js/character.js')
-  script.
-    var voiceoverMappings = {
-      '.showLearnSectionButton': {
-        "initialDelay": 700,
-        "delay": 500,
-        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
-      },
-      '.voiceover_keyTerm1': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.6.2.1.mp3']
-      },
-      '.voiceover_keyTerm2': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.6.2.2.mp3']
-      },
-      '.voiceover_keyTerm3': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.6.2.3.mp3']
-      }
-    };
-  script(src='/module_js/voiceover.js')
-  script(src="/module_js/base_start.js")
+
+    //- Fill progress bar to correct percent and color 
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+  .ui.container
+    +navButtons('identity', '/intro/identity', '/challenge/identity', 4, 'Back', 'Challenge')  
+
+//- block append scripts
+//-   script(src='/js/character.js')
   
-block styles
-  link(rel='stylesheet', href='/css/module.css') 
+//- block styles
+//-   link(rel='stylesheet', href='/css/module.css') 
 
  
  

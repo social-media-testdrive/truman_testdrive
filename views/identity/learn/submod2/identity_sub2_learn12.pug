@@ -1,0 +1,33 @@
+extends ../../../module_layout
+
+block content
+
+  .ui.container#raised-container
+    .limit
+      h1.ui.header.large#learn-title
+        .content
+          | Medical ID Theft
+      ul 
+        li 
+          | You get a bill from your doctor or health care providers for  
+          strong services or medication you didn’t get.
+        li 
+          | You get a report or call about  
+          strong a medical debt you don’t owe.
+        li 
+          | You get an unexpected notice from your health insurance company saying 
+          strong you reached your benefit limit.
+        li 
+          | You are denied insurance coverage because your medical records show 
+          strong a pre-existing health condition you don’t have.
+          
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+  .ui.container
+    +navButtons('identity', '/submod2/learn11/identity', '/submod2/learn13/identity', 50)  
+
+block scripts
+  script(src='/js/character.js')

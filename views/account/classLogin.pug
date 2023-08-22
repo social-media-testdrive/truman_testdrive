@@ -8,7 +8,7 @@ block content
     .eight.wide.column
       h2.ui.header Login As Student
       form.ui.form(action='/studentLogin/'+accessCode method='POST')
-        input(type='hidden', name='_csrf', value=csrfToken)
+        //- input(type='hidden', name='_csrf', value=csrfToken)
         input(type='hidden', name='accessCode', id='accessCode' value=accessCode)
         .field
           label(for='username' style="font-size:larger;") Username

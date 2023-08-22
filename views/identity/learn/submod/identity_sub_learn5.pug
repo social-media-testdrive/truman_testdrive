@@ -1,71 +1,31 @@
-extends ../../../ui_layout
+extends ../../../module_layout
 
 block content
 
-  .ui.container#raised-container.short-page-margin
-    .ui.fluid.tiny.three.item.fluid.menu#submod-progress-bar
-      .item.active
-        | Concept & Consequences
-      .item
-        | How To Recognize Techniques
-      .item
-        | Methods of Protection
-    .ui.raised.segment
-      #raised-content
-        .limit
-            .ui.large.pointing.below.label#speechBubble(style="float: none; width: 100%;")
-                p#speechText(style="font-size: 1.5rem; text-align: left") 
-                    | Well done! You've learned two important concepts: 
-                    strong Identity theft, 
-                    | which occurs when someone steals your personal identifiable information and exploits it for malicious purposes, and 
-                    strong personal identifiable information, 
-                    | which is the information uniquely associated with you, which can be directly or indirectly used to identify you.
-                    br
-                    br
-                    | Moreover, you have gained insight into the severe consequences that can arise when someone steals your identity.
-                    br
-                    br
-                    | Now, let's put our newfound knowledge into practice and reinforce what we've learned!
-            img#dart_image1.ui.small.image(src='/profile_pictures/transparent.png' style="margin: 0 auto;")
-    .ui.container#nav-container
-      .div#nav-menu          
-        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/submod/learn4/identity';") 
-          i.arrow.left.icon 
-          | Back
-        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/submod/learn6/identity';")
-          | Practice
-          i.arrow.right.icon
+  .ui.container#raised-container
+    .limit
+      .ui.large.pointing.below.label#speechBubble(style="float: none; width: 100%;")
+          p#speechText(style="font-size: 1.5rem; text-align: left") 
+              | Well done! You've learned two important concepts: 
+              strong Identity theft, 
+              | which occurs when someone steals your personal identifiable information and exploits it for malicious purposes, and 
+              strong personal identifiable information, 
+              | which is the information uniquely associated with you, which can be directly or indirectly used to identify you.
+              br
+              br
+              | Moreover, you have gained insight into the severe consequences that can arise when someone steals your identity.
+              br
+              br
+              | Now, let's put our newfound knowledge into practice and reinforce what we've learned!
+      img#dart_image1.ui.small.image(src='/profile_pictures/transparent.png' style="margin: 0 auto;")
+      br
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
 
+block append footer
+  .ui.container
+    +navButtons('identity', '/submod/learn4/identity', '/submod/learn6/identity', 20)  
 
 block scripts
   script(src='/js/character.js')
-  script.
-    var voiceoverMappings = {
-      '.showLearnSectionButton': {
-        "initialDelay": 700,
-        "delay": 500,
-        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
-      },
-      '.voiceover_keyTerm1': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.6.2.1.mp3']
-      },
-      '.voiceover_keyTerm2': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.6.2.2.mp3']
-      },
-      '.voiceover_keyTerm3': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.6.2.3.mp3']
-      }
-    };
-  script(src='/module_js/voiceover.js')
-  script(src="/module_js/base_start.js")
-  
-block styles
-  link(rel='stylesheet', href='/css/module.css')  
-    
-    

@@ -14,7 +14,7 @@ block content
         span.br( style="font-size: 25px; margin-left: 5%;margin-bottom: 5%; margin-top: 5%; font-weight: bold;") ← Edit Profile
 
       form.ui.form(action="/changePassword", method='POST' style="margin-left:5%;margin-right:5%")
-        input(type='hidden', name='_csrf', value=csrfToken)
+        //- input(type='hidden', name='_csrf', value=csrfToken)
         .field
           label(for='password' style="margin-top:15px; font-size:larger;") Enter Your New Password
           input(type='hidden', name='username', id='username', value=user.username)

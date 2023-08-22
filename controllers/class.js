@@ -139,36 +139,36 @@ exports.getClassIdList = (req, res, next) => {
  * GET /moduleProgress/:classId
  * Get the module progress status for all students in a class
  */
-exports.getModuleProgress = (req, res, next) => {
-    if (!req.user.isInstructor) {
-        return res.json({ classModuleProgress: {} });
-    }
-    Class.findOne({
-            accessCode: req.params.classId,
-            teacher: req.user.id,
-            deleted: false
-        }).populate('students') // populate lets you reference docs in other collections
-        .exec(function(err, found_class) {
-            if (err) {
-                console.log("ERROR");
-                console.log(err);
-                return next(err);
-            }
-            if (found_class == null) {
-                console.log("NULL");
-                var myerr = new Error('Class not found!');
-                return next(myerr);
-            }
-            const outputData = {};
-            for (var i = 0; i < found_class.students.length; i++) {
-                const modProgressObj = found_class.students[i].moduleProgress.toObject();
-                const username = found_class.students[i].username;
-                outputData[username] = modProgressObj;
-            }
-            res.set('Content-Type', 'application/json; charset=UTF-8');
-            res.json({ classModuleProgress: outputData });
-        });
-}
+// exports.getModuleProgress = (req, res, next) => {
+//     if (!req.user.isInstructor) {
+//         return res.json({ classModuleProgress: {} });
+//     }
+//     Class.findOne({
+//             accessCode: req.params.classId,
+//             teacher: req.user.id,
+//             deleted: false
+//         }).populate('students') // populate lets you reference docs in other collections
+//         .exec(function(err, found_class) {
+//             if (err) {
+//                 console.log("ERROR");
+//                 console.log(err);
+//                 return next(err);
+//             }
+//             if (found_class == null) {
+//                 console.log("NULL");
+//                 var myerr = new Error('Class not found!');
+//                 return next(myerr);
+//             }
+//             const outputData = {};
+//             for (var i = 0; i < found_class.students.length; i++) {
+//                 const modProgressObj = found_class.students[i].moduleProgress.toObject();
+//                 const username = found_class.students[i].username;
+//                 outputData[username] = modProgressObj;
+//             }
+//             res.set('Content-Type', 'application/json; charset=UTF-8');
+//             res.json({ classModuleProgress: outputData });
+//         });
+// }
 
 function getClassPageTimes(found_class, modName) {
     let classPageTimes = [];

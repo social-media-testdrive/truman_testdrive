@@ -1,0 +1,42 @@
+extends ../../../module_layout
+
+block content
+
+  .ui.container#raised-container
+    .limit
+      h1.ui.header.large#learn-title
+        .content
+          | Financial Identity Theft 
+      ul 
+        li
+          | You see 
+          strong unfamiliar or unexpected charges 
+          | on your bank statement or credit card charges that you didn’t make.
+        li 
+          | You notice 
+          strong new credit cards or loans issued in your name.
+        li 
+          | You get 
+          strong unexpected calls from debt collectors.
+        li 
+          | You receive 
+          strong denied credit, sudden drop in credit score, or errors 
+          | in your credit report.
+        li 
+          | You notice 
+          strong bounced checks 
+          | (if you know you have available funds).
+        li 
+          | You have 
+          strong missing mail/email from bank.
+
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+  .ui.container
+    +navButtons('identity', '/submod2/learn9/identity', '/submod2/learn11/identity', 46)  
+
+block scripts
+  script(src='/js/character.js')

@@ -1,0 +1,41 @@
+extends ../../../module_layout
+
+block content
+
+  .ui.container#raised-container
+    .limit
+      h1.ui.header.large#learn-title
+        .content
+          | Warning Signs for specific Identity Theft Scams
+
+      iframe(type='text/html' width='540' height='289'
+        src='../../videos/identity-video.mp4'
+        frameborder='0' style='display: block; margin: auto;')
+      
+      .ui.icon.blue.message
+        .icon
+          img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
+        .content
+          .header
+            //- i.info.circle.icon
+            | 
+          p Lets learn more about warning signs for specific identity theft scams:
+            br
+            strong Financial Identity Theft
+            br
+            strong Tax Identity Theft
+            br
+            strong Medical Identity Theft
+      br
+
+          
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+  .ui.container
+    +navButtons('identity', '/submod2/learn8/identity', '/submod2/learn10/identity', 44)  
+
+block scripts
+  script(src='/js/character.js')

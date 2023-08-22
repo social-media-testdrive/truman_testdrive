@@ -1,0 +1,67 @@
+
+extends ../../ui_layout
+
+block content
+
+  .ui.container#raised-container.short-page-margin
+    .ui.fluid.tiny.three.item.fluid.menu#submod-progress-bar
+      .item.active
+        | Concept & Consequences
+      .item
+        | How To Recognize Techniques
+      .item
+        | Methods of Protection
+    .ui.raised.segment
+      #raised-content
+        .limit
+          h1.ui.header.large#learn-title
+            .content
+              | Definitions
+          p <u>Identity Theft</u> is when your personal information is stolen and used against you.
+          p <u>Personal Information</u> is information uniquely associated with you, which can be directly or indirectly used to identify you. 
+          ul
+            li Here are some specific examples of Personal Information:
+            ul
+              li 
+                strong Name: 
+                | full name, maiden name, mother’s maiden name, or alias
+              li 
+                strong Personal identification numbers: 
+                | social security number (SSN), passport number, driver’s license number, taxpayer identification number, patient identification number, financial account number, or credit card number
+              li 
+                strong Personal address information: 
+                | street address or email address
+              li 
+                strong Personal account information: 
+                | bank account, social media account, shopping platform account, and the corresponding passwords.
+              li 
+                strong Personal telephone numbers
+        img.ui.image(src='/images/learn-2.png' style='margin-left: auto; margin-right: auto')
+    button.circular.ui.icon.button.right.floated#chat-help(onclick="showModal()")
+        img.ui.image(src='/images/chat-head.png' style='')
+    .ui.container#nav-container
+      .div#nav-menu          
+        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/submod/learn/identity';") 
+          i.arrow.left.icon 
+          | Back
+        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/intro2/temp';")
+          | Next
+          i.arrow.right.icon
+
+
+
+block scripts
+  script.
+    document.addEventListener('DOMContentLoaded', function() {
+      const dartieImg = document.getElementById('dart_image1');
+      const character = localStorage.getItem('character');
+
+      if (character) {
+        dartieImg.src = "/profile_pictures/" + character;
+      }
+    }
+    );
+  
+block styles
+  link(rel='stylesheet', href='/css/module.css')  
+  link(rel='stylesheet', href='/css/temp.css')  

@@ -1,0 +1,144 @@
+//- layout for module pages (e.g. all the pages in the module after the module intro page at /intro/:modId)
+
+-var cdn = "https://dhpd030vnpk29.cloudfront.net";
+
+//- Same in module layout and ui layout. mixin with nav buttons for back, next, skip and posting module progress with the next button
+include partials/ui_nav_buttons
+
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='theme-color' content='#4DA5F4')
+    meta(name='csrf-token', content=csrfToken)
+    meta(name='isDataCollectionEnabled', content=process.env.enableDataCollection)
+    meta(name='isShareActivityDataEnabled', content=process.env.enableShareActivityData)
+    meta(name='isResearchVersion', content=process.env.isResearchVersion)
+    meta(name="HandheldFriendly" content="True")
+    meta(name="apple-mobile-web-app-capable" content="yes")
+    meta(name="mobile-web-app-capable" content="yes")
+    meta(name="msapplication-tap-highlight" content="no")
+    meta(name="content-language" content="en_US")
+    meta(name='twitter:card' content="summary")
+    if (process.env.isResearchVersion === "true")
+      if (process.env.NODE_ENV === "production")
+        meta(property='og:url' content='https://research.socialmediatestdrive.org/')
+      else 
+        meta(property='og:url' content='https://researchtest.socialmediatestdrive.org/')
+      meta(property='og:title' content="Social Media TestDrive for Research")
+      meta(property='og:description' content='Welcome to the research version of Social Media TestDrive!')
+      meta(name='twitter:title' content="Social Media TestDrive for Research")
+      meta(name='twitter:description' content="Welcome to the research version of Social Media TestDrive!")
+    else 
+      if (process.env.NODE_ENV === "production")
+        meta(property='og:url' content='https://app.socialmediatestdrive.org/')
+      else
+        meta(property='og:url' content='https://test.socialmediatestdrive.org/')
+      meta(property='og:title' content="DART Learn")
+      meta(property='og:description' content='Welcome to DART Learn!')
+      meta(name='twitter:title' content="DART Learn")
+      meta(name='twitter:description' content="Welcome to DART Learn!")
+    title #{title} - DART Learn
+    link(rel='shortcut icon', href='/images/favicon.png')
+    //- link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css', integrity='sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=', crossorigin='anonymous')
+    link(rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.css")
+    link(rel='stylesheet', href=cdn+'/js/lib/introjs.min.css')
+    link(type='text/css', rel='stylesheet', href='/css/header.css') 
+    //- link(type='text/css', rel='stylesheet', href='/css/footer.css') 
+    //- link(type='text/css', rel='stylesheet', href='/css/ui_layout.css') 
+    //- link(type='text/css', rel='stylesheet', href='/css/dart.css') 
+    link(type='text/css', rel='stylesheet' href='/css/module.css') 
+    link(type='text/css', rel='stylesheet', media='screen and (max-width: 1024px)',  href='/css/module-tablet-mobile.css') 
+    link(type='text/css', rel='stylesheet', media='screen and (min-width: 1025px)',  href='/css/module-computer.css') 
+    link(rel='stylesheet', href='/css/progress.css')  
+    link(rel='stylesheet', href='/css/avatar.css') 
+    link(rel='stylesheet', href='/css/nav_buttons.css') 
+    //- Google Fonts: Inter (for headers) and Armata (for body text)
+    link(rel='preconnect' href='https://fonts.googleapis.com')
+    link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
+    link(href='https://fonts.googleapis.com/css2?family=Armata&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap' rel='stylesheet')
+
+
+    block styles
+
+
+  body
+    //- Flexbox layout 
+    #page-header
+      block header
+        include partials/module_header
+
+      //- progress bar stuff
+      //-   include partials/ui_header
+        #page-article(style="overflow-y: scroll !important;")
+    #page-article
+      block content
+    #page-footer
+      include partials/module_footer
+        block footer
+
+      
+        //- navigation buttons
+        //- include partials/ui_footer
+    
+    if process.env.instanceType == 'test'
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js')
+      //- script(src=cdn+'/js/lib/humanized_time_span.js')
+      //- script(src=cdn+'/js/lib/lazyload.transpiled.min.js')
+      //- script(src='https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js', integrity="sha256-ZUdSt2scSiBqI3Tso+Al3lcqkBvgRShVrUc1pvvGGVE=" crossorigin="anonymous")
+      //- script(src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js', integrity="sha256-v8vuH0gf888S01qYrvK2hDq/RfE2au7WOLbqlPzDwOQ=" crossorigin="anonymous")
+      script(src=cdn+'/js/lib/intro.min.js')
+      //- script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js', integrity='sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=', crossorigin='anonymous')
+      script(src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.js")
+      script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery-circle-progress/1.2.2/circle-progress.min.js")
+      - var t = '/main.js?t=' + (new Date()).getTime().toString();
+      script(src=t)
+    else if process.env.NODE_ENV == 'production'
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js')
+      //- script(src=cdn+'/js/lib/humanized_time_span.js')
+      //- script(src=cdn+'/js/lib/lazyload.transpiled.min.js')
+      //- script(src='https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js', integrity="sha256-ZUdSt2scSiBqI3Tso+Al3lcqkBvgRShVrUc1pvvGGVE=" crossorigin="anonymous")
+      //- script(src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js', integrity="sha256-v8vuH0gf888S01qYrvK2hDq/RfE2au7WOLbqlPzDwOQ=" crossorigin="anonymous")
+      script(src=cdn+'/js/lib/intro.min.js')
+      //- script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js', integrity='sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=', crossorigin='anonymous')
+      script(src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.js")
+      script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery-circle-progress/1.2.2/circle-progress.min.js")
+      script(src=cdn+'/js/main23.js?v=1')
+      //- script(src='/module_js/js/main.js')
+    else
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js')
+      //- script(src=cdn+'/js/lib/humanized_time_span.js')
+      //- script(src=cdn+'/js/lib/lazyload.transpiled.min.js')
+      //- script(src='https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js', integrity="sha256-ZUdSt2scSiBqI3Tso+Al3lcqkBvgRShVrUc1pvvGGVE=" crossorigin="anonymous")
+      //- script(src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js', integrity="sha256-v8vuH0gf888S01qYrvK2hDq/RfE2au7WOLbqlPzDwOQ=" crossorigin="anonymous")
+      script(src=cdn+'/js/lib/intro.min.js')
+      //- script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.js', integrity="sha256-qs5p0BFSqSvrstBxPvex+zdyrzcyGdHNeNmAirO2zc0=", crossorigin="anonymous")
+      script(src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.js")
+      script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery-circle-progress/1.2.2/circle-progress.min.js")
+      - var t = '/main.js?t=' + (new Date()).getTime().toString();
+      script(src=t)
+    
+    script(src="/js/progress.js")  
+    script(src="/js/module_exit.js")  
+
+
+    block scripts
+    // Google Analytics
+    if process.env.isResearchVersion !== 'true'
+      if process.env.NODE_ENV === 'production'
+        script(async='' src='https://www.googletagmanager.com/gtag/js?id=UA-145467622-1')
+        script.
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-145467622-1');
+      else if process.env.instanceType !== 'test'
+        script(async='' src='https://www.googletagmanager.com/gtag/js?id=UA-145467622-2')
+        script.
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-145467622-2');
+

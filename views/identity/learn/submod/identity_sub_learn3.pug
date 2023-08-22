@@ -1,94 +1,57 @@
-extends ../../../ui_layout
+extends ../../../module_layout
 
 block content
 
-  .ui.container#raised-container.short-page-margin
-    .ui.fluid.tiny.three.item.fluid.menu#submod-progress-bar
-      .item.active
-        | Concept & Consequences
-      .item
-        | How To Recognize Techniques
-      .item
-        | Methods of Protection
-    .ui.raised.segment
-      #raised-content
-        .limit
-          h1.ui.header.large#learn-title
-            .content
-              | What are the consequences when personal information is stolen?
-          iframe(type='text/html' width='540' height='289'
-            src='../../videos/identity-video.mp4'
-            frameborder='0' style='display: block; margin: auto;')
-          .div(style='margin-top: 20px;')
-            
-            .ui.large.blue.fluid.label 
-              i.key.icon 
-              | KEY POINTS
-            br
-            br
-            p With your personal identifiable information, a scammer could...
-            ul
-              li 
-                strong fraudulently apply 
-                | for loans and credt cards, resulting in financial losses, decreases in credit scores, and future difficulty receiving loans
-              li 
-                strong withdraw your money 
-                | from your bank accounts without your permission
-              li 
-                strong steal yout tax refund
-              li 
-                strong steal your health care benefits
-              li 
-                strong commit crimes 
-                | under your name or by using your email accounts
-          .ui.one.column.centered.grid#avatarGrid
-            .ui.large.right.pointing.label#speechBubble
-              p#speechText(style="font-size: 1.3rem; text-align: left") Please keep in mind that this list is not exhaustive. Scammers can misuse your identity for their own benefit in many different ways!
-            img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png' style="float: right")
+  .ui.container#raised-container
+    .limit
+      h1.ui.header.large#learn-title
+        .content
+          | What are the consequences when personal information is stolen?
+      iframe(type='text/html' width='540' height='289'
+        src='../../videos/identity-video.mp4'
+        frameborder='0' style='display: block; margin: auto;')
+      .div(style='margin-top: 20px;')
+        
+        .ui.large.blue.fluid.label 
+          i.key.icon 
+          | KEY POINTS
+        br
+        br
+        p With your personal identifiable information, a scammer could...
+        ul
+          li 
+            strong fraudulently apply 
+            | for loans and credit cards, resulting in financial losses, decreases in credit scores, and future difficulty receiving loans
+          li 
+            strong withdraw your money 
+            | from your bank accounts without your permission
+          li 
+            strong steal yout tax refund
+          li 
+            strong steal your health care benefits
+          li 
+            strong commit crimes 
+            | under your name or by using your email accounts
+      .ui.icon.blue.message
+        //- i.info.circle.icon
+                  .avatar(style="width: 100%; height: 100%; overflow: hidden; position: relative;background: red !important; border: 2px solid green;")
+        .icon
+          img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
+        .content
+          .header
+            //- i.info.circle.icon
+            | Important
+          p Scammers can misuse your identity for their own benefit in many different ways!
+      
+      br
 
-          //- #avatar.ui.one.column.centered.grid(style="margin: 50px")
-          //-   .ui.large.right.pointing.circular.label(style="width: 50%;display: flex; align-items: center; float: left;")
-          //-       p(style='padding: 20px;') Please keep in mind that this list is not exhaustive. Scammers can be exploit your identity for their own good in many different ways!
-          //-   img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png' style="float: right")
-    .ui.container#nav-container
-      .div#nav-menu          
-        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/submod/learn2/identity';") 
-          i.arrow.left.icon 
-          | Back
-        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/submod/learn4/identity';")
-          | Next
-          i.arrow.right.icon
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
 
+block append footer
+  .ui.container
+    +navButtons('identity', '/submod/learn2/identity', '/submod/learn4/identity', 16)  
 
 block scripts
   script(src='/js/character.js')
-  script.
-    var voiceoverMappings = {
-      '.showLearnSectionButton': {
-        "initialDelay": 700,
-        "delay": 500,
-        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
-      },
-      '.voiceover_keyTerm1': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.6.2.1.mp3']
-      },
-      '.voiceover_keyTerm2': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.6.2.2.mp3']
-      },
-      '.voiceover_keyTerm3': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.6.2.3.mp3']
-      }
-    };
-  script(src='/module_js/voiceover.js')
-  script(src="/module_js/base_start.js")
-  
-block styles
-  link(rel='stylesheet', href='/css/module.css')  
-    
-    

@@ -1,12 +1,149 @@
+/* Hide the fixed menus on desktop */
+/* @media (min-width: 1025px) {
+    #module-header {
+      display: none !important;
+    }
+} */
+html {
+    font-size: 1rem;
+}
+
+header,
+footer {
+    z-index: 9999999999 !important;
+}
+
+
+/* page loader */
+.hidden {
+    display: none !important; 
+}
+
+#loadingScreen {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 50vh; 
+}
+
+#loadingScreen .ui.active.inverted.dimmer {
+    background: white;
+}
+
+#loadingScreen h1 {
+    margin-top: 125px;
+    margin-left: 25px;
+}
+
+
+/* Flexbox method to position the header, page content / article, and footer correctly*/
+/* Source: https://stackoverflow.com/questions/643879/css-to-make-html-page-footer-stay-at-bottom-of-the-page-with-a-minimum-height-b */
+body{ 
+    min-height: 100vh; 
+    /* margin:0;  */
+    background: white;   
+    /* fix so that the whole page doesn't shift on the "short" pages due to scroll bar being absent */
+    overflow-y: scroll !important;
+    font-family: 'Inter', sans-serif;
+}
+
+#page-header{ 
+    min-height:50px;
+}
+
+#page-footer{ 
+    min-height: 50px;
+}
+
+/* The article fills all the space between header & footer */
+body{ 
+    display:flex; 
+    flex-direction:column; 
+}
+
+/*  flex 1 to grow and shrink as necessary to fill available space in the flex container */
+#page-article{ 
+    flex:1; 
+
+    /* padding to stop it from clipping under the header progress bar */
+    padding-top: 20px;
+
+}
+
+#raised-content {
+    font-size: 1.5rem;
+}
+
+#raised-container { 
+    /* background: yellow;  */
+    margin-top: 0px; 
+    padding-top: 0px;
+}
+
+/* #raised-container.top-padding {
+    padding-top: 30px;
+} */
+
+#raised-container {
+    /* margin-top: 50px; */
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+body{ 
+    /* overflow-y: hidden !important; */
+    background-color: white;
+}
+
+#raised-container .ui.raised.segment {
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding-top: 40px;
+    /* background-color: red !important; */
+}
+
+
+/* Set the background color to a non-transparent color */
+.ui.progress {
+    background-color: #e0e0e0;
+    /* background-color: rgb(73, 107, 113); */
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.08), 0 2px 4px 0 rgba(0, 0, 0, 0.18);
+}
+
+.ui.fixed.borderless.menu#module-header {
+    border: none;
+    box-shadow: none;
+}
+
+#module-footer {
+    background: #F5F8FA;
+    padding-top: 10px;
+}
+
+header {
+    border: none;
+    box-shadow: none;
+}
+
 #welcome {
     margin-top: 15px;
+}
+
+#exit-button:hover {
+    color: red;
 }
 
 /* inline so the bubbles like 100 learners today will show up next to it */
 #mod-title {
     display: inline-block;
-    font-size: 2.25rem;
+    font-size: 2.15rem;
+    font-weight: 600;
     font-family: 'Inter', sans-serif; 
+}
+
+li strong, li u {
+    font-weight: 600;
 }
 
 #learn-title {
@@ -52,7 +189,6 @@ li {
     border-radius: 20px; 
     margin-left: 20px;
 }
-
 
 #banner_pic {
     margin-top: 5px;
@@ -224,7 +360,7 @@ u {
     flex-direction: column; 
     align-items: center; 
     justify-content: center; 
-    margin-right: 30px;
+    margin-right: 50px;
 }
 
 #section-grid .four.wide.column p {
@@ -252,6 +388,37 @@ i.big.lock.icon,
 i.big.unlock.icon {
     margin: 0 auto; 
     color: white;
+}
+
+
+
+/* Avatar Call Out Important Notes / Admonitions CSS */
+.ui.icon.blue.message {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 2px;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.ui.icon.blue.message .icon {
+    height: 125px !important;
+    width: 175px;
+    overflow: hidden;
+}
+
+.ui.icon.blue.message .icon img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    object-position: top center;
+}
+
+.ui.icon.blue.message .content {
+    background: white;
+    height: 100%;
+    padding: 10px;
+    padding-left: 15px;
 }
 /* OLD CSS From Truman  Start Pages Below */
 /* 
@@ -292,3 +459,308 @@ i.big.unlock.icon {
 .keyTermDefinition ul {
     font-weight: 400;
 } */
+
+
+
+.limit {
+    font-size: 1.5rem;
+    position: relative;
+    padding-left: 9rem; 
+    padding-right: 9rem;
+    margin: 0 auto;
+}
+
+/* @media screen and (min-width: 1201px) {
+    .ui.container#raised-container.desktop-no-padding {
+        padding: 0px; 
+    }
+} */
+
+@media (max-width: 1200px) {
+    .limit {
+        padding-left: 2rem; 
+        padding-right: 2rem;
+    }
+
+    #page-article{ 
+        /* padding to stop it from clipping under the header progress bar */
+        padding-top: 50px;
+        /* background-color: green; */
+    }
+    
+}
+
+
+@media (max-width: 920px) {
+    .limit {
+        padding-left: 1rem; 
+        padding-right: 1rem;
+    }
+
+    #page-article{ 
+        /* padding to stop it from clipping under the header progress bar */
+        padding-top: 60px;
+        /* background-color: orange; */
+
+    }
+}
+
+
+@media (max-width: 430px) {
+    /* hide bubbles so they don't get squished */
+    .bubble-container {
+        display: none !important;
+    }
+
+    .limit {
+        padding-left: 0rem; 
+        padding-right: 0rem;
+    }
+
+    #page-article{ 
+        /* padding to stop it from clipping under the header progress bar */
+        /* padding-top: 65px; */
+        /* background-color: yellow; */
+
+    }
+}
+
+
+
+/* ios chat styles */
+
+/* texter account info */
+.texter {
+    background: #F5F5F5;
+    width: 328px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #D4D4D4;
+    text-align: center;
+}
+
+.texter i.user.circle.big.icon {
+    color: #9397A2
+}
+
+.texter p { 
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.texter p span {
+    color: grey;
+    font-weight: normal;
+}
+
+.ios-time {
+    width: 328px;
+    text-align: center;
+    font-size: 0.9rem;
+    padding-top: 20px;
+}
+
+/* Source: https://codepen.io/swards/pen/gxQmbj */
+  .ios-chat-container {
+    font-family: helvetica;
+    display: flex ;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .chat {
+    width: 329px;
+    /* border: solid 1px #EEE; */
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    /* background-color: red; */
+    margin-left: -30px;
+  }
+  
+  .messages {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .messages:first-child {
+    margin-top: 0px;
+  }
+  
+  .message {
+    border-radius: 20px;
+    padding: 8px 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+    line-height: 1.1; 
+
+  }
+  
+  .yours {
+    align-items: flex-start;
+  }
+  
+  .yours .message {
+    margin-right: 25%;
+    background-color: #E6E5EB;
+    position: relative;
+  }
+  
+  .yours .message.last:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    left: -7px;
+    height: 20px;
+    width: 20px;
+    background: #E6E5EB;
+    border-bottom-right-radius: 15px;
+  }
+  .yours .message.last:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: -10px;
+    width: 10px;
+    height: 20px;
+    background: white;
+    border-bottom-right-radius: 10px;
+  }
+  
+  .mine {
+    align-items: flex-end;
+  }
+  
+  .mine .message {
+    color: white;
+    margin-left: 25%;
+    background: linear-gradient(to bottom, #00D0EA 0%, #2165AE 100%);
+    background-attachment: fixed;
+    position: relative;
+  }
+  
+  .mine .message.last:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    right: -8px;
+    height: 20px;
+    width: 20px;
+    background: linear-gradient(to bottom, #00D0EA 0%, #2165AE 100%);
+    background-attachment: fixed;
+    border-bottom-left-radius: 15px;
+  }
+  
+  .mine .message.last:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    right: -9px;
+    width: 9px;
+    height: 21px;
+    background: white;
+    border-bottom-left-radius: 10px;
+  }
+
+.message.last {
+    /* background-color: red; */
+    width: 280px;
+}
+  
+
+  /* Source: https://www.w3schools.com/howto/howto_css_devices.asp */
+
+  .smartphone {
+    position: relative;
+    width: 360px;
+    height: 640px;
+    margin: auto;
+    border: 16px black solid;
+    border-top-width: 60px;
+    border-bottom-width: 60px;
+    border-radius: 36px;
+  }
+  
+  /* The horizontal line on the top of the device */
+  .smartphone:before {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 5px;
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #333;
+    border-radius: 10px;
+  }
+  
+  /* The circle on the bottom of the device */
+  .smartphone:after {
+    content: '';
+    display: block;
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    left: 50%;
+    bottom: -65px;
+    transform: translate(-50%, -50%);
+    background: #333;
+    border-radius: 50%;
+  }
+  
+  /* The screen (or content) of the device */
+  .smartphone .content {
+    width: 360px;
+    height: 640px;
+    /* background: white; */
+  }
+  
+
+
+  /* submod 2 q1.html partial */
+.make-italic {
+    font-style: italic;
+}
+.selected-customers {
+    font-weight: bold;
+}
+
+.htmlImage .dollar-tree-border .green {
+    color: #589E3C;
+    font-weight: bold;
+}
+
+.htmlImage .dollar-tree-border {
+    border: 6px solid #589E3C;
+    margin: 10px;
+    border-radius: 15px; 
+}
+
+
+
+.htmlImage #confirmButton {
+    background-color: #589E3C;
+    color: white;
+    border-radius: 15px; 
+    width: 400px;
+    pointer-events: none;
+}
+
+.htmlImage #netflix-logo {
+    width: 200px;
+    display: block;
+    margin: 0 auto;
+}
+
+.htmlImage #netflixSignIn {
+    color: #E50914;
+}
+
+

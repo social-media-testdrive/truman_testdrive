@@ -1,0 +1,65 @@
+{
+    "1": {
+      "type": "yes_no",
+      "partial": "q1.html",
+      "prompt": "1. Is this email a scam?",
+      "choices": {
+        "yes": {
+          "text": "Yes"
+        },
+        "no": {
+          "text": "No"
+        }
+      },
+      "explanation": "<h1>This email is a scam</h1><h2>Warning Signs:</h2><ul><li><strong>Insecure email address domain</strong><br>This email address does not appear to be validated. After checking on Dollar Trees official website, the email address does not exist.</li><li><strong>Sense of urgency</strong><br>This email induces a sense of urgency. The message shows that “Only 10 selected customers” and “Please confirm before...”</li><li><strong>Incorrect brand name font</strong><br>The brand name font used in this email appears to be different from their official website. Generally, the brand name font remains consistent as it represents the companys identity.</li><li><strong>This email does not identify the receiver’s name</strong><br>This email does not indicate the receivers name as is typical of scam emails.</li></ul>",
+      "correctResponse": "yes"
+  },
+    "2": {
+        "type": "yes_no",
+        "partial": "q2.html",
+        "prompt": "2. Is this email a scam?",
+        "choices": {
+          "yes": {
+            "text": "Yes"
+          },
+          "no": {
+            "text": "No"
+          }
+        },
+        "explanation": "<h1>This email is a scam</h1><h2>Warning Signs:</h2><ul><li><strong>Failure to identify the receiver’s name</strong><br>This email does not indicate the receiver’s name.</li><li><strong>Invitation to click on a new link</strong><br>if an email invites you to click on a new link to update your payment details, the link can be a phishing link. This email asks you to click the Sign In link to update your payment information.</li><li><strong>Sense of threat</strong><br>This email claims there’s a problem with your account without specific information and induces a sense of threat to compel you to click on the provided link.<li><strong>Sender's email not from Netflix.</strong><br>This sender’s email address is no-reply@ripnet.com, it is not from Netflix.</li></ul>",
+        "correctResponse": "yes"
+    },
+    "3": {
+        "type": "multi_select",
+        "partial": "none",
+        "prompt": "3. Which of the following techniques do scammers mainly utilize? Select all that apply:",
+        "choices": {
+            "0": {
+              "text": "A. Fear and threats in scam messaging",
+              "explanation": "Scammers exploit fear by sending alarming messages, like legal action or account closure, pressuring victims to act impulsively, divulging personal data."
+            },
+            "1": {
+              "text": "B. Tempting offers that are too good to be true",
+              "explanation": "Scammers dangle unrealistically attractive deals, baiting victims into sharing sensitive info or money, luring them with false promises."
+            },
+            "2": {
+              "text": "C. Using sympathy and kindness",
+              "explanation": "Scammers act nice and understanding to make you trust them, so you'll share your personal information."
+            },
+            "3": {
+              "text": "D. Weather Forecasting",
+              "explanation": "Weather forecasting is entirely unrelated to identity theft and is not a technique utilized by scammers for their malicious activities."
+            },
+            "4": {
+              "text": "E. Robocalling",
+              "explanation": "Scammers use automated calls to deliver fake urgent messages, aiming to panic recipients, pushing them to reveal private data or follow prompts leading to fraud."
+            },
+            "5": {
+              "text": "F. Ask you to click a link",
+              "explanation": "Scammers send messages urging recipients to click malicious links, tricking them into sharing login details, installing malware, or confirming sensitive data."
+            }
+        },
+        "correctResponse": ["0", "1", "2", "4", "5"],
+        "theAnswers": "A, C, E, F"
+      }            
+  }

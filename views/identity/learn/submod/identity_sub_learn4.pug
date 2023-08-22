@@ -1,81 +1,54 @@
-extends ../../../ui_layout
+extends ../../../module_layout
 
 block content
 
-  .ui.container#raised-container.short-page-margin
-    .ui.fluid.tiny.three.item.fluid.menu#submod-progress-bar
-      .item.active
-        | Concept & Consequences
-      .item
-        | How To Recognize Techniques
-      .item
-        | Methods of Protection
-    .ui.raised.segment
-      #raised-content
-        .limit
-          h1.ui.header.large#learn-title
-            .content
-              | Three main types of Identity Theft 
-          p There are multiple types of identity theft that can occur when your personal information is illegally obtained and misused, leading to various forms of harm. In this module, we present you with three examples that illustrate the different facets of identity theft
+  .ui.container#raised-container
+    .limit
+      h1.ui.header.large#learn-title
+        .content
+          | Three main types of Identity Theft 
+      p There are multiple types of identity theft that can occur when your personal information is illegally obtained and misused, leading to various forms of harm. In this module, we present you with three examples that illustrate the different facets of identity theft
+      ul
+        li
+          u Financial identity theft
+          |  occurs when someone uses your personal identifiable  information to open or use an account without your permission and you are responsible for any resulting financial loss.  
           ul
-            li
-              u Financial identity theft
-              |  occurs when someone uses your personal identifiable  information to open or use an account without your permission and you are responsible for any resulting financial loss.  
-              ul
-                li This can include 
-                  strong bank accounts, credit cards, subscriptions, insurance, loans, and more. 
-            li
-              u Tax-related identity theft
-              |  happens when someone steals your personal identifiable information and uses it to file a fake tax return to get a refund that they don't deserve. This can cause problems with your own tax return and delay your refund.   
+            li This can include 
+              strong bank accounts, credit cards, subscriptions, insurance, loans, and more. 
+        li
+          u Tax-related identity theft
+          |  happens when someone steals your personal identifiable information and uses it to file a fake tax return to get a refund that they don't deserve. This can cause problems with your own tax return and delay your refund.   
 
-            li
-              u Medical identity theft
-              |  happens when scammers use your personal identifiable information to submit fraudulent claims to Medicare or other health insurers without your authorization.
-        
-          .ui.one.column.centered.grid#avatarGrid
-            .ui.large.right.pointing.label#speechBubble
-              span
-                p#speechText(style="font-size: 1.3rem; text-align: left") Please remember that there are numerous ways in which identity theft can occur other than these three types. You can check out <a href="https://www.aarp.org/money/scams-fraud/">AARP’s Fraud Resources </a> for more information about different types of scams.
-            img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png' style="float: right")
-    .ui.container#nav-container
-      .div#nav-menu          
-        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/submod/learn3/identity';") 
-          i.arrow.left.icon 
-          | Back
-        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/submod/learn5/identity';")
-          | Next
-          i.arrow.right.icon
+        li
+          u Medical identity theft
+          |  happens when scammers use your personal identifiable information to submit fraudulent claims to Medicare or other health insurers without your authorization.
+    
+      //- .ui.one.column.centered.grid#avatarGrid
+      //-   .ui.large.right.pointing.label#speechBubble
+      //-     span
+      //-       p#speechText(style="font-size: 1.3rem; text-align: left") Please remember that there are numerous ways in which identity theft can occur other than these three types. You can check out <a href="https://www.aarp.org/money/scams-fraud/">AARP’s Fraud Resources </a> for more information about different types of scams.
+      //-   img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png' style="float: right")
+      
+      .ui.icon.blue.message
+        //- i.info.circle.icon
+                  .avatar(style="width: 100%; height: 100%; overflow: hidden; position: relative;background: red !important; border: 2px solid green;")
+        .icon
+          img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
+        .content
+          .header
+            //- i.info.circle.icon
+            | Important
+          p Check out <a href="https://www.aarp.org/money/scams-fraud/">AARP’s Fraud Resources </a> for more information about different types of scams.
+      
+      
+      br
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
 
+block append footer
+  .ui.container
+    +navButtons('identity', '/submod/learn3/identity', '/submod/learn5/identity', 18)  
 
 block scripts
   script(src='/js/character.js')
-  script.
-    var voiceoverMappings = {
-      '.showLearnSectionButton': {
-        "initialDelay": 700,
-        "delay": 500,
-        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
-      },
-      '.voiceover_keyTerm1': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.6.2.1.mp3']
-      },
-      '.voiceover_keyTerm2': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.6.2.2.mp3']
-      },
-      '.voiceover_keyTerm3': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.6.2.3.mp3']
-      }
-    };
-  script(src='/module_js/voiceover.js')
-  script(src="/module_js/base_start.js")
-  
-block styles
-  link(rel='stylesheet', href='/css/module.css')  
-    
-    

@@ -350,25 +350,19 @@ function check(req, res, next) {
 
 function setHttpResponseHeaders(req, res, next) {
     // TODO: rework chatbox so that 'unsafe-eval' in script-src is not required.
-    res.set({
-        'Cache-Control': 'no-cache, no-store',
-        'Expires': '0',
-        'Pragma': 'no-cache',
-        'Content-Type': 'text/html; charset=UTF-8',
-        'Content-Security-Policy': "script-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
-            "default-src 'self' https://www.google-analytics.com http://3.19.31.168:8080/webhooks/rest/webhook;" +
-            "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
-            "img-src 'self' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
-            "media-src https://dhpd030vnpk29.cloudfront.net;" +
-            "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:"
-    });
     next();
 }
+
+// function updateSessionUserData(req, updatedUser) {
+
+// });
+
 
 function isValidModId(req, res, next) {
     const modIds = [
         "trolls",
-        "identity"
+        "identity",
+        "temp"
     ]
     if (modIds.includes(req.params.modId)) {
         next();
@@ -493,7 +487,7 @@ function isValidModId(req, res, next) {
     const modIds = [
         "trolls",
         "identity",
-        "phishing"
+        "temp"
     ]
 
     if (modIds.includes(req.params.modId)) {
@@ -721,6 +715,26 @@ app.get('/intro2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders
     });
 });
 
+app.get('/intro3/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/intro/' + req.params.modId + '_intro3', {
+        title: 'Intro'
+    });
+});
+
+app.get('/intro4/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/intro/' + req.params.modId + '_intro4', {
+        title: 'Intro'
+    });
+});
+
+app.get('/intro5/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/intro/' + req.params.modId + '_intro5', {
+        title: 'Intro'
+    });
+});
+
+
+
 
 // Render challenge / prequiz (all modules) ******************************
 app.get('/challenge/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
@@ -729,9 +743,60 @@ app.get('/challenge/:modId', passportConfig.isAuthenticated, setHttpResponseHead
     });
 });
 
-app.get('/challenge2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/challenge/' + req.params.modId + '_challenge2', {
-        title: 'Challenge'
+// get time for phone text message like: 12:48 PM 
+function getCurrentTime() {
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const meridiem = hours >= 12 ? 'PM' : 'AM';
+    const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
+    const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+    return `${formattedHours}:${formattedMinutes} ${meridiem}`;
+}
+
+// get date for emails like: 8/10/2023
+function getCurrentDate() {
+    const now = new Date();
+    const month = now.getMonth() + 1; // Months are 0-based, so adding 1
+    const day = now.getDate();
+    const year = now.getFullYear();
+    return `${month}/${day}/${year}`;
+}
+
+function getFutureDate() {
+    // get date a week from the current date for the scam quiz emails 
+    // for example if currentDate is 8/19/2023 this function will return 8/26/2023
+    const today = new Date();
+    const oneWeekLater = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000); // Adding 7 days in milliseconds
+    
+    const month = String(oneWeekLater.getMonth() + 1).padStart(2, '0');
+    const day = String(oneWeekLater.getDate()).padStart(2, '0');
+    const year = oneWeekLater.getFullYear();
+    
+    // make string in MM/DD/YYYY format
+    return `${month}/${day}/${year}`;  
+}
+  
+
+app.get('/challenge2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, async function(req, res) {
+    let quizData;
+    let currentSection = "challenge"
+    let backLink = "/challenge/identity"
+    let nextLink = "/challenge3/identity"
+    const data = await fs.readFileAsync(`${__dirname}/public2/json/` +  req.params.modId + `/challenge.json`);
+    quizData = JSON.parse(data.toString());
+
+    const currentTime = getCurrentTime();
+    const currentDate = getCurrentDate();
+    req.params.modId 
+    res.render('dart-quiz-template.pug', {
+        title: 'Challenge',
+        quizData,
+        currentSection,
+        backLink,
+        nextLink,
+        currentTime,
+        currentDate
     });
 });
 
@@ -802,9 +867,25 @@ app.get('/submod/learn5/:modId', passportConfig.isAuthenticated, setHttpResponse
     });
 });
 
-app.get('/submod/learn6/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/learn/submod/' + req.params.modId + '_sub_learn6', {
-        title: 'Learn'
+app.get('/submod/learn6/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, async function(req, res) {
+    let quizData;
+    let currentSection = "submodOne"
+    let backLink = "/submod/learn5/identity"
+    let nextLink = "/submod/learn7/identity"
+    const data = await fs.readFileAsync(`${__dirname}/public2/json/` +  req.params.modId + `/submod.json`);
+    quizData = JSON.parse(data.toString());
+
+    const currentTime = getCurrentTime();
+    const currentDate = getCurrentDate();
+    req.params.modId 
+    res.render('dart-quiz-template.pug', {
+        title: 'Quiz',
+        quizData,
+        currentSection,
+        backLink,
+        nextLink,
+        currentTime,
+        currentDate
     });
 });
 
@@ -893,6 +974,60 @@ app.get('/submod2/learn10/:modId', passportConfig.isAuthenticated, setHttpRespon
     });
 });
 
+app.get('/submod2/learn11/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod2/' + req.params.modId + '_sub2_learn11', {
+        title: 'Learn'
+    });
+});
+
+app.get('/submod2/learn12/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod2/' + req.params.modId + '_sub2_learn12', {
+        title: 'Learn'
+    });
+});
+
+app.get('/submod2/learn13/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod2/' + req.params.modId + '_sub2_learn13', {
+        title: 'Learn'
+    });
+});
+
+app.get('/submod2/learn14/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, async function(req, res) {
+    let quizData;
+    let currentSection = "submodTwo"
+    let backLink = "/submod2/learn13/identity"
+    let nextLink = "/submod2/learn15/identity"
+    const data = await fs.readFileAsync(`${__dirname}/public2/json/` +  req.params.modId + `/submodTwo.json`);
+    quizData = JSON.parse(data.toString());
+
+    const currentTime = getCurrentTime();
+    const currentDate = getCurrentDate();
+    const futureDate = getFutureDate();
+
+    req.params.modId 
+    res.render('dart-quiz-template.pug', {
+        title: 'Quiz',
+        quizData,
+        currentSection,
+        backLink,
+        nextLink,
+        currentTime,
+        currentDate,
+        futureDate
+    });
+});
+
+app.get('/submod2/learn15/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, async function(req, res) {
+    res.render(req.params.modId + '/learn/submod2/' + req.params.modId + '_sub2_learn15', {
+        title: 'Learn'
+    });
+});
+
+app.get('/submod2/learn16/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod2/' + req.params.modId + '_sub2_learn16', {
+        title: 'Learn'
+    });
+});
 
 // Render learn submod 3 (all modules) ******************************
 app.get('/submod3/learn/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
@@ -955,6 +1090,7 @@ app.get('/submod3/learn10/:modId', passportConfig.isAuthenticated, setHttpRespon
     });
 });
 
+
 // Render explore (all modules) ******************************
 app.get('/explore/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
     res.render(req.params.modId + '/explore/' + req.params.modId + '_explore', {
@@ -962,10 +1098,114 @@ app.get('/explore/:modId', passportConfig.isAuthenticated, setHttpResponseHeader
     });
 });
 
+function formatDate(date) {
+    const options = { month: 'short', day: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
+}
+
+app.get('/explore2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/explore/' + req.params.modId + '_explore2', {
+        title: 'Explore'
+    });
+});
+
+app.get('/explore3/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
+    const currentDate = new Date();
+    const currentTime = getCurrentTime();
+
+    const oneDayAgo = new Date(currentDate.getTime() - 24 * 60 * 60 * 1000);
+    const twoDaysAgo = new Date(currentDate.getTime() - 24 * 2 * 60 * 60 * 1000);
+    const threeDaysAgo = new Date(currentDate.getTime() - 24 * 3 * 60 * 60 * 1000);
+    const fourDaysAgo = new Date(currentDate.getTime() - 24 * 4 * 60 * 60 * 1000);
+
+    const emails = [
+      { index: 0, sender: "Agent Intrepid", subject: "Example email", date: currentTime, from:"<intrepid@gmail.com>", content: "<p>Hello, </p><p>Just wanted to let you know you're doing great!</p><p>Best,</p><p>Agent Intrepid</p>", replyHeader: "warning", replyContent: "This email is indicative of an identity theft scam. Replying to the email is dangerous! The safe options would be to block sender, report scam, or delete the email. We can look into why this is a scam.", blockHeader: "good", blockContent: "Blocking this sender is correct because this email is indicative of an identity theft scam. You could also report or delete the email.", reportHeader: "good", reportContent: "Reporting this email is correct because this email is indicative of an identity theft scam. You could also block the sender or delete the email.", deleteHeader: "good", deleteContent: "Deleting this email is correct because this email is indicative of an identity theft scam. You could also block the sender or report it as a scam." },
+      { index: 1, sender: "Walmart", subject: "URGENT!", date: formatDate(oneDayAgo), from:"<walmrt@gmail.com>", content: "<p>Hi customer. This is an URGENT message!</p><p>Your payment was declined on a recent purchase. Resubmit your credit card details at this link below within 24 hours.</p><p>Click here NOW! <a class='fakeLink' onclick='linkClick()'>http://jdksj6879sh.com</a></p>", replyHeader: "warning", replyContent: "This email is indicative of an identity theft scam. Replying to the email is dangerous! The safe options would be to block sender, report scam, or delete the email. We can look into why this is a scam.", blockHeader: "good", blockContent: "Blocking this sender is correct because this email is indicative of an identity theft scam. You could also report or delete the email.", reportHeader: "good", reportContent: "Reporting this email is correct because this email is indicative of an identity theft scam. You could also block the sender or delete the email.", deleteHeader: "good", deleteContent: "Deleting this email is correct because this email is indicative of an identity theft scam. You could also block the sender or report it as a scam." },
+      { index: 2, sender: "irs gov", subject: "Identity Verification", date: formatDate(oneDayAgo), from:"<irsgov@gmail.com>", content: "<p>Dear Tax Payer,</p><p>We’ve noticed your account information is missing orincorrect. We need to verify your account information to file your Tax Refund.</p><p>Please follow <a class='fakeLink' onclick='linkClick()'>this link</a> to verify your info.</p><p>Thanks,</p><p>IRS Team <br> 2016 IRS All right reserved.</p><img src='/images/irs.png' alt='irs logo' width='50px'><p>IMPORTANT NOTE: If you receive this message in spam or junk it is a result of your network provider.</p>", replyHeader: "warning", replyContent: "This email is indicative of an identity theft scam. Replying to the email is dangerous! The safe options would be to block sender, report scam, or delete the email. We can look into why this is a scam.", blockHeader: "good", blockContent: "Blocking this sender is correct because this email is indicative of an identity theft scam. You could also report or delete the email.", reportHeader: "good", reportContent: "Reporting this email is correct because this email is indicative of an identity theft scam. You could also block the sender or delete the email.", deleteHeader: "good", deleteContent: "Deleting this email is correct because this email is indicative of an identity theft scam. You could also block the sender or report it as a scam."},
+      { index: 3, sender: "Dropbox", subject: "New Sign In Detected", date: formatDate(twoDaysAgo), from:"<irsgov@gmail.com>", content: "<img src='/images/dropbox.png' alt='dropbox email screenshot'>", replyHeader: "good", replyContent: "Replying is okay because this email is legitimate and can be trusted. We can look into why this is not a scam.", blockHeader: "warning", blockContent: "Blocking the sender is not needed for this email because it comes from a legitimate source and can be trusted. We can look into why this is not a scam.", reportHeader: "warning", reportContent: "Reporting as a scam is not needed for this email because it comes from a legitimate source and can be trusted. We can look into why this is not a scam.", deleteHeader: "warning", deleteContent: "Deleting is not needed for this email because it comes from a legitimate source and can be trusted. We can look into why this is not a scam." },
+      { index: 4, sender: "NCCUstudent", subject: "Re: Hi-- Favor", date: formatDate(twoDaysAgo), from:"<joeBren@gmail.com>", content: "<p>How are you doing? Hope you and your family are safe and healthy? I was wondering if I can get a quick favor from you.</p><p>I am sorry for any inconvenience this will cost you, i am suposed to call you but my phone is bad. I got bad news this morning that I lost a childhood friend to the deadly COIVID-19. I want to support the struggling family with a small donation. So, I was going to ask if you could kindly help e send out a donation to them anytime you can today, I’ll refund as soon as I get back.</p><p>I want to donate $500. Can you help me get the donation sent directly to their Cash App account?</p><p>Thanks, God Bless you.</p><p>Joe Bren</p>", replyHeader: "warning", replyContent: "This email is indicative of an identity theft scam. Replying to the email is dangerous! The safe options would be to block sender, report scam, or delete the email. We can look into why this is a scam.", blockHeader: "good", blockContent: "Blocking this sender is correct because this email is indicative of an identity theft scam. You could also report or delete the email.", reportHeader: "good", reportContent: "Reporting this email is correct because this email is indicative of an identity theft scam. You could also block the sender or delete the email.", deleteHeader: "good", deleteContent: "Deleting this email is correct because this email is indicative of an identity theft scam. You could also block the sender or report it as a scam." },
+      { index: 5, sender: "iPhone 14", subject: "Congrats!", date: formatDate(threeDaysAgo), from:"<4kbug82ob@hotmail.com>", content: "<img src='/images/iphone.png' alt='iphone email screenshot'>", replyHeader: "warning", replyContent: "This email is indicative of an identity theft scam. Replying to the email is dangerous! The safe options would be to block sender, report scam, or delete the email. We can look into why this is a scam.", blockHeader: "good", blockContent: "Blocking this sender is correct because this email is indicative of an identity theft scam. You could also report or delete the email.", reportHeader: "good", reportContent: "Reporting this email is correct because this email is indicative of an identity theft scam. You could also block the sender or delete the email.", deleteHeader: "good", deleteContent: "Deleting this email is correct because this email is indicative of an identity theft scam. You could also block the sender or report it as a scam." },
+      { index: 6, sender: "Amazon", subject: "Password Assistance", date: formatDate(fourDaysAgo), from:"<account-update@amazon.com>", content: "<img src='/images/amazon.png' alt='amazon email screenshot'>", replyHeader: "good", replyContent: "Replying is okay because this email is legitimate and can be trusted. We can look into why this is not a scam.", blockHeader: "warning", blockContent: "Blocking the sender is not needed for this email because it comes from a legitimate source and can be trusted. We can look into why this is not a scam.", reportHeader: "warning", reportContent: "Reporting as a scam is not needed for this email because it comes from a legitimate source and can be trusted. We can look into why this is not a scam.", deleteHeader: "warning", deleteContent: "Deleting is not needed for this email because it comes from a legitimate source and can be trusted. We can look into why this is not a scam." },
+    ];  
+
+    res.render(req.params.modId + '/explore/' + req.params.modId + '_explore3', {
+        title: 'Explore',
+        emails
+    });
+});
+
+app.get('/explore4/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/explore/' + req.params.modId + '_explore4', {
+        title: 'Explore'
+    });
+});
+
+app.get('/explore5/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/explore/' + req.params.modId + '_explore5', {
+        title: 'Explore'
+    });
+});
+
 // Render evaluate (all modules) ******************************
+app.get('/evaluate/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, async function(req, res) {
+    let quizData;
+    let currentSection = "evaluate"
+    let backLink = "/explore4/identity"
+    let nextLink = "/evaluate2/identity"
+    const data = await fs.readFileAsync(`${__dirname}/public2/json/` +  req.params.modId + `/evaluate.json`);
+    quizData = JSON.parse(data.toString());
+
+    const currentTime = getCurrentTime();
+    const currentDate = getCurrentDate();
+    const futureDate = getFutureDate();
+
+    req.params.modId 
+    res.render('dart-quiz-template.pug', {
+        title: 'Evaluate',
+        quizData,
+        currentSection,
+        backLink,
+        nextLink,
+        currentTime,
+        currentDate,
+        futureDate
+    });
+});
+
 app.get('/evaluate/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
     res.render(req.params.modId + '/evaluate/' + req.params.modId + '_evaluate', {
         title: 'Evaluate'
+    });
+});
+
+app.get('/evaluate2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/evaluate/' + req.params.modId + '_evaluate2', {
+        title: 'Evaluate'
+    });
+});
+
+app.get('/submod2/learn14/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, async function(req, res) {
+    let quizData;
+    let currentSection = "submodTwo"
+    let backLink = "/challenge4/identity"
+    let nextLink = "/submod2/learn15/identity"
+    const data = await fs.readFileAsync(`${__dirname}/public2/json/` +  req.params.modId + `/submodTwo.json`);
+    quizData = JSON.parse(data.toString());
+
+    const currentTime = getCurrentTime();
+    const currentDate = getCurrentDate();
+    const futureDate = getFutureDate();
+
+    req.params.modId 
+    res.render(req.params.modId + '/evaluate/' + req.params.modId + '_evaluate', {
+    title: 'Evaluate',
+        quizData,
+        currentSection,
+        backLink,
+        nextLink,
+        currentTime,
+        currentDate,
+        futureDate
     });
 });
 
@@ -1086,6 +1326,14 @@ app.get('/privacy', setHttpResponseHeaders, function(req, res) {
     });
 });
 
+// Render terms and conditions page.
+app.get('/terms', setHttpResponseHeaders, function(req, res) {
+    res.render('terms', {
+        title: 'Terms'
+    });
+});
+
+
 // Render the reflection page (all modules).
 app.get('/results/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, async function(req, res) {
     let reflectionData;
@@ -1112,16 +1360,7 @@ app.get('/quiz/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, 
 
 // Main route for rendering the practice page for a given module.
 app.get('/sim/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
-    if (req.params.modId === 'safe-posting') {
-        res.set({
-            'Content-Security-Policy': "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
-                "default-src 'self' https://www.google-analytics.com;" +
-                "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
-                "img-src 'self' https://dhpd030vnpk29.cloudfront.net https://www.googletagmanager.com https://www.google-analytics.com;" +
-                "media-src https://dhpd030vnpk29.cloudfront.net;" +
-                "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:"
-        });
-    }
+
     res.render(req.params.modId + '/' + req.params.modId + '_sim', {
         title: 'Guided Activity'
     });
@@ -1190,16 +1429,6 @@ app.get('/trans_script/:modId', passportConfig.isAuthenticated, setHttpResponseH
 
 // Main route for rendering the learn page for a given module
 app.get('/tutorial/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
-    if (req.params.modId === 'safe-posting') {
-        res.set({
-            'Content-Security-Policy': "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
-                "default-src 'self'  https://www.google-analytics.com;" +
-                "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
-                "img-src 'self' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
-                "media-src https://dhpd030vnpk29.cloudfront.net;" +
-                "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:"
-        });
-    }
     res.render(req.params.modId + '/' + req.params.modId + '_tutorial', {
         title: 'Tutorial'
     });
@@ -1207,16 +1436,6 @@ app.get('/tutorial/:modId', passportConfig.isAuthenticated, setHttpResponseHeade
 
 // Render explore page
 app.get('/Saeed_Ahmed/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
-    if (req.params.modId === 'safe-posting') {
-        res.set({
-            'Content-Security-Policy': "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
-                "default-src 'self' https://www.google-analytics.com;" +
-                "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
-                "img-src 'self' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
-                "media-src https://dhpd030vnpk29.cloudfront.net;" +
-                "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:"
-        });
-    }
     res.render(req.params.modId + '/' + req.params.modId + '_Saeed_Ahmed', {
         title: 'Explore'
     });
@@ -1243,16 +1462,6 @@ app.get('/tutorial2/:modId', passportConfig.isAuthenticated, setHttpResponseHead
 
 // Render tutorial guide page
 app.get('/tut_guide/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
-    if (req.params.modId === 'safe-posting') {
-        res.set({
-            'Content-Security-Policy': "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/  https://www.googletagmanager.com https://www.google-analytics.com;" +
-                "default-src 'self' https://www.google-analytics.com;" +
-                "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
-                "img-src 'self' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
-                "media-src https://dhpd030vnpk29.cloudfront.net;" +
-                "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:"
-        });
-    }
     res.render(req.params.modId + '/' + req.params.modId + '_tut_guide', {
         title: 'Tutorial'
     });
@@ -1270,6 +1479,12 @@ app.post('/delete', passportConfig.isAuthenticated, setHttpResponseHeaders, user
 app.get('/guest/:modId', setHttpResponseHeaders, isValidModId, userController.getGuest);
 
 app.post('/chatbot', check, setHttpResponseHeaders, userController.postChatbotConnect);
+
+// app.get('/moduleprogress/:modId', check, setHttpResponseHeaders, userController.getModuleProgress);
+
+app.post('/postModuleProgress', check, setHttpResponseHeaders, userController.postModuleProgress);
+
+app.post('/postQuizScore', check, setHttpResponseHeaders, userController.postQuizScore);
 
 app.post('/postIdentityTheftPreQuizScore', check, setHttpResponseHeaders, userController.postIdentityTheftPreQuizScore);
 

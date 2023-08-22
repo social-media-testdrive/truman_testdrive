@@ -1,0 +1,49 @@
+/* Fixed header and footer on module pages */
+body{ 
+    min-height: 100vh; 
+    margin:0; 
+    background: white;   
+    /* overflow-y: hidden !important; */
+    font-family: 'Inter', sans-serif;
+}
+
+#raised-container {
+    position: relative;
+    /* margin-top: 0px; */
+}
+
+#raised-container .ui.raised.segment {
+    padding-top: 0px;
+}
+
+#page-header{ 
+    min-height:30px;
+}
+
+#page-footer{ 
+    min-height:50px;
+}
+
+/* The article fills all the space between header & footer */
+/* body{ 
+    display:flex; 
+    flex-direction:column; 
+} */
+
+/*  flex 1 to grow and shrink as necessary to fill available space in the flex container */
+/* #page-article{ 
+    flex:1; 
+} */
+
+
+#header-title {
+    display: inline-block;
+    font-size: 2.25rem;
+    font-family: 'Inter', sans-serif; 
+}
+
+#theft-progress {
+    position: absolute; 
+    top: 70px; 
+    width: 100%;;
+}

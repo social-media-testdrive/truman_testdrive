@@ -69,7 +69,7 @@ block content
           br
         hr
         h2 Learning Materials
-        p If you prefer to access the material offline, you can download the content below:
+        p If you would like to learn the material offline, you can download the content below:
         div.ui.two.column.stackable.grid#downloadGrid 
           .column
             h4.glossary.pdf
@@ -86,55 +86,10 @@ block content
                 p glossary.pdf
                   //- i.large.download.icon
         br
-    +navButtons('/', '/intro2/identity', 'Home', 'Start')  
-    //- .ui.container#nav-container
-    //-   .div#nav-menu
-    //-     button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/';") 
-    //-       i.arrow.left.icon 
-    //-       | Home
-    //-     button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/intro2/identity';")
-    //-       | Start
-    //-       i.arrow.right.icon
-
-block scripts
-  script.
-    document.addEventListener('DOMContentLoaded', function() {
-      const dartieImg = document.getElementById('dart_image1');
-      const character = localStorage.getItem('character');
-
-      if (character) {
-        dartieImg.src = "/profile_pictures/" + character;
-      }
-    }
-    );
-  script.
-    var voiceoverMappings = {
-      '.showLearnSectionButton': {
-        "initialDelay": 700,
-        "delay": 500,
-        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
-      },
-      '.voiceover_keyTerm1': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.6.2.1.mp3']
-      },
-      '.voiceover_keyTerm2': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.6.2.2.mp3']
-      },
-      '.voiceover_keyTerm3': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.6.2.3.mp3']
-      }
-    };
-  script(src='/module_js/voiceover.js')
-  script(src="/module_js/base_start.js")
+    +navButtons('identity', '/', '/intro2/identity', 2, 'Home', 'Start')  
   
 block styles
-  link(rel='stylesheet', href='/css/module.css') 
+  link(rel='stylesheet', href='/css/module-home.css') 
 
 
 

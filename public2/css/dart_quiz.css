@@ -1,0 +1,318 @@
+/* Styles for displaying quiz questions */
+.question {
+    font-weight: bold;
+    line-height: 2.25rem !important;
+
+}
+
+/* .choiceList {
+    margin-top: 30px;
+}
+
+.choiceList .ui.radio.checkbox:nth-child(2) {
+    margin-left: 70px;
+} */
+.choiceList {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+
+
+.choiceList .ui.radio.checkbox{
+    border-radius: 10px; 
+    border: 2px solid gray;
+    width: 300px;
+    height: 60px;
+    text-align: left;
+    padding: 20px;
+}
+
+.choiceList .ui.radio.checkbox:hover {
+    border: 2px solid black;
+    background-color: #F5F8FA;
+}
+
+.fourChoices .ui.radio.checkbox{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 2px solid gray;
+    width: 100%;
+    text-align: left;
+    padding: 20px;
+    /* subtract 6 pixels as */
+    padding-bottom: 14px;
+
+    display: flex; 
+    align-items: center; 
+}
+
+.fourChoices  .ui.checkbox label p {
+    margin-top: -8px;
+}
+
+.fourChoices input[type=radio] {
+    width: 850px !important;
+    height: 60px !important;
+}
+
+.checkboxChoices {
+    display: grid;
+}
+
+
+
+.checkboxChoices .ui.checkbox.listChoices {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 2px solid gray;
+    width: 100%;
+    text-align: left;
+    padding: 20px;
+    /* subtract 6 pixels as */
+    padding-bottom: 14px;
+
+    display: flex; 
+    align-items: center; 
+}
+
+.checkboxChoices  .ui.checkbox label p {
+    margin-top: -8px;
+}
+
+/* make it so user can click anywhere in choice box to select it */
+input[type=checkbox] {
+    width: 850px !important;
+    height: 60px !important;
+}
+
+
+/* input[type=radio]  */
+/* fix input field to cover padding so whole button is clickable */
+#yes, #no {
+    width: 350px;
+    height: 60px;
+}
+
+.image {
+    text-align: center;
+}
+
+/* Styles for identity challenge question 1 apple email */
+
+.purple-text {
+    color: #804477;
+    font-weight: bold;
+}
+
+.ui.raised.segments,
+.ui.segment,
+label {
+    font-size: 1.5rem !important;
+}
+
+i.apple.big.icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #A5A6AE;
+}
+
+.ui.header.centered.aligned {
+   font-weight: bolder;
+}
+
+#q1-quiz-partial p {
+    font-size: 1.5rem !important;
+}
+
+ui.header.centered.aligned {
+    font-weight: bolder;
+    font-size: 1.2rem !important;
+}
+
+
+.quizMessage, 
+.explanationCorrectMulti,
+.explanationIncorrectMulti {
+    margin-top: -15px;
+    margin-bottom: 30px;
+    /* background-color: peachpuff;
+    border-radius: 6px;
+    width: 20%;
+    margin: auto;
+    text-align: center;
+    padding: 5px;
+	font-weight:bold;
+    color: red;
+	position:absolute;
+	top:90%;
+	left:40%; */
+}
+
+/* for both the quizMessage warning that pops up when they didnt select something and the explanation messages when viewing answers*/
+.ui.red.center.aligned.message,
+.ui.green.center.aligned.message {
+    width: 100%;
+}
+
+/* indent the multiselect explanation answer and position them under the choices*/
+.showExplanationContainer {
+    margin-left: 40px;
+    margin-top: -20px;
+    margin-bottom: 25px;
+}
+
+.explanationCorrectMulti h2.ui.header .icon,
+.explanationIncorrectMulti h2.ui.header .icon {
+    margin-top: -8px;
+}
+
+.checkboxChoices .ui.checkbox {
+    z-index: 10;
+    background-color: white;
+}
+
+.incorrectChoice {
+    /* background-color: #FFE8E6; */
+    border: 2px solid black !important;
+}
+
+.correctChoice {
+    /* background-color: #E5F9E7; */
+    border: 2px solid black !important;
+}
+
+/* .redExplanation,
+.greenExplanation {
+    text-align: left !important;
+} */
+
+.missedChoice {
+    /* background-color: #e6e7e8; */
+    /* border: 3px dashed green !important; */
+    border: 2px dashed red !important;
+    border-spacing: 10px !important; 
+}
+
+.addShadow {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.gradedIcon {
+    position: absolute;
+    left: -60px;
+    top: -2px;
+}
+
+p.correctScore,
+p.incorrectScore {
+    font-size: 1.75rem;
+    font-weight: bold;
+    /* margin-top: 20px;
+    margin-bottom: 20px; */
+}
+
+.explanationIncorrectMulti .theAnswers {
+    margin-top: -25px;
+}
+
+
+.explanationCorrectMulit h2.ui.header,
+.explanationIncorrectMulti h2.ui.header {
+    font-size: 1.75rem;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.explanationIncorrectMulti button.ui.basic.blue.right.labeled.icon.button,
+.explanationCorrectMulti button.ui.basic.blue.right.labeled.icon.button {
+    float: right;
+    /* border: none !important;  */
+    box-shadow: none !important;
+    font-size: 1.5rem !important;
+    padding-right: 55px !important;
+    margin-right: 0px !important;
+    margin-right: -20px !important;
+}
+
+.explanationIncorrectMulti i.caret.icon,
+.explanationCorrectMulti i.caret.icon {
+    background: none !important;
+    margin-right: 0px !important;
+}
+
+.explanationIncorrectMulti a,
+.explanationCorrectMulti a {
+    text-decoration: underline;
+}
+
+.ui.blue.huge.button {
+    border-radius: 30px !important;
+}
+/* 
+.ui.blue.huge.button {
+    margin-right: 100px;
+} */
+
+.quizButtonContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+/* circular progress */
+.circleResults {
+    position: relative;
+    margin: 20px;
+    margin-top: -50px;
+    display: flex;
+    justify-content: center;
+}
+
+.circleResults strong {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.result {
+    text-align: center;
+}
+
+.resultText {
+    font-size: 2rem;
+    font-weight: bold;
+    width: 50%;
+    line-height: 2.5rem;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+img#dart_image1.ui.medium.image {
+    float: right;
+}
+
+.metadata {
+    /* margin-top: 20px; */
+    /* margin-bottom: 20px; */
+    /* background-color: #F3F4F5; */
+    background-color: rgb(243,244,245);
+}
+
+.metadata p {
+    line-height: 1rem;
+}
+
+.metadata p strong {
+    font-weight: 600;
+}

@@ -1,0 +1,307 @@
+.emailHeader {
+    background-color: #F5F5F5;
+    color: #2165AE;
+    border-bottom: 4px solid #2165AE;
+    padding: 20px;
+    margin: 0;
+}
+
+i.user.circle.icon {
+    color: #2165AE;
+}
+
+
+.emailHeader span {
+    position: relative;
+    top: 3px;
+    font-size: 1.75rem;
+    font-weight: bold;
+}
+
+p, h3, span {
+    font-family: Arial, sans-serif;
+    font-size: 1.5rem;
+}
+
+#subjectLine {
+    font-size: 2rem;
+    margin-left: 100px;
+    font-weight: bold;
+}
+
+span.subject {
+    color: #747471;
+    font-weight: lighter;
+}
+
+
+.senderInfo {
+    font-size: 1.6rem;
+}
+
+.senderInfo span {
+    font-size: 1.6rem;
+}
+
+.fromEmail {
+    color: #747471;
+    font-weight: lighter;
+    font-size: 1.6rem;
+    margin-left: 10px;
+}
+
+.ui.vertical.segment .row {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.emailSimContainer a {
+    color: black;
+    cursor: pointer;
+}
+
+.emailSimContainer a:hover {
+    color: black;
+}
+
+.fakeLink {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.fakeLink:hover {
+    text-decoration: underline;
+}
+
+.ui.right.floated.header.numContainer {
+    margin-top: 5px;
+}
+
+#inboxLabel {
+    margin-top: -5px;
+    margin-left: 15px;
+    padding: 3px;
+}
+
+span.pageNum {
+    position: relative;
+    top: 5px;
+    font-size: 1.5rem;
+    /* margin-top: 100px;
+    background-color: red;
+    padding-top: 50px; */
+
+}
+
+.ui.icon.message {
+    background-color: white !important;
+    box-shadow: none !important;
+}
+button.ui.circular.icon.button.closeEmailArrow {
+    margin-left: 0px;
+    margin-right: 40px;
+}
+
+button.ui.circular.icon.button {
+    color: black;
+    background-color: white;
+}
+
+button.ui.circular.icon.button:hover {
+    background-color: #e0e0e0;
+}
+
+.ui.vertical.segment:hover {
+    /* top & sides solid border, bottom shadow*/
+    box-shadow: 
+    inset 0 0 0 1px rgba(0, 0, 0, 0.24),
+    0 4px 4px -1px rgba(0, 0, 0, 0.24);
+
+
+/*  Thicker border
+    box-shadow: 
+    inset 0 0 0 2px rgba(0, 0, 0, 0.24),
+    0 4px 4px -2px rgba(0, 0, 0, 0.24); */
+
+}
+
+#emailContent {
+    margin-left: 100px;
+}
+
+#openDate {
+    /* margin-right: 20px; */
+}
+
+#ban {
+    margin-left: 3px;
+}
+
+#reply {
+    border-radius: 20px;
+    color: #444746 !important;
+    border: 1px solid #444746 !important;
+    /* margin-top: 20px; */
+    margin-left: 100px;
+}
+
+.modalTitle {
+    font-size: 2rem !important;
+    font-weight: bold;
+    text-align: center;
+}
+
+.red.exclamation.triangle.icon {
+    color: #C62D2D !important;
+}
+.content {
+    font-size: 1.5rem !important;
+}
+
+/* introjs styles copied from ui_layout.css */
+
+
+/* ---- INTROJS STEPS ---- */
+
+
+/* ----- (TUTORIAL) ------ */
+
+
+/* removes a gray overlay that covers everything but the selected element */
+
+.introjs-overlay {
+    visibility: hidden;
+}
+
+
+/* the box highlighting the selected element */
+
+.introjs-helperLayer {
+    border: 1px solid rgba(0, 149, 255, .5);
+    box-shadow: 0 2px 20px rgba(0, 149, 255, .4);
+    background-color: rgba(255, 255, 255, 0);
+}
+
+
+/* custom tooltips that have a blue border */
+
+.blueTooltip {
+    border: 1px solid rgba(0, 149, 255, .5);
+    box-shadow: 0 2px 20px rgba(0, 149, 255, .4);
+}
+
+
+/* avoid editing this, fixes issues with content being hidden under things */
+
+
+/* brings the tooltip forward on z-axis */
+
+.introjs-tooltipReferenceLayer {
+    z-index: 10000005;
+}
+
+
+/* adjusts the tooltip text appearance */
+
+.introjs-tooltiptext {
+    line-height: 120%;
+    /* font-size: 135%; */
+    font-size: 1.25rem !important;
+
+}
+
+.introjs-fixedTooltip {
+    position: absolute;
+}
+
+.introjs-fixParent {
+    position: static;
+}
+
+
+/* customizing the back, next, and done buttons on steps */
+
+
+/* -  -  -  -  - */
+
+.introjs-skipbutton.introjs-donebutton,
+.introjs-skipbutton.introjs-donebutton:hover {
+    /* height: 22px; */
+    line-height: 22px !important;
+    visibility: visible;
+    float: right;
+    border-radius: 5px;
+    color: rgba(255, 255, 255, .9);
+    background-image: linear-gradient(#21ba45, #21ba45);
+    text-shadow: 0px 0px 0 #fff;
+    margin-left: 5px;
+    border: 0px solid #d4d4d4;
+    font: 1rem sans-serif;
+}
+
+.introjs-button.introjs-nextbutton,
+.introjs-button.introjs-nextbutton:hover {
+    /* height: 22px; */
+    line-height: 22px !important;
+    border-radius: 5px;
+    visibility: visible;
+    color: rgba(255, 255, 255, .9);
+    background-image: linear-gradient(#2185D0, #2185D0);
+    text-shadow: 0px 0px 0 #fff;
+    margin-left: 5px;
+    border: 0px solid #d4d4d4;
+    font: 1rem sans-serif;
+}
+
+.introjs-button.introjs-prevbutton,
+.introjs-button.introjs-prevbutton:hover {
+    /* height: 22px; */
+    line-height: 22px !important;
+    border-radius: 5px;
+    visibility: visible;
+    color: rgba(255, 255, 255, .9);
+    background-image: linear-gradient(#2185D0, #2185D0);
+    text-shadow: 0px 0px 0 #fff;
+    margin-left: 5px;
+    border: 0px solid #d4d4d4;
+    font: 1rem sans-serif;
+}
+
+.introjs-button,
+.introjs-button:hover {
+    /* height: 22px; */
+    line-height: 22px !important;
+    border-radius: 5px;
+    visibility: visible;
+    color: rgba(255, 255, 255, .9);
+    background-image: linear-gradient(#21ba45, #21ba45);
+    text-shadow: 0px 0px 0 #fff;
+    margin-left: 5px;
+    border: none;
+    font: 1rem sans-serif;
+}
+
+.introjs-skipbutton {
+    visibility: hidden;
+}
+
+/* .customWideTooltip {
+    min-width: 600px;
+    margin-top: -250px !important;
+} */
+
+/* -  -  -  -  - */
+
+
+.emailSimContainer {
+    pointer-events: none;
+    /* margin-bottom: 400px; */
+    position: relative;
+}
+
+@media (max-width: 920px) {
+    .introjs-tooltip{
+        /* margin-top: 275px !important; */
+        position: relative !important;
+    }
+}

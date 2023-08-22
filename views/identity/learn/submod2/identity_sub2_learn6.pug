@@ -1,0 +1,38 @@
+extends ../../../module_layout
+
+block content
+
+  .ui.container#raised-container
+    .limit
+      h1.ui.header.large#learn-title
+        .content
+          | Recognize the Techniques of Scammers
+      h2 Example 2 : Claim that they know you via email 
+
+      img.ui.fluid.image(src='/images/learn2-6.png' style='margin-left: auto; margin-right: auto')
+      p Here are signs that this email is a scam, (even though it looks like it comes from someone you know):
+      ul
+          li 
+            | Scam emails fail to identify the receiver’s name.
+          li  
+            | Scam emails invite you to click on a new link, redirecting you to an illegitimate website. Be careful when pressing links or filling out forms from emails as it may lead to a phishing website designed to steal your personal information.
+
+      .ui.icon.blue.message
+        .icon
+          img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
+        .content
+          .header
+            //- i.info.circle.icon
+            | Important
+          p  Safe emails typically address you by name and do not include links for updating personal or payment information 
+      br
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+  .ui.container
+    +navButtons('identity', '/submod2/learn5/identity', '/submod2/learn7/identity', 38)  
+
+block scripts
+  script(src='/js/character.js')

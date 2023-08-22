@@ -1,0 +1,56 @@
+extends ../../../module_layout
+
+block content
+
+  .ui.container#raised-container
+    .limit
+      h1.ui.header.large#learn-title
+        .content
+          | Recognize the Techniques of Scammers
+      h2 Example 3:  Messages or Emails offer a coupon or gift card
+
+      .imessage
+        p.from-them
+          | Congratulations! You’ve won a $1,000 Walmart gift card. Go to 
+          u http://bit.ly/145634 
+          | to claim now.
+
+      p Here are signs that this message is a scam:
+      ul
+          li 
+            | This message offers a coupon for a $1000 gift card. Is that too good to be true?
+          li  
+            | This message does not demonstrate an official source of Walmart.
+          li 
+            | This message invites you to click on a shortened foreign link. Legitimate links:
+          ul
+            li 
+              | should be https://
+            li 
+              | should not shortened
+            li 
+              | should have no typos or misspelling
+          li  
+            | This message fails to provide fine prints, such as the expiration data or the exceptions to the sale. A legitimate coupon usually lists the details.
+      .ui.icon.blue.message
+        .icon
+          img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
+        .content
+          .header
+            //- i.info.circle.icon
+            | Important
+          p Legitimate companies won't ask for personal info in exchange for coupons or gift cards.
+
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+  .ui.container
+    +navButtons('identity', '/submod2/learn6/identity', '/submod2/learn8/identity', 40)  
+
+block scripts
+  script(src='/js/character.js')
+
+block styles
+  link(rel='stylesheet', href='/css/learn2.css')

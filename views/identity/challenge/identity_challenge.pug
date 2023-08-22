@@ -1,62 +1,38 @@
-extends ../../ui_layout
+extends ../../module_layout
 
 block content
 
 
   .ui.container#raised-container
-    .ui.raised.segment
-      #raised-content
-        h1.ui.header.large#mod-title
-          .content
-            | Evaluation
-        .limit
-          p Before we begin the lesson, would you like to start with a challenge to help us customize the content based on your current understanding? 
-          .ui.grid#to_earn_badge
-            .three.column.row
-              .column
-                .content
-                  img(src='/badges/identity/mystery_badge.png')
-                  p <strong>Challenge</strong>
-                    br
-                    | <strong>Conqueror</strong>
-          p This will also give you an opportunity to earn your first badge! 
-          p If you prefer not to take it press the "skip" button to proceed directly to the default DART Learn lesson.
-    +navButtons('/intro2/identity', '/challenge2/identity', 'Back' , 'Take', true, '/submod/learn/identity')  
+    .limit
+      h1.ui.header.large#mod-title
+        .content
+          | Challenge
+      p Want to try a challenge and earn your first badge? 
+      p If you'd rather proceed directly to the DART Learn lesson, click "Skip"
+      .ui.grid#to_earn_badge
+        .three.column.row
+          .column
+            .content
+              img(src='/badges/identity/mystery_badge.png')
+              p <strong>Challenge</strong>
+                br
+                | <strong>Conqueror</strong>
 
 
-block scripts
-  script.
-  
+    //- +navButtons('/intro2/identity', '/challenge2/identity', 'Back' , 'Take', true, '/submod/learn/identity')  
+    //- Fill progress bar to correct percent and color 
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+  .ui.container
+    +navButtons('identity', '/intro2/identity', '/challenge2/identity', 6, 'Back' , 'Challenge', true, '/submod/learn/identity')
 
 
-    var voiceoverMappings = {
-      '.showLearnSectionButton': {
-        "initialDelay": 700,
-        "delay": 500,
-        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
-      },
-      '.voiceover_keyTerm1': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.6.2.1.mp3']
-      },
-      '.voiceover_keyTerm2': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.6.2.2.mp3']
-      },
-      '.voiceover_keyTerm3': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.6.2.3.mp3']
-      }
-    };
-  script(src='/module_js/voiceover.js')
-  script(src="/module_js/base_start.js")
-  
 block styles
-  link(rel='stylesheet', href='/css/module.css')  
-  link(rel='stylesheet', href='/css/evaluate.css')  
+  link(rel='stylesheet', href='/css/challenge.css')  
   //- link(rel='stylesheet', href='/css/short-page-footer-fixed.css')  
 
     

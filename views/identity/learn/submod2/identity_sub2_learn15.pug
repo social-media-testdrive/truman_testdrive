@@ -1,0 +1,253 @@
+extends ../../../module_layout
+
+block content
+
+  .ui.container#raised-container.top-padding
+    .limit
+      .ui.raised.segment.chat-container(style="background-color: #F1EDED;")
+        .ui.large.header
+          .container#cropped-circular-image
+            .ui.segment(style="background-color: #7D7C7C !important;")
+              .ui.circular.small.image
+                img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+              span(style="font-size: 2.5rem; margin-left: 20px;color:white;") Chat with 
+                span#name ‎
+          br
+          .content.text-message
+            .ui.circular.tiny.image 
+              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+            .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
+              p Great job finishing the first section, #{user.profile.name}! 
+              p How are you feeling right now? Do you feel more confident about recognizing scam emails and message?     
+          #encounter_container
+            div#encounter_label
+              .ui.large.right.pointing.label
+                p#encounter_text 
+              .ui.circular.tiny.image(style="background: white !important")
+                img(src='/profile_pictures/avatar-icon.svg', alt='user text message profile picture')
+
+            #encounter_response(style='clear: both;')
+              button.ui.big.button.chatBotButton(onclick="showTopic('Yes')") Yes
+              button.ui.big.button.chatBotButton(onclick="showTopic('No')") No
+              button.ui.big.button.chatBotButton(onclick="showTopic('I\\'m not sure')") I'm not sure
+
+
+          //- bot yes reply
+          #yes_reply.content.text-message(style="display: none")
+            .ui.circular.tiny.image 
+              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+            .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
+              p I'm glad to hear that you feel confident in recognizing scam emails and messages. 
+              p Could you tell me more about what you've learned and if there are any new insights or tips that you've gained? 
+              p Please type your response below and hit the "send" button.
+
+          //- bot no reply
+          #no_reply.content.text-message(style="display: none")
+            .ui.circular.tiny.image 
+              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+            .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
+              p I understand that you might still have some concerns about identifying scam emails and messages. It's completely okay to feel that way. Learning to recognize scams takes time, and I'm here to support you!
+              p Please click the "Complete Section 2" button on the bottom right of the page to continue learning. 
+            br
+            br
+
+          //- bot not sure reply
+          #sure_reply.content.text-message(style="display: none")
+            .ui.circular.tiny.image 
+              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+            .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
+              p That's okay! Recognizing scam emails and messages can be tricky, and it's completely normal to have some uncertainty.
+              p Would you like to share any questions you have about identifying scam emails or messages?
+          
+
+          //- final response from the user
+          #final_container(style="clear: both; float: right; margin-top: 40px;")
+            div#final_label
+              .ui.large.right.pointing.label
+                p#sent_message 
+                  span
+                    i.ellipsis.horizontal.icon
+              .ui.circular.tiny.image(style="background: white !important")
+                img(src='/profile_pictures/avatar-icon.svg', alt='user text message profile picture')
+            br
+            br
+            br
+
+
+
+
+          //- suspicion question reply (the one after not sure)
+          #sus_reply.content.text-message(style="display: none")
+            .ui.circular.tiny.image 
+              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+            .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
+              p A good rule of thumb is to double-check the sender's email address and avoid clicking on suspicious links. If something doesn't feel right, it's always better to be cautious. 
+              p It was great talking with you! Please click the "Complete Section 2" button on the bottom right of the page to continue learning. 
+            br
+            br
+
+          //- experience question reply (the one after yes)
+          #experience_reply.content.text-message(style="display: none")
+            .ui.circular.tiny.image 
+              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+            .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
+              p Thank you for sharing those insights. It sounds like you've learned a lot!
+              p It was great talking with you! Please click the "Complete Section 2" button on the bottom right of the page to continue learning. 
+            br
+            br
+      //- .ui.fluid.action.input
+      //-   input(type='text' placeholder='Search...')
+      //-   .ui.button Send 
+      .ui.fluid.action.icon.input(style="margin-top: -15px;")
+        input.message-input(type="text" placeholder="Type your message..." id="message-input")
+        i.paper.plane.big.icon(style="color: #6BBCC7; margin-right: 60px;z-index:100;")
+        .ui.button#send-button Send 
+    br
+    //- .ui.container#nav-container
+    //-   div#nav-menu          
+    //-     button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/submod/learn6/identity';") 
+    //-       i.arrow.left.icon 
+    //-       | Back
+    //-     button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/submod/learn8/identity';")
+    //-       | Complete Section 1
+    //-       i.arrow.right.icon
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+
+
+block append footer
+  .ui.container
+    +navButtons('identity', '/submod2/learn15/identity', '/submod2/learn16/identity', 60, 'Back', 'Next')  
+
+
+block scripts
+  script(src='/js/update_character_name.js')
+  script.
+    let accept_sending = false;
+    let final_response_number = 0;
+
+    $(document).ready(function() {
+      $('#send-button').click(function() {
+        if(accept_sending) {
+          var userResponse = $('input#message-input').val();
+          //- console.log(userResponse);
+
+          var messageText = document.getElementById("sent_message");
+          messageText.innerHTML = userResponse;
+
+          // show final response to the users message
+          if (final_response_number == 1) {
+            document.getElementById("experience_reply").style.display = "";
+
+          } else if (final_response_number == 2) {
+            document.getElementById("sus_reply").style.display = "";
+          }
+        
+        // Scroll the chat container to the bottom
+        $('.chat-container').scrollTop($('.chat-container')[0].scrollHeight);
+
+          $('input#message-input').val('');        
+        }
+
+        // disable sending messages after the user has sent a message
+        accept_sending = false;
+      });
+    });
+
+
+    // event listener to the input field submitting via enter key
+    document.getElementById('message-input').addEventListener('keypress', function(event) {
+      // Check if the enter key is pressed (key code 13)
+      if (event.keyCode === 13 && accept_sending) {
+        // Get the input value
+        var inputValue = this.value;
+        
+        // set message text from the three elipses to the input value
+        //- console.log(inputValue);
+        var messageText = document.getElementById("sent_message");
+        messageText.innerHTML = inputValue;
+
+        // show final response to the users message
+        if (final_response_number == 1) {
+          document.getElementById("experience_reply").style.display = "";
+        } else if (final_response_number == 2) {
+          document.getElementById("sus_reply").style.display = "";
+        }
+
+        // Scroll the chat container to the bottom
+        $('.chat-container').scrollTop($('.chat-container')[0].scrollHeight);
+
+        // Clear the input field
+        this.value = '';
+
+        
+        // disable sending messages after the user has sent a message
+        accept_sending = false;
+      }
+    });
+
+    function showTopic(name){
+      var showMe = document.getElementById("encounter_text");
+      showMe.innerHTML = name;
+      document.getElementById("encounter_label").style.display = "flex";
+      
+      var hideMe = document.getElementById("encounter_response");
+      hideMe.style.visibility = "hidden";
+      console.log("Name: " + name)
+
+      if (name == "No") {
+        document.getElementById("no_reply").style.display = "";
+      }
+
+      if (name == "Yes") {
+        document.getElementById("yes_reply").style.display = "";
+        document.getElementById("final_label").style.display = "flex";
+        accept_sending = true;
+        final_response_number = 1;
+      }
+
+      if (name == "I'm not sure") {
+        document.getElementById("sure_reply").style.display = "";
+        document.getElementById("final_label").style.display = "flex";
+        accept_sending = true;
+        final_response_number = 2;
+      }
+
+      // Scroll the chat container to the bottom
+      $('.chat-container').scrollTop($('.chat-container')[0].scrollHeight);
+    }
+
+
+
+
+    var voiceoverMappings = {
+      '.showLearnSectionButton': {
+        "initialDelay": 700,
+        "delay": 500,
+        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
+      },
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.1.mp3']
+      },
+      '.voiceover_keyTerm2': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.2.mp3']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.6.2.3.mp3']
+      }
+    };
+
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_start.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/module.css')  
+    
+    

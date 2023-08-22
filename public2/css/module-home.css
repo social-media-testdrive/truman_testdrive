@@ -1,0 +1,255 @@
+#welcome {
+    margin-top: 15px;
+}
+
+/* inline so the bubbles like 100 learners today will show up next to it */
+#mod-title {
+    display: inline-block;
+    font-size: 2.25rem;
+    font-family: 'Inter', sans-serif; 
+}
+
+#learn-title {
+    font-size: 2.25rem;
+    margin-top: 15px;
+}
+
+/* semantic ui ordered lists don't have dots after numbers, so I'm using the normal lists but imported the needed semantic ui styles here*/
+.learning-objectives {
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 50px;
+    padding: 0em 0em;
+}
+
+/* from sementic ui, see note above in .learning-objectives comment */
+li {
+    display: list-item;
+    table-layout: fixed;
+    /* list-style-type: none; */
+    list-style-position: outside;
+    padding: 0.21428571em 0em;
+    line-height: 1.14285714em;
+}
+
+/* .learning-objectives li { 
+    margin-top: 20px;
+    margin-bottom: 20px;
+} */
+
+.bubble-container {
+    display: inline-block; 
+    position: absolute;
+    margin-left: 10px;
+}
+
+.bubbleText {
+    background-color: white; 
+    border: 1px solid #6BBCC7;
+    font-size: 0.8rem;
+    padding: 6px; 
+    border-radius: 20px; 
+    margin-left: 20px;
+}
+
+
+#banner_pic {
+    margin-top: 5px;
+}
+
+/* entire badge grid */
+#badgesGrid {
+    /* background-color: green; */
+    margin: 0 auto;
+    width: 75%;
+}
+
+/* square for each badge */
+#badgesGrid .column .content {
+    /* background-color: red; */
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+#downloadGrid .button{
+    border: 1px solid #6BBCC7;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+
+    /* background-color: white !important;
+    color: darkgray !important; */
+}
+
+a.ui.fluid.labeled.icon.button {
+    background-color: white;
+}
+
+.graySquare {
+    background-color: #D9D9D9 !important;
+    /* color: transparent; */
+    /* padding-left: 30%;
+    margin-right: 300px !important; */
+
+}
+
+.inline .download {
+    position: absolute;
+    right: 15px;
+    /* padding-left: 100px !important; */
+
+    /* padding-left: 50px !important;
+    padding-bottom: 35px !important; */
+}
+
+.banner {
+    /* background-color: blue; */
+    height: 200px;
+    width: 100%;
+    max-width: 1200px;    
+    /* overflow: hidden; */
+    position: relative;
+}
+  
+.banner img {
+    height: 100%;
+    width: 100%;
+    max-width: 1200px;
+    /* allow us to adjust position of picture inside of the banner */
+    position: absolute;
+
+    /* scaled proportionally to completely cover the entire container cropping some parts of the content */
+    object-fit: cover;
+
+    /* object-position: center; */
+
+    /* keep image's original size */
+    /* object-fit: none; */
+    /* Adjust the percent here to move img up/down to select portion of it you want visible */
+    /* object-position: center 0%; */
+
+}
+
+#earned_badge {
+    width: 50px;
+}
+
+#submod-progress-bar .item.active {
+    background-color: #6BBCC7; 
+    color: white; 
+    border-right: 2px solid white;
+}
+
+#submod-progress-bar .item {
+    background-color: darkgray;
+    color: white; 
+    border-right: 2px solid white;
+}
+
+#submod-progress-bar .item:nth-child(3) {
+    border-right: none;
+}
+
+/* change the default formantic ui hollow bullets to the solid filled in ones*/
+ul {
+    list-style-type: disc;
+}
+
+/* make underlined text also bolded */
+u {
+    font-weight: bold;
+}
+
+.ui.circular.small.image {
+    background: #C4C4C4 !important;
+    overflow: hidden;
+    border-radius: 50%;
+    width: 100px; 
+    height: 100px;
+}
+
+.ui.circular.tiny.image {
+    background: #C4C4C4 !important;
+    overflow: hidden;
+    border-radius: 50%;
+    width: 50px; 
+    height: 50px;
+    margin: 15px;
+}
+
+.ui.large.left.pointing.label {
+    background: #2165AE;
+    color: white;
+}
+
+.ui.raised.segment.chat-container {
+    height: 500px;
+    overflow-y: scroll;
+    position: relative; 
+    padding: 0 !important;
+    background-color: #F1EDED; 
+}
+
+.text-message {
+    background-color: #F1EDED; 
+    width: 100%;
+}
+
+.chat-container p {
+    font-size: 1.5rem;
+}
+
+#encounter_container,
+#final_container {
+    clear: both; 
+    float: right; 
+    margin-top: 20px;
+}
+
+#encounter_label,
+#final_label {
+    float: right; 
+    display: none; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+#section-grid {
+    margin: auto;
+}
+
+#section-grid .four.wide.column {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    margin-right: 30px;
+}
+
+#section-grid .four.wide.column p {
+    text-align: center; 
+    margin-top: 0.5em;
+}
+
+.ui.huge.label.lockContainer {
+    text-align: center;
+    background: #2165AE;
+    border: 3px solid #2165AE; 
+    border-radius: 10px; 
+    padding: 40px 80px;
+}
+
+.ui.huge.label.lockContainer.unlocked {
+    text-align: center;
+    background: #6BBCC7;
+    border: 3px solid #6BBCC7; 
+    border-radius: 10px; 
+    padding: 40px 80px;
+}
+
+i.big.lock.icon,
+i.big.unlock.icon {
+    margin: 0 auto; 
+    color: white;
+}
