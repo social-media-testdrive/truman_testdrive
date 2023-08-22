@@ -3,7 +3,7 @@ extends ../../module_layout
 block content
   .ui.container#raised-container.top-padding
     .limit
-        p Congratulations on successfully completing all the identity theft learn section! 
+        p Congratulations on successfully completing all of the identity theft learn section! 
         p Now, let's take your learning to the next level by exploring some real-world scenarios together. 
         p Get ready to apply your newly acquired knowledge to practical situations and excel even further! 
     script.
@@ -12,7 +12,7 @@ block content
 
 block append footer
   .ui.container
-    +navButtons('identity', '/submod3/learn/identity', '/explore2/identity', 64)  
+    +navButtons('identity', '/submod3/learn/identity', '/explore2/identity', 64, 'Back', 'Start Explore')  
 
 block scripts
     script(src='/module_js/identity_theft_explore.js')
