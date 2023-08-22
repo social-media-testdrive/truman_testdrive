@@ -36,9 +36,35 @@
     background-color: #F5F8FA;
 }
 
+.fourChoices .ui.radio.checkbox{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 2px solid gray;
+    width: 100%;
+    text-align: left;
+    padding: 20px;
+    /* subtract 6 pixels as */
+    padding-bottom: 14px;
+
+    display: flex; 
+    align-items: center; 
+}
+
+.fourChoices  .ui.checkbox label p {
+    margin-top: -8px;
+}
+
+.fourChoices input[type=radio] {
+    width: 850px !important;
+    height: 60px !important;
+}
+
 .checkboxChoices {
     display: grid;
 }
+
+
 
 .checkboxChoices .ui.checkbox.listChoices {
     margin-top: 10px;

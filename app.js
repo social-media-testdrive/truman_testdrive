@@ -1147,11 +1147,42 @@ app.get('/explore5/:modId', passportConfig.isAuthenticated, setHttpResponseHeade
 });
 
 // Render evaluate (all modules) ******************************
-// app.get('/evaluate/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
-//     res.render(req.params.modId + '/evaluate/' + req.params.modId + '_evaluate', {
-//         title: 'Evaluate'
-//     });
-// });
+app.get('/evaluate/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, async function(req, res) {
+    let quizData;
+    let currentSection = "evaluate"
+    let backLink = "/explore4/identity"
+    let nextLink = "/evaluate2/identity"
+    const data = await fs.readFileAsync(`${__dirname}/public2/json/` +  req.params.modId + `/evaluate.json`);
+    quizData = JSON.parse(data.toString());
+
+    const currentTime = getCurrentTime();
+    const currentDate = getCurrentDate();
+    const futureDate = getFutureDate();
+
+    req.params.modId 
+    res.render('dart-quiz-template.pug', {
+        title: 'Evaluate',
+        quizData,
+        currentSection,
+        backLink,
+        nextLink,
+        currentTime,
+        currentDate,
+        futureDate
+    });
+});
+
+app.get('/evaluate/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/evaluate/' + req.params.modId + '_evaluate', {
+        title: 'Evaluate'
+    });
+});
+
+app.get('/evaluate2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/evaluate/' + req.params.modId + '_evaluate2', {
+        title: 'Evaluate'
+    });
+});
 
 app.get('/submod2/learn14/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, async function(req, res) {
     let quizData;

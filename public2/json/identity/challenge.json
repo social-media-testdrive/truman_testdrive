@@ -14,7 +14,7 @@
       }
     },
     "correctResponse": "no"
-},
+  },
   "2": {
       "type": "yes_no",
       "partial": "q2.html",

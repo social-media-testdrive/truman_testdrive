@@ -93,6 +93,8 @@ $(document).ready(function() {
             // Get user selections 
             if (questionData[currentQuestion].type === "yes_no") {
                 val = $("input[type='radio']:checked").val();
+            } else if(questionData[currentQuestion].type === "abcd") {
+                val = $("input[type='radio']:checked").val();
             } else if  (questionData[currentQuestion].type === "multi_select") {
                 val = [];
                 $("input[type='checkbox']:checked").each(function() {
@@ -119,6 +121,19 @@ $(document).ready(function() {
                     }
 
                     // question 1 answer stored in array index 0
+                    selectedAnswer[currentQuestion - 1] = val;
+                    console.log("selectedAnswer: " + selectedAnswer);
+                    console.log("questionScores: " + questionScores);
+                } if (questionData[currentQuestion].type === "abcd") {
+                    // // simple yes/no question so if correct add 1 point if wrong add 0 points
+                    if (val === questionData[currentQuestion].correctResponse) {
+                        console.log("ABCD Correct Answer!")
+                        questionScores[currentQuestion - 1] = 1;
+                    } else {
+                        questionScores[currentQuestion - 1] = 0;
+                    }
+
+                    // // question 1 answer stored in array index 0
                     selectedAnswer[currentQuestion - 1] = val;
                     console.log("selectedAnswer: " + selectedAnswer);
                     console.log("questionScores: " + questionScores);
@@ -170,6 +185,7 @@ $(document).ready(function() {
 				else 
 				{
                     $(".choiceList").empty();
+                    $(".fourChoices").empty();
                     $(".checkboxChoices").empty();
                     $(".question").empty();
                     $(".explanationCorrectMulti").hide();
@@ -177,6 +193,7 @@ $(document).ready(function() {
                     $(".explanationCorrectYesNo").hide();
                     $(".explanationIncorrectYesNo").hide();
                     $(".quizMessage").hide();
+                    $(".htmlImage").hide();
 					displayScore();
 					$(".preButton").text("Try Again");
                     $(".nextButton").text("Complete Quiz");
@@ -245,8 +262,10 @@ $(document).ready(function() {
         // console.log("View Answers Clicked!");
         viewingAnswer = true;
 
+        $(".htmlImage").show();
         // disable ability to change selectedAnswers
         $(".choiceList").css("pointer-events", "none");
+        $(".fourChoices").css("pointer-events", "none");
         $(".checkboxChoices").css("pointer-events", "none");
 
         resetQuiz();
@@ -349,6 +368,7 @@ function displayCurrentQuestion()
 
     // Remove all previous question content so we can display the needed question (whether it be a previous one or new one)
     $(".choiceList").empty();
+    $(".fourChoices").empty();
     htmlImageContainer.empty();
     checkBoxesContainer.empty();
     $(".explanationCorrectMulti").hide();
@@ -424,6 +444,8 @@ function displayCurrentQuestion()
     let choiceContainer;
     if (questionData[currentQuestion].type === "yes_no") {
         choiceContainer = $(".choiceList");
+    } else if  (questionData[currentQuestion].type === "abcd") {
+        choiceContainer = $(".fourChoices");
     } else if  (questionData[currentQuestion].type === "multi_select") {
         choiceContainer = $(".checkboxChoices");
     }
@@ -445,11 +467,15 @@ function displayCurrentQuestion()
             if (questionData[currentQuestion].type === "yes_no") {
                 checkboxDiv.classList.add("ui", "radio", "checkbox");
                 input.type = "radio";   
+            } else if  (questionData[currentQuestion].type === "abcd") {
+                checkboxDiv.classList.add("ui", "radio", "checkbox");
+                input.type = "radio";   
             } else if  (questionData[currentQuestion].type === "multi_select") {
                 checkboxDiv.classList.add("ui", "checkbox", "listChoices");
                 input.type = "checkbox";
                 $(".choiceList").attr("style", "");
             }
+
             input.name = "q" + currentQuestion; // Use the specified question ID
             input.id = choiceKey;
             input.value = choiceKey;
@@ -458,6 +484,12 @@ function displayCurrentQuestion()
             if(questionData[currentQuestion].type === "yes_no") {
                 labelElement = document.createElement("label");
                 labelElement.textContent = choice.text;
+            } else if  (questionData[currentQuestion].type === "abcd") {
+                // make label a p element so we can style it for multiline text for the long multi-select question prompts
+                labelElement = document.createElement("label");
+                const choiceText = document.createElement("p");
+                choiceText.textContent = choice.text;
+                labelElement.appendChild(choiceText);
             } else if  (questionData[currentQuestion].type === "multi_select") {
                 // make label a p element so we can style it for multiline text for the long multi-select question prompts
                 labelElement = document.createElement("label");
@@ -474,6 +506,10 @@ function displayCurrentQuestion()
 
             // when going to previous questions, fill in with their previous answers
             if (questionData[currentQuestion].type === "yes_no") {
+                if(choiceKey === selectedAnswer[currentQuestion - 1] && viewingAnswer === false) { 
+                    document.getElementById(choiceKey).checked = true;
+                } 
+            } else if (questionData[currentQuestion].type === "abcd") {
                 if(choiceKey === selectedAnswer[currentQuestion - 1] && viewingAnswer === false) { 
                     document.getElementById(choiceKey).checked = true;
                 } 
@@ -575,7 +611,30 @@ function displayCurrentQuestion()
                     // $(".incorrectExplanation").text(questionData[currentQuestion].choices[selectedAnswer[currentQuestion - 1]].explanation);
                     $(".explanationIncorrectYesNo").show();
                 } 
-            } else if (questionData[currentQuestion].type === "multi_select") {
+            } else if(questionData[currentQuestion].type === "abcd") {
+                // fill in the user's selected answer to this question
+                if(selectedAnswer[currentQuestion - 1] != undefined) {
+                    document.getElementById(selectedAnswer[currentQuestion - 1]).checked = true;
+                } 
+                console.log("Current selected answer: " + selectedAnswer[currentQuestion - 1])
+
+
+                // console.log("WHATTTTT: " +  questionData[currentQuestion].choices.yes.explanation);
+                // Fill in the explanation 
+                if(questionScores[currentQuestion - 1] === 1) {
+                    document.getElementById(selectedAnswer[currentQuestion - 1]).parentNode.classList.add("correctChoice");
+                    $(".correctScore").text("Score: " + questionScores[currentQuestion - 1] + "/1");
+                    // selectedAnswer[currentQuestion - 1] is yes or no
+                    $(".correctExplanation").html(questionData[currentQuestion].explanation);
+                    $(".explanationCorrectYesNo").show();
+                } else if(questionScores[currentQuestion - 1] === 0) {
+                    document.getElementById(selectedAnswer[currentQuestion - 1]).parentNode.classList.add("incorrectChoice");
+                    $(".incorrectScore").text("Score: " + questionScores[currentQuestion - 1] + "/1");
+                    $(".incorrectExplanation").html(questionData[currentQuestion].explanation);
+                    // $(".incorrectExplanation").text(questionData[currentQuestion].choices[selectedAnswer[currentQuestion - 1]].explanation);
+                    $(".explanationIncorrectYesNo").show();
+                } 
+            }else if (questionData[currentQuestion].type === "multi_select") {
                 if(questionScores[currentQuestion - 1] === 1) {
                     $(".correctScore").text("Score: " + questionScores[currentQuestion - 1] + "/1");                
 
@@ -684,6 +743,7 @@ function resetQuiz() {
         selectedAnswer = [];
         questionScores = [];    
         $(".choiceList").css("pointer-events", "auto");
+        $(".fourChoices").css("pointer-events", "auto");
         $(".checkboxChoices").css("pointer-events", "auto");
     }
 
