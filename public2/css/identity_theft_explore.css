@@ -26,6 +26,7 @@ p, h3, span {
 #subjectLine {
     font-size: 2rem;
     margin-left: 100px;
+    font-weight: bold;
 }
 
 span.subject {
@@ -54,18 +55,22 @@ span.subject {
     padding-left: 15px;
 }
 
-a {
+.emailSimContainer a {
     color: black;
     cursor: pointer;
 }
 
-a:hover {
+.emailSimContainer a:hover {
     color: black;
 }
 
-a:visited {
-    color: forestgreen;
-    text-decoration-color: hotpink;
+.fakeLink {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.fakeLink:hover {
+    text-decoration: underline;
 }
 
 .ui.right.floated.header.numContainer {
@@ -138,4 +143,22 @@ button.ui.circular.icon.button:hover {
     border: 1px solid #444746 !important;
     /* margin-top: 20px; */
     margin-left: 100px;
+}
+
+/* .openEmailContainer {
+    margin-top: 10px;
+    margin-bottom: 25px;
+} */
+
+.modalTitle {
+    font-size: 2rem !important;
+    font-weight: bold;
+    text-align: center;
+}
+
+.red.exclamation.triangle.icon {
+    color: #C62D2D !important;
+}
+.content {
+    font-size: 1.5rem !important;
 }

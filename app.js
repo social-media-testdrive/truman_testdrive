@@ -1108,11 +1108,12 @@ app.get('/explore2/:modId', passportConfig.isAuthenticated, setHttpResponseHeade
     const currentTime = getCurrentTime();
 
     const oneDayAgo = new Date(currentDate.getTime() - 24 * 60 * 60 * 1000);
-  
+    const twoDaysAgo = new Date(currentDate.getTime() - 24 * 2 * 60 * 60 * 1000);
+
     const emails = [
-      { index: 0, sender: "Walmart", subject: "URGENT!", date: currentTime, from:"<walmrt@gmail.com>", content: "Your payment was declined on a recent purchase. Resubmit your credit card details at this link below within 24 hours." },
-      { index: 1, sender: "irs gov", subject: "Identity Verification Service", date: formatDate(oneDayAgo), from:"<irsgov@gmail.com>", content: "We’ve noticed your account information is missing orincorrect. We need to verify your account information to file your Tax Refund.Please follow this link to verify your info." },
-      { index: 2, sender: "Dropbox", subject: "New Sign In", date: formatDate(oneDayAgo), from:"<irsgov@gmail.com>", content: "We’ve noticed your account information is missing orincorrect. We need to verify your account information to file your Tax Refund.Please follow this link to verify your info." }
+      { index: 0, sender: "Walmart", subject: "URGENT!", date: currentTime, from:"<walmrt@gmail.com>", content: "<p>Hi customer. This is an URGENT message!</p><p>Your payment was declined on a recent purchase. Resubmit your credit card details at this link below within 24 hours.</p><p>Click here NOW! <a class='fakeLink' onclick='linkClick()'>http://jdksj6879sh.com</a></p>", replyHeader: "warning", replyContent: "This email is indicative of an identity theft scam. Replying to the email is dangerous! The safe options would be to block sender, report scam, or delete the email. We can look into why this is a scam.", blockHeader: "good", blockContent: "Blocking this sender is correct because this email is indicative of an identity theft scam. You could also report or delete the email.", reportHeader: "good", reportContent: "Reporting this email is correct because this email is indicative of an identity theft scam. You could also block the sender or delete the email.", deleteHeader: "good", deleteContent: "Deleting this email is correct because this email is indicative of an identity theft scam. You could also block the sender or report it as a scam." },
+      { index: 1, sender: "irs gov", subject: "Identity Verification", date: formatDate(oneDayAgo), from:"<irsgov@gmail.com>", content: "We’ve noticed your account information is missing orincorrect. We need to verify your account information to file your Tax Refund.Please follow this link to verify your info." },
+      { index: 2, sender: "Dropbox", subject: "New Sign In", date: formatDate(twoDaysAgo), from:"<irsgov@gmail.com>", content: "We’ve noticed your account information is missing orincorrect. We need to verify your account information to file your Tax Refund.Please follow this link to verify your info." }
     ];  
 
     res.render(req.params.modId + '/explore/' + req.params.modId + '_explore2', {
