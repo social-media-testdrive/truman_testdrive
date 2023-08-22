@@ -1,7 +1,7 @@
 extends ../../module_layout
 
 block content
-  .ui.container#raised-container.top-padding
+  .ui.container#raised-container(style="padding: 0px;")
     .limit
         .emailSimContainer
             .emailHeader
@@ -20,35 +20,35 @@ block content
                                             span.subject= " - " + email.subject
                                     .four.wide.column.right.aligned
                                         p= email.date
-        .openEmailContainer
-            .ui.padded.segment
-                button.ui.circular.icon.button.closeEmailArrow(onclick='closeEmail()')
-                    i.left.arrow.big.icon
-                button.ui.circular.icon.button#report
-                    i.bullhorn.large.icon     
-                button.ui.circular.icon.button#ban
-                    i.ban.large.icon
-                button.ui.circular.icon.button#delete
-                    i.trash.alternate.outline.large.icon
-                .ui.horizontal.divider
-                each email in emails
-                    if email.index === 0
-                        .ui.left.floated.header
-                            span#subjectLine #{email.subject}
-                                .ui.label#inboxLabel
-                                    | Inbox
-                                    i.delete.icon
-                        .ui.right.floated.header
-                            span#openDate #{email.date}
-                        .ui.horizontal.divider
-                        .ui.icon.message
-                            i.user.circle.icon
-                            .content.senderInfo
-                                .header #{email.sender} <span class="fromEmail">#{email.from}</span>
-                        p#emailContent #{email.content}
-                            button.ui.basic.button#reply
-                                i.reply.icon
-                                | Reply
+        //- .openEmailContainer
+        //-     .ui.padded.segment
+        //-         button.ui.circular.icon.button.closeEmailArrow(onclick='closeEmail()')
+        //-             i.left.arrow.big.icon
+        //-         button.ui.circular.icon.button#report
+        //-             i.bullhorn.large.icon     
+        //-         button.ui.circular.icon.button#ban
+        //-             i.ban.large.icon
+        //-         button.ui.circular.icon.button#delete
+        //-             i.trash.alternate.outline.large.icon
+        //-         .ui.horizontal.divider
+        //-         each email in emails
+        //-             if email.index === 0
+        //-                 .ui.left.floated.header
+        //-                     span#subjectLine #{email.subject}
+        //-                         .ui.label#inboxLabel
+        //-                             | Inbox
+        //-                             i.delete.icon
+        //-                 .ui.right.floated.header
+        //-                     span#openDate #{email.date}
+        //-                 .ui.horizontal.divider
+        //-                 .ui.icon.message
+        //-                     i.user.circle.icon
+        //-                     .content.senderInfo
+        //-                         .header #{email.sender} <span class="fromEmail">#{email.from}</span>
+        //-                 p#emailContent #{email.content}
+        //-                     button.ui.basic.button#reply
+        //-                         i.reply.icon
+        //-                         | Reply
 
 
     script.

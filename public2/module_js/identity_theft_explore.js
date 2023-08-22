@@ -18,6 +18,11 @@ console.log(emails[0]);
 // });
 
 function showEmail(index) {
+    $('#email-' + index).css('background-color', '#F2F6FC');
+    // Add class "open" to the envelope icon within the email element
+    $('#email-' + index).find('.envelope.icon').addClass('open');
+
+    $('.emailSimContainer').hide();
     console.log("email shown: ", index);
 
     var email = emails[index]; // Replace with your method to fetch email data
@@ -106,6 +111,9 @@ function showEmail(index) {
 }
   
 function closeEmail() {
+    $('.openEmailContainer').remove();
+    $('.emailSimContainer').show();
+
     console.log("email closed");
 }
   
