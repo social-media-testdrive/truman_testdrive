@@ -222,7 +222,7 @@ function showEmail(index) {
                 {
                     element: document.querySelector('.left.arrow.big.icon'),
                     position: 'right',
-                    intro: "This button is used to return back the your inbox home page.<br><br>This concludes the tutorial for the email inbox. Click the 'Done' button below to exit the tutorial.",
+                    intro: "This button returns you back to your inbox home page.",
                 },
                 {
                     element: document.querySelector('#report'),
