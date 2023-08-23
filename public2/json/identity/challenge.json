@@ -5,14 +5,13 @@
     "prompt": "1. Is this email a scam?",
     "choices": {
       "yes": {
-        "text": "Yes",
-        "explanation": "Explanation for the yes statement."
+        "text": "Yes"
       },
       "no": {
-        "text": "No",
-        "explanation": "Explanation for the no statement."
+        "text": "No"
       }
     },
+    "explanation": "<h1>\"No\" is the correct answer</h1>",
     "correctResponse": "no"
   },
   "2": {
@@ -21,14 +20,13 @@
       "prompt": "2. Is this email a scam?",
       "choices": {
         "yes": {
-          "text": "Yes",
-          "explanation": "Explanation for the yes statement."
+          "text": "Yes"
         },
         "no": {
-          "text": "No",
-          "explanation": "Explanation for the no statement."
+          "text": "No"
         }
       },
+      "explanation": "<h1>\"Yes\" is the correct answer</h1>",
       "correctResponse": "yes"
   },
   "3": {
@@ -45,6 +43,7 @@
         "explanation": "Explanation for the no statement."
       }
     },
+    "explanation": "<h1>\"Yes\" is the correct answer</h1>",
     "correctResponse": "yes"
   },
   "4": {
@@ -53,14 +52,13 @@
     "prompt": "4. Is this message a scam?",
     "choices": {
       "yes": {
-        "text": "Yes",
-        "explanation": "Explanation for the yes statement."
+        "text": "Yes"
       },
       "no": {
-        "text": "No",
-        "explanation": "Explanation for the no statement."
+        "text": "No"
       }
     },
+    "explanation": "<h1>\"No\" is the correct answer</h1>",
     "correctResponse": "no"
   },
   "5": {
@@ -70,27 +68,27 @@
       "choices": {
           "0": {
             "text": "A. Loss of money",
-            "explanation": "If your identity is stolen, you may experience financial losses as the thief might gain access to your bank accounts or use your credit cards."
+            "explanation": "This option is correct."
           },
           "1": {
             "text": "B. Loss of tax refund",
-            "explanation": "Identity thieves may fraudulently claim and receive your tax refund, leading to financial losses and potential complications with the tax authorities."
+            "explanation": "This option is correct."
           },
           "2": {
             "text": "C. Be charged as a criminal",
-            "explanation": "In some cases of identity theft, the thief may commit crimes using your identity, which could result in you being wrongfully charged for those offenses."
+            "explanation": "This option is correct."
           },
           "3": {
             "text": "D. Denial of loans",
-            "explanation": "Identity theft can damage your credit score and history, leading to loan denials or unfavorable loan terms when you legitimately apply for credit."
+            "explanation": "This option is correct."
           },
           "4": {
             "text": "E. Improved online security",
-            "explanation": "Identity theft weakens security by compromising personal information and enabling unauthorized access rather than enhancing protection."
+            "explanation": "This option is incorrect."
           },
           "5": {
             "text": "F. Getting a discount on online shopping",
-            "explanation": "Identity theft typically leads to financial losses for the victim, not benefits like discounts."
+            "explanation": "This option is incorrect."
           }
       },
       "correctResponse": ["0", "1", "2", "3"],

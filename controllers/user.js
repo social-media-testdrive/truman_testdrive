@@ -348,6 +348,66 @@ exports.postModuleProgress = (req, res, next) => { // response second
 // };
   
 
+exports.postStartTime = (req, res, next) => { // response second
+    console.log("In POST start time request body***************************");
+
+    // let module_to_update = req.body.modID;
+
+    const { modID, pageURL} = req.body;
+
+    User.findOne({
+        username: req.user.username
+    }, (err, existingUser) => {
+        if (err) {
+            return next(err);
+        }
+        if (existingUser) {
+            // prequiz attempt data
+            const pageTime = {
+                page: pageURL,
+                startTime: Date.now(),
+                endTime: null,
+                duration: null,
+            };
+
+            // Add the prequiz attempt to the challengeAttempts/submod1Attempts/etc array
+            existingUser.modulePageTimes[modID].push(pageTime);
+
+            // existingUser.moduleProgress[modID].percent = req.body.percent;
+            // existingUser.moduleProgress[modID].link = req.body.link;            
+
+            // save to mongodb database
+            existingUser.save((err) => {
+                if (err) {
+                    return next(err);
+                }
+            });
+
+
+            // // update current logged in the session
+            // req.user.moduleProgress.identity.percent =  req.body.percent;
+            // req.user.moduleProgress.identity.link =  req.body.link;
+            // req.session.passport.user = req.user;
+
+            // // Save the updated session to the session store
+            // req.session.save((err) => {
+            //     if (err) {
+            //         return next(err);
+            //     }
+            //     res.status(200).json({ message: 'Progress updated successfully!' });
+            // });
+     
+        }
+    });
+    // console.log("about to redirect in post quiz score")
+    // res.redirect(nextLink); 
+
+}; 
+
+
+
+
+
 exports.postIdentityTheftPreQuizScore = (req, res, next) => {
     req.assert('username', 'Username cannot be blank').notEmpty();
 

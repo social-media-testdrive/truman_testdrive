@@ -83,9 +83,13 @@ $(document).ready(function() {
             // console.log("Val: " + val);
             // console.log("Answer: " + questionData[currentQuestion].correctResponse)
 
-            // if on last question, change next button text to "complete quiz"
+            // if on last question, change next button text to "view results"
             if(currentQuestion === numQuestions - 1) {
-                $(".nextButton").text("Submit Quiz");
+                if(viewingAnswer === true) {
+                    $(".nextButton").text("Return to Results");
+                } else {
+                    $(".nextButton").text("View Results");
+                }
             }
 
             let val;
@@ -196,7 +200,7 @@ $(document).ready(function() {
                     $(".htmlImage").hide();
 					displayScore();
 					$(".preButton").text("Try Again");
-                    $(".nextButton").text("Complete Quiz");
+                    $(".nextButton").text("Submit Quiz");
 
 					// $(".nextButton").text("View Answers");
 					quizOver = true;
@@ -205,7 +209,7 @@ $(document).ready(function() {
 			}
 					
 		}	
-		else { // quiz is over and clicked the next button (which now displays 'Complete Quiz')
+		else { // quiz is over and clicked the next button (which now displays 'Submit Quiz')
             // save info into database
             // window.location.href = "/challenge3/identity";
             // let correctAnswers = 0;
@@ -341,6 +345,10 @@ $(document).ready(function() {
 
 function displayCurrentQuestion() 
 {
+    if(currentSection === "challenge") {
+        $(".explainButtonIncorrect").hide();
+        $(".explainButtonCorrect").hide();
+    }
     if(currentQuestion == 1) {
         $(".preButton").css("filter", "grayscale(100%)");
         $(".preButton").addClass("disabled");
@@ -716,9 +724,9 @@ function displayScore() {
     $(".result").show();
 
     // don't let user view answers on the challenge prequiz
-    if(currentSection !== "challenge") {
-        $(".viewAnswers").show();
-    }
+    // if(currentSection !== "challenge") {
+    $(".viewAnswers").show();
+    // }
     
     $(".avatar-container").show();
 
@@ -734,6 +742,8 @@ function resetQuiz() {
     $(".viewAnswers").hide();
     $(".preButton").text("Previous Question");
     $(".nextButton").text("Next Question");
+    $(".htmlImage").show();
+
     currentQuestion = 1;
     correctAnswers = 0;
     quizOver = false;

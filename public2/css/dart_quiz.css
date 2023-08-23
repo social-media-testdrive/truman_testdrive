@@ -316,3 +316,11 @@ img#dart_image1.ui.medium.image {
 .metadata p strong {
     font-weight: 600;
 }
+
+
+.ui.green.message,
+.ui.red.message {
+    width: 100%;
+}
+
+

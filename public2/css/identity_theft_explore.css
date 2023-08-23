@@ -227,7 +227,7 @@ button.ui.circular.icon.button:hover {
 .introjs-skipbutton.introjs-donebutton,
 .introjs-skipbutton.introjs-donebutton:hover {
     /* height: 22px; */
-    line-height: 22px !important;
+    /* line-height: 22px !important;
     visibility: visible;
     float: right;
     border-radius: 5px;
@@ -236,7 +236,8 @@ button.ui.circular.icon.button:hover {
     text-shadow: 0px 0px 0 #fff;
     margin-left: 5px;
     border: 0px solid #d4d4d4;
-    font: 1rem sans-serif;
+    font: 1rem sans-serif; */
+    display: none;
 }
 
 .introjs-button.introjs-nextbutton,
@@ -256,7 +257,7 @@ button.ui.circular.icon.button:hover {
 .introjs-button.introjs-prevbutton,
 .introjs-button.introjs-prevbutton:hover {
     /* height: 22px; */
-    line-height: 22px !important;
+    /* line-height: 22px !important;
     border-radius: 5px;
     visibility: visible;
     color: rgba(255, 255, 255, .9);
@@ -264,7 +265,8 @@ button.ui.circular.icon.button:hover {
     text-shadow: 0px 0px 0 #fff;
     margin-left: 5px;
     border: 0px solid #d4d4d4;
-    font: 1rem sans-serif;
+    font: 1rem sans-serif; */
+    display: none;
 }
 
 .introjs-button,
@@ -304,4 +306,52 @@ button.ui.circular.icon.button:hover {
         /* margin-top: 275px !important; */
         position: relative !important;
     }
+}
+
+
+
+.showOpenEmailAnimation,
+.showReturnToInboxAnimation {
+    position: absolute;
+    z-index: 99999999999;
+    animation: slideUp 4s ease forwards; 
+}
+
+/* toggle where cursor goes to */
+.showOpenEmailAnimation {
+    left: 45px; 
+    top: 125px;
+}
+
+.showReturnToInboxAnimation {
+    left: 63px; 
+    top: 67px;
+    /* z-index: 999999999999999999;
+    width: 1000px; */
+}
+
+.animate {
+    animation: slideInFromBottomRight 3s ease forwards;
+}
+
+.showOpenEmailAnimation img,
+.showReturnToInboxAnimation img {
+    /* width: 220px;
+    height: 300px; */
+    width: 50%;
+    transform: scale(0.426389);
+    transform-origin: left top;
+    pointer-events: auto;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translate(100%, 100%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+
 }

@@ -135,15 +135,56 @@ const userSchema = new mongoose.Schema({
             postquiz: { type: Number, default: 0 },
         },          
     },
+
+    modulePageTimes: { // marks the progress of each module
+        identity: [{ page: String, startTime: Date, endTime: Date, duration: Number }],
+        romance: [{ page: String, startTime: Date, endTime: Date, duration: Number }],
+        phishing: [{ page: String, startTime: Date, endTime: Date, duration: Number }],
+        grandparent: [{ page: String, startTime: Date, endTime: Date, duration: Number }],
+        sales: [{ page: String, startTime: Date, endTime: Date, duration: Number }],
+
+        // identity: [{
+        //     page: { type: String, default: 'pageURL' },
+        //     startTime: { type: Date, default: Date.now },
+        //     endTime: { type: Date, default: Date.now },
+        //     duration: { type: Number, default: 0 },
+        // }],      
+        // romance: [{
+        //     page: { type: String, default: 'pageURL' },
+        //     startTime: { type: Date, default: Date.now },
+        //     endTime: { type: Date, default: Date.now },
+        //     duration: { type: Number, default: 0 },
+        // }],       
+        // phishing: [{
+        //     page: { type: String, default: 'pageURL' },
+        //     startTime: { type: Date, default: Date.now },
+        //     endTime: { type: Date, default: Date.now },
+        //     duration: { type: Number, default: 0 },
+        // }],      
+        // grandparent: [{
+        //     page: { type: String, default: 'pageURL' },
+        //     startTime: { type: Date, default: Date.now },
+        //     endTime: { type: Date, default: Date.now },
+        //     duration: { type: Number, default: 0 },
+        // }],   
+        // sales: [{
+        //     page: { type: String, default: 'pageURL' },
+        //     startTime: { type: Date, default: Date.now },
+        //     endTime: { type: Date, default: Date.now },
+        //     duration: { type: Number, default: 0 },
+        // }],   
+    },
+
+
     
-    identityTheftPreQuizScore: { type: String, default: ''},
-    identityTheftModOneQuizScore: { type: String, default: ''},
-    identityTheftModOneConfidenceRating: { type: String, default: ''},
-    identityTheftModTwoQuizScore: { type: String, default: ''},
-    identityTheftModTwoConfidenceRating: { type: String, default: ''},
-    identityTheftModThreeQuizScore: { type: String, default: ''},
-    identityTheftModThreeConfidenceRating: { type: String, default: ''},
-    identityTheftPostQuizScore: { type: String, default: ''},
+    // identityTheftPreQuizScore: { type: String, default: ''},
+    // identityTheftModOneQuizScore: { type: String, default: ''},
+    // identityTheftModOneConfidenceRating: { type: String, default: ''},
+    // identityTheftModTwoQuizScore: { type: String, default: ''},
+    // identityTheftModTwoConfidenceRating: { type: String, default: ''},
+    // identityTheftModThreeQuizScore: { type: String, default: ''},
+    // identityTheftModThreeConfidenceRating: { type: String, default: ''},
+    // identityTheftPostQuizScore: { type: String, default: ''},
 
     
     // moduleProgress: { // marks the progress of each module: none, started, completed

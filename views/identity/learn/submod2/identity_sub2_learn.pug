@@ -6,7 +6,7 @@ block content
     .limit
       h1.ui.header.large#mod-title
         .content
-          | Section 2: Concepts & Consequences 
+          | Chapter 2: Concepts & Consequences 
       br
       //- p This module has been thoughtfully designed to help you gain a comprehensive understanding of identity theft scams, including their risks, warning signs and practical methods. Our primary objective is to empower you with the knowledge and methods necessary to safeguard yourself effectively. Throughout this module, you will explore three sections that cover the following topics:
       p In this section we will explore various tricks employed by cybercriminals. Learn to spot these tactics and strengthen your defense.
@@ -14,19 +14,19 @@ block content
         .four.wide.column
           .ui.huge.label.lockContainer.unlocked
             i.big.unlock.icon
-          p Section 1: Concepts & Consequences
+          p Chapter 1: Concepts & Consequences
         .four.wide.column
           .ui.huge.label.lockContainer.unlocked
             i.big.unlock.icon
-          p Section 2: Recognize Tricks
+          p Chapter 2: Recognize Tricks
         .four.wide.column
           .ui.huge.label.lockContainer
             i.big.lock.icon
-          p Section 3: Methods of Protection  
+          p Chapter 3: Methods of Protection  
     script.
         var progress = #{user.moduleProgress.identity.percent}
     script(src='/js/setProgressBar.js')  
 
 block append footer
   .ui.container
-    +navButtons('identity', '/submod/learn8/identity', '/submod2/learn2/identity', 28, 'Back', 'Start Section 2')  
+    +navButtons('identity', '/submod/learn8/identity', '/submod2/learn2/identity', 28, 'Back', 'Start Chapter 2')  

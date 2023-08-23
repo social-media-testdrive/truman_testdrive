@@ -34,7 +34,10 @@ document.addEventListener("DOMContentLoaded", function() {
             },
             {
                 myBeforeChangeFunction: function() { 
-                    $('.emailSimContainer').css('pointer-events', 'auto');  
+                    $('#email-0').css('pointer-events', 'auto');  
+                    setTimeout(function() {
+                        $('.showOpenEmailAnimation').removeClass('hidden');
+                    }, 5000);
                 },
                 element: document.querySelector('#email-0'),
                 position: 'right',
@@ -187,6 +190,7 @@ function showEmail(index) {
     replyButton.append($('<i>', { class: 'reply icon' }));
     replyButton.append('Reply');
 
+
     // Append all elements to emailSegment
     emailSegment.append(closeEmailArrow);
     emailSegment.append(reportButton);
@@ -200,8 +204,22 @@ function showEmail(index) {
     emailSegment.append(emailContent);
     emailSegment.append(replyButton);
 
+    // add cursor close email animation for tutorial
+    if(openEmailTutorialDone === false) {
+        var closeEmailAnimation = $('<div>').addClass('showReturnToInboxAnimation hidden')
+            .append($('<img>').attr('src', '/images/cursor.png'));
+        emailSegment.append(closeEmailAnimation); 
+    }
+
+
+
+    // Append the new element to the body
+    // $('body').append(closeEmailAnimation);
+
+
     // Append emailSegment to openEmailContainer
     openEmailContainer.append($('<br>'));
+    // openEmailContainer.append(closeEmailAnimation);
     openEmailContainer.append(emailSegment);
     openEmailContainer.append($('<br>'));
 
@@ -222,32 +240,35 @@ function showEmail(index) {
                 {
                     element: document.querySelector('.left.arrow.big.icon'),
                     position: 'right',
-                    intro: "This button returns you back to your inbox home page.",
+                    intro: "<strong>Return Button</strong><br><br>This button takes you back to your inbox home page.",
                 },
                 {
                     element: document.querySelector('#report'),
                     position: 'right',
-                    intro: "This button is used to report this email as spam. By using the 'Report' function, you're telling the email system that this email might be a problem. By doing this, you're helping to protect not only yourself but also others from potential scams or cyberattacks.",
+                    intro: "<strong>Report Button</strong><br><br>By reporting an email you're helping to protect not only yourself but also others from potential scams or cyberattacks.",
                 },
                 {
                     element: document.querySelector('#block'),
                     position: 'right',
-                    intro: "This button is used to block the sender of this email. If you're constantly receiving annoying emails or spam from a particular sender, you can use this function to prevent them from bothering you. It's a way to safeguard your inbox against unwanted content and maintain a clutter-free environment.",
+                    intro: "<strong>Block Button</strong><br><br>If you're constantly receiving annoying emails or spam from a particular sender, you can use this function to prevent them from bothering you.",
                 },
                 {
                     element: document.querySelector('#delete'),
                     position: 'right',
-                    intro: "This button is used to delete this email. Clicking 'Delete' is like throwing away junk mail from your physical mailbox. By using this, you're keeping your inbox clean and reducing the chances of accidentally opening harmful emails.",
+                    intro: "<strong>Delete Button</strong><br><br>Deleting an email is like throwing away junk mail from your physical mailbox.",
                 },
                 {
                     element: document.querySelector('#reply'),
                     position: 'right',
-                    intro: "This button is used to reply to this email. After clicking it you can then type your response and send it back to the sender.",
+                    intro: "<strong>Reply Button</strong><br><br>Allows you to send back a message in response.",
                 },
                 {
                     myBeforeChangeFunction: function() { 
                         $('.openEmailContainer').css('pointer-events', 'auto');  
                         $('#nextButton').show();
+                        setTimeout(function() {
+                            $('.showReturnToInboxAnimation').removeClass('hidden');
+                        }, 5000);
                     },
                     element: document.querySelector('.ui.padded.segment'),
                     position: 'right',
@@ -277,6 +298,10 @@ function showEmail(index) {
         }).start();    
 
         openEmailTutorialDone = true;
+        $('.emailSimContainer').css('pointer-events', 'auto');  
+        $('.showOpenEmailAnimation').addClass('hidden');
+
+
     }
     // intro2.addStep({
     //     element: document.querySelector('#report'),
@@ -301,7 +326,7 @@ function closeEmail() {
 
     $('.openEmailContainer').remove();
     $('.emailSimContainer').show();
-
+    $('.showOpenEmailAnimation').addClass('hidden');
     // console.log("email closed");
 }
   
