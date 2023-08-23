@@ -1,7 +1,7 @@
-function postStartTime(module_id, pageURL) {
+function postStartTime(modID, page) {
     console.log("In startTime post function");
-    console.log("Module ID: " + module_id);
-    console.log("Page URL: " + pageURL);
+    console.log("Module ID: " + modID);
+    console.log("Page URL: " + page);
 
 
     // POST module progress to database
@@ -13,8 +13,8 @@ function postStartTime(module_id, pageURL) {
         },
         //data to be sent in the request body
         body: JSON.stringify({
-            "modID": module_id, 
-            "pageURL": pageURL, 
+            "modID": modID, 
+            "page": page, 
         })
     })
     .then(response => {

@@ -265,10 +265,10 @@ exports.postModuleProgress = (req, res, next) => { // response second
     // console.log("In POST module progess request body***********************YOOOOO****")
     console.log(req.body)
     console.log("BEFORE In POST module progess request user***********")
-    console.log(req.user);
+    // console.log(req.user);
 
-    console.log(req.user.moduleTimes.identity);
-
+    console.log(req.user.modulePageTimes.identity.intro_Times[0].startTime);
+    console.log("after printing module page time(!!@#@#@#@##@")
     // console.log(req.user.moduleTimes[req.body.modID]);
 
     // req.user.moduleProgress.identity.link = "/BEYONCE"
@@ -359,9 +359,9 @@ exports.postStartTime = (req, res, next) => { // response second
     console.log("That was the request body")
     // let module_to_update = req.body.modID;
 
-    const { modID, pageURL} = req.body;
+    const { modID, page} = req.body;
     console.log("Module ID: " + modID);
-    console.log("Page URL: " + pageURL);
+    console.log("The Page Name: " + page);
 
     User.findOne({
         username: req.user.username
@@ -372,14 +372,18 @@ exports.postStartTime = (req, res, next) => { // response second
         if (existingUser) {
             // prequiz attempt data
             const pageTime = {
-                page: pageURL,
+                page: page,
                 startTime: Date.now(),
                 endTime: null,
                 duration: null,
             };
 
-            // Add the prequiz attempt to the challengeAttempts/submod1Attempts/etc array
-            existingUser.modulePageTimes[modID].push(pageTime);
+            let pageID = page + "_Times";
+
+
+            // Add the page access to the log and the modulePageTimes array
+            existingUser.modulePageAccessLog.push(page);
+            existingUser.modulePageTimes[modID][pageID].push(pageTime);
 
             // existingUser.moduleProgress[modID].percent = req.body.percent;
             // existingUser.moduleProgress[modID].link = req.body.link;            
@@ -393,7 +397,7 @@ exports.postStartTime = (req, res, next) => { // response second
 
 
             // update current logged in the session
-            req.user.modulePageTimes.identity.push(pageTime);
+            req.user.modulePageTimes[modID][pageID].push(pageTime);
             req.session.passport.user = req.user;
 
             // Save the updated session to the session store
