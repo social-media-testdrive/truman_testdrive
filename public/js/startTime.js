@@ -1,8 +1,11 @@
 function postStartTime(module_id, pageURL) {
     console.log("In startTime post function");
- 
+    console.log("Module ID: " + module_id);
+    console.log("Page URL: " + pageURL);
+
+
     // POST module progress to database
-    fetch('/postModuleProgress', {
+    fetch('/postStartTime', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -18,8 +21,6 @@ function postStartTime(module_id, pageURL) {
         if (response.ok) {
             // Request was successful
             console.log('Page start time posted successfully!');
-            // Now can navigate to the next page
-            window.location.href = link_to_post;
         } else {
             // Handle error response
             console.error('Failed to post page start time');

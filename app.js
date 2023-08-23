@@ -695,38 +695,6 @@ app.get('/forgotPassword', setHttpResponseHeaders, function(req, res) {
     })
 })
 
-
-function postStartTime(module_id, pageURL) { 
-    // POST module progress to database
-    fetch('/postModuleProgress', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-            // 'X-CSRF-Token': csrfToken
-        },
-        //data to be sent in the request body
-        body: JSON.stringify({
-            "modID": module_id, 
-            "pageURL": pageURL, 
-        })
-    })
-    .then(response => {
-        if (response.ok) {
-            // Request was successful
-            console.log('Page start time posted successfully!');
-            // Now can navigate to the next page
-            window.location.href = link_to_post;
-        } else {
-            // Handle error response
-            console.error('Failed to post page start time');
-        }
-    })
-    .catch(error => {
-        // Handle network or fetch error
-        console.error(error);
-    });
-};
-
 // ******************* Summer 2023 Render All Module Pages ****************************
 
 // Render intro page (all modules)
@@ -736,9 +704,6 @@ app.get('/intro/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders,
     The modules are in the *views* folder 
     Then the intro page is in the module's *intro* folder
     So for the identity module the path to the intro pug file is: identity/intro/identity_intro */
-
-    postStartTime("identity", "/intro/identity");
-
     res.render(req.params.modId + '/intro/' + req.params.modId + '_intro', {
         title: 'Intro'
     });

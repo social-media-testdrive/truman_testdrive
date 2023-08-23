@@ -264,8 +264,13 @@ exports.postQuizScore = (req, res, next) => { // response second
 exports.postModuleProgress = (req, res, next) => { // response second
     // console.log("In POST module progess request body***********************YOOOOO****")
     console.log(req.body)
-    // console.log("BEFORE In POST module progess request user***********")
-    // console.log(req.user)
+    console.log("BEFORE In POST module progess request user***********")
+    console.log(req.user);
+
+    console.log(req.user.moduleTimes.identity);
+
+    // console.log(req.user.moduleTimes[req.body.modID]);
+
     // req.user.moduleProgress.identity.link = "/BEYONCE"
     // console.log("AFTER In POST module progess request user***********")
     // console.log(req.user)
@@ -350,10 +355,13 @@ exports.postModuleProgress = (req, res, next) => { // response second
 
 exports.postStartTime = (req, res, next) => { // response second
     console.log("In POST start time request body***************************");
-
+    console.log(req.body);
+    console.log("That was the request body")
     // let module_to_update = req.body.modID;
 
     const { modID, pageURL} = req.body;
+    console.log("Module ID: " + modID);
+    console.log("Page URL: " + pageURL);
 
     User.findOne({
         username: req.user.username
@@ -384,18 +392,17 @@ exports.postStartTime = (req, res, next) => { // response second
             });
 
 
-            // // update current logged in the session
-            // req.user.moduleProgress.identity.percent =  req.body.percent;
-            // req.user.moduleProgress.identity.link =  req.body.link;
-            // req.session.passport.user = req.user;
+            // update current logged in the session
+            req.user.modulePageTimes.identity.push(pageTime);
+            req.session.passport.user = req.user;
 
-            // // Save the updated session to the session store
-            // req.session.save((err) => {
-            //     if (err) {
-            //         return next(err);
-            //     }
-            //     res.status(200).json({ message: 'Progress updated successfully!' });
-            // });
+            // Save the updated session to the session store
+            req.session.save((err) => {
+                if (err) {
+                    return next(err);
+                }
+                res.status(200).json({ message: 'Progress updated successfully!' });
+            });
      
         }
     });
