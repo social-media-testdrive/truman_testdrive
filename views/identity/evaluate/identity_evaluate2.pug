@@ -88,19 +88,9 @@ block append footer
 
 
 block scripts
-
-
-  //- script.
-  //-   document.addEventListener('DOMContentLoaded', function() {
-  //-     const dartieImg = document.getElementById('dart_image1');
-  //-     const character = localStorage.getItem('character');
-
-  //-     if (character) {
-  //-       dartieImg.src = "/profile_pictures/" + character;
-  //-     }
-  //-   }
-  //-   );
   script.
+    postStartTime("identity", "evaluate2");
+
     function playAudio() {
       var iframe = document.getElementById('audio-frame');
       var audioElement = iframe.contentWindow.document.querySelector('audio');
@@ -157,7 +147,7 @@ block scripts
       //- make line after challenge blue
       if (progressItems[3]) {
         progressItems[3].classList.add('completed');
-        console.log("completed class added");
+        //- console.log("completed class added");
       }
     }, 500);
 

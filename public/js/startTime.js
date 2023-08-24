@@ -1,7 +1,7 @@
 function postStartTime(modID, page) {
-    console.log("In startTime post function");
-    console.log("Module ID: " + modID);
-    console.log("Page URL: " + page);
+    // console.log("In startTime post function");
+    // console.log("Module ID: " + modID);
+    // console.log("Page URL: " + page);
 
 
     // POST module progress to database

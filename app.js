@@ -537,11 +537,11 @@ app.get('/end/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, i
     });
 });
 
-app.get('/explore_page', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
-    res.render('explore_page.pug', {
-        title: 'explore_page',
-    });
-});
+// app.get('/explore_page', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
+//     res.render('explore_page.pug', {
+//         title: 'explore_page',
+//     });
+// });
 
 
 // Render selection

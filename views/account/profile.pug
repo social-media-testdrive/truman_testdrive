@@ -179,10 +179,10 @@ block content
 block scripts
   script.
     let theftPath = localStorage.getItem('theft-path');
-    console.log("theftPath is: " + theftPath);
+    //- console.log("theftPath is: " + theftPath);
     if (theftPath === null) {
     } else {
-      console.log("change link");
+      //- console.log("change link");
       const link = document.getElementById('theft-link');
       link.setAttribute('href', theftPath);
     }
@@ -197,7 +197,7 @@ block scripts
       // If the variable has been assigned, parse the value from local storage
       progress = parseInt(progress);
     }
-    console.log("Progress is: " + progress);
+    //- console.log("Progress is: " + progress);
 
     const progressBar = document.getElementById('theft-progress');
     if (progressBar) {
@@ -225,7 +225,7 @@ block scripts
         // If the variable has been assigned, parse the value from local storage
         progress = parseInt(progress);
       }
-      console.log("Progress is: " + progress);
+      //- console.log("Progress is: " + progress);
 
       const updateProgressDisplay = () => {
         const progressSpan = document.getElementById('progressDisplay');
@@ -256,7 +256,7 @@ block scripts
       $('.profilePictureModal').modal({
         onApprove: function() {
           let imageName = $('input[name="profilepicinput"]:checked').val();
-          console.log(imageName);
+          //- console.log(imageName);
           if(imageName !== undefined){
             $('#noPhotoError').hide();
             let srcString = cdn + '/profile_pictures/' + imageName;

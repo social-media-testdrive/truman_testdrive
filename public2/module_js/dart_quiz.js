@@ -13,11 +13,11 @@ let scoreTotal = 0;
 let this_js_script = $('script[src*=dart_quiz]');
 let currentSection = this_js_script.attr('current-section');   
 let nextLink = this_js_script.attr('next-link');   
-console.log("**currentSection: " + currentSection);
-console.log("**nextLink: " + nextLink);
+// console.log("**currentSection: " + currentSection);
+// console.log("**nextLink: " + nextLink);
 
 $(document).ready(function() {    
-    console.log("In dart_quiz.js");
+    // console.log("In dart_quiz.js");
     // console.log("explanation data example:" + questionData[1].choices[3].explanation);
     // console.log("Question Data: " + questionData);
     // console.log("num questions: " + numQuestions);
@@ -118,7 +118,7 @@ $(document).ready(function() {
                 if (questionData[currentQuestion].type === "yes_no") {
                     // simple yes/no question so if correct add 1 point if wrong add 0 points
                     if (val === questionData[currentQuestion].correctResponse) {
-                        console.log("Correct Answer!")
+                        // console.log("Correct Answer!")
                         questionScores[currentQuestion - 1] = 1;
                     } else {
                         questionScores[currentQuestion - 1] = 0;
@@ -126,12 +126,12 @@ $(document).ready(function() {
 
                     // question 1 answer stored in array index 0
                     selectedAnswer[currentQuestion - 1] = val;
-                    console.log("selectedAnswer: " + selectedAnswer);
-                    console.log("questionScores: " + questionScores);
+                    // console.log("selectedAnswer: " + selectedAnswer);
+                    // console.log("questionScores: " + questionScores);
                 } if (questionData[currentQuestion].type === "abcd") {
                     // // simple yes/no question so if correct add 1 point if wrong add 0 points
                     if (val === questionData[currentQuestion].correctResponse) {
-                        console.log("ABCD Correct Answer!")
+                        // console.log("ABCD Correct Answer!")
                         questionScores[currentQuestion - 1] = 1;
                     } else {
                         questionScores[currentQuestion - 1] = 0;
@@ -139,8 +139,8 @@ $(document).ready(function() {
 
                     // // question 1 answer stored in array index 0
                     selectedAnswer[currentQuestion - 1] = val;
-                    console.log("selectedAnswer: " + selectedAnswer);
-                    console.log("questionScores: " + questionScores);
+                    // console.log("selectedAnswer: " + selectedAnswer);
+                    // console.log("questionScores: " + questionScores);
                 } else if  (questionData[currentQuestion].type === "multi_select") {
                     // multi select question grading based on how canvas does it: https://canvas.iastate.edu/courses/64978/files/14202040/download?download_frd=1
                     // question is 1 point total. Correct answers are worth 1 / number correct point each. Incorrect answers are worth a negative value of this. Result cannot be negative.
@@ -163,13 +163,13 @@ $(document).ready(function() {
                     multiScore = Number(multiScore.toFixed(2));
 
                     
-                    console.log(`Total Score: ${multiScore}`);
-                    console.log(typeof multiScore);
+                    // console.log(`Total Score: ${multiScore}`);
+                    // console.log(typeof multiScore);
 
                     selectedAnswer[currentQuestion - 1] = val;
                     questionScores[currentQuestion - 1] = multiScore;
-                    console.log("selectedAnswer: " + selectedAnswer);
-                    console.log("questionScores: " + questionScores);
+                    // console.log("selectedAnswer: " + selectedAnswer);
+                    // console.log("questionScores: " + questionScores);
 
                 }
 
@@ -217,8 +217,8 @@ $(document).ready(function() {
             // let selectedAnswer = ['yes', 'no', 'yes', 'no', [1,2,3,4]];
             // let questionScores = [0, 0, 1, 1, 0];
             let modID = "identity";
-            console.log("Posting quiz attempt to database!");
-            console.log("ScoreTotal is: " + scoreTotal);
+            // console.log("Posting quiz attempt to database!");
+            // console.log("ScoreTotal is: " + scoreTotal);
             // const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
             fetch('/postQuizScore', {
@@ -239,7 +239,7 @@ $(document).ready(function() {
             .then(response => {
                 if (response.ok) {
                     // Request was successful
-                    console.log('Quiz attempt posted successfully!');
+                    // console.log('Quiz attempt posted successfully!');
                     // Now can navigate to the next page
                     window.location.href = nextLink;
                 } else {
@@ -276,7 +276,7 @@ $(document).ready(function() {
     });
 
     $(this).find(".explainButtonIncorrect, .explainButtonCorrect").on("click", function () {
-        console.log("Show explanations clicked!");
+        // console.log("Show explanations clicked!");
     
         // Toggle button for show/hide functionality
         let currentButtonText = $(this).find("a").text();
@@ -355,15 +355,15 @@ function displayCurrentQuestion()
     }
 
     window.scrollTo(0, 0);
-    console.log("In display current Question");
-    console.log("Current Question: " + currentQuestion);
+    // console.log("In display current Question");
+    // console.log("Current Question: " + currentQuestion);
     // let question = questionData[1].prompt;
 
     let questionPrompt = questionData[currentQuestion].prompt;
     // console.log("Question: " + question);
     // let questionClass = $(".quizContainer > .question");
     let choiceList = $(".quizContainer > .choiceList");
-    console.log("Choice List: " + choiceList)
+    // console.log("Choice List: " + choiceList)
     // let numChoices = Object.keys(questionData[currentQuestion].choices).length;
     // console.log("Num Choices: " + numChoices);
 
@@ -601,7 +601,7 @@ function displayCurrentQuestion()
                 if(selectedAnswer[currentQuestion - 1] != undefined) {
                     document.getElementById(selectedAnswer[currentQuestion - 1]).checked = true;
                 } 
-                console.log("Current selected answer: " + selectedAnswer[currentQuestion - 1])
+                // console.log("Current selected answer: " + selectedAnswer[currentQuestion - 1])
 
 
                 // console.log("WHATTTTT: " +  questionData[currentQuestion].choices.yes.explanation);
@@ -624,7 +624,7 @@ function displayCurrentQuestion()
                 if(selectedAnswer[currentQuestion - 1] != undefined) {
                     document.getElementById(selectedAnswer[currentQuestion - 1]).checked = true;
                 } 
-                console.log("Current selected answer: " + selectedAnswer[currentQuestion - 1])
+                // console.log("Current selected answer: " + selectedAnswer[currentQuestion - 1])
 
 
                 // console.log("WHATTTTT: " +  questionData[currentQuestion].choices.yes.explanation);
@@ -670,7 +670,7 @@ function displayCurrentQuestion()
         }
     }
     
-    console.log("End of display current Question");
+    // console.log("End of display current Question");
 }
 
 // change user's selected answers to the corresponding letters. E.g. if they chose multiselect options "0,1,3,4,5" it would return "A, B, D, E, F"
@@ -731,9 +731,9 @@ function displayScore() {
     $(".avatar-container").show();
 
 
-    for(let i = 0; i <= selectedAnswer.length; i++) {
-        console.log("Index: " + i + " selectedAnswer: " + selectedAnswer[i]);
-    }    
+    // for(let i = 0; i <= selectedAnswer.length; i++) {
+    //     console.log("Index: " + i + " selectedAnswer: " + selectedAnswer[i]);
+    // }    
 }
 
 function resetQuiz() {

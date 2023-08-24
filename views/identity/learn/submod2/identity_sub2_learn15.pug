@@ -124,6 +124,7 @@ block append footer
 block scripts
   script(src='/js/update_character_name.js')
   script.
+    postStartTime("identity", "sub2_learn15");
     let accept_sending = false;
     let final_response_number = 0;
 
@@ -194,7 +195,7 @@ block scripts
       
       var hideMe = document.getElementById("encounter_response");
       hideMe.style.visibility = "hidden";
-      console.log("Name: " + name)
+      //- console.log("Name: " + name)
 
       if (name == "No") {
         document.getElementById("no_reply").style.display = "";
@@ -249,5 +250,3 @@ block scripts
   
 block styles
   link(rel='stylesheet', href='/css/module.css')  
-    
-    

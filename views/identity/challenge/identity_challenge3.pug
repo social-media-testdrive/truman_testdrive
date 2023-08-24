@@ -87,12 +87,12 @@ block append footer
 
 block scripts
   script.
-    postStartTime("identity", "challenge2");
+    postStartTime("identity", "challenge3");
     function playAudio() {
       var iframe = document.getElementById('audio-frame');
       var audioElement = iframe.contentWindow.document.querySelector('audio');
       audioElement.play();
-      console.log("progress audio played")
+      //- console.log("progress audio played")
     }
 
     //- function playAudio2() {
@@ -195,4 +195,3 @@ block scripts
 block styles
   link(rel='stylesheet', href='/css/challenge.css')  
   link(rel='stylesheet', href='/css/progress.css')   
-

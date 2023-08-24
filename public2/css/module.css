@@ -49,6 +49,7 @@ body{
 
 #page-header{ 
     min-height:50px;
+    z-index: 999999;
 }
 
 #page-footer{ 

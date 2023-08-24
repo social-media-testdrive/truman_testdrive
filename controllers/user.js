@@ -230,29 +230,12 @@ exports.postQuizScore = (req, res, next) => { // response second
             // Add the prequiz attempt to the challengeAttempts/submod1Attempts/etc array
             existingUser.moduleProgress[modID][sectionAttempts].push(attempt);
 
-            // existingUser.moduleProgress[modID].percent = req.body.percent;
-            // existingUser.moduleProgress[modID].link = req.body.link;            
-
             // save to mongodb database
             existingUser.save((err) => {
                 if (err) {
                     return next(err);
                 }
             });
-
-
-            // // update current logged in the session
-            // req.user.moduleProgress.identity.percent =  req.body.percent;
-            // req.user.moduleProgress.identity.link =  req.body.link;
-            // req.session.passport.user = req.user;
-
-            // // Save the updated session to the session store
-            // req.session.save((err) => {
-            //     if (err) {
-            //         return next(err);
-            //     }
-            //     res.status(200).json({ message: 'Progress updated successfully!' });
-            // });
      
         }
     });
@@ -261,61 +244,74 @@ exports.postQuizScore = (req, res, next) => { // response second
 
 }; 
 
-exports.postModuleProgress = (req, res, next) => { // response second
-    // console.log("In POST module progess request body***********************YOOOOO****")
-    // console.log(req.body)
-    // console.log("BEFORE In POST module progess request user***********")
-    // console.log(req.user);
+// exports.postModuleProgress = (req, res, next) => { // response second
+//     let module_to_update = req.body.modID;
 
-    // console.log(req.user.modulePageTimes.identity.intro_Times[0].startTime);
-    // console.log("after printing module page time(!!@#@#@#@##@")
+//     User.findOne({
+//         username: req.user.username
+//     }, (err, existingUser) => {
+//         if (err) {
+//             return next(err);
+//         }
+//         if (existingUser) {
+//             // don't revert progress when they user presses back buttons to review
+//             // if (req.body.percent == 0 || req.body.percent > existingUser.moduleProgress.identity.percent) {
+//             existingUser.moduleProgress[module_to_update].percent = req.body.percent;
+//             // }
+//             existingUser.moduleProgress[module_to_update].link = req.body.link;            
 
-    // console.log(req.user.moduleTimes[req.body.modID]);
+//             // save to mongodb database
+//             existingUser.save((err) => {
+//                 if (err) {
+//                     return next(err);
+//                 }
+//             });
 
-    // req.user.moduleProgress.identity.link = "/BEYONCE"
-    // console.log("AFTER In POST module progess request user***********")
-    // console.log(req.user)
-
-    let module_to_update = req.body.modID;
-
-    User.findOne({
-        username: req.user.username
-    }, (err, existingUser) => {
-        if (err) {
-            return next(err);
-        }
-        if (existingUser) {
-            // don't revert progress when they user presses back buttons to review
-            // if (req.body.percent == 0 || req.body.percent > existingUser.moduleProgress.identity.percent) {
-            existingUser.moduleProgress[module_to_update].percent = req.body.percent;
-            // }
-            existingUser.moduleProgress[module_to_update].link = req.body.link;            
-
-            // save to mongodb database
-            existingUser.save((err) => {
-                if (err) {
-                    return next(err);
-                }
-            });
-
-            // update current logged in the session
-            req.user.moduleProgress.identity.percent =  req.body.percent;
-            req.user.moduleProgress.identity.link =  req.body.link;
+//             // update current logged in the session
+//             req.user.moduleProgress.identity.percent =  req.body.percent;
+//             req.user.moduleProgress.identity.link =  req.body.link;
 
 
-            req.session.passport.user = req.user;
+//             req.session.passport.user = req.user;
 
-            // Save the updated session to the session store
-            req.session.save((err) => {
-                if (err) {
-                    return next(err);
-                }
-                res.status(200).json({ message: 'Progress updated successfully!' });
-            });
+//             // Save the updated session to the session store
+//             req.session.save((err) => {
+//                 if (err) {
+//                     return next(err);
+//                 }
+//                 res.status(200).json({ message: 'Progress updated successfully!' });
+//             });
      
+//         }
+//     });
+// }; 
+
+exports.postModuleProgress = async (req, res, next) => {
+    try {
+        const moduleToUpdate = req.body.modID;
+
+        const existingUser = await User.findOne({ username: req.user.username });
+
+        if (!existingUser) {
+            return res.status(404).json({ message: 'User not found.' });
         }
-    });
-}; 
+
+        existingUser.moduleProgress[moduleToUpdate].percent = req.body.percent;
+        existingUser.moduleProgress[moduleToUpdate].link = req.body.link;
+
+        await existingUser.save();
+
+        req.user.moduleProgress.identity.percent = req.body.percent;
+        req.user.moduleProgress.identity.link = req.body.link;
+
+        req.session.passport.user = req.user;
+        await req.session.save();
+
+        res.status(200).json({ message: 'Progress updated successfully!' });
+    } catch (err) {
+        next(err);
+    }
+};
 
 // exports.getModuleProgress = (req, res, next) => {
 //     // console.log(req.params)
@@ -354,101 +350,162 @@ exports.postModuleProgress = (req, res, next) => { // response second
 // };
   
 
-exports.postStartTime = (req, res, next) => { // response second
-    console.log("In POST start time request body***************************");
-    console.log(req.body);
-    console.log("That was the request body")
-    // let module_to_update = req.body.modID;
+// exports.postStartTime = (req, res, next) => { // response second
+//     console.log("In POST start time request body***************************");
+//     console.log(req.body);
+//     console.log("That was the request body")
+//     // let module_to_update = req.body.modID;
 
-    const { modID, page} = req.body;
-    console.log("Module ID: " + modID);
-    console.log("The Page Name: " + page);
+//     const { modID, page} = req.body;
+//     console.log("Module ID: " + modID);
+//     console.log("The Page Name: " + page);
 
-    User.findOne({
-        username: req.user.username
-    }, (err, existingUser) => {
-        if (err) {
-            return next(err);
-        }
-        if (existingUser) {
-            // prequiz attempt data
-            const pageTime = {
-                page: page,
-                startTime: Date.now(),
-                endTime: null,
-                duration: null,
-            };
+//     User.findOne({
+//         username: req.user.username
+//     }, (err, existingUser) => {
+//         if (err) {
+//             return next(err);
+//         }
+//         if (existingUser) {
+//             // prequiz attempt data
+//             const pageTime = {
+//                 page: page,
+//                 startTime: Date.now(),
+//                 endTime: null,
+//                 duration: null,
+//             };
 
-            let pageID = page + "_Times";
-
-
-            // Add the page access to the log and the modulePageTimes array
-            existingUser.modulePageAccessLog.push(page);
-            existingUser.modulePageTimes[modID][pageID].push(pageTime);
-
-            // existingUser.moduleProgress[modID].percent = req.body.percent;
-            // existingUser.moduleProgress[modID].link = req.body.link;            
-
-            // save to mongodb database
-            existingUser.save((err) => {
-                if (err) {
-                    return next(err);
-                }
-            });
+//             let pageID = page + "_Times";
 
 
-            // update current logged in the session
-            req.user.modulePageTimes[modID][pageID].push(pageTime);
-            req.session.passport.user = req.user;
+//             // Add the page access to the log and the modulePageTimes array
+//             existingUser.modulePageAccessLog.push(page);
+//             existingUser.modulePageTimes[modID][pageID].push(pageTime);
 
-            // Save the updated session to the session store
-            req.session.save((err) => {
-                if (err) {
-                    return next(err);
-                }
-                res.status(200).json({ message: 'Progress updated successfully!' });
-            });
+//             // existingUser.moduleProgress[modID].percent = req.body.percent;
+//             // existingUser.moduleProgress[modID].link = req.body.link;            
+
+//             // save to mongodb database
+//             existingUser.save((err) => {
+//                 if (err) {
+//                     return next(err);
+//                 }
+//             });
+
+
+//             // update current logged in the session
+//             req.user.modulePageTimes[modID][pageID].push(pageTime);
+//             req.session.passport.user = req.user;
+
+//             // Save the updated session to the session store
+//             req.session.save((err) => {
+//                 if (err) {
+//                     return next(err);
+//                 }
+//                 res.status(200).json({ message: 'Progress updated successfully!' });
+//             });
      
+//         }
+//     });
+// }; 
+
+exports.postStartTime = async (req, res, next) => {
+    try {
+        const { modID, page } = req.body;
+        const existingUser = await User.findOne({ username: req.user.username });
+
+        if (!existingUser) {
+            return res.status(404).json({ message: 'User not found.' });
         }
-    });
-    // console.log("about to redirect in post quiz score")
-    // res.redirect(nextLink); 
 
-}; 
+        const pageTime = {
+            page: page,
+            startTime: Date.now(),
+            endTime: null,
+            duration: null,
+        };
 
-exports.postEndTime = (req, res, next) => { // response second
-    const { modID, page} = req.body;
+        const pageID = page + "_Times";
 
-    User.findOne({
-        username: req.user.username
-    }, (err, existingUser) => {
-        if (err) {
-            return next(err);
-        }
+        existingUser.modulePageAccessLog.push(page);
+        existingUser.modulePageTimes[modID][pageID].push(pageTime);
+
+        await existingUser.save();
+
+        req.user.modulePageTimes[modID][pageID].push(pageTime);
+        req.session.passport.user = req.user;
+
+        await req.session.save();
+
+        res.status(200).json({ message: 'Progress updated successfully!' });
+    } catch (err) {
+        next(err);
+    }
+};
+
+
+// exports.postEndTime = (req, res, next) => { // response second
+//     const { modID, page} = req.body;
+
+//     User.findOne({
+//         username: req.user.username
+//     }, (err, existingUser) => {
+//         if (err) {
+//             return next(err);
+//         }
+//         if (existingUser) {
+//             let pageID = page + "_Times";
+
+//             const indexToUpdate = existingUser.modulePageTimes[modID][pageID].length - 1;
+//             console.log("****Index to update: " + indexToUpdate)
+//             const endTime = Date.now();
+//             // Update the endTime for the latest entry
+//             existingUser.modulePageTimes[modID][pageID][indexToUpdate].endTime = endTime;
+
+//             // Calculate duration and update the database
+//             // existingUser.modulePageTimes[modID][pageID][latestEntryIndex].duration =
+//             const durationInMillis = endTime - existingUser.modulePageTimes[modID][pageID][indexToUpdate].startTime;
+//             existingUser.modulePageTimes[modID][pageID][indexToUpdate].durationMilliseconds = durationInMillis;
+//             existingUser.modulePageTimes[modID][pageID][indexToUpdate].durationFormatted = formatDuration(durationInMillis);
+
+//             // existingUser.modulePageTimes[modID][pageID][1].endTime = Date.now();
+//             existingUser.save((err) => {
+//                 if (err) {
+//                     return next(err);
+//                 }
+//             });
+//         }
+//     });
+// }; 
+
+
+exports.postEndTime = async (req, res, next) => {
+    try {
+        const { modID, page } = req.body;
+        const existingUser = await User.findOne({ username: req.user.username });
+
         if (existingUser) {
-            let pageID = page + "_Times";
+            const pageID = page + "_Times";
+            const pageTimes = existingUser.modulePageTimes[modID][pageID];
+            const indexToUpdate = pageTimes.length - 1;
 
-            const indexToUpdate = existingUser.modulePageTimes[modID][pageID].length - 1;
-            console.log("****Index to update: " + indexToUpdate)
             const endTime = Date.now();
-            // Update the endTime for the latest entry
-            existingUser.modulePageTimes[modID][pageID][indexToUpdate].endTime = endTime;
+            const durationInMillis = endTime - pageTimes[indexToUpdate].startTime;
 
-            // Calculate duration and update the database
-            // existingUser.modulePageTimes[modID][pageID][latestEntryIndex].duration =
-            const durationInMillis = endTime - existingUser.modulePageTimes[modID][pageID][indexToUpdate].startTime;
-            existingUser.modulePageTimes[modID][pageID][indexToUpdate].durationMilliseconds = durationInMillis;
-            existingUser.modulePageTimes[modID][pageID][indexToUpdate].durationFormatted = formatDuration(durationInMillis);
+            pageTimes[indexToUpdate].endTime = endTime;
+            pageTimes[indexToUpdate].durationMilliseconds = durationInMillis;
+            pageTimes[indexToUpdate].durationFormatted = formatDuration(durationInMillis);
 
-            // existingUser.modulePageTimes[modID][pageID][1].endTime = Date.now();
-            existingUser.save((err) => {
-                if (err) {
-                    return next(err);
-                }
-            });
+            await existingUser.save();
         }
-    });
-}; 
+
+        res.status(200).json({ message: "End time updated successfully." });
+    } catch (err) {
+        next(err);
+    }
+};
+
+
 
 // Format duration milli second to HH:MM:SS
 function formatDuration(duration) {

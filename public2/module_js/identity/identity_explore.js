@@ -152,8 +152,8 @@ function startIntro(enableDataCollection) {
             // console.log($('.introjs-nextbutton'));
             var original_onclick = $('.introjs-nextbutton').get(0).onclick;
             let elements = document.getElementsByTagName('a');
-            console.log(elements);
-            console.log(elements[28]);
+            // console.log(elements);
+            // console.log(elements[28]);
             elements[28].style.filter = "grayscale(100%)";
 
 

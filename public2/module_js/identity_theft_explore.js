@@ -1,13 +1,13 @@
-console.log("Hello from the script**************")
+// console.log("Hello from the script**************")
 let this_js_script = $('script[src*=identity_theft_explore]');
 let emailData = this_js_script.attr('emailData');   
-console.log(emailData);
+// console.log(emailData);
 let iCurrentEmail = 0;
 let openEmailTutorialDone = false;
 
 const emails = JSON.parse(emailData);
-console.log(emails);
-console.log(emails[0]);
+// console.log(emails);
+// console.log(emails[0]);
 // // Iterate through the emails array
 // emails.forEach(email => {
 //   console.log("Sender:", email.sender);
@@ -23,7 +23,7 @@ let intro3 = introJs();
 
 document.addEventListener("DOMContentLoaded", function() {
     $('#nextButton').hide();
-    console.log("DOM loaded and parsed!");
+    // console.log("DOM loaded and parsed!");
     
     intro2.setOptions({
         steps: [
@@ -121,7 +121,7 @@ function showEmail(index) {
     $('#email-' + index).find('.envelope.icon').addClass('open');
 
     $('.emailSimContainer').hide();
-    console.log("email shown: ", index);
+    // console.log("email shown: ", index);
 
     var email = emails[index]; // Replace with your method to fetch email data
     
