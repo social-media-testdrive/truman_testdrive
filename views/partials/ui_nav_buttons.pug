@@ -1,4 +1,4 @@
-mixin navButtons(modId, backLink, nextLink, percent, backText='Back', nextText='Next', skipBtn=false, skipLink)
+mixin navButtons(modId, page, backLink, nextLink, percent, backText='Back', nextText='Next', skipBtn=false, skipLink)
   .ui.container#nav-container
     //- p modId: #{modId}
     //- p backLink: #{backLink}
@@ -7,10 +7,11 @@ mixin navButtons(modId, backLink, nextLink, percent, backText='Back', nextText='
     //- p current percent: #{user.moduleProgress.identity.percent}
 
     .div#nav-menu
-      button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='" + backLink + "';")
+      //- button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='" + backLink + "';")
+      button.ui.huge.basic.button.left.floated#backButton(onclick="postEndTime('" + modId + "', '" + page + "', '" + backLink + "');")
         i.arrow.left.icon
         | #{backText}
-      button.ui.huge.blue.button.right.floated#nextButton(onclick="postModuleProgress('" + modId + "', '" + nextLink + "', '" + percent + "', '" + user.moduleProgress.identity.percent + "');")
+      button.ui.huge.blue.button.right.floated#nextButton(onclick="postModuleProgress('" + modId + "', '" + page + "', '" + nextLink + "', '" + percent + "', '" + user.moduleProgress.identity.percent + "');")
         | #{nextText}
         i.arrow.right.icon
       if skipBtn

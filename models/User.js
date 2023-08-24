@@ -144,217 +144,253 @@ const userSchema = new mongoose.Schema({
                 page: String, 
                 startTime: Date, 
                 endTime: Date, 
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             intro2_Times: [{
                 page: String, 
                 startTime: Date, 
                 endTime: Date, 
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             challenge_Times: [{
                 page: String, 
                 startTime: Date, 
                 endTime: Date, 
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             challenge2_Times: [{
                 page: String, 
                 startTime: Date, 
                 endTime: Date, 
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             challenge3_Times: [{
                 page: String, 
                 startTime: Date, 
                 endTime: Date, 
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             sub_learn_Times: [{
                 page: String, 
                 startTime: Date, 
                 endTime: Date, 
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             sub_learn2_Times: [{
                 page: String, 
                 startTime: Date, 
                 endTime: Date, 
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             sub_learn3_Times: [{
                 page: String, 
                 startTime: Date, 
                 endTime: Date, 
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             sub_learn4_Times: [{
                 page: String, 
                 startTime: Date, 
                 endTime: Date, 
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             sub_learn5_Times: [{
                 page: String, 
                 startTime: Date, 
                 endTime: Date, 
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             sub_learn6_Times: [{
                 page: String, 
                 startTime: Date, 
                 endTime: Date, 
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             sub_learn7_Times: [{
                 page: String, 
                 startTime: Date, 
                 endTime: Date, 
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             sub_learn8_Times: [{
                 page: String, 
                 startTime: Date, 
                 endTime: Date, 
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             sub2_learn_Times: [{
                 page: String, 
                 startTime: Date, 
                 endTime: Date, 
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             sub2_learn2_Times: [{
                 page: String, 
                 startTime: Date, 
                 endTime: Date, 
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             sub2_learn3_Times: [{
                 page: String, 
                 startTime: Date, 
                 endTime: Date, 
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             sub2_learn4_Times: [{
                 page: String, 
                 startTime: Date, 
                 endTime: Date, 
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             sub2_learn5_Times: [{
                 page: String, 
                 startTime: Date, 
                 endTime: Date, 
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             sub2_learn6_Times: [{
                 page: String,
                 startTime: Date,
                 endTime: Date,
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             sub2_learn7_Times: [{
                 page: String,
                 startTime: Date,
                 endTime: Date,
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             sub2_learn8_Times: [{
                 page: String,
                 startTime: Date,
                 endTime: Date,
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             sub2_learn9_Times: [{
                 page: String,
                 startTime: Date,
                 endTime: Date,
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             sub2_learn10_Times: [{
                 page: String,
                 startTime: Date,
                 endTime: Date,
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             sub2_learn11_Times: [{
                 page: String,
                 startTime: Date,
                 endTime: Date,
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             sub2_learn12_Times: [{
                 page: String,
                 startTime: Date,
                 endTime: Date,
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             sub2_learn13_Times: [{
                 page: String,
                 startTime: Date,
                 endTime: Date,
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             sub2_learn14_Times: [{
                 page: String,
                 startTime: Date,
                 endTime: Date,
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             sub2_learn15_Times: [{
                 page: String,
                 startTime: Date,
                 endTime: Date,
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             sub2_learn16_Times: [{
                 page: String,
                 startTime: Date,
                 endTime: Date,
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             sub3_learn_Times: [{
                 page: String,
                 startTime: Date,
                 endTime: Date,
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             explore_Times: [{
                 page: String, 
                 startTime: Date, 
                 endTime: Date, 
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             explore2_Times: [{
                 page: String, 
                 startTime: Date, 
                 endTime: Date, 
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             explore3_Times: [{
                 page: String, 
                 startTime: Date, 
                 endTime: Date, 
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             explore4_Times: [{
                 page: String, 
                 startTime: Date, 
                 endTime: Date, 
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             evaluate_Times: [{
                 page: String, 
                 startTime: Date, 
                 endTime: Date, 
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
             evaluate2_Times: [{
                 page: String, 
                 startTime: Date, 
                 endTime: Date, 
-                duration: Number
+                durationMilliseconds: Number,
+                durationFormatted: String
             }],
 
         },       

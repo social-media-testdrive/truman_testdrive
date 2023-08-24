@@ -63,11 +63,12 @@ block content
 
 block append footer
   .ui.container
-    +navButtons('identity', '/explore2/identity', '/explore4/identity', 80, 'Back', 'Next')  
+    +navButtons('identity', 'explore3', '/explore2/identity', '/explore4/identity', 80, 'Back', 'Next')  
 
 block scripts
     script.
         var username = "#{user.profile.name}";
+        postStartTime("identity", "explore3");
     script(src='/module_js/identity_theft_explore.js', emailData=emails)
 
 block styles

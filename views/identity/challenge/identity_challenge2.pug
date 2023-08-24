@@ -261,53 +261,7 @@ block scripts
     //-     const currentTimeSpan = document.getElementById('current-time');
     //-     currentTimeSpan.textContent = currentTime;
     script(src='/js/character.js')
-//- block scripts 
-//-     script. 
-//-         var currentQuestionIndex = 0;
 
-//- block scripts
-//-     script.
-//-         var quizData = !{JSON.stringify(quizData)}; // quizData is passed to pug file via render function in app.js
-//-         console.log("quizData in pug challenge 2 file");
-//-         console.log(quizData);
-        //- const shuffledQuestions = shuffleArray(questions);
-        //- function shuffleArray(array) {
-        //-     let currentIndex = array.length, randomIndex;
-        //-     while (currentIndex !== 0) {
-        //-         randomIndex = Math.floor(Math.random() * currentIndex);
-        //-         currentIndex--;
-        //-         [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
-        //-     }
-        //-     return array;
-        //- }
-        //- //- console.log("quizData")
-        //- //- console.log(quizData);
-        //- console.log("shuffledQuestions")
-        //- console.log(shuffledQuestions);
-
-
-
-
-
-//- block scripts
-//-     script.
-//-         var quizData = !{JSON.stringify(quizData)}; // quizData is passed to pug file via render function in app.js
-//-         console.log("quizData in pug challenge 2 file");
-//-         console.log(quizData);
-        //- const shuffledQuestions = shuffleArray(questions);
-        //- function shuffleArray(array) {
-        //-     let currentIndex = array.length, randomIndex;
-        //-     while (currentIndex !== 0) {
-        //-         randomIndex = Math.floor(Math.random() * currentIndex);
-        //-         currentIndex--;
-        //-         [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
-        //-     }
-        //-     return array;
-        //- }
-        //- //- console.log("quizData")
-        //- //- console.log(quizData);
-        //- console.log("shuffledQuestions")
-        //- console.log(shuffledQuestions);
 
   
 block styles
@@ -315,3 +269,6 @@ block styles
     link(rel='stylesheet', href='/css/dart_quiz.css')  
 
     
+block scripts
+  script.
+    postStartTime("identity", "challenge2");

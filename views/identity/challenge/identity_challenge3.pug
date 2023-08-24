@@ -77,7 +77,7 @@ block content
 
 block append footer
   .ui.container
-    +navButtons('identity', '/challenge2/identity', '/submod/learn/identity', 10, 'Back', 'Learn')  
+    +navButtons('identity', 'challenge3', '/challenge2/identity', '/submod/learn/identity', 10, 'Back', 'Learn')  
 
 
     
@@ -86,19 +86,8 @@ block append footer
 
 
 block scripts
-
-
-  //- script.
-  //-   document.addEventListener('DOMContentLoaded', function() {
-  //-     const dartieImg = document.getElementById('dart_image1');
-  //-     const character = localStorage.getItem('character');
-
-  //-     if (character) {
-  //-       dartieImg.src = "/profile_pictures/" + character;
-  //-     }
-  //-   }
-  //-   );
   script.
+    postStartTime("identity", "challenge2");
     function playAudio() {
       var iframe = document.getElementById('audio-frame');
       var audioElement = iframe.contentWindow.document.querySelector('audio');

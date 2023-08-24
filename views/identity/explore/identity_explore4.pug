@@ -78,26 +78,15 @@ block content
 
 block append footer
   .ui.container
-    +navButtons('identity', '/explore3/identity', '/evaluate/identity', 80, 'Back', 'Complete Explore', true, '/evaluate2/identity')  
+    +navButtons('identity', 'explore4', '/explore3/identity', '/evaluate/identity', 80, 'Back', 'Complete Explore', true, '/evaluate2/identity')  
     
 
 
 
 
 block scripts
-
-
-  //- script.
-  //-   document.addEventListener('DOMContentLoaded', function() {
-  //-     const dartieImg = document.getElementById('dart_image1');
-  //-     const character = localStorage.getItem('character');
-
-  //-     if (character) {
-  //-       dartieImg.src = "/profile_pictures/" + character;
-  //-     }
-  //-   }
-  //-   );
   script.
+    postStartTime("identity", "explore4");
     function playAudio() {
       var iframe = document.getElementById('audio-frame');
       var audioElement = iframe.contentWindow.document.querySelector('audio');

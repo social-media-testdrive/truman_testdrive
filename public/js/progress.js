@@ -1,4 +1,30 @@
-function postModuleProgress(module_id, link_to_post, percent_to_post, current_percent) {
+function postModuleProgress(module_id, page, link_to_post, percent_to_post, current_percent) {
+    console.log(" ***IN post mod prog The link to post is: " + link_to_post);
+    // console.log("Post end time")
+    // POST module progress to database
+    postEndTime(module_id, page, "none");
+    // fetch('/postEndTime', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //         // 'X-CSRF-Token': csrfToken
+    //     },
+    //     //data to be sent in the request body
+    //     body: JSON.stringify({
+    //         "modID": module_id, 
+    //         "page": page, 
+    //     })
+    // })
+    // .then(response => {
+    //     if (response.ok) {
+    //         // Request was successful
+    //         console.log('Page END time posted successfully!');
+    //     } else {
+    //         // Handle error response
+    //         console.error('Failed to post page END time');
+    //     }
+    // })
+    
     // console.log("In postModuleProgress function *****************************************************************");
     // console.log("THE MODULE ID IS: " + module_id);
     // console.log("THE NEXT LINX IS: " + link_to_post);

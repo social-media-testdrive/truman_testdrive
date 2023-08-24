@@ -263,12 +263,13 @@ exports.postQuizScore = (req, res, next) => { // response second
 
 exports.postModuleProgress = (req, res, next) => { // response second
     // console.log("In POST module progess request body***********************YOOOOO****")
-    console.log(req.body)
-    console.log("BEFORE In POST module progess request user***********")
+    // console.log(req.body)
+    // console.log("BEFORE In POST module progess request user***********")
     // console.log(req.user);
 
-    console.log(req.user.modulePageTimes.identity.intro_Times[0].startTime);
-    console.log("after printing module page time(!!@#@#@#@##@")
+    // console.log(req.user.modulePageTimes.identity.intro_Times[0].startTime);
+    // console.log("after printing module page time(!!@#@#@#@##@")
+
     // console.log(req.user.moduleTimes[req.body.modID]);
 
     // req.user.moduleProgress.identity.link = "/BEYONCE"
@@ -415,8 +416,52 @@ exports.postStartTime = (req, res, next) => { // response second
 
 }; 
 
+exports.postEndTime = (req, res, next) => { // response second
+    const { modID, page} = req.body;
 
+    User.findOne({
+        username: req.user.username
+    }, (err, existingUser) => {
+        if (err) {
+            return next(err);
+        }
+        if (existingUser) {
+            let pageID = page + "_Times";
 
+            const indexToUpdate = existingUser.modulePageTimes[modID][pageID].length - 1;
+            console.log("****Index to update: " + indexToUpdate)
+            const endTime = Date.now();
+            // Update the endTime for the latest entry
+            existingUser.modulePageTimes[modID][pageID][indexToUpdate].endTime = endTime;
+
+            // Calculate duration and update the database
+            // existingUser.modulePageTimes[modID][pageID][latestEntryIndex].duration =
+            const durationInMillis = endTime - existingUser.modulePageTimes[modID][pageID][indexToUpdate].startTime;
+            existingUser.modulePageTimes[modID][pageID][indexToUpdate].durationMilliseconds = durationInMillis;
+            existingUser.modulePageTimes[modID][pageID][indexToUpdate].durationFormatted = formatDuration(durationInMillis);
+
+            // existingUser.modulePageTimes[modID][pageID][1].endTime = Date.now();
+            existingUser.save((err) => {
+                if (err) {
+                    return next(err);
+                }
+            });
+        }
+    });
+}; 
+
+// Format duration milli second to HH:MM:SS
+function formatDuration(duration) {
+    const seconds = Math.floor((duration / 1000) % 60);
+    const minutes = Math.floor((duration / (1000 * 60)) % 60);
+    const hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
+  
+    const formattedDuration = `${hours.toString().padStart(2, '0')}:${minutes
+      .toString()
+      .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    
+    return formattedDuration;
+  }
 
 
 exports.postIdentityTheftPreQuizScore = (req, res, next) => {

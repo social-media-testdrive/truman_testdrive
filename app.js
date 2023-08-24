@@ -709,10 +709,7 @@ app.get('/intro/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders,
     });
 });
 
-app.get('/intro2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
-    
-    // postStartTime("identity", "/intro2/identity");
-    
+app.get('/intro2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {    
     res.render(req.params.modId + '/intro/' + req.params.modId + '_intro2', {
         title: 'Intro'
     });
@@ -1487,6 +1484,7 @@ app.post('/chatbot', check, setHttpResponseHeaders, userController.postChatbotCo
 
 app.post('/postStartTime', check, setHttpResponseHeaders, userController.postStartTime);
 
+app.post('/postEndTime', check, setHttpResponseHeaders, userController.postEndTime);
 
 app.post('/postModuleProgress', check, setHttpResponseHeaders, userController.postModuleProgress);
 
