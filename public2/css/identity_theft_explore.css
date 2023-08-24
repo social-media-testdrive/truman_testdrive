@@ -129,8 +129,8 @@ button.ui.circular.icon.button:hover {
     margin-left: 100px;
 }
 
-#openDate {
-    /* margin-right: 20px; */
+.openEmailContainer {
+    margin-top: -35px;
 }
 
 #ban {
@@ -355,3 +355,101 @@ button.ui.circular.icon.button:hover {
     }
 
 }
+
+/* tooltip label */
+#report:hover::after,
+#block:hover::after,
+#delete:hover::after {
+    content: attr(data-tooltip); /* Use the data-tooltip attribute to store tooltip text */
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid black;
+    padding: 5px 10px;
+    background-color: white;
+    border-radius: 4px;
+    z-index: 99999999;
+}
+
+/* tooltip arrow */
+#report:hover::before,
+#block:hover::before,
+#delete:hover::before {
+    background-color: white;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    top: -12px;
+    z-index: 99999999999;
+}
+
+
+/* #report::after {
+    content: "Report";
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid black;
+    padding: 5px 10px;
+    background-color: white;
+    border-radius: 4px;
+    z-index: 9999999999;
+}
+
+#block::after {
+    content: "Block";
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid black;
+    padding: 5px 10px;
+    background-color: white;
+    border-radius: 4px;
+    z-index: 9999999999;
+}
+
+#delete::after {
+    content: "Delete";
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid black;
+    padding: 5px 10px;
+    background-color: white;
+    border-radius: 4px;
+    z-index: 9999999999;
+} */
+
+
+
+/* css for dynamically added tooltips */
+/* 
+.report-button,
+.block-button,
+.delete-button {
+    position: relative;
+}
+
+.report-tooltip
+.block-tooltip
+.delete-tooltip {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 50px);
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid black;
+    padding: 5px 10px;
+    background-color: white;
+    border-radius: 4px;
+    z-index: 1;
+}
+
+.report-button:hover .report-tooltip,
+.block-button:hover .block-tooltip,
+.delete-button:hover .delete-tooltip {
+    display: block;
+} */
