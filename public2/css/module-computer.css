@@ -28,3 +28,9 @@ body {
     padding: 0;
 }
 
+
+.delete-tooltip,
+.block-tooltip,
+.report-tooltip {
+    display: none;
+}

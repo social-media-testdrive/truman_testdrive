@@ -47,3 +47,19 @@ body{
     top: 70px; 
     width: 100%;;
 }
+
+
+
+/* tooltip label */
+#report:hover::after,
+#block:hover::after,
+#delete:hover::after {
+    display: none;
+}
+
+/* tooltip arrow */
+#report:hover::before,
+#block:hover::before,
+#delete:hover::before {
+    display: none;
+}
