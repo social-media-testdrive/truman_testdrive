@@ -11,8 +11,18 @@ let attempts = 0;
 let scoreTotal = 0;
 
 let this_js_script = $('script[src*=dart_quiz]');
+let page = this_js_script.attr('page');   
 let currentSection = this_js_script.attr('current-section');   
-let nextLink = this_js_script.attr('next-link');   
+let nextLink = this_js_script.attr('next-link');  
+let modID = this_js_script.attr('mod-id');  
+console.log("page: " + page);
+console.log("currentSection: " + currentSection);
+console.log("nextLink: " + nextLink);   
+console.log("modID: " + modID);
+
+
+// let progress = this_js_script.attr('progress');   
+
 // console.log("**currentSection: " + currentSection);
 // console.log("**nextLink: " + nextLink);
 
@@ -216,7 +226,11 @@ $(document).ready(function() {
             // let scoreTotal = 40;
             // let selectedAnswer = ['yes', 'no', 'yes', 'no', [1,2,3,4]];
             // let questionScores = [0, 0, 1, 1, 0];
-            let modID = "identity";
+
+            //  ****FIX / Generalize THIS LATER
+            // let modID = "identity";
+
+            postModuleProgress(modID, page, nextLink, progress, current_percent);
             // console.log("Posting quiz attempt to database!");
             // console.log("ScoreTotal is: " + scoreTotal);
             // const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');

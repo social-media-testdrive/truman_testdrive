@@ -206,9 +206,15 @@ exports.postInstructorLogin = (req, res, next) => {
 
 
 exports.postQuizScore = (req, res, next) => { // response second
-    console.log("In POST quiz score request body***********************hiii****");
+    // console.log("In POST quiz score request body***********************hiii****");
 
     const { modID, scoreTotal, selectedAnswer, questionScores, nextLink, currentSection } = req.body;
+    // console.log("Module ID: " + modID);
+    // console.log("Score Total: " + scoreTotal);
+    // console.log("Selected Answer: " + selectedAnswer);
+    // console.log("Question Scores: " + questionScores);
+    // console.log("Next Link: " + nextLink);
+    // console.log("Current Section: " + currentSection);
 
     User.findOne({
         username: req.user.username
@@ -412,6 +418,9 @@ exports.postModuleProgress = async (req, res, next) => {
 exports.postStartTime = async (req, res, next) => {
     try {
         const { modID, page } = req.body;
+        // console.log("In backend POST start time request body***************************");
+        // console.log("Module ID: " + modID);
+        // console.log("The Page Name: " + page);
         const existingUser = await User.findOne({ username: req.user.username });
 
         if (!existingUser) {

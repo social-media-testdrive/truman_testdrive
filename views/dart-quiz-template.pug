@@ -126,6 +126,7 @@ block scripts
         var futureDate = "#{futureDate}"; 
         var email = "#{user.username}";
         var username = "#{user.profile.name}";
+        var current_percent = "#{user.moduleProgress.identity.percent}";
 
         $('.message .close')
         .on('click', function() {
@@ -139,11 +140,15 @@ block scripts
         //- console.log("questionData in pug challenge 2 file");
         //- console.log(questionData);
         //- console.log(questionData[1].prompt);
-    script(src='/module_js/dart_quiz.js', current-section=currentSection, next-link=nextLink)
+    script(src='/module_js/dart_quiz.js', mod-id=modID, page=page, current-section=currentSection, next-link=nextLink, progress=progress)
     //- script.
     //-     const currentTimeSpan = document.getElementById('current-time');
     //-     currentTimeSpan.textContent = currentTime;
     script(src='/js/character.js')
+    script.
+        const startModID = '#{modID}'; // Use Pug's variable interpolation to get the value
+        const startPage = '#{page}'; // Use Pug's variable interpolation to get the value
+        postStartTime(startModID, startPage);
 
   
 block styles

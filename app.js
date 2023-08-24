@@ -780,21 +780,26 @@ function getFutureDate() {
 
 app.get('/challenge2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, async function(req, res) {
     let quizData;
-    let currentSection = "challenge"
-    let backLink = "/challenge/identity"
-    let nextLink = "/challenge3/identity"
+    let modID = "identity";
+    let currentSection = "challenge";
+    let page = "challenge2";
+    let backLink = "/challenge/identity";
+    let nextLink = "/challenge3/identity";
+    let progress = 8;
     const data = await fs.readFileAsync(`${__dirname}/public2/json/` +  req.params.modId + `/challenge.json`);
     quizData = JSON.parse(data.toString());
 
     const currentTime = getCurrentTime();
     const currentDate = getCurrentDate();
-    req.params.modId 
     res.render('dart-quiz-template.pug', {
         title: 'Challenge',
         quizData,
+        modID,
         currentSection,
+        page,
         backLink,
         nextLink,
+        progress,
         currentTime,
         currentDate
     });
@@ -869,21 +874,26 @@ app.get('/submod/learn5/:modId', passportConfig.isAuthenticated, setHttpResponse
 
 app.get('/submod/learn6/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, async function(req, res) {
     let quizData;
-    let currentSection = "submodOne"
-    let backLink = "/submod/learn5/identity"
-    let nextLink = "/submod/learn7/identity"
+    let modID = "identity";
+    let currentSection = "submodOne";
+    let page = "sub_learn6";
+    let backLink = "/submod/learn5/identity";
+    let nextLink = "/submod/learn7/identity";
+    let progress = 22;
     const data = await fs.readFileAsync(`${__dirname}/public2/json/` +  req.params.modId + `/submod.json`);
     quizData = JSON.parse(data.toString());
 
     const currentTime = getCurrentTime();
     const currentDate = getCurrentDate();
-    req.params.modId 
     res.render('dart-quiz-template.pug', {
         title: 'Quiz',
         quizData,
+        modID,
         currentSection,
+        page,
         backLink,
         nextLink,
+        progress,
         currentTime,
         currentDate
     });
@@ -994,9 +1004,12 @@ app.get('/submod2/learn13/:modId', passportConfig.isAuthenticated, setHttpRespon
 
 app.get('/submod2/learn14/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, async function(req, res) {
     let quizData;
-    let currentSection = "submodTwo"
-    let backLink = "/submod2/learn13/identity"
-    let nextLink = "/submod2/learn15/identity"
+    let modID = "identity";
+    let currentSection = "submodTwo";
+    let page = "sub2_learn14";
+    let backLink = "/submod2/learn13/identity";
+    let nextLink = "/submod2/learn15/identity";
+    let progress = 55;
     const data = await fs.readFileAsync(`${__dirname}/public2/json/` +  req.params.modId + `/submodTwo.json`);
     quizData = JSON.parse(data.toString());
 
@@ -1004,13 +1017,15 @@ app.get('/submod2/learn14/:modId', passportConfig.isAuthenticated, setHttpRespon
     const currentDate = getCurrentDate();
     const futureDate = getFutureDate();
 
-    req.params.modId 
     res.render('dart-quiz-template.pug', {
         title: 'Quiz',
         quizData,
+        modID,
         currentSection,
+        page,
         backLink,
         nextLink,
+        progress,
         currentTime,
         currentDate,
         futureDate
@@ -1149,9 +1164,12 @@ app.get('/explore5/:modId', passportConfig.isAuthenticated, setHttpResponseHeade
 // Render evaluate (all modules) ******************************
 app.get('/evaluate/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, async function(req, res) {
     let quizData;
-    let currentSection = "evaluate"
-    let backLink = "/explore4/identity"
-    let nextLink = "/evaluate2/identity"
+    let modID = "identity";
+    let currentSection = "evaluate";
+    let page = "evaluate";
+    let backLink = "/explore4/identity";
+    let nextLink = "/evaluate2/identity";
+    let progress = 85;
     const data = await fs.readFileAsync(`${__dirname}/public2/json/` +  req.params.modId + `/evaluate.json`);
     quizData = JSON.parse(data.toString());
 
@@ -1159,13 +1177,15 @@ app.get('/evaluate/:modId', passportConfig.isAuthenticated, setHttpResponseHeade
     const currentDate = getCurrentDate();
     const futureDate = getFutureDate();
 
-    req.params.modId 
     res.render('dart-quiz-template.pug', {
         title: 'Evaluate',
         quizData,
+        modID,
         currentSection,
+        page,
         backLink,
         nextLink,
+        progress,
         currentTime,
         currentDate,
         futureDate
