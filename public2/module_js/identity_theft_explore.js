@@ -146,8 +146,8 @@ function showEmail(index) {
       'data-tooltip': "Report"
     });
     reportButton.append($('<i>', { class: 'bullhorn large icon' }));
-    // const tooltipReport = $('<div class="report-tooltip">Report</div>');
-    // reportButton.append(tooltipReport);
+    const tooltipReport = $('<div class="report-tooltip">Report</div>');
+    reportButton.append(tooltipReport);
 
     // Create the block button
     var blockButton = $('<button>', {
@@ -157,8 +157,8 @@ function showEmail(index) {
       'data-tooltip': "Block"
     });
     blockButton.append($('<i>', { class: 'ban large icon' }));
-    // const tooltipBlock = $('<div class="block-tooltip">Block</div>');
-    // blockButton.append(tooltipBlock);
+    const tooltipBlock = $('<div class="block-tooltip">Block</div>');
+    blockButton.append(tooltipBlock);
 
     // Create the delete button
     var deleteButton = $('<button>', {
@@ -168,8 +168,8 @@ function showEmail(index) {
       'data-tooltip': "Delete"
     });
     deleteButton.append($('<i>', { class: 'trash alternate outline large icon' }));
-    // const tooltipDelete = $('<div class="delete-tooltip">Delete</div>');
-    // deleteButton.append(tooltipDelete);
+    const tooltipDelete = $('<div class="delete-tooltip">Delete</div>');
+    deleteButton.append(tooltipDelete);
 
     // Create subjectLine and inboxLabel
     var subjectLine = $('<span>', { id: 'subjectLine' }).text(email.subject);

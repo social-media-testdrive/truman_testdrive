@@ -98,7 +98,7 @@ $(document).ready(function() {
                 if(viewingAnswer === true) {
                     $(".nextButton").text("Return to Results");
                 } else {
-                    $(".nextButton").text("View Results");
+                    $(".nextButton").text("Submit Quiz");
                 }
             }
 
@@ -210,7 +210,7 @@ $(document).ready(function() {
                     $(".htmlImage").hide();
 					displayScore();
 					$(".preButton").text("Try Again");
-                    $(".nextButton").text("Submit Quiz");
+                    $(".nextButton").text("Next");
 
 					// $(".nextButton").text("View Answers");
 					quizOver = true;
