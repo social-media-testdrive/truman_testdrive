@@ -102,7 +102,7 @@ function showScoreBanner(score, totalQuestions) {
     // or they have reached the maximum number of attempts.
     let text = "";
     text += (score >= 3) ? "Good job! " : "";
-    text += "You answered <span class = 'inline bold'>" + score + "</span> out of <span class = 'inline bold'>" + totalQuestions + "</span>  questions correctly on this quiz attempt.";
+    text += "You answered <strong>" + score + "</strong> out of <strong>" + totalQuestions + "</strong>  questions correctly on this quiz attempt.";
     text += (attemptNumber <= maxAttempt && score !== totalQuestions) ?
         "</br>You can review and change your answers, and resubmit the quiz (up to a maximum of 3 times) to recheck your answers. </br>" :
         (score === totalQuestions) ?
@@ -111,7 +111,7 @@ function showScoreBanner(score, totalQuestions) {
 
     // Append the scores for every attempt to the score banner.
     attemptScoresArray.forEach(function(score, i) {
-        text += "</br> <span class = 'inline bold'> Attempt " + (i + 1) + ": &nbsp;" + score + " </span> out of <span class = 'inline bold'>" + totalQuestions + "</span> questions answered correctly"
+        text += "</br> <strong> Attempt " + (i + 1) + ": &nbsp;" + score + " </strong> out of <strong>" + totalQuestions + "</strong> questions answered correctly"
     });
 
     if ($('.scoreBanner').is(':visible')) {
@@ -338,47 +338,7 @@ $(window).on("load", function() {
 
 function onPrint() {
     if ($('.quiz_print').hasClass('green')) {
-        $(".insertPrint").empty();
-        $(".insertPrint").css('display', 'block');
-
-        // At the moment of cloning and appending the radio elements to ".insertPrint",
-        // the new element has the same name and id of the original one. 
-        // This causes the original radio input to be unchecked. 
-
-        // A way to avoid this is to save the original radio inputs
-        // and resetting it after the cloning and appending is done. 
-
-        // used to save checked radio inputs
-        const answerArray = new Array();
-
-        // Iterate over each prompt and save the radio value (0, 1, 2... ) selected to 'answerArray'
-        $('.quizRadioPrompt').each(function(index) {
-            let radioSelection = $(this)
-                .closest('.ui.segment')
-                .find('.radio.checkbox input:checked').val();
-            answerArray.push(radioSelection);
-        });
-
-        // Append printed elements to '.insertPrint'
-        var scoreBannerText = document.getElementById("scoreBannerHeader").innerHTML;
-        let scoreBannerToAppend = $(document.getElementById("scoreBannerHeader")).clone().removeAttr('id');
-        scoreBannerToAppend.innerHTML = scoreBannerText;
-        if (scoreBannerText !== undefined && scoreBannerText !== '') {
-            $(".insertPrint").append(scoreBannerToAppend);
-        }
-
-        $('.radioQuestion').each(function() {
-            $(this).clone().removeClass('quizPromptSegment').appendTo(".insertPrint");
-        });
         window.print();
-
-        $(".insertPrint").css('display', 'none');
-        // reset radio selections to original radio inputs
-        $('.quizRadioPrompt').each(function(index) {
-            $(this)
-                .closest('.ui.segment')
-                .find('.radio.checkbox input[value=' + answerArray[index] + ']').prop("checked", true);
-        });
     } else {
         if ($('.quizPromptSegment.Q1')
             .is(':hidden')) {

@@ -70,61 +70,35 @@ i.icon.hidden {
     font-size: 120%;
 }
 
-.insertPrint,
-.insertPrint * {
-    display: none !important;
-}
-
 
 /*------- SCREENSHOTS ---------*/
 
 @media print {
-    body * {
-        display: none;
-    }
-    .insertPrint,
-    .insertPrint * {
-        display: block !important;
-        overflow: visible !important;
-    }
-    .ui.mini.green.right.labeled.icon.button.quizSegmentButton,
-    .ui.mini.green.right.labeled.icon.button.quizSegmentButton * {
-        display: none !important;
-    }
     .ui.big.labeled.icon.button {
         display: none;
     }
-    #scoreBannerHeader {
-        visibility: hidden !important;
-    }
+    .testdriveHeaderRow,
     .ui.menu {
         display: none;
     }
-    .breakHere {
-        page-break-before: always;
+    #pagecontainer {
+        padding: 0 !important;
+        margin: 5px;
     }
-    .ui.form .disabled.fields .field,
-    .ui.form .disabled.field,
-    .ui.form .field :disabled {
-        pointer-events: none;
-        opacity: 1;
-    }
-    label {
-        float: left;
-        clear: none;
-        display: block;
-    }
-    input[type=radio] {
-        float: left;
-        clear: none;
-        margin-top: 3px;
+    /* .ui.segment {
+        box-shadow: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+    } */
+    .ui.stackable.three.cards,
+    .inline {
+        display: flex !important;
+        flex-direction: row !important;
     }
     h4 i,
     h3 i {
         float: left;
-    }
-    span.inline {
-        display: inline !important;
     }
     .ui.label {
         background-color: transparent !important;
