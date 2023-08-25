@@ -765,3 +765,8 @@ i.big.unlock.icon {
 }
 
 
+/* FIX for tablet user tested fixed footer */
+
+#page-article {
+    margin-bottom: 50px !important;
+}
