@@ -1,0 +1,94 @@
+.ui.label
+  h4.reflectionPrompt(data-questionNumber=questionNumber, data-questionType=questionInfo["type"])
+    if questionInfo.type==="checkboxGroupedPhotoRow"
+      i.exclamation.triangle.icon.yellowIcon
+    | !{questionInfo.prompt}
+case questionInfo.type
+  when "checkboxGroupedPhotoRow"
+    h3.grayElement.mt-3
+      i.hand.pointer.icon
+      | Click on the ones that you noticed!
+    .ui.stackable.three.cards.selectablePosts.mb-3
+      each post in questionInfo.groupPosts
+        .ui.fluid.card
+          .content     
+            a.left.floated
+              img.ui.avatar.image(src=cdn+post.profilePhoto)
+              span  !{post.username}
+            .right.floated.meta !{post.postTime}
+          .image
+            img.post(src=cdn+post.postImage)
+            if mod==='digital-literacy'
+              .read.rounded.right.floated.info_button
+                i.info.icon
+          .content.descriptionContent
+            .description !{post.postDescription}
+  when "checkboxGrouped"
+    each post in questionInfo.groupPosts
+      .ui.stackable.two.cards
+          if post.username
+            .ui.fluid.card 
+              .content
+                .right.floated.time !{post.postTime}
+                a.left.floated
+                  img.ui.avatar.image(src=cdn+post.profilePhoto)
+                  span  !{post.username}
+              .image
+                img.post(src=cdn+post.postImage)
+                if mod==='digital-literacy'
+                  .read.rounded.right.floated.info_button
+                    i.info.icon
+              .content.descriptionContent
+                .description !{post.postDescription}
+          else 
+            .ui.fluid.card(style='align-items: center')
+              img.post(src=cdn+post.postImage, style='width: 65%')
+          .ui.fluid.card
+            .content 
+              .ui.form
+                .grouped.fields
+                  each checkboxLabel, checkboxIndex in questionInfo.checkboxLabels
+                    .field
+                      .ui.checkbox
+                        input(type='checkbox', tabindex='0')
+                        label !{checkboxLabel}
+                    hr
+  when "written"
+    .ui.form
+      .field
+        textarea.glowing-border(rows='2', id=questionNumber)
+  when "checkbox"
+    .ui.form
+      .grouped.fields
+        each checkboxLabel, checkboxIndex in questionInfo.checkboxLabels
+          .field
+            .ui.checkbox
+              input(type='checkbox', tabindex='0')
+              label #{checkboxLabel}
+  when "radio" 
+    .ui.form 
+      .inline.fields(style="margin-top:10px")
+        each radioLabel, radioIndex in questionInfo.radioLabels 
+          .field
+            .radio.checkbox
+              input(type='radio', value=radioLabel.toLowerCase(), name=questionNumber, tabindex='0', id=questionNumber+"_"+radioLabel)
+              label(for=questionNumber+"_"+radioLabel)  !{radioLabel}
+  when "habitsUnique"
+    .ui.form
+      .inline.fields.restrictMaxWidth
+        input.glowing-border(type='text')
+        label &nbsp&nbspMinutes
+    button.ui.green.button#checkTime Find out the actual time!
+    .ui.header.habitsReflectionCheckTime.hidden#undoHide You actually spent:
+    .ui.statistics.hidden
+      .statistic
+        .value#habitsActivityTotalTimeMinutes 0
+        .label
+          | min 
+      .statistic  
+        .value :
+        .label
+      .statistic
+        .value#habitsActivityTotalTimeSeconds 0
+        .label
+          | sec

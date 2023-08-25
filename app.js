@@ -336,10 +336,15 @@ function isValidModId(req, res, next) {
     }
 }
 // Main route is the module page
-app.get('/', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
+app.get('/', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, async function(req, res) {
+    let modData;
+    const data = await fs.readFileAsync(`${__dirname}/public2/json/moduleInfo.json`)
+    modData = JSON.parse(data.toString());
+
     res.render('mods', {
         title: 'Pick a Lesson',
-        isResearchVersion
+        isResearchVersion,
+        modData
     });
 });
 
@@ -452,10 +457,11 @@ app.get('/privacy', setHttpResponseHeaders, csrfProtection, addCsrf, function(re
 app.get('/results/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, async function(req, res) {
     let reflectionData;
     const data = await fs.readFileAsync(`${__dirname}/public2/json/reflectionSectionData.json`)
-    reflectionData = JSON.parse(data.toString());
+    reflectionData = JSON.parse(data.toString())[req.params.modId];
 
-    res.render(req.params.modId + '/' + req.params.modId + '_results', {
+    res.render('base_results', {
         title: 'Reflection',
+        mod: req.params.modId,
         reflectionData
     });
 });

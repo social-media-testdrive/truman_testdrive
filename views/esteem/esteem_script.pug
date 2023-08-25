@@ -8,30 +8,28 @@ block post
       include ../partials/script/actorPost
   
 block rightColumn
-
-  .computer.only.four.wide.column
-    .ui.sticky.compact.positive.message.advancedLitReminder
-      case user.esteemTopic[user.esteemTopic.length - 1]
-        when "Music"
-          p.
-            Remember that you are viewing Jeremy's timeline. Pay special 
-            attention to posts by Jeremy's friends, Kiki and Franklin. You can 
-            still make posts and add comments on the timeline. 
-        when "Sports"
-          p.
-            Remember that you are viewing Jeremy's timeline. Pay special 
-            attention to posts by Jeremy's friends, Brielle and Hayden. You can 
-            still make posts and add comments on the timeline.  
-        when "Gaming"
-          p.
-            Remember that you are viewing Jeremy's timeline. Pay special 
-            attention to posts by Jeremy's friends, Lindsay and Asher. You can 
-            still make posts and add comments on the timeline.  
-        default
-          p.
-            Remember that you are viewing Jeremy's timeline. Pay special 
-            attention to posts by Jeremy's friends, Kiki and Franklin. You can 
-            still make posts and add comments on the timeline.
+  .ui.sticky.compact.positive.message.advancedLitReminder
+    case user.esteemTopic[user.esteemTopic.length - 1]
+      when "Music"
+        p.
+          Remember that you are viewing Jeremy's timeline. Pay special 
+          attention to posts by Jeremy's friends, Kiki and Franklin. You can 
+          still make posts and add comments on the timeline. 
+      when "Sports"
+        p.
+          Remember that you are viewing Jeremy's timeline. Pay special 
+          attention to posts by Jeremy's friends, Brielle and Hayden. You can 
+          still make posts and add comments on the timeline.  
+      when "Gaming"
+        p.
+          Remember that you are viewing Jeremy's timeline. Pay special 
+          attention to posts by Jeremy's friends, Lindsay and Asher. You can 
+          still make posts and add comments on the timeline.  
+      default
+        p.
+          Remember that you are viewing Jeremy's timeline. Pay special 
+          attention to posts by Jeremy's friends, Kiki and Franklin. You can 
+          still make posts and add comments on the timeline.
             
 block scripts2
   script.

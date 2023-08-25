@@ -1,50 +1,50 @@
 {
-  "accounts": {
-    "image": "acctandpasswords.png",
-    "title": "Accounts and Passwords"
-  },
-  "advancedlit": {
-    "image": "advancednews.png",
-    "title": "Responding to Breaking News!"
-  },
-  "cyberbullying": {
-    "image": "upstander.png",
-    "title": "How to Be an Upstander"
-  },
-  "digfoot": {
-    "image": "digfoot.png",
-    "title": "Shaping Your Digital Footprint"
-  },
-  "digital-literacy": {
-    "image": "news.png",
-    "title": "News in Social Media"
-  },
-  "habits": {
-    "image": "smhabits.png",
-    "title": "Healthy Social Media Habits"
-  },
-  "phishing": {
-    "image": "phishing.png",
-    "title": "Scams and Phishing"
-  },
-  "presentation": {
-    "image": "onlineidentity.png",
-    "title": "Online Identities"
-  },
-  "privacy": {
-    "image": "smprivacy.png",
-    "title": "Social Media Privacy"
-  },
-  "safe-posting": {
-    "image": "privateinfo.png",
-    "title": "Is It Private Information?"
-  },
-  "targeted": {
-    "image": "targetedads.png",
-    "title": "Ads on Social Media"
-  },
-  "esteem": {
-    "image": "esteem.png",
-    "title": "The Ups and Downs of Social Media"
-  }
+    "accounts": {
+        "image": "acctandpasswords.png",
+        "title": "Accounts and Passwords"
+    },
+    "esteem": {
+        "image": "esteem.png",
+        "title": "The Ups and Downs of Social Media"
+    },
+    "advancedlit": {
+        "image": "advancednews.png",
+        "title": "Responding to Breaking News!"
+    },
+    "habits": {
+        "image": "smhabits.png",
+        "title": "Healthy Social Media Habits"
+    },
+    "targeted": {
+        "image": "targetedads.png",
+        "title": "Ads on Social Media"
+    },
+    "phishing": {
+        "image": "phishing.png",
+        "title": "Scams and Phishing"
+    },
+    "cyberbullying": {
+        "image": "upstander.png",
+        "title": "How to Be an Upstander"
+    },
+    "safe-posting": {
+        "image": "privateinfo.png",
+        "title": "Is It Private Information?"
+    },
+    "digfoot": {
+        "image": "digfoot.png",
+        "title": "Shaping Your Digital Footprint"
+    },
+    "presentation": {
+        "image": "onlineidentity.png",
+        "title": "Online Identities"
+    },
+    "privacy": {
+        "image": "smprivacy.png",
+        "title": "Social Media Privacy"
+    },
+    "digital-literacy": {
+        "image": "news.png",
+        "title": "News in Social Media"
+    }
 }

@@ -2,10 +2,7 @@ extends ui_layout
 
 block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
-  .ui.container.resultsAddBottomMargin
-    .ui.stackable.column.grid
-      .ui.column
-        .insertPrint
+  .ui.container
     .ui.warning.message.hidden.scoreBanner#scoreBannerHeader
 
     -var optionLabelDictionary = ["A.", "B.", "C.", "D.", "E."]
@@ -27,7 +24,7 @@ block content
               |   Next 
 
           .ui.basic.segment.noPadding.quizPromptSegment.hidden(class=questionNumber)
-              .ui.label.resultsPromptLabel
+              .ui.label
                 h4.quizRadioPrompt(data-questionNumber=questionNumber)
                   | !{questionInfo.prompt.replace(/<span class = 'underline'>/g, '<span class = "underline">').replace(/<\/span>/g, '</span>')}
               .ui.form
@@ -55,19 +52,19 @@ block content
     include partials/optInToShareActivityData.pug
     br
     .ui.big.labeled.icon.button.quiz_print(onclick="onPrint()")
-          i.right.arrow.icon
-          |   Print your responses
+      i.right.arrow.icon
+      |   Print your responses
     br
     .ui.big.labeled.icon.button.quizCheckAnswersButton
-        i.pencil.icon
-        |   Check my Answers
+      i.pencil.icon
+      |   Check my Answers
     .ui.big.labeled.icon.button.blue.showExplanationButton.hidden
-        i.tag.arrow.icon
-        |   Show me the correct answers and explanations
+      i.tag.arrow.icon
+      |   Show me the correct answers and explanations
     .ui.big.labeled.icon.button.green.quizSkipButton
-        i.rocket.icon
-        .skipButtonText
-          |   Skip Quiz
+      i.rocket.icon
+      .skipButtonText
+        |   Skip Quiz
 
 block scripts
   script(src='/module_js/voiceover.js') 

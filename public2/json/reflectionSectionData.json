@@ -1,20 +1,53 @@
 {
     "accounts": {
+        "questionOrder": ["Q1", "Q2", "Q3"],
         "Q1": {
             "type": "written",
-            "prompt": "What are some features of a strong password?"
+            "prompt": "What are some features of a strong password?",
+            "voiceoverFiles": ["CUSML.8.6.01.mp3"]
         },
         "Q2": {
             "type": "written",
-            "prompt": "Why is it important to choose your username carefully?"
+            "prompt": "Why is it important to choose your username carefully?",
+            "voiceoverFiles": ["CUSML.8.6.02.mp3"]
         },
         "Q3": {
             "type": "written",
-            "prompt": "What kind of information is okay to share on your social media profile?"
+            "prompt": "What kind of information is okay to share on your social media profile?",
+            "voiceoverFiles": ["CUSML.8.6.03.mp3"]
         }
     },
     "advancedlit": {
+        "questionOrder": ["Q1", "Q2", "Q3", "Q4"],
         "Q1": {
+            "type": "checkboxGroupedPhotoRow",
+            "prompt": "There were two breaking news articles and one opinion piece about Chestin hosting the olympics. Did you notice any of them?",
+            "groupCount": "3",
+            "groupPosts": [{
+                    "username": "Emily Li",
+                    "profilePhoto": "/profile_pictures/user36.jpg",
+                    "postImage": "/post_pictures/olympic1_an.png",
+                    "postDescription": "Wow just heard that we will be hosting the olympics?!?!?",
+                    "postTime": "6 minutes ago"
+                },
+                {
+                    "username": "Ella Sroni",
+                    "profilePhoto": "/profile_pictures/user25.jpg",
+                    "postImage": "/post_pictures/olympic2_an.png",
+                    "postDescription": "Interesting article on how Chestin could host the Olympics",
+                    "postTime": "1 hour ago"
+                },
+                {
+                    "username": "Shika Ramphal",
+                    "profilePhoto": "/profile_pictures/user12.jpg",
+                    "postImage": "/post_pictures/olympic3_an.png",
+                    "postDescription": "Woo!! Go Chestin go!!",
+                    "postTime": "1 hour ago"
+                }
+            ],
+            "voiceoverFiles": ["CUSML.9.6.1.mp3"]
+        },
+        "Q2": {
             "type": "checkbox",
             "prompt": "What did you do when you saw a breaking news story?",
             "checkboxLabels": {
@@ -33,19 +66,51 @@
                 "3": "0",
                 "4": "1",
                 "5": "0"
-            }
-        },
-        "Q2": {
-            "type": "written",
-            "prompt": "Did you read any of the articles? Did you notice any signs that the article may be inaccurate?"
+            },
+            "voiceoverFiles": ["CUSML.9.6.2.mp3"]
         },
         "Q3": {
             "type": "written",
-            "prompt": "Why is it important to get the full story before reacting to or sharing breaking news?"
+            "prompt": "Did you read any of the articles? Did you notice any signs that the article may be inaccurate?",
+            "voiceoverFiles": ["CUSML.9.6.3.mp3"]
+        },
+        "Q4": {
+            "type": "written",
+            "prompt": "Why is it important to get the full story before reacting to or sharing breaking news?",
+            "voiceoverFiles": ["CUSML.9.6.4.mp3"]
         }
     },
     "cyberbullying": {
+        "questionOrder": ["Q1", "Q2", "Q4", "Q5"],
         "Q1": {
+            "type": "checkboxGroupedPhotoRow",
+            "prompt": "These were the cyberbullying posts in the timeline. How many did you notice?",
+            "groupCount": "3",
+            "groupPosts": [{
+                    "username": "Ella Sroni",
+                    "profilePhoto": "/profile_pictures/user25.jpg",
+                    "postImage": "/post_pictures/blackbkg.jpg",
+                    "postDescription": "No one likes you. Why do you come to school? @<span class='blueText'>Dylan Jones</span>",
+                    "postTime": "37 minutes ago"
+                },
+                {
+                    "username": "Breana Summers",
+                    "profilePhoto": "/profile_pictures/user29.jpg",
+                    "postImage": "/post_pictures/ewww.jpg",
+                    "postDescription": "Dylan smells like he didn't shower for a week",
+                    "postTime": "16 minutes ago"
+                },
+                {
+                    "username": "Keegan Scott",
+                    "profilePhoto": "/profile_pictures/user34.jpg",
+                    "postImage": "/post_pictures/dylansketchbook.jpeg",
+                    "postDescription": "omg lollll look at Dylan's sketchbook he's such a nerdddd",
+                    "postTime": "43 minutes ago"
+                }
+            ],
+            "voiceoverFiles": ["CUSML.6.7.1.mp3"]
+        },
+        "Q2": {
             "type": "checkbox",
             "prompt": "Tell us what you did to be an upstander.",
             "checkboxLabels": {
@@ -60,42 +125,88 @@
                 "1": "1",
                 "2": "1",
                 "3": "1"
-            }
-        },
-        "Q2": {
-            "type": "written",
-            "prompt": "Why did you act this way?"
+            },
+            "childQuestions": ["Q3"],
+            "voiceoverFiles": ["CUSML.6.7.2.mp3"]
         },
         "Q3": {
             "type": "written",
-            "prompt": "Why is it important for people to act against cyberbullying?"
+            "prompt": "Why did you act this way?",
+            "voiceoverFiles": []
         },
         "Q4": {
             "type": "written",
-            "prompt": "What will you do in the future to be an upstander if you see cyberbullying?"
+            "prompt": "Why is it important for people to act against cyberbullying?",
+            "voiceoverFiles": ["CUSML.6.7.3.mp3"]
+        },
+        "Q5": {
+            "type": "written",
+            "prompt": "What will you do in the future to be an upstander if you see cyberbullying?",
+            "voiceoverFiles": ["CUSML.6.7.4.mp3"]
         }
     },
     "digfoot": {
+        "questionOrder": ["Q1", "Q2", "Q3", "Q4"],
         "Q1": {
+            "type": "checkboxGroupedPhotoRow",
+            "prompt": "These were the posts that would have a negative impact on people's digital footprints. How many did you notice?",
+            "groupCount": "3",
+            "groupPosts": [{
+                    "username": "Keith Hernandez",
+                    "profilePhoto": "/profile_pictures/user15.jpg",
+                    "postImage": "/post_pictures/angrycat2.jpg",
+                    "postDescription": "Does this cat remind anyone else of Mrs. Lee?? She's always glaring at us lol. Why does she have to suck SO MUCH",
+                    "postTime": "30 minutes ago"
+                },
+                {
+                    "username": "Ryan Freyer",
+                    "profilePhoto": "/profile_pictures/user74.jpg",
+                    "postImage": "/post_pictures/facepalm.jpg",
+                    "postDescription": "Lol Danny didn't want me telling anyobody but he tripped over a rock and twisted his ankle. He is literally a meme.",
+                    "postTime": "48 minutes ago"
+                },
+                {
+                    "username": "Ella Sroni",
+                    "profilePhoto": "/profile_pictures/user25.jpg",
+                    "postImage": "/post_pictures/backtoschool.jpg",
+                    "postDescription": "First day of grade 7! come over to my house at 22 Eastwood dr if you want to hang",
+                    "postTime": "1 hour ago"
+                }
+            ],
+            "voiceoverFiles": ["CUSML.4.7.1.mp3"]
+        },
+        "Q2": {
             "type": "checkboxGrouped",
             "prompt": "How would the following posts have a negative impact on digital footprints?",
             "checkboxLabels": {
                 "0": "The poster was oversharing.",
                 "1": "The poster was sharing something that they might later regret.",
-                "2": "The post was not considerate of other people’s digital footprints.",
+                "2": "The post was not considerate of other people's digital footprints.",
                 "3": "This was a responsible post."
             },
             "groupCount": "3",
-            "groupPostImages": {
-                "0": "/post_pictures/angrycat2.jpg",
-                "1": "/post_pictures/facepalm.jpg",
-                "2": "/post_pictures/backtoschool.jpg"
-            },
-            "groupPostDescriptions": {
-                "0": "Does this cat remind anyone else of Mrs. Lee?? She's always glaring at us lol. Why does she have to suck SO MUCH",
-                "1": "Lol Danny didn't want me telling anyobody but he tripped over a rock and twisted his ankle. He is literally a meme.",
-                "2": "First day of grade 7! come over to my house at 22 Eastwood dr if you want to hang"
-            },
+            "groupPosts": [{
+                    "username": "Keith Hernandez",
+                    "profilePhoto": "/profile_pictures/user15.jpg",
+                    "postImage": "/post_pictures/angrycat2.jpg",
+                    "postDescription": "Does this cat remind anyone else of Mrs. Lee?? She's always glaring at us lol. Why does she have to suck SO MUCH",
+                    "postTime": "30 minutes ago"
+                },
+                {
+                    "username": "Ryan Freyer",
+                    "profilePhoto": "/profile_pictures/user74.jpg",
+                    "postImage": "/post_pictures/facepalm.jpg",
+                    "postDescription": "Lol Danny didn't want me telling anyobody but he tripped over a rock and twisted his ankle. He is literally a meme.",
+                    "postTime": "48 minutes ago"
+                },
+                {
+                    "username": "Ella Sroni",
+                    "profilePhoto": "/profile_pictures/user25.jpg",
+                    "postImage": "/post_pictures/backtoschool.jpg",
+                    "postDescription": "First day of grade 7! come over to my house at 22 Eastwood dr if you want to hang",
+                    "postTime": "1 hour ago"
+                }
+            ],
             "responseRequirement": "exact",
             "correctResponses": {
                 "0": {
@@ -116,19 +227,79 @@
                     "2": "0",
                     "3": "0"
                 }
-            }
-        },
-        "Q2": {
-            "type": "written",
-            "prompt": "What can you do in the future to make sure you have a positive digital footprint on social media?"
+            },
+            "voiceoverFiles": ["CUSML.4.7.2.mp3"]
         },
         "Q3": {
             "type": "written",
-            "prompt": "What can you do in the future to be mindful of other people's digital footprints on social media?"
+            "prompt": "What can you do in the future to make sure you have a positive digital footprint on social media?",
+            "voiceoverFiles": ["CUSML.4.7.3.mp3"]
+        },
+        "Q4": {
+            "type": "written",
+            "prompt": "What can you do in the future to be mindful of other people's digital footprints on social media?",
+            "voiceoverFiles": ["CUSML.4.7.4.mp3"]
         }
     },
     "digital-literacy": {
+        "questionOrder": ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7"],
         "Q1": {
+            "type": "checkboxGroupedPhotoRow",
+            "prompt": "These were the FAKE news posts in the timeline. How many did you notice?",
+            "groupCount": "3",
+            "groupPosts": [{
+                    "username": "Zoe Goodall",
+                    "profilePhoto": "/profile_pictures/user70.JPG",
+                    "postImage": "/post_pictures/fakenews1.png",
+                    "postDescription": "Breaking News: Driving age just lowered to 12. DMV flooded with road test appointments and car companies cannot keep their newest models off the road.",
+                    "postTime": "20 minutes ago"
+                },
+                {
+                    "username": "Keith Hernandez",
+                    "profilePhoto": "/profile_pictures/user15.jpg",
+                    "postImage": "/post_pictures/fakenews2.png",
+                    "postDescription": "Craving a donut? Think again! Scientists found that donuts are the leading cause of cancer in young children 😳",
+                    "postTime": "30 minutes ago"
+                },
+                {
+                    "username": "My Name",
+                    "profilePhoto": "/profile_pictures/user43.png",
+                    "postImage": "/post_pictures/fakenews5.png",
+                    "postDescription": "You'll never guess what these are!!!",
+                    "postTime": "1 hour ago"
+                }
+            ],
+            "voiceoverFiles": ["CUSML.5.9.1.mp3"]
+        },
+        "Q2": {
+            "type": "checkboxGroupedPhotoRow",
+            "prompt": "These were the REAL news posts in the timeline. How many did you notice?",
+            "groupCount": "3",
+            "groupPosts": [{
+                    "username": "Gabby Rogers",
+                    "profilePhoto": "/profile_pictures/user72.jpg",
+                    "postImage": "/post_pictures/realnews2.png",
+                    "postDescription": "Volkswagen's ID Buggy, an electric dune buggy concept, was an eye-catching presence at this week's Geneva International Motor Show. The most surprising thing about it, though, is that VW might actually put it into production.",
+                    "postTime": "6 minutes ago"
+                },
+                {
+                    "username": "Cloe Hansen",
+                    "profilePhoto": "/profile_pictures/user3.jpg",
+                    "postImage": "/post_pictures/realnews1.png",
+                    "postDescription": "\"According to an accumulating body of research by Dr. Cantley and his team at Weill Cornell Medicine, excess sugar also helps many types of cancer to grow more rapidly.\"",
+                    "postTime": "53 minutes ago"
+                },
+                {
+                    "username": "Susan Turner",
+                    "profilePhoto": "/profile_pictures/user40.jpg",
+                    "postImage": "/post_pictures/realnews3.png",
+                    "postDescription": "The University of Chicago will no longer require ACT or SAT scores from U.S. students",
+                    "postTime": "1 hour ago"
+                }
+            ],
+            "voiceoverFiles": ["CUSML.5.9.2.mp3"]
+        },
+        "Q3": {
             "type": "checkboxGrouped",
             "prompt": "Did you notice any signs of fake news in these posts?",
             "checkboxLabels": {
@@ -137,16 +308,28 @@
                 "2": "They were from a suspicious website."
             },
             "groupCount": "3",
-            "groupPostImages": {
-                "0": "/post_pictures/fakenews1.png",
-                "1": "/post_pictures/fakenews2.png",
-                "2": "/post_pictures/fakenews3.png"
-            },
-            "groupPostDescriptions": {
-                "0": "Breaking News: Driving age just lowered to 12. DMV flooded with road test appointments and car companies cannot keep their newest models off the road.",
-                "1": "Craving a donut? Think again! Scientists found that donuts are the leading cause of cancer in young children 😳",
-                "2": "You'll never guess what these are!!!"
-            },
+            "groupPosts": [{
+                    "username": "Zoe Goodall",
+                    "profilePhoto": "/profile_pictures/user70.JPG",
+                    "postImage": "/post_pictures/fakenews1.png",
+                    "postDescription": "Breaking News: Driving age just lowered to 12. DMV flooded with road test appointments and car companies cannot keep their newest models off the road.",
+                    "postTime": "20 minutes ago"
+                },
+                {
+                    "username": "Keith Hernandez",
+                    "profilePhoto": "/profile_pictures/user15.jpg",
+                    "postImage": "/post_pictures/fakenews2.png",
+                    "postDescription": "Craving a donut? Think again! Scientists found that donuts are the leading cause of cancer in young children 😳",
+                    "postTime": "30 minutes ago"
+                },
+                {
+                    "username": "My Name",
+                    "profilePhoto": "/profile_pictures/user43.png",
+                    "postImage": "/post_pictures/fakenews5.png",
+                    "postDescription": "You'll never guess what these are!!!",
+                    "postTime": "1 hour ago"
+                }
+            ],
             "responseRequirement": "exact",
             "correctResponses": {
                 "0": {
@@ -164,9 +347,10 @@
                     "1": "1",
                     "2": "1"
                 }
-            }
+            },
+            "voiceoverFiles": ["CUSML.5.9.3.mp3"]
         },
-        "Q2": {
+        "Q4": {
             "type": "checkbox",
             "prompt": "Tell us what you would do next to check the credibility of the above articles.",
             "checkboxLabels": {
@@ -179,36 +363,108 @@
                 "0": "1",
                 "1": "1",
                 "2": "1"
-            }
-        },
-        "Q3": {
-            "type": "written",
-            "prompt": "What are the benefits and drawbacks of getting news on social media?"
-        },
-        "Q4": {
-            "type": "written",
-            "prompt": "Why is it important to evaluate the information you see on social media?"
+            },
+            "voiceoverFiles": ["CUSML.5.9.4.mp3"]
         },
         "Q5": {
             "type": "written",
-            "prompt": "What would you do in the future on real social media sites to make sure that the information you see is credible?"
+            "prompt": "What are the benefits and drawbacks of getting news on social media?",
+            "voiceoverFiles": ["CUSML.5.9.5.mp3"]
+        },
+        "Q6": {
+            "type": "written",
+            "prompt": "Why is it important to evaluate the information you see on social media?",
+            "voiceoverFiles": ["CUSML.5.9.6.mp3"]
+        },
+        "Q7": {
+            "type": "written",
+            "prompt": "What would you do in the future on real social media sites to make sure that the information you see is credible?",
+            "voiceoverFiles": ["CUSML.misc_01.mp3"]
         }
     },
     "esteem": {
-        "Q1": {
-            "type": "written",
-            "prompt": "Why might these posts cause Jeremy to have a red flag feeling?"
+        "questionOrder": ["Q1", "Q2", "Q3", "Q4"],
+        "Q1_Music": {
+            "type": "checkboxGroupedPhotoRow",
+            "prompt": "Here are some posts that might have caused Jeremy to experience a red flag feeling, did you notice any of them?",
+            "groupCount": "2",
+            "groupPosts": [{
+                    "username": "Franklin Robinson",
+                    "profilePhoto": "/profile_pictures/user10.jpg",
+                    "postImage": "/post_pictures/concert-crowd_se.jpg",
+                    "postDescription": "We missed you at the concert Jeremy! <span class='grayText'> — with Kiki Pualani </span>",
+                    "postTime": "10 minutes ago"
+                },
+                {
+                    "username": "Franklin Robinson",
+                    "profilePhoto": "/profile_pictures/user10.jpg",
+                    "postImage": "/post_pictures/bestguitar_se.JPG",
+                    "postDescription": "Inviting the best musicians from camp to make a song together. <span class='grayText'> — with Kiki Pualani and Nick Thomas</span>",
+                    "postTime": "1 hour ago"
+                }
+            ],
+            "voiceoverFiles": ["CUSML.1.9.1.mp3"]
+        },
+        "Q1_Gaming": {
+            "type": "checkboxGroupedPhotoRow",
+            "prompt": "Here are some posts that might have caused Jeremy to experience a red flag feeling, did you notice any of them?",
+            "groupCount": "3",
+            "groupPosts": [{
+                    "username": "Asher Michaels",
+                    "profilePhoto": "/profile_pictures/user48.jpeg",
+                    "postImage": "/post_pictures/computer-game_se.jpg",
+                    "postDescription": "Totally beating everyone <span class='grayText'> — with Lindsay Stokes and Asher Michaels</span>",
+                    "postTime": "10 minutes ago"
+                },
+                {
+                    "username": "Asher Michaels",
+                    "profilePhoto": "/profile_pictures/user48.jpeg",
+                    "postImage": "/post_pictures/nintendo_se.jpg",
+                    "postDescription": "Playing online with my best friend <span class='grayText'> — with Lindsay Stokes</span>",
+                    "postTime": "1 hour ago"
+                }
+            ],
+            "voiceoverFiles": ["CUSML.1.9.1.mp3"]
+        },
+        "Q1_Sports": {
+            "type": "checkboxGroupedPhotoRow",
+            "prompt": "Here are some posts that might have caused Jeremy to experience a red flag feeling, did you notice any of them?",
+            "groupCount": "3",
+            "groupPosts": [{
+                    "username": "Brielle Jordan",
+                    "profilePhoto": "/profile_pictures/user53.jpg",
+                    "postImage": "/post_pictures/bigmatch_se.jpg",
+                    "postDescription": "Watching the big match with my BFF!! <span class='grayText'> — with Hayden Abbey </span>",
+                    "postTime": "10 minutes ago"
+                },
+                {
+                    "username": "Brielle Jordan",
+                    "profilePhoto": "/profile_pictures/user53.jpg",
+                    "postImage": "/post_pictures/tryouts_se.jpg",
+                    "postDescription": "Wow, can't believe I'm the only one who made it to the next round of soccer tryouts from our group <span class='grayText'> — with Hayden Abbey, Jeremy Murray, and Corey King </span>",
+                    "postTime": "1 hour ago"
+                }
+            ],
+            "voiceoverFiles": ["CUSML.1.9.1.mp3"]
         },
         "Q2": {
             "type": "written",
-            "prompt": "Do you remember seeing posts that might have caused Jeremy to feel good? What kinds of posts were they?"
+            "prompt": "Why might these posts cause Jeremy to have a red flag feeling?",
+            "voiceoverFiles": ["CUSML.1.9.2.mp3"]
         },
         "Q3": {
             "type": "written",
-            "prompt": "What could Jeremy do to feel better after experiencing a red flag feeling on social media?"
+            "prompt": "Do you remember seeing posts that might have caused Jeremy to feel good? What kinds of posts were they?",
+            "voiceoverFiles": ["CUSML.1.9.3.mp3"]
+        },
+        "Q4": {
+            "type": "written",
+            "prompt": "What could Jeremy do to feel better after experiencing a red flag feeling on social media?",
+            "voiceoverFiles": ["CUSML.1.9.4.mp3"]
         }
     },
     "habits": {
+        "questionOrder": ["Q1", "Q2", "Q3", "Q4"],
         "Q1": {
             "type": "checkbox",
             "prompt": "How many of these attention-grabbing design features did you notice?",
@@ -222,11 +478,13 @@
                 "0": "1",
                 "1": "1",
                 "2": "0"
-            }
+            },
+            "voiceoverFiles": ["CUSML.10.6.1.mp3"]
         },
         "Q2": {
             "type": "habitsUnique",
-            "prompt": "How many minutes do you think you spent on the TestDrive timeline?"
+            "prompt": "How many minutes do you think you spent on the TestDrive timeline?",
+            "voiceoverFiles": ["CUSML.10.6.2.mp3"]
         },
         "Q3": {
             "type": "checkbox",
@@ -243,15 +501,46 @@
                 "1": "1",
                 "2": "1",
                 "3": "0"
-            }
+            },
+            "voiceoverFiles": ["CUSML.10.6.3.mp3"]
         },
         "Q4": {
             "type": "written",
-            "prompt": "Why is it important to build healthy social media habits?"
+            "prompt": "Why is it important to build healthy social media habits?",
+            "voiceoverFiles": ["CUSML.10.6.4.mp3"]
         }
     },
     "phishing": {
+        "questionOrder": ["Q1", "Q2", "Q3", "Q4"],
         "Q1": {
+            "type": "checkboxGroupedPhotoRow",
+            "prompt": "These were the phishing scam posts in the timeline. How many did you notice?",
+            "groupCount": "3",
+            "groupPosts": [{
+                    "username": "Lucy Simms",
+                    "profilePhoto": "/profile_pictures/user35.jpg",
+                    "postImage": "/post_pictures/nintendo_phi.jpg",
+                    "postDescription": "Get a BRAND new Nintendo Switch only $19.99!!! Hurry up, this offer WILL NOT LAST <span class='blueText'>http://goo.gl/FreeSwitch</span>",
+                    "postTime": "10 minutes ago"
+                },
+                {
+                    "username": "Socail Media Testdrive",
+                    "profilePhoto": "/profile_pictures/user91.png",
+                    "postImage": "/post_pictures/accountrisk_phi.png",
+                    "postDescription": "!!&$!ALERT!&$!! Your account MAY BE AT RISK. Click here to resolve <span class='blueText'>http://testdrive.info/youraccount</span>",
+                    "postTime": "48 minutes ago"
+                },
+                {
+                    "username": "Emma Garcia",
+                    "profilePhoto": "/profile_pictures/user41.jpg",
+                    "postImage": "/post_pictures/giftcard_phi.jpg",
+                    "postDescription": "You won't believe this crazy deal! I filled in a 5 minite survey and got a $500 gift card instantly!! Fill out survey NOW <span class='blueText'>http://bit.ly/FREEGIFTS</span>",
+                    "postTime": "1 hour ago"
+                }
+            ],
+            "voiceoverFiles": ["CUSML.3.8.1.mp3"]
+        },
+        "Q2": {
             "type": "checkboxGrouped",
             "prompt": "How did you respond to these posts that were phishing scams?",
             "checkboxLabels": {
@@ -261,21 +550,28 @@
                 "3": "I did something else."
             },
             "groupCount": "3",
-            "groupPostImages": {
-                "0": "/post_pictures/nintendo_phi.jpg",
-                "1": "/post_pictures/accountrisk_phi.png",
-                "2": "/post_pictures/giftcard_phi.jpg"
-            },
-            "groupPostDescriptions": {
-                "0": "Get a BRAND new Nintendo Switch only $19.99!!! Hurry up, this offer WILL NOT LAST",
-                "1": "!!&$!ALERT!&$!! Your account MAY BE AT RISK. Click here to resolve",
-                "2": "You won't believe this crazy deal! I filled in a 5 minite survey and got a $500 gift card instantly!! Fill out survey NOW"
-            },
-            "groupPostLinks": {
-                "0": " http://goo.gl/FreeSwitch",
-                "1": "http://testdrive.info/youraccount",
-                "2": "http://bit.ly/FREEGIFTS"
-            },
+            "groupPosts": [{
+                    "username": "Lucy Simms",
+                    "profilePhoto": "/profile_pictures/user35.jpg",
+                    "postImage": "/post_pictures/nintendo_phi.jpg",
+                    "postDescription": "Get a BRAND new Nintendo Switch only $19.99!!! Hurry up, this offer WILL NOT LAST <span class='blueText'>http://goo.gl/FreeSwitch</span>",
+                    "postTime": "10 minutes ago"
+                },
+                {
+                    "username": "Socail Media Testdrive",
+                    "profilePhoto": "/profile_pictures/user91.png",
+                    "postImage": "/post_pictures/accountrisk_phi.png",
+                    "postDescription": "!!&$!ALERT!&$!! Your account MAY BE AT RISK. Click here to resolve <span class='blueText'>http://testdrive.info/youraccount</span>",
+                    "postTime": "48 minutes ago"
+                },
+                {
+                    "username": "Emma Garcia",
+                    "profilePhoto": "/profile_pictures/user41.jpg",
+                    "postImage": "/post_pictures/giftcard_phi.jpg",
+                    "postDescription": "You won't believe this crazy deal! I filled in a 5 minite survey and got a $500 gift card instantly!! Fill out survey NOW <span class='blueText'>http://bit.ly/FREEGIFTS</span>",
+                    "postTime": "1 hour ago"
+                }
+            ],
             "responseRequirement": "atLeastOne",
             "correctResponses": {
                 "0": {
@@ -296,91 +592,171 @@
                     "2": "1",
                     "3": "0"
                 }
-            }
-        },
-        "Q2": {
-            "type": "written",
-            "prompt": "What are some clues you can use to identify phishing scams?"
+            },
+            "voiceoverFiles": ["CUSML.3.8.2.mp3"]
         },
         "Q3": {
             "type": "written",
-            "prompt": "Why is it important to protect yourself against phishing scams?"
+            "prompt": "What are some clues you can use to identify phishing scams?",
+            "voiceoverFiles": ["CUSML.3.8.3.mp3"]
+        },
+        "Q4": {
+            "type": "written",
+            "prompt": "Why is it important to protect yourself against phishing scams?",
+            "voiceoverFiles": ["CUSML.3.8.4.mp3"]
         }
     },
     "presentation": {
+        "questionOrder": ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6"],
         "Q1": {
+            "type": "checkboxGroupedPhotoRow",
+            "prompt": "These were the posts on the timeline that were from Elena’s finsta accounts. How many did you notice?",
+            "groupCount": "3",
+            "groupPosts": [{
+                    "username": "elena who",
+                    "profilePhoto": "/profile_pictures/elenawhoprof.jpg",
+                    "postImage": "/post_pictures/spcrying.jpg",
+                    "postDescription": "school really sucks i just wanna quit",
+                    "postTime": "32 minutes ago"
+                },
+                {
+                    "username": "elena who",
+                    "profilePhoto": "/profile_pictures/elenawhoprof.jpg",
+                    "postImage": "/post_pictures/spselfie.jpg",
+                    "postDescription": "silly selfie what do u think?",
+                    "postTime": "40 minutes ago"
+                },
+                {
+                    "username": "elena who",
+                    "profilePhoto": "/profile_pictures/elenawhoprof.jpg",
+                    "postImage": "/post_pictures/spnosering.png",
+                    "postDescription": "got a nose ring don't tell my parents they'll flip out lol",
+                    "postTime": "1 hour ago"
+                }
+            ],
+            "voiceoverFiles": ["CUSML.12.6.1.mp3"]
+        },
+        "Q2": {
             "type": "checkbox",
-            "prompt": "How were the posts in Elena’s finsta different from the ones in her main account?",
+            "prompt": "How were the posts in Elena's finsta different from the ones in her main account?",
             "checkboxLabels": {
-                "0": "She posted about things that only certain people will be interested in",
-                "1": "She posted things that are more casual or personal",
-                "2": "She posted mean things about other people"
+                "0": "She posted about things that only certain people will be interested in.",
+                "1": "She posted things that are more casual or personal.",
+                "2": "She posted mean things about other people."
             },
             "responseRequirement": "exact",
             "correctResponses": {
                 "0": "0",
                 "1": "1",
                 "2": "0"
-            }
+            },
+            "voiceoverFiles": ["CUSML.12.6.2.mp3"]
         },
-        "Q2": {
+        "Q3": {
             "type": "radio",
             "prompt": "Did you create a post on the TestDrive timeline?",
             "radioLabels": {
                 "0": "Yes",
                 "1": "No"
             },
-            "responseRequirement": "any"
-        },
-        "Q3": {
-            "type": "written",
-            "prompt": "If you created a post, how did you think about the audience when you created your post?"
+            "responseRequirement": "any",
+            "voiceoverFiles": ["CUSML.12.6.3.mp3"]
         },
         "Q4": {
             "type": "written",
-            "prompt": "What are the benefits of having multiple social media accounts?"
+            "prompt": "If you created a post, how did you think about the audience when you created your post?",
+            "voiceoverFiles": ["CUSML.12.6.4.mp3"]
         },
         "Q5": {
             "type": "written",
-            "prompt": "What are the drawbacks of having multiple social media accounts?"
+            "prompt": "What are the benefits of having multiple social media accounts?",
+            "voiceoverFiles": ["CUSML.12.6.5.mp3"]
+        },
+        "Q6": {
+            "type": "written",
+            "prompt": "What are the drawbacks of having multiple social media accounts?",
+            "voiceoverFiles": ["CUSML.12.6.6.mp3"]
         }
     },
     "privacy": {
+        "questionOrder": ["Q1", "Q2", "Q3", "Q4"],
         "Q1": {
             "type": "written",
-            "prompt": "Did you notice any changes in Lily’s profile after you changed the privacy settings?"
+            "prompt": "Did you notice any changes in Lily's profile after you changed the privacy settings?",
+            "voiceoverFiles": ["CUSML.7.9.1.mp3"]
         },
         "Q2": {
             "type": "written",
-            "prompt": "Why is it important to know what information websites collect about you?"
+            "prompt": "Why is it important to know what information websites collect about you?",
+            "voiceoverFiles": ["CUSML.7.9.2.mp3"]
         },
         "Q3": {
             "type": "written",
-            "prompt": "What are the three things you should ask yourself when reading a privacy policy?"
+            "prompt": "What are the three things you should ask yourself when reading a privacy policy?",
+            "voiceoverFiles": ["CUSML.7.9.3.mp3"]
         },
         "Q4": {
             "type": "written",
-            "prompt": "What can you do in the future to protect your privacy on social media?"
+            "prompt": "What can you do in the future to protect your privacy on social media?",
+            "voiceoverFiles": ["CUSML.7.9.4.mp3"]
         }
     },
     "safe-posting": {
+        "questionOrder": ["Q1", "Q2", "Q3", "Q4"],
         "Q1": {
-            "type": "checkbox",
+            "type": "checkboxGroupedPhotoRow",
+            "prompt": "These were the posts with private information in the timeline. How many did you notice?",
+            "groupCount": "3",
+            "groupPosts": [{
+                    "username": "Jake Matthews",
+                    "profilePhoto": "/profile_pictures/user61.jpg",
+                    "postImage": "/post_pictures/safepostga2.jpg",
+                    "postDescription": "new phone who dis? my new number is 607-252-6771",
+                    "postTime": "1 hour ago"
+                },
+                {
+                    "username": "Ethan Kravitz",
+                    "profilePhoto": "/profile_pictures/user18.png",
+                    "postImage": "/post_pictures/coolmovies.jpeg",
+                    "postDescription": "Gonna be at the Regal THIS FRIDAY to see the new Marvel movie!! Meet me there at 8 🎥🍿",
+                    "postTime": "20 minutes ago"
+                },
+                {
+                    "username": "Jasmine Woolley",
+                    "profilePhoto": "/profile_pictures/user57.jpg",
+                    "postImage": "/post_pictures/house.jpg",
+                    "postDescription": "321 Jefferson Ave come hang out guys, I'm bored.",
+                    "postTime": "50 minutes ago"
+                }
+            ],
+            "voiceoverFiles": ["CUSML.11.7.1.mp3"]
+        },
+        "Q2": {
+            "type": "checkboxGrouped",
             "prompt": "Why is this post inappropriate for social media?",
             "checkboxLabels": {
                 "0": "Private information like street address, phone number, school name, or email address was shared",
                 "1": "The person making the post did not think about all the audiences who could see it",
                 "2": "It was appropriate for social media"
             },
+            "groupCount": "1",
+            "groupPosts": [{
+                "username": "Jasmine Woolley",
+                "profilePhoto": "/profile_pictures/user57.jpg",
+                "postImage": "/post_pictures/house.jpg",
+                "postDescription": "321 Jefferson Ave come hang out guys, I'm bored.",
+                "postTime": "50 minutes ago"
+            }],
             "responseRequirement": "exact",
             "correctResponses": {
                 "0": "1",
                 "1": "1",
                 "2": "0"
-            }
+            },
+            "voiceoverFiles": ["CUSML.11.7.2.mp3"]
         },
-        "Q2": {
-            "type": "checkbox",
+        "Q3": {
+            "type": "checkboxGrouped",
             "prompt": "How did you respond to these messages that asked for private information?",
             "checkboxLabels": {
                 "0": "I changed the subject",
@@ -389,6 +765,10 @@
                 "3": "I was direct",
                 "4": "I did something else"
             },
+            "groupCount": "1",
+            "groupPosts": [{
+                "postImage": "/post_pictures/safeposting-jack-chat.png"
+            }],
             "responseRequirement": "exact",
             "correctResponses": {
                 "0": "1",
@@ -396,15 +776,102 @@
                 "2": "1",
                 "3": "1",
                 "4": "0"
-            }
+            },
+            "voiceoverFiles": ["CUSML.11.7.3.mp3"]
         },
-        "Q3": {
+        "Q4": {
             "type": "written",
-            "prompt": "What would you do in the future to protect your private information and other people’s private information on social media?"
+            "prompt": "What would you do in the future to protect your private information and other people's private information on social media?",
+            "voiceoverFiles": ["CUSML.11.7.4.mp3"]
         }
     },
     "targeted": {
-        "Q1": {
+        "questionOrder": ["Q1", "Q2", "Q3", "Q4"],
+        "Q1_Sports": {
+            "type": "checkboxGroupedPhotoRow",
+            "prompt": "These were the advertisements in the timeline. How many did you notice?",
+            "groupCount": "3",
+            "groupPosts": [{
+                    "username": "Three Stripes Shoes",
+                    "profilePhoto": "/profile_pictures/three_stripes_pfp.jpg",
+                    "postImage": "/post_pictures/three_stripes_ad.jpg",
+                    "postDescription": "For your next race, choose ThreeStripes. #threestripesoryoureout #sneakerheads #runnerheads",
+                    "postTime": ""
+                },
+                {
+                    "username": "Three Stripes Shoes",
+                    "profilePhoto": "/profile_pictures/three_stripes_pfp.jpg",
+                    "postImage": "/post_pictures/three_stripes_ad_2.jpeg",
+                    "postDescription": "When's your next big race? Comment down below!",
+                    "postTime": ""
+                },
+                {
+                    "username": "Rockville Club Soccer",
+                    "profilePhoto": "/profile_pictures/club_soccer_pfp.jpg",
+                    "postImage": "/post_pictures/club_soccer_ad.jpg",
+                    "postDescription": "Spots are filling up fast! Make sure you sign up for club soccer TODAY.",
+                    "postTime": ""
+                }
+            ],
+            "voiceoverFiles": ["CUSML.2.8.1.mp3"]
+        },
+        "Q1_Gaming": {
+            "type": "checkboxGroupedPhotoRow",
+            "prompt": "These were the advertisements in the timeline. How many did you notice?",
+            "groupCount": "3",
+            "groupPosts": [{
+                    "username": "Nentindo",
+                    "profilePhoto": "/profile_pictures/controller_pfp.jpg",
+                    "postImage": "/post_pictures/controller_ad.jpg",
+                    "postDescription": "Which team are you on: 🔴 or 🔵?",
+                    "postTime": ""
+                },
+                {
+                    "username": "VR Tech",
+                    "profilePhoto": "/profile_pictures/VR_pfp.jpg",
+                    "postImage": "/post_pictures/VR_ad.jpg",
+                    "postDescription": "Play any game on our VR headsets. Experience the future, now. #VR #tech",
+                    "postTime": ""
+                },
+                {
+                    "username": "Roger That Mobile App",
+                    "profilePhoto": "/profile_pictures/rogerthat_pfp.jpg",
+                    "postImage": "/post_pictures/roger_ad.jpg",
+                    "postDescription": "Download the #1 mobile game in the world. #rogerthat #app",
+                    "postTime": ""
+                }
+            ],
+            "voiceoverFiles": ["CUSML.2.8.1.mp3"]
+        },
+        "Q1_Food": {
+            "type": "checkboxGroupedPhotoRow",
+            "prompt": "These were the advertisements in the timeline. How many did you notice?",
+            "groupCount": "3",
+            "groupPosts": [{
+                    "username": "McBurgers",
+                    "profilePhoto": "/profile_pictures/burger_ad_pfp.jpg",
+                    "postImage": "/post_pictures/burger_ad.jpg",
+                    "postDescription": "Yum. 11/10. (📸: @ethan-the-man)",
+                    "postTime": ""
+                },
+                {
+                    "username": "Crunch Flakes Cereal",
+                    "profilePhoto": "Crunch Flakes Cereal",
+                    "postImage": "/post_pictures/cereal_ad.jpg",
+                    "postDescription": "A spoonful of ______ 🤤#strawberrycrunch",
+                    "postTime": ""
+                },
+                {
+                    "username": "Pop Drinks",
+                    "profilePhoto": "/profile_pictures/pop_drinks_pfp.jpg",
+                    "postImage": "/post_pictures/drink_ad.jpg",
+                    "postDescription": "😱Six brand new flavors 😱Coming soon, in-stores near you.",
+                    "postTime": ""
+                }
+            ],
+            "voiceoverFiles": ["CUSML.2.8.1.mp3"]
+        },
+        "Q2": {
             "type": "checkbox",
             "prompt": "What did you do when you saw an advertisement or a sponsored post?",
             "checkboxLabels": {
@@ -425,15 +892,18 @@
                 "4": "0",
                 "5": "1",
                 "6": "0"
-            }
-        },
-        "Q2": {
-            "type": "written",
-            "prompt": "Why do companies collect data from people's profiles or online activity?"
+            },
+            "voiceoverFiles": ["CUSML.2.8.2.mp3"]
         },
         "Q3": {
             "type": "written",
-            "prompt": "Why is it important to know how to identify advertisements on social media?"
+            "prompt": "Why do companies collect data from people's profiles or online activity?",
+            "voiceoverFiles": ["CUSML.2.8.3.mp3"]
+        },
+        "Q4": {
+            "type": "written",
+            "prompt": "Why is it important to know how to identify advertisements on social media?",
+            "voiceoverFiles": ["CUSML.2.8.4.mp3"]
         }
     }
 }

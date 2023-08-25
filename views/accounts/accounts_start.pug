@@ -1,10 +1,8 @@
 extends ../ui_layout
 
 block content
-
   .ui.text.container.addBottomMargin
-    br
-    .ui.raised.segment
+    .ui.raised.segment.mt-6
       h3.ui.header
         i.book.blue.icon
         .content
@@ -26,8 +24,6 @@ block content
             | When you create your account, be sure to choose the right kind of 
             | username and password to keep your account safe and protect you and 
             | your friends!           
-        
-        br
         .ui.mini.green.right.labeled.icon.button.showKeyTermsButton
           i.down.arrow.icon
           |   Next
@@ -39,13 +35,10 @@ block content
       .sub.header.grayElement
         i.hand.pointer.icon
         span  Click on each word below to learn more
-      br
-      //- .ui.segments     
-      .ui.stackable.two.column.grid
+      .ui.stackable.two.column.grid.mt-3
         .ui.column
           .keyTerm.ui.raised.segment.voiceover_keyTerm1
             a.ui.blue.ribbon.label.keyTermLabel
-                //- i.dollar.sign.icon 
                 span Username
             span.hidden.keyTermDefinition
               | The name or ID that you use when you log in.
