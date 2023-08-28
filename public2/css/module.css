@@ -763,10 +763,3 @@ i.big.unlock.icon {
 .htmlImage #netflixSignIn {
     color: #E50914;
 }
-
-
-/* FIX for tablet user tested fixed footer */
-
-#page-article {
-    margin-bottom: 50px !important;
-}
