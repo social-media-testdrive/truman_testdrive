@@ -38,8 +38,8 @@
         "prompt": "2. Select all sensitive personal information vulnerable to identity theft:",
         "choices": {
             "0": {
-                "text": "A. First name",
-                "explanation": "Identity theft thieves can use your first name to impersonate you in various situations, such as opening fraudulent accounts, making unauthorized purchases, or attempting to gain access to your personal information."
+                "text": "A. Full name",
+                "explanation": "Identity theft thieves can use your full name to impersonate you in various situations, such as opening fraudulent accounts, making unauthorized purchases, or attempting to gain access to your personal information."
             },
             "1": {
                 "text": "B. Mother's maiden name",

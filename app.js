@@ -745,13 +745,20 @@ app.get('/challenge/:modId', passportConfig.isAuthenticated, setHttpResponseHead
 
 // get time for phone text message like: 12:48 PM 
 function getCurrentTime() {
+    // const now = new Date();
+    // const hours = now.getHours();
+    // const minutes = now.getMinutes();
+    // const meridiem = hours >= 12 ? 'PM' : 'AM';
+    // const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
+    // const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+    // return `${formattedHours}:${formattedMinutes} ${meridiem}`;
+
+    // get time 5 - 240 minutes ago
     const now = new Date();
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
-    const meridiem = hours >= 12 ? 'PM' : 'AM';
-    const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
-    const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
-    return `${formattedHours}:${formattedMinutes} ${meridiem}`;
+    const randomMinutes = Math.floor(Math.random() * (240 - 5 + 1)) + 5; // Generate a random number between 5 and 240
+    const pastTime = new Date(now.getTime() - randomMinutes * 60 * 1000); // Subtract random minutes in milliseconds
+    const options = { hour: 'numeric', minute: '2-digit', hour12: true };
+    return pastTime.toLocaleString(undefined, options);
 }
 
 // get date for emails like: 8/10/2023
