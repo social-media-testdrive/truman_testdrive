@@ -171,6 +171,13 @@ li {
     line-height: 1.14285714em;
 }
 
+
+.ui.bulleted.list .item {
+    font-size: 1.5rem !important;
+    /* A line height of 1.5 times the font size is a good place to start from */
+    line-height: 2.25rem !important;
+}
+
 /* .learning-objectives li { 
     margin-top: 20px;
     margin-bottom: 20px;
@@ -762,4 +769,8 @@ i.big.unlock.icon {
 
 .htmlImage #netflixSignIn {
     color: #E50914;
+}
+
+.visitLink {
+    text-decoration: underline;
 }

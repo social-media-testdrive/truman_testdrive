@@ -1,0 +1,35 @@
+extends ../../../module_layout
+
+block content
+
+  .ui.container#raised-container
+    .limit
+      h1.ui.header.large#learn-title
+        .content
+          | When you have your identity stolen
+      h2 For Financial Identity Theft
+      .ui.bulleted.list 
+        .item Contact your financial institution immediately if you suspect an unauthorized transaction from your account or for a lost/stolen debit card. Follow the necessary steps put forth by your financial institution’s fraud department to protect your account from future fraudulent activity.
+        .item Follow the necessary steps to avoid future fraud
+          .list 
+            .item Contact the financial institution or business to dispute the account and request closure. 
+            .item Place fraud alert on financial activities.
+      h2 For Tax Identity Theft
+      .ui.bulleted.list 
+        .item If you know or suspect you are a victim of tax-related identity theft, the IRS recommends these actions.
+          .list 
+            .item Respond immediately to any IRS notice: Call the IRS number provided.
+            .item Visit <a href="https://www.irs.gov/identity-theft-central" class="visitLink">IRS Identity Theft Central</a> if any fraudulent activities regarding tax are made. You can also call 800-908-4490 for assistance.  
+
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+  .ui.container
+    +navButtons('identity', 'sub3_learn6', '/submod3/learn5/identity', '/submod3/learn7/identity', 72)  
+
+
+block scripts
+  script.
+    postStartTime("identity", "sub3_learn6");

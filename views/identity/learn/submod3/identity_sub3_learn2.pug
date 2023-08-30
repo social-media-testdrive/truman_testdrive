@@ -1,0 +1,41 @@
+extends ../../../module_layout
+
+block content
+
+  .ui.container#raised-container
+    .limit
+      h1.ui.header.large#learn-title
+        .content
+          | How to protect your identity information from the techniques?
+      .ui.bulleted.list 
+        .item The most important principle is to always remember that it could be a scammer.
+        .item It’s important to remember that scammers ask you to update personal information, threatening you that it is urgent.
+        .item It is okay to ask your family, friends, or other people who know more about the identity theft when you feel suspicious.
+        .item Be prepared to report it to the authorities.
+      .ui.icon.blue.message
+        //- i.info.circle.icon
+                  .avatar(style="width: 100%; height: 100%; overflow: hidden; position: relative;background: red !important; border: 2px solid green;")
+        .icon
+          img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
+        .content
+          .header
+            //- i.info.circle.icon
+            | Important
+          p If you suspect theft, take immediate action to minimize the damage.
+
+
+
+
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+  .ui.container
+    +navButtons('identity', 'sub3_learn2', '/submod3/learn/identity', '/submod3/learn3/identity', 64)  
+
+
+block scripts
+  script(src='/js/character.js')
+  script.
+    postStartTime("identity", "sub3_learn2");
