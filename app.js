@@ -744,14 +744,20 @@ app.get('/challenge/:modId', passportConfig.isAuthenticated, setHttpResponseHead
 });
 
 // get time for phone text message like: 12:48 PM 
+// actually have 32 minutes in the past
 function getCurrentTime() {
+    // timeZoneName: 'short'
+    // const now = new Date();
+    // const pastTime = new Date(now.getTime() - 25 * 60 * 1000);
+    // const options = { hour: 'numeric', minute: '2-digit', hour12: true};
+    // return now.toLocaleString(undefined, options);
+
+    // generate a random time between 5 and 120 minutes in the past
     const now = new Date();
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
-    const meridiem = hours >= 12 ? 'PM' : 'AM';
-    const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
-    const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
-    return `${formattedHours}:${formattedMinutes} ${meridiem}`;
+    const randomMinutes = Math.floor(Math.random() * (120 - 5 + 1)) + 5; // Generate a random number between 5 and 120
+    const pastTime = new Date(now.getTime() - randomMinutes * 60 * 1000); // Subtract random minutes in milliseconds
+    const options = { hour: 'numeric', minute: '2-digit', hour12: true };
+    return pastTime.toLocaleString(undefined, options);
 }
 
 // get date for emails like: 8/10/2023
