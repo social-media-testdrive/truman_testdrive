@@ -764,25 +764,37 @@ function getCurrentTime() {
 
 // get date for emails like: 8/10/2023
 function getCurrentDate() {
+    // const now = new Date();
+    // const month = now.getMonth() + 1; // Months are 0-based, so adding 1
+    // const day = now.getDate();
+    // const year = now.getFullYear();
+    // return `${month}/${day}/${year}`;
+
     const now = new Date();
-    const month = now.getMonth() + 1; // Months are 0-based, so adding 1
-    const day = now.getDate();
-    const year = now.getFullYear();
-    return `${month}/${day}/${year}`;
+    const options = { month: 'numeric', day: 'numeric', year: 'numeric', timeZone: 'America/New_York' };
+    return now.toLocaleString('en-US', options);
 }
 
 function getFutureDate() {
     // get date a week from the current date for the scam quiz emails 
     // for example if currentDate is 8/19/2023 this function will return 8/26/2023
+    // const today = new Date();
+    // const oneWeekLater = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000); // Adding 7 days in milliseconds
+    
+    // const month = String(oneWeekLater.getMonth() + 1).padStart(2, '0');
+    // const day = String(oneWeekLater.getDate()).padStart(2, '0');
+    // const year = oneWeekLater.getFullYear();
+    
+    // // make string in MM/DD/YYYY format
+    // return `${month}/${day}/${year}`;  
+
+
     const today = new Date();
-    const oneWeekLater = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000); // Adding 7 days in milliseconds
+    const oneWeekLater = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
     
-    const month = String(oneWeekLater.getMonth() + 1).padStart(2, '0');
-    const day = String(oneWeekLater.getDate()).padStart(2, '0');
-    const year = oneWeekLater.getFullYear();
-    
-    // make string in MM/DD/YYYY format
-    return `${month}/${day}/${year}`;  
+    const options = { month: 'numeric', day: 'numeric', year: 'numeric', timeZone: 'America/New_York' };
+    return oneWeekLater.toLocaleString('en-US', options);
+
 }
   
 
