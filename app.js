@@ -757,8 +757,10 @@ function getCurrentTime() {
     const now = new Date();
     const randomMinutes = Math.floor(Math.random() * (240 - 5 + 1)) + 5; // Generate a random number between 5 and 240
     const pastTime = new Date(now.getTime() - randomMinutes * 60 * 1000); // Subtract random minutes in milliseconds
-    const options = { hour: 'numeric', minute: '2-digit', hour12: true };
-    return pastTime.toLocaleString(undefined, options);
+    // const options = { hour: 'numeric', minute: '2-digit', hour12: true };
+    const estOptions = { hour: 'numeric', minute: '2-digit', hour12: true, timeZone: 'America/New_York' };
+
+    return now.toLocaleString('en-US', estOptions);
 }
 
 // get date for emails like: 8/10/2023
