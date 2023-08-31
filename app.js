@@ -759,8 +759,7 @@ function getCurrentTime() {
     const pastTime = new Date(now.getTime() - randomMinutes * 60 * 1000); // Subtract random minutes in milliseconds
     // const options = { hour: 'numeric', minute: '2-digit', hour12: true };
     const estOptions = { hour: 'numeric', minute: '2-digit', hour12: true, timeZone: 'America/New_York' };
-
-    return now.toLocaleString('en-US', estOptions);
+    return pastTime.toLocaleString('en-US', estOptions);
 }
 
 // get date for emails like: 8/10/2023
