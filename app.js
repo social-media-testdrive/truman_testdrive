@@ -1106,8 +1106,10 @@ app.get('/submod3/learn9/:modId', passportConfig.isAuthenticated, setHttpRespons
 });
 
 app.get('/submod3/learn10/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
+    const currentDate = getCurrentDate();
     res.render(req.params.modId + '/learn/submod3/' + req.params.modId + '_sub3_learn10', {
-        title: 'Learn'
+        title: 'Learn',
+        currentDate
     });
 });
 
