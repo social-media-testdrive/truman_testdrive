@@ -1114,6 +1114,33 @@ app.get('/submod3/learn10/:modId', passportConfig.isAuthenticated, setHttpRespon
 });
 
 
+app.get('/submod3/learn11/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, async function(req, res) {
+    let quizData;
+    let modID = "identity";
+    let currentSection = "submodThree";
+    let page = "challenge2";
+    let backLink = "/submod3/learn10/identity";
+    let nextLink = "/explore/identity";
+    let progress = 82;
+    const data = await fs.readFileAsync(`${__dirname}/public2/json/` +  req.params.modId + `/submodThree.json`);
+    quizData = JSON.parse(data.toString());
+
+    const currentTime = getCurrentTime();
+    const currentDate = getCurrentDate();
+    res.render('dart-quiz-template.pug', {
+        title: 'Quiz',
+        quizData,
+        modID,
+        currentSection,
+        page,
+        backLink,
+        nextLink,
+        progress,
+        currentTime,
+        currentDate
+    });
+});
+
 // Render explore (all modules) ******************************
 app.get('/explore/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
     res.render(req.params.modId + '/explore/' + req.params.modId + '_explore', {
