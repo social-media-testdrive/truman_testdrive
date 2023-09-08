@@ -1063,6 +1063,12 @@ app.get('/submod3/learn2/:modId', passportConfig.isAuthenticated, setHttpRespons
     });
 });
 
+app.get('/submod3/activity/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod3/' + req.params.modId + '_sub3_activity', {
+        title: 'Activity'
+    });
+});
+
 app.get('/submod3/learn3/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
     res.render(req.params.modId + '/learn/submod3/' + req.params.modId + '_sub3_learn3', {
         title: 'Learn'
@@ -1120,7 +1126,7 @@ app.get('/submod3/learn11/:modId', passportConfig.isAuthenticated, setHttpRespon
     let currentSection = "submodThree";
     let page = "challenge2";
     let backLink = "/submod3/learn10/identity";
-    let nextLink = "/explore/identity";
+    let nextLink = "/submod3/learn12/identity";
     let progress = 82;
     const data = await fs.readFileAsync(`${__dirname}/public2/json/` +  req.params.modId + `/submodThree.json`);
     quizData = JSON.parse(data.toString());
@@ -1140,6 +1146,23 @@ app.get('/submod3/learn11/:modId', passportConfig.isAuthenticated, setHttpRespon
         currentDate
     });
 });
+
+app.get('/submod3/learn12/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
+    const currentDate = getCurrentDate();
+    res.render(req.params.modId + '/learn/submod3/' + req.params.modId + '_sub3_learn12', {
+        title: 'Learn',
+        currentDate
+    });
+});
+
+app.get('/submod3/learn13/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
+    const currentDate = getCurrentDate();
+    res.render(req.params.modId + '/learn/submod3/' + req.params.modId + '_sub3_learn13', {
+        title: 'Learn',
+        currentDate
+    });
+});
+
 
 // Render explore (all modules) ******************************
 app.get('/explore/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
