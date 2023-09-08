@@ -1294,6 +1294,13 @@ app.get('/reflect/:modId', passportConfig.isAuthenticated, setHttpResponseHeader
     });
 });
 
+// Render reflect (all modules) ******************************
+app.get('/certificate/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
+    res.render(req.params.modId + "/" + req.params.modId + '_certificate', {
+        title: 'Certificate'
+    });
+});
+
 // app.get('/learn11/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
 //     res.render(req.params.modId + '/learn/' + req.params.modId + '_learn11', {
 //         title: 'Learn'

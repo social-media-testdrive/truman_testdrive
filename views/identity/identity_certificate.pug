@@ -1,0 +1,27 @@
+extends ../module_layout
+
+block content
+
+  .ui.container#raised-container
+    .limit
+        p Congratulations! We hope you found this course to be exciting and informative. Here is your certificate, feel free to share it with your friends and enjoy this special moment.
+        p You have learned:
+        .ui.bulleted.list 
+            .item The key concepts of identity theft that are introduced in this model.
+            .item Understanding the potential consequences when their identity is stolen.
+            .item Recognizing different types of identity theft and  how they are perpetrated. 
+            .item Identifying the common warning signs of identity theft.
+            .item Using strategies to protect themselves from becoming a victim of identity theft.
+    //- Fill progress bar to correct percent and color 
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+  .ui.container
+    +navButtons('identity', 'certificate', '/reflect/identity', '/', 100, 'Back', 'Home')  
+
+block scripts
+  script.
+    postStartTime("identity", "intro2");
+

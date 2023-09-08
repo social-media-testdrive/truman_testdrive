@@ -18,7 +18,12 @@ block content
               img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
             .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
               p Great job finishing the first section, #{user.profile.name}! 
-              p How are you feeling right now? Do you feel more confident about recognizing scam emails and message?     
+              p Do you feel more confident about recognizing scam emails and message?     
+          .content.text-message(style="margin-top: 25px;")
+            .ui.circular.tiny.image 
+              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+            .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
+              p It's perfectly fine if you prefer not to answer. Please click 'Complete Section 2' to continue learning.
           #encounter_container
             div#encounter_label
               .ui.large.right.pointing.label
@@ -118,7 +123,7 @@ block content
 
 block append footer
   .ui.container
-    +navButtons('identity', 'sub2_learn15', '/submod2/learn14/identity', '/submod2/learn16/identity', 60, 'Back', 'Next')  
+    +navButtons('identity', 'sub2_learn15', '/submod2/learn14/identity', '/submod2/learn16/identity', 60, 'Back', 'Complete Section 2')  
 
 
 block scripts
