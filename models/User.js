@@ -350,6 +350,97 @@ const userSchema = new mongoose.Schema({
                 durationMilliseconds: Number,
                 durationFormatted: String
             }],
+            sub3_learn2_Times: [{
+                page: String,
+                startTime: Date,
+                endTime: Date,
+                durationMilliseconds: Number,
+                durationFormatted: String
+            }],
+            sub3_learn3_Times: [{
+                page: String,
+                startTime: Date,
+                endTime: Date,
+                durationMilliseconds: Number,
+                durationFormatted: String
+            }],
+            sub3_activity_Times: [{
+                page: String,
+                startTime: Date,
+                endTime: Date,
+                durationMilliseconds: Number,
+                durationFormatted: String
+            }],
+            sub3_learn4_Times: [{
+                page: String,
+                startTime: Date,
+                endTime: Date,
+                durationMilliseconds: Number,
+                durationFormatted: String
+            }],
+            sub3_learn5_Times: [{
+                page: String,
+                startTime: Date,
+                endTime: Date,
+                durationMilliseconds: Number,
+                durationFormatted: String
+            }],
+            sub3_learn6_Times: [{
+                page: String,
+                startTime: Date,
+                endTime: Date,
+                durationMilliseconds: Number,
+                durationFormatted: String
+            }],
+            sub3_learn7_Times: [{
+                page: String,
+                startTime: Date,
+                endTime: Date,
+                durationMilliseconds: Number,
+                durationFormatted: String
+            }],
+            sub3_learn8_Times: [{
+                page: String,
+                startTime: Date,
+                endTime: Date,
+                durationMilliseconds: Number,
+                durationFormatted: String
+            }],
+            sub3_learn9_Times: [{
+                page: String,
+                startTime: Date,
+                endTime: Date,
+                durationMilliseconds: Number,
+                durationFormatted: String
+            }],
+            sub3_learn10_Times: [{
+                page: String,
+                startTime: Date,
+                endTime: Date,
+                durationMilliseconds: Number,
+                durationFormatted: String
+            }],
+            sub3_learn11_Times: [{
+                page: String,
+                startTime: Date,
+                endTime: Date,
+                durationMilliseconds: Number,
+                durationFormatted: String
+            }],
+            sub3_learn12_Times: [{
+                page: String,
+                startTime: Date,
+                endTime: Date,
+                durationMilliseconds: Number,
+                durationFormatted: String
+            }],
+            sub3_learn13_Times: [{
+                page: String,
+                startTime: Date,
+                endTime: Date,
+                durationMilliseconds: Number,
+                durationFormatted: String
+            }],
             explore_Times: [{
                 page: String, 
                 startTime: Date, 
@@ -392,7 +483,20 @@ const userSchema = new mongoose.Schema({
                 durationMilliseconds: Number,
                 durationFormatted: String
             }],
-
+            reflect_Times: [{
+                page: String,
+                startTime: Date,
+                endTime: Date,
+                durationMilliseconds: Number,
+                durationFormatted: String
+            }],
+            certificate_Times: [{
+                page: String,
+                startTime: Date,
+                endTime: Date,
+                durationMilliseconds: Number,
+                durationFormatted: String
+            }],
         },       
         romance: [{ page: String, startTime: Date, endTime: Date, duration: Number }],
         phishing: [{ page: String, startTime: Date, endTime: Date, duration: Number }],

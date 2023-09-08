@@ -29,7 +29,7 @@ function postModuleProgress(module_id, page, link_to_post, percent_to_post, curr
     const parsedPercentToPost = parseInt(percent_to_post);
     const parsedCurrentPercent = parseInt(current_percent);
 
-    if (parsedPercentToPost > parsedCurrentPercent && parsedPercentToPost < 100) {
+    if (parsedPercentToPost > parsedCurrentPercent && parsedPercentToPost < 101) {
         // POST module progress to database
         fetch('/postModuleProgress', {
             method: 'POST',

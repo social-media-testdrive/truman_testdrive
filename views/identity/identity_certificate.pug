@@ -4,8 +4,53 @@ block content
 
   .ui.container#raised-container
     .limit
-        p Congratulations! We hope you found this course to be exciting and informative. Here is your certificate, feel free to share it with your friends and enjoy this special moment.
-        p You have learned:
+        h1 Congratulations! 
+        p We hope you found this course to be exciting and informative. Here is your certificate, feel free to share it with your friends and enjoy this special moment.
+        .certificate-outer-border#cert
+            .certificate-inner-border
+                .ui.basic.segment
+                    h1.ui.header.centered
+                        | Certificate of Completion
+                        .ui.sub.header.centered
+                            | <br>This is to certify that
+                    h1.ui.header.centered
+                        | #{user.profile.name}
+                    .ui.divider#underline-field
+                    h1.ui.header
+                        .ui.sub.header.centered
+                            | has successfully completed the course of
+                    h1.ui.header.centered
+                        | Identity Theft
+                    // Grid for date, logo, and tutor
+                    br
+                    .ui.grid
+                        .three.column.row.centered
+                            .column
+                                .ui.center.aligned.basic.segment
+                                    h3#date 
+                                    .ui.divider.short-underline-field
+                                    p Date Awarded
+                            .column
+                                .ui.center.aligned.basic.segment
+                                    img.ui.huge.image(src='/images/dart-logo.png', alt='dart logo')
+                            .column
+                                .ui.center.aligned.basic.segment
+                                    h3 Intrepid
+                                    .ui.divider.short-underline-field
+                                    p Tutor
+        br
+        br
+        .ui.two.column.grid
+            .left.aligned.column
+                a.ui.button.huge.basic.blue.rounded-cert-button#download-button(onclick="createPDF()")
+                    i.download.icon
+                    | Download Certificate
+            .right.aligned.column
+                a.ui.button.huge.blue.rounded-cert-button#share-button
+                    i.share.icon
+                    | Share Certificate
+    
+        h2.ui.header You have learned:
         .ui.bulleted.list 
             .item The key concepts of identity theft that are introduced in this model.
             .item Understanding the potential consequences when their identity is stolen.
@@ -23,5 +68,45 @@ block append footer
 
 block scripts
   script.
-    postStartTime("identity", "intro2");
+    const currentDate = new Date();
+    const formattedDate = formatDate(currentDate);
+
+    $("#date").html(formattedDate);
+    postStartTime("identity", "certificate");
+    //- var button = document.getElementById("download-button");
+    //- var makepdf = document.getElementById("cert");
+
+    //- button.addEventListener("click", function () {
+    //-     html2pdf().from(makepdf).save();
+    //- });
+    function formatDate(date) {
+        const options = { year: 'numeric', month: 'short', day: 'numeric' };
+        return new Date(date).toLocaleDateString('en-US', options);
+    }
+    function createPDF() {
+        // can only create one cert, so hide creation button now that one is being made
+        $('#completeContainer').css('display', 'none');
+
+        // generate the certificate, filling in name, date, and time html
+        //- userInput = document.getElementById("inputName").value;
+        //- document.getElementById("cert-name").innerHTML = userInput;
+
+
+        let fileName = "Identity Theft Certificate.pdf" 
+
+        // download a pdf of the certificate
+        var makepdf = document.getElementById("cert");
+        var opt = {
+            margin:       1,
+            filename:     fileName.replaceAll(" ", "_"),
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2 },
+            jsPDF:        { unit: 'in', format: 'letter', orientation: 'landscape' }
+        };
+        html2pdf().set(opt).from(makepdf).save();
+    }
+
+block styles
+    link(rel='stylesheet', href='/css/certificate.css')  
+
 
