@@ -746,41 +746,56 @@ app.get('/challenge/:modId', passportConfig.isAuthenticated, setHttpResponseHead
 // get time for phone text message like: 12:48 PM 
 // actually have 32 minutes in the past
 function getCurrentTime() {
-    // timeZoneName: 'short'
     // const now = new Date();
-    // const pastTime = new Date(now.getTime() - 25 * 60 * 1000);
-    // const options = { hour: 'numeric', minute: '2-digit', hour12: true};
-    // return now.toLocaleString(undefined, options);
+    // const hours = now.getHours();
+    // const minutes = now.getMinutes();
+    // const meridiem = hours >= 12 ? 'PM' : 'AM';
+    // const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
+    // const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+    // return `${formattedHours}:${formattedMinutes} ${meridiem}`;
 
-    // generate a random time between 5 and 120 minutes in the past
+    // get time 5 - 240 minutes ago
     const now = new Date();
-    const randomMinutes = Math.floor(Math.random() * (120 - 5 + 1)) + 5; // Generate a random number between 5 and 120
+    const randomMinutes = Math.floor(Math.random() * (240 - 5 + 1)) + 5; // Generate a random number between 5 and 240
     const pastTime = new Date(now.getTime() - randomMinutes * 60 * 1000); // Subtract random minutes in milliseconds
-    const options = { hour: 'numeric', minute: '2-digit', hour12: true };
-    return pastTime.toLocaleString(undefined, options);
+    // const options = { hour: 'numeric', minute: '2-digit', hour12: true };
+    const estOptions = { hour: 'numeric', minute: '2-digit', hour12: true, timeZone: 'America/New_York' };
+    return pastTime.toLocaleString('en-US', estOptions);
 }
 
 // get date for emails like: 8/10/2023
 function getCurrentDate() {
+    // const now = new Date();
+    // const month = now.getMonth() + 1; // Months are 0-based, so adding 1
+    // const day = now.getDate();
+    // const year = now.getFullYear();
+    // return `${month}/${day}/${year}`;
+
     const now = new Date();
-    const month = now.getMonth() + 1; // Months are 0-based, so adding 1
-    const day = now.getDate();
-    const year = now.getFullYear();
-    return `${month}/${day}/${year}`;
+    const options = { month: 'numeric', day: 'numeric', year: 'numeric', timeZone: 'America/New_York' };
+    return now.toLocaleString('en-US', options);
 }
 
 function getFutureDate() {
     // get date a week from the current date for the scam quiz emails 
     // for example if currentDate is 8/19/2023 this function will return 8/26/2023
+    // const today = new Date();
+    // const oneWeekLater = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000); // Adding 7 days in milliseconds
+    
+    // const month = String(oneWeekLater.getMonth() + 1).padStart(2, '0');
+    // const day = String(oneWeekLater.getDate()).padStart(2, '0');
+    // const year = oneWeekLater.getFullYear();
+    
+    // // make string in MM/DD/YYYY format
+    // return `${month}/${day}/${year}`;  
+
+
     const today = new Date();
-    const oneWeekLater = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000); // Adding 7 days in milliseconds
+    const oneWeekLater = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
     
-    const month = String(oneWeekLater.getMonth() + 1).padStart(2, '0');
-    const day = String(oneWeekLater.getDate()).padStart(2, '0');
-    const year = oneWeekLater.getFullYear();
-    
-    // make string in MM/DD/YYYY format
-    return `${month}/${day}/${year}`;  
+    const options = { month: 'numeric', day: 'numeric', year: 'numeric', timeZone: 'America/New_York' };
+    return oneWeekLater.toLocaleString('en-US', options);
+
 }
   
 
