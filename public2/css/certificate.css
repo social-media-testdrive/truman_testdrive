@@ -1,0 +1,46 @@
+.certificate-outer-border {
+    padding: 20px; 
+    text-align: center; 
+    border: 10px solid #787878;
+    font-size: 1.5rem !important;
+}
+
+.certificate-inner-border {
+    /* padding:20px;  */
+    text-align:center; 
+    border: 5px solid #787878
+}
+
+#underline-field {
+    border-top: 2px solid #000; /* Thick black top border */
+    width: 50%;
+    margin: 0 auto; /* Center the divider */
+    margin-top: -12px !important;
+}
+
+.short-underline-field {
+    border-top: 2px solid #000 !important; /* Thick black top border */
+    margin: 0 !important;
+    padding: 0 !important;
+    margin-bottom: 10px !important;
+    margin-top: -12px !important;
+}
+
+.ui.sub.header.centered {
+    font-size: 1.5rem !important;
+    text-transform: none !important;
+}
+
+.rounded-cert-button {
+    border-radius: 20px !important;
+    margin-top: 25px;
+    margin: 0 auto;
+}
+
+#share-button {
+    background: #2165AE !important;
+}
+
+#download-button {
+    color: #2165AE !important;
+}

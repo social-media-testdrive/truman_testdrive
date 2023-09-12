@@ -6,7 +6,7 @@ if (progressBar) {
     if(progress > 0 && progress < 100){
     progressBar.querySelector('.bar').style.backgroundColor = '#6BBCC7';
     } else if(progress == 100) {
-    progressBar.querySelector('.bar').style.backgroundColor = 'blue';
+    progressBar.querySelector('.bar').style.backgroundColor = '#2185d0';
     }
     // progressBar.querySelector('.progress').textContent = progress + "%";
 } else {

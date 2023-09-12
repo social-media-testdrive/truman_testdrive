@@ -1,0 +1,50 @@
+extends ../../../module_layout
+
+block content
+
+  .ui.container#raised-container
+    .limit
+      h1.ui.header.large#learn-title
+        .content
+          | Preventative measures when being contacted by scammers
+      .dosContainer
+        .ui.large.blue.fluid.label
+          i.thumbs.up.icon 
+          | Do's
+
+      .ui.bulleted.list 
+        .item Always ask yourself “Do I have an account with the company or know the person who is contacting me?” before giving out personal information.
+        .item Look up the company’s phone number and call the company to ask if any request is legitimate and safe.
+        .item Carefully examine spellings in email addresses and URLs to check if there are any minor typos because scammers may try to pose as a legitimate company.
+        .item Check whether the website has secure symbols, like a padlock or key symbol on your status bar.
+      img.ui.centered.fluid.image(src='/images/sub3learn3.png' alt="A padlock is a symbol of a secure website")
+      i(style="line-height: 2.25rem") A website with a padlock is considered secure as it uses encryption to protect your data.
+
+
+      //- .ui.icon.blue.message
+      //-   //- i.info.circle.icon
+      //-             .avatar(style="width: 100%; height: 100%; overflow: hidden; position: relative;background: red !important; border: 2px solid green;")
+      //-   .icon
+      //-     img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
+      //-   .content
+      //-     .header
+      //-       //- i.info.circle.icon
+      //-       | Important
+      //-     p If you suspect theft, swift action is key to limit harm. Next we'll explore identity theft prevention measures.
+
+
+
+
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+  .ui.container
+    +navButtons('identity', 'sub3_learn3', '/submod3/activity/identity', '/submod3/learn4/identity', 66)  
+
+
+block scripts
+  //- script(src='/js/character.js')
+  script.
+    postStartTime("identity", "sub3_learn3");

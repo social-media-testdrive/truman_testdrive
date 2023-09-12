@@ -1,0 +1,47 @@
+extends ../../../module_layout
+
+block content
+
+  .ui.container#raised-container
+    .limit
+      h1.ui.header.large#learn-title
+        .content
+          | How to protect your identity information from the techniques?
+      .ui.bulleted.list 
+        .item Stay cautious at all times as the sender might be a scammer
+        .item Get to know the techniques scammers use as presented in Chapter 2:
+          //- .list 
+          //-   .item Ask for your personal information
+          //-   .item Ask for money
+          //-   .item Ask you to click on a link
+          //-   .item Ask you to pay with gift cards
+          //-   .item Create a sense of urgency in their request
+        .item When in doubt, don't hesitate to consult your family, friends, or those familiar with identity theft
+        .item Be prepared to report scams to the authorities.
+      .ui.icon.blue.message
+        //- i.info.circle.icon
+                  .avatar(style="width: 100%; height: 100%; overflow: hidden; position: relative;background: red !important; border: 2px solid green;")
+        .icon
+          img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
+        .content
+          .header
+            //- i.info.circle.icon
+            | Important
+          p If you suspect theft, take immediate action to minimize the damage.
+
+
+
+
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+  .ui.container
+    +navButtons('identity', 'sub3_learn2', '/submod3/learn/identity', '/submod3/activity/identity', 64)  
+
+
+block scripts
+  script(src='/js/character.js')
+  script.
+    postStartTime("identity", "sub3_learn2");

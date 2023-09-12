@@ -1,10 +1,10 @@
 function postEndTime(modID, page, backLink) {    // console.log("Post end time")
     // back link set to none when coming from postModuleProgress
     // we only want it to navigate to back page when the back button was clicked from the footer nav
-    console.log("!!! In endTime post function");
-    console.log("!!! Module ID: " + modID);
-    console.log("!!! Page Name: " + page);
-    console.log("!!! Back link: " + backLink);
+    // console.log("!!! In endTime post function");
+    // console.log("!!! Module ID: " + modID);
+    // console.log("!!! Page Name: " + page);
+    // console.log("!!! Back link: " + backLink);
 
     // POST module progress to database
     fetch('/postEndTime', {

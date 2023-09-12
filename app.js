@@ -744,6 +744,7 @@ app.get('/challenge/:modId', passportConfig.isAuthenticated, setHttpResponseHead
 });
 
 // get time for phone text message like: 12:48 PM 
+// actually have 32 minutes in the past
 function getCurrentTime() {
     // const now = new Date();
     // const hours = now.getHours();
@@ -1077,6 +1078,12 @@ app.get('/submod3/learn2/:modId', passportConfig.isAuthenticated, setHttpRespons
     });
 });
 
+app.get('/submod3/activity/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
+    res.render(req.params.modId + '/learn/submod3/' + req.params.modId + '_sub3_activity', {
+        title: 'Activity'
+    });
+});
+
 app.get('/submod3/learn3/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
     res.render(req.params.modId + '/learn/submod3/' + req.params.modId + '_sub3_learn3', {
         title: 'Learn'
@@ -1120,8 +1127,54 @@ app.get('/submod3/learn9/:modId', passportConfig.isAuthenticated, setHttpRespons
 });
 
 app.get('/submod3/learn10/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
+    const currentDate = getCurrentDate();
     res.render(req.params.modId + '/learn/submod3/' + req.params.modId + '_sub3_learn10', {
-        title: 'Learn'
+        title: 'Learn',
+        currentDate
+    });
+});
+
+
+app.get('/submod3/learn11/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, async function(req, res) {
+    let quizData;
+    let modID = "identity";
+    let currentSection = "submodThree";
+    let page = "challenge2";
+    let backLink = "/submod3/learn10/identity";
+    let nextLink = "/submod3/learn12/identity";
+    let progress = 82;
+    const data = await fs.readFileAsync(`${__dirname}/public2/json/` +  req.params.modId + `/submodThree.json`);
+    quizData = JSON.parse(data.toString());
+
+    const currentTime = getCurrentTime();
+    const currentDate = getCurrentDate();
+    res.render('dart-quiz-template.pug', {
+        title: 'Quiz',
+        quizData,
+        modID,
+        currentSection,
+        page,
+        backLink,
+        nextLink,
+        progress,
+        currentTime,
+        currentDate
+    });
+});
+
+app.get('/submod3/learn12/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
+    const currentDate = getCurrentDate();
+    res.render(req.params.modId + '/learn/submod3/' + req.params.modId + '_sub3_learn12', {
+        title: 'Learn',
+        currentDate
+    });
+});
+
+app.get('/submod3/learn13/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
+    const currentDate = getCurrentDate();
+    res.render(req.params.modId + '/learn/submod3/' + req.params.modId + '_sub3_learn13', {
+        title: 'Learn',
+        currentDate
     });
 });
 
@@ -1253,6 +1306,13 @@ app.get('/submod2/learn14/:modId', passportConfig.isAuthenticated, setHttpRespon
 app.get('/reflect/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
     res.render(req.params.modId + '/reflect/' + req.params.modId + '_reflect', {
         title: 'Reflect'
+    });
+});
+
+// Render reflect (all modules) ******************************
+app.get('/certificate/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
+    res.render(req.params.modId + "/" + req.params.modId + '_certificate', {
+        title: 'Certificate'
     });
 });
 

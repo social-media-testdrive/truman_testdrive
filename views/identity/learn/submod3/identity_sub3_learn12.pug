@@ -2,7 +2,7 @@ extends ../../../module_layout
 
 block content
 
-  .ui.container#raised-container
+  .ui.container#raised-container.top-padding
     .limit
       .ui.raised.segment.chat-container(style="background-color: #F1EDED;")
         .ui.large.header
@@ -17,12 +17,13 @@ block content
             .ui.circular.tiny.image 
               img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
             .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
-              p Excellent work, #{user.profile.name}! You've finished the first section! May I ask you a question? Have you ever encountered a scam before?
+              p Great job finishing the first section, #{user.profile.name}! 
+              p How are you feeling right now? Do you feel more confident about recognizing scams?     
           .content.text-message(style="margin-top: 25px;")
             .ui.circular.tiny.image 
               img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
             .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
-              p It's perfectly fine if you prefer not to answer. Please click 'Complete Section 1' to continue learning.
+              p It's perfectly fine if you prefer not to answer. Please click 'Complete Section 3' to continue learning.
           #encounter_container
             div#encounter_label
               .ui.large.right.pointing.label
@@ -41,7 +42,8 @@ block content
             .ui.circular.tiny.image 
               img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
             .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
-              p Thank you for your response. If you don't mind me asking, could you please share more about your experience with the scam? Did you undergo any financial loss or other types of loss due to the scam? 
+              p I'm glad to hear that you feel confident in recognizing scam emails and messages. 
+              p Could you tell me more about what you've learned and if there are any new insights or tips that you've gained? 
               p Please type your response below and hit the "send" button.
 
           //- bot no reply
@@ -49,7 +51,8 @@ block content
             .ui.circular.tiny.image 
               img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
             .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
-              p Thank you for your response. It's great to hear that you've never encountered scams! Please click the "Complete Section 1" button on the bottom right of the page to continue learning. 
+              p I understand that you might still have some concerns about identifying scam emails and messages. It's completely okay to feel that way. Learning to recognize scams takes time, and I'm here to support you!
+              p Please click the "Complete Section 2" button on the bottom right of the page to continue learning. 
             br
             br
 
@@ -58,8 +61,8 @@ block content
             .ui.circular.tiny.image 
               img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
             .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
-              p Thank you for your response. If you don't mind me asking, could you please share a little about what the suspicious interaction looked like? What did you encounter? 
-              p Please type your response below and hit the "send" button.
+              p That's okay! Recognizing scam emails and messages can be tricky, and it's completely normal to have some uncertainty.
+              p Would you like to share any questions you have about identifying scam emails or messages?
           
 
           //- final response from the user
@@ -83,8 +86,8 @@ block content
             .ui.circular.tiny.image 
               img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
             .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
-              p That sounds like a scam! I'm glad you were able to recognize it and avoid it. 
-              p It was great talking with you! Please click the "Complete Section 1" button on the bottom right of the page to continue learning. 
+              p A good rule of thumb is to double-check the sender's email address and avoid clicking on suspicious links. If something doesn't feel right, it's always better to be cautious. 
+              p It was great talking with you! Please click the "Complete Section 2" button on the bottom right of the page to continue learning. 
             br
             br
 
@@ -93,8 +96,8 @@ block content
             .ui.circular.tiny.image 
               img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
             .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
-              p I'm sorry to hear that you had to go through that. I hope you were able to recover from the scam.
-              p It was great talking with you! Please click the "Complete Section 1" button on the bottom right of the page to continue learning. 
+              p Thank you for sharing those insights. It sounds like you've learned a lot!
+              p It was great talking with you! Please click the "Complete Section 2" button on the bottom right of the page to continue learning. 
             br
             br
       //- .ui.fluid.action.input
@@ -120,13 +123,13 @@ block content
 
 block append footer
   .ui.container
-    +navButtons('identity', 'sub_learn7', '/submod/learn6/identity', '/submod/learn8/identity', 24, 'Back', 'Complete Section 1')  
+    +navButtons('identity', 'sub3_learn12', '/submod3/learn11/identity', '/submod3/learn13/identity', 84, 'Back', 'Complete Section 3')  
 
 
 block scripts
   script(src='/js/update_character_name.js')
   script.
-    postStartTime("identity", "sub_learn7");
+    postStartTime("identity", "sub3_learn12");
     let accept_sending = false;
     let final_response_number = 0;
 
@@ -252,5 +255,3 @@ block scripts
   
 block styles
   link(rel='stylesheet', href='/css/module.css')  
-    
-    
