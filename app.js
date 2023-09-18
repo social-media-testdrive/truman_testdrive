@@ -387,7 +387,7 @@ function isValidModId(req, res, next) {
 // All of our static files that express will automatically server for us.
 // In production, we have nginx server this instead to take the load off out Node app
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
-app.use(express.static(path.join(__dirname, 'public2'), { maxAge: 31557600000 }));
+app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
 app.use('/semantic', express.static(path.join(__dirname, 'semantic'), { maxAge: 31557600000 }));
 app.use(express.static(path.join(__dirname, 'uploads'), { maxAge: 31557600000 }));
 app.use(express.static(path.join(__dirname, 'post_pictures'), { maxAge: 31557600000 }));
@@ -445,7 +445,7 @@ function checkSingleAccess(requestUUID) {
 
 /**
      let quizData;
-    const data = await fs.readFileAsync(`${__dirname}/public2/json/quizSectionData.json`);
+    const data = await fs.readFileAsync(`${__dirname}/public/json/quizSectionData.json`);
     quizData = JSON.parse(data.toString())[req.params.modId];
 
     res.render('base_quiz.pug', {
@@ -807,7 +807,7 @@ app.get('/challenge2/:modId', passportConfig.isAuthenticated, setHttpResponseHea
     let backLink = "/challenge/identity";
     let nextLink = "/challenge3/identity";
     let progress = 8;
-    const data = await fs.readFileAsync(`${__dirname}/public2/json/` +  req.params.modId + `/challenge.json`);
+    const data = await fs.readFileAsync(`${__dirname}/public/json/` +  req.params.modId + `/challenge.json`);
     quizData = JSON.parse(data.toString());
 
     const currentTime = getCurrentTime();
@@ -901,7 +901,7 @@ app.get('/submod/learn6/:modId', passportConfig.isAuthenticated, setHttpResponse
     let backLink = "/submod/learn5/identity";
     let nextLink = "/submod/learn7/identity";
     let progress = 22;
-    const data = await fs.readFileAsync(`${__dirname}/public2/json/` +  req.params.modId + `/submod.json`);
+    const data = await fs.readFileAsync(`${__dirname}/public/json/` +  req.params.modId + `/submod.json`);
     quizData = JSON.parse(data.toString());
 
     const currentTime = getCurrentTime();
@@ -1031,7 +1031,7 @@ app.get('/submod2/learn14/:modId', passportConfig.isAuthenticated, setHttpRespon
     let backLink = "/submod2/learn13/identity";
     let nextLink = "/submod2/learn15/identity";
     let progress = 55;
-    const data = await fs.readFileAsync(`${__dirname}/public2/json/` +  req.params.modId + `/submodTwo.json`);
+    const data = await fs.readFileAsync(`${__dirname}/public/json/` +  req.params.modId + `/submodTwo.json`);
     quizData = JSON.parse(data.toString());
 
     const currentTime = getCurrentTime();
@@ -1143,7 +1143,7 @@ app.get('/submod3/learn11/:modId', passportConfig.isAuthenticated, setHttpRespon
     let backLink = "/submod3/learn10/identity";
     let nextLink = "/submod3/learn12/identity";
     let progress = 82;
-    const data = await fs.readFileAsync(`${__dirname}/public2/json/` +  req.params.modId + `/submodThree.json`);
+    const data = await fs.readFileAsync(`${__dirname}/public/json/` +  req.params.modId + `/submodThree.json`);
     quizData = JSON.parse(data.toString());
 
     const currentTime = getCurrentTime();
@@ -1243,7 +1243,7 @@ app.get('/evaluate/:modId', passportConfig.isAuthenticated, setHttpResponseHeade
     let backLink = "/explore4/identity";
     let nextLink = "/evaluate2/identity";
     let progress = 85;
-    const data = await fs.readFileAsync(`${__dirname}/public2/json/` +  req.params.modId + `/evaluate.json`);
+    const data = await fs.readFileAsync(`${__dirname}/public/json/` +  req.params.modId + `/evaluate.json`);
     quizData = JSON.parse(data.toString());
 
     const currentTime = getCurrentTime();
@@ -1282,7 +1282,7 @@ app.get('/submod2/learn14/:modId', passportConfig.isAuthenticated, setHttpRespon
     let currentSection = "submodTwo"
     let backLink = "/challenge4/identity"
     let nextLink = "/submod2/learn15/identity"
-    const data = await fs.readFileAsync(`${__dirname}/public2/json/` +  req.params.modId + `/submodTwo.json`);
+    const data = await fs.readFileAsync(`${__dirname}/public/json/` +  req.params.modId + `/submodTwo.json`);
     quizData = JSON.parse(data.toString());
 
     const currentTime = getCurrentTime();
@@ -1437,7 +1437,7 @@ app.get('/terms', setHttpResponseHeaders, function(req, res) {
 // Render the reflection page (all modules).
 app.get('/results/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, async function(req, res) {
     let reflectionData;
-    const data = await fs.readFileAsync(`${__dirname}/public2/json/reflectionSectionData.json`)
+    const data = await fs.readFileAsync(`${__dirname}/public/json/reflectionSectionData.json`)
     reflectionData = JSON.parse(data.toString());
 
     res.render(req.params.modId + '/' + req.params.modId + '_results', {
@@ -1449,7 +1449,7 @@ app.get('/results/:modId', passportConfig.isAuthenticated, setHttpResponseHeader
 // Render the quiz page (all modules).
 app.get('/quiz/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, async function(req, res) {
     let quizData;
-    const data = await fs.readFileAsync(`${__dirname}/public2/json/quizSectionData.json`);
+    const data = await fs.readFileAsync(`${__dirname}/public/json/quizSectionData.json`);
     quizData = JSON.parse(data.toString())[req.params.modId];
 
     res.render('base_quiz.pug', {
