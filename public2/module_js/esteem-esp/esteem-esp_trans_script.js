@@ -12,8 +12,10 @@ const nextPageURL = 'modual';
 let stepsList;
 
 function customOnWindowLoad(enableDataCollection){
-  $.get("/esteemTopic").then(function(data) {
+  $.get("/esteemTopic").then(function(data){
+    console.log('all data = ' + data);
     topicSelection = data.esteemTopic;
+    console.log('selected topic = ' + topicSelection);
     switch (topicSelection) {
       case 'Deportes':
         eventKeyword = 'un partido de fútbol';
@@ -23,7 +25,7 @@ function customOnWindowLoad(enableDataCollection){
         bot2Image = 'user4.jpg';
         bot2FullName = "Humberto Alvarez";
         bot2FirstName = "Humberto";
-        customAudioFile = ["CUSML.1.7.3.mp3"];
+        customAudioFile = [""];
         break;
       case 'Música':
         eventKeyword = 'un campamento de música';
@@ -33,7 +35,7 @@ function customOnWindowLoad(enableDataCollection){
         bot2Image = 'user10.jpg';
         bot2FullName = "Carlos Gonzalez";
         bot2FirstName = "Carlos";
-        customAudioFile = ["CUSML.1.6.3.mp3"];
+        customAudioFile = [""];
         break;
       case 'Videojuegos':
         eventKeyword = 'el club de videojuegos';
@@ -43,7 +45,7 @@ function customOnWindowLoad(enableDataCollection){
         bot2Image = 'user48.jpeg';
         bot2FullName = "Alejandro Martinez";
         bot2FirstName = "Alejandro";
-        customAudioFile = ["CUSML.1.8.3.mp3"];
+        customAudioFile = [""];
         break;
       default:
         eventKeyword = 'un partido de fútbol';
@@ -53,24 +55,24 @@ function customOnWindowLoad(enableDataCollection){
         bot2Image = 'user48.jpeg';
         bot2FullName = "Alejandro Martinez";
         bot2FirstName = "Alejandro";
-        customAudioFile = ["CUSML.1.8.3.mp3"];
+        customAudioFile = [""];
         break;
     }
 
     stepsList = [
       {
-        intro: `¡Haz clic en "Seguir" para comenzar!`,
+        intro: `¡Dale clic a “Siguiente” para comenzar!`,
         position: 'right',
         scrollTo: 'tooltip',
         audioFile: ['']
       },
       {
         intro: `Ahora puedes explorar el feed del TestDrive. Puedes leer lo que otros han publicado, responder o crear tus propias publicaciones.`,
-        audioFile: ['CUSML.1.6.1.mp3']
+        audioFile: ['']
       },
       {
         intro: `Aquí hay un poco de información antes de empezar: Imagina que estás viendo el feed de la red social de <span class='noLineBreak'><img class='ui avatar image customCircularAvatar' src='${cdn}/profile_pictures/user77.jpg'>Jorge García</span>`,
-        audioFile: ['CUSML.1.6.2.mp3']
+        audioFile: ['']
       },
       {
         intro: `Jorge tiene dos amigos,
@@ -79,15 +81,14 @@ function customOnWindowLoad(enableDataCollection){
         <span class='noLineBreak'><img class='ui avatar image customCircularAvatar' src='${cdn}/profile_pictures/${bot2Image}'>
         <span>${bot2FullName}</span></span> a quienes conoció en ${eventKeyword}.
         Busca las publicaciones de ${bot1FirstName} y ${bot2FirstName}.`,
-        audioFile: [`${customAudioFile}`]
+        audioFile: [``]
       },
       {
         intro: `También puedes ver las publicaciones de otros amigos que han podido ocasionar la sensación de alerta roja en Jorge. Haz clic en estas publicaciones para pensar en cómo Jorge se está sintiendo y qué puede hacer al respecto.`,
-        audioFile: ['CUSML.1.6.4.mp3']
+        audioFile: ['']
       }
     ];
 
     startIntro(enableDataCollection);
-
   });
 }

@@ -61,15 +61,15 @@ $(window).on("load", function() {
     // }
 
     $('#voiceoverCheckbox').change(function() {
-        if ($("input[name='voiceoverCheckbox']").is(":checked")) {
-            window.sessionStorage.setItem('enableVoiceovers', 'true');
-            window.sessionStorage.setItem('voiceoverChangeTime', Date.now());
-        } else {
+        // if ($("input[name='voiceoverCheckbox']").is(":checked")) {
+        //     window.sessionStorage.setItem('enableVoiceovers', 'true');
+        //     window.sessionStorage.setItem('voiceoverChangeTime', Date.now());
+        // } else {
             window.sessionStorage.setItem('enableVoiceovers', 'false');
             addVoiceoverTime();
 
             Voiceovers.pauseVoiceover();
-        }
+        // }
     });
 
     // Record the current page if data collection is enabled

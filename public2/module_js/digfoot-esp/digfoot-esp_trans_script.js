@@ -3,7 +3,7 @@ const nextPageURL = 'modual';
 const stepsList = [
   {
     intro: `¡Dale clic a “Siguiente” para comenzar!`,
-    audioFile: ['']
+    // audioFile: ['']
   },
   {
     intro: `¡Ahora puedes explorar el feed de TestDrive! Puedes leer 

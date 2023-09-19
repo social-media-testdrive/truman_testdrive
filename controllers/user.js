@@ -331,8 +331,13 @@ exports.postUpdateInterestSelection = (req, res, next) => {
             case 'targeted':
                 userTopic = user.targetedAdTopic;
                 break;
+            case 'esteem-esp':
+                userTopic = user.esteemTopic;
+                console.log('user topic esp = ' + user.esteemTopic);
+                break;
             case 'esteem':
                 userTopic = user.esteemTopic;
+                console.log('user topic esteem = ' + user.esteemTopic);
                 break;
         }
         if (userTopic) {

@@ -175,6 +175,68 @@
       }
     }
   },
+  "esteem-esp": {
+    "modals": "true",
+    "modalInfo": {
+      "0": {
+        "modalName": "esteem_postModal",
+        "label": "Clicked Post"
+      }
+    },
+    "customContent": "true",
+    "topics": {
+      "0": "Música",
+      "1": "Deportes",
+      "2": "Videojuegos"
+    },
+    "relevantPosts": {
+      "0": {
+        "image": "bigmatch_se.jpg",
+        "body": "Watching the big match with my BFF!!",
+        "topic": "Deportes"
+      },
+      "1": {
+        "image": "signedbasket_se.jpg",
+        "body": "Can't believe my parents got me a GENUINE signed ball",
+        "topic": "Deportes"
+      },
+      "2": {
+        "image": "tryouts_se.jpg",
+        "body": "Wow, can't believe I'm the only one who made it to the next round of soccer tryouts from our group",
+        "topic": "Deportes"
+      },
+      "3": {
+        "image": "computer-game_se.jpg",
+        "body": "Totally beating everyone",
+        "topic": "Videojuegos"
+      },
+      "4": {
+        "image": "switch_se.jpg",
+        "body": "Just got a new Switch! Any games I should ask my parents to buy me?",
+        "topic": "Videojuegos"
+      },
+      "5": {
+        "image": "nintendo_se.jpg",
+        "body": "Playing online with my best friend",
+        "topic": "Videojuegos"
+      },
+      "6": {
+        "image": "concert-crowd_se.jpg",
+        "body": "We missed you at the concert Jeremy!",
+        "topic": "Música"
+      },
+      "7": {
+        "image": "electric_se.jpg",
+        "body": "I just got the best present ever!",
+        "topic": "Música"
+      },
+      "8": {
+        "image": "bestguitar_se.JPG",
+        "body": "Inviting the best musicians from camp to make a song together.",
+        "topic": "Música"
+      }
+    }
+  },
   "habits": {
     "modals": "false",
     "customContent": "false"

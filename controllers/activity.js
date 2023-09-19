@@ -93,7 +93,7 @@ exports.postActivityData = (req, res, next) => {
             // Assign the chosenTopic array according to the current module the user is in.
             if (module === "targeted") {
                 activityData.chosenTopic = user.targetedAdTopic;
-            } else if (module === "esteem") {
+            } else if (module === "esteem" || module === "esteem-esp") {
                 activityData.chosenTopic = user.esteemTopic;
             }
 

@@ -244,25 +244,30 @@ function setHttpResponseHeaders(req, res, next) {
     });
     next();
 }
-/*
+
 function isValidModId(req, res, next) {
     const modIds = [
         "accounts",
         "advancedlit",
         "cyberbullying",
         "digfoot",
+        "digfoot-esp",
         "digital-literacy",
         "esteem",
+        "esteem-esp",
         "habits",
+        "habits-esp",
         "phishing",
         "presentation",
         "privacy",
         "safe-posting",
         "targeted"
     ]
+    console.log('req.params.modId = ' + req.params.modId);
     if (modIds.includes(req.params.modId)) {
         next();
     } else {
+        console.log('ERROR -> req.params.modId = ' + req.params.modId);
         var err = new Error('Page Not Found.');
         err.status = 404;
 
@@ -279,7 +284,7 @@ function isValidModId(req, res, next) {
         res.render('error');
     }
 }
-*/
+
 // All of our static files that express will automatically server for us.
 // In production, we have nginx server this instead to take the load off out Node app
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
@@ -300,7 +305,7 @@ const enableLearnerDashboard = process.env.enableLearnerDashboard === 'true';
  * (In alphabetical order)
  */
 
-
+/*
 function isValidModId(req, res, next) {
     const modIds = [
         "accounts",
@@ -336,7 +341,7 @@ function isValidModId(req, res, next) {
         res.render('error');
     }
 }
-
+*/
 // Main route is the module page
 app.get('/', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
   res.render('mods-esp', {
@@ -523,7 +528,7 @@ app.get('/intro/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders,
 app.get('/me/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, userController.getMe);
 
 // Main route for rendering the free play page for a given module (only 'accounts' and 'privacy' modules do not have this page)
-app.get('/modual/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, scriptController.getScript);
+app.get('/modual/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, scriptController.getScript);
 
 // Render privacy policy page.
 app.get('/privacy', setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {

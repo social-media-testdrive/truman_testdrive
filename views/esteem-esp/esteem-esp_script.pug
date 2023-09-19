@@ -1,7 +1,7 @@
 extends ../script-esp.pug
 
 block post
-  if (val.type === user.esteemTopic)
+  if (val.type === user.esteemTopic[user.esteemTopic.length - 1] || val.type === "neutral")
     if (val.info_text !== "")
       include ../partials/script/actorPost-esp
     else

@@ -48,40 +48,44 @@ var stepsList=
   }
 ]
 
-function eventsAfterHints(){
-  introJs().hideHints();
-  introJs().showHint(0);
+let clickPost = false;
 
-  $('.ui.fluid.card.test img').on('click', function(){
+function eventsAfterHints() {
+introJs().hideHints();
+introJs().showHint(0);
+
+$('.ui.fluid.card.test img').on('click', function() {
     $('.ui.accordion').accordion('open', 0);
     $('.ui.accordion').accordion('close', 1);
-    $('input[type=checkbox]').prop('checked',false);
-    recordSimModalInputs('esteem_simPostModal1')
-  });
+    $('.ui.modal input[type=checkbox]').prop('checked', false);
+    recordSimModalInputs('esteem_simPostModal1');
+    clickPost = true;
+    $('#confirmContinueCheck').hide();
+});
 };
 
 
 function customOnHintCloseFunction(stepID) {
 
-  // sequential hint appearance
-  stepID += 1;
-  if(stepID !== numberOfHints){
+// sequential hint appearance
+stepID += 1;
+if (stepID !== numberOfHints) {
     introJs().showHint(stepID);
-  }
+}
 
-  closedHints++;
-  clickedHints = 0;
-  if($('#removeHidden').is(":visible")){
+closedHints++;
+clickedHints = 0;
+if ($('#removeHidden').is(":visible")) {
     $('#removeHidden').transition('fade');
-    if($('#clickAllDotsWarning').is(":hidden")){
-      $('#cyberTransButton').css("margin-bottom", "4em");
+    if ($('#clickAllDotsWarning').is(":hidden")) {
+        $('#cyberTransButton').css("margin-bottom", "4em");
     }
-  }
-  if(closedHints == numberOfHints) {
-    if($('#clickAllDotsWarning').is(':visible')){
-      $('#clickAllDotsWarning').transition('fade');
-      $('#cyberTransButton').css("margin-bottom", "4em");
+}
+if (closedHints == numberOfHints) {
+    if ($('#clickAllDotsWarning').is(':visible')) {
+        $('#clickAllDotsWarning').transition('fade');
+        $('#cyberTransButton').css("margin-bottom", "4em");
     }
-    $( "#cyberTransButton" ).addClass("green");
-  }
+    $("#cyberTransButton").addClass("green");
+}
 }

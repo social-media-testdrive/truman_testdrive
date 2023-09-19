@@ -10,7 +10,7 @@ function pauseVoiceover(){
 }
 
 function playVoiceover(audioFile, delay = 0) {
-  const voiceoversDisabled = sessionStorage.getItem('enableVoiceovers') === 'false';
+  const voiceoversDisabled = true;
   if (voiceoversDisabled) {
     return;
   }

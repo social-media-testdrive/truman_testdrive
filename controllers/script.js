@@ -103,6 +103,7 @@ exports.getScript = (req, res, next) => {
                     }
                 })
                 .exec(function(err, script_feed) {
+                    console.log('in here? 0');
                     if (err) {
                         return next(err);
                     }
@@ -164,11 +165,14 @@ exports.getScript = (req, res, next) => {
                             const feedIndex = _.findIndex(user.feedAction, function(o) {
                                 return o.post == script_feed[0].id;
                             });
+                            console.log('feed index = ' + feedIndex);
                             if (feedIndex != -1) {
+                                console.log('in here? 1');
                                 // There was a feedAction found for this post.
                                 // Perform various checks to determine what actions were taken.
                                 // Check to see if there are comment-type actions.
                                 if (Array.isArray(user.feedAction[feedIndex].comments) && user.feedAction[feedIndex].comments) {
+                                    console.log('in here? 2');
                                     // There are comment-type actions on this post.
                                     // For each comment on this post, add likes, flags, etc.
                                     for (var i = 0; i < user.feedAction[feedIndex].comments.length; i++) {
