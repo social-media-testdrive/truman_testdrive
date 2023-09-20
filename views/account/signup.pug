@@ -1,0 +1,121 @@
+extends ../ui_layout 
+
+block content
+    .ui.middle.aligned.center.aligned.grid
+        .column.left.aligned
+            br
+            br
+            br
+            .ui.stacked.segment
+                h2#welcome Create an account
+                p#details Please enter your details.
+                form.ui.form(method='POST' novalidate)
+                    //- input(type='hidden', name='_csrf', value=_csrf)
+                    .field 
+                        label.input-margin Name: 
+                        input(type='text', name='name', id='name', placeholder='Enter Your Name', autofocus, autocomplete='name', required)
+                    .field
+                        label.input-margin Email: 
+                        input(type='email', name='email', id='email', placeholder='Email', autofocus, autocomplete='email', required)
+                    .field
+                        label.input-margin Password: 
+                        input(type='password', name='password', id='password', placeholder='Password', autocomplete='new-password', minlength='8', required)
+                    .field
+                        label.input-margin Confirm Password: 
+                        input(type='password', name='confirmPassword', id='confirmPassword', placeholder='Confirm Password', autocomplete='new-password', minlength='8', required)
+                    //- p.input-margin Name:
+                    //- .ui.fluid.input
+                    //-     input(type='text', name='name', id='name', placeholder='Enter Your Name', autofocus, autocomplete='name', required)
+                    //- p.input-margin Email:
+                    //- .ui.fluid.input
+                    //-     input(type='email', name='email', id='email', placeholder='Email', autofocus, autocomplete='email', required)
+                    //- p.input-margin Password:
+                    //- .ui.fluid.input
+                    //-     input(type='password', name='password', id='password', placeholder='Password', autocomplete='new-password', minlength='8', required)
+                    //- p.input-margin Confirm Password:
+                    //- .ui.fluid.input
+                    //-     input(type='password', name='confirmPassword', id='confirmPassword', placeholder='Confirm Password', autocomplete='new-password', minlength='8', required)
+                    //- a(href='/forgot') 
+                    //-     p.small-text Already haven an account?
+                    button.ui.fluid.blue.massive.button(type='submit') Sign Up
+                    p#inform-terms By signing up, you agree to our 
+                        a(href="/terms") Terms of Use 
+                        | and 
+                        a(href="/privacy") Privacy Policy.
+                    .ui.divider
+                    //- .ui.fluid.white.huge.submit.button Sign Up
+                    span.small-text Already haven an account? 
+                    a.small-text(href="/signup") Log in
+            br
+            br
+
+
+
+
+block styles 
+    link(rel='stylesheet', href='/css/login.css')
+
+block scripts
+  script.
+    $(document).ready(function() {
+    $('.message .close')
+        .on('click', function() {
+            $(this)
+                .closest('.message')
+                .transition('fade')
+            ;
+        })
+    ;
+      var validationRules = {
+        email: {
+          identifier: 'email',
+          rules: [
+            {
+              type: 'empty',
+              prompt: 'Please enter your e-mail',
+            },
+            {
+              type: 'email',
+              prompt: 'Please enter a valid e-mail',
+            },
+          ],
+        },
+        password: {
+          identifier: 'password',
+          rules: [
+            {
+              type: 'empty',
+              prompt: 'Please enter a password',
+            },
+            {
+              type: 'minLength[8]',
+              prompt: 'Your password must be at least 8 characters',
+            },
+          ],
+        },
+        confirmPassword: {
+          identifier: 'confirmPassword',
+          rules: [
+            {
+              type: 'empty',
+              prompt: 'Please confirm your password',
+            },
+            {
+              type: 'minLength[8]',              
+              prompt: 'Your password must be at least {ruleValue} characters',
+            },
+          ],
+        },
+      };
+
+
+      // Initialize form validation
+      $('.ui.form')
+        .form({
+          fields: validationRules,
+          inline: true,
+          on: 'blur',
+        });
+    })    
+
+    

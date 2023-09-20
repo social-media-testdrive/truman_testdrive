@@ -7,6 +7,11 @@ header {
   z-index: 1000 !important;
 }
 
+/* override formantic ui margin on the menu to avoid weird gap between header and page-article */
+.ui.menu {
+  margin: 0 !important;
+}
+
 .tablet-and-computer {
   display: block !important;
 }

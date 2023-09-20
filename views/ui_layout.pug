@@ -9,17 +9,21 @@ html
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    meta(name='theme-color' content='#4DA5F4')
+    meta(name='theme-color' content='#235799')
+
     meta(name='isDataCollectionEnabled', content=process.env.enableDataCollection)
     meta(name='isShareActivityDataEnabled', content=process.env.enableShareActivityData)
     meta(name='isResearchVersion', content=process.env.isResearchVersion)
-    meta(name="HandheldFriendly" content="True")
-    meta(name="apple-mobile-web-app-capable" content="yes")
-    meta(name="mobile-web-app-capable" content="yes")
-    meta(name="msapplication-tap-highlight" content="no")
+
+    //- meta(name="HandheldFriendly" content="True")
+    //- meta(name="apple-mobile-web-app-capable" content="yes")
+    //- meta(name="mobile-web-app-capable" content="yes")
+    //- meta(name="msapplication-tap-highlight" content="no")
+
     meta(name="content-language" content="en_US")
     meta(http-equiv='Permissions-Policy' content="interest-cohort=(), browsing-topics=()")
-    meta(name='twitter:card' content="summary")
+    //- meta(name='twitter:card' content="summary")
+
     if (process.env.isResearchVersion === "true")
       if (process.env.NODE_ENV === "production")
         meta(property='og:url' content='https://research.socialmediatestdrive.org/')
@@ -67,48 +71,26 @@ html
       block header
         include partials/ui_header
     #page-article
+      include partials/ui_flash
       block content
-      //- iframe(width='640' height='480' src='https://embed.wotnot.io/79V9VnbBQMxM062228268676IdMJdpQW/bot/42SBy2c4MQBw062925850588OHwYcj3y?display_header=false&history_retention=false' frameborder='0')
     #page-footer
       block footer
         include partials/ui_footer
     
-    if process.env.instanceType == 'test'
-      script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js')
-      //- script(src=cdn+'/js/lib/humanized_time_span.js')
-      //- script(src=cdn+'/js/lib/lazyload.transpiled.min.js')
-      //- script(src='https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js', integrity="sha256-ZUdSt2scSiBqI3Tso+Al3lcqkBvgRShVrUc1pvvGGVE=" crossorigin="anonymous")
-      //- script(src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js', integrity="sha256-v8vuH0gf888S01qYrvK2hDq/RfE2au7WOLbqlPzDwOQ=" crossorigin="anonymous")
-      script(src=cdn+'/js/lib/intro.min.js')
-      //- script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js', integrity='sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=', crossorigin='anonymous')
-      script(src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.js")
-      //- - var t = '/main.js?t=' + (new Date()).getTime().toString();
-      script(src=t)
-      //- Set the 'user' object as a global JavaScript variable
-      script.
-        var user = !{JSON.stringify(user)};
-    else if process.env.NODE_ENV == 'production'
-      script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js')
-      //- script(src=cdn+'/js/lib/humanized_time_span.js')
-      //- script(src=cdn+'/js/lib/lazyload.transpiled.min.js')
-      //- script(src='https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js', integrity="sha256-ZUdSt2scSiBqI3Tso+Al3lcqkBvgRShVrUc1pvvGGVE=" crossorigin="anonymous")
-      //- script(src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js', integrity="sha256-v8vuH0gf888S01qYrvK2hDq/RfE2au7WOLbqlPzDwOQ=" crossorigin="anonymous")
-      script(src=cdn+'/js/lib/intro.min.js')
-      //- script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js', integrity='sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=', crossorigin='anonymous')
-      script(src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.js")
-      script(src=cdn+'/js/main23.js?v=1')
-      //- script(src='/module_js/js/main.js')
-    else
-      script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js')
-      //- script(src=cdn+'/js/lib/humanized_time_span.js')
-      //- script(src=cdn+'/js/lib/lazyload.transpiled.min.js')
-      //- script(src='https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js', integrity="sha256-ZUdSt2scSiBqI3Tso+Al3lcqkBvgRShVrUc1pvvGGVE=" crossorigin="anonymous")
-      //- script(src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js', integrity="sha256-v8vuH0gf888S01qYrvK2hDq/RfE2au7WOLbqlPzDwOQ=" crossorigin="anonymous")
-      script(src=cdn+'/js/lib/intro.min.js')
-      //- script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.js', integrity="sha256-qs5p0BFSqSvrstBxPvex+zdyrzcyGdHNeNmAirO2zc0=", crossorigin="anonymous")
-      script(src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.js")
-      //- - var t = '/main.js?t=' + (new Date()).getTime().toString();
-      script(src=t)
+    //- if process.env.instanceType == 'test'
+    //-   script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js')
+    //- else if process.env.NODE_ENV == 'production'
+    //-   script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js')
+    //- else
+    //-   script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js')
+
+    
+    //- allows us to pug interpolate the user info 
+    script.
+      var user = !{JSON.stringify(user)};
+    script(src=cdn+'/js/lib/intro.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js')
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.js")
 
     script(src="/js/progress.js")  
     script(src="/js/startTime.js")  
