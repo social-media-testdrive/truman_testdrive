@@ -19,7 +19,13 @@ const rateLimit = require('express-rate-limit');
 
 const upload = multer({ dest: path.join(__dirname, 'uploads') });
 
-const nocache = require('nocache');
+// for json file reading
+const fs = require('fs');
+const util = require('util');
+const cookieSession = require('cookie-session');
+fs.readFileAsync = util.promisify(fs.readFile);
+
+// const nocache = require('nocache');
 
 
 
@@ -28,6 +34,15 @@ const nocache = require('nocache');
  * Load environment variables from .env file, where API keys and passwords are configured.
  */
 dotenv.config({ path: '.env' });
+
+// is this needed?
+passport.serializeUser((user , done) => {
+  done(null , user);
+})
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
 
 /**
  * Set config values
@@ -97,13 +112,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(limiter);
 app.use(session({
-  resave: true,
+  resave: false,
   saveUninitialized: true,
+  rolling: false,
   secret: process.env.SESSION_SECRET,
   name: 'startercookie', // change the cookie name for additional security in production
   cookie: {
     maxAge: 1209600000, // Two weeks in milliseconds
-    secure: secureTransfer
+    secure: false
+    // secure: secureTransfer
   },
 //   store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI })
 }));
@@ -139,12 +156,18 @@ app.use((req, res, next) => {
   }
   next();
 });
-app.use('/', express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
+
+app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
+app.use('/profile_pictures', express.static(path.join(__dirname, 'profile_pictures'), { maxAge: 31557600000 }));
+
+// app.use('/', express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
 app.use('/js/lib', express.static(path.join(__dirname, 'node_modules/chart.js/dist'), { maxAge: 31557600000 }));
 app.use('/js/lib', express.static(path.join(__dirname, 'node_modules/popper.js/dist/umd'), { maxAge: 31557600000 }));
 app.use('/js/lib', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js'), { maxAge: 31557600000 }));
 app.use('/js/lib', express.static(path.join(__dirname, 'node_modules/jquery/dist'), { maxAge: 31557600000 }));
 app.use('/webfonts', express.static(path.join(__dirname, 'node_modules/@fortawesome/fontawesome-free/webfonts'), { maxAge: 31557600000 }));
+
+
 
 /**
  * Primary app routes.
@@ -173,8 +196,13 @@ app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userControl
 /**
  * Module Routes
  */
-// app.get('/intro/:modId', isValidModId, coursesController.moduleIntro);
 app.get('/intro/:page?/:modId', isValidModId, coursesController.getIntro);
+app.get('/challenge/:page?/:modId', isValidModId, coursesController.getChallenge);
+app.get('/learn/:submod(submod|submod2|submod3)/:page?/:modId', isValidModId, coursesController.getLearn);
+app.get('/explore/:page?/:modId', isValidModId, coursesController.getExplore);
+
+
+
 
 
 // for module progress and timing

@@ -648,3 +648,16 @@ exports.postEndTime = async (req, res, next) => {
 };
 
 
+
+// Format duration milli second to HH:MM:SS
+function formatDuration(duration) {
+  const seconds = Math.floor((duration / 1000) % 60);
+  const minutes = Math.floor((duration / (1000 * 60)) % 60);
+  const hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
+
+  const formattedDuration = `${hours.toString().padStart(2, '0')}:${minutes
+    .toString()
+    .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  
+  return formattedDuration;
+}
