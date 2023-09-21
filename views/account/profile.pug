@@ -38,6 +38,21 @@ block content
             | Update Profile
 
     .ui.segment.padded
+      h3 Linked Accounts
+
+      .ui.fields
+        if user.google
+          .field
+            a.ui.red.button(href='/account/unlink/google') Unlink your Google account
+        else
+          .field
+            a.ui.button(href='/auth/google') Link your Google account
+
+    .ui.segment.padded
+      h3 Badges
+      p display badges
+
+    .ui.segment.padded
       h3 Change Password
 
       form.ui.form(action='/account/password', method='POST')
@@ -67,17 +82,6 @@ block content
           button.ui.red.button(type='submit')
             i.fas.fa-trash-alt.fa-sm.iconpadding
             | Delete my account
-
-    .ui.segment.padded
-      h3 Linked Accounts
-
-      .ui.fields
-        if user.google
-          .field
-            a.ui.red.button(href='/account/unlink/google') Unlink your Google account
-        else
-          .field
-            a.ui.button(href='/auth/google') Link your Google account
     br
     br
 
