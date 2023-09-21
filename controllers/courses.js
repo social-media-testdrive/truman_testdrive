@@ -225,13 +225,113 @@ exports.getLearn = async (req, res) => {
 exports.getExplore = (req, res) => {
   const modId = req.params.modId;
   const pageNum = req.params.page;
-  
-  const explorePage = `${modId}/explore/${modId}_explore${pageNum || ''}`;
-  const title = 'Explore';
 
-  res.render(explorePage, { title });
+  if(parseInt(pageNum) === 3) {
+    const currentDate = new Date();
+    const currentTime = getCurrentTime();
+
+    const oneDayAgo = new Date(currentDate.getTime() - 24 * 60 * 60 * 1000);
+    const twoDaysAgo = new Date(currentDate.getTime() - 24 * 2 * 60 * 60 * 1000);
+    const threeDaysAgo = new Date(currentDate.getTime() - 24 * 3 * 60 * 60 * 1000);
+    const fourDaysAgo = new Date(currentDate.getTime() - 24 * 4 * 60 * 60 * 1000);
+
+    const emails = [
+      { index: 0, sender: "Agent Intrepid", subject: "Example email", date: currentTime, from:"<intrepid@gmail.com>", content: "<p>Hello, </p><p>Just wanted to let you know you're doing great!</p><p>Best,</p><p>Agent Intrepid</p>", replyHeader: "warning", replyContent: "This email is indicative of an identity theft scam. Replying to the email is dangerous! The safe options would be to block sender, report scam, or delete the email. We can look into why this is a scam.", blockHeader: "good", blockContent: "Blocking this sender is correct because this email is indicative of an identity theft scam. You could also report or delete the email.", reportHeader: "good", reportContent: "Reporting this email is correct because this email is indicative of an identity theft scam. You could also block the sender or delete the email.", deleteHeader: "good", deleteContent: "Deleting this email is correct because this email is indicative of an identity theft scam. You could also block the sender or report it as a scam." },
+      { index: 1, sender: "Walmart", subject: "URGENT!", date: formatDate(oneDayAgo), from:"<walmrt@gmail.com>", content: "<p>Hi customer. This is an URGENT message!</p><p>Your payment was declined on a recent purchase. Resubmit your credit card details at this link below within 24 hours.</p><p>Click here NOW! <a class='fakeLink' onclick='linkClick()'>http://jdksj6879sh.com</a></p>", replyHeader: "warning", replyContent: "This email is indicative of an identity theft scam. Replying to the email is dangerous! The safe options would be to block sender, report scam, or delete the email. We can look into why this is a scam.", blockHeader: "good", blockContent: "Blocking this sender is correct because this email is indicative of an identity theft scam. You could also report or delete the email.", reportHeader: "good", reportContent: "Reporting this email is correct because this email is indicative of an identity theft scam. You could also block the sender or delete the email.", deleteHeader: "good", deleteContent: "Deleting this email is correct because this email is indicative of an identity theft scam. You could also block the sender or report it as a scam." },
+      { index: 2, sender: "irs gov", subject: "Identity Verification", date: formatDate(oneDayAgo), from:"<irsgov@gmail.com>", content: "<p>Dear Tax Payer,</p><p>We’ve noticed your account information is missing orincorrect. We need to verify your account information to file your Tax Refund.</p><p>Please follow <a class='fakeLink' onclick='linkClick()'>this link</a> to verify your info.</p><p>Thanks,</p><p>IRS Team <br> 2016 IRS All right reserved.</p><img src='/images/irs.png' alt='irs logo' width='50px'><p>IMPORTANT NOTE: If you receive this message in spam or junk it is a result of your network provider.</p>", replyHeader: "warning", replyContent: "This email is indicative of an identity theft scam. Replying to the email is dangerous! The safe options would be to block sender, report scam, or delete the email. We can look into why this is a scam.", blockHeader: "good", blockContent: "Blocking this sender is correct because this email is indicative of an identity theft scam. You could also report or delete the email.", reportHeader: "good", reportContent: "Reporting this email is correct because this email is indicative of an identity theft scam. You could also block the sender or delete the email.", deleteHeader: "good", deleteContent: "Deleting this email is correct because this email is indicative of an identity theft scam. You could also block the sender or report it as a scam."},
+      { index: 3, sender: "Dropbox", subject: "New Sign In Detected", date: formatDate(twoDaysAgo), from:"<irsgov@gmail.com>", content: "<img src='/images/dropbox.png' alt='dropbox email screenshot'>", replyHeader: "good", replyContent: "Replying is okay because this email is legitimate and can be trusted. We can look into why this is not a scam.", blockHeader: "warning", blockContent: "Blocking the sender is not needed for this email because it comes from a legitimate source and can be trusted. We can look into why this is not a scam.", reportHeader: "warning", reportContent: "Reporting as a scam is not needed for this email because it comes from a legitimate source and can be trusted. We can look into why this is not a scam.", deleteHeader: "warning", deleteContent: "Deleting is not needed for this email because it comes from a legitimate source and can be trusted. We can look into why this is not a scam." },
+      { index: 4, sender: "NCCUstudent", subject: "Re: Hi-- Favor", date: formatDate(twoDaysAgo), from:"<joeBren@gmail.com>", content: "<p>How are you doing? Hope you and your family are safe and healthy? I was wondering if I can get a quick favor from you.</p><p>I am sorry for any inconvenience this will cost you, i am suposed to call you but my phone is bad. I got bad news this morning that I lost a childhood friend to the deadly COVID-19. I want to support the struggling family with a small donation. So, I was going to ask if you could kindly help e send out a donation to them anytime you can today, I’ll refund as soon as I get back.</p><p>I want to donate $500. Can you help me get the donation sent directly to their Cash App account?</p><p>Thanks, God Bless you.</p><p>Joe Bren</p>", replyHeader: "warning", replyContent: "This email is indicative of an identity theft scam. Replying to the email is dangerous! The safe options would be to block sender, report scam, or delete the email. We can look into why this is a scam.", blockHeader: "good", blockContent: "Blocking this sender is correct because this email is indicative of an identity theft scam. You could also report or delete the email.", reportHeader: "good", reportContent: "Reporting this email is correct because this email is indicative of an identity theft scam. You could also block the sender or delete the email.", deleteHeader: "good", deleteContent: "Deleting this email is correct because this email is indicative of an identity theft scam. You could also block the sender or report it as a scam." },
+      { index: 5, sender: "iPhone 14", subject: "Congrats!", date: formatDate(threeDaysAgo), from:"<4kbug82ob@hotmail.com>", content: "<img src='/images/iphone.png' alt='iphone email screenshot'>", replyHeader: "warning", replyContent: "This email is indicative of an identity theft scam. Replying to the email is dangerous! The safe options would be to block sender, report scam, or delete the email. We can look into why this is a scam.", blockHeader: "good", blockContent: "Blocking this sender is correct because this email is indicative of an identity theft scam. You could also report or delete the email.", reportHeader: "good", reportContent: "Reporting this email is correct because this email is indicative of an identity theft scam. You could also block the sender or delete the email.", deleteHeader: "good", deleteContent: "Deleting this email is correct because this email is indicative of an identity theft scam. You could also block the sender or report it as a scam." },
+      { index: 6, sender: "Amazon", subject: "Password Assistance", date: formatDate(fourDaysAgo), from:"<account-update@amazon.com>", content: "<img src='/images/amazon.png' alt='amazon email screenshot'>", replyHeader: "good", replyContent: "Replying is okay because this email is legitimate and can be trusted. We can look into why this is not a scam.", blockHeader: "warning", blockContent: "Blocking the sender is not needed for this email because it comes from a legitimate source and can be trusted. We can look into why this is not a scam.", reportHeader: "warning", reportContent: "Reporting as a scam is not needed for this email because it comes from a legitimate source and can be trusted. We can look into why this is not a scam.", deleteHeader: "warning", deleteContent: "Deleting is not needed for this email because it comes from a legitimate source and can be trusted. We can look into why this is not a scam." },
+    ];  
+
+    res.render(req.params.modId + '/explore/' + req.params.modId + '_explore3', {
+        title: 'Explore',
+        emails
+    });
+  } else {
+    const explorePage = `${modId}/explore/${modId}_explore${pageNum || ''}`;
+    const title = 'Explore';
+  
+    res.render(explorePage, { title });
+  }
 };
 
+
+/**
+ * GET /evaluate/:page?/:modId
+ * Render the evaluate page for the module.
+ */
+exports.getEvaluate = async (req, res) => {
+  const modId = req.params.modId;
+  const pageNum = req.params.page;
+  const title = 'Evaluate';
+
+  // render the quiz else the normal page
+  if(modId === "identity" && parseInt(pageNum) !== 2) {
+    console.log("in evaluate if statement*************")
+    let quizData;
+    let modID = "identity";
+    let currentSection = "evaluate";
+    let page = "evaluate";
+    let backLink = "/explore/4/identity";
+    let nextLink = "/evaluate/2/identity";
+    let progress = 85;
+    const data = await fs.readFileAsync(`${__dirname}/../public/json/` +  req.params.modId + `/evaluate.json`);
+    quizData = JSON.parse(data.toString());
+
+    const currentTime = getCurrentTime();
+    const currentDate = getCurrentDate();
+    const futureDate = getFutureDate();
+
+    res.render('dart-quiz-template.pug', {
+        title: 'Evaluate',
+        quizData,
+        modID,
+        currentSection,
+        page,
+        backLink,
+        nextLink,
+        progress,
+        currentTime,
+        currentDate,
+        futureDate
+    });
+  } else {
+    const introPage = `${modId}/evaluate/${modId}_evaluate${pageNum || ''}`;
+
+    res.render(introPage, { title });
+  }
+};
+
+
+/**
+ * GET /reflect/:page?/:modId
+ * Render the reflect pages for the module.
+ */
+exports.getReflect = (req, res) => {
+  const modId = req.params.modId;
+  const pageNum = req.params.page;
+  
+  const reflectPage = `${modId}/reflect/${modId}_reflect${pageNum || ''}`;
+  const title = 'Reflect';
+
+  res.render(reflectPage, { title });
+};
+
+
+/**
+ * GET /certificate/:page?/:modId
+ * Render the certificate pages for the module.
+ */
+exports.getCertificate = (req, res) => {
+  const modId = req.params.modId;
+  
+  const certificatePage = `${modId}/${modId}_certificate`;
+  const title = 'Certificate';
+
+  res.render(certificatePage, { title });
+};
 
 
 
@@ -268,6 +368,13 @@ function getFutureDate() {
   const options = { month: 'numeric', day: 'numeric', year: 'numeric', timeZone: 'America/New_York' };
   return oneWeekLater.toLocaleString('en-US', options);
 }
+
+// get date for explore emails like: Aug 10
+function formatDate(date) {
+  const options = { month: 'short', day: 'numeric' };
+  return date.toLocaleDateString('en-US', options);
+}
+
 
 
 

@@ -576,6 +576,47 @@ exports.postModuleProgress = async (req, res, next) => {
 };
 
 
+exports.postQuizScore = async (req, res, next) => { // response second
+  console.log("In POST quiz score request body***********************hiii****");
+
+  const { modID, scoreTotal, selectedAnswer, questionScores, nextLink, currentSection } = req.body;
+  console.log("Module ID: " + modID);
+  console.log("Score Total: " + scoreTotal);
+  console.log("Selected Answer: " + selectedAnswer);
+  console.log("Question Scores: " + questionScores);
+  console.log("Next Link: " + nextLink);
+  console.log("Current Section: " + currentSection);
+
+  try {
+    const existingUser = await User.findOne({
+      username: req.user.username
+    });
+
+    if (existingUser) {
+      // prequiz attempt data
+      const attempt = {
+        timestamp: new Date(),
+        scoreTotal: scoreTotal,
+        questionScores: questionScores,
+        questionChoices: selectedAnswer,
+      };
+
+      let sectionAttempts = currentSection + "Attempts";
+
+      // Add the prequiz attempt to the challengeAttempts/submod1Attempts/etc array
+      existingUser.moduleProgress[modID][sectionAttempts].push(attempt);
+
+      // save to mongodb database
+      await existingUser.save();
+    }
+
+    // console.log("about to redirect in post quiz score")
+    res.redirect(nextLink);
+  } catch (err) {
+    next(err);
+  }
+};
+
 /**
  * POST /postStartTime
  * Post time that user opened the page

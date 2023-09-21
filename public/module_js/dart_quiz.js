@@ -235,8 +235,8 @@ $(document).ready(function() {
             // let modID = "identity";
 
             postModuleProgress(modID, page, nextLink, progress, current_percent);
-            // console.log("Posting quiz attempt to database!");
-            // console.log("ScoreTotal is: " + scoreTotal);
+            console.log("Posting quiz attempt to database!");
+            console.log("ScoreTotal is: " + scoreTotal);
             // const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
             fetch('/postQuizScore', {
