@@ -1,6 +1,6 @@
 const passport = require('passport');
 const refresh = require('passport-oauth2-refresh');
-const axios = require('axios');
+// const axios = require('axios');
 const { Strategy: LocalStrategy } = require('passport-local');
 // const { Strategy: FacebookStrategy } = require('passport-facebook');
 // const { Strategy: SnapchatStrategy } = require('passport-snapchat');
