@@ -105,7 +105,7 @@ exports.getLearn = async (req, res) => {
   const submod = req.params.submod;
   const modId = req.params.modId;
   const pageNum = req.params.page;
-  console.log("***submod is: ", submod);
+  // console.log("***submod is: ", submod);
   // console.log("MOD ID: ", modId);
   // console.log(typeof modId);
   // console.log("PAGE NUM: ", pageNum);

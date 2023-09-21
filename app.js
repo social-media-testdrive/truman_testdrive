@@ -10,7 +10,7 @@ const logger = require('morgan');
 const errorHandler = require('errorhandler');
 const lusca = require('lusca');
 const dotenv = require('dotenv');
-// const MongoStore = require('connect-mongo');
+const MongoStore = require('connect-mongo');
 const flash = require('express-flash');
 const mongoose = require('mongoose');
 const passport = require('passport');
@@ -112,17 +112,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(limiter);
 app.use(session({
-  resave: false,
+  resave: true,
   saveUninitialized: true,
-  rolling: false,
   secret: process.env.SESSION_SECRET,
   name: 'startercookie', // change the cookie name for additional security in production
   cookie: {
     maxAge: 1209600000, // Two weeks in milliseconds
-    secure: false
-    // secure: secureTransfer
+    secure: secureTransfer
   },
-//   store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI })
+  store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI })
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -192,6 +190,8 @@ app.post('/account/profile', passportConfig.isAuthenticated, userController.post
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
+
+
 
 /**
  * Module Routes

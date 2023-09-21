@@ -168,6 +168,12 @@ exports.getAccount = (req, res) => {
  * Update profile information.
  */
 exports.postUpdateProfile = async (req, res, next) => {
+  console.log("In update profile!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+  console.log("Request Method: " + req.method);
+  console.log("Request URL: " + req.url);
+  // console.log("Request Headers: " + JSON.stringify(req.headers));
+  console.log("Request body: " + JSON.stringify(req.body));
+
   const validationErrors = [];
   if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' });
 
@@ -177,16 +183,34 @@ exports.postUpdateProfile = async (req, res, next) => {
   }
   req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false });
   try {
-    const user = await User.findById(req.user.id);
+    const user = await User.findOne({ email: req.user.email});
     if (user.email !== req.body.email) user.emailVerified = false;
     user.email = req.body.email || '';
-    user.profile.name = req.body.name || '';
-    user.profile.gender = req.body.gender || '';
-    user.profile.location = req.body.location || '';
-    user.profile.website = req.body.website || '';
+    user.name = req.body.name || '';
+    // user.profile.gender = req.body.gender || '';
+    // user.profile.location = req.body.location || '';
+    // user.profile.website = req.body.website || '';
     await user.save();
-    req.flash('success', { msg: 'Profile information has been updated.' });
-    res.redirect('/account');
+
+    // manually update it in current session as well
+    // req.user.moduleProgress.identity.percent = req.body.percent;
+    // req.user.moduleProgress.identity.link = req.body.link;
+
+    // req.session.passport.user = req.user;
+    // await req.session.save();
+    // req.flash('success', { msg: 'Profile information has been updated.' });
+    // res.redirect('/account');
+
+    // Better approach than manually, use req.login() to update the user in the session
+    req.login(user, (err) => {
+      if (err) {
+        return next(err);
+      }
+
+      req.flash('success', { msg: 'Profile information has been updated.' });
+      return res.redirect('/account');
+    });
+
   } catch (err) {
     if (err.code === 11000) {
       req.flash('errors', { msg: 'The email address you have entered is already associated with an account.' });
