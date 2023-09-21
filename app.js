@@ -170,7 +170,16 @@ app.use('/webfonts', express.static(path.join(__dirname, 'node_modules/@fortawes
 /**
  * Primary app routes.
  */
-app.get('/', homeController.index);
+// app.get('/', homeController.index);
+app.get('/', (req, res, next) => {
+  if (req.isAuthenticated()) {
+    // If the user is authenticated, redirect to the '/courses' page
+    res.redirect('/courses');
+  } else {
+    // If not authenticated, continue to the homeController.index route
+    homeController.index(req, res, next);
+  }
+});
 app.get('/courses', coursesController.index);
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
