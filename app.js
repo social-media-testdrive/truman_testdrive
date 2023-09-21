@@ -14,10 +14,10 @@ const MongoStore = require('connect-mongo');
 const flash = require('express-flash');
 const mongoose = require('mongoose');
 const passport = require('passport');
-const multer = require('multer');
+// const multer = require('multer');
 const rateLimit = require('express-rate-limit');
 
-const upload = multer({ dest: path.join(__dirname, 'uploads') });
+// const upload = multer({ dest: path.join(__dirname, 'uploads') });
 
 // for json file reading
 const fs = require('fs');
