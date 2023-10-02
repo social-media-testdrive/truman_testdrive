@@ -9,9 +9,22 @@ footer {
     /* background-color: red !important; */
 }
 
+.ui-flash .ui.negative.fluid.large.message,
+.ui-flash .ui.warning.fluid.large.message,
+.ui-flash .ui.positive.fluid.large.message {
+    position:relative;
+    font-size: 1.5rem; 
+    margin-top: 50px;
+    /* margin-bottom:-60px;  */
+    z-index:1000;
+    font-weight:bold;
+}
+
 header a.item {
-    font-size: 1.3rem;
+    font-size: 1.3rem !important;
     font-weight: 900 !important;
+    font-family: 'Armata', sans-serif;
+    /* font-size: 1.5rem; */
     /* background-color: yellow !important; */
 }
   

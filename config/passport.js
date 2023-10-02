@@ -67,6 +67,7 @@ passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, don
  *       - Else create a new account.
  */
 
+
 /**
  * Sign in with Google.
  */
@@ -77,13 +78,36 @@ const googleStrategyConfig = new GoogleStrategy({
   passReqToCallback: true
 }, async (req, accessToken, refreshToken, params, profile, done) => {
   try {
-    if (req.user) {
+    console.log("req body" + req.body);
+    console.log(JSON.stringify(req.body, null, 2));
+
+    console.log("******************************");
+    console.log("req user: " + req.user);
+    console.log(JSON.stringify(req.user, null, 2));
+    console.log("******************************");
+    console.log("profile id: " + profile.id);
+    console.log(JSON.stringify(profile, null, 2));
+
+    console.log("******************************");
+    console.log("accessToken: " + accessToken);
+    console.log("******************************");
+    console.log("refreshToken: " + refreshToken);
+    console.log("******************************");
+    console.log("Params: " + params);
+    console.log(JSON.stringify(params, null, 2));
+
+    if (req.user) { 
+      // user is logged in and trying to link account
+      console.log("In herrreee Req user exists!!!!!!!!!!!");
+      console.log("Profile id: ", profile.id);
       const existingUser = await User.findOne({ google: profile.id });
       if (existingUser && (existingUser.id !== req.user.id)) {
         req.flash('errors', { msg: 'There is already a Google account that belongs to you. Sign in with that account or delete it, then link it with your current account.' });
         return done(null, existingUser);
       }
-      const user = await User.findById(req.user.id);
+      const user = await User.findOne({ email: req.user.email});
+      console.log("Faouzia User: ", user);
+      // console.log("Req user id: ", req.user.id);
       user.google = profile.id;
       user.tokens.push({
         kind: 'google',
@@ -91,12 +115,22 @@ const googleStrategyConfig = new GoogleStrategy({
         accessTokenExpires: moment().add(params.expires_in, 'seconds').format(),
         refreshToken,
       });
-      user.profile.name = user.profile.name || profile.displayName;
-      user.profile.gender = user.profile.gender || profile._json.gender;
-      user.profile.picture = user.profile.picture || profile._json.picture;
+      user.name = user.name || profile.name.givenName;
+      // user.profile.gender = user.profile.gender || profile._json.gender;
+      // user.profile.picture = user.profile.picture || profile._json.picture;
       await user.save();
-      req.flash('info', { msg: 'Google account has been linked.' });
-      return done(null, user);
+      // req.flash('info', { msg: 'Google account has been linked.' });
+      // return done(null, user);
+
+      // update user in session then flash message / redirect
+      req.login(user, (err) => {
+        if (err) {
+          return next(err);
+        }
+        req.flash('info', { msg: 'Google account has been linked.' });
+        return done(null, user);
+      });
+
     }
     const existingUser = await User.findOne({ google: profile.id });
     if (existingUser) {
@@ -116,17 +150,108 @@ const googleStrategyConfig = new GoogleStrategy({
       accessTokenExpires: moment().add(params.expires_in, 'seconds').format(),
       refreshToken,
     });
-    user.profile.name = profile.displayName;
-    user.profile.gender = profile._json.gender;
-    user.profile.picture = profile._json.picture;
+    user.name = profile.name.givenName;
+    // user.profile.gender = profile._json.gender;
+    // user.profile.picture = profile._json.picture;
     await user.save();
-    return done(null, user);
+
+    // update user in session then flash message / redirect
+    req.login(user, (err) => {
+      if (err) {
+        return next(err);
+      }
+      return done(null, user);
+    });
+    // return done(null, user);
   } catch (err) {
     return done(err);
   }
 });
 passport.use('google', googleStrategyConfig);
 refresh.use('google', googleStrategyConfig);
+
+// /**
+//  * Sign in with Google.
+//  */
+// const googleStrategyConfig = new GoogleStrategy({
+//   clientID: process.env.GOOGLE_ID,
+//   clientSecret: process.env.GOOGLE_SECRET,
+//   callbackURL: '/auth/google/callback',
+//   passReqToCallback: true
+// }, async (req, accessToken, refreshToken, params, profile, done) => {
+//   // console.log("In googleStrategyConfig******************************")
+//   // console.log('profile:', profile);
+//   // console.log("Req body:", req.body);
+//   try {
+//     console.log("In passport google!!!!!!!!!!!");
+//     console.log("Req user: ", req.user);
+
+//     // user is logged in. stope code from attemptting to create a new user account
+//     if (req.user) {
+//       console.log("JAY Z Req user exists!!!!!!!!!!!");
+//       console.log("Req user id: ", req.user.id);
+//       console.log("Profile id: ", profile.id);
+
+//       const existingUser = await User.findOne({ google: profile.id });
+//       if (existingUser && (existingUser.id !== req.user.id)) {
+//         req.flash('errors', { msg: 'There is already a Google account that belongs to you. Sign in with that account or delete it, then link it with your current account.' });
+//         return done(null, existingUser);
+//       }
+//       const user = await User.findOne({ email: req.body.email });
+
+//       user.google = profile.id;
+//       user.tokens.push({
+//         kind: 'google',
+//         accessToken,
+//         accessTokenExpires: moment().add(params.expires_in, 'seconds').format(),
+//         refreshToken,
+//       });
+
+      
+//       user.name = user.name;
+//       // user.profile.gender = user.profile.gender || profile._json.gender;
+//       // user.profile.picture = user.profile.picture || profile._json.picture;
+//       await user.save();
+//       req.flash('info', { msg: 'Google account has been linked.' });
+//       return done(null, user);
+//     }
+
+//     // returning user logging in
+//     const existingUser = await User.findOne({ google: profile.id });
+//     if (existingUser) {
+//       // console.log("Beyonce in here!!!!!!!!!!!");
+//       console.log("Existing user: ", existingUser);
+//       return done(null, existingUser);
+//     }
+
+//     // email not linked to google account and already associated with account
+//     const existingEmailUser = await User.findOne({ email: req.body.email });
+//     if (existingEmailUser) {
+//       // console.log("Solange existing email user exists!!!!!!!!!!!");
+//       req.flash('errors', { msg: 'There is already an account using this email address. Sign in to that account and link it with Google manually from Account Settings.' });
+//       return done(null, existingEmailUser);
+//     }
+    
+//     const user = new User();
+//     user.email = profile.emails[0].value;
+//     user.google = profile.id;
+//     user.tokens.push({
+//       kind: 'google',
+//       accessToken,
+//       accessTokenExpires: moment().add(params.expires_in, 'seconds').format(),
+//       refreshToken,
+//     });
+//     user.name = profile.name.givenName;
+//     // user.profile.gender = profile._json.gender;
+//     // user.profile.picture = profile._json.picture;
+//     await user.save();
+//     return done(null, user);
+//   } catch (err) {
+//     return done(err);
+//   }
+// });
+// passport.use('google', googleStrategyConfig);
+// refresh.use('google', googleStrategyConfig);
 
 /**
  * Login Required middleware.

@@ -202,6 +202,7 @@ exports.postUpdateProfile = async (req, res, next) => {
     // res.redirect('/account');
 
     // Better approach than manually, use req.login() to update the user in the session
+    // update user in session then flash message / redirect
     req.login(user, (err) => {
       if (err) {
         return next(err);
@@ -225,6 +226,9 @@ exports.postUpdateProfile = async (req, res, next) => {
  * Update current password.
  */
 exports.postUpdatePassword = async (req, res, next) => {
+  // console.log("req.body.password: ", req.body.password);
+  // console.log("req.body.confirmPassword: ", req.body.confirmPassword);
+  // console.log("req.body: ", req.body);
   const validationErrors = [];
   if (!validator.isLength(req.body.password, { min: 8 })) validationErrors.push({ msg: 'Password must be at least 8 characters long' });
   if (validator.escape(req.body.password) !== validator.escape(req.body.confirmPassword)) validationErrors.push({ msg: 'Passwords do not match' });
@@ -233,16 +237,33 @@ exports.postUpdatePassword = async (req, res, next) => {
     req.flash('errors', validationErrors);
     return res.redirect('/account');
   }
+
   try {
-    const user = await User.findById(req.user.id);
+    const user = await User.findOne({ email: req.user.email});
+    
+    if (!user) {
+      // Handle the case where the user doesn't exist
+      req.flash('errors', { msg: 'User not found' });
+      return res.redirect('/account');
+    }
+
     user.password = req.body.password;
     await user.save();
-    req.flash('success', { msg: 'Password has been changed.' });
-    res.redirect('/account');
+
+    // update the user in the session. Then flash message / redirect
+    req.login(user, (err) => {
+      if (err) {
+        return next(err);
+      }
+
+      req.flash('success', { msg: 'Password has been changed.' });
+      res.redirect('/account');
+    });
   } catch (err) {
     next(err);
   }
 };
+
 
 /**
  * POST /account/delete
@@ -250,7 +271,7 @@ exports.postUpdatePassword = async (req, res, next) => {
  */
 exports.postDeleteAccount = async (req, res, next) => {
   try {
-    await User.deleteOne({ _id: req.user.id });
+    await User.deleteOne({ email: req.user.email});
     req.logout((err) => {
       if (err) console.log('Error: Failed to logout.', err);
       req.session.destroy((err) => {
@@ -264,18 +285,62 @@ exports.postDeleteAccount = async (req, res, next) => {
   }
 };
 
+// exports.postDeleteAccount = async (req, res, next) => {
+//   try {
+//     // Find the user by ID and delete it
+//     const deletedUser = await User.findOneAndDelete({ _id: req.user.id });
+
+//     if (!deletedUser) {
+//       // Handle the case where the user is not found
+//       req.flash('errors', { msg: 'User not found' });
+//       return res.redirect('/');
+//     }
+
+//     // Logout the user and destroy the session
+//     req.logout((err) => {
+//       if (err) {
+//         console.error('Error: Failed to logout.', err);
+//         return next(err);
+//       }
+
+//       req.session.destroy((err) => {
+//         if (err) {
+//           console.error('Error: Failed to destroy the session during account deletion.', err);
+//           return next(err);
+//         }
+        
+//         // Set the user to null and redirect to the homepage
+//         req.user = null;
+//         res.redirect('/');
+//       });
+//     });
+//   } catch (err) {
+//     next(err);
+//   }
+// };
+
+
 /**
  * GET /account/unlink/:provider
  * Unlink OAuth provider.
  */
 exports.getOauthUnlink = async (req, res, next) => {
   try {
+    console.log("In getOauthUnlink******************************");
+    // console.log("Request: " + req);
+    // console.log("logged in users email: " + req.user.email);
+
+    // remove the token from the user in the database
     let { provider } = req.params;
     provider = validator.escape(provider);
-    const user = await User.findById(req.user.id);
-    user[provider.toLowerCase()] = undefined;
+    const user = await User.findOne({ email: req.user.email });
+    // console.log("User: " + user);
+    // user[provider.toLowerCase()] = undefined;
     const tokensWithoutProviderToUnlink = user.tokens.filter((token) =>
-      token.kind !== provider.toLowerCase());
+      token.kind.toLowerCase() !== provider.toLowerCase());
+    // console.log("Before: " + user.tokens);
+    // console.log("----tokensWithoutProviderToUnlink: " + tokensWithoutProviderToUnlink)
+
     // Some auth providers do not provide an email address in the user profile.
     // As a result, we need to verify that unlinking the provider is safe by ensuring
     // that another login method exists.
@@ -289,12 +354,31 @@ exports.getOauthUnlink = async (req, res, next) => {
       });
       return res.redirect('/account');
     }
+
+    // now remove the provider from the user in the database
+    if(provider === 'google' && user.google) {
+      // remove the google field from the user document
+      await User.updateOne(
+        { email: req.user.email },
+        { $unset: { google: 1 } }
+      );
+    }
+
     user.tokens = tokensWithoutProviderToUnlink;
     await user.save();
-    req.flash('info', {
-      msg: `${_.startCase(_.toLower(provider))} account has been unlinked.`,
+
+    // update the user in the session. Then flash message / redirect
+    req.login(user, (err) => {
+      if (err) {
+        return next(err);
+      }
+
+      req.flash('info', {
+        msg: `${_.startCase(_.toLower(provider))} account has been unlinked.`,
+      });
+      res.redirect('/account');
     });
-    res.redirect('/account');
+
   } catch (err) {
     next(err);
   }
@@ -687,6 +771,7 @@ exports.postStartTime = async (req, res, next) => {
  * Post time that user closed the page
  */
 exports.postEndTime = async (req, res, next) => {
+    console.log("In user.js POST end time***************************");
     try {
         const { modID, page } = req.body;
         const existingUser = await User.findOne({ username: req.user.username });

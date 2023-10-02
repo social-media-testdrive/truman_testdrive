@@ -1,7 +1,7 @@
 extends ../ui_layout
 
 block content
-  .ui.container
+  .ui.container#profile-page
     br
     br
     .ui.segment.padded
@@ -33,27 +33,15 @@ block content
         //-   img(src=user.gravatar(), class='ui image profile', width='100', height='100')
 
         .ui.field
-          button.ui.primary.button(type='submit')
+          button.ui.primary.huge.button(type='submit')
             i.fas.fa-pencil-alt.fa-sm.iconpadding
             | Update Profile
 
     .ui.segment.padded
-      h3 Linked Accounts
-
-      .ui.fields
-        if user.google
-          .field
-            a.ui.red.button(href='/account/unlink/google') Unlink your Google account
-        else
-          .field
-            a.ui.button(href='/auth/google') Link your Google account
-
-    .ui.segment.padded
-      h3 Badges
-      p display badges
-
-    .ui.segment.padded
-      h3 Change Password
+      if user.password
+        h3 Change Password
+      else 
+        h3 Create Password
 
       form.ui.form(action='/account/password', method='POST')
         //- input(type='hidden', name='_csrf', value=_csrf)
@@ -67,9 +55,39 @@ block content
           input(type='password', name='confirmPassword', id='confirmPassword', autocomplete='new-password', minlength='8', required)
 
         .ui.field
-          button.ui.primary.button(type='submit')
+          button.ui.primary.huge.button(type='submit')
             i.fas.fa-lock.fa-sm.iconpadding
-            | Change Password
+            if user.password
+              | Change Password
+            else
+              | Create Password
+
+    .ui.segment.padded
+      h3 Linked Accounts
+
+      .ui.fields
+        if user.google
+          //- .field
+          //-   a.ui.red.button(href='/account/unlink/google') Unlink your Google account
+          .field
+              a.ui.big.button(href='/account/unlink/google')   
+                  span
+                      img(src='/images/google-logo.png', alt="Google logo")#google-logo
+                      span#google-text Unlink your Google account
+        else
+          //- .field
+          //-   a.ui.button(href='/auth/google') Link your Google account
+          .field
+              a.ui.big.button(href='/auth/google')   
+                  span
+                      img(src='/images/google-logo.png', alt="Google logo")#google-logo
+                      span#google-text Link your Google account
+
+
+    //- .ui.segment.padded
+    //-   h3 Badges
+    //-   p display badges
+
 
     .ui.segment.padded
       h3 Delete Account
@@ -79,7 +97,7 @@ block content
           p You can delete your account, but keep in mind this action is irreversible.
           //- input(type='hidden', name='_csrf', value=_csrf)
 
-          button.ui.red.button(type='submit')
+          button.ui.red.huge.button(type='submit')
             i.fas.fa-trash-alt.fa-sm.iconpadding
             | Delete my account
     br
@@ -87,3 +105,14 @@ block content
 
 block styles 
   link(rel='stylesheet', href='/css/profile.css')
+
+block scripts
+  script.
+    $('.message .close')
+        .on('click', function() {
+            $(this)
+                .closest('.message')
+                .transition('fade')
+            ;
+        })
+    ;

@@ -7,6 +7,12 @@ header {
   z-index: 1000 !important;
 }
 
+/* moved to dart.css */
+/* .right.menu a.item {
+  font-family: 'Armata', sans-serif;
+  font-size: 1.5rem;
+} */
+
 /* override formantic ui margin on the menu to avoid weird gap between header and page-article */
 .ui.menu {
   margin: 0 !important;

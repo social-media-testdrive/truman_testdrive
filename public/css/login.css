@@ -143,3 +143,9 @@ h2 {
     font-size: 1rem;
     width: 100%;
 }
+
+.ui-flash .ui.negative.fluid.large.message,
+.ui-flash .ui.warning.fluid.large.message,
+.ui-flash .ui.positive.fluid.large.message {
+    margin-bottom:-60px; 
+}

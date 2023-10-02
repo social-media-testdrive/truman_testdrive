@@ -7,7 +7,7 @@ block content
     .row#blue-upper
       .ui.container
         if user.name != "Guest"
-          h1.ui.header.center.aligned Welcome back #{user.name} !
+          h1.ui.header.center.aligned Welcome #{user.name} !
         else 
           h1.ui.header.center.aligned Welcome!
         .limit(style="padding-bottom: 40px; text-align: center;")
@@ -22,18 +22,18 @@ block content
 
       //- Alert Hub
       .ui.container
-        .limit.hub-container
-          h2.ui.header#in-progress DART Alert Hub:
-          a.ui(href=`#alert` alt="Begin identity theft module")
-            .ui.raised.segment
-              div#raised-content
-                div.ui.header.hub-alert
-                  i.exclamation.circle.icon
-                  | Rise in Fake Gift Cards
+        //- .limit.hub-container
+        //-   h2.ui.header#in-progress DART Alert Hub:
+        //-   a.ui(href=`#alert` alt="Begin identity theft module")
+        //-     .ui.raised.segment
+        //-       div#raised-content
+        //-         div.ui.header.hub-alert
+        //-           i.exclamation.circle.icon
+        //-           | Rise in Fake Gift Cards
 
-                p.alert-info Gift cards are a fraudster’s favorite payment method. Since 2018, consumers have lost nearly $245 million to gift card scams
-                button.ui.huge.button.right.floated.alert-learn-more 
-                  span Learn More →
+        //-         p.alert-info Gift cards are a fraudster’s favorite payment method. Since 2018, consumers have lost nearly $245 million to gift card scams
+        //-         button.ui.huge.button.right.floated.alert-learn-more 
+        //-           span Learn More →
                   //- i.arrow.right.icon
 
         //- Courses

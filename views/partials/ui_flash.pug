@@ -1,19 +1,19 @@
 if messages.errors
-  .ui.container
-    .ui.negative.fluid.large.message(style="position:relative; margin-top: 50px; margin-bottom:-60px; z-index:1000;font-weight:bold;")
+  .ui.container.ui-flash
+    .ui.negative.fluid.large.message
       i.large.close.icon
       for error in messages.errors
         div
           | &#8226; #{error.msg}
 if messages.info
-  .ui.container
-    .ui.warning.fluid.large.message(style="position:relative; margin-top: 50px; margin-bottom:-60px; z-index:1000;font-weight:bold;")
+  .ui.container.ui-flash
+    .ui.warning.fluid.large.message
       i.large.close.icon
       for info in messages.info
         div= info.msg
 if messages.success
-  .ui.container
-    .ui.positive.fluid.large.message(style="position:relative; margin-top: 50px; margin-bottom:-60px; z-index:1000;font-weight:bold;")
+  .ui.container.ui-flash
+    .ui.positive.fluid.large.message
       i.large.close.icon
       for success in messages.success
         div= success.msg
