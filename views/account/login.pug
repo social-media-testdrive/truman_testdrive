@@ -18,11 +18,18 @@ block content
                     .ui.horizontal.divider
                         | Or
                     .field 
-                        label.input-margin Email:
-                        input(type='email', name='email', id='email', placeholder='Enter Email', autofocus, autocomplete='email', required)
+                        label Email:
+                        input#email(type='email', name='email', placeholder='Enter Email', autofocus, autocomplete='email', required)
                     .field
-                        label.input-margin Password:
-                        input(type='password', name='password', id='password', placeholder='Enter Password', autocomplete='current-password', required)
+                        label Password:
+                        .password-container 
+                            input#password(type='password', name='password', placeholder='Enter Password', autocomplete='current-password', required)
+                            .password-toggle(aria-label="Show password as plain text. Warning: this will display your password on the screen.")
+                                i.icon.large.eye#showPassword
+                                .password-text Show
+
+                    
+                    
                     br
                     a(href='/forgot') 
                         p.small-text Forgot password?
@@ -51,7 +58,7 @@ block content
 
 
 block styles 
-    link(rel='stylesheet', href='/css/login.css')
+    link(rel='stylesheet', href='/css/account-access.css')
 
 block scripts
   script.
@@ -63,3 +70,5 @@ block scripts
             ;
         })
     ;
+  script(src='/js/password-toggle.js')
+

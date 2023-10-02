@@ -86,11 +86,6 @@ h2 {
     font-family: "Armata-Regular", sans-serif;
 } */
 
-.input-margin {
-    margin: 0 0 0;
-}
-
-
 #details {
     margin: 0 0 1em;
 }
@@ -148,4 +143,39 @@ h2 {
 .ui-flash .ui.warning.fluid.large.message,
 .ui-flash .ui.positive.fluid.large.message {
     margin-bottom:-60px; 
+}
+
+.password-toggle {
+    text-align: center;
+}
+
+#signup-form input#password {
+    /* make space for eye toggle button */
+    padding-right: 55px !important; 
+}
+
+.password-container {
+    position: relative;
+}
+
+.password-toggle {
+    color: gray;
+    position: absolute;
+    cursor: pointer;
+    top: 13%;
+    right: 2%;
+}
+
+.password-text {
+    font-weight: bold;
+}
+
+input:focus {
+    box-shadow: 0 0 6px rgb(107, 188, 199) !important;
+}
+
+input#name,
+input#email,
+input#password {
+    margin-top: 5px;
 }

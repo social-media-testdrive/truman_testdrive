@@ -8,20 +8,48 @@ block content
             .ui.stacked.segment
                 h2#welcome Create an account
                 p#details Please enter your details.
-                form.ui.form(method='POST' novalidate)
+                form.ui.form#signup-form(method='POST' novalidate)
                     //- input(type='hidden', name='_csrf', value=_csrf)
                     .field 
-                        label.input-margin Name: 
-                        input(type='text', name='name', id='name', placeholder='Enter Your Name', autofocus, autocomplete='name', required)
+                        label Name: 
+                        input#name(type='text', name='name', placeholder='Enter your name', autofocus, autocomplete='name', required)
                     .field
-                        label.input-margin Email: 
-                        input(type='email', name='email', id='email', placeholder='Email', autofocus, autocomplete='email', required)
-                    .field
-                        label.input-margin Password: 
-                        input(type='password', name='password', id='password', placeholder='Password', autocomplete='new-password', minlength='8', required)
-                    .field
-                        label.input-margin Confirm Password: 
-                        input(type='password', name='confirmPassword', id='confirmPassword', placeholder='Confirm Password', autocomplete='new-password', minlength='8', required)
+                        label Email: 
+                        input#email(type='email', name='email', placeholder='Enter your email', autofocus, autocomplete='email', required)
+                    .field 
+                        label Password:
+                        .password-container 
+                            input#password(type='password', name='password', placeholder='Create a password', autocomplete='new-password', minlength='8', required)
+                            .password-toggle(aria-label="Show password as plain text. Warning: this will display your password on the screen.")
+                                i.icon.large.eye#showPassword
+                                .password-text Show
+
+
+                    //- .field
+                    //-     label.input-margin Password: 
+                    //-     input(type='password', name='password', id='password', placeholder='Password', autocomplete='new-password', minlength='8', required)
+                    //-     .password-toggle
+                    //-       i.icon.eye
+                    //-       span.password-text Show
+
+
+                    //- .field.password-field
+                    //-     label.input-margin Password:
+                    //-     .ui.action.input
+                    //-         input(type='password', name='password', id='password', placeholder='Password', autocomplete='new-password', minlength='8', required)
+                    //-         .password-toggle(style="margin-left: -60px; cursor: pointer; text-align: center; background: none; border: none;")
+                    //-           i.icon.large.eye.slash(aria-label='Toggle Password Visibility')
+                    //-           br
+                    //-           span.password-text(aria-label='Toggle Password Visibility') Show
+
+                    //- .field
+                    //-     label.input-margin Confirm Password: 
+                    //-     input(type='password', name='confirmPassword', id='confirmPassword', placeholder='Confirm Password', autocomplete='new-password', minlength='8', required)
+
+
+
+
+
                     //- p.input-margin Name:
                     //- .ui.fluid.input
                     //-     input(type='text', name='name', id='name', placeholder='Enter Your Name', autofocus, autocomplete='name', required)
@@ -52,69 +80,9 @@ block content
 
 
 block styles 
-    link(rel='stylesheet', href='/css/login.css')
+  //- same styles as login page
+  link(rel='stylesheet', href='/css/account-access.css')
 
 block scripts
-  script.
-    $(document).ready(function() {
-    $('.message .close')
-        .on('click', function() {
-            $(this)
-                .closest('.message')
-                .transition('fade')
-            ;
-        })
-    ;
-      var validationRules = {
-        email: {
-          identifier: 'email',
-          rules: [
-            {
-              type: 'empty',
-              prompt: 'Please enter your e-mail',
-            },
-            {
-              type: 'email',
-              prompt: 'Please enter a valid e-mail',
-            },
-          ],
-        },
-        password: {
-          identifier: 'password',
-          rules: [
-            {
-              type: 'empty',
-              prompt: 'Please enter a password',
-            },
-            {
-              type: 'minLength[8]',
-              prompt: 'Your password must be at least 8 characters',
-            },
-          ],
-        },
-        confirmPassword: {
-          identifier: 'confirmPassword',
-          rules: [
-            {
-              type: 'empty',
-              prompt: 'Please confirm your password',
-            },
-            {
-              type: 'minLength[8]',              
-              prompt: 'Your password must be at least {ruleValue} characters',
-            },
-          ],
-        },
-      };
-
-
-      // Initialize form validation
-      $('.ui.form')
-        .form({
-          fields: validationRules,
-          inline: true,
-          on: 'blur',
-        });
-    })    
-
-    
+  script(src='/js/signup.js')
+  script(src='/js/password-toggle.js')
