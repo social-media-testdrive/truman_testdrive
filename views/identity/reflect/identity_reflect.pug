@@ -17,7 +17,7 @@ block content
             .ui.circular.tiny.image 
               img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
             .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
-              p Great job #{user.profile.name}! 
+              p Great job #{user.name}! 
               p You have completed all the content for Identity theft! Do you feel ready to protect yourself in the real world?
             //-   p It's perfectly fine if you prefer not to answer. Please click 'Next' to continue learning.
           .content.text-message(style="margin-top: 25px;")
@@ -124,7 +124,7 @@ block content
 
 block append footer
   .ui.container
-    +navButtons('identity', 'reflect', '/submod3/learn13/identity', '/certificate/identity', 100, 'Back', 'Complete Reflection')  
+    +navButtons('identity', 'reflect', '/learn/submod3/13/identity', '/certificate/identity', 100, 'Back', 'Complete Reflection')  
 
 
 block scripts

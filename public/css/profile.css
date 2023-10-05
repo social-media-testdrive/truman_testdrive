@@ -1,0 +1,43 @@
+/* Override Semantic UI CSS */
+#profile-page .ui.form .field input:not(:placeholder-shown):invalid {
+    /* color: initial;  */
+    /* background: initial;  */
+    /* border-color: initial;  */
+    /* border-radius: initial;  */
+    /* box-shadow: initial;  */
+    border: 1px solid rgba(34,36,38,.15);
+    border-radius: .28571429rem; 
+    box-shadow: 0 0 0 0 transparent inset;
+    background: #fff;
+    color: rgba(0,0,0,.87);
+}
+
+#profile-page .ui.form .field input:not(:placeholder-shown):invalid:focus {
+    border-color: #85B7D9; /* You can use your preferred shade of blue here */
+}
+
+#profile-page #google-logo {
+    width:25px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+#profile-page h3 {
+    font-size: 2rem;
+    font-family: 'Armata', sans-serif;
+}
+
+#profile-page .ui.segment.padded, 
+#profile-page label, 
+#profile-page p, 
+#profile-page span, 
+#profile-page div {
+    font-size: 1.5rem !important;
+    font-family: 'Armata', sans-serif;
+}
+
+.ui-flash .ui.negative.fluid.large.message,
+.ui-flash .ui.warning.fluid.large.message,
+.ui-flash .ui.positive.fluid.large.message {
+    margin-bottom:-30px; 
+}

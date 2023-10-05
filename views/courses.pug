@@ -1,0 +1,206 @@
+extends ui_layout
+block content
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  -var path = isResearchVersion ? 'intro' : 'guest';
+
+  .ui.grid
+    .row#blue-upper
+      .ui.container
+        if user.name != "Guest"
+          h1.ui.header.center.aligned Welcome #{user.name} !
+        else 
+          h1.ui.header.center.aligned Welcome!
+        .limit(style="padding-bottom: 40px; text-align: center;")
+          p#about What would you like to learn today?
+          button.ui.inverted.button(style="margin-right: 20px;")
+            | Courses in Progress
+          button.ui.inverted.button
+            | New Courses
+
+
+    .row#white-lower
+
+      //- Alert Hub
+      .ui.container
+        //- .limit.hub-container
+        //-   h2.ui.header#in-progress DART Alert Hub:
+        //-   a.ui(href=`#alert` alt="Begin identity theft module")
+        //-     .ui.raised.segment
+        //-       div#raised-content
+        //-         div.ui.header.hub-alert
+        //-           i.exclamation.circle.icon
+        //-           | Rise in Fake Gift Cards
+
+        //-         p.alert-info Gift cards are a fraudster’s favorite payment method. Since 2018, consumers have lost nearly $245 million to gift card scams
+        //-         button.ui.huge.button.right.floated.alert-learn-more 
+        //-           span Learn More →
+                  //- i.arrow.right.icon
+
+        //- Courses
+        .limit
+          h2.ui.header#in-progress Courses:
+          a.ui#theft-link(href=user.moduleProgress.identity.link alt="Begin identity theft module")
+            .ui.raised.segment
+              .ui.fluid.container(style="height: 200px;")
+                .ui.image.banner
+                  img(src="/images/identity-theft-banner.jpg", alt="Identity Theft Banner Image")
+
+                  #theft-progress.ui.bottom.small.progress(style='margin:0;padding:0;' data-percent=user.moduleProgress.identity.percent)
+                    .bar(style='border-radius: 0 !important;')
+                      .progress
+              #raised-content(style="padding-top: 20px;")
+                h3.ui.header.large.home-mod-title
+                  | Identity Theft
+                p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+                button.ui.huge.blue.button.right.floated#nextButton
+                  | Learn Now
+                  i.arrow.right.icon
+
+
+          br
+          br
+          //- a.ui(href=`/intro/temp` alt="Testing features")
+          //-   .ui.raised.segment
+          //-     .ui.fluid.container
+          //-       .ui.image.banner
+          //-         //- img(src="/images/identity-theft-banner.jpg", alt="Identity Theft Banner Image")
+
+          //-         //- #theft-progress.ui.bottom.attatched.small.progress(style='margin:0;padding:0;' data-percent='33')
+          //-         //-   .bar(style='border-radius: 0 !important;')
+          //-         //-     .progress
+          //-     #raised-content
+          //-       h3.ui.header.large.home-mod-title
+          //-         | Feature Testing
+          //-       p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+          //-       button.ui.huge.blue.button.right.floated#nextButton
+          //-         | See Features
+          //-         i.arrow.right.icon
+
+        .ui.basic.segment(style="text-align: center; margin-top: -15px;")
+          button.ui.center.aligned.huge.basic.button#reset-progress(onclick="resetIdentityProgress()") Reset Identity Theft Progress
+  script.
+    var progress = #{user.moduleProgress.identity.percent}
+  script(src='/js/setProgressBar.js')  
+
+
+block styles
+  link(rel='stylesheet', href='/css/mods.css')
+
+block scripts  
+  //- Temporary reset function for testing purposes
+  script. 
+    $('.message .close')
+        .on('click', function() {
+            $(this)
+                .closest('.message')
+                .transition('fade')
+            ;
+        })
+    ;
+    function resetIdentityProgress() {
+      let subdirectory2 = "identity"; 
+      let percent_to_post = 0;
+      let link_to_post = "/intro/identity";
+
+      //- reset module progress in database
+      fetch('/postModuleProgress', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      //data to be sent in the request body
+      body: JSON.stringify({
+          "modID": subdirectory2, // current module ID so we can update the right module in the database
+          "percent": percent_to_post, // percent of the module completed
+          "link": link_to_post, // link to the current page
+      })
+      })
+      .then(response => {
+      if (response.ok) {
+          // Request was successful
+          console.log('Module progress reset successfully!');
+          //- reload the page
+          location.reload();
+      } else {
+          // Handle error response
+          console.error('Failed to reset module progress');
+      }
+      })
+      .catch(error => {
+      // Handle network or fetch error
+      console.error(error);
+      });
+
+
+    }
+
+
+
+    //- const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+    //- //- const userId = 'jct324@lehigh.edu'; // Replace with the actual user ID
+    //- const moduleId = 'identity'; // Replace with the actual module ID
+
+    //- fetch(`/moduleprogress/${moduleId}`, {
+    //-   method: 'GET',
+    //-   headers: {
+    //-     'Content-Type': 'application/json',
+    //-     'X-CSRF-Token': csrfToken
+    //-   }
+    //- })
+    //- .then(response => {
+    //-   if (response.ok) {
+    //-     // Request was successful
+    //-     return response.json();
+    //-   } else {
+    //-     // Handle error response
+    //-     throw new Error('Failed to retrieve module progress');
+    //-   }
+    //- })
+    //- .then(data => {
+    //-   // Handle the retrieved module progress data
+    //-   const moduleProgressData = data;
+
+    //-   // Access the module progress data
+    //-   let progress = moduleProgressData.percent;
+    //-   let link = moduleProgressData.link;
+
+    //-   console.log("DB PROG");
+    //-   console.log(progress);
+    //-   console.log("DB Link");
+    //-   console.log(link);
+    //-   //- if (link == "" || link == "none") {
+    //-   //-   link = "/intro/identity";
+    //-   //- }
+
+    //-   //- // update the indentity theft link
+    //-   //- const identity_link = document.getElementById('theft-link');
+    //-   //- identity_link.setAttribute('href', link);
+
+    //-   //- // update the indentity theft progress bar
+    //-   //- const progressBar = document.getElementById('theft-progress');
+    //-   //- if (progressBar) {
+    //-   //-   progressBar.setAttribute('data-percent', progress);
+    //-   //-   progressBar.querySelector('.bar').style.width = progress + "%";
+    //-   //-   if(progress > 0 && progress < 100){
+    //-   //-     progressBar.querySelector('.bar').style.backgroundColor = '#6BBCC7';
+    //-   //-   } else if(progress == 100) {
+    //-   //-     progressBar.querySelector('.bar').style.backgroundColor = 'blue';
+    //-   //-   }
+    //-   //-   progressBar.querySelector('.progress').textContent = progress + "%";
+    //-   //- } else {
+    //-   //-   console.error('Could not find progress bar element');
+    //-   //- }
+
+
+
+    //-   //- console.log(`Module progress for ${moduleId}:`);
+    //-   //- console.log(`Percent: ${progress}`);
+    //-   //- console.log(`Link: ${link}`);
+    //- })
+    //- .catch(error => {
+    //-   // Handle network or fetch error
+    //-   console.error(error);
+    //- });
+
+            

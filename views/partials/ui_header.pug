@@ -13,11 +13,11 @@ header.ui.borderless.menu.tablet-and-computer
                     | Log out
         else 
             .right.menu
-                a.item(href='/studentLogin').dart-blue
+                a.item(href='/getGuest').dart-blue
                     | Courses
-                a.item(href='/studentLogin').dart-blue
+                a.item(href='/login').dart-blue
                     | Log in
-                a.item(href='/createStudent').dart-blue
+                a.item(href='/signup').dart-blue
                     | Sign up
 header.mobile-only(style="z-index: auto !important;")
   .ui.fluid.top.two.item.menu
@@ -28,16 +28,16 @@ header.mobile-only(style="z-index: auto !important;")
             if user
                 .ui.simple.dropdown.item
                     if isResearchVersion
-                        span= user.username || user.profile.name || user.id
+                        span= user.name || user.id
                     else 
-                        span= user.profile.name || user.username || user.id
+                        span= user.name || user.id
                     i.dropdown.icon
                     .menu
                         a.item(href='/') Home
                         a.item(href='/account') Profile
-                        a.item(href='logout') Log out
+                        a.item(href='/logout') Log out
             else 
-                a.item(href='/studentLogin').dart-blue
+                a.item(href='/login').dart-blue
                     | Log in
 
 //- .ui.top.small.borderless.menu(style="height: 4rem")

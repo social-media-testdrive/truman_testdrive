@@ -17,7 +17,7 @@ block content
             .ui.circular.tiny.image 
               img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
             .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
-              p Excellent work, #{user.profile.name}! You've finished the first section! May I ask you a question? Have you ever encountered a scam before?
+              p Excellent work, #{user.name}! You've finished the first section! May I ask you a question? Have you ever encountered a scam before?
           .content.text-message(style="margin-top: 25px;")
             .ui.circular.tiny.image 
               img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
@@ -120,7 +120,7 @@ block content
 
 block append footer
   .ui.container
-    +navButtons('identity', 'sub_learn7', '/submod/learn6/identity', '/submod/learn8/identity', 24, 'Back', 'Complete Section 1')  
+    +navButtons('identity', 'sub_learn7', '/learn/submod/6/identity', '/learn/submod/8/identity', 24, 'Back', 'Complete Section 1')  
 
 
 block scripts

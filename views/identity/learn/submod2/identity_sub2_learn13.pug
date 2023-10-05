@@ -6,7 +6,7 @@ block content
     .limit
       .ui.large.pointing.below.label#speechBubble(style="float: none; width: 100%;")
           p#speechText(style="font-size: 1.5rem; text-align: left") 
-              strong Great job, #{user.profile.name}! 
+              strong Great job, #{user.name}! 
               br
               | You have learned how to recognize the techniques that scammers usually use! Do you feel more confident now in dealing with the outside world? 
               br
@@ -21,7 +21,7 @@ block content
 
 block append footer
   .ui.container
-    +navButtons('identity', 'sub2_learn13', '/submod2/learn12/identity', '/submod2/learn14/identity', 52)  
+    +navButtons('identity', 'sub2_learn13', '/learn/submod2/12/identity', '/learn/submod2/14/identity', 52)  
 
 block scripts
   script(src='/js/character.js')

@@ -1,283 +1,134 @@
 extends ../ui_layout
 
 block content
-  -var user_post = []
-  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
-  .ui.container#raised-container
-    .ui(style="margin-top: 85px;")
-      .twelve.wide.computer.fourteen.wide.tablet.sixteen.wide.mobile.column.centered( style="margin-bottom:5%")
-        .ui.one.column.centered.grid.feedbackMessagesGrid
-        .ui.fluid.card.dim(style = "margin-top:0px;margin-bottom:0px;")
-          .profile_title(style='position: relative; top: 0; left: 0;')
-          div(style="position: relative; display: inline-block;")
+  .ui.container#profile-page
+    br
+    br
+    .ui.segment.padded
+      h3 Profile Information
 
-          .example(style=' width:100%;padding-left: 25px; margin-top: 0%;z-index: 1')
-              .example-layout(style="margin:20px; margin-top:30px")
-                
-                .row
-                  .col-1 
-                    div(style=' position: relative; display: flex; flex-direction: column; align-items: flex-start;')
-                      span.br(style='margin:3px; font-size: 23px;')= user.profile.name
-                      span.br(style='margin:3px; font-size: 23px;')= "Learning since "+user.createdAt.split('T')[0]
-                      div(style='margin:3px; display: flex; justify-content: flex-start; align-items: center; margin-top:10px')
-                        button.btn(style='padding: 6px; border: 1px solid #2884d4; border-radius: 50px; white-space: nowrap;') 1 module completed
-                        button.btn(style='margin-left:5px; padding: 6px; border: 1px solid #2884d4; border-radius: 50px; white-space: nowrap;') top learner
-                  .col-2 
-                    img.editProfilePictureButton(style='cursor:pointer; \
-      border-radius: 50%; width:100px; height 100px; z-index: 2;\
-      top: 50%;\
-      left: 3%;\
-      border: 2px white solid;padding: -1px;padding: 5px white solid;z-index: 1;background-color: white;' src="/profile_pictures/avatar-icon.svg")
-                  .col-3 
-                    img(onclick="window.location.href='/edit_profile'" style="margin-right:10%;float: right;cursor:pointer; width:50px; height 50px;" src="/profile_pictures/Gear-icon.png")
-                  
-          div(style=' padding-left: 25px; position: relative; display: flex; flex-direction: column; align-items: flex-start;')
-            span#progressDisplay(style="margin:3px; margin-top:-20px; margin-bottom:15px; font-size: 25px; font-weight: bold;") 
+      form.ui.form(action='/account/profile', method='POST')
+        //- input(type='hidden', name='_csrf', value=_csrf)
+        .field
+          label Email
+          input(type='email', name='email', id='email', value=user.email, autocomplete='email', required)
+          if user.emailVerified
+            .ui.success.message
+              | Verified
+          else
+            .ui.error.message
+              | Unverified: &nbsp;
+              a(href='/account/verify') Send verification email
 
-          br
-          br
-          .ui.container
-            .limit(style="padding-bottom: 40px;")
-              h2.ui.header#in-progress Courses:
-              a.ui#theft-link(href=`/intro/identity` alt="Begin identity theft module")
-                .ui.raised.segment
-                  .ui.fluid.container(style="height: 200px;")
-                    .ui.image.banner
-                      img(src="/images/identity-theft-banner.jpg", alt="Identity Theft Banner Image")
+        .field
+          label Name
+          input(type='text', name='name', id='name', value=user.name, autocomplete='name')
 
-                      #theft-progress.ui.bottom.attached.small.progress(style='margin:0;padding:0;' data-percent='33')
-                        .bar(style='border-radius: 0 !important;')
-                          .progress
-                  #raised-content(style="padding-top: 20px;")
-                    h3.ui.header.large#mod-title
-                      | Identity Theft
-                    p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
-                    button.ui.huge.blue.button.right.floated#nextButton
-                      | Learn Now
-                      i.arrow.right.icon
-      
-          //- div.ui.special.cards(style="margin-top:20px;width:100%;  margin-bottom:20px;")
-            
-          //-   div.card(style="  box-shadow: 0px 0px 0px rgba(0,0,0,0.5);margin-left: 5%; margin-top: 2%; width: 90%; position: relative; border: solid #d3d3d3; 1px;  border-top: none;  border-top-left-radius: 0px; border-top-right-radius: 0px")
+        //- .field
+        //-   label Location
+        //-   input(type='text', name='location', id='location', value=user.profile.location, autocomplete='location')
 
-          //-     img-crop(style="width:100%; height:250px;overflow: hidden;border-radius:0px !important ;")
-          //-       img( style="width:100%; height:auto; margin-top: -120px;" src="/profile_pictures/backgournd_img.png")
-          //-     div.content
-                
-          //-       a.header(style="font-family:'Noto Sans', sans-serif; font-size:25px") Identity Theft
-          //-       div.meta
-          //-         span(style="font-family:'Noto Sans', sans-serif; font-size:20px") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
-          //-       .div(style="display: flex; float:right")
-          //-         a.ui.button.big.white(href="/identity_home", style=" font-family:'Noto Sans', sans-serif; height:46.28px; border-radius: 17px; margin: 0px 0 0 0; padding:14.1429px !important; display: block; width: 250px; background-color: #fff; border: 1px solid #2884d4; text-align: center; margin-right:10px;")  
-          //-           span
-          //-             span( style="vertical-align: middle;") Share Certificate 
-          //-             img(src='/profile_pictures/award.png', alt="Google logo", style="height:20px; vertical-align: middle; margin-right: 10px;")
-          //-         button.ui.big.blue.button(onclick="window.location.href='/identity_home'" style="font-family:'Noto Sans', sans-serif; height:46.28px; border-radius: 17px; width: 200px; margin: 0px 0 0 0; ") Learn Again → 
-                  
+        //- .field
+        //-   label Gravatar
+        //-   img(src=user.gravatar(), class='ui image profile', width='100', height='100')
 
-                
-          //-     div#progressBar(style="border-top-left-radius: 5px !important;  border-bottom-left-radius: 0px !important; border-bottom-right-radius: 0px !important;margin-top:-8px; border-top: 8px solid #2884d4; width: 85%; position: absolute; left: 0;")
+        .ui.field
+          button.ui.primary.huge.button(type='submit')
+            | Update Profile
 
-            
-          span.br(style="margin:30px; font-size: 25px; font-weight: bold;") My Badges:
+    .ui.segment.padded
+      if user.password
+        h3 Change Password
+      else 
+        h3 Create Password
 
-          .ui.stackable.grid#badgesGrid
-            .four.column.row
-              .column 
-                .content
-                  img(src='/badges/identity/mystery_badge.png')
-                  //- p Challenge
-                  //-   br
-                  //-   | Conqueror
-                  p 
-                  i.big.icon.lock
-              .column
-                .content
-                  img(src='/badges/identity/mystery_badge2.png')
-                  //- p Foundations 
-                  //-   br
-                  //-   | Achiever
-                  p 
-                  i.big.icon.lock
-              .column
-                .content
-                  img(src='/badges/identity/mystery_badge2.png')
-                  //- p Progress 
-                  //-   br
-                  //-   | Master
-                  p 
-                  i.big.icon.lock
-              .column
-                .content
-                  img(src='/badges/identity/mystery_badge2.png')
-                  //- p Champion of
-                  //-   br
-                  //-   | Completion
-                  p 
-                  i.big.icon.lock
-            .four.column.centered.row
-              .column
-              .column 
-                .content
-                  img(src='/badges/identity/mystery_badge3.png')
-                  //- p Intrepid
-                  //-   br
-                  //-   | Investigator
-                  p 
-                  i.big.icon.lock
-              .column
-                .content
-                  img(src='/badges/identity/mystery_badge4.png')
-                  //- p Adventure
-                  //-   br
-                  //-   | Achiever
-                  p 
-                  i.big.icon.lock
-              .column
-              
-      //- Profile Picture Selection Modal 
-      .ui.small.long.post.modal.profilePictureModal 
-        i.close.icon  
-        .header Choose a Profile Picture 
-        .content  
-          form.ui.profilePicForm.form 
-            .ui.segment
-                .two.fields
-                  .field
-                    .ui.radio.checkbox
-                      input.hidden(type='radio' name='profilepicinput' value="Daring_PT_Determined.png")
-                      label
-                          img.lazy(src='/images/picture.svg' data-src="/profile_pictures/Daring_PT_Determined.png")
-                  .field
-                    .ui.radio.checkbox
-                      input.hidden(type='radio' name='profilepicinput' value="Dartie_Happy_3.png")
-                      label
-                          img.lazy(src='/images/picture.svg' data-src="/profile_pictures/Dartie_Happy_3.png")
-                .two.fields
-                  .field
-                    .ui.radio.checkbox
-                      input.hidden(type='radio' name='profilepicinput' value="Intrepid_PT_Determined.png")
-                      label
-                          img.lazy(src='/images/picture.svg' data-src="/profile_pictures/Intrepid_PT_Determined.png")
-                  .field
-                    .ui.radio.checkbox
-                      input.hidden(type='radio' name='profilepicinput' value="Valiant_PT_Determined.png")
-                      label
-                          img.lazy(src='/images/picture.svg' data-src="/profile_pictures/Valiant_PT_Determined.png")
-          
-                
-            .ui.error.message#noPhotoError 
-              | Please select a photo
-        .actions  
-          .ui.green.approve.button.labeled.icon
-            i.check.icon
-            |  Upload
-          .ui.red.deny.button.labeled.icon
-            i.close.icon
-            |  Cancel
+      form.ui.form(action='/account/password', method='POST')
+        //- input(type='hidden', name='_csrf', value=_csrf)
+
+        .field
+          label New Password
+          input(type='password', name='password', id='password', autocomplete='new-password', minlength='8', required)
+
+        .field
+          label Confirm Password
+          input(type='password', name='confirmPassword', id='confirmPassword', autocomplete='new-password', minlength='8', required)
+
+        .ui.field
+          button.ui.primary.huge.button(type='submit')
+            if user.password
+              | Change Password
+            else
+              | Create Password
+
+    .ui.segment.padded
+      h3 Newsletter
+      form.ui.form(action='/account/newsletter', method='POST')
+        //- input(type='hidden', name='_csrf', value=_csrf)
+
+        //- Hidden field to capture the opposite value of the current newsletterConsent state
+        if user.newsletterConsent
+            input(type='hidden', name='newsletterConsent', value='false')
+        else 
+            input(type='hidden', name='newsletterConsent', value='true')
+
+        .ui.field
+          button.ui.primary.huge.button(type='submit')
+            if user.newsletterConsent
+              | Unsubscribe to Newsletter
+            else 
+              | Subscribe to Newsletter
+
+    .ui.segment.padded
+      h3 Linked Accounts
+
+      .ui.fields
+        if user.google
+          //- .field
+          //-   a.ui.red.button(href='/account/unlink/google') Unlink your Google account
+          .field
+              a.ui.big.button(href='/account/unlink/google')   
+                  span
+                      img(src='/images/google-logo.png', alt="Google logo")#google-logo
+                      span#google-text Unlink your Google account
+        else
+          //- .field
+          //-   a.ui.button(href='/auth/google') Link your Google account
+          .field
+              a.ui.big.button(href='/auth/google')   
+                  span
+                      img(src='/images/google-logo.png', alt="Google logo")#google-logo
+                      span#google-text Link your Google account
+
+
+    //- .ui.segment.padded
+    //-   h3 Badges
+    //-   p display badges
+
+
+    .ui.segment.padded
+      h3 Delete Account
+
+      form.ui.form(action='/account/delete', method='POST', onsubmit="return confirm('Are you sure you want to delete your account?');")
+        .field
+          p You can delete your account, but keep in mind this action is irreversible.
+          //- input(type='hidden', name='_csrf', value=_csrf)
+
+          button.ui.red.huge.button(type='submit')
+            i.fas.fa-trash-alt.fa-sm.iconpadding
+            | Delete my account
+    br
+    br
+
+block styles 
+  link(rel='stylesheet', href='/css/profile.css')
 
 block scripts
   script.
-    let theftPath = localStorage.getItem('theft-path');
-    //- console.log("theftPath is: " + theftPath);
-    if (theftPath === null) {
-    } else {
-      //- console.log("change link");
-      const link = document.getElementById('theft-link');
-      link.setAttribute('href', theftPath);
-    }
-
-    // Check if the "progress" variable has been assigned a value yet
-    let progress = localStorage.getItem('progress');
-    if (progress === null) {
-      // If the variable has not been assigned yet, set it to 0
-      progress = 0;
-      localStorage.setItem('progress', progress);
-    } else {
-      // If the variable has been assigned, parse the value from local storage
-      progress = parseInt(progress);
-    }
-    //- console.log("Progress is: " + progress);
-
-    const progressBar = document.getElementById('theft-progress');
-    if (progressBar) {
-      progressBar.setAttribute('data-percent', progress);
-      progressBar.querySelector('.bar').style.width = progress + "%";
-      if(progress > 0 && progress < 100){
-        progressBar.querySelector('.bar').style.backgroundColor = '#6BBCC7';
-      } else if(progress == 100) {
-        progressBar.querySelector('.bar').style.backgroundColor = 'blue';
-      }
-      progressBar.querySelector('.progress').textContent = progress + "%";
-    } else {
-      console.error('Could not find progress bar element');
-    }
-        
-            
-    (function() {
-      // Check if the "progress" variable has been assigned a value yet
-      let progress = localStorage.getItem('progress');
-      if (progress === null) {
-        // If the variable has not been assigned yet, set it to 0
-        progress = 0;
-        localStorage.setItem('progress', progress);
-      } else {
-        // If the variable has been assigned, parse the value from local storage
-        progress = parseInt(progress);
-      }
-      //- console.log("Progress is: " + progress);
-
-      const updateProgressDisplay = () => {
-        const progressSpan = document.getElementById('progressDisplay');
-      
-        if (progress === 0) {
-          progressSpan.innerText = "Start Learning Now:";
-        } else if (progress === 100) {
-          progressSpan.innerText = "My Courses: (Completed)";
-        } else {
-          progressSpan.innerText = `My Courses: (${progress}%)`;
-        }
-
-        const progressBar = document.getElementById('progressBar');
-        progressBar.style.width = `${progress}%`;
-    };
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', updateProgressDisplay);
-    } else {
-      updateProgressDisplay();
-    }
-    })();
-
-        
-            
-    const cdn = "https://dhpd030vnpk29.cloudfront.net"
-    $('.editProfilePictureButton').on('click', function(){
-      $('.profilePictureModal').modal({
-        onApprove: function() {
-          let imageName = $('input[name="profilepicinput"]:checked').val();
-          //- console.log(imageName);
-          if(imageName !== undefined){
-            $('#noPhotoError').hide();
-            let srcString = cdn + '/profile_pictures/' + imageName;
-            $('.profileImage').attr('src', srcString);
-            $('input[name="profilePhoto"]').val(imageName);
-            return true;
-          } else {
-            $('#noPhotoError').show();
-            return false;
-          }
-        },
-        onDeny: function(){
-          return true;
-        }
-      }).modal('show');
-    });
-      
-    $('input:radio[name="profilepicinput"]').change(function(){
-      $('#noPhotoError').hide();
-    });
-
-block styles
-  link(rel='stylesheet', href='/css/profile.css')  
-  link(rel='stylesheet', href='/css/login.css')  
+    $('.message .close')
+        .on('click', function() {
+            $(this)
+                .closest('.message')
+                .transition('fade')
+            ;
+        })
+    ;
