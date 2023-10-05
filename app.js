@@ -15,7 +15,6 @@ const flash = require('express-flash');
 const mongoose = require('mongoose');
 const passport = require('passport');
 // const multer = require('multer');
-const rateLimit = require('express-rate-limit');
 
 // const upload = multer({ dest: path.join(__dirname, 'uploads') });
 
@@ -48,14 +47,6 @@ passport.deserializeUser(function(user, done) {
  * Set config values
  */
 const secureTransfer = (process.env.BASE_URL.startsWith('https'));
-
-// Consider adding a proxy such as cloudflare for production.
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
-  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
-  legacyHeaders: false, // Disable the `X-RateLimit-*` headers
-});
 
 // This logic for numberOfProxies works for local testing, ngrok use, single host deployments
 // behind cloudflare, etc. You may need to change it for more complex network settings.
@@ -106,11 +97,11 @@ app.set('port', process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 app.set('trust proxy', numberOfProxies);
+app.use(flash());
 app.use(compression());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(limiter);
 app.use(session({
   resave: true,
   saveUninitialized: true,
@@ -124,7 +115,6 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash());
 // app.use((req, res, next) => {
 //   if (req.path === '/api/upload') {
 //     // Multer multipart/form-data handling needs to occur before the Lusca CSRF check.
@@ -197,6 +187,7 @@ app.get('/account/verify/:token', passportConfig.isAuthenticated, userController
 app.get('/account', passportConfig.isAuthenticated, userController.getAccount);
 app.post('/account/profile', passportConfig.isAuthenticated, userController.postUpdateProfile);
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
+app.post('/account/newsletter', passportConfig.isAuthenticated, userController.postUpdateNewsletter);
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
 

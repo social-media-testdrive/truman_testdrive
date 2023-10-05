@@ -1,4 +1,10 @@
 $(document).ready(function() {
+  $(document).ready(function() {
+    $('.icon.info.circle.link').popup({
+        hoverable: true
+    });
+  });
+
   $('.message .close')
       .on('click', function() {
           $(this)

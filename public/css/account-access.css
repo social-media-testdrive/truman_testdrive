@@ -179,3 +179,23 @@ input#email,
 input#password {
     margin-top: 5px;
 }
+
+#signup-form .field {
+    position: relative;
+}
+
+.help-container {
+    position: absolute; 
+    left: -10%; 
+    margin-top:-3px;
+}
+
+i.icon.large.info.circle.blue.link {
+    background: white !important;
+}
+
+#subscribe-label {
+    font-size:1.25rem !important;
+    color: black;
+    font-weight: bold;
+}

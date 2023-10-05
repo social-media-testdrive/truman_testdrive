@@ -121,6 +121,7 @@ exports.getSignup = (req, res) => {
  * Create a new local account.
  */
 exports.postSignup = async (req, res, next) => {
+  console.log("Req body: " + JSON.stringify(req.body));
   const validationErrors = [];
   if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' });
   if (!validator.isLength(req.body.password, { min: 8 })) validationErrors.push({ msg: 'Password must be at least 8 characters long' });
@@ -136,10 +137,20 @@ exports.postSignup = async (req, res, next) => {
       req.flash('errors', { msg: 'Account with that email address already exists.' });
       return res.redirect('/signup');
     }
+
+    // convert checkbox to boolean
+    let tempConsent;
+    if(req.body.newsletterConsent === 'on') {
+      tempConsent = true;
+    } else {
+      tempConsent = false;
+    }
+
     const user = new User({
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        newsletterConsent: tempConsent
     });
     await user.save();
     req.logIn(user, (err) => {
@@ -217,6 +228,37 @@ exports.postUpdateProfile = async (req, res, next) => {
       req.flash('errors', { msg: 'The email address you have entered is already associated with an account.' });
       return res.redirect('/account');
     }
+    next(err);
+  }
+};
+
+/**
+ * POST /account/newsletter
+ * Update current newsletter consent value.
+ */
+exports.postUpdateNewsletter = async (req, res, next) => {
+  try {
+    const user = await User.findOne({ email: req.user.email});
+    
+    if (!user) {
+      // Handle the case where the user doesn't exist
+      req.flash('errors', { msg: 'User not found' });
+      return res.redirect('/account');
+    }
+
+    user.newsletterConsent = req.body.newsletterConsent;
+    await user.save();
+
+    // update the user in the session. Then flash message / redirect
+    req.login(user, (err) => {
+      if (err) {
+        return next(err);
+      }
+
+      req.flash('success', { msg: 'Newsletter subscription has been changed.' });
+      res.redirect('/account');
+    });
+  } catch (err) {
     next(err);
   }
 };

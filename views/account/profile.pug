@@ -34,7 +34,6 @@ block content
 
         .ui.field
           button.ui.primary.huge.button(type='submit')
-            i.fas.fa-pencil-alt.fa-sm.iconpadding
             | Update Profile
 
     .ui.segment.padded
@@ -56,11 +55,28 @@ block content
 
         .ui.field
           button.ui.primary.huge.button(type='submit')
-            i.fas.fa-lock.fa-sm.iconpadding
             if user.password
               | Change Password
             else
               | Create Password
+
+    .ui.segment.padded
+      h3 Newsletter
+      form.ui.form(action='/account/newsletter', method='POST')
+        //- input(type='hidden', name='_csrf', value=_csrf)
+
+        //- Hidden field to capture the opposite value of the current newsletterConsent state
+        if user.newsletterConsent
+            input(type='hidden', name='newsletterConsent', value='false')
+        else 
+            input(type='hidden', name='newsletterConsent', value='true')
+
+        .ui.field
+          button.ui.primary.huge.button(type='submit')
+            if user.newsletterConsent
+              | Unsubscribe to Newsletter
+            else 
+              | Subscribe to Newsletter
 
     .ui.segment.padded
       h3 Linked Accounts

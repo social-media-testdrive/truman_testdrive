@@ -10,7 +10,8 @@ const userSchema = new mongoose.Schema({
   passwordResetToken: String,
   passwordResetExpires: Date,
   emailVerificationToken: String,
-  emailVerified: Boolean,
+  emailVerified: { type: Boolean, default: false },
+  newsletterConsent: { type: Boolean, default: false },
 
   // snapchat: String,
   // facebook: String,

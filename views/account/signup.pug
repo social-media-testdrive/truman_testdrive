@@ -10,70 +10,43 @@ block content
                 p#details Please enter your details.
                 form.ui.form#signup-form(method='POST' novalidate)
                     //- input(type='hidden', name='_csrf', value=_csrf)
-                    .field 
+                    .field
+                        .help-container
+                            i.icon.large.info.circle.blue.link(data-content="Your name lets us create a profile for you and personalize your experience on our platform." data-position="left center")
                         label Name: 
                         input#name(type='text', name='name', placeholder='Enter your name', autofocus, autocomplete='name', required)
                     .field
+                        .help-container
+                            i.icon.large.info.circle.blue.link(data-content="Your email will be used for communication, password recovery, and platform notifications." data-position="left center")
                         label Email: 
-                        input#email(type='email', name='email', placeholder='Enter your email', autofocus, autocomplete='email', required)
+                        input#email(type='email', name='email', placeholder='Enter your email', autocomplete='email', required)
                     .field 
+                        .help-container
+                            i.icon.large.info.circle.blue.link(data-content="Create a password with a minimum of 8 characters. Consider including uppercase, lowercase, numbers, and special symbols for added security." data-position="left center")
                         label Password:
                         .password-container 
                             input#password(type='password', name='password', placeholder='Create a password', autocomplete='new-password', minlength='8', required)
                             .password-toggle(aria-label="Show password as plain text. Warning: this will display your password on the screen.")
                                 i.icon.large.eye#showPassword
                                 .password-text Show
+                    .field(style="margin-top: 20px; margin-bottom: 30px;")
+                        .help-container
+                            i.icon.large.info.circle.blue.link(data-content="Subscribe to our newsletter to receive cybersecurity tips, stay informed about the latest scams, and learn about enhancements to the DART platform." data-position="left center")
+                        .ui.checkbox.huge
+                            input#newsletter(type='checkbox', name='newsletterConsent')
+                            label#subscribe-label Subscribe to newsletter
 
-
-                    //- .field
-                    //-     label.input-margin Password: 
-                    //-     input(type='password', name='password', id='password', placeholder='Password', autocomplete='new-password', minlength='8', required)
-                    //-     .password-toggle
-                    //-       i.icon.eye
-                    //-       span.password-text Show
-
-
-                    //- .field.password-field
-                    //-     label.input-margin Password:
-                    //-     .ui.action.input
-                    //-         input(type='password', name='password', id='password', placeholder='Password', autocomplete='new-password', minlength='8', required)
-                    //-         .password-toggle(style="margin-left: -60px; cursor: pointer; text-align: center; background: none; border: none;")
-                    //-           i.icon.large.eye.slash(aria-label='Toggle Password Visibility')
-                    //-           br
-                    //-           span.password-text(aria-label='Toggle Password Visibility') Show
-
-                    //- .field
-                    //-     label.input-margin Confirm Password: 
-                    //-     input(type='password', name='confirmPassword', id='confirmPassword', placeholder='Confirm Password', autocomplete='new-password', minlength='8', required)
-
-
-
-
-
-                    //- p.input-margin Name:
-                    //- .ui.fluid.input
-                    //-     input(type='text', name='name', id='name', placeholder='Enter Your Name', autofocus, autocomplete='name', required)
-                    //- p.input-margin Email:
-                    //- .ui.fluid.input
-                    //-     input(type='email', name='email', id='email', placeholder='Email', autofocus, autocomplete='email', required)
-                    //- p.input-margin Password:
-                    //- .ui.fluid.input
-                    //-     input(type='password', name='password', id='password', placeholder='Password', autocomplete='new-password', minlength='8', required)
-                    //- p.input-margin Confirm Password:
-                    //- .ui.fluid.input
-                    //-     input(type='password', name='confirmPassword', id='confirmPassword', placeholder='Confirm Password', autocomplete='new-password', minlength='8', required)
-                    //- a(href='/forgot') 
-                    //-     p.small-text Already haven an account?
                     button.ui.fluid.blue.massive.button(type='submit') Sign Up
                     p#inform-terms By signing up, you agree to our 
-                        a(href="/terms") Terms of Use 
-                        | and 
-                        a(href="/privacy") Privacy Policy.
+                        a(href="/terms") Terms of Use
+                        | , 
+                        a(href="/privacy") Privacy Policy
+                        | , and  
+                        a(href="/cookies") Cookie Policy 
                     .ui.divider
                     //- .ui.fluid.white.huge.submit.button Sign Up
                     span.small-text Already haven an account? 
                     a.small-text(href="/login") Log in
-            br
             br
 
 
