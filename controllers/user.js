@@ -157,7 +157,7 @@ exports.postSignup = async (req, res, next) => {
       if (err) {
         return next(err);
       }
-      res.redirect('/courses');
+      res.redirect('/selection');
     });
   } catch (err) {
     next(err);
@@ -858,4 +858,88 @@ function formatDuration(duration) {
     .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
   
   return formattedDuration;
+}
+
+
+
+
+// guests
+exports.postGuestLogin = (req, res, next) => {
+  passport.authenticate(['basic', 'anonymous'], { session: false }),
+  function(req, res) {
+    let user = "";
+    if (req.user) {
+      user = req.user.username
+      //res.json({ name: req.user.username });
+    } else {
+      user = 'anonymous'
+      //res.json({ name: 'anonymous' });
+    }
+  };
+};
+
+
+exports.getGuest = async (req, res, next) => {
+  try {
+      if (req.params.modId === "delete") {
+          // avoiding a specific user behavior that causes 500 errors
+          return res.send({
+              result: "failure"
+          });
+      }
+
+      const user = new User({
+          password: "thinkblue",
+          name: "guest" + makeid(10),
+          email: makeid(10) + "@gmail.com",
+          isGuest: true,
+          lastNotifyVisit: Date.now()
+      });
+
+      user.name = "Guest";
+
+      const existingUser = await User.findOne({ name: req.body.name });
+
+      if (existingUser) {
+          req.flash('errors', { msg: 'Error: Account with that guest name already exists.' });
+          return res.redirect('/');
+      }
+
+      await user.save();
+
+      // Use the custom login function from passport to log in the user
+      req.logIn(user, async (err) => {
+          if (err) {
+              return next(err);
+          }
+          const temp = req.session.passport;
+
+          await new Promise((resolve, reject) => {
+              req.session.regenerate(err => {
+                  if (err) reject(err);
+                  req.session.passport = temp;
+                  req.session.save(err => {
+                      if (err) reject(err);
+                      resolve();
+                  });
+              });
+          });
+
+          return res.redirect('/selection');
+      });
+  } catch (err) {
+      return next(err);
+  }
+};
+
+
+//create random id for guest accounts
+function makeid(length) {
+  var result = '';
+  var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  var charactersLength = characters.length;
+  for (var i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
 }

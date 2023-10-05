@@ -191,6 +191,53 @@ app.post('/account/newsletter', passportConfig.isAuthenticated, userController.p
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
 
+app.post('/guestLogin', userController.postGuestLogin);
+app.get('/getGuest', userController.getGuest);
+
+
+
+// Render privacy policy page.
+app.get('/privacy', function(req, res) {
+  res.render('privacy_policy', {
+      title: 'Privacy Policy'
+  });
+});
+
+// Render terms and conditions page.
+app.get('/terms', function(req, res) {
+  res.render('terms', {
+      title: 'Terms'
+  });
+});
+
+// Render cookie policy page.
+app.get('/cookies', function(req, res) {
+  res.render('cookies', {
+      title: 'Cookies'
+  });
+});
+
+
+// Render selection
+app.get('/selection', passportConfig.isAuthenticated, function(req, res) {
+  res.render('account/selection', {
+      title: 'Selection'
+  });
+});
+
+// Render character intro
+app.get('/character', passportConfig.isAuthenticated, function(req, res) {
+  res.render('account/character_intro', {
+      title: 'Hello'
+  });
+});
+
+// Render accessibility page
+app.get('/accessibility', passportConfig.isAuthenticated, function(req, res) {
+  res.render('accessibility.pug', {
+      title: 'Accessibility'
+  });
+});
 
 
 /**

@@ -14,6 +14,9 @@ results
 outputFiles
 tmp
 
+
+public/videos
+
 #Build
 public/css/main.css
 
