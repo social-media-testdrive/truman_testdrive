@@ -129,7 +129,7 @@ const googleStrategyConfig = new GoogleStrategy({
       } 
       // If a user with matching email address is found, but not linked with Google
       else if (user.email === profile.emails[0].value && !user.google) {
-        req.flash('errors', { msg: 'Your account was registered using email and password. To enable Google login, sign in with that account then navigate to the profile page and link Google with your current account by pressing the "Link your Google Account" button.' });
+        req.flash('errors', { msg: 'Your account was registered using email and password. To enable Google login, sign in with that account then navigate to the profile page and press the "Link your Google Account" button.' });
         return done(null, false); // False means authentication failed
       }
     }
@@ -181,7 +181,8 @@ exports.isAuthorized = async (req, res, next) => {
     if (token.accessTokenExpires && moment(token.accessTokenExpires).isBefore(moment().subtract(1, 'minutes'))) {
       if (token.refreshToken) {
         if (token.refreshTokenExpires && moment(token.refreshTokenExpires).isBefore(moment().subtract(1, 'minutes'))) {
-          return res.redirect(`/auth/${provider}`);
+          // return res.redirect(`/auth/${provider}`);
+          return req.session.save( function(){ res.redirect(`/auth/${provider}`); });
         }
         try {
           const newTokens = await new Promise((resolve, reject) => {
@@ -205,12 +206,14 @@ exports.isAuthorized = async (req, res, next) => {
           return next();
         }
       } else {
-        return res.redirect(`/auth/${provider}`);
+        // return res.redirect(`/auth/${provider}`);
+        return req.session.save( function(){ res.redirect(`/auth/${provider}`); });
       }
     } else {
       return next();
     }
   } else {
-    return res.redirect(`/auth/${provider}`);
+    // return res.redirect(`/auth/${provider}`);
+    return req.session.save( function(){ res.redirect(`/auth/${provider}`); });
   }
 };

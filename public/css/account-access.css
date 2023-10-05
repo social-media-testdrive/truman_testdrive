@@ -199,3 +199,8 @@ i.icon.large.info.circle.blue.link {
     color: black;
     font-weight: bold;
 }
+
+#news-checkbox {
+    margin-top: 20px; 
+    margin-bottom: 30px;
+}

@@ -293,14 +293,17 @@ exports.postUpdatePassword = async (req, res, next) => {
     await user.save();
 
     // update the user in the session. Then flash message / redirect
-    req.login(user, (err) => {
-      if (err) {
-        return next(err);
-      }
+    req.flash('success', { msg: 'Password has been changed.' });
+    req.session.save( function(){ res.redirect(`/account`); });
 
-      req.flash('success', { msg: 'Password has been changed.' });
-      res.redirect('/account');
-    });
+    // req.login(user, (err) => {
+    //   if (err) {
+    //     return next(err);
+    //   }
+
+    //   req.flash('success', { msg: 'Password has been changed.' });
+    //   res.redirect('/account');
+    // });
   } catch (err) {
     next(err);
   }
@@ -410,14 +413,17 @@ exports.getOauthUnlink = async (req, res, next) => {
     await user.save();
 
     // update the user in the session. Then flash message / redirect
-    req.login(user, (err) => {
+
+
+    req.flash('info', {
+      msg: `${_.startCase(_.toLower(provider))} account has been unlinked.`,
+    });
+
+    // res.redirect('/account');
+    req.session.save((err) => {
       if (err) {
         return next(err);
       }
-
-      req.flash('info', {
-        msg: `${_.startCase(_.toLower(provider))} account has been unlinked.`,
-      });
       res.redirect('/account');
     });
 
