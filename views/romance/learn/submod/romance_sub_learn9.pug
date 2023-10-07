@@ -1,0 +1,33 @@
+extends ../../../module_layout
+
+block content
+
+  .ui.container#raised-container
+    .limit
+      h1.ui.header.large#learn-title
+        .content
+          | What are the consequences of romance and friendship scams?
+      p <u>Identity Theft</u> is when your personal information is stolen and used against you.
+      ul
+        li Here are some specific examples of personal information:
+        ul
+          li 
+            strong Personal Descriptors: 
+            | full name, maiden name, alias, gender, race, date of birth
+          li 
+            strong Personal identification numbers: 
+            | social security number (SSN), passport number, driver’s license number, taxpayer identification number, patient identification number, financial account number, or credit card number
+      img.ui.centered.image(src='/images/learn-2.png')
+      br
+      br
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+  .ui.container
+    +navButtons('romance', 'sub_learn2', '/learn/submod/romance', '/learn/submod/3/romance', 14)  
+
+block scripts
+  script.
+    postStartTime("romance", "sub_learn2");

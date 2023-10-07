@@ -1,0 +1,81 @@
+extends ../../../module_layout
+
+block content
+
+  .ui.container#raised-container
+    .limit
+      h1.ui.header.large#learn-title
+        .content
+          | Key Terms
+
+      //- *Note: copied the two column grid from home page as starting point to help you out
+      //- change whatever you need! 
+      //- And please move the inline css to a seperate css file sheet
+      //- I am just going fast right now trying to set everyone up with a starting point
+
+      .ui.stackable.grid(style="margin-left: 20px;")
+        //- First section with text on the left and image on the right
+        .row.computer.only.tablet.only
+          .eight.wide.column
+            h2 Catfishing
+            p Embracing the internet opens up a vast realm of knowledge, entertainment, and connections that can greatly enrich your life. However, it can also pose certain risks and dangers.
+            p DART provides valuable insights and practical strategies to help you stay informed about online security measures, enabling you to protect yourself against potential risks.
+          .eight.wide.column(style="margin: 0; padding: 0; display: flex; align-items: center;")
+            img(src="/images/simulation.png" alt="Image description" style="width: 100%")
+        .row.mobile.only
+          .eight.wide.column(style="margin: 0; padding: 0; display: flex; align-items: center;padding-bottom: 15px;")
+            img(src="/images/simulation.png" alt="Image description" style="width: 100%;")
+          .eight.wide.column
+            h2 Engaging hands-on learning
+            p Embracing the internet opens up a vast realm of knowledge, entertainment, and connections that can greatly enrich your life. However, it can also pose certain risks and dangers.
+            p DART provides valuable insights and practical strategies to help you stay informed about online security measures, enabling you to protect yourself against potential risks.
+        
+
+        //- Second section with image on the right and text on the left
+        .row(style="margin-top: 20vh;")
+          .eight.wide.column
+            img(src="/images/simulation3.png" alt="Image description" style="width: 90%")
+          .eight.wide.column
+            //- h2 Prepare yourself for the online world
+            h2 Emotional Manipulation
+            p DART simulates realistic digital dilemmas and scenarios that older adults may encounter while navigating online platforms and services.
+            p Each module teaches essential digital citizenship concepts, covering topics such as privacy, online identities, common scams, and more.
+
+        //- Third section with text on the left and image on the right
+        .row.computer.only.tablet.only
+          .eight.wide.column
+            h2 Money Mules
+            p Embracing the internet opens up a vast realm of knowledge, entertainment, and connections that can greatly enrich your life. However, it can also pose certain risks and dangers.
+            p DART provides valuable insights and practical strategies to help you stay informed about online security measures, enabling you to protect yourself against potential risks.
+          .eight.wide.column(style="margin: 0; padding: 0; display: flex; align-items: center;")
+            img(src="/images/simulation.png" alt="Image description" style="width: 100%")
+        .row.mobile.only
+          .eight.wide.column(style="margin: 0; padding: 0; display: flex; align-items: center;padding-bottom: 15px;")
+            img(src="/images/simulation.png" alt="Image description" style="width: 100%;")
+          .eight.wide.column
+            h2 Prepare yourself for the online world
+            p Embracing the internet opens up a vast realm of knowledge, entertainment, and connections that can greatly enrich your life. However, it can also pose certain risks and dangers.
+            p DART provides valuable insights and practical strategies to help you stay informed about online security measures, enabling you to protect yourself against potential risks.
+        
+
+        //- Fourth section with image on the right and text on the left
+        .row(style="margin-top: 20vh;")
+          .eight.wide.column
+            img(src="/images/simulation3.png" alt="Image description" style="width: 90%")
+          .eight.wide.column
+            //- h2 Prepare yourself for the online world
+            h2 Engaging hands-on learning
+            p DART simulates realistic digital dilemmas and scenarios that older adults may encounter while navigating online platforms and services.
+            p Each module teaches essential digital citizenship concepts, covering topics such as privacy, online identities, common scams, and more.
+
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+  .ui.container
+    +navButtons('romance', 'sub_learn2', '/learn/submod/romance', '/learn/submod/3/romance', 14)  
+
+block scripts
+  script.
+    postStartTime("romance", "sub_learn2");
