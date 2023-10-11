@@ -20,10 +20,10 @@ block content
               |   Next 
           .ui.basic.segment.noPadding.reflectionPromptSegment.hidden(class=questionNumber)
             if mod=="targeted" && questionNumber == "Q1"
-              -var adType = user.targetedAdTopic[user.targetedAdTopic.length - 1]
+              -const adType = user.targetedAdTopic[user.targetedAdTopic.length - 1] || 'Gaming'
               -questionInfo =  reflectionData["Q1_"+adType]
             if mod=="esteem" && questionNumber == "Q1"
-              -var chosenTopic = user.esteemTopic[user.esteemTopic.length - 1];
+              -const chosenTopic = user.esteemTopic[user.esteemTopic.length - 1] || 'Music'
               -questionInfo =  reflectionData["Q1_"+chosenTopic]
             include base_resultsQuestions
             if questionInfo["childQuestions"]

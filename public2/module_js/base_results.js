@@ -13,21 +13,59 @@ function recordResponse(responseType) {
     switch (responseType) {
         case 'written':
             answer.type = 'written';
-            answer.writtenResponse = $(this)
+            answer.writtenResponse = $(this).parent()
                 .siblings('.ui.form')
                 .find('textarea')
                 .val();
             break;
-        case 'checkboxes':
+        case 'checkboxGroupedPhotoRow':
             answer.type = 'checkbox';
             // using bit shifting to record which boxes are checked
             // i.e. [][✓][][][✓][]  => 010010
             // records the base 10 number in DB, decode to binary string later
-            let checkboxInputs = 0b0; // does not need to be binary, useful for testing
-            let numberOfCheckboxes = 0; // record number of boxes to add any leading zeros when decoding
-            $(this).closest('.ui.segment').find('.ui.checkbox input').each(function() {
+            var checkboxInputs = 0b0; // does not need to be binary, useful for testing
+            var numberOfCheckboxes = 0; // record number of boxes to add any leading zeros when decoding
+            $(this).parent().siblings('.ui.stackable.cards').find('.ui.fluid.card').each(function() {
                 numberOfCheckboxes++;
-                if ($(this).is(":checked")) {
+                if ($(this).hasClass("selectedCard")) {
+                    checkboxInputs = checkboxInputs << 1;
+                    checkboxInputs++;
+                } else {
+                    checkboxInputs = checkboxInputs << 1;
+                }
+            });
+            answer.numberOfCheckboxes = numberOfCheckboxes;
+            answer.checkboxResponse = checkboxInputs;
+            break;
+        case 'checkboxGrouped':
+            answer.type = 'checkbox';
+            // using bit shifting to record which boxes are checked
+            // i.e. [][✓][][][✓][]  => 010010
+            // records the base 10 number in DB, decode to binary string later
+            var checkboxInputs = 0b0; // does not need to be binary, useful for testing
+            var numberOfCheckboxes = 0; // record number of boxes to add any leading zeros when decoding
+            $(this).parent().siblings('.ui.stackable.cards').find('.ui.fluid.card .ui.form .ui.checkbox').each(function() {
+                numberOfCheckboxes++;
+                if ($(this).hasClass("checked")) {
+                    checkboxInputs = checkboxInputs << 1;
+                    checkboxInputs++;
+                } else {
+                    checkboxInputs = checkboxInputs << 1;
+                }
+            });
+            answer.numberOfCheckboxes = numberOfCheckboxes;
+            answer.checkboxResponse = checkboxInputs;
+            break;
+        case 'checkbox':
+            answer.type = 'checkbox';
+            // using bit shifting to record which boxes are checked
+            // i.e. [][✓][][][✓][]  => 010010
+            // records the base 10 number in DB, decode to binary string later
+            var checkboxInputs = 0b0; // does not need to be binary, useful for testing
+            var numberOfCheckboxes = 0; // record number of boxes to add any leading zeros when decoding
+            $(this).parent().siblings('.ui.form').find('.ui.checkbox').each(function() {
+                numberOfCheckboxes++;
+                if ($(this).hasClass("checked")) {
                     checkboxInputs = checkboxInputs << 1;
                     checkboxInputs++;
                 } else {
@@ -41,16 +79,17 @@ function recordResponse(responseType) {
             answer.type = 'radio';
             let radioSelection = "";
             radioSelection = $(this)
-                .closest('.ui.segment')
+                .parent()
+                .siblings('.ui.form')
                 .find('.radio.checkbox input:checked')
                 .siblings('label')
                 .text();
             answer.radioSelection = radioSelection;
             break;
-        case 'habits_time_entry':
+        case 'habitsUnique':
             answer.type = 'habitsUnique';
             answer.writtenResponse = $(this)
-                .closest('.ui.label')
+                .parent()
                 .siblings('.ui.form')
                 .find('input')
                 .val();
@@ -83,10 +122,11 @@ function iterateOverPrompts(startTime) {
     const timestamp = Date.now();
 
     // create new object with desired data to pass to the post request
-    let cat = {};
-    cat.absoluteTimeContinued = timestamp;
-    cat.modual = currentModule;
-    cat.attemptDuration = timestamp - startTime;
+    let cat = {
+        absoluteTimeContinued: timestamp,
+        modual: currentModule,
+        attemptDuration: timestamp - startTime
+    };
 
     let answers = [];
     // Search for each prompt type.
@@ -95,17 +135,18 @@ function iterateOverPrompts(startTime) {
     // For each question, record response based on prompt type. 
     // The types are: checkboxGroupedPhotoRow, checkboxGrouped, writen, checkbox, radio, habitsUnique
     $('.reflectionPrompt').each(function() {
-        answers.push(recordResponse.call($(this), $(this).attr('questionType')));
+        answers.push(recordResponse.call($(this), $(this).attr('data-questionType')));
     });
 
     cat.answers = answers;
 
     $.post("/reflection", {
-        action: cat,
-        _csrf: $('meta[name="csrf-token"]').attr('content')
-    }).then(function() {
-        window.location.href = `/quiz/${currentModule}`
-    });
+            action: cat,
+            _csrf: $('meta[name="csrf-token"]').attr('content')
+        })
+        .then(function() {
+            window.location.href = `/quiz/${currentModule}`
+        });
 }
 
 function checkAllPromptsOpened() {
@@ -153,7 +194,7 @@ function onPrint() {
 
 $(window).on("load", function() {
     // startTime is used to track the start time of each attempt, to later calculate the duration/time the user spent on each attempt
-    let startTime = Date.now();
+    const startTime = Date.now();
     // Add voiceovers from the voiceoverMappings variable
     Voiceovers.addVoiceovers();
     // Ensure the print/continue buttons don't have any residual classes
