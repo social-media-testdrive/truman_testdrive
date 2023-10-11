@@ -1,5 +1,5 @@
 .ui.label
-  h4.reflectionPrompt(data-questionNumber=questionNumber, data-questionType=questionInfo["type"])
+  h4.reflectionPrompt(data-questionNumber=childQuestion || questionNumber, data-questionType=questionInfo["type"])
     if questionInfo.type==="checkboxGroupedPhotoRow"
       i.exclamation.triangle.icon.yellowIcon
     | !{questionInfo.prompt}
