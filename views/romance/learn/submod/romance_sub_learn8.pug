@@ -1,84 +1,66 @@
 extends ../../../module_layout
 
 block content
+    .ui.container#raised-container
+        .limit
+            h1.ui.header.large#learn-title
+                .content
+                    | The most common ways of scamming your money or personal information
 
-  .ui.container#raised-container
-    .limit
-      h1.ui.header.large#learn-title
-        .content
-          | The most common ways of scamming your money or personal information
-      h1.ui.header
-        .content Money Mule     
-      h1.ui.header
-        .content Example
+            h1.ui.header
+                .content 
+                    b Money Mule:
+                    span 
+                        | “Money Mule” Romance Scams involve 
+                    p 
+                        | scammers asking you to move money for them. 
 
+            h1.ui.header
+                .content 
+                    | After building a relationship, scammer will ask you to do them a favor: They will send you money to purchase 
+                    | gift cards or cryptocurrency, then ask you to open a bank account or to send/receive packages. 
 
-      //- ** Review this for example of phone messages ui **
+            a.ui.fluid.image
+                img.protrait(src="/images/erick/Send_money_graph.png")
 
-      //- .smartphone
-      //-     .content
-      //-         .texter
-      //-             i.user.circle.big.icon
-      //-             p 867543 
-      //-                 span >
-      //-         .ios-time
-      //-             p Today #{currentTime}
-      //-         .ios-chat-container
-      //-             .chat
-      //-                 .mine.messages
-      //-                      .message.last
-      //-                          | Dude
-      //-                 .yours.messages
-      //-                      .message
-      //-                          | Hey!
-      //-                      .message
-      //-                          | You there?
-      //-                     .message.last
-      //-                          | Hello, how&apos;s it going?
-      //-                  .mine.messages
-      //-                      .message
-      //-                          | Great thanks!
-      //-                      .message.last
-      //-                          | How about you?
+            h1 Example
 
-      //- default height is 640px, but adjust it to what you need to fit bubbles (use seperate stylesheet or inline for now, don't adjust css in module css as it will affect everything)
-      .smartphone(style="height: 750px;") 
-        .content
-          .texter
-            i.user.circle.big.icon
-            p
-              | Tobias 
-              span &gt;
-          .ios-time
-            p Today 12:57 PM
-          .ios-chat-container
-            .chat
-              .yours.messages
-                .message.last I know we don't know blah blah blah blah blah blah blah
-              .mine.messages 
-                .message.last 
-                  | Really? I do too. Blah blah blah blah blah blah blah blah
-              .yours.messages 
-                .message Me too babe! Blah blah blah blah blah blah blah blah
-                .message.last What was the name of your blah blah blah blah blah?
+            .ios-chat-container
+                .chat
+                    .yours.messages
+                        .message.last 
+                            | Good afternoon, Thanks for recommending that show to me. I couldn't stop watching it last night.
 
-        //- .icon
-        //-   img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
-        //- .content
-        //-   .header
-        //-     | Note
-        //-   p Important contact details are included in the downloadable materials on the modules' homepage.
+                    .mine.messages 
+                        .message.last 
+                            | Yay, I'm glad you like it! it's cool talking to someone with the same tv and movie taste 
+                            a.ui.mini.image
+                                img.protrait(src="https://em-content.zobj.net/source/apple/354/grinning-squinting-face_1f606.png")
 
+                    .yours.messages 
+                        .message.last 
+                            | Same, it's rare for me. By the way, did the money arrive yet? 
+
+                    .mine.messages 
+                        .message.last 
+                            | Yep, the $500 arrived
+
+                    .yours.messages 
+                        .message.last 
+                            | Can you send it over to this bitcoin account for me ?
+
+            p 
+                | While these types of favors may seem harmless, you may be helping them launder money, which could result in you being charged with a crime.  
 
     script.
         var progress = #{user.moduleProgress.identity.percent}
     script(src='/js/setProgressBar.js')  
 
 block append footer
-  .ui.container
-    +navButtons('identity', 'sub3_learn9', '/learn/submod3/8/identity', '/learn/submod3/10/identity', 78)  
+    .ui.container
+        +navButtons('identity', 'sub3_learn9', '/learn/submod3/8/identity', '/learn/submod3/10/identity', 78)  
 
 block scripts
-  //- script(src='/js/character.js')
-  script.
-    postStartTime("identity", "sub3_learn9");
+    //- script(src='/js/character.js')
+    script.
+        postStartTime("identity", "sub3_learn9");
