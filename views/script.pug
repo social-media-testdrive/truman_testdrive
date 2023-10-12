@@ -1,11 +1,8 @@
 extends ui_layout
   
-block content
-
-  
+block content  
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   -var s3 = "https://testdrive-filesystem.s3.us-east-2.amazonaws.com/"
-  -//var cdn = "";
   .computer.only.tablet.only.four.wide.column
     .ui.sticky.sideMenu
       .ui.card
@@ -150,9 +147,8 @@ block content
                .ui.positive.right.labeled.icon.button
                  | Done
                  i.checkmark.icon          
-            
-  block rightColumn
-    -
+  .computer.only.tablet.only.four.wide.column
+    block rightColumn
                  
 block scripts
   script(src='/module_js/voiceover.js')
@@ -161,8 +157,6 @@ block scripts
   script(src='/module_js/script.js')
   //script(src='/module_js/base_introSteps.js')
   block scripts2
-    -         
-    
      
 block styles
   link(rel='stylesheet', href='/css/script.css')

@@ -38,7 +38,7 @@ html
       meta(name='twitter:description' content="Welcome to Social Media TestDrive!")
     title #{title} - Social Media TestDrive
     link(rel='shortcut icon', href=cdn+'/favicon.ico')
-    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css', integrity='sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=', crossorigin='anonymous')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css')
     link(rel='stylesheet', href=cdn+'/js/lib/introjs.min.css')
     link(type='text/css', rel='stylesheet', href='/css/header.css') 
     link(type='text/css', rel='stylesheet', href='/css/ui_layout.css') 
@@ -47,22 +47,23 @@ html
   body
     .ui.vertically.padded.grid.container.addBottomPaddingToGrid
       include partials/ui_header
-      include partials/ui_flash
-      block content
+      .ui.grid.container#pagecontainer
+        include partials/ui_flash
+        block content
       .ui.small.basic.share.modal
         .ui.icon.header
           i.share.icon
           |     You have shared this post!
-        .actions(style="text-align:center;")   
+        .actions(style="text-align:center;")
           .ui.green.ok.inverted.button
             i.checkmark.icon
             |   Done                      
     include partials/ui_footer
     
+    script(src=cdn+'/js/lib/jquery-3.1.1.min.js')
+    script(src=cdn+'/js/lib/humanized_time_span.js')
+    script(src=cdn+'/js/lib/lazyload.transpiled.min.js')
     if process.env.instanceType == 'test'
-      script(src=cdn+'/js/lib/jquery-3.1.1.min.js')
-      script(src=cdn+'/js/lib/humanized_time_span.js')
-      script(src=cdn+'/js/lib/lazyload.transpiled.min.js')
       script(src='https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js', integrity="sha256-ZUdSt2scSiBqI3Tso+Al3lcqkBvgRShVrUc1pvvGGVE=" crossorigin="anonymous")
       script(src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js', integrity="sha256-v8vuH0gf888S01qYrvK2hDq/RfE2au7WOLbqlPzDwOQ=" crossorigin="anonymous")
       script(src=cdn+'/js/lib/intro.min.js')
@@ -70,9 +71,6 @@ html
       - var t = '/main.js?t=' + (new Date()).getTime().toString();
       script(src=t)
     else if process.env.NODE_ENV == 'production'
-      script(src=cdn+'/js/lib/jquery-3.1.1.min.js')
-      script(src=cdn+'/js/lib/humanized_time_span.js')
-      script(src=cdn+'/js/lib/lazyload.transpiled.min.js')
       script(src='https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js', integrity="sha256-ZUdSt2scSiBqI3Tso+Al3lcqkBvgRShVrUc1pvvGGVE=" crossorigin="anonymous")
       script(src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js', integrity="sha256-v8vuH0gf888S01qYrvK2hDq/RfE2au7WOLbqlPzDwOQ=" crossorigin="anonymous")
       script(src=cdn+'/js/lib/intro.min.js')
@@ -80,9 +78,6 @@ html
       script(src=cdn+'/js/main23.js?v=1')
       //- script(src='/module_js/js/main.js')
     else
-      script(src=cdn+'/js/lib/jquery-3.1.1.min.js')
-      script(src=cdn+'/js/lib/humanized_time_span.js')
-      script(src=cdn+'/js/lib/lazyload.transpiled.min.js')
       script(src='https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js', integrity="sha256-ZUdSt2scSiBqI3Tso+Al3lcqkBvgRShVrUc1pvvGGVE=", crossorigin="anonymous")
       script(src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.js', integrity="sha256-uMIfMa67pYMwbPxTsdF1v1dvkFLfZ9DPZpjGQfi+6DI=", crossorigin="anonymous")
       script(src=cdn+'/js/lib/intro.min.js')

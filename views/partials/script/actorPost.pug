@@ -16,7 +16,7 @@
     a(href='/user/'+val.actor.username)
       img.ui.avatar.image(src='/images/picture.svg', data-src=cdn+'/profile_pictures/'+val.actor.profile.picture)
       span=val.actor.profile.name
-  .img.post
+  .img.post.image
     //-img.post(src="/"+val.picture)
     if (val.module == 'digital-literacy' && val.info_text != "")           
       img.imageWithModal.openPostDigitalLiteracy(src='/images/picture.svg', data-src=cdn+"/post_pictures/"+val.picture)
