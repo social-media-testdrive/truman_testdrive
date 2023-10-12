@@ -8,69 +8,47 @@ block content
         .content
           | Key Terms
 
-      //- *Note: copied the two column grid from home page as starting point to help you out
-      //- change whatever you need! 
-      //- And please move the inline css to a seperate css file sheet
-      //- I am just going fast right now trying to set everyone up with a starting point
-
-      .ui.stackable.grid(style="margin-left: 20px;")
+      .ui.stackable.grid
         //- First section with text on the left and image on the right
         .row.computer.only.tablet.only
           .eight.wide.column
-            h2 Catfishing
-            p Embracing the internet opens up a vast realm of knowledge, entertainment, and connections that can greatly enrich your life. However, it can also pose certain risks and dangers.
-            p DART provides valuable insights and practical strategies to help you stay informed about online security measures, enabling you to protect yourself against potential risks.
-          .eight.wide.column(style="margin: 0; padding: 0; display: flex; align-items: center;")
-            img(src="/images/simulation.png" alt="Image description" style="width: 100%")
-        .row.mobile.only
-          .eight.wide.column(style="margin: 0; padding: 0; display: flex; align-items: center;padding-bottom: 15px;")
-            img(src="/images/simulation.png" alt="Image description" style="width: 100%;")
+            h2 Catfishing: 
+            p When a scammer uses a fake online profile to pretend to be someone else.
           .eight.wide.column
-            h2 Engaging hands-on learning
-            p Embracing the internet opens up a vast realm of knowledge, entertainment, and connections that can greatly enrich your life. However, it can also pose certain risks and dangers.
-            p DART provides valuable insights and practical strategies to help you stay informed about online security measures, enabling you to protect yourself against potential risks.
-        
+            img(src="/images/cat_romance_page3.png" alt="Image description" style="width: 100%")
+
 
         //- Second section with image on the right and text on the left
-        .row(style="margin-top: 20vh;")
+        .row
           .eight.wide.column
-            img(src="/images/simulation3.png" alt="Image description" style="width: 90%")
+            img(src="/images/phone_romance_page_3.png" alt="Image description" style="width: 90%")
           .eight.wide.column
             //- h2 Prepare yourself for the online world
-            h2 Emotional Manipulation
-            p DART simulates realistic digital dilemmas and scenarios that older adults may encounter while navigating online platforms and services.
-            p Each module teaches essential digital citizenship concepts, covering topics such as privacy, online identities, common scams, and more.
+            h2 Cryptocurrency: 
+            p A digital currency such as Bitcoin that can be hard to trace. 
+
 
         //- Third section with text on the left and image on the right
         .row.computer.only.tablet.only
           .eight.wide.column
-            h2 Money Mules
-            p Embracing the internet opens up a vast realm of knowledge, entertainment, and connections that can greatly enrich your life. However, it can also pose certain risks and dangers.
-            p DART provides valuable insights and practical strategies to help you stay informed about online security measures, enabling you to protect yourself against potential risks.
-          .eight.wide.column(style="margin: 0; padding: 0; display: flex; align-items: center;")
-            img(src="/images/simulation.png" alt="Image description" style="width: 100%")
-        .row.mobile.only
-          .eight.wide.column(style="margin: 0; padding: 0; display: flex; align-items: center;padding-bottom: 15px;")
-            img(src="/images/simulation.png" alt="Image description" style="width: 100%;")
+            h2 Emotional Manipulation: 
+            p When scammers prey on your emotions to get personal information or money from you. Examples include claiming that they love you, they are having a personal emergency and you are the only one who can help. They may even become aggressive to get what they want.          
           .eight.wide.column
-            h2 Prepare yourself for the online world
-            p Embracing the internet opens up a vast realm of knowledge, entertainment, and connections that can greatly enrich your life. However, it can also pose certain risks and dangers.
-            p DART provides valuable insights and practical strategies to help you stay informed about online security measures, enabling you to protect yourself against potential risks.
-        
+            img(src="/images/emotional_manipulation_page_3_romance.png" alt="Image description" style="width: 100%")
+
 
         //- Fourth section with image on the right and text on the left
-        .row(style="margin-top: 20vh;")
+        .row
           .eight.wide.column
-            img(src="/images/simulation3.png" alt="Image description" style="width: 90%")
+            img(src="/images/money_mules.png" alt="Image description" style="width: 90%")
           .eight.wide.column
             //- h2 Prepare yourself for the online world
-            h2 Engaging hands-on learning
-            p DART simulates realistic digital dilemmas and scenarios that older adults may encounter while navigating online platforms and services.
-            p Each module teaches essential digital citizenship concepts, covering topics such as privacy, online identities, common scams, and more.
-
+            h2 Money Mules: 
+            p People who transfer or move money illegally for someone else.
     script.
         var progress = #{user.moduleProgress.identity.percent}
     script(src='/js/setProgressBar.js')  
+    script(src='/css/romance_3.css')
 
 block append footer
   .ui.container
