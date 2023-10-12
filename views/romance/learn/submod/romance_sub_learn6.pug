@@ -7,21 +7,19 @@ block content
       h1.ui.header.large#learn-title
         .content
           | The most common ways of scamming your money or personal information
-      p <u>Identity Theft</u> is when your personal information is stolen and used against you.
-      ul
-        li Here are some specific examples of personal information:
-        ul
-          li 
-            strong Personal Descriptors: 
-            | full name, maiden name, alias, gender, race, date of birth
-          li 
-            strong Personal identification numbers: 
-            | social security number (SSN), passport number, driver’s license number, taxpayer identification number, patient identification number, financial account number, or credit card number
-      img.ui.centered.image(src='/images/learn-2.png')
+      ol
+        li 
+          strong Fake Online Dating Sites:
+        p These dating sites promise the perfect match, but in reality, they are full of fake accounts. To access these sites, you often have to pay a fee and provide personal information (including a photo), resulting in financial losses or identity theft.
+        p Fake Online Dating Sites may contain malware that can infect your personal devices to steal your personal information, hack your camera, and even hold your device for ransom.
+      h2 Example
+      img.ui.centered.image(src='/images/romance-6.png')
+      br
+      p Examples of fake dating websites. Common indicators include generic stock photos, overly provocative images, and repetitive layouts.
       br
       br
     script.
-        var progress = #{user.moduleProgress.identity.percent}
+        var progress = #{user.moduleProgress.romance.percent}
     script(src='/js/setProgressBar.js')  
 
 block append footer
