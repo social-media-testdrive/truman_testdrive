@@ -7,16 +7,15 @@ block content
       h1.ui.header.large#learn-title
         .content
           | The most common ways of scamming your money or personal information
-      ol
-        li 
-          strong Fake Online Dating Sites:
-        p These dating sites promise the perfect match, but in reality, they are full of fake accounts. To access these sites, you often have to pay a fee and provide personal information (including a photo), resulting in financial losses or identity theft.
-        p Fake Online Dating Sites may contain malware that can infect your personal devices to steal your personal information, hack your camera, and even hold your device for ransom.
+      br
+      p 
+        strong 1. Fake Online Dating Sites:  
+        | These dating sites promise the perfect match, but in reality, they are full of fake accounts. To access these sites, you often have to pay a fee and provide personal information (including a photo), resulting in financial losses or identity theft.
+      p Fake Online Dating Sites may contain malware that can infect your personal devices to steal your personal information, hack your camera, and even hold your device for ransom.
       h2 Example
       img.ui.centered.image(src='/images/romance-6.png')
       br
       p Examples of fake dating websites. Common indicators include generic stock photos, overly provocative images, and repetitive layouts.
-      br
       br
     script.
         var progress = #{user.moduleProgress.romance.percent}
@@ -24,7 +23,7 @@ block content
 
 block append footer
   .ui.container
-    +navButtons('romance', 'sub_learn2', '/learn/submod/romance', '/learn/submod/3/romance', 14)  
+    +navButtons('romance', 'sub_learn2', '/learn/submod/romance', '/learn/submod/7/romance', 14)  
 
 block scripts
   script.

@@ -7,11 +7,13 @@ block content
       h1.ui.header.large#learn-title
         .content
           | The most common ways of scamming your money or personal information
-      h1.ui.header
-        .content Investment/Cryptocurrency      
-      h1.ui.header
-        .content Example
-
+      br
+      p 
+        strong 2. Investment/Cryptocurrency:  
+        | Scammers will develop a relationship with you to build trust over time. Once they feel you trust them, they will offer investment advice, often involving cryptocurrency. The scammers may have you open a cryptocurrency account and then provide you with a link to deposit your funds. This account will show high levels of returns to encourage you to deposit even more money.
+      p However, once you try to withdraw your money, you will be asked to either pay a hefty tax bill or the site will shut down, causing you to lose your money. 
+      img.ui.centered.image(src='/images/romance-7.png')
+      h2 Example
 
       //- ** Review this for example of phone messages ui **
 
@@ -42,7 +44,7 @@ block content
       //-                          | How about you?
 
       //- default height is 640px, but adjust it to what you need to fit bubbles (use seperate stylesheet or inline for now, don't adjust css in module css as it will affect everything)
-      .smartphone(style="height: 750px;") 
+      .smartphone(style="height: 720px;") 
         .content
           .texter
             i.user.circle.big.icon
@@ -53,32 +55,32 @@ block content
             p Today 12:57 PM
           .ios-chat-container
             .chat
-              .yours.messages
-                .message.last I know we don't know blah blah blah blah blah blah blah
-              .mine.messages 
-                .message.last 
-                  | Really? I do too. Blah blah blah blah blah blah blah blah
               .yours.messages 
-                .message Me too babe! Blah blah blah blah blah blah blah blah
-                .message.last What was the name of your blah blah blah blah blah?
-
+                .message.last Hey babe, I just made $2000 off crypto! 
+              .mine.messages 
+                .message.last That's awesome! I'm so happy for you. 
+              .yours.messages 
+                .message.last Thanks, honey. You should invest to get money for your brother's surgery. 
+              .mine.messages 
+                .message.last Maybe I should...we really need the money.
+      br
+      p Here, the scammer uses intimate details of the person’s life in order to increase the likelihood that they will fall victim to their cryptocurrency scam.
+      br
         //- .icon
         //-   img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
         //- .content
         //-   .header
         //-     | Note
         //-   p Important contact details are included in the downloadable materials on the modules' homepage.
-
-
     script.
-        var progress = #{user.moduleProgress.identity.percent}
+        var progress = #{user.moduleProgress.romance.percent}
     script(src='/js/setProgressBar.js')  
 
 block append footer
   .ui.container
-    +navButtons('identity', 'sub3_learn9', '/learn/submod3/8/identity', '/learn/submod3/10/identity', 78)  
+    +navButtons('romance', 'sub3_learn9', '/learn/submod/8/romance', '/learn/submod/10/romance', 78)  
 
 block scripts
   //- script(src='/js/character.js')
   script.
-    postStartTime("identity", "sub3_learn9");
+    postStartTime("romance", "sub3_learn9");
