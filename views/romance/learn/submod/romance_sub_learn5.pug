@@ -9,65 +9,47 @@ block content
           | Type 2: Friendship Scams
       h1.ui.header
         .content Example
-
-
-      //- ** Review this for example of phone messages ui **
-
-      //- .smartphone
-      //-     .content
-      //-         .texter
-      //-             i.user.circle.big.icon
-      //-             p 867543 
-      //-                 span >
-      //-         .ios-time
-      //-             p Today #{currentTime}
-      //-         .ios-chat-container
-      //-             .chat
-      //-                 .mine.messages
-      //-                      .message.last
-      //-                          | Dude
-      //-                 .yours.messages
-      //-                      .message
-      //-                          | Hey!
-      //-                      .message
-      //-                          | You there?
-      //-                     .message.last
-      //-                          | Hello, how&apos;s it going?
-      //-                  .mine.messages
-      //-                      .message
-      //-                          | Great thanks!
-      //-                      .message.last
-      //-                          | How about you?
-
-      //- default height is 640px, but adjust it to what you need to fit bubbles (use seperate stylesheet or inline for now, don't adjust css in module css as it will affect everything)
-      .smartphone(style="height: 750px;") 
-        .content
-          .texter
-            i.user.circle.big.icon
-            p
-              | Tobias 
-              span &gt;
-          .ios-time
-            p Today 12:57 PM
-          .ios-chat-container
-            .chat
-              .yours.messages
-                .message.last I know we don't know blah blah blah blah blah blah blah
-              .mine.messages 
-                .message.last 
-                  | Really? I do too. Blah blah blah blah blah blah blah blah
-              .yours.messages 
-                .message Me too babe! Blah blah blah blah blah blah blah blah
-                .message.last What was the name of your blah blah blah blah blah?
-
-        //- .icon
-        //-   img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
-        //- .content
-        //-   .header
-        //-     | Note
-        //-   p Important contact details are included in the downloadable materials on the modules' homepage.
-
-
+      p
+        strong Friendship:  
+        | Instead of creating a romantic relationship, the scammer will 
+        | pretend to have your same likes and interests to quickly form a 
+        | friendship with you. Once the scammer feels you care for them, they 
+        | will ask you for money or personal information to help pay 
+        | their bills or other financial hardships.  
+      img.ui.centered.image(src='/images/rom-mod5-img1.png')
+      br
+      br
+      p 
+        strong Example 
+      .smartphone(style="height: 720px;") 
+          .content
+              .texter
+                  i.user.circle.big.icon
+                  p Tobias 
+                      span >
+              .ios-time
+                  p Today 3:45PM
+              .ios-chat-container
+                  .chat(style="font-size:18px;")
+                      .yours.messages
+                           .message
+                               | I&apos;m so happy to be able to talk to someone that also likes
+                               | hiking and outdoors!!
+                           .message.last
+                               | Wait, I have an idea! 
+                      .mine.messages
+                           .message.last
+                               | What is it?
+                      .yours.messages
+                           .message.last
+                               | What if you paid for my flight to your town? I don&apos;t 
+                               | have the money right now, but I know hanging out with each other 
+                               | would be a blast!              
+      br
+      br
+      p In this text exchange, the scammer uses their mutual interest of 
+       | hiking and outdoors to make the person want to comply in the 
+       | financial scam.
     script.
         var progress = #{user.moduleProgress.identity.percent}
     script(src='/js/setProgressBar.js')  
