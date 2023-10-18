@@ -1,0 +1,43 @@
+extends ../../../module_layout
+
+block content
+
+  .ui.container#raised-container
+    .limit
+      h1.ui.header.large#mod-title
+        .content
+          | Recognizing the techniques of romance and friendship scammers
+      p 
+        strong Step 1: Paying attention to the language and word choice in their messages
+      img.ui.centered.image(src='/images/rom-submod2-mod2-img1.png')
+      br
+      p
+        | Look closely at the wording of the text and notice how suddenly 
+        | the user is sending waves of compliments. While affirming words 
+        | feel good to hear, it&apos;s important to be cautious of one&apos;s intentions 
+        | especially when just getting to know someone. 
+
+      p Here are some common signs and wording that indicate “love-bombing”:
+        ul
+          li 
+            a(href='https://www.healthline.com/health/love-bombing')
+              p Love Bombing: 10 Signs of Over-the-Top Love 
+          li 
+            a(href='https://health.clevelandclinic.org/love-bombing/')
+              p What Is Love Bombing? 7 Signs To Look For
+          li 
+            a(href='https://www.businessinsider.com/what-is-love-bombing-2017-7')
+              p The Signs You've Been a Victim of 'Love Bombing'
+    
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')   
+
+
+block append footer
+  .ui.container
+    +navButtons('romance', 'sub2_learn2', '/learn/submod2/romance', '/learn/submod2/3/romance', 14)  
+
+block scripts
+  script.
+    postStartTime("romance", "sub2_learn2");

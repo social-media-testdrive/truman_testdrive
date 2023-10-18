@@ -1,0 +1,43 @@
+extends ../../../module_layout
+
+block content
+
+  .ui.container#raised-container
+    .limit
+      h1.ui.header.large#mod-title
+        .content
+          | What are the techniques used by romance and friendship scammers?
+      img.ui.centered.image(src='/images/rom-submod2-mod1-img1.png')
+      br
+      p
+        strong Social Media & Text Messaging: 
+        | Social Media & Text Messaging: Oftentimes romance and friendship 
+        | scammers utilize popular messaging platforms to avoid talking on 
+        | the phone and revealing their true voice. Texting allows scammers 
+        | to use dramatic, urgent, fast-paced language to gain sympathy.  
+      br 
+      p 
+        strong Dating Apps: 
+        | Scammers on these apps will typically use falsified, highly-edited 
+        | profile pictures to grab attention. In the early stages, they may try 
+        | showering you with compliments and love-bombing in order to build an 
+        | exploitative relationship.
+      p Some common dating apps and social media platforms where romance scammers lurk, include: 
+        ul
+          li Tinder
+          li Bumble
+          li Binge 
+          li Facebook 
+          li Instagram
+    
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')   
+
+block append footer
+  .ui.container
+    +navButtons('romance', 'sub2_learn2', '/courses', '/learn/submod2/2/romance', 14)  
+
+block scripts
+  script.
+    postStartTime("romance", "sub2_learn2");
