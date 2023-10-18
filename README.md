@@ -1,4 +1,4 @@
-Social Media TestDrive (https://socialmediatestdrive.org/)
+Social Media TestDrive: https://socialmediatestdrive.org/
 =======================
 
 Social Media TestDrive is an online learning program delivered through a life-like social media simulation that provides youth a safe space to learn and practice digital literacy and citizenship skills.
