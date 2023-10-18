@@ -12,7 +12,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "3",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>D is correct: A password is a secret string of letters, symbols, and numbers that you can use to restrict who can access something digital.</span> \n<span class = 'inline bold'>A is incorrect:</span> A username is the name or ID that you use when you log in. \n<span class = 'inline bold'>B is incorrect:</span> Your profile is your personal page on social media that includes information about you. \n<span class = 'inline bold'>C is incorrect:</span> You should not use your name and your birthday as a password because it's easy to guess."
         },
         "Q2": {
@@ -27,7 +27,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "0",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>A is correct: Having your name in your password makes it easier to guess. </span> \n<span class = 'inline bold'>B is incorrect:</span> Having special characters in your password makes it harder to guess.\n<span class = 'inline bold'>C is incorrect:</span> Having numbers in your password makes it harder to guess.\n<span class = 'inline bold'>D is incorrect:</span> Having uppercase letters in your password makes it harder to guess."
         },
         "Q3": {
@@ -42,7 +42,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "1",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>B is correct: Her favorite character's name is something that is common and makes it harder for strangers to identify her.</span> \n<span class = 'inline bold'>A is incorrect:</span> Having her full name is not safe. Anyone on the Internet can find out who she is. \n<span class = 'inline bold'>C is incorrect:</span> Having her parents' names is not safe for her and for them. Anyone on the internet can find out who they are. \n<span class = 'inline bold'>D is incorrect:</span> Having her school's name makes it easy to find out her location, her age, and her name."
         },
         "Q4": {
@@ -57,7 +57,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "3",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>D is correct: Ignoring the message and telling a trusted adult will keep her safe. The adult will know how to handle it properly and keep her from interacting with the stranger.</span> \n<span class = 'inline bold'>A is incorrect:</span> The person may not even be a fan and can just want to steal her account and her information. \n<span class = 'inline bold'>B is incorrect:</span> This puts other accounts at risk. This also starts an interaction with the stranger which could lead to something more dangerous. \n<span class = 'inline bold'>C is incorrect:</span> The promise doesn't mean anything and they can easily break the promise and steal the account and the information."
         },
         "Q5": {
@@ -72,7 +72,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "2",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>C is correct: Tom should not interact with someone he doesn't know on the internet, especially if they appear to be a  scammer. Reporting the account keeps him and other people safe.</span> \n<span class = 'inline bold'>A is incorrect:</span> This can cause Tom to lose his account and any information connected to him. \n<span class = 'inline bold'>B is incorrect:</span> Tom is still giving out his information. The other person could also give fake information. \n<span class = 'inline bold'>D is incorrect:</span> Tom is still giving out his information. The stranger could change it before Tom changes it. The stranger also will have access to his information and steal the account."
         }
     },
@@ -89,7 +89,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "1",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>B is correct: Breaking news is information being reported about an event that has just happened or is currently occurring.</span> \n<span class = 'inline bold'>A is incorrect:</span> Breaking news may be urgent and deserve people's attention, but we should not share it until we have enough information to confirm that the news is true. \n<span class = 'inline bold'>C is incorrect:</span> Breaking news can be true or false information, we need to fact check to make sure the information is true."
         },
         "Q2": {
@@ -104,7 +104,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "0",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>A is correct: Fact checking is verifying the information you see in news stories.</span> \n<span class = 'inline bold'>B is incorrect:</span> Fact checking is about determining whether the information is true or false, not whether it is a fact or an opinion. \n<span class = 'inline bold'>C is incorrect:</span> When doing fact checking, we should search for reliable information from reliable sources instead of simply checking with friends."
         },
         "Q3": {
@@ -119,7 +119,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "3",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>A is correct: When we do fact checking on a breaking news article, we should check the source of information of that article to see if it comes from reliable sources. \nB is correct: To decide whether an article is trustworthy or not, we need to read the whole article and see whether it's a news piece (something that actually happened) or simply the author's opinions on something that happened, since opinions can be inaccurate. \nC is also correct: It's also important to search online and find other reliable sources that confirm the same story.</span>"
         },
         "Q4": {
@@ -134,7 +134,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "2",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>C is correct: It is the correct way for fact checking.</span> \n<span class = 'inline bold'>A is incorrect:</span> We shouldn't share breaking news with anyone before we fact check to make sure that the news is trustworthy. \n<span class = 'inline bold'>B is incorrect:</span> If we found that the news is indeed trustworthy after fact checking, we shouldn't flag the article and report it as false information. \n<span class = 'inline bold'>D is incorrect:</span> Checking with friends to decide whether a news article is trustworthy is not recommended, because friends may not have the correct information. In other words, friends are not the most reliable source for fact checking."
         },
         "Q5": {
@@ -149,7 +149,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "2",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>C is correct: If you are not sure if the news is true or not, never share it.</span> \n<span class = 'inline bold'>A and B are incorrect:</span> Before we share any news on social media, be sure to fact check to make sure the information is trustworthy so that you won't spread false information. If you are not sure if the news is true or not, never share it. Even if the message looks urgent and looks official, it might still be fake news. \n<span class = 'inline bold'>D is incorrect:</span> Even if a lot of people share the news on social media, it doesn't guarantee the information is true. Always double check with other reliable sources to make sure the information is trustworthy."
         }
     },
@@ -164,7 +164,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "0",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>A is correct:  Cyberbullying can affect the victim very severely. Harmful words and posts can cause a lot of hurt and pain for the victim of cyberbullying.\n</span>"
         },
         "Q2": {
@@ -179,7 +179,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "0",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>A is correct: Cyberbullying is when a person posts or shares negative information about another person online.</span> \n<span class = 'inline bold'>B is incorrect:</span> Cyberbullying is not a video game, although players may bully others in video games. \n<span class = 'inline bold'>C is incorrect:</span> Cyberbullying always happens online, although people can go online using mobile devices at school. \n<span class = 'inline bold'>D is incorrect:</span> It is called phishing when scammers try to steal your private information, not cyberbullying."
         },
         "Q3": {
@@ -192,7 +192,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "0",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>A is correct: A bully is someone who hurts a person or a group on purpose more than once.</span>"
         },
         "Q4": {
@@ -207,7 +207,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "3",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>D is correct: An upstander is someone who acts against the bully.</span> \n<span class = 'inline bold'>A is incorrect:</span> An upstander has to be someone who takes action after seeing an incident. \n<span class = 'inline bold'>B is incorrect:</span> Upstanders act against the bully. \n<span class = 'inline bold'>C is incorrect:</span> The person being bullied is considered a target or the victim of cyberbullying."
         },
         "Q5": {
@@ -222,7 +222,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "3",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>D is correct: Telling a trusted adult can be a safe way to take action and be an upstander.</span> \n<span class = 'inline bold'>A is incorrect:</span> Even though it is deleted, other people may have already seen the story or have screenshots of it. \n<span class = 'inline bold'>B is incorrect:</span> If you post a story to make fun of Michael, you would be participating in cyberbullying. Upstanders do not bully other people in return. \n<span class = 'inline bold'>C is incorrect:</span> You are unable to delete someone else's story."
         }
     },
@@ -237,7 +237,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "1",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>B is correct: Sharing private photos is permanent and adds to your digital footprint, which includes any information you share about yourself and any posts you have created. So, it is important to be careful when sharing photos on social media.\n</span>"
         },
         "Q2": {
@@ -252,7 +252,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "2",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>C is correct: Your favorite animal is safe to share since it is most likely cannot be traced back to you. A lot of people may like the same animal.</span> \n<span class = 'inline bold'>A is incorrect:</span> This is unsafe to share online, since what you post can be permanent and visible to people you do not trust. \n<span class = 'inline bold'>B is incorrect:</span> The name of your school is unsafe to share since it can be used to identify you. \n<span class = 'inline bold'>D is incorrect:</span> IYour first and last name should not be shared online since it may be visible to people who may use that information for unsafe and illegal purposes."
         },
         "Q3": {
@@ -265,7 +265,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "0",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>A is correct:  It is important to think about who has access to what you share since you only want people you trust and know in real life to see what you post and share online.  </span>"
         },
         "Q4": {
@@ -280,7 +280,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "2",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>C is correct: Your phone number is unsafe to give out since it can lead to scam calls and strangers trying to talk to you on the phone.</span> \n<span class = 'inline bold'>A is incorrect:</span> Your nickname is safe to give out, when it does not contain personal information. \n<span class = 'inline bold'>B is incorrect:</span> Your favorite food is safe to share since it is not personal information. \n<span class = 'inline bold'>D is incorrect:</span> Your favorite food is safe to share since it is not personal information."
         },
         "Q5": {
@@ -295,7 +295,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "1",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>B is correct: Priya should be careful since she has a responsibility to think about her friends' digital footprints. She should not post embarrassing pictures of her friends online.</span> \n<span class = 'inline bold'>A is incorrect:</span> Even if the accounts are not connected to the post, the photos can still be traced back to her friends. This means that the pictures would become a part of her friends' digital footprints. \n<span class = 'inline bold'>C is incorrect:</span> The pictures could still be embarrassing even with a better filter. Priya should not post embarrassing photos of her friends because it adds to their digital footprint and can negatively affect their reputation. \n<span class = 'inline bold'>D is incorrect:</span> People will not cyberbully you just because you posted a photo with them. "
         }
     },
@@ -310,7 +310,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "0",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>A is correct: Checking the source is a good way to determine the credibility or trustworthiness of an article.</span>"
         },
         "Q2": {
@@ -325,7 +325,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "1",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>B is correct: You should not share articles that are proven to be fake news, as you would be spreading false information.</span> \n<span class = 'inline bold'>A is incorrect:</span> You should flag fake news articles as this will help admins of the site review the site and potentially take it down. \n<span class = 'inline bold'>C is incorrect:</span> You should report fake news articles since that may result in it being taken down from the site. \n<span class = 'inline bold'>D is incorrect:</span> You should dislike fake news articles since dislikes might prevent the article from appearing as much on the site."
         },
         "Q3": {
@@ -340,7 +340,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "1",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>B is correct: It is always a good idea to fact-check what you read in articles with fact checking websites (ex: FactCheck.org) or major news websites.</span> \n<span class = 'inline bold'>A is incorrect:</span> You should not share articles on your social media accounts before determining whether it is trustworthy or fake. \n<span class = 'inline bold'>C is incorrect:</span> You should not merely trust articles to be credible and trustworthy. \n<span class = 'inline bold'>D is incorrect:</span> Ignoring articles that seem biased will limit your sources of information, so it is best to check the source and fact-check rather than just ignoring it."
         },
         "Q4": {
@@ -355,7 +355,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "1",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>B is correct: Fake news articles often use shocking and exaggerated headlines and images to get you to click on them. Often, the headline will try to make you curious and lure you like bait to click on it.</span> \n<span class = 'inline bold'>A is incorrect:</span> Credible sources are believable and trustworthy, so it is likely not clickbait. \n<span class = 'inline bold'>C is incorrect:</span> Not all articles regarding celebrities or popular topics are clickbait. \n<span class = 'inline bold'>D is incorrect:</span> An article being written by a famous journalist doesn't automatically make it clickbait."
         },
         "Q5": {
@@ -370,7 +370,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "0",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>A is correct: Lea should report the article because there are clear signs that it is fake news such as the fake website and the web address ending in 'com.co.' </span> \n<span class = 'inline bold'>B is incorrect:</span> The suspicious web address makes it clear that it is fake news, so Lea should not click into the article. \n<span class = 'inline bold'>C is incorrect:</span> You should not share a suspicious article on your social media accounts. You would potentially be sharing false information with your friends. \n<span class = 'inline bold'>D is incorrect:</span> Commenting on the article is not a good idea, as fake replies can be created. You should check other credible sites to fact-check instead."
         }
     },
@@ -387,7 +387,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "1",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>B is correct: Feeling uncomfortable is one possible red flag feeling.</span> \n<span class = 'inline bold'>A is incorrect:</span> Feeling satisfied is unrelated to red flag feelings. \n<span class = 'inline bold'>C is incorrect:</span> Feeling energetic is unrelated to red flag feelings. \n<span class = 'inline bold'>D is incorrect:</span> Feeling sleepy is unrelated to red flag feelings."
         },
         "Q2": {
@@ -402,7 +402,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "3",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>A is correct: Getting off social media and calling friends can help you balance your media usage with other activities you enjoy.\nB is also correct: Playing basketball is also an enjoyable activity that can help you have a good media balance, so you aren't spending too much time on social media.\nC is also correct: It is important to have hobbies that aren't online, so you aren't spending too much time online, creating an imbalance.</span>"
         },
         "Q3": {
@@ -417,7 +417,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "2",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>C is correct: Jealousy is a red flag feeling that may occur when you are on social media and see your friend post about having fun, when you weren't there.</span> \n<span class = 'inline bold'>A is incorrect:</span> Satisfaction is a positive feeling and is not a red flag feeling. \n<span class = 'inline bold'>B is incorrect:</span> Excitement is a positive feeling and is not a red flag feeling. \n<span class = 'inline bold'>D is incorrect:</span> Curiosity is a positive feeling and is not a red flag feeling."
         },
         "Q4": {
@@ -432,7 +432,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "3",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>D is correct: Taking a pause from social media can help Keisha to think about how she's feeling and what she can do to feel better.</span> \n<span class = 'inline bold'>A is incorrect:</span> Complaining about it may cause more misunderstandings between Keisha and her friends since social media is public. \n<span class = 'inline bold'>B is incorrect:</span> Not talking to her friends is not a good idea since Keisha is not addressing her red flag feelings. \n<span class = 'inline bold'>C is incorrect:</span> Posting about a trip with another friend is not a good idea since it is not kind to want to have other people feel red flag feelings."
         },
         "Q5": {
@@ -447,7 +447,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "1",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>B is correct: Staying on social media is not a good idea, as it can create more red flag feelings.</span> \n<span class = 'inline bold'>A is incorrect:</span> Hanging out with family can be an enjoyable activity for Karen to take her mind off the Facebook posts. \n<span class = 'inline bold'>B is incorrect:</span> Going for a walk is a good idea, as it can reset Karen's mind as she takes a pause from social media. \n<span class = 'inline bold'>D is incorrect:</span> Calling her cousin is a good option, as Karen can take a break from social media and have a good balance."
         }
     },
@@ -464,7 +464,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "2",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>C is correct: Social media is taking up too much time when it is distracting you from important tasks.</span> \n<span class = 'inline bold'>A is incorrect:</span> Setting the number of minutes for social media will help you better manage how much time you spend on social media. \n<span class = 'inline bold'>B is incorrect:</span> Using social media to share resources and fun activities with friends is a healthy way to use social media. \n<span class = 'inline bold'>D is incorrect:</span> Turning off notifications when you need to concentrate on homework will prevent you from spending too much time on social media."
         },
         "Q2": {
@@ -479,7 +479,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "2",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>C is correct: Social media feedback loops make you feel pleasure when you get a like or comment, making you check back for more responses.</span> \n<span class = 'inline bold'>A is incorrect:</span> Social media feedback loops make you stay on social media even longer than you intended. \n<span class = 'inline bold'>B and D are incorrect:</span> Both reminders and wanting to learn new things might make you check your social media accounts, but social media feedback loops are related to the responses (such as a like or comments) from other people that give you pleasure and make you check your social media accounts more."
         },
         "Q3": {
@@ -494,7 +494,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "2",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>C is correct: Limiting the number of daily notifications would prevent Ivonne from checking for updates as often.</span> \n<span class = 'inline bold'>A is incorrect:</span> Quitting social media would not be more balanced because Ivonne would not use social media at all. \n<span class = 'inline bold'>B is incorrect:</span> Increasing the number of notifications would make Ivonne check her phone even more. \n<span class = 'inline bold'>D is incorrect:</span> Following a different basketball team would not help Ivonne control her overall use of social media. She would check for updates just as much."
         },
         "Q4": {
@@ -509,7 +509,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "3",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>D is correct: John can play soccer with his friends, and then respond to comments at a later time.</span> \n<span class = 'inline bold'>A is incorrect:</span> John does not have to reply to his online friends immediately. He can check their comments later. \n<span class = 'inline bold'>B is incorrect:</span> Asking his soccer team friends would distract him and his friends from playing soccer. \n<span class = 'inline bold'>C is incorrect:</span> John does not need to respond to all of the comments at the same time before bed. He can spread out his replies for a more balanced lifestyle."
         },
         "Q5": {
@@ -524,7 +524,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "2",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>C is correct: Not receiving many reactions does not mean that people don't like Lucy. People cannot like every single post they see.</span> \n<span class = 'inline bold'>A is incorrect:</span> Encouraging Lucy to post more may make her feel more disappointed if she still doesn't receive reactions from others. \n<span class = 'inline bold'>B is incorrect:</span> Telling Lucy to delete her post may make her feel that people dislike her and make her feel bad about herself. \n<span class = 'inline bold'>D is incorrect:</span> Staying on social media all day long is unhealthy. She would develop an unbalanced social media habit."
         }
     },
@@ -541,7 +541,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "3",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>D is correct: Phishing is when someone tries to trick you into sharing important private information.</span> \n<span class = 'inline bold'>A is incorrect:</span> Cyberbullying is when a person posts or shares negative information about another person online.\n<span class = 'inline bold'>B is incorrect:</span> Encryption has to do with protecting your information with a password. \n<span class = 'inline bold'>C is incorrect:</span> 2-step verification is when you add an extra layer of security to protect your account when you log-in."
         },
         "Q2": {
@@ -556,7 +556,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "3",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>D is correct: A, B, and C are all actions you should take if you fall for a phishing scam.</span>"
         },
         "Q3": {
@@ -571,7 +571,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "3",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>D is correct: Ignoring the post is a good idea to protect your information from scammers.</span> \n<span class = 'inline bold'>A is incorrect:</span> It is not a good idea to click on a suspicious post. Scammers often offer free items or giveaways to trick people into clicking. \n<span class = 'inline bold'>B is incorrect:</span> Sharing a suspicious link that may be a scam is not a good idea, since your friends may get phished or scammed. \n<span class = 'inline bold'>C is incorrect:</span> Your gamer friend may not be the best person to ask. A trusted adult would be a better person to ask advice from."
         },
         "Q4": {
@@ -586,7 +586,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "1",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>B is correct: Not giving away any personal information is the safest option since your personal information can be stolen by scammers.</span> \n<span class = 'inline bold'>A is incorrect:</span> Putting in fake information is not safe as well since they could be tracking your location and the website may have unsafe links. \n<span class = 'inline bold'>C is incorrect:</span> It is not safe to give away your personal information as someone can steal your identity. \n<span class = 'inline bold'>D is incorrect:</span> Sharing the link to your facebook page is not a good idea since your friends can also have their information stolen."
         },
         "Q5": {
@@ -601,7 +601,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "2",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>C is correct: It is not safe to give her your information, scammers can pretend to be your friend and even send emails from Jane's account.</span> \n<span class = 'inline bold'>A is incorrect:</span> It is a good idea to confirm with Jane. \n<span class = 'inline bold'>B is incorrect:</span> A trusted adult can give you helpful advice. \n<span class = 'inline bold'>D is incorrect:</span> Responding can lead to dangerous situations where your information may be stolen."
         }
     },
@@ -618,7 +618,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "0",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>A is correct: People can have separate accounts for different types of content and audiences.</span> \n<span class = 'inline bold'>B is incorrect:</span> You do not always have full control over who sees your post, since other users can share your posts. \n<span class = 'inline bold'>C is incorrect:</span> You can control who follows you on social media. However, you do not have full control over your social media audience. \n<span class = 'inline bold'>D is incorrect:</span> Social media is for sharing, but private information should not be shared with everyone."
         },
         "Q2": {
@@ -633,7 +633,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "3",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>D is correct: A, B, and C are all reasons to create different social media accounts. People would want different social media accounts to interact with different groups of people, have accounts for specific content, and to keep their identities anonymous.</span> "
         },
         "Q3": {
@@ -648,7 +648,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "1",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>B is correct: Even if you are anonymous, what you post may give clues to your identity.</span> \n<span class = 'inline bold'>A is incorrect:</span> Even if you are anonymous, people can find out who you are based on what you post or your friends on social media. \n<span class = 'inline bold'>C is incorrect:</span> It can be a good idea to use an anonymous account to post specific content without revealing your identity. \n<span class = 'inline bold'>D is incorrect:</span> It is not always a good idea to use an anonymous account in case you want an account to connect with your friends or family."
         },
         "Q4": {
@@ -663,7 +663,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "3",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>D is correct: Olivia should tell Laura that it is hurtful to comment or post mean things even from an anonymous account.</span> \n<span class = 'inline bold'>A is incorrect:</span> Olivia should ask Laura to never comment or post mean things. \n<span class = 'inline bold'>B is incorrect:</span> Olivia can explain to Laura that it's hurtful to say mean things about people, even if the people are mean. \n<span class = 'inline bold'>C is incorrect:</span> Laura should not use any account to say mean things about people."
         },
         "Q5": {
@@ -678,7 +678,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "3",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>D is correct: You can create a separate account for family, so your family can still share content without your friends seeing.</span> \n<span class = 'inline bold'>A is incorrect:</span> If you delete your social media account, you won't be able to stay connected with your family and friends. \n<span class = 'inline bold'>B is incorrect:</span> If you tell your grandma to delete her account, she might feel hurt and would not be able to share posts with others. \n<span class = 'inline bold'>C is incorrect:</span> You could tell your grandma that you don' t like when she shares those videos on her public account."
         }
     },
@@ -695,7 +695,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "1",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>B is correct: You can change what information is visible to other users and companies in privacy settings.</span> \n<span class = 'inline bold'>A is incorrect:</span> Direct messages are where you can talk to your friends. You cannot change what information is visible to other users and companies. \n<span class = 'inline bold'>C is incorrect:</span> Your friend's page has their information visible. Only your friend can change that information. \n<span class = 'inline bold'>D is incorrect:</span> You can change what information is visible by using your privacy settings."
         },
         "Q2": {
@@ -710,7 +710,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "3",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>D is correct: A, B, and C are part of the acronym ASK which is used when analyzing a privacy policy. These questions would help Jennie think about what will be accessed or collected by the company, what will be shared with other companies, and what could be known about her if she creates an account.</span>"
         },
         "Q3": {
@@ -725,7 +725,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "1",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>B is correct: Irene can change what information is visible to others by editing her privacy settings.</span> \n<span class = 'inline bold'>A is incorrect:</span> This won't have an effect on who will see the pictures. Her friends can still go to her profile and look at the pictures. \n<span class = 'inline bold'>C is incorrect:</span> This is a dramatic measure for something that can be changed easily in the privacy settings. \n<span class = 'inline bold'>D is incorrect:</span> If Irene is only concerned about her friends seeing the pictures, she can solve the issue by changing her privacy settings."
         },
         "Q4": {
@@ -740,7 +740,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "2",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>C is correct: She should not interact with that person because it could be dangerous. Telling a trusted adult will keep her safe and the adult can take actions to keep her safe.</span> \n<span class = 'inline bold'>A is incorrect:</span> Accepting the follow request will give the stranger access to her posts and information, which is unsafe. \n<span class = 'inline bold'>B is incorrect:</span> It is not safe to interact with strangers. \n<span class = 'inline bold'>D is incorrect:</span> It is not safe to interact with strangers."
         },
         "Q5": {
@@ -755,7 +755,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "3",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>D is correct: A trusted adult can help you choose if creating the account is a good idea for you or not. A trusted adult can also read the privacy policy clearly and see if there is anything wrong.</span> \n<span class = 'inline bold'>A is incorrect:</span> The chances that your information will be taken is higher than you think. A small risk is still a risk and you should think it through first. \n<span class = 'inline bold'>B is incorrect:</span> There is more information than what you input into it. Your email and your password is considered sensitive information. Your IP address could also be tracked. \n<span class = 'inline bold'>C is incorrect:</span> Your friend might not know the dangers of the whole situation. Asking a trusted adult is the best option for an opinion."
         }
     },
@@ -772,7 +772,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "3",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>D is correct: Your home address and real name are private information and should not be shared with strangers. \n</span> <span class = 'inline bold'>A, B and C are incorrect:</span> Your favorite Minecraft characters, pet's name, and favorite ice-cream flavors are safe to share with anyone because they are not private information. "
         },
         "Q2": {
@@ -787,7 +787,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "3",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>D is correct: A, B, and C are all reasons why sharing private information online with strangers is risky. You don't know what people will do with information you share, and they may trick you or spam you.</span> "
         },
         "Q3": {
@@ -802,7 +802,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "2",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>C is correct: Ignoring the message will prevent the person from gaining information from you. Tell a trusted adult, so they can assess the situation and decide how to proceed.</span> \n<span class = 'inline bold'>A is incorrect:</span> Sending the private information to the person you don' t know that well may be risky because they may have bad intentions. \n<span class = 'inline bold'>B is incorrect:</span> Sharing your location and meeting someone you don' t know is dangerous. \n<span class = 'inline bold'>D is incorrect:</span> The person may trick you into revealing your private information.You should not continue talking to them. \n<span class = 'inline bold'>E is incorrect:</span> It' s important to tell a trusted adult about the request before sharing any private information."
         },
         "Q4": {
@@ -817,7 +817,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "3",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>D is correct: Since you have never met Sam in person, you should not share your home address or any other private information.</span> \n<span class = 'inline bold'>A, B, and C are incorrect:</span> It's not safe to share your home address. You should be clear that you don't share private information, so she will not keep asking you for it."
         },
         "Q5": {
@@ -832,7 +832,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "1",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>B is correct: Your friend should delete the message, so less people will see it. Sharing a phone number is not safe, and people may use it with bad intentions.</span> \n<span class = 'inline bold'>A is incorrect:</span> You should not share your number, and then tell your friend it' s not safe to share private information with the entire school. \n<span class = 'inline bold'>C is incorrect:</span> The number of replies is important to know how many people have your friend' s number, but you should also tell your friend not to share their private information. \n<span class = 'inline bold'>D is incorrect:</span> You should not encourage your friend to share private information. It is also dangerous for everyone to send their phone numbers in the group chat."
         }
     },
@@ -849,7 +849,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "0",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>A is correct:  Companies collect data (your visited sites, clicks, etc.)  about you, so they can show you ads for things that they think you will like.</span> \n<span class = 'inline bold'>B is incorrect:</span> What is entertaining is different for each person, so companies must collect data to see what each person finds entertaining and what they might like. \n</span> <span class = 'inline bold'>C is incorrect:</span> Large billboards are not targeted advertisements. \n</span> <span class = 'inline bold'>D is incorrect:</span> Targeted advertisements refer to the specific advertisements that certain apps and sites show you, not all advertisements on the Internet."
         },
         "Q2": {
@@ -862,7 +862,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "0",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>A is correct: Advertisements on social media are based on data that companies have collected about you, to see what you might prefer.</span> "
         },
         "Q3": {
@@ -875,7 +875,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "0",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>A is correct: Companies want to show you ads of products you might like, so they collect data about you. But you may not realize your data is being collected such as your clicks on websites and apps.</span>"
         },
         "Q4": {
@@ -890,7 +890,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "2",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>C is correct: Companies pay for “sponsored” posts on social media to advertise their product, but they look a lot like posts from the average person.</span> \n<span class = 'inline bold'>A is incorrect:</span> Posts can be interesting without being a sponsored post. \n<span class = 'inline bold'>B is incorrect:</span> Social media influencers and celebrities can receive lots of likes on their posts even if the posts are not sponsored. \n<span class = 'inline bold'>D is incorrect:</span> Not all sponsored posts are from very popular users."
         },
         "Q5": {
@@ -905,7 +905,7 @@
             },
             "responseRequirement": "any",
             "correctResponse": "1",
-            "files": [""],
+            "voiceoverFiles": [""],
             "explanation": "<span class = 'inline bold green'>B is correct: Cookies are used to identify your device and track your behavior on websites. Turning off cookies in the web browser makes the companies unable to track your behaviors, so it may help prevent targeted advertisements.</span> \n<span class = 'inline bold'>A is incorrect:</span> Looking for different types of shoes may lead to more ads appearing on his Facebook page as his behavior may be tracked by cookies. \n<span class = 'inline bold'>C is incorrect:</span> Liking ads may result in more targeted ads since likes may be tracked as part of data that companies collect. \n<span class = 'inline bold'>D is incorrect:</span> Turning off his phone would help him to not see ads when the phone is off. But when Jeremy turns on his phone to use it, the ads will likely reappear."
         }
     }

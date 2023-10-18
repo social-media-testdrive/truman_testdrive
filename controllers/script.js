@@ -715,23 +715,18 @@ exports.postDeleteFeedAction = (req, res, next) => {
  * TODO: This function should probably be moved to the user controller.
  */
 exports.postStartPageAction = (req, res, next) => {
-
     User.findById(req.user.id, (err, user) => {
-
         // somehow user does not exist here
         if (err) {
             return next(err);
         }
-
         // Define the push location
         let userAction = user.startPageAction;
-
         //Post does not exist yet in User DB, so we have to add it now
         let cat = req.body.action;
-
         // add new post into correct location
+        console.log(cat);
         userAction.push(cat);
-
         // save to DB
         user.save((err) => {
             if (err) {
