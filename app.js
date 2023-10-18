@@ -531,12 +531,18 @@ app.get('/sports/targeted', passportConfig.isAuthenticated, setHttpResponseHeade
 });
 
 // Render start page (all modules)
-app.get('/start/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, function(req, res) {
+app.get('/start/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, isValidModId, async function(req, res) {
     if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
         res.redirect('/');
     } else {
-        res.render(req.params.modId + '/' + req.params.modId + '_start', {
-            title: 'Learn'
+        let startData;
+        const data = await fs.readFileAsync(`${__dirname}/public2/json/startSectionData.json`)
+        startData = JSON.parse(data.toString())[req.params.modId];
+
+        res.render('base_start', {
+            title: 'Learn',
+            mod: req.params.modId,
+            startData
         });
     }
 });

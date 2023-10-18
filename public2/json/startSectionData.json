@@ -1,0 +1,374 @@
+{
+    "accounts": {
+        "Learn": {
+            "concepts": [
+                "Before joining your friends on social media, you'll need to create an account and fill out some basic profile information.",
+                "When you create your account, be sure to choose the right kind of username and password to keep your account safe and protect you and your friends!"
+            ],
+            "voiceoverFiles": ["CUSML.8.1.1.mp3", "CUSML.8.1.2.mp3"]
+        },
+        "KeyTerms": [{
+                "term": "Username",
+                "definition": "The name or ID that you use when you log in.",
+                "description": "Some social media sites ask you to use your e-mail address as a username. Others will ask you to choose a name for yourself.",
+                "voiceoverFiles": ["CUSML.8.2.1.mp3"]
+            },
+            {
+                "term": "Password",
+                "definition": "A secret string of letters, symbols, and numbers that you can use to restrict who can access something digital.",
+                "description": "Think of your password like a key to your home. Only people with the key can get inside.",
+                "voiceoverFiles": ["CUSML.8.2.2.mp3"]
+            },
+            {
+                "term": "Profile",
+                "definition": "Your personal page on social media that includes information about you.",
+                "description": "Your profile may contain information like your name, location, and pictures you post or are tagged in.",
+                "voiceoverFiles": ["CUSML.8.2.3.mp3"]
+            }
+        ]
+    },
+    "advancedlit": {
+        "Learn": {
+            "concepts": [
+                "Being connected on social media can help you get news as soon as things happen, but early news reports might not be very detailed or accurate.",
+                "News outlets are battling to report the news first, which means we get news faster. But we have to be careful about making sure the news is accurate and complete.",
+                "And even though breaking news can be inaccurate or incomplete, people might share it on social media to get more “likes” and shares, or to be seen as important, smart, and helpful."
+            ],
+            "voiceoverFiles": ["CUSML.9.1.1.mp3", "CUSML.9.1.2.mp3", "CUSML.9.1.3.mp3"]
+        },
+        "KeyTerms": [{
+                "term": "Breaking News",
+                "definition": "Information being reported about an event that has just happened or is currently occurring.",
+                "description": "",
+                "voiceoverFiles": ["CUSML.9.2.1.mp3"]
+            },
+            {
+                "term": "Fact Checking",
+                "definition": "Verifying the information you see in news stories.",
+                "description": "",
+                "voiceoverFiles": ["CUSML.9.2.2.mp3"]
+            },
+            {
+                "term": "Opinion",
+                "definition": "A personal belief, view, or judgment about something.",
+                "description": "Articles that are based on the author's opinions are called \"opinion pieces.\"",
+                "voiceoverFiles": ["CUSML.9.2.3.mp3"]
+            }
+        ]
+    },
+    "cyberbullying": {
+        "Learn": {
+            "concepts": [
+                "Cyberbullying is when someone posts or shares negative things about someone else online.",
+                "The bully may use digital devices, sites, or apps. The bully often does this again and again to the same person."
+            ],
+            "voiceoverFiles": ["CUSML.6.1.1.mp3", "CUSML.6.1.2.mp3"]
+        },
+        "KeyTerms": [{
+                "term": "Bully",
+                "definition": "Someone who hurts a person or a group on purpose more than once.",
+                "description": "",
+                "voiceoverFiles": ["CUSML.6.2.1.mp3"]
+            },
+            {
+                "term": "Target",
+                "definition": "Someone who is being bullied",
+                "description": "",
+                "voiceoverFiles": ["CUSML.6.2.2.mp3"]
+            },
+            {
+                "term": "Upstander",
+                "definition": "Someone who acts against bullying.",
+                "description": "An upstander might confront the bully or tell a trusted adult. An upstander might support the person being bullied by checking in with them or defending them.",
+                "voiceoverFiles": ["CUSML.6.2.3.mp3"]
+            }
+        ]
+    },
+    "digfoot": {
+        "Learn": {
+            "concepts": [
+                "Social media is a great way to communicate with others and express yourself. You can also use it to show others, including colleges or future employers, who you are as a person.",
+                "However, social media use can also have drawbacks. What you and others share is permanent, and it's easy to get caught in sharing things you may later regret. It can also take a lot of time to manage different platforms and accounts."
+            ],
+            "voiceoverFiles": ["CUSML.4.1.1.mp3", "CUSML.4.1.2.mp3"]
+        },
+        "KeyTerms": [{
+                "term": "Digital Footprint",
+                "definition": "All the information online about a person either posted by that person or others, intentionally or unintentionally.",
+                "description": "Your digital footprint can affect your reputation online and offline. It's important to manage it as much as you can!",
+                "voiceoverFiles": ["CUSML.4.2.1.mp3"]
+            },
+            {
+                "term": "Audience",
+                "definition": "Anyone who can see information about you or posted by you online.",
+                "description": "Before you post on social media, think about your current and future audience. Remember that your posts will always be a part of your digital footprint!",
+                "voiceoverFiles": ["CUSML.4.2.2.mp3"]
+            },
+            {
+                "term": "Oversharing",
+                "definition": "When people share something they later regret.",
+                "description": "This can be when people share too much private or personal information about themselves.",
+                "voiceoverFiles": ["CUSML.4.2.3.mp3"]
+            }
+        ]
+    },
+    "digital-literacy": {
+        "Learn": {
+            "concepts": [
+                "Social media is a great way to get news quickly and easily. Your friends may like or share articles that are interesting to you.",
+                "But you have to be careful! Sometimes people share articles on social media that look like accurate news but actually include false or untrustworthy information."
+            ],
+            "voiceoverFiles": ["CUSML.5.1.1.mp3", "CUSML.5.1.2.mp3"]
+        },
+        "KeyTerms": [{
+                "term": "Source",
+                "definition": "The website, organization, or person the information comes from.",
+                "description": "",
+                "voiceoverFiles": ["CUSML.5.2.1.mp3"]
+            },
+            {
+                "term": "Credible",
+                "definition": "Believable and trustworthy",
+                "description": "",
+                "voiceoverFiles": ["CUSML.5.2.2.mp3"]
+            },
+            {
+                "term": "Fake news",
+                "definition": "A news story that looks real but has been made up.",
+                "description": "",
+                "voiceoverFiles": ["CUSML.5.2.3.mp3"]
+            },
+            {
+                "term": "Clickbait",
+                "definition": "An article that has a catchy headline to get people to click on it.",
+                "description": "",
+                "voiceoverFiles": ["CUSML.5.2.4.mp3"]
+            }
+        ],
+        "KeyTerms_2": {
+            "question": "Why does fake news exist?",
+            "content": [{
+                    "term": "Money",
+                    "definition": "Each time someone clicks on a news article, the website makes more money. So, websites create news articles that draw people's attention. They don't care whether the information is true or not.",
+                    "description": "",
+                    "icon": "dollar sign",
+                    "voiceoverFiles": ["CUSML.5.3.2.mp3"]
+                },
+                {
+                    "term": "Influence",
+                    "definition": "Other times, people write misleading articles to spread their beliefs, presenting their opinions as facts.",
+                    "description": "",
+                    "icon": "magic",
+                    "voiceoverFiles": ["CUSML.5.3.3.mp3"]
+                }
+            ]
+        }
+    },
+    "esteem": {
+        "Learn": {
+            "concepts": [
+                "Social media use can come with its ups and downs. On one hand, you can connect with friends, share what you are doing or thinking, and stay up-to-date on the latest happenings.",
+                "On the other hand, it can be distracting and you may feel like you have to check it all the time. There can also be pressure to make it look like your life is perfect, which may feel exhausting.",
+                "In this module, you will learn how to use social media in a way that feels positive and balanced."
+            ],
+            "voiceoverFiles": ["CUSML.1.1.1.mp3", "CUSML.1.1.2.mp3", "CUSML.1.1.3.mp3"]
+        },
+        "KeyTerms": [{
+                "term": "Red flag feeling",
+                "definition": "When something happens on social media that makes you feel uncomfortable, worried, sad, or anxious.",
+                "description": "",
+                "voiceoverFiles": ["CUSML.1.2.1.mp3"]
+            },
+            {
+                "term": "Oversharing",
+                "definition": "Sharing personal feelings, information, or experience that later make someone feel uncomfortable or regretful.",
+                "description": "",
+                "voiceoverFiles": ["CUSML.1.2.2.mp3"]
+            },
+            {
+                "term": "Media balance",
+                "definition": "Using media in a way that feels healthy and in balance with other life activities.",
+                "description": "",
+                "voiceoverFiles": ["CUSML.1.2.3.mp3"]
+            }
+        ]
+    },
+    "habits": {
+        "Learn": {
+            "concepts": [
+                "Using social media can be fun and interesting. In fact, the features within social media apps are designed to capture your attention.",
+                "It benefits social media companies for users to spend time on social media, so it is up to you to be sure you are balancing your social media time with other meaningful things in your life.",
+                "Today, you are going to learn about media balance and explore what you can do to build healthy social media habits."
+            ],
+            "voiceoverFiles": ["CUSML.10.1.1.mp3", "CUSML.10.1.2.mp3", "CUSML.10.1.3.mp3"]
+        },
+        "KeyTerms": [{
+                "term": "Habit",
+                "definition": "Something we do automatically without thinking.",
+                "description": "Social media <i>habits</i> can include things like checking social media regularly or scrolling through your social media feed as soon as you wake up.",
+                "voiceoverFiles": ["CUSML.10.2.1.mp3"]
+            },
+            {
+                "term": "Attention-grabbing design",
+                "definition": "Features of a device or app that are intended to encourage users to use it frequently.",
+                "description": "Some features include notifications for new content, autoplay on videos, and endless scrolling.",
+                "voiceoverFiles": ["CUSML.10.2.2.mp3"]
+            },
+            {
+                "term": "Feedback loop",
+                "definition": "Using media in a way that feels healthy and in balance with other life activities.",
+                "description": "",
+                "voiceoverFiles": ["CUSML.10.2.3.mp3"]
+            }
+        ]
+    },
+    "phishing": {
+        "Learn": {
+            "concepts": [
+                "When you are online, you might come across scams that try to steal your private information or your identity.",
+                "If someone steals your private information, they can pretend to be you. This is called identity theft and you may not be aware of its consequences until far into the future.",
+                { "If your identity is stolen, someone could:": ["Apply for credit cards in your name and buy things", "Cyberbully someone while pretending to be you", "Create false identification documents"] }
+            ],
+            "voiceoverFiles": ["CUSML.3.1.1.mp3", "CUSML.3.1.2.mp3", "CUSML.3.1.3.mp3"]
+        },
+        "KeyTerms": [{
+                "term": "Private information",
+                "definition": "Information that can be used to identify you because it is unique to you (e.g., your full name, your address, or your password).",
+                "description": "",
+                "voiceoverFiles": ["CUSML.3.2.1.mp3"]
+            },
+            {
+                "term": "Phishing scam",
+                "definition": "When someone poses as an institution, like a bank or a school, and posts a message asking you to provide private information.",
+                "description": "",
+                "voiceoverFiles": ["CUSML.3.2.2.mp3"]
+            },
+            {
+                "term": "Shortened URL",
+                "definition": "A web address that has been condensed and that could potentially mislead a user into going into a risky website.",
+                "description": "",
+                "voiceoverFiles": ["CUSML.3.2.3.mp3"]
+            }
+        ]
+    },
+    "presentation": {
+        "Learn": {
+            "concepts": [
+                "Posting on social media can be a great way to show people who you are! You can be yourself and share your thoughts with other people.",
+                "Sometimes, people have fake accounts too. These are called finstas or spam accounts. People may have these to talk to others who are interested in the same things as they are, or to post things for only their close friends to see."
+            ],
+            "voiceoverFiles": ["CUSML.12.1.1.mp3", "CUSML.12.1.2.mp3"]
+        },
+        "KeyTerms": [{
+                "term": "Audience",
+                "definition": "Anyone who can see information about you or posted by you online.",
+                "description": "",
+                "voiceoverFiles": ["CUSML.12.2.1.mp3"]
+            },
+            {
+                "term": "Anonymous",
+                "definition": "Keeping your name and identity hidden online.",
+                "description": "Sometimes people use finstas to post anonymously.",
+                "voiceoverFiles": ["CUSML.12.2.2.mp3"]
+            },
+            {
+                "term": "Curate",
+                "definition": "To select and organize what you post on social media.",
+                "description": "Some people keep their main account carefully curated, while they might post more casually on an anonymous account.",
+                "voiceoverFiles": ["CUSML.12.2.3.mp3"]
+            }
+        ]
+    },
+    "privacy": {
+        "Learn": {
+            "concepts": [
+                "When you go on social media, it’s important to be aware of what you share and who you share it with.",
+                "If you have your social media profile open to the public, people can use your information for harmful things, like to try to trick or scam you.",
+                "The information you share can also be used by the company that runs the website. They can sell your information to advertisers and show you targeted advertisements."
+            ],
+            "voiceoverFiles": ["CUSML.7.1.1.mp3", "CUSML.7.1.2.mp3", "CUSML.7.1.3.mp3"]
+        },
+        "KeyTerms": [{
+                "term": "Privacy",
+                "definition": "Control of personal information to protect it from being observed or tracked by others.",
+                "description": "",
+                "voiceoverFiles": ["CUSML.7.2.1.mp3"]
+            },
+            {
+                "term": "Privacy Settings",
+                "definition": "Choices a website or app might give you about what information is visible to other users and companies.",
+                "description": "",
+                "voiceoverFiles": ["CUSML.7.2.2.mp3"]
+            },
+            {
+                "term": "Privacy Policy",
+                "definition": "A legal document that an app or website must provide and that describes what user information they collect and how they use it.",
+                "description": "",
+                "voiceoverFiles": ["CUSML.7.2.3.mp3"]
+            },
+            {
+                "term": "Opt Out",
+                "definition": "To choose to not participate in something.",
+                "description": "",
+                "voiceoverFiles": ["CUSML.7.2.3.mp3"]
+            }
+        ]
+    },
+    "safe-posting": {
+        "Learn": {
+            "concepts": [
+                "Social media can connect people over the Internet. People use social media to share information, their interests, and connect with friends and family. They can also use it to talk to new people and meet new friends!",
+                "On social media, you may be talking to many different people at the same time. You might not know some of them in real life. Remember to always be careful about the information you share online, especially with people you've never met face-to-face."
+            ],
+            "voiceoverFiles": ["CUSML.11.1.1.mp3", "CUSML.11.1.2.mp3"]
+        },
+        "KeyTerms": [{
+                "term": "Audience",
+                "definition": "Anyone who can see information about you or posted by you online.",
+                "description": "This could include strangers or people you haven't met face-to-face.",
+                "voiceoverFiles": ["CUSML.11.2.1.mp3"]
+            },
+            {
+                "term": "Private information",
+                "definition": "Information about you that can be used to identify you because it is unique to you.",
+                "description": "This can include things like your full name, school, home address, or phone number.",
+                "voiceoverFiles": ["CUSML.11.2.2.mp3"]
+            },
+            {
+                "term": "Risky",
+                "definition": "Potentially harmful to one’s emotional or physical well-being.",
+                "description": "It is risky to share private information online. People could share it with others or use it to try to trick or scam you.",
+                "voiceoverFiles": ["CUSML.11.2.3.mp3"]
+            }
+        ]
+    },
+    "targeted": {
+        "Learn": {
+            "concepts": [
+                "It's really common to see advertisements when browsing through your social media feed.",
+                "In fact, companies often collect information about you and use it to show you ads for things they think you'll like. This is called targeted advertising.",
+                "While it may be nice to see ads tailored to your interests, the more companies know about you, the more your information is at risk of being sold, stolen, or used in ways you don't agree with."
+            ],
+            "voiceoverFiles": ["CUSML.2.1.1.mp3", "CUSML.2.1.2.mp3", "CUSML.2.1.3.mp3"]
+        },
+        "KeyTerms": [{
+                "term": "Data",
+                "definition": "Facts and statistics about a user that are collected for different purposes.",
+                "description": "Apps and websites collect data about your online activity (i.e. other sites you visit, what you click on, what you search for, etc.)",
+                "voiceoverFiles": ["CUSML.2.2.1.mp3"]
+            },
+            {
+                "term": "Targeted advertising",
+                "definition": "When apps or websites show you certain types of advertisements based on information they’ve collected about you.",
+                "description": "",
+                "voiceoverFiles": ["CUSML.2.2.2.mp3"]
+            },
+            {
+                "term": "Sponsored post",
+                "definition": "A post on social media that is paid for by a company as an advertisement for their product.",
+                "description": "Sponsored posts usually are labeled as \"sponsored\" but they look a lot like posts from the average person.",
+                "voiceoverFiles": ["CUSML.2.2.3.mp3"]
+            }
+        ]
+    }
+}

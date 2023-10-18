@@ -1,0 +1,118 @@
+extends ./ui_layout
+
+block content
+  .ui.text.container.addBottomMargin
+    .ui.raised.segment.mt-6
+      h3.ui.header.mt-2
+        i.book.blue.icon
+        .content
+          | Learn
+      .ui.divider
+      .ui.basic.segment.removePadding
+        .ui.mini.green.right.labeled.icon.button.showLearnSectionButton
+          i.down.arrow.icon
+          |   Next
+      .ui.basic.segment.learnSegment.hidden
+        each concept in startData["Learn"]["concepts"]
+          if (typeof concept == "object")
+            each val, key in concept
+              h5.ui.header
+                i.arrow.circle.right.blue.icon
+                .content !{key}
+              each bullet in val
+                h5.ui.header(style="margin:calc(.14285714em) 0 1rem !important;")
+                  i.circle.bullet.blue.icon
+                  .content !{bullet}
+          else 
+            h5.ui.header
+              i.arrow.circle.right.blue.icon
+              .content !{concept}
+        .ui.mini.green.right.labeled.icon.button.showKeyTermsButton
+          i.down.arrow.icon
+          |   Next
+    
+    .ui.raised.segment.keyIdeasSegment.hidden
+      h3.ui.header.mt-2
+        i.key.blue.icon
+        .content Key Ideas
+      .sub.header.grayElement.mt-2
+        i.hand.pointer.icon
+        span Click on each word below to learn more
+      .ui.stackable.padded.two.column.grid.mt-3
+        each keyTerm, index in startData["KeyTerms"]
+          .ui.column
+            .keyTerm.ui.raised.segment(class="voiceover_keyTerm"+(index+1))
+              a.ui.blue.ribbon.label.keyTermLabel
+                  span !{keyTerm["term"]}
+              span.hidden.keyTermDefinition
+                | !{keyTerm["definition"]}
+                if keyTerm["description"]
+                  ul !{keyTerm["description"]}       
+    if startData["KeyTerms_2"]
+      #question2.ui.raised.segment.keyIdeasSegment.hidden
+        h3.ui.header.mt-2
+          i.question.circle.outline.blue.icon
+          .content !{startData["KeyTerms_2"]["question"]}
+        .sub.header.grayElement.mt-2
+          i.hand.pointer.icon 
+          span Click on each word below to learn more
+        .ui.stackable.padded.two.column.grid.mt-3
+          each keyTerm, index in startData["KeyTerms_2"]["content"]
+            .ui.column
+              .keyTerm.ui.raised.segment(class="voiceover_keyTerm"+(index+startData["KeyTerms"].length+1))
+                a.ui.blue.ribbon.label.keyTermLabel
+                  i.icon(class=keyTerm["icon"])
+                  span !{keyTerm["term"]}
+                span.hidden.keyTermDefinition
+                  | !{keyTerm["definition"]}
+                  if keyTerm["description"]
+                    ul !{keyTerm["description"]}    
+    .ui.warning.message#clickNextWarning
+      .header
+       | Click "Next"
+    .ui.warning.message#clickLabelsWarning
+     .header
+      | Click on each label to proceed  
+    a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
+      .ui.labeled.icon.button
+        i.rocket.icon
+        |   Got it!
+            
+block scripts
+  script.
+    const startData = !{JSON.stringify(startData)}; // reflectionData is passed to pug file via render function in app.js
+    let voiceoverMappings = {
+      '.showLearnSectionButton': {
+         "initialDelay": 700,
+        "delay": 500,
+        "files": startData["Learn"]["voiceoverFiles"]
+      }
+    };
+    startData["KeyTerms"].forEach(function (keyTerm, i) {
+      const files = keyTerm["voiceoverFiles"];
+      const key = '.voiceover_keyTerm' + (i+1);
+      let cat = {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": files
+      };
+      voiceoverMappings[key] = cat;
+    });
+    if (startData["KeyTerms_2"]){
+      startData["KeyTerms_2"]["content"].forEach(function (keyTerm, i) {
+        const files = keyTerm["voiceoverFiles"];
+        const key = '.voiceover_keyTerm' + (i+startData["KeyTerms"].length+1);
+        let cat = {
+          "initialDelay": 700,
+          "delay": 0,
+          "files": files
+        };
+        voiceoverMappings[key] = cat;
+      });
+    }
+    console.log(voiceoverMappings)
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_start.js")
+
+block styles
+  link(rel='stylesheet', href='/css/start.css')  
