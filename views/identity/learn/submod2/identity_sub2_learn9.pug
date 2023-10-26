@@ -7,10 +7,13 @@ block content
       h1.ui.header.large#learn-title
         .content
           | Warning Signs for specific Identity Theft Scams
+      .row#video-overlay(style="background: transparent;text-align: center; margin-top: 25px;")
+          .inner-video
+              iframe#intro-video(type='text/html' width='600px' height='340px' src='https://dart-store.s3.amazonaws.com/identity-warning.mp4' frameborder='0')
 
-      iframe(type='text/html' width='640' height='360'
-        src='/videos/identity-intro.mp4'
-        frameborder='0' style='display: block; margin: auto;')
+      //- iframe(type='text/html' width='640' height='360'
+      //-   src='/videos/identity-intro.mp4'
+      //-   frameborder='0' style='display: block; margin: auto;')
       
       .ui.icon.blue.message
         .icon

@@ -7,6 +7,11 @@ header {
   z-index: 1000 !important;
 }
 
+/* img.ui.small.image.dart-logo {
+  width: 200px;
+} */
+
+
 /* moved to dart.css */
 /* .right.menu a.item {
   font-family: 'Armata', sans-serif;

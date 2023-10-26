@@ -104,7 +104,7 @@
     "5": {
         "type": "yes_no",
         "partial": "q5.html",
-        "prompt": "5. Is this email a scam?",
+        "prompt": "5. Is this message a scam?",
         "choices": {
         "yes": {
             "text": "Yes"

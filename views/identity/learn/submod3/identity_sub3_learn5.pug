@@ -7,9 +7,13 @@ block content
       h1.ui.header.large#learn-title
         .content
           | When you have your identity stolen
-      iframe(type='text/html' width='640' height='360'
-        src='/videos/identity-protect.mp4'
-        frameborder='0' style='display: block; margin: auto;')
+      .row#video-overlay(style="background: transparent;text-align: center; margin-top: 25px;")
+          .inner-video
+              iframe#intro-video(type='text/html' width='600px' height='340px' src='https://dart-store.s3.amazonaws.com/identity-protect.mp4' frameborder='0')
+
+      //- iframe(type='text/html' width='640' height='360'
+      //-   src='/videos/identity-protect.mp4'
+      //-   frameborder='0' style='display: block; margin: auto;')
       .ui.bulleted.list 
         .item If you think your identity got stolen, report identity theft and get a recovery plan from the <a href="https://www.ftc.gov/news-events/topics/identity-theft/report-identity-theft" class="visitLink"> Federal Trade Commission</a>. You can also report it by phone at 1-877-438-4338.
         .item Contact your local police department.

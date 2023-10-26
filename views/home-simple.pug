@@ -1,0 +1,62 @@
+//- extends ui_layout
+
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='theme-color' content='#235799')
+
+    meta(name='isDataCollectionEnabled', content=process.env.enableDataCollection)
+    meta(name='isShareActivityDataEnabled', content=process.env.enableShareActivityData)
+    meta(name='isResearchVersion', content=process.env.isResearchVersion)
+
+    //- meta(name="HandheldFriendly" content="True")
+    //- meta(name="apple-mobile-web-app-capable" content="yes")
+    //- meta(name="mobile-web-app-capable" content="yes")
+    //- meta(name="msapplication-tap-highlight" content="no")
+
+    meta(name="content-language" content="en_US")
+    meta(http-equiv='Permissions-Policy' content="interest-cohort=(), browsing-topics=()")
+    title DART Login
+    link(rel='shortcut icon', href='/images/favicon.png')
+    link(rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.css")
+    link(rel='preconnect' href='https://fonts.googleapis.com')
+    link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
+    link(href='https://fonts.googleapis.com/css2?family=Armata&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap' rel='stylesheet')
+    link(rel='stylesheet', href='/css/home.css')
+
+body
+  .ui.grid
+    .row#blue-upper
+      .ui.container
+        //- h1.ui.header.center.aligned Learn to spot online deception and stay scam-free
+        //- .limit(style="padding-bottom: 10px;")
+
+
+        .ui.middle.aligned.center.aligned.grid
+          .column.left.aligned
+            .img-container
+              img(src="/images/dart-white.svg", alt="Deception Awareness and Resilience Training website logo" style="width: 80%;")
+            //- h1.ui.header.left.aligned Deception Awareness and Resilience Training 
+            //- p#aim(style="margin-top: 15px;") The Deception Awareness and Resilience Training (DART) learning platform offers easy-to-understand resources and training to help you spot false information and avoid scams.
+            p#learn-to Learn to spot online deception and stay scam-free.
+            //- br
+            //- button.ui.blue.huge.fluid.button(onclick="location.href='/getGuest';")
+            //-   | Explore the courses
+            br
+            button.ui.blue.huge.fluid.button(onclick="location.href='/login';")
+              | Log in
+            br
+            //- .user-actions(style="margin-top: 15px; display: flex; flex-direction: row; align-items: center;")
+            button.ui.huge.fluid.button(onclick="location.href='/signup';")
+              | Sign up
+
+            
+
+            .ui.divider
+            button.ui.inverted.large.fluid.button(onclick="location.href='/getGuest';")
+              //- | Learn how to use DART
+              | Try a course now
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.js")

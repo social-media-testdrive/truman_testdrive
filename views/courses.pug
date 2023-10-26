@@ -7,9 +7,9 @@ block content
     .row#blue-upper
       .ui.container
         if user.name != "Guest"
-          h1.ui.header.center.aligned Welcome #{user.name} !
+          h1.ui.header.center.aligned(style="font-family: 'Titillium Web', sans-serif;") Welcome #{user.name} !
         else 
-          h1.ui.header.center.aligned Welcome!
+          h1.ui.header.center.aligned(style="font-family: 'Titillium Web', sans-serif;") Welcome!
         .limit(style="padding-bottom: 40px; text-align: center;")
           p#about What would you like to learn today?
           button.ui.inverted.button(style="margin-right: 20px;")
