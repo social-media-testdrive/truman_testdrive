@@ -20,7 +20,7 @@ function postStartTime(modID, page) {
     .then(response => {
         if (response.ok) {
             // Request was successful
-            console.log('Page start time posted successfully!');
+            // console.log('Page start time posted successfully!');
         } else {
             // Handle error response
             console.error('Failed to post page start time');
