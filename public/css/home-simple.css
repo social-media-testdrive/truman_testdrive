@@ -1,0 +1,51 @@
+html {
+  font-size: 1rem;
+}
+
+body {
+  background: linear-gradient(to bottom, #2165AE, #091D32);
+  color: white;
+  /* height: 100%; */
+  /* z-index: 0;
+  padding-top: 80px;
+  height: 100%; */
+}
+
+.column.left.aligned {
+  max-width: 500px;
+}
+
+.ui.middle.aligned.center.aligned.grid {
+  height: 100vh;
+  /* background-color: yellow; */
+}
+
+h1.ui.header {
+  font-size: 2.5rem;
+  color: white;
+}
+
+.img-container {
+  text-align: center;
+}
+
+.ui.container {
+  font-size: 1.5rem;
+  /* color: red; */
+}
+
+#learn-to {
+  margin-top: 15px;
+}
+
+/* p#about {
+  margin-top: 50px;
+} */
+
+/* p#aim {
+  padding-bottom: 50px;
+}
+
+#our-mission {
+  font-size: 2.25rem;
+} */

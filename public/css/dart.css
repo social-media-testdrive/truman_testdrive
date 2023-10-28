@@ -21,19 +21,23 @@ footer {
 }
 
 header a.item {
-    font-size: 1.3rem !important;
-    font-weight: 900 !important;
-    font-family: 'Armata', sans-serif;
-    /* font-size: 1.5rem; */
-    /* background-color: yellow !important; */
+    /* font-family: 'Armata', sans-serif; */
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 1.2rem; 
+    font-weight: 600 !important;
 }
   
-header a.item.dart-blue {
-    color: #2165AE !important;
+/* very specific to override formantic ui  .ui.menu .item color attribute */
+#page-header header.ui.borderless.menu.tablet-and-computer .ui.container .right.menu .item.dart-blue {
+    color: #2165AE; 
+    font-size: 1.5rem;
 }
 
-.dart-gray {
-    color: #7D7C7C !important;
+/* very specific to override formantic ui  .ui.menu .item color attribute */
+#page-header header.ui.borderless.menu.tablet-and-computer .ui.container .right.menu .item.dart-gray {
+    color: #7D7C7C; 
+    font-size: 1.5rem;
+
 }
 
 .ui.container#-raised-container {
@@ -113,7 +117,8 @@ body{
     background:  #F5F8FA;   
     /* fix so that the whole page doesn't shift on the "short" pages due to scroll bar being absent */
     overflow-y: scroll !important;
-    font-family: 'Inter', sans-serif;
+    /* font-family: 'Inter', sans-serif; */
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #page-header{ 
@@ -159,3 +164,31 @@ body.animating.in.dimmable, body.dimmed.dimmable {
     overflow-y: hidden !important;
     margin: 0 !important;
 }
+
+/* .video-js .vjs-big-play-button {
+  background-color: #dd3333;
+  font-size: 2.5em;
+  border-radius: 50%;
+  height: 2em !important;
+  line-height: 2em !important;
+  margin-top: -1em !important;
+} */
+
+/* .video-js .vjs-big-play-button {
+background-color: #2165AE !important;
+font-size: 5em !important;
+opacity: 1 !important;
+border-radius: 50% !important;
+width: 100px !important;
+height: 2em !important;
+line-height: 2em !important;
+margin-top: -1em !important;
+}
+
+video[poster]{
+    object-fit: cover;
+}
+.vjs-poster {
+    background-size: cover;
+    background-position: inherit;
+} */

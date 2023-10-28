@@ -7,10 +7,17 @@ block content
       h1.ui.header.large#learn-title
         .content
           | Warning Signs for specific Identity Theft Scams
+      p Click the image to start the video
+      video-js#my_video_1.video-js.vjs-default-skin.vjs-show-big-play-button-on-pause(width='640px' height='360px' controls='' preload='none' data-setup='{ "poster":"/images/warning-poster.png", "aspectRatio":"16:9", "playbackRates": [0.5, 0.75, 1, 1.5, 2] }')
+        source(src='https://dart-store.s3.amazonaws.com/identity-warning.mp4' type='video/mp4')
 
-      iframe(type='text/html' width='640' height='360'
-        src='/videos/identity-intro.mp4'
-        frameborder='0' style='display: block; margin: auto;')
+      //- .row#video-overlay(style="background: transparent;text-align: center; margin-top: 25px;")
+      //-     .inner-video
+      //-         iframe#intro-video(type='text/html' width='600px' height='340px' src='https://dart-store.s3.amazonaws.com/identity-warning.mp4' frameborder='0')
+
+      //- iframe(type='text/html' width='640' height='360'
+      //-   src='/videos/identity-intro.mp4'
+      //-   frameborder='0' style='display: block; margin: auto;')
       
       .ui.icon.blue.message
         .icon
