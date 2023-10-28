@@ -164,3 +164,31 @@ body.animating.in.dimmable, body.dimmed.dimmable {
     overflow-y: hidden !important;
     margin: 0 !important;
 }
+
+/* .video-js .vjs-big-play-button {
+  background-color: #dd3333;
+  font-size: 2.5em;
+  border-radius: 50%;
+  height: 2em !important;
+  line-height: 2em !important;
+  margin-top: -1em !important;
+} */
+
+/* .video-js .vjs-big-play-button {
+background-color: #2165AE !important;
+font-size: 5em !important;
+opacity: 1 !important;
+border-radius: 50% !important;
+width: 100px !important;
+height: 2em !important;
+line-height: 2em !important;
+margin-top: -1em !important;
+}
+
+video[poster]{
+    object-fit: cover;
+}
+.vjs-poster {
+    background-size: cover;
+    background-position: inherit;
+} */
