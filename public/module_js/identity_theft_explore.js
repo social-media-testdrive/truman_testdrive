@@ -4,6 +4,7 @@ let emailData = this_js_script.attr('emailData');
 // console.log(emailData);
 let iCurrentEmail = 0;
 let openEmailTutorialDone = false;
+let skipped = false;
 
 const emails = JSON.parse(emailData);
 // console.log(emails);
@@ -23,6 +24,15 @@ let intro3 = introJs();
 
 document.addEventListener("DOMContentLoaded", function() {
     $('#nextButton').hide();
+
+    // Watch for tutorial skip, then enable free exploration of email sim
+
+    // Use event delegation for dynamically added elements
+    $(document).on('click', '.introjs-skipbutton', function() {
+        $('.emailSimContainer').css('pointer-events', 'auto');
+        skipped = true;
+    });
+    
     // console.log("DOM loaded and parsed!");
     
     intro2.setOptions({
@@ -41,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 },
                 element: document.querySelector('#email-0'),
                 position: 'right',
-                intro: "Each email header contains the sender's name, subject line, and the date. These details offer valuable insights right from the start.<br><br>When you're ready, click on an email to open it and learn more. <br><img src='/images/chat-head.png' alt='age intrepid profile picture' width='125px' style='display: block; margin: 0 auto;margin-top:20px;'>",
+                intro: "Each email header contains the sender's name, subject line, and the date. These details offer valuable insights right from the start.<br><br>When you're ready, click on the email to open it and learn more. <br><img src='/images/chat-head.png' alt='age intrepid profile picture' width='125px' style='display: block; margin: 0 auto;margin-top:20px;'>",
             },
             ],
         'hidePrev': true,
@@ -235,7 +245,8 @@ function showEmail(index) {
     // Append openEmailContainer to the body
     $('.limit').append(openEmailContainer);
 
-    if(openEmailTutorialDone === false) {
+    console.log("Skipped: ", skipped);
+    if(openEmailTutorialDone === false && skipped === false) {
         intro3.setOptions({
             steps: [
                 {
