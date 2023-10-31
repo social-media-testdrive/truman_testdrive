@@ -8,12 +8,12 @@ block content
       h1.ui.header.large#learn-title
         .content
           | Recognize the Techniques of Scammers
-      h2 Example 1: Email pressuring you to act quickly 
+      h2 Example 1: Pressure you to act quickly 
       br
     .ui.centered.stackable.grid
       .eight.wide.column
         .htmlImage#walmart-email
-          .ui.padded.segment
+          .ui.padded.raised.segment
             span#subjectLine
               | URGENT!!!
             #inboxLabel.ui.large.label
@@ -37,7 +37,7 @@ block content
           //- img.ui.fluid.image(src='/images/learn2-3.png' style='margin-left: auto; margin-right: auto')
       .eight.wide.column
         p(style="line-height: 1.5;") Scammers often mimic a legitimate site or email address by using a slight variation in spelling. Or an email may look like it came from a legitimate company, but the actual email address is suspicious. For example, the email's address is not from the company's site.      
-      
+    br
     script.
         var progress = #{user.moduleProgress.identity.percent}
     script(src='/js/setProgressBar.js')  

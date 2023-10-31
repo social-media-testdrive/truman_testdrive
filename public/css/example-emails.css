@@ -119,6 +119,11 @@
     line-height: 1.6; /* Adjust as needed for desired line height */
 }
 
+#bruce li {
+    margin-bottom: 10px; /* Adjust as needed to increase space between bullet points */
+    line-height: 1.2; /* Adjust as needed for desired line height */
+}
+
 /* default semantic ui stack grids to single column when smaller than 768px */
 /* override so it will stack on large tablets */
 @media only screen and (max-width: 1024px) {
