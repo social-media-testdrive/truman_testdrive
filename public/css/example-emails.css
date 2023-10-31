@@ -111,7 +111,7 @@
 
 
 .eight.wide.column ul {
-    list-style-position: inside; /* This helps to align the bullet points nicely with the text */
+    list-style-position: inside; 
 }
 
 .eight.wide.column li {
@@ -128,3 +128,95 @@
         max-width: none !important;
     }
 }
+
+
+
+
+/* walmart email submod2 page 3*/
+
+
+#walmart-email .emailHeader {
+    background-color: #F5F5F5;
+    color: #2165AE;
+    border-bottom: 4px solid #2165AE;
+    padding: 20px;
+    margin: 0;
+}
+
+#walmart-email i.user.circle.icon {
+    color: #2165AE;
+}
+
+#walmart-email #subjectLine {
+    font-size: 1.6rem;
+    /* margin-left: 100px; */
+    font-weight: bold;
+}
+
+#walmart-email span.subject {
+    color: #747471;
+    font-weight: lighter;
+}
+
+
+#walmart-email .senderInfo {
+    font-size: 1.5rem;
+}
+
+#walmart-email .senderInfo span {
+    font-size: 1.5rem;
+}
+
+#walmart-email .ui.icon.message {
+    background-color: white !important;
+    box-shadow: none !important;
+}
+
+#walmart-email .fromEmail {
+    color: #747471;
+    font-weight: lighter;
+    font-size: 1.5rem;
+    margin-left: 10px;
+}
+
+#walmart-email .ui.vertical.segment .row {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+#walmart-email .emailSimContainer a {
+    color: black;
+    cursor: pointer;
+}
+
+#walmart-email .emailSimContainer a:hover {
+    color: black;
+}
+
+#walmart-email .fakeLink {
+    color: #4183C4;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#walmart-email .fakeLink:hover {
+    text-decoration: underline;
+}
+
+#walmart-email .ui.right.floated.header.numContainer {
+    margin-top: 5px;
+}
+
+#walmart-email #inboxLabel {
+    position: absolute;
+    margin-top: -4px;
+    margin-left: 20px;
+    padding: 4px;
+    background: #EEEEEE;
+    border: 1px solid black;
+    /* font-size: 1.5rem; */
+}
+
+
+
+
