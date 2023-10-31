@@ -47,9 +47,14 @@ block content
         .content
           .header= "Moldeando tu huella digital"
 
-      a.ui.card(href=`/${path}/privacy-esp`)
-        .image
-          .ui.blue.ribbon.label ¡NUEVO!
+      a.ui.card()
+        .ui.inverted.active.dimmer.soon
+          .content
+            .center
+              h2.ui.header
+                |
+                | ¡PRÓXIMAMENTE!
+        .image(style="filter: blur(1.5px)")
           img(src=cdn+'/smprivacy.png')
         .content
           .header="La privacidad en las redes sociales" 

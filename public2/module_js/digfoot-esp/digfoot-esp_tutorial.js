@@ -15,8 +15,8 @@ const stepsList = [
   },
   {
     element: '#step3',
-    intro: `Piensa bien antes de publicar algo porque muchas de 
-    las cosas que haces en línea le aumentarán a tu huella digital`,
+    intro: `Piensa bien antes de publicar algo porque muchas de las cosas que 
+    haces en línea aumentan tu huella digital`,
     position: "right",
     scrollTo: "tooltip",
   },

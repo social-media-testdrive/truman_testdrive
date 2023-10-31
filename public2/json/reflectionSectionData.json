@@ -272,12 +272,12 @@
     },
     "Q3": {
       "type": "checkbox",
-      "prompt": "En el feed de TestDrive, ¿que hiciste para establecer hábitos saludables de las redes sociales?",
+      "prompt": "En el feed del TestDrive, ¿qué hiciste para establecer hábitos saludables en las redes sociales?",
       "checkboxLabels": {
         "0": "Revisé el tiempo pasado en el sitio",
         "1": "Reduje el número de notificaciones que recibo",
-        "2": "Ignoro las notificaciones",
-        "3": "No hice nada para establecer hábitos saludables de las redes sociales"
+        "2": "Ignoré las notificaciones",
+        "3": "No hice nada para establecer hábitos saludables en las redes sociales"
       },
       "responseRequirement": "exact",
       "correctResponses": {

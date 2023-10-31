@@ -197,15 +197,29 @@
   "esteem": {
     "Q1": {
       "type": "written",
-      "prompt": "Why might these posts cause Jeremy to have a red flag feeling?"
+      "prompt": "¿Por qué estas publicaciones podrían haber causado en Jeremy una sensación de alerta roja?"
     },
     "Q2": {
       "type": "written",
-      "prompt": "Do you remember seeing posts that might have caused Jeremy to feel good? What kinds of posts were they?"
+      "prompt": "¿Recuerdas haber visto publicaciones que podrían haber hecho que Jeremy se sintiera bien? ¿Qué tipo de publicaciones eran?"
     },
     "Q3": {
       "type": "written",
-      "prompt": "What could Jeremy do to feel better after experiencing a red flag feeling on social media?"
+      "prompt": "¿Qué podría hacer Jeremy para sentirse mejor después de experimentar una sensación de alerta roja en las redes sociales?"
+    }
+  },
+  "esteem-esp": {
+    "Q1": {
+      "type": "written",
+      "prompt": "¿Por qué estas publicaciones podrían haber causado en Jeremy una sensación de alerta roja?"
+    },
+    "Q2": {
+      "type": "written",
+      "prompt": "¿Recuerdas haber visto publicaciones que podrían haber hecho que Jeremy se sintiera bien? ¿Qué tipo de publicaciones eran?"
+    },
+    "Q3": {
+      "type": "written",
+      "prompt": "¿Qué podría hacer Jeremy para sentirse mejor después de experimentar una sensación de alerta roja en las redes sociales?"
     }
   },
   "habits": {
@@ -272,12 +286,12 @@
     },
     "Q3": {
       "type": "checkbox",
-      "prompt": "En el feed de TestDrive, ¿que hiciste para establecer hábitos saludables de las redes sociales?",
+      "prompt": "En el feed del TestDrive, ¿qué hiciste para establecer hábitos saludables en las redes sociales?",
       "checkboxLabels": {
         "0": "Revisé el tiempo pasado en el sitio",
         "1": "Reduje el número de notificaciones que recibo",
-        "2": "Ignoro las notificaciones",
-        "3": "No hice nada para establecer hábitos saludables de las redes sociales"
+        "2": "Ignoré las notificaciones",
+        "3": "No hice nada para establecer hábitos saludables en las redes sociales"
       },
       "responseRequirement": "exact",
       "correctResponses": {

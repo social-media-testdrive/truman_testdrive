@@ -20,28 +20,28 @@ function customOnWindowLoad(enableDataCollection){
       case 'Deportes':
         eventKeyword = 'un partido de fútbol';
         bot1Image = 'user53.jpg';
-        bot1FullName = "Belinda Fernandez";
-        bot1FirstName = "Belinda";
+        bot1FullName = "Sofia Pinedo";
+        bot1FirstName = "Sofia";
         bot2Image = 'user4.jpg';
-        bot2FullName = "Humberto Alvarez";
-        bot2FirstName = "Humberto";
+        bot2FullName = "María Cristina Rodríguez";
+        bot2FirstName = "María";
         customAudioFile = [""];
         break;
       case 'Música':
         eventKeyword = 'un campamento de música';
         bot1Image = 'user5.jpeg';
-        bot1FullName = "Rosa Díaz";
-        bot1FirstName = " Rosa";
+        bot1FullName = "Ana Pereira";
+        bot1FirstName = "Ana";
         bot2Image = 'user10.jpg';
-        bot2FullName = "Carlos Gonzalez";
-        bot2FirstName = "Carlos";
+        bot2FullName = "Alonso Contreras";
+        bot2FirstName = "Alonso";
         customAudioFile = [""];
         break;
       case 'Videojuegos':
-        eventKeyword = 'el club de videojuegos';
+        eventKeyword = 'un grupo de discord';
         bot1Image = 'user30.jpg';
-        bot1FullName = "Lourdes Sanchez";
-        bot1FirstName = "Lourdes";
+        bot1FullName = "Lilian Ureña";
+        bot1FirstName = "Lilian";
         bot2Image = 'user48.jpeg';
         bot2FullName = "Alejandro Martinez";
         bot2FirstName = "Alejandro";
@@ -50,8 +50,8 @@ function customOnWindowLoad(enableDataCollection){
       default:
         eventKeyword = 'un partido de fútbol';
         bot1Image = 'user30.jpg';
-        bot1FullName = "Lourdes Sanchez";
-        bot1FirstName = "Lourdes";
+        bot1FullName = "Lilian Ureña";
+        bot1FirstName = "Lilian";
         bot2Image = 'user48.jpeg';
         bot2FullName = "Alejandro Martinez";
         bot2FirstName = "Alejandro";
@@ -71,11 +71,11 @@ function customOnWindowLoad(enableDataCollection){
         audioFile: ['']
       },
       {
-        intro: `Aquí hay un poco de información antes de empezar: Imagina que estás viendo el feed de la red social de <span class='noLineBreak'><img class='ui avatar image customCircularAvatar' src='${cdn}/profile_pictures/user77.jpg'>Jorge García</span>`,
+        intro: `Aquí hay un poco de información antes de empezar: Imagina que estás viendo el feed de la red social de <span class='noLineBreak'><img class='ui avatar image customCircularAvatar' src='${cdn}/profile_pictures/user77.jpg'>Jeremy Franco</span>`,
         audioFile: ['']
       },
       {
-        intro: `Jorge tiene dos amigos,
+        intro: `Jeremy tiene dos amigos,
         <span class='noLineBreak'><img class='ui avatar image customCircularAvatar' src='${cdn}/profile_pictures/${bot1Image}'>
         <span>${bot1FullName}</span></span> y
         <span class='noLineBreak'><img class='ui avatar image customCircularAvatar' src='${cdn}/profile_pictures/${bot2Image}'>
@@ -84,7 +84,7 @@ function customOnWindowLoad(enableDataCollection){
         audioFile: [``]
       },
       {
-        intro: `También puedes ver las publicaciones de otros amigos que han podido ocasionar la sensación de alerta roja en Jorge. Haz clic en estas publicaciones para pensar en cómo Jorge se está sintiendo y qué puede hacer al respecto.`,
+        intro: `También puedes ver las publicaciones de otros amigos que han podido ocasionar la sensación de alerta roja en Jeremy. Haz clic en estas publicaciones para pensar en cómo Jeremy se está sintiendo y qué puede hacer al respecto.`,
         audioFile: ['']
       }
     ];

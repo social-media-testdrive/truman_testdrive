@@ -9,7 +9,7 @@ function onPrint(){
     $(".insertPrint").append(
       `<br>
       <h4>
-      ¿Por qué estas publicaciones pueden hacer que Jorge tenga una sensación de bandera roja?
+      ¿Por qué estas publicaciones podrían haber causado en Jeremy una sensación de alerta roja?
       </h4>`
     );
     var responseOne = document.getElementById("literacy_responseOne").value;
@@ -18,7 +18,7 @@ function onPrint(){
     $(".insertPrint").append(
       `<br>
       <h4>
-      ¿Recuerdas haber visto publicaciones que podrían haber hecho que Jorge se sintiera bien? ¿Qué tipo de publicaciones eran?
+      ¿Recuerdas haber visto publicaciones que podrían haber hecho que Jeremy se sintiera bien? ¿Qué tipo de publicaciones eran?
       </h4>`
     );
     var responseTwo = document.getElementById("literacy_responseTwo").value;
@@ -27,7 +27,7 @@ function onPrint(){
     $(".insertPrint").append(
       `<br>
       <h4>
-      ¿Qué podría hacer Jorge para sentirse mejor después de experimentar una sensación de bandera roja en las redes sociales?
+      ¿Qué podría hacer Jeremy para sentirse mejor después de experimentar una sensación de alerta roja en las redes sociales?
       </h4>`
     );
     var responseThree = document.getElementById("literacy_responseThree").value;

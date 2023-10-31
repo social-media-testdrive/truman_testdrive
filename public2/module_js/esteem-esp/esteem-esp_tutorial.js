@@ -34,7 +34,7 @@ const stepsList = [
   },
   {
     element: '#step3B',
-    intro: `<b>Compartir demasiado</b> nuestros sentimientos, información o experiencias puede sentirse bien en el momento, pero podría causarte a ti o a otros incomodidad después.`,
+    intro: `Compartir en exceso nuestros sentimientos, información o experiencias puede sentirse bien en el momento, pero luego podría causarte a ti o a los demás incomodidad.`,
     position: 'right',
     audioFile: ['']
   },
