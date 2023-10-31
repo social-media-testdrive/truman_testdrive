@@ -24,7 +24,7 @@ const util = require('util');
 const cookieSession = require('cookie-session');
 fs.readFileAsync = util.promisify(fs.readFile);
 
-// const nocache = require('nocache');
+const nocache = require('nocache');
 
 
 
@@ -77,7 +77,7 @@ console.log('Run this app using "npm start" to include sass/scss/css builds.\n')
 
 
 // Use the nocache middleware to disable caching for testing so don't have to hard reload clear cache everytime
-// app.use(nocache());
+app.use(nocache());
 
 /**
  * Connect to MongoDB.

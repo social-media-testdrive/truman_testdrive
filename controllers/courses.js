@@ -204,7 +204,9 @@ exports.getLearn = async (req, res) => {
       });  
   } else {
       let learnPage;
-
+      const currentTime = getCurrentTime();
+      const currentDate = getCurrentDate();
+  
       if(submod === "submod") {
         learnPage = `${modId}/learn/submod/${modId}_sub_learn${pageNum || ''}`;
       } else if(submod === "submod2") {
@@ -213,7 +215,7 @@ exports.getLearn = async (req, res) => {
         learnPage = `${modId}/learn/submod3/${modId}_sub3_learn${pageNum || ''}`;
       }
     
-      res.render(learnPage, { title });
+      res.render(learnPage, { title, currentTime, currentDate });
   }
 
 };
