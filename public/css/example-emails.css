@@ -1,0 +1,130 @@
+/* Font for all examples */
+.htmlImage p,
+.htmlImage span {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+}
+
+
+/* for all email examples to limit their outside width */
+.limit-example-email {
+    position: relative;
+    /* padding-left: 4rem; 
+    padding-right: 4rem; */
+    margin: 0 auto;
+    
+}
+
+
+.custom-padding {
+    padding: 30px;
+}
+
+@media only screen and (max-width: 768px) {
+    .custom-padding {
+        padding: 15px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .custom-padding {
+        padding: 10px;
+    }
+}
+
+/* limit email inside content width */
+.ui.basic.segment.limit-content {
+    position: relative;
+    /* padding-left: 6rem; 
+    padding-right: 6rem; */
+    padding-left: 2rem; 
+    padding-right: 2rem;
+    margin: 0 auto;
+}
+
+/*  Email metadata styles ie from, to, date gray section */
+.metadata {
+    background-color: rgb(243,244,245);
+}
+
+.metadata p {
+    line-height: 1rem;
+}
+
+.metadata p strong {
+    font-weight: 600;
+}
+
+
+/* Styles for sub2 learn5 netflix email example */
+.htmlImage #netflix-logo {
+    /* width: 200px; */
+    /* display: block; */
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.htmlImage #netflixSignIn {
+    color: #E50914;
+}
+
+.visitLink {
+    text-decoration: underline;
+}
+
+
+#netflix-email .ui.icon.mini.message {
+    color: white;
+    background-color: #358eef;
+    border-radius: 0;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+#netflix-email i.exclamation.triangle.icon {
+    font-size: 2rem;
+    color: white !important;
+    opacity: 1 !important;
+}
+
+
+.update{
+    background-color: rgb(221, 44, 24);
+    padding-left: 10px;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    max-width: 350px;
+    color: white;
+}
+
+.underline-text {
+    text-decoration: underline;
+}
+
+
+
+/* fix blue important message white box height */
+.ui.icon.blue.message .content {
+    min-height: 125px;
+}
+
+
+.eight.wide.column ul {
+    list-style-position: inside; /* This helps to align the bullet points nicely with the text */
+}
+
+.eight.wide.column li {
+    margin-bottom: 10px; /* Adjust as needed to increase space between bullet points */
+    line-height: 1.6; /* Adjust as needed for desired line height */
+}
+
+/* default semantic ui stack grids to single column when smaller than 768px */
+/* override so it will stack on large tablets */
+@media only screen and (max-width: 1024px) {
+    .ui.stackable.grid > .column:not(.row),
+    .ui.stackable.grid > .row > .column {
+        width: 100% !important;
+        max-width: none !important;
+    }
+}

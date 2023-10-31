@@ -2,43 +2,77 @@ extends ../../../module_layout
 
 block content
 
-  .ui.container#raised-container
-    .limit
+  .ui.container(style="font-size: 1.5rem; margin-top: 40px;")
+    //- .page-container.custom-padding(style="font-size: 1.5rem;")
+    .top-info
       h1.ui.header.large#learn-title
         .content
           | Recognize the Techniques of Scammers
-      p Please review the sample email and then learn the warning signs to watch out for below.
-      //- .ui.icon.blue.message
-      //-   .icon
-      //-     img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
-      //-   .content
-      //-     p Before proceeding, I encourage you to carefully read this sample email first. Afterwards, please closely review the warning signs illustrated below.
+      h2 Example 1: Email claiming account/payment issue
+      br
+    .ui.centered.stackable.grid
+      .eight.wide.column
+        .limit-example-email
+          .htmlImage#netflix-email
+              .ui.raised.segments
+                .metadata
+                  .ui.basic.segment
+                      p
+                        strong From: 
+                        | Netflix.com &lt;
+                        span no-reply@ripnet.com
+                        | &gt;
+                      p
+                        strong To: 
+                        | #{user.email}
+                      p
+                        strong Date: 
+                        | #{currentDate}
+                      p
+                        strong Subject: 
+                        | Account on hold
+                .content
+                  br
+                  img.ui.small.image#netflix-logo(src='/images/netflix-logo.png' alt='Netflix logo')
+                  .ui.icon.mini.message
+                    i.exclamation.triangle.icon
+                    .content
+                      .header
+                        | Your acccount is on hold
+                      //- p Get the best news in your e-mail every day.
+                  .ui.basic.segment.limit-content
+                    h2.bold-message Please update your payment details
+                    p Hi Dear Customer,
+                    p.response We're having some trouble with your current billing information. We'll try again, but in the meantime you may want to update your payment details.
+                    h2.update UPDATE ACCOUNT NOW
+                    br
+                    p Need help? We're here if you need it. Visit the <span class="underline-text">Help Centre</span> or <span class="underline-text">contact us</span> now
+                    p -Your friends at Netflix
+    
+      .eight.wide.column
+        p  Email scams can be tricky to spot, especially when they look like they come from a legitimate company you know. 
 
-      img.ui.image(src='/images/learn2-5.png' style='margin-left: auto; margin-right: auto')
-      h2 Example 1 : Claim there’s a problem with your account or your payment information via email.
-
-      p  Email scams can be tricky to spot, especially when they look like they come from a legitimate company you know. 
-
-      p Here are some common signs why this email is not legitimate:
-      ul
-          li 
-            u Generic greeting:
-            |  if the email starts with a generic greeting like 'Dear Customer' instead of your name, it could be a sign that the email is not legitimate.
-          li 
-            u Suspicious claim:
-            |  if the email claims that your account is on hold or you have a billing problem without providing specific details about the issue, it could be a scam.
-          li 
-            u Phishing link:
-            |  if the email invites you to click on a new link to update your payment details, the link can be a phishing link.
-      .ui.icon.blue.message
-        .icon
-          img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
-        .content
-          .header
-            //- i.info.circle.icon
-            | Important
-          p  Legitimate companies won’t email or text you with a link to update your payment information.
-
+        p Here are some common signs why this email is not legitimate:
+        ul(style="margin-top: 10px;")
+            li 
+              u Generic greeting:
+              |  if the email starts with a generic greeting like 'Dear Customer' instead of your name, it could be a sign that the email is not legitimate.
+            li 
+              u Suspicious claim:
+              |  if the email claims that your account is on hold or you have a billing problem without providing specific details about the issue, it could be a scam.
+            li 
+              u Phishing link:
+              |  if the email invites you to click on a new link to update your payment details, the link can be a phishing link.
+        .ui.icon.fluid.blue.message
+          .icon
+            img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
+          .content
+            .header
+              //- i.info.circle.icon
+              | Important
+            p(style="font-size: 1.3rem")  Legitimate companies won’t email or text you with a link to update your payment information.
+    br
+    br
           
     script.
         var progress = #{user.moduleProgress.identity.percent}
@@ -47,6 +81,9 @@ block content
 block append footer
   .ui.container
     +navButtons('identity', 'sub2_learn5', '/learn/submod2/4/identity', '/learn/submod2/6/identity', 36)  
+
+block styles 
+  link(rel='stylesheet', href='/css/example-emails.css')
 
 block scripts
   script(src='/js/character.js')
