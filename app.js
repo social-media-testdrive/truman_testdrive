@@ -194,6 +194,10 @@ app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userControl
 app.post('/guestLogin', userController.postGuestLogin);
 app.get('/getGuest', userController.getGuest);
 
+//Route added by liv to take you to the tutorial
+app.get('/tutorial', (req, res) => {
+  res.render('tutorial');
+});
 
 
 // Render privacy policy page.
@@ -238,6 +242,8 @@ app.get('/accessibility', passportConfig.isAuthenticated, function(req, res) {
       title: 'Accessibility'
   });
 });
+
+
 
 
 /**
