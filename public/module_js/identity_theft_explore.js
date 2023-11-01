@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
     $(document).on('click', '.introjs-skipbutton', function() {
         $('.emailSimContainer').css('pointer-events', 'auto');
         $('.openEmailContainer').css('pointer-events', 'auto');
+        $('#nextButton').show();
         skipped = true;
     });
     
