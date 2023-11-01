@@ -23,7 +23,8 @@ let intro2 = introJs();
 let intro3 = introJs();
 
 document.addEventListener("DOMContentLoaded", function() {
-    $('#nextButton').hide();
+    // $('#nextButton').hide();
+    $('#nextButton').prop('disabled', true);
 
     // Watch for tutorial skip, then enable free exploration of email sim
 
@@ -31,7 +32,8 @@ document.addEventListener("DOMContentLoaded", function() {
     $(document).on('click', '.introjs-skipbutton', function() {
         $('.emailSimContainer').css('pointer-events', 'auto');
         $('.openEmailContainer').css('pointer-events', 'auto');
-        $('#nextButton').show();
+        // $('#nextButton').show();
+        $('#nextButton').removeAttr('disabled');
         skipped = true;
     });
     
@@ -289,7 +291,8 @@ function showEmail(index) {
                 {
                     myBeforeChangeFunction: function() { 
                         $('.openEmailContainer').css('pointer-events', 'auto');  
-                        $('#nextButton').show();
+                        // $('#nextButton').show();
+                        $('#nextButton').removeAttr('disabled');
                         setTimeout(function() {
                             $('.showReturnToInboxAnimation').removeClass('hidden');
                         }, 5000);
