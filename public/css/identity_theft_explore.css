@@ -140,10 +140,14 @@ button.ui.circular.icon.button:hover {
 
 #reply {
     border-radius: 20px;
-    color: #444746 !important;
-    border: 1px solid #444746 !important;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #444746;
+    border: 1px solid #444746;
     /* margin-top: 20px; */
     margin-left: 100px;
+    font-size: 1.5rem;
+    font-weight: bold;
+
 }
 
 .modalTitle {
