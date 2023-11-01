@@ -198,7 +198,13 @@ function showEmail(index) {
     // Create senderInfo and emailContent
     var senderInfo = $('<div>', { class: 'content senderInfo' });
     var senderHeader = $('<div>', { class: 'header' }).text(email.sender);
-    var fromEmail = $('<span>', { class: 'fromEmail' }).text(email.from);
+    // var fromEmail = $('<span>', { class: 'fromEmail' }).text(email.from);
+    var fromEmail = $('<span>', { 
+        class: 'fromEmail aHint', 
+        'data-hint': 'Go to Norton LLC official website to check if the email address is correct.', 
+        'data-hint-position': 'top-right',
+        text: email.from 
+    });
     senderHeader.append(fromEmail);
     senderInfo.append(senderHeader);
     
@@ -372,11 +378,38 @@ function reportEmail() {
         class: 'small emailSimModal',
         closeIcon: true,
         content: emails[iCurrentEmail].reportContent,
-        actions: [{
-          text: 'Got it',
-          class: 'blue big'
-        }]
+        actions: [
+            {
+                text: 'Back to Email',
+                class: 'ui black basic big button',
+                click: function () {
+                    $(this).modal('hide');
+                }
+            },
+            {
+                text: 'See Why',
+                class: 'ui blue big button',
+                click: function () {
+                    $(this).modal('hide');
+                    introJs().addHints();
+                }
+            }, 
+        ],
+        classActions: 'center aligned'
     }).modal('show');
+
+    // old way with just "got it" action
+    // $.modal({
+    //     title: responseTitle,
+    //     classTitle: 'modalTitle',
+    //     class: 'small emailSimModal',
+    //     closeIcon: true,
+    //     content: emails[iCurrentEmail].reportContent,
+    //     actions: [{
+    //       text: 'Got it',
+    //       class: 'blue big'
+    //     }]
+    // }).modal('show');
     $('.dimmable.dimmed').css('margin-right', '0px');
 }
   

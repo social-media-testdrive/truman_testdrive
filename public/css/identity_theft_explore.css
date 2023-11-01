@@ -147,7 +147,23 @@ button.ui.circular.icon.button:hover {
     margin-left: 100px;
     font-size: 1.25rem;
     font-weight: bold;
+}
 
+/* modal buttons */
+.ui.black.basic.big.button,
+.ui.blue.big.button {
+    min-width: 250px;
+    border-radius: 40px;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+/* Hover effect */
+.ui.button.ui.black.basic.big.button:hover {
+    background-color: white; 
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), inset 0 0 0 2px black; 
+}
+
+.ui.blue.big.button:hover {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), inset 0 0 0 2px #0EABB2; 
 }
 
 .modalTitle {
@@ -267,6 +283,25 @@ button.ui.circular.icon.button:hover {
 
 /* ----- (TUTORIAL) ------ */
 
+.introjs-button {
+    font-size: 1.5rem;
+    background: #6BBCC7;
+    color: white;
+    text-shadow: none;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.introjs-button:hover {
+    font-size: 1.5rem;
+    background: #6BBCC7;
+    color: white;
+    text-shadow: none;
+}
+
+.introjs-tooltip {
+    min-width: 400px;
+}
 
 /* removes a gray overlay that covers everything but the selected element */
 
@@ -375,8 +410,8 @@ button.ui.circular.icon.button:hover {
     display: none;
 }
 
-.introjs-button,
-.introjs-button:hover {
+.introjs-button.introjs-skipbutton,
+.introjs-button.introjs-skipbutton:hover {
     /* height: 22px; */
     line-height: 22px !important;
     border-radius: 5px;
@@ -386,11 +421,19 @@ button.ui.circular.icon.button:hover {
     text-shadow: 0px 0px 0 #fff;
     margin-left: 5px;
     border: none;
-    font: 1rem sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    /* font: 1rem sans-serif; */
+    background-color: #ececec !important;
+    background-image: -webkit-gradient(linear,0 0,0 100%,from(#f4f4f4),to(#ececec)) !important;
 }
 
-.introjs-skipbutton {
+.introjs-button.introjs-skipbutton {
     color: #656255;
+}
+
+.introjs-button.introjs-skipbutton:hover {
+    color: #4183c4;
 }
 
 /* .introjs-skipbutton {
@@ -405,6 +448,46 @@ button.ui.circular.icon.button:hover {
     min-width: 600px;
     margin-top: -250px !important;
 } */
+
+
+
+.introjs-hint-dot {
+    background: #C62D2D;
+    border: 13px solid rgba(146, 146, 146, .36);
+    -webkit-animation: introjspulse 2s ease-out;
+    -moz-animation: introjspulse 2s ease-out;
+    animation: introjspulse 2s ease-out;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+.introjs-hint-pulse {
+    background: #C62D2D;
+    width: 15px;
+    height: 15px;
+}
+
+.introjs-hint-pulse:after { 
+    content: '';
+    display: inline-block;
+    width: 32px; 
+    height: 32px;
+    background: url('/images/clickHere.png') no-repeat; 
+    background-size: 100% 100%;
+    position: absolute;
+    top: 50%;
+    left: 100%; /* Position the icon to the right of the dot */
+    transform: translateY(-50%);
+    margin-left: 20px; 
+}
+
+.aHint {
+    margin-left: 20px;
+}
+
+
+
 
 /* -  -  -  -  - */
 
