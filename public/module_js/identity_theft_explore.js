@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Use event delegation for dynamically added elements
     $(document).on('click', '.introjs-skipbutton', function() {
         $('.emailSimContainer').css('pointer-events', 'auto');
+        $('.openEmailContainer').css('pointer-events', 'auto');
         skipped = true;
     });
     
@@ -251,7 +252,9 @@ function showEmail(index) {
             steps: [
                 {
                     myBeforeChangeFunction: function() { 
-                        $('.openEmailContainer').css('pointer-events', 'none');  
+                        if(skipped === false) {
+                            $('.openEmailContainer').css('pointer-events', 'none');
+                        }
                     },
                     element: document.querySelector('.openEmailContainer .ui.padded.segment'),
                     position: 'right',
