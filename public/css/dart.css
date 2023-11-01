@@ -165,6 +165,10 @@ body.animating.in.dimmable, body.dimmed.dimmable {
     margin: 0 !important;
 }
 
+h1, h2, h3, h4, h5 {
+    font-family: 'Titillium Web', sans-serif;
+}
+
 /* .video-js .vjs-big-play-button {
   background-color: #dd3333;
   font-size: 2.5em;

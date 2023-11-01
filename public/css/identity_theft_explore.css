@@ -160,28 +160,37 @@ button.ui.circular.icon.button:hover {
 
 
 
-/* drop box email */
+/* amazon email */
 
+#amazon-header {
+    margin-top: 40px;
+    display: flex;
+    padding: 10px 0px 19px 0px;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    border-bottom: 1px solid #7D7C7C;
+}
 
-/* .DropboxLogo{
-    width: 80px;
-    height: 74.405px;
-    margin: auto;
+#amazon-logo{
+    width: 177.89px;
+    height: 53.714px;
+}
 
-} */
-
-/* a {
-    color: #2165AE;
-    font-family: 'Roboto', sans-serif;
-    font-size: 22px;
+#amazon-assistance {
+    padding: 0;
+    margin: 0;
+    color: #000;
+    font-size: 24px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    text-decoration-line: underline;
 }
 
- */
-
+#amazon-code {
+    font-weight: 1000;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
 /* introjs styles copied from ui_layout.css */
 
