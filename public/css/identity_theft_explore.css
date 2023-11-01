@@ -126,6 +126,7 @@ button.ui.circular.icon.button:hover {
 }
 
 #emailContent {
+    max-width: 620px;
     margin-left: 100px;
 }
 
@@ -156,6 +157,102 @@ button.ui.circular.icon.button:hover {
 }
 .content {
     font-size: 1.5rem !important;
+}
+
+
+
+/* amazon email */
+
+#amazon-header {
+    margin-top: 40px;
+    display: flex;
+    padding: 10px 0px 19px 0px;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    border-bottom: 1px solid #7D7C7C;
+}
+
+#amazon-logo{
+    width: 177.89px;
+    height: 53.714px;
+}
+
+#amazon-assistance {
+    padding: 0;
+    margin: 0;
+    color: #000;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#amazon-code {
+    font-weight: 1000;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* email resizing fixes */
+
+/* stop envelope from overlapping email title in inbox when screen gets narrow */
+.emailSimContainer .eleven.wide.column h3 {
+    margin-left: 20px;
+}
+
+/* iphone email */
+
+#confirmButton.ui.medium.button{
+    background-color: #fd4319;
+    text-decoration: solid;
+}
+
+
+#iphone-email {
+    border: 5px solid #fd0068;
+    border-radius: 10px;
+}
+
+.font {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+}
+
+#iphone-email .iphone-header{
+    color: #fd0068;
+    font-size: 2.25rem;
+    font-weight: 800;
+}
+
+#iphone-email .pink-text {
+    color: #FD0068;
+}
+
+#iphone-email #congrats{
+    background-color: #FD0068;
+    color: white;
+    padding: 1rem;
+    font-weight: 600;
+    font-size: 1.75rem;
+}
+
+#iphone-email #confirmButton{
+    background-color: #FD4319;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#iphone-email .ui.basic.huge.segment#title,
+#iphone-email .ui.basic.segment#continue {
+    padding-left: 0; 
+    padding-right: 0;
+}
+
+#iphone-email .ui.segment {
+    padding-left: 0;
+    padding-right: 0;
 }
 
 /* introjs styles copied from ui_layout.css */
@@ -254,6 +351,11 @@ button.ui.circular.icon.button:hover {
     font: 1rem sans-serif;
 }
 
+.introjs-button.introjs-nextbutton:hover {
+    background-image: linear-gradient(#1678c2, #1678c2);
+    box-shadow: 0 2px 2px #e3e3e3 !important;
+}
+
 .introjs-button.introjs-prevbutton,
 .introjs-button.introjs-prevbutton:hover {
     /* height: 22px; */
@@ -275,8 +377,8 @@ button.ui.circular.icon.button:hover {
     line-height: 22px !important;
     border-radius: 5px;
     visibility: visible;
-    color: rgba(255, 255, 255, .9);
-    background-image: linear-gradient(#21ba45, #21ba45);
+    /* color: rgba(255, 255, 255, .9); */
+    /* background-image: linear-gradient(#21ba45, #21ba45); */
     text-shadow: 0px 0px 0 #fff;
     margin-left: 5px;
     border: none;
@@ -284,8 +386,16 @@ button.ui.circular.icon.button:hover {
 }
 
 .introjs-skipbutton {
-    visibility: hidden;
+    color: #656255;
 }
+
+/* .introjs-skipbutton {
+    background: #656255de ;
+}
+
+.introjs-skipbutton:hover {
+    background: #656255b4 ;
+} */
 
 /* .customWideTooltip {
     min-width: 600px;
