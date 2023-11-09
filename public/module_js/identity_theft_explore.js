@@ -23,6 +23,15 @@ let intro2 = introJs();
 let intro3 = introJs();
 
 document.addEventListener("DOMContentLoaded", function() {
+    $('.warning-button')
+        .popup({
+            // title   : 'Popup Title',
+            // inline     : true,
+            // content : 'Hello I am a popup',
+            hoverable: true
+        })
+    ;
+
     // $('#nextButton').hide();
     $('#nextButton').prop('disabled', true);
 
@@ -200,9 +209,9 @@ function showEmail(index) {
     var senderHeader = $('<div>', { class: 'header' }).text(email.sender);
     // var fromEmail = $('<span>', { class: 'fromEmail' }).text(email.from);
     var fromEmail = $('<span>', { 
-        class: 'fromEmail aHint', 
-        'data-hint': 'Go to Norton LLC official website to check if the email address is correct.', 
-        'data-hint-position': 'top-right',
+        class: 'fromEmail', 
+        'data-hint': 'This email comes from walmart@gmail.com. Companies usually have their own email domain, such as @walmart.com. Another big sign of an email being a scam are misspellings and inconsistencies in names. This email misspells the name of the company its pretending to be as Walmrt, instead of Walmart, which it says in their email address.', 
+        'data-hint-position': 'bottom-middle',
         text: email.from 
     });
     senderHeader.append(fromEmail);

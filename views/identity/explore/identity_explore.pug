@@ -4,7 +4,7 @@ block content
   .ui.container#raised-container.top-padding
     .limit
         p Congratulations on successfully completing all of the identity theft learn section! 
-        p Now, let's take your learning to the next level by exploring some real-world scenarios together. 
+        p Now, let's take your learning to the next level by practicing some real-world scenarios together. 
         p Get ready to apply your newly acquired knowledge to practical situations and excel even further! 
     script.
         var progress = #{user.moduleProgress.identity.percent}
@@ -12,7 +12,7 @@ block content
 
 block append footer
   .ui.container
-    +navButtons('identity', 'explore', '/learn/submod3/13/identity', '/explore/2/identity', 64, 'Back', 'Start Explore')  
+    +navButtons('identity', 'explore', '/learn/submod3/13/identity', '/explore/2/identity', 64, 'Back', 'Start Practice')  
 
 block scripts
     script.
