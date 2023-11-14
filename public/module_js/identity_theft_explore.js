@@ -232,10 +232,17 @@ function showEmail(index) {
         });
 
         senderHeader.append(warningButton);
-    }  else if(email.from === "<no-reply@dropbox.com>") {
+    } else if(email.from === "<no-reply@dropbox.com>") {
         var warningButton = $('<button>', {
             class: 'ui green button warning-button dropbox-1',
             text: 'Review point'
+        });
+
+        senderHeader.append(warningButton);
+    } else if(email.from === "<nccustudent@gmail.com>") {
+        var warningButton = $('<button>', {
+            class: 'ui red button warning-button nccu-1',
+            text: 'WARNING'
         });
 
         senderHeader.append(warningButton);
@@ -344,6 +351,23 @@ function showEmail(index) {
         $('.warning-button.dropbox-2').popup({
             position: 'bottom center',
             html: "The focus on this email is ensuring the safety of your account. Scam emails will rarely offer details or make suggestions to increase your account protection."
+        });
+
+        $('.warning-button')
+            .transition('pulsating looping')
+        ;
+    } else if(email.from === "<nccustudent@gmail.com>") {
+        $('.warning-button.nccu-1').popup({
+            position: 'bottom center',
+            html: "Always check if you recognize the sender's email address. If the sender's email address is unfamiliar or suspicious, exercise caution and do not click on any links or provide personal information."
+        });
+        $('.warning-button.nccu-2').popup({
+            position: 'bottom center',
+            html: "A popular type of scam email is when people pretend like they know you and ask for money. This email does not address you by name or ask you any questions indicating they have a personal relationship with you. "
+        });
+        $('.warning-button.nccu-3').popup({
+            position: 'bottom center',
+            html: "One major red flag that indicates this email is a scam is the request to send money to an unfamiliar recipient."
         });
 
         $('.warning-button')
