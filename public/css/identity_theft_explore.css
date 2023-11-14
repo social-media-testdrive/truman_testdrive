@@ -1,7 +1,8 @@
 .ui.popup {
-    font-size: 1rem;
-    min-width: 750px;
-    line-height: 1.25;
+    font-size: 1.25rem;
+    min-width: 500px;
+    font-family: Arial, Helvetica, sans-serif; 
+    line-height: 1.5; 
 }
 
 .introjs-tooltiptext p {
@@ -666,3 +667,49 @@ button.ui.circular.icon.button:hover {
 .delete-button:hover .delete-tooltip {
     display: block;
 } */
+
+
+/* hand next to warning popups for see why */
+.openEmailContainer .ui.red.button {
+    font-size: 1.25rem;
+}
+
+.warning-button {
+    padding: 7px !important;
+    margin-left: 20px !important;
+    position: relative;
+}
+.warning-button:after { 
+    /* content: '';
+    display: inline-block;
+    width: 32px; 
+    height: 32px;
+    background: url('/images/clickHere.png') no-repeat; 
+    background-size: 100% 100%;
+    position: absolute;
+    left: 74%; 
+    top: 25%; */
+    /* content: url('/images/clickHere.png');
+    display: inline-block;
+    position: absolute; 
+    left: 100%; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    margin-left: 10px;  */
+
+    /* Can't use width and height on content image. Now using approach of background image for the ::after pseudo-element and control its size with background-size. */
+
+    content: ''; 
+    display: inline-block;
+    position: absolute; /* Positions the image absolutely relative to the button */
+    left: 100%; /* Positions the image to the right of the button */
+    top: 50%; /* Aligns the top of the image with the middle of the button */
+    transform: translateY(-50%); /* Centers the image vertically relative to the button */
+    margin-left: 10px; 
+    width: 32px; 
+    height: 32px; 
+    background-image: url('/images/clickHere.png'); 
+    background-size: contain;
+    background-repeat: no-repeat; 
+
+}

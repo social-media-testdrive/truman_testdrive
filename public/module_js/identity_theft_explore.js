@@ -146,7 +146,7 @@ function showEmail(index) {
     $('.emailSimContainer').hide();
     // console.log("email shown: ", index);
 
-    var email = emails[index]; // Replace with your method to fetch email data
+    var email = emails[index]; 
     
     // Create the main container
     var openEmailContainer = $('<div>', { class: 'openEmailContainer', id: 'openEmail-' + iCurrentEmail, });
@@ -207,14 +207,37 @@ function showEmail(index) {
     // Create senderInfo and emailContent
     var senderInfo = $('<div>', { class: 'content senderInfo' });
     var senderHeader = $('<div>', { class: 'header' }).text(email.sender);
-    // var fromEmail = $('<span>', { class: 'fromEmail' }).text(email.from);
-    var fromEmail = $('<span>', { 
-        class: 'fromEmail', 
-        'data-hint': 'This email comes from walmart@gmail.com. Companies usually have their own email domain, such as @walmart.com. Another big sign of an email being a scam are misspellings and inconsistencies in names. This email misspells the name of the company its pretending to be as Walmrt, instead of Walmart, which it says in their email address.', 
-        'data-hint-position': 'bottom-middle',
-        text: email.from 
-    });
+    var fromEmail = $('<span>', { class: 'fromEmail' }).text(email.from);
+    // var fromEmail = $('<span>', { 
+    //     class: 'fromEmail', 
+    //     'data-hint': 'This email comes from walmart@gmail.com. Companies usually have their own email domain, such as @walmart.com. Another big sign of an email being a scam are misspellings and inconsistencies in names. This email misspells the name of the company its pretending to be as Walmrt, instead of Walmart, which it says in their email address.', 
+    //     'data-hint-position': 'bottom-middle',
+    //     text: email.from 
+    // });
+
+
     senderHeader.append(fromEmail);
+    // add warning for walmart email
+    if(email.from === "<walmrt@gmail.com>") {
+        // var warningButton = $('<button>', {
+        //     class: 'ui red button warning-button',
+        //     'data-content': "This email comes from walmart@gmail.com. Companies usually have their own email domain, such as <strong>@walmart.com</strong>. Another big sign of an email being a scam are <strong>misspellings and inconsistencies</strong> in names. This email misspells the name of the company its pretending to be as <strong>Walmrt</strong>, instead of Walmart, which it says in their email address.",
+        //     'data-position': 'bottom center',
+        //     text: 'WARNING'
+        // });
+        var warningButton = $('<button>', {
+            class: 'ui red button warning-button warning1',
+            text: 'WARNING'
+        });
+
+        senderHeader.append(warningButton);
+    }
+
+
+
+
+
+
     senderInfo.append(senderHeader);
     
     var emailContent = $('<p>', { id: 'emailContent' }).html(email.content);
@@ -263,6 +286,45 @@ function showEmail(index) {
 
     // Append openEmailContainer to the body
     $('.limit').append(openEmailContainer);
+
+
+
+
+    // $('.warning-button').popup();
+
+    if(email.from === "<walmrt@gmail.com>") {
+        $('.warning-button.warning1').popup({
+            position: 'bottom center',
+            html: "This email comes from walmart@gmail.com. Companies usually have their own email domain, such as <strong>@walmart.com</strong>. Another big sign of an email being a scam are <strong>misspellings and inconsistencies</strong> in names. This email misspells the name of the company its pretending to be as <strong>Walmrt</strong>, instead of Walmart, which it says in their email address."
+        });
+        $('.warning-button.warning2').popup({
+            position: 'bottom center',
+            html: "Legitimate and trusted emails will include a proper header and closer, identifying you by name. This email greets you through saying &quot;Hi customer,&quot; does not clarify your name. Additionally, scam emails or messages often include words and phrases that indicate urgency. This email says &quot;URGENT!!!&quot; and &quot;NOW!&quot;"
+        });
+        $('.warning-button.warning3').popup({
+            position: 'bottom center',
+            html: "In a legitimate email, you will never have to click on a link to submit personal financial information. This email tells you to resubmit your credit card details. Also, suspicious links are often indicated by beginning with http://, like the one in this email rather than https://."
+        });
+
+        $('.warning-button')
+            .transition('pulsating looping')
+        ;
+    }
+    
+    // Event handler for stopping the pulsating and removing 'red' class on click
+    $('.warning-button').on('click', function() {
+        $(this).remove(); 
+        // $(this).transition('stop');
+        // $(this).removeClass('red pulsating transition'); 
+        // $(this).addClass('green'); 
+    });
+    
+    // $('#container').on('mouseenter', '.warning-button', function() {
+    //     $(this).popup({
+    //         content: $(this).attr('data-content'),
+    //         position: $(this).attr('data-position')
+    //     }).popup('show');
+    // });
 
     console.log("Skipped: ", skipped);
     if(openEmailTutorialDone === false && skipped === false) {
