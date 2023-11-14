@@ -717,3 +717,7 @@ button.ui.circular.icon.button:hover {
 .hide-after:after {
     display: none;
 }
+
+.iphone-2 {
+    margin-top: 30px !important;
+}

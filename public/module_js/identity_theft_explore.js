@@ -246,6 +246,13 @@ function showEmail(index) {
         });
 
         senderHeader.append(warningButton);
+    } else if(email.from === "<4kbug82ob@hotmail.com>") {
+        var warningButton = $('<button>', {
+            class: 'ui red button warning-button iphone-1',
+            text: 'WARNING'
+        });
+
+        senderHeader.append(warningButton);
     }
 
 
@@ -368,6 +375,19 @@ function showEmail(index) {
         $('.warning-button.nccu-3').popup({
             position: 'bottom center',
             html: "One major red flag that indicates this email is a scam is the request to send money to an unfamiliar recipient."
+        });
+
+        $('.warning-button')
+            .transition('pulsating looping')
+        ;
+    }  else if(email.from === "<4kbug82ob@hotmail.com>") {
+        $('.warning-button.iphone-1').popup({
+            position: 'bottom center',
+            html: "Legitimate companies typically have their own email domains, like @apple.com. This email does not appear to have a legitimate email address."
+        });
+        $('.warning-button.iphone-2').popup({
+            position: 'bottom center',
+            html: "A lot of scam emails use the <strong>too good to be true</strong> tactic. This email fails to provide fine prints, such as the expiration data or the exceptions to the sale. A legitimate coupon usually lists the details."
         });
 
         $('.warning-button')
