@@ -232,6 +232,13 @@ function showEmail(index) {
         });
 
         senderHeader.append(warningButton);
+    }  else if(email.from === "<no-reply@dropbox.com>") {
+        var warningButton = $('<button>', {
+            class: 'ui green button warning-button dropbox-1',
+            text: 'Review point'
+        });
+
+        senderHeader.append(warningButton);
     }
 
 
@@ -309,6 +316,9 @@ function showEmail(index) {
             html: "In a legitimate email, you will never have to click on a link to submit personal financial information. This email tells you to resubmit your credit card details. Also, suspicious links are often indicated by beginning with http://, like the one in this email rather than https://."
         });
 
+        $('.warning-button')
+            .transition('pulsating looping')
+        ;
     } else if(email.from === "<irsgov@gmail.com>") {
         $('.warning-button.irs-1').popup({
             position: 'bottom center',
@@ -326,6 +336,19 @@ function showEmail(index) {
         $('.warning-button')
             .transition('pulsating looping')
         ;
+    }   else if(email.from === "<no-reply@dropbox.com>") {
+        $('.warning-button.dropbox-1').popup({
+            position: 'bottom center',
+            html: "Trusted companies usually have their own email domain, like this email which comes from no-reply@<strong>dropbox.com</strong>."
+        });
+        $('.warning-button.dropbox-2').popup({
+            position: 'bottom center',
+            html: "The focus on this email is ensuring the safety of your account. Scam emails will rarely offer details or make suggestions to increase your account protection."
+        });
+
+        $('.warning-button')
+            .transition('pulsating looping')
+        ;
     }
     
     // Event handler for stopping the pulsating and removing 'red' class on click
@@ -333,7 +356,7 @@ function showEmail(index) {
         // $(this).remove(); 
 
         $(this).transition('stop');
-        $(this).removeClass('red pulsating transition'); 
+        $(this).removeClass('red green pulsating transition'); 
         $(this).addClass('hide-after');
         $(this).text('Reviewed');
         
