@@ -219,19 +219,22 @@ function showEmail(index) {
     senderHeader.append(fromEmail);
     // add warning for walmart email
     if(email.from === "<walmrt@gmail.com>") {
-        // var warningButton = $('<button>', {
-        //     class: 'ui red button warning-button',
-        //     'data-content': "This email comes from walmart@gmail.com. Companies usually have their own email domain, such as <strong>@walmart.com</strong>. Another big sign of an email being a scam are <strong>misspellings and inconsistencies</strong> in names. This email misspells the name of the company its pretending to be as <strong>Walmrt</strong>, instead of Walmart, which it says in their email address.",
-        //     'data-position': 'bottom center',
-        //     text: 'WARNING'
-        // });
         var warningButton = $('<button>', {
-            class: 'ui red button warning-button warning1',
+            class: 'ui red button warning-button walmart-1',
+            text: 'WARNING'
+        });
+
+        senderHeader.append(warningButton);
+    } else if(email.from === "<irsgov@gmail.com>") {
+        var warningButton = $('<button>', {
+            class: 'ui red button warning-button irs-1',
             text: 'WARNING'
         });
 
         senderHeader.append(warningButton);
     }
+
+
 
 
 
@@ -293,17 +296,31 @@ function showEmail(index) {
     // $('.warning-button').popup();
 
     if(email.from === "<walmrt@gmail.com>") {
-        $('.warning-button.warning1').popup({
+        $('.warning-button.walmart-1').popup({
             position: 'bottom center',
             html: "This email comes from walmart@gmail.com. Companies usually have their own email domain, such as <strong>@walmart.com</strong>. Another big sign of an email being a scam are <strong>misspellings and inconsistencies</strong> in names. This email misspells the name of the company its pretending to be as <strong>Walmrt</strong>, instead of Walmart, which it says in their email address."
         });
-        $('.warning-button.warning2').popup({
+        $('.warning-button.walmart-2').popup({
             position: 'bottom center',
             html: "Legitimate and trusted emails will include a proper header and closer, identifying you by name. This email greets you through saying &quot;Hi customer,&quot; does not clarify your name. Additionally, scam emails or messages often include words and phrases that indicate urgency. This email says &quot;URGENT!!!&quot; and &quot;NOW!&quot;"
         });
-        $('.warning-button.warning3').popup({
+        $('.warning-button.walmart-3').popup({
             position: 'bottom center',
             html: "In a legitimate email, you will never have to click on a link to submit personal financial information. This email tells you to resubmit your credit card details. Also, suspicious links are often indicated by beginning with http://, like the one in this email rather than https://."
+        });
+
+    } else if(email.from === "<irsgov@gmail.com>") {
+        $('.warning-button.irs-1').popup({
+            position: 'bottom center',
+            html: "This email is sent from <strong>irsgov@gmail.com</strong>. The IRS is a government department, and its official domain should be '.org' instead of '.com'. Therefore, the legitimate domain for this email address should be <strong>XXX@irs.org</strong>. Furthermore, it's important to note that the IRS website explicitly states that 'The IRS will not initiate email contact with you without your consent.’"
+        });
+        $('.warning-button.irs-2').popup({
+            position: 'bottom center',
+            html: "Legitimate and trusted emails will include a proper header and closer, identifying you by name. This email greets you through saying “Dear Tax Payer”"
+        });
+        $('.warning-button.irs-3').popup({
+            position: 'bottom center',
+            html: "The IRS will never request or verify your personal information through email or a link."
         });
 
         $('.warning-button')
@@ -313,9 +330,13 @@ function showEmail(index) {
     
     // Event handler for stopping the pulsating and removing 'red' class on click
     $('.warning-button').on('click', function() {
-        $(this).remove(); 
-        // $(this).transition('stop');
-        // $(this).removeClass('red pulsating transition'); 
+        // $(this).remove(); 
+
+        $(this).transition('stop');
+        $(this).removeClass('red pulsating transition'); 
+        $(this).addClass('hide-after');
+        $(this).text('Reviewed');
+        
         // $(this).addClass('green'); 
     });
     

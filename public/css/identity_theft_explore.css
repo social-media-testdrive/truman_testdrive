@@ -671,7 +671,7 @@ button.ui.circular.icon.button:hover {
 
 /* hand next to warning popups for see why */
 .openEmailContainer .ui.red.button {
-    font-size: 1.25rem;
+    font-size: 1rem;
 }
 
 .warning-button {
@@ -701,10 +701,10 @@ button.ui.circular.icon.button:hover {
 
     content: ''; 
     display: inline-block;
-    position: absolute; /* Positions the image absolutely relative to the button */
-    left: 100%; /* Positions the image to the right of the button */
-    top: 50%; /* Aligns the top of the image with the middle of the button */
-    transform: translateY(-50%); /* Centers the image vertically relative to the button */
+    position: absolute; 
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%); 
     margin-left: 10px; 
     width: 32px; 
     height: 32px; 
@@ -712,4 +712,8 @@ button.ui.circular.icon.button:hover {
     background-size: contain;
     background-repeat: no-repeat; 
 
+}
+
+.hide-after:after {
+    display: none;
 }
