@@ -1,224 +1,224 @@
 {
-    "1": {
-        "type": "multi_select",
-        "partial": "none",
-        "prompt": "1. Select all sensitive personal information vulnerable to identity theft:",
-        "choices": {
-            "0": {
-                "text": "A. Dietary Preferences",
-                "explanation": "This information is generally not considered sensitive enough to be used for identity theft. It's a personal preference rather than a unique identifier."
-            },
-            "1": {
-                "text": "B. Mother's maiden name",
-                "explanation": "Often used as a security question, identity theft thieves can exploit your mother's maiden name to access accounts or reset passwords, potentially gaining unauthorized access to your sensitive information and accounts."
-            },
-            "2": {
-                "text": "C. Full name",
-                "explanation": "Identity theft thieves can use your full name to impersonate you in various situations, such as opening fraudulent accounts, making unauthorized purchases, or attempting to gain access to your personal information."
-            },
-            "3": {
-              "text": "D. Home address",
-              "explanation": "Identity theft thieves could use your home address to commit various types of fraud, such as applying for credit cards or loans in your name, redirecting mail, or engaging in scams that target your physical residence."
-            },
-            "4": {
-                "text": "E. Date of birth",
-                "explanation": "Your date of birth can be a key piece of information for identity theft thieves to carry out various malicious activities, such as applying for credit, opening accounts, or committing fraud, as it helps them establish your identity."
-            },
-            "5": {
-                "text": "F. Cell phone number",
-                "explanation": "Identity theft thieves might use your cell phone number to intercept authentication codes or reset password links sent via SMS, gaining unauthorized access to your online accounts and personal information, or even attempting to carry out scams through text messages."
-            }
-        },
-        "correctResponse": ["1", "2", "3", "4", "5"],
-        "theAnswers": "B, C, D, E, F"
-    },
-    "2": {
-      "type": "abcd",
+  "1": {
+      "type": "multi_select",
       "partial": "none",
-      "prompt": "2. Which action below is not a method to protect yourself from identity theft?",
+      "prompt": "1. Select all sensitive personal information that can be used for identity theft.",
       "choices": {
-        "a": {
-          "text": "A. Shred mails with personal information"
-        },
-        "b": {
-          "text": "B. Sharing personal info on social media"
-        },
-        "c": {
-          "text": "C. Using two-factor authentication"
-        },
-        "d": {
-          "text": "D. Being cautious about sharing info openly"
-        }
-      },
-      "explanation": "<h1>B is correct</h1><p>Never give out your account password, even if someone claims to be from your bank and the call number appears to be the same as your bank. Remember, banks will never ask for your account password. All other options are methods that can help protect yourself from identity theft.</p>",
-      "correctResponse": "b"
-  },
-    "3": {
-        "type": "multi_select",
-        "partial": "none",
-        "prompt": "3. If you suspect an email or text is a scam, what actions should you take? Select all that apply:",
-        "choices": {
-            "0": {
-                "text": "A. Don't respond until certain it's not a scam",
-                "explanation": "Do not respond to an email or a text that you suspect is a scam until you are absolutely certain it is not. You can consult your family members or friends for advice or contact the company/organization directly using the official contact number from their website."
-            },
-            "1": {
-                "text": "B. Call the provided number to verify if it's a scam.",
-                "explanation": "Never call the number provided in a suspicious email or text to confirm any questions. Instead, contact the company/organization directly using the official contact number listed on their website."
-            },
-            "2": {
-                "text": "C. Remember that companies usually don't ask for your username or password.",
-                "explanation": "Always remember that companies, organizations, and banks will never ask for your account username and password."
-            },
-            "3": {
-            "text": "D. Never share personal information",
-            "explanation": "Always remember to never share personal information, such as your Social Security number, bank account details, or passwords, unless it is necessary and safe.  For example, you may have to provide such information when you proactively go to legitimate organizations to handle administrative procedures."
-            },
-            "4": {
-                "text": "E. Independently verify messages from known organizations",
-                "explanation": "If you want to reach out to the organization from the email, make sure to directly contact the company/organization using the official contact number listed on their website. Never call the number provided in a suspicious email or text to confirm any questions."
-            },
-            "5": {
-                "text": "F. Forwarding it to All Contacts for Advice",
-                "explanation": "Forwarding the message to all contacts could spread the scam further. It's best to report it and seek advice from trusted sources instead."
-            }
-        },
-        "correctResponse": ["0", "2", "3", "4"],
-        "theAnswers": "A, C, D, E"
-    },
-    "4": {
-        "type": "yes_no",
-        "partial": "q4.html",
-        "prompt": "4. Is this email a scam?",
-        "choices": {
-          "yes": {
-            "text": "Yes"
+          "0": {
+              "text": "A. Dietary Preferences",
+              "explanation": "This information is generally not considered sensitive enough to be used for identity theft. It's a personal preference rather than a unique identifier."
           },
-          "no": {
-            "text": "No"
+          "1": {
+              "text": "B. Mother’s maiden name",
+              "explanation": "Because mother’s maiden name is often used as a common security question to access accounts or reset passwords, identity theft scammers can use your mother's maiden name to access your sensitive information and accounts."
+          },
+          "2": {
+              "text": "C. Full name",
+              "explanation": "Identity theft scammers can use your full name to impersonate you in situations such as opening accounts, making purchases, or attempting to gain access to your personal information."
+          },
+          "3": {
+              "text": "D. Home address",
+              "explanation": "Identity theft scammers can use your home address to commit fraud, such as applying for credit cards or loans in your name, redirecting mails, or engaging in scams that target your physical residence."
+          },
+          "4": {
+              "text": "E. Date of birth",
+              "explanation": "Your date of birth can be a key piece of information for identity theft scammers to carry out malicious activities, such as applying for credit, opening accounts, or committing fraud, as it helps them establish your identity."
+          },
+          "5": {
+              "text": "F. Cell phone number",
+              "explanation": "Identity theft scammers might use your cell phone number to get authentication codes or reset password links sent via SMS, which will allow them to access your online accounts and personal information, or even attempt to carry out scams through text messages."
           }
-        },
-        "explanation": "<h1>Yes this is a scam</h1><p>There are three main warning signs that indicate this email is a scam. First, this email does not address the receiver by their name. Second, this email asks you to click on a foreign link to update your account information. Third, This email claims some fraudulent transactions on your account without providing specific details, and creates a sense of threat to compel you to click on the provided link.</p>",
-        "correctResponse": "yes"
       },
-    "5": {
-        "type": "yes_no",
-        "partial": "q5.html",
-        "prompt": "5. Is this email a scam?",
-        "choices": {
+      "correctResponse": ["1", "2", "3", "4", "5"],
+      "theAnswers": "B, C, D, E, F"
+  },
+  "2": {
+      "type": "multi_select",
+      "partial": "none",
+      "prompt": "2. Which actions below are methods to protect yourself from identity theft? Select all that apply.",
+      "choices": {
+          "0": {
+              "text": "A. Shred mails with personal information",
+              "explanation": "Shredding old documents using a paper shredder and blacking out sensitive information are effective methods to prevent scammers from stealing your personal information."
+          },
+          "1": {
+              "text": "B. Share your account password when someone claims to be from the bank where you have an account",
+              "explanation": "Never share your account password, even if someone claims to be from your bank and the call number appears to be the same as your bank. Remember, banks will never ask for your account password."
+          },
+          "2": {
+              "text": "C. Set up two factor authentication",
+              "explanation": "Using two-factor authentication can provide added security for keeping personal information safe."
+          },
+          "3": {
+              "text": "D. Be careful sharing personal information in public spaces",
+              "explanation": "Personal information shared in public spaces can be easily observed or overheard by others who might misuse it. This increases the risk of identity theft, fraud, or privacy breaches. Therefore, to keep your personal information secure, it's crucial to be extremely careful about sharing it in public spaces."
+          }
+      },
+      "correctResponse": ["0", "2", "3"],
+      "theAnswers": "A, C, D"
+  },
+  "3": {
+      "type": "multi_select",
+      "partial": "none",
+      "prompt": "3. If you suspect an email or text is a scam, what actions should you take? Select all that apply.",
+      "choices": {
+          "0": {
+              "text": "A. Do not respond until you are 100% certain the email is not a scam",
+              "explanation": "Do not respond to an email or a text that you suspect is a scam until you are absolutely certain it is not. You can consult your family members or friends for advice or contact the company/organization directly using the official contact number from their website."
+          },
+          "1": {
+              "text": "B. Call the number in the suspicious email or text to ask questions",
+              "explanation": "Never call the number provided in a suspicious email or text. Instead, contact the company/organization directly using the official contact number listed on their website."
+          },
+          "2": {
+              "text": "C. Remind yourself that companies generally don’t contact you to ask for your username and password",
+              "explanation": "Always remember that companies, organizations, and banks will never ask for your account username and password in an email or text link."
+          },
+          "3": {
+              "text": "D. Never share personal information, such as your Social Security number, bank account details, or passwords",
+              "explanation": "Only share personal information, such as your Social Security number, bank account details, or passwords, when it is necessary and safe. For example, you may have to provide such information when handling personal business with government, healthcare, or other organizations. However, you should be the one to establish contact using information taken directly from their official website."
+          },
+          "4": {
+              "text": "E. If the message appears to be from a known organization, verify that it is correct.",
+              "explanation": "Use contact information from a trusted source, like the official website. If you want to reach out to the organization from the email, make sure to directly contact the company/organization using the official contact number listed on their website. Never call the number provided in a suspicious email or text to confirm any questions."
+          }
+      },
+      "correctResponse": ["0", "2", "3", "4"],
+      "theAnswers": "A, C, D, E"
+  },
+  "4": {
+      "type": "yes_no",
+      "partial": "q4.html",
+      "prompt": "4. Is this email a scam?",
+      "choices": {
         "yes": {
-            "text": "Yes"
+          "text": "Yes"
         },
         "no": {
-            "text": "No"
+          "text": "No"
         }
-        },
-        "explanation": "<h1>Yes this is a scam</h1><p>The message contains a foreign links and attempts to create a sense of urgency or threat.</p>",
-        "correctResponse": "yes"
-    },
-    "6": {
-        "type": "multi_select",
-        "partial": "q6.html",
-        "prompt": "6. If you receive the email below, what points should you consider? Select all that apply.",
-        "choices": {
-            "0": {
-                "text": "A. Sender's Email Address",
-                "explanation": "The sender's email address is very long and strange. The presence of multiple domains and unusual formatting raises suspicion. Legitimate organizations usually have professional and consistent email addresses."
-            },
-            "1": {
-                "text": "B. Unusual Grammar and Wording",
-                "explanation": "The email contains grammatical errors and awkward phrasing, which is often a sign of a scam. Legitimate organizations typically use correct grammar and clear language in their communications."
-            },
-            "2": {
-                "text": "C. Spam Warning",
-                "explanation": "The email being marked as spam by the email service is a strong indicator that it's a scam. Email services have algorithms to detect suspicious content, and the fact that it's flagged as spam raises red flags about its authenticity and intentions."
-            },
-            "3": {
-              "text": "D. Book recommendation",
-              "explanation": "This is unrelated to the content and context of the provided email and would not be neccessary to consider in identifying the email as a scam."
-            },
-            "4": {
-                "text": "E. Threat of Consequences",
-                "explanation": "The email warns that not completing the wallet verification will result in wallet restrictions. This threat is designed to manipulate users into complying with the scammer's demands."
-            },
-            "5": {
-                "text": "F. No Personalization",
-                "explanation": "The email lacks personalization and does not address the recipient by name. This is common in mass phishing emails."
-            }
-        },
-        "correctResponse": ["0", "1", "2", "4", "5"],
-        "theAnswers": "A, B, C, E, F"
-    },
-    "7": {
-        "type": "abcd",
-        "partial": "none",
-        "prompt": "7. What makes a password complex and secure?",
-        "choices": {
-          "a": {
-            "text": "A. Five characters or less"
-          },
-          "b": {
-            "text": "B. Including your first name"
-          },
-          "c": {
-            "text": "C. More than 8 characters, including numbers and symbols"
-          },
-          "d": {
-            "text": "D. Including your date of birth"
-          }
-        },
-        "explanation": "<h1>C is correct</h1><p>A strong password should ideally be long (at least 8 characters), include a mix of uppercase and lowercase letters, numbers, and special characters to enhance its security against potential hacking attempts.</p>",
-        "correctResponse": "c"
-    },
-    "8": {
-        "type": "abcd",
-        "partial": "none",
-        "prompt": "8. If your credit card is lost, what's the best action to safeguard your finances from potential scammers?",
-        "choices": {
-          "a": {
-            "text": "A.  Wait a few days to see if the card turns up"
-          },
-          "b": {
-            "text": "B. Ignore the loss and use your other cards"
-          },
-          "c": {
-            "text": "C. Switch to using a debit card permanently"
-          },
-          "d": {
-            "text": "D. Contact your credit card company to report the loss and request a replacement card."
-          }
-        },
-        "explanation": "<h1>D is correct</h1><p>When you can't find your credit card or debit card, it's important to call the bank or the card company right away. Let them know what happened and ask them to lock the card and mark it as lost.</p>",
-        "correctResponse": "d"
-    },
-    "9": {
-        "type": "yes_no",
-        "partial": "q9.html",
-        "prompt": "9. Should you engage with a pop-up on your screen that claims you have only 10 seconds to win a free tablet?",
-        "choices": {
-          "yes": {
-            "text": "Yes"
-          },
-          "no": {
-            "text": "No"
-          }
-        },
-        "explanation": "<h1>No you should not engage</h1><p>This message creates a sense of urgency by claiming that you only have 10 seconds to win. However, this message does not provide the details about the prize being offered. Legitimate emails will usually include all the details in one email and will not ask you to click on another link to see the details. Due to these suspicious signs, you should decline this message.</p>",
-        "correctResponse": "no"
       },
-      "10": {
-        "type": "yes_no",
-        "partial": "q10.html",
-        "prompt": "10. Could someone watching you at the ATM be a scammer?",
-        "choices": {
+      "explanation": "<h1>The correct answer is Yes. This email is a scam.</h1><p>There are three main warning signs that this email is a scam. First, this email does not address a person by name. Second, this email asks you to click on a link to update your account information. Third, this email claims some fraudulent transactions on your account without providing specific details, creating a sense of threat to get you to click on the provided link.</p>",
+      "correctResponse": "yes"
+  },
+  "5": {
+      "type": "yes_no",
+      "partial": "q5.html",
+      "prompt": "5. Is this message a scam?",
+      "choices": {
+      "yes": {
+          "text": "Yes"
+      },
+      "no": {
+          "text": "No"
+      }
+      },
+      "explanation": "<h1>The correct answer is Yes. This message is NOT a scam.</h1><p>This message does not contain any a foreign links. It also does not create a sense of urgency or threat. It simply sends a code. Therefore, this message is not a scam.</p>",
+      "correctResponse": "yes"
+  },
+  "6": {
+    "type": "multi_select",
+    "partial": "q6.html",
+    "prompt": "6. If you receive the email below, what factors should you consider? Select all that apply.",
+    "choices": {
+        "0": {
+            "text": "A. Sender’s Email Address",
+            "explanation": "The sender's email address is very long and strange. The presence of multiple domains and unusual formatting raises suspicion. Legitimate organizations usually have professional and consistent email addresses."
+        },
+        "1": {
+            "text": "B. Unusual Grammar and Wording",
+            "explanation": "The email contains grammatical errors and awkward phrasing, which is often a sign of a scam. Legitimate organizations typically use correct grammar and clear language in their communications."
+        },
+        "2": {
+            "text": "C. Spam Warning",
+            "explanation": "The email being marked as spam by the email service is a strong indicator that it's a scam. Email services have automated systems to detect suspicious content, and the fact that it's flagged as spam raises red flags about its authenticity and intentions."
+        },
+        "3": {
+            "text": "D. Book recommendation",
+            "explanation": "This is unrelated to the content and context of the provided email and would not be necessary to consider in identifying the email as a scam."
+        },
+        "4": {
+            "text": "E. Threat of Consequences",
+            "explanation": "The email warns that not completing the wallet verification will result in wallet restrictions. This threat is designed to manipulate users into doing what the scammer wants them to do."
+        },
+        "5": {
+            "text": "F. No Personalization",
+            "explanation": "The email does not address a person by name. This is common in mass phishing emails."
+        }
+    },
+    "correctResponse": ["0", "1", "2", "4", "5"],
+    "theAnswers": "A, B, C, E, F"
+  },
+  "7": {
+      "type": "abcd",
+      "partial": "none",
+      "prompt": "7. What makes a password complex and secure?",
+      "choices": {
+          "a": {
+              "text": "A password that is five characters or less"
+          },
+          "b": {
+              "text": "B. Including your first name"
+          },
+          "c": {
+              "text": "C. More than 8 characters, including numbers and symbols"
+          },
+          "d": {
+              "text": "D. Including your date of birth"
+          }
+      },
+      "explanation": "<h1>The correct answer is C.</h1><p>A strong password should be long (at least 8 characters), include a mix of uppercase and lowercase letters, numbers, and special characters to protect against potential hacking attempts.</p>",
+      "correctResponse": "c"
+  },
+  "8": {
+      "type": "abcd",
+      "partial": "none",
+      "prompt": "8. If you lost your credit card, which of the following is the best action to protect your finances from a potential scammer?",
+      "choices": {
+          "a": {
+              "text": "A. Wait a few days to see if the card turns up"
+          },
+          "b": {
+              "text": "B. Ignore the loss and use the other cards"
+          },
+          "c": {
+              "text": "C. Switch to using a debit card permanently"
+          },
+          "d": {
+              "text": "D. Contact your credit card company to report the loss and request a replacement card."
+          }
+      },
+      "explanation": "<h1>The correct answer is D.</h1><p>When you can't find your credit card or debit card, it's important to call the bank or the card company right away. Let them know what happened and ask them to lock the card and mark it as lost.</p>",
+      "correctResponse": "d"
+  },
+  "9": {
+      "type": "yes_no",
+      "partial": "q9.html",
+      "prompt": "9. Should you engage with a pop-up on your screen that claims you have only 10 seconds to win a free tablet?",
+      "choices": {
           "yes": {
-            "text": "Yes"
+              "text": "Yes"
           },
           "no": {
-            "text": "No"
+              "text": "No"
           }
-        },
-        "explanation": "<h1>Yes they could be a scammer</h1><p>Yes, someone peering over your shoulder while you're using an ATM could potentially be a scammer attempting to steal your sensitive information, such as your PIN or account details. This tactic, known as \"shoulder surfing,\" is a common method used by criminals to gain unauthorized access to your financial information and commit fraud. It's important to always shield your PIN and be aware of your surroundings to prevent falling victim to such scams.</p>",
-        "correctResponse": "yes"
-      }
+      },
+      "explanation": "<h1>The correct answer is No.</h1><p>This message creates a sense of urgency by claiming that you only have 10 seconds to win. Additionally, this message does not provide the details about the prize being offered. Legitimate emails will usually include all the details in one email and will not ask you to click on another link to see the details. Due to these suspicious signs, you should ignore this message.</p>",
+      "correctResponse": "no"
+  },
+  "10": {
+      "type": "yes_no",
+      "partial": "q10.html",
+      "prompt": "10. Could someone watching you at the ATM be a scammer?",
+      "choices": {
+          "yes": {
+              "text": "Yes"
+          },
+          "no": {
+              "text": "No"
+          }
+      },
+      "explanation": "<h1>The correct answer is Yes.</h1><p>Someone peering over your shoulder while you're using an ATM could be a scammer trying to steal information, such as your PIN or account details. This tactic, known as 'shoulder surfing,' is a common method used by criminals to access your financial information and commit fraud. It's important to always shield your PIN and be aware of your surroundings to prevent being a victim of such scams.</p>",
+      "correctResponse": "yes"
+  }
 }
