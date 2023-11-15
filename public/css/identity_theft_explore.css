@@ -679,6 +679,7 @@ button.ui.circular.icon.button:hover {
     margin-left: 20px !important;
     position: relative;
 }
+
 .warning-button:after { 
     /* content: '';
     display: inline-block;
@@ -711,7 +712,6 @@ button.ui.circular.icon.button:hover {
     background-image: url('/images/clickHere.png'); 
     background-size: contain;
     background-repeat: no-repeat; 
-
 }
 
 .hide-after:after {
@@ -719,5 +719,8 @@ button.ui.circular.icon.button:hover {
 }
 
 .iphone-2 {
-    margin-top: 30px !important;
+    /* margin-top: 30px !important; */
+    position: absolute !important;
+    right: 45%;
+    margin-top: 25px !important;
 }

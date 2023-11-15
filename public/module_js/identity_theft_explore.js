@@ -220,7 +220,7 @@ function showEmail(index) {
     // add warning for walmart email
     if(email.from === "<walmrt@gmail.com>") {
         var warningButton = $('<button>', {
-            class: 'ui red button warning-button walmart-1',
+            class: 'ui red button hidden warning-button walmart-1',
             text: 'WARNING'
         });
 
@@ -250,6 +250,20 @@ function showEmail(index) {
         var warningButton = $('<button>', {
             class: 'ui red button warning-button iphone-1',
             text: 'WARNING'
+        });
+
+        senderHeader.append(warningButton);
+    } else if(email.from === "<account-update@amazon.com>") {
+        var warningButton = $('<button>', {
+            class: 'ui green button warning-button amazon-1',
+            text: 'Review point'
+        });
+
+        senderHeader.append(warningButton);
+    }  else if(email.from === "<account-update@amazon.com>") {
+        var warningButton = $('<button>', {
+            class: 'ui green button warning-button amazon-1',
+            text: 'Review point'
         });
 
         senderHeader.append(warningButton);
@@ -393,8 +407,31 @@ function showEmail(index) {
         $('.warning-button')
             .transition('pulsating looping')
         ;
+    } else if(email.from === "<account-update@amazon.com>") {
+        $('.warning-button.amazon-1').popup({
+            position: 'bottom center',
+            html: "Trusted companies often have their own email domain. This email comes from @amazon.com. Also, it doesn’t ask any your personal information."
+        });
+        $('.warning-button.amazon-2').popup({
+            position: 'bottom center',
+            html: "This email provides you with a verification code, a strong indicator that it is not a scam. Furthermore, it does not request any of your personal information."
+        });
+
+        $('.warning-button')
+            .transition('pulsating looping')
+        ;
+    }   else if(email.from === "<intrepid@gmail.com>") {
+        $('.warning-button.intrepid-1').popup({
+            position: 'bottom center',
+            html: "This email is from a known sender and it contains a simple, positive message without any requests for personal information or actions. This familiarity and lack of unusual content confirms that it is not a scam."
+        });
+
+        $('.warning-button')
+            .transition('pulsating looping')
+        ;
+
     }
-    
+
     // Event handler for stopping the pulsating and removing 'red' class on click
     $('.warning-button').on('click', function() {
         // $(this).remove(); 
