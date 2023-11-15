@@ -724,3 +724,7 @@ button.ui.circular.icon.button:hover {
     right: 45%;
     margin-top: 25px !important;
 }
+
+.hideme {
+    display: none !important;
+}

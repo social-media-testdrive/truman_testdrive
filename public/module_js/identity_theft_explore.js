@@ -220,49 +220,49 @@ function showEmail(index) {
     // add warning for walmart email
     if(email.from === "<walmrt@gmail.com>") {
         var warningButton = $('<button>', {
-            class: 'ui red button hidden warning-button walmart-1',
+            class: 'ui red button hideme warning-button walmart-1',
             text: 'WARNING'
         });
 
         senderHeader.append(warningButton);
     } else if(email.from === "<irsgov@gmail.com>") {
         var warningButton = $('<button>', {
-            class: 'ui red button warning-button irs-1',
+            class: 'ui red button hideme warning-button irs-1',
             text: 'WARNING'
         });
 
         senderHeader.append(warningButton);
     } else if(email.from === "<no-reply@dropbox.com>") {
         var warningButton = $('<button>', {
-            class: 'ui green button warning-button dropbox-1',
+            class: 'ui green button hideme warning-button dropbox-1',
             text: 'Review point'
         });
 
         senderHeader.append(warningButton);
     } else if(email.from === "<nccustudent@gmail.com>") {
         var warningButton = $('<button>', {
-            class: 'ui red button warning-button nccu-1',
+            class: 'ui red button hideme warning-button nccu-1',
             text: 'WARNING'
         });
 
         senderHeader.append(warningButton);
     } else if(email.from === "<4kbug82ob@hotmail.com>") {
         var warningButton = $('<button>', {
-            class: 'ui red button warning-button iphone-1',
+            class: 'ui red button hideme warning-button iphone-1',
             text: 'WARNING'
         });
 
         senderHeader.append(warningButton);
     } else if(email.from === "<account-update@amazon.com>") {
         var warningButton = $('<button>', {
-            class: 'ui green button warning-button amazon-1',
+            class: 'ui green button hideme warning-button amazon-1',
             text: 'Review point'
         });
 
         senderHeader.append(warningButton);
     }  else if(email.from === "<account-update@amazon.com>") {
         var warningButton = $('<button>', {
-            class: 'ui green button warning-button amazon-1',
+            class: 'ui green button hideme warning-button amazon-1',
             text: 'Review point'
         });
 
@@ -343,10 +343,6 @@ function showEmail(index) {
             position: 'bottom center',
             html: "In a legitimate email, you will never have to click on a link to submit personal financial information. This email tells you to resubmit your credit card details. Also, suspicious links are often indicated by beginning with http://, like the one in this email rather than https://."
         });
-
-        $('.warning-button')
-            .transition('pulsating looping')
-        ;
     } else if(email.from === "<irsgov@gmail.com>") {
         $('.warning-button.irs-1').popup({
             position: 'bottom center',
@@ -360,11 +356,7 @@ function showEmail(index) {
             position: 'bottom center',
             html: "The IRS will never request or verify your personal information through email or a link."
         });
-
-        $('.warning-button')
-            .transition('pulsating looping')
-        ;
-    }   else if(email.from === "<no-reply@dropbox.com>") {
+    } else if(email.from === "<no-reply@dropbox.com>") {
         $('.warning-button.dropbox-1').popup({
             position: 'bottom center',
             html: "Trusted companies usually have their own email domain, like this email which comes from no-reply@<strong>dropbox.com</strong>."
@@ -373,10 +365,6 @@ function showEmail(index) {
             position: 'bottom center',
             html: "The focus on this email is ensuring the safety of your account. Scam emails will rarely offer details or make suggestions to increase your account protection."
         });
-
-        $('.warning-button')
-            .transition('pulsating looping')
-        ;
     } else if(email.from === "<nccustudent@gmail.com>") {
         $('.warning-button.nccu-1').popup({
             position: 'bottom center',
@@ -390,11 +378,7 @@ function showEmail(index) {
             position: 'bottom center',
             html: "One major red flag that indicates this email is a scam is the request to send money to an unfamiliar recipient."
         });
-
-        $('.warning-button')
-            .transition('pulsating looping')
-        ;
-    }  else if(email.from === "<4kbug82ob@hotmail.com>") {
+    } else if(email.from === "<4kbug82ob@hotmail.com>") {
         $('.warning-button.iphone-1').popup({
             position: 'bottom center',
             html: "Legitimate companies typically have their own email domains, like @apple.com. This email does not appear to have a legitimate email address."
@@ -403,10 +387,6 @@ function showEmail(index) {
             position: 'bottom center',
             html: "A lot of scam emails use the <strong>too good to be true</strong> tactic. This email fails to provide fine prints, such as the expiration data or the exceptions to the sale. A legitimate coupon usually lists the details."
         });
-
-        $('.warning-button')
-            .transition('pulsating looping')
-        ;
     } else if(email.from === "<account-update@amazon.com>") {
         $('.warning-button.amazon-1').popup({
             position: 'bottom center',
@@ -416,19 +396,11 @@ function showEmail(index) {
             position: 'bottom center',
             html: "This email provides you with a verification code, a strong indicator that it is not a scam. Furthermore, it does not request any of your personal information."
         });
-
-        $('.warning-button')
-            .transition('pulsating looping')
-        ;
-    }   else if(email.from === "<intrepid@gmail.com>") {
+    } else if(email.from === "<intrepid@gmail.com>") {
         $('.warning-button.intrepid-1').popup({
             position: 'bottom center',
             html: "This email is from a known sender and it contains a simple, positive message without any requests for personal information or actions. This familiarity and lack of unusual content confirms that it is not a scam."
         });
-
-        $('.warning-button')
-            .transition('pulsating looping')
-        ;
 
     }
 
@@ -443,13 +415,6 @@ function showEmail(index) {
         
         // $(this).addClass('green'); 
     });
-    
-    // $('#container').on('mouseenter', '.warning-button', function() {
-    //     $(this).popup({
-    //         content: $(this).attr('data-content'),
-    //         position: $(this).attr('data-position')
-    //     }).popup('show');
-    // });
 
     console.log("Skipped: ", skipped);
     if(openEmailTutorialDone === false && skipped === false) {
@@ -532,22 +497,7 @@ function showEmail(index) {
 
 
     }
-    // intro2.addStep({
-    //     element: document.querySelector('#report'),
-    //     intro: 'Yooo, here is the starting dialog'
-    // }).addStep({
-    //     element: document.querySelector('#block'), // Specify the element for the next step
-    //     intro: 'This is the second step'
-    // }).addStep({
-    //     element: document.querySelector('#delete'), // Specify the element for the third step
-    //     intro: 'And this is the third step'
-    // }).addStep({
-    //     element: document.querySelector('#reply'), // Specify the element for the third step
-    //     intro: 'And this is the third step'
-    // }).addStep({
-    //     element: document.querySelector('.left.arrow.big.icon'), // Specify the element for the third step
-    //     intro: 'And this is the third step'
-    // }).start();
+
 }
   
 function closeEmail() {
@@ -587,7 +537,11 @@ function reportEmail() {
                 class: 'ui blue big button',
                 click: function () {
                     $(this).modal('hide');
-                    introJs().addHints();
+                    $('.warning-button').removeClass('hideme');
+                    $('.warning-button')
+                        .transition('pulsating looping')
+                    ;
+
                 }
             }, 
         ],
@@ -619,17 +573,38 @@ function blockEmail() {
         responseTitle = '<i class="check circle green icon"></i> Good Job';
     }
 
+
     $.modal({
         title: responseTitle,
         classTitle: 'modalTitle',
         class: 'small emailSimModal',
         closeIcon: true,
-        content: emails[iCurrentEmail].blockContent,
-        actions: [{
-          text: 'Got it',
-          class: 'blue big'
-        }]
+        content: emails[iCurrentEmail].reportContent,
+        actions: [
+            {
+                text: 'Back to Email',
+                class: 'ui black basic big button',
+                click: function () {
+                    $(this).modal('hide');
+                }
+            },
+            {
+                text: 'See Why',
+                class: 'ui blue big button',
+                click: function () {
+                    $(this).modal('hide');
+                    $('.warning-button').removeClass('hideme');
+                    $('.warning-button')
+                        .transition('pulsating looping')
+                    ;
+
+                }
+            }, 
+        ],
+        classActions: 'center aligned'
     }).modal('show');
+    
+    // fix modal scroll bar shifting page issue
     $('.dimmable.dimmed').css('margin-right', '0px');
 }
   
@@ -646,16 +621,35 @@ function deleteEmail() {
         responseTitle = '<i class="check circle green icon"></i> Good Job';
     }
 
+
     $.modal({
         title: responseTitle,
         classTitle: 'modalTitle',
         class: 'small emailSimModal',
         closeIcon: true,
-        content: emails[iCurrentEmail].deleteContent,
-        actions: [{
-          text: 'Got it',
-          class: 'blue big'
-        }]
+        content: emails[iCurrentEmail].reportContent,
+        actions: [
+            {
+                text: 'Back to Email',
+                class: 'ui black basic big button',
+                click: function () {
+                    $(this).modal('hide');
+                }
+            },
+            {
+                text: 'See Why',
+                class: 'ui blue big button',
+                click: function () {
+                    $(this).modal('hide');
+                    $('.warning-button').removeClass('hideme');
+                    $('.warning-button')
+                        .transition('pulsating looping')
+                    ;
+
+                }
+            }, 
+        ],
+        classActions: 'center aligned'
     }).modal('show');
     $('.dimmable.dimmed').css('margin-right', '0px');
 }
@@ -670,18 +664,38 @@ function replyEmail() {
         responseTitle = '<i class="check circle green icon"></i> Good Job';
     }
 
+
     $.modal({
         title: responseTitle,
         classTitle: 'modalTitle',
         class: 'small emailSimModal',
         closeIcon: true,
-        content: emails[iCurrentEmail].replyContent,
-        actions: [{
-          text: 'Got it',
-          class: 'blue big'
-        }]
+        content: emails[iCurrentEmail].reportContent,
+        actions: [
+            {
+                text: 'Back to Email',
+                class: 'ui black basic big button',
+                click: function () {
+                    $(this).modal('hide');
+                }
+            },
+            {
+                text: 'See Why',
+                class: 'ui blue big button',
+                click: function () {
+                    $(this).modal('hide');
+                    $('.warning-button').removeClass('hideme');
+                    $('.warning-button')
+                        .transition('pulsating looping')
+                    ;
+
+                }
+            }, 
+        ],
+        classActions: 'center aligned'
     }).modal('show');
     $('.dimmable.dimmed').css('margin-right', '0px');
+
 }
   
 
@@ -693,7 +707,7 @@ function linkClick() {
         classTitle: 'modalTitle',
         class: 'small emailSimModal',
         closeIcon: true,
-        content: 'This email is indicative of an identity theft scam. Clicking on the link is dangerous! The safe options would be to block sender, report scam, or delete the email.',
+        content: 'It\'s best not to click on links from emails. Navigating to the website yourself using a browser is always safer.',
         actions: [{
           text: 'Got it',
           class: 'blue big'
