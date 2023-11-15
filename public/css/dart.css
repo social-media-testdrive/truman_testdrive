@@ -29,7 +29,7 @@ header a.item {
   
 /* very specific to override formantic ui  .ui.menu .item color attribute */
 #page-header header.ui.borderless.menu.tablet-and-computer .ui.container .right.menu .item.dart-blue {
-    color: #2165AE; 
+    color: #3757A6; 
     font-size: 1.5rem;
 }
 
@@ -148,6 +148,7 @@ body{
 img.ui.small.image.dart-logo {
     padding: 0 !important;
     margin: 0 !important;
+    width: 135px;
 }
 
 /* .dimmable.modal-open.dimmed,
@@ -179,7 +180,7 @@ h1, h2, h3, h4, h5 {
 } */
 
 /* .video-js .vjs-big-play-button {
-background-color: #2165AE !important;
+background-color: #3757A6 !important;
 font-size: 5em !important;
 opacity: 1 !important;
 border-radius: 50% !important;

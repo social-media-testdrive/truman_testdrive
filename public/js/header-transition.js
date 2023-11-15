@@ -56,7 +56,7 @@ $(document).ready(function() {
             loginItem.hide();
             signupItem.hide();
             getStartedItem.show();
-            dartBlueItems.css('color', '#2165AE');
+            dartBlueItems.css('color', '#3757A6');
             dartLogo.attr('src', '/images/dart-logo.svg');
         }
 

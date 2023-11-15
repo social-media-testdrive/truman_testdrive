@@ -668,7 +668,7 @@
 
     /* glow */
     /* box-shadow: 0 0 30px 10px #ffffff86; */
-    box-shadow: 0 0 30px 10px #2165AE;
+    box-shadow: 0 0 30px 10px #3757A6;
   }
 
 .video-js .vjs-big-play-button .vjs-icon-placeholder:before {
@@ -707,7 +707,7 @@
   .video-js .vjs-big-play-button:focus
    {
     border-color: #cce6ff;
-    background-color: #2165AE;
+    background-color: #3757A6;
 
     /* border-color: #fff;
     background-color: #73859f;

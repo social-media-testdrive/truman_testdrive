@@ -72,7 +72,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #2165ae2d;
+    background-color: #3757A6;
     border-radius: 50%;
 } */
 
@@ -84,7 +84,7 @@
 
 .progress-item.completed .step-counter {
     z-index: 7;
-    /* background-color: #2165AE; */
+    /* background-color: #3757A6; */
     /* color: white; */
 }
 

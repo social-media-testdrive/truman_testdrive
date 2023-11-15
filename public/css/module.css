@@ -329,7 +329,7 @@ u {
 }
 
 .ui.large.left.pointing.label {
-    background: #2165AE;
+    background: #3757A6;
     color: white;
 }
 
@@ -384,8 +384,8 @@ u {
 
 .ui.huge.label.lockContainer {
     text-align: center;
-    background: #2165AE;
-    border: 3px solid #2165AE; 
+    background: #3757A6;
+    border: 3px solid #3757A6; 
     border-radius: 10px; 
     padding: 40px 80px;
 }
@@ -652,7 +652,7 @@ i.big.unlock.icon {
   .mine .message {
     color: white;
     margin-left: 25%;
-    background: linear-gradient(to bottom, #00D0EA 0%, #2165AE 100%);
+    background: linear-gradient(to bottom, #00D0EA 0%, #3757A6 100%);
     background-attachment: fixed;
     position: relative;
   }
@@ -665,7 +665,7 @@ i.big.unlock.icon {
     right: -8px;
     height: 20px;
     width: 20px;
-    background: linear-gradient(to bottom, #00D0EA 0%, #2165AE 100%);
+    background: linear-gradient(to bottom, #00D0EA 0%, #3757A6 100%);
     background-attachment: fixed;
     border-bottom-left-radius: 15px;
   }
