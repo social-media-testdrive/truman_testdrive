@@ -71,27 +71,58 @@ html
 
 
   body
-    //- Flexbox layout 
-    #page-header
-      block header
-        include partials/module_header
+    .ui.left.vertical.inverted.menu.sidebar
+      .item
+        h3
+          i.map.marked.icon
+          |  Navigate Course
+      a.item(href="/intro/identity")
+        i.info.icon
+        |  Intro 
+      a.item(href="/challenge/identity")
+        i.puzzle.piece.icon
+        |  Challenge
+      a.item(href="/learn/submod/identity")
+        i.book.open.icon
+        |  Chapter 1: Concepts
+      a.item(href="/learn/submod2/identity")
+        i.wrench.icon
+        |  Chapter 2: Techniques
+      a.item(href="/learn/submod3/identity")
+        i.shield.alternate.icon
+        |  Chapter 3: Protection
+      a.item(href="/explore/identity")
+        i.gamepad.icon
+        |  Practice
+      a.item(href="/evaluate/identity")
+        i.edit.icon
+        |  Evaluate
+      a.item(href="/reflect/identity")
+        i.lightbulb.icon
+        |  Reflect
+    .ui.pusher
+      //- Flexbox layout 
+      #page-header
+        block header
+          include partials/module_header
 
-      //- progress bar stuff
-      //-   include partials/ui_header
-        #page-article(style="overflow-y: scroll !important;")
-    #page-article
-      block content
+        //- progress bar stuff
+        //-   include partials/ui_header
+          #page-article(style="overflow-y: scroll !important;")
+      #page-article
+        #sidebar-here(style="min-height: 79.4vh;")
+          block content
       //- .loading-screen-container.hidden(id="loadingScreen") 
       //-     .ui.active.inverted.dimmer
       //-         .ui.active.blue.large.elastic.loader 
       //-         h1 Loading...
-    #page-footer
-      include partials/module_footer
-        block footer
+      #page-footer
+        include partials/module_footer
+          block footer
 
-      
-        //- navigation buttons
-        //- include partials/ui_footer
+        
+          //- navigation buttons
+          //- include partials/ui_footer
     
     if process.env.instanceType == 'test'
       script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js')
@@ -140,6 +171,27 @@ html
     script(src="/js/module_exit.js")  
     script(src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js")
     script(src='/video-js/video.min.js')
+    script.
+      $(document).ready(function() {
+        $('.ui.sidebar')
+          .sidebar({
+            context: $('#sidebar-here'),
+            transition: 'overlay',
+            dimPage: false,
+            closable: false,
+            exclusive: true,
+          })
+          .sidebar('attach events', '.hamburger.icon')
+        ;
+
+        $('.hamburger.icon').click(function() {
+            $('.ui.sidebar').sidebar('toggle');
+            // Change the icon class between 'hamburger' and 'close' when clicked
+            $(this).toggleClass('hamburger close');
+        });
+
+      });
+
 
 
     block scripts

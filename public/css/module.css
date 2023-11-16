@@ -67,7 +67,7 @@ body{
     flex:1; 
 
     /* padding to stop it from clipping under the header progress bar */
-    padding-top: 20px;
+    /* padding-top: 20px; */
 
 }
 
@@ -141,6 +141,7 @@ header {
     font-size: 2.15rem;
     font-weight: 600;
     font-family: 'Inter', sans-serif; 
+    margin-top: 10px;
 }
 
 li strong, li u {
@@ -498,7 +499,7 @@ i.big.unlock.icon {
 
     #page-article{ 
         /* padding to stop it from clipping under the header progress bar */
-        padding-top: 50px;
+        /* padding-top: 50px; */
         /* background-color: green; */
     }
     
@@ -513,7 +514,7 @@ i.big.unlock.icon {
 
     #page-article{ 
         /* padding to stop it from clipping under the header progress bar */
-        padding-top: 60px;
+        /* padding-top: 60px; */
         /* background-color: orange; */
 
     }
@@ -827,4 +828,7 @@ i.big.unlock.icon {
     font-size: 1.5rem;
 }
 
+.ui.small.progress {
+    margin-bottom: 0px;
+}
 
