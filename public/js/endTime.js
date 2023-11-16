@@ -8,30 +8,30 @@ function postEndTime(modID, page, backLink) {    // console.log("Post end time")
     // console.log("!!! In endTime.js post function**********");
 
     // POST module progress to database
-    // fetch('/postEndTime', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //         // 'X-CSRF-Token': csrfToken
-    //     },
-    //     //data to be sent in the request body
-    //     body: JSON.stringify({
-    //         "modID": modID, 
-    //         "page": page, 
-    //     })
-    // })
-    // .then(response => {
-    //     if (response.ok) {
-    //         // Request was successful
-    //         // console.log('Page END time posted successfully!');
-    //         if(backLink !== "none") {
-    //             window.location.href = backLink;
-    //         }
-    //     } else {
-    //         // Handle error response
-    //         console.error('Failed to post page END time');
-    //     }
-    // })
+    fetch('/postEndTime', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+            // 'X-CSRF-Token': csrfToken
+        },
+        //data to be sent in the request body
+        body: JSON.stringify({
+            "modID": modID, 
+            "page": page, 
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            // Request was successful
+            // console.log('Page END time posted successfully!');
+            if(backLink !== "none") {
+                window.location.href = backLink;
+            }
+        } else {
+            // Handle error response
+            console.error('Failed to post page END time');
+        }
+    })
 
     // if(backLink !== "none") {
     //     window.location.href = backLink;

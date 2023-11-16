@@ -867,7 +867,7 @@ exports.postStartTime = async (req, res, next) => {
 exports.postEndTime = async (req, res, next) => {
     console.log("In user.js POST end time***************************");
     try {
-        // const { modID, page } = req.body;
+        const { modID, page } = req.body;
         // const existingUser = await User.findOne({ username: req.user.username });
 
         // if (existingUser) {
