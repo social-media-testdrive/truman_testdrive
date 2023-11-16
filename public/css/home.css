@@ -1,51 +1,396 @@
 html {
-  font-size: 1rem;
+  /* make so when hit return to top button it smoothly returns */
+  scroll-behavior: smooth;
 }
 
-body {
-  background: linear-gradient(to bottom, #2165AE, #091D32);
+
+#page-header {
+  min-height: 0px;
+}
+
+#page-header .ui.menu {
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+#scrollToTop {
+  opacity: 0;
+  transition: all .4s;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999999999999;
+}
+
+#scrollToTop.active {
+  opacity: 1;
+}
+
+#blue-upper {
+  background: linear-gradient(to bottom, #3757A6, #091D32);
   color: white;
-  /* height: 100%; */
-  /* z-index: 0;
-  padding-top: 80px;
-  height: 100%; */
+  z-index: 0;
+  /* padding-top: 80px; */
+  /* min-height: 100vh; */
+  min-height: calc(100vh + 15px); /* Adjust for header height */
+  display: flex;
+  align-items: center;
 }
 
-.column.left.aligned {
-  max-width: 500px;
+#white-lower {
+  background-color: transparent;
+  color: black;
+  z-index: 0;
+  padding-top: 75px;
 }
 
-.ui.middle.aligned.center.aligned.grid {
-  height: 100vh;
-  /* background-color: yellow; */
+.info-header {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.vertically-center {
+  display: flex !important; 
+  align-items: center !important;
+}
+
+button.ui.fluid {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 1.75rem; /* 28 pixels */
+}
+
+button.ui.blue.huge.fluid.button {
+  border: 2px solid #0EABB2;
 }
 
 h1.ui.header {
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: white;
-}
-
-.img-container {
-  text-align: center;
+  font-family: 'Titillium Web', sans-serif;
 }
 
 .ui.container {
   font-size: 1.5rem;
-  /* color: red; */
 }
 
-#learn-to {
-  margin-top: 15px;
+/* Add the following styles */
+#video-overlay {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* p#about {
+#video-overlay .inner-video {
+  position: absolute;
+  top: -170px;
+}
+
+p#about {
   margin-top: 50px;
-} */
+}
 
-/* p#aim {
+p#aim {
   padding-bottom: 50px;
 }
 
 #our-mission {
   font-size: 2.25rem;
-} */
+}
+
+#sponsors {
+  font-size: 2.75rem;
+  font-weight: 600;
+  /* font-family: 'Armata', sans-serif; */
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.ui.raised.segment {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.raised-content {
+  font-size: 1.5rem;
+  margin-left: 15px;
+  margin-right: 15px;
+  overflow:  hidden !important;
+  padding-top: 20px;
+}
+
+
+.in-slider hr {
+  border: none;
+  height: 10px;
+  background-color: #6BBCC7;
+  margin: 0;
+  width: 100%;
+  position: absolute;
+  /* margin-left: -50px;
+  margin-top: -20px; */
+  /* margin-bottom: 30px; */
+}
+
+
+.home-mod-title {
+  font-size: 2rem !important;
+  font-weight: 600 !important;
+  /* font-family: 'Armata', sans-serif !important; */
+  font-family: 'Titillium Web', sans-serif !important;
+}
+
+
+.popular-course-title {
+  font-size: 2rem !important;
+  font-weight: 600 !important;
+  /* font-family: 'Armata', sans-serif !important; */
+  font-family: 'Titillium Web', sans-serif !important;
+
+  margin-top: 10px !important;
+}
+
+.learn-now-container {
+  background: white; 
+  width: 100%; 
+  margin: 0; 
+  padding: 0; 
+  min-height: 77px; 
+  margin-top: -1px;
+}
+
+.round-learn-now {
+    z-index: 10000;
+    position: relative !important; 
+    margin-right: 20px !important;
+    border-radius: 30px !important;  
+    /* color: #495057 !important;
+    border: 1px solid #495057; */
+    background-color: #3757A6 !important;
+    color: white !important;
+    padding-left: 30px;
+    padding-right: 30px;
+    transition: transform 0.3s ease !important;
+    /* font-family: 'Armata', sans-serif !important;  */
+    font-family: 'Titillium Web', sans-serif !important;
+
+}
+
+.round-learn-now:hover {
+    transform: translateX(5px);
+    /* inset shadow instead of border used so that it doesn't doesn't affect the layout (push everything over 2px)*/
+    box-shadow: inset 0 0 0 2px #6BBCC7 !important;
+}
+
+.slider {
+  position: relative;
+}
+
+.border {
+  border: #235799 4px solid; 
+}
+
+.ui.in-slider {
+  position: relative;
+}
+
+.ui.in-slider img {
+  position: relative;
+}
+
+.slider-module-text-container {
+  margin: 0; 
+  padding: 0; 
+  width: 100%; 
+  background: white; 
+  /* margin-top: 150px; */
+}
+
+
+.slide-holder{
+  height:425px;
+  background:gray;
+  border:1px dashed green;
+  color:#fff;
+  /* text-align:center !important;
+  margin: 0 auto !important; */
+}
+
+.slide-holder img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+  
+  
+  
+  
+
+
+
+
+/* Referenced Source: https://codepen.io/dannyarty/pen/JjKrPOL */
+
+.wrap .slider {
+  position: relative;
+  z-index: 200;
+  padding: 0 0px;
+  margin: 5rem auto;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.wrap .slick-arrow {
+  position: absolute;
+  top: 50%;
+  width: 40px;
+  height: 50px;
+  line-height: 50px;
+  margin-top: -25px;
+  border: none;
+  background: transparent;
+  color: #235799;
+  font-family: monospace;
+  font-size: 5rem;
+  z-index: 300;
+  outline: none;
+}
+
+.wrap .slick-prev {
+  left: -50px;
+  text-align: left;
+}
+
+.wrap .slick-next {
+  right: -50px;
+  text-align: right;
+}
+
+.wrap .item.slick-slide {
+  /* width of the slides */
+  width: 700px;
+  height: 424px !important;
+  transition: transform .5s ease;
+  position: relative;
+  /* border: #235799 4px solid; */
+  /* box-shadow: inset 0 0 0 4px #235799; */
+
+}
+
+.wrap .slick-slide:after {
+  content:'';
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.5);
+  transition: transform .4s;
+}
+
+.wrap .item.slick-slide {
+  transform: scale(0.7)  translate(640px);
+}
+
+.wrap .item.slick-slide.slick-center + .slick-slide {
+  transform: scale(0.8) translate(-250px);
+  z-index: 10;
+}
+
+.wrap .item.slick-slide.slick-center + .slick-slide + .item.slick-slide {
+  transform: scale(0.7)  translate(-640px);
+  z-index: 5;
+}
+
+.wrap .item.slick-slide.slick-active {
+  transform: scale(0.8) translate(250px);
+}
+
+.wrap .item.slick-slide.slick-center {
+  /* margin: 0 -10%; */
+  transform: scale(1);
+  z-index: 1050;
+
+}
+
+.wrap .slick-center:after {
+  opacity: 0;
+  margin:10px;
+  padding:10px;
+}
+
+.wrap .item.slick-slide img {
+  object-fit: cover;
+  height: 150px;
+  width: 100%;
+}
+
+
+
+
+
+/* Styles for the mobile only popular courses module raised segments  */
+
+.ui.raised.segment {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+#raised-content {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.ui.raised.segment .ui.image.banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 200px !important;
+}
+
+.ui.raised.segment .ui.image.banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+  
+hr {
+  border: none;
+  height: 15px;
+  background-color: #6BBCC7;
+  margin: 0;
+  width: 125%;
+  margin-left: -50px;
+  margin-top: -20px;
+  margin-bottom: 30px;
+}
+  
+  
+  
+#in-progress {
+  font-size: 2.75rem;
+  font-weight: 600;
+  /* font-family: 'Armata', sans-serif; */
+  font-family: 'Titillium Web', sans-serif;
+}
+  
+.home-mod-title {
+  font-size: 2rem !important;
+  font-weight: 600 !important;
+  /* font-family: 'Armata', sans-serif !important; */
+  font-family: 'Titillium Web', sans-serif !important;
+}
+  
+
+/* hide app demo on smaller mobile phones */
+@media (max-width: 424px) {
+  .hide-small-phone {
+    display: none !important;
+  }
+}

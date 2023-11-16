@@ -38,6 +38,7 @@
     "express-rate-limit": "^7.0.1",
     "express-session": "^1.17.3",
     "express-validator": "^7.0.1",
+    "fomantic-ui": "^2.9.3",
     "jshint": "^2.13.6",
     "lodash": "^4.17.21",
     "lusca": "^1.7.0",
@@ -66,7 +67,8 @@
     "mocha": "^10.2.0",
     "nodemon": "^3.0.1",
     "sinon": "^16.0.0",
-    "supertest": "^6.3.3"
+    "supertest": "^6.3.3",
+    "video.js": "^8.6.1"
   },
   "engines": {
     "node": ">=18",

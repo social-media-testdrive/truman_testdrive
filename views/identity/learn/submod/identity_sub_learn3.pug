@@ -7,9 +7,13 @@ block content
       h1.ui.header.large#learn-title
         .content
           | What are the consequences when personal information is stolen?
-      iframe(type='text/html' width='640' height='360'
-        src='/videos/identity-consequences.mp4'
-        frameborder='0' style='display: block; margin: auto;')
+      p Click the image to start the video
+      video-js#my_video_1.video-js.vjs-default-skin.vjs-show-big-play-button-on-pause(width='640px' height='360px' controls='' preload='none' data-setup='{ "poster":"/images/identity-consequences-poster.png", "aspectRatio":"16:9", "playbackRates": [0.5, 0.75, 1, 1.5, 2] }')
+        source(src='https://dart-store.s3.amazonaws.com/identity-consequences.mp4' type='video/mp4')
+
+      //- iframe(type='text/html' width='640' height='360'
+      //-   src='/videos/identity-consequences.mp4'
+      //-   frameborder='0' style='display: block; margin: auto;')
       .div(style='margin-top: 20px;')
         
         .ui.large.blue.fluid.label 
@@ -21,7 +25,7 @@ block content
         ul
           li 
             strong fraudulently apply 
-            | for loans and credit cards, resulting in financial losses, decreases in credit scores, and future difficulty receiving loans
+            | for loans and credit cards, leaving you with the bills, lowering your credit score, and making it harder for you to get loans in the future
           li 
             strong withdraw your money 
             | from your bank accounts without your permission
@@ -57,3 +61,4 @@ block scripts
   script(src='/js/character.js')
   script.
     postStartTime("identity", "sub_learn3");
+

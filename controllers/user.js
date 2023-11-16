@@ -733,15 +733,16 @@ exports.postModuleProgress = async (req, res, next) => {
 
 
 exports.postQuizScore = async (req, res, next) => { // response second
-  console.log("In POST quiz score request body***********************hiii****");
+  // console.log("In POST quiz score request body***********************hiii****");
 
-  const { modID, scoreTotal, selectedAnswer, questionScores, nextLink, currentSection } = req.body;
-  console.log("Module ID: " + modID);
-  console.log("Score Total: " + scoreTotal);
-  console.log("Selected Answer: " + selectedAnswer);
-  console.log("Question Scores: " + questionScores);
-  console.log("Next Link: " + nextLink);
-  console.log("Current Section: " + currentSection);
+  const { modID, scoreTotal, correctAnswers, selectedAnswer, questionScores, nextLink, currentSection } = req.body;
+  // console.log("Module ID: " + modID);
+  // console.log("Score Total: " + scoreTotal);
+  // console.log("Correct Answers: " + correctAnswers);
+  // console.log("Selected Answer: " + selectedAnswer);
+  // console.log("Question Scores: " + questionScores);
+  // console.log("Next Link: " + nextLink);
+  // console.log("Current Section: " + currentSection);
 
   try {
     const existingUser = await User.findOne({
@@ -753,6 +754,7 @@ exports.postQuizScore = async (req, res, next) => { // response second
       const attempt = {
         timestamp: new Date(),
         scoreTotal: scoreTotal,
+        correctAnswers: correctAnswers,
         questionScores: questionScores,
         questionChoices: selectedAnswer,
       };
@@ -764,10 +766,22 @@ exports.postQuizScore = async (req, res, next) => { // response second
 
       // save to mongodb database
       await existingUser.save();
+
+      // Update the user in the session - need to do this so can return to quiz results page in same session
+      req.login(existingUser, (err) => {
+        if (err) {
+          return next(err);
+        }
+  
+        // req.flash('success', { msg: 'Profile information has been updated.' });
+        return res.redirect(nextLink);
+      });
+      // console.log("about to redirect in post quiz score")
+      // res.redirect(nextLink);
+    } else {
+      res.status(404).send('User not found while posting quiz score');
     }
 
-    // console.log("about to redirect in post quiz score")
-    res.redirect(nextLink);
   } catch (err) {
     next(err);
   }

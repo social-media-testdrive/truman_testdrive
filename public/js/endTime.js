@@ -5,7 +5,7 @@ function postEndTime(modID, page, backLink) {    // console.log("Post end time")
     // console.log("!!! Module ID: " + modID);
     // console.log("!!! Page Name: " + page);
     // console.log("!!! Back link: " + backLink);
-    console.log("!!! In endTime.js post function**********");
+    // console.log("!!! In endTime.js post function**********");
 
     // POST module progress to database
     fetch('/postEndTime', {
@@ -23,7 +23,7 @@ function postEndTime(modID, page, backLink) {    // console.log("Post end time")
     .then(response => {
         if (response.ok) {
             // Request was successful
-            console.log('Page END time posted successfully!');
+            // console.log('Page END time posted successfully!');
             if(backLink !== "none") {
                 window.location.href = backLink;
             }

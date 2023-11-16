@@ -67,10 +67,9 @@ block content
       #text
         p Congratulations on completing the second learning chapter and earned your Progress Master Badge!
         p Take a moment to celebrate your progress, or keep pushing forward with the same energy and determination. 
-      //- +navButtons('/challenge2/identity', '/submod/learn/identity', 'Back', 'Learn')  
-      //-       <iframe id="audio-frame" allow="autoplay"  src="../../sound/progress.mp3" frameborder="0" style="display:none"></iframe>
-      //- <iframe id="audio-frame2" src="../../sound/unlock.wav" frameborder="0" style="display:none"></iframe>
-      <iframe id="audio-frame" allow="autoplay"  src="../../sound/Jingle_Win_Synth_00.mp3" frameborder="0" style="display:none"></iframe>
+    audio(autoplay=true, src="/sound/Jingle_Win_Synth_00.mp3")
+    audio(id="unlockBadge", src="/sound/unlock.wav", preload="auto")
+
 
     script.
         var progress = #{user.moduleProgress.identity.percent}
@@ -86,61 +85,17 @@ block append footer
 
 block scripts
 
-
-  //- script.
-  //-   document.addEventListener('DOMContentLoaded', function() {
-  //-     const dartieImg = document.getElementById('dart_image1');
-  //-     const character = localStorage.getItem('character');
-
-  //-     if (character) {
-  //-       dartieImg.src = "/profile_pictures/" + character;
-  //-     }
-  //-   }
-  //-   );
   script.
     postStartTime("identity", "sub2_learn16");
-  
-    function playAudio() {
-      var iframe = document.getElementById('audio-frame');
-      var audioElement = iframe.contentWindow.document.querySelector('audio');
-      audioElement.play();
-      console.log("progress audio played")
-    }
-
-    //- function playAudio2() {
-    //-   var iframe = document.getElementById('audio-frame2');
-    //-   var audioElement = iframe.contentWindow.document.querySelector('audio');
-    //-   audioElement.play();
-    //-   console.log("badge unlock audio played")
-    //- }
 
     function animateBadge() {
       $('#earned_badge')
         .transition('jiggle in')
       ;
     }
-    
-
-    //- trumpets.addEventListener('load', function() {
-    //-   trumpets.contentWindow.document.querySelector('audio').play();
-    //- });
-
-    //- let sound = new Audio('../../videos/trumpets.mp3');
-    //- sound.play();
 
     let progressItems = document.getElementsByClassName('progress-item');
-    //- for (var i = 0; i < progressItems.length; i++) {
-    //-   console.log(i);
-    //-   console.log(progressItems[i]);
-    //- }
-
-    //- $('#challenge-icon')
-    //-   .transition({
-    //-     animation: 'flash',
-    //-     duration: '0.5s',
-    //-   })
-    //- ;
-
+  
     // Show progress after 1 second
     setTimeout(function() {
       //- make challenge icon blue
@@ -148,42 +103,10 @@ block scripts
       challengeIcon.style.fill = "#6BBCC7";
     }, 550);
 
-          
-
-    //- setTimeout(function() {
-    //-   let progressItems = document.getElementsByClassName('progress-item');
-
-    //-   //- make line after challenge blue
-    //-   if (progressItems[1]) {
-    //-     progressItems[1].classList.add('completed');
-    //-     console.log("completed class added");
-    //-   }
-    //- }, 500);
-
-    //- setTimeout(function() {
-    //-   $('#great-job')
-    //-     .transition({
-    //-       animation: 'scale in',
-    //-       duration: '0.5s',
-    //-     })
-    //-   ;
-    //- }, 1000);
     
     setTimeout(function() {
-      // Create the iframe element
-      var iframe = document.createElement('iframe');
+      document.getElementById('unlockBadge').play();
 
-      // Set the attributes
-      iframe.id = 'audio-frame2';
-      iframe.src = '../../sound/unlock.wav';
-      iframe.frameBorder = '0';
-      iframe.style.display = 'none';
-
-      // Append the iframe to the document body or any other desired container
-      document.body.appendChild(iframe);
-
-      //- var audio = new Audio('../../sound/unlock.wav');
-      //- audio.play();
       $('#badgesGrid')
         .transition({
           animation: 'tada in',

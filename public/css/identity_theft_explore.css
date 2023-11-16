@@ -1,13 +1,30 @@
+.ui.popup {
+    font-size: 1.25rem;
+    min-width: 500px;
+    font-family: Arial, Helvetica, sans-serif; 
+    line-height: 1.5; 
+}
+
+.introjs-tooltiptext p {
+    font-size: 1rem !important;
+}
+
+
+
+
+
+
+
 .emailHeader {
     background-color: #F5F5F5;
-    color: #2165AE;
-    border-bottom: 4px solid #2165AE;
+    color: #3757A6;
+    border-bottom: 4px solid #3757A6;
     padding: 20px;
     margin: 0;
 }
 
 i.user.circle.icon {
-    color: #2165AE;
+    color: #3757A6;
 }
 
 
@@ -126,6 +143,7 @@ button.ui.circular.icon.button:hover {
 }
 
 #emailContent {
+    max-width: 620px;
     margin-left: 100px;
 }
 
@@ -139,10 +157,30 @@ button.ui.circular.icon.button:hover {
 
 #reply {
     border-radius: 20px;
-    color: #444746 !important;
-    border: 1px solid #444746 !important;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #444746;
+    border: 1px solid #444746;
     /* margin-top: 20px; */
     margin-left: 100px;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+/* modal buttons */
+.ui.black.basic.big.button,
+.ui.blue.big.button {
+    min-width: 250px;
+    border-radius: 40px;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+/* Hover effect */
+.ui.button.ui.black.basic.big.button:hover {
+    background-color: white; 
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), inset 0 0 0 2px black; 
+}
+
+.ui.blue.big.button:hover {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), inset 0 0 0 2px #0EABB2; 
 }
 
 .modalTitle {
@@ -158,6 +196,102 @@ button.ui.circular.icon.button:hover {
     font-size: 1.5rem !important;
 }
 
+
+
+/* amazon email */
+
+#amazon-header {
+    margin-top: 40px;
+    display: flex;
+    padding: 10px 0px 19px 0px;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    border-bottom: 1px solid #7D7C7C;
+}
+
+#amazon-logo{
+    width: 177.89px;
+    height: 53.714px;
+}
+
+#amazon-assistance {
+    padding: 0;
+    margin: 0;
+    color: #000;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#amazon-code {
+    font-weight: 1000;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* email resizing fixes */
+
+/* stop envelope from overlapping email title in inbox when screen gets narrow */
+.emailSimContainer .eleven.wide.column h3 {
+    margin-left: 20px;
+}
+
+/* iphone email */
+
+#confirmButton.ui.medium.button{
+    background-color: #fd4319;
+    text-decoration: solid;
+}
+
+
+#iphone-email {
+    border: 5px solid #fd0068;
+    border-radius: 10px;
+}
+
+.font {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+}
+
+#iphone-email .iphone-header{
+    color: #fd0068;
+    font-size: 2.25rem;
+    font-weight: 800;
+}
+
+#iphone-email .pink-text {
+    color: #FD0068;
+}
+
+#iphone-email #congrats{
+    background-color: #FD0068;
+    color: white;
+    padding: 1rem;
+    font-weight: 600;
+    font-size: 1.75rem;
+}
+
+#iphone-email #confirmButton{
+    background-color: #FD4319;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#iphone-email .ui.basic.huge.segment#title,
+#iphone-email .ui.basic.segment#continue {
+    padding-left: 0; 
+    padding-right: 0;
+}
+
+#iphone-email .ui.segment {
+    padding-left: 0;
+    padding-right: 0;
+}
+
 /* introjs styles copied from ui_layout.css */
 
 
@@ -166,6 +300,25 @@ button.ui.circular.icon.button:hover {
 
 /* ----- (TUTORIAL) ------ */
 
+.introjs-button {
+    font-size: 1.5rem;
+    background: #6BBCC7;
+    color: white;
+    text-shadow: none;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.introjs-button:hover {
+    font-size: 1.5rem;
+    background: #6BBCC7;
+    color: white;
+    text-shadow: none;
+}
+
+.introjs-tooltip {
+    min-width: 400px;
+}
 
 /* removes a gray overlay that covers everything but the selected element */
 
@@ -254,6 +407,11 @@ button.ui.circular.icon.button:hover {
     font: 1rem sans-serif;
 }
 
+.introjs-button.introjs-nextbutton:hover {
+    background-image: linear-gradient(#1678c2, #1678c2);
+    box-shadow: 0 2px 2px #e3e3e3 !important;
+}
+
 .introjs-button.introjs-prevbutton,
 .introjs-button.introjs-prevbutton:hover {
     /* height: 22px; */
@@ -269,28 +427,84 @@ button.ui.circular.icon.button:hover {
     display: none;
 }
 
-.introjs-button,
-.introjs-button:hover {
+.introjs-button.introjs-skipbutton,
+.introjs-button.introjs-skipbutton:hover {
     /* height: 22px; */
     line-height: 22px !important;
     border-radius: 5px;
     visibility: visible;
-    color: rgba(255, 255, 255, .9);
-    background-image: linear-gradient(#21ba45, #21ba45);
+    /* color: rgba(255, 255, 255, .9); */
+    /* background-image: linear-gradient(#21ba45, #21ba45); */
     text-shadow: 0px 0px 0 #fff;
     margin-left: 5px;
     border: none;
-    font: 1rem sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    /* font: 1rem sans-serif; */
+    background-color: #ececec !important;
+    background-image: -webkit-gradient(linear,0 0,0 100%,from(#f4f4f4),to(#ececec)) !important;
 }
 
-.introjs-skipbutton {
-    visibility: hidden;
+.introjs-button.introjs-skipbutton {
+    color: #656255;
 }
+
+.introjs-button.introjs-skipbutton:hover {
+    color: #4183c4;
+}
+
+/* .introjs-skipbutton {
+    background: #656255de ;
+}
+
+.introjs-skipbutton:hover {
+    background: #656255b4 ;
+} */
 
 /* .customWideTooltip {
     min-width: 600px;
     margin-top: -250px !important;
 } */
+
+
+
+.introjs-hint-dot {
+    background: #C62D2D;
+    border: 13px solid rgba(146, 146, 146, .36);
+    -webkit-animation: introjspulse 2s ease-out;
+    -moz-animation: introjspulse 2s ease-out;
+    animation: introjspulse 2s ease-out;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+.introjs-hint-pulse {
+    background: #C62D2D;
+    width: 15px;
+    height: 15px;
+}
+
+.introjs-hint-pulse:after { 
+    content: '';
+    display: inline-block;
+    width: 32px; 
+    height: 32px;
+    background: url('/images/clickHere.png') no-repeat; 
+    background-size: 100% 100%;
+    position: absolute;
+    top: 50%;
+    left: 100%; /* Position the icon to the right of the dot */
+    transform: translateY(-50%);
+    margin-left: 20px; 
+}
+
+.aHint {
+    margin-left: 20px;
+}
+
+
+
 
 /* -  -  -  -  - */
 
@@ -453,3 +667,64 @@ button.ui.circular.icon.button:hover {
 .delete-button:hover .delete-tooltip {
     display: block;
 } */
+
+
+/* hand next to warning popups for see why */
+.openEmailContainer .ui.red.button {
+    font-size: 1rem;
+}
+
+.warning-button {
+    padding: 7px !important;
+    margin-left: 20px !important;
+    position: relative;
+}
+
+.warning-button:after { 
+    /* content: '';
+    display: inline-block;
+    width: 32px; 
+    height: 32px;
+    background: url('/images/clickHere.png') no-repeat; 
+    background-size: 100% 100%;
+    position: absolute;
+    left: 74%; 
+    top: 25%; */
+    /* content: url('/images/clickHere.png');
+    display: inline-block;
+    position: absolute; 
+    left: 100%; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    margin-left: 10px;  */
+
+    /* Can't use width and height on content image. Now using approach of background image for the ::after pseudo-element and control its size with background-size. */
+
+    content: ''; 
+    display: inline-block;
+    position: absolute; 
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%); 
+    margin-left: 10px; 
+    width: 32px; 
+    height: 32px; 
+    background-image: url('/images/clickHere.png'); 
+    background-size: contain;
+    background-repeat: no-repeat; 
+}
+
+.hide-after:after {
+    display: none;
+}
+
+.iphone-2 {
+    /* margin-top: 30px !important; */
+    position: absolute !important;
+    right: 45%;
+    margin-top: 25px !important;
+}
+
+.hideme {
+    display: none !important;
+}

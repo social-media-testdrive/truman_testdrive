@@ -32,7 +32,7 @@
     border-radius: 30px !important;  
     /* color: #495057 !important;
     border: 1px solid #495057; */
-    background-color: #2165AE !important;
+    background-color: #3757A6 !important;
     color: white !important;
     padding-left: 30px;
     padding-right: 30px;
@@ -54,8 +54,8 @@
 
 #skipButton {
     border-radius: 30px !important;  
-    color: #2165AE !important;
-    border: 1px solid #2165AE;
+    color: #3757A6 !important;
+    border: 1px solid #3757A6;
     padding-left: 30px;
     padding-right: 30px;
     font-family: 'Armata', sans-serif; 
@@ -82,7 +82,7 @@ button.ui.big.button.chatBotButton:hover {
 
 #sign-up-button {
     border-radius: 30px !important;  
-    background-color: #2165AE !important;
+    background-color: #3757A6 !important;
     color: white !important;
     padding-left: 30px;
     padding-right: 30px;
