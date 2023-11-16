@@ -708,7 +708,7 @@ exports.postModuleProgress = async (req, res, next) => {
     try {
         const moduleToUpdate = req.body.modID;
 
-        const existingUser = await User.findOne({ username: req.user.username });
+        const existingUser = await User.findOne({ email: req.user.email });
 
         if (!existingUser) {
             return res.status(404).json({ message: 'User not found.' });
@@ -748,7 +748,7 @@ exports.postQuizScore = async (req, res, next) => {
 
   try {
     const existingUser = await User.findOne({
-      username: req.user.username
+      email: req.user.email
     });
 
     if (existingUser) {
@@ -799,11 +799,37 @@ exports.postQuizScore = async (req, res, next) => {
   }
 };
 
+// get the latest quiz attempt
+exports.getLatestQuizScore = async (req, res, next) => {
+  const { modID, currentSection } = req.query;
+
+  try {
+    const existingUser = await User.findOne({
+      email: req.user.email
+    });
+
+    if (existingUser) {
+      let sectionAttempts = currentSection + "Attempts";
+      let quizAttempts = existingUser.moduleProgress[modID][sectionAttempts];
+
+      // Send the latest quiz attempt 
+      res.status(200).json(quizAttempts.length > 0 ? quizAttempts[quizAttempts.length - 1] : []);
+
+      // send all quiz attempts
+      // res.status(200).json(quizAttempts);
+    } else {
+      res.status(404).send('User not found while retrieving quiz score');
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
 exports.postAvatar = async (req, res, next) => {
   const { avatar, avatarImg } = req.body;
 
   try {
-    const existingUser = await User.findOne({ username: req.user.username });
+    const existingUser = await User.findOne({ email: req.user.email });
 
     if (existingUser) {
       // Update the user's avatar
@@ -855,7 +881,7 @@ exports.postStartTime = async (req, res, next) => {
         // console.log("In backend POST start time request body***************************");
         // console.log("Module ID: " + modID);
         // console.log("The Page Name: " + page);
-        const existingUser = await User.findOne({ username: req.user.username });
+        const existingUser = await User.findOne({ email: req.user.email });
 
         if (!existingUser) {
             return res.status(404).json({ message: 'User not found.' });
@@ -894,7 +920,7 @@ exports.postEndTime = async (req, res, next) => {
     console.log("In user.js POST end time***************************");
     try {
         const { modID, page } = req.body;
-        const existingUser = await User.findOne({ username: req.user.username });
+        const existingUser = await User.findOne({ email: req.user.email });
 
         if (existingUser) {
             const pageID = page + "_Times";
@@ -941,7 +967,7 @@ exports.postGuestLogin = (req, res, next) => {
   function(req, res) {
     let user = "";
     if (req.user) {
-      user = req.user.username
+      user = req.user.email
       //res.json({ name: req.user.username });
     } else {
       user = 'anonymous'

@@ -38,65 +38,83 @@ $(document).ready(function() {
     // console.log("Solange Data: " + questionData);
     // console.log("after");
 
-    console.log("USER");
-    console.log(userDBAttempts);
+    // console.log("USER");
+    // console.log(userDBAttempts);
 
     // First check if there's previous quiz results from past attempts. Load them in and display results if so. If not, display first question
     let sectionAttempts = currentSection + "Attempts";
     // console.log("sectionAttempts: " + sectionAttempts);
-    // console.log("modid" + modID);
-
-    if(userDBAttempts[modID][sectionAttempts].length != 0) { // attempted before so show restults page
-        $(".choiceList").empty();
-        $(".fourChoices").empty();
-        $(".checkboxChoices").empty();
-        $(".question").empty();
-        $(".explanationCorrectMulti").hide();
-        $(".explanationIncorrectMulti").hide();
-        $(".explanationCorrectYesNo").hide();
-        $(".explanationIncorrectYesNo").hide();
-        $(".quizMessage").hide();
-        $(".htmlImage").hide();
-        $(".preButton").css('visibility', 'hidden');
-        $(".nextButton").css('visibility', 'hidden');
-
-        // console.log("We have previous attempts!");
-        pastAttempts = true;
-        hideTryAgainNext = true;
-        const mostRecentAttemptIndex = userDBAttempts[modID][sectionAttempts].length - 1;
-        // console.log("Index of the most recent attempt: ", mostRecentAttemptIndex);
-        cleanScore = userDBAttempts[modID][sectionAttempts][mostRecentAttemptIndex].correctAnswers;
-        correctAnswers = userDBAttempts[modID][sectionAttempts][mostRecentAttemptIndex].correctAnswers;
-        selectedAnswer = userDBAttempts[modID][sectionAttempts][mostRecentAttemptIndex].questionChoices;
-        questionScores = userDBAttempts[modID][sectionAttempts][mostRecentAttemptIndex].questionScores;
+    // console.log("mod id:  " + modID);
 
 
+    fetch(`/getLatestQuizScore?modID=${modID}&currentSection=${currentSection}`)
+        .then(response => response.json())
+        .then(userDBAttempts => {
+            // Handle the received data (the latest quiz attempt)
+            // console.log("**the fetch quiz score data is:")
+            // console.log(userDBAttempts);
 
-        displayScore();
-        $(".preButton").text("Try Again");
-        $(".nextButton").text("Next");
-
-        // $(".nextButton").text("View Answers");
-        quizOver = true;
-
-    } else {
-        // Display the first question
-        displayCurrentQuestion();
-
-        // hide warning and next nav button and disable previous quiz nav button
-        $(".viewAnswers").hide();
-        $(".quizMessage").hide();
-        $(".explanationCorrectMulti").hide();
-        $(".explanationIncorrectMulti").hide();
-        $(".explanationCorrectYesNo").hide();
-        $(".explanationIncorrectYesNo").hide();
+            if(userDBAttempts.length != 0) { // attempted before so show restults page
+                $(".choiceList").empty();
+                $(".fourChoices").empty();
+                $(".checkboxChoices").empty();
+                $(".question").empty();
+                $(".explanationCorrectMulti").hide();
+                $(".explanationIncorrectMulti").hide();
+                $(".explanationCorrectYesNo").hide();
+                $(".explanationIncorrectYesNo").hide();
+                $(".quizMessage").hide();
+                $(".htmlImage").hide();
+                $(".preButton").css('visibility', 'hidden');
+                $(".nextButton").css('visibility', 'hidden');
         
-        $(".result").hide();
-        $(".avatar-container").hide();
-        $("#nextButton").hide();
-        $("#backButton").hide();
-        $("#module-footer").hide();
-    }
+                // console.log("We have previous attempts!");
+                pastAttempts = true;
+                hideTryAgainNext = true;
+        
+        
+        
+                cleanScore = userDBAttempts.correctAnswers;
+                correctAnswers = userDBAttempts.correctAnswers;
+                selectedAnswer = userDBAttempts.questionChoices;
+                questionScores = userDBAttempts.questionScores;
+        
+        
+        
+                displayScore();
+                $(".preButton").text("Try Again");
+                $(".nextButton").text("Next");
+        
+                // $(".nextButton").text("View Answers");
+                quizOver = true;
+        
+            } else {
+                // Display the first question
+                displayCurrentQuestion();
+        
+                // hide warning and next nav button and disable previous quiz nav button
+                $(".viewAnswers").hide();
+                $(".quizMessage").hide();
+                $(".explanationCorrectMulti").hide();
+                $(".explanationIncorrectMulti").hide();
+                $(".explanationCorrectYesNo").hide();
+                $(".explanationIncorrectYesNo").hide();
+                
+                $(".result").hide();
+                $(".avatar-container").hide();
+                $("#nextButton").hide();
+                $("#backButton").hide();
+                $("#module-footer").hide();
+            }
+        
+
+
+        })
+        .catch(error => {
+        console.error('Error:', error);
+        });
+
+
 
 
 	$(this).find(".preButton").on("click", function () {		
