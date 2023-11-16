@@ -1,0 +1,30 @@
+extends ../../../module_layout
+
+block content
+
+  .ui.container#raised-container
+    .ui.container
+      .ui.sidebar.inverted.vertical.menu
+        a.item
+          i.home.icon
+          | Home
+        a.item
+          i.heart.icon
+          | Romance Scams
+        a.item
+          i.log.out.icon
+          | Log out
+    .limit
+      .ui.segment
+        button(onclick='openSidebar()') Open Sidebar
+
+block append footer
+  .ui.container
+    +navButtons('romance', 'sub2_learn2', '/learn/submod2/2/romance', '/learn/submod2/4/romance', 14)  
+
+block scripts
+  script.
+    postStartTime("romance", "sub2_learn2");
+    const openSidebar = () => { 
+        $('.ui.sidebar').sidebar('toggle') 
+    } 

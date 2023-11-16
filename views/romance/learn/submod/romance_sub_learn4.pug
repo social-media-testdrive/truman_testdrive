@@ -7,58 +7,67 @@ block content
       h1.ui.header.large#learn-title
         .content
           | Type 1: Romantic Scams
-      h1.ui.header
-        .content Example
+      p
+        strong Romantic: 
+        | The most common Romance and Friendship Scams involve attempts to lure 
+        | you into a romantic relationship to either steal your personal 
+        | information or money. The following provides a brief description of how these scams operate:
+      img.ui.centered.image(src='/images/rom-mod4-img1.png')
+      br
+      br
+      p 
+        strong Example 
+      //- img.ui.centered.image(src='/images/rom-mod4-img2-phonemsg.png')
 
-
-      //- ** Review this for example of phone messages ui **
-
-      //- .smartphone
-      //-     .content
-      //-         .texter
-      //-             i.user.circle.big.icon
-      //-             p 867543 
-      //-                 span >
-      //-         .ios-time
-      //-             p Today #{currentTime}
-      //-         .ios-chat-container
-      //-             .chat
-      //-                 .mine.messages
-      //-                      .message.last
-      //-                          | Dude
-      //-                 .yours.messages
-      //-                      .message
-      //-                          | Hey!
-      //-                      .message
-      //-                          | You there?
-      //-                     .message.last
-      //-                          | Hello, how&apos;s it going?
-      //-                  .mine.messages
-      //-                      .message
-      //-                          | Great thanks!
-      //-                      .message.last
-      //-                          | How about you?
-
+      .smartphone(style="height: 720px;") 
+          .content
+              .texter
+                  i.user.circle.big.icon
+                  p Tobias 
+                      span >
+              .ios-time
+                  p Today 3:45PM
+              .ios-chat-container
+                  .chat(style="font-size:18px;")
+                      .yours.messages
+                           .message.last
+                               | I know we haven't known each other for that long, 
+                               | but I have very deep feelings for you.
+                      .mine.messages
+                           .message.last
+                               | Really? I do too. Honestly, I haven&apos;t connected with 
+                               | someone like this in awhile :&rpar;
+                      .yours.messages
+                           .message
+                               | My too, babe! I want to know more about 
+                               | you. What&apos;s your mother&apos;s maiden name?
+                           .message.last
+                               | What was the name of your elementary school?
+                               | I want to get to know you better.
+      br
+      br
+      p This scammer tends to ask more personal information. 
+        | Those personal information can be combined to steal others identity.
       //- default height is 640px, but adjust it to what you need to fit bubbles (use seperate stylesheet or inline for now, don't adjust css in module css as it will affect everything)
-      .smartphone(style="height: 750px;") 
-        .content
-          .texter
-            i.user.circle.big.icon
-            p
-              | Tobias 
-              span &gt;
-          .ios-time
-            p Today 12:57 PM
-          .ios-chat-container
-            .chat
-              .yours.messages
-                .message.last I know we don't know blah blah blah blah blah blah blah
-              .mine.messages 
-                .message.last 
-                  | Really? I do too. Blah blah blah blah blah blah blah blah
-              .yours.messages 
-                .message Me too babe! Blah blah blah blah blah blah blah blah
-                .message.last What was the name of your blah blah blah blah blah?
+      //- .smartphone(style="height: 750px;") 
+      //-   .content
+      //-     .texter
+      //-       i.user.circle.big.icon
+      //-       p
+      //-         | Tobias 
+      //-         span &gt;
+      //-     .ios-time
+      //-       p Today 12:57 PM
+      //-     .ios-chat-container
+      //-       .chat
+      //-         .yours.messages
+      //-           .message.last I know we don't know blah blah blah blah blah blah blah
+      //-         .mine.messages 
+      //-           .message.last 
+      //-             | Really? I do too. Blah blah blah blah blah blah blah blah
+      //-         .yours.messages 
+      //-           .message Me too babe! Blah blah blah blah blah blah blah blah
+      //-           .message.last What was the name of your blah blah blah blah blah?
 
         //- .icon
         //-   img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
@@ -74,9 +83,9 @@ block content
 
 block append footer
   .ui.container
-    +navButtons('identity', 'sub3_learn9', '/learn/submod3/8/identity', '/learn/submod3/10/identity', 78)  
+    +navButtons('romance', 'sub_romance4', '/learn/submod/3/romance', '/learn/submod/5/romance', 78)  
 
 block scripts
   //- script(src='/js/character.js')
   script.
-    postStartTime("identity", "sub3_learn9");
+    postStartTime("romance", "sub_romance4");
