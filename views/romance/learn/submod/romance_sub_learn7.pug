@@ -1,0 +1,86 @@
+extends ../../../module_layout
+
+block content
+
+  .ui.container#raised-container
+    .limit
+      h1.ui.header.large#learn-title
+        .content
+          | The most common ways of scamming your money or personal information
+      br
+      p 
+        strong 2. Investment/Cryptocurrency:  
+        | Scammers will develop a relationship with you to build trust over time. Once they feel you trust them, they will offer investment advice, often involving cryptocurrency. The scammers may have you open a cryptocurrency account and then provide you with a link to deposit your funds. This account will show high levels of returns to encourage you to deposit even more money.
+      p However, once you try to withdraw your money, you will be asked to either pay a hefty tax bill or the site will shut down, causing you to lose your money. 
+      img.ui.centered.image(src='/images/romance-7.png')
+      h2 Example
+
+      //- ** Review this for example of phone messages ui **
+
+      //- .smartphone
+      //-     .content
+      //-         .texter
+      //-             i.user.circle.big.icon
+      //-             p 867543 
+      //-                 span >
+      //-         .ios-time
+      //-             p Today #{currentTime}
+      //-         .ios-chat-container
+      //-             .chat
+      //-                 .mine.messages
+      //-                      .message.last
+      //-                          | Dude
+      //-                 .yours.messages
+      //-                      .message
+      //-                          | Hey!
+      //-                      .message
+      //-                          | You there?
+      //-                     .message.last
+      //-                          | Hello, how&apos;s it going?
+      //-                  .mine.messages
+      //-                      .message
+      //-                          | Great thanks!
+      //-                      .message.last
+      //-                          | How about you?
+
+      //- default height is 640px, but adjust it to what you need to fit bubbles (use seperate stylesheet or inline for now, don't adjust css in module css as it will affect everything)
+      .smartphone(style="height: 720px;") 
+        .content
+          .texter
+            i.user.circle.big.icon
+            p
+              | Tobias 
+              span &gt;
+          .ios-time
+            p Today 12:57 PM
+          .ios-chat-container
+            .chat
+              .yours.messages 
+                .message.last Hey babe, I just made $2000 off crypto! 
+              .mine.messages 
+                .message.last That's awesome! I'm so happy for you. 
+              .yours.messages 
+                .message.last Thanks, honey. You should invest to get money for your brother's surgery. 
+              .mine.messages 
+                .message.last Maybe I should...we really need the money.
+      br
+      p Here, the scammer uses intimate details of the person’s life in order to increase the likelihood that they will fall victim to their cryptocurrency scam.
+      br
+        //- .icon
+        //-   img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
+        //- .content
+        //-   .header
+        //-     | Note
+        //-   p Important contact details are included in the downloadable materials on the modules' homepage.
+    script.
+        var progress = #{user.moduleProgress.romance.percent}
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+  .ui.container
+    +navButtons('romance', 'sub3_learn9', '/learn/submod/6/romance', '/learn/submod/8/romance', 78)  
+
+block scripts
+  //- script(src='/js/character.js')
+  script.
+    postStartTime("romance", "sub3_learn9");

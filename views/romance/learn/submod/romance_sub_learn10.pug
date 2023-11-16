@@ -1,0 +1,34 @@
+extends ../../../module_layout
+
+block content
+
+  .ui.container#raised-container
+    .limit
+      h1.ui.header.large#learn-title
+        .content
+          | Why me?
+      p <u>Identity Theft</u> is when your personal information is stolen and used against you.
+      .ui.icon.blue.message
+        //- i.info.circle.icon
+                  .avatar(style="width: 100%; height: 100%; overflow: hidden; position: relative;background: red !important; border: 2px solid green;")
+        .icon
+          img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
+        .content
+          .header
+            //- i.info.circle.icon
+            | Important
+          p Scammers target many people. It's not because of something you did. It's not your fault. 
+ 
+     
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+  .ui.container
+    +navButtons('romance', 'sub_learn2', '/learn/submod/romance', '/learn/submod/3/romance', 14)  
+
+block scripts
+  script(src='/js/character.js')
+  script.
+    postStartTime("romance", "sub_learn2");

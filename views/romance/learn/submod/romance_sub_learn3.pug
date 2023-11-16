@@ -1,0 +1,59 @@
+extends ../../../module_layout
+
+block content
+
+  .ui.container#raised-container
+    .limit
+      h1.ui.header.large#learn-title
+        .content
+          | Key Terms
+
+      .ui.stackable.grid
+        //- First section with text on the left and image on the right
+        .row.computer.only.tablet.only
+          .eight.wide.column
+            h2 Catfishing: 
+            p When a scammer uses a fake online profile to pretend to be someone else.
+          .eight.wide.column
+            img(src="/images/cat_romance_page3.png" alt="Image description" style="width: 100%")
+
+
+        //- Second section with image on the right and text on the left
+        .row
+          .eight.wide.column
+            img(src="/images/phone_romance_page_3.png" alt="Image description" style="width: 90%")
+          .eight.wide.column
+            //- h2 Prepare yourself for the online world
+            h2 Cryptocurrency: 
+            p A digital currency such as Bitcoin that can be hard to trace. 
+
+
+        //- Third section with text on the left and image on the right
+        .row.computer.only.tablet.only
+          .eight.wide.column
+            h2 Emotional Manipulation: 
+            p When scammers prey on your emotions to get personal information or money from you. Examples include claiming that they love you, they are having a personal emergency and you are the only one who can help. They may even become aggressive to get what they want.          
+          .eight.wide.column
+            img(src="/images/emotional_manipulation_page_3_romance.png" alt="Image description" style="width: 100%")
+
+
+        //- Fourth section with image on the right and text on the left
+        .row
+          .eight.wide.column
+            img(src="/images/money_mules.png" alt="Image description" style="width: 90%")
+          .eight.wide.column
+            //- h2 Prepare yourself for the online world
+            h2 Money Mules: 
+            p People who transfer or move money illegally for someone else.
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+    script(src='/css/romance_3.css')
+
+block append footer
+  .ui.container
+    +navButtons('romance', 'sub_learn2', '/learn/submod/romance', '/learn/submod/3/romance', 14)  
+
+block scripts
+  script.
+    postStartTime("romance", "sub_learn2");

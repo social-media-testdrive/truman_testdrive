@@ -1,0 +1,31 @@
+extends ../../../module_layout
+
+block content
+
+  .ui.container#raised-container
+    .limit
+      h1.ui.header.large#learn-title 
+        .content
+          | What are Romance and Friendship Scams?
+      p
+      strong Scammers pretend to be someone else to lure targets into romantic relationships or friendships.
+      ul To do this, the scammer would 
+        ul
+          li create a fake profile on a dating or social networking website.
+          li message you with compliments and try to quickly build a connection by using various techniques.
+          li may even send you gifts to get you to trust them.
+      p Once trust has been built,  the scammers may ask you to send them money for emergencies, such as medical bills, car payments, rent, or plane tickets. Romance and Friendship Scams can cost you both financial and emotional damage.
+      img.ui.centered.image(src='/images/heart_page2_romance.png')
+      br
+      br
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+  .ui.container
+    +navButtons('romance', 'sub_learn2', '/learn/submod/romance', '/learn/submod/3/romance', 14)  
+
+block scripts
+  script.
+    postStartTime("romance", "sub_learn2");

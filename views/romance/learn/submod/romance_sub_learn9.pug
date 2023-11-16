@@ -1,0 +1,48 @@
+extends ../../../module_layout
+
+block content
+  .ui.container#raised-container
+    .limit
+      h1.ui.header.large#learn-title
+        .content
+          | What are the consequences of romance and friendship scams?
+      
+      p 
+        | Romance and friendship scams often lead to...
+      
+      ul
+        li 
+          b significant financial losses, 
+          | making it difficult to access and maintain loans, credit cards, and proper credit scores 
+      
+        li 
+          b distressful emotions 
+          | such as embarrassment, anxiousness, heartbreak, and betrayal
+      
+        li 
+          b negative impacts 
+          | on current familial relationships
+      
+        li 
+          | long-lasting 
+          b trust issues 
+          | and difficulties in future relationships 
+          | such as embarrassment, anxiousness, heartbreak, and betrayal 
+      
+      br
+      a.ui.fluid.image
+        img.protrait(src="/images/friendships/bitcoin_trap.png")
+      br
+      br
+
+      script.
+          var progress = #{user.moduleProgress.identity.percent}
+      script(src='/js/setProgressBar.js')  
+
+block append footer
+  .ui.container
+    +navButtons('romance', 'sub_learn2', '/learn/submod/romance', '/learn/submod/3/romance', 14)  
+
+block scripts
+  script.
+    postStartTime("romance", "sub_learn2");

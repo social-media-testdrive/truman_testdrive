@@ -1,0 +1,82 @@
+extends ../../../module_layout
+
+block content
+
+  .ui.container#raised-container
+    .limit
+      h1.ui.header.large#learn-title
+        .content
+          | Type 2: Friendship Scams
+      h1.ui.header
+        .content Example
+
+
+      //- ** Review this for example of phone messages ui **
+
+      //- .smartphone
+      //-     .content
+      //-         .texter
+      //-             i.user.circle.big.icon
+      //-             p 867543 
+      //-                 span >
+      //-         .ios-time
+      //-             p Today #{currentTime}
+      //-         .ios-chat-container
+      //-             .chat
+      //-                 .mine.messages
+      //-                      .message.last
+      //-                          | Dude
+      //-                 .yours.messages
+      //-                      .message
+      //-                          | Hey!
+      //-                      .message
+      //-                          | You there?
+      //-                     .message.last
+      //-                          | Hello, how&apos;s it going?
+      //-                  .mine.messages
+      //-                      .message
+      //-                          | Great thanks!
+      //-                      .message.last
+      //-                          | How about you?
+
+      //- default height is 640px, but adjust it to what you need to fit bubbles (use seperate stylesheet or inline for now, don't adjust css in module css as it will affect everything)
+      .smartphone(style="height: 750px;") 
+        .content
+          .texter
+            i.user.circle.big.icon
+            p
+              | Tobias 
+              span &gt;
+          .ios-time
+            p Today 12:57 PM
+          .ios-chat-container
+            .chat
+              .yours.messages
+                .message.last I know we don't know blah blah blah blah blah blah blah
+              .mine.messages 
+                .message.last 
+                  | Really? I do too. Blah blah blah blah blah blah blah blah
+              .yours.messages 
+                .message Me too babe! Blah blah blah blah blah blah blah blah
+                .message.last What was the name of your blah blah blah blah blah?
+
+        //- .icon
+        //-   img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
+        //- .content
+        //-   .header
+        //-     | Note
+        //-   p Important contact details are included in the downloadable materials on the modules' homepage.
+
+
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+  .ui.container
+    +navButtons('identity', 'sub3_learn9', '/learn/submod3/8/identity', '/learn/submod3/10/identity', 78)  
+
+block scripts
+  //- script(src='/js/character.js')
+  script.
+    postStartTime("identity", "sub3_learn9");

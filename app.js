@@ -271,7 +271,8 @@ app.post('/postQuizScore', userController.postQuizScore);
 
 function isValidModId(req, res, next) {
     const modIds = [
-        "identity"
+        "identity",
+        "romance"
     ]
     if (modIds.includes(req.params.modId)) {
         next();

@@ -1,0 +1,25 @@
+extends ../../../module_layout
+
+block content
+
+  .ui.container#raised-container
+    .limit
+      h1.ui.header.large#learn-title
+        .content
+          | Great Job!
+      //- .avatar would go here
+      p Well done! You've learned what the Romance and Friendship scams are, different types and ways of the scams, and the sever consequences when being scammed.
+      p Now, let's put our newfound knowledge into practice and reinforce what we've learned!
+
+     
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+  .ui.container
+    +navButtons('romance', 'sub_learn2', '/learn/submod/romance', '/learn/submod/3/romance', 14)  
+
+block scripts
+  script.
+    postStartTime("romance", "sub_learn2");
