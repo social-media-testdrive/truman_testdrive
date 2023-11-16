@@ -736,13 +736,15 @@ exports.postQuizScore = async (req, res, next) => {
   // console.log("In POST quiz score request body***********************hiii****");
 
   const { modID, scoreTotal, correctAnswers, selectedAnswer, questionScores, nextLink, currentSection } = req.body;
-  // console.log("Module ID: " + modID);
-  // console.log("Score Total: " + scoreTotal);
-  // console.log("Correct Answers: " + correctAnswers);
-  // console.log("Selected Answer: " + selectedAnswer);
-  // console.log("Question Scores: " + questionScores);
-  // console.log("Next Link: " + nextLink);
-  // console.log("Current Section: " + currentSection);
+  console.log("*************In POST quiz score request body***********************hiii****");
+
+  console.log("Module ID: " + modID);
+  console.log("Score Total: " + scoreTotal);
+  console.log("Correct Answers: " + correctAnswers);
+  console.log("Selected Answer: " + selectedAnswer);
+  console.log("Question Scores: " + questionScores);
+  console.log("Next Link: " + nextLink);
+  console.log("Current Section: " + currentSection);
 
   try {
     const existingUser = await User.findOne({
@@ -767,17 +769,27 @@ exports.postQuizScore = async (req, res, next) => {
       // save to mongodb database
       await existingUser.save();
 
-      // Update the user in the session - need to do this so can return to quiz results page in same session
-      req.login(existingUser, (err) => {
+      // Manually update the session data
+      req.session.passport.user.moduleProgress[modID][sectionAttempts] = existingUser.moduleProgress[modID][sectionAttempts];
+
+      // Save the session
+      req.session.save((err) => {
         if (err) {
           return next(err);
         }
-  
-        // req.flash('success', { msg: 'Profile information has been updated.' });
-        return res.redirect(nextLink);
+
+        // Redirect or send a success response
+        res.redirect(nextLink);
       });
-      // console.log("about to redirect in post quiz score")
-      // res.redirect(nextLink);
+
+      // Update the user in the session - need to do this so can return to quiz results page in same session
+      // req.login(existingUser, (err) => {
+      //   if (err) {
+      //     return next(err);
+      //   }
+
+      //   return res.redirect(nextLink);
+      // });
     } else {
       res.status(404).send('User not found while posting quiz score');
     }
@@ -801,15 +813,29 @@ exports.postAvatar = async (req, res, next) => {
       // Save to MongoDB database
       await existingUser.save();
 
-      // Update the user in the session
-      req.login(existingUser, (err) => {
+      // Manually update the user object in the session
+      req.session.passport.user.avatar = avatar;
+      req.session.passport.user.avatarImg = avatarImg;
+      
+      // Save the session
+      req.session.save((err) => {
         if (err) {
           return next(err);
         }
-  
+
         // Redirect or send a success response
         res.status(200).send('Avatar updated successfully');
       });
+
+      // Update the user in the session
+      // req.login(existingUser, (err) => {
+      //   if (err) {
+      //     return next(err);
+      //   }
+  
+      //   // Redirect or send a success response
+      //   res.status(200).send('Avatar updated successfully');
+      // });
     } else {
       res.status(404).send('User not found while updating avatar');
     }
