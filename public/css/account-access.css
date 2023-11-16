@@ -2,7 +2,7 @@
 font-size: 1rem;
 } */
 #page-article {
-    background: linear-gradient(to bottom, #2165ae, #091d32);
+    background: linear-gradient(to bottom, #3757A6, #091d32);
 }
 
 
@@ -99,20 +99,20 @@ h2 {
 
 .blue {
     background-color: black;
-    /* background-color: #2864ac; */
+    /* background-color: #3757A6; */
 }
 
 .ui.button {
     background: white;
-    /* color: #2864ac; */
-    border: 1px solid #2864ac;
+    /* color: #3757A6; */
+    border: 1px solid #3757A6;
     border-radius: 20px;
     margin: 0.75em 0 0.75em;
     padding: 0.4em 1.5em 0.4em;
 }
 
 /* .ui.button:hover {
-    background: #2864ac;
+    background: #3757A6;
     color: white;
 } */
 

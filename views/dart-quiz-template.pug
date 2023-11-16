@@ -127,6 +127,9 @@ block scripts
         var email = "#{user.email}";
         var username = "#{user.name}";
         var current_percent = "#{user.moduleProgress.identity.percent}";
+        var userDBAttempts = !{JSON.stringify(user.moduleProgress)};
+
+
 
         $('.message .close')
         .on('click', function() {

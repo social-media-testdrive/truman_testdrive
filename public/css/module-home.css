@@ -179,7 +179,7 @@ u {
 }
 
 .ui.large.left.pointing.label {
-    background: #2165AE;
+    background: #3757A6;
     color: white;
 }
 
@@ -234,8 +234,8 @@ u {
 
 .ui.huge.label.lockContainer {
     text-align: center;
-    background: #2165AE;
-    border: 3px solid #2165AE; 
+    background: #3757A6;
+    border: 3px solid #3757A6; 
     border-radius: 10px; 
     padding: 40px 80px;
 }

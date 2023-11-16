@@ -70,23 +70,23 @@ block content
         hr
         h2 Learning Materials
         p If you would like to learn the material offline, you can download the content below:
-        div.ui.two.column.stackable.grid#downloadGrid 
+        div.ui.two.column.stackable.grid#downloadGrid
           .column
-            h4.glossary.pdf
-            a.ui.inline.fluid.labeled.icon.button
+            h3.glossary.pdf Identity Theft Course PDF
+            a.ui.inline.fluid.labeled.icon.button(href='/pdf/identity-glossary.pdf', download='identity_theft.pdf')
               i.download.icon.graySquare
               .inline
-                p identity_theft.pdf
-                  //- i.large.download.icon
+                p Download Course PDF
+
           .column
-            h4.glossary.pdf
-            a.ui.inline.fluid.labeled.icon.button
+            h3.glossary.pdf Identity Theft Glossary PDF
+            a.ui.inline.fluid.labeled.icon.button(href='/pdf/identity-glossary.pdf', download='glossary.pdf')
               i.download.icon.graySquare
               .inline
-                p glossary.pdf
+                p Download Glossary PDF
                   //- i.large.download.icon
         br
-    +navButtons('identity', 'intro', '/', '/intro/2/identity', 2, 'Home', 'Start')  
+    +navButtons('identity', 'intro', '/', '/challenge/identity', 2, 'Home', 'Start')  
   
 block styles
   link(rel='stylesheet', href='/css/module-home.css') 
