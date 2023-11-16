@@ -867,23 +867,23 @@ exports.postStartTime = async (req, res, next) => {
 exports.postEndTime = async (req, res, next) => {
     console.log("In user.js POST end time***************************");
     try {
-        const { modID, page } = req.body;
-        const existingUser = await User.findOne({ username: req.user.username });
+        // const { modID, page } = req.body;
+        // const existingUser = await User.findOne({ username: req.user.username });
 
-        if (existingUser) {
-            const pageID = page + "_Times";
-            const pageTimes = existingUser.modulePageTimes[modID][pageID];
-            const indexToUpdate = pageTimes.length - 1;
+        // if (existingUser) {
+        //     const pageID = page + "_Times";
+        //     const pageTimes = existingUser.modulePageTimes[modID][pageID];
+        //     const indexToUpdate = pageTimes.length - 1;
 
-            const endTime = Date.now();
-            const durationInMillis = endTime - pageTimes[indexToUpdate].startTime;
+        //     const endTime = Date.now();
+        //     const durationInMillis = endTime - pageTimes[indexToUpdate].startTime;
 
-            pageTimes[indexToUpdate].endTime = endTime;
-            pageTimes[indexToUpdate].durationMilliseconds = durationInMillis;
-            pageTimes[indexToUpdate].durationFormatted = formatDuration(durationInMillis);
+        //     pageTimes[indexToUpdate].endTime = endTime;
+        //     pageTimes[indexToUpdate].durationMilliseconds = durationInMillis;
+        //     pageTimes[indexToUpdate].durationFormatted = formatDuration(durationInMillis);
 
-            await existingUser.save();
-        }
+        //     await existingUser.save();
+        // }
 
         res.status(200).json({ message: "End time updated successfully." });
     } catch (err) {
