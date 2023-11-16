@@ -1,46 +1,70 @@
 extends ../ui_layout
 
 block content
-  -var user_post = []
-  -var user_info = [{profile_pic : "/profile_pictures/amy.jpg",background_pic : "/profile_pictures/blueToWhite.png",user_name : "Amy G",user_id : "@amyg__g",bio : "Daughter. Sister. Proud Black American. I tend to get political.",location : "New York, NY",join_date : "Joined January 2019"}]
-  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
-  .ui.container#raised-container(style="padding-bottom: 50px;")
-    .ui.raised.segment
+  .ui.container#raised-container
+    .ui.basic.segment#avatarContainer
       #raised-content
-        .twelve.wide.computer.fourteen.wide.tablet.sixteen.wide.mobile.column.centered( style="margin-bottom:5%")
-          .ui.one.column.grid.feedbackMessagesGrid
-            h1.ui.header.large#mod-title(style="font-size: 2.5rem; margin: 20px;")
-              | Character Select
-            h4.ui.header.large#mod-title(style="font-size: 1.5rem; margin: 20px; margin-top: -5px;")
-              | Before starting, would you like to select one of our agents to learn with you?
-            //- span(style="font-size: 25px; margin-left: 5%; margin-top: 5%; font-weight: bold;") Hello #{user.profile.name},
-            //- span(style="font-size: 18px; margin-left: 5%; margin-top: 3%; font-weight: bold; margin-bottom: 3%") Before starting, would you like to select one of our agents to learn with you?
-            
-            .ui.grid(style="margin:30px;")
-              .four.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center; ")
-                      .ui.radio.checkbox
-                            img.lazy(style='border: 2px solid  #2884d4 !important; border-radius: 15px;' src="/profile_pictures/Daring_PT_Determined2.png" data-src="/profile_pictures/Daring_PT_Determined.png")
-                            button.ui.primary.basic.button(style="border-radius: 15px; background:white !important;position: absolute; bottom: 20%; left: 48%; transform: translateX(-50%);", onclick="saveButton1()") Select
-                            button.ui.inverted.basic.button(style=" cursor: default; color: black !important; border-radius: 15px; position: absolute; bottom: -7%; left: 48%; transform: translateX(-50%);") Daring
+        h1.ui.header.large#mod-title
+          .content
+            | Welcome aboard, Agent!
+        .mission-info
+          h2 Your Target: 
+          p SCAMM, a notorious group of scammers led by Walter Fang. They're the bad guys we're after.
 
-              .four.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;")
-                      .ui.radio.checkbox
-                            img.lazy(style=' border: 2px solid  #2884d4 !important; border-radius: 15px;' src="/profile_pictures/Valiant_PT_Determined2.png" data-src="/profile_pictures/Valiant_PT_Determined.png")
-                            button.ui.primary.basic.button(style="border-radius: 15px; background:white !important;position: absolute; bottom: 20%; left: 48%; transform: translateX(-50%);", onclick="saveButton4()") Select
-                            button.ui.inverted.basic.button(style=" cursor: default; color: black !important; border-radius: 15px; position: absolute; bottom: -7%; left: 48%; transform: translateX(-50%);") Valiant
+          h2 Mission Brief: 
+          p Learn how SCAMM works by going "deep cover." This means you'll work hands-on to uncover their tricks.
 
-              .four.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;")
-                      .ui.radio.checkbox
-                            img.lazy(style=' border: 2px solid  #2884d4 !important; border-radius: 15px;' src="/profile_pictures/"+"Intrepid_PT_Determined2.png"  data-src="/profile_pictures/Intrepid_PT_Determined.png")
-                            button.ui.primary.basic.button(style="border-radius: 15px; background:white !important;position: absolute; bottom: 20%; left: 48%; transform: translateX(-50%);", onclick="saveButton3()") Select
-                            button.ui.inverted.basic.button(style=" cursor: default; color: black !important; border-radius: 15px; position: absolute; bottom: -7%; left: 48%; transform: translateX(-50%);") Intrepid
-              .four.wide.column(style="display: flex; flex-direction: column; align-items: center; justify-content: center;")
-                      .ui.radio.checkbox
-                            img.lazy(style=' border: 2px solid  #2884d4 !important; border-radius: 15px;' src="/profile_pictures/"+"Dartie_Happy_32.png" data-src="/profile_pictures/Dartie_Happy_3.png")
-                            button.ui.primary.basic.button(style="border-radius: 15px; background:white !important;position: absolute; bottom: 20%; left: 48%; transform: translateX(-50%);", onclick="saveButton2()") Select
-                            button.ui.inverted.basic.button(style=" cursor: default; color: black !important; border-radius: 15px; position: absolute; bottom: -7%; left: 48%; transform: translateX(-50%);") Dartie
+          h2 Your Team:
+          p Choose from Valiant, Daring, Intrepid, and Dartie — skilled agents ready to assist in this operation.
 
-            button.ui.primary.basic.button(style="margin: auto; margin-bottom:50px; width:50%; border-radius: 15px !important; margin-top: 1%" onclick="saveButton5()" ) I prefer to learn on my own
+        h1 Choose Your Guide:
+        .ui.stackable.four.column.grid
+            .four.wide.column
+                .ui.card
+                    .ui.small.centered.image
+                        img.daring(src='/images/agent-daring.png')
+                    .content
+                        a.header Daring
+                        .meta
+                          p.descriptors Bold, Fearless, Confident
+                        br
+                        button.ui.fluid.blue.huge.button Select
+            .four.wide.column
+                .ui.card
+                    .ui.small.centered.image
+                        img.valiant(src='/images/agent-valiant.png')
+                    .content
+                        a.header Valiant
+                        .meta
+                          p.descriptors Courageous, Heroic, Noble
+                        br
+                        button.ui.fluid.blue.huge.button Select
+            .four.wide.column
+                .ui.card
+                    .ui.small.centered.image
+                        img.intrepid(src='/images/agent-intrepid.png')
+                    .content
+                        a.header Intrepid
+                        .meta
+                          p.descriptors Clever, Astute, Resilient
+                        br
+                        button.ui.fluid.blue.huge.button Select
+            .four.wide.column
+                .ui.card
+                    .ui.medium.centered.image(style="min-height: 300px; justify-content: center; align-items: center; display: flex;")
+                        img.dartie(src='/images/agent-dartie.png' style="width: 200px;")
+                    .content
+                        a.header Dartie
+                        .meta
+                          p.descriptors Playful, Energetic, Loyal
+                        br
+                        button.ui.fluid.blue.huge.button Select
+
+        //- .ui.grid.buttonGrid
+        //-     .column.center.aligned
+        //-         button.ui.blue.huge.basic.button I prefer to learn on my own
+        br
+        br
 
 block scripts
   script.
@@ -75,14 +99,4 @@ block scripts
 
 
 block styles
-  style(type='text/css').
-    .lazy {
-      width: 90%;
-      height: 90%;
-    }
-
-    .profilePictureModal {
-    height: calc(100% - 50px);
-    margin-top: 30px !important;
-    margin-bottom: 30px !important;
-    }
+  link(rel='stylesheet', href='/css/character-selection.css') 

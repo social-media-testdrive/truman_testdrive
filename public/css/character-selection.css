@@ -1,0 +1,72 @@
+#avatarContainer .content{
+    text-align: center;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+#avatarContainer h2 {
+    font-family: 'Titillium Web', sans-serif;
+}
+
+/* #avatarContainer .mission-info p {
+    margin-left: 40px;
+} */
+
+#avatarContainer .smallTitle{
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 1.5rem;
+}
+
+#avatarContainer p.descriptors{
+    color: #2165AE;
+    line-height: 1.5rem;
+    margin-top: 20px;
+}
+
+#avatarContainer .ui.card{
+    border-radius: 10px;
+    border: 3px solid #2165AE;
+    background-color: #F9FCFF;
+}
+
+#avatarContainer button.ui.blue.button{
+    border-radius: 20px;
+    margin-top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    /* background: white; */
+}
+
+#avatarContainer .ui.card .content {
+    background-color: white;
+}
+
+#avatarContainer button.ui.blue.huge.basic.button {
+    background-color: white;
+}
+
+#avatarContainer button.ui.blue.huge.basic.button:hover {
+    background-color: rgba(245, 245, 245, 0.579)
+}
+
+#avatarContainer .userTitle{
+    font-size: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#avatarContainer .image{
+    background-color: #F9FCFF; 
+}
+
+#avatarContainer .ui.card .image {
+    background-color: #F9FCFF; 
+    border: none;
+}
+
+/* make the cards fill the complete width given to them by the grid structure */
+#avatarContainer .ui.card {
+    width: 100%;
+}
+
+#avatarContainer .ui.grid.buttonGrid{
+    border-radius: 20px;
+    text-align: center;
+}
