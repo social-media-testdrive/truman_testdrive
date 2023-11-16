@@ -12,7 +12,7 @@ block content
               br
               br
               | Let's put our learning into practice!
-      img#dart_image1.ui.small.image(src='/profile_pictures/transparent.png' style="margin: 0 auto;")
+      img#dart_image1.ui.small.image(src=user.avatarImg style="margin: 0 auto;")
       br
           
     script.
@@ -24,6 +24,5 @@ block append footer
     +navButtons('identity', 'sub2_learn13', '/learn/submod2/12/identity', '/learn/submod2/14/identity', 52)  
 
 block scripts
-  script(src='/js/character.js')
   script.
     postStartTime("identity", "sub2_learn13");

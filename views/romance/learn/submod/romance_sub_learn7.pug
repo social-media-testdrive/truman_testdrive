@@ -67,7 +67,7 @@ block content
       p Here, the scammer uses intimate details of the person’s life in order to increase the likelihood that they will fall victim to their cryptocurrency scam.
       br
         //- .icon
-        //-   img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
+        //-   img#dart_image1.ui.small.image.right.floated(src=user.avatarImg)
         //- .content
         //-   .header
         //-     | Note
@@ -81,6 +81,5 @@ block append footer
     +navButtons('romance', 'sub3_learn9', '/learn/submod/6/romance', '/learn/submod/8/romance', 78)  
 
 block scripts
-  //- script(src='/js/character.js')
   script.
     postStartTime("romance", "sub3_learn9");

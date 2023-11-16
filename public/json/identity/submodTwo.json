@@ -32,7 +32,7 @@
   "3": {
       "type": "multi_select",
       "partial": "none",
-      "prompt": "3. Which of the following techniques do scammers mainly utilize? Select all that apply:",
+      "prompt": "3. Which of the following techniques do scammers mainly use?",
       "choices": {
           "0": {
               "text": "A. Fear and threats in scam messaging",

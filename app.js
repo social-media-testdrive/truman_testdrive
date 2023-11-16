@@ -266,6 +266,7 @@ app.post('/postStartTime', userController.postStartTime);
 app.post('/postEndTime', userController.postEndTime);
 app.post('/postModuleProgress', userController.postModuleProgress);
 app.post('/postQuizScore', userController.postQuizScore);
+app.post('/postAvatar', userController.postAvatar);
 
 
 

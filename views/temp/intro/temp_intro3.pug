@@ -27,7 +27,7 @@ block content
         .ui.large.right.pointing.label#speechBubble
           span
             p#speechText(style="font-size: 1.3rem; text-align: left") Please remember that there are numerous ways in which identity theft can occur other than these three types. You can check out <a href="https://www.aarp.org/money/scams-fraud/">AARP’s Fraud Resources </a> for more information about different types of scams.
-        img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png' style="float: right")
+        img#dart_image1.ui.small.image.right.floated(src=user.avatarImg style="float: right")
       br
     script.
         var progress = #{user.moduleProgress.identity.percent}
@@ -43,5 +43,3 @@ block append footer
         button.ui.huge.green.button.right.floated#nextButton(onclick="location.href='/intro3/temp';")
           | Next
           i.arrow.right.icon
-block scripts
-  script(src='/js/character.js')

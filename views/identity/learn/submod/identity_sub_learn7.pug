@@ -9,18 +9,17 @@ block content
           .container#cropped-circular-image
             .ui.segment(style="background-color: #7D7C7C !important;")
               .ui.circular.small.image
-                img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
-              span(style="font-size: 2.5rem; margin-left: 20px;color:white;") Chat with 
-                span#name ‎
+                img.dart_image(src=user.avatarImg, alt='Agents text message profile picture')
+              span(style="font-size: 2.5rem; margin-left: 20px;color:white;")  Chat with {user.avatar}
           br
           .content.text-message
             .ui.circular.tiny.image 
-              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+              img.dart_image(src=user.avatarImg, alt='Agents text message profile picture')
             .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
               p Excellent work, #{user.name}! You've finished the first section! May I ask you a question? Have you ever encountered a scam before?
           .content.text-message(style="margin-top: 25px;")
             .ui.circular.tiny.image 
-              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+              img.dart_image(src=user.avatarImg, alt='Agents text message profile picture')
             .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
               p It's perfectly fine if you prefer not to answer. Please click 'Complete Section 1' to continue learning.
           #encounter_container
@@ -39,7 +38,7 @@ block content
           //- bot yes reply
           #yes_reply.content.text-message(style="display: none")
             .ui.circular.tiny.image 
-              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+              img.dart_image(src=user.avatarImg, alt='Agents text message profile picture')
             .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
               p Thank you for your response. If you don't mind me asking, could you please share more about your experience with the scam? Did you undergo any financial loss or other types of loss due to the scam? 
               p Please type your response below and hit the "send" button.
@@ -47,7 +46,7 @@ block content
           //- bot no reply
           #no_reply.content.text-message(style="display: none")
             .ui.circular.tiny.image 
-              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+              img.dart_image(src=user.avatarImg, alt='Agents text message profile picture')
             .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
               p Thank you for your response. It's great to hear that you've never encountered scams! Please click the "Complete Section 1" button on the bottom right of the page to continue learning. 
             br
@@ -56,7 +55,7 @@ block content
           //- bot not sure reply
           #sure_reply.content.text-message(style="display: none")
             .ui.circular.tiny.image 
-              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+              img.dart_image(src=user.avatarImg, alt='Agents text message profile picture')
             .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
               p Thank you for your response. If you don't mind me asking, could you please share a little about what the suspicious interaction looked like? What did you encounter? 
               p Please type your response below and hit the "send" button.
@@ -81,7 +80,7 @@ block content
           //- suspicion question reply (the one after not sure)
           #sus_reply.content.text-message(style="display: none")
             .ui.circular.tiny.image 
-              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+              img.dart_image(src=user.avatarImg, alt='Agents text message profile picture')
             .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
               p That sounds like a scam! I'm glad you were able to recognize it and avoid it. 
               p It was great talking with you! Please click the "Complete Section 1" button on the bottom right of the page to continue learning. 
@@ -91,7 +90,7 @@ block content
           //- experience question reply (the one after yes)
           #experience_reply.content.text-message(style="display: none")
             .ui.circular.tiny.image 
-              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+              img.dart_image(src=user.avatarImg, alt='Agents text message profile picture')
             .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
               p I'm sorry to hear that you had to go through that. I hope you were able to recover from the scam.
               p It was great talking with you! Please click the "Complete Section 1" button on the bottom right of the page to continue learning. 
@@ -124,7 +123,6 @@ block append footer
 
 
 block scripts
-  script(src='/js/update_character_name.js')
   script.
     postStartTime("identity", "sub_learn7");
     let accept_sending = false;

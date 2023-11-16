@@ -2,96 +2,22 @@
   "1": {
       "type": "yes_no",
       "partial": "q1.html",
-      "prompt": "1. You should always carry your Social Security Card in your wallet at all times.",
+      "prompt": "1. Should you carry your Social Security Card in your wallet at all times?",
       "choices": {
         "yes": {
           "text": "Yes"
         },
-<<<<<<< HEAD
         "no": {
           "text": "No"
         }
-=======
-        "explanation": "<h1>No you should not carry your Social Security Card in your wallet</h1><p>Memorizing the number and keeping the physical card safely at home is the best way to protect your personal information. Your Social Security Card is extremely important, so avoid carrying it around to minimize the risk of losing it.</p>",
-        "correctResponse": "no"
-    },
-    "2": {
-        "type": "multi_select",
-        "partial": "none",
-        "prompt": "2. When you have your identity stolen, what should you do? Select all that apply:",
-        "choices": {
-            "0": {
-                "text": "A. Notify your bank or financial institution",
-                "explanation": "Informing your bank or financial institution is important to protect your financial accounts."
-            },
-            "1": {
-                "text": "B. Panic and do nothing",
-                "explanation": "Panic doesn't help; taking appropriate actions is crucial when identity theft occurs."
-            },
-            "2": {
-                "text": "C. Report identity theft to the Federal Trade Commission",
-                "explanation": "Reporting identity theft to the FTC is essential to begin the recovery process."
-            },
-            "3": {
-                "text": "D. Keep it a secret to avoid embarrassment",
-                "explanation": "Staying silent won't prevent further harm. There's no need to feel embarrassed; identity theft can happen to anyone."
-            },
-            "4": {
-                "text": "E. Change passwords for other accounts",
-                "explanation": "Changing passwords for other accounts can prevent further unauthorized access."
-            },
-            "5": {
-                "text": "F. Contact your local police department",
-                "explanation": "Reporting to local authorities helps with the legal aspects of identity theft."
-            }
-        },
-        "correctResponse": ["0", "2", "4", "5"],
-        "theAnswers": "A, C, E, F"
-    },
-    "3": {
-        "type": "abcd",
-        "partial": "none",
-        "prompt": "3. What is the most secure way to get rid of old account statement documents and expired credit cards?",
-        "choices": {
-          "a": {
-            "text": "A. Leave them in your wallet or purse"
-          },
-          "b": {
-            "text": "B. Blackout personal information and shred them"
-          },
-          "c": {
-            "text": "C. Bury them in your backyard"
-          },
-          "d": {
-            "text": "D. Give them to a friend for disposal"
-          }
-        },
-        "explanation": "<h1>B is correct</h1><p>Shredding old documents using a paper shredder and blacking out sensitive information are effective methods to prevent scammers from stealing your personal information.</p>",
-        "correctResponse": "b"
-    },
-    "4": {
-        "type": "yes_no",
-        "partial": "q4.html",
-        "prompt": "4. Is \"Jane123\" a complex and secure password for Jane's new bank account?",
-        "choices": {
-          "yes": {
-            "text": "Yes"
-          },
-          "no": {
-            "text": "No"
-          }
-        },
-        "explanation": "<h1>No this is not a secure password</h1><p>This password contains her name and is less than 8 characters long. Although it includes both letters and numbers, it is quite simple and lacks additional complexity such as special characters (e.g., @, #, $, etc.) and a longer length. A strong password should  be longer and include a mix of uppercase and lowercase letters, numbers, and special characters to enhance its security against potential hacking attempts.</p>",
-        "correctResponse": "no"
->>>>>>> main
       },
-      "explanation": "<h1>The correct answer is No</h1><p>Memorizing the number and keeping the physical card safely at home is the best way to protect your personal information. Your Social Security Card is extremely important. You should avoid carrying it around to minimize the risk of losing it.</p>",
+      "explanation": "<h1>No you should not carry your Social Security Card in your wallet</h1><p>Memorizing the number and keeping the physical card safely at home is the best way to protect your personal information. Your Social Security Card is extremely important. You should avoid carrying it around to minimize the risk of losing it.</p>",
       "correctResponse": "no"
   },
   "2": {
       "type": "multi_select",
       "partial": "none",
-      "prompt": "2. When you have your identity stolen, what should you do? Select all that apply.",
+      "prompt": "2. When you have your identity stolen, what should you do? Select all that apply:",
       "choices": {
           "0": {
               "text": "A. Notify your bank or financial institution",
@@ -99,11 +25,11 @@
           },
           "1": {
               "text": "B. Panic and do nothing",
-              "explanation": "Panic doesn't help; taking right actions is crucial when identity theft occurs."
+              "explanation": "Panic doesn't help; taking action is crucial when identity theft occurs."
           },
           "2": {
-              "text": "C. Report identity theft to the Federal Trade Commission (FTC)",
-              "explanation": "Reporting identity theft to the FTC is the first step to start the recovery process."
+              "text": "C. Report identity theft to the Federal Trade Commission",
+              "explanation": "Reporting identity theft to the FTC is the first step  to start the recovery process. "
           },
           "3": {
               "text": "D. Keep it a secret to avoid embarrassment",
@@ -111,7 +37,7 @@
           },
           "4": {
               "text": "E. Change passwords for other accounts",
-              "explanation": "Changing passwords for other accounts can prevent them from being illegally accessed, especially accounts that use the same login information and/or passwords."
+              "explanation": "Changing passwords for other accounts can prevent further unauthorized access."
           },
           "5": {
               "text": "F. Contact your local police department",
@@ -124,7 +50,7 @@
   "3": {
       "type": "abcd",
       "partial": "none",
-      "prompt": "3. What is the most secure way to get rid of old account statements and expired credit cards?",
+      "prompt": "3. What is the most secure way to get rid of old account statement documents and expired credit cards?",
       "choices": {
         "a": {
           "text": "A. Leave them in your wallet or purse"
@@ -139,13 +65,13 @@
           "text": "D. Give them to a friend for disposal"
         }
       },
-      "explanation": "<h1>The correct answer is B.</h1><p>Shredding old documents using a paper shredder and blacking out sensitive information are effective methods to prevent scammers from stealing your personal information.</p>",
+      "explanation": "<h1>B is correct</h1><p>Shredding old documents using a paper shredder and blacking out sensitive information are effective methods to prevent scammers from stealing your personal information.</p>",
       "correctResponse": "b"
   },
   "4": {
       "type": "yes_no",
       "partial": "q4.html",
-      "prompt": "4. Jane's password for her new bank account is “Jane123”. Is this a complex and secure password?",
+      "prompt": "4. Jane’s password for her new bank account is “Jane123”. Is this a complex and secure password?",
       "choices": {
         "yes": {
           "text": "Yes"
@@ -154,13 +80,13 @@
           "text": "No"
         }
       },
-      "explanation": "<h1>The correct answer is No.</h1><p>This password contains her name and is less than 8 characters long. Although it includes both letters and numbers, it is very simple and easy to guess. Longer passwords that include special characters (e.g., @, #, $, etc.) are harder for hackers to guess or crack using computer programs. A strong password should be longer (at least 8 characters long) and include a mix of uppercase and lowercase letters, numbers, and special characters to protect against potential hacking attempts.</p>",
+      "explanation": "<h1>No this is not a secure password</h1><p>This password contains her name and is less than 8 characters long. Although it includes both letters and numbers, it is very simple and easy to guess. Longer passwords  that include special characters (e.g., @, #, $, etc.) are harder for hackers to guess or crack using computer programs. A strong password should be longer (at least 8 characters long) and include a mix of uppercase and lowercase letters, numbers, and special characters to protect against potential hacking attempts.</p>",
       "correctResponse": "no"
     },
   "5": {
       "type": "abcd",
       "partial": "none",
-      "prompt": "5. After using your bank account online, what's your next step?",
+      "prompt": "5. After checking your bank account online, what's your next step?",
       "choices": {
         "a": {
           "text": "A. Wait for complete logout, close your browser, and power off your computer"
@@ -169,13 +95,13 @@
           "text": "B. Turn off your computer while waiting for the logout to complete"
         },
         "c": {
-          "text": "C. Turn off your computer without clicking the “logout” button"
+          "text": "C. Turn off your computer without clicking the “log out” button"
         },
         "d": {
-          "text": "D. Leave your account logged in without turning your computer off"
+          "text": "D. Leave your account logged in"
         }
       },
-      "explanation": "<h1>The correct answer is A.</h1><p>To ensure that nobody can access your account, it is crucial to take the following steps: log out completely, close your browser, and then turn off your computer. Failing to do so poses a risk, as your account information may still be saved in your browser, making it accessible to others who could potentially steal your personal information.</p>",
+      "explanation": "<h1>A is correct</h1><p>To ensure that nobody can access your account, it is crucial to take the following steps: log out completely, close your browser, and then turn off your computer. Failing to do so poses a risk, as your account information may still be saved in your browser, making it accessible to others who could potentially steal your personal information.</p>",
       "correctResponse": "a"
   }
 }

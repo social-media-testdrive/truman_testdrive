@@ -65,7 +65,7 @@ block content
               |  if the email invites you to click on a new link to update your payment details, the link can be a phishing link.
         .ui.icon.fluid.blue.message
           .icon
-            img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
+            img#dart_image1.ui.small.image.right.floated(src=user.avatarImg)
           .content
             .header
               //- i.info.circle.icon
@@ -86,6 +86,5 @@ block styles
   link(rel='stylesheet', href='/css/example-emails.css')
 
 block scripts
-  script(src='/js/character.js')
   script.
     postStartTime("identity", "sub2_learn5");

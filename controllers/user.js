@@ -732,7 +732,7 @@ exports.postModuleProgress = async (req, res, next) => {
 };
 
 
-exports.postQuizScore = async (req, res, next) => { // response second
+exports.postQuizScore = async (req, res, next) => {
   // console.log("In POST quiz score request body***********************hiii****");
 
   const { modID, scoreTotal, correctAnswers, selectedAnswer, questionScores, nextLink, currentSection } = req.body;
@@ -786,6 +786,38 @@ exports.postQuizScore = async (req, res, next) => { // response second
     next(err);
   }
 };
+
+exports.postAvatar = async (req, res, next) => {
+  const { avatar, avatarImg } = req.body;
+
+  try {
+    const existingUser = await User.findOne({ username: req.user.username });
+
+    if (existingUser) {
+      // Update the user's avatar
+      existingUser.avatar = avatar;
+      existingUser.avatarImg = avatarImg;
+
+      // Save to MongoDB database
+      await existingUser.save();
+
+      // Update the user in the session
+      req.login(existingUser, (err) => {
+        if (err) {
+          return next(err);
+        }
+  
+        // Redirect or send a success response
+        res.status(200).send('Avatar updated successfully');
+      });
+    } else {
+      res.status(404).send('User not found while updating avatar');
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
 
 /**
  * POST /postStartTime

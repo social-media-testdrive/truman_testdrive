@@ -1,3 +1,10 @@
+body {
+    background-color: #F9FCFF;
+}
+
+#avatarContainer h1.ui.header{
+    color: #285362
+}
 #avatarContainer .content{
     text-align: center;
     font-family: 'Titillium Web', sans-serif;
@@ -7,9 +14,10 @@
     font-family: 'Titillium Web', sans-serif;
 }
 
-/* #avatarContainer .mission-info p {
-    margin-left: 40px;
-} */
+span.target {
+    font-weight: bold;
+    font-size: 1.75rem;
+}
 
 #avatarContainer .smallTitle{
     font-family: 'Titillium Web', sans-serif;

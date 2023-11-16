@@ -35,7 +35,7 @@
     "2": {
         "type": "multi_select",
         "partial": "none",
-        "prompt": "2. Please select all the items that you think are considered personal information:",
+        "prompt": "2. Select all sensitive personal information that can be used for identity theft:",
         "choices": {
             "0": {
                 "text": "A. Full name",

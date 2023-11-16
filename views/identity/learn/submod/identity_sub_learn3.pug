@@ -40,7 +40,7 @@ block content
         //- i.info.circle.icon
                   .avatar(style="width: 100%; height: 100%; overflow: hidden; position: relative;background: red !important; border: 2px solid green;")
         .icon
-          img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
+          img#dart_image1.ui.small.image.right.floated(src=user.avatarImg)
         .content
           .header
             //- i.info.circle.icon
@@ -58,7 +58,6 @@ block append footer
     +navButtons('identity', 'sub_learn3', '/learn/submod/2/identity', '/learn/submod/4/identity', 16)  
 
 block scripts
-  script(src='/js/character.js')
   script.
     postStartTime("identity", "sub_learn3");
 

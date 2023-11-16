@@ -5,17 +5,43 @@ block content
     .ui.basic.segment#avatarContainer
       #raised-content
         h1.ui.header.large#mod-title
+          i.secret.user.icon
           .content
             | Welcome aboard, Agent!
         .mission-info
-          h2 Your Target: 
-          p SCAMM, a notorious group of scammers led by Walter Fang. They're the bad guys we're after.
+          //- h2 Your Target: 
+          .ui.stackable.grid 
+            .row.middle.aligned
+              .ten.wide.column
+                img(src="/images/dart-bullet.svg", alt="Bullet Point")
+                span.target  Your Target: 
+                p
+                br
+                p(style="margin-left: 65px;") The Society for Covert Attacks and Mass Manipulation (SCAMM), a notorious group of scammers led by Walter Fang.
+              .six.wide.center.aligned.column
+                img(src="/images/scamm.png", alt="Group of Scammers" style="width: 300px;")
+            .row.middle.aligned
+              .ten.wide.column
+                img(src="/images/dart-bullet.svg", alt="Bullet Point")
+                span.target  Mission Brief: 
+                p
+                br
+                p(style="margin-left: 65px;") Learn how SCAMM works by going "deep cover." This means you'll work hands-on to uncover their tricks.
+              .six.wide.center.aligned.column
+                img(src="/images/deepcover.png", alt="Deepcover mission badge labeled: exposing scam and protecting the people" style="width: 250px;")
 
-          h2 Mission Brief: 
-          p Learn how SCAMM works by going "deep cover." This means you'll work hands-on to uncover their tricks.
+          //- h2 Mission Brief:
+          //- img(src="/images/dart-bullet.svg", alt="Bullet Point")
+          //- p Learn how SCAMM works by going "deep cover." This means you'll work hands-on to uncover their tricks.
+          img(src="/images/dart-bullet.svg", alt="Bullet Point")
+          span.target  Your Team: 
+          p
+          br
+          p(style="margin-left: 65px;") Choose from Valiant, Daring, Intrepid, and Dartie — skilled agents ready to assist you
 
-          h2 Your Team:
-          p Choose from Valiant, Daring, Intrepid, and Dartie — skilled agents ready to assist in this operation.
+          //- h2 Your Team:
+          //- img(src="/images/dart-bullet.svg", alt="Bullet Point")
+          //- p Choose from Valiant, Daring, Intrepid, and Dartie — skilled agents ready to assist in this operation.
 
         h1 Choose Your Guide:
         .ui.stackable.four.column.grid
@@ -28,7 +54,7 @@ block content
                         .meta
                           p.descriptors Bold, Fearless, Confident
                         br
-                        button.ui.fluid.blue.huge.button Select
+                        button.ui.fluid.blue.huge.button(onclick='updateAvatar("Daring", "/images/agent-daring.png")') Select
             .four.wide.column
                 .ui.card
                     .ui.small.centered.image
@@ -38,7 +64,7 @@ block content
                         .meta
                           p.descriptors Courageous, Heroic, Noble
                         br
-                        button.ui.fluid.blue.huge.button Select
+                        button.ui.fluid.blue.huge.button(onclick='updateAvatar("Valiant", "/images/agent-valiant.png")') Select
             .four.wide.column
                 .ui.card
                     .ui.small.centered.image
@@ -48,7 +74,7 @@ block content
                         .meta
                           p.descriptors Clever, Astute, Resilient
                         br
-                        button.ui.fluid.blue.huge.button Select
+                        button.ui.fluid.blue.huge.button(onclick='updateAvatar("Intrepid", "/images/agent-intrepid.png")') Select
             .four.wide.column
                 .ui.card
                     .ui.medium.centered.image(style="min-height: 300px; justify-content: center; align-items: center; display: flex;")
@@ -58,7 +84,7 @@ block content
                         .meta
                           p.descriptors Playful, Energetic, Loyal
                         br
-                        button.ui.fluid.blue.huge.button Select
+                        button.ui.fluid.blue.huge.button(onclick='updateAvatar("Dartie", "/images/agent-dartie.png")') Select
 
         //- .ui.grid.buttonGrid
         //-     .column.center.aligned
@@ -68,34 +94,36 @@ block content
 
 block scripts
   script.
-    function saveButton1() {
-      localStorage.setItem('character', 'Daring_PT_Determined.png');
-      location.reload();
-      window.location.href = '/character';
-    }
-    function saveButton2() {
-      localStorage.setItem('character', 'Dartie_Happy_3.png');
-      location.reload();
-      window.location.href = '/character';
+    function updateAvatar(avatarName, avatarImg) {
+      var userData = {
+        avatar: avatarName,
+        avatarImg: avatarImg
+      };
+      
+      fetch('/postAvatar', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          // Include other headers as needed
+        },
+        body: JSON.stringify(userData)
+      })
+      .then(response => {
+        if (response.ok) {
+          console.log('Avatar updated successfully');
+          window.location.href = '/character';
+          // Handle success
+        } else {
+          console.error('Failed to update avatar');
+          // Handle errors
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        // Handle network errors
+      });
     }
 
-    function saveButton3() {
-      localStorage.setItem('character', 'Intrepid_PT_Determined.png');
-      location.reload();
-      window.location.href = '/character';
-    }
-
-    function saveButton4() {
-      localStorage.setItem('character', 'Valiant_PT_Determined.png');
-      location.reload();
-      window.location.href = '/character';
-    }
-
-    function saveButton5() {
-      localStorage.setItem('character', 'info-icon.png');
-      location.reload();
-      window.location.href = '/character';
-    }
 
 
 block styles

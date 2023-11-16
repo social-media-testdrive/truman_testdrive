@@ -21,7 +21,7 @@ block content
       
       .ui.icon.blue.message
         .icon
-          img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
+          img#dart_image1.ui.small.image.right.floated(src=user.avatarImg)
         .content
           .header
             //- i.info.circle.icon
@@ -45,6 +45,5 @@ block append footer
     +navButtons('identity', 'sub2_learn9', '/learn/submod2/8/identity', '/learn/submod2/10/identity', 44)  
 
 block scripts
-  script(src='/js/character.js')
   script.
     postStartTime("identity", "sub2_learn9");

@@ -34,7 +34,7 @@ block content
             | This message fails to provide fine prints, such as the expiration date or the exceptions to the sale. A legitimate deal will list such details for legal reasons.
       .ui.icon.blue.message
         .icon
-          img#dart_image1.ui.small.image.right.floated(src='/profile_pictures/transparent.png')
+          img#dart_image1.ui.small.image.right.floated(src=user.avatarImg)
         .content
           .header
             //- i.info.circle.icon
@@ -50,7 +50,6 @@ block append footer
     +navButtons('identity', 'sub2_learn7', '/learn/submod2/6/identity', '/learn/submod2/8/identity', 40)  
 
 block scripts
-  script(src='/js/character.js')
   script.
     postStartTime("identity", "sub2_learn7");
     

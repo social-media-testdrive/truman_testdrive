@@ -11,8 +11,7 @@ block content
         .limit
             .ui.large.pointing.below.label#speechBubble(style="float: none; width: 100%;")
                 p#speechText(style="font-size: 1.5rem; text-align: left") 
-                    | Hello #{user.name}, I am 
-                    span#name ‎!             
+                    | Hello #{user.name}, I am Agent #{user.avatar}!           
                     | ! Thank you for choosing me to join you on your learning journey! I am here to offer support as we progress through the modules together.
                     br
                     br
@@ -22,7 +21,7 @@ block content
                     | DART uses a number of features designed to make our website easier for everyone to navigate and read. Checkout the 
                     a(href='/accessibility')  Accessibilty page 
                     | to learn more about this!
-            img.dart_image.ui.small.image(src='/profile_pictures/transparent.png' style="margin: 0 auto;")
+            img.dart_image.ui.small.image(src=user.avatarImg style="margin: 0 auto;")
         br
         br
     .ui.container#nav-container
@@ -47,7 +46,6 @@ block content
     //-     i.arrow.right.icon
 
 block scripts
-  script(src='/js/update_character_name.js')
   script.
     var voiceoverMappings = {
       '.showLearnSectionButton': {

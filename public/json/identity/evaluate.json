@@ -2,7 +2,7 @@
   "1": {
       "type": "multi_select",
       "partial": "none",
-      "prompt": "1. Select all sensitive personal information that can be used for identity theft.",
+      "prompt": "1. Select all sensitive personal information that can be used for identity theft. Select all that apply:",
       "choices": {
           "0": {
               "text": "A. Dietary Preferences",

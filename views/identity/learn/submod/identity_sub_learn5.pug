@@ -17,7 +17,7 @@ block content
               br
               br
               | Now, let's put our newfound knowledge into practice and reinforce what we've learned!
-      img#dart_image1.ui.small.image(src='/profile_pictures/transparent.png' style="margin: 0 auto;")
+      img#dart_image1.ui.small.image(src=user.avatarImg style="margin: 0 auto;")
       br
     script.
         var progress = #{user.moduleProgress.identity.percent}
@@ -28,6 +28,5 @@ block append footer
     +navButtons('identity', 'sub_learn5', '/learn/submod/4/identity', '/learn/submod/6/identity', 20)  
 
 block scripts
-  script(src='/js/character.js')
   script.
     postStartTime("identity", "sub_learn5");

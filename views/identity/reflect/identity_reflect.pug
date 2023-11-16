@@ -9,20 +9,19 @@ block content
           .container#cropped-circular-image
             .ui.segment(style="background-color: #7D7C7C !important;")
               .ui.circular.small.image
-                img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
-              span(style="font-size: 2.5rem; margin-left: 20px;color:white;") Chat with 
-                span#name ‎
+                img.dart_image(src=user.avatarImg, alt='Agents text message profile picture')
+              span(style="font-size: 2.5rem; margin-left: 20px;color:white;")  Chat with {user.avatar}
           br
           .content.text-message
             .ui.circular.tiny.image 
-              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+              img.dart_image(src=user.avatarImg, alt='Agents text message profile picture')
             .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
               p Great job #{user.name}! 
               p You have completed all the content for Identity theft! Do you feel ready to protect yourself in the real world?
             //-   p It's perfectly fine if you prefer not to answer. Please click 'Next' to continue learning.
           .content.text-message(style="margin-top: 25px;")
             .ui.circular.tiny.image 
-              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+              img.dart_image(src=user.avatarImg, alt='Agents text message profile picture')
             .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
               p It's perfectly fine if you prefer not to answer. Please click 'Complete Reflection' to conclude this module.
           #encounter_container
@@ -41,7 +40,7 @@ block content
           //- bot yes reply
           #yes_reply.content.text-message(style="display: none")
             .ui.circular.tiny.image 
-              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+              img.dart_image(src=user.avatarImg, alt='Agents text message profile picture')
             .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
               p I'm glad to hear that!
               p Could you tell me more about what you've learned and if there are any new insights or tips that you've gained? 
@@ -50,7 +49,7 @@ block content
           //- bot no reply
           #no_reply.content.text-message(style="display: none")
             .ui.circular.tiny.image 
-              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+              img.dart_image(src=user.avatarImg, alt='Agents text message profile picture')
             .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
               p I understand that you might still have some concerns about protecting yourself from scams. It's completely okay to feel that way. Learning to recognize scams takes time, and I'm here to support you!
               p Please click the "Complete Reflection" button on the bottom right of the page to complete the reflect section. 
@@ -60,7 +59,7 @@ block content
           //- bot not sure reply
           #sure_reply.content.text-message(style="display: none")
             .ui.circular.tiny.image 
-              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+              img.dart_image(src=user.avatarImg, alt='Agents text message profile picture')
             .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
               p That's okay! Recognizing scam emails and messages can be tricky, and it's completely normal to have some uncertainty.
               p Would you like to share any questions you have about protecting yourself from scams?
@@ -85,7 +84,7 @@ block content
           //- suspicion question reply (the one after not sure)
           #sus_reply.content.text-message(style="display: none")
             .ui.circular.tiny.image 
-              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+              img.dart_image(src=user.avatarImg, alt='Agents text message profile picture')
             .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
               p A good rule of thumb is to double-check the sender's email address and avoid clicking on suspicious links. If something doesn't feel right, it's always better to be cautious. 
               p It was great talking with you! Please click the "Complete Reflection" button on the bottom right of the page to conclude this module. 
@@ -95,7 +94,7 @@ block content
           //- experience question reply (the one after yes)
           #experience_reply.content.text-message(style="display: none")
             .ui.circular.tiny.image 
-              img.dart_image(src='/profile_pictures/transparent.png', alt='Agents text message profile picture')
+              img.dart_image(src=user.avatarImg, alt='Agents text message profile picture')
             .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
               p Thank you for sharing those insights. It sounds like you've learned a lot!
               p It was great talking with you! Please click the "Complete Reflection" button on the bottom right of the page to continue learning. 
@@ -128,7 +127,6 @@ block append footer
 
 
 block scripts
-  script(src='/js/update_character_name.js')
   script.
     postStartTime("identity", "reflect");
     let accept_sending = false;

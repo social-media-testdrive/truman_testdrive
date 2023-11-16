@@ -85,7 +85,7 @@ block content
                     .ui.blue.huge.button.viewAnswers View Answers
                     .ui.blue.huge.button.nextButton Next Question
             .avatar-container
-                img#dart_image1.ui.medium.image(src='/profile_pictures/transparent.png')
+                img#dart_image1.ui.medium.image(src=user.avatarImg)
 
     script.
         //- set variable the setProgressBar.js script will use to set the progress bar
@@ -147,7 +147,6 @@ block scripts
     //- script.
     //-     const currentTimeSpan = document.getElementById('current-time');
     //-     currentTimeSpan.textContent = currentTime;
-    script(src='/js/character.js')
     script.
         const startModID = '#{modID}'; // Use Pug's variable interpolation to get the value
         const startPage = '#{page}'; // Use Pug's variable interpolation to get the value

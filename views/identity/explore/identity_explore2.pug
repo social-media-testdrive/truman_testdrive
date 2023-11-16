@@ -9,7 +9,7 @@ block content
             p Let me show you your email inbox and give you a quick tour.
             <br>
         .avatar-container(style="text-align: center;")
-            img#dart_image1.ui.medium.image(src='/profile_pictures/transparent.png' style="text-align: center; display: block; margin: 0 auto;")
+            img#dart_image1.ui.medium.image(src=user.avatarImg style="text-align: center; display: block; margin: 0 auto;")
     script.
         var progress = #{user.moduleProgress.identity.percent}
     script(src='/js/setProgressBar.js')  
@@ -19,6 +19,5 @@ block append footer
     +navButtons('identity', 'explore2', '/explore/identity', '/explore/3/identity', 66, 'Back', 'Start Tour')  
 
 block scripts
-    script(src='/js/character.js')
     script.
         postStartTime("identity", "explore2");
