@@ -2,6 +2,38 @@ body {
     background-color: #F9FCFF;
 }
 
+.four.wide.column .ui.card {
+    max-height: 550px;
+}
+
+p.descriptors {
+    min-height: 60px;
+    max-height: 75px;
+}
+
+#avatarContainer .ui.medium.image,
+#avatarContainer .ui.small.image {
+    min-height: 300px; 
+    display: flex;
+    align-items: flex-end;
+    justify-content: center; 
+    height: 100%;
+}
+
+#avatarContainer .ui.card:hover {
+    box-shadow: 0 0 11px rgba(33, 101, 174, 0.5);
+    cursor: pointer;
+}
+
+#avatarContainer .ui.medium.image {
+    padding-bottom: 3px;
+    min-height: 300px; 
+    display: flex;
+    align-items: flex-end;
+    justify-content: center; 
+    height: 100%;
+}
+
 #avatarContainer h1.ui.header{
     color: #285362
 }
@@ -17,6 +49,7 @@ body {
 span.target {
     font-weight: bold;
     font-size: 1.75rem;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 #avatarContainer .smallTitle{

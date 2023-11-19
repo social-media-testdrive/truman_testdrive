@@ -1,7 +1,12 @@
 #nav-menu {
-    margin-bottom: 25px !important;
+    /* margin-bottom: 25px !important; */
     width: 90vw;
 }
+
+/* #backButton,
+#nextButton {
+    
+} */
 
 #nav-container {
     width: 100%;
@@ -9,8 +14,10 @@
     margin: 0 auto !important;
     text-align: center !important;
     justify-content: center !important;
-    padding-top: 10px !important;
+    padding-top: 10px;    
+    padding-bottom: 10px;
     z-index: 1000;
+    align-items: center !important; 
 }
 
 #backButton {
@@ -20,7 +27,7 @@
     padding-left: 30px;
     padding-right: 30px;
     transition: transform 0.3s ease;
-    font-family: 'Armata', sans-serif; 
+    font-family: 'Titillium Web', sans-serif;
 }
 
 /* when hovering move back button to the left */
@@ -37,7 +44,7 @@
     padding-left: 30px;
     padding-right: 30px;
     transition: transform 0.3s ease;
-    font-family: 'Armata', sans-serif; 
+    font-family: 'Titillium Web', sans-serif;
 }
 
 /* when hovering move start button to the right*/
@@ -58,7 +65,7 @@
     border: 1px solid #3757A6;
     padding-left: 30px;
     padding-right: 30px;
-    font-family: 'Armata', sans-serif; 
+    font-family: 'Titillium Web', sans-serif;
 }
 
 button.ui.big.button.chatBotButton {

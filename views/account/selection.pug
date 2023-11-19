@@ -16,19 +16,17 @@ block content
                 img(src="/images/dart-bullet.svg", alt="Bullet Point")
                 span.target  Your Target: 
                 p
-                br
                 p(style="margin-left: 65px;") The Society for Covert Attacks and Mass Manipulation (SCAMM), a notorious group of scammers led by Walter Fang.
               .six.wide.center.aligned.column
-                img(src="/images/scamm.png", alt="Group of Scammers" style="width: 300px;")
+                img(src="/images/scamm.png", alt="Group of Scammers" style="width: 250px;")
             .row.middle.aligned
               .ten.wide.column
                 img(src="/images/dart-bullet.svg", alt="Bullet Point")
                 span.target  Mission Brief: 
                 p
-                br
                 p(style="margin-left: 65px;") Learn how SCAMM works by going "deep cover." This means you'll work hands-on to uncover their tricks.
               .six.wide.center.aligned.column
-                img(src="/images/deepcover.png", alt="Deepcover mission badge labeled: exposing scam and protecting the people" style="width: 250px;")
+                img(src="/images/deepcover.png", alt="Deepcover mission badge labeled: exposing scam and protecting the people" style="width: 200px;")
 
           //- h2 Mission Brief:
           //- img(src="/images/dart-bullet.svg", alt="Bullet Point")
@@ -36,55 +34,50 @@ block content
           img(src="/images/dart-bullet.svg", alt="Bullet Point")
           span.target  Your Team: 
           p
-          br
           p(style="margin-left: 65px;") Choose from Valiant, Daring, Intrepid, and Dartie — skilled agents ready to assist you
 
           //- h2 Your Team:
           //- img(src="/images/dart-bullet.svg", alt="Bullet Point")
           //- p Choose from Valiant, Daring, Intrepid, and Dartie — skilled agents ready to assist in this operation.
-
+        br
         h1 Choose Your Guide:
         .ui.stackable.four.column.grid
             .four.wide.column
-                .ui.card
+                .ui.card(onclick='updateAvatar("Daring", "/images/agent-daring.png")')
                     .ui.small.centered.image
                         img.daring(src='/images/agent-daring.png')
                     .content
                         a.header Daring
                         .meta
                           p.descriptors Bold, Fearless, Confident
-                        br
-                        button.ui.fluid.blue.huge.button(onclick='updateAvatar("Daring", "/images/agent-daring.png")') Select
+                    button.ui.fluid.blue.huge.button Select
             .four.wide.column
-                .ui.card
+                .ui.card(onclick='updateAvatar("Valiant", "/images/agent-valiant.png")') 
                     .ui.small.centered.image
                         img.valiant(src='/images/agent-valiant.png')
                     .content
                         a.header Valiant
                         .meta
-                          p.descriptors Courageous, Heroic, Noble
-                        br
-                        button.ui.fluid.blue.huge.button(onclick='updateAvatar("Valiant", "/images/agent-valiant.png")') Select
+                          p.descriptors Courageous, Heroic, Noble &nbsp;
+                    button.ui.fluid.blue.huge.button Select
             .four.wide.column
-                .ui.card
+                .ui.card(onclick='updateAvatar("Intrepid", "/images/agent-intrepid.png")')
                     .ui.small.centered.image
                         img.intrepid(src='/images/agent-intrepid.png')
                     .content
                         a.header Intrepid
                         .meta
                           p.descriptors Clever, Astute, Resilient
-                        br
-                        button.ui.fluid.blue.huge.button(onclick='updateAvatar("Intrepid", "/images/agent-intrepid.png")') Select
+                    button.ui.fluid.blue.huge.button Select
             .four.wide.column
-                .ui.card
-                    .ui.medium.centered.image(style="min-height: 300px; justify-content: center; align-items: center; display: flex;")
+                .ui.card(onclick='updateAvatar("Dartie", "/images/agent-dartie.png")')
+                    .ui.medium.centered.image
                         img.dartie(src='/images/agent-dartie.png' style="width: 200px;")
                     .content
                         a.header Dartie
                         .meta
                           p.descriptors Playful, Energetic, Loyal
-                        br
-                        button.ui.fluid.blue.huge.button(onclick='updateAvatar("Dartie", "/images/agent-dartie.png")') Select
+                    button.ui.fluid.blue.huge.button Select
 
         //- .ui.grid.buttonGrid
         //-     .column.center.aligned

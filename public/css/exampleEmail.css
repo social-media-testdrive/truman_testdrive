@@ -12,7 +12,7 @@ i.user.circle.icon {
 
 p, h3, span {
     font-family: Arial, sans-serif;
-    font-size: 1.5rem;
+    /* font-size: 1.25rem; */
 }
 
 #subjectLine {
@@ -28,17 +28,17 @@ span.subject {
 
 
 .senderInfo {
-    font-size: 1.5rem;
+    /* font-size: 1.25rem; */
 }
 
 .senderInfo span {
-    font-size: 1.5rem;
+    /* font-size: 1.25rem; */
 }
 
 .fromEmail {
     color: #747471;
     font-weight: lighter;
-    font-size: 1.5rem;
+    /* font-size: 1.25rem; */
     margin-left: 10px;
 }
 
@@ -75,7 +75,7 @@ span.subject {
     padding: 6px;
     background: #EEEEEE;
     border: 1px solid black;
-    /* font-size: 1.5rem; */
+    /* font-size: 1.25rem; */
 }
 
 i.exclamation.circle.icon  {
@@ -85,7 +85,7 @@ i.exclamation.circle.icon  {
 span.pageNum {
     position: relative;
     top: 5px;
-    font-size: 1.5rem;
+    /* font-size: 1.25rem; */
     /* margin-top: 100px;
     background-color: red;
     padding-top: 50px; */
@@ -153,7 +153,7 @@ button.ui.circular.icon.button:hover {
     color: #C62D2D !important;
 }
 /* .content {
-    font-size: 1.5rem !important;
+    font-size: 1.25rem !important;
 } */
 
 /* introjs styles copied from ui_layout.css */
@@ -195,7 +195,7 @@ button.ui.circular.icon.button:hover {
 }
 
 .introjs-button {
-    font-size: 1.5rem;
+    /* font-size: 1.25rem; */
     background: #6BBCC7 !important;
     color: white;
     text-shadow: none;
@@ -204,7 +204,7 @@ button.ui.circular.icon.button:hover {
 }
 
 .introjs-button:hover {
-    font-size: 1.5rem;
+    /* font-size: 1.25rem; */
     background: #6BBCC7 !important;
     color: white;
     text-shadow: none;

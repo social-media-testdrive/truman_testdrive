@@ -1,8 +1,8 @@
 /* Styles for displaying quiz questions */
 .question {
     font-weight: bold;
-    line-height: 2.25rem !important;
-
+    line-height: 2rem !important;
+    font-size: 1.4rem;
 }
 
 /* .choiceList {
@@ -17,10 +17,18 @@
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
-    margin-top: 20px;
 }
 
+.htmlImage {
+    margin-bottom: 20px;
+    /* font-size: 1.25rem; */
+    line-height: 1.6; 
+}
 
+/* .correctExplanation h1,
+.incorrectExplanation h1 {
+    font-size: 1.25rem !important;
+} */
 
 .choiceList .ui.radio.checkbox{
     border-radius: 10px; 
@@ -29,6 +37,7 @@
     height: 60px;
     text-align: left;
     padding: 20px;
+    font-size: 1.5rem;
 }
 
 .choiceList .ui.radio.checkbox:hover {
@@ -110,31 +119,36 @@ input[type=checkbox] {
     font-weight: bold;
 }
 
-.ui.raised.segments,
-.ui.segment,
-label {
+.ui.basic.blue.right.labeled.icon.button.explainButtonIncorrect,
+.ui.basic.blue.right.labeled.icon.button.explainButtonCorrect {
+    font-size: 1.5rem;
+}
+
+.errorMessage {
     font-size: 1.5rem !important;
 }
+/* .ui.raised.segments,
+.ui.segment,
+label {
+    font-size: 1.25rem !important;
+} */
 
 i.apple.big.icon {
     position: absolute;
     top: 10px;
     right: 10px;
     color: #A5A6AE;
+    font-size: 2.75rem !important;
 }
 
 .ui.header.centered.aligned {
    font-weight: bolder;
+    font-size: 1.75rem;
 }
 
-#q1-quiz-partial p {
-    font-size: 1.5rem !important;
-}
-
-ui.header.centered.aligned {
-    font-weight: bolder;
-    font-size: 1.2rem !important;
-}
+/* #q1-quiz-partial p {
+    font-size: 1.25rem !important;
+} */
 
 
 .quizMessage, 
@@ -168,9 +182,33 @@ ui.header.centered.aligned {
     margin-bottom: 25px;
 }
 
+.explanationCorrectYesNo h2.ui.header,
+.explanationIncorrectYesNo h2.ui.header {
+    font-size: 1.5rem !important;
+}
+
+p.incorrectExplanation h1,
+p.correctExplanation h1 {
+    font-size: 1.5rem !important;
+}
+
+.explanationIncorrectMulti p.yourAnswers,
+.explanationCorrectMulti p.yourAnswers {
+    /* font-size: 1.25rem !important; */
+    margin-top: 10px  !important;
+    margin-bottom: 25px  !important;
+}
+
+.explanationIncorrectMulti p.theAnswers,
+.explanationCorrectMulti p.theAnswers {
+    /* font-size: 1.25rem !important; */
+}
+
 .explanationCorrectMulti h2.ui.header .icon,
-.explanationIncorrectMulti h2.ui.header .icon {
-    margin-top: -8px;
+.explanationIncorrectMulti h2.ui.header .icon,
+.explanationCorrectYesNo h2.ui.header .icon,
+.explanationIncorrectYesNo h2.ui.header .icon {
+    margin-top: -4px;
 }
 
 .checkboxChoices .ui.checkbox {
@@ -212,7 +250,7 @@ ui.header.centered.aligned {
 
 p.correctScore,
 p.incorrectScore {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: bold;
     /* margin-top: 20px;
     margin-bottom: 20px; */
@@ -225,7 +263,7 @@ p.incorrectScore {
 
 .explanationCorrectMulit h2.ui.header,
 .explanationIncorrectMulti h2.ui.header {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 0px;
 }
@@ -235,7 +273,7 @@ p.incorrectScore {
     float: right;
     /* border: none !important;  */
     box-shadow: none !important;
-    font-size: 1.5rem !important;
+    /* font-size: 1.25rem !important; */
     padding-right: 55px !important;
     margin-right: 0px !important;
     margin-right: -20px !important;

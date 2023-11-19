@@ -31,7 +31,7 @@ a:hover {
 }
 
 input {
-    font-size: 1.5rem !important;
+    font-size: 1.25rem !important;
     /* make padding half as much to look better with larger font */
     /* default padding: .67857143em 1em; */
     padding: .33928571em 0.5em !important;
@@ -137,7 +137,7 @@ h2 {
 
 #google-text {
     vertical-align: middle;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     margin-bottom: 15px;
 }
 
@@ -202,7 +202,7 @@ i.icon.large.info.circle.blue.link {
 }
 
 #subscribe-label {
-    font-size:1.25rem !important;
+    font-size:1.125rem !important;
     color: #1B1B1B;
     font-weight: bold;
 }

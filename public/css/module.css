@@ -43,8 +43,8 @@ body{
     /* margin:0;  */
     background: white;   
     /* fix so that the whole page doesn't shift on the "short" pages due to scroll bar being absent */
-    overflow-y: scroll !important;
-    font-family: 'Inter', sans-serif;
+    /* overflow-y: scroll !important; */
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #page-header{ 
@@ -53,7 +53,8 @@ body{
 }
 
 #page-footer{ 
-    min-height: 50px;
+    /* min-height: 50px; */
+    z-index: 999999;
 }
 
 /* The article fills all the space between header & footer */
@@ -65,15 +66,31 @@ body{
 /*  flex 1 to grow and shrink as necessary to fill available space in the flex container */
 #page-article{ 
     flex:1; 
+    overflow-y: scroll;
+
 
     /* padding to stop it from clipping under the header progress bar */
     /* padding-top: 20px; */
 
 }
 
-#raised-content {
-    font-size: 1.5rem;
+#page-article::-webkit-scrollbar {
+    width: 1rem;
 }
+   
+#page-article.scrollbar-hidden::-webkit-scrollbar {
+    display:none;
+}
+
+/* color of the tracking area */
+#page-article::-webkit-scrollbar-track {
+    background: white;        
+}
+
+/* color of the scroll thumb */
+/* #page-article::-webkit-scrollbar-thumb {
+    background-color: blue;   
+} */
 
 #raised-container { 
     /* background: yellow;  */
@@ -119,7 +136,7 @@ body{
 
 #module-footer {
     background: #F5F8FA;
-    padding-top: 10px;
+    /* padding-top: 10px; */
 }
 
 header {
@@ -138,10 +155,9 @@ header {
 /* inline so the bubbles like 100 learners today will show up next to it */
 #mod-title {
     display: inline-block;
-    font-size: 2.15rem;
-    font-weight: 600;
-    font-family: 'Inter', sans-serif; 
-    margin-top: 10px;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 li strong, li u {
@@ -149,8 +165,12 @@ li strong, li u {
 }
 
 #learn-title {
-    font-size: 2.25rem;
-    margin-top: 15px;
+    /* font-size: 2rem;
+    margin-top: 15px; */
+    font-size: 2rem;
+    color: #285362;
+    font-weight: bold;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 /* semantic ui ordered lists don't have dots after numbers, so I'm using the normal lists but imported the needed semantic ui styles here*/
@@ -162,11 +182,9 @@ li strong, li u {
     padding: 0em 0em;
 }
 
-/* from sementic ui, see note above in .learning-objectives comment */
-li {
+/* li {
     display: list-item;
     table-layout: fixed;
-    /* list-style-type: none; */
     list-style-position: outside;
     padding: 0.21428571em 0em;
     line-height: 1.14285714em;
@@ -174,10 +192,9 @@ li {
 
 
 .ui.bulleted.list .item {
-    font-size: 1.5rem !important;
-    /* A line height of 1.5 times the font size is a good place to start from */
-    line-height: 2.25rem !important;
-}
+    font-size: 1.25rem;
+    line-height: 1.6rem;
+} */
 
 /* .learning-objectives li { 
     margin-top: 20px;
@@ -347,9 +364,9 @@ u {
     width: 100%;
 }
 
-.chat-container p {
-    font-size: 1.5rem;
-}
+/* .chat-container p {
+    font-size: 1.25rem;
+} */
 
 #encounter_container,
 #final_container {
@@ -478,7 +495,7 @@ i.big.unlock.icon {
 
 
 .limit {
-    font-size: 1.5rem;
+    /* font-size: 1.25rem; */
     position: relative;
     padding-left: 9rem; 
     padding-right: 9rem;
@@ -734,6 +751,7 @@ i.big.unlock.icon {
   .smartphone .content {
     width: 360px;
     height: 640px;
+    font-size: 1.25rem;
     /* background: white; */
   }
   
@@ -824,9 +842,9 @@ i.big.unlock.icon {
     opacity: 100% !important;
 }
 
-.ui.vertical.segment {
-    font-size: 1.5rem;
-}
+/* .ui.vertical.segment {
+    font-size: 1.25rem;
+} */
 
 .ui.small.progress {
     margin-bottom: 0px;

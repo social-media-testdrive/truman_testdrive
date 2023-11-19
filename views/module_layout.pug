@@ -58,6 +58,7 @@ html
     link(rel='stylesheet', href='/css/progress.css')  
     link(rel='stylesheet', href='/css/avatar.css') 
     link(rel='stylesheet', href='/css/nav_buttons.css') 
+    link(rel='stylesheet', href='/css/font-size.css')
     //- Google Fonts: Inter (for headers) and Armata (for body text)
     link(rel='preconnect' href='https://fonts.googleapis.com')
     link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
@@ -71,58 +72,57 @@ html
 
 
   body
-    .ui.left.vertical.inverted.menu.sidebar
-      .item
-        h3
-          i.map.marked.icon
-          |  Navigate Course
-      a.item(href="/intro/identity")
-        i.info.icon
-        |  Intro 
-      a.item(href="/challenge/identity")
-        i.puzzle.piece.icon
-        |  Challenge
-      a.item(href="/learn/submod/identity")
-        i.book.open.icon
-        |  Chapter 1: Concepts
-      a.item(href="/learn/submod2/identity")
-        i.wrench.icon
-        |  Chapter 2: Techniques
-      a.item(href="/learn/submod3/identity")
-        i.shield.alternate.icon
-        |  Chapter 3: Protection
-      a.item(href="/explore/identity")
-        i.gamepad.icon
-        |  Practice
-      a.item(href="/evaluate/identity")
-        i.edit.icon
-        |  Evaluate
-      a.item(href="/reflect/identity")
-        i.lightbulb.icon
-        |  Reflect
-    .ui.pusher
-      //- Flexbox layout 
-      #page-header
-        block header
-          include partials/module_header
+    //- Flexbox layout 
+    #page-header
+      block header
+        include partials/module_header
 
-        //- progress bar stuff
-        //-   include partials/ui_header
-          #page-article(style="overflow-y: scroll !important;")
-      #page-article
-        #sidebar-here(style="min-height: 73.5vh;")
-          block content
-      //- .loading-screen-container.hidden(id="loadingScreen") 
-      //-     .ui.active.inverted.dimmer
-      //-         .ui.active.blue.large.elastic.loader 
-      //-         h1 Loading...
-      #page-footer
-        include partials/module_footer
-          block footer
+      //- progress bar stuff
+      //-   include partials/ui_header
+        #page-article(style="overflow-y: scroll !important;")
+    #page-article.pushable
+      .ui.left.vertical.inverted.menu.sidebar
+        .item
+          h3
+            i.map.marked.icon
+            |  Navigate Course
+        a.item(href="/intro/identity")
+          i.info.icon
+          |  Intro 
+        a.item(href="/challenge/identity")
+          i.puzzle.piece.icon
+          |  Challenge
+        a.item(href="/learn/submod/identity")
+          i.book.open.icon
+          |  Chapter 1: Concepts
+        a.item(href="/learn/submod2/identity")
+          i.wrench.icon
+          |  Chapter 2: Techniques
+        a.item(href="/learn/submod3/identity")
+          i.shield.alternate.icon
+          |  Chapter 3: Protection
+        a.item(href="/explore/identity")
+          i.gamepad.icon
+          |  Practice
+        a.item(href="/evaluate/identity")
+          i.edit.icon
+          |  Evaluate
+        a.item(href="/reflect/identity")
+          i.lightbulb.icon
+          |  Reflect
+      .pusher
+        block content
+    //- .loading-screen-container.hidden(id="loadingScreen") 
+    //-     .ui.active.inverted.dimmer
+    //-         .ui.active.blue.large.elastic.loader 
+    //-         h1 Loading...
+    #page-footer
+      include partials/module_footer
+        block footer
 
-        
-          //- navigation buttons
-          //- include partials/ui_footer
+      
+        //- navigation buttons
+        //- include partials/ui_footer
     
     if process.env.instanceType == 'test'
       script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js')
@@ -175,11 +175,13 @@ html
       $(document).ready(function() {
         $('.ui.sidebar')
           .sidebar({
-            context: $('#sidebar-here'),
+            context: $('#page-article'),
             transition: 'overlay',
-            dimPage: false,
+            mobileTransition: 'overlay',
+            //- dimPage: false,
             closable: false,
             exclusive: true,
+            returnScroll: true,
           })
           .sidebar('attach events', '.hamburger.icon')
         ;
@@ -188,7 +190,18 @@ html
             $('.ui.sidebar').sidebar('toggle');
             // Change the icon class between 'hamburger' and 'close' when clicked
             $(this).toggleClass('hamburger close');
+
+          // If the sidebar is being opened, scroll to the top and lock scrolling
+          if (!$('.ui.sidebar').hasClass('visible')) {
+              $('#page-article').scrollTop(0).css('overflow-y', 'hidden');
+          } else {
+              // If the sidebar is being closed, unlock scrolling
+              $('#page-article').css('overflow-y', 'scroll');
+          }
+
         });
+
+
 
       });
 

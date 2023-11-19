@@ -20,17 +20,17 @@ i.icon.hidden {
 
 .content.red {
     color: red;
-    font-size: 1.25rem !important;
+    /* font-size: 1.25rem !important; */
 }
 
 .content.green {
     color: green;
-    font-size: 1.25rem !important;
+    /* font-size: 1.25rem !important; */
 }
 
-#scoreBannerHeader {
-    font-size: 1.15rem !important;
-}
+/* #scoreBannerHeader {
+    font-size: 1.25rem !important;
+} */
 
 .explanation {
     margin: 5px;

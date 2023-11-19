@@ -1,5 +1,5 @@
 .ui.popup {
-    font-size: 1.25rem;
+    /* font-size: 1.25rem; */
     min-width: 500px;
     font-family: Arial, Helvetica, sans-serif; 
     line-height: 1.5; 
@@ -37,7 +37,7 @@ i.user.circle.icon {
 
 p, h3, span {
     font-family: Arial, sans-serif;
-    font-size: 1.5rem;
+    /* font-size: 1.25rem; */
 }
 
 #subjectLine {
@@ -103,7 +103,7 @@ span.subject {
 span.pageNum {
     position: relative;
     top: 5px;
-    font-size: 1.5rem;
+    /* font-size: 1.25rem; */
     /* margin-top: 100px;
     background-color: red;
     padding-top: 50px; */
@@ -162,7 +162,7 @@ button.ui.circular.icon.button:hover {
     border: 1px solid #444746;
     /* margin-top: 20px; */
     margin-left: 100px;
-    font-size: 1.25rem;
+    /* font-size: 1.25rem; */
     font-weight: bold;
 }
 
@@ -192,9 +192,9 @@ button.ui.circular.icon.button:hover {
 .red.exclamation.triangle.icon {
     color: #C62D2D !important;
 }
-.content {
-    font-size: 1.5rem !important;
-}
+/* .content {
+    font-size: 1.25rem !important;
+} */
 
 
 
@@ -252,12 +252,12 @@ button.ui.circular.icon.button:hover {
 
 .font {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.5rem;
+    /* font-size: 1.25rem; */
 }
 
 #iphone-email .iphone-header{
     color: #fd0068;
-    font-size: 2.25rem;
+    font-size: 2rem;
     font-weight: 800;
 }
 
@@ -301,7 +301,7 @@ button.ui.circular.icon.button:hover {
 /* ----- (TUTORIAL) ------ */
 
 .introjs-button {
-    font-size: 1.5rem;
+    /* font-size: 1.25rem; */
     background: #6BBCC7;
     color: white;
     text-shadow: none;
@@ -310,7 +310,7 @@ button.ui.circular.icon.button:hover {
 }
 
 .introjs-button:hover {
-    font-size: 1.5rem;
+    /* font-size: 1.25rem; */
     background: #6BBCC7;
     color: white;
     text-shadow: none;

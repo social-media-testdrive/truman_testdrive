@@ -26,15 +26,15 @@
     font-size: 2rem;
     font-family: 'Armata', sans-serif;
 }
-
+/* 
 #profile-page .ui.segment.padded, 
 #profile-page label, 
 #profile-page p, 
 #profile-page span, 
 #profile-page div {
-    font-size: 1.5rem !important;
+    font-size: 1.25rem !important;
     font-family: 'Armata', sans-serif;
-}
+} */
 
 .ui-flash .ui.negative.fluid.large.message,
 .ui-flash .ui.warning.fluid.large.message,

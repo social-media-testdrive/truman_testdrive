@@ -4,7 +4,9 @@ body{
     margin:0; 
     background: white;   
     /* overflow-y: hidden !important; */
-    font-family: 'Inter', sans-serif;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.6;
 }
 
 #raised-container {
@@ -39,7 +41,7 @@ body{
 #header-title {
     display: inline-block;
     font-size: 2.25rem;
-    font-family: 'Inter', sans-serif; 
+    font-family: 'Titillium Web', sans-serif;
 }
 
 #theft-progress {
@@ -62,4 +64,18 @@ body{
 #block:hover::before,
 #delete:hover::before {
     display: none;
+}
+
+@media screen and (max-width: 767px) {
+    #header-title {
+        font-size: 2rem;
+    }
+
+    #learn-title {
+        font-size: 1.25rem;
+    }
+
+    #mod-title {
+        font-size: 2rem;
+    }
 }

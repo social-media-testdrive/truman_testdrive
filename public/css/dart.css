@@ -1,4 +1,4 @@
-/* Set font size for all page content to 1.5rem, ~23px, which is what the National Institute on Aging uses for their page's body text */
+/* Set font size for all page content to 1.125rem, ~23px, which is what the National Institute on Aging uses for their page's body text */
 html {
     font-size: 1rem;
 }
@@ -13,7 +13,8 @@ footer {
 .ui-flash .ui.warning.fluid.large.message,
 .ui-flash .ui.positive.fluid.large.message {
     position:relative;
-    font-size: 1.5rem; 
+    /* font-size: 1.25rem; 
+    line-height: 1.6;  */
     margin-top: 50px;
     /* margin-bottom:-60px;  */
     z-index:1000;
@@ -31,13 +32,14 @@ header a.item {
 #page-header header.ui.borderless.menu.tablet-and-computer .ui.container .right.menu .item.dart-blue {
     color: #3757A6; 
     font-size: 1.5rem;
+    padding: 1rem;
 }
 
 /* very specific to override formantic ui  .ui.menu .item color attribute */
 #page-header header.ui.borderless.menu.tablet-and-computer .ui.container .right.menu .item.dart-gray {
     color: #7D7C7C; 
     font-size: 1.5rem;
-
+    padding: 1rem;
 }
 
 .ui.container#-raised-container {
@@ -47,6 +49,8 @@ header a.item {
 #raised-container {
     /* background-color: white; */
     margin-top: 50px;
+    /* font-size: 1.25rem; */
+    line-height: 1.6; 
 }
 
 /* .short-page-margin {
@@ -58,7 +62,8 @@ header a.item {
 } */
 
 #raised-content {
-    font-size: 1.5rem;
+    /* font-size: 1.25rem; */
+    line-height: 1.6; 
     /* width: 800px; */
     /* width: 55vw; */
     /* margin: 0 auto; */
@@ -79,6 +84,15 @@ header a.item {
     margin: 0 auto;
 }
 
+#mod-title {
+    display: inline-block;
+    font-size: 2rem;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+#feature-container .icon {
+    margin-top: 5px;
+}
 /* Adjust text raised segment text padding */
 @media (max-width: 1200px) {
     .limit {
@@ -106,6 +120,10 @@ header a.item {
         padding-left: 0rem; 
         padding-right: 0rem;
     }
+
+    #feature-container .icon {
+        display: none;
+    }
 }
 
 
@@ -114,10 +132,10 @@ header a.item {
 body{ 
     min-height: 100vh; 
     margin:0; 
-    background:  #F5F8FA;   
+    /* background:  #F5F8FA;    */
+    background: #F9FCFF;
     /* fix so that the whole page doesn't shift on the "short" pages due to scroll bar being absent */
     overflow-y: scroll !important;
-    /* font-family: 'Inter', sans-serif; */
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -144,6 +162,9 @@ body{
 }
 
 
+#logo .item {
+    padding: 0px;
+}
 
 img.ui.small.image.dart-logo {
     padding: 0 !important;
