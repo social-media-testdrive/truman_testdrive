@@ -9,11 +9,11 @@ body {
 
 }
 
-#header-title {
+/* #header-title {
     display: inline-block;
     font-size: 2.125rem;
     font-family: 'Titillium Web', sans-serif;
-}
+} */
 
 #page-header{ 
     min-height:50px;

@@ -3,35 +3,87 @@ extends ../ui_layout
 block content
 
   .ui.container#raised-container
-    .ui.raised.segment
+    .ui.basic.segment
       #raised-content
         //- h1.ui.header.large#mod-title
         //-   .content
         //-     | Identity Theft
-        .limit
-            .ui.large.pointing.below.label#speechBubble(style="float: none; width: 100%;")
-                p#speechText(style="text-align: left") 
-                    | Hello #{user.name}, I am Agent #{user.avatar}!           
-                    | ! Thank you for choosing me to join you on your learning journey! I am here to offer support as we progress through the modules together.
+        .ui.grid.computer.only.tablet.only 
+          .row
+            .twelve.wide.column(style="margin-top: -25px;")
+              .ui.large.label.blue-pointing#speechBubble(style="float: none; width: 100%;")
+                  p#speechText(style="text-align: left") 
+                    if user.name === 'Guest'
+                      | Hello, I am Agent #{user.avatar}!        
+                    else 
+                      | Hello #{user.name}, I am Agent #{user.avatar}!   
+                    | Together, we'll explore the tricks and traps used by scammers, sharpening your skills to outsmart them.
                     br
                     br
-                    | Before we start, I want to be clear that <strong>I am an AI chat-bot, and not a human being.</strong> However, I will do my absolute best to help you with what you need assistance on! 
-                    br
-                    br
-                    | DART uses a number of features designed to make our website easier for everyone to navigate and read. Checkout the 
-                    a(href='/accessibility')  Accessibilty page 
-                    | to learn more about this!
-            img.dart_image.ui.small.image(src=user.avatarImg style="margin: 0 auto;")
-        br
-        br
-    .ui.container#nav-container
-      .div#nav-menu
-        button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/selection';") 
-          i.arrow.left.icon 
-          | Back
-        button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/';")
-          | Let's Begin
-          i.arrow.right.icon
+                    //- | Before we start, I want to be clear that <strong>I am an AI chat-bot, and not a human being.</strong> However, I will do my absolute best to help you with what you need assistance on!
+                    | Knowledge is your best defense, so let's get started learning. Click the start button below! 
+                    //- br
+                    //- br
+                    //- | DART uses a number of features designed to make our website easier for everyone to navigate and read. Checkout the 
+                    //- a(href='/accessibility')  Accessibilty page 
+                    //- | to learn more about this!
+              .ui.centered.grid(style="margin-top: 40px;")
+                //- button.ui.massive.blue.button(onclick="location.href='/';")
+                //-   | Start
+                //-   i.arrow.right.icon
+              br
+              br
+
+              .ui.container#nav-container
+                .div#nav-menu(style="z-index:9999999999;")
+                  button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/selection';") 
+                    i.arrow.left.icon 
+                    | Back
+                  button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/';")
+                    | Start
+                    i.arrow.right.icon
+            .four.wide.column
+              br
+              br
+              br
+              br
+              img.dart_image.ui.medium.image(src=user.avatarImg style="margin: 0 auto; width: 200%;")
+        .ui.grid.mobile.only
+          .ui.large.pointing.below.label#speechBubble(style="float: none; width: 100%;")
+              p#speechText(style="font-size: 1.5rem; text-align: left") 
+                if user.name === 'Guest'
+                  | Hello, I am Agent #{user.avatar}!        
+                else 
+                  | Hello #{user.name}, I am Agent #{user.avatar}!   
+                | Together, we'll explore the tricks and traps used by scammers, sharpening your skills to outsmart them.
+                br
+                br
+                //- | Before we start, I want to be clear that <strong>I am an AI chat-bot, and not a human being.</strong> However, I will do my absolute best to help you with what you need assistance on!
+                | Knowledge is your best defense, so let's get started learning. Click the start button below! 
+          img.dart_image.ui.massive.image(src=user.avatarImg style="margin: 0 auto;")
+          br
+          br
+      br
+      .ui.grid.mobile.only(style="z-index:999999;")
+        .ui.container#nav-container
+          .div#nav-menu
+            button.ui.massive.basic.button.left.floated#backButton(onclick="location.href='/selection';") 
+              i.arrow.left.icon 
+              | Back
+            button.ui.massive.blue.button.right.floated#nextButton(onclick="location.href='/';")
+              | Start
+              i.arrow.right.icon
+      br
+
+          
+          //- .ui.container#nav-container
+          //-   .div#nav-menu
+          //-     button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='/selection';") 
+          //-       i.arrow.left.icon 
+          //-       | Back
+          //-     button.ui.huge.blue.button.right.floated#nextButton(onclick="location.href='/';")
+          //-       | Let's Begin
+          //-       i.arrow.right.icon
 
 
     //- .div
@@ -45,37 +97,6 @@ block content
     //-     | Take the pre-quiz
     //-     i.arrow.right.icon
 
-block scripts
-  script.
-    var voiceoverMappings = {
-      '.showLearnSectionButton': {
-        "initialDelay": 700,
-        "delay": 500,
-        "files": ['CUSML.6.1.1.mp3', 'CUSML.6.1.2.mp3']
-      },
-      '.voiceover_keyTerm1': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.6.2.1.mp3']
-      },
-      '.voiceover_keyTerm2': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.6.2.2.mp3']
-      },
-      '.voiceover_keyTerm3': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.6.2.3.mp3']
-      }
-    };
-  script(src='/module_js/voiceover.js')
-  script(src="/module_js/base_start.js")
-  
-block styles
-  //- link(rel='stylesheet', href='/css/module.css') 
-
- 
  
 
 

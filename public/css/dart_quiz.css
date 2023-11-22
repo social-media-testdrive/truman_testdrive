@@ -329,11 +329,11 @@ p.incorrectScore {
 .resultText {
     font-size: 2rem;
     font-weight: bold;
-    width: 50%;
-    line-height: 2.5rem;
+    /* width: 50%;
+    line-height: 1.6; */
     margin: 0 auto;
     margin-top: 30px;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
 }
 
 img#dart_image1.ui.medium.image {

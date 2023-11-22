@@ -164,14 +164,12 @@ li strong, li u {
     font-weight: 600;
 }
 
-#learn-title {
-    /* font-size: 2rem;
-    margin-top: 15px; */
+/* #learn-title {
     font-size: 2rem;
     color: #285362;
     font-weight: bold;
     font-family: 'Titillium Web', sans-serif;
-}
+} */
 
 /* semantic ui ordered lists don't have dots after numbers, so I'm using the normal lists but imported the needed semantic ui styles here*/
 .learning-objectives {

@@ -2,6 +2,11 @@ body {
     background-color: #F9FCFF;
 }
 
+.ui.grid>.row {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
 .four.wide.column .ui.card {
     max-height: 550px;
 }

@@ -2,9 +2,13 @@
 
 .blue.message {
     background: #E1F2F4 !important;
-    color: black !important;
+    color: black;
     /* color: #5A6162 !important; */
     /* box-shadow: #6BBCC7 0px 0px 0px 1px inset, transparent 0px 0px 0px 0px !important; */
+}
+
+.ui.label {
+    color: #3B4545;
 }
 
 .blue.message .header, i.exclamation.triangle.icon, i.info.circle.icon,  i.pen.icon {
@@ -24,27 +28,41 @@
     float: left;
     width:50%;
     background-color: #E1F2F4;
-    border: 1px solid #6BBCC7;
+    border: 3px solid #6BBCC7;
+    border-radius: 15px; /* Rounded corners, can be adjusted */
 }
 
 #speechText {
-    padding: 0px; 
-    text-align: center; 
-    margin: 0;
-    font-size: 1.2rem;
     font-weight: normal;
+    /* padding: 0; 
+    text-align: center; 
+    margin: 0; */
+    /* font-size: 1.2rem;
+    font-weight: normal; */
 }
 
-/* .avatar {
-    width: 50px;
-    height: 50px;
-    overflow: hidden;
+.blue-pointing {
     position: relative;
-  }
+}
 
-.avatar img {
-    object-fit: none;
-    object-position: top center;
-    width: 100%;
-    height: 100%;
-} */
+.blue-pointing::after {
+    content: "";
+    position: absolute;
+    right: 0; /* Align to the right */
+    bottom: -125px; /* Align to the bottom */
+    z-index: 999;
+    width: 125px; /* Width of the SVG */
+    height: 125px; /* Height of the SVG */
+    background-image: url('/images/speech-pointer.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* pointer speech bubble on mobile */
+.ui[class*="bottom pointing"].label::before, .ui[class*="pointing below"].label::before {
+    border-width: 0 3px 3px 0;
+    right: auto;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    top: 100.43%;
+    left: 50%;
+}

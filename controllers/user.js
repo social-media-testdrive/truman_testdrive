@@ -236,32 +236,32 @@ exports.postUpdateProfile = async (req, res, next) => {
  * POST /account/newsletter
  * Update current newsletter consent value.
  */
-exports.postUpdateNewsletter = async (req, res, next) => {
-  try {
-    const user = await User.findOne({ email: req.user.email});
+// exports.postUpdateNewsletter = async (req, res, next) => {
+//   try {
+//     const user = await User.findOne({ email: req.user.email});
     
-    if (!user) {
-      // Handle the case where the user doesn't exist
-      req.flash('errors', { msg: 'User not found' });
-      return res.redirect('/account');
-    }
+//     if (!user) {
+//       // Handle the case where the user doesn't exist
+//       req.flash('errors', { msg: 'User not found' });
+//       return res.redirect('/account');
+//     }
 
-    user.newsletterConsent = req.body.newsletterConsent;
-    await user.save();
+//     user.newsletterConsent = req.body.newsletterConsent;
+//     await user.save();
 
-    // update the user in the session. Then flash message / redirect
-    req.login(user, (err) => {
-      if (err) {
-        return next(err);
-      }
+//     // update the user in the session. Then flash message / redirect
+//     req.login(user, (err) => {
+//       if (err) {
+//         return next(err);
+//       }
 
-      req.flash('success', { msg: 'Newsletter subscription has been changed.' });
-      res.redirect('/account');
-    });
-  } catch (err) {
-    next(err);
-  }
-};
+//       req.flash('success', { msg: 'Newsletter subscription has been changed.' });
+//       res.redirect('/account');
+//     });
+//   } catch (err) {
+//     next(err);
+//   }
+// };
 
 /**
  * POST /account/password

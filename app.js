@@ -187,7 +187,7 @@ app.get('/account/verify/:token', passportConfig.isAuthenticated, userController
 app.get('/account', passportConfig.isAuthenticated, userController.getAccount);
 app.post('/account/profile', passportConfig.isAuthenticated, userController.postUpdateProfile);
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
-app.post('/account/newsletter', passportConfig.isAuthenticated, userController.postUpdateNewsletter);
+// app.post('/account/newsletter', passportConfig.isAuthenticated, userController.postUpdateNewsletter);
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
 

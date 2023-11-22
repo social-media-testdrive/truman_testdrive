@@ -1,6 +1,7 @@
 // Sources referenced: https://codepen.io/boopalan002/pen/yKZVGa and https://codepen.io/harunpehlivan/pen/bGeOPye and https://www.sitepoint.com/simple-javascript-quiz/
 let currentQuestion = 1;
 let pastAttempts = false;
+let revisitShowFooter = false;
 let hideTryAgainNext = false;
 let viewingAnswer = false;
 let correctAnswers = 0;
@@ -65,14 +66,14 @@ $(document).ready(function() {
                 $(".explanationIncorrectYesNo").hide();
                 $(".quizMessage").hide();
                 $(".htmlImage").hide();
-                $(".preButton").css('visibility', 'hidden');
+                // $(".preButton").css('visibility', 'hidden');
                 $(".nextButton").css('visibility', 'hidden');
         
                 // console.log("We have previous attempts!");
                 pastAttempts = true;
-                hideTryAgainNext = true;
-        
-        
+                revisitShowFooter = true;
+                // hideTryAgainNext = true;
+    
         
                 cleanScore = userDBAttempts.correctAnswers;
                 correctAnswers = userDBAttempts.correctAnswers;
@@ -117,7 +118,9 @@ $(document).ready(function() {
 
 
 
-	$(this).find(".preButton").on("click", function () {		
+	$(this).find(".preButton").on("click", function () {
+        $("#page-article").scrollTop(0);
+		
         if (!quizOver) {
 			if(currentQuestion == 0) { return false; }
 	
@@ -134,6 +137,7 @@ $(document).ready(function() {
             // quiz is over and clicked the previous button (which is now the try again button)
             attempts++;
             viewingAnswer = false;
+            revisitShowFooter = false;
             resetQuiz();
 		}
 
@@ -148,6 +152,13 @@ $(document).ready(function() {
 
 	// On clicking next, display the next question
     $(this).find(".nextButton").on("click", function () {
+        console.log("currentQuestion: " + currentQuestion);
+        console.log("numQuestions: " + numQuestions);
+        console.log("viewingAnswer: " + viewingAnswer);
+        console.log("pastAttempts: " + pastAttempts);
+
+        $("#page-article").scrollTop(0);
+
         if (!quizOver) {
             // let val = $("input[type='radio']:checked").val();
             // console.log("Val: " + val);
@@ -261,6 +272,11 @@ $(document).ready(function() {
 				} 
 				else 
 				{
+                    if(revisitShowFooter) {
+                        // show bottom footer hide next / quiz submit button
+                        $(".nextButton").css('visibility', 'hidden');
+                        $("#module-footer").show();
+                    }
                     $(".choiceList").empty();
                     $(".fourChoices").empty();
                     $(".checkboxChoices").empty();
@@ -276,7 +292,7 @@ $(document).ready(function() {
                     $(".nextButton").text("Next");
                     // if return to results when revisiting quiz hide the try again and next buttons on results page
                     if(hideTryAgainNext === true) {
-                        $(".preButton").css('visibility', 'hidden');
+                        // $(".preButton").css('visibility', 'hidden');
                         $(".nextButton").css('visibility', 'hidden');    
                     }
 					// $(".nextButton").text("View Answers");
@@ -284,7 +300,19 @@ $(document).ready(function() {
 					return false;
 				}
 			}
-					
+				
+            //  on last question, show page footer and hide next button
+            if(currentQuestion === numQuestions && viewingAnswer === true) {
+                console.log("IN HERREEEE BEYONCE 1") 
+                viewingAnswer = false;
+                // show bottom footer hide next / quiz submit button
+                if(pastAttempts === true) {
+                    console.log("IN HERREEEE BEYONCE 2") 
+
+                    $(".nextButton").css('visibility', 'hidden');
+                    $("#module-footer").show();
+                }        
+            }
 		}	
 		else { // quiz is over and clicked the next button (which now displays 'Next' instead of 'Next Question")
             // save info into database
@@ -293,7 +321,7 @@ $(document).ready(function() {
             // let scoreTotal = 40;
             // let selectedAnswer = ['yes', 'no', 'yes', 'no', [1,2,3,4]];
             // let questionScores = [0, 0, 1, 1, 0];
-
+            
             postModuleProgress(modID, page, nextLink, progress, current_percent);
             console.log("Posting quiz attempt to database!");
             console.log("ScoreTotal is: " + scoreTotal);
@@ -347,7 +375,7 @@ $(document).ready(function() {
 
         // if past attempt and click view answers we need to make previous and next buttons visible again
         if(pastAttempts === true) {
-            $(".preButton").css('visibility', 'visible');
+            // $(".preButton").css('visibility', 'visible');
             $(".nextButton").css('visibility', 'visible');
         }
 
@@ -814,7 +842,7 @@ function displayScore() {
 
     $('.circleResults').circleProgress({
         value: scoreTotal,
-        size: 300,
+        size: 200,
         fill: "#32C38B"
         }).on('circle-animation-progress', function(event, progress) {
         $(this).find('strong').html(Math.round(100 * scoreTotal) + '<i>%</i>');
@@ -842,6 +870,9 @@ function resetQuiz() {
     $(".preButton").text("Previous Question");
     $(".nextButton").text("Next Question");
     $(".htmlImage").show();
+    $(".nextButton").css('visibility', 'visible');
+    $("#module-footer").hide();
+
 
     currentQuestion = 1;
     correctAnswers = 0;

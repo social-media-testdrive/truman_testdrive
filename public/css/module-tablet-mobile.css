@@ -38,11 +38,11 @@ body{
 } */
 
 
-#header-title {
+/* #header-title {
     display: inline-block;
     font-size: 2.25rem;
     font-family: 'Titillium Web', sans-serif;
-}
+} */
 
 #theft-progress {
     position: absolute; 
@@ -66,7 +66,7 @@ body{
     display: none;
 }
 
-@media screen and (max-width: 767px) {
+/* @media screen and (max-width: 767px) {
     #header-title {
         font-size: 2rem;
     }
@@ -78,4 +78,4 @@ body{
     #mod-title {
         font-size: 2rem;
     }
-}
+} */

@@ -173,32 +173,31 @@ html
     script(src='/video-js/video.min.js')
     script.
       $(document).ready(function() {
+        let sidebarOpen = false;
+
         $('.ui.sidebar')
           .sidebar({
             context: $('#page-article'),
             transition: 'overlay',
             mobileTransition: 'overlay',
             //- dimPage: false,
-            closable: false,
+            //- closable: false,
             exclusive: true,
             returnScroll: true,
+            onShow: function() {
+              $('#page-article').css('overflow-y', 'hidden');
+              $('.hamburger.icon').removeClass('hamburger').addClass('close');
+            },
+            onHide: function() {
+              $('.close.icon').removeClass('close').addClass('hamburger');
+              $('#page-article').css('overflow-y', 'scroll');
+            }
           })
           .sidebar('attach events', '.hamburger.icon')
         ;
 
         $('.hamburger.icon').click(function() {
-            $('.ui.sidebar').sidebar('toggle');
-            // Change the icon class between 'hamburger' and 'close' when clicked
-            $(this).toggleClass('hamburger close');
-
-          // If the sidebar is being opened, scroll to the top and lock scrolling
-          if (!$('.ui.sidebar').hasClass('visible')) {
-              $('#page-article').scrollTop(0).css('overflow-y', 'hidden');
-          } else {
-              // If the sidebar is being closed, unlock scrolling
-              $('#page-article').css('overflow-y', 'scroll');
-          }
-
+          $('#page-article').scrollTop(0);
         });
 
 

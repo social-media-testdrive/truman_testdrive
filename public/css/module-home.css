@@ -9,14 +9,6 @@
     font-family: 'Titillium Web', sans-serif;
 }
 
-#learn-title {
-    /* font-size: 2rem;
-    margin-top: 15px; */
-    font-size: 2rem;
-    font-weight: bold;
-    font-family: 'Titillium Web', sans-serif;
-    /* margin-top: 10px; */
-}
 
 /* semantic ui ordered lists don't have dots after numbers, so I'm using the normal lists but imported the needed semantic ui styles here*/
 .learning-objectives {

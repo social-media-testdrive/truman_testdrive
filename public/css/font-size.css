@@ -10,6 +10,28 @@ p {
     line-height: 1.5;
 }
 
+#header-title {
+    display: inline-block;
+    font-size: 2rem;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+#learn-title {
+    font-size: 2rem;
+    color: #285362;
+    font-weight: bold;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+#mod-title {
+    font-size: 2rem;
+}
+
+#profile-page h3 {
+    font-size: 2rem;
+    font-family: 'Titillium Web', sans-serif;
+    color: #285362;
+}
 
 /* Tablet devices */
 @media (max-width: 900px) {
