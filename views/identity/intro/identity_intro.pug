@@ -1,95 +1,159 @@
 extends ../../ui_layout
 
 block content
+  .ui.container
+    br
+    .ui.breadcrumb
+      a.section(href="/") Home
+      i.right.angle.icon.divider
+      a.section(href="/courses") Courses
+      i.right.angle.icon.divider
+      .active.section Identity Theft
+    br
+    h1.ui.header.red#mod-title Identity Theft
+    .ui.top.attached.fluid.segment(style="padding:0;margin:0;border: 4px solid rgba(34, 36, 38, 0.6);background: #e7e7e88b")
+      .ui.grid 
+        .row
+          .eight.wide.column(style="padding: 1.25rem; padding-left: 2rem;")
+            strong CLASSIFICATION: 
+            | TOP SECRET 
+          .eight.wide.column(style="padding: 1.25rem; padding-left: 1rem; border-left: 4px solid rgba(34, 36, 38, 0.6);") 
+            strong CLASSIFIED BY: 
+            | DART HQ
+      //- table.ui.celled.table
+      //-   thead
+      //-     tr
+      //-       th 
+      //-         | CLEARANCE: 
+      //-         span.no-bold TOP SECRET 
+      //-       th(style="border-left: 3px solid rgba(34, 36, 38, 0.6);")
+      //-         | CLASSIFIED BY: 
+      //-         span.no-bold DART HQ
+    .ui.attached.segment(style="margin-top:-3px;margin-left:0.05px;border: 4px solid rgba(34, 36, 38, 0.6);")
+      .ui.grid 
+        .row 
+          .twelve.wide.column
+            p The Johnsons urgently need your help! They've been targeted by SCAMM, falling victim to a sneaky identity theft scheme.
+            p Uncover how scammers steal personal information to impersonate their targets. You'll learn how these scams work, how to spot them, and how to protect yourself.
+            button.ui.huge.blue.button(onclick="window.location='/challenge/identity';") Start Course
+          .four.wide.column 
+            img(src="/images/johnson.png")
 
-  .ui.container#raised-container
-    .ui.raised.segment
-      #raised-content
-        h1.ui.header.large#mod-title
-          .content
-            | Identity Theft
-        div.bubble-container
-          div.bubbleText
-            | 137 learners today
-            
-        //- div.bubbleText
-        //-   | #1 most popular module
-        //- img.ui.centered.fluid.image(src='/images/identity_banner.png' style='margin-top: 0.5em;')
-        .limit
-          .ui.container#banner_pic
-            .banner
-              img(src="/images/identity-theft-banner.jpg")
-        //- p(style="font-size: 16px") Font 16px
-        //- p(style="font-size: 19px") Font 19px
-        //- p(style="font-size: 21px") Font 21px
-        //- p(style="font-size: 1.5rem") Font 1.5rem
-        //- p(style="font-size: 23.36px") Font 23.36px
-        //- img(src="/images/identity-theft-banner.jpg")
-        .limit
-          p#welcome Identity theft is a serious problem that affects millions of people every year. In this module, you will learn:
-          ol.learning-objectives
-            li What is Identity Theft and the consequences of it?
-            li What techniques do scammers use to steal your personal information and how can you recognize these techniques?
-            li How to protect your identity information?
-          //- p After learning the three essential topics, you can continue to <strong>explore</strong> the topics further and take a <strong>post-quiz</strong> to test your understanding and retention of the concepts you have learned.
-          p The following diagram outlines the steps in this module:
-          #module-steps(style="max-width:100%;max-height:100%;text-align:center;")
-            .progress-wrapper
-              .progress-item
-                .step-counter
-                  svg(xmlns='http://www.w3.org/2000/svg' fill='currentcolor' height='48' viewbox='0 -960 960 960' width='48')#challenge-icon
-                    path(d='M543-340q16.595 0 28.798-12.202Q584-364.405 584-381t-12.202-28.798Q559.595-422 543-422t-28.798 12.202Q502-397.595 502-381t12.202 28.798Q526.405-340 543-340Zm-25-126h47q2-29 8.5-43t32.5-39q27-26 37.5-45.395Q654-612.79 654-639q0-45.882-31.5-74.941Q591-743 540-743q-38 0-68 20.5T428-665l45 19q11-25 27.5-38t39.5-13q29.778 0 48.389 17Q607-663 607-637q0 20-9 35t-32 32q-32 29-40 46.5t-8 57.5ZM260-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h560q24 0 42 18t18 42v560q0 24-18 42t-42 18H260Zm0-60h560v-560H260v560ZM140-80q-24 0-42-18t-18-42v-620h60v620h620v60H140Zm120-740v560-560Z')
-                //- i.bordered.inverted.user.secret.icon#challenge
-                .step-name Challenge
-              .progress-item
-                .step-counter
-                  svg(xmlns='http://www.w3.org/2000/svg' fill='currentcolor' height='48' viewbox='0 -960 960 960' width='48')#learn-icon
-                    path(d='M480-60q-78-69-170.5-106T120-203v-429q94 0 186.5 43T480-469q81-77 173.5-120T840-632v429q-97 0-189.5 37T480-60Zm0-77q71-51 146.5-81.5T780-257v-310q-68 11-143.5 54.5T480-392q-88-81-160-123t-140-52v310q78 8 153.5 38.5T480-137Zm3-475q-65 0-109.5-44.5T329-766q0-65 44.5-109.5T483-920q65 0 109.5 44.5T637-766q0 65-44.5 109.5T483-612Zm.159-60Q522-672 549.5-699.659q27.5-27.66 27.5-66.5Q577-805 549.341-832.5q-27.66-27.5-66.5-27.5Q444-860 416.5-832.341q-27.5 27.66-27.5 66.5Q389-727 416.659-699.5q27.66 27.5 66.5 27.5ZM482-768Zm-2 416Z')
-                //- i.bordered.inverted.book.open.icon#learn
-                .step-name Learn
-              .progress-item
-                .step-counter
-                  svg(xmlns='http://www.w3.org/2000/svg' fill='currentcolor' height='48' viewbox='0 -960 960 960' width='48')#explore-icon
-                    path(d='m263-263 290-143 143-290-290 143-143 290Zm217-177q-17 0-28.5-11.5T440-480q0-17 11.5-28.5T480-520q17 0 28.5 11.5T520-480q0 17-11.5 28.5T480-440Zm0 360q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Zm0-60q142 0 241-99.5T820-480q0-142-99-241t-241-99q-141 0-240.5 99T140-480q0 141 99.5 240.5T480-140Zm0-340Z')
-                //- i.bordered.inverted.compass.icon#explore
-                .step-name Practice
-              .progress-item
-                .step-counter
-                  svg(xmlns='http://www.w3.org/2000/svg' fill='currentcolor' height='48' viewbox='0 -960 960 960' width='48')#evaluate-icon
-                    path(d='M543-340q16.595 0 28.798-12.202Q584-364.405 584-381t-12.202-28.798Q559.595-422 543-422t-28.798 12.202Q502-397.595 502-381t12.202 28.798Q526.405-340 543-340Zm-25-126h47q2-29 8.5-43t32.5-39q27-26 37.5-45.395Q654-612.79 654-639q0-45.882-31.5-74.941Q591-743 540-743q-38 0-68 20.5T428-665l45 19q11-25 27.5-38t39.5-13q29.778 0 48.389 17Q607-663 607-637q0 20-9 35t-32 32q-32 29-40 46.5t-8 57.5ZM260-200q-24 0-42-18t-18-42v-560q0-24 18-42t42-18h560q24 0 42 18t18 42v560q0 24-18 42t-42 18H260Zm0-60h560v-560H260v560ZM140-80q-24 0-42-18t-18-42v-620h60v620h620v60H140Zm120-740v560-560Z')
-                //- i.bordered.inverted.edit.icon#evaluate
-                .step-name Evaluate
-              .progress-item
-                .step-counter
-                  svg(xmlns='http://www.w3.org/2000/svg' fill='currentcolor' height='48' viewbox='0 -960 960 960' width='48')#reflect-icon
-                    path(d='M480-80q-27 0-47.5-13T406-129h-14q-24 0-42-18t-18-42v-143q-66-43-104-110t-38-148q0-121 84.5-205.5T480-880q121 0 205.5 84.5T770-590q0 81-38 148T628-332v143q0 24-18 42t-42 18h-14q-6 23-26.5 36T480-80Zm-88-109h176v-44H392v44Zm0-84h176v-40H392v40Zm-9-100h74v-137l-92-92 31-31 84 84 84-84 31 31-92 92v137h74q60-28 96.5-87T710-590q0-97-66.5-163.5T480-820q-97 0-163.5 66.5T250-590q0 71 36.5 130t96.5 87Zm97-176Zm0-48Z')
-                //- i.bordered.inverted.lightbulb.icon#reflect
-                .step-name Reflect
-          //- p Upon completing the module, you will acquire the knowledge and skills necessary to effectively protect yourself from scammers!
-          br
-        hr
-        h2 Learning Materials
-        p If you would like to learn the material offline, you can download the content below:
-        div.ui.two.column.stackable.grid#downloadGrid
-          .column
-            h3.glossary.pdf Identity Theft Course PDF
-            a.ui.inline.fluid.labeled.icon.button(href='/pdf/identity-glossary.pdf', download='identity_theft.pdf')
-              i.download.icon.graySquare
-              .inline
-                p Download Course PDF
+        //- .row(style="text-align: center;")
+        //-   .sixteen.wide.column
+        //-     button.ui.huge.blue.button Start Course
+      br
+      hr
+          //- .four.wide.column 
+          //-   img(src="/images/identity-theft-square.jpg")
+      h2.ui.header.centered#learn-title 
+        .content
+          i.list.icon
+          | Course Outline
+      //- p Outline
+      .ui.vertical.basic.segments#course-outline
+        .ui.basic.segment(style="background: transparent;")
+          .ui.grid
+            .row
+              .two.wide.centered.column
+                span.fake-checkbox.completed
+              .nine.wide.column
+                h3 Challenge
+              .five.wide.right.aligned.column
+                .ui.blue.inverted.button.small Start
+        .ui.divider
+        .ui.basic.segment
+          .ui.grid
+            .row
+              .two.wide.centered.column
+                span.fake-checkbox
+              .nine.wide.column
+                h3 Concepts
+              .five.wide.right.aligned.column
+                .ui.blue.inverted.button.small Start
+        .ui.divider
+        .ui.basic.segment
+          .ui.grid
+            .row
+              .two.wide.centered.column
+                span.fake-checkbox
+              .nine.wide.column
+                h3 Consequences
+              .five.wide.right.aligned.column
+                .ui.blue.inverted.button.small Start
+        .ui.divider
+        .ui.basic.segment
+          .ui.grid
+            .row
+              .two.wide.centered.column
+                span.fake-checkbox
+              .nine.wide.column
+                h3 Recognize Techniques
+              .five.wide.right.aligned.column
+                .ui.blue.inverted.button.small Start
+        .ui.divider
+        .ui.basic.segment
+          .ui.grid
+            .row
+              .two.wide.centered.column
+                span.fake-checkbox
+              .nine.wide.column
+                h3 Methods of Protection
+              .five.wide.right.aligned.column
+                .ui.blue.inverted.button.small Start
+        .ui.divider
+        .ui.basic.segment
+          .ui.grid
+            .row
+              .two.wide.centered.column
+                span.fake-checkbox
+              .nine.wide.column
+                h3 Practice
+              .five.wide.right.aligned.column
+                .ui.blue.inverted.button.small Start
+        .ui.divider
+        .ui.basic.segment
+          .ui.grid
+            .row
+              .two.wide.centered.column
+                span.fake-checkbox
+              .nine.wide.column
+                h3 Evaluation
+              .five.wide.right.aligned.column
+                .ui.blue.inverted.button.small Start
+        .ui.divider
+      h2.ui.header.centered(style="margin-top: 40px; margin-bottom: 40px;")
+        .content(style="position: relative;")
+          | Complete all activities to earn a certificate
+          img(src="/images/certificate-icon.png" style="width: 50px; height: 50px; position: absolute; left: -55px; top: -5px")
 
-          .column
-            h3.glossary.pdf Identity Theft Glossary PDF
-            a.ui.inline.fluid.labeled.icon.button(href='/pdf/identity-glossary.pdf', download='glossary.pdf')
-              i.download.icon.graySquare
-              .inline
-                p Download Glossary PDF
-                  //- i.large.download.icon
-        br
-    +navButtons('identity', 'intro', '/', '/challenge/identity', 2, 'Home', 'Start')  
-  
+    .ui.bottom.attached.segment(style="margin-top:-3px;margin-left:0.05px;border: 4px solid rgba(34, 36, 38, 0.6);")
+      //- img(src="/images/top-secret2.png" width="225px" style="position: absolute; right: 0%; top: 4%;")
+      //- h2.ui.header.red.bottom.aligned.centered TOP SECRET
+      h2 Learning Materials
+      p If you would like to learn the material offline, you can download the content below:
+      div.ui.two.column.stackable.grid#downloadGrid
+        .column
+          h3.glossary.pdf Identity Theft Course PDF
+          a.ui.inline.fluid.labeled.icon.button(href='/pdf/identity-glossary.pdf', download='identity_theft.pdf')
+            i.download.icon.graySquare
+            .inline
+              p Download Course PDF
+
+        .column
+          h3.glossary.pdf Identity Theft Glossary PDF
+          a.ui.inline.fluid.labeled.icon.button(href='/pdf/identity-glossary.pdf', download='glossary.pdf')
+            i.download.icon.graySquare
+            .inline
+              p Download Glossary PDF
+                //- i.large.download.icon
+      br
+    br
+
+
+
 block styles
-  link(rel='stylesheet', href='/css/module-home.css') 
+  link(rel='stylesheet', href='/css/module-intro.css') 
 
 block scripts
   script.
