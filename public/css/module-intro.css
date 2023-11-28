@@ -1,5 +1,144 @@
-#welcome {
-    margin-top: 15px;
+/* #course-outline .ui.basic.segment {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+} */
+
+/* .ui.huge.blue.button {
+    background-image: linear-gradient(rgb(86, 124, 220), #3757A6); 
+    color: white; 
+    border: none; 
+    padding: 15px 30px;
+    font-size: 1.2rem; 
+    border-radius: 5px; 
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.ui.huge.blue.button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px 0 rgba(0,0,0,0.3);
+} */
+
+.nine.wide.column h3 {
+    font-size: 1.75rem; 
+    margin-left: -20px;
+}
+    
+.ui.vertical.basic.segments#course-outline {
+    width: 75%; 
+    margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+    .ui.vertical.basic.segments#course-outline {
+        width: 100%; 
+    }
+}
+
+hr {
+    border: 1px solid #DEDEDF;
+}
+
+.ui.header.red {
+    color: #C62D2D;
+}
+#course-outline .row {
+    /* margin-top: 0;
+    margin-bottom: 0; */
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.ui.divider {
+    border: 0px solid transparent !important;
+}
+
+/* #course-outline .ui.basic.segment:hover {
+    box-shadow: 0 0 11px rgba(33, 101, 174, 0.5);
+    background-color: #d3d3d3;
+    cursor: pointer;
+} */
+
+
+/* FIX stacking order of after decoration: https://stackoverflow.com/questions/3032856/is-it-possible-to-set-the-stacking-order-of-pseudo-elements-below-their-parent-e  */
+#course-outline .ui.basic.segment {
+    position: relative;
+    z-index: 1;  
+}
+
+#course-outline .ui.basic.segment:after {
+    content: "";
+    position: absolute;
+    /* width: 90%; */
+    width: 75%;
+    height: 100%;
+    background: #E7E7E8;
+    left: 10%;
+    bottom: 0;
+    /* height: .6em; */
+    z-index: -1;  
+}
+
+.ui.inverted.blue.button, .ui.inverted.blue.buttons .button {
+    background-color: transparent;
+    box-shadow: 0 0 0 2px #2185D0 inset;
+    color: #2185D0;
+}
+
+.ui.inverted.blue.button:hover, .ui.inverted.blue.buttons .button:hover {
+    background-color: #2185D0;
+}
+
+/* .blue-hover:hover {
+    box-shadow: 0 0 11px rgba(33, 101, 174, 0.5);
+    cursor: pointer;
+}
+
+.ui.divider {
+    padding: 0 !important;
+    margin: 0 !important;
+    margin-left: 5rem !important;
+    margin-top: -18px !important;
+    border: 1px solid black!important;
+} */
+
+.fake-checkbox {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #555;
+    display: inline-block;
+    margin-right: 8px;
+    vertical-align: middle;
+    position: relative;
+}
+
+.fake-checkbox.completed::after {
+    content: '\2713';
+    display: inline-block;
+    font-size: 4rem;
+    font-weight: bolder;
+    /* color: #3757A6; */
+    color: #C62D2D;
+    padding: 0 2px 0 0;
+    position: absolute;
+    bottom: -32px;
+}
+
+.ui.blue.inverted.button.small {
+}
+
+
+.polaroid-text {
+    position: absolute; 
+    bottom: 30px; 
+    left: 0; 
+    width: 100%; 
+    text-align: center; 
+    color: black; 
+    font-size: 1.25rem;
+    line-height: 1.6;
 }
 
 /* inline so the bubbles like 100 learners today will show up next to it */

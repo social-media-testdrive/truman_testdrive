@@ -6,11 +6,8 @@ block content
   .ui.grid(style="margin-top: -50px;")
     .row#blue-upper
       .ui.container
-        if user.name != "Guest"
-          h1.ui.header.center.aligned(style="font-family: 'Titillium Web', sans-serif;") Welcome #{user.name} !
-        else 
-          h1.ui.header.center.aligned(style="font-family: 'Titillium Web', sans-serif;") Welcome!
-        .limit(style="padding-bottom: 40px; text-align: center;")
+        h1.ui.header.center.aligned(style="font-family: 'Titillium Web', sans-serif;") Courses
+        .limit(style="padding-bottom: 20px; text-align: center;")
           p#about Click on a course below to get started.
           //- button.ui.inverted.button(style="margin-right: 20px;")
           //-   | Courses in Progress
@@ -38,7 +35,7 @@ block content
 
         //- Courses
         .limit
-          h2.ui.header#in-progress Courses:
+          //- h2.ui.header#in-progress Courses:
           a.ui#theft-link(href=user.moduleProgress.identity.link alt="Begin identity theft module")
             .ui.raised.segment
               .ui.fluid.container(style="height: 200px;")

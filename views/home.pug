@@ -9,13 +9,28 @@ block content
             .eight.wide.column
               img(src="/images/home-hair-color.png", alt="Illustration of older adults safely navigating the online world" style="width: 100%; margin-left: -12px;")
             .eight.wide.column(style="padding-left: 70px;")
-              h1.ui.header Learn to spot online deception and stay scam-free
-              br
-              button.ui.blue.huge.fluid.button(onclick="location.href='/getGuest';" )
-                | Get Started
-              br
-              button.ui.huge.fluid.button(onclick="location.href='/login';" )
-                | I’m a Returning User
+              if user 
+                if user.name === 'Guest'
+                  h1.ui.header Welcome Agent! 
+                  br
+                else if user
+                  h1.ui.header Welcome Agent #{user.name}! 
+                  br
+              else
+                h1.ui.header Learn to spot online deception and stay scam-free
+                br
+              if user
+                button.ui.blue.huge.fluid.button(onclick="location.href='/dashboard';" )
+                  | View Your Learning
+                br
+                button.ui.huge.fluid.button(onclick="location.href='/courses';" )
+                  | Browse Courses
+              else
+                button.ui.blue.huge.fluid.button(onclick="location.href='/getGuest';" )
+                  | Get Started
+                br
+                button.ui.huge.fluid.button(onclick="location.href='/login';" )
+                  | I’m a Returning User
 
 
         //- h1.ui.header.center.aligned Learn to spot online deception and stay scam-free
