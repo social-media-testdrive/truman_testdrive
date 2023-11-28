@@ -117,7 +117,7 @@ function startHints(enableDataCollection) {
         'nextLabel': 'Siguiente &rarr;', 
         'prevLabel': '&larr; Volver',
         'skipLabel': 'Suprimir',
-        'hintButtonLabel': 'Entiendo',
+        'hintButtonLabel': '¡Entendido!',
     });
 
     hints.addHints();
@@ -203,7 +203,7 @@ function startIntro(enableDataCollection) {
         'nextLabel': 'Siguiente &rarr;', 
         'prevLabel': '&larr; Volver',
         'skipLabel': 'Suprimir',
-        'hintButtonLabel': 'Entiendo',
+        'hintButtonLabel': '¡Entendido!',
     });
 
     // *************** code copied over from base_introStep.js *******************

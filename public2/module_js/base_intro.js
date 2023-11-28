@@ -12,6 +12,7 @@ const moduleCards = {
   "phishing":["phishing.png","Scams and Phishing"],
   "presentation":["onlineidentity.png","Online Identities"],
   "privacy":["smprivacy.png","Social Media Privacy"],
+  "privacy-esp":["smprivacy.png","La privacidad en las redes sociales"],
   "safe-posting":["privateinfo.png","Is It Private Information?"],
   "targeted":["targetedads.png","Ads on Social Media"],
   "esteem":["esteem.png","The Ups and Downs of Social Media"],

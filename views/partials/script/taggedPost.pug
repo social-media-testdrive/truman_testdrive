@@ -35,10 +35,10 @@
   .three.ui.bottom.attached.icon.buttons
     .ui.reply.button(tabindex='0')
       i.reply.icon
-      |  Reply
+      |  Responder
     .ui.flag.button(tabindex='0')
       i.flag.icon
-      |  Flag
+      |  Reportar
     if val.like
       .ui.labeled.button(tabindex='0')
         .ui.red.like.button
@@ -93,7 +93,7 @@
                     a.red.like.comment Like
                   else
                     a.like.comment Like
-                  a.flag.comment Flag
+                  a.flag.comment Reportar
   .extra.content
     if user.comment_prompt == "yes"
       .description(style="text-align:center;background:#E8E8E8")="How is "+val.actor.profile.name+" Feeling?"
@@ -103,7 +103,7 @@
             img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name || user.username || user.id)
           else
             img.ui.avatar.image(src=user.gravatar(60), name=user.profile.name || user.username || user.id)
-        input.newcomment(type='text', placeholder='Write a Comment')
+        input.newcomment(type='text', placeholder='Escribe un comentario')
         i.big.send.link.icon
     else
       .ui.fluid.left.labeled.right.icon.input
@@ -112,5 +112,5 @@
             img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name || user.username || user.id)
           else
             img.ui.avatar.image(src=user.gravatar(60), name=user.profile.name || user.username || user.id)            
-        input.newcomment(type='text', placeholder='Write a Comment')
+        input.newcomment(type='text', placeholder='Escribe un comentario')
         i.big.send.link.icon  

@@ -151,7 +151,7 @@ function startIntro(enableDataCollection) {
         'nextLabel': 'Siguiente &rarr;', 
         'prevLabel': '&larr; Volver',
         'skipLabel': 'Suprimir',
-        'hintButtonLabel': 'Entiendo',
+        'hintButtonLabel': '¡Entendido!',
     });
     /*
     onbeforechange:
@@ -300,7 +300,7 @@ function startSecondIntro(enableDataCollection) {
         'nextLabel': 'Siguiente &rarr;', 
         'prevLabel': '&larr; Volver',
         'skipLabel': 'Suprimir',
-        'hintButtonLabel': 'Entiendo',
+        'hintButtonLabel': '¡Entendido!',
     });
 
     /*

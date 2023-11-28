@@ -1,7 +1,7 @@
 var stepsList = [
   {
     element: '#step1',
-    intro: `Click "Next" to begin!`,
+    intro: `Dale clic en "Siguiente" para empezar.`,
     position: 'left',
     scrollTo: 'tooltip',
     audioFile: ['']
@@ -16,9 +16,9 @@ var stepsList = [
   },
   {
     element: document.querySelectorAll('#step1')[0],
-    intro: `Click on "Done" and then look for the blue dots &nbsp;&nbsp;<a role='button' tabindex='0'
+    intro: `Dale click a Listo y busca los puntos azules &nbsp;&nbsp;<a role='button' tabindex='0'
     class='introjs-hint'><div class='introjs-hint-dot'></div><div
-    class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; &nbsp; to learn more...`,
+    class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; &nbsp; para aprender más...`,
     scrollTo:'tooltip',
     position:'left',
     audioFile: ['CUSML.7.6.2.mp3']

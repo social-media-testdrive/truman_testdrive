@@ -34,7 +34,7 @@ function recordSimModalInputs(modalNameAttrStr) {
                     break;
                 case 'digfoot_normalPostModal':
                 case 'digfoot_simModal':
-                    Voiceovers.playVoiceover(['CUSML.misc_04.mp3'])
+                    // Voiceovers.playVoiceover(['CUSML.misc_04.mp3'])
                     break;
                 case 'esteem_postModal1':
                     Voiceovers.playVoiceover(['CUSML.misc_07.mp3'])

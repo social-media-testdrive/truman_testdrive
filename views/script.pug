@@ -1,4 +1,4 @@
-extends ui_layout
+extends ui_layout-esp
   
 block content
 
@@ -16,7 +16,7 @@ block content
             img(src=user.gravatar(60))
         .content
           a.header(href='/me/'+mod)= user.profile.name || user.email || user.id
-          .meta="@Guest"
+          .meta="@Invitado"
           .description=user.profile.bio
           .description
             if user.profile.location
@@ -37,7 +37,7 @@ block content
             img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture)
           else
             img.ui.avatar.image(src=user.gravatar(60))
-        input(type='text', placeholder='Create a post')
+        input(type='text', placeholder='Agrega una nueva publicación')
         i.big.photo.link.icon
 
     each val in script

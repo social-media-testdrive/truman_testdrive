@@ -40,7 +40,7 @@ function startHints() {
     'doneLabel': 'Listo &#10003',
     'nextLabel': 'Siguiente &rarr;', 
     'prevLabel': '&larr; Volver',
-    'hintButtonLabel': 'Entiendo',
+    'hintButtonLabel': '¡Entendido!',
   });
 
   hints.addHints();
@@ -96,7 +96,7 @@ function startIntro() {
     'doneLabel': 'Listo &#10003',
     'nextLabel': 'Siguiente &rarr;', 
     'prevLabel': '&larr; Volver',
-    'hintButtonLabel': 'Entiendo',
+    'hintButtonLabel': '¡Entendido!',
   });
   intro.setOptions({
     steps: stepsList

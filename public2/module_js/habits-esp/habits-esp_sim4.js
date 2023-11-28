@@ -6,7 +6,7 @@ const hintsList = [
     aplicación. ¡Incluso puedes establecer recordatorios con límites de 
     tiempo de uso diario!`,
     hintPosition: "middle-middle",
-    hintButtonLabel: 'Entiendo',
+    hintButtonLabel: '¡Entendido!',
     // audioFile: ['CUSML.10.4.10.mp3']
   },
   {
@@ -16,7 +16,7 @@ const hintsList = [
     que pasas en ellas y el que le dedicas a realizar otras actividades, ¡como 
     salir con tus amigos y hablar cara a cara!`,
     hintPosition: "middle-middle",
-    hintButtonLabel: 'Entiendo',
+    hintButtonLabel: '¡Entendido!',
     // audioFile: ['CUSML.10.4.11.mp3']
   },
   {
@@ -25,7 +25,7 @@ const hintsList = [
     las redes sociales son: No pasar tanto tiempo con tu familia o amigos, sentirte 
     triste, ansioso o cansado, y tener dificultades para estar al día con tus tareas.`,
     hintPosition: "middle-middle",
-    hintButtonLabel: 'Entiendo',
+    hintButtonLabel: '¡Entendido!',
     // audioFile: ['CUSML.10.4.12.mp3']
   },
   {
@@ -33,7 +33,7 @@ const hintsList = [
     hint: `¡Tómate un descanso para poder desconectarte si piensas que las estás usando 
     demasiado!`,
     hintPosition: "middle-middle",
-    hintButtonLabel: 'Entiendo',
+    hintButtonLabel: '¡Entendido!',
     // audioFile: ['CUSML.10.4.13.mp3']
   }
 ];

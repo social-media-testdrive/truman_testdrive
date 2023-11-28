@@ -260,6 +260,7 @@ function isValidModId(req, res, next) {
         "phishing",
         "presentation",
         "privacy",
+        "privacy-esp",
         "safe-posting",
         "targeted"
     ]
@@ -366,7 +367,7 @@ app.get('/end/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, c
         title: 'Finished',
         isResearchVersion
         });
-    } else if((req.params.modId === 'esteem-esp') || (req.params.modId === 'habits-esp') || (req.params.modId === 'digfoot-esp')){
+    } else if((req.params.modId === 'esteem-esp') || (req.params.modId === 'habits-esp') || (req.params.modId === 'digfoot-esp') || (req.params.modId === 'privacy-esp')){
         res.render('base_end-esp.pug', {
         title: 'Terminado',
         isResearchVersion
@@ -439,7 +440,7 @@ app.get('/gaming/targeted', passportConfig.isAuthenticated, setHttpResponseHeade
 app.get('/intro/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
     if (req.params.modId === "delete") {   // anticipating a specific user behavior that causes 500 errors
         res.redirect('/');
-    } else if (req.params.modId === "esteem-esp" || req.params.modId === "habits-esp" || req.params.modId === "digfoot-esp") {
+    } else if (req.params.modId === "esteem-esp" || req.params.modId === "habits-esp" || req.params.modId === "digfoot-esp" || req.params.modId === "privacy-esp") {
         res.render('base_intro-esp.pug', {
         title: 'Bienvenidos'
         });
@@ -511,7 +512,7 @@ app.get('/gaming/targeted', passportConfig.isAuthenticated, setHttpResponseHeade
 app.get('/intro/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function(req, res) {
     if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
         res.redirect('/');
-    } else if (req.params.modId === "esteem-esp" || req.params.modId === "habits-esp" || req.params.modId === "digfoot-esp") {
+    } else if (req.params.modId === "esteem-esp" || req.params.modId === "habits-esp" || req.params.modId === "digfoot-esp" || req.params.modId === "privacy-esp") {
         res.render('base_intro-esp.pug', {
         title: 'Bienvenidos'
         });
@@ -539,7 +540,7 @@ app.get('/privacy', setHttpResponseHeaders, csrfProtection, addCsrf, function(re
 
 // Render the reflection page (all modules).
 app.get('/results/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, async function(req, res) {
-    if (req.params.modId === 'digfoot-esp') {
+    if (req.params.modId === 'digfoot-esp' || req.params.modId === 'privacy-esp') {
         const data = await fs.readFileAsync(`${__dirname}/public2/json/esp-reflectionSectionData.json`)
         const reflectionData = JSON.parse(data.toString());
         res.render(req.params.modId + '/' + req.params.modId + '_results', {
@@ -563,7 +564,7 @@ app.get('/quiz/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, 
     let quizData;
     const data = await fs.readFileAsync(`${__dirname}/public2/json/quizSectionData.json`);
     // console.log('data: ' + JSON.stringify(JSON.parse(data.toString())));
-    quizData = JSON.parse(data.toString())[req.params.modId.replace('-esp', '')];
+    quizData = JSON.parse(data.toString())[req.params.modId];
     // console.log('quizData: ' + JSON.stringify(quizData));
 
     res.render('base_quiz.pug', {

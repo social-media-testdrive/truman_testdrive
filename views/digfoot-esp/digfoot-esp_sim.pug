@@ -132,7 +132,7 @@ block content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
             img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment(type='text' placeholder='Write a Comment')
+          input.newcomment(type='text' placeholder='Escribe un Comentario')
           i.big.send.link.icon
 
     .ui.fluid.card.dim(simPostNumber="2")
@@ -175,7 +175,7 @@ block content
             .content
               a.author Milagros Cardenas
               .metadata
-                span.date Yesterday
+                span.date Ayer
                 .rating
                   i.heart.icon
                   span.num=1
@@ -188,7 +188,7 @@ block content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
             img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment(type='text' placeholder='Write a Comment')
+          input.newcomment(type='text' placeholder='Escribe un Comentario')
           i.big.send.link.icon
     
     .ui.fluid.card.test.dim(simPostNumber="3")
@@ -245,7 +245,7 @@ block content
           .ui.fluid.left.labeled.right.icon.input
             .ui.label
               img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-            input.newcomment(type='text' placeholder='Write a Comment')
+            input.newcomment(type='text' placeholder='Escribe un Comentario')
             i.big.send.link.icon
     
     .ui.fluid.card.dim(simPostNumber="4")
@@ -259,7 +259,7 @@ block content
                 span 
                   | Los administradores del TestDrive van a revisar el post luego.
       .content
-        .right.floated.meta= "Yesterday"
+        .right.floated.meta= "Ayer"
         a(href='#')
               img.ui.avatar.image(src=cdn+'/profile_pictures/user24.jpg')
               span='Milagros Cardenas'
@@ -300,7 +300,7 @@ block content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
             img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment(type='text' placeholder='Write a Comment')
+          input.newcomment(type='text' placeholder='Escribe un Comentario')
           i.big.send.link.icon
     .ui.message.warning.hidden#confirmContinueCheck
       .ui.header 
@@ -314,10 +314,9 @@ block content
           |   Continuar!
 
 block scripts
-
   script(src='/module_js/base_sim_extraData.js')
   script(src='/module_js/voiceover.js')
   script(src='/postFunctionalities.js')
 
   script(src="/module_js/digfoot-esp/digfoot-esp_sim.js")  
-  script(src ="/module_js/base_sim.js")
+  script(src="/module_js/base_sim-esp.js")

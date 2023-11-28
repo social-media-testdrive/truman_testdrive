@@ -17,7 +17,7 @@ block content
           .header= "Hábitos saludables de las redes sociales"
 
       a.ui.card(href=`/${path}/esteem-esp`)
-          .image(style="filter: blur(1.5px)")
+          .image()
             img(src=cdn + "/esteem.png")
           .content
             .header= "Los altibajos de las redes sociales"
@@ -47,14 +47,8 @@ block content
         .content
           .header= "Moldeando tu huella digital"
 
-      a.ui.card()
-        .ui.inverted.active.dimmer.soon
-          .content
-            .center
-              h2.ui.header
-                |
-                | ¡PRÓXIMAMENTE!
-        .image(style="filter: blur(1.5px)")
+      a.ui.card(href=`/${path}/privacy-esp`)
+        .image
           img(src=cdn+'/smprivacy.png')
         .content
           .header="La privacidad en las redes sociales" 

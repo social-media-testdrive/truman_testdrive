@@ -333,11 +333,9 @@ exports.postUpdateInterestSelection = (req, res, next) => {
                 break;
             case 'esteem-esp':
                 userTopic = user.esteemTopic;
-                console.log('user topic esp = ' + user.esteemTopic);
                 break;
             case 'esteem':
                 userTopic = user.esteemTopic;
-                console.log('user topic esteem = ' + user.esteemTopic);
                 break;
         }
         if (userTopic) {
