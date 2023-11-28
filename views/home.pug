@@ -20,11 +20,11 @@ block content
                 h1.ui.header Learn to spot online deception and stay scam-free
                 br
               if user
-                button.ui.blue.huge.fluid.button(onclick="location.href='/dashboard';" )
-                  | View Your Learning
-                br
-                button.ui.huge.fluid.button(onclick="location.href='/courses';" )
+                button.ui.blue.huge.fluid.button(onclick="location.href='/courses';" )
                   | Browse Courses
+                br
+                button.ui.huge.fluid.button(onclick="location.href='/dashboard';" )
+                  | View Your Learning
               else
                 button.ui.blue.huge.fluid.button(onclick="location.href='/getGuest';" )
                   | Get Started
@@ -149,8 +149,10 @@ block content
               p Discover your inner detective as you go on missions to take down rogue agent Walter FANG and his sneaky organization, SCAMM. Play minigames set across the globe, from the lively streets of New York to charming Tokyo.
               p Deepcover reinforces the concepts from DART Learn, helping you solidify your knowledge while having a great time!
               p Start your Deepcover adventure today, available on Google Play and the Apple App Store!
-
-              img(src='/images/app-store.png' alt='Download dart app in the appstore' style="position: relative; height: 50px;")
+              a(href="https://apps.apple.com/us/app/deepcover/id6468587995", target="_blank", rel="noreferrer noopener" style="margin-right: 25px;")
+                img(src="/images/download-app-store.svg", alt="Download on App Store", style="width: 200px; height: auto;")
+              a(href="https://play.google.com/store/apps/details?id=com.whitethorngames.dartgame&hl=en_US&gl=US", target="_blank", rel="noreferrer noopener")
+                img(src="/images/download-google-play.svg", alt="Download on Google Play", style="width: 200px; height: auto;")
 
         //- img(src="/images/sponsors/sponsors.png" alt="Image description" style="width: 100%;")
     .row(style="background-color: white;")
