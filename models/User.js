@@ -107,6 +107,27 @@ const userSchema = new mongoose.Schema({
   modulePageAccessLog: [{
       type: String,
   }],
+  moduleStatus: [{
+    // none, started, completed
+    identity: {
+        challenge: { type: String, default: 'none' },  
+        concepts: { type: String, default: 'none' }, 
+        consequences: { type: String, default: 'none' }, 
+        techniques: { type: String, default: 'none' }, 
+        protection: { type: String, default: 'none' }, 
+        practice: { type: String, default: 'none' }, 
+        evaluation: { type: String, default: 'none' }, 
+    },     
+    romance: {
+        challenge: { type: String, default: 'none' },  
+        concepts: { type: String, default: 'none' }, 
+        consequences: { type: String, default: 'none' }, 
+        techniques: { type: String, default: 'none' }, 
+        protection: { type: String, default: 'none' }, 
+        practice: { type: String, default: 'none' }, 
+        evaluation: { type: String, default: 'none' }, 
+    },      
+  }],
   modulePageTimes: { // marks the progress of each module
     identity: {
         intro_Times: [{
