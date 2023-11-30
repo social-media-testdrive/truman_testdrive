@@ -24,6 +24,13 @@ p,
     font-family: 'Titillium Web', sans-serif;
 }
 
+.section-title {
+    font-size: 2rem !important;
+    color: black !important;
+    font-weight: bold !important;
+    font-family: 'Titillium Web', sans-serif !important;
+}
+
 #mod-title {
     font-size: 2rem;
 }

@@ -39,8 +39,8 @@ block content
           //- p Choose from Valiant, Daring, Intrepid, and Dartie — skilled agents ready to assist in this operation.
         br
         h1 Choose Your Guide:
-        .ui.stackable.four.column.grid
-            .four.wide.column
+        .ui.stackable.three.column.grid
+            .column
                 .ui.card(onclick='updateAvatar("Daring", "/images/agent-daring.png")')
                     .ui.small.centered.image
                         img.daring(src='/images/agent-daring.png')
@@ -49,7 +49,7 @@ block content
                         .meta
                           p.descriptors Bold, Fearless, Confident
                     button.ui.fluid.blue.huge.button Select
-            .four.wide.column
+            .column
                 .ui.card(onclick='updateAvatar("Valiant", "/images/agent-valiant.png")') 
                     .ui.small.centered.image
                         img.valiant(src='/images/agent-valiant.png')
@@ -58,7 +58,7 @@ block content
                         .meta
                           p.descriptors Courageous, Heroic, Noble &nbsp;
                     button.ui.fluid.blue.huge.button Select
-            .four.wide.column
+            .column
                 .ui.card(onclick='updateAvatar("Intrepid", "/images/agent-intrepid.png")')
                     .ui.small.centered.image
                         img.intrepid(src='/images/agent-intrepid.png')
@@ -67,15 +67,15 @@ block content
                         .meta
                           p.descriptors Clever, Astute, Resilient
                     button.ui.fluid.blue.huge.button Select
-            .four.wide.column
-                .ui.card(onclick='updateAvatar("Dartie", "/images/agent-dartie.png")')
-                    .ui.medium.centered.image
-                        img.dartie(src='/images/agent-dartie.png' style="width: 200px;")
-                    .content
-                        a.header Dartie
-                        .meta
-                          p.descriptors Playful, Energetic, Loyal
-                    button.ui.fluid.blue.huge.button Select
+            //- .four.wide.column
+            //-     .ui.card(onclick='updateAvatar("Dartie", "/images/agent-dartie.png")')
+            //-         .ui.medium.centered.image
+            //-             img.dartie(src='/images/agent-dartie.png' style="width: 200px;")
+            //-         .content
+            //-             a.header Dartie
+            //-             .meta
+            //-               p.descriptors Playful, Energetic, Loyal
+            //-         button.ui.fluid.blue.huge.button Select
 
         //- .ui.grid.buttonGrid
         //-     .column.center.aligned

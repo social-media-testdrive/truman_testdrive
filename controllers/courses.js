@@ -30,6 +30,19 @@ exports.index = (req, res) => {
 // };
 
 /**
+ * GET /about/:page?/:modId
+ * Render the about pages for the module.
+ */
+exports.getAbout = (req, res) => {
+  const modId = req.params.modId;
+  
+  const introPage = `${modId}/${modId}_about`;
+  const title = 'About';
+
+  res.render(introPage, { title });
+};
+
+/**
  * GET /intro/:page?/:modId
  * Render the intro pages for the module.
  */

@@ -12,5 +12,8 @@ $('#no-button').click(function() {
 });
 
 $('#yes-button').click(function() {
-  window.location.href = '/'; 
+  // get last subdomain from url e.g. identity, romance, etc.
+  var lastSubdomain = window.location.href.split('/').filter(Boolean).pop();
+
+  window.location.href = '/about/' + lastSubdomain; 
 });

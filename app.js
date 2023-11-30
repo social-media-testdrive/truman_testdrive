@@ -249,6 +249,7 @@ app.get('/accessibility', passportConfig.isAuthenticated, function(req, res) {
 /**
  * Module Routes
  */
+app.get('/about/:modId', isValidModId, coursesController.getAbout);
 app.get('/intro/:page?/:modId', isValidModId, coursesController.getIntro);
 app.get('/challenge/:page?/:modId', isValidModId, coursesController.getChallenge);
 app.get('/learn/:submod(submod|submod2|submod3)/:page?/:modId', isValidModId, coursesController.getLearn);
