@@ -4,6 +4,8 @@ $(document).ready(function() {
     let signupItem = $("a[href='/signup']");
     let getStartedItem = $("button[href='/getGuest']");
     let dartBlueItems = $(".dart-blue");
+    let dartGrayItems = $(".dart-gray");
+
     let dartLogo = $(".dart-logo");
     let toTopBtn = $("#scrollToTop");
     let isScrollBtnVisible = false;
@@ -50,6 +52,8 @@ $(document).ready(function() {
             signupItem.show();
             getStartedItem.hide();
             dartBlueItems.css('color', 'white');
+            dartGrayItems.css('color', 'white');
+
             dartLogo.attr('src', '/images/dart-white.svg');
         } else if (currentScrollTop > ($(window).height() - buffer)) {
             header.css('background-color', 'white');
@@ -57,6 +61,7 @@ $(document).ready(function() {
             signupItem.hide();
             getStartedItem.show();
             dartBlueItems.css('color', '#3757A6');
+            dartGrayItems.css('color', '#7D7C7C');
             dartLogo.attr('src', '/images/dart-logo.svg');
         }
 
