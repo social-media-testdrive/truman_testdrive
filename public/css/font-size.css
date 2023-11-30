@@ -41,6 +41,9 @@ p,
     color: #285362;
 }
 
+h1.ui.header .content i {
+    margin-right: 0.5rem;
+}
 /* Tablet devices */
 @media (max-width: 900px) {
     p, 

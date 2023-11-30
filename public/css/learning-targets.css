@@ -4,19 +4,7 @@
     color: #3D7E97;
 }
 
-/* fomantic ui computer only breakpoint */
-@media (min-width: 992px) {
 
-    #raised-container {
-        /* background-color: red; */
-        /* padding: 0; */
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        /* max-width: 80%;  */
-    }
-}
 
 /* Remove default bullet points */
 #learn-target ul.no-bullets {

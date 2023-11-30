@@ -2,10 +2,11 @@ extends ../../module_layout
 
 block content
 
-  .ui.container#raised-container
+  .ui.container#raised-container.center-layout
     .limit
       h1.ui.header.large#learn-title
         .content
+          i.video.icon
           | Intro
       p Click the image to start the video
       video-js#my_video_1.video-js.vjs-default-skin.vjs-show-big-play-button-on-pause(width='640px' height='360px' controls='' preload='none' data-setup='{ "poster":"/images/warning-poster.png", "aspectRatio":"16:9", "playbackRates": [0.5, 0.75, 1, 1.5, 2] }')
@@ -19,8 +20,11 @@ block content
 
 block append footer
   .ui.container
-    +navButtons('identity', 'sub2_learn9', '/learn/submod2/8/identity', '/learn/submod2/10/identity', 44)  
+    +navButtons('identity', 'intro2', '/intro/identity', '/intro3/identity', 44)  
+
+block styles
+  link(rel='stylesheet', href='/css/middle-aligned-layout.css')
 
 block scripts
   script.
-    postStartTime("identity", "sub2_learn9");
+    postStartTime("identity", "intro2");

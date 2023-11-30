@@ -1,25 +1,75 @@
-/* #course-outline .ui.basic.segment {
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-} */
-
-/* .ui.huge.blue.button {
-    background-image: linear-gradient(rgb(86, 124, 220), #3757A6); 
-    color: white; 
-    border: none; 
-    padding: 15px 30px;
-    font-size: 1.2rem; 
-    border-radius: 5px; 
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: transform 0.3s ease;
+/* classified document styles */
+.ui.top.attached.fluid.segment {
+    padding:0;
+    margin:0;
+    border: 4px solid rgba(34, 36, 38, 0.6);
+    background: #e7e7e88b;
 }
 
-.ui.huge.blue.button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px 0 rgba(0,0,0,0.3);
-} */
+.ui.top.attached.fluid.segment #classification {
+    padding: 1.25rem;
+    padding-left: 2rem;
+}
+
+.ui.top.attached.fluid.segment #classified-by {
+    padding: 1.25rem;
+    padding-left: 1rem;
+    border-left: 4px solid rgba(34, 36, 38, 0.6);
+}
+
+.ui.attached.segment#middle-section-outline {
+    margin-top:-3px;margin-left:0.05px;border: 4px solid rgba(34, 36, 38, 0.6);
+}
+
+.ui.bottom.attached.segment {
+    margin-top:-3px;
+    margin-left:0.05px;
+    border: 4px solid rgba(34, 36, 38, 0.6) !important; 
+    margin-bottom: 75px;
+}
+
+
+/* avatar start / continue course section styles */
+#avatar-encourage-start {
+    min-height: 450px; 
+    margin-bottom: -60px;
+}
+
+#avatar-encourage-start .speech-div {
+    min-height: 175px; 
+    width: 100%;
+}
+
+#avatar-encourage-start .centerme {
+    text-align: center;
+}
+
+#avatar-encourage-start .centerme button.ui.massive.blue.button {
+    margin-top: 0px;
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -60%);
+}
+
+#avatar-encourage-start .ui.large.label.blue-pointing#speechBubble {
+    margin-top: 0px;  
+    float: right;
+}
+
+#avatar-encourage-start #speechBubble p#speechText {
+    text-align: left;
+}
+
+#avatar-encourage-start img.dart_image.ui.medium.image {
+    margin: 0 auto; 
+    width: 25%; 
+    float: right; 
+    z-index: -1;
+}
+
+/* end */
+
 
 .card-image {
     height: 200px !important;
@@ -175,10 +225,6 @@ hr {
     position: absolute;
     bottom: -32px;
 }
-
-.ui.blue.inverted.button.small {
-}
-
 
 .polaroid-text {
     position: absolute; 
@@ -440,3 +486,22 @@ i.big.unlock.icon {
     margin: 0 auto; 
     color: white;
 }
+
+
+
+
+/* .ui.huge.blue.button {
+    background-image: linear-gradient(rgb(86, 124, 220), #3757A6); 
+    color: white; 
+    border: none; 
+    padding: 15px 30px;
+    font-size: 1.2rem; 
+    border-radius: 5px; 
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.ui.huge.blue.button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px 0 rgba(0,0,0,0.3);
+} */

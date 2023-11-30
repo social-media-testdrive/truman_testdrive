@@ -11,10 +11,6 @@ body {
     max-height: 550px;
 }
 
-p.descriptors {
-    min-height: 60px;
-    max-height: 75px;
-}
 
 #avatarContainer .ui.medium.image,
 #avatarContainer .ui.small.image {
