@@ -1,0 +1,38 @@
+extends ../../../module_layout
+
+block content
+
+  .ui.container#raised-container.top-padding
+    .limit
+      h1.ui.header.large#learn-title
+        .content
+          | How can you protect yourself before being contacted by scammers?
+      .dosContainer
+        .ui.large.blue.fluid.label
+          i.thumbs.up.icon 
+          | Do's
+
+      .ui.bulleted.list 
+        .item Always take new online relationships slowly.
+        .item Talk with your friends and family about any new relationships for an non-biased perspective.
+        .item Be cautious of profiles with very minimal pictures of themselves and others.
+        .item 
+          b Update your privacy settings on social media so that only trusted loves ones can see what you share. 
+
+      .ui.grid
+        .two.column.row
+          .column
+            p  This is an example of a settings page on an app to make your account private. 
+            | Setting your account to private allows only people you know and trust to see your content. 
+            | On most apps, these preferences are found in the settings page. For help on specific apps, 
+            | look on their help or Frequently Asked Questions page, or search on an engine how to make your account private. 
+          .column
+            img(src="/images/rom-submod3-mod2-img1.png" alt="Image description" style="width: 90%")
+block append footer
+  .ui.container
+    +navButtons('romance', 'sub3_learn3', '/learn/submod3/romance', '/learn/submod3/3/romance', 78)  
+
+block scripts
+  script(src='/js/update_character_name.js')
+  script.
+    postStartTime("romance", "sub3_learn2");  

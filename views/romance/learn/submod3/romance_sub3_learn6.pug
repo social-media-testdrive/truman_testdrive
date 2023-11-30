@@ -1,0 +1,30 @@
+extends ../../../module_layout
+
+block content
+
+  .ui.container#raised-container.top-padding
+    .limit
+      h1.ui.header.large#learn-title
+        .content
+          | How can you protect yourself before being contacted by scammers?
+      .dosContainer
+        .ui.large.red.fluid.label
+          i.thumbs.up.icon 
+          | Dont's
+
+      .ui.bulleted.list 
+        .item Never send money to someone you don&apos;t know personally.
+        .item Don&apos;t share your personal information or information about your friends or family with people you have not met in person.
+        .item Do not keep talking to someone if the words they are using makes you uncomfortable.
+        .item 
+          b Do not switch the conversation to another platform until you confirm the person you are talking to is who they say they are.
+      img.ui.centered.fluid(src="/images/rom-submod3-mod6-img1.png" alt="Image description" style="width: 90%")
+
+block append footer
+  .ui.container
+    +navButtons('romance', 'sub3_learn3', '/learn/submod3/5/romance', '/learn/submod3/7/romance', 14)  
+
+block scripts
+  script(src='/js/update_character_name.js')
+  script.
+    postStartTime("romance", "sub3_learn2");  

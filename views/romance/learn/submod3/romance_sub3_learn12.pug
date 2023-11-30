@@ -1,0 +1,27 @@
+extends ../../../module_layout
+
+block content
+
+  .ui.container#raised-container.top-padding
+    .limit
+      h1.ui.header.large#learn-title
+        .content
+          | How can you protect yourself after being contacted by scammers?
+      .dosContainer
+        .ui.large.red.fluid.label
+          i.thumbs.up.icon 
+          | Dont's
+
+      .ui.bulleted.list 
+        .item Do not continue contact with the scammer.
+        .item 
+          b Do not take a vigilante approach and try to get back at the scammer.
+      img.ui.centered.fluid(src="/images/rom-submod3-mod12-img1.png" alt="Image description" style="width: 90%")
+block append footer
+  .ui.container
+    +navButtons('romance', 'sub3_learn3', '/learn/submod3/11/romance', '/learn/submod3/12/romance', 14)  
+
+block scripts
+  script(src='/js/update_character_name.js')
+  script.
+    postStartTime("romance", "sub3_learn2");  

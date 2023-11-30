@@ -1,0 +1,44 @@
+extends ../../../module_layout
+
+block content
+
+  .ui.container#raised-container.top-padding
+    .limit
+      h1.ui.header.large#learn-title
+        .content
+          | How can you protect yourself before being contacted by scammers?
+      .dosContainer
+        .ui.large.blue.fluid.label
+          i.thumbs.up.icon 
+          | Do's
+
+      .ui.bulleted.list 
+        .item Always take new online relationships slowly.
+        .item Talk with your friends and family about any new relationships for an non-biased perspective.
+        .item Be cautious of profiles with very minimal pictures of themselves and others.
+    
+//-     script.
+//-         var progress = #{user.moduleProgress.identity.percent}
+//-     script(src='/js/setProgressBar.js')  
+
+//- block append footer
+//-   .ui.container
+//-     +navButtons('romance', 'sub3_learn12', '/learn/submod3/2/romance', '/learn/submod3/4/romance', 84, 'Back', 'Next')  
+
+//- block scripts
+//-   script(src='/js/update_character_name.js')
+//-   script.
+//-     postStartTime("romance", "sub3_learn2");  
+
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+  .ui.container
+    +navButtons('romance', 'sub3_learn3', '/courses', '/learn/submod3/2/romance', 14)  
+
+block scripts
+  script(src='/js/update_character_name.js')
+  script.
+    postStartTime("romance", "sub3_learn2");  
