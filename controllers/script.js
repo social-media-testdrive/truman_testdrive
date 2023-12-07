@@ -426,6 +426,11 @@ function _postUpdateFeedAction(req, user) {
     // currently checking using regex; might be better to use mongo's object.isValid() function
     // Check for the special case where the user tries to conduct a feedAction (liking post is the only action available) on a user-made post
     // req.body.postID is an index, such as '0', '1', but to save a feedAction, feedAction's post attribute needs to be an ObjectID
+
+    if (!req.body.postID) {
+        console.log(req.body);
+        console.log(req.body.actionType);
+    }
     if (!req.body.postID.toString().match(/^[0-9a-fA-F]{24}$/) && req.body.actionType === 'free play') {
         // Find ObjectID of user-made post
         const user_post = user.posts.find(post => post.postID.toString() === req.body.postID);
@@ -725,7 +730,6 @@ exports.postStartPageAction = (req, res, next) => {
         //Post does not exist yet in User DB, so we have to add it now
         let cat = req.body.action;
         // add new post into correct location
-        console.log(cat);
         userAction.push(cat);
         // save to DB
         user.save((err) => {
