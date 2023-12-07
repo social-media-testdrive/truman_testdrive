@@ -1,17 +1,22 @@
 mixin navButtons(modId, page, backLink, nextLink, percent, backText='Back', nextText='Next', skipBtn=false, skipLink)
   .ui.container#nav-container
+    - let currentSection = page.replace(/\d+/g, '');
     //- p modId: #{modId}
+    //- p page: #{page}
+    //- p currentSection: #{currentSection}
     //- p backLink: #{backLink}
     //- p nextLink: #{nextLink}
     //- p percent to post: #{percent}
-    //- p current percent: #{user.moduleProgress.identity.percent}
+    //- p current percent: #{user.moduleStatus[modId][currentSection]}
+    //- let currentSection = page.replace(/\d+/g, '');
+    //- console.log("currentSection:" + currentSection);
 
     .div#nav-menu
       //- button.ui.huge.basic.button.left.floated#backButton(onclick="location.href='" + backLink + "';")
       button.ui.huge.basic.button.left.floated#backButton(onclick="postEndTime('" + modId + "', '" + page + "', '" + backLink + "');")
         i.arrow.left.icon
         | #{backText}
-      button.ui.huge.blue.button.right.floated#nextButton(onclick="postModuleProgress('" + modId + "', '" + page + "', '" + nextLink + "', '" + percent + "', '" + user.moduleProgress.identity.percent + "');")
+      button.ui.huge.blue.button.right.floated#nextButton(onclick="postModuleProgress('" + modId + "', '" + page + "', '" + currentSection + "', '" + nextLink + "', '" + percent + "', '" + user.moduleStatus[modId][currentSection] + "');")
         | #{nextText}
         i.arrow.right.icon
       if skipBtn

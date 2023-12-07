@@ -25,7 +25,7 @@ block content
         .row 
           .twelve.wide.column
             p The Johnsons need your help! They've been targeted by SCAMM, falling victim to a sneaky identity theft scheme.
-            p Uncover how scammers steal personal information to impersonate their targets. You'll learn how these scams work, how to spot them, and how to protect yourself.
+            p Uncover how scammers steal personal information to impersonate their targets. You'll learn how these scams work, how to spot them, and how to protect yourself and others.
             if user.moduleProgress.identity.link === "/challenge/identity" 
               button.ui.huge.blue.button(onclick="window.location=user.moduleProgress.identity.link") Start Course
             else 
@@ -46,7 +46,10 @@ block content
           .ui.grid
             .row
               .two.wide.centered.column
-                span.fake-checkbox.completed
+                if(user.moduleStatus.identity.challenge === 100)
+                  span.fake-checkbox.completed
+                else
+                  span.fake-checkbox
               .nine.wide.column
                 h3 Challenge
               .five.wide.right.aligned.column

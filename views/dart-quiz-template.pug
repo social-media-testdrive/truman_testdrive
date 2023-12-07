@@ -88,12 +88,12 @@ block content
                 .avatar-container
                     img#dart_image1.ui.medium.image(src=user.avatarImg)
 
-    script.
+    //- script.
         //- set variable the setProgressBar.js script will use to set the progress bar
-        var progress = #{user.moduleProgress.identity.percent}
+    //-     var progress = #{user.moduleStatus.identity.challenge}
+    //-     console.log("progress: " + progress);
 
-
-    script(src='/js/setProgressBar.js')  
+    //- script(src='/js/setProgressBar.js')  
 
 
 block append footer
@@ -127,7 +127,9 @@ block scripts
         var futureDate = "#{futureDate}"; 
         var email = "#{user.email}";
         var username = "#{user.name}";
-        var current_percent = "#{user.moduleProgress.identity.percent}";
+        var current_percent = "#{user.moduleStatus.identity.challenge}";
+
+        //- var current_percent = "#{user.moduleProgress.identity.percent}";
         //- var userDBAttempts = !{JSON.stringify(user.moduleProgress)};
 
 

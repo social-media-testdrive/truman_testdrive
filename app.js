@@ -254,7 +254,7 @@ app.get('/intro/:page?/:modId', isValidModId, coursesController.getIntro);
 app.get('/challenge/:page?/:modId', isValidModId, coursesController.getChallenge);
 app.get('/learn/:submod(submod|submod2|submod3)/:page?/:modId', isValidModId, coursesController.getLearn);
 app.get('/explore/:page?/:modId', isValidModId, coursesController.getExplore);
-app.get('/evaluate/:page?/:modId', isValidModId, coursesController.getEvaluate);
+app.get('/evaluation/:page?/:modId', isValidModId, coursesController.getEvaluation);
 app.get('/reflect/:page?/:modId', isValidModId, coursesController.getReflect);
 app.get('/certificate/:modId', isValidModId, coursesController.getCertificate);
 

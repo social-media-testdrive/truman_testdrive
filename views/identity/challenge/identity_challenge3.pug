@@ -69,12 +69,12 @@ block content
     audio(id="unlockBadge", src="/sound/unlock.wav", preload="auto")
 
     script.
-        var progress = #{user.moduleProgress.identity.percent}
+        var progress = #{user.moduleStatus.identity.challenge}
     script(src='/js/setProgressBar.js')  
 
 block append footer
   .ui.container
-    +navButtons('identity', 'challenge3', '/challenge/2/identity', '/learn/submod/identity', 10, 'Back', 'Learn')  
+    +navButtons('identity', 'challenge3', '/challenge/2/identity', '/learn/submod/identity', 100, 'Back', 'Learn')  
 
 
     

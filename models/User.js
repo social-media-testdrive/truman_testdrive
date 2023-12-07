@@ -59,7 +59,7 @@ const userSchema = new mongoose.Schema({
             questionScores: [{ type: Number }],
             questionChoices: Schema.Types.Mixed,
         }],
-        evaluateAttempts: [{
+        evaluationAttempts: [{
             timestamp: { type: Date, default: Date.now },
             scoreTotal: { type: Number, default: 0 },
             correctAnswers: { type: Number, default: 0 },
@@ -104,30 +104,31 @@ const userSchema = new mongoose.Schema({
         postquiz: { type: Number, default: 0 },
     },          
   },
-  modulePageAccessLog: [{
+  modulePageAccessLog: [{   
       type: String,
   }],
-  moduleStatus: [{
-    // none, started, completed
+  moduleStatus: {
     identity: {
-        challenge: { type: String, default: 'none' },  
-        concepts: { type: String, default: 'none' }, 
-        consequences: { type: String, default: 'none' }, 
-        techniques: { type: String, default: 'none' }, 
-        protection: { type: String, default: 'none' }, 
-        practice: { type: String, default: 'none' }, 
-        evaluation: { type: String, default: 'none' }, 
+        intro: { type: Number, default: 0 }, 
+        challenge: { type: Number, default: 0 },  
+        concepts: { type: Number, default: 0 }, 
+        consequences: { type: Number, default: 0 }, 
+        techniques: { type: Number, default: 0 }, 
+        protection: { type: Number, default: 0 }, 
+        practice: { type: Number, default: 0 }, 
+        evaluation: { type: Number, default: 0 }, 
     },     
     romance: {
-        challenge: { type: String, default: 'none' },  
-        concepts: { type: String, default: 'none' }, 
-        consequences: { type: String, default: 'none' }, 
-        techniques: { type: String, default: 'none' }, 
-        protection: { type: String, default: 'none' }, 
-        practice: { type: String, default: 'none' }, 
-        evaluation: { type: String, default: 'none' }, 
+        intro: { type: Number, default: 0 }, 
+        challenge: { type: Number, default: 0 },  
+        concepts: { type: Number, default: 0 }, 
+        consequences: { type: Number, default: 0 }, 
+        techniques: { type: Number, default: 0 }, 
+        protection: { type: Number, default: 0 }, 
+        practice: { type: Number, default: 0 }, 
+        evaluation: { type: Number, default: 0 }, 
     },      
-  }],
+  },
   modulePageTimes: { // marks the progress of each module
     identity: {
         intro_Times: [{
@@ -459,14 +460,14 @@ const userSchema = new mongoose.Schema({
             durationMilliseconds: Number,
             durationFormatted: String
         }],
-        evaluate_Times: [{
+        evaluation_Times: [{
             page: String, 
             startTime: Date, 
             endTime: Date, 
             durationMilliseconds: Number,
             durationFormatted: String
         }],
-        evaluate2_Times: [{
+        evaluation2_Times: [{
             page: String, 
             startTime: Date, 
             endTime: Date, 

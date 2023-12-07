@@ -706,7 +706,9 @@ exports.postForgot = (req, res, next) => {
  */
 exports.postModuleProgress = async (req, res, next) => {
     try {
+      console.log("IN postModuleProgress***************************");
         const moduleToUpdate = req.body.modID;
+        const sectionToUpdate = req.body.currentSection;
 
         const existingUser = await User.findOne({ email: req.user.email });
 
@@ -714,12 +716,14 @@ exports.postModuleProgress = async (req, res, next) => {
             return res.status(404).json({ message: 'User not found.' });
         }
 
-        existingUser.moduleProgress[moduleToUpdate].percent = req.body.percent;
+        // existingUser.moduleProgress[moduleToUpdate].percent = req.body.percent;
+        existingUser.moduleStatus[moduleToUpdate][sectionToUpdate] = req.body.percent;
         existingUser.moduleProgress[moduleToUpdate].link = req.body.link;
 
         await existingUser.save();
 
-        req.user.moduleProgress.identity.percent = req.body.percent;
+        // req.user.moduleProgress.identity.percent = req.body.percent;
+        req.user.moduleStatus[moduleToUpdate][sectionToUpdate] = req.body.percent;
         req.user.moduleProgress.identity.link = req.body.link;
 
         req.session.passport.user = req.user;
@@ -766,12 +770,30 @@ exports.postQuizScore = async (req, res, next) => {
       // Add the prequiz attempt to the challengeAttempts/submod1Attempts/etc array
       existingUser.moduleProgress[modID][sectionAttempts].push(attempt);
 
+      let statusSection;
+      if(currentSection === "challenge") {
+        statusSection = "challenge";
+      } else if(currentSection === "submodOne") {
+        statusSection = "concepts";
+      } else if(currentSection === "submodTwo") {
+        statusSection = "consequences";
+      } else if(currentSection === "submodThree") {
+        statusSection = "techniques";
+      } else if(currentSection === "submodFour") {
+        statusSection = "protection";
+      } else {
+        statusSection = "evaluation";
+      }
+
+      existingUser.moduleStatus[modID][statusSection] = 100;
+
       // save to mongodb database
       await existingUser.save();
 
       // Manually update the session data
       req.session.passport.user.moduleProgress[modID][sectionAttempts] = existingUser.moduleProgress[modID][sectionAttempts];
-
+      req.session.passport.user.moduleStatus[modID][statusSection] = 100;
+      
       // Save the session
       req.session.save((err) => {
         if (err) {

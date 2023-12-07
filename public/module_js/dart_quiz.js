@@ -31,6 +31,9 @@ let modID = this_js_script.attr('mod-id');
 // console.log("**nextLink: " + nextLink);
 
 $(document).ready(function() {    
+    $('.bar').css('width', current_percent + '%');
+    $('.bar').css('background', '#6BBCC7');
+
     // console.log("In dart_quiz.js");
     // console.log("explanation data example:" + questionData[1].choices[3].explanation);
     // console.log("Question Data: " + questionData);
@@ -71,6 +74,9 @@ $(document).ready(function() {
         
                 // console.log("We have previous attempts!");
                 pastAttempts = true;
+                $('.bar').css('width', '100%');
+                $('.bar').css('background', '#2185d0');
+
                 revisitShowFooter = true;
                 // hideTryAgainNext = true;
     
@@ -322,9 +328,13 @@ $(document).ready(function() {
             // let selectedAnswer = ['yes', 'no', 'yes', 'no', [1,2,3,4]];
             // let questionScores = [0, 0, 1, 1, 0];
             
-            postModuleProgress(modID, page, nextLink, progress, current_percent);
-            console.log("Posting quiz attempt to database!");
-            console.log("ScoreTotal is: " + scoreTotal);
+            // current_percent = 100
+            // set status to 100
+
+
+            // postModuleProgress(modID, page, nextLink, progress, 100);
+            // console.log("Posting quiz attempt to database!");
+            // console.log("ScoreTotal is: " + scoreTotal);
             // const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
             fetch('/postQuizScore', {
@@ -490,6 +500,8 @@ function displayCurrentQuestion()
     // let numChoices = Object.keys(questionData[currentQuestion].choices).length;
     // console.log("Num Choices: " + numChoices);
 
+
+
     const htmlImageContainer = $(".htmlImage");
     const checkBoxesContainer = $(".checkboxChoices");
 
@@ -497,6 +509,10 @@ function displayCurrentQuestion()
     // current question we want to display
     const question = questionData[currentQuestion];
 
+    if(!pastAttempts && !viewingAnswer) {
+        $('.bar').css('width', question.progress + '%');
+        // console.log("question.progress: " + question.progress);
+    }
     // Remove all previous question content so we can display the needed question (whether it be a previous one or new one)
     $(".choiceList").empty();
     $(".fourChoices").empty();
@@ -886,6 +902,7 @@ function resetQuiz() {
         $(".choiceList").css("pointer-events", "auto");
         $(".fourChoices").css("pointer-events", "auto");
         $(".checkboxChoices").css("pointer-events", "auto");
+        $('.bar').css('background', '#6BBCC7');
     }
 
     // viewingAnswer = false;

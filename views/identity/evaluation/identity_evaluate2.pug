@@ -76,7 +76,7 @@ block content
 
 block append footer
   .ui.container
-    +navButtons('identity', 'evaluate2', '/evaluate/identity', '/reflect/identity', 90, 'Back', 'Complete Evaluate')  
+    +navButtons('identity', 'evaluation2', '/evaluation/identity', '/reflect/identity', 90, 'Back', 'Complete Evaluation')  
 
 
     
@@ -86,7 +86,7 @@ block append footer
 
 block scripts
   script.
-    postStartTime("identity", "evaluate2");
+    postStartTime("identity", "evaluation2");
 
     function animateBadge() {
       $('#earned_badge')

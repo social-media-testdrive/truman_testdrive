@@ -1,4 +1,4 @@
-function postModuleProgress(module_id, page, link_to_post, percent_to_post, current_percent) {
+function postModuleProgress(module_id, page, current_section, link_to_post, percent_to_post, current_percent) {
     // $('#loadingScreen').removeClass('hidden');
     $('#nextButton').text('Loading...');
     $('#nextButton').css('pointer-events', 'none');
@@ -38,6 +38,7 @@ function postModuleProgress(module_id, page, link_to_post, percent_to_post, curr
             },
             body: JSON.stringify({
                 "modID": module_id,
+                "currentSection": current_section,
                 "percent": parsedPercentToPost,
                 "link": link_to_post,
             })

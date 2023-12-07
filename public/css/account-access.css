@@ -1,8 +1,13 @@
 /* html {
 font-size: 1rem;
 } */
+
 #page-article {
     background: linear-gradient(to bottom, #3757A6, #091d32);
+}
+
+.ui.middle.aligned.center.aligned.grid {
+    height: 100%;
 }
 
 
@@ -175,6 +180,7 @@ h2 {
 
 .password-text {
     font-weight: bold;
+    margin-top: -5px;
 }
 
 input:focus {
@@ -195,6 +201,19 @@ input#password {
     position: absolute; 
     left: -10%; 
     margin-top:-3px;
+}
+@media (max-width: 920px) {
+    .help-container {
+        margin-top:5px;
+    }
+
+    .password-toggle {
+        top: 3.5%;
+    }
+
+    .password-text {
+        margin-top: -8px;
+    }
 }
 
 i.icon.large.info.circle.blue.link {

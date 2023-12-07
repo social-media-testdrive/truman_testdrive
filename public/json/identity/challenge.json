@@ -1,8 +1,9 @@
 {
   "1": {
+    "progress": 20,
     "type": "yes_no",
     "partial": "q1.html",
-    "prompt": "1. Is this email a scam?",
+    "prompt": "1. You reach out to Apple Customer Support for help setting up your new phone and get this email in response. Is it scam?",
     "choices": {
       "yes": {
         "text": "Yes"
@@ -15,9 +16,10 @@
     "correctResponse": "no"
   },
   "2": {
+      "progress": 40,
       "type": "yes_no",
       "partial": "q2.html",
-      "prompt": "2. Is this email a scam?",
+      "prompt": "2. You receive the following email. Is it a scam?",
       "choices": {
         "yes": {
           "text": "Yes"
@@ -30,9 +32,10 @@
       "correctResponse": "yes"
   },
   "3": {
+    "progress": 60,
     "type": "yes_no",
     "partial": "q3.html",
-    "prompt": "3. Is this message a scam?",
+    "prompt": "3. You receive the following text message. Is it a scam?",
     "choices": {
       "yes": {
         "text": "Yes",
@@ -47,9 +50,10 @@
     "correctResponse": "yes"
   },
   "4": {
+    "progress": 80,
     "type": "yes_no",
     "partial": "q4.html", 
-    "prompt": "4. Is this message a scam?",
+    "prompt": "4. You receive the following text message after trying to login to Venmo. Is it a scam?",
     "choices": {
       "yes": {
         "text": "Yes"
@@ -62,6 +66,7 @@
     "correctResponse": "no"
   },
   "5": {
+      "progress": 95,
       "type": "multi_select",
       "partial": "none",
       "prompt": "5. What could occur if your identity is stolen? Select all that apply:",

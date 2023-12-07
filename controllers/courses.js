@@ -1,6 +1,7 @@
 // for json file reading
 const fs = require('fs');
 const util = require('util');
+const User = require('../models/User');
 
 // Promisify the readFile method
 fs.readFileAsync = util.promisify(fs.readFile);
@@ -42,18 +43,82 @@ exports.getAbout = (req, res) => {
   res.render(introPage, { title });
 };
 
+
+function parseURL(url) {
+  const urlArray = url.split('/').filter(Boolean); // Split URL by '/' and remove empty elements
+  const paramCount = urlArray.length - 1; // Excluding the first empty element due to the leading slash
+
+  if (paramCount === 2) {
+      const [section, modId] = urlArray.slice(1);
+      return { section, modId };
+  } else if (paramCount === 3) {
+      const [section, pageNum, modId] = urlArray.slice(1);
+      return { section, pageNum, modId };
+  } else {
+      return null; // URL doesn't match the expected parameter count
+  }
+}
+
 /**
  * GET /intro/:page?/:modId
  * Render the intro pages for the module.
  */
-exports.getIntro = (req, res) => {
-  const modId = req.params.modId;
-  const pageNum = req.params.page;
+exports.getIntro = async (req, res, next) => {
+  const totalNumPages = 3;
+  
+  let url = req.originalUrl;
+  const urlArray = url.split('/').filter(Boolean);
+  const paramCount = urlArray.length;
+
+  console.log("urlArray: ", urlArray);
+  console.log("paramCount: ", paramCount);
+
+  let section, pageNum, modId;
+
+  if (paramCount === 2) {
+      [section, modId] = urlArray;
+  } else if (paramCount === 3) {
+      [section, pageNum, modId] = urlArray;
+  } else {
+      console.log('Invalid URL or incorrect parameter count.');
+      return; // Exit function if URL doesn't match expected parameter count
+  }
+
+
+  console.log("section", section);
+  console.log("modId", modId);
+  // const modId = "identity";
+  // const section = "intro"
+  // const pageNum = 1;
   
   const introPage = `${modId}/intro/${modId}_intro${pageNum || ''}`;
   const title = 'Intro';
+  
+  // console.log("req: ", req.originalUrl)
+  try {
+    const existingUser = await User.findOne({
+      email: req.user.email
+    });
 
-  res.render(introPage, { title });
+    if (existingUser) {
+      console.log("existing user: ", existingUser);
+
+      if(pageNum === undefined) {
+        pageNum = 1;
+      }
+      let progress = (pageNum / totalNumPages) * 100;
+      existingUser.moduleStatus[modId][section] = progress;
+      await existingUser.save();
+ 
+      res.render(introPage, { title });
+    } else {
+      res.render(introPage, { title });
+      // res.status(500).send('Error updating intro progress status: ' + err.message);
+    }
+  } catch (err) {
+    next(err);
+  }
+
 };
 
 
@@ -81,7 +146,7 @@ exports.getChallenge = async (req, res) => {
     let page = "challenge2";
     let backLink = "/challenge/identity";
     let nextLink = "/challenge/3/identity";
-    let progress = 8;
+    let progress = 100  ;
 
     // __dirname is the directory of the current module. Here it is to courses.js instead of app.js so we need to go up one directory
     const data = await fs.readFileAsync(`${__dirname}/../public/json/` +  req.params.modId + `/challenge.json`);
@@ -274,25 +339,25 @@ exports.getExplore = (req, res) => {
 
 
 /**
- * GET /evaluate/:page?/:modId
- * Render the evaluate page for the module.
+ * GET /evaluation/:page?/:modId
+ * Render the evaluation page for the module.
  */
-exports.getEvaluate = async (req, res) => {
+exports.getEvaluation = async (req, res) => {
   const modId = req.params.modId;
   const pageNum = req.params.page;
-  const title = 'Evaluate';
+  const title = 'Evaluation';
 
   // render the quiz else the normal page
   if(modId === "identity" && parseInt(pageNum) !== 2) {
-    console.log("in evaluate if statement*************")
+    console.log("in evaluation if statement*************")
     let quizData;
     let modID = "identity";
-    let currentSection = "evaluate";
-    let page = "evaluate";
+    let currentSection = "evaluation";
+    let page = "evaluation";
     let backLink = "/explore/4/identity";
-    let nextLink = "/evaluate/2/identity";
+    let nextLink = "/evaluation/2/identity";
     let progress = 85;
-    const data = await fs.readFileAsync(`${__dirname}/../public/json/` +  req.params.modId + `/evaluate.json`);
+    const data = await fs.readFileAsync(`${__dirname}/../public/json/` +  req.params.modId + `/evaluation.json`);
     quizData = JSON.parse(data.toString());
 
     const currentTime = getCurrentTime();
@@ -300,7 +365,7 @@ exports.getEvaluate = async (req, res) => {
     const futureDate = getFutureDate();
 
     res.render('dart-quiz-template.pug', {
-        title: 'Evaluate',
+        title: 'Evaluation',
         quizData,
         modID,
         currentSection,
@@ -313,7 +378,7 @@ exports.getEvaluate = async (req, res) => {
         futureDate
     });
   } else {
-    const introPage = `${modId}/evaluate/${modId}_evaluate${pageNum || ''}`;
+    const introPage = `${modId}/evaluation/${modId}_evaluation${pageNum || ''}`;
 
     res.render(introPage, { title });
   }
