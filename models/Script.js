@@ -8,8 +8,6 @@ const scriptSchema = new mongoose.Schema({
     module: String, //name of lesson mod for this script (i.e. cyberbullying, etc)
     type: String, //type of post (neutral, Food/Gaming/Sports) only used in targeted ads
     picture: String, //filename of the image for this post
-    highread: Number, //not used in TestDrive (should kill)
-    lowread: Number, //not used in TestDrive (should kill)
     likes: Number, //number of likes this post has
     info_text: String,
     actor: { type: Schema.ObjectId, ref: 'Actor' }, // Actor who "wrote" this post
@@ -32,5 +30,4 @@ const scriptSchema = new mongoose.Schema({
 
 
 const Script = mongoose.model('Script', scriptSchema);
-
 module.exports = Script;

@@ -725,7 +725,6 @@ exports.postStartPageAction = (req, res, next) => {
         //Post does not exist yet in User DB, so we have to add it now
         let cat = req.body.action;
         // add new post into correct location
-        console.log(cat);
         userAction.push(cat);
         // save to DB
         user.save((err) => {

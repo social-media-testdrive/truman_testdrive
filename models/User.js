@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+const bcrypt = require('@node-rs/bcrypt');
 const crypto = require('crypto');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
@@ -12,11 +12,11 @@ const userSchema = new mongoose.Schema({
     password: String, // hashed and salted
     // passwordResetToken: String,
     // passwordResetExpires: Date,
-    active: { type: Boolean, default: true }, // currently active? Not used in TestDrive
+    active: { type: Boolean, default: true }, // Used in Research TestDrive
     isAdmin: { type: Boolean, default: false }, // is an Admin? (only changed directly in DB)
     isInstructor: { type: Boolean, default: false }, // is this user an Instructor
-    isStudent: { type: Boolean, default: false }, // is this user a student
-    isGuest: { type: Boolean, default: false }, // is this user a guest
+    isStudent: { type: Boolean, default: false }, // is this user a Student
+    isGuest: { type: Boolean, default: false }, // is this user a Guest
     // className: {type: String, default: ''}, // which class this user belongs to, if a student
     accessCode: { type: String, default: '' }, // which class this user belongs to, if a student
     completed: { type: Boolean, default: false }, // Not used in TestDrive
@@ -47,15 +47,6 @@ const userSchema = new mongoose.Schema({
     // numActorReplies: { type: Number, default: -1 }, // How many times has an actor commented on this user
 
     lastNotifyVisit: Date, // date user last visited the site
-
-    mturkID: String, // Not used in TestDrive
-
-    // Experimental group of this user
-    // Not used in TestDrive
-    // group: String, // full group type
-    // ui: String,    // just UI type (no or ui)
-    // notify: String, // notification type (no, low or high)
-
     // tokens: Array,
 
     blocked: [String], // actors user has blocked, Not used in TestDrive
@@ -373,26 +364,26 @@ const userSchema = new mongoose.Schema({
 /**
  * Password hash middleware.
  */
-userSchema.pre('save', function save(next) {
+userSchema.pre('save', async function save(next) {
     const user = this;
     if (!user.isModified('password')) { return next(); }
-    bcrypt.genSalt(10, (err, salt) => {
-        if (err) { return next(err); }
-        bcrypt.hash(user.password, salt, (err, hash) => {
-            if (err) { return next(err); }
-            user.password = hash;
-            next();
-        });
-    });
+    try {
+        user.password = await bcrypt.hash(user.password, 10);
+        next();
+    } catch (err) {
+        next(err);
+    }
 });
 
 /**
  * Helper method for validating user's password.
  */
-userSchema.methods.comparePassword = function comparePassword(candidatePassword, cb) {
-    bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
-        cb(err, isMatch);
-    });
+userSchema.methods.comparePassword = async function comparePassword(candidatePassword, cb) {
+    try {
+        cb(null, await bcrypt.verify(candidatePassword, this.password));
+    } catch (err) {
+        cb(err);
+    }
 };
 
 /**
