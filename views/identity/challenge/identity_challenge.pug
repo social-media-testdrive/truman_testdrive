@@ -27,12 +27,13 @@ block content
               i.clock.outline.icon
               | 5-10 minutes
           .ui.divider
+          h3 Find out your Identity Theft Resilience Score!
           p DART HQ has gathered a variety of messages encountered online. Your task? Differentiate between what’s genuine and what's a scam. Then rate statements regarding your online behaviors.
 
           p Take this to assess your current knowledge and earn your first badge!
 
           p Use the buttons below to take or skip the challenge.
-
+          br
           
 
 
@@ -68,7 +69,7 @@ block content
 
 block append footer
   .ui.container
-    +navButtons('identity', 'challenge', '/intro/identity', '/challenge/2/identity', 20, 'Back' , 'Take Challenge', true, '/learn/submod/identity')
+    +navButtons('identity', 'challenge', '/about/identity', '/challenge/2/identity', 20, 'Back' , 'Take Challenge', true, '/learn/submod/identity')
 
 
 block styles
@@ -79,4 +80,5 @@ block styles
 block scripts
   script.
     postStartTime("identity", "challenge");
+    //- $('#header-title').text("Identity Theft - Challenge");
 

@@ -20,13 +20,15 @@ footer {
 
 #theft-progress {
     border-radius: 0px !important;
+    margin: 0px !important;
+    padding: 0px !important;
+
 }
 /* progress bar */
 #theft-progress .bar {
     border-radius: 0px !important;
     max-height: 15px !important;
     transition: width 0.3s ease-in-out !important; /* Transition property */
-    
     /* position: absolute; 
     top: 70px; 
     width: 100%;; */

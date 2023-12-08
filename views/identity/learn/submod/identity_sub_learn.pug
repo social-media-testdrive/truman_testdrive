@@ -3,34 +3,68 @@ extends ../../../module_layout
 block content
 
   .ui.container#raised-container
-    .limit
-      h1.ui.header.large#mod-title
-        .content
-          | Chapter 1: Concepts & Consequences 
-      br
-      //- p This module has been thoughtfully designed to help you gain a comprehensive understanding of identity theft scams, including their risks, warning signs and practical methods. Our primary objective is to empower you with the knowledge and methods necessary to safeguard yourself effectively. Throughout this module, you will explore three sections that cover the following topics:
-      p In this chapter we'll explore the important aspects of identity theft and what could happen if it affects you or someone you know.
-      .ui.centered.stackable.grid#section-grid
-        .four.wide.column
-          .ui.huge.label.lockContainer.unlocked
-            i.big.unlock.icon
-          p Chapter 1: Concepts & Consequences
-        .four.wide.column
-          .ui.huge.label.lockContainer
-            i.big.lock.icon
-          p Chapter 2: Recognize Techniques
-        .four.wide.column
-          .ui.huge.label.lockContainer
-            i.big.lock.icon
-          p Chapter 3: Methods of Protection  
+    .limit#learn-target(style="padding: 0;")
+      //- h1 Chapter 1: Concepts
+      //- br
+      .ui.grid.computer.only
+        .ten.wide.column
+          h1.ui.header.large#learn-title
+            i.bullseye.icon
+            | Learning Targets
+          ul.no-bullets
+            li
+              img(src="/images/dart-bullet.svg", alt="Bullet Point")
+              | Understand the basics of identity theft
+
+            li
+              img(src="/images/dart-bullet.svg", alt="Bullet Point")
+              | Discover what information scammers are after
+
+            //- li
+            //-   img(src="/images/dart-bullet.svg", alt="Bullet Point")
+            //-   | Practice online identity management
+        .six.wide.column
+          //- img.ui.image#villain-image(src="/images/villains.png", alt="Disguised SCAMM villains")
+          .villain-container
+            img.villain-image(src='/images/villains.png')
+            img.villain-reveal.hidden(src='/images/villains-reveal.png')
+      .ui.grid.tablet.only.mobile.only
+        .row
+          h1.ui.header.large#learn-title
+            i.bullseye.icon
+            | Learning Targets
+
+          ul.no-bullets(style="text-align: left;")
+            li
+              img(src="/images/dart-bullet.svg", alt="Bullet Point")
+              | Understand the basics of identity theft
+
+            li
+              img(src="/images/dart-bullet.svg", alt="Bullet Point")
+              | Discover what information scammers are after
+
+            //- li
+            //-   img(src="/images/dart-bullet.svg", alt="Bullet Point")
+            //-   | Practice online identity management
+        .row
+          .villain-container(style="margin: 0 auto;")
+            img.villain-image(src='/images/villains.png')
+            img.villain-reveal.hidden(src='/images/villains-reveal.png')
+    //- Fill progress bar to correct percent and color 
     script.
         var progress = #{user.moduleProgress.identity.percent}
     script(src='/js/setProgressBar.js')  
 
 block append footer
   .ui.container
-    +navButtons('identity', 'sub_learn', '/challenge/3/identity', '/learn/submod/2/identity', 12, 'Back', 'Start Chapter 1')  
+    +navButtons('identity', 'sub_learn', '/about/identity', '/learn/submod/2/identity', 12, 'Back', 'Start Chapter 1')  
+
+block styles 
+  link(rel='stylesheet', href='/css/learning-targets.css')
+  link(rel='stylesheet', href='/css/middle-aligned-layout.css')
 
 block scripts
   script.
     postStartTime("identity", "sub_learn");
+    $('#header-title').text("Identity Theft - Concepts");
+  script(src='/module_js/identity/villain-reveal.js')

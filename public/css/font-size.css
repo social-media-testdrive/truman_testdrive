@@ -33,6 +33,17 @@
     font-style: normal;
 }
   
+.header-font {
+    font-family: stolzl, helvetica nueue, heltvetica, sans-serif !important;
+}
+
+h1.ui.header {
+    font-family: stolzl, helvetica nueue, heltvetica, sans-serif !important;
+}
+
+.sapphire {
+    color: #3657a6;
+}
 p, 
 .ui.grid  {
     font-family: Arial, Helvetica, sans-serif;

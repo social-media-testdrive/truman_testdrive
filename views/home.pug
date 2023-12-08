@@ -6,9 +6,7 @@ block content
       .ui.container
         .ui.stackable.grid
           .row.vertically-center
-            .eight.wide.column
-              img(src="/images/home-hair-color.png", alt="Illustration of older adults safely navigating the online world" style="width: 100%; margin-left: -12px;")
-            .eight.wide.column(style="padding-left: 70px;")
+            .ten.wide.column(style="padding-left: 70px;")
               if user 
                 if user.name === 'Guest'
                   h1.ui.header Welcome Agent! 
@@ -17,20 +15,23 @@ block content
                   h1.ui.header Welcome Agent #{user.name}! 
                   br
               else
-                h1.ui.header Learn to spot online deception and stay scam-free
-                br
+                //- h1.ui.header Recognize and Outsmart Scams
+                h1.ui.header(style="color: #d6e03f; font-weight: 500; font-size: 2.5rem;") Learn to outsmart scams
+                h1.ui.header(style="font-weight: 400; font-size: 1.55rem;") Courses to build your resilience against online deception
               if user
-                button.ui.blue.huge.fluid.button(onclick="location.href='/courses';" )
+                button.ui.blue.huge.cta.button.header-font(onclick="location.href='/courses';" )
                   | Browse Courses
                 br
-                button.ui.huge.fluid.button(onclick="location.href='/dashboard';" )
+                button.ui.huge.cta.button.header-font(onclick="location.href='/dashboard';" )
                   | View Your Learning
               else
-                button.ui.blue.huge.fluid.button(onclick="location.href='/getGuest';" )
+                button.ui.blue.huge.cta.button.header-font(onclick="location.href='/getGuest';" )
                   | Get Started
                 br
-                button.ui.huge.fluid.button(onclick="location.href='/login';" )
+                button.ui.huge.cta.button.header-font(onclick="location.href='/login';" )
                   | I’m a Returning User
+            .six.wide.column
+              img(src="/images/learning-together.png", alt="Illustration of older adults safely navigating the online world" style="width: 100%;")
 
 
         //- h1.ui.header.center.aligned Learn to spot online deception and stay scam-free
@@ -56,18 +57,38 @@ block content
         //- h2.ui.header.center.aligned#our-mission Our Mission 
         .ui.stackable.grid
           //- First section with text on the left and image on the right
+
           .row.computer.only.tablet.only.vertically-center
             .eight.wide.column
-              h2.info-header Prepare yourself for the online world
-              p While the internet can improve our lives, it also presents risks. The Deception Awareness and Resilience Training (DART) platform offers training to help you spot false information and avoid scams.
+              .ui.fluid.card
+                .content
+                  h2.info-header Securely engage online
+                .image
+                  img(src="/images/online-world.png" alt="Image description")
+                .content
+                  p While the internet can improve our lives, it also presents risks. The 
+                    span.sapphire Deception Awareness and Resilience Training (DART) 
+                    | platform offers training to help you spot false information and avoid scams.
+            .eight.wide.column(style="margin: 0; padding: 0; display: flex; align-items: center;")
+              img(src="/images/online-world.png" alt="Image description" style="width: 90%;margin-left: 50px;")
+
+
+          .row.computer.only.tablet.only.vertically-center
+            .eight.wide.column
+              h2.info-header Securely engage online
+              p While the internet can improve our lives, it also presents risks. The 
+                span.sapphire Deception Awareness and Resilience Training (DART) 
+                | platform offers training to help you spot false information and avoid scams.
             .eight.wide.column(style="margin: 0; padding: 0; display: flex; align-items: center;")
               img(src="/images/online-world.png" alt="Image description" style="width: 90%;margin-left: 50px;")
           .row.mobile.only.vertically-center
             .eight.wide.column(style="margin: 0; padding: 0; display: flex; align-items: center;padding-bottom: 15px;")
               img(src="/images/online-world.png" alt="Image description" style="width: 90%;margin-left: 50px;")
             .eight.wide.column
-              h2.info-header Prepare yourself for the online world
-              p While the internet can improve our lives, it also presents risks. The Deception Awareness and Resilience Training (DART) platform offers training to help you spot false information and avoid scams.
+              h2.info-header Securely engage online
+              p While the internet can improve our lives, it also presents risks. The 
+                span.sapphire Deception Awareness and Resilience Training (DART) 
+                | platform offers training to help you spot false information and avoid scams.
          
 
           //- Second section with image on the right and text on the left
@@ -75,39 +96,43 @@ block content
             .eight.wide.column
               img(src="/images/hands-on.png" alt="Image description" style="width: 100%; margin-left: -10px;")
             .eight.wide.column(style="padding-left: 50px;")
-              //- h2.info-header Prepare yourself for the online world
-              h2.info-header Engaging hands-on learning
-              p DART simulates realistic digital dilemmas and scenarios that you may encounter while navigating digital technology and services.
+              h2.info-header Interactive
+              p DART simulates 
+                span.sapphire realistic digital dilemmas and scenarios 
+                | that you may encounter while navigating digital technology and services.
 
           //- Third section with image on the left and text on the right
           .row(style="margin-top: 20vh;margin-bottom: -2px; padding-bottom: 0;").vertically-center
             .eight.wide.column
-              //- h2.info-header Prepare yourself for the online world
               h2.info-header Play. Practice. Protect.
-              p Your knowledge will enable you to protect you and your loved ones from online scams and deception.
+              p Your knowledge will enable you to 
+                span.sapphire protect yourself and your loved ones 
+                | from online scams and deception.
             .eight.wide.column
               img(src="/images/protect.png" alt="Protect the people in your community" style="width: 100%")
 
     .row(style="background: #E7F3F8;")
       .ui.container(style="padding-top: 25vh; padding-bottom: 30vh;")
         .ui.stackable.grid(style="height: 119%;")
-          .four.wide.column.computer.only
-            img(src="/images/phone-bg.png", alt="Phone screen" style="width: 250px;height:450px;position: absolute;top:4px;left:3px;z-index:100;pointer-events:none;")
-            .ui.container(style="display: flex;justify-content: left;")
-              .containerz
-                .single-item(style="width: 225px;position: absolute;")
-                  .slide-holder
-                      //- p 1 
-                      img(src="/images/demo.png", alt="DART app's logo screen;")
-                  .slide-holder 
-                      //- p 2 
-                      img(src="/images/demo2.png", alt="Puzzle match minigame")
-                  .slide-holder 
-                      //- p 3 
-                      img(src="/images/demo3.png", alt="Cryptogram complete the sentence minigame")
-                  .slide-holder 
-                      //- p 4
-                      img(src="/images/demo4.png", alt="Dot connect wordfinder minigame")
+          .six.wide.column.computer.only
+            //- img(src="/images/phone-bg.png", alt="Phone screen" style="width: 250px;height:450px;position: absolute;top:4px;left:3px;z-index:100;pointer-events:none;")
+            video-js#my_video_1.video-js.vjs-default-skin.vjs-show-big-play-button-on-pause(width='800px' height='800px' controls='' preload='none' data-setup='{ "poster":"/images/deepcover-poster.png", "aspectRatio":"1:1", "controlBar": {"pictureInPictureToggle": false}}')
+              source(src='https://dart-store.s3.amazonaws.com/deepcover-intro.mp4' type='video/mp4')
+            //- .ui.container(style="display: flex;justify-content: left;")
+            //-   .containerz
+            //-     .single-item(style="width: 225px;position: absolute;")
+            //-       .slide-holder
+            //-           //- p 1 
+            //-           img(src="/images/demo.png", alt="DART app's logo screen;")
+            //-       .slide-holder 
+            //-           //- p 2 
+            //-           img(src="/images/demo2.png", alt="Puzzle match minigame")
+            //-       .slide-holder 
+            //-           //- p 3 
+            //-           img(src="/images/demo3.png", alt="Cryptogram complete the sentence minigame")
+            //-       .slide-holder 
+            //-           //- p 4
+            //-           img(src="/images/demo4.png", alt="Dot connect wordfinder minigame")
           //- show phone demo above rather then besides for tablet
           .tablet.only.row 
             img(src="/images/phone-bg.png", alt="Phone screen" style="width: 250px;height:450px;position: absolute;top:3.8px;left:33.5%;z-index:100;pointer-events:none;")
@@ -143,9 +168,9 @@ block content
                     //- p 4
                     img(src="/images/demo4.png", alt="Dot connect wordfinder minigame")
               br
-          .sixteen.wide.mobile.only.sixteen.wide.tablet.only.twelve.wide.computer.only.column(style="margin: 0; padding: 0; display: flex; align-items: center;")
+          .sixteen.wide.mobile.only.sixteen.wide.tablet.only.ten.wide.computer.only.column(style="margin: 0; padding: 0; display: flex; align-items: center;")
             .text-container(style="display: block; margin-left: 50px;")
-              h2 Get our companion app: Deepcover
+              h2 Get our companion app: Deepcover              
               p Discover your inner detective as you go on missions to take down rogue agent Walter FANG and his sneaky organization, SCAMM. Play minigames set across the globe, from the lively streets of New York to charming Tokyo.
               p Deepcover reinforces the concepts from DART Learn, helping you solidify your knowledge while having a great time!
               p Start your Deepcover adventure today, available on Google Play and the Apple App Store!
@@ -153,7 +178,9 @@ block content
                 img(src="/images/download-app-store.svg", alt="Download on App Store", style="width: 200px; height: auto;")
               a(href="https://play.google.com/store/apps/details?id=com.whitethorngames.dartgame&hl=en_US&gl=US", target="_blank", rel="noreferrer noopener")
                 img(src="/images/download-google-play.svg", alt="Download on Google Play", style="width: 200px; height: auto;")
-
+              br
+              br
+              br
         //- img(src="/images/sponsors/sponsors.png" alt="Image description" style="width: 100%;")
     .row(style="background-color: white;")
       .ui.container(style="padding-top: 2vh; padding-bottom: 2vh; background-color: white;")
@@ -202,54 +229,89 @@ block scripts
   script(src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js')
   script(src='/js/header-transition.js')
   script.
-      $(document).ready(function(){
-          $('.message .close')
-            .on('click', function() {
-              $(this)
-                .closest('.message')
-                .transition('fade')
-             ;
-          })
+    let firstPlayClick = true; 
+
+    function startJiggle() {
+      $('.vjs-big-play-button')
+        .transition({
+          animation: 'jiggle'
+      });
+    }
+
+    startJiggle();
+
+    //- setInterval(startJiggle, 1000);
+    var jiggleInterval = setInterval(startJiggle, 5000);
+
+    $(document).ready(function(){
+        //- $('.vjs-big-play-button')
+        //-   .transition({
+        //-     animation : 'looping jiggle',
+        //-   })
+        //- ;
+        $('video-js').on('click', function() {
+          //- console.log("pressed here")
+          clearInterval(jiggleInterval);
+          $('.vjs-big-play-button').transition('remove')
+
+          //- fix button not automatically hiding if user clicks right as transition happens
+          if(firstPlayClick) {
+            $('.vjs-big-play-button').hide();
+            firstPlayClick = false;
+          } else {
+            $('.vjs-big-play-button').show();  
+            firstPlayClick = true;
+          }
+        });
 
 
-           //- for app demo slider
-          $('.single-item').slick({
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              dots: false,
-              arrows: false,
-              infinite: true,
-              autoplay: true,
-              autoplaySpeed: 3000 // milliseconds
-          });
+        $('.message .close')
+          .on('click', function() {
+            $(this)
+              .closest('.message')
+              .transition('fade')
+            ;
+        })
 
-          //- For popular courses slider
-          /* Referenced Source: https://codepen.io/dannyarty/pen/JjKrPOL */
-          //- $('.slider').slick({
-          //-   slidesToShow: 3,
-          //-   slidesToScroll: 1,
-          //-   zIndex: 1,
-          //-   accessibility: true,
-          //-   arrows: true,
-          //-   dots: false,
-          //-   centerMode: true,
-          //-   variableWidth: true,
-          //-   infinite: true,
-          //-   focusOnSelect: true,
-          //-   cssEase: 'linear',
-          //-   touchMove: true,
-          //-   prevArrow:'<button class="slick-prev"> < </button>',
-          //-   nextArrow:'<button class="slick-next"> > </button>',
-          //-   responsive: [                        
-          //-       {
-          //-         breakpoint: 576,
-          //-         settings: {
-          //-           centerMode: false,
-          //-           variableWidth: false,
-          //-         }
-          //-       },
-          //-   ]
-          //-   });
+
+          //- for app demo slider
+        $('.single-item').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            dots: false,
+            arrows: false,
+            infinite: true,
+            autoplay: true,
+            autoplaySpeed: 3000 // milliseconds
+        });
+
+        //- For popular courses slider
+        /* Referenced Source: https://codepen.io/dannyarty/pen/JjKrPOL */
+        //- $('.slider').slick({
+        //-   slidesToShow: 3,
+        //-   slidesToScroll: 1,
+        //-   zIndex: 1,
+        //-   accessibility: true,
+        //-   arrows: true,
+        //-   dots: false,
+        //-   centerMode: true,
+        //-   variableWidth: true,
+        //-   infinite: true,
+        //-   focusOnSelect: true,
+        //-   cssEase: 'linear',
+        //-   touchMove: true,
+        //-   prevArrow:'<button class="slick-prev"> < </button>',
+        //-   nextArrow:'<button class="slick-next"> > </button>',
+        //-   responsive: [                        
+        //-       {
+        //-         breakpoint: 576,
+        //-         settings: {
+        //-           centerMode: false,
+        //-           variableWidth: false,
+        //-         }
+        //-       },
+        //-   ]
+        //-   });
       });
 
                       

@@ -4,17 +4,24 @@ header(style="z-index: 1000 !important;")
             .left.menu
                 .item
                     a(href='#')
-                        i.hamburger.large.black.icon
+                        i.hamburger.big.black.icon
                 .item  
-                    h1#header-title Identity Theft 
+                    h1#header-title Identity Theft
+                //- .ui.container(style="position: absolute;  left: 25%; top: 100%; width: 200px;")
+                //-     h1 Challenge
+            //- .left.menu
+            //-     .item
+            //-         h2 Chapter 1
             .right.menu
                 a.item#exit-button
-                    i.home.large.icon
+                    i.home.big.icon
+
     //- #theft-progress.ui.small.bottom.progress(style='z-index: -1; position: absolute; top: 70px; width: 100%;' data-percent='33')
     #theft-progress.ui.small.bottom.progress
         .bar(style='border-radius: 0 !important;')
             //- .progress
             //-  have the progress bar transition bigger and show percent number when hovering
+
 //- Modal
 .ui.modal#exit-modal(style="z-index: 999999; width: 400px;")
     .header Are you sure you want to exit?

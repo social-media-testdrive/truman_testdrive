@@ -77,6 +77,9 @@
     display: grid;
 }
 
+.checkboxChoices label p {
+    line-height: 2.1rem !important;
+}
 
 
 .checkboxChoices .ui.checkbox.listChoices {

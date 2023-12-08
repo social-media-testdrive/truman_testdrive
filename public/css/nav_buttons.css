@@ -8,6 +8,11 @@
     
 } */
 
+#saveExitButton {
+    background-color: #d6e03f;
+    color: #151c22;
+}
+
 #nav-container {
     width: 100%;
     display: flex;

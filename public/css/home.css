@@ -28,7 +28,8 @@ html {
 }
 
 #blue-upper {
-  background: linear-gradient(to bottom, #3757A6, #091D32);
+  /* background: linear-gradient(to bottom, #3757A6, #091D32); */
+  background: #0b2645;
   color: white;
   z-index: 0;
   /* padding-top: 80px; */
@@ -46,8 +47,11 @@ html {
 }
 
 .info-header {
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: 2.5rem;
+  font-weight: normal;
+  color: #0b2645;
+  font-family: stolzl, helvetica nueue, heltvetica, sans-serif;
+  /* font-weight: bold; */
 }
 
 .vertically-center {
@@ -55,19 +59,28 @@ html {
   align-items: center !important;
 }
 
-button.ui.fluid {
-  font-family: 'Titillium Web', sans-serif;
+button.ui.cta {
   font-size: 1.75rem; /* 28 pixels */
+  font-weight: normal;
+  min-width: 320px;
+  transition: background 0.3s ease-in-out;
+  border-radius: 15px;
 }
 
-button.ui.blue.huge.fluid.button {
-  border: 2px solid #0EABB2;
+button.ui.blue.huge.cta.button {
+  background: #d6e03f;
+  color: #151c22;
+  margin-bottom: 25px;
+  margin-top: 40px;
 }
 
+button.ui.blue.huge.cta.button:hover {
+  background: #79c4e0;
+}
 h1.ui.header {
   font-size: 2rem;
   color: white;
-  font-family: 'Titillium Web', sans-serif;
+  font-weight: 500;
 }
 
 .ui.container {
@@ -104,7 +117,7 @@ p#aim {
   font-size: 2.75rem;
   font-weight: 600;
   /* font-family: 'Armata', sans-serif; */
-  font-family: 'Titillium Web', sans-serif;
+  font-family: stolzl, helvetica nueue, heltvetica, sans-serif;
 }
 
 .ui.raised.segment {
@@ -138,7 +151,7 @@ p#aim {
   font-size: 2rem !important;
   font-weight: 600 !important;
   /* font-family: 'Armata', sans-serif !important; */
-  font-family: 'Titillium Web', sans-serif !important;
+  font-family: stolzl, helvetica nueue, heltvetica, sans-serif !important;
 }
 
 
@@ -146,7 +159,7 @@ p#aim {
   font-size: 2rem !important;
   font-weight: 600 !important;
   /* font-family: 'Armata', sans-serif !important; */
-  font-family: 'Titillium Web', sans-serif !important;
+  font-family: stolzl, helvetica nueue, heltvetica, sans-serif !important;
 
   margin-top: 10px !important;
 }
@@ -173,7 +186,7 @@ p#aim {
     padding-right: 30px;
     transition: transform 0.3s ease !important;
     /* font-family: 'Armata', sans-serif !important;  */
-    font-family: 'Titillium Web', sans-serif !important;
+    font-family: stolzl, helvetica nueue, heltvetica, sans-serif !important;
 
 }
 
@@ -377,14 +390,14 @@ hr {
   font-size: 2.75rem;
   font-weight: 600;
   /* font-family: 'Armata', sans-serif; */
-  font-family: 'Titillium Web', sans-serif;
+  font-family: stolzl, helvetica nueue, heltvetica, sans-serif;
 }
   
 .home-mod-title {
   font-size: 2rem !important;
   font-weight: 600 !important;
   /* font-family: 'Armata', sans-serif !important; */
-  font-family: 'Titillium Web', sans-serif !important;
+  font-family: stolzl, helvetica nueue, heltvetica, sans-serif !important;
 }
   
 
