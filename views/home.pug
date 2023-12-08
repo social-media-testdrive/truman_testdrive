@@ -53,66 +53,46 @@ block content
     //-   .inner-video
     //-     iframe#intro-video(type='text/html' width='600px' height='340px' src='videos/dart_intro.mp4' frameborder='0')
     .row#white-lower
-      .ui.container
-        //- h2.ui.header.center.aligned#our-mission Our Mission 
-        .ui.stackable.grid
-          //- First section with text on the left and image on the right
+      .ui.fluid.container(style="margin: 0; margin-left: 100px; margin-right: 100px; padding: 0;")
+        .ui.stackable.three.column.grid
+          .column
+            .ui.fluid.card
+              .content.about-card-header
+                h2.info-header Securely engage online
+              .image
+                img(src="/images/online-world.png" alt="Image description")
+              .content
+                p While the internet can improve our lives, it also presents risks. The 
+                  span.sapphire Deception Awareness and Resilience Training (DART) 
+                  | platform offers training to help you spot false information and avoid scams.
+          .column
+            .ui.fluid.card
+              .content.about-card-header
+                h2.info-header Interactive
+              .image
+                img(src="/images/online-world.png" alt="Image description")
+              .content
+                p DART simulates 
+                  span.sapphire realistic digital dilemmas and scenarios 
+                  | that you may encounter while navigating digital technology and services.
+          .column
+            .ui.fluid.card
+              .content.about-card-header
+                h2.info-header Play. Practice. Protect.
+              .image
+                img(src="/images/online-world.png" alt="Image description")
+              .content
+                p Your knowledge will enable you to 
+                  span.sapphire protect yourself and your loved ones 
+                  | from online scams and deception.
 
-          .row.computer.only.tablet.only.vertically-center
-            .eight.wide.column
-              .ui.fluid.card
-                .content
-                  h2.info-header Securely engage online
-                .image
-                  img(src="/images/online-world.png" alt="Image description")
-                .content
-                  p While the internet can improve our lives, it also presents risks. The 
-                    span.sapphire Deception Awareness and Resilience Training (DART) 
-                    | platform offers training to help you spot false information and avoid scams.
-            .eight.wide.column(style="margin: 0; padding: 0; display: flex; align-items: center;")
-              img(src="/images/online-world.png" alt="Image description" style="width: 90%;margin-left: 50px;")
 
 
-          .row.computer.only.tablet.only.vertically-center
-            .eight.wide.column
-              h2.info-header Securely engage online
-              p While the internet can improve our lives, it also presents risks. The 
-                span.sapphire Deception Awareness and Resilience Training (DART) 
-                | platform offers training to help you spot false information and avoid scams.
-            .eight.wide.column(style="margin: 0; padding: 0; display: flex; align-items: center;")
-              img(src="/images/online-world.png" alt="Image description" style="width: 90%;margin-left: 50px;")
-          .row.mobile.only.vertically-center
-            .eight.wide.column(style="margin: 0; padding: 0; display: flex; align-items: center;padding-bottom: 15px;")
-              img(src="/images/online-world.png" alt="Image description" style="width: 90%;margin-left: 50px;")
-            .eight.wide.column
-              h2.info-header Securely engage online
-              p While the internet can improve our lives, it also presents risks. The 
-                span.sapphire Deception Awareness and Resilience Training (DART) 
-                | platform offers training to help you spot false information and avoid scams.
-         
 
-          //- Second section with image on the right and text on the left
-          .row(style="margin-top: 20vh;").vertically-center
-            .eight.wide.column
-              img(src="/images/hands-on.png" alt="Image description" style="width: 100%; margin-left: -10px;")
-            .eight.wide.column(style="padding-left: 50px;")
-              h2.info-header Interactive
-              p DART simulates 
-                span.sapphire realistic digital dilemmas and scenarios 
-                | that you may encounter while navigating digital technology and services.
 
-          //- Third section with image on the left and text on the right
-          .row(style="margin-top: 20vh;margin-bottom: -2px; padding-bottom: 0;").vertically-center
-            .eight.wide.column
-              h2.info-header Play. Practice. Protect.
-              p Your knowledge will enable you to 
-                span.sapphire protect yourself and your loved ones 
-                | from online scams and deception.
-            .eight.wide.column
-              img(src="/images/protect.png" alt="Protect the people in your community" style="width: 100%")
 
-    .row(style="background: #E7F3F8;")
-      .ui.container(style="padding-top: 25vh; padding-bottom: 30vh;")
+    .row(style="background: #E7F3F8; margin-top: 10vh;")
+      .ui.container(style="padding-top: 5vh; padding-bottom: 5vh;")
         .ui.stackable.grid(style="height: 119%;")
           .six.wide.column.computer.only
             //- img(src="/images/phone-bg.png", alt="Phone screen" style="width: 250px;height:450px;position: absolute;top:4px;left:3px;z-index:100;pointer-events:none;")
@@ -244,11 +224,16 @@ block scripts
     var jiggleInterval = setInterval(startJiggle, 5000);
 
     $(document).ready(function(){
-        //- $('.vjs-big-play-button')
-        //-   .transition({
-        //-     animation : 'looping jiggle',
-        //-   })
-        //- ;
+        //- fixes so you can click control bar buttons without messing up the button
+        $('.vjs-control-bar').on('click', function() {
+          //- console.log("in control bar here;")
+          firstPlayClick = !firstPlayClick;
+        });
+        $('.vjs-play-control').on('click', function() {
+          //- console.log("in play button here;")
+          firstPlayClick = !firstPlayClick;
+        });
+        
         $('video-js').on('click', function() {
           //- console.log("pressed here")
           clearInterval(jiggleInterval);
@@ -263,7 +248,6 @@ block scripts
             firstPlayClick = true;
           }
         });
-
 
         $('.message .close')
           .on('click', function() {
