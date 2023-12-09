@@ -222,10 +222,8 @@ block scripts
   script(src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js')
   script(src='/js/header-transition.js')
   script.
-    let firstPlayClick = true; 
-
     function startJiggle() {
-      $('.vjs-big-play-button')
+      $('video-js')
         .transition({
           animation: 'jiggle'
       });
@@ -237,29 +235,8 @@ block scripts
     var jiggleInterval = setInterval(startJiggle, 5000);
 
     $(document).ready(function(){
-        //- fixes so you can click control bar buttons without messing up the button
-        $('.vjs-control-bar').on('click', function() {
-          //- console.log("in control bar here;")
-          firstPlayClick = !firstPlayClick;
-        });
-        $('.vjs-play-control').on('click', function() {
-          //- console.log("in play button here;")
-          firstPlayClick = !firstPlayClick;
-        });
-        
         $('video-js').on('click', function() {
-          //- console.log("pressed here")
           clearInterval(jiggleInterval);
-          $('.vjs-big-play-button').transition('remove')
-
-          //- fix button not automatically hiding if user clicks right as transition happens
-          if(firstPlayClick) {
-            $('.vjs-big-play-button').hide();
-            firstPlayClick = false;
-          } else {
-            $('.vjs-big-play-button').show();  
-            firstPlayClick = true;
-          }
         });
 
         $('.message .close')
