@@ -4,9 +4,9 @@ if (progressBar) {
     progressBar.setAttribute('data-percent', progress);
     progressBar.querySelector('.bar').style.width = progress + "%";
     if(progress > 0 && progress < 100){
-    progressBar.querySelector('.bar').style.backgroundColor = '#6BBCC7';
+    progressBar.querySelector('.bar').style.backgroundColor = '#7AC4E0';
     } else if(progress == 100) {
-    progressBar.querySelector('.bar').style.backgroundColor = '#2185d0';
+    progressBar.querySelector('.bar').style.backgroundColor = '#3757A7';
     }
     // progressBar.querySelector('.progress').textContent = progress + "%";
 } else {

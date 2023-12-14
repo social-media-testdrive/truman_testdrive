@@ -242,11 +242,11 @@ hr {
 }
 
 /* inline so the bubbles like 100 learners today will show up next to it */
-#mod-title {
+/* #mod-title {
     display: inline-block;
     font-size: 2rem;
     font-family: 'Titillium Web', sans-serif;
-}
+} */
 
 
 /* semantic ui ordered lists don't have dots after numbers, so I'm using the normal lists but imported the needed semantic ui styles here*/

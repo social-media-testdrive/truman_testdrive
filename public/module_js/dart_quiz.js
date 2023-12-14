@@ -32,7 +32,7 @@ let modID = this_js_script.attr('mod-id');
 
 $(document).ready(function() {    
     $('.bar').css('width', current_percent + '%');
-    $('.bar').css('background', '#6BBCC7');
+    $('.bar').css('background', '#7AC4E0');
 
     // console.log("In dart_quiz.js");
     // console.log("explanation data example:" + questionData[1].choices[3].explanation);
@@ -75,7 +75,7 @@ $(document).ready(function() {
                 // console.log("We have previous attempts!");
                 pastAttempts = true;
                 $('.bar').css('width', '100%');
-                $('.bar').css('background', '#2185d0');
+                $('.bar').css('background', '#3757A7');
 
                 revisitShowFooter = true;
                 // hideTryAgainNext = true;
@@ -902,7 +902,7 @@ function resetQuiz() {
         $(".choiceList").css("pointer-events", "auto");
         $(".fourChoices").css("pointer-events", "auto");
         $(".checkboxChoices").css("pointer-events", "auto");
-        $('.bar').css('background', '#6BBCC7');
+        $('.bar').css('background', '#7AC4E0');
     }
 
     // viewingAnswer = false;

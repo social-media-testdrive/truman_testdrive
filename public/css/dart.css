@@ -155,6 +155,17 @@ body{
     padding-top: 0; */
 }
 
+/* .ui.breadcrumb a.section {
+    color: #3757A7 !important;
+}
+
+.ui.breadcrumb a.section:hover {
+    color: #2a4380 !important;
+}
+
+.ui.breadcrumb .active.section {
+    color: #0C2746 !important;
+} */
 
 #logo .item {
     padding: 0px;

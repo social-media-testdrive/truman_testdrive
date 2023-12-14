@@ -1,6 +1,10 @@
 mixin navButtons(modId, page, backLink, nextLink, percent, backText='Back', nextText='Next', skipBtn=false, skipLink)
   .ui.container#nav-container
     - let currentSection = page.replace(/\d+/g, '');
+    if (currentSection == 'sub_learn')
+      - let statusSection = 'concepts';
+    else 
+      - let statusSection = currentSection;
     //- p modId: #{modId}
     //- p page: #{page}
     //- p currentSection: #{currentSection}
@@ -16,7 +20,7 @@ mixin navButtons(modId, page, backLink, nextLink, percent, backText='Back', next
       button.ui.huge.basic.button.left.floated#backButton(onclick="postEndTime('" + modId + "', '" + page + "', '" + backLink + "');")
         i.arrow.left.icon
         | #{backText}
-      button.ui.huge.blue.button.right.floated#nextButton(onclick="postModuleProgress('" + modId + "', '" + page + "', '" + currentSection + "', '" + nextLink + "', '" + percent + "', '" + user.moduleStatus[modId][currentSection] + "');")
+      button.ui.huge.blue.button.right.floated#nextButton(onclick="postModuleProgress('" + modId + "', '" + page + "', '" + currentSection + "', '" + nextLink + "', '" + percent + "', '" + user.moduleStatus[modId][statusSection] + "');")
         | #{nextText}
         i.arrow.right.icon
       if skipBtn

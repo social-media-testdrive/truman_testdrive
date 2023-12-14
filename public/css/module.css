@@ -34,6 +34,23 @@ footer {
     width: 100%;; */
 } 
 
+.ui.breadcrumb {
+    font-size: 1.4rem;
+}
+
+.ui.breadcrumb a.section {
+    color: #3757A7 !important;
+}
+
+.ui.breadcrumb a.section:hover {
+    color: #2a4380 !important;
+}
+
+.ui.breadcrumb .active.section {
+    color: #0C2746 !important;
+}
+
+
 #loadingScreen {
     display: flex; 
     justify-content: center; 
@@ -168,12 +185,12 @@ header {
 }
 
 /* inline so the bubbles like 100 learners today will show up next to it */
-#mod-title {
+/* #mod-title {
     display: inline-block;
     font-size: 2rem;
     font-weight: bold;
-    font-family: 'Titillium Web', sans-serif;
-}
+    font-family: stolzl, helvetica nueue, heltvetica, sans-serif !important;
+} */
 
 li strong, li u {
     font-weight: 600;
@@ -183,7 +200,7 @@ li strong, li u {
     font-size: 2rem;
     color: #285362;
     font-weight: bold;
-    font-family: 'Titillium Web', sans-serif;
+    font-family: stolzl, helvetica nueue, heltvetica, sans-serif !important;
 } */
 
 /* semantic ui ordered lists don't have dots after numbers, so I'm using the normal lists but imported the needed semantic ui styles here*/

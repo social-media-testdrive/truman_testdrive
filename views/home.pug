@@ -427,59 +427,13 @@ block content
       .ui.container(style="padding-top: 5vh; padding-bottom: 5vh;")
         .ui.stackable.grid(style="height: 119%;")
           .six.wide.column.computer.only
-            //- img(src="/images/phone-bg.png", alt="Phone screen" style="width: 250px;height:450px;position: absolute;top:4px;left:3px;z-index:100;pointer-events:none;")
             video-js#my_video_1.video-js.vjs-default-skin.vjs-show-big-play-button-on-pause(width='800px' height='800px' controls='' preload='none' data-setup='{ "poster":"/images/deepcover-poster.png", "aspectRatio":"1:1", "controlBar": {"pictureInPictureToggle": false}}')
               source(src='https://dart-store.s3.amazonaws.com/deepcover-intro.mp4' type='video/mp4')
-            //- .ui.container(style="display: flex;justify-content: left;")
-            //-   .containerz
-            //-     .single-item(style="width: 225px;position: absolute;")
-            //-       .slide-holder
-            //-           //- p 1 
-            //-           img(src="/images/demo.png", alt="DART app's logo screen;")
-            //-       .slide-holder 
-            //-           //- p 2 
-            //-           img(src="/images/demo2.png", alt="Puzzle match minigame")
-            //-       .slide-holder 
-            //-           //- p 3 
-            //-           img(src="/images/demo3.png", alt="Cryptogram complete the sentence minigame")
-            //-       .slide-holder 
-            //-           //- p 4
-            //-           img(src="/images/demo4.png", alt="Dot connect wordfinder minigame")
-          //- show phone demo above rather then besides for tablet
-          .tablet.only.row 
-            img(src="/images/phone-bg.png", alt="Phone screen" style="width: 250px;height:450px;position: absolute;top:3.8px;left:33.5%;z-index:100;pointer-events:none;")
-            .ui.container
-              .single-item(style="width: 225px; margin: 0 auto;")
-                .slide-holder
-                    //- p 1 
-                    img(src="/images/demo.png", alt="DART app's logo screen;")
-                .slide-holder 
-                    //- p 2 
-                    img(src="/images/demo2.png", alt="Puzzle match minigame")
-                .slide-holder 
-                    //- p 3 
-                    img(src="/images/demo3.png", alt="Cryptogram complete the sentence minigame")
-                .slide-holder 
-                    //- p 4
-                    img(src="/images/demo4.png", alt="Dot connect wordfinder minigame")
-          .mobile.only.row.hide-small-phone
-            .mobile-demo-container(style="width: 30%; height: 30%;")
-            img(src="/images/phone-bg.png", alt="Phone screen" style="width: 250px;height:450px;position: absolute;top:-12px;left:32%;z-index:100;pointer-events:none;")
-            .ui.container
-              .single-item(style="width: 225px; margin: 0 auto;")
-                .slide-holder
-                    //- p 1 
-                    img(src="/images/demo.png", alt="DART app's logo screen;")
-                .slide-holder 
-                    //- p 2 
-                    img(src="/images/demo2.png", alt="Puzzle match minigame")
-                .slide-holder 
-                    //- p 3 
-                    img(src="/images/demo3.png", alt="Cryptogram complete the sentence minigame")
-                .slide-holder 
-                    //- p 4
-                    img(src="/images/demo4.png", alt="Dot connect wordfinder minigame")
-              br
+          .eight.wide.column.centered.tablet.only.mobile.only
+            video-js#my_video_1.video-js.vjs-default-skin.vjs-show-big-play-button-on-pause(width='800px' height='800px' controls='' preload='none' data-setup='{ "poster":"/images/deepcover-poster.png", "aspectRatio":"1:1", "controlBar": {"pictureInPictureToggle": false}}')
+              source(src='https://dart-store.s3.amazonaws.com/deepcover-intro.mp4' type='video/mp4')
+
+
           .sixteen.wide.mobile.only.sixteen.wide.tablet.only.ten.wide.computer.only.column(style="margin: 0; padding: 0; display: flex; align-items: center;")
             .text-container(style="display: block; margin-left: 50px;")
               h2#get-app Get our companion app: Deepcover              
@@ -531,7 +485,7 @@ block content
             a(href="https://www.nsf.gov/" target="_blank")
               img(src="/images/sponsors/NaturalSciFoundLogo.svg" alt="National Science Foundation partner logo" style="width: 100%;")
           .four.wide.column.centered(style="margin-top: -30px;")
-            a(href="https://www.nsf.gov/" target="_blank")
+            a(href="https://renouncreative.com/" target="_blank")
               img(src="/images/sponsors/renoun-creative-logo.svg" alt="Renoun Creative partner logo" style="width: 100%;")
           .four.wide.column.centered
 
@@ -558,7 +512,7 @@ block scripts
     startJiggle();
 
     //- setInterval(startJiggle, 1000);
-    var jiggleInterval = setInterval(startJiggle, 8000);
+    var jiggleInterval = setInterval(startJiggle, 7000);
 
     $(document).ready(function(){
         $('video-js').on('click', function() {

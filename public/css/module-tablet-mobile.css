@@ -4,7 +4,6 @@ body{
     margin:0; 
     background: white;   
     /* overflow-y: hidden !important; */
-    font-family: 'Titillium Web', sans-serif;
     font-size: 1.125rem;
     line-height: 1.6;
 }
@@ -41,7 +40,6 @@ body{
 /* #header-title {
     display: inline-block;
     font-size: 2.25rem;
-    font-family: 'Titillium Web', sans-serif;
 } */
 
 /* #theft-progress {

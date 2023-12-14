@@ -59,7 +59,10 @@ block content
           .ui.grid
             .row
               .two.wide.centered.column
-                span.fake-checkbox
+                if(user.moduleStatus.identity.concepts === 100)
+                  span.fake-checkbox.completed
+                else
+                  span.fake-checkbox
               .nine.wide.column
                 h3 Concepts
               .five.wide.right.aligned.column
@@ -69,7 +72,10 @@ block content
           .ui.grid
             .row
               .two.wide.centered.column
-                span.fake-checkbox
+                if(user.moduleStatus.identity.consequences === 100)
+                  span.fake-checkbox.completed
+                else
+                  span.fake-checkbox
               .nine.wide.column
                 h3 Consequences
               .five.wide.right.aligned.column
@@ -79,7 +85,10 @@ block content
           .ui.grid
             .row
               .two.wide.centered.column
-                span.fake-checkbox
+                if(user.moduleStatus.identity.techniques === 100)
+                  span.fake-checkbox.completed
+                else
+                  span.fake-checkbox
               .nine.wide.column
                 h3 Recognize Techniques
               .five.wide.right.aligned.column

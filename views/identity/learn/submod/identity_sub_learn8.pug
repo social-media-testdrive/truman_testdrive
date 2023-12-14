@@ -72,12 +72,12 @@ block content
 
 
     script.
-        var progress = #{user.moduleProgress.identity.percent}
+        var progress = #{user.moduleStatus.identity.concepts}
     script(src='/js/setProgressBar.js')  
 
 block append footer
   .ui.container
-    +navButtons('identity', 'sub_learn8', '/learn/submod/7/identity', '/learn/submod2/identity', 26, 'Back', 'Learn')  
+    +navButtons('identity', 'sub_learn8', '/learn/submod/7/identity', '/learn/submod2/identity', 100, 'Back', 'Learn')  
 
 
     

@@ -119,9 +119,11 @@ p,
     line-height: 1.5;
 }
 
+/* module header between hamburger and home icons */
 #header-title {
     display: inline-block;
-    font-size: 2rem;
+    font-size: 1.6rem;
+    font-weight: 500 !important;
     font-family: stolzl, helvetica nueue, heltvetica, sans-serif !important;
 }
 

@@ -4,9 +4,13 @@ header(style="z-index: 1000 !important;")
             .left.menu
                 .item
                     a(href='#')
-                        i.hamburger.big.black.icon
+                        i.hamburger.large.black.icon
                 .item  
-                    h1#header-title Identity Theft
+                    h1#header-title 
+                        .ui.breadcrumb
+                            a.section#header-module(href="/about/identity") Identity Theft
+                            i.right.angle.icon.divider
+                            .active.section#header-section Challenge
                 //- .ui.container(style="position: absolute;  left: 25%; top: 100%; width: 200px;")
                 //-     h1 Challenge
             //- .left.menu
@@ -14,7 +18,7 @@ header(style="z-index: 1000 !important;")
             //-         h2 Chapter 1
             .right.menu
                 a.item#exit-button
-                    i.home.big.icon
+                    i.home.large.icon
 
     //- #theft-progress.ui.small.bottom.progress(style='z-index: -1; position: absolute; top: 70px; width: 100%;' data-percent='33')
     #theft-progress.ui.small.bottom.progress

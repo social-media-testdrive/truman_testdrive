@@ -183,12 +183,13 @@ exports.getLearn = async (req, res) => {
   const submod = req.params.submod;
   const modId = req.params.modId;
   const pageNum = req.params.page;
-  // console.log("***submod is: ", submod);
-  // console.log("MOD ID: ", modId);
-  // console.log(typeof modId);
-  // console.log("PAGE NUM: ", pageNum);
-  // console.log(typeof pageNum);
-  // console.log("******************************")
+
+  console.log("***submod is: ", submod);
+  console.log("MOD ID: ", modId);
+  console.log(typeof modId);
+  console.log("PAGE NUM: ", pageNum);
+  console.log(typeof pageNum);
+  console.log("******************************")
   const title = 'Learn';
   // console.log("DIRNAME: ", __dirname);
 
@@ -285,15 +286,88 @@ exports.getLearn = async (req, res) => {
       const currentTime = getCurrentTime();
       const currentDate = getCurrentDate();
   
+
+
+    
+
+
       if(submod === "submod") {
         learnPage = `${modId}/learn/submod/${modId}_sub_learn${pageNum || ''}`;
+        const totalNumPages = 8;
+        const section = "concepts";
+        let fixPageNum;
+        if(pageNum === undefined) {
+          fixPageNum = 1;
+        } else {
+          fixPageNum = parseInt(pageNum);
+        }
+        // const modId = "identity";
+        // const section = "intro"
+        // const pageNum = 1;
+        
+        // console.log("req: ", req.originalUrl)
+        try {
+          const existingUser = await User.findOne({
+            email: req.user.email
+          });
+      
+          if (existingUser) {
+            // console.log("existing user: ", existingUser);
+      
+            let progress = (fixPageNum / totalNumPages) * 100;
+            existingUser.moduleStatus.identity.concepts = progress;
+            await existingUser.save();
+
+
+
+            
+            // Manually update the session data
+            req.session.passport.user.moduleStatus.identity.concepts  = existingUser.moduleStatus.identity.concepts ;
+            
+            // Save the session
+            req.session.save((err) => {
+              if (err) {
+                return next(err);
+              }
+
+              // Redirect or send a success response
+              res.render(learnPage, { title, currentTime, currentDate });
+            });
+        
+            // res.render(learnPage, { title, currentTime, currentDate });
+          } else {
+            res.render(learnPage, { title, currentTime, currentDate });
+            // res.status(500).send('Error updating intro progress status: ' + err.message);
+          }
+        } catch (err) {
+          console.log("ERROR: ", err);
+          // next(err);
+        }
+      
+
+
+
+
+
+
+
+
+
+
+
       } else if(submod === "submod2") {
         learnPage = `${modId}/learn/submod2/${modId}_sub2_learn${pageNum || ''}`;
+
+        res.render(learnPage, { title, currentTime, currentDate });
+
       } else if(submod === "submod3") {
         learnPage = `${modId}/learn/submod3/${modId}_sub3_learn${pageNum || ''}`;
+
+        res.render(learnPage, { title, currentTime, currentDate });
+
       }
     
-      res.render(learnPage, { title, currentTime, currentDate });
+      // res.render(learnPage, { title, currentTime, currentDate });
   }
 
 };

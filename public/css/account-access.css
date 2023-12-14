@@ -13,7 +13,7 @@ font-size: 1rem;
 
 h1, h2, h3, h4, h5, h6, p, span, div {
     /* font-family: 'Armata', sans-serif; */
-    font-family: 'Titillium Web', sans-serif;
+    font-family: stolzl, helvetica nueue, heltvetica, sans-serif !important;
 }
 
 a {
@@ -27,7 +27,7 @@ a:hover {
 .ui.form label{
     font-size: 1.6rem !important;
     margin-bottom: 7px !important;
-    font-weight: 600 !important;
+    font-weight: 400 !important;
     color: #1B1B1B !important;
 }
 
@@ -51,12 +51,13 @@ input {
 
 .small-text {
     font-size: 1.25rem;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 #inform-terms {
     font-size: 1.2rem;
     font-weight: regular;
+    font-family: Arial, Helvetica, sans-serif !important;
 }
 
 /* .limit {
@@ -144,6 +145,7 @@ h2 {
     vertical-align: middle;
     font-size: 1.25rem;
     margin-bottom: 15px;
+    font-weight: 400;
 }
 
 .ui.basic.red.pointing.prompt.label {
@@ -174,13 +176,14 @@ h2 {
     color: gray;
     position: absolute;
     cursor: pointer;
+    /* margin-top: 1px; */
     top: 13%;
     right: 2%;
 }
 
 .password-text {
-    font-weight: bold;
-    margin-top: -5px;
+    font-weight: 400;
+    margin-top: -3px;
 }
 
 input:focus {

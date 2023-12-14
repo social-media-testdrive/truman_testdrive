@@ -52,7 +52,7 @@ block content
             img.villain-reveal.hidden(src='/images/villains-reveal.png')
     //- Fill progress bar to correct percent and color 
     script.
-        var progress = #{user.moduleProgress.identity.percent}
+        var progress = #{user.moduleStatus.identity.concepts}
     script(src='/js/setProgressBar.js')  
 
 block append footer
@@ -66,5 +66,5 @@ block styles
 block scripts
   script.
     postStartTime("identity", "sub_learn");
-    $('#header-title').text("Identity Theft - Concepts");
+    $('#header-section').text("Concepts");
   script(src='/module_js/identity/villain-reveal.js')

@@ -90,7 +90,7 @@ p {
 #in-progress {
     font-size: 2.75rem;
     font-weight: 600;
-    font-family: 'Titillium Web', sans-serif;
+    font-family: stolzl, helvetica nueue, heltvetica, sans-serif !important;
 }
 
 /* Dart alert hub styles */
@@ -105,7 +105,7 @@ p {
 
 div.ui.header.hub-alert {
     font-size: 1.6rem; 
-    font-family: 'Titillium Web', sans-serif;
+    font-family: stolzl, helvetica nueue, heltvetica, sans-serif !important;
 }
 
 i.exclamation.circle.icon {

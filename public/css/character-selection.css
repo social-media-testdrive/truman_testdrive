@@ -81,6 +81,10 @@ span.target {
     /* background: white; */
 }
 
+.ui.stackable.three.column.grid button.ui.fluid.blue.huge.button {
+    font-weight: 800;
+}
+
 #avatarContainer .ui.card .content {
     background-color: white;
 }
