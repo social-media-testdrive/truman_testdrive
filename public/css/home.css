@@ -177,24 +177,6 @@ i.circular.dice.inverted.icon {
   align-items: center !important;
 }
 
-button.ui.cta {
-  font-size: 1.75rem; /* 28 pixels */
-  font-weight: normal;
-  min-width: 320px;
-  transition: background 0.3s ease-in-out;
-  border-radius: 15px;
-}
-
-button.ui.blue.huge.cta.button {
-  background: #d6e03f;
-  color: #151c22;
-  margin-bottom: 25px;
-  margin-top: 40px;
-}
-
-button.ui.blue.huge.cta.button:hover {
-  background: #79c4e0;
-}
 h1.ui.header {
   font-size: 2rem;
   color: white;
@@ -263,15 +245,6 @@ p#aim {
   margin-top: -20px; */
   /* margin-bottom: 30px; */
 }
-
-
-.home-mod-title {
-  font-size: 2rem !important;
-  font-weight: 600 !important;
-  /* font-family: 'Armata', sans-serif !important; */
-  font-family: stolzl, helvetica nueue, heltvetica, sans-serif !important;
-}
-
 
 .popular-course-title {
   font-size: 2rem !important;
@@ -515,14 +488,6 @@ hr {
   font-family: stolzl, helvetica nueue, heltvetica, sans-serif !important;
   font-weight: 400;
 }
-  
-.home-mod-title {
-  font-size: 2rem !important;
-  font-weight: 600 !important;
-  /* font-family: 'Armata', sans-serif !important; */
-  font-family: stolzl, helvetica nueue, heltvetica, sans-serif !important;
-}
-  
 
 /* hide app demo on smaller mobile phones */
 @media (max-width: 424px) {

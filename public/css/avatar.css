@@ -11,7 +11,7 @@
     color: #3B4545;
 }
 
-.blue.message .header, i.exclamation.triangle.icon, i.info.circle.icon,  i.pen.icon {
+.blue.message .header, .blue.message i.exclamation.triangle.icon, .blue.message i.info.circle.icon,  .blue.message i.pen.icon {
     color: #235799 !important;
 }
 

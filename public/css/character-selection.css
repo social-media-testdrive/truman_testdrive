@@ -36,25 +36,29 @@ body {
 }
 
 #avatarContainer h1.ui.header{
-    color: #285362
+    color: #285362;
+    font-family: stolzl, helvetica nueue, heltvetica, sans-serif !important;
+    font-weight: 500;
+    font-size: 2.25rem;
 }
+
 #avatarContainer .content{
     text-align: center;
-    font-family: 'Titillium Web', sans-serif;
+    font-family: stolzl, helvetica nueue, heltvetica, sans-serif !important;
 }
 
 #avatarContainer h2 {
-    font-family: 'Titillium Web', sans-serif;
+    font-family: stolzl, helvetica nueue, heltvetica, sans-serif !important;
 }
 
 span.target {
-    font-weight: bold;
+    font-weight: 400;
     font-size: 1.75rem;
-    font-family: 'Titillium Web', sans-serif;
+    font-family: stolzl, helvetica nueue, heltvetica, sans-serif !important;
 }
 
 #avatarContainer .smallTitle{
-    font-family: 'Titillium Web', sans-serif;
+    font-family: stolzl, helvetica nueue, heltvetica, sans-serif !important;
     font-size: 1.5rem;
 }
 
@@ -112,3 +116,4 @@ span.target {
     border-radius: 20px;
     text-align: center;
 }
+

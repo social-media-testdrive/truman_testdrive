@@ -32,7 +32,8 @@
     padding-left: 30px;
     padding-right: 30px;
     transition: transform 0.3s ease;
-    font-family: 'Titillium Web', sans-serif;
+    font-family: stolzl, helvetica nueue, heltvetica, sans-serif;
+    font-weight: 400;
 }
 
 /* when hovering move back button to the left */
@@ -49,19 +50,14 @@
     padding-left: 30px;
     padding-right: 30px;
     transition: transform 0.3s ease;
-    font-family: 'Titillium Web', sans-serif;
+    font-family: stolzl, helvetica nueue, heltvetica, sans-serif;
+    font-weight: 400;
 }
-
-/* when hovering move start button to the right*/
-/* #nextButton:hover {
-    transform: translateX(5px);
-    border: 2px solid #6BBCC7;
-} */
 
 #nextButton:hover {
     transform: translateX(5px);
     /* inset shadow instead of border used so that it doesn't doesn't affect the layout (push everything over 2px)*/
-    box-shadow: inset 0 0 0 2px #6BBCC7;
+    box-shadow: inset 0 0 0 2px #7AC4E0;
 }
 
 #skipButton {
@@ -70,24 +66,25 @@
     border: 1px solid #3757A6;
     padding-left: 30px;
     padding-right: 30px;
-    font-family: 'Titillium Web', sans-serif;
+    font-family: stolzl, helvetica nueue, heltvetica, sans-serif;
+    font-weight: 400;
 }
 
 button.ui.big.button.chatBotButton {
     border-radius: 30px !important; 
     background-color: white; 
     color: black !important;
-    border: 1px solid #6BBCC7;
+    border: 1px solid #7AC4E0;
     padding-left: 30px;
     padding-right: 30px;
 }
 
 button.ui.big.button.chatBotButton:hover {
-    background-color: #6BBCC7; 
+    background-color: #7AC4E0; 
 }
 
 .chat-container .ui.large.right.pointing.label {
-    background: #6BBCC7 !important;
+    background: #7AC4E0 !important;
     color: black;
     float: left;
 }
@@ -104,7 +101,7 @@ button.ui.big.button.chatBotButton:hover {
 
 #sign-up-button:hover {
     transform: translateX(5px);
-    box-shadow: inset 0 0 0 2px #6BBCC7;
+    box-shadow: inset 0 0 0 2px #7AC4E0;
 }
 
 @media (max-width: 430px) {

@@ -7,25 +7,17 @@ block content
         .ui.stackable.grid
           .row.vertically-center(style="background-color: transparent;")
             .ten.wide.column(style="padding-left: 20px;")
-              if user 
-                if user.name === 'Guest'
-                  h1.ui.header Welcome Agent! 
-                  br
-                else if user
-                  h1.ui.header Welcome Agent #{user.name}! 
-                  br
-              else
-                //- h1.ui.header Recognize and Outsmart Scams
-                h1.ui.header(style="color: #d6e03f; font-weight: 500; font-size: 2.5rem;") Learn to outsmart scams
-                h1.ui.header(style="font-weight: 400; font-size: 1.55rem;") Courses to build your resilience against online deception
+              //- h1.ui.header Recognize and Outsmart Scams
+              h1.ui.header(style="color: #d6e03f; font-weight: 500; font-size: 2.5rem;") Learn to outsmart scams
+              h1.ui.header(style="font-weight: 400; font-size: 1.55rem;") Courses to build your resilience against online deception
               if user
-                button.ui.blue.huge.cta.button.header-font(onclick="location.href='/courses';" )
+                button.ui.green.huge.cta.button.header-font(onclick="location.href='/courses';" )
                   | Browse Courses
                 br
                 button.ui.huge.cta.button.header-font(onclick="location.href='/dashboard';" )
                   | View Your Learning
               else
-                button.ui.blue.huge.cta.button.header-font(onclick="location.href='/getGuest';")
+                button.ui.green.huge.cta.button.header-font(onclick="location.href='/getGuest';")
                   | Get Started
                 br
                 button.ui.huge.cta.button.header-font(onclick="location.href='/login';" )
@@ -503,41 +495,45 @@ block content
               br
         //- img(src="/images/sponsors/sponsors.png" alt="Image description" style="width: 100%;")
     .row(style="background-color: white;")
-      .ui.container(style="padding-top: 2vh; padding-bottom: 2vh; background-color: white;")
+      .ui.container(style="padding-top: 5vh; padding-bottom: 2vh; background-color: white;")
         h2.ui.header#sponsors Partners
-        p Interested in partnering with us? Please visit our 
-          a(href="https://dart.renoundev.com/partners/" target="_blank") website
+        p Interested in partnering with us? Please visit our
+          a(href="https://dart.renoundev.com/partners/" target="_blank")  company website
           |  for more information.
         br
-        .ui.grid
-          .four.wide.column.center.aligned
+        .ui.grid.middle.aligned
+          .four.wide.column.centered
             a(href="https://www.buffalo.edu/" target="_blank")
-              img(src="/images/sponsors/UniBuffaloLogo.svg" alt="Image description" style="width: 100%;")
-          .four.wide.column.center.aligned
+              img(src="/images/sponsors/UniBuffaloLogo.svg" alt="University at Buffalo partner logo" style="width: 100%;")
+          .four.wide.column.centered
             a(href="https://illinois.edu/" target="_blank")
-              img(src="/images/sponsors/UniIllinoisLogo.png" alt="Image description" style="width: 100%;")
-          .four.wide.column.center.aligned
+              img(src="/images/sponsors/UniIllinoisLogo.png" alt="University of Illinois partner logo" style="width: 100%;")
+          .four.wide.column.centered
             a(href="https://www.clemson.edu/" target="_blank")
-              img(src="/images/sponsors/ClemsonUniLogo.png" alt="Image description" style="width: 100%;")
-          .four.wide.column.center.aligned
+              img(src="/images/sponsors/ClemsonUniLogo.png" alt="Clemson University partner logo" style="width: 100%;")
+          .four.wide.column.centered
             a(href="https://www.clemson.edu/centers-institutes/aging/" target="_blank")
-              img(src="/images/sponsors/InstituteforEngagedAgingLogo.png" alt="Image description" style="width: 100%;")
-          .three.wide.column.center.aligned
-            a(href="https://whitethorngames.com/" target="_blank")
-              img(src="/images/sponsors/WhitethornGamesLogo.png" alt="Image description" style="width: 100%;")
-          .three.wide.column.center.aligned
-            a(href="https://www.amherstcenterforseniorservices.com/" target="_blank")
-              img(src="/images/sponsors/AmherstLogo_enhanced.png" alt="Image description" style="width: 100%;")
-          .four.wide.column.center.aligned
+              img(src="/images/sponsors/InstituteforEngagedAgingLogo.png" alt="Clemson University Institute for Engaged Aging partner logo" style="width: 100%;")
+          .four.wide.column.centered
             a(href="https://www.cornell.edu/" target="_blank")
-              img(src="/images/sponsors/CornellUniLogo.png" alt="Image description" style="width: 100%;")
-          .three.wide.column.center.aligned
+              img(src="/images/sponsors/cornell-logo.svg" alt="Cornell University partner logo" style="width: 100%;")
+          .four.wide.column.centered
+            a(href="https://whitethorngames.com/" target="_blank")
+              img(src="/images/sponsors/WhitethornGamesLogo.png" alt="Whitethorn Games partner logo" style="width: 100%;")
+          .four.wide.column.centered
+            a(href="https://www.amherstcenterforseniorservices.com/" target="_blank")
+              img(src="/images/sponsors/AmherstLogo_enhanced.png" alt="Amherst Center for Senior Services partner logo" style="width: 100%;")
+          .four.wide.column.centered
             a(href="https://socialmediatestdrive.org/" target="_blank")
-              img(src="/images/sponsors/testDriveLogo.svg" alt="Image description" style="width: 100%;")
-          .three.wide.column.center.aligned
+              img(src="/images/sponsors/testDriveLogo.svg" alt="Social Media Test Drive partner logo" style="width: 100%;")
+          .four.wide.column.centered
+          .four.wide.column.centered(style="margin-top: -30px;")
             a(href="https://www.nsf.gov/" target="_blank")
-              img(src="/images/sponsors/NaturalSciFoundLogo.svg" alt="Image description" style="width: 100%;")
-
+              img(src="/images/sponsors/NaturalSciFoundLogo.svg" alt="National Science Foundation partner logo" style="width: 100%;")
+          .four.wide.column.centered(style="margin-top: -30px;")
+            a(href="https://www.nsf.gov/" target="_blank")
+              img(src="/images/sponsors/renoun-creative-logo.svg" alt="Renoun Creative partner logo" style="width: 100%;")
+          .four.wide.column.centered
 
 
         //- p(style="padding-top:30px") To stay up-to-date on the latest scam cases and keep track of what you're learning, click the button below to create an account.

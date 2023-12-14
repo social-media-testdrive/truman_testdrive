@@ -79,7 +79,7 @@
 .further-learning {
     background: #E7F3F8; 
     padding-top: 5vh;
-    padding-bottom: 5vh; 
+    padding-bottom: 7vh; 
     z-index: 100; 
     margin-top: 0px;
 }
@@ -88,7 +88,6 @@
     font-size: 1.5rem !important;
     color: black !important;
     font-weight: bold !important;
-    font-family: 'Titillium Web', sans-serif !important;
 }
 
 .further-learning .ui.card .extra.content {
@@ -122,6 +121,11 @@
     width: 75%; 
     margin: 0 auto;
 }
+
+i.download.icon.graySquare {
+    line-height: 0.5 !important;
+}
+
 
 @media (max-width: 1000px) {
     #avatar-encourage-start {
