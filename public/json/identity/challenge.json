@@ -3,7 +3,7 @@
     "progress": 20,
     "type": "yes_no",
     "partial": "q1.html",
-    "prompt": "1. You reach out to Apple Customer Support for help setting up your new phone and get this email in response. Is it scam?",
+    "prompt": "1. You reach out to Apple Customer Support for help setting up your new phone and get this email in response. Is it a scam?",
     "choices": {
       "yes": {
         "text": "Yes"

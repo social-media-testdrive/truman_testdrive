@@ -25,7 +25,7 @@ block content
                 button.ui.huge.cta.button.header-font(onclick="location.href='/dashboard';" )
                   | View Your Learning
               else
-                button.ui.blue.huge.cta.button.header-font(onclick="location.href='/getGuest';" )
+                button.ui.blue.huge.cta.button.header-font(onclick="location.href='/getGuest';")
                   | Get Started
                 br
                 button.ui.huge.cta.button.header-font(onclick="location.href='/login';" )
@@ -42,7 +42,7 @@ block content
                 .left.aligned.description
                   i.icon.quote.left
                   p#myquote The content is relevant and easy to follow. I can trust it."
-                    span  - Joe, UT
+                    span  - Name, PA
                   //- p "Learning to outsmart scams keeps me on my toes! And I feel less vulnerable."
                   //- p "I now feel less vulnerable to online scams.""
               //- .extra.content
@@ -55,7 +55,7 @@ block content
                 .left.aligned.description
                   i.icon.quote.left
                   p Learning to outsmart scams keeps me on my toes!"
-                    span  - Beth, MA
+                    span  - Name, PA
                   //- p "Watch out scammers, we're fighting back!"
             //- Card 4
             .ui.basic.card
@@ -64,7 +64,7 @@ block content
                 .left.aligned.description
                   i.icon.quote.left
                   p Excellent way for people to gain confidence online."
-                    span  - Doris, NC
+                    span  - Name, PA
 
             //- Card 4
             .ui.basic.card
@@ -73,7 +73,7 @@ block content
                 .left.aligned.description
                   i.icon.quote.left
                   p Retired from work, but never from learning. Thanks DART!"
-                    span  - Mike, PA
+                    span  - Name, PA
 
             //- Card 5
             .ui.basic.card
@@ -82,7 +82,7 @@ block content
                 .left.aligned.description
                   i.icon.quote.left
                   p Watch out scammers, we're fighting back!"
-                    span  - Mary, IA
+                    span  - Name, PA
                   //- p "The content is relevant and easy to follow. I can trust it."
 
             //- Card 6
@@ -91,8 +91,8 @@ block content
                 //- .center.aligned.header Jenny Hess
                 .left.aligned.description
                   i.icon.quote.left
-                  p I can now help my friends and family avoid scams."
-                    span  - Rose, AZ
+                  p I can now help my friends and family avoid getting scammed."
+                    span  - Name, PA
     //- .ui.container(style="background: red;")
     //-   .testimonial-container(style="position: absolute; bottom: 20%; left: 50%; transform: translatex(-50%); width: 100%; max-width: 1127px")
     //-     #testimonials(style="position: absolute; width: 100%;")
@@ -219,43 +219,52 @@ block content
 
           .row.computer.only.tablet.only.vertically-center
             .eight.wide.column
-              h2.info-header Securely engage online
-                p While the internet can improve our lives, it also presents risks. The 
-                  span.sapphire Deception Awareness and Resilience Training (DART) 
-                  | platform offers training to help you spot false information and avoid scams.
+              h2.info-header
+                i.circular.globe.inverted.small.icon(style="margin-bottom: 20px;")
+                | Securely engage online
+                .content
+                  p While the internet can improve our lives, it also presents risks. The 
+                    span.sapphire Deception Awareness and Resilience Training (DART) 
+                    | platform offers training to help you spot false information and avoid scams.
             .eight.wide.column(style="margin: 0; padding: 0; display: flex; align-items: center;")
-              img(src="/images/online-world.png" alt="Image description" style="width: 90%;margin-left: 50px;")
+              img(src="/images/securely-engage2.png" alt="Image description" style="width: 90%;margin-left: 50px;")
           .row.mobile.only.vertically-center
             .eight.wide.column(style="margin: 0; padding: 0; display: flex; align-items: center;padding-bottom: 15px;")
-              img(src="/images/online-world.png" alt="Image description" style="width: 90%;margin-left: 50px;")
+              img(src="/images/securely-engage2.png" alt="Image description" style="width: 90%;margin-left: 50px;")
             .eight.wide.column
-              h2.info-header Securely engage online
+              h2.info-header
+                i.circular.globe.inverted.small.icon
+                | Securely engage online
               p While the internet can improve our lives, it also presents risks. The 
                 span.sapphire Deception Awareness and Resilience Training (DART) 
                 | platform offers training to help you spot false information and avoid scams.
          
 
           //- Second section with image on the right and text on the left
-          .row(style="margin-top: 20vh;").vertically-center
+          .row(style="margin-top: 10vh;").vertically-center
             .eight.wide.column
-              img(src="/images/hands-on.png" alt="Image description" style="width: 100%; margin-left: -10px;")
+              img(src="/images/interactive-gamified3.png" alt="Image description" style="width: 100%; margin-left: -10px;")
             .eight.wide.column(style="padding-left: 50px;")
-              h2.info-header Interactive & Gamified
-                p Advance through challenges, unlock badges, and immerse in 
-                  span.sapphire realistic simulated digital scenarios. 
-                  | Master secure navigation across email, texts, social media, online shopping, banking, and beyond.
+              h2.info-header
+                i.circular.dice.inverted.small.icon
+                | Interactive & Gamified
+              p Advance through challenges, unlock badges, and immerse in 
+                span.sapphire realistic digital scenarios. 
+                | Master secure navigation across email, texts, social media, online shopping, banking, and beyond.
 
           //- Third section with image on the left and text on the right
-          .row(style="margin-top: 20vh;margin-bottom: -2px; padding-bottom: 0;").vertically-center
+          .row(style="margin-top: 10vh;").vertically-center
             .eight.wide.column
-              h2.info-header Gain insider insight
-                p
-                  span.sapphire Uncover the inner workings 
-                  | of online deceit. Knowledge of scammers' tricks and tactics empowers you to 
-                  span.sapphire protect the people you care about 
-                  | from online fraud.
+              h2.info-header
+                i.circular.user.shield.inverted.small.icon
+                | Keep others safe
+              p
+                span.sapphire Uncover the inner workings 
+                | of online deceit. Knowledge of scammers' tricks and tactics empowers you to 
+                span.sapphire protect the people you care about 
+                | from online fraud.
             .eight.wide.column
-              img(src="/images/protect.png" alt="Protect the people in your community" style="width: 100%")
+              img(src="/images/keep-safe-bulb.png" alt="Protect the people in your community" style="width: 100%")
 
 
 
@@ -268,154 +277,154 @@ block content
             .ui.stackable.grid
 
               //- Popular courses gallery for computer 
-              .row.computer.only(style="margin-top: 15vh; margin-bottom: 15vh;")
-                h2.ui.header#in-progress Popular Courses:
+              //- .row.computer.only(style="margin-top: 15vh; margin-bottom: 15vh;")
+              //-   h2.ui.header#in-progress Popular Courses:
 
-                //- Referenced Source: https://codepen.io/dannyarty/pen/JjKrPOL 
-                .wrap
-                    .slider
-                        .item
-                          .border
-                            .ui.in-slider
-                              img(src='/images/identity-theft-banner.jpg' alt='')
-                              hr
-                              .slider-module-text-container
-                                .raised-content
-                                  h3.ui.header.large.popular-course-title
-                                    | Identity Theft
-                                  p Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
-                              .learn-now-container
-                                button.ui.huge.blue.button.right.floated.round-learn-now(onclick="location.href='/getGuest';" )
-                                  | Learn Now
-                                  i.arrow.right.icon
-                                br
-                        .item
-                          .border
-                            .ui.in-slider
-                              img(src='/images/romance-scam.jpg' alt='')
-                              hr
-                              .slider-module-text-container
-                                .raised-content
-                                  h3.ui.header.large.popular-course-title
-                                    | Romance Scams
-                                  p Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
-                              .learn-now-container
-                                button.ui.huge.blue.button.right.floated.round-learn-now(onclick="location.href='/getGuest';" )
-                                  | Learn Now
-                                  i.arrow.right.icon
-                                br
-                        .item
-                          .border
-                            .ui.in-slider
-                              img(src='/images/phishing-scam.jpg' alt='')
-                              hr
-                              .slider-module-text-container
-                                .raised-content
-                                  h3.ui.header.large.popular-course-title
-                                    | Phishing
-                                  p Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
-                              .learn-now-container
-                                button.ui.huge.blue.button.right.floated.round-learn-now(onclick="location.href='/getGuest';" )
-                                  | Learn Now
-                                  i.arrow.right.icon
-                                br
-                        .item
-                          .border
-                            .ui.in-slider
-                              img(src='/images/sales-scam.jpg' alt='')
-                              hr
-                              .slider-module-text-container
-                                .raised-content
-                                  h3.ui.header.large.popular-course-title
-                                    | Sales Scam
-                                  p Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
-                              .learn-now-container
-                                button.ui.huge.blue.button.right.floated.round-learn-now(onclick="location.href='/getGuest';" )
-                                  | Learn Now
-                                  i.arrow.right.icon
-                                br
-              //- Popular courses without gallery for tablet and mobile
-              .row.tablet.only.mobile.only(style="margin-top: 15vh;")
-                h2.ui.header#in-progress Popular Courses:
-                .ui.container
-                  a.ui#theft-link(href=`/intro/identity` alt="Begin identity theft module")
-                    .ui.raised.segment
-                      .ui.fluid.container(style="height: 200px;")
-                        .ui.image.banner
-                          img(src="/images/identity-theft-banner.jpg", alt="Identity Theft Banner Image")
+              //-   //- Referenced Source: https://codepen.io/dannyarty/pen/JjKrPOL 
+              //-   .wrap
+              //-       .slider
+              //-           .item
+              //-             .border
+              //-               .ui.in-slider
+              //-                 img(src='/images/identity-theft-banner.jpg' alt='')
+              //-                 hr
+              //-                 .slider-module-text-container
+              //-                   .raised-content
+              //-                     h3.ui.header.large.popular-course-title
+              //-                       | Identity Theft
+              //-                     p Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+              //-                 .learn-now-container
+              //-                   button.ui.huge.blue.button.right.floated.round-learn-now(onclick="location.href='/getGuest';" )
+              //-                     | Learn Now
+              //-                     i.arrow.right.icon
+              //-                   br
+              //-           .item
+              //-             .border
+              //-               .ui.in-slider
+              //-                 img(src='/images/romance-scam.jpg' alt='')
+              //-                 hr
+              //-                 .slider-module-text-container
+              //-                   .raised-content
+              //-                     h3.ui.header.large.popular-course-title
+              //-                       | Romance Scams
+              //-                     p Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+              //-                 .learn-now-container
+              //-                   button.ui.huge.blue.button.right.floated.round-learn-now(onclick="location.href='/getGuest';" )
+              //-                     | Learn Now
+              //-                     i.arrow.right.icon
+              //-                   br
+              //-           .item
+              //-             .border
+              //-               .ui.in-slider
+              //-                 img(src='/images/phishing-scam.jpg' alt='')
+              //-                 hr
+              //-                 .slider-module-text-container
+              //-                   .raised-content
+              //-                     h3.ui.header.large.popular-course-title
+              //-                       | Phishing
+              //-                     p Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+              //-                 .learn-now-container
+              //-                   button.ui.huge.blue.button.right.floated.round-learn-now(onclick="location.href='/getGuest';" )
+              //-                     | Learn Now
+              //-                     i.arrow.right.icon
+              //-                   br
+              //-           .item
+              //-             .border
+              //-               .ui.in-slider
+              //-                 img(src='/images/sales-scam.jpg' alt='')
+              //-                 hr
+              //-                 .slider-module-text-container
+              //-                   .raised-content
+              //-                     h3.ui.header.large.popular-course-title
+              //-                       | Sales Scam
+              //-                     p Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+              //-                 .learn-now-container
+              //-                   button.ui.huge.blue.button.right.floated.round-learn-now(onclick="location.href='/getGuest';" )
+              //-                     | Learn Now
+              //-                     i.arrow.right.icon
+              //-                   br
+              //- //- Popular courses without gallery for tablet and mobile
+              //- .row.tablet.only.mobile.only(style="margin-top: 15vh;")
+              //-   h2.ui.header#in-progress Popular Courses:
+              //-   .ui.container
+              //-     a.ui#theft-link(href=`/intro/identity` alt="Begin identity theft module")
+              //-       .ui.raised.segment
+              //-         .ui.fluid.container(style="height: 200px;")
+              //-           .ui.image.banner
+              //-             img(src="/images/identity-theft-banner.jpg", alt="Identity Theft Banner Image")
 
-                          //- #theft-progress.ui.bottom.attached.small.progress(style='margin:0;padding:0;' data-percent='33')
-                          //-   .bar(style='border-radius: 0 !important;')
-                          //-     .progress
-                      hr
-                      #raised-content(style="padding-top: 20px;")
-                        h3.ui.header.large.home-mod-title
-                          | Identity Theft
-                        p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
-                        button.ui.huge.blue.button.right.floated#nextButton
-                          | Learn Now
-                          i.arrow.right.icon
-                  br
-                  br
-                  br
-                  a.ui#romance-link(href=`/intro/identity` alt="Begin identity theft module")
-                    .ui.raised.segment
-                      .ui.fluid.container(style="height: 200px;")
-                        .ui.image.banner
-                          img(src="/images/romance-scam.jpg", alt="Identity Theft Banner Image")
+              //-             //- #theft-progress.ui.bottom.attached.small.progress(style='margin:0;padding:0;' data-percent='33')
+              //-             //-   .bar(style='border-radius: 0 !important;')
+              //-             //-     .progress
+              //-         hr
+              //-         #raised-content(style="padding-top: 20px;")
+              //-           h3.ui.header.large.home-mod-title
+              //-             | Identity Theft
+              //-           p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+              //-           button.ui.huge.blue.button.right.floated#nextButton
+              //-             | Learn Now
+              //-             i.arrow.right.icon
+              //-     br
+              //-     br
+              //-     br
+              //-     a.ui#romance-link(href=`/intro/identity` alt="Begin identity theft module")
+              //-       .ui.raised.segment
+              //-         .ui.fluid.container(style="height: 200px;")
+              //-           .ui.image.banner
+              //-             img(src="/images/romance-scam.jpg", alt="Identity Theft Banner Image")
 
-                          //- #theft-progress.ui.bottom.attached.small.progress(style='margin:0;padding:0;' data-percent='33')
-                          //-   .bar(style='border-radius: 0 !important;')
-                          //-     .progress
-                      hr
-                      #raised-content(style="padding-top: 20px;")
-                        h3.ui.header.large.home-mod-title
-                          | Romance Scams
-                        p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
-                        button.ui.huge.blue.button.right.floated#nextButton
-                          | Learn Now
-                          i.arrow.right.icon
-                  br
-                  br
-                  br
-                  a.ui#phishing-link(href=`/intro/identity` alt="Begin identity theft module")
-                    .ui.raised.segment
-                      .ui.fluid.container(style="height: 200px;")
-                        .ui.image.banner
-                          img(src="/images/phishing-scam.jpg", alt="Identity Theft Banner Image")
+              //-             //- #theft-progress.ui.bottom.attached.small.progress(style='margin:0;padding:0;' data-percent='33')
+              //-             //-   .bar(style='border-radius: 0 !important;')
+              //-             //-     .progress
+              //-         hr
+              //-         #raised-content(style="padding-top: 20px;")
+              //-           h3.ui.header.large.home-mod-title
+              //-             | Romance Scams
+              //-           p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+              //-           button.ui.huge.blue.button.right.floated#nextButton
+              //-             | Learn Now
+              //-             i.arrow.right.icon
+              //-     br
+              //-     br
+              //-     br
+              //-     a.ui#phishing-link(href=`/intro/identity` alt="Begin identity theft module")
+              //-       .ui.raised.segment
+              //-         .ui.fluid.container(style="height: 200px;")
+              //-           .ui.image.banner
+              //-             img(src="/images/phishing-scam.jpg", alt="Identity Theft Banner Image")
 
-                          //- #theft-progress.ui.bottom.attached.small.progress(style='margin:0;padding:0;' data-percent='33')
-                          //-   .bar(style='border-radius: 0 !important;')
-                          //-     .progress
-                      hr
-                      #raised-content(style="padding-top: 20px;")
-                        h3.ui.header.large.home-mod-title
-                          | Phishing
-                        p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
-                        button.ui.huge.blue.button.right.floated#nextButton
-                          | Learn Now
-                          i.arrow.right.icon
+              //-             //- #theft-progress.ui.bottom.attached.small.progress(style='margin:0;padding:0;' data-percent='33')
+              //-             //-   .bar(style='border-radius: 0 !important;')
+              //-             //-     .progress
+              //-         hr
+              //-         #raised-content(style="padding-top: 20px;")
+              //-           h3.ui.header.large.home-mod-title
+              //-             | Phishing
+              //-           p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+              //-           button.ui.huge.blue.button.right.floated#nextButton
+              //-             | Learn Now
+              //-             i.arrow.right.icon
 
-                  br
-                  br
-                  br
-                  a.ui#theft-link(href=`/intro/identity` alt="Begin identity theft module")
-                    .ui.raised.segment
-                      .ui.fluid.container(style="height: 200px;")
-                        .ui.image.banner
-                          img(src="/images/sales-scam.jpg", alt="Identity Theft Banner Image")
+              //-     br
+              //-     br
+              //-     br
+              //-     a.ui#theft-link(href=`/intro/identity` alt="Begin identity theft module")
+              //-       .ui.raised.segment
+              //-         .ui.fluid.container(style="height: 200px;")
+              //-           .ui.image.banner
+              //-             img(src="/images/sales-scam.jpg", alt="Identity Theft Banner Image")
 
-                          //- #theft-progress.ui.bottom.attached.small.progress(style='margin:0;padding:0;' data-percent='33')
-                          //-   .bar(style='border-radius: 0 !important;')
-                          //-     .progress
-                      hr
-                      #raised-content(style="padding-top: 20px;")
-                        h3.ui.header.large.home-mod-title
-                          | Sales Scam
-                        p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
-                        button.ui.huge.blue.button.right.floated#nextButton
-                          | Learn Now
-                          i.arrow.right.icon
+              //-             //- #theft-progress.ui.bottom.attached.small.progress(style='margin:0;padding:0;' data-percent='33')
+              //-             //-   .bar(style='border-radius: 0 !important;')
+              //-             //-     .progress
+              //-         hr
+              //-         #raised-content(style="padding-top: 20px;")
+              //-           h3.ui.header.large.home-mod-title
+              //-             | Sales Scam
+              //-           p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
+              //-           button.ui.huge.blue.button.right.floated#nextButton
+              //-             | Learn Now
+              //-             i.arrow.right.icon
 
 
 
@@ -481,7 +490,7 @@ block content
               br
           .sixteen.wide.mobile.only.sixteen.wide.tablet.only.ten.wide.computer.only.column(style="margin: 0; padding: 0; display: flex; align-items: center;")
             .text-container(style="display: block; margin-left: 50px;")
-              h2 Get our companion app: Deepcover              
+              h2#get-app Get our companion app: Deepcover              
               p Discover your inner detective as you go on missions to take down rogue agent Walter FANG and his sneaky organization, SCAMM. Play minigames set across the globe, from the lively streets of New York to charming Tokyo.
               p Deepcover reinforces the concepts from DART Learn, helping you solidify your knowledge while having a great time!
               p Start your Deepcover adventure today, available on Google Play and the Apple App Store!
@@ -496,6 +505,9 @@ block content
     .row(style="background-color: white;")
       .ui.container(style="padding-top: 2vh; padding-bottom: 2vh; background-color: white;")
         h2.ui.header#sponsors Partners
+        p Interested in partnering with us? Please visit our 
+          a(href="https://dart.renoundev.com/partners/" target="_blank") website
+          |  for more information.
         br
         .ui.grid
           .four.wide.column.center.aligned

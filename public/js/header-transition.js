@@ -24,7 +24,7 @@ $(document).ready(function() {
     });
 
     let lastScrollTop = 0;
-    let headerHeight = header.outerHeight() + 10; // Add 10px to account for border and shadow
+    let headerHeight = header.outerHeight() + 30; // Add 10px to account for border and shadow
 
     // Buffer value of 10% of the viewport height
     let buffer = 0.10 * $(window).height();
