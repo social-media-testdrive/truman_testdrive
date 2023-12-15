@@ -1,12 +1,13 @@
 .ui.bottom.small.borderless.menu#module-footer(style="z-index: 1000;")
-    p 
-//-   .left.menu
-//-     .item
-//-       .ui.toggle.checkbox.hidden#voiceoverCheckbox
-//-         input(type="checkbox", name="voiceoverCheckbox" id='voiceoverCheckbox' checked)
-//-         label(for='voiceoverCheckbox') Voiceovers
-//-   .right.menu
-//-     a.item(href='https://socialmediatestdrive.org/terms.html') Terms of Service 
-//-     //- a.item(href='/privacy') Privacy Policy  
-//-     a.item(href='mailto:socialmediatestdrive@gmail.com') Contact Us
-//- +navButtons('/intro/identity', '/challenge/identity', 'Back', 'Challenge')  
+  .ui.container#nav-container
+    .div#nav-menu
+      button.ui.huge.basic.button.left.floated#backButton
+        i.arrow.left.icon
+        | Back
+      button.ui.huge.blue.button.right.floated#nextButton
+        | Next
+        i.arrow.right.icon
+        button.ui.huge.basic.button.right.floated.hidden#skipButton
+          | Skip
+      button.ui.icon.big.button#volume-up-button(style="background-color: #7AC4E0; color: #151C22")
+          i.volume.up.icon

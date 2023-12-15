@@ -58,6 +58,7 @@ if (secureTransfer) numberOfProxies = 1; else numberOfProxies = 0;
  * Controllers (route handlers).
  */
 const homeController = require('./controllers/home');
+const moduleController = require('./controllers/modules');
 const coursesController = require('./controllers/courses');
 const userController = require('./controllers/user');
 const apiController = require('./controllers/api');
@@ -171,6 +172,7 @@ app.get('/', homeController.index);
 //   }
 // });
 app.get('/courses', coursesController.index);
+app.get('/course-player', moduleController.getModule);
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 app.get('/logout', userController.logout);

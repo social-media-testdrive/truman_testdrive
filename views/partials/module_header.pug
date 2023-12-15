@@ -10,7 +10,11 @@ header(style="z-index: 1000 !important;")
                         .ui.breadcrumb
                             a.section#header-module(href="/about/identity") Identity Theft
                             i.right.angle.icon.divider
-                            .active.section#header-section Challenge
+                            //- capitalize section name
+                            if section 
+                                .active.section#header-section #{section.charAt(0).toUpperCase()}#{section.slice(1)}
+                            else 
+                                .active.section#header-section Challenge
                 //- .ui.container(style="position: absolute;  left: 25%; top: 100%; width: 200px;")
                 //-     h1 Challenge
             //- .left.menu
@@ -23,6 +27,12 @@ header(style="z-index: 1000 !important;")
     //- #theft-progress.ui.small.bottom.progress(style='z-index: -1; position: absolute; top: 70px; width: 100%;' data-percent='33')
     #theft-progress.ui.small.bottom.progress
         .bar(style='border-radius: 0 !important;')
+
+    //- .progress-bar__wrapper
+    //-     label.progress-bar__value(htmlfor='progress-bar')
+    //-     progress#progress-bar(value='0' max='100')
+
+
             //- .progress
             //-  have the progress bar transition bigger and show percent number when hovering
 

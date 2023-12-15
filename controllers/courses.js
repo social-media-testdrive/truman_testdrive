@@ -147,6 +147,7 @@ exports.getChallenge = async (req, res) => {
     let backLink = "/challenge/identity";
     let nextLink = "/challenge/3/identity";
     let progress = 100  ;
+    let section = currentSection;
 
     // __dirname is the directory of the current module. Here it is to courses.js instead of app.js so we need to go up one directory
     const data = await fs.readFileAsync(`${__dirname}/../public/json/` +  req.params.modId + `/challenge.json`);
@@ -165,7 +166,8 @@ exports.getChallenge = async (req, res) => {
         nextLink,
         progress,
         currentTime,
-        currentDate
+        currentDate,
+        section
     });
   } else {
     const introPage = `${modId}/challenge/${modId}_challenge${pageNum || ''}`;
@@ -202,6 +204,7 @@ exports.getLearn = async (req, res) => {
     let backLink = "/learn/submod/5/identity";
     let nextLink = "/learn/submod/7/identity";
     let progress = 22;
+    let section = currentSection;
 
     // __dirname is the directory of the current module. Here it is to courses.js instead of app.js so we need to go up one directory
     const data = await fs.readFileAsync(`${__dirname}/../public/json/` +  req.params.modId + `/submod.json`);
@@ -219,7 +222,8 @@ exports.getLearn = async (req, res) => {
         nextLink,
         progress,
         currentTime,
-        currentDate
+        currentDate,
+        section
     });
   } else if(modId === "identity" && submod === "submod2" && parseInt(pageNum) === 14) {
     let quizData;
