@@ -3,7 +3,8 @@ font-size: 1rem;
 } */
 
 #page-article {
-    background: linear-gradient(to bottom, #3757A6, #091d32);
+    /* background: linear-gradient(to bottom, #3757A6, #091d32); */
+    background-color: #0C2746;
 }
 
 .ui.middle.aligned.center.aligned.grid {
