@@ -49,25 +49,6 @@ const readTextContent = (element) => {
   };
 
 
-
-  let differentAmericanVoice = null;
-
-  for (let i = 0; i < voices.length; i++) {
-      if (voices[i].lang.startsWith('en-US') && !voices[i].name.includes('Microsoft')) {
-          differentAmericanVoice = voices[i];
-          break; // Stop the loop when a suitable American English voice is found
-      }
-  }
-  
-  // Use the found American English voice for speech synthesis
-  if (differentAmericanVoice) {
-      speakText.voice = differentAmericanVoice;
-      speakText.lang = differentAmericanVoice.lang;
-  } else {
-      console.log('No suitable American English voice found.');
-      // Handle if no suitable voice is available
-  }
-
   // Use the default voice and settings
   speechSynthesis.speak(speakText);
   isSpeaking = true; // Mark speech as in progress

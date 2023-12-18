@@ -1,52 +1,119 @@
 const progressBar = document.getElementById('theft-progress');
 
 $(document).ready(function() {
+    // Load the first page based on the URL
+    setLinks(startPage);
+
+    $('#backButton').on('click', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentPage = urlParams.get('page');
+
+        console.log("Current Page: " + currentPage);
+
+        const { backlink, nextlink } = setLinks(currentPage);
+
+        console.log("Backlink: " + backlink);
+        console.log("Nextlink: " + nextlink);
+
+
+
+        const backParams = new URLSearchParams(backlink);
+        const backPage = backParams.get('page');
+
+        console.log("Back Page: " + backPage);
+        console.log("Current Page: " + currentPage);
+
+
+    
+        history.pushState(null, '', backlink);
+
+        
+        $('#' + currentPage).removeClass('transition visible');
+        $('#' + currentPage).css('display', ''); 
+        $('#' + currentPage).addClass('hidden');
+
+        if(backPage === null) {
+            window.location.href = backlink;
+        } else {
+            $('#' + backPage).transition('fade');
+        }
+
+        updateProgressBar();
+    });
+    
+    $('#nextButton').on('click', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentPage = urlParams.get('page');
+
+        const { backlink, nextlink } = setLinks(currentPage);
+
+        console.log("Backlink: " + backlink);
+        console.log("Nextlink: " + nextlink);
+
+
+        const nextParams = new URLSearchParams(nextlink);
+        const nextPage = nextParams.get('page');
+
+        // console.log("Back Page: " + backPage);
+        console.log("Current Page: " + currentPage);
+
+
+    
+        history.pushState(null, '', nextlink);
+
+        
+        $('#' + currentPage).removeClass('transition visible');
+        $('#' + currentPage).css('display', ''); 
+        $('#' + currentPage).addClass('hidden');
+        $('#' + nextPage).transition('fade');
+
+        updateProgressBar();
+
+
+    });
+});
+
+function setLinks(currentPage) {
     let backlink, nextlink;
 
     if(section === 'concepts') {
-        if(page === 'objectives') {
+        if(currentPage === 'objectives') {
             $('#objectives').transition('fade');
-            // $('#objectives').removeClass('hidden');
             backlink = `/challenge/identity`;
             nextlink = `/course-player?module=identity&section=concepts&page=intro-video`;
-
             updateProgressBar();
-        } else if(page === 'intro-video') {
+        } 
+        else if(currentPage === 'intro-video') {
             $('#intro-video').transition('fade');
-            // $('#intro-video').removeClass('hidden');
             backlink = `/course-player?module=identity&section=concepts&page=objectives`;
             nextlink = `/course-player?module=identity&section=concepts&page=definitions`;
             updateProgressBar();
-
-        } else if(page === 'definitions') {
+        } else if(currentPage === 'definitions') {
             $('#definitions').transition('fade');
-            // $('#definitions').removeClass('hidden');
             backlink = `/course-player?module=identity&section=concepts&page=intro-video`;
             nextlink = `/course-player?module=identity&section=concepts&page=types`;
             updateProgressBar();
-
         }
-    } 
+    }
 
-    $('#backButton').on('click', function() {
-        window.location.href = backlink;
-    });
+    return { backlink, nextlink };
 
-    $('#nextButton').on('click', function() {
-        window.location.href = nextlink;
-    });
-});
+}
 
 
 function updateProgressBar() {
     let progress;
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const pageParam = urlParams.get('page');
+
     
 
-    if (page === 'objectives') {
+    if (pageParam === 'objectives') {
         progress = (1 / total) * 100;
-    } else if (page === 'intro-video') {
+    } else if (pageParam === 'intro-video') {
         progress = (2 / total) * 100;
-    } else if (page === 'definitions') {
+    } else if (pageParam === 'definitions') {
         progress = (3 / total) * 100;
     }
 

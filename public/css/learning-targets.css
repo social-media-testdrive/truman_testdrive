@@ -1,7 +1,9 @@
 /* oct demo */
 /* Style for the bullseye icon color */
 #mod-title {
-    color: #3D7E97;
+    /* color: #3D7E97; */
+    /* color: #3757A7; */
+
 }
 
 
@@ -14,6 +16,7 @@
 /* Add some spacing for the custom bullseye list icon */
 #learn-target li img {
     margin-right: 10px;
+    width: 50px;
 }
 
 /* Add space between bullets */
