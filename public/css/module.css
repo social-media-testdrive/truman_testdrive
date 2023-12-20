@@ -930,3 +930,41 @@ i.big.unlock.icon {
     margin-bottom: 0px;
 }
 
+/* polaroid picture */
+
+.polaroid {
+    width: 100%;
+    max-width: 400px;
+    background-color: white;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
+    box-shadow: 0 0.2rem 0.5rem rgba(0,0,0,0.2);
+    margin-bottom: 25px;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 0 auto;
+    /* border: 1px solid black; */
+}
+
+.polaroid img {
+    border-radius: 5px;
+}
+
+.polaroid p {
+    font-size: 1rem;
+    font-style: italic;
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+}
+
+.polaroid::after {
+    content: '';
+    position: absolute;
+    top: -1%;
+    left: 52%; /* Center the image horizontally */
+    transform: translateX(-50%); /* Center the image horizontally */
+    width: 50px; /* Adjust the width as needed */
+    height: 50px; /* Adjust the height as needed */
+    background-image: url('/images/tack.png');
+    background-size: cover; /* Adjust the background size */
+}

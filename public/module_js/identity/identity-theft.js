@@ -84,6 +84,9 @@ function setLinks(currentPage) {
             updateProgressBar();
         } 
         else if(currentPage === 'intro-video') {
+            // pause video
+            $('#my_video_1')[0].player.pause();
+
             $('#intro-video').transition('fade');
             backlink = `/course-player?module=identity&section=concepts&page=objectives`;
             nextlink = `/course-player?module=identity&section=concepts&page=definitions`;
@@ -92,6 +95,11 @@ function setLinks(currentPage) {
             $('#definitions').transition('fade');
             backlink = `/course-player?module=identity&section=concepts&page=intro-video`;
             nextlink = `/course-player?module=identity&section=concepts&page=types`;
+            updateProgressBar();
+        }  else if(currentPage === 'personal-info') {
+            $('#personal-info').transition('fade');
+            backlink = `/course-player?module=identity&section=concepts&page=definitions`;
+            nextlink = `/course-player?module=identity&section=concepts&page=activity`;
             updateProgressBar();
         }
     }
