@@ -156,17 +156,26 @@ body{
 
 }
 
+#page-article {
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: white; /* For Firefox */
+} 
+
 #page-article::-webkit-scrollbar {
     width: 1rem;
 }
    
 #page-article.scrollbar-hidden::-webkit-scrollbar {
-    display:none;
+    display: none;
 }
 
 /* color of the tracking area */
 #page-article::-webkit-scrollbar-track {
     background: white;        
+}
+
+#page-article.gray-scrollbar::-webkit-scrollbar-track {
+    background: rgb(150,151,151);        
 }
 
 /* color of the scroll thumb */

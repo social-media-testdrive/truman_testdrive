@@ -14,15 +14,15 @@ let questionScores = [];
 let attempts = 0;
 let scoreTotal = 0;
 
-let this_js_script = $('script[src*=dart_quiz]');
+let this_js_script = $('script[src*=module_quiz]');
 let page = this_js_script.attr('page');   
 let currentSection = this_js_script.attr('current-section');   
 let nextLink = this_js_script.attr('next-link');  
 let modID = this_js_script.attr('mod-id');  
-// console.log("page: " + page);
-// console.log("currentSection: " + currentSection);
-// console.log("nextLink: " + nextLink);   
-// console.log("modID: " + modID);
+console.log("page: " + page);
+console.log("currentSection: " + currentSection);
+console.log("nextLink: " + nextLink);   
+console.log("modID: " + modID);
 
 
 // let progress = this_js_script.attr('progress');   
@@ -30,9 +30,23 @@ let modID = this_js_script.attr('mod-id');
 // console.log("**currentSection: " + currentSection);
 // console.log("**nextLink: " + nextLink);
 
-$(document).ready(function() {    
+
+$(document).ready(function() { 
+// function startQuiz() {   
     $('.bar').css('width', current_percent + '%');
     $('.bar').css('background', '#7AC4E0');
+
+    // console.log("In module_quiz.js");
+    // console.log("modID: " + modID);
+    // console.log("page: " + page);
+    // console.log("currentSection: " + currentSection);
+    // console.log("nextLink: " + nextLink);
+    // console.log("progress: " + progress);
+    // console.log("user email: " + email);
+    // console.log("user name: " + username);
+    // console.log("current_percent: " + current_percent);
+    // console.log("currentDate: " + currentDate);
+    // console.log("currentTime: " + currentTime);
 
     // console.log("In dart_quiz.js");
     // console.log("explanation data example:" + questionData[1].choices[3].explanation);
@@ -54,14 +68,11 @@ $(document).ready(function() {
     fetch(`/getLatestQuizScore?modID=${modID}&currentSection=${currentSection}`)
         .then(response => response.json())
         .then(userDBAttempts => {
-            console.log("Hello in here")
             // Handle the received data (the latest quiz attempt)
             // console.log("**the fetch quiz score data is:")
             // console.log(userDBAttempts);
 
             if(userDBAttempts.length != 0) { // attempted before so show restults page
-                console.log("attempted before so show restults page");
-
                 $(".choiceList").empty();
                 $(".fourChoices").empty();
                 $(".checkboxChoices").empty();
@@ -99,12 +110,12 @@ $(document).ready(function() {
                 quizOver = true;
         
             } else {
-                console.log("!!!never attempted before so show first question");
-
                 // Display the first question
                 displayCurrentQuestion();
         
                 // hide warning and next nav button and disable previous quiz nav button
+
+                
                 $(".viewAnswers").hide();
                 $(".quizMessage").hide();
                 $(".explanationCorrectMulti").hide();
@@ -114,16 +125,16 @@ $(document).ready(function() {
                 
                 $(".result").hide();
                 $(".avatar-container").hide();
-                $("#nextButton").hide();
-                $("#backButton").hide();
-                $("#module-footer").hide();
+                // $("#nextButton").hide();
+                // $("#backButton").hide();
+                // $("#module-footer").hide();
             }
         
 
 
         })
         .catch(error => {
-            console.error('Error:', error);
+        console.error('Error:', error);
         });
 
 
@@ -470,10 +481,10 @@ $(document).ready(function() {
         }
     });
 });
+// }
 
 function displayCurrentQuestion() 
 {   
-    console.log("In display current Question");
     // console.log("currentSection: " + currentSection);
     // console.log("currentQuestion: " + currentQuestion);
     // console.log("viewingAnswer: " + viewingAnswer);

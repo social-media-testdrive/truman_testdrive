@@ -9,29 +9,48 @@ block content
         include concepts/objectives.pug
         include concepts/intro-video.pug
         include concepts/definitions.pug
+        include concepts/personal-info.pug
+        include concepts/activity.pug
+        include concepts/reflection.pug
+        include concepts/quiz-template.pug
 
 
 block styles 
+    link(rel='stylesheet', href='/css/identity-theft.css')
     link(rel='stylesheet', href='/css/learning-targets.css')
     link(rel='stylesheet', href='/css/middle-aligned-layout.css')
+    link(rel='stylesheet', href='/css/dart_quiz.css')  
 
-block scripts        
-    script(src='/js/text2speech.js')  
-    script(src='/module_js/identity/villain-reveal.js')
+
+block scripts       
     script(src='/module_js/identity/identity-theft.js')    
+    script(src='/js/text2speech.js')  
     script. 
         var module = "#{module}";
         var section = "#{section}";
         var startPage = "#{page}"; 
         var total = parseInt(#{numPages});
-        //- var progress;
+    if page === 'objectives'
+        script(src='/module_js/identity/villain-reveal.js')
+    script.
+        //- for quiz
+        var questionData = !{JSON.stringify(quizData)}; // quizData is passed to pug file via render function in app.js
+        var currentTime = "#{currentTime}";
+        var currentDate = "#{currentDate}";
+        //- var futureDate = "#{futureDate}"; 
+        var email = "#{user.email}";
+        var username = "#{user.name}";
+        //- var current_percent = "#{user.moduleStatus.identity.challenge}";
+        var current_percent = 50;
+        var link = "/course-player?module=identity&section=concepts&page=takeaways";
 
-        //- if (page === 'objectives') {
-        //-     progress = (1 / total) * 100;
-        //- } else if (page === 'intro-video') {
-        //-     progress = (2 / total) * 100;
-        //- } else if (page === 'definitions') {
-        //-     progress = (3 / total) * 100;
-        //- }
-
-        //- $('#progress-bar').attr('value', progress);
+    script(src='/module_js/module_quiz.js', mod-id=module, page=page, current-section=section, next-link=link, progress=progress)
+        
+        //- startQuiz()
+    //- console.log("Page is quiz-template")
+    //- console.log("module: " + module)
+    //- console.log("section: " + section)
+    //- console.log("page:" + page)
+    //- console.log("numPages: " + numPages)
+        
+        //- script(src='/module_js/dart_quiz.js', mod-id=modID, page=page, current-section=currentSection, next-link=nextLink, progress=progress)

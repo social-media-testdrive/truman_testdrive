@@ -51449,7 +51449,9 @@ Floated Menu / Item
 
 .ui.inverted.menu {
   border: 0 solid transparent;
-  background: #1b1c1d;
+  /* background: #1b1c1d; */
+  /* dart blue tone */
+  background: #151C22;
   box-shadow: none;
 }
 
@@ -67193,7 +67195,8 @@ body.pushable > .pusher {
   top: 0;
   right: 0;
   content: "";
-  background: rgba(0, 0, 0, 0.4);
+  /* background: rgba(0, 0, 0, 0.4); */
+  background: rgba(21, 28, 34, 0.02);
   overflow: hidden;
   opacity: 0;
   transition: all 500ms;
@@ -73314,7 +73317,9 @@ body.pushable > .pusher {
   top: 0;
   right: 0;
   content: "";
-  background: rgba(0, 0, 0, 0.4);
+  /* background: rgba(0, 0, 0, 0.4); */
+  /* make background  blue tone */
+  background: rgba(21, 28, 34, 0.02)
   overflow: hidden;
   opacity: 0;
   transition: all 500ms;

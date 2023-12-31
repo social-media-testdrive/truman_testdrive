@@ -1,0 +1,22 @@
+@media (max-height: 850px) {
+    /* concepts */
+    .villain-container img {
+        width: 300px;
+    }
+
+    #video-container {
+        max-width: 640px;
+        margin: 0 auto;
+    }
+
+    /* #definitions .six.wide.column.middle.aligned {
+        max-width: 300px !important;
+        margin: 0 auto;
+    } */
+
+
+    /* .custom-max-height-850 {
+        max-height: 850px;
+    } */
+    
+}

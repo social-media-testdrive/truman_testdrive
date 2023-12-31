@@ -38,6 +38,13 @@ const userSchema = new mongoose.Schema({
             questionScores: [{ type: Number }],
             questionChoices: Schema.Types.Mixed,
         }],
+        conceptsAttempts: [{
+            timestamp: { type: Date, default: Date.now },
+            scoreTotal: { type: Number, default: 0 },
+            correctAnswers: { type: Number, default: 0 },
+            questionScores: [{ type: Number }],
+            questionChoices: Schema.Types.Mixed,
+        }],
         submodOneAttempts: [{
             timestamp: { type: Date, default: Date.now },
             scoreTotal: { type: Number, default: 0 },

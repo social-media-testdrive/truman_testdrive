@@ -825,6 +825,10 @@ exports.postQuizScore = async (req, res, next) => {
 exports.getLatestQuizScore = async (req, res, next) => {
   const { modID, currentSection } = req.query;
 
+  console.log("In GET latest quiz score request body***********************hiii****");
+  console.log("Module ID: " + modID);
+  console.log("Current Section: " + currentSection);
+
   try {
     const existingUser = await User.findOne({
       email: req.user.email
@@ -832,6 +836,9 @@ exports.getLatestQuizScore = async (req, res, next) => {
 
     if (existingUser) {
       let sectionAttempts = currentSection + "Attempts";
+
+      console.log("Section Attempts: " + sectionAttempts);
+      
       let quizAttempts = existingUser.moduleProgress[modID][sectionAttempts];
 
       // Send the latest quiz attempt 

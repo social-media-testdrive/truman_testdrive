@@ -89,25 +89,25 @@ html
         //- a.item(href="/about/identity")
         //-   i.info.icon
         //-   |  About 
-        a.item(href="/challenge/identity")
+        a.item#challenge(href="/challenge/identity")
           i.puzzle.piece.icon
           |  Challenge
-        a.item(href="/learn/submod/identity")
-          i.book.open.icon
+        a.item#concepts(href="/learn/submod/identity")
+          i.shapes.icon
           |  Chapter 1: Concepts
-        a.item(href="/learn/submod2/identity")
+        a.item#techniques(href="/learn/submod2/identity")
           i.wrench.icon
           |  Chapter 2: Techniques
-        a.item(href="/learn/submod3/identity")
+        a.item#protection(href="/learn/submod3/identity")
           i.shield.alternate.icon
           |  Chapter 3: Protection
-        a.item(href="/explore/identity")
+        a.item#practice(href="/explore/identity")
           i.search.icon
           |  Practice
-        a.item(href="/evaluate/identity")
+        a.item#evaluate(href="/evaluate/identity")
           i.edit.icon
           |  Evaluate
-        a.item(href="/reflect/identity")
+        a.item#reflect(href="/reflect/identity")
           i.lightbulb.icon
           |  Reflect
       .pusher
@@ -185,10 +185,14 @@ html
             exclusive: true,
             returnScroll: true,
             onShow: function() {
-              $('#page-article').css('overflow-y', 'hidden');
+              //- $('#page-article').css('overflow-y', 'hidden');
+              $('#page-article').addClass('gray-scrollbar');
               $('.hamburger.icon').removeClass('hamburger').addClass('close');
+              $('#' + section).css('background-color', '#212B34');
+              $('#' + section).css('border-right', '2px solid #D6E040');
             },
             onHide: function() {
+              $('#page-article').removeClass('gray-scrollbar');
               $('.close.icon').removeClass('close').addClass('hamburger');
               $('#page-article').css('overflow-y', 'scroll');
             }

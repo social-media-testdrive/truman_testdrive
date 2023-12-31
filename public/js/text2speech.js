@@ -6,7 +6,7 @@ let voices = [] ;
 
 const getVoices = () =>{
     voices = synth.getVoices();
-    console.log(voices)
+    // console.log(voices)
 }
 getVoices() ;
 
