@@ -125,9 +125,9 @@ $(document).ready(function() {
                 
                 $(".result").hide();
                 $(".avatar-container").hide();
-                // $("#nextButton").hide();
-                // $("#backButton").hide();
-                // $("#module-footer").hide();
+                $("#nextButton").hide();
+                $("#backButton").hide();
+                $("#module-footer").hide();
             }
         
 

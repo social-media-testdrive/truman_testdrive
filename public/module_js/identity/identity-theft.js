@@ -1,7 +1,9 @@
 const progressBar = document.getElementById('theft-progress');
+let pageReload= false;
 
 $(document).ready(function() {
     // Load the first page based on the URL
+    console.log("The start page: " + startPage);
     setLinks(startPage);
 
     $('#backButton').on('click', function() {
@@ -13,6 +15,7 @@ $(document).ready(function() {
 
 
         const { backlink, nextlink } = setLinks(currentPage);
+        history.pushState(null, '', backlink);
 
         // console.log("Backlink: " + backlink);
         // console.log("Nextlink: " + nextlink);
@@ -27,7 +30,6 @@ $(document).ready(function() {
 
 
     
-        history.pushState(null, '', backlink);
 
         
         // $('#' + currentPage).removeClass('transition visible');
@@ -37,8 +39,22 @@ $(document).ready(function() {
         if(backPage === null) {
             window.location.href = backlink;
         } else {
-            $('#' + backPage).transition('fade');
+            // $('#' + backPage).transition('fade');
+
+            // fade out current page, then fade in previous page. at half duration each, 400ms total
+            $('#' + currentPage).transition({
+                animation: 'fade out',
+                duration: 200,
+                onComplete: function() {
+                    $('#' + backPage).transition({
+                        animation: 'fade in',
+                        duration: 200,
+                    });
+                }
+            });
+
         }
+
 
         updateProgressBar();
     });
@@ -50,26 +66,59 @@ $(document).ready(function() {
         $('.ui.sidebar').sidebar('hide');
 
         const { backlink, nextlink } = setLinks(currentPage);
+        history.pushState(null, '', nextlink);
 
-        console.log("Backlink: " + backlink);
-        console.log("Nextlink: " + nextlink);
+        // console.log("Backlink: " + backlink);
+        // console.log("Nextlink: " + nextlink);
 
 
         const nextParams = new URLSearchParams(nextlink);
         const nextPage = nextParams.get('page');
+
+        // fade out current page, then fade in next page. at half duration each, 400ms total
+        $('#' + currentPage).transition({
+            animation: 'fade out',
+            duration: 200,
+            onComplete: function() {
+                $('#' + nextPage).transition({
+                    animation: 'fade in',
+                    duration: 200,
+                });
+            }
+        });
+
+        // $('#' + currentPage).transition('fade out');
+        // $('#' + nextPage).transition('fade in');
+        // hide current page then show next page
+        // $('#' + nextPage).transition({
+        //     animation: 'fade in',
+        //     onBeforeShow: function(showFunction) {
+        //         // Perform actions before the show transition starts
+        //         $('#' + currentPage).removeClass('transition visible');
+        //         $('#' + currentPage).css('display', '');
+        //         $('#' + currentPage).addClass('hidden');
+        
+        //         // Call the showFunction to trigger the show transition
+        //         showFunction();
+        //     }        
+        //     // onComplete: function() {
+        //     //     console.log('Next btn: nextPage fade done.');
+        //     // }
+        // });
+
+
 
         // console.log("Back Page: " + backPage);
         // console.log("Current Page: " + currentPage);
 
 
 
-        if(nextPage === 'quiz') {
-            $('#quiz-template').transition('fade');      
-        }
+        // if(nextPage === 'quiz') {
+        //     $('#quiz-template').transition('fade');      
+        // }
 
 
     
-        history.pushState(null, '', nextlink);
 
         // if(currentPage === 'quiz') {
         //     var filename = 'module_js/module_quiz.js';
@@ -81,12 +130,14 @@ $(document).ready(function() {
         // $('#' + currentPage).addClass('hidden');
 
         // $('#' + nextPage).transition('fade');
-        $('#' + nextPage).transition({
-            animation: 'fade',
-            onComplete: function() {
-                console.log('Next btn: nextPage fade done.');
-            }
-        });
+        // $('#' + nextPage).transition({
+        //     animation: 'fade',
+        //     onComplete: function() {
+        //         console.log('Next btn: nextPage fade done.');
+        //     }
+        // });
+
+
         updateProgressBar();
 
 
@@ -96,61 +147,60 @@ $(document).ready(function() {
 function setLinks(currentPage) {
     let backlink, nextlink;
 
+    if(!pageReload) {
+        $('#' + currentPage).transition('fade in');
+        pageReload = true;
+    }
+
     if(section === 'concepts') {
         if(currentPage === 'objectives') {
-            $('#objectives').transition('fade');
+            // $('#objectives').transition('fade');
             backlink = `/challenge/identity`;
             nextlink = `/course-player?module=identity&section=concepts&page=intro-video`;
-            updateProgressBar();
         } 
         else if(currentPage === 'intro-video') {
             // pause video
             $('#my_video_1')[0].player.pause();
 
-            $('#intro-video').transition('fade');
+            // $('#intro-video').transition('fade');
             backlink = `/course-player?module=identity&section=concepts&page=objectives`;
             nextlink = `/course-player?module=identity&section=concepts&page=definitions`;
-            updateProgressBar();
         } else if(currentPage === 'definitions') {
             console.log("setLinks is at definitions");
 
-            $('#definitions').transition('fade');
+            // $('#definitions').transition('fade');
             backlink = `/course-player?module=identity&section=concepts&page=intro-video`;
             nextlink = `/course-player?module=identity&section=concepts&page=personal-info`;
-            updateProgressBar();
         } else if(currentPage === 'personal-info') {
             console.log("setLinks is at personal-info");
 
-            $('#personal-info').transition('fade');
+            // $('#personal-info').transition('fade');
             backlink = `/course-player?module=identity&section=concepts&page=definitions`;
             nextlink = `/course-player?module=identity&section=concepts&page=activity`;
-            updateProgressBar();
         } else if(currentPage === 'activity') {
             console.log("setLinks is at activity");
 
-            $('#activity').transition('fade');
+            // $('#activity').transition('fade');
             backlink = `/course-player?module=identity&section=concepts&page=personal-info`;
             nextlink = `/course-player?module=identity&section=concepts&page=reflection`;
-            updateProgressBar();
         } else if(currentPage === 'reflection') {
             console.log("setLinks is at reflection");
 
             // $('#reflection').transition('fade');
-            $('#reflection').transition({
-                animation: 'fade',
-                onStart: function() {
-                    // $('#quiz-template').addClass('hidden');  
-                    $('#reflection').css('display', ''); 
-                    $('#reflection').addClass('hidden');               
-                },
-                onComplete: function() {
-                    console.log('SetLinks: reflection fade done');
-                }
-            });
+            // $('#reflection').transition({
+            //     animation: 'fade',
+            //     // onStart: function() {
+            //     //     // $('#quiz-template').addClass('hidden');  
+            //     //     $('#reflection').css('display', ''); 
+            //     //     $('#reflection').addClass('hidden');               
+            //     // },
+            //     onComplete: function() {
+            //         console.log('SetLinks: reflection fade done');
+            //     }
+            // });
 
             backlink = `/course-player?module=identity&section=concepts&page=activity`;
             nextlink = `/course-player?module=identity&section=concepts&page=quiz`;
-            updateProgressBar();
         } else if(currentPage === 'quiz') {
             console.log("setLinks is at quiz");
             
@@ -163,17 +213,16 @@ function setLinks(currentPage) {
             // console.log("section: " + section)
 
             // $('#quiz-template').transition('fade');
-            $('#quiz-template').transition({
-                animation: 'fade',
-                onStart: function() {
-                    // $('#quiz-template').addClass('hidden');  
-                    $('#quiz-template').css('display', ''); 
-                    $('#quiz-template').addClass('hidden');               
-                },
-                onComplete: function() {
-                    console.log('SetLinks: quiz-template fade done');
-                }
-            });
+            // $('#quiz-template').transition({
+            //     animation: 'fade',
+            //     // onStart: function() {
+            //     //     $('#quiz-template').css('display', ''); 
+            //     //     $('#quiz-template').addClass('hidden');               
+            //     // },
+            //     onComplete: function() {
+            //         console.log('SetLinks: quiz-template fade done');
+            //     }
+            // });
 
             // startQuiz()
             // console.log("***Quiz started")
@@ -182,17 +231,21 @@ function setLinks(currentPage) {
             // appendScriptWithVariables(filename, module, currentPage, section, nextlink, progress);
 
 
-            updateProgressBar();
         } else if(currentPage === 'takeaways') {
-            $('#takeaways').transition('fade');
+            // $('#takeaways').transition('fade');
+            // $('#takeaways').transition({
+            //     animation: 'fade',
+            //     onComplete: function() {
+            //         console.log('SetLinks: takeaways fade done');
+            //     }
+            // });
             backlink = `/course-player?module=identity&section=concepts&page=quiz`;
             nextlink = `/course-player?module=identity&section=concepts&page=objectives`;
-            updateProgressBar();
         }
 
-        $('#' + currentPage).removeClass('transition visible');
-        $('#' + currentPage).css('display', ''); 
-        $('#' + currentPage).addClass('hidden');
+        // $('#' + currentPage).removeClass('transition visible');
+        // $('#' + currentPage).css('display', ''); 
+        // $('#' + currentPage).addClass('hidden');
 
     }
 
