@@ -17,30 +17,12 @@ $(document).ready(function() {
         const { backlink, nextlink } = setLinks(currentPage);
         history.pushState(null, '', backlink);
 
-        // console.log("Backlink: " + backlink);
-        // console.log("Nextlink: " + nextlink);
-
-
-
         const backParams = new URLSearchParams(backlink);
         const backPage = backParams.get('page');
-
-        // console.log("Back Page: " + backPage);
-        // console.log("Current Page: " + currentPage);
-
-
-    
-
-        
-        // $('#' + currentPage).removeClass('transition visible');
-        // $('#' + currentPage).css('display', ''); 
-        // $('#' + currentPage).addClass('hidden');
 
         if(backPage === null) {
             window.location.href = backlink;
         } else {
-            // $('#' + backPage).transition('fade');
-
             // fade out current page, then fade in previous page. at half duration each, 400ms total
             $('#' + currentPage).transition({
                 animation: 'fade out',
@@ -52,7 +34,6 @@ $(document).ready(function() {
                     });
                 }
             });
-
         }
 
 
@@ -67,10 +48,6 @@ $(document).ready(function() {
 
         const { backlink, nextlink } = setLinks(currentPage);
         history.pushState(null, '', nextlink);
-
-        // console.log("Backlink: " + backlink);
-        // console.log("Nextlink: " + nextlink);
-
 
         const nextParams = new URLSearchParams(nextlink);
         const nextPage = nextParams.get('page');
@@ -87,59 +64,7 @@ $(document).ready(function() {
             }
         });
 
-        // $('#' + currentPage).transition('fade out');
-        // $('#' + nextPage).transition('fade in');
-        // hide current page then show next page
-        // $('#' + nextPage).transition({
-        //     animation: 'fade in',
-        //     onBeforeShow: function(showFunction) {
-        //         // Perform actions before the show transition starts
-        //         $('#' + currentPage).removeClass('transition visible');
-        //         $('#' + currentPage).css('display', '');
-        //         $('#' + currentPage).addClass('hidden');
-        
-        //         // Call the showFunction to trigger the show transition
-        //         showFunction();
-        //     }        
-        //     // onComplete: function() {
-        //     //     console.log('Next btn: nextPage fade done.');
-        //     // }
-        // });
-
-
-
-        // console.log("Back Page: " + backPage);
-        // console.log("Current Page: " + currentPage);
-
-
-
-        // if(nextPage === 'quiz') {
-        //     $('#quiz-template').transition('fade');      
-        // }
-
-
-    
-
-        // if(currentPage === 'quiz') {
-        //     var filename = 'module_js/module_quiz.js';
-        //     appendScriptWithVariables(filename, module, currentPage, section, nextlink, progress);
-        // }
-        
-        // $('#' + currentPage).removeClass('transition visible');
-        // $('#' + currentPage).css('display', ''); 
-        // $('#' + currentPage).addClass('hidden');
-
-        // $('#' + nextPage).transition('fade');
-        // $('#' + nextPage).transition({
-        //     animation: 'fade',
-        //     onComplete: function() {
-        //         console.log('Next btn: nextPage fade done.');
-        //     }
-        // });
-
-
         updateProgressBar();
-
 
     });
 });
@@ -154,7 +79,6 @@ function setLinks(currentPage) {
 
     if(section === 'concepts') {
         if(currentPage === 'objectives') {
-            // $('#objectives').transition('fade');
             backlink = `/challenge/identity`;
             nextlink = `/course-player?module=identity&section=concepts&page=intro-video`;
         } 
@@ -162,45 +86,29 @@ function setLinks(currentPage) {
             // pause video
             $('#my_video_1')[0].player.pause();
 
-            // $('#intro-video').transition('fade');
             backlink = `/course-player?module=identity&section=concepts&page=objectives`;
             nextlink = `/course-player?module=identity&section=concepts&page=definitions`;
         } else if(currentPage === 'definitions') {
             console.log("setLinks is at definitions");
 
-            // $('#definitions').transition('fade');
             backlink = `/course-player?module=identity&section=concepts&page=intro-video`;
             nextlink = `/course-player?module=identity&section=concepts&page=personal-info`;
         } else if(currentPage === 'personal-info') {
             console.log("setLinks is at personal-info");
 
-            // $('#personal-info').transition('fade');
             backlink = `/course-player?module=identity&section=concepts&page=definitions`;
             nextlink = `/course-player?module=identity&section=concepts&page=activity`;
         } else if(currentPage === 'activity') {
             console.log("setLinks is at activity");
 
-            // $('#activity').transition('fade');
             backlink = `/course-player?module=identity&section=concepts&page=personal-info`;
             nextlink = `/course-player?module=identity&section=concepts&page=reflection`;
         } else if(currentPage === 'reflection') {
             console.log("setLinks is at reflection");
 
-            // $('#reflection').transition('fade');
-            // $('#reflection').transition({
-            //     animation: 'fade',
-            //     // onStart: function() {
-            //     //     // $('#quiz-template').addClass('hidden');  
-            //     //     $('#reflection').css('display', ''); 
-            //     //     $('#reflection').addClass('hidden');               
-            //     // },
-            //     onComplete: function() {
-            //         console.log('SetLinks: reflection fade done');
-            //     }
-            // });
-
             backlink = `/course-player?module=identity&section=concepts&page=activity`;
             nextlink = `/course-player?module=identity&section=concepts&page=quiz`;
+            
         } else if(currentPage === 'quiz') {
             console.log("setLinks is at quiz");
             
@@ -208,45 +116,11 @@ function setLinks(currentPage) {
             nextlink = `/course-player?module=identity&section=concepts&page=takeaways`;
             progress = (7 / total) * 100;
 
-            // console.log("Page is quiz-template")
-            // console.log("module: " + module)
-            // console.log("section: " + section)
-
-            // $('#quiz-template').transition('fade');
-            // $('#quiz-template').transition({
-            //     animation: 'fade',
-            //     // onStart: function() {
-            //     //     $('#quiz-template').css('display', ''); 
-            //     //     $('#quiz-template').addClass('hidden');               
-            //     // },
-            //     onComplete: function() {
-            //         console.log('SetLinks: quiz-template fade done');
-            //     }
-            // });
-
-            // startQuiz()
-            // console.log("***Quiz started")
-
-            // var filename = 'module_js/module_quiz.js';
-            // appendScriptWithVariables(filename, module, currentPage, section, nextlink, progress);
-
-
         } else if(currentPage === 'takeaways') {
-            // $('#takeaways').transition('fade');
-            // $('#takeaways').transition({
-            //     animation: 'fade',
-            //     onComplete: function() {
-            //         console.log('SetLinks: takeaways fade done');
-            //     }
-            // });
+
             backlink = `/course-player?module=identity&section=concepts&page=quiz`;
             nextlink = `/course-player?module=identity&section=concepts&page=objectives`;
         }
-
-        // $('#' + currentPage).removeClass('transition visible');
-        // $('#' + currentPage).css('display', ''); 
-        // $('#' + currentPage).addClass('hidden');
-
     }
 
     return { backlink, nextlink };
@@ -277,8 +151,6 @@ function updateProgressBar() {
     } else if (pageParam === 'quiz') {
         progress = (7 / total) * 100;
     }
-
-    // console.log("Progress: " + progress);
 
     if (progressBar) {
         progressBar.setAttribute('data-percent', progress);
