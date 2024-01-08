@@ -13,6 +13,14 @@ footer {
     z-index: 9999999999 !important;
 }
 
+#page-article .pusher { 
+    background-color: white !important;
+}
+
+#module-header {
+    background-color: #F5F8FA !important;
+}
+
 .page-container {
     position: relative;
     transition: opacity 0.3s ease-in-out; /* Apply transition to the container */
@@ -976,4 +984,34 @@ i.big.unlock.icon {
     height: 50px; /* Adjust the height as needed */
     background-image: url('/images/tack.png');
     background-size: cover; /* Adjust the background size */
+}
+
+/* module slider identity theft consequences types */
+
+#steps-container {
+
+    /* background: #0b2645; 
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 100vw; 
+    z-index: 100;  */
+}
+
+#steps .content {
+    padding: 0px;
+    margin: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#steps .ui.card p span {
+color: #79c4e0;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    color: #3757A6 !important; 
 }

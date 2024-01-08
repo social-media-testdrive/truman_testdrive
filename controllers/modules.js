@@ -22,7 +22,12 @@ exports.getModule = async (req, res) => {
     // const module = req.query.module;
     // const page = req.query.page;
     const { module, section, page } = req.query;
-    const numPages = 8;
+    let numPages;
+    if(section === 'concepts') {
+      numPages = 10;
+    } else if(section === 'consequences') {
+      numPages = 7;
+    }
 
     const modulePage = `module-content/${module}/${section}.pug`;
 

@@ -7,11 +7,11 @@
                     //-     i.volume.up.icon
                     h1.ui.header.large#learn-title(style="color: #285362;")
                         .content
-                            i.shapes.icon
-                            | Concepts
+                            i.hand.holding.usd.icon
+                            | Consequences
                         span(style="float: right; font-size: 1.5rem; margin-top: 5px; color: #151C22;")
                             i.clock.outline.icon
-                            | 15 min
+                            | 8 min
                     .ui.divider
                     //- h1.ui.header.large#learn-subheader
                     //-     i.bullseye.icon
@@ -20,15 +20,13 @@
                     ul.no-bullets
                         li
                             img(src="/images/dart-bullet.svg", alt="Bullet Point")
-                            | Understand the basics of identity theft
+                            | Discover what could happen if your identity is stolen
 
                         li
                             img(src="/images/dart-bullet.svg", alt="Bullet Point")
-                            | Discover what information scammers are after
-                .six.wide.column
-                    .villain-container
-                        img.villain-image(src='/images/villains.png')
-                        img.villain-reveal.hidden(src='/images/villains-reveal.png')
+                            | Explore common types of identity theft
+                .six.wide.center.aligned.middle.aligned.column
+                    img(src='/images/losing-money.svg')
             .ui.grid.tablet.only.mobile.only
                 .row
                     h1.ui.header.large#learn-title
@@ -45,6 +43,17 @@
                         | Discover what information scammers are after
 
                 .row
-                    .villain-container(style="margin: 0 auto;")
-                        img.villain-image(src='/images/villains.png')
-                        img.villain-reveal.hidden(src='/images/villains-reveal.png')
+                    .div(style="margin: 0 auto;")
+                        img(src='/images/losing-money.svg')
+
+        //- Fill progress bar to correct percent and color 
+        //- script.
+        //-     var module = "#{module}";
+        //-     var section = "#{section}";
+        //-     var page = "#{page}"; 
+
+        //-     let total = parseInt(#{numPages});
+        //-     let progress = 1 / total;
+        //-     console.log(progress);
+        //-     script(src='/js/setProgressBar.js')  
+        //-     updateProgressBar(progress);

@@ -68,6 +68,9 @@ html
     link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
 
 
+    link(rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css')
+
     block styles
 
 
@@ -89,25 +92,28 @@ html
         //- a.item(href="/about/identity")
         //-   i.info.icon
         //-   |  About 
-        a.item#challenge(href="/challenge/identity")
+        a.item#challenge(href="http://localhost:3000/course-player?module=identity&section=challenge&page=intro")
           i.puzzle.piece.icon
           |  Challenge
-        a.item#concepts(href="/learn/submod/identity")
+        a.item#concepts(href="http://localhost:3000/course-player?module=identity&section=concepts&page=objectives")
           i.shapes.icon
-          |  Chapter 1: Concepts
-        a.item#techniques(href="/learn/submod2/identity")
+          |  Concepts
+        a.item#consequences(href="http://localhost:3000/course-player?module=identity&section=consequences&page=objectives")
+          i.hand.holding.usd.icon
+          |  Consequences
+        a.item#techniques(href="http://localhost:3000/course-player?module=identity&section=techniques&page=objectives")
           i.wrench.icon
-          |  Chapter 2: Techniques
-        a.item#protection(href="/learn/submod3/identity")
+          |  Techniques
+        a.item#protection(href="http://localhost:3000/course-player?module=identity&section=protection&page=objectives")
           i.shield.alternate.icon
-          |  Chapter 3: Protection
-        a.item#practice(href="/explore/identity")
+          |  Protection
+        a.item#practice(href="http://localhost:3000/course-player?module=identity&section=practice&page=objectives")
           i.search.icon
           |  Practice
-        a.item#evaluate(href="/evaluate/identity")
+        a.item#evaluate(href="http://localhost:3000/course-player?module=identity&section=evaluate&page=objectives")
           i.edit.icon
           |  Evaluate
-        a.item#reflect(href="/reflect/identity")
+        a.item#reflect(href="/reflect/http://localhost:3000/course-player?module=identity&section=reflection&page=objectives")
           i.lightbulb.icon
           |  Reflect
       .pusher
@@ -165,12 +171,13 @@ html
       //- - var t = '/main.js?t=' + (new Date()).getTime().toString();
       script(src=t)
     
-    script(src="/js/progress.js")  
+    //- script(src="/js/progress.js")  
     script(src="/js/startTime.js")  
     script(src="/js/endTime.js")  
     script(src="/js/module_exit.js")  
     script(src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js")
     script(src='/video-js/video.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js')
     script.
       $(document).ready(function() {
         let sidebarOpen = false;
@@ -186,6 +193,7 @@ html
             returnScroll: true,
             onShow: function() {
               //- $('#page-article').css('overflow-y', 'hidden');
+              console.log("navigate course section: " + section);
               $('#page-article').addClass('gray-scrollbar');
               $('.hamburger.icon').removeClass('hamburger').addClass('close');
               $('#' + section).css('background-color', '#212B34');

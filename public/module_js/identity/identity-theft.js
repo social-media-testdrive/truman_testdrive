@@ -5,6 +5,8 @@ $(document).ready(function() {
     // Load the first page based on the URL
     console.log("The start page: " + startPage);
     setLinks(startPage);
+    updateProgressBar();
+
 
     $('#backButton').on('click', function() {
         console.log("Back button clicked");
@@ -22,6 +24,8 @@ $(document).ready(function() {
 
         if(backPage === null) {
             window.location.href = backlink;
+        } else if(backPage === 'objectives') {
+            location.reload();
         } else {
             // fade out current page, then fade in previous page. at half duration each, 400ms total
             $('#' + currentPage).transition({
@@ -52,11 +56,18 @@ $(document).ready(function() {
         const nextParams = new URLSearchParams(nextlink);
         const nextPage = nextParams.get('page');
 
+        if(nextPage === 'objectives') {
+            location.reload();
+        }
+
         // fade out current page, then fade in next page. at half duration each, 400ms total
         $('#' + currentPage).transition({
             animation: 'fade out',
             duration: 200,
             onComplete: function() {
+                if(nextPage === 'types') {
+                    $('#steps').slick("refresh");
+                }
                 $('#' + nextPage).transition({
                     animation: 'fade in',
                     duration: 200,
@@ -72,54 +83,90 @@ $(document).ready(function() {
 function setLinks(currentPage) {
     let backlink, nextlink;
 
+    // console.log("module: " + module + " section: " + section + " page: " + currentPage);
+    
+
     if(!pageReload) {
         $('#' + currentPage).transition('fade in');
         pageReload = true;
     }
 
     if(section === 'concepts') {
+        let baseurl = '/course-player?module=identity&section=concepts&page=';
+
         if(currentPage === 'objectives') {
-            backlink = `/challenge/identity`;
-            nextlink = `/course-player?module=identity&section=concepts&page=intro-video`;
+            backlink = '/challenge/identity';
+            nextlink = baseurl + 'intro-video';
         } 
         else if(currentPage === 'intro-video') {
             // pause video
             $('#my_video_1')[0].player.pause();
 
-            backlink = `/course-player?module=identity&section=concepts&page=objectives`;
-            nextlink = `/course-player?module=identity&section=concepts&page=definitions`;
+            backlink = baseurl + 'objectives';
+            nextlink = baseurl + 'definitions';
         } else if(currentPage === 'definitions') {
             console.log("setLinks is at definitions");
 
-            backlink = `/course-player?module=identity&section=concepts&page=intro-video`;
-            nextlink = `/course-player?module=identity&section=concepts&page=personal-info`;
+            backlink = baseurl + 'intro-video';
+            nextlink = baseurl + 'personal-info';
         } else if(currentPage === 'personal-info') {
             console.log("setLinks is at personal-info");
 
-            backlink = `/course-player?module=identity&section=concepts&page=definitions`;
-            nextlink = `/course-player?module=identity&section=concepts&page=activity`;
+            backlink = baseurl + 'definitions';
+            nextlink = baseurl + 'activity';
         } else if(currentPage === 'activity') {
             console.log("setLinks is at activity");
 
-            backlink = `/course-player?module=identity&section=concepts&page=personal-info`;
-            nextlink = `/course-player?module=identity&section=concepts&page=reflection`;
+            backlink = baseurl + 'personal-info';
+            nextlink = baseurl + 'reflection';
         } else if(currentPage === 'reflection') {
             console.log("setLinks is at reflection");
 
-            backlink = `/course-player?module=identity&section=concepts&page=activity`;
-            nextlink = `/course-player?module=identity&section=concepts&page=quiz`;
+            backlink = baseurl + 'activity';
+            nextlink = baseurl + 'quiz';
             
         } else if(currentPage === 'quiz') {
             console.log("setLinks is at quiz");
             
-            backlink = `/course-player?module=identity&section=concepts&page=reflection`;
-            nextlink = `/course-player?module=identity&section=concepts&page=takeaways`;
+            backlink = baseurl + 'reflection';
+            nextlink = baseurl + 'takeaways';
             progress = (7 / total) * 100;
 
         } else if(currentPage === 'takeaways') {
 
-            backlink = `/course-player?module=identity&section=concepts&page=quiz`;
-            nextlink = `/course-player?module=identity&section=concepts&page=objectives`;
+            backlink = baseurl + 'quiz';
+            nextlink = 'course-player?module=identity&section=consequences&page=objectives';
+        }
+    } else if(section === 'consequences') {
+        let baseurl = '/course-player?module=identity&section=consequences&page=';
+
+        if(currentPage === 'objectives') {
+            backlink = 'course-player?module=identity&section=concepts&page=objectives';
+            nextlink = baseurl + 'intro-video'; 
+        } 
+        else if(currentPage === 'intro-video') {
+            // pause video
+            $('#my_video_1')[0].player.pause();
+
+            backlink = baseurl + 'objectives';
+            nextlink = baseurl + 'types';
+        } else if(currentPage === 'types') {
+
+            backlink = baseurl + 'intro-video';
+            nextlink = baseurl + 'activity';
+        } else if(currentPage === 'activity') {
+            backlink = baseurl + 'types';
+            nextlink = baseurl + 'reflection';
+        } else if(currentPage === 'reflection') {
+            backlink = baseurl + 'activity';
+            nextlink = baseurl + 'quiz';
+        } else if(currentPage === 'quiz') {            
+            backlink = baseurl + 'reflection';
+            nextlink = baseurl + 'takeaways';
+            progress = (7 / total) * 100;
+        } else if(currentPage === 'takeaways') {
+            backlink = baseurl + 'quiz';
+            nextlink = baseurl + 'objectives';
         }
     }
 
@@ -137,28 +184,32 @@ function updateProgressBar() {
     
 
     if (pageParam === 'objectives') {
-        progress = (1 / total) * 100;
+        progress = 0;
     } else if (pageParam === 'intro-video') {
-        progress = (2 / total) * 100;
+        progress = (1 / total) * 100;
     } else if (pageParam === 'definitions') {
-        progress = (3 / total) * 100;
+        progress = (2 / total) * 100;
     } else if (pageParam === 'personal-info') {
-        progress = (4 / total) * 100;
+        progress = (3 / total) * 100;
     } else if (pageParam === 'activity') {
-        progress = (5 / total) * 100;
+        progress = (4 / total) * 100;
     } else if (pageParam === 'reflection') {
-        progress = (6 / total) * 100;
+        progress = (5 / total) * 100;
     } else if (pageParam === 'quiz') {
-        progress = (7 / total) * 100;
+        progress = (6 / total) * 100;
+    } else if (pageParam === 'takeaways') {
+        progress = 100;
     }
+
+    console.log("The Progress: " + progress);
 
     if (progressBar) {
         progressBar.setAttribute('data-percent', progress);
         progressBar.querySelector('.bar').style.width = progress + "%";
         if(progress > 0 && progress < 100){
-        progressBar.querySelector('.bar').style.backgroundColor = '#7AC4E0';
+            progressBar.querySelector('.bar').style.backgroundColor = '#7AC4E0';
         } else if(progress == 100) {
-        progressBar.querySelector('.bar').style.backgroundColor = '#3757A7';
+            progressBar.querySelector('.bar').style.backgroundColor = '#3757A7';
         }
         // progressBar.querySelector('.progress').textContent = progress + "%";
     } else {

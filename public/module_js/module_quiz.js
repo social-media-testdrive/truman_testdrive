@@ -33,8 +33,13 @@ console.log("modID: " + modID);
 
 $(document).ready(function() { 
 // function startQuiz() {   
-    $('.bar').css('width', current_percent + '%');
-    $('.bar').css('background', '#7AC4E0');
+
+    // set progress bar ******
+    // $('.bar').css('width', current_percent + '%');
+    // $('.bar').css('background', '#7AC4E0');
+
+
+
 
     // console.log("In module_quiz.js");
     // console.log("modID: " + modID);
@@ -88,8 +93,8 @@ $(document).ready(function() {
         
                 // console.log("We have previous attempts!");
                 pastAttempts = true;
-                $('.bar').css('width', '100%');
-                $('.bar').css('background', '#3757A7');
+                // $('.bar').css('width', '100%');
+                // $('.bar').css('background', '#3757A7');
 
                 revisitShowFooter = true;
                 // hideTryAgainNext = true;
