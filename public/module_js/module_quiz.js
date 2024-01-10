@@ -109,7 +109,9 @@ $(document).ready(function() {
         
                 displayScore();
                 $(".preButton").text("Try Again");
-                $(".nextButton").text("Next");
+                // $(".nextButton").text("Next");
+                $(".nextButton").text("Complete");
+
         
                 // $(".nextButton").text("View Answers");
                 quizOver = true;
@@ -130,11 +132,11 @@ $(document).ready(function() {
                 
                 $(".result").hide();
                 $(".avatar-container").hide();
-                // if(page === 'quiz') {
-                //     $("#nextButton").hide();
-                //     $("#backButton").hide();
-                //     $("#module-footer").hide();
-                // }
+                if(page === 'quiz') {
+                    $("#nextButton").hide();
+                    $("#backButton").hide();
+                    $("#module-footer").hide();
+                }
             }
         
 
@@ -194,15 +196,13 @@ $(document).ready(function() {
             // console.log("Answer: " + questionData[currentQuestion].correctResponse)
 
             // if on last question, change next button text to "view results"
-            if(currentQuestion === numQuestions - 1) {
+            if(currentQuestion === numQuestions - 1 || numQuestions === 1) {
                 if(viewingAnswer === true) {
                     $(".nextButton").text("Return to Results");
                 } else {
-                    $(".nextButton").text("Submit Quiz");
+                    $(".nextButton").text("Check Results");
                 }
-            }
-
-
+            } 
     
 
             let val;
@@ -318,7 +318,9 @@ $(document).ready(function() {
                     $(".htmlImage").hide();
 					displayScore();
 					$(".preButton").text("Try Again");
-                    $(".nextButton").text("Next");
+                    // $(".nextButton").text("Next");
+                    $(".nextButton").text("Complete");
+
                     // if return to results when revisiting quiz hide the try again and next buttons on results page
                     if(hideTryAgainNext === true) {
                         // $(".preButton").css('visibility', 'hidden');
@@ -343,8 +345,19 @@ $(document).ready(function() {
                 }        
             }
 		}	
-		else { // quiz is over and clicked the next button (which now displays 'Next' instead of 'Next Question")
+		else { 
+            // quiz is over and clicked the next button (which now displays 'Next' instead of 'Next Question")
             // save info into database
+            
+            // show footer
+            $("#nextButton").click();
+
+            $(".nextButton").css('visibility', 'hidden');
+
+            $("#nextButton").show();
+            $("#backButton").show();
+            $("#module-footer").show();
+
             // window.location.href = "/challenge3/identity";
             // let correctAnswers = 0;
             // let scoreTotal = 40;

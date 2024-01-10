@@ -32,6 +32,10 @@ $(document).ready(function() {
                 animation: 'fade out',
                 duration: 200,
                 onComplete: function() {
+                    if(backPage === 'types') {
+                        $('#steps-slider').slick("refresh");
+                        $('#image-slider').slick("refresh");
+                    }       
                     $('#' + backPage).transition({
                         animation: 'fade in',
                         duration: 200,
@@ -68,11 +72,16 @@ $(document).ready(function() {
                 if(nextPage === 'types') {
                     $('#steps-slider').slick("refresh");
                     $('#image-slider').slick("refresh");
-                }
+                }   
                 $('#' + nextPage).transition({
                     animation: 'fade in',
                     duration: 200,
                 });
+                if (nextPage === 'quiz' && $('.preButton').text() != 'Try Again') {
+                    $("#nextButton").hide();
+                    $("#backButton").hide();
+                    $("#module-footer").hide();
+                } 
             }
         });
 
@@ -122,7 +131,7 @@ function setLinks(currentPage) {
             nextlink = baseurl + 'reflection';
         } else if(currentPage === 'reflection') {
             console.log("setLinks is at reflection");
-
+            
             backlink = baseurl + 'activity';
             nextlink = baseurl + 'quiz';
             

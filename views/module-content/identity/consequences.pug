@@ -32,6 +32,7 @@ block scripts
         var total = parseInt(#{numPages});
     script.
 
+        //- Sources referenced: https://mgmgblog.com/en/post-4601/ and https://codepen.io/jjinMangKo/pen/LYygOrq
         $('#steps-slider').slick({
             asNavFor:"#image-slider",
             dots: true,
@@ -44,41 +45,6 @@ block scripts
                 var num = index + 1;
                 return '<span class="dot">'+ num +'</span>';
             }
-
-
-        //- customPaging : function(slider, i) {
-        //-     var thumb = $(slider.$slides[i]).data();
-        //-     return '<a>'+i+'</a>';
-        //- },
-
-
-
-        //- autoplay: true,
-        //- autoplaySpeed: 6000,
-        //- responsive: [
-        //- {
-        //-     breakpoint: 1024,
-        //-     settings: {
-        //-     slidesToShow: 2,
-        //-     slidesToScroll: 1,
-        //-     }
-        //- },
-        //- {
-        //-     breakpoint: 600,
-        //-     settings: {
-        //-     slidesToShow: 1,
-        //-     slidesToScroll: 1
-        //-     }
-        //- },
-        //- {
-        //-     breakpoint: 480,
-        //-     settings: {
-        //-     slidesToShow: 1,
-        //-     slidesToScroll: 1
-        //-     }
-        //- }
-
-        //- ]
         });
 
         $('#image-slider').slick({
