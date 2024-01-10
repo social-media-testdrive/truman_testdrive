@@ -66,7 +66,8 @@ $(document).ready(function() {
             duration: 200,
             onComplete: function() {
                 if(nextPage === 'types') {
-                    $('#steps').slick("refresh");
+                    $('#steps-slider').slick("refresh");
+                    $('#image-slider').slick("refresh");
                 }
                 $('#' + nextPage).transition({
                     animation: 'fade in',

@@ -988,16 +988,81 @@ i.big.unlock.icon {
 
 /* module slider identity theft consequences types */
 
-#steps-container {
+.slick-dots {
+    text-align: center;
+    font-size: 2rem;
+    margin: 20px;
+}
 
-    /* background: #0b2645; 
+.slick-dots > li {
+    /* display: inline-block; */
+    /* margin: 12px; */
+    /* margin-right: 50px;    */
+}
+
+ul.slick-dots li {
+    margin-right: 35px; /* Adjust margin as needed */
+}
+
+.slick-prev:before,
+.slick-next:before {
+    color: #3757A6 !important; 
+    font-size: 3rem !important;
+}
+
+.slick-prev:before {
+    margin-left: -25px;
+}
+
+#steps-slider {
+    /* padding-left: 25px !important; */
+    /* background-color: red; */
+    /* width: 50% !important; */
+    margin-left: 25px;
+}
+
+
+#steps-slider .ui.bulleted.list {
+    margin-left: 50px;
+}
+
+
+.dot {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px; /* Doubled width */
+    height: 40px; /* Doubled height */
+    border-radius: 50%;
+    /* background-color: #3757A6; */
+    /* color: white; */
+    text-align: center;
+    font-size: 1.75rem;
+    /* box-shadow: inset 0 0 2px #3757A6; */
+    border: 2px solid #3757A6;  
+    margin-top:10px;
+}
+
+.slick-dots > .slick-active {
+    font-weight: bold;
+    color: white;
+}
+
+.slick-dots > .slick-active .dot {
+    border: 2px solid #7AC4E0;  
+    background-color: #3757A6;
+}
+
+
+/* #steps-container {
+    background: #0b2645; 
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     width: 100%;
     max-width: 100vw; 
-    z-index: 100;  */
+    z-index: 100; 
 }
 
 #steps .content {
@@ -1009,9 +1074,5 @@ i.big.unlock.icon {
 
 #steps .ui.card p span {
 color: #79c4e0;
-}
+} */
 
-.slick-prev:before,
-.slick-next:before {
-    color: #3757A6 !important; 
-}

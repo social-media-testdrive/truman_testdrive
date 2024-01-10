@@ -32,47 +32,62 @@ block scripts
         var total = parseInt(#{numPages});
     script.
 
+        $('#steps-slider').slick({
+            asNavFor:"#image-slider",
+            dots: true,
+            arrows: true,
+            infinite: false,
+            speed: 800,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            customPaging : function(slider, index) { 
+                var num = index + 1;
+                return '<span class="dot">'+ num +'</span>';
+            }
 
-        $('#steps').slick({
-        dots: true,
+
         //- customPaging : function(slider, i) {
         //-     var thumb = $(slider.$slides[i]).data();
         //-     return '<a>'+i+'</a>';
         //- },
-        arrows: true,
-        infinite: true,
-        speed: 800,
-        slidesToShow: 1,
-        slidesToScroll: 1,
+
+
+
         //- autoplay: true,
         //- autoplaySpeed: 6000,
-        responsive: [
-        {
-            breakpoint: 1024,
-            settings: {
-            slidesToShow: 2,
-            slidesToScroll: 1,
-            }
-        },
-        {
-            breakpoint: 600,
-            settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
-            }
-        },
-        {
-            breakpoint: 480,
-            settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
-            }
-        }
+        //- responsive: [
+        //- {
+        //-     breakpoint: 1024,
+        //-     settings: {
+        //-     slidesToShow: 2,
+        //-     slidesToScroll: 1,
+        //-     }
+        //- },
+        //- {
+        //-     breakpoint: 600,
+        //-     settings: {
+        //-     slidesToShow: 1,
+        //-     slidesToScroll: 1
+        //-     }
+        //- },
+        //- {
+        //-     breakpoint: 480,
+        //-     settings: {
+        //-     slidesToShow: 1,
+        //-     slidesToScroll: 1
+        //-     }
+        //- }
 
-        ]
+        //- ]
         });
 
-    
+        $('#image-slider').slick({
+                draggable: false,
+                infinite: false,
+                arrows: false,
+                fade: true,
+                cssEase: 'linear'
+        });
     script.
         //- for quiz
         var questionData = !{JSON.stringify(quizData)}; // quizData is passed to pug file via render function in app.js

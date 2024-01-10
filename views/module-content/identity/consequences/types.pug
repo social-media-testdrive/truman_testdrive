@@ -1,82 +1,57 @@
 #types.hidden
     .ui.container#types-read
         .limit#learn-target(style="padding: 0;")
-            .ui.stackable.middle.aligned.grid
-                .column.eleven.wide.computer.only.sixteen.wide.tablet.only
-                    h1.ui.header.large#learn-title
-                        .content
-                            i.book.icon
-                            | Types
-                    p There are several common types of identity theft including:
-                    .ui.bulleted.list
-                        .item
-                            u Financial identity theft
-                            |  occurs when someone uses your personal information to open or use an account without your permission.
-                            .item 
+            h1.ui.header.large#learn-title
+                .content
+                    i.book.icon
+                    | Types
+            p There are several common types of identity theft including: Financial, Tax, and Medical. 
+            .ui.icon.mini.message
+                i.info.circle.blue.icon(style="color: #0C2746")
+                .content 
+                    p Click the arrows or numbers to learn more.
+            .ui.stackable.middle.aligned.grid#double-slider(style="margin-top: -20px;")
+                .column.six.wide.computer.only.sixteen.wide.tablet.only
+                    #image-slider(style="margin: 0 auto;")
+                        img(src='/images/financial-theft.svg' alt='Financial Identity Theft')
+                        img(src='/images/medical-theft.svg' alt='Medical Identity Theft')
+                        img(src='/images/tax-theft.png' alt='Tax-Related Identity Theft' style="max-width: 18%; margin-left: 75px;")
+                .column.ten.wide.computer.only.sixteen.wide.tablet.only
+                    #steps-slider
+                        //- Card 1
+                        .ui.basic.card
+                            .content
+                                h2 Financial Identity Theft 
+                                p Thieves use your personal information to open or use an account without your permission. This may lead to:
                                 .ui.bulleted.list
-                                    .item This can include 
-                                        strong bank accounts, credit cards, subscriptions, insurance, loans, and more. 
-                        .item
-                            u Tax-related identity theft
-                            |  happens when someone steals your personal information and uses it to file a fake tax return to get a refund that belongs to you.
-                        .item
-                            u Medical identity theft
-                            |  happens when scammers use your personal information to submit fraudulent claims to Medicare or other health insurers without your authorization.
-            .ui.stackable.middle.aligned.grid#double-slider
-                .column.eleven.wide.computer.only.sixteen.wide.tablet.only
-                    #image-slider 
-                        img(src='/images/financial-theft.svg' alt='Financial Identity Theft' width="60%")
-                        img(src='/images/medical-theft.svg' alt='Medical Identity Theft'  width="60%")
-                        img(src='/images/tax-theft.png' alt='Tax-Related Identity Theft'  width="60%")
-                #steps-container
-                    .ui.container
-                        #steps
-                            //- Card 1
-                            .ui.basic.card
-                                .content
-                                    //- .center.aligned.header Jenny Hess
-                                    .left.aligned.description
-                                        i.icon.quote.left
-                                        p#myquote The content is relevant and easy to follow. I can trust it."
-                                            span  - Name, PA
-                            //- Card 2 
-                            .ui.basic.card
-                                .content
-                                    //- .center.aligned.header Jenny Hess
-                                    .left.aligned.description
-                                        i.icon.quote.left
-                                        p Learning to outsmart scams keeps me on my toes!"
-                                            span  - Name, PA
-                            //- Card 4
-                            .ui.basic.card
-                                .content
-                                    //- .center.aligned.header Jenny Hess
-                                    .left.aligned.description
-                                        i.icon.quote.left
-                                        p Excellent way for people to gain confidence online."
-                                            span  - Name, PA
-                            //- Card 4
-                            .ui.basic.card
-                                .content
-                                    //- .center.aligned.header Jenny Hess
-                                    .left.aligned.description
-                                        i.icon.quote.left
-                                        p Retired from work, but never from learning. Thanks DART!"
-                                            span  - Name, PA
-                            //- Card 5
-                            .ui.basic.card
-                                .content
-                                    //- .center.aligned.header Jenny Hess
-                                    .left.aligned.description
-                                        i.icon.quote.left
-                                        p Watch out scammers, we're fighting back!"
-                                            span  - Name, PA
-                                        //- p "The content is relevant and easy to follow. I can trust it."
-                            //- Card 6
-                            .ui.basic.card
-                                .content
-                                    //- .center.aligned.header Jenny Hess
-                                    .left.aligned.description
-                                        i.icon.quote.left
-                                        p I can now help my friends and family avoid getting scammed."
-                                            span  - Name, PA
+                                    .item Unexpected charges on statements or cards
+                                    .item Unknown credit cards or loans in your name
+                                    .item Surprise calls from debt collectors
+                                    .item Denied credit or credit score drop
+                                    .item Bounced checks with available funds
+                                    .item Missing bank mail or email
+                        //- Card 2 
+                        .ui.basic.card
+                            .content
+                                h2 Medical Identity Theft 
+                                p Thieves submit fake claims to health insurers like Medicare using your personal information without consent. This may lead to:
+                                .ui.bulleted.list
+                                    .item Bill for services or medicationss you didn't get
+                                    .item Report or call about a medical debt you don't owe
+                                    .item Notice saying you reached your benefit limit
+                                    .item Denied coverage due to a wrong health condition
+                        //- Card 3
+                        .ui.basic.card
+                            .content
+                                h2 Tax Identity Theft 
+                                p Thieves use your personal information to file a fake tax return to get a refund that belongs to you. This may lead to:
+                                .ui.bulleted.list
+                                    .item Unrequested mail/email with new account details
+                                    .item IRS records show income from an unknown employer
+                                    .item IRS letter for an unfiled tax return
+                                    .item IRS notice claiming unexpected tax or actions against you
+                                    .item E-file issue due to duplicate Social Security number
+
+
+
+
