@@ -24,9 +24,15 @@ $(document).ready(function() {
 
         if(backPage === null) {
             window.location.href = backlink;
-        } else if(backPage === 'objectives') {
+        } 
+        // instead have it so only if they press the back button on the first page of the module, it will reload the page
+        else if(currentPage != 'intro-video' && (backPage === 'objectives' || backPage === 'intro') ) {
+            // console.log("page reloaded just now!!!!!!!!!!!!!!!")
+            // console.log("current page is just now: " + currentPage)
+            // console.log("back page is just now: " + backPage)
             location.reload();
-        } else {
+        } 
+        else {
             // fade out current page, then fade in previous page. at half duration each, 400ms total
             $('#' + currentPage).transition({
                 animation: 'fade out',
@@ -60,7 +66,7 @@ $(document).ready(function() {
         const nextParams = new URLSearchParams(nextlink);
         const nextPage = nextParams.get('page');
 
-        if(nextPage === 'objectives') {
+        if(nextPage === 'objectives' || nextPage === 'intro') {
             location.reload();
         }
 
@@ -101,6 +107,13 @@ function setLinks(currentPage) {
         pageReload = true;
     }
 
+    // if(currentPage === 'objectives' || currentPage === 'intro') {
+    //     $('#backButton').on('click', function() {
+    //         location.reload();
+    //         // window.location.href = backlink;
+    //     });
+    // }
+
     if(section === 'challenge') {
         let baseurl = '/course-player?module=identity&section=challenge&page=';
 
@@ -110,16 +123,15 @@ function setLinks(currentPage) {
         } else if(currentPage === 'quiz') {            
             backlink = baseurl + 'intro';
             nextlink = baseurl + 'badge';
-            progress = (2 / total) * 100;
         } else if(currentPage === 'badge') {
             backlink = baseurl + 'quiz';
-            nextlink = baseurl + 'course-player?module=identity&section=concepts&page=objectives';
+            nextlink = 'course-player?module=identity&section=concepts&page=objectives';
         }
     } else if(section === 'concepts') {
         let baseurl = '/course-player?module=identity&section=concepts&page=';
 
         if(currentPage === 'objectives') {
-            backlink = '/challenge/identity';
+            backlink = '/course-player?module=identity&section=challenge&page=intro';
             nextlink = baseurl + 'intro-video';
         } 
         else if(currentPage === 'intro-video') {
@@ -154,7 +166,7 @@ function setLinks(currentPage) {
             
             backlink = baseurl + 'reflection';
             nextlink = baseurl + 'takeaways';
-            progress = (7 / total) * 100;
+            // progress = (7 / total) * 100;
 
         } else if(currentPage === 'takeaways') {
 
@@ -207,22 +219,48 @@ function updateProgressBar() {
 
     
 
-    if (pageParam === 'objectives') {
-        progress = 0;
-    } else if (pageParam === 'intro-video') {
-        progress = (1 / total) * 100;
-    } else if (pageParam === 'definitions') {
-        progress = (2 / total) * 100;
-    } else if (pageParam === 'personal-info') {
-        progress = (3 / total) * 100;
-    } else if (pageParam === 'activity') {
-        progress = (4 / total) * 100;
-    } else if (pageParam === 'reflection') {
-        progress = (5 / total) * 100;
-    } else if (pageParam === 'quiz') {
-        progress = (6 / total) * 100;
-    } else if (pageParam === 'takeaways') {
-        progress = 100;
+    if(section === 'challenge') {
+        if(pageParam === 'intro') {
+            progress = 0;
+        } else if(pageParam === 'quiz') {
+            progress = 10;
+        } else if(pageParam === 'badge') {
+            progress = 100;
+        }
+    } else if(section === 'concepts') {
+        if (pageParam === 'objectives') {
+            progress = 0;
+        } else if (pageParam === 'intro-video') {
+            progress = (1 / total) * 100;
+        } else if (pageParam === 'definitions') {
+            progress = (2 / total) * 100;
+        } else if (pageParam === 'personal-info') {
+            progress = (3 / total) * 100;
+        } else if (pageParam === 'activity') {
+            progress = (4 / total) * 100;
+        } else if (pageParam === 'reflection') {
+            progress = (5 / total) * 100;
+        } else if (pageParam === 'quiz') {
+            progress = (6 / total) * 100;
+        } else if (pageParam === 'takeaways') {
+            progress = 100;
+        }
+    } else if(section === 'consequences') {
+        if (pageParam === 'objectives') {
+            progress = 0;
+        } else if (pageParam === 'intro-video') {
+            progress = (1 / total) * 100;
+        } else if (pageParam === 'types') {
+            progress = (2 / total) * 100;
+        } else if (pageParam === 'activity') {
+            progress = (3 / total) * 100;
+        } else if (pageParam === 'reflection') {
+            progress = (4 / total) * 100;
+        } else if (pageParam === 'quiz') {
+            progress = (5 / total) * 100;
+        } else if (pageParam === 'takeaways') {
+            progress = 100;
+        }
     }
 
     console.log("The Progress: " + progress);

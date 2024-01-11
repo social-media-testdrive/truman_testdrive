@@ -23,7 +23,11 @@ exports.getModule = async (req, res) => {
     // const page = req.query.page;
     const { module, section, page } = req.query;
     let numPages;
-    if(section === 'concepts') {
+
+    // each quiz question is being counted as a page too so we need to add those
+    if(section === 'challenge'){
+      numPages = 8;
+    } else if(section === 'concepts') {
       numPages = 10;
     } else if(section === 'consequences') {
       numPages = 7;

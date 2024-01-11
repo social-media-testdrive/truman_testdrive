@@ -26,7 +26,7 @@ block content
           .twelve.wide.column
             p The Johnsons need your help! They've been targeted by SCAMM, falling victim to a sneaky identity theft scheme.
             p Uncover how scammers steal personal information to impersonate their targets. You'll learn how these scams work, how to spot them, and how to protect yourself and others.
-            if user.moduleProgress.identity.link === "/challenge/identity" 
+            if user.moduleProgress.identity.link === "/course-player?module=identity&section=challenge&page=intro" 
               button.ui.huge.blue.button(onclick="window.location=user.moduleProgress.identity.link") Start Mission
             else 
               button.ui.huge.blue.button(onclick="window.location=user.moduleProgress.identity.link") Continue Mission
@@ -53,7 +53,7 @@ block content
               .nine.wide.column
                 h3 Challenge
               .five.wide.right.aligned.column
-                .ui.blue.inverted.button.small(onclick="window.location='/challenge/identity'") Start
+                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=identity&section=challenge&page=intro'") Start
         .ui.divider
         .ui.basic.segment
           .ui.grid
@@ -153,7 +153,7 @@ block content
         .sixteen.wide.column
           .speech-div
             .centerme
-              if user.moduleProgress.identity.link === "/challenge/identity" 
+              if user.moduleProgress.identity.link === "/course-player?module=identity&section=challenge&page=intro" 
                 button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.identity.link") Start Mission
               else 
                 button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.identity.link") Continue Mission
@@ -161,14 +161,14 @@ block content
             img.dart_image.ui.medium.image(src=user.avatarImg)
 
             .ui.large.label.blue-pointing#speechBubble
-              if user.moduleProgress.identity.link === "/challenge/identity" 
+              if user.moduleProgress.identity.link === "/course-player?module=identity&section=challenge&page=intro" 
                 p#speechText
                   | The Johnsons are counting on you! Click 'Start Mission' to begin. 
               else 
                 p#speechText
                   | Welcome back! Click 'Continue Mission' to pick up where you left off.
     .ui.centered.grid.mobile.only
-      if user.moduleProgress.identity.link === "/challenge/identity" 
+      if user.moduleProgress.identity.link === "/course-player?module=identity&section=challenge&page=intro" 
         button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.identity.link" style="margin-top: 0px; margin-bottom: 60px;") Start Mission
       else 
         button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.identity.link" style="margin-top: 0px;  margin-bottom: 60px;") Continue Mission
