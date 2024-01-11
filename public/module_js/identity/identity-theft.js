@@ -101,7 +101,21 @@ function setLinks(currentPage) {
         pageReload = true;
     }
 
-    if(section === 'concepts') {
+    if(section === 'challenge') {
+        let baseurl = '/course-player?module=identity&section=challenge&page=';
+
+        if(currentPage === 'intro') {
+            backlink = 'about/identity';
+            nextlink = baseurl + 'quiz'; 
+        } else if(currentPage === 'quiz') {            
+            backlink = baseurl + 'intro';
+            nextlink = baseurl + 'badge';
+            progress = (2 / total) * 100;
+        } else if(currentPage === 'badge') {
+            backlink = baseurl + 'quiz';
+            nextlink = baseurl + 'course-player?module=identity&section=concepts&page=objectives';
+        }
+    } else if(section === 'concepts') {
         let baseurl = '/course-player?module=identity&section=concepts&page=';
 
         if(currentPage === 'objectives') {
