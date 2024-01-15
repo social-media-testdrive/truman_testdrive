@@ -31,6 +31,10 @@ exports.getModule = async (req, res) => {
       numPages = 10;
     } else if(section === 'consequences') {
       numPages = 7;
+    } else if(section === 'techniques') {
+      numPages = 9;
+    } else if(section === 'protection') {
+      numPages = 8;
     }
 
     const modulePage = `module-content/${module}/${section}.pug`;

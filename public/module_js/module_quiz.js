@@ -109,8 +109,8 @@ $(document).ready(function() {
         
                 displayScore();
                 $(".preButton").text("Try Again");
-                // $(".nextButton").text("Next");
-                $(".nextButton").text("Complete");
+                $(".nextButton").text("Next");
+                // $(".nextButton").text("Complete");
 
         
                 // $(".nextButton").text("View Answers");
@@ -318,8 +318,8 @@ $(document).ready(function() {
                     $(".htmlImage").hide();
 					displayScore();
 					$(".preButton").text("Try Again");
-                    // $(".nextButton").text("Next");
-                    $(".nextButton").text("Complete");
+                    $(".nextButton").text("Next");
+                    // $(".nextButton").text("Complete");
 
                     // if return to results when revisiting quiz hide the try again and next buttons on results page
                     if(hideTryAgainNext === true) {

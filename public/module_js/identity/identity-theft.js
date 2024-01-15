@@ -204,6 +204,52 @@ function setLinks(currentPage) {
             backlink = baseurl + 'quiz';
             nextlink = baseurl + 'objectives';
         }
+    } else if(section === 'techniques') {
+        let baseurl = '/course-player?module=identity&section=techniques&page=';
+
+        if(currentPage === 'objectives') {
+            backlink = '/course-player?module=identity&section=consequences&page=objectives';
+            nextlink = baseurl + 'intro-video';
+        } 
+        else if(currentPage === 'intro-video') {
+            // pause video
+            $('#my_video_1')[0].player.pause();
+
+            backlink = baseurl + 'objectives';
+            nextlink = baseurl + 'definitions';
+        } else if(currentPage === 'definitions') {
+            console.log("setLinks is at definitions");
+
+            backlink = baseurl + 'intro-video';
+            nextlink = baseurl + 'personal-info';
+        } else if(currentPage === 'personal-info') {
+            console.log("setLinks is at personal-info");
+
+            backlink = baseurl + 'definitions';
+            nextlink = baseurl + 'activity';
+        } else if(currentPage === 'activity') {
+            console.log("setLinks is at activity");
+
+            backlink = baseurl + 'personal-info';
+            nextlink = baseurl + 'reflection';
+        } else if(currentPage === 'reflection') {
+            console.log("setLinks is at reflection");
+            
+            backlink = baseurl + 'activity';
+            nextlink = baseurl + 'quiz';
+            
+        } else if(currentPage === 'quiz') {
+            console.log("setLinks is at quiz");
+            
+            backlink = baseurl + 'reflection';
+            nextlink = baseurl + 'takeaways';
+            // progress = (7 / total) * 100;
+
+        } else if(currentPage === 'takeaways') {
+
+            backlink = baseurl + 'quiz';
+            nextlink = '/course-player?module=identity&section=protection&page=objectives';
+        }
     }
 
     return { backlink, nextlink };
@@ -258,6 +304,22 @@ function updateProgressBar() {
             progress = (4 / total) * 100;
         } else if (pageParam === 'quiz') {
             progress = (5 / total) * 100;
+        } else if (pageParam === 'takeaways') {
+            progress = 100;
+        }
+    } else if(section === 'techniques') {
+        if (pageParam === 'objectives') {
+            progress = 0;
+        } else if (pageParam === 'intro-video') {
+            progress = (1 / total) * 100;
+        } else if (pageParam === 'definitions') {
+            progress = (2 / total) * 100;
+        } else if (pageParam === 'activity') {
+            progress = (4 / total) * 100;
+        } else if (pageParam === 'reflection') {
+            progress = (5 / total) * 100;
+        } else if (pageParam === 'quiz') {
+            progress = (6 / total) * 100;
         } else if (pageParam === 'takeaways') {
             progress = 100;
         }

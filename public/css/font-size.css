@@ -100,7 +100,9 @@ button.ui.cta {
   }
 
   
-
+i.source {
+    font-size: 14px;
+}
 
 
 .home-mod-title {
