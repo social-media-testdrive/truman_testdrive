@@ -202,16 +202,16 @@ function setLinks(currentPage) {
             progress = (7 / total) * 100;
         } else if(currentPage === 'takeaways') {
             backlink = baseurl + 'quiz';
-            nextlink = baseurl + 'objectives';
+            nextlink = baseurl + '/course-player?module=identity&section=techniques&page=types';
         }
     } else if(section === 'techniques') {
         let baseurl = '/course-player?module=identity&section=techniques&page=';
 
         if(currentPage === 'objectives') {
             backlink = '/course-player?module=identity&section=consequences&page=objectives';
-            nextlink = baseurl + 'intro-video';
+            nextlink = baseurl + 'types';
         } 
-        else if(currentPage === 'intro-video') {
+        else if(currentPage === 'types') {
             // pause video
             $('#my_video_1')[0].player.pause();
 
@@ -220,7 +220,7 @@ function setLinks(currentPage) {
         } else if(currentPage === 'definitions') {
             console.log("setLinks is at definitions");
 
-            backlink = baseurl + 'intro-video';
+            backlink = baseurl + 'types';
             nextlink = baseurl + 'personal-info';
         } else if(currentPage === 'personal-info') {
             console.log("setLinks is at personal-info");

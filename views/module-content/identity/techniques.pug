@@ -10,13 +10,16 @@ block content
             h1 Loading...
     .display-page.hidden
         include techniques/objectives.pug
-        include techniques/intro-video.pug
+        include techniques/types.pug
         include techniques/definitions.pug
-        //- include techniques/personal-info.pug
-        //- include techniques/activity.pug
-        //- include techniques/reflection.pug
-        //- include techniques/quiz.pug
-        //- include techniques/takeaways.pug
+        include techniques/issue.pug
+        include techniques/know-you.pug
+        include techniques/offer.pug
+        include techniques/suspicious.pug
+        include techniques/activity.pug
+        include techniques/reflection.pug
+        include techniques/quiz.pug
+        include techniques/takeaways.pug
 
 
 block styles 
@@ -24,6 +27,7 @@ block styles
     link(rel='stylesheet', href='/css/learning-targets.css')
     link(rel='stylesheet', href='/css/middle-aligned-layout.css')
     link(rel='stylesheet', href='/css/dart_quiz.css')  
+    link(rel='stylesheet', href='/css/example-emails.css')
 
 
 block scripts       
@@ -45,6 +49,31 @@ block scripts
         var section = "#{section}";
         var startPage = "#{page}"; 
         var total = parseInt(#{numPages});
+    script.
+
+        //- Sources referenced: https://mgmgblog.com/en/post-4601/ and https://codepen.io/jjinMangKo/pen/LYygOrq
+        $('#steps-slider').slick({
+            asNavFor:"#image-slider",
+            dots: true,
+            arrows: true,
+            infinite: false,
+            speed: 800,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            customPaging : function(slider, index) { 
+                var num = index + 1;
+                return '<span class="dot">'+ num +'</span>';
+            }
+        });
+
+        $('#image-slider').slick({
+                draggable: false,
+                infinite: false,
+                arrows: false,
+                fade: true,
+                cssEase: 'linear'
+        });
+
     script.
         //- for quiz
     //-     var questionData = !{JSON.stringify(quizData)}; // quizData is passed to pug file via render function in app.js
