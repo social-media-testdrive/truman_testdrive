@@ -520,35 +520,6 @@ i.big.unlock.icon {
 }
 
 
-
-/* Avatar Call Out Important Notes / Admonitions CSS */
-.ui.icon.blue.message {
-    padding-top: 2px;
-    padding-bottom: 2px;
-    padding-right: 2px;
-    padding-left: 0;
-    margin-left: 0;
-}
-
-.ui.icon.blue.message .icon {
-    height: 125px !important;
-    width: 175px;
-    overflow: hidden;
-}
-
-.ui.icon.blue.message .icon img {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    object-position: top center;
-}
-
-.ui.icon.blue.message .content {
-    background: white;
-    height: 100%;
-    padding: 10px;
-    padding-left: 15px;
-}
 /* OLD CSS From Truman  Start Pages Below */
 /* 
 .ui.warning.message {

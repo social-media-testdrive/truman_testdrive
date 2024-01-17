@@ -44,7 +44,7 @@
                                         p Hi Dear Customer,
                                         p.response We're having some trouble with your current billing information. Please update your payment details.
                                         h2.update UPDATE ACCOUNT NOW
-                                        p Need help? We're here if you need it. Visit the <span class="underline-text">Help Centre</span> or <span class="underline-text">contact us</span> now
+                                        p Need help? We're here if you need it. Visit the <span class="underline-text">Help Center</span> or <span class="underline-text">contact us</span> now
                                         p -Your friends at Netflix
                 .eight.wide.column
                     //- p  Email scams can be tricky to spot, especially when they look like they come from a legitimate company you know. 
@@ -58,11 +58,9 @@
                     p
                         u Phishing link: 
                         | if the email invites you to click on a new link to update your payment details, the link can be a phishing link.
-                    .ui.icon.fluid.blue.message
-                        .icon
-                            img#dart_image1.ui.small.image.right.floated(src=user.avatarImg)
-                        .content
-                            .header
-                            //- i.info.circle.icon
-                            | Important
-                            p(style="font-size: 1.3rem") Legitimate companies won’t email or text you with a link to update your payment information.
+                    div.callout
+                        .dark-blue-square
+                            img(src=user.avatarImg, alt='avatar picture')
+                        .light-blue-content
+                            h3.call-header Important
+                            p Legitimate companies won’t email or text you with a link to update your payment information.
