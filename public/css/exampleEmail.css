@@ -80,6 +80,7 @@ span.subject {
 
 i.exclamation.circle.icon  {
     color: #666666;
+    font-size: 1.75rem !important;
 }
 
 span.pageNum {
@@ -201,6 +202,7 @@ button.ui.circular.icon.button:hover {
     text-shadow: none;
     padding-left: 30px;
     padding-right: 30px;
+    font-size: 1.5rem;
 }
 
 .introjs-button:hover {

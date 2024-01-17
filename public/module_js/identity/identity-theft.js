@@ -41,16 +41,24 @@ $(document).ready(function() {
                     if(backPage === 'types') {
                         $('#steps-slider').slick("refresh");
                         $('#image-slider').slick("refresh");
-                    }       
+                    } 
+
+                    if(currentPage === 'activity') {
+                        var introDiv = document.getElementsByClassName("introjs-hints")[0];
+                        introDiv.parentNode.removeChild(introDiv);
+                    }
+
                     $('#' + backPage).transition({
                         animation: 'fade in',
                         duration: 200,
                     });
+
+                    if(backPage === 'activity') {
+                        introJs().addHints();
+                    }
                 }
             });
         }
-
-
         updateProgressBar();
     });
     
@@ -79,6 +87,12 @@ $(document).ready(function() {
                     $('#steps-slider').slick("refresh");
                     $('#image-slider').slick("refresh");
                 }   
+
+                if(currentPage === 'activity') {
+                    var introDiv = document.getElementsByClassName("introjs-hints")[0];
+                    introDiv.parentNode.removeChild(introDiv);
+                }
+
                 $('#' + nextPage).transition({
                     animation: 'fade in',
                     duration: 200,
@@ -88,6 +102,9 @@ $(document).ready(function() {
                     $("#backButton").hide();
                     $("#module-footer").hide();
                 } 
+                if(nextPage === 'activity') {
+                    introJs().addHints();
+                }
             }
         });
 
@@ -103,7 +120,16 @@ function setLinks(currentPage) {
     
 
     if(!pageReload) {
-        $('#' + currentPage).transition('fade in');
+        $('#' + currentPage).transition({
+            animation: 'fade in',
+            onComplete: function() {
+                if(currentPage === 'activity') {
+                    introJs().addHints();
+                }
+            }
+        });
+
+
         pageReload = true;
     }
 

@@ -1,12 +1,41 @@
 #activity.hidden
     .ui.container#activity-read
-        .limit#learn-target(style="padding: 0;")
-            .ui.stackable.grid
-                .ten.wide.column
-                    h1.ui.header.large#learn-title
-                        .content 
-                            i.dice.icon
-                            | Activity
-                    p In this activity, you'll help Mrs. Johnson protect herself from identity theft.
-                .six.wide.column.middle.aligned
-                    //- img.ui.image(src='/images/learn-2.png' style='margin-left: auto; margin-right: auto')
+        .limit#learn-target
+            h1.ui.header.large#learn-title
+                .content 
+                    i.dice.icon
+                    | Activity
+            p Click on the red dots to explore this email 
+
+            .openEmailContainer(id="openEmail-1")
+                .ui.segment
+                    span#subjectLine(style="font-size: 1.5rem;")
+                        | Order Confirmation - Norton Renewal
+                        #inboxLabel.ui.small.label(data-hint='This email was automatically sent to spam, and spam filters emails that are not sent from a trusted source. So be careful!' data-hint-position='top-right')
+                            | Spam
+                            i.delete.icon
+                    .ui.icon.message(style="height: 40px;")
+                        i.exclamation.circle.icon 
+                        .content.senderInfo
+                            .header
+                                | NORTON LLC
+                                span.fromEmail &lt;subscriptions@deskera.com&gt;
+                                span.aHint(data-hint='Go to Norton LLC official website to check if the email address is correct.' data-hint-position='top-right')
+                    p#emailContent
+                        | Hi,
+                        span.aHint(data-hint='The missing name in the email raises suspicion of it being a scam.' data-hint-position='top-right')
+                        br           
+                        | This is to inform you that your annual subscription has been renewed successfully.
+                        br
+                        | We have charged you 399 USD for your yearly subscription. Here are your order details:
+                        br
+                        br
+                        | Order ID: # 33L-6372V-M8
+                        br
+                        | Product name: Norton 360
+                        span.aHint(data-hint='Did you purchase what the email claims you did?' data-hint-position='top-right')
+                        br
+                        | Total Amount: 399.00 USD 
+                        span.aHint(data-hint='Confirm this charge by checking your credit/debit card statements.' data-hint-position='top-right')
+                        br
+                        | Transaction Data: #{currentDate}
