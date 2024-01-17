@@ -11,9 +11,10 @@
                 .ui.segment
                     span#subjectLine(style="font-size: 1.5rem;")
                         | Order Confirmation - Norton Renewal
-                        #inboxLabel.ui.small.label(data-hint='This email was automatically sent to spam, and spam filters emails that are not sent from a trusted source. So be careful!' data-hint-position='top-right')
+                        #inboxLabel.ui.small.label
                             | Spam
                             i.delete.icon
+                        span(data-hint='This email was automatically sent to spam, and spam filters emails that are not sent from a trusted source. So be careful!' style="margin-left: 20px;")
                     .ui.icon.message(style="height: 40px;")
                         i.exclamation.circle.icon 
                         .content.senderInfo
@@ -35,7 +36,7 @@
                         | Product name: Norton 360
                         span.aHint(data-hint='Did you purchase what the email claims you did?' data-hint-position='top-right')
                         br
+                        | Transaction Data: #{currentDate}
+                        br
                         | Total Amount: 399.00 USD 
                         span.aHint(data-hint='Confirm this charge by checking your credit/debit card statements.' data-hint-position='top-right')
-                        br
-                        | Transaction Data: #{currentDate}

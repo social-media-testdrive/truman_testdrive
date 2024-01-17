@@ -123,7 +123,7 @@ function setLinks(currentPage) {
         $('#' + currentPage).transition({
             animation: 'fade in',
             onComplete: function() {
-                if(currentPage === 'activity') {
+                if(currentSection === "techniques" && currentPage === 'activity') {
                     introJs().addHints();
                 }
             }
@@ -214,7 +214,7 @@ function setLinks(currentPage) {
             nextlink = baseurl + 'takeaways';
         } else if(currentPage === 'takeaways') {
             backlink = baseurl + 'quiz';
-            nextlink = baseurl + '/course-player?module=identity&section=techniques&page=types';
+            nextlink = '/course-player?module=identity&section=techniques&page=objectives';
         }
     } else if(section === 'techniques') {
         let baseurl = '/course-player?module=identity&section=techniques&page=';
@@ -279,7 +279,7 @@ function setLinks(currentPage) {
             nextlink = baseurl + 'takeaways';
         } else if(currentPage === 'takeaways') {
             backlink = baseurl + 'quiz';
-            nextlink = baseurl + '/course-player?module=identity&section=evaluate&page=intro';
+            nextlink = '/course-player?module=identity&section=evaluate&page=intro';
         }
     } else if(section === 'reporting') {
         let baseurl = '/course-player?module=identity&section=reporting&page=';
@@ -312,7 +312,7 @@ function setLinks(currentPage) {
             nextlink = baseurl + 'takeaways';
         } else if(currentPage === 'takeaways') {
             backlink = baseurl + 'quiz';
-            nextlink = baseurl + '/course-player?module=identity&section=evaluate&page=intro';
+            nextlink = '/course-player?module=identity&section=evaluate&page=intro';
         }
     }
 
