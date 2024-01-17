@@ -1,24 +1,33 @@
 #suspicious.hidden
-    .ui.container#suspicious-read
-        .limit#learn-target(style="padding: 0;")
-            .ui.stackable.middle.aligned.grid
-                .column.eleven.wide.computer.only.sixteen.wide.tablet.only
-                    h1.ui.header.large#learn-title
-                        .content
-                            i.book.icon
-                            | Identity Theft Basics
-
-                    //- p Identity Theft occurs when someone uses your 
-                    //-     strong personal information without your permission.
-                    //- p For instance, they might take your name, social security number, or credit card details. 
-                    //- p This information enables them to do things like make purchases, open new accounts, or commit crimes.
-
-                    p Identity theft is when your personal identifiable information (PII) is stolen and used against you.
-
-
-                .column.five.wide.computer.only.sixteen.wide.tablet.only
-                    .polaroid 
-                        img.ui.image(src='/images/johnsons-suprised.png')
-                        //- p(style="text-align: center; font-size: 1rem;") When Mr. Johnson shared his personal information over the phone, it led to unauthorized charges by scammers.
-                        //- p Mr. Johnson sharing his personal info over the phone let scammers make unauthorized charges.
-                        p Mr. Johnson sharing his personal info over the phone allowed scammers to make unauthorized charges.
+    .ui.container#suspicious-read(style="width: 90%;")
+        .top-info(style="margin-top: 10px;")
+            h1.ui.header.large#learn-title
+                .content
+                    i.book.icon
+                    | Example 4: Suspicious activity or log-in attempts
+        .ui.centered.stackable.grid
+            .eight.wide.column
+                .ios-chat-container
+                    .chat(style="width: 100%; align-items: center; font-size: 1.4rem;")
+                        .yours.messages
+                            .message.last(style="width: 500px; margin-top: 20px; margin-bottom: 20px;")
+                                | BMO: ALERT For security reasons, your account has been temporarily suspended. Please verify your information:  
+                                u bit.ly/123340
+                            .message.last(style="width: 500px;")
+                                | Wells Fargo Bank: Your account has been temporarily blocked. Please log in to 
+                                u http://goo.gl/23489 
+            .eight.wide.column
+                p(style="margin-top: 20px;") Here are signs that indicate the two messages are scams:
+                    .ui.bulleted.list
+                        .item 
+                            | These two messages claim there’s a problem with your account or your payment information without specific information.
+                        .item 
+                            | These two messages induce a sense of threat or urgency and compels you to click on the provided link.
+                        .item
+                            | These two messages fail to demonstrate official sources.
+                div.callout
+                    .dark-blue-square
+                        img(src=user.avatarImg, alt='avatar picture')
+                    .light-blue-content
+                        h3.call-header Important
+                        p Beware of urgent requests for personal information. Legitimate companies don't ask for it this way.

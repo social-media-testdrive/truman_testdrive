@@ -205,7 +205,7 @@ function setLinks(currentPage) {
             nextlink = baseurl + 'know-you';
         } else if(currentPage === 'know-you') {
             backlink = baseurl + 'issue';
-            nextlink = baseurl + 'activity';
+            nextlink = baseurl + 'offer';
         } else if(currentPage === 'offer') {
             backlink = baseurl + 'know-you';
             nextlink = baseurl + 'suspicious';
@@ -213,7 +213,7 @@ function setLinks(currentPage) {
             backlink = baseurl + 'offer';
             nextlink = baseurl + 'activity';
         } else if(currentPage === 'activity') {
-            backlink = baseurl + 'know-you';
+            backlink = baseurl + 'suspicious';
             nextlink = baseurl + 'reflection';
         } else if(currentPage === 'reflection') {
             backlink = baseurl + 'activity';
