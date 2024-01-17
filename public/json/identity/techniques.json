@@ -51,15 +51,11 @@
               "explanation": "Weather forecasting is entirely unrelated to identity theft and is not used to carry out scams."
           },
           "4": {
-              "text": "E. Robocalling",
-              "explanation": "Scammers use automated calls to send fake urgent messages. These messages are meant to make you panic and push you into sharing private data or following instructions that lead to fraud."
-          },
-          "5": {
               "text": "F. Ask you to click a link",
               "explanation": "Scammers send messages urging their targets to click harmful links, tricking them into sharing login details, installing malware, or confirming sensitive data."
           }
       },
-      "correctResponse": ["0", "1", "2", "4", "5"],
-      "theAnswers": "A, C, E, F"
+      "correctResponse": ["0", "1", "2", "4"],
+      "theAnswers": "A, C, E"
   }
 }

@@ -3,13 +3,13 @@ let pageReload= false;
 
 $(document).ready(function() {
     // Load the first page based on the URL
-    console.log("The start page: " + startPage);
+    // console.log("The start page: " + startPage);
     setLinks(startPage);
     updateProgressBar();
 
 
     $('#backButton').on('click', function() {
-        console.log("Back button clicked");
+        // console.log("Back button clicked");
         const urlParams = new URLSearchParams(window.location.search);
         const currentPage = urlParams.get('page');
 
@@ -141,33 +141,20 @@ function setLinks(currentPage) {
             backlink = baseurl + 'objectives';
             nextlink = baseurl + 'definitions';
         } else if(currentPage === 'definitions') {
-            console.log("setLinks is at definitions");
-
             backlink = baseurl + 'intro-video';
             nextlink = baseurl + 'personal-info';
         } else if(currentPage === 'personal-info') {
-            console.log("setLinks is at personal-info");
-
             backlink = baseurl + 'definitions';
             nextlink = baseurl + 'activity';
         } else if(currentPage === 'activity') {
-            console.log("setLinks is at activity");
-
             backlink = baseurl + 'personal-info';
             nextlink = baseurl + 'reflection';
         } else if(currentPage === 'reflection') {
-            console.log("setLinks is at reflection");
-            
             backlink = baseurl + 'activity';
             nextlink = baseurl + 'quiz';
-            
         } else if(currentPage === 'quiz') {
-            console.log("setLinks is at quiz");
-            
             backlink = baseurl + 'reflection';
             nextlink = baseurl + 'takeaways';
-            // progress = (7 / total) * 100;
-
         } else if(currentPage === 'takeaways') {
 
             backlink = baseurl + 'quiz';
@@ -199,7 +186,6 @@ function setLinks(currentPage) {
         } else if(currentPage === 'quiz') {            
             backlink = baseurl + 'reflection';
             nextlink = baseurl + 'takeaways';
-            progress = (7 / total) * 100;
         } else if(currentPage === 'takeaways') {
             backlink = baseurl + 'quiz';
             nextlink = baseurl + '/course-player?module=identity&section=techniques&page=types';
@@ -210,45 +196,97 @@ function setLinks(currentPage) {
         if(currentPage === 'objectives') {
             backlink = '/course-player?module=identity&section=consequences&page=objectives';
             nextlink = baseurl + 'types';
+        } else if(currentPage === 'types') {
+            // pause video
+            backlink = baseurl + 'objectives';
+            nextlink = baseurl + 'issue';
+        } else if(currentPage === 'issue') {
+            backlink = baseurl + 'types';
+            nextlink = baseurl + 'know-you';
+        } else if(currentPage === 'know-you') {
+            backlink = baseurl + 'issue';
+            nextlink = baseurl + 'activity';
+        } else if(currentPage === 'offer') {
+            backlink = baseurl + 'know-you';
+            nextlink = baseurl + 'suspicious';
+        } else if(currentPage === 'suspicious') {
+            backlink = baseurl + 'offer';
+            nextlink = baseurl + 'activity';
+        } else if(currentPage === 'activity') {
+            backlink = baseurl + 'know-you';
+            nextlink = baseurl + 'reflection';
+        } else if(currentPage === 'reflection') {
+            backlink = baseurl + 'activity';
+            nextlink = baseurl + 'quiz';
+        } else if(currentPage === 'quiz') {            
+            backlink = baseurl + 'reflection';
+            nextlink = baseurl + 'takeaways';
+        } else if(currentPage === 'takeaways') {
+            backlink = baseurl + 'quiz';
+            nextlink = '/course-player?module=identity&section=protection&page=objectives';
+        }
+    } else if(section === 'protection') {
+        let baseurl = '/course-player?module=identity&section=protection&page=';
+
+        if(currentPage === 'objectives') {
+            backlink = '/course-player?module=identity&section=techniques&page=objectives';
+            nextlink = baseurl + 'intro-video'; 
         } 
-        else if(currentPage === 'types') {
+        else if(currentPage === 'intro-video') {
             // pause video
             $('#my_video_1')[0].player.pause();
 
             backlink = baseurl + 'objectives';
-            nextlink = baseurl + 'definitions';
-        } else if(currentPage === 'definitions') {
-            console.log("setLinks is at definitions");
+            nextlink = baseurl + 'types';
+        } else if(currentPage === 'types') {
 
-            backlink = baseurl + 'types';
-            nextlink = baseurl + 'personal-info';
-        } else if(currentPage === 'personal-info') {
-            console.log("setLinks is at personal-info");
-
-            backlink = baseurl + 'definitions';
+            backlink = baseurl + 'intro-video';
             nextlink = baseurl + 'activity';
         } else if(currentPage === 'activity') {
-            console.log("setLinks is at activity");
-
-            backlink = baseurl + 'personal-info';
+            backlink = baseurl + 'types';
             nextlink = baseurl + 'reflection';
         } else if(currentPage === 'reflection') {
-            console.log("setLinks is at reflection");
-            
             backlink = baseurl + 'activity';
             nextlink = baseurl + 'quiz';
-            
-        } else if(currentPage === 'quiz') {
-            console.log("setLinks is at quiz");
-            
+        } else if(currentPage === 'quiz') {            
             backlink = baseurl + 'reflection';
             nextlink = baseurl + 'takeaways';
-            // progress = (7 / total) * 100;
-
         } else if(currentPage === 'takeaways') {
-
             backlink = baseurl + 'quiz';
-            nextlink = '/course-player?module=identity&section=protection&page=objectives';
+            nextlink = baseurl + '/course-player?module=identity&section=evaluate&page=intro';
+        }
+    } else if(section === 'reporting') {
+        let baseurl = '/course-player?module=identity&section=reporting&page=';
+
+        if(currentPage === 'objectives') {
+            backlink = '/course-player?module=identity&section=techniques&page=objectives';
+            nextlink = baseurl + 'intro-video'; 
+        } 
+        else if(currentPage === 'intro-video') {
+            // pause video
+            $('#my_video_1')[0].player.pause();
+
+            backlink = baseurl + 'objectives';
+            nextlink = baseurl + 'when';
+        } else if(currentPage === 'when') {
+
+            backlink = baseurl + 'intro-video';
+            nextlink = baseurl + 'financial';
+        } else if(currentPage === 'financial') {
+            backlink = baseurl + 'when';
+            nextlink = baseurl + 'medical';
+        } else if(currentPage === 'medical') {
+            backlink = baseurl + 'financial';
+            nextlink = baseurl + 'tax';
+        } else if(currentPage === 'tax') {
+            backlink = baseurl + 'medical';
+            nextlink = baseurl + 'quiz';
+        } else if(currentPage === 'quiz') {            
+            backlink = baseurl + 'tax';
+            nextlink = baseurl + 'takeaways';
+        } else if(currentPage === 'takeaways') {
+            backlink = baseurl + 'quiz';
+            nextlink = baseurl + '/course-player?module=identity&section=evaluate&page=intro';
         }
     }
 
@@ -312,14 +350,22 @@ function updateProgressBar() {
             progress = 0;
         } else if (pageParam === 'intro-video') {
             progress = (1 / total) * 100;
-        } else if (pageParam === 'definitions') {
+        } else if (pageParam === 'types') {
             progress = (2 / total) * 100;
-        } else if (pageParam === 'activity') {
+        } else if (pageParam === 'issue') {
+            progress = (3 / total) * 100;
+        } else if (pageParam === 'know-you') {
             progress = (4 / total) * 100;
-        } else if (pageParam === 'reflection') {
+        } else if (pageParam === 'offer') {
             progress = (5 / total) * 100;
-        } else if (pageParam === 'quiz') {
+        } else if (pageParam === 'suspicious') {
             progress = (6 / total) * 100;
+        } else if (pageParam === 'activity') {
+            progress = (7 / total) * 100;
+        } else if (pageParam === 'reflection') {
+            progress = (8 / total) * 100;
+        } else if (pageParam === 'quiz') {
+            progress = (9 / total) * 100;
         } else if (pageParam === 'takeaways') {
             progress = 100;
         }

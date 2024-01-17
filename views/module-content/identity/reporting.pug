@@ -9,16 +9,14 @@ block content
             .ui.active.blue.large.elastic.loader 
             h1 Loading...
     .display-page.hidden
-        include techniques/objectives.pug
-        include techniques/types.pug
-        include techniques/issue.pug
-        include techniques/know-you.pug
-        include techniques/offer.pug
-        include techniques/suspicious.pug
-        include techniques/activity.pug
-        include techniques/reflection.pug
-        include techniques/quiz.pug
-        include techniques/takeaways.pug
+        include reporting/objectives.pug
+        include reporting/intro-video.pug
+        include reporting/when.pug
+        include reporting/financial.pug
+        include reporting/medical.pug
+        include reporting/tax.pug
+        include reporting/quiz.pug
+        include reporting/takeaways.pug
 
 
 block styles 
@@ -26,7 +24,6 @@ block styles
     link(rel='stylesheet', href='/css/learning-targets.css')
     link(rel='stylesheet', href='/css/middle-aligned-layout.css')
     link(rel='stylesheet', href='/css/dart_quiz.css')  
-    link(rel='stylesheet', href='/css/example-emails.css')
 
 
 block scripts       
@@ -48,41 +45,48 @@ block scripts
         var section = "#{section}";
         var startPage = "#{page}"; 
         var total = parseInt(#{numPages});
-    script.
+    //- script.
 
-        //- Sources referenced: https://mgmgblog.com/en/post-4601/ and https://codepen.io/jjinMangKo/pen/LYygOrq
-        $('#steps-slider').slick({
-            asNavFor:"#image-slider",
-            dots: true,
-            arrows: true,
-            infinite: false,
-            speed: 800,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            customPaging : function(slider, index) { 
-                var num = index + 1;
-                return '<span class="dot">'+ num +'</span>';
-            }
-        });
+    //-     //- Sources referenced: https://mgmgblog.com/en/post-4601/ and https://codepen.io/jjinMangKo/pen/LYygOrq
+    //-     $('#steps-slider').slick({
+    //-         asNavFor:"#image-slider",
+    //-         dots: true,
+    //-         arrows: true,
+    //-         infinite: false,
+    //-         speed: 800,
+    //-         slidesToShow: 1,
+    //-         slidesToScroll: 1,
+    //-         customPaging : function(slider, index) { 
+    //-             var num = index + 1;
+    //-             return '<span class="dot">'+ num +'</span>';
+    //-         }
+    //-     });
 
-        $('#image-slider').slick({
-                draggable: false,
-                infinite: false,
-                arrows: false,
-                fade: true,
-                cssEase: 'linear'
-        });
-
+    //-     $('#image-slider').slick({
+    //-             draggable: false,
+    //-             infinite: false,
+    //-             arrows: false,
+    //-             fade: true,
+    //-             cssEase: 'linear'
+    //-     });
     script.
         //- for quiz
         var questionData = !{JSON.stringify(quizData)}; // quizData is passed to pug file via render function in app.js
         var currentTime = "#{currentTime}";
         var currentDate = "#{currentDate}";
-        var futureDate = "#{futureDate}"
         //- var futureDate = "#{futureDate}"; 
         var email = "#{user.email}";
         var username = "#{user.name}";
         var current_percent = 50;
-        var link = "/course-player?module=identity&section=techniques&page=takeaways";
+        var link = "/course-player?module=identity&section=consequences&page=takeaways";
 
     script(src='/module_js/module_quiz.js', mod-id=module, page=page, current-section=section, next-link=link, progress=progress)
+        
+        //- startQuiz()
+    //- console.log("Page is quiz-template")
+    //- console.log("module: " + module)
+    //- console.log("section: " + section)
+    //- console.log("page:" + page)
+    //- console.log("numPages: " + numPages)
+        
+        //- script(src='/module_js/dart_quiz.js', mod-id=modID, page=page, current-section=currentSection, next-link=nextLink, progress=progress)

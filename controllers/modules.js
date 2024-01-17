@@ -32,8 +32,10 @@ exports.getModule = async (req, res) => {
     } else if(section === 'consequences') {
       numPages = 7;
     } else if(section === 'techniques') {
-      numPages = 9;
+      numPages = 10;
     } else if(section === 'protection') {
+      numPages = 8;
+    } else if(section === 'reporting') {
       numPages = 8;
     }
 
@@ -41,11 +43,12 @@ exports.getModule = async (req, res) => {
 
     const currentTime = getCurrentTime();
     const currentDate = getCurrentDate();
+    const futureDate = getFutureDate();
 
     const data = await fs.readFileAsync(`${__dirname}/../public/json/` +  module + `/` + section + `.json`);
     quizData = JSON.parse(data.toString());
 
-    res.render(modulePage, { module, section, page, numPages, quizData, currentTime, currentDate });
+    res.render(modulePage, { module, section, page, numPages, quizData, currentTime, currentDate, futureDate });
 };
 
 

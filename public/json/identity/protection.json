@@ -1,0 +1,53 @@
+{
+  "1": {
+      "type": "yes_no",
+      "partial": "q1.html",
+      "prompt": "1. Should you carry your Social Security Card in your wallet at all times?",
+      "choices": {
+        "yes": {
+          "text": "Yes"
+        },
+        "no": {
+          "text": "No"
+        }
+      },
+      "explanation": "<h1>No you should not carry your Social Security Card in your wallet</h1><p>Memorizing the number and keeping the physical card safely at home is the best way to protect your personal information. Your Social Security Card is extremely important. You should avoid carrying it around to minimize the risk of losing it.</p>",
+      "correctResponse": "no"
+  },
+  "2": {
+      "type": "abcd",
+      "partial": "none",
+      "prompt": "3. What is the most secure way to get rid of old account statement documents and expired credit cards?",
+      "choices": {
+        "a": {
+          "text": "A. Leave them in your wallet or purse"
+        },
+        "b": {
+          "text": "B. Blackout and shred them"
+        },
+        "c": {
+          "text": "C. Bury them in your backyard"
+        },
+        "d": {
+          "text": "D. Give them to a friend for disposal"
+        }
+      },
+      "explanation": "<h1>B is correct</h1><p>Shredding old documents using a paper shredder and blacking out sensitive information are effective methods to prevent scammers from stealing your personal information.</p>",
+      "correctResponse": "b"
+  },
+  "3": {
+      "type": "yes_no",
+      "partial": "q4.html",
+      "prompt": "4. Jane’s password for her new bank account is “Jane123”. Is this a complex and secure password?",
+      "choices": {
+        "yes": {
+          "text": "Yes"
+        },
+        "no": {
+          "text": "No"
+        }
+      },
+      "explanation": "<h1>No this is not a secure password</h1><p>This password contains her name and is less than 8 characters long. Although it includes both letters and numbers, it is very simple and easy to guess. Longer passwords  that include special characters (e.g., @, #, $, etc.) are harder for hackers to guess or crack using computer programs. A strong password should be longer (at least 8 characters long) and include a mix of uppercase and lowercase letters, numbers, and special characters to protect against potential hacking attempts.</p>",
+      "correctResponse": "no"
+    }
+}
