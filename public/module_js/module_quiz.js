@@ -608,7 +608,6 @@ function displayCurrentQuestion()
 
             // $('#popup-trigger').popup();
             $('#popup-trigger').popup({
-                on: 'hover',
                 position: 'bottom left',
                 onCreate: function() {
                     $('#user-email').text(email);
@@ -889,8 +888,6 @@ function displayScore() {
         }
 
 
-        
-
         // only show 2 decimal places if the score is a decimal
         if(correctAnswers % 1 === 0) {
             cleanScore = correctAnswers;
@@ -913,6 +910,8 @@ function displayScore() {
         }).on('circle-animation-progress', function(event, progress) {
         $(this).find('strong').html(Math.round(100 * scoreTotal) + '<i>%</i>');
     });
+
+    $("#resil-score").html(Math.round(100 * scoreTotal));
 
     $(".result").show();
 

@@ -1,73 +1,87 @@
 #quiz.hidden
-    .ui.container.quizContainer(style="width: 90vw;")
-        .quiz-container   
-            br
-            h1.ui.header.large#learn-title(style="margin-top: -10px;")
-                .content
-                    i.edit.icon
-                    | Quiz         
-            .ui.stackable.grid  
-                .eight.wide.column
-                    .htmlImage
-                .eight.wide.column
-                    .question
-                    .image
-                    .choiceList
-                    .fourChoices 
+    .ui.container.quizContainer#raised-container(style="padding: 0px;")
+        .limit
+            .quiz-container   
+                br
+                h1.ui.header.large#learn-title(style="margin-top: -10px;")
+                    .content
+                        i.edit.icon
+                        | Quiz         
 
-                    .checkboxChoices            
+                .question(style="margin-bottom: 20px;")
+                .htmlImage(style="margin-bottom: 20px;")
+                .image
+                .choiceList
+                .fourChoices 
+                    //- .choice1
+                    //-     .ui.radio.checkbox
+                    //-         input(type="radio", name="choice", value="1")
+                    //-         label
+                    //- .choice2
+                    //-     .ui.radio.checkbox
+                    //-         input(type="radio", name="choice", value="2")
+                    //-         label
+                    //- .choice3
+                    //-     .ui.radio.checkbox
+                    //-         input(type="radio", name="choice", value="3")
+                    //-         label
+                    //- .choice4
+                    //-     .ui.radio.checkbox
+                    //-         input(type="radio", name="choice", value="4")
+                    //-         label
+                .checkboxChoices            
+                br
+                br
+                .result
+                    .circleResults
+                        strong
+                    .resultText     
                     br
                     br
-                    .result
-                        .circleResults
-                            strong
-                        .resultText     
-                        br
-                        br
-                    .quizMessage
-                        .ui.red.center.aligned.message
-                            i.close.icon
-                            .errorMessage.header
-                    .explanationCorrectMulti
-                        button.ui.basic.blue.right.labeled.icon.button.explainButtonCorrect
-                            i.right.caret.icon
-                            a Show Explanations
-                        p.correctScore
-                        h2.ui.header.correctOrIncorrect
-                            i.check.circle.green.large.icon
-                            | Correct
-                    .explanationIncorrectMulti
-                        button.ui.basic.blue.right.labeled.icon.button.explainButtonIncorrect
-                            i.right.caret.icon
-                            a Show Explanations
-                        p.incorrectScore
-                        h2.ui.header.correctOrIncorrect
-                            i.times.circle.red.large.icon
-                            | Incorrect
-                        p.yourAnswers
-                        p.theAnswers
-                    .explanationCorrectYesNo
-                        p.correctScore
-                        h2.ui.header
-                            i.check.circle.green.large.icon
-                            | Correct
-                        .ui.green.message 
-                            p.correctExplanation
-                        br
-                        br
-                    .explanationIncorrectYesNo
-                        p.incorrectScore
-                        h2.ui.header
-                            i.times.circle.red.large.icon
-                            | Incorrect
-                        .ui.red.message 
-                            p.incorrectExplanation
-                        br
-                        br
-                    .quizButtonContainer(style="margin-top: -35px;")
-                        .ui.blue.huge.button.preButton Previous Question
-                        .ui.blue.huge.button.viewAnswers View Answers
-                        .ui.blue.huge.button.nextButton Next Question
-                .ui.tablet.only.centered.grid
-                    .avatar-container
-                        img#dart_image1.ui.medium.image(src=user.avatarImg)
+                .quizMessage
+                    .ui.red.center.aligned.message
+                        i.close.icon
+                        .errorMessage.header
+                .explanationCorrectMulti
+                    button.ui.basic.blue.right.labeled.icon.button.explainButtonCorrect
+                        i.right.caret.icon
+                        a Show Explanations
+                    p.correctScore
+                    h2.ui.header.correctOrIncorrect
+                        i.check.circle.green.large.icon
+                        | Correct
+                .explanationIncorrectMulti
+                    button.ui.basic.blue.right.labeled.icon.button.explainButtonIncorrect
+                        i.right.caret.icon
+                        a Show Explanations
+                    p.incorrectScore
+                    h2.ui.header.correctOrIncorrect
+                        i.times.circle.red.large.icon
+                        | Incorrect
+                    p.yourAnswers
+                    p.theAnswers
+                .explanationCorrectYesNo
+                    p.correctScore
+                    h2.ui.header
+                        i.check.circle.green.large.icon
+                        | Correct
+                    .ui.green.message 
+                        p.correctExplanation
+                    br
+                    br
+                .explanationIncorrectYesNo
+                    p.incorrectScore
+                    h2.ui.header
+                        i.times.circle.red.large.icon
+                        | Incorrect
+                    .ui.red.message 
+                        p.incorrectExplanation
+                    br
+                    br
+                .quizButtonContainer(style="margin-top: -20px;")
+                    .ui.blue.huge.button.preButton Previous Question
+                    .ui.blue.huge.button.viewAnswers View Answers
+                    .ui.blue.huge.button.nextButton Next Question
+            .ui.tablet.only.centered.grid
+                .avatar-container
+                    img#dart_image1.ui.medium.image(src=user.avatarImg)

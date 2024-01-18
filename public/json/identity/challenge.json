@@ -69,7 +69,7 @@
       "progress": 95,
       "type": "multi_select",
       "partial": "none",
-      "prompt": "5. What could occur if your identity is stolen? Select all that apply:",
+      "prompt": "5. What could occur if your identity is stolen? Select all that apply",
       "choices": {
           "0": {
             "text": "A. Loss of money",
