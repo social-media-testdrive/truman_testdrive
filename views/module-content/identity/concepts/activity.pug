@@ -16,6 +16,10 @@
                                 .score-box
                                     p.points 0 / 5
                         #instruction-text(style="padding: 20px")
+                            if user.name === 'Guest'
+                                p Agent, we need your help! 
+                            else 
+                                p Agent #{user.name}, we need your help! 
                             p Mrs. Johnson is sharing too much personal information on her social media, putting herself at risk of identity theft.
                             p Review her profile and <strong>click on any personal information that should be removed.</strong>
                         .ui.fluid.button#hint-button 

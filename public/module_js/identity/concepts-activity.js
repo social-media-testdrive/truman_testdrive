@@ -7,14 +7,14 @@ document.addEventListener('click', function(event) {
         $('.dark-blue-square').css('background-color', '#E1F2F4');
         $('#avatar-image').attr('src', avatarImage);
 
+        const scoreElement = document.querySelector('p.points');
+        const currentScore = parseInt(scoreElement.innerText.split(' / ')[0]);
+
         //- check if correct
         if (target.classList.contains('correct-line')) {
             console.log("Correct!");
 
             // Increment score
-            const scoreElement = document.querySelector('p.points');
-
-            const currentScore = parseInt(scoreElement.innerText.split(' / ')[0]);
             const newScore = Math.min(currentScore + 1, 5); // Ensure the score doesn't exceed 5
             scoreElement.innerText = `${newScore} / 5`;
 
@@ -68,6 +68,9 @@ document.addEventListener('click', function(event) {
             default:
                 textResponse = "This statement does not reveal any personal information. Stay vigilant and keep looking!";
         }
+        if(currentScore === 4 || currentScore === 5) {
+            textResponse = "Great job, Agent " + userName + "! All the pieces of personal information have been removed. You've helped Mrs. Johnson protect her identity from scammers! Click the 'Next' button to continue";
+        }
         $('#instruction-text').html(textResponse);
         //- if(idNumber === '1') {
         //-     $('#instruction-text').html("Correct! Mrs. Johnson should remove her maiden name from her profile. This is a common security question used by banks and other institutions to verify your identity. If a scammer knows your maiden name, they can use it to gain access to your accounts.");
@@ -118,7 +121,11 @@ document.getElementById('hint-button').addEventListener('click', function() {
     } else {
         $('#avatar-image').attr('src', '/images/villainHint.png');
         $('.dark-blue-square').css('background-color', '#FF6C6C');
-        $('#instruction-text').html("Darn! I don't see any personal information left that I can steal. You win this time, Agent " + userName + "!");
+        if(userName === "Guest") {
+            $('#instruction-text').html("Darn! I don't see any personal information left that I can steal. You win this time, Dart Agent!");
+        } else {
+            $('#instruction-text').html("Darn! I don't see any personal information left that I can steal. You win this time, Agent " + userName + "!");
+        }
     }
 
 
