@@ -503,16 +503,16 @@ function appendScriptWithVariables(filename, modID, page, section, nextLink, pro
     head.appendChild(script);
 }
 
-// let this_js_script = $('script[src*=identity-theft]');
-// let emailData = this_js_script.attr('emailData');   
-// let iCurrentEmail = 0;
-// let openEmailTutorialDone = false;
-// let skipped = false;
+let this_js_script = $('script[src*=identity-theft]');
+let emailData = this_js_script.attr('emailData');   
+let iCurrentEmail = 0;
+let openEmailTutorialDone = false;
+let skipped = false;
 
-// const emails = JSON.parse(emailData);
+const emails = JSON.parse(emailData);
 
-// let intro2 = introJs();
-// let intro3 = introJs();
+let intro2 = introJs();
+let intro3 = introJs();
 
 
 function setupPractice() {
@@ -784,16 +784,22 @@ function showEmail(index) {
 
     if(email.from === "<walmrt@gmail.com>") {
         $('.warning-button.walmart-1').popup({
+            hideOnScroll: true,
+            scrollContext: "#page-article",
             position: 'bottom center',
             html: "This email comes from walmart@gmail.com. Companies usually have their own email domain, such as <strong>@walmart.com</strong>. Another big sign of an email being a scam are <strong>misspellings and inconsistencies</strong> in names. This email misspells the name of the company its pretending to be as <strong>Walmrt</strong>, instead of Walmart, which it says in their email address.",
             on: 'click'
         });
         $('.warning-button.walmart-2').popup({
+            hideOnScroll: true,
+            scrollContext: "#page-article",
             position: 'bottom center',
             html: "Legitimate and trusted emails will include a proper header and closer, identifying you by name. This email greets you through saying &quot;Hi customer,&quot; does not clarify your name. Additionally, scam emails or messages often include words and phrases that indicate urgency. This email says &quot;URGENT!!!&quot; and &quot;NOW!&quot;",
             on: 'click'
         });
         $('.warning-button.walmart-3').popup({
+            hideOnScroll: true,
+            scrollContext: "#page-article",
             position: 'bottom center',
             html: "In a legitimate email, you will never have to click on a link to submit personal financial information. This email tells you to resubmit your credit card details. Also, suspicious links are often indicated by beginning with http://, like the one in this email rather than https://.",
             on: 'click'
@@ -801,70 +807,97 @@ function showEmail(index) {
     } else if(email.from === "<irsgov@gmail.com>") {
         $('.warning-button.irs-1').popup({
             position: 'bottom center',
+            scrollContext: '.openEmailContainer',
+            hideOnScroll: true,
+            scrollContext: "#page-article",
             html: "This email is sent from <strong>irsgov@gmail.com</strong>. The IRS is a government department, and its official domain should be '.org' instead of '.com'. Therefore, the legitimate domain for this email address should be <strong>XXX@irs.org</strong>. Furthermore, it's important to note that the IRS website explicitly states that 'The IRS will not initiate email contact with you without your consent.’",
             on: 'click'
         });
         $('.warning-button.irs-2').popup({
+            hideOnScroll: true,
+            scrollContext: "#page-article",
             position: 'bottom center',
             html: "Legitimate and trusted emails will include a proper header and closer, identifying you by name. This email greets you through saying “Dear Tax Payer”",
             on: 'click'
         });
         $('.warning-button.irs-3').popup({
+            hideOnScroll: true,
+            scrollContext: "#page-article",
             position: 'bottom center',
             html: "The IRS will never request or verify your personal information through email or a link.",
             on: 'click'
         });
     } else if(email.from === "<no-reply@dropbox.com>") {
         $('.warning-button.dropbox-1').popup({
+            hideOnScroll: true,
+            scrollContext: "#page-article",
             position: 'bottom center',
             html: "Trusted companies usually have their own email domain, like this email which comes from no-reply@<strong>dropbox.com</strong>.",
             on: 'click'
         });
         $('.warning-button.dropbox-2').popup({
+            hideOnScroll: true,
+            scrollContext: "#page-article",
             position: 'bottom center',
             html: "The focus on this email is ensuring the safety of your account. Scam emails will rarely offer details or make suggestions to increase your account protection.",
             on: 'click'
         });
     } else if(email.from === "<nccustudent@gmail.com>") {
         $('.warning-button.nccu-1').popup({
+            hideOnScroll: true,
+            scrollContext: "#page-article",
             position: 'bottom center',
             html: "Always check if you recognize the sender's email address. If the sender's email address is unfamiliar or suspicious, exercise caution and do not click on any links or provide personal information.",
             on: 'click'
         });
         $('.warning-button.nccu-2').popup({
+            hideOnScroll: true,
+            scrollContext: "#page-article",
             position: 'bottom center',
             html: "A popular type of scam email is when people pretend like they know you and ask for money. This email does not address you by name or ask you any questions indicating they have a personal relationship with you. ",
             on: 'click'
         });
         $('.warning-button.nccu-3').popup({
+            hideOnScroll: true,
+            scrollContext: "#page-article",
             position: 'bottom center',
             html: "One major red flag that indicates this email is a scam is the request to send money to an unfamiliar recipient.",
             on: 'click'
         });
     } else if(email.from === "<4kbug82ob@hotmail.com>") {
         $('.warning-button.iphone-1').popup({
+            hideOnScroll: true,
+            scrollContext: "#page-article",
             position: 'bottom center',
             html: "Legitimate companies typically have their own email domains, like @apple.com. This email does not appear to have a legitimate email address.",
             on: 'click'
         });
         $('.warning-button.iphone-2').popup({
+            hideOnScroll: true,
+            scrollContext: "#page-article",
             position: 'bottom center',
             html: "A lot of scam emails use the <strong>too good to be true</strong> tactic. This email fails to provide fine prints, such as the expiration data or the exceptions to the sale. A legitimate coupon usually lists the details.",
             on: 'click'
         });
     } else if(email.from === "<account-update@amazon.com>") {
         $('.warning-button.amazon-1').popup({
+            hideOnScroll: true,
+            scrollContext: "#page-article",
             position: 'bottom center',
             html: "Trusted companies often have their own email domain. This email comes from @amazon.com. Also, it doesn’t ask any your personal information.",
             on: 'click'
         });
         $('.warning-button.amazon-2').popup({
+            hideOnScroll: true,
+            scrollContext: "#page-article",
             position: 'bottom center',
             html: "This email provides you with a verification code, a strong indicator that it is not a scam. Furthermore, it does not request any of your personal information.",
             on: 'click'
         });
     } else if(email.from === "<intrepid@gmail.com>") {
         $('.warning-button.intrepid-1').popup({
+            hideOnScroll: true,
+            scrollContext: "#page-article",
             position: 'bottom center',
             html: "This email is from a known sender and it contains a simple, positive message without any requests for personal information or actions. This familiarity and lack of unusual content confirms that it is not a scam.",
             on: 'click'
