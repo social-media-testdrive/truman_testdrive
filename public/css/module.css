@@ -779,7 +779,8 @@ i.big.unlock.icon {
   .smartphone {
     position: relative;
     width: 360px;
-    height: 640px;
+    height: 500px;
+    /* height: 640px; */
     margin: auto;
     border: 16px black solid;
     border-top-width: 60px;

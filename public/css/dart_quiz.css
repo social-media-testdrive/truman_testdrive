@@ -126,6 +126,7 @@ input[type=checkbox] {
 .purple-text {
     color: #804477;
     font-weight: bold;
+    line-height: 1;
 }
 
 .ui.basic.blue.right.labeled.icon.button.explainButtonIncorrect,
@@ -310,8 +311,9 @@ p.incorrectScore {
     display: flex;
     justify-content: space-between;
     margin-top: -20px;
-    /* margin-bottom: 40px; */
+    margin-bottom: 20px;
 }
+
 
 /* circular progress */
 .circleResults {

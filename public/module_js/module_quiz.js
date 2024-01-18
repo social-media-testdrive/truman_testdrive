@@ -605,6 +605,19 @@ function displayCurrentQuestion()
             if (userEmailSpan) {
                 userEmailSpan.textContent = email;
             } 
+
+            // $('#popup-trigger').popup();
+            $('#popup-trigger').popup({
+                on: 'hover',
+                position: 'bottom left',
+                onCreate: function() {
+                    $('#user-email').text(email);
+                    $('#current-time').text(currentTime);
+                    $('#current-date').text(currentDate);
+                },
+            });
+          
+            
         });
     } else {
         htmlImageContainer.empty();

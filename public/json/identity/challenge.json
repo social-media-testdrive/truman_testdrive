@@ -53,7 +53,7 @@
     "progress": 80,
     "type": "yes_no",
     "partial": "q4.html", 
-    "prompt": "4. Assuming you are trying to log in Venmo following the instruction for the Venmo App, then you received the message below. In that case would you consider this message a scam??",
+    "prompt": "4. Assuming you are trying to log in Venmo following the instruction for the Venmo App, then you received the message below. In that case would you consider this message a scam?",
     "choices": {
       "yes": {
         "text": "Yes"
@@ -88,11 +88,7 @@
             "explanation": "This option is correct."
           },
           "4": {
-            "text": "E. Improved online security",
-            "explanation": "This option is incorrect."
-          },
-          "5": {
-            "text": "F. Getting a discount on online shopping",
+            "text": "E. Getting a discount on online shopping",
             "explanation": "This option is incorrect."
           }
       },
