@@ -10,8 +10,9 @@ block content
             h1 Loading...
     .display-page.hidden
         include protection/objectives.pug
-        include protection/intro-video.pug
-        include protection/types.pug
+        include protection/common-measures.pug
+        include protection/preventative-dos.pug
+        include protection/preventative-donts.pug
         include protection/activity.pug
         include protection/reflection.pug
         include protection/quiz.pug
@@ -26,7 +27,8 @@ block styles
 
 
 block scripts       
-    script(src='/module_js/identity/identity-theft.js')    
+    script(src='/module_js/identity/identity-theft.js') 
+    script(src='/module_js/identity/sub3_activity.js')   
     //- script(src='/js/text2speech.js')  
     script.
         window.addEventListener('load', function() {

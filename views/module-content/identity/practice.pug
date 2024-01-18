@@ -1,0 +1,48 @@
+extends ../../module_player_layout
+
+
+block content
+    //- button.ui.icon.button.m.left.right#volume-up-button
+    //-     i.volume.up.icon
+    .loading-screen-container(id="loadingScreen") 
+        .ui.active.inverted.dimmer
+            .ui.active.blue.large.elastic.loader 
+            h1 Loading...
+    .display-page.hidden
+        include practice/objectives.pug
+        include practice/arrive.pug
+        include practice/activity.pug
+        include practice/reflection.pug
+        include practice/takeaways.pug
+
+
+block styles 
+    link(rel='stylesheet', href='/css/identity-theft.css')
+    link(rel='stylesheet', href='/css/learning-targets.css')
+    link(rel='stylesheet', href='/css/middle-aligned-layout.css')
+    link(rel='stylesheet', href='/css/identity_theft_explore.css')  
+
+
+block scripts     
+    script. 
+        var userName = "#{user.name}";
+        var avatarImage = "#{user.avatarImg}";
+        var module = "#{module}";
+        var section = "#{section}";
+        var startPage = "#{page}"; 
+        var total = parseInt(#{numPages});  
+    script(src='/module_js/identity/identity-theft.js')  
+
+    if page === 'activity'
+        script(src='/module_js/identity_theft_explore.js', emailData=emails)
+    script.
+        window.addEventListener('load', function() {
+            // Simulate a delayed loading process for demonstration
+            //- setTimeout(function() {
+                var loadingScreen = document.getElementById('loadingScreen');
+                loadingScreen.style.display = 'none'; // Hide the loader when everything is loaded
+
+                var revealMe = document.querySelector('.display-page');
+                revealMe.classList.remove('hidden'); // Show the content when everything is loaded
+            //- }, 6000); 
+        });

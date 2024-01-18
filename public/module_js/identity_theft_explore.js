@@ -48,90 +48,47 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // console.log("DOM loaded and parsed!");
     
-    intro2.setOptions({
-        steps: [
-            {
-                element: document.querySelector('.emailSimContainer'),
-                position: 'auto',
-                intro: "This is your email inbox. Here you will find all the emails you've received.<br><br>Click the 'Next' button below to continue. <br><img src='/images/chat-head.png' alt='age intrepid profile picture' width='125px' style='display: block; margin: 0 auto;margin-top:20px;'>",
-            },
-            {
-                myBeforeChangeFunction: function() { 
-                    $('#email-0').css('pointer-events', 'auto');  
-                    setTimeout(function() {
-                        $('.showOpenEmailAnimation').removeClass('hidden');
-                    }, 5000);
-                },
-                element: document.querySelector('#email-0'),
-                position: 'right',
-                intro: "Each email header contains the sender's name, subject line, and the date. These details offer valuable insights right from the start.<br><br>When you're ready, click on the email to open it and learn more. <br><img src='/images/chat-head.png' alt='age intrepid profile picture' width='125px' style='display: block; margin: 0 auto;margin-top:20px;'>",
-            },
-            ],
-        'hidePrev': true,
-        'hideNext': true,
-        'exitOnOverlayClick': false,
-        'exitOnEsc': false,
-        'showStepNumbers': false,
-        'showBullets': false,
-        'scrollToElement': true,
-        'doneLabel': 'Done &#10003',
-        tooltipClass: 'customWideTooltip',
-    })
-    /*
-    Source: https://stackoverflow.com/a/58673991/11060111
-    Source: https://stackoverflow.com/questions/36650854/how-to-make-intro-js-select-the-element-that-dynamically-generated-after-page-lo
-
-    onbeforechange:
-    "Given callback function will be called before starting a new step of
-    introduction. The callback function receives the element of the new step as
-    an argument."
-    */
-    .onbeforechange(function() {
-         // check to see if there is a function on this step
-        if(this._introItems[this._currentStep].myBeforeChangeFunction){
-            //if so, execute it.
-            this._introItems[this._currentStep].myBeforeChangeFunction();
-        }
-        }).onchange(function() {  //intro.js built in onchange function
-        if (this._introItems[this._currentStep].myChangeFunction){
-            this._introItems[this._currentStep].myChangeFunction();
-        }
-     })
-        /*
-    onafterchange:
-    "Given callback function will be called after starting a new step of
-    introduction. The callback function receives the element of the new step as
-    an argument."
-    */
-    // .onafterchange(function() {
-    //     // alert("The currect step is: " + this._currentStep);
-    //     // make user open email
-    //     if(this._currentStep === 1) {
-    //         var original_onclick = $('.introjs-nextbutton').get(0).onclick;
-    //         let elements = document.getElementsByTagName('a');
-    //         console.log(elements);
-    //         console.log(elements[13]);
-    //         elements[13].style.filter = "grayscale(100%)";
-
-    //         $('.introjs-nextbutton').addClass('introjs-disabled');
-    //         $('.introjs-nextbutton').get(0).onclick = null;
-    //         $('#email-0').on('click', function() {
-    //             // reset next button for future use
-    //             elements[13].style.filter = "";
-    //             $('.introjs-nextbutton').removeClass('introjs-disabled');
-    //             $('.introjs-nextbutton').get(0).onclick = original_onclick;
-                
-    //             // $('.emailSimContainer').hide;
-    //             // $('.openEmailContainer').show;
-                
-    //             // activate the click for the user too so we can automatically move them along!!
-    //             elements[13].click();
-    //           })
-
-    //     }
+    // intro2.setOptions({
+    //     steps: [
+    //         {
+    //             element: document.querySelector('.emailSimContainer'),
+    //             position: 'auto',
+    //             intro: "This is your email inbox. Here you will find all the emails you've received.<br><br>Click the 'Next' button below to continue. <br><img src='/images/chat-head.png' alt='age intrepid profile picture' width='125px' style='display: block; margin: 0 auto;margin-top:20px;'>",
+    //         },
+    //         {
+    //             myBeforeChangeFunction: function() { 
+    //                 $('#email-0').css('pointer-events', 'auto');  
+    //                 setTimeout(function() {
+    //                     $('.showOpenEmailAnimation').removeClass('hidden');
+    //                 }, 5000);
+    //             },
+    //             element: document.querySelector('#email-0'),
+    //             position: 'right',
+    //             intro: "Each email header contains the sender's name, subject line, and the date. These details offer valuable insights right from the start.<br><br>When you're ready, click on the email to open it and learn more. <br><img src='/images/chat-head.png' alt='age intrepid profile picture' width='125px' style='display: block; margin: 0 auto;margin-top:20px;'>",
+    //         },
+    //         ],
+    //     'hidePrev': true,
+    //     'hideNext': true,
+    //     'exitOnOverlayClick': false,
+    //     'exitOnEsc': false,
+    //     'showStepNumbers': false,
+    //     'showBullets': false,
+    //     'scrollToElement': true,
+    //     'doneLabel': 'Done &#10003',
+    //     tooltipClass: 'customWideTooltip',
     // })
-    // Start the introduction
-    .start();
+    // .onbeforechange(function() {
+    //      // check to see if there is a function on this step
+    //     if(this._introItems[this._currentStep].myBeforeChangeFunction){
+    //         //if so, execute it.
+    //         this._introItems[this._currentStep].myBeforeChangeFunction();
+    //     }
+    //     }).onchange(function() {  //intro.js built in onchange function
+    //     if (this._introItems[this._currentStep].myChangeFunction){
+    //         this._introItems[this._currentStep].myChangeFunction();
+    //     }
+    //  })
+    // .start();
 });
 
 

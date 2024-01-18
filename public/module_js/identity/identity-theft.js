@@ -43,7 +43,7 @@ $(document).ready(function() {
                         $('#image-slider').slick("refresh");
                     } 
 
-                    if(currentSection === 'techniques' && currentPage === 'activity') {
+                    if(section === 'techniques' && currentPage === 'activity') {
                         var introDiv = document.getElementsByClassName("introjs-hints")[0];
                         introDiv.parentNode.removeChild(introDiv);
                     }
@@ -53,9 +53,56 @@ $(document).ready(function() {
                         duration: 200,
                     });
 
-                    if(backPage === 'activity') {
+                    if(section === "techniques" && backPage === 'activity') {
                         introJs().addHints();
                     }
+
+                    if(section === 'practice' && backPage === 'activity') {
+                        let intro2 = introJs();
+                        intro2.setOptions({
+                            steps: [
+                                {
+                                    element: document.querySelector('.emailSimContainer'),
+                                    position: 'auto',
+                                    intro: "This is your email inbox. Here you will find all the emails you've received.<br><br>Click the 'Next' button below to continue. <br><img src='/images/chat-head.png' alt='age intrepid profile picture' width='125px' style='display: block; margin: 0 auto;margin-top:20px;'>",
+                                },
+                                {
+                                    myBeforeChangeFunction: function() { 
+                                        $('#email-0').css('pointer-events', 'auto');  
+                                        setTimeout(function() {
+                                            $('.showOpenEmailAnimation').removeClass('hidden');
+                                        }, 5000);
+                                    },
+                                    element: document.querySelector('#email-0'),
+                                    position: 'right',
+                                    intro: "Each email header contains the sender's name, subject line, and the date. These details offer valuable insights right from the start.<br><br>When you're ready, click on the email to open it and learn more. <br><img src='/images/chat-head.png' alt='age intrepid profile picture' width='125px' style='display: block; margin: 0 auto;margin-top:20px;'>",
+                                },
+                                ],
+                            'hidePrev': true,
+                            'hideNext': true,
+                            'exitOnOverlayClick': false,
+                            'exitOnEsc': false,
+                            'showStepNumbers': false,
+                            'showBullets': false,
+                            'scrollToElement': true,
+                            'doneLabel': 'Done &#10003',
+                            tooltipClass: 'customWideTooltip',
+                        })
+                        .onbeforechange(function() {
+                            // check to see if there is a function on this step
+                            if(this._introItems[this._currentStep].myBeforeChangeFunction){
+                                //if so, execute it.
+                                this._introItems[this._currentStep].myBeforeChangeFunction();
+                            }
+                            }).onchange(function() {  //intro.js built in onchange function
+                            if (this._introItems[this._currentStep].myChangeFunction){
+                                this._introItems[this._currentStep].myChangeFunction();
+                            }
+                        })
+                        .start();
+                    }
+    
+    
                 }
             });
         }
@@ -88,7 +135,7 @@ $(document).ready(function() {
                     $('#image-slider').slick("refresh");
                 }   
 
-                if(currentSection === 'techniques' && currentPage === 'activity') {
+                if(section === 'techniques' && currentPage === 'activity') {
                     var introDiv = document.getElementsByClassName("introjs-hints")[0];
                     introDiv.parentNode.removeChild(introDiv);
                 }
@@ -102,9 +149,54 @@ $(document).ready(function() {
                     $("#backButton").hide();
                     $("#module-footer").hide();
                 } 
-                if(nextPage === 'activity') {
+                if(section === "techniques" && nextPage === 'activity') {
                     introJs().addHints();
                 }
+                if(section === 'practice' && nextPage === 'activity') {
+                    let intro2 = introJs();
+                    intro2.setOptions({
+                        steps: [
+                            {
+                                element: document.querySelector('.emailSimContainer'),
+                                position: 'auto',
+                                intro: "This is your email inbox. Here you will find all the emails you've received.<br><br>Click the 'Next' button below to continue. <br><img src='/images/chat-head.png' alt='age intrepid profile picture' width='125px' style='display: block; margin: 0 auto;margin-top:20px;'>",
+                            },
+                            {
+                                myBeforeChangeFunction: function() { 
+                                    $('#email-0').css('pointer-events', 'auto');  
+                                    setTimeout(function() {
+                                        $('.showOpenEmailAnimation').removeClass('hidden');
+                                    }, 5000);
+                                },
+                                element: document.querySelector('#email-0'),
+                                position: 'right',
+                                intro: "Each email header contains the sender's name, subject line, and the date. These details offer valuable insights right from the start.<br><br>When you're ready, click on the email to open it and learn more. <br><img src='/images/chat-head.png' alt='age intrepid profile picture' width='125px' style='display: block; margin: 0 auto;margin-top:20px;'>",
+                            },
+                            ],
+                        'hidePrev': true,
+                        'hideNext': true,
+                        'exitOnOverlayClick': false,
+                        'exitOnEsc': false,
+                        'showStepNumbers': false,
+                        'showBullets': false,
+                        'scrollToElement': true,
+                        'doneLabel': 'Done &#10003',
+                        tooltipClass: 'customWideTooltip',
+                    })
+                    .onbeforechange(function() {
+                        // check to see if there is a function on this step
+                        if(this._introItems[this._currentStep].myBeforeChangeFunction){
+                            //if so, execute it.
+                            this._introItems[this._currentStep].myBeforeChangeFunction();
+                        }
+                        }).onchange(function() {  //intro.js built in onchange function
+                        if (this._introItems[this._currentStep].myChangeFunction){
+                            this._introItems[this._currentStep].myChangeFunction();
+                        }
+                    })
+                    .start();
+                }
+
             }
         });
 
@@ -123,8 +215,52 @@ function setLinks(currentPage) {
         $('#' + currentPage).transition({
             animation: 'fade in',
             onComplete: function() {
-                if(currentSection === "techniques" && currentPage === 'activity') {
+                if(section === "techniques" && currentPage === 'activity') {
                     introJs().addHints();
+                }
+
+                if(section === 'practice' && currentPage === 'activity') {
+                    intro2.setOptions({
+                        steps: [
+                            {
+                                element: document.querySelector('.emailSimContainer'),
+                                position: 'auto',
+                                intro: "This is your email inbox. Here you will find all the emails you've received.<br><br>Click the 'Next' button below to continue. <br><img src='/images/chat-head.png' alt='age intrepid profile picture' width='125px' style='display: block; margin: 0 auto;margin-top:20px;'>",
+                            },
+                            {
+                                myBeforeChangeFunction: function() { 
+                                    $('#email-0').css('pointer-events', 'auto');  
+                                    setTimeout(function() {
+                                        $('.showOpenEmailAnimation').removeClass('hidden');
+                                    }, 5000);
+                                },
+                                element: document.querySelector('#email-0'),
+                                position: 'right',
+                                intro: "Each email header contains the sender's name, subject line, and the date. These details offer valuable insights right from the start.<br><br>When you're ready, click on the email to open it and learn more. <br><img src='/images/chat-head.png' alt='age intrepid profile picture' width='125px' style='display: block; margin: 0 auto;margin-top:20px;'>",
+                            },
+                            ],
+                        'hidePrev': true,
+                        'hideNext': true,
+                        'exitOnOverlayClick': false,
+                        'exitOnEsc': false,
+                        'showStepNumbers': false,
+                        'showBullets': false,
+                        'scrollToElement': true,
+                        'doneLabel': 'Done &#10003',
+                        tooltipClass: 'customWideTooltip',
+                    })
+                    .onbeforechange(function() {
+                        // check to see if there is a function on this step
+                        if(this._introItems[this._currentStep].myBeforeChangeFunction){
+                            //if so, execute it.
+                            this._introItems[this._currentStep].myBeforeChangeFunction();
+                        }
+                        }).onchange(function() {  //intro.js built in onchange function
+                        if (this._introItems[this._currentStep].myChangeFunction){
+                            this._introItems[this._currentStep].myChangeFunction();
+                        }
+                    })
+                    .start();
                 }
             }
         });
@@ -257,20 +393,19 @@ function setLinks(currentPage) {
 
         if(currentPage === 'objectives') {
             backlink = '/course-player?module=identity&section=techniques&page=objectives';
-            nextlink = baseurl + 'intro-video'; 
+            nextlink = baseurl + 'common-measures'; 
         } 
-        else if(currentPage === 'intro-video') {
-            // pause video
-            $('#my_video_1')[0].player.pause();
-
+        else if(currentPage === 'common-measures') {
             backlink = baseurl + 'objectives';
-            nextlink = baseurl + 'types';
-        } else if(currentPage === 'types') {
-
-            backlink = baseurl + 'intro-video';
+            nextlink = baseurl + 'preventative-dos';
+        } else if(currentPage === 'preventative-dos') {
+            backlink = baseurl + 'common-measures';
+            nextlink = baseurl + 'preventative-donts';
+        } else if(currentPage === 'preventative-donts') {
+            backlink = baseurl + 'preventative-dos';
             nextlink = baseurl + 'activity';
-        } else if(currentPage === 'activity') {
-            backlink = baseurl + 'types';
+        }  else if(currentPage === 'activity') {
+            backlink = baseurl + 'preventative-donts';
             nextlink = baseurl + 'reflection';
         } else if(currentPage === 'reflection') {
             backlink = baseurl + 'activity';
@@ -280,7 +415,7 @@ function setLinks(currentPage) {
             nextlink = baseurl + 'takeaways';
         } else if(currentPage === 'takeaways') {
             backlink = baseurl + 'quiz';
-            nextlink = '/course-player?module=identity&section=evaluate&page=intro';
+            nextlink = '/course-player?module=identity&section=reporting&page=objectives';
         }
     } else if(section === 'reporting') {
         let baseurl = '/course-player?module=identity&section=reporting&page=';
@@ -313,8 +448,29 @@ function setLinks(currentPage) {
             nextlink = baseurl + 'takeaways';
         } else if(currentPage === 'takeaways') {
             backlink = baseurl + 'quiz';
-            nextlink = '/course-player?module=identity&section=evaluate&page=intro';
+            nextlink = '/course-player?module=identity&section=practice&page=objectives';
         }
+    } else if(section === 'practice') {
+        let baseurl = '/course-player?module=identity&section=practice&page=';
+
+        if(currentPage === 'objectives') {
+            backlink = '/course-player?module=identity&section=reporting&page=objectives';
+            nextlink = baseurl + 'arrive'; 
+        } 
+        else if(currentPage === 'arrive') {
+            backlink = baseurl + 'objectives';
+            nextlink = baseurl + 'activity';
+        } else if(currentPage === 'activity') {
+            backlink = baseurl + 'arrive';
+            nextlink = baseurl + 'reflection';
+        } else if(currentPage === 'reflection') {
+            backlink = baseurl + 'activity';
+            nextlink = baseurl + 'takeaways';
+        }  else if(currentPage === 'takeaways') {
+            backlink = baseurl + 'reflection';
+            nextlink = '/course-player?module=identity&section=evaluate&page=objectives';
+        }
+
     }
 
     return { backlink, nextlink };
@@ -396,6 +552,42 @@ function updateProgressBar() {
         } else if (pageParam === 'takeaways') {
             progress = 100;
         }
+    } else if(section === 'protection') {
+        if (pageParam === 'objectives') {
+            progress = 0;
+        } else if (pageParam === 'common-measures') {
+            progress = (1 / total) * 100;
+        } else if (pageParam === 'preventative-dos') {
+            progress = (2 / total) * 100;
+        } else if (pageParam === 'preventative-donts') {
+            progress = (3 / total) * 100;
+        } else if (pageParam === 'activity') {
+            progress = (4 / total) * 100;
+        } else if (pageParam === 'reflection') {
+            progress = (5 / total) * 100;
+        } else if (pageParam === 'quiz') {
+            progress = (6 / total) * 100;
+        } else if (pageParam === 'takeaways') {
+            progress = 100;
+        }
+    } else if(section === 'reporting') {
+        if (pageParam === 'objectives') {
+            progress = 0;
+        } else if (pageParam === 'intro-video') {
+            progress = (1 / total) * 100;
+        } else if (pageParam === 'when') {
+            progress = (2 / total) * 100;
+        } else if (pageParam === 'financial') {
+            progress = (3 / total) * 100;
+        } else if (pageParam === 'medical') {
+            progress = (4 / total) * 100;
+        } else if (pageParam === 'tax') {
+            progress = (5 / total) * 100;
+        } else if (pageParam === 'quiz') {
+            progress = (6 / total) * 100;
+        } else if (pageParam === 'takeaways') {
+            progress = 100;
+        }
     }
 
     console.log("The Progress: " + progress);
@@ -414,7 +606,7 @@ function updateProgressBar() {
     }
 }
 
-function appendScriptWithVariables(filename, modID, page, currentSection, nextLink, progress) {
+function appendScriptWithVariables(filename, modID, page, section, nextLink, progress) {
     var head = document.getElementsByTagName('head')[0];
 
     var script = document.createElement('script');
@@ -422,9 +614,11 @@ function appendScriptWithVariables(filename, modID, page, currentSection, nextLi
     script.type = 'text/javascript';
     script.setAttribute('mod-id', modID);
     script.setAttribute('page', page);
-    script.setAttribute('current-section', currentSection);
+    script.setAttribute('current-section', section);
     script.setAttribute('next-link', nextLink);
     script.setAttribute('progress', progress);
 
     head.appendChild(script);
 }
+
+
