@@ -43,7 +43,7 @@ $(document).ready(function() {
                         $('#image-slider').slick("refresh");
                     } 
 
-                    if(currentPage === 'activity') {
+                    if(currentSection === 'techniques' && currentPage === 'activity') {
                         var introDiv = document.getElementsByClassName("introjs-hints")[0];
                         introDiv.parentNode.removeChild(introDiv);
                     }
@@ -88,7 +88,7 @@ $(document).ready(function() {
                     $('#image-slider').slick("refresh");
                 }   
 
-                if(currentPage === 'activity') {
+                if(currentSection === 'techniques' && currentPage === 'activity') {
                     var introDiv = document.getElementsByClassName("introjs-hints")[0];
                     introDiv.parentNode.removeChild(introDiv);
                 }

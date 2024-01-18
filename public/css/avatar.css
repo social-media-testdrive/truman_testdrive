@@ -19,12 +19,7 @@
     color: #235799 !important;
 }
 
-h3.call-header {
-    color: #235799 !important;
-    font-size: 1.5rem;
-    margin-bottom: 6px;
-    font-weight: bold;
-}
+
 
 /* old avatar with speech bubble styles */
 #avatarGrid {
@@ -123,70 +118,130 @@ h3.call-header {
 
 
 /* Add your styling for the callout elements */
-div.callout {
+.callout {
     display: flex;
     border: 1px solid #2185d0;
     border-radius: 10px;;
     z-index: 999;
     /* box-shadow: 0 0 0 1px #2185d0 inset, 0 0 0 0 transparent; */
-  }
-  
-  .dark-blue-square {
+}
+
+.callout h3.call-header {
+    color: #235799 !important;
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.callout .dark-blue-square {
     flex: 0 0 20%; 
     /* Adjust the width of the dark-blue square as needed */
     width: 155px;
-    /* height: 110px; */
     overflow: hidden;
-
     position: relative;
-    /* height: 441px;
-    position: relative;
-    top: -23px; */
-    background-color: #E1F2F4; /* Dark blue color */
+    background-color: #E1F2F4; 
     z-index: -1;
-
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
   }
   
-  .dark-blue-square img {
-    /* object-fit: cover;
-    width: 230px;
-    height: 230px;
-    object-position: center center;   */
-
+.callout .dark-blue-square img {
     object-fit: cover;
     object-position: center center;
     width: 215px;
     /* height: 120px; */
-
     position: absolute;
     top: -21px;
     left: -34px;
-    /* object-position: center center; */
-    /* position: relative;
-    left: -44px; */
-
-  }
+}
   
-  .light-blue-content {
-    flex: 0 0 80%; /* Adjust the width of the light-blue content as needed */
-    padding: 20px; /* Add desired padding */
+.callout .light-blue-content {
+    flex: 0 0 80%; 
+    padding: 20px; 
     padding-bottom: 5px;
     padding-top: 5px;
-    background-color: white; /* Light blue color */
+    background-color: white; 
     color:#555;
     z-index: -1;
+}
+  
+.callout .light-blue-content h2 {
+    color: #333; 
+    font-size: 1.5em; 
+}
+  
+.callout .light-blue-content p {
+    color: #555; 
+    font-size: 1em; 
+}
+  
+
+/* avatar score for identity theft concepts activity */
+
+
+.callout-score {
+    display: flex;
+    border: 1px solid #2185d0;
+    border-radius: 10px;;
+    z-index: 999;
+    position: relative;
+    /* box-shadow: 0 0 0 1px #2185d0 inset, 0 0 0 0 transparent; */
+}
+
+.callout-score h3.call-header {
+    color: white !important;
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.callout-score .score-box {
+    background: white;
+    margin: 0;
+    padding: 5px;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+  
+.callout-score .dark-blue-square {
+    flex: 0 0 40%; 
+    /* Adjust the width of the dark-blue square as needed */
+    width: 155px;
+    overflow: hidden;
+    position: relative;
+    background-color: #E1F2F4; 
+    z-index: -1;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
   }
   
-  /* Additional styling for text elements */
-  .light-blue-content h2 {
-    color: #333; /* Adjust text color */
-    font-size: 1.5em; /* Adjust font size */
-  }
+.callout-score .dark-blue-square img {
+    object-fit: cover;
+    object-position: center center;
+    width: 215px;
+    /* height: 120px; */
+    position: absolute;
+    top: -21px;
+    left: -34px;
+}
   
-  .light-blue-content p {
-    color: #555; /* Adjust text color */
-    font-size: 1em; /* Adjust font size */
-  }
+.callout-score .light-blue-content {
+    flex: 0 0 60%; 
+    padding: 5px;
+    background-color: #3757A7;
+    color:#555;
+    z-index: -1;
+
+}
   
+.callout-score .light-blue-content h2 {
+    color: #333;
+    font-size: 1.5em;
+}
+  
+.callout-score .light-blue-content p {
+    color: #555;
+    font-size: 1em; 
+}
+

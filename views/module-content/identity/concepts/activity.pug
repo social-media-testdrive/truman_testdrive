@@ -1,12 +1,40 @@
 #activity.hidden
     .ui.container#activity-read
         .limit#learn-target(style="padding: 0;")
+            h1.ui.header.large#learn-title
+                .content 
+                    i.dice.icon
+                    | Activity
             .ui.stackable.grid
-                .ten.wide.column
-                    h1.ui.header.large#learn-title
-                        .content 
-                            i.dice.icon
-                            | Activity
-                    p In this activity, you'll help Mrs. Johnson protect herself from identity theft.
-                .six.wide.column.middle.aligned
-                    //- img.ui.image(src='/images/learn-2.png' style='margin-left: auto; margin-right: auto')
+                .five.wide.column(style="margin-right: 0px; padding-right: 0px;")
+                    .instructions(style="background-color: #F1EDF8; z-index: 0;")
+                        .callout-score(style="z-index: 99;")
+                            .dark-blue-square
+                                img(src=user.avatarImg, alt='avatar picture')
+                            .light-blue-content
+                                h3.call-header Score
+                                .score-box
+                                    p.points 0
+                                        span /5
+                        br
+
+                        p Mrs. Johnson is sharing too much personal information on her social media, putting herself at risk of identity theft.
+                        p Review her profile and click on any personal information that should be removed.
+
+                .eleven.wide.column.middle.aligned(style="margin-left: 0px; padding-left: 0px;")
+                    .ui.fluid.card
+                        .image
+                            img(src='/images/mrsjohnsonbg.png' style="height: 100px; object-fit: cover; object-position: 0 0;")
+                            .ui.circular.image(style="position: absolute; top: 30px; left: 50%; transform: translateX(-50%); z-index: 99; width: 130px; border: 6px solid white;")
+                                img(src='/images/mrsjohnsonprofile.png' ) 
+                        .content
+                            .header Mrs. Johnson
+                            p I’m a wife and proud mother of 2 boys. My maiden name is Smith. Born and raised in Dayton, Ohio on April 3, 1959. It's been an amazing journey since then.
+                            p I've moved a lot but finally settled down in 234 Maple Street, Springfield. Oh, here's my new phone number: (555) 123-4567. Stay safe and talk soon!
+                        .extra.content
+                            .ui.feed
+                                .event
+                                    .content
+                                        .summary Terrible news. My husband Mark fell victim to a phone scam, and we've lost our entire savings. As retirees, we're now in serious financial trouble. 💔
+                                        .meta
+                                            .date Today
