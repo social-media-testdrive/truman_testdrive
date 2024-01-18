@@ -45,8 +45,6 @@ block scripts
         var section = "#{section}";
         var startPage = "#{page}"; 
         var total = parseInt(#{numPages});
-    if page === 'objectives'
-        script(src='/module_js/identity/villain-reveal.js')
     script.
         //- for quiz
         var questionData = !{JSON.stringify(quizData)}; // quizData is passed to pug file via render function in app.js

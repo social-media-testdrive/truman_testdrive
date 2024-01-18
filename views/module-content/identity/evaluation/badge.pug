@@ -1,0 +1,24 @@
+#badge.hidden
+    .ui.container#badge-read
+        .limit#learn-target(style="padding: 0;")
+            .ui.grid.middle.aligned
+                .ten.wide.column
+                    h1.ui.header.large#learn-title
+                        .content#great-job
+                            i.award.icon
+                            | Congratulations!
+                    #text
+                        p You've completed the Challenge and earned your very first Badge!  
+                        p You have an Identity Theft Resilience score of 
+                            span#resil-score 
+                            |  out of 100.
+                        p To build your resilience and earn more badges, continue to the next module.    
+                .six.wide.center.aligned.column#earned_badge
+                    img(src='/badges/identity/challenge_conqueror.png')
+                    p(style="font-weight: 400; font-size: 1.5rem;") <strong>Challenge</strong>
+                        br
+                        | <strong>Conqueror</strong>
+            audio(id="unlockBadge", src="/sound/unlock.wav", preload="auto")
+
+
+

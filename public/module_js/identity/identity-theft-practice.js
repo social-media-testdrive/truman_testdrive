@@ -350,7 +350,7 @@ function setLinks(currentPage) {
             nextlink = baseurl + 'takeaways';
         }  else if(currentPage === 'takeaways') {
             backlink = baseurl + 'reflection';
-            nextlink = '/course-player?module=identity&section=evaluate&page=objectives';
+            nextlink = '/course-player?module=identity&section=evaluation&page=intro';
         }
 
     }

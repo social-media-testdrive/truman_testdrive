@@ -88,6 +88,10 @@ $(document).ready(function() {
             location.reload();
         }
 
+        if(currentPage === 'certificate') {
+            window.location.href = '/about/identity';
+        }
+
         // fade out current page, then fade in next page. at half duration each, 400ms total
         $('#' + currentPage).transition({
             animation: 'fade out',
@@ -350,10 +354,30 @@ function setLinks(currentPage) {
             nextlink = baseurl + 'takeaways';
         }  else if(currentPage === 'takeaways') {
             backlink = baseurl + 'reflection';
-            nextlink = '/course-player?module=identity&section=evaluate&page=objectives';
+            nextlink = '/course-player?module=identity&section=evaluation&page=intro';
         }
 
-    }
+    } else if(section === 'evaluation') {
+        let baseurl = '/course-player?module=identity&section=evaluation&page=';
+
+        if(currentPage === 'intro') {
+            backlink = '/about/identity';
+            nextlink = baseurl + 'quiz'; 
+        } else if(currentPage === 'quiz') {            
+            backlink = baseurl + 'intro';
+            nextlink = baseurl + 'badge';
+        } else if(currentPage === 'badge') {
+            backlink = baseurl + 'quiz';
+            nextlink = baseurl + 'reflection';
+        } else if(currentPage === 'reflection') {
+            backlink = baseurl + 'badge';
+            nextlink =  baseurl + 'certificate';
+        } else if(currentPage === 'certificate') {
+            backlink = baseurl + 'reflection';
+            nextlink = '/about/identity';
+        }
+    }               
+
 
     return { backlink, nextlink };
 
