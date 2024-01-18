@@ -198,16 +198,17 @@ function setLinks(currentPage) {
             $('#my_video_1')[0].player.pause();
 
             backlink = baseurl + 'objectives';
+            nextlink = baseurl + 'general';
+        } else if(currentPage === 'general') {
+
+            backlink = baseurl + 'intro-video';
             nextlink = baseurl + 'types';
         } else if(currentPage === 'types') {
 
-            backlink = baseurl + 'intro-video';
-            nextlink = baseurl + 'activity';
-        } else if(currentPage === 'activity') {
-            backlink = baseurl + 'types';
+            backlink = baseurl + 'general';
             nextlink = baseurl + 'reflection';
         } else if(currentPage === 'reflection') {
-            backlink = baseurl + 'activity';
+            backlink = baseurl + 'types';
             nextlink = baseurl + 'quiz';
         } else if(currentPage === 'quiz') {            
             backlink = baseurl + 'reflection';

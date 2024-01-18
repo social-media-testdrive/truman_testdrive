@@ -88,6 +88,10 @@ $(document).ready(function() {
                 $(".explanationIncorrectYesNo").hide();
                 $(".quizMessage").hide();
                 $(".htmlImage").hide();
+
+                if(currentSection === 'challenge') {
+                    $("#detail-instruct").hide();
+                }
                 // $(".preButton").css('visibility', 'hidden');
                 $(".nextButton").css('visibility', 'hidden');
         
@@ -119,6 +123,10 @@ $(document).ready(function() {
             } else {
                 // Display the first question
                 displayCurrentQuestion();
+
+                if(currentSection === "challenge") {
+                    $("#detail-instruct").show();
+                }
         
                 // hide warning and next nav button and disable previous quiz nav button
 
@@ -183,10 +191,14 @@ $(document).ready(function() {
 
 	// On clicking next, display the next question
     $(this).find(".nextButton").on("click", function () {
-        console.log("currentQuestion: " + currentQuestion);
-        console.log("numQuestions: " + numQuestions);
-        console.log("viewingAnswer: " + viewingAnswer);
-        console.log("pastAttempts: " + pastAttempts);
+
+        if(currentSection === 'challenge') {
+            $("#detail-instruct").hide();
+        }
+        // console.log("currentQuestion: " + currentQuestion);
+        // console.log("numQuestions: " + numQuestions);
+        // console.log("viewingAnswer: " + viewingAnswer);
+        // console.log("pastAttempts: " + pastAttempts);
 
         $("#page-article").scrollTop(0);
 
@@ -911,7 +923,9 @@ function displayScore() {
         $(this).find('strong').html(Math.round(100 * scoreTotal) + '<i>%</i>');
     });
 
-    $("#resil-score").html(Math.round(100 * scoreTotal));
+    if(currentSection === "challenge") {
+        $("#resil-score").html(Math.round(100 * scoreTotal));
+    }
 
     $(".result").show();
 
@@ -938,6 +952,9 @@ function resetQuiz() {
     $(".nextButton").css('visibility', 'visible');
     $("#module-footer").hide();
 
+    if(currentSection === "challenge") {
+        $("#detail-instruct").show();
+    }
 
     currentQuestion = 1;
     correctAnswers = 0;
