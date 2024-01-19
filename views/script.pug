@@ -3,6 +3,7 @@ extends ui_layout
 block content
   .computer.only.tablet.only.four.wide.column
     .ui.sticky.sideMenu
+      block additionalMenu
       .ui.card
         .image
           if user.profile.picture
@@ -18,15 +19,15 @@ block content
               i.marker.icon
               span=user.profile.location
         .one.ui.bottom.attached.icon.buttons
-            button.ui.editprofile.button(data-tooltip='Update Your Profile', data-position='bottom left')
-                i.write.icon
-      
+          button.ui.editprofile.button(data-tooltip='Update Your Profile', data-position='bottom left')
+              i.write.icon
+  block additionalMenu2   
   #loading.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
     img.ui.centered.small.image(src='/images/heart.svg')
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.contentColumn.hidden
     //- Input for creating new post at top of feed
-    .ui.sticky.newPostSticky
-      #newpost.ui.fluid.left.labeled.right.icon.input.habitsHomeDisplay
+    .ui.sticky.newPostSticky(class=(mod=="habits" ? "habitsHomeDisplay" : ""))
+      #newpost.ui.fluid.left.labeled.right.icon.input
         .ui.label
           if user.profile.picture
             img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture)
@@ -34,128 +35,68 @@ block content
             img.ui.avatar.image(src=user.gravatar(60))
         input(type='text', placeholder='Create a post')
         i.big.photo.link.icon
-
+    include partials/script/modals/newUserPost
+    if mod=='habits'
+      include partials/script/habits_buttons
+      include partials/script/habits_settingTab
+      include partials/script/habits_activityTab
     each val in script
-      //- create a card for each post in script
-
-      //- if val.relativeTime - then post came from user_post (so user post, user reply to actor reply to user post)
+      //- if val.relativeTime - then post came from user_post
       if val.relativeTime
         include partials/script/userPost
-
-      //- Now we are making posts by Actors, not the USER    
+      //- if val.type is notification - display the notification tabs. Only in Habits module.
+      else if val.type == 'notification'
+        include partials/script/habits_notification
+      //- Else, actor post.
       else
         block post
           include partials/script/actorPost
 
-  
-    -var post_quiz = "/results/"+mod;
-    a.ui.fluid.card
+    a.ui.fluid.card(class=(mod=="habits" ? "habitsHomeDisplay" : ""))
       .content
         .ui.big.green.labeled.icon.button.script
           i.rocket.icon
           |   Let's Continue!
-          
-    br
-    br
-  
-    include partials/script/chatBox
-    include partials/script/modals/newUserPost
-    include partials/script/modals/digitalLiteracyFlag
-    include partials/script/modals/digitalLiteracyArticle
-    include partials/script/modals/esteemPost
-    
-    //- View Post Info Modal
-    .ui.small.popinfo.modal(data-modalName='digital-literacy_articleInfoModal')
-      i.close.icon  
-      h3.ui.header
-        i.info.circle.icon 
-        | Info about News Source  
-      .content
-          .field
-            h3.ui.header#post_info_text_modual    
-              |
-      .actions
-        .ui.positive.right.labeled.icon.button
-          | Done
-          i.checkmark.icon
+
+    //- Additional feed content (ex: modals, chatbox)
+    if mod=='safe-posting'
+      include partials/script/chatBox
+    if mod=='digital-literacy'
+      include partials/script/modals/digitalLiteracyFlag
+      include partials/script/modals/digitalLiteracyArticle
+      include partials/script/modals/digitalLiteracyArticleInfo
+    if mod=='esteem'
+      include partials/script/modals/esteemPost
+    if mod=='digfoot'
+      include partials/script/modals/digfootNormal
+    if mod=='targeted'
+      include partials/script/modals/targetedWhy
+      include partials/script/modals/targetedHide
+    if mod=='habits'
+      include partials/script/modals/habitsPost
+    if mod='phishing'
+      include partials/script/modals/phishingModals
             
-    //- digfoot post checklist Modal 
-    //- name in DB: digfoot_normalPostModal
-    .ui.small.modal(data-modalName='digfoot_normalPostModal')
-      i.close.icon  
-      .header How would this post influence digital footprints?
-      .content
-          .ui.form
-             .field
-               .ui.checkbox
-                 input(type='checkbox')
-                 label The post will have a negative impact on this person’s digital footprint.
-             .field
-               .ui.checkbox
-                 input(type='checkbox')
-                 label This person was sharing something that they might later regret.
-             .field
-               .ui.checkbox
-                 input(type='checkbox')
-                 label The post was not considerate of other people’s digital footprints.
-             .field
-               .ui.checkbox
-                 input(type='checkbox')
-                 label The post will not have an impact on this person’s digital footprint. 
-             .field
-               .ui.checkbox
-                 input(type='checkbox')
-                 label This was a responsible post that will create a positive digital footprint.
-      .actions
-        .ui.positive.right.labeled.icon.button
-          | Done
-          i.checkmark.icon
-    
-    //- Why am I seeing this ad modal, used in targeted ads modual. text depends on previously selected interest in trans2.
-    .ui.small.modal#whyAmISeeingThisAdModal(data-modalName="targeted_whyAdModal")
-      i.close.icon
-      .header Why am I seeing this ad?
-      if (user.targetedAdTopic[user.targetedAdTopic.length - 1] == 'Sports')
-        .content(id="sports")
-      else if (user.targetedAdTopic[user.targetedAdTopic.length - 1] == 'Food')
-        .content(id="food")
-      else if (user.targetedAdTopic[user.targetedAdTopic.length - 1] == 'Gaming')
-        .content(id="gaming")
-    
-    //-Hide ad modal, used in targeted ads module. 
-    .ui.small.modal#hideAdModal(data-modalName="targeted_hideAdModal")
-      i.close.icon  
-      .header Why did you choose to hide this ad?
-      .content
-          .ui.form
-             .field
-               .ui.checkbox
-                 input(type='checkbox')
-                 label The ad was not relevant to me
-             .field
-               .ui.checkbox
-                 input(type='checkbox')
-                 label I see this ad too often
-             .field
-               .ui.checkbox
-                 input(type='checkbox')
-                 label The ad was inappropriate
-             br
-             .actions
-               .ui.positive.right.labeled.icon.button
-                 | Done
-                 i.checkmark.icon          
   .computer.only.tablet.only.four.wide.column
     block rightColumn
                  
 block scripts
   script(src='/module_js/voiceover.js')
   script(src='/postFunctionalities.js')
-  script(src=cdn+'/js/chatbox2.js')
+  if mod=='safe-posting'
+    script(src=cdn+'/js/chatbox3.js')
+  if mod=='habits'
+    script(src="/module_js/habits/habits_script.js")
+  if mod=='phishing'
+    script(src="/module_js/phishing/phishing_script.js") 
   script(src='/module_js/script.js')
-  //script(src='/module_js/base_introSteps.js')
   block scripts2
      
 block styles
   link(rel='stylesheet', href='/css/script.css')
-  link(rel='stylesheet', href='/css/chatbox.css')
+  if mod=='safe-posting'
+    link(rel='stylesheet', href='/css/chatbox.css')
+  if mod=='habits'
+    link(rel='stylesheet', href='/css/modules/habits/habits_script.css')
+  if mod=='phishing'
+    link(rel='stylesheet', href='/css/modules/phishing.css')

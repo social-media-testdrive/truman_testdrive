@@ -2,6 +2,7 @@ const Class = require('../models/Class.js');
 const User = require('../models/User');
 const CSVToJSON = require("csvtojson");
 const fs = require('fs');
+const validator = require('validator');
 const createCsvStringifier = require('csv-writer').createObjectCsvStringifier;
 
 /**
@@ -9,17 +10,15 @@ const createCsvStringifier = require('csv-writer').createObjectCsvStringifier;
  * Render the class management page in the teacher dashboard
  */
 exports.getClasses = (req, res) => {
-    if (req.user.isInstructor) {
-        Class.find({
-            teacher: req.user.id,
-            deleted: false
-        }, (err, classes) => {
-            //classes is array with all classes for this instructor
-            res.render('teacherDashboard/classManagement', { classes: classes });
-        });
-    } else {
+    if (!req.user.isInstructor) {
         res.redirect('/');
     }
+    Class.find({ teacher: req.user.id, deleted: false })
+        .then((classes) => {
+            //classes is array with all classes for this instructor
+            res.render('teacherDashboard/classManagement', { classes: classes });
+        })
+        .catch((err) => done(err));
 }
 
 /**
@@ -31,24 +30,20 @@ exports.getClassSize = (req, res, next) => {
         res.redirect('/');
     }
     Class.findOne({
-        accessCode: req.params.classId,
-        teacher: req.user.id,
-        deleted: false
-    }).exec(function(err, found_class) {
-        if (err) {
-            console.log("ERROR");
-            console.log(err);
-            return next(err);
-        }
-        if (found_class == null) {
-            console.log("NULL");
-            var myerr = new Error('Class not found!');
-            return next(myerr);
-        }
-        const studentCount = found_class.students.length;
-        res.set('Content-Type', 'application/json; charset=UTF-8');
-        res.json({ studentCount: studentCount });
-    });
+            accessCode: req.params.classId,
+            teacher: req.user.id,
+            deleted: false
+        })
+        .then((found_class) => {
+            if (!found_class) {
+                const myerr = new Error('Class not found!');
+                return next(myerr);
+            }
+            const studentCount = found_class.students.length;
+            res.set('Content-Type', 'application/json; charset=UTF-8');
+            res.json({ studentCount: studentCount });
+        })
+        .catch((err) => done(err));
 }
 
 /*
@@ -56,28 +51,23 @@ exports.getClassSize = (req, res, next) => {
  * Render the page to view a single class owned by the current instructor
  */
 exports.getClass = (req, res, next) => {
-    if (req.user.isInstructor) {
-        Class.findOne({
-                accessCode: req.params.classId,
-                teacher: req.user.id,
-                deleted: false
-            }).populate('students') // populate lets you reference docs in other collections
-            .exec(function(err, found_class) {
-                if (err) {
-                    console.log("ERROR");
-                    console.log(err);
-                    return next(err);
-                }
-                if (found_class == null) {
-                    console.log("NULL");
-                    var myerr = new Error('Class not found!');
-                    return next(myerr);
-                }
-                res.render('teacherDashboard/viewClass', { found_class: found_class });
-            });
-    } else {
+    if (!req.user.isInstructor) {
         res.redirect('/');
     }
+    Class.findOne({
+            accessCode: req.params.classId,
+            teacher: req.user.id,
+            deleted: false
+        })
+        .populate('students')
+        .then((found_class) => {
+            if (!found_class) {
+                const myerr = new Error('Class not found!');
+                return next(myerr);
+            }
+            res.render('teacherDashboard/viewClass', { found_class: found_class });
+        })
+        .catch((err) => done(err));
 }
 
 /**
@@ -92,47 +82,38 @@ exports.getClassUsernames = (req, res, next) => {
             accessCode: req.params.classId,
             teacher: req.user.id,
             deleted: false
-        }).populate('students')
-        .exec(function(err, found_class) {
-            if (err) {
-                console.log("ERROR");
-                console.log(err);
-                return next(err);
-            }
-            if (found_class == null) {
-                console.log("NULL");
-                var myerr = new Error('Class not found!');
+        })
+        .populate('students')
+        .then((found_class) => {
+            if (!found_class) {
+                const myerr = new Error('Class not found!');
                 return next(myerr);
             }
-            let usernameArray = [];
-            for (const student of found_class.students) {
-                usernameArray.push(student.username);
-            }
+            const usernameArray = found_class.map(student => student.username);
             res.set('Content-Type', 'application/json; charset=UTF-8');
             res.json({ classUsernames: usernameArray });
-        });
+        })
+        .catch((err) => done(err));
 }
 
 /*
  * GET /classIdList
- * Get a list of all the classes owned by the current instructor
+ * Get a list of all the classes (accessCodes) owned by the current instructor
  */
 exports.getClassIdList = (req, res, next) => {
     if (!req.user.isInstructor) {
         return res.status(400).send("Bad Request");
     }
     Class.find({
-        teacher: req.user.id,
-        deleted: false
-    }, (err, classes) => {
-        const outputData = [];
-        for (const singleClass in classes) {
-            accessCode = classes[singleClass].accessCode;
-            outputData.push(accessCode);
-        }
-        res.set('Content-Type', 'application/json; charset=UTF-8');
-        res.json({ classIdList: outputData });
-    });
+            teacher: req.user.id,
+            deleted: false
+        })
+        .then((classes) => {
+            const outputData = classes.map(classObj => classObj.accessCode);
+            res.set('Content-Type', 'application/json; charset=UTF-8');
+            res.json({ classIdList: outputData });
+        })
+        .catch((err) => done(err));
 }
 
 /**
@@ -147,27 +128,23 @@ exports.getModuleProgress = (req, res, next) => {
             accessCode: req.params.classId,
             teacher: req.user.id,
             deleted: false
-        }).populate('students') // populate lets you reference docs in other collections
-        .exec(function(err, found_class) {
-            if (err) {
-                console.log("ERROR");
-                console.log(err);
-                return next(err);
-            }
-            if (found_class == null) {
-                console.log("NULL");
-                var myerr = new Error('Class not found!');
+        })
+        .populate('students')
+        .then((found_class) => {
+            if (!found_class) {
+                const myerr = new Error('Class not found!');
                 return next(myerr);
             }
             const outputData = {};
-            for (var i = 0; i < found_class.students.length; i++) {
-                const modProgressObj = found_class.students[i].moduleProgress.toObject();
-                const username = found_class.students[i].username;
+            for (const student of found_class.students) {
+                const modProgressObj = student.moduleProgress.toObject();
+                const username = student.username;
                 outputData[username] = modProgressObj;
             }
             res.set('Content-Type', 'application/json; charset=UTF-8');
             res.json({ classModuleProgress: outputData });
-        });
+        })
+        .catch((err) => done(err));
 }
 
 function getClassPageTimes(found_class, modName) {
@@ -205,9 +182,10 @@ function getClassPageTimes(found_class, modName) {
             }
             pageTimeArray.push(dataToPush);
         }
-        const pushStudentObject = {};
-        pushStudentObject['username'] = student.username;
-        pushStudentObject['timeArray'] = pageTimeArray;
+        const pushStudentObject = {
+            "username": student.username,
+            "timeArray": pageTimeArray
+        };
         classPageTimes.push(pushStudentObject);
     }
     return classPageTimes;
@@ -226,22 +204,18 @@ exports.getClassPageTimes = (req, res, next) => {
             accessCode: req.params.classId,
             teacher: req.user.id,
             deleted: false
-        }).populate('students')
-        .exec(function(err, found_class) {
-            if (err) {
-                console.log("ERROR");
-                console.log(err);
-                return next(err);
-            }
-            if (found_class == null) {
-                console.log("NULL");
-                var myerr = new Error('Class not found!');
+        })
+        .populate('students')
+        .then((found_class) => {
+            if (!found_class) {
+                const myerr = new Error('Class not found!');
                 return next(myerr);
             }
             let classPageTimes = getClassPageTimes(found_class, req.params.modName);
             res.set('Content-Type', 'application/json; charset=UTF-8');
             res.json({ classPageTimes: classPageTimes });
-        });
+        })
+        .catch((err) => done(err));
 }
 
 /**
@@ -256,31 +230,22 @@ exports.getClassFreeplayActions = (req, res, next) => {
             accessCode: req.params.classId,
             teacher: req.user.id,
             deleted: false
-        }).populate('students')
-        .exec(function(err, found_class) {
-            if (err) {
-                console.log("ERROR");
-                console.log(err);
-                return next(err);
-            }
-            if (found_class == null) {
-                console.log("NULL");
-                var myerr = new Error('Class not found!');
+        })
+        .populate('students')
+        .then((found_class) => {
+            if (!found_class) {
+                const myerr = new Error('Class not found!');
                 return next(myerr);
             }
             const outputData = {};
             for (const student of found_class.students) {
-                const actionList = [];
-                for (const actions of student.feedAction) {
-                    if (actions.modual === req.params.modName) {
-                        actionList.push(actions);
-                    }
-                    outputData[student.username] = actionList;
-                }
+                const actionList = student.feedAction.filter(action => action.modual === req.params.modName);
+                outputData[student.username] = actionList;
             }
             res.set('Content-Type', 'application/json; charset=UTF-8');
             res.json({ classFreeplayActions: outputData });
-        });
+        })
+        .catch((err) => done(err));
 }
 
 /**
@@ -295,81 +260,72 @@ exports.getReflectionResponses = (req, res, next) => {
             accessCode: req.params.classId,
             teacher: req.user.id,
             deleted: false
-        }).populate('students') // populate lets you reference docs in other collections
-        .exec(function(err, found_class) {
-            if (err) {
-                console.log("ERROR");
-                console.log(err);
-                return next(err);
-            }
-            if (found_class == null) {
-                console.log("NULL");
-                var myerr = new Error('Class not found!');
+        })
+        .populate('students')
+        .then((found_class) => {
+            if (!found_class) {
+                const myerr = new Error('Class not found!');
                 return next(myerr);
             }
             const outputData = {};
-            for (var i = 0; i < found_class.students.length; i++) {
-                const reflectionActions = found_class.students[i].reflectionAction.toObject();
-                const username = found_class.students[i].username;
+            for (const student of found_class.students) {
+                const reflectionActions = student.reflectionAction.toObject();
+                const username = student.username;
                 outputData[username] = reflectionActions;
             }
             res.set('Content-Type', 'application/json; charset=UTF-8');
             res.json({ reflectionResponses: outputData });
-        });
+        })
+        .catch((err) => done(err));
 }
 
 /**
  * POST /class/create
  * Update/Create Instructor's class
  */
-exports.postCreateClass = (req, res, next) => {
+exports.postCreateClass = async(req, res, next) => {
     if (!req.user.isInstructor) {
-        req.logout();
-        res.redirect('/login');
+        req.logout((err) => {
+            if (err) console.log('Error : Failed to logout.', err);
+            req.session.destroy((err) => {
+                if (err) console.log('Error : Failed to destroy the session during logout.', err);
+                req.user = null;
+                res.redirect('/login');
+            });
+        });
     }
-    //Should never needs these checks (will check on Client Side)
-    req.assert('classname', 'Class Name cannot be blank').notEmpty();
-    req.assert('accesscode', 'Access Code cannot be blank').notEmpty();
-    req.assert('accesscode', 'Access Code must be at least 4 characters long').len(4);
+    const validationErrors = [];
+    if (validator.isEmpty(req.body.classname)) validationErrors.push({ msg: 'Class Name cannot be blank.' });
+    if (validator.isEmpty(req.body.accesscode)) validationErrors.push({ msg: 'Access Code cannot be blank.' });
+    if (!validator.isLength(req.body.accesscode, { min: 4 })) validationErrors.push({ msg: 'Access Code must be at least 4 characters long.' });
 
-    const errors = req.validationErrors();
-
-    if (errors) {
-        req.flash('errors', errors);
+    if (validationErrors.length) {
+        req.flash('errors', validationErrors);
         return res.redirect('/classManagement');
     }
 
-    User.findById(req.user.id, (err, user) => {
-        //somehow user does not exist here
-        if (err) {
-            return next(err);
-        }
-
+    try {
+        const user = await User.findById(req.user.id).exec();
         const new_class = new Class({
             className: req.body.classname,
             teacher: user,
             accessCode: req.body.accesscode
         });
-
-        Class.findOne({
+        const existingClass = await Class.findOne({
             accessCode: req.body.accesscode,
             deleted: false
-        }, (err, existingClass) => {
-            if (err) {
-                return next(err);
-            }
-            if (existingClass) {
-                req.flash('errors', { msg: 'Class with that Access Code already exists. Try another Access Code.' });
-                return res.redirect('/classManagement');
-            }
-            new_class.save((err) => {
-                if (err) {
-                    return next(err);
-                }
-                res.redirect('/classManagement');
-            });
-        });
-    });
+        }).exec();
+
+        if (existingClass) {
+            req.flash('errors', { msg: 'Class with that Access Code already exists. Try another Access Code.' });
+            return res.redirect('/classManagement');
+        } else {
+            await new_class.save();
+            res.redirect('/classManagement');
+        }
+    } catch (err) {
+        next(err);
+    }
 }
 
 /**
@@ -383,43 +339,33 @@ exports.postDeleteClass = async(req, res, next) => {
     if (!req.user.isInstructor) {
         return res.redirect('/login');
     }
-    Class.findOne({
-        className: req.body.className,
-        accessCode: req.body.accessCode,
-        teacher: req.user._id,
-        deleted: false
-    }, async(err, found_class) => {
-        if (err) {
-            console.log("ERROR");
-            console.log(err);
-            return next(err);
-        }
-        if (found_class == null) {
-            console.log("NULL");
-            var myerr = new Error('Class not found!');
+    try {
+        const found_class = await Class.findOne({
+                className: req.body.className,
+                accessCode: req.body.accessCode,
+                teacher: req.user._id,
+                deleted: false
+            })
+            .exec();
+        if (!found_class) {
+            const myerr = new Error('Class not found!');
             return next(myerr);
         }
         const promiseArray = [];
         // iterate through each student and update deleted=true, but do not remove them
         for (const studentId of found_class.students) {
-            let student = await User.findById(studentId)
-                .catch(err => {
-                    console.log("Did not find student");
-                    return next(err);
-                });
+            let student = await User.findById(studentId).exec();
             student.deleted = true;
             promiseArray.push(student.save());
         }
         await Promise.all(promiseArray);
-        // mark the class as deleted=true, but do not remove it
         found_class.deleted = true;
-        found_class.save((err) => {
-            if (err) {
-                return next(err);
-            }
-            res.redirect('/classManagement')
-        });
-    });
+        await found_class.save();
+        res.redirect('/classManagement')
+
+    } catch (err) {
+        next(err);
+    }
 }
 
 /**
@@ -430,61 +376,44 @@ exports.postDeleteClass = async(req, res, next) => {
  * end - it should not appear in charts, downloadable csvs, class lists, etc. This
  * behavior was specifically requested by the researchers.
  */
-exports.removeStudentFromClass = (req, res, next) => {
-    if (req.user.isInstructor) {
-        Class.findOne({
+exports.removeStudentFromClass = async(req, res, next) => {
+    if (!req.user.isInstructor) {
+        return res.redirect('/login');
+    }
+    try {
+        const found_class = Class.findOne({
                 accessCode: req.body.accessCode,
                 teacher: req.user.id,
                 deleted: false
-            }).populate('students') // populate lets you reference docs in other collections
-            .exec(function(err, found_class) {
-                if (err) {
-                    console.log("ERROR");
-                    console.log(err);
-                    return next(err);
-                }
-                if (found_class == null) {
-                    console.log("NULL");
-                    var myerr = new Error('Class not found!');
-                    return next(myerr);
-                }
-                // remove the student from the class
-                let studentIndex;
-                let studentId; // used later to update student User
-                for (const student in found_class.students) {
-                    if (found_class.students[student].username === req.body.username) {
-                        studentIndex = student;
-                        studentId = found_class.students[student]._id;
-                    }
-                }
-                found_class.students.splice(studentIndex, 1);
-                found_class.save((err) => {
-                    if (err) {
-                        return next(err);
-                    }
-                    // student has been removed from the class
-                    // now, update the student User model to be "deleted" from the class (set "deleted"=true)
-                    User.findById(studentId)
-                        .exec(function(err, found_student) {
-                            if (err) {
-                                console.log("ERROR");
-                                console.log(err);
-                                return next(err);
-                            }
-                            if (found_student == null) {
-                                console.log("NULL");
-                                var myerr = new Error('Student not found!');
-                                return next(myerr);
-                            }
-                            found_student.deleted = true;
-                            found_student.save((err) => {
-                                res.redirect(`/viewClass/${req.body.accessCode}`);
-                            });
-                        });
-                });
-            });
-    } else {
-        res.redirect('/login');
+            })
+            .populate('students')
+            .exec();
+        if (!found_class) {
+            const myerr = new Error('Class not found!');
+            return next(myerr);
+        }
+        // remove the student from the class
+        let studentIndex;
+        let studentId; // used later to update student User
+        for (const student in found_class.students) {
+            if (found_class.students[student].username === req.body.username) {
+                studentIndex = student;
+                studentId = found_class.students[student]._id;
+            }
+        }
+        found_class.students.splice(studentIndex, 1);
+        await found_class.save();
+
+        const found_student = User.findById(studentId).exec();
+        if (!found_student) {
+            const myerr = new Error('Student not found!');
+            return next(myerr);
+        }
+        found_student.deleted = true;
+        await found_student.save();
+        res.redirect(`/viewClass/${req.body.accessCode}`);
+    } catch (err) {
+        next(err)
     }
 }
 
@@ -507,10 +436,11 @@ async function getUniqueUsername(accessCode, adjectiveArray, nounArray, username
     let noun = nounArray[getRandomInt(0, nounArray.length)];
     let username = `${adjective}${noun}`;
     let result = await User.findOne({
-        username: username,
-        accessCode: accessCode,
-        deleted: false
-    });
+            username: username,
+            accessCode: accessCode,
+            deleted: false
+        })
+        .exec();
     if (result !== null) {
         // Duplicate found in db. Generating another username...
         await getUniqueUsername(accessCode, adjectiveArray, nounArray, usernameArray);
@@ -542,17 +472,19 @@ async function saveUsernameInExistingClass(req, item, existingClass) {
         active: true,
         start: Date.now(),
         isStudent: true,
-        accessCode: req.body.accessCode
+        accessCode: req.body.accessCode,
+        profile: {
+            name: 'Student',
+            location: '',
+            bio: '',
+            picture: 'avatar-icon.svg'
+        }
     });
-    user.profile.name = "Student";
-    user.profile.location = '';
-    user.profile.bio = '';
-    user.profile.picture = 'avatar-icon.svg';
     try {
         await user.save();
         existingClass.students.push(user._id);
     } catch (err) {
-        // ignore
+        next(err);
     }
 }
 
@@ -561,41 +493,33 @@ async function saveUsernameInExistingClass(req, item, existingClass) {
  * Generate the specified number of student accounts. Each username must be unique.
  */
 exports.generateStudentAccounts = async(req, res, next) => {
-    // get the current class by its name
-    Class.findOne({
-        accessCode: req.body.accessCode,
-        deleted: false
-    }, async(err, existingClass) => {
-
-        if (err) {
-            return next(err);
-        }
+    try {
+        const existingClass = await Class.findOne({
+            accessCode: req.body.accessCode,
+            deleted: false
+        }).exec();
 
         if (!existingClass) {
             req.flash('errors', { msg: `There was an issue finding the class name. Try again, or click "Contact Us" for assistance.` })
             res.redirect(`/viewClass/${req.body.accessCode}`);
         }
 
-        let adjectiveArray = [];
-        let nounArray = [];
-        try {
-            adjectiveArray = await CSVToJSON({
-                noheader: true,
-                output: 'csv'
-            }).fromFile('privateFiles/UsernameAdjectiveComponents.csv');
-            adjectiveArray = adjectiveArray[0];
-            nounArray = await CSVToJSON({
-                noheader: true,
-                output: 'csv'
-            }).fromFile('privateFiles/UsernameNounComponents.csv');
-            nounArray = nounArray[0];
-        } catch {
-            return next(err);
-        }
+
+        const adjectives = await CSVToJSON({
+            noheader: true,
+            output: 'csv'
+        }).fromFile('privateFiles/UsernameAdjectiveComponents.csv');
+        const adjectiveArray = adjectives[0];
+
+        const nouns = await CSVToJSON({
+            noheader: true,
+            output: 'csv'
+        }).fromFile('privateFiles/UsernameNounComponents.csv');
+        const nounArray = nouns[0];
 
         // How many accounts could we possibly have in one class?
         // 214 x 180 = 38,520
-        // No instructor could possibly need that many, so I will place an arbitrary limit.
+        // No instructor could possibly need that many, so we will place an arbitrary limit of 300.
         const currentClassSize = existingClass.students.length;
         const requestedNumberOfAccounts = parseInt(req.body.numberOfAccounts);
         const maximumClassSize = 300;
@@ -616,14 +540,12 @@ exports.generateStudentAccounts = async(req, res, next) => {
                 promiseArray.push(saveUsernameInExistingClass(req, username, existingClass));
             }
             await Promise.all(promiseArray);
-            existingClass.save((err) => {
-                if (err) {
-                    return next(err);
-                }
-                res.redirect(`/viewClass/${req.body.accessCode}`);
-            });
+            await existingClass.save();
+            res.redirect(`/viewClass/${req.body.accessCode}`);
         }
-    });
+    } catch (err) {
+        next(err);
+    }
 }
 
 /*
@@ -939,7 +861,6 @@ function findMatchingRequirements(moduleQuestions, requirementToSearch) {
 }
 
 function addClassReflectionRecords(modName, headerArray, records, moduleQuestions, found_class) {
-
     for (const student of found_class.students) {
         let newRecord = {
             col1: student.username,
@@ -1006,61 +927,54 @@ exports.postClassReflectionResponsesCsv = async(req, res, next) => {
     if (!req.user.isInstructor) {
         return res.status(400).send('Bad Request')
     }
-    // Use reflectionSecionData.json to define the structure of the output csv
-    // fs.readFile does not return a promise, so promisify it
-    // reference: https://javascript.info/promisify
-    const filePath = './public2/json/reflectionSectionData.json';
-    let readFilePromise = function(filePath) {
-        return new Promise((resolve, reject) => {
-            fs.readFile(filePath, (err, data) => {
-                if (err) {
-                    reject(err);
-                }
-                resolve(data);
-            })
-        })
-    }
-    const reflectionJsonBuffer = await readFilePromise(filePath).then(function(data) {
-        return data;
-    });
-    let reflectionJson;
     try {
-        reflectionJson = JSON.parse(reflectionJsonBuffer);
+        // Use reflectionSecionData.json to define the structure of the output csv
+        // fs.readFile does not return a promise, so promisify it
+        // reference: https://javascript.info/promisify
+        const filePath = './public2/json/reflectionSectionData.json';
+        let readFilePromise = function(filePath) {
+            return new Promise((resolve, reject) => {
+                fs.readFile(filePath, (err, data) => {
+                    if (err) {
+                        reject(err);
+                    }
+                    resolve(data);
+                })
+            })
+        }
+        const reflectionJsonBuffer = await readFilePromise(filePath).then(function(data) {
+            return data;
+        });
+        let reflectionJson = JSON.parse(reflectionJsonBuffer);
+
+        const moduleQuestions = reflectionJson[req.params.modName];
+        // Build the layout of the output csv based on the reflectionJson content
+        const headerArray = buildHeaderArray(moduleQuestions);
+        const outputFilePath = `public2/downloads/classReflectionResponses_${req.user.username}.csv`
+        let csvOutputString = "";
+        let csvStringifier = createCsvStringifier({
+            header: headerArray
+        });
+        let records = [];
+        records = buildSubHeaderRecords(headerArray, records, moduleQuestions);
+        const found_class = await Class.findOne({
+                accessCode: req.params.classId,
+                teacher: req.user.id,
+                deleted: false
+            }).populate('students')
+            .exec();
+        if (!found_class) {
+            const myerr = new Error('Class not found!');
+            return next(myerr);
+        }
+        records = addClassReflectionRecords(req.params.modName, headerArray, records, moduleQuestions, found_class);
+        csvOutputString = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(records);
+        res.setHeader('Content-disposition', `attachment; filename=classReflectionResults_${req.user.username}.csv`);
+        res.set('Content-Type', 'text/csv');
+        res.status(200).send(csvOutputString);
     } catch (err) {
         return next(err);
     }
-    const moduleQuestions = reflectionJson[req.params.modName];
-    // Build the layout of the output csv based on the reflectionJson content
-    const headerArray = buildHeaderArray(moduleQuestions);
-    const outputFilePath = `public2/downloads/classReflectionResponses_${req.user.username}.csv`
-    let csvOutputString = "";
-    let csvStringifier = createCsvStringifier({
-        header: headerArray
-    });
-    let records = [];
-    records = buildSubHeaderRecords(headerArray, records, moduleQuestions);
-    Class.findOne({
-            accessCode: req.params.classId,
-            teacher: req.user.id,
-            deleted: false
-        }).populate('students')
-        .exec(async function(err, found_class) {
-            if (err) {
-                console.log("ERROR");
-                console.log(err);
-                return next(err);
-            }
-            if (found_class == null) {
-                console.log("NULL");
-                var myerr = new Error('Class not found!');
-                return next(myerr);
-            }
-            records = addClassReflectionRecords(req.params.modName, headerArray, records, moduleQuestions, found_class);
-            csvOutputString = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(records);
-            res.setHeader('Content-disposition', `attachment; filename=classReflectionResults_${req.user.username}.csv`);
-            res.set('Content-Type', 'text/csv');
-            res.status(200).send(csvOutputString);
-        });
 }
 
 /**
@@ -1071,107 +985,169 @@ exports.postClassTimeReportCsv = async(req, res, next) => {
     if (!req.user.isInstructor) {
         return res.json({ classReflectionResponses: {} });
     }
-    let headerArray = [
-        "Username",
-        "Name",
-        "Total Time to Complete",
-        "Time Spent in the Learn Section (minutes)",
-        "Time Spent in the Practice Section (minutes)",
-        "Time Spent in the Explore Section (minutes)",
-        "Time Spent in the Reflect Section (minutes)"
-    ];
+    try {
+        let headerArray = [
+            "Username",
+            "Name",
+            "Total Time to Complete",
+            "Time Spent in the Learn Section (minutes)",
+            "Time Spent in the Practice Section (minutes)",
+            "Time Spent in the Explore Section (minutes)",
+            "Time Spent in the Reflect Section (minutes)"
+        ];
 
-    let csvString = headerArray.join(',') + '\n';
+        let csvString = headerArray.join(',') + '\n';
 
-    Class.findOne({
-            accessCode: req.params.classId,
-            teacher: req.user.id,
-            deleted: false
-        }).populate('students')
-        .exec(async function(err, found_class) {
-            if (err) {
-                console.log("ERROR");
-                console.log(err);
-                return next(err);
+        const found_class = Class.findOne({
+                accessCode: req.params.classId,
+                teacher: req.user.id,
+                deleted: false
+            })
+            .populate('students')
+            .exec();
+
+        if (!found_class) {
+            const myerr = new Error('Class not found!');
+            return next(myerr);
+        }
+        let filePath = '';
+        switch (req.params.modName) {
+            case 'cyberbullying':
+            case 'digfoot':
+                filePath = "./public2/json/progressDataB.json";
+                break;
+            default:
+                filePath = "./public2/json/progressDataA.json";
+                break;
+        }
+        let readFilePromise = function(filePath) {
+            return new Promise((resolve, reject) => {
+                fs.readFile(filePath, (err, data) => {
+                    if (err) {
+                        reject(err);
+                    }
+                    resolve(data);
+                })
+            })
+        }
+        const sectionJsonBuffer = await readFilePromise(filePath).then(function(data) {
+            return data;
+        });
+        const sectionJson = JSON.parse(sectionJsonBuffer);
+        let records = [];
+        // console.log(sectionJson)
+        // get class page times
+        let classPageTimes = getClassPageTimes(found_class, req.params.modName);
+        for (const student of classPageTimes) {
+            if (!student.timeArray) {
+                continue;
             }
-            if (found_class == null) {
+            // use this to get real name, if one has been added
+            let user = await User.findOne({
+                username: student.username,
+                accessCode: req.params.classId,
+                deleted: false
+            }).exec();
+            if (user == null) {
                 console.log("NULL");
-                var myerr = new Error('Class not found!');
+                var myerr = new Error('User not found!');
                 return next(myerr);
             }
-            let filePath = '';
-            switch (req.params.modName) {
-                case 'cyberbullying':
-                case 'digfoot':
-                    filePath = "./public2/json/progressDataB.json";
-                    break;
-                default:
-                    filePath = "./public2/json/progressDataA.json";
-                    break;
+            let newRecord = {
+                username: student.username,
+                name: user.name,
+                total: 0,
+                '1': 0,
+                '2': 0,
+                '3': 0,
+                '4': 0
             }
-            let readFilePromise = function(filePath) {
-                return new Promise((resolve, reject) => {
-                    fs.readFile(filePath, (err, data) => {
-                        if (err) {
-                            reject(err);
-                        }
-                        resolve(data);
-                    })
-                })
-            }
-            const sectionJsonBuffer = await readFilePromise(filePath).then(function(data) {
-                return data;
-            });
-            const sectionJson = JSON.parse(sectionJsonBuffer);
-            let records = [];
-            // console.log(sectionJson)
-            // get class page times
-            let classPageTimes = getClassPageTimes(found_class, req.params.modName);
-            for (const student of classPageTimes) {
-                if (!student.timeArray) {
+            for (const timeItem of student.timeArray) {
+                if (!sectionJson[timeItem.subdirectory1]) {
                     continue;
                 }
-                // use this to get real name, if one has been added
-                let user = await User.findOne({
-                    username: student.username,
-                    accessCode: req.params.classId,
-                    deleted: false
-                });
-                if (user == null) {
-                    console.log("NULL");
-                    var myerr = new Error('User not found!');
-                    return next(myerr);
+                if (sectionJson[timeItem.subdirectory1] === "end") {
+                    continue;
                 }
-                let newRecord = {
-                    username: student.username,
-                    name: user.name,
-                    total: 0,
-                    '1': 0,
-                    '2': 0,
-                    '3': 0,
-                    '4': 0
-                }
-                for (const timeItem of student.timeArray) {
-                    if (!sectionJson[timeItem.subdirectory1]) {
-                        continue;
-                    }
-                    if (sectionJson[timeItem.subdirectory1] === "end") {
-                        continue;
-                    }
-                    const sectionId = sectionJson[timeItem.subdirectory1];
-                    newRecord[sectionId] += parseFloat(timeItem.timeDuration);
-                    newRecord.total += parseFloat(timeItem.timeDuration);
-                }
-                // before pushing the record, round all numbers to nearest int.
-                for (let i = 1; i < 5; i++) {
-                    newRecord[i] = Math.round(newRecord[i]);
-                }
-                newRecord.total = Math.round(newRecord.total);
-                records.push([newRecord.username, newRecord.name, newRecord.total, newRecord['1'], newRecord['2'], newRecord['3'], newRecord['4']]);
+                const sectionId = sectionJson[timeItem.subdirectory1];
+                newRecord[sectionId] += parseFloat(timeItem.timeDuration);
+                newRecord.total += parseFloat(timeItem.timeDuration);
             }
-            csvString += records.join('\n');
-            res.setHeader('Content-disposition', `attachment; filename=classTimeReport_${req.user.username}.csv`);
-            res.set('Content-Type', 'text/csv');
-            res.status(200).send(csvString);
+            // before pushing the record, round all numbers to nearest int.
+            for (let i = 1; i < 5; i++) {
+                newRecord[i] = Math.round(newRecord[i]);
+            }
+            newRecord.total = Math.round(newRecord.total);
+            records.push([newRecord.username, newRecord.name, newRecord.total, newRecord['1'], newRecord['2'], newRecord['3'], newRecord['4']]);
+        }
+        csvString += records.join('\n');
+        res.setHeader('Content-disposition', `attachment; filename=classTimeReport_${req.user.username}.csv`);
+        res.set('Content-Type', 'text/csv');
+        res.status(200).send(csvString);
+    } catch (err) {
+        next(err);
+    }
+}
+
+/**
+ * GET /studentReportData/:classId/:username
+ * Get the data used to populate the student report page on the teacher dashboard.
+ */
+exports.getStudentReportData = async(req, res, next) => {
+    if (!req.user.isInstructor) {
+        return res.json({ studentPageTimes: {} });
+    }
+    try {
+        const student = await User.findOne({
+            accessCode: req.params.classId,
+            username: req.params.username,
+            deleted: false
+        }).exec();
+        if (!student) {
+            const myerr = new Error('Student not found!');
+            return next(myerr);
+        }
+        // get progress on each module
+        // add dashes to the keys that usually have them
+        let moduleProgress = {};
+        moduleProgress["safe-posting"] = student.moduleProgress['safeposting'];
+        moduleProgress["digital-literacy"] = student.moduleProgress['digitalliteracy'];
+        for (const key of Object.keys(student.moduleProgress)) {
+            if (key !== "digitalliteracy" && key !== "safeposting")
+                moduleProgress[key] = student.moduleProgress[key];
+        }
+
+        // get page times
+        const pageLog = student.pageLog;
+        let pageTimeArray = [];
+        for (let i = 0, l = pageLog.length - 1; i < l; i++) {
+            // convert from ms to minutes
+            let timeDurationOnPage = (pageLog[i + 1].time - pageLog[i].time) / 60000;
+            // skip any page times longer than 30 minutes
+            if (timeDurationOnPage > 30) {
+                continue;
+            }
+            const dataToPush = {
+                timeOpened: pageLog[i].time,
+                timeDuration: timeDurationOnPage,
+                subdirectory1: pageLog[i].subdirectory1
+            };
+            if (pageLog[i].subdirectory2) {
+                dataToPush["subdirectory2"] = pageLog[i].subdirectory2;
+            }
+            pageTimeArray.push(dataToPush);
+        }
+
+        // get freeplay actions
+        const freeplayActions = student.feedAction;
+
+        res.set('Content-Type', 'application/json; charset=UTF-8');
+        res.json({
+            pageTimes: pageTimeArray,
+            moduleProgress: moduleProgress,
+            freeplayActions: freeplayActions
         });
+    } catch (err) {
+        next(err);
+    }
 }

@@ -11,7 +11,9 @@ function recordSimModalInputs(modalNameAttrStr) {
     let target = $(event.target);
     //const simPostNumber = target.closest('.ui.card').attr('simPostNumber');
     const post = target.closest(".ui.card");
+    console.log(post);
     const postID = post.attr("postID");
+    console.log(postID);
     const modalOpenedTime = Date.now();
     let checkboxInputs = 0b0; // going to use bit shifting
 

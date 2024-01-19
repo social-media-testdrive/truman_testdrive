@@ -326,17 +326,17 @@ $('.habitsNotificationItem, .notificationPopup').on('click', function(event) {
     //show the relevant post in a popup modal
     var relevantPost = $('.ui.fluid.card.habitsHomeDisplay[postnumber="' + relevantPostNumber + '"]').clone().show();
 
-    $('.ui.viewPolicyPopup.modal .ui.fluid.card').html(relevantPost);
-    $('.ui.viewPolicyPopup.modal .ui.fluid.card').removeAttr('postnumber').show();
-    $('.ui.viewPolicyPopup.modal .ui.fluid.card .content a').removeAttr('href').show();
-    $('.viewPolicyPopup').modal('show');
+    $('.ui.viewPostPopup.modal .ui.fluid.card').html(relevantPost);
+    $('.ui.viewPostPopup.modal .ui.fluid.card').removeAttr('postnumber').show();
+    $('.ui.viewPostPopup.modal .ui.fluid.card .content a').removeAttr('href').show();
+    $('.viewPostPopup').modal('show');
     //lazy load the images
-    $(".ui.viewPolicyPopup.modal .ui.fluid.card img")
+    $(".ui.viewPostPopup.modal .ui.fluid.card img")
         .visibility({
             type: 'image',
             offset: 0,
             onLoad: function(calculations) {
-                $('.ui.viewPolicyPopup.modal .ui.fluid.card img').visibility('refresh');
+                $('.ui.viewPostPopup.modal .ui.fluid.card img').visibility('refresh');
             }
         });
 

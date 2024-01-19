@@ -28,7 +28,7 @@ block content
         
       #loading.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
         img.ui.centered.small.image(src='/images/heart.svg')
-      #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.trackHeightOffset
+      #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.contentColumn.hidden
         //- Input for creating new post at top of feed
         .ui.sticky.newPostSticky
           #newpost.ui.fluid.left.labeled.right.icon.input.habitsHomeDisplay
@@ -39,27 +39,14 @@ block content
                 img.ui.avatar.image(src=user.gravatar(60))
             input(type='text', placeholder='Create a post')
             i.big.photo.link.icon
-
+        include ../partials/script/modals/newUserPost
         each val in script
-          //- create a card for each post in val (if by user make the card a little different)
-          //- if val.relativeTime - then post came from user_post (so user post, user reply to actor reply to user post)
+          //- if val.relativeTime - then post came from user_post
           if val.relativeTime
             include ../partials/script/userPost
-          //- Now we are making posts by Actors, not the USER
+          //- Else, actor post.
           else
-            if(val.info_text !== "")
-              include ../partials/script/advancedlit_articlePost
-            else
-              include ../partials/script/actorPost
-        a.ui.fluid.card
-          .content
-            .ui.big.green.labeled.icon.button.script
-              i.rocket.icon
-              |   Let's Continue!        
-        br
-        br
-          
-        include ../partials/script/modals/newUserPost    
+            include ../partials/script/actorPost
           
   //- #########################################################################
   
@@ -124,7 +111,6 @@ block content
       span.searchButtonText 
     
   //- #########################################################################
-  
   .ui.tab(data-tab="search1")
     .ui.grid.gridInsideTab      
       .row

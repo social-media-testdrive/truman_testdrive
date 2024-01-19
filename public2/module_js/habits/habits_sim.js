@@ -70,7 +70,7 @@ function customOnHintCloseFunction() {
         if ($('#nextPageInstruction').is(":hidden")) {
             $('#nextPageInstruction').transition('fade');
             //add margin to the bottom of the page
-            $('#addBottomMargin').css('margin-bottom', '10em');
+            $('#.mb-9').css('margin-bottom', '10em');
         }
 
         //enable the notifications button
@@ -92,7 +92,7 @@ function eventsAfterHints() {
             //show the message normally the first time
             if ($('#notificationWarning').is(":hidden")) {
                 $('#notificationWarning').transition('fade');
-                $('#addBottomMargin').css('margin-bottom', '10em');
+                $('#.mb-9').css('margin-bottom', '10em');
             } else {
                 //otherwise, bounce the message to draw attention to it
                 $('#notificationWarning').transition('bounce');

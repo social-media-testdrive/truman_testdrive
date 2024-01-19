@@ -1,3 +1,7 @@
+const pathArrayForHeader = window.location.pathname.split('/');
+const currentPageForHeader = pathArrayForHeader[1];
+const currentModuleForHeader = pathArrayForHeader[2];
+
 function addHumanizedTimeToPost() {
     let target = $(this);
     var ms = parseInt(target.text(), 10);
@@ -33,35 +37,27 @@ function getActionType(currentPage) {
 
 function likePost(e) {
     const enableDataCollection = e.data.enableDataCollection;
-    let target = $(event.target);
+    const target = $(e.target).closest('.ui.like.button');
+    const label = target.closest('.ui.like.button').next("a.ui.basic.red.left.pointing.label.count");
+    const postID = target.closest(".ui.fluid.card").attr("postID");
+    const currDate = Date.now();
+
     // Determine if the comment is being LIKED or UNLIKED based on the initial
     // button color. Red = UNLIKE, Not Red = LIKE.
-    if (target.closest('.ui.like.button').hasClass("red")) {
-        // Since the button was already red, this button press is an UNLIKE action.
-        // Remove red color from like button and decrease the displayed like count
-        target.closest('.ui.like.button').removeClass("red");
-        const label = $(this).closest('.ui.like.button')
-            .next("a.ui.basic.red.left.pointing.label.count");
+    if (target.hasClass("red")) { //Unlike Post
+        target.removeClass("red");
         label.html(function(i, val) { return val * 1 - 1 });
-    } else {
-        // Since the button was not red, this button press is a LIKE action
-        // Add red color to like button and increase the displayed like count
-        target.closest('.ui.like.button').addClass("red");
-        var label = $(this).next("a.ui.basic.red.left.pointing.label.count");
+    } else { // Like post 
+        target.addClass("red");
         label.html(function(i, val) { return val * 1 + 1 });
-        // Store information about the action
-        let pathArrayForHeader = window.location.pathname.split('/');
-        let currentPageForHeader = pathArrayForHeader[1];
-        let currentModuleForHeader = pathArrayForHeader[2];
-        let postID = $(this).closest(".ui.card").attr("postID");
+
         let actionType = getActionType(currentPageForHeader);
-        let like = Date.now();
         if (actionType === "free play" || enableDataCollection) {
             $.post("/feed", {
                 actionType: actionType,
                 postID: postID,
                 modual: currentModuleForHeader,
-                like: like,
+                like: currDate,
                 _csrf: $('meta[name="csrf-token"]').attr('content')
             });
         }
@@ -357,18 +353,17 @@ $(window).on('load', () => {
     // like a comment
     $('a.like.comment').click({ enableDataCollection }, likeComment);
 
-    // flag a comment
-    $('a.flag.comment').click({ enableDataCollection }, flagComment);
-
-    // only enable certain functionality when not in a tutorial page
-    // TODO: double check with Yoon that this is intended behavior
+    // Only enable flagging and sharing when NOT on tutorial pages, since flagging and sharing modals cover the original post.
     let pathArray = window.location.pathname.split('/');
     let currentPage = pathArray[1];
     if (currentPage !== "tutorial") {
         // flag a post
         $('.flag.button').on('click', { enableDataCollection }, flagPost);
+
+        // flag a comment
+        $('a.flag.comment').click({ enableDataCollection }, flagComment);
+
         // share a post
         $('.ui.share.button').on('click', { enableDataCollection }, sharePost);
     }
-
 });

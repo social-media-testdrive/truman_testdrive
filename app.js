@@ -6,7 +6,6 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
-const errorHandler = require('errorhandler');
 const lusca = require('lusca');
 const dotenv = require('dotenv');
 const flash = require('express-flash');
@@ -23,9 +22,9 @@ fs.readFileAsync = util.promisify(fs.readFile);
  */
 dotenv.config({ path: '.env' });
 
-// Multer options for user uploading (post images and avatar profile images
-// Not currently used in TestDrive
-var userpost_options = multer.diskStorage({
+// Multer options for user uploading (post images and avatar profile) images.
+// Not used in TestDrive.
+const userpost_options = multer.diskStorage({
     destination: path.join(__dirname, 'uploads/user_post'),
     filename: function(req, file, cb) {
         var lastsix = req.user.id.substr(req.user.id.length - 6);
@@ -33,14 +32,13 @@ var userpost_options = multer.diskStorage({
         cb(null, prefix + file.originalname.replace(/[^A-Z0-9]+/ig, "_"));
     }
 });
-var useravatar_options = multer.diskStorage({
+const useravatar_options = multer.diskStorage({
     destination: path.join(__dirname, 'uploads/user_avatar'),
     filename: function(req, file, cb) {
         var prefix = req.user.id + Math.random().toString(36).slice(2, 10);
         cb(null, prefix + file.originalname.replace(/[^A-Z0-9]+/ig, "_"));
     }
 });
-
 const userpostupload = multer({ storage: userpost_options });
 const useravatarupload = multer({ storage: useravatar_options });
 
@@ -52,8 +50,6 @@ const actorsController = require('./controllers/actors');
 const scriptController = require('./controllers/script');
 const classController = require('./controllers/class');
 const userController = require('./controllers/user');
-// Notifications not currently used in TestDrive.
-// const notificationController = require('./controllers/notification');
 
 /**
  * API keys and Passport configuration.
@@ -95,11 +91,10 @@ app.use(session({
         path: '/',
         httpOnly: true,
         secure: false,
-        maxAge: 1209600000, //336 hours or 2 weeks
-        sameSite: 'lax'
+        maxAge: 1209600000 //24 hours
     },
     store: MongoStore.create({
-        url: process.env.PRO_MONGODB_URI || process.env.PRO_MONGOLAB_URI,
+        mongoUrl: process.env.PRO_MONGODB_URI,
     })
 }));
 app.use(passport.initialize());
@@ -109,7 +104,7 @@ app.use(flash());
 // This allows us to not check CSRF when uploading an image file. It's a weird issue that multer and lusca do not play well together.
 // Theoretically, the "if" statement is not entered in TestDrive since users never upload image files.
 app.use((req, res, next) => {
-    if ((req.path === '/post/new') || (req.path === '/account/profile') || (req.path === '/account/signup_info_post' || (req.path === '/classes'))) {
+    if ((req.path === '/post/new') || (req.path === '/account/profile/:modId') || (req.path === '/account/signup_info_post')) {
         console.log("Not checking CSRF. Out path now");
         next();
     } else {
@@ -157,21 +152,7 @@ function setHttpResponseHeaders(req, res, next) {
 }
 
 async function isValidModId(req, res, next) {
-    // const modIds = [
-    //     "accounts",
-    //     "advancedlit",
-    //     "cyberbullying",
-    //     "digfoot",
-    //     "digital-literacy",
-    //     "esteem",
-    //     "habits",
-    //     "phishing",
-    //     "presentation",
-    //     "privacy",
-    //     "safe-posting",
-    //     "targeted"
-    // ]
-    const data = await fs.readFileAsync(`${__dirname}/public2/json/moduleInfo.json`)
+    const data = await fs.readFileAsync(`${__dirname}/public2/json/moduleInfo.json`);
     const modIds = Object.keys(JSON.parse(data.toString()));
     if (modIds.includes(req.params.modId)) {
         next();
@@ -180,23 +161,22 @@ async function isValidModId(req, res, next) {
         err.status = 404;
         console.log(err);
 
-        // set locals, only providing error stack in development
+        // Set locals, only providing error stack in development.
         err.stack = req.app.get('env') === 'development' ? err.stack : '';
 
         res.locals.message = err.message + " Oops! We can't seem to find the page you're looking for.";
         res.locals.error = err;
 
-        // render the error page
+        // Render the error page.
         res.status(err.status);
         res.render('error');
     }
 }
 
-// All of our static files that express will automatically server for us.
-// In production, we have nginx server this instead to take the load off out Node app
+// All of our static files that express will automatically serve for us.
+// In production, we have nginx server this instead to take the load off out Node app.
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
 app.use(express.static(path.join(__dirname, 'public2'), { maxAge: 31557600000 }));
-app.use('/semantic', express.static(path.join(__dirname, 'semantic'), { maxAge: 31557600000 }));
 app.use(express.static(path.join(__dirname, 'uploads'), { maxAge: 31557600000 }));
 app.use(express.static(path.join(__dirname, 'post_pictures'), { maxAge: 31557600000 }));
 app.use('/profile_pictures', express.static(path.join(__dirname, 'profile_pictures'), { maxAge: 31557600000 }));
@@ -211,9 +191,9 @@ const enableLearnerDashboard = process.env.enableLearnerDashboard === 'true';
  * Primary app routes.
  * (In alphabetical order)
  */
-// Main route is the module page
+// Main route is the module page.
 app.get('/', passportConfig.isAuthenticated, setHttpResponseHeaders, async function(req, res) {
-    const data = await fs.readFileAsync(`${__dirname}/public2/json/moduleInfo.json`)
+    const data = await fs.readFileAsync(`${__dirname}/public2/json/moduleInfo.json`);
     const modData = JSON.parse(data.toString());
 
     res.render('mods', {
@@ -223,10 +203,10 @@ app.get('/', passportConfig.isAuthenticated, setHttpResponseHeaders, async funct
     });
 });
 
-// Render current user's account page, which is module specific (all modules)
+// Render current user's account page, which is module specific (all modules).
 app.get('/account/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, userController.getAccount);
 
-// Render end page (all modules)
+// Render end page (all modules).
 app.get('/end/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
     res.render('base_end.pug', {
         title: 'Finished',
@@ -235,70 +215,7 @@ app.get('/end/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, i
     });
 });
 
-// Render page with sample targeted ads (food) in the targeted ads module
-app.get('/food/targeted', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
-    res.render('targeted/targeted_food', {
-        title: 'Interest Page'
-    });
-});
-
-// Render Page 1 of the free play section in the privacy module
-app.get('/free-play/privacy', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
-    res.render('privacy/privacy_free-play', {
-        title: 'Free-Play'
-    });
-});
-
-// Render Page 3 of the free play section in the privacy module
-app.get('/free-play2/privacy', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
-    res.render('privacy/privacy_free-play2', {
-        title: 'Free-Play 2'
-    });
-});
-
-// Render Page 7 of the free play section in the privacy module
-app.get('/free-play3/privacy', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
-    res.render('privacy/privacy_free-play3', {
-        title: 'Free-Play 3'
-    });
-});
-
-// Render Page 5 of the free play section in the privacy module
-app.get('/free-play4/privacy', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
-    res.render('privacy/privacy_free-play4', {
-        title: 'Free-Play 4'
-    });
-});
-
-// Render Page 2 of the free play section in the privacy module
-app.get('/free-settings/privacy', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
-    res.render('privacy/privacy_free-play_settings', {
-        title: 'Free-Play Settings'
-    });
-});
-
-// Render Page 6 of the free play section in the privacy module
-app.get('/free-settings2/privacy', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
-    res.render('privacy/privacy_free-play_settings2', {
-        title: 'Free-Play Settings 2'
-    });
-});
-
-// Render Page 4 of the free play section in the privacy module
-app.get('/free-settings3/privacy', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
-    res.render('privacy/privacy_free-play_settings3', {
-        title: 'Free-Play Settings 3'
-    });
-});
-
-// Render page with sample targeted ads (gaming) in the targeted ads module
-app.get('/gaming/targeted', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
-    res.render('targeted/targeted_gaming', {
-        title: 'Interest Page'
-    });
-});
-
-// Render intro page (all modules)
+// Render intro page (all modules).
 app.get('/intro/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
     if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
         res.redirect('/');
@@ -312,7 +229,7 @@ app.get('/intro/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders,
 // Render user's profile page, which is module-specific.
 app.get('/me/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, userController.getMe);
 
-// Main route for rendering the free play page for a given module (only 'accounts' and 'privacy' modules do not have this page)
+// Render the free play page (only 'accounts' and 'privacy' modules do not have this page).
 app.get('/modual/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, scriptController.getScript);
 
 // Render privacy policy page.
@@ -347,7 +264,7 @@ app.get('/quiz/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, 
     });
 });
 
-// Main route for rendering the practice page for a given module.
+// Render the practice page (all modules).
 app.get('/sim/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
     if (req.params.modId === 'safe-posting') {
         res.set({
@@ -364,42 +281,35 @@ app.get('/sim/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, i
     });
 });
 
-// Render page in the practice section
+// Render page in the practice section.
 app.get('/sim1/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
     res.render(req.params.modId + '/' + req.params.modId + '_sim1', {
         title: 'Guided Activity'
     });
 });
 
-// Render page in the practice section 
+// Render page in the practice section.
 app.get('/sim2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
     res.render(req.params.modId + '/' + req.params.modId + '_sim2', {
         title: 'Guided Activity'
     });
 });
 
-// Render page in the practice section 
+// Render page in the practice section.
 app.get('/sim3/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
     res.render(req.params.modId + '/' + req.params.modId + '_sim3', {
         title: 'Guided Activity'
     });
 });
 
-// Render page in the practice section
+// Render page in the practice section.
 app.get('/sim4/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
     res.render(req.params.modId + '/' + req.params.modId + '_sim4', {
         title: 'Guided Activity'
     });
 });
 
-// Render page with sample targeted ads (sports) in the targeted ads module
-app.get('/sports/targeted', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
-    res.render('targeted/targeted_sports', {
-        title: 'Interest Page'
-    });
-});
-
-// Render start page (all modules)
+// Render start page (all modules).
 app.get('/start/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, async function(req, res) {
     if (req.params.modId === "delete") { // anticipating a specific user behavior that causes 500 errors
         res.redirect('/');
@@ -416,28 +326,28 @@ app.get('/start/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders,
     }
 });
 
-// Render transition review page
+// Render transition review page.
 app.get('/trans/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
     res.render(req.params.modId + '/' + req.params.modId + '_trans', {
         title: 'Review'
     });
 });
 
-// Render transition review page
+// Render transition review page.
 app.get('/trans2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
     res.render(req.params.modId + '/' + req.params.modId + '_trans2', {
         title: 'Review'
     });
 });
 
-// Render transition review page
+// Render transition review page.
 app.get('/trans_script/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
     res.render(req.params.modId + '/' + req.params.modId + '_trans_script', {
         title: 'Review'
     });
 });
 
-// Main route for rendering the learn page for a given module
+// Render the learn page (all modules).
 app.get('/tutorial/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
     if (req.params.modId === 'safe-posting') {
         res.set({
@@ -454,14 +364,14 @@ app.get('/tutorial/:modId', passportConfig.isAuthenticated, setHttpResponseHeade
     });
 });
 
-// Render learn page 
+// Render learn page.
 app.get('/tutorial2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
     res.render(req.params.modId + '/' + req.params.modId + '_tutorial2', {
         title: 'Tutorial'
     });
 });
 
-// Render tutorial guide page
+// Render tutorial guide page.
 app.get('/tut_guide/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
     if (req.params.modId === 'safe-posting') {
         res.set({
@@ -479,14 +389,77 @@ app.get('/tut_guide/:modId', passportConfig.isAuthenticated, setHttpResponseHead
 });
 
 // Render the profile page for the given actor
-app.get('/user/:userId', passportConfig.isAuthenticated, setHttpResponseHeaders, actorsController.getActor);
+app.get('/user/:actorId', passportConfig.isAuthenticated, setHttpResponseHeaders, actorsController.getActor);
+
+// Render page with sample targeted ads (food, gaming, sports) in the targeted ads module.
+app.get('/:page/targeted', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
+    const validPages = [
+        'food',
+        'gaming',
+        'sports'
+    ]
+    if (!validPages.includes(req.params.page)) {
+        const err = new Error('Page Not Found.');
+        err.status = 404;
+        console.log(err);
+
+        // Set locals, only providing error stack in development.
+        err.stack = req.app.get('env') === 'development' ? err.stack : '';
+
+        res.locals.message = err.message + " Oops! We can't seem to find the page you're looking for.";
+        res.locals.error = err;
+
+        // Render the error page.
+        res.status(err.status);
+        res.render('error');
+    } else {
+        res.render('targeted/targeted_' + req.params.page, {
+            title: 'Interest Page'
+        });
+    }
+});
+
+// Render free play pages in the privacy module.
+app.get('/:page/privacy', passportConfig.isAuthenticated, setHttpResponseHeaders, function(req, res) {
+    const validFreePlayPages = [
+        'free-play', // Page 1 of the free play section in the privacy module
+        'free-play2', // Page 3 of the free play section in the privacy module
+        'free-play3', // Page 7 of the free play section in the privacy module
+        'free-play4', // Page 5 of the free play section i the privacy module
+        'free-settings', // Page 2 of the free play section in the privacy module
+        'free-settings2', // Page 6 of the free play section in the privacy module
+        'free-settings3' // Page 4 of the free play section in the privacy module
+    ]
+    if (!validFreePlayPages.includes(req.params.page)) {
+        const err = new Error('Page Not Found.');
+        err.status = 404;
+        console.log(err);
+
+        // Set locals, only providing error stack in development.
+        err.stack = req.app.get('env') === 'development' ? err.stack : '';
+
+        res.locals.message = err.message + " Oops! We can't seem to find the page you're looking for.";
+        res.locals.error = err;
+
+        // Render the error page.
+        res.status(err.status);
+        res.render('error');
+    } else {
+        const urlDigit = req.params.page.match(/\d+/)[0];
+        const pageType = req.params.page.startsWith('free-play') ? 'free-play' : 'free-play_settings'
+        const page = 'privacy_' + pageType + (urlDigit ? urlDigit.toString() : "");
+        res.render('privacy/' + page, {
+            title: 'Free-Play' + (pageType == 'free-play_settings' ? "Settings " : "") + (urlDigit ? urlDigit.toString() : "")
+        })
+    }
+});
 
 /*
  * Account creation & deletion
  */
-// Delete guest account, or feedAction of account
+// Delete guest account, or feedAction of account.
 app.post('/delete', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.getDeleteAccount);
-// Create a new guest account
+// Create a new guest account.
 app.get('/guest/:modId', setHttpResponseHeaders, isValidModId, userController.getGuest);
 
 /*
@@ -507,8 +480,6 @@ if (isResearchVersion) {
 app.post('/post/new', setHttpResponseHeaders, scriptController.newPost);
 // Post information about a user action on a post in a freeplay feed section
 app.post('/feed', passportConfig.isAuthenticated, setHttpResponseHeaders, scriptController.postUpdateFeedAction);
-// Delete all recorded feed actions for the current user - currently not used
-app.post('/deleteUserFeedActions', passportConfig.isAuthenticated, setHttpResponseHeaders, scriptController.postDeleteFeedAction);
 // Post information about a user's reflection answers in the reflection section 
 app.post('/reflection', passportConfig.isAuthenticated, setHttpResponseHeaders, scriptController.postReflectionAction);
 // Post information about a user's quiz answers in the quiz section
@@ -516,19 +487,14 @@ app.post('/quiz', passportConfig.isAuthenticated, setHttpResponseHeaders, script
 app.post('/postViewQuizExplanations', passportConfig.isAuthenticated, setHttpResponseHeaders, scriptController.postViewQuizExplanations);
 // Record user's topic selection for modules with customized freeplay content
 app.post('/interest', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.postUpdateInterestSelection);
-app.post('/advancedlitInterest', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.postAdvancedlitInterestSelection);
 // Routes to get topic selections for modules with customized freeplay content
 app.get('/esteemTopic', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.getEsteemTopic);
-app.get('/advancedlitTopic', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.getAdvancedlitTopic);
 // Routes to facilitate features in the habits module
 app.get('/habitsTimer', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.getHabitsTimer);
 app.post('/habitsTimer', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.postUpdateHabitsTimer);
 app.get('/habitsNotificationTimes', passportConfig.isAuthenticated, setHttpResponseHeaders, scriptController.getNotificationTimes);
-// This was for load testing - not sure if it should be deleted
-app.get('/testing/:modId', isValidModId, scriptController.getScriptFeed);
 // Update user profile information
-app.post('/account/profile', passportConfig.isAuthenticated, useravatarupload.single('picinput'), setHttpResponseHeaders, userController.postUpdateProfile);
-app.post('/account/profile/:modId', passportConfig.isAuthenticated, useravatarupload.single('picinput'), setHttpResponseHeaders, userController.postUpdateProfile);
+app.post('/account/profile/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.postUpdateProfile);
 
 /*
  * Recording various user activities if data collection is enabled
@@ -538,12 +504,12 @@ if (enableDataCollection) {
     app.post('/startPageAction', passportConfig.isAuthenticated, setHttpResponseHeaders, scriptController.postStartPageAction);
     app.post('/introjsStep', passportConfig.isAuthenticated, setHttpResponseHeaders, scriptController.postIntrojsStepAction);
     app.post('/bluedot', passportConfig.isAuthenticated, setHttpResponseHeaders, scriptController.postBlueDotAction);
-    app.post('/moduleProgress', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.postUpdateModuleProgress);
     app.post('/accountsAction', passportConfig.isAuthenticated, setHttpResponseHeaders, scriptController.postUpdateUniqueFeedAction);
     app.post('/habitsAction', passportConfig.isAuthenticated, setHttpResponseHeaders, scriptController.postUpdateUniqueFeedAction);
     app.post('/privacyAction', passportConfig.isAuthenticated, setHttpResponseHeaders, scriptController.postUpdateUniqueFeedAction);
     app.post('/chatAction', passportConfig.isAuthenticated, setHttpResponseHeaders, scriptController.postUpdateChatAction);
     app.post('/voiceoverTimer', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.postUpdateVoiceoverTimer);
+    app.post('/moduleProgress', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.postUpdateModuleProgress);
 }
 
 /*
@@ -568,7 +534,7 @@ if (enableTeacherDashboard) {
     app.get('/moduleProgress/:classId', passportConfig.isAuthenticated, setHttpResponseHeaders, classController.getModuleProgress);
     app.get('/classReflectionResponses/:classId', passportConfig.isAuthenticated, setHttpResponseHeaders, classController.getReflectionResponses);
     app.get('/classFreeplayActions/:classId/:modName', passportConfig.isAuthenticated, setHttpResponseHeaders, classController.getClassFreeplayActions);
-    app.get('/studentReportData/:classId/:username', passportConfig.isAuthenticated, setHttpResponseHeaders, userController.getStudentReportData);
+    app.get('/studentReportData/:classId/:username', passportConfig.isAuthenticated, setHttpResponseHeaders, classController.getStudentReportData);
     app.get('/singlePost/:postId', passportConfig.isAuthenticated, setHttpResponseHeaders, scriptController.getSinglePost);
     app.post('/downloadReflectionResponses/:classId/:modName', passportConfig.isAuthenticated, setHttpResponseHeaders, classController.postClassReflectionResponsesCsv);
     app.post('/postClassTimeReportCsv/:classId/:modName', passportConfig.isAuthenticated, setHttpResponseHeaders, classController.postClassTimeReportCsv);
@@ -631,78 +597,35 @@ if (enableLearnerDashboard) {
     });
 }
 
-/*
+/**
  * Error Handler.
  */
-// Commented out: Do not have to use https://www.npmjs.com/package/errorhandler for local development
-// if (process.env.instanceType === 'test'){
-//   app.use(errorHandler()); 
-// }
-//  else {
+app.use((req, res, next) => {
+    const err = new Error('Page Not Found');
+    err.status = 404;
+    err.stack = req.app.get('env') === 'development' ? err.stack : ''; // Only provide error stack in development.
 
-// error handler
-// COMMENTED OUT FOR NOW -- WILL WORK ON IT LATER; error handler for csrf invalid id error
-// app.use(function(err, req, res, next) {
-//     if (err.code !== 'EBADCSRFTOKEN') return next(err)
+    res.locals.message = err.message + " Oops! We can't seem to find the page you're look for.";
+    res.locals.error = err;
 
-//     // handle CSRF token errors here
-//     console.log("CSRF TOKEN ERROR");
-//     console.log(err);
-//     addCsrf();
-//     console.log(res.locals.csrfToken);
-//     // res.method = 'GET';
-//     // res.url = '/getCSRFToken';
-//     // res.send();
-//     // // if (jqXHR.status === 403 && jqXHR.responseText.includes('invalid csrf token')) {
-//     // const newCsrf = $.get("/getCSRFToken");
-//     // //     _logStartPageAction(cat, newCsrf, --retryCount);
-//     // // }
-//     // console.log(res.locals.csrfToken);
-//     // console.log(newCsrf)
-//     res.send({ method: 'GET', url: ['/getCSRFToken'] });
-// })
+    res.status(err.status);
+    console.log(err);
+    res.render('error');
 
-// error handler
-app.use(function(err, req, res, next) {
-    // No routes handled the request and no system error, that means 404 issue.
-    // Forward to next middleware to handle it.
-    if (!err) return next();
+});
 
+app.use((err, req, res) => {
     console.error(err);
-
-    // set locals, only providing error stack and message in development
-    // Express app.get('env') returns 'development' if NODE_ENV is not defined
     err.status = err.status || 500;
-    err.stack = req.app.get('env') === 'development' ? err.stack : '';
+    err.stack = req.app.get('env') === 'development' ? err.stack : ''; // Only provide error stack in development.
     err.message = req.app.get('env') === 'development' ? err.message : " Oops! Something went wrong.";
 
     res.locals.message = err.message;
     res.locals.error = err;
 
-    // render the error page
     res.status(err.status);
     res.render('error');
 });
-
-// catch 404. 404 should be considered as a default behavior, not a system error.
-// Necessary to include because in express, 404 responses are not the result of an error, so the error-handler middleware will not capture them. https://expressjs.com/en/starter/faq.html 
-app.use(function(req, res, next) {
-    var err = new Error('Page Not Found.');
-    err.status = 404;
-
-    console.log(err);
-
-    // set locals, only providing error stack in development
-    err.stack = req.app.get('env') === 'development' ? err.stack : '';
-
-    res.locals.message = err.message + " Oops! We can't seem to find the page you're looking for.";
-    res.locals.error = err;
-
-    // render the error page
-    res.status(err.status);
-    res.render('error');
-});
-// }
 
 /*
  * Start Express server.

@@ -10,9 +10,6 @@
         img.ui.avatar.image(src=cdn+'/profile_pictures/avatar-icon.svg')
       .chat-about
         .chat-with Chat with Jack
-        //- .chat-num-messages already 1 902 messages
-      //- i.fa.fa-star
-    //- end chat-header
     .chat-history
       ul
         li
@@ -31,17 +28,12 @@
             span.message-data-time 10:20 AM
           .message.my-message
             | can you tell me your number so i can call you real quick?
-
-    //- end chat-history
     .chat-message.clearfix
       .ui.fluid.action.input
         input#message-to-send(type='text', name='message-to-send', placeholder='Type your message')
         button
           i.send.icon
           | Send
-    //- end chat-message
-    //- end chat
-//- end container
 
 //- Chat Box  
 #chatbox2.container.clearfix.hidden
@@ -55,9 +47,6 @@
         img.ui.avatar.image(src=cdn+'/profile_pictures/user8.jpg')
       .chat-about
         .chat-with Chat with Rob
-        //- .chat-num-messages already 1 902 messages
-      //- i.fa.fa-star
-    //- end chat-header
     .chat-history
       ul
         li
@@ -84,20 +73,14 @@
             span.message-data-time 10:20 AM
           .message.my-message
             | I want to get to know you better!
-
-    //- end chat-history
     .chat-message.clearfix
       .ui.fluid.action.input
         input#message-to-send(type='text', name='message-to-send', placeholder='Type your message')
         button
           i.send.icon
           | Send
-    //- end chat-message
-    //- end chat
-  //- end container``
 
-
-  script()#message-template(type='text/x-handlebars-template').
+  script#message-template(type='text/x-handlebars-template').
     <li class="clearfix">
     <div class="message-data align-right">
     <span class="message-data-time" >{{time}}</span> &nbsp; &nbsp;
@@ -105,15 +88,5 @@
     </div>
     <div class="message other-message float-right">
     {{messageOutput}}
-    </div>
-    </li>
-  script()#message-response-template(type='text/x-handlebars-template').
-    <li>
-    <div class="message-data">
-    <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
-    <span class="message-data-time">{{time}}</span>
-    </div>
-    <div class="message my-message">
-    {{response}}
     </div>
     </li>

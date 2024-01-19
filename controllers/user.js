@@ -1,16 +1,15 @@
 const User = require('../models/User');
 const Class = require('../models/Class.js');
 const passport = require('passport');
+const validator = require('validator');
 const fs = require('fs');
-
-// const Notification = require('../models/Notification.js');
 
 //create random id for guest accounts
 function makeid(length) {
-    var result = '';
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for (var i = 0; i < length; i++) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
         result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
@@ -22,6 +21,9 @@ function makeid(length) {
  * Route only exists if isResearchVersion = true.
  */
 exports.getLogin = (req, res) => {
+    if (req.user) {
+        return res.redirect('/');
+    }
     res.render('account/login', {
         title: 'Login'
     });
@@ -33,10 +35,9 @@ exports.getLogin = (req, res) => {
  * Route only exists if isResearchVersion = true.
  */
 exports.getClassLogin = (req, res) => {
-    // commented out by Anna
-    // if (req.user) {
-    //   return res.redirect('/');
-    // }
+    if (req.user) {
+        return res.redirect('/');
+    }
     res.render('account/classLogin', {
         title: 'Class Login',
         accessCode: req.params.accessCode
@@ -97,15 +98,12 @@ exports.postStudentLogin = (req, res, next) => {
  * Route only exists if isResearchVersion = true.
  */
 exports.postInstructorLogin = (req, res, next) => {
-    //req.assert('email', 'Email is not valid').isEmail();
-    req.assert('instructor_password', 'Password cannot be blank').notEmpty();
-    req.assert('instructor_username', 'Username cannot be blank').notEmpty();
-    //req.sanitize('email').normalizeEmail({ remove_dots: false });
+    const validationErrors = [];
+    if (validator.isEmpty(req.body.instructor_password)) validationErrors.push({ msg: 'Username cannot be blank.' });
+    if (validator.isEmpty(req.body.instructor_username)) validationErrors.push({ msg: 'Password cannot be blank.' });
 
-    const errors = req.validationErrors();
-
-    if (errors) {
-        req.flash('errors', errors);
+    if (validationErrors.length) {
+        req.flash('errors', validationErrors);
         return res.redirect('/login');
     }
 
@@ -147,77 +145,70 @@ exports.postInstructorLogin = (req, res, next) => {
  * Log out.
  */
 exports.logout = (req, res) => {
-    if (req.user.isStudent) {
-        const classCode = req.user.accessCode;
-        req.logout();
-        req.session.regenerate(function() {
-            res.redirect(`/classLogin/${classCode}`);
-        })
-    } else {
-        req.logout();
-        req.session.regenerate(function() {
-            res.redirect('/login');
-        })
-    }
+    const classCode = req.user.isStudent ? req.user.accessCode : null;
+    req.logout((err) => {
+        if (err) console.log('Error : Failed to logout.', err);
+        req.session.destroy((err) => {
+            if (err) console.log('Error : Failed to destroy the session during logout.', err);
+            req.user = null;
+            if (classCode) {
+                res.redirect(`/classLogin/${classCode}`);
+            } else {
+                res.redirect('/');
+            }
+        });
+    });
 };
 
 /**
  * GET /guest/:modId
  * Create a new local guest account.
  */
-exports.getGuest = (req, res, next) => {
+exports.getGuest = async(req, res, next) => {
     if (req.params.modId === "delete") {
         // avoiding a specific user behavior that causes 500 errors
         res.send({
             result: "failure"
         });
     }
-    const user = new User({
-        password: "thinkblue",
-        username: "guest" + makeid(10),
-        group: 'no:no',
-        active: true,
-        ui: 'no', //ui or no
-        notify: 'no', //no, low or high
-        isGuest: true,
-        lastNotifyVisit: Date.now()
-    });
+    const currDate = Date.now();
+    try {
+        const user = new User({
+            username: "guest" + makeid(10),
+            password: "thinkblue",
+            active: true,
+            isGuest: true,
+            lastNotifyVisit: currDate,
+            profile: {
+                name: "Guest",
+                location: "Guest Town",
+                bio: "",
+                picture: "avatar-icon.svg"
+            }
+        });
 
-    user.profile.name = "Guest";
-    user.profile.location = "Guest Town";
-    user.profile.bio = '';
-    user.profile.picture = 'avatar-icon.svg';
-    //console.log("New Guest is now: "+ user.profile.name);
-
-    User.findOne({ username: req.body.username }, (err, existingUser) => {
-        if (err) { return next(err); }
+        const existingUser = await User.findOne({ username: req.body.username }).exec();
         if (existingUser) {
-            req.flash('errors', { msg: 'Account with that Username already exists.' });
+            req.flash('errors', { msg: 'An account with that Username already exists.' });
             return res.redirect('/guest/' + req.params.modId);
-        }
-        user.save((err) => {
-            if (err) { return next(err); }
+        } else {
+            await user.save();
             req.logIn(user, (err) => {
                 if (err) {
                     return next(err);
                 }
-                var temp = req.session.passport; // {user: 1}
-                req.session.regenerate(function(err) {
-                    //req.session.passport is now undefined
-                    req.session.passport = temp;
-                    req.session.save(function(err) {
-                        return res.redirect('/intro/' + req.params.modId);
-                    });
-                });
-
+                user.logUser(currDate);
+                res.redirect('/intro/' + req.params.modId);
             });
-        });
-    });
+        }
+    } catch (err) {
+        next(err);
+    }
 };
 
 /*
  * GET /account/:modId
- * Update profile page.
+ * Update Your Profile page.
  */
 exports.getAccount = (req, res) => {
     res.render('account/profile', {
@@ -226,58 +217,84 @@ exports.getAccount = (req, res) => {
     });
 };
 
+/**
+ * POST /account/profile/:modId
+ * Update profile information.
+ */
+exports.postUpdateProfile = async(req, res, next) => {
+    const validationErrors = [];
+    if (validator.isEmpty(req.body.name)) validationErrors.push({ msg: 'Name cannot be blank.' });
+    if (validationErrors.length) {
+        req.flash('errors', validationErrors);
+        return res.redirect('/login');
+    }
+
+    try {
+        const user = await User.findById(req.user.id).exec();
+        user.profile.name = req.body.name || '';
+        user.profile.location = req.body.location || '';
+        user.profile.bio = req.body.bio || '';
+        user.profile.picture = req.body.profilePhoto;
+
+        if (req.body.enableDataCollection === "true") {
+            let cat = {
+                absoluteTimeChanged: Date.now(),
+                name: req.body.name || '',
+                location: req.body.location || '',
+                bio: req.body.bio || '',
+                picture: req.body.profilePhoto || ''
+            }
+            user.profileHistory.push(cat);
+        }
+
+        await user.save();
+        res.redirect('/modual/' + req.params.modId);
+    } catch (err) {
+        next(err);
+    }
+};
+
 /*
  * GET /me/:modId
  * Profile page.
  */
-exports.getMe = (req, res) => {
-    User.findById(req.user.id)
-        .populate({
-            path: 'posts.reply',
-            model: 'Script',
-            populate: {
-                path: 'actor',
-                model: 'Actor'
-            }
-        })
-        .exec(function(err, user) {
-            if (err) {
-                return next(err);
-            }
-            var allPosts = user.getPostsAndReplies();
-            res.render('me', { posts: allPosts });
-        });
+exports.getMe = async(req, res) => {
+    try {
+        const user = await User.findById(req.user.id).exec();
+        const userPosts = user.getPosts(req.params.modId);
+        res.render('me', { posts: userPosts, title: user.profile.name || 'My Profile' });
+    } catch (err) {
+        next(err);
+    }
 };
 
 /**
  * POST /pageLog
- * Post a pageLog
+ * Post a pageLog.
  */
-exports.postPageLog = (req, res, next) => {
-    User.findById(req.user.id, (err, user) => {
-        if (err) { return next(err); }
+exports.postPageLog = async(req, res, next) => {
+    try {
+        const user = await User.findById(req.user.id).exec();
         user.logPage(Date.now(), req.body.subdirectory1, req.body.subdirectory2);
-        user.save((err) => {
-            if (err) {
-                return next(err);
-            }
-            res.set('Content-Type', 'application/json; charset=UTF-8');
-            res.send({ result: "success" });
-        });
-    });
+        res.set('Content-Type', 'application/json; charset=UTF-8');
+        res.send({ result: "success" });
+    } catch (err) {
+        next(err);
+    }
 };
 
 /*
  * GET /habitsTimer
  * Get the timestamp information for the habits module.
  */
-exports.getHabitsTimer = (req, res) => {
-    User.findById(req.user.id).exec(function(err, user) {
-        var startTime = user.firstHabitViewTime;
-        var totalTimeViewedHabits = 0;
+exports.getHabitsTimer = async(req, res) => {
+    try {
+        const user = await User.findById(req.user.id).exec();
+        const startTime = user.firstHabitViewTime;
+        let totalTimeViewedHabits = 0;
         if (user.habitsTimer) {
-            for (var i = 0; i < user.habitsTimer.length; i++) {
-                totalTimeViewedHabits = totalTimeViewedHabits + user.habitsTimer[i];
+            for (const time of user.habitsTimer) {
+                totalTimeViewedHabits += time;
             }
         }
         res.set('Content-Type', 'application/json; charset=UTF-8');
@@ -285,48 +302,42 @@ exports.getHabitsTimer = (req, res) => {
             startTime: startTime,
             totalTimeViewedHabits: totalTimeViewedHabits
         });
-    });
+    } catch (err) {
+        next(err);
+    }
 };
 
 /*
  * POST /updateName
- * Update profile information with name input by an instructor
+ * Update profile information with name input by an instructor.
  */
-exports.postName = (req, res, next) => {
-    User.findOne({
-        accessCode: req.body.accessCode,
-        username: req.body.username
-    }).exec(function(err, student) {
-        if (err) {
-            console.log("ERROR");
-            console.log(err);
-            return next(err);
-        }
-        if (student == null) {
-            console.log("NULL");
-            var myerr = new Error('Student not found!');
+exports.postName = async(req, res, next) => {
+    try {
+        const student = await User
+            .findOne({
+                accessCode: req.body.accessCode,
+                username: req.body.username
+            }).exec();
+        if (!student) {
+            const myerr = new Error('Student not found!');
             return next(myerr);
         }
         student.name = req.body.name;
-        student.save((err) => {
-            if (err) {
-                return next(err);
-            }
-            res.redirect(`/viewClass/${req.body.accessCode}`);
-        });
-    });
-};
+        await student.save();
+        res.redirect(`/viewClass/${req.body.accessCode}`);
+    } catch (err) {
+        next(err);
+    }
+}
 
 /**
  * POST /interest
  * Update user with the topic the user selected in the current module.
  */
-exports.postUpdateInterestSelection = (req, res, next) => {
-    User.findById(req.user.id, (err, user) => {
-        if (err) {
-            return next(err);
-        }
-        let userTopic = user.targetedAdTopic;
+exports.postUpdateInterestSelection = async(req, res, next) => {
+    try {
+        const user = await User.findById(req.user.id).exec();
+        let userTopic;
         switch (req.body.subdirectory2) {
             case 'targeted':
                 userTopic = user.targetedAdTopic;
@@ -335,157 +346,98 @@ exports.postUpdateInterestSelection = (req, res, next) => {
                 userTopic = user.esteemTopic;
                 break;
         }
-        if (userTopic) {
-            // this is NOT the first topic selected
-            userTopic.push(req.body.chosenTopic);
-        } else {
-            // this IS the first topic selected
-            userTopic = [req.body.chosenTopic];
-        }
-        user.save((err) => {
-            if (err) {
-                return next(err);
-            }
-            res.set('Content-Type', 'application/json; charset=UTF-8');
-            res.send({ result: "success" });
-        });
-    });
+        userTopic.push(req.body.chosenTopic);
+        await user.save();
+        res.set('Content-Type', 'application/json; charset=UTF-8');
+        res.send({ result: "success" });
+    } catch (err) {
+        next(err);
+    }
 };
 
 /**
  * GET /esteemTopic
  * Get the topic the user selected in the esteem module.
  */
-exports.getEsteemTopic = (req, res) => {
-    User.findById(req.user.id).exec(function(err, user) {
-        let selectedTopic = user.esteemTopic[user.esteemTopic.length - 1];
+exports.getEsteemTopic = async(req, res) => {
+    try {
+        const user = await User.findById(req.user.id).exec();
+        const selectedTopic = user.esteemTopic[user.esteemTopic.length - 1];
         res.set('Content-Type', 'application/json; charset=UTF-8');
         res.send({ esteemTopic: selectedTopic });
-    });
+    } catch (err) {
+        next(err);
+    }
 };
 
-/**
- * POST /advancedlitTopic
- * Update Update user with the topic the user selected in the advancedlit module.
- */
-exports.postAdvancedlitInterestSelection = (req, res, next) => {
-    User.findById(req.user.id, (err, user) => {
-        if (err) {
-            return next(err);
-        }
-        user.advancedlitTopic = req.body.chosenTopic || '';
-        user.save((err) => {
-            if (err) {
-                return next(err);
-            }
-            res.set('Content-Type', 'application/json; charset=UTF-8');
-            res.send({ result: "success" });
-        });
-    });
-};
-
-/**
- * GET /advancedlitTopic
- * Get the topic the user selected in the advancedlit module.
- */
-exports.getAdvancedlitTopic = (req, res) => {
-    User.findById(req.user.id).exec(function(err, user) {
-        let selectedTopic = user.advancedlitTopic;
-        res.set('Content-Type', 'application/json; charset=UTF-8');
-        res.json({ advancedlitTopic: selectedTopic });
-    });
-};
 
 /**
  * POST /habitsTimer
  * Update the timestamp information for the habits module.
  */
-exports.postUpdateHabitsTimer = (req, res, next) => {
-    User.findById(req.user.id, (err, user) => {
-        if (err) { return next(err); }
-        if (req.body.habitsTimer) { //we are adding another view time to the array
-            if (user.habitsTimer) {
-                user.habitsTimer.push(req.body.habitsTimer);
-            } else {
-                user.habitsTimer = [req.body.habitsTimer];
-            }
-        }
+exports.postUpdateHabitsTimer = async(req, res, next) => {
+    try {
+        const user = await User.findById(req.user.id).exec();
+        user.habitsTimer.push(req.body.habitsTimer);
         if (req.body.habitsStart) { //we are trying to record when the user first opened the free-play section
             if (user.firstHabitViewTime == -1) { //only write this value if there's no value written yet, since user can revisit the feed
                 user.firstHabitViewTime = req.body.habitsStart;
             }
         }
-        user.save((err) => {
-            if (err) {
-                return next(err);
-            }
-            res.set('Content-Type', 'application/json; charset=UTF-8');
-            if (req.body.habitsStart) {
-                res.json({ url: '/modual/habits' });
-            } else {
-                res.send({ result: "success" });
-            }
-        });
-    });
+        await user.save();
+        res.set('Content-Type', 'application/json; charset=UTF-8');
+        if (req.body.habitsStart) {
+            res.json({ url: '/modual/habits' });
+        } else {
+            res.send({ result: "success" });
+        }
+    } catch (err) {
+        next(err);
+    }
 };
 
 /**
  * POST /voiceoverTimer
- * Update the durations voiceover is turned on
+ * Update the durations voiceover is turned on.
  */
-exports.postUpdateVoiceoverTimer = (req, res, next) => {
-    User.findById(req.user.id, (err, user) => {
-        if (err) { return next(err); }
-        if (req.body.voiceoverTimer) { //we are adding another voiceover duration to the array
-            if (user.voiceoverTimer) {
-                user.voiceoverTimer.push(req.body.voiceoverTimer);
-            } else {
-                user.voiceoverTimer = [req.body.voiceoverTimer];
-            }
-        }
-
-        user.save((err) => {
-            if (err) {
-                return next(err);
-            }
-            res.set('Content-Type', 'application/json; charset=UTF-8');
-            res.send({ result: "success" });
-        });
-    });
-};
+exports.postUpdateVoiceoverTimer = async(req, res, next) => {
+    try {
+        const user = await User.findById(req.user.id).exec();
+        user.voiceoverTimer.push(req.body.voiceoverTimer);
+        await user.save();
+        res.set('Content-Type', 'application/json; charset=UTF-8');
+        res.send({ result: "success" });
+    } catch (err) {
+        next(err);
+    };
+}
 
 /**
  * POST /moduleProgress
- * Update module progress
+ * Update module progress.
  */
-exports.postUpdateModuleProgress = (req, res, next) => {
-    User.findById(req.user.id, (err, user) => {
-        if (err) {
-            return next(err);
-        }
+exports.postUpdateModuleProgress = async(req, res, next) => {
+    try {
+        const user = await User.findById(req.user.id).exec();
         // Once marked completed, do not update status again.
         if (user.moduleProgress[req.body.module] !== 'completed') {
             user.moduleProgress[req.body.module] = req.body.status;
         }
-        user.save((err) => {
-            if (err) {
-                return next(err);
-            }
-            res.set('Content-Type', 'application/json; charset=UTF-8');
-            res.send({ result: "success" });
-        });
-    });
+        await user.save();
+        res.set('Content-Type', 'application/json; charset=UTF-8');
+        res.send({ result: "success" });
+    } catch (err) {
+        next(err);
+    }
 };
 
 /*
  * POST /postUpdateNewBadge
- * Save a new badge earned by the current user
+ * Save a new badge earned by the current user.
  */
-exports.postUpdateNewBadge = (req, res, next) => {
-    User.findById(req.user.id, (err, user) => {
-        if (err) {
-            return next(err);
-        }
+exports.postUpdateNewBadge = async(req, res, next) => {
+    try {
+        const user = await User.findById(req.user.id).exec();
         // check if the user already has earned this badge
         for (const badge of user.earnedBadges) {
             if (badge.badgeId === req.body.badgeId) {
@@ -500,79 +452,11 @@ exports.postUpdateNewBadge = (req, res, next) => {
             dateEarned: Date.now()
         }
         user.earnedBadges.push(newBadge);
-        user.save((err) => {
-            if (err) {
-                return next(err);
-            }
-            return res.sendStatus(200);
-        });
-    });
-}
-
-/**
- * GET /studentReportData/:classId/:username
- * Get the data used to populate the student report page on the teacher dashboard
- */
-exports.getStudentReportData = (req, res, next) => {
-    if (!req.user.isInstructor) {
-        return res.json({ studentPageTimes: {} });
+        await user.save();
+        return res.sendStatus(200);
+    } catch (err) {
+        next(err);
     }
-    User.findOne({
-        accessCode: req.params.classId,
-        username: req.params.username,
-        deleted: false
-    }).exec(function(err, student) {
-        if (err) {
-            console.log("ERROR");
-            console.log(err);
-            return next(err);
-        }
-        if (student == null) {
-            console.log("NULL");
-            var myerr = new Error('Student not found!');
-            return next(myerr);
-        }
-        // get progress on each module
-        // add dashes to the keys that usually have them
-        let moduleProgress = {};
-        moduleProgress["safe-posting"] = student.moduleProgress['safeposting'];
-        moduleProgress["digital-literacy"] = student.moduleProgress['digitalliteracy'];
-        for (const key of Object.keys(student.moduleProgress)) {
-            if (key !== "digitalliteracy" && key !== "safeposting")
-                moduleProgress[key] = student.moduleProgress[key];
-        }
-
-        // get page times
-        const pageLog = student.pageLog;
-        let pageTimeArray = [];
-        for (let i = 0, l = pageLog.length - 1; i < l; i++) {
-            // convert from ms to minutes
-            let timeDurationOnPage = (pageLog[i + 1].time - pageLog[i].time) / 60000;
-            // skip any page times longer than 30 minutes
-            if (timeDurationOnPage > 30) {
-                continue;
-            }
-            const dataToPush = {
-                timeOpened: pageLog[i].time,
-                timeDuration: timeDurationOnPage,
-                subdirectory1: pageLog[i].subdirectory1
-            };
-            if (pageLog[i].subdirectory2) {
-                dataToPush["subdirectory2"] = pageLog[i].subdirectory2;
-            }
-            pageTimeArray.push(dataToPush);
-        }
-
-        // get freeplay actions
-        const freeplayActions = student.feedAction;
-
-        res.set('Content-Type', 'application/json; charset=UTF-8');
-        res.json({
-            pageTimes: pageTimeArray,
-            moduleProgress: moduleProgress,
-            freeplayActions: freeplayActions
-        });
-    });
 }
 
 // Helper function to get the Date the user last accessed the given module
@@ -811,87 +695,29 @@ exports.getLearnerEarnedBadges = (req, res, next) => {
 }
 
 /**
- * POST /account/profile/:modId
- * Update profile information.
- */
-exports.postUpdateProfile = (req, res, next) => {
-    const errors = req.validationErrors();
-
-    if (errors) {
-        req.flash('errors', errors);
-        return res.redirect('/account/' + req.param("modId"));
-    }
-
-    User.findById(req.user.id, (err, user) => {
-        if (err) {
-            return next(err);
-        }
-        user.profile.name = req.body.name || '';
-        user.profile.location = req.body.location || '';
-        user.profile.bio = req.body.bio || '';
-        user.profile.picture = req.body.profilePhoto;
-
-        // log the change in profileHistory if data collection is enabled
-        if (req.body.enableDataCollection === "true") {
-            let cat = new Object();
-            cat.absoluteTimeChanged = Date.now();
-            cat.name = req.body.name || '';
-            cat.location = req.body.location || '';
-            cat.bio = req.body.bio || '';
-            cat.picture = req.body.profilePhoto || '';
-            user.profileHistory.push(cat);
-        }
-
-        user.save((err) => {
-            if (err) {
-                if (err.code === 11000) {
-                    req.flash('errors', {
-                        msg: `The email address you have entered is already associated with
-            an account.`
-                    });
-                    res.redirect('/modual/' + req.param("modId"));
-                }
-                return next(err);
-            }
-            res.redirect('/modual/' + req.param("modId"));
-        });
-    });
-};
-
-/**
  * POST /delete
  * Delete user account.
  */
-exports.getDeleteAccount = (req, res, next) => {
+exports.getDeleteAccount = async(req, res, next) => {
     // Is this a guest account?
     if (typeof req.user.isGuest !== 'undefined' && req.user.isGuest) {
-        User.remove({ _id: req.user.id }, (err) => {
-            if (err) {
-                return next(err);
-            }
-            req.logout();
-            res.send({
-                result: "success"
+        await User.deleteOne({ _id: req.user.id }).exec();
+        req.logout((err) => {
+            if (err) console.log('Error : Failed to logout.', err);
+            req.session.destroy((err) => {
+                if (err) console.log('Error : Failed to destroy the session during logout.', err);
+                req.user = null;
+                res.send({
+                    result: "success"
+                });
             });
         });
     } else {
-        User.findById(req.user.id, (err, user) => {
-            //somehow user does not exist here
-            if (err) {
-                return next(err);
-            }
-            user.feedAction = [];
-            user.save((err) => {
-                if (err) {
-                    if (err.code === 11000) {
-                        req.flash('errors', { msg: 'Something in delete feedAction went crazy. You should never see this.' });
-                        return res.redirect('/');
-                    }
-                    return next(err);
-                }
-                res.set('Content-Type', 'application/json; charset=UTF-8');
-                res.send({ result: "success" });
-            });
-        });
+        const user = await User.findById(req.user.id).exec();
+
+        user.feedAction = [];
+        await user.save();
+        res.set('Content-Type', 'application/json; charset=UTF-8');
+        res.send({ result: "success" });
     }
 };

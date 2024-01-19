@@ -1,0 +1,10 @@
+//- Text depends on previously selected interest in trans2.
+.ui.small.modal#whyAmISeeingThisAdModal(data-modalName="targeted_whyAdModal")
+  i.close.icon
+  .header Why am I seeing this ad?
+  if (user.targetedAdTopic[user.targetedAdTopic.length - 1] == 'Sports')
+    .content(id="sports")
+  else if (user.targetedAdTopic[user.targetedAdTopic.length - 1] == 'Food')
+    .content(id="food")
+  else if (user.targetedAdTopic[user.targetedAdTopic.length - 1] == 'Gaming')
+    .content(id="gaming")

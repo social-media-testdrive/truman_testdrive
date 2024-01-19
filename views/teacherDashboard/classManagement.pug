@@ -3,7 +3,6 @@ extends ../ui_layout
 block content
   .ui.sixteen.wide.column.dashboardContentColumn.hiddenVisibility(style="padding:30px")
     include ../partials/teacherDashboardMenu
-    
     .ui.breadcrumb
       .active.section(href='/classManagement') Class Management
       i.class.right.arrow.icon.divider
@@ -40,7 +39,7 @@ block content
       .header Create New Class
       .content
         form#classform.ui.form(action='/createNewClass', method='POST')
-          input(type='hidden', name='_csrf', value=csrfToken)
+          input(type='hidden', name='_csrf', value=_csrf)
           .field
             label(for='classname') Class Name
             input.addHere(type='text', name='classname', id='classname', placeholder='Enter Class Name')
@@ -58,7 +57,7 @@ block content
         h2.center.aligned#confirmDeleteClassText
         h3.center.aligned This action cannot be undone.
         form#deleteClass.ui.form(name="deleteClass" action='/deleteClass', method='POST')
-          input(type='hidden', name='_csrf', value=csrfToken)
+          input(type='hidden', name='_csrf', value=_csrf)
           input(type='hidden', name='className' value='')
           input(type='hidden', name='accessCode' value='')
       .actions

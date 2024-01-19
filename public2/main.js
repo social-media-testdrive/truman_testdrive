@@ -1,6 +1,5 @@
 // Before Page load:
 // Hide news feed before it is all loaded
-
 $('#content').hide();
 $('#loading').show();
 
@@ -228,7 +227,7 @@ $(window).on("load", function() {
 
     //get add new feed post modal to work
     $("#newpost, a.item.newpost, .editProfilePictureButton").click(function() {
-        $(' .ui.small.post.modal').modal('show');
+        $('.ui.small.post.modal').modal('show');
         //lazy load the images in the modal
         $(".lazy").each(function() {
             $(this).attr('src', $(this).attr('data-src'));
@@ -249,7 +248,7 @@ $(window).on("load", function() {
                     identifier: 'body',
                     rules: [{
                         type: 'empty',
-                        prompt: 'Please add some text'
+                        prompt: 'Please add some text.'
                     }]
                 }
             }
@@ -280,15 +279,6 @@ $(window).on("load", function() {
         //console.log("@@@@@ changing a photo");
         readURL(this);
     });
-
-    //
-    // MOVED TO COMMENTS.JS
-    //add humanized time to all posts
-    // $('.right.floated.time.meta, .date.sim, .time.notificationTime').each(function () {
-    //   var ms = parseInt($(this).text(), 10);
-    //   let time = new Date(ms);
-    //   $(this).text(humanized_time_span(time));
-    // });
 
     //Sign Up Button
     // $('.ui.big.green.labeled.icon.button.signup')
@@ -568,83 +558,6 @@ $(window).on("load", function() {
     /*
     end button links
     */
-
-    //this is the REPORT User button
-    $('button.ui.button.report')
-        .on('click', function() {
-
-            var username = $(this).attr("username");
-
-            $('.ui.small.report.modal').modal('show');
-
-            $('.coupled.modal')
-                .modal({
-                    allowMultiple: false
-                });
-            // attach events to buttons
-            $('.second.modal')
-                .modal('attach events', '.report.modal .button');
-            // show first now
-            $('.ui.small.report.modal')
-                .modal('show');
-
-        });
-
-    //Report User Form//
-    $('form#reportform').submit(function(e) {
-
-        e.preventDefault();
-        $.post($(this).attr('action'), $(this).serialize(), function(res) {
-            // Do something with the response `res`
-            console.log(res);
-            // Don't forget to hide the loading indicator!
-        });
-        //return false; // prevent default action
-
-    });
-
-    //this is the Block User button - this doesn't have consequences in TestDrive
-    $('button.ui.button.block')
-        .on('click', function() {
-
-            var username = $(this).attr("username");
-            //Modal for Blocked Users
-            $('.ui.small.basic.blocked.modal')
-                .modal({
-                    closable: false,
-                    onDeny: function() {
-                        //report user
-
-                    },
-                    onApprove: function() {
-                        //unblock user
-                        $.post("/user", { unblocked: username, _csrf: $('meta[name="csrf-token"]').attr('content') });
-                    }
-                })
-                .modal('show');
-
-
-            console.log("***********Block USER " + username);
-            $.post("/user", { blocked: username, _csrf: $('meta[name="csrf-token"]').attr('content') });
-
-        });
-
-    //Block Modal for User that is already Blocked
-    $('.ui.on.small.basic.blocked.modal')
-        .modal({
-            closable: false,
-            onDeny: function() {
-                //report user
-
-            },
-            onApprove: function() {
-                //unblock user
-                var username = $('button.ui.button.block').attr("username");
-                $.post("/user", { unblocked: username, _csrf: $('meta[name="csrf-token"]').attr('content') });
-
-            }
-        })
-        .modal('show');
 
     //lazy loading of images
     $(`#content .fluid.card .img img,

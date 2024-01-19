@@ -9,7 +9,7 @@ block content
         i.plus.icon
         |  Choose a Profile Photo
     form.ui.form(action='/account/profile/'+mod, method='POST', enctype='multipart/form-data')
-      input(type='hidden', name='_csrf', value=csrfToken)
+      input(type='hidden', name='_csrf', value=_csrf)
       input(type='hidden', name='enableDataCollection', value=process.env.enableDataCollection)
       input(type='hidden', name='profilePhoto', value=user.profile.picture)
       .field(data-tooltip="Remember, this information is stored on the site until you finish the lesson. Think about using a nickname or an alias instead of your real name." data-position="bottom left")
@@ -80,7 +80,6 @@ block content
                   label
                       img.lazy(src='/images/picture.svg' data-src=cdn+"/profile_pictures/wolfprofpic.png")  
       
-            
         .ui.error.message#noPhotoError 
           | Please select a photo
     .actions  
@@ -126,9 +125,8 @@ block styles
       width: 90%;
       height: 90%;
     }
-
     .profilePictureModal {
-    height: calc(100% - 50px);
-    margin-top: 30px !important;
-    margin-bottom: 30px !important;
+      height: calc(100% - 50px);
+      margin-top: 30px !important;
+      margin-bottom: 30px !important;
     }

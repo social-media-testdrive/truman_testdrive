@@ -23,13 +23,17 @@ body {
     height: auto !important;
 }
 
-.grid.container.addBottomPaddingToGrid {
-    padding-bottom: 50px;
-}
-
 .grayElement,
 .ui.container .grayElement {
     color: #696969;
+}
+
+
+/*Page Container*/
+
+#pagegrid {
+    padding-bottom: 50px;
+    justify-content: center;
 }
 
 #pagecontainer {
@@ -75,6 +79,10 @@ body {
     margin-bottom: 2rem !important;
 }
 
+.mb-9 {
+    margin-bottom: 4em !important;
+}
+
 
 /* --- HEADER & FOOTER ---- */
 
@@ -95,7 +103,7 @@ body {
 @media only screen and (min-width: 320px) and (max-width: 767px) {
     .ui.modals {
         margin-top: 74px;
-        max-height: calc(100vh - 112px);
+        max-height: calc(100vh - 120px);
     }
 }
 
@@ -342,6 +350,17 @@ button,
 /* ----- OTHER ------ */
 
 
+/*Buttons on posts*/
+
+.three.bottom.attached.buttons {
+    z-index: 0;
+}
+
+.ui[class*="bottom attached"].buttons .button:first-child {
+    border-radius: 0;
+}
+
+
 /* gray out text*/
 
 .greyOut {
@@ -382,10 +401,6 @@ button,
 
 
 /* misc alignment classes */
-
-.ui.grid .addBottomMargin {
-    margin-bottom: 4em;
-}
 
 .align-left {
     text-align: left;

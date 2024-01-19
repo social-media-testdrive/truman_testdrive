@@ -1,8 +1,7 @@
-
 extends ../ui_layout
   
 block content
-  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
     .ui.one.column.centered.grid.feedbackMessagesGrid
       .ui.fixed.bottom.sticky
         .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
@@ -11,23 +10,25 @@ block content
           .content
             .ui.header Need some help?
             p Scroll up and click "Next" to begin!
-    #step1A.ui.fluid.card.addBottomMargin
+    //- Post One
+    #step1A.ui.fluid.card.mb-5
       .content
         .right.floated.meta= "Yesterday"
         a(href='#')
-              img.ui.avatar.image(src=cdn+'/profile_pictures/user55.jpg')
-              span='Lana Reed'
-      .img.post        
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user55.jpg')
+          span='Lana Reed'
+      .img.post.image
         img(src=cdn+'/post_pictures/infolittutorial1_new.jpg')
+        .read.rounded.right.floated.modual.info_button
+          i.info.icon
       #step1.content.newsArticleTitleContainer
-          .a#step3(href='#',onclick='return false;')
-            | WWW.NEWSNETWORK.COM.CO
-          .header 
-            | 7 States Will Vote Today Make Homework ILLEGAL for ALL Middle 
-            | Schooleers!!!!   
-      .extra.content
-          p              
-          .description="BREAKING: 7 States Will Vote Today to Make Homework ILLEGAL!!!!"
+        .a#step3(href='#',onclick='return false;')
+          | WWW.NEWSNETWORK.COM.CO
+        .header 
+          | 7 States Will Vote Today Make Homework ILLEGAL for ALL Middle 
+          | Schooleers!!!!
+      .content             
+        .description="BREAKING: 7 States Will Vote Today to Make Homework ILLEGAL!!!!"
       .four.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
           i.reply.icon
@@ -66,7 +67,6 @@ block content
             img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
           input.newcomment(type='text' placeholder='Write a Comment')
           i.big.send.link.icon
-    //-#######################
 
 block scripts
   script(src='/postFunctionalities.js')

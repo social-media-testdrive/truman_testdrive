@@ -58,24 +58,22 @@ passport.use('instructor-local', new LocalStrategy({
     passwordField: 'instructor_password',
     passReqToCallback: true
 }, (req, instructor_username, instructor_password, done) => {
-    User.findOne({ username: instructor_username }, async(err, user) => {
-        if (err) {
-            return done(err);
-        }
-        if (!user) {
-            return done(null, false, { msg: 'Invalid username or password.' });
-        }
-        user.comparePassword(instructor_password, async(err, isMatch) => {
-            if (err) {
-                return done(err);
+    User.findOne({ username: instructor_username })
+        .then((user) => {
+            if (!user) {
+                return done(null, false, { msg: 'User not found.' });
             }
-            if (isMatch) {
-                // log in
-                return done(null, user);
-            }
-            return done(null, false, { msg: 'Invalid username or password.' });
-        });
-    });
+            user.comparePassword(instructor_password, async(err, isMatch) => {
+                if (err) { return done(err); }
+                if (isMatch) {
+                    // log in
+                    return done(null, user);
+                } else {
+                    return done(null, false, { msg: 'Incorrect password.' });
+                }
+            });
+        })
+        .catch((err) => done(err));
 }));
 
 /**
@@ -104,7 +102,7 @@ passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, don
 
 exports.isAuthenticated = (req, res, next) => {
     const mod = req.path.split('/').slice(-1)[0];
-    // const isResearchVersion = process.env.isResearchVersion === "true";
+    const isResearchVersion = process.env.isResearchVersion === "true";
     if ((!isResearchVersion && req.path === "/") || req.isAuthenticated()) {
         return next();
     }

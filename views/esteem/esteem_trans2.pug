@@ -1,7 +1,7 @@
 extends ../ui_layout
 
 block content
-  .ui.text.container.addBottomMargin
+  .ui.text.container.mb-9
     br
     .column
       .ui.raised.segment
@@ -24,7 +24,7 @@ block content
                 label
                   i.search.large.gray.icon
                   .ui.selection.dropdown(name='topicSelect')
-                    input(type='hidden', name='_csrf', value=csrfToken)
+                    input(type='hidden', name='_csrf', value=_csrf)
                     i.dropdown.icon
                     .default.text Choose a topic...
                     .menu

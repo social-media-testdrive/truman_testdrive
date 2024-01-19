@@ -1,53 +1,40 @@
-#! /usr/bin/env node
+const color_start = '\x1b[33m%s\x1b[0m'; // yellow
+const color_success = '\x1b[32m%s\x1b[0m'; // green
+const color_error = '\x1b[31m%s\x1b[0m'; // red
 
-console.log('Started data loading script !!');
+console.log(color_start, 'Started populate.js script...');
 
-
-var async = require('async')
-var Actor = require('./models/Actor.js');
-var User = require('./models/User.js');
-var Script = require('./models/Script.js');
-var Notification = require('./models/Notification.js');
+const async = require('async');
+const Actor = require('./models/Actor.js');
+const Script = require('./models/Script.js');
 const _ = require('lodash');
 const dotenv = require('dotenv');
-var mongoose = require('mongoose');
-var fs = require('fs')
+const mongoose = require('mongoose');
 const CSVToJSON = require("csvtojson");
-//input files
-/********
-TODO:
-Use CSV files instead of json files
-use a CSV file reader and use that as input
-********/
-var actors_list //= require('./input/actors.json');
-var posts_list //= require('./input/posts.json');
-var comment_list //= require('./input/comments.json');
+/** 
+ * Input Files:
+ * Use CSV files instead of json files. Use a CSV file reader and use that as input.
+ */
 async function readData() {
     try {
         //synchronously read all csv files and convert them to JSON
         await console.log("Start reading data from .csv files")
-         actors_list = await CSVToJSON().fromFile('./input/bots.csv');
-         posts_list = await CSVToJSON().fromFile('./input/allposts.csv');
-         comment_list = await CSVToJSON().fromFile('./input/allreplies.csv');
+        actors_list = await CSVToJSON().fromFile('./input/bots.csv');
+        posts_list = await CSVToJSON().fromFile('./input/allposts.csv');
+        comment_list = await CSVToJSON().fromFile('./input/allreplies.csv');
 
         //synchronously write all converted JSON output to .json files incase for future use
         // fs.writeFileSync("./input/bots.json", JSON.stringify(actors_list));
         // fs.writeFileSync("./input/allposts.json", JSON.stringify(posts_list));
         // fs.writeFileSync("./input/allreplies.json", JSON.stringify(comment_list));
-        await console.log("Converted data to json")
+        await console.log("Converted data to json.");
     } catch (err) {
-        console.log('Error occurred in reading data from csv files', err);
+        console.log('Error occurred in reading data from csv files.', err);
     }
 }
 
-
 dotenv.config({ path: '.env' });
 
-var MongoClient = require('mongodb').MongoClient
-    , assert = require('assert');
-
-
-//var connection = mongo.connect('mongodb://127.0.0.1/test');
 mongoose.connect(process.env.PRO_MONGODB_URI, { useNewUrlParser: true });
 var db = mongoose.connection;
 mongoose.connection.on('error', (err) => {
@@ -56,35 +43,37 @@ mongoose.connection.on('error', (err) => {
     process.exit(1);
 });
 
-
-
-/*
-drop existing collections before loading
-to make sure we dont overwrite the data
-in case we run the script twice or more
-*/
+/**
+ * Drop existing collections before loading to make sure we don't overwrite the data in case we run the script twice or more.
+ */
 function dropCollections() {
-    db.collections['actors'].drop(function (err) {
-        console.log('actors collection dropped');
-    });
-    db.collections['scripts'].drop(function (err) {
-        console.log('scripts collection dropped');
-    });
-    // db.collections['users'].drop(function (err) {
-    //     console.log('users collection dropped');
-    // });
+    return new Promise((resolve, reject) => { //Drop the actors collection
+        console.log(color_start, "Dropping actors...");
+        db.collections['actors'].drop(function(err) {
+            console.log(color_success, 'Actors collection dropped');
+            resolve("done");
+        });
+    }).then(function(result) { //Drop the scripts collection
+        return new Promise((resolve, reject) => {
+            console.log(color_start, "Dropping scripts...");
+            db.collections['scripts'].drop(function(err) {
+                console.log(color_success, 'Scripts collection dropped');
+                resolve("done");
+            });
+        });
+    })
 }
 
-//capitalize a string
-String.prototype.capitalize = function () {
+//Capitalize a string
+String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 }
 
-//usuful when adding comments to ensure they are always in the correct order
+//Useful when adding comments to ensure they are always in the correct order
 //(based on the time of the comments)
 function insert_order(element, array) {
     array.push(element);
-    array.sort(function (a, b) {
+    array.sort(function(a, b) {
         return a.time - b.time;
     });
     return array;
@@ -104,7 +93,7 @@ function timeStringToNum(v) {
         return parseInt(((timeParts[0] * (60000 * 60)) + (timeParts[1] * 60000)), 10);
 };
 
-//create a radom number (for likes) with a weighted distrubution
+//Return a radom number (for likes) with a weighted distrubution
 //this is for posts
 function getLikes() {
     var notRandomNumbers = [1, 1, 1, 2, 2, 2, 3, 3, 4, 4, 5, 6];
@@ -112,11 +101,7 @@ function getLikes() {
     return notRandomNumbers[idx];
 }
 
-function randomIntFromInterval(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-//create a radom number (for likes) with a weighted distrubution
+//Return a radom number (for likes) with a weighted distrubution
 //this is for comments
 function getLikesComment() {
     var notRandomNumbers = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 3, 4];
@@ -124,241 +109,175 @@ function getLikesComment() {
     return notRandomNumbers[idx];
 }
 
-//Create a random number between two values (like when a post needs a number of times it has been read)
-function getReads(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
-}
-
 /*************************
 createActorInstances:
-Creates all the Actors in the simulation
+Creates all the Actors in the simulation.
 Must be done first!
 *************************/
 function createActorInstances() {
+    return new Promise((resolve, reject) => {
+        async.each(actors_list, async function(actor_raw, callback) {
+                actordetail = {
+                    profile: {
+                        name: actor_raw.name,
+                        age: actor_raw.age,
+                        location: actor_raw.location,
+                        bio: actor_raw.bio,
+                        picture: actor_raw.picture,
+                    },
+                    username: actor_raw.username
+                };
 
-    async.each(actors_list, function (actor_raw, callback) {
-        actordetail = {};
-        actordetail.profile = {};
-        actordetail.profile.name = actor_raw.name
-        actordetail.profile.location = actor_raw.location;
-        actordetail.profile.picture = actor_raw.picture;
-        actordetail.profile.bio = actor_raw.bio;
-        actordetail.profile.age = actor_raw.age;
-        //actordetail.class = actor_raw.class;
-        actordetail.username = actor_raw.username;
-
-        var actor = new Actor(actordetail);
-
-        actor.save(function (err) {
-            if (err) {
-                console.log("Something went wrong!!!");
-                return -1;
+                const actor = new Actor(actordetail);
+                try {
+                    await actor.save();
+                } catch (err) {
+                    console.log(color_error, "ERROR: Something went wrong with saving actor in database");
+                    next(err);
+                }
+            },
+            function(err) {
+                if (err) {
+                    console.log(color_error, "ERROR: Something went wrong with saving actors in database");
+                    callback(err);
+                }
+                // Return response
+                console.log(color_success, "All actors added to database!")
+                resolve('Promise is resolved successfully.');
+                return 'Loaded Actors';
             }
-            console.log('New Actor: ' + actor.username);
-            callback();
-        });
-    },
-        function (err) {
-            //return response
-            console.log("All DONE WITH ACTORS!!!")
-            return 'Loaded Actors'
-        }
-    );
+        );
+    });
 }
 
 /*************************
 createPostInstances:
-Creates each post and uploads it to the DB
-Actors must be in DB first to add them correctly to the post
+Creates each post and uploads it to the DB.
+Actors must be in DB first to add them correctly to the post.
 *************************/
 function createPostInstances() {
-    async.each(posts_list, function (new_post, callback) {
-        Actor.findOne({ username: new_post.actor }, (err, act) => {
-            if (err) { console.log("createPostInstances error"); console.log(err); return; }
-            // console.log("start post for: "+new_post.id);
-            if (act) {
-                // console.log('Looking up Actor username is : ' + act.username);
-                var postdetail = new Object();
-                postdetail.module = new_post.module;
-                postdetail.type = new_post.type;
-                postdetail.body = new_post.body;
-                postdetail.info_text = new_post.info_text;
-                postdetail.likes = new_post.likes || getLikes();
+    return new Promise((resolve, reject) => {
+        async.each(posts_list, async function(new_post, callback) {
+                const act = await Actor.findOne({ username: new_post.actor }).exec();
+                if (act) {
+                    const postdetail = {
+                        body: new_post.body,
+                        post_id: new_post.id,
+                        module: new_post.module,
+                        type: new_post.type,
+                        picture: new_post.picture,
+                        likes: new_post.likes || getLikes(),
+                        info_text: new_post.info_text,
+                        actor: act,
 
-                //only for likes posts
-                postdetail.post_id = new_post.id;
-                postdetail.class = new_post.type;
-                postdetail.picture = new_post.picture;
-                postdetail.lowread = getReads(6, 20);
-                postdetail.highread = getReads(145, 203);
-                postdetail.actor = act;
-                postdetail.time = timeStringToNum(new_post.time);
-
-                console.log('Looking up Actor: ' + act.username);
-                //console.log(mongoose.Types.ObjectId.isValid(postdetail.actor.$oid));
-                //console.log(postdetail);
-
-                var script = new Script(postdetail);
-                script.save(function (err) {
-                    if (err) {
-                        console.log("Something went wrong in Saving POST!!!");
-                        // console.log(err);
-                        callback(err);
+                        time: timeStringToNum(new_post.time)
                     }
-                    // console.log('Saved New Post: ' + script.id);
-                    callback();
-                });
-            }//if ACT
 
-            else {
-                //Else no ACTOR Found
-                console.log("No Actor Found!!!");
-                callback();
+                    const script = new Script(postdetail);
+                    try {
+                        await script.save();
+                    } catch (err) {
+                        console.log(color_error, "ERROR: Something went wrong with saving post in database");
+                        next(err);
+                    }
+                } else { //Else no actor found
+                    console.log(color_error, "ERROR: Actor not found in database");
+                    console.log(new_post);
+                    console.log(new_post.actor);
+                    console.log(new_post.id);
+                    callback();
+                }
+            },
+            function(err) {
+                if (err) {
+                    console.log(color_error, "ERROR: Something went wrong with saving posts in database");
+                    callback(err);
+                }
+                // Return response
+                console.log(color_success, "All posts added to database!")
+                resolve('Promise is resolved successfully.');
+                return 'Loaded Posts';
             }
-            // console.log("BOTTOM OF SAVE");
-        });
-    },
-        function (err) {
-            if (err) {
-                console.log("END IS WRONG!!!");
-                // console.log(err);
-                callback(err);
-            }
-            //return response
-            console.log("All DONE WITH POSTS!!!")
-            return 'Loaded Posts'
-            //mongoose.connection.close();
-        }
-    );
+        );
+    });
 }
 
 /*************************
 createPostRepliesInstances:
-Creates inline comments for each post
-Looks up actors and posts to insert the correct comment
-Does this in series to insure comments are put in, in correct order
-Takes a while because of this
+Creates inline comments for each post.
+Looks up actors and posts to insert the correct comment.
+Does this in series to ensure comments are put in, in correct order.
+Takes a while because of this.
 *************************/
 function createPostRepliesInstances() {
-
-    async.eachSeries(comment_list, function (new_replies, callback) {
-
-        // console.log("start REPLY for: "+new_replies.id);
-        Actor.findOne({ username: new_replies.actor }, (err, act) => {
-
-
-            if (act) {
-                Script.findOne({ post_id: new_replies.reply }, function (err, pr) {
+    return new Promise((resolve, reject) => {
+        async.eachSeries(comment_list, async function(new_reply, callback) {
+                const act = await Actor.findOne({ username: new_reply.actor }).exec();
+                if (act) {
+                    const pr = await Script.findOne({ post_id: new_reply.reply }).exec();
                     if (pr) {
-                        // console.log('Looking up Actor ID is : ' + act._id);
-                        // console.log('Looking up OP POST ID is : ' + pr._id);
-                        var comment_detail = new Object();
-                        //postdetail.actor = {};
-                        comment_detail.body = new_replies.body
-                        comment_detail.commentID = new_replies.id;
-                        //comment_detail.class = new_replies.class;
-                        comment_detail.module = new_replies.module;
-                        comment_detail.likes = getLikesComment();
-                        comment_detail.time = timeStringToNum(new_replies.time);
-                        /*1 hr is 3600000
-                        console.log('Time is of POST is: ' + pr.time);
-                        let comment_time = pr.time + randomIntFromInterval(300000,3600000)
-                        console.log('New Comment time is: ' + comment_time);
-                        comment_detail.time = comment_time;
-                        console.log('NEW NON BULLY Time is : ' + comment_detail.time);
-                        console.log('NEW Time is : ' + comment_detail.time);*/
-                        // console.log('Adding in Actor: ' + act.username);
-                        comment_detail.actor = act;
-                        //pr.comments = insert_order(comment_detail, pr.comments);
-                        //console.log('Comment'+comment_detail.commentID+' on Post '+pr.post_id+' Length before: ' + pr.comments.length);
-                        pr.comments.push(comment_detail);
-                        pr.comments.sort(function (a, b) { return a.time - b.time; });
-                        //console.log('Comment'+comment_detail.commentID+' on Post '+pr.post_id+' Length After: ' + pr.comments.length);
-                        //var script = new Script(postdetail);
+                        const comment_detail = {
+                            module: new_reply.module,
+                            actor: act,
+                            body: new_reply.body,
+                            commentID: new_reply.id,
+                            time: timeStringToNum(new_reply.time),
+                            likes: getLikesComment(),
+                        };
 
-                        pr.save(function (err) {
-                            if (err) {
-                                console.log("@@@@@@@@@@@@@@@@Something went wrong in Saving COMMENT!!!");
-                                console.log("Error IN: " + new_replies.id);
-                                // console.log('Looking up Actor: ' + act.username);
-                                // console.log('Looking up OP POST ID: ' + pr._id);
-                                // console.log('Time is : ' + new_replies.time);
-                                // console.log('NEW Time is : ' + comment_detail.time);
-                                // console.log(err);
-                                callback(err);
-                            }
-                            console.log('Added new Comment to Post: ' + pr.id);
-                            callback();
-                        });
-                    }// if PR
-                    else {
-                        //Else no ACTOR Found
-                        console.log("############Error IN: " + new_replies.id);
-                        console.log("No POST Found!!!");
+                        pr.comments.push(comment_detail);
+                        pr.comments.sort(function(a, b) { return a.time - b.time; });
+
+                        try {
+                            await pr.save();
+                        } catch (err) {
+                            console.log(color_error, "ERROR: Something went wrong with saving reply in database");
+                            next(err);
+                        }
+                    } else { //Else no post found
+                        console.log(color_error, "ERROR: Post not found in database");
+                        console.log(new_reply);
+                        console.log(new_reply.reply);
                         callback();
                     }
-                });//Script.findOne
-            }//if ACT
 
-            else {
-                //Else no ACTOR Found
-                console.log("****************Error IN: " + new_replies.id);
-                console.log("No Actor Found!!!");
-                callback();
+                } else { //Else no actor found
+                    console.log(color_error, "ERROR: Actor not found in database");
+                    callback();
+                }
+            },
+            function(err) {
+                if (err) {
+                    console.log(color_error, "ERROR: Something went wrong with saving replies in database");
+                    callback(err);
+                }
+                // Return response
+                console.log(color_success, "All replies added to database!");
+                mongoose.connection.close();
+                resolve('Promise is resolved successfully.');
+                return 'Loaded Replies';
             }
-            // console.log("BoTTom REPLY for: "+new_replies.id);
-            // console.log("BOTTOM OF SAVE");
-        });
-    },
-        function (err) {
-            if (err) {
-                console.log("END IS WRONG!!!");
-                console.log(err);
-                callback(err);
-            }
-            //return response
-            console.log("All DONE WITH REPLIES/Comments!!!")
-            mongoose.connection.close();
-            return 'Loaded Post Replies/Comments'
-        }
-    );
-}
-
-
-/*
-promisify function will convert a function call to promise
-which will eventually resolve when function completes its execution,
-additionally it will wait for 2 seconds before starting.
-*/
-
-function promisify(inputFunction) {
-    return new Promise(resolve => {
-        setTimeout(() => {
-            resolve(inputFunction());
-        }, 2000);
+        );
     });
 }
 
-/*
-TODO: Async function that runs
-all these functions in serial, in this order
-Once all done, stop the program (Be sure to close the mongoose connection)
-*/
+/**
+ * Async function that runs all functions in serial in order. 
+ * Once all done, mongoose connection is closed.
+ */
 async function loadDatabase() {
     try {
         await readData(); //read data from csv files and convert it to json for loading
-        await promisify(dropCollections); //drop existing collecions before loading data
-        await promisify(createActorInstances);
-        await promisify(createPostInstances);
-        await promisify(createPostRepliesInstances);
+        await dropCollections(); //drop existing collecions before loading data
+        await console.log(color_start, "Starting to populate actors collection...");
+        await createActorInstances();
+        await console.log(color_start, "Starting to populate posts collection...");
+        await createPostInstances();
+        await console.log(color_start, "Starting to populate post replies...");
+        await createPostRepliesInstances();
     } catch (err) {
         console.log('Error occurred in Loading', err);
     }
 }
 
-// createActorInstances()
-// createPostInstances()
-// createPostRepliesInstances()
-loadDatabase()
+loadDatabase();

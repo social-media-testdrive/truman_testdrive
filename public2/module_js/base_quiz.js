@@ -130,8 +130,8 @@ $(window).on("load", function() {
     const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
     const enableShareActivityData = $('meta[name="isShareActivityDataEnabled"]').attr('content') === "true";
 
-    // Add voiceovers from the voiceoverMappings variable
-    Voiceovers.addVoiceovers();
+    // Add voiceovers from the voiceoverMappings variable: Uncomment when voiceovers are added.
+    // Voiceovers.addVoiceovers();
     // Ensure the print/continue buttons don't have any residual classes
     // (these classes would be added after viewing sharing activity data popup, if enabled)
     $('.button.quizCheckAnswersButton, .button.quiz_print')
@@ -273,11 +273,12 @@ $(window).on("load", function() {
 
     // Defining the behavior for the "Show Correct Answers and Explanations" button
     $('.showExplanationButton').on('click', function() {
-        let cat = {};
-        cat.module = currentModule;
-        cat.click = true;
-        cat.absoluteTime = Date.now();
-
+        let cat = {
+            module: currentModule,
+            click: true,
+            absoluteTime: Date.now()
+        };
+        console.log(cat);
         $.post('/postViewQuizExplanations', {
             viewAction: cat,
             _csrf: $('meta[name="csrf-token"]').attr('content')

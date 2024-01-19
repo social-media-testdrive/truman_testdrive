@@ -1,13 +1,18 @@
-
 -var isResearchVersion = process.env.isResearchVersion === 'true';
 -var enableLearnerDashboard = process.env.enableLearnerDashboard === 'true';
-
 .computer.only.tablet.only.row.testdriveHeaderRow 
   .ui.borderless.fixed.menu.testDriveHeader
-    .ui.grid.container#myheader
+    .ui.grid.container
         .four.wide.column
-          a.item(href='https://socialmediatestdrive.org/modules.html')
-            img.ui.tiny.image(src=cdn+'/finalLogo.png', id='logo')
+          if !isResearchVersion
+            a.item(href='https://socialmediatestdrive.org/modules.html')
+              img.ui.tiny.image(src=cdn+'/finalLogo.png', id='logo')
+          else if user && user.isInstructor 
+            a.item(href='/classManagement')
+              img.ui.tiny.image(src=cdn+'/finalLogo.png', id='logo')
+          else
+            a.item(href='/')
+              img.ui.tiny.image(src=cdn+'/finalLogo.png', id='logo')
         .eight.wide.column
           .ui.basic.segment.center.aligned.progressHeader.hideHeader
             .row.moduleTitle
