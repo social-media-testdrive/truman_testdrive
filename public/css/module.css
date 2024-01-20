@@ -1048,3 +1048,42 @@ ul.slick-dots li {
 color: #79c4e0;
 } */
 
+
+/* identity theft protection thumbs activity */
+
+.dosContainer .content,
+.dontsContainer .content {
+    padding-left: 4px !important;
+}
+
+.dosContainer .check.icon {
+    padding-top: 1.5px !important;
+}
+
+#activity .ui.circular.small.basic.icon.button {
+    font-size: 1.2rem !important;
+}
+
+#activity .ui.circular.small.basic.icon.button:first-child {
+    margin-right: 0px !important;
+}
+
+#activity .ui.grid .two.wide:nth-of-type(2) {
+        padding-left: 0;        
+}
+
+@media (max-width: 1400px) {
+    #activity .ui.circular.small.basic.icon.button {
+        font-size: 1rem !important;
+    }
+
+    #activity .ui.grid .two.wide:nth-of-type(2) {
+        padding-left: 5px;        
+    }
+} 
+
+@media (max-width: 900px) {
+    #activity .ui.grid .two.wide:nth-of-type(2) {
+        padding-left: 10px;        
+    }
+} 

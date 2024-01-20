@@ -97,7 +97,7 @@ document.getElementById('hint-button').addEventListener('click', function() {
                 textResponse = "Look, Mrs. Johnson's maiden name! I could use this to crack her security questions and get into her account!";
                 break;
             case 3:
-                textResponse = "Look, Mrs. Johnson's date of birth! I could use this to verify her identity and steal her information!";
+                textResponse = "Look, Mrs. Johnson's date of birth! I could use this to verify her identity and access her accounts!";
                 break;
             case 4:
                 textResponse = "Look, Mrs. Johnson's email address! I could start sending her phishing links and spam!";
