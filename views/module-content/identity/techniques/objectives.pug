@@ -24,19 +24,23 @@
                 .six.wide.column
                     img.ui.image(src='/images/techniques.png')
             .ui.grid.tablet.only.mobile.only
-                .row
-                    h1.ui.header.large#learn-title
-                        i.bullseye.icon
-                        | Learning Targets
-
-                ul.no-bullets(style="text-align: left;")
-                    li
-                        img(src="/images/dart-bullet.svg", alt="Bullet Point")
-                        | Understand the basics of identity theft
-
-                    li
-                        img(src="/images/dart-bullet.svg", alt="Bullet Point")
-                        | Discover what information scammers are after
-
-                .row
-                    img(src='/images/techniques.svg')
+                .sixteen.wide.column
+                    //- button.ui.icon.button#volume-up-button.left.floated(style="position: absolute; left: 400px; top: 45px;")
+                    //-     i.volume.up.icon
+                    h1.ui.header.large#learn-title(style="color: #285362;")
+                        .content
+                            i.wrench.icon
+                            | Techniques
+                        span(style="float: right; font-size: 1.5rem; margin-top: 5px; color: #151C22;")
+                            i.clock.outline.icon
+                            | 12 min
+                    .ui.divider
+                    //- h1.ui.header.large#learn-subheader
+                    //-     i.bullseye.icon
+                    //-     | Objectives:
+                    h3(style="color: #0C2746;") Objectives:
+                    ul.no-bullets
+                        li
+                            img(src="/images/dart-bullet.svg", alt="Bullet Point")
+                            | Explore how identity thieves steal personal information
+                img.ui.big.centered.image(src='/images/techniques.png')
