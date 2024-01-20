@@ -283,15 +283,15 @@ function setLinks(currentPage) {
         } 
         else if(currentPage === 'common-measures') {
             backlink = baseurl + 'objectives';
-            nextlink = baseurl + 'preventative-dos';
-        } else if(currentPage === 'preventative-dos') {
+            nextlink = baseurl + 'preventative';
+        } else if(currentPage === 'preventative') {
             backlink = baseurl + 'common-measures';
-            nextlink = baseurl + 'preventative-donts';
-        } else if(currentPage === 'preventative-donts') {
-            backlink = baseurl + 'preventative-dos';
+            nextlink = baseurl + 'contacted';
+        } else if(currentPage === 'contacted') {
+            backlink = baseurl + 'preventative';
             nextlink = baseurl + 'activity';
         }  else if(currentPage === 'activity') {
-            backlink = baseurl + 'preventative-donts';
+            backlink = baseurl + 'contacted';
             nextlink = baseurl + 'reflection';
         } else if(currentPage === 'reflection') {
             backlink = baseurl + 'activity';
@@ -463,9 +463,9 @@ function updateProgressBar() {
             progress = 0;
         } else if (pageParam === 'common-measures') {
             progress = (1 / total) * 100;
-        } else if (pageParam === 'preventative-dos') {
+        } else if (pageParam === 'preventative') {
             progress = (2 / total) * 100;
-        } else if (pageParam === 'preventative-donts') {
+        } else if (pageParam === 'contacted') {
             progress = (3 / total) * 100;
         } else if (pageParam === 'activity') {
             progress = (4 / total) * 100;
