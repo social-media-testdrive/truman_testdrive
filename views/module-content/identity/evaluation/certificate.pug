@@ -2,7 +2,7 @@
     .ui.container#certificate-read(style="width: 90%;")
         .ui.grid.middle.aligned
             .sixteen.wide.mobile.sixteen.wide.tablet.eight.wide.computer.column
-                h1.ui.header.large#learn-title(style="margin-top: 20px;")
+                h1.ui.header.large#learn-title
                     .content
                         i.trophy.icon
                         | Congratulations!
@@ -13,33 +13,37 @@
                         .ui.basic.segment
                             h2.ui.header.centered
                                 | Certificate of Completion
-                                .ui.sub.header.centered
-                                    | <br>This is to certify that
+                                .ui.sub.header.centered(style="margin-top: 10px; margin-bottom: -10px;")
+                                    | This is to certify that
                             h2.ui.header.centered
                                 | #{user.name}
                             .ui.divider#underline-field
-                            h2.ui.header
+                            h2.ui.header(style="margin-top: 20px;")
                                 .ui.sub.header.centered
-                                    | has successfully completed the course of
-                            h2.ui.header.centered
+                                    | has successfully completed the mission
+                            h2.ui.header.centered(style="margin-top: 10px;")
                                 | Identity Theft
-                            // Grid for date, logo, and tutor
-                            br
                             .ui.grid
-                                .three.column.row.centered
+                                .three.column.row.middle.aligned
                                     .column
-                                        .ui.center.aligned.basic.segment
-                                            h3#date 
-                                            .ui.divider.short-underline-field
-                                            p Date Awarded
+                                        h3#date 
+                                        .ui.divider.short-underline-field
+                                        p Date Awarded
                                     .column
-                                        .ui.center.aligned.basic.segment
-                                            img.ui.huge.image(src='/images/dart-logo.png', alt='dart logo')
+                                        img.ui.massive.centered.image(src='/images/dart-logo.png', alt='dart logo')
                                     .column
-                                        .ui.center.aligned.basic.segment
-                                            h3 Intrepid
-                                            .ui.divider.short-underline-field
-                                            p Tutor
+                                        h3 Intrepid
+                                        .ui.divider.short-underline-field
+                                        p Tutor
+                .ui.two.column.tablet.only.mobile.only.grid(style="margin-top: 10px;")
+                    .left.aligned.column
+                        a.ui.button.huge.basic.blue.rounded-cert-button#download-button(onclick="createPDF()")
+                            i.download.icon
+                            | Download
+                    .right.aligned.column
+                        a.ui.button.huge.blue.rounded-cert-button#share-button
+                            i.share.icon
+                            | Share
                 //- .ui.two.column.grid(style="margin-top: 10px;")
                 //-     .left.aligned.column
                 //-         a.ui.button.huge.basic.blue.rounded-cert-button#download-button(onclick="createPDF()")
@@ -58,7 +62,7 @@
                     .item Identifying the common warning signs of identity theft.
                     .item Using strategies to protect themselves from becoming a victim of identity theft.
                 //- p We hope you found this course to be exciting and informative. Here is your certificate, feel free to share it with your friends and enjoy this special moment.
-                .ui.two.column.grid(style="margin-top: 10px;")
+                .ui.two.column.computer.only.grid(style="margin-top: 10px;")
                     .left.aligned.column
                         a.ui.button.huge.basic.blue.rounded-cert-button#download-button(onclick="createPDF()")
                             i.download.icon
