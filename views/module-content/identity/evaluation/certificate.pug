@@ -1,61 +1,69 @@
 #certificate.hidden
-    .ui.container#certificate-read
-        .limit
-            .ui.grid.middle.aligned
-                .sixteen.wide.column
-                    h1.ui.header.large#learn-title(style="margin-top: 20px;")
-                        .content
-                            i.trophy.icon
-                            | Congratulations!
-                    //- h1 Congratulations! 
-                    p We hope you found this course to be exciting and informative. Here is your certificate, feel free to share it with your friends and enjoy this special moment.
-                    .certificate-outer-border#cert
-                        .certificate-inner-border
-                            .ui.basic.segment
-                                h1.ui.header.centered
-                                    | Certificate of Completion
-                                    .ui.sub.header.centered
-                                        | <br>This is to certify that
-                                h1.ui.header.centered
-                                    | #{user.name}
-                                .ui.divider#underline-field
-                                h1.ui.header
-                                    .ui.sub.header.centered
-                                        | has successfully completed the course of
-                                h1.ui.header.centered
-                                    | Identity Theft
-                                // Grid for date, logo, and tutor
-                                br
-                                .ui.grid
-                                    .three.column.row.centered
-                                        .column
-                                            .ui.center.aligned.basic.segment
-                                                h3#date 
-                                                .ui.divider.short-underline-field
-                                                p Date Awarded
-                                        .column
-                                            .ui.center.aligned.basic.segment
-                                                img.ui.huge.image(src='/images/dart-logo.png', alt='dart logo')
-                                        .column
-                                            .ui.center.aligned.basic.segment
-                                                h3 Intrepid
-                                                .ui.divider.short-underline-field
-                                                p Tutor
-                    .ui.two.column.grid(style="margin-top: 10px;")
-                        .left.aligned.column
-                            a.ui.button.huge.basic.blue.rounded-cert-button#download-button(onclick="createPDF()")
-                                i.download.icon
-                                | Download Certificate
-                        .right.aligned.column
-                            a.ui.button.huge.blue.rounded-cert-button#share-button
-                                i.share.icon
-                                | Share Certificate
-                
-                    h2.ui.header You have learned:
-                    .ui.bulleted.list 
-                        .item The key concepts of identity theft that are introduced in this model.
-                        .item Understanding the potential consequences when their identity is stolen.
-                        .item Recognizing different types of identity theft and  how they are perpetrated. 
-                        .item Identifying the common warning signs of identity theft.
-                        .item Using strategies to protect themselves from becoming a victim of identity theft.
-                    br
+    .ui.container#certificate-read(style="width: 90%;")
+        .ui.grid.middle.aligned
+            .sixteen.wide.mobile.sixteen.wide.tablet.eight.wide.computer.column
+                h1.ui.header.large#learn-title(style="margin-top: 20px;")
+                    .content
+                        i.trophy.icon
+                        | Congratulations!
+                //- h1 Congratulations! 
+                //- p We hope you found this course to be exciting and informative. Here is your certificate, feel free to share it with your friends and enjoy this special moment.
+                .certificate-outer-border#cert
+                    .certificate-inner-border
+                        .ui.basic.segment
+                            h2.ui.header.centered
+                                | Certificate of Completion
+                                .ui.sub.header.centered
+                                    | <br>This is to certify that
+                            h2.ui.header.centered
+                                | #{user.name}
+                            .ui.divider#underline-field
+                            h2.ui.header
+                                .ui.sub.header.centered
+                                    | has successfully completed the course of
+                            h2.ui.header.centered
+                                | Identity Theft
+                            // Grid for date, logo, and tutor
+                            br
+                            .ui.grid
+                                .three.column.row.centered
+                                    .column
+                                        .ui.center.aligned.basic.segment
+                                            h3#date 
+                                            .ui.divider.short-underline-field
+                                            p Date Awarded
+                                    .column
+                                        .ui.center.aligned.basic.segment
+                                            img.ui.huge.image(src='/images/dart-logo.png', alt='dart logo')
+                                    .column
+                                        .ui.center.aligned.basic.segment
+                                            h3 Intrepid
+                                            .ui.divider.short-underline-field
+                                            p Tutor
+                //- .ui.two.column.grid(style="margin-top: 10px;")
+                //-     .left.aligned.column
+                //-         a.ui.button.huge.basic.blue.rounded-cert-button#download-button(onclick="createPDF()")
+                //-             i.download.icon
+                //-             | Download Certificate
+                //-     .right.aligned.column
+                //-         a.ui.button.huge.blue.rounded-cert-button#share-button
+                //-             i.share.icon
+                //-             | Share Certificate
+            .sixteen.wide.mobile.sixteen.wide.tablet.eight.wide.computer.column
+                h2.ui.header You have learned:
+                .ui.bulleted.list 
+                    .item The key concepts of identity theft that are introduced in this model.
+                    .item Understanding the potential consequences when their identity is stolen.
+                    .item Recognizing different types of identity theft and how they are perpetrated.
+                    .item Identifying the common warning signs of identity theft.
+                    .item Using strategies to protect themselves from becoming a victim of identity theft.
+                //- p We hope you found this course to be exciting and informative. Here is your certificate, feel free to share it with your friends and enjoy this special moment.
+                .ui.two.column.grid(style="margin-top: 10px;")
+                    .left.aligned.column
+                        a.ui.button.huge.basic.blue.rounded-cert-button#download-button(onclick="createPDF()")
+                            i.download.icon
+                            | Download
+                    .right.aligned.column
+                        a.ui.button.huge.blue.rounded-cert-button#share-button
+                            i.share.icon
+                            | Share
