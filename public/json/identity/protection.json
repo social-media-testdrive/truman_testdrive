@@ -1,5 +1,6 @@
 {
   "1": {
+      "progress": 60,
       "type": "yes_no",
       "partial": "q1.html",
       "prompt": "1. Should you carry your Social Security Card in your wallet at all times?",
@@ -15,6 +16,7 @@
       "correctResponse": "no"
   },
   "2": {
+      "progress": 70,
       "type": "abcd",
       "partial": "none",
       "prompt": "2. What is the most secure way to get rid of old account statement documents and expired credit cards?",
@@ -36,6 +38,7 @@
       "correctResponse": "b"
   },
   "3": {
+      "progress": 80,
       "type": "yes_no",
       "partial": "q4.html",
       "prompt": "3. Jane’s password for her new bank account is “Jane123”. Is this a complex and secure password?",

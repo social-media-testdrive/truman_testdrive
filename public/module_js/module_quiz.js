@@ -621,8 +621,14 @@ function displayCurrentQuestion()
             // $('#popup-trigger').popup();
             $('#popup-trigger').popup({
                 position: 'bottom left',
+                hideOnScroll: true,
+                scrollContext: "#page-article",
                 onCreate: function() {
-                    $('#user-email').text(email);
+                    if(username === "Guest") {
+                        $('#user-email').text("dartagent@gmail.com");
+                    } else {
+                        $('#user-email').text(email);
+                    }
                     $('#current-time').text(currentTime);
                     $('#current-date').text(currentDate);
                 },

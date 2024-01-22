@@ -494,6 +494,30 @@ function updateProgressBar() {
         } else if (pageParam === 'takeaways') {
             progress = 100;
         }
+    } else if (section === 'practice') {
+        if (pageParam === 'objectives') {
+            progress = 0;
+        } else if (pageParam === 'arrive') {
+            progress = (1 / total) * 100;
+        } else if (pageParam === 'activity') {
+            progress = (2 / total) * 100;
+        } else if (pageParam === 'reflection') {
+            progress = (4 / total) * 100;
+        } else if (pageParam === 'takeaways') {
+            progress = 100;
+        }
+    } else if (section === 'evaluation') {
+        if (pageParam === 'intro') {
+            progress = 0;
+        } else if (pageParam === 'quiz') {
+            progress = (1 / total) * 100;
+        } else if (pageParam === 'badge') {
+            progress = (10 / total) * 100;
+        } else if (pageParam === 'reflection') {
+            progress = (11 / total) * 100;
+        } else if (pageParam === 'certificate') {
+            progress = 100;
+        }
     }
 
     console.log("The Progress: " + progress);

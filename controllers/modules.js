@@ -32,14 +32,15 @@ exports.getModule = async (req, res) => {
     } else if(section === 'consequences') {
       numPages = 7;
     } else if(section === 'techniques') {
-      numPages = 10;
+      numPages = 12;
     } else if(section === 'protection') {
-      numPages = 8;
+      numPages = 10;
     } else if(section === 'reporting') {
       numPages = 8;
     } else if(section === 'practice') {
-      // later include emails in the count
-      numPages = 4;
+      numPages = 5;
+    } else if (section === 'evaluation') {
+      numPages = 12;
     }
 
     const modulePage = `module-content/${module}/${section}.pug`;

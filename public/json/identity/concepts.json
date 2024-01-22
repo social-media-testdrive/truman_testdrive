@@ -1,6 +1,6 @@
 {   
     "1": {
-      "progress": 33,
+      "progress": 60,
       "type": "multi_select",
       "partial": "none",
       "prompt": "1. Which of the following are examples of identity theft? Select all that apply:",
@@ -30,7 +30,7 @@
     "theAnswers": "A, B, C, E"
 },
     "2": {
-        "progress": 66,
+        "progress": 80,
         "type": "multi_select",
         "partial": "none",
         "prompt": "2. Select all sensitive personal information that can be used for identity theft:",

@@ -1,5 +1,6 @@
 {
   "1": {
+      "progress": 8.3333,
       "type": "multi_select",
       "partial": "none",
       "prompt": "1. Select all sensitive personal information that can be used for identity theft. Select all that apply:",
@@ -33,6 +34,7 @@
       "theAnswers": "B, C, D, E, F"
   },
   "2": {
+      "progress": 16.6666,
       "type": "multi_select",
       "partial": "none",
       "prompt": "2. Which actions below are methods to protect yourself from identity theft? Select all that apply.",
@@ -58,6 +60,7 @@
       "theAnswers": "A, C, D"
   },
   "3": {
+      "progress": 25,
       "type": "multi_select",
       "partial": "none",
       "prompt": "3. If you suspect an email or text is a scam, what actions should you take? Select all that apply.",
@@ -87,6 +90,7 @@
       "theAnswers": "A, C, D, E"
   },
   "4": {
+      "progress": 33.3333,
       "type": "yes_no",
       "partial": "q4.html",
       "prompt": "4. Is this email a scam?",
@@ -102,6 +106,7 @@
       "correctResponse": "yes"
   },
   "5": {
+      "progress": 41.6666,
       "type": "yes_no",
       "partial": "q5.html",
       "prompt": "5. Is this message a scam?",
@@ -117,6 +122,7 @@
       "correctResponse": "yes"
   },
   "6": {
+    "progress": 50,
     "type": "multi_select",
     "partial": "q6.html",
     "prompt": "6. If you receive the email below, what factors should you consider? Select all that apply.",
@@ -150,6 +156,7 @@
     "theAnswers": "A, B, C, E, F"
   },
   "7": {
+      "progress": 58.3333,
       "type": "abcd",
       "partial": "none",
       "prompt": "7. What makes a password complex and secure?",
@@ -170,6 +177,7 @@
       "explanation": "<h1>The correct answer is C.</h1><p>A strong password should be long (at least 8 characters), include a mix of uppercase and lowercase letters, numbers, and special characters to protect against potential hacking attempts.</p>",
       "correctResponse": "c"
   },
+  "progress": 66.6666,
   "8": {
       "type": "abcd",
       "partial": "none",
@@ -192,6 +200,7 @@
       "correctResponse": "d"
   },
   "9": {
+      "progress": 75,
       "type": "yes_no",
       "partial": "q9.html",
       "prompt": "9. Should you engage with a pop-up on your screen that claims you have only 10 seconds to win a free tablet?",
@@ -207,6 +216,7 @@
       "correctResponse": "no"
   },
   "10": {
+      "progress": 83.3333,
       "type": "yes_no",
       "partial": "q10.html",
       "prompt": "10. Could someone watching you at the ATM be a scammer?",
