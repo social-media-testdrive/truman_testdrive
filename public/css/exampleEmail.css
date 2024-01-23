@@ -241,3 +241,52 @@ button.ui.circular.icon.button:hover {
 #trust-wallet .ui.small.message p {
     font-size: 1rem;
 }
+
+
+#iphone-email-eval {
+    border: 5px solid #fd0068;
+    border-radius: 10px;
+}
+
+.font {
+    font-family: Arial, Helvetica, sans-serif;
+    /* font-size: 1.25rem; */
+}
+
+#iphone-email-eval .iphone-header {
+    color: #fd0068;
+    font-size: 1.75rem;
+    font-weight: 900;
+    margin-bottom: -15px;
+}
+
+#iphone-email-eval .pink-text {
+    color: #FD0068;
+}
+
+#iphone-email-eval #congrats{
+    background-color: #FD0068;
+    color: white;
+    padding: 0.5rem;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+#iphone-email-eval #confirmButton{
+    background-color: #FD4319;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#iphone-email-eval .ui.basic.huge.segment#title,
+#iphone-email-eval .ui.basic.segment#continue {
+    padding-left: 0; 
+    padding-right: 0;
+}
+
+#iphone-email-eval .ui.segment {
+    padding-left: 0;
+    padding-right: 0;
+}
