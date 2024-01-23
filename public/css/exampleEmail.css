@@ -242,6 +242,9 @@ button.ui.circular.icon.button:hover {
     font-size: 1rem;
 }
 
+#trust-wallet #trust-text {
+    font-size: 1rem !important;
+}
 
 #iphone-email-eval {
     border: 5px solid #fd0068;
