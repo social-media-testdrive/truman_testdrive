@@ -51,7 +51,11 @@ $(document).ready(function() {
                         var introDiv = document.getElementsByClassName("introjs-hints")[0];
                         introDiv.parentNode.removeChild(introDiv);
                     }
+                    if(section === 'techniques' && backPage === 'arrive') {
+                        introJs().exit();
+                    }
 
+    
                     $('#' + backPage).transition({
                         animation: 'fade in',
                         duration: 200,
@@ -101,6 +105,10 @@ $(document).ready(function() {
                 if(section === 'techniques' && currentPage === 'activity') {
                     var introDiv = document.getElementsByClassName("introjs-hints")[0];
                     introDiv.parentNode.removeChild(introDiv);
+                }
+
+                if(section === 'techniques' && nextPage === 'reflection') {
+                    introJs().exit();
                 }
 
                 $('#' + nextPage).transition({
@@ -343,6 +351,10 @@ function setLinks(currentPage) {
             backlink = baseurl + 'objectives';
             nextlink = baseurl + 'activity';
         } else if(currentPage === 'activity') {
+            introJs().exit();
+            $('.openEmailContainer').hide();
+            $('#nextButton').prop('disabled', false);
+
             backlink = baseurl + 'arrive';
             nextlink = baseurl + 'reflection';
         } else if(currentPage === 'reflection') {
@@ -539,6 +551,7 @@ let intro3 = introJs();
 
 
 function setupPractice() {
+    $('.openEmailContainer').show();
 
     $('.warning-button')
         .popup({
@@ -550,8 +563,15 @@ function setupPractice() {
     ;
 
     // $('#nextButton').hide();
-    $('#nextButton').prop('disabled', true);
-
+    if(showTutorialOnce === false) {
+        $('#nextButton').prop('disabled', true);
+    } else {
+        $('.emailSimContainer').css('pointer-events', 'auto');
+        $('.openEmailContainer').css('pointer-events', 'auto');
+        // $('#nextButton').show();
+        $('#nextButton').removeAttr('disabled');
+        skipped = true;
+    }
     // Watch for tutorial skip, then enable free exploration of email sim
 
     // Use event delegation for dynamically added elements
@@ -565,49 +585,54 @@ function setupPractice() {
     
     console.log("DOM loaded and parsed!");
     
-    intro2.setOptions({
-        steps: [
-            {
-                element: document.querySelector('.emailSimContainer'),
-                position: 'auto',
-                intro: "This is your email inbox. Here you will find all the emails you've received.<br><br>Click the 'Next' button below to continue. <br><img src='/images/chat-head.png' alt='age intrepid profile picture' width='125px' style='display: block; margin: 0 auto;margin-top:20px;'>",
-            },
-            {
-                myBeforeChangeFunction: function() { 
-                    $('#email-0').css('pointer-events', 'auto');  
-                    setTimeout(function() {
-                        $('.showOpenEmailAnimation').removeClass('hidden');
-                    }, 5000);
+    if(showTutorialOnce === false) {
+        intro2.setOptions({
+            steps: [
+                {
+                    element: document.querySelector('.emailSimContainer'),
+                    position: 'auto',
+                    intro: "This is your email inbox. Here you will find all the emails you've received.<br><br>Click the 'Next' button below to continue. <br><img src='/images/chat-head.png' alt='age intrepid profile picture' width='125px' style='display: block; margin: 0 auto;margin-top:20px;'>",
                 },
-                element: document.querySelector('#email-0'),
-                position: 'right',
-                intro: "Each email header contains the sender's name, subject line, and the date. These details offer valuable insights right from the start.<br><br>When you're ready, click on the email to open it and learn more. <br><img src='/images/chat-head.png' alt='age intrepid profile picture' width='125px' style='display: block; margin: 0 auto;margin-top:20px;'>",
-            },
-            ],
-        'hidePrev': true,
-        'hideNext': true,
-        'exitOnOverlayClick': false,
-        'exitOnEsc': false,
-        'showStepNumbers': false,
-        'showBullets': false,
-        'scrollToElement': true,
-        'doneLabel': 'Done &#10003',
-        tooltipClass: 'customWideTooltip',
-    })
-    .onbeforechange(function() {
-            // check to see if there is a function on this step
-        if(this._introItems[this._currentStep].myBeforeChangeFunction){
-            //if so, execute it.
-            this._introItems[this._currentStep].myBeforeChangeFunction();
-        }
-        }).onchange(function() {  //intro.js built in onchange function
-        if (this._introItems[this._currentStep].myChangeFunction){
-            this._introItems[this._currentStep].myChangeFunction();
-        }
+                {
+                    myBeforeChangeFunction: function() { 
+                        $('#email-0').css('pointer-events', 'auto');  
+                        setTimeout(function() {
+                            $('.showOpenEmailAnimation').removeClass('hidden');
+                        }, 5000);
+                    },
+                    element: document.querySelector('#email-0'),
+                    position: 'right',
+                    intro: "Each email header contains the sender's name, subject line, and the date. These details offer valuable insights right from the start.<br><br>When you're ready, click on the email to open it and learn more. <br><img src='/images/chat-head.png' alt='age intrepid profile picture' width='125px' style='display: block; margin: 0 auto;margin-top:20px;'>",
+                },
+                ],
+            'hidePrev': true,
+            'hideNext': true,
+            'exitOnOverlayClick': false,
+            'exitOnEsc': false,
+            'showStepNumbers': false,
+            'showBullets': false,
+            'scrollToElement': true,
+            'doneLabel': 'Done &#10003',
+            tooltipClass: 'customWideTooltip',
         })
-    .start();
+        .onbeforechange(function() {
+                // check to see if there is a function on this step
+            if(this._introItems[this._currentStep].myBeforeChangeFunction){
+                //if so, execute it.
+                this._introItems[this._currentStep].myBeforeChangeFunction();
+            }
+            }).onchange(function() {  //intro.js built in onchange function
+            if (this._introItems[this._currentStep].myChangeFunction){
+                this._introItems[this._currentStep].myChangeFunction();
+            }
+            })
+        .start();
+        showTutorialOnce = true;
+    }
     
 }
+
+let showTutorialOnce = false;
 
 function showEmail(index) {
     intro2.exit();
