@@ -3,7 +3,7 @@
       "progress": 8.3333,
       "type": "multi_select",
       "partial": "none",
-      "prompt": "1. Select all sensitive personal information that can be used for identity theft. Select all that apply:",
+      "prompt": "1. Select all sensitive personal information that can be used for identity theft.",
       "choices": {
           "0": {
               "text": "A. Dietary Preferences",
@@ -24,14 +24,10 @@
           "4": {
               "text": "E. Date of birth",
               "explanation": "Your date of birth can be a key piece of information for identity theft scammers to carry out malicious activities, such as applying for credit, opening accounts, or committing fraud, as it helps them establish your identity."
-          },
-          "5": {
-              "text": "F. Cell phone number",
-              "explanation": "Identity theft scammers might use your cell phone number to get authentication codes or reset password links sent via SMS, which will allow them to access your online accounts and personal information, or even attempt to carry out scams through text messages."
           }
       },
-      "correctResponse": ["1", "2", "3", "4", "5"],
-      "theAnswers": "B, C, D, E, F"
+      "correctResponse": ["1", "2", "3", "4"],
+      "theAnswers": "B, C, D, E"
   },
   "2": {
       "progress": 16.6666,
@@ -54,10 +50,14 @@
           "3": {
               "text": "D. Be careful sharing personal information in public spaces",
               "explanation": "Personal information shared in public spaces can be easily observed or overheard by others who might misuse it. This increases the risk of identity theft, fraud, or privacy breaches. Therefore, to keep your personal information secure, it's crucial to be extremely careful about sharing it in public spaces."
-          }
+          },
+          "4": {
+            "text": "E. Regularly monitor your financial statements for suspicious activities",
+            "explanation": "Regularly checking your financial statements helps you catch any unusual transactions early, protecting you from potential identity theft or fraud."
+        }
       },
-      "correctResponse": ["0", "2", "3"],
-      "theAnswers": "A, C, D"
+      "correctResponse": ["0", "2", "3", "4"],
+      "theAnswers": "A, C, D, E"
   },
   "3": {
       "progress": 25,
@@ -109,7 +109,7 @@
       "progress": 41.6666,
       "type": "yes_no",
       "partial": "q5.html",
-      "prompt": "5. Is this message a scam?",
+      "prompt": "5. Assuming you are trying to log in Venmo following the instruction for the Venmo App, then you received the message below. In that case would you consider this message a scam?",
       "choices": {
       "yes": {
           "text": "Yes"
@@ -118,8 +118,8 @@
           "text": "No"
       }
       },
-      "explanation": "<h1>The correct answer is Yes. This message is NOT a scam.</h1><p>This message does not contain any a foreign links. It also does not create a sense of urgency or threat. It simply sends a code. Therefore, this message is not a scam.</p>",
-      "correctResponse": "yes"
+      "explanation": "<h1>The correct answer is No. This message is NOT a scam.</h1><p>This message does not contain any a foreign links. It also does not create a sense of urgency or threat. It simply sends a code. Therefore, this message is not a scam.</p>",
+      "correctResponse": "no"
   },
   "6": {
     "progress": 50,
@@ -146,14 +146,10 @@
         "4": {
             "text": "E. Threat of Consequences",
             "explanation": "The email warns that not completing the wallet verification will result in wallet restrictions. This threat is designed to manipulate users into doing what the scammer wants them to do."
-        },
-        "5": {
-            "text": "F. No Personalization",
-            "explanation": "The email does not address a person by name. This is common in mass phishing emails."
         }
     },
-    "correctResponse": ["0", "1", "2", "4", "5"],
-    "theAnswers": "A, B, C, E, F"
+    "correctResponse": ["0", "1", "2", "4"],
+    "theAnswers": "A, B, C, E"
   },
   "7": {
       "progress": 58.3333,
@@ -162,7 +158,7 @@
       "prompt": "7. What makes a password complex and secure?",
       "choices": {
           "a": {
-              "text": "A password that is five characters or less"
+              "text": "A. Less than 5 characters"
           },
           "b": {
               "text": "B. Including your first name"

@@ -354,16 +354,16 @@ $(document).ready(function() {
                     "correctAnswers": correctAnswers,
                     "selectedAnswer": selectedAnswer,
                     "questionScores": questionScores,
-                    "nextLink": nextLink,
                     "currentSection": currentSection,
                 })
             })
             .then(response => {
                 if (response.ok) {
+
                     // Request was successful
-                    // console.log('Quiz attempt posted successfully!');
+                    console.log('Quiz attempt posted successfully!');
                     // Now can navigate to the next page
-                    window.location.href = nextLink;
+                    // window.location.href = nextLink;
                 } else {
                     // Handle error response
                     console.error('Failed to post quiz attempt');

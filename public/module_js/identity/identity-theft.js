@@ -903,7 +903,7 @@ function showEmail(index) {
     } else if(email.from === "<account-update@amazon.com>") {
         $('.warning-button.amazon-1').popup({
             position: 'bottom center',
-            html: "Trusted companies often have their own email domain. This email comes from @amazon.com. Also, it doesn’t ask any your personal information.",
+            html: "Trusted companies often have their own email domain. This email comes from @amazon.com. Also, it doesn’t ask for any of your personal information.",
             on: 'click'
         });
         $('.warning-button.amazon-2').popup({

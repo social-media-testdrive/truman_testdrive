@@ -810,7 +810,7 @@ function showEmail(index) {
             hideOnScroll: true,
             scrollContext: "#page-article",
             position: 'bottom center',
-            html: "This email comes from walmart@gmail.com. Companies usually have their own email domain, such as <strong>@walmart.com</strong>. Another big sign of an email being a scam are <strong>misspellings and inconsistencies</strong> in names. This email misspells the name of the company its pretending to be as <strong>Walmrt</strong>, instead of Walmart, which it says in their email address.",
+            html: "This email comes from walmart@gmail.com. Companies usually have their own email domain, such as <strong>@walmart.com</strong>. Another big sign of an email being a scam are <strong>misspellings and inconsistencies</strong> in names. This email misspells the name of the company it's pretending to be as <strong>Walmrt</strong>, instead of Walmart, which it says in their email address.",
             on: 'click'
         });
         $('.warning-button.walmart-2').popup({
@@ -907,7 +907,7 @@ function showEmail(index) {
             hideOnScroll: true,
             scrollContext: "#page-article",
             position: 'bottom center',
-            html: "Trusted companies often have their own email domain. This email comes from @amazon.com. Also, it doesn’t ask any your personal information.",
+            html: "Trusted companies often have their own email domain. This email comes from @amazon.com. Also, it doesn’t ask for any of your personal information.",
             on: 'click'
         });
         $('.warning-button.amazon-2').popup({

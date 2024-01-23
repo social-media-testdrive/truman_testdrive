@@ -22,7 +22,7 @@ body{
 }
 
 #page-footer{ 
-    min-height:50px;
+    /* min-height:50px; */
 }
 
 /* The article fills all the space between header & footer */

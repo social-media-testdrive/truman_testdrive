@@ -5,7 +5,11 @@
                 .content 
                     i.dice.icon
                     | Activity
-            p Click on the red dots to explore this email 
+            //- p Click on the red dots to explore this email 
+            .ui.icon.mini.message(style="padding: 5px; z-index: 99;")
+                i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
+                .content 
+                    p Click on the red dots to explore this email 
 
             .openEmailContainer(id="openEmail-1")
                 .ui.segment

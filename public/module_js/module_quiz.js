@@ -195,10 +195,10 @@ $(document).ready(function() {
         if(currentSection === 'challenge') {
             $("#detail-instruct").hide();
         }
-        // console.log("currentQuestion: " + currentQuestion);
-        // console.log("numQuestions: " + numQuestions);
-        // console.log("viewingAnswer: " + viewingAnswer);
-        // console.log("pastAttempts: " + pastAttempts);
+        console.log("currentQuestion: " + currentQuestion);
+        console.log("numQuestions: " + numQuestions);
+        console.log("viewingAnswer: " + viewingAnswer);
+        console.log("pastAttempts: " + pastAttempts);
 
         $("#page-article").scrollTop(0);
 
@@ -397,16 +397,15 @@ $(document).ready(function() {
                     "correctAnswers": correctAnswers,
                     "selectedAnswer": selectedAnswer,
                     "questionScores": questionScores,
-                    "nextLink": nextLink,
                     "currentSection": currentSection,
                 })
             })
             .then(response => {
                 if (response.ok) {
                     // Request was successful
-                    // console.log('Quiz attempt posted successfully!');
+                    console.log('Quiz attempt posted successfully!');
                     // Now can navigate to the next page
-                    window.location.href = nextLink;
+                    // window.location.href = nextLink;
                 } else {
                     // Handle error response
                     console.error('Failed to post quiz attempt');

@@ -739,7 +739,7 @@ exports.postModuleProgress = async (req, res, next) => {
 exports.postQuizScore = async (req, res, next) => {
   // console.log("In POST quiz score request body***********************hiii****");
 
-  const { modID, scoreTotal, correctAnswers, selectedAnswer, questionScores, nextLink, currentSection } = req.body;
+  const { modID, scoreTotal, correctAnswers, selectedAnswer, questionScores, currentSection } = req.body;
   console.log("*************In POST quiz score request body***********************hiii****");
 
   console.log("Module ID: " + modID);
@@ -747,7 +747,7 @@ exports.postQuizScore = async (req, res, next) => {
   console.log("Correct Answers: " + correctAnswers);
   console.log("Selected Answer: " + selectedAnswer);
   console.log("Question Scores: " + questionScores);
-  console.log("Next Link: " + nextLink);
+  // console.log("Next Link: " + nextLink);
   console.log("Current Section: " + currentSection);
 
   try {
@@ -770,29 +770,29 @@ exports.postQuizScore = async (req, res, next) => {
       // Add the prequiz attempt to the challengeAttempts/submod1Attempts/etc array
       existingUser.moduleProgress[modID][sectionAttempts].push(attempt);
 
-      let statusSection;
-      if(currentSection === "challenge") {
-        statusSection = "challenge";
-      } else if(currentSection === "submodOne") {
-        statusSection = "concepts";
-      } else if(currentSection === "submodTwo") {
-        statusSection = "consequences";
-      } else if(currentSection === "submodThree") {
-        statusSection = "techniques";
-      } else if(currentSection === "submodFour") {
-        statusSection = "protection";
-      } else {
-        statusSection = "evaluation";
-      }
+      // let statusSection;
+      // if(currentSection === "challenge") {
+      //   statusSection = "challenge";
+      // } else if(currentSection === "submodOne") {
+      //   statusSection = "concepts";
+      // } else if(currentSection === "submodTwo") {
+      //   statusSection = "consequences";
+      // } else if(currentSection === "submodThree") {
+      //   statusSection = "techniques";
+      // } else if(currentSection === "submodFour") {
+      //   statusSection = "protection";
+      // } else {
+      //   statusSection = "evaluation";
+      // }
 
-      existingUser.moduleStatus[modID][statusSection] = 100;
+      existingUser.moduleStatus[modID][currentSection] = 100;
 
       // save to mongodb database
       await existingUser.save();
 
       // Manually update the session data
       req.session.passport.user.moduleProgress[modID][sectionAttempts] = existingUser.moduleProgress[modID][sectionAttempts];
-      req.session.passport.user.moduleStatus[modID][statusSection] = 100;
+      req.session.passport.user.moduleStatus[modID][currentSection] = 100;
       
       // Save the session
       req.session.save((err) => {
@@ -801,7 +801,8 @@ exports.postQuizScore = async (req, res, next) => {
         }
 
         // Redirect or send a success response
-        res.redirect(nextLink);
+        res.status(200).send('Quiz score updated successfully');
+        // res.redirect(nextLink);
       });
 
       // Update the user in the session - need to do this so can return to quiz results page in same session

@@ -193,7 +193,7 @@ i.apple.big.icon {
 
 .explanationCorrectYesNo h2.ui.header,
 .explanationIncorrectYesNo h2.ui.header {
-    font-size: 1.5rem !important;
+    font-size: 1.25rem !important;
 }
 
 p.incorrectExplanation h1,
@@ -269,10 +269,14 @@ p.incorrectScore {
     margin-top: -25px;
 }
 
+.showExplanationContainer h2.ui.header {
+    font-size: 1.25rem !important;
+    margin-top: 5px;
+}
 
 .explanationCorrectMulit h2.ui.header,
 .explanationIncorrectMulti h2.ui.header {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: bold;
     margin-bottom: 0px;
 }
