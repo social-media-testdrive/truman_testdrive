@@ -173,8 +173,8 @@
       "explanation": "<h1>The correct answer is C.</h1><p>A strong password should be long (at least 8 characters), include a mix of uppercase and lowercase letters, numbers, and special characters to protect against potential hacking attempts.</p>",
       "correctResponse": "c"
   },
-  "progress": 66.6666,
   "8": {
+      "progress": 66.6666,
       "type": "abcd",
       "partial": "none",
       "prompt": "8. If you lost your credit card, which of the following is the best action to protect your finances from a potential scammer?",
