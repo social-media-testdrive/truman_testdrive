@@ -226,10 +226,18 @@ button.ui.circular.icon.button:hover {
 }
 
 
-#spam-warning {
+/* #spam-warning {
     margin-top: -15px;
-}
+} */
 
 .center-phone {
     text-align: center;
+}
+
+#trust-wallet .inboxLabel.ui.label {
+    margin-bottom: 15px;
+}
+
+#trust-wallet .ui.small.message p {
+    font-size: 1rem;
 }

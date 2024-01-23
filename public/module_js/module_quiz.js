@@ -89,7 +89,7 @@ $(document).ready(function() {
                 $(".quizMessage").hide();
                 $(".htmlImage").hide();
 
-                if(currentSection === 'challenge') {
+                if(currentSection === 'challenge' || currentSection === 'techniques') {
                     $("#detail-instruct").hide();
                 }
                 // $(".preButton").css('visibility', 'hidden');
@@ -124,7 +124,7 @@ $(document).ready(function() {
                 // Display the first question
                 displayCurrentQuestion();
 
-                if(currentSection === "challenge") {
+                if(currentSection === "challenge" || currentSection === 'techniques') {
                     $("#detail-instruct").show();
                 }
         
@@ -192,7 +192,7 @@ $(document).ready(function() {
 	// On clicking next, display the next question
     $(this).find(".nextButton").on("click", function () {
 
-        if(currentSection === 'challenge') {
+        if(currentSection === 'challenge'  || currentSection === 'techniques') {
             $("#detail-instruct").hide();
         }
         console.log("currentQuestion: " + currentQuestion);
@@ -957,7 +957,7 @@ function resetQuiz() {
     $(".nextButton").css('visibility', 'visible');
     $("#module-footer").hide();
 
-    if(currentSection === "challenge") {
+    if(currentSection === "challenge" || currentSection === 'techniques') {
         $("#detail-instruct").show();
     }
 

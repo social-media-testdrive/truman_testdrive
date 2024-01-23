@@ -19,26 +19,11 @@ block content
 
       .openEmailContainer(id="openEmail-1")
         .ui.padded.segment
-          //- button.ui.circular.icon.button.closeEmailArrow(onclick='closeEmail()')
-          //-   i.left.arrow.big.icon
-          //- button#report.ui.circular.icon.button(onclick='reportEmail()' data-tooltip='Report')
-          //-   i.bullhorn.large.icon
-          //-   .report-tooltip Report
-          //- button#block.ui.circular.icon.button(onclick='blockEmail()' data-tooltip='Block')
-          //-   i.ban.large.icon
-          //-   .block-tooltip Block
-          //- button#delete.ui.circular.icon.button(onclick='deleteEmail()' data-tooltip='Delete')
-          //-   i.trash.alternate.outline.large.icon
-          //-   .delete-tooltip Delete
-          //- .ui.horizontal.divider
           span#subjectLine
             | Order Confirmation - Norton Renewal
             #inboxLabel.ui.huge.label
               | Spam
               i.delete.icon
-          //- .ui.right.floated.header
-          //-   span#openDate Aug 31
-          //- .ui.horizontal.divider
           .ui.icon.message
             i.exclamation.circle.icon 
             .content.senderInfo
@@ -47,8 +32,6 @@ block content
                 span.fromEmail &lt;subscriptions@deskera.com&gt;
                 span.aHint(data-hint='Go to Norton LLC official website to check if the email address is correct.' data-hint-position='top-right')
           .ui.message#spam-warning(data-hint='This email was automatically sent to spam, and spam filters emails that are not sent from a trusted source. So be careful!' data-hint-position='top-right')
-            //- .header
-            //-   | Changes in Service
             p
               | Why is this message in Spam? It's similar to messages that were identified as spam in the past.
             .ui.button Report not spam
