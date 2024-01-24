@@ -11,12 +11,6 @@ block content
           .content
             .ui.header Need some help?
             p Scroll up and click "Next" to begin!
-        .ui.icon.compact.message.warning.hidden#clickNextHelpMessage
-          i.close.icon
-          i.question.icon.float
-          .content
-            .ui.header Need some help?
-            p Scroll up and click "Next" to begin!
         .ui.icon.message.success.hidden#instructionsToContinueOne
           .content
             .ui.header Click on the Tornado Warning article to continue! 
@@ -73,13 +67,15 @@ block content
                     a.author Cloe Hansen
                     .metadata
                       span.date 1 minute ago
-                      i.heart.icon
-                      |  0 Likes
+                      .rating
+                        i.heart.icon
+                        span.num 0
+                        |  Likes
                     .text()
                       | It really is!! 🌞
                     .actions
-                      a.like Like
-                      a.flag Flag     
+                      a.like.comment Like
+                      a.flag.comment Flag     
                 .comment
                   a.avatar
                     img(src=cdn+'/profile_pictures/user5.jpeg')
@@ -87,19 +83,16 @@ block content
                     a.author Kiki Pualani
                     .metadata
                       span.date 1 minute ago
-                      i.heart.icon
-                      |  0 Likes
+                      .rating
+                        i.heart.icon
+                        span.num 0
+                        |  Likes
                     .text()
                       | I love going on bike rides!
                     .actions
-                      a.like Like
-                      a.flag Flag   
-            .extra.content
-              .ui.fluid.left.labeled.right.icon.input
-                .ui.label
-                  img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-                input.newcomment(type='text' placeholder='Write a Comment')
-                i.big.send.link.icon
+                      a.like.comment Like
+                      a.flag.comment Flag   
+            include ../partials/script/components/newUserComment
                            
           .ui.fluid.card.dim()
             .ui.dimmer.flag
@@ -144,13 +137,15 @@ block content
                     a.author Ethan Kravitz
                     .metadata
                       span.date 1 minute ago
-                      i.heart.icon
-                      |  0 Likes
+                      .rating
+                        i.heart.icon
+                        span.num 0
+                        |  Likes
                     .text()
                       | haha I see what you did there 😜
                     .actions
-                      a.like Like
-                      a.flag Flag  
+                      a.like.comment Like
+                      a.flag.comment Flag  
                 .comment
                   a.avatar
                     img(src=cdn+'/profile_pictures/user4.jpg')
@@ -158,19 +153,16 @@ block content
                     a.author Hayden Abbey
                     .metadata
                       span.date 1 minute ago
-                      i.heart.icon
-                      |  0 Likes
+                      .rating
+                        i.heart.icon
+                        span.num 0
+                        |  Likes
                     .text()
                       | So fun! ❤️❤️
                     .actions
-                      a.like Like
-                      a.flag Flag   
-            .extra.content.scrollToHere
-              .ui.fluid.left.labeled.right.icon.input
-                .ui.label
-                  img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-                input.newcomment(type='text' placeholder='Write a Comment')
-                i.big.send.link.icon    
+                      a.like.comment Like
+                      a.flag.comment Flag   
+            include ../partials/script/components/newUserComment  
           
           #step1.ui.fluid.card.dim.articleCard
             .ui.dimmer.flag
@@ -218,19 +210,16 @@ block content
                     a.author Maya Rein
                     .metadata
                       span.date 1 minute ago
-                      i.heart.icon
-                      |  0 Likes
+                      .rating
+                        i.heart.icon
+                        span.num 0
+                        |  Likes
                     .text()
                       | fingers crossed
                     .actions
-                      a.like Like
-                      a.flag Flag     
-            .extra.content
-              .ui.fluid.left.labeled.right.icon.input
-                .ui.label
-                  img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-                input.newcomment(type='text' placeholder='Write a Comment')
-                i.big.send.link.icon      
+                      a.like.comment Like
+                      a.flag.comment Flag     
+            include ../partials/script/components/newUserComment     
 
           .ui.fluid.card.dim()
             .ui.dimmer.flag
@@ -275,13 +264,15 @@ block content
                     a.author Franklin Robinson
                     .metadata
                       span.date 1 minute ago
-                      i.heart.icon
-                      |  0 Likes
+                      .rating
+                        i.heart.icon
+                        span.num 0
+                        |  Likes
                     .text()
                       | oh no homework 
                     .actions
-                      a.like Like
-                      a.flag Flag     
+                      a.like.comment Like
+                      a.flag.comment Flag     
                 .comment
                   a.avatar
                     img(src=cdn+'/profile_pictures/user12.jpg')
@@ -289,19 +280,16 @@ block content
                     a.author Shika Ramphal
                     .metadata
                       span.date 1 minute ago
-                      i.heart.icon
-                      |  0 Likes
+                      .rating
+                        i.heart.icon
+                        span.num 0
+                        |  Likes
                     .text()
                       | looks like fun lol 🤣
                     .actions
-                      a.like Like
-                      a.flag Flag   
-            .extra.content
-              .ui.fluid.left.labeled.right.icon.input
-                .ui.label
-                  img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-                input.newcomment(type='text' placeholder='Write a Comment')
-                i.big.send.link.icon   
+                      a.like.comment Like
+                      a.flag.comment Flag   
+            include ../partials/script/components/newUserComment
     //- #####################################################
     .ui.tab(data-tab="two")
       button.ui.big.button.homeTab(data-tab='one')

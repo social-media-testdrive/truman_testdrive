@@ -49,8 +49,7 @@ function customOnHintCloseFunction() {
 };
 
 //Make the dropdown work
-$('.ui.dropdown')
-    .dropdown('set selected', '0');
+$('.ui.dropdown').dropdown('set selected', '0');
 
 /*All code below is using logic to determine if all required criteria are met before allowing to proceed, handling error messages*/
 

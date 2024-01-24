@@ -132,15 +132,6 @@ body {
 }
 
 
-/* ------- END PAGE ------- */
-
-.endPageButton {
-    max-width: 100%;
-    width: 260px;
-    text-align: left !important;
-}
-
-
 /* --- CURSOR APPEARANCES --- */
 
 a,
@@ -178,6 +169,7 @@ button,
 
 .blueText {
     color: #0000FF;
+    cursor: pointer;
 }
 
 
@@ -358,6 +350,33 @@ button,
 
 .ui[class*="bottom attached"].buttons .button:first-child {
     border-radius: 0;
+}
+
+
+/*CSS for adding new comment on post*/
+
+.extra.content>.ui.fluid.left.labeled.right.icon.input>.ui.form {
+    width: 100%;
+}
+
+textarea.newcomment {
+    border-radius: 0 .28571429rem .28571429rem 0;
+}
+
+.extra.content>.ui.fluid.left.labeled.right.icon.input>.ui.label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5em;
+}
+
+.extra.content>.ui.fluid.left.labeled.right.icon.input>.ui.label>img {
+    margin: 0;
+    width: 2em!important;
+}
+
+.extra.content>.ui.fluid.left.labeled.right.icon.input>i.big.send.link.icon {
+    margin-right: 4px;
 }
 
 

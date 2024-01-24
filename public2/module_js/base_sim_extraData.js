@@ -9,11 +9,8 @@ this function.
 function recordSimModalInputs(modalNameAttrStr) {
     const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
     let target = $(event.target);
-    //const simPostNumber = target.closest('.ui.card').attr('simPostNumber');
     const post = target.closest(".ui.card");
-    console.log(post);
     const postID = post.attr("postID");
-    console.log(postID);
     const modalOpenedTime = Date.now();
     let checkboxInputs = 0b0; // going to use bit shifting
 
@@ -54,8 +51,6 @@ function recordSimModalInputs(modalNameAttrStr) {
         },
         onHide: function() {
             Voiceovers.pauseVoiceover();
-
-
             // collapses all 'active' (open) accordion elements in digital-literacy_articleModal
             $(`.ui.modal[data-modalName=${modalNameAttrStr}] .title.modalDropdown`).removeClass("active");
             $(`.ui.modal[data-modalName=${modalNameAttrStr}] .content`).removeClass("active");
@@ -107,7 +102,7 @@ function recordSimModalInputs(modalNameAttrStr) {
         },
         // the following is only relevant in the esteem module:
         onHidden: function() {
-            if (modalNameAttrStr === "esteem_simPostModal1" || modalNameAttrStr === "esteem_postModal1") {
+            if (modalNameAttrStr === "esteem_simPostModal1") {
                 // if the user has selected a NEGATIVE emotion (indicated by the binary number),
                 // show the second module after the first one closes.
                 if ((checkboxInputs & 0b001101110) !== 0) {
@@ -117,11 +112,7 @@ function recordSimModalInputs(modalNameAttrStr) {
                         allowMultipe: false,
                         closable: false,
                         onVisible: function() {
-                            if (secondModalNameAttr.includes('sim')) {
-                                Voiceovers.playVoiceover(['CUSML.misc_06.mp3'])
-                            } else {
-                                Voiceovers.playVoiceover(['CUSML.misc_07.mp3'])
-                            }
+                            Voiceovers.playVoiceover(['CUSML.misc_06.mp3'])
                         },
                         onHide: function() {
                             Voiceovers.pauseVoiceover();

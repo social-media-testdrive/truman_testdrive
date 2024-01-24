@@ -52,14 +52,15 @@ block scripts
     for (reflectionQuestion in reflectionData){
       const files = reflectionData[reflectionQuestion]["voiceoverFiles"];
       const key = '.voiceover_reflection' + reflectionQuestion.substring(1, 2);
-      let cat = {};
-      cat.initialDelay = (reflectionQuestion.substring(0, 2) == "Q1") ? 0 : 500;
-      cat.delay = 0;
-      cat.files = files;
+      const cat = {
+        initialDelay: (reflectionQuestion.substring(0, 2) == "Q1") ? 0 : 500, 
+        delay: 0, 
+        files: files
+        };
       voiceoverMappings[key] = cat;
     }
   script(src='/module_js/voiceover.js') 
-  script(src='/module_js/base_results.js?v=1')
+  script(src='/module_js/base_results.js')
   
 block styles
   link(rel='stylesheet', href='/css/results.css')

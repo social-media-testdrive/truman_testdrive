@@ -1,11 +1,11 @@
-const pathArrayForHeader = window.location.pathname.split('/');
-const currentPageForHeader = pathArrayForHeader[1];
-const currentModuleForHeader = pathArrayForHeader[2];
+let pathArrayForHeader;
+let currentPageForHeader;
+let currentModuleForHeader;
 
 function addHumanizedTimeToPost() {
-    let target = $(this);
-    var ms = parseInt(target.text(), 10);
-    let time = new Date(ms);
+    const target = $(this);
+    const ms = parseInt(target.text(), 10);
+    const time = new Date(ms);
     target.text(humanized_time_span(time));
 }
 
@@ -51,7 +51,7 @@ function likePost(e) {
         target.addClass("red");
         label.html(function(i, val) { return val * 1 + 1 });
 
-        let actionType = getActionType(currentPageForHeader);
+        const actionType = getActionType(currentPageForHeader);
         if (actionType === "free play" || enableDataCollection) {
             $.post("/feed", {
                 actionType: actionType,
@@ -66,13 +66,11 @@ function likePost(e) {
 
 function flagPost(e) {
     const enableDataCollection = e.data.enableDataCollection;
-    let flag = Date.now();
-    var post = $(this).closest(".ui.card");
-    let postID = post.attr("postID");
-    let pathArrayForHeader = window.location.pathname.split('/');
-    let currentPageForHeader = pathArrayForHeader[1];
-    let currentModuleForHeader = pathArrayForHeader[2];
-    let actionType = getActionType(currentPageForHeader);
+    const target = $(e.target);
+    const post = target.closest(".ui.fluid.card");
+    const postID = post.attr("postID");
+    const flag = Date.now();
+    const actionType = getActionType(currentPageForHeader);
     if (actionType === "free play" || enableDataCollection) {
         $.post("/feed", {
             actionType: actionType,
@@ -82,22 +80,14 @@ function flagPost(e) {
             _csrf: $('meta[name="csrf-token"]').attr('content')
         });
     }
-    post.find(".ui.dimmer.flag").dimmer({
-            closable: false
-        })
-        .dimmer('show');
+    post.find(".ui.dimmer.flag").dimmer({ closable: false }).dimmer('show');
     //repeat to ensure its closable
-    post.find(".ui.dimmer.flag").dimmer({
-            closable: true
-        })
-        .dimmer('show');
+    post.find(".ui.dimmer.flag").dimmer({ closable: false }).dimmer('show');
 
-    let pathArray = window.location.pathname.split('/');
-    let mod = pathArray[2];
-
-    if (mod == "digital-literacy") {
+    if (currentModuleForHeader == "digital-literacy") {
         $('.ui.modal input[type=checkbox]').prop('checked', false);
-        if (actionType === 'free play' && post.attr('isArticle') !== undefined) { // post.attr('isArticle') is not undefined only when flagged post is an article. The flagModal should only be displayed for article posts (not actor or user posts).
+        if (actionType === 'free play' && post.attr('isArticle') !== undefined) {
+            // post.attr('isArticle') is not undefined only when flagged post is an article. The flagModal should only be displayed for article posts (not actor or user posts).
             recordModalInputs('digital-literacy_flagModal');
         } else if (actionType === 'guided activity') {
             recordSimModalInputs('digital-literacy_flagModal');
@@ -112,15 +102,12 @@ function flagPost(e) {
 
 function sharePost(e) {
     $('.ui.small.basic.share.modal').modal('show');
-
     const enableDataCollection = e.data.enableDataCollection;
-    let share = Date.now();
-    var post = $(this).closest(".ui.card");
-    let postID = post.attr("postID");
-    let pathArrayForHeader = window.location.pathname.split('/');
-    let currentPageForHeader = pathArrayForHeader[1];
-    let currentModuleForHeader = pathArrayForHeader[2];
-    let actionType = getActionType(currentPageForHeader);
+    const target = $(e.target);
+    const share = Date.now();
+    const post = target.closest(".ui.card");
+    const postID = post.attr("postID");
+    const actionType = getActionType(currentPageForHeader);
     if (actionType === "free play" || enableDataCollection) {
         $.post("/feed", {
             actionType: actionType,
@@ -130,28 +117,21 @@ function sharePost(e) {
             _csrf: $('meta[name="csrf-token"]').attr('content')
         });
     }
-    $('.ui.small.basic.share.modal').modal('show');
 };
 
 // ****** actions on a comment *******
 
-async function addNewComment(event) {
+function addNewComment(e) {
     const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
-    let pathArrayForHeader = window.location.pathname.split('/');
-    let currentPageForHeader = pathArrayForHeader[1];
-    let currentModuleForHeader = pathArrayForHeader[2];
-    let target = $(event.target);
-    if (!target.hasClass('link')) {
-        target = target.siblings('.link');
-    }
-    const text = target.siblings('input.newcomment').val();
+    const target = $(e.target);
+    const text = target.siblings(".ui.form").find("textarea.newcomment").val().trim();;
     const card = target.parents('.ui.fluid.card');
     let comments = card.find('.ui.comments');
     // no comments area - add it
     if (!comments.length) {
-        const buttons = card.find('.three.ui.bottom.attached.icon.buttons');
+        const buttons = card.find(".ui.bottom.attached.icon.buttons")
         buttons.after('<div class="content"><div class="ui comments"></div>');
-        comments = card.find('.ui.comments');
+        comments = card.find(".ui.comments");
     }
     if (text.trim() !== '') {
         const date = Date.now();
@@ -160,41 +140,33 @@ async function addNewComment(event) {
         const ava_name = ava.attr('name');
         const postID = card.attr('postID');
 
-        const mess = (
-            `<div class="comment">
-        <a class="avatar"> <img src="${ava_img}"> </a>
-        <div class="content">
-          <a class="author">${ava_name}</a>
-          <div class="metadata">
-            <span class="date">${humanized_time_span(date)}</span>
-            <i class="heart icon"></i> 0 Likes
-          </div>
-          <div class="text">${text}</div>
-        </div>
-      </div>`
-        );
-        target.siblings('input.newcomment').val('');
+        const mess = (`
+        <div class="comment">
+            <a class="avatar"> <img src="${ava_img}"> </a>
+            <div class="content">
+                <a class="author">${ava_name}</a>
+            <div class="metadata">
+                <span class="date">${humanized_time_span(date)}</span>
+                <i class="heart icon"></i> 0 Likes
+            </div>
+            <div class="text">${text}</div>
+            </div>
+        </div>`);
+        $(this).siblings(".ui.form").find("textarea.newcomment").val('');
         comments.append(mess);
-        if (card.attr('type') == 'userPost') {
-            await $.post('/userPost_feed', {
+
+        const actionType = getActionType(currentPageForHeader);
+        if (actionType === "free play" || enableDataCollection) {
+            $.post("/feed", {
+                actionType: actionType,
+                modual: currentModuleForHeader,
                 postID: postID,
                 new_comment: date,
                 comment_text: text,
                 _csrf: $('meta[name="csrf-token"]').attr('content')
             });
-        } else {
-            let actionType = getActionType(currentPageForHeader);
-            if (actionType === "free play" || enableDataCollection) {
-                $.post("/feed", {
-                    actionType: actionType,
-                    modual: currentModuleForHeader,
-                    postID: postID,
-                    new_comment: date,
-                    comment_text: text,
-                    _csrf: $('meta[name="csrf-token"]').attr('content')
-                });
-            }
         }
+
         try {
             // We store the page's hints on the body for easy access
             document.body.hints.refresh();
@@ -203,6 +175,7 @@ async function addNewComment(event) {
                 console.error(error);
             }
         }
+
         if (currentModuleForHeader === "cyberbullying" && (postID === "cyberbullying_sim_post1" || postID === "cyberbullying_sim_post3" || postID === "cyberbullying_sim_post4")) {
             clickPost = true; //see cyberbullying_sim.pug for initialization and comments
             $("#confirmContinueCheck").hide();
@@ -212,96 +185,73 @@ async function addNewComment(event) {
 
 function likeComment(e) {
     const enableDataCollection = e.data.enableDataCollection;
-    const target = $(event.target);
+    const target = $(e.target);
+    const comment = target.parents('.comment');
+    const label = comment.find('span.num');
+
+    const postID = target.closest(".ui.fluid.card").attr("postID");
+    const commentID = comment.attr('commentID');
+    const like = Date.now();
+
     // Determine if the comment is being LIKED or UNLIKED based on the initial
     // button color. Red = UNLIKE, Not Red = LIKE.
     if (target.hasClass('red')) {
-        // Since the button was already red, this button press is an UNLIKE action.
-        // Remove red color from Like Button and heart icon
         target.removeClass('red');
-        const comment = target.parents('.comment');
         comment.find('i.heart.icon').removeClass('red');
+        target.html('Like');
         // Decrease the like count by 1
-        const label = comment.find('span.num');
         label.html(function(i, val) { return val * 1 - 1 });
     } else {
-        // Since the button was not red, this button press is a LIKE action
-        // Add red color to heart icon
         target.addClass('red');
-        const comment = target.parents('.comment');
         comment.find('i.heart.icon').addClass('red');
+        target.html('Unlike');
         // Increase the like count by 1
-        const label = comment.find('span.num');
         label.html(function(i, val) { return val * 1 + 1 });
-        // Get information about the post/comment/timestamp
-        const postID = $(this).closest('.ui.card').attr("postID");
-        const commentID = comment.attr('commentID');
-        const like = Date.now();
-        let pathArrayForHeader = window.location.pathname.split('/');
-        let currentPageForHeader = pathArrayForHeader[1];
-        let currentModuleForHeader = pathArrayForHeader[2];
-        let actionType = getActionType(currentPageForHeader);
-        if ($(this).closest(".ui.fluid.card").attr("type") == 'userPost') {
-            $.post("/userPost_feed", {
+
+        const actionType = getActionType(currentPageForHeader);
+
+        if (actionType === "free play" || enableDataCollection) {
+            $.post("/feed", {
+                actionType: actionType,
                 postID: postID,
+                modual: currentModuleForHeader,
                 commentID: commentID,
                 like: like,
                 _csrf: $('meta[name="csrf-token"]').attr('content')
             });
-        } else {
-            if (actionType === "free play" || enableDataCollection) {
-                $.post("/feed", {
-                    actionType: actionType,
-                    postID: postID,
-                    modual: currentModuleForHeader,
-                    commentID: commentID,
-                    like: like,
-                    _csrf: $('meta[name="csrf-token"]').attr('content')
-                });
-            }
         }
     }
 }
 
 function flagComment(e) {
     const enableDataCollection = e.data.enableDataCollection;
-    const comment = $(this).parents('.comment');
-    const postID = $(this).closest('.ui.fluid.card').attr('postID');
-    const typeID = $(this).closest(".ui.card").attr("type");
+    const target = $(e.target);
+    const comment = target.parents(".comment");
+
+    const postID = target.closest(".ui.fluid.card").attr("postID");
     const commentID = comment.attr('commentID');
     const flag = Date.now();
-    let pathArrayForHeader = window.location.pathname.split('/');
-    let currentPageForHeader = pathArrayForHeader[1];
-    let currentModuleForHeader = pathArrayForHeader[2];
-    let actionType = getActionType(currentPageForHeader);
-    comment.replaceWith(
-        `<div class='comment' style='background-color:black;color:white;'>
-      <h5 class='ui inverted header'>
-        <span>
-          The admins will review this comment further. We are sorry you had this experience.
-        </span>
-      </h5>
-    </div>`);
 
-    if (typeID == 'userPost') {
-        $.post("/userPost_feed", {
+    const actionType = getActionType(currentPageForHeader);
+    comment.replaceWith(`
+        <div class="comment" commentID="${commentID}" style="background-color:black;color:white">
+            <h5 class="ui inverted header" style="padding: 0.5em;">
+                The admins will review this comment further. We are sorry you had this experience.
+            </h5>
+        </div>`);
+
+
+    if (actionType === "free play" || enableDataCollection) {
+        $.post("/feed", {
+            actionType: actionType,
+            modual: currentModuleForHeader,
             postID: postID,
             commentID: commentID,
             flag: flag,
             _csrf: $('meta[name="csrf-token"]').attr('content')
         });
-    } else {
-        if (actionType === "free play" || enableDataCollection) {
-            $.post("/feed", {
-                actionType: actionType,
-                modual: currentModuleForHeader,
-                postID: postID,
-                commentID: commentID,
-                flag: flag,
-                _csrf: $('meta[name="csrf-token"]').attr('content')
-            });
-        }
     }
+
     try {
         // We store the page's hints on the body for easy access
         document.body.hints.refresh();
@@ -310,6 +260,7 @@ function flagComment(e) {
             console.error(error);
         }
     }
+
     if (currentModuleForHeader === "cyberbullying" && (commentID === "cyberbullying_sim_post4_comment1" || commentID === "cyberbullying_sim_post1_comment1")) {
         clickPost = true; //see cyberbullying_sim.pug for initialization and comments
         $("#confirmContinueCheck").hide();
@@ -318,10 +269,16 @@ function flagComment(e) {
 
 $(window).on('load', () => {
     const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
+    pathArrayForHeader = window.location.pathname.split('/');
+    currentPageForHeader = pathArrayForHeader[1];
+    currentModuleForHeader = pathArrayForHeader[2];
+
+    // add humanized time to all posts
+    $('.right.floated.time.meta, .date.sim, .time.notificationTime').each(addHumanizedTimeToPost);
 
     // Focus new comment element if "Reply" button is clicked
     $('.reply.button').click(function() {
-        let parent = $(this).closest('.ui.fluid.card');
+        const parent = $(this).closest('.ui.fluid.card');
         parent.find('input.newcomment').focus();
     });
 
@@ -334,29 +291,23 @@ $(window).on('load', () => {
     // See here for a good explanation of the capture phase:
     // https://signalvnoise.com/posts/3137-using-event-capturing-to-improve-basecamp-page-load-times
     window.addEventListener('keydown', function(event) {
-        // console.log(event.target);
         if (event.key === 'Enter' && event.target.className == 'newcomment') {
             event.stopImmediatePropagation();
-            addNewComment(event);
+            $(event.target).parents(".ui.form").siblings("i.big.send.link.icon").click();
         }
     }, true);
 
-    // add humanized time to all posts
-    $('.right.floated.time.meta, .date.sim, .time.notificationTime').each(addHumanizedTimeToPost);
+    // create a new comment
+    $('i.big.send.link.icon').click({ enableDataCollection }, addNewComment);
 
     // like a post
     $('.like.button').click({ enableDataCollection }, likePost);
-
-    // create a new comment
-    $('i.big.send.link.icon').click({ enableDataCollection }, addNewComment);
 
     // like a comment
     $('a.like.comment').click({ enableDataCollection }, likeComment);
 
     // Only enable flagging and sharing when NOT on tutorial pages, since flagging and sharing modals cover the original post.
-    let pathArray = window.location.pathname.split('/');
-    let currentPage = pathArray[1];
-    if (currentPage !== "tutorial") {
+    if (currentPageForHeader !== "tutorial") {
         // flag a post
         $('.flag.button').on('click', { enableDataCollection }, flagPost);
 

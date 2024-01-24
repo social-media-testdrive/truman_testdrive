@@ -1,10 +1,10 @@
 const User = require('../models/User');
-const Class = require('../models/Class.js');
+const helpers = require('./helpers');
 const passport = require('passport');
 const validator = require('validator');
 const fs = require('fs');
 
-//create random id for guest accounts
+// Create random id for guest accounts
 function makeid(length) {
     let result = '';
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -262,22 +262,8 @@ exports.getMe = async(req, res) => {
     try {
         const user = await User.findById(req.user.id).exec();
         const userPosts = user.getPosts(req.params.modId);
-        res.render('me', { posts: userPosts, title: user.profile.name || 'My Profile' });
-    } catch (err) {
-        next(err);
-    }
-};
-
-/**
- * POST /pageLog
- * Post a pageLog.
- */
-exports.postPageLog = async(req, res, next) => {
-    try {
-        const user = await User.findById(req.user.id).exec();
-        user.logPage(Date.now(), req.body.subdirectory1, req.body.subdirectory2);
-        res.set('Content-Type', 'application/json; charset=UTF-8');
-        res.send({ result: "success" });
+        const finalfeed = helpers.getFeed(userPosts, [], user);
+        res.render('me', { posts: finalfeed, title: user.profile.name || 'My Profile' });
     } catch (err) {
         next(err);
     }
@@ -307,28 +293,35 @@ exports.getHabitsTimer = async(req, res) => {
     }
 };
 
-/*
- * POST /updateName
- * Update profile information with name input by an instructor.
+/**
+ * GET /esteemTopic
+ * Get the topic the user selected in the esteem module.
  */
-exports.postName = async(req, res, next) => {
+exports.getEsteemTopic = async(req, res) => {
     try {
-        const student = await User
-            .findOne({
-                accessCode: req.body.accessCode,
-                username: req.body.username
-            }).exec();
-        if (!student) {
-            const myerr = new Error('Student not found!');
-            return next(myerr);
-        }
-        student.name = req.body.name;
-        await student.save();
-        res.redirect(`/viewClass/${req.body.accessCode}`);
+        const user = await User.findById(req.user.id).exec();
+        const selectedTopic = user.esteemTopic[user.esteemTopic.length - 1];
+        res.set('Content-Type', 'application/json; charset=UTF-8');
+        res.send({ esteemTopic: selectedTopic });
     } catch (err) {
         next(err);
     }
-}
+};
+
+/**
+ * POST /pageLog
+ * Post a pageLog.
+ */
+exports.postPageLog = async(req, res, next) => {
+    try {
+        const user = await User.findById(req.user.id).exec();
+        user.logPage(Date.now(), req.body.subdirectory1, req.body.subdirectory2);
+        res.set('Content-Type', 'application/json; charset=UTF-8');
+        res.send({ result: "success" });
+    } catch (err) {
+        next(err);
+    }
+};
 
 /**
  * POST /interest
@@ -354,22 +347,6 @@ exports.postUpdateInterestSelection = async(req, res, next) => {
         next(err);
     }
 };
-
-/**
- * GET /esteemTopic
- * Get the topic the user selected in the esteem module.
- */
-exports.getEsteemTopic = async(req, res) => {
-    try {
-        const user = await User.findById(req.user.id).exec();
-        const selectedTopic = user.esteemTopic[user.esteemTopic.length - 1];
-        res.set('Content-Type', 'application/json; charset=UTF-8');
-        res.send({ esteemTopic: selectedTopic });
-    } catch (err) {
-        next(err);
-    }
-};
-
 
 /**
  * POST /habitsTimer
@@ -430,6 +407,29 @@ exports.postUpdateModuleProgress = async(req, res, next) => {
         next(err);
     }
 };
+
+/*
+ * POST /updateName
+ * Update profile information with name input by an instructor.
+ */
+exports.postName = async(req, res, next) => {
+    try {
+        const student = await User
+            .findOne({
+                accessCode: req.body.accessCode,
+                username: req.body.username
+            }).exec();
+        if (!student) {
+            const myerr = new Error('Student not found!');
+            return next(myerr);
+        }
+        student.name = req.body.name;
+        await student.save();
+        res.redirect(`/viewClass/${req.body.accessCode}`);
+    } catch (err) {
+        next(err);
+    }
+}
 
 /*
  * POST /postUpdateNewBadge

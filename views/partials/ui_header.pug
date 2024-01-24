@@ -39,8 +39,6 @@
           if isResearchVersion
             .right.menu.headerDropdownMenu
               if user
-                //- a.item.newpost.float.right
-                //-   i.big.plus.icon
                 .ui.simple.dropdown.item
                   if user.profile.picture
                     img.ui.mini.spaced.circular.image(src=cdn+'/profile_pictures/'+user.profile.picture)
@@ -67,8 +65,6 @@
       img.ui.tiny.image(src=cdn+'/finalLogo.png', id='cell_logo')
     if isResearchVersion
         if user
-          //- a.item.newpost.float.right
-          //-   i.big.plus.icon
           .item
             .right.menu.headerDropdownMenu
               .ui.simple.dropdown.item

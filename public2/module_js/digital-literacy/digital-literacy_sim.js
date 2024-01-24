@@ -64,7 +64,6 @@ const post_info_description = {
     'WWW.NPR.ORG': 'National Public Radio (NPR, stylized as npr) is an American privately and publicly funded non-profit membership media organization based in Washington, D.C.'
 };
 
-$('.ui.accordion').accordion();
 
 function eventsAfterHints() {
     $(".info_button").click(function(e) {

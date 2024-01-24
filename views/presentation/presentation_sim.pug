@@ -104,12 +104,7 @@ block content
               .actions
                 a.like.comment Like
                 a.flag.comment Flag
-      .extra.content
-        .ui.fluid.left.labeled.right.icon.input
-          .ui.label
-            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment(type='text' placeholder='Write a Comment')
-          i.big.send.link.icon
+      include ../partials/script/components/newUserComment
             
     .ui.fluid.card.dim.test()
       .ui.dimmer.flag
@@ -161,12 +156,7 @@ block content
               .actions
                 a.like.comment Like
                 a.flag.comment Flag
-      .extra.content
-        .ui.fluid.left.labeled.right.icon.input
-          .ui.label
-            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment(type='text' placeholder='Write a Comment')
-          i.big.send.link.icon
+      include ../partials/script/components/newUserComment
 
     .ui.fluid.card.dim.test()
       .ui.dimmer.flag
@@ -218,12 +208,7 @@ block content
               .actions
                 a.like.comment Like
                 a.flag.comment Flag
-      .extra.content
-        .ui.fluid.left.labeled.right.icon.input
-          .ui.label
-            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment(type='text' placeholder='Write a Comment')
-          i.big.send.link.icon
+      include ../partials/script/components/newUserComment
 
     button.ui.big.labeled.icon.button.cybersim1.mb-9#cyberTransButton
         i.rocket.icon

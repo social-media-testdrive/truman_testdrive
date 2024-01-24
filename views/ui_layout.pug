@@ -45,22 +45,7 @@ html
     link(type='text/css', rel='stylesheet', href='/css/ui_layout.css') 
     block styles
 
-  body
-    .ui.vertically.padded.grid.container#pagegrid
-      include partials/ui_header
-      .ui.grid.container#pagecontainer
-        include partials/ui_flash
-        block content
-      .ui.small.basic.share.modal
-        .ui.icon.header
-          i.share.icon
-          | You have shared this post!
-        .actions(style="text-align:center;")   
-          .ui.green.ok.inverted.button
-            i.checkmark.icon
-            | Done                      
-    include partials/ui_footer
-    
+  body  
     script(src=cdn+'/js/lib/jquery-3.1.1.min.js')
     script(src=cdn+'/js/lib/humanized_time_span.js')
     script(src=cdn+'/js/lib/lazyload.transpiled.min.js')
@@ -93,3 +78,10 @@ html
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'G-RRB8FEMM6V');
+          
+    .ui.vertically.padded.grid.container#pagegrid
+      include partials/ui_header
+      .ui.grid.container#pagecontainer
+        include partials/ui_flash
+        block content              
+    include partials/ui_footer

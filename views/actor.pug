@@ -5,12 +5,9 @@ block content
     .ui.sticky.sideMenu
       .ui.card
         .image
-          if actor.class == 'high_read'
-            img(src=actor.profile.picture)
-          else
-            img(src=cdn+'/profile_pictures/'+actor.profile.picture)
+          img(src=cdn+'/profile_pictures/'+actor.profile.picture)
         .content
-          a.header= actor.profile.name
+          a.header=actor.profile.name
           .meta="@"+actor.username
           .description=actor.profile.bio
           .description 
@@ -19,7 +16,6 @@ block content
       button.ui.big.green.button.goBack
         i.icon.reply
         | Go back
-
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
     if script.length === 0
       h3.centerText No Posts Yet
@@ -30,11 +26,11 @@ block content
 
 block scripts
   script. 
-    // add humanized time to all posts
+    //- add humanized time to all posts
     function addHumanizedTimeToPost(){
-      let target = $(this);
-      var ms = parseInt(target.text(), 10);
-      let time = new Date(ms);
+      const target = $(this);
+      const ms = parseInt(target.text(), 10);
+      const time = new Date(ms);
       target.text(humanized_time_span(time));
     };
     
@@ -44,8 +40,7 @@ block scripts
       $('button.ui.big.green.button.goBack').on('click', function () {
         window.history.back();
       });
-      $('.ui.sticky').sticky({
-          context: '#content',
-          offsent: 115
-        });
     });
+
+block styles
+  link(rel='stylesheet', href='/css/script.css')

@@ -85,6 +85,7 @@ exports.getScript = async(req, res, next) => {
 
         const finalfeed = helpers.getFeed(user_posts, script_feed, user);
 
+        // Only Advanced Lit has its own defined pug file. All other modules extend 'script'
         if (req.params.modId == "advancedlit") {
             res.render('advancedlit/advancedlit_script', {
                 script: finalfeed,

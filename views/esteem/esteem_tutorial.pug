@@ -68,12 +68,7 @@ block content
               .actions
                 a.comment.like Like
                 a.comment.flag Flag
-      .extra.content
-        .ui.fluid.left.labeled.right.icon.input
-          .ui.label
-            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment(type='text' placeholder='Write a Comment')
-          i.big.send.link.icon
+      include ../partials/script/components/newUserComment
             
     .ui.fluid.card.test#step2
       .content
@@ -116,12 +111,7 @@ block content
               .actions
                 a.comment.like Like
                 a.comment.flag Flag
-      .extra.content
-        .ui.fluid.left.labeled.right.icon.input
-          .ui.label
-            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment(type='text' placeholder='Write a Comment')
-          i.big.send.link.icon
+      include ../partials/script/components/newUserComment
             
     .ui.fluid.card.test#step3
       .content
@@ -180,12 +170,7 @@ block content
               .actions
                 a.comment.like Like
                 a.comment.flag Flag
-      .extra.content
-        .ui.fluid.left.labeled.right.icon.input
-          .ui.label
-            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment(type='text' placeholder='Write a Comment')
-          i.big.send.link.icon
+      include ../partials/script/components/newUserComment
       
     .ui.fluid.card.test#step3B
       .content
@@ -230,12 +215,7 @@ block content
               .actions
                 a.comment.like Like
                 a.comment.flag Flag
-      .extra.content
-        .ui.fluid.left.labeled.right.icon.input
-          .ui.label
-            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment(type='text' placeholder='Write a Comment')
-          i.big.send.link.icon
+      include ../partials/script/components/newUserComment
                                
     .ui.fluid.card.test#step4
       .content
@@ -278,12 +258,7 @@ block content
               .actions
                 a.comment.like Like
                 a.comment.flag Flag      
-      .extra.content
-        .ui.fluid.left.labeled.right.icon.input
-          .ui.label
-            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment(type='text' placeholder='Write a Comment')
-          i.big.send.link.icon  
+      include ../partials/script/components/newUserComment
 
 block scripts
   script(src='/postFunctionalities.js')

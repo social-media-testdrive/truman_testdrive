@@ -2,6 +2,8 @@
 // Hide news feed before it is all loaded
 $('#content').hide();
 $('#loading').show();
+let enableDataCollection;
+let isResearchVersion;
 
 function changeActiveProgressTo(activeStep) {
     if (!$(activeStep).hasClass('progressBarActive')) {
@@ -9,9 +11,6 @@ function changeActiveProgressTo(activeStep) {
         $(activeStep).addClass('progressBarActive');
     }
 }
-
-let enableDataCollection;
-let isResearchVersion;
 
 function addVoiceoverTime() {
     const voiceoverChangeTime = window.sessionStorage.getItem('voiceoverChangeTime');
@@ -31,7 +30,13 @@ function addVoiceoverTime() {
 $(window).on("load", function() {
     enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
     isResearchVersion = $('meta[name="isResearchVersion"]').attr('content') === "true";
+    const pathArrayForHeader = window.location.pathname.split('/');
+    let currentPageForHeader = pathArrayForHeader[1];
+    let currentModuleForHeader = pathArrayForHeader[2];
 
+    /**
+     * Voiceover functionality
+     */
     const initialVoiceoverState = window.sessionStorage.getItem('enableVoiceovers');
     if (initialVoiceoverState === 'false') {
         $('#voiceoverCheckbox input').removeAttr('checked');
@@ -42,22 +47,6 @@ $(window).on("load", function() {
     if (window.sessionStorage.getItem('voiceoverChangeTime') === null) {
         window.sessionStorage.setItem('voiceoverChangeTime', Date.now());
     }
-
-    // If the current page is not the first page of a new session (https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage), 
-    // log the time between the last time the voiceover was logged to be "on" and this page load (if the voiceover is on) 
-    // if (enableDataCollection && voiceoverChangeTime !== null) {
-    //     if ($("input[name='voiceoverCheckbox']").is(":checked")) {
-    //         const timeDuration = timePageLoaded - voiceoverChangeTime;
-    //         if (enableDataCollection && !(!isResearchVersion && window.location.pathname === "/")) {
-    //             // Record the time the voiceover was on ONLY if data collection is enabled AND if it's not the home page for the public site 
-    //             // (because prior to clicking a module card, no "guest" account has been created to log voiceoverTimer to)
-    //             $.post("/voiceoverTimer", {
-    //                 voiceoverTimer: timeDuration,
-    //                 _csrf: $('meta[name="csrf-token"]').attr('content')
-    //             });
-    //         };
-    //     }
-    // }
 
     $('#voiceoverCheckbox').change(function() {
         if ($("input[name='voiceoverCheckbox']").is(":checked")) {
@@ -74,18 +63,16 @@ $(window).on("load", function() {
     // Record the current page if data collection is enabled
     // AND if it's not the home page for the public site (because prior to clicking a module card, no "guest" account has been created to log pageLog to)
     if (enableDataCollection && !(!isResearchVersion && window.location.pathname === "/")) {
-        let pathArray = window.location.pathname.split('/');
         $.post("/pageLog", {
-            subdirectory1: pathArray[1],
-            subdirectory2: pathArray[2],
+            subdirectory1: currentPageForHeader,
+            subdirectory2: currentModuleForHeader,
             _csrf: $('meta[name="csrf-token"]').attr('content')
         });
     }
 
-    // managing the progress bar in the header
-    let pathArrayForHeader = window.location.pathname.split('/');
-    let currentPageForHeader = pathArrayForHeader[1];
-    let currentModuleForHeader = pathArrayForHeader[2];
+    /**
+     * Progress Bar (in header) functionality
+     */
     let stepNumber = "";
     let jsonPath = '/json/progressDataA.json';
 
@@ -99,7 +86,7 @@ $(window).on("load", function() {
             break;
     }
 
-    // Adding the module title to the progress bar
+    // Add the module title to the progress bar
     $.getJSON('/json/moduleInfo.json', function(data) {
         if (currentModuleForHeader === undefined) {
             return;
@@ -197,36 +184,39 @@ $(window).on("load", function() {
         }
     });
 
-    $('.ui.sticky.sideMenu')
-        .sticky({
-            context: '#content',
-            offset: 115
-        });
-
-    //close loading dimmer on load
+    /**
+     * Load Content
+     */
     $('#loading').hide();
     $('#content').attr('style', 'block');
     $('#content').fadeIn('slow');
 
-    //close messages from flash message
-    $('.message .close')
-        .on('click', function() {
-            $(this).closest('.message').transition('fade');
-        });
-
-    //activate checkboxes
-    $('.ui.checkbox')
-        .checkbox();
-
-    //get add new reply post modal to show
-    $('.reply.button').click(function() {
-        let parent = $(this).closest(".ui.fluid.card");
-        let postID = parent.attr("postID");
-        parent.find("input.newcomment").focus();
+    /**
+     * Additional functionality
+     */
+    // Keep user & actor side menu profile sticky on page as user scrolls on page.
+    $('.ui.sticky.sideMenu').sticky({
+        context: '#content',
+        offset: 115
     });
 
-    //get add new feed post modal to work
-    $("#newpost, a.item.newpost, .editProfilePictureButton").click(function() {
+    // Close messages from flash message
+    $('.message .close').on('click', function() {
+        $(this).closest('.message').transition('fade');
+    });
+
+    // Activate checkboxes
+    $('.ui.checkbox').checkbox();
+
+    // Activate accordions 
+    $('.ui.accordion').accordion();
+
+    // Activate dropdowns 
+    $('.ui.dropdown').dropdown();
+
+    // When #newpost is clicked, open new post modal and lazy load images. 
+    // When .editProfilePictureButton is clicked, open edit profile modal and lazy load images.
+    $("#newpost, .editProfilePictureButton").click(function() {
         $('.ui.small.post.modal').modal('show');
         //lazy load the images in the modal
         $(".lazy").each(function() {
@@ -234,180 +224,42 @@ $(window).on("load", function() {
         });
     });
 
-    //New Class Button
-    $("#new_class.ui.big.green.labeled.icon.button").click(function() {
-        $('.ui.small.newclass.modal').modal('show');
+    /** 
+     * Button links functionality
+     */
+    // $(document).on("click", ELEMENT, function () {}) will bind the event on the elements which are not present at the time of the binding event. 
+    // This is called event delgation. 
+    // Whereas $(ELEMENT).click(function () { will bind events only to the elements which are present in DOM.
+    // We use $(document).on("click") because many of the transition buttons are not green to begin with. 
+
+    // To tutorial page: /tutorial/
+    $(document).on('click', '.cybertutorial.green, .cybertutorial.blue', function() {
+        const pathArray = window.location.pathname.split('/');
+        window.location.href = '/tutorial/' + pathArray[2];
     });
 
-    //new post validator (picture and text can not be empty)
-    $('.ui.feed.form')
-        .form({
-            on: 'blur',
-            fields: {
-                body: {
-                    identifier: 'body',
-                    rules: [{
-                        type: 'empty',
-                        prompt: 'Please add some text.'
-                    }]
-                }
-            }
-        });
-
-    // article info popup in the digital-literacy module
-    $(".modual.info_button").click(function() {
-
-        $('.ui.small.popinfo.modal').modal('show');
-        document.getElementById('post_info_text_modual').innerHTML = $(this).data('info_text');
-    });
-
-    //Picture Preview on Image Selection
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            //console.log("Now changing a photo");
-            reader.onload = function(e) {
-                $('#imgInp').attr('src', e.target.result);
-                //console.log("FILE is "+ e.target.result);
-            }
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    $("#picinput").change(function() {
-        //console.log("@@@@@ changing a photo");
-        readURL(this);
-    });
-
-    //Sign Up Button
-    // $('.ui.big.green.labeled.icon.button.signup')
-    //   .on('click', function () {
-    //     window.location.href = '/signup';
-    //   });
-
-    //Cyberbullying to Transition
-    $('.cybertrans')
-        .on('click', async function(e) {
-            if ($(this).hasClass('green')) {
-                let pathArray = window.location.pathname.split('/');
-                if (typeof customOnClickGreenContinue !== 'undefined') {
-                    await customOnClickGreenContinue();
-                };
-                // Special Case: When a user clicks "Let's Continue" in the accounts module, but has not completed any profile fields
-                // prompt the user: "It seems you did not fill out any profile information fields. Are you sure you would like to continue? "
-                if (pathArray[2] === "accounts") {
-                    if ($('input[type=text], textarea[type=text]').filter(function() { return $(this).val() == ""; }).length === 6 && $('input[name="profilePhoto"]').val() === 'avatar-icon.svg') {
-                        if ($('#confirmContinueCheck').is(":hidden")) {
-                            $('#confirmContinueCheck').show();
-                            $('#confirmContinueCheck')[0].scrollIntoView({
-                                behavior: "smooth", // or "auto" or "instant"
-                                block: "center", // defines vertical alignment
-                                inline: "nearest" // defines horizontal alignment
-                            });;
-                            return;
-                        };
-                    };
-                    // Special Case: When a user clicks "Let's Continue" in the digfoot, esteem, targeted module, but has not clicked on any post
-                    // prompt the user: "It seems you did not click on any posts to ... Are you sure you do not want to click on a post before continuing?"
-                } else if (pathArray[2] === "digfoot" || pathArray[2] === "esteem" || pathArray[2] === "targeted" || pathArray[2] === "cyberbullying") {
-                    if (!clickPost && $('#confirmContinueCheck').is(":hidden")) {
-                        $('#confirmContinueCheck').show();
-                        $('#confirmContinueCheck')[0].scrollIntoView({
-                            behavior: "smooth", // or "auto" or "instant"
-                            block: "center", // defines vertical alignment
-                            inline: "nearest" // defines horizontal alignment
-                        });;
-                        return;
-                    };
-                };
-                window.location.href = '/trans/' + pathArray[2];
-            } else {
-                e.preventDefault();
-            };
-        });
-
-    //cyberbullying to transition 2
-    $('.cybertrans2')
-        .on('click', function(e) {
-            if ($(this).hasClass('green')) {
-                let pathArray = window.location.pathname.split('/');
-                window.location.href = '/trans2/' + pathArray[2];
-                //window.location.href = '/trans2/privacy';
-            } else {
-                e.preventDefault();
-                //alert('Please go through each blue dot to proceed further !');
-            }
-
-        });
-
-    /*
-    Start button links
-    */
-
-    //Cyberbullying to Transition
-    $('.ui.big.green.labeled.icon.button.cybertutorial')
-        .on('click', function() {
-            let pathArray = window.location.pathname.split('/');
-            window.location.href = '/tutorial/' + pathArray[2];
-        });
-
-    //Cyberbullying to Transition (blue button)
-    $('.ui.big.blue.labeled.icon.button.cybertutorial')
-        .on('click', function() {
-            let pathArray = window.location.pathname.split('/');
-            window.location.href = '/tutorial/' + pathArray[2];
-        });
-
-    //Cyberbullying to Transition
-    $(document).on('click', '.ui.big.labeled.icon.button.cybersim.green', function() {
-        let pathArray = window.location.pathname.split('/');
+    // To guided activity page: /sim/
+    $(document).on('click', '.cybersim.green, .cybersim.blue', function() {
+        const pathArray = window.location.pathname.split('/');
         window.location.href = '/sim/' + pathArray[2];
     });
 
-    //Cyberbullying to Transition (blue button)
-    $(document).on('click', '.ui.big.labeled.icon.button.cybersim.blue', function() {
-        let pathArray = window.location.pathname.split('/');
-        window.location.href = '/sim/' + pathArray[2];
-    });
-
-    //Cyberbullying to Transition 1
-    $(document).on('click', '.ui.big.labeled.icon.button.cybersim1.green', function() {
-        let pathArray = window.location.pathname.split('/');
+    // To guided activity page: /sim1/
+    $(document).on('click', '.cybersim1.green', function() {
+        const pathArray = window.location.pathname.split('/');
         window.location.href = '/sim1/' + pathArray[2];
     });
 
-    //Privacy sim2 to Tutorial
-    $(document).on('click', '.ui.big.labeled.icon.button.privacytutorial.green', function() {
-        window.location.href = '/tutorial/privacy';
-    });
-
-    //Privacy sim to trans2
-    $(document).on('click', '.ui.big.labeled.icon.button.privacytrans2.green', function() {
-        // Special Case: When a user clicks "Let's Continue" in the privacy module, but has not toggled any settings
-        // prompt the user: Are you sure you do not want to try changing some privacy settings before continuing?
-        if (!clickAction && $('#confirmContinueCheck').is(":hidden")) {
-            $('#confirmContinueCheck').show();
-            $('#confirmContinueCheck')[0].scrollIntoView({
-                behavior: "smooth", // or "auto" or "instant"
-                block: "center", // defines vertical alignment
-                inline: "nearest" // defines horizontal alignment
-            });;
-            return;
-        }
-        window.location.href = '/trans2/privacy';
-    });
-
-    //To sim2
-    $(document).on('click', '.ui.big.labeled.icon.button.cybersim2.green', async function() {
-        let pathArray = window.location.pathname.split('/');
+    // To guided activity page: /sim2/
+    $(document).on('click', '.cybersim2.green', async function() {
+        const pathArray = window.location.pathname.split('/');
         if (typeof customOnClickGreenContinue !== 'undefined') {
             await customOnClickGreenContinue();
         }
         // Special Case: When a user clicks "Let's Continue" in the accounts module, but has a Very Weak or Weak password,
         // prompt the user: "This password seems weak and easy to guess, are you sure you want to use it?"
         if (pathArray[2] === "accounts") {
-            let result = zxcvbn($('input[name="password"]').val());
+            const result = zxcvbn($('input[name="password"]').val());
             if (result.score == 0 || result.score == 1) {
                 if ($('#confirmContinueCheck').is(":hidden")) {
                     $('#confirmContinueCheck').show();
@@ -423,163 +275,129 @@ $(window).on("load", function() {
         window.location.href = '/sim2/' + pathArray[2];
     });
 
-    //Privacy free-play to settings
+    // To transition page: /trans/
+    $(document).on('click', '.cybertrans.green', async function(e) {
+        if ($(this).hasClass('green')) {
+            let pathArray = window.location.pathname.split('/');
+            if (typeof customOnClickGreenContinue !== 'undefined') {
+                await customOnClickGreenContinue();
+            };
+            // Special Case: When a user clicks "Let's Continue" in the accounts module, but has not completed any profile fields
+            // prompt the user: "It seems you did not fill out any profile information fields. Are you sure you would like to continue? "
+            if (pathArray[2] === "accounts") {
+                if ($('input[type=text], textarea[type=text]').filter(function() { return $(this).val() == ""; }).length === 6 && $('input[name="profilePhoto"]').val() === 'avatar-icon.svg') {
+                    if ($('#confirmContinueCheck').is(":hidden")) {
+                        $('#confirmContinueCheck').show();
+                        $('#confirmContinueCheck')[0].scrollIntoView({
+                            behavior: "smooth", // or "auto" or "instant"
+                            block: "center", // defines vertical alignment
+                            inline: "nearest" // defines horizontal alignment
+                        });;
+                        return;
+                    };
+                };
+                // Special Case: When a user clicks "Let's Continue" in the digfoot, esteem, targeted module, but has not clicked on any post
+                // prompt the user: "It seems you did not click on any posts to ... Are you sure you do not want to click on a post before continuing?"
+            } else if (pathArray[2] === "digfoot" || pathArray[2] === "esteem" || pathArray[2] === "targeted" || pathArray[2] === "cyberbullying") {
+                if (!clickPost && $('#confirmContinueCheck').is(":hidden")) {
+                    $('#confirmContinueCheck').show();
+                    $('#confirmContinueCheck')[0].scrollIntoView({
+                        behavior: "smooth", // or "auto" or "instant"
+                        block: "center", // defines vertical alignment
+                        inline: "nearest" // defines horizontal alignment
+                    });;
+                    return;
+                };
+            };
+            window.location.href = '/trans/' + pathArray[2];
+        } else {
+            e.preventDefault();
+        };
+    });
+
+    //To transition page: /trans2/
+    $(document).on('click', '.trans2.green', function() {
+        // Special Case: When a user clicks "Let's Continue" in the privacy module, but has not toggled any settings
+        // prompt the user: Are you sure you do not want to try changing some privacy settings before continuing?
+        if (!clickAction && $('#confirmContinueCheck').is(":hidden")) {
+            $('#confirmContinueCheck').show();
+            $('#confirmContinueCheck')[0].scrollIntoView({
+                behavior: "smooth", // or "auto" or "instant"
+                block: "center", // defines vertical alignment
+                inline: "nearest" // defines horizontal alignment
+            });;
+            return;
+        }
+        const pathArray = window.location.pathname.split('/');
+        window.location.href = '/trans2/' + pathArray[2];
+    });
+
+    // To free play page: /modual/
+    $(document).on('click', '.cyber_script.blue', function() {
+        const pathArray = window.location.pathname.split('/');
+        window.location.href = '/modual/' + pathArray[2];
+    });
+
+    // Privacy free-play to settings
     $(document).on('click', '.ui.big.labeled.icon.button.free1.green', function() {
         window.location.href = '/free-settings/privacy';
     });
 
-    //Privacy settings to free-play2
+    // Privacy settings to free-play2
     $(document).on('click', '.ui.big.labeled.icon.button.settings1.green', function() {
         window.location.href = '/free-play2/privacy';
     });
 
-    //Privacy free-play2 to settings3
+    // Privacy free-play2 to settings3
     $(document).on('click', '.ui.big.labeled.icon.button.settings3.green', function() {
         window.location.href = '/free-settings3/privacy';
     });
 
-    //Privacy settings3 to free-play4
+    // Privacy settings3 to free-play4
     $(document).on('click', '.ui.big.labeled.icon.button.free4.green', function() {
         window.location.href = '/free-play4/privacy';
     });
 
-    //Privacy free-play4 to settings2
+    // Privacy free-play4 to settings2
     $(document).on('click', '.ui.big.labeled.icon.button.settings2.green', function() {
         window.location.href = '/free-settings2/privacy';
     });
 
-    //Privacy settings2 to free3
+    // Privacy settings2 to free3
     $(document).on('click', '.ui.big.labeled.icon.button.free3.green', function() {
         window.location.href = '/free-play3/privacy';
     });
 
-    //Privacy free3 to results
+    // Privacy free3 to results
     $(document).on('click', '.ui.big.labeled.icon.button.privacyresults.green', function() {
         window.location.href = '/results/privacy';
     });
 
+    // To Edit My Profile page
+    $('.ui.editprofile.button').on('click', function() {
+        const pathArray = window.location.pathname.split('/');
+        window.location.href = '/account/' + pathArray[2];
+    });
 
-    //Cyberbullying Start to Tutorial
-    $('.ui.big.green.labeled.icon.button.cyberstart')
-        .on('click', function() {
-            window.location.href = '/tutorial/cyberbullying';
-        });
+    /** End of button links functionality */
 
-    //Cyberbullying to Transition
-    $('.ui.big.green.labeled.icon.button.cybertrans_script')
-        .on('click', function() {
-            window.location.href = '/trans_script/cyberbullying';
-        });
-
-    ///modual/:modId
-    //Cyberbullying Transition to freeplay
-    $('.ui.big.green.labeled.icon.button.cyber_script')
-        .on('click', function() {
-            console.log(window.location.pathname)
-            let pathArray = window.location.pathname.split('/');
-            console.log(pathArray);
-            window.location.href = '/modual/' + pathArray[2];
-        });
-
-    //Cyberbullying Transition to freeplay (blue button)
-    $('.ui.big.blue.labeled.icon.button.cyber_script')
-        .on('click', function() {
-            console.log(window.location.pathname)
-            let pathArray = window.location.pathname.split('/');
-            console.log(pathArray);
-            window.location.href = '/modual/' + pathArray[2];
-        });
-
-
-    //Sign Up Info Skip Button
-    $('button.ui.button.skip')
-        .on('click', function() {
-            window.location.href = '/info';
-        });
-
-
-    //Pre qiuz for presentation mod (rocket!!!)
-    $('.ui.big.green.labeled.icon.button.prepres')
-        .on('click', function() {
-            window.location.href = '/modual/presentation';
-        });
-
-    //Go to Post Quiz (Presentation)
-    $('.ui.big.green.labeled.icon.button.prez_post_quiz')
-        .on('click', function() {
-            window.location.href = '/postquiz/presentation';
-        });
-
-    //Go to Post Quiz (ANY)
-    $('.ui.big.green.labeled.icon.button.post_quiz')
-        .on('click', function() {
-            let mod = $(this).attr("mod");
-            console.log("Mod is now: " + mod);
-            window.location.href = '/postquiz/' + mod + '/wait';
-        });
-
-
-    $('.ui.big.green.labeled.icon.button.finished')
-        .on('click', function() {
-            window.location.href = '/';
-        });
-
-
-    $('.ui.big.green.labeled.icon.button.finish_lesson')
-        .on('click', function() {
-            window.location.href = '/';
-        });
-
-    //Community Rules Button (rocket!!!)
-    $('.ui.big.green.labeled.icon.button.com')
-        .on('click', function() {
-            window.location.href = '/info'; //maybe go to tour site???
-        });
-
-    //Info  (rocket!!!)
-    $('.ui.big.green.labeled.icon.button.info')
-        .on('click', function() {
-            window.location.href = '/'; //maybe go to tour site???
-        });
-
-    //More info Skip Button
-    $('button.ui.button.skip')
-        .on('click', function() {
-            window.location.href = '/com'; //maybe go to tour site???
-        });
-
-    //Edit button
-    $('.ui.editprofile.button')
-        .on('click', function() {
-            let pathArray = window.location.pathname.split('/');
-            window.location.href = '/account/' + pathArray[2];
-        });
-
-    /*
-    end button links
-    */
-
-    //lazy loading of images
-    $(`#content .fluid.card .img img,
-    img.ui.avatar.image,
-    a.avatar.image img`)
-        .visibility({
-            type: 'image',
-            offset: 0,
-            onLoad: function(calculations) {
-                $(`#content .fluid.card .img img,
+    // Lazy loading of images
+    $(`#content .fluid.card .img img, img.ui.avatar.image, a.avatar.image img`).visibility({
+        type: 'image',
+        offset: 0,
+        onLoad: function(calculations) {
+            $(`#content .fluid.card .img img,
             img.ui.avatar.image,
             a.avatar.image img`)
-                    .visibility('refresh');
-            }
-        });
+                .visibility('refresh');
+        }
+    });
 
     $(".dimmer.soon").dimmer({
         closable: false
     });
 
     introJs().start();
-
 });
 
 $(window).on("beforeunload", function() {

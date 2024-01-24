@@ -127,12 +127,7 @@ block content
               .actions
                 a.like.comment Like
                 a.flag.comment Flag
-      .extra.content
-        .ui.fluid.left.labeled.right.icon.input
-          .ui.label
-            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment(type='text' placeholder='Write a Comment')
-          i.big.send.link.icon
+      include ../partials/script/components/newUserComment
 
     .ui.fluid.card.dim(simPostNumber="2")
       .ui.dimmer.flag
@@ -183,12 +178,7 @@ block content
               .actions
                 a.like.comment Like
                 a.flag.comment Flag
-      .extra.content
-        .ui.fluid.left.labeled.right.icon.input
-          .ui.label
-            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment(type='text' placeholder='Write a Comment')
-          i.big.send.link.icon
+      include ../partials/script/components/newUserComment
     
     .ui.fluid.card.test.dim(simPostNumber="3")
         .ui.dimmer.flag
@@ -241,12 +231,7 @@ block content
                 .actions
                   a.like.comment Like
                   a.flag.comment Flag           
-        .extra.content
-          .ui.fluid.left.labeled.right.icon.input
-            .ui.label
-              img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-            input.newcomment(type='text' placeholder='Write a Comment')
-            i.big.send.link.icon
+        include ../partials/script/components/newUserComment
     
     .ui.fluid.card.dim(simPostNumber="4")
       .ui.dimmer.flag
@@ -297,12 +282,7 @@ block content
               .actions
                 a.like.comment Like
                 a.flag.comment Flag
-      .extra.content
-        .ui.fluid.left.labeled.right.icon.input
-          .ui.label
-            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment(type='text' placeholder='Write a Comment')
-          i.big.send.link.icon
+      include ../partials/script/components/newUserComment
     .ui.message.warning.hidden#confirmContinueCheck
       .ui.header 
         | It seems you did not click on any of the posts to think more about how a post can impact someone's digital footprint. 

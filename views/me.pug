@@ -33,11 +33,11 @@ block content
 
 block scripts
   script. 
-    // add humanized time to all posts
+    //- add humanized time to all posts
     function addHumanizedTimeToPost(){
-      let target = $(this);
-      var ms = parseInt(target.text(), 10);
-      let time = new Date(ms);
+      const target = $(this);
+      const ms = parseInt(target.text(), 10);
+      const time = new Date(ms);
       target.text(humanized_time_span(time));
     };
     
@@ -48,3 +48,6 @@ block scripts
         window.history.back();
       });
     });
+
+block styles
+  link(rel='stylesheet', href='/css/script.css')

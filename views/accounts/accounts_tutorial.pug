@@ -4,12 +4,7 @@ block content
   .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
     .ui.one.column.centered.grid.feedbackMessagesGrid
       .ui.fixed.bottom.sticky
-        .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
-          i.close.icon
-          i.question.icon.float
-          .content
-            .ui.header Need some help?
-            p Scroll up and click "Next" to begin!
+        include ../partials/messages/clickNextMessage
     .ui.raised.segment#generalStep
       h2.ui.header Create An Account
       .ui.form
@@ -21,8 +16,8 @@ block content
           input(type="password" disabled="" name="password" placeholder="password" onfocus="$(this).removeAttr('readonly');")         
           
 block scripts
-  script(src="/module_js/accounts/accounts_tutorial.js")
   script(src='/module_js/voiceover.js')
+  script(src="/module_js/accounts/accounts_tutorial.js")
   script(src="/module_js/base_introSteps.js")
 
 block styles

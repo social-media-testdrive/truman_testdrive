@@ -65,6 +65,7 @@ block content
       include partials/script/modals/digitalLiteracyFlag
       include partials/script/modals/digitalLiteracyArticle
       include partials/script/modals/digitalLiteracyArticleInfo
+      include partials/script/modals/sharePost
     if mod=='esteem'
       include partials/script/modals/esteemPost
     if mod=='digfoot'
@@ -76,20 +77,20 @@ block content
       include partials/script/modals/habitsPost
     if mod='phishing'
       include partials/script/modals/phishingModals
+    if mod=='advancedlit'
+      include partials/script/modals/sharePost
             
   .computer.only.tablet.only.four.wide.column
     block rightColumn
                  
-block scripts
-  script(src='/module_js/voiceover.js')
-  script(src='/postFunctionalities.js')
-  if mod=='safe-posting'
-    script(src=cdn+'/js/chatbox3.js')
+block scripts  
   if mod=='habits'
     script(src="/module_js/habits/habits_script.js")
-  if mod=='phishing'
-    script(src="/module_js/phishing/phishing_script.js") 
+  script(src='/module_js/voiceover.js')
+  script(src='/postFunctionalities.js')
   script(src='/module_js/script.js')
+  if mod=='safe-posting'
+    script(src=cdn+'/js/chatbox3.js')
   block scripts2
      
 block styles

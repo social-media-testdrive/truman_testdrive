@@ -111,8 +111,13 @@ block content
           .extra.content
             .ui.fluid.left.labeled.right.icon.input
               .ui.label
-                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-              input.newcomment(type='text' placeholder='Write a Comment')
+                if user.profile.picture
+                  img.ui.avatar.image.small(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name || user.username || user.id)
+                else
+                  img.ui.avatar.image.small(src=user.gravatar(60), name=user.profile.name || user.username || user.id)            
+              .ui.form
+                .field 
+                  textarea.newcomment(type='text', placeholder='Write a Comment' rows='1')
               i.big.send.link.icon#sendComment1
                 
     //-%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -189,12 +194,7 @@ block content
                   .actions
                     a.comment.like Like
                     a.comment.flag Flag                  
-            .extra.content
-              .ui.fluid.left.labeled.right.icon.input
-                .ui.label
-                  img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-                input.newcomment(type='text' placeholder='Write a Comment')
-                i.big.send.link.icon
+            include ../partials/script/components/newUserComment
                                                             
     .ui.fluid.card.test.feedDisplay
           .content
@@ -237,12 +237,7 @@ block content
                   .actions
                     a.comment.like Like
                     a.comment.flag Flag    
-          .extra.content
-            .ui.fluid.left.labeled.right.icon.input
-              .ui.label
-                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-              input.newcomment(type='text' placeholder='Write a Comment')
-              i.big.send.link.icon
+          include ../partials/script/components/newUserComment
                               
     .ui.fluid.card.test.feedDisplay
           .content
@@ -301,12 +296,7 @@ block content
                   .actions
                     a.comment.like Like
                     a.comment.flag Flag        
-            .extra.content
-              .ui.fluid.left.labeled.right.icon.input
-                .ui.label
-                  img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-                input.newcomment(type='text' placeholder='Write a Comment')
-                i.big.send.link.icon
+            include ../partials/script/components/newUserComment
                     
     .ui.fluid.card.test.feedDisplay#.mb-9
           .content
@@ -365,12 +355,7 @@ block content
                   .actions
                     a.comment.like Like
                     a.comment.flag Flag      
-            .extra.content
-              .ui.fluid.left.labeled.right.icon.input
-                .ui.label
-                  img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-                input.newcomment(type='text' placeholder='Write a Comment')
-                i.big.send.link.icon
+            include ../partials/script/components/newUserComment
     br   
     br         
       

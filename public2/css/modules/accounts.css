@@ -17,11 +17,6 @@
     font-family: dotsfont;
 }
 
-#removeHidden,
-#clickAllDotsWarning {
-    display: none;
-}
-
 .ui.form {
     font-size: 130%;
 }
@@ -56,15 +51,4 @@
 #feedbackSuggestion {
     padding-left: 28px;
     margin-top: 0;
-}
-
-.lazy {
-    width: 90%;
-    height: 90%;
-}
-
-.profilePictureModal {
-    height: calc(100% - 50px);
-    margin-top: 30px !important;
-    margin-bottom: 30px !important;
 }

@@ -1,9 +1,9 @@
-extends ../ui_layout
+extends ./ui_layout
 
 block content
   .ui.text.container.mb-9
 
 block scripts
-  script(src="/module_js/advancedlit/advancedlit_trans_script.js")
+  script(src=`/module_js/${mod}//${mod}_trans_script.js`)
   script(src="/module_js/voiceover.js")
   script(src="/module_js/base_introSteps.js")

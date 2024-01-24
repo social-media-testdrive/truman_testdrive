@@ -91,7 +91,7 @@ exports.getFeed = function(user_posts, script_feed, user) {
                 // Now we are looking at the main post.
                 // Check if there is a like recorded for this post.
                 if (user.feedAction[feedIndex].liked) {
-                    script_feed[0].like = true;
+                    script_feed[0].liked = true;
                     script_feed[0].likes++;
                 }
                 // Check if post has been flagged: remove it from feed array (script_feed)

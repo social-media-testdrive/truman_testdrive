@@ -1,5 +1,5 @@
 //- Actor Post
-.ui.fluid.card.dim(isArticle=(val.module=='digital-literacy' && val.info_text!==""), postNumber = val.post_id, postID=val.id, type='actor', actor_un = val.actor.username, actor_name = val.actor.profile.name, actor_pic = val.actor.profile.picture, class=(val.module=="targeted" && isAd ? "targetedAdPost" : "", val.module=="habits" ? "habitsHomeDisplay" : ""))
+.ui.fluid.card.dim(isArticle=(val.module=='digital-literacy' && val.info_text!==""), postNumber = val.post_id, postID=val.id, type='actor', actor_un = val.actor.username, actor_name = val.actor.profile.name, actor_pic = val.actor.profile.picture, class=(val.module=="targeted" && isAd ? "targetedAdPost" : val.module=="habits" ? "habitsHomeDisplay" : ""))
   //- dimmer DIV for flagging
   .ui.dimmer.flag
     .content
@@ -29,7 +29,7 @@
       .ui.right.floated.menu
         .ui.dropdown.icon.item
           i.ellipsis.horizontal.icon
-          .menu.fluid.floated.left#item1
+          .menu.fluid.floated.left
             .item(data-value='0')
               i.fitted.circular.close.icon
               | Hide Ad
@@ -70,19 +70,19 @@
     .content#sponsoredTag
       i.left.floated.external.alternate.icon
       .left.floated.meta="Sponsored"
-  .ui.bottom.attached.icon.buttons(class=(val.module=='digital-literacy' && val.info_text!="" ? "four" : "three"))
+  .ui.bottom.attached.icon.buttons(class=(val.module=='digital-literacy' && val.info_text!="" || val.module=='advancedlit' && val.info_text!=""? "four" : "three"))
     .ui.reply.button(tabindex='0')
       i.reply.icon
       |  Reply
     .ui.flag.button(tabindex='0')
       i.flag.icon
       |  Flag
-    if (val.module=='digital-literacy' && val.info_text!="")
+    if (val.module=='digital-literacy' && val.info_text!="" || val.module=='advancedlit' && val.info_text!="")
       .ui.share.button(tabindex='0')
         i.share.icon
         | Share
     .ui.labeled.button(tabindex='0')
-      .ui.like.button
+      .ui.like.button(class=val.liked ? "red" : "")
         i.heart.icon
         |  Like
       a.ui.basic.red.left.pointing.label.count=val.likes
@@ -114,18 +114,10 @@
                   span.date.sim=(Date.now() + comment.time)
                   .rating
                     i.heart.icon(class=comment.liked ? "red" : "")
-                    span=comment.likes
+                    span.num=comment.likes
                     |  Likes
                 .text=comment.body
                 .actions
                   a.like.comment(class=comment.liked ? "red" : "") Like
                   a.flag.comment Flag
-  .extra.content
-    .ui.fluid.left.labeled.right.icon.input
-      .ui.label
-        if user.profile.picture
-          img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name || user.username || user.id)
-        else
-          img.ui.avatar.image(src=user.gravatar(60), name=user.profile.name || user.username || user.id)            
-      input.newcomment(type='text', placeholder='Write a Comment')
-      i.big.send.link.icon  
+  include components/newUsercomment

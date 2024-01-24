@@ -171,7 +171,6 @@ exports.postActivityData = async(req, res, next) => {
 
         // Variable will become the value for activityData.reflectionAnswers
         const reflectionAnswersArray = getfilterObjects(user.reflectionAction, ['attemptDuration', 'answers'], module, 'modual');
-        console.log(reflectionAnswersArray);
         // Variable will become the value for activityData.quizAnswers
         const quizAnswersArray = getfilterObjects(user.quizAction, ['attemptNumber', 'attemptDuration', 'answers', 'numCorrect'], module, 'modual');
 

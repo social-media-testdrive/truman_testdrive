@@ -1,0 +1,64 @@
+- const pictures = ["bballprofpic.png", "boatprofpic.png", "cakeprofpic.png", "carprofpic.png", "catprofpic.png", "flowerprofpic.png", "pencilprofpic.png", "sparkprofpic.png", "wolfprofpic.png"] 
+//- Profile Picture Selection Modal 
+.ui.small.long.post.modal.profilePictureModal 
+  i.close.icon  
+  .header Choose a Profile Picture 
+  .content  
+    form.ui.profilePicForm.form 
+      .ui.segment
+        - for (var i = 0 ; i < 3; ++i) {
+          .three.fields
+            - for (let j = 0; j < 3; ++j){
+              .field
+                .ui.radio.checkbox
+                  input.hidden(type='radio' name='profilepicinput' value=pictures[i*3+j])
+                  label
+                    img.lazy(src='/images/picture.svg' data-src=cdn+"/profile_pictures/"+pictures[i*3+j])
+            - }
+        - }
+      .ui.error.message#noPhotoError 
+        | Please select a photo
+  .actions  
+    .ui.green.approve.button.labeled.icon
+      i.check.icon
+      |  Upload
+    .ui.red.deny.button.labeled.icon
+      i.close.icon
+      |  Cancel
+
+script.
+  const cdn = "https://dhpd030vnpk29.cloudfront.net"
+  $('.editProfilePictureButton').on('click', function() {
+    $('.profilePictureModal').modal({
+      onApprove: function() {
+          const imageName = $('input[name="profilepicinput"]:checked').val();
+          if (imageName !== undefined) {
+              $('#noPhotoError').hide();
+              const srcString = cdn + '/profile_pictures/' + imageName;
+              $('.profileImage').attr('src', srcString);
+              $('input[name="profilePhoto"]').val(imageName).trigger('input');
+              return true;
+          } else {
+              $('#noPhotoError').show();
+              return false;
+          }
+      },
+      onDeny: function() {
+          return true;
+      }
+    }).modal('show');
+  });
+
+  $('input:radio[name="profilepicinput"]').change(function() {
+      $('#noPhotoError').hide();
+  });
+
+style(type='text/css').
+  .lazy {
+    width: 90%;
+    height: 90%;
+  }
+  .profilePictureModal {
+    margin-top: 30px !important;
+    margin-bottom: 30px !important;
+  }

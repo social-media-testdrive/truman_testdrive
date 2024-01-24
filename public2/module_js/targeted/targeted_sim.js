@@ -80,7 +80,7 @@ function eventsAfterHints() {
         duration: 300
     });
 
-    $('.ui.accordion').accordion();
+
 
     //Adding functionality to the dropdown
     $('.ui.dropdown.icon.item').on('click', function() {

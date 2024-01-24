@@ -5,7 +5,6 @@ block content
    //- #####################################################
    .ui.one.column.centered.grid.feedbackMessagesGrid
      .ui.fixed.bottom.sticky
-       
        .ui.icon.compact.message.warning.hidden#clickNextHelpMessage
          i.close.icon
          i.question.icon.float
@@ -33,7 +32,6 @@ block content
 
    .ui.grid.gridInsideTab 
      .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.centered
-       
        .ui.fluid.card.dim()#step1
          .ui.dimmer.flag
            .content
@@ -77,13 +75,15 @@ block content
                  a.author Dylan Moore
                  .metadata
                    span.date 1 minute ago
-                   i.heart.icon
-                   |  0 Likes
+                   .rating 
+                      i.heart.icon
+                      span.num 0
+                      |  Likes
                  .text()
                    | I'm pretty sure you're right! 
                  .actions
-                   a.like Like
-                   a.flag Flag     
+                   a.like.comment Like
+                   a.flag.comment Flag     
              .comment
                a.avatar
                  img(src=cdn+'/profile_pictures/user25.jpg')
@@ -91,19 +91,16 @@ block content
                  a.author Ella Sroni
                  .metadata
                    span.date 1 minute ago
-                   i.heart.icon
-                   |  0 Likes
+                   .rating
+                    i.heart.icon
+                    span.num 0
+                    |  Likes
                  .text()
                    | so cute 😍
                  .actions
-                   a.like Like
-                   a.flag Flag   
-         .extra.content
-           .ui.fluid.left.labeled.right.icon.input
-             .ui.label
-               img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-             input.newcomment(type='text' placeholder='Write a Comment')
-             i.big.send.link.icon  
+                   a.like.comment Like
+                   a.flag.comment Flag   
+         include ../partials/script/components/newUserComment
        
        .ui.fluid.card.dim.articleCard()
          .ui.dimmer.flag
@@ -152,13 +149,15 @@ block content
                  a.author Daniel Mai
                  .metadata
                    span.date 1 minute ago
-                   i.heart.icon
-                   |  0 Likes
+                   .rating
+                    i.heart.icon
+                    span.num 0
+                    |  Likes
                  .text()
                    | what?!?!?
                  .actions
-                   a.like Like
-                   a.flag Flag     
+                   a.like.comment Like
+                   a.flag.comment Flag     
              .comment
                a.avatar
                  img(src=cdn+'/profile_pictures/user73.JPG')
@@ -166,19 +165,16 @@ block content
                  a.author Noah Alpern
                  .metadata
                    span.date 1 minute ago
-                   i.heart.icon
-                   |  0 Likes
+                   .rating
+                    i.heart.icon
+                    span.num 0
+                    |  Likes
                  .text()
                    | i'll be so bored at home
                  .actions
-                   a.like Like
-                   a.flag Flag   
-         .extra.content
-           .ui.fluid.left.labeled.right.icon.input
-             .ui.label
-               img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-             input.newcomment(type='text' placeholder='Write a Comment')
-             i.big.send.link.icon    
+                   a.like.comment Like
+                   a.flag.comment Flag   
+         include ../partials/script/components/newUserComment   
        
        .ui.fluid.card.dim()
          .ui.dimmer.flag
@@ -223,13 +219,15 @@ block content
                  a.author Linsday Stokes
                  .metadata
                    span.date 1 minute ago
-                   i.heart.icon
-                   |  0 Likes
+                   .rating
+                    i.heart.icon
+                    span.num 0
+                    |  Likes
                  .text()
                    | I want some!!
                  .actions
-                   a.like Like
-                   a.flag Flag     
+                   a.like.comment Like
+                   a.flag.comment Flag     
              .comment
                a.avatar
                  img(src=cdn+'/profile_pictures/user32.JPG')
@@ -237,21 +235,18 @@ block content
                  a.author Erika Prakash
                  .metadata
                    span.date 1 minute ago
-                   i.heart.icon
-                   |  0 Likes
+                   .rating
+                    i.heart.icon
+                    span.num 0
+                    |  Likes
                  .text()
                    | What flavor did you get??
                  .actions
-                   a.like Like
-                   a.flag Flag   
-         .extra.content
-           .ui.fluid.left.labeled.right.icon.input
-             .ui.label
-               img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-             input.newcomment(type='text' placeholder='Write a Comment')
-             i.big.send.link.icon        
+                   a.like.comment Like
+                   a.flag.comment Flag   
+         include ../partials/script/components/newUserComment    
    //- #####################################################
-
+  include ../partials/script/modals/sharePost
 block scripts
   script(src='/postFunctionalities.js')
   script(src='/module_js/advancedlit/advancedlit_sim.js')

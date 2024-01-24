@@ -54,8 +54,7 @@ const stepsList = [{
     }
 ];
 
-$('.ui.dropdown')
-    .dropdown('set selected', '0');
+$('.ui.dropdown').dropdown('set selected', '0');
 
 // Defining multi-select onAdd and onRemove functions, triggered when a dropdown multi-select is changed
 $('.blocklistDropdown').dropdown({

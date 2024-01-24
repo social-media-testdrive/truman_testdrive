@@ -15,15 +15,15 @@ const scriptSchema = new mongoose.Schema({
 
     //comments for this post (is an array)
     comments: [new Schema({
-            module: String, // Name of the lesson module for this comment.
-            actor: { type: Schema.ObjectId, ref: 'Actor' }, // Actor who created comment.
-            body: { type: String, default: '', trim: true }, // Body (text) of the comment
-            commentID: Number, // Comment ID used in the CSV input file.
-            time: Number, // Relative time of the comment, in milliesconds.
-            likes: Number, // Number of likes this comment has.
+        module: String, // Name of the lesson module for this comment.
+        actor: { type: Schema.ObjectId, ref: 'Actor' }, // Actor who created comment.
+        body: { type: String, default: '', trim: true }, // Body (text) of the comment
+        commentID: Number, // Comment ID used in the CSV input file.
+        time: Number, // Relative time of the comment, in milliesconds.
+        likes: Number, // Number of likes this comment has.
 
-            new_comment: { type: Boolean, default: false },
-        }, { versionKey: false })] //versioning messes up our updates to the DB sometimes, so we kill it here
+        new_comment: { type: Boolean, default: false },
+    }, { versionKey: false })], //versioning messes up our updates to the DB sometimes, so we kill it here
 }, { versionKey: false });
 
 const Script = mongoose.model('Script', scriptSchema);
