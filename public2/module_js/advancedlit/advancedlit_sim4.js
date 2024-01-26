@@ -47,23 +47,25 @@ function customOnHintCloseFunction(stepID) {
     }
 }
 
-$('.continueButton').on('click', function() {
-    if (closedHints === numberOfHints) {
-        window.location.href = '/trans/advancedlit';
-    } else {
-        if ($('#clickAllDotsWarning').is(":hidden")) {
-            $('#clickAllDotsWarning').transition('fade');
+$(window).on("load", function() {
+    $('.continueButton').on('click', function() {
+        if (closedHints === numberOfHints) {
+            window.location.href = '/trans/advancedlit';
         } else {
-            //otherwise, bounce the message to draw attention to it
-            $('#clickAllDotsWarning').transition('bounce');
+            if ($('#clickAllDotsWarning').is(":hidden")) {
+                $('#clickAllDotsWarning').transition('fade');
+            } else {
+                //otherwise, bounce the message to draw attention to it
+                $('#clickAllDotsWarning').transition('bounce');
+            }
+            // Scroll to the first blue dot that is still visible
+            if ($('.introjs-hint:visible')[0]) { //Check if undefined. Undefined when there are no more visible blue dots.
+                $('.introjs-hint:visible')[0].scrollIntoView({
+                    behavior: "smooth", // or "auto" or "instant"
+                    block: "center", // defines vertical alignment
+                    inline: "nearest" // defines horizontal alignment
+                });
+            };
         }
-        // Scroll to the first blue dot that is still visible
-        if ($('.introjs-hint:visible')[0]) { //Check if undefined. Undefined when there are no more visible blue dots.
-            $('.introjs-hint:visible')[0].scrollIntoView({
-                behavior: "smooth", // or "auto" or "instant"
-                block: "center", // defines vertical alignment
-                inline: "nearest" // defines horizontal alignment
-            });
-        };
-    }
+    });
 });

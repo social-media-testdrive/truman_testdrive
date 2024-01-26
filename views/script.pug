@@ -37,16 +37,16 @@ block content
         i.big.photo.link.icon
     include partials/script/modals/newUserPost
     if mod=='habits'
-      include partials/script/habits_buttons
-      include partials/script/habits_settingTab
-      include partials/script/habits_activityTab
+      include partials/script/modules/habits/habits_buttons
+      include partials/script/modules/habits/habits_settingTab
+      include partials/script/modules/habits/habits_activityTab
     each val in script
       //- if val.relativeTime - then post came from user_post
       if val.relativeTime
         include partials/script/userPost
       //- if val.type is notification - display the notification tabs. Only in Habits module.
       else if val.type == 'notification'
-        include partials/script/habits_notification
+        include partials/script/modules/habits/habits_notification
       //- Else, actor post.
       else
         block post
@@ -62,17 +62,17 @@ block content
     if mod=='safe-posting'
       include partials/script/chatBox
     if mod=='digital-literacy'
-      include partials/script/modals/digitalLiteracyFlag
-      include partials/script/modals/digitalLiteracyArticle
-      include partials/script/modals/digitalLiteracyArticleInfo
+      include partials/script/modals/digital-literacy_flagModal
+      include partials/script/modals/digital-literacy_articleModal
+      include partials/script/modals/digital-literacy_articleInfoModal
       include partials/script/modals/sharePost
     if mod=='esteem'
-      include partials/script/modals/esteemPost
+      include partials/script/modals/esteem_PostModals
     if mod=='digfoot'
-      include partials/script/modals/digfootNormal
+      include partials/script/modals/digfoot_normalPostModal
     if mod=='targeted'
-      include partials/script/modals/targetedWhy
-      include partials/script/modals/targetedHide
+      include partials/script/modals/targeted_whyAdModal
+      include partials/script/modals/targeted_hideAdModal
     if mod=='habits'
       include partials/script/modals/habitsPost
     if mod='phishing'

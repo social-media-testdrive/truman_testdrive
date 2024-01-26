@@ -214,6 +214,9 @@ $(window).on("load", function() {
     // Activate dropdowns 
     $('.ui.dropdown').dropdown();
 
+    // Ensure modals are closable
+    $('.ui.modal').modal({ closable: true });
+
     // When #newpost is clicked, open new post modal and lazy load images. 
     // When .editProfilePictureButton is clicked, open edit profile modal and lazy load images.
     $("#newpost, .editProfilePictureButton").click(function() {
@@ -267,7 +270,7 @@ $(window).on("load", function() {
                         behavior: "smooth", // or "auto" or "instant"
                         block: "center", // defines vertical alignment
                         inline: "nearest" // defines horizontal alignment
-                    });;
+                    });
                     return;
                 }
             }
@@ -292,7 +295,7 @@ $(window).on("load", function() {
                             behavior: "smooth", // or "auto" or "instant"
                             block: "center", // defines vertical alignment
                             inline: "nearest" // defines horizontal alignment
-                        });;
+                        });
                         return;
                     };
                 };
@@ -305,7 +308,7 @@ $(window).on("load", function() {
                         behavior: "smooth", // or "auto" or "instant"
                         block: "center", // defines vertical alignment
                         inline: "nearest" // defines horizontal alignment
-                    });;
+                    });
                     return;
                 };
             };
@@ -325,7 +328,7 @@ $(window).on("load", function() {
                 behavior: "smooth", // or "auto" or "instant"
                 block: "center", // defines vertical alignment
                 inline: "nearest" // defines horizontal alignment
-            });;
+            });
             return;
         }
         const pathArray = window.location.pathname.split('/');
@@ -401,7 +404,9 @@ $(window).on("load", function() {
 });
 
 $(window).on("beforeunload", function() {
-    if ($("input[name='voiceoverCheckbox']").is(":checked")) {
+    const pathArrayForHeader = window.location.pathname.split('/');
+    let currentPageForHeader = pathArrayForHeader[1];
+    if ($("input[name='voiceoverCheckbox']").is(":checked") && currentPageForHeader != "/end") {
         addVoiceoverTime();
     }
 })

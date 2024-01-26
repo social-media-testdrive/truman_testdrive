@@ -1,60 +1,54 @@
 extends ../ui_layout
 
 block content
-  .ui.text.container
-    br
-    .ui.raised.segment
-      .button.ui.mini.green.right.labeled.icon.button#tut_guide_start
+  .ui.text.container.mb-9
+    .ui.raised.segment.mt-6 
+      h3.ui.header.hidden
+        .content What are some things I can do to protect my privacy?
+          h5.ui.header.mt-5
+            i.arrow.circle.right.blue.icon
+            .content.
+              Before you can protect your information, you need to understand 
+              what companies are collecting about you.
+          h5.ui.header
+            i.arrow.circle.right.blue.icon
+            .content.
+              Social media sites have a privacy policy that explains what 
+              information they collect about you and what they do with it.
+      .button.ui.small.green.right.labeled.icon.button#tut_guide_start
         i.down.arrow.icon
-        | Start    
-      .ui.basic.segment.hidden
-        h2.ui.header
-          .content What are some things I can do to protect my privacy?
-            br
-            h5.ui.header
-              i.arrow.circle.right.blue.icon
-              .content.
-                Before you can protect your information, you need to understand 
-                what companies are collecting about you.
-            h5.ui.header
-              i.arrow.circle.right.blue.icon
-              .content.
-                Social media sites have a privacy policy that explains what 
-                information they collect about you and what they do with it.
-        br
-        .button.ui.mini.green.right.labeled.icon.button#tut_guide_next
-          i.down.arrow.icon
-          | Next    
-    br  
-    #instructionSegment.content.hidden
-      .ui.compact.segment
-        .ui.large.read-only.checked.checkbox.exampleCheckbox
-          input.ui(type="checkbox" id="" checked="")
-          label Read and check all the boxes below
+        | Start   
+      .button.ui.small.green.right.labeled.icon.button.hidden#tut_guide_next.mt-5
+        i.down.arrow.icon
+        | Next
     #askQuestion.ui.raised.segment.hidden
-      .ui.basic.segment
-        h2.ui.header#point3
-          .content
-            | Remember the word ASK when you analyze a privacy policy. ASK yourself…
-        .content.ui.list
-            .item
-              .ui.segment.requiredCheckbox
-                .ui.checkbox
-                  input.requiredCheckboxInput(type="checkbox")
-                  label.
-                    Accessed: What will be #[b accessed] or collected by the company?
-            .item
-              .ui.segment.requiredCheckbox
-                .ui.checkbox
-                  input.requiredCheckboxInput(type="checkbox")
-                  label.
-                    Shared: What will be #[b shared] with other companies?
-            .item
-              .ui.segment.requiredCheckbox
-                .ui.checkbox
-                  input.requiredCheckboxInput(type="checkbox")
-                  label.
-                    Known: What could be #[b known] about me if I use this?              
+      h3.ui.header#point3
+        .content
+          | Remember the word ASK when you analyze a privacy policy. ASK yourself…
+      .ui.header
+        .ui.compact.segment
+          .ui.large.read-only.checked.checkbox.exampleCheckbox
+            input.ui(type="checkbox" id="" checked="")
+            label Read and check all the boxes
+      .content.ui.list
+          .item
+            .ui.segment.requiredCheckbox
+              .ui.checkbox
+                input.requiredCheckboxInput(type="checkbox")
+                label.
+                  Accessed: What will be #[b accessed] or collected by the company?
+          .item
+            .ui.segment.requiredCheckbox
+              .ui.checkbox
+                input.requiredCheckboxInput(type="checkbox")
+                label.
+                  Shared: What will be #[b shared] with other companies?
+          .item
+            .ui.segment.requiredCheckbox
+              .ui.checkbox
+                input.requiredCheckboxInput(type="checkbox")
+                label.
+                  Known: What could be #[b known] about me if I use this?              
     .ui.warning.message.hidden#checkAllWarning
       .header
         | Check all the boxes to proceed
@@ -70,7 +64,7 @@ block content
 
 block scripts
   script.
-    var voiceoverMappings = {
+    const voiceoverMappings = {
       '#tut_guide_start': {
         'initialDelay': 700,
         'delay': 500,
@@ -88,6 +82,3 @@ block scripts
 block styles
   link(rel='stylesheet' href='/css/tut_guide.css')
   link(rel='stylesheet' href='/css/modules/privacy.css')
-  
-    
-    

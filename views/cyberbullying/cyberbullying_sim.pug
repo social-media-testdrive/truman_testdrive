@@ -2,48 +2,20 @@
 extends ../ui_layout
   
 block content
-  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
+  .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.centered
     .ui.one.column.centered.grid.feedbackMessagesGrid
       .ui.fixed.bottom.sticky
-        
-        .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
-          i.close.icon
-          i.question.icon.float
-          .content
-            .ui.header Need some help?
-            p Scroll up and click "Next" to begin!
-        
-        .ui.icon.compact.message.warning#removeHidden
-          i.close.icon
-          i.question.icon.float
-          .content
-            .ui.header Need some help? 
-            p Make sure you are clicking "Got it" on the blue dots!
-          
-        .ui.icon.message.warning#clickAllDotsWarning
-          i.close.icon
-          i.hand.pointer.icon.float
-          .content
-            .ui.header There are still blue dots to find!
-            p Click through all of the blue dots to continue.
-            
-    #step1.ui.fluid.card.dim()
-      .ui.dimmer.flag
-        .content
-          .center
-            h2.ui.inverted.icon.header
-              i.red.flag.icon
-              | You&apos;ve flagged this!
-              h3.ui.inverted.header
-                span 
-                  | The admins will review this post further. We are sorry you 
-                  | had this experience.
+        include ../partials/messages/clickNextMessage
+        include ../partials/messages/removeHiddenMessage
+        include ../partials/messages/clickAllDotsMessage            
+    #step1.ui.fluid.card.dim
+      include ../partials/script/components/dimmerflag
       .content
         .right.floated.meta= "Yesterday"
         a(href='#')
-              img.ui.avatar.image(src=cdn+'/profile_pictures/user55.jpg')
-              span='Lana Reed'
-      .img.post
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user55.jpg')
+          span='Lana Reed'
+      .img.post.image
         img(src=cdn+'/post_pictures/calculator.jpg')
       .content
         .description Somebody help me with math
@@ -78,25 +50,25 @@ block content
               .actions
                 a.like.comment Like
                 a.flag.comment Flag
-      include ../partials/script/components/newUserComment
-    //-#######################
-    .ui.fluid.card.dim()
-      .ui.dimmer.flag
-        .content
-          .center
-            h2.ui.inverted.icon.header
-              i.red.flag.icon
-              | You&apos;ve flagged this!
-              h3.ui.inverted.header
-                span 
-                  | The admins will review this post further. We are sorry you 
-                  | had this experience.
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            if user.profile.picture
+              img.ui.avatar.image.small(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name || user.username || user.id)
+            else
+              img.ui.avatar.image.small(src=user.gravatar(60), name=user.profile.name || user.username || user.id)            
+          .ui.form
+            .field 
+              textarea.newcomment#hint1(type='text', placeholder='Write a Comment' rows='1')
+          i.big.send.link.icon
+    .ui.fluid.card.dim
+      include ../partials/script/components/dimmerflag
       .content
         .right.floated.meta= "Yesterday"
         a(href='#')
-              img.ui.avatar.image(src=cdn+'/profile_pictures/user54.jpg')
-              span='Ariel Simon'
-      .img.post
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user54.jpg')
+          span='Ariel Simon'
+      .img.post.image
         img(src=cdn+'/post_pictures/class_schedule.png')
       .content
         .description Look at my class schedule this semester!
@@ -130,61 +102,38 @@ block content
                 a.like.comment Like
                 a.flag.comment Flag
       include ../partials/script/components/newUserComment
-    //-##########
-    
-    .ui.fluid.card.dim()
-        .ui.dimmer.flag
-          .content
-            .center
-              h2.ui.inverted.icon.header
-                i.red.flag.icon
-                | You&apos;ve flagged this!
-                h3.ui.inverted.header
-                  span 
-                    | The admins will review this post further. We are sorry you 
-                    | had this experience.
-        .content
-          .right.floated.meta= "Yesterday"
-          a(href='#')
-                img.ui.avatar.image(src=cdn+'/profile_pictures/user66.jpeg')
-                span='Emma Hanson'
-        .img.post
-          img(src=cdn+'/post_pictures/loser.jpg')
-        .content
-          .description Lana is a LOSER!
-        .three.ui.bottom.attached.icon.buttons
-          .ui.reply.button(tabindex='0')
-            i.reply.icon
-            | Reply
-          .ui.flag.button(tabindex='0')#hint2
-            i.flag.icon
-            | Flag
-          .ui.labeled.button(tabindex='0')
-            .ui.like.button
-              i.heart.icon
-              | Like
-            a.ui.basic.red.left.pointing.label.count 2        
-        include ../partials/script/components/newUserComment
-    
-
-    //-#######################
-    .ui.fluid.card.dim()
-      .ui.dimmer.flag
-        .content
-          .center
-            h2.ui.inverted.icon.header
-              i.red.flag.icon
-              | You&apos;ve flagged this!
-              h3.ui.inverted.header
-                span 
-                  | The admins will review this post further. We are sorry you 
-                  | had this experience.
+    .ui.fluid.card.dim
+      include ../partials/script/components/dimmerflag
       .content
         .right.floated.meta= "Yesterday"
         a(href='#')
-              img.ui.avatar.image(src=cdn+'/profile_pictures/user44.png')
-              span='David Cole'
-      .img.post
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user66.jpeg')
+          span='Emma Hanson'
+      .img.post.image
+        img(src=cdn+'/post_pictures/loser.jpg')
+      .content
+        .description Lana is a LOSER!
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          | Reply
+        .ui.flag.button(tabindex='0')#hint2
+          i.flag.icon
+          | Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            | Like
+          a.ui.basic.red.left.pointing.label.count 2        
+      include ../partials/script/components/newUserComment
+    .ui.fluid.card.dim
+      include ../partials/script/components/dimmerflag
+      .content
+        .right.floated.meta= "Yesterday"
+        a(href='#')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user44.png')
+          span='David Cole'
+      .img.post.image
         img(src=cdn+'/post_pictures/blackbkg.jpg')
       .content
         .description 
@@ -219,83 +168,32 @@ block content
                 a.like.comment Like
                 a.flag.comment Flag
                 a#hint3
-      include ../partials/script/components/newUserComment
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            if user.profile.picture
+              img.ui.avatar.image.small(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name || user.username || user.id)
+            else
+              img.ui.avatar.image.small(src=user.gravatar(60), name=user.profile.name || user.username || user.id)            
+          .ui.form
+            .field 
+              textarea.newcomment#hint4(type='text', placeholder='Write a Comment' rows='1')
+          i.big.send.link.icon
     .ui.message.warning.hidden#confirmContinueCheck
       .ui.header 
         | It seems you did not flag or leave any comments on the cyberbullying posts and comments. 
         br 
         br
         | Are you sure you do not want to flag or comment before continuing?
-
     button.ui.big.labeled.icon.button.cybertrans.mb-9#cyberTransButton
-          i.rocket.icon
-          |   Let's Continue!
+      i.rocket.icon
+      |   Let's Continue!
 
 block scripts
-  script.
-    var hintsList = 
-    [
-      {
-        hint: `Let’s send a supportive message to the target. Copy and paste the
-        following comment: <i>“Lana, a lot of people think math is hard! Don’t
-        worry about it”</i>.`,
-        element: '#hint1',
-        audioFile: ['CUSML.6.4.6.mp3']
-      },
-      {
-        hint: `Press the <b>“flag”</b> button to report this post to the
-        website.`,
-        element: '#hint2',
-        hintPosition: "bottom-middle",
-        audioFile: ['CUSML.6.4.7.mp3']
-      },
-      {
-        hint: `Press the <b>“flag”</b> button to report this comment to the
-        website.`,
-        element: '#hint3',
-        audioFile: ['CUSML.6.4.8.mp3']
-      },
-      {
-        hint: `Let’s tell the bully that this behavior is not okay. Copy and
-        paste the following comment: <i>“Guys, Sarah will be very upset if she
-        sees this post. You should delete it."</i>`,
-        element: '#hint4',
-        audioFile: ['CUSML.6.4.9.mp3']
-      }
-    ]
-    
-    var stepsList = 
-    [
-      {
-        element: document.querySelectorAll('#step1')[0],
-        intro: `Click "Next" to begin!`,
-        position:'right',
-        scrollTo: 'tooltip',
-        audioFile: ['']
-      },
-      {
-        element: document.querySelectorAll('#step1')[0],
-        intro: "<div> <img class='ui avatar image' src='https://dhpd030vnpk29.cloudfront.net/profile_pictures/user55.jpg'/><b>Lana</b>  &  <img class='ui avatar image' src='https://dhpd030vnpk29.cloudfront.net/profile_pictures/user66.jpg'/><b>Emma</b> </div> <div>are in the same class at school. Recently, Emma has been saying a lot of mean things to Lana.</div>",
-        position:'right',
-        scrollTo: 'tooltip',
-        audioFile: ['CUSML.6.4.4.mp3']
-      },
-      {
-        element: document.querySelectorAll('#step1')[0],
-        intro: `Here you will see an example of what's been going on. Click on 
-        "Done" and then look for the blue dots 
-        &nbsp;&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; &nbsp;  
-        to learn more about cyberbullying and what you can do about it.`,
-        position:'right',
-        scrollTo:'tooltip',
-        audioFile: ['CUSML.6.4.5.mp3']
-      }
-
-    ]
-
-  script(src = "/module_js/voiceover.js")  
   script(src='/postFunctionalities.js')
-  script(src = "/module_js/base_sim.js")
+  script(src="/module_js/cyberbullying/cyberbullying_sim.js") 
+  script(src="/module_js/voiceover.js")
+  script(src="/module_js/base_sim.js")
   script. 
     //- clickPost is a boolean used to track if a user completed any of the recommended actions from the blue dots. 
     //- If the user did, it is set to true.
@@ -304,5 +202,3 @@ block scripts
   
 block styles
   link(rel='stylesheet', href='/css/sim.css')
-
-    

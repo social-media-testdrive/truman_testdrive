@@ -11,6 +11,7 @@ function recordModalInputs(modalNameAttrStr) {
      * - 'digfoot_normalPostModal'
      * esteem: 
      * - 'esteem_postModal1'
+     * - 'esteem_postModal2' (in onHide function)
      * targeted:
      * - 'targeted_hideAdModal'
      * - 'targeted_whyAdModal'
@@ -196,9 +197,9 @@ function targetedAdDropdownSelection() {
             flag: Date.now(),
             _csrf: $('meta[name="csrf-token"]').attr('content')
         });
-        post.find(".ui.inverted.dimmer.notflag").dimmer({ closable: false }).dimmer('show');
+        post.find(".ui.inverted.dimmer.notflag").dimmer({ closable: true }).dimmer('show');
         //repeat to ensure its closable
-        post.find(".ui.inverted.dimmer.notflag").dimmer({ closable: false }).dimmer('show');
+        post.find(".ui.inverted.dimmer.notflag").dimmer({ closable: true }).dimmer('show');
         //open hide ad Modal
         recordModalInputs('targeted_hideAdModal');
     } else if (dropdownSelection == 1) {
@@ -209,9 +210,9 @@ function targetedAdDropdownSelection() {
             modual: currentModuleForHeader,
             _csrf: $('meta[name="csrf-token"]').attr('content')
         });
-        post.find(".ui.dimmer.flag").dimmer({ closable: false }).dimmer('show');
+        post.find(".ui.dimmer.flag").dimmer({ closable: true }).dimmer('show');
         //repeat to ensure its closable
-        post.find(".ui.dimmer.flag").dimmer({ closable: false }).dimmer('show');
+        post.find(".ui.dimmer.flag").dimmer({ closable: true }).dimmer('show');
     } else if (dropdownSelection == 2) {
         //get the company name to dynamically use in the modal
         const companyName = $(this).closest(".ui.fluid.card").find("#companyName").text();

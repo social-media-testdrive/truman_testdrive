@@ -81,9 +81,12 @@ exports.getScript = async(req, res, next) => {
             .exec();
 
         //Array of any user-made posts for this module only.
-        let user_posts = user.posts.filter(post => post.module == req.params.modId);
+        const userPosts = user.getPosts(req.params.modId);
+        userPosts.sort(function(a, b) {
+            return b.relativeTime - a.relativeTime;
+        });
 
-        const finalfeed = helpers.getFeed(user_posts, script_feed, user);
+        const finalfeed = helpers.getFeed(userPosts, script_feed, user);
 
         // Only Advanced Lit has its own defined pug file. All other modules extend 'script'
         if (req.params.modId == "advancedlit") {
@@ -158,11 +161,12 @@ exports.newPost = async(req, res) => {
                 relativeTime: currDate - user.createdAt,
             };
 
-            user.posts.unshift(post); //adds elements to the beginning of the array
+            user.posts.push(post); //adds elements to the end of the array
             await user.save();
             res.redirect('/modual/' + req.body.module);
         }
     } catch (err) {
+        console.log(err);
         next(err);
     }
 };

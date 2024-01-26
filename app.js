@@ -332,8 +332,9 @@ app.get('/trans/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders,
 
 // Render the transition review page (only 'esteem' and 'targeted' modules have this page).
 app.get('/trans2/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, isValidModId, function(req, res) {
-    res.render(req.params.modId + '/' + req.params.modId + '_trans2', {
-        title: 'Review'
+    res.render('base_trans2', {
+        title: 'Review',
+        mod: req.params.modId
     });
 });
 
@@ -593,7 +594,7 @@ app.get('/:page/privacy', passportConfig.isAuthenticated, setHttpResponseHeaders
         const pageType = req.params.page.startsWith('free-play') ? 'free-play' : 'free-play_settings'
         const page = 'privacy_' + pageType + (urlDigit ? urlDigit[0].toString() : "");
         res.render('privacy/' + page, {
-            title: 'Free-Play' + (pageType == 'free-play_settings' ? "Settings " : "") + (urlDigit ? urlDigit[0].toString() : "")
+            title: 'Free-Play ' + (pageType == 'free-play_settings' ? "Settings " : "") + (urlDigit ? urlDigit[0].toString() : "")
         })
     }
 });

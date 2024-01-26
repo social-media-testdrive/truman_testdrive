@@ -8,7 +8,7 @@ const stepsList = [{
         audioFile: ['']
     },
     {
-        element: document.querySelectorAll('#step1')[0],
+        element: '#step1',
         intro: `When you sign up for an account on social media, be sure to check
     your <b>privacy settings</b>. You can control what information is visible to
     others. You can also go to this page to change your settings any time.`,
@@ -17,7 +17,7 @@ const stepsList = [{
         audioFile: ['CUSML.7.5.1.mp3']
     },
     {
-        element: document.querySelectorAll('#step2')[0],
+        element: '#step2',
         intro: `A “<i>Public</i>” setting on your social media account means that it
     is visible to anyone on the internet. A “<i>Private</i>” setting will
     restrict access to your account so that only the people you approve can see
@@ -27,7 +27,7 @@ const stepsList = [{
         audioFile: ['CUSML.7.5.2.mp3']
     },
     {
-        element: document.querySelectorAll('#step3')[0],
+        element: '#step3',
         intro: `Some social media sites will let you choose who can contact you. You
     can change who can add you as a friend on the site, comment on your posts,
     or tag you in posts.`,
@@ -36,7 +36,7 @@ const stepsList = [{
         audioFile: ['CUSML.7.5.3.mp3']
     },
     {
-        element: document.querySelectorAll('#tagStep')[0],
+        element: '#tagStep',
         intro: `Changing these settings will stop people from being able to
     “<i>tag</i>” you in posts that you did not make. This way, you can control
     which posts show up on your profile.`,
@@ -45,7 +45,7 @@ const stepsList = [{
         audioFile: ['CUSML.7.5.4.mp3']
     },
     {
-        element: document.querySelectorAll('#step4')[0],
+        element: '#step4',
         intro: `Here, you can change how you share your location information. You
     can choose to remove it completely or hide it from certain people.`,
         position: 'right',
@@ -54,70 +54,76 @@ const stepsList = [{
     }
 ];
 
-$('.ui.dropdown').dropdown('set selected', '0');
+$(window).on('load', function() {
+    $('.ui.dropdown').dropdown('set selected', '0');
 
-// Defining multi-select onAdd and onRemove functions, triggered when a dropdown multi-select is changed
-$('.blocklistDropdown').dropdown({
-    onAdd: function(addedValue, addedText, $addedChoice) {
-        let cat = {};
-        cat.subdirectory1 = 'tutorial';
-        cat.subdirectory2 = 'privacy';
-        cat.inputField = 'blockList- add';
-        cat.absoluteTimestamp = Date.now();
-        cat.inputText = addedValue;
+    // Defining multi-select onAdd and onRemove functions, triggered when a dropdown multi-select is changed
+    $('.blocklistDropdown').dropdown({
+        onAdd: function(addedValue, addedText, $addedChoice) {
+            const cat = {
+                subdirectory1: 'tutorial',
+                subdirectory2: 'privacy',
+                inputField: 'blockList- add',
+                absoluteTimestamp: Date.now(),
+                inputText: addedValue
+            };
 
-        $.post("/privacyAction", {
-            action: cat,
-            actionType: 'privacy',
-            _csrf: $('meta[name="csrf-token"]').attr('content')
-        });
-    },
-    onRemove: function(addedValue, removedText, $removedChoice) {
-        let cat = {};
-        cat.subdirectory1 = 'tutorial';
-        cat.subdirectory2 = 'privacy';
-        cat.inputField = 'blockList- remove';
-        cat.absoluteTimestamp = Date.now();
-        cat.inputText = addedValue;
+            $.post("/privacyAction", {
+                action: cat,
+                actionType: 'privacy',
+                _csrf: $('meta[name="csrf-token"]').attr('content')
+            });
+        },
+        onRemove: function(addedValue, removedText, $removedChoice) {
+            const cat = {
+                subdirectory1: 'tutorial',
+                subdirectory2: 'privacy',
+                inputField: 'blockList- remove',
+                absoluteTimestamp: Date.now(),
+                inputText: addedValue
+            };
 
-        $.post("/privacyAction", {
-            action: cat,
-            actionType: 'privacy',
-            _csrf: $('meta[name="csrf-token"]').attr('content')
-        });
-    }
-});
-
-//Triggered when a dropdown select is changed
-$('.ui.selection.dropdown:not(.blocklistDropdown)').dropdown({
-    onChange: function(value, text, $choice) {
-        let cat = {};
-        cat.subdirectory1 = 'tutorial';
-        cat.subdirectory2 = 'privacy';
-        cat.inputField = $(this).find('input').attr('name');
-        cat.absoluteTimestamp = Date.now();
-        cat.inputText = text;
-
-        $.post("/privacyAction", {
-            action: cat,
-            actionType: 'privacy',
-            _csrf: $('meta[name="csrf-token"]').attr('content')
-        });
-    }
-});
-
-//Triggered when a toggle is changed
-$('.ui.toggle.checkbox input').change(function() {
-    let cat = {};
-    cat.subdirectory1 = 'tutorial';
-    cat.subdirectory2 = 'privacy';
-    cat.inputField = $(this).attr('name');
-    cat.absoluteTimestamp = Date.now();
-    cat.inputText = $(this).is(':checked') ? "true" : "false";
-
-    $.post("/privacyAction", {
-        action: cat,
-        actionType: 'privacy',
-        _csrf: $('meta[name="csrf-token"]').attr('content')
+            $.post("/privacyAction", {
+                action: cat,
+                actionType: 'privacy',
+                _csrf: $('meta[name="csrf-token"]').attr('content')
+            });
+        }
     });
-})
+
+    //Triggered when a dropdown select is changed
+    $('.ui.selection.dropdown:not(.blocklistDropdown)').dropdown({
+        onChange: function(value, text, $choice) {
+            const cat = {
+                subdirectory1: 'tutorial',
+                subdirectory2: 'privacy',
+                inputField: $(this).find('input').attr('name'),
+                absoluteTimestamp: Date.now(),
+                inputText: text
+            };
+
+            $.post("/privacyAction", {
+                action: cat,
+                actionType: 'privacy',
+                _csrf: $('meta[name="csrf-token"]').attr('content')
+            });
+        }
+    });
+
+    //Triggered when a toggle is changed
+    $('.ui.toggle.checkbox input').change(function() {
+        const cat = {
+            subdirectory1: 'tutorial',
+            subdirectory2: 'privacy',
+            inputField: $(this).attr('name'),
+            absoluteTimestamp: Date.now(),
+            inputText: $(this).is(':checked') ? "true" : "false"
+        };
+
+        $.post("/privacyAction", {
+            action: cat,
+            actionType: 'privacy',
+            _csrf: $('meta[name="csrf-token"]').attr('content')
+        });
+    })
+});

@@ -11,7 +11,6 @@ block content
         a.item(data-value='notifications')#cyberTransButton
           i.icon.bell
           |  Notifications
-          
   //-mobile only version of the menu
   .mobile.only.sixteen.wide.column
     .ui.top.fixed.vertical.menu
@@ -21,344 +20,323 @@ block content
       a.item(data-value='notifications')#cyberTransButton     
         i.icon.bell
         |  Notifications
-    br
-    br
-      
-  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
+  #content.eight.wide.computer.eight.wide.tablet.sixteen.wide.mobile.column
+    #step0.ui.fluid.card.feedDisplay.removeTopMargin
+      include ../partials/script/components/dimmerflag
+      .content#hint1
+        .right.floated.meta= "Yesterday"
+        a(href='/user/zachpeters06')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user67.jpg')
+          span='Zach Peters'
+      .image
+        img.post(src=cdn+'/post_pictures/wallpaper_habit.jpg')
+      #step4.content
+        .description="check out my new wallpaper 😍"
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2        
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user21.jpg')
+            .content
+              a.author David Cole
+              .metadata
+                span.date Yesterday
+                .rating
+                  i.heart.icon
+                  span.num=2
+                  |  Likes
+              .text()
+                | i have one just like that on my iPad!!
+              .actions
+                a.comment.like Like
+                a.comment.flag Flag    
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user22.jpeg')
+            .content
+              a.author Lana Sheehan
+              .metadata
+                span.date Yesterday
+                .rating
+                  i.heart.icon
+                  span.num=2
+                  |  Likes
+              .text()
+                | cool
+              .actions
+                a.comment.like Like
+                a.comment.flag Flag
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            if user.profile.picture
+              img.ui.avatar.image.small(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name || user.username || user.id)
+            else
+              img.ui.avatar.image.small(src=user.gravatar(60), name=user.profile.name || user.username || user.id)            
+          .ui.form
+            .field 
+              textarea.newcomment(type='text', placeholder='Write a Comment' rows='1')
+          i.big.send.link.icon#sendComment1
+    #step5.ui.fluid.card.test.feedDisplay
+      include ../partials/script/components/dimmerflag
+      .content#hint2
+        .right.floated.meta= "Yesterday"
+        a(href='/user/cloe.htt')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user3.jpg')
+          span='Cloe Hansen'
+      .image
+        img.post(src=cdn+"/post_pictures/sunset_friends_habits.jpg")
+      .content
+        .description="love you all like sisters <3 "
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=3    
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user46.jpg')
+            .content
+              a.author Dylan Friedman 
+              .metadata
+                span.date Yesterday
+                .rating
+                  i.heart.icon
+                  span.num=3
+                  |  Likes
+              .text()
+                | LYLAS &gt;3 
+              .actions
+                a.comment.like Like
+                a.comment.flag Flag    
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user47.jpeg')
+            .content
+              a.author Ariel Simon 
+              .metadata
+                span.date Yesterday
+                .rating
+                  i.heart.icon
+                  span.num=3
+                  |  Likes
+              .text()
+                | ily 
+              .actions
+                a.comment.like Like
+                a.comment.flag Flag        
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user69.jpg')
+            .content
+              a.author Hannah Cohn
+              .metadata
+                span.date Yesterday
+                .rating
+                  i.heart.icon
+                  span.num=3
+                  |  Likes
+              .text()
+                | so much love for you guys
+              .actions
+                a.comment.like Like
+                a.comment.flag Flag                  
+        include ../partials/script/components/newUserComment                 
+    .ui.fluid.card.feedDisplay
+      include ../partials/script/components/dimmerflag
+      .content
+        .right.floated.meta= "Yesterday"
+        a(href='/user/jlp777')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user13.png')
+          span='Jason Perez'
+      .image
+        img.post(src=cdn+"/post_pictures/theater_habits.jpg")
+      .content
+        .description="Getting ready for the opening show tonite! "
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=1  
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user70.JPG')
+            .content
+              a.author Zoe Goodall
+              .metadata
+                span.date Yesterday
+                .rating
+                  i.heart.icon
+                  span.num=1
+                  |  Likes
+              .text()
+                | break a leg ;)!
+              .actions
+                a.comment.like Like
+                a.comment.flag Flag    
+      include ../partials/script/components/newUserComment
+    .ui.fluid.card.feedDisplay
+      include ../partials/script/components/dimmerflag
+      .content
+        .right.floated.meta= "Yesterday"
+        a(href='/user/gracieeeeee82')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user62.jpg')
+          span='Grace Burns'
+      .image
+        img.post(src=cdn+"/post_pictures/cafe_aesthetic_habits.jpg")
+      .content
+        .description="~ cafe vibes ~"
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2    
+      .content
+        .ui.comments  
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user71.JPG')
+            .content
+              a.author Andrew Thomas
+              .metadata
+                span.date Yesterday
+                .rating
+                  i.heart.icon
+                  span.num=1
+                  |  Likes
+              .text()
+                | this aesthetic tho 🙌🏽
+              .actions
+                a.comment.like Like
+                a.comment.flag Flag              
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user72.jpg')
+            .content
+              a.author Gabby Rogers
+              .metadata
+                span.date Yesterday
+                .rating
+                  i.heart.icon
+                  span.num=0
+                  |  Likes
+              .text()
+                | is this the new place that opened up??
+              .actions
+                a.comment.like Like
+                a.comment.flag Flag        
+        include ../partials/script/components/newUserComment
+    .ui.fluid.card.feedDisplay.mb-9
+      include ../partials/script/components/dimmerflag
+      .content
+        .right.floated.meta= "Yesterday"
+        a(href='/user/goaliegirl')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user29.jpg')
+          span='Breana Summers'
+      .image
+        img.post(src=cdn+"/post_pictures/code_habits.jpg")
+      .content
+        .description="first coding project, complete ✅"
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+      .content
+        .ui.comments  
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user73.JPG')
+            .content
+              a.author Noah Alpern
+              .metadata
+                span.date Yesterday
+                .rating
+                  i.heart.icon
+                  span.num=1
+                  |  Likes
+              .text()
+                | wOAH
+              .actions
+                a.comment.like Like
+                a.comment.flag Flag      
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user74.jpg')
+            .content
+              a.author Ryan Freyer
+              .metadata
+                span.date Yesterday
+                .rating
+                  i.heart.icon
+                  span.num=0
+                  |  Likes
+              .text()
+                | do you code???
+              .actions
+                a.comment.like Like
+                a.comment.flag Flag      
+        include ../partials/script/components/newUserComment
+    //- Located at bottom so element doesn't take up space at top.
     .ui.one.column.centered.grid.feedbackMessagesGrid
       .ui.fixed.bottom.sticky
-        .ui.icon.compact.message.warning.hidden#clickNextHelpMessage
-          i.close.icon
-          i.question.icon.float
-          .content
-            .ui.header Need some help?
-            p Scroll up and click "Next" to begin!
-        .ui.icon.compact.message.warning#removeHidden
-          i.close.icon
-          i.question.icon.float
-          .content
-            .ui.header Need some help? 
-            p Make sure you are clicking "Got it" on the blue dots!
-            
+        include ../partials/messages/clickNextMessage
+        include ../partials/messages/removeHiddenMessage            
         .ui.message.centered.success.hidden#nextPageInstruction
           .content
             .ui.header Click the "Notifications" button to continue! 
-            
         .ui.icon.message.warning.hidden#notificationWarning
           i.close.icon
           i.hand.pointer.icon.float
           .content
             .ui.header There are still blue dots to find!
             p Click through all of the blue dots before going to the notifications page.
-          
-    #step0.ui.fluid.card.test.feedDisplay.removeTopMargin
-          .content#hint1
-            .right.floated.meta= "Yesterday"
-            |
-            a(href='/user/zachpeters06')
-              img.ui.avatar.image(src=cdn+'/profile_pictures/user67.jpg')
-              span='Zach Peters'
-          .image
-            img.post(src=cdn+'/post_pictures/wallpaper_habit.jpg')
-          #step4.content
-            .description="check out my new wallpaper 😍"
-          .three.ui.bottom.attached.icon.buttons
-            .ui.reply.button(tabindex='0')
-              i.reply.icon
-              |  Reply
-            .ui.flag.button(tabindex='0')
-              i.flag.icon
-              |  Flag
-            .ui.labeled.button(tabindex='0')
-              .ui.like.button
-                i.heart.icon
-                |  Like
-              a.ui.basic.red.left.pointing.label.count=2        
-          .content
-            .ui.comments
-              .comment
-                a.avatar
-                  img(src=cdn+'/profile_pictures/user21.jpg')
-                .content
-                  a.author David Cole
-                  .metadata
-                    span.date Yesterday
-                    .rating
-                      i.heart.icon
-                      span.num=2
-                      |  Likes
-                  .text()
-                    | i have one just like that on my iPad!!
-                  .actions
-                    a.comment.like Like
-                    a.comment.flag Flag    
-              .comment
-                a.avatar
-                  img(src=cdn+'/profile_pictures/user22.jpeg')
-                .content
-                  a.author Lana Sheehan
-                  .metadata
-                    span.date Yesterday
-                    .rating
-                      i.heart.icon
-                      span.num=2
-                      |  Likes
-                  .text()
-                    | cool
-                  .actions
-                    a.comment.like Like
-                    a.comment.flag Flag
-          .extra.content
-            .ui.fluid.left.labeled.right.icon.input
-              .ui.label
-                if user.profile.picture
-                  img.ui.avatar.image.small(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name || user.username || user.id)
-                else
-                  img.ui.avatar.image.small(src=user.gravatar(60), name=user.profile.name || user.username || user.id)            
-              .ui.form
-                .field 
-                  textarea.newcomment(type='text', placeholder='Write a Comment' rows='1')
-              i.big.send.link.icon#sendComment1
-                
-    //-%%%%%%%%%%%%%%%%%%%%%%%%%
-    #step5.ui.fluid.card.test.feedDisplay
-          .content#hint2
-            .right.floated.meta= "Yesterday"
-            |
-            a(href='/user/cloe.htt')
-              img.ui.avatar.image(src=cdn+'/profile_pictures/user3.jpg')
-              span='Cloe Hansen'
-          .image
-            img.post(src=cdn+"/post_pictures/sunset_friends_habits.jpg")
-          .content
-            .description="love you all like sisters <3 "
-          .three.ui.bottom.attached.icon.buttons
-            .ui.reply.button(tabindex='0')
-              i.reply.icon
-              |  Reply
-            .ui.flag.button(tabindex='0')
-              i.flag.icon
-              |  Flag
-            .ui.labeled.button(tabindex='0')
-              .ui.like.button
-                i.heart.icon
-                |  Like
-              a.ui.basic.red.left.pointing.label.count=3    
-          .content
-            .ui.comments
-              .comment
-                a.avatar
-                  img(src=cdn+'/profile_pictures/user46.jpg')
-                .content
-                  a.author Dylan Friedman 
-                  .metadata
-                    span.date Yesterday
-                    .rating
-                      i.heart.icon
-                      span.num=3
-                      |  Likes
-                  .text()
-                    | LYLAS &gt;3 
-                  .actions
-                    a.comment.like Like
-                    a.comment.flag Flag    
-              .comment
-                a.avatar
-                  img(src=cdn+'/profile_pictures/user47.jpeg')
-                .content
-                  a.author Ariel Simon 
-                  .metadata
-                    span.date Yesterday
-                    .rating
-                      i.heart.icon
-                      span.num=3
-                      |  Likes
-                  .text()
-                    | ily 
-                  .actions
-                    a.comment.like Like
-                    a.comment.flag Flag        
-              .comment
-                a.avatar
-                  img(src=cdn+'/profile_pictures/user69.jpg')
-                .content
-                  a.author Hannah Cohn
-                  .metadata
-                    span.date Yesterday
-                    .rating
-                      i.heart.icon
-                      span.num=3
-                      |  Likes
-                  .text()
-                    | so much love for you guys
-                  .actions
-                    a.comment.like Like
-                    a.comment.flag Flag                  
-            include ../partials/script/components/newUserComment
-                                                            
-    .ui.fluid.card.test.feedDisplay
-          .content
-            .right.floated.meta= "Yesterday"
-            |
-            a(href='/user/jlp777')
-              img.ui.avatar.image(src=cdn+'/profile_pictures/user13.png')
-              span='Jason Perez'
-          .image
-            img.post(src=cdn+"/post_pictures/theater_habits.jpg")
-          .content
-            .description="Getting ready for the opening show tonite! "
-          .three.ui.bottom.attached.icon.buttons
-            .ui.reply.button(tabindex='0')
-              i.reply.icon
-              |  Reply
-            .ui.flag.button(tabindex='0')
-              i.flag.icon
-              |  Flag
-            .ui.labeled.button(tabindex='0')
-              .ui.like.button
-                i.heart.icon
-                |  Like
-              a.ui.basic.red.left.pointing.label.count=1  
-          .content
-            .ui.comments
-              .comment
-                a.avatar
-                  img(src=cdn+'/profile_pictures/user70.JPG')
-                .content
-                  a.author Zoe Goodall
-                  .metadata
-                    span.date Yesterday
-                    .rating
-                      i.heart.icon
-                      span.num=1
-                      |  Likes
-                  .text()
-                    | break a leg ;)!
-                  .actions
-                    a.comment.like Like
-                    a.comment.flag Flag    
-          include ../partials/script/components/newUserComment
-                              
-    .ui.fluid.card.test.feedDisplay
-          .content
-            .right.floated.meta= "Yesterday"
-            |
-            a(href='/user/gracieeeeee82')
-              img.ui.avatar.image(src=cdn+'/profile_pictures/user62.jpg')
-              span='Grace Burns'
-          .image
-            img.post(src=cdn+"/post_pictures/cafe_aesthetic_habits.jpg")
-          .content
-            .description="~ cafe vibes ~"
-          .three.ui.bottom.attached.icon.buttons
-            .ui.reply.button(tabindex='0')
-              i.reply.icon
-              |  Reply
-            .ui.flag.button(tabindex='0')
-              i.flag.icon
-              |  Flag
-            .ui.labeled.button(tabindex='0')
-              .ui.like.button
-                i.heart.icon
-                |  Like
-              a.ui.basic.red.left.pointing.label.count=2    
-          .content
-            .ui.comments  
-              .comment
-                a.avatar
-                  img(src=cdn+'/profile_pictures/user71.JPG')
-                .content
-                  a.author Andrew Thomas
-                  .metadata
-                    span.date Yesterday
-                    .rating
-                      i.heart.icon
-                      span.num=1
-                      |  Likes
-                  .text()
-                    | this aesthetic tho 🙌🏽
-                  .actions
-                    a.comment.like Like
-                    a.comment.flag Flag              
-              .comment
-                a.avatar
-                  img(src=cdn+'/profile_pictures/user72.jpg')
-                .content
-                  a.author Gabby Rogers
-                  .metadata
-                    span.date Yesterday
-                    .rating
-                      i.heart.icon
-                      span.num=0
-                      |  Likes
-                  .text()
-                    | is this the new place that opened up??
-                  .actions
-                    a.comment.like Like
-                    a.comment.flag Flag        
-            include ../partials/script/components/newUserComment
-                    
-    .ui.fluid.card.test.feedDisplay#.mb-9
-          .content
-            .right.floated.meta= "Yesterday"
-            |
-            a(href='/user/goaliegirl')
-              img.ui.avatar.image(src=cdn+'/profile_pictures/user29.jpg')
-              span='Breana Summers'
-          .image
-            img.post(src=cdn+"/post_pictures/code_habits.jpg")
-          .content
-            .description="first coding project, complete ✅"
-          .three.ui.bottom.attached.icon.buttons
-            .ui.reply.button(tabindex='0')
-              i.reply.icon
-              |  Reply
-            .ui.flag.button(tabindex='0')
-              i.flag.icon
-              |  Flag
-            .ui.labeled.button(tabindex='0')
-              .ui.like.button
-                i.heart.icon
-                |  Like
-              a.ui.basic.red.left.pointing.label.count=2
-          .content
-            .ui.comments  
-              .comment
-                a.avatar
-                  img(src=cdn+'/profile_pictures/user73.JPG')
-                .content
-                  a.author Noah Alpern
-                  .metadata
-                    span.date Yesterday
-                    .rating
-                      i.heart.icon
-                      span.num=1
-                      |  Likes
-                  .text()
-                    | wOAH
-                  .actions
-                    a.comment.like Like
-                    a.comment.flag Flag      
-              .comment
-                a.avatar
-                  img(src=cdn+'/profile_pictures/user74.jpg')
-                .content
-                  a.author Ryan Freyer
-                  .metadata
-                    span.date Yesterday
-                    .rating
-                      i.heart.icon
-                      span.num=0
-                      |  Likes
-                  .text()
-                    | do you code???
-                  .actions
-                    a.comment.like Like
-                    a.comment.flag Flag      
-            include ../partials/script/components/newUserComment
-    br   
-    br         
-      
+  .computer.only.tablet.only.four.wide.column
+
 block scripts
   script(src="/module_js/habits/habits_sim.js")
   script(src="/module_js/base_sim.js")

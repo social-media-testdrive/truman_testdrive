@@ -1,7 +1,6 @@
-//- esteem checklist modal  
-.ui.small.long.first.modal(data-modalName="esteem_postModal1")
+.ui.small.long.first.modal(data-modalName=(isSim ? "esteem_simPostModal1" : "esteem_postModal1"))
   i.close.icon  
-  .header How could Jeremy feel if he saw this post?
+  .header How could !{isSim ? "Nick" : "Jeremy"} feel if he saw this post?
   .content
     .ui.form
       .ui.grid
@@ -48,9 +47,9 @@
       | Done
       i.checkmark.icon      
       
-.ui.small.long.modal(data-modalName="esteem_postModal2")
+.ui.small.long.modal(data-modalName=(isSim ? "esteem_simPostModal2" : "esteem_postModal2"))
   i.close.icon  
-  .header What kinds of things could Jeremy do to make himself feel better?
+  .header What kinds of things could !{isSim ? "Nick" : "Jeremy"} do to make himself feel better?
   .content
     .ui.form
       .field

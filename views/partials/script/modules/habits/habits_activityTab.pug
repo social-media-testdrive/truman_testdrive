@@ -9,21 +9,18 @@
       .value#habitsActivityTotalTimeMinutes 0
       .label
         | min 
-    .statistic  
+    .statistic
       .value :
       .label
     .statistic
       .value#habitsActivityTotalTimeSeconds 0
       .label
         | sec
-    
   h2.ui.header Manage My Time:
-  br
-  .field#reminderTimeSelectField
+  .field#reminderTimeSelectField.mt-4.mb-3
     label Set Daily Reminder
       br
-      br
-      .ui.selection.dropdown(name='reminderTimeSelect')
+      .ui.selection.dropdown(name='reminderTimeSelect').mt-2
         input(type='hidden')#reminderTimeSelectValue
         i.dropdown.icon
         .default.text 
@@ -33,5 +30,4 @@
           .item(data-value='2 hours') 2 hours
           .item(data-value='4 hours') 4 hours
           .item(data-value='8 hours') 8 hours
-  br
   span We'll send you a reminder once you've reached the time you set for yourself.

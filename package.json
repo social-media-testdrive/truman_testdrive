@@ -14,33 +14,32 @@
         "test": "mocha --reporter spec"
     },
     "dependencies": {
-        "@node-rs/bcrypt": "^1.7.3",
-        "async": "^3.2.4",
+        "@node-rs/bcrypt": "^1.9.2",
+        "async": "^3.2.5",
         "body-parser": "^1.20.2",
-        "connect-mongo": "^5.0.0",
+        "connect-mongo": "^5.1.0",
         "csv-writer": "^1.6.0",
         "csvtojson": "^2.0.10",
-        "dotenv": "^16.3.1",
-        "errorhandler": "^1.5.1",
+        "dotenv": "^16.4.1",
         "express": "^4.18.2",
         "express-flash": "0.0.2",
         "express-session": "^1.17.3",
         "lodash": "^4.17.21",
         "lusca": "^1.7.0",
-        "mongoose": "^7.4.5",
+        "mongoose": "^8.1.1",
         "morgan": "^1.10.0",
         "multer": "^1.4.5-lts.1",
-        "passport": "^0.6.0",
+        "passport": "^0.7.0",
         "passport-local": "^1.0.0",
         "path": "^0.12.7",
         "pug": "^3.0.2",
         "validator": "^13.11.0"
     },
     "devDependencies": {
-        "chai": "^4.3.8",
-        "nodemon": "^3.0.1",
-        "sinon": "^16.1.1",
-        "supertest": "^6.3.3"
+        "chai": "^5.0.3",
+        "nodemon": "^3.0.3",
+        "sinon": "^17.0.1",
+        "supertest": "^6.3.4"
     },
     "engines": {
         "node": "20.11.0",

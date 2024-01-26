@@ -80,9 +80,9 @@ function flagPost(e) {
             _csrf: $('meta[name="csrf-token"]').attr('content')
         });
     }
-    post.find(".ui.dimmer.flag").dimmer({ closable: false }).dimmer('show');
+    post.find(".ui.dimmer.flag").dimmer({ closable: true }).dimmer('show');
     //repeat to ensure its closable
-    post.find(".ui.dimmer.flag").dimmer({ closable: false }).dimmer('show');
+    post.find(".ui.dimmer.flag").dimmer({ closable: true }).dimmer('show');
 
     if (currentModuleForHeader == "digital-literacy") {
         $('.ui.modal input[type=checkbox]').prop('checked', false);
@@ -293,6 +293,7 @@ $(window).on('load', () => {
     window.addEventListener('keydown', function(event) {
         if (event.key === 'Enter' && event.target.className == 'newcomment') {
             event.stopImmediatePropagation();
+            event.preventDefault();
             $(event.target).parents(".ui.form").siblings("i.big.send.link.icon").click();
         }
     }, true);

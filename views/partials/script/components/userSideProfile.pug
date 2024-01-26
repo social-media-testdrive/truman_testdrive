@@ -1,0 +1,17 @@
+.ui.card
+  .image
+    if user.profile.picture
+      img(src=cdn+'/profile_pictures/'+user.profile.picture)
+    else
+      img(src=user.gravatar(60))
+  .content
+    a.header(href='/me/'+mod)= user.profile.name || user.email || user.id
+    .meta="@Guest"
+    .description=user.profile.bio
+    .description
+      if user.profile.location
+        i.marker.icon
+        span=user.profile.location
+  .one.ui.bottom.attached.icon.buttons
+      button.ui.editprofile.button(data-tooltip='Update Your Profile', data-position='bottom left')
+          i.write.icon

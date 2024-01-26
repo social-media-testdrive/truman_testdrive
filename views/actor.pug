@@ -33,7 +33,6 @@ block scripts
       const time = new Date(ms);
       target.text(humanized_time_span(time));
     };
-    
   script.
     $(window).on('load', () => {
       $('.right.floated.time.meta, .date.sim').each(addHumanizedTimeToPost);

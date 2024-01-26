@@ -149,7 +149,7 @@ function customErrorCheck() {
         //show the message normally the first time
         if ($('#clickAllDotsWarning').is(":hidden")) {
             $('#clickAllDotsWarning').transition('fade');
-            $('#cyberTransButton').css("margin-bottom", "10em");
+            $('#cyberTransButton').css("margin-bottom", "4em");
         } else {
             //otherwise, bounce the message to draw attention to it
             $('#clickAllDotsWarning').transition('bounce');

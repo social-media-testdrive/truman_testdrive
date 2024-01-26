@@ -2,22 +2,16 @@
 .ui.container.habitsSettingsDisplay.hidden
   h2.ui.header Notification Settings
   .ui.divider
-  br
-  form.ui.form
-    .field
-      br
+  form.ui.form.mb-9.mt-3
+    .field.mt-4
       .ui.toggle.checkbox(name='popupAlertsCheckbox')
         input(type='checkbox' name='popupAlerts')
         label Pause All
     span.settingLabel This will pause all notifications.
-    br
-    br
-    br
-    .field#pauseTimeSelectField
+    .field#pauseTimeSelectField.mt-6
       label How long would you like to pause notifications for?
         br
-        br
-        .ui.selection.dropdown(name='pauseTimeSelect')
+        .ui.selection.dropdown(name='pauseTimeSelect').mt-4
           input(type='hidden')#pauseTimeSelectValue
           i.dropdown.icon
           .default.text 

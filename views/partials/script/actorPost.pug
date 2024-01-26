@@ -70,13 +70,14 @@
     .content#sponsoredTag
       i.left.floated.external.alternate.icon
       .left.floated.meta="Sponsored"
-  .ui.bottom.attached.icon.buttons(class=(val.module=='digital-literacy' && val.info_text!="" || val.module=='advancedlit' && val.info_text!=""? "four" : "three"))
+  .ui.bottom.attached.icon.buttons(class=(val.module=='digital-literacy' && val.info_text!="" || val.module=='advancedlit' && val.info_text!=""? "four" : val.module=='targeted' && isAd ? "two" : "three"))
     .ui.reply.button(tabindex='0')
       i.reply.icon
       |  Reply
-    .ui.flag.button(tabindex='0')
-      i.flag.icon
-      |  Flag
+    if !(val.module=='targeted' && isAd)
+      .ui.flag.button(tabindex='0')
+        i.flag.icon
+        |  Flag
     if (val.module=='digital-literacy' && val.info_text!="" || val.module=='advancedlit' && val.info_text!="")
       .ui.share.button(tabindex='0')
         i.share.icon

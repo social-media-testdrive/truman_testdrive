@@ -1,4 +1,4 @@
-var stepsList = [{
+const stepsList = [{
         element: '#blueDotStep',
         intro: `Click "Next" to begin!`,
         position: 'right',
@@ -34,7 +34,7 @@ var stepsList = [{
 
 ];
 
-var hintsList = [{
+const hintsList = [{
         hint: `This is a sponsored post from a guitar company. You can see that the
     post looks very similar to other social media posts.`,
         element: '#hint1',
@@ -80,8 +80,6 @@ function eventsAfterHints() {
         duration: 300
     });
 
-
-
     //Adding functionality to the dropdown
     $('.ui.dropdown.icon.item').on('click', function() {
         clickPost = true;
@@ -90,21 +88,16 @@ function eventsAfterHints() {
     $('.ui.dropdown.icon.item')
         .dropdown({
             onChange: function() {
-                var dropdownSelection = $(this).data().value;
+                const dropdownSelection = $(this).data().value;
                 if (dropdownSelection == 0) {
                     $(".inverted.dimmer").css("background-color", "rgba(211,211,211,0.95)");
                     //hide the post
                     $('.ui.modal input[type=checkbox]').prop('checked', false);
-                    var post = $(this).closest(".ui.fluid.card.dim");
-                    var postID = post.attr("postID");
-                    post.find(".ui.inverted.dimmer.notflag").dimmer({
-                            closable: false
-                        }).dimmer('show')
-                        //repeat to ensure its closable
-                    post.find(".ui.inverted.dimmer.notflag").dimmer({
-                            closable: true
-                        })
-                        .dimmer('show');
+                    const post = $(this).closest(".ui.fluid.card.dim");
+                    const postID = post.attr("postID");
+                    post.find(".ui.inverted.dimmer.notflag").dimmer({ closable: true }).dimmer('show');
+                    //repeat to ensure its closable
+                    post.find(".ui.inverted.dimmer.notflag").dimmer({ closable: true }).dimmer('show');
                     if (enableDataCollection) {
                         $.post("/feed", {
                             actionType: 'guided activity',
@@ -119,17 +112,11 @@ function eventsAfterHints() {
 
                 } else if (dropdownSelection == 1) {
                     //flag the post
-                    var post = $(this).closest(".ui.fluid.card.dim");
-                    var postID = post.attr("postID");
-                    post.find(".ui.dimmer.flag").dimmer({
-                            closable: false
-                        })
-                        .dimmer('show');
+                    const post = $(this).closest(".ui.fluid.card.dim");
+                    const postID = post.attr("postID");
+                    post.find(".ui.dimmer.flag").dimmer({ closable: true }).dimmer('show');
                     //repeat to ensure its closable
-                    post.find(".ui.dimmer.flag").dimmer({
-                            closable: true
-                        })
-                        .dimmer('show');
+                    post.find(".ui.dimmer.flag").dimmer({ closable: true }).dimmer('show');
                     if (enableDataCollection) {
                         $.post("/feed", {
                             actionType: 'guided activity',
@@ -152,7 +139,6 @@ function eventsAfterHints() {
                         "<i class='checkmark icon'></i></div></div>"
                     );
                     recordSimModalInputs('targeted_whySeeingAdModal');
-
                 }
             }
         });

@@ -10,7 +10,6 @@ block content
         a.active.item(data-value='notifications')#notificationsteps
           i.icon.bell
           |  Notifications
-    
   //-mobile only version of the menu
   .mobile.only.sixteen.wide.column
     .ui.top.fixed.vertical.menu
@@ -21,61 +20,30 @@ block content
         i.icon.bell
         |  Notifications
         .ui.red.right.pointing.label !
-    br
-    br
-
-  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
-    .ui.one.column.centered.grid.feedbackMessagesGrid
-      .ui.fixed.bottom.sticky
-        .ui.icon.compact.message.warning#removeHidden
-          i.close.icon
-          i.question.icon.float
-          .content
-            .ui.header Need some help? 
-            p Make sure you are clicking "Got it" on the blue dots!
-            
-        .ui.message.centered.success.hidden#nextPageInstruction
-          .content
-            .ui.header Click the "My Activity" button to continue! 
-    
-        .ui.icon.message.warning.hidden#notificationWarning
-          i.close.icon
-          i.hand.pointer.icon.float
-          .content
-            .ui.header There are still blue dots to find!
-            p Click through all of the blue dots before going to the activity page
-          
+  #content.eight.wide.computer.eight.wide.tablet.sixteen.wide.mobile.column
     .ui.stackable.secondary.menu
       .ui.container
         .item
-          button.ui.basic.button.notificationsDisplay#settingsButton
+          button.ui.basic.button.notificationsDisplay.settingsButton
             i.cog.icon
             |   Settings
         .item
           button.ui.basic.button.notificationsDisplay#activityButton
             i.clock.icon
             |   My Activity
-            
-    //-Settings display
     .ui.container.settingsDisplay
       h2.ui.header#hint1 Notification Settings
       .ui.divider
-      br
-      form.ui.form#.mb-9
-        .field#hint2
-          br
+      form.ui.form.mb-9.mt-3
+        .field#hint2.mt-4
           .ui.toggle.checkbox(name='popupAlertsCheckbox')
             input(type='checkbox' name='popupAlerts')
             label Pause All
         span.settingLabel This will pause all notifications.
-        br
-        br
-        br
-        .field#pauseTimeSelectField
+        .field#pauseTimeSelectField.mt-6
           label How long would you like to pause notifications for?
             br
-            br
-            .ui.selection.dropdown(name='pauseTimeSelect')
+            .ui.selection.dropdown(name='pauseTimeSelect').mt-4
               input(type='hidden')#pauseTimeSelectValue
               i.dropdown.icon
               .default.text 
@@ -88,6 +56,20 @@ block content
         .ui.message.warning.hidden#confirmContinueCheck
           .ui.header 
             | Are you sure you don't want to try pausing notifications before continuing?
+    //- Located at bottom so element doesn't take up space at top.
+    .ui.one.column.centered.grid.feedbackMessagesGrid
+      .ui.fixed.bottom.sticky
+        include ../partials/messages/removeHiddenMessage     
+        .ui.message.centered.success.hidden#nextPageInstruction
+          .content
+            .ui.header Click the "My Activity" button to continue!
+        .ui.icon.message.warning.hidden#notificationWarning
+          i.close.icon
+          i.hand.pointer.icon.float
+          .content
+            .ui.header There are still blue dots to find!
+            p Click through all of the blue dots before going to the activity page
+  .computer.only.tablet.only.four.wide.column
 
 block scripts
   script(src="/module_js/habits/habits_sim3.js")
@@ -97,5 +79,3 @@ block scripts
 block styles 
   link(rel='stylesheet', href='/css/modules/habits/habits_sim.css')
   link(rel='stylesheet', href='/css/sim.css')
-      
-    

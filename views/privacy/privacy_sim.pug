@@ -1,168 +1,131 @@
 extends ../ui_layout
 
 block content
-  .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
+  .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.centered
     .ui.one.column.centered.grid.feedbackMessagesGrid
       .ui.fixed.bottom.sticky
-        .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
-          i.close.icon
-          i.question.icon.float
-          .content
-            .ui.header Need some help?
-            p Scroll up and click "Next" to begin!
-        .ui.icon.compact.message.warning#removeHidden
-          i.close.icon
-          i.question.icon.float
-          .content
-            .ui.header Need some help? 
-            p Make sure you are clicking "Got it" on the blue dots!
-          
-        .ui.icon.message.warning#clickAllDotsWarning
-          i.close.icon
-          i.hand.pointer.icon.float
-          .content
-            .ui.header There are still blue dots to find!
-            p Click through all of the blue dots to continue.
-            
-    #step1.ui.container.addTopMargin
+        include ../partials/messages/clickNextMessage
+        include ../partials/messages/removeHiddenMessage
+        include ../partials/messages/clickAllDotsMessage
+    #step1.ui.container.mb-9
       h2.ui.header Privacy Settings
-      br
-      
-      br.ui.divider
-      form.ui.form
+      .ui.divider
+      form.ui.form.mb-6.mt-6
         .grouped.fields#hint1
           label.sectionTitle(for='account') Account Settings  
-            .field#hint2
-              br
+            .field.mt-5#hint2
               .ui.toggle.checkbox(name='publicToggle')
                   input(type='checkbox' name='isPrivate')
                   label Private account
-            span.settingSmallLabel When your account is private, only people you approve can see your posts.
-            br
-            br
-            
+            span.settingSmallLabel When your account is private, only people you approve can see your posts. 
       .ui.divider
-      br
-      form.ui.form
+      form.ui.form.mb-6.mt-6
         .grouped.fields
             label.sectionTitle(for='interaction') Interaction Settings
-            br
-            br
-            label.subsectionTitle(for='contacts') Contacts
-            .field#hint3
-              br
-              label.standardLabel Allow friend requests from
+            .grouped.fields.mt-4
+              label.subsectionTitle(for='contacts') Contacts
+              .field.mt-5#hint3
+                label.standardLabel Allow friend requests from
+                  .div
+                  .ui.selection.dropdown(name='friendRequestsDropdown')
+                    input(type='hidden' name='friendRequests')
+                    i.dropdown.icon
+                    .default.text Select
+                    .menu
+                      .item(data-value='0') Everyone
+                      .item(data-value='1') Friends of Friends
+              .field.mt-5
+                label.standardLabel Who can see my friends list?
+                  .div
+                  .ui.selection.dropdown(name='friendListDropdown')
+                    input(type='hidden' name='friendList')
+                    i.dropdown.icon
+                    .default.text Select
+                    .menu
+                      .item(data-value='0') Everyone
+                      .item(data-value='1') Friends of Friends
+                      .item(data-value='2') Friends
+                      .item(data-value='3') Only Me
+            .grouped.fields.mt-6
+              label.subsectionTitle(for='comments').mt-6 Comments
+              .field.mt-5
+                label.standardLabel Allow comments from
+                  .div
+                  .ui.selection.dropdown(name='commentsListDropdown')
+                    input(type='hidden' name='commentsList')
+                    i.dropdown.icon
+                    .default.text Select
+                    .default.
+                    .menu
+                      .item(data-value='0') Everyone
+                      .item(data-value='1') Friends of Friends
+                      .item(data-value='2') Friends
+                      .item(data-value='3') Only Me
+              .field.mt-5
+                label.standardLabel Block comments from
                 .div
-                .ui.selection.dropdown(name='friendRequestsDropdown')
-                  input(type='hidden' name='friendRequests')
-                  i.dropdown.icon
-                  .default.text Select
-                  .menu
-                    .item(data-value='0') Everyone
-                    .item(data-value='1') Friends of Friends
-            br
-            .field
-              label.standardLabel Who can see my friends list?
-                .div
-                .ui.selection.dropdown(name='friendListDropdown')
-                  input(type='hidden' name='friendList')
-                  i.dropdown.icon
-                  .default.text Select
-                  .menu
-                    .item(data-value='0') Everyone
-                    .item(data-value='1') Friends of Friends
-                    .item(data-value='2') Friends
-                    .item(data-value='3') Only Me
-            br
-            label.subsectionTitle(for='comments') Comments
-            .field
-              br
-              label.standardLabel Allow comments from
-                .div
-                .ui.selection.dropdown(name='commentsListDropdown')
-                  input(type='hidden' name='commentsList')
-                  i.dropdown.icon
-                  .default.text Select
-                  .default.
-                  .menu
-                    .item(data-value='0') Everyone
-                    .item(data-value='1') Friends of Friends
-                    .item(data-value='2') Friends
-                    .item(data-value='3') Only Me
-            br
-            .field
-              label.standardLabel Block comments from
-              .div
-                select.ui.fluid.search.dropdown.blocklistDropdown(multiple='')
-                  option Fake N. Ame
-                  option Ima Robot
-                  option Cloe Hansen
-                  option Hayden Abbey
-                  option Kiki Pualani
-                  option Elli Andreas
-                  option Lauren Wakefield
-                  option Rob Yang
-                  option Katherine Zhou
-                  option Franklin Robinson
-                  option Aidan Acosta
-                  option Shika Ramphal
-                  option Jason Perez
-                  option Sarah Stella
-                  option Keith Hernandez
-                  option Elena Anderson
-                  option Mary Beckett
-                  option Ethan Kravitz
-                  option Dylan Moore
-                  option David Cole
-                  option Lana Sheehan
-                  option Claire Johnson
-                  option Jenny Chen
-                  option Ella Sroni
-            br
-            label.subsectionTitle(for='tags') Tags
-              .field
-                br
-                .ui.toggle.checkbox(name='tagToggle1')
-                  input(type='checkbox' name='allowTags' checked='checked')
-                  label Allow people to tag me in their posts
-              .field
-                .ui.toggle.checkbox(name='tagToggle2')
-                  input(type='checkbox' name='addTags' checked='checked')
-                  label Automatically add tagged posts in my timeline
-                  br
-                  br
+                  select.ui.fluid.search.dropdown.blocklistDropdown(multiple='')
+                    option Fake N. Ame
+                    option Ima Robot
+                    option Cloe Hansen
+                    option Hayden Abbey
+                    option Kiki Pualani
+                    option Elli Andreas
+                    option Lauren Wakefield
+                    option Rob Yang
+                    option Katherine Zhou
+                    option Franklin Robinson
+                    option Aidan Acosta
+                    option Shika Ramphal
+                    option Jason Perez
+                    option Sarah Stella
+                    option Keith Hernandez
+                    option Elena Anderson
+                    option Mary Beckett
+                    option Ethan Kravitz
+                    option Dylan Moore
+                    option David Cole
+                    option Lana Sheehan
+                    option Claire Johnson
+                    option Jenny Chen
+                    option Ella Sroni
+            .grouped.fields.mt-6                      
+              label.subsectionTitle(for='tags') Tags
+                .field.mt-5
+                  .ui.toggle.checkbox(name='tagToggle1')
+                    input(type='checkbox' name='allowTags' checked='checked')
+                    label Allow people to tag me in their posts
+                .field
+                  .ui.toggle.checkbox(name='tagToggle2')
+                    input(type='checkbox' name='addTags' checked='checked')
+                    label Automatically add tagged posts in my timeline
       .ui.divider
-      br
-      form.ui.form
+      form.ui.form.mb-6.mt-6
         .grouped.fields
-            label.sectionTitle(for='information') Location Sharing Settings
-              .field#hint4
-                br
-                .ui.toggle.checkbox(name='locationToggle')
-                  input(type='checkbox' name='shareLocation' checked='checked')
-                  label Turn on location sharing
-            .field#hint5
-              br
-              label.standardLabel Share my location with
-                .div
-                .ui.selection.dropdown(name='shareLocationWithToggle')
-                  input(type='hidden' name='shareLocationWith')
-                  i.dropdown.icon
-                  .default.text Select
-                  .menu
-                    .item(data-value='0') Everyone
-                    .item(data-value='1') Friends of Friends
-                    .item(data-value='2') Friends
-                    .item(data-value='3') Only Me
-            br
-            .ui.divider
-            br
+          label.sectionTitle(for='information') Location Sharing Settings
+            .field.mt-5#hint4
+              .ui.toggle.checkbox(name='locationToggle')
+                input(type='checkbox' name='shareLocation' checked='checked')
+                label Turn on location sharing
+          .field.mt-5#hint5
+            label.standardLabel Share my location with
+              .div
+              .ui.selection.dropdown(name='shareLocationWithToggle')
+                input(type='hidden' name='shareLocationWith')
+                i.dropdown.icon
+                .default.text Select
+                .menu
+                  .item(data-value='0') Everyone
+                  .item(data-value='1') Friends of Friends
+                  .item(data-value='2') Friends
+                  .item(data-value='3') Only Me
+      .ui.divider
     .ui.message.warning.hidden#confirmContinueCheck
       .ui.header 
         | Are you sure you do not want to try changing some privacy settings before continuing?
     button.ui.big.labeled.icon.button.cybertrans.mb-9#cyberTransButton
-          i.rocket.icon
-          |   Let's Continue!
+      i.rocket.icon
+      |   Let's Continue!
 
 block scripts
   script(src="/module_js/privacy/privacy_sim.js")

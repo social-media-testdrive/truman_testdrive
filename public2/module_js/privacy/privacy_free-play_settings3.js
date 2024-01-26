@@ -1,4 +1,4 @@
-var hintsList = [{
+const hintsList = [{
         hint: `Lily would like to hide tagged posts from her profile. Which privacy
     settings would she have to change?`,
         element: '#hint1',
@@ -22,8 +22,8 @@ var hintsList = [{
 ];
 
 //Variables for the two key settings
-let keySetting1 = $("input[name='allowTagInput']").is(':checked');
-let keySetting2 = $("input[name='autoTagInput']").is(':checked');
+let keySetting1 = true;
+let keySetting2 = true;
 
 function customOnHintCloseFunction() {
     closedHints++;
@@ -47,73 +47,72 @@ function customOnHintCloseFunction() {
     }
 }
 
+$(window).on('load', function() {
+    //Make the dropdown work
+    $('.ui.dropdown').dropdown('set selected', '0');
 
-//Make the dropdown work
-$('.ui.dropdown').dropdown('set selected', '0');
+    $('#locationDropdown').dropdown('set selected', '2');
 
-$('#locationDropdown').dropdown('set selected', '2');
+    /*All code below is using logic to determine if all required criteria are met before allowing to proceed, handling error messages*/
 
-/*All code below is using logic to determine if all required criteria are met before allowing to proceed, handling error messages*/
-
-//Giving appropriate feedback upon clicking continue
-
-$('#cyberTransButton').on('click', function() {
-    if (keySetting1 == true) {
-        $('#tagCue1Text').show();
-        $('#tagCue1').transition('bounce');
-    } else {
-        $('#tagCue1Text').hide();
-    }
-    if (keySetting2 == true) {
-        $('#tagCue2Text').show();
-        $('#tagCue2').transition('bounce');
-    } else {
-        $('#tagCue2Text').hide();
-    }
-    if (closedHints != hintsList.length) {
-        //show the message normally the first time
-        if ($('#clickAllDotsWarning').is(":hidden")) {
-            $('#clickAllDotsWarning').transition('fade');
-            $('#cyberTransButton').css("margin-bottom", "10em");
+    //Giving appropriate feedback upon clicking continue
+    $('#cyberTransButton').on('click', function() {
+        if (keySetting1 == true) {
+            $('#tagCue1Text').show();
+            $('#tagCue1').transition('bounce');
         } else {
-            //otherwise, bounce the message to draw attention to it
-            $('#clickAllDotsWarning').transition('bounce');
+            $('#tagCue1Text').hide();
         }
-    }
-});
-
-//Get the value of the toggle when it changes, make messaging disappear if corrrected
-
-$(".ui.toggle.checkbox[name='allowTagToggle']").change(function() {
-    keySetting1 = $("input[name='allowTagInput']").is(":checked");
-
-    //If the yellow warning is already open, make it disappear when setting is corrected
-    if (keySetting1 == false) {
-        $('#tagCue1Text').hide();
-    }
-
-    if (closedHints == hintsList.length) {
-        if ((keySetting1 == false) && (keySetting2 == false)) {
-            $(".free4").addClass("green");
+        if (keySetting2 == true) {
+            $('#tagCue2Text').show();
+            $('#tagCue2').transition('bounce');
         } else {
-            $(".free4").removeClass("green");
+            $('#tagCue2Text').hide();
         }
-    }
-});
-
-$(".ui.toggle.checkbox[name='autoTagToggle']").change(function() {
-    keySetting2 = $("input[name='autoTagInput']").is(":checked");
-
-    //If the yellow warning is already open, make it disappear when setting is corrected
-    if (keySetting2 == false) {
-        $('#tagCue2Text').hide();
-    }
-
-    if (closedHints == hintsList.length) {
-        if ((keySetting1 == false) && (keySetting2 == false)) {
-            $(".free4").addClass("green");
-        } else {
-            $(".free4").removeClass("green");
+        if (closedHints != hintsList.length) {
+            //show the message normally the first time
+            if ($('#clickAllDotsWarning').is(":hidden")) {
+                $('#clickAllDotsWarning').transition('fade');
+                $('#cyberTransButton').css("margin-bottom", "4em");
+            } else {
+                //otherwise, bounce the message to draw attention to it
+                $('#clickAllDotsWarning').transition('bounce');
+            }
         }
-    }
+    });
+
+    //Get the value of the toggle when it changes, make messaging disappear if corrrected
+    $(".ui.toggle.checkbox[name='allowTagToggle']").change(function() {
+        keySetting1 = $("input[name='allowTagInput']").is(":checked");
+
+        //If the yellow warning is already open, make it disappear when setting is corrected
+        if (keySetting1 == false) {
+            $('#tagCue1Text').hide();
+        }
+
+        if (closedHints == hintsList.length) {
+            if ((keySetting1 == false) && (keySetting2 == false)) {
+                $(".free4").addClass("green");
+            } else {
+                $(".free4").removeClass("green");
+            }
+        }
+    });
+
+    $(".ui.toggle.checkbox[name='autoTagToggle']").change(function() {
+        keySetting2 = $("input[name='autoTagInput']").is(":checked");
+
+        //If the yellow warning is already open, make it disappear when setting is corrected
+        if (keySetting2 == false) {
+            $('#tagCue2Text').hide();
+        }
+
+        if (closedHints == hintsList.length) {
+            if ((keySetting1 == false) && (keySetting2 == false)) {
+                $(".free4").addClass("green");
+            } else {
+                $(".free4").removeClass("green");
+            }
+        }
+    });
 });

@@ -2,24 +2,18 @@
 extends ../ui_layout
   
 block content
-  .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
+  .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.centered
     .ui.one.column.centered.grid.feedbackMessagesGrid
       .ui.fixed.bottom.sticky
-        .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
-          i.close.icon
-          i.question.icon.float
-          .content
-            .ui.header Need some help?
-            p Scroll up and click "Next" to begin!
-    #step1.ui.fluid.card.test       
+        include ../partials/messages/clickNextMessage
+    #step1.ui.fluid.card       
       .content
         .right.floated.meta= "Yesterday"
-        |
         a(href='')
           img.ui.avatar.image(src=cdn+'/profile_pictures/user55.jpg')
           span='Dylan Jones'
-      .image
-        img.post(src=cdn+"/post_pictures/basketballshoes.jpg")
+      .img.post.image
+        img(src=cdn+"/post_pictures/basketballshoes.jpg")
       .content
         .description="Wow, look at these new awesome kicks!!! :D "
       .three.ui.bottom.attached.icon.buttons
@@ -33,8 +27,7 @@ block content
           .ui.like.button
             i.heart.icon
             |  Like
-          a.ui.basic.red.left.pointing.label.count=2
-          
+          a.ui.basic.red.left.pointing.label.count=2  
       .content
         .ui.comments
           .comment
@@ -65,7 +58,6 @@ block content
             .field 
               textarea.newcomment(type='text', placeholder='Write a Comment' rows='1')
           i.big.send.link.icon
-
 
 block scripts
   script(src='/postFunctionalities.js')

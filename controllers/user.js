@@ -262,6 +262,9 @@ exports.getMe = async(req, res) => {
     try {
         const user = await User.findById(req.user.id).exec();
         const userPosts = user.getPosts(req.params.modId);
+        userPosts.sort(function(a, b) {
+            return b.relativeTime - a.relativeTime;
+        });
         const finalfeed = helpers.getFeed(userPosts, [], user);
         res.render('me', { posts: finalfeed, title: user.profile.name || 'My Profile' });
     } catch (err) {
@@ -355,7 +358,9 @@ exports.postUpdateInterestSelection = async(req, res, next) => {
 exports.postUpdateHabitsTimer = async(req, res, next) => {
     try {
         const user = await User.findById(req.user.id).exec();
-        user.habitsTimer.push(req.body.habitsTimer);
+        if (req.body.habitsTimer) {
+            user.habitsTimer.push(req.body.habitsTimer);
+        }
         if (req.body.habitsStart) { //we are trying to record when the user first opened the free-play section
             if (user.firstHabitViewTime == -1) { //only write this value if there's no value written yet, since user can revisit the feed
                 user.firstHabitViewTime = req.body.habitsStart;

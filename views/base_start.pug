@@ -9,25 +9,25 @@ block content
           | Learn
       .ui.divider
       .ui.basic.segment.removePadding
-        .ui.mini.green.right.labeled.icon.button.showLearnSectionButton
+        .ui.small.green.right.labeled.icon.button.showLearnSectionButton
           i.down.arrow.icon
           |   Next
       .ui.basic.segment.learnSegment.hidden
         each concept in startData["Learn"]["concepts"]
           if (typeof concept == "object")
             each val, key in concept
-              h5.ui.header
+              h4.ui.header
                 i.arrow.circle.right.blue.icon
                 .content !{key}
               each bullet in val
-                h5.ui.header(style="margin:calc(.14285714em) 0 1rem !important;")
+                h4.ui.header(style="margin:calc(.14285714em) 0 1rem !important;")
                   i.circle.bullet.blue.icon
                   .content !{bullet}
           else 
-            h5.ui.header
+            h4.ui.header
               i.arrow.circle.right.blue.icon
               .content !{concept}
-        .ui.mini.green.right.labeled.icon.button.showKeyTermsButton
+        .ui.small.green.right.labeled.icon.button.showKeyTermsButton
           i.down.arrow.icon
           |   Next
     
@@ -74,7 +74,7 @@ block content
      .header
       | Click on each label to proceed  
     a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
-      .ui.labeled.icon.button
+      .ui.large.labeled.icon.button
         i.rocket.icon
         |   Got it!
             

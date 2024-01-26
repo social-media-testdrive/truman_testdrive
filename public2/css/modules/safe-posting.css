@@ -1,53 +1,72 @@
 /* tutorial */
 
 .image img {
-  max-width: 100%;
+    max-width: 100%;
 }
 
 .three.bottom.attached.buttons {
-  z-index: 0;
+    z-index: 0;
 }
 
+body {
+    overflow: hidden;
+}
+
+
 /* chat box */
+
+
 /* tutorial, tut_guide, */
 
 .chat {
-  right: 24px;
-  margin-bottom: 3em;
+    right: 24px;
+    margin-bottom: 3em;
 }
 
 .chat a img {
-  width: 3em !important;
-  height: 3em !important;
+    width: 3em !important;
+    height: 3em !important;
 }
+
+.ui.text.container>.ui.raised.segment {
+    padding: 25px;
+}
+
+.introjs-hint.introjs-fixedhint {
+    z-index: 2;
+}
+
 
 /* tut_guide */
 
 .responseSuggestion {
-  font-weight: 600;
+    font-weight: 600;
 }
 
-#clickViewMessagesWarning, #clickToSeeWarning, #clickLabelsWarning {
-  display: none;
+#clickViewMessagesWarning,
+#clickToSeeWarning,
+#clickLabelsWarning {
+    display: none;
 }
+
 
 /* results */
 
 .img.post img {
-  max-width: 100%;
-  cursor: pointer;
-  display: inline !important;
+    max-width: 100%;
+    cursor: pointer;
+    display: inline !important;
 }
 
 .ui.stackable.two.cards .chat {
-   bottom: auto;
-   font-size: 12px;
-   right: auto;
-   position: relative;
-   width: auto;
-   float:left;
+    bottom: auto;
+    font-size: 12px;
+    right: auto;
+    position: relative;
+    width: auto;
+    float: left;
 }
 
 .ui.stackable.two.cards .chat-history {
-  height: inherit;
+    height: inherit;
 }

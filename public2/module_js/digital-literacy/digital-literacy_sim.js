@@ -64,13 +64,12 @@ const post_info_description = {
     'WWW.NPR.ORG': 'National Public Radio (NPR, stylized as npr) is an American privately and publicly funded non-profit membership media organization based in Washington, D.C.'
 };
 
-
 function eventsAfterHints() {
     $(".info_button").click(function(e) {
         const clickedId = '#' + $(this).attr('id');
         const info_header = $(clickedId).parent().siblings('.newsArticleTitleContainer').find('a.articleLink')[0].innerText;
         const info_text = post_info_description[info_header.toString().trim()] || 'No Information Found';
-        document.getElementById('post_info_body').innerHTML = info_text;
+        document.getElementById('post_info_text_modual').innerHTML = info_text;
         recordSimModalInputs('digital-literacy_infoModal');
         e.stopPropagation();
     });
@@ -96,7 +95,7 @@ function customErrorCheck() {
         //show the message normally the first time
         if ($('#clickAllDotsWarning').is(":hidden")) {
             $('#clickAllDotsWarning').transition('fade');
-            $('#cyberTransButton').css("margin-bottom", "10em");
+            $('#cyberTransButton').css("margin-bottom", "4em");
         } else {
             //otherwise, bounce the message to draw attention to it
             $('#clickAllDotsWarning').transition('bounce');

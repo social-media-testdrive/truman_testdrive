@@ -2,19 +2,13 @@
 extends ../ui_layout
   
 block content
-  .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.mb-9
+  .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.centered
     .ui.one.column.centered.grid.feedbackMessagesGrid
       .ui.fixed.bottom.sticky
-        .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
-          i.close.icon
-          i.question.icon.float
-          .content
-            .ui.header Need some help?
-            p Scroll up and click "Next" to begin!
-    .ui.fluid.card.test#step1
+        include ../partials/messages/clickNextMessage
+    .ui.fluid.card#step1
       .content
         .right.floated.meta= "Yesterday"
-        |
         a(href='/user/triple-threat')
           img.ui.avatar.image(src=cdn+'/profile_pictures/user14.jpg')
           span='Sarah Stella'
@@ -69,11 +63,9 @@ block content
                 a.comment.like Like
                 a.comment.flag Flag
       include ../partials/script/components/newUserComment
-            
-    .ui.fluid.card.test#step2
+    .ui.fluid.card#step2
       .content
         .right.floated.meta= "15 Minutes Ago"
-        |
         a(href='/user/zachpeters06')
           img.ui.avatar.image(src=cdn+'/profile_pictures/user67.jpg')
           span='Zach Peters'
@@ -112,11 +104,9 @@ block content
                 a.comment.like Like
                 a.comment.flag Flag
       include ../partials/script/components/newUserComment
-            
-    .ui.fluid.card.test#step3
+    .ui.fluid.card#step3
       .content
         .right.floated.meta= "15 Minutes Ago"
-        |
         a(href='/user/beachmoreworryless')
           img.ui.avatar.image(src=cdn+'/profile_pictures/user33.jpg')
           span='Sean Gomez'
@@ -171,11 +161,9 @@ block content
                 a.comment.like Like
                 a.comment.flag Flag
       include ../partials/script/components/newUserComment
-      
-    .ui.fluid.card.test#step3B
+    .ui.fluid.card#step3B
       .content
         .right.floated.meta= "15 Minutes Ago"
-        |
         a(href='/user/dannyboii')
           img.ui.avatar.image(src=cdn+'/profile_pictures/user37.jpg')
           span='Daniel Mai'
@@ -185,7 +173,6 @@ block content
         .description 
           | it really sucks that i was not invited to you know who's party. i 
           | guess i know who my real friends are now.
-        
       .three.ui.bottom.attached.icon.buttons
         .ui.reply.button(tabindex='0')
           i.reply.icon
@@ -216,11 +203,9 @@ block content
                 a.comment.like Like
                 a.comment.flag Flag
       include ../partials/script/components/newUserComment
-                               
-    .ui.fluid.card.test#step4
+    .ui.fluid.card#step4
       .content
         .right.floated.meta= "15 Minutes Ago"
-        |
         a(href='/user/kilani244')
           img.ui.avatar.image(src=cdn+'/profile_pictures/user5.jpeg')
           span='Kiki Pualani'

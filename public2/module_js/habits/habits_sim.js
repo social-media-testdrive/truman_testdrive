@@ -61,7 +61,6 @@ function customOnHintCloseFunction() {
     }
     literacy_counter++;
     if (literacy_counter == 2) {
-
         //hide the warning message if it's visible
         if ($('#notificationWarning').is(":visible")) {
             $('#notificationWarning').transition('fade');
@@ -70,10 +69,10 @@ function customOnHintCloseFunction() {
         if ($('#nextPageInstruction').is(":hidden")) {
             $('#nextPageInstruction').transition('fade');
             //add margin to the bottom of the page
-            $('#.mb-9').css('margin-bottom', '10em');
+            $('.mb-9').css('margin-bottom', '10em');
         }
-
-        //enable the notifications button
+        console.log("test")
+            //enable the notifications button
         $('a.item[data-value="notifications"]').on('click', function() {
             window.location.href = '/sim2/habits';
         });
@@ -92,7 +91,7 @@ function eventsAfterHints() {
             //show the message normally the first time
             if ($('#notificationWarning').is(":hidden")) {
                 $('#notificationWarning').transition('fade');
-                $('#.mb-9').css('margin-bottom', '10em');
+                $('.mb-9').css('margin-bottom', '10em');
             } else {
                 //otherwise, bounce the message to draw attention to it
                 $('#notificationWarning').transition('bounce');

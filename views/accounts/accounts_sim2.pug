@@ -38,14 +38,12 @@ block content
               i.plus.icon
       .ui.message.warning.hidden#confirmContinueCheck
         .ui.header 
-          | It seems you did not complete any profile information fields. Are you sure you would like to continue? 
-              
-    button.ui.big.labeled.icon.button.cybertrans#cyberTransButton
+          | It seems you did not complete any profile information fields. Are you sure you would like to continue?       
+    button.ui.big.labeled.icon.button.cybertrans.mb-9#cyberTransButton
         i.rocket.icon
         |   Let's Continue!     
-
-  //- Profile Picture Selection Modal
-  include ../partials/script/modals/profilePictureModal
+    //- Profile Picture Selection Modal
+    include ../partials/script/modals/profilePictureModal
 
 block scripts
   script(src="/module_js/accounts/accounts_sim2.js")

@@ -14,7 +14,6 @@ block content
           .ui.large.read-only.checked.checkbox.exampleCheckbox
             input.ui(type="checkbox" id="" checked="")
             label Read and check all the boxes
-          
         .ui.styled.fluid.accordion
           #point1.title(data-voiceoverIndex='voiceover_tut_guide_1')
             i.dropdown.icon
@@ -38,9 +37,9 @@ block content
                       | out information about the site owner and author by exploring 
                       | the site and searching the web.
               .item
-                  #point1_button.button.ui.mini.green.right.labeled.icon.button
-                    i.down.arrow.icon
-                    | Next
+                #point1_button.button.ui.small.green.right.labeled.icon.button
+                  i.down.arrow.icon
+                  | Next
                   
           #point2.title(data-voiceoverIndex='voiceover_tut_guide_2')
             i.dropdown.icon
@@ -61,18 +60,17 @@ block content
                     input.checkbox.ui(type="checkbox")
                     label 
                       | To do this, search for the same topic on fact-checking websites 
-                      | such as Snopes.com, FactCheck.org, and major news websites.
-                      
+                      | such as Snopes.com, FactCheck.org, and major news websites.                
     .ui.warning.message.hidden#checkAllBoxesWarning
       .header
         | Check all the boxes to proceed
-    .ui.big.labeled.icon.button.cybersim#cyberSimButton
-        i.rocket.icon
-        |   Got it!
+    .ui.large.labeled.icon.button.cybersim#cyberSimButton
+      i.rocket.icon
+      |   Got it!
 
 block scripts
   script.
-    var voiceoverMappings = {
+    const voiceoverMappings = {
       'voiceover_tut_guide_1': {
         "initialDelay": 500,
         "delay": 500,

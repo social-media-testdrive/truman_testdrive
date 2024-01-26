@@ -1,4 +1,4 @@
-var stepsList = [{
+const stepsList = [{
         element: '#step1',
         intro: `Click "Next" to begin!`,
         position: 'left',
@@ -6,7 +6,7 @@ var stepsList = [{
         audioFile: ['']
     },
     {
-        element: document.querySelectorAll('#step1')[0],
+        element: '#step1',
         intro: `Now that you have learned about different privacy settings, let’s
     practice how to change them!`,
         scrollTo: 'tooltip',
@@ -14,7 +14,7 @@ var stepsList = [{
         audioFile: ['CUSML.7.6.1.mp3']
     },
     {
-        element: document.querySelectorAll('#step1')[0],
+        element: '#step1',
         intro: `Click on "Done" and then look for the blue dots &nbsp;&nbsp;<a role='button' tabindex='0'
     class='introjs-hint'><div class='introjs-hint-dot'></div><div
     class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; &nbsp; to learn more...`,
@@ -24,7 +24,7 @@ var stepsList = [{
     }
 ];
 
-var hintsList = [{
+const hintsList = [{
         hint: `If your account is on a “<i>Public</i>” setting, everyone on the
     internet can access your account and see what you post. Right now, it is set
     as a public account.`,
@@ -65,83 +65,85 @@ var hintsList = [{
     }
 ];
 
-$('.ui.dropdown').dropdown('set selected', '0');
+$(window).on('load', function() {
+    $('.ui.dropdown').dropdown('set selected', '0');
+    let clickAction = false;
 
-let clickAction = false;
+    // Defining multi-select onAdd and onRemove functions, triggered when a dropdown multi-select is changed
+    $('.blocklistDropdown').dropdown({
+        onAdd: function(addedValue, addedText, $addedChoice) {
+            clickAction = true;
+            $('#confirmContinueCheck').hide();
+            const cat = {
+                subdirectory1: 'sim',
+                subdirectory2: 'privacy',
+                inputField: 'blockList- add',
+                absoluteTimestamp: Date.now(),
+                inputText: addedValue
+            };
 
-// Defining multi-select onAdd and onRemove functions, triggered when a dropdown multi-select is changed
-$('.blocklistDropdown').dropdown({
-    onAdd: function(addedValue, addedText, $addedChoice) {
-        clickAction = true;
-        $('#confirmContinueCheck').hide();
-        let cat = {};
-        cat.subdirectory1 = 'sim';
-        cat.subdirectory2 = 'privacy';
-        cat.inputField = 'blockList- add';
-        cat.absoluteTimestamp = Date.now();
-        cat.inputText = addedValue;
+            $.post("/privacyAction", {
+                action: cat,
+                actionType: 'privacy',
+                _csrf: $('meta[name="csrf-token"]').attr('content')
+            });
+        },
+        onRemove: function(addedValue, removedText, $removedChoice) {
+            clickAction = true;
+            $('#confirmContinueCheck').hide();
+            const cat = {
+                subdirectory1: 'sim',
+                subdirectory2: 'privacy',
+                inputField: 'blockList- remove',
+                absoluteTimestamp: Date.now(),
+                inputText: addedValue
+            };
 
-        $.post("/privacyAction", {
-            action: cat,
-            actionType: 'privacy',
-            _csrf: $('meta[name="csrf-token"]').attr('content')
-        });
-    },
-    onRemove: function(addedValue, removedText, $removedChoice) {
-        clickAction = true;
-        $('#confirmContinueCheck').hide();
-
-        let cat = {};
-        cat.subdirectory1 = 'sim';
-        cat.subdirectory2 = 'privacy';
-        cat.inputField = 'blockList- remove';
-        cat.absoluteTimestamp = Date.now();
-        cat.inputText = addedValue;
-
-        $.post("/privacyAction", {
-            action: cat,
-            actionType: 'privacy',
-            _csrf: $('meta[name="csrf-token"]').attr('content')
-        });
-    }
-});
-
-//Triggered when a dropdown select is changed
-$('.ui.selection.dropdown:not(.blocklistDropdown)').dropdown({
-    onChange: function(value, text, $choice) {
-        clickAction = true;
-        $('#confirmContinueCheck').hide();
-
-        let cat = {};
-        cat.subdirectory1 = 'sim';
-        cat.subdirectory2 = 'privacy';
-        cat.inputField = $(this).find('input').attr('name');
-        cat.absoluteTimestamp = Date.now();
-        cat.inputText = text;
-
-        $.post("/privacyAction", {
-            action: cat,
-            actionType: 'privacy',
-            _csrf: $('meta[name="csrf-token"]').attr('content')
-        });
-    }
-});
-
-//Triggered when a toggle is changed
-$('.ui.toggle.checkbox input').change(function() {
-    clickAction = true;
-    $('#confirmContinueCheck').hide();
-
-    let cat = {};
-    cat.subdirectory1 = 'sim';
-    cat.subdirectory2 = 'privacy';
-    cat.inputField = $(this).attr('name');
-    cat.absoluteTimestamp = Date.now();
-    cat.inputText = $(this).is(':checked') ? "true" : "false";
-
-    $.post("/privacyAction", {
-        action: cat,
-        actionType: 'privacy',
-        _csrf: $('meta[name="csrf-token"]').attr('content')
+            $.post("/privacyAction", {
+                action: cat,
+                actionType: 'privacy',
+                _csrf: $('meta[name="csrf-token"]').attr('content')
+            });
+        }
     });
-})
+
+    //Triggered when a dropdown select is changed
+    $('.ui.selection.dropdown:not(.blocklistDropdown)').dropdown({
+        onChange: function(value, text, $choice) {
+            clickAction = true;
+            $('#confirmContinueCheck').hide();
+            const cat = {
+                subdirectory1: 'sim',
+                subdirectory2: 'privacy',
+                inputField: $(this).find('input').attr('name'),
+                absoluteTimestamp: Date.now(),
+                inputText: text
+            };
+
+            $.post("/privacyAction", {
+                action: cat,
+                actionType: 'privacy',
+                _csrf: $('meta[name="csrf-token"]').attr('content')
+            });
+        }
+    });
+
+    //Triggered when a toggle is changed
+    $('.ui.toggle.checkbox input').change(function() {
+        clickAction = true;
+        $('#confirmContinueCheck').hide();
+        const cat = {
+            subdirectory1: 'sim',
+            subdirectory2: 'privacy',
+            inputField: $(this).attr('name'),
+            absoluteTimestamp: Date.now(),
+            inputText: $(this).is(':checked') ? "true" : "false"
+        };
+
+        $.post("/privacyAction", {
+            action: cat,
+            actionType: 'privacy',
+            _csrf: $('meta[name="csrf-token"]').attr('content')
+        });
+    });
+});

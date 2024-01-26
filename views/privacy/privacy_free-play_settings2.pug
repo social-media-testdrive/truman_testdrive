@@ -1,33 +1,18 @@
 extends ../ui_layout
 
 block content
-  .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
+  .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.centered
     .ui.one.column.centered.grid.feedbackMessagesGrid
       .ui.fixed.bottom.sticky
-        .ui.icon.compact.message.warning#removeHidden
-          i.close.icon
-          i.question.icon.float
-          .content
-            .ui.header Need some help? 
-            p Make sure you are clicking "Got it" on the blue dots!
-          
-        .ui.icon.message.warning#clickAllDotsWarning
-          i.close.icon
-          i.hand.pointer.icon.float
-          .content
-            .ui.header There are still blue dots to find!
-            p Click through all of the blue dots to continue.
-    
-    .ui.container.addTopMargin#hint1
+        include ../partials/messages/removeHiddenMessage
+        include ../partials/messages/clickAllDotsMessage
+    .ui.container.mb-9#hint1
       h2.ui.header#topOfPage Privacy Settings
-      br
       .ui.divider
-      br
-      form.ui.form
+      form.ui.form.mb-6.mt-6
         .grouped.fields
           label.sectionTitle(for='account') Account Settings
-            .field#hint2
-              br
+            .field.mt-5#hint2
               .ui.warning.message#privateAccountCueText
                 .header
                   | Turn on the "private account" setting
@@ -35,19 +20,13 @@ block content
                 input(type='checkbox' name='toggleValue')
                 label Private account
             span.settingSmallLabel When your account is private, only people you approve can see your posts.
-            br
-            br
-            
       .ui.divider
-      br
-      form.ui.form
+      form.ui.form.mb-6.mt-6
         .grouped.fields
-            label.sectionTitle(for='interaction') Interaction Settings
-            br
-            br
+          label.sectionTitle(for='interaction') Interaction Settings
+          .grouped.fields.mt-4
             label.subsectionTitle(for='contacts') Contacts
-            .field
-              br
+            .field.mt-5
               label.standardLabel Allow friend requests from
                 .div
                 .ui.selection.disabled.dropdown
@@ -57,8 +36,7 @@ block content
                   .menu
                     .item(data-value='0') Everyone
                     .item(data-value='1') Friends of Friends
-            br
-            .field
+            .field.mt-5
               label.standardLabel Who can see my friends list?
                 .div
                 .ui.selection.disabled.dropdown
@@ -70,10 +48,9 @@ block content
                     .item(data-value='1') Friends of Friends
                     .item(data-value='2') Friends
                     .item(data-value='3') Only Me
-            br
+          .grouped.fields.mt-6
             label.subsectionTitle(for='comments') Comments
-            .field
-              br
+            .field.mt-5
               label.standardLabel Allow comments from
                 .div
                 .ui.selection.disabled.dropdown
@@ -85,8 +62,7 @@ block content
                     .item(data-value='1') Friends of Friends
                     .item(data-value='2') Friends
                     .item(data-value='3') Only Me
-            br
-            .field
+            .field.mt-5
               label.standardLabel Block comments from
               .div
                 select.ui.fluid.search.disabled.dropdown(multiple='')
@@ -114,9 +90,9 @@ block content
                   option Claire Johnson
                   option Jenny Chen
                   option Ella Sroni
-            br
+          .grouped.fields.mt-6                    
             label.subsectionTitle(for='tags') Tags
-              .field
+              .field.mt-5
                 br
                 .ui.toggle.read-only.checkbox
                   input(type='checkbox' name='public')
@@ -125,39 +101,31 @@ block content
                 .ui.toggle.read-only.checkbox
                   input(type='checkbox' name='public')
                   label Automatically add tagged posts in my timeline
-                  br
-                  br
       .ui.divider
-      br
-      form.ui.form
+      form.ui.form.mb-6.mt-6
         .grouped.fields
-            label.sectionTitle(for='information') Location Sharing Settings
-              .field
-                br
-                .ui.toggle.read-only.checkbox
-                  input(type='checkbox' name='locationShare')
-                  label Turn on location sharing
-            .field
-              br
-              label.standardLabel Share my location with
-                .div
-                .ui.selection.disabled.dropdown#locationDropdown
-                  input(type='hidden' name='resetDropdownSelection')
-                  i.dropdown.icon
-                  .default.text Select
-                  .menu
-                    .item(data-value='0') Everyone
-                    .item(data-value='1') Friends of Friends
-                    .item(data-value='2') Friends
-                    .item(data-value='3') Only Me
-            br
-            .ui.divider
-            br#hint3
-
+          label.sectionTitle(for='information') Location Sharing Settings
+            .field.mt-5
+              .ui.toggle.read-only.checkbox
+                input(type='checkbox' name='locationShare')
+                label Turn on location sharing
+          .field.mt-5
+            label.standardLabel Share my location with
+              .div
+              .ui.selection.disabled.dropdown#locationDropdown
+                input(type='hidden' name='resetDropdownSelection')
+                i.dropdown.icon
+                .default.text Select
+                .menu
+                  .item(data-value='0') Everyone
+                  .item(data-value='1') Friends of Friends
+                  .item(data-value='2') Friends
+                  .item(data-value='3') Only Me
+      .ui.divider
+      br#hint3
     button.ui.big.labeled.icon.button.free3.mb-9#cyberTransButton
         i.rocket.icon
         |   Let's Continue!
-        
         
 block scripts
   script(src="/module_js/privacy/privacy_free-play_settings2.js")

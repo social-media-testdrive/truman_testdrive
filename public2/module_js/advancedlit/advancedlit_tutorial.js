@@ -171,12 +171,13 @@ function startIntro(enableDataCollection) {
                 console.log(`There was an error in calculating the step number.`);
             }
             let totalTimeOpen = Date.now() - startTimestamp;
-            let cat = {};
-            cat.subdirectory1 = subdirectory1;
-            cat.subdirectory2 = subdirectory2;
-            cat.stepNumber = leavingStep;
-            cat.viewDuration = totalTimeOpen;
-            cat.absoluteStartTime = startTimestamp;
+            let cat = {
+                subdirectory1: subdirectory1,
+                subdirectory2: subdirectory2,
+                stepNumber: leavingStep,
+                viewDuration: totalTimeOpen,
+                absoluteStartTime: startTimestamp
+            };
             // Check that leavingStep is a legitimate number. -1 seems to occur whenever
             // the page is loaded, or when the back button is used - we don't want to
             // record those occurrences.
@@ -186,20 +187,16 @@ function startIntro(enableDataCollection) {
                     _csrf: $('meta[name="csrf-token"]').attr('content')
                 });
                 jqhxrArray.push(jqxhr);
-                console.log(cat);
             }
         }
 
         let currentStep = $(this)[0]._currentStep;
-        if (currentStep < 1) {
+        if (currentStep <= 1) {
             window.scrollTo(0, 0);
             $('.ui.card.articleCard').removeClass('articleCardClickable');
         }
-        if (currentStep === 1) {
-            $('.scrollToHere')[0].scrollIntoView();
-        }
         if (currentStep === 2) {
-            $('.scrollToHere')[0].scrollIntoView();
+            $('.ui.card.articleCard')[0].scrollIntoView({ block: "center" });
             $('.ui.card.articleCard').addClass('articleCardClickable');
         }
     });
@@ -232,18 +229,18 @@ function startIntro(enableDataCollection) {
         // edge case: current step will = -1 when the user leaves the page using
         // something like the back button. Don not record that.
         let totalTimeOpen = Date.now() - startTimestamp;
-        let cat = {};
-        cat.subdirectory1 = subdirectory1;
-        cat.subdirectory2 = subdirectory2;
-        cat.stepNumber = leavingStep;
-        cat.viewDuration = totalTimeOpen;
-        cat.absoluteStartTime = startTimestamp;
+        let cat = {
+            subdirectory1: subdirectory1,
+            subdirectory2: subdirectory2,
+            stepNumber: leavingStep,
+            viewDuration: totalTimeOpen,
+            absoluteStartTime: startTimestamp
+        };
         const jqxhr = $.post("/introjsStep", {
             action: cat,
             _csrf: $('meta[name="csrf-token"]').attr('content')
         });
         jqhxrArray.push(jqxhr);
-        console.log(cat);
         // this is the last step in the module, so change pages once all Promises
         // are completed
         Promise.all(jqhxrArray).then(function() {
@@ -317,12 +314,13 @@ function startSecondIntro(enableDataCollection) {
                 console.log(`There was an error in calculating the step number.`);
             }
             let totalTimeOpen = Date.now() - startTimestamp;
-            let cat = {};
-            cat.subdirectory1 = subdirectory1;
-            cat.subdirectory2 = subdirectory2;
-            cat.stepNumber = leavingStep + 4;
-            cat.viewDuration = totalTimeOpen;
-            cat.absoluteStartTime = startTimestamp;
+            let cat = {
+                subdirectory1: subdirectory1,
+                subdirectory2: subdirectory2,
+                stepNumber: leavingStep + 4,
+                viewDuration: totalTimeOpen,
+                absoluteStartTime: startTimestamp
+            };
             // Check that leavingStep is a legitimate number. -1 seems to occur whenever
             // the page is loaded, or when the back button is used - we don't want to
             // record those occurrences.
@@ -332,7 +330,6 @@ function startSecondIntro(enableDataCollection) {
                     _csrf: $('meta[name="csrf-token"]').attr('content')
                 });
                 jqhxrArray.push(jqxhr);
-                console.log(cat);
             }
         }
 
@@ -374,13 +371,13 @@ function startSecondIntro(enableDataCollection) {
         // edge case: current step will = -1 when the user leaves the page using
         // something like the back button. Don not record that.
         let totalTimeOpen = Date.now() - startTimestamp;
-        let cat = {};
-        cat.subdirectory1 = subdirectory1;
-        cat.subdirectory2 = subdirectory2;
-        cat.stepNumber = leavingStep + 4;
-        cat.viewDuration = totalTimeOpen;
-        cat.absoluteStartTime = startTimestamp;
-        console.log(cat);
+        let cat = {
+            subdirectory1: subdirectory1,
+            subdirectory2: subdirectory2,
+            stepNumber: leavingStep + 4,
+            viewDuration: totalTimeOpen,
+            absoluteStartTime: startTimestamp
+        };
         const jqxhr = $.post("/introjsStep", {
             action: cat,
             _csrf: $('meta[name="csrf-token"]').attr('content')
@@ -453,12 +450,13 @@ function startThirdIntro(enableDataCollection) {
                 console.log(`There was an error in calculating the step number.`);
             }
             let totalTimeOpen = Date.now() - startTimestamp;
-            let cat = {};
-            cat.subdirectory1 = subdirectory1;
-            cat.subdirectory2 = subdirectory2;
-            cat.stepNumber = leavingStep + 8;
-            cat.viewDuration = totalTimeOpen;
-            cat.absoluteStartTime = startTimestamp;
+            let cat = {
+                subdirectory1: subdirectory1,
+                subdirectory2: subdirectory2,
+                stepNumber: leavingStep + 8,
+                viewDuration: totalTimeOpen,
+                absoluteStartTime: startTimestamp
+            };
             // Check that leavingStep is a legitimate number. -1 seems to occur whenever
             // the page is loaded, or when the back button is used - we don't want to
             // record those occurrences.
@@ -468,7 +466,6 @@ function startThirdIntro(enableDataCollection) {
                     _csrf: $('meta[name="csrf-token"]').attr('content')
                 });
                 jqhxrArray.push(jqxhr);
-                console.log(cat);
             }
         }
 
@@ -507,13 +504,13 @@ function startThirdIntro(enableDataCollection) {
         // edge case: current step will = -1 when the user leaves the page using
         // something like the back button. Don not record that.
         let totalTimeOpen = Date.now() - startTimestamp;
-        let cat = {};
-        cat.subdirectory1 = subdirectory1;
-        cat.subdirectory2 = subdirectory2;
-        cat.stepNumber = leavingStep + 8;
-        cat.viewDuration = totalTimeOpen;
-        cat.absoluteStartTime = startTimestamp;
-        console.log(cat);
+        let cat = {
+            subdirectory1: subdirectory1,
+            subdirectory2: subdirectory2,
+            stepNumber: leavingStep + 8,
+            viewDuration: totalTimeOpen,
+            absoluteStartTime: startTimestamp
+        };
         const jqxhr = $.post("/introjsStep", {
             action: cat,
             _csrf: $('meta[name="csrf-token"]').attr('content')
@@ -552,7 +549,7 @@ function startThirdIntro(enableDataCollection) {
 
 function startFourthIntro(enableDataCollection) {
     $('.ui.card.articleCard').removeClass('articleCardClickable');
-    $('.scrollToHere')[0].scrollIntoView();
+    $('.ui.card.articleCard')[0].scrollIntoView({ block: "center" });
 
     let fourthIntro = introJs().setOptions({
         steps: fourthStepsList,
@@ -588,12 +585,13 @@ function startFourthIntro(enableDataCollection) {
                 console.log(`There was an error in calculating the step number.`);
             }
             let totalTimeOpen = Date.now() - startTimestamp;
-            let cat = {};
-            cat.subdirectory1 = subdirectory1;
-            cat.subdirectory2 = subdirectory2;
-            cat.stepNumber = leavingStep + 11;
-            cat.viewDuration = totalTimeOpen;
-            cat.absoluteStartTime = startTimestamp;
+            let cat = {
+                subdirectory1: subdirectory1,
+                subdirectory2: subdirectory2,
+                stepNumber: leavingStep + 11,
+                viewDuration: totalTimeOpen,
+                absoluteStartTime: startTimestamp
+            };
             // Check that leavingStep is a legitimate number. -1 seems to occur whenever
             // the page is loaded, or when the back button is used - we don't want to
             // record those occurrences.
@@ -646,13 +644,13 @@ function startFourthIntro(enableDataCollection) {
         // edge case: current step will = -1 when the user leaves the page using
         // something like the back button. Don not record that.
         let totalTimeOpen = Date.now() - startTimestamp;
-        let cat = {};
-        cat.subdirectory1 = subdirectory1;
-        cat.subdirectory2 = subdirectory2;
-        cat.stepNumber = leavingStep + 11;
-        cat.viewDuration = totalTimeOpen;
-        cat.absoluteStartTime = startTimestamp;
-        console.log(cat);
+        let cat = {
+            subdirectory1: subdirectory1,
+            subdirectory2: subdirectory2,
+            stepNumber: leavingStep + 11,
+            viewDuration: totalTimeOpen,
+            absoluteStartTime: startTimestamp
+        };
         const jqxhr = $.post("/introjsStep", {
             action: cat,
             _csrf: $('meta[name="csrf-token"]').attr('content')
@@ -669,7 +667,6 @@ function startFourthIntro(enableDataCollection) {
 
     fourthIntro.start();
     return fourthIntro;
-
 };
 
 function isTutorialBoxOffScreen(bottomOffset) {
@@ -712,5 +709,4 @@ $(window).on("load", function() {
             }, 4000);
         }
     });
-
 });

@@ -13,23 +13,23 @@ block content
           | Next 
       .ui.basic.segment.reviewSegment.hidden
         if transData["intro"]
-          h5 !{transData["intro"]}
+          h4 !{transData["intro"]}
         each arrowPoint in transData["bulletPoints"]
-          h5.ui.header
+          h4.ui.header
             i.arrow.circle.right.blue.icon
             .content !{arrowPoint["text"]}
           if arrowPoint["bullets"]
             each bulletPoint in arrowPoint["bullets"]
-              h5.ui.header
+              h4.ui.header(style="margin:calc(.14285714em) 0 1rem !important;")
                 i.circle.bullet.blue.icon
                 .content !{bulletPoint}
         if transData["intro"]
-          h5 !{transData["conclusion"]}
+          h4 !{transData["conclusion"]}
     .ui.warning.message#clickNextWarning
       .header
        | Click "Next"
     a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
-      .ui.labeled.icon.button.gotItButton
+      .ui.large.labeled.icon.button.gotItButton
         i.rocket.icon
         | Got it!
             

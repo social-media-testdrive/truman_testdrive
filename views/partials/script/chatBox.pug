@@ -80,13 +80,13 @@
           i.send.icon
           | Send
 
-  script#message-template(type='text/x-handlebars-template').
-    <li class="clearfix">
-    <div class="message-data align-right">
-    <span class="message-data-time" >{{time}}</span> &nbsp; &nbsp;
-    <span class="message-data-name" >Me</span> <i class="fa fa-circle me"></i>
-    </div>
-    <div class="message other-message float-right">
-    {{messageOutput}}
-    </div>
-    </li>
+script#message-template(type='text/x-handlebars-template').
+  <li class="clearfix">
+  <div class="message-data align-right">
+  <span class="message-data-time" >{{time}}</span> &nbsp; &nbsp;
+  <span class="message-data-name" >Me</span> <i class="fa fa-circle me"></i>
+  </div>
+  <div class="message other-message float-right">
+  {{messageOutput}}
+  </div>
+  </li>

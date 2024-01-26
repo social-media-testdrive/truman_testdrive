@@ -1,16 +1,10 @@
 extends ../ui_layout
 
 block content
-  //- insert code for article after RAs provide design
-  #content.sixteen.wide.column.centered.removeTopPadding.mb-9
+  .sixteen.wide.column.centered.removeTopPadding.mb-9
     .ui.one.column.centered.grid.feedbackMessagesGrid
       .ui.fixed.bottom.sticky
-        .ui.icon.compact.message.warning.hidden#clickNextHelpMessage
-          i.close.icon
-          i.question.icon.float
-          .content
-            .ui.header Need some help?
-            p Scroll up and click "Next" to begin!
+        include ../partials/messages/clickNextMessage
         .ui.icon.message.success.hidden#instructionsToContinueOne
           .content
             .ui.header Click on the Tornado Warning article to continue! 
@@ -20,30 +14,18 @@ block content
         .ui.icon.message.success.hidden#instructionsToContinueThree
           .content
             .ui.header Click "Go back to the timeline" to continue!
-    //- #####################################################
     .ui.active.tab(data-tab="one")
       .ui.grid
         .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.centered
-          .ui.fluid.card.dim()#step1A
-            .ui.dimmer.flag
-              .content
-                .center
-                  h2.ui.inverted.icon.header
-                    i.red.flag.icon
-                    | You&apos;ve flagged this!
-                    h3.ui.inverted.header
-                      span 
-                        | The admins will review this post further. We are sorry 
-                        | you had this experience.
+          .ui.fluid.card.dim#step1A
             .content
               .right.floated.meta= "10 minutes ago"
               a(href='#')
-                    img.ui.avatar.image(src=cdn+'/profile_pictures/user21.jpg')
-                    span='Sam Hill'
-            .img.post.articleImage(data-tab="two")        
+                img.ui.avatar.image(src=cdn+'/profile_pictures/user21.jpg')
+                span='Sam Hill'
+            .img.post.image      
               img(src=cdn+'/post_pictures/bike_an.jpg')
-
-            .content(data-tab="two")
+            .content
               .description
                 | Perfect day for a bike ride!
             .three.ui.bottom.attached.icon.buttons
@@ -92,28 +74,16 @@ block content
                     .actions
                       a.like.comment Like
                       a.flag.comment Flag   
-            include ../partials/script/components/newUserComment
-                           
-          .ui.fluid.card.dim()
-            .ui.dimmer.flag
-              .content
-                .center
-                  h2.ui.inverted.icon.header
-                    i.red.flag.icon
-                    | You&apos;ve flagged this!
-                    h3.ui.inverted.header
-                      span 
-                        | The admins will review this post further. We are sorry 
-                        | you had this experience.
+            include ../partials/script/components/newUserComment                           
+          .ui.fluid.card.dim
             .content
               .right.floated.meta= "15 minutes ago"
               a(href='#')
-                    img.ui.avatar.image(src=cdn+'/profile_pictures/user3.jpg')
-                    span='Cloe Hansen'
-            .img.post.articleImage(data-tab="two")        
+                img.ui.avatar.image(src=cdn+'/profile_pictures/user3.jpg')
+                span='Cloe Hansen'
+            .img.post.image    
               img(src=cdn+'/post_pictures/hammock_an.jpg')
-
-            .content(data-tab="two")
+            .content
               .description
                 | just janging out with my bestie 😜
             .three.ui.bottom.attached.icon.buttons
@@ -163,26 +133,14 @@ block content
                       a.like.comment Like
                       a.flag.comment Flag   
             include ../partials/script/components/newUserComment  
-          
           #step1.ui.fluid.card.dim.articleCard
-            .ui.dimmer.flag
-              .content
-                .center
-                  h2.ui.inverted.icon.header
-                    i.red.flag.icon
-                    | You&apos;ve flagged this!
-                    h3.ui.inverted.header
-                      span 
-                        | The admins will review this post further. We are sorry 
-                        | you had this experience.
             .content
               .right.floated.meta= "22 minutes ago"
               a(href='#')
-                    img.ui.avatar.image(src=cdn+'/profile_pictures/user37.jpg')
-                    span='Daniel Mai'
-            .img.post.articleImage.articleTab(data-tab="two")        
+                img.ui.avatar.image(src=cdn+'/profile_pictures/user37.jpg')
+                span='Daniel Mai'
+            .img.post.image.articleImage.articleTab(data-tab="two")        
               img(src=cdn+'/post_pictures/tornado1_an_upd.png')
-
             .content.articleTab(data-tab="two")
               .description
                 | Be safe out there!! 
@@ -220,27 +178,15 @@ block content
                       a.like.comment Like
                       a.flag.comment Flag     
             include ../partials/script/components/newUserComment     
-
-          .ui.fluid.card.dim()
-            .ui.dimmer.flag
-              .content
-                .center
-                  h2.ui.inverted.icon.header
-                    i.red.flag.icon
-                    | You&apos;ve flagged this!
-                    h3.ui.inverted.header
-                      span 
-                        | The admins will review this post further. We are sorry 
-                        | you had this experience.
+          .ui.fluid.card.dim
             .content
               .right.floated.meta= "Yesterday"
               a(href='#')
-                    img.ui.avatar.image(src=cdn+'/profile_pictures/user25.jpg')
-                    span='Ella Sroni'
-            .img.post.articleImage(data-tab="two")        
+                img.ui.avatar.image(src=cdn+'/profile_pictures/user25.jpg')
+                span='Ella Sroni'
+            .img.post.image 
               img(src=cdn+'/post_pictures/homework_an.jpg')
-
-            .content(data-tab="two")
+            .content
               .description
                 | Homework timee
             .three.ui.bottom.attached.icon.buttons
@@ -290,7 +236,7 @@ block content
                       a.like.comment Like
                       a.flag.comment Flag   
             include ../partials/script/components/newUserComment
-    //- #####################################################
+
     .ui.tab(data-tab="two")
       button.ui.big.button.homeTab(data-tab='one')
         i.icon.reply
@@ -328,7 +274,7 @@ block content
       button.ui.big.button.searchTab#step4(data-tab='three')
         i.icon.search
         | Search for "Reed County tornado"          
-    //- #####################################################
+
     .ui.tab(data-tab="three")
       .ui.grid     
         .row
@@ -341,19 +287,17 @@ block content
               | Go back to the article
         .row
           .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.left.floated.column#step5B  
-            h2#step5 Search results for "Reed County tornado"
-            
-            .ui.basic.segment.removeColumnPadding 
-              p.resultURL reedcountyvoice.com
-              a
-                h4.resultTitle 
-                 | Tornado Warning Issued in Reed County - The Reed County Voice
-              p.resultPublished
-                | 2 hours ago
-              p.resultPreviewText
-                | The National Weather Service issued a tornado warning at 3 p.m. 
-                | yesterday. Residents should expect large hail and very heavy 
-                | downpours starting early today.
+            h2#step5 Search results for "Reed County tornado" 
+            p.resultURL reedcountyvoice.com
+            a
+              h4.resultTitle 
+                | Tornado Warning Issued in Reed County - The Reed County Voice
+            p.resultPublished
+              | 2 hours ago
+            p.resultPreviewText
+              | The National Weather Service issued a tornado warning at 3 p.m. 
+              | yesterday. Residents should expect large hail and very heavy 
+              | downpours starting early today.
 
             p.resultURL reedcountyvoice.com
             a
@@ -409,9 +353,9 @@ block content
               | Go back to the article
 
 block scripts
+  script(src='/module_js/base_tutorial.js')
   script(src='/postFunctionalities.js')
   script(src='/module_js/advancedlit/advancedlit_tutorial.js')
   script(src='/module_js/voiceover.js')
-  script(src='/module_js/base_tutorial.js')
 block styles
   link(rel='stylesheet', href='/css/modules/advancedlit.css')

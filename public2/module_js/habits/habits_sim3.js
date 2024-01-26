@@ -35,7 +35,7 @@ function customOnHintCloseFunction() {
         if ($('#nextPageInstruction').is(":hidden")) {
             $('#nextPageInstruction').transition('fade');
             //add margin to the bottom of the page
-            $('#.mb-9').css('margin-bottom', '20em')
+            $('.mb-9').css('margin-bottom', '20em')
         }
 
         //enable the activity button
@@ -58,61 +58,64 @@ function customOnHintCloseFunction() {
     }
 };
 
+$(window).on("load", function() {
+    //activating a normal dropdown (the one used in the habits module settings)
+    $('.ui.selection.dropdown').dropdown('set selected', '1 hour');
 
-//activating a normal dropdown (the one used in the habits module settings)
-$('.ui.selection.dropdown').dropdown('set selected', '1 hour');
+    //hiding the pause time select unless pause is turned on (in notification settings)
+    $(".ui.toggle.checkbox[name='popupAlertsCheckbox']").change(function() {
+        $("#confirmContinueCheck").hide();
 
-//hiding the pause time select unless pause is turned on (in notification settings)
-$(".ui.toggle.checkbox[name='popupAlertsCheckbox']").change(function() {
-    $("#confirmContinueCheck").hide();
+        let cat = {
+            subdirectory1: 'sim3',
+            subdirectory2: 'habits',
+            absoluteTimestamp: Date.now(),
+            actionType: 'togglePauseNotifications'
+        };
 
-    let cat = {};
-    cat.subdirectory1 = 'sim3';
-    cat.subdirectory2 = 'habits';
-    cat.absoluteTimestamp = Date.now();
-    cat.actionType = 'togglePauseNotifications';
-
-    if ($("input[name='popupAlerts']").is(":checked")) {
-        $('#pauseTimeSelectField').show();
-        clickedPause = true;
-        cat.setValue = 'pause';
-    } else {
-        $('#pauseTimeSelectField').hide();
-        cat.setValue = 'unpause';
-    }
-
-    $.post("/habitsAction", {
-        action: cat,
-        actionType: 'habits',
-        _csrf: $('meta[name="csrf-token"]').attr('content')
-    });
-});
-
-$('#activityButton').on('click', function() {
-    if (literacy_counter != 2) {
-        //show the message normally the first time
-        if ($('#notificationWarning').is(":hidden")) {
-            $('#notificationWarning').transition('fade');
-            $("#.mb-9").css('margin-bottom', '20em');
+        if ($("input[name='popupAlerts']").is(":checked")) {
+            $('#pauseTimeSelectField').show();
+            clickedPause = true;
+            cat.setValue = 'pause';
         } else {
-            //otherwise, bounce the message to draw attention to it
-            $('#notificationWarning').transition('bounce');
+            $('#pauseTimeSelectField').hide();
+            cat.setValue = 'unpause';
         }
-    }
-});
 
-//if "pause notifications" value is changed
-$(".ui.selection.dropdown[name='pauseTimeSelect']").change(function() {
-    let cat = {};
-    cat.subdirectory1 = 'sim3';
-    cat.subdirectory2 = 'habits';
-    cat.absoluteTimestamp = Date.now();
-    cat.actionType = 'setPauseNotifications';
-    cat.setValue = $("#pauseTimeSelectValue").val();
+        $.post("/habitsAction", {
+            action: cat,
+            actionType: 'habits',
+            _csrf: $('meta[name="csrf-token"]').attr('content')
+        });
+    });
 
-    $.post("/habitsAction", {
-        action: cat,
-        actionType: 'habits',
-        _csrf: $('meta[name="csrf-token"]').attr('content')
+    $('#activityButton').on('click', function() {
+        if (literacy_counter != 2) {
+            //show the message normally the first time
+            if ($('#notificationWarning').is(":hidden")) {
+                $('#notificationWarning').transition('fade');
+                $(".mb-9").css('margin-bottom', '20em');
+            } else {
+                //otherwise, bounce the message to draw attention to it
+                $('#notificationWarning').transition('bounce');
+            }
+        }
+    });
+
+    //if "pause notifications" value is changed
+    $(".ui.selection.dropdown[name='pauseTimeSelect']").change(function() {
+        const cat = {
+            subdirectory1: 'sim3',
+            subdirectory2: 'habits',
+            absoluteTimestamp: Date.now(),
+            actionType: 'setPauseNotifications',
+            setValue: $("#pauseTimeSelectValue").val()
+        };
+
+        $.post("/habitsAction", {
+            action: cat,
+            actionType: 'habits',
+            _csrf: $('meta[name="csrf-token"]').attr('content')
+        });
     });
 });

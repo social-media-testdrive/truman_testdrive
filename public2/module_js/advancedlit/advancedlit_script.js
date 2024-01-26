@@ -63,8 +63,6 @@ $(window).on("load", async function() {
         });
     });
 
-    // #############################################################################
-
     let articleNumber = 1;
     // scrolling to the correct article when returning to the timeline tab
     $('.ui.card .img.articleTab, .ui.button.articleTab, .ui.button.timelineTab, .ui.button.searchTab').tab({

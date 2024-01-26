@@ -317,6 +317,7 @@ $(window).on("load", function() {
     });
 
 });
+
 $(window).on("beforeunload", function() {
     recordNewViewTime();
 })

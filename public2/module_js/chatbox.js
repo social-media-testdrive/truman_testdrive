@@ -95,7 +95,7 @@ $(window).on("load", function() {
             }
         };
 
-        if ((pathArray[2] == 'safe-posting') || (pathArray[2] == 'phishing')) {
+        if (pathArray[2] == 'safe-posting') {
             chat.init();
         };
     });

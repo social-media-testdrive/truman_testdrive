@@ -1,4 +1,4 @@
-var hintsList = [{
+const hintsList = [{
         hint: `Lily would like to hide her location information from the public on
     the internet. Which privacy settings would she have to change?`,
         element: '#hint1',
@@ -23,7 +23,7 @@ var hintsList = [{
 ];
 
 //Variables for the two key settings
-let keySetting1 = $("input[name='locationSetting']").is(':checked');
+let keySetting1 = true;
 let keySetting2 = "";
 
 function customOnHintCloseFunction() {
@@ -72,70 +72,70 @@ function showLocationMessage() {
     }
 }
 
-$('#cyberTransButton').on('click', function() {
-    if (keySetting1 == true) {
-        $('#locationCue1Text').show();
-        $('#locationCue1').transition('bounce');
-    } else {
-        $('#locationCue1Text').hide();
-    }
-    if (keySetting2 !== "Friends") {
-        $('#locationCue2Text').show();
-        $('#locationCue2').transition('bounce');
-    } else {
-        $('#locationCue2Text').hide();
-    }
-    if (closedHints != hintsList.length) {
-        //show the message normally the first time
-        if ($('#clickAllDotsWarning').is(":hidden")) {
-            $('#clickAllDotsWarning').transition('fade');
-            $('#cyberTransButton').css("margin-bottom", "10em");
+$(window).on('load', function() {
+    $('#cyberTransButton').on('click', function() {
+        if (keySetting1 == true) {
+            $('#locationCue1Text').show();
+            $('#locationCue1').transition('bounce');
         } else {
-            //otherwise, bounce the message to draw attention to it
-            $('#clickAllDotsWarning').transition('bounce');
+            $('#locationCue1Text').hide();
         }
-    }
-    showLocationMessage();
-});
-
-
-//get the value of the dropdown when it changes
-$(".ui.selection.dropdown[name='shareLocationWith']").change(function() {
-    keySetting2 = $(".ui.selection.dropdown[name='shareLocationWith']").dropdown('get text');
-
-    //If the yellow warning is already open, make it disappear when setting is corrected
-    //If
-    if (keySetting2 === "Friends") {
-        $('#locationCue2Text').hide();
-    }
-
-    //All blue dots are clicked and the settings are correct
-    if (closedHints == hintsList.length) {
-        if ((keySetting1 == false) && (keySetting2 === "Friends")) {
-            $(".settings1").addClass("green");
+        if (keySetting2 !== "Friends") {
+            $('#locationCue2Text').show();
+            $('#locationCue2').transition('bounce');
         } else {
-            $(".settings1").removeClass("green");
+            $('#locationCue2Text').hide();
         }
-    }
-    showLocationMessage();
-});
-
-//Get the value of the toggle when it changes
-$(".ui.toggle.checkbox[name='locationToggle']").change(function() {
-    keySetting1 = $("input[name='locationSetting']").is(":checked");
-
-    //If the yellow warning is already open, make it disappear when setting is corrected
-    if (keySetting1 == false) {
-        $('#locationCue1Text').hide();
-    }
-
-    if (closedHints == hintsList.length) {
-        if ((keySetting1 == false) && (keySetting2 === "Friends")) {
-            $(".settings1").addClass("green");
-        } else {
-            //Indicate settings to change with animation
-            $(".settings1").removeClass("green");
+        if (closedHints != hintsList.length) {
+            //show the message normally the first time
+            if ($('#clickAllDotsWarning').is(":hidden")) {
+                $('#clickAllDotsWarning').transition('fade');
+                $('#cyberTransButton').css("margin-bottom", "10em");
+            } else {
+                //otherwise, bounce the message to draw attention to it
+                $('#clickAllDotsWarning').transition('bounce');
+            }
         }
-    }
-    showLocationMessage();
+        showLocationMessage();
+    });
+
+    //get the value of the dropdown when it changes
+    $(".ui.selection.dropdown[name='shareLocationWith']").change(function() {
+        keySetting2 = $(".ui.selection.dropdown[name='shareLocationWith']").dropdown('get text');
+
+        //If the yellow warning is already open, make it disappear when setting is corrected
+        if (keySetting2 === "Friends") {
+            $('#locationCue2Text').hide();
+        }
+
+        //All blue dots are clicked and the settings are correct
+        if (closedHints == hintsList.length) {
+            if ((keySetting1 == false) && (keySetting2 === "Friends")) {
+                $(".settings1").addClass("green");
+            } else {
+                $(".settings1").removeClass("green");
+            }
+        }
+        showLocationMessage();
+    });
+
+    //Get the value of the toggle when it changes
+    $(".ui.toggle.checkbox[name='locationToggle']").change(function() {
+        keySetting1 = $("input[name='locationSetting']").is(":checked");
+
+        //If the yellow warning is already open, make it disappear when setting is corrected
+        if (keySetting1 == false) {
+            $('#locationCue1Text').hide();
+        }
+
+        if (closedHints == hintsList.length) {
+            if ((keySetting1 == false) && (keySetting2 === "Friends")) {
+                $(".settings1").addClass("green");
+            } else {
+                //Indicate settings to change with animation
+                $(".settings1").removeClass("green");
+            }
+        }
+        showLocationMessage();
+    });
 });

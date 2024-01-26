@@ -7,6 +7,24 @@ this function.
 */
 
 function recordSimModalInputs(modalNameAttrStr) {
+    /**
+     * Sim modals: Values of 'modalNameAttrStr' 
+     * digital-literacy
+     * - 'digital-literacy_articleModal'
+     * - 'digital-literacy_infoModal'
+     * - 'digital-literacy_flagModal'
+     * digfoot: 
+     * - 'digfoot_simModal'
+     * esteem: 
+     * - 'esteem_simPostModal1'
+     * - 'esteem_simPostModal2' (in onHide function)
+     * targeted:
+     * - 'targeted_hideAdModal'
+     * - 'targeted_whySeeingAdModal'
+     * phishing: 
+     * - 'phishing_iPhoneModal'
+     * - 'phishing_ticketGiveawayModal'
+     */
     const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
     let target = $(event.target);
     const post = target.closest(".ui.card");
@@ -31,12 +49,8 @@ function recordSimModalInputs(modalNameAttrStr) {
                 case 'digital-literacy_flagModal':
                     Voiceovers.playVoiceover(['CUSML.misc_03.mp3'])
                     break;
-                case 'digfoot_normalPostModal':
                 case 'digfoot_simModal':
                     Voiceovers.playVoiceover(['CUSML.misc_04.mp3'])
-                    break;
-                case 'esteem_postModal1':
-                    Voiceovers.playVoiceover(['CUSML.misc_07.mp3'])
                     break;
                 case 'esteem_simPostModal1':
                     Voiceovers.playVoiceover(['CUSML.misc_05.mp3'])

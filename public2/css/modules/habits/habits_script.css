@@ -15,7 +15,7 @@
 
 /* both main menus */
 
-.ui.red.pointing.label {
+.ui.menu .ui.red.pointing.label {
     display: none;
 }
 
