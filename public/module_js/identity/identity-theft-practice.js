@@ -111,6 +111,15 @@ $(document).ready(function() {
                     introJs().exit();
                 }
 
+                if(section === 'practice' && nextPage === 'takeaways') {
+                    // complete module status to 100 manually since there is no quiz
+                    console.log("Posting to complete practice module status");
+                    $.post('/completeModuleStatus', {
+                        modId: 'identity',
+                        section: 'practice'
+                    });
+                }
+
                 $('#' + nextPage).transition({
                     animation: 'fade in',
                     duration: 200,
@@ -363,6 +372,8 @@ function setLinks(currentPage) {
         }  else if(currentPage === 'takeaways') {
             backlink = baseurl + 'reflection';
             nextlink = '/course-player?module=identity&section=evaluation&page=intro';
+
+
         }
 
     }

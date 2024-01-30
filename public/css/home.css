@@ -213,12 +213,17 @@ p#aim {
   font-size: 2.25rem;
 }
 
-#sponsors {
+#partners {
   font-size: 2.75rem;
   font-weight: 500;
   /* font-family: 'Armata', sans-serif; */
   font-family: stolzl, helvetica nueue, heltvetica, sans-serif;
 }
+
+/* #partners .four.wide.column.centered {
+  text-align: center !important;
+  background-color: red !important;
+} */
 
 .ui.raised.segment {
   position: relative !important;

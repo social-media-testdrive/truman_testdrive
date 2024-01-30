@@ -81,7 +81,44 @@ exports.getModule = async (req, res) => {
 
 
 
+/**
+ * POST /completeModuleStatus
+ */
+exports.completeModuleStatus = async (req, res, next) => {
+  console.log("POST /completeModuleStatus *********************")
+  try {
+    const { modId, section } = req.body;
+    console.log("backend modId: " + modId);
+    console.log("backend section: " + section);
+    const existingUser = await User.findOne({ email: req.user.email });
 
+    if (existingUser) {
+      existingUser.moduleStatus[modId][section] = 100;
+      await existingUser.save();
+
+      //  also manually update the current session so dont have to do extra requests or log in/out
+
+
+      req.session.passport.user.moduleStatus[modId][section]  = existingUser.moduleStatus[modId][section] ;
+      
+      // Save the session
+      req.session.save((err) => {
+        if (err) {
+          return next(err);
+        }
+
+        // Redirect or send a success response
+        console.log("session saved")
+      });
+  
+      res.status(200).json({ message: 'Module status updated successfully.' });
+    } else {
+      res.status(404).json({ message: 'User not found.' });
+    }
+  } catch (err) {
+    next(err);
+  }
+};
 
 
 // time helper functions

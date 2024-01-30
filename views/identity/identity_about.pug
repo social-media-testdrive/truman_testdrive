@@ -98,7 +98,10 @@ block content
           .ui.grid
             .row
               .two.wide.centered.column
-                span.fake-checkbox
+                if(user.moduleStatus.identity.protection === 100)
+                  span.fake-checkbox.completed
+                else
+                  span.fake-checkbox
               .nine.wide.column
                 h3 Methods of Protection
               .five.wide.right.aligned.column
@@ -121,7 +124,10 @@ block content
           .ui.grid
             .row
               .two.wide.centered.column
-                span.fake-checkbox
+                if(user.moduleStatus.identity.practice === 100)
+                  span.fake-checkbox.completed
+                else
+                  span.fake-checkbox
               .nine.wide.column
                 h3 Practice
               .five.wide.right.aligned.column
@@ -131,7 +137,10 @@ block content
           .ui.grid
             .row
               .two.wide.centered.column
-                span.fake-checkbox
+                if(user.moduleStatus.identity.evaluation === 100)
+                  span.fake-checkbox.completed
+                else
+                  span.fake-checkbox
               .nine.wide.column
                 h3 Evaluation
               .five.wide.right.aligned.column

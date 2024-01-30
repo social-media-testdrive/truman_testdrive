@@ -173,6 +173,7 @@ app.get('/', homeController.index);
 // });
 app.get('/courses', coursesController.index);
 app.get('/course-player', moduleController.getModule);
+app.post('/completeModuleStatus', moduleController.completeModuleStatus);
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 app.get('/logout', userController.logout);
