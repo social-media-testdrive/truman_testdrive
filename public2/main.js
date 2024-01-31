@@ -299,7 +299,7 @@ $(window).on("load", function() {
                         return;
                     };
                 };
-                // Special Case: When a user clicks "Let's Continue" in the digfoot, esteem, targeted module, but has not clicked on any post
+                // Special Case: When a user clicks "Let's Continue" but haven't completed recommended actions.
                 // prompt the user: "It seems you did not click on any posts to ... Are you sure you do not want to click on a post before continuing?"
             } else if (pathArray[2] === "digfoot" || pathArray[2] === "esteem" || pathArray[2] === "targeted" || pathArray[2] === "cyberbullying") {
                 if (!clickPost && $('#confirmContinueCheck').is(":hidden")) {
@@ -311,28 +311,23 @@ $(window).on("load", function() {
                     });
                     return;
                 };
+            } else if (pathArray[2] === "privacy") {
+                // Special Case: When a user clicks "Let's Continue" in the privacy module, but has not toggled any settings
+                // prompt the user: Are you sure you do not want to try changing some privacy settings before continuing?
+                if (!clickAction && $('#confirmContinueCheck').is(":hidden")) {
+                    $('#confirmContinueCheck').show();
+                    $('#confirmContinueCheck')[0].scrollIntoView({
+                        behavior: "smooth", // or "auto" or "instant"
+                        block: "center", // defines vertical alignment
+                        inline: "nearest" // defines horizontal alignment
+                    });
+                    return;
+                }
             };
             window.location.href = '/trans/' + pathArray[2];
         } else {
             e.preventDefault();
         };
-    });
-
-    //To transition page: /trans2/
-    $(document).on('click', '.trans2.green', function() {
-        // Special Case: When a user clicks "Let's Continue" in the privacy module, but has not toggled any settings
-        // prompt the user: Are you sure you do not want to try changing some privacy settings before continuing?
-        if (!clickAction && $('#confirmContinueCheck').is(":hidden")) {
-            $('#confirmContinueCheck').show();
-            $('#confirmContinueCheck')[0].scrollIntoView({
-                behavior: "smooth", // or "auto" or "instant"
-                block: "center", // defines vertical alignment
-                inline: "nearest" // defines horizontal alignment
-            });
-            return;
-        }
-        const pathArray = window.location.pathname.split('/');
-        window.location.href = '/trans2/' + pathArray[2];
     });
 
     // To free play page: /modual/
@@ -406,7 +401,7 @@ $(window).on("load", function() {
 $(window).on("beforeunload", function() {
     const pathArrayForHeader = window.location.pathname.split('/');
     let currentPageForHeader = pathArrayForHeader[1];
-    if ($("input[name='voiceoverCheckbox']").is(":checked") && currentPageForHeader != "/end") {
+    if ($("input[name='voiceoverCheckbox']").is(":checked") && !isResearchVersion && currentPageForHeader != "end") {
         addVoiceoverTime();
     }
 })

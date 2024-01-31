@@ -65,9 +65,10 @@ const hintsList = [{
     }
 ];
 
+let clickAction = false;
+
 $(window).on('load', function() {
     $('.ui.dropdown').dropdown('set selected', '0');
-    let clickAction = false;
 
     // Defining multi-select onAdd and onRemove functions, triggered when a dropdown multi-select is changed
     $('.blocklistDropdown').dropdown({

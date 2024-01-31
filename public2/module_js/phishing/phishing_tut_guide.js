@@ -14,10 +14,10 @@ function checkStatus() {
     if (($('input.checkbox:checked').length) ==
         ($('input.checkbox').length)) {
         $("#checkAllWarning").hide();
-        $('.ui.big.labeled.icon.button').addClass('green');
-        $('.ui.big.labeled.icon.button').transition('jiggle');
+        $('.ui.large.labeled.icon.button').addClass('green');
+        $('.ui.large.labeled.icon.button').transition('jiggle');
     } else {
-        $('.ui.big.labeled.icon.button').removeClass('green');
+        $('.ui.large.labeled.icon.button').removeClass('green');
     }
 };
 
@@ -43,7 +43,7 @@ $(window).on("load", function() {
         checkStatus();
     });
     $("#phishingTutGuideButton").on('click', function() {
-        clickGotIt()
+        clickGotIt();
     });
     $('.showReviewSectionButton').on('click', function() {
         $('.reviewSegment').show();

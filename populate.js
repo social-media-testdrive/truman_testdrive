@@ -36,7 +36,7 @@ async function readData() {
 dotenv.config({ path: '.env' });
 
 mongoose.connect(process.env.PRO_MONGODB_URI, { useNewUrlParser: true });
-var db = mongoose.connection;
+const db = mongoose.connection;
 mongoose.connection.on('error', (err) => {
     console.error(err);
     console.log('%s MongoDB connection error. Please make sure MongoDB is running.');

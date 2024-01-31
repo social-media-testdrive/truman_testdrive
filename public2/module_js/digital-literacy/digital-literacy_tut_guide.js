@@ -35,10 +35,10 @@ $(window).on("load", function() {
         if (($('input.checkbox:checked').length) ==
             ($('input.checkbox').length)) {
             $("#checkAllBoxesWarning").hide();
-            $('.ui.big.labeled.icon.button.cybersim').addClass('green');
-            $('.ui.big.labeled.icon.button.cybersim').transition('jiggle');
+            $('.ui.large.labeled.icon.button.cybersim').addClass('green');
+            $('.ui.large.labeled.icon.button.cybersim').transition('jiggle');
         } else {
-            $('.ui.big.labeled.icon.button.cybersim').removeClass('green');
+            $('.ui.large.labeled.icon.button.cybersim').removeClass('green');
         }
     });
 
