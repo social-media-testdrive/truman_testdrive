@@ -172,6 +172,7 @@ app.get('/', homeController.index);
 //   }
 // });
 app.get('/courses', coursesController.index);
+app.get('/about/:modId', isValidModId, moduleController.getAbout);
 app.get('/course-player', moduleController.getModule);
 app.post('/completeModuleStatus', moduleController.completeModuleStatus);
 app.get('/login', userController.getLogin);
@@ -250,10 +251,10 @@ app.get('/accessibility', passportConfig.isAuthenticated, function(req, res) {
 
 
 
+
 /**
  * Module Routes
  */
-app.get('/about/:modId', isValidModId, coursesController.getAbout);
 app.get('/intro/:page?/:modId', isValidModId, coursesController.getIntro);
 app.get('/challenge/:page?/:modId', isValidModId, coursesController.getChallenge);
 app.get('/learn/:submod(submod|submod2|submod3)/:page?/:modId', isValidModId, coursesController.getLearn);
@@ -261,8 +262,6 @@ app.get('/explore/:page?/:modId', isValidModId, coursesController.getExplore);
 app.get('/evaluation/:page?/:modId', isValidModId, coursesController.getEvaluation);
 app.get('/reflect/:page?/:modId', isValidModId, coursesController.getReflect);
 app.get('/certificate/:modId', isValidModId, coursesController.getCertificate);
-
-
 
 
 

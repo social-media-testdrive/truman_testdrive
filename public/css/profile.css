@@ -46,3 +46,25 @@
 .ui-flash .ui.positive.fluid.large.message {
     margin-bottom:-30px; 
 }
+
+
+
+
+#badges img.ui.small.centered.image {
+    width: auto;
+    height: 100px;
+    font-size: 1rem;
+}
+
+/* #badges .image,
+#badges .content {
+    height: auto;
+    max-height: 250px;
+    width: auto;
+    max-width: 250px;
+} */
+
+/* 
+#badges .content {
+    min-height: 0;
+} */

@@ -9,8 +9,8 @@ const User = require('../models/User');
  */
 exports.getAbout = (req, res) => {
     const modId = req.params.modId;
-    
-    const introPage = `module-content/${modId}/${modId}_about`;
+  
+    const introPage = `module-content/${modId}/about.pug`;
     const title = 'About';
   
     res.render(introPage, { title });
