@@ -175,9 +175,10 @@ html
       script(src=t)
     
     //- script(src="/js/progress.js")  
-    script(src="/js/startTime.js")  
-    script(src="/js/endTime.js")  
+    //- script(src="/js/startTime.js")  
+    //- script(src="/js/endTime.js")  
     script(src="/js/module_exit.js")  
+    script(src="/js/postBadge.js")  
     script(src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js")
     script(src='/video-js/video.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js')
@@ -219,7 +220,11 @@ html
 
       });
 
-
+      function animateBadge() {
+        $('#earned_badge')
+          .transition('jiggle in')
+        ;
+      }
 
     block scripts
     // Google Analytics

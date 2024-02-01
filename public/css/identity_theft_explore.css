@@ -35,8 +35,9 @@ i.user.circle.icon {
     font-weight: bold;
 }
 
-p, h3, span {
-    font-family: Arial, sans-serif;
+.openEmailContainer p, 
+.openEmailContainer h3,
+.openEmailContainer span {    font-family: Arial, sans-serif;
     /* font-size: 1.25rem; */
 }
 

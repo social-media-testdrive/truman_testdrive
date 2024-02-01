@@ -1,5 +1,6 @@
 const progressBar = document.getElementById('theft-progress');
 let pageReload= false;
+let badgeEarned = false;
 
 
 
@@ -97,6 +98,115 @@ $(document).ready(function() {
             animation: 'fade out',
             duration: 200,
             onComplete: function() {
+                // post badge if at end
+                if(!badgeEarned && (nextPage === 'takeaways' || nextPage === 'badge')) {
+                    if(section === 'challenge') {
+                        document.getElementById('unlockBadge').play();
+
+                        $('#earned_badge')
+                          .transition({
+                            animation: 'tada in',
+                            duration: '1s',
+                          })
+                        ;
+                  
+                        postBadge("Identity Theft", "Challenge", "Bronze", "Challenge Conqueror", "/badges/identity/challenge_conqueror.svg");
+
+                        badgeEarned = true;
+                    } else if(section === 'concepts') {
+                        document.getElementById('unlockBadge').play();
+
+                        $('#earned_badge')
+                          .transition({
+                            animation: 'tada in',
+                            duration: '1s',
+                          })
+                        ;
+                  
+                        postBadge("Identity Theft", "Concepts", "Bronze", "Foundation Acheivers", "/badges/identity/foundation_acheivers.svg");
+
+                        badgeEarned = true;
+                    } else if(section === 'consequences') {
+                        document.getElementById('unlockBadge').play();
+
+                        $('#earned_badge')
+                          .transition({
+                            animation: 'tada in',
+                            duration: '1s',
+                          })
+                        ;
+                  
+                        postBadge("Identity Theft", "Consequences", "Bronze", "Aftermath Ace", "/badges/identity/aftermath_ace.svg");
+
+                        badgeEarned = true;                    
+                    } else if(section === 'techniques') {
+                        document.getElementById('unlockBadge').play();
+
+                        $('#earned_badge')
+                          .transition({
+                            animation: 'tada in',
+                            duration: '1s',
+                          })
+                        ;
+                  
+                        postBadge("Identity Theft", "Techniques", "Silver", "Trained Tactician", "/badges/identity/trained_tactician.svg");
+
+                        badgeEarned = true;                    
+                    } else if(section === 'protection') {
+                        document.getElementById('unlockBadge').play();
+
+                        $('#earned_badge')
+                          .transition({
+                            animation: 'tada in',
+                            duration: '1s',
+                          })
+                        ;
+                  
+                        postBadge("Identity Theft", "Protection", "Silver", "Prodigy Protector", "/badges/identity/prodigy_protector.svg");
+
+                        badgeEarned = true;                             
+                    } else if(section === 'reporting') {
+                        document.getElementById('unlockBadge').play();
+
+                        $('#earned_badge')
+                          .transition({
+                            animation: 'tada in',
+                            duration: '1s',
+                          })
+                        ;
+                  
+                        postBadge("Identity Theft", "Reporting", "Gold", "Alert Advocate", "/badges/identity/alert_advocate.svg");
+
+                        badgeEarned = true;                             
+                    } else if(section === 'practice') {
+                        document.getElementById('unlockBadge').play();
+
+                        $('#earned_badge')
+                          .transition({
+                            animation: 'tada in',
+                            duration: '1s',
+                          })
+                        ;
+                  
+                        postBadge("Identity Theft", "Practice", "Gold", "Scam Spotter", "/badges/identity/scam_spotter.svg");
+
+                        badgeEarned = true;                             
+                    } else if(section === 'evaluation') {
+                        document.getElementById('unlockBadge').play();
+
+                        $('#earned_badge')
+                          .transition({
+                            animation: 'tada in',
+                            duration: '1s',
+                          })
+                        ;
+                  
+                        postBadge("Identity Theft", "Evaluation", "Platinum", "Champion of Completion", "/badges/identity/champion_of_completion.svg");
+
+                        badgeEarned = true;                             
+                    }
+                } 
+
                 if(nextPage === 'types') {
                     $('#steps-slider').slick("refresh");
                     $('#image-slider').slick("refresh");

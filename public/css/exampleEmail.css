@@ -10,7 +10,9 @@ i.user.circle.icon {
     color: #3757A6;
 }
 
-p, h3, span {
+.openEmailContainer p, 
+.openEmailContainer h3,
+.openEmailContainer span {
     font-family: Arial, sans-serif;
     /* font-size: 1.25rem; */
 }

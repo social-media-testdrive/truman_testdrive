@@ -35,7 +35,23 @@ block content
         .ui.field
           button.ui.primary.huge.button(type='submit')
             | Update Profile
-
+    .ui.segment.padded#badges
+      h3 Badges
+      if badges
+        h3 User Badges
+        .ui.cards
+          each badge in badges
+            .ui.small.card
+              .image
+                img.ui.small.centered.image(src=badge.imageUrl alt=badge.name)
+              .content
+                .header= badge.name
+      else
+        p No badges to display.
+      //- each badge in badges
+      //-   .badge
+      //-     img(src=badge.imageUrl, alt=badge.name)
+      //-     p= badge.name
     .ui.segment.padded
       if user.password
         h3 Change Password

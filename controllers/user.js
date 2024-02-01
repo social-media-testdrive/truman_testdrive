@@ -1071,3 +1071,100 @@ function makeid(length) {
   }
   return result;
 }
+
+
+
+/**
+ * POST /postBadge
+ * Put badges into DB 
+ * 
+ */
+exports.postBadge = async (req, res, next) => {
+  
+  // Extract what was sent over from the front end POST request (postBadge.js)
+  const badge_module = req.body.module;
+  const badge_section = req.body.section;
+  const badge_type = req.body.type;
+  const badge_name = req.body.name;
+  const badge_url = req.body.imageUrl;
+
+  try {
+    // Find an existing user 
+    const existingUser = await User.findOne({ email: req.user.email });
+
+    if (existingUser) {
+      // Check if the badge with the same properties already exists
+      const duplicateBadge = existingUser.badges.find(badge => 
+        badge.module === badge_module &&
+        badge.section === badge_section &&
+        badge.type === badge_type &&
+        badge.name === badge_name &&
+        badge.imageUrl === badge_url
+      );
+
+      if (!duplicateBadge) {
+        // Add the new badge to the array
+        const newBadge = {
+          module: badge_module, // Assuming badge_module is defined somewhere in your code
+          section: badge_section,
+          type: badge_type,
+          name: badge_name,
+          imageUrl: badge_url
+        };
+
+        existingUser.badges.push(newBadge);
+
+        // Save to the MongoDB database
+        await existingUser.save();
+
+        // Manually update the session data
+        req.session.passport.user.badges = existingUser.badges;
+
+        // Save the session
+        req.session.save((err) => {
+          if (err) {
+            return next(err);
+          }
+        });
+
+        // Send an OK response back to the front end 
+        res.status(200).json({ message: "Badge updated successfully." });
+      } else {
+        // Send a response indicating that the badge already exists
+        res.status(200).json({ message: "Badge already earned. Not adding." });
+      }
+    } else {
+      // Send a 404 response back to the front end if the user is not found
+      res.status(404).send('User not found while updating badge');
+    }
+
+  } catch (err) {
+    next(err);
+  }
+};
+
+/**
+ * GET /getBadges
+ */
+exports.getBadges = async (req, res, next) => {
+  console.log("get badges back end"); 
+  // We need to find an existing user 
+  try {
+    const existingUser = await User.findOne({
+      email: req.user.email
+    });
+
+    if (existingUser) {
+      // console.log("the badges are " + JSON.stringify(existingUser.badges));
+
+      // Send back the badges of the existing user
+      res.status(200).json(existingUser.badges);
+    } else {
+      // Send a 404 response back to the front end if this fails
+      res.status(404).send('User not found while fetching badges');
+    }
+
+  } catch (err) {
+    next(err);
+  }
+};

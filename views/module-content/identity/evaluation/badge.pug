@@ -8,17 +8,16 @@
                             i.award.icon
                             | Congratulations!
                     #text
-                        p You've completed the Evaluation and earned a badge!  
+                        p You've completed the Evaluation and earned a platinum badge!  
                         p You have an Identity Theft Resilience score of 
                             span#resil-score 
                             |  out of 100.
                         p  It's truly amazing to see how much you've grown, and your hard work has certainly paid off with the well-deserved improvement badge.     
-                .six.wide.center.aligned.column#earned_badge
-                    img(src='/badges/identity/adventure_achiever.png')
-                    p(style="font-weight: 400; font-size: 1.5rem;") <strong>Adventure</strong>
+                .six.wide.center.aligned.column
+                    img.ui.small.centered.image#earned_badge(src='/badges/identity/champion_of_completion.svg' onmouseenter="animateBadge()" style="margin-bottom: -10px; width: 125px;")
+                    h3 <strong>Champion of</strong>
                         br
-                        | <strong>Achiever</strong>
+                        | <strong>Completion</strong>
             audio(id="unlockBadge", src="/sound/unlock.wav", preload="auto")
-
 
 

@@ -391,8 +391,8 @@ a.ui.fluid.labeled.icon.button {
 }
 
 #earned_badge {
-    width: 75px;
-    margin-bottom: 10px;
+    /* width: 75px;
+    margin-bottom: 10px; */
 }
 
 #badgesGrid .one.column.row strong {
@@ -1087,3 +1087,8 @@ color: #79c4e0;
         padding-left: 10px;        
     }
 } 
+
+
+img.ui.small.centered.image#earned_badge {
+    filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.4));
+}

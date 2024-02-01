@@ -1,13 +1,22 @@
 #takeaways.hidden
     .ui.container#reflection-read
-        .limit#learn-target
-            h1.ui.header.large#learn-title
-                .content
-                    i.book.icon
-                    | Congratulations
-
-            p You now know:
-            .ui.bulleted.list
-                .item(style="line-height: 1rem;")
-                    | Ways to protect yourself from identity theft
-            p This knowledge will help you keep yourself and others safe from identity theft.
+        .limit#learn-target(style="padding: 0;")
+            .ui.stackable.grid.middle.aligned
+                .ten.wide.column
+                    h1.ui.header.large#learn-title
+                        .content#great-job
+                            i.award.icon
+                            | Congratulations!
+                    #text
+                        p You've completed "Protection" and earned a silver badge!  
+                        p You now know:
+                        .ui.bulleted.list
+                            .item(style="line-height: 1rem;")
+                                | Ways to protect yourself from identity theft
+                        p This knowledge will help you keep yourself and others safe from identity theft.
+                .six.wide.center.aligned.column
+                    img.ui.small.centered.image#earned_badge(src='/badges/identity/prodigy_protector.svg' onmouseenter="animateBadge()" style="margin-bottom: -10px; width: 125px;")
+                    h3 <strong>Prodigy</strong>
+                        br
+                        | <strong>Protector</strong>
+            audio(id="unlockBadge", src="/sound/unlock.wav", preload="auto")

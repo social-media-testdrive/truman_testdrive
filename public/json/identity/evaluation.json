@@ -128,15 +128,15 @@
     "prompt": "6. If you receive the email below, what factors should you consider? Select all that apply.",
     "choices": {
         "0": {
-            "text": "A. Sender’s Email Address",
+            "text": "A. Sender’s email address",
             "explanation": "The sender's email address is very long and strange. The presence of multiple domains and unusual formatting raises suspicion. Legitimate organizations usually have professional and consistent email addresses."
         },
         "1": {
-            "text": "B. Unusual Grammar and Wording",
+            "text": "B. Unusual grammar and wording",
             "explanation": "The email contains grammatical errors and awkward phrasing, which is often a sign of a scam. Legitimate organizations typically use correct grammar and clear language in their communications."
         },
         "2": {
-            "text": "C. Spam Warning",
+            "text": "C. Marked as spam",
             "explanation": "The email being marked as spam by the email service is a strong indicator that it's a scam. Email services have automated systems to detect suspicious content, and the fact that it's flagged as spam raises red flags about its authenticity and intentions."
         },
         "3": {
@@ -144,7 +144,7 @@
             "explanation": "This is unrelated to the content and context of the provided email and would not be necessary to consider in identifying the email as a scam."
         },
         "4": {
-            "text": "E. Threat of Consequences",
+            "text": "E. Threat of consequences",
             "explanation": "The email warns that not completing the wallet verification will result in wallet restrictions. This threat is designed to manipulate users into doing what the scammer wants them to do."
         }
     },

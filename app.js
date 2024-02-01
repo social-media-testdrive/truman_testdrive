@@ -193,7 +193,8 @@ app.post('/account/password', passportConfig.isAuthenticated, userController.pos
 // app.post('/account/newsletter', passportConfig.isAuthenticated, userController.postUpdateNewsletter);
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
-
+app.post('/postBadge', userController.postBadge); 
+app.get('/getBadges', userController.getBadges); 
 app.post('/guestLogin', userController.postGuestLogin);
 app.get('/getGuest', userController.getGuest);
 

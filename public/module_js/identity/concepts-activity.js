@@ -57,7 +57,7 @@ document.addEventListener('click', function(event) {
                 textResponse = "This is a common expression, no personal information is being revealed here. Stay vigilant and keep looking!";
                 break;
             case 7:
-                textResponse = "Correct! Mrs. Johnson should remove her phone number from her profile. A phone number can be used for scams or unauthorized verifications. Keeping it off public profiles boosts your privacy and security. If you need to share your phone number, do so privately.";
+                textResponse = "Correct! Mrs. Johnson should remove her phone number from her profile to minimize the risk of scammers exploiting it for deceptive calls and unauthorized access. If you need to share your phone number, do so privately.";
                 break;
             case 8:
                 textResponse = "Sharing that her husband's first name is 'Mark' is generally safe, as it doesn't directly identify her and it is a common and generic first name. It alone is unlikely to put her at risk for identity theft. Stay vigilant and keep looking!";

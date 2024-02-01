@@ -13,7 +13,17 @@ const userSchema = new mongoose.Schema({
   passwordResetExpires: Date,
   emailVerificationToken: String,
   emailVerified: { type: Boolean, default: false },
-  newsletterConsent: { type: Boolean, default: false },
+//   newsletterConsent: { type: Boolean, default: false },
+  badges: [
+    {
+      module: { type: String, required: true },
+      section: { type: String, required: true },
+      type: { type: String, required: true },
+      name: { type: String, required: true },
+      imageUrl: { type: String, required: true },
+      earnedAt: { type: Date, required: true, default: Date.now },
+    } 
+  ],
 
   // snapchat: String,
   // facebook: String,
