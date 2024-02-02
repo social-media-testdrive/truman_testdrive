@@ -55,9 +55,9 @@ html
     script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js', integrity = "sha512-Xo0Jh8MsOn72LGV8kU5LsclG7SUzJsWGhXbWcYs2MAmChkQzwiW/yTQwdJ8w6UA9C6EVG18GHb/TrYpYCjyAQw==" crossorigin="anonymous")
     
     if process.env.instanceType == 'test'
-      script(src='/main.js')
+      script(src=cdn+'/js/main24c.js')
     else if process.env.instanceType == 'production'
-      script(src=cdn+'/js/main24b.js?v=1')
+      script(src=cdn+'/js/main24c.js')
     else
       script(src='/main.js')
 

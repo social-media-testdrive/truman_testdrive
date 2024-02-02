@@ -189,16 +189,18 @@ $(window).on("load", function() {
      */
     $('#loading').hide();
     $('#content').attr('style', 'block');
-    $('#content').fadeIn('slow');
+    $('#content').fadeIn('slow', 'swing', function() {
+        // Keep user & actor side menu profile sticky on page as user scrolls on page.
+        $('.ui.sticky.sideMenu').sticky({
+            context: '#content',
+            offset: 115,
+            bottomOffset: 50
+        });
+    });
 
     /**
      * Additional functionality
      */
-    // Keep user & actor side menu profile sticky on page as user scrolls on page.
-    $('.ui.sticky.sideMenu').sticky({
-        context: '#content',
-        offset: 115
-    });
 
     // Close messages from flash message
     $('.message .close').on('click', function() {
