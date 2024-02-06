@@ -1,7 +1,4 @@
 // Before Page load:
-// Hide news feed before it is all loaded
-$('#content').hide();
-$('#loading').show();
 let enableDataCollection;
 let isResearchVersion;
 
@@ -188,13 +185,11 @@ $(window).on("load", function() {
      * Load Content
      */
     $('#loading').hide();
-    $('#content').attr('style', 'block');
-    $('#content').fadeIn('slow', 'swing', function() {
+    $('#content').fadeIn('slow', function() {
         // Keep user & actor side menu profile sticky on page as user scrolls on page.
         $('.ui.sticky.sideMenu').sticky({
             context: '#content',
-            offset: 115,
-            bottomOffset: 50
+            offset: 115
         });
     });
 
@@ -382,14 +377,10 @@ $(window).on("load", function() {
     /** End of button links functionality */
 
     // Lazy loading of images
-    $(`#content .fluid.card .img img, img.ui.avatar.image, a.avatar.image img`).visibility({
+    $(`#content .fluid.card .img img, img.ui.avatar.image, #content a.avatar.image img`).visibility({
         type: 'image',
-        offset: 0,
         onLoad: function(calculations) {
-            $(`#content .fluid.card .img img,
-            img.ui.avatar.image,
-            a.avatar.image img`)
-                .visibility('refresh');
+            $('.ui.sticky.sideMenu').sticky('refresh');
         }
     });
 

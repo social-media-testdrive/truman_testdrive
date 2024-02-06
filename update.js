@@ -2,7 +2,7 @@ const color_start = '\x1b[33m%s\x1b[0m'; // yellow
 const color_success = '\x1b[32m%s\x1b[0m'; // green
 const color_error = '\x1b[31m%s\x1b[0m'; // red
 
-console.log(color_start, 'Started populate.js script...');
+console.log(color_start, 'Started update.js script...');
 
 const async = require('async');
 const Actor = require('./models/Actor.js');
@@ -269,7 +269,7 @@ function updatePostInstances(toUpdate_PostIDs) {
 
                         script.comments.push(comment_detail);
                         script.comments.sort(function(a, b) { return a.time - b.time; });
-                        await console.log("Deleted commentID: " + commentID);
+                        await console.log("Added commentID: " + commentID);
                     }
 
                     try {
