@@ -36,8 +36,8 @@ block content
           label.sectionTitle(for='account') Configuraciónes de cuenta 
             .field#hint2
               br
-              .ui.toggle.checkbox
-                  input(type='checkbox' name='public')
+              .ui.toggle.checkbox(name='publicToggle')
+                  input(type='checkbox' name='isPrivate')
                   label Cuenta Privada
             span.settingSmallLabel Cuando su cuenta es privada, solo las personas que usted aprueba pueden ver sus publicaciones.
             br
@@ -55,7 +55,7 @@ block content
               br
               label.standardLabel Permititr solicitudes de amistad de
                 .div
-                .ui.selection.dropdown
+                .ui.selection.dropdown(name='friendRequestsDropdown')
                   input(type='hidden' name='friendRequests')
                   i.dropdown.icon
                   .default.text Seleccionar
@@ -66,7 +66,7 @@ block content
             .field
               label.standardLabel ¿Quién puede ver mi lista de amigos?
                 .div
-                .ui.selection.dropdown
+                .ui.selection.dropdown(name='friendListDropdown')
                   input(type='hidden' name='friendList')
                   i.dropdown.icon
                   .default.text Seleccionar
@@ -81,11 +81,10 @@ block content
               br
               label.standardLabel Permitir comentarios de
                 .div
-                .ui.selection.dropdown
-                  input(type='hidden' name='friendRequests')
+                .ui.selection.dropdown(name='commentsListDropdown')
+                  input(type='hidden' name='commentsList')
                   i.dropdown.icon
                   .default.text Seleccionar
-                  .default.
                   .menu
                     .item(data-value='0') Todos
                     .item(data-value='1') Amigos de amigos
@@ -95,7 +94,7 @@ block content
             .field
               label.standardLabel Bloquear comentarios de
               .div
-                select.ui.fluid.search.dropdown(multiple='')
+                select.ui.fluid.search.dropdown.blocklistDropdown(multiple='')
                   option Nombre F.
                   option Soyun Robot
                   option Carolina Jara
@@ -124,12 +123,12 @@ block content
             label.subsectionTitle(for='tags') Etiquetas
               .field
                 br
-                .ui.toggle.checkbox
-                  input(type='checkbox' name='public' checked='checked')
+                .ui.toggle.checkbox(name='tagToggle1')
+                  input(type='checkbox' name='allowTags' checked='checked')
                   label Permitir etiquetas
               .field
-                .ui.toggle.checkbox
-                  input(type='checkbox' name='public' checked='checked')
+                .ui.toggle.checkbox(name='tagToggle2')
+                  input(type='checkbox' name='addTags' checked='checked')
                   label Agregar automáticamente publicaciones etiquetadas a mi feed
                   br
                   br
@@ -140,14 +139,14 @@ block content
             label.sectionTitle(for='information') Configuración de ubicación
               .field#hint4
                 br
-                .ui.toggle.checkbox
-                  input(type='checkbox' name='locationShare' checked='checked')
+                .ui.toggle.checkbox(name='locationToggle')
+                  input(type='checkbox' name='shareLocation' checked='checked')
                   label Activar la función de compartir ubicación
             .field#hint5
               br
               label.standardLabel Compartir mi ubicación con
                 .div
-                .ui.selection.dropdown
+                .ui.selection.dropdown(name='shareLocationWithToggle')
                   input(type='hidden' name='shareLocationWith')
                   i.dropdown.icon
                   .default.text Seleccionar
@@ -159,12 +158,15 @@ block content
             br
             .ui.divider
             br
-    button.ui.big.labeled.icon.button.privacytrans2.addBottomMargin#cyberTransButton
+    .ui.message.warning.hidden#confirmContinueCheck
+      .ui.header 
+        | Are you sure you do not want to try changing some privacy settings before continuing?
+    button.ui.big.labeled.icon.button.privacyesptrans2.addBottomMargin#cyberTransButton
           i.rocket.icon
           |   ¡Listo!
 
 block scripts
-  script(src="/module_js/privacy-esp/privacy-esp_sim.js")
+  script(src="/module_js/privacy-esp/privacy_sim.js")
   script(src="/module_js/voiceover.js")
   script(src="/module_js/base_sim.js")
     

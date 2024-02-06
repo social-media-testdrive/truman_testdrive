@@ -673,6 +673,78 @@
         "explanation": " \n<span class = 'inline bold green'>C es correcto: No recibir muchas reacciones no significa que Lucero no le caiga bien a la gente. Es imposible que a las personas les gusten cada publicación que vean. </span> \n \n<span class = 'inline bold'> A es incorrecto: Animar a Lucero a publicar más puede hacer que se sienta más decepcionada si aún no recibe reacciones de los demás.</span> \n \n<span class = 'inline bold'>  B es incorrecto: Decirle a Lucero que borre su publicación puede hacerla sentir que a la gente no le agrada y que se sienta mal con ella misma.</span> \n \n<span class = 'inline bold'>  D es incorrecto: Estar en las redes sociales todo el día no es saludable. Desarrollaría un hábito desequilibrado en las redes sociales.</span>"
         }
     },
+    "habits-esp": {
+        "Q1": {
+        "prompt": "¿Cuál de las siguientes opciones es una señal de que estás pasando demasiado tiempo usando las redes sociales?",
+        "radioLabels": {
+            "0": "Estableces cuántos minutos vas a estar en las redes sociales.",
+            "1": "Usas tus redes sociales para compartir recursos y actividades divertidas con tus amigo/as.",
+            "2": "Revisas tus redes sociales todo el tiempo, incluso cuando necesitas concentrarte en tu tarea.",
+            "3": "Apagas las notificaciónes en tu teléfono cuando necesitas concentrarte en tu tarea.",
+            "4": "No sé."
+        },
+        "responseRequirement": "any",
+        "correctResponse": "2",
+        "files": [""],
+        "explanation": " \n<span class = 'inline bold green'>C es correcto: Cuando te distraen de tus tareas importantes, las redes sociales pueden ocupar demasiado tiempo.</span> \n \n<span class = 'inline bold'> A es incorrecto: Establecer la cantidad de minutos que vas estar en las redes sociales te ayudará a manejar mejor la cantidad de tiempo que pasas en las redes sociales. </span> \n \n<span class = 'inline bold'>B es incorrecto: Usando las redes sociales para compartir recursos y actividades divertidas con tus amigo/as es una forma saludable de usar las redes sociales. </span> \n \n<span class = 'inline bold'>D es incorrecto: Desactivar las notificaciones cuando necesites concentrarte en la tarea evitará que pases demasiado tiempo en las redes sociales.</span>"
+        },
+        "Q2": {
+        "prompt": "¿Qué hacen los ciclos de retroalimentación de las redes sociales?",
+        "radioLabels": {
+            "0": "Te ayuda a controlar cuánto tiempo pasas en las redes sociales.",
+            "1": "Está relacionado con los recordatorios que configuras en los ajustes.",
+            "2": "Te da placer cuando alguien responde a tus publicaciones.",
+            "3": "Te da placer cuando aprendes algo nuevo en línea.",
+            "4": "No sé."
+        },
+        "responseRequirement": "any",
+        "correctResponse": "2",
+        "files": [""],
+        "explanation": " \n<span class = 'inline bold green'>C es correcto: Los ciclos de retroalimentación de las redes sociales te hacen sentir placer cuando recibes un \"like\" o un comentario, lo que te hace revisar tus cuentas de redes sociales una y otra vez.</span> \n \n<span class = 'inline bold'> A es incorrecto: Los ciclos de retroalimentación de las redes sociales hacen que permanezcas en las redes sociales incluso más tiempo de lo que pretendías.</span> \n \n<span class = 'inline bold'> B y D son incorrectos: Tanto los recordatorios como el deseo de aprender cosas nuevas pueden hacer que revises tus cuentas de redes sociales, pero los ciclos de retroalimentación de las redes sociales están relacionados con las respuestas (como un \"like\" o comentarios) de otras personas que te dan placer y te hacen revisar tus cuentas de redes sociales más.</span>"
+        },
+        "Q3": {
+        "prompt": "Laura es una fan de las Chivas. Ella usa sus redes sociales para recibir actualizaciones sobre juegos y jugadores. Las actualizaciones y notificaciones son infinitas y la hacen sentir como si se pudiera perder algo si no está en línea. ¿Cuál de las siguientes opciones le ayudaría a Laura a crear un uso más equilibrado de las redes sociales?",
+        "radioLabels": {
+            "0": "Podría dejar de usar las redes sociales.",
+            "1": "Podría usar la configuración para aumentar el número de notificaciones.",
+            "2": "Podría usar la configuración de notificaciones para limitar la cantidad de notificaciones diarias.",
+            "3": "Podría seguir a un equipo de fútbol diferente en las redes sociales.",
+            "4": "No sé."
+        },
+        "responseRequirement": "any",
+        "correctResponse": "2",
+        "files": [""],
+        "explanation": " \n<span class = 'inline bold green'>C es correcto: Limitar la cantidad de notificaciones diarias evitaría que Laura busque actualizaciones con tanta frecuencia. </span> \n \n<span class = 'inline bold'> A es incorrecto: Dejar las redes sociales no sería más equilibrado porque Laura no usaría las redes sociales en absoluto.</span> \n \n<span class = 'inline bold'> B es incorrecto: Aumentar la cantidad de notificaciones haría que Laura revisara aún más su teléfono.</span> \n \n<span class = 'inline bold'> D es incorrecto: Seguir a un equipo de fútbol diferente no ayudaría a Laura a controlar su uso general de las redes sociales. Ella buscaría actualizaciones tanto como antes.</span>"
+        },
+        "Q4": {
+        "prompt": "Gerardo es muy activo en sus redes sociales y recibe muchos comentarios en sus publicaciones. Para responder a todos los comentarios, ha comenzado a rechazar invitaciones de amigos cercanos para salir a jugar fútbol, su deporte favorito. ¿Cómo puede Gerardo administrar mejor su uso de las redes sociales para un estilo de vida equilibrado?",
+        "radioLabels": {
+            "0": "No hay nada que Gerardo pueda hacer al respecto porque necesita responder a sus amigos en línea.",
+            "1": "Puede pedirle a sus amigos del equipo de fútbol que lo ayuden con las respuestas.",
+            "2": "Puede responderle a sus amigos en línea a altas horas de la noche, incluso si eso significa perder algo de tiempo para dormir.",
+            "3": "Puede decidir no responderle a todos inmediatamente.",
+            "4": "No sé."
+        },
+        "responseRequirement": "any",
+        "correctResponse": "3",
+        "files": [""],
+        "explanation": " \n<span class = 'inline bold green'>D es correcto: Gerardo puede jugar al fútbol con sus amigos y luego responder a los comentarios en otro momento.</span> \n \n<span class = 'inline bold'>  A es incorrecto: Gerardo no tiene que responder inmediatamente a sus amigos en línea. Él puede revisar sus comentarios más tarde.</span> \n \n<span class = 'inline bold'>  B es incorrecto: Preguntarles a sus amigos del equipo de fútbol los distraería a él y a sus amigos de jugar fútbol.</span> \n \n<span class = 'inline bold'>  C es incorrecto: Gerardo no necesita responder a todos los comentarios al mismo tiempo antes de acostarse. Puede extender sus respuestas para un estilo de vida más equilibrado.</span> "
+        },
+        "Q5": {
+        "prompt": "Lo primero que hace Lucero por la mañana es buscar notificaciones en sus redes sociales. Cuando no recibe muchas reacciones a sus publicaciones, se entristece y siente que a la gente realmente no le cae bien. Como amigo/a de Lucero, ¿qué consejo le darías para apoyar su bienestar?",
+        "radioLabels": {
+            "0": "Solo sigue publicando cosas, estoy seguro/a de que lo harás bien con el tiempo.",
+            "1": "Borra tu última publicación, la gente no está interesada en lo que has estado haciendo.",
+            "2": "No lo tomes personalmente. Si a las personas no les gusta una publicación, no significa que no les gustes tu.",
+            "3": "Mantente conectada todo el día y obtendrás más reacciones a tus publicaciones.",
+            "4": "No sé."
+        },
+        "responseRequirement": "any",
+        "correctResponse": "2",
+        "files": [""],
+        "explanation": " \n<span class = 'inline bold green'>C es correcto: No recibir muchas reacciones no significa que Lucero no le caiga bien a la gente. Es imposible que a las personas les gusten cada publicación que vean. </span> \n \n<span class = 'inline bold'> A es incorrecto: Animar a Lucero a publicar más puede hacer que se sienta más decepcionada si aún no recibe reacciones de los demás.</span> \n \n<span class = 'inline bold'>  B es incorrecto: Decirle a Lucero que borre su publicación puede hacerla sentir que a la gente no le agrada y que se sienta mal con ella misma.</span> \n \n<span class = 'inline bold'>  D es incorrecto: Estar en las redes sociales todo el día no es saludable. Desarrollaría un hábito desequilibrado en las redes sociales.</span>"
+        }
+    },
     "phishing": {
         "Q1": {
             "type": "radio",

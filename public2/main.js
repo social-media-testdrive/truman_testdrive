@@ -408,6 +408,22 @@ $(window).on("load", function() {
         window.location.href = '/trans2/privacy';
     });
 
+    //Privacy esp sim to trans2
+    $(document).on('click', '.ui.big.labeled.icon.button.privacyesptrans2.green', function() {
+        // Special Case: When a user clicks "Let's Continue" in the privacy module, but has not toggled any settings
+        // prompt the user: Are you sure you do not want to try changing some privacy settings before continuing?
+        if (!clickAction && $('#confirmContinueCheck').is(":hidden")) {
+            $('#confirmContinueCheck').show();
+            $('#confirmContinueCheck')[0].scrollIntoView({
+                behavior: "smooth", // or "auto" or "instant"
+                block: "center", // defines vertical alignment
+                inline: "nearest" // defines horizontal alignment
+            });;
+            return;
+        }
+        window.location.href = '/trans2/privacy-esp';
+    });
+
     //To sim2
     $(document).on('click', '.ui.big.labeled.icon.button.cybersim2.green', async function() {
         let pathArray = window.location.pathname.split('/');
