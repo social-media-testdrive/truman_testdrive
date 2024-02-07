@@ -191,6 +191,12 @@ $(window).on("load", function() {
             context: '#content',
             offset: 115
         });
+        if (currentModuleForHeader == 'esteem' && currentPageForHeader == 'modual') {
+            $('.esteemReminder').sticky({
+                context: '#content',
+                offset: 115
+            })
+        }
     });
 
     /**
@@ -380,7 +386,7 @@ $(window).on("load", function() {
     $(`#content .fluid.card .img img, img.ui.avatar.image, #content a.avatar.image img`).visibility({
         type: 'image',
         onLoad: function(calculations) {
-            $('.ui.sticky.sideMenu').sticky('refresh');
+            $('.ui.sticky:visible').sticky('refresh');
         }
     });
 

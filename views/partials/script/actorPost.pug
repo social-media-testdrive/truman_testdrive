@@ -119,6 +119,6 @@
                     |  Likes
                 .text=comment.body
                 .actions
-                  a.like.comment(class=comment.liked ? "red" : "") Like
+                  a.like.comment(class=comment.liked ? "red" : "") !{comment.liked ? "Unlike" : "Like"}
                   a.flag.comment Flag
   include components/newUserComment
