@@ -386,7 +386,11 @@ $(window).on("load", function() {
     $(`#content .fluid.card .img img, img.ui.avatar.image, #content a.avatar.image img`).visibility({
         type: 'image',
         onLoad: function(calculations) {
-            $('.ui.sticky:visible').sticky('refresh');
+            $('.ui.sticky.sideMenu').sticky('refresh');
+            if (currentModuleForHeader == 'esteem' && currentPageForHeader == 'modual') {
+                $('.esteemReminder').sticky('refresh');
+            }
+            $('.ui.sticky.newPostSticky').sticky('refresh');
         }
     });
 
