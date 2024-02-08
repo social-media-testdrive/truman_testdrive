@@ -180,6 +180,8 @@ function changeSpeed(speedValue) {
 
 
 $(document).ready(function() {
+    $('#page-article').click();
+
     // Load the first page based on the URL
     // console.log("The start page: " + startPage);
     // narration audio dropdown
