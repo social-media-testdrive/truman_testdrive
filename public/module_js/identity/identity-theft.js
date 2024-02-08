@@ -2,6 +2,15 @@ const progressBar = document.getElementById('theft-progress');
 let pageReload= false;
 let badgeEarned = false;
 let mute = false;
+let voiceSpeed = 1;
+var userInteracted = false;
+
+document.addEventListener('click', function() {
+    userInteracted = true;
+
+    // You can remove the event listener after the first interaction if needed
+    document.removeEventListener('click', arguments.callee);
+});
 
 function stopPropagation(event) {
     event.stopPropagation();
@@ -10,14 +19,24 @@ function stopPropagation(event) {
 function muteNarration() {
     mute = !mute;
 
-    $('#volume-icon').toggleClass('up mute');
-
     var audio = document.getElementById('narration-audio');
+    // audio.pause();
 
     if (audio.muted) {
         audio.muted = false; // Unmute the audio
+
+        $('#volume-icon').removeClass('mute');
+
+        if($('#play-pause-audio i.icon').hasClass('pause')) {
+            $('#volume-icon').addClass('up');  
+        } else {
+            $('#volume-icon').addClass('off');  
+        }  
     } else {
         audio.muted = true; // Mute the audio
+
+        $('#volume-icon').removeClass('up off');
+        $('#volume-icon').addClass('mute');    
     }
 
     // volume_icon.classList.toggle('up', 'mute');
@@ -25,13 +44,31 @@ function muteNarration() {
 
 function playAudio(thePage) { 
     console.log("mute is: " + mute);
-        // document.getElementById('narration-audio').play();
-        var audio = document.getElementById('narration-audio');
-        audio.src = `https://dart-store.s3.amazonaws.com/identity+theft+voice+over/${section}/${thePage}_${avatar}.mp3`;
-        audio.load();
+    // document.getElementById('narration-audio').play();
+    var audio = document.getElementById('narration-audio');
+    audio.src = `https://dart-store.s3.amazonaws.com/identity+theft+voice+over/${section}/${thePage}_${avatar}.mp3`;
+    audio.load();
+    audio.playbackRate = voiceSpeed;
 
     if(!mute) {
-        audio.play();
+        // catch error when user hasn't interacted with page yet
+        if (userInteracted) {
+            $('#volume-icon').removeClass('off');
+            $('#volume-icon').addClass('up');  
+    
+            var audio = document.getElementById('narration-audio');
+            var buttonIcon = document.querySelector('#play-pause-audio i.icon');
+            var buttonText = document.querySelector('#play-pause-audio span.toggle-text');
+    
+            buttonIcon.classList.remove('play', 'pause');
+            buttonIcon.classList.add('pause');
+            buttonText.innerText = 'Pause';
+    
+            audio.play();
+        } else {
+            console.warn('User has not interacted with the webpage yet. Cannot autoplay audio.');
+        }
+
     }
 }
 
@@ -48,6 +85,9 @@ function replayAudio() {
         buttonIcon.classList.remove('play', 'pause');
         buttonIcon.classList.add('pause');
         buttonText.innerText = 'Pause';
+
+        $('#volume-icon').removeClass('off');
+        $('#volume-icon').addClass('up');  
     }
 }
 
@@ -55,15 +95,20 @@ function togglePlayPause() {
     var audio = document.getElementById('narration-audio');
     var buttonIcon = document.querySelector('#play-pause-audio i.icon');
     var buttonText = document.querySelector('#play-pause-audio span.toggle-text');
+    var volumeIcon = document.querySelector('#volume-icon');
 
     if (audio.paused) {
         audio.play();
         // Change icon and text to "Pause" when playing
+        volumeIcon.classList.remove('off');
+        volumeIcon.classList.add('up');
         buttonIcon.classList.remove('play', 'pause');
         buttonIcon.classList.add('pause');
         buttonText.textContent = 'Pause';
     } else {
         audio.pause();
+        volumeIcon.classList.remove('up');
+        volumeIcon.classList.add('off');
         // Change icon and text to "Play" when paused
         buttonIcon.classList.remove('play', 'pause');
         buttonIcon.classList.add('play');
@@ -117,6 +162,22 @@ function updateAvatar(avatarName) {
     });
   }
 
+function changeSpeed(speedValue) {
+    console.log("The speed value: " + speedValue);
+
+    // Convert the speed value to a number
+    let speed = parseFloat(speedValue);
+    voiceSpeed = speed;
+    
+    // Assuming the audio element has the ID 'narration-audio'
+    let audio = document.getElementById('narration-audio');
+
+    // Set the playback rate of the audio element
+    if (audio) {
+        audio.playbackRate = speed;
+    }
+}
+
 
 $(document).ready(function() {
     // Load the first page based on the URL
@@ -128,6 +189,11 @@ $(document).ready(function() {
     $('.ui.dropdown2').dropdown({
         onChange: function(value, text, $selectedItem) {
             updateAvatar(value.replace(/,/g, ''));
+        }
+    });
+    $('.ui.dropdown3').dropdown({
+        onChange: function(value, text, $selectedItem) {
+            changeSpeed(value.replace(/,/g, ''));
         }
     });
 
