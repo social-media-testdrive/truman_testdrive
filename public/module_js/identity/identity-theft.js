@@ -1,16 +1,149 @@
 const progressBar = document.getElementById('theft-progress');
 let pageReload= false;
 let badgeEarned = false;
+let mute = false;
+
+function stopPropagation(event) {
+    event.stopPropagation();
+}
+
+function muteNarration() {
+    mute = !mute;
+
+    $('#volume-icon').toggleClass('up mute');
+
+    var audio = document.getElementById('narration-audio');
+
+    if (audio.muted) {
+        audio.muted = false; // Unmute the audio
+    } else {
+        audio.muted = true; // Mute the audio
+    }
+
+    // volume_icon.classList.toggle('up', 'mute');
+}
+
+function playAudio(thePage) { 
+    console.log("mute is: " + mute);
+        // document.getElementById('narration-audio').play();
+        var audio = document.getElementById('narration-audio');
+        audio.src = `https://dart-store.s3.amazonaws.com/identity+theft+voice+over/${section}/${thePage}_${avatar}.mp3`;
+        audio.load();
+
+    if(!mute) {
+        audio.play();
+    }
+}
+
+function replayAudio() {
+    if(!mute) {
+        var audio = document.getElementById('narration-audio');
+        audio.currentTime = 0; // Set the playback position to the beginning
+        audio.play();
+
+        var audio = document.getElementById('narration-audio');
+        var buttonIcon = document.querySelector('#play-pause-audio i.icon');
+        var buttonText = document.querySelector('#play-pause-audio span.toggle-text');
+
+        buttonIcon.classList.remove('play', 'pause');
+        buttonIcon.classList.add('pause');
+        buttonText.innerText = 'Pause';
+    }
+}
+
+function togglePlayPause() {
+    var audio = document.getElementById('narration-audio');
+    var buttonIcon = document.querySelector('#play-pause-audio i.icon');
+    var buttonText = document.querySelector('#play-pause-audio span.toggle-text');
+
+    if (audio.paused) {
+        audio.play();
+        // Change icon and text to "Pause" when playing
+        buttonIcon.classList.remove('play', 'pause');
+        buttonIcon.classList.add('pause');
+        buttonText.textContent = 'Pause';
+    } else {
+        audio.pause();
+        // Change icon and text to "Play" when paused
+        buttonIcon.classList.remove('play', 'pause');
+        buttonIcon.classList.add('play');
+        buttonText.textContent = 'Play';
+    }
+}
+
+function updateAvatar(avatarName) {
+    console.log("The passed Avatar: " + avatarName);
 
 
+    avatar = avatarName.toLowerCase();
+
+    if(avatarName === 'Intrepid'){
+        avatarImg = '/images/agent-intrepid.png';
+    } else if (avatarName === 'Daring') {
+        avatarImg = '/images/agent-daring.png';
+    } else {
+        avatarImg = '/images/agent-valiant.png';
+    }
+
+    var userData = {
+      avatar: avatarName,
+      avatarImg: avatarImg
+    };
+    
+    fetch('/postAvatar', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        // Include other headers as needed
+      },
+      body: JSON.stringify(userData)
+    })
+    .then(response => {
+      if (response.ok) {
+        console.log('Avatar updated successfully');
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const pageParam = urlParams.get('page');
+        playAudio(pageParam);
+        // Handle success
+      } else {
+        console.error('Failed to update avatar');
+        // Handle errors
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      // Handle network errors
+    });
+  }
 
 
 $(document).ready(function() {
     // Load the first page based on the URL
     // console.log("The start page: " + startPage);
+    // narration audio dropdown
+    $('.ui.dropdown')
+        .dropdown()
+    ;
+    $('.ui.dropdown2').dropdown({
+        onChange: function(value, text, $selectedItem) {
+            updateAvatar(value.replace(/,/g, ''));
+        }
+    });
+
+    $('.ui.slider')
+    .slider({
+      min: 0.5,
+      max: 2,
+      start: 1,
+      step: 0.25
+    })
+  ;
+
+;
     setLinks(startPage);
     updateProgressBar();
-
+    playAudio(page);
 
     $('#backButton').on('click', function() {
         // console.log("Back button clicked");
@@ -26,6 +159,10 @@ $(document).ready(function() {
         const backParams = new URLSearchParams(backlink);
         const backPage = backParams.get('page');
 
+        var audio = document.getElementById('narration-audio');
+        audio.src = `https://dart-store.s3.amazonaws.com/identity+theft+voice+over/${section}/${backPage}_${avatar}.mp3`;
+        audio.load(); // Reload the audio to apply the new source
+        
         if(backPage === null) {
             window.location.href = backlink;
         } 
@@ -65,7 +202,8 @@ $(document).ready(function() {
                         setupPractice();
                     }
     
-    
+                    playAudio(backPage);
+
                 }
             });
         }
@@ -204,7 +342,7 @@ $(document).ready(function() {
 
                         badgeEarned = true;                             
                     }
-                } 
+                }
                 if(nextPage === 'types') {
                     $('#steps-slider').slick("refresh");
                     $('#image-slider').slick("refresh");
@@ -219,6 +357,7 @@ $(document).ready(function() {
                     animation: 'fade in',
                     duration: 200,
                 });
+
                 if (nextPage === 'quiz' && $('.preButton').text() != 'Try Again') {
                     $("#nextButton").hide();
                     $("#backButton").hide();
@@ -230,6 +369,8 @@ $(document).ready(function() {
                 if(section === 'practice' && nextPage === 'activity') {
                     setupPractice();
                 }
+
+                playAudio(nextPage);
 
             }
         });

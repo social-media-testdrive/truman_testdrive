@@ -14,6 +14,7 @@ block content
         include practice/arrive.pug
         include practice/reflection.pug
         include practice/takeaways.pug
+    audio(id="narration-audio", src=`https://dart-store.s3.amazonaws.com/identity+theft+voice+over/${section}/${page}_${user.avatar.toLowerCase()}.mp3`, preload="auto")
 
 
 block styles 
@@ -25,6 +26,7 @@ block styles
 
 block scripts     
     script. 
+        var avatar = "#{user.avatar.toLowerCase()}";
         var userName = "#{user.name}";
         var avatarImage = "#{user.avatarImg}";
         var module = "#{module}";

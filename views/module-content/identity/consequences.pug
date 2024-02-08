@@ -17,6 +17,7 @@ block content
         include consequences/reflection.pug
         include consequences/quiz.pug
         include consequences/takeaways.pug
+    audio(id="narration-audio", src=`https://dart-store.s3.amazonaws.com/identity+theft+voice+over/${section}/${page}_${user.avatar.toLowerCase()}.mp3`, preload="auto")
 
 
 block styles 
@@ -41,6 +42,7 @@ block scripts
             //- }, 6000); 
         });
     script. 
+        var avatar = "#{user.avatar.toLowerCase()}";
         var module = "#{module}";
         var section = "#{section}";
         var startPage = "#{page}"; 

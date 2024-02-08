@@ -17,6 +17,7 @@ block content
         include concepts/reflection.pug
         include concepts/quiz.pug
         include concepts/takeaways.pug
+    audio(id="narration-audio", src=`https://dart-store.s3.amazonaws.com/identity+theft+voice+over/${section}/${page}_${user.avatar.toLowerCase()}.mp3`)
 
 
 block styles 
@@ -43,6 +44,7 @@ block scripts
         });
     script. 
         var userName = "#{user.name}";
+        var avatar = "#{user.avatar.toLowerCase()}";
         var avatarImage = "#{user.avatarImg}";
         var module = "#{module}";
         var section = "#{section}";

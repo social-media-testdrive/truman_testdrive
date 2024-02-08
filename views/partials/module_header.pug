@@ -21,6 +21,71 @@ header(style="z-index: 1000 !important;")
             //-     .item
             //-         h2 Chapter 1
             .right.menu
+                .item.ui.dropdown#volume-button
+                    i.volume.up.big.icon#volume-icon(style="padding-left: 5px;")
+                    span(style="font-weight: bold;") Voiceover
+                    .menu 
+                        //- play or pause audio
+                        .ui.fluid.blue.button#play-pause-audio(onclick="togglePlayPause()" style="margin-left: 5px; margin-top: 8px; width: 93%;")
+                            i.play.icon
+                            span.toggle-text Play
+                        .ui.fluid.blue.button#replay-audio(onclick="replayAudio()" style="margin-left: 5px; margin-top: 8px; width: 93%;")
+                            i.undo.icon
+                            | Restart
+                        .ui.basic.label(style="border: none; font-size: 1rem; padding-left: 5px;") Mute Audio
+                        //- Toggle Narration
+                        .ui.toggle.checkbox.item#toggle-narration(onclick="stopPropagation(event); muteNarration();")
+                            input(type="checkbox")
+                            label
+                        //- Toggle Narration
+                        .ui.basic.label(style="border: none; font-size: 1rem;  padding-left: 5px;") Highlight Text
+                        .ui.toggle.checkbox.item#highlight-narration(onclick="stopPropagation(event)")
+                            input(type="checkbox")
+                            label
+                        //- Select Narrator Dropdown
+                        .ui.basic.label(style="border: none; font-size: 1rem; padding-left: 5px;") Narrator
+                        .ui.dropdown2.item#select-narrator(onclick="stopPropagation(event);")
+                            i.dropdown.icon
+                            .default.text #{user.avatar}
+                            .menu
+                                .item(data-value="Intrepid") Intrepid
+                                .item(data-value="Daring") Daring
+                                .item(data-value="Valiant") Valiant
+                        //- Speed Control
+                        .ui.basic.label(style="border: none; font-size: 1rem; padding-left: 5px;") Speed
+                        .ui.dropdown2.item#select-narrator(onclick="stopPropagation(event)")
+                            i.dropdown.icon
+                            .default.text 1x
+                            .menu
+                                .item(data-value="0") 0.5x
+                                .item(data-value="1") 0.75x
+                                .item(data-value="1") 1x
+                                .item(data-value="2") 1.25x
+                                .item(data-value="3") 1.5x
+
+                        //- .ui.labeled.ticked.slider.item#speed-control(style="font-size: 0.05rem;")
+                        //-     //- input(type="range" min="0.5" max="2" step="0.1" value="1" oninput="changeSpeed(this.value)" onclick="stopPropagation(event)")
+                        //-     input(onclick="stopPropagation(event)")
+                        //-     //- label Speed
+
+
+                        //- .item(data-value='0') Mute me now
+                        //- .item(data-value='1') 10%
+                        //- .item(data-value='2') 20%
+                        //- .item(data-value='3') 30%
+                        //- .item(data-value='4') 40%
+                        //- .item(data-value='5') 50%
+                        //- .item(data-value='6') 60%
+                        //- .item(data-value='7') 70%
+                        //- .item(data-value='8') 80%
+                        //- .item(data-value='9') 90%
+                        //- .item(data-value='10') 100%
+                    //- .menu
+                    //-     a.item#mute-button
+                    //-         i.volume.off.icon
+                    //-     a.item#exit-button
+                    //-         i.home.large.icon
+
                 a.item#exit-button
                     i.home.large.icon
 
