@@ -54,7 +54,7 @@ const stepsList = [{
         element: '#step7',
         intro: `Another way you can act against cyberbullying is by writing
     a <b>supportive comment</b> to the target.`,
-        position: 'left',
+        position: 'top',
         scrollTo: 'tooltip',
         audioFile: ['CUSML.6.3.6.mp3']
     },
@@ -62,7 +62,7 @@ const stepsList = [{
         element: '#step7',
         intro: `Another way you can act against cyberbullying is by
     <b>confronting the bully</b>.`,
-        position: 'left',
+        position: 'top',
         scrollTo: 'tooltip',
         audioFile: ['CUSML.6.3.7.mp3']
     }
