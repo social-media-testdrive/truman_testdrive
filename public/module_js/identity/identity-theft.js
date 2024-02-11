@@ -5,12 +5,220 @@ let mute = false;
 let voiceSpeed = 1;
 var userInteracted = false;
 
-document.addEventListener('click', function() {
+document.addEventListener('click', function clickHandler() {
+    console.log("User interacted with the page")
     userInteracted = true;
 
-    // You can remove the event listener after the first interaction if needed
-    document.removeEventListener('click', arguments.callee);
+    // remove the event listener after the first interaction if needed
+    document.removeEventListener('click', clickHandler);
 });
+
+
+
+
+
+// function highlighter(start, finish, word) {
+//     let textarea = document.getElementById("postText");
+//     //console.log(start + "," + finish + "," + word);
+//     textarea.focus();
+//     textarea.setSelectionRange(start, finish);
+// }
+
+// function setTimers() {
+//     let marksStr = sessionStorage.getItem("speech marks");
+//     //read through the speech marks file and set timers for every word
+//     console.log(marksStr);
+//     let marks = marksStr.split("\n");
+//     for (let i = 0; i < marks.length; i++) {
+//          //console.log(i + ":" + marks[i]);
+//          if (marks[i].length == 0) {
+//               continue;
+//     }
+
+//     smjson = JSON.parse(marks[i]);
+//     t = smjson["time"];
+//     s = smjson["start"];
+//     f = smjson["end"]; 
+//     word = smjson["value"];
+//     setTimeout(highlighter, t, s, f, word);
+//     }
+// }
+
+
+
+
+
+function highlighter(start, finish, word, element) {
+    console.log("The start is: " + start);
+    console.log("The finish is: " + finish);
+    console.log("The word is: " + word);
+    console.log("The element is: " + element);
+
+    if(element === "narrate-section") {
+        let temp = document.getElementById("narrate-section");
+        temp.innerHTML = temp.innerHTML.replace(word, "<mark>" + word + "</mark>");
+
+        console.log("THIS IS YELLOW NOW")
+        
+    } else if(element === "narrate-time") {
+        $("#narrate-time").css("background-color", "yellow");
+    } else if(element === "narrate-header") {
+        $("#narrate-header").css("background-color", "yellow");
+    } else { 
+        // get element to highlight then use start and finish to substring inner html to add mark to
+        let getElement = document.getElementById("narrate");
+        $("#narrate").css("background-color", "yellow");
+
+
+
+
+        // let retreievedElement = document.getElementById(element);
+
+
+        //     // Create a new string with the word wrapped in <mark> tags
+        //     let markedText = paragraphText.substring(0, startIndex) +
+        //         '<mark>' + word + '</mark>' +
+        //         paragraphText.substring(startIndex + word.length);
+
+        //     // Update the HTML of the paragraph with the marked text
+        //     paragraph.innerHTML = markedText;
+
+    }
+
+    // const wordEnd = wordStart + wordLength;
+    // const word = text.substring(wordStart, wordEnd);
+    // const markedText = text.substring(0, wordStart) + '<mark>' + word + '</mark>' + text.substring(wordEnd);
+    // textEl.innerHTML = markedText;
+
+}
+
+// function highlighter(start, finish, word) {
+//     // Select all elements with the class "narrate"
+//     let elements = document.querySelectorAll('.narrate');
+
+//     elements.forEach(element => {
+//         let textContent = element.textContent;
+//         console.log("The text content is: " + textContent);
+
+//         // Find the index of the word in the text content
+//         let startIndex = textContent.indexOf(word);
+
+//         if (startIndex !== -1) {
+//             // Create a new string with the word wrapped in <mark> tags
+//             let markedText = textContent.substring(0, startIndex) +
+//                 '<mark>' + word + '</mark>' +
+//                 textContent.substring(startIndex + word.length);
+
+//             // Update the HTML of the element with the marked text
+//             element.innerHTML = markedText;
+//         } else {
+//             console.error("Word not found in element.");
+//         }
+//     });
+// }
+
+// function to send the word from json times that is being spoken to be highlighted
+function setWordTimers() {
+    // Check if the speechData array is not empty
+    if (speechData.length > 0) {
+        // Filter the speechData array to include only entries with type "word"
+        const wordData = speechData.filter(entry => entry.type === "word");
+        // console.log("YOOOOOOOOOOOO The word data is: ", wordData);
+
+        // Iterate through each object in the filtered array
+        wordData.forEach(function(sjson) {
+            let time = sjson["time"];
+            let start = sjson["start"];
+            let finish = sjson["end"];
+            let element = sjson["element"];
+            let word = sjson["value"];
+
+            // Set a timer to highlight the word
+            setTimeout(function() {
+                highlighter(start, finish, word, element);
+            }, time);
+        });
+    } else {
+        console.error("Speech data array is empty.");
+    }
+}
+
+
+
+// function setTimers() {
+//     // Assuming you have the JSON data in a variable called speechData
+    
+
+//     // Check if the speechData array is not empty
+//     if (speechData.length > 0) {
+//         // Iterate through each object in the array
+//         speechData.forEach(function(smjson) {
+//             let t = smjson["time"];
+//             let s = smjson["start"];
+//             let f = smjson["end"];
+//             let word = smjson["value"];
+
+//             // Set a timer to highlight the word
+//             setTimeout(function() {
+//                 highlighter(s, f, word);
+//             }, t);
+//         });
+//     } else {
+//         console.error("Speech data array is empty.");
+//     }
+// }
+
+// Call setTimers function to initiate the highlighting
+// setTimers();
+
+
+
+
+
+// function getSpeechMarkAtTime(speechMarks, time) {
+//     const length = speechMarks.length
+//     let match = speechMarks[0]
+//     let found = false
+//     let i = 1
+  
+//     while (i < length && !found) {
+//       if (speechMarks[i].time <= time) {
+//         match = speechMarks[i]
+//       } else {
+//         found = true
+//       }
+  
+//       i++
+//     }
+  
+//     return match
+//   }
+  
+//   function onTimeUpdate(speechMark) {
+//     /**
+//      * Update your HTML and CSS based on the attributes
+//      * of the speech mark at the audio's current time.
+//      */
+//   }
+  
+//   audio.addEventListener('timeupdate', () => {
+//     // Polly Speech Marks use milliseconds
+//     const currentTime = audio.currentTime * 1000
+//     const speechMark = getSpeechMarkAtTime(speechMarksJSONResult, currentTime)
+  
+//     // Some custom callback
+//     onTimeUpdate(speechMark)
+//   })
+
+
+
+
+
+
+
+
+
+
 
 function stopPropagation(event) {
     event.stopPropagation();
@@ -64,9 +272,17 @@ function playAudio(thePage) {
             buttonIcon.classList.add('pause');
             buttonText.innerText = 'Pause';
     
+
             audio.play();
+            setWordTimers();
+
         } else {
-            console.warn('User has not interacted with the webpage yet. Cannot autoplay audio.');
+            console.log("in here:")
+            $('#page-article').click();
+
+            audio.play();
+            console.warn("Hi beyonce")
+            // console.warn('User has not interacted with the webpage yet. Cannot autoplay audio.');
         }
 
     }
@@ -181,6 +397,8 @@ function changeSpeed(speedValue) {
 
 $(document).ready(function() {
     $('#page-article').click();
+
+    console.log("Speech data: " + speechData);
 
     // Load the first page based on the URL
     // console.log("The start page: " + startPage);

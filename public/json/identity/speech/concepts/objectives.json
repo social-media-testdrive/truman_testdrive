@@ -1,0 +1,20 @@
+[
+    {"time":0,"type":"sentence","start":0,"end":51,"value":"Let's begin the section on identity theft concepts.", "element":"narrate"},
+    {"time":0,"type":"word","start":0,"end":8,"value":"Concepts", "element":"narrate-section"},
+    {"time":3355,"type":"sentence","start":52,"end":95,"value":"It will take around 10 minutes to complete.", "element":"narrate"},
+    {"time":3355,"type":"word","start":0,"end":6,"value":"10 min", "element":"narrate-time"},
+    {"time":5935,"type":"sentence","start":0,"end":96,"value":"Objectives:\nUnderstand the basics of identity theft\nDiscover what information scammers are after", "element": "narrate"},
+    {"time":6060,"type":"word","start":0,"end":10,"value":"Objectives", "element": "narrate-header"},
+    {"time":6997,"type":"word","start":12,"end":22,"value":"Understand", "element": "narrate"},
+    {"time":7522,"type":"word","start":23,"end":26,"value":"the", "element": "narrate"},
+    {"time":7635,"type":"word","start":27,"end":33,"value":"basics", "element": "narrate"},
+    {"time":8060,"type":"word","start":34,"end":36,"value":"of", "element": "narrate"},
+    {"time":8185,"type":"word","start":37,"end":45,"value":"identity", "element": "narrate"},
+    {"time":8685,"type":"word","start":46,"end":51,"value":"theft", "element": "narrate"},
+    {"time":8997,"type":"word","start":52,"end":60,"value":"Discover", "element": "narrate"},
+    {"time":9435,"type":"word","start":61,"end":65,"value":"what", "element": "narrate"},
+    {"time":9597,"type":"word","start":66,"end":77,"value":"information", "element": "narrate"},
+    {"time":10185,"type":"word","start":78,"end":86,"value":"scammers", "element": "narrate"},
+    {"time":10735,"type":"word","start":87,"end":90,"value":"are", "element": "narrate"},
+    {"time":10935,"type":"word","start":91,"end":96,"value":"after", "element": "narrate"}
+]
