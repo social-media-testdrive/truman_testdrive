@@ -61,34 +61,18 @@ function highlighter(start, finish, word, element) {
         console.log("THIS IS YELLOW NOW")
         
     } else if(element === "narrate-time") {
-        $("#narrate-time").css("background-color", "yellow");
+        let temp = document.getElementById("narrate-time");
+        temp.innerHTML = temp.innerHTML.replace(word, "<mark>" + word + "</mark>");
     } else if(element === "narrate-header") {
-        $("#narrate-header").css("background-color", "yellow");
-    } else { 
-        // get element to highlight then use start and finish to substring inner html to add mark to
-        let getElement = document.getElementById("narrate");
-        $("#narrate").css("background-color", "yellow");
-
-
-
-
-        // let retreievedElement = document.getElementById(element);
-
-
-        //     // Create a new string with the word wrapped in <mark> tags
-        //     let markedText = paragraphText.substring(0, startIndex) +
-        //         '<mark>' + word + '</mark>' +
-        //         paragraphText.substring(startIndex + word.length);
-
-        //     // Update the HTML of the paragraph with the marked text
-        //     paragraph.innerHTML = markedText;
-
+        let temp = document.getElementById("narrate-header");
+        temp.innerHTML = temp.innerHTML.replace(word, "<mark>" + word + "</mark>");
+    } else if(element === "narrate-1") {
+        let temp = document.getElementById("narrate-1");
+        temp.innerHTML = temp.innerHTML.replace(word, "<mark>" + word + "</mark>");
+    } else if(element === "narrate-2") {
+        let temp = document.getElementById("narrate-2");
+        temp.innerHTML = temp.innerHTML.replace(word, "<mark>" + word + "</mark>");
     }
-
-    // const wordEnd = wordStart + wordLength;
-    // const word = text.substring(wordStart, wordEnd);
-    // const markedText = text.substring(0, wordStart) + '<mark>' + word + '</mark>' + text.substring(wordEnd);
-    // textEl.innerHTML = markedText;
 
 }
 
