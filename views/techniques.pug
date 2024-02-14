@@ -1,0 +1,22 @@
+extends ui_layout
+
+block content
+  .container
+    .eleven.wide.column.middle.aligned(style="margin-left: 0px; padding-left: 0px;")
+      .ui.fluid.card(style="border-radius: 0px;")
+        .image
+          img(src='/images/mrsjohnsonbg.png' style="height: 100px; object-fit: cover; object-position: 0 0; border-radius: 0px;")
+          .ui.circular.image(style="position: absolute; top: 30px; left: 50%; transform: translateX(-50%); z-index: 99; width: px; border: 6px solid white;")
+            img(src='/images/mrsjohnsonprofile.png' ) 
+        .content(style="padding-top: 50px;") 
+          .ui.basic.segment(style="margin: 0; padding: 100px; text-align: center;") 
+            .header(style="font-size: 1.75rem; font-weight: bold") Mrs. Johnson
+            p 
+              span.highlightable#text-1 I’m a wife and proud mother of 2 boys. 
+              span.highlightable.correct-line#text-2 My maiden name is Smith. 
+              span.highlightable.correct-line#text-3 Born on April 3 1959, it's been an amazing journey since then. 
+              span.highlightable.correct-line#text-4 Oh, here's my new email: JoanEJohnson@gmail.com. 
+              span.highlightable#text-5 Stay safe and talk soon!
+
+block styles
+  link(rel='stylesheet', href='/css/techniques.css?v=1.0')
