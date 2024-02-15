@@ -5,18 +5,53 @@ block content
     .eleven.wide.column.middle.aligned(style="margin-left: 0px; padding-left: 0px;")
       .ui.fluid.card(style="border-radius: 0px;")
         .image
-          img(src='/images/mrsjohnsonbg.png' style="height: 100px; object-fit: cover; object-position: 0 0; border-radius: 0px;")
+          img(src='/images/mrsjohnsonbg.png' style="height: 200px; object-fit: cover; object-position: 0 0; border-radius: 10px;") 
           .ui.circular.image(style="position: absolute; top: 30px; left: 50%; transform: translateX(-50%); z-index: 99; width: px; border: 6px solid white;")
-            img(src='/images/mrsjohnsonprofile.png' ) 
+            img(src='/images/mrsjohnsonprofile.png') 
         .content(style="padding-top: 50px;") 
-          .ui.basic.segment(style="margin: 0; padding: 100px; text-align: center;") 
-            .header(style="font-size: 1.75rem; font-weight: bold") Mrs. Johnson
-            p 
-              span.highlightable#text-1 I’m a wife and proud mother of 2 boys. 
-              span.highlightable.correct-line#text-2 My maiden name is Smith. 
-              span.highlightable.correct-line#text-3 Born on April 3 1959, it's been an amazing journey since then. 
-              span.highlightable.correct-line#text-4 Oh, here's my new email: JoanEJohnson@gmail.com. 
-              span.highlightable#text-5 Stay safe and talk soon!
+          .ui.basic.segment(style="margin: 0; text-align: center; display: flex; flex-direction: column; align-items: center;") 
+            .header(style="font-size: 1.75rem; font-weight: bold; margin-bottom: 20px;") Susan Davis
+            .flex-container(style="display: flex; justify-content: space-between; width: 100%;")
+              p(style="flex: 1; text-align: center;") 
+                strong 29 
+                |  Friends
+              p(style="flex: 1; text-align: center;") 
+                strong 0 
+                |  Mutual Friends
+              p(style="flex: 1; text-align: center;") 
+                strong 15 
+                |  Posts
+            .icons-container(style="display: flex; justify-content: space-between; width: 100%; margin-top: 20px;")
+              .icon-item
+                i.icon.users
+                p Add Friend
+              .icon-item
+                i.icon.address.book
+                p Follow
+              .icon-item
+                i.icon.comment.alternate
+                p Message
+              .icon-item
+                i.icon.ellipsis.horizontal
+                p More
+            p(style="text-align: center; margin-top:20px") 💪 Certified Fitness Trainer | Passionate about empowering others to discover their strength, transform their lives, and embrace a healthier, happier version of themselves. "Your only limit is you." 🌟
+    .new-icons-container(style="display: flex; flex-direction: column; width: 100%; margin-top: 10px;")
+      .icon-item
+          .icon-container(style="display: flex; align-items: center; margin-right: 10px;")
+            i.icon.suitcase
+            p(style="margin-left: 5px;") Works at YMCA
+      .icon-item
+          .icon-container(style="display: flex; align-items: center; margin-right: 10px;")
+            i.icon.home
+            p(style="margin-left: 5px;") Lives in Los Angeles, California
+      .icon-item
+          .icon-container(style="display: flex; align-items: center; margin-right: 10px;")
+            i.icon.map.marker.alternate
+            p(style="margin-left: 5px;") From Los Angeles, California
+      .icon-item
+          .icon-container(style="display: flex; align-items: center; margin-right: 10px;")
+            i.icon.users.large-icon 
+            p(style="margin-left: 5px;") Linked Accounts
 
 block styles
   link(rel='stylesheet', href='/css/techniques.css?v=1.0')
