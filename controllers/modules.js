@@ -53,7 +53,7 @@ exports.getModule = async (req, res) => {
     quizData = JSON.parse(data.toString());
 
     // make it for all sections array json object later
-    const speech_objectives = await fs.readFileAsync(`${__dirname}/../public/json/` +  module + `/speech/` + section + `/objectives.json`);
+    const speech_objectives = await fs.readFileAsync(`${__dirname}/../public/json/` +  module + `/narration.json`);
     speechMarks = JSON.parse(speech_objectives.toString());
 
     if(section === 'practice'){

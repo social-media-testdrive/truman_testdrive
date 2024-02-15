@@ -238,7 +238,7 @@ function playAudio(thePage) {
     console.log("mute is: " + mute);
     // document.getElementById('narration-audio').play();
     var audio = document.getElementById('narration-audio');
-    audio.src = `https://dart-store.s3.amazonaws.com/identity+theft+voice+over/${section}/${thePage}_${avatar}.mp3`;
+    audio.src = `https://dart-store.s3.amazonaws.com/identity-narration/${section}/${thePage}_${avatar}.mp3`;
     audio.load();
     audio.playbackRate = voiceSpeed;
 
@@ -258,7 +258,7 @@ function playAudio(thePage) {
     
 
             audio.play();
-            setWordTimers();
+            // setWordTimers();
 
         } else {
             console.log("in here:")
