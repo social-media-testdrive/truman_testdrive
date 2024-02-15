@@ -47,12 +47,24 @@ document.addEventListener('click', function clickHandler() {
 
 
 
+let previousElement = "none";
 
 function highlighter(start, finish, word, element) {
-    console.log("The start is: " + start);
+    console.log("******The start is: " + start);
     console.log("The finish is: " + finish);
     console.log("The word is: " + word);
     console.log("The element is: " + element);
+
+    // Clear all previous highlights if the element has changed
+    if (element !== previousElement) {
+        let markElements = document.getElementsByTagName('mark');
+
+        // Loop through all the 'mark' elements and remove them
+        for (let i = markElements.length - 1; i >= 0; i--) {
+            let markElement = markElements[i];
+            markElement.parentNode.replaceChild(document.createTextNode(markElement.textContent), markElement);
+        }    
+    }
 
     if(element === "narrate-section" && (word === "challenge" || word === "concepts" || word === "consequences" || word === "techniques" || word === "protection" || word === "reporting" || word === "practice" || word === "evaluation")) {
         let capitalizedWord = word.charAt(0).toUpperCase() + word.slice(1);
@@ -66,11 +78,32 @@ function highlighter(start, finish, word, element) {
         let temp = document.getElementById("narrate-header");
         temp.innerHTML = temp.innerHTML.replace(word, "<mark>" + word + "</mark>");
     } else {
+        // let temp = document.getElementById(element);
+        // temp.innerHTML = temp.innerHTML.replace(word, "<mark>" + word + "</mark>");
+
+    
         let temp = document.getElementById(element);
-        temp.innerHTML = temp.innerHTML.replace(word, "<mark>" + word + "</mark>");
+        // remove previous mark tags before adding new ones
+        temp.innerHTML = temp.innerHTML.replace(/<\/?mark>/g, "");
+
+        console.log("temp is: " + temp);
+        console.log("temp is: " + temp.innerHTML);
+        console.log("from start to finish: " + temp.innerHTML.substring(start, finish));
+        s = temp.innerHTML;
+        temp.innerHTML = s.substring(0, start) + "<mark>" + word + "</mark>" + s.substring(finish);
+
+
     } 
 
 }
+
+            // word = "it";
+            // s = "Find it out it out now please";
+            // let temp = s.substring(0, 12) + "*" + word + "*" + s.substring(14);
+            // console.log("result is: " + temp)
+
+            // result: Find it out *it* out now please
+    
 
 // function highlighter(start, finish, word) {
 //     // Select all elements with the class "narrate"
@@ -264,6 +297,14 @@ function playAudio(thePage) {
 
             audio.play();
             setWordTimers();
+
+            // word = "it";
+            // s = "Find it out it out now please";
+            // let temp = s.substring(0, 12) + "*" + word + "*" + s.substring(14);
+            // console.log("result is: " + temp)
+
+            // result: Find it out *it* out now please
+    
 
         } else {
             console.log("in here:")
