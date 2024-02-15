@@ -54,25 +54,21 @@ function highlighter(start, finish, word, element) {
     console.log("The word is: " + word);
     console.log("The element is: " + element);
 
-    if(element === "narrate-section") {
+    if(element === "narrate-section" && (word === "challenge" || word === "concepts" || word === "consequences" || word === "techniques" || word === "protection" || word === "reporting" || word === "practice" || word === "evaluation")) {
+        let capitalizedWord = word.charAt(0).toUpperCase() + word.slice(1);
         let temp = document.getElementById("narrate-section");
-        temp.innerHTML = temp.innerHTML.replace(word, "<mark>" + word + "</mark>");
-
-        console.log("THIS IS YELLOW NOW")
-        
+        temp.innerHTML = temp.innerHTML.replace(capitalizedWord, "<mark>" + capitalizedWord + "</mark>");
+        console.log("Hi THIS IS YELLOW NOW");
     } else if(element === "narrate-time") {
         let temp = document.getElementById("narrate-time");
         temp.innerHTML = temp.innerHTML.replace(word, "<mark>" + word + "</mark>");
     } else if(element === "narrate-header") {
         let temp = document.getElementById("narrate-header");
         temp.innerHTML = temp.innerHTML.replace(word, "<mark>" + word + "</mark>");
-    } else if(element === "narrate-1") {
-        let temp = document.getElementById("narrate-1");
+    } else {
+        let temp = document.getElementById(element);
         temp.innerHTML = temp.innerHTML.replace(word, "<mark>" + word + "</mark>");
-    } else if(element === "narrate-2") {
-        let temp = document.getElementById("narrate-2");
-        temp.innerHTML = temp.innerHTML.replace(word, "<mark>" + word + "</mark>");
-    }
+    } 
 
 }
 
@@ -103,10 +99,19 @@ function highlighter(start, finish, word, element) {
 
 // function to send the word from json times that is being spoken to be highlighted
 function setWordTimers() {
+    // get the speech data for selected avatar
+    // console.log(avatar);
+    // console.log(speechData);
+    // console.log(speechData[page][avatar]);
+
+    avatarSpeechData = speechData[page][avatar];
+
+    console.log("The avatar speech data is: " + avatarSpeechData);
+
     // Check if the speechData array is not empty
-    if (speechData.length > 0) {
+    if (avatarSpeechData.length > 0) {
         // Filter the speechData array to include only entries with type "word"
-        const wordData = speechData.filter(entry => entry.type === "word");
+        const wordData = avatarSpeechData.filter(entry => entry.type === "word");
         // console.log("YOOOOOOOOOOOO The word data is: ", wordData);
 
         // Iterate through each object in the filtered array
@@ -258,7 +263,7 @@ function playAudio(thePage) {
     
 
             audio.play();
-            // setWordTimers();
+            setWordTimers();
 
         } else {
             console.log("in here:")
@@ -382,7 +387,8 @@ function changeSpeed(speedValue) {
 $(document).ready(function() {
     $('#page-article').click();
 
-    console.log("Speech data: " + speechData);
+    // console.log("Speech data: " + speechData);
+    // console.log(JSON.stringify(speechData))
 
     // Load the first page based on the URL
     // console.log("The start page: " + startPage);

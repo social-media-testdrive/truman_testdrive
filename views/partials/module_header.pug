@@ -40,8 +40,8 @@ header(style="z-index: 1000 !important;")
                             i.dropdown.icon
                             .default.text #{user.avatar}
                             .menu
-                                .item(data-value="Intrepid") Intrepid
                                 .item(data-value="Daring") Daring
+                                .item(data-value="Intrepid") Intrepid
                                 .item(data-value="Valiant") Valiant
                         //- Speed Control
                         .ui.basic.label(style="border: none; font-size: 1rem; padding-left: 5px;") Speed
@@ -63,10 +63,10 @@ header(style="z-index: 1000 !important;")
                             input(type="checkbox")
                             label
                         //- Toggle Narration
-                        //- .ui.basic.label(style="border: none; font-size: 1rem;  padding-left: 5px;") Highlight Text
-                        //- .ui.toggle.checkbox.item#highlight-narration(onclick="stopPropagation(event)")
-                        //-     input(type="checkbox")
-                        //-     label
+                        .ui.basic.label(style="border: none; font-size: 1rem;  padding-left: 5px;") Highlight Text
+                        .ui.toggle.checkbox.item#highlight-narration(onclick="stopPropagation(event)")
+                            input(type="checkbox")
+                            label
 
 
                         //- .ui.labeled.ticked.slider.item#speed-control(style="font-size: 0.05rem;")

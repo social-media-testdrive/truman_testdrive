@@ -25,8 +25,8 @@ block styles
 
 block scripts      
     script.
-        var speechData= !{JSON.stringify(speechMarks)}; // quizData is passed to pug file via render function in app.js
-
+        //- send as json with all avatars speech marks
+        var speechData = !{JSON.stringify(speechMarks)}; // quizData is passed to pug file via render function in app.js
     script(src='/module_js/identity/identity-theft.js')    
     //- script(src='/js/text2speech.js')  
     script.
