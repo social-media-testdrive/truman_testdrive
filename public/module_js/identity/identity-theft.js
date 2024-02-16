@@ -4,6 +4,7 @@ let badgeEarned = false;
 let mute = false;
 let voiceSpeed = 1;
 var userInteracted = false;
+let isPaused = false;
 
 document.addEventListener('click', function clickHandler() {
     console.log("User interacted with the page")
@@ -54,16 +55,18 @@ function highlighter(start, finish, word, element) {
     console.log("The finish is: " + finish);
     console.log("The word is: " + word);
     console.log("The element is: " + element);
+    // console.log("isPaused: " + isPaused);
 
+
+    // // Check if execution should be paused
+    // if (isPaused) {
+    //     console.log("Paused*******");
+    //     // Use a busy-wait loop to wait until unpaused
+    // }
+            
     // Clear all previous highlights if the element has changed
     if (element !== previousElement) {
-        let markElements = document.getElementsByTagName('mark');
-
-        // Loop through all the 'mark' elements and remove them
-        for (let i = markElements.length - 1; i >= 0; i--) {
-            let markElement = markElements[i];
-            markElement.parentNode.replaceChild(document.createTextNode(markElement.textContent), markElement);
-        }    
+        clearHighlights();
     }
 
     if(element === "narrate-section" && (word === "challenge" || word === "concepts" || word === "consequences" || word === "techniques" || word === "protection" || word === "reporting" || word === "practice" || word === "evaluation")) {
@@ -148,7 +151,7 @@ function setWordTimers() {
         // console.log("YOOOOOOOOOOOO The word data is: ", wordData);
 
         // Iterate through each object in the filtered array
-        wordData.forEach(function(sjson) {
+        wordData.forEach(function(sjson, index) {
             let time = sjson["time"];
             let start = sjson["start"];
             let finish = sjson["end"];
@@ -158,6 +161,20 @@ function setWordTimers() {
             // Set a timer to highlight the word
             setTimeout(function() {
                 highlighter(start, finish, word, element);
+
+                // Log "done" after going through all words
+                if (index === wordData.length - 1) {
+                    // console.log("done now!!!!!");
+
+                    // Wait for 1 then clear last highlight
+                    setTimeout(function() {
+                        clearHighlights();
+                    }, 1000); 
+    
+            
+
+                }
+
             }, time);
         });
     } else {
@@ -165,6 +182,15 @@ function setWordTimers() {
     }
 }
 
+function clearHighlights() {
+    let markElements = document.getElementsByTagName('mark');
+
+    // Loop through all the 'mark' elements and remove them
+    for (let i = markElements.length - 1; i >= 0; i--) {
+        let markElement = markElements[i];
+        markElement.parentNode.replaceChild(document.createTextNode(markElement.textContent), markElement);
+    }    
+}
 
 
 // function setTimers() {
@@ -344,6 +370,7 @@ function togglePlayPause() {
     var volumeIcon = document.querySelector('#volume-icon');
 
     if (audio.paused) {
+        isPaused = false;
         audio.play();
         // Change icon and text to "Pause" when playing
         volumeIcon.classList.remove('off');
@@ -352,6 +379,7 @@ function togglePlayPause() {
         buttonIcon.classList.add('pause');
         buttonText.textContent = 'Pause';
     } else {
+        isPaused = true;
         audio.pause();
         volumeIcon.classList.remove('up');
         volumeIcon.classList.add('off');
