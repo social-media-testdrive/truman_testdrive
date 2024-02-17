@@ -1,21 +1,18 @@
 var hintsList = [
   {
-    hint: `What would Lily need to do if she didn’t want strangers to see her
-    social media posts? Which privacy settings would she have to change?`,
+    hint: `¿Qué tendría que hacer Lucía si no quisiera que desconocidos vieran sus publicaciones en las redes sociales? ¿Qué ajuste de privacidad tendría que cambiar?`,
     element: '#hint1',
     audioFile: ['CUSML.7.8.18.mp3']
   },
   {
-    hint: `She can make her account “Private,” so that only her social media
-    friends can see her posts. Let’s try doing this!`,
+    hint: `Ella puede hacer que su cuenta sea "privada" para que solo sus amigos de las redes sociales puedan ver sus publicaciones. ¡Intentemos hacer eso!`,
     element: '#hint2',
     hintPosition: 'top-middle',
     audioFile: ['CUSML.7.8.19.mp3']
 
   },
   {
-    hint: `Have you changed the account settings to a “Private” account? Click
-    “Let’s Continue!” to see how her profile has changed.`,
+    hint: `¿Has cambiado la configuración de la cuenta a una cuenta "privada"? Haz clic en "¡Continuar!" para ver cómo ha cambiado su perfil.`,
     element: '#hint3',
     hintPosition: 'middle-right',
     audioFile: ['CUSML.7.8.20.mp3']

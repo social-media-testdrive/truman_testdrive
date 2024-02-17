@@ -1,20 +1,17 @@
 var hintsList = [
   {
-    hint: `Lily would like to hide tagged posts from her profile. Which privacy
-    settings would she have to change?`,
+    hint: `A Lucía le gustaría ocultar las publicaciones etiquetadas de su perfil. ¿Qué configuración de privacidad tendría que cambiar?`,
     element: '#hint1',
     audioFile: ['CUSML.7.8.13.mp3']
   },
   {
-    hint: `She can turn off tagging settings and hide tagged posts from her
-    timeline. Let’s try doing this!`,
+    hint: `Puede desactivar la configuración de etiquetado y ocultar las publicaciones etiquetadas de su feed. ¡Intentemos hacer eso!`,
     element: '#hint2',
     hintPosition: 'top-middle',
     audioFile: ['CUSML.7.8.14.mp3']
   },
   {
-    hint: `Have you turned off tagging settings and hidden tagged posts from
-    Lily’s timeline? Click “Let’s Continue!” to see how her profile has changed.`,
+    hint: `¿Has desactivado la configuración de etiquetado y has ocultado las publicaciones etiquetadas del feed de Lucía? Haz clic en "¡Continuar!" para ver cómo ha cambiado su perfil.`,
     element: '#hint3',
     hintPosition: 'middle-right',
     audioFile: ['CUSML.7.8.15.mp3']

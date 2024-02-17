@@ -6,16 +6,14 @@ var hintsList = [{
         audioFile: ['CUSML.7.8.08.mp3']
     },
     {
-        hint: `She can <b>turn off location sharing</b> and restrict who can see her
-    location to <b>“Friends” only</b>. Let’s try doing this!`,
+        hint: `Ella puede <b>desactivar el uso compartido de la ubicación</b> y 
+        restringir quién puede ver su ubicación únicamente a <b>"Amigos"</b>. ¡Intentemos hacer eso!`,
         element: '#hint2',
         hintPosition: 'top-middle',
         audioFile: ['CUSML.7.8.09.mp3']
     },
     {
-        hint: `Have you turned off location sharing and changed who can see Lily’s
-    location? Click “<i>Let’s Continue!</i>” to see how her profile has
-    changed.`,
+        hint: `¿Desactivaste la opción de compartir ubicación y cambiaste quién puede ver la ubicación de Lucía? Haz clic en "<i>¡Continuar!</i>" para ver cómo ha cambiado su perfil.`,
         element: '#hint3',
         hintPosition: 'middle-right',
         audioFile: ['CUSML.7.8.10.mp3']

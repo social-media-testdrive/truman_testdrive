@@ -390,19 +390,19 @@
   "privacy": {
     "Q1": {
       "type": "written",
-      "prompt": "Did you notice any changes in Lily’s profile after you changed the privacy settings?"
+      "prompt": "¿Notaste algún cambio en el perfil de Lucía después de cambiar la configuración de privacidad?"
     },
     "Q2": {
       "type": "written",
-      "prompt": "Why is it important to know what information websites collect about you?"
+      "prompt": "¿Por qué es importante saber qué información recopilan los sitios web sobre ti?"
     },
     "Q3": {
       "type": "written",
-      "prompt": "What are the three things you should ask yourself when reading a privacy policy?"
+      "prompt": "¿Cuáles son las tres cosas que debes preguntarte al leer una política de privacidad?"
     },
     "Q4": {
       "type": "written",
-      "prompt": "What can you do in the future to protect your privacy on social media?"
+      "prompt": "¿Qué puedes hacer en el futuro para proteger tu privacidad en las redes sociales?"
     }
   },
   "safe-posting": {

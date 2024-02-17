@@ -431,6 +431,49 @@ app.get('/free-settings3/privacy', passportConfig.isAuthenticated, setHttpRespon
   });
 });
 
+
+app.get('/free-play/privacy-esp', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
+    res.render('privacy-esp/privacy-esp_free-play', {
+      title: 'Free-Play'
+    });
+  });
+  
+  app.get('/free-play2/privacy-esp', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
+    res.render('privacy-esp/privacy-esp_free-play2', {
+      title: 'Free-Play 2'
+    });
+  });
+  
+  app.get('/free-play3/privacy-esp', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
+    res.render('privacy-esp/privacy-esp_free-play3', {
+      title: 'Free-Play 3'
+    });
+  });
+  
+  app.get('/free-play4/privacy-esp', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
+    res.render('privacy-esp/privacy-esp_free-play4', {
+      title: 'Free-Play 4'
+    });
+  });
+  
+  app.get('/free-settings/privacy-esp', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
+    res.render('privacy-esp/privacy-esp_free-play_settings', {
+      title: 'Free-Play Settings'
+    });
+  });
+  
+  app.get('/free-settings2/privacy-esp', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
+    res.render('privacy-esp/privacy-esp_free-play_settings2', {
+      title: 'Free-Play Settings 2'
+    });
+  });
+  
+  app.get('/free-settings3/privacy-esp', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
+    res.render('privacy-esp/privacy-esp_free-play_settings3', {
+      title: 'Free-Play Settings 3'
+    });
+  });
+
 app.get('/gaming/targeted', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
   res.render('targeted/targeted_gaming', {
     title: 'Interest Page'
