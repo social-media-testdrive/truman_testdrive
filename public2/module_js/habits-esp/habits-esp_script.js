@@ -175,26 +175,30 @@ $(".ui.vertical.menu a.item").on('click', function(){
         if(notifTimestamp < timeElapsed){
           date_formats = {
             past: [
-              { ceiling: 2, text: "Hace $seconds segundo" },
-              { ceiling: 60, text: "Hace $seconds segundos" },
-              { ceiling: 120, text: "Hace $minutes minuto" },
-              { ceiling: 3600, text: "Hace $minutes minutos" },
-              { ceiling: 86400, text: "Hace $hours horas" },
-              { ceiling: 2629744, text: "Hace $days días" },
-              { ceiling: 31556926, text: "Hace $months meses" },
-              { ceiling: null, text: "Hace $years años" }      
+                { ceiling: 2, text: "Hace $seconds segundo" },
+                { ceiling: 60, text: "Hace $seconds segundos" },
+                { ceiling: 120, text: "Hace $minutes minuto" },
+                { ceiling: 3600, text: "Hace $minutes minutos" },
+                { ceiling: 7200, text: "Hace $hours hora" },
+                { ceiling: 86400, text: "Hace $hours horas" },
+                { ceiling: 172800, text: "Hace $days día" },
+                { ceiling: 2629744, text: "Hace $days días" },
+                { ceiling: 31556926, text: "Hace $months meses" },
+                { ceiling: null, text: "Hace $years años" }      
             ],
             future: [
-              { ceiling: 2, text: "En $seconds segundo" },
-              { ceiling: 60, text: "En $seconds segundos" },
-              { ceiling: 120, text: "En $minutes minuto" },
-              { ceiling: 3600, text: "En $minutes minutos" },
-              { ceiling: 86400, text: "En $hours horas" },
-              { ceiling: 2629744, text: "En $days días" },
-              { ceiling: 31556926, text: "En $months meses" },
-              { ceiling: null, text: "En $years años" }
+                { ceiling: 2, text: "En $seconds segundo" },
+                { ceiling: 60, text: "En $seconds segundos" },
+                { ceiling: 120, text: "En $minutes minuto" },
+                { ceiling: 3600, text: "En $minutes minutos" },
+                { ceiling: 7200, text: "En $hours hora" },
+                { ceiling: 86400, text: "En $hours horas" },
+                { ceiling: 172800, text: "Hace $days día" },
+                { ceiling: 2629744, text: "En $days días" },
+                { ceiling: 31556926, text: "En $months meses" },
+                { ceiling: null, text: "En $years años" }
             ]
-          };
+        };
 
           $(this).find('.time.notificationTime').html(humanized_time_span(habitsStart + notifTimestamp, Date.now(), date_formats));
           $(this).show();

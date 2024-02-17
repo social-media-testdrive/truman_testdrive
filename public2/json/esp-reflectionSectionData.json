@@ -271,7 +271,7 @@
       "checkboxLabels": {
         "0": "Notificaciones",
         "1": "Me gusta y comentarios de otros usuarios",
-        "2": "Tiempo pasado en las reded sociales"
+        "2": "Tiempo pasado en las redes sociales"
       },
       "responseRequirement": "exact",
       "correctResponses": {

@@ -238,7 +238,7 @@ $(window).on("load", function() {
 
                 $(contentElement).addClass("red");
                 contentElement.innerHTML = (letterAnswer !== undefined) ?
-                    letterAnswer + " es incorrecto." :
+                    letterAnswer + " es incorrecta." :
                     "Por favor elige una respuesta.";
 
                 explanationElement.innerHTML = (attemptNumber < maxAttempt) ? "¿Quieres volverlo a intentar? Por favor vuelve a seleccionar tu respuesta." : "Puedes ver las respuestas correctas y las explicaciones haciendo clic en el botón azul en la parte de abajo de esta página.";

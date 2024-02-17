@@ -16,14 +16,14 @@ block content
             img(src=user.gravatar(60))
         .content
           a.header(href='/me/'+mod)= user.profile.name || user.email || user.id
-          .meta="@Invitado"
+          .meta="@Invitado/a"
           .description=user.profile.bio
           .description
             if user.profile.location
               i.marker.icon
               span=user.profile.location
         .one.ui.bottom.attached.icon.buttons
-            button.ui.editprofile.button(data-tooltip='Update Your Profile', data-position='bottom left')
+            button.ui.editprofile.button(data-tooltip='Actualiza tu perfil', data-position='bottom left')
                 i.write.icon
       
   #loading.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
@@ -41,16 +41,18 @@ block content
         i.big.photo.link.icon
 
     each val in script
-      //- create a card for each post in script
-
+      //- create a card for each post in val (if by user make the card a little different)
       //- if val.relativeTime - then post came from user_post (so user post, user reply to actor reply to user post)
-      if val.relativeTime
-        include partials/script/userPost
 
-      //- Now we are making posts by Actors, not the USER    
+      if val.relativeTime
+        include partials/script/userPost-esp
+      //- Now we are making posts by Actors, not the USER
+      
+      //- This is a tageted ad post in the targeted ads module
       else
+      
         block post
-          include partials/script/actorPost
+          include partials/script/actorPost-esp
 
   
     -var post_quiz = "/results/"+mod;
@@ -58,13 +60,13 @@ block content
       .content
         .ui.big.green.labeled.icon.button.script
           i.rocket.icon
-          |   Let's Continue!
+          |   ¡Continuar!
           
     br
     br
   
     include partials/script/chatBox
-    include partials/script/modals/newUserPost
+    include partials/script/modals/newUserPost-esp
     include partials/script/modals/digitalLiteracyFlag
     include partials/script/modals/digitalLiteracyArticle
     include partials/script/modals/esteemPost
@@ -81,7 +83,7 @@ block content
               |
       .actions
         .ui.positive.right.labeled.icon.button
-          | ¡Listo!
+          | Listo
           i.checkmark.icon
             
     //- digfoot post checklist Modal 
@@ -111,9 +113,10 @@ block content
                .ui.checkbox
                  input(type='checkbox')
                  label This was a responsible post that will create a positive digital footprint.
+
       .actions
         .ui.positive.right.labeled.icon.button
-          | ¡Listo!
+          | Listo
           i.checkmark.icon
     
     //- Why am I seeing this ad modal, used in targeted ads modual. text depends on previously selected interest in trans2.
@@ -148,7 +151,7 @@ block content
              br
              .actions
                .ui.positive.right.labeled.icon.button
-                 | ¡Listo!
+                 | Listo
                  i.checkmark.icon          
             
   block rightColumn
@@ -157,9 +160,9 @@ block content
 block scripts
   script(src='/module_js/voiceover.js')
   script(src='/postFunctionalities.js')
-  script(src=cdn+'/js/chatbox2.js')
+  script(src=cdn+'/js/chatbox.js')
   script(src='/module_js/script.js')
-  //script(src='/module_js/base_introSteps.js')
+  //- //script(src='/module_js/base_introSteps.js')
   block scripts2
     -         
     

@@ -3,7 +3,7 @@ const nextPageURL = 'sim';
 const stepsList = [
   {
     element: '#step3',
-    intro: `Clic "Siguiente" to begin!`,
+    intro: `Clic "Siguiente" para comenzar!`,
     position: 'right',
     scrollTo: 'tooltip',
   },

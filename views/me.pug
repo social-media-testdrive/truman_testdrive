@@ -123,31 +123,43 @@ block scripts
       let time = new Date(ms);
 
       date_formats = {
-        past: [
-          { ceiling: 60, text: "Hace $seconds segundos" },
-          { ceiling: 3600, text: "Hace $minutes minuto" },
-          { ceiling: 86400, text: "Hace $hours horas" },
-          { ceiling: 2629744, text: "Hace $days días" },
-          { ceiling: 31556926, text: "Hace $months meses" },
-          { ceiling: null, text: "Hace $years años" }      
-        ],
-        future: [
-          { ceiling: 60, text: "En $seconds segundos" },
-          { ceiling: 3600, text: "En $minutes minuto" },
-          { ceiling: 86400, text: "En $hours horas" },
-          { ceiling: 2629744, text: "En $days días" },
-          { ceiling: 31556926, text: "En $months meses" },
-          { ceiling: null, text: "En $years años" }
-        ]
-      };
+            past: [
+                { ceiling: 2, text: "Hace $seconds segundo" },
+                { ceiling: 60, text: "Hace $seconds segundos" },
+                { ceiling: 120, text: "Hace $minutes minuto" },
+                { ceiling: 3600, text: "Hace $minutes minutos" },
+                { ceiling: 7200, text: "Hace $hours hora" },
+                { ceiling: 86400, text: "Hace $hours horas" },
+                { ceiling: 172800, text: "Hace $days día" },
+                { ceiling: 2629744, text: "Hace $days días" },
+                { ceiling: 31556926, text: "Hace $months meses" },
+                { ceiling: null, text: "Hace $years años" }      
+            ],
+            future: [
+                { ceiling: 2, text: "En $seconds segundo" },
+                { ceiling: 60, text: "En $seconds segundos" },
+                { ceiling: 120, text: "En $minutes minuto" },
+                { ceiling: 3600, text: "En $minutes minutos" },
+                { ceiling: 7200, text: "En $hours hora" },
+                { ceiling: 86400, text: "En $hours horas" },
+                { ceiling: 172800, text: "Hace $days día" },
+                { ceiling: 2629744, text: "En $days días" },
+                { ceiling: 31556926, text: "En $months meses" },
+                { ceiling: null, text: "En $years años" }
+            ]
+        };
       //Time units must be be ordered largest -> smallest
       time_units = [
         [31556926, 'años'],
         [2629744, 'meses'],
-        [86400, 'días'],
-        [3600, 'horas'],
+        [172800, 'días'],
+        [86400, 'día'],
+        [7200, 'horas'],
+        [3600, 'hora'],
+        [120, 'minutos'],
         [60, 'minuto'],
-        [1, 'segundos']
+        [2, 'segundos'],
+        [1, 'segundo']
       ];
 
       //- console.log("esp2 = " + humanized_time_span(time, date_formats, time_units));
