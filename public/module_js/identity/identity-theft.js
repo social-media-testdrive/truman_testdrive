@@ -4,7 +4,18 @@ let badgeEarned = false;
 let mute = false;
 let voiceSpeed = 1;
 var userInteracted = false;
-let isPaused = false;
+// let isPaused = false;
+// var curStp = 0;
+// var timeout = null;
+// const totalStps = 54;
+// const delay = 300;
+
+let isPaused = false; // Flag to check if highlighting should be paused
+// const delay = 300;
+let totalWords; // Total number of words to highlight
+let currentWordIndex = 0; // Current index of the word being highlighted
+// let highlightTimeout = null; // Timeout reference for highlighting
+
 
 document.addEventListener('click', function clickHandler() {
     console.log("User interacted with the page")
@@ -14,56 +25,9 @@ document.addEventListener('click', function clickHandler() {
     document.removeEventListener('click', clickHandler);
 });
 
-
-
-
-
-// function highlighter(start, finish, word) {
-//     let textarea = document.getElementById("postText");
-//     //console.log(start + "," + finish + "," + word);
-//     textarea.focus();
-//     textarea.setSelectionRange(start, finish);
-// }
-
-// function setTimers() {
-//     let marksStr = sessionStorage.getItem("speech marks");
-//     //read through the speech marks file and set timers for every word
-//     console.log(marksStr);
-//     let marks = marksStr.split("\n");
-//     for (let i = 0; i < marks.length; i++) {
-//          //console.log(i + ":" + marks[i]);
-//          if (marks[i].length == 0) {
-//               continue;
-//     }
-
-//     smjson = JSON.parse(marks[i]);
-//     t = smjson["time"];
-//     s = smjson["start"];
-//     f = smjson["end"]; 
-//     word = smjson["value"];
-//     setTimeout(highlighter, t, s, f, word);
-//     }
-// }
-
-
-
-
 let previousElement = "none";
 
-function highlighter(start, finish, word, element) {
-    console.log("******The start is: " + start);
-    console.log("The finish is: " + finish);
-    console.log("The word is: " + word);
-    console.log("The element is: " + element);
-    // console.log("isPaused: " + isPaused);
-
-
-    // // Check if execution should be paused
-    // if (isPaused) {
-    //     console.log("Paused*******");
-    //     // Use a busy-wait loop to wait until unpaused
-    // }
-            
+function highlightWord(start, finish, word, element) {
     // Clear all previous highlights if the element has changed
     if (element !== previousElement) {
         clearHighlights();
@@ -73,7 +37,7 @@ function highlighter(start, finish, word, element) {
         let capitalizedWord = word.charAt(0).toUpperCase() + word.slice(1);
         let temp = document.getElementById("narrate-section");
         temp.innerHTML = temp.innerHTML.replace(capitalizedWord, "<mark>" + capitalizedWord + "</mark>");
-        console.log("Hi THIS IS YELLOW NOW");
+        // console.log("Hi THIS IS YELLOW NOW");
     } else if(element === "narrate-time") {
         let temp = document.getElementById("narrate-time");
         temp.innerHTML = temp.innerHTML.replace(word, "<mark>" + word + "</mark>");
@@ -89,9 +53,9 @@ function highlighter(start, finish, word, element) {
         // remove previous mark tags before adding new ones
         temp.innerHTML = temp.innerHTML.replace(/<\/?mark>/g, "");
 
-        console.log("temp is: " + temp);
-        console.log("temp is: " + temp.innerHTML);
-        console.log("from start to finish: " + temp.innerHTML.substring(start, finish));
+        // console.log("temp is: " + temp);
+        // console.log("temp is: " + temp.innerHTML);
+        // console.log("from start to finish: " + temp.innerHTML.substring(start, finish));
         s = temp.innerHTML;
         temp.innerHTML = s.substring(0, start) + "<mark>" + word + "</mark>" + s.substring(finish);
 
@@ -100,86 +64,74 @@ function highlighter(start, finish, word, element) {
 
 }
 
-            // word = "it";
-            // s = "Find it out it out now please";
-            // let temp = s.substring(0, 12) + "*" + word + "*" + s.substring(14);
-            // console.log("result is: " + temp)
+function clearHighlights() {
+    // Simulate clearing highlights (replace this with your actual clearing logic)
+    console.log("Clearing highlights");
+}
 
-            // result: Find it out *it* out now please
-    
-
-// function highlighter(start, finish, word) {
-//     // Select all elements with the class "narrate"
-//     let elements = document.querySelectorAll('.narrate');
-
-//     elements.forEach(element => {
-//         let textContent = element.textContent;
-//         console.log("The text content is: " + textContent);
-
-//         // Find the index of the word in the text content
-//         let startIndex = textContent.indexOf(word);
-
-//         if (startIndex !== -1) {
-//             // Create a new string with the word wrapped in <mark> tags
-//             let markedText = textContent.substring(0, startIndex) +
-//                 '<mark>' + word + '</mark>' +
-//                 textContent.substring(startIndex + word.length);
-
-//             // Update the HTML of the element with the marked text
-//             element.innerHTML = markedText;
-//         } else {
-//             console.error("Word not found in element.");
-//         }
-//     });
-// }
-
-// function to send the word from json times that is being spoken to be highlighted
-function setWordTimers() {
-    // get the speech data for selected avatar
-    // console.log(avatar);
-    // console.log(speechData);
-    // console.log(speechData[page][avatar]);
-
-    avatarSpeechData = speechData[page][avatar];
-
-    console.log("The avatar speech data is: " + avatarSpeechData);
-
-    // Check if the speechData array is not empty
-    if (avatarSpeechData.length > 0) {
-        // Filter the speechData array to include only entries with type "word"
-        const wordData = avatarSpeechData.filter(entry => entry.type === "word");
-        // console.log("YOOOOOOOOOOOO The word data is: ", wordData);
-
-        // Iterate through each object in the filtered array
-        wordData.forEach(function(sjson, index) {
-            let time = sjson["time"];
-            let start = sjson["start"];
-            let finish = sjson["end"];
-            let element = sjson["element"];
-            let word = sjson["value"];
-
-            // Set a timer to highlight the word
-            setTimeout(function() {
-                highlighter(start, finish, word, element);
-
-                // Log "done" after going through all words
-                if (index === wordData.length - 1) {
-                    // console.log("done now!!!!!");
-
-                    // Wait for 1 then clear last highlight
-                    setTimeout(function() {
-                        clearHighlights();
-                    }, 1000); 
-    
-            
-
-                }
-
-            }, time);
-        });
-    } else {
-        console.error("Speech data array is empty.");
+function toRepeat(wordData) {
+    // Check for pause
+    if (isPaused) {
+        console.log("Pausing highlighting");
+        return;
     }
+
+    // Highlight the current word
+    // let delay;
+    // if(currentWordIndex === 0) {
+    //     delay = wordData[currentWordIndex + 1]["time"];
+    // } else {
+    //     delay = wordData[currentWordIndex + 1]["time"] - wordData[currentWordIndex - 1]["time"];
+    // }
+    let delay;
+    if(currentWordIndex === totalWords - 1) {
+        delay = wordData[currentWordIndex]["time"] - wordData[currentWordIndex - 1]["time"];
+    } else {
+        delay = wordData[currentWordIndex + 1]["time"] - wordData[currentWordIndex]["time"];
+    }
+    let start = wordData[currentWordIndex]["start"];
+    let finish = wordData[currentWordIndex]["end"];
+    let element = wordData[currentWordIndex]["element"];
+    let word = wordData[currentWordIndex]["value"];
+
+    console.log("*word: " + word + " *delay: " + delay + " *currentIndex: " + currentWordIndex);
+
+
+    highlightWord(start, finish, word, element);
+
+    // Move to the next word
+    currentWordIndex++;
+
+    // Check if there are more words to highlight
+    if (currentWordIndex < totalWords) {
+        // Setup another timeout for the next word
+        highlightTimeoutID = setTimeout(function () {
+            toRepeat(wordData);
+        }, delay);
+    } else {
+        // All words have been highlighted
+        console.log("Finished highlighting");
+        setTimeout(function () {
+            clearHighlights();
+        }, 1000);
+    }
+}
+
+function startHighlighting(wordData) {
+    console.log("Starting the highlighting !!")
+    isPaused = false;
+    totalWords = wordData.length;
+    currentWordIndex = 0;
+    let startDelay = wordData[currentWordIndex]["time"];
+    console.log("The start delay: " + startDelay);
+
+    // highlightTimeout = setTimeout(toRepeat(wordData), startDelay);
+
+    // Start highlighting the first word
+    var highlightTimeoutID = setTimeout(function () {
+        toRepeat(wordData);
+    }, startDelay);
+    
 }
 
 function clearHighlights() {
@@ -191,82 +143,6 @@ function clearHighlights() {
         markElement.parentNode.replaceChild(document.createTextNode(markElement.textContent), markElement);
     }    
 }
-
-
-// function setTimers() {
-//     // Assuming you have the JSON data in a variable called speechData
-    
-
-//     // Check if the speechData array is not empty
-//     if (speechData.length > 0) {
-//         // Iterate through each object in the array
-//         speechData.forEach(function(smjson) {
-//             let t = smjson["time"];
-//             let s = smjson["start"];
-//             let f = smjson["end"];
-//             let word = smjson["value"];
-
-//             // Set a timer to highlight the word
-//             setTimeout(function() {
-//                 highlighter(s, f, word);
-//             }, t);
-//         });
-//     } else {
-//         console.error("Speech data array is empty.");
-//     }
-// }
-
-// Call setTimers function to initiate the highlighting
-// setTimers();
-
-
-
-
-
-// function getSpeechMarkAtTime(speechMarks, time) {
-//     const length = speechMarks.length
-//     let match = speechMarks[0]
-//     let found = false
-//     let i = 1
-  
-//     while (i < length && !found) {
-//       if (speechMarks[i].time <= time) {
-//         match = speechMarks[i]
-//       } else {
-//         found = true
-//       }
-  
-//       i++
-//     }
-  
-//     return match
-//   }
-  
-//   function onTimeUpdate(speechMark) {
-//     /**
-//      * Update your HTML and CSS based on the attributes
-//      * of the speech mark at the audio's current time.
-//      */
-//   }
-  
-//   audio.addEventListener('timeupdate', () => {
-//     // Polly Speech Marks use milliseconds
-//     const currentTime = audio.currentTime * 1000
-//     const speechMark = getSpeechMarkAtTime(speechMarksJSONResult, currentTime)
-  
-//     // Some custom callback
-//     onTimeUpdate(speechMark)
-//   })
-
-
-
-
-
-
-
-
-
-
 
 function stopPropagation(event) {
     event.stopPropagation();
@@ -322,7 +198,16 @@ function playAudio(thePage) {
     
 
             audio.play();
-            setWordTimers();
+
+
+            avatarSpeechData = speechData[page][avatar];
+
+            // if word highlighting is enabled
+            const wordDataExample = avatarSpeechData.filter(entry => entry.type === "word");
+            // const totalStps = wordData.length;
+            // setWordTimers(wordData);
+            startHighlighting(wordDataExample);
+
 
             // word = "it";
             // s = "Find it out it out now please";

@@ -8,6 +8,11 @@ html {
     font-size: 1rem;
 }
 
+/* mark {
+    color: white !important;
+    background-color: black !important;
+} */
+
 header,
 footer {
     z-index: 9999999999 !important;
