@@ -71,10 +71,7 @@ function highlightWord(start, finish, word, element) {
 
 }
 
-function clearHighlights() {
-    // Simulate clearing highlights (replace this with your actual clearing logic)
-    console.log("Clearing highlights");
-}
+
 
 function toRepeat() {
     // Check for pause
@@ -101,8 +98,7 @@ function toRepeat() {
     let element = wordData[currentWordIndex]["element"];
     let word = wordData[currentWordIndex]["value"];
 
-    console.log("*word: " + word + " *delay: " + delay + " *currentIndex: " + currentWordIndex);
-
+    console.log("*********word: " + word + " *delay: " + delay + " *currentIndex: " + currentWordIndex + " *avatar " + avatar + " *element: " + element + " *start: " + start + " *finish: " + finish);
 
     highlightWord(start, finish, word, element);
 
@@ -125,13 +121,9 @@ function toRepeat() {
 }
 
 function startHighlighting() {
+    console.log("In starting the highlight")
     avatarSpeechData = speechData[page][avatar];
     wordData= avatarSpeechData.filter(entry => entry.type === "word");
-
-    console.log("Starting the highlighting !!")
-    console.log("The avatar is " + avatar);
-    console.log("the word data is: " + JSON.stringify(wordData));
-
     isPaused = false;
     totalWords = wordData.length;
     currentWordIndex = 0;
@@ -144,10 +136,18 @@ function startHighlighting() {
     highlightTimeoutID = setTimeout(function () {
         toRepeat();
     }, startDelay);
+
+    // highlightTimeoutID = setTimeout(function () {
+    //     toRepeat();
+    // }, startDelay);
     
 }
 
 function clearHighlights() {
+    console.log("In clear highlight")
+
+    clearTimeout(highlightTimeoutID); // Clear any existing timeouts
+
     let markElements = document.getElementsByTagName('mark');
 
     // Loop through all the 'mark' elements and remove them
@@ -158,6 +158,8 @@ function clearHighlights() {
 }
 
 function pauseHighlight() {
+    console.log("In pause highlight");
+
     isPaused = true;
     console.log("Value of flag in pauseHighlight()  " + isPaused + " currentWordIndex " + currentWordIndex);
     // pausedIndex = currentWordIndex;
@@ -170,6 +172,8 @@ function pauseHighlight() {
 }
 
 function resumeHighlight() {
+    console.log("In resume the highlight")
+
     // Check if the highlighting is paused
     
     if (isPaused) {
@@ -216,7 +220,9 @@ function muteNarration() {
 }
 
 function playAudio(thePage) { 
-    console.log("mute is: " + mute);
+    console.log("In play audio")
+
+    // console.log("mute is: " + mute);
     // document.getElementById('narration-audio').play();
     var audio = document.getElementById('narration-audio');
     audio.src = `https://dart-store.s3.amazonaws.com/identity-narration/${section}/${thePage}_${avatar}.mp3`;
@@ -236,34 +242,13 @@ function playAudio(thePage) {
             buttonIcon.classList.remove('play', 'pause');
             buttonIcon.classList.add('pause');
             buttonText.innerText = 'Pause';
-    
 
             audio.play();
-
-
-            // avatarSpeechData = speechData[page][avatar];
-
-            // if word highlighting is enabled
-            // const wordDataExample = avatarSpeechData.filter(entry => entry.type === "word");
-            // const totalStps = wordData.length;
-            // setWordTimers(wordData);
-            startHighlighting();
-
-
-            // word = "it";
-            // s = "Find it out it out now please";
-            // let temp = s.substring(0, 12) + "*" + word + "*" + s.substring(14);
-            // console.log("result is: " + temp)
-
-            // result: Find it out *it* out now please
-    
-
         } else {
             console.log("in here:")
             $('#page-article').click();
 
             audio.play();
-            console.warn("Hi beyonce")
             // console.warn('User has not interacted with the webpage yet. Cannot autoplay audio.');
         }
 
@@ -295,7 +280,7 @@ function replayAudio() {
 
 function restartHighlighting() {
     clearHighlights(); // Clear existing highlights
-    clearTimeout(highlightTimeoutID); // Clear any existing timeouts
+    // clearTimeout(highlightTimeoutID); // Clear any existing timeouts
 
     // Start highlighting from the beginning
     startHighlighting();
@@ -359,11 +344,23 @@ function updateAvatar(avatarName) {
       if (response.ok) {
         console.log('Avatar updated successfully');
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const pageParam = urlParams.get('page');
-        restartHighlighting();
-        playAudio(pageParam);
-        // Handle success
+        // const urlParams = new URLSearchParams(window.location.search);
+        // const pageParam = urlParams.get('page');
+        console.log("Avatar change the page is: " + page);
+        clearHighlights();
+        playAudio(page);
+        startHighlighting();
+        // audio.play();
+
+
+        // avatarSpeechData = speechData[page][avatar];
+
+        // if word highlighting is enabled
+        // const wordDataExample = avatarSpeechData.filter(entry => entry.type === "word");
+        // const totalStps = wordData.length;
+        // setWordTimers(wordData);
+
+        
       } else {
         console.error('Failed to update avatar');
         // Handle errors
@@ -433,6 +430,7 @@ $(document).ready(function() {
     setLinks(startPage);
     updateProgressBar();
     playAudio(page);
+    startHighlighting();
 
     $('#backButton').on('click', function() {
         // console.log("Back button clicked");
