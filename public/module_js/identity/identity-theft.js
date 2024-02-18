@@ -4,6 +4,12 @@ let badgeEarned = false;
 let mute = false;
 let voiceSpeed = 1;
 var userInteracted = false;
+let avatarSpeechData = null;
+let wordData = null;
+// let resumeDelay = 0;
+// let pauseCooldown = false; // New variable to track cooldown
+// let cooldownDuration = 1000; // Set the cooldown duration in milliseconds
+// let enablePlayPause = true; 
 // let isPaused = false;
 // var curStp = 0;
 // var timeout = null;
@@ -11,10 +17,11 @@ var userInteracted = false;
 // const delay = 300;
 
 let isPaused = false; // Flag to check if highlighting should be paused
+let pausedIndex = 0;
 // const delay = 300;
 let totalWords; // Total number of words to highlight
 let currentWordIndex = 0; // Current index of the word being highlighted
-// let highlightTimeout = null; // Timeout reference for highlighting
+let highlightTimeout = null; // Timeout reference for highlighting
 
 
 document.addEventListener('click', function clickHandler() {
@@ -69,10 +76,10 @@ function clearHighlights() {
     console.log("Clearing highlights");
 }
 
-function toRepeat(wordData) {
+function toRepeat() {
     // Check for pause
     if (isPaused) {
-        console.log("Pausing highlighting");
+        console.log("Breaking the loop.");
         return;
     }
 
@@ -106,7 +113,7 @@ function toRepeat(wordData) {
     if (currentWordIndex < totalWords) {
         // Setup another timeout for the next word
         highlightTimeoutID = setTimeout(function () {
-            toRepeat(wordData);
+            toRepeat();
         }, delay);
     } else {
         // All words have been highlighted
@@ -117,8 +124,14 @@ function toRepeat(wordData) {
     }
 }
 
-function startHighlighting(wordData) {
+function startHighlighting() {
+    avatarSpeechData = speechData[page][avatar];
+    wordData= avatarSpeechData.filter(entry => entry.type === "word");
+
     console.log("Starting the highlighting !!")
+    console.log("The avatar is " + avatar);
+    console.log("the word data is: " + JSON.stringify(wordData));
+
     isPaused = false;
     totalWords = wordData.length;
     currentWordIndex = 0;
@@ -128,8 +141,8 @@ function startHighlighting(wordData) {
     // highlightTimeout = setTimeout(toRepeat(wordData), startDelay);
 
     // Start highlighting the first word
-    var highlightTimeoutID = setTimeout(function () {
-        toRepeat(wordData);
+    highlightTimeoutID = setTimeout(function () {
+        toRepeat();
     }, startDelay);
     
 }
@@ -143,6 +156,34 @@ function clearHighlights() {
         markElement.parentNode.replaceChild(document.createTextNode(markElement.textContent), markElement);
     }    
 }
+
+function pauseHighlight() {
+    isPaused = true;
+    console.log("Value of flag in pauseHighlight()  " + isPaused + " currentWordIndex " + currentWordIndex);
+    // pausedIndex = currentWordIndex;
+    // currentWordIndex = pausedIndex;
+    console.log("paused at: " + currentWordIndex)
+
+    // if(highlightTimeoutID) {
+    //     clearTimeout(highlightTimeoutID);
+    // }
+}
+
+function resumeHighlight() {
+    // Check if the highlighting is paused
+    
+    if (isPaused) {
+        console.log("Resuming the highlighting !!");
+
+        // Resume the highlighting loop from the paused index
+        isPaused = false;
+
+        // Call toRepeat to continue highlighting
+        toRepeat();
+    } else {
+        console.log("Highlighting is not paused. No action taken.");
+    }
+}  
 
 function stopPropagation(event) {
     event.stopPropagation();
@@ -200,13 +241,13 @@ function playAudio(thePage) {
             audio.play();
 
 
-            avatarSpeechData = speechData[page][avatar];
+            // avatarSpeechData = speechData[page][avatar];
 
             // if word highlighting is enabled
-            const wordDataExample = avatarSpeechData.filter(entry => entry.type === "word");
+            // const wordDataExample = avatarSpeechData.filter(entry => entry.type === "word");
             // const totalStps = wordData.length;
             // setWordTimers(wordData);
-            startHighlighting(wordDataExample);
+            startHighlighting();
 
 
             // word = "it";
@@ -245,7 +286,19 @@ function replayAudio() {
 
         $('#volume-icon').removeClass('off');
         $('#volume-icon').addClass('up');  
+
+        restartHighlighting();
+        // clearHighlights();
+        // startHighlighting();
     }
+}
+
+function restartHighlighting() {
+    clearHighlights(); // Clear existing highlights
+    clearTimeout(highlightTimeoutID); // Clear any existing timeouts
+
+    // Start highlighting from the beginning
+    startHighlighting();
 }
 
 function togglePlayPause() {
@@ -253,9 +306,8 @@ function togglePlayPause() {
     var buttonIcon = document.querySelector('#play-pause-audio i.icon');
     var buttonText = document.querySelector('#play-pause-audio span.toggle-text');
     var volumeIcon = document.querySelector('#volume-icon');
-
     if (audio.paused) {
-        isPaused = false;
+        resumeHighlight();
         audio.play();
         // Change icon and text to "Pause" when playing
         volumeIcon.classList.remove('off');
@@ -264,7 +316,7 @@ function togglePlayPause() {
         buttonIcon.classList.add('pause');
         buttonText.textContent = 'Pause';
     } else {
-        isPaused = true;
+        pauseHighlight();
         audio.pause();
         volumeIcon.classList.remove('up');
         volumeIcon.classList.add('off');
@@ -273,6 +325,7 @@ function togglePlayPause() {
         buttonIcon.classList.add('play');
         buttonText.textContent = 'Play';
     }
+    
 }
 
 function updateAvatar(avatarName) {
@@ -308,6 +361,7 @@ function updateAvatar(avatarName) {
 
         const urlParams = new URLSearchParams(window.location.search);
         const pageParam = urlParams.get('page');
+        restartHighlighting();
         playAudio(pageParam);
         // Handle success
       } else {
@@ -340,6 +394,11 @@ function changeSpeed(speedValue) {
 
 $(document).ready(function() {
     $('#page-article').click();
+
+    // for highlighting
+    // avatarSpeechData = speechData[page][avatar];
+    // wordData= avatarSpeechData.filter(entry => entry.type === "word");
+
 
     // console.log("Speech data: " + speechData);
     // console.log(JSON.stringify(speechData))
