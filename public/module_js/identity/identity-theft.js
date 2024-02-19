@@ -80,19 +80,25 @@ function toRepeat() {
         return;
     }
 
-    // Highlight the current word
-    // let delay;
-    // if(currentWordIndex === 0) {
-    //     delay = wordData[currentWordIndex + 1]["time"];
-    // } else {
-    //     delay = wordData[currentWordIndex + 1]["time"] - wordData[currentWordIndex - 1]["time"];
-    // }
     let delay;
     if(currentWordIndex === totalWords - 1) {
         delay = wordData[currentWordIndex]["time"] - wordData[currentWordIndex - 1]["time"];
+        if (voiceSpeed > 1) {
+            delay /= voiceSpeed;
+        } else {
+            delay *= (1 / voiceSpeed);
+        }
+        console.log("The delay: " + delay + " and the voice speed: " + voiceSpeed);
     } else {
         delay = wordData[currentWordIndex + 1]["time"] - wordData[currentWordIndex]["time"];
+        if (voiceSpeed > 1) {
+            delay /= voiceSpeed;
+        } else {
+            delay *= (1 / voiceSpeed);
+        }
+        console.log("The delay: " + delay + " and the voice speed: " + voiceSpeed);
     }
+
     let start = wordData[currentWordIndex]["start"];
     let finish = wordData[currentWordIndex]["end"];
     let element = wordData[currentWordIndex]["element"];
@@ -118,6 +124,7 @@ function toRepeat() {
             clearHighlights();
         }, 1000);
     }
+    
 }
 
 function startHighlighting() {
@@ -128,7 +135,14 @@ function startHighlighting() {
     totalWords = wordData.length;
     currentWordIndex = 0;
     let startDelay = wordData[currentWordIndex]["time"];
-    console.log("The start delay: " + startDelay);
+
+    if (voiceSpeed > 1) {
+        startDelay /= voiceSpeed;
+    } else {
+        startDelay *= (1 / voiceSpeed);
+    }
+
+    // console.log("The start delay: " + startDelay);
 
     // highlightTimeout = setTimeout(toRepeat(wordData), startDelay);
 
