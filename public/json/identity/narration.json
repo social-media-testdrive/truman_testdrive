@@ -2,9 +2,9 @@
   "challenge": {
     "intro": {
       "daring": [
-        {"time":0,"type":"sentence","start":0,"end":41,"value":"Let's begin the identity theft challenge.", "element":"narrate-section"},
+        {"time":0,"type":"sentence","start":0,"end":41,"value":"Challenge", "element":"narrate-section"},
         {"time":1500,"type":"word","start":0,"end":8,"value":"challenge", "element":"narrate-section"},
-        {"time":2680,"type":"sentence","start":0,"end":42,"value":"It will take around 5 minutes to complete.", "element":"narrate-time"},
+        {"time":2680,"type":"sentence","start":0,"end":42,"value":"5 min", "element":"narrate-time"},
         {"time":3580,"type":"word","start":0,"end":5,"value":"5 min", "element":"narrate-time"},
         {"time":4980,"type":"word","start":0,"end":0,"value":"<break time=\"1000ms\"/>", "element":"narrate-time"},
         {"time":6360,"type":"sentence","start":0,"end":46,"value":"Find out your Identity Theft Resilience Score!", "element":"narrate-1"},
@@ -29,7 +29,7 @@
         {"time":13757,"type":"sentence","start":55,"end":65,"value":"Your task?", "element":"narrate-2"},
         {"time":13782,"type":"word","start":55,"end":59,"value":"Your", "element":"narrate-2"},
         {"time":13920,"type":"word","start":60,"end":64,"value":"task", "element":"narrate-2"},
-        {"time":14912,"type":"sentence","start":65,"end":120,"value":"Differentiate between what’s genuine and what's a scam.", "element":"narrate-2"},
+        {"time":14912,"type":"sentence","start":65,"end":120,"value":" Differentiate between what’s genuine and what's a scam", "element":"narrate-2"},
         {"time":14937,"type":"word","start":66,"end":79,"value":"Differentiate", "element":"narrate-2"},
         {"time":15687,"type":"word","start":80,"end":87,"value":"between", "element":"narrate-2"},
         {"time":16087,"type":"word","start":88,"end":94,"value":"what’s", "element":"narrate-2"},
@@ -52,7 +52,7 @@
         {"time":20542,"type":"word","start":57,"end":62,"value":"first", "element":"narrate-3"},
         {"time":20905,"type":"word","start":63,"end":68,"value":"badge", "element":"narrate-3"},
         {"time":21492,"type":"word","start":0,"end":0,"value":"<break time=\"500ms\"\/>", "element":"narrate-3"},
-        {"time":22372,"type":"sentence","start":0,"end":53,"value":"Click the 'Next' button below to start the challenge.", "element":"narrate-4"},
+        {"time":22372,"type":"sentence", "delay":2825, "start":0,"end":53,"value":"Click the 'Next' button below to start the challenge.", "element":"narrate-4"},
         {"time":22397,"type":"word","start":0,"end":5,"value":"Click", "element":"narrate-4"},
         {"time":22635,"type":"word","start":6,"end":9,"value":"the", "element":"narrate-4"},
         {"time":22722,"type":"word","start":10,"end":16,"value":"'Next'", "element":"narrate-4"},

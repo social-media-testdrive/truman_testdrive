@@ -21,8 +21,12 @@ let pausedIndex = 0;
 // const delay = 300;
 let totalWords; // Total number of words to highlight
 let currentWordIndex = 0; // Current index of the word being highlighted
-let highlightTimeout = null; // Timeout reference for highlighting
+let highlightTimeoutID = null; // Timeout reference for word highlighting
+let highlightTimeoutSentenceID = null; // Timeout reference for sentence highlighting
 
+// Flag to check if word highlighting is enabled
+let wordHighlighting = false; 
+let sentenceHighlighting = true;
 
 document.addEventListener('click', function clickHandler() {
     console.log("User interacted with the page")
@@ -118,11 +122,21 @@ function toRepeat() {
             toRepeat();
         }, delay);
     } else {
+        let lastDelay;
+
+        if(wordHighlighting) {
+            lastDelay = 1000;
+        } else {
+            lastDelay = wordData[currentWordIndex - 1]["delay"];
+        }
+
+        console.log("the last delay is: " + lastDelay);
+
         // All words have been highlighted
         console.log("Finished highlighting");
         setTimeout(function () {
             clearHighlights();
-        }, 1000);
+        }, lastDelay);
     }
     
 }
@@ -130,7 +144,13 @@ function toRepeat() {
 function startHighlighting() {
     console.log("In starting the highlight")
     avatarSpeechData = speechData[page][avatar];
-    wordData= avatarSpeechData.filter(entry => entry.type === "word");
+
+    if(wordHighlighting) {
+        wordData= avatarSpeechData.filter(entry => entry.type === "word");
+    } else if(sentenceHighlighting) {
+        wordData= avatarSpeechData.filter(entry => entry.type === "sentence");
+    }
+
     isPaused = false;
     totalWords = wordData.length;
     currentWordIndex = 0;
@@ -444,7 +464,9 @@ $(document).ready(function() {
     setLinks(startPage);
     updateProgressBar();
     playAudio(page);
-    startHighlighting();
+    if(wordHighlighting || sentenceHighlighting) {
+        startHighlighting();
+    }
 
     $('#backButton').on('click', function() {
         // console.log("Back button clicked");
