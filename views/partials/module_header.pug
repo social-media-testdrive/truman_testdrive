@@ -63,11 +63,14 @@ header(style="z-index: 1000 !important;")
                             input(type="checkbox")
                             label
                         //- Toggle Narration
-                        .ui.basic.label(style="border: none; font-size: 1rem;  padding-left: 5px;") Highlight Text
-                        .ui.toggle.checkbox.item#highlight-narration(onclick="stopPropagation(event)")
-                            input(type="checkbox")
+                        .ui.basic.label(style="border: none; font-size: 1rem;  padding-left: 5px;") Highlight Words
+                        .ui.toggle.checkbox.item#highlight-words(onclick="stopPropagation(event); toggleHighlighting();")
+                            input(type="checkbox" checked)
                             label
-
+                        .ui.basic.label(style="border: none; font-size: 1rem;  padding-left: 5px;") Highlight Sentences
+                        .ui.toggle.checkbox.item#highlight-sentences(onclick="stopPropagation(event); toggleHighlighting();")
+                            input(type="checkbox" checked)
+                            label
 
                         //- .ui.labeled.ticked.slider.item#speed-control(style="font-size: 0.05rem;")
                         //-     //- input(type="range" min="0.5" max="2" step="0.1" value="1" oninput="changeSpeed(this.value)" onclick="stopPropagation(event)")

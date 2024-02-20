@@ -18,6 +18,10 @@ let selectedElement = null;
 let wordHighlighting = true; 
 let sentenceHighlighting = false;
 
+let contrastWords = false;
+// when 
+let hiddenHighlight = false;
+
 document.addEventListener('click', function clickHandler() {
     console.log("User interacted with the page")
     userInteracted = true;
@@ -27,8 +31,86 @@ document.addEventListener('click', function clickHandler() {
 });
 
 let previousElement = "none";
+let started = false; 
+// *later set to DB values for curent user highlighting preferences
+let wordChecked = true;
+let sentenceChecked = true;
+
+function toggleHighlighting() {
+
+    // save previous values so can see if going from: on to off to clear the highlights
+    let priorWordChecked = wordChecked;
+    let priorSentenceChecked = sentenceChecked;
+    console.log("77777 IN TOGGLE HIGHLIGHTING 77777");
+    wordChecked = document.querySelector('.ui.toggle.checkbox.item#highlight-words input[type="checkbox"]').checked;
+    sentenceChecked = document.querySelector('.ui.toggle.checkbox.item#highlight-sentences input[type="checkbox"]').checked;
+
+    // if it went from on to off, clear the highlights
+    // if(started && (priorWordChecked && !wordChecked)) {
+    //     clearToggleVisual("words");
+    // }
+    // if(started && (priorSentenceChecked && !sentenceChecked)) {
+    //     // clear dark words
+    //     clearToggleVisual("words");
+    //     clearToggleVisual("sentences");
+    // }
+
+    // clear both visuals if anything changed (except case where sentence is on and then word goes changes)
+    if(started && (priorWordChecked !== wordChecked || priorSentenceChecked !== sentenceChecked)) {
+        clearToggleVisual("words");
+        clearToggleVisual("sentences");
+    }
+
+    // if both turned off, turn on hidden highlight
+    // if(!wordChecked && !sentenceChecked) {
+    //     hiddenHighlight = true;
+    // }
+
+    // if word goes from on to off, change highlights to transparent
+    // if(started && (priorWordChecked && !wordChecked)) {
+    //     clearWordHighlights();
+    // }
+    // if both were 
+
+    if(wordChecked && sentenceChecked) {
+        wordHighlighting = true;
+        sentenceHighlighting = true;
+
+        contrastWords = true;
+        hiddenHighlight = false;
+    } else if(wordChecked) {
+        wordHighlighting = true;
+        sentenceHighlighting = false;
+
+        contrastWords = false;
+        hiddenHighlight = false;
+    } else if(sentenceChecked) {
+        wordHighlighting = false;
+        sentenceHighlighting = true;
+
+        contrastWords = false;
+        hiddenHighlight = false;
+    } else if(!wordChecked && !sentenceChecked) {
+        wordHighlighting = false;
+        sentenceHighlighting = false;
+
+        contrastWords = false;
+        hiddenHighlight = true;
+    }
+
+    started = true;
+}
 
 function highlightWord(start, finish, word, element) {
+    let wordClass = "highlighted-word";
+    if(contrastWords) {
+        wordClass += "-dark";
+    } 
+    if(hiddenHighlight) {
+        wordClass += "-hide";
+    }
+
+    let sentenceClass = "highlighted-sentence";
 
     // Clear all previous highlights if the element has changed
     if (element !== previousElement) {
@@ -37,31 +119,35 @@ function highlightWord(start, finish, word, element) {
 
     if(element === "narrate-section" && (word === "challenge" || word === "concepts" || word === "consequences" || word === "techniques" || word === "protection" || word === "reporting" || word === "practice" || word === "evaluation")) {
         let temp = document.getElementById("narrate-section");
-        temp.classList.add('highlighted-sentence');
+        temp.classList.add(sentenceClass);
     } else if(element === "narrate-time") {
         let temp = document.getElementById("narrate-time");
-        temp.classList.add('highlighted-sentence');
+        temp.classList.add(sentenceClass);
     } else if(element === "narrate-header") {
         let temp = document.getElementById("narrate-header");
-        temp.classList.add('highlighted-sentence');
+        temp.classList.add(sentenceClass);
     } else {
         let temp = document.getElementById(element);
         selectedElement = temp.getElementsByTagName('span')[0];
 
-        selectedElement.classList.add('highlighted-sentence');
 
-        // console.log("%%% temp is: " + selectedElement);
+        if(sentenceHighlighting) {
+            selectedElement.classList.add(sentenceClass);
+        }
 
+
+        // always marking when audio is playing, just marks are transparent if wording highlighting is off, yellow if only word highlighting, white on dark bg if both sentence and word are on
         // remove previous mark tags before adding new ones
-        selectedElement.innerHTML = selectedElement.innerHTML.replace(/<mark class="highlighted-word">|<\/mark>/g, "");
+        selectedElement.innerHTML = selectedElement.innerHTML.replace(new RegExp(`<mark class="${wordClass}">|<\/mark>`, 'g'), "");
         s = selectedElement.innerHTML;
-
-        selectedElement.innerHTML = s.substring(0, start) + "<mark class='highlighted-word'>" + word + "</mark>" + s.substring(finish);
+        // Add the mark tags to highlight the word
+        selectedElement.innerHTML = s.substring(0, start) + `<mark class="${wordClass}">${word}</mark>` + s.substring(finish);
     } 
 
 }
 
 function toRepeatWords() {
+    console.log("Word highlighting is " +  wordHighlighting + " and sentence highlighting is " + sentenceHighlighting)
     // Check for pause
     if (isPaused) {
         console.log("Breaking the loop.");
@@ -129,9 +215,11 @@ function startHighlightingWords() {
     console.log("In starting the highlight")
     avatarSpeechData = speechData[page][avatar];
 
-    if(wordHighlighting) {
-        wordData= avatarSpeechData.filter(entry => entry.type === "word");
-    } 
+    wordData= avatarSpeechData.filter(entry => entry.type === "word");
+
+    // if(wordHighlighting) {
+    //     wordData= avatarSpeechData.filter(entry => entry.type === "word");
+    // } 
 
     isPaused = false;
     totalWords = wordData.length;
@@ -173,7 +261,14 @@ function clearWordHighlights() {
         selectedElement.classList.remove('highlighted-sentence');
     }
 
-    let markElements = $('mark.highlighted-word');
+    let markElements = null;
+    if(contrastWords) {
+        markElements = $('mark.highlighted-word-dark');
+    } else if(hiddenHighlight) {
+        markElements = $('mark.highlighted-word-hide');
+    }  else {
+        markElements = $('mark.highlighted-word');
+    }
 
     // Loop through all the 'mark' elements and remove them
     if(markElements.length > 0) {
@@ -184,6 +279,37 @@ function clearWordHighlights() {
     }
 }
 
+function clearToggleVisual(whichHighlighting) {
+    console.log("*In clear toggle visual for: " + whichHighlighting);
+
+    if(page === 'intro') {
+        document.getElementById('narrate-section').classList.remove('highlighted-sentence');
+        document.getElementById('narrate-time').classList.remove('highlighted-sentence');
+    }
+
+    if(whichHighlighting === "words") {
+        let markElements = null;
+        if(contrastWords) {
+            markElements = $('mark.highlighted-word-dark');
+        } else if(hiddenHighlight) {
+            markElements = $('mark.highlighted-word-hide');
+        } else {
+            markElements = $('mark.highlighted-word');
+        }
+    
+        // Loop through all the 'mark' elements and remove them
+        if(markElements.length > 0) {
+            for (let i = markElements.length - 1; i >= 0; i--) {
+                let markElement = markElements[i];
+                markElement.parentNode.replaceChild(document.createTextNode(markElement.textContent), markElement);
+            }    
+        }
+    } else if(whichHighlighting === "sentences") {
+        if(selectedElement !== null) {
+            selectedElement.classList.remove('highlighted-sentence');
+        }
+    }
+}
 function pauseHighlight() {
     console.log("In pause highlight");
 
@@ -202,11 +328,11 @@ function resumeHighlight() {
 
         // Resume the highlighting loop from the paused index
         isPaused = false;
-
+        toRepeatWords();
         // Call toRepeat to continue highlighting
-        if(wordHighlighting || sentenceHighlighting) {
-            toRepeatWords();
-        }
+        // if(wordHighlighting || sentenceHighlighting) {
+        //     toRepeatWords();
+        // }
     } else {
         console.log("Highlighting is not paused. No action taken.");
     }
@@ -295,9 +421,11 @@ function replayAudio() {
         $('#volume-icon').removeClass('off');
         $('#volume-icon').addClass('up');  
 
-        if(wordHighlighting || sentenceHighlighting) {
-            restartWordHighlighting();
-        }
+        restartWordHighlighting();
+
+        // if(wordHighlighting || sentenceHighlighting) {
+        //     restartWordHighlighting();
+        // }
 
     }
 }
@@ -448,12 +576,16 @@ $(document).ready(function() {
   ;
 
 ;
+    // later make so check from db whether to play audio / highlight 
     setLinks(startPage);
     updateProgressBar();
     playAudio(page);
-    if(wordHighlighting || sentenceHighlighting) {
-        startHighlightingWords();
-    }
+    toggleHighlighting();
+    startHighlightingWords();
+    // if(wordHighlighting || sentenceHighlighting) {
+    //     startHighlightingWords();
+    // }
+    
 
     $('#backButton').on('click', function() {
         // console.log("Back button clicked");

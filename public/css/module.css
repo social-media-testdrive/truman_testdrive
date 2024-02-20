@@ -43,8 +43,19 @@ span.highlighted-sentence {
   } */
   
 .highlighted-word {
-    background-color: #0C2746 !important;
-    color: white !important;
+    background-color: #FBF719;
+    color: black;
+}
+
+.highlighted-word-hide {
+    background-color: transparent;
+    color: black;
+}
+
+
+.highlighted-word-dark {
+    background-color: #0C2746;
+    color: white;
 }
 
 header,
