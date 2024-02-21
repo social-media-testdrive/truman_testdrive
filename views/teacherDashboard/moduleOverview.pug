@@ -3,7 +3,6 @@ extends ../ui_layout
 block content
   .sixteen.wide.column.dashboardContentColumn.hiddenVisibility(style="padding:30px")
     include ../partials/teacherDashboardMenu
-
     .row.addMargin
       .sixteen.wide.column.dropdownColumn
         h2 Select a Class and a Module:
@@ -37,6 +36,7 @@ block content
           .ui.labeled.icon.button.refreshModSelectionButton
             i.check.icon
             | Show Overview   
+            
     .ui.basic.segment.hiddenVisibility#studentProgressSegment   
       .row.centerText
         h1
@@ -52,7 +52,6 @@ block content
               .ui.basic.segment
                 canvas#studentProgress(width="400" height="400")
             .column#studentProgressText
-      
       .row.addMargin
         table.ui.fixed.celled.table#progressTable
           thead
@@ -62,6 +61,7 @@ block content
               th Started but not completed
               th Have not started
           tbody#fillProgressTableBody
+
     .ui.basic.segment.hiddenVisibility#timeSpentSegment
       .row.centerText
         h1
@@ -105,29 +105,19 @@ block content
         .ui.inverted.dimmer.loadingDimmer
           .ui.text.loader Loading
         .row.addMargin.centerText#reflectionHeading
-
         .row.addMargin#groupedCheckboxResponses
-          
         .row.addMargin#checkboxResponses
-          
-        .row.addMargin#openEndedResponses 
-        
+        .row.addMargin#radioResponses
+        .row.addMargin#openEndedResponses
         .ui.labeled.icon.big.button.testDriveBlueButton.downloadReflectionData
           i.download.icon
           | Download Class Responses
 
-        br
-        br
-            
-
-
-block scripts
-  
+block scripts  
   script(src=cdn+'/js/lib/Chart.js') 
   script(src='/user_portal/teacherDashboardTools.js')
   script(src='/user_portal/moduleOverview.js')
 
-  
 block styles
   link(rel='stylesheet', href='/css/teacherDashboard/sideMenu.css')
   link(rel='stylesheet', href='/css/teacherDashboard/classOverview.css')

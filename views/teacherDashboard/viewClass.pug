@@ -3,7 +3,6 @@ extends ../ui_layout
 block content
   .sixteen.wide.column.dashboardContentColumn.hiddenVisibility(style="padding:30px")
     include ../partials/teacherDashboardMenu
-
     .ui.breadcrumb
       a.section(href='/classManagement') Class Management
       i.class.right.arrow.icon.divider
@@ -69,7 +68,9 @@ block content
       i.close.icon
       .header Confirm Delete
       .content.centered
-        h2.center.aligned#confirmDeleteAccountText
+        h2.center.aligned Are you sure you want to delete 
+          span.lightblueText#confirmDeleteAccountText
+          | ?
         h3.center.aligned This action cannot be undone.
         form#deleteAccount.ui.form(name="removeStudentFromClass" action='/removeStudentFromClass', method='POST')
           input(type='hidden', name='_csrf', value=_csrf)
@@ -88,7 +89,8 @@ block content
       i.close.icon
       .header Set Name
       .content.centered
-        h2.center.aligned#setNameText
+        h3.center.aligned Assign a name to: 
+          span.lightblueText#setNameText
         form#setName.ui.form(name="setName" action='/updateName', method='POST')
           input(type='hidden', name='_csrf', value=_csrf)
           input(type='hidden', name='accessCode' value=found_class.accessCode)
@@ -108,7 +110,6 @@ block scripts
   script(src='/user_portal/teacherDashboardTools.js')
   script(src='/user_portal/viewClass.js')
   
-  
 block styles
   link(rel='stylesheet', href='/css/teacherDashboard/sideMenu.css')
   style(type='text/css').
@@ -116,4 +117,6 @@ block styles
       display: inline-block;
       padding-left: 15px;
     }
-    
+    .lightblueText {
+      color: #14a1f6;
+    }

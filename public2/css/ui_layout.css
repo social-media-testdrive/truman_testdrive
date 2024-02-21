@@ -378,6 +378,7 @@ textarea.newcomment {
 .extra.content>.ui.fluid.left.labeled.right.icon.input>.ui.label>img {
     margin: 0;
     width: 3em!important;
+    height: 3em!important;
 }
 
 .extra.content>.ui.fluid.left.labeled.right.icon.input>i.big.send.link.icon {

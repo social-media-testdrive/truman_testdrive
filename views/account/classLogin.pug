@@ -1,21 +1,18 @@
 extends ../ui_layout
 
 block content
-  .ui.sixteen.wide.row
-    .ui.sixteen.wide.column
-      h2 Welcome to the Research Version of Social Media TestDrive!
-  .ui.sixteen.wide.row
-    .eight.wide.column
-      h2.ui.header Login As Student
+  .ui.sixteen.wide.column
+    h2.loginPageTitle Welcome to the Research Version of Social Media TestDrive!
+  .ui.eight.wide.column.left.floated
+    .ui.card.fluid(style="padding: 20px;")
+      h2.ui.header Log In as Student
       form.ui.form(action='/studentLogin/'+accessCode method='POST')
         input(type='hidden', name='_csrf', value=_csrf)
         input(type='hidden', name='accessCode', id='accessCode' value=accessCode)
         .field
           label(for='username' style="font-size:larger;") Username
           input(type='text', name='username', id='username', placeholder='Username', autofocus, required).field
-        button.ui.big.green.button(type='submit') Login
-      br
-      br  
+        button.ui.large.green.button(type='submit') Log In
 
 block styles
   link(rel='stylesheet', href='/css/login.css')

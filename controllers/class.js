@@ -7,7 +7,7 @@ const createCsvStringifier = require('csv-writer').createObjectCsvStringifier;
 
 /**
  * GET /classManagement
- * Render the class management page in the teacher dashboard
+ * Render the class management page in the teacher dashboard.
  */
 exports.getClasses = (req, res) => {
     if (!req.user.isInstructor) {
@@ -16,14 +16,14 @@ exports.getClasses = (req, res) => {
     Class.find({ teacher: req.user.id, deleted: false })
         .then((classes) => {
             //classes is array with all classes for this instructor
-            res.render('teacherDashboard/classManagement', { classes: classes });
+            res.render('teacherDashboard/classManagement', { classes: classes, title: 'Class Management' });
         })
         .catch((err) => done(err));
 }
 
 /**
  * GET /classSize/:classId
- * Return how many students there are in a specified class
+ * Return how many students there are in a specified class.
  */
 exports.getClassSize = (req, res, next) => {
     if (!req.user.isInstructor) {
@@ -48,7 +48,7 @@ exports.getClassSize = (req, res, next) => {
 
 /*
  * GET /viewClass/:classId
- * Render the page to view a single class owned by the current instructor
+ * Render the page to view a single class owned by the current instructor.
  */
 exports.getClass = (req, res, next) => {
     if (!req.user.isInstructor) {
@@ -72,7 +72,7 @@ exports.getClass = (req, res, next) => {
 
 /**
  * GET /classUsernames/:classId
- * Get list of usernames for all students in a class
+ * Get list of usernames for all students in a class.
  */
 exports.getClassUsernames = (req, res, next) => {
     if (!req.user.isInstructor) {
@@ -89,7 +89,7 @@ exports.getClassUsernames = (req, res, next) => {
                 const myerr = new Error('Class not found!');
                 return next(myerr);
             }
-            const usernameArray = found_class.map(student => student.username);
+            const usernameArray = found_class.students.map(student => student.username);
             res.set('Content-Type', 'application/json; charset=UTF-8');
             res.json({ classUsernames: usernameArray });
         })
@@ -98,7 +98,7 @@ exports.getClassUsernames = (req, res, next) => {
 
 /*
  * GET /classIdList
- * Get a list of all the classes (accessCodes) owned by the current instructor
+ * Get a list of all the classes (accessCodes) owned by the current instructor.
  */
 exports.getClassIdList = (req, res, next) => {
     if (!req.user.isInstructor) {
@@ -118,7 +118,7 @@ exports.getClassIdList = (req, res, next) => {
 
 /**
  * GET /moduleProgress/:classId
- * Get the module progress status for all students in a class
+ * Get the module progress status for all students in a class.
  */
 exports.getModuleProgress = (req, res, next) => {
     if (!req.user.isInstructor) {
@@ -239,7 +239,8 @@ exports.getClassFreeplayActions = (req, res, next) => {
             }
             const outputData = {};
             for (const student of found_class.students) {
-                const actionList = student.feedAction.filter(action => action.modual === req.params.modName);
+                const userPostIds = student.posts.map(post => post._id.toString());
+                const actionList = student.feedAction.filter(action => action.modual === req.params.modName && !userPostIds.includes(action.post.toString()));
                 outputData[student.username] = actionList;
             }
             res.set('Content-Type', 'application/json; charset=UTF-8');
@@ -249,8 +250,8 @@ exports.getClassFreeplayActions = (req, res, next) => {
 }
 
 /**
- * GET /classReflectionResponses/:classId
- * Get all of the reflection responses for each student in the class.
+ * GET /classReflectionResponses/:classId/:modId
+ * Get all of the reflection responses within the specified module for each student in the class.
  */
 exports.getReflectionResponses = (req, res, next) => {
     if (!req.user.isInstructor) {
@@ -271,7 +272,10 @@ exports.getReflectionResponses = (req, res, next) => {
             for (const student of found_class.students) {
                 const reflectionActions = student.reflectionAction.toObject();
                 const username = student.username;
-                outputData[username] = reflectionActions;
+                const actionList = reflectionActions.filter(attempt => attempt.modual == req.params.modId);
+                if (actionList.length != 0) {
+                    outputData[username] = actionList;
+                }
             }
             res.set('Content-Type', 'application/json; charset=UTF-8');
             res.json({ reflectionResponses: outputData });
@@ -281,7 +285,7 @@ exports.getReflectionResponses = (req, res, next) => {
 
 /**
  * POST /class/create
- * Update/Create Instructor's class
+ * Create Instructor's class.
  */
 exports.postCreateClass = async(req, res, next) => {
     if (!req.user.isInstructor) {
@@ -370,18 +374,16 @@ exports.postDeleteClass = async(req, res, next) => {
 
 /**
  * POST /removeStudentFromClass
- * Remove a student from the specified class and mark the student as "deleted" in the
- * database, but do not actually remove the account from the database.
- * The account should gerernally be treated as though it is deleted on the front
- * end - it should not appear in charts, downloadable csvs, class lists, etc. This
- * behavior was specifically requested by the researchers.
+ * Remove a student from the specified class and mark the student as "deleted" in the database, but do not actually remove the account from the database.
+ * The account should generally be treated as though it is deleted on the front end - it should not appear in charts, downloadable csvs, class lists, etc. 
+ * This behavior was specifically requested by the researchers.
  */
 exports.removeStudentFromClass = async(req, res, next) => {
     if (!req.user.isInstructor) {
         return res.redirect('/login');
     }
     try {
-        const found_class = Class.findOne({
+        const found_class = await Class.findOne({
                 accessCode: req.body.accessCode,
                 teacher: req.user.id,
                 deleted: false
@@ -404,7 +406,7 @@ exports.removeStudentFromClass = async(req, res, next) => {
         found_class.students.splice(studentIndex, 1);
         await found_class.save();
 
-        const found_student = User.findById(studentId).exec();
+        const found_student = await User.findById(studentId).exec();
         if (!found_student) {
             const myerr = new Error('Student not found!');
             return next(myerr);
@@ -549,10 +551,8 @@ exports.generateStudentAccounts = async(req, res, next) => {
 }
 
 /*
- * The following funtcions are all helper functions for creating the reflection
- * response csv.
+ * The following functions are all helper functions for creating the reflection response csv.
  */
-
 function buildHeaderArray(moduleQuestions) {
     let headerArray = [
         { id: "col1", title: "" },
@@ -583,6 +583,7 @@ function buildHeaderArray(moduleQuestions) {
                         };
                         headerArray.push(newHeaderObject);
                     }
+                    break;
                 }
             case 'checkboxGrouped':
                 {
@@ -600,6 +601,27 @@ function buildHeaderArray(moduleQuestions) {
                             headerArray.push(newHeaderObject);
                         }
                     }
+                    break;
+                }
+            case 'radio':
+                {
+                    const newHeaderObject = {
+                        id: question,
+                        title: moduleQuestions[question].prompt,
+                        type: 'radio'
+                    };
+                    headerArray.push(newHeaderObject);
+                    break;
+                }
+            case 'habitsUnique':
+                {
+                    const newHeaderObject = {
+                        id: question,
+                        title: moduleQuestions[question].prompt + " (Checked Actual Time)",
+                        type: 'habitsUnique'
+                    };
+                    headerArray.push(newHeaderObject);
+                    break;
                 }
         }
     }
@@ -643,6 +665,12 @@ function buildSubHeaderRecords(headerArray, records, moduleQuestions) {
             buildString = `(checkbox ${checkboxNumber}) ${moduleQuestions[questionNumber].checkboxLabels[label1]}`
             correctResponse = moduleQuestions[questionNumber].correctResponses[label1] === "1";
             answersRecord[id] = correctResponse ? "selected" : "not selected";
+        } else if (column.type == "radio") {
+            buildString = "(radio)";
+            answersRecord[id] = correctResponse;
+        } else if (column.type == "habitsUnique") {
+            buildString = "(open-ended) (Checked actual time: true/false)";
+            answersRecord[id] = correctResponse;
         } else {
             // If there is only a question number, then we can infer that this is an open-ended question
             buildString = "(open-ended)";
@@ -671,13 +699,13 @@ function parseAnswerKeyComparison(responseRequirement, correctAnswer, studentAns
         case "exact":
             {
                 if ((studentAnswer === "1") && (correctAnswer === "1")) {
-                    finalAnswerString = "selected";
+                    finalAnswerString = "correctly selected";
                 } else if ((studentAnswer === "1") && (correctAnswer === "0")) {
                     finalAnswerString = "incorrectly selected";
                 } else if ((studentAnswer === "0") && (correctAnswer === "0")) {
-                    finalAnswerString = "not selected";
+                    finalAnswerString = "correctly not selected";
                 } else if ((studentAnswer === "0") && (correctAnswer === "1")) {
-                    finalAnswerString = "missed";
+                    finalAnswerString = "incorrectly missed";
                 } else {
                     finalAnswerString = "";
                 }
@@ -822,24 +850,21 @@ function parseResponse(questionIdSplit, questionData, response, customRequiremen
             const correctResponse = questionData.correctResponses[postNumber][checkboxNumber];
             let finalAnswerString = parseAnswerKeyComparison(responseRequirement, correctResponse, studentAnswer, customRequirements, questionNumber, postNumber);
             return finalAnswerString;
+        case "radio":
+            {
+                studentAnswer = response.radioSelection.trim();
+                return studentAnswer;
+            }
+        case "habitsUnique":
+            {
+                studentAnswer = response.writtenResponse + " (" + response.checkedActualTime + ")";
+                return studentAnswer;
+            }
         default:
             // todo: how to handle any strange quesions (i.e. radio, habitsUnique)
             studentAnswer = "";
             return studentAnswer;
     }
-}
-
-function filterReflectionActions(modName, reflectionActions) {
-    let filteredResponseList = [];
-    if (reflectionActions.length <= 0) {
-        return filteredResponseList;
-    }
-    for (const action of reflectionActions) {
-        if (action.modual === modName) {
-            filteredResponseList.push(action);
-        }
-    }
-    return filteredResponseList;
 }
 
 function findMatchingRequirements(moduleQuestions, requirementToSearch) {
@@ -866,8 +891,7 @@ function addClassReflectionRecords(modName, headerArray, records, moduleQuestion
             col1: student.username,
             col2: ""
         };
-        // These are to keep track of questions where the answer key states that
-        // multiple options are correct.
+        // These are to keep track of questions where the answer key states that multiple options are correct.
         const atLeastOneRequirement = findMatchingRequirements(moduleQuestions, "atLeastOne");
         const anyAnswerRequirement = findMatchingRequirements(moduleQuestions, "any");
         const customRequirements = {
@@ -877,7 +901,8 @@ function addClassReflectionRecords(modName, headerArray, records, moduleQuestion
 
         // get responseList with only responses for this module
         // this is an important step because later we search this list using question numbers
-        const responseList = filterReflectionActions(modName, student.reflectionAction);
+        const responseList = student.reflectionAction.filter(attempt => attempt.modual == modName);
+        const latestAttempt = responseList[responseList.length - 1];
         for (const column of headerArray) {
             if (column.id.includes('col')) {
                 // this is one of the constant columns (not dependent on module questions)
@@ -886,31 +911,13 @@ function addClassReflectionRecords(modName, headerArray, records, moduleQuestion
             const id = column.id;
             const idSplit = id.split("_");
             const questionNumber = idSplit[0]; // this always exists
-            let label1 = idSplit[1] ? idSplit[1] : "";
-            let label2 = idSplit[2] ? idSplit[2] : "";
             let finalResponseString = "";
-            if (responseList.length === 0) {
+            if (!latestAttempt) {
                 newRecord[id] = finalResponseString;
                 continue;
             }
-            let mostRecentAnswerTime = 0; // use this for edge case where student has multiple answers for the same question
-            let studentAnswer = "";
-            for (const response of responseList) {
-                if (response.questionNumber === questionNumber) {
-                    // check that this is the most recent answer for this question
-                    if (mostRecentAnswerTime === 0) {
-                        mostRecentAnswerTime = response.absoluteTimeContinued;
-                    } else {
-                        if (response.absoluteTimeContinued <= mostRecentAnswerTime) {
-                            // this is an old response, skip it
-                            continue;
-                        } else {
-                            mostRecentAnswerTime = response.absoluteTimeContinued;
-                        }
-                    }
-                    finalResponseString = parseResponse(idSplit, moduleQuestions[questionNumber], response, customRequirements);
-                }
-            }
+            const response = latestAttempt.answers.find(question => question.questionNumber == questionNumber);
+            finalResponseString = parseResponse(idSplit, moduleQuestions[questionNumber], response, customRequirements);
             newRecord[id] = finalResponseString;
         }
         records.push(newRecord);
@@ -920,8 +927,7 @@ function addClassReflectionRecords(modName, headerArray, records, moduleQuestion
 
 /**
  * POST /downloadReflectionResponses/:classId/:modName
- * Create and download a csv with the class's reflection responses for this
- * module. The responses are compared against an answer key where applicable.
+ * Create and download a csv with the class's reflection responses for this module. The responses are compared against an answer key where applicable.
  */
 exports.postClassReflectionResponsesCsv = async(req, res, next) => {
     if (!req.user.isInstructor) {
@@ -950,7 +956,6 @@ exports.postClassReflectionResponsesCsv = async(req, res, next) => {
         const moduleQuestions = reflectionJson[req.params.modName];
         // Build the layout of the output csv based on the reflectionJson content
         const headerArray = buildHeaderArray(moduleQuestions);
-        const outputFilePath = `public2/downloads/classReflectionResponses_${req.user.username}.csv`
         let csvOutputString = "";
         let csvStringifier = createCsvStringifier({
             header: headerArray
@@ -969,7 +974,7 @@ exports.postClassReflectionResponsesCsv = async(req, res, next) => {
         }
         records = addClassReflectionRecords(req.params.modName, headerArray, records, moduleQuestions, found_class);
         csvOutputString = csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(records);
-        res.setHeader('Content-disposition', `attachment; filename=classReflectionResults_${req.user.username}.csv`);
+        res.setHeader('Content-disposition', `attachment; filename=classReflectionResults_${req.params.classId}_${req.params.modName}_${req.user.username}.csv`);
         res.set('Content-Type', 'text/csv');
         res.status(200).send(csvOutputString);
     } catch (err) {
@@ -998,7 +1003,7 @@ exports.postClassTimeReportCsv = async(req, res, next) => {
 
         let csvString = headerArray.join(',') + '\n';
 
-        const found_class = Class.findOne({
+        const found_class = await Class.findOne({
                 accessCode: req.params.classId,
                 teacher: req.user.id,
                 deleted: false
@@ -1035,7 +1040,6 @@ exports.postClassTimeReportCsv = async(req, res, next) => {
         });
         const sectionJson = JSON.parse(sectionJsonBuffer);
         let records = [];
-        // console.log(sectionJson)
         // get class page times
         let classPageTimes = getClassPageTimes(found_class, req.params.modName);
         for (const student of classPageTimes) {
@@ -1043,14 +1047,13 @@ exports.postClassTimeReportCsv = async(req, res, next) => {
                 continue;
             }
             // use this to get real name, if one has been added
-            let user = await User.findOne({
+            const user = await User.findOne({
                 username: student.username,
                 accessCode: req.params.classId,
                 deleted: false
             }).exec();
             if (user == null) {
-                console.log("NULL");
-                var myerr = new Error('User not found!');
+                const myerr = new Error('User not found!');
                 return next(myerr);
             }
             let newRecord = {
@@ -1081,7 +1084,7 @@ exports.postClassTimeReportCsv = async(req, res, next) => {
             records.push([newRecord.username, newRecord.name, newRecord.total, newRecord['1'], newRecord['2'], newRecord['3'], newRecord['4']]);
         }
         csvString += records.join('\n');
-        res.setHeader('Content-disposition', `attachment; filename=classTimeReport_${req.user.username}.csv`);
+        res.setHeader('Content-disposition', `attachment; filename=classTimeReport_${req.params.classId}_${req.params.modName}_${req.user.username}.csv`);
         res.set('Content-Type', 'text/csv');
         res.status(200).send(csvString);
     } catch (err) {

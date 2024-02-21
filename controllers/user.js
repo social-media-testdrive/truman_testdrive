@@ -50,42 +50,39 @@ exports.getClassLogin = (req, res) => {
  * Route only exists if isResearchVersion = true.
  */
 exports.postStudentLogin = (req, res, next) => {
-    //req.assert('email', 'Email is not valid').isEmail();
-    // commented out by Anna
-    //req.assert('password', 'Password cannot be blank').notEmpty();
-    req.assert('username', 'Please enter your username.').notEmpty();
-    //req.sanitize('email').normalizeEmail({ remove_dots: false });
+    const validationErrors = [];
+    if (validator.isEmpty(req.body.username)) validationErrors.push({ msg: 'Please enter your username.' });
 
-    const errors = req.validationErrors();
-
-    if (errors) {
-        req.flash('errors', errors);
-        return res.redirect(`/classLogin/${req.params.accessCode}`);
+    if (validationErrors.length) {
+        req.flash('errors', validationErrors);
+        return res.redirect('/login');
     }
-
     passport.authenticate('student-local', (err, user, info) => {
-        if (err) {
-            return next(err);
-        }
+        if (err) { return next(err); }
         if (!user) {
             req.flash('errors', info);
             return res.redirect(`/classLogin/${req.params.accessCode}`);
         }
         if (!(user.active)) {
-            //console.log("FINAL");
             req.flash('final', { msg: '' });
             return res.redirect(`/classLogin/${req.params.accessCode}`);
         }
         req.logIn(user, (err) => {
             if (err) { return next(err); }
-            //req.flash('success', { msg: 'Success! You are logged in.' });
+            // regenerate the session
             var temp = req.session.passport; // {user: 1}
             req.session.regenerate(function(err) {
                 //req.session.passport is now undefined
                 req.session.passport = temp;
                 req.session.save(function(err) {
                     user.logUser(Date.now());
-                    return res.redirect('/');
+                    if (req.user.isStudent) {
+                        return res.redirect('/');
+                    } else if (req.user.isInstructor) {
+                        return res.redirect('/classManagement');
+                    } else {
+                        return res.redirect('/');
+                    }
                 });
             });
         });

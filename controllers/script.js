@@ -52,8 +52,9 @@ exports.getNotificationTimes = async(req, res) => {
  */
 exports.getSinglePost = async(req, res, next) => {
     try {
-        const post = await Script.find()
-            .where(post_id).equals(req.params.postId)
+        const post = await Script.findOne({
+                _id: req.params.postId
+            })
             .exec();
         if (post) {
             res.set({ 'Content-Type': 'application/json; charset=UTF-8' });

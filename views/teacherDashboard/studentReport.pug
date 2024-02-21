@@ -3,10 +3,8 @@ extends ../ui_layout
 block content
   .sixteen.wide.column.dashboardContentColumn.hiddenVisibility(style="padding:30px")
     include ../partials/teacherDashboardMenu
-
     .row.addMargin
       .sixteen.wide.column
-
         h2 Select Class:
         .row
           .ui.selection.dropdown(name="classSelection")
@@ -18,12 +16,10 @@ block content
           .ui.labeled.icon.button.confirmClassButton
             i.check.icon
             | Confirm
-            
         .row
           .ui.testDriveBlueButton.icon.labeled.button.updateClassButton.hidden 
             i.undo.alternate.icon
             | Select Different Class
-
         .row
           h2.usernameSelectionStepLabel.hidden Select Student:
           select.ui.search.dropdown.usernameSelection.hidden(name="usernameSelection")
@@ -33,13 +29,8 @@ block content
             i.check.icon
             | Get Student Report
 
-
     .row.addMargin
       .ui.basic.segment(style="padding:0;")#studentReportSegment
-    //- .row(style="padding-bottom:7em;")
-    //-   button.ui.labeled.icon.button.testDriveBlueButton 
-    //-     i.download.icon
-    //-     | Download Table
 
 block scripts
   script(src='/user_portal/teacherDashboardTools.js')

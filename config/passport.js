@@ -34,19 +34,13 @@ passport.use('student-local', new LocalStrategy({
             accessCode: req.body.accessCode,
             deleted: false
         })
-        .exec(function(err, user) {
-            if (err) {
-                return done(err);
-            }
+        .then((user) => {
             if (!user) {
                 return done(null, false, { msg: 'Invalid username or login link.' });
             }
-
-            // found user, log in complete
-            req.session.regenerate(function() {
-                return done(null, user);
-            });
-        });
+            return done(null, user);
+        })
+        .catch((err) => done(err));
 }));
 
 /*
@@ -76,25 +70,6 @@ passport.use('instructor-local', new LocalStrategy({
         .catch((err) => done(err));
 }));
 
-/**
- * Sign in using Email and Password.
- */
-passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
-    User.findOne({ email: email.toLowerCase() })
-        .then((user) => {
-            if (!user) {
-                return done(null, false, { msg: `Email ${email} not found.` });
-            }
-            user.comparePassword(password, (err, isMatch) => {
-                if (err) { return done(err); }
-                if (isMatch) {
-                    return done(null, user);
-                }
-                return done(null, false, { msg: 'Invalid email or password.' });
-            });
-        })
-        .catch((err) => done(err));
-}));
 
 /**
  * Login Required middleware.
@@ -109,17 +84,4 @@ exports.isAuthenticated = (req, res, next) => {
     console.log(`Not authenticated for the following path: ${req.path}`);
     // Redirect to the appropriate url if not authenticated
     res.redirect(isResearchVersion ? '/login' : `/guest/${mod}`);
-};
-
-/**
- * Authorization Required middleware.
- */
-exports.isAuthorized = (req, res, next) => {
-    const provider = req.path.split('/').slice(-1)[0];
-    const token = req.user.tokens.find(token => token.kind === provider);
-    if (token) {
-        return next();
-    } else {
-        return res.redirect(`/auth/${provider}`);
-    }
 };
