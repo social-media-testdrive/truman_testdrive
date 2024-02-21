@@ -12,6 +12,9 @@ let totalWords; // Total number of words to highlight
 let currentWordIndex = 0; // Current index of the word being highlighted
 let highlightTimeoutWordID = null; // Timeout reference for word highlighting
 
+let totalStart = 0;
+let totalFinish = 0;
+
 let selectedElement = null;
 
 // Flag to check if word highlighting is enabled
@@ -21,6 +24,8 @@ let sentenceHighlighting = false;
 let contrastWords = false;
 // when 
 let hiddenHighlight = false;
+
+let showingHere = false;
 
 document.addEventListener('click', function clickHandler() {
     console.log("User interacted with the page")
@@ -41,7 +46,7 @@ function toggleHighlighting() {
     // save previous values so can see if going from: on to off to clear the highlights
     let priorWordChecked = wordChecked;
     let priorSentenceChecked = sentenceChecked;
-    console.log("77777 IN TOGGLE HIGHLIGHTING 77777");
+    // console.log("77777 IN TOGGLE HIGHLIGHTING 77777");
     wordChecked = document.querySelector('.ui.toggle.checkbox.item#highlight-words input[type="checkbox"]').checked;
     sentenceChecked = document.querySelector('.ui.toggle.checkbox.item#highlight-sentences input[type="checkbox"]').checked;
 
@@ -102,6 +107,8 @@ function toggleHighlighting() {
 }
 
 function highlightWord(start, finish, word, element) {
+    console.log("Highlighting: " + word + ", start: " + start + ", finish: " + finish + ", totalFinish: " + totalFinish + ", element: " + element + ", previousElement: " + previousElement);
+
     let wordClass = "highlighted-word";
     if(contrastWords) {
         wordClass += "-dark";
@@ -112,20 +119,52 @@ function highlightWord(start, finish, word, element) {
 
     let sentenceClass = "highlighted-sentence";
 
+    let nextElement = "none";
+    if(currentWordIndex !== totalWords - 1) {
+        nextElement = wordData[currentWordIndex + 1]["element"];
+    }
+    // console.log("right before bey, elment is: " + element + " and previous element is: " + previousElement);
     // Clear all previous highlights if the element has changed
     if (element !== previousElement) {
+        console.log("yo in this one here.")
         clearWordHighlights();
     }
+    if (element !== nextElement) {
+        console.log("IN this one.")
+        clearWordHighlights();
+        totalStart = 0;
+        totalFinish = 0;
+    }
 
-    if(element === "narrate-section" && (word === "challenge" || word === "concepts" || word === "consequences" || word === "techniques" || word === "protection" || word === "reporting" || word === "practice" || word === "evaluation")) {
-        let temp = document.getElementById("narrate-section");
+    if(element === "narrate-title") {
+        let temp = document.getElementById("narrate-title");
         temp.classList.add(sentenceClass);
+
+        // let temp =  $("#narrate-title");
+        // console.log("The temp before: " + temp.html());
+        // temp.addClass("sentenceClass");
+        // console.log("the temp after" + temp.html())
+    } else if(element === "narrate-section") {
+        // console.log("HEYYYYYYYYYYYYY Highlighting the section")
+        let temp = document.getElementById("narrate-section");
+        console.log("The temp before: " + temp);
+        temp.classList.add(sentenceClass);
+        // console.log("the temp after" + temp)
     } else if(element === "narrate-time") {
         let temp = document.getElementById("narrate-time");
         temp.classList.add(sentenceClass);
     } else if(element === "narrate-header") {
         let temp = document.getElementById("narrate-header");
         temp.classList.add(sentenceClass);
+    } else if(element === "shownHere") {
+        let temp = document.getElementById("shownHere");
+        temp.classList.add(wordClass);
+
+        setTimeout(function() {
+            temp.classList.remove(wordClass);
+            showingHere = false;
+        }, 1000);
+
     } else {
         let temp = document.getElementById(element);
         selectedElement = temp.getElementsByTagName('span')[0];
@@ -135,6 +174,7 @@ function highlightWord(start, finish, word, element) {
             selectedElement.classList.add(sentenceClass);
         }
 
+        console.log("Bey the selected element: " + selectedElement.innerHTML + " start: " + start + " finish: " + finish + " word: " + word + " element: " + element)
 
         // always marking when audio is playing, just marks are transparent if wording highlighting is off, yellow if only word highlighting, white on dark bg if both sentence and word are on
         // remove previous mark tags before adding new ones
@@ -147,10 +187,10 @@ function highlightWord(start, finish, word, element) {
 }
 
 function toRepeatWords() {
-    console.log("Word highlighting is " +  wordHighlighting + " and sentence highlighting is " + sentenceHighlighting)
+    // console.log("Word highlighting is " +  wordHighlighting + " and sentence highlighting is " + sentenceHighlighting)
     // Check for pause
     if (isPaused) {
-        console.log("Breaking the loop.");
+        // console.log("Breaking the loop.");
         return;
     }
 
@@ -162,7 +202,7 @@ function toRepeatWords() {
         } else {
             delay *= (1 / voiceSpeed);
         }
-        console.log("The delay: " + delay + " and the voice speed: " + voiceSpeed);
+        // console.log("The delay: " + delay + " and the voice speed: " + voiceSpeed);
     } else {
         delay = wordData[currentWordIndex + 1]["time"] - wordData[currentWordIndex]["time"];
         if (voiceSpeed > 1) {
@@ -170,17 +210,64 @@ function toRepeatWords() {
         } else {
             delay *= (1 / voiceSpeed);
         }
-        console.log("The delay: " + delay + " and the voice speed: " + voiceSpeed);
+        // console.log("The delay: " + delay + " and the voice speed: " + voiceSpeed);
     }
 
-    let start = wordData[currentWordIndex]["start"];
-    let finish = wordData[currentWordIndex]["end"];
-    let element = wordData[currentWordIndex]["element"];
-    let word = wordData[currentWordIndex]["value"];
+    // let start = wordData[currentWordIndex]["start"];
+    // add 1 to account for the space between words
 
-    console.log("*********word: " + word + " *delay: " + delay + " *currentIndex: " + currentWordIndex + " *avatar " + avatar + " *element: " + element + " *start: " + start + " *finish: " + finish);
+    if(totalFinish === 0) {
+        start = 0;
+    } else {
+        start = totalFinish + 1;
+    }
+
+    let finish = start + wordData[currentWordIndex]["end"];
+
+    totalFinish = finish;
+
+    // totalFinish = finish;
+    let element = wordData[currentWordIndex]["element"];
+
+    word = wordData[currentWordIndex]["value"];
+
+    if(element === "shownHere") {
+        showingHere = true;
+    }
+    
+    // console.log("word: " + word + ", finish: " + finish + ", totalFinish: " + totalFinish);
+
+
+
+    // console.log("*********word: " + word + " *delay: " + delay + " *currentIndex: " + currentWordIndex + " *avatar " + avatar + " *element: " + element + " *start: " + start + " *finish: " + finish);
+
+    // if(start === 0) {
+    //     previousElement = "none";
+    // }
+
+    // console.log("**word: " + word + "  . previous element: " + previousElement + " *current element: " + element);
+    // console.log("At word: " + word + ", start: " + start + ", fin: " + finish + ", totalStart " + totalStart + ", totalFin: " + totalFinish + ", previousEl: " + previousElement + ", currentEl: " + element);
+
+
+    // if (element !== previousElement && previousElement !== "narrate-title") {
+    //     console.log("reset totals");
+    //     // console.log("() Over here setting zero: elemnt " + element + " and previous element: " + previousElement);
+    //     totalStart = 0;
+    //     totalFinish = 0;
+    //     previousElement = element;
+    // }
+
+
 
     highlightWord(start, finish, word, element);
+
+
+    previousElement = element;
+    // if(start != 0) {
+    //     previousElement = wordData[currentWordIndex - 1]["element"];
+    // } 
+
+
 
     // Move to the next word
     currentWordIndex++;
@@ -212,10 +299,29 @@ function toRepeatWords() {
 }
 
 function startHighlightingWords() {
-    console.log("In starting the highlight")
-    avatarSpeechData = speechData[page][avatar];
+    console.log("In starting the highlight") 
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentPage = urlParams.get('page');
+    console.log("The current page: " + currentPage);
 
-    wordData= avatarSpeechData.filter(entry => entry.type === "word");
+    // badge page after quiz displays score
+    // if(currentPage === 'badge') {
+    //     // Wait for 1 second to allow the score to be updated
+    //     setTimeout(function() {
+    //         // Get the text and save it into a variable
+    //         scoreText = $("#shownHere").text();
+            
+    //         // Output the result (you can replace this with your desired use of the variable)
+    //         console.log(scoreText);
+    //     }, 1000);
+    // }
+
+    avatarSpeechData = speechData[currentPage][avatar];
+
+    wordData= avatarSpeechData;
+    // wordData= avatarSpeechData.filter(entry => entry.type === "word");
+    // console.log("The word data: " + JSON.stringify(wordData));
 
     // if(wordHighlighting) {
     //     wordData= avatarSpeechData.filter(entry => entry.type === "word");
@@ -250,14 +356,19 @@ function clearWordHighlights() {
     console.log("In clear highlight")
     clearTimeout(highlightTimeoutWordID); // Clear any existing timeouts
 
-    console.log("the page is: " + page + " and the current word index is: " + currentWordIndex);
+    document.getElementById('narrate-title').classList.remove('highlighted-sentence');
+    document.getElementById('narrate-section').classList.remove('highlighted-sentence');
+    document.getElementById('narrate-time').classList.remove('highlighted-sentence');
 
-    if(page === 'intro') {
-        document.getElementById('narrate-section').classList.remove('highlighted-sentence');
-        document.getElementById('narrate-time').classList.remove('highlighted-sentence');
-    }
+    // const urlParams = new URLSearchParams(window.location.search);
+    // const currentPage = urlParams.get('page');
+    // console.log("the page is: " + currentPage + " and the current word index is: " + currentWordIndex);
+    // if(currentPage === 'intro') {
+    //     document.getElementById('narrate-section').classList.remove('highlighted-sentence');
+    //     document.getElementById('narrate-time').classList.remove('highlighted-sentence');
+    // }
 
-    if(selectedElement !== null) {
+    if(selectedElement !== null && !showingHere) {
         selectedElement.classList.remove('highlighted-sentence');
     }
 
@@ -281,11 +392,16 @@ function clearWordHighlights() {
 
 function clearToggleVisual(whichHighlighting) {
     console.log("*In clear toggle visual for: " + whichHighlighting);
+    // const urlParams = new URLSearchParams(window.location.search);
+    // const currentPage = urlParams.get('page');
+    document.getElementById('narrate-title').classList.remove('highlighted-sentence');
+    document.getElementById('narrate-section').classList.remove('highlighted-sentence');
+    document.getElementById('narrate-time').classList.remove('highlighted-sentence');
 
-    if(page === 'intro') {
-        document.getElementById('narrate-section').classList.remove('highlighted-sentence');
-        document.getElementById('narrate-time').classList.remove('highlighted-sentence');
-    }
+    // if(currentPage === 'intro') {
+    //     document.getElementById('narrate-section').classList.remove('highlighted-sentence');
+    //     document.getElementById('narrate-time').classList.remove('highlighted-sentence');
+    // }
 
     if(whichHighlighting === "words") {
         let markElements = null;
@@ -645,7 +761,8 @@ $(document).ready(function() {
                     }
     
                     playAudio(backPage);
-
+                    toggleHighlighting();
+                    startHighlightingWords();
                 }
             });
         }
@@ -813,7 +930,8 @@ $(document).ready(function() {
                 }
 
                 playAudio(nextPage);
-
+                toggleHighlighting();
+                startHighlightingWords();
             }
         });
 

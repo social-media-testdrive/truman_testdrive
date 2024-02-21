@@ -6,13 +6,17 @@
                     h1.ui.header.large#learn-title
                         .content#great-job
                             i.award.icon
-                            | Congratulations!
+                            span#narrate-title Congratulations!
                     #text
-                        p You've completed the Challenge and earned a bronze badge!  
-                        p You have an Identity Theft Resilience score of 
-                            span#resil-score 
-                            |  out of 100.
-                        p To build your resilience and earn more badges, continue to the next section.    
+                        p#narrate-5
+                            span You've completed the Challenge and earned a bronze badge!  
+                        p#narrate-6
+                            span You have an Identity Theft Resilience score of 
+                                span#shownHere
+                                    span#resil-score
+                                    span  out of 100.
+                        p#narrate-7 
+                            span To build your resilience and earn more badges, continue to the next section.    
                 .six.wide.center.aligned.column
                     img.ui.small.centered.image#earned_badge(src='/badges/identity/challenge_conqueror.svg' onmouseenter="animateBadge()" style="margin-bottom: -10px; width: 125px;")
                     h3 <strong>Challenge</strong>
