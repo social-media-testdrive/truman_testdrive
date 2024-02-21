@@ -136,27 +136,22 @@ function highlightWord(start, finish, word, element) {
         totalFinish = 0;
     }
 
-    if(element === "narrate-title-badge") {
-        let temp = document.getElementById("narrate-title-badge");
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentPage = urlParams.get('page');
+
+    if(element === "narrate-title-" + currentPage) {
+        let temp = document.getElementById("narrate-title-" + currentPage);
         temp.classList.add(sentenceClass);
 
         // let temp =  $("#narrate-title");
         // console.log("The temp before: " + temp.html());
         // temp.addClass("sentenceClass");
         // console.log("the temp after" + temp.html())
-    } else if(element === "narrate-section") {
-        // console.log("HEYYYYYYYYYYYYY Highlighting the section")
-        let temp = document.getElementById("narrate-section");
-        console.log("The temp before: " + temp);
-        temp.classList.add(sentenceClass);
-        // console.log("the temp after" + temp)
-    } else if(element === "narrate-time") {
-        let temp = document.getElementById("narrate-time");
-        temp.classList.add(sentenceClass);
-    } else if(element === "narrate-header") {
-        let temp = document.getElementById("narrate-header");
+    } else if(element === "narrate-time-" + currentPage) {
+        let temp = document.getElementById("narrate-time-" + currentPage);
         temp.classList.add(sentenceClass);
     } else if(element === "shownHere") {
+        console.log("in shownhere -> showingHere: " + showingHere);
         let temp = document.getElementById("shownHere");
         temp.classList.add(wordClass);
 
@@ -165,11 +160,14 @@ function highlightWord(start, finish, word, element) {
             showingHere = false;
         }, 1000);
 
+    } else if(element === "none"){
+        console.log("skip break element");
     } else {
+        console.log("HIGHLIGH element: " + element );
         let temp = document.getElementById(element);
         selectedElement = temp.getElementsByTagName('span')[0];
 
-
+        console.log("BEYYYY the selected element: " + selectedElement + " and the element: " + element + " and the word: " + word + " and the start: " + start + " and the finish: " + finish + " and the word class: " + wordClass + " and the sentence class: " + sentenceClass)
         if(sentenceHighlighting) {
             selectedElement.classList.add(sentenceClass);
         }
@@ -361,10 +359,11 @@ function clearWordHighlights() {
     const currentPage = urlParams.get('page');
 
     if(previousElement.includes("narrate-title")){ 
-        document.getElementById('narrate-title-' + currentPage).classList.remove('highlighted-sentence');
+        document.getElementById(previousElement).classList.remove('highlighted-sentence');
     }
-    document.getElementById('narrate-section').classList.remove('highlighted-sentence');
-    document.getElementById('narrate-time').classList.remove('highlighted-sentence');
+    if(previousElement.includes("narrate-time")){ 
+        document.getElementById(previousElement).classList.remove('highlighted-sentence');
+    }
 
     // const urlParams = new URLSearchParams(window.location.search);
     // const currentPage = urlParams.get('page');
@@ -406,9 +405,9 @@ function clearToggleVisual(whichHighlighting) {
         document.getElementById('narrate-title-' + currentPage).classList.remove('highlighted-sentence');
     }
 
-    document.getElementById('narrate-section').classList.remove('highlighted-sentence');
-    document.getElementById('narrate-time').classList.remove('highlighted-sentence');
-
+    if(previousElement.includes("narrate-time")){ 
+        document.getElementById('narrate-time').classList.remove('highlighted-sentence');
+    }
     // if(currentPage === 'intro') {
     //     document.getElementById('narrate-section').classList.remove('highlighted-sentence');
     //     document.getElementById('narrate-time').classList.remove('highlighted-sentence');
