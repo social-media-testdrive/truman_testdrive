@@ -136,8 +136,8 @@ function highlightWord(start, finish, word, element) {
         totalFinish = 0;
     }
 
-    if(element === "narrate-title") {
-        let temp = document.getElementById("narrate-title");
+    if(element === "narrate-title-badge") {
+        let temp = document.getElementById("narrate-title-badge");
         temp.classList.add(sentenceClass);
 
         // let temp =  $("#narrate-title");
@@ -222,7 +222,8 @@ function toRepeatWords() {
         start = totalFinish + 1;
     }
 
-    let finish = start + wordData[currentWordIndex]["end"];
+    // let finish = start + wordData[currentWordIndex]["end"];
+    let finish = start + wordData[currentWordIndex]["value"].length;
 
     totalFinish = finish;
 
@@ -356,7 +357,12 @@ function clearWordHighlights() {
     console.log("In clear highlight")
     clearTimeout(highlightTimeoutWordID); // Clear any existing timeouts
 
-    document.getElementById('narrate-title').classList.remove('highlighted-sentence');
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentPage = urlParams.get('page');
+
+    if(previousElement.includes("narrate-title")){ 
+        document.getElementById('narrate-title-' + currentPage).classList.remove('highlighted-sentence');
+    }
     document.getElementById('narrate-section').classList.remove('highlighted-sentence');
     document.getElementById('narrate-time').classList.remove('highlighted-sentence');
 
@@ -392,9 +398,14 @@ function clearWordHighlights() {
 
 function clearToggleVisual(whichHighlighting) {
     console.log("*In clear toggle visual for: " + whichHighlighting);
-    // const urlParams = new URLSearchParams(window.location.search);
-    // const currentPage = urlParams.get('page');
-    document.getElementById('narrate-title').classList.remove('highlighted-sentence');
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentPage = urlParams.get('page');
+
+    if(previousElement.includes("narrate-title")){ 
+        document.getElementById('narrate-title-' + currentPage).classList.remove('highlighted-sentence');
+    }
+
     document.getElementById('narrate-section').classList.remove('highlighted-sentence');
     document.getElementById('narrate-time').classList.remove('highlighted-sentence');
 
