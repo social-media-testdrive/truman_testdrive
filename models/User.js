@@ -94,12 +94,56 @@ const userSchema = new mongoose.Schema({
     romance: {
         percent: { type: Number, default: 0 }, // percent complete
         link: { type: String, default: '/course-player?module=romance&section=challenge&page=intro' }, // link to the last page the user was on in module
-        prequiz: { type: Number, default: 0},
-        submodOne: { type: Number, default: 0 },
-        submodTwo: { type: Number, default: 0 },
-        submodThree: { type: Number, default: 0 },
-        postquiz: { type: Number, default: 0 },
-    },       
+        challengeAttempts: [{
+            timestamp: { type: Date, default: Date.now },
+            scoreTotal: { type: Number, default: 0 },
+            correctAnswers: { type: Number, default: 0 },
+            questionScores: [{ type: Number }],
+            questionChoices: Schema.Types.Mixed,
+        }],
+        conceptsAttempts: [{
+            timestamp: { type: Date, default: Date.now },
+            scoreTotal: { type: Number, default: 0 },
+            correctAnswers: { type: Number, default: 0 },
+            questionScores: [{ type: Number }],
+            questionChoices: Schema.Types.Mixed,
+        }],
+        consequencesAttempts: [{
+            timestamp: { type: Date, default: Date.now },
+            scoreTotal: { type: Number, default: 0 },
+            correctAnswers: { type: Number, default: 0 },
+            questionScores: [{ type: Number }],
+            questionChoices: Schema.Types.Mixed,
+        }],
+        techniquesAttempts: [{
+            timestamp: { type: Date, default: Date.now },
+            scoreTotal: { type: Number, default: 0 },
+            correctAnswers: { type: Number, default: 0 },
+            questionScores: [{ type: Number }],
+            questionChoices: Schema.Types.Mixed,
+        }],
+        protectionAttempts: [{
+            timestamp: { type: Date, default: Date.now },
+            scoreTotal: { type: Number, default: 0 },
+            correctAnswers: { type: Number, default: 0 },
+            questionScores: [{ type: Number }],
+            questionChoices: Schema.Types.Mixed,
+        }],
+        reportingAttempts: [{
+            timestamp: { type: Date, default: Date.now },
+            scoreTotal: { type: Number, default: 0 },
+            correctAnswers: { type: Number, default: 0 },
+            questionScores: [{ type: Number }],
+            questionChoices: Schema.Types.Mixed,
+        }],
+        evaluationAttempts: [{
+            timestamp: { type: Date, default: Date.now },
+            scoreTotal: { type: Number, default: 0 },
+            correctAnswers: { type: Number, default: 0 },
+            questionScores: [{ type: Number }],
+            questionChoices: Schema.Types.Mixed,
+        }],
+    },      
     phishing: {
         percent: { type: Number, default: 0 }, // percent complete
         link: { type: String, default: '/course-player?module=phishing&section=challenge&page=intro' }, // link to the last page the user was on in module
