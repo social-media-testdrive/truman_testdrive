@@ -1,33 +1,58 @@
 {   
-"1": {
-    "progress": 71.428571428,
-    "type": "multi_select",
-    "partial": "none",
-    "prompt": "1. What could happen if your personal information is stolen? Select all that apply:",
-    "choices": {
-      "0": {
-          "text": "A. Save on taxes",
-          "explanation": "Identity theft won't help with taxes. Instead, scammers can use your information to file a false tax return and steal your refund."
-      },
-      "1": {
-          "text": "B. Lower credit score",
-          "explanation": "If your personal information is stolen, scammers could open accounts, credit cards, get loans in your name and then not pay the bills. The debt and missed payments will  lower your credit score due."
-      },
-      "2": {
-          "text": "C. Identity impersonation",
-          "explanation": "Scammers can use your stolen personal information to pretend to be you and conduct fraudulent activities."
-      },
-      "3": {
-          "text": "D. Legal Troubles",
-          "explanation": "Legal troubles can arise because scammers may use your identity to commit crimes, leaving a trail that law enforcement could associate with you."
-      },
-      "4": {
-          "text": "E. Unknown person uses your health insurance for a procedure",
-          "explanation": "Stolen personal information could be used to access your health insurance benefits for medical procedures. You might be stuck with the bills. Your medical records could be confused. And you might not have enough coverage when you need it."
-      }
-  },
-  "correctResponse": ["1", "2", "3", "4"],
-  "theAnswers": "B, C, D, E"
-  }
-
+    "1": {
+        "progress": 100,
+        "type": "abcd",
+        "partial": "none",
+        "prompt": "1. What is a money mule?",
+        "choices": {
+            "a": {
+                "text": "A. A secret word for popular gift cards",
+                "explanation": "This is not the definition of a money mule. “Money Mule” Romance Scams involve scammers asking you to move money for them."
+            },
+            "b": {
+                "text": "B. Someone who transfers or moves money illegally for someone else",
+                "explanation": "The scammer asks you to transfer money, either physically or from one account to another, claiming that you will be rewarded if you help them."
+            },
+            "c": {
+                "text": "C. An investment that does well",
+                "explanation": "This is not the definition of a money mule. “Money Mule” Romance Scams involve scammers asking you to move money for them."
+            },
+            "d": {
+                "text": "D. A digital wallet for your cryptocurrency",
+                "explanation": "This is not the definition of a money mule. “Money Mule” Romance Scams involve scammers asking you to move money for them."
+            }
+        },
+        "explanation": "<h1>The correct answer is B.</h1>",
+        "correctResponse": "b"
+    },
+    "2": {
+        "progress": 100,
+        "type": "multi_select",
+        "partial": "none",
+        "prompt": "2. What could happen when you use a FAKE online dating site? Select all that apply.",
+        "choices": {
+            "0": {
+                "text": "A. You could find the love of your life",
+                "explanation": "This is very unlikely due to the large amount of fake profiles and scammers on those sites."
+            },
+            "1": {
+                "text": "B. Your device could become infected with malware",
+                "explanation": "Fake online dating sites often have viruses that can infect your devices."
+            },
+            "2": {
+                "text": "C. You could meet new, authentic friends",
+                "explanation": "This is very unlikely due to the large amount of fake profiles and scammers on those sites."
+            },
+            "3": {
+                "text": "D. You could become a victim of Identity Theft",
+                "explanation": "Fake online dating sites often collect large amounts of personal information which could lead to your identity being stolen."
+            },
+            "4": {
+                "text": "E. Financial losses from fees",
+                "explanation": "Fake dating sites often require payment and personal information creating a risk of financial loss."
+            }
+        },
+        "correctResponse": ["1", "3", "4"],
+        "theAnswers": "B, D, E"
+    }
 }
