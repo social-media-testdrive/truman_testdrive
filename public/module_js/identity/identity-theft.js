@@ -211,9 +211,6 @@ function toRepeatWords() {
         // console.log("The delay: " + delay + " and the voice speed: " + voiceSpeed);
     }
 
-    // let start = wordData[currentWordIndex]["start"];
-    // add 1 to account for the space between words
-
     if(totalFinish === 0) {
         start = 0;
     } else {
@@ -234,39 +231,10 @@ function toRepeatWords() {
         showingHere = true;
     }
     
-    // console.log("word: " + word + ", finish: " + finish + ", totalFinish: " + totalFinish);
-
-
-
-    // console.log("*********word: " + word + " *delay: " + delay + " *currentIndex: " + currentWordIndex + " *avatar " + avatar + " *element: " + element + " *start: " + start + " *finish: " + finish);
-
-    // if(start === 0) {
-    //     previousElement = "none";
-    // }
-
-    // console.log("**word: " + word + "  . previous element: " + previousElement + " *current element: " + element);
-    // console.log("At word: " + word + ", start: " + start + ", fin: " + finish + ", totalStart " + totalStart + ", totalFin: " + totalFinish + ", previousEl: " + previousElement + ", currentEl: " + element);
-
-
-    // if (element !== previousElement && previousElement !== "narrate-title") {
-    //     console.log("reset totals");
-    //     // console.log("() Over here setting zero: elemnt " + element + " and previous element: " + previousElement);
-    //     totalStart = 0;
-    //     totalFinish = 0;
-    //     previousElement = element;
-    // }
-
-
-
     highlightWord(start, finish, word, element);
 
 
     previousElement = element;
-    // if(start != 0) {
-    //     previousElement = wordData[currentWordIndex - 1]["element"];
-    // } 
-
-
 
     // Move to the next word
     currentWordIndex++;
@@ -279,12 +247,6 @@ function toRepeatWords() {
         }, delay);
     } else {
         let lastDelay = 1000;
-
-        // if(wordHighlighting) {
-        //     lastDelay = 1000;
-        // } else {
-        //     lastDelay = wordData[currentWordIndex - 1]["delay"];
-        // }
 
         console.log("the last delay is: " + lastDelay);
 
@@ -304,27 +266,9 @@ function startHighlightingWords() {
     const currentPage = urlParams.get('page');
     console.log("The current page: " + currentPage);
 
-    // badge page after quiz displays score
-    // if(currentPage === 'badge') {
-    //     // Wait for 1 second to allow the score to be updated
-    //     setTimeout(function() {
-    //         // Get the text and save it into a variable
-    //         scoreText = $("#shownHere").text();
-            
-    //         // Output the result (you can replace this with your desired use of the variable)
-    //         console.log(scoreText);
-    //     }, 1000);
-    // }
-
     avatarSpeechData = speechData[currentPage][avatar];
 
     wordData= avatarSpeechData;
-    // wordData= avatarSpeechData.filter(entry => entry.type === "word");
-    // console.log("The word data: " + JSON.stringify(wordData));
-
-    // if(wordHighlighting) {
-    //     wordData= avatarSpeechData.filter(entry => entry.type === "word");
-    // } 
 
     isPaused = false;
     totalWords = wordData.length;
@@ -337,18 +281,11 @@ function startHighlightingWords() {
         startDelay *= (1 / voiceSpeed);
     }
 
-    // console.log("The start delay: " + startDelay);
-
     // Start highlighting the first word
     highlightTimeoutWordID = setTimeout(function () {
         toRepeatWords();
     }, startDelay);
-    // } else if(whichHighlighting === "sentence") {
-    //     highlightTimeoutSentenceID = setTimeout(function () {
-    //         toRepeat(whichHighlighting);
-    //     }, startDelay);
-    // }
-    
+
 }
 
 function clearWordHighlights() {
