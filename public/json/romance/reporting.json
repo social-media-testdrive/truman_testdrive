@@ -1,31 +1,32 @@
 {
-  "1": {
+    "1": {
+      "progress": 100,
       "type": "multi_select",
       "partial": "none",
-      "prompt": "1. When you have your identity stolen, what should you do? Select all that apply:",
+      "prompt": "1. What should you do if you discover that the person you are chatting with is a scammer? Select all that apply.",
       "choices": {
-          "0": {
-              "text": "A. Notify your bank or financial institution",
-              "explanation": "Informing your bank or financial institution is important to protect your financial accounts."
-          },
-          "1": {
-              "text": "B. Report identity theft to the Federal Trade Commission",
-              "explanation": "Reporting identity theft to the FTC is the first step  to start the recovery process. "
-          },
-          "2": {
-              "text": "C. Keep it a secret to avoid embarrassment",
-              "explanation": "Staying silent won't help and may put you or others at risk for future scams from the same scammers. There's no need to feel ashamed; identity theft can happen to anyone and doesn’t mean you are unfit to handle your finances."
-          },
-          "3": {
-              "text": "D. Change passwords for other accounts",
-              "explanation": "Changing passwords for other accounts can prevent further unauthorized access."
-          },
-          "4": {
-              "text": "E. Contact your local police department",
-              "explanation": "Reporting to local authorities helps with the legal aspects of identity theft."
-          }
+        "0": {
+          "text": "A. Report the scam to the FTC or FBI",
+          "explanation": "Reporting Romance Scams to the FTC or FBI is very important. It helps law enforcement track and investigate fraudulent activities. When you report a scam, you're helping to stop scammers and protect others from getting tricked in the same way."
+        },
+        "1": {
+          "text": "B. Report the scammer’s account to the dating site or social media platform",
+          "explanation": "Letting the dating site or social media platform know about the scammer's account is crucial. It lets the platform look into the account and possibly remove it to stop more scams. Also, it helps the platform see patterns in scamming behavior and improve their security to keep users safe later on."
+        },
+        "2": {
+          "text": "C. Talk to friends and loved ones about your experience",
+          "explanation": "Talking to friends and loved ones about what happened can offer emotional support and a different viewpoint. Sharing your story might also help others spot similar scam tactics and avoid getting scammed themselves. Plus, having open discussions about scams helps reduce any shame or embarrassment and raises awareness about staying safe online."
+        },
+        "3": {
+          "text": "D. Contact your bank or credit card company if you have shared any financial information",
+          "explanation": "If you've given financial details to a scammer, it's vital to reach out to your bank or credit card company right away. Let them know what happened and take steps to safeguard your accounts, like changing passwords or canceling compromised cards. Acting quickly can stop unauthorized transactions and minimize any financial losses caused by the scam."
+        },
+        "4": {
+          "text": "E. Confront the scammer directly and demand an explanation.",
+          "explanation": "Confronting a scammer directly might escalate the situation and put you at risk. It's safer to disengage and report the scam to the relevant authorities or the platform."
+        }
       },
-      "correctResponse": ["0", "1", "3", "4"],
-      "theAnswers": "A, C, E, F"
+      "correctResponse": ["0", "1", "2", "3"],
+      "theAnswers": "A, B, C, D"
+    }
   }
-}

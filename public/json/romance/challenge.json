@@ -94,16 +94,16 @@
     "progress": 100,
     "type": "yes_no",
     "partial": "none",
-    "prompt": "5. What could occur if your identity is stolen? Select all that apply",
+    "prompt": "5. Is the following profile Real or Fake?",
     "choices": {
         "yes": {
-          "text": "A. Real"
+          "text": "Real"
         },
         "no": {
-          "text": "B. Fake"
+          "text": "Fake"
         }
     },
-    "explanation": "<h1>The correct answer is B.</h1>",
+    "explanation": "<h1>\"Fake\" is the correct answer</h1>",
     "correctResponse": "no"
   }            
 }

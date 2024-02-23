@@ -1,64 +1,71 @@
 {
-  "1": {
-    "progress": 75,
-    "type": "yes_no",
-    "partial": "q1.html",
-    "prompt": "1. Is this email a scam email?",
-    "choices": {
-        "yes": {
-            "text": "Yes"
-        },
-        "no": {
-            "text": "No"
-        }
-    },
-    "explanation": "<h1>This email is a scam</h1><h2>These are the Warning Signs:</h2><ul><li><strong>Suspicious email address domain:</strong><br>The domain is the part of the email address after the @. Company names are often used as the domain for company email addresses. This email address does not appear to be valid–it says dollar@tree.com instead of name@dollartree.com. After checking on Dollar Tree's official website, the email address does not exist.</li><li><strong>Sense of urgency:</strong><br>This email is trying to get you to act quickly. The message shows that “Only 10 selected customers” and “Please confirm before [a certain date].”</li><li><strong>Incorrect brand font:</strong><br>The font used in this email appears to be different from the official Dollar Tree website. Generally, the same font is used for all materials because it is part of the company’s identity.</li><li><strong>This email does not identify you by name:</strong><br>This email does not state your name which is typical of scam emails.</li></ul>",
-    "correctResponse": "yes"
-  },
-  "2": {
-    "progress": 83.333,
-    "type": "yes_no",
-    "partial": "q2.html",
-    "prompt": "2. Is this email a scam email?",
-    "choices": {
-        "yes": {
-            "text": "Yes"
-        },
-        "no": {
-            "text": "No"
-        }
-    },
-    "explanation": "<h1>This email is a scam</h1><h2>Warning Signs:</h2><ul><li><strong>Does not identify you by name:</strong><br>This email does not state your name, which is typical of scam emails.</li><li><strong>Directs you to click on a new link:</strong><br>If an email gives you a link to update your payment details, the link can be used for phishing. This email asks you to click the Sign In link to update your payment information.</li><li><strong>Sense of threat:</strong><br>This email claims that there’s a problem with the receiver’s account without specific information. This is meant to scare you into clicking on their link.</li><li><strong>Sender's email not from Netflix:</strong><br>This sender’s email address is no-reply@ripnet.com, which is not from Netflix.</li></ul>",
-    "correctResponse": "yes"
-  },
-  "3": {
-    "progress": 91.666,
-    "type": "multi_select",
-    "partial": "none",
-    "prompt": "3. Which of the following techniques do scammers mainly use?",
-    "choices": {
+    "1": {
+      "progress": 100,
+      "type": "multi_select",
+      "partial": "none",
+      "prompt": "1. Scammers often use language that leads the victim to trust them, or even fall in love with them. Which of the following are examples of persuasive language? Select all that apply.",
+      "choices": {
         "0": {
-            "text": "A. Fear and threats in scam messaging",
-            "explanation": "Scammers use fear by sending alarming messages, like “legal action” or “account closure”, to pressure you into acting quickly and sharing personal information."
+          "text": "A. Presentation as a religious person",
+          "explanation": "Scammers take advantage of people’s tendencies to trust people with religious affiliations more."
         },
         "1": {
-            "text": "B. Tempting offers that are too good to be true",
-            "explanation": "Scammers offer very attractive deals to lure people into sharing sensitive information or money."
+          "text": "B. Wait a bit into a relationship before they ask for money or share a sad story",
+          "explanation": "Scammers often wait a bit into a relationship before they ask for money. Scammers use this technique to make you feel like it is your obligation as their partner or friend to help them when they claim to be in trouble."
         },
         "2": {
-            "text": "C. Using sympathy and kindness",
-            "explanation": "Scammers act nice and understanding to gain your trust and increase the odds of you sharing your personal information without suspicion."
+          "text": "C. Exaggerated phrases",
+          "explanation": "Scammers often use “over the top” language to tell the victim how much they are willing to do for the relationship they have with them."
         },
         "3": {
-            "text": "D. Weather Forecasting",
-            "explanation": "Weather forecasting is entirely unrelated to identity theft and is not used to carry out scams."
+          "text": "D. Insults",
+          "explanation": "A romance scammer won't typically insult you because they want to gain your trust and keep you emotionally invested in the scam. Insulting you would risk losing that trust and connection they're trying to exploit."
         },
         "4": {
-            "text": "F. Ask you to click a link",
-            "explanation": "Scammers send messages urging their targets to click harmful links, tricking them into sharing login details, installing malware, or confirming sensitive data."
+          "text": "E. Excessive compliments towards the victim",
+          "explanation": "Scammers often use excessive compliments to make the relationship seem further progressed than it really is. This is sometimes called “love bombing.”"
         }
+      },
+      "correctResponse": ["0", "1", "2", "4"],
+      "theAnswers": "A, B, C, E"
     },
-    "correctResponse": ["0", "1", "2", "4"],
-    "theAnswers": "A, C, E"
+    "2": {
+      "progress": 100,
+      "type": "yes_no",
+      "partial": "none",
+      "prompt": "2. Is this dating profile Real or Fake?",
+      "choices": {
+        "yes": {
+          "text": "Real"
+        },
+        "no": {
+          "text": "Fake"
+        }
+      },
+      "explanation": "<h1>The correct answer is Real.</h1><p>This profile seems to be a real profile. Her profile picture has her grandson, multiple linked accounts, and a reasonable amount of friends and posts along with a good number of mutual friends.</p>",
+      "correctResponse": "yes"
+    },
+    "3": {
+      "progress": 100,
+      "type": "abcd",
+      "partial": "none",
+      "prompt": "3. What is the correct order of the three stages of scammers’ techniques for most romance and friendship scams?",
+      "choices": {
+        "a": {
+          "text": "A. Step 1. Create Fake Profiles, Step 2. Contact and Groom Stage, Step 3. Money or Criminal Help Request Stage"
+        },
+        "b": {
+          "text": "B. Step 1. Contact and Groom Stage, Step 2. Create Fake Profiles, Step 3. Money or Criminal Help Request Stage"
+        },
+        "c": {
+          "text": "C. Step 1, Money or Criminal Help Request Stage, Step 2. Contact and Groom Stage, Step 3, Create Fake Profiles"
+        },
+        "d": {
+          "text": "D. Step 1. Create Fake Profiles, Step 2. Contact and Groom Stage, Step 3. Money or Criminal Help Request Stage"
+        }
+      },
+      "explanation": "<h1>The correct answer is D.</h1><p>This is the correct order.</p>",
+      "correctResponse": "d"
+    }
   }
-}
+  
