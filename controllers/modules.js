@@ -22,6 +22,9 @@ exports.getModule = async (req, res) => {
     // const module = req.query.module;
     // const page = req.query.page;
     const { module, section, page } = req.query;
+    console.log("**module: " + module);
+    console.log("section: " + section);
+    console.log("page: " + page);
     let numPages;
 
     // each quiz question is being counted as a page too so we need to add those
@@ -54,9 +57,12 @@ exports.getModule = async (req, res) => {
 
     // make it for all sections array json object later
     const narration_data = await fs.readFileAsync(`${__dirname}/../public/json/` +  module + `/narration.json`);
+    // console.log("*******narration_data: " + narration_data.toString());
+    // console.log("the section is: " + section)
     const fullJson = JSON.parse(narration_data.toString());
     // provide speech marks for complete single page app module section 
     speechMarks = fullJson[section];
+    console.log("***The speech marks are: " + speechMarks);
 
     if(section === 'practice'){
       console.log("YOOO This is the practice section")
