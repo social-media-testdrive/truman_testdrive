@@ -166,7 +166,7 @@ function highlightWord(start, finish, word, element) {
         }, 1000);
 
     } else if(element === "none"){
-        console.log("skip break element");
+        // console.log("skip break element");
     } else {
         // console.log("HIGHLIGH element: " + element );
         let temp = document.getElementById(element);
@@ -192,10 +192,10 @@ function highlightWord(start, finish, word, element) {
 function toRepeatWords() {
     // console.log("Word highlighting is " +  wordHighlighting + " and sentence highlighting is " + sentenceHighlighting)
     // Check for pause
-    if (isPaused) {
-        // console.log("Breaking the loop.");
-        return;
-    }
+    // if (isPaused) {
+    //     // console.log("Breaking the loop.");
+    //     return;
+    // }
 
     
     if(currentWordIndex === totalWords - 1) {
@@ -246,20 +246,27 @@ function toRepeatWords() {
 
     // Check if there are more words to highlight
     if (currentWordIndex < totalWords) {
-        startTimeMS = (new Date()).getTime();
+        if (!isPaused) {
 
-        // Setup another timeout for the next word
-        highlightTimeoutWordID = setTimeout(function () {
-            console.log("Delayed for: " + delay + " MS , the current word index: " + currentWordIndex + " the word is: " + wordData[currentWordIndex]["value"] + " and the element is: " + wordData[currentWordIndex]["element"]);
-            toRepeatWords();
-        }, delay);
+            startTimeMS = (new Date()).getTime();
+
+            // Setup another timeout for the next word
+            highlightTimeoutWordID = setTimeout(function () {
+                // console.log("Delayed for: " + delay + " MS , the current word index: " + currentWordIndex + " the word is: " + wordData[currentWordIndex]["value"] + " and the element is: " + wordData[currentWordIndex]["element"]);
+                toRepeatWords();
+            }, delay);
+        } else {
+            // Save the state but do not proceed to next word
+            // audio.pause();
+            return;
+        }
     } else {
         let lastDelay = 1000;
 
-        console.log("the last delay is: " + lastDelay);
+        // console.log("the last delay is: " + lastDelay);
 
         // All words have been highlighted
-        console.log("Finished highlighting");
+        // console.log("Finished highlighting");
         setTimeout(function () {
             clearWordHighlights();
         }, lastDelay);
@@ -268,7 +275,7 @@ function toRepeatWords() {
 }
 
 function startHighlightingWords() {
-    console.log("In starting the highlight") 
+    // console.log("In starting the highlight") 
     
     const urlParams = new URLSearchParams(window.location.search);
     const currentPage = urlParams.get('page');
@@ -309,7 +316,7 @@ function getRemainingTime(){
 }
 
 function clearWordHighlights() {
-    console.log("* In clear word highlights, clearing existing timeouts")
+    // console.log("* In clear word highlights, clearing existing timeouts")
     clearTimeout(highlightTimeoutWordID); // Clear any existing timeouts
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -403,44 +410,52 @@ function clearToggleVisual(whichHighlighting) {
     }
 }
 function pauseHighlight() {
-    console.log("In pause highlight");
+    if (!isPaused) { // Only pause if not already paused
+        isPaused = true;
+        clearTimeout(highlightTimeoutWordID); // Clear the current timeout
 
-    isPaused = true;
-    console.log("flag in pauseHighlight()  " + isPaused + " currentWordIndex " + currentWordIndex);
+        // Calculate the elapsed time since the last highlight started
+        var currentTimeMS = (new Date()).getTime();
+        var elapsedTime = currentTimeMS - startTimeMS;
+
+        // Adjust the delay for the current word based on the elapsed time
+        delay -= elapsedTime;
+
+        console.log("Highlighting paused after " + elapsedTime + "ms");
+    }
+
+    // if (!isPaused) { // Prevent pausing if already paused
+    //     isPaused = true; // Set pause flag
+    //     clearTimeout(highlightTimeoutWordID); // Clear the timeout to pause highlighting
+    //     console.log("Highlighting paused");
+    // }
+
+
+    // isPaused = true;
+    // console.log("flag in pauseHighlight()  " + isPaused + " currentWordIndex " + currentWordIndex);
     // console.log("paused at: " + currentWordIndex);
 }
 
 function resumeHighlight() {
-    console.log("In resume the highlight")
-
-    // Check if the highlighting is paused
-    
-    if (isPaused) {
-        console.log("Resuming the highlighting !!");
-
-        // Resume the highlighting loop from the paused index
+    if (isPaused) { // Only resume if currently paused
         isPaused = false;
+        console.log("Resuming highlighting");
 
-        // toRepeatWords();
-        highlightTimeoutWordID = setTimeout(toRepeatWords, delay);
-
-        // let remainingTime = getRemainingTime();
-        // console.log("resumed at: " + currentWordIndex + ", original delay: " + delay + ", remaining time: " + remainingTime);
-        // highlightTimeoutWordID = setTimeout(toRepeatWords, remainingTime);
-
-        // highlightTimeoutWordID = setTimeout(function () {
-        //     toRepeatWords();
-        // }, delay);
-    
-
-        // highlightTimeoutWordID = toRepeatWords();
-        // Call toRepeat to continue highlighting
-        // if(wordHighlighting || sentenceHighlighting) {
-        //     toRepeatWords();
-        // }
-    } else {
-        console.log("Highlighting is not paused. No action taken.");
+        // Use the adjusted delay to continue with the next word
+        highlightTimeoutWordID = setTimeout(function () {
+            toRepeatWords();
+        }, delay);
     }
+
+
+    // console.log("In resume the highlight")
+
+    // if (isPaused) { // Only resume if currently paused
+    //     isPaused = false; // Reset pause flag
+    //     console.log("Resuming highlighting");
+    //     toRepeatWords(); // Continue highlighting
+    // }
+
 }  
 
 function stopPropagation(event) {
@@ -516,10 +531,15 @@ function replayAudio() {
         audio.play();
 
         var audio = document.getElementById('narration-audio');
+        const button = document.getElementById('play-pause-audio');
         var buttonIcon = document.querySelector('#play-pause-audio i.icon');
         var buttonText = document.querySelector('#play-pause-audio span.toggle-text');
 
-        buttonIcon.classList.remove('play', 'pause');
+        button.classList.remove('grey'); // Remove the grey class
+        button.classList.add('blue'); // Add the blue class to change its color back
+        button.style.pointerEvents = 'auto';
+
+        buttonIcon.classList.remove('play', 'pause', 'check');
         buttonIcon.classList.add('pause');
         buttonText.innerText = 'Pause';
 
@@ -563,8 +583,31 @@ function togglePlayPause() {
         buttonIcon.classList.remove('play', 'pause');
         buttonIcon.classList.add('play');
         buttonText.textContent = 'Play';
-    }
+    }   
+}
+
+
+function disableNarrationPlayButton() {
+    // Find the button by its ID
+    const button = document.getElementById('play-pause-audio');
+    var buttonIcon = document.querySelector('#play-pause-audio i.icon');
+
+    // Change the button's style to visually indicate it is disabled
+    // button.style.opacity = '0.5'; 
+    // Change the button color to grey
+    button.classList.remove('blue'); // Remove the blue class if it's there
+    button.classList.add('grey'); // Add the grey class to change its color
     
+    button.style.pointerEvents = 'none';
+
+    // Find the span that holds the "Play" text
+    const buttonText = button.querySelector('.toggle-text');
+
+    buttonIcon.classList.remove('play', 'pause');
+    buttonIcon.classList.add('check');
+
+    // Change the text to "Done"
+    buttonText.textContent = 'Done';
 }
 
 function updateAvatar(avatarName) {
@@ -602,7 +645,23 @@ function updateAvatar(avatarName) {
         // const pageParam = urlParams.get('page');
         console.log("Avatar change the page is: " + page);
         clearWordHighlights();
-        playAudio(page);
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentPage = urlParams.get('page');
+    
+        playAudio(currentPage);
+
+        const button = document.getElementById('play-pause-audio');
+        var buttonIcon = document.querySelector('#play-pause-audio i.icon');
+        var buttonText = document.querySelector('#play-pause-audio span.toggle-text');
+
+        button.classList.remove('grey'); // Remove the grey class
+        button.classList.add('blue'); // Add the blue class to change its color back
+        button.style.pointerEvents = 'auto';
+
+        buttonIcon.classList.remove('play', 'pause', 'check');
+        buttonIcon.classList.add('pause');
+        buttonText.innerText = 'Pause';
         startHighlightingWords();
         // audio.play();
 
