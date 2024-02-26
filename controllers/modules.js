@@ -62,7 +62,9 @@ exports.getModule = async (req, res) => {
     const fullJson = JSON.parse(narration_data.toString());
     // provide speech marks for complete single page app module section 
     speechMarks = fullJson[section];
-    console.log("***The speech marks are: " + speechMarks);
+    console.log("!!! THe module is: " + module + " and the section is: " + section + " and the page is: " + page);
+    console.log("The speech marks are: " + JSON.stringify(speechMarks));
+    // console.log("***The speech marks are: " + speechMarks);
 
     if(section === 'practice'){
       console.log("YOOO This is the practice section")

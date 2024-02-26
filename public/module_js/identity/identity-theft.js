@@ -288,6 +288,7 @@ function startHighlightingWords() {
     // console.log("The avatar speech data: " + avatarSpeechData);
 
     wordData= avatarSpeechData;
+    console.log("The word data: " + JSON.stringify(wordData));
 
     isPaused = false;
     totalWords = wordData.length;

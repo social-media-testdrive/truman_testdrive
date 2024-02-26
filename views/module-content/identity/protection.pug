@@ -17,7 +17,7 @@ block content
         include protection/reflection.pug
         include protection/quiz.pug
         include protection/takeaways.pug
-    audio(id="narration-audio", src=`https://dart-store.s3.amazonaws.com/identity+theft+voice+over/${section}/${page}_${user.avatar.toLowerCase()}.mp3`, preload="auto")
+    audio(id="narration-audio", src=`https://dart-store.s3.amazonaws.com/identity+theft+voice+over/${section}/${page}_${user.avatar.toLowerCase()}.mp3`, preload="auto", onended="disableNarrationPlayButton()")
 
 
 block styles 
