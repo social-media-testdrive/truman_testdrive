@@ -507,12 +507,21 @@ function setLinks(currentPage) {
             nextlink = baseurl + 'definitions';
         } else if(currentPage === 'definitions') {
             backlink = baseurl + 'intro-video';
-            nextlink = baseurl + 'personal-info';
-        } else if(currentPage === 'personal-info') {
+            nextlink = baseurl + 'phases';
+        } else if(currentPage === 'phases') {
             backlink = baseurl + 'definitions';
+            nextlink = baseurl + 'types';
+        } else if(currentPage === 'types') {
+            backlink = baseurl + 'phases';
+            nextlink = baseurl + 'fake';
+        } else if(currentPage === 'fake') {
+            backlink = baseurl + 'types';
+            nextlink = baseurl + 'trusted';
+        } else if(currentPage === 'trusted') {
+            backlink = baseurl + 'fake';
             nextlink = baseurl + 'activity';
         } else if(currentPage === 'activity') {
-            backlink = baseurl + 'personal-info';
+            backlink = baseurl + 'types';
             nextlink = baseurl + 'reflection';
         } else if(currentPage === 'reflection') {
             backlink = baseurl + 'activity';
@@ -724,7 +733,7 @@ function updateProgressBar() {
             progress = (1 / total) * 100;
         } else if (pageParam === 'definitions') {
             progress = (2 / total) * 100;
-        } else if (pageParam === 'personal-info') {
+        } else if (pageParam === 'phases') {
             progress = (3 / total) * 100;
         } else if (pageParam === 'activity') {
             progress = (4 / total) * 100;

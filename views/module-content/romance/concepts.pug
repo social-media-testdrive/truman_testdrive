@@ -12,7 +12,10 @@ block content
         include concepts/objectives.pug
         include concepts/intro-video.pug
         include concepts/definitions.pug
-        include concepts/personal-info.pug
+        include concepts/phases.pug
+        include concepts/types.pug
+        include concepts/fake.pug
+        include concepts/trusted.pug
         include concepts/activity.pug
         include concepts/reflection.pug
         include concepts/quiz.pug
@@ -52,6 +55,31 @@ block scripts
         var total = parseInt(#{numPages});
     if page === 'objectives'
         script(src='/module_js/identity/villain-reveal.js')
+    script.
+
+        //- Sources referenced: https://mgmgblog.com/en/post-4601/ and https://codepen.io/jjinMangKo/pen/LYygOrq
+        $('#steps-slider').slick({
+            asNavFor:"#image-slider",
+            dots: true,
+            arrows: true,
+            infinite: false,
+            speed: 800,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            customPaging : function(slider, index) { 
+                var num = index + 1;
+                return '<span class="dot">'+ num +'</span>';
+            }
+        });
+
+        $('#image-slider').slick({
+                draggable: false,
+                infinite: false,
+                arrows: false,
+                fade: true,
+                cssEase: 'linear'
+        });
+
     script.
         //- for quiz
         var questionData = !{JSON.stringify(quizData)}; // quizData is passed to pug file via render function in app.js
