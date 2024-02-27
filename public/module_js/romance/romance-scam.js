@@ -539,21 +539,22 @@ function setLinks(currentPage) {
 
         if(currentPage === 'objectives') {
             backlink = '/course-player?module=romance&section=concepts&page=objectives';
-            nextlink = baseurl + 'intro-video'; 
+            nextlink = baseurl + 'financial'; 
         } 
-        else if(currentPage === 'intro-video') {
-            // pause video
-            $('#my_video_1')[0].player.pause();
-
+        else if(currentPage === 'financial') {
             backlink = baseurl + 'objectives';
-            nextlink = baseurl + 'general';
-        } else if(currentPage === 'general') {
+            nextlink = baseurl + 'emotional';
+        } else if(currentPage === 'emotional') {
 
-            backlink = baseurl + 'intro-video';
+            backlink = baseurl + 'financial';
+            nextlink = baseurl + 'targeted';
+        } else if(currentPage === 'targeted') {
+
+            backlink = baseurl + 'emotional';
             nextlink = baseurl + 'types';
-        } else if(currentPage === 'types') {
+        }  else if(currentPage === 'types') {
 
-            backlink = baseurl + 'general';
+            backlink = baseurl + 'targeted';
             nextlink = baseurl + 'reflection';
         } else if(currentPage === 'reflection') {
             backlink = baseurl + 'types';
