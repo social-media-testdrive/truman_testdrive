@@ -1,5 +1,5 @@
--var cdn = "https://dhpd030vnpk29.cloudfront.net";
--var s3 = "https://testdrive-filesystem.s3.us-east-2.amazonaws.com/"
+-const cdn = "https://dhpd030vnpk29.cloudfront.net";
+-const s3 = "https://testdrive-filesystem.s3.us-east-2.amazonaws.com/"
 doctype html
 html
   head
@@ -7,7 +7,7 @@ html
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(name='theme-color' content='#4DA5F4')
-    meta(name='csrf-token', content=csrfToken)
+    meta(name='csrf-token', content=_csrf)
     meta(name='isDataCollectionEnabled', content=process.env.enableDataCollection)
     meta(name='isShareActivityDataEnabled', content=process.env.enableShareActivityData)
     meta(name='isResearchVersion', content=process.env.isResearchVersion)
@@ -20,7 +20,7 @@ html
     meta(property='og:image' content='https://dhpd030vnpk29.cloudfront.net/squareLogo.png')
     meta(name='twitter:image' content='https://dhpd030vnpk29.cloudfront.net/squareLogo.png')
     if (process.env.isResearchVersion === "true")
-      if (process.env.NODE_ENV === "production")
+      if (process.env.instanceType === "production")
         meta(property='og:url' content='https://research.socialmediatestdrive.org/')
       else 
         meta(property='og:url' content='https://researchtest.socialmediatestdrive.org/')
@@ -29,7 +29,7 @@ html
       meta(name='twitter:title' content="Social Media TestDrive for Research")
       meta(name='twitter:description' content="Welcome to the research version of Social Media TestDrive!")
     else 
-      if (process.env.NODE_ENV === "production")
+      if (process.env.instanceType === "production")
         meta(property='og:url' content='https://app.socialmediatestdrive.org/')
       else
         meta(property='og:url' content='https://test.socialmediatestdrive.org/')
@@ -39,63 +39,32 @@ html
       meta(name='twitter:description' content="Welcome to Social Media TestDrive!")
     title #{title} - Social Media TestDrive
     link(rel='shortcut icon', href=cdn+'/favicon.ico')
-    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css')
     link(rel='stylesheet', href=cdn+'/js/lib/introjs.min.css')
     link(type='text/css', rel='stylesheet', href='/css/header.css') 
     link(type='text/css', rel='stylesheet', href='/css/ui_layout.css') 
     block styles
 
-  body
-    .ui.vertically.padded.grid.container.addBottomPaddingToGrid
-      include partials/ui_header
-      .ui.grid.container#pagecontainer
-        include partials/ui_flash
-        block content
-      .ui.small.basic.share.modal
-        .ui.icon.header
-          i.share.icon
-          |     You have shared this post!
-        .actions(style="text-align:center;")
-          .ui.green.ok.inverted.button
-            i.checkmark.icon
-            |   Done                      
-    include partials/ui_footer
-    
+  body  
     script(src=cdn+'/js/lib/jquery-3.1.1.min.js')
     script(src=cdn+'/js/lib/humanized_time_span.js')
     script(src=cdn+'/js/lib/lazyload.transpiled.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js', integrity="sha512-93wYgwrIFL+b+P3RvYxi/WUFRXXUDSLCT2JQk9zhVGXuS2mHl2axj6d+R6pP+gcU5isMHRj1u0oYE/mWyt/RjA==" crossorigin="anonymous")
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js', integrity="sha512-E1dSFxg+wsfJ4HKjutk/WaCzK7S2wv1POn1RRPGh8ZK+ag9l244Vqxji3r6wgz9YBf6+vhQEYJZpSjqWFPg9gg==" crossorigin="anonymous")
+    script(src=cdn+'/js/lib/intro.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js', integrity = "sha512-Xo0Jh8MsOn72LGV8kU5LsclG7SUzJsWGhXbWcYs2MAmChkQzwiW/yTQwdJ8w6UA9C6EVG18GHb/TrYpYCjyAQw==" crossorigin="anonymous")
+    
     if process.env.instanceType == 'test'
-      script(src='https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js', integrity="sha256-ZUdSt2scSiBqI3Tso+Al3lcqkBvgRShVrUc1pvvGGVE=" crossorigin="anonymous")
-      script(src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js', integrity="sha256-v8vuH0gf888S01qYrvK2hDq/RfE2au7WOLbqlPzDwOQ=" crossorigin="anonymous")
-      script(src=cdn+'/js/lib/intro.min.js')
-      script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js', integrity='sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=', crossorigin='anonymous')
-      - var t = '/main.js?t=' + (new Date()).getTime().toString();
-      script(src=t)
-    else if process.env.NODE_ENV == 'production'
-      script(src='https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js', integrity="sha256-ZUdSt2scSiBqI3Tso+Al3lcqkBvgRShVrUc1pvvGGVE=" crossorigin="anonymous")
-      script(src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js', integrity="sha256-v8vuH0gf888S01qYrvK2hDq/RfE2au7WOLbqlPzDwOQ=" crossorigin="anonymous")
-      script(src=cdn+'/js/lib/intro.min.js')
-      script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js', integrity='sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=', crossorigin='anonymous')
-      script(src=cdn+'/js/main23.js?v=1')
-      //- script(src='/module_js/js/main.js')
+      script(src=cdn+'/js/main24.js')
+    else if process.env.instanceType == 'production'
+      script(src=cdn+'/js/main24.js')
     else
-      script(src='https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js', integrity="sha256-ZUdSt2scSiBqI3Tso+Al3lcqkBvgRShVrUc1pvvGGVE=", crossorigin="anonymous")
-      script(src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.js', integrity="sha256-uMIfMa67pYMwbPxTsdF1v1dvkFLfZ9DPZpjGQfi+6DI=", crossorigin="anonymous")
-      script(src=cdn+'/js/lib/intro.min.js')
-      script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.js', integrity="sha256-qs5p0BFSqSvrstBxPvex+zdyrzcyGdHNeNmAirO2zc0=", crossorigin="anonymous")
-      - var t = '/main.js?t=' + (new Date()).getTime().toString();
-      script(src=t)
+      script(src='/main.js')
 
     block scripts
-    // Google Analytics
+    //- Google Analytics
     if process.env.isResearchVersion !== 'true'
-      if process.env.NODE_ENV === 'production'
-        script(async='' src='https://www.googletagmanager.com/gtag/js?id=UA-145467622-1')
-        script.
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'UA-145467622-1');
+      if process.env.instanceType === 'production'
         script(async='' src='https://www.googletagmanager.com/gtag/js?id=G-ZCVVLE1T7B')
         script.
           window.dataLayer = window.dataLayer || [];
@@ -109,9 +78,10 @@ html
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'G-RRB8FEMM6V');
-        script(async='' src='https://www.googletagmanager.com/gtag/js?id=UA-145467622-2')
-        script.
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'UA-145467622-2');
+          
+    .ui.vertically.padded.grid.container#pagegrid
+      include partials/ui_header
+      .ui.grid.container#pagecontainer
+        include partials/ui_flash
+        block content              
+    include partials/ui_footer

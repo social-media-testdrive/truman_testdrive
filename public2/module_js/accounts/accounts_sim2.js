@@ -1,4 +1,4 @@
-var hintsList = [{
+const hintsList = [{
         hint: `Fill out the profile information. Remember to not share too many
         details about who you are.`,
         element: '#generalStep',
@@ -25,16 +25,17 @@ function customOnClickGreenContinue() {
     if (enableDataCollection) {
         actionArray = [];
         $('input[type=text], textarea[type=text], input[name="profilePhoto"]').each(function() {
-            let cat = {};
-            cat.inputField = $(this).attr('name');
+            let cat = {
+                inputField: $(this).attr('name'),
+                subdirectory1: 'sim2',
+                subdirectory2: 'accounts',
+                absoluteTimestamp: Date.now()
+            };
             if (cat.inputField === 'profilePhoto') {
                 cat.inputText = $(this).val() !== 'avatar-icon.svg' ? "true" : "false";
             } else {
                 cat.inputText = $(this).val() !== "" ? "true" : "false";
             }
-            cat.subdirectory1 = 'sim2';
-            cat.subdirectory2 = 'accounts';
-            cat.absoluteTimestamp = Date.now();
 
             const jqxhr = $.post("/accountsAction", {
                 action: cat,

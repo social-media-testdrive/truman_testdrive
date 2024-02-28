@@ -1,4 +1,4 @@
-var hintsList = [{
+const hintsList = [{
         hint: `Nick's best friends, Liam and Vanessa, have posted that they are
     hanging out, but Nick was not invited. Click on the post to reflect on how
     Nick might feel and what he can do if he is experiencing a red flag
@@ -35,7 +35,7 @@ var hintsList = [{
     }
 ]
 
-var stepsList = [{
+const stepsList = [{
         element: '#step1',
         intro: `Click "Next" to begin!`,
         position: 'left',
@@ -61,7 +61,7 @@ function eventsAfterHints() {
     introJs().hideHints();
     introJs().showHint(0);
 
-    $('.ui.fluid.card.test img').on('click', function() {
+    $('.ui.fluid.card img').on('click', function() {
         $('.ui.accordion').accordion('open', 0);
         $('.ui.accordion').accordion('close', 1);
         $('.ui.modal input[type=checkbox]').prop('checked', false);
@@ -73,7 +73,6 @@ function eventsAfterHints() {
 
 
 function customOnHintCloseFunction(stepID) {
-
     // sequential hint appearance
     stepID += 1;
     if (stepID !== numberOfHints) {

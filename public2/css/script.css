@@ -1,108 +1,113 @@
 /* create a new post sticky at top of feed */
+
 .ui.sticky.newPostSticky .ui.input {
-  box-shadow: 7px -2px 6px 18px #f5f8fa;
-  z-index: 800;
+    box-shadow: 7px -2px 6px 18px #f5f8fa;
+    z-index: 800;
 }
 
 .ui.sticky.newPostSticky .ui.label,
 .ui.sticky.newPostSticky input {
-  border-radius: 0;
+    border-radius: 0;
 }
 
-/* custom tutorial classes */
+
+/* Not used: Custom tutorial classes for intro.js steps on feed.*/
+
 .stickyTooltip {
-  position: fixed !important;
-  top: 85px !important;
+    position: fixed !important;
+    top: 85px !important;
 }
 
-.stickyTooltip + .introjs-fixedTooltip{
-  position: fixed !important;
-  top: 85px !important;
+.stickyTooltip+.introjs-fixedTooltip {
+    position: fixed !important;
+    top: 85px !important;
 }
+
 
 /* user made post */
 
 .userMadePost .two.attached.buttons {
-  z-index:0;
+    z-index: 0;
 }
 
-.extra.content .description {
-  text-align:center;
-  background:#E8E8E8;
+
+/* normal actor post */
+
+.img.post.image {
+    position: relative;
 }
+
+.img.post.image img.imageWithModal {
+    cursor: pointer;
+}
+
 
 /* targeted ads post */
 
 .notflag .eye.slash.icon,
 .notflag h1 {
-  color: black;
+    color: black;
 }
 
 .targetedAdPost .ui.right.floated.menu {
-  border: none;
-  box-shadow: none;
+    border: none;
+    box-shadow: none;
 }
 
 .targetedAdPost i.fitted.icon,
 #sponsoredTag .external.alternate.icon {
-  color: gray;
+    color: gray;
 }
 
 .targetedAdPost .image img {
-  max-width: 100%;
+    max-width: 100%;
 }
 
 #sponsoredTag {
-  border: none;
+    border: none;
 }
 
-/* normal actor post */
-
-.img.post img.imageWithModal {
-  cursor:pointer;
-}
-
-.three.bottom.attached.buttons {
-  z-index: 0;
-}
 
 /* digital literacy post */
 
-.info_button{
-  z-index:9;
-  text-align:center;
-  align-self:flex-end;
-  position:relative;
-  bottom:10px;
-  width:7%;
-  height:auto
+.info_button {
+    /* z-index: 9; */
+    text-align: center;
+    align-self: flex-end;
+    position: absolute;
+    bottom: 10px;
+    right: 5px;
+    width: 7%;
+    height: auto
 }
 
-/* chat boxes */
+
+/* safe-posting: chat boxes */
 
 #chatbox1 .chat {
-  right:24px;
-  margin-bottom:3em;
+    right: 24px;
+    margin-bottom: 3em;
 }
 
 #chatbox2 .chat {
-  right: 345px;
-  margin-bottom:3em;
+    right: 345px;
+    margin-bottom: 3em;
 }
 
 .chat img {
-  width: 3em !important;
-  height: 3em !important;
+    width: 3em !important;
+    height: 3em !important;
 }
+
 
 /* make a new post modal */
 
 .ui.modal.newPostModal {
-  margin-top: 9em;
-  margin-bottom: 4em;
+    margin-top: 2em !important;
+    margin-bottom: 2em !important;
 }
 
 .ui.modal.newPostModal .field img {
-  width: 65%;
-  height: auto;
+    width: 65%;
+    height: auto;
 }

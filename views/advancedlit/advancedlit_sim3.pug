@@ -1,27 +1,14 @@
 extends ../ui_layout
 
 block content
-  #content.sixteen.wide.column.centered.addBottomMargin
-   //- #####################################################
+  .sixteen.wide.column.centered.removeTopPadding.mb-9
    .ui.one.column.centered.grid.feedbackMessagesGrid
      .ui.fixed.bottom.sticky
-       .ui.icon.compact.message.warning.hidden#removeHidden
-         i.close.icon
-         i.question.icon.float
-         .content
-           .ui.header Need some help? 
-           p Make sure you are clicking "Got it" on the blue dots!
-         
-       .ui.icon.message.warning.hidden#clickAllDotsWarning
-         i.close.icon
-         i.hand.pointer.icon.float
-         .content
-           .ui.header There are still blue dots to find!
-           p Click through all of the blue dots to continue.
-       .ui.icon.message.success.hidden#instructionsToContinue
-         .content
-           .ui.header Click "Go back to the timeline" to continue!
-           
+      include ../partials/messages/removeHiddenMessage
+      include ../partials/messages/clickAllDotsMessage
+      .ui.icon.message.success.hidden#instructionsToContinue
+        .content
+          .ui.header Click "Go back to the timeline" to continue!
    .ui.grid.gridInsideTab 
      .row 
        .column
@@ -31,12 +18,9 @@ block content
          button.ui.big.button.articleTab2
            i.icon.reply
            | Go back to the article
-           
      .row
        .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.left.floated.column    
-
          h2 Search results for "Haywell Middle School Closing"
-         
          br#hint1
          p.resultURL hillwoodschools.org
          a
@@ -92,7 +76,6 @@ block content
            | This e-newsletter is informational only and is neither sponsored 
            | nor endorsed by the Board of Education of the Hillwood County 
            | School District, the ...
-
      .row 
        .column
          button.ui.big.button.articleTab
@@ -109,3 +92,4 @@ block scripts
   
 block styles
   link(rel='stylesheet', href='/css/modules/advancedlit.css')
+  link(rel='stylesheet', href='/css/sim.css')

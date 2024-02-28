@@ -1,7 +1,7 @@
 extends ../ui_layout
 
 block content
-  .ui.equal.width.padded.grid.stackable
+  .ui.equal.width.padded.grid.stackable.gamingPageBackground
     .row
       .column.center.aligned
         h3 Boggle Earth VR
@@ -21,7 +21,6 @@ block content
       .column.center.aligned
         h1 Introducing Boggle Earth VR
         p Explore the world from totally new perspectives. Stroll the streets of Tokyo, soar overYosemite, or teleport across the globe.
-        
     .row
       .column.left.aligned
         .ui.fluid.image.gamingElement2
@@ -34,12 +33,11 @@ block content
           img(src=cdn+ '/post_pictures/Games_Interest_Page_3.jpg')
           h2 Space VR
         
-  a.addBottomMargin(href='javascript:void(0);', onclick='javascript:startIntro();')
-    .ui.big.green.labeled.icon.button
-        i.rocket.icon
-        |   Let's Continue!
+  a(href='javascript:void(0);', onclick='javascript:startIntro();')
+    .ui.big.green.labeled.icon.button.mb-4.mt-6
+      i.rocket.icon
+      |   Let's Continue!
           
-            
 block scripts
   script().
     function startIntro(){

@@ -1,0 +1,192 @@
+{
+    "accounts": {
+        "intro": "",
+        "bulletPoints": [{
+                "text": "To use a social media site, you need a username and a password. A username identifies who you are to people on social media. A password is a secret code that you use to log in."
+            },
+            {
+                "text": "A social media profile page will let other people learn about who you are. You can include information such as your first name, a picture of yourself, and a short description about yourself."
+            },
+            {
+                "text": "When you create a username and profile, think about what kinds of information you are sharing with other people. Choosing a strong password can keep your account safe."
+            }
+        ],
+        "conclusion": "",
+        "voiceoverFiles": ["CUSML.8.5.01.mp3", "CUSML.8.5.02.mp3", "CUSML.8.5.03.mp3"],
+        "nextPage": "results"
+    },
+    "advancedlit": {
+        "intro": "",
+        "bulletPoints": [{
+                "text": "Social media can be a great place to find information about things that just happened or are currently taking place."
+            },
+            {
+                "text": "When you come across breaking news on your timeline, it’s important to fact-check the information in the article. Ask yourself these questions:",
+                "bullets": ["Is this article a news piece or an opinion piece?", "Does the article mention where or from whom the author got the information?", "Are there other sources that are also reporting this news?"]
+            },
+            {
+                "text": "If you think the article is incorrect or incomplete, wait to get the full story before you decide to share it!"
+            }
+        ],
+        "conclusion": "",
+        "voiceoverFiles": ["CUSML.9.5.01.mp3", "CUSML.9.5.02.mp3", "CUSML.9.5.03.mp3"],
+        "nextPage": "trans_script"
+    },
+    "cyberbullying": {
+        "intro": "",
+        "bulletPoints": [{
+                "text": "Cyberbullying is when someone posts or shares negative things about someone else online. The bully may use digital devices, sites, or apps. The bully often does this again and again to the same person."
+            },
+            {
+                "text": "An upstander will confront the bully, or support and defend the target."
+            },
+            {
+                "text": "You can also flag the comment or tell a trusted adult."
+            }
+        ],
+        "conclusion": "",
+        "voiceoverFiles": ["CUSML.6.5.1.mp3", "CUSML.6.5.2.mp3", "CUSML.6.5.3.mp3"],
+        "nextPage": "trans_script"
+    },
+    "digfoot": {
+        "intro": "",
+        "bulletPoints": [{
+                "text": "All of your actions on social media create a digital footprint. This includes any information you share about yourself and any posts that you have created."
+            },
+            {
+                "text": "Remember to think before you post! Try to avoid oversharing about yourself and others."
+            },
+            {
+                "text": "Think about ways you can create a positive digital footprint!"
+            }
+        ],
+        "conclusion": "",
+        "voiceoverFiles": ["CUSML.4.5.1.mp3", "CUSML.4.5.2.mp3", "CUSML.4.5.3.mp3"],
+        "nextPage": "trans_script"
+    },
+    "digital-literacy": {
+        "intro": "",
+        "bulletPoints": [{
+                "text": "It's important to know how to spot fake news on social media so you can stop it from spreading."
+            },
+            {
+                "text": "Look out for clickbait headlines, suspicious sources, and excessive grammatical errors."
+            },
+            {
+                "text": "Once you've done that, be sure to read the article more closely and check the source. You should also look for corroboration by finding other credible articles that have the same claims."
+            }
+        ],
+        "conclusion": "",
+        "voiceoverFiles": ["CUSML.5.7.1.mp3", "CUSML.5.7.2.mp3", "CUSML.5.7.3.mp3"],
+        "nextPage": "trans_script"
+    },
+    "esteem": {
+        "intro": "",
+        "bulletPoints": [{
+                "text": "A red flag feeling is when something happens on social media that makes you feel uncomfortable, worried, sad, or anxious."
+            },
+            {
+                "text": "If you get a red flag feeling on social media, pause and think about how you're feeling and what you can do to feel better."
+            },
+            {
+                "text": "Remember to think about media balance and how you can use social media in a way that feels positive and in balance with other activities you enjoy doing."
+            }
+        ],
+        "conclusion": "",
+        "voiceoverFiles": ["CUSML.1.5.1.mp3", "CUSML.1.5.2.mp3", "CUSML.1.5.3.mp3"],
+        "nextPage": "trans2"
+    },
+    "habits": {
+        "intro": "",
+        "bulletPoints": [{
+                "text": "Social media sites have attention-grabbing design features such as notifications, video autoplay, and endless news feed scrolling."
+            },
+            {
+                "text": "The constant feedback loops of social media can cause you to form unhealthy social media habits."
+            },
+            {
+                "text": "Here are some strategies you can use to build healthy social media habits.",
+                "bullets": ["Turn off or reduce the number of notifications you get from social media", "Be mindful of and track how much time you spend on social media", "Make sure to take breaks or disconnect from social media if you sneed to"]
+            }
+        ],
+        "conclusion": "",
+        "voiceoverFiles": ["CUSML.10.5.1.mp3", "CUSML.10.5.2.mp3", "CUSML.10.5.3.mp3"],
+        "nextPage": "trans_script"
+    },
+    "phishing": {
+        "intro": "",
+        "bulletPoints": [{
+                "text": "Phishing scams on social media happen when a scammer poses as an institution or your friend and posts a message asking you to provide private information."
+            },
+            {
+                "text": "Scammers can use shortened URLs to trick you into clicking on risky websites. Phishing scams can also have spelling or grammar errors, misleading images, and deals that sound too good to be true."
+            },
+            {
+                "text": "If you see a phishing scam, you can:",
+                "bullets": ["Ignore the link and don’t click on it", "\"Flag\" the post to report it to the website"]
+            }
+        ],
+        "conclusion": "",
+        "voiceoverFiles": ["CUSML.3.6.1.mp3", "CUSML.3.6.2.mp3", "CUSML.3.6.3.mp3"],
+        "nextPage": "trans_script"
+    },
+    "presentation": {
+        "intro": "",
+        "bulletPoints": [{
+                "text": "A social media audience is anyone who can see information about you or posted by you online."
+            },
+            {
+                "text": "Some people use anonymous accounts (i.e. finstas or spam accounts) where they only post to a specific group of people. People might say and post things in an anonymous account that they normally wouldn’t to a broader audience."
+            }
+        ],
+        "conclusion": "",
+        "voiceoverFiles": ["CUSML.12.5.1.mp3", "CUSML.12.5.2.mp3"],
+        "nextPage": "trans_script"
+    },
+    "privacy": {
+        "intro": "It’s important to understand what information social media companies collect about you. When you read a website’s Privacy Policy, ASK yourself...",
+        "bulletPoints": [{
+                "text": "Accessed: What will be accessed or collected by the company?"
+            },
+            {
+                "text": "Shared: What will be shared with other people or third parties?"
+            },
+            {
+                "text": "Known: What could be known about me if I use this?"
+            }
+        ],
+        "conclusion": "Also, when you sign up for a social media account, make sure you know what your privacy settings are and change them to something that you are comfortable with!",
+        "voiceoverFiles": ["CUSML.7.7.1.mp3", "CUSML.7.7.2.mp3", "CUSML.7.7.3.mp3", "CUSML.7.7.4.mp3", "CUSML.7.7.5.mp3"],
+        "nextPage": "free-play"
+    },
+    "safe-posting": {
+        "intro": "",
+        "bulletPoints": [{
+                "text": "Your social media audience can include a lot of people that you don’t know very well. This is why you should not share private information online, such as your full name, address, or phone number."
+            },
+            {
+                "text": "If someone you don’t know is asking for private information about you online, you should be cautious! When this happens, it's important to slow down, pause, and think about the situation. You can respond by changing the subject or telling a trusted adult."
+            }
+        ],
+        "conclusion": "",
+        "voiceoverFiles": ["CUSML.11.6.1.mp3", "CUSML.11.6.2.mp3"],
+        "nextPage": "trans_script"
+    },
+    "targeted": {
+        "intro": "",
+        "bulletPoints": [{
+                "text": "Companies collect all sorts of data about your online activity and then use that data to show you targeted ads on social media."
+            },
+            {
+                "text": "Ads are required to be labeled in some way, such as \"ad\" or \"sponsored.\" But the posts can still look very similar to regular social media posts on your timeline."
+            },
+            {
+                "text": "You can follow these strategies to help reduce the number of targeted ads you see online:",
+                "bullets": ["Turn off cookies in your web browser", "Adjust privacy settings in your apps", "Limit what you share"]
+            }
+        ],
+        "conclusion": "",
+        "voiceoverFiles": ["CUSML.2.6.1.mp3", "CUSML.2.6.2.mp3", "CUSML.2.6.3.mp3"],
+        "nextPage": "trans2"
+    }
+}

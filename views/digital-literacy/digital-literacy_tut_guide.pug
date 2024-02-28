@@ -1,81 +1,76 @@
 extends ../ui_layout
 
 block content
-  .ui.text.container.addBottomMargin
-    br
-    
-    h2.ui.header
-      .content 
-        | When you see a news article on social media, always check to make sure 
-        | it's credible! Here are a few important things to do:
-        .sub.header 
-          br
-          .ui.compact.segment
-            .ui.large.read-only.checked.checkbox.exampleCheckbox
-              input.ui(type="checkbox" id="" checked="")
-              label Read and check all the boxes
-          br
-        
-    .ui.styled.fluid.accordion
-      #point1.title(data-voiceoverIndex='voiceover_tut_guide_1')
-        i.dropdown.icon
-        | Analyze the source. Ask yourself: Does it come from a credible source?
-      .content.ui.list
-          .item
-            #protip1.ui.segment
-              .ui.large.checkbox#checkbox1
-                input.checkbox.ui(type="checkbox" id="")
-                label 
-                  | If the website is part of a credible news, academic (ends with 
-                  | ".edu"), or governmental (ends with ".gov") organization, this 
-                  | is a good sign the article is credible.
-
-          .item
-            #protip2.ui.segment
-              .ui.large.checkbox#checkbox2
-                input.checkbox.ui(type="checkbox"  id="")
-                label 
-                  | You can also look at the “About Us” page to learn more about the 
-                  | website and who is writing the article. It’s important to find 
-                  | out information about the site owner and author by exploring 
-                  | the site and searching the web.
-          .item
-              #point1_button.button.ui.mini.green.right.labeled.icon.button
-                i.down.arrow.icon
-                | Next
-                
-      #point2.title(data-voiceoverIndex='voiceover_tut_guide_2')
-        i.dropdown.icon
-        | Look for corroboration. Ask yourself: Do other credible sources say 
-        | the same thing?
-      .content.ui.list
-          .item
-            #protip3.ui.segment
-              .ui.large.checkbox#checkbox3
-                input.checkbox.ui(type="checkbox")
-                label 
-                  | As a next step, you should look for additional credible sources 
-                  | or articles that confirm what the article says. This is called 
-                  | <b>corroboration.</b> 
-          .item
-            #protip4.ui.segment
-              .ui.large.checkbox#checkbox4
-                input.checkbox.ui(type="checkbox")
-                label 
-                  | To do this, search for the same topic on fact-checking websites 
-                  | such as Snopes.com, FactCheck.org, and major news websites.
+  .ui.text.container.mb-9
+    .ui.raised.segment.mt-6
+      h3.ui.header
+        .content 
+          | When you see a news article on social media, always check to make sure 
+          | it's credible! 
+        .content.mt-4
+          | Here are a few important things to do:
+      .sub.header
+        .ui.compact.segment
+          .ui.large.read-only.checked.checkbox.exampleCheckbox
+            input.ui(type="checkbox" id="" checked="")
+            label Read and check all the boxes
+        .ui.styled.fluid.accordion
+          #point1.title(data-voiceoverIndex='voiceover_tut_guide_1')
+            i.dropdown.icon
+            | Analyze the source. Ask yourself: Does it come from a credible source?
+          .content.ui.list
+              .item
+                #protip1.ui.segment
+                  .ui.large.checkbox#checkbox1
+                    input.checkbox.ui(type="checkbox" id="")
+                    label 
+                      | If the website is part of a credible news, academic (ends with 
+                      | ".edu"), or governmental (ends with ".gov") organization, this 
+                      | is a good sign the article is credible.
+              .item
+                #protip2.ui.segment
+                  .ui.large.checkbox#checkbox2
+                    input.checkbox.ui(type="checkbox"  id="")
+                    label 
+                      | You can also look at the “About Us” page to learn more about the 
+                      | website and who is writing the article. It’s important to find 
+                      | out information about the site owner and author by exploring 
+                      | the site and searching the web.
+              .item
+                #point1_button.button.ui.small.green.right.labeled.icon.button
+                  i.down.arrow.icon
+                  | Next
                   
-    br
+          #point2.title(data-voiceoverIndex='voiceover_tut_guide_2')
+            i.dropdown.icon
+            | Look for corroboration. Ask yourself: Do other credible sources say 
+            | the same thing?
+          .content.ui.list
+              .item
+                #protip3.ui.segment
+                  .ui.large.checkbox#checkbox3
+                    input.checkbox.ui(type="checkbox")
+                    label 
+                      | As a next step, you should look for additional credible sources 
+                      | or articles that confirm what the article says. This is called 
+                      | <b>corroboration.</b> 
+              .item
+                #protip4.ui.segment
+                  .ui.large.checkbox#checkbox4
+                    input.checkbox.ui(type="checkbox")
+                    label 
+                      | To do this, search for the same topic on fact-checking websites 
+                      | such as Snopes.com, FactCheck.org, and major news websites.                
     .ui.warning.message.hidden#checkAllBoxesWarning
-     .header
-      | Check all the boxes to proceed
-    .ui.big.labeled.icon.button.cybersim#cyberSimButton
-        i.rocket.icon
-        |   Got it!
+      .header
+        | Check all the boxes to proceed
+    .ui.large.labeled.icon.button.cybersim#cyberSimButton
+      i.rocket.icon
+      |   Got it!
 
 block scripts
   script.
-    var voiceoverMappings = {
+    const voiceoverMappings = {
       'voiceover_tut_guide_1': {
         "initialDelay": 500,
         "delay": 500,
@@ -91,7 +86,4 @@ block scripts
   script(src="/module_js/digital-literacy/digital-literacy_tut_guide.js")
 
 block styles
-  link(rel='stylesheet' href='/css/checkbox_activity.css')  
-  
-    
-    
+  link(rel='stylesheet' href='/css/tut_guide.css')

@@ -1,0 +1,102 @@
+.ui.large.long.modal#phishingModal1(data-modalName="phishing_surveyScam")
+  i.close.icon  
+  .ui.center.aligned.header FILL OUT THIS SURVEY TO RECEIVE A FREE GIFT CARD!
+  .content
+    .ui.one.column.centered.grid
+      .ui.green.large.statistic
+        .label Fill out this survey to receive a gift card worth    
+        .value
+          | $500
+        .label to any store you want!
+    .ui.form
+      .field(data-tooltip=phishingWarningText data-position="bottom left")
+        label First Name
+        input(readonly='')
+      .field(data-tooltip=phishingWarningText data-position="bottom left")
+        label Last Name
+        input(readonly='')
+      .field(data-tooltip=phishingWarningText data-position="bottom left")
+        label Birth Date
+        input(readonly='')
+      .field(data-tooltip=phishingWarningText data-position="bottom left")
+        label Email Address
+        input(readonly='')
+      .field(data-tooltip=phishingWarningText data-position="bottom left")
+        label Home Address
+        input(readonly='')
+      br
+      .actions
+        .ui.right.labeled.icon.button(data-tooltip=phishingWarningText data-position="top left")
+          | Submit
+          i.checkmark.icon 
+        .ui.negative.right.labeled.icon.button
+          | Cancel
+          i.close.icon 
+            
+.ui.large.long.modal#phishingModal2(data-modalName="phishing_loginScam")
+  i.close.icon  
+  .ui.center.aligned.header 
+    span.setRed !WARNING! 
+    | Our systems show that your TestDrive account is 
+    span.setRed AT RISK!
+  .content
+    .ui.error.icon.message
+      i.circle.exclamation.icon
+      .content
+        .header
+          | Enter your login information to prove that it's you
+    .ui.form
+      .field(data-tooltip=phishingWarningText data-position="bottom left")
+        label Username
+        input(readonly='' placeholder='Enter your username...')
+      .field(data-tooltip=phishingWarningText data-position="bottom left")
+        label Password
+        input(readonly='' placeholder='Enter your password...')
+      br
+      .actions
+        .ui.right.labeled.icon.button(data-tooltip=phishingWarningText data-position="top left")
+          | Submit
+          i.checkmark.icon 
+        .ui.negative.right.labeled.icon.button
+          | Cancel
+          i.close.icon 
+          
+.ui.large.long.modal#phishingModal3(data-modalName="phishing_creditCardScam")
+  i.close.icon  
+  .ui.center.aligned.header WOW! Get a new Switch for just $19.99!!
+  .ui.one.column.centered.grid
+    .image.content
+      .ui.medium.centered.image
+        img(src=cdn+'/post_pictures/nintendo_phi.jpg')
+      .description
+        .ui.header.setBigText This deal will NOT LAST!! 
+        .ui.header 
+          | HURRY - only
+          span.setRed  3
+          |  left!!!
+  .content
+    .ui.header Enter your information to place an order for this CRAZY deal! 
+    .ui.form
+      .field(data-tooltip=phishingWarningText data-position="bottom left")
+        label First Name
+        input(readonly='')
+      .field(data-tooltip=phishingWarningText data-position="bottom left")
+        label Last Name
+        input(readonly='')
+      .field(data-tooltip=phishingWarningText data-position="bottom left")
+        label Birth Date
+        input(readonly='')
+      .field(data-tooltip=phishingWarningText data-position="bottom left")
+        label Email Address
+        input(readonly='')
+      .field(data-tooltip=phishingWarningText data-position="bottom left")
+        label Home Address
+        input(readonly='')
+      br
+      .actions
+        .ui.right.labeled.icon.button(data-tooltip=phishingWarningText data-position="top left")
+          | PLACE ORDER
+          i.checkmark.icon 
+        .ui.negative.right.labeled.icon.button
+          | CLOSE
+          i.close.icon               

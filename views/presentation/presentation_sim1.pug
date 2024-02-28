@@ -13,42 +13,11 @@ block content
         .description 
           i.marker.icon
           span="Cleveland, OH"
-
-  
-  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column 
-    .ui.one.column.centered.grid.feedbackMessagesGrid
-      .ui.fixed.bottom.sticky
-        .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
-          i.close.icon
-          i.question.icon.float
-          .content
-            .ui.header Need some help?
-            p Scroll up and click on "Done" to begin!
-        .ui.icon.compact.message.warning#removeHidden
-          i.close.icon
-          i.question.icon.float
-          .content
-            .ui.header Need some help? 
-            p Make sure you are clicking "Got it" on the blue dots!
-          
-        .ui.icon.message.warning#clickAllDotsWarning
-          i.close.icon
-          i.hand.pointer.icon.float
-          .content
-            .ui.header There are still blue dots to find!
-            p Click through all of the blue dots to continue.
-    #hint2.ui.fluid.card.dim.test
-      .ui.dimmer.flag
-            .content
-              .center
-                h2.ui.inverted.icon.header
-                  i.red.flag.icon
-                  |  You&apos;ve flagged this!
-                  h3.ui.inverted.header
-                    span="The admins will review this post further. We are sorry you had this experience."
+  .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.centered
+    #hint2.ui.fluid.card.dim
+      include ../partials/script/components/dimmerflag
       .content
         .right.floated.meta= "Yesterday"
-        |
         a(href='/user/jakethesnake')
           img.ui.avatar.image(src=cdn+'/profile_pictures/user78.png')
           span='Snake Jake'
@@ -68,7 +37,6 @@ block content
             i.heart.icon
             |  Like
           a.ui.basic.red.left.pointing.label.count=2
-      
       .content
         .ui.comments
           .comment
@@ -87,25 +55,11 @@ block content
               .actions
                 a.like.comment Like
                 a.flag.comment Flag
-      .extra.content
-        .ui.fluid.left.labeled.right.icon.input
-          .ui.label
-            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment(type='text' placeholder='Write a Comment')
-          i.big.send.link.icon
-
-    .ui.fluid.card.dim.test()
-      .ui.dimmer.flag
-            .content
-              .center
-                h2.ui.inverted.icon.header
-                  i.red.flag.icon
-                  |  You&apos;ve flagged this!
-                  h3.ui.inverted.header
-                    span="The admins will review this post further. We are sorry you had this experience."
+      include ../partials/script/components/newUserComment
+    .ui.fluid.card.dim
+      include ../partials/script/components/dimmerflag
       .content
         .right.floated.meta= "2 days ago"
-        |
         a(href='/user/jakethesnake')
           img.ui.avatar.image(src=cdn+'/profile_pictures/user78.png')
           span='Snake Jake'
@@ -125,7 +79,6 @@ block content
             i.heart.icon
             |  Like
           a.ui.basic.red.left.pointing.label.count=2
-      
       .content
         .ui.comments
           .comment
@@ -160,25 +113,11 @@ block content
               .actions
                 a.like.comment Like
                 a.flag.comment Flag
-      .extra.content
-        .ui.fluid.left.labeled.right.icon.input
-          .ui.label
-            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment(type='text' placeholder='Write a Comment')
-          i.big.send.link.icon
-
-    .ui.fluid.card.dim.test()
-      .ui.dimmer.flag
-            .content
-              .center
-                h2.ui.inverted.icon.header
-                  i.red.flag.icon
-                  |  You&apos;ve flagged this!
-                  h3.ui.inverted.header
-                    span="The admins will review this post further. We are sorry you had this experience."
+      include ../partials/script/components/newUserComment
+    .ui.fluid.card.dim
+      include ../partials/script/components/dimmerflag
       .content
         .right.floated.meta= "3 days ago"
-        |
         a(href='/user/jakethesnake')
           img.ui.avatar.image(src=cdn+'/profile_pictures/user78.png')
           span='Snake Jake'
@@ -198,7 +137,6 @@ block content
             i.heart.icon
             |  Like
           a.ui.basic.red.left.pointing.label.count=2
-      
       .content
         .ui.comments
           .comment
@@ -233,66 +171,22 @@ block content
               .actions
                 a.like.comment Like
                 a.flag.comment Flag
-      .extra.content
-        .ui.fluid.left.labeled.right.icon.input
-          .ui.label
-            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment(type='text' placeholder='Write a Comment')
-          i.big.send.link.icon
-
-    button.ui.big.labeled.icon.button.cybersim2.addBottomMargin#cyberTransButton
+      include ../partials/script/components/newUserComment
+    button.ui.big.labeled.icon.button.cybersim2.mb-9#cyberTransButton
         i.rocket.icon
         |   Let's Continue!
+    //- Located at bottom so element doesn't take up space at top.
+    .ui.one.column.centered.grid.feedbackMessagesGrid
+      .ui.fixed.bottom.sticky
+        include ../partials/messages/clickNextMessage
+        include ../partials/messages/removeHiddenMessage
+        include ../partials/messages/clickAllDotsMessage
+  .computer.only.tablet.only.four.wide.column 
 
 block scripts
-  script.
-    var stepsList = [
-      {
-        element: '#hint2',
-        intro: `Click "Next" to begin!`,
-        position: 'right',
-        scrollTo: 'tooltip',
-        audioFile: ['']
-      },
-      {
-        element: '#hint2',
-        intro: `Click on "Done" and then look for the blue dots&nbsp;&nbsp;<a role='button' tabindex='0'
-        class='introjs-hint'><div class='introjs-hint-dot'></div><div
-        class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; &nbsp; to learn more...`,
-        position:'right',
-        scrollTo:'tooltip',
-        audioFile: ['CUSML.12.4.03.mp3']
-      }
-    ];
-    
-    var hintsList = [
-      {
-        hint: `Here’s Jake’s finsta, jakethesnake. Only 16 of his closest
-        friends from school follow this account.`,
-        element: '#hint2',
-        hintPosition: 'top-left',
-        audioFile: ['CUSML.12.4.05.mp3']
-      },
-      {
-        hint: `Here, he posts funny pictures and casual things that he would
-        not post on his main account because he only wants his best friends
-        to see it.`,
-        element: '#hint2',
-        hintPosition: 'top-middle',
-        audioFile: ['CUSML.12.4.06.mp3']
-      },
-      {
-        hint: `Even though Jake doesn’t name the person, the post is unkind
-        and stirs up drama. Would Jake post the same thing on his public
-        account? Remember to be kind and respectful online!`,
-        element: '#hint3',
-        hintPosition: 'top-middle',
-        audioFile: ['CUSML.12.4.07.mp3']
-      }
-    ];
-
   script(src='/module_js/voiceover.js')    
   script(src='/postFunctionalities.js')
+  script(src='/module_js/presentation/presentation_sim1.js')
   script(src="/module_js/base_sim.js")
   
 block styles

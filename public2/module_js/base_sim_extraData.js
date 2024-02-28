@@ -7,9 +7,26 @@ this function.
 */
 
 function recordSimModalInputs(modalNameAttrStr) {
+    /**
+     * Sim modals: Values of 'modalNameAttrStr' 
+     * digital-literacy
+     * - 'digital-literacy_articleModal'
+     * - 'digital-literacy_infoModal'
+     * - 'digital-literacy_flagModal'
+     * digfoot: 
+     * - 'digfoot_simModal'
+     * esteem: 
+     * - 'esteem_simPostModal1'
+     * - 'esteem_simPostModal2' (in onHide function)
+     * targeted:
+     * - 'targeted_hideAdModal'
+     * - 'targeted_whySeeingAdModal'
+     * phishing: 
+     * - 'phishing_iPhoneModal'
+     * - 'phishing_ticketGiveawayModal'
+     */
     const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
     let target = $(event.target);
-    //const simPostNumber = target.closest('.ui.card').attr('simPostNumber');
     const post = target.closest(".ui.card");
     const postID = post.attr("postID");
     const modalOpenedTime = Date.now();
@@ -32,12 +49,8 @@ function recordSimModalInputs(modalNameAttrStr) {
                 case 'digital-literacy_flagModal':
                     Voiceovers.playVoiceover(['CUSML.misc_03.mp3'])
                     break;
-                case 'digfoot_normalPostModal':
                 case 'digfoot_simModal':
                     Voiceovers.playVoiceover(['CUSML.misc_04.mp3'])
-                    break;
-                case 'esteem_postModal1':
-                    Voiceovers.playVoiceover(['CUSML.misc_07.mp3'])
                     break;
                 case 'esteem_simPostModal1':
                     Voiceovers.playVoiceover(['CUSML.misc_05.mp3'])
@@ -52,8 +65,6 @@ function recordSimModalInputs(modalNameAttrStr) {
         },
         onHide: function() {
             Voiceovers.pauseVoiceover();
-
-
             // collapses all 'active' (open) accordion elements in digital-literacy_articleModal
             $(`.ui.modal[data-modalName=${modalNameAttrStr}] .title.modalDropdown`).removeClass("active");
             $(`.ui.modal[data-modalName=${modalNameAttrStr}] .content`).removeClass("active");
@@ -105,7 +116,7 @@ function recordSimModalInputs(modalNameAttrStr) {
         },
         // the following is only relevant in the esteem module:
         onHidden: function() {
-            if (modalNameAttrStr === "esteem_simPostModal1" || modalNameAttrStr === "esteem_postModal1") {
+            if (modalNameAttrStr === "esteem_simPostModal1") {
                 // if the user has selected a NEGATIVE emotion (indicated by the binary number),
                 // show the second module after the first one closes.
                 if ((checkboxInputs & 0b001101110) !== 0) {
@@ -115,11 +126,7 @@ function recordSimModalInputs(modalNameAttrStr) {
                         allowMultipe: false,
                         closable: false,
                         onVisible: function() {
-                            if (secondModalNameAttr.includes('sim')) {
-                                Voiceovers.playVoiceover(['CUSML.misc_06.mp3'])
-                            } else {
-                                Voiceovers.playVoiceover(['CUSML.misc_07.mp3'])
-                            }
+                            Voiceovers.playVoiceover(['CUSML.misc_06.mp3'])
                         },
                         onHide: function() {
                             Voiceovers.pauseVoiceover();

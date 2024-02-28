@@ -1,187 +1,155 @@
 extends ../ui_layout
   
 block content
-  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.addBottomMargin
-    //-feed
+  .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.centered
     .ui.one.column.centered.grid.feedbackMessagesGrid
       .ui.fixed.bottom.sticky
-        .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
-          i.close.icon
-          i.question.icon.float
-          .content
-            .ui.header Need some help?
-            p Scroll up and click "Next" to begin!
-    .ui.fluid.card.test.feedDisplay#step0
-          .content
-            .right.floated.meta= "Yesterday"
-            |
-            a(href='/user/botperson')
-              img.ui.avatar.image(src=cdn+'/profile_pictures/user2.jpeg')
-              span='Ima Robot'
-          .image
-            img.post(src=cdn+'/post_pictures/phishingtut_new.png')
-          #step4.content
-            .description
-              | CLicK NoW to get FREE movie tickets for a year!! 
-              | Only 30 spots left 
-              span.blueText#shortenedURL http://bit.ly/FREEMOVIES
-          .three.ui.bottom.attached.icon.buttons
-            .ui.reply.button(tabindex='0')
-              i.reply.icon
-              |  Reply
-            .ui.flag.button(tabindex='0')
-              i.flag.icon
-              |  Flag
-            .ui.labeled.button(tabindex='0')
-              .ui.like.button
-                i.heart.icon
-                |  Like
-              a.ui.basic.red.left.pointing.label.count=2
-          
-          .content
-            .ui.comments
-              .comment
-                a.avatar
-                  img(src=cdn+'/profile_pictures/unicorn.jpg')
-                .content
-                  a.author Maya Rein
-                  .metadata
-                    span.date Yesterday
-                    .rating
-                      i.heart.icon
-                      span.num=3
-                      |  Likes
-                  .text()
-                    | great deal
-                  .actions
-                    a.comment.like Like
-                    a.comment.flag Flag
-              .comment
-                a.avatar
-                  img(src=cdn+'/profile_pictures/user34.jpg')
-                .content
-                  a.author Keegan Scott
-                  .metadata
-                    span.date Yesterday
-                    .rating
-                      i.heart.icon
-                      span.num=2
-                      |  Likes
-                  .text()
-                    | nice
-                  .actions
-                    a.comment.like Like
-                    a.comment.flag Flag
-          .extra.content
-            .ui.fluid.left.labeled.right.icon.input
-              .ui.label
-                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-              input.newcomment(type='text' placeholder='Write a Comment')
-              i.big.send.link.icon
-    //-%%%%%%%%%%%%%%%%%%%%%%%%%
-    #step5.ui.fluid.card.test.feedDisplay
-          .content
-            .right.floated.meta= "Yesterday"
-            |
-            a(href='/user/testdrive')
-              img.ui.avatar.image(src=cdn+'/profile_pictures/user91.png')
-              span='Socail Media Testdrive'
-          .image
-            img.post(src=cdn+"/post_pictures/phishingtut2.png")
-          .content
-            .description
-              | !!WARNING!! Your account has been deactivated. Click here to reactivate:  
-              span.blueText#shortenedURL2 testdrive.co/activate.
-              | This is a verified post by offical TestDrive administator account.
-            //-.right.floated.meta
-              i.icon.checkmark
-              | Seen by 12
-          .three.ui.bottom.attached.icon.buttons
-            .ui.reply.button(tabindex='0')
-              i.reply.icon
-              |  Reply
-            .ui.flag.button(tabindex='0')
-              i.flag.icon
-              |  Flag
-            .ui.labeled.button(tabindex='0')
-              .ui.like.button
-                i.heart.icon
-                |  Like
-              a.ui.basic.red.left.pointing.label.count=2
-        
-          .extra.content
-            .ui.fluid.left.labeled.right.icon.input
-              .ui.label
-                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-              input.newcomment(type='text' placeholder='Write a Comment')
-              i.big.send.link.icon
-                
-    .ui.fluid.card.test.feedDisplay.addBottomMargin#step6
-          .content
-            .right.floated.meta= "Yesterday"
-            |
-            a(href='/user/jlp777')
-              img.ui.avatar.image(src=cdn+'/profile_pictures/user13.png')
-              span='Jason Perez'
-          .image
-            img.post(src=cdn+'/post_pictures/phishingtut3.jpg')
-          #step4.content
-            .description
-              | Need ca$H FAST? The frist 500 people get $500!! Fill out survey NOW: 
-              span.blueText#shortenedURL3 http://give.away/quickca$h
-          .three.ui.bottom.attached.icon.buttons
-            .ui.reply.button(tabindex='0')
-              i.reply.icon
-              |  Reply
-            .ui.flag.button(tabindex='0')#flagStep
-              i.flag.icon
-              |  Flag
-            .ui.labeled.button(tabindex='0')
-              .ui.like.button
-                i.heart.icon
-                |  Like
-              a.ui.basic.red.left.pointing.label.count=2
-          
-          .content
-            .ui.comments
-              .comment
-                a.avatar
-                  img(src=cdn+'/profile_pictures/user64.jpg')
-                .content
-                  a.author Samantha Bautista
-                  .metadata
-                    span.date Yesterday
-                    .rating
-                      i.heart.icon
-                      span.num=2
-                      |  Likes
-                  .text()
-                    | is this legit?
-                  .actions
-                    a.comment.like Like
-                    a.comment.flag Flag
-              .comment
-                a.avatar
-                  img(src=cdn+'/profile_pictures/user71.JPG')
-                .content
-                  a.author Andrew Thomas
-                  .metadata
-                    span.date Yesterday
-                    .rating
-                      i.heart.icon
-                      span.num=2
-                      |  Likes
-                  .text()
-                    | Thanksss
-                  .actions
-                    a.comment.like Like
-                    a.comment.flag Flag
-          .extra.content
-            .ui.fluid.left.labeled.right.icon.input#commentStep
-              .ui.label
-                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-              input.newcomment(type='text' placeholder='Write a Comment')
-              i.big.send.link.icon
+        include ../partials/messages/clickNextMessage
+    .ui.fluid.card.feedDisplay#step0
+      .content
+        .right.floated.meta= "Yesterday"
+        a(href='/user/botperson')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user2.jpeg')
+          span='Ima Robot'
+      .image
+        img.post(src=cdn+'/post_pictures/phishingtut_new.png')
+      #step4.content
+        .description
+          | CLicK NoW to get FREE movie tickets for a year!! 
+          | Only 30 spots left 
+          span.blueText#shortenedURL http://bit.ly/FREEMOVIES
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/unicorn.jpg')
+            .content
+              a.author Maya Rein
+              .metadata
+                span.date Yesterday
+                .rating
+                  i.heart.icon
+                  span.num=3
+                  |  Likes
+              .text()
+                | great deal
+              .actions
+                a.comment.like Like
+                a.comment.flag Flag
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user34.jpg')
+            .content
+              a.author Keegan Scott
+              .metadata
+                span.date Yesterday
+                .rating
+                  i.heart.icon
+                  span.num=2
+                  |  Likes
+              .text()
+                | nice
+              .actions
+                a.comment.like Like
+                a.comment.flag Flag
+      include ../partials/script/components/newUserComment
+    #step5.ui.fluid.card.feedDisplay
+      .content
+        .right.floated.meta= "Yesterday"
+        a(href='/user/testdrive')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user91.png')
+          span='Socail Media Testdrive'
+      .image
+        img.post(src=cdn+"/post_pictures/phishingtut2.png")
+      .content
+        .description
+          | !!WARNING!! Your account has been deactivated. Click here to reactivate:  
+          span.blueText#shortenedURL2 testdrive.co/activate.
+          | This is a verified post by offical TestDrive administator account.
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+      include ../partials/script/components/newUserComment
+    .ui.fluid.card.feedDisplay.mb-9#step6
+      .content
+        .right.floated.meta= "Yesterday"
+        a(href='/user/jlp777')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user13.png')
+          span='Jason Perez'
+      .image
+        img.post(src=cdn+'/post_pictures/phishingtut3.jpg')
+      #step4.content
+        .description
+          | Need ca$H FAST? The frist 500 people get $500!! Fill out survey NOW: 
+          span.blueText#shortenedURL3 http://give.away/quickca$h
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')#flagStep
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user64.jpg')
+            .content
+              a.author Samantha Bautista
+              .metadata
+                span.date Yesterday
+                .rating
+                  i.heart.icon
+                  span.num=2
+                  |  Likes
+              .text()
+                | is this legit?
+              .actions
+                a.comment.like Like
+                a.comment.flag Flag
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user71.JPG')
+            .content
+              a.author Andrew Thomas
+              .metadata
+                span.date Yesterday
+                .rating
+                  i.heart.icon
+                  span.num=2
+                  |  Likes
+              .text()
+                | Thanksss
+              .actions
+                a.comment.like Like
+                a.comment.flag Flag
+      include ../partials/script/components/newUserComment
                                                  
 block scripts
   script(src='/postFunctionalities.js')

@@ -1,35 +1,25 @@
-// const stepsList = [
-//   {
-//     element: '#newpost',
-//     intro: `Click here to create your own post on the timeline.`,
-//     highlightClass: 'stickyTooltip',
-//     position: 'right',
-//     scrollTo: 'tooltip',
-//     audioFile: ['']
-//   },
-//   {
-//     element: '.ui.button.like:first-of-type',
-//     intro: `Click this button to "like" any post.`,
-//     position: 'right',
-//     scrollTo: 'tooltip',
-//     audioFile: ['']
-//   },
-//   {
-//     element: '.ui.card .extra.content .ui.input:first-of-type',
-//     intro: `Click here to make a comment on any post.`,
-//     position: 'right',
-//     scrollTo: 'tooltip',
-//     audioFile: ['']
-//   }
-// ]
-
-//Convenient variable to indicate which module we're in
-let pathArray = window.location.pathname.split('/');
-var currentModule = pathArray[2];
-
 // Function that records popup modal data once it is closed
 // Requires the data-modalName attribute string as a parameter
 function recordModalInputs(modalNameAttrStr) {
+    /**
+     * Free-play modals: Values of 'modalNameAttrStr' 
+     * digital-literacy
+     * - 'digital-literacy_articleModal'
+     * - 'digital-literacy_articleInfoModal'
+     * - 'digital-literacy_flagModal' (called in postFunctionalities.js)
+     * digfoot: 
+     * - 'digfoot_normalPostModal'
+     * esteem: 
+     * - 'esteem_postModal1'
+     * - 'esteem_postModal2' (in onHide function)
+     * targeted:
+     * - 'targeted_hideAdModal'
+     * - 'targeted_whyAdModal'
+     * phishing: 
+     * - 'phishing_surveyScam'
+     * - 'phishing_loginScam'
+     * - 'phishing_creditCardScam'
+     */
     const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
     let target = $(event.target);
     const post = target.closest(".ui.card");
@@ -37,10 +27,11 @@ function recordModalInputs(modalNameAttrStr) {
     const modalOpenedTime = Date.now();
     let checkboxInputs = 0b0;
 
+    // Uncheck any checked inputs
     $(`.ui.modal[data-modalName=${modalNameAttrStr}] .ui.checkbox`).removeClass("checked");
     $('.ui.modal input[type=checkbox]').prop('checked', false);
 
-    var numOfModalDropdown = $(`.ui.modal[data-modalName=${modalNameAttrStr}] .title.modalDropdown`).length // gets the number of modal dropdown elements
+    const numOfModalDropdown = $(`.ui.modal[data-modalName=${modalNameAttrStr}] .title.modalDropdown`).length // gets the number of modal dropdown elements
     let dropdownClicks = 0b0; // going to use bit shifting
     let dropdownClicksBoolean = new Array(numOfModalDropdown).fill(false)
 
@@ -61,9 +52,6 @@ function recordModalInputs(modalNameAttrStr) {
                 case 'esteem_postModal1':
                     Voiceovers.playVoiceover(['CUSML.misc_07.mp3'])
                     break;
-                case 'esteem_simPostModal1':
-                    Voiceovers.playVoiceover(['CUSML.misc_05.mp3'])
-                    break;
             }
 
             // OnClick Listening Events for dropdown triangles in digital-literacy_articleModal
@@ -76,7 +64,7 @@ function recordModalInputs(modalNameAttrStr) {
         onHide: function() {
             Voiceovers.pauseVoiceover();
 
-            // collapses all 'active' (open) accordion elements in digital-literacy_articleModal
+            // Collapses all 'active' (open) accordion elements in digital-literacy_articleModal
             $(`.ui.modal[data-modalName=${modalNameAttrStr}] .title.modalDropdown`).removeClass("active");
             $(`.ui.modal[data-modalName=${modalNameAttrStr}] .content`).removeClass("active");
 
@@ -97,7 +85,6 @@ function recordModalInputs(modalNameAttrStr) {
 
             dropdownClicksBoolean.forEach(function(element) {
                 if (element) {
-                    console.log(element)
                     dropdownClicks = dropdownClicks << 1; // shift left and add 1 to mark true
                     dropdownClicks++;
                 } else {
@@ -112,7 +99,7 @@ function recordModalInputs(modalNameAttrStr) {
             $.post("/feed", {
                 actionType: 'free play',
                 postID: postID,
-                modual: currentModule,
+                modual: currentModuleForHeader,
                 modalName: modalName,
                 modalOpenedTime: modalOpenedTime,
                 modalViewTime: modalViewTime,
@@ -125,7 +112,7 @@ function recordModalInputs(modalNameAttrStr) {
         },
         // the following is only relevant in the esteem module:
         onHidden: function() {
-            if (modalNameAttrStr === "esteem_simPostModal1" || modalNameAttrStr === "esteem_postModal1") {
+            if (modalNameAttrStr === "esteem_postModal1") {
                 // if the user has selected a NEGATIVE emotion (indicated by the binary number),
                 // show the second module after the first one closes.
                 if ((checkboxInputs & 0b001101110) !== 0) {
@@ -135,11 +122,7 @@ function recordModalInputs(modalNameAttrStr) {
                         allowMultipe: false,
                         closable: false,
                         onVisible: function() {
-                            if (secondModalNameAttr.includes('sim')) {
-                                Voiceovers.playVoiceover(['CUSML.misc_06.mp3'])
-                            } else {
-                                Voiceovers.playVoiceover(['CUSML.misc_08.mp3'])
-                            }
+                            Voiceovers.playVoiceover(['CUSML.misc_08.mp3'])
                         },
                         onHide: function() {
                             Voiceovers.pauseVoiceover();
@@ -148,8 +131,6 @@ function recordModalInputs(modalNameAttrStr) {
                             }
                             const modalClosedTime = Date.now();
                             const modalViewTime = modalClosedTime - secondModalOpenedTime;
-                            const pathArrayForHeader = window.location.pathname.split('/');
-                            const currentModule = pathArrayForHeader[2];
                             const modalName = $(this).attr('data-modalName');
                             let numberOfCheckboxes = 0;
                             let checkboxInputs2 = 0b0;
@@ -165,7 +146,7 @@ function recordModalInputs(modalNameAttrStr) {
                             $.post("/feed", {
                                 actionType: 'free play',
                                 postID: postID,
-                                modual: currentModule,
+                                modual: currentModuleForHeader,
                                 modalName: modalName,
                                 modalOpenedTime: secondModalOpenedTime,
                                 modalViewTime: modalViewTime,
@@ -181,81 +162,62 @@ function recordModalInputs(modalNameAttrStr) {
     }).modal('show');
 };
 
-// opens the chat boxes in the safe-posting module
+// safe-posting: Opens the chat boxes in module
 function openChat() {
-    if (currentModule == "safe-posting") {
+    if (currentModuleForHeader == "safe-posting") {
         setTimeout(function() {
             $($('#chatbox1 .chat-history')[0]).slideToggle(300, 'swing');
             $($('#chatbox1 .chat-message')[0]).slideToggle(300, 'swing');
             $('#chatbox1').slideToggle(300, 'swing');
             $($('#chatbox1 .chat-history')[0]).slideToggle(300, 'swing');
             $($('#chatbox1 .chat-message')[0]).slideToggle(300, 'swing');
-
         }, 10000);
 
         setTimeout(function() {
-
             $($('#chatbox2 .chat-history')[0]).slideToggle(300, 'swing');
             $($('#chatbox2 .chat-message')[0]).slideToggle(300, 'swing');
             $('#chatbox2').slideToggle(300, 'swing');
             $($('#chatbox2 .chat-history')[0]).slideToggle(300, 'swing');
             $($('#chatbox2 .chat-message')[0]).slideToggle(300, 'swing');
-
         }, 20000);
     }
 }
 
-// this function handles the dropdown menu on targeted ads
+// targeted: Functionality for ad dropdown menu in module
 function targetedAdDropdownSelection() {
-    var dropdownSelection = $(this).data().value
+    const dropdownSelection = $(this).data().value;
+    const post = $(this).closest(".ui.fluid.card");
+    const postID = post.attr("postID");
     if (dropdownSelection == 0) {
         $(".inverted.dimmer").css("background-color", "rgba(211,211,211,0.95)");
-        //hide the post
-        var post = $(this).closest(".ui.fluid.card.dim");
-        var postID = post.attr("postID");
+        // TO DO: hide the post
         $.post("/feed", {
             postID: postID,
-            modual: currentModule,
+            modual: currentModuleForHeader,
             flag: Date.now(),
             _csrf: $('meta[name="csrf-token"]').attr('content')
         });
-        post.find(".ui.inverted.dimmer.notflag").dimmer({
-                closable: false
-            }).dimmer('show')
-            //repeat to ensure its closable
-        post.find(".ui.inverted.dimmer.notflag").dimmer({
-                closable: true
-            })
-            .dimmer('show');
+        post.find(".ui.inverted.dimmer.notflag").dimmer({ closable: true }).dimmer('show');
+        //repeat to ensure its closable
+        post.find(".ui.inverted.dimmer.notflag").dimmer({ closable: true }).dimmer('show');
         //open hide ad Modal
         recordModalInputs('targeted_hideAdModal');
-        //$("#hideAdModal").modal('show');
-
     } else if (dropdownSelection == 1) {
         //flag the post
-        var post = $(this).closest(".ui.fluid.card.dim");
-        var postID = post.attr("postID");
         $.post("/feed", {
             postID: postID,
             flag: Date.now(),
-            modual: currentModule,
+            modual: currentModuleForHeader,
             _csrf: $('meta[name="csrf-token"]').attr('content')
         });
-        post.find(".ui.dimmer.flag").dimmer({
-                closable: false
-            })
-            .dimmer('show');
+        post.find(".ui.dimmer.flag").dimmer({ closable: true }).dimmer('show');
         //repeat to ensure its closable
-        post.find(".ui.dimmer.flag").dimmer({
-                closable: true
-            })
-            .dimmer('show');
-
+        post.find(".ui.dimmer.flag").dimmer({ closable: true }).dimmer('show');
     } else if (dropdownSelection == 2) {
         //get the company name to dynamically use in the modal
-        var companyName = $(this).closest(".ui.fluid.card.dim").find("#companyName").text();
+        const companyName = $(this).closest(".ui.fluid.card").find("#companyName").text();
         //get the ad type
-        var adType = $("#whyAmISeeingThisAdModal").find(".content").attr("id");
+        const adType = $("#whyAmISeeingThisAdModal").find(".content").attr("id");
         //open info modal, generate correct text based on ad type and company name
         $("#whyAmISeeingThisAdModal .content").html(
             "<p>You are seeing this ad because <b>" + companyName + "</b> wanted to reach people interested in <b>" + adType + "</b>.</p>" +
@@ -266,90 +228,19 @@ function targetedAdDropdownSelection() {
             "<i class='checkmark icon'></i></div></div>"
         );
         recordModalInputs('targeted_whyAdModal');
-        //$("#whyAmISeeingThisAdModal").modal('show');
     }
 };
 
-// activating the "let's continue" button at the scrollToBottom
-$('.ui.big.green.labeled.icon.button.script').on('click', function() {
-    window.location.href = "/results/" + currentModule;
-});
+// phishing: Opens correct phishing post
+function openPhishingModal(phishingLink) {
+    const postType = phishingLink.attr('phishingPostType'); // "surveyScam", "loginScam", "creditCardScam"
+    recordModalInputs('phishing_' + postType);
+}
 
-// activating a normal dropdown (the one used in the habits module settings)
-$('.ui.selection.dropdown[name="pauseTimeSelect"]').dropdown('set selected', '1 hour');
-$('.ui.selection.dropdown[name="reminderTimeSelect"]').dropdown();
-
-// dropdown menu functionality in the targeted ads module
-$('.ui.dropdown.icon.item')
-    .dropdown({
-        onChange: targetedAdDropdownSelection
-    });
-
-
-/*
- * Misc code
- */
-$('.newpost').css({ "visibility": "visible" })
-$('.ui.simple.dropdown.item').css({ "display": "inherit" })
-$('.ui.accordion').accordion();
-
-
-/**
- * Code to open modals, sorted by corresponding module
- */
-
-// digital-literacy
-
-$('.openPostDigitalLiteracy').on('click', function() {
-    recordModalInputs('digital-literacy_articleModal');
-});
-
-$(".modual.info_button").click(function(e) {
-    recordModalInputs('digital-literacy_articleInfoModal');
-    document.getElementById('post_info_text_modual').innerHTML = $(this).data('info_text');
-    e.stopPropagation();
-});
-
-// digfoot
-
-$('.openPostDigfoot').on('click', function() {
-    recordModalInputs('digfoot_normalPostModal')
-});
-
-// esteem
-$('.openPostEsteem').on('click', function() {
-    // $('.ui.accordion').accordion('open', 0);
-    // $('.ui.accordion').accordion('close', 1);
-    // $('input[type=checkbox]').prop('checked',false);
-    recordModalInputs('esteem_postModal1');
-});
-//
-// function openPostEsteem(){
-//   $('.ui.accordion').accordion('open', 0);
-//   $('.ui.accordion').accordion('close', 1);
-//   $('input[type=checkbox]').prop('checked',false);
-//   $('#esteem_post_modal').modal('show');
-// }
-
-$('.esteemModalNextButton').on('click', function() {
-    $('.esteemModalSection2').click();
-});
-
-/**
- * End code to open modals
- */
-
-/**
- * chat box code
- */
-
+// Wait for an image to load so that the width is correct before setting sticky elements
+// Only an issue with advacedlit module
 function setStickyElementsAdvancedlit() {
     $('.ui.sticky.newPostSticky')
-        .sticky({
-            context: '#content',
-            offset: 115
-        });
-    $('.ui.sticky.sideMenuAdvancedlit')
         .sticky({
             context: '#content',
             offset: 115
@@ -357,12 +248,23 @@ function setStickyElementsAdvancedlit() {
     $('.card .img.post img').off("load", setStickyElementsAdvancedlit);
 }
 
-
 $(window).on("load", function() {
+    // safe-posting: Opens the chat boxes in module
     openChat();
-    // wait for an image to load so that the width is correct before setting sticky elements
-    // only an issue with advacedlit module
-    if (currentModule === 'advancedlit') {
+
+    // targeted: handles ad dropdown menu in module
+    $('.ui.dropdown.icon.item').dropdown({ onChange: targetedAdDropdownSelection });
+
+    // Redirect user to reflection page when the "let's continue" button is clicked.
+    $('.ui.big.green.labeled.icon.button.script').on('click', async function() {
+        window.location.href = "/results/" + currentModuleForHeader;
+    });
+
+    $('.ui.simple.dropdown.item').css({ "display": "inherit" })
+
+    // Wait for an image to load so that the width is correct before setting sticky elements
+    // Only an issue with advacedlit module
+    if (currentModuleForHeader === 'advancedlit') {
         $('.card .img.post img').on("load", setStickyElementsAdvancedlit);
     } else {
         $('.ui.sticky.newPostSticky')
@@ -372,8 +274,60 @@ $(window).on("load", function() {
             });
     }
 
-});
+    /** New User Post functionality */
+    //New user post validator (picture and text can not be empty)
+    $('.ui.feed.form').form({
+        on: 'blur',
+        fields: {
+            body: {
+                identifier: 'body',
+                rules: [{
+                    type: 'empty',
+                    prompt: 'Please add some text.'
+                }]
+            }
+        }
+    });
 
-/**
- * End chat box code
- */
+    //Picture Preview on Image Selection
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#imgInp').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#picinput").change(function() {
+        readURL(this);
+    });
+
+    /** Code to open modals, sorted by corresponding module. */
+
+    // digital-literacy
+    $('.openPostDigitalLiteracy').on('click', function() {
+        recordModalInputs('digital-literacy_articleModal');
+    });
+
+    $(".modual.info_button").click(function(e) {
+        recordModalInputs('digital-literacy_articleInfoModal');
+        document.getElementById('post_info_text_modual').innerHTML = $(this).data('info_text');
+        e.stopPropagation();
+    });
+
+    // digfoot
+    $('.openPostDigfoot').on('click', function() {
+        recordModalInputs('digfoot_normalPostModal')
+    });
+
+    // esteem
+    $('.openPostEsteem').on('click', function() {
+        recordModalInputs('esteem_postModal1');
+    });
+
+    // phishing 
+    $('.phishingLink').on('click', function() { openPhishingModal($(this)) });
+});

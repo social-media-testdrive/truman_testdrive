@@ -1,0 +1,44 @@
+extends ./ui_layout
+
+block content
+  .ui.text.container.mb-9
+    .ui.raised.segment.mt-6.mb-3(style="padding: 20px;")
+      h3.ui.header
+        i.binoculars.blue.icon
+        .content
+          | Explore
+      hr
+      h4.ui.header
+        i.arrow.circle.right.blue.icon
+        .content
+          if mod=='esteem'
+            |  Before exploring the TestDrive timeline, choose a topic below to see things that are more interesting to you! 
+          if mod=='targeted'
+            |  Before exploring the TestDrive timeline, take a moment to explore a page based on your interests.   
+      h4.ui.header
+        i.arrow.circle.right.blue.icon
+        .content
+          |  Choose a topic below to learn more!
+      .ui.container.mt-4
+        form.ui.form
+          .field#animateDropdownError
+            label
+              i.search.large.gray.icon
+              .ui.selection.dropdown(name='topicSelect')
+                input(type='hidden')
+                i.dropdown.icon
+                .default.text Choose a topic...
+                .menu
+                  .item(data-value='0') !{mod=='esteem' ? "Music" : "Food"}
+                  .item(data-value='1') Sports
+                  .item(data-value='2') Gaming
+    .ui.warning.message.hidden#selectTopicError
+     .header
+      | Select an interest to proceed 
+    a(href='javascript:void(0);', onclick='javascript:addInterest();')
+      .ui.big.labeled.icon.button
+          i.rocket.icon
+          |   Let's Continue!  
+
+block scripts
+  script(src="/module_js/base_trans2.js")

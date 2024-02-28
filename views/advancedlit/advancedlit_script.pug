@@ -4,31 +4,14 @@ block content
   .ui.active.tab(data-tab='timeline')
     .ui.grid
       .computer.only.tablet.only.four.wide.column
-        .ui.sticky
+        .ui.sticky.sideMenu
           .ui.icon.message.success.hidden#pleaseshowonback
             .content
               .ui.header Click the article to continue! 
-          .ui.card
-            .image
-              if user.profile.picture
-                img(src=cdn+'/profile_pictures/'+user.profile.picture)
-              else
-                img(src=user.gravatar(60))
-            .content
-              a.header(href='/me/'+mod)= user.profile.name || user.email || user.id
-              .meta="@Guest"
-              .description=user.profile.bio
-              .description
-                if user.profile.location
-                  i.marker.icon
-                  span=user.profile.location
-            .one.ui.bottom.attached.icon.buttons
-                button.ui.editprofile.button(data-tooltip='Update Your Profile', data-position='bottom left')
-                    i.write.icon
-        
+          include ../partials/script/components/userSideProfile
       #loading.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
         img.ui.centered.small.image(src='/images/heart.svg')
-      #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.trackHeightOffset
+      #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.contentColumn.hidden
         //- Input for creating new post at top of feed
         .ui.sticky.newPostSticky
           #newpost.ui.fluid.left.labeled.right.icon.input.habitsHomeDisplay
@@ -39,29 +22,20 @@ block content
                 img.ui.avatar.image(src=user.gravatar(60))
             input(type='text', placeholder='Create a post')
             i.big.photo.link.icon
-
+        include ../partials/script/modals/newUserPost
         each val in script
-          //- create a card for each post in val (if by user make the card a little different)
-          //- if val.relativeTime - then post came from user_post (so user post, user reply to actor reply to user post)
+          //- if val.relativeTime - then post came from user_post
           if val.relativeTime
             include ../partials/script/userPost
-          //- Now we are making posts by Actors, not the USER
+          //- Else, actor post.
           else
-            if(val.info_text !== "")
-              include ../partials/script/advancedlit_articlePost
-            else
-              include ../partials/script/actorPost
+            include ../partials/script/actorPost
         a.ui.fluid.card
           .content
             .ui.big.green.labeled.icon.button.script
               i.rocket.icon
-              |   Let's Continue!        
-        br
-        br
-          
-        include ../partials/script/modals/newUserPost    
-          
-  //- #########################################################################
+              |   Let's Continue!
+  include ../partials/script/modals/sharePost
   
   .ui.tab(data-tab="article1")
     button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
@@ -70,7 +44,7 @@ block content
     button.ui.big.green.button.searchTab(data-tab='search1')
       i.icon.search
       span.searchButtonText 
-    include ../partials/script/advancedlit_articleTab
+    include ../partials/script/modules/advancedlit/advancedlit_articleTab
     button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
       i.icon.reply
       | Return to the timeline
@@ -85,7 +59,7 @@ block content
     button.ui.big.green.button.searchTab(data-tab='search2')
       i.icon.search
       span.searchButtonText 
-    include ../partials/script/advancedlit_articleTab
+    include ../partials/script/modules/advancedlit/advancedlit_articleTab
     button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
       i.icon.reply
       | Return to the timeline
@@ -100,7 +74,7 @@ block content
     button.ui.big.green.button.searchTab(data-tab='search3')
       i.icon.search
       span.searchButtonText 
-    include ../partials/script/advancedlit_articleTab
+    include ../partials/script/modules/advancedlit/advancedlit_articleTab
     button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
       i.icon.reply
       | Return to the timeline
@@ -115,16 +89,14 @@ block content
     button.ui.big.green.button.searchTab(data-tab='search4')
       i.icon.search
       span.searchButtonText 
-    include ../partials/script/advancedlit_articleTab
+    include ../partials/script/modules/advancedlit/advancedlit_articleTab
     button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
       i.icon.reply
       | Return to the timeline
     button.ui.big.green.button.searchTab(data-tab='search4')
       i.icon.search
       span.searchButtonText 
-    
-  //- #########################################################################
-  
+      
   .ui.tab(data-tab="search1")
     .ui.grid.gridInsideTab      
       .row
@@ -135,7 +107,7 @@ block content
           button.ui.big.testDriveBlueButton.button.articleTab(data-tab='article1')
             i.icon.reply
             | Go back to the article
-      include ../partials/script/advancedlit_searchTab
+      include ../partials/script/modules/advancedlit/advancedlit_searchTab
       .row
         .column
           button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
@@ -155,7 +127,7 @@ block content
           button.ui.big.testDriveBlueButton.button.articleTab(data-tab='article2')
             i.icon.reply
             | Go back to the article
-      include ../partials/script/advancedlit_searchTab
+      include ../partials/script/modules/advancedlit/advancedlit_searchTab
       .row
         .column
           button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
@@ -175,7 +147,7 @@ block content
           button.ui.big.testDriveBlueButton.button.articleTab(data-tab='article3')
             i.icon.reply
             | Go back to the article
-      include ../partials/script/advancedlit_searchTab
+      include ../partials/script/modules/advancedlit/advancedlit_searchTab
       .row
         .column
           button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
@@ -195,7 +167,7 @@ block content
           button.ui.big.testDriveBlueButton.button.articleTab(data-tab='article4')
             i.icon.reply
             | Go back to the article
-      include ../partials/script/advancedlit_searchTab
+      include ../partials/script/modules/advancedlit/advancedlit_searchTab
       .row
         .column
           button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
@@ -204,8 +176,6 @@ block content
           button.ui.big.testDriveBlueButton.button.articleTab(data-tab='article4')
             i.icon.reply
             | Go back to the article
-      
-  //- #########################################################################
            
 block scripts
   script(src='/postFunctionalities.js')

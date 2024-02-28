@@ -1,60 +1,55 @@
 extends ../ui_layout
 
 block content
-  .ui.text.container.addBottomMargin
-    br
-    .ui.raised.segment
-      h2.ui.header
+  .ui.text.container.mb-9
+    .ui.raised.segment.mt-6
+      h3.ui.header
         .content What should you do if you accidentally fall for a phishing scam? 
-        
-      .ui.mini.green.right.labeled.icon.button.showReviewSectionButton
+      .ui.small.green.right.labeled.icon.button.showReviewSectionButton
         i.down.arrow.icon
         |   Start
-      .ui.basic.segment.reviewSegment.hidden
-        .sub.header 
+      .ui.basic.segment.reviewSegment.hidden(style="padding:0px;").mt-5
+        .ui.header
           .ui.compact.segment
             .ui.large.read-only.checked.checkbox.exampleCheckbox
               input.ui(type="checkbox" id="" checked="")
-              label Read and check all the boxes below
-          br
+              label Read and check all the boxes
         .content.ui.list
-            .item
-              #item1.ui.segment
-                .ui.checkbox
-                  input.checkbox.ui(type="checkbox")#checkbox1
-                  label 
-                    | If you have given a phishing website your password, 
-                    | change your password immediately. And if you used the same 
-                    | password with other accounts, change those passwords too!
-            .item
-              #item2.ui.segment
-                .ui.checkbox
-                  input.checkbox.ui(type="checkbox")#checkbox2
-                  label 
-                    | Report the phishing post to the website so it can be 
-                    | taken down.
-            .item
-              #item3.ui.segment
-                .ui.checkbox
-                  input.checkbox.ui(type="checkbox")#checkbox3
-                  label 
-                    | Tell a trusted adult. They can help you take the right steps 
-                    | to protect your information.
-                  
-    br
+          .item
+            #item1.ui.segment
+              .ui.checkbox
+                input.checkbox.ui(type="checkbox")#checkbox1
+                label 
+                  | If you have given a phishing website your password, 
+                  | change your password immediately. And if you used the same 
+                  | password with other accounts, change those passwords too!
+          .item
+            #item2.ui.segment
+              .ui.checkbox
+                input.checkbox.ui(type="checkbox")#checkbox2
+                label 
+                  | Report the phishing post to the website so it can be 
+                  | taken down.
+          .item
+            #item3.ui.segment
+              .ui.checkbox
+                input.checkbox.ui(type="checkbox")#checkbox3
+                label 
+                  | Tell a trusted adult. They can help you take the right steps 
+                  | to protect your information.
     .ui.warning.message.clickNextWarning.hidden
       .header
        | Click "Start" 
     .ui.warning.message.hidden#checkAllWarning
       .header
         | Check all the boxes to proceed
-    .ui.big.labeled.icon.button#phishingTutGuideButton
+    .ui.large.labeled.icon.button#phishingTutGuideButton
         i.rocket.icon
         |   Got it!
 
 block scripts
   script.
-    var voiceoverMappings = {
+    const voiceoverMappings = {
       '.showReviewSectionButton': {
         "initialDelay": 500,
         "delay": 500,
@@ -63,5 +58,6 @@ block scripts
     };
   script(src="/module_js/phishing/phishing_tut_guide.js")
   script(src='/module_js/voiceover.js')
+
 block styles 
-  link(rel='stylesheet' href='/css/checkbox_activity.css')  
+  link(rel='stylesheet' href='/css/tut_guide.css')

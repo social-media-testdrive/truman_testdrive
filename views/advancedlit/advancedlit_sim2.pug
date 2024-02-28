@@ -1,29 +1,14 @@
 extends ../ui_layout
 
 block content
-  #content.sixteen.wide.column.centered.removeTopPadding.addBottomMargin
-    //- #####################################################
+  .sixteen.wide.column.centered.removeTopPadding.mb-9
     .ui.one.column.centered.grid.feedbackMessagesGrid
       .ui.fixed.bottom.sticky
-        
-        .ui.icon.compact.message.warning.hidden#removeHidden
-          i.close.icon
-          i.question.icon.float
-          .content
-            .ui.header Need some help? 
-            p Make sure you are clicking "Got it" on the blue dots!
-          
-        .ui.icon.message.warning.hidden#clickAllDotsWarning
-          i.close.icon
-          i.hand.pointer.icon.float
-          .content
-            .ui.header There are still blue dots to find!
-            p Click through all of the blue dots to continue.
-            
+        include ../partials/messages/removeHiddenMessage
+        include ../partials/messages/clickAllDotsMessage
         .ui.icon.message.success.hidden#instructionsToContinue
           .content
             .ui.header Click the search button to continue!
-
     .ui.grid.gridInsideTab      
       .row
         .column.removeColumnPadding#hint4
@@ -59,7 +44,6 @@ block content
                   | Local students took to social media to share their thoughts. 
                   | Most said they would miss their friends if school were to 
                   | close. 
-                  
       .row
         .column.removeColumnPadding
           button.ui.big.button.homeTab(data-tab='one')
@@ -69,7 +53,6 @@ block content
             i.icon.search
             | Search for "Haywell Middle School closing"  
 
-
 block scripts
   script(src='/module_js/advancedlit/advancedlit_sim2.js')
   script(src='/module_js/voiceover.js')
@@ -77,3 +60,4 @@ block scripts
   
 block styles
   link(rel='stylesheet', href='/css/modules/advancedlit.css')
+  link(rel='stylesheet', href='/css/sim.css')

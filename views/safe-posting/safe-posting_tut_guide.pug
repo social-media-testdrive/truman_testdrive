@@ -1,44 +1,35 @@
 extends ../ui_layout
 
 block content
-  .ui.text.container
-    br
-    .ui.raised.segment
+  .ui.text.container.mb-9
+    .ui.raised.segment.mt-6 
       h3.ui.header
         i.wechat.icon
         .content
           | Someone you don’t know personally but is a friend of a friend sends you the following message.
-      hr 
-      #introduction_next.button.ui.mini.green.right.labeled.icon.button
-              i.eye.icon
-              |   View  Messages
-
-
+      hr
+      #introduction_next.button.ui.small.green.right.labeled.icon.button.mt-4
+        i.eye.icon
+        |   View Messages
     #show_steps.ui.segment.hidden
-      //- .ui.header.title
       a.ui.blue.ribbon.label#clickHereToSee
         h4
           i.hand.pointer.icon
           content Click here to see ways to respond.
-
-      br
-      br
       #steps.ui.stackable.two.column.grid.hidden
-        .ui.column
+        .ui.column.mt-6
           #step1.ui.raised.segment.voiceover_keyTerm1
             a.ui.blue.ribbon.label#step1Label
-                span Ignore the person
+              span Ignore the person
             span.hidden.responseSuggestion(id="step1_info") 
               | Ignoring the person is always an option! You shouldn't share 
               | private information with someone you haven't met in real life.
-
-        .ui.column
+        .ui.column.mt-6
           #step2.ui.raised.segment.voiceover_keyTerm2
             a.ui.blue.ribbon.label#step2Label
                 span Change the Subject
             span.hidden.responseSuggestion(id="step2_info") 
               | One thing you can do is to change the subject.
-        
         .ui.column
           #step3.ui.raised.segment.voiceover_keyTerm3
             a.ui.blue.ribbon.label#step3Label
@@ -46,14 +37,12 @@ block content
             span.hidden.responseSuggestion(id="step3_info") 
               | Try saying “I don’t know you. I don’t feel comfortable giving 
               | you my address.”
-        
         .ui.column
           #step4.ui.raised.segment.voiceover_keyTerm4
             a.ui.blue.ribbon.label#step4Label
                 span Talk to a trusted adult
             span.hidden.responseSuggestion(id="step4_info") 
              | It's always helpful to get advice from someone you trust.
-    
     #chat1.container.clearfix.hidden
       .chat
         .chat-header.clearfix
@@ -67,9 +56,6 @@ block content
             img.ui.avatar.image(src=cdn+'/profile_pictures/user21.jpg',style="width: 3em;height: 3em;")
           .chat-about
             .chat-with Chat with Sam Hill
-            //- .chat-num-messages already 1 902 messages
-          //- i.fa.fa-star
-        // end chat-header
         .chat-history
           ul
             li.clearfix
@@ -96,18 +82,13 @@ block content
                 span.message-data-time 10:20 AM
               .message.my-message
                 | What’s your address so I can stop by after school to shoot some hoops
-
-        // end chat-history
         .chat-message.clearfix
           .ui.fluid.action.input
             input#message-to-send(type='text', name='message-to-send', placeholder='Type your message')
             button
               i.blue.send.icon
               | Send
-        // end chat-message
-        // end chat
-    // end container
-    script()#message-template(type='text/x-handlebars-template').
+    script#message-template(type='text/x-handlebars-template').
       <li class="clearfix">
       <div class="message-data align-right">
       <span class="message-data-time" >{{time}}</span> &nbsp; &nbsp;
@@ -117,7 +98,7 @@ block content
       {{messageOutput}}
       </div>
       </li>
-    script()#message-response-template(type='text/x-handlebars-template').
+    script#message-response-template(type='text/x-handlebars-template').
       <li>
       <div class="message-data">
       <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
@@ -127,8 +108,6 @@ block content
       {{response}}
       </div>
       </li>
-
-    br
     .ui.warning.message#clickViewMessagesWarning
       .header
        | Click "View Messages"
@@ -138,37 +117,11 @@ block content
     .ui.warning.message#clickLabelsWarning
      .header
       | Click on each label to proceed  
-    .ui.big.labeled.icon.button.cybersim#safepostSimButton
+    .ui.large.labeled.icon.button.cybersim#safepostSimButton
         i.rocket.icon
         |   Got it!
-    br
-    br
-    br
     
 block scripts
-  script.
-    var voiceoverMappings = {
-      '.voiceover_keyTerm1': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.11.4.1.mp3']
-      },
-      '.voiceover_keyTerm2': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.11.4.2.mp3']
-      },
-      '.voiceover_keyTerm3': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.11.4.3.mp3']
-      },
-      '.voiceover_keyTerm4': {
-        "initialDelay": 700,
-        "delay": 0,
-        "files": ['CUSML.11.4.4.mp3']
-      }
-    };
   script(src='/module_js/voiceover.js')
   script(src="/module_js/safe-posting/safe-posting_tut_guide.js")
   script(src=cdn+'/js/chatbox2.js')
@@ -176,4 +129,3 @@ block scripts
 block styles
   link(rel='stylesheet', href='/css/modules/safe-posting.css')
   link(rel='stylesheet', href='/css/chatbox.css')
-  

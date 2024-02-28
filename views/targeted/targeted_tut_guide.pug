@@ -1,80 +1,66 @@
 extends ../ui_layout
 
 block content
-  .ui.text.container.addBottomMargin
-    br
-    
-    h2.ui.header
-      .content What can you do if you want to prevent targeted advertisements?
-        .sub.header 
-          br  
+  .ui.text.container.mb-9
+    .ui.raised.segment.mt-6
+      h3.ui.header
+        .content What can you do if you want to prevent targeted advertisements?
+        h4.content(style="font-weight: normal;").mt-4
           span.blackText
             | While it's hard to avoid targeted ads altogether, there are some 
             | things you can do to limit the amount of data companies track and 
             | the amount of targeted ads you see.
-        
-        .sub.header 
-          br
-          .ui.compact.segment
-            .ui.large.read-only.checked.checkbox.exampleCheckbox
-              input.ui(type="checkbox" id="" checked="")
-              label Read and check all the boxes
-          br
-        
-    .ui.styled.fluid.accordion
-      #point1.title(data-voiceoverIndex='voiceover_tut_guide_1')
-        i.dropdown.icon
-        |     Turn off cookies in your web browser
-      .content.ui.list
-          .item
-            #protip1.ui.segment
-              .ui.large.checkbox#checkbox1
-                input.checkbox.ui(type="checkbox" id="")
-                label Cookies are used to identify your device and track your behavior. You can go to your browser settings to turn them off.
-
-          .item
-            #protip1.ui.segment
-              .ui.large.checkbox#checkbox1
-                input.checkbox.ui(type="checkbox" id="")
-                label But keep in mind, there is a trade-off! Some websites might not work if you turn cookies off.
-
-          .item
-              #point1_button.button.ui.mini.green.right.labeled.icon.button
+      .sub.header
+        .ui.compact.segment
+          .ui.large.read-only.checked.checkbox.exampleCheckbox
+            input.ui(type="checkbox" id="" checked="")
+            label Read and check all the boxes
+        .ui.styled.fluid.accordion
+          #point1.title(data-voiceoverIndex='voiceover_tut_guide_1')
+            i.dropdown.icon
+            | Turn off cookies in your web browser
+          .content.ui.list
+            .item
+              #protip1.ui.segment
+                .ui.large.checkbox#checkbox1
+                  input.checkbox.ui(type="checkbox" id="")
+                  label Cookies are used to identify your device and track your behavior. You can go to your browser settings to turn them off.
+            .item
+              #protip1.ui.segment
+                .ui.large.checkbox#checkbox1
+                  input.checkbox.ui(type="checkbox" id="")
+                  label But keep in mind, there is a trade-off! Some websites might not work if you turn cookies off.
+            .item
+              #point1_button.button.ui.small.green.right.labeled.icon.button
                 i.down.arrow.icon
                 | Next
-                
-      #point2.title(data-voiceoverIndex='voiceover_tut_guide_2')
-        i.dropdown.icon
-        |     Adjust privacy settings in your apps
-      .content.ui.list
-          .item
-            #protip2.ui.segment
-              .ui.large.checkbox#checkbox2
-                input.checkbox.ui(type="checkbox")
-                label Change your privacy settings so that apps don't collect certain information. 
-          
-          .item
-            #protip2.ui.segment
-              .ui.large.checkbox#checkbox2
-                input.checkbox.ui(type="checkbox")
-                label You can also make your account private or turn off access to certain information within the privacy settings.
-            
-          .item
-              #point2_button.button.ui.mini.green.right.labeled.icon.button
-                i.down.arrow.icon
-                | Next
-                  
-      #point3.title(data-voiceoverIndex='voiceover_tut_guide_3')
-        i.dropdown.icon
-        |     Limit what you share
-      .content.ui.list
-          .item
-            #protip3.ui.segment
-              .ui.large.checkbox#checkbox3
-                input.checkbox.ui(type="checkbox")
-                label If it is not required, do not provide your information or link your profile to a website.
-                           
-    br
+          #point2.title(data-voiceoverIndex='voiceover_tut_guide_2')
+            i.dropdown.icon
+            | Adjust privacy settings in your apps
+          .content.ui.list
+            .item
+              #protip2.ui.segment
+                .ui.large.checkbox#checkbox2
+                  input.checkbox.ui(type="checkbox")
+                  label Change your privacy settings so that apps don't collect certain information. 
+            .item
+              #protip2.ui.segment
+                .ui.large.checkbox#checkbox2
+                  input.checkbox.ui(type="checkbox")
+                  label You can also make your account private or turn off access to certain information within the privacy settings.
+            .item
+                #point2_button.button.ui.small.green.right.labeled.icon.button
+                  i.down.arrow.icon
+                  | Next    
+          #point3.title(data-voiceoverIndex='voiceover_tut_guide_3')
+            i.dropdown.icon
+            | Limit what you share
+          .content.ui.list
+            .item
+              #protip3.ui.segment
+                .ui.large.checkbox#checkbox3
+                  input.checkbox.ui(type="checkbox")
+                  label If it is not required, do not provide your information or link your profile to a website.
     .ui.warning.message.hidden#checkAllBoxesWarning
      .header
       | Check all the boxes to proceed
@@ -84,7 +70,7 @@ block content
 
 block scripts
   script.
-    var voiceoverMappings = {
+    const voiceoverMappings = {
       'voiceover_tut_guide_1': {
         "initialDelay": 500,
         "delay": 500,
@@ -106,9 +92,4 @@ block scripts
   
 block styles
   link(rel='stylesheet' href='/css/modules/targeted.css')
-  link(rel='stylesheet' href='/css/checkbox_activity.css')
-
-  
-    
-    
-    
+  link(rel='stylesheet' href='/css/tut_guide.css')

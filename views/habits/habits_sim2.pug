@@ -11,7 +11,6 @@ block content
         a.active.item(data-value='notifications')#notificationsteps
           i.icon.bell
           |  Notifications
-          
   //-mobile only version of the menu
   .mobile.only.sixteen.wide.column
     .ui.top.fixed.vertical.menu
@@ -22,32 +21,7 @@ block content
         i.icon.bell
         |  Notifications
         .ui.red.right.pointing.label !
-    br
-    br
-
-  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
-    .ui.one.column.centered.grid.feedbackMessagesGrid
-      .ui.fixed.bottom.sticky
-        .ui.icon.compact.message.warning#removeHidden
-          i.close.icon
-          i.question.icon.float
-          .content
-            .ui.header Need some help? 
-            p Make sure you are clicking "Got it" on the blue dots!
-            
-        .ui.message.centered.success.hidden#nextPageInstruction
-          .content
-            .ui.header Click the "Settings" button to continue! 
-            
-        .ui.icon.message.warning.hidden#notificationWarning
-          i.close.icon
-          i.hand.pointer.icon.float
-          .content
-            .ui.header There are still blue dots to find!
-            p Click through all of the blue dots before going to the settings page.
-          
-    //-#######################
-    //-Notifications page  
+  #content.eight.wide.computer.eight.wide.tablet.sixteen.wide.mobile.column
     .ui.stackable.secondary.menu
       .ui.container
         .item
@@ -58,7 +32,6 @@ block content
           button.ui.basic.button.notificationsDisplay#activityButton
             i.clock.icon
             |   My Activity
-      
     .ui.raised.segment.notificationsDisplay#hint2
      .ui.feed
       .event        
@@ -66,7 +39,6 @@ block content
           img(src=cdn +'/profile_pictures/user22.jpeg')
         .content
           .summary Lana Sheehan commented on Zach Peters’ post: “cool”.
-          
     .ui.raised.segment.notificationsDisplay
      .ui.feed
       .event      
@@ -74,7 +46,6 @@ block content
           img(src=cdn +'/profile_pictures/user69.jpg')
         .content
           .summary Hannah Cohn commented on Cloe Hansen’s post: “so much love for you guys”.
-          
     .ui.raised.segment.notificationsDisplay
      .ui.feed
       .event      
@@ -82,7 +53,6 @@ block content
           img(src=cdn +'/profile_pictures/user3.jpg')
         .content
           .summary Cloe Hansen posted: “love you all like sisters &gt;3 ”.
-          
     .ui.raised.segment.notificationsDisplay
      .ui.feed
       .event    
@@ -90,7 +60,6 @@ block content
           img(src=cdn +'/profile_pictures/user28.jpg')
         .content
           .summary Corey King liked Grace Burns’ post: “~ cafe vibes ~”.
-          
     .ui.raised.segment.notificationsDisplay
      .ui.feed
       .event      
@@ -98,7 +67,6 @@ block content
           img(src=cdn +'/profile_pictures/user13.png')
         .content
           .summary Jason Perez posted: “Getting ready for the opening show tonite! ”.
-          
     .ui.raised.segment.notificationsDisplay
      .ui.feed
       .event
@@ -106,7 +74,6 @@ block content
           img(src=cdn +'/profile_pictures/user72.jpg')
         .content
           .summary Gabby Rogers commented on Grace Burns’s post: “is this the new place that opened up??”.
-
     .ui.raised.segment.notificationsDisplay#cyberTransButton
      .ui.feed
       .event
@@ -114,8 +81,21 @@ block content
           img(src=cdn +'/profile_pictures/user62.jpg')
         .content
           .summary Grace Burns posted: “~ cafe vibes ~”.        
-    br
-    br
+    //- Located at bottom so element doesn't take up space at top.
+    .ui.one.column.centered.grid.feedbackMessagesGrid
+      .ui.fixed.bottom.sticky
+        include ../partials/messages/removeHiddenMessage 
+        .ui.message.centered.success.hidden#nextPageInstruction
+          .content
+            .ui.header Click the "Settings" button to continue!
+        .ui.icon.message.warning.hidden#notificationWarning
+          i.close.icon
+          i.hand.pointer.icon.float
+          .content
+            .ui.header There are still blue dots to find!
+            p Click through all of the blue dots before going to the settings page.
+  .computer.only.tablet.only.four.wide.column
+
 block scripts
   script(src="/module_js/habits/habits_sim2.js")
   script(src='/module_js/voiceover.js')

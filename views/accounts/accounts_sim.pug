@@ -4,25 +4,9 @@ block content
   .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
     .ui.one.column.centered.grid.feedbackMessagesGrid
       .ui.fixed.bottom.sticky
-        .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
-          i.close.icon
-          i.question.icon.float
-          .content
-            .ui.header Need some help?
-            p Scroll up and click "Next" to begin!
-        .ui.icon.compact.message.warning#removeHidden
-          i.close.icon
-          i.question.icon.float
-          .content
-            .ui.header Need some help? 
-            p Make sure you are clicking "Got it" on the blue dots!
-          
-        .ui.icon.message.warning#clickAllDotsWarning
-          i.close.icon
-          i.hand.pointer.icon.float
-          .content
-            .ui.header There are still blue dots to find!
-            p Click through all of the blue dots to continue.
+        include ../partials/messages/clickNextMessage
+        include ../partials/messages/removeHiddenMessage
+        include ../partials/messages/clickAllDotsMessage
     .ui.raised.segment#generalStep
       h2.ui.header Create An Account
       .ui.form
@@ -40,7 +24,6 @@ block content
           //- https://stackoverflow.com/a/49304708
         .ui.warning.message#passwordWarning
           .header Try creating a password 
-
       #passwordStrength.ui.indicating.small.progress(data-value='0' data-total='5')
         .bar
       h3#strengthLabel Password Strength
@@ -49,8 +32,7 @@ block content
       .ui.message.warning.hidden#confirmContinueCheck
         .ui.header 
           | This password seems weak and easy to guess, are you sure you want to use it? 
-
-    button.ui.big.labeled.icon.button.addBottomMargin.cybersim2#cyberTransButton
+    button.ui.big.labeled.icon.button.mb-9.cybersim2#cyberTransButton
         i.rocket.icon
         |   Let's Continue!      
           
@@ -62,3 +44,4 @@ block scripts
   
 block styles
   link(rel='stylesheet', href='/css/modules/accounts.css')
+  link(rel='stylesheet', href='/css/sim.css')

@@ -72,7 +72,7 @@ function showHelp() {
         if (closedHints != numberOfHints) {
             //user does not know to click blue dots
             $('#removeHidden').transition('fade');
-            $('#cyberTransButton').css('margin-bottom', '10em');
+            $('#cyberTransButton').css('margin-bottom', '4em');
         }
     }
 };
@@ -84,7 +84,7 @@ function errorCheck() {
         //show the message normally the first time
         if ($('#clickAllDotsWarning').is(":hidden")) {
             $('#clickAllDotsWarning').transition('fade');
-            $('#cyberTransButton').css("margin-bottom", "10em");
+            $('#cyberTransButton').css("margin-bottom", "4em");
         } else {
             //otherwise, bounce the message to draw attention to it
             $('#clickAllDotsWarning').transition('bounce');
@@ -137,7 +137,7 @@ function startHints(enableDataCollection) {
                 //show the guidance message, user probably doesn't know to click "got it"
                 if ($('#removeHidden').is(":hidden")) {
                     $('#removeHidden').transition('fade');
-                    $('#cyberTransButton').css('margin-bottom', '10em');
+                    $('#cyberTransButton').css('margin-bottom', '4em');
                 } else {
                     $('#removeHidden').transition('bounce');
                 }

@@ -2,118 +2,94 @@
 extends ../ui_layout
   
 block content
-  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
-    
+  .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.centered
     .ui.one.column.centered.grid.feedbackMessagesGrid
       .ui.fixed.bottom.sticky
-        .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
-          i.close.icon
-          i.question.icon.float
-          .content
-            .ui.header Need some help?
-            p Scroll up and click "Next" to begin!
-            
-    #step3.ui.fluid.card.test
-          .content
-            .right.floated.meta= "Yesterday"
-            |
-            a(href='/user/andrewthomas_')
-              img.ui.avatar.image(src=cdn+'/profile_pictures/user71.JPG')
-              span='Andrew Thomas'
-          .image
-            img.post(src=cdn+'/post_pictures/digfootga1.jpg')
-          #step4.content
-            .description
-              | the first day after my bday and guess what i HAVE to do? clean 
-              | your room says my mom i hate her so much!!!
-          .three.ui.bottom.attached.icon.buttons
-            .ui.reply.button(tabindex='0')
-              i.reply.icon
-              |  Reply
-            .ui.flag.button(tabindex='0')
-              i.flag.icon
-              |  Flag
-            .ui.labeled.button(tabindex='0')
-              .ui.like.button
-                i.heart.icon
-                |  Like
-              a.ui.basic.red.left.pointing.label.count=2
-          
-          .content
-            .ui.comments
-              .comment
-                a.avatar
-                  img(src=cdn+'/profile_pictures/user52.jpg')
-                .content
-                  a.author Connor McCormick
-                  .metadata
-                    span.date 5 hours ago
-                    .rating
-                      i.heart.icon
-                      span.num=1
-                      |  Likes
-                  .text()
-                    | haha that sucks
-                  .actions
-                    a.comment.like Like
-                    a.comment.flag Flag
-          .extra.content
-            .ui.fluid.left.labeled.right.icon.input
-              .ui.label
-                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-              input.newcomment(type='text' placeholder='Write a Comment')
-              i.big.send.link.icon
-
-    #step5.ui.fluid.card.test.addBottomMargin
-          .content
-            .right.floated.meta= "15 Minutes Ago"
-            |
-            a(href='/user/Suzieee')
-              img.ui.avatar.image(src=cdn+'/profile_pictures/user40.jpg')
-              span='Susan Turner'
-          .image
-            img.post(src=cdn+"/post_pictures/digfootga3.jpg")
-          .content
-            .description="omg Lindsay I love you but you look ridiculous! lol"
-          .three.ui.bottom.attached.icon.buttons
-            .ui.reply.button(tabindex='0')
-              i.reply.icon
-              |  Reply
-            .ui.flag.button(tabindex='0')
-              i.flag.icon
-              |  Flag
-            .ui.labeled.button(tabindex='0')
-              .ui.like.button
-                i.heart.icon
-                |  Like
-              a.ui.basic.red.left.pointing.label.count=2
-          
-          .content
-            .ui.comments
-              .comment
-                a.avatar
-                  img(src=cdn+'/profile_pictures/user66.jpeg')
-                .content
-                  a.author Michelle Rose
-                  .metadata
-                    span.date 1 minute ago
-                    .rating
-                      i.heart.icon
-                      span.num=0
-                      |  Likes
-                  .text()
-                    | lol!!
-                  .actions
-                    a.comment.like Like
-                    a.comment.flag Flag
-          .extra.content
-            .ui.fluid.left.labeled.right.icon.input
-              .ui.label
-                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-              input.newcomment(type='text' placeholder='Write a Comment')
-              i.big.send.link.icon
-
-    
+        include ../partials/messages/clickNextMessage
+    #step3.ui.fluid.card
+      .content
+        .right.floated.meta= "Yesterday"
+        a(href='/user/andrewthomas_')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user71.JPG')
+          span='Andrew Thomas'
+      .image
+        img.post(src=cdn+'/post_pictures/digfootga1.jpg')
+      #step4.content
+        .description
+          | the first day after my bday and guess what i HAVE to do? clean 
+          | your room says my mom i hate her so much!!!
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user52.jpg')
+            .content
+              a.author Connor McCormick
+              .metadata
+                span.date 5 hours ago
+                .rating
+                  i.heart.icon
+                  span.num=1
+                  |  Likes
+              .text()
+                | haha that sucks
+              .actions
+                a.comment.like Like
+                a.comment.flag Flag
+      include ../partials/script/components/newUserComment
+    #step5.ui.fluid.card.mb-9
+      .content
+        .right.floated.meta= "15 Minutes Ago"
+        a(href='/user/Suzieee')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user40.jpg')
+          span='Susan Turner'
+      .image
+        img.post(src=cdn+"/post_pictures/digfootga3.jpg")
+      .content
+        .description="omg Lindsay I love you but you look ridiculous! lol"
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Reply
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Flag
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user66.jpeg')
+            .content
+              a.author Michelle Rose
+              .metadata
+                span.date 1 minute ago
+                .rating
+                  i.heart.icon
+                  span.num=0
+                  |  Likes
+              .text()
+                | lol!!
+              .actions
+                a.comment.like Like
+                a.comment.flag Flag
+      include ../partials/script/components/newUserComment
 
 block scripts
   script(src='/postFunctionalities.js')

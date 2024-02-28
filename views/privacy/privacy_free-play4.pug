@@ -14,38 +14,21 @@ block content
           .description 
             i.marker.icon
             span="Ithaca, NY"
-  
   #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column 
-    .ui.one.column.centered.grid.feedbackMessagesGrid
-      .ui.fixed.bottom.sticky
-        .ui.icon.compact.message.warning#removeHidden
-          i.close.icon
-          i.question.icon.float
-          .content
-            .ui.header Need some help? 
-            p Make sure you are clicking "Got it" on the blue dots!
-          
-        .ui.icon.message.warning#clickAllDotsWarning
-          i.close.icon
-          i.hand.pointer.icon.float
-          .content
-            .ui.header There are still blue dots to find!
-            p Click through all of the blue dots to continue.
-
-    .ui.fluid.card.dim.test()
+    .ui.fluid.card.dim
       .ui.dimmer.flag
             .content
               .center
                 h2.ui.inverted.icon.header
                   i.red.flag.icon
-                  |  You&apos;ve flagged this!
+                  |  You've flagged this!
                   h3.ui.inverted.header
                     span="The admins will review this post further. We are sorry you had this experience."
       .content#hint1
         .right.floated.meta= "Yesterday"
         img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
         |   <b>Lily Hui</b>
-      .img.post
+      .img.post.image
         img(src=cdn+"/post_pictures/nyctrip.jpg")
       .content
         .description
@@ -62,7 +45,6 @@ block content
             i.heart.icon
             |  Like
           a.ui.basic.red.left.pointing.label.count=2
-      
       .content
         .ui.comments
           .comment
@@ -81,28 +63,14 @@ block content
               .actions
                 a.like.comment Like
                 a.flag.comment Flag
-      .extra.content
-        .ui.fluid.left.labeled.right.icon.input
-          .ui.label
-            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment(type='text' placeholder='Write a Comment')
-          i.big.send.link.icon
-
-    .ui.fluid.card.dim.test()
-      .ui.dimmer.flag
-            .content
-              .center
-                h2.ui.inverted.icon.header
-                  i.red.flag.icon
-                  |  You&apos;ve flagged this!
-                  h3.ui.inverted.header
-                    span="The admins will review this post further. We are sorry you had this experience."
+      include ../partials/script/components/newUserComment
+    .ui.fluid.card.dim
+      include ../partials/script/components/dimmerflag
       .content#hint2
         .right.floated.meta= "4 days ago"
-        |
         img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
         |   <b>Lily Hui</b>
-      .img.post
+      .img.post.image
         img(src=cdn+"/post_pictures/prettyflowers.png")
       .content
         .description
@@ -119,7 +87,6 @@ block content
             i.heart.icon
             |  Like
           a.ui.basic.red.left.pointing.label.count=2
-      
       .content
         .ui.comments
           .comment
@@ -132,34 +99,20 @@ block content
                 .rating
                   i.heart.icon
                   span.num 1
-                  |     Likes
+                  | Likes
               .text()
                 | prettyyyyyy
               .actions
                 a.like.comment Like
                 a.flag.comment.comment Flag
-      .extra.content
-        .ui.fluid.left.labeled.right.icon.input
-          .ui.label
-            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment(type='text' placeholder='Write a Comment')
-          i.big.send.link.icon
-            
-    .ui.fluid.card.dim.test()
-      .ui.dimmer.flag
-            .content
-              .center
-                h2.ui.inverted.icon.header
-                  i.red.flag.icon
-                  |  You&apos;ve flagged this!
-                  h3.ui.inverted.header
-                    span="The admins will review this post further. We are sorry you had this experience."
+      include ../partials/script/components/newUserComment
+    .ui.fluid.card.dim
+      include ../partials/script/components/dimmerflag
       .content
         .right.floated.meta= "1 week ago"
-        |
         img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
         |   <b>Lily Hui</b>
-      .img.post
+      .img.post.image
         img(src=cdn+"/post_pictures/friendshipbracelet.png")
       .content
         .description
@@ -188,34 +141,20 @@ block content
                 .rating
                   i.heart.icon
                   span.num 1
-                  |     Likes
+                  | Likes
               .text()
                 | i remember this @_@
               .actions
                 a.like.comment Like
                 a.flag.comment.comment Flag
-      .extra.content
-        .ui.fluid.left.labeled.right.icon.input
-          .ui.label
-            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment(type='text' placeholder='Write a Comment')
-          i.big.send.link.icon
-            
-    .ui.fluid.card.dim.test()
-      .ui.dimmer.flag
-            .content
-              .center
-                h2.ui.inverted.icon.header
-                  i.red.flag.icon
-                  |  You&apos;ve flagged this!
-                  h3.ui.inverted.header
-                    span="The admins will review this post further. We are sorry you had this experience."
+      include ../partials/script/components/newUserComment
+    .ui.fluid.card.dim
+      include ../partials/script/components/dimmerflag
       .content
         .right.floated.meta= "2 weeks ago"
-        |
         img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
         |   <b>Lily Hui</b>
-      .img.post
+      .img.post.image
         img(src=cdn+"/post_pictures/healthyeating.png")
       .content
         .description
@@ -232,7 +171,6 @@ block content
             i.heart.icon
             |  Like
           a.ui.basic.red.left.pointing.label.count=2
-      
       .content
         .ui.comments
           .comment
@@ -245,7 +183,7 @@ block content
                 .rating
                   i.heart.icon
                   span.num 1
-                  |     Likes
+                  | Likes
               .text()
                 | Was it good?
               .actions
@@ -267,28 +205,14 @@ block content
               .actions
                 a.like.comment Like
                 a.flag.comment Flag
-      .extra.content
-        .ui.fluid.left.labeled.right.icon.input
-          .ui.label
-            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment(type='text' placeholder='Write a Comment')
-          i.big.send.link.icon
-        
-    .ui.fluid.card.dim.test()
-      .ui.dimmer.flag
-            .content
-              .center
-                h2.ui.inverted.icon.header
-                  i.red.flag.icon
-                  |  You&apos;ve flagged this!
-                  h3.ui.inverted.header
-                    span="The admins will review this post further. We are sorry you had this experience."
+      include ../partials/script/components/newUserComment
+    .ui.fluid.card.dim
+      include ../partials/script/components/dimmerflag
       .content
         .right.floated.meta= "2 weeks ago"
-        |
         img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
         |   <b>Lily Hui</b>
-      .img.post
+      .img.post.image
         img(src=cdn+"/post_pictures/zoomonkey.jpg")
       .content
         .description
@@ -305,29 +229,14 @@ block content
             i.heart.icon
             |  Like
           a.ui.basic.red.left.pointing.label.count=2
-      .extra.content
-        .ui.fluid.left.labeled.right.icon.input
-          .ui.label
-            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment(type='text' placeholder='Write a Comment')
-          i.big.send.link.icon
-
-            
-    .ui.fluid.card.dim.test()
-      .ui.dimmer.flag
-            .content
-              .center
-                h2.ui.inverted.icon.header
-                  i.red.flag.icon
-                  |  You&apos;ve flagged this!
-                  h3.ui.inverted.header
-                    span="The admins will review this post further. We are sorry you had this experience."
+      include ../partials/script/components/newUserComment
+    .ui.fluid.card.dim
+      include ../partials/script/components/dimmerflag
       .content
         .right.floated.meta= "2 weeks ago"
-        |
         img.ui.avatar.image(src=cdn+'/post_pictures/lilyprofpic.png')
         |   <b>Lily Hui</b>
-      .img.post
+      .img.post.image
         img(src=cdn+"/post_pictures/lilypicture.png")
       .content
         .description
@@ -344,7 +253,6 @@ block content
             i.heart.icon
             |  Like
           a.ui.basic.red.left.pointing.label.count=3
-      
       .content
         .ui.comments
           .comment
@@ -379,38 +287,19 @@ block content
               .actions
                 a.like.comment Like
                 a.flag.comment Flag
-      .extra.content
-        .ui.fluid.left.labeled.right.icon.input
-          .ui.label
-            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment(type='text' placeholder='Write a Comment')
-          i.big.send.link.icon            
-            
-      
-    button.ui.big.labeled.icon.button.settings2#cyberTransButton
+      include ../partials/script/components/newUserComment        
+    button.ui.big.labeled.icon.button.settings2.mb-9#cyberTransButton
         i.rocket.icon
         |   Let's Continue!
-
+    //- Located at bottom so element doesn't take up space at top.
+    .ui.one.column.centered.grid.feedbackMessagesGrid
+      .ui.fixed.bottom.sticky
+        include ../partials/messages/removeHiddenMessage
+        include ../partials/messages/clickAllDotsMessage
+  .computer.only.tablet.only.four.wide.column 
 
 block scripts
-  script.
-    var hintsList = [
-      {
-        hint: `This is what Lily’s profile now looks like to the public. If you look
-        through it, you can see that the tagged posts have been removed from her
-        profile.`,
-        element: '#hint1',
-        hintPosition: 'middle-middle',
-        audioFile: ['CUSML.7.8.16.mp3']
-      },
-      {
-        hint: `However, the public can still see all of her posts.`,
-        element: '#hint2',
-        hintPosition: 'middle-middle',
-        audioFile: ['CUSML.7.8.17.mp3']
-      }
-    ]
-
+  script(src="/module_js/privacy/privacy_free-play4.js")
   script(src="/module_js/voiceover.js")  
   script(src='/postFunctionalities.js')
   script(src="/module_js/base_sim.js")

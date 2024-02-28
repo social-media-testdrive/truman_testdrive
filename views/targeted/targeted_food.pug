@@ -35,13 +35,6 @@ block content
               li Bake for 10 to 12 minutes, or until the edges begin to brown.
               li Let the cookies cool on the sheet for a few minutes before removing them to a wire rack to cool. Store the cookies in an airtight container at room temperature. For optimum freshness, enjoy them within a few days. They can be frozen to enjoy later.
             p (Recipe by Sarah Hatfield on Go Dairy Free)
-          
-      a.addBottomMargin(href='javascript:void(0);', onclick='javascript:startIntro();')
-          .ui.big.green.labeled.icon.button
-              i.rocket.icon
-              |   Let's Continue!
-
-          
     .computer.only.tablet.only.six.wide.column.sideRecipes
       h2 What's Cooking
       .ui.equal.width.padded.grid
@@ -60,7 +53,12 @@ block content
             img.ui.fluid.image(src= cdn +'/post_pictures/Food_Interest_Page_4.jpg')
           .ui.column
             h4 'Tis the Season for Pies!
-          
+  .sixteen.wide.column
+    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+      .ui.big.green.labeled.icon.button.mb-4.mt-6
+        i.rocket.icon
+        |   Let's Continue!
+        
 block scripts
   script().
     function startIntro(){

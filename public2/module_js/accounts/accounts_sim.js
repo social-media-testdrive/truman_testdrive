@@ -1,4 +1,4 @@
-let stepsList = [{
+const stepsList = [{
         element: '#generalStep',
         intro: `Click "Next" to begin!`,
         position: 'right',
@@ -24,7 +24,7 @@ let stepsList = [{
     }
 ];
 
-let hintsList = [{
+const hintsList = [{
         hint: `Think about whether you want to include part of your name or a
     nickname. You may or may not want people to know exactly who you are based
     on your username.`,
@@ -81,7 +81,6 @@ function hideFieldMessage(messageID) {
 }
 
 function eventsAfterHints() {
-
     $('input[name="username"]').removeAttr('readonly');
     $('input[name="password"]').removeAttr('readonly');
 
@@ -150,7 +149,7 @@ function customErrorCheck() {
         //show the message normally the first time
         if ($('#clickAllDotsWarning').is(":hidden")) {
             $('#clickAllDotsWarning').transition('fade');
-            $('#cyberTransButton').css("margin-bottom", "10em");
+            $('#cyberTransButton').css("margin-bottom", "4em");
         } else {
             //otherwise, bounce the message to draw attention to it
             $('#clickAllDotsWarning').transition('bounce');
@@ -200,15 +199,16 @@ function customOnClickGreenContinue() {
         actionArray = [];
         passwordDictionary = ["Very Weak", "Weak", "Moderate", "Strong", "Very Strong"];
         $('input[type=text]').each(function() {
-            let cat = {};
-            cat.inputField = $(this).attr('name');
-            cat.inputText = $(this).val();
-            cat.subdirectory1 = 'sim';
-            cat.subdirectory2 = 'accounts';
+            let cat = {
+                inputField: $(this).attr('name'),
+                inputText: $(this).val(),
+                subdirectory1: 'sim',
+                subdirectory2: 'accounts',
+                absoluteTimestamp: Date.now()
+            };
             if (cat.inputField === 'password') {
                 cat.passwordStrength = passwordDictionary[result.score];
             }
-            cat.absoluteTimestamp = Date.now();
 
             const jqxhr = $.post("/accountsAction", {
                 action: cat,

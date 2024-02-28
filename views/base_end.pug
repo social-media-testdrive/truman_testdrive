@@ -2,7 +2,7 @@ extends ui_layout
 
 block content
   .ten.wide.computer.twelve.wide.tablet.sixteen.wide.mobile.column.centered
-    .ui.basic.segment.addBottomMargin
+    .ui.basic.segment.mb-9
       h1 What would you like to do next?
       .ui.raised.segment
         h3.ui.header
@@ -11,19 +11,15 @@ block content
         hr
         .ui.basic.segment.center.aligned
           .ui.big.green.labeled.icon.button.finish.endPageButton
-              i.checkmark.icon
-              |   Finish Lesson
-          br
-          br
+            i.checkmark.icon
+            |   Finish Lesson
           .ui.big.green.labeled.icon.button.finish.endPageButton
-              i.chevron.circle.right.icon
-              |   See Other Modules
-          br
-          br
+            i.chevron.circle.right.icon
+            |   See Other Modules
           a(href='javascript:void(0);', onclick='javascript:openFeedback();')
-              .ui.big.green.labeled.icon.button.endPageButton
-                  i.edit.icon
-                  |   Give Us Feedback
+            .ui.big.green.labeled.icon.button.endPageButton
+              i.edit.icon
+              |   Give Us Feedback
                     
       .ui.raised.segment
         h3.ui.header
@@ -32,34 +28,24 @@ block content
         hr
         .ui.basic.segment.center.aligned
           .ui.big.blue.labeled.icon.button.cybertutorial.endPageButton
-              i.chevron.circle.left.icon
-              |   Learn Key Ideas
-          br
-          br
+            i.chevron.circle.left.icon
+            |   Learn Key Ideas
           .ui.big.blue.labeled.icon.button.cybersim.endPageButton
-              i.chevron.circle.left.icon
-              |   Practice Skills
+            i.chevron.circle.left.icon
+            |   Practice Skills
           if (modId === 'accounts')
           else if (modId === 'privacy')
-            br
-            br
             a(href='javascript:void(0);', onclick='javascript:toPrivacyFreePlay();')
-                .ui.big.blue.labeled.icon.button.endPageButton
-                    i.chevron.circle.left.icon
-                    |  Explore Timeline
-          else 
-            br
-            br
-            .ui.big.blue.labeled.icon.button.cyber_script.endPageButton
+              .ui.big.blue.labeled.icon.button.endPageButton
                 i.chevron.circle.left.icon
-                |   Explore Timeline
+                |  Explore Timeline
+          else
+            .ui.big.blue.labeled.icon.button.cyber_script.endPageButton
+              i.chevron.circle.left.icon
+              |   Explore Timeline
       
 block scripts
   script(src='/module_js/base_end.js')
-  script.
-    function openFeedback(){
-      window.open(href='https://cornell.qualtrics.com/jfe/form/SV_9tMszwlpe1TIIxT');
-    };
-    function toPrivacyFreePlay(){       
-      window.location.href='/free-play/privacy';
-    };
+
+block styles
+  link(rel='stylesheet', href='/css/end.css')

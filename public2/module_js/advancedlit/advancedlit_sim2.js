@@ -1,4 +1,4 @@
-var hintsList = [{
+const hintsList = [{
         hint: `Let’s try to analyze the news article to identify if this is an
     accurate story.`,
         element: '#hint1',
@@ -36,7 +36,6 @@ function eventsAfterHints() {
 }
 
 function customOnHintCloseFunction(stepID) {
-
     // sequential hint appearance
     stepID += 1;
     if (stepID !== numberOfHints) {
@@ -62,24 +61,25 @@ function customOnHintCloseFunction(stepID) {
         }
     }
 }
-
-$('.searchTab').on('click', function() {
-    if (closedHints === numberOfHints) {
-        window.location.href = '/sim3/advancedlit';
-    } else {
-        if ($('#clickAllDotsWarning').is(":hidden")) {
-            $('#clickAllDotsWarning').transition('fade');
+$(window).on("load", function() {
+    $('.searchTab').on('click', function() {
+        if (closedHints === numberOfHints) {
+            window.location.href = '/sim3/advancedlit';
         } else {
-            //otherwise, bounce the message to draw attention to it
-            $('#clickAllDotsWarning').transition('bounce');
+            if ($('#clickAllDotsWarning').is(":hidden")) {
+                $('#clickAllDotsWarning').transition('fade');
+            } else {
+                //otherwise, bounce the message to draw attention to it
+                $('#clickAllDotsWarning').transition('bounce');
+            }
+            // Scroll to the first blue dot that is still visible
+            if ($('.introjs-hint:visible')[0]) { //Check if undefined. Undefined when there are no more visible blue dots.
+                $('.introjs-hint:visible')[0].scrollIntoView({
+                    behavior: "smooth", // or "auto" or "instant"
+                    block: "start", // defines vertical alignment
+                    inline: "nearest" // defines horizontal alignment
+                });
+            };
         }
-        // Scroll to the first blue dot that is still visible
-        if ($('.introjs-hint:visible')[0]) { //Check if undefined. Undefined when there are no more visible blue dots.
-            $('.introjs-hint:visible')[0].scrollIntoView({
-                behavior: "smooth", // or "auto" or "instant"
-                block: "start", // defines vertical alignment
-                inline: "nearest" // defines horizontal alignment
-            });
-        };
-    }
+    });
 });

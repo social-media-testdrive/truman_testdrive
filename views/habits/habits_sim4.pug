@@ -10,7 +10,6 @@ block content
         a.active.item(data-value='notifications')#notificationsteps
           i.icon.bell
           |  Notifications
-          
   //-mobile only version of the menu
   .mobile.only.sixteen.wide.column
     .ui.top.fixed.vertical.menu
@@ -21,39 +20,21 @@ block content
         i.icon.bell
         |  Notifications
         .ui.red.right.pointing.label !
-    br
-    br
-
-  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
-    .ui.one.column.centered.grid.feedbackMessagesGrid
-      .ui.fixed.bottom.sticky
-        .ui.icon.compact.message.warning#removeHidden
-          i.close.icon
-          i.question.icon.float
-          .content
-            .ui.header Need some help? 
-            p Make sure you are clicking "Got it" on the blue dots!
-        .ui.icon.message.warning#clickAllDotsWarning
-          i.close.icon
-          i.hand.pointer.icon.float
-          .content
-            .ui.header There are still blue dots to find!
-            p Click through all of the blue dots to continue
-                
-    button.ui.basic.button.notificationsDisplay#settingsButton
-      i.cog.icon
-      |   Settings
-      
-    button.ui.basic.button.notificationsDisplay#activityButton
-      i.clock.icon
-      |   My Activity
-    br
-    br
+  #content.eight.wide.computer.eight.wide.tablet.sixteen.wide.mobile.column
+    .ui.stackable.secondary.menu
+      .ui.container
+        .item
+          button.ui.basic.button.notificationsDisplay.settingsButton
+            i.cog.icon
+            |   Settings
+        .item
+          button.ui.basic.button.notificationsDisplay#activityButton
+            i.clock.icon
+            |   My Activity
     //-Activity display 
     .ui.container.habitsActivityDisplay
       h2.ui.header#hint1 My Activity
       .ui.divider
-
       h2.ui.header#hint2 Time on TestDrive:
       .ui.statistics
         .statistic
@@ -67,14 +48,11 @@ block content
           .value 30
           .label
             | sec
-          
       h2.ui.header#hint3 Manage My Time:
-      br
-      .field#reminderTimeSelectField
+      .field#reminderTimeSelectField.mt-4.mb-3
         label Set Daily Reminder
           br
-          br
-          .ui.selection.dropdown(name='reminderTimeSelect')
+          .ui.selection.dropdown(name='reminderTimeSelect').mt-2
             input(type='hidden')#reminderTimeSelectValue
             i.dropdown.icon
             .default.text 
@@ -84,12 +62,15 @@ block content
               .item(data-value='2 hours') 2 hours
               .item(data-value='4 hours') 4 hours
               .item(data-value='8 hours') 8 hours
-      br
-      span We'll send you a reminder once you've reached the time you set for yourself.
-      
-    button.ui.big.labeled.icon.button.cybertrans.addBottomMargin#cyberTransButton
+      span We'll send you a reminder once you've reached the time you set for yourself.  
+    button.ui.big.labeled.icon.button.cybertrans.mb-9#cyberTransButton.mt-6
         i.rocket.icon
         |   Let's Continue!
+    .ui.one.column.centered.grid.feedbackMessagesGrid
+      .ui.fixed.bottom.sticky
+        include ../partials/messages/removeHiddenMessage
+        include ../partials/messages/clickAllDotsMessage
+  .computer.only.tablet.only.four.wide.column
             
 block scripts
   script(src="/module_js/habits/habits_sim4.js")
@@ -99,3 +80,8 @@ block scripts
 block styles
   link(rel='stylesheet', href="/css/modules/habits/habits_sim.css")
   link(rel='stylesheet', href='/css/sim.css')
+  style.
+    .introjs-tooltipReferenceLayer, 
+    .introjs-tooltip {
+      z-index: 10000003
+    }

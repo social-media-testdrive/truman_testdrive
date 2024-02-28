@@ -1,7 +1,7 @@
 extends ./ui_layout
 
 block content
-  .ui.text.container.addBottomMargin
+  .ui.text.container.mb-9
     .ui.raised.segment.mt-6
       h3.ui.header.mt-2
         i.book.blue.icon
@@ -9,25 +9,25 @@ block content
           | Learn
       .ui.divider
       .ui.basic.segment.removePadding
-        .ui.mini.green.right.labeled.icon.button.showLearnSectionButton
+        .ui.small.green.right.labeled.icon.button.showLearnSectionButton
           i.down.arrow.icon
           |   Next
       .ui.basic.segment.learnSegment.hidden
         each concept in startData["Learn"]["concepts"]
           if (typeof concept == "object")
             each val, key in concept
-              h5.ui.header
+              h4.ui.header
                 i.arrow.circle.right.blue.icon
                 .content !{key}
               each bullet in val
-                h5.ui.header(style="margin:calc(.14285714em) 0 1rem !important;")
+                h4.ui.header(style="margin:calc(.14285714em) 0 1rem !important;")
                   i.circle.bullet.blue.icon
                   .content !{bullet}
           else 
-            h5.ui.header
+            h4.ui.header
               i.arrow.circle.right.blue.icon
               .content !{concept}
-        .ui.mini.green.right.labeled.icon.button.showKeyTermsButton
+        .ui.small.green.right.labeled.icon.button.showKeyTermsButton
           i.down.arrow.icon
           |   Next
     
@@ -74,13 +74,13 @@ block content
      .header
       | Click on each label to proceed  
     a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
-      .ui.labeled.icon.button
+      .ui.large.labeled.icon.button
         i.rocket.icon
         |   Got it!
             
 block scripts
   script.
-    const startData = !{JSON.stringify(startData)}; // reflectionData is passed to pug file via render function in app.js
+    const startData = !{JSON.stringify(startData)}; // startData is passed to pug file via render function in app.js
     let voiceoverMappings = {
       '.showLearnSectionButton': {
          "initialDelay": 700,
@@ -98,6 +98,7 @@ block scripts
       };
       voiceoverMappings[key] = cat;
     });
+    //- Only used in digital-literacy module.
     if (startData["KeyTerms_2"]){
       startData["KeyTerms_2"]["content"].forEach(function (keyTerm, i) {
         const files = keyTerm["voiceoverFiles"];
@@ -110,7 +111,6 @@ block scripts
         voiceoverMappings[key] = cat;
       });
     }
-    console.log(voiceoverMappings)
   script(src='/module_js/voiceover.js')
   script(src="/module_js/base_start.js")
 
