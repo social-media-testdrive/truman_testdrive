@@ -1,0 +1,267 @@
+extends ../../../module_layout
+include initializeScreen.pug
+
+block content
+
+  .ui.container#raised-container
+    .limit
+      #leftBox
+        table#puzzel
+      #rightBox
+        table
+          tr
+            td
+              input.butt(type='submit' value='Clear All' onclick='clearAllClicked()')
+            td
+              input.butt(type='submit' value='Check' onclick='checkClicked()')
+            td
+              input.butt(type='submit' value='Solve' onclick='solveClicked()')
+            td
+              input.butt(type='submit' value='Clue' onclick='clueClicked()')
+      table#hintsTable
+        tr
+          td
+            strong ACROSS:
+          td
+            strong DOWN:
+        tr
+          td 2. Computer viruses and other programs that cybercriminals use to disrupt or access your computer
+          td 1. Data that can be used to distinguish or trace an individual&apos;s identity
+        tr
+          td 3. When scammers create fake online profiles and attempt to build false romantic relationships with their potential victims
+          td 4. A unique, 9-digit code assigned to you for identification purposes
+        tr
+          td 5. When scammers create fake online profiles and attempt to build false friendly relationships with their potential victims
+          td 6. When scammers prey on your emotions to get personal information or money from you
+        tr
+          td 10. Romance scammers might pretend to be experts in financial investments
+          td 7. A stage where romance scammers work to build intimacy with the victim
+        tr
+          td 11. Also known as money movers or cutouts, are often unknowingly used to transfer money or packages to a third party
+          td 8. The tactic of overwhelming victims with excessive affection and attention in romance scams
+        tr
+          td 12. Creating a fake online profile to intentionally deceive
+          td 9. A digital and encrypted form of decentralized exchange
+
+    style.
+      .limit{
+        padding-left: 0rem;
+        padding-right: 0rem;
+      }
+      #cross{
+        text-align: center;
+        width:30px;
+        height:30px;
+        margin: 0;
+        padding: 0;
+        border-collapse: collapse;
+        border: 1px solid white;
+      }
+      #buttons{
+        width:30%;
+        float: right;
+      }
+      tr{
+        margin: 0;
+        padding: 0;
+        border-collapse: collapse;
+      }
+      td{
+        height: 30px;
+        width: 30px;
+      }
+      #leftBox{
+        float: left;
+      }
+      #rightBox{
+        float: left;
+        clear:left;
+      }
+      .butt{
+        height:50px;
+        width: 107px;
+      }
+      #puzzel{
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        border-collapse: collapse;
+        border: 1px solid black;
+      }
+      .inputBox{
+          width: 40px;
+          height:40px;
+          border: 1px solid black;
+          text-align: center;
+      }
+      #hintsTable{
+        width: 480px;
+        float: left;
+        clear: left;
+      } 
+            
+
+     
+    script.
+        var progress = #{user.moduleProgress.identity.percent}
+        //Globals
+        var currentTextInput;
+        var puzzelArrayData;
+        //Loads the Crossword
+        function initializeScreen(){
+          var puzzelTable = document.getElementById("puzzel");
+          puzzelArrayData = preparePuzzelArray();
+          for ( var i = 0; i < puzzelArrayData.length ; i++ ) {
+            var row = puzzelTable.insertRow(-1);
+            var rowData = puzzelArrayData[i];
+            for(var j = 0 ; j < rowData.length ; j++){
+              var cell = row.insertCell(-1);
+              if(rowData[j] != 0){
+                var txtID = String('txt' + '_' + i + '_' + j);
+                cell.innerHTML = '<input type="text" class="inputBox" maxlength="1" style="text-transform: lowercase" ' + 'id="' + txtID + '" onfocus="textInputFocus(' + "'" + txtID + "'"+ ')">';
+              }else{
+                cell.style.backgroundColor  = "black";
+              }
+            }
+          }
+          addHint();
+        }
+        //Adds the hint numbers
+        function addHint(){
+          document.getElementById("txt_0_15").placeholder = "1";
+          document.getElementById("txt_2_10").placeholder = "2";
+          document.getElementById("txt_6_6").placeholder = "3";
+          document.getElementById("txt_11_0").placeholder = "5";
+          document.getElementById("txt_9_11").placeholder = "4";
+          document.getElementById("txt_11_20").placeholder = "6";
+          document.getElementById("txt_17_5").placeholder = "7";
+          document.getElementById("txt_17_9").placeholder = "8";
+          document.getElementById("txt_17_13").placeholder = "9";
+          document.getElementById("txt_18_4").placeholder = "10";
+          document.getElementById("txt_22_18").placeholder = "11";
+          document.getElementById("txt_29_13").placeholder = "12";
+        }
+        //Stores ID of the selected cell into currentTextInput
+        function textInputFocus(txtID123){
+          currentTextInput = txtID123;
+        }
+        //Returns Array
+        function preparePuzzelArray(){
+
+          var items = [
+            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'p', 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
+            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'e', 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
+            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'m','a','l','w','a','r','e', 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
+            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'s', 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
+            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'o', 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
+            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'n', 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
+            [ 0 , 0 , 0 , 0 , 0 , 0 ,'r','o','m','a','n','c','e','s','c','a','m', 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
+            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'l', 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
+            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'i', 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
+            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'s', 0 , 0 , 0 ,'n', 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
+            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'o', 0 , 0 , 0 ,'f', 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
+            ['f','r','i','e','n','d','s','h','i','p','s','c','a','m', 0 ,'o', 0 , 0 , 0 , 0 ,'e', 0 , 0 , 0 , 0 , 0 , 0 , 0],
+            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'i', 0 , 0 , 0 ,'r', 0 , 0 , 0 , 0 ,'m', 0 , 0 , 0 , 0 , 0 , 0 , 0],
+            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'a', 0 , 0 , 0 ,'m', 0 , 0 , 0 , 0 ,'o', 0 , 0 , 0 , 0 , 0 , 0 , 0],
+            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'l', 0 , 0 , 0 ,'a', 0 , 0 , 0 , 0 ,'t', 0 , 0 , 0 , 0 , 0 , 0 , 0],
+            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'s', 0 , 0 , 0 ,'t', 0 , 0 , 0 , 0 ,'i', 0 , 0 , 0 , 0 , 0 , 0 , 0],
+            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'e', 0 , 0 , 0 ,'i', 0 , 0 , 0 , 0 ,'o', 0 , 0 , 0 , 0 , 0 , 0 , 0],
+            [ 0 , 0 , 0 , 0 , 0 ,'g', 0 , 0 , 0 ,'l', 0 ,'c', 0 ,'c', 0 ,'o', 0 , 0 , 0 , 0 ,'n', 0 , 0 , 0 , 0 , 0 , 0 , 0],
+            [ 0 , 0 , 0 , 0 ,'c','r','y','p','t','o','c','u','r','r','e','n','c','y','s','c','a','m', 0 , 0 , 0 , 0 , 0 , 0],
+            [ 0 , 0 , 0 , 0 , 0 ,'o', 0 , 0 , 0 ,'v', 0 ,'r', 0 ,'y', 0 , 0 , 0 , 0 , 0 , 0 ,'l', 0 , 0 , 0 , 0 , 0 , 0 , 0],
+            [ 0 , 0 , 0 , 0 , 0 ,'o', 0 , 0 , 0 ,'e', 0 ,'i', 0 ,'p', 0 , 0 , 0 , 0 , 0 , 0 ,'m', 0 , 0 , 0 , 0 , 0 , 0 , 0],
+            [ 0 , 0 , 0 , 0 , 0 ,'m', 0 , 0 , 0 ,'b', 0 ,'t', 0 ,'t', 0 , 0 , 0 , 0 , 0 , 0 ,'a', 0 , 0 , 0 , 0 , 0 , 0 , 0],
+            [ 0 , 0 , 0 , 0 , 0 ,'i', 0 , 0 , 0 ,'o', 0 ,'y', 0 ,'o', 0 , 0 , 0 , 0 ,'m','o','n','e','y','m','u','l','e','s'],
+            [ 0 , 0 , 0 , 0 , 0 ,'n', 0 , 0 , 0 ,'m', 0 ,'n', 0 ,'c', 0 , 0 , 0 , 0 , 0 , 0 ,'i', 0 , 0 , 0 , 0 , 0 , 0 , 0],
+            [ 0 , 0 , 0 , 0 , 0 ,'g', 0 , 0 , 0 ,'b', 0 ,'u', 0 ,'u', 0 , 0 , 0 , 0 , 0 , 0 ,'p', 0 , 0 , 0 , 0 , 0 , 0 , 0],
+            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'i', 0 ,'m', 0 ,'r', 0 , 0 , 0 , 0 , 0 , 0 ,'u', 0 , 0 , 0 , 0 , 0 , 0 , 0],
+            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'n', 0 ,'b', 0 ,'r', 0 , 0 , 0 , 0 , 0 , 0 ,'l', 0 , 0 , 0 , 0 , 0 , 0 , 0],
+            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'g', 0 ,'e', 0 ,'e', 0 , 0 , 0 , 0 , 0 , 0 ,'a', 0 , 0 , 0 , 0 , 0 , 0 , 0],
+            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'r', 0 ,'n', 0 , 0 , 0 , 0 , 0 , 0 ,'t', 0 , 0 , 0 , 0 , 0 , 0 , 0],
+            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'c','a','t','f','i','s','h','i','n','g', 0 , 0 , 0 , 0 , 0],
+            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'y', 0 , 0 , 0 , 0 , 0 , 0 ,'o', 0 , 0 , 0 , 0 , 0 , 0 , 0],
+            [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,'n', 0 , 0 , 0 , 0 , 0 , 0 , 0]
+          ]
+        return items;
+        }
+        //Clear All Button
+        function clearAllClicked(){
+          currentTextInput = '';
+          var puzzelTable = document.getElementById("puzzel");
+          puzzelTable.innerHTML = '';
+            initializeScreen();
+        }
+        //Check button
+        function checkClicked(){
+          for ( var i = 0; i < puzzelArrayData.length ; i++ ) {
+            var rowData = puzzelArrayData[i];
+            for(var j = 0 ; j < rowData.length ; j++){
+              if(rowData[j] != 0){
+                var selectedInputTextElement = document.getElementById('txt' + '_' + i + '_' + j);
+                if(selectedInputTextElement.value != puzzelArrayData[i][j]){
+                  selectedInputTextElement.style.backgroundColor = 'red';
+                  
+                }else{
+                  selectedInputTextElement.style.backgroundColor = 'white';
+                }
+              }
+            }
+          }
+        }
+        //Clue Button
+        function clueClicked(){
+          if (currentTextInput != null){
+            var temp1 = currentTextInput;
+            var token = temp1.split("_");
+            var row = token[1];
+            var column = token[2];
+            document.getElementById(temp1).value = puzzelArrayData[row][column];
+            //checkClicked();
+          }
+        }
+        //Solve Button
+        function solveClicked(){
+          if (currentTextInput != null){
+            var temp1 = currentTextInput;
+            var token = temp1.split("_");
+            var row = token[1];
+            var column = token[2];
+            
+            // Print elements on top
+            for(j = row; j >= 0; j--){
+              if(puzzelArrayData[j][column] != 0){
+                document.getElementById('txt' + '_' + j + '_' + column).value = puzzelArrayData[j][column];
+                }else break;
+            }
+            // Print elements on right
+            for(i = column; i< puzzelArrayData[row].length; i++){
+              if(puzzelArrayData[row][i] != 0){
+                document.getElementById('txt' + '_' + row + '_' + i).value = puzzelArrayData[row][i];
+                }else break;
+            }
+            
+            // Print elements below
+            for(m = row; m< puzzelArrayData.length; m++){
+              if(puzzelArrayData[m][column] != 0){
+                document.getElementById('txt' + '_' + m + '_' + column).value = puzzelArrayData[m][column];
+                }else break;
+            }
+            // Print elements on left
+            for(k = column; k >= 0; k--){
+              if(puzzelArrayData[row][k] != 0){
+                document.getElementById('txt' + '_' + row + '_' + k).value = puzzelArrayData[row][k];
+                }else break;
+            }
+            // Done!
+            
+          }
+        }
+    script(src='/js/setProgressBar.js')  
+
+block append footer
+  .ui.container
+    +navButtons('romance', 'sub_learn2', '/learn/submod/romance', '/learn/submod/3/romance', 14)  
+
+block scripts
+  script.
+    postStartTime("romance", "sub_learn2");
