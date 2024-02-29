@@ -204,7 +204,6 @@ app.get('/tutorial', (req, res) => {
   res.render('tutorial');
 });
 
-
 // Render privacy policy page.
 app.get('/privacy', function(req, res) {
   res.render('privacy_policy', {
