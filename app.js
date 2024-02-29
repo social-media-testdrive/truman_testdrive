@@ -204,6 +204,20 @@ app.get('/tutorial', (req, res) => {
   res.render('tutorial');
 });
 
+/////////////////////////////////////////////////////////////////
+
+/*
+(3/1) Routes added by Liv to take you to the concepts page 
+*/
+app.get('/phases', (req, res) => { res.render('phases'); });
+app.get('/types-1', (req, res) => { res.render('types-1'); });
+app.get('/types-2', (req, res) => { res.render('types-2'); });
+app.get('/types-3', (req, res) => { res.render('types-3'); });
+app.get('/types-4', (req, res) => { res.render('types-4'); });
+
+////////////////////////////////////////////////////////////////////
+
+
 
 // Render privacy policy page.
 app.get('/privacy', function(req, res) {
