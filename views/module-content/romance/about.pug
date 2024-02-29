@@ -86,14 +86,53 @@ block content
           .ui.grid
             .row
               .two.wide.centered.column
-                if(user.moduleStatus.romance.techniques === 100)
+                if(user.moduleStatus.romance.consequences === 100)
                   span.fake-checkbox.completed
                 else
                   span.fake-checkbox
               .nine.wide.column
-                h3 Recognize Techniques
+                h3 Stage 1: Fake Profiles
               .five.wide.right.aligned.column
-                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=romance&section=techniques&page=objectives'") Start
+                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=romance&section=fake&page=objectives'") Start
+        .ui.divider
+        .ui.basic.segment
+          .ui.grid
+            .row
+              .two.wide.centered.column
+                if(user.moduleStatus.romance.consequences === 100)
+                  span.fake-checkbox.completed
+                else
+                  span.fake-checkbox
+              .nine.wide.column
+                h3 Stage 2: Contact & Groom
+              .five.wide.right.aligned.column
+                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=romance&section=contact&page=objectives'") Start
+        .ui.divider
+        .ui.basic.segment
+          .ui.grid
+            .row
+              .two.wide.centered.column
+                if(user.moduleStatus.romance.consequences === 100)
+                  span.fake-checkbox.completed
+                else
+                  span.fake-checkbox
+              .nine.wide.column
+                h3 Stage 3: Scam Requests
+              .five.wide.right.aligned.column
+                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=romance&section=requests&page=objectives'") Start
+        //- .ui.divider
+        //- .ui.basic.segment
+        //-   .ui.grid
+        //-     .row
+        //-       .two.wide.centered.column
+        //-         if(user.moduleStatus.romance.techniques === 100)
+        //-           span.fake-checkbox.completed
+        //-         else
+        //-           span.fake-checkbox
+        //-       .nine.wide.column
+        //-         h3 Recognize Techniques
+        //-       .five.wide.right.aligned.column
+        //-         .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=romance&section=techniques&page=objectives'") Start
         .ui.divider
         .ui.basic.segment
           .ui.grid

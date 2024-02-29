@@ -564,7 +564,103 @@ function setLinks(currentPage) {
             nextlink = baseurl + 'takeaways';
         } else if(currentPage === 'takeaways') {
             backlink = baseurl + 'quiz';
-            nextlink = '/course-player?module=romance&section=techniques&page=objectives';
+            nextlink = '/course-player?module=romance&section=fake&page=objectives';
+        }
+    }  else if(section === 'fake') {
+        let baseurl = '/course-player?module=romance&section=fake&page=';
+
+        if(currentPage === 'objectives') {
+            backlink = '/course-player?module=romance&section=concepts&page=objectives';
+            nextlink = baseurl + 'financial'; 
+        } 
+        else if(currentPage === 'financial') {
+            backlink = baseurl + 'objectives';
+            nextlink = baseurl + 'emotional';
+        } else if(currentPage === 'emotional') {
+
+            backlink = baseurl + 'financial';
+            nextlink = baseurl + 'targeted';
+        } else if(currentPage === 'targeted') {
+
+            backlink = baseurl + 'emotional';
+            nextlink = baseurl + 'types';
+        }  else if(currentPage === 'types') {
+
+            backlink = baseurl + 'targeted';
+            nextlink = baseurl + 'reflection';
+        } else if(currentPage === 'reflection') {
+            backlink = baseurl + 'types';
+            nextlink = baseurl + 'quiz';
+        } else if(currentPage === 'quiz') {            
+            backlink = baseurl + 'reflection';
+            nextlink = baseurl + 'takeaways';
+        } else if(currentPage === 'takeaways') {
+            backlink = baseurl + 'quiz';
+            nextlink = '/course-player?module=romance&section=contact&page=objectives';
+        }
+    }  else if(section === 'contact') {
+        let baseurl = '/course-player?module=romance&section=contact&page=';
+
+        if(currentPage === 'objectives') {
+            backlink = '/course-player?module=romance&section=concepts&page=objectives';
+            nextlink = baseurl + 'financial'; 
+        } 
+        else if(currentPage === 'financial') {
+            backlink = baseurl + 'objectives';
+            nextlink = baseurl + 'emotional';
+        } else if(currentPage === 'emotional') {
+
+            backlink = baseurl + 'financial';
+            nextlink = baseurl + 'targeted';
+        } else if(currentPage === 'targeted') {
+
+            backlink = baseurl + 'emotional';
+            nextlink = baseurl + 'types';
+        }  else if(currentPage === 'types') {
+
+            backlink = baseurl + 'targeted';
+            nextlink = baseurl + 'reflection';
+        } else if(currentPage === 'reflection') {
+            backlink = baseurl + 'types';
+            nextlink = baseurl + 'quiz';
+        } else if(currentPage === 'quiz') {            
+            backlink = baseurl + 'reflection';
+            nextlink = baseurl + 'takeaways';
+        } else if(currentPage === 'takeaways') {
+            backlink = baseurl + 'quiz';
+            nextlink = '/course-player?module=romance&section=requests&page=objectives';
+        }
+    }  else if(section === 'requests') {
+        let baseurl = '/course-player?module=romance&section=requests&page=';
+
+        if(currentPage === 'objectives') {
+            backlink = '/course-player?module=romance&section=concepts&page=objectives';
+            nextlink = baseurl + 'financial'; 
+        } 
+        else if(currentPage === 'financial') {
+            backlink = baseurl + 'objectives';
+            nextlink = baseurl + 'emotional';
+        } else if(currentPage === 'emotional') {
+
+            backlink = baseurl + 'financial';
+            nextlink = baseurl + 'targeted';
+        } else if(currentPage === 'targeted') {
+
+            backlink = baseurl + 'emotional';
+            nextlink = baseurl + 'types';
+        }  else if(currentPage === 'types') {
+
+            backlink = baseurl + 'targeted';
+            nextlink = baseurl + 'reflection';
+        } else if(currentPage === 'reflection') {
+            backlink = baseurl + 'types';
+            nextlink = baseurl + 'quiz';
+        } else if(currentPage === 'quiz') {            
+            backlink = baseurl + 'reflection';
+            nextlink = baseurl + 'takeaways';
+        } else if(currentPage === 'takeaways') {
+            backlink = baseurl + 'quiz';
+            nextlink = '/course-player?module=romance&section=protection&page=objectives';
         }
     } else if(section === 'techniques') {
         let baseurl = '/course-player?module=romance&section=techniques&page=';
