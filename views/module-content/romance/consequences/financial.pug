@@ -1,27 +1,20 @@
 #financial.hidden
-    .ui.container#raised-container.center-layout
-        .limit
-            #financial-read
-                h1.ui.header.large#learn-title
-                    .content
-                        i.video.icon
-                        | Financial Impact
-                //- p Click the image to start the video
-                .ui.icon.mini.message(style="padding: 5px; z-index: 99;")
-                    i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
-                    .content 
-                        p Click the image to start the video
-            br
-            #video-container
-                video-js#my_video_1.video-js.vjs-default-skin.vjs-show-big-play-button-on-pause(width='640px' height='360px' controls='' preload='none' data-setup='{ "poster":"/images/identity-consequences-poster.png", "aspectRatio":"16:9", "playbackRates": [0.5, 0.75, 1, 1.5, 2] }')
-                    source(src='https://dart-store.s3.amazonaws.com/identity-consequences.mp4' type='video/mp4')
+    .ui.container#financial-read
+        .limit#learn-target(style="padding: 0;")
+            .ui.stackable.grid
+                .ten.wide.column
+                    h1.ui.header.large#learn-title
+                        .content
+                            i.book.icon
+                            | Financial Impact
+                    p The Federal Trade Commission (FTC) reports that in 2022 nearly 70,000 people reported a Romance Scams. 
+                        strong Reported losses hit $1.3 billion. 
+                        | The median reported loss was $4,400. Romance Scams increased during the pandemic while people struggled emotionally.
+                    p “I’ve seen elders mortgage their houses, borrow large sums of money from their neighbors, empty out their retirement accounts,” said Michael Delaney, a Chicago-based lawyer who specializes in elder law. 
+                    i.source Sources: 
+                        a(href='https://www.nytimes.com/2023/02/03/business/retiree-romance-scams.html' target='_blank')  New York Times 
+                        | &
+                        a(href=' https://www.ftc.gov/news-events/data-visualizations/data-spotlight/2023/02/romance-scammers-favorite-lies-exposed' target='_blank')  Federal Trade Commission
 
-        //- script.
-        //-     var module = "#{module}";
-        //-     var section = "#{section}";
-        //-     var page = "#{page}"; 
-
-        //-     let total = parseInt(#{numPages});
-        //-     let progress = 2 / total;
-        //-     console.log(progress);
-        //-     updateProgressBar(progress);
+                .six.wide.column.middle.aligned
+                    img.ui.image(src='/images/losing-money.svg' style='margin-left: auto; margin-right: auto')
