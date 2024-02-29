@@ -1,98 +1,109 @@
 {
   "1": {
-    "progress": 20,
-    "type": "yes_no",
-    "partial": "q1.html",
-    "prompt": "1. Suppose you’ve been experiencing issues with your Apple laptop and have been in contact with Apple. In this scenario, would you consider the following email a scam?",
+    "progress": 100,
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "1. You are talking to a new person through an app. Which of the following are signs of a romance scam? Select all that apply.",
     "choices": {
-      "yes": {
-        "text": "Yes"
+      "0": {
+        "text": "A. The person repeatedly asks you for money."
       },
-      "no": {
-        "text": "No"
+      "1": {
+        "text": "B. The person quickly professes their love to you."
+      },
+      "2": {
+        "text": "C. The person likes to video call you."
+      },
+      "3": {
+        "text": "D. The person assures you of making plans to meet in person, yet it never actually happens."
+      },
+      "4": {
+        "text": "E. The person claims to have a sudden crisis and needs urgent help"
       }
     },
-    "explanation": "<h1>\"No\" is the correct answer</h1>",
-    "correctResponse": "no"
+    "correctResponse": ["0", "1", "3", "4"],
+    "theAnswers": "A, B, D, E"
   },
   "2": {
-      "progress": 40,
-      "type": "yes_no",
-      "partial": "q2.html",
-      "prompt": "2. If you received the following email, would you consider it a scam?",
+      "progress": 100,
+      "type": "abcd",
+      "partial": "none",
+      "prompt": "2. If someone from an app or social media gives you advice, which topics should make you most suspicious of scams?",
       "choices": {
-        "yes": {
-          "text": "Yes"
+        "a": {
+          "text": "A. Renovating your house"
         },
-        "no": {
-          "text": "No"
+        "b": {
+          "text": "B. Driving"
+        },
+        "c": {
+          "text": "C. Playing the violin"
+        },
+        "d": {
+          "text": "D. Investing with cryptocurrency"
         }
       },
-      "explanation": "<h1>\"Yes\" is the correct answer</h1>",
-      "correctResponse": "yes"
+      "explanation": "<h1>The correct answer is D.</h1>",
+      "correctResponse": "d"
   },
   "3": {
-    "progress": 60,
-    "type": "yes_no",
-    "partial": "q3.html",
-    "prompt": "3. If you received the following message, would you consider it a scam?",
+    "progress": 100,
+    "type": "abcd",
+    "partial": "none",
+    "prompt": "3. What is Catfishing?",
     "choices": {
-      "yes": {
-        "text": "Yes",
-        "explanation": "Explanation for the yes statement."
+      "a": {
+        "text": "A. Using a fake profile or image to pretend to be someone else."
       },
-      "no": {
-        "text": "No",
-        "explanation": "Explanation for the no statement."
+      "b": {
+        "text": "B. Requesting money"
+      },
+      "c": {
+        "text": "C. Giving compliments"
+      },
+      "d": {
+        "text": "D. Being online often"
       }
     },
-    "explanation": "<h1>\"Yes\" is the correct answer</h1>",
-    "correctResponse": "yes"
+    "explanation": "<h1>The correct answer is A.</h1>",
+    "correctResponse": "a"
   },
   "4": {
-    "progress": 80,
-    "type": "yes_no",
-    "partial": "q4.html", 
-    "prompt": "4. Assuming you are trying to log into Venmo following the instruction for the Venmo App, then you received the message below. In that case would you consider this message a scam?",
+    "progress": 100,
+    "type": "abcd",
+    "partial": "none",
+    "prompt": "4. What's likely to happen if you're caught up in a romance scam?",
     "choices": {
-      "yes": {
-        "text": "Yes"
+      "a": {
+        "text": "A. Connecting with a new, reliable friend group"
       },
-      "no": {
-        "text": "No"
+      "b": {
+        "text": "B. Involvement in criminal activities"
+      },
+      "c": {
+        "text": "C. Getting married"
+      },
+      "d": {
+        "text": "D. Financial gains"
       }
     },
-    "explanation": "<h1>\"No\" is the correct answer</h1>",
-    "correctResponse": "no"
+    "explanation": "<h1>The correct answer is B.</h1>",
+    "correctResponse": "b"
   },
   "5": {
-      "progress": 95,
-      "type": "multi_select",
-      "partial": "none",
-      "prompt": "5. What could occur if your identity is stolen? Select all that apply",
-      "choices": {
-          "0": {
-            "text": "A. Loss of money",
-            "explanation": "This option is correct."
-          },
-          "1": {
-            "text": "B. Loss of tax refund",
-            "explanation": "This option is correct."
-          },
-          "2": {
-            "text": "C. Be charged as a criminal",
-            "explanation": "This option is correct."
-          },
-          "3": {
-            "text": "D. Denial of loans",
-            "explanation": "This option is correct."
-          },
-          "4": {
-            "text": "E. Getting a discount on online shopping",
-            "explanation": "This option is incorrect."
-          }
-      },
-      "correctResponse": ["0", "1", "2", "3"],
-      "theAnswers": "A, B, C, D"
-    }            
+    "progress": 100,
+    "type": "yes_no",
+    "partial": "none",
+    "prompt": "5. Is the following profile Real or Fake?",
+    "choices": {
+        "yes": {
+          "text": "Real"
+        },
+        "no": {
+          "text": "Fake"
+        }
+    },
+    "explanation": "<h1>\"Fake\" is the correct answer</h1>",
+    "correctResponse": "no"
+  }            
 }
