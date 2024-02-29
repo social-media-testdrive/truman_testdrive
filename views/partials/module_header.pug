@@ -8,7 +8,10 @@ header(style="z-index: 1000 !important;")
                 .item  
                     h1#header-title 
                         .ui.breadcrumb
-                            a.section#header-module(href="/about/identity") Identity Theft
+                            if module === 'identity'
+                                a.section#header-module(href="/about/identity") Identity Theft
+                            else if module === 'romance'
+                                a.section#header-module(href="/about/romance") Romance & Friendship Scams
                             i.right.angle.icon.divider
                             //- capitalize section name
                             if section 

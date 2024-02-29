@@ -1,0 +1,255 @@
+{
+  "1": {
+      "progress": 100,
+      "type": "multi_select",
+      "partial": "none",
+      "prompt": "1. What is true of most romance and friendship scams? Select all that apply.",
+      "choices": {
+          "0": {
+              "text": "A. The emotional consequences often outweigh the financial ones.",
+              "explanation": "Romance and friendship scams cause both financial and emotional consequences. However, for most victims of these scams, the emotional damage is much more long-term than their financial losses."
+          },
+          "1": {
+              "text": "B. It is best to report the situation.",
+              "explanation": "If you are communicating on a dating site or social media platform, report the scammer’s account to the company. If you are communicating on a dating site or social media platform, report the scammer’s account to the company"
+          },
+          "2": {
+              "text": "C. The relationship is progressing steadily.",
+              "explanation": "Romance and friendship scams often create a false sense of steady progression to deceive victims. In reality, scammers aim to manipulate emotions and prolong the scam for financial gain, with no genuine intention of a lasting relationship."
+          },
+          "3": {
+              "text": "D. Talk to your family and friends about the relationship.",
+              "explanation": " Talk to friends and loved ones about your experience. They can learn from you and you can help them to be better protected."
+          },
+          "4": {
+              "text": "E. Fake profiles or stolen identities to deceive victims.",
+              "explanation": " Scammers create a facade of trustworthiness to establish a connection with victims, often concealing their true intentions for financial exploitation or other fraudulent activities."
+          }        
+      },
+      "correctResponse": ["0", "1", "3", "4"],
+      "theAnswers": "A, B, D, E"
+  },
+
+
+
+  "2": {
+    "progress": 100,
+    "type": "abcd",
+    "partial": "none",
+    "prompt": "2. When should you stop talking to someone online if you see red flags?",
+    "choices": {
+        "a": {
+            "text": "A. Once you notice the suspicious signs"
+        },
+        "b": {
+            "text": "B. After hearing them out and letting them explain"
+        },
+        "c": {
+            "text": "C. After one month"
+        },
+        "d": {
+            "text": "D. After posting the situation on an online discussion forum"
+        }
+    },
+    "explanation": "<h1>The correct answer is A</h1><p>Although asking around about the situation can be a good way to confirm your suspicions, it is crucial to notice any warning signs of a romance scam in the words and actions of anyone you are speaking with. Once you spot these signs, immediately end communication with them!</p>",
+    "correctResponse": "a"
+  },
+
+
+
+  "3": {
+    "progress": 100,
+    "type": "yes_no",
+    "partial": "none",
+    "prompt": "3. True or False: If you become a victim of a romance or friendship scam, you are partially at fault.",
+    "choices": {
+      "yes": {
+        "text": "True"
+      },
+      "no": {
+        "text": "False"
+      }
+    },
+    "explanation": "<h1>The correct answer is False.</h1><p> It is in no way your fault! Scammers often select their targets at random, making anyone vulnerable. Therefore, what we should do is to learn how to spot the signs of scams and take action to protect ourselves and our friends.</p>",
+    "correctResponse": "no"
+  },
+
+
+
+
+  "4": {
+    "progress": 100,
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "4. Which of the following is a sign that you may be talking to a romance/friendship scammer? Select all that apply.",
+    "choices": {
+        "0": {
+            "text": "A. They talk about moving in together or marriage after only a few days or weeks.",
+            "explanation": "Fast-paced relationships can be a warning sign that you may be talking to a romance/friendship scammer."
+        },
+        "1": {
+            "text": "B. They avoid meeting you in-person.",
+            "explanation": "Scammers often make excuses such as overseas travel for work as to why they are unable to meet you in-person."
+        },
+        "2": {
+            "text": "C. They encourage time away from your family and loved ones.",
+            "explanation": "Scammers may try to encourage you to focus on just your relationship with them to isolate you from those who care about you."
+        },
+        "3": {
+            "text": "D. They ask you personal questions.",
+            "explanation": "It's okay if someone asks personal questions to get to know you, such as your hobbies, but if they start asking for your personal information like your Social Security Number or bank details, do not tell them. That is a sign of a scam."
+        },
+        "4": {
+            "text": "E. They consistently avoid sharing personal details about their life.",
+            "explanation": "Romance and friendship scammers often withhold personal information to maintain anonymity and prevent their true identity from being exposed."
+        }        
+    },
+    "correctResponse": ["0", "1", "2", "4"],
+    "theAnswers": "A, B, C, E"
+  },
+
+
+
+  "5": {
+    "progress": 100,
+    "type": "yes_no",
+    "partial": "none",
+    "prompt": "5. Is this dating profile Real or Fake?",
+    "choices": {
+      "yes": {
+        "text": "Real"
+      },
+      "no": {
+        "text": "Fake"
+      }
+    },
+    "explanation": "<h1>The correct answer is Real.</h1><p> It is most likely real because this profile has a short bio section, the picture doesn’t emphasize wealth or power, and they have a reasonable number of mutual and total friends.</p>",
+    "correctResponse": "yes"
+  },
+
+
+
+
+  "6": {
+    "progress": 100,
+    "type": "abcd",
+    "partial": "none",
+    "prompt": "6. What is a common sign that a scammer is trying to manipulate you emotionally?",
+    "choices": {
+        "a": {
+            "text": "A. They ask you to keep your relationship a secret"
+        },
+        "b": {
+            "text": "B. They profess their love for you quickly"
+        },
+        "c": {
+            "text": "C. They claim authorities are demanding money from them "
+        },
+        "d": {
+            "text": "D. All of the above"
+        }
+    },
+    "explanation": "<h1>The correct answer is D</h1><p> Scammers use various tactics to manipulate your emotions and gain your trust. They may ask you to keep your relationship a secret, profess their love for you quickly, or often lie about being in a situation where the authorities are threatening them and ask you to give them money that they don’t have. They may also pretend to be a figure of authority themselves. </p>",
+    "correctResponse": "d"
+  },
+
+
+
+
+  "7": {
+    "progress": 100,
+    "type": "abcd",
+    "partial": "none",
+    "prompt": "7. What should you do if a potential match asks you for money or personal information?",
+    "choices": {
+        "a": {
+            "text": "A. Send them what they ask for as a sign of trust"
+        },
+        "b": {
+            "text": "B. Ask them to prove their identity first"
+        },
+        "c": {
+            "text": "C. Stop communicating with them and report them to the platform"
+        },
+        "d": {
+            "text": "D. Negotiate a lower amount or less sensitive information"
+        }
+    },
+    "explanation": "<h1>The correct answer is C</h1><p>  You should never send money or personal information to someone you only met online, no matter how convincing their story is. This is a common way that scammers try to exploit you financially or steal your identity. If a potential match asks you for money or personal information, you should stop communicating with them and report them to the platform. </p>",
+    "correctResponse": "c"
+  },
+
+
+
+  "8": {
+      "progress": 100,
+      "type": "abcd",
+      "partial": "none",
+      "prompt": "8. Which techniques did the scammer use?",
+      "choices": {
+          "a": {
+              "text": "A. Fast-Paced Relationships"
+          },
+          "b": {
+              "text": "B. Wrong or Inconsistent Information"
+          },
+          "c": {
+              "text": "C. Try to Isolate You from Your Friends and Family"
+          },
+          "d": {
+              "text": "D. Dramatic Language to Keep You Engaged"
+          }
+      },
+      "explanation": "<h1>The correct answer is C.</h1><p>The scammer tries to convince you that your friends and family are trying to come between the two of you. The scammer also encourages you to focus on just your relationship with them to isolate you from those who care about you.</p>",
+      "correctResponse": "c"
+  },
+
+
+  "9": {
+    "progress": 100,
+    "type": "abcd",
+    "partial": "none",
+    "prompt": "9. Which technique did the scammer use?",
+    "choices": {
+        "a": {
+            "text": "A. Build Credibility, Authority, and Sincere Personality"
+        },
+        "b": {
+            "text": "B. Tons of Compliments"
+        },
+        "c": {
+            "text": "C. Try to Isolate You from Your Friends and Family"
+        },
+        "d": {
+            "text": "D. Emotional Manipulation"
+        }
+    },
+    "explanation": "<h1>The correct answer is A.</h1><p> The scammers disclose details about personality or their successful career to gain trust, built credibility. They portray themselves as a good, morally upright person by using words and phrases with religious connotations.</p>",
+    "correctResponse": "a"
+  },
+
+
+
+  "10": {
+    "progress": 100,
+    "type": "abcd",
+    "partial": "none",
+    "prompt": "10. How long might a romance scammer keep talking online with you?",
+    "choices": {
+        "a": {
+            "text": "A. One week"
+        },
+        "b": {
+            "text": "B. Between one month to 6 months"
+        },
+        "c": {
+            "text": "C. More than 6 months but less than a year"
+        },
+        "d": {
+            "text": "D. Indefinitely, as long as you're responsive and engaged."
+        }
+    },
+    "explanation": "<h1>The correct answer is D.</h1><p> The time a romance scammer spends talking to you can vary a lot, from just a week to more than a year. It all depends on how they work and how much you chat with them. If you start to feel unsure or push back, some scammers might stop talking to you very soon. But others can be quite persistent, using tricks to keep you interested. They're hoping to take advantage of any problems or changes you might have in your life.</p>",
+    "correctResponse": "d"
+  }
+}

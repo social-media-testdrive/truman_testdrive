@@ -1,0 +1,28 @@
+{   
+    "1": {
+        "progress": 100,
+        "type": "abcd",
+        "partial": "none",
+        "prompt": "1. What is a money mule?",
+        "choices": {
+          "a": {
+            "text": "A. Someone who transfers or moves money illegally for someone else",
+            "explanation": "The scammer asks you to transfer money, either physically or from one account to another, claiming that you will be rewarded if you help them."
+          },
+          "b": {
+            "text": "B. A secret word for popular gift cards",
+            "explanation": "This is not the definition of a money mule. “Money Mule” Romance Scams involve scammers asking you to move money for them."
+          },
+          "c": {
+            "text": "C. An investment that does well",
+            "explanation": "This is not the definition of a money mule. “Money Mule” Romance Scams involve scammers asking you to move money for them."
+          },
+          "d": {
+            "text": "D. A digital wallet for your cryptocurrency",
+            "explanation": "This is not the definition of a money mule. “Money Mule” Romance Scams involve scammers asking you to move money for them."
+          }
+        },
+        "explanation": "<h1>The correct answer is A.</h1>",
+        "correctResponse": "a"
+    }
+}

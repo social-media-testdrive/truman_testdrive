@@ -1,0 +1,109 @@
+{
+  "1": {
+    "progress": 100,
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "1. You are talking to a new person through an app. Which of the following are signs of a romance scam? Select all that apply.",
+    "choices": {
+      "0": {
+        "text": "A. The person repeatedly asks you for money."
+      },
+      "1": {
+        "text": "B. The person quickly professes their love to you."
+      },
+      "2": {
+        "text": "C. The person likes to video call you."
+      },
+      "3": {
+        "text": "D. The person assures you of making plans to meet in person, yet it never actually happens."
+      },
+      "4": {
+        "text": "E. The person claims to have a sudden crisis and needs urgent help"
+      }
+    },
+    "correctResponse": ["0", "1", "3", "4"],
+    "theAnswers": "A, B, D, E"
+  },
+  "2": {
+      "progress": 100,
+      "type": "abcd",
+      "partial": "none",
+      "prompt": "2. If someone from an app or social media gives you advice, which topics should make you most suspicious of scams?",
+      "choices": {
+        "a": {
+          "text": "A. Renovating your house"
+        },
+        "b": {
+          "text": "B. Driving"
+        },
+        "c": {
+          "text": "C. Playing the violin"
+        },
+        "d": {
+          "text": "D. Investing with cryptocurrency"
+        }
+      },
+      "explanation": "<h1>The correct answer is D.</h1>",
+      "correctResponse": "d"
+  },
+  "3": {
+    "progress": 100,
+    "type": "abcd",
+    "partial": "none",
+    "prompt": "3. What is Catfishing?",
+    "choices": {
+      "a": {
+        "text": "A. Using a fake profile or image to pretend to be someone else."
+      },
+      "b": {
+        "text": "B. Requesting money"
+      },
+      "c": {
+        "text": "C. Giving compliments"
+      },
+      "d": {
+        "text": "D. Being online often"
+      }
+    },
+    "explanation": "<h1>The correct answer is A.</h1>",
+    "correctResponse": "a"
+  },
+  "4": {
+    "progress": 100,
+    "type": "abcd",
+    "partial": "none",
+    "prompt": "4. What's likely to happen if you're caught up in a romance scam?",
+    "choices": {
+      "a": {
+        "text": "A. Connecting with a new, reliable friend group"
+      },
+      "b": {
+        "text": "B. Involvement in criminal activities"
+      },
+      "c": {
+        "text": "C. Getting married"
+      },
+      "d": {
+        "text": "D. Financial gains"
+      }
+    },
+    "explanation": "<h1>The correct answer is B.</h1>",
+    "correctResponse": "b"
+  },
+  "5": {
+    "progress": 100,
+    "type": "yes_no",
+    "partial": "none",
+    "prompt": "5. Is the following profile Real or Fake?",
+    "choices": {
+        "yes": {
+          "text": "Real"
+        },
+        "no": {
+          "text": "Fake"
+        }
+    },
+    "explanation": "<h1>\"Fake\" is the correct answer</h1>",
+    "correctResponse": "no"
+  }            
+}
