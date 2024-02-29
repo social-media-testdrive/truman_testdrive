@@ -731,23 +731,23 @@ function setLinks(currentPage) {
 
         if(currentPage === 'objectives') {
             backlink = '/course-player?module=romance&section=techniques&page=objectives';
-            nextlink = baseurl + 'intro-video'; 
+            nextlink = baseurl + 'realizing'; 
         } 
-        else if(currentPage === 'intro-video') {
+        else if(currentPage === 'realizing') {
             // pause video
             $('#my_video_1')[0].player.pause();
 
             backlink = baseurl + 'objectives';
-            nextlink = baseurl + 'when';
-        } else if(currentPage === 'when') {
+            nextlink = baseurl + 'scammed';
+        } else if(currentPage === 'scammed') {
 
-            backlink = baseurl + 'intro-video';
-            nextlink = baseurl + 'financial';
-        } else if(currentPage === 'financial') {
-            backlink = baseurl + 'when';
+            backlink = baseurl + 'realizing';
+            nextlink = baseurl + 'responsive';
+        } else if(currentPage === 'responsive') {
+            backlink = baseurl + 'scammed';
             nextlink = baseurl + 'medical';
         } else if(currentPage === 'medical') {
-            backlink = baseurl + 'financial';
+            backlink = baseurl + 'responsive';
             nextlink = baseurl + 'tax';
         } else if(currentPage === 'tax') {
             backlink = baseurl + 'medical';
