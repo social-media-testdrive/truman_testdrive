@@ -43,6 +43,38 @@ let started = false;
 let wordChecked = true;
 let sentenceChecked = true;
 
+function stopHighlighting() {
+    clearWordHighlights();
+    clearTimeout(highlightTimeoutWordID);
+
+    wordData = null;
+    totalWords; // Total number of words to highlight
+    currentWordIndex = 0; // Current index of the word being highlighted
+    highlightTimeoutWordID = null; // Timeout reference for word highlighting
+    delay;
+    startTimeMS = 0;
+
+    totalStart = 0;
+    totalFinish = 0;
+
+    selectedElement = null;
+
+    wordHighlighting = true; 
+    sentenceHighlighting = false;
+
+    contrastWords = false;
+    // when 
+    hiddenHighlight = false;
+
+    showingHere = false;
+    previousElement = "none";
+    started = false; 
+    // *later set to DB values for curent user highlighting preferences
+    wordChecked = true;
+    sentenceChecked = true;
+
+}
+
 function toggleHighlighting() {
 
     // save previous values so can see if going from: on to off to clear the highlights
@@ -759,6 +791,9 @@ $(document).ready(function() {
 
         $('.ui.sidebar').sidebar('hide');
 
+        stopHighlighting();
+        // restartWordHighlighting();
+
 
         const { backlink, nextlink } = setLinks(currentPage);
         history.pushState(null, '', backlink);
@@ -808,11 +843,10 @@ $(document).ready(function() {
                     if(section === 'practice' && backPage === 'activity') {
                         setupPractice();
                     }
-    
                     playAudio(backPage);
                     toggleHighlighting();
                     startHighlightingWords();
-                }
+                    }
             });
         }
         updateProgressBar();
@@ -823,6 +857,11 @@ $(document).ready(function() {
         const currentPage = urlParams.get('page');
         
         $('.ui.sidebar').sidebar('hide');
+
+        // stop and reseat audio and highlighting immediately
+        stopHighlighting();
+
+        // restartWordHighlighting();
 
         const { backlink, nextlink } = setLinks(currentPage);
         history.pushState(null, '', nextlink);
@@ -977,7 +1016,6 @@ $(document).ready(function() {
                 if(section === 'practice' && nextPage === 'activity') {
                     setupPractice();
                 }
-
                 playAudio(nextPage);
                 toggleHighlighting();
                 startHighlightingWords();
