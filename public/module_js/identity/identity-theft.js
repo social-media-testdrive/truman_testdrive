@@ -73,6 +73,21 @@ function stopHighlighting() {
     wordChecked = true;
     sentenceChecked = true;
 
+    const button = document.getElementById('play-pause-audio');
+    var buttonIcon = document.querySelector('#play-pause-audio i.icon');
+    var buttonText = document.querySelector('#play-pause-audio span.toggle-text');
+
+    button.classList.remove('grey');
+    button.classList.add('blue');
+    button.style.pointerEvents = 'auto';
+
+    buttonIcon.classList.remove('play', 'pause', 'check');
+    buttonIcon.classList.add('pause');
+    buttonText.innerText = 'Pause';
+
+    $('#volume-icon').removeClass('off');
+    $('#volume-icon').addClass('up'); 
+
 }
 
 function toggleHighlighting() {
@@ -174,49 +189,59 @@ function highlightWord(start, finish, word, element) {
     const currentPage = urlParams.get('page');
 
     if(element === "narrate-title-" + currentPage) {
-        let temp = document.getElementById("narrate-title-" + currentPage);
-        temp.classList.add(sentenceClass);
+        if(wordHighlighting || sentenceHighlighting) {
+            let temp = document.getElementById("narrate-title-" + currentPage);
+            temp.classList.add(sentenceClass);
+        }
 
         // let temp =  $("#narrate-title");
         // console.log("The temp before: " + temp.html());
         // temp.addClass("sentenceClass");
         // console.log("the temp after" + temp.html())
     } else if(element === "narrate-time-" + currentPage) {
-        let temp = document.getElementById("narrate-time-" + currentPage);
-        temp.classList.add(sentenceClass);
+        if(wordHighlighting || sentenceHighlighting) {
+            let temp = document.getElementById("narrate-time-" + currentPage);
+            temp.classList.add(sentenceClass);
+        }
     } else if(element === "narrate-header-" + currentPage) {
-        let temp = document.getElementById("narrate-header-" + currentPage);
-        temp.classList.add(sentenceClass);
+        if(wordHighlighting || sentenceHighlighting) {
+            let temp = document.getElementById("narrate-header-" + currentPage);
+            temp.classList.add(sentenceClass);
+        }
     } else if(element === "shownHere") {
-        // console.log("in shownhere -> showingHere: " + showingHere);
-        let temp = document.getElementById("shownHere");
-        temp.classList.add(wordClass);
+        if(wordHighlighting || sentenceHighlighting) {
+            // console.log("in shownhere -> showingHere: " + showingHere);
+            let temp = document.getElementById("shownHere");
+            temp.classList.add(wordClass);
 
-        setTimeout(function() {
-            temp.classList.remove(wordClass);
-            showingHere = false;
-        }, 1000);
-
+            setTimeout(function() {
+                temp.classList.remove(wordClass);
+                showingHere = false;
+            }, 1000);
+        }
     } else if(element === "none"){
         // console.log("skip break element");
     } else {
-        // console.log("HIGHLIGH element: " + element );
-        let temp = document.getElementById(element);
-        selectedElement = temp.getElementsByTagName('span')[0];
+        if(currentPage !== "quiz" && (wordHighlighting || sentenceHighlighting)) {
 
-        // console.log("BEYYYY the selected element: " + selectedElement + " and the element: " + element + " and the word: " + word + " and the start: " + start + " and the finish: " + finish + " and the word class: " + wordClass + " and the sentence class: " + sentenceClass)
-        if(sentenceHighlighting) {
-            selectedElement.classList.add(sentenceClass);
+            // console.log("HIGHLIGH element: " + element );
+            let temp = document.getElementById(element);
+            selectedElement = temp.getElementsByTagName('span')[0];
+
+            // console.log("BEYYYY the selected element: " + selectedElement + " and the element: " + element + " and the word: " + word + " and the start: " + start + " and the finish: " + finish + " and the word class: " + wordClass + " and the sentence class: " + sentenceClass)
+            if(sentenceHighlighting) {
+                selectedElement.classList.add(sentenceClass);
+            }
+
+            // console.log("Bey the selected element: " + selectedElement.innerHTML + " start: " + start + " finish: " + finish + " word: " + word + " element: " + element)
+
+            // always marking when audio is playing, just marks are transparent if wording highlighting is off, yellow if only word highlighting, white on dark bg if both sentence and word are on
+            // remove previous mark tags before adding new ones
+            selectedElement.innerHTML = selectedElement.innerHTML.replace(new RegExp(`<mark class="${wordClass}">|<\/mark>`, 'g'), "");
+            s = selectedElement.innerHTML;
+            // Add the mark tags to highlight the word
+            selectedElement.innerHTML = s.substring(0, start) + `<mark class="${wordClass}">${word}</mark>` + s.substring(finish);
         }
-
-        // console.log("Bey the selected element: " + selectedElement.innerHTML + " start: " + start + " finish: " + finish + " word: " + word + " element: " + element)
-
-        // always marking when audio is playing, just marks are transparent if wording highlighting is off, yellow if only word highlighting, white on dark bg if both sentence and word are on
-        // remove previous mark tags before adding new ones
-        selectedElement.innerHTML = selectedElement.innerHTML.replace(new RegExp(`<mark class="${wordClass}">|<\/mark>`, 'g'), "");
-        s = selectedElement.innerHTML;
-        // Add the mark tags to highlight the word
-        selectedElement.innerHTML = s.substring(0, start) + `<mark class="${wordClass}">${word}</mark>` + s.substring(finish);
     } 
 
 }
@@ -307,40 +332,46 @@ function toRepeatWords() {
 }
 
 function startHighlightingWords() {
-    // console.log("In starting the highlight") 
-    
     const urlParams = new URLSearchParams(window.location.search);
     const currentPage = urlParams.get('page');
-    // console.log("The current page: " + currentPage);
-    // console.log("The avatar: " + avatar)
-    // console.log("The speech data: " + speechData)
 
-    avatarSpeechData = speechData[currentPage][avatar];
+    if(speechData !== "none" && currentPage !== 'quiz') {
 
-    // console.log("The avatar speech data: " + avatarSpeechData);
+        // console.log("In starting the highlight") 
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentPage = urlParams.get('page');
+        // console.log("The current page: " + currentPage);
+        // console.log("The avatar: " + avatar)
+        // console.log("The speech data: " + speechData)
 
-    wordData= avatarSpeechData;
-    console.log("The word data: " + JSON.stringify(wordData));
+        avatarSpeechData = speechData[currentPage][avatar];
 
-    isPaused = false;
-    totalWords = wordData.length;
-    currentWordIndex = 0;
-    let startDelay = wordData[currentWordIndex]["time"];
+        // console.log("The avatar speech data: " + avatarSpeechData);
 
-    if (voiceSpeed > 1) {
-        startDelay /= voiceSpeed;
-    } else {
-        startDelay *= (1 / voiceSpeed);
+        wordData= avatarSpeechData;
+        // console.log("The word data: " + JSON.stringify(wordData));
+
+        isPaused = false;
+        totalWords = wordData.length;
+        currentWordIndex = 0;
+        let startDelay = wordData[currentWordIndex]["time"];
+
+        if (voiceSpeed > 1) {
+            startDelay /= voiceSpeed;
+        } else {
+            startDelay *= (1 / voiceSpeed);
+        }
+
+        delay = startDelay;
+
+        startTimeMS = (new Date()).getTime();
+
+        // Start highlighting the first word
+        highlightTimeoutWordID = setTimeout(function () {
+            toRepeatWords();
+        }, startDelay);
     }
-
-    delay = startDelay;
-
-    startTimeMS = (new Date()).getTime();
-
-    // Start highlighting the first word
-    highlightTimeoutWordID = setTimeout(function () {
-        toRepeatWords();
-    }, startDelay);
 
 }
 
@@ -397,7 +428,7 @@ function clearWordHighlights() {
 }
 
 function clearToggleVisual(whichHighlighting) {
-    console.log("*In clear toggle visual for: " + whichHighlighting);
+    // console.log("*In clear toggle visual for: " + whichHighlighting);
 
     const urlParams = new URLSearchParams(window.location.search);
     const currentPage = urlParams.get('page');
@@ -454,7 +485,7 @@ function pauseHighlight() {
         // Adjust the delay for the current word based on the elapsed time
         delay -= elapsedTime;
 
-        console.log("Highlighting paused after " + elapsedTime + "ms");
+        // console.log("Highlighting paused after " + elapsedTime + "ms");
     }
 
     // if (!isPaused) { // Prevent pausing if already paused
@@ -472,7 +503,7 @@ function pauseHighlight() {
 function resumeHighlight() {
     if (isPaused) { // Only resume if currently paused
         isPaused = false;
-        console.log("Resuming highlighting");
+        // console.log("Resuming highlighting");
 
         // Use the adjusted delay to continue with the next word
         highlightTimeoutWordID = setTimeout(function () {
@@ -522,39 +553,50 @@ function muteNarration() {
 }
 
 function playAudio(thePage) { 
-    console.log("In play audio")
+    // console.log("In play audio")
 
     // console.log("mute is: " + mute);
     // document.getElementById('narration-audio').play();
-    var audio = document.getElementById('narration-audio');
-    audio.src = `https://dart-store.s3.amazonaws.com/identity-narration/${section}/${thePage}_${avatar}.mp3`;
-    audio.load();
-    audio.playbackRate = voiceSpeed;
 
-    if(!mute) {
-        // catch error when user hasn't interacted with page yet
-        if (userInteracted) {
-            $('#volume-icon').removeClass('off');
-            $('#volume-icon').addClass('up');  
-    
-            var audio = document.getElementById('narration-audio');
-            var buttonIcon = document.querySelector('#play-pause-audio i.icon');
-            var buttonText = document.querySelector('#play-pause-audio span.toggle-text');
-    
-            buttonIcon.classList.remove('play', 'pause');
-            buttonIcon.classList.add('pause');
-            buttonText.innerText = 'Pause';
 
-            audio.play();
-        } else {
-            console.log("in here:")
-            $('#page-article').click();
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentPage = urlParams.get('page');
 
-            audio.play();
-            // console.warn('User has not interacted with the webpage yet. Cannot autoplay audio.');
+    if(speechData !== "none" && currentPage !== 'quiz') {
+
+        var audio = document.getElementById('narration-audio');
+
+        if(audio) {
+            audio.src = `https://dart-store.s3.amazonaws.com/identity-narration/${section}/${thePage}_${avatar}.mp3`;
+            audio.load();
+            audio.playbackRate = voiceSpeed;
+
+            // if(!mute) {
+            // catch error when user hasn't interacted with page yet
+            if (userInteracted) {
+                $('#volume-icon').removeClass('off');
+                $('#volume-icon').addClass('up');  
+
+                var audio = document.getElementById('narration-audio');
+                var buttonIcon = document.querySelector('#play-pause-audio i.icon');
+                var buttonText = document.querySelector('#play-pause-audio span.toggle-text');
+
+                buttonIcon.classList.remove('play', 'pause');
+                buttonIcon.classList.add('pause');
+                buttonText.innerText = 'Pause';
+
+                audio.play();
+            } else {
+                // console.log("in here:")
+                $('#page-article').click();
+
+                audio.play();
+                // console.warn('User has not interacted with the webpage yet. Cannot autoplay audio.');
+            }
         }
-
     }
+
+    // }
 }
 
 function replayAudio() {
@@ -674,37 +716,31 @@ function updateAvatar(avatarName) {
       if (response.ok) {
         console.log('Avatar updated successfully');
 
+        // reload page to complete avatar change ie not just voice but also avatar image and name etc
+        location.reload();
+
+        // // const urlParams = new URLSearchParams(window.location.search);
+        // // const pageParam = urlParams.get('page');
+        // // console.log("Avatar change the page is: " + page);
+        // clearWordHighlights();
+
         // const urlParams = new URLSearchParams(window.location.search);
-        // const pageParam = urlParams.get('page');
-        console.log("Avatar change the page is: " + page);
-        clearWordHighlights();
-
-        const urlParams = new URLSearchParams(window.location.search);
-        const currentPage = urlParams.get('page');
+        // const currentPage = urlParams.get('page');
     
-        playAudio(currentPage);
+        // playAudio(currentPage);
 
-        const button = document.getElementById('play-pause-audio');
-        var buttonIcon = document.querySelector('#play-pause-audio i.icon');
-        var buttonText = document.querySelector('#play-pause-audio span.toggle-text');
+        // const button = document.getElementById('play-pause-audio');
+        // var buttonIcon = document.querySelector('#play-pause-audio i.icon');
+        // var buttonText = document.querySelector('#play-pause-audio span.toggle-text');
 
-        button.classList.remove('grey'); // Remove the grey class
-        button.classList.add('blue'); // Add the blue class to change its color back
-        button.style.pointerEvents = 'auto';
+        // button.classList.remove('grey'); // Remove the grey class
+        // button.classList.add('blue'); // Add the blue class to change its color back
+        // button.style.pointerEvents = 'auto';
 
-        buttonIcon.classList.remove('play', 'pause', 'check');
-        buttonIcon.classList.add('pause');
-        buttonText.innerText = 'Pause';
-        startHighlightingWords();
-        // audio.play();
-
-
-        // avatarSpeechData = speechData[page][avatar];
-
-        // if word highlighting is enabled
-        // const wordDataExample = avatarSpeechData.filter(entry => entry.type === "word");
-        // const totalStps = wordData.length;
-        // setWordTimers(wordData);
+        // buttonIcon.classList.remove('play', 'pause', 'check');
+        // buttonIcon.classList.add('pause');
+        // buttonText.innerText = 'Pause';
+        // startHighlightingWords();
 
         
       } else {
@@ -736,7 +772,11 @@ function changeSpeed(speedValue) {
 
 
 $(document).ready(function() {
-    $('#page-article').click();
+    if(speechData !== "none") {
+        $('#page-article').click();
+    } else {
+        $('#volume-button').hide();
+    }
 
     // for highlighting
     // avatarSpeechData = speechData[page][avatar];
@@ -776,9 +816,13 @@ $(document).ready(function() {
     // later make so check from db whether to play audio / highlight 
     setLinks(startPage);
     updateProgressBar();
-    playAudio(page);
-    toggleHighlighting();
-    startHighlightingWords();
+
+    // for testing only do pages with speech data to avoid console log error 
+    if(speechData !== "none") {
+        playAudio(page);
+        toggleHighlighting();
+        startHighlightingWords();
+    }
     // if(wordHighlighting || sentenceHighlighting) {
     //     startHighlightingWords();
     // }
@@ -791,7 +835,9 @@ $(document).ready(function() {
 
         $('.ui.sidebar').sidebar('hide');
 
-        stopHighlighting();
+        if(speechData !== "none" && currentPage !== 'quiz') {
+            stopHighlighting();
+        }
         // restartWordHighlighting();
 
 
@@ -843,9 +889,12 @@ $(document).ready(function() {
                     if(section === 'practice' && backPage === 'activity') {
                         setupPractice();
                     }
-                    playAudio(backPage);
-                    toggleHighlighting();
-                    startHighlightingWords();
+
+                    if(speechData !== "none" && backPage !== 'quiz') {
+                        playAudio(backPage);
+                        toggleHighlighting();
+                        startHighlightingWords();
+                    }
                     }
             });
         }
@@ -859,7 +908,9 @@ $(document).ready(function() {
         $('.ui.sidebar').sidebar('hide');
 
         // stop and reseat audio and highlighting immediately
-        stopHighlighting();
+        if(speechData !== "none" && currentPage !== 'quiz') {
+            stopHighlighting();
+        }
 
         // restartWordHighlighting();
 
@@ -1016,9 +1067,12 @@ $(document).ready(function() {
                 if(section === 'practice' && nextPage === 'activity') {
                     setupPractice();
                 }
-                playAudio(nextPage);
-                toggleHighlighting();
-                startHighlightingWords();
+
+                if(speechData !== "none" && currentPage !== 'quiz') {
+                    playAudio(nextPage);
+                    toggleHighlighting();
+                    startHighlightingWords();
+                }
             }
         });
 
@@ -1092,12 +1146,12 @@ function setLinks(currentPage) {
             nextlink = baseurl + 'activity';
         } else if(currentPage === 'activity') {
             backlink = baseurl + 'personal-info';
-            nextlink = baseurl + 'reflection';
-        } else if(currentPage === 'reflection') {
-            backlink = baseurl + 'activity';
             nextlink = baseurl + 'quiz';
         } else if(currentPage === 'quiz') {
-            backlink = baseurl + 'reflection';
+            backlink = baseurl + 'activity';
+            nextlink = baseurl + 'reflection';
+        } else if(currentPage === 'reflection') {
+            backlink = baseurl + 'quiz';
             nextlink = baseurl + 'takeaways';
         } else if(currentPage === 'takeaways') {
 
@@ -1124,12 +1178,12 @@ function setLinks(currentPage) {
         } else if(currentPage === 'types') {
 
             backlink = baseurl + 'general';
+            nextlink = baseurl + 'quiz';
+        }  else if(currentPage === 'quiz') {
+            backlink = baseurl + 'types';
             nextlink = baseurl + 'reflection';
         } else if(currentPage === 'reflection') {
-            backlink = baseurl + 'types';
-            nextlink = baseurl + 'quiz';
-        } else if(currentPage === 'quiz') {            
-            backlink = baseurl + 'reflection';
+            backlink = baseurl + 'quiz';
             nextlink = baseurl + 'takeaways';
         } else if(currentPage === 'takeaways') {
             backlink = baseurl + 'quiz';
@@ -1160,11 +1214,11 @@ function setLinks(currentPage) {
         } else if(currentPage === 'activity') {
             backlink = baseurl + 'suspicious';
             nextlink = baseurl + 'reflection';
-        } else if(currentPage === 'reflection') {
+        }  else if(currentPage === 'quiz') {
             backlink = baseurl + 'activity';
-            nextlink = baseurl + 'quiz';
-        } else if(currentPage === 'quiz') {            
-            backlink = baseurl + 'reflection';
+            nextlink = baseurl + 'reflection';
+        } else if(currentPage === 'reflection') {
+            backlink = baseurl + 'quiz';
             nextlink = baseurl + 'takeaways';
         } else if(currentPage === 'takeaways') {
             backlink = baseurl + 'quiz';
@@ -1189,11 +1243,11 @@ function setLinks(currentPage) {
         }  else if(currentPage === 'activity') {
             backlink = baseurl + 'contacted';
             nextlink = baseurl + 'reflection';
-        } else if(currentPage === 'reflection') {
+        }  else if(currentPage === 'quiz') {
             backlink = baseurl + 'activity';
-            nextlink = baseurl + 'quiz';
-        } else if(currentPage === 'quiz') {            
-            backlink = baseurl + 'reflection';
+            nextlink = baseurl + 'reflection';
+        } else if(currentPage === 'reflection') {
+            backlink = baseurl + 'quiz';
             nextlink = baseurl + 'takeaways';
         } else if(currentPage === 'takeaways') {
             backlink = baseurl + 'quiz';

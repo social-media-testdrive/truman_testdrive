@@ -215,7 +215,7 @@
       "progress": 83.3333,
       "type": "yes_no",
       "partial": "q10.html",
-      "prompt": "10. Could someone watching you at the ATM be a scammer?",
+      "prompt": "10. If someone is watching you at the ATM, could they be a scammer?",
       "choices": {
           "yes": {
               "text": "Yes"
