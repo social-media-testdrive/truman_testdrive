@@ -895,6 +895,16 @@ $(document).ready(function() {
                         toggleHighlighting();
                         startHighlightingWords();
                     }
+
+                    if(backPage === 'quiz') {
+                        console.log("Page is quiz so pause");
+                        var audio = document.getElementById('narration-audio');
+                        audio.pause();
+                        stopHighlighting();
+    
+                    }
+
+
                     }
             });
         }
@@ -1068,11 +1078,20 @@ $(document).ready(function() {
                     setupPractice();
                 }
 
-                if(speechData !== "none" && currentPage !== 'quiz') {
+                if(speechData !== "none" && nextPage !== 'quiz') {
                     playAudio(nextPage);
                     toggleHighlighting();
                     startHighlightingWords();
                 }
+
+                if(nextPage === 'quiz') {
+                    console.log("Page is quiz so pause");
+                    var audio = document.getElementById('narration-audio');
+                    audio.pause();
+                    stopHighlighting();
+                }
+
+
             }
         });
 

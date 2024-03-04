@@ -221,12 +221,12 @@ $(document).ready(function() {
 
             // Get user selections 
             if (questionData[currentQuestion].type === "yes_no") {
-                val = $("input[type='radio']:checked").val();
+                val = $(".quizContainer input[type='radio']:checked").val();
             } else if(questionData[currentQuestion].type === "abcd") {
-                val = $("input[type='radio']:checked").val();
+                val = $(".quizContainer input[type='radio']:checked").val();
             } else if  (questionData[currentQuestion].type === "multi_select") {
                 val = [];
-                $("input[type='checkbox']:checked").each(function() {
+                $(".quizContainer input[type='checkbox']:checked").each(function() {
                     val.push($(this).val());
                 });
             }
