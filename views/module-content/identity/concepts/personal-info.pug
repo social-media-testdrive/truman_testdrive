@@ -2,7 +2,7 @@
     .ui.container#personal-info-read
         .limit#learn-target(style="padding: 0;")
             .ui.stackable.grid
-                .ten.wide.column
+                .column.ten.wide.computer.only.sixteen.wide.tablet.only.mobile.only
                     h1.ui.header.large#learn-title
                         .content 
                             i.book.icon
@@ -52,8 +52,11 @@
                     //-         |  street address or email address
                     //-     .item 
                     //-         strong Phone numbers
-                .six.wide.column.middle.aligned
-                    img.ui.image(src='/images/learn-2.png' style='margin-left: auto; margin-right: auto')
+                .column.six.wide.computer.only
+                    img.ui.large.image(src='/images/learn-2.png' style='margin-left: auto; margin-right: auto')
+                .column.sixteen.wide.tablet.only.mobile.only
+                    img.ui.medium.image(src='/images/learn-2.png' style='margin-left: auto; margin-right: auto')
+
                 i.source *Sources: 1. National Institute of Standards and Technology 
                     a(href='https://csrc.nist.gov/glossary/term/personal_information' target='_blank') 'Personal Information' 
                     br

@@ -1232,7 +1232,7 @@ function setLinks(currentPage) {
             nextlink = baseurl + 'activity';
         } else if(currentPage === 'activity') {
             backlink = baseurl + 'suspicious';
-            nextlink = baseurl + 'reflection';
+            nextlink = baseurl + 'quiz';
         }  else if(currentPage === 'quiz') {
             backlink = baseurl + 'activity';
             nextlink = baseurl + 'reflection';
@@ -1261,7 +1261,7 @@ function setLinks(currentPage) {
             nextlink = baseurl + 'activity';
         }  else if(currentPage === 'activity') {
             backlink = baseurl + 'contacted';
-            nextlink = baseurl + 'reflection';
+            nextlink = baseurl + 'quiz';
         }  else if(currentPage === 'quiz') {
             backlink = baseurl + 'activity';
             nextlink = baseurl + 'reflection';
