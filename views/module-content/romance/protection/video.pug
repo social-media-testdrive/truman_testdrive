@@ -4,17 +4,14 @@
             #common-measures-read
                 h1.ui.header.large#learn-title
                     .content
-                        i.book.icon
-                        | Common Measures
-                .ui.bulleted.list 
-                    .item Stay cautious at all times as the sender might be a scammer
-                    .item Get to know the techniques scammers use as presented in 
-                        a(href='/course-player?module=identity&section=techniques&page=objectives') Techniques
-                    .item When in doubt, don't hesitate to consult your family, friends, or those familiar with identity theft
-                    .item Be prepared to report scams to the authorities.
-                .callout
-                    .dark-blue-square
-                        img(src=user.avatarImg, alt='avatar picture')
-                    .light-blue-content
-                        h3.call-header Important
-                        p(style="font-size: 1.25rem;") If you suspect theft, take immediate action to minimize the damage.
+                        i.video.icon
+                        |  Protecting Yourself
+                //- p Click the image to start the video
+                .ui.icon.mini.message(style="padding: 5px; z-index: 99;")
+                    i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
+                    .content 
+                        p Click the image to start the video
+            br
+            #video-container
+                video-js#my_video_1.video-js.vjs-default-skin.vjs-show-big-play-button-on-pause(width='640px' height='360px' controls='' preload='none' data-setup='{ "poster":"/images/warning-poster.png", "aspectRatio":"16:9", "playbackRates": [0.5, 0.75, 1, 1.5, 2] }')
+                    source(src='https://dart-store.s3.amazonaws.com/identity-warning.mp4' type='video/mp4')

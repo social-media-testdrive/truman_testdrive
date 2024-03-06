@@ -718,13 +718,13 @@ function setLinks(currentPage) {
             backlink = baseurl + 'video';
             nextlink = baseurl + 'privacy';
         } else if(currentPage === 'privacy') {
-            backlink = baseurl + 'preventative';
+            backlink = baseurl + 'guidelines';
             nextlink = baseurl + 'search';
         }  else if(currentPage === 'search') {
             backlink = baseurl + 'privacy';
             nextlink = baseurl + 'reverse-image';
         } else if(currentPage === 'reverse-image') {
-            backlink = baseurl + 'research';
+            backlink = baseurl + 'search';
             nextlink = '/course-player?module=romance&section=reporting&page=objective';
     } 
     else if(currentPage === 'takeaways') {
