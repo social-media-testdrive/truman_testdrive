@@ -24,11 +24,9 @@ The learning modules utilize a single-page app filled with different reusuable [
 
 User Profile and Account Management: User profiles with email, username, password, badges, certificates, and progress tracking. Also guest logins for users to start learning without making an account. User can also "Continue with Google" to make account and then later create password or unlink/link to account. Note: Google OAuth is currently in testing mode so only approved google emails are able to log in this way
 
-Features like email verification, account recovery, guest-to-full-account conversion, and auto account merging (if user created account with google and then tries to create new profile with the gmail instead of giving error telling user to log in with google and set password it will set password for previously created account) slated for future development. 
+*Features like email verification, account recovery, guest-to-full-account conversion, and auto account merging (if user created account with google and then tries to create new profile with the gmail instead of giving error telling user to log in with google and set password it will set password for previously created account) slated for future development. 
 
-New developers should focus on understanding the modular content structure and reusable templates.
-
-[Complete Feature List](https://docs.google.com/document/d/1C4lpmU7KJUgfArYm283H2awNoaDJdBx93WfDHMsQBUQ/edit?usp=sharing)
+*New developers should focus on understanding the modular content structure and reusable templates.* 
 
 # Page Templates
 
