@@ -1380,9 +1380,9 @@ function updateProgressBar() {
             progress = (3 / total) * 100;
         } else if (pageParam === 'activity') {
             progress = (4 / total) * 100;
-        } else if (pageParam === 'reflection') {
-            progress = (5 / total) * 100;
         } else if (pageParam === 'quiz') {
+            progress = (5 / total) * 100;
+        } else if (pageParam === 'reflection') {
             progress = (6 / total) * 100;
         } else if (pageParam === 'takeaways') {
             progress = 100;
@@ -1396,9 +1396,9 @@ function updateProgressBar() {
             progress = (2 / total) * 100;
         } else if (pageParam === 'activity') {
             progress = (3 / total) * 100;
-        } else if (pageParam === 'reflection') {
-            progress = (4 / total) * 100;
         } else if (pageParam === 'quiz') {
+            progress = (4 / total) * 100;
+        } else if (pageParam === 'reflection') {
             progress = (5 / total) * 100;
         } else if (pageParam === 'takeaways') {
             progress = 100;
@@ -1420,9 +1420,9 @@ function updateProgressBar() {
             progress = (6 / total) * 100;
         } else if (pageParam === 'activity') {
             progress = (7 / total) * 100;
-        } else if (pageParam === 'reflection') {
-            progress = (8 / total) * 100;
         } else if (pageParam === 'quiz') {
+            progress = (8 / total) * 100;
+        } else if (pageParam === 'reflection') {
             progress = (9 / total) * 100;
         } else if (pageParam === 'takeaways') {
             progress = 100;
@@ -1438,9 +1438,9 @@ function updateProgressBar() {
             progress = (3 / total) * 100;
         } else if (pageParam === 'activity') {
             progress = (4 / total) * 100;
-        } else if (pageParam === 'reflection') {
-            progress = (5 / total) * 100;
         } else if (pageParam === 'quiz') {
+            progress = (5 / total) * 100;
+        } else if (pageParam === 'reflection') {
             progress = (6 / total) * 100;
         } else if (pageParam === 'takeaways') {
             progress = 100;
