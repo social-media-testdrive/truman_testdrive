@@ -48,8 +48,8 @@ Note: All folders besides the ones below are legacy from Social Media Testdrive
 | views/account/           | Account access pages like login, sign up, forgot password, profile |
 | views/module-content/    | Pages for each learning module |
 | views/partials/          | Header, footer, and flash message, and navigation bar pug partials |
-| views/ui_layout.pug      | Template for general dart pages [pug extend](https://pugjs.org/language/inheritance.html) ie pages outside of modules with DART icon header |
-| views/layout.pug         | Base template that all your pages [pug extends](https://pugjs.org/language/inheritance.html).    |
+| views/ui_layout.pug      | Template general dart pages [pug extend](https://pugjs.org/language/inheritance.html) ie pages outside of modules with DART icon header |
+| views/moduel_layout.pug         | Template learning module pages [pug extend](https://pugjs.org/language/inheritance.html).    |
 | views/home.pug           | Site home page.                                        |
 | app.js                   | The main application file. Where the express routes are.    |
 | .env               | Environment-specific configuration values, such as database credentials, API keys, and other sensitive data   |
