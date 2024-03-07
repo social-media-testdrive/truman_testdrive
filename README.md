@@ -148,7 +148,7 @@ Note: All folders besides the ones below are legacy from Social Media Testdrive
 
 ## Quiz Generation
 
-The quizzes work where to create a JSON file and name it after the section you're creating. Put the files in main -> public -> json -> [module-name]. 
+Create a JSON file and name it after the section you're creating. Put the files in main -> public -> json -> [module-name]. 
 
 All questions will be 1 of 3 types. Fill in the json template with the your specific question's info. 
 
