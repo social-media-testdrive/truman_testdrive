@@ -33,7 +33,7 @@ exports.getModule = async (req, res) => {
     } else if(section === 'concepts') {
       numPages = 10;
     } else if(section === 'consequences') {
-      numPages = 7;
+      numPages = 8;
     } else if(section === 'techniques') {
       numPages = 12;
     } else if(section === 'protection') {

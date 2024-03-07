@@ -1392,14 +1392,16 @@ function updateProgressBar() {
             progress = 0;
         } else if (pageParam === 'intro-video') {
             progress = (1 / total) * 100;
-        } else if (pageParam === 'types') {
+        }  else if (pageParam === 'general') {
             progress = (2 / total) * 100;
-        } else if (pageParam === 'activity') {
+        } else if (pageParam === 'types') {
             progress = (3 / total) * 100;
-        } else if (pageParam === 'quiz') {
+        } else if (pageParam === 'activity') {
             progress = (4 / total) * 100;
-        } else if (pageParam === 'reflection') {
+        } else if (pageParam === 'quiz') {
             progress = (5 / total) * 100;
+        } else if (pageParam === 'reflection') {
+            progress = (6 / total) * 100;
         } else if (pageParam === 'takeaways') {
             progress = 100;
         }
