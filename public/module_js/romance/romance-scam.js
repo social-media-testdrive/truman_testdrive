@@ -631,18 +631,18 @@ function setLinks(currentPage) {
       nextlink = baseurl + "deciphering";
     } else if (currentPage === "deciphering") {
       backlink = baseurl + "objectives";
-      nextlink = baseurl + "emotional";
-    } else if (currentPage === "emotional") {
-      backlink = baseurl + "financial";
-      nextlink = baseurl + "targeted";
-    } else if (currentPage === "targeted") {
-      backlink = baseurl + "emotional";
+      nextlink = baseurl + "initial";
+    } else if (currentPage === "initial") {
+      backlink = baseurl + "deciphering";
       nextlink = baseurl + "types";
     } else if (currentPage === "types") {
-      backlink = baseurl + "targeted";
+      backlink = baseurl + "initial";
+      nextlink = baseurl + "warning";
+    } else if (currentPage === "warning") {
+      backlink = baseurl + "types";
       nextlink = baseurl + "reflection";
     } else if (currentPage === "reflection") {
-      backlink = baseurl + "types";
+      backlink = baseurl + "warning";
       nextlink = baseurl + "quiz";
     } else if (currentPage === "quiz") {
       backlink = baseurl + "reflection";
