@@ -20,9 +20,9 @@
 }
 
 /* Add space between bullets */
-#learn-target li img:not(:last-child) {
+/* #learn-target li img:not(:last-child) {
     margin-bottom: 20px;
-}
+} */
 
 #learn-target ul li { 
     padding: 20px 0px !important; 

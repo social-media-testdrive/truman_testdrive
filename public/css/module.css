@@ -8,6 +8,56 @@ html {
     font-size: 1rem;
 }
 
+/* mark {
+    color: white !important;
+    background-color: black !important;
+} */
+
+/* .highlighted-sentence:before {
+    background-color: #FBF719 ;
+    display: inline;
+} */
+
+/* #narrate-1 span,
+#narrate-2 span,
+#narrate-3 span,
+#narrate-4 span {
+    background-color: #FBF719;
+
+} */
+
+span.highlighted-sentence {
+    background-color: #FBF719;
+    color: black;
+}
+
+/* .highlighted-sentence::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #FBF719;
+    z-index: -1; 
+  } */
+  
+.highlighted-word {
+    background-color: #FBF719;
+    color: black;
+}
+
+.highlighted-word-hide {
+    background-color: transparent;
+    color: black;
+}
+
+
+.highlighted-word-dark {
+    background-color: #0C2746;
+    color: white;
+}
+
 header,
 footer {
     z-index: 9999999999 !important;

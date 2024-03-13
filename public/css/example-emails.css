@@ -144,8 +144,8 @@
 /* default semantic ui stack grids to single column when smaller than 768px */
 /* override so it will stack on large tablets */
 @media only screen and (max-width: 1024px) {
-    .ui.stackable.grid > .column:not(.row),
-    .ui.stackable.grid > .row > .column {
+    #examplePage .ui.stackable.grid > .column:not(.row),
+    #examplePage .ui.stackable.grid > .row > .column {
         width: 100% !important;
         max-width: none !important;
     }

@@ -4,7 +4,7 @@
             h1.ui.header.large#learn-title
                 .content 
                     i.dice.icon
-                    | Spot the Privacy Risks
+                    span#narrate-title-activity Spot the Privacy Risks
             .ui.stackable.grid#identity-concept-activity
                 .five.wide.column(style="margin-right: 0px; padding-right: 0px;")
                     .instructions(style="background-color: #F1EDF8; z-index: 0;")
@@ -16,12 +16,14 @@
                                 .score-box
                                     p.points 0 / 5
                         #instruction-text(style="padding: 20px")
-                            if user.name === 'Guest'
-                                p Agent, we need your help! 
-                            else 
-                                p Agent #{user.name}, we need your help! 
-                            p Mrs. Johnson is sharing too much personal information on her social media, putting herself at risk of identity theft.
-                            p Review her profile and <strong>click on any personal information that should be removed.</strong>
+                            p#narrate-1-activity
+                                span Agent, we need your help! 
+                            p#narrate-2-activity
+                                span Mrs. Johnson is sharing too much personal information on her social media, putting herself at risk of identity theft.
+                            p#narrate-3-activity 
+                                span Review her profile and 
+                                strong#narrate-4-activity 
+                                    span click on any personal information that should be removed. 
                         .ui.fluid.button#hint-button 
                             i.search.icon
                             | Hint

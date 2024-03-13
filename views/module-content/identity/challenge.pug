@@ -13,7 +13,7 @@ block content
         include challenge/quiz.pug
         include challenge/badge.pug
     //- load first audio for page user is on then update the audio for each page in identity-theft.js file
-    audio(id="narration-audio", src=`https://dart-store.s3.amazonaws.com/identity+theft+voice+over/${section}/${page}_${user.avatar.toLowerCase()}.mp3`, preload="auto")
+    audio(id="narration-audio", src=`https://dart-store.s3.amazonaws.com/identity+theft+voice+over/${section}/${page}_${user.avatar.toLowerCase()}.mp3`, preload="auto", onended="disableNarrationPlayButton()")
 
     //- audio(id="narration-audio", src=`https://dart-store.s3.amazonaws.com/identity+theft+voice+over/challenge/intro_${user.avatar.toLowerCase()}.mp3`, preload="auto")
 block styles 
@@ -23,7 +23,10 @@ block styles
     link(rel='stylesheet', href='/css/dart_quiz.css')  
 
 
-block scripts       
+block scripts      
+    script.
+        //- send as json with all avatars speech marks
+        var speechData = !{JSON.stringify(speechMarks)}; // quizData is passed to pug file via render function in app.js
     script(src='/module_js/identity/identity-theft.js')    
     //- script(src='/js/text2speech.js')  
     script.
