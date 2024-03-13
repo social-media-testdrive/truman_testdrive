@@ -1,0 +1,94 @@
+extends ../../module_player_layout
+
+
+block content
+    //- button.ui.icon.button.m.left.right#volume-up-button
+    //-     i.volume.up.icon
+    .loading-screen-container(id="loadingScreen") 
+        .ui.active.inverted.dimmer
+            .ui.active.blue.large.elastic.loader 
+            h1 Loading...
+    .display-page.hidden
+        include reporting/objectives.pug
+        include reporting/realizing.pug
+        include reporting/scammed.pug
+        include reporting/responsive.pug
+        include reporting/medical.pug
+        include reporting/tax.pug
+        include reporting/quiz.pug
+        include reporting/takeaways.pug
+    audio(id="narration-audio", src=`https://dart-store.s3.amazonaws.com/identity+theft+voice+over/${section}/${page}_${user.avatar.toLowerCase()}.mp3`, preload="auto")
+
+
+block styles 
+    link(rel='stylesheet', href='/css/identity-theft.css')
+    link(rel='stylesheet', href='/css/learning-targets.css')
+    link(rel='stylesheet', href='/css/middle-aligned-layout.css')
+    link(rel='stylesheet', href='/css/dart_quiz.css')  
+
+
+block scripts       
+    script(src='/module_js/romance/romance-scam.js')    
+    //- script(src='/js/text2speech.js')  
+    script.
+        window.addEventListener('load', function() {
+            // Simulate a delayed loading process for demonstration
+            //- setTimeout(function() {
+                var loadingScreen = document.getElementById('loadingScreen');
+                loadingScreen.style.display = 'none'; // Hide the loader when everything is loaded
+
+                var revealMe = document.querySelector('.display-page');
+                revealMe.classList.remove('hidden'); // Show the content when everything is loaded
+            //- }, 6000); 
+        });
+    script. 
+        var avatar = "#{user.avatar.toLowerCase()}";
+        var module = "#{module}";
+        var section = "#{section}";
+        var startPage = "#{page}"; 
+        var total = parseInt(#{numPages});
+    //- script.
+
+    //-     //- Sources referenced: https://mgmgblog.com/en/post-4601/ and https://codepen.io/jjinMangKo/pen/LYygOrq
+    //-     $('#steps-slider').slick({
+    //-         asNavFor:"#image-slider",
+    //-         dots: true,
+    //-         arrows: true,
+    //-         infinite: false,
+    //-         speed: 800,
+    //-         slidesToShow: 1,
+    //-         slidesToScroll: 1,
+    //-         customPaging : function(slider, index) { 
+    //-             var num = index + 1;
+    //-             return '<span class="dot">'+ num +'</span>';
+    //-         }
+    //-     });
+
+    //-     $('#image-slider').slick({
+    //-             draggable: false,
+    //-             infinite: false,
+    //-             arrows: false,
+    //-             fade: true,
+    //-             cssEase: 'linear'
+    //-     });
+    script.
+        //- for quiz
+        var questionData = !{JSON.stringify(quizData)}; // quizData is passed to pug file via render function in app.js
+        var currentTime = "#{currentTime}";
+        var currentDate = "#{currentDate}";
+        //- var futureDate = "#{futureDate}"; 
+        var email = "#{user.email}";
+        var username = "#{user.name}";
+        var current_percent = 50;
+        var link = "/course-player?module=identity&section=consequences&page=takeaways";
+
+    script(src='/module_js/module_quiz.js', mod-id=module, page=page, current-section=section, next-link=link, progress=progress)
+        
+        //- startQuiz()
+    //- console.log("Page is quiz-template")
+    //- console.log("module: " + module)
+    //- console.log("section: " + section)
+    //- console.log("page:" + page)
+    //- console.log("numPages: " + numPages)
+        
+        //- script(src='/module_js/dart_quiz.js', mod-id=modID, page=page, current-section=currentSection, next-link=nextLink, progress=progress)

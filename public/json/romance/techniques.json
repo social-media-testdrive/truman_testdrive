@@ -1,0 +1,71 @@
+{
+    "1": {
+      "progress": 100,
+      "type": "multi_select",
+      "partial": "none",
+      "prompt": "1. Scammers often use language that leads the victim to trust them, or even fall in love with them. Which of the following are examples of persuasive language? Select all that apply.",
+      "choices": {
+        "0": {
+          "text": "A. Presentation as a religious person",
+          "explanation": "Scammers take advantage of people’s tendencies to trust people with religious affiliations more."
+        },
+        "1": {
+          "text": "B. Wait a bit into a relationship before they ask for money or share a sad story",
+          "explanation": "Scammers often wait a bit into a relationship before they ask for money. Scammers use this technique to make you feel like it is your obligation as their partner or friend to help them when they claim to be in trouble."
+        },
+        "2": {
+          "text": "C. Exaggerated phrases",
+          "explanation": "Scammers often use “over the top” language to tell the victim how much they are willing to do for the relationship they have with them."
+        },
+        "3": {
+          "text": "D. Insults",
+          "explanation": "A romance scammer won't typically insult you because they want to gain your trust and keep you emotionally invested in the scam. Insulting you would risk losing that trust and connection they're trying to exploit."
+        },
+        "4": {
+          "text": "E. Excessive compliments towards the victim",
+          "explanation": "Scammers often use excessive compliments to make the relationship seem further progressed than it really is. This is sometimes called “love bombing.”"
+        }
+      },
+      "correctResponse": ["0", "1", "2", "4"],
+      "theAnswers": "A, B, C, E"
+    },
+    "2": {
+      "progress": 100,
+      "type": "yes_no",
+      "partial": "none",
+      "prompt": "2. Is this dating profile Real or Fake?",
+      "choices": {
+        "yes": {
+          "text": "Real"
+        },
+        "no": {
+          "text": "Fake"
+        }
+      },
+      "explanation": "<h1>The correct answer is Real.</h1><p>This profile seems to be a real profile. Her profile picture has her grandson, multiple linked accounts, and a reasonable amount of friends and posts along with a good number of mutual friends.</p>",
+      "correctResponse": "yes"
+    },
+    "3": {
+      "progress": 100,
+      "type": "abcd",
+      "partial": "none",
+      "prompt": "3. What is the correct order of the three stages of scammers’ techniques for most romance and friendship scams?",
+      "choices": {
+        "a": {
+          "text": "A. Step 1. Create Fake Profiles, Step 2. Contact and Groom Stage, Step 3. Money or Criminal Help Request Stage"
+        },
+        "b": {
+          "text": "B. Step 1. Contact and Groom Stage, Step 2. Create Fake Profiles, Step 3. Money or Criminal Help Request Stage"
+        },
+        "c": {
+          "text": "C. Step 1, Money or Criminal Help Request Stage, Step 2. Contact and Groom Stage, Step 3, Create Fake Profiles"
+        },
+        "d": {
+          "text": "D. Step 1. Create Fake Profiles, Step 2. Contact and Groom Stage, Step 3. Money or Criminal Help Request Stage"
+        }
+      },
+      "explanation": "<h1>The correct answer is D.</h1><p>This is the correct order.</p>",
+      "correctResponse": "d"
+    }
+  }
+  
