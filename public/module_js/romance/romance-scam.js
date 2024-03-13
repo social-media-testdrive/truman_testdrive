@@ -598,6 +598,36 @@ function setLinks(currentPage) {
     if (currentPage === "objectives") {
       backlink =
         "/course-player?module=romance&section=concepts&page=objectives";
+      nextlink = baseurl + "what1";
+    } else if (currentPage === "what1") {
+      backlink = baseurl + "objectives";
+      nextlink = baseurl + "male";
+    } else if (currentPage === "male") {
+      backlink = baseurl + "what1";
+      nextlink = baseurl + "female";
+    } else if (currentPage === "female") {
+      backlink = baseurl + "male";
+      nextlink = baseurl + "examples";
+    } else if (currentPage === "examples") {
+      backlink = baseurl + "female";
+      nextlink = baseurl + "realorfake";
+    } else if (currentPage === "realorfake") {
+      backlink = baseurl + "examples";
+      nextlink = baseurl + "quiz";
+    } else if (currentPage === "quiz") {
+      backlink = baseurl + "realorfake";
+      nextlink = baseurl + "takeaways";
+    } else if (currentPage === "takeaways") {
+      backlink = baseurl + "quiz";
+      nextlink =
+        "/course-player?module=romance&section=contact&page=objectives";
+    }
+  } else if (section === "contact") {
+    let baseurl = "/course-player?module=romance&section=contact&page=";
+
+    if (currentPage === "objectives") {
+      backlink =
+        "/course-player?module=romance&section=concepts&page=objectives";
       nextlink = baseurl + "financial";
     } else if (currentPage === "financial") {
       backlink = baseurl + "objectives";
@@ -613,36 +643,6 @@ function setLinks(currentPage) {
       nextlink = baseurl + "reflection";
     } else if (currentPage === "reflection") {
       backlink = baseurl + "types";
-      nextlink = baseurl + "quiz";
-    } else if (currentPage === "quiz") {
-      backlink = baseurl + "reflection";
-      nextlink = baseurl + "takeaways";
-    } else if (currentPage === "takeaways") {
-      backlink = baseurl + "quiz";
-      nextlink =
-        "/course-player?module=romance&section=contact&page=objectives";
-    }
-  } else if (section === "contact") {
-    let baseurl = "/course-player?module=romance&section=contact&page=";
-
-    if (currentPage === "objectives") {
-      backlink =
-        "/course-player?module=romance&section=concepts&page=objectives";
-      nextlink = baseurl + "deciphering";
-    } else if (currentPage === "deciphering") {
-      backlink = baseurl + "objectives";
-      nextlink = baseurl + "initial";
-    } else if (currentPage === "initial") {
-      backlink = baseurl + "deciphering";
-      nextlink = baseurl + "types";
-    } else if (currentPage === "types") {
-      backlink = baseurl + "initial";
-      nextlink = baseurl + "warning";
-    } else if (currentPage === "warning") {
-      backlink = baseurl + "types";
-      nextlink = baseurl + "reflection";
-    } else if (currentPage === "reflection") {
-      backlink = baseurl + "warning";
       nextlink = baseurl + "quiz";
     } else if (currentPage === "quiz") {
       backlink = baseurl + "reflection";
