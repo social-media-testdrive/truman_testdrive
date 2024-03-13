@@ -10,13 +10,11 @@ block content
             h1 Loading...
     .display-page.hidden
         include protection/objectives.pug
-        include protection/common-measures.pug
-        include protection/preventative.pug
-        include protection/contacted.pug
-        include protection/activity.pug
-        include protection/reflection.pug
-        include protection/quiz.pug
-        include protection/takeaways.pug
+        include protection/video.pug
+        include protection/guidelines.pug
+        include protection/privacy.pug
+        include protection/search.pug
+        include protection/reverse-image.pug
     audio(id="narration-audio", src=`https://dart-store.s3.amazonaws.com/identity+theft+voice+over/${section}/${page}_${user.avatar.toLowerCase()}.mp3`, preload="auto")
 
 
