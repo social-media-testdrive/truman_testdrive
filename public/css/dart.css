@@ -9,6 +9,11 @@ footer {
     /* background-color: red !important; */
 }
 
+
+.highlight {
+    background-color: yellow;
+}
+
 .ui-flash .ui.negative.fluid.large.message,
 .ui-flash .ui.warning.fluid.large.message,
 .ui-flash .ui.positive.fluid.large.message {

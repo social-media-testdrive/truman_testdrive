@@ -4,13 +4,523 @@ let badgeEarned = false;
 let mute = false;
 let voiceSpeed = 1;
 var userInteracted = false;
+let avatarSpeechData = null;
+let isPaused = false; // Flag to check if highlighting should be paused
 
-document.addEventListener('click', function() {
+let wordData = null;
+let totalWords; // Total number of words to highlight
+let currentWordIndex = 0; // Current index of the word being highlighted
+let highlightTimeoutWordID = null; // Timeout reference for word highlighting
+let delay;
+let startTimeMS = 0;
+
+let totalStart = 0;
+let totalFinish = 0;
+
+let selectedElement = null;
+
+// Flag to check if word highlighting is enabled
+let wordHighlighting = true; 
+let sentenceHighlighting = false;
+
+let contrastWords = false;
+// when 
+let hiddenHighlight = false;
+
+let showingHere = false;
+
+document.addEventListener('click', function clickHandler() {
+    console.log("User interacted with the page")
     userInteracted = true;
 
-    // You can remove the event listener after the first interaction if needed
-    document.removeEventListener('click', arguments.callee);
+    // remove the event listener after the first interaction if needed
+    document.removeEventListener('click', clickHandler);
 });
+
+let previousElement = "none";
+let started = false; 
+// *later set to DB values for curent user highlighting preferences
+let wordChecked = true;
+let sentenceChecked = true;
+
+function stopHighlighting() {
+    clearWordHighlights();
+    clearTimeout(highlightTimeoutWordID);
+
+    wordData = null;
+    totalWords; // Total number of words to highlight
+    currentWordIndex = 0; // Current index of the word being highlighted
+    highlightTimeoutWordID = null; // Timeout reference for word highlighting
+    delay;
+    startTimeMS = 0;
+
+    totalStart = 0;
+    totalFinish = 0;
+
+    selectedElement = null;
+
+    wordHighlighting = true; 
+    sentenceHighlighting = false;
+
+    contrastWords = false;
+    // when 
+    hiddenHighlight = false;
+
+    showingHere = false;
+    previousElement = "none";
+    started = false; 
+    // *later set to DB values for curent user highlighting preferences
+    wordChecked = true;
+    sentenceChecked = true;
+
+    const button = document.getElementById('play-pause-audio');
+    var buttonIcon = document.querySelector('#play-pause-audio i.icon');
+    var buttonText = document.querySelector('#play-pause-audio span.toggle-text');
+
+    button.classList.remove('grey');
+    button.classList.add('blue');
+    button.style.pointerEvents = 'auto';
+
+    buttonIcon.classList.remove('play', 'pause', 'check');
+    buttonIcon.classList.add('pause');
+    buttonText.innerText = 'Pause';
+
+    $('#volume-icon').removeClass('off');
+    $('#volume-icon').addClass('up'); 
+
+}
+
+function toggleHighlighting() {
+
+    // save previous values so can see if going from: on to off to clear the highlights
+    let priorWordChecked = wordChecked;
+    let priorSentenceChecked = sentenceChecked;
+    // console.log("77777 IN TOGGLE HIGHLIGHTING 77777");
+    wordChecked = document.querySelector('.ui.toggle.checkbox.item#highlight-words input[type="checkbox"]').checked;
+    sentenceChecked = document.querySelector('.ui.toggle.checkbox.item#highlight-sentences input[type="checkbox"]').checked;
+
+    // if it went from on to off, clear the highlights
+    // if(started && (priorWordChecked && !wordChecked)) {
+    //     clearToggleVisual("words");
+    // }
+    // if(started && (priorSentenceChecked && !sentenceChecked)) {
+    //     // clear dark words
+    //     clearToggleVisual("words");
+    //     clearToggleVisual("sentences");
+    // }
+
+    // clear both visuals if anything changed (except case where sentence is on and then word goes changes)
+    if(started && (priorWordChecked !== wordChecked || priorSentenceChecked !== sentenceChecked)) {
+        clearToggleVisual("words");
+        clearToggleVisual("sentences");
+    }
+
+    // if both turned off, turn on hidden highlight
+    // if(!wordChecked && !sentenceChecked) {
+    //     hiddenHighlight = true;
+    // }
+
+    // if word goes from on to off, change highlights to transparent
+    // if(started && (priorWordChecked && !wordChecked)) {
+    //     clearWordHighlights();
+    // }
+    // if both were 
+
+    if(wordChecked && sentenceChecked) {
+        wordHighlighting = true;
+        sentenceHighlighting = true;
+
+        contrastWords = true;
+        hiddenHighlight = false;
+    } else if(wordChecked) {
+        wordHighlighting = true;
+        sentenceHighlighting = false;
+
+        contrastWords = false;
+        hiddenHighlight = false;
+    } else if(sentenceChecked) {
+        wordHighlighting = false;
+        sentenceHighlighting = true;
+
+        contrastWords = false;
+        hiddenHighlight = false;
+    } else if(!wordChecked && !sentenceChecked) {
+        wordHighlighting = false;
+        sentenceHighlighting = false;
+
+        contrastWords = false;
+        hiddenHighlight = true;
+    }
+
+    started = true;
+}
+
+function highlightWord(start, finish, word, element) {
+    // console.log("Highlighting: " + word + ", start: " + start + ", finish: " + finish + ", totalFinish: " + totalFinish + ", element: " + element + ", previousElement: " + previousElement);
+
+    let wordClass = "highlighted-word";
+    if(contrastWords) {
+        wordClass += "-dark";
+    } 
+    if(hiddenHighlight) {
+        wordClass += "-hide";
+    }
+
+    let sentenceClass = "highlighted-sentence";
+
+    let nextElement = "none";
+    if(currentWordIndex !== totalWords - 1) {
+        nextElement = wordData[currentWordIndex + 1]["element"];
+    }
+    // console.log("right before bey, elment is: " + element + " and previous element is: " + previousElement);
+    // Clear all previous highlights if the element has changed
+    if (element !== previousElement) {
+        // console.log("yo in this one here.")
+        clearWordHighlights();
+    }
+    if (element !== nextElement) {
+        // console.log("IN this one.")
+        clearWordHighlights();
+        totalStart = 0;
+        totalFinish = 0;
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentPage = urlParams.get('page');
+
+    if(element === "narrate-title-" + currentPage) {
+        if(wordHighlighting || sentenceHighlighting) {
+            let temp = document.getElementById("narrate-title-" + currentPage);
+            temp.classList.add(sentenceClass);
+        }
+
+        // let temp =  $("#narrate-title");
+        // console.log("The temp before: " + temp.html());
+        // temp.addClass("sentenceClass");
+        // console.log("the temp after" + temp.html())
+    } else if(element === "narrate-time-" + currentPage) {
+        if(wordHighlighting || sentenceHighlighting) {
+            let temp = document.getElementById("narrate-time-" + currentPage);
+            temp.classList.add(sentenceClass);
+        }
+    } else if(element === "narrate-header-" + currentPage) {
+        if(wordHighlighting || sentenceHighlighting) {
+            let temp = document.getElementById("narrate-header-" + currentPage);
+            temp.classList.add(sentenceClass);
+        }
+    } else if(element === "shownHere") {
+        if(wordHighlighting || sentenceHighlighting) {
+            // console.log("in shownhere -> showingHere: " + showingHere);
+            let temp = document.getElementById("shownHere");
+            temp.classList.add(wordClass);
+
+            setTimeout(function() {
+                temp.classList.remove(wordClass);
+                showingHere = false;
+            }, 1000);
+        }
+    } else if(element === "none"){
+        // console.log("skip break element");
+    } else {
+        if(currentPage !== "quiz" && (wordHighlighting || sentenceHighlighting)) {
+
+            // console.log("HIGHLIGH element: " + element );
+            let temp = document.getElementById(element);
+            selectedElement = temp.getElementsByTagName('span')[0];
+
+            // console.log("BEYYYY the selected element: " + selectedElement + " and the element: " + element + " and the word: " + word + " and the start: " + start + " and the finish: " + finish + " and the word class: " + wordClass + " and the sentence class: " + sentenceClass)
+            if(sentenceHighlighting) {
+                selectedElement.classList.add(sentenceClass);
+            }
+
+            // console.log("Bey the selected element: " + selectedElement.innerHTML + " start: " + start + " finish: " + finish + " word: " + word + " element: " + element)
+
+            // always marking when audio is playing, just marks are transparent if wording highlighting is off, yellow if only word highlighting, white on dark bg if both sentence and word are on
+            // remove previous mark tags before adding new ones
+            selectedElement.innerHTML = selectedElement.innerHTML.replace(new RegExp(`<mark class="${wordClass}">|<\/mark>`, 'g'), "");
+            s = selectedElement.innerHTML;
+            // Add the mark tags to highlight the word
+            selectedElement.innerHTML = s.substring(0, start) + `<mark class="${wordClass}">${word}</mark>` + s.substring(finish);
+        }
+    } 
+
+}
+
+function toRepeatWords() {
+    // console.log("Word highlighting is " +  wordHighlighting + " and sentence highlighting is " + sentenceHighlighting)
+    // Check for pause
+    // if (isPaused) {
+    //     // console.log("Breaking the loop.");
+    //     return;
+    // }
+
+    
+    if(currentWordIndex === totalWords - 1) {
+        delay = wordData[currentWordIndex]["time"] - wordData[currentWordIndex - 1]["time"];
+        if (voiceSpeed > 1) {
+            delay /= voiceSpeed;
+        } else {
+            delay *= (1 / voiceSpeed);
+        }
+        // console.log("The delay: " + delay + " and the voice speed: " + voiceSpeed);
+    } else {
+        delay = wordData[currentWordIndex + 1]["time"] - wordData[currentWordIndex]["time"];
+        if (voiceSpeed > 1) {
+            delay /= voiceSpeed;
+        } else {
+            delay *= (1 / voiceSpeed);
+        }
+        // console.log("The delay: " + delay + " and the voice speed: " + voiceSpeed);
+    }
+
+    if(totalFinish === 0) {
+        start = 0;
+    } else {
+        start = totalFinish + 1;
+    }
+
+    // let finish = start + wordData[currentWordIndex]["end"];
+    let finish = start + wordData[currentWordIndex]["value"].length;
+
+    totalFinish = finish;
+
+    // totalFinish = finish;
+    let element = wordData[currentWordIndex]["element"];
+
+    word = wordData[currentWordIndex]["value"];
+
+    if(element === "shownHere") {
+        showingHere = true;
+    }
+    
+    highlightWord(start, finish, word, element);
+
+
+    previousElement = element;
+
+    // Move to the next word
+    currentWordIndex++;
+
+    // Check if there are more words to highlight
+    if (currentWordIndex < totalWords) {
+        if (!isPaused) {
+
+            startTimeMS = (new Date()).getTime();
+
+            // Setup another timeout for the next word
+            highlightTimeoutWordID = setTimeout(function () {
+                // console.log("Delayed for: " + delay + " MS , the current word index: " + currentWordIndex + " the word is: " + wordData[currentWordIndex]["value"] + " and the element is: " + wordData[currentWordIndex]["element"]);
+                toRepeatWords();
+            }, delay);
+        } else {
+            // Save the state but do not proceed to next word
+            // audio.pause();
+            return;
+        }
+    } else {
+        let lastDelay = 1000;
+
+        // console.log("the last delay is: " + lastDelay);
+
+        // All words have been highlighted
+        // console.log("Finished highlighting");
+        setTimeout(function () {
+            clearWordHighlights();
+        }, lastDelay);
+    }
+    
+}
+
+function startHighlightingWords() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentPage = urlParams.get('page');
+
+    if(speechData !== "none" && currentPage !== 'quiz') {
+
+        // console.log("In starting the highlight") 
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentPage = urlParams.get('page');
+        // console.log("The current page: " + currentPage);
+        // console.log("The avatar: " + avatar)
+        // console.log("The speech data: " + speechData)
+
+        avatarSpeechData = speechData[currentPage][avatar];
+
+        // console.log("The avatar speech data: " + avatarSpeechData);
+
+        wordData= avatarSpeechData;
+        // console.log("The word data: " + JSON.stringify(wordData));
+
+        isPaused = false;
+        totalWords = wordData.length;
+        currentWordIndex = 0;
+        let startDelay = wordData[currentWordIndex]["time"];
+
+        if (voiceSpeed > 1) {
+            startDelay /= voiceSpeed;
+        } else {
+            startDelay *= (1 / voiceSpeed);
+        }
+
+        delay = startDelay;
+
+        startTimeMS = (new Date()).getTime();
+
+        // Start highlighting the first word
+        highlightTimeoutWordID = setTimeout(function () {
+            toRepeatWords();
+        }, startDelay);
+    }
+
+}
+
+function getRemainingTime(){
+    return  delay - ( (new Date()).getTime() - startTimeMS );
+}
+
+function clearWordHighlights() {
+    // console.log("* In clear word highlights, clearing existing timeouts")
+    clearTimeout(highlightTimeoutWordID); // Clear any existing timeouts
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentPage = urlParams.get('page');
+
+    if(previousElement.includes("narrate-title")){ 
+        document.getElementById(previousElement).classList.remove('highlighted-sentence');
+    }
+    if(previousElement.includes("narrate-time")){ 
+        document.getElementById(previousElement).classList.remove('highlighted-sentence');
+    }
+    if(previousElement.includes("narrate-header")){ 
+        document.getElementById(previousElement).classList.remove('highlighted-sentence');
+    }
+
+
+    // const urlParams = new URLSearchParams(window.location.search);
+    // const currentPage = urlParams.get('page');
+    // console.log("the page is: " + currentPage + " and the current word index is: " + currentWordIndex);
+    // if(currentPage === 'intro') {
+    //     document.getElementById('narrate-section').classList.remove('highlighted-sentence');
+    //     document.getElementById('narrate-time').classList.remove('highlighted-sentence');
+    // }
+
+    if(selectedElement !== null && !showingHere) {
+        selectedElement.classList.remove('highlighted-sentence');
+    }
+
+    let markElements = null;
+    if(contrastWords) {
+        markElements = $('mark.highlighted-word-dark');
+    } else if(hiddenHighlight) {
+        markElements = $('mark.highlighted-word-hide');
+    }  else {
+        markElements = $('mark.highlighted-word');
+    }
+
+    // Loop through all the 'mark' elements and remove them
+    if(markElements.length > 0) {
+        for (let i = markElements.length - 1; i >= 0; i--) {
+            let markElement = markElements[i];
+            markElement.parentNode.replaceChild(document.createTextNode(markElement.textContent), markElement);
+        }    
+    }
+}
+
+function clearToggleVisual(whichHighlighting) {
+    // console.log("*In clear toggle visual for: " + whichHighlighting);
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentPage = urlParams.get('page');
+
+    if(previousElement.includes("narrate-title")){ 
+        document.getElementById('narrate-title-' + currentPage).classList.remove('highlighted-sentence');
+    }
+
+    if(previousElement.includes("narrate-time")){ 
+        document.getElementById('narrate-time-' + currentPage).classList.remove('highlighted-sentence');
+    }
+
+    if(previousElement.includes("narrate-header")){ 
+        document.getElementById('narrate-header-' + currentPage).classList.remove('highlighted-sentence');
+    }
+
+    // if(currentPage === 'intro') {
+    //     document.getElementById('narrate-section').classList.remove('highlighted-sentence');
+    //     document.getElementById('narrate-time').classList.remove('highlighted-sentence');
+    // }
+
+    if(whichHighlighting === "words") {
+        let markElements = null;
+        if(contrastWords) {
+            markElements = $('mark.highlighted-word-dark');
+        } else if(hiddenHighlight) {
+            markElements = $('mark.highlighted-word-hide');
+        } else {
+            markElements = $('mark.highlighted-word');
+        }
+    
+        // Loop through all the 'mark' elements and remove them
+        if(markElements.length > 0) {
+            for (let i = markElements.length - 1; i >= 0; i--) {
+                let markElement = markElements[i];
+                markElement.parentNode.replaceChild(document.createTextNode(markElement.textContent), markElement);
+            }    
+        }
+    } else if(whichHighlighting === "sentences") {
+        if(selectedElement !== null) {
+            selectedElement.classList.remove('highlighted-sentence');
+        }
+    }
+}
+function pauseHighlight() {
+    if (!isPaused) { // Only pause if not already paused
+        isPaused = true;
+        clearTimeout(highlightTimeoutWordID); // Clear the current timeout
+
+        // Calculate the elapsed time since the last highlight started
+        var currentTimeMS = (new Date()).getTime();
+        var elapsedTime = currentTimeMS - startTimeMS;
+
+        // Adjust the delay for the current word based on the elapsed time
+        delay -= elapsedTime;
+
+        // console.log("Highlighting paused after " + elapsedTime + "ms");
+    }
+
+    // if (!isPaused) { // Prevent pausing if already paused
+    //     isPaused = true; // Set pause flag
+    //     clearTimeout(highlightTimeoutWordID); // Clear the timeout to pause highlighting
+    //     console.log("Highlighting paused");
+    // }
+
+
+    // isPaused = true;
+    // console.log("flag in pauseHighlight()  " + isPaused + " currentWordIndex " + currentWordIndex);
+    // console.log("paused at: " + currentWordIndex);
+}
+
+function resumeHighlight() {
+    if (isPaused) { // Only resume if currently paused
+        isPaused = false;
+        // console.log("Resuming highlighting");
+
+        // Use the adjusted delay to continue with the next word
+        highlightTimeoutWordID = setTimeout(function () {
+            toRepeatWords();
+        }, delay);
+    }
+
+
+    // console.log("In resume the highlight")
+
+    // if (isPaused) { // Only resume if currently paused
+    //     isPaused = false; // Reset pause flag
+    //     console.log("Resuming highlighting");
+    //     toRepeatWords(); // Continue highlighting
+    // }
+
+}  
 
 function stopPropagation(event) {
     event.stopPropagation();
@@ -43,33 +553,50 @@ function muteNarration() {
 }
 
 function playAudio(thePage) { 
-    console.log("mute is: " + mute);
+    // console.log("In play audio")
+
+    // console.log("mute is: " + mute);
     // document.getElementById('narration-audio').play();
-    var audio = document.getElementById('narration-audio');
-    audio.src = `https://dart-store.s3.amazonaws.com/identity+theft+voice+over/${section}/${thePage}_${avatar}.mp3`;
-    audio.load();
-    audio.playbackRate = voiceSpeed;
 
-    if(!mute) {
-        // catch error when user hasn't interacted with page yet
-        if (userInteracted) {
-            $('#volume-icon').removeClass('off');
-            $('#volume-icon').addClass('up');  
-    
-            var audio = document.getElementById('narration-audio');
-            var buttonIcon = document.querySelector('#play-pause-audio i.icon');
-            var buttonText = document.querySelector('#play-pause-audio span.toggle-text');
-    
-            buttonIcon.classList.remove('play', 'pause');
-            buttonIcon.classList.add('pause');
-            buttonText.innerText = 'Pause';
-    
-            audio.play();
-        } else {
-            console.warn('User has not interacted with the webpage yet. Cannot autoplay audio.');
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentPage = urlParams.get('page');
+
+    if(speechData !== "none" && currentPage !== 'quiz') {
+
+        var audio = document.getElementById('narration-audio');
+
+        if(audio) {
+            audio.src = `https://dart-store.s3.amazonaws.com/identity-narration/${section}/${thePage}_${avatar}.mp3`;
+            audio.load();
+            audio.playbackRate = voiceSpeed;
+
+            // if(!mute) {
+            // catch error when user hasn't interacted with page yet
+            if (userInteracted) {
+                $('#volume-icon').removeClass('off');
+                $('#volume-icon').addClass('up');  
+
+                var audio = document.getElementById('narration-audio');
+                var buttonIcon = document.querySelector('#play-pause-audio i.icon');
+                var buttonText = document.querySelector('#play-pause-audio span.toggle-text');
+
+                buttonIcon.classList.remove('play', 'pause');
+                buttonIcon.classList.add('pause');
+                buttonText.innerText = 'Pause';
+
+                audio.play();
+            } else {
+                // console.log("in here:")
+                $('#page-article').click();
+
+                audio.play();
+                // console.warn('User has not interacted with the webpage yet. Cannot autoplay audio.');
+            }
         }
-
     }
+
+    // }
 }
 
 function replayAudio() {
@@ -79,16 +606,33 @@ function replayAudio() {
         audio.play();
 
         var audio = document.getElementById('narration-audio');
+        const button = document.getElementById('play-pause-audio');
         var buttonIcon = document.querySelector('#play-pause-audio i.icon');
         var buttonText = document.querySelector('#play-pause-audio span.toggle-text');
 
-        buttonIcon.classList.remove('play', 'pause');
+        button.classList.remove('grey'); // Remove the grey class
+        button.classList.add('blue'); // Add the blue class to change its color back
+        button.style.pointerEvents = 'auto';
+
+        buttonIcon.classList.remove('play', 'pause', 'check');
         buttonIcon.classList.add('pause');
         buttonText.innerText = 'Pause';
 
         $('#volume-icon').removeClass('off');
         $('#volume-icon').addClass('up');  
+
+        restartWordHighlighting();
+
+        // if(wordHighlighting || sentenceHighlighting) {
+        //     restartWordHighlighting();
+        // }
+
     }
+}
+
+function restartWordHighlighting() {
+    clearWordHighlights(); // Clear existing highlights
+    startHighlightingWords();
 }
 
 function togglePlayPause() {
@@ -96,8 +640,8 @@ function togglePlayPause() {
     var buttonIcon = document.querySelector('#play-pause-audio i.icon');
     var buttonText = document.querySelector('#play-pause-audio span.toggle-text');
     var volumeIcon = document.querySelector('#volume-icon');
-
     if (audio.paused) {
+        resumeHighlight();
         audio.play();
         // Change icon and text to "Pause" when playing
         volumeIcon.classList.remove('off');
@@ -106,6 +650,7 @@ function togglePlayPause() {
         buttonIcon.classList.add('pause');
         buttonText.textContent = 'Pause';
     } else {
+        pauseHighlight();
         audio.pause();
         volumeIcon.classList.remove('up');
         volumeIcon.classList.add('off');
@@ -113,7 +658,31 @@ function togglePlayPause() {
         buttonIcon.classList.remove('play', 'pause');
         buttonIcon.classList.add('play');
         buttonText.textContent = 'Play';
-    }
+    }   
+}
+
+
+function disableNarrationPlayButton() {
+    // Find the button by its ID
+    const button = document.getElementById('play-pause-audio');
+    var buttonIcon = document.querySelector('#play-pause-audio i.icon');
+
+    // Change the button's style to visually indicate it is disabled
+    // button.style.opacity = '0.5'; 
+    // Change the button color to grey
+    button.classList.remove('blue'); // Remove the blue class if it's there
+    button.classList.add('grey'); // Add the grey class to change its color
+    
+    button.style.pointerEvents = 'none';
+
+    // Find the span that holds the "Play" text
+    const buttonText = button.querySelector('.toggle-text');
+
+    buttonIcon.classList.remove('play', 'pause');
+    buttonIcon.classList.add('check');
+
+    // Change the text to "Done"
+    buttonText.textContent = 'Done';
 }
 
 function updateAvatar(avatarName) {
@@ -147,10 +716,33 @@ function updateAvatar(avatarName) {
       if (response.ok) {
         console.log('Avatar updated successfully');
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const pageParam = urlParams.get('page');
-        playAudio(pageParam);
-        // Handle success
+        // reload page to complete avatar change ie not just voice but also avatar image and name etc
+        location.reload();
+
+        // // const urlParams = new URLSearchParams(window.location.search);
+        // // const pageParam = urlParams.get('page');
+        // // console.log("Avatar change the page is: " + page);
+        // clearWordHighlights();
+
+        // const urlParams = new URLSearchParams(window.location.search);
+        // const currentPage = urlParams.get('page');
+    
+        // playAudio(currentPage);
+
+        // const button = document.getElementById('play-pause-audio');
+        // var buttonIcon = document.querySelector('#play-pause-audio i.icon');
+        // var buttonText = document.querySelector('#play-pause-audio span.toggle-text');
+
+        // button.classList.remove('grey'); // Remove the grey class
+        // button.classList.add('blue'); // Add the blue class to change its color back
+        // button.style.pointerEvents = 'auto';
+
+        // buttonIcon.classList.remove('play', 'pause', 'check');
+        // buttonIcon.classList.add('pause');
+        // buttonText.innerText = 'Pause';
+        // startHighlightingWords();
+
+        
       } else {
         console.error('Failed to update avatar');
         // Handle errors
@@ -180,7 +772,19 @@ function changeSpeed(speedValue) {
 
 
 $(document).ready(function() {
-    $('#page-article').click();
+    if(speechData !== "none") {
+        $('#page-article').click();
+    } else {
+        $('#volume-button').hide();
+    }
+
+    // for highlighting
+    // avatarSpeechData = speechData[page][avatar];
+    // wordData= avatarSpeechData.filter(entry => entry.type === "word");
+
+
+    // console.log("Speech data: " + speechData);
+    // console.log(JSON.stringify(speechData))
 
     // Load the first page based on the URL
     // console.log("The start page: " + startPage);
@@ -209,9 +813,20 @@ $(document).ready(function() {
   ;
 
 ;
+    // later make so check from db whether to play audio / highlight 
     setLinks(startPage);
     updateProgressBar();
-    playAudio(page);
+
+    // for testing only do pages with speech data to avoid console log error 
+    if(speechData !== "none") {
+        playAudio(page);
+        toggleHighlighting();
+        startHighlightingWords();
+    }
+    // if(wordHighlighting || sentenceHighlighting) {
+    //     startHighlightingWords();
+    // }
+    
 
     $('#backButton').on('click', function() {
         // console.log("Back button clicked");
@@ -219,6 +834,11 @@ $(document).ready(function() {
         const currentPage = urlParams.get('page');
 
         $('.ui.sidebar').sidebar('hide');
+
+        if(speechData !== "none" && currentPage !== 'quiz') {
+            stopHighlighting();
+        }
+        // restartWordHighlighting();
 
 
         const { backlink, nextlink } = setLinks(currentPage);
@@ -269,10 +889,23 @@ $(document).ready(function() {
                     if(section === 'practice' && backPage === 'activity') {
                         setupPractice();
                     }
-    
-                    playAudio(backPage);
 
-                }
+                    if(speechData !== "none" && backPage !== 'quiz') {
+                        playAudio(backPage);
+                        toggleHighlighting();
+                        startHighlightingWords();
+                    }
+
+                    if(backPage === 'quiz') {
+                        console.log("Page is quiz so pause");
+                        var audio = document.getElementById('narration-audio');
+                        audio.pause();
+                        stopHighlighting();
+    
+                    }
+
+
+                    }
             });
         }
         updateProgressBar();
@@ -283,6 +916,13 @@ $(document).ready(function() {
         const currentPage = urlParams.get('page');
         
         $('.ui.sidebar').sidebar('hide');
+
+        // stop and reseat audio and highlighting immediately
+        if(speechData !== "none" && currentPage !== 'quiz') {
+            stopHighlighting();
+        }
+
+        // restartWordHighlighting();
 
         const { backlink, nextlink } = setLinks(currentPage);
         history.pushState(null, '', nextlink);
@@ -438,7 +1078,19 @@ $(document).ready(function() {
                     setupPractice();
                 }
 
-                playAudio(nextPage);
+                if(speechData !== "none" && nextPage !== 'quiz') {
+                    playAudio(nextPage);
+                    toggleHighlighting();
+                    startHighlightingWords();
+                }
+
+                if(nextPage === 'quiz') {
+                    console.log("Page is quiz so pause");
+                    var audio = document.getElementById('narration-audio');
+                    audio.pause();
+                    stopHighlighting();
+                }
+
 
             }
         });
@@ -513,12 +1165,12 @@ function setLinks(currentPage) {
             nextlink = baseurl + 'activity';
         } else if(currentPage === 'activity') {
             backlink = baseurl + 'personal-info';
-            nextlink = baseurl + 'reflection';
-        } else if(currentPage === 'reflection') {
-            backlink = baseurl + 'activity';
             nextlink = baseurl + 'quiz';
         } else if(currentPage === 'quiz') {
-            backlink = baseurl + 'reflection';
+            backlink = baseurl + 'activity';
+            nextlink = baseurl + 'reflection';
+        } else if(currentPage === 'reflection') {
+            backlink = baseurl + 'quiz';
             nextlink = baseurl + 'takeaways';
         } else if(currentPage === 'takeaways') {
 
@@ -545,12 +1197,12 @@ function setLinks(currentPage) {
         } else if(currentPage === 'types') {
 
             backlink = baseurl + 'general';
+            nextlink = baseurl + 'quiz';
+        }  else if(currentPage === 'quiz') {
+            backlink = baseurl + 'types';
             nextlink = baseurl + 'reflection';
         } else if(currentPage === 'reflection') {
-            backlink = baseurl + 'types';
-            nextlink = baseurl + 'quiz';
-        } else if(currentPage === 'quiz') {            
-            backlink = baseurl + 'reflection';
+            backlink = baseurl + 'quiz';
             nextlink = baseurl + 'takeaways';
         } else if(currentPage === 'takeaways') {
             backlink = baseurl + 'quiz';
@@ -580,12 +1232,12 @@ function setLinks(currentPage) {
             nextlink = baseurl + 'activity';
         } else if(currentPage === 'activity') {
             backlink = baseurl + 'suspicious';
+            nextlink = baseurl + 'quiz';
+        }  else if(currentPage === 'quiz') {
+            backlink = baseurl + 'activity';
             nextlink = baseurl + 'reflection';
         } else if(currentPage === 'reflection') {
-            backlink = baseurl + 'activity';
-            nextlink = baseurl + 'quiz';
-        } else if(currentPage === 'quiz') {            
-            backlink = baseurl + 'reflection';
+            backlink = baseurl + 'quiz';
             nextlink = baseurl + 'takeaways';
         } else if(currentPage === 'takeaways') {
             backlink = baseurl + 'quiz';
@@ -609,12 +1261,12 @@ function setLinks(currentPage) {
             nextlink = baseurl + 'activity';
         }  else if(currentPage === 'activity') {
             backlink = baseurl + 'contacted';
+            nextlink = baseurl + 'quiz';
+        }  else if(currentPage === 'quiz') {
+            backlink = baseurl + 'activity';
             nextlink = baseurl + 'reflection';
         } else if(currentPage === 'reflection') {
-            backlink = baseurl + 'activity';
-            nextlink = baseurl + 'quiz';
-        } else if(currentPage === 'quiz') {            
-            backlink = baseurl + 'reflection';
+            backlink = baseurl + 'quiz';
             nextlink = baseurl + 'takeaways';
         } else if(currentPage === 'takeaways') {
             backlink = baseurl + 'quiz';
@@ -728,9 +1380,9 @@ function updateProgressBar() {
             progress = (3 / total) * 100;
         } else if (pageParam === 'activity') {
             progress = (4 / total) * 100;
-        } else if (pageParam === 'reflection') {
-            progress = (5 / total) * 100;
         } else if (pageParam === 'quiz') {
+            progress = (5 / total) * 100;
+        } else if (pageParam === 'reflection') {
             progress = (6 / total) * 100;
         } else if (pageParam === 'takeaways') {
             progress = 100;
@@ -740,14 +1392,16 @@ function updateProgressBar() {
             progress = 0;
         } else if (pageParam === 'intro-video') {
             progress = (1 / total) * 100;
-        } else if (pageParam === 'types') {
+        }  else if (pageParam === 'general') {
             progress = (2 / total) * 100;
-        } else if (pageParam === 'activity') {
+        } else if (pageParam === 'types') {
             progress = (3 / total) * 100;
-        } else if (pageParam === 'reflection') {
+        } else if (pageParam === 'activity') {
             progress = (4 / total) * 100;
         } else if (pageParam === 'quiz') {
             progress = (5 / total) * 100;
+        } else if (pageParam === 'reflection') {
+            progress = (6 / total) * 100;
         } else if (pageParam === 'takeaways') {
             progress = 100;
         }
@@ -768,9 +1422,9 @@ function updateProgressBar() {
             progress = (6 / total) * 100;
         } else if (pageParam === 'activity') {
             progress = (7 / total) * 100;
-        } else if (pageParam === 'reflection') {
-            progress = (8 / total) * 100;
         } else if (pageParam === 'quiz') {
+            progress = (8 / total) * 100;
+        } else if (pageParam === 'reflection') {
             progress = (9 / total) * 100;
         } else if (pageParam === 'takeaways') {
             progress = 100;
@@ -786,9 +1440,9 @@ function updateProgressBar() {
             progress = (3 / total) * 100;
         } else if (pageParam === 'activity') {
             progress = (4 / total) * 100;
-        } else if (pageParam === 'reflection') {
-            progress = (5 / total) * 100;
         } else if (pageParam === 'quiz') {
+            progress = (5 / total) * 100;
+        } else if (pageParam === 'reflection') {
             progress = (6 / total) * 100;
         } else if (pageParam === 'takeaways') {
             progress = 100;

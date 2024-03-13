@@ -17,7 +17,7 @@ block content
         include protection/reflection.pug
         include protection/quiz.pug
         include protection/takeaways.pug
-    audio(id="narration-audio", src=`https://dart-store.s3.amazonaws.com/identity+theft+voice+over/${section}/${page}_${user.avatar.toLowerCase()}.mp3`, preload="auto")
+    audio(id="narration-audio", src=`https://dart-store.s3.amazonaws.com/identity+theft+voice+over/${section}/${page}_${user.avatar.toLowerCase()}.mp3`, preload="auto", onended="disableNarrationPlayButton()")
 
 
 block styles 
@@ -28,6 +28,9 @@ block styles
 
 
 block scripts       
+    script.
+        var speechData = "none"; // quizData is passed to pug file via render function in app.js
+
     script(src='/module_js/identity/identity-theft.js') 
     script(src='/module_js/identity/sub3_activity.js' id="practice-script")   
     //- script(src='/js/text2speech.js')  

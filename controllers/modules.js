@@ -22,6 +22,9 @@ exports.getModule = async (req, res) => {
     // const module = req.query.module;
     // const page = req.query.page;
     const { module, section, page } = req.query;
+    console.log("**module: " + module);
+    console.log("section: " + section);
+    console.log("page: " + page);
     let numPages;
 
     // each quiz question is being counted as a page too so we need to add those
@@ -30,7 +33,7 @@ exports.getModule = async (req, res) => {
     } else if(section === 'concepts') {
       numPages = 10;
     } else if(section === 'consequences') {
-      numPages = 7;
+      numPages = 8;
     } else if(section === 'techniques') {
       numPages = 12;
     } else if(section === 'protection') {
@@ -52,6 +55,17 @@ exports.getModule = async (req, res) => {
     const data = await fs.readFileAsync(`${__dirname}/../public/json/` +  module + `/` + section + `.json`);
     quizData = JSON.parse(data.toString());
 
+    // make it for all sections array json object later
+    const narration_data = await fs.readFileAsync(`${__dirname}/../public/json/` +  module + `/narration.json`);
+    // console.log("*******narration_data: " + narration_data.toString());
+    // console.log("the section is: " + section)
+    const fullJson = JSON.parse(narration_data.toString());
+    // provide speech marks for complete single page app module section 
+    speechMarks = fullJson[section];
+    console.log("!!! THe module is: " + module + " and the section is: " + section + " and the page is: " + page);
+    console.log("The speech marks are: " + JSON.stringify(speechMarks));
+    // console.log("***The speech marks are: " + speechMarks);
+
     if(section === 'practice'){
       console.log("YOOO This is the practice section")
       const currentDate = new Date();
@@ -72,10 +86,10 @@ exports.getModule = async (req, res) => {
         { index: 6, sender: "Amazon", subject: "Password Assistance", date: formatDate(fourDaysAgo), from:"<account-update@amazon.com>", content: "<div id='amazon-header'><img class='ui medium image' id='amazon-logo' src='/images/Amazon_logo.svg' /><h3 id='amazon-assistance'> Password Assistance</h3></div><br /><p>To verify your identity, please use the following code:</p><h1 id='amazon-code'>456459 <button class='ui green button hideme warning-button amazon-2'>Review point</button></h1><p>Amazon takes your account security very seriously. Amazon will never email you to disclose or verify your Amazon password, credit card, or banking account number. If you receive a suspicious email with a link to update your account information, do not click the link - instead, report the email to Amazon for investigation.</p><p>We hope to see you again soon.</p>", replyHeader: "good", replyContent: "Replying is okay because this email is legitimate and can be trusted. We can look into why this is not a scam.", blockHeader: "warning", blockContent: "Blocking the sender is not needed for this email because it comes from a legitimate source and can be trusted. We can look into why this is not a scam.", reportHeader: "warning", reportContent: "Reporting as a scam is not needed for this email because it comes from a legitimate source and can be trusted. We can look into why this is not a scam.", deleteHeader: "warning", deleteContent: "Deleting is not needed for this email because it comes from a legitimate source and can be trusted. We can look into why this is not a scam." },
       ];  
   
-      res.render(modulePage, { module, section, page, numPages, quizData, currentTime, currentDate, futureDate, emails });
+      res.render(modulePage, { module, section, page, numPages, quizData, speechMarks, currentTime, currentDate, futureDate, emails });
   
     } else {
-      res.render(modulePage, { module, section, page, numPages, quizData, currentTime, currentDate, futureDate });
+      res.render(modulePage, { module, section, page, numPages, quizData, speechMarks, currentTime, currentDate, futureDate });
     }
 };
 
