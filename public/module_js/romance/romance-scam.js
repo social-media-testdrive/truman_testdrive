@@ -539,27 +539,21 @@ function setLinks(currentPage) {
       nextlink = baseurl + "phases";
     } else if (currentPage === "phases") {
       backlink = baseurl + "definitions";
-      nextlink = baseurl + "types";
-    } else if (currentPage === "types") {
-      backlink = baseurl + "phases";
       nextlink = baseurl + "fake";
     } else if (currentPage === "fake") {
-      backlink = baseurl + "types";
+      backlink = baseurl + "phases";
       nextlink = baseurl + "trusted";
     } else if (currentPage === "trusted") {
       backlink = baseurl + "fake";
-      nextlink = baseurl + "activity";
-    } else if (currentPage === "activity") {
-      backlink = baseurl + "types";
+      nextlink = baseurl + "quiz";
+    }  else if (currentPage === "quiz") {
+      backlink = baseurl + "trusted";
       nextlink = baseurl + "reflection";
     } else if (currentPage === "reflection") {
-      backlink = baseurl + "activity";
-      nextlink = baseurl + "quiz";
-    } else if (currentPage === "quiz") {
-      backlink = baseurl + "reflection";
+      backlink = baseurl + "quiz";
       nextlink = baseurl + "takeaways";
     } else if (currentPage === "takeaways") {
-      backlink = baseurl + "quiz";
+      backlink = baseurl + "reflection";
       nextlink =
         "/course-player?module=romance&section=consequences&page=objectives";
     }

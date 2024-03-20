@@ -1,30 +1,20 @@
 #definitions.hidden
-    .ui.container#definitions-read
+    .ui.container#definitions-read(style="width: 97%;")
         .limit#learn-target(style="padding: 0;")
-        .ui.grid.computer.only#grid
-            .eight.wide.middle.aligned.column
-            
-                h1.ui.centered.header.large(style="color: #285362;") 
-                    .content
-                        i.book.icon
-                        | Romance Scams
-
-            
-                p Romance Scams involve attempts to lure you into a romantic relationship to either steal your personal information or money. They will connect with you through messages on social media or dating websites. They may have a very attractive profile picture and the conversation will quickly turn romantic. They may ask you for money or send you a link to visit a website that could steal your personal information or download malware onto your computer. 
-
-                img.medium.centered.ui.image(src='/images/romance/romance-concepts-1.png')
-
-
-            .eight.wide.middle.aligned.column
-            
-                h1.ui.centered.header.large(style="color: #285362;") 
-                    .content
-                        i.book.icon
-                        | Friendship Scams
-
-            
-                p Friendship Scams are similar to Romance Scams. Scammers message you via social media or networking sites such as Facebook or LinkedIn, message boards, online support groups, or online games and apps. Instead of creating a romantic relationship, the scammer will pretend to have your same likes and interests to form a quick friendship connection with you. Once the scammer feels you care for them, they will ask you for money to help pay their bills or other financial hardships. 
-
-
-                img.medium.centered.ui.image(src='/images/romance/romance-concepts-2.png')
-
+            .ui.two.column.internally.celled.padded.centered.stackable.grid
+                .column
+                    h1.ui.header.large(style="color: #285362;") 
+                        .content
+                            i.book.icon
+                            | Romance Scams
+                    p Scammers attempt to lure you into a romantic relationship to either steal your personal information or money. They will connect with you through messages on social media or dating websites. They may have a very attractive profile picture and the conversation will quickly turn romantic. They may ask you for money or send you a link to visit a website that could steal your personal information or download malware onto your computer. 
+                    img.medium.centered.ui.image(src='/images/romance/romance-concepts-1.png' style="width: 200px;")
+                .column(style="padding-left: 40px;")
+                    h1.ui.header.large(style="color: #285362;") 
+                        .content
+                            i.book.icon
+                            | Friendship Scams
+                    p Scammers message you via social media or networking sites such as Facebook or LinkedIn, message boards, online support groups, or online games and apps. Instead of creating a romantic relationship, the scammer will pretend to have your same likes and interests to form a quick friendship connection with you. Once the scammer feels you care for them, they will ask you for money to help pay their bills or other financial hardships. 
+                    img.medium.centered.ui.image(src='/images/romance/romance-concepts-2.png' style="width: 250px;")
+            //- .ui.vertical.divider
+            //-     | and

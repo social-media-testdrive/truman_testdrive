@@ -24,7 +24,7 @@ const util = require("util");
 const cookieSession = require("cookie-session");
 fs.readFileAsync = util.promisify(fs.readFile);
 
-// const nocache = require('nocache');
+const nocache = require('nocache');
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
@@ -75,7 +75,7 @@ console.log(
 );
 
 // Use the nocache middleware to disable caching for testing so don't have to hard reload clear cache everytime
-// app.use(nocache());
+app.use(nocache());
 
 /**
  * Connect to MongoDB.

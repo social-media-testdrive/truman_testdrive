@@ -1,9 +1,34 @@
 #objectives.hidden
-    .ui.container#raised-container
+    .ui.container#raised-container(style="width: 94%;")
         .limit#learn-target(style="padding: 0;")
-            .ui.grid#objectives-read
-                .three.wide.column
-                .ten.wide.column
+            .ui.grid.computer.only
+                .eight.wide.column(style="display: flex; justify-content: center; flex-direction: column;")
+                    //- button.ui.icon.button#volume-up-button.left.floated(style="position: absolute; left: 400px; top: 45px;")
+                    //-     i.volume.up.icon
+                    h1.ui.header.large#learn-title(style="color: #285362;")
+                        .content
+                            i.shapes.icon
+                            | Concepts
+                        span(style="float: right; font-size: 1.5rem; margin-top: 5px; color: #151C22; ")
+                            i.clock.outline.icon
+                            | 10 min
+                    .ui.divider(style="margin-top: -5px; margin-bottom: -5px;")
+                    //- h1.ui.header.large#learn-subheader
+                    //-     i.bullseye.icon
+                    //-     | Objectives:
+                    h3(style="color: #0C2746;") Objectives:
+                    ul.no-bullets
+                        li
+                            img(src="/images/dart-bullet.svg", alt="Bullet Point")
+                            | Understand the basics of romance & friendship scams
+
+                        li
+                            img(src="/images/dart-bullet.svg", alt="Bullet Point")
+                            | Differentiate between legitimate and fraudulent dating websites
+                .eight.wide.column
+                    img.villain-image(src='/images/romance/romance_concepts_objectives2.png' style="margin-left: 20px; width: 100%; margin-bottom: -30px;")
+            .ui.grid.tablet.only.mobile.only
+                .sixteen.wide.column
                     //- button.ui.icon.button#volume-up-button.left.floated(style="position: absolute; left: 400px; top: 45px;")
                     //-     i.volume.up.icon
                     h1.ui.header.large#learn-title(style="color: #285362;")
@@ -26,4 +51,4 @@
                         li
                             img(src="/images/dart-bullet.svg", alt="Bullet Point")
                             | Differentiate between legitimate and fraudulent dating websites
-                    img.villain-image(src='/images/romance/romance_concepts_objectives.png' style="margin-left: -30px;")
+                    img.villain-image(src='/images/romance/romance_concepts_objectives2.png' style="margin-bottom: -30px;  width: 90%;")
