@@ -619,12 +619,14 @@ function setLinks(currentPage) {
     if (currentPage === "objectives") {
       backlink =
         "/course-player?module=romance&section=concepts&page=objectives";
-      nextlink = baseurl + "deciphering";
-    } else if (currentPage === "deciphering") {
+      nextlink = baseurl + "intro-video";
+    } else if (currentPage === "intro-video") {
+      $("#my_video_1")[0].player.pause();
+
       backlink = baseurl + "objectives";
       nextlink = baseurl + "initial";
     } else if (currentPage === "initial") {
-      backlink = baseurl + "deciphering";
+      backlink = baseurl + "intro-video";
       nextlink = baseurl + "types";
     } else if (currentPage === "types") {
       backlink = baseurl + "initial";

@@ -1,0 +1,32 @@
+#intro-video.hidden
+    .ui.container#raised-container.center-layout
+        .limit
+            #intro-video-read
+                h1.ui.header.large#learn-title
+                    .content
+                        i.video.icon
+                        |  Deciphering Deceitful Chats
+                //- p Click the image to start the video
+                .ui.icon.mini.message(style="padding: 5px; z-index: 99;")
+                    i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
+                    .content 
+                        p Video coming soon!
+                        //- p Click the image to start the video
+            p INT. DART OFFICE - DAY. Split Screen between the DART Agent and media on the other half of the screen showing a text chat/phone screen cap of a scam. Narrator/DART Agent (Informative) speaks over text conversation visuals.
+            p Romance scammers build relationships quickly, often complimenting and flattering. Text conversation: Heidi Mylie says, "Hey there, couldn’t help but notice your profile, and I must say, you have the most captivating smile. It instantly brightened my day." 😀 (You) "Thank you! That’s so sweet of you to say." Heidi Mylie responds, "Sweet is an understatement. I’m genuinely amazed by your beauty and your kindness radiates through your words. It’s rare to find someone as stunning and genuine as you on here."
+            p Text shows the target can't talk on the phone or video chat with excuses. Heidi Mylie: "I’d love to see your beautiful face and hear your voice, but my camera and microphone are broken. Planning to fix them soon." (You) "Oh, that’s too bad. Looking forward to video chatting." Heidi Mylie: "I promise, as soon as I'm sorted, we’ll have amazing video calls. Can’t wait for that day!"
+            p Scammers eventually ask for money for emergencies. Text conversation: Heidi Mylie: "Was on my way to visit a sick relative, and my car broke down. It’s late, and I’m stuck without enough money for a tow or repairs." (You) "That sounds awful! How can I help?" Heidi Mylie: "If you could lend me money for the tow and repairs, I’d pay you back as soon as I can. Don’t want to be stranded all night."
+            p Warning: Never give money to people you don’t know online, especially under pressure! Heidi Mylie: "I can’t believe you’re not willing to help me. I thought we had something special." (You) "I’m sorry, but I can’t send money to someone I’ve never met in person. It’s not safe." Heidi Mylie concludes, "Forget it! You’re just like all the others, heartless and selfish. I can’t believe I wasted my time on you."
+            br
+            #video-container(style="display:none;")
+                video-js#my_video_1.video-js.vjs-default-skin.vjs-show-big-play-button-on-pause(width='640px' height='360px' controls='' preload='none' data-setup='{ "poster":"/images/warning-poster.png", "aspectRatio":"16:9", "playbackRates": [0.5, 0.75, 1, 1.5, 2] }')
+                    source(src='https://dart-store.s3.amazonaws.com/identity-warning.mp4' type='video/mp4')
+        //- script.
+        //-     var module = "#{module}";
+        //-     var section = "#{section}";
+        //-     var page = "#{page}"; 
+
+        //-     let total = parseInt(#{numPages});
+        //-     let progress = 2 / total;
+        //-     console.log(progress);
+        //-     updateProgressBar(progress);
