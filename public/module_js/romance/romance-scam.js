@@ -709,27 +709,30 @@ function setLinks(currentPage) {
     if (currentPage === "objectives") {
       backlink =
         "/course-player?module=romance&section=techniques&page=objectives";
-      nextlink = baseurl + "common-measures";
-    } else if (currentPage === "common-measures") {
+      nextlink = baseurl + "intro-video";
+    } else if (currentPage === "intro-video") {
       backlink = baseurl + "objectives";
-      nextlink = baseurl + "preventative";
-    } else if (currentPage === "preventative") {
-      backlink = baseurl + "common-measures";
-      nextlink = baseurl + "contacted";
-    } else if (currentPage === "contacted") {
-      backlink = baseurl + "preventative";
-      nextlink = baseurl + "activity";
-    } else if (currentPage === "activity") {
-      backlink = baseurl + "contacted";
-      nextlink = baseurl + "reflection";
-    } else if (currentPage === "reflection") {
-      backlink = baseurl + "activity";
+      nextlink = baseurl + "guidelines";
+    } else if (currentPage === "guidelines") {
+      backlink = baseurl + "intro-video";
+      nextlink = baseurl + "privacy";
+    } else if (currentPage === "privacy") {
+      backlink = baseurl + "guidelines";
+      nextlink = baseurl + "search";
+    } else if (currentPage === "search") {
+      backlink = baseurl + "privacy";
+      nextlink = baseurl + "reverse-image";
+    } else if (currentPage === "reverse-image") {
+      backlink = baseurl + "search";
       nextlink = baseurl + "quiz";
     } else if (currentPage === "quiz") {
-      backlink = baseurl + "reflection";
+      backlink = baseurl + "reverse-image";
+      nextlink = baseurl + "reflection";
+    }  else if (currentPage === "reflection") {
+      backlink = baseurl + "quiz";
       nextlink = baseurl + "takeaways";
     } else if (currentPage === "takeaways") {
-      backlink = baseurl + "quiz";
+      backlink = baseurl + "reflection";
       nextlink =
         "/course-player?module=romance&section=reporting&page=objectives";
     }
