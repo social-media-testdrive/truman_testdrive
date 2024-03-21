@@ -32,32 +32,24 @@
     },
     "2": {
         "progress": 100,
-        "type": "multi_select",
+        "type": "abcd",
         "partial": "none",
-        "prompt": "2. What could happen when you use a FAKE online dating site? Select all that apply.",
+        "prompt": "2. How do scammers typically select their targets?",
         "choices": {
-            "0": {
-                "text": "A. You could find the love of your life",
-                "explanation": "This is very unlikely due to the large amount of fake profiles and scammers on those sites."
-            },
-            "1": {
-                "text": "B. Your device could become infected with malware",
-                "explanation": "Fake online dating sites often have viruses that can infect your devices."
-            },
-            "2": {
-                "text": "C. You could meet new, authentic friends",
-                "explanation": "This is very unlikely due to the large amount of fake profiles and scammers on those sites."
-            },
-            "3": {
-                "text": "D. You could become a victim of Identity Theft",
-                "explanation": "Fake online dating sites often collect large amounts of personal information which could lead to your identity being stolen."
-            },
-            "4": {
-                "text": "E. Financial losses from fees",
-                "explanation": "Fake dating sites often require payment and personal information creating a risk of financial loss."
-            }
+          "a": {
+            "text": "A. Through detailed personal research"
+          },
+          "b": {
+            "text": "B. Based on the individual's income level"
+          },
+          "c": {
+            "text": "C. Randomly, making anyone potentially vulnerable"
+          },
+          "d": {
+            "text": "D. Only for those who display vulnerability online"
+          }
         },
-        "correctResponse": ["1", "3", "4"],
-        "theAnswers": "B, D, E"
+        "explanation": "<h1>The correct answer is C.</h1><p>Scammers often do not discriminate when choosing their victims. The randomness of their selection process means that virtually anyone can become a target of their deceptive practices, regardless of their personal characteristics or online behavior. This approach allows scammers to cast a wide net, increasing their chances of finding potential victims. The misconception that victims are chosen based on specific criteria can lead many to underestimate their risk of being scammed.</p>",
+        "correctResponse": "c"
     }
 }

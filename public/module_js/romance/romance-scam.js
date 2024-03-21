@@ -572,18 +572,15 @@ function setLinks(currentPage) {
       nextlink = baseurl + "targeted";
     } else if (currentPage === "targeted") {
       backlink = baseurl + "emotional";
-      nextlink = baseurl + "types";
-    } else if (currentPage === "types") {
+      nextlink = baseurl + "quiz";
+    } else if (currentPage === "quiz") {
       backlink = baseurl + "targeted";
       nextlink = baseurl + "reflection";
     } else if (currentPage === "reflection") {
-      backlink = baseurl + "types";
-      nextlink = baseurl + "quiz";
-    } else if (currentPage === "quiz") {
-      backlink = baseurl + "reflection";
+      backlink = baseurl + "quiz";
       nextlink = baseurl + "takeaways";
     } else if (currentPage === "takeaways") {
-      backlink = baseurl + "quiz";
+      backlink = baseurl + "reflection";
       nextlink = "/course-player?module=romance&section=fake&page=objectives";
     }
   } else if (section === "fake") {
