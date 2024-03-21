@@ -1143,6 +1143,7 @@ img.ui.small.centered.image#earned_badge {
     filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.4));
 }
 
+/* source: https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/ */
 blockquote {
     /* background: #f9f9f9; */
     background: #EEF8FB;
@@ -1165,4 +1166,45 @@ blockquote:before {
 
 blockquote p {
     display: inline;
+}
+
+/* Romance fake profile */
+
+#profile-template {
+    border-radius: 10px;
+}
+
+#profile-template  .ui.circular.image {
+    position: absolute; 
+    top: 15px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    z-index: 99; 
+    width: 125px;
+}
+
+#profile-template .ui.centered.header {
+    font-size: 1.25rem; 
+    font-weight: bold; 
+    margin-top: 30px; 
+    margin-bottom: 10px;
+}
+
+#profile-template .ui.three.column.grid .column {
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+}
+
+#profile-template .ui.three.column.grid .column p {
+    font-size: 0.9rem;
+}
+
+#profile-template #bio {
+    margin-top:15px;
+    font-size: 1rem;
+}
+
+#profile-template .icon {
+    color: #202125;
 }
