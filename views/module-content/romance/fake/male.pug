@@ -2,7 +2,7 @@
     .ui.container#financial-read
         .limit#learn-target(style="padding: 0;")
             .ui.stackable.grid
-                .ten.wide.column(style="display: flex; justify-content: center; flex-direction: column;")
+                .ten.wide.column#vertically-centered-column 
                     h1.ui.header.large#learn-title
                         .content
                             i.book.icon
@@ -12,7 +12,7 @@
                 .six.wide.column.middle.aligned
                     .ui.fluid.card#profile-template
                         .ui.image
-                            img(src='/images/richardharrisonbg.png' style="height: 80px;") 
+                            img#bg(src='/images/richardharrisonbg.png') 
                         .ui.circular.image
                             img(src='/images/richardharrisonpfp.png') 
                         .ui.basic.centered.segment 

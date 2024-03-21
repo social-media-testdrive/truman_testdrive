@@ -1183,6 +1183,10 @@ blockquote p {
     width: 125px;
 }
 
+#profile-template #bg{
+    height: 80px;
+}
+
 #profile-template .ui.centered.header {
     font-size: 1.25rem; 
     font-weight: bold; 
@@ -1207,4 +1211,10 @@ blockquote p {
 
 #profile-template .icon {
     color: #202125;
+}
+
+#vertically-centered-column {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
