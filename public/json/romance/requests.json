@@ -1,63 +1,28 @@
 {   
     "1": {
         "progress": 100,
-        "type": "multi_select",
+        "type": "abcd",
         "partial": "none",
-        "prompt": "1. Which of the following are potential consequences of being a victim of a Romance/Friendship scam?",
+        "prompt": "1. What is a money mule?",
         "choices": {
-            "0": {
-                "text": "A. Financial Loss",
-                "explanation": "Romance/Friendship Scams can lead to large amounts of financial loss as scammers often request financial help."
-            },
-            "1": {
-                "text": "B. Emotional Devastation",
-                "explanation": "Romance/Friendship Scams can lead to emotional devastation due to the emotional connection that scammers try to build with their victims."
-            },
-            "2": {
-                "text": "C. Financial Gain",
-                "explanation": "Romance/Friendship Scams do not lead to financial gain since scammers are often trying to request money from you rather than helping you profit financially. Sometimes, it may appear that you are gaining financially, for example, by receiving gifts or investment advice, but the end result will be financial loss."
-            },
-            "3": {
-                "text": "D. Criminal Charges",
-                "explanation": "Romance/Friendship Scams could lead to criminal charges if you help them move money in fraudulent ways."
-            },
-            "4": {
-                "text": "E. Social isolation",
-                "explanation": "Romance/Friendship Scams can lead to victims experiencing social isolation. The emotional impact of the scam, including feelings of betrayal and distress, can contribute to difficulties in maintaining trust and healthy connections with friends and family members."
-            }
-            
+          "a": {
+            "text": "A. Someone who transfers or moves money illegally for someone else",
+            "explanation": "The scammer asks you to transfer money, either physically or from one account to another, claiming that you will be rewarded if you help them."
+          },
+          "b": {
+            "text": "B. A secret word for popular gift cards",
+            "explanation": "This is not the definition of a money mule. “Money Mule” Romance Scams involve scammers asking you to move money for them."
+          },
+          "c": {
+            "text": "C. An investment that does well",
+            "explanation": "This is not the definition of a money mule. “Money Mule” Romance Scams involve scammers asking you to move money for them."
+          },
+          "d": {
+            "text": "D. A digital wallet for your cryptocurrency",
+            "explanation": "This is not the definition of a money mule. “Money Mule” Romance Scams involve scammers asking you to move money for them."
+          }
         },
-        "correctResponse": ["0", "1", "3", "4"],
-        "theAnswers": "A, B, D, E"
-    },
-    "2": {
-        "progress": 100,
-        "type": "multi_select",
-        "partial": "none",
-        "prompt": "2. What could happen when you use a FAKE online dating site? Select all that apply.",
-        "choices": {
-            "0": {
-                "text": "A. You could find the love of your life",
-                "explanation": "This is very unlikely due to the large amount of fake profiles and scammers on those sites."
-            },
-            "1": {
-                "text": "B. Your device could become infected with malware",
-                "explanation": "Fake online dating sites often have viruses that can infect your devices."
-            },
-            "2": {
-                "text": "C. You could meet new, authentic friends",
-                "explanation": "This is very unlikely due to the large amount of fake profiles and scammers on those sites."
-            },
-            "3": {
-                "text": "D. You could become a victim of Identity Theft",
-                "explanation": "Fake online dating sites often collect large amounts of personal information which could lead to your identity being stolen."
-            },
-            "4": {
-                "text": "E. Financial losses from fees",
-                "explanation": "Fake dating sites often require payment and personal information creating a risk of financial loss."
-            }
-        },
-        "correctResponse": ["1", "3", "4"],
-        "theAnswers": "B, D, E"
+        "explanation": "<h1>The correct answer is A.</h1>",
+        "correctResponse": "a"
     }
 }

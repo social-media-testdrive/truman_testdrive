@@ -93,7 +93,7 @@
   "5": {
     "progress": 100,
     "type": "yes_no",
-    "partial": "none",
+    "partial": "q5.html",
     "prompt": "5. Is the following profile Real or Fake?",
     "choices": {
         "yes": {

@@ -601,12 +601,9 @@ function setLinks(currentPage) {
       nextlink = baseurl + "examples";
     } else if (currentPage === "examples") {
       backlink = baseurl + "female";
-      nextlink = baseurl + "realorfake";
-    } else if (currentPage === "realorfake") {
-      backlink = baseurl + "examples";
       nextlink = baseurl + "quiz";
     } else if (currentPage === "quiz") {
-      backlink = baseurl + "realorfake";
+      backlink = baseurl + "examples";
       nextlink = baseurl + "takeaways";
     } else if (currentPage === "takeaways") {
       backlink = baseurl + "quiz";
@@ -651,27 +648,21 @@ function setLinks(currentPage) {
     if (currentPage === "objectives") {
       backlink =
         "/course-player?module=romance&section=concepts&page=objectives";
-      nextlink = baseurl + "financial";
-    } else if (currentPage === "financial") {
-      backlink = baseurl + "objectives";
-      nextlink = baseurl + "emotional";
-    } else if (currentPage === "emotional") {
-      backlink = baseurl + "financial";
-      nextlink = baseurl + "targeted";
-    } else if (currentPage === "targeted") {
-      backlink = baseurl + "emotional";
       nextlink = baseurl + "types";
     } else if (currentPage === "types") {
-      backlink = baseurl + "targeted";
-      nextlink = baseurl + "reflection";
-    } else if (currentPage === "reflection") {
+      backlink = baseurl + "objectives";
+      nextlink = baseurl + "pressure";
+    } else if (currentPage === "pressure") {
       backlink = baseurl + "types";
       nextlink = baseurl + "quiz";
     } else if (currentPage === "quiz") {
-      backlink = baseurl + "reflection";
-      nextlink = baseurl + "takeaways";
-    } else if (currentPage === "takeaways") {
+      backlink = baseurl + "pressure";
+      nextlink = baseurl + "reflection";
+    } else if (currentPage === "reflection") {
       backlink = baseurl + "quiz";
+      nextlink = baseurl + "takeaways";
+    }  else if (currentPage === "takeaways") {
+      backlink = baseurl + "reflection";
       nextlink =
         "/course-player?module=romance&section=protection&page=objectives";
     }
