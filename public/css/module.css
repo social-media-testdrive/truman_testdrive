@@ -753,6 +753,7 @@ i.big.unlock.icon {
   }
   
   .yours .message {
+    color: black;
     margin-right: 25%;
     background-color: #E6E5EB;
     position: relative;
@@ -788,7 +789,8 @@ i.big.unlock.icon {
   .mine .message {
     color: white;
     margin-left: 25%;
-    background: linear-gradient(to bottom, #00D0EA 0%, #3757A6 100%);
+    background: #0078FE;
+    /* background: linear-gradient(to bottom, #00D0EA 0%, #3757A6 100%); */
     background-attachment: fixed;
     position: relative;
   }
@@ -801,7 +803,8 @@ i.big.unlock.icon {
     right: -8px;
     height: 20px;
     width: 20px;
-    background: linear-gradient(to bottom, #00D0EA 0%, #3757A6 100%);
+    background: #0078FE;
+    /* background: linear-gradient(to bottom, #00D0EA 0%, #3757A6 100%); */
     background-attachment: fixed;
     border-bottom-left-radius: 15px;
   }
