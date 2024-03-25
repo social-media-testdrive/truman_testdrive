@@ -3,7 +3,7 @@
         "progress": 100,
         "type": "multi_select",
         "partial": "none",
-        "prompt": "1. Which of the following are potential consequences of being a victim of a Romance/Friendship scam?",
+        "prompt": "1. Which of the following are potential consequences of being a victim of a romance or friendship scam?",
         "choices": {
             "0": {
                 "text": "A. Financial Loss",
@@ -34,22 +34,22 @@
         "progress": 100,
         "type": "abcd",
         "partial": "none",
-        "prompt": "2. How do scammers typically select their targets?",
+        "prompt": "2. Who could be targeted by romance or friendship scammers?",
         "choices": {
           "a": {
-            "text": "A. Through detailed personal research"
+            "text": "A. Only celebrities"
           },
           "b": {
-            "text": "B. Based on the individual's income level"
+            "text": "B. Only wealthy individuals"
           },
           "c": {
-            "text": "C. Randomly, making anyone potentially vulnerable"
+            "text": "C. Only widows"
           },
           "d": {
-            "text": "D. Only for those who display vulnerability online"
+            "text": "D. Anyone"
           }
         },
-        "explanation": "<h1>The correct answer is C.</h1><p>Scammers often do not discriminate when choosing their victims. The randomness of their selection process means that virtually anyone can become a target of their deceptive practices, regardless of their personal characteristics or online behavior. This approach allows scammers to cast a wide net, increasing their chances of finding potential victims. The misconception that victims are chosen based on specific criteria can lead many to underestimate their risk of being scammed.</p>",
-        "correctResponse": "c"
+        "explanation": "<h1>The correct answer is D.</h1><p>Scammers can target anyone who uses the internet, leveraging various tactics to appeal to different individuals. These tactics will be explored in subsequent sections.</p>",
+        "correctResponse": "d"
     }
 }
