@@ -627,12 +627,15 @@ function setLinks(currentPage) {
       nextlink = baseurl + "types";
     } else if (currentPage === "types") {
       backlink = baseurl + "initial";
-      nextlink = baseurl + "warning";
-    } else if (currentPage === "warning") {
+      nextlink = baseurl + "communication";
+    } else if (currentPage === "communication") {
       backlink = baseurl + "types";
+      nextlink = baseurl + "relationship";
+    }  else if (currentPage === "relationship") {
+      backlink = baseurl + "communication";
       nextlink = baseurl + "reflection";
-    } else if (currentPage === "reflection") {
-      backlink = baseurl + "warning";
+    }  else if (currentPage === "reflection") {
+      backlink = baseurl + "relationship";
       nextlink = baseurl + "quiz";
     } else if (currentPage === "quiz") {
       backlink = baseurl + "reflection";
