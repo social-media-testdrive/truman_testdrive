@@ -80,8 +80,11 @@ footer {
     opacity: 1; /* Show the visible page */
 }
 
-/* page loader */
-.hidden {
+
+
+/* page loader *giving errors with fomantic ui shape flip animation. fix: use the > selector to only select the hidden elements that have display-page as their parent / are direct children */
+/* .hidden { */
+.display-page > .hidden  {
     display: none !important; 
 }
 
@@ -1221,3 +1224,60 @@ blockquote p {
     justify-content: center;
     flex-direction: column;
 }
+
+/* warning signs flip card styles for romance contact and groom section */
+#warning-cards .ui.card {
+    width: 220px !important;
+    min-height: 450px;
+    position: relative;
+    /* background-color: red; */
+}
+
+#warning-cards .ui.card .ios-chat-container .chat {
+    align-items: center; 
+    font-size: 1.2rem; 
+    margin-left: 2px;
+}
+
+#warning-cards .ui.card .ios-chat-container .chat .messages .message {
+    width: 200px;
+}
+
+#warning-cards .click-me-glow {
+    /* border: 2px solid blue; */
+    /* box-shadow: 0 0 10px rgba(0, 0, 255, 0.5);  */
+
+    /* border: 2px solid #7AC4E0;  */
+    box-shadow: 0 0 8px #7AC4E0;
+    position: relative;
+    /* box-shadow: 0 0 8px #D6E040; */
+}
+
+#warning-cards .ui.card.click-me-glow:before { 
+    content: '';
+    display: inline-block;
+    width: 32px; 
+    height: 32px;
+    background: url('/images/clickHere.png') no-repeat; 
+    background-size: 100% 100%;
+    position: absolute;
+    z-index: 99999;
+
+    bottom: -40px; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%) rotate(90deg);
+}
+
+#warning-cards .ui.card .content:first-child {
+    background: #0C2746;
+    max-height: 60px;
+}
+
+#warning-cards .ui.card .content h4.ui.centered.header {
+    color: white;
+} 
+
+#warning-cards .ui.card .chat {
+    padding: 0px;
+    margin-top: -10px;
+} 
