@@ -760,29 +760,19 @@ function setLinks(currentPage) {
     let baseurl = "/course-player?module=romance&section=reporting&page=";
 
     if (currentPage === "objectives") {
-      backlink =
-        "/course-player?module=romance&section=protection&page=objectives";
-      nextlink = baseurl + "intro-video";
-    } else if (currentPage === "intro-video") {
-      // pause video
-      $("#my_video_1")[0].player.pause();
-
+      backlink = "/course-player?module=romance&section=protection&page=objectives";
+      nextlink = baseurl + "realizing";
+    } else if (currentPage === "realizing") {
       backlink = baseurl + "objectives";
-      nextlink = baseurl + "when";
-    } else if (currentPage === "when") {
-      backlink = baseurl + "intro-video";
-      nextlink = baseurl + "financial";
-    } else if (currentPage === "financial") {
-      backlink = baseurl + "when";
-      nextlink = baseurl + "medical";
-    } else if (currentPage === "medical") {
-      backlink = baseurl + "financial";
-      nextlink = baseurl + "tax";
-    } else if (currentPage === "tax") {
-      backlink = baseurl + "medical";
+      nextlink = baseurl + "scammed";
+    } else if (currentPage === "scammed") {
+      backlink = baseurl + "realizing";
+      nextlink = baseurl + "responsive";
+    } else if (currentPage === "responsive") {
+      backlink = baseurl + "scammed";
       nextlink = baseurl + "quiz";
     } else if (currentPage === "quiz") {
-      backlink = baseurl + "tax";
+      backlink = baseurl + "responsive";
       nextlink = baseurl + "takeaways";
     } else if (currentPage === "takeaways") {
       backlink = baseurl + "quiz";
@@ -793,20 +783,38 @@ function setLinks(currentPage) {
     let baseurl = "/course-player?module=romance&section=practice&page=";
 
     if (currentPage === "objectives") {
-      backlink =
-        "/course-player?module=romance&section=reporting&page=objectives";
+      backlink = "/course-player?module=romance&section=reporting&page=objectives";
       nextlink = baseurl + "arrive";
     } else if (currentPage === "arrive") {
+      $('.ui.modal').modal('hide');
       backlink = baseurl + "objectives";
-      nextlink = baseurl + "activity";
-    } else if (currentPage === "activity") {
+      nextlink = baseurl + "conversation";
+    } else if (currentPage === "conversation") {
+      $('.ui.modal').modal('hide');
       backlink = baseurl + "arrive";
-      nextlink = baseurl + "reflection";
-    } else if (currentPage === "reflection") {
-      backlink = baseurl + "activity";
+
+      var conversationChoice = localStorage.getItem('conversation_choice');
+      if (conversationChoice === 'yes') {
+        nextlink = baseurl + "conversation2";
+      } else if (conversationChoice === 'no') {
+          nextlink = baseurl + "conversation3";
+      } else {
+          console.log('Skipping');
+          nextlink = baseurl + "takeaways";
+      }      
+    } else if (currentPage === "conversation2") {
+      $('.ui.modal').modal('hide');
+      backlink = baseurl + "conversation";
+        nextlink = baseurl + "conversation3";
+    } else if (currentPage === "conversation3") {
+      $('.ui.modal').modal('hide');
+      backlink = baseurl + "conversation";
+      nextlink = baseurl + "results";
+    } else if (currentPage === "results") {
+      backlink = baseurl + "conversation";
       nextlink = baseurl + "takeaways";
     } else if (currentPage === "takeaways") {
-      backlink = baseurl + "reflection";
+      backlink = baseurl + "results";
       nextlink = "/course-player?module=romance&section=evaluation&page=intro";
     }
   } else if (section === "evaluation") {
@@ -821,12 +829,9 @@ function setLinks(currentPage) {
       nextlink = baseurl + "badge";
     } else if (currentPage === "badge") {
       backlink = baseurl + "quiz";
-      nextlink = baseurl + "reflection";
-    } else if (currentPage === "reflection") {
-      backlink = baseurl + "badge";
       nextlink = baseurl + "certificate";
     } else if (currentPage === "certificate") {
-      backlink = baseurl + "reflection";
+      backlink = baseurl + "badge";
       nextlink = "/about/romance";
     }
   }
@@ -995,14 +1000,12 @@ function updateProgressBar() {
       progress = 0;
     } else if (pageParam === "intro-video") {
       progress = (1 / total) * 100;
-    } else if (pageParam === "when") {
+    } else if (pageParam === "realizing") {
       progress = (2 / total) * 100;
-    } else if (pageParam === "financial") {
+    } else if (pageParam === "scammed") {
       progress = (3 / total) * 100;
-    } else if (pageParam === "medical") {
+    } else if (pageParam === "responsive") {
       progress = (4 / total) * 100;
-    } else if (pageParam === "tax") {
-      progress = (5 / total) * 100;
     } else if (pageParam === "quiz") {
       progress = (6 / total) * 100;
     } else if (pageParam === "takeaways") {

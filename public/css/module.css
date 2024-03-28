@@ -1246,10 +1246,6 @@ blockquote p {
         /* width: 200px; */
         width: 200px !important;
     }
-
-    .tablet-fix-eight-wide {
-        width: 100% !important;
-    }
 }
 
 #warning-cards .ui.card .ios-chat-container .chat {
@@ -1306,3 +1302,133 @@ blockquote p {
     padding: 0px;
     margin-top: -10px;
 } 
+
+/* romance practice conversations */
+
+#conversation-cards {
+    max-height: 500px;
+    overflow-y: scroll;
+}
+#conversation-cards .ui.card .ios-chat-container .chat {
+    align-items: center; 
+    font-size: 1.2rem; 
+    margin-left: 2px;
+}
+
+#conversation-cards .ui.card .ios-chat-container .chat .messages .message {
+    /* width: 200px; */
+    width: 500px;
+}
+
+#conversation-cards .chat .message {
+    margin: 5px;
+    margin-bottom: -15px;
+}
+
+#conversation-cards .ui.card .chat {
+    padding: 0px;
+    margin-top: -10px;
+} 
+
+
+
+
+.smartphone-practice {
+    position: relative;
+    width: 360px;
+    height: 550px;
+    /* height: 640px; */
+    margin: auto;
+    border: 16px black solid;
+    border-top-width: 60px;
+    border-bottom-width: 60px;
+    border-radius: 36px;
+
+    /* overflow-y: scroll;
+    overflow-x: hidden; */
+
+  }
+  
+  /* The horizontal line on the top of the device */
+  .smartphone-practice:before {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 5px;
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #333;
+    border-radius: 10px;
+  }
+  
+  /* The circle on the bottom of the device */
+  .smartphone-practice:after {
+    content: '';
+    display: block;
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    left: 50%;
+    bottom: -65px;
+    transform: translate(-50%, -50%);
+    background: #333;
+    border-radius: 50%;
+  }
+  
+  /* The screen (or content) of the device */
+  /* .smartphone-practice .content {
+    width: 360px;
+    height: 640px;
+    font-size: 1.25rem;
+  } */
+
+  .smartphone-practice .content {
+    width: 330px;
+    height: 430px; /* Adjusted to match the smartphone-practice height */
+    font-size: 1.25rem;
+    background: white;
+    overflow-y: hidden; /* Hide the scroll bar until it is needed */
+    /* background-color: red; */
+
+}
+
+.smartphone-practice .ios-chat-container {
+    width: 330px;
+    height: 420px; /* Fixed height to enable scrolling */
+    overflow-y: auto; /* Enables vertical scrolling */
+    overflow-x: hidden; /* Hides horizontal scroll bar */
+}
+
+.smartphone-practice .message {
+    width: 280px;
+    margin-left: 30px;
+    margin-bottom: -20px;
+
+}
+
+
+
+.smartphone-practice .texter {
+    background: #F5F5F5;
+    width: 328px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #D4D4D4;
+    text-align: center;
+}
+
+.smartphone-practice .texter i.user.circle.big.icon {
+    color: #9397A2
+}
+
+.smartphone-practice .texter p { 
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.smartphone-practice .texter p span {
+    color: grey;
+    font-weight: normal;
+}

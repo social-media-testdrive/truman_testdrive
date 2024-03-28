@@ -1,28 +1,38 @@
 #realizing.hidden
-    .ui.container#raised-container.center-layout
-        .limit
-            #realizing-read
+    .ui.container#raised-container
+        .ui.stackable.middle.aligned.grid
+            .column.ten.wide.computer.only.sixteen.wide.tablet.only
                 h1.ui.header.large#learn-title
                     .content
-                        i.video.icon
-                        | Reporting Scams
-                //- p Click the image to start the video
-                .ui.icon.mini.message(style="padding: 5px; z-index: 99;")
-                    i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
-                    .content 
-                        p Click the image to start the video
+                        i.book.icon
+                        | After Realizing They’re a Scammer
+                p If you begin to suspect that an individual is a scammer, what should you do:
+                .ui.bulleted.list 
+                    .item Stop all contact with the scammer and block their phone number, email address, and social media accounts.
+                    .item If you give financial information to the scammer, like your credit card number or bank account information, contact your bank or credit card company immediately. They may be able to help you cancel transactions or get your money back.
 
-            br
-            #video-container
-                video-js#my_video_1.video-js.vjs-default-skin.vjs-show-big-play-button-on-pause(width='640px' height='360px' controls='' preload='none' data-setup='{ "poster":"/images/protect-poster.png", "aspectRatio":"16:9", "playbackRates": [0.5, 0.75, 1, 1.5, 2] }')
-                    source(src='https://dart-store.s3.amazonaws.com/identity-protect.mp4' type='video/mp4')
+            .column.six.wide.computer.only.sixteen.wide.tablet.only
+                img.ui.centered.image(src='/images/romance/realizing.png')
 
-        //- script.
-        //-     var module = "#{module}";
-        //-     var section = "#{section}";
-        //-     var page = "#{page}"; 
-
-        //-     let total = parseInt(#{numPages});
-        //-     let progress = 2 / total;
-        //-     console.log(progress);
-        //-     updateProgressBar(progress);
+//-         .limit
+//-             #realizing-read
+//-                 h1.ui.header.large#learn-title
+//-                     .content
+//-                         i.book.icon
+//-                         | After Realizing They’re a Scammer
+//-                 p If you begin to suspect that an individual is a scammer, what should you do:
+//-                 .ui.bulleted.list 
+//-                     .item Stop all contact with the scammer and block their phone number, email address, and social media accounts.
+//-                     .item If you give financial information to the scammer, like your credit card number or bank account information, contact your bank or credit card company immediately. They may be able to help you cancel transactions or get your money back.
+                    
+//- #scammed.hidden
+//-     .ui.container#scammed-read
+//-         .limit#learn-target
+//-             .ui.stackable.middle.aligned.grid
+//-                 .column.eleven.wide.computer.only.sixteen.wide.tablet.only
+//-                     h1.ui.header.large#learn-title
+//-                         .content
+//-                             i.book.icon
+//-                             | If You've Been Scammed
+//-                 .column.five.wide.computer.only.sixteen.wide.tablet.only
+//-                     img.ui.image(src='/images/romance/realizing.png')

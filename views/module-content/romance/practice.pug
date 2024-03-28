@@ -9,9 +9,12 @@ block content
             .ui.active.blue.large.elastic.loader 
             h1 Loading...
     .display-page.hidden
-        include practice/activity.pug
-        include practice/objectives.pug
         include practice/arrive.pug
+        include practice/objectives.pug
+        include practice/conversation.pug
+        include practice/conversation2.pug
+        include practice/conversation3.pug
+        include practice/results.pug
         include practice/reflection.pug
         include practice/takeaways.pug
     audio(id="narration-audio", src=`https://dart-store.s3.amazonaws.com/identity+theft+voice+over/${section}/${page}_${user.avatar.toLowerCase()}.mp3`, preload="auto")
@@ -21,7 +24,7 @@ block styles
     link(rel='stylesheet', href='/css/identity-theft.css')
     link(rel='stylesheet', href='/css/learning-targets.css')
     link(rel='stylesheet', href='/css/middle-aligned-layout.css')
-    link(rel='stylesheet', href='/css/identity_theft_explore.css')  
+    //- link(rel='stylesheet', href='/css/identity_theft_explore.css')  
 
 
 block scripts     
@@ -33,7 +36,105 @@ block scripts
         var section = "#{section}";
         var startPage = "#{page}"; 
         var total = parseInt(#{numPages});  
-    script(src='/module_js/identity/identity-theft-practice.js', emailData=emails) 
+    script(src='/module_js/romance/romance-scam.js')    
+    script.
+        $('[data-modal="yesModal"]').click(function() {
+            $.modal({
+                title: 'Rachel checks the profile.',
+                class: 'mini',
+                closeIcon: false,
+                closable: false,
+                content: 'You tell Rachel to check Alex\'s profile. It is very sparse with only one picture despite him claiming to be a world traveler in his bio. Click the blue "Next" button below to continue.',
+                //- actions: [{
+                //- text: 'Got it',
+                //- class: 'green'
+                //- }]
+                onVisible: function() {
+                    // User confirmed Yes
+                    localStorage.setItem('conversation_choice', 'yes');
+                    console.log('Choice saved as yes');
+                    return true; // This allows the modal to close
+                },
+            }).modal('show');
+        });
+        $('[data-modal="noModal"]').click(function() {
+            $.modal({
+                title: 'Rachel doesn\'t check the profile.',
+                class: 'mini',
+                closeIcon: false,
+                closable: false,
+                content: 'You decide not to tell Rachel to check Alex\'s profile. They continue their conversation. Click the "Next" button to continue.',
+                onVisible: function() {
+                    // User confirmed Yes
+                    localStorage.setItem('conversation_choice', 'no');
+                    console.log('Choice saved as no');
+                    return true; // This allows the modal to close
+                },
+            }).modal('show');
+        });
+        $('[data-modal="yesModal2"]').click(function() {
+            $.modal({
+                title: 'Rachel text messages Alex.',
+                class: 'mini',
+                closeIcon: false,
+                closable: false,
+                content: 'You tell Rachel to text Alex. They continue their conversation there instead of Facebook Messenger. Click the "Next" button below to continue.',
+                //- actions: [{
+                //- text: 'Got it',
+                //- class: 'green'
+                //- }]
+                onVisible: function() {
+                    // User confirmed Yes
+                    localStorage.setItem('conversation_choice2', 'yes');
+                    console.log('Choice saved as yes');
+                    return true; // This allows the modal to close
+                },
+            }).modal('show');
+        });
+        $('[data-modal="noModal2"]').click(function() {
+            $.modal({
+                title: 'Rachel asks to continue the conversation on Facebook Messenger.',
+                class: 'mini',
+                closeIcon: false,
+                closable: false,
+                content: 'You tell Rachel to stay on Facebook Messenger. They continue their conversation there. Click the "Next" button to continue.',
+                onVisible: function() {
+                    // User confirmed Yes
+                    localStorage.setItem('conversation_choice2', 'no');
+                    console.log('Choice saved as no');
+                    return true; // This allows the modal to close
+                },
+            }).modal('show');
+        });
+        const queryParams = new URLSearchParams(window.location.search);
+        const page = queryParams.get('page');
+        console.log(page);
+        if(page === 'results') {
+            reload();
+            console.log("In the results page");
+            var conversationChoice = localStorage.getItem('conversation_choice');
+            var conversationChoice2 = localStorage.getItem('conversation_choice2');
+            if (conversationChoice === 'yes' && conversationChoice2 === 'no') {
+                //- $('#choiceResult').text('2');
+                $('#explain1').text('Good job! Always check the profile first!');
+                $('#explain2').text('Great job! In order to not be traced, Romance Scammers usually want to move quickly from well-known social networking or dating sites to other methods, usually texting. Therefore, staying on the app message tool is a safer method.');
+            } else if(conversationChoice === 'yes' && conversationChoice2 === 'yes') {
+                //- $('#choiceResult').text('1');
+                $('#explain1').text('Good job! Always check the profile first!');
+                $('#explain2').text('Warning! In order to not be traced, Romance Scammers usually want to move quickly from well-known social networking or dating sites to other methods, usually texting. Therefore, staying on the app message tool is a safer method.');
+            } else if(conversationChoice !== 'no' && conversationChoice2 === 'yes') {
+                //- $('#choiceResult').text('0');
+                $('#explain1').text('Warning! Always check the profile first!');
+                $('#explain2').text('Warning! In order to not be traced, Romance Scammers usually want to move quickly from well-known social networking or dating sites to other methods, usually texting. Therefore, staying on the app message tool is a safer method.');
+            } else {
+                //- $('#choiceResult').text('1');
+                $('#explain1').text('Warning! Always check the profile first!');
+                $('#explain2').text('Good job! In order to not be traced, Romance Scammers usually want to move quickly from well-known social networking or dating sites to other methods, usually texting. Therefore, staying on the app message tool is a safer method.');
+            }
+        }
+
+
+    //- script(src='/module_js/identity/identity-theft-practice.js', emailData=emails) 
 
     //- if page === 'activity'
     //-     script(src='/module_js/identity_theft_explore.js', emailData=emails)

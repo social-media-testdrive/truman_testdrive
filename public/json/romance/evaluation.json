@@ -1,6 +1,6 @@
 {
   "1": {
-      "progress": 100,
+      "progress": 10,
       "type": "multi_select",
       "partial": "none",
       "prompt": "1. What is true of most romance and friendship scams? Select all that apply.",
@@ -33,7 +33,7 @@
 
 
   "2": {
-    "progress": 100,
+    "progress": 20,
     "type": "abcd",
     "partial": "none",
     "prompt": "2. When should you stop talking to someone online if you see red flags?",
@@ -58,7 +58,7 @@
 
 
   "3": {
-    "progress": 100,
+    "progress": 30,
     "type": "yes_no",
     "partial": "none",
     "prompt": "3. True or False: If you become a victim of a romance or friendship scam, you are partially at fault.",
@@ -78,7 +78,7 @@
 
 
   "4": {
-    "progress": 100,
+    "progress": 40,
     "type": "multi_select",
     "partial": "none",
     "prompt": "4. Which of the following is a sign that you may be talking to a romance/friendship scammer? Select all that apply.",
@@ -111,9 +111,9 @@
 
 
   "5": {
-    "progress": 100,
+    "progress": 50,
     "type": "yes_no",
-    "partial": "none",
+    "partial": "q5.html",
     "prompt": "5. Is this dating profile Real or Fake?",
     "choices": {
       "yes": {
@@ -131,7 +131,7 @@
 
 
   "6": {
-    "progress": 100,
+    "progress": 60,
     "type": "abcd",
     "partial": "none",
     "prompt": "6. What is a common sign that a scammer is trying to manipulate you emotionally?",
@@ -152,12 +152,8 @@
     "explanation": "<h1>The correct answer is D</h1><p> Scammers use various tactics to manipulate your emotions and gain your trust. They may ask you to keep your relationship a secret, profess their love for you quickly, or often lie about being in a situation where the authorities are threatening them and ask you to give them money that they don’t have. They may also pretend to be a figure of authority themselves. </p>",
     "correctResponse": "d"
   },
-
-
-
-
   "7": {
-    "progress": 100,
+    "progress": 70,
     "type": "abcd",
     "partial": "none",
     "prompt": "7. What should you do if a potential match asks you for money or personal information?",
@@ -179,12 +175,10 @@
     "correctResponse": "c"
   },
 
-
-
   "8": {
-      "progress": 100,
+      "progress": 80,
       "type": "abcd",
-      "partial": "none",
+      "partial": "q8.html",
       "prompt": "8. Which techniques did the scammer use?",
       "choices": {
           "a": {
@@ -206,9 +200,9 @@
 
 
   "9": {
-    "progress": 100,
+    "progress": 90,
     "type": "abcd",
-    "partial": "none",
+    "partial": "q9.html",
     "prompt": "9. Which technique did the scammer use?",
     "choices": {
         "a": {

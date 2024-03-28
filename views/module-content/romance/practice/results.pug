@@ -1,0 +1,27 @@
+#results.hidden
+    .ui.container#results-read
+        .limit#learn-target
+            .ui.grid
+                .twelve.wide.column
+                    h1.ui.header.large#learn-title
+                        .content
+                            i.book.icon
+                            | First Conversation Results
+                    p You scored: 
+                        span#choiceResult 
+                        |  out of 2
+                    //- -
+                    //-     var conversationChoice = localStorage.getItem('conversation_choice');
+                    //-     if (conversationChoice === 'yes') {
+                    //-         $('#choiceResult').text('2');
+                    //-     } else {
+                    //-         $('#choiceResult').text('1');
+                    //-     }
+
+                    b Check Profile Result: 
+                    p#explain1 Always check the profile first!
+                    b Switch Platforms Result:  
+                    p#explain2 In order to not be traced, Romance Scammers usually want to move quickly from well-known social networking or dating sites to other methods, usually texting. Therefore, staying on the app message tool is a safer method.
+                .four.wide.column
+                    .avatar-container(style="text-align: center;")
+                        img#dart_image1.ui.medium.image(src=user.avatarImg style="text-align: center; display: block; margin: 0 auto;")
