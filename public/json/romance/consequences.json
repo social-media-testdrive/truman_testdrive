@@ -1,6 +1,6 @@
 {   
     "1": {
-        "progress": 100,
+        "progress": 62.5,
         "type": "multi_select",
         "partial": "none",
         "prompt": "1. Which of the following are potential consequences of being a victim of a romance or friendship scam?",
@@ -31,7 +31,7 @@
         "theAnswers": "A, B, D, E"
     },
     "2": {
-        "progress": 100,
+        "progress": 75,
         "type": "abcd",
         "partial": "none",
         "prompt": "2. Who could be targeted by romance or friendship scammers?",

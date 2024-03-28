@@ -1,6 +1,6 @@
 {
   "1": {
-    "progress": 100,
+    "progress": 20,
     "type": "multi_select",
     "partial": "none",
     "prompt": "1. You are talking to a new person through an app. Which of the following are signs of a romance scam? Select all that apply.",
@@ -25,7 +25,7 @@
     "theAnswers": "A, B, D, E"
   },
   "2": {
-      "progress": 100,
+      "progress": 40,
       "type": "abcd",
       "partial": "none",
       "prompt": "2. If someone from an app or social media gives you advice, which topics should make you most suspicious of scams?",
@@ -47,7 +47,7 @@
       "correctResponse": "d"
   },
   "3": {
-    "progress": 100,
+    "progress": 60,
     "type": "abcd",
     "partial": "none",
     "prompt": "3. What is Catfishing?",
@@ -69,7 +69,7 @@
     "correctResponse": "a"
   },
   "4": {
-    "progress": 100,
+    "progress": 80,
     "type": "abcd",
     "partial": "none",
     "prompt": "4. What's likely to happen if you're caught up in a romance scam?",
@@ -91,7 +91,7 @@
     "correctResponse": "b"
   },
   "5": {
-    "progress": 100,
+    "progress": 95,
     "type": "yes_no",
     "partial": "q5.html",
     "prompt": "5. Is the following profile Real or Fake?",

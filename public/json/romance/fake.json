@@ -1,6 +1,6 @@
 {
     "1": {
-      "progress": 20,
+      "progress": 60,
       "type": "yes_no",
       "partial": "q1.html",
       "prompt": "1. Is this dating profile Real or Fake?",
@@ -16,7 +16,7 @@
       "correctResponse": "yes"
     },
     "2": {
-        "progress": 40,
+        "progress": 70,
         "type": "yes_no",
         "partial": "q2.html",
         "prompt": "2. Is this dating profile Real or Fake?",
@@ -32,7 +32,7 @@
         "correctResponse": "no"
     },
     "3": {
-      "progress": 60,
+      "progress": 88,
       "type": "yes_no",
       "partial": "q3.html",
       "prompt": "3.  Is this dating profile Real or Fake?",

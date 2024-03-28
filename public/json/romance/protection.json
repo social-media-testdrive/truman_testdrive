@@ -1,6 +1,6 @@
 {
   "1": {
-    "progress": 100,
+    "progress": 66.6667,
     "type": "multi_select",
     "partial": "none",
     "prompt": "1. If you're chatting with a new person online and see something suspicious, how can you keep yourself safe? Select all that apply.",
@@ -30,7 +30,7 @@
     "theAnswers": "A, C, D, E"
   },
   "2": {
-    "progress": 100,
+    "progress": 75,
     "type": "abcd",
     "partial": "none",
     "prompt": "2. Which option best explains the importance of having a private social media account?",
@@ -53,7 +53,7 @@
     "correctResponse": "b"
   },
   "3": {
-    "progress": 100,
+    "progress": 83.3333,
     "type": "abcd",
     "partial": "none",
     "prompt": "3. If someone you are talking to on a dating site gives you inconsistent information about their life, how should you proceed?",

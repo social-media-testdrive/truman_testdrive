@@ -84,7 +84,8 @@ footer {
 
 /* page loader *giving errors with fomantic ui shape flip animation. fix: use the > selector to only select the hidden elements that have display-page as their parent / are direct children */
 /* .hidden { */
-.display-page > .hidden  {
+.display-page > .hidden,
+.villain-container > .hidden {
     display: none !important; 
 }
 
@@ -1245,6 +1246,10 @@ blockquote p {
         /* width: 200px; */
         width: 200px !important;
     }
+
+    .tablet-fix-eight-wide {
+        width: 100% !important;
+    }
 }
 
 #warning-cards .ui.card .ios-chat-container .chat {
@@ -1262,7 +1267,7 @@ blockquote p {
     /* border: 2px solid blue; */
     /* box-shadow: 0 0 10px rgba(0, 0, 255, 0.5);  */
 
-    /* border: 2px solid #7AC4E0;  */
+    border: 2px solid #7AC4E0; 
     box-shadow: 0 0 8px #7AC4E0;
     position: relative;
     /* box-shadow: 0 0 8px #D6E040; */

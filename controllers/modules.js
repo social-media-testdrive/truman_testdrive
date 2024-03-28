@@ -29,15 +29,27 @@ exports.getModule = async (req, res) => {
 
     // each quiz question is being counted as a page too so we need to add those
     if(section === 'challenge'){
-      numPages = 8;
+      // intro, 5 quiz questions, takeaways
+      numPages = 7;
     } else if(section === 'concepts') {
+      // for romance and identity both have 10 pages
       numPages = 10;
     } else if(section === 'consequences') {
       numPages = 8;
+    } else if(section === 'fake'){
+      numPages = 10;
+    } else if(section === 'contact'){
+      numPages = 11;
+    } else if(section === 'requests'){
+      numPages = 11;
     } else if(section === 'techniques') {
       numPages = 12;
     } else if(section === 'protection') {
-      numPages = 10;
+      if(module === 'identity') {
+        numPages = 10;
+      } else if (module === 'romance') {
+        numPages = 12;
+      }
     } else if(section === 'reporting') {
       numPages = 8;
     } else if(section === 'practice') {

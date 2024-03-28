@@ -610,7 +610,13 @@ function displayCurrentQuestion()
             } 
 
             if (userNameSpan) {
-                userNameSpan.textContent = username;
+                if (userNameSpan) {
+                    if(username === "Guest") {
+                        userNameSpan.textContent = "there"
+                    } else {
+                        userNameSpan.textContent = username;
+                    }
+                } 
             } 
 
             if (userEmailSpan) {

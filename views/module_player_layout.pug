@@ -101,9 +101,20 @@ html
         a.item#consequences(href=`/course-player?module=${module}&section=consequences&page=objectives`)
           i.hand.holding.usd.icon
           |  Consequences
-        a.item#techniques(href=`/course-player?module=${module}&section=techniques&page=objectives`)
-          i.wrench.icon
-          |  Techniques
+        if module === 'identity'
+          a.item#techniques(href=`/course-player?module=${module}&section=techniques&page=objectives`)
+            i.wrench.icon
+            |  Techniques
+        else if module === 'romance'
+          a.item#fake(href=`/course-player?module=${module}&section=fake&page=objectives`)
+            i.user.icon
+            |  Fake Profiles
+          a.item#contact(href=`/course-player?module=${module}&section=contact&page=objectives`)
+            i.handshake.icon
+            |  Contact & Groom
+          a.item#request(href=`/course-player?module=${module}&section=requests&page=objectives`)
+            i.envelope.icon
+            |  Requests
         a.item#protection(href=`/course-player?module=${module}&section=protection&page=objectives`)
           i.shield.alternate.icon
           |  Protection

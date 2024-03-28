@@ -539,12 +539,12 @@ function setLinks(currentPage) {
       nextlink = baseurl + "phases";
     } else if (currentPage === "phases") {
       backlink = baseurl + "definitions";
-      nextlink = baseurl + "fake";
-    } else if (currentPage === "fake") {
+      nextlink = baseurl + "fake-websites";
+    } else if (currentPage === "fake-websites") {
       backlink = baseurl + "phases";
       nextlink = baseurl + "trusted";
     } else if (currentPage === "trusted") {
-      backlink = baseurl + "fake";
+      backlink = baseurl + "fake-websites";
       nextlink = baseurl + "quiz";
     }  else if (currentPage === "quiz") {
       backlink = baseurl + "trusted";
@@ -588,13 +588,13 @@ function setLinks(currentPage) {
 
     if (currentPage === "objectives") {
       backlink =
-        "/course-player?module=romance&section=concepts&page=objectives";
-      nextlink = baseurl + "what1";
-    } else if (currentPage === "what1") {
+        "/course-player?module=romance&section=consequences&page=objectives";
+      nextlink = baseurl + "what";
+    } else if (currentPage === "what") {
       backlink = baseurl + "objectives";
       nextlink = baseurl + "male";
     } else if (currentPage === "male") {
-      backlink = baseurl + "what1";
+      backlink = baseurl + "what";
       nextlink = baseurl + "female";
     } else if (currentPage === "female") {
       backlink = baseurl + "male";
@@ -602,11 +602,14 @@ function setLinks(currentPage) {
     } else if (currentPage === "examples") {
       backlink = baseurl + "female";
       nextlink = baseurl + "quiz";
-    } else if (currentPage === "quiz") {
+    }else if (currentPage === "quiz") {
       backlink = baseurl + "examples";
+      nextlink = baseurl + "reflection";
+    } else if (currentPage === "reflection") {
+      backlink = baseurl + "quiz";
       nextlink = baseurl + "takeaways";
     } else if (currentPage === "takeaways") {
-      backlink = baseurl + "quiz";
+      backlink = baseurl + "reflection";
       nextlink =
         "/course-player?module=romance&section=contact&page=objectives";
     }
@@ -615,7 +618,7 @@ function setLinks(currentPage) {
 
     if (currentPage === "objectives") {
       backlink =
-        "/course-player?module=romance&section=concepts&page=objectives";
+        "/course-player?module=romance&section=fake&page=objectives";
       nextlink = baseurl + "intro-video";
     } else if (currentPage === "intro-video") {
       $("#my_video_1")[0].player.pause();
@@ -650,24 +653,32 @@ function setLinks(currentPage) {
 
     if (currentPage === "objectives") {
       backlink =
-        "/course-player?module=romance&section=concepts&page=objectives";
+        "/course-player?module=romance&section=contact&page=objectives";
       nextlink = baseurl + "types";
     } else if (currentPage === "types") {
       backlink = baseurl + "objectives";
       nextlink = baseurl + "pressure";
     } else if (currentPage === "pressure") {
       backlink = baseurl + "types";
-      nextlink = baseurl + "quiz";
-    } else if (currentPage === "quiz") {
+      nextlink = baseurl + "sob";
+    } else if (currentPage === "sob") {
       backlink = baseurl + "pressure";
+      nextlink = baseurl + "emotional";
+    } else if (currentPage === "emotional") {
+      backlink = baseurl + "sob";
+      nextlink = baseurl + "blackmail";
+    } else if (currentPage === "blackmail") {
+      backlink = baseurl + "emotional";
       nextlink = baseurl + "reflection";
     } else if (currentPage === "reflection") {
-      backlink = baseurl + "quiz";
-      nextlink = baseurl + "takeaways";
-    }  else if (currentPage === "takeaways") {
+      backlink = baseurl + "blackmail";
+      nextlink = baseurl + "quiz";
+    } else if (currentPage === "quiz") {
       backlink = baseurl + "reflection";
-      nextlink =
-        "/course-player?module=romance&section=protection&page=objectives";
+      nextlink = baseurl + "takeaways";
+    } else if (currentPage === "takeaways") {
+      backlink = baseurl + "quiz";
+      nextlink = "/course-player?module=romance&section=protection&page=objectives";
     }
   } else if (section === "techniques") {
     let baseurl = "/course-player?module=romance&section=techniques&page=";
@@ -711,16 +722,22 @@ function setLinks(currentPage) {
 
     if (currentPage === "objectives") {
       backlink =
-        "/course-player?module=romance&section=techniques&page=objectives";
+        "/course-player?module=romance&section=requests&page=objectives";
       nextlink = baseurl + "intro-video";
     } else if (currentPage === "intro-video") {
       backlink = baseurl + "objectives";
       nextlink = baseurl + "guidelines";
     } else if (currentPage === "guidelines") {
       backlink = baseurl + "intro-video";
+      nextlink = baseurl + "security";
+    } else if (currentPage === "security") {
+      backlink = baseurl + "guidelines";
+      nextlink = baseurl + "communication";
+    } else if (currentPage === "communication") {
+      backlink = baseurl + "security";
       nextlink = baseurl + "privacy";
     } else if (currentPage === "privacy") {
-      backlink = baseurl + "guidelines";
+      backlink = baseurl + "communication";
       nextlink = baseurl + "search";
     } else if (currentPage === "search") {
       backlink = baseurl + "privacy";
@@ -744,7 +761,7 @@ function setLinks(currentPage) {
 
     if (currentPage === "objectives") {
       backlink =
-        "/course-player?module=romance&section=techniques&page=objectives";
+        "/course-player?module=romance&section=protection&page=objectives";
       nextlink = baseurl + "intro-video";
     } else if (currentPage === "intro-video") {
       // pause video
@@ -840,28 +857,88 @@ function updateProgressBar() {
       progress = (2 / total) * 100;
     } else if (pageParam === "phases") {
       progress = (3 / total) * 100;
-    } else if (pageParam === "activity") {
+    } else if (pageParam === "fake-websites") {
       progress = (4 / total) * 100;
-    } else if (pageParam === "reflection") {
+    } else if (pageParam === "trusted") {
       progress = (5 / total) * 100;
     } else if (pageParam === "quiz") {
       progress = (6 / total) * 100;
+    } else if (pageParam === "reflection") {
+      progress = (9 / total) * 100;
     } else if (pageParam === "takeaways") {
       progress = 100;
     }
   } else if (section === "consequences") {
     if (pageParam === "objectives") {
       progress = 0;
-    } else if (pageParam === "intro-video") {
+    } else if (pageParam === "financial") {
       progress = (1 / total) * 100;
-    } else if (pageParam === "types") {
+    } else if (pageParam === "emotional") {
       progress = (2 / total) * 100;
-    } else if (pageParam === "activity") {
+    } else if (pageParam === "targeted") {
       progress = (3 / total) * 100;
+    } else if (pageParam === "quiz") {
+      progress = (4 / total) * 100;
     } else if (pageParam === "reflection") {
+      progress = (7 / total) * 100;
+    } else if (pageParam === "takeaways") {
+      progress = 100;
+    }
+  } else if (section === "fake") {
+    if (pageParam === "objectives") {
+      progress = 0;
+    } else if (pageParam === "what") {
+      progress = (1 / total) * 100;
+    } else if (pageParam === "male") {
+      progress = (2 / total) * 100;
+    } else if (pageParam === "female") {
+      progress = (3 / total) * 100;
+    } else if (pageParam === "examples") {
       progress = (4 / total) * 100;
     } else if (pageParam === "quiz") {
       progress = (5 / total) * 100;
+    } else if (pageParam === "reflection") {
+      progress = (9 / total) * 100;
+    } else if (pageParam === "takeaways") {
+      progress = 100;
+    }
+  } else if (section === "contact") {
+    if (pageParam === "objectives") {
+      progress = 0;
+    } else if (pageParam === "intro-video") {
+      progress = (1 / total) * 100;
+    } else if (pageParam === "initial") {
+      progress = (2 / total) * 100;
+    } else if (pageParam === "types") {
+      progress = (3 / total) * 100;
+    } else if (pageParam === "communication") {
+      progress = (4 / total) * 100;
+    } else if (pageParam === "relationship") {
+      progress = (5 / total) * 100;
+    } else if (pageParam === "reflection") {
+      progress = (6 / total) * 100;
+    } else if (pageParam === "quiz") {
+      progress = (6.5 / total) * 100;
+    } else if (pageParam === "takeaways") {
+      progress = 100;
+    }
+  } else if (section === "requests") {
+    if (pageParam === "objectives") {
+      progress = 0;
+    } else if (pageParam === "types") {
+      progress = (1 / total) * 100;
+    } else if (pageParam === "pressure") {
+      progress = (2 / total) * 100;
+    } else if (pageParam === "sob") {
+      progress = (3 / total) * 100;
+    } else if (pageParam === "emotional") {
+      progress = (4 / total) * 100;
+    } else if (pageParam === "blackmail") {
+      progress = (5 / total) * 100;
+    } else if (pageParam === "reflection") {
+      progress = (6 / total) * 100;
+    } else if (pageParam === "quiz") {
+      progress = (6.5 / total) * 100;
     } else if (pageParam === "takeaways") {
       progress = 100;
     }
@@ -892,18 +969,24 @@ function updateProgressBar() {
   } else if (section === "protection") {
     if (pageParam === "objectives") {
       progress = 0;
-    } else if (pageParam === "common-measures") {
+    } else if (pageParam === "intro-video") {
       progress = (1 / total) * 100;
-    } else if (pageParam === "preventative") {
+    } else if (pageParam === "guidelines") {
       progress = (2 / total) * 100;
-    } else if (pageParam === "contacted") {
+    } else if (pageParam === "security") {
       progress = (3 / total) * 100;
-    } else if (pageParam === "activity") {
+    } else if (pageParam === "communication") {
       progress = (4 / total) * 100;
-    } else if (pageParam === "reflection") {
+    } else if (pageParam === "privacy") {
       progress = (5 / total) * 100;
-    } else if (pageParam === "quiz") {
+    } else if (pageParam === "search") {
       progress = (6 / total) * 100;
+    } else if (pageParam === "reverse-image") {
+      progress = (7 / total) * 100;
+    } else if (pageParam === "quiz") {
+      progress = (7.5 / total) * 100;
+    } else if (pageParam === "reflection") {
+      progress = (11 / total) * 100;
     } else if (pageParam === "takeaways") {
       progress = 100;
     }

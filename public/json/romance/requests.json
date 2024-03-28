@@ -1,28 +1,62 @@
 {   
-    "1": {
-        "progress": 100,
+  "1": {
+    "progress": 63.63,
+    "type": "abcd",
+    "partial": "q.html",
+    "prompt": "1. Why do scammers prefer gift cards and peer-to-peer payment services for receiving money?",
+    "choices": {
+      "a": {
+        "text": "A. They offer unlimited transactions and no fees"
+      },
+      "b": {
+        "text": "B. They make it impossible to get a refund and hard to trace"
+      },
+      "c": {
+        "text": "C. They are very secure"
+      },
+      "d": {
+        "text": "D. They are easy to use and widely accepted"
+      }
+    },
+    "explanation": "<h1>The correct answer is B.</h1><p>Scammers choose gift cards and peer-to-peer payment methods because victims cannot easily get their money back and the transactions are difficult to trace, protecting the scammer's anonymity.</p>",
+    "correctResponse": "b"
+  },
+    "2": {
+        "progress": 63.63,
         "type": "abcd",
-        "partial": "none",
-        "prompt": "1. What is a money mule?",
+        "partial": "q2.html",
+        "prompt": "2. Which technique did the scammer use?",
         "choices": {
           "a": {
-            "text": "A. Someone who transfers or moves money illegally for someone else",
-            "explanation": "The scammer asks you to transfer money, either physically or from one account to another, claiming that you will be rewarded if you help them."
+            "text": "A. Fake sob story to request money"
           },
           "b": {
-            "text": "B. A secret word for popular gift cards",
-            "explanation": "This is not the definition of a money mule. “Money Mule” Romance Scams involve scammers asking you to move money for them."
+            "text": "B. Persuade you to make an investment"
           },
           "c": {
-            "text": "C. An investment that does well",
-            "explanation": "This is not the definition of a money mule. “Money Mule” Romance Scams involve scammers asking you to move money for them."
+            "text": "C. Convince you to act as a money mule"
           },
           "d": {
-            "text": "D. A digital wallet for your cryptocurrency",
-            "explanation": "This is not the definition of a money mule. “Money Mule” Romance Scams involve scammers asking you to move money for them."
+            "text": "D. Dramatic language to keep you engaged"
           }
         },
-        "explanation": "<h1>The correct answer is A.</h1>",
-        "correctResponse": "a"
-    }
-}
+        "explanation": "<h1>The correct answer is C.</h1><p>The scammer asked you to transfer money, either physically or from one account to another. They say you will be rewarded if you help them.</p>",
+        "correctResponse": "c"
+    },
+    "3": {
+      "progress": 95,
+      "type": "yes_no",
+      "partial": "q3.html",
+      "prompt": "3. It's safe to share nude photos with someone you've met online if they have already shared theirs with you.",
+      "choices": {
+          "yes": {
+            "text": "True"
+          },
+          "no": {
+            "text": "False"
+          }
+      },
+      "explanation": "<h1>\"False\" is the correct answer</h1><p>Sharing nude photos with someone you've met online is never safe. Once you send a photo, you lose control over it. The person you sent it to could share it with others, or use it to blackmail you.</p>",
+      "correctResponse": "no"
+    } 
+  }
