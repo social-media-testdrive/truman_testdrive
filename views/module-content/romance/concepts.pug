@@ -28,7 +28,10 @@ block styles
     link(rel='stylesheet', href='/css/dart_quiz.css')  
 
 
-block scripts       
+block scripts  
+    script.
+        var speechData = "none"; // quizData is passed to pug file via render function in app.js
+
     script(src='/module_js/romance/romance-scam.js')  
     //- script(src='/js/text2speech.js')  
     script.

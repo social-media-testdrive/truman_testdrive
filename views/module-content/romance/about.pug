@@ -226,25 +226,25 @@ block content
         .sixteen.wide.column
           .speech-div
             .centerme
-              if user.moduleProgress.identity.link === "/course-player?module=identity&section=challenge&page=intro" 
-                button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.identity.link") Start Mission
+              if user.moduleProgress.romance.link === "/course-player?module=romance&section=challenge&page=intro" 
+                button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.romance.link") Start Mission
               else 
-                button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.identity.link") Continue Mission
+                button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.romance.link") Continue Mission
 
             img.dart_image.ui.medium.image(src=user.avatarImg)
 
             .ui.large.label.blue-pointing#speechBubble
-              if user.moduleProgress.identity.link === "/course-player?module=identity&section=challenge&page=intro" 
+              if user.moduleProgress.romance.link === "/course-player?module=romance&section=challenge&page=intro" 
                 p#speechText
-                  | The Johnsons are counting on you! Click 'Start Mission' to begin. 
+                  | Sophia is counting on you! Click 'Start Mission' to begin. 
               else 
                 p#speechText
                   | Welcome back! Click 'Continue Mission' to pick up where you left off.
     .ui.centered.grid.mobile.only
-      if user.moduleProgress.identity.link === "/course-player?module=identity&section=challenge&page=intro" 
-        button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.identity.link" style="margin-top: 0px; margin-bottom: 60px;") Start Mission
+      if user.moduleProgress.romance.link === "/course-player?module=romance&section=challenge&page=intro" 
+        button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.romance.link" style="margin-top: 0px; margin-bottom: 60px;") Start Mission
       else 
-        button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.identity.link" style="margin-top: 0px;  margin-bottom: 60px;") Continue Mission
+        button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.romance.link" style="margin-top: 0px;  margin-bottom: 60px;") Continue Mission
 
     br
     br
