@@ -6,7 +6,7 @@
     "prompt": "1. You are talking to a new person through an app. Which of the following are signs of a romance scam? Select all that apply.",
     "choices": {
       "0": {
-        "text": "A. The person gradually starts repeatedly asking for money and favors."
+        "text": "A. The person gradually starts asking for money and favors again and again."
       },
       "1": {
         "text": "B. The person quickly professes their love to you."
