@@ -955,7 +955,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Romance", "Challenge", "Bronze", "Challenge Conqueror", "/badges/identity/challenge_conqueror.svg");
+                        postBadge("Romance", "Challenge", "Bronze", "Challenge Conqueror", "/badges/romance/challenge.svg");
 
                         badgeEarned = true;
                     } else if(section === 'concepts') {
@@ -968,7 +968,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Romance", "Concepts", "Bronze", "Foundation Acheivers", "/badges/identity/foundation_acheivers.svg");
+                        postBadge("Romance", "Concepts", "Bronze", "Foundation Acheivers", "/badges/romance/concepts.svg");
 
                         badgeEarned = true;
                     } else if(section === 'consequences') {
@@ -981,7 +981,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Romance", "Consequences", "Bronze", "Aftermath Ace", "/badges/identity/aftermath_ace.svg");
+                        postBadge("Romance", "Consequences", "Bronze", "Aftermath Ace", "/badges/romance/consequences.svg");
 
                         badgeEarned = true;                    
                     } else if(section === 'techniques') {
@@ -994,7 +994,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Romance", "Techniques", "Silver", "Trained Tactician", "/badges/identity/trained_tactician.svg");
+                        postBadge("Romance", "Techniques", "Silver", "Trained Tactician", "/badges/romance/trained_tactician.svg");
 
                         badgeEarned = true;                    
                     }  else if(section === 'fake') {
@@ -1046,7 +1046,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Romance", "Protection", "Silver", "Prodigy Protector", "/badges/identity/prodigy_protector.svg");
+                        postBadge("Romance", "Protection", "Silver", "Prodigy Protector", "/badges/romance/protection.svg");
 
                         badgeEarned = true;                             
                     } else if(section === 'reporting') {
@@ -1059,7 +1059,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Romance", "Reporting", "Gold", "Alert Advocate", "/badges/identity/alert_advocate.svg");
+                        postBadge("Romance", "Reporting", "Gold", "Alert Advocate", "/badges/romance/reporting.svg");
 
                         badgeEarned = true;                             
                     } else if(section === 'practice') {
@@ -1072,7 +1072,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Romance", "Practice", "Gold", "Scam Spotter", "/badges/identity/scam_spotter.svg");
+                        postBadge("Romance", "Practice", "Gold", "Scam Spotter", "/badges/romance/practice.svg");
 
                         badgeEarned = true;                             
                     } else if(section === 'evaluation') {
@@ -1085,7 +1085,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Romance", "Evaluation", "Platinum", "Champion of Completion", "/badges/identity/champion_of_completion.svg");
+                        postBadge("Romance", "Evaluation", "Platinum", "Champion of Completion", "/badges/romance/evaluation.svg");
 
                         badgeEarned = true;                             
                     }

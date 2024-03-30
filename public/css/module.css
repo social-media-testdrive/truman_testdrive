@@ -1395,20 +1395,24 @@ blockquote p {
 }
 
 .smartphone-practice .ios-chat-container {
+    /* removed 15px scroll bar */
     width: 330px;
     height: 420px; /* Fixed height to enable scrolling */
-    overflow-y: auto; /* Enables vertical scrolling */
-    overflow-x: hidden; /* Hides horizontal scroll bar */
+    /* overflow-y: auto;  */
+    /* overflow-x: hidden;  */
+    -webkit-overflow-scrolling: touch; 
+    touch-action: pan-y; 
 }
 
 .smartphone-practice .message {
-    width: 280px;
-    margin-left: 30px;
+    /* width: 280px; */
+    width: 290px;
+    /* margin-left: 30px; */
+    margin-left: 25px;
+
     margin-bottom: -20px;
 
 }
-
-
 
 .smartphone-practice .texter {
     background: #F5F5F5;
@@ -1432,3 +1436,7 @@ blockquote p {
     color: grey;
     font-weight: normal;
 }
+
+/* click & drag scroll */
+/* https://www.youtube.com/watch?v=C9EWifQ5xqA */
+/* https://codepen.io/Gutto/pen/GBLPyN */
