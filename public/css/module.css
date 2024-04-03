@@ -1231,7 +1231,7 @@ blockquote p {
     /* width: 230px !important; */
     /* min-height: 450px; */
     min-height: 350px;
-
+    cursor: pointer;
     position: relative;
     /* background-color: red; */
 }

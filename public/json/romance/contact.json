@@ -6,8 +6,8 @@
         "prompt": "1. Scammers often use language that leads the victim to trust them, or even fall in love with them. Which of the following are examples of persuasive language? Select all that apply.",
         "choices": {
           "0": {
-            "text": "A. Lengthy daily conversations",
-            "explanation": "Scammers often engage in long conversations to build a sense of trust and connection with the victim. They want to make the victim feel like they have a deep, meaningful relationship, even if they've only been talking for a short time."
+            "text": "A. Presentation as a religious person",
+            "explanation": "Scammers take advantage of people’s tendencies to trust people with religious affiliations more."
           },
           "1": {
             "text": "B. Share a sad story",

@@ -1195,15 +1195,15 @@ function setLinks(currentPage) {
         $("#my_video_1")[0].player.pause();
   
         backlink = baseurl + "objectives";
-        nextlink = baseurl + "definitions";
-      } else if (currentPage === "definitions") {
-        backlink = baseurl + "intro-video";
         nextlink = baseurl + "phases";
       } else if (currentPage === "phases") {
-        backlink = baseurl + "definitions";
+        backlink = baseurl + "intro-video";
+        nextlink = baseurl + "definitions";
+      } else if (currentPage === "definitions") {
+        backlink = baseurl + "phases";
         nextlink = baseurl + "fake-websites";
       } else if (currentPage === "fake-websites") {
-        backlink = baseurl + "phases";
+        backlink = baseurl + "definitions";
         nextlink = baseurl + "trusted";
       } else if (currentPage === "trusted") {
         backlink = baseurl + "fake-websites";
@@ -1257,15 +1257,21 @@ function setLinks(currentPage) {
         nextlink = baseurl + "male";
       } else if (currentPage === "male") {
         backlink = baseurl + "what";
-        nextlink = baseurl + "female";
-      } else if (currentPage === "female") {
-        backlink = baseurl + "male";
         nextlink = baseurl + "examples";
       } else if (currentPage === "examples") {
-        backlink = baseurl + "female";
-        nextlink = baseurl + "quiz";
-      }else if (currentPage === "quiz") {
+        backlink = baseurl + "male";
+        nextlink = baseurl + "female";
+      } else if (currentPage === "female") {
         backlink = baseurl + "examples";
+        nextlink = baseurl + "examples2";
+      } else if (currentPage === "examples2") {
+        backlink = baseurl + "female";
+        nextlink = baseurl + "disclaimer";
+      } else if (currentPage === "disclaimer") {
+        backlink = baseurl + "examples2";
+        nextlink = baseurl + "quiz";
+      }  else if (currentPage === "quiz") {
+        backlink = baseurl + "disclaimer";
         nextlink = baseurl + "reflection";
       } else if (currentPage === "reflection") {
         backlink = baseurl + "quiz";
