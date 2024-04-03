@@ -1,44 +1,43 @@
 #matching.hidden
-    .ui.container#raised-container(style="width: 94%;")
-        .limit#learn-target(style="padding: 0;")
+    //- block content
 
-            h1 Identity Theft Matching Game
-            p Drag the term on the left over to the matching definition on the right
-            main.container
-            div
-                ul.draggable-list
+    .ui.container#title
+        h1 Romance Scams Matching Game
+        p Drag the term on the left over to the matching definition on the right
+    main.container
+        div#div1
+            ul.draggable-list
                 li#t1(draggable='true') Financial Identity Theft
                 li#t2(draggable='true') Medical Identity Theft
                 li#t3(draggable='true') Tax Identity Theft
 
-            div
-                ul.draggable-list
-                li#d3(draggable='true') Thieves use your personal information to file a fake tax return to get a refund that belongs to you 
-                li#d1(draggable='true') Thieves use your personal information to open or use an account without your permission 
-                li#d2(draggable='true') Thieves use your personal information to submit fraudulent claims to Medicare or other health insurers without your authorization 
+        div#div2
+            ul.draggable-list
+                li#d3(draggable='true') After Christopher shares his story of a failing business and the threat of losing his home, Sophia sends him $10,000 from her retirement savings. 
+                li#d1(draggable='true') Christopher introduces himself to Sophia on an online dating platform as a charming, retired businessman. 
+                li#d2(draggable='true')  Christopher's messages to Sophia become increasingly romantic, making her feel special with tons of compliments and affection.
+        
+                
+
+#endMessage
+    h3 Well done!
+    table
+      tr
+        th Term 
+        th Definition
+      tr
+        td Financial Identity Theft
+        td Thieves use your personal information to open or use an account without your permission 
+      tr
+        td Medical Identity Theft
+        td Thieves use your personal information to submit fraudulent claims to Medicare or other health insurers without your authorization 
+      tr
+        td Tax Identity Theft
+        td Thieves use your personal information to file a fake tax return to get a refund that belongs to you 
+
+    button(onclick='playAgain()') Play Again
 
 
-            #endMessage
-            h3 Well done!
-            table
-                tr
-                th Term 
-                th Definition
-                tr
-                td Financial Identity Theft
-                td Thieves use your personal information to open or use an account without your permission 
-                tr
-                td Medical Identity Theft
-                td Thieves use your personal information to submit fraudulent claims to Medicare or other health insurers without your authorization 
-                tr
-                td Tax Identity Theft
-                td Thieves use your personal information to file a fake tax return to get a refund that belongs to you 
-
-            button(onclick='playAgain()') Play Again
-
-
-        script(src="/js/drag-drop.js")    
-        block styles
-        link(rel='stylesheet', href='/css/drag-drop.css')  
-
-
+script(src="/js/drag-drop.js")    
+block styles
+link(rel='stylesheet', href='/css/drag-drop.css?v=1.0')  

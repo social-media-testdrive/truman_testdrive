@@ -2,7 +2,8 @@
     max-width: 960px;
     margin: auto;
   }
-  
+
+
   body {
     background-color: #eceff1;
     color: #37474f;
@@ -75,5 +76,6 @@
   
   
   #endMessage {
-    display: none;
+ display: none;
   }
+
