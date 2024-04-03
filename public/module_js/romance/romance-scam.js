@@ -1207,9 +1207,12 @@ function setLinks(currentPage) {
         nextlink = baseurl + "trusted";
       } else if (currentPage === "trusted") {
         backlink = baseurl + "fake-websites";
-        nextlink = baseurl + "quiz";
-      }  else if (currentPage === "quiz") {
+        nextlink = baseurl + "matching";
+      }else if (currentPage === "matching") {
         backlink = baseurl + "trusted";
+        nextlink = baseurl + "quiz";
+      }else if (currentPage === "quiz") {
+        backlink = baseurl + "matching";
         nextlink = baseurl + "reflection";
       } else if (currentPage === "reflection") {
         backlink = baseurl + "quiz";
