@@ -29,7 +29,7 @@
       margin: 25px;
       background-color: #cfd8dc;
       border: 3px solid #b0bec5;
-      color: #263238;
+      color: #382634;
       cursor: grab;
       text-align: center;
   }
@@ -51,7 +51,7 @@
   }
   
   td {
-    border: 1px solid #90a4ae;
+    border: 1px solid #a7ae90;
   }
   
   tr:nth-child(even) {
