@@ -1,41 +1,27 @@
 
 #matching.hidden
     .ui.container#reflection-read
-        .limit#learn-target(style="padding: 0;")    
-
-    block content
-
-    .ui.cards
-        .card
-            .content
-            .header Elliot Fu
-            .meta Friend
-            .description
-                | Elliot Fu is a film-maker from New York.
-        .card
-            .content
-            .header Veronika Ossi
-            .meta Friend
-            .description
-                | Veronika Ossi is a set designer living in New York who enjoys kittens, music, and partying.
-        .card
-            .content
-            .header Jenny Hess
-            .meta Friend
-            .description
-                | Jenny is a student studying Media Management at the New School
+        .limit#learn-target(style="padding: 0;")
 
     .ui.container#title
 
-        h1 Romance Scams Matching Game
+        h1 
+            i.book.icon
+            | Romance Scams Matching Game
         p Drag the term on the left over to the matching definition on the right
 
     main.container
         div#div1
             ul.draggable-list
-                li#t1(draggable='true') Create Fake Profiles. The scammer sets up a compelling but false profile on a dating or social networking site to attract the victim.
-                li#t2(draggable='true')  Contact and Groom. The scammer builds a relationship with the victim, establishing trust through conversations and emotional connections
-                li#t3(draggable='true') Make a Request. After gaining the victim's trust, the scammer asks for money or favors, often inventing a crisis that requires financial aid.
+                li#t1(draggable='true') 
+                    strong Create Fake Profiles. 
+                    | The scammer sets up a compelling but false profile on a dating or social networking site to attract the victim.
+                li#t2(draggable='true') 
+                    strong Contact and Groom. 
+                    | The scammer builds a relationship with the victim, establishing trust through conversations and emotional connections
+                li#t3(draggable='true') 
+                    strong Make a Request. 
+                    | After gaining the victim's trust, the scammer asks for money or favors, often inventing a crisis that requires financial aid.
 
         div#div2
             ul.draggable-list
@@ -52,13 +38,19 @@
         th Term 
         th Definition
       tr
-        td Create Fake Profiles. The scammer sets up a compelling but false profile on a dating or social networking site to attract the victim.
+        td 
+            strong Create Fake Profiles. 
+            | The scammer sets up a compelling but false profile on a dating or social networking site to attract the victim.
         td Christopher introduces himself to Sophia on an online dating platform as a charming, retired businessman.
       tr
-        td Contact and Groom. The scammer builds a relationship with the victim, establishing trust through conversations and emotional connections.
+        td 
+            strong Contact and Groom. 
+            | The scammer builds a relationship with the victim, establishing trust through conversations and emotional connections.
         td Christopher's messages to Sophia become increasingly romantic, making her feel special with tons of compliments and affection. 
       tr
-        td Make a Request. After gaining the victim's trust, the scammer asks for money or favors, often inventing a crisis that requires financial aid.
+        td 
+            strong Make a Request. 
+            | After gaining the victim's trust, the scammer asks for money or favors, often inventing a crisis that requires financial aid.
         td After Christopher shares his story of a failing business and the threat of losing his home, Sophia sends him $10,000 from her retirement savings.
 
     button(onclick='playAgain()') Play Again
