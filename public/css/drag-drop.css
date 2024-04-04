@@ -1,4 +1,4 @@
-.container {
+#matchingContainer {
     max-width: 960px;
     margin: auto;
   }
@@ -9,7 +9,7 @@
     color: #37474f;
   }
   
-  h1, h3, p {
+#matchingTitles {
     text-align: center;
   }
   
@@ -23,34 +23,37 @@
     padding: 5px;
   }
   
-  li {
-      list-style: none;
-      padding: 10px;
-      margin: 25px;
-      background-color: #cfd8dc;
-      border: 3px solid #b0bec5;
-      color: #382634;
-      cursor: grab;
-      text-align: center;
-  }
+
+
+  #t1, #t2, #t3, #d3, #d1, #d2 {
+    list-style: none;
+    padding: 10px;
+    margin: 25px;
+    background-color: #cfd8dc;
+    border: 3px solid #b0bec5;
+    color: #382634;
+    cursor: grab;
+    text-align: center;
+}
+
   
   .over {
     background-color: #3b6c8182;
   }
   
   
-  table {
+  #myTable {
     max-width:640px;
     margin: auto;
     margin-bottom: 20px;
     /* border: 1px solid #b0bec5; */
   }
   
-  th, td {
+  #myTable th, #myTable td {
     padding: 10px 10px;
   }
   
-  td {
+  #myTable td {
     border: 1px solid #a7ae90;
   }
   
@@ -58,7 +61,7 @@
     background-color: #cfd8dc;
   }
   
-  button {
+  #matchingButton {
     margin: auto;
     cursor: pointer;
     display: block;
@@ -70,7 +73,7 @@
     color: #fff;
   }
   
-  button:hover {
+#matchingButton:hover {
     background-color: #516a75;
   }
   

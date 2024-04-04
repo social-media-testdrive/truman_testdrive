@@ -5,12 +5,12 @@
 
     .ui.container#title
 
-        h1 
+        h1#matchingTitles 
             i.book.icon
             | Romance Scams Matching Game
-        p Drag the term on the left over to the matching definition on the right
+        p#matchingTitles Drag the term on the left over to the matching definition on the right
 
-    main.container
+    main.container#matchingContainer
         div#div1
             ul.draggable-list
                 li#t1(draggable='true') 
@@ -32,8 +32,8 @@
                 
 
 #endMessage
-    h3 Well done!
-    table
+    h3#matchingTitles Well done!
+    table#myTable
       tr
         th Term 
         th Definition
@@ -53,7 +53,7 @@
             | After gaining the victim's trust, the scammer asks for money or favors, often inventing a crisis that requires financial aid.
         td After Christopher shares his story of a failing business and the threat of losing his home, Sophia sends him $10,000 from her retirement savings.
 
-    button(onclick='playAgain()') Play Again
+    button#matchingButton(onclick='playAgain()') Play Again
 
 
 script(src="/js/drag-drop.js")    
