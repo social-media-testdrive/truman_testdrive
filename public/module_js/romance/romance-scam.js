@@ -1325,9 +1325,12 @@ function setLinks(currentPage) {
         nextlink = baseurl + "types";
       } else if (currentPage === "types") {
         backlink = baseurl + "objectives";
-        nextlink = baseurl + "pressure";
-      } else if (currentPage === "pressure") {
+        nextlink = baseurl + "examples";
+      } else if (currentPage === "examples") {
         backlink = baseurl + "types";
+        nextlink = baseurl + "pressure";
+      }  else if (currentPage === "pressure") {
+        backlink = baseurl + "examples";
         nextlink = baseurl + "sob";
       } else if (currentPage === "sob") {
         backlink = baseurl + "pressure";
@@ -1337,9 +1340,12 @@ function setLinks(currentPage) {
         nextlink = baseurl + "blackmail";
       } else if (currentPage === "blackmail") {
         backlink = baseurl + "emotional";
+        nextlink = baseurl + "callout";
+      } else if (currentPage === "callout") {
+        backlink = baseurl + "blackmail";
         nextlink = baseurl + "reflection";
       } else if (currentPage === "reflection") {
-        backlink = baseurl + "blackmail";
+        backlink = baseurl + "callout";
         nextlink = baseurl + "quiz";
       } else if (currentPage === "quiz") {
         backlink = baseurl + "reflection";
@@ -1438,9 +1444,12 @@ function setLinks(currentPage) {
         nextlink = baseurl + "responsive";
       } else if (currentPage === "responsive") {
         backlink = baseurl + "scammed";
+        nextlink = baseurl + "callout";
+      } else if (currentPage === "callout") {
+        backlink = baseurl + "responsive";
         nextlink = baseurl + "quiz";
       } else if (currentPage === "quiz") {
-        backlink = baseurl + "responsive";
+        backlink = baseurl + "callout";
         nextlink = baseurl + "takeaways";
       } else if (currentPage === "takeaways") {
         backlink = baseurl + "quiz";

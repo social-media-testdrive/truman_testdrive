@@ -3,7 +3,7 @@
     "progress": 63.63,
     "type": "abcd",
     "partial": "q.html",
-    "prompt": "1. Why do scammers prefer gift cards and peer-to-peer payment services for receiving money?",
+    "prompt": "1. Why do scammers prefer gift cards for receiving money?",
     "choices": {
       "a": {
         "text": "A. They offer unlimited transactions and no fees"
