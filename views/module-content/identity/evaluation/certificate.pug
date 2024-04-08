@@ -44,6 +44,10 @@
                         a.ui.button.huge.blue.rounded-cert-button#share-button
                             i.share.icon
                             | Share
+                        .fb-share-button(data-href='https://dart-test.socialsandbox.xyz/' data-layout='' data-size='')
+                            a.fb-xfbml-parse-ignore(target='_blank' href='https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdart-test.socialsandbox.xyz%2F&src=sdkpreparse')
+                                | Share
+
                 //- .ui.two.column.grid(style="margin-top: 10px;")
                 //-     .left.aligned.column
                 //-         a.ui.button.huge.basic.blue.rounded-cert-button#download-button(onclick="createPDF()")
@@ -68,6 +72,10 @@
                             i.download.icon
                             | Download
                     .right.aligned.column
-                        a.ui.button.huge.blue.rounded-cert-button#share-button
-                            i.share.icon
-                            | Share
+                        .fb-share-button(data-href='https://dart-test.socialsandbox.xyz/' data-layout='' data-size='')
+                            a.ui.button.huge.blue.rounded-cert-button#share-button.fb-xfbml-parse-ignore(target='_blank' href='https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdart-test.socialsandbox.xyz%2F&src=sdkpreparse')
+                                i.share.icon
+                                | Share
+
+block scripts 
+    script(async='' defer='' crossorigin='anonymous' src='https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0' nonce='yfrqCXgz')
