@@ -1,4 +1,4 @@
-const containerIds = ['#practice1', '#practice2', '#practice3'];
+const containerIds = ['#practice1', '#practice2', '#practice3', '#practice4', '#practice5', '#practice6', '#practice7'];
 
 containerIds.forEach(id => {
   const container = document.querySelector(id);

@@ -14,9 +14,17 @@ block content
         include practice/conversation.pug
         include practice/conversation2.pug
         include practice/conversation3.pug
+        include practice/conversation4.pug
+        include practice/conversation5.pug
+        include practice/conversation6.pug
+        include practice/conversation7.pug
+        include practice/conversation8.pug
+        include practice/ending.pug
         include practice/results.pug
         include practice/reflection.pug
         include practice/takeaways.pug
+    .ui.blue.button#resetPractice Reset
+
     audio(id="narration-audio", src=`https://dart-store.s3.amazonaws.com/identity+theft+voice+over/${section}/${page}_${user.avatar.toLowerCase()}.mp3`, preload="auto")
 
 
@@ -42,100 +50,436 @@ block scripts
     script(src='/module_js/romance/romance-scam.js')    
     script(src='/module_js/romance/clickndrag_scroll.js')
     script.
+        function incrementScore(element) {
+            var currentValue = parseInt($(element).text());
+            var newValue = currentValue + 1;
+            $(element).text(newValue);
+        }
+
+        function postChoice(questionNum, choice, pointToAdd) {
+            console.log("Posting choice to server");
+            console.log("Question number: " + questionNum);
+            console.log("Choice: " + choice);
+            console.log("Point to add: " + pointToAdd);
+            
+            var choiceData = {
+                questionNum: questionNum,
+                choice: choice,
+                pointToAdd: pointToAdd,
+                moduleToUpdate: "romance"
+            };
+
+            fetch('/postPracticeChoice', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(choiceData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    // If the response is not ok, throw an error to be caught by the catch block
+                    return response.json().then(errData => {
+                        throw new Error(`Server responded with error: ${errData.message}`);
+                    });
+                }
+                // Check if at end of section, then need to parse the JSON to update results page to current info
+                if (choiceData.questionNum === "choice2") {
+                    console.log('Choice data for question 2 posted successfully');
+                    return response.json(); // Parse and return the JSON response only for questionNum "2"
+                } 
+            })
+            .then(data => {
+                if(data) {
+                    let results = data.updatedChoices;
+                    // data now contains the parsed JSON object sent from the server
+                    //- console.log('Updated Choices:', data.updatedChoices);
+                    //- set results page
+
+                    //- setResults();
+                    //- const selectedChoice = "Question 1: " + results.choice1 + ", Question 2: " + results.choice2 + ", Score Total: " + results.scoreTotal + "/2";
+                    //- $('#updatedResults').text(`BEY You selected: ${selectedChoice}`);
+
+                     $('#updatedResults').text("Score: " + results.scoreTotal + " out of 2");
+                     if(results.choice1 === "yes") {
+                        $('#selected1').text("✅ You told Rachel to check Alex’s profile before continuing to talk to him.");
+                        $('#explain1').text("Great job! Always check the profile first to check if this is a scammer's account!");
+                     } else {
+                        $('#selected1').text("❌ You did not tell Rachel to check Alex’s profile before continuing to talk to him.");
+                        $('#explain1').text("Warning: Always check the profile first to check if this is a scammer's account!");
+                     }
+
+                     if(results.choice2 === "yes") {
+                        $('#selected2').text("✅ You told Rachel not to switch to text messaging.");
+                        $('#explain2').text("Great job! In order to not be traced, Romance Scammers usually want to move quickly from well-known social networking or dating sites to other methods, usually texting. Therefore, staying on the app message tool is a safer method.");
+                     } else {
+                        $('#selected2').text("❌ You told Rachel to switch to text messaging.");
+                        $('#explain2').text("Warning: In order to not be traced, Romance Scammers usually want to move quickly from well-known social networking or dating sites to other methods, usually texting. Therefore, staying on the app message tool is a safer method.");
+                     }
+
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Handle network errors
+            });
+        }
+
+        $('#resetPractice').click(function() {
+            // Reset scoreTotal and choice1
+            var resetData = {
+                questionNum: "reset",
+                choice: "none",
+                pointToAdd: 0,
+                moduleToUpdate: "romance"
+            };
+
+            // Send a POST request to the server to reset practice choices
+            fetch('/postPracticeChoice', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(resetData)
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Reset successful');
+
+                    //- take back to start page of romance practice activity
+                    window.location.href = '/course-player?module=romance&section=practice&page=arrive';
+
+                    //- location.reload(); 
+                    // Optionally, you can also update the UI here if needed
+                } else {
+                    console.error('Failed to reset data');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Handle network errors
+            });
+        });
+
         $('[data-modal="yesModal"]').click(function() {
             $.modal({
-                title: 'Rachel checks the profile.',
+                title: '<i class="check green circle icon"></i> Great Job!',
                 class: 'mini',
                 closeIcon: false,
                 closable: false,
-                content: 'You tell Rachel to check Alex\'s profile. It is very sparse with only one picture despite him claiming to be a world traveler in his bio. Click the blue "Next" button below to continue.',
+                content: 'You tell Rachel to check Alex\'s profile. Rachel sees that his profile is very sparse with only one picture despite him claiming to be a world traveler in his bio. <br><br> Click the "Next" button to continue.',
                 //- actions: [{
                 //- text: 'Got it',
                 //- class: 'green'
                 //- }]
                 onVisible: function() {
                     // User confirmed Yes
+                    postChoice('choice1', 'yes', 1)
+
                     localStorage.setItem('conversation_choice', 'yes');
-                    console.log('Choice saved as yes');
+                    //- console.log('Choice saved as yes');
+                    //- incrementScore('#choiceResult');
+                    //- $('#explain1').text('Good job! Always check the profile first!');
+
+
                     return true; // This allows the modal to close
                 },
             }).modal('show');
         });
         $('[data-modal="noModal"]').click(function() {
             $.modal({
-                title: 'Rachel doesn\'t check the profile.',
+                title: '<i class="exclamation triangle red icon"></i> Warning!',
                 class: 'mini',
                 closeIcon: false,
                 closable: false,
-                content: 'You decide not to tell Rachel to check Alex\'s profile. They continue their conversation. Click the "Next" button to continue.',
+                content: 'You decide not to tell Rachel to check Alex\'s profile, a decision that might be unsafe. Their conversation moves forward without this caution. Click the "Next" button to continue.',
                 onVisible: function() {
                     // User confirmed Yes
+                    postChoice('choice1', 'no', 0)
+
                     localStorage.setItem('conversation_choice', 'no');
-                    console.log('Choice saved as no');
+                    //- console.log('Choice saved as no');
+                    //- $('#explain1').text('Warning! Always check the profile first!');
                     return true; // This allows the modal to close
                 },
             }).modal('show');
         });
+
         $('[data-modal="yesModal2"]').click(function() {
             $.modal({
-                title: 'Rachel text messages Alex.',
+                title: '<i class="exclamation triangle red icon"></i> Warning!',
                 class: 'mini',
                 closeIcon: false,
                 closable: false,
-                content: 'You tell Rachel to text Alex. They continue their conversation there instead of Facebook Messenger. Click the "Next" button below to continue.',
+                content: 'You tell Rachel to agree to texting Alex, a decision that might be unsafe. They continue their conversation there instead of Facebook Messenger.<br><br>Click the "Next" button below to continue.',
                 //- actions: [{
                 //- text: 'Got it',
                 //- class: 'green'
                 //- }]
                 onVisible: function() {
                     // User confirmed Yes
+                    postChoice('choice2', 'yes', 0)
+
                     localStorage.setItem('conversation_choice2', 'yes');
-                    console.log('Choice saved as yes');
+                    //- console.log('Choice saved as yes');
                     return true; // This allows the modal to close
                 },
             }).modal('show');
         });
         $('[data-modal="noModal2"]').click(function() {
             $.modal({
-                title: 'Rachel asks to continue the conversation on Facebook Messenger.',
+                title: '<i class="check green circle icon"></i> Great Job!',
                 class: 'mini',
                 closeIcon: false,
                 closable: false,
-                content: 'You tell Rachel to stay on Facebook Messenger. They continue their conversation there. Click the "Next" button to continue.',
+                content: 'You tell Rachel to stay on Facebook Messenger. They continue their conversation there.<br><br>Click the "Next" button to continue.',
                 onVisible: function() {
                     // User confirmed Yes
+                    postChoice('choice2', 'no', 1)
+
                     localStorage.setItem('conversation_choice2', 'no');
-                    console.log('Choice saved as no');
+                    //- console.log('Choice saved as no');
                     return true; // This allows the modal to close
                 },
             }).modal('show');
         });
-        const queryParams = new URLSearchParams(window.location.search);
-        const page = queryParams.get('page');
-        console.log(page);
-        if(page === 'results') {
-            reload();
-            console.log("In the results page");
-            var conversationChoice = localStorage.getItem('conversation_choice');
-            var conversationChoice2 = localStorage.getItem('conversation_choice2');
-            if (conversationChoice === 'yes' && conversationChoice2 === 'no') {
-                //- $('#choiceResult').text('2');
-                $('#explain1').text('Good job! Always check the profile first!');
-                $('#explain2').text('Great job! In order to not be traced, Romance Scammers usually want to move quickly from well-known social networking or dating sites to other methods, usually texting. Therefore, staying on the app message tool is a safer method.');
-            } else if(conversationChoice === 'yes' && conversationChoice2 === 'yes') {
-                //- $('#choiceResult').text('1');
-                $('#explain1').text('Good job! Always check the profile first!');
-                $('#explain2').text('Warning! In order to not be traced, Romance Scammers usually want to move quickly from well-known social networking or dating sites to other methods, usually texting. Therefore, staying on the app message tool is a safer method.');
-            } else if(conversationChoice !== 'no' && conversationChoice2 === 'yes') {
-                //- $('#choiceResult').text('0');
-                $('#explain1').text('Warning! Always check the profile first!');
-                $('#explain2').text('Warning! In order to not be traced, Romance Scammers usually want to move quickly from well-known social networking or dating sites to other methods, usually texting. Therefore, staying on the app message tool is a safer method.');
-            } else {
-                //- $('#choiceResult').text('1');
-                $('#explain1').text('Warning! Always check the profile first!');
-                $('#explain2').text('Good job! In order to not be traced, Romance Scammers usually want to move quickly from well-known social networking or dating sites to other methods, usually texting. Therefore, staying on the app message tool is a safer method.');
-            }
-        }
+
+        $('[data-modal="yesModal4"]').click(function() {
+            $.modal({
+                title: '<i class="exclamation triangle red icon"></i> Warning!',
+                class: 'mini',
+                closeIcon: false,
+                closable: false,
+                content: 'You encourage Rachel to dive into the relationship, but risk rushing into things.<br><br>Click the "Next" button below to continue.',
+                //- actions: [{
+                //- text: 'Got it',
+                //- class: 'green'
+                //- }]
+                onVisible: function() {
+                    // User confirmed Yes
+                    postChoice('choice4', 'yes', 0)
+
+                    localStorage.setItem('conversation_choice2', 'yes');
+                    //- console.log('Choice saved as yes');
+                    return true; // This allows the modal to close
+                },
+            }).modal('show');
+        });
+        $('[data-modal="noModal4"]').click(function() {
+            $.modal({
+                title: '<i class="check green circle icon"></i> Great Job!',
+                class: 'mini',
+                closeIcon: false,
+                closable: false,
+                content: 'You suggest Rachel remain cautious as it has only been a few week and seems too good to be true. This could help keep her safe.<br><br>Click the "Next" button to continue.',
+                onVisible: function() {
+                    // User confirmed Yes
+                    postChoice('choice4', 'no', 1)
+
+                    localStorage.setItem('conversation_choice2', 'no');
+                    //- console.log('Choice saved as no');
+                    return true; // This allows the modal to close
+                },
+            }).modal('show');
+        });
+
+        $('[data-modal="yesModal5"]').click(function() {
+            $.modal({
+                title: '<i class="exclamation triangle red icon"></i> Warning!',
+                class: 'mini',
+                closeIcon: false,
+                closable: false,
+                content: 'It seems like Alex is very busy. However, it’s very important to make sure that his behavior is consistent with his words. It’s concerning that despite his strong desire to meet Rachel in person, he has consistently come up with reasons as to why he is unable to do so. This is a warning sign of a Romance Scam.<br><br>Click the "Next" button below to continue.',
+                //- actions: [{
+                //- text: 'Got it',
+                //- class: 'green'
+                //- }]
+                onVisible: function() {
+                    // User confirmed Yes
+                    postChoice('choice5', 'yes', 0)
+
+                    localStorage.setItem('conversation_choice2', 'yes');
+                    //- console.log('Choice saved as yes');
+                    return true; // This allows the modal to close
+                },
+            }).modal('show');
+        });
+        $('[data-modal="noModal5"]').click(function() {
+            $.modal({
+                title: '<i class="check green circle icon"></i> Great Job!',
+                class: 'mini',
+                closeIcon: false,
+                closable: false,
+                content: 'Being avoidant of meeting in person is a warning sign of a Romance Scam. Always remain cautious!<br><br>Click the "Next" button to continue.',
+                onVisible: function() {
+                    // User confirmed Yes
+                    postChoice('choice5', 'no', 1)
+
+                    localStorage.setItem('conversation_choice2', 'no');
+                    //- console.log('Choice saved as no');
+                    return true; // This allows the modal to close
+                },
+            }).modal('show');
+        });
+
+        $('[data-modal="yesModal6"]').click(function() {
+            $.modal({
+                title: '<i class="exclamation triangle red icon"></i> Warning!',
+                class: 'mini',
+                closeIcon: false,
+                closable: false,
+                content: 'Scammers will often provide a fake sob story before requesting money or criminal help. Scammers often lie about being in a situation where the authorities are threatening them for large amounts of money that they don’t have.<br><br> Click the "Next" button to continue.',
+                //- actions: [{
+                //- text: 'Got it',
+                //- class: 'green'
+                //- }]
+                onVisible: function() {
+                    // User confirmed Yes
+                    postChoice('choice6', 'yes', 0)
+
+                    localStorage.setItem('conversation_choice2', 'yes');
+                    //- console.log('Choice saved as yes');
+                    return true; // This allows the modal to close
+                },
+            }).modal('show');
+        });
+        $('[data-modal="noModal6"]').click(function() {
+            $.modal({
+                title: '<i class="check green circle icon"></i> Great Job!',
+                class: 'mini',
+                closeIcon: false,
+                closable: false,
+                content: 'Scammers often tell fake sob stories to get money or ask for criminal help. They might pretend that the authorities are threatening them for large amounts of money that they don\'t have. Reporting scammers helps protect more people.<br><br>Regarding reporting this scammer, you can report the scammer’s account to Facebook. You can also report to the FTC or FBI on the official government website.<br><br>Click the "Next" button to continue.',
+                onVisible: function() {
+                    // User confirmed Yes
+                    postChoice('choice6', 'no', 1)
+
+                    localStorage.setItem('conversation_choice2', 'no');
+                    //- console.log('Choice saved as no');
+                    return true; // This allows the modal to close
+                },
+            }).modal('show');
+        });
+        $('[data-modal="maybeModal6"]').click(function() {
+            $.modal({
+                title: '<i class="check green circle icon"></i> Great Job!',
+                class: 'mini',
+                closeIcon: false,
+                closable: false,
+                content: 'Scammers often tell fake sob stories to get money or ask for criminal help. They might pretend that the authorities are threatening them for large amounts of money they don\'t have. However, giving them the opportunity to explain poses a risk. Romance scammers can be very persuasive, using various strategies to deceive their targets can lead to falling into their trap.<br><br>Victims may find it difficult to end a relationship immediately, but the bottom line is never to give money to someone you only know online and have never met in person.<br><br>Click the "Next" button to continue.',
+                onVisible: function() {
+                    // User confirmed Yes
+                    postChoice('choice6', 'maybe', 1)
+
+                    localStorage.setItem('conversation_choice2', 'no');
+                    //- console.log('Choice saved as no');
+                    return true; // This allows the modal to close
+                },
+            }).modal('show');
+        });
+
+        $('[data-modal="yesModal7"]').click(function() {
+            $.modal({
+                title: '<i class="check green circle icon"></i> Great Job!',
+                class: 'mini',
+                closeIcon: false,
+                closable: false,
+                content: 'Scammers often ask for small amounts of money initially, and then increase their requests. Also, there is a human tendency where many people tend to stay consistent with their past actions. As a result, they may ignore signs of a scam and keep cooperating. Since Rachel sent the money for the first time, the romance scammer attempted to take advantage of this tendency to request more money.<br><br>Click the "Next" button to continue.',
+                //- actions: [{
+                //- text: 'Got it',
+                //- class: 'green'
+                //- }]
+                onVisible: function() {
+                    // User confirmed Yes
+                    postChoice('choice7', 'yes', 0)
+
+                    localStorage.setItem('conversation_choice2', 'yes');
+                    //- console.log('Choice saved as yes');
+                    return true; // This allows the modal to close
+                },
+            }).modal('show');
+        });
+        $('[data-modal="noModal7"]').click(function() {
+            $.modal({
+                title: '<i class="exclamation triangle red icon"></i> Warning!',
+                class: 'mini',
+                closeIcon: false,
+                closable: false,
+                content: 'Scammers often ask for small amounts of money initially, and then increase their requests. Also, there is a human tendency where many people tend to stay consistent with their past actions. As a result, they may ignore signs of a scam and keep cooperating. Since Rachel sent the money for the first time, the romance scammer attempted to take advantage of this tendency to request more money.<br><br>This is a strong warning sign that Alex is a romance scammer. You should suggest your friend Rachel end the relationship with him immediately and report him.<br><br>Click the "Next" button to continue.',
+                onVisible: function() {
+                    // User confirmed Yes
+                    postChoice('choice5', 'no', 1)
+
+                    localStorage.setItem('conversation_choice2', 'no');
+                    //- console.log('Choice saved as no');
+                    return true; // This allows the modal to close
+                },
+            }).modal('show');
+        });
+        $('[data-modal="yesModal8"]').click(function() {
+            $.modal({
+                title: '<i class="check green circle icon"></i> Great Job!',
+                class: 'mini',
+                closeIcon: false,
+                closable: false,
+                content: 'Alex brought up their relationship, the time they\'ve spent talking, the sweet moments, and how he considers Rachel as his soulmate. These are all attempts to manipulate Rachel\'s emotions, to make her feel guilty and send money.<br><br>Click the "Next" button to continue.',
+                //- actions: [{
+                //- text: 'Got it',
+                //- class: 'green'
+                //- }]
+                onVisible: function() {
+                    // User confirmed Yes
+                    postChoice('choice7', 'yes', 0)
+
+                    localStorage.setItem('conversation_choice2', 'yes');
+                    //- console.log('Choice saved as yes');
+                    return true; // This allows the modal to close
+                },
+            }).modal('show');
+        });
+        $('[data-modal="noModal8"]').click(function() {
+            $.modal({
+                title: '<i class="times red icon"></i> Incorrect',
+                class: 'mini',
+                closeIcon: false,
+                closable: false,
+                content: 'Alex did not use this technique in the conversation in the last page. Alex brought up their relationship, the time they\'ve spent talking, the sweet moments, and how he considers Rachel his soulmate. These are all attempts to manipulate Rachel\'s emotions, to make her feel guilty and send money.<br><br>Click the "Next" button to continue.',
+                onVisible: function() {
+                    // User confirmed Yes
+                    postChoice('choice5', 'no', 1)
+
+                    localStorage.setItem('conversation_choice2', 'no');
+                    //- console.log('Choice saved as no');
+                    return true; // This allows the modal to close
+                },
+            }).modal('show');
+        });
+
+        //- const queryParams = new URLSearchParams(window.location.search);
+        //- const page = queryParams.get('page');
+        //- console.log(page);
+        //- if(page === 'results') {
+        //-     console.log("In the results page");
+        //-     var conversationChoice = localStorage.getItem('conversation_choice');
+        //-     var conversationChoice2 = localStorage.getItem('conversation_choice2');
+        //-     if (conversationChoice === 'yes' && conversationChoice2 === 'no') {
+        //-         //- $('#choiceResult').text('2');
+        //-         $('#explain1').text('Good job! Always check the profile first!');
+        //-         $('#explain2').text('Great job! In order to not be traced, Romance Scammers usually want to move quickly from well-known social networking or dating sites to other methods, usually texting. Therefore, staying on the app message tool is a safer method.');
+        //-     } else if(conversationChoice === 'yes' && conversationChoice2 === 'yes') {
+        //-         //- $('#choiceResult').text('1');
+        //-         $('#explain1').text('Good job! Always check the profile first!');
+        //-         $('#explain2').text('Warning! In order to not be traced, Romance Scammers usually want to move quickly from well-known social networking or dating sites to other methods, usually texting. Therefore, staying on the app message tool is a safer method.');
+        //-     } else if(conversationChoice !== 'no' && conversationChoice2 === 'yes') {
+        //-         //- $('#choiceResult').text('0');
+        //-         $('#explain1').text('Warning! Always check the profile first!');
+        //-         $('#explain2').text('Warning! In order to not be traced, Romance Scammers usually want to move quickly from well-known social networking or dating sites to other methods, usually texting. Therefore, staying on the app message tool is a safer method.');
+        //-     } else {
+        //-         //- $('#choiceResult').text('1');
+        //-         $('#explain1').text('Warning! Always check the profile first!');
+        //-         $('#explain2').text('Good job! In order to not be traced, Romance Scammers usually want to move quickly from well-known social networking or dating sites to other methods, usually texting. Therefore, staying on the app message tool is a safer method.');
+        //-     }
+        //- }
 
 
     //- script(src='/module_js/identity/identity-theft-practice.js', emailData=emails) 

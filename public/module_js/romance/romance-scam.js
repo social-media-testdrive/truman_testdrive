@@ -1471,6 +1471,37 @@ function setLinks(currentPage) {
         backlink = baseurl + "arrive";
   
         var conversationChoice = localStorage.getItem('conversation_choice');
+        // let conversationChoice;
+        // let scoreTotal;
+        
+        // fetch('/getPracticeChoices', {
+        //     method: 'GET',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     }
+        // })
+        // .then(response => {
+        //     if (response.ok) {
+        //         return response.json();
+        //     } else {
+        //         throw new Error('Failed to fetch practice choices');
+        //     }
+        // })
+        // .then(data => {
+        //     // Access properties from the retrieved data and assign them to variables
+        //     scoreTotal = data.scoreTotal;
+        //     choice1 = data.choice1;
+        //     // Now you can use the variables as needed
+        //     console.log('Score Total:', scoreTotal);
+        //     console.log('Choice 1:', choice1);
+        // })
+        // .catch(error => {
+        //     console.error('Error:', error);
+        //     // Handle network errors or errors in the response
+        // });
+        
+
+
         if (conversationChoice === 'yes') {
           nextlink = baseurl + "conversation2";
         } else if (conversationChoice === 'no') {
@@ -1486,9 +1517,33 @@ function setLinks(currentPage) {
       } else if (currentPage === "conversation3") {
         $('.ui.modal').modal('hide');
         backlink = baseurl + "conversation";
+        nextlink = baseurl + "conversation4";
+      } else if (currentPage === "conversation4") {
+        $('.ui.modal').modal('hide');
+        backlink = baseurl + "conversation3";
+        nextlink = baseurl + "conversation5";
+      } else if (currentPage === "conversation5") {
+        $('.ui.modal').modal('hide');
+        backlink = baseurl + "conversation4";
+        nextlink = baseurl + "conversation6";
+      } else if (currentPage === "conversation6") {
+        $('.ui.modal').modal('hide');
+        backlink = baseurl + "conversation5";
+        nextlink = baseurl + "conversation7";
+      } else if (currentPage === "conversation7") {
+        $('.ui.modal').modal('hide');
+        backlink = baseurl + "conversation6";
+        nextlink = baseurl + "conversation8";
+      } else if (currentPage === "conversation8") {
+        $('.ui.modal').modal('hide');
+        backlink = baseurl + "conversation7";
+        nextlink = baseurl + "ending";
+      } else if (currentPage === "ending") {
+        $('.ui.modal').modal('hide');
+        backlink = baseurl + "conversation8";
         nextlink = baseurl + "results";
       } else if (currentPage === "results") {
-        backlink = baseurl + "conversation";
+        backlink = baseurl + "arrive";
         nextlink = baseurl + "takeaways";
       } else if (currentPage === "takeaways") {
         backlink = baseurl + "results";

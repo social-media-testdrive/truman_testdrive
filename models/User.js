@@ -157,6 +157,17 @@ const userSchema = new mongoose.Schema({
             questionScores: [{ type: Number }],
             questionChoices: Schema.Types.Mixed,
         }],
+        practiceChoices: {
+            scoreTotal: {type: Number, default: 0 },
+            choice1: {type: String, default: 'none'},
+            choice2: {type: String, default: 'none'},
+            choice3: {type: String, default: 'none'},
+            choice4: {type: String, default: 'none'},
+            choice5: {type: String, default: 'none'},
+            choice6: {type: String, default: 'none'},
+            choice7: {type: String, default: 'none'},
+            choice8: {type: String, default: 'none'},
+        },
         evaluationAttempts: [{
             timestamp: { type: Date, default: Date.now },
             scoreTotal: { type: Number, default: 0 },

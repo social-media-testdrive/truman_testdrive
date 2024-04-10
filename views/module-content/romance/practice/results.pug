@@ -1,27 +1,53 @@
 #results.hidden
-    .ui.container#results-read
-        .limit#learn-target
-            .ui.grid
-                .twelve.wide.column
-                    h1.ui.header.large#learn-title
-                        .content
-                            i.book.icon
-                            | First Conversation Results
-                    p You scored: 
-                        span#choiceResult 
-                        |  out of 2
-                    //- -
-                    //-     var conversationChoice = localStorage.getItem('conversation_choice');
-                    //-     if (conversationChoice === 'yes') {
-                    //-         $('#choiceResult').text('2');
-                    //-     } else {
-                    //-         $('#choiceResult').text('1');
-                    //-     }
+    .ui.container(style="width: 75%;")
+        h1.ui.header.large#learn-title(style="margin-top: 10px;")
+            .content
+                i.poll.icon
+                | Results
 
-                    b Check Profile Result: 
-                    p#explain1 Always check the profile first!
-                    b Switch Platforms Result:  
-                    p#explain2 In order to not be traced, Romance Scammers usually want to move quickly from well-known social networking or dating sites to other methods, usually texting. Therefore, staying on the app message tool is a safer method.
-                .four.wide.column
-                    .avatar-container(style="text-align: center;")
-                        img#dart_image1.ui.medium.image(src=user.avatarImg style="text-align: center; display: block; margin: 0 auto;")
+        .ui.stackable.grid(style="margin-top: 0px;")
+            .eight.wide.column
+                //- p You scored: 
+                //-     span #{user.moduleProgress.romance.practiceChoices.scoreTotal} out of 2
+                //-     span You selected: #{user.moduleProgress.romance.practiceChoices.choice1}
+                //-     span You selected: #{user.moduleProgress.romance.practiceChoices.choice2}
+
+                p#updatedResults 
+                    span Score: #{user.moduleProgress.romance.practiceChoices.scoreTotal} out of 2
+
+                b Initial Contact: 
+                if(user.moduleProgress.romance.practiceChoices.choice1 === "yes")
+                    p#selected1 ✅ You told Rachel to check Alex’s profile before continuing to talk to him.
+                    p#explain1 Great job! Always check the profile first to check if this is a scammer's account!
+                else
+                    p#selected1 ❌ You did not tell Rachel to check Alex’s profile before continuing to talk to him.
+                    p#explain1 Warning: Always check the profile first to check if this is a scammer's account!
+
+                b Occupation and Interests:  
+                if(user.moduleProgress.romance.practiceChoices.choice2 === "yes")
+                    p#selected2 ✅ You told Rachel not to switch to text messaging.
+                    p#explain2 Great job! In order to not be traced, Romance Scammers usually want to move quickly from well-known social networking or dating sites to other methods, usually texting. Therefore, staying on the app message tool is a safer method.
+                else
+                    p#selected2 ❌ You told Rachel to switch to text messaging.
+                    p#explain2 Warning: In order to not be traced, Romance Scammers usually want to move quickly from well-known social networking or dating sites to other methods, usually texting. Therefore, staying on the app message tool is a safer method.
+            .eight.wide.column
+                p#updatedResults 
+                    hi
+            
+
+                //- b Initial Contact Result: 
+                //- p#selected1 You told Rachel to check Alex’s profile before continuing to talk to him.
+                //- p#explain1 Great job! Always check the profile first to check if this is a scammer's account!
+                //- p#selected1 You did not tell Rachel to check Alex’s profile before continuing to talk to him.
+                //- p#explain1 Warning: Always check the profile first to check if this is a scammer's account!
+
+
+
+                //- b Occupation and Interests Result:  
+                //- p#selected2 You told Rachel to switch to text messaging.
+                //- p#explain2 Great job! In order to not be traced, Romance Scammers usually want to move quickly from well-known social networking or dating sites to other methods, usually texting. Therefore, staying on the app message tool is a safer method.
+                //- p#selected2 You told Rachel NOT to switch to text messaging.
+                //- p#explain2 Warning: In order to not be traced, Romance Scammers usually want to move quickly from well-known social networking or dating sites to other methods, usually texting. Therefore, staying on the app message tool is a safer method.
+            //- .four.wide.middle.aligned.column
+                //- .avatar-container(style="text-align: center;")
+                    //- img#dart_image1.ui.medium.image(src=user.avatarImg style="text-align: center; display: block; margin: 0 auto;")
