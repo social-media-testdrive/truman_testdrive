@@ -960,7 +960,7 @@ exports.postPracticeChoice = async (req, res, next) => {
 
         // Redirect or send a success response
         // res.status(200).send('Practice choice updated successfully');
-        if(questionNum === "choice2") {
+        if(questionNum === "choice7") {
           res.status(200).json({ 
               message: 'Practice choice updated successfully!',
               updatedChoices: existingUser.moduleProgress[moduleToUpdate].practiceChoices

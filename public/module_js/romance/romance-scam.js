@@ -1461,7 +1461,14 @@ function setLinks(currentPage) {
   
       if (currentPage === "objectives") {
         backlink = "/course-player?module=romance&section=reporting&page=objectives";
-        nextlink = baseurl + "arrive";
+
+        //- check if they have completed the practice module, then show results page
+        //- console.log("Checking if practice module is completed. Their score is: "  + scoreTotal);
+        if(scoreTotal > 0) {
+          nextlink = baseurl + "results";
+        } else {
+          nextlink = baseurl + "arrive";
+        }
       } else if (currentPage === "arrive") {
         $('.ui.modal').modal('hide');
         backlink = baseurl + "objectives";
@@ -1543,7 +1550,7 @@ function setLinks(currentPage) {
         backlink = baseurl + "conversation8";
         nextlink = baseurl + "results";
       } else if (currentPage === "results") {
-        backlink = baseurl + "arrive";
+        backlink = baseurl + "objectives";
         nextlink = baseurl + "takeaways";
       } else if (currentPage === "takeaways") {
         backlink = baseurl + "results";

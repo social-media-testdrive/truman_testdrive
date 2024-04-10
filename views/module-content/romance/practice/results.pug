@@ -1,5 +1,5 @@
 #results.hidden
-    .ui.container(style="width: 75%;")
+    .ui.container(style="width: 90%;")
         h1.ui.header.large#learn-title(style="margin-top: 10px;")
             .content
                 i.poll.icon
@@ -13,27 +13,53 @@
                 //-     span You selected: #{user.moduleProgress.romance.practiceChoices.choice2}
 
                 p#updatedResults 
-                    span Score: #{user.moduleProgress.romance.practiceChoices.scoreTotal} out of 2
+                    span Score: #{user.moduleProgress.romance.practiceChoices.scoreTotal} out of 7
 
                 b Initial Contact: 
                 if(user.moduleProgress.romance.practiceChoices.choice1 === "yes")
                     p#selected1 ✅ You told Rachel to check Alex’s profile before continuing to talk to him.
-                    p#explain1 Great job! Always check the profile first to check if this is a scammer's account!
+                    //- p#explain1 Great job! Always check the profile first to check if this is a scammer's account!
                 else
-                    p#selected1 ❌ You did not tell Rachel to check Alex’s profile before continuing to talk to him.
-                    p#explain1 Warning: Always check the profile first to check if this is a scammer's account!
+                    p#selected1 ❌ You should have told Rachel to check Alex’s profile before continuing to talk to him.
+                     //-p#explain1 Warning: Always check the profile first to check if this is a scammer's account!
 
                 b Occupation and Interests:  
                 if(user.moduleProgress.romance.practiceChoices.choice2 === "yes")
-                    p#selected2 ✅ You told Rachel not to switch to text messaging.
-                    p#explain2 Great job! In order to not be traced, Romance Scammers usually want to move quickly from well-known social networking or dating sites to other methods, usually texting. Therefore, staying on the app message tool is a safer method.
+                    p#selected2 ❌ You should have told Rachel not to switch to text messaging.
+                     //-p#explain2 Great job! In order to not be traced, Romance Scammers usually want to move quickly from well-known social networking or dating sites to other methods, usually texting. Therefore, staying on the app message tool is a safer method.
                 else
-                    p#selected2 ❌ You told Rachel to switch to text messaging.
-                    p#explain2 Warning: In order to not be traced, Romance Scammers usually want to move quickly from well-known social networking or dating sites to other methods, usually texting. Therefore, staying on the app message tool is a safer method.
+                    p#selected2 ✅ You told Rachel to continue chatting on Facebook Messenger.
+                     //-p#explain2 Warning: In order to not be traced, Romance Scammers usually want to move quickly from well-known social networking or dating sites to other methods, usually texting. Therefore, staying on the app message tool is a safer method.
+                b Building a Connection:  
+                if(user.moduleProgress.romance.practiceChoices.choice3 === "yes")
+                    p#selected3 ❌ You should have told Rachel to proceed with caution.
+                else
+                    p#selected3 ✅ You urged Rachel to proceed with caution.
+
             .eight.wide.column
-                p#updatedResults 
-                    hi
-            
+                b Possibility to Meet:  
+                if(user.moduleProgress.romance.practiceChoices.choice4 === "yes")
+                    p#selected4 ❌ You should have been concerned about Alex avoiding meeting in person.
+                else
+                    p#selected4 ✅ You were concerned about Alex avoiding meeting in person.
+                b Business Trip Trouble:  
+                if(user.moduleProgress.romance.practiceChoices.choice5 === "yes")
+                    p#selected5 ❌ You should have told Rachel not to send money to Alex.
+                else if(user.moduleProgress.romance.practiceChoices.choice3 === "no")
+                    p#selected5 ✅ You told Rachel not to send money to Alex.
+                else 
+                    p#selected5 ✅ You told Rachel to stay calm and wait to see how Alex acts.
+                b Money Sent:  
+                if(user.moduleProgress.romance.practiceChoices.choice6 === "yes")
+                    p#selected6 ✅ You recognized that Alex was a scammer.
+                else
+                    p#selected6 ❌ You should have recognized that Alex was a scammer.
+                b Refusal to Send More:  
+                if(user.moduleProgress.romance.practiceChoices.choice6 === "yes")
+                    p#selected7 ✅ You identified Alex's emotional manipulation.
+                else
+                    p#selected7 ❌ You should have identified Alex's emotional manipulation.
+            .ui.blue.big.centered.button#resetPractice(style="margin: 0 auto; margin-top: 10px;") Restart Practice
 
                 //- b Initial Contact Result: 
                 //- p#selected1 You told Rachel to check Alex’s profile before continuing to talk to him.
