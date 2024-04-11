@@ -1219,8 +1219,7 @@ function setLinks(currentPage) {
         nextlink = baseurl + "takeaways";
       } else if (currentPage === "takeaways") {
         backlink = baseurl + "reflection";
-        nextlink =
-          "/course-player?module=romance&section=consequences&page=objectives";
+        nextlink ="/course-player?module=romance&section=consequences&page=objectives";
       }
     } else if (section === "consequences") {
       let baseurl = "/course-player?module=romance&section=consequences&page=";
@@ -1481,36 +1480,6 @@ function setLinks(currentPage) {
         backlink = baseurl + "arrive";
   
         var conversationChoice = localStorage.getItem('conversation_choice');
-        // let conversationChoice;
-        // let scoreTotal;
-        
-        // fetch('/getPracticeChoices', {
-        //     method: 'GET',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     }
-        // })
-        // .then(response => {
-        //     if (response.ok) {
-        //         return response.json();
-        //     } else {
-        //         throw new Error('Failed to fetch practice choices');
-        //     }
-        // })
-        // .then(data => {
-        //     // Access properties from the retrieved data and assign them to variables
-        //     scoreTotal = data.scoreTotal;
-        //     choice1 = data.choice1;
-        //     // Now you can use the variables as needed
-        //     console.log('Score Total:', scoreTotal);
-        //     console.log('Choice 1:', choice1);
-        // })
-        // .catch(error => {
-        //     console.error('Error:', error);
-        //     // Handle network errors or errors in the response
-        // });
-        
-
 
         if (conversationChoice === 'yes') {
           nextlink = baseurl + "conversation2";
@@ -1555,9 +1524,18 @@ function setLinks(currentPage) {
       } else if (currentPage === "results") {
         backlink = baseurl + "objectives";
         nextlink = baseurl + "takeaways";
+
+      
       } else if (currentPage === "takeaways") {
         backlink = baseurl + "results";
         nextlink = "/course-player?module=romance&section=evaluation&page=intro";
+
+        // complete module status to 100 manually since there is no quiz
+        console.log("HEY Posting to complete practice module status");
+        $.post('/completeModuleStatus', {
+            modId: 'romance',
+            section: 'practice'
+        });
       }
     } else if (section === "evaluation") {
       let baseurl = "/course-player?module=romance&section=evaluation&page=";
