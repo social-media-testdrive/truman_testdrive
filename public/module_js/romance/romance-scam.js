@@ -935,7 +935,7 @@ $(document).ready(function() {
         }
 
         if(currentPage === 'certificate') {
-            window.location.href = '/about/identity';
+            window.location.href = '/about/romance';
         }
 
         // fade out current page, then fade in next page. at half duration each, 400ms total
