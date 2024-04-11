@@ -224,7 +224,7 @@ block scripts
                     // User confirmed Yes
                     postChoice('choice1', 'yes')
 
-                    //- localStorage.setItem('conversation_choice', 'yes');
+                    localStorage.setItem('conversation_choice', 'yes');
                     //- console.log('Choice saved as yes');
                     //- incrementScore('#choiceResult');
                     //- $('#explain1').text('Good job! Always check the profile first!');
@@ -245,7 +245,7 @@ block scripts
                     // User confirmed Yes
                     postChoice('choice1', 'no')
 
-                    //- localStorage.setItem('conversation_choice', 'no');
+                    localStorage.setItem('conversation_choice', 'no');
                     //- console.log('Choice saved as no');
                     //- $('#explain1').text('Warning! Always check the profile first!');
                     return true; // This allows the modal to close
