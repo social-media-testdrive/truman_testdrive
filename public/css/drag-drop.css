@@ -1,84 +1,73 @@
 #matchingContainer {
-    max-width: 960px;
-    margin: auto;
-  }
+  max-width: 960px;
+  margin: auto;
+}
 
+#matching h1, #matching h3, #matching p {
+  text-align: center;
+}
 
-  body {
-    background-color: #eceff1;
-    color: #37474f;
-  }
-  
-#matchingTitles {
-    text-align: center;
-  }
-  
-  main {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 5px;
-  }
-  
-  .draggable-list {
-    padding: 5px;
-  }
-  
+#matching main.container#matchingContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 5px;
+}
 
+#matching .draggable-list {
+  padding: 5px;
+}
 
-  #t1, #t2, #t3, #d3, #d1, #d2 {
+#matching li {
     list-style: none;
     padding: 10px;
     margin: 25px;
     background-color: #cfd8dc;
     border: 3px solid #b0bec5;
-    color: #382634;
+    color: #263238;
     cursor: grab;
-    text-align: center;
+    text-align: left;
 }
 
-  
-  .over {
-    background-color: #3b6c8182;
-  }
-  
-  
-  #myTable {
-    max-width:640px;
-    margin: auto;
-    margin-bottom: 20px;
-    /* border: 1px solid #b0bec5; */
-  }
-  
-  #myTable th, #myTable td {
-    padding: 10px 10px;
-  }
-  
-  #myTable td {
-    border: 1px solid #a7ae90;
-  }
-  
-  tr:nth-child(even) {
-    background-color: #cfd8dc;
-  }
-  
-  #matchingButton {
-    margin: auto;
-    cursor: pointer;
-    display: block;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 4px;
-    border: none;
-    background-color: #607d8b;
-    color: #fff;
-  }
-  
-#matchingButton:hover {
-    background-color: #516a75;
-  }
-  
-  
-  #endMessage {
- display: none;
-  }
+#matching .over {
+  background-color: #3b6c8182;
+}
 
+
+#matching table {
+  max-width:640px;
+  margin: auto;
+  margin-bottom: 20px;
+  /* border: 1px solid #b0bec5; */
+}
+
+#matching th, #matching td {
+  padding: 10px 10px;
+}
+
+#matching td {
+  border: 1px solid #90a4ae;
+}
+
+#matching tr:nth-child(even) {
+  background-color: #cfd8dc;
+}
+
+#matching #matchingbutton {
+  margin: auto;
+  cursor: pointer;
+  display: block;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: none;
+  background-color: #607d8b;
+  color: #fff;
+}
+
+#matching button:hover {
+  background-color: #516a75;
+}
+
+#matching #endMessage {
+display: none;
+}
