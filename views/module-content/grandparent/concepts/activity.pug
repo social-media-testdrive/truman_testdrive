@@ -1,0 +1,66 @@
+#activity.hidden
+    .ui.container#activity-read
+        .limit#learn-target(style="padding: 0;")
+            h1.ui.header.large#learn-title
+                .content 
+                    i.dice.icon
+                    span#narrate-title-activity Spot the Privacy Risks
+            .ui.stackable.grid#identity-concept-activity
+                .five.wide.column(style="margin-right: 0px; padding-right: 0px;")
+                    .instructions(style="background-color: #F1EDF8; z-index: 0;")
+                        .callout-score(style="z-index: 99;")
+                            .dark-blue-square
+                                img#avatar-image(src=user.avatarImg, alt='avatar picture')
+                            .light-blue-content
+                                h3.call-header Score
+                                .score-box
+                                    p.points 0 / 5
+                        #instruction-text(style="padding: 20px")
+                            p#narrate-1-activity
+                                span Agent, we need your help! 
+                            p#narrate-2-activity
+                                span Mrs. Johnson is sharing too much personal information on her social media, putting herself at risk of identity theft.
+                            p#narrate-3-activity 
+                                span Review her profile and 
+                                strong#narrate-4-activity 
+                                    span click on any personal information that should be removed. 
+                        .ui.fluid.button#hint-button 
+                            i.search.icon
+                            | Hint
+                .eleven.wide.column.middle.aligned(style="margin-left: 0px; padding-left: 0px;")
+                    .ui.fluid.card(style="border-radius: 0px;")
+                        .image
+                            img(src='/images/mrsjohnsonbg.png' style="height: 100px; object-fit: cover; object-position: 0 0; border-radius: 0px;")
+                            .ui.circular.image(style="position: absolute; top: 30px; left: 50%; transform: translateX(-50%); z-index: 99; width: 130px; border: 6px solid white;")
+                                img(src='/images/mrsjohnsonprofile.png' ) 
+                        .content
+                            .ui.basic.segment(style="margin: 0; padding: 5px;")
+                                .header(style="font-size: 1.25rem; font-weight: bold") Mrs. Johnson
+                                p 
+                                    span.highlightable#text-1 I’m a wife and proud mother of 2 boys. 
+                                    span.highlightable.correct-line#text-2 My maiden name is Smith. 
+                                    span.highlightable.correct-line#text-3 Born on April 3 1959, it's been an amazing journey since then. 
+                                    span.highlightable.correct-line#text-4 Oh, here's my new email: JoanEJohnson@gmail.com. 
+                                    span.highlightable#text-5 Stay safe and talk soon!
+                            .ui.basic.segment(style="background: #E7EDF0; margin: 0; padding: 5px;")
+                                .header(style="font-size: 1.25rem; font-weight: bold; text-align: center") Post
+                                p 
+                                    span.highlightable#text-6 Terrible news. 
+                                    span.highlightable.correct-line#text-7 Somehow scammers got our phone # (555) 123-4567. 
+                                    span.highlightable#text-8 My husband Mark told them too much and they stole our identities. 
+                                    span.highlightable#text-9 We've lost our savings.💔 
+
+                                p 
+                                    span.highlightable#text-10 If anyone can help with even a small donation, it would mean the world to us. 
+                                    span.highlightable.correct-line#text-11 My bank info: Account #: 1234-5678-9012 Password: Eastwood1959!
+
+                                p
+                                    span.highlightable#text-12  Your kindness is appreciated. 
+                                    span.highlightable#text-13 Please share!
+                        //- .extra.content
+                        //-     .ui.feed
+                        //-         .event
+                        //-             .content
+                        //-                 .summary Terrible news. My husband Mark fell victim to a phone scam, and we've lost our entire savings. As retirees, we're now in serious financial trouble. 💔
+                        //-                 .meta
+                        //-                     .date Today

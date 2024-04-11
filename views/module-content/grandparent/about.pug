@@ -1,0 +1,248 @@
+extends ../../ui_layout
+
+block content
+  .ui.container
+    br
+    .ui.breadcrumb
+      a.section(href="/") Home
+      i.right.angle.icon.divider
+      a.section(href="/courses") Missions
+      i.right.angle.icon.divider
+      .active.section Grandparent Scams
+    br
+    h1.ui.header.red#mod-title(style="font-weight: bold !important;") Grandparent
+    .ui.top.attached.fluid.segment
+      .ui.grid 
+        .row
+          .eight.wide.column#classification
+            strong CLASSIFICATION: 
+            | TOP SECRET 
+          .eight.wide.column#classified-by 
+            strong CLASSIFIED BY: 
+            | DART HQ
+    .ui.attached.segment#middle-section-outline
+      .ui.grid 
+        .row 
+          .twelve.wide.column
+            p The Johnsons need your help! They've been targeted by SCAMM, falling victim to a sneaky Grandparent Scams scheme.
+            p Uncover how scammers steal personal information to impersonate their targets. You'll learn how these scams work, how to spot them, and how to protect yourself and others.
+            if user.moduleProgress.grandparent.link === "/course-player?module=grandparent&section=challenge&page=intro" 
+              button.ui.huge.blue.button(onclick="window.location=user.moduleProgress.grandparent.link") Start Mission
+            else 
+              button.ui.huge.blue.button(onclick="window.location=user.moduleProgress.grandparent.link") Continue Mission
+
+          .four.wide.column 
+            img(src="/images/johnson.png")
+      br
+
+      hr
+      
+      h2.ui.header.centered#learn-title(style="font-weight: 500 !important;")  
+        .content
+          i.search.icon
+          | Activities
+      .ui.vertical.basic.segments#course-outline
+        .ui.basic.segment
+          .ui.grid
+            .row
+              .two.wide.centered.column
+                if(user.moduleStatus.grandparent.challenge === 100)
+                  span.fake-checkbox.completed
+                else
+                  span.fake-checkbox
+              .nine.wide.column
+                h3 Challenge
+              .five.wide.right.aligned.column
+                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=grandparent&section=challenge&page=intro'") Start
+        .ui.divider
+        .ui.basic.segment
+          .ui.grid
+            .row
+              .two.wide.centered.column
+                if(user.moduleStatus.grandparent.concepts === 100)
+                  span.fake-checkbox.completed
+                else
+                  span.fake-checkbox
+              .nine.wide.column
+                h3 Concepts
+              .five.wide.right.aligned.column
+                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=grandparent&section=concepts&page=objectives'") Start
+        .ui.divider
+        .ui.basic.segment
+          .ui.grid
+            .row
+              .two.wide.centered.column
+                if(user.moduleStatus.grandparent.consequences === 100)
+                  span.fake-checkbox.completed
+                else
+                  span.fake-checkbox
+              .nine.wide.column
+                h3 Consequences
+              .five.wide.right.aligned.column
+                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=grandparent&section=consequences&page=objectives'") Start
+        .ui.divider
+        .ui.basic.segment
+          .ui.grid
+            .row
+              .two.wide.centered.column
+                if(user.moduleStatus.grandparent.techniques === 100)
+                  span.fake-checkbox.completed
+                else
+                  span.fake-checkbox
+              .nine.wide.column
+                h3 Recognize Techniques
+              .five.wide.right.aligned.column
+                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=grandparent&section=techniques&page=objectives'") Start
+        .ui.divider
+        .ui.basic.segment
+          .ui.grid
+            .row
+              .two.wide.centered.column
+                if(user.moduleStatus.grandparent.protection === 100)
+                  span.fake-checkbox.completed
+                else
+                  span.fake-checkbox
+              .nine.wide.column
+                h3 Methods of Protection
+              .five.wide.right.aligned.column
+                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=grandparent&section=protection&page=objectives'") Start
+        .ui.divider
+        .ui.basic.segment
+          .ui.grid
+            .row
+              .two.wide.centered.column
+                if(user.moduleStatus.grandparent.reporting === 100)
+                  span.fake-checkbox.completed
+                else
+                  span.fake-checkbox
+              .nine.wide.column
+                h3 Reporting
+              .five.wide.right.aligned.column
+                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=grandparent&section=reporting&page=objectives'") Start
+        .ui.divider
+        .ui.basic.segment
+          .ui.grid
+            .row
+              .two.wide.centered.column
+                if(user.moduleStatus.grandparent.practice === 100)
+                  span.fake-checkbox.completed
+                else
+                  span.fake-checkbox
+              .nine.wide.column
+                h3 Practice
+              .five.wide.right.aligned.column
+                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=grandparent&section=practice&page=objectives'") Start
+        .ui.divider
+        .ui.basic.segment
+          .ui.grid
+            .row
+              .two.wide.centered.column
+                if(user.moduleStatus.grandparent.evaluation === 100)
+                  span.fake-checkbox.completed
+                else
+                  span.fake-checkbox
+              .nine.wide.column
+                h3 Evaluation
+              .five.wide.right.aligned.column
+                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=grandparent&section=evaluation&page=intro'") Start
+        .ui.divider
+        //- .ui.basic.segment
+        //-   .ui.grid
+        //-     .row
+        //-       .two.wide.centered.column
+        //-         span.fake-checkbox
+        //-       .nine.wide.column
+        //-         h3 Reflection
+        //-       .five.wide.right.aligned.column
+        //-         .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=grandparent&section=reflection&page=intro'") Start
+        //- .ui.divider
+
+      h2.ui.header.centered(style="margin-top: 40px; margin-bottom: 40px;") 
+        .content(style="position: relative;")  
+          | Complete all activities to earn a certificate
+          img(src="/images/certificate-icon.png" style="width: 50px; height: 50px; position: absolute; left: -55px; top: -5px")
+
+    .ui.bottom.attached.segment
+      h2(style="color: #285362; font-weight: 500 !important;") Learning Materials 
+      p If you would like to learn the material offline, you can download the content below:
+      div.ui.two.column.stackable.grid#downloadGrid
+        .column
+          h3.glossary.pdf Grandparent Scams Course PDF
+          a.ui.inline.fluid.labeled.icon.button(href='/pdf/grandparent-glossary.pdf', download='grandparent_theft.pdf')
+            i.download.icon.graySquare
+            .inline
+              p Download Course PDF
+
+        .column
+          h3.glossary.pdf Grandparent Scams Glossary PDF
+          a.ui.inline.fluid.labeled.icon.button(href='/pdf/grandparent-glossary.pdf', download='glossary.pdf')
+            i.download.icon.graySquare
+            .inline
+              p Download Glossary PDF
+                //- i.large.download.icon
+      br
+    .ui.grid.computer.only.tablet.only#avatar-encourage-start
+      .row
+        .sixteen.wide.column
+          .speech-div
+            .centerme
+              if user.moduleProgress.grandparent.link === "/course-player?module=grandparent&section=challenge&page=intro" 
+                button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.grandparent.link") Start Mission
+              else 
+                button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.grandparent.link") Continue Mission
+
+            img.dart_image.ui.medium.image(src=user.avatarImg)
+
+            .ui.large.label.blue-pointing#speechBubble
+              if user.moduleProgress.grandparent.link === "/course-player?module=grandparent&section=challenge&page=intro" 
+                p#speechText
+                  | The Johnsons are counting on you! Click 'Start Mission' to begin. 
+              else 
+                p#speechText
+                  | Welcome back! Click 'Continue Mission' to pick up where you left off.
+    .ui.centered.grid.mobile.only
+      if user.moduleProgress.grandparent.link === "/course-player?module=grandparent&section=challenge&page=intro" 
+        button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.grandparent.link" style="margin-top: 0px; margin-bottom: 60px;") Start Mission
+      else 
+        button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.grandparent.link" style="margin-top: 0px;  margin-bottom: 60px;") Continue Mission
+
+    br
+    br
+  .further-learning
+    h2.ui.header.centered.section-title(style="padding-bottom: 2vh;")
+      .content
+        | Recommended Missions
+    .ui.container
+      .ui.three.stackable.cards
+        .ui.card
+          .image
+            img.card-image(src="/images/square-sales.png", alt="Sales Scams")
+          .content
+            .header Sales Scams
+            .description
+              | Coming soon
+          .extra.content
+            button.ui.fluid.big.blue.button Start Learning
+
+        .ui.card
+          .image
+            img.card-image(src="/images/square-grandparent.png", alt="Grandparent Scams")
+          .content
+            .header Grandparent Scams
+            .description
+              | Coming soon
+          .extra.content
+            button.ui.fluid.big.blue.button Start Learning
+
+        .ui.card
+          .image
+            img.card-image(src="/images/romance-scam.jpg", alt="Romance Scams")
+          .content
+            .header Romance Scams
+            .description
+              | Coming soon
+          .extra.content
+            button.ui.fluid.big.blue.button Start Learning
+
+block styles
+  link(rel='stylesheet', href='/css/module-about.css') 
