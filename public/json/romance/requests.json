@@ -1,6 +1,6 @@
 {   
   "1": {
-    "progress": 63.63,
+    "progress": 76.92,
     "type": "abcd",
     "partial": "q.html",
     "prompt": "1. Why do scammers prefer gift cards for receiving money?",
@@ -22,7 +22,7 @@
     "correctResponse": "b"
   },
     "2": {
-        "progress": 63.63,
+        "progress": 84.61,
         "type": "abcd",
         "partial": "q2.html",
         "prompt": "2. Which technique did the scammer use?",
@@ -44,7 +44,7 @@
         "correctResponse": "c"
     },
     "3": {
-      "progress": 95,
+      "progress": 92.31,
       "type": "yes_no",
       "partial": "q3.html",
       "prompt": "3. It's safe to share nude photos with someone you've met online if they have already shared theirs with you.",

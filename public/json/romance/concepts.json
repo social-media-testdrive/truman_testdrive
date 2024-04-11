@@ -1,6 +1,6 @@
 {   
   "1": {
-    "progress": 60,
+    "progress": 63.63,
     "type": "abcd",
     "partial": "none",
     "prompt": "1. Which of the following outlines the three phases of a romance or friendship scam, as exemplified by Sophia's experience in the video?",
@@ -26,7 +26,7 @@
     "correctResponse": "b"
     },
     "2": {
-      "progress": 80,
+      "progress": 72.72,
       "type": "yes_no",
       "partial": "q2.html",
       "prompt": "2. Could clicking on advertisements lead you to a fake dating website?",

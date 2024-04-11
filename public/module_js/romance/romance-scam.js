@@ -1600,18 +1600,20 @@ function setLinks(currentPage) {
         progress = 0;
       } else if (pageParam === "intro-video") {
         progress = (1 / total) * 100;
-      } else if (pageParam === "definitions") {
-        progress = (2 / total) * 100;
       } else if (pageParam === "phases") {
+        progress = (2 / total) * 100;
+      } else if (pageParam === "definitions") {
         progress = (3 / total) * 100;
       } else if (pageParam === "fake-websites") {
         progress = (4 / total) * 100;
       } else if (pageParam === "trusted") {
         progress = (5 / total) * 100;
-      } else if (pageParam === "quiz") {
+      } else if (pageParam === "matching") {
         progress = (6 / total) * 100;
+      } else if (pageParam === "quiz") {
+        progress = (7 / total) * 100;
       } else if (pageParam === "reflection") {
-        progress = (9 / total) * 100;
+        progress = (10 / total) * 100;
       } else if (pageParam === "takeaways") {
         progress = 100;
       }
@@ -1638,14 +1640,18 @@ function setLinks(currentPage) {
         progress = (1 / total) * 100;
       } else if (pageParam === "male") {
         progress = (2 / total) * 100;
-      } else if (pageParam === "female") {
-        progress = (3 / total) * 100;
       } else if (pageParam === "examples") {
+        progress = (3 / total) * 100;
+      }  else if (pageParam === "female") {
         progress = (4 / total) * 100;
-      } else if (pageParam === "quiz") {
+      } else if (pageParam === "examples2") {
         progress = (5 / total) * 100;
+      } else if (pageParam === "disclaimer") {
+        progress = (6 / total) * 100;
+      } else if (pageParam === "quiz") {
+        progress = (7 / total) * 100;
       } else if (pageParam === "reflection") {
-        progress = (9 / total) * 100;
+        progress = (11 / total) * 100;
       } else if (pageParam === "takeaways") {
         progress = 100;
       }
@@ -1674,18 +1680,22 @@ function setLinks(currentPage) {
         progress = 0;
       } else if (pageParam === "types") {
         progress = (1 / total) * 100;
-      } else if (pageParam === "pressure") {
+      } else if (pageParam === "examples") {
         progress = (2 / total) * 100;
-      } else if (pageParam === "sob") {
+      } else if (pageParam === "pressure") {
         progress = (3 / total) * 100;
-      } else if (pageParam === "emotional") {
+      } else if (pageParam === "sob") {
         progress = (4 / total) * 100;
-      } else if (pageParam === "blackmail") {
+      } else if (pageParam === "emotional") {
         progress = (5 / total) * 100;
-      } else if (pageParam === "reflection") {
+      } else if (pageParam === "blackmail") {
         progress = (6 / total) * 100;
+      } else if (pageParam === "callout") {
+        progress = (7 / total) * 100;
+      } else if (pageParam === "reflection") {
+        progress = (8 / total) * 100;
       } else if (pageParam === "quiz") {
-        progress = (6.5 / total) * 100;
+        progress = (9 / total) * 100;
       } else if (pageParam === "takeaways") {
         progress = 100;
       }
@@ -1748,8 +1758,10 @@ function setLinks(currentPage) {
         progress = (3 / total) * 100;
       } else if (pageParam === "responsive") {
         progress = (4 / total) * 100;
+      } else if (pageParam === "callout") {
+        progress = (5 / total) * 100;
       } else if (pageParam === "quiz") {
-        progress = (6 / total) * 100;
+        progress = (7 / total) * 100;
       } else if (pageParam === "takeaways") {
         progress = 100;
       }
@@ -1758,10 +1770,26 @@ function setLinks(currentPage) {
         progress = 0;
       } else if (pageParam === "arrive") {
         progress = (1 / total) * 100;
-      } else if (pageParam === "activity") {
+      } else if (pageParam === "conversation") {
         progress = (2 / total) * 100;
-      } else if (pageParam === "reflection") {
+      } else if (pageParam === "conversation2") {
+        progress = (3 / total) * 100;
+      } else if (pageParam === "conversation3") {
         progress = (4 / total) * 100;
+      } else if (pageParam === "conversation4") {
+        progress = (5 / total) * 100;
+      } else if (pageParam === "conversation5") {
+        progress = (6 / total) * 100;
+      } else if (pageParam === "conversation6") {
+        progress = (7 / total) * 100;
+      } else if (pageParam === "conversation7") {
+        progress = (8 / total) * 100;
+      } else if (pageParam === "conversation8") {
+        progress = (9 / total) * 100;
+      } else if (pageParam === "ending") {
+        progress = (10 / total) * 100;
+      } else if (pageParam === "results") {
+        progress = (11 / total) * 100;
       } else if (pageParam === "takeaways") {
         progress = 100;
       }
@@ -1769,11 +1797,9 @@ function setLinks(currentPage) {
       if (pageParam === "intro") {
         progress = 0;
       } else if (pageParam === "quiz") {
-        progress = (1 / total) * 100;
+        progress = (9 / total) * 100;
       } else if (pageParam === "badge") {
-        progress = (10 / total) * 100;
-      } else if (pageParam === "reflection") {
-        progress = (11 / total) * 100;
+        progress = 100;
       } else if (pageParam === "certificate") {
         progress = 100;
       }

@@ -32,16 +32,20 @@ exports.getModule = async (req, res) => {
       // intro, 5 quiz questions, takeaways
       numPages = 7;
     } else if(section === 'concepts') {
-      // for romance and identity both have 10 pages
-      numPages = 10;
+      if(module === 'identity') {
+        numPages = 10;
+      }
+      else if(module === 'romance') {
+        numPages = 11;
+      }
     } else if(section === 'consequences') {
       numPages = 8;
     } else if(section === 'fake'){
-      numPages = 10;
+      numPages = 12;
     } else if(section === 'contact'){
       numPages = 11;
     } else if(section === 'requests'){
-      numPages = 11;
+      numPages = 13;
     } else if(section === 'techniques') {
       numPages = 12;
     } else if(section === 'protection') {
@@ -51,11 +55,16 @@ exports.getModule = async (req, res) => {
         numPages = 12;
       }
     } else if(section === 'reporting') {
-      numPages = 8;
+      numPages = 9;
     } else if(section === 'practice') {
-      numPages = 5;
-    } else if (section === 'evaluation') {
       numPages = 12;
+    } else if (section === 'evaluation') {
+      if (module === 'identity') {
+        numPages = 12;
+      } else if (module === 'romance') {
+        numPages = 11;
+      }
+
     }
 
     const modulePage = `module-content/${module}/${section}.pug`;

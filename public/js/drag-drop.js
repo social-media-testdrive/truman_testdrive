@@ -8,6 +8,7 @@ Sources/Code: https://www.youtube.com/watch?v=twq9WHgUhQc
 const draggableListItems = document.querySelectorAll('.draggable-list li');
 
 const endMessage = document.getElementById('endMessage'); 
+const feedbackMessage = document.getElementById('feedbackMessage'); 
 
 //When you start dragging a phrase you are going to have to know its ID so that we can match it 
 
@@ -52,12 +53,22 @@ function dragDrop(){
         document.getElementById(selectedId).style.display = 'none';
         document.getElementById(droppedOnId).style.display = 'none';
         matchingCounter++; 
+
+        feedbackMessage.textContent = 'Correct match!'; // Update message
+        feedbackMessage.style.color = 'green';
+    } else {
+        feedbackMessage.textContent = 'Wrong match, try again!';
+        feedbackMessage.style.color = 'red';
     }
+
 
     //Check if we have a win 
 
     if(matchingCounter === 3){
-        endMessage.style.display = 'block'; // Wjen we win, render the endMessage 
+        endMessage.style.display = 'block'; // When we win, render the endMessage 
+
+        title.style.display = 'none';
+        instructions.style.display = 'none';
     }
       
     //Whenever you drop an item, you need to change the color 
@@ -90,6 +101,12 @@ function playAgain(){
     draggableListItems.forEach(item =>{
         document.getElementById(item.id).style.display = 'block'; 
     })
+
+    title.style.display = '';
+    instructions.style.display = '';
+    feedbackMessage.textContent = 'Drag the scam stage tile from the left to its matching video scene on the right.';
+    feedbackMessage.style.color = 'rgba(0, 0, 0, .87)';
+
 }
 
 function addEventListeners() {

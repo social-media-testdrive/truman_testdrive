@@ -760,7 +760,6 @@ exports.postQuizScore = async (req, res, next) => {
       // prequiz attempt data
       const attempt = {
         timestamp: new Date(),
-        scoreTotal: scoreTotal,
         correctAnswers: correctAnswers,
         questionScores: questionScores,
         questionChoices: selectedAnswer,
@@ -904,11 +903,10 @@ exports.postAvatar = async (req, res, next) => {
 exports.postPracticeChoice = async (req, res, next) => {
   // const { point, choice } = req.body;
   // const moduleToUpdate = req.body.modID;
-  const {questionNum, choice, pointToAdd, moduleToUpdate} = req.body;
+  const {questionNum, choice, moduleToUpdate} = req.body;
   console.log("^^Backkend IN POST PRACTICE CHOICE***************************");
   console.log("Question Number: " + questionNum);
   console.log("Choice: " + choice);
-  console.log("Point to Add: " + pointToAdd);
   console.log("Module to Update: " + moduleToUpdate);
 
 
@@ -920,7 +918,6 @@ exports.postPracticeChoice = async (req, res, next) => {
       // Post user's choice
 
       if(questionNum === "reset") {
-        existingUser.moduleProgress[moduleToUpdate].practiceChoices.scoreTotal = 0;
         existingUser.moduleProgress[moduleToUpdate].practiceChoices.choice1 = "none";
         existingUser.moduleProgress[moduleToUpdate].practiceChoices.choice2 = "none";
         existingUser.moduleProgress[moduleToUpdate].practiceChoices.choice3 = "none";
@@ -928,9 +925,8 @@ exports.postPracticeChoice = async (req, res, next) => {
         existingUser.moduleProgress[moduleToUpdate].practiceChoices.choice5 = "none";
         existingUser.moduleProgress[moduleToUpdate].practiceChoices.choice6 = "none";
         existingUser.moduleProgress[moduleToUpdate].practiceChoices.choice7 = "none";
-        existingUser.moduleProgress[moduleToUpdate].practiceChoices.choice8 = "none";
+        existingUser.moduleProgress[moduleToUpdate].practiceChoices.score = 0;
       } else {
-        existingUser.moduleProgress[moduleToUpdate].practiceChoices.scoreTotal += pointToAdd;
         existingUser.moduleProgress[moduleToUpdate].practiceChoices[questionNum] = choice;  
       }
 
@@ -939,7 +935,6 @@ exports.postPracticeChoice = async (req, res, next) => {
 
       // Manually update the user object in the session
       if(questionNum === "reset") {
-        req.session.passport.user.moduleProgress[moduleToUpdate].practiceChoices.scoreTotal = 0;
         req.session.passport.user.moduleProgress[moduleToUpdate].practiceChoices.choice1 = "none";
         req.session.passport.user.moduleProgress[moduleToUpdate].practiceChoices.choice2 = "none";
         req.session.passport.user.moduleProgress[moduleToUpdate].practiceChoices.choice3 = "none";
@@ -947,9 +942,8 @@ exports.postPracticeChoice = async (req, res, next) => {
         req.session.passport.user.moduleProgress[moduleToUpdate].practiceChoices.choice5 = "none";
         req.session.passport.user.moduleProgress[moduleToUpdate].practiceChoices.choice6 = "none";
         req.session.passport.user.moduleProgress[moduleToUpdate].practiceChoices.choice7 = "none";
-        req.session.passport.user.moduleProgress[moduleToUpdate].practiceChoices.choice8 = "none";
+        req.session.passport.user.moduleProgress[moduleToUpdate].practiceChoices.score = 0;
       } else {
-        req.session.passport.user.moduleProgress[moduleToUpdate].practiceChoices.scoreTotal += pointToAdd;
         req.session.passport.user.moduleProgress[moduleToUpdate].practiceChoices[questionNum] = choice;
       }
       // Save the session
