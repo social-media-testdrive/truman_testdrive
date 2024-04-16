@@ -1,64 +1,76 @@
 {
   "1": {
     "progress": 75,
-    "type": "yes_no",
-    "partial": "q1.html",
-    "prompt": "1. Is this email a scam email?",
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "1. In grandparent scams, what information scammers try to find online? Select all that apply.",
     "choices": {
-        "yes": {
-            "text": "Yes"
-        },
-        "no": {
-            "text": "No"
-        }
+      "0": {
+        "text": "A. Personal details about the target",
+        "explanation": "Choice A is correct. Personal information about the target, such as their name, age and address, is the most basic information used by scammers in grandparent scams."
+      },
+      "1": {
+        "text": "B. Target’s social security number",
+        "explanation": "Choice B is incorrect. In grandparent scams, the scammer tends to use information about the target or the target’s family relationships to construct convincing narratives. Although social security numbers count as sensitive information and are often used in identity theft or other types of fraud, they are not typically used in grandparent scams."
+      },
+      "2": {
+        "text": "C. Target’s  recent life events",
+        "explanation": "Choice C is correct. In grandparent scams, scammers often use information about the target or their family relationships to craft convincing stories. Incorporating details about the target's recent life events can add credibility and foster more trust in the targets."
+      },
+      "3": {
+        "text": "D. Grandchild’s name",
+        "explanation": "Choice D is correct. Scammers may find out the name of the target’s grandchild. By using the grandchild's name, scammers can more convincingly pose as the target’s grandchild or a trusted family member, increasing the emotional impact on the target."
+      }
     },
-    "explanation": "<h1>This email is a scam</h1><h2>These are the Warning Signs:</h2><ul><li><strong>Suspicious email address domain:</strong><br>The domain is the part of the email address after the @. Company names are often used as the domain for company email addresses. This email address does not appear to be valid–it says dollar@tree.com instead of name@dollartree.com. After checking on Dollar Tree's official website, the email address does not exist.</li><li><strong>Sense of urgency:</strong><br>This email is trying to get you to act quickly. The message shows that “Only 10 selected customers” and “Please confirm before [a certain date].”</li><li><strong>Incorrect brand font:</strong><br>The font used in this email appears to be different from the official Dollar Tree website. Generally, the same font is used for all materials because it is part of the company’s identity.</li><li><strong>This email does not identify you by name:</strong><br>This email does not state your name which is typical of scam emails.</li></ul>",
-    "correctResponse": "yes"
+    "correctResponse": ["0", "1", "3"],
+    "theAnswers": "A, C, D"
   },
   "2": {
     "progress": 83.333,
-    "type": "yes_no",
-    "partial": "q2.html",
-    "prompt": "2. Is this email a scam email?",
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "2. What are some common stories that scammers tell?  Select all that apply.",
     "choices": {
-        "yes": {
-            "text": "Yes"
-        },
-        "no": {
-            "text": "No"
-        }
+      "0": {
+        "text": "A. They have been involved in a car accident",
+        "explanation": "Choice A is correct. Grandparent scammers often manipulate grandparents' emotions by creating fake emergency situations to trick them into sending money. Common stories they use include fabricated car accidents, being falsely arrested in a foreign country, experiencing a medical crisis, or being kidnapped while traveling abroad. If you receive a call with such a frightening and urgent story, it's likely a scam. On the other hand, having a party with friends is not an emergency or fear-inducing situation, so it is usually not a part of scammers' deceptive stories."
+      },
+      "1": {
+        "text": "B. They are arrested in a foreign county",
+        "explanation": "Choice B is correct. This is also an example of a fake emergency story."
+      },
+      "2": {
+        "text": "C. They have a medical emergency",
+        "explanation": "Choice C is correct. This is also an example of a fake emergency story."
+      },
+      "3": {
+        "text": "D. They have a party with friends",
+        "explanation": "Choice D is incorrect. This is not an emergency story."
+      }
     },
-    "explanation": "<h1>This email is a scam</h1><h2>Warning Signs:</h2><ul><li><strong>Does not identify you by name:</strong><br>This email does not state your name, which is typical of scam emails.</li><li><strong>Directs you to click on a new link:</strong><br>If an email gives you a link to update your payment details, the link can be used for phishing. This email asks you to click the Sign In link to update your payment information.</li><li><strong>Sense of threat:</strong><br>This email claims that there’s a problem with the receiver’s account without specific information. This is meant to scare you into clicking on their link.</li><li><strong>Sender's email not from Netflix:</strong><br>This sender’s email address is no-reply@ripnet.com, which is not from Netflix.</li></ul>",
-    "correctResponse": "yes"
+    "correctResponse": ["0", "1", "2"],
+    "theAnswers": "A, B, C"
   },
   "3": {
     "progress": 91.666,
-    "type": "multi_select",
+    "type": "abcd",
     "partial": "none",
-    "prompt": "3. Which of the following techniques do scammers mainly use?",
+    "prompt": "3. What is Caller ID Spoofing?",
     "choices": {
-        "0": {
-            "text": "A. Fear and threats in scam messaging",
-            "explanation": "Scammers use fear by sending alarming messages, like “legal action” or “account closure”, to pressure you into acting quickly and sharing personal information."
-        },
-        "1": {
-            "text": "B. Tempting offers that are too good to be true",
-            "explanation": "Scammers offer very attractive deals to lure people into sharing sensitive information or money."
-        },
-        "2": {
-            "text": "C. Using sympathy and kindness",
-            "explanation": "Scammers act nice and understanding to gain your trust and increase the odds of you sharing your personal information without suspicion."
-        },
-        "3": {
-            "text": "D. Weather Forecasting",
-            "explanation": "Weather forecasting is entirely unrelated to identity theft and is not used to carry out scams."
-        },
-        "4": {
-            "text": "E. Ask you to click a link",
-            "explanation": "Scammers send messages urging their targets to click harmful links, tricking them into sharing login details, installing malware, or confirming sensitive data."
-        }
+      "a": {
+        "text": "A. A special code that shows an email is safe to open."
+      },
+      "b": {
+        "text": "B. A trick scammers use to pretend to be someone else."
+      },
+      "c": {
+        "text": "C. A way to keep your online purchases secure."
+      },
+      "d": {
+        "text": "D. A tool to stop hackers from getting into your computer."
+      }
     },
-    "correctResponse": ["0", "1", "2", "4"],
-    "theAnswers": "A, C, E"
+    "explanation": "<h1>B is correct</h1><p>Caller ID spoofing is a technology that scammers use to hide their real phone numbers and make it seem like they are calling from a different number. They often impersonate trusted sources like banks or people known to the victim, aiming to deceive and trick individuals.</p>",
+    "correctResponse": "b"
   }
 }
