@@ -1,98 +1,132 @@
 {
   "1": {
     "progress": 20,
-    "type": "yes_no",
-    "partial": "q1.html",
-    "prompt": "1. Suppose you’ve been experiencing issues with your Apple laptop and have been in contact with Apple. In this scenario, would you consider the following email a scam?",
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "1. In grandparent scams, the scammer typically pretends to be a target’s…? Select all that apply.",
     "choices": {
-      "yes": {
-        "text": "Yes"
+      "0": {
+        "text": "A. Grandchild",
+        "explanation": "This option is correct."
       },
-      "no": {
-        "text": "No"
+      "1": {
+        "text": "B. Lawyer",
+        "explanation": "This option is correct."
+      },
+      "2": {
+        "text": "C. Other loved ones, such as a nephew or niece.",
+        "explanation": "This option is correct."
+      },
+      "3": {
+        "text": "D. Neighbor",
+        "explanation": "This option is incorrect."
       }
     },
-    "explanation": "<h1>\"No\" is the correct answer</h1>",
-    "correctResponse": "no"
+    "correctResponse": ["0", "1", "2"],
+    "theAnswers": "A, B, C,"
   },
   "2": {
-      "progress": 40,
-      "type": "yes_no",
-      "partial": "q2.html",
-      "prompt": "2. If you received the following email, would you consider it a scam?",
-      "choices": {
-        "yes": {
-          "text": "Yes"
-        },
-        "no": {
-          "text": "No"
-        }
+    "progress": 40,
+    "type": "yes_no",
+    "partial": "none",
+    "prompt": "2. Which of the following are consequences of being a victim of grandparent scams? Select all that apply.",
+    "choices": {
+      "0": {
+        "text": "A. Financial gain",
+        "explanation": "This option is incorrect."
       },
-      "explanation": "<h1>\"Yes\" is the correct answer</h1>",
-      "correctResponse": "yes"
+      "1": {
+        "text": "B. Emotional distress",
+        "explanation": "This option is correct."
+      },
+      "2": {
+        "text": "C. Financial loss",
+        "explanation": "This option is correct."
+      },
+      "3": {
+        "text": "D. Feelings of embarrassment and guilt",
+        "explanation": "This option is correct."
+      }
+    },
+    "correctResponse": ["1", "2", "3"],
+    "theAnswers": "B, C, D"
   },
   "3": {
     "progress": 60,
-    "type": "yes_no",
-    "partial": "q3.html",
-    "prompt": "3. If you received the following message, would you consider it a scam?",
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "3. Which techniques are often used when a grandparent scammer impersonates your grandchild?  Select all that apply.",
     "choices": {
-      "yes": {
-        "text": "Yes",
-        "explanation": "Explanation for the yes statement."
+      "0": {
+        "text": "A. Spoofed caller ID",
+        "explanation": "This option is correct."
       },
-      "no": {
-        "text": "No",
-        "explanation": "Explanation for the no statement."
+      "1": {
+        "text": "B. Forging their handwriting and sending you letters",
+        "explanation": "This option is incorrect."
+      },
+      "2": {
+        "text": "C. Meeting up in real life",
+        "explanation": "This option is incorrect."
+      },
+      "3": {
+        "text": "D. Voice distortions",
+        "explanation": "This option is correct."
       }
     },
-    "explanation": "<h1>\"Yes\" is the correct answer</h1>",
-    "correctResponse": "yes"
+    "correctResponse": ["0", "3"],
+    "theAnswers": "A, D"
   },
   "4": {
     "progress": 80,
-    "type": "yes_no",
-    "partial": "q4.html", 
-    "prompt": "4. Assuming you are trying to log into Venmo following the instruction for the Venmo App, then you received the message below. In that case would you consider this message a scam?",
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "4. You receive an unexpected call from an unknown caller. Which of the following should alert you that they might be a scammer?  Select all that apply.",
     "choices": {
-      "yes": {
-        "text": "Yes"
+      "0": {
+        "text": "A. They claims to be  your grandchild and asking for money from you",
+        "explanation": "This option is correct."
       },
-      "no": {
-        "text": "No"
+      "1": {
+        "text": "B. They are asking you to keep this call confidential",
+        "explanation": "This option is correct."
+      },
+      "2": {
+        "text": "C. They state that they are your grandson/granddaughter",
+        "explanation": "This option is incorrect."
+      },
+      "3": {
+        "text": "D. They state that they are in big trouble",
+        "explanation": "This option is correct."
       }
     },
-    "explanation": "<h1>\"No\" is the correct answer</h1>",
-    "correctResponse": "no"
+    "correctResponse": ["0", "1", "3"],
+    "theAnswers": "A, B, D"
   },
   "5": {
-      "progress": 95,
-      "type": "multi_select",
-      "partial": "none",
-      "prompt": "5. What could occur if your identity is stolen? Select all that apply",
-      "choices": {
-          "0": {
-            "text": "A. Loss of money",
-            "explanation": "This option is correct."
-          },
-          "1": {
-            "text": "B. Loss of tax refund",
-            "explanation": "This option is correct."
-          },
-          "2": {
-            "text": "C. Be charged as a criminal",
-            "explanation": "This option is correct."
-          },
-          "3": {
-            "text": "D. Denial of loans",
-            "explanation": "This option is correct."
-          },
-          "4": {
-            "text": "E. Getting a discount on online shopping",
-            "explanation": "This option is incorrect."
-          }
+    "progress": 95,
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "5. Which of the following preventative measures can grandparents take to avoid falling into grandparent scams?  Select all that apply.",
+    "choices": {
+      "0": {
+        "text": "A. Avoid sharing personal information on social media platforms",
+        "explanation": "This option is correct."
       },
-      "correctResponse": ["0", "1", "2", "3"],
-      "theAnswers": "A, B, C, D"
-    }            
+      "1": {
+        "text": "B. Refuse to communicate with anyone calling",
+        "explanation": "This option is incorrect."
+      },
+      "2": {
+        "text": "C. Establish a secret codeword with family members. This codeword can be used to verify the identity of callers.",
+        "explanation": "This option is correct."
+      },
+      "3": {
+        "text": "D. Learn the common tactics and tricks used by scammers in grandparent scams",
+        "explanation": "This option is correct."
+      }
+    },
+    "correctResponse": ["0", "2", "3"],
+    "theAnswers": "A, C, D"
+  }
 }
