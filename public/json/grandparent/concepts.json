@@ -4,7 +4,7 @@
       "type": "multi_select",
       "partial": "none",
       "prompt": "1. How do scammers gather information about potential targets in grandparent scams? Select all that apply.",
-      "choices": {
+      "choices": { 
         "0": {
             "text": "A. Searching people on social media",
             "explanation": "Choice A is correct. Scammers often use social media platforms to gather personal information about potential targets. They may look for information such as names, family relationships, or recent activities to craft convincing stories."
