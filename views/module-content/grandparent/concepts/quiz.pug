@@ -1,86 +1,15 @@
 #quiz.hidden
-    .ui.container.quizContainer#raised-container(style="padding: 0px;")
-        .limit
-            .quiz-container   
-                h1.ui.header.large#learn-title
-                    .content
-                        i.edit.icon
-                        | Quiz         
+    .ui.container#disclaimer-read
+        .limit#learn-target
+            h1.ui.header.large#learn-title
 
-                .question
-                .htmlImage
-                .image
-                .choiceList
-                .fourChoices 
-                    //- .choice1
-                    //-     .ui.radio.checkbox
-                    //-         input(type="radio", name="choice", value="1")
-                    //-         label
-                    //- .choice2
-                    //-     .ui.radio.checkbox
-                    //-         input(type="radio", name="choice", value="2")
-                    //-         label
-                    //- .choice3
-                    //-     .ui.radio.checkbox
-                    //-         input(type="radio", name="choice", value="3")
-                    //-         label
-                    //- .choice4
-                    //-     .ui.radio.checkbox
-                    //-         input(type="radio", name="choice", value="4")
-                    //-         label
-                .checkboxChoices            
-                br
-                br
-                .result
-                    .circleResults
-                        strong
-                    .resultText     
-                    br
-                    br
-                .quizMessage
-                    .ui.red.center.aligned.message
-                        i.close.icon
-                        .errorMessage.header
-                .explanationCorrectMulti
-                    button.ui.basic.blue.right.labeled.icon.button.explainButtonCorrect
-                        i.right.caret.icon
-                        a Show Explanations
-                    p.correctScore
-                    h2.ui.header.correctOrIncorrect
-                        i.check.circle.green.large.icon
-                        | Correct
-                .explanationIncorrectMulti
-                    button.ui.basic.blue.right.labeled.icon.button.explainButtonIncorrect
-                        i.right.caret.icon
-                        a Show Explanations
-                    p.incorrectScore
-                    h2.ui.header.correctOrIncorrect
-                        i.times.circle.red.large.icon
-                        | Incorrect
-                    p.yourAnswers
-                    p.theAnswers
-                .explanationCorrectYesNo
-                    p.correctScore
-                    h2.ui.header
-                        i.check.circle.green.large.icon
-                        | Correct
-                    .ui.green.message 
-                        p.correctExplanation
-                    br
-                    br
-                .explanationIncorrectYesNo
-                    p.incorrectScore
-                    h2.ui.header
-                        i.times.circle.red.large.icon
-                        | Incorrect
-                    .ui.red.message 
-                        p.incorrectExplanation
-                    br
-                    br
-                .quizButtonContainer
-                    .ui.blue.huge.button.preButton Previous Question
-                    .ui.blue.huge.button.viewAnswers View Answers
-                    .ui.blue.huge.button.nextButton Next Question
-            .ui.tablet.only.centered.grid
-                .avatar-container
-                    img#dart_image1.ui.medium.image(src=user.avatarImg)
+        .ui.grid.computer.only.tablet.only#avatar-encourage-start
+            .row
+                .sixteen.wide.column
+                    .speech-div
+                        img.dart_image.ui.medium.image#avatarSize(src=user.avatarImg)
+
+                        .ui.large.label.blue-pointing#speechBubble
+                            p#speechText
+                                |  If the scammer successfully receives money from the victim, they will often ask for more money by providing additional reasons, such as claiming that the bail amount has increased due to the situation being more serious than initially believed.
+

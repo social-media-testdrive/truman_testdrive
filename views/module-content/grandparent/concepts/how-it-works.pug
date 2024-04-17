@@ -1,66 +1,84 @@
 #how-it-works.hidden
-    .ui.container#activity-read
+    .ui.container#targeted-read
         .limit#learn-target(style="padding: 0;")
-            h1.ui.header.large#learn-title
-                .content 
-                    i.dice.icon
-                    span#narrate-title-activity Spot the Privacy Risks
-            .ui.stackable.grid#identity-concept-activity
-                .five.wide.column(style="margin-right: 0px; padding-right: 0px;")
-                    .instructions(style="background-color: #F1EDF8; z-index: 0;")
-                        .callout-score(style="z-index: 99;")
-                            .dark-blue-square
-                                img#avatar-image(src=user.avatarImg, alt='avatar picture')
-                            .light-blue-content
-                                h3.call-header Score
-                                .score-box
-                                    p.points 0 / 5
-                        #instruction-text(style="padding: 20px")
-                            p#narrate-1-activity
-                                span Agent, we need your help! 
-                            p#narrate-2-activity
-                                span Mrs. Johnson is sharing too much personal information on her social media, putting herself at risk of identity theft.
-                            p#narrate-3-activity 
-                                span Review her profile and 
-                                strong#narrate-4-activity 
-                                    span click on any personal information that should be removed. 
-                        .ui.fluid.button#hint-button 
-                            i.search.icon
-                            | Hint
-                .eleven.wide.column.middle.aligned(style="margin-left: 0px; padding-left: 0px;")
-                    .ui.fluid.card(style="border-radius: 0px;")
-                        .image
-                            img(src='/images/mrsjohnsonbg.png' style="height: 100px; object-fit: cover; object-position: 0 0; border-radius: 0px;")
-                            .ui.circular.image(style="position: absolute; top: 30px; left: 50%; transform: translateX(-50%); z-index: 99; width: 130px; border: 6px solid white;")
-                                img(src='/images/mrsjohnsonprofile.png' ) 
+           .ui.stackable.grid
+                h1.ui.header.large#learn-title
+                    .content
+                        i.book.icon
+                        | How do grandparent scams work?   
+                p(style="margin-top: -10px;") Here is a breakdown of the steps scammers use to target and deceive people in grandparent scams:     
+                .ui.icon.mini.message(style="padding: 5px; z-index: 99; margin-top: -15px; margin-top: -10px;")
+                    i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
+                    .content
+                        p Click the arrow to learn more.
+
+
+        .ui.stackable.middle.aligned.grid#double-slider(style="margin-left: -50px; width: 110%;")
+            .column.five.wide.computer.only.sixteen.wide.tablet.only
+                #image-slider(style="margin: 0 auto;")
+                    img(src='/images/computer-bad.png' alt='Computer image' class="image-fill")
+                    img(src='/images/learn-2.png' alt='Passport image' class="image-fill")
+                    img(src='/images/cast.png' alt='Villian in cast' class="image-fill")
+                    img(src='/images/ringing-phone.png' alt='Ringing phone' class="image-fill")
+
+            .column.eleven.wide.computer.only.sixteen.wide.tablet.only(style="max-height:0%")
+                #steps-slider
+                    //- Card 1
+                    .ui.basic.card
                         .content
-                            .ui.basic.segment(style="margin: 0; padding: 5px;")
-                                .header(style="font-size: 1.25rem; font-weight: bold") Mrs. Johnson
-                                p 
-                                    span.highlightable#text-1 I’m a wife and proud mother of 2 boys. 
-                                    span.highlightable.correct-line#text-2 My maiden name is Smith. 
-                                    span.highlightable.correct-line#text-3 Born on April 3 1959, it's been an amazing journey since then. 
-                                    span.highlightable.correct-line#text-4 Oh, here's my new email: JoanEJohnson@gmail.com. 
-                                    span.highlightable#text-5 Stay safe and talk soon!
-                            .ui.basic.segment(style="background: #E7EDF0; margin: 0; padding: 5px;")
-                                .header(style="font-size: 1.25rem; font-weight: bold; text-align: center") Post
-                                p 
-                                    span.highlightable#text-6 Terrible news. 
-                                    span.highlightable.correct-line#text-7 Somehow scammers got our phone # (555) 123-4567. 
-                                    span.highlightable#text-8 My husband Mark told them too much and they stole our identities. 
-                                    span.highlightable#text-9 We've lost our savings.💔 
+                            h2 Step 1: Identify Targets
+                            p Scammers first target potential victims by searching social media, obituaries, or other online platforms. They look for people already in distress from losing a loved one or who have posted enough information online for the scammer to create a convincing story [2].
 
-                                p 
-                                    span.highlightable#text-10 If anyone can help with even a small donation, it would mean the world to us. 
-                                    span.highlightable.correct-line#text-11 My bank info: Account #: 1234-5678-9012 Password: Eastwood1959!
 
-                                p
-                                    span.highlightable#text-12  Your kindness is appreciated. 
-                                    span.highlightable#text-13 Please share!
-                        //- .extra.content
-                        //-     .ui.feed
-                        //-         .event
-                        //-             .content
-                        //-                 .summary Terrible news. My husband Mark fell victim to a phone scam, and we've lost our entire savings. As retirees, we're now in serious financial trouble. 💔
-                        //-                 .meta
-                        //-                     .date Today
+                            //- p 
+                            //- | Scammers often employ a technique known as love bombing, where they overwhelm their victims with 
+                            //- b excessive affection and attention
+                            //- | . This method is strategically used to quickly build trust and foster an emotional dependence in the victim, making it easier for the scammer to manipulate them in the future. While receiving compliments and attention can be flattering and make you feel valued, it's crucial to 
+                            //- b remain cautious 
+                            //- | about the intentions behind these gestures, particularly when you're in the early stages of getting to know someone.
+                            //- a(href='https://www.justice.gov/criminal/criminal-fraud/identity-theft/identity-theft-and-identity-fraud.' target='_blank')
+                            //-     sup [1]
+                    //- Card 2 
+                    .ui.basic.card
+                        .content
+                            h2 Step 2: Gather Info
+                            p Once they have determined who to target, they will gather information about the target’s family, relationships, and other personal information.
+                            //- p 
+                            //- | To impress you, scammers will disclose details about their personality or their successful careers in order to gain trust and build credibility. They portray themselves as 
+                            //- b good, morally upright persons 
+                            //- | by using words and phrases with religious connotations. For example, use of adjectives such as "honest" and "sincere". For instance, reviewing the message on the left, you'll notice this scammer highlights his successful architecture career and discusses his faith, strategically using these details to create a trustworthy and appealing persona.
+                            //- a(href='https://www.justice.gov/criminal/criminal-fraud/identity-theft/identity-theft-and-identity-fraud.' target='_blank')
+                            //-     sup [2]
+                    //- Card 3
+                    .ui.basic.card
+                        .content
+                            h2 Step 3: Fabricate an Emergency Story
+                            p In this step, scammers come up with a plan: the role they'll play, the story they'll tell, and the tools they'll use. They fabricate an emergency situation based on the gathered information to evoke fear and urgency from the target [2].
+
+                            //- | Scammers employ various strategies to emotionally manipulate their victims. They show 
+                            //- b excessive care and interest 
+                            //- | in their lives by asking many questions, creating an illusion of genuine concern. This method makes victims feel uniquely seen and appreciated. By 
+                            //- b engaging in lengthy daily conversations 
+                            //- | they make it easier for you to fall for them due to the amount of time you have invested into the relationship.  Additionally, they 
+                            //- b keep track of their victims' daily routines 
+                            //- | to perform considerate actions, like sending reminders, which further reinforces their perceived attentiveness and makes the victim feel taken care of.
+                    //- Card 4
+                    .ui.basic.card
+                        .content
+                            h2 Step 4: Initial Phone Call
+                            p In step 4, the scammers contact the target, typically over a phone call, pretending to be the target’s grandchild, other loved one, or someone calling on behalf of them to ask for money [3].
+
+
+    
+                            //- | Scammers 
+                            //- b strategically time their communications 
+                            //- | to deepen emotional connections, notably by texting at night and sending good morning messages. By aligning with the victim's time zone, they often initiate conversations at night around 10 pm with 
+                            //- b personal and engaging questions
+                            //- |  like, "Share with me the highlight of your day." This approach not only cultivates intimacy by concluding the day on a note of shared experiences but also positions the scammer as one of the last thoughts before the victim falls asleep. Furthermore, a sweet good morning message upon waking ensures a positive start to their day, 
+                            //- b keeping the scammer prominently in their thoughts
+                            //- | . This calculated pattern of communication aims to strengthen the emotional bond and maintain the scammer's presence in the victim's daily routine.
+            i.source [2] Grandparent Scams Take Advantage of Your Love for Your Family. AARP.
+                a(href='https://www.aarp.org/money/scams-fraud/info-2019/grandparent.html' target='_blank') https://www.aarp.org/money/scams-fraud/info-2019/grandparent.html 
+                | [3] Don’t open your door to grandparent scams. FTC. 
+                a(href='https://consumer.ftc.gov/consumer-alerts/2021/04/dont-open-your-door-grandparent-scams' target='_blank')  https://consumer.ftc.gov/consumer-alerts/2021/04/dont-open-your-door-grandparent-scams
+                    
