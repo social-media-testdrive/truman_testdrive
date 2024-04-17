@@ -1,62 +1,54 @@
 {   
     "1": {
-      "progress": 60,
+      "progress": 100,
       "type": "multi_select",
       "partial": "none",
-      "prompt": "1. Which of the following are examples of identity theft? Select all that apply:",
+      "prompt": "1. How do scammers gather information about potential targets in grandparent scams? Select all that apply.",
       "choices": {
         "0": {
-            "text": "A. Someone steals your personal information to commit fraud",
-            "explanation": "Yes. Identity theft is stealing personal information for fraudulent activities like applying for loans and credit cards."
+            "text": "A. Searching people on social media",
+            "explanation": "Choice A is correct. Scammers often use social media platforms to gather personal information about potential targets. They may look for information such as names, family relationships, or recent activities to craft convincing stories."
         },
         "1": {
-            "text": "B. Someone uses your credit card to buy things without your permission",
-            "explanation": "Yes, this is identity theft as someone is using your financial information without permission."
+            "text": "B. Searching through obituaries",
+            "explanation": "Choice B is correct. Scammers might check recent obituaries to find information about deceased individuals and their family members. They will target families that have recently lost a loved one and take advantage of their emotional vulnerability. For example, scammers may contact the surviving spouse and impersonate one of the grandchildren listed in the obituary."
         },
         "2": {
-          "text": "C. Website requires your SSN to enter a drawing for a prize",
-          "explanation": "Yes, this type of identity theft, called “phishing,” uses  false pretenses to get you to give scammers personal information."
+          "text": "C. Searching people on online platforms",
+          "explanation": "Choice C is correct. Scammers may use online platforms, such as dating sites, to gather personal details about potential targets. For example, scammers may pose as potential romantic interests and manipulate individuals into sharing sensitive information, enabling them to create more convincing narratives."
         },
         "3": {
-          "text": "D. You give your email address to a colleague at work",
-          "explanation": "This is not identity theft because you voluntarily gave out your contact information in order to communicate with someone you personally know."
-        },
-        "4": {
-            "text": "E. Impersonating someone to access their online accounts",
-            "explanation": "This is identity theft because it involves pretending to be someone else to gain unauthorized access to their online accounts."
+          "text": "D. Visiting people’s homes",
+          "explanation": "Choice D is incorrect. In grandparent scams, scammers usually do not visit people’s homes to gather personal information about potential targets. Scammers avoid direct interaction before the initial contact to minimize the risk of detection. Instead, they will exploit online sources for anonymity and efficiency. However, scammers may visit homes after the initial contact to collect money in person."
         }
     },
-    "correctResponse": ["0", "1", "2", "4"],
-    "theAnswers": "A, B, C, E"
+    "correctResponse": ["0", "1", "2"],
+    "theAnswers": "A, B, C"
 },
     "2": {
-        "progress": 80,
+        "progress": 100,
         "type": "multi_select",
         "partial": "none",
-        "prompt": "2. Select all sensitive personal information that can be used for identity theft:",
+        "prompt": "2. In grandparent scams, which of the following roles might the scammer pretend to be? Select all that apply.",
         "choices": {
             "0": {
-                "text": "A. Full name",
-                "explanation": "Scammers can use your full name to impersonate you in various situations, such as opening fraudulent accounts, making unauthorized purchases, or attempting to gain access to your personal information."
+                "text": "A. The grandchild or a friend of the grandchild",
+                "explanation": "Choice A is correct."
             },
             "1": {
-                "text": "B. Mother's maiden name",
-                "explanation": "Mother's maiden name is often used as a security question to access accounts or reset passwords. Scammers can use your mother's maiden name to gain unauthorized access to your sensitive information and accounts."
+                "text": "B. A lawyer or bail bondsman",
+                "explanation": "Choice B is correct."
             },
             "2": {
-                "text": "C. Preferred pizza topping",
-                "explanation": "This information is generally not considered sensitive enough to be used for identity theft. It's a personal preference rather than a unique identifier."
+                "text": "C. A doctor or hospital staff (nurse)",
+                "explanation": "Choice C is correct."
             },
             "3": {
-              "text": "D. Home address",
-              "explanation": "Scammers can use your home address to commit various types of fraud, such as applying for credit cards or loans in your name, sending incriminating mail to your address instead of their own, or engaging in scams that target your physical residence."
-            },
-            "4": {
-                "text": "E. Cell phone number",
-                "explanation": "Scammers can exploit your cell phone number to send phishing texts or calls, and potentially intercept authentication codes or password reset links sent via text message."
+              "text": "D. A police officer or government official",
+              "explanation": "Choice D is correct."
             }
         },
-        "correctResponse": ["0", "1", "3", "4"],
-        "theAnswers": "A, B, D, E"
+        "correctResponse": ["0", "1", "2", "3"],
+        "theAnswers": "A, B, C, D"
 }
 }
