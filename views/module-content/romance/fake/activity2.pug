@@ -1,79 +1,76 @@
-#activity.hidden
-    .ui.container#activity-read
+#activity2.hidden
+    .ui.container
         .limit#learn-target(style="padding: 0;")
             h1.ui.header.large#learn-title
                 .content 
                     i.dice.icon
-                    | Activity: Female Profile Sleuth 
+                    | Activity: Male Profile Sleuth 
             .ui.stackable.grid
                 .nine.wide.column
                     #profile-template.ui.card(style='width: 600px; margin: 0 auto; margin-top: 10px; margin-bottom: 15px;')
                         .ui.image
-                            img#bg(src='/images/romance/susanbg.png')
+                            img#bg(src='/images/romance/johnbg.png')
                         .ui.circular.image
-                            img(src='/images/susandavispfp.png')
+                            img(src='/images/johnwilliamspfp.png')
                         .ui.basic.centered.segment
-                            .ui.centered.header Susan Davis&ZeroWidthSpace;
+                            .ui.centered.header John Williams
                             .ui.three.column.grid
                                 .column
                                     p
-                                        strong 29
+                                        strong 340
                                         |  Friends
                                 .column
                                     p
-                                        strong 0
+                                        strong 12
                                         |  Mutual Friends
                                 .column
                                     p
-                                        strong 15
+                                        strong 353
                                         |  Posts
                             p#bio
-                                | &#x1F4AA; Certified Fitness Trainer | Passionate about empowering others to discover their strength, transform their lives, and embrace a healthier, happier version of themselves.&ZeroWidthSpace; &quot;Your only limit is you.&quot; &#x1F31F;&ZeroWidthSpace;&ZeroWidthSpace;
+                                | Proud dog enthusiast, especially for the pint-sized variety that fills life with joy. Call me the &quot;Little Dog Whisperer&quot; &mdash; where small pups steal the show.&ZeroWidthSpace;&ZeroWidthSpace;
                             .icon-item
                                 i.icon.suitcase
-                                span Works at YMCA
+                                span Works as an Accountant&ZeroWidthSpace;
                             .icon-item
                                 i.icon.home
-                                span
-                                    | Lives in Los Angeles, California
+                                span Lives in Saugatuck, Michigan&ZeroWidthSpace;
                             .icon-item
                                 i.icon.map.marker.alternate
-                                span From Los Angeles, California
+                                span From Saugatuck, Michigan&ZeroWidthSpace;
                             .icon-item
                                 i.icon.users.large-icon
                                 span Linked Accounts 
-                                i.instagram.icon
+                                i.facebook.icon
 
                 //- .seven.wide.column.middle.aligned
                 .seven.wide.column
-                    #activity-question-1
+                    #activity-question-2
                         p Is this profile real or fake?
-                        button.ui.big.green.button#realBtn(style="margin-right: 30px; width: 200px;") Real
-                        button.ui.big.red.button#fakeBtn(style="width: 200px;") Fake
-                    p#susan-result(style="margin-top: 20px; display: none;") Correct! This is a 
+                        button.ui.big.green.button#realBtn2(style="margin-right: 30px; width: 200px;") Real
+                        button.ui.big.red.button#fakeBtn2(style="width: 200px;") Fake
+                    p#john-result(style="margin-top: 20px; display: none;") Correct! This is a 
                         span 
-                            strong(style="color: red;") FAKE 
+                            strong(style="color: green;") REAL 
                             | profile.
-                    //- p#susan-incorrect(style="margin-top: 20px; display: none;") Correct! This is a 
+                    //- p#john-incorrect(style="margin-top: 20px; display: none;") Correct! This is a 
                     //-     strong(style="color: red;") FAKE 
                     //-     | profile.
-                    #susan-explanation(style="display: none;") 
-                        p(style="margin-top: 5px; margin-bottom: 0px; font-weight: bold;") Red Flags
+                    #john-explanation(style="display: none;") 
+                        p(style="margin-top: 5px; margin-bottom: 0px; font-weight: bold;") Green Flags
                         .ui.bulleted.list 
                             .item 
-                                | Financially independent as a fitness trainer
+                                | No money emphasized 
                             .item
-                                | Conventionally attractive
+                                | Profile picture doesn’t emphasize looks 
                             .item
-                                | No mention of past relationships or kids
+                                | Short bio
                             .item
-                                | Bio shows that she likes to work out
+                                | A reasonable number of friends and posts
                             .item
-                                | Few posts, few friends, only one linked account
+                                | Some mutual friends
                             .item
-                                | Cliché phrase
-                            .item
-                                | Photo looks odd
+                                | From a small town 
 
                     //- .ui.icon.mini.message(style="padding: 5px; z-index: 99;")
                     //-     i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")

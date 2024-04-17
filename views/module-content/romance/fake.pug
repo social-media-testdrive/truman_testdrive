@@ -16,6 +16,8 @@ block content
         include fake/examples.pug
         include fake/examples2.pug
         include fake/disclaimer.pug
+        include fake/activity.pug
+        include fake/activity2.pug
         include fake/reflection.pug
         include fake/quiz.pug
         include fake/takeaways.pug
@@ -33,7 +35,8 @@ block scripts
     script.
         var speechData = "none"; // quizData is passed to pug file via render function in app.js
 
-    script(src='/module_js/romance/romance-scam.js')    
+    script(src='/module_js/romance/romance-scam.js')   
+    script(src='/module_js/romance/realorfake.js')   
     //- script(src='/js/text2speech.js')  
     script.
         window.addEventListener('load', function() {

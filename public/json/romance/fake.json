@@ -1,6 +1,6 @@
 {
     "1": {
-      "progress": 66.66,
+      "progress": 83.33333333333334,
       "type": "yes_no",
       "partial": "q1.html",
       "prompt": "1. Is this dating profile Real or Fake?",
@@ -13,40 +13,6 @@
         }
       },
       "explanation": "<h1>\"Real\" is the correct answer.</h1><p>Her profile picture has her grandson, multiple linked accounts, and a reasonable amount of friends and posts along with a good number of mutual friends.</p>",
-      "correctResponse": "yes"
-    },
-    "2": {
-        "progress": 75,
-        "type": "yes_no",
-        "partial": "q2.html",
-        "prompt": "2. Is this dating profile Real or Fake?",
-        "choices": {
-          "yes": {
-            "text": "Real"
-          },
-          "no": {
-            "text": "Fake"
-          }
-        },
-        "explanation": "<h1>\"Fake\" is the correct answer</h1><p>Warning signs include a financially independent, attractive individual with no mentions of past relationships or kids, a workout-focused bio, minimal posts and friends, a single linked account, cliché phrases, and an odd-looking photo.</p>",
-        "correctResponse": "no"
-    },
-    "3": {
-      "progress": 83.33,
-      "type": "yes_no",
-      "partial": "q3.html",
-      "prompt": "3.  Is this dating profile Real or Fake?",
-      "choices": {
-        "yes": {
-          "text": "Real",
-          "explanation": "Explanation for the yes statement."
-        },
-        "no": {
-          "text": "Fake",
-          "explanation": "Explanation for the no statement."
-        }
-      },
-      "explanation": "<h1>\"Real\" is the correct answer</h1><p>The profile likely is real because it doesn't emphasize wealth or physical attractiveness, has a concise bio, a realistic number of friends and posts, includes mutual friends, and originates from a small town.</p>",
       "correctResponse": "yes"
     }
   }

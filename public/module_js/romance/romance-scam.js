@@ -1271,9 +1271,15 @@ function setLinks(currentPage) {
         nextlink = baseurl + "disclaimer";
       } else if (currentPage === "disclaimer") {
         backlink = baseurl + "examples2";
+        nextlink = baseurl + "activity";
+      } else if (currentPage === "activity") {
+        backlink = baseurl + "disclaimer";
+        nextlink = baseurl + "activity2";
+      } else if (currentPage === "activity2") {
+        backlink = baseurl + "activity";
         nextlink = baseurl + "quiz";
       }  else if (currentPage === "quiz") {
-        backlink = baseurl + "disclaimer";
+        backlink = baseurl + "activity2";
         nextlink = baseurl + "reflection";
       } else if (currentPage === "reflection") {
         backlink = baseurl + "quiz";
@@ -1294,9 +1300,12 @@ function setLinks(currentPage) {
         $("#my_video_1")[0].player.pause();
   
         backlink = baseurl + "objectives";
+        nextlink = baseurl + "channels";
+      } else if (currentPage === "channels") {
+        backlink = baseurl + "intro-video";
         nextlink = baseurl + "initial";
       } else if (currentPage === "initial") {
-        backlink = baseurl + "intro-video";
+        backlink = baseurl + "channels";
         nextlink = baseurl + "types";
       } else if (currentPage === "types") {
         backlink = baseurl + "initial";
@@ -1417,12 +1426,9 @@ function setLinks(currentPage) {
         nextlink = baseurl + "search";
       } else if (currentPage === "search") {
         backlink = baseurl + "privacy";
-        nextlink = baseurl + "reverse-image";
-      } else if (currentPage === "reverse-image") {
-        backlink = baseurl + "search";
         nextlink = baseurl + "quiz";
       } else if (currentPage === "quiz") {
-        backlink = baseurl + "reverse-image";
+        backlink = baseurl + "search";
         nextlink = baseurl + "reflection";
       }  else if (currentPage === "reflection") {
         backlink = baseurl + "quiz";
@@ -1549,9 +1555,12 @@ function setLinks(currentPage) {
         nextlink = baseurl + "badge";
       } else if (currentPage === "badge") {
         backlink = baseurl + "quiz";
+        nextlink = baseurl + "reflection";
+      } else if (currentPage === "reflection") {
+        backlink = baseurl + "badge";
         nextlink = baseurl + "certificate";
       } else if (currentPage === "certificate") {
-        backlink = baseurl + "badge";
+        backlink = baseurl + "reflection";
         nextlink = "/about/romance";
       }
     }
@@ -1626,8 +1635,12 @@ function setLinks(currentPage) {
         progress = (5 / total) * 100;
       } else if (pageParam === "disclaimer") {
         progress = (6 / total) * 100;
-      } else if (pageParam === "quiz") {
+      } else if (pageParam === "activity") {
         progress = (7 / total) * 100;
+      } else if (pageParam === "activity2") {
+        progress = (8 / total) * 100;
+      } else if (pageParam === "quiz") {
+        progress = (9 / total) * 100;
       } else if (pageParam === "reflection") {
         progress = (11 / total) * 100;
       } else if (pageParam === "takeaways") {
@@ -1638,18 +1651,20 @@ function setLinks(currentPage) {
         progress = 0;
       } else if (pageParam === "intro-video") {
         progress = (1 / total) * 100;
-      } else if (pageParam === "initial") {
+      } else if (pageParam === "channels") {
         progress = (2 / total) * 100;
-      } else if (pageParam === "types") {
+      }  else if (pageParam === "initial") {
         progress = (3 / total) * 100;
-      } else if (pageParam === "communication") {
+      } else if (pageParam === "types") {
         progress = (4 / total) * 100;
-      } else if (pageParam === "relationship") {
+      } else if (pageParam === "communication") {
         progress = (5 / total) * 100;
-      } else if (pageParam === "reflection") {
+      } else if (pageParam === "relationship") {
         progress = (6 / total) * 100;
+      } else if (pageParam === "reflection") {
+        progress = (7 / total) * 100;
       } else if (pageParam === "quiz") {
-        progress = (6.5 / total) * 100;
+        progress = (9 / total) * 100;
       } else if (pageParam === "takeaways") {
         progress = 100;
       }

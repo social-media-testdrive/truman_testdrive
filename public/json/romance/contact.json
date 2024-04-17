@@ -1,6 +1,6 @@
 {   
     "1": {
-        "progress": 54.54,
+        "progress": 66.6667,
         "type": "multi_select",
         "partial": "none",
         "prompt": "1. Scammers often use language that leads the victim to trust them, or even fall in love with them. Which of the following are examples of persuasive language? Select all that apply.",
@@ -30,7 +30,7 @@
         "theAnswers": "A, B, C, E"
       },
       "2": {
-          "progress": 63.63,
+          "progress": 75,
           "type": "abcd",
           "partial": "q2.html",
           "prompt": "2. Which technique did the scammer use?",
@@ -52,7 +52,7 @@
           "correctResponse": "c"
       },
       "3": {
-        "progress": 72.72,
+        "progress": 83.33334,
         "type": "abcd",
         "partial": "none",
         "prompt": "3. Why do scammers try to move the conversation away from the dating platform to a more personal service?",
