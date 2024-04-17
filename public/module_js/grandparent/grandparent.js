@@ -1185,7 +1185,7 @@ function setLinks(currentPage) {
           "/course-player?module=romance&section=concepts&page=objectives";
       }
     } else if (section === "concepts") {
-      let baseurl = "/course-player?module=romance&section=concepts&page=";
+      let baseurl = "/course-player?module=grandparent&section=concepts&page=";
   
       if (currentPage === "objectives") {
         backlink = "/course-player?module=romance&section=challenge&page=intro";
@@ -1195,32 +1195,23 @@ function setLinks(currentPage) {
         $("#my_video_1")[0].player.pause();
   
         backlink = baseurl + "objectives";
-        nextlink = baseurl + "phases";
-      } else if (currentPage === "phases") {
-        backlink = baseurl + "intro-video";
         nextlink = baseurl + "definitions";
       } else if (currentPage === "definitions") {
-        backlink = baseurl + "phases";
-        nextlink = baseurl + "fake-websites";
-      } else if (currentPage === "fake-websites") {
+        backlink = baseurl + "intro-video";
+        nextlink = baseurl + "how-it-works";
+      } else if (currentPage === "how-it-works") {
         backlink = baseurl + "definitions";
-        nextlink = baseurl + "trusted";
-      } else if (currentPage === "trusted") {
-        backlink = baseurl + "fake-websites";
-        nextlink = baseurl + "matching";
-      }else if (currentPage === "matching") {
-        backlink = baseurl + "trusted";
+        nextlink = baseurl + "avatar";
+      } else if (currentPage === "avatar") {
+        backlink = baseurl + "how-it-works";
         nextlink = baseurl + "quiz";
-      }else if (currentPage === "quiz") {
-        backlink = baseurl + "matching";
+      } else if (currentPage === "quiz") {
+        backlink = baseurl + "avatar";
         nextlink = baseurl + "reflection";
-      } else if (currentPage === "reflection") {
+      }else if (currentPage === "reflection") {
         backlink = baseurl + "quiz";
-        nextlink = baseurl + "takeaways";
-      } else if (currentPage === "takeaways") {
-        backlink = baseurl + "reflection";
-        nextlink ="/course-player?module=romance&section=consequences&page=objectives";
-      }
+        nextlink = baseurl + "/course-player?module=romance&section=consequences&page=objectives";
+      } 
     } else if (section === "consequences") {
       let baseurl = "/course-player?module=romance&section=consequences&page=";
   

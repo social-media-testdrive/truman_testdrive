@@ -12,11 +12,10 @@ block content
         include concepts/objectives.pug
         include concepts/intro-video.pug
         include concepts/definitions.pug
-        include concepts/personal-info.pug
-        include concepts/activity.pug
-        include concepts/reflection.pug
+        include concepts/how-it-works.pug
+        include concepts/avatar.pug
         include concepts/quiz.pug
-        include concepts/takeaways.pug
+        include concepts/reflection.pug
     audio(id="narration-audio", src=`https://dart-store.s3.amazonaws.com/identity+theft+voice+over/${section}/${page}_${user.avatar.toLowerCase()}.mp3`, preload="auto", onended="disableNarrationPlayButton()")
 
 
