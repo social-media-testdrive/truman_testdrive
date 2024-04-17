@@ -174,7 +174,61 @@ const userSchema = new mongoose.Schema({
             questionScores: [{ type: Number }],
             questionChoices: Schema.Types.Mixed,
         }],
-    },      
+    },    
+    grandparent: {
+        percent: { type: Number, default: 0 }, // percent complete
+        link: { type: String, default: '/course-player?module=grandparent&section=challenge&page=intro' }, // link to the last page the user was on in module
+        challengeAttempts: [{
+            timestamp: { type: Date, default: Date.now },
+            scoreTotal: { type: Number, default: 0 },
+            correctAnswers: { type: Number, default: 0 },
+            questionScores: [{ type: Number }],
+            questionChoices: Schema.Types.Mixed,
+        }],
+        conceptsAttempts: [{
+            timestamp: { type: Date, default: Date.now },
+            scoreTotal: { type: Number, default: 0 },
+            correctAnswers: { type: Number, default: 0 },
+            questionScores: [{ type: Number }],
+            questionChoices: Schema.Types.Mixed,
+        }],
+        consequencesAttempts: [{
+            timestamp: { type: Date, default: Date.now },
+            scoreTotal: { type: Number, default: 0 },
+            correctAnswers: { type: Number, default: 0 },
+            questionScores: [{ type: Number }],
+            questionChoices: Schema.Types.Mixed,
+        }],
+        techniquesAttempts: [{
+            timestamp: { type: Date, default: Date.now },
+            scoreTotal: { type: Number, default: 0 },
+            correctAnswers: { type: Number, default: 0 },
+            questionScores: [{ type: Number }],
+            questionChoices: Schema.Types.Mixed,
+        }],
+        protectionAttempts: [{
+            timestamp: { type: Date, default: Date.now },
+            scoreTotal: { type: Number, default: 0 },
+            correctAnswers: { type: Number, default: 0 },
+            questionScores: [{ type: Number }],
+            questionChoices: Schema.Types.Mixed,
+        }],
+        reportingAttempts: [{
+            timestamp: { type: Date, default: Date.now },
+            scoreTotal: { type: Number, default: 0 },
+            correctAnswers: { type: Number, default: 0 },
+            questionScores: [{ type: Number }],
+            questionChoices: Schema.Types.Mixed,
+        }],
+        evaluationAttempts: [{
+            timestamp: { type: Date, default: Date.now },
+            scoreTotal: { type: Number, default: 0 },
+            correctAnswers: { type: Number, default: 0 },
+            questionScores: [{ type: Number }],
+            questionChoices: Schema.Types.Mixed,
+        }],
+    },             
+  
     phishing: {
         percent: { type: Number, default: 0 }, // percent complete
         link: { type: String, default: '/course-player?module=phishing&section=challenge&page=intro' }, // link to the last page the user was on in module
@@ -183,16 +237,7 @@ const userSchema = new mongoose.Schema({
         submodTwo: { type: Number, default: 0 },
         submodThree: { type: Number, default: 0 },
         postquiz: { type: Number, default: 0 },
-    },       
-    grandparent: {
-        percent: { type: Number, default: 0 }, // percent complete
-        link: { type: String, default: '/course-player?module=grandparent&section=challenge&page=intro' }, // link to the last page the user was on in module
-        prequiz: { type: Number, default: 0},
-        submodOne: { type: Number, default: 0 },
-        submodTwo: { type: Number, default: 0 },
-        submodThree: { type: Number, default: 0 },
-        postquiz: { type: Number, default: 0 },
-    },       
+    },           
     sales: {
         percent: { type: Number, default: 0 }, // percent complete
         link: { type: String, default: '/course-player?module=sales&section=challenge&page=intro' }, // link to the last page the user was on in module
@@ -230,7 +275,19 @@ const userSchema = new mongoose.Schema({
         protection: { type: Number, default: 0 }, 
         practice: { type: Number, default: 0 }, 
         evaluation: { type: Number, default: 0 }, 
-    },      
+    },    
+    grandparent: {
+        intro: { type: Number, default: 0 }, 
+        challenge: { type: Number, default: 0 },  
+        concepts: { type: Number, default: 0 }, 
+        consequences: { type: Number, default: 0 }, 
+        techniques: { type: Number, default: 0 }, 
+        protection: { type: Number, default: 0 }, 
+        reporting: { type: Number, default: 0 }, 
+        practice: { type: Number, default: 0 }, 
+        evaluation: { type: Number, default: 0 }, 
+    },     
+  
   },
   modulePageTimes: { // marks the progress of each module
     identity: {
