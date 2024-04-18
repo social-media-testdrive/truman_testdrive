@@ -1198,20 +1198,23 @@ function setLinks(currentPage) {
         nextlink = baseurl + "definitions";
       } else if (currentPage === "definitions") {
         backlink = baseurl + "intro-video";
-        nextlink = baseurl + "how-it-works";
-      } else if (currentPage === "how-it-works") {
+        nextlink = baseurl + "types";
+      } else if (currentPage === "types") {
         backlink = baseurl + "definitions";
         nextlink = baseurl + "avatar";
       } else if (currentPage === "avatar") {
-        backlink = baseurl + "how-it-works";
+        backlink = baseurl + "types";
         nextlink = baseurl + "quiz";
       } else if (currentPage === "quiz") {
         backlink = baseurl + "avatar";
         nextlink = baseurl + "reflection";
-      }else if (currentPage === "reflection") {
+      } else if (currentPage === "reflection") {
         backlink = baseurl + "quiz";
+        nextlink = baseurl + "takeaways";
+      } else if (currentPage === "takeaways") {
+        backlink = baseurl + "reflection";
         nextlink = baseurl + "/course-player?module=romance&section=consequences&page=objectives";
-      } 
+      }
     } else if (section === "consequences") {
       let baseurl = "/course-player?module=romance&section=consequences&page=";
   
