@@ -1,6 +1,6 @@
 {
   "1": {
-    "progress": 75,
+    "progress": 100,
     "type": "multi_select",
     "partial": "none",
     "prompt": "1. In grandparent scams, what information scammers try to find online? Select all that apply.",
@@ -26,7 +26,7 @@
     "theAnswers": "A, C, D"
   },
   "2": {
-    "progress": 83.333,
+    "progress": 100,
     "type": "multi_select",
     "partial": "none",
     "prompt": "2. What are some common stories that scammers tell?  Select all that apply.",
@@ -52,7 +52,7 @@
     "theAnswers": "A, B, C"
   },
   "3": {
-    "progress": 91.666,
+    "progress": 100,
     "type": "abcd",
     "partial": "none",
     "prompt": "3. What is Caller ID Spoofing?",
