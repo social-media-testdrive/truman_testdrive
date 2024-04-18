@@ -5,24 +5,24 @@
         "partial": "none",
         "prompt": "If you discover that you are being scammed after you have wired the money, what steps should you take?",
         "choices": {
-          "a": {
+          "0": {
             "text": "Immediately contact your bank or financial institution to report the scam and request a wire recall, though success is not guaranteed.",
             "explanation": "Choice A is correct. Immediately contact your bank or financial institution to report the scam and request a wire recall, though success is not guaranteed. This is crucial because banks may be able to stop or reverse the transfer if it has not been fully processed."
           },
-          "b": {
+          "1": {
             "text": "Contact the wire transfer service used to see if they can stop or reverse the transfer.",
             "explanation": "Choice B is correct. Contact the wire transfer service used to see if they can stop or reverse the transfer. Wire transfer services may also have procedures in place to help prevent or reverse fraudulent transfers."
           },
-          "c": {
+          "2": {
             "text": "Report the scam to your local law enforcement and provide all relevant details.",
             "explanation": "Choice C is correct. Reporting the scam can help law enforcement investigate and potentially prevent others from falling victim."
           },
-          "d": {
+          "3": {
             "text": "Be cautious of follow-up scams that may attempt to take advantage of your situation.",
             "explanation": "Choice D is incorrect. While this is generally good advice, it is not directly related to what you should do after discovering you have been scammed with a wire transfer."
           }
         },
-        "correctResponse": ["a", "b", "c"],
+        "correctResponse": ["0", "1", "2"],
         "theAnswers": "A, B, C"
       },
       "2":{
@@ -57,24 +57,24 @@
     "partial": "none",
     "prompt": "Why is it important to talk to your friends and family about a scam you experienced?",
     "choices": {
-      "a": {
+      "0": {
         "text": "Sharing your experience can help protect your loved ones.",
         "explanation": "Choice A is correct. Sharing your experience with scams can raise awareness and promote vigilance among your loved ones, empowering them to recognize and avoid similar deceptive tactics. Additionally, an open dialogue about your encounter creates a supportive network, allowing your loved ones to learn from your experience and collectively strengthen their defenses against potential scams."
       },
-      "b": {
+      "1": {
         "text": "Sharing your experience only makes others feel worried about potential scams.",
         "explanation": "Choice B is incorrect. While sharing your experience with scams may cause some initial worry, it is a crucial step in raising awareness and equipping people with the knowledge to identify and avoid falling victim to similar deceptive tactics."
       },
-      "c": {
+      "2": {
         "text": "Sharing your experience can help alleviate your anxiety.",
         "explanation": "Choice C is correct. Sharing your experience can help alleviate anxiety. For instance, your friends may have previously encountered similar scams. By exchanging stories, you'll realize you're not alone in facing such situations, which can provide comfort and perspective."
       },
-      "d": {
+      "3": {
         "text": "It is not important. I would like to keep the experience a secret and avoid embarrassment.",
         "explanation": "Choice D is incorrect. First, there's no need to feel embarrassed, as your friends are unlikely to judge you for being targeted. In fact, by openly sharing your experience, you can inform and educate others, helping prevent them from falling victim to similar scams. Additionally, you may receive valuable guidance and support, contributing to an environment that makes it more difficult for scammers to operate successfully."
       }
     },
-    "correctResponse": ["a", "c"],
+    "correctResponse": ["0", "2"],
     "theAnswers": "A, C"
   }
         
