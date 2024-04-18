@@ -935,7 +935,7 @@ $(document).ready(function() {
         }
 
         if(currentPage === 'certificate') {
-            window.location.href = '/about/romance';
+            window.location.href = '/about/grandparent';
         }
 
         // fade out current page, then fade in next page. at half duration each, 400ms total
@@ -1171,10 +1171,10 @@ function setLinks(currentPage) {
     // }
 
     if (section === "challenge") {
-      let baseurl = "/course-player?module=romance&section=challenge&page=";
+      let baseurl = "/course-player?module=grandparent&section=challenge&page=";
   
       if (currentPage === "intro") {
-        backlink = "/about/romance";
+        backlink = "/about/grandparent";
         nextlink = baseurl + "quiz";
       } else if (currentPage === "quiz") {
         backlink = baseurl + "intro";
@@ -1182,13 +1182,13 @@ function setLinks(currentPage) {
       } else if (currentPage === "badge") {
         backlink = baseurl + "quiz";
         nextlink =
-          "/course-player?module=romance&section=concepts&page=objectives";
+          "/course-player?module=grandparent&section=concepts&page=objectives";
       }
     } else if (section === "concepts") {
       let baseurl = "/course-player?module=grandparent&section=concepts&page=";
   
       if (currentPage === "objectives") {
-        backlink = "/course-player?module=romance&section=challenge&page=intro";
+        backlink = "/course-player?module=grandparent&section=challenge&page=intro";
         nextlink = baseurl + "intro-video";
       } else if (currentPage === "intro-video") {
         // pause video
@@ -1213,14 +1213,14 @@ function setLinks(currentPage) {
         nextlink = baseurl + "takeaways";
       } else if (currentPage === "takeaways") {
         backlink = baseurl + "reflection";
-        nextlink = baseurl + "/course-player?module=romance&section=consequences&page=objectives";
+        nextlink ="/course-player?module=grandparent&section=consequences&page=objectives";
       }
     } else if (section === "consequences") {
-      let baseurl = "/course-player?module=romance&section=consequences&page=";
+      let baseurl = "/course-player?module=grandparent&section=consequences&page=";
   
       if (currentPage === "objectives") {
         backlink =
-          "/course-player?module=romance&section=concepts&page=objectives";
+          "/course-player?module=grandparent&section=concepts&page=objectives";
         nextlink = baseurl + "financial";
       } else if (currentPage === "financial") {
         backlink = baseurl + "objectives";
@@ -1239,14 +1239,14 @@ function setLinks(currentPage) {
         nextlink = baseurl + "takeaways";
       } else if (currentPage === "takeaways") {
         backlink = baseurl + "reflection";
-        nextlink = "/course-player?module=romance&section=fake&page=objectives";
+        nextlink = "/course-player?module=grandparent&section=fake&page=objectives";
       }
     } else if (section === "fake") {
-      let baseurl = "/course-player?module=romance&section=fake&page=";
+      let baseurl = "/course-player?module=grandparent&section=fake&page=";
   
       if (currentPage === "objectives") {
         backlink =
-          "/course-player?module=romance&section=consequences&page=objectives";
+          "/course-player?module=grandparent&section=consequences&page=objectives";
         nextlink = baseurl + "what";
       } else if (currentPage === "what") {
         backlink = baseurl + "objectives";
@@ -1275,14 +1275,14 @@ function setLinks(currentPage) {
       } else if (currentPage === "takeaways") {
         backlink = baseurl + "reflection";
         nextlink =
-          "/course-player?module=romance&section=contact&page=objectives";
+          "/course-player?module=grandparent&section=contact&page=objectives";
       }
     } else if (section === "contact") {
-      let baseurl = "/course-player?module=romance&section=contact&page=";
+      let baseurl = "/course-player?module=grandparent&section=contact&page=";
   
       if (currentPage === "objectives") {
         backlink =
-          "/course-player?module=romance&section=fake&page=objectives";
+          "/course-player?module=grandparent&section=fake&page=objectives";
         nextlink = baseurl + "intro-video";
       } else if (currentPage === "intro-video") {
         $("#my_video_1")[0].player.pause();
@@ -1310,14 +1310,14 @@ function setLinks(currentPage) {
       } else if (currentPage === "takeaways") {
         backlink = baseurl + "quiz";
         nextlink =
-          "/course-player?module=romance&section=requests&page=objectives";
+          "/course-player?module=grandparent&section=requests&page=objectives";
       }
     } else if (section === "requests") {
-      let baseurl = "/course-player?module=romance&section=requests&page=";
+      let baseurl = "/course-player?module=grandparent&section=requests&page=";
   
       if (currentPage === "objectives") {
         backlink =
-          "/course-player?module=romance&section=contact&page=objectives";
+          "/course-player?module=grandparent&section=contact&page=objectives";
         nextlink = baseurl + "types";
       } else if (currentPage === "types") {
         backlink = baseurl + "objectives";
@@ -1348,14 +1348,14 @@ function setLinks(currentPage) {
         nextlink = baseurl + "takeaways";
       } else if (currentPage === "takeaways") {
         backlink = baseurl + "quiz";
-        nextlink = "/course-player?module=romance&section=protection&page=objectives";
+        nextlink = "/course-player?module=grandparent&section=protection&page=objectives";
       }
     } else if (section === "techniques") {
-      let baseurl = "/course-player?module=romance&section=techniques&page=";
+      let baseurl = "/course-player?module=grandparent&section=techniques&page=";
   
       if (currentPage === "objectives") {
         backlink =
-          "/course-player?module=romance&section=consequences&page=objectives";
+          "/course-player?module=grandparent&section=consequences&page=objectives";
         nextlink = baseurl + "types";
       } else if (currentPage === "types") {
         // pause video
@@ -1385,14 +1385,14 @@ function setLinks(currentPage) {
       } else if (currentPage === "takeaways") {
         backlink = baseurl + "quiz";
         nextlink =
-          "/course-player?module=romance&section=protection&page=objectives";
+          "/course-player?module=grandparent&section=protection&page=objectives";
       }
     } else if (section === "protection") {
-      let baseurl = "/course-player?module=romance&section=protection&page=";
+      let baseurl = "/course-player?module=grandparent&section=protection&page=";
   
       if (currentPage === "objectives") {
         backlink =
-          "/course-player?module=romance&section=requests&page=objectives";
+          "/course-player?module=grandparent&section=requests&page=objectives";
         nextlink = baseurl + "intro-video";
       } else if (currentPage === "intro-video") {
         backlink = baseurl + "objectives";
@@ -1424,13 +1424,13 @@ function setLinks(currentPage) {
       } else if (currentPage === "takeaways") {
         backlink = baseurl + "reflection";
         nextlink =
-          "/course-player?module=romance&section=reporting&page=objectives";
+          "/course-player?module=grandparent&section=reporting&page=objectives";
       }
     } else if (section === "reporting") {
-      let baseurl = "/course-player?module=romance&section=reporting&page=";
+      let baseurl = "/course-player?module=grandparent&section=reporting&page=";
   
       if (currentPage === "objectives") {
-        backlink = "/course-player?module=romance&section=protection&page=objectives";
+        backlink = "/course-player?module=grandparent&section=protection&page=objectives";
         nextlink = baseurl + "realizing";
       } else if (currentPage === "realizing") {
         backlink = baseurl + "objectives";
@@ -1450,13 +1450,13 @@ function setLinks(currentPage) {
       } else if (currentPage === "takeaways") {
         backlink = baseurl + "quiz";
         nextlink =
-          "/course-player?module=romance&section=practice&page=objectives";
+          "/course-player?module=grandparent&section=practice&page=objectives";
       }
     } else if (section === "practice") {
-      let baseurl = "/course-player?module=romance&section=practice&page=";
+      let baseurl = "/course-player?module=grandparent&section=practice&page=";
   
       if (currentPage === "objectives") {
-        backlink = "/course-player?module=romance&section=reporting&page=objectives";
+        backlink = "/course-player?module=grandparent&section=reporting&page=objectives";
 
         //- check if they have completed the practice module, then show results page
         //- console.log("Checking if practice module is completed. Their score is: "  + scoreTotal);
@@ -1522,7 +1522,7 @@ function setLinks(currentPage) {
       
       } else if (currentPage === "takeaways") {
         backlink = baseurl + "results";
-        nextlink = "/course-player?module=romance&section=evaluation&page=intro";
+        nextlink = "/course-player?module=grandparent&section=evaluation&page=intro";
 
         // complete module status to 100 manually since there is no quiz
         console.log("HEY Posting to complete practice module status");
@@ -1532,11 +1532,11 @@ function setLinks(currentPage) {
         });
       }
     } else if (section === "evaluation") {
-      let baseurl = "/course-player?module=romance&section=evaluation&page=";
+      let baseurl = "/course-player?module=grandparent&section=evaluation&page=";
   
       if (currentPage === "intro") {
         backlink =
-          "/course-player?module=romance&section=practice&page=objectives";
+          "/course-player?module=grandparent&section=practice&page=objectives";
         nextlink = baseurl + "quiz";
       } else if (currentPage === "quiz") {
         backlink = baseurl + "intro";
@@ -1546,7 +1546,7 @@ function setLinks(currentPage) {
         nextlink = baseurl + "certificate";
       } else if (currentPage === "certificate") {
         backlink = baseurl + "badge";
-        nextlink = "/about/romance";
+        nextlink = "/about/grandparent";
       }
     }
   
