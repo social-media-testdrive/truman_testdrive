@@ -1,31 +1,82 @@
 {
-  "1": {
-      "type": "multi_select",
-      "partial": "none",
-      "prompt": "1. When you have your identity stolen, what should you do? Select all that apply:",
-      "choices": {
+    "1":{
+        "progress": 0,
+        "type": "multi_select",
+        "partial": "none",
+        "prompt": "If you discover that you are being scammed after you have wired the money, what steps should you take?",
+        "choices": {
           "0": {
-              "text": "A. Notify your bank or financial institution",
-              "explanation": "Informing your bank or financial institution is important to protect your financial accounts."
+            "text": "Immediately contact your bank or financial institution to report the scam and request a wire recall, though success is not guaranteed.",
+            "explanation": "Choice A is correct. Immediately contact your bank or financial institution to report the scam and request a wire recall, though success is not guaranteed. This is crucial because banks may be able to stop or reverse the transfer if it has not been fully processed."
           },
           "1": {
-              "text": "B. Report identity theft to the Federal Trade Commission",
-              "explanation": "Reporting identity theft to the FTC is the first step  to start the recovery process. "
+            "text": "Contact the wire transfer service used to see if they can stop or reverse the transfer.",
+            "explanation": "Choice B is correct. Contact the wire transfer service used to see if they can stop or reverse the transfer. Wire transfer services may also have procedures in place to help prevent or reverse fraudulent transfers."
           },
           "2": {
-              "text": "C. Keep it a secret to avoid embarrassment",
-              "explanation": "Staying silent won't help and may put you or others at risk for future scams from the same scammers. There's no need to feel ashamed; identity theft can happen to anyone and doesn’t mean you are unfit to handle your finances."
+            "text": "Report the scam to your local law enforcement and provide all relevant details.",
+            "explanation": "Choice C is correct. Reporting the scam can help law enforcement investigate and potentially prevent others from falling victim."
           },
           "3": {
-              "text": "D. Change passwords for other accounts",
-              "explanation": "Changing passwords for other accounts can prevent further unauthorized access."
-          },
-          "4": {
-              "text": "E. Contact your local police department",
-              "explanation": "Reporting to local authorities helps with the legal aspects of identity theft."
+            "text": "Be cautious of follow-up scams that may attempt to take advantage of your situation.",
+            "explanation": "Choice D is incorrect. While this is generally good advice, it is not directly related to what you should do after discovering you have been scammed with a wire transfer."
           }
+        },
+        "correctResponse": ["0", "1", "2"],
+        "theAnswers": "A, B, C"
       },
-      "correctResponse": ["0", "1", "3", "4"],
-      "theAnswers": "A, C, E, F"
+      "2":{
+        "progress": 40,
+        "type": "multi_select",
+        "partial": "none",
+        "prompt": "Where and how can you report a scam? Select all that apply.",
+        "choices": {
+          "0": {
+            "text": "A. Call your local police department.",
+            "explanation": "You can report scams to your local law enforcement for investigation and possible action."
+          },
+          "1": {
+            "text": "B. Report to the Federal Trade Commission (FTC) through ftc.gov/complaint or call 1-877-FTC-HELP.",
+            "explanation": "The Federal Trade Commission (FTC) is a federal agency that handles consumer complaints, including reports of scams. You can submit a complaint online or call their helpline for assistance."
+          },
+          "2": {
+            "text": "C. Keep your experience a secret to avoid further scams.",
+            "explanation": "Keeping your experience a secret may prevent you from warning others or seeking help from appropriate authorities."
+          },
+          "3": {
+            "text": "D. Share your experience only with your immediate family.",
+            "explanation": "While sharing your experience with your family can provide emotional support, it's also important to report scams to the appropriate authorities for investigation and prevention."
+          }
+        },
+        "correctResponse": ["0", "1"],
+        "theAnswers": "A, B"
+      },      
+"3": {
+    "progress": 0,
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "Why is it important to talk to your friends and family about a scam you experienced?",
+    "choices": {
+      "0": {
+        "text": "Sharing your experience can help protect your loved ones.",
+        "explanation": "Choice A is correct. Sharing your experience with scams can raise awareness and promote vigilance among your loved ones, empowering them to recognize and avoid similar deceptive tactics. Additionally, an open dialogue about your encounter creates a supportive network, allowing your loved ones to learn from your experience and collectively strengthen their defenses against potential scams."
+      },
+      "1": {
+        "text": "Sharing your experience only makes others feel worried about potential scams.",
+        "explanation": "Choice B is incorrect. While sharing your experience with scams may cause some initial worry, it is a crucial step in raising awareness and equipping people with the knowledge to identify and avoid falling victim to similar deceptive tactics."
+      },
+      "2": {
+        "text": "Sharing your experience can help alleviate your anxiety.",
+        "explanation": "Choice C is correct. Sharing your experience can help alleviate anxiety. For instance, your friends may have previously encountered similar scams. By exchanging stories, you'll realize you're not alone in facing such situations, which can provide comfort and perspective."
+      },
+      "3": {
+        "text": "It is not important. I would like to keep the experience a secret and avoid embarrassment.",
+        "explanation": "Choice D is incorrect. First, there's no need to feel embarrassed, as your friends are unlikely to judge you for being targeted. In fact, by openly sharing your experience, you can inform and educate others, helping prevent them from falling victim to similar scams. Additionally, you may receive valuable guidance and support, contributing to an environment that makes it more difficult for scammers to operate successfully."
+      }
+    },
+    "correctResponse": ["0", "2"],
+    "theAnswers": "A, C"
   }
+        
+      
 }
