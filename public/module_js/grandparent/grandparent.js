@@ -1195,24 +1195,18 @@ function setLinks(currentPage) {
         $("#my_video_1")[0].player.pause();
   
         backlink = baseurl + "objectives";
-        nextlink = baseurl + "phases";
-      } else if (currentPage === "phases") {
-        backlink = baseurl + "intro-video";
         nextlink = baseurl + "definitions";
       } else if (currentPage === "definitions") {
-        backlink = baseurl + "phases";
-        nextlink = baseurl + "fake-websites";
-      } else if (currentPage === "fake-websites") {
+        backlink = baseurl + "intro-video";
+        nextlink = baseurl + "types";
+      } else if (currentPage === "types") {
         backlink = baseurl + "definitions";
-        nextlink = baseurl + "trusted";
-      } else if (currentPage === "trusted") {
-        backlink = baseurl + "fake-websites";
-        nextlink = baseurl + "matching";
-      }else if (currentPage === "matching") {
-        backlink = baseurl + "trusted";
+        nextlink = baseurl + "avatar";
+      } else if (currentPage === "avatar") {
+        backlink = baseurl + "types";
         nextlink = baseurl + "quiz";
-      }else if (currentPage === "quiz") {
-        backlink = baseurl + "matching";
+      } else if (currentPage === "quiz") {
+        backlink = baseurl + "avatar";
         nextlink = baseurl + "reflection";
       } else if (currentPage === "reflection") {
         backlink = baseurl + "quiz";

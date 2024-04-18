@@ -12,10 +12,10 @@ block content
         include concepts/objectives.pug
         include concepts/intro-video.pug
         include concepts/definitions.pug
-        include concepts/personal-info.pug
-        include concepts/activity.pug
-        include concepts/reflection.pug
+        include concepts/types.pug
+        include concepts/avatar.pug
         include concepts/quiz.pug
+        include concepts/reflection.pug
         include concepts/takeaways.pug
     audio(id="narration-audio", src=`https://dart-store.s3.amazonaws.com/identity+theft+voice+over/${section}/${page}_${user.avatar.toLowerCase()}.mp3`, preload="auto", onended="disableNarrationPlayButton()")
 
@@ -31,7 +31,7 @@ block scripts
     script.
         var speechData= "none"; // quizData is passed to pug file via render function in app.js
 
-    script(src='/module_js/identity/identity-theft.js')  
+    script(src='/module_js/grandparent/grandparent.js')  
     script(src='/module_js/identity/concepts-activity.js')  
     //- script(src='/js/text2speech.js')  
     script.
@@ -68,6 +68,36 @@ block scripts
 
     script(src='/module_js/module_quiz.js', mod-id=module, page=page, current-section=section, next-link=link, progress=progress)
         
+    script.
+        $('.ui.shape .ui.card').on('click', function() {
+            $(this).closest('.ui.card').removeClass('click-me-glow');
+            // Navigate up to the parent '.ui.shape' of the clicked '.ui.card' and perform the flip
+            $(this).closest('.ui.shape').shape('flip over');
+            
+        });
+
+        //- Sources referenced: https://mgmgblog.com/en/post-4601/ and https://codepen.io/jjinMangKo/pen/LYygOrq
+        $('#steps-slider').slick({
+            asNavFor:"#image-slider",
+            dots: true,
+            arrows: true,
+            infinite: false,
+            speed: 800,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            customPaging : function(slider, index) { 
+                var num = index + 1;
+                return '<span class="dot">'+ num +'</span>';
+            }
+        });
+
+        $('#image-slider').slick({
+                draggable: false,
+                infinite: false,
+                arrows: false,
+                fade: true,
+                cssEase: 'linear'
+        });
         //- startQuiz()
     //- console.log("Page is quiz-template")
     //- console.log("module: " + module)
