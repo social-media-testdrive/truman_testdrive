@@ -25,30 +25,32 @@
         "correctResponse": ["a", "b", "c"],
         "theAnswers": "A, B, C"
       },
-    "2":{
-        "progress": 0,
+      "2":{
+        "progress": 40,
         "type": "multi_select",
         "partial": "none",
-        "prompt": "Where and how can you report a scam?",
+        "prompt": "Where and how can you report a scam? Select all that apply.",
         "choices": {
-          "a": {
-            "text": "Call your local police department."
+          "0": {
+            "text": "A. Call your local police department.",
+            "explanation": "You can report scams to your local law enforcement for investigation and possible action."
           },
-          "b": {
-            "text": "Report to the Federal Trade Commission (FTC) through ftc.gov/complaint or call 1-877-FTC-HELP."
+          "1": {
+            "text": "B. Report to the Federal Trade Commission (FTC) through ftc.gov/complaint or call 1-877-FTC-HELP.",
+            "explanation": "The Federal Trade Commission (FTC) is a federal agency that handles consumer complaints, including reports of scams. You can submit a complaint online or call their helpline for assistance."
           },
-          "c": {
-            "text": "Keep your experience a secret to avoid further scams.",
-            "explanation": "Choice C is incorrect. You should not keep your experience a secret. It's important to report scams to proper authorities."
+          "2": {
+            "text": "C. Keep your experience a secret to avoid further scams.",
+            "explanation": "Keeping your experience a secret may prevent you from warning others or seeking help from appropriate authorities."
           },
-          "d": {
-            "text": "Share your experience only with your immediate family."
+          "3": {
+            "text": "D. Share your experience only with your immediate family.",
+            "explanation": "While sharing your experience with your family can provide emotional support, it's also important to report scams to the appropriate authorities for investigation and prevention."
           }
         },
-        "correctResponse": ["a", "b"],
-        "theAnswers": "A, B",
-        "explanation": "You can report a scam to local law enforcement and Federal Trade Commission (FTC). These are the official channels for reporting scams and seeking assistance."
-      },
+        "correctResponse": ["0", "1"],
+        "theAnswers": "A, B"
+      },      
 "3": {
     "progress": 0,
     "type": "multi_select",
