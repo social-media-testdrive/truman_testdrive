@@ -1,6 +1,6 @@
 {
   "1": {
-    "progress": 20,
+    "progress": 100,
     "type": "multi_select",
     "partial": "none",
     "prompt": "1. In grandparent scams, the scammer typically pretends to be a target’s…? Select all that apply.",
@@ -26,7 +26,7 @@
     "theAnswers": "A, B, C,"
   },
   "2": {
-    "progress": 40,
+    "progress": 100,
     "type": "yes_no",
     "partial": "none",
     "prompt": "2. Which of the following are consequences of being a victim of grandparent scams? Select all that apply.",
@@ -52,7 +52,7 @@
     "theAnswers": "B, C, D"
   },
   "3": {
-    "progress": 60,
+    "progress": 100,
     "type": "multi_select",
     "partial": "none",
     "prompt": "3. Which techniques are often used when a grandparent scammer impersonates your grandchild?  Select all that apply.",
@@ -78,7 +78,7 @@
     "theAnswers": "A, D"
   },
   "4": {
-    "progress": 80,
+    "progress": 100,
     "type": "multi_select",
     "partial": "none",
     "prompt": "4. You receive an unexpected call from an unknown caller. Which of the following should alert you that they might be a scammer?  Select all that apply.",
@@ -104,7 +104,7 @@
     "theAnswers": "A, B, D"
   },
   "5": {
-    "progress": 95,
+    "progress": 100,
     "type": "multi_select",
     "partial": "none",
     "prompt": "5. Which of the following preventative measures can grandparents take to avoid falling into grandparent scams?  Select all that apply.",
