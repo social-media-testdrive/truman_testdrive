@@ -591,7 +591,7 @@
         },
         "Q5": {
             "type": "radio",
-            "prompt": "Your friend Jane sends you an email asking you to send her your address. But somehow the email doesn't sound like Jane at all. Which of the following actions is unsafe?",
+            "prompt": "Your friend Jane sends you an email asking you to send her your address. But somehow the email doesn't sound like Jane at all. Which of the following actions is <span class = 'underline'>unsafe</span>?",
             "radioLabels": {
                 "0": "Ask Jane whether she actually sent the email.",
                 "1": "Ask a trusted adult what to do next.",
