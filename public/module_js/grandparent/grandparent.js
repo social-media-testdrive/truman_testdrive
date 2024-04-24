@@ -1431,23 +1431,51 @@ function setLinks(currentPage) {
   
       if (currentPage === "objectives") {
         backlink = "/course-player?module=grandparent&section=protection&page=objectives";
-        nextlink = baseurl + "realizing";
-      } else if (currentPage === "realizing") {
+        nextlink = baseurl + "titles";
+      } 
+      
+      else if (currentPage === "titles") {
         backlink = baseurl + "objectives";
-        nextlink = baseurl + "scammed";
-      } else if (currentPage === "scammed") {
-        backlink = baseurl + "realizing";
-        nextlink = baseurl + "responsive";
-      } else if (currentPage === "responsive") {
-        backlink = baseurl + "scammed";
-        nextlink = baseurl + "callout";
-      } else if (currentPage === "callout") {
-        backlink = baseurl + "responsive";
+        nextlink = baseurl + "responses";
+      } else if (currentPage === "responses") {
+        backlink = baseurl + "titles";
+        nextlink = baseurl + "family";
+      } else if (currentPage === "family") {
+        backlink = baseurl + "responses";
+        nextlink = baseurl + "voice";
+      } else if (currentPage === "voice") {
+        backlink = baseurl + "family";
+        nextlink = baseurl + "fear";
+      } else if (currentPage === "fear") {
+        backlink = baseurl + "voice";
+        nextlink = baseurl + "secrecy1";
+      } else if (currentPage === "secrecy1") {
+        backlink = baseurl + "fear";
+        nextlink = baseurl + "secrecy2";
+      } else if (currentPage === "secrecy2") {
+        backlink = baseurl + "secrecy1";
+        nextlink = baseurl + "payment";
+      } else if (currentPage === "payment") {
+        backlink = baseurl + "secrecy2";
+        nextlink = baseurl + "money";
+      } else if (currentPage === "money") {
+        backlink = baseurl + "payment";
+        nextlink = baseurl + "activity1";
+      } else if (currentPage === "activity1") {
+        backlink = baseurl + "money";
+        nextlink = baseurl + "activity2";
+      } else if (currentPage === "activity2") {
+        backlink = baseurl + "activity1";
         nextlink = baseurl + "quiz";
       } else if (currentPage === "quiz") {
-        backlink = baseurl + "callout";
+        backlink = baseurl + "activity2";
+        nextlink = baseurl + "reflection";
+      } else if (currentPage === "reflection") {
+        backlink = baseurl + "quiz";
         nextlink = baseurl + "takeaways";
-      } else if (currentPage === "takeaways") {
+      } 
+      
+       else if (currentPage === "takeaways") {
         backlink = baseurl + "quiz";
         nextlink =
           "/course-player?module=grandparent&section=practice&page=objectives";
