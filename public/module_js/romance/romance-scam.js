@@ -1033,7 +1033,7 @@ $(document).ready(function() {
                     })
                   ;
 
-                  postBadge("Romance", "Contact", "Silver", "Request Ready", "/badges/romance/techniques.svg");
+                  postBadge("Romance", "Contact", "Silver", "Request Ready", "/badges/romance/requests.svg");
 
                   badgeEarned = true;                    
               } else if(section === 'protection') {
