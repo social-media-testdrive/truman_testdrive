@@ -3,7 +3,9 @@
     "objectives": {
       "daring": [
         {"time": 1325,"type": "word","value": "reporting","element": "narrate-title-objectives"},
-        {"time": 5147,"type": "word","value": "Objectives","element": "narrate-2-objectives"},
+        {"time": 3342,"type": "word","value": "5","element": "narrate-1-objectives"},
+        {"time": 3630,"type": "word","value": "min","element": "narrate-1-objectives"},
+        {"time": 5147,"type": "word","value": "Objective","element": "narrate-2-objectives"},
         {"time": 6122,"type": "word","value": "Learn","element": "narrate-3-objectives"},
         {"time": 6397,"type": "word","value": "how","element": "narrate-3-objectives"},
         {"time": 6622,"type": "word","value": "to","element": "narrate-3-objectives"},
@@ -16,8 +18,8 @@
       "intrepid": [
         {"time": 1375,"type": "word","value": "reporting","element": "narrate-title-objectives"},
         {"time": 3405,"type": "word","value": "5","element": "narrate-1-objectives"},
-        {"time": 3717,"type": "word","value": "minutes","element": "narrate-1-objectives"},
-        {"time": 5372,"type": "word","value": "Objectives","element": "narrate-2-objectives"},
+        {"time": 3717,"type": "word","value": "min","element": "narrate-1-objectives"},
+        {"time": 5372,"type": "word","value": "Objective","element": "narrate-2-objectives"},
         {"time": 6185,"type": "word","value": "Learn","element": "narrate-3-objectives"},
         {"time": 6435,"type": "word","value": "how","element": "narrate-3-objectives"},
         {"time": 6647,"type": "word","value": "to","element": "narrate-3-objectives"},
@@ -30,8 +32,8 @@
         "valiant": [
           {"time": 1075,"type": "word","value": "reporting","element": "narrate-title-objectives"},
           {"time": 2880,"type": "word","value": "5","element": "narrate-1-objectives"},
-          {"time": 3155,"type": "word","value": "minutes","element": "narrate-1-objectives"},
-          {"time": 4547,"type": "word","value": "Objectives","element": "narrate-2-objectives"},
+          {"time": 3155,"type": "word","value": "min","element": "narrate-1-objectives"},
+          {"time": 4547,"type": "word","value": "Objective","element": "narrate-2-objectives"},
           {"time": 5472,"type": "word","value": "Learn","element": "narrate-3-objectives"},
           {"time": 5747,"type": "word","value": "how","element": "narrate-3-objectives"},
           {"time": 5872,"type": "word","value": "to","element": "narrate-3-objectives"},
