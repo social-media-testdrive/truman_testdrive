@@ -567,7 +567,7 @@ function playAudio(thePage) {
         var audio = document.getElementById('narration-audio');
 
         if(audio) {
-            audio.src = `https://dart-store.s3.amazonaws.com/identity-narration/${section}/${thePage}_${avatar}.mp3`;
+            audio.src = `https://dart-store.s3.amazonaws.com/romance-narration/${section}/${thePage}_${avatar}.mp3`;
             audio.load();
             audio.playbackRate = voiceSpeed;
 
