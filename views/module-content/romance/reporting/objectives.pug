@@ -1,7 +1,7 @@
 #objectives.hidden
     .ui.container#raised-container
         .limit#learn-target(style="padding: 0;")
-            .ui.grid.computer.only#objectives-read
+            .ui.grid.computer.only
                 .ten.wide.column
                     //- button.ui.icon.button#volume-up-button.left.floated(style="position: absolute; left: 400px; top: 45px;")
                     //-     i.volume.up.icon
@@ -11,24 +11,25 @@
                             span#narrate-title-objectives Reporting
                         span(style="float: right; font-size: 1.5rem; margin-top: 5px; color: #151C22;")
                             i.clock.outline.icon
-                            span#narrate-1-objectives 5 min
+                            span#narrate-time-objectives 5 min
                     .ui.divider
                     //- h1.ui.header.large#learn-subheader
                     //-     i.bullseye.icon
                     //-     | Objectives:
-                    h3#narrate-2-objectives(style="color: #0C2746;") 
-                        span Objective:
+                    h3(style="color: #0C2746;") 
+                        span#narrate-header-objectives Objective:
                     ul.no-bullets
                         li
                             img(src="/images/dart-bullet.svg", alt="Bullet Point")
-                            span#narrate-3-objectives Learn how to report romance and friendship scams
+                            span#narrate-1-objectives
+                                span Learn how to report romance and friendship scams
                 .six.wide.center.aligned.middle.aligned.column
                     img.ui.image(src='/images/reporting2.png')
             .ui.grid.tablet.only.mobile.only
                 .row
                     h1.ui.header.large#learn-title
                         i.bullseye.icon
-                        | Learning Targets
+                        | Objectives
 
                 ul.no-bullets(style="text-align: left;")
                     li
