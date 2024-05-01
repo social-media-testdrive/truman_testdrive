@@ -209,6 +209,7 @@ app.get("/", homeController.index);
 // });
 app.get("/courses", coursesController.index);
 app.get("/about/:modId", isValidModId, moduleController.getAbout);
+app.get("/references/:modId", isValidModId, moduleController.getReferences);
 app.get("/course-player", moduleController.getModule);
 app.post("/completeModuleStatus", moduleController.completeModuleStatus);
 app.get("/login", userController.getLogin);
