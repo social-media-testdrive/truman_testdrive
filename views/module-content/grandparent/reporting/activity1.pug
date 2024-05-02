@@ -35,16 +35,16 @@
 
 
 script.
-  // Show the message when a button is clicked
+  // Function to show the answer with a transition
   function showAnswer1() {
-    document.getElementById('answer-key-1').classList.remove('hideQ1');
-    document.getElementById('correct-bttn-1').style.backgroundColor = '#76A646';
+    $('#answer-key-1').transition('fade in');
+    $('#correct-bttn-1').css('background-color', '#76A646');
   }
+
   function showAnswer2() {
-    document.getElementById('answer-key-2').classList.remove('hideQ2');
-    document.getElementById('correct-bttn-2').style.backgroundColor = '#76A646';
+    $('#answer-key-2').transition('fade in');
+    $('#correct-bttn-2').css('background-color', '#76A646');
   }
-  
 
 block styles
     link(rel='stylesheet', href='/css/grandparent/reporting/activity1.css')  
