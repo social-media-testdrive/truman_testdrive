@@ -1,7 +1,55 @@
 #activity2.hidden
-    .ui.container#know-you-read(style="width: 90%;")
-        .top-info#examplePage(style="margin-top: 10px;")
-            h1.ui.header.large#learn-title
-                .content
-                    i.book.icon
-                    | Activity 2
+  .ui.container#know-you-read(style="width: 90%;")
+    .top-info#examplePage(style="margin-top: 10px;")
+      h1.ui.header.large#learn-title
+        .content 
+          i.book.icon
+          | Activity 2: When you answering a call, how should you respond to each of the following requests below?
+        .ui.grid
+          .one.column.row 
+            .column
+              | 3. Caller: Grandma, this is really serious, you need to act fast to send me the money!
+          .four.column.row(style="color:black; display: flex; justify-content: center; gap: 20px;")
+            ui.container
+              button.ui.button.fluid(onclick="showAnswer3()") OK! I'll do it today.
+            ui.container
+              button.ui.button.fluid#correct-bttn-3(onclick="showAnswer3()") Why don't you call your parents? Or the police?
+
+          .hideQ1#answer-key-3
+            .one.column.row
+              .column(style="font-style: italic;")
+                b(style="color:#76A646;") The choice on the right is correct. 
+                | No matter how urgent or serious the situation sounds when described by the caller, 
+                | always ensure others are aware before taking any action. Never send money unless your family members or trusted 
+                | friends can independently verify and confirm it is not a scam attempt. Scammers will try to rush you into sending funds 
+                | by creating a false sense of emergency.
+          .one.column.row 
+            .column
+              | 4. Unknown person: This is really serious, I can't let my parents know. Grandma, you are the only person who can help me. I love you, and I trust you.
+          .four.column.row(style="color:black; display: flex; justify-content: center; gap: 20px;")
+            ui.container
+              button.ui.button.fluid#correct-bttn-4(onclick="showAnswer4()") I will have to talk to your parents.
+            ui.container
+              button.ui.button.fluid(onclick="showAnswer4()") Oh I love you too.
+          .hideQ2#answer-key-4
+            .one.column.row
+              .column(style="font-style: italic;")
+                b(style="color:#76A646;") The choice on the left is correct. 
+                | No matter how urgent or serious the situation sounds when described by the caller, always ensure others are aware before 
+                | taking any action. Never send money unless your family members or trusted friends can independently verify and 
+                | confirm it is not a scam attempts. Never openly express your affection to your loved ones 
+                | - the scammers always want to manipulate your love to your grandchildren.
+
+script.
+  function showAnswer3() {
+    $('#answer-key-3').transition('fade in');
+    $('#correct-bttn-3').css('background-color', '#76A646');
+  }
+
+  function showAnswer4() {
+    $('#answer-key-4').transition('fade in');
+    $('#correct-bttn-4').css('background-color', '#76A646');
+  }
+
+block styles
+  link(rel='stylesheet', href='/css/grandparent/reporting/activity1.css')
