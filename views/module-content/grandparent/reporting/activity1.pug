@@ -1,0 +1,48 @@
+#activity1.hidden
+  .ui.container#know-you-read(style="width: 90%;")
+    .top-info#examplePage(style="margin-top: 10px;")
+      h1.ui.header.large#learn-title
+        .content 
+          i.book.icon
+          | Activity 1: When you are answering a call, how should you respond to each of the following requests below?
+        .ui.grid
+          .one.column.row 
+            .column
+              | 1. Caller: Hi Grandma! Hi Grandpa!
+          .four.column.row(style="color:black; display: flex; justify-content: center; gap: 20px;")
+            ui.container
+              button.ui.button.fluid(onclick="showAnswer1()") Hey, is that Johnny?
+            ui.container
+              button.ui.button.fluid#correct-bttn-1(onclick="showAnswer1()") Who is that?
+          .hideQ1#answer-key-1
+            .one.column.row
+              .column(style="font-style: italic;")
+                b(style="color:#76A646;") The choice on the right is correct. 
+                p You should never provide names of your family members or yourself to someone over the phone, especially if you did not initiate the call. Scammers would use the information you provided to increase their credibility.
+          .one.column.row 
+            .column
+              | 2. Caller: Listen, I got into a serious accident, and I need money to solve this problem, otherwise I will be in jail.
+          .four.column.row(style="color:black; display: flex; justify-content: center; gap: 20px;")
+            ui.container
+              button.ui.button.fluid#correct-bttn-2(onclick="showAnswer2()") Did you tell your parents?
+            ui.container
+              button.ui.button.fluid(onclick="showAnswer2()") Oh god! How much money do you need?
+          .hideQ2#answer-key-2
+            .one.column.row
+              .column(style="font-style: italic;")
+                b(style="color:#76A646;") The choice on the left is correct.
+                p Never offer or mention your willingness to provide money. Always ensure there are others aware of the situation, and do not isolate yourself. Scammers will try to keep you isolated to more easily manipulate you into sending them money.
+
+script.
+  function showAnswer1() {
+    $('#answer-key-1').transition('fade in');
+    $('#correct-bttn-1').css('background-color', '#76A646');
+  }
+
+  function showAnswer2() {
+    $('#answer-key-2').transition('fade in');
+    $('#correct-bttn-2').css('background-color', '#76A646');
+  }
+
+block styles
+  link(rel='stylesheet', href='/css/grandparent/reporting/activity1.css')

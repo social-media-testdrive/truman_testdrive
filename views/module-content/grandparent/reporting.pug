@@ -10,12 +10,19 @@ block content
             h1 Loading...
     .display-page.hidden
         include reporting/objectives.pug
-        include reporting/intro-video.pug
-        include reporting/when.pug
-        include reporting/financial.pug
-        include reporting/medical.pug
-        include reporting/tax.pug
-        include reporting/quiz.pug
+        include reporting/titles.pug
+        include reporting/responses.pug
+        include reporting/family.pug
+        include reporting/voice.pug
+        include reporting/fear.pug
+        include reporting/secrecy1.pug
+        include reporting/secrecy2.pug
+        include reporting/payment.pug
+        include reporting/money.pug
+        include reporting/activity1.pug
+        include reporting/activity2.pug     
+        include reporting/quiz.pug 
+        include reporting/reflection.pug 
         include reporting/takeaways.pug
     audio(id="narration-audio", src=`https://dart-store.s3.amazonaws.com/identity+theft+voice+over/${section}/${page}_${user.avatar.toLowerCase()}.mp3`, preload="auto", onended="disableNarrationPlayButton()")
 
@@ -31,7 +38,7 @@ block scripts
     script.
         var speechData = "none"; // quizData is passed to pug file via render function in app.js
 
-    script(src='/module_js/identity/identity-theft.js')    
+    script(src='/module_js/grandparent/grandparent.js')    
     //- script(src='/js/text2speech.js')  
     script.
         window.addEventListener('load', function() {
