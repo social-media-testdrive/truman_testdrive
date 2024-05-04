@@ -5,17 +5,23 @@
                 h1.ui.header.large#learn-title
                     .content
                         i.book.icon
-                        | Common Measures
+                        span#narrate-title-common-measures Common Measures
                 .ui.bulleted.list 
-                    .item Stay cautious at all times as the sender might be a scammer
-                    .item Get to know the techniques scammers use as presented in 
-                        a(href='/course-player?module=identity&section=techniques&page=objectives') Techniques
-                    .item When in doubt, don't hesitate to consult your family, friends, or those familiar with identity theft
-                    .item Be prepared to report scams to the authorities.
+                    .item#narrate-1-common-measures
+                        span Stay cautious at all times as the sender might be a scammer
+
+                    .item#narrate-2-common-measures
+                        span Get to know the techniques scammers use as presented in Techniques
+                            //- a(href='/course-player?module=identity&section=techniques&page=objectives') Techniques
+
+                    .item#narrate-3-common-measures
+                            span When in doubt, don't hesitate to consult your family, friends, or those familiar with identity theft
+                    .item#narrate-4-common-measures
+                            span Be prepared to report scams to the authorities.
                 .callout
                     .dark-blue-square
                         img(src=user.avatarImg, alt='avatar picture')
                     .light-blue-content
                         h3.call-header Important
-                        p(style="font-size: 1.25rem;") If you suspect theft, take immediate action to minimize the damage.
-                        br
+                        span
+                            p(style="font-size: 1.25rem;") If you suspect theft, take immediate action to minimize the damage.
