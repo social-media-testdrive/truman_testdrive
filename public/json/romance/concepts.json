@@ -1,28 +1,44 @@
 {   
-    "1": {
-        "progress": 100,
-        "type": "abcd",
-        "partial": "none",
-        "prompt": "1. What is a money mule?",
-        "choices": {
-          "a": {
-            "text": "A. Someone who transfers or moves money illegally for someone else",
-            "explanation": "The scammer asks you to transfer money, either physically or from one account to another, claiming that you will be rewarded if you help them."
+  "1": {
+    "progress": 63.63,
+    "type": "abcd",
+    "partial": "none",
+    "prompt": "1. Which of the following outlines the three phases of a romance or friendship scam, as exemplified by Sophia's experience in the video?",
+    "choices": {
+      "a": {
+        "text": "A. Propose marriage → Wedding planning → Steal Honeymoon funds",
+        "explanation": "This option does not accurately reflect the scam's progression as described in the video. There is no mention of marriage proposals, wedding planning, or honeymoon funds in the narrative. The scam focused on building a relationship and then exploiting it for financial gain."
+      },
+      "b": {
+        "text": "B. Fake profile → Contact & Groom → Money or favor request",
+        "explanation": "This correctly outlines the phases. In the video, the scam began with \"Christopher\" creating an alluring fake profile, designed to attract Sophia. He then invested time in developing a bond with Sophia. Lastly, after gaining Sophia's trust, he fabricated a failed business deal requesting Sophia to give him $10,000."
+      },
+      "c": {
+        "text": "C. Fake profile → Contact & Groom → Ghost",
+        "explanation": "In scams like the one experienced by Sophia, scammers usually do not ghost or cease communication with their victims until after they have successfully solicited money or received what they wanted."
+      },
+      "d": {
+        "text": "D. Money or favor request → Contact & Groom → Fake profile",
+        "explanation": "This sequence is backward and does not align with the process described in the video."
+      }
+    },
+    "explanation": "<h1>The correct answer is B.</h1><p>B correctly outlines the phases of romance and friendship scams. In the video, the scam began with Sophia finding \"Christopher's\" alluring <strong>fake profile</strong>. \"Christopher\" then invested time into <strong>contacting and grooming</strong> Sophia to develop a bond. Lastly, after gaining Sophia's trust, he fabricated a failed business deal and made a <strong>money request</strong> asking Sophia to give him $10,000.</p>",
+    "correctResponse": "b"
+    },
+    "2": {
+      "progress": 72.72,
+      "type": "yes_no",
+      "partial": "q2.html",
+      "prompt": "2. Could clicking on advertisements lead you to a fake dating website?",
+      "choices": {
+          "yes": {
+            "text": "Yes"
           },
-          "b": {
-            "text": "B. A secret word for popular gift cards",
-            "explanation": "This is not the definition of a money mule. “Money Mule” Romance Scams involve scammers asking you to move money for them."
-          },
-          "c": {
-            "text": "C. An investment that does well",
-            "explanation": "This is not the definition of a money mule. “Money Mule” Romance Scams involve scammers asking you to move money for them."
-          },
-          "d": {
-            "text": "D. A digital wallet for your cryptocurrency",
-            "explanation": "This is not the definition of a money mule. “Money Mule” Romance Scams involve scammers asking you to move money for them."
+          "no": {
+            "text": "No"
           }
-        },
-        "explanation": "<h1>The correct answer is A.</h1>",
-        "correctResponse": "a"
-    }
+      },
+      "explanation": "<h1>\"Yes\" is the correct answer.</h1><p>Advertisements, especially those not vetted by reputable platforms, can be deceptive. Scammers use them to direct unsuspecting users to fraudulent sites designed to mimic legitimate dating services. These fake sites can then be used to steal personal information, solicit money, or deploy malware. Always exercise caution and verify the authenticity of websites before engaging or sharing personal information.</p>",
+      "correctResponse": "yes"
+    }            
 }

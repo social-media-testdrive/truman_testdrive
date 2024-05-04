@@ -1,64 +1,120 @@
 #female.hidden
     .ui.container#financial-read
         .limit#learn-target(style="padding: 0;")
-            .ui.stackable.grid
-                .ten.wide.column
+            .ui.grid
+                .ten.wide.computer.sixteen.wide.tablet.middle.aligned.column
                     h1.ui.header.large#learn-title
                         .content
                             i.book.icon
                             | Fake Female Profiles
-                    p(style="font-size: 1.5rem;") Common characteristics of fake female profiles include photos highlighting <strong>physical attractiveness and style</strong>, often presenting themselves as financially independent with jobs that suggest a nurturing or educational role, such as students, nurses, or teachers. These profiles usually indicate that the individual has <strong>no previous significant romantic relationships</strong> and no children, portraying themselves as entirely unattached. 
-                    p(style="font-size: 1.5rem;") The biographies are filled with adjectives like "compassionate, adventurous, independent, and witty," aimed at projecting the image of an ideal partner. In terms of hobbies, there's an effort to show a well-rounded personality by mentioning interests in music or reading, while also appealing to male preferences with mentions of fitness or sports.
-                    
-                .six.wide.column.middle.aligned
-                    .container(style="max-width: 750px; margin: 50px auto; padding: 0 20px;")
-                        .eleven.wide.column.middle.aligned(style="margin-left: 0px; padding-left: 0px;")
-                        .ui.fluid.card(style="border-radius: 0px;")
-                            .image
-                            img(src='/images/jenniferwilliamsbg.png' style="height: 200px; object-position: 0 0; border-radius: 10px;") 
-                            .ui.circular.image(style="position: absolute; top: 40px; left: 50%; transform: translateX(-50%); z-index: 99; width: px; ")
-                                img(src='/images/jenniferwilliamspfp.png') 
-                            .ui.basic.segment(style="margin: 0; text-align: center; display: flex; flex-direction: column; align-items: center;") 
-                                .header(style="font-size: 1.75rem; font-weight: bold; margin-bottom: 20px;") Jennifer Williams
-                                .flex-container(style="display: flex; justify-content: space-between; width: 100%;")
-                                    p(style="flex: 1; text-align: center; font-size: 0.9rem;") 
-                                        strong 27
-                                        |  Friends
-                                    p(style="flex: 1; text-align: center; font-size: 0.9rem;") 
-                                        strong 0 
-                                        |  Mutual Friends
-                                    p(style="flex: 1; text-align: center; font-size: 0.9rem;") 
-                                        strong 15
-                                        |  Posts
-                                .icons-container(style="display: flex; width: 100%; justify-content: space-around; margin-top: 20px;")
-                                    .icon-item
-                                        i.icon.users
-                                        p(style="font-size: 0.9rem;") Add Friend
-                                    .icon-item
-                                        i.icon.address.book
-                                        p(style="font-size: 0.9rem;") Follow
-                                    .icon-item
-                                        i.icon.comment.alternate
-                                        p(style="font-size: 0.9rem;") Message
-                                    .icon-item
-                                        i.icon.ellipsis.horizontal
-                                        p(style="font-size: 0.9rem;") More
-                                p(style="text-align: center; margin-top:20px") Hello, friends! I'm Jennifer, an experienced nurse with a heart that finds joy in caring for others. Life has been a beautiful journey, and I'm here to share the wisdom of years, spread love, and connect with kindred spirits.
-                            .new-icons-container(style="display: flex; flex-direction: column; width: 100%; margin-top: 10px;")
-                                .icon-item
-                                    .icon-container(style="display: flex; align-items: center; margin-right: 10px;margin-left: 5px;")
-                                        i.icon.suitcase
-                                        p(style="margin-left: 5px; font-size: 0.9rem;") Works as a Nurse at Massachusetts General Hospital
-                                .icon-item
-                                    .icon-container(style="display: flex; align-items: center; margin-right: 10px;margin-left: 5px;")
-                                        i.icon.home
-                                        p(style="margin-left: 5px; font-size: 0.9rem; margin-left: 5px;") Lives in Franklin, Massachusetts 
-                                .icon-item
-                                    .icon-container(style="display: flex; align-items: center; margin-right: 10px;margin-left: 5px;")
-                                        i.icon.map.marker.alternate
-                                        p(style="margin-left: 5px; font-size: 0.9rem;") From Burlington, Vermont
-                                .icon-item
-                                    .icon-container(style="display: flex; align-items: center; margin-right: 10px;margin-left: 5px; margin-bottom: 5px;")
-                                        i.icon.users.large-icon 
-                                        p(style="margin-left: 5px; font-size: 0.9rem;") Linked Accounts
+                    p Common characteristics: 
+                    .ui.bulleted.list
+                        .item
+                            | Conventional attractive profile photo
+                        .item
+                            | Typically describe themselves as financially independent, holding a job that involves providing care and human contact, such as a student, nurse, or teacher/teaching assistant
+                        .item
+                            | Not wealthy, no kid, and no previous significant romantic relationship
+                        //- .item
+                        //-     | Their bio may use adjectives like “loyal, respectful, humorous, religious,” to seem like an ideal match
+                        .item
+                            | Their hobbies could include music or reading, and will also try to appeal to men by mentioning fitness or sports
 
+                    //- p Common characteristics of fake female profiles include photos highlighting <strong>physical attractiveness and style</strong>, often presenting themselves as financially independent with jobs that suggest a nurturing or educational role, such as students, nurses, or teachers. These profiles usually indicate that the individual has <strong>no previous significant romantic relationships</strong> and no children, portraying themselves as entirely unattached. 
+                    //- p The biographies are filled with adjectives like "compassionate, adventurous, independent, and witty," aimed at projecting the image of an ideal partner. In terms of hobbies, there's an effort to show a well-rounded personality by mentioning interests in music or reading, while also appealing to male preferences with mentions of fitness or sports.
+
+                .six.wide.computer.ten.wide.tablet.centered.middle.aligned.column
+                    img.ui.medium.image(src='/images/romance/female_fake.png' style='margin-left: auto; margin-right: auto;' alt="female with no face")
+
+                    //- .ui.fluid.card#profile-template
+                    //-     .ui.image
+                    //-         img#bg(src='/images/jenniferwilliamsbg.png') 
+                    //-     .ui.circular.image
+                    //-         img(src='/images/jenniferwilliamspfp.png') 
+                    //-     .ui.basic.centered.segment 
+                    //-         .ui.centered.header Jennifer Williams
+                    //-         .ui.three.column.grid
+                    //-             .column
+                    //-                 p
+                    //-                     strong 27
+                    //-                     |  Friends
+                    //-             .column
+                    //-                 p
+                    //-                     strong 0 
+                    //-                     |  Mutual Friends
+                    //-             .column
+                    //-                 p
+                    //-                     strong 15
+                    //-                     |  Posts
+                    //-         p#bio  Hello, friends! I'm Jennifer, an experienced nurse with a heart that finds joy in caring for others. Life has been a beautiful journey, and I'm here to share the wisdom of years, spread love, and connect with kindred spirits.
+                    //-         .icon-item
+                    //-             i.icon.suitcase
+                    //-             span  Works at  Massachusetts Hospital
+                    //-         .icon-item
+                    //-             i.icon.home
+                    //-             span  Lives in Franklin, Massachusetts 
+                    //-         .icon-item
+                    //-             i.icon.map.marker.alternate
+                    //-             span  From Burlington, Vermont
+                    //-         .icon-item
+                    //-             i.icon.users.large-icon
+                    //-             span  Linked Accounts
+
+
+
+                    //- .container(style="max-width: 750px; margin: 50px auto; padding: 0 20px;")
+                    //-     .eleven.wide.column.middle.aligned(style="margin-left: 0px; padding-left: 0px;")
+                    //-     .ui.fluid.card(style="border-radius: 0px;")
+                    //-         .image
+                    //-         img(src='/images/jenniferwilliamsbg.png' style="height: 200px; object-position: 0 0; border-radius: 10px;") 
+                    //-         .ui.circular.image(style="position: absolute; top: 40px; left: 50%; transform: translateX(-50%); z-index: 99; width: px; ")
+                    //-             img(src='/images/jenniferwilliamspfp.png') 
+                    //-         .ui.basic.segment(style="margin: 0; text-align: center; display: flex; flex-direction: column; align-items: center;") 
+                    //-             .header(style="font-size: 1.75rem; font-weight: bold; margin-bottom: 20px;") Jennifer Williams
+                    //-             .flex-container(style="display: flex; justify-content: space-between; width: 100%;")
+                    //-                 p(style="flex: 1; text-align: center; font-size: 0.9rem;") 
+                    //-                     strong 27
+                    //-                     |  Friends
+                    //-                 p(style="flex: 1; text-align: center; font-size: 0.9rem;") 
+                    //-                     strong 0 
+                    //-                     |  Mutual Friends
+                    //-                 p(style="flex: 1; text-align: center; font-size: 0.9rem;") 
+                    //-                     strong 15
+                    //-                     |  Posts
+                    //-             .icons-container(style="display: flex; width: 100%; justify-content: space-around; margin-top: 20px;")
+                    //-                 .icon-item
+                    //-                     i.icon.users
+                    //-                     p(style="font-size: 0.9rem;") Add Friend
+                    //-                 .icon-item
+                    //-                     i.icon.address.book
+                    //-                     p(style="font-size: 0.9rem;") Follow
+                    //-                 .icon-item
+                    //-                     i.icon.comment.alternate
+                    //-                     p(style="font-size: 0.9rem;") Message
+                    //-                 .icon-item
+                    //-                     i.icon.ellipsis.horizontal
+                    //-                     p(style="font-size: 0.9rem;") More
+                    //-             p(style="text-align: center; margin-top:20px") Hello, friends! I'm Jennifer, an experienced nurse with a heart that finds joy in caring for others. Life has been a beautiful journey, and I'm here to share the wisdom of years, spread love, and connect with kindred spirits.
+                    //-         .new-icons-container(style="display: flex; flex-direction: column; width: 100%; margin-top: 10px;")
+                    //-             .icon-item
+                    //-                 .icon-container(style="display: flex; align-items: center; margin-right: 10px;margin-left: 5px;")
+                    //-                     i.icon.suitcase
+                    //-                     p(style="margin-left: 5px; font-size: 0.9rem;") Works as a Nurse at Massachusetts General Hospital
+                    //-             .icon-item
+                    //-                 .icon-container(style="display: flex; align-items: center; margin-right: 10px;margin-left: 5px;")
+                    //-                     i.icon.home
+                    //-                     p(style="margin-left: 5px; font-size: 0.9rem; margin-left: 5px;") Lives in Franklin, Massachusetts 
+                    //-             .icon-item
+                    //-                 .icon-container(style="display: flex; align-items: center; margin-right: 10px;margin-left: 5px;")
+                    //-                     i.icon.map.marker.alternate
+                    //-                     p(style="margin-left: 5px; font-size: 0.9rem;") From Burlington, Vermont
+                    //-             .icon-item
+                    //-                 .icon-container(style="display: flex; align-items: center; margin-right: 10px;margin-left: 5px; margin-bottom: 5px;")
+                    //-                     i.icon.users.large-icon 
+                    //-                     p(style="margin-left: 5px; font-size: 0.9rem;") Linked Accounts
+                    i.source [1] Anatomy of the Online Dating Scam,  Springer Link, 
+                        a(href='https://link.springer.com/article/10.1057/sj.2012.57' target='_blank') 'https://link.springer.com/article/10.1057/sj.2012.57' 
+                    br
+                    i.source [11] The Role of Love stories in Romance Scams: A Qualitative Analysis of Fraudulent Profiles, 
+                        a(href='https://www.cybercrimejournal.com/pdf/Koppetal2015vol9issue2.pdf' target='_blank') 'https://www.cybercrimejournal.com/pdf/Koppetal2015vol9issue2.pdf' 
+                        

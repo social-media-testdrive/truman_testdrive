@@ -10,10 +10,13 @@ block content
             h1 Loading...
     .display-page.hidden
         include requests/objectives.pug
-        include requests/financial.pug
-        include requests/emotional.pug
-        include requests/targeted.pug
         include requests/types.pug
+        include requests/examples.pug
+        include requests/pressure.pug
+        include requests/sob.pug
+        include requests/emotional.pug
+        include requests/blackmail.pug
+        include requests/callout.pug
         include requests/reflection.pug
         include requests/quiz.pug
         include requests/takeaways.pug
@@ -27,7 +30,9 @@ block styles
     link(rel='stylesheet', href='/css/dart_quiz.css')  
 
 
-block scripts       
+block scripts      
+    script.
+        var speechData = "none"; // quizData is passed to pug file via render function in app.js     
     script(src='/module_js/romance/romance-scam.js')    
     //- script(src='/js/text2speech.js')  
     script.
@@ -48,7 +53,12 @@ block scripts
         var startPage = "#{page}"; 
         var total = parseInt(#{numPages});
     script.
-
+        $('.ui.shape .ui.card').on('click', function() {
+            $(this).closest('.ui.card').removeClass('click-me-glow');
+            // Navigate up to the parent '.ui.shape' of the clicked '.ui.card' and perform the flip
+            $(this).closest('.ui.shape').shape('flip over');
+            
+        });
         //- Sources referenced: https://mgmgblog.com/en/post-4601/ and https://codepen.io/jjinMangKo/pen/LYygOrq
         $('#steps-slider').slick({
             asNavFor:"#image-slider",

@@ -29,7 +29,7 @@ block styles
 
 block scripts       
     script.
-        var speechData = "none"; // quizData is passed to pug file via render function in app.js
+        var speechData= !{JSON.stringify(speechMarks)}; 
 
     script(src='/module_js/identity/identity-theft.js') 
     script(src='/module_js/identity/sub3_activity.js' id="practice-script")   

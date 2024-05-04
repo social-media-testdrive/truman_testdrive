@@ -760,7 +760,6 @@ exports.postQuizScore = async (req, res, next) => {
       // prequiz attempt data
       const attempt = {
         timestamp: new Date(),
-        scoreTotal: scoreTotal,
         correctAnswers: correctAnswers,
         questionScores: questionScores,
         questionChoices: selectedAnswer,
@@ -901,6 +900,99 @@ exports.postAvatar = async (req, res, next) => {
   }
 };
 
+exports.postPracticeChoice = async (req, res, next) => {
+  // const { point, choice } = req.body;
+  // const moduleToUpdate = req.body.modID;
+  const {questionNum, choice, moduleToUpdate} = req.body;
+  console.log("^^Backkend IN POST PRACTICE CHOICE***************************");
+  console.log("Question Number: " + questionNum);
+  console.log("Choice: " + choice);
+  console.log("Module to Update: " + moduleToUpdate);
+
+
+  console.log("YOU ARE IN POST PRACTICE CHOICE***************************");
+  try {
+    const existingUser = await User.findOne({ email: req.user.email });
+
+    if (existingUser) {
+      // Post user's choice
+
+      if(questionNum === "reset") {
+        existingUser.moduleProgress[moduleToUpdate].practiceChoices.choice1 = "none";
+        existingUser.moduleProgress[moduleToUpdate].practiceChoices.choice2 = "none";
+        existingUser.moduleProgress[moduleToUpdate].practiceChoices.choice3 = "none";
+        existingUser.moduleProgress[moduleToUpdate].practiceChoices.choice4 = "none";
+        existingUser.moduleProgress[moduleToUpdate].practiceChoices.choice5 = "none";
+        existingUser.moduleProgress[moduleToUpdate].practiceChoices.choice6 = "none";
+        existingUser.moduleProgress[moduleToUpdate].practiceChoices.choice7 = "none";
+        existingUser.moduleProgress[moduleToUpdate].practiceChoices.score = 0;
+      } else {
+        existingUser.moduleProgress[moduleToUpdate].practiceChoices[questionNum] = choice;  
+      }
+
+      // Save to MongoDB database
+      await existingUser.save();
+
+      // Manually update the user object in the session
+      if(questionNum === "reset") {
+        req.session.passport.user.moduleProgress[moduleToUpdate].practiceChoices.choice1 = "none";
+        req.session.passport.user.moduleProgress[moduleToUpdate].practiceChoices.choice2 = "none";
+        req.session.passport.user.moduleProgress[moduleToUpdate].practiceChoices.choice3 = "none";
+        req.session.passport.user.moduleProgress[moduleToUpdate].practiceChoices.choice4 = "none";
+        req.session.passport.user.moduleProgress[moduleToUpdate].practiceChoices.choice5 = "none";
+        req.session.passport.user.moduleProgress[moduleToUpdate].practiceChoices.choice6 = "none";
+        req.session.passport.user.moduleProgress[moduleToUpdate].practiceChoices.choice7 = "none";
+        req.session.passport.user.moduleProgress[moduleToUpdate].practiceChoices.score = 0;
+      } else {
+        req.session.passport.user.moduleProgress[moduleToUpdate].practiceChoices[questionNum] = choice;
+      }
+      // Save the session
+      req.session.save((err) => {
+        if (err) {
+          return next(err);
+        }
+
+        // Redirect or send a success response
+        // res.status(200).send('Practice choice updated successfully');
+        if(questionNum === "choice7") {
+          res.status(200).json({ 
+              message: 'Practice choice updated successfully!',
+              updatedChoices: existingUser.moduleProgress[moduleToUpdate].practiceChoices
+          });
+        } else {
+          res.status(200).send('Practice choice updated successfully');
+        }
+      });
+
+    } else {
+      res.status(404).send('User not found while trying to post practice choice');
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.getPracticeChoices = async (req, res, next) => {
+  console.log("Hiiii  In GET practice choices***************************");
+  try {
+    // Find the user by email
+    const existingUser = await User.findOne({ email: req.user.email });
+
+    if (existingUser) {
+      // Extract practice choice information
+      const practiceChoices = existingUser.moduleProgress.romance.practiceChoices;
+
+      // Send the practice choice information as a response
+      res.status(200).json(practiceChoices);
+    } else {
+      // If user not found, send a 404 response
+      res.status(404).send('User not found');
+    }
+  } catch (err) {
+    // If an error occurs, pass it to the error handling middleware
+    next(err);
+  }
+};
 
 /**
  * POST /postStartTime

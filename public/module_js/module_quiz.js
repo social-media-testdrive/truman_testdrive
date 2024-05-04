@@ -586,7 +586,7 @@ function displayCurrentQuestion()
     //     http://localhost:3000/quizPartials/identity/challenge/q1.html
 
     if(question.partial != "none") {
-        $.get("/quizPartials/identity/" + currentSection + "/" + question.partial, function(data) {
+        $.get("/quizPartials/" + modID + "/" + currentSection + "/" + question.partial, function(data) {
             // 'data' contains the content of the Pug template
             htmlImageContainer.html(data);
 
@@ -610,7 +610,13 @@ function displayCurrentQuestion()
             } 
 
             if (userNameSpan) {
-                userNameSpan.textContent = username;
+                if (userNameSpan) {
+                    if(username === "Guest") {
+                        userNameSpan.textContent = "there"
+                    } else {
+                        userNameSpan.textContent = username;
+                    }
+                } 
             } 
 
             if (userEmailSpan) {
@@ -928,7 +934,7 @@ function displayScore() {
         $(this).find('strong').html(Math.round(100 * scoreTotal) + '<i>%</i>');
     });
 
-    if(currentSection === "challenge") {
+    if(currentSection === "challenge" || currentSection === 'evaluation') {
         $("#resil-score").html(Math.round(100 * scoreTotal));
     }
 

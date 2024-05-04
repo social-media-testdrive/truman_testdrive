@@ -1,0 +1,98 @@
+{
+  "1": {
+    "progress": 20,
+    "type": "yes_no",
+    "partial": "q1.html",
+    "prompt": "1. Suppose you’ve been experiencing issues with your Apple laptop and have been in contact with Apple. In this scenario, would you consider the following email a scam?",
+    "choices": {
+      "yes": {
+        "text": "Yes"
+      },
+      "no": {
+        "text": "No"
+      }
+    },
+    "explanation": "<h1>\"No\" is the correct answer</h1>",
+    "correctResponse": "no"
+  },
+  "2": {
+      "progress": 40,
+      "type": "yes_no",
+      "partial": "q2.html",
+      "prompt": "2. If you received the following email, would you consider it a scam?",
+      "choices": {
+        "yes": {
+          "text": "Yes"
+        },
+        "no": {
+          "text": "No"
+        }
+      },
+      "explanation": "<h1>\"Yes\" is the correct answer</h1>",
+      "correctResponse": "yes"
+  },
+  "3": {
+    "progress": 60,
+    "type": "yes_no",
+    "partial": "q3.html",
+    "prompt": "3. If you received the following message, would you consider it a scam?",
+    "choices": {
+      "yes": {
+        "text": "Yes",
+        "explanation": "Explanation for the yes statement."
+      },
+      "no": {
+        "text": "No",
+        "explanation": "Explanation for the no statement."
+      }
+    },
+    "explanation": "<h1>\"Yes\" is the correct answer</h1>",
+    "correctResponse": "yes"
+  },
+  "4": {
+    "progress": 80,
+    "type": "yes_no",
+    "partial": "q4.html", 
+    "prompt": "4. Assuming you are trying to log into Venmo following the instruction for the Venmo App, then you received the message below. In that case would you consider this message a scam?",
+    "choices": {
+      "yes": {
+        "text": "Yes"
+      },
+      "no": {
+        "text": "No"
+      }
+    },
+    "explanation": "<h1>\"No\" is the correct answer</h1>",
+    "correctResponse": "no"
+  },
+  "5": {
+      "progress": 95,
+      "type": "multi_select",
+      "partial": "none",
+      "prompt": "5. What could occur if your identity is stolen? Select all that apply",
+      "choices": {
+          "0": {
+            "text": "A. Loss of money",
+            "explanation": "This option is correct."
+          },
+          "1": {
+            "text": "B. Loss of tax refund",
+            "explanation": "This option is correct."
+          },
+          "2": {
+            "text": "C. Be charged as a criminal",
+            "explanation": "This option is correct."
+          },
+          "3": {
+            "text": "D. Denial of loans",
+            "explanation": "This option is correct."
+          },
+          "4": {
+            "text": "E. Getting a discount on online shopping",
+            "explanation": "This option is incorrect."
+          }
+      },
+      "correctResponse": ["0", "1", "2", "3"],
+      "theAnswers": "A, B, C, D"
+    }            
+}

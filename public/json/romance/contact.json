@@ -1,63 +1,76 @@
 {   
     "1": {
-        "progress": 100,
+        "progress": 66.6667,
         "type": "multi_select",
         "partial": "none",
-        "prompt": "1. Which of the following are potential consequences of being a victim of a Romance/Friendship scam?",
+        "prompt": "1. Scammers often use language that leads the victim to trust them, or even fall in love with them. Which of the following are examples of persuasive language? Select all that apply.",
         "choices": {
-            "0": {
-                "text": "A. Financial Loss",
-                "explanation": "Romance/Friendship Scams can lead to large amounts of financial loss as scammers often request financial help."
-            },
-            "1": {
-                "text": "B. Emotional Devastation",
-                "explanation": "Romance/Friendship Scams can lead to emotional devastation due to the emotional connection that scammers try to build with their victims."
-            },
-            "2": {
-                "text": "C. Financial Gain",
-                "explanation": "Romance/Friendship Scams do not lead to financial gain since scammers are often trying to request money from you rather than helping you profit financially. Sometimes, it may appear that you are gaining financially, for example, by receiving gifts or investment advice, but the end result will be financial loss."
-            },
-            "3": {
-                "text": "D. Criminal Charges",
-                "explanation": "Romance/Friendship Scams could lead to criminal charges if you help them move money in fraudulent ways."
-            },
-            "4": {
-                "text": "E. Social isolation",
-                "explanation": "Romance/Friendship Scams can lead to victims experiencing social isolation. The emotional impact of the scam, including feelings of betrayal and distress, can contribute to difficulties in maintaining trust and healthy connections with friends and family members."
-            }
-            
+          "0": {
+            "text": "A. Presentation as a religious person",
+            "explanation": "Scammers take advantage of people’s tendencies to trust people with religious affiliations more."
+          },
+          "1": {
+            "text": "B. Share a sad story",
+            "explanation": "Scammers use sad stories about things like illness or money problems to make you feel sorry for them. They're counting on your kindness to lower your guard. By getting you to care about their fake troubles, they build a bond with you. This makes you more likely to trust them and want to help."
+          },
+          "2": {
+            "text": "C. Exaggerated phrases",
+            "explanation": "Scammers often use “over the top” language to tell the victim how much they are willing to do for the relationship they have with them."
+          },
+          "3": {
+            "text": "D. Insults",
+            "explanation": "A romance scammer won't typically insult you because they want to gain your trust and keep you emotionally invested in the scam. Insulting you would risk losing that trust and connection they're trying to exploit."
+          },
+          "4": {
+            "text": "E. Excessive compliments",
+            "explanation": "Scammers often use excessive compliments to make the relationship seem further progressed than it really is. This is often called “love bombing.”"
+          }
         },
-        "correctResponse": ["0", "1", "3", "4"],
-        "theAnswers": "A, B, D, E"
-    },
-    "2": {
-        "progress": 100,
-        "type": "multi_select",
+        "correctResponse": ["0", "1", "2", "4"],
+        "theAnswers": "A, B, C, E"
+      },
+      "2": {
+          "progress": 75,
+          "type": "abcd",
+          "partial": "q2.html",
+          "prompt": "2. Which technique did the scammer use?",
+          "choices": {
+            "a": {
+              "text": "A. Rush the relationship"
+            },
+            "b": {
+              "text": "B. Wrong or Inconsistent Information"
+            },
+            "c": {
+              "text": "C. Try to Isolate You from Your Friends and Family"
+            },
+            "d": {
+              "text": "D. Dramatic Language"
+            }
+          },
+          "explanation": "<h1>The correct answer is C.</h1><p>The scammer tries to convince you that your friends and family are trying to come between the two of you. The scammer also encourages you to focus on just your relationship with them to isolate you from those who care about you.</p>",
+          "correctResponse": "c"
+      },
+      "3": {
+        "progress": 83.33334,
+        "type": "abcd",
         "partial": "none",
-        "prompt": "2. What could happen when you use a FAKE online dating site? Select all that apply.",
+        "prompt": "3. Why do scammers try to move the conversation away from the dating platform to a more personal service?",
         "choices": {
-            "0": {
-                "text": "A. You could find the love of your life",
-                "explanation": "This is very unlikely due to the large amount of fake profiles and scammers on those sites."
-            },
-            "1": {
-                "text": "B. Your device could become infected with malware",
-                "explanation": "Fake online dating sites often have viruses that can infect your devices."
-            },
-            "2": {
-                "text": "C. You could meet new, authentic friends",
-                "explanation": "This is very unlikely due to the large amount of fake profiles and scammers on those sites."
-            },
-            "3": {
-                "text": "D. You could become a victim of Identity Theft",
-                "explanation": "Fake online dating sites often collect large amounts of personal information which could lead to your identity being stolen."
-            },
-            "4": {
-                "text": "E. Financial losses from fees",
-                "explanation": "Fake dating sites often require payment and personal information creating a risk of financial loss."
-            }
+          "a": {
+            "text": "A. To avoid triggering the platform's security measures"
+          },
+          "b": {
+            "text": "B. To express their feelings more freely"
+          },
+          "c": {
+            "text": "C. To share more intimate photos and videos"
+          },
+          "d": {
+            "text": "D. To arrange an in-person meeting"
+          }
         },
-        "correctResponse": ["1", "3", "4"],
-        "theAnswers": "B, D, E"
+        "explanation": "<h1>The correct answer is A.</h1><p>Most reputable dating platforms have systems for uncovering romance scammers, so to avoid triggering these security measures, the scammers try to move the conversation away from the dating platform. They may ask for your mobile number, email address, or social media accounts to communicate with you in a more personal way.</p>",
+        "correctResponse": "a"
     }
-}
+  }

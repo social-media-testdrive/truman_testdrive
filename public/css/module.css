@@ -80,8 +80,12 @@ footer {
     opacity: 1; /* Show the visible page */
 }
 
-/* page loader */
-.hidden {
+
+
+/* page loader *giving errors with fomantic ui shape flip animation. fix: use the > selector to only select the hidden elements that have display-page as their parent / are direct children */
+/* .hidden { */
+.display-page > .hidden,
+.villain-container > .hidden {
     display: none !important; 
 }
 
@@ -753,6 +757,7 @@ i.big.unlock.icon {
   }
   
   .yours .message {
+    color: black;
     margin-right: 25%;
     background-color: #E6E5EB;
     position: relative;
@@ -788,7 +793,8 @@ i.big.unlock.icon {
   .mine .message {
     color: white;
     margin-left: 25%;
-    background: linear-gradient(to bottom, #00D0EA 0%, #3757A6 100%);
+    background: #0078FE;
+    /* background: linear-gradient(to bottom, #00D0EA 0%, #3757A6 100%); */
     background-attachment: fixed;
     position: relative;
   }
@@ -801,7 +807,8 @@ i.big.unlock.icon {
     right: -8px;
     height: 20px;
     width: 20px;
-    background: linear-gradient(to bottom, #00D0EA 0%, #3757A6 100%);
+    background: #0078FE;
+    /* background: linear-gradient(to bottom, #00D0EA 0%, #3757A6 100%); */
     background-attachment: fixed;
     border-bottom-left-radius: 15px;
   }
@@ -1141,4 +1148,361 @@ color: #79c4e0;
 
 img.ui.small.centered.image#earned_badge {
     filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.4));
+}
+
+/* source: https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/ */
+blockquote {
+    /* background: #f9f9f9; */
+    background: #EEF8FB;
+    /* border-left: 10px solid #ccc; */
+    border-left: 10px solid #7AC4E0;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+}
+
+blockquote:before {
+    /* color: #ccc; */
+    color: #7AC4E0;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.20em;
+    vertical-align: -0.4em;
+}
+
+blockquote p {
+    display: inline;
+}
+
+/* Romance fake profile */
+
+#profile-template {
+    border-radius: 10px;
+}
+
+#profile-template  .ui.circular.image {
+    position: absolute; 
+    top: 15px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    z-index: 99; 
+    width: 125px;
+}
+
+#profile-template #bg{
+    height: 80px;
+}
+
+#profile-template .ui.centered.header {
+    font-size: 1.25rem; 
+    font-weight: bold; 
+    margin-top: 30px; 
+    margin-bottom: 10px;
+}
+
+#profile-template .ui.three.column.grid .column {
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+}
+
+#profile-template .ui.three.column.grid .column p {
+    font-size: 0.9rem;
+}
+
+#profile-template #bio {
+    margin-top:15px;
+    font-size: 1rem;
+}
+
+#profile-template .icon {
+    color: #202125;
+}
+
+#vertically-centered-column {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* warning signs flip card styles for romance contact and groom section */
+#warning-cards .ui.card {
+    /* width: 230px !important; */
+    /* min-height: 450px; */
+    min-height: 350px;
+    cursor: pointer;
+    position: relative;
+    /* background-color: red; */
+}
+
+@media (min-width: 768px) and (max-width: 992px) { 
+    #warning-cards .ui.card {
+        width: 230px !important;
+        min-height: 400px;
+
+    }
+    #warning-cards .ui.card .ios-chat-container .chat .messages .message {
+        /* width: 200px; */
+        width: 200px !important;
+    }
+}
+
+#warning-cards .ui.card .ios-chat-container .chat {
+    align-items: center; 
+    font-size: 1.2rem; 
+    margin-left: 2px;
+}
+
+#warning-cards .ui.card .ios-chat-container .chat .messages .message {
+    /* width: 200px; */
+    width: 260px;
+}
+
+#warning-cards .click-me-glow {
+    /* border: 2px solid blue; */
+    /* box-shadow: 0 0 10px rgba(0, 0, 255, 0.5);  */
+
+    border: 2px solid #7AC4E0; 
+    box-shadow: 0 0 8px #7AC4E0;
+    position: relative;
+    /* box-shadow: 0 0 8px #D6E040; */
+}
+
+#warning-cards .chat .message {
+    margin: 5px;
+    margin-bottom: -15px;
+}
+
+#warning-cards .ui.card.click-me-glow:before { 
+    content: '';
+    display: inline-block;
+    width: 32px; 
+    height: 32px;
+    background: url('/images/clickHere.png') no-repeat; 
+    background-size: 100% 100%;
+    position: absolute;
+    z-index: 99999;
+
+    bottom: -40px; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%) rotate(90deg);
+}
+
+#warning-cards .ui.card .content:first-child {
+    background: #0C2746;
+    max-height: 60px;
+}
+
+#warning-cards .ui.card .content h4.ui.centered.header {
+    color: white;
+} 
+
+#warning-cards .ui.card .chat {
+    padding: 0px;
+    margin-top: -10px;
+} 
+
+/* romance practice conversations */
+
+#conversation-cards {
+    max-height: 500px;
+    overflow-y: scroll;
+}
+#conversation-cards .ui.card .ios-chat-container .chat {
+    align-items: center; 
+    font-size: 1.2rem; 
+    margin-left: 2px;
+}
+
+#conversation-cards .ui.card .ios-chat-container .chat .messages .message {
+    /* width: 200px; */
+    width: 500px;
+}
+
+#conversation-cards .chat .message {
+    margin: 5px;
+    margin-bottom: -15px;
+}
+
+#conversation-cards .ui.card .chat {
+    padding: 0px;
+    margin-top: -10px;
+} 
+
+
+
+
+.smartphone-practice {
+    position: relative;
+    width: 360px;
+    height: 550px;
+    /* height: 640px; */
+    margin: auto;
+    border: 16px black solid;
+    border-top-width: 60px;
+    border-bottom-width: 60px;
+    border-radius: 36px;
+
+    /* overflow-y: scroll;
+    overflow-x: hidden; */
+
+  }
+  
+  /* The horizontal line on the top of the device */
+  .smartphone-practice:before {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 5px;
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #333;
+    border-radius: 10px;
+  }
+  
+  /* The circle on the bottom of the device */
+  .smartphone-practice:after {
+    content: '';
+    display: block;
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    left: 50%;
+    bottom: -65px;
+    transform: translate(-50%, -50%);
+    background: #333;
+    border-radius: 50%;
+  }
+  
+  /* The screen (or content) of the device */
+  /* .smartphone-practice .content {
+    width: 360px;
+    height: 640px;
+    font-size: 1.25rem;
+  } */
+
+  .smartphone-practice .content {
+    width: 330px;
+    height: 430px; /* Adjusted to match the smartphone-practice height */
+    font-size: 1.25rem;
+    background: white;
+    overflow-y: hidden; /* Hide the scroll bar until it is needed */
+    /* background-color: red; */
+
+}
+
+.smartphone-practice .ios-chat-container {
+    /* removed 15px scroll bar */
+    width: 330px;
+    height: 420px; /* Fixed height to enable scrolling */
+    /* overflow-y: auto;  */
+    /* overflow-x: hidden;  */
+    -webkit-overflow-scrolling: touch; 
+    touch-action: pan-y; 
+}
+
+.smartphone-practice .message {
+    /* width: 280px; */
+    width: 290px;
+    /* margin-left: 30px; */
+    margin-left: 25px;
+
+    margin-bottom: -20px;
+
+}
+
+.smartphone-practice .texter {
+    background: #F5F5F5;
+    width: 328px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #D4D4D4;
+    text-align: center;
+}
+
+.smartphone-practice .texter i.user.circle.big.icon {
+    color: #9397A2
+}
+
+.smartphone-practice .texter p { 
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.smartphone-practice .texter p span {
+    color: grey;
+    font-weight: normal;
+}
+
+/* click & drag scroll */
+/* https://www.youtube.com/watch?v=C9EWifQ5xqA */
+/* https://codepen.io/Gutto/pen/GBLPyN */
+
+
+
+/* for disclaimer / callout pages with avatar and speech bubble */
+#avatar-encourage-start {
+    min-height: 450px; 
+    margin-bottom: -60px;
+}
+
+#avatar-encourage-start .speech-div {
+    min-height: 175px; 
+    width: 100%;
+}
+
+#avatar-encourage-start .centerme {
+    text-align: center;
+}
+
+#avatar-encourage-start .centerme button.ui.massive.blue.button {
+    margin-top: 0px;
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -60%);
+}
+
+#avatar-encourage-start .ui.large.label.blue-pointing#speechBubble {
+    align-items: normal;
+    float: right;
+    margin-top: -80px !important;
+    width: 65%;
+}
+
+
+#avatar-encourage-start #speechBubble {
+    display: block !important;
+}
+
+#avatar-encourage-start #speechBubble p#speechText {
+    text-align: left;
+}
+
+#avatar-encourage-start img.dart_image.ui.medium.image {
+    margin: 0 auto; 
+    width: 25%; 
+    float: right; 
+    z-index: -1;
+}
+
+#avatarSize {
+    margin-bottom: -70px !important;
+    width: 250px !important; 
+}
+
+#long-callout .blue-pointing::after {
+    display: none;
+}
+
+#long-callout .ui[class*="right pointing"].label::before {
+    border-width: 1px 1px 0 0;
+    transform: translateX(95%) translateY(-50%) scaleX(8) scaleY(2) rotate(45deg);
+    top: 50%;
+    right: 0;
+    bottom: auto;
+    left: auto;
 }

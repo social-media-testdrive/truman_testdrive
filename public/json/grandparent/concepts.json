@@ -1,0 +1,54 @@
+{   
+    "1": {
+      "progress": 100,
+      "type": "multi_select",
+      "partial": "none",
+      "prompt": "1. How do scammers gather information about potential targets in grandparent scams? Select all that apply.",
+      "choices": { 
+        "0": {
+            "text": "A. Searching people on social media",
+            "explanation": "Choice A is correct. Scammers often use social media platforms to gather personal information about potential targets. They may look for information such as names, family relationships, or recent activities to craft convincing stories."
+        },
+        "1": {
+            "text": "B. Searching through obituaries",
+            "explanation": "Choice B is correct. Scammers might check recent obituaries to find information about deceased individuals and their family members. They will target families that have recently lost a loved one and take advantage of their emotional vulnerability. For example, scammers may contact the surviving spouse and impersonate one of the grandchildren listed in the obituary."
+        },
+        "2": {
+          "text": "C. Searching people on online platforms",
+          "explanation": "Choice C is correct. Scammers may use online platforms, such as dating sites, to gather personal details about potential targets. For example, scammers may pose as potential romantic interests and manipulate individuals into sharing sensitive information, enabling them to create more convincing narratives."
+        },
+        "3": {
+          "text": "D. Visiting people’s homes",
+          "explanation": "Choice D is incorrect. In grandparent scams, scammers usually do not visit people’s homes to gather personal information about potential targets. Scammers avoid direct interaction before the initial contact to minimize the risk of detection. Instead, they will exploit online sources for anonymity and efficiency. However, scammers may visit homes after the initial contact to collect money in person."
+        }
+    },
+    "correctResponse": ["0", "1", "2"],
+    "theAnswers": "A, B, C"
+},
+    "2": {
+        "progress": 100,
+        "type": "multi_select",
+        "partial": "none",
+        "prompt": "2. In grandparent scams, which of the following roles might the scammer pretend to be? Select all that apply.",
+        "choices": {
+            "0": {
+                "text": "A. The grandchild or a friend of the grandchild",
+                "explanation": "Choice A is correct."
+            },
+            "1": {
+                "text": "B. A lawyer or bail bondsman",
+                "explanation": "Choice B is correct."
+            },
+            "2": {
+                "text": "C. A doctor or hospital staff (nurse)",
+                "explanation": "Choice C is correct."
+            },
+            "3": {
+              "text": "D. A police officer or government official",
+              "explanation": "Choice D is correct."
+            }
+        },
+        "correctResponse": ["0", "1", "2", "3"],
+        "theAnswers": "A, B, C, D"
+}
+}

@@ -10,11 +10,15 @@ block content
             h1 Loading...
     .display-page.hidden
         include fake/objectives.pug
-        include fake/what1.pug
+        include fake/what.pug
         include fake/male.pug
         include fake/female.pug
         include fake/examples.pug
-        include fake/realorfake.pug
+        include fake/examples2.pug
+        include fake/disclaimer.pug
+        include fake/activity.pug
+        include fake/activity2.pug
+        include fake/reflection.pug
         include fake/quiz.pug
         include fake/takeaways.pug
     audio(id="narration-audio", src=`https://dart-store.s3.amazonaws.com/identity+theft+voice+over/${section}/${page}_${user.avatar.toLowerCase()}.mp3`, preload="auto")
@@ -27,8 +31,12 @@ block styles
     link(rel='stylesheet', href='/css/dart_quiz.css')  
 
 
-block scripts       
-    script(src='/module_js/romance/romance-scam.js')    
+block scripts 
+    script.
+        var speechData = "none"; // quizData is passed to pug file via render function in app.js
+
+    script(src='/module_js/romance/romance-scam.js')   
+    script(src='/module_js/romance/realorfake.js')   
     //- script(src='/js/text2speech.js')  
     script.
         window.addEventListener('load', function() {

@@ -16,6 +16,19 @@ exports.getAbout = (req, res) => {
     res.render(introPage, { title });
 };
   
+/**
+ * GET /about/:page?/:modId
+ * Render the about pages for the modules.
+ */
+exports.getReferences = (req, res) => {
+  const modId = req.params.modId;
+
+  const introPage = `module-content/${modId}/references.pug`;
+  const title = 'References';
+
+  res.render(introPage, { title });
+};
+
 
 // Handler for '/getModule' route
 exports.getModule = async (req, res) => {
@@ -29,21 +42,42 @@ exports.getModule = async (req, res) => {
 
     // each quiz question is being counted as a page too so we need to add those
     if(section === 'challenge'){
-      numPages = 8;
+      // intro, 5 quiz questions, takeaways
+      numPages = 7;
     } else if(section === 'concepts') {
-      numPages = 10;
+      if(module === 'identity') {
+        numPages = 10;
+      }
+      else if(module === 'romance') {
+        numPages = 11;
+      }
     } else if(section === 'consequences') {
       numPages = 8;
+    } else if(section === 'fake'){
+      numPages = 12;
+    } else if(section === 'contact'){
+      numPages = 12;
+    } else if(section === 'requests'){
+      numPages = 13;
     } else if(section === 'techniques') {
       numPages = 12;
     } else if(section === 'protection') {
-      numPages = 10;
+      if(module === 'identity') {
+        numPages = 10;
+      } else if (module === 'romance') {
+        numPages = 12;
+      }
     } else if(section === 'reporting') {
-      numPages = 8;
+      numPages = 9;
     } else if(section === 'practice') {
-      numPages = 5;
-    } else if (section === 'evaluation') {
       numPages = 12;
+    } else if (section === 'evaluation') {
+      if (module === 'identity') {
+        numPages = 12;
+      } else if (module === 'romance') {
+        numPages = 11;
+      }
+
     }
 
     const modulePage = `module-content/${module}/${section}.pug`;

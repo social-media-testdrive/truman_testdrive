@@ -24,7 +24,7 @@ const util = require("util");
 const cookieSession = require("cookie-session");
 fs.readFileAsync = util.promisify(fs.readFile);
 
-// const nocache = require('nocache');
+const nocache = require('nocache');
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
@@ -75,7 +75,7 @@ console.log(
 );
 
 // Use the nocache middleware to disable caching for testing so don't have to hard reload clear cache everytime
-// app.use(nocache());
+app.use(nocache());
 
 /**
  * Connect to MongoDB.
@@ -209,6 +209,7 @@ app.get("/", homeController.index);
 // });
 app.get("/courses", coursesController.index);
 app.get("/about/:modId", isValidModId, moduleController.getAbout);
+app.get("/references/:modId", isValidModId, moduleController.getReferences);
 app.get("/course-player", moduleController.getModule);
 app.post("/completeModuleStatus", moduleController.completeModuleStatus);
 app.get("/login", userController.getLogin);
@@ -341,9 +342,11 @@ app.post("/postModuleProgress", userController.postModuleProgress);
 app.post("/postQuizScore", userController.postQuizScore);
 app.get("/getLatestQuizScore", userController.getLatestQuizScore);
 app.post("/postAvatar", userController.postAvatar);
+app.post("/postPracticeChoice", userController.postPracticeChoice);
+app.post("/getPracticeChoices", userController.getPracticeChoices);
 
 function isValidModId(req, res, next) {
-  const modIds = ["identity", "romance"];
+  const modIds = ["identity", "romance", "grandparent"];
   if (modIds.includes(req.params.modId)) {
     next();
   } else {
