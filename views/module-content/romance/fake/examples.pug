@@ -1,17 +1,17 @@
 #examples.hidden
-    .ui.container#trusted-read(style="width: 90%;")
+    .ui.container#trusted-read(style="width: 94%;")
         .limit#learn-target(style="padding: 0;")
             h1.ui.header.large#learn-title
                 .content
                     i.book.icon
-                    | Real Profile Examples
-            .ui.four.column.computer.only.grid
-                .column
+                    | Male Fake vs Real Profile Examples
+            .ui.computer.only.grid
+                .four.wide.column
                     .ui.fluid.card#profile-template
                         .ui.image
-                            img#bg(src='/images/romance/jamesbg.png') 
+                            img#bg(src='/images/romance/jamesbg.png' alt="profile") 
                         .ui.circular.image
-                            img(src='/images/jamessmithpfp.png') 
+                            img(src='/images/jamessmithpfp.png' alt="profile") 
                         .ui.basic.centered.segment 
                             .ui.centered.header James Washington
                             .ui.three.column.grid
@@ -43,7 +43,10 @@
                                 i.linkedin.icon 
                                 i.twitter.icon
 
-                .column#vertically-centered-column 
+                .three.wide.column#vertically-centered-column
+                    h4 
+                        em(style="color: green;") Real 
+                        em Male Profile
                     span Notice:
                     .ui.bulleted.list 
                         .item
@@ -58,75 +61,164 @@
                             | Linked social media accounts
 
 
-                .column
+                .five.wide.column
                     .ui.fluid.card#profile-template
                         .ui.image
-                            img#bg(src='/images/romance/marysmithbg.png') 
+                            img#bg(src='/images/richardharrisonbg.png' alt="profile") 
                         .ui.circular.image
-                            img(src='/images/marysmithpfp.png') 
+                            img(src='/images/richardharrisonpfp.png' alt="profile") 
                         .ui.basic.centered.segment 
-                            .ui.centered.header Mary Smith
+                            .ui.centered.header Richard Harrison
                             .ui.three.column.grid
                                 .column
                                     p
-                                        strong 157
+                                        strong 15
                                         |  Friends
                                 .column
                                     p
-                                        strong 10
+                                        strong 0 
                                         |  Mutual Friends
                                 .column
                                     p
-                                        strong 362
+                                        strong 12 
                                         |  Posts
-                            p#bio  Cherishing the brushstrokes of every moment with my beautiful grandchildren. 🎨✨
+                            p#bio Greetings! I'm Richard, a seasoned architect with a heart full of stories and a love for beautiful design. After creating a wonderful family and life with my late wife, I now find joy in sharing my experiences and embracing life's simple pleasures.
                             .icon-item
                                 i.icon.suitcase
-                                span  Works as an Artist
+                                span  Works at Harrison Designs
                             .icon-item
                                 i.icon.home
-                                span  Lives in Seattle, Washington
+                                span  Lives in Manhattan, New York
                             .icon-item
                                 i.icon.map.marker.alternate
-                                span  From Issaquah, Washington
+                                span  From San Francisco, California
                             .icon-item
                                 i.icon.users.large-icon
-                                span  Linked Accounts 
-                                i.facebook.icon
-                                i.pinterest.icon
-                                i.instagram.icon
-                .column#vertically-centered-column 
+                                span  Linked Accounts
+                .four.wide.column#vertically-centered-column
+                    h4 
+                        em(style="color: red;") Fake 
+                        em Male Profile
+
                     span Notice:
                     .ui.bulleted.list 
                         .item
-                            | Mentions grandchildren 
+                            | Authority Figure – Owned his own business
                         .item
-                            | Profile picture doesn’t emphasize her looks 
+                            | A job that requires a lot of education and likely wealth– Architect
                         .item
-                            | Short bio
+                            | Widower & Father – mentions his late wife and family
                         .item
-                            | A reasonable number of friends and posts
+                            | Makes him seem like an ideal person by saying he embraces “life’s simple pleasures”
                         .item
-                            | Some mutual friends
-                        .item
-                            | Linked social media accounts
+                            | Few friends, few posts, and no Linked Accounts
             .ui.tablet.only.mobile.only.grid
-                .row
-                    h1.ui.header.large#learn-title
-                        .content
-                            i.book.icon
-                            | Trusted Dating Sites
-                    p For a safer online dating experience, it's best to use well-known and trusted websites. These platforms typically offer enhanced security measures to protect users. Below is a list of reputable and popular dating websites. However, be aware that no website can guarantee complete protection from scammers, who may still find ways to create fake profiles. Always exercise caution and use your best judgment.
-                .row
-                    .ui.stackable.three.column.grid
-                        .column
-                            a.ui.card(href='https://www.facebook.com/dating' target='_blank') 
-                                .image
-                                    img.ui.image.centered(src='/images/romance/trusted_facebook.svg'  style="width: 100px; height: 100px;")
-                                .content
-                                    | Facebook Dating
-                            a.ui.card(href='https://www.singles50.com/' target='_blank')
-                                .image
-                                    img.ui.small.image.centered(src='/images/romance/trusted_singles50.png' style="height: 100px; width: 100px;")
-                                .content
-                                    | Singles50
+                .centered.row
+                    .eight.wide.column
+                        .ui.card#profile-template
+                            .ui.image
+                                img#bg(src='/images/romance/jamesbg.png' alt="profile") 
+                            .ui.circular.image
+                                img(src='/images/jamessmithpfp.png' alt="profile") 
+                            .ui.basic.centered.segment 
+                                .ui.centered.header James Washington
+                                .ui.three.column.grid
+                                    .column
+                                        p
+                                            strong 104
+                                            |  Friends
+                                    .column
+                                        p
+                                            strong 3 
+                                            |  Mutual Friends
+                                    .column
+                                        p
+                                            strong 207
+                                            |  Posts
+                                p#bio Every day is a precious gift, enjoy it with your friends and family! 🌍
+                                .icon-item
+                                    i.icon.suitcase
+                                    span  Retired
+                                .icon-item
+                                    i.icon.home
+                                    span  Lives in Chicago, Illinois 
+                                .icon-item
+                                    i.icon.map.marker.alternate
+                                    span  From Chicago, Illinois 
+                                .icon-item
+                                    i.icon.users.large-icon
+                                    span  Linked Accounts 
+                                    i.linkedin.icon 
+                                    i.twitter.icon
+
+                    .eight.wide.column 
+                        h4 
+                            em(style="color: green;") Real 
+                            em Male Profile
+                        span Notice:
+                        .ui.bulleted.list 
+                            .item
+                                | Does not advertise wealth
+                            .item
+                                | Short bio
+                            .item
+                                | A reasonable number of friends and posts
+                            .item
+                                | Some mutual friends
+                            .item
+                                | Linked social media accounts
+
+                .centered.row
+                    .eight.wide.column
+                        .ui.fluid.card#profile-template
+                            .ui.image
+                                img#bg(src='/images/richardharrisonbg.png' alt="profile") 
+                            .ui.circular.image
+                                img(src='/images/richardharrisonpfp.png' alt="profile") 
+                            .ui.basic.centered.segment 
+                                .ui.centered.header Richard Harrison
+                                .ui.three.column.grid
+                                    .column
+                                        p
+                                            strong 15
+                                            |  Friends
+                                    .column
+                                        p
+                                            strong 0 
+                                            |  Mutual Friends
+                                    .column
+                                        p
+                                            strong 12 
+                                            |  Posts
+                                p#bio Greetings! I'm Richard, a seasoned architect with a heart full of stories and a love for beautiful design. After creating a wonderful family and life with my late wife, I now find joy in sharing my experiences and embracing life's simple pleasures.
+                                .icon-item
+                                    i.icon.suitcase
+                                    span  Works at Harrison Designs
+                                .icon-item
+                                    i.icon.home
+                                    span  Lives in Manhattan, New York
+                                .icon-item
+                                    i.icon.map.marker.alternate
+                                    span  From San Francisco, California
+                                .icon-item
+                                    i.icon.users.large-icon
+                                    span  Linked Accounts
+                    .eight.wide.column#vertically-centered-column
+                        h4 
+                            em(style="color: red;") Fake 
+                            em Male Profile
+
+                        span Notice:
+                        .ui.bulleted.list 
+                            .item
+                                | Authority Figure – Owned his own business
+                            .item
+                                | A job that requires a lot of education and likely wealth– Architect
+                            .item
+                                | Widower & Father – mentions his late wife and family
+                            .item
+                                | Makes him seem like an ideal person by saying he embraces “life’s simple pleasures”
+                            .item
+                                | Few friends, few posts, and no Linked Accounts
+
+

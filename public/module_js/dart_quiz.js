@@ -568,7 +568,11 @@ function displayCurrentQuestion()
             } 
 
             if (userNameSpan) {
-                userNameSpan.textContent = username;
+                if(username === "Guest") {
+                    userNameSpan.textContent = "Dart agent"
+                } else {
+                    userNameSpan.textContent = username;
+                }
             } 
 
             if (userEmailSpan) {

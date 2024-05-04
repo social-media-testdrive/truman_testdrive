@@ -1,0 +1,101 @@
+#conversation.hidden
+    .ui.container#raised-container
+        .ui.grid
+            .seven.wide.column
+                .smartphone-practice
+                    .content#practice1
+                        .texter
+                            i.user.circle.large.icon
+                            span Alex 
+                        //- .ios-time
+                        //-     p
+                        //-         | Today 
+                        //-         span#current-time
+                        .ios-chat-container
+                            .chat
+                                .yours.messages
+                                    .message.last
+                                        | I was scrolling through my feed and came across pics of your dogs. Gotta admit, they're the most adorable creatures I've seen today, well, after you, of course! 
+                                .mine.messages
+                                    .message.last(style="width: 130px;")
+                                        | Thank you! 
+                                .yours.messages
+                                    .message.last
+                                        | I'm so glad you replied to me! I also have a dog named Max. He’s my best friend.
+                                    img.ui.small.image(src="/images/romance/alex_dog.png", alt="Max the dog" style="border-radius: 10px; margin-top: 40px; margin-left: 30px;")
+                                .mine.messages
+                                    .message.last(style="width: 105px;")
+                                        | So cute! 
+                                .yours.messages
+                                    .message.last
+                                        | Btw, what are your dogs’ names?
+                                .mine.messages
+                                    .message.last(style="width: 160px;")
+                                        | Fluffy and Mia
+                                .yours.messages
+                                    .message.last(style="margin-bottom: 10px;")
+                                        | They seem very cute and cuddly. I noticed we are both from Los Angeles, I really miss living there. Right now, I'm in Spain because I work as an engineer on big projects around the world. What do you do for work?
+            .nine.wide.column
+                h1.ui.header.large#learn-title
+                    .content
+                        //- i.phone.volume.icon
+                        //- i.user.friends.icon
+                        | Initial Contact
+
+                p Read through the conversation between your friend Rachel and Alex, a new person she met online. Then answer the question below:
+                .ui.icon.mini.message(style="padding: 5px; z-index: 99;")
+                    i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
+                    .content 
+                        p Swipe up or down on the phone to scroll through all messages.
+
+                b It seems Alex wants to continue the conversation with Rachel. Do you think she should check Alex’s profile before continuing to talk to him?
+                br
+                br
+                button.ui.big.green.button(data-modal="yesModal" style="margin-right: 30px; width: 200px;") Yes
+                button.ui.big.red.button(data-modal="noModal" style="width: 200px;") No
+
+            //- .ten.wide.column#conversation-cards
+            //-     .ui.raised.fluid.card
+            //-         //- .content
+            //-         //-     h4.ui.centered.header Switch Platforms
+            //-         .content
+            //-             .ios-chat-container
+            //-                 .chat
+            //-                     .yours.messages
+            //-                         .message.last
+            //-                             | I was scrolling through my feed and came across pics of your dogs. Gotta admit, they're the most adorable creatures I've seen today, well, after you, of course! 
+            //-                     .mine.messages
+            //-                         .message.last
+            //-                             | Thank you!
+            //-                     .yours.messages
+            //-                         .message.last
+            //-                             | I'm so glad you replied to me! I also have a dog named Max. He’s my best friend.
+            //-                     .yours.messages
+            //-                         .message.last
+            //-                             | So cute!
+            //-                     .mine.messages
+            //-                         .message.last
+            //-                             | Btw, what are your dogs’ names?
+            //-                     .yours.messages
+            //-                         .message.last
+            //-                             | Fluffy and Mia
+            //-                     .mine.messages
+            //-                         .message.last
+            //-                             | They seem very cute and cuddly. I noticed we are both from Los Angeles, I really miss living there. Right now, I'm in Spain because I work as an engineer on big projects around the world. What do you do for work?
+
+
+            //- .six.wide.column
+            //-     p(style="margin-top: 20px;") Here are signs that the two messages are scams:
+            //-         .ui.bulleted.list
+            //-             .item 
+            //-                 | Claim there’s a problem with your account or your payment information without specific information.
+            //-             .item 
+            //-                 | Induce a sense of threat or urgency and compels you to click on the provided link.
+            //-             .item
+            //-                 | Fail to demonstrate official sources.
+            //-     .callout
+            //-         .dark-blue-square
+            //-             img(src=user.avatarImg, alt='avatar picture')
+            //-         .light-blue-content
+            //-             h3.call-header Important
+            //-             p Beware of urgent requests for personal information. Legitimate companies don't ask for it this way.

@@ -6,7 +6,7 @@
 include partials/ui_nav_buttons
 
 doctype html
-html
+html(lang="en")
   head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
@@ -101,9 +101,20 @@ html
         a.item#consequences(href=`/course-player?module=${module}&section=consequences&page=objectives`)
           i.hand.holding.usd.icon
           |  Consequences
-        a.item#techniques(href=`/course-player?module=${module}&section=techniques&page=objectives`)
-          i.wrench.icon
-          |  Techniques
+        if module === 'identity'
+          a.item#techniques(href=`/course-player?module=${module}&section=techniques&page=objectives`)
+            i.wrench.icon
+            |  Techniques
+        else if module === 'romance'
+          a.item#fake(href=`/course-player?module=${module}&section=fake&page=objectives`)
+            i.user.icon
+            |  Fake Profiles
+          a.item#contact(href=`/course-player?module=${module}&section=contact&page=objectives`)
+            i.handshake.icon
+            |  Contact & Groom
+          a.item#request(href=`/course-player?module=${module}&section=requests&page=objectives`)
+            i.envelope.icon
+            |  Requests
         a.item#protection(href=`/course-player?module=${module}&section=protection&page=objectives`)
           i.shield.alternate.icon
           |  Protection
@@ -182,6 +193,8 @@ html
     script(src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js")
     script(src='/video-js/video.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js')
+    //- script(src='https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js')
+
     script.
       $(document).ready(function() {
         let sidebarOpen = false;

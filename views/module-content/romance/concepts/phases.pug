@@ -1,26 +1,39 @@
 #phases.hidden
     .ui.container#phases-read
         .limit#learn-target(style="padding: 0;")
-            .ui.stackable.grid
-                .ten.wide.column
+            .ui.grid
+                .eleven.wide.computer.sixteen.wide.tablet.column#vertically-centered-column
                     h1.ui.header.large#learn-title
                         .content 
                             i.book.icon
-                            | Scam Phases
-                    p During a romance or friendship scam, the scammer will:
+                            | What are Romance and Friendship Scams?
+                    p 
+                        strong Scammers pretend to be someone else to lure you into romantic relationships or friendships. 
+                        | To do this, the scammer would:
                         a(href='https://link.springer.com/article/10.1057/sj.2012.57' target='_blank')
                             sup [1]          
                     
-                    ol 
-                        li 
-                            strong Create fake profiles: 
-                            | Create alluring fake profiles on dating or social networking sites, designed to draw you in.
-                        li
-                            strong Contact and groom: 
-                            | Invest time in developing a seemingly genuine bond with you, which can take the form of a romantic relationship or friendship
-                        li
-                            strong Make a request: 
-                            | After gaining your trust, they fabricate an emergency, requesting money or a favor. Unknowingly, this could entangle you in illegal activities.
+                    //- p 
+                    //-     strong Stage 1: 
+                    //-     | Create a fake and alluring profile on a dating or social networking website. 
+                    //- p
+                    //-     strong Stage 2: 
+                    //-     | Build a strong bond with you, including romantic relationship, or friendship.
+                    //- p
+                    //-     strong Stage 3:
+                    //-     |  Request money or involve you in criminal activities without your awareness.
+
+        
+                    ui.list
+                        .item 
+                            strong Stage 1: 
+                            | Create a fake and alluring profile on a dating or social networking website. 
+                        .item
+                            strong Stage 2: 
+                            | Contact and groom you, establishing a strong connection.
+                        .item
+                            strong Stage 3:
+                            |  Request money or involve you in criminal activities without your awareness.
                     //- donesn't have dots next to the numbers
                     //-  .ui.ordered.list 
                     //-     .item 
@@ -31,11 +44,9 @@
                     //-         | Invest time in developing a seemingly genuine bond with you, which can take the form of a romantic relationship or friendship
                     //-     .item 
                     //-         strong Make a request: 
-                    //-         | After gaining your trust, they fabricate an emergency, requesting money or a favor. Unknowingly, this could entangle you in illegal activities.
+                    //-         | After gaining your trust, they fabricate an emergency, requesting money or a favor. Unknowingly, this could entangle you in illegal activities.                
 
-
-
-                .six.wide.column.middle.aligned
-                    img.ui.image(src='/images/romance/romance-concepts-phases.jpg' style='margin-left: auto; margin-right: auto')
+                .five.wide.computer.sixteen.wide.tablet.column
+                    img.ui.image(src='/images/romance/romance-concepts-phases.jpg' style='margin-left: auto; margin-right: auto' alt="man's heart getting stolen")
                 i.source *Sources: 1. Anatomy of the Online Dating Scam,  Springer Link, 
                     a(href='https://link.springer.com/article/10.1057/sj.2012.57' target='_blank') 'https://link.springer.com/article/10.1057/sj.2012.57' 

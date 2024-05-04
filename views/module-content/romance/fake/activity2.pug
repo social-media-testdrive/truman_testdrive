@@ -1,0 +1,78 @@
+#activity2.hidden
+    .ui.container
+        .limit#learn-target(style="padding: 0;")
+            h1.ui.header.large#learn-title
+                .content 
+                    i.dice.icon
+                    | Activity: Male Profile Sleuth 
+            .ui.stackable.grid
+                .nine.wide.column
+                    #profile-template.ui.card(style='width: 600px; margin: 0 auto; margin-top: 10px; margin-bottom: 15px;')
+                        .ui.image
+                            img#bg(src='/images/romance/johnbg.png' alt="profile")
+                        .ui.circular.image
+                            img(src='/images/johnwilliamspfp.png' alt="profile")
+                        .ui.basic.centered.segment
+                            .ui.centered.header John Williams
+                            .ui.three.column.grid
+                                .column
+                                    p
+                                        strong 340
+                                        |  Friends
+                                .column
+                                    p
+                                        strong 12
+                                        |  Mutual Friends
+                                .column
+                                    p
+                                        strong 353
+                                        |  Posts
+                            p#bio
+                                | Proud dog enthusiast, especially for the pint-sized variety that fills life with joy. Call me the &quot;Little Dog Whisperer&quot; &mdash; where small pups steal the show.&ZeroWidthSpace;&ZeroWidthSpace;
+                            .icon-item
+                                i.icon.suitcase
+                                span Works as an Accountant&ZeroWidthSpace;
+                            .icon-item
+                                i.icon.home
+                                span Lives in Saugatuck, Michigan&ZeroWidthSpace;
+                            .icon-item
+                                i.icon.map.marker.alternate
+                                span From Saugatuck, Michigan&ZeroWidthSpace;
+                            .icon-item
+                                i.icon.users.large-icon
+                                span Linked Accounts 
+                                i.facebook.icon
+
+                //- .seven.wide.column.middle.aligned
+                .seven.wide.column
+                    #activity-question-2
+                        p Is this profile real or fake?
+                        button.ui.big.green.button#realBtn2(style="margin-right: 30px; width: 200px;") Real
+                        button.ui.big.red.button#fakeBtn2(style="width: 200px;") Fake
+                    p#john-result(style="margin-top: 20px; display: none;") Correct! This is a 
+                        span 
+                            strong(style="color: green;") REAL 
+                            | profile.
+                    //- p#john-incorrect(style="margin-top: 20px; display: none;") Correct! This is a 
+                    //-     strong(style="color: red;") FAKE 
+                    //-     | profile.
+                    #john-explanation(style="display: none;") 
+                        p(style="margin-top: 5px; margin-bottom: 0px; font-weight: bold;") Green Flags
+                        .ui.bulleted.list 
+                            .item 
+                                | No money emphasized 
+                            .item
+                                | Profile picture doesn’t emphasize looks 
+                            .item
+                                | Short bio
+                            .item
+                                | A reasonable number of friends and posts
+                            .item
+                                | Some mutual friends
+                            .item
+                                | From a small town 
+
+                    //- .ui.icon.mini.message(style="padding: 5px; z-index: 99;")
+                    //-     i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
+                    //-     .content 
+                    //-         p Determine wether this profile is real or fake.

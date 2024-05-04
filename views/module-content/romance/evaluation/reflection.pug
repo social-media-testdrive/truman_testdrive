@@ -1,91 +1,40 @@
 #reflection.hidden
-    .ui.container#raised-container.top-padding
-        .limit
-            .ui.raised.segment.chat-container(style="background-color: #F1EDED;")
-                .ui.large.header
-                    .container#cropped-circular-image
-                        .ui.segment(style="background-color: #7D7C7C !important;")
-                            .ui.circular.small.image
-                                img.dart_image(src=user.avatarImg, alt='Agents text message profile picture')
-                            span(style="font-size: 2.5rem; margin-left: 20px;color:white;")  Chat with #{user.avatar}
-                    br
-                    .content.text-message
-                        .ui.circular.tiny.image 
-                            img.dart_image(src=user.avatarImg, alt='Agents text message profile picture')
-                        .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
-                            p Great job #{user.name}! 
-                            p You have completed your mission on Identity theft! Do you feel ready to protect yourself in the real world?
-                    .content.text-message(style="margin-top: 25px;")
-                        .ui.circular.tiny.image 
-                            img.dart_image(src=user.avatarImg, alt='Agents text message profile picture')
-                        .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
-                            p It's perfectly fine if you prefer not to answer. Please click 'Next' to conclude this module.
-                    #encounter_container
-                        div#encounter_label
-                            .ui.large.right.pointing.label
-                                p#encounter_text 
-                            .ui.circular.tiny.image(style="background: white !important")
-                                img(src='/profile_pictures/avatar-icon.svg', alt='user text message profile picture')
+    .ui.container#reflection-read(style="width: 90%;")
+        .ui.stackable.middle.aligned.grid
+            .column.nine.wide.computer.only.sixteen.wide.tablet.only
+                h1.ui.header.large#learn-title
+                    .content
+                        i.lightbulb.icon
+                        | Reflect
 
-                        #encounter_response(style='clear: both;')
-                            button.ui.big.button.chatBotButton(onclick="showTopic('Yes')") Yes
-                            button.ui.big.button.chatBotButton(onclick="showTopic('No')") No
-                            button.ui.big.button.chatBotButton(onclick="showTopic('I\\'m not sure')") I'm not sure
+                p Take a moment to think about the following:
+                .ui.bulleted.list
+                    .item(style="font-size: 1.5rem; font-weight: 700; line-height: 1.65rem; margin-bottom: 10px") You have completed your mission on Romance scams! Do you feel ready to protect yourself in the real world?
+                    .item(style="font-size: 1.5rem; font-weight: 700; line-height: 1.65rem;") What methods do you consider most important for protecting yourself and your family from Romance Scams?  
 
-                    #yes_reply.content.text-message(style="display: none")
-                        .ui.circular.tiny.image 
-                            img.dart_image(src=user.avatarImg, alt='Agents text message profile picture')
-                        .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
-                            p I'm glad to hear that!
-                            p Could you tell me more about what you've learned and if there are any new insights or tips that you've gained? 
-                            p Please type your response below and hit the "send" button.
+                .ui.centered.grid
+                    img.ui.small.image(src='/images/reflection.svg' alt="image of head")
 
-                    #no_reply.content.text-message(style="display: none")
-                        .ui.circular.tiny.image 
-                            img.dart_image(src=user.avatarImg, alt='Agents text message profile picture')
-                        .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
-                            p I understand that you might still have some concerns about protecting yourself from scams. It's completely okay to feel that way. Learning to recognize scams takes time, and I'm here to support you!
-                            p Please click the "Next" button on the bottom right of the page to complete the reflect section. 
-                        br
-                        br
+                //- button.ui.big.blue.button(onclick="toggleReflection()") Journal thoughts
+                //- .type-here
+                //-     p Disclaimer: Use this to input your thoughts. This information will not be saved or shared with anyone.
+                //-     .ui.form
+                //-         .ui.fluid.left.corner.labeled.input(style="font-size: 1.25rem;")
+                //-             .ui.left.corner.label
+                //-                 i.pen.icon
+                //-             textarea(placeholder="Type your thoughts here...")
 
-                    #sure_reply.content.text-message(style="display: none")
-                        .ui.circular.tiny.image 
-                            img.dart_image(src=user.avatarImg, alt='Agents text message profile picture')
-                        .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
-                            p That's okay! Recognizing scam emails and messages can be tricky, and it's completely normal to have some uncertainty.
-                            p Would you like to share any questions you have about protecting yourself from scams?
+                //- .item How comfortable are you sharing information with strangers, and what level of trust do you think is appropriate when responding to requests from unfamiliar individuals?
+                //- .item How much personal information do you currently share online?
+                //- .item Do you often stop and think about the value of the personal information you're about to share online?
 
+            .column.seven.wide.computer.only.sixteen.wide.tablet.only
+                //- button.ui.big.blue.button(onclick="toggleReflection()") Journal thoughts
+                .type-here
+                    .ui.form
+                        .ui.fluid.left.corner.labeled.input(style="font-size: 1.25rem;")
+                            .ui.left.corner.label(style="font-size: 1rem;")
+                                i.pencil.alternate.icon
+                            textarea(placeholder="Type your thoughts here. What you input will not be saved or shared with anyone.")
 
-                    //- final response from the user
-                    #final_container(style="clear: both; float: right; margin-top: 40px;")
-                        div#final_label
-                            .ui.large.right.pointing.label
-                                p#sent_message 
-                                    span
-                                        i.ellipsis.horizontal.icon
-                            .ui.circular.tiny.image(style="background: white !important")
-                                img(src='/profile_pictures/avatar-icon.svg', alt='user text message profile picture')
-                    br
-                    br
-                    br
-
-                    #sus_reply.content.text-message(style="display: none")
-                        .ui.circular.tiny.image 
-                            img.dart_image(src=user.avatarImg, alt='Agents text message profile picture')
-                        .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
-                            p A good rule of thumb is to double-check the sender's email address and avoid clicking on suspicious links. If something doesn't feel right, it's always better to be cautious. 
-                            p It was great talking with you! Please click the "Next" button on the bottom right of the page to conclude this module. 
-
-                    #experience_reply.content.text-message(style="display: none")
-                        .ui.circular.tiny.image 
-                            img.dart_image(src=user.avatarImg, alt='Agents text message profile picture')
-                        .ui.large.left.pointing.label(style='width: 70%; margin-left: 10px;')
-                            p Thank you for sharing those insights. It sounds like you've learned a lot!
-                            p It was great talking with you! Please click the "Next" button on the bottom right of the page to continue learning. 
-                    br
-                    br
-            .ui.fluid.action.icon.input(style="margin-top: -15px; font-size: 1.4rem;")
-                input.message-input(type="text" placeholder="Type your message..." id="message-input")
-                i.paper.plane.big.icon(style="color: #6BBCC7; margin-right: 60px;z-index:100;")
-                .ui.button#send-button Send 
+                //- img.ui.image(src='/images/reflection.svg')

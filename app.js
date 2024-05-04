@@ -209,6 +209,7 @@ app.get("/", homeController.index);
 // });
 app.get("/courses", coursesController.index);
 app.get("/about/:modId", isValidModId, moduleController.getAbout);
+app.get("/references/:modId", isValidModId, moduleController.getReferences);
 app.get("/course-player", moduleController.getModule);
 app.post("/completeModuleStatus", moduleController.completeModuleStatus);
 app.get("/login", userController.getLogin);
@@ -341,9 +342,11 @@ app.post("/postModuleProgress", userController.postModuleProgress);
 app.post("/postQuizScore", userController.postQuizScore);
 app.get("/getLatestQuizScore", userController.getLatestQuizScore);
 app.post("/postAvatar", userController.postAvatar);
+app.post("/postPracticeChoice", userController.postPracticeChoice);
+app.post("/getPracticeChoices", userController.getPracticeChoices);
 
 function isValidModId(req, res, next) {
-  const modIds = ["identity", "romance"];
+  const modIds = ["identity", "romance", "grandparent"];
   if (modIds.includes(req.params.modId)) {
     next();
   } else {

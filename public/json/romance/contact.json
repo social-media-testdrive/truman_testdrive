@@ -1,6 +1,6 @@
 {   
     "1": {
-        "progress": 100,
+        "progress": 66.6667,
         "type": "multi_select",
         "partial": "none",
         "prompt": "1. Scammers often use language that leads the victim to trust them, or even fall in love with them. Which of the following are examples of persuasive language? Select all that apply.",
@@ -10,8 +10,8 @@
             "explanation": "Scammers take advantage of people’s tendencies to trust people with religious affiliations more."
           },
           "1": {
-            "text": "B. Wait a bit into a relationship before they ask for money or share a sad story",
-            "explanation": "Scammers often wait a bit into a relationship before they ask for money. Scammers use this technique to make you feel like it is your obligation as their partner or friend to help them when they claim to be in trouble."
+            "text": "B. Share a sad story",
+            "explanation": "Scammers use sad stories about things like illness or money problems to make you feel sorry for them. They're counting on your kindness to lower your guard. By getting you to care about their fake troubles, they build a bond with you. This makes you more likely to trust them and want to help."
           },
           "2": {
             "text": "C. Exaggerated phrases",
@@ -22,11 +22,55 @@
             "explanation": "A romance scammer won't typically insult you because they want to gain your trust and keep you emotionally invested in the scam. Insulting you would risk losing that trust and connection they're trying to exploit."
           },
           "4": {
-            "text": "E. Excessive compliments towards the victim",
-            "explanation": "Scammers often use excessive compliments to make the relationship seem further progressed than it really is. This is sometimes called “love bombing.”"
+            "text": "E. Excessive compliments",
+            "explanation": "Scammers often use excessive compliments to make the relationship seem further progressed than it really is. This is often called “love bombing.”"
           }
         },
         "correctResponse": ["0", "1", "2", "4"],
         "theAnswers": "A, B, C, E"
-      }
+      },
+      "2": {
+          "progress": 75,
+          "type": "abcd",
+          "partial": "q2.html",
+          "prompt": "2. Which technique did the scammer use?",
+          "choices": {
+            "a": {
+              "text": "A. Rush the relationship"
+            },
+            "b": {
+              "text": "B. Wrong or Inconsistent Information"
+            },
+            "c": {
+              "text": "C. Try to Isolate You from Your Friends and Family"
+            },
+            "d": {
+              "text": "D. Dramatic Language"
+            }
+          },
+          "explanation": "<h1>The correct answer is C.</h1><p>The scammer tries to convince you that your friends and family are trying to come between the two of you. The scammer also encourages you to focus on just your relationship with them to isolate you from those who care about you.</p>",
+          "correctResponse": "c"
+      },
+      "3": {
+        "progress": 83.33334,
+        "type": "abcd",
+        "partial": "none",
+        "prompt": "3. Why do scammers try to move the conversation away from the dating platform to a more personal service?",
+        "choices": {
+          "a": {
+            "text": "A. To avoid triggering the platform's security measures"
+          },
+          "b": {
+            "text": "B. To express their feelings more freely"
+          },
+          "c": {
+            "text": "C. To share more intimate photos and videos"
+          },
+          "d": {
+            "text": "D. To arrange an in-person meeting"
+          }
+        },
+        "explanation": "<h1>The correct answer is A.</h1><p>Most reputable dating platforms have systems for uncovering romance scammers, so to avoid triggering these security measures, the scammers try to move the conversation away from the dating platform. They may ask for your mobile number, email address, or social media accounts to communicate with you in a more personal way.</p>",
+        "correctResponse": "a"
+    }
   }

@@ -1,0 +1,26 @@
+#reflection.hidden
+    .ui.container#reflection-read(style="width: 90%;")
+        .ui.stackable.middle.aligned.grid
+            .column.nine.wide.computer.only.sixteen.wide.tablet.only
+                h1.ui.header.large#learn-title
+                    .content
+                        i.lightbulb.icon
+                        | Reflect
+
+                p Take a moment to think about the following:
+                .ui.bulleted.list
+                    .item(style="font-size: 1.5rem; font-weight: 700; line-height: 1.65rem; margin-bottom: 10px") Can you share a story about a time when you recognized a potential identity theft scam online? What clues or red flags tipped you off?
+                    .item(style="font-size: 1.5rem; font-weight: 700; line-height: 1.65rem;") Which technique are you most concerned about? Why?
+                .ui.centered.grid
+                    img.ui.small.image(src='/images/reflection.svg')
+
+            .column.seven.wide.computer.only.sixteen.wide.tablet.only
+                //- button.ui.big.blue.button(onclick="toggleReflection()") Journal thoughts
+                .type-here
+                    .ui.form
+                        .ui.fluid.left.corner.labeled.input(style="font-size: 1.25rem;")
+                            .ui.left.corner.label(style="font-size: 1rem;")
+                                i.pencil.alternate.icon
+                            textarea(placeholder="Type your thoughts here. What you input will not be saved or shared with anyone.")
+
+                //- img.ui.image(src='/images/reflection.svg')
