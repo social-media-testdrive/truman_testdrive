@@ -1,0 +1,61 @@
+#matching.hidden
+    .ui.container#reflection-read
+        .limit#learn-target(style="padding: 0;")
+
+    .ui.container#title
+
+        h1.ui.header.large#learn-title
+            .content
+                i.dice.icon
+                | Sophia's Scam Sequence
+    .ui.icon.mini.message#instructions(style="padding: 5px; z-index: 99; width: 70%; margin: 0 auto; margin-top: 10px; margin-bottom: -25px; text-align: left;")
+        i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
+        .content 
+            p#feedbackMessage Drag the scam stage tile from the left to its matching video scene on the right.
+    main.container#matchingContainer
+        div#div1
+            ul.draggable-list
+                li#t1(draggable='true') 
+                    strong Stage 1: Create Fake Profiles. 
+                    | The scammer sets up a compelling but false profile on a dating or social networking site to attract the victim.
+                li#t2(draggable='true') 
+                    strong Stage 2: Contact and Groom. 
+                    | The scammer builds a relationship with the victim, establishing trust through conversations and emotional connections
+                li#t3(draggable='true') 
+                    strong Stage 3: Make a Request. 
+                    | After gaining the victim's trust, the scammer asks for money or favors, often inventing a crisis that requires financial aid.
+
+        div#div2
+            ul.draggable-list
+                li#d3(draggable='true') After Christopher shares his story of a failing business and the threat of losing his home, Sophia sends him $10,000 from her retirement savings. 
+                li#d1(draggable='true') Christopher introduces himself to Sophia on an online dating platform as a charming, retired businessman.<br><br>
+                li#d2(draggable='true')  Christopher's messages to Sophia become increasingly romantic, making her feel special with tons of compliments and affection.
+        
+    #endMessage
+        h3 Well done!
+        .ui.container
+            table.ui.celled.table#myTable
+                thead
+                    tr
+                        th Stage
+                        th Scene
+                tbody
+                    tr
+                        td 
+                            strong Stage 1: Create Fake Profiles. 
+                            | The scammer sets up a compelling but false profile on a dating or social networking site to attract the victim.
+                        td Christopher introduces himself to Sophia on an online dating platform as a charming, retired businessman.
+                    tr
+                        td 
+                            strong Stage 2: Contact and Groom. 
+                            | The scammer builds a relationship with the victim, establishing trust through conversations and emotional connections.
+                        td Christopher's messages to Sophia become increasingly romantic, making her feel special with tons of compliments and affection. 
+                    tr
+                        td 
+                            strong Stage 3: Make a Request. 
+                            | After gaining the victim's trust, the scammer asks for money or favors, often inventing a crisis that requires financial aid.
+                        td After Christopher shares his story of a failing business and the threat of losing his home, Sophia sends him $10,000 from her retirement savings.
+        .ui.centered.grid(style="margin-top: 15px;")
+            .ui.big.blue.button#matchingButton(onclick='playAgain()') Play Again
+
+

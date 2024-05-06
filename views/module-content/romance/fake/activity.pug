@@ -1,12 +1,81 @@
 #activity.hidden
     .ui.container#activity-read
         .limit#learn-target(style="padding: 0;")
+            h1.ui.header.large#learn-title
+                .content 
+                    i.dice.icon
+                    | Activity: Female Profile Sleuth 
             .ui.stackable.grid
-                .ten.wide.column
-                    h1.ui.header.large#learn-title
-                        .content 
-                            i.dice.icon
-                            | Activity
-                    p In this activity, you'll piece together the consequences of identity theft.   
-                .six.wide.column.middle.aligned
-                    //- img.ui.image(src='/images/learn-2.png' style='margin-left: auto; margin-right: auto')
+                .nine.wide.column
+                    #profile-template.ui.card(style='width: 600px; margin: 0 auto; margin-top: 10px; margin-bottom: 15px;')
+                        .ui.image
+                            img#bg(src='/images/romance/susanbg.png' alt="profile")
+                        .ui.circular.image
+                            img(src='/images/susandavispfp.png' alt="profile")
+                        .ui.basic.centered.segment
+                            .ui.centered.header Susan Davis&ZeroWidthSpace;
+                            .ui.three.column.grid
+                                .column
+                                    p
+                                        strong 29
+                                        |  Friends
+                                .column
+                                    p
+                                        strong 0
+                                        |  Mutual Friends
+                                .column
+                                    p
+                                        strong 15
+                                        |  Posts
+                            p#bio
+                                | &#x1F4AA; Certified Fitness Trainer | Passionate about empowering others to discover their strength, transform their lives, and embrace a healthier, happier version of themselves.&ZeroWidthSpace; &quot;Your only limit is you.&quot; &#x1F31F;&ZeroWidthSpace;&ZeroWidthSpace;
+                            .icon-item
+                                i.icon.suitcase
+                                span Works at YMCA
+                            .icon-item
+                                i.icon.home
+                                span
+                                    | Lives in Los Angeles, California
+                            .icon-item
+                                i.icon.map.marker.alternate
+                                span From Los Angeles, California
+                            .icon-item
+                                i.icon.users.large-icon
+                                span Linked Accounts 
+                                i.instagram.icon
+
+                //- .seven.wide.column.middle.aligned
+                .seven.wide.column
+                    #activity-question-1
+                        p Is this profile real or fake?
+                        button.ui.big.green.button#realBtn(style="margin-right: 30px; width: 200px;") Real
+                        button.ui.big.red.button#fakeBtn(style="width: 200px;") Fake
+                    p#susan-result(style="margin-top: 20px; display: none;") Correct! This is a 
+                        span 
+                            strong(style="color: red;") FAKE 
+                            | profile.
+                    //- p#susan-incorrect(style="margin-top: 20px; display: none;") Correct! This is a 
+                    //-     strong(style="color: red;") FAKE 
+                    //-     | profile.
+                    #susan-explanation(style="display: none;") 
+                        p(style="margin-top: 5px; margin-bottom: 0px; font-weight: bold;") Red Flags
+                        .ui.bulleted.list 
+                            .item 
+                                | Financially independent as a fitness trainer
+                            .item
+                                | Conventionally attractive
+                            .item
+                                | No mention of past relationships or kids
+                            .item
+                                | Bio shows that she likes to work out
+                            .item
+                                | Few posts, few friends, only one linked account
+                            .item
+                                | Cliché phrase
+                            .item
+                                | Photo looks odd
+
+                    //- .ui.icon.mini.message(style="padding: 5px; z-index: 99;")
+                    //-     i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
+                    //-     .content 
+                    //-         p Determine wether this profile is real or fake.

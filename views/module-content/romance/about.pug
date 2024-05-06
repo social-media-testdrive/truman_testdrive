@@ -33,7 +33,7 @@ block content
               button.ui.huge.blue.button(onclick="window.location='/course-player?module=romance&section=challenge&page=intro'") Continue Mission
 
           .four.wide.column 
-            img(src="/images/johnson.png")
+            img(src="/images/johnson.png" alt="johnson family is confused")
       br
 
       hr
@@ -200,7 +200,7 @@ block content
       h2.ui.header.centered(style="margin-top: 40px; margin-bottom: 40px;") 
         .content(style="position: relative;")  
           | Complete all activities to earn a certificate
-          img(src="/images/certificate-icon.png" style="width: 50px; height: 50px; position: absolute; left: -55px; top: -5px")
+          img(src="/images/certificate-icon.png" style="width: 50px; height: 50px; position: absolute; left: -55px; top: -5px" alt="certificate icon")
 
     .ui.bottom.attached.segment
       h2(style="color: #285362; font-weight: 500 !important;") Learning Materials 
@@ -226,25 +226,25 @@ block content
         .sixteen.wide.column
           .speech-div
             .centerme
-              if user.moduleProgress.identity.link === "/course-player?module=identity&section=challenge&page=intro" 
-                button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.identity.link") Start Mission
+              if user.moduleProgress.romance.link === "/course-player?module=romance&section=challenge&page=intro" 
+                button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.romance.link") Start Mission
               else 
-                button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.identity.link") Continue Mission
+                button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.romance.link") Continue Mission
 
-            img.dart_image.ui.medium.image(src=user.avatarImg)
+            img.dart_image.ui.medium.image(src=user.avatarImg alt="your detective character")
 
             .ui.large.label.blue-pointing#speechBubble
-              if user.moduleProgress.identity.link === "/course-player?module=identity&section=challenge&page=intro" 
+              if user.moduleProgress.romance.link === "/course-player?module=romance&section=challenge&page=intro" 
                 p#speechText
-                  | The Johnsons are counting on you! Click 'Start Mission' to begin. 
+                  | Sophia is counting on you! Click 'Start Mission' to begin. 
               else 
                 p#speechText
                   | Welcome back! Click 'Continue Mission' to pick up where you left off.
     .ui.centered.grid.mobile.only
-      if user.moduleProgress.identity.link === "/course-player?module=identity&section=challenge&page=intro" 
-        button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.identity.link" style="margin-top: 0px; margin-bottom: 60px;") Start Mission
+      if user.moduleProgress.romance.link === "/course-player?module=romance&section=challenge&page=intro" 
+        button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.romance.link" style="margin-top: 0px; margin-bottom: 60px;") Start Mission
       else 
-        button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.identity.link" style="margin-top: 0px;  margin-bottom: 60px;") Continue Mission
+        button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.romance.link" style="margin-top: 0px;  margin-bottom: 60px;") Continue Mission
 
     br
     br

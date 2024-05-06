@@ -610,7 +610,13 @@ function displayCurrentQuestion()
             } 
 
             if (userNameSpan) {
-                userNameSpan.textContent = username;
+                if (userNameSpan) {
+                    if(username === "Guest") {
+                        userNameSpan.textContent = "there"
+                    } else {
+                        userNameSpan.textContent = username;
+                    }
+                } 
             } 
 
             if (userEmailSpan) {
@@ -928,7 +934,7 @@ function displayScore() {
         $(this).find('strong').html(Math.round(100 * scoreTotal) + '<i>%</i>');
     });
 
-    if(currentSection === "challenge") {
+    if(currentSection === "challenge" || currentSection === 'evaluation') {
         $("#resil-score").html(Math.round(100 * scoreTotal));
     }
 

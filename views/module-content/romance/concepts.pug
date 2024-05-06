@@ -10,10 +10,11 @@ block content
             h1 Loading...
     .display-page.hidden
         include concepts/objectives.pug
+        include concepts/matching.pug
         include concepts/intro-video.pug
         include concepts/definitions.pug
         include concepts/phases.pug
-        include concepts/fake.pug
+        include concepts/fake-websites.pug
         include concepts/trusted.pug
         include concepts/reflection.pug
         include concepts/quiz.pug
@@ -26,9 +27,13 @@ block styles
     link(rel='stylesheet', href='/css/learning-targets.css')
     link(rel='stylesheet', href='/css/middle-aligned-layout.css')
     link(rel='stylesheet', href='/css/dart_quiz.css')  
+    link(rel='stylesheet', href='/css/drag-drop.css?v=1.0')  
 
 
-block scripts       
+block scripts  
+    script.
+        var speechData = "none"; // quizData is passed to pug file via render function in app.js
+
     script(src='/module_js/romance/romance-scam.js')  
     //- script(src='/js/text2speech.js')  
     script.
@@ -89,7 +94,8 @@ block scripts
         var link = "/course-player?module=identity&section=concepts&page=takeaways";
 
     script(src='/module_js/module_quiz.js', mod-id=module, page=page, current-section=section, next-link=link, progress=progress)
-        
+    script(src="/js/drag-drop.js")    
+
         //- startQuiz()
     //- console.log("Page is quiz-template")
     //- console.log("module: " + module)
