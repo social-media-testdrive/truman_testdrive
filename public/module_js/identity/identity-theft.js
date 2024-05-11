@@ -29,6 +29,17 @@ let hiddenHighlight = false;
 
 let showingHere = false;
 
+// remove quiz question number on reload 
+window.onload = function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('question')) { // Check if the 'question' parameter exists
+        urlParams.delete('question'); // Remove the 'question' parameter
+        const newUrl = window.location.pathname + '?' + urlParams.toString();
+        window.history.replaceState(null, '', newUrl); // Replace the URL without reloading
+        // window.location.reload(); 
+    }
+};
+
 document.addEventListener('click', function clickHandler() {
     console.log("User interacted with the page")
     userInteracted = true;
@@ -159,6 +170,9 @@ function highlightWord(start, finish, word, element) {
     // console.log("Highlighting: " + word + ", start: " + start + ", finish: " + finish + ", totalFinish: " + totalFinish + ", element: " + element + ", previousElement: " + previousElement);
 
     let wordClass = "highlighted-word";
+    let resultsClass = "highlightedResults";
+    let buttonClass = "highlightedButton";
+
     if(contrastWords) {
         wordClass += "-dark";
     } 
@@ -219,10 +233,44 @@ function highlightWord(start, finish, word, element) {
                 showingHere = false;
             }, 1000);
         }
+    } else if(element === "showResults") {
+
+        if(wordHighlighting || sentenceHighlighting) {
+            let temp = document.getElementById("showResults");
+            temp.classList.add(resultsClass);
+        }
+    } else if(element === "narrate-try-again") {
+
+        if(wordHighlighting || sentenceHighlighting) {
+            $('#narrate-try-again').addClass(buttonClass);
+            // let temp = document.getElementById("narrate-try-again");
+            // temp.classList.add(buttonClass);
+        }
+    }  else if(element === "narrate-view-answers") {
+
+        if(wordHighlighting || sentenceHighlighting) {
+            $('#narrate-view-answers').addClass(buttonClass);
+            // let temp = document.getElementById("narrate-view-answers");
+            // temp.classList.add(buttonClass);
+        }
+    } else if(element === "narrate-next") {
+
+        if(wordHighlighting || sentenceHighlighting) {
+            $('#narrate-next').addClass(buttonClass);
+            // let temp = document.getElementById("narrate-next");
+            // temp.classList.add(buttonClass);
+        }
+    } else if (element === "clear") {
+        console.log("*****clearing the highlights");
+        $('#showResults').removeClass(resultsClass);
+
+        $('#narrate-view-answers').removeClass(buttonClass);
+        $('#narrate-try-again').removeClass(buttonClass);
+        $('#narrate-next').removeClass(buttonClass);
     } else if(element === "none"){
         // console.log("skip break element");
     } else {
-        if(currentPage !== "quiz" && (wordHighlighting || sentenceHighlighting)) {
+        if(wordHighlighting || sentenceHighlighting) {
 
             // console.log("HIGHLIGH element: " + element );
             let temp = document.getElementById(element);
@@ -292,7 +340,7 @@ function toRepeatWords() {
     if(element === "shownHere") {
         showingHere = true;
     }
-    
+
     highlightWord(start, finish, word, element);
 
 
@@ -334,13 +382,21 @@ function toRepeatWords() {
 function startHighlightingWords() {
     const urlParams = new URLSearchParams(window.location.search);
     const currentPage = urlParams.get('page');
+    const question = urlParams.get('question');
 
-    if(speechData !== "none" && currentPage !== 'quiz') {
+    // console.log("IN start highlighting the current page: " + currentPage + " and the question: " + question);
+
+    if(speechData !== "none") {
 
         // console.log("In starting the highlight") 
         
         const urlParams = new URLSearchParams(window.location.search);
-        const currentPage = urlParams.get('page');
+        let currentPage = urlParams.get('page');
+        // for quiz page, set the current page to the question like quiz-2 or quiz-3 to get correct highlight speech mark data
+        if(currentPage === 'quiz' && question !== null) {
+            currentPage = question;
+        }
+
         // console.log("The current page: " + currentPage);
         // console.log("The avatar: " + avatar)
         // console.log("The speech data: " + speechData)
@@ -557,12 +613,15 @@ function playAudio(thePage) {
 
     // console.log("mute is: " + mute);
     // document.getElementById('narration-audio').play();
+    if(thePage === 'quiz') {
+        console.log("****in play audio for the quiz page****");
+    }
 
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const currentPage = urlParams.get('page');
+    // const urlParams = new URLSearchParams(window.location.search);
+    // const currentPage = urlParams.get('page');
 
-    if(speechData !== "none" && currentPage !== 'quiz') {
+    if(speechData !== "none") {
 
         var audio = document.getElementById('narration-audio');
 
@@ -835,7 +894,7 @@ $(document).ready(function() {
 
         $('.ui.sidebar').sidebar('hide');
 
-        if(speechData !== "none" && currentPage !== 'quiz') {
+        if(speechData !== "none") {
             stopHighlighting();
         }
         // restartWordHighlighting();
@@ -890,19 +949,18 @@ $(document).ready(function() {
                         setupPractice();
                     }
 
-                    if(speechData !== "none" && backPage !== 'quiz') {
+                    if(speechData !== "none") {
                         playAudio(backPage);
                         toggleHighlighting();
                         startHighlightingWords();
                     }
 
-                    if(backPage === 'quiz') {
-                        console.log("Page is quiz so pause");
-                        var audio = document.getElementById('narration-audio');
-                        audio.pause();
-                        stopHighlighting();
-    
-                    }
+                    // if(backPage === 'quiz') {
+                    //     console.log("Page is quiz so pause");
+                    //     var audio = document.getElementById('narration-audio');
+                    //     audio.pause();
+                    //     stopHighlighting();
+                    // }
 
 
                     }
@@ -918,7 +976,7 @@ $(document).ready(function() {
         $('.ui.sidebar').sidebar('hide');
 
         // stop and reseat audio and highlighting immediately
-        if(speechData !== "none" && currentPage !== 'quiz') {
+        if(speechData !== "none") {
             stopHighlighting();
         }
 
@@ -1078,18 +1136,18 @@ $(document).ready(function() {
                     setupPractice();
                 }
 
-                if(speechData !== "none" && nextPage !== 'quiz') {
+                if(speechData !== "none") {
                     playAudio(nextPage);
                     toggleHighlighting();
                     startHighlightingWords();
                 }
 
-                if(nextPage === 'quiz') {
-                    console.log("Page is quiz so pause");
-                    var audio = document.getElementById('narration-audio');
-                    audio.pause();
-                    stopHighlighting();
-                }
+                // if(nextPage === 'quiz') {
+                //     console.log("Page is quiz so pause");
+                //     var audio = document.getElementById('narration-audio');
+                //     audio.pause();
+                //     stopHighlighting();
+                // }
 
 
             }

@@ -38,7 +38,7 @@ $(document).ready(function() {
     // $('.bar').css('width', current_percent + '%');
     // $('.bar').css('background', '#7AC4E0');
 
-
+    
 
 
     // console.log("In module_quiz.js");
@@ -191,14 +191,40 @@ $(document).ready(function() {
 
 	// On clicking next, display the next question
     $(this).find(".nextButton").on("click", function () {
+        console.log("Next button clicked!!!!!!!!!! + currentQuestion: " + currentQuestion + " numQuestions: " + numQuestions + "quizOver: " + quizOver + "viewingAnswer: " + viewingAnswer + "pastAttempts: " + pastAttempts);
+
+        // replace quiz page
+        // const urlParams = new URLSearchParams(window.location.search);
+        // urlParams.set('page', 'quiz2');
+        // const newUrl = window.location.pathname + '?' + urlParams.toString();
+        // history.pushState({path:newUrl}, '', newUrl);
+
+        // add question parameter to url
+
+        let nextQuestion;
+        const urlParams = new URLSearchParams(window.location.search);
+        // check if we are on the last question to display results or the next question
+        if(currentQuestion === numQuestions) {
+            nextQuestion = "results";
+            // stop narration audio and highlighting
+            // var audio = document.getElementById('narration-audio');
+            // audio.pause();
+                    
+            // stopHighlighting();
+        } else {
+            nextQuestion = currentQuestion + 1;
+        }
+
+
+
 
         if(currentSection === 'challenge'  || currentSection === 'techniques') {
             $("#detail-instruct").hide();
         }
-        console.log("currentQuestion: " + currentQuestion);
-        console.log("numQuestions: " + numQuestions);
-        console.log("viewingAnswer: " + viewingAnswer);
-        console.log("pastAttempts: " + pastAttempts);
+        // console.log("currentQuestion: " + currentQuestion);
+        // console.log("numQuestions: " + numQuestions);
+        // console.log("viewingAnswer: " + viewingAnswer);
+        // console.log("pastAttempts: " + pastAttempts);
 
         $("#page-article").scrollTop(0);
 
@@ -239,6 +265,21 @@ $(document).ready(function() {
             } else {
                 // Remove warning and Grade the question apporpriately 
                 $(".quizMessage").hide();
+                stopHighlighting();
+
+                let nextPage = "quiz-" + nextQuestion;
+                urlParams.set('question', nextPage); 
+                const newUrl = window.location.pathname + '?' + urlParams.toString();
+                history.pushState({path: newUrl}, '', newUrl);
+        
+                // control audio and highlighting for each question using narration functions defined in identity-theft.js
+                // if(!quizOver && !viewingAnswer && !pastAttempts && speechData !== "none" && nextQuestion !== "results") {
+                if(!quizOver && !viewingAnswer && !pastAttempts && speechData !== "none") {
+                    playAudio(nextPage);
+                    toggleHighlighting();
+                    startHighlightingWords();
+                }
+
 
                 if (questionData[currentQuestion].type === "yes_no") {
                     // simple yes/no question so if correct add 1 point if wrong add 0 points
@@ -572,7 +613,7 @@ function displayCurrentQuestion()
     $(".explanationIncorrectYesNo").hide();
 
     // Set the questionClass text to the current question
-    $(".question").text(questionPrompt);
+    $(".question span").text(questionPrompt);
 
     // Create and append the image element
     // const imageContainer = $(".image");
@@ -711,10 +752,25 @@ function displayCurrentQuestion()
                 labelElement.appendChild(choiceText);
             } else if  (questionData[currentQuestion].type === "multi_select") {
                 // make label a p element so we can style it for multiline text for the long multi-select question prompts
+                // updated to be a span inside the p for narration highlighting
+
+                // labelElement = document.createElement("label");
+                // const choiceText = document.createElement("p");
+                // choiceText.textContent = choice.text;
+                // labelElement.appendChild(choiceText);
+
                 labelElement = document.createElement("label");
-                const choiceText = document.createElement("p");
-                choiceText.textContent = choice.text;
-                labelElement.appendChild(choiceText);
+                const choiceText = document.createElement("p"); // Create a p tag
+                // const narrationNumber = choiceKey + 1; // add number for narration id as the questions itself is number narrate-1, then A is 2, B is 3, C is 4, D is 5
+                let option = parseInt(choiceKey) + 2;
+                const idName = "narrate-" + option + "-quiz-" + currentQuestion;
+                console.log("!!!!!!!!!!!!!idName: " + idName);
+                choiceText.id = idName; // Set the ID of the p tag
+                const spanElement = document.createElement("span"); // Create a span tag
+                spanElement.textContent = choice.text; // Set text content to the span tag
+                choiceText.appendChild(spanElement); // Append the span tag to the p tag
+                labelElement.appendChild(choiceText); // Append the p tag to the label element
+
             }
 
 
