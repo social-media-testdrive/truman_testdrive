@@ -78,6 +78,10 @@ $(document).ready(function() {
             // console.log(userDBAttempts);
 
             if(userDBAttempts.length != 0) { // attempted before so show restults page
+
+                // inform identity-theft.js that we have previous attempts so it can display the results page
+                document.dispatchEvent(new CustomEvent('QuizDataLoaded', { detail: { pastAttempts: true }}));
+
                 $(".choiceList").empty();
                 $(".fourChoices").empty();
                 $(".checkboxChoices").empty();
@@ -97,6 +101,15 @@ $(document).ready(function() {
         
                 // console.log("We have previous attempts!");
                 pastAttempts = true;
+
+                // fix url to show results page
+                // const urlParams = new URLSearchParams(window.location.search);
+                // let nextPage = "quiz-results";
+                // urlParams.set('question', nextPage); 
+                // const newUrl = window.location.pathname + '?' + urlParams.toString();
+                // history.pushState({path: newUrl}, '', newUrl);
+
+
                 // $('.bar').css('width', '100%');
                 // $('.bar').css('background', '#3757A7');
 
@@ -121,6 +134,8 @@ $(document).ready(function() {
                 quizOver = true;
         
             } else {
+                document.dispatchEvent(new CustomEvent('QuizDataLoaded', { detail: { pastAttempts: false }}));
+
                 // Display the first question
                 displayCurrentQuestion();
 
@@ -158,6 +173,11 @@ $(document).ready(function() {
 
 
 	$(this).find(".preButton").on("click", function () {
+        if(pastAttempts) {
+            console.log("stopping highlighting bc on results page")
+            stopHighlighting();
+        }
+    
         $("#page-article").scrollTop(0);
 		
         if (!quizOver) {
@@ -191,8 +211,14 @@ $(document).ready(function() {
 
 	// On clicking next, display the next question
     $(this).find(".nextButton").on("click", function () {
+        console.log("pabbllo vittar");
         console.log("Next button clicked!!!!!!!!!! + currentQuestion: " + currentQuestion + " numQuestions: " + numQuestions + "quizOver: " + quizOver + "viewingAnswer: " + viewingAnswer + "pastAttempts: " + pastAttempts);
-
+        if(pastAttempts) {
+            console.log("stopping highlighting bc on results page")
+            stopHighlighting();
+        } else {
+            console.log("not past attempts")
+        }
         // replace quiz page
         // const urlParams = new URLSearchParams(window.location.search);
         // urlParams.set('page', 'quiz2');
@@ -271,14 +297,6 @@ $(document).ready(function() {
                 urlParams.set('question', nextPage); 
                 const newUrl = window.location.pathname + '?' + urlParams.toString();
                 history.pushState({path: newUrl}, '', newUrl);
-        
-                // control audio and highlighting for each question using narration functions defined in identity-theft.js
-                // if(!quizOver && !viewingAnswer && !pastAttempts && speechData !== "none" && nextQuestion !== "results") {
-                if(!quizOver && !viewingAnswer && !pastAttempts && speechData !== "none") {
-                    playAudio(nextPage);
-                    toggleHighlighting();
-                    startHighlightingWords();
-                }
 
 
                 if (questionData[currentQuestion].type === "yes_no") {
@@ -386,13 +404,13 @@ $(document).ready(function() {
 			}
 				
             //  on last question, show page footer and hide next button
+            
             if(currentQuestion === numQuestions && viewingAnswer === true) {
-                console.log("IN HERREEEE BEYONCE 1") 
+                // console.log("IN HERREEEE BEYONCE 1") 
                 viewingAnswer = false;
                 // show bottom footer hide next / quiz submit button
                 if(pastAttempts === true) {
-                    console.log("IN HERREEEE BEYONCE 2") 
-
+                    // console.log("IN HERREEEE BEYONCE 2") 
                     $(".nextButton").css('visibility', 'hidden');
                     $("#module-footer").show();
                 }        
