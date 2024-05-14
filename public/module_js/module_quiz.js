@@ -198,6 +198,22 @@ $(document).ready(function() {
             viewingAnswer = false;
             revisitShowFooter = false;
             resetQuiz();
+
+            
+            // const urlParams = new URLSearchParams(window.location.search);
+            // let startPage = "quiz";
+            // urlParams.set('question', startPage); 
+            // const newUrl = window.location.pathname + '?' + urlParams.toString();
+            // history.pushState({path: newUrl}, '', newUrl);
+
+            // remove question parameter from url
+            const url = new URL(window.location.href);
+            url.searchParams.delete('question');
+            window.history.replaceState({}, '', url.toString());
+
+            playAudio('quiz');
+            toggleHighlighting();
+            startHighlightingWords();
 		}
 
         // If viewing answer reset the show explanation button if going back to previous question
@@ -212,7 +228,7 @@ $(document).ready(function() {
 	// On clicking next, display the next question
     $(this).find(".nextButton").on("click", function () {
         console.log("pabbllo vittar");
-        console.log("Next button clicked!!!!!!!!!! + currentQuestion: " + currentQuestion + " numQuestions: " + numQuestions + "quizOver: " + quizOver + "viewingAnswer: " + viewingAnswer + "pastAttempts: " + pastAttempts);
+        // console.log("Next button clicked!!!!!!!!!! + currentQuestion: " + currentQuestion + " numQuestions: " + numQuestions + "quizOver: " + quizOver + "viewingAnswer: " + viewingAnswer + "pastAttempts: " + pastAttempts);
         if(pastAttempts) {
             console.log("stopping highlighting bc on results page")
             stopHighlighting();
@@ -487,6 +503,13 @@ $(document).ready(function() {
     
 	$(this).find(".viewAnswers").on("click", function () {
         // console.log("View Answers Clicked!");
+        // stopHighlighting();
+        // clear highlight
+        highlightWord(0, 0, 'clear', 'clear');
+
+        var audio = document.getElementById('narration-audio');   
+        audio.pause();
+
         viewingAnswer = true;
 
         // if past attempt and click view answers we need to make previous and next buttons visible again
@@ -575,6 +598,8 @@ $(document).ready(function() {
 
 function displayCurrentQuestion() 
 {   
+    console.log("in display current question    999999999999");
+
     // console.log("currentSection: " + currentSection);
     // console.log("currentQuestion: " + currentQuestion);
     // console.log("viewingAnswer: " + viewingAnswer);
@@ -600,6 +625,7 @@ function displayCurrentQuestion()
     // let question = questionData[1].prompt;
 
     let questionPrompt = questionData[currentQuestion].prompt;
+    console.log("the question prompt 999: " + questionPrompt);
     // console.log("Question: " + question);
     // let questionClass = $(".quizContainer > .question");
     let choiceList = $(".quizContainer > .choiceList");
