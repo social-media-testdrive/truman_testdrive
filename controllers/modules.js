@@ -16,6 +16,19 @@ exports.getAbout = (req, res) => {
     res.render(introPage, { title });
 };
   
+/**
+ * GET /about/:page?/:modId
+ * Render the about pages for the modules.
+ */
+exports.getReferences = (req, res) => {
+  const modId = req.params.modId;
+
+  const introPage = `module-content/${modId}/references.pug`;
+  const title = 'References';
+
+  res.render(introPage, { title });
+};
+
 
 // Handler for '/getModule' route
 exports.getModule = async (req, res) => {

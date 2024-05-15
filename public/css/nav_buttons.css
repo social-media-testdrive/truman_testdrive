@@ -45,8 +45,8 @@
     border-radius: 30px !important;  
     /* color: #495057 !important;
     border: 1px solid #495057; */
-    background-color: #3757A6 !important;
-    color: white !important;
+    background-color: #3757A6 ;
+    color: white;
     padding-left: 30px;
     padding-right: 30px;
     transition: transform 0.3s ease;
