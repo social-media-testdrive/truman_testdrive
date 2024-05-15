@@ -962,6 +962,7 @@ $(document).ready(function() {
                     }
 
                     if(speechData !== "none") {
+                        console.log("YO YO YO the past attempts: " + pastAttempts + " and the back page: " + backPage)
                         if(pastAttempts  && backPage === 'quiz') {
                             const urlParams = new URLSearchParams(window.location.search);
                             backPage = "quiz-results";

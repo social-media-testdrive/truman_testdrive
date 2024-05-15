@@ -85,7 +85,7 @@ $(document).ready(function() {
                 $(".choiceList").empty();
                 $(".fourChoices").empty();
                 $(".checkboxChoices").empty();
-                $(".question").empty();
+                $(".question span").empty();
                 $(".explanationCorrectMulti").hide();
                 $(".explanationIncorrectMulti").hide();
                 $(".explanationCorrectYesNo").hide();
@@ -195,6 +195,7 @@ $(document).ready(function() {
 		} else {
             // quiz is over and clicked the previous button (which is now the try again button)
             attempts++;
+            pastAttempts = false;
             viewingAnswer = false;
             revisitShowFooter = false;
             resetQuiz();
@@ -235,14 +236,8 @@ $(document).ready(function() {
         } else {
             console.log("not past attempts")
         }
-        // replace quiz page
-        // const urlParams = new URLSearchParams(window.location.search);
-        // urlParams.set('page', 'quiz2');
-        // const newUrl = window.location.pathname + '?' + urlParams.toString();
-        // history.pushState({path:newUrl}, '', newUrl);
 
         // add question parameter to url
-
         let nextQuestion;
         const urlParams = new URLSearchParams(window.location.search);
         // check if we are on the last question to display results or the next question
@@ -314,7 +309,15 @@ $(document).ready(function() {
                 const newUrl = window.location.pathname + '?' + urlParams.toString();
                 history.pushState({path: newUrl}, '', newUrl);
 
+                // control audio and highlighting for each question using narration functions defined in identity-theft.js
+                // if(!quizOver && !viewingAnswer && !pastAttempts && speechData !== "none" && nextQuestion !== "results") {
+                if(!quizOver && !viewingAnswer && !pastAttempts && speechData !== "none") {
+                    playAudio(nextPage);
+                    toggleHighlighting();
+                    startHighlightingWords();
+                }
 
+                    
                 if (questionData[currentQuestion].type === "yes_no") {
                     // simple yes/no question so if correct add 1 point if wrong add 0 points
                     if (val === questionData[currentQuestion].correctResponse) {
@@ -396,7 +399,7 @@ $(document).ready(function() {
                     $(".choiceList").empty();
                     $(".fourChoices").empty();
                     $(".checkboxChoices").empty();
-                    $(".question").empty();
+                    $(".question span").empty();
                     $(".explanationCorrectMulti").hide();
                     $(".explanationIncorrectMulti").hide();
                     $(".explanationCorrectYesNo").hide();
@@ -434,7 +437,7 @@ $(document).ready(function() {
 		}	
 		else { 
             // quiz is over and clicked the next button (which now displays 'Next' instead of 'Next Question")
-            // save info into database
+            // save info into database and set pastAttempts to true
             
             // show footer
             $("#nextButton").click();
@@ -479,6 +482,7 @@ $(document).ready(function() {
                 if (response.ok) {
                     // Request was successful
                     console.log('Quiz attempt posted successfully!');
+                    pastAttempts = true;
                     // Now can navigate to the next page
                     // window.location.href = nextLink;
                 } else {
@@ -502,10 +506,16 @@ $(document).ready(function() {
     });
     
 	$(this).find(".viewAnswers").on("click", function () {
+        pastAttempts = false;
+
         // console.log("View Answers Clicked!");
         // stopHighlighting();
-        // clear highlight
-        highlightWord(0, 0, 'clear', 'clear');
+        // clear highlights
+        $('#showResults').removeClass("highlightedResults");
+        $('#narrate-view-answers').removeClass("highlightedButton");
+        $('#narrate-try-again').removeClass("highlightedButton");
+        $('#narrate-next').removeClass("highlightedButton");
+        $('#nextButton').removeClass("highlightedButton");
 
         var audio = document.getElementById('narration-audio');   
         audio.pause();
@@ -620,8 +630,8 @@ function displayCurrentQuestion()
     }
 
     window.scrollTo(0, 0);
-    // console.log("In display current Question");
-    // console.log("Current Question: " + currentQuestion);
+    console.log("In display current Question");
+    console.log("Current Question: " + currentQuestion);
     // let question = questionData[1].prompt;
 
     let questionPrompt = questionData[currentQuestion].prompt;
@@ -1070,7 +1080,8 @@ function resetQuiz() {
     currentQuestion = 1;
     correctAnswers = 0;
     quizOver = false;
-    pastAttempts = false;
+    // dont reset pastAttempts, need to always keep most recent one
+    // pastAttempts = false;
 
     // only clear selectedAnswer if not viewing answers
     if(viewingAnswer === false) {
