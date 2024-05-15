@@ -1,25 +1,21 @@
 var hintsList = [
   {
-    hint: `Lily would like to hide her location information from the public on
-    the internet. Which privacy settings would she have to change?`,
+    hint: `A Lucía le gustaría ocultar su ubicación al público. ¿Qué ajuste de privacidad tendría que cambiar?`,
     element: '#hint1',
     hintPosition: 'top-middle',
-    audioFile: ['CUSML.7.8.08.mp3']
+    // audioFile: ['CUSML.7.8.08.mp3']
   },
   {
-    hint: `She can <b>turn off location sharing</b> and restrict who can see her
-    location to <b>“Friends” only</b>. Let’s try doing this!`,
+    hint: `Ella puede <b>desactivar el uso compartido de la ubicación</b> y restringir quién puede ver su ubicación únicamente a <b>"Amigos"</b>. ¡Intentemos hacer eso!`,
     element: '#hint2',
     hintPosition: 'top-middle',
-    audioFile: ['CUSML.7.8.09.mp3']
+    // audioFile: ['CUSML.7.8.09.mp3']
   },
   {
-    hint: `Have you turned off location sharing and changed who can see Lily’s
-    location? Click “<i>Let’s Continue!</i>” to see how her profile has
-    changed.`,
+    hint: `¿Desactivaste la opción de compartir ubicación y cambiaste quién puede ver la ubicación de Lucía? Haz clic en "<i>¡Continuar!</i>" para ver cómo ha cambiado su perfil.`,
     element: '#hint3',
     hintPosition: 'middle-right',
-    audioFile: ['CUSML.7.8.10.mp3']
+    // audioFile: ['CUSML.7.8.10.mp3']
   }
 ];
 
@@ -43,7 +39,7 @@ function customOnHintCloseFunction() {
       $('#clickAllDotsWarning').transition('fade');
       $('#cyberTransButton').css("margin-bottom", "4em");
     }
-    if((keySetting1 == false) && (keySetting2 === "Friends")){
+    if((keySetting1 === false) && (keySetting2 === "Amigos")){
       $( ".settings1" ).addClass("green");
     }
   }
@@ -71,7 +67,7 @@ $('#cyberTransButton').on('click', function () {
   } else {
     $('#locationCue1Text').hide();
   }
-  if(keySetting2 !== "Friends"){
+  if(keySetting2 !== "Amigos"){
     $('#locationCue2Text').show();
     $('#locationCue2').transition('bounce');
   } else {
@@ -89,19 +85,18 @@ $('#cyberTransButton').on('click', function () {
   }
 });
 
-
 //get the value of the dropdown when it changes
 $(".ui.selection.dropdown[name='shareLocationWith']").change(function() {
   keySetting2 = $(".ui.selection.dropdown[name='shareLocationWith']").dropdown('get text');
 
   //If the yellow warning is already open, make it disappear when setting is corrected
-  if(keySetting2 === "Friends"){
+  if(keySetting2 === "Amigos"){
     $('#locationCue2Text').hide();
   }
 
   //All blue dots are clicked and the settings are correct
   if(closedHints == hintsList.length) {
-    if((keySetting1 == false) && (keySetting2 === "Friends")){
+    if((keySetting1 == false) && (keySetting2 === "Amigos")){
        $( ".settings1" ).addClass("green");
     }
     else{
@@ -120,7 +115,7 @@ $(".ui.toggle.checkbox[name='locationToggle']").change(function() {
   }
 
   if(closedHints == hintsList.length) {
-    if((keySetting1 == false) && (keySetting2 === "Friends")){
+    if((keySetting1 == false) && (keySetting2 === "Amigos")){
        $( ".settings1" ).addClass("green");
     }
     else{

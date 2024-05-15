@@ -1,0 +1,150 @@
+extends ../ui_layout-esp
+
+block content
+
+  .ui.text.container.addBottomMargin
+    br
+    #learn.ui.raised.segment
+      h3.ui.header
+        i.book.blue.icon
+        .content
+          | Aprender
+      hr
+      .ui.mini.green.right.labeled.icon.button.showLearnSectionButton
+        i.down.arrow.icon
+        |   Siguiente
+      .ui.basic.segment.learnSegment.hidden
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | Las redes sociales son una excelente manera de recibir noticias de forma rápida y sencilla.
+            | Es posible que a tus amigos les guste o compartan artículos que sean interesantes para ti.
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | ¡Pero tienes que tener cuidado! A veces las personas comparten artículos en las redes
+            | sociales que parecen noticias reales, pero que en realidad incluyen información falsa o
+            | no confiable.
+        br
+        #introduction_next.button.ui.mini.green.right.labeled.icon.button
+          i.down.arrow.icon
+          |   Siguiente
+
+    #question.ui.segment.hidden
+      h3.ui.header
+        i.key.blue.icon
+        .content Vocabulario clave
+      .sub.header
+        i.hand.pointer.icon.grayElement
+        span.grayElement Selecciona cada palabra para aprender más
+      br
+      .ui.stackable.two.column.grid
+        .ui.column
+          .keyTerm.ui.raised.segment.voiceover_keyTerm1
+            a.ui.blue.ribbon.label.keyTermLabel
+              span Fuente
+            span.hidden.part1.keyTermDefinition
+              | El sitio web, la organización o persona de donde proviene la información.
+        .ui.column
+          .keyTerm.ui.raised.segment.voiceover_keyTerm2
+            a.ui.blue.ribbon.label.keyTermLabel
+              span Fiable
+            span.hidden.part1.keyTermDefinition
+              | Creíble y confiable
+        .ui.column
+          .keyTerm.ui.raised.segment.voiceover_keyTerm3
+            a.ui.blue.ribbon.label.keyTermLabel
+              span fake news
+            span.hidden.part1.keyTermDefinition
+              | Una noticia que parece real, pero ha sido inventada.
+        .ui.column
+          .keyTerm.ui.raised.segment.voiceover_keyTerm4
+            a.ui.blue.ribbon.label.keyTermLabel
+              span Clickbait
+            span.hidden.part1.keyTermDefinition
+              | Un artículo que tiene un título atractivo para que la gente haga clic en él.
+
+    #question2.ui.segment.hidden
+      h3.ui.header
+        i.question.circle.outline.blue.icon
+        .content ¿Por qué existen las fake news
+          .sub.header
+            i.hand.pointer.icon
+            span Selecciona cada palabra para aprender más
+      //- .ui.segments
+      .ui.stackable.two.column.grid
+        .ui.column
+          .keyTerm.ui.raised.segment.voiceover_keyTerm5
+            a.ui.blue.ribbon.label.keyTermLabel
+                i.dollar.sign.icon
+                span Dinero
+            span.hidden.part2.keyTermDefinition
+              | Cada vez que alguien hace clic en un artículo de noticias,
+              | el sitio web genera más dinero. Por eso, los sitios web crean
+              | artículos de noticias que llaman la atención de la gente. No
+              | les importa si la información es cierta o no.
+        .ui.column
+          .keyTerm.ui.raised.segment.voiceover_keyTerm6
+            a.ui.blue.ribbon.label.keyTermLabel
+                i.magic.icon
+                span Influencia
+            span.hidden.part2.keyTermDefinition
+              | Otras veces, las personas escriben artículos engañosos para
+              | difundir sus creencias, presentando sus opiniones como hechos.
+      br
+    .ui.warning.message#clickNextWarning
+      .header
+       | ¡Dale clic a "Siguiente"!
+    .ui.warning.message#clickLabelsWarning
+     .header
+      | Dale clic a cada etiqueta para continuar
+    a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
+        .ui.labeled.icon.button
+            i.rocket.icon
+            |   Entendido
+
+
+block scripts
+  script.
+    var voiceoverMappings = {
+      '.showLearnSectionButton': {
+        "initialDelay": 700,
+        "delay": 1000,
+        "files": ['CUSML.5.1.1.mp3','CUSML.5.1.2.mp3']
+      },
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.5.2.1.mp3']
+      },
+      '.voiceover_keyTerm2': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.5.2.2.mp3']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.5.2.3.mp3']
+      },
+      '.voiceover_keyTerm4': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.5.2.4.mp3']
+      },
+      '.voiceover_keyTerm5': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.5.3.2.mp3']
+      },
+      '.voiceover_keyTerm6': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.5.3.3.mp3']
+      }
+    };
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/digital-literacy-esp/digital-literacy-esp_start.js")
+
+block styles
+  link(rel='stylesheet', href='/css/start.css')

@@ -13,6 +13,20 @@
       "prompt": "What kind of information is okay to share on your social media profile?"
     }
   },
+  "accounts-esp": {
+    "Q1": {
+      "type": "written",
+      "prompt": "¿Cuáles son algunas de las características de una contraseña segura?"
+    },
+    "Q2": {
+      "type": "written",
+      "prompt": "¿Por qué es importante elegir tu nombre de usuario cuidadosamente?"
+    },
+    "Q3": {
+      "type": "written",
+      "prompt": "¿Qué tipo de información está bien compartir en tu perfil de redes sociales?"
+    }
+  },
   "advancedlit": {
     "Q1": {
       "type": "checkbox",
@@ -29,7 +43,7 @@
       "correctResponses": {
         "0": "1",
         "1": "1",
-        "2": "1", 
+        "2": "1",
         "3": "0",
         "4": "1",
         "5": "0"

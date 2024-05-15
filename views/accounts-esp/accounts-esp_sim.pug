@@ -1,0 +1,69 @@
+extends ../ui_layout-esp
+
+block content
+
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+
+  .computer.only.tablet.only.four.wide.column
+  .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
+    .ui.one.column.centered.grid.feedbackMessagesGrid
+      .ui.fixed.bottom.sticky
+        .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header ¿Necesitas ayuda?
+            p ¡Dale clic a "Siguiente" para comenzar!
+        .ui.icon.compact.message.warning#removeHidden
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header ¿Necesitas ayuda?
+            p ¡Asegúrate de que estás haciendo clic en "Entendido" en los puntos azules!
+
+        .ui.icon.message.warning#clickAllDotsWarning
+          i.close.icon
+          i.hand.pointer.icon.float
+          .content
+            .ui.header ¡Todavía quedan puntas azules por encontrar!
+            p Haz clic en todos los puntos azules para seguir.
+    .ui.raised.segment#generalStep
+      h2.ui.header Crear una cuenta
+
+      .ui.form
+        .field
+          label.addFieldSpacingBottom Nombre de usuario
+          div#hint1
+          input.addFieldSpacingTop(readonly='' type="text" name='username' autocomplete='off')
+          .ui.warning.message#usernameWarning
+            .header Intenta crear un nombre de usuario
+        br
+        .field
+          label.addFieldSpacingBottom Contraseña
+          div#hint2
+          input.addFieldSpacingTop#customPasswordInput(readonly='' type="text" name="password" autocomplete='off')
+          //- https://stackoverflow.com/a/49304708
+        .ui.warning.message#passwordWarning
+          .header Intenta crear una contraseña
+
+      #passwordStrength.ui.indicating.small.progress(data-value='0' data-total='5')
+        .bar
+      h3#strengthLabel Nivel de seguridad de la contraseña
+      .ui.message.hidden#feedbackMessage
+        ul#feedbackSuggestion
+      .ui.message.warning.hidden#confirmContinueCheck
+        .ui.header
+          | Esta contraseña parece débil y fácil de adivinar, ¿está seguro de que deseas usarlo?
+
+    button.ui.big.labeled.icon.button.addBottomMargin.cybersim2#cyberTransButton
+        i.rocket.icon
+        |   Continuar!
+
+block scripts
+  script(src=cdn+'/js/lib/zxcvbn.js')
+  script(src="/module_js/accounts-esp/accounts-esp_sim.js")
+  script(src="/module_js/base_sim.js")
+  script(src="/module_js/voiceover.js")
+
+block styles
+  link(rel='stylesheet', href='/css/modules/accounts.css')

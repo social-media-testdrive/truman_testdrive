@@ -1,0 +1,117 @@
+extends ../ui_layout-esp
+
+block content
+
+  .ui.text.container.addBottomMargin
+    br
+    .ui.raised.segment
+      h3.ui.header
+        i.book.blue.icon
+        .content
+          | Aprender
+      hr
+      .ui.basic.segment.removePadding
+        .ui.mini.green.right.labeled.icon.button.showLearnSectionButton
+          i.down.arrow.icon
+          |   Siguiente
+      .ui.basic.segment.learnSegment.hidden
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | Antes de agregar a tus amigos en las redes sociales, necesitas
+            | crear una cuenta y añadir tu información básica en el perfil.
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            | Cuando creas una cuenta, asegúrate de eligir un nombre de usuario
+            | y contraseña adecuada para mantener tu cuenta segura y protegerte
+            | a ti y a tus amigos!
+
+        br
+        .ui.mini.green.right.labeled.icon.button.showKeyTermsButton
+          i.down.arrow.icon
+          |   Siguiente
+
+    .ui.segment.keyIdeasSegment.hidden
+      h3.ui.header
+        i.key.blue.icon
+        .content Vocabulario clave
+      .sub.header.grayElement
+        i.hand.pointer.icon
+        span  Dale clic a cada palabra para aprender mas
+      br
+      //- .ui.segments
+      .ui.stackable.two.column.grid
+        .ui.column
+          .keyTerm.ui.raised.segment.voiceover_keyTerm1
+            a.ui.blue.ribbon.label.keyTermLabel
+                //- i.dollar.sign.icon
+                span Usuario
+            span.hidden.keyTermDefinition
+              | El nombre o correo que utilizas al iniciar sesión.
+              ul
+                | Algunos sitios de redes sociales requieren que utilices tu correo
+                | electronico como nombre de usuario. Otros te piden que elijas un nuevo nombre.
+
+        .ui.column
+          .keyTerm.ui.raised.segment.voiceover_keyTerm2
+            a.ui.blue.ribbon.label.keyTermLabel
+                //- i.magic.icon
+                span Contraseña
+            span.hidden.keyTermDefinition
+              | Una cadena secreta de letras, símbolos y números que puedes usar para
+              | restringir el acceso a algún recurso digitall.
+              ul
+                | Imagina a tu contraseña como la llave de tu casa. Solo las
+                | personas que tengan la llave podrán entrar.
+        .ui.column
+          .keyTerm.ui.raised.segment.voiceover_keyTerm3
+            a.ui.blue.ribbon.label.keyTermLabel
+                //- i.magic.icon
+                span Perfil
+            span.hidden.keyTermDefinition
+              | Tu página personal en las redes sociales que contiene información sobre ti.
+              ul
+                | Tu perfil puede contener información como tu nombre, ubicación y
+                | imágenes que publicas o en las que está etiquetado.
+
+    .ui.warning.message#clickNextWarning
+      .header
+       | Clic "Siguiente"
+    .ui.warning.message#clickLabelsWarning
+     .header
+      | Dale clic a cada etiqueta para continuar
+    a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
+        .ui.labeled.icon.button
+            i.rocket.icon
+            |   ¡Entendido!
+
+block scripts
+  script.
+    var voiceoverMappings = {
+      '.showLearnSectionButton': {
+        "initialDelay": 700,
+        "delay": 500,
+        // "files": ['CUSML.8.1.1.mp3', 'CUSML.8.1.2.mp3']
+      },
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        // "files": ['CUSML.8.2.1.mp3']
+      },
+      '.voiceover_keyTerm2': {
+        "initialDelay": 700,
+        "delay": 0,
+        // "files": ['CUSML.8.2.2.mp3']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        // "files": ['CUSML.8.2.3.mp3']
+      }
+    };
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_start.js")
+
+block styles
+  link(rel='stylesheet', href='/css/start.css')

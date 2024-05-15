@@ -76,6 +76,63 @@
             "explanation": " \n<span class = 'inline bold green'>C is correct: Tom should not interact with someone he doesn't know on the internet, especially if they appear to be a  scammer. Reporting the account keeps him and other people safe.</span> \n \n<span class = 'inline bold'>A is incorrect:</span> This can cause Tom to lose his account and any information connected to him. \n \n<span class = 'inline bold'>B is incorrect:</span> Tom is still giving out his information. The other person could also give fake information. \n \n<span class = 'inline bold'>D is incorrect:</span> Tom is still giving out his information. The stranger could change it before Tom changes it. The stranger also will have access to his information and steal the account."
         }
     },
+    "accounts-esp": {
+        "Q1": {
+            "prompt": "¿Que es una \"contraseña\"?",
+            "radioLabels": {
+                "0": "El nombre o el correo que utilizas al iniciar la sesión.",
+                "1": "Tu perfil en las redes sociales que incluye información sobre ti.",
+                "2": "Tu nombre y tu fecha de nacimiento para iniciar sesión.",
+                "3": "Una cadena secreta de letras, símbolos y números que puedes usar para limitar quién tiene acceso a tus cuentas en una red o dispositivos.",
+                "4": "No lo sé"
+            },
+            "explanation": "D es correcta: Una cadena secreta de letras, símbolos y números que puedes usar para limitar quién tiene acceso a tus cuentas en una red o dispositivos. A es incorrecta: El usuario es el nombre o correo que utilizas al iniciar la sesión. B es incorrecta: El perfil es la página personal en las redes sociales que incluye información sobre ti. C es incorrecta: No deberías usar tu nombre o tu fecha de nacimiento como contraseña porque es fácil de adivinar."
+        },
+        "Q2": {
+            "prompt": "¿Qué es algo que no quieres en tu contraseña?",
+            "radioLabels": {
+                "0": "Tu nombre",
+                "1": "Caracteres especiales",
+                "2": "Números",
+                "3": "Letras mayúsculas",
+                "4": "No lo sé"
+            },
+            "explanation": "A es correcta: Tener tu nombre en tu contraseña hace que sea más fácil de adivinarla. B es incorrecta: Tener caracteres especiales en tu contraseña hace que sea más difícil de adivinar. C es incorrecta: Tener números en tu contraseña hace que sea más difícil de adivinar. D es incorrecta: Tener letras mayúsculas en tu contraseña hace que sea más difícil de adivinar."
+        },
+        "Q3": {
+            "prompt": "Selena está creando un usuario para un juego. Todos en el juego podrán verlo. ¿Cuál de la siguiente información es segura para incluir en su usuario?",
+            "radioLabels": {
+                "0": "Su nombre completo",
+                "1": "El nombre de su personaje favorito",
+                "2": "Los nombres de sus padres",
+                "3": "El nombre de su escuela",
+                "4": "No lo sé"
+            },
+            "explanation": "B es correcta: El nombre de su personaje favorito es algo común y dificulta que desconocidos la identifiquen. A es incorrecta: Tener su nombre completo no es seguro. Cualquiera en internet puede averiguar quién es ella. C es incorrecta: Tener los nombres de sus padres no es seguro ni para ella ni para sus padres, ya que cualquiera puede averiguar quiénes son. D es incorrecta: Tener el nombre de su escuela facilita saber su ubicación, su edad y su nombre."
+        },
+        "Q4": {
+            "prompt": "María tiene una cuenta en las redes sociales sobre BTS (banda musical). Alguien que no conoce le envía un mensaje y se ofrece a ayudarla a realizar nuevas publicaciones. ¿Qué debería hacer María?",
+            "radioLabels": {
+                "0": "¡Darle la información de su usuario y contraseña para que pueda iniciar sesión porque es un fan que quiere ayudar! ",
+                "1": "Dejarle saber que no buscas ayuda y que debería pedirle otra cuenta",
+                "2": "Hacerle prometer que no le harán nada malo a la cuenta",
+                "3": "Ignorar el mensaje y contarle a un adulto de confianza sobre la solicitud.",
+                "4": "No lo sé"
+            },
+            "explanation": "D es correcta: Ignorar el mensaje y contárselo a un adulto de confianza la mantendrá segura. Un adulto podrá manejar la situación de forma adecuada y evitará que interactúe con un extraño. A es incorrecta: Es posible que la persona ni siquiera sea fanático y simplemente quiera robar su cuenta y su información. B es incorrecta: Esto pone en riesgo otras cuentas. Además, iniciar una interacción con un extraño podría conducir a algo más peligroso. C es incorrecta: La promesa no significa nada, pues puede romperse fácilmente y robarle su cuenta e información."
+        },
+        "Q5": {
+            "prompt": "Gustavo juega League of Legends (juego en línea) y conoce a alguien. Él le promete poner elementos adicionales en su cuenta, pero para eso Gustavo solo necesita darle su usuario y contraseña para que pueda comprarle los elementos extra para el juego. ¿Qué debería hacer Gustavo?",
+            "radioLabels": {
+                "0": "Darle su nombre de usuario y contraseña.",
+                "1": "Preguntarle por su usuario y contraseña a cambio de la suya.",
+                "2": "Ignorarlo y reportar la cuenta.",
+                "3": "Darle el nombre de usuario y contraseña y luego cambiarla más tarde.",
+                "4": "No lo sé."
+            },
+            "explanation": "C es correcta: Gustavo no debe interactuar con alguien que no conoce en el internet, especialmente si parece ser un estafador. Reportar la cuenta lo mantiene a él y a otras personas a salvo. A es incorrecta: Esto puede hacer que Gustavo pierda su cuenta y cualquier información relacionada con él. B es incorrecta: De todas formas Gustavo le estaría dando su información y la otra persona podría mentirle. D es incorrecta: Aún así cambie su contraseña después es un riesgo, pues el desconocido igual podría tener acceso a su información y robarle la cuenta."
+        }
+    },
     "advancedlit": {
         "Q1": {
             "type": "radio",
@@ -447,6 +504,63 @@
             "explanation": " \n<span class = 'inline bold green'>A is correct: Lea should report the article because there are clear signs that it is fake news such as the fake website and the web address ending in 'com.co.' </span> \n \n<span class = 'inline bold'>B is incorrect:</span> The suspicious web address makes it clear that it is fake news, so Lea should not click into the article. \n \n<span class = 'inline bold'>C is incorrect:</span> You should not share a suspicious article on your social media accounts. You would potentially be sharing false information with your friends. \n \n<span class = 'inline bold'>D is incorrect:</span> Commenting on the article is not a good idea, as fake replies can be created. You should check other credible sites to fact-check instead."
         }
     },
+    "digital-literacy-esp": {
+        "Q1": {
+            "prompt": "Es importante comprobar la fuente, ya sea el sitio web, organización o persona que publicó el artículo.",
+            "radioLabels": {
+                "0": "Verdadero",
+                "1": "Falso",
+                "2": "No lo sé."
+            },
+            "explanation": "A es correcta: verificar la fuente es una buena manera de determinar la credibilidad o confiabilidad de un artículo."
+        },
+        "Q2": {
+            "prompt": "Si te encuentras con artículos que han demostrado ser fake news, ¿qué <span class = 'underline'>NO deberías hacer?",
+            "radioLabels": {
+                "0": "Reportarla",
+                "1": "Compartirla",
+                "2": "Ocultarla",
+                "3": "Rechazarla.",
+                "4": "No lo sé."
+            },
+            "explanation": "B es correcta: no debes compartir artículos que se han demostrado que tienen información falsa, ya que estarías difundiendo una fake news. A es incorrecta: debes reportar las fake news, ya que esto ayudará a que los administradores del sitio puedan revisarlo y potencialmente eliminarlo. C es incorrecta: debes denunciar las fake news, ya que eso puede ayudar a que sean borradas del sitio web. D es incorrecta: no te deben gustar las fake news, ya que esto podría impedir que el artículo deje de aparecer con tanta frecuencia en el sitio"
+        },
+        "Q3": {
+            "prompt": "¿Qué deberías hacer para comprobar si una noticia es confiable?",
+            "radioLabels": {
+                "0": "Compartir el artículo antes de leerlo.",
+                "1": "Leer el artículo e intentar verificar la información.",
+                "2": "Confiar en que el autor está diciendo la verdad",
+                "3": "Ignorar el artículo si crees que el autor está compartiendo información sesgada.",
+                "4": "No lo sé."
+            },
+            "explanation": "B es correcta: siempre es una buena idea verificar los artículos en sitios web de verificación de datos (por ejemplo, FactCheck.org) o sitios web de noticias importantes. A es incorrecta: no debes compartir artículos en tus cuentas de redes sociales antes de determinar si son confiables. C es incorrecta: no debes simplemente confiar en que los artículos sean creíbles. D es incorrecta: ignorar artículos que parezcan sesgados limitará tus fuentes de información, por lo que es mejor verificar la fuente y los hechos en lugar de simplemente ignorarlas."
+        },
+        "Q4": {
+            "prompt": "¿Cuál de las siguientes es una pista de que algo podría ser un clickbait??",
+            "radioLabels": {
+                "0": "Contiene citas confiables en el texto.",
+                "1": "Intenta sorprenderte usando un lenguaje como ¡\"No lo creerás\"!",
+                "2": "Es sobre una celebridad o algún tema popular.",
+                "3": "Ha sido escrito por un famoso periodista.",
+                "4": "No lo sé."
+            },
+            "explicación": "B es correcta: las fake news a menudo utilizan titulares e imágenes impactantes y exagerados para que hagas clic en ellos. A menudo, el titular intentará despertar tu curiosidad y atraerte. A es incorrecta: las fuentes confiables son creíbles y dignas de confianza, por lo que probablemente no se trate de un clickbait. C es incorrecta: no todos los artículos sobre celebridades o temas populares son clickbait. D es incorrecta: un artículo escrito por un periodista famoso no lo convierte automáticamente en un clickbait."
+        },
+        "Q5": {
+            "prompt": "Leslie quiere encontrar dietas en línea recomendadas por expertos para bajar de peso. Buscó en Facebook y encontró un artículo titulado \"Seis dietas sorprendentes que te ayudarán a perder 5 kilos en UNA semana, según expertos en salud del sitio web healthtips666.com.co\". ¿Qué le aconsejarías que hiciera?",
+
+
+            "radioLabels": {
+                "0": "Reportar el artículo, presenta señales de que es fake news.",
+                "1": "Hacer clic en el artículo y revisar si ha sido escrito por reales especialistas en salud.",
+                "2": "Compartir el artículo en Facebook y pedirle a sus amigos que lo vean",
+                "3": "Escribir un comentario para saber si alguien ha intentado alguna dieta.",
+                "4": "No lo sé."
+            },
+            "explanation": "A es correcta: Leslie debería denunciar el artículo porque hay signos claros de que se trata de una fake news, como por ejemplo, el sitio web es falso y la dirección web que termina en 'com.co'. B es incorrecta: la dirección web es sospechosa y deja claro que se trata de una fake news, por lo que Leslie no debería hacer clic en el artículo. C es incorrecta: no debes compartir un artículo sospechoso en tus cuentas de redes sociales. Potencialmente estarías compartiendo información falsa con tus amigos. D es incorrecta: Comentar el artículo no es una buena idea, ya que se pueden crear respuestas falsas. En su lugar, deberías consultar otros sitios creíbles para verificar los hechos."
+        }
+    },
     "esteem": {
         "Q1": {
             "type": "radio",
@@ -465,7 +579,7 @@
         },
         "Q2": {
             "type": "radio",
-            "prompt": "¿Cuál es un ejemplo de tener un buen equilibrio con los medios?",
+            "prompt": "¿Cuál es un ejemplo de tener un buen equilibrio con las redes sociales?",
             "radioLabels": {
                 "0": "Desconectarte de las redes y llamar a un amigo/a para ponerse al día",
                 "1": "Desconectarte de las redes y ir a jugar básquetbol",
@@ -476,7 +590,7 @@
             "responseRequirement": "any",
             "correctResponse": "3",
             "files": [""],
-            "explanation": " \n<span class = 'inline bold green'>D es correcta:</span> A es correcta: Desconectarte de las redes y llamar a tus amigos puede ayudarte a equilibrar el uso de los medios con otras actividades que disfrutas. B también es correcta: Jugar al básquetbol, además de ser una actividad divertida, puede ayudarte a tener un buen equilibrio con los medios, así no pases demasiado tiempo en las redes sociales. C también es correcta: Para no pasar demasiado tiempo en línea y para no crear un desequilibrio, es importante tener hobbies que no sean en línea."
+            "explanation": " \n<span class = 'inline bold green'>D es correcta:</span> A es correcta: Desconectarte de las redes y llamar a tus amigos puede ayudarte a equilibrar el uso de los medios con otras actividades que disfrutas. B también es correcta: Jugar al básquetbol, además de ser una actividad divertida, puede ayudarte a tener un buen equilibrio con las redes sociales, así no pases demasiado tiempo en las redes sociales. C también es correcta: Para no pasar demasiado tiempo en línea y para no crear un desequilibrio, es importante tener hobbies que no sean en línea."
         },
         "Q3": {
             "type": "radio",
@@ -523,7 +637,7 @@
             "files": [""],
             "explanation": " \n<span class = 'inline bold green'>B es correcta:</span> Permanecer en las redes sociales no es una buena idea, ya que puede generar más sensaciones de alerta roja.  \n<span class = 'inline bold'>A es incorrecta:</span> Pasar el rato con su familia puede ser una actividad agradable para Andrea y la puede ayudar a distraerse de los posts en Facebook.  \n<span class = 'inline bold'>C es incorrecta:</span> Salir a caminar es una buena idea, ya que puede resetear la mente de Andrea mientras hace una pausa de las redes sociales.  \n<span class = 'inline bold'>D es incorrecta:</span> Llamar su primo/a es una buena opción, ya que le permite descansar de las redes sociales y tener un buen equilibrio."
         }
-    },  
+    },
     "esteem-esp": {
         "Q1": {
             "type": "radio",
@@ -542,7 +656,7 @@
         },
         "Q2": {
             "type": "radio",
-            "prompt": "¿Cuál es un ejemplo de tener un buen equilibrio con los medios?",
+            "prompt": "¿Cuál es un ejemplo de tener un buen equilibrio con las redes sociales?",
             "radioLabels": {
                 "0": "Desconectarte de las redes y llamar a un amigo/a para ponerse al día",
                 "1": "Desconectarte de las redes y ir a jugar básquetbol",
@@ -553,7 +667,7 @@
             "responseRequirement": "any",
             "correctResponse": "3",
             "files": [""],
-            "explanation": "<span class = 'inline bold green'>D es correcta:</span> \n<span class = 'inline bold'>A es correcta:</span> Desconectarte de las redes y llamar a tus amigos puede ayudarte a equilibrar el uso de los medios con otras actividades que disfrutas. \n<span class = 'inline bold'>B también es correcta:</span> Jugar al básquetbol, además de ser una actividad divertida, puede ayudarte a tener un buen equilibrio con los medios, así no pases demasiado tiempo en las redes sociales. \n<span class = 'inline bold'>C también es correcta:</span> Para no pasar demasiado tiempo en línea y para no crear un desequilibrio, es importante tener hobbies que no sean en línea."
+            "explanation": "<span class = 'inline bold green'>D es correcta:</span> \n<span class = 'inline bold'>A es correcta:</span> Desconectarte de las redes y llamar a tus amigos puede ayudarte a equilibrar el uso de los medios con otras actividades que disfrutas. \n<span class = 'inline bold'>B también es correcta:</span> Jugar al básquetbol, además de ser una actividad divertida, puede ayudarte a tener un buen equilibrio con las redes sociales, así no pases demasiado tiempo en las redes sociales. \n<span class = 'inline bold'>C también es correcta:</span> Para no pasar demasiado tiempo en línea y para no crear un desequilibrio, es importante tener hobbies que no sean en línea."
         },
         "Q3": {
             "type": "radio",
@@ -600,7 +714,7 @@
             "files": [""],
             "explanation": "<span class = 'inline bold green'>B es correcta:</span> Permanecer en las redes sociales no es una buena idea, ya que puede generar más sensaciones de alerta roja.  \n<span class = 'inline bold'>A es incorrecta:</span> Pasar el rato con su familia puede ser una actividad agradable para Andrea y la puede ayudar a distraerse de los posts en Facebook.  \n<span class = 'inline bold'>C es incorrecta:</span> Salir a caminar es una buena idea, ya que puede resetear la mente de Andrea mientras hace una pausa de las redes sociales.  \n<span class = 'inline bold'>D es incorrecta:</span> Llamar su primo/a es una buena opción, ya que le permite descansar de las redes sociales y tener un buen equilibrio."
         }
-    }, 
+    },
     "habits": {
         "Q1": {
         "prompt": "¿Cuál de las siguientes opciones es una señal de que estás pasando demasiado tiempo usando las redes sociales?",
@@ -974,6 +1088,63 @@
             "correctResponse": "3",
             "files": [""],
             "explanation": " \n<span class = 'inline bold green'>D is correct: A trusted adult can help you choose if creating the account is a good idea for you or not. A trusted adult can also read the privacy policy clearly and see if there is anything wrong.</span> \n \n<span class = 'inline bold'>A is incorrect:</span> The chances that your information will be taken is higher than you think. A small risk is still a risk and you should think it through first. \n \n<span class = 'inline bold'>B is incorrect:</span> There is more information than what you input into it. Your email and your password is considered sensitive information. Your IP address could also be tracked. \n \n<span class = 'inline bold'>C is incorrect:</span> Your friend might not know the dangers of the whole situation. Asking a trusted adult is the best option for an opinion."
+        }
+    },
+    "privacy-esp": {
+        "Q1": {
+            "prompt": "¿Dónde puede cambiar qué información es visible para otros usuarios y empresas?",
+            "radioLabels": {
+                "0": "Mensaje directo",
+                "1": "Configuración de la privacidad",
+                "2": "En el perfil de un amigo",
+                "3": "No puedes",
+                "4": "No lo sé."
+            },
+            "explanation": "B es correcta: Puedes cambiar qué información es visible para otros usuarios y empresas en la configuración de privacidad. A es incorrecta: los mensajes directos son donde puedes hablar con tus amigos. En esa opción no puedes cambiar qué información es visible para otros usuarios y empresas. C es incorrecta: la página de tu amigo tiene su información visible. Solo tu amigo puede cambiar esa información. D es incorrecta: puedes cambiar qué información es visible en la configuración de privacidad."
+        },
+        "Q2": {
+            "prompt": "Jenifer está leyendo la política de privacidad de Instagram antes de crear una cuenta. ¿Qué debería preguntarse a sí misma al analizarlo?",
+            "radioLabels": {
+                "0": "¿A qué accederá o que información recopilará Instagram?",
+                "1": "¿Qué compartirá con otras empresas?",
+                "2": "¿Qué se podría saber de mí si uso Instagram?",
+                "3": "Todas las anteriores",
+                "4": "No lo sé."
+            },
+            "explanation": "D es correcta: A, B y C son parte del acrónimo ASK que se utiliza al analizar una política de privacidad. Estas preguntas ayudarían a Jenifer a pensar sobre lo que la empresa accederá o recopilará, lo que se compartirá con otras empresas y lo que se podría saber sobre ella si crea una cuenta."
+        },
+        "Q3": {
+            "prompt": "El hermano de Isabel publicó una foto de ella y la etiquetó. Ella no quiere que sus amigos vean esa foto cuando van a su perfil. ¿Qué debe hacer Isabel?",
+            "radioLabels": {
+                "0": "Decirle a sus amigos que no vean la foto etiquetada.",
+                "1": "Editar la configuración de la privacidad para que la foto no se muestre en su perfil.",
+                "2": "Eliminar su cuenta.",
+                "3": "Pedirle a su hermano que no vuelva a poner una foto de ella",
+                "4": "No lo sé."
+            },
+            "explanation": "B es correcta: Isabel puede cambiar qué información es visible para los demás editando la configuración de la privacidad. A es incorrecta: esto no tendrá ningún efecto sobre quién verá las imágenes. Sus amigos todavía pueden ir a su perfil y ver las fotos. C es incorrecta: esta es una medida dramática para algo que se puede cambiar fácilmente en la configuración de la privacidad. D es incorrecta: si a Isabel solo le preocupa que sus amigos vean las imágenes, puede resolver el problema cambiando su configuración de la privacidad."
+        },
+        "Q4": {
+            "prompt": "Jaime tiene una cuenta privada en las redes sociales para amigos y familiares. Alguien a quien no conoce solicita seguirlo y le envía un mensaje tratando de conversar con él. ¿Qué debería hacer él?",
+            "radioLabels": {
+                "0": "Eliminar el mensaje, pero aceptar la solicitud",
+                "1": "Darle follow a la persona y contestar el mensaje.",
+                "2": "No aceptar la solicitud y decirle a un adulto de confianza.",
+                "3": "Responderle y preguntarle quién es",
+                "4": "No lo sé."
+            },
+            "explanation": "C es correcta: no se debe interactuar con un desconocido porque podría ser peligroso. Decírselo a un adulto de confianza lo mantendrá a salvo, pues el adulto puede tomar las medidas correspondientes. A es incorrecta: aceptar la solicitud le dará al desconocido acceso a sus publicaciones e información, lo cual no es seguro. B es incorrecta: no es seguro interactuar con desconocidos. D es incorrecta: no es seguro interactuar con desconocidos."
+        },
+        "Q5": {
+            "prompt": "Tu amigo te pide que te unas a una nueva red social para que puedan conversar. Revisas la política de privacidad y lees que podrían vender tu información a cualquier persona y no son responsables de ninguna consecuencia. ¿Qué deberías hacer?",
+            "radioLabels": {
+                "0": "Crearme la cuenta de todos modos. ¿Cuáles son las posibilidades de que mi información sea tomada?",
+                "1": "Crearme la cuenta, pero sin poner información personal sobre mi.",
+                "2": "Preguntarle a mi amigo sobre eso",
+                "3": "Preguntarle a un adulto de confianza antes de crearme la cuenta",
+                "4": "No lo sé."
+            },
+            "explanation": "D es correcta: un adulto de confianza puede ayudarte a elegir si crear la cuenta es una buena idea para ti o no. Un adulto de confianza también puede leer claramente la política de privacidad y ver si hay algún problema. A es incorrecta: las posibilidades de que se roben tu información son más altas de lo que piensas. Un pequeño riesgo sigue siendo un riesgo y debes pensarlo bien primero. B es incorrecta: hay más información de la que ingresaste. Tu correo electrónico y contraseña se consideran como información confidencial. Tu dirección IP también podría ser rastreada. C es incorrecta: es posible que tu amigo no conozca los peligros de toda la situación. Preguntar a un adulto de confianza es la mejor opción para obtener una opinión."
         }
     },
     "safe-posting": {

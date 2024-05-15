@@ -1,0 +1,426 @@
+extends ../ui_layout-esp
+
+block content
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+
+  .ui.container.resultsAddBottomMargin
+    .ui.stackable.column.grid
+      .ui.column
+        .insertPrint
+        .ui.raised.segment.reflectionTopSegment
+          h3.ui.header
+            i.question.blue.icon
+            .content
+              | Reflexionar
+
+          .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection1
+            i.down.arrow.icon
+            |   Comenzar
+          .ui.basic.segment.reflectionPromptSegment.hidden.noPadding.selectPostsQuestion1
+            .ui.label.resultsPromptLabel
+              h4
+                i.exclamation.triangle.icon.yellowIcon
+                | Estas fueron los post de noticias FALSAS que se mostraron en el feed ¿Cuántos notaste?
+            h3.grayElement
+              i.hand.pointer.icon
+              | Dale clic en los que notaste!
+            .ui.stackable.three.cards.selectablePosts
+
+              .ui.fluid.card.dim()#card1
+                .content
+                  .right.floated.meta Hace 20 minutos
+                  a(href='/user/zoe.g._')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user70.JPG')
+                    span Rosa Soto
+                .img.post
+                  img.transition.visible(src=cdn+'/post_pictures/fakenews1.png', data-src='/fakenews1.png')
+                .read.rounded.right.floated.info_button(data-info_text="Real facts.com is THE news source for you. Learn about everything that's going on everywhere in real time. You can trust us!")
+                  i.info.icon
+                .content
+                  .description.
+                    Noticia de último minuto: La edad para conducir acaba de reducirse a 12 años.
+                    El centro de emisión de licencias está inundado de citas para exámenes de manejo
+                    y las compañías automotrices no pueden mantener sus últimos modelos fuera de la pista.
+
+
+              .ui.fluid.card.dim()#card2
+                .content
+                  .right.floated.meta Hace 30 minutos
+                  a(href='/user/k.r.h345')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user15.jpg')
+                    span Luis Alberto Torres
+                .img.post
+                  img.transition.visible(src=cdn+'/post_pictures/fakenews2.png', data-src='/fakenews2.png')
+                .read.rounded.right.floated.info_button(data-info_text="ScienceTruth is everyone's favorite and reliable source for science facts.")
+                  i.info.icon
+                .content
+                  .description.
+                    ¿Antojo de una dona? ¡Piénsalo dos veces! Los científicos descubrieron
+                    que las donas son la principal causa de cáncer en los niños pequeños 😳
+
+
+              .ui.fluid.card.dim()#card3
+                .content
+                  .right.floated.meta Hace una hora
+                  a(href='')
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/user55.jpg')
+                    span Ana Laura Gonzáles
+                .img.post
+                  img.transition.visible(src=cdn+'/post_pictures/fakenews3.png', data-src='/fakenews3.png')
+                .read.rounded.right.floated.info_button(data-info_text="No Information Found !")
+                  i.info.icon
+                .content
+                  .description.
+                    ¡Nunca adivinarás lo que son!!!
+        .ui.basic.segment.noPadding.hidden.reflectionTopSegment
+          .ui.raised.segment
+            .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection2
+              i.down.arrow.icon
+              |   Siguiente
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden.selectPostsQuestion2
+              .ui.label.resultsPromptLabel
+                h4
+                  i.exclamation.triangle.icon.yellowIcon
+                  | Estos fueron los posts de noticias REALES en el feed. ¿Cuántos notaste?
+              h3.grayElement
+                i.hand.pointer.icon
+                | Dale clic en los que notaste!
+              .ui.stackable.three.cards.selectablePosts
+
+                .ui.fluid.card.dim()#card4
+                  .content
+                    .right.floated.meta Hace 20 minutos
+                    a(href='/user/slimebygabby')
+                      img.ui.avatar.image(src=cdn+'/profile_pictures/user72.jpg')
+                      span Gabriela Muñoz
+                  .img.post
+                    img.transition.visible(src=cdn+'/post_pictures/realnews2.png', data-src='/realnews2.png')
+                  .read.rounded.right.floated.info_button(data-info_text="Cable News Network (CNN) is an American news-based pay television channel owned by WarnerMedia News &amp; Sports, a division of AT&amp;T's WarnerMedia. CNN was founded in 1980 by American media proprietor Ted Turner as a 24-hour cable news channel.")
+                    i.info.icon
+                  .content
+                    .description.
+                      El ID Buggy de Volkswagen, un concepto de buggy eléctrico para las dunas,
+                      fue una presencia llamativa en el Salón Internacional del Automóvil de
+                      Ginebra de esta semana. Sin embargo, lo más sorprendente de esto es que
+                      VW podría ponerlo en producción.
+
+                .ui.fluid.card.dim()#card5
+                  .content
+                    .right.floated.meta Hace 30 minutos
+                    a(href='/user/cloe.htt')
+                      img.ui.avatar.image(src=cdn+'/profile_pictures/user3.jpg')
+                      span Carolina Jara
+                  .img.post
+                    img.transition.visible(src=cdn+'/post_pictures/realnews1.png', data-src='/realnews1.png')
+                  .read.rounded.right.floated.info_button(data-info_text="Weill Cornell Medicine is the biomedical research unit and medical school of Cornell University, a private Ivy League university. The medical college is located at 1300 York Avenue, on the Upper East Side of Manhattan in New York City, along with the Weill Cornell Graduate School of Medical Sciences.", )
+                    i.info.icon
+                  .content
+                    .description.
+                      De acuerdo con un cuerpo de investigación acumulado por el Dr. Cantley
+                      y su equipo en Weill Cornell Medicine, el exceso de azúcar también ayuda
+                      a que muchos tipos de cáncer crezcan más rápidamente.
+
+                .ui.fluid.card.dim()#card6
+                  .content
+                    .right.floated.meta Hace una hora
+                    a(href='/user/Suzieee')
+                      img.ui.avatar.image(src=cdn+'/profile_pictures/user40.jpg')
+                      span Susana Tapia
+                  .img.post
+                    img.transition.visible(src=cdn+'/post_pictures/realnews3.png', data-src='/realnews3.png')
+                  .read.rounded.right.floated.info_button(data-info_text="The Washington Post (sometimes abbreviated as WaPo) is a major American daily newspaper published in Washington, D.C., with a particular emphasis on national politics and the federal government. It has the largest circulation in the Washington metropolitan area.")
+                    i.info.icon
+                  .content
+                    .description.
+                      Noticia de ultimo minuto: Plantean el ingreso libre a las universidad
+                      públicas y privadas. Se ha anunciado un proyecto por parte del presidente
+
+
+        .ui.basic.segment.noPadding.hidden.reflectionTopSegment
+          .ui.raised.segment
+            .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection3
+              i.down.arrow.icon
+              | Siguiente
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden
+              .ui.label.resultsPromptLabel
+                h4.reflectionCheckboxesPrompt(data-questionNumber='Q1')
+                  | #{reflectionData['digital-literacy'].Q1.prompt}
+
+              .ui.stackable.two.cards.checkOne
+
+                .ui.fluid.card.dim()#card1
+                  .content
+                    .right.floated.meta Hace 20 minutos
+                    a(href='/user/zoe.g._')
+                      img.ui.avatar.image(src=cdn+'/profile_pictures/user70.JPG')
+                      span Rosa Soto
+                  .img.post
+                    img.transition.visible(src=cdn+reflectionData['digital-literacy'].Q1.groupPostImages[0], data-src='/fakenews1.png')
+                  .read.rounded.right.floated.info_button(data-info_text="Real facts.com is THE news source for you. Learn about everything that's going on everywhere in real time. You can trust us!")
+                    i.info.icon
+                  .content
+                    .description
+                      | #{reflectionData['digital-literacy'].Q1.groupPostDescriptions[0]}
+
+                .ui.fluid.card.dim()
+                  .content
+                    .ui.form
+                      br
+                      .inline.fields
+                        label(for='clickbait', name='clickbait')
+                        .field
+                          .ui.checkbox
+                            input(type='checkbox')
+                            label(for='clickbait', tabindex='0')
+                              | #{reflectionData['digital-literacy'].Q1.checkboxLabels[0]}
+                    .ui.form
+                      .inline.fields
+                        label(for='mistakes', name='mistakes')
+                        .field
+                          .ui.checkbox
+                            input(type='checkbox')
+                            label(for='mistakes', tabindex='0')
+                              | #{reflectionData['digital-literacy'].Q1.checkboxLabels[1]}
+                    .ui.form
+                      .inline.fields
+                        label(for='suspicious', name='suspicious')
+                        .field
+                          .ui.checkbox
+                            input(type='checkbox')
+                            label(for='suspicious', tabindex='0')
+                              | #{reflectionData['digital-literacy'].Q1.checkboxLabels[2]}
+
+              .ui.stackable.two.cards.checkTwo
+
+                .ui.fluid.card.dim()#card2
+                  .content
+                    .right.floated.meta Hace 30 minutos
+                    a(href='/user/k.r.h345')
+                      img.ui.avatar.image(src=cdn+'/profile_pictures/user15.jpg')
+                      span Luis Alberto Torres
+                  .img.post
+                    img.transition.visible(src=cdn+reflectionData['digital-literacy'].Q1.groupPostImages[1], data-src='/fakenews2.png')
+                  .read.rounded.right.floated.info_button(data-info_text="ScienceTruth is everyone's favorite and reliable source for science facts.")
+                    i.info.icon
+                  .content
+                    .description
+                      | #{reflectionData['digital-literacy'].Q1.groupPostDescriptions[1]}
+
+                .ui.fluid.card.dim()
+                  .content
+                    .ui.form
+                      br
+                      .inline.fields
+                        label(for='clickbait', name='clickbait')
+                        .field
+                          .ui.checkbox
+                            input(type='checkbox')
+                            label(for='clickbait', tabindex='0')
+                              | #{reflectionData['digital-literacy'].Q1.checkboxLabels[0]}
+                    .ui.form
+                      .inline.fields
+                        label(for='mistakes', name='mistakes')
+                        .field
+                          .ui.checkbox
+                            input(type='checkbox')
+                            label(for='mistakes', tabindex='0')
+                              | #{reflectionData['digital-literacy'].Q1.checkboxLabels[1]}
+                    .ui.form
+                      .inline.fields
+                        label(for='suspicious', name='suspicious')
+                        .field
+                          .ui.checkbox
+                            input(type='checkbox')
+                            label(for='suspicious', tabindex='0')
+                              | #{reflectionData['digital-literacy'].Q1.checkboxLabels[2]}
+
+              .ui.stackable.two.cards.checkThree
+
+                .ui.fluid.card.dim()#card3
+                  .content
+                    .right.floated.meta Hace una hora
+                    a(href='')
+                      img.ui.avatar.image(src=cdn+'/profile_pictures/user55.jpg')
+                      span Ana Laura Gonzáles
+                  .img.post
+                    img.transition.visible(src=cdn+reflectionData['digital-literacy'].Q1.groupPostImages[2], data-src='/fakenews3.png')
+                  .read.rounded.right.floated.info_button(data-info_text="No Information Found !")
+                    i.info.icon
+                  .content
+                    .description
+                      | #{reflectionData['digital-literacy'].Q1.groupPostDescriptions[2]}
+
+                .ui.fluid.card.dim()
+                  .content
+                    .ui.form
+                      br
+                      .inline.fields
+                        label(for='clickbait', name='clickbait')
+                        .field
+                          .ui.checkbox
+                            input(type='checkbox')
+                            label(for='clickbait', tabindex='0')
+                              | #{reflectionData['digital-literacy'].Q1.checkboxLabels[0]}
+                    .ui.form
+                      .inline.fields
+                        label(for='mistakes', name='mistakes')
+                        .field
+                          .ui.checkbox
+                            input(type='checkbox')
+                            label(for='mistakes', tabindex='0')
+                              | #{reflectionData['digital-literacy'].Q1.checkboxLabels[1]}
+                    .ui.form
+                      .inline.fields
+                        label(for='suspicious', name='suspicious')
+                        .field
+                          .ui.checkbox
+                            input(type='checkbox')
+                            label(for='suspicious',tabindex='0')
+                               | #{reflectionData['digital-literacy'].Q1.checkboxLabels[2]}
+
+
+        .ui.basic.segment.noPadding.hidden.reflectionTopSegment
+          .ui.raised.segment
+            .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection4
+              i.down.arrow.icon
+              |   Siguiente
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden
+              .ui.label.resultsPromptLabel
+                h4.reflectionCheckboxesPrompt(data-questionNumber='Q2')
+                  | #{reflectionData['digital-literacy'].Q2.prompt}
+              .content.checkFour
+                .ui.form
+                  br
+                  .inline.fields
+                    label(for='wouldRead', name='wouldRead')
+                    .field
+                      .ui.checkbox
+                        input(type='checkbox')
+                        label(for='wouldRead', tabindex='0')
+                          | #{reflectionData['digital-literacy'].Q2.checkboxLabels[0]}
+                .ui.form
+                  .inline.fields
+                    label(for='checkSource', name='checkSource')
+                    .field
+                      .ui.checkbox
+                        input(type='checkbox')
+                        label(for='checkSource', tabindex='0')
+                          | #{reflectionData['digital-literacy'].Q2.checkboxLabels[1]}
+                .ui.form
+                  .inline.fields
+                    label(for='corroboration', name='corroboration')
+                    .field
+                      .ui.checkbox
+                        input(type='checkbox')
+                        label(for='corroboration', tabindex='0')
+                          | #{reflectionData['digital-literacy'].Q2.checkboxLabels[2]}
+
+        .ui.basic.segment.noPadding.hidden.reflectionTopSegment
+          .ui.raised.segment
+            .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection5
+              i.down.arrow.icon
+              |   Siguiente
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden
+              .ui.label.resultsPromptLabel
+                h4.reflectionPrompt(data-questionNumber='Q3')
+                  | #{reflectionData['digital-literacy'].Q3.prompt}
+              .ui.form
+                .inline.fields
+                  label
+                  textarea.glowing-border(rows='2' id="literacy_responseOne")
+
+        .ui.basic.segment.noPadding.hidden.reflectionTopSegment
+          .ui.raised.segment
+            .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection6
+              i.down.arrow.icon
+              |   Siguiente
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden
+              .ui.label.resultsPromptLabel
+                h4.reflectionPrompt(data-questionNumber='Q4')
+                  | #{reflectionData['digital-literacy'].Q4.prompt}
+              .ui.form
+                .inline.fields
+                  label
+                  textarea.glowing-border(rows='2' id="literacy_responseTwo")
+
+        .ui.basic.segment.noPadding.hidden.reflectionTopSegment
+          .ui.raised.segment
+            .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection7
+              i.down.arrow.icon
+              |   Siguiente
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden
+              .ui.label.resultsPromptLabel
+                h4.reflectionPrompt(data-questionNumber='Q5')
+                  | #{reflectionData['digital-literacy'].Q5.prompt}
+              .ui.form
+                .inline.fields
+                  label
+                  textarea.glowing-border(rows='2' id="literacy_responseThree")
+
+    .ui.warning.message.hidden.startPromptsWarning
+      .header
+        | Dale clic a "Comenzar"
+    .ui.warning.message.hidden.openAllPromptsWarning
+      .header
+        | Dale clic a "Siguiente"
+    //- include ../partials/optInToShareActivityData.pug
+    br
+    .ui.big.labeled.icon.button.results_print(onclick="onPrint()")
+          i.right.arrow.icon
+          |   Imprimir tus respuestas
+    br
+    br
+    .ui.big.labeled.icon.button.resultsContinueButton
+          i.rocket.icon
+          |   Continuar
+
+
+block scripts
+  script.
+    var voiceoverMappings = {
+      '.voiceover_reflection1': {
+        "initialDelay": 0,
+        "delay": 0,
+        // // "files": ['CUSML.5.9.1.mp3']
+      },
+      '.voiceover_reflection2': {
+        "initialDelay": 500,
+        "delay": 0,
+        // "files": ['CUSML.5.9.2.mp3']
+      },
+      '.voiceover_reflection3': {
+        "initialDelay": 500,
+        "delay": 0,
+        // "files": ['CUSML.5.9.3.mp3']
+      },
+      '.voiceover_reflection4': {
+        "initialDelay": 500,
+        "delay": 0,
+        // "files": ['CUSML.5.9.4.mp3']
+      },
+      '.voiceover_reflection5': {
+        "initialDelay": 500,
+        "delay": 0,
+        // "files": ['CUSML.5.9.5.mp3']
+      },
+      '.voiceover_reflection6': {
+        "initialDelay": 500,
+        "delay": 0,
+        // "files": ['CUSML.5.9.6.mp3']
+      },
+      '.voiceover_reflection7': {
+        "initialDelay": 500,
+        "delay": 0,
+        // "files": ['CUSML.misc_01.mp3']
+      }
+    };
+  script(src="/module_js/digital-literacy-esp/digital-literacy-esp_results.js")
+  script(src='/module_js/base_results.js?v=1')
+  script(src='/module_js/voiceover.js')
+
+block styles
+  link(rel='stylesheet', href='/css/modules/digital-literacy.css')
+  link(rel='stylesheet', href='/css/results.css')
+  link(rel='stylesheet', href='/css/optInToShareActivityData.css')
+
+

@@ -1,0 +1,335 @@
+extends ../ui_layout-esp
+
+block content
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  .computer.only.tablet.only.four.wide.column
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
+    .ui.one.column.centered.grid.feedbackMessagesGrid
+      .ui.fixed.bottom.sticky
+        .ui.icon.compact.message.warning.hidden#clickNextHelpMessage
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header ¿Necesitas ayuda?
+            p Sube y dale clic a "Siguiente" para comenzar!
+        .ui.icon.compact.message.warning.hidden#removeHidden
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header ¿Necesitas ayuda?
+            p ¡Asegúrate de que estás haciendo clic en "Entendido" en los puntos azules!
+        .ui.icon.message.warning.hidden#clickAllDotsWarning
+          i.close.icon
+          i.hand.pointer.icon.float
+          .content
+            .ui.header Todavía quedan puntos azules por encontrar!
+            p Haz clic en todos los puntos azules para seguir.
+        .ui.message.warning.hidden#clickArticleLinkWarning
+          i.close.icon
+          .content
+            .ui.header Haz clic en algún artículo antes de continuar.
+
+    //-####################### First Post
+    #step1.ui.fluid.card.dim()
+      .ui.dimmer.flag
+        .content
+          .center
+            h2.ui.inverted.icon.header
+              i.red.flag.icon
+              | ¡Has reportado esto!
+              h3.ui.inverted.header
+                span
+                  | Los administradores de TestDrive van a revisar el post luego.
+      .content
+        .right.floated.meta= "Ayer"
+        a(href='#')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user21.jpg')
+          span='Thiago Fernández'
+      .img.post
+        img(src=cdn+'/post_pictures/infolitguided1.png')
+
+      .content.newsArticleTitleContainer#hint1
+        .read.rounded.right.floated.info_button(id="info_guide_1")
+          i.info.icon
+        a.articleLink
+          | WASHINGTON-POSST.COM.CO &nbsp; &nbsp;
+        .header#hint2
+          | ¡Los 15 alimentos más PELIGROSOS que causarían un ataque al corazón!
+      .extra.content
+        p
+        .description="¡Nunca adivinarás lo que son!"
+      .four.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          | Responder
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          | Reportar
+        .ui.share.button(tabindex='0')
+          i.share.icon
+          | Compartir
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            | Like
+          a.ui.basic.red.left.pointing.label.count 2
+      .content
+        .ui.comments
+          .comment(commentid='5bbd01d88a48061a73337b96')
+            a.avatar
+              img(src=cdn+'/profile_pictures/user66.jpeg')
+            .content
+              a.author Florencia Pérez
+              .metadata
+                span.date Ayer
+                .rating
+                  i.heart.icon
+                  span.num=1
+                  |  Likes
+              .text OMG esto da tanto miedo
+              .actions
+                a.like.comment Like
+                a.flag.comment Reportar
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+ user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+
+    //-####################### Second Post
+    .ui.fluid.card.dim()
+      .ui.dimmer.flag
+        .content
+          .center
+            h2.ui.inverted.icon.header
+              i.red.flag.icon
+              | ¡Has reportado esto!
+              h3.ui.inverted.header
+                span
+                  | Los administradores de TestDrive van a revisar el post luego.
+      .content
+        .right.floated.meta= "ayer"
+        a(href='#')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user54.jpg')
+          span='María Teresa Hernandez'
+      .img.post
+        img(src=cdn+'/post_pictures/infolitguided2.png')
+      .content.newsArticleTitleContainer
+        .read.rounded.right.floated.info_button(id="info_guide_2")
+          i.info.icon
+        a.articleLink#article1
+          | WWW.NYTIMES.COM
+        .header La migración masiva de la mariposa monarca
+      .extra.content
+        p
+        .description="Se sabe que las mariposas naranjas, llamadas damas pintadas, viajan anualmente desde los desiertos del sur de California hasta el noroeste del Pacífico."
+      .four.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          | Responder
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          | Reportar
+        .ui.share.button(tabindex='0')
+          i.share.icon
+          | Compartir
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            | Like
+          a.ui.basic.red.left.pointing.label.count 2
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user24.jpg')
+            .content
+              a.author Milagros Cardenas
+              .metadata
+                span.date Ayer
+                .rating
+                  i.heart.icon
+                  span.num=1
+                  |  Likes
+              .text Tan hermosal🦋😍
+              .actions
+                a.like.comment Like
+                a.flag.comment Reportar
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+
+    //-####################### Third Post
+    .ui.fluid.card.dim()
+      .ui.dimmer.flag
+        .content
+          .center
+            h2.ui.inverted.icon.header
+              i.red.flag.icon
+              | ¡Has reportado esto!
+              h3.ui.inverted.header
+                span Los administradores de TestDrive van a revisar el post luego.
+      .content
+        .right.floated.meta= "ayer"
+        a(href='#')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user33.jpg')
+          span='Paulo Silva'
+      .img.post
+        img(src=cdn+'/post_pictures/infolitguided4.jpg')
+      .content.newsArticleTitleContainer
+        .read.rounded.right.floated.info_button(id="info_guide_4")
+          i.info.icon
+        a.articleLink#article1
+          | CNN-LOCAL8.COM.CO &nbsp; &nbsp;
+        a#hint3(href='#')
+        .header Se incendia la casa de un adolescente en Missouri después de que un fidget spinner se prendiera en fuego
+      .extra.content
+        p
+        .description="La policía recibió una llamada de emergencia de Jonathan Escudero, de 13 años, de Kansas, ayer por la noche. Los informes dicen que el fidget spinner del adolescente fue lo que inició el fuego."
+      .four.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          | Responder
+        .ui.flag.button#hint4(tabindex='0')
+          i.flag.icon
+          | Reportar
+        .ui.share.button(tabindex='0')
+          i.share.icon
+          | Compartir
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            | Like
+          a.ui.basic.red.left.pointing.label.count 2
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user74.jpg')
+            .content
+              a.author Santino Gómez
+              .metadata
+                span.date Ayer
+                .rating
+                  i.heart.icon
+                  span.num=1
+                  |  Likes
+              .text OPD!! no puedo creer que eso realmente pasó!!
+              .actions
+                a.like.comment Like
+                a.flag.comment Reportar
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Write a Comment')
+          i.big.send.link.icon
+
+    .ui.warning.message#clickAllDotsWarning
+      .header
+        | Haz clic en todos los puntos azules para seguir
+    button.ui.big.labeled.icon.button.cybertrans.addBottomMargin#cyberTransButton
+      i.rocket.icon
+      |   Continuar!
+
+    //- Info Lit Flag Modal
+    .ui.small.info.flag.modal(data-modalName="digital-literacy_flagModal")
+      i.close.icon
+      .header ¡Has reportado este artículo! ¿Hay alguna señal que identifica esta noticia como falsa?? [puedes elegir varias opciones]
+      .content
+        .ui.form
+          .inline.field
+            .ui.checkbox
+              input(type='checkbox')
+              label El artículo tiene un titular impactante y exagerado.
+          .inline.field
+            .ui.checkbox
+              input(type='checkbox')
+              label El artículo cuenta con imágenes sensacionalistas.
+          .inline.field
+            .ui.checkbox
+              input(type='checkbox')
+              label El artículo cuenta con una dirección web o nombre extraño.
+          .inline.field
+            .ui.checkbox
+              input(type='checkbox')
+              label.
+                El artículo cuenta con errores de ortografía, de mayúsculas o puntuación!!!!
+          .inline.field
+            .ui.checkbox
+              input(type='checkbox')
+              label.
+                No veo ninguna señal. Este puede ser un artículo confiable. Lo estoy marcando por otra razón
+
+      .actions
+        .ui.positive.right.labeled.icon.button
+          | Enviar
+          i.checkmark.icon
+    //- View Next Steps Modal
+    .ui.small.modal#next_steps(data-modalName="digital-literacy_articleModal")
+      i.close.icon
+      .header Haz hecho clic en este artículo! Vamos a explorar algunas cosas que puedes hacer luego.”
+      .content
+        .ui.styled.fluid.accordion
+          .title.modalDropdown#dropdown1
+            i.dropdown.icon
+            | Lee el artículo completo
+          .content
+            p.
+              Atento a las insólitas afirmaciones o imágenes fuertes. Además, revisa si hay errores ortográficos o gramaticales.
+          .title.modalDropdown#dropdown2
+            i.dropdown.icon
+            | Revisa de que página web es el artículo
+          .content
+            p.
+              Si el sitio web no forma parte de una organización gubernamental, académica o de noticias creíble, podría ser una señal de que el artículo no sea confiable.
+          .title.modalDropdown#dropdown3
+            i.dropdown.icon
+            | Verifique los datos del artículo buscando el tema en Portalcheck,org, FactCheck.org o los principales sitios web de noticias.”
+          .content
+            p.
+              La corroboración de otras fuentes que confirmen o respalden un artículo es una señal de que la información es creíble.
+          .title.modalDropdown#dropdown4
+            i.dropdown.icon
+            | Ten cuidado con lo que compartes.
+          .content
+            p.
+              Es fácil dar me gusta o compartir algo rápidamente, ¡pero podrías estar difundiendo fake news! Recuerda dar me gusta o compartir solo artículos que sepas que son verdaderos.
+
+      .actions
+        .ui.positive.right.labeled.icon.button
+          | Listo
+          i.checkmark.icon
+
+    //- View Post Info Modal
+    .ui.small.modal#info_modal(data-modalName="digital-literacy_infoModal")
+      i.close.icon
+      h3.ui.header
+        i.info.circle.icon
+        | Información sobre la fuente
+      .content
+        .field
+          h3.ui.header#post_info_body
+            |  El New York Times (a veces abreviado como NYT y NYTimes) es un periódico estadounidense con sede en la ciudad de Nueva York con influencia y lectores en todo el mundo. Fue fundado en 1851 y  ha ganado 125 premios Pulitzer, más que cualquier otro periódico. El Times ocupa el puesto 17 en el mundo por circulación y el 2 en los Estados Unidos.
+
+      .actions
+        .ui.positive.right.labeled.icon.button
+          | Listo
+          i.checkmark.icon
+
+
+block scripts
+
+  script(src='/module_js/voiceover.js')
+  script(src='/module_js/base_sim_extraData.js')
+  script(src='/postFunctionalities.js')
+  script(src="/module_js/digital-literacy-esp/digital-literacy-esp_sim.js")
+  script(src="/module_js/base_sim.js")
+
+block styles
+  link(rel='stylesheet', href='/css/modules/digital-literacy.css')
+  link(rel='stylesheet', href='/css/sim.css')

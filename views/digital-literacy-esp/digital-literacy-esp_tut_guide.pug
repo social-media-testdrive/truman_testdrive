@@ -1,0 +1,95 @@
+extends ../ui_layout-esp
+
+block content
+
+  .ui.text.container.addBottomMargin
+    br
+
+    h2.ui.header
+      .content
+        | Cuando veas una noticia en las redes sociales, ¡comprueba que sea confiable!
+        | Aquí hay algunas preguntas importantes que puedes tomar en cuenta:
+        .sub.header
+          br
+          .ui.compact.segment
+            .ui.large.read-only.checked.checkbox.exampleCheckbox
+              input.ui(type="checkbox" id="" checked="")
+              label Lee y haz check en las opciones que aparecen a continuación
+          br
+
+    .ui.styled.fluid.accordion
+      #point1.title(data-voiceoverIndex='voiceover_tut_guide_1')
+        i.dropdown.icon
+        | Analiza la fuente. Pregúntate a ti mismo: ¿Esta información proviene de una fuente confiable?
+      .content.ui.list
+          .item
+            #protip1.ui.segment
+              .ui.large.checkbox#checkbox1
+                input.checkbox.ui(type="checkbox" id="")
+                label
+                  | Si el sitio web es parte de una organización confiable, académica
+                  | (termina en \".edu\") o gubernamental (termina en \".gob\"), es una
+                  | buena señal de que el artículo es creíble.
+
+          .item
+            #protip2.ui.segment
+              .ui.large.checkbox#checkbox2
+                input.checkbox.ui(type="checkbox"  id="")
+                label
+                  | También puedes consultar en la opción "Acerca de nosotros" para
+                  | obtener más información sobre el sitio web y quién escribe el artículo.
+                  | Es importante saber quién es el responsable del sitio web que estás explorando.
+          .item
+              #point1_button.button.ui.mini.green.right.labeled.icon.button
+                i.down.arrow.icon
+                | Siguiente
+
+      #point2.title(data-voiceoverIndex='voiceover_tut_guide_2')
+        i.dropdown.icon
+        | Busca corroborar. Pregúntate a ti mismo: ¿Otras fuentes confiables dicen lo mismo?
+      .content.ui.list
+          .item
+            #protip3.ui.segment
+              .ui.large.checkbox#checkbox3
+                input.checkbox.ui(type="checkbox")
+                label
+                  | Como siguiente paso, busca fuentes o artículos confiables adicionales
+                  | que confirmen la información hallada. Esto se llama <b>corroborar.</b>
+          .item
+            #protip4.ui.segment
+              .ui.large.checkbox#checkbox4
+                input.checkbox.ui(type="checkbox")
+                label
+                  | Para hacer esto, busca el mismo tema en sitios web de  como Portalcheck.org,
+                  | FactCheck.org o los principales sitios web de noticias.
+
+    br
+    .ui.warning.message.hidden#checkAllBoxesWarning
+     .header
+      | Haz check en todas las opciones para continuar
+    .ui.big.labeled.icon.button.cybersim#cyberSimButton
+        i.rocket.icon
+        |   ¡Entendido!
+
+block scripts
+  script.
+    var voiceoverMappings = {
+      'voiceover_tut_guide_1': {
+        "initialDelay": 500,
+        "delay": 500,
+        // "files": ['CUSML.5.5.2.mp3','CUSML.5.5.3.mp3','CUSML.5.5.4.mp3']
+      },
+      'voiceover_tut_guide_2': {
+        "initialDelay": 700,
+        "delay": 500,
+        // "files": ['CUSML.5.5.5.mp3','CUSML.5.5.6.mp3']
+      }
+    };
+  script(src="/module_js/voiceover.js")
+  script(src="/module_js/digital-literacy-esp/digital-literacy-esp_tut_guide.js")
+
+block styles
+  link(rel='stylesheet' href='/css/checkbox_activity.css')
+
+
+

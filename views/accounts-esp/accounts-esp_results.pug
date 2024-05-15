@@ -1,0 +1,96 @@
+extends ../ui_layout-esp
+
+block content
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  .ui.container.resultsAddBottomMargin
+    .ui.stackable.column.grid
+      .ui.column
+        .insertPrint
+        .ui.raised.segment.reflectionTopSegment
+          h3.ui.header
+            i.question.blue.icon
+            .content
+              | Reflexionar
+
+          .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection1
+            i.down.arrow.icon
+            |   Comenzar
+          .ui.basic.segment.reflectionPromptSegment.noPadding.hidden
+            .ui.label.resultsPromptLabel
+              h4.reflectionPrompt(data-questionNumber='Q1')
+                | #{reflectionData.accounts.Q1.prompt}
+            .ui.form
+              .inline.fields
+                label
+                textarea.glowing-border(rows='2' id="accounts_responseOne")
+
+        .ui.basic.segment.noPadding.hidden.reflectionTopSegment
+          .ui.raised.segment
+            .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection2
+              i.down.arrow.icon
+              |   Siguiente
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden
+              .ui.label.resultsPromptLabel
+                h4.reflectionPrompt(data-questionNumber='Q2')
+                  | #{reflectionData.accounts.Q2.prompt}
+              .ui.form
+                .inline.fields
+                  label
+                  textarea.glowing-border(rows='2' id="accounts_responseTwo")
+
+        .ui.basic.segment.noPadding.hidden.reflectionTopSegment
+          .ui.raised.segment
+            .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection3
+              i.down.arrow.icon
+              |   Siguiente
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden
+              .ui.label.resultsPromptLabel
+                h4.reflectionPrompt(data-questionNumber='Q3')
+                  | #{reflectionData.accounts.Q3.prompt}
+              .ui.form
+                .inline.fields
+                  label
+                  textarea.glowing-border(rows='2' id="accounts_responseThree")
+
+    .ui.warning.message.hidden.startPromptsWarning
+      .header
+        | Click "Comenzar"
+    .ui.warning.message.hidden.openAllPromptsWarning
+      .header
+        | Click "Siguiente"
+    br
+    .ui.big.labeled.icon.button.results_print(onclick="onPrint()")
+          i.right.arrow.icon
+          |   Imprimir tus respuestas
+    br
+    br
+    .ui.big.labeled.icon.button.resultsContinueButton
+          i.rocket.icon
+          |   Continuar
+
+block scripts
+  script.
+    var voiceoverMappings = {
+      '.voiceover_reflection1': {
+        "initialDelay": 0,
+        "delay": 0,
+        // "files": ['CUSML.8.6.01.mp3']
+      },
+      '.voiceover_reflection2': {
+        "initialDelay": 500,
+        "delay": 0,
+        // "files": ['CUSML.8.6.02.mp3']
+      },
+      '.voiceover_reflection3': {
+        "initialDelay": 500,
+        "delay": 0,
+        // "files": ['CUSML.8.6.03.mp3']
+      }
+    };
+  script(src = "/module_js/accounts-esp/accounts-esp_results.js")
+  script(src='/module_js/base_results.js?v=1')
+  script(src='/module_js/voiceover.js')
+
+
+block styles
+  link(rel='stylesheet', href='/css/results.css')

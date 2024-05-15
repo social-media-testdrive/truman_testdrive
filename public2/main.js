@@ -16,7 +16,7 @@ let isResearchVersion;
 
 function addVoiceoverTime() {
     const voiceoverChangeTime = window.sessionStorage.getItem('voiceoverChangeTime');
-    // Record the time the voiceover was on ONLY if data collection is enabled AND if it's not the home page for the public site 
+    // Record the time the voiceover was on ONLY if data collection is enabled AND if it's not the home page for the public site
     // (becuase prior to clicking a module card, no "guest" account has been created to log voiceoverTimer to)
     if (enableDataCollection && voiceoverChangeTime !== null && !(!isResearchVersion && window.location.pathname === "/")) {
         const timeDuration = Date.now() - voiceoverChangeTime;
@@ -39,18 +39,18 @@ $(window).on("load", function() {
     }
     $('#voiceoverCheckbox').removeClass("hidden");
 
-    // null if it is a new session (https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) 
+    // null if it is a new session (https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)
     if (window.sessionStorage.getItem('voiceoverChangeTime') === null) {
         window.sessionStorage.setItem('voiceoverChangeTime', Date.now());
     }
 
-    // If the current page is not the first page of a new session (https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage), 
-    // log the time between the last time the voiceover was logged to be "on" and this page load (if the voiceover is on) 
+    // If the current page is not the first page of a new session (https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage),
+    // log the time between the last time the voiceover was logged to be "on" and this page load (if the voiceover is on)
     // if (enableDataCollection && voiceoverChangeTime !== null) {
     //     if ($("input[name='voiceoverCheckbox']").is(":checked")) {
     //         const timeDuration = timePageLoaded - voiceoverChangeTime;
     //         if (enableDataCollection && !(!isResearchVersion && window.location.pathname === "/")) {
-    //             // Record the time the voiceover was on ONLY if data collection is enabled AND if it's not the home page for the public site 
+    //             // Record the time the voiceover was on ONLY if data collection is enabled AND if it's not the home page for the public site
     //             // (because prior to clicking a module card, no "guest" account has been created to log voiceoverTimer to)
     //             $.post("/voiceoverTimer", {
     //                 voiceoverTimer: timeDuration,
@@ -451,37 +451,37 @@ $(window).on("load", function() {
 
     //Privacy free-play to settings
     $(document).on('click', '.ui.big.labeled.icon.button.free1.green', function() {
-        window.location.href = '/free-settings/privacy';
+        window.location.href = '/free-settings/privacy-esp';
     });
 
     //Privacy settings to free-play2
     $(document).on('click', '.ui.big.labeled.icon.button.settings1.green', function() {
-        window.location.href = '/free-play2/privacy';
+        window.location.href = '/free-play2/privacy-esp';
     });
 
     //Privacy free-play2 to settings3
     $(document).on('click', '.ui.big.labeled.icon.button.settings3.green', function() {
-        window.location.href = '/free-settings3/privacy';
+        window.location.href = '/free-settings3/privacy-esp';
     });
 
     //Privacy settings3 to free-play4
     $(document).on('click', '.ui.big.labeled.icon.button.free4.green', function() {
-        window.location.href = '/free-play4/privacy';
+        window.location.href = '/free-play4/privacy-esp';
     });
 
     //Privacy free-play4 to settings2
     $(document).on('click', '.ui.big.labeled.icon.button.settings2.green', function() {
-        window.location.href = '/free-settings2/privacy';
+        window.location.href = '/free-settings2/privacy-esp';
     });
 
     //Privacy settings2 to free3
     $(document).on('click', '.ui.big.labeled.icon.button.free3.green', function() {
-        window.location.href = '/free-play3/privacy';
+        window.location.href = '/free-play3/privacy-esp';
     });
 
     //Privacy free3 to results
     $(document).on('click', '.ui.big.labeled.icon.button.privacyresults.green', function() {
-        window.location.href = '/results/privacy';
+        window.location.href = '/results/privacy-esp';
     });
 
 
