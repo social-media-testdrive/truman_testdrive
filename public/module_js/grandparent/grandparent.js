@@ -1007,7 +1007,7 @@ $(document).ready(function() {
                         })
                       ;
                 
-                      postBadge("Romance", "Fake", "Silver", "Profile Prodigy", "/badges/romance/techniques.svg");
+                      postBadge("Romance", "Fake", "Silver", "Profile Prodigy", "/badges/romance/profile.svg");
 
                       badgeEarned = true;                    
                   }  else if(section === 'contact') {
@@ -1020,7 +1020,7 @@ $(document).ready(function() {
                       })
                     ;
               
-                    postBadge("Romance", "Contact", "Silver", "Contact Champion", "/badges/romance/techniques.svg");
+                    postBadge("Romance", "Contact", "Silver", "Contact Champion", "/badges/romance/contact.svg");
 
                     badgeEarned = true;                    
                 }  else if(section === 'requests') {

@@ -567,7 +567,7 @@ function playAudio(thePage) {
         var audio = document.getElementById('narration-audio');
 
         if(audio) {
-            audio.src = `https://dart-store.s3.amazonaws.com/identity-narration/${section}/${thePage}_${avatar}.mp3`;
+            audio.src = `https://dart-store.s3.amazonaws.com/romance-narration/${section}/${thePage}_${avatar}.mp3`;
             audio.load();
             audio.playbackRate = voiceSpeed;
 
@@ -1033,7 +1033,7 @@ $(document).ready(function() {
                     })
                   ;
 
-                  postBadge("Romance", "Contact", "Silver", "Request Ready", "/badges/romance/techniques.svg");
+                  postBadge("Romance", "Contact", "Silver", "Request Ready", "/badges/romance/requests.svg");
 
                   badgeEarned = true;                    
               } else if(section === 'protection') {
@@ -1309,15 +1309,38 @@ function setLinks(currentPage) {
         nextlink = baseurl + "types";
       } else if (currentPage === "types") {
         backlink = baseurl + "initial";
-        nextlink = baseurl + "communication";
-      } else if (currentPage === "communication") {
+        nextlink = baseurl + "switch";
+      } 
+      
+      else if (currentPage === "switch") {
         backlink = baseurl + "types";
-        nextlink = baseurl + "relationship";
-      }  else if (currentPage === "relationship") {
-        backlink = baseurl + "communication";
+        nextlink = baseurl + "avoid";
+      } else if (currentPage === "avoid") {
+        backlink = baseurl + "switch";
+        nextlink = baseurl + "fast";
+      } else if (currentPage === "fast") {
+        backlink = baseurl + "avoid";
+        nextlink = baseurl + "inconsistent";
+      } else if (currentPage === "inconsistent") {
+        backlink = baseurl + "fast";
+        nextlink = baseurl + "isolate";
+      } else if (currentPage === "isolate") {
+        backlink = baseurl + "inconsistent";
+        nextlink = baseurl + "dramatic";
+      } else if (currentPage === "dramatic") {
+        backlink = baseurl + "isolate";
         nextlink = baseurl + "reflection";
-      }  else if (currentPage === "reflection") {
-        backlink = baseurl + "relationship";
+      } 
+      // else if (currentPage === "communication") {
+      //   backlink = baseurl + "types";
+      //   nextlink = baseurl + "relationship";
+      // }  else if (currentPage === "relationship") {
+      //   backlink = baseurl + "communication";
+      //   nextlink = baseurl + "reflection";
+      // }  
+      
+      else if (currentPage === "reflection") {
+        backlink = baseurl + "dramatic";
         nextlink = baseurl + "quiz";
       } else if (currentPage === "quiz") {
         backlink = baseurl + "reflection";
@@ -1657,14 +1680,31 @@ function setLinks(currentPage) {
         progress = (3 / total) * 100;
       } else if (pageParam === "types") {
         progress = (4 / total) * 100;
-      } else if (pageParam === "communication") {
+      }
+
+      else if (pageParam === "switch") {
         progress = (5 / total) * 100;
-      } else if (pageParam === "relationship") {
+      } else if (pageParam === "avoid") {
         progress = (6 / total) * 100;
-      } else if (pageParam === "reflection") {
+      } else if (pageParam === "fast") {
         progress = (7 / total) * 100;
-      } else if (pageParam === "quiz") {
+      } else if (pageParam === "inconsistent") {
+        progress = (8 / total) * 100;
+      } else if (pageParam === "isolate") {
         progress = (9 / total) * 100;
+      } else if (pageParam === "dramatic") {
+        progress = (10 / total) * 100;
+      }
+      // else if (pageParam === "communication") {
+      //   progress = (5 / total) * 100;
+      // } else if (pageParam === "relationship") {
+      //   progress = (6 / total) * 100;
+      // }
+      
+      else if (pageParam === "reflection") {
+        progress = (11 / total) * 100;
+      } else if (pageParam === "quiz") {
+        progress = (13 / total) * 100;
       } else if (pageParam === "takeaways") {
         progress = 100;
       }
