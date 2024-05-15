@@ -510,7 +510,7 @@ $(document).ready(function() {
 
         // console.log("View Answers Clicked!");
         // stopHighlighting();
-        // clear highlights
+        // clear quiz-results highlights to catch when user presses button before narration is finished
         $('#showResults').removeClass("highlightedResults");
         $('#narrate-view-answers').removeClass("highlightedButton");
         $('#narrate-try-again').removeClass("highlightedButton");
@@ -519,6 +519,8 @@ $(document).ready(function() {
 
         var audio = document.getElementById('narration-audio');   
         audio.pause();
+
+        stopHighlighting();
 
         viewingAnswer = true;
 
@@ -1064,6 +1066,14 @@ function displayScore() {
 }
 
 function resetQuiz() {
+    $('#showResults').removeClass("highlightedResults");
+    $('#narrate-view-answers').removeClass("highlightedButton");
+    $('#narrate-try-again').removeClass("highlightedButton");
+    $('#narrate-next').removeClass("highlightedButton");
+    $('#nextButton').removeClass("highlightedButton");
+
+
+
     $(".result").hide();
     $(".avatar-container").hide();
     $(".viewAnswers").hide();

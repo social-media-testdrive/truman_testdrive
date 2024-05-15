@@ -903,6 +903,15 @@ $(document).ready(function() {
         const urlParams = new URLSearchParams(window.location.search);
         const currentPage = urlParams.get('page');
 
+        if(currentPage === 'quiz') {
+            // clear quiz-results highlights to catch when user presses button before narration is finished
+            $('#showResults').removeClass("highlightedResults");
+            $('#narrate-view-answers').removeClass("highlightedButton");
+            $('#narrate-try-again').removeClass("highlightedButton");
+            $('#narrate-next').removeClass("highlightedButton");
+            $('#nextButton').removeClass("highlightedButton");
+        }
+
         $('.ui.sidebar').sidebar('hide');
 
         // stop and reset audio and highlighting immediately
@@ -962,7 +971,7 @@ $(document).ready(function() {
                     }
 
                     if(speechData !== "none") {
-                        console.log("YO YO YO the past attempts: " + pastAttempts + " and the back page: " + backPage)
+                        // console.log("YO YO YO the past attempts: " + pastAttempts + " and the back page: " + backPage)
                         if(pastAttempts  && backPage === 'quiz') {
                             const urlParams = new URLSearchParams(window.location.search);
                             backPage = "quiz-results";
@@ -993,6 +1002,14 @@ $(document).ready(function() {
     $('#nextButton').on('click', function() {
         const urlParams = new URLSearchParams(window.location.search);
         const currentPage = urlParams.get('page');
+        if(currentPage === 'quiz') {
+            // clear quiz-results highlights to catch when user presses button before narration is finished
+            $('#showResults').removeClass("highlightedResults");
+            $('#narrate-view-answers').removeClass("highlightedButton");
+            $('#narrate-try-again').removeClass("highlightedButton");
+            $('#narrate-next').removeClass("highlightedButton");
+            $('#nextButton').removeClass("highlightedButton");
+        }
         
         $('.ui.sidebar').sidebar('hide');
 

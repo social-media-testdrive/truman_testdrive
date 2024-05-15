@@ -1049,6 +1049,7 @@
     },
     "quiz-results": {
       "daring": [
+        {"time": 0,"type": "word","value": "here","element": "clear"},           
         {"time": 25,"type": "word","value": "Your","element": "showResults"},
         {"time": 1980,"type": "word","value": "here","element": "clear"},           
         {"time": 1992,"type": "word","value": "Below","element": "none"},
@@ -1074,6 +1075,7 @@
         {"time": 8855,"type": "word","value": "page","element": "clear"}
       ],
       "intrepid": [
+        {"time": 0,"type": "word","value": "here","element": "clear"},           
         {"time": 187,"type": "word","value": "Your","element": "showResults"},
         {"time": 1375,"type": "word","value": "here","element": "clear"},
         {"time": 2255,"type": "word","value": "Below","element": "none"},
@@ -1099,6 +1101,7 @@
         {"time": 8967,"type": "word","value": "page","element": "clear"}
       ],
       "valiant": [
+        {"time": 0,"type": "word","value": "here","element": "clear"},           
         {"time": 25,"type": "word","value": "Your","element": "showResults"},
         {"time": 1025,"type": "word","value": "here","element": "clear"},
         {"time": 1817,"type": "word","value": "Below","element": "none"},
