@@ -2,13 +2,20 @@
     .ui.container.quizContainer#raised-container(style="padding: 0px;")
         .limit
             .quiz-container   
-                h1.ui.header.large#learn-title
+                br
+                h1.ui.header.large#learn-title(style="margin-top: -10px;")
                     .content
                         i.edit.icon
-                        | Quiz         
+                        span#narrate-title-quiz Quiz         
 
-                .question
-                .htmlImage
+                .question#narrate-1-quiz(style="margin-bottom: 20px;")
+                    span
+                .ui.icon.mini.message#detail-instruct(style="padding: 5px; z-index: 99; margin-bottom: 30px;")
+                    i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
+                    .content
+                        p#narrate-2-quiz
+                            span Hover over or click the sender to view email details.
+                .htmlImage(style="margin-bottom: 20px;")
                 .image
                 .choiceList
                 .fourChoices 
@@ -31,10 +38,10 @@
                 .checkboxChoices            
                 br
                 br
-                .result
+                .result   
                     .circleResults
-                        strong
-                    .resultText     
+                        strong#showResults  
+                    .resultText
                     br
                     br
                 .quizMessage
@@ -77,10 +84,10 @@
                         p.incorrectExplanation
                     br
                     br
-                .quizButtonContainer
-                    .ui.blue.huge.button.preButton Previous Question
-                    .ui.blue.huge.button.viewAnswers View Answers
-                    .ui.blue.huge.button.nextButton Next Question
+                .quizButtonContainer(style="margin-top: -20px;")
+                    .ui.blue.huge.button.preButton#narrate-try-again Previous Question
+                    .ui.blue.huge.button.viewAnswers#narrate-view-answers View Answers
+                    .ui.blue.huge.button.nextButton#narrate-next Next Question
             .ui.tablet.only.centered.grid
                 .avatar-container
-                    img#dart_image1.ui.medium.image(src=user.avatarImg alt="image of avatar")
+                    img#dart_image1.ui.medium.image(src=user.avatarImg alt="image of your avatar")

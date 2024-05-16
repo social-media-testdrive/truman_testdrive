@@ -820,7 +820,7 @@ function displayCurrentQuestion()
                 // const narrationNumber = choiceKey + 1; // add number for narration id as the questions itself is number narrate-1, then A is 2, B is 3, C is 4, D is 5
                 let option = parseInt(choiceKey) + 2;
                 const idName = "narrate-" + option + "-quiz-" + currentQuestion;
-                console.log("!!!!!!!!!!!!!idName: " + idName);
+                // console.log("!!!!!!!!!!!!!idName: " + idName);
                 choiceText.id = idName; // Set the ID of the p tag
                 const spanElement = document.createElement("span"); // Create a span tag
                 spanElement.textContent = choice.text; // Set text content to the span tag

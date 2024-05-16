@@ -98,8 +98,8 @@ function stopHighlighting() {
     buttonIcon.classList.add('pause');
     buttonText.innerText = 'Pause';
 
-    $('#volume-icon').removeClass('off');
-    $('#volume-icon').addClass('up'); 
+    // $('#volume-icon').removeClass('off');
+    // $('#volume-icon').addClass('up'); 
 
 }
 
@@ -410,7 +410,7 @@ function startHighlightingWords() {
         avatarSpeechData = speechData[currentPage][avatar];
         wordData= avatarSpeechData;
 
-        // console.log("The word data: " + JSON.stringify(wordData));
+        console.log("The word data: " + JSON.stringify(wordData));
 
         isPaused = false;
         totalWords = wordData.length;
@@ -737,6 +737,10 @@ function disableNarrationPlayButton() {
 
     // Change the text to "Done"
     buttonText.textContent = 'Done';
+
+    // get rid of volume icon sound imagery
+    $('#volume-icon').removeClass('up');
+    $('#volume-icon').addClass('off'); 
 }
 
 function updateAvatar(avatarName) {
@@ -824,6 +828,13 @@ function changeSpeed(speedValue) {
     }
 }
 
+function turnOffNarrationAndHighlighting() {
+    stopHighlighting();
+    disableNarrationPlayButton();
+    var audio = document.getElementById('narration-audio');
+    audio.pause();
+    audio.currentTime = 0;
+}
 
 $(document).ready(function() {
     if(speechData !== "none") {
@@ -831,6 +842,32 @@ $(document).ready(function() {
     } else {
         $('#volume-button').hide();
     }
+
+    // Check if the video element exists before initializing Video.js
+    if ($('#my_video_1').length > 0) {
+        // Initialize Video.js and make it so when user clicks on the video, stop the voiceover narration and highlighting
+        var player = videojs('my_video_1');
+
+        // Add event listener for the 'play' event using Video.js's on() method
+        // could use 'play' 'pause' 'click' etc 
+        player.on('play', function() {
+            console.log("video playing");
+            turnOffNarrationAndHighlighting();
+        });
+    } 
+    // else {
+    //     console.log("No video element found with ID 'my_video_1'");
+    // }
+    
+    // var player = videojs('my_video_1');
+    // // Event listener for the 'play' event using Video.js's on() method
+    // if(player) {
+    //     player.on('play', function() {
+    //         console.log("video playing");
+    //         turnOffNarrationAndHighlighting();
+
+    //     });
+    // }
 
     // for highlighting
     // avatarSpeechData = speechData[page][avatar];
