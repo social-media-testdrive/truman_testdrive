@@ -26,7 +26,7 @@ block styles
 block scripts      
     script.
         //- send as json with all avatars speech marks
-        var speechData = !{JSON.stringify(speechMarks)}; // quizData is passed to pug file via render function in app.js
+        var speechData= !{JSON.stringify(speechMarks)}; // quizData is passed to pug file via render function in app.js
         var avatar = "#{user.avatar.toLowerCase()}";
         var module = "#{module}";
         var section = "#{section}";
@@ -58,6 +58,7 @@ block scripts
         });
         
     script(src='/module_js/module_quiz.js', mod-id=module, page=page, current-section=section, next-link=link, progress=progress)
+    script(src='/module_js/module-narration.js')    
 
     //- included after so can use variables like pastAttempts when loading the quiz page to decide wether it show previous results or question 1
     script(src='/module_js/identity/identity-theft.js')    
