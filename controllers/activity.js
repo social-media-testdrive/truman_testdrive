@@ -4,7 +4,7 @@ const User = require('../models/User');
 const _ = require('lodash');
 
 // Search for items in the array that belong to the module,
-// Filter to include only the specified keys in the objects of the array. 
+// Filter to include only the specified keys in the objects of the array.
 // Return the array.
 function getfilterObjects(array, properties, module, moduleDBkey) {
     // using reduce, rather than filter + map, is faster.
@@ -95,6 +95,7 @@ exports.postActivityData = (req, res, next) => {
                 activityData.chosenTopic = user.targetedAdTopic;
             } else if (module === "esteem" || module === "esteem-esp") {
                 activityData.chosenTopic = user.esteemTopic;
+                console.log("user.esteemTopic: " + user.esteemTopic)
             }
 
             // Assign habitsTimerArray if the module is habits
@@ -179,7 +180,7 @@ exports.postActivityData = (req, res, next) => {
             // Variable will become the value for activityData.quizAnswers
             const quizAnswersArray = getfilterObjects(user.quizAction, ['attemptNumber', 'attemptDuration', 'answers', 'numCorrect'], module, 'modual');
 
-            // Check to see if user viewed quiz explanations in the current module 
+            // Check to see if user viewed quiz explanations in the current module
             viewQuizExplanationsBoolean = (user.viewQuizExplanations.find(record => record.module === module && record.click === true) !== undefined);
 
             // update activityData values

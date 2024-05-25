@@ -3,7 +3,7 @@ extends ../ui_layout-esp
 block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   -var chosenTopic = user.esteemTopic[user.esteemTopic.length - 1];
-  
+
   .ui.container.resultsAddBottomMargin
     .ui.stackable.column.grid
       .ui.column
@@ -13,25 +13,25 @@ block content
             i.question.blue.icon
             .content
               | #{chosenTopic}
-          
+
           .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection1
             i.down.arrow.icon
             |   Comenzar
-          .ui.basic.segment.reflectionPromptSegment.hidden.noPadding.selectPostsQuestion1  
+          .ui.basic.segment.reflectionPromptSegment.hidden.noPadding.selectPostsQuestion1
             .ui.label.resultsPromptLabel
               h4
                 i.exclamation.triangle.icon.yellowIcon
-                | Aquí hay algunas publicaciones que podrían haber causado que 
-                | Jeremy experimente una sensación de alerta roja, ¿notaste alguna 
+                | Aquí hay algunas publicaciones que podrían haber causado que
+                | Jeremy experimente una sensación de alerta roja, ¿notaste alguna
                 | de ella?
             h3.grayElement
               i.hand.pointer.icon
               | Dale clic a las que notaste!
             .ui.stackable.three.cards.selectablePosts
-              
-              if (chosenTopic == 'Deportes')          
+
+              if (chosenTopic == 'Deportes')
                 .ui.fluid.card.dim
-                  .content      
+                  .content
                     a.left.floated(href='/user/sassystar75')
                       img.ui.avatar.image(src=cdn+'/profile_pictures/user53.jpg')
                       span='Brielle Jordan'
@@ -39,38 +39,38 @@ block content
                     img.post(src=cdn+'/post_pictures/bigmatch_se.jpg')
                   .content
                     .description
-                      | Viendo el partido con mi mejor amiga!!
+                      | Viendo el gran partido con mi mejor amiga!!
                       span.grayText
-                        |  — with Hayden Abbey
+                        |  — con María Cristina Rodriguez
                 .ui.fluid.card.dim
-                  .content      
+                  .content
                     a.left.floated(href='/user/sassystar75')
                       img.ui.avatar.image(src=cdn+'/profile_pictures/user53.jpg')
-                      span='Brielle Jordan'
+                      span='Sofia Pinedo'
                   .image
                     img.post(src=cdn+'/post_pictures/tryouts_se.jpg')
                   .content
                     .description
-                      | Wow, no puedo creer que soy la única que ha llegada a
-                      | la segunda vuelta de las pruebas para el equipo fútbol
+                      | Wow, no puedo creer que soy la única que ha llegada a la segunda vuelta
+                      | de las pruebas para el equipo fútbol
                       span.grayText
-                        |  — with Hayden Abbey, Jeremy Murray, and Corey King
-                      
-              if (chosenTopic == 'Videojuegos')  
+                        |  — con María Cristina Rodriguez, Jeremy Franco, y Juan David Gónzales
+
+              if (chosenTopic == 'Videojuegos')
                 .ui.fluid.card.dim
-                  .content      
+                  .content
                     a.left.floated(href='/user/asherballer')
                       img.ui.avatar.image(src=cdn+'/profile_pictures/user48.jpeg')
-                      span='Asher Michaels'
+                      span='Alejandro Martinez'
                   .image
                     img.post(src=cdn+'/post_pictures/computer-game_se.jpg')
                   .content
                     .description
                       | Totalmente ganándole a todos
                       span.grayText
-                        |  — with Lindsay Stokes and Asher Michaels
+                        |  — con Lilian Ureña y Alejandro Martinez
                 .ui.fluid.card.dim
-                  .content      
+                  .content
                     a.left.floated(href='/user/asherballer')
                       img.ui.avatar.image(src=cdn+'/profile_pictures/user48.jpeg')
                       span='Asher Michaels'
@@ -78,58 +78,57 @@ block content
                     img.post(src=cdn+'/post_pictures/nintendo_se.jpg')
                   .content
                     .description
-                      | Jugando online con mi mejor amigo  
+                      | Jugando en linea con mi mejor amiga
                       span.grayText
-                        |  — with Lindsay Stokes  
-                      
+                        |  — con Lilian Ureña
+
               if (chosenTopic == 'Música')
                 .ui.fluid.card.dim
-                  .content     
+                  .content
                     a.left.floated(href='/user/frank-the-best')
                       img.ui.avatar.image(src=cdn+'/profile_pictures/user10.jpg')
-                      span='Franklin Robinson' 
+                      span='Alonso Contreras'
                   .image
                     img.post(src=cdn+'/post_pictures/concert-crowd_se.jpg')
                   .content
                     .description
-                      | Te extrañamos al concierto Jeremy!!
+                      | Te extrañamos en el concierto Jeremy!!
                       span.grayText
-                        |  — with Kiki Pualani
+                        |  — con Ana Pereira
                 .ui.fluid.card.dim
-                  .content      
+                  .content
                     a.left.floated(href='/user/frank-the-best')
                       img.ui.avatar.image(src=cdn+'/profile_pictures/user10.jpg')
-                      span='Franklin Robinson' 
+                      span='Alonso Contreras'
                   .image
                     img.post(src=cdn+'/post_pictures/bestguitar_se.JPG')
                   .content
                     .description
-                      | Invitando los mejores músicos del campamento para 
-                      | hacer una canción juntos. 
+                      | Invitando a los mejores músicos del campamento para hacer una canción juntos
                       span.grayText
-                        |  — with Kiki Pualani and Nick Thomas
-          
+                        |  — con Ana Pereira y Nicolás Rivas
+
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
           .ui.raised.segment
             .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection2
               i.down.arrow.icon
               |   Siguiente
-            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt(data-questionNumber='Q1')
-                  | ¿Por qué estas publicaciones podrían haber causado en Jeremy una 
+                  | ¿Por qué estas publicaciones podrían haber causado en Jeremy una
                   | sensación de alerta roja?
               .ui.form
                 .inline.fields
                   label
                   textarea.glowing-border(rows='2' id="literacy_responseOne")
-                    
+
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
           .ui.raised.segment
             .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection3
               i.down.arrow.icon
               |   Siguiente
-            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt(data-questionNumber='Q2')
                   | ¿Recuerdas haber visto publicaciones que podrían haber hecho
@@ -138,13 +137,13 @@ block content
                 .inline.fields
                   label
                   textarea.glowing-border(rows='2' id="literacy_responseTwo")
-                  
+
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
           .ui.raised.segment
             .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection4
               i.down.arrow.icon
               |   Siguiente
-            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt(data-questionNumber='Q3')
                   | ¿Qué podría hacer Jeremy para sentirse mejor después de experimentar
@@ -171,7 +170,7 @@ block content
           i.rocket.icon
           |   Hacer la encuesta
 
-      
+
 block scripts
   script.
     var voiceoverMappings = {
@@ -199,8 +198,8 @@ block scripts
   script(src="/module_js/esteem/esteem_results.js")
   script(src='/module_js/base_results.js?v=1')
   script(src='/module_js/voiceover.js')
-  
-  
-block styles 
+
+
+block styles
   link(rel='stylesheet', href='/css/results.css')
   //- link(rel='stylesheet', href='/css/optInToShareActivityData.css')

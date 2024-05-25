@@ -6,31 +6,31 @@ block post
       include ../partials/script/actorPost-esp
     else
       include ../partials/script/taggedPost-esp
-  
+
 block rightColumn
 
   .computer.only.four.wide.column
     .ui.sticky.compact.positive.message.advancedLitReminder
-      case user.esteemTopic
+      case user.esteemTopic[user.esteemTopic.length - 1]
         when "Música"
-          p 
-            | Recuerda que estás viendo el feed de Jeremy. Presta atención a las 
-            | publicaciones de Ana y Alonso. Todavía puedes hacer publicaciones y 
+          p
+            | Recuerda que estás viendo el feed de Jeremy. Presta atención a las
+            | publicaciones de Ana y Alonso. Todavía puedes hacer publicaciones y
             | agregar comentarios en el feed.
         when "Deportes"
-          p 
-            | Recuerda que estás viendo el feed de Jeremy. Presta atención a la 
-            | publicaciones de Sofia y María Cristina. Todavía puedes hacer 
+          p
+            | Recuerda que estás viendo el feed de Jeremy. Presta atención a la
+            | publicaciones de Sofia y María Cristina. Todavía puedes hacer
             | publicaciones y agregar comentarios en el feed.
         when "Juegos"
-          p 
-            | Recuerda que estás viendo el feed de Jeremy. Presta atención a la 
-            | publicaciones de Liliam y Alejandro. Todavía puedes hacer publicaciones 
+          p
+            | Recuerda que estás viendo el feed de Jeremy. Presta atención a la
+            | publicaciones de Lilian y Alejandro. Todavía puedes hacer publicaciones
             | y agregar comentarios en el feed.
         default
-          p 
-            | Recuerda que estás viendo el feed de Jeremy. Presta atención a las 
-            | publicaciones de Ana y Alonso. Todavía puedes hacer publicaciones y 
+          p
+            | Recuerda que estás viendo el feed de Jeremy. Presta atención a las
+            | publicaciones de Ana y Alonso. Todavía puedes hacer publicaciones y
             | agregar comentarios en el feed.
 
 block scripts2
