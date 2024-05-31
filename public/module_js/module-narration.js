@@ -26,7 +26,7 @@ let hiddenHighlight = false;
 
 let showingHere = false;
 
-// remove quiz question number on reload 
+// remove quiz question and slide numbers on reload 
 window.onload = function() {
     const urlParams = new URLSearchParams(window.location.search);
     console.log("IN HERE 1211221212")
@@ -36,6 +36,11 @@ window.onload = function() {
         const newUrl = window.location.pathname + '?' + urlParams.toString();
         window.history.replaceState(null, '', newUrl); // Replace the URL without reloading
         // window.location.reload(); 
+    }
+    if(urlParams.has('slide')) {
+        urlParams.delete('slide');
+        const newUrl = window.location.pathname + '?' + urlParams.toString();
+        window.history.replaceState(null, '', newUrl); // Replace the URL without reloading
     }
 };
 
@@ -386,6 +391,7 @@ function startHighlightingWords() {
     const urlParams = new URLSearchParams(window.location.search);
     const currentPage = urlParams.get('page');
     const question = urlParams.get('question');
+    const slide = urlParams.get('slide');
 
     console.log("IN start highlighting the current page: " + currentPage + " and the question: " + question);
 
@@ -399,6 +405,10 @@ function startHighlightingWords() {
         if(currentPage === 'quiz' && question !== null) {
             currentPage = question;
         }
+        // for types page, set the current page to the slide like types-1 or types-2 to get correct highlight speech mark data
+        if(currentPage === 'types' && slide !== null) {
+            currentPage = slide;
+        }
 
         // console.log("The current page: " + currentPage);
         // console.log("The avatar: " + avatar)
@@ -407,7 +417,7 @@ function startHighlightingWords() {
         avatarSpeechData = speechData[currentPage][avatar];
         wordData= avatarSpeechData;
 
-        console.log("The word data: " + JSON.stringify(wordData));
+        // console.log("The word data: " + JSON.stringify(wordData));
 
         isPaused = false;
         totalWords = wordData.length;
@@ -615,7 +625,8 @@ function muteNarration() {
 }
 
 function playAudio(thePage) { 
-    // console.log("In play audio")
+    console.log("In play audio")
+    console.log("The page: " + thePage)
 
 
 
@@ -838,6 +849,15 @@ function changeSpeed(speedValue) {
 function turnOffNarrationAndHighlighting() {
     stopHighlighting();
     disableNarrationPlayButton();
+    var audio = document.getElementById('narration-audio');
+    audio.pause();
+    audio.currentTime = 0;
+}
+
+// don't disable play button for types/slides pages because it immediately starts the next audio
+function slideResetNarrationAndHighlighting() {
+    stopHighlighting();
+
     var audio = document.getElementById('narration-audio');
     audio.pause();
     audio.currentTime = 0;

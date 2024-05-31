@@ -806,7 +806,7 @@ function displayCurrentQuestion()
                 const choiceText = document.createElement("p");
                 choiceText.textContent = choice.text;
                 labelElement.appendChild(choiceText);
-            } else if  (questionData[currentQuestion].type === "multi_select") {
+            } else if (questionData[currentQuestion].type === "multi_select") {
                 // make label a p element so we can style it for multiline text for the long multi-select question prompts
                 // updated to be a span inside the p for narration highlighting
 
@@ -819,8 +819,15 @@ function displayCurrentQuestion()
                 const choiceText = document.createElement("p"); // Create a p tag
                 // const narrationNumber = choiceKey + 1; // add number for narration id as the questions itself is number narrate-1, then A is 2, B is 3, C is 4, D is 5
                 let option = parseInt(choiceKey) + 2;
-                const idName = "narrate-" + option + "-quiz-" + currentQuestion;
-                // console.log("!!!!!!!!!!!!!idName: " + idName);
+
+                let idName;
+                if(currentQuestion === 1) {
+                    idName = "narrate-" + option + "-quiz";
+                } else {
+                    idName = "narrate-" + option + "-quiz-" + currentQuestion;
+                }
+                
+                console.log("!!!!!!!!!!!!!idName: " + idName);
                 choiceText.id = idName; // Set the ID of the p tag
                 const spanElement = document.createElement("span"); // Create a span tag
                 spanElement.textContent = choice.text; // Set text content to the span tag

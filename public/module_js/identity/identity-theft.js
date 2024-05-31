@@ -78,7 +78,7 @@ $(document).ready(function() {
         if(page === 'quiz') {
             document.addEventListener('QuizDataLoaded', function(e) {
                 pastAttempts = e.detail.pastAttempts;
-                console.log("the past attempts now after custom even loaded: " + pastAttempts);
+                console.log("the past attempts now after custom event loaded: " + pastAttempts);
                 if(pastAttempts) {
                     const urlParams = new URLSearchParams(window.location.search);
                     page = "quiz-results";
@@ -90,7 +90,10 @@ $(document).ready(function() {
                 toggleHighlighting();
                 startHighlightingWords();
             });
-        } else if(page === 'types') {
+        } 
+        // } else if(page === 'types') {
+        // want event added to types page from wherever the submodule is loaded into as well, not just when it loads in from the types page directly. So include in else instead of else if
+        else  {
             // add event listener for types slideshow pages to play correct audio for the current slide
             $('#steps-slider').on('afterChange', function(event, slick, currentSlide){
                 // slide count starts at zero so add 1 to get the correct slide number
@@ -98,27 +101,42 @@ $(document).ready(function() {
                 console.log('Current slide number:', slideNum);
 
                 if(slideNum !== 1) {
-                const urlParams = new URLSearchParams(window.location.search);
-                page = "slide-" + slideNum;
-                urlParams.set('slide', page); 
-                const newUrl = window.location.pathname + '?' + urlParams.toString();
-                history.pushState({path: newUrl}, '', newUrl);
+                    slideResetNarrationAndHighlighting(); // stop and remove previous audio/highlighting (needed to fix when user clicks next before narration is finished)
+
+                    const urlParams = new URLSearchParams(window.location.search);
+                    page = "types-" + slideNum;
+                    urlParams.set('slide', page); 
+                    const newUrl = window.location.pathname + '?' + urlParams.toString();
+                    history.pushState({path: newUrl}, '', newUrl);
+
+                    playAudio(page);
+                    toggleHighlighting();
+                    startHighlightingWords();          
                 } else {
                     // remove slide param when on first slide
                     const urlParams = new URLSearchParams(window.location.search);
                     urlParams.delete('slide');
                     const newUrl = window.location.pathname + '?' + urlParams.toString();
                     history.pushState({path: newUrl}, '', newUrl);
+
+                    // not needed, does it below
+                    // page = "types";
+                    // playAudio(page);
+                    // toggleHighlighting();
+                    // startHighlightingWords();          
                 }
             });    
-            playAudio(page);
-            toggleHighlighting();
-            startHighlightingWords();
-        } else {
-            playAudio(page);
-            toggleHighlighting();
-            startHighlightingWords();
-        }
+        } 
+
+        playAudio(page);
+        toggleHighlighting();
+        startHighlightingWords();
+
+        // else {
+        //     playAudio(page);
+        //     toggleHighlighting();
+        //     startHighlightingWords();
+        // }
     }
     // if(wordHighlighting || sentenceHighlighting) {
     //     startHighlightingWords();
