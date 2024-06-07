@@ -10,14 +10,15 @@ block content
             h1 Loading...
     .display-page.hidden
         include protection/objectives.pug
-        include protection/common-measures.pug
+        include protection/fundamental-measures.pug
         include protection/preventative.pug
         include protection/contacted.pug
         include protection/activity.pug
         include protection/reflection.pug
         include protection/quiz.pug
         include protection/takeaways.pug
-    audio(id="narration-audio", src=`https://dart-store.s3.amazonaws.com/identity+theft+voice+over/${section}/${page}_${user.avatar.toLowerCase()}.mp3`, preload="auto", onended="disableNarrationPlayButton()")
+    audio(id="narration-audio", src=`https://dart-store.s3.amazonaws.com/identity+theft+voice+over/${section}/${page}_${user && user.avatar ? user.avatar.toLowerCase() : ''}.mp3`, preload="auto", onended="disableNarrationPlayButton()")
+
 
 
 block styles 
@@ -31,8 +32,7 @@ block scripts
     script.
         var speechData = "none"; // quizData is passed to pug file via render function in app.js
 
-    script(src='/module_js/identity/identity-theft.js') 
-    script(src='/module_js/identity/sub3_activity.js' id="practice-script")   
+    //- script(src='/module_js/grandparent/grandparent.js')    
     //- script(src='/js/text2speech.js')  
     script.
         window.addEventListener('load', function() {
@@ -46,7 +46,7 @@ block scripts
             //- }, 6000); 
         });
     script. 
-        var avatar = "#{user.avatar.toLowerCase()}";
+        var avatar = "#{user && user.avatar ? user.avatar.toLowerCase() : ''}";
         var module = "#{module}";
         var section = "#{section}";
         var startPage = "#{page}"; 
@@ -86,7 +86,10 @@ block scripts
         var current_percent = 50;
         var link = "/course-player?module=identity&section=consequences&page=takeaways";
 
+
     script(src='/module_js/module_quiz.js', mod-id=module, page=page, current-section=section, next-link=link, progress=progress)
+    script(src='/module_js/module-narration.js')    
+    script(src='/module_js/grandparent/grandparent.js')  
         
         //- startQuiz()
     //- console.log("Page is quiz-template")

@@ -115,12 +115,20 @@ html(lang="en")
           a.item#request(href=`/course-player?module=${module}&section=requests&page=objectives`)
             i.envelope.icon
             |  Requests
+        else if module === 'grandparent'
+          a.item#techniques(href=`/course-player?module=${module}&section=techniques&page=objectives`)
+            i.wrench.icon
+            |  Techniques
+          a.item#flags(href=`/course-player?module=${module}&section=flags&page=objectives`)
+            i.flag.icon
+            |  Red Flags
         a.item#protection(href=`/course-player?module=${module}&section=protection&page=objectives`)
           i.shield.alternate.icon
           |  Protection
-        a.item#reporting(href=`/course-player?module=${module}&section=reporting&page=objectives`)
-          i.bullhorn.icon
-          |  Reporting
+        if module !== 'grandparent'
+          a.item#reporting(href=`/course-player?module=${module}&section=reporting&page=objectives`)
+            i.bullhorn.icon
+            |  Reporting
         a.item#practice(href=`/course-player?module=${module}&section=practice&page=objectives`)
           i.search.icon
           |  Practice

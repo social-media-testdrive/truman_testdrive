@@ -213,7 +213,7 @@ const userSchema = new mongoose.Schema({
             questionScores: [{ type: Number }],
             questionChoices: Schema.Types.Mixed,
         }],
-        reportingAttempts: [{
+        flagsAttempts: [{
             timestamp: { type: Date, default: Date.now },
             scoreTotal: { type: Number, default: 0 },
             correctAnswers: { type: Number, default: 0 },
@@ -283,7 +283,7 @@ const userSchema = new mongoose.Schema({
         consequences: { type: Number, default: 0 }, 
         techniques: { type: Number, default: 0 }, 
         protection: { type: Number, default: 0 }, 
-        reporting: { type: Number, default: 0 }, 
+        flags: { type: Number, default: 0 }, 
         practice: { type: Number, default: 0 }, 
         evaluation: { type: Number, default: 0 }, 
     },     

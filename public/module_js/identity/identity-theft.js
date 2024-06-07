@@ -113,17 +113,19 @@ $(document).ready(function() {
                     toggleHighlighting();
                     startHighlightingWords();          
                 } else {
-                    // remove slide param when on first slide
-                    const urlParams = new URLSearchParams(window.location.search);
-                    urlParams.delete('slide');
-                    const newUrl = window.location.pathname + '?' + urlParams.toString();
-                    history.pushState({path: newUrl}, '', newUrl);
+                    // remove slide param when returning back to first slide
+                    if(window.location.search.includes('slide')) {
+                        const urlParams = new URLSearchParams(window.location.search);
+                        urlParams.delete('slide');
+                        const newUrl = window.location.pathname + '?' + urlParams.toString();
+                        history.pushState({path: newUrl}, '', newUrl);
 
-                    // not needed, does it below
-                    // page = "types";
-                    // playAudio(page);
-                    // toggleHighlighting();
-                    // startHighlightingWords();          
+                        // not needed, does it below
+                        page = "types";
+                        playAudio(page);
+                        toggleHighlighting();
+                        startHighlightingWords();
+                    }          
                 }
             });    
         } 
@@ -589,7 +591,7 @@ function setLinks(currentPage) {
             backlink = baseurl + 'quiz';
             nextlink = baseurl + 'takeaways';
         } else if(currentPage === 'takeaways') {
-            backlink = baseurl + 'quiz';
+            backlink = baseurl + 'reflection';
             nextlink = '/course-player?module=identity&section=protection&page=objectives';
         }
     } else if(section === 'protection') {

@@ -29,9 +29,6 @@ block styles
 block scripts       
     script.
         var speechData = "none"; // quizData is passed to pug file via render function in app.js
-    script(src='/module_js/module-narration.js')    
-
-    script(src='/module_js/identity/identity-theft.js')    
     //- script(src='/js/text2speech.js')  
     script.
         window.addEventListener('load', function() {
@@ -67,6 +64,10 @@ block scripts
         var link = "/course-player?module=identity&section=evaluate&page=badge";
 
     script(src='/module_js/module_quiz.js', mod-id=module, page=page, current-section=section, next-link=link, progress=progress)
+    script(src='/module_js/module-narration.js')    
+
+    //- included after so can use variables like pastAttempts when loading the quiz page to decide wether it show previous results or question 1
+    script(src='/module_js/identity/identity-theft.js')    
     script.
         let accept_sending = false;
         let final_response_number = 0;

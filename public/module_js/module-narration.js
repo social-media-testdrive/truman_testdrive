@@ -25,12 +25,13 @@ let contrastWords = false;
 let hiddenHighlight = false;
 
 let showingHere = false;
+let showingLink = false;
 
 // remove quiz question and slide numbers on reload 
 window.onload = function() {
     const urlParams = new URLSearchParams(window.location.search);
-    console.log("IN HERE 1211221212")
-    console.log("past attempts on load:" + pastAttempts)
+    // console.log("IN HERE 1211221212")
+    // console.log("past attempts on load:" + pastAttempts)
     if (urlParams.has('question') && !pastAttempts) { // Check if the 'question' parameter exists
         urlParams.delete('question'); // Remove the 'question' parameter
         const newUrl = window.location.pathname + '?' + urlParams.toString();
@@ -45,7 +46,7 @@ window.onload = function() {
 };
 
 document.addEventListener('click', function clickHandler() {
-    console.log("User interacted with the page")
+    // console.log("User interacted with the page")
     userInteracted = true;
 
     // remove the event listener after the first interaction if needed
@@ -82,6 +83,7 @@ function stopHighlighting() {
     hiddenHighlight = false;
 
     showingHere = false;
+    showingLink = false;
     previousElement = "none";
     started = false; 
     // *later set to DB values for curent user highlighting preferences
@@ -237,6 +239,21 @@ function highlightWord(start, finish, word, element) {
                 showingHere = false;
             }, 1000);
         }
+    } else if(element === "showLink") {
+        if(wordHighlighting || sentenceHighlighting) {
+            let temp = document.getElementById("showLink");
+            temp.classList.add(wordClass);
+
+            setTimeout(function() {
+                temp.classList.remove(wordClass);
+                showingLink = false;
+            }, 1000);
+        }
+    } else if(element === "narrate-image-" + currentPage) {
+
+        if(wordHighlighting || sentenceHighlighting) {
+            $('#narrate-image-' + currentPage + " img").addClass(buttonClass);
+        }
     } else if(element === "showResults") {
 
         if(wordHighlighting || sentenceHighlighting) {
@@ -272,17 +289,50 @@ function highlightWord(start, finish, word, element) {
 
         $('#narrate-view-answers').removeClass(buttonClass);
         $('#narrate-try-again').removeClass(buttonClass);
+        $('#narrate-image-' + currentPage + " img").removeClass(buttonClass);
         $('#narrate-next').removeClass(buttonClass);
         $('#nextButton').removeClass(buttonClass);
 
     } else if(element === "none"){
         // console.log("skip break element");
+    } else if (element === "narrate-slide-header-" + currentPage) {
+        if (wordHighlighting || sentenceHighlighting) {
+            let temp = document.getElementById("narrate-slide-header-" + currentPage);
+            temp.classList.add(sentenceClass);
+        }
+    } else if (element === "narrate-slide-header-" + currentPage + "-2") {
+        if (wordHighlighting || sentenceHighlighting) {
+            let temp = document.getElementById("narrate-slide-header-" + currentPage + "-2");
+            temp.classList.add(sentenceClass);
+        }
+    } else if (element === "narrate-slide-header-" + currentPage + "-3") {
+        if (wordHighlighting || sentenceHighlighting) {
+            let temp = document.getElementById("narrate-slide-header-" + currentPage + "-3");
+            temp.classList.add(sentenceClass);
+        }
+    } else if (element === "narrate-slide-header-" + currentPage + "-4") {
+        if (wordHighlighting || sentenceHighlighting) {
+            let temp = document.getElementById("narrate-slide-header-" + currentPage + "-4");
+            temp.classList.add(sentenceClass);
+        }
+    } else if (element === "narrate-slide-header-" + currentPage + "-5") {
+        if (wordHighlighting || sentenceHighlighting) {
+            let temp = document.getElementById("narrate-slide-header-" + currentPage + "-5");
+            temp.classList.add(sentenceClass);
+        }
+    } else if (element === "narrate-slide-header-" + currentPage + "-6") {
+        if (wordHighlighting || sentenceHighlighting) {
+            let temp = document.getElementById("narrate-slide-header-" + currentPage + "-6");
+            temp.classList.add(sentenceClass);
+        }
     } else {
         if(wordHighlighting || sentenceHighlighting) {
 
             // console.log("HIGHLIGH element: " + element );
             let temp = document.getElementById(element);
+            // console.log("The temp: ", temp);
             selectedElement = temp.getElementsByTagName('span')[0];
+            console.log("The selected element: ", selectedElement);
 
             // console.log("BEYYYY the selected element: " + selectedElement + " and the element: " + element + " and the word: " + word + " and the start: " + start + " and the finish: " + finish + " and the word class: " + wordClass + " and the sentence class: " + sentenceClass)
             if(sentenceHighlighting) {
@@ -295,8 +345,14 @@ function highlightWord(start, finish, word, element) {
             // remove previous mark tags before adding new ones
             selectedElement.innerHTML = selectedElement.innerHTML.replace(new RegExp(`<mark class="${wordClass}">|<\/mark>`, 'g'), "");
             s = selectedElement.innerHTML;
+
+            console.log("* Before: " + s);
+            console.log("* Info: " + start + " " + finish + " " + word + " " + element + " " + wordClass + " " + sentenceClass)
             // Add the mark tags to highlight the word
             selectedElement.innerHTML = s.substring(0, start) + `<mark class="${wordClass}">${word}</mark>` + s.substring(finish);
+            console.log("* After: " + selectedElement.innerHTML);
+
+            console.log("---------------------------")
         }
     } 
 
@@ -339,16 +395,33 @@ function toRepeatWords() {
     let finish = start + wordData[currentWordIndex]["value"].length;
 
     totalFinish = finish;
+    
+    // console.log("** The wordData is: " + JSON.stringify(wordData[currentWordIndex]));
 
     // totalFinish = finish;
     let element = wordData[currentWordIndex]["element"];
 
+    // console.log("** The element is: " + element);
+
     word = wordData[currentWordIndex]["value"];
+
+    // console.log("*** To repeat. The word to be highlighted: " + word);
 
     if(element === "shownHere") {
         showingHere = true;
     }
 
+    if(element === "showLink") {
+        showingLink = true;
+    }
+
+    // console.log("*** to repeat starting highlight words with: " + start + " and finishing with: " + finish + " and the word: " + word + " and the element: " + element);
+    // if(word === "<span class=\"underline-text\">Contact Us</span>") {
+    //     console.log("BINGO SUBTRACTING 1 -----------------------------")
+    //     // subtract 1 from the start and finish
+    //     start += 1;
+    //     finish += 1;
+    // }
     highlightWord(start, finish, word, element);
 
 
@@ -472,17 +545,12 @@ function clearWordHighlights() {
     if(previousElement.includes("narrate-header")){ 
         document.getElementById(previousElement).classList.remove('highlighted-sentence');
     }
+    if(previousElement.includes("narrate-slide-header")){ 
+        document.getElementById(previousElement).classList.remove('highlighted-sentence');
+    }
 
 
-    // const urlParams = new URLSearchParams(window.location.search);
-    // const currentPage = urlParams.get('page');
-    // console.log("the page is: " + currentPage + " and the current word index is: " + currentWordIndex);
-    // if(currentPage === 'intro') {
-    //     document.getElementById('narrate-section').classList.remove('highlighted-sentence');
-    //     document.getElementById('narrate-time').classList.remove('highlighted-sentence');
-    // }
-
-    if(selectedElement !== null && !showingHere) {
+    if(selectedElement !== null && !showingHere && !showingLink) {
         selectedElement.classList.remove('highlighted-sentence');
     }
 
@@ -510,6 +578,7 @@ function clearToggleVisual(whichHighlighting) {
     const urlParams = new URLSearchParams(window.location.search);
     const currentPage = urlParams.get('page');
 
+
     if(previousElement.includes("narrate-title")){ 
         document.getElementById('narrate-title-' + currentPage).classList.remove('highlighted-sentence');
     }
@@ -520,6 +589,23 @@ function clearToggleVisual(whichHighlighting) {
 
     if(previousElement.includes("narrate-header")){ 
         document.getElementById('narrate-header-' + currentPage).classList.remove('highlighted-sentence');
+    }
+
+    if(previousElement.includes("narrate-slide-header")){ 
+        const slideNum = urlParams.get('slide');
+        if(slideNum === null) {
+            document.getElementById('narrate-slide-header-' + currentPage).classList.remove('highlighted-sentence');
+        } else if(slideNum === '2') {
+            document.getElementById('narrate-slide-header-' + currentPage + "-2").classList.remove('highlighted-sentence');
+        } else if(slideNum === '3') {
+            document.getElementById('narrate-slide-header-' + currentPage + "-3").classList.remove('highlighted-sentence');
+        } else if(slideNum === '4') {
+            document.getElementById('narrate-slide-header-' + currentPage + "-4").classList.remove('highlighted-sentence');
+        } else if(slideNum === '5') {
+            document.getElementById('narrate-slide-header-' + currentPage + "-5").classList.remove('highlighted-sentence');
+        } else if(slideNum === '6') {
+            document.getElementById('narrate-slide-header-' + currentPage + "-6").classList.remove('highlighted-sentence');
+        }
     }
 
     if(whichHighlighting === "words") {
