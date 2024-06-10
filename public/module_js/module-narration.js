@@ -205,8 +205,11 @@ function highlightWord(start, finish, word, element) {
         totalFinish = 0;
     }
 
+
+    
     const urlParams = new URLSearchParams(window.location.search);
     const currentPage = urlParams.get('page');
+
 
     if(element === "narrate-title-" + currentPage) {
         if(wordHighlighting || sentenceHighlighting) {
@@ -238,6 +241,13 @@ function highlightWord(start, finish, word, element) {
                 temp.classList.remove(wordClass);
                 showingHere = false;
             }, 1000);
+        }
+    } else if(element === "narrate-link-" + currentPage) {
+        // console.log("narrating a link in module narration narrate-link!")
+        if(wordHighlighting || sentenceHighlighting) {
+            let temp = document.getElementById("narrate-link-" + currentPage);
+            temp.classList.add(wordClass);
+            // $('#narrate-nested-group-' + currentPage).addClass(sentenceClass);
         }
     } else if(element === "showLink") {
         if(wordHighlighting || sentenceHighlighting) {
@@ -292,6 +302,10 @@ function highlightWord(start, finish, word, element) {
         $('#narrate-image-' + currentPage + " img").removeClass(buttonClass);
         $('#narrate-next').removeClass(buttonClass);
         $('#nextButton').removeClass(buttonClass);
+        
+    }  else if (element === "clearNested") { 
+        // console.log("NESTED REMOVED CLASS")
+        $('.narrate-nested-group-' + currentPage).removeClass(sentenceClass);
 
     } else if(element === "none"){
         // console.log("skip break element");
@@ -327,6 +341,33 @@ function highlightWord(start, finish, word, element) {
         }
     } else {
         if(wordHighlighting || sentenceHighlighting) {
+
+            // highlighting nested groups
+            let htmlElement = document.getElementById(element);
+            if (htmlElement && htmlElement.parentElement) {
+                // console.log("YOO it has a parent nested!!!!!!!!!!!!")
+                // console.log("BEY: ", htmlElement);
+                // console.log("BEY THe parent element is: ", htmlElement.parentElement);
+                // console.log("Bey parent classlist: ", htmlElement.parentElement.classList);
+
+                if (sentenceHighlighting && htmlElement.parentElement.classList.contains('narrate-nested-group-' + currentPage)) {
+                    console.log('*********The parent element has the class narrate-nested-group-offer.');
+                    htmlElement.parentElement.classList.add(sentenceClass);
+                    // $('#narrate-nested-group-' + currentPage).addClass(sentenceClass);
+                }
+            }
+            // let myTemp = document.getElementById('narrate-3-offer');
+            // console.log("BEY the my temp: ", myTemp);
+            // console.log("BEYRY THe parent element is: ", myTemp.parentElement);
+
+            // trick to make highlighting links in sentences look better / maintain highlight around whole sentence even when mark tags move into nested html underline / bold element (highlight the parrent as well as the element)
+            // if (element && element.parentElement) {
+            //     console.log("YOO it has a parent nested!!!!!!!!!!!!")
+            //     if (element.parentElement.classList.contains('narrate-nested-group-' + currentPage)) {
+            //         console.log('The parent element has the class narrate-nested-group-offer.');
+            //         $('#narrate-nested-group-' + currentPage).addClass(sentenceClass);
+            //     }
+            // }
 
             // console.log("HIGHLIGH element: " + element );
             let temp = document.getElementById(element);
@@ -530,7 +571,7 @@ function getRemainingTime(){
 }
 
 function clearWordHighlights() {
-    // console.log("* In clear word highlights, clearing existing timeouts")
+    console.log("* In clear word highlights, clearing existing timeouts")
     clearTimeout(highlightTimeoutWordID); // Clear any existing timeouts
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -538,6 +579,10 @@ function clearWordHighlights() {
 
     if(previousElement.includes("narrate-title")){ 
         document.getElementById(previousElement).classList.remove('highlighted-sentence');
+    }
+    if(previousElement.includes("narrate-link")){
+        document.getElementById("narrate-link-" + currentPage).classList.remove('highlighted-word-dark');
+        document.getElementById("narrate-link-" + currentPage).classList.remove('highlighted-word');
     }
     if(previousElement.includes("narrate-time")){ 
         document.getElementById(previousElement).classList.remove('highlighted-sentence');
@@ -548,7 +593,6 @@ function clearWordHighlights() {
     if(previousElement.includes("narrate-slide-header")){ 
         document.getElementById(previousElement).classList.remove('highlighted-sentence');
     }
-
 
     if(selectedElement !== null && !showingHere && !showingLink) {
         selectedElement.classList.remove('highlighted-sentence');

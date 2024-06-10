@@ -5,31 +5,43 @@
                 h1.ui.header.large#learn-title
                     .content
                         i.book.icon
-                        | Example 3: Offer a coupon or gift card
+                        span#narrate-1-offer
+                            span Example 3: Offer a coupon or gift card
                 .ios-chat-container
                     .chat(style="width: 100%; align-items: center; font-size: 1.4rem;")
                         .yours.messages
                             .message.last(style="width: 500px;")
-                                | Congratulations! You’ve won a $1,000 Walmart gift card. Go to 
-                                u http://bit.ly/145634 
-                                | to claim now.
-                p Here are signs that this message is a scam:
+                                span#narrate-2-offer 
+                                    span Congratulations! You’ve won a $1,000 Walmart gift card. 
+                                span.narrate-nested-group-offer
+                                    span#narrate-3-offer
+                                        span Go to 
+                                    u
+                                        span#narrate-link-offer http://bit.ly/145634
+                                    span#narrate-4-offer
+                                        span  to claim now.
+                p#narrate-5-offer 
+                    span Here are signs that this message is a scam:
                     .ui.bulleted.list
-                        .item 
-                            | This message offers a coupon for a $1000 gift card. Is that too good to be true?
-                        .item  
-                            | This message does not demonstrate an official source of Walmart.
-                        .item 
-                            | This message invites you to click on a shortened foreign link. Legitimate links:
+                        .item#narrate-6-offer 
+                            span This message offers a coupon for a $1000 gift card. 
+                            span#narrate-7-offer
+                                span Is that too good to be true?
+                        .item#narrate-8-offer   
+                            span This message does not demonstrate an official source of Walmart.
+                        .item#narrate-9-offer  
+                            span This message invites you to click on a shortened foreign link. Legitimate links:
                             .ui.bulleted.list
-                                .item 
-                                    | should be https://
-                                .item 
-                                    | should not be shortened
-                                .item 
-                                    | should have no typos or misspelling
-                        .item  
-                            | This message fails to provide fine prints, such as the expiration date or the exceptions to the sale. A legitimate deal will list such details for legal reasons.
+                                .item#narrate-10-offer 
+                                    span Should be https://
+                                .item#narrate-11-offer  
+                                    span Should not be shortened
+                                .item#narrate-12-offer  
+                                    span Should have no typos or misspelling
+                        .item#narrate-13-offer   
+                            span This message fails to provide fine prints, such as the expiration date or the exceptions to the sale. 
+                            span#narrate-14-offer
+                                span A legitimate deal will list such details for legal reasons.
                 //- .callout
                 //-     .dark-blue-square
                 //-         img(src=user.avatarImg, alt='avatar picture')
