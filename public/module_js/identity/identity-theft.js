@@ -120,7 +120,7 @@ $(document).ready(function() {
                         const newUrl = window.location.pathname + '?' + urlParams.toString();
                         history.pushState({path: newUrl}, '', newUrl);
 
-                        // not needed, does it below
+                        // not needed, does it below?
                         page = "types";
                         playAudio(page);
                         toggleHighlighting();

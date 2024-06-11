@@ -173,14 +173,20 @@ $(document).ready(function() {
 
 
 	$(this).find(".preButton").on("click", function () {
-        if(pastAttempts) {
+        // turnOffNarrationAndHighlighting();
+
+        if(pastAttempts || viewingAnswer) {
             console.log("stopping highlighting bc on results page")
             stopHighlighting();
         }
-    
+
+
         $("#page-article").scrollTop(0);
 		
         if (!quizOver) {
+            $(".quizMessage").hide();
+            stopHighlighting();
+
 			if(currentQuestion == 0) { return false; }
 	
 			// if(currentQuestion == 1) {
@@ -191,7 +197,44 @@ $(document).ready(function() {
             currentQuestion--; // Since we have already displayed the first question on DOM ready
             if (currentQuestion < numQuestions) {
                 displayCurrentQuestion();
-            } 					
+            } 	
+            
+            // console.log("YO NOW THe current question is: " + currentQuestion);
+            let backPage;
+
+            // remove question parameter to url if returning back to first question
+            if(currentQuestion === 1) {
+                // console.log("88888 ON the first question")
+                const urlParams = new URLSearchParams(window.location.search);
+                urlParams.delete('question');
+                const newUrl = window.location.pathname + '?' + urlParams.toString();
+                history.pushState({path: newUrl}, '', newUrl);
+
+                // not needed, does it below?
+                backPage = "quiz";
+                // playAudio(page);
+                // toggleHighlighting();
+                // startHighlightingWords();
+            } else {
+                backPage = "quiz-" + currentQuestion;
+
+                const urlParams = new URLSearchParams(window.location.search);
+                urlParams.set('question', backPage); 
+                const newUrl = window.location.pathname + '?' + urlParams.toString();
+                history.pushState({path: newUrl}, '', newUrl);
+
+            }
+
+            // control audio and highlighting for each question using narration functions defined in identity-theft.js
+            // if(!quizOver && !viewingAnswer && !pastAttempts && speechData !== "none" && prevQuestion !== "results") {
+            if(!quizOver && !viewingAnswer && !pastAttempts && speechData !== "none") {
+                playAudio(backPage);
+                toggleHighlighting();
+                startHighlightingWords();
+            }
+
+
+            
 		} else {
             // quiz is over and clicked the previous button (which is now the try again button)
             attempts++;
@@ -230,11 +273,11 @@ $(document).ready(function() {
     $(this).find(".nextButton").on("click", function () {
         console.log("pabbllo vittar");
         // console.log("Next button clicked!!!!!!!!!! + currentQuestion: " + currentQuestion + " numQuestions: " + numQuestions + "quizOver: " + quizOver + "viewingAnswer: " + viewingAnswer + "pastAttempts: " + pastAttempts);
-        if(pastAttempts) {
-            console.log("stopping highlighting bc on results page")
+        if(pastAttempts || viewingAnswer) {
+            // console.log("stopping highlighting bc on results page")
             stopHighlighting();
         } else {
-            console.log("not past attempts")
+            // console.log("not past attempts")
         }
 
         // add question parameter to url
