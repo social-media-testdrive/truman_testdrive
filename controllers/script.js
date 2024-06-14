@@ -280,6 +280,8 @@ exports.getScript = (req, res, next) => {
                         });
                     } else if  (req.params.modId == "phishing"){
                         res.render('phishing/phishing_script', { script: finalfeed, mod: req.params.modId});
+                    }  else if  (req.params.modId == "phishing-esp"){
+                        res.render('phishing-esp/phishing-esp_script', { script: finalfeed, mod: req.params.modId});
                     } else if (req.params.modId == "targeted"){
                         res.render('targeted/targeted_script', { script: finalfeed, mod: req.params.modId});
                     } else {

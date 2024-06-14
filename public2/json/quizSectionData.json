@@ -936,6 +936,63 @@
             "explanation": " \n<span class = 'inline bold green'>C is correct: It is not safe to give her your information, scammers can pretend to be your friend and even send emails from Jane’s account.</span> \n \n<span class = 'inline bold'>A is incorrect:</span> It is a good idea to confirm with Jane. \n \n<span class = 'inline bold'>B is incorrect:</span> A trusted adult can give you helpful advice. \n \n<span class = 'inline bold'>D is incorrect:</span> Responding can lead to dangerous situations where your information may be stolen."
         }
     },
+    "phishing-esp": {
+        "Q1": {
+        "prompt": "Cuando alguien intenta engañarte para que compartas tu contraseña o información personal, eso se llama _____.",
+        "radioLabels": {
+            "0": "Cyberbullying",
+            "1": "Cifrado",
+            "2": "Verificación en 2 pasos",
+            "3": "Phishing",
+            "4": "No lo sé."
+        },
+        "explanation": "D es correcta: Phishing es cuando alguien intenta engañarte para que compartas tu información privada. A es incorrecta: Cyberbullying es cuando una persona realiza o comparte posts con información negativa sobre otra persona en línea. B es incorrecta: El cifrado tiene que ver con proteger tu información con una contraseña. C es incorrecta:Verificación en 2 pasos es cuando agregas un paso adicional de seguridad para proteger tu cuenta cuando inicies sesión."
+        },
+        "Q2": {
+        "prompt": "¿Qué debes hacer si caes en una estafa de phishing?",
+        "radioLabels": {
+            "0": "Inmediatamente cambiar la contraseña.",
+            "1": "Reportar al sitio web la estafa de phishing.",
+            "2": "Decirle a un adulto de confianza para que te ayude",
+            "3": "Todas las anteriores.",
+            "4": "No lo sé."
+        },
+        "explanation": "D es correcta: A, B y C son acciones que puedes hacer si caes en una estafa de phishing."
+        },
+        "Q3": {
+        "prompt": "Si ves un post en redes sociales que dice\"¡CLIC AQUÍ para recibir una prueba gratuita de nuestro nuevo juego multijugador en línea! ¡Suscripción GRATUITA para todos los que hagan clic!\" ¿Qué debes hacer?",
+        "radioLabels": {
+            "0": "Hacer clic en el link.",
+            "1": "Hacer clic en el link y luego enviarle el link a tus amigos.",
+            "2": "Preguntarle a tu amigo gamer si es cierto o no.",
+            "3": "Ignorar el post",
+            "4": "No lo sé."
+        },
+        "explanation": "D es correcta: Ignorar el post es una buena idea para poder proteger tu información de los estafadores. A es incorrecta: No es buena idea hacer clic en post sospechosos. Los estafadores usualmente ofrecen items gratis o giveaways para engañar a las personas a que hagan clic. B es incorrecta: Compartir un link sospechoso que puede ser una estafa no es una buena idea, tus amigos pueden ser estafados. C es incorrecta: Tu amigo gamer no es la persona más ideal para preguntarle. Es mejor recibir un consejo de un adulto de confianza."
+        },
+        "Q4": {
+        "prompt": "Ves un concurso que dice \"¡Gana $10,000 al instante! ¡Haz clic en este enlace para registrarte!\" Haces clic en el enlace y el sitio web te pide tu nombre, dirección y correo electrónico para participar en el concurso. ¿Qué debes hacer?",
+        "radioLabels": {
+            "0": "Colocar información personal falsa.",
+            "1": "No dar tu información personal. Una persona puede robar tu información y crear una identidad falsa para hacerse pasar por ti.",
+            "2": "Poner tu información personal porque así tendrás la chance de poder ganar el dinero.",
+            "3": "Poner el link en tu Facebook y pedirle a tu amigo que se inscriba.",
+            "4": "No lo sé."
+        },
+        "explanation": "B es correcta: No dar ninguna información personal es la opción más segura, ya que los estafadores pueden robar tu información personal. A es incorrecta: Poner información falsa tampoco es seguro pues podrían estar rastreando tu ubicación y el sitio web puede tener enlaces inseguros. C es incorrecta: No es seguro dar tu información personal, ya que alguien puede robar tu identidad. D es incorrecto: Compartir el enlace a tu página de facebook no es una buena idea porque a tus amigos también les pueden robar la información."
+        },
+        "Q5": {
+        "prompt": "Tu amiga Mariella te envía un correo preguntándote por tu dirección. Pero algo del correo pareciera que no es realmente un mensaje de Mariella. ¿Cuál de las siguientes acciones es riesgosa?",
+        "radioLabels": {
+            "0": "Preguntarle a Mariella si ella realmente envío el correo.",
+            "1": "Preguntarle a un adulto de confianza qué puedes hacer.",
+            "2": "Darle tu dirección sin preocupación.",
+            "3": "No responder el correo.",
+            "4": "No lo sé."
+        },
+        "explanation": "C es correcta: No es seguro darle tu información, los estafadores pueden fingir ser sus amigos e incluso enviar correos electrónicos desde la cuenta de Mariella. A es incorrecta: Es una buena idea confirmarlo con Mariella. B es incorrecta: Un adulto de confianza puede dar un consejo útil. D es incorrecta: Responder puede conducir a situaciones peligrosas en las que su información puede ser robada."
+        }
+    },
     "presentation": {
         "Q1": {
             "type": "radio",

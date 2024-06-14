@@ -1,0 +1,377 @@
+extends ../ui_layout-esp
+  
+block content
+
+  
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  -var s3 = "https://testdrive-filesystem.s3.us-east-2.amazonaws.com/"
+  -var phishingWarningText = "This is a phishing website! You should not enter any private information.";
+  .computer.only.tablet.only.four.wide.column
+    .ui.sticky.sideMenu
+      .ui.card
+        .image
+          if user.profile.picture
+            img(src=cdn+'/profile_pictures/'+user.profile.picture)
+          else
+            img(src=user.gravatar(60))
+        .content
+          a.header(href='/me/'+mod)= user.profile.name || user.email || user.id
+          .meta="@Guest"
+          .description=user.profile.bio
+          .description
+            if user.profile.location
+              i.marker.icon
+              span=user.profile.location
+        .one.ui.bottom.attached.icon.buttons
+            button.ui.editprofile.button(data-tooltip='Update Your Profile', data-position='bottom left')
+                i.write.icon
+                  
+  #loading.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
+    img.ui.centered.small.image(src='/images/heart.svg')
+      
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.hidden  
+    .ui.sticky.newPostSticky
+      #newpost.ui.fluid.left.labeled.right.icon.input.habitsHomeDisplay
+        .ui.label
+          if user.profile.picture
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture)
+          else
+            img.ui.avatar.image(src=user.gravatar(60))
+        input(type='text', placeholder='Create a post')
+        i.big.photo.link.icon
+  
+    each val in script
+      //- create a card for each post in val (if by user make the card a little different)
+      //- if val.relativeTime - then post came from user_post (so user post, user reply to actor reply to user post)
+  
+      if val.relativeTime
+        -var u_class;
+        -if (val.actorAuthor) {u_class = "actorReply"}
+        -else if (val.reply) {u_class = "userReply"}
+        -else {u_class = "userPost"}
+        .ui.fluid.card(u_postID=val.id, ui=user.ui, notify=user.notify, type=u_class, postID=val.postID)
+          
+          //- This is a User made post
+          .content
+            .right.floated.time.meta= ((Date.now() - (Date.now() - val.absTime)))
+            |  
+            a.ui.avatar.image(href='/me/'+mod)
+              if user.profile.picture
+                img(src=cdn+'/profile_pictures/'+user.profile.picture)
+              else
+                img(src=user.gravatar(60))
+            a(href='/me/'+mod)
+              span=user.profile.name || user.email || user.id
+          if val.picture
+            .image
+              img(src=cdn+"/post_pictures/"+val.picture)
+          .content
+            .description=val.body
+          .two.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            if val.liked
+              .ui.red.like.button
+                i.heart.icon
+                |  Like
+            else
+              .ui.like.button
+                i.heart.icon
+                |  Like
+          if val.comments.length > 0
+            .content
+              .ui.comments
+                each comment in val.comments
+                  //-IF this comment is USER made, do this
+                  if (Date.now() + comment.time) < Date.now()
+                    if !comment.flagged
+                      if comment.new_comment
+                        -console.log("New COMMENT AREA");
+                        .comment(commentID=comment.commentID)
+                          a.avatar.image(href='/me/'+mod)
+                            if user.profile.picture
+                              img(src=cdn+'/profile_pictures/'+user.profile.picture)
+                            else
+                              img(src=user.gravatar(60))
+                          .content
+                            a.author(href='/me/'+mod)=user.profile.name || user.username || user.id
+                            .metadata
+                              span.date.sim=(comment.time)
+                              //- .rating
+                              //-   if comment.liked
+                              //-     i.red.heart.icon
+                              //-     span=comment.likes
+                              //-     | Likes 
+                              //-   else
+                              //-     i.heart.icon
+                              //-     span.num=comment.likes
+                              //-     |  Likes
+                            .text=comment.body
+                            //- .actions
+                            //-   if comment.liked
+                            //-     a.red.like.comment Like
+                            //-   else
+                            //-     a.like.comment Like
+                            //-   a.flag.comment Flag
+                      //- Else this is a normal comment from the script
+                      else
+                        .comment(commentID=comment.commentID)
+                          a.avatar(href='/user/'+comment.actor.username)
+                            img(src='/images/picture.svg', data-src=cdn+'/profile_pictures/'+comment.actor.profile.picture)
+                          .content
+                            a.author(href='/user/'+comment.actor.username)=comment.actor.profile.name
+                            .metadata
+                              span.date.sim=(Date.now() + comment.time)
+                              .rating
+                                if comment.liked
+                                  i.red.heart.icon
+                                  span=comment.likes
+                                  | Likes 
+                                else
+                                  i.heart.icon
+                                  span.num=comment.likes
+                                  |  Likes
+                            .text=comment.body
+                            .actions
+                              if comment.liked
+                                a.red.like.comment Like
+                              else
+                                a.like.comment Like
+                              a.flag.comment Flag
+        
+      //- Now we are making posts by Actors, not the USER
+      else
+        //-this is a totally normal actor post
+        .ui.fluid.card.dim(postNumber = val.post_id, postID=val.id, ui=user.ui, transparency=user.transparency, notify=user.notify, state=val.state || 'unread', type='actor', actor_un = val.actor.username, actor_name = val.actor.profile.name, actor_pic = val.actor.profile.picture)
+          .ui.dimmer.flag
+                .content
+                  .center
+                    h2.ui.inverted.icon.header
+                      i.red.flag.icon
+                      |  You&apos;ve flagged this!
+                      h3.ui.inverted.header
+                        span="The admins will review this post further. We are sorry you had this experience."
+          //- Normal Base Post
+          .content
+            .right.floated.time.meta= (Date.now() + val.time)
+            |  
+            a(href='/user/'+val.actor.username)
+              img.ui.avatar.image(src='/images/picture.svg', data-src=cdn+'/profile_pictures/'+val.actor.profile.picture)
+              span=val.actor.profile.name
+          .img.post
+            if (val.module == 'digital-literacy' && val.info_text != "")           
+              img(src='/images/picture.svg', data-src=cdn+"/post_pictures/"+val.picture, onclick='openPost()')
+            else
+              img(src='/images/picture.svg', data-src=cdn+"/post_pictures/"+val.picture)
+          .content
+            .description!=val.body 
+              if(val.info_text != "")
+                | &nbsp
+                span.phishingLink.blueText(phishingPostType=val.type)=val.info_text
+          .three.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Reply
+            .ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Flag
+            if val.like
+              .ui.labeled.button(tabindex='0')
+                .ui.red.like.button
+                  i.heart.icon
+                  |  Like
+                a.ui.basic.red.left.pointing.label=val.likes
+            else
+              .ui.labeled.button(tabindex='0')
+                .ui.like.button
+                  i.heart.icon
+                  |  Like
+                a.ui.basic.red.left.pointing.label.count=val.likes
+          if val.comments.length > 0
+            .content
+              .ui.comments
+                each comment in val.comments
+                  //-IF this comment is USER made, do this
+                  if comment.new_comment
+                    -console.log("New COMMENT AREA");
+                    .comment(commentID=comment.new_comment_id)
+                      a.avatar.image(href='/me/'+mod)
+                        if user.profile.picture
+                          img(src=cdn+'/profile_pictures/'+user.profile.picture)
+                        else
+                          img(src=user.gravatar(60))
+                      .content
+                        a.author(href='/me/'+mod)=user.profile.name || user.username || user.id
+                        .metadata
+                          span.date.sim=(comment.time)
+                          //- .rating
+                          //-   i.heart.icon
+                          //-   span.num=0
+                          //-   |  Likes
+                        .text=comment.body
+                        //- .actions
+                        //-   a.like.comment Like
+                        //-   a.flag.comment Flag
+                  //- Else this is a normal comment from the script
+                  else
+                    .comment(commentID=comment.id)
+                      a.avatar.image(href='/user/'+comment.actor.username)
+                        img(src='/images/picture.svg', data-src=cdn+'/profile_pictures/'+comment.actor.profile.picture)
+                      .content
+                        a.author(href='/user/'+comment.actor.username)=comment.actor.profile.name
+                        .metadata
+                          span.date.sim=(Date.now() + comment.time)
+                          .rating
+                            if comment.liked
+                              i.red.heart.icon
+                              span=comment.likes
+                              |  Likes 
+                            else
+                              i.heart.icon
+                              span.num=comment.likes
+                              |  Likes
+                        .text=comment.body
+                        .actions
+                          if comment.liked
+                            a.red.like.comment Like
+                          else
+                            a.like.comment Like
+                          a.flag.comment Flag
+          .extra.content
+            .ui.fluid.left.labeled.right.icon.input
+              .ui.label
+                if user.profile.picture
+                  img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name || user.username || user.id)
+                else
+                  img.ui.avatar.image(src=user.gravatar(60), name=user.profile.name || user.username || user.id)            
+              input.newcomment(type='text', placeholder='Write a Comment')
+              i.big.send.link.icon  
+                     
+
+    -var post_quiz = "/results/"+mod;
+    a.ui.fluid.card(href=post_quiz)
+      .content
+        .ui.big.green.labeled.icon.button.script
+          i.rocket.icon
+          |   Let's Continue!
+          
+    br
+    br
+  
+    include ../partials/script/modals/newUserPost
+    .ui.large.long.modal#phishingModal1(data-modalName="phishing_surveyScam")
+      i.close.icon  
+      .ui.center.aligned.header FILL OUT THIS SURVEY TO RECEIVE A FREE GIFT CARD!
+      .content
+        .ui.one.column.centered.grid
+          .ui.green.large.statistic
+            .label Fill out this survey to receive a gift card worth    
+            .value
+              | $500
+            .label to any store you want!
+
+        .ui.form
+          .field(data-tooltip=phishingWarningText data-position="bottom left")
+            label First Name
+            input(readonly='')
+          .field(data-tooltip=phishingWarningText data-position="bottom left")
+            label Last Name
+            input(readonly='')
+          .field(data-tooltip=phishingWarningText data-position="bottom left")
+            label Birth Date
+            input(readonly='')
+          .field(data-tooltip=phishingWarningText data-position="bottom left")
+            label Email Address
+            input(readonly='')
+          .field(data-tooltip=phishingWarningText data-position="bottom left")
+            label Home Address
+            input(readonly='')
+          br
+          .actions
+           .ui.right.labeled.icon.button(data-tooltip=phishingWarningText data-position="top left")
+             | Submit
+             i.checkmark.icon 
+           .ui.negative.right.labeled.icon.button
+             | Cancel
+             i.close.icon 
+               
+    .ui.large.long.modal#phishingModal2(data-modalName="phishing_loginScam")
+      i.close.icon  
+      .ui.center.aligned.header 
+        span.setRed !WARNING! 
+        | Our systems show that your TestDrive account is 
+        span.setRed AT RISK!
+
+      .content
+        .ui.error.icon.message
+          i.circle.exclamation.icon
+          .content
+            .header
+              | Enter your login information to prove that it's you
+
+        .ui.form
+          .field(data-tooltip=phishingWarningText data-position="bottom left")
+            label Username
+            input(readonly='' placeholder='Enter your username...')
+          .field(data-tooltip=phishingWarningText data-position="bottom left")
+            label Password
+            input(readonly='' placeholder='Enter your password...')
+          br
+          .actions
+            .ui.right.labeled.icon.button(data-tooltip=phishingWarningText data-position="top left")
+              | Submit
+              i.checkmark.icon 
+            .ui.negative.right.labeled.icon.button
+              | Cancel
+              i.close.icon 
+              
+    .ui.large.long.modal#phishingModal3(data-modalName="phishing_creditCardScam")
+      i.close.icon  
+      .ui.center.aligned.header WOW! Get a new Switch for just $19.99!!
+      .ui.one.column.centered.grid
+        .image.content
+         .ui.medium.centered.image
+           img(src=cdn+'/post_pictures/nintendo_phi.jpg')
+         .description
+           .ui.header.setBigText This deal will NOT LAST!! 
+           .ui.header 
+             | HURRY - only
+             span.setRed  3
+             |  left!!!
+      .content
+       .ui.header Enter your information to place an order for this CRAZY deal! 
+       .ui.form
+          .field(data-tooltip=phishingWarningText data-position="bottom left")
+            label First Name
+            input(readonly='')
+          .field(data-tooltip=phishingWarningText data-position="bottom left")
+            label Last Name
+            input(readonly='')
+          .field(data-tooltip=phishingWarningText data-position="bottom left")
+            label Birth Date
+            input(readonly='')
+          .field(data-tooltip=phishingWarningText data-position="bottom left")
+            label Email Address
+            input(readonly='')
+          .field(data-tooltip=phishingWarningText data-position="bottom left")
+            label Home Address
+            input(readonly='')
+          br
+          .actions
+            .ui.right.labeled.icon.button(data-tooltip=phishingWarningText data-position="top left")
+              | PLACE ORDER
+              i.checkmark.icon 
+            .ui.negative.right.labeled.icon.button
+              | CLOSE
+              i.close.icon               
+          
+block scripts
+  script(src='/postFunctionalities.js')
+  script(src="/module_js/phishing-esp/phishing-esp_script.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/script.css')
+  link(rel='stylesheet', href='/css/modules/phishing.css')
+            
+    

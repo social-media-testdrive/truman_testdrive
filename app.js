@@ -266,6 +266,7 @@ function isValidModId(req, res, next) {
     'habits',
     'habits-esp',
     'phishing',
+    'phishing-esp',
     'presentation',
     'privacy',
     'privacy-esp',
@@ -375,7 +376,7 @@ app.get('/end/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, c
       title: 'Finished',
       isResearchVersion
     });
-  } else if ((req.params.modId === 'esteem-esp') || (req.params.modId === 'habits-esp') || (req.params.modId === 'digfoot-esp') || (req.params.modId === 'privacy-esp') || (req.params.modId === 'accounts-esp') || (req.params.modId === 'digital-literacy-esp')) {
+  } else if ((req.params.modId === 'esteem-esp') || (req.params.modId === 'habits-esp') || (req.params.modId === 'digfoot-esp') || (req.params.modId === 'privacy-esp') || (req.params.modId === 'accounts-esp') || (req.params.modId === 'digital-literacy-esp') || (req.params.modId === 'phishing-esp')) {
     res.render('base_end-esp.pug', {
       title: 'Terminado',
       isResearchVersion
@@ -490,7 +491,7 @@ app.get('/gaming/targeted', passportConfig.isAuthenticated, setHttpResponseHeade
 app.get('/intro/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
   if (req.params.modId === 'delete') {   // anticipating a specific user behavior that causes 500 errors
     res.redirect('/');
-  } else if (req.params.modId === 'esteem-esp' || req.params.modId === 'habits-esp' || req.params.modId === 'digfoot-esp' || req.params.modId === 'privacy-esp') {
+  } else if (req.params.modId === 'esteem-esp' || req.params.modId === 'habits-esp' || req.params.modId === 'digfoot-esp' || req.params.modId === 'privacy-esp' || req.params.modId === 'accounts-esp' || req.params.modId === 'digital-literacy-esp' || req.params.modId === 'phishing-esp') {
     res.render('base_intro-esp.pug', {
       title: 'Bienvenidos'
     });
@@ -561,7 +562,7 @@ app.get('/gaming/targeted', passportConfig.isAuthenticated, setHttpResponseHeade
 app.get('/intro/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
   if (req.params.modId === 'delete') { // anticipating a specific user behavior that causes 500 errors
     res.redirect('/');
-  } else if (req.params.modId === 'esteem-esp' || req.params.modId === 'habits-esp' || req.params.modId === 'digfoot-esp' || req.params.modId === 'privacy-esp') {
+  } else if (req.params.modId === 'esteem-esp' || req.params.modId === 'habits-esp' || req.params.modId === 'digfoot-esp' || req.params.modId === 'privacy-esp' || req.params.modId === 'accounts-esp' || req.params.modId === 'digital-literacy-esp' || req.params.modId === 'phishing-esp') {
     res.render('base_intro-esp.pug', {
       title: 'Bienvenidos'
     });
@@ -587,7 +588,7 @@ app.get('/privacy', setHttpResponseHeaders, csrfProtection, addCsrf, function (r
 
 // Render the reflection page (all modules).
 app.get('/results/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, async function (req, res) {
-  if (req.params.modId === 'digfoot-esp' || req.params.modId === 'privacy-esp') {
+  if (req.params.modId === 'esteem-esp' || req.params.modId === 'habits-esp' || req.params.modId === 'digfoot-esp' || req.params.modId === 'privacy-esp' || req.params.modId === 'accounts-esp' || req.params.modId === 'digital-literacy-esp' || req.params.modId === 'phishing-esp') {
     const data = await fs.readFileAsync(`${__dirname}/public2/json/esp-reflectionSectionData.json`);
     const reflectionData = JSON.parse(data.toString());
     res.render(req.params.modId + '/' + req.params.modId + '_results', {
