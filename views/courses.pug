@@ -36,6 +36,29 @@ block content
                   //- i.arrow.right.icon
 
         //- Courses
+
+        .limit
+          //- h2.ui.header#in-progress Courses:
+          a.ui#theft-link(href='/about/grandparent' alt="Begin grandparent scams module")
+            .ui.raised.segment
+              .ui.fluid.container(style="height: 200px;")
+                .ui.image.banner
+                  img(src="/images/grandparent/grandparent-scams-banner.png", alt="grandparent scams Banner Image")
+
+                  #theft-progress.ui.bottom.small.progress(style='margin:0;padding:0;' data-percent=user.moduleProgress.grandparent.percent)
+                    .bar(style='border-radius: 0 !important;')
+                      .progress
+              #raised-content(style="padding-top: 20px;")
+                h3.ui.header.large.home-mod-title
+                  | Grandparent Scams
+                //- p(style="color:black") Understand the consequences of grandparent scams and learn how to identify and take action against phishing scams on social media.
+                button.ui.huge.blue.button.right.floated#nextButton
+                  | Learn Now
+                  i.arrow.right.icon
+
+
+        br
+        br
         .limit
           //- h2.ui.header#in-progress Courses:
           a.ui#theft-link(href='/about/romance' alt="Begin romance and friendship scams module")
@@ -51,26 +74,6 @@ block content
                 h3.ui.header.large.home-mod-title
                   | Romance & Friendship Scams
                 //- p(style="color:black") Description
-                button.ui.huge.blue.button.right.floated#nextButton
-                  | Learn Now
-                  i.arrow.right.icon
-        br
-        br
-        .limit
-          //- h2.ui.header#in-progress Courses:
-          a.ui#theft-link(href='/about/grandparent' alt="Begin grandparent scams module")
-            .ui.raised.segment
-              .ui.fluid.container(style="height: 200px;")
-                .ui.image.banner
-                  img(src="/images/grandparent-scams-banner.jpg", alt="grandparent scams Banner Image")
-
-                  #theft-progress.ui.bottom.small.progress(style='margin:0;padding:0;' data-percent=user.moduleProgress.grandparent.percent)
-                    .bar(style='border-radius: 0 !important;')
-                      .progress
-              #raised-content(style="padding-top: 20px;")
-                h3.ui.header.large.home-mod-title
-                  | grandparent scams
-                //- p(style="color:black") Understand the consequences of grandparent scams and learn how to identify and take action against phishing scams on social media.
                 button.ui.huge.blue.button.right.floated#nextButton
                   | Learn Now
                   i.arrow.right.icon

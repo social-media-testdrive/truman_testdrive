@@ -663,7 +663,8 @@
     border-radius: 50%;
     height: 3em;
     line-height: 2.86em;
-    font-size: 5em;
+    /* size of play button */
+    font-size: 4em;
     margin-top: -1.5em; 
 
     /* glow */

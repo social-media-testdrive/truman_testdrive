@@ -30,9 +30,25 @@ block styles
 block scripts       
     script.
         var speechData= !{JSON.stringify(speechMarks)}; // quizData is passed to pug file via render function in app.js
+        //- for quiz
+        var questionData = !{JSON.stringify(quizData)}; // quizData is passed to pug file via render function in app.js
+        var currentTime = "#{currentTime}";
+        var currentDate = "#{currentDate}";
+        //- var futureDate = "#{futureDate}"; 
+        var email = "#{user.email}";
+        var username = "#{user.name}";
+        var current_percent = 50;
+        var link = "/course-player?module=identity&section=concepts&page=takeaways";
+        var userName = "#{user.name}";
+        var avatar = "#{user.avatar.toLowerCase()}";
+        var avatarImage = "#{user.avatarImg}";
+        var module = "#{module}";
+        var section = "#{section}";
+        var startPage = "#{page}"; 
+        var total = parseInt(#{numPages});
+    if page === 'objectives'
+        script(src='/module_js/identity/villain-reveal.js')
 
-    script(src='/module_js/identity/identity-theft.js')  
-    script(src='/module_js/identity/concepts-activity.js')  
     //- script(src='/js/text2speech.js')  
     script.
         window.addEventListener('load', function() {
@@ -45,29 +61,12 @@ block scripts
                 revealMe.classList.remove('hidden'); // Show the content when everything is loaded
             //- }, 6000); 
         });
-    script. 
-        var userName = "#{user.name}";
-        var avatar = "#{user.avatar.toLowerCase()}";
-        var avatarImage = "#{user.avatarImg}";
-        var module = "#{module}";
-        var section = "#{section}";
-        var startPage = "#{page}"; 
-        var total = parseInt(#{numPages});
-    if page === 'objectives'
-        script(src='/module_js/identity/villain-reveal.js')
-    script.
-        //- for quiz
-        var questionData = !{JSON.stringify(quizData)}; // quizData is passed to pug file via render function in app.js
-        var currentTime = "#{currentTime}";
-        var currentDate = "#{currentDate}";
-        //- var futureDate = "#{futureDate}"; 
-        var email = "#{user.email}";
-        var username = "#{user.name}";
-        var current_percent = 50;
-        var link = "/course-player?module=identity&section=concepts&page=takeaways";
 
     script(src='/module_js/module_quiz.js', mod-id=module, page=page, current-section=section, next-link=link, progress=progress)
-        
+    script(src='/module_js/module-narration.js')    
+    script(src='/module_js/identity/identity-theft.js')  
+    script(src='/module_js/identity/concepts-activity.js')  
+   
         //- startQuiz()
     //- console.log("Page is quiz-template")
     //- console.log("module: " + module)

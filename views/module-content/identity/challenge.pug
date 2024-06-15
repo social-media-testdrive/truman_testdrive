@@ -26,9 +26,21 @@ block styles
 block scripts      
     script.
         //- send as json with all avatars speech marks
-        var speechData = !{JSON.stringify(speechMarks)}; // quizData is passed to pug file via render function in app.js
-    script(src='/module_js/identity/identity-theft.js')    
-    //- script(src='/js/text2speech.js')  
+        var speechData= !{JSON.stringify(speechMarks)}; // quizData is passed to pug file via render function in app.js
+        var avatar = "#{user.avatar.toLowerCase()}";
+        var module = "#{module}";
+        var section = "#{section}";
+        var startPage = "#{page}"; 
+        var total = parseInt(#{numPages});
+        //- for quiz
+        var questionData = !{JSON.stringify(quizData)}; // quizData is passed to pug file via render function in app.js
+        var currentTime = "#{currentTime}";
+        var currentDate = "#{currentDate}";
+        //- var futureDate = "#{futureDate}"; 
+        var email = "#{user.email}";
+        var username = "#{user.name}";
+        var current_percent = 10;
+        var link = "/course-player?module=identity&section=challenge&page=badge";
     script.
         window.addEventListener('load', function() {
             // Simulate a delayed loading process for demonstration
@@ -44,26 +56,14 @@ block scripts
                 pageLoaded = true;
             //- }, 6000); 
         });
-    
-    script. 
-        var avatar = "#{user.avatar.toLowerCase()}";
-        var module = "#{module}";
-        var section = "#{section}";
-        var startPage = "#{page}"; 
-        var total = parseInt(#{numPages});
-    script.
-        //- for quiz
-        var questionData = !{JSON.stringify(quizData)}; // quizData is passed to pug file via render function in app.js
-        var currentTime = "#{currentTime}";
-        var currentDate = "#{currentDate}";
-        //- var futureDate = "#{futureDate}"; 
-        var email = "#{user.email}";
-        var username = "#{user.name}";
-        var current_percent = 10;
-        var link = "/course-player?module=identity&section=challenge&page=badge";
-
-    script(src='/module_js/module_quiz.js', mod-id=module, page=page, current-section=section, next-link=link, progress=progress)
         
+    script(src='/module_js/module_quiz.js', mod-id=module, page=page, current-section=section, next-link=link, progress=progress)
+    script(src='/module_js/module-narration.js')    
+
+    //- included after so can use variables like pastAttempts when loading the quiz page to decide wether it show previous results or question 1
+    script(src='/module_js/identity/identity-theft.js')    
+
+
         //- startQuiz()
     //- console.log("Page is quiz-template")
     //- console.log("module: " + module)

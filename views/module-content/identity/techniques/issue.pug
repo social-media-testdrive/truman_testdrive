@@ -4,8 +4,9 @@
         .top-info#examplePage(style="margin-top: 10px;")
             h1.ui.header.large#learn-title
                 .content
-                    i.book.icon
-                    | Example 1: Claim there is an account/payment issue
+                    i.book.icon 
+                    span#narrate-1-issue  
+                        span Example 1: Claim there is an account/payment issue
                     a(href='https://consumer.ftc.gov/articles/how-recognize-and-avoid-phishing-scams' target='_blank')
                         sup [1]
             //- h1.ui.header.large#learn-title
@@ -34,32 +35,53 @@
                                 //-             strong Subject: 
                                 //-             | Account on hold
                                 .content 
-                                    .image-container(style="background: #F3F4F5; margin: 0; padding: 2px;")
+                                    .image-container#narrate-image-issue(style="background: #F3F4F5; margin: 0; padding: 2px;")
                                         img.ui.small.image#netflix-logo(src='/images/netflix-logo.png' alt='Netflix logo' style="width: 150px;")
                                     .ui.basic.segment.limit-content
-                                        h2.bold-message Please update your payment details
-                                        p Hi Dear Customer,
-                                        p.response We're having some trouble with your current billing information. Please update your payment details.
-                                        h2.update UPDATE ACCOUNT NOW
-                                        p Need help? We're here if you need it. Visit the <span class="underline-text">Help Center</span> or <span class="underline-text">contact us</span> now
-                                        p -Your friends at Netflix
+                                        h2.bold-message#narrate-2-issue
+                                            span Please update your payment details
+                                        p#narrate-3-issue 
+                                            span Hi Dear Customer,
+                                        p.response#narrate-4-issue
+                                            span We're having some trouble with your current billing information. 
+                                            span#narrate-5-issue
+                                                span Please update your payment details.
+                                        h2.update#narrate-6-issue
+                                            span UPDATE ACCOUNT NOW
+                                        p#narrate-7-issue
+                                            span Need help? We're here if you need it. 
+                                            span#narrate-8-issue
+                                                span Visit the 
+                                                    span.underline-text#showLink
+                                                        span Help Center
+                                                    span  now
+                                        p#narrate-10-issue
+                                            span -Your friends at Netflix
                 .eight.wide.column
                     //- p  Email scams can be tricky to spot, especially when they look like they come from a legitimate company you know. 
                     //- p Here are some common signs why this email is not legitimate:
                     p
-                        u Generic greeting
-                        | : if the email starts with a generic greeting like 'Dear Customer' instead of your name, it could be a sign that the email is not legitimate.
+                        u#narrate-11-issue 
+                            span Generic greeting:
+                        span#narrate-12-issue 
+                            span if the email starts with a generic greeting like 'Dear Customer' instead of your name, it could be a sign that the email is not legitimate.
                     p
-                        u Suspicious claim
-                        | : if the email claims that your account is on hold or you have a billing problem without providing specific details about the issue, it could be a scam.
+                        u#narrate-13-issue 
+                            span Suspicious claim:
+                        span#narrate-14-issue 
+                            span if the email claims that your account is on hold or you have a billing problem without providing specific details about the issue, it could be a scam.
                     p
-                        u Phishing link
-                        | : if the email invites you to click on a new link to update your payment details, the link can be a phishing link.
+                        u#narrate-15-issue 
+                            span Phishing link:
+                        span#narrate-16-issue 
+                            span if the email invites you to click on a new link to update your payment details, the link can be a phishing link.
                     .callout
                         .dark-blue-square
                             img(src=user.avatarImg, alt='avatar picture')
                         .light-blue-content
-                            h3.call-header Important
-                            p Legitimate companies won’t email or text you with a link to update your payment information.
+                            h3.call-header
+                                span#narrate-header-issue Important
+                            p#narrate-17-issue 
+                                span Legitimate companies won’t email or text you with a link to update your payment information.
                     i.source *Sources: 1. Consumer Advice 
                         a(href='https://consumer.ftc.gov/articles/how-recognize-and-avoid-phishing-scams' target='_blank') 'How to Recognize and Avoid Phishing Scams' 

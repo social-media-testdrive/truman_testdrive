@@ -380,3 +380,19 @@ img#dart_image1.ui.medium.image {
 .gradedIcon {
     font-size: 1.5rem !important;
 }
+
+.highlightedResults {
+    background-color: #FBF719;
+    color: black;
+}
+
+.highlightedButton {
+    background-color: #FBF719 !important;
+    color: black !important;
+    /* box-shadow: 0 0 8px 4px #FBF719 !important;  */
+}
+
+.highlightedButton:hover {
+    background-color: #c4c117 !important;
+    color: black !important;
+}

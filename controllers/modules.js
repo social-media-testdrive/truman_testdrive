@@ -56,7 +56,7 @@ exports.getModule = async (req, res) => {
     } else if(section === 'fake'){
       numPages = 12;
     } else if(section === 'contact'){
-      numPages = 12;
+      numPages = 16;
     } else if(section === 'requests'){
       numPages = 13;
     } else if(section === 'techniques') {

@@ -4,30 +4,42 @@
             h1.ui.header.large#learn-title
                 .content
                     i.book.icon
-                    | Example 4: Suspicious activity or log-in attempts
+                    span#narrate-1-suspicious
+                        span Example 4: Suspicious activity or log-in attempts
             .ui.centered.stackable.grid
                 .seven.wide.column
                     .ios-chat-container
                         .chat(style="width: 100%; align-items: center; font-size: 1.4rem;")
                             .yours.messages
-                                .message.last(style="width: 500px; margin-top: 20px; margin-bottom: 20px;")
-                                    | BMO: ALERT For security reasons, your account has been temporarily suspended. Please verify your information:  
-                                    u bit.ly/123340
-                                .message.last(style="width: 500px;")
-                                    | Wells Fargo Bank: Your account has been temporarily blocked. Please log in to 
-                                    u http://goo.gl/23489 
+                                .message.last#narrate-2-suspicious(style="width: 500px; margin-top: 20px; margin-bottom: 20px;")
+                                    span Bank of America: ALERT For security reasons, your account has been temporarily suspended. 
+                                    span#narrate-3-suspicious 
+                                        span Please verify your information:  
+                                    u
+                                        span#narrate-title-suspicious bit.ly/123340
+                                .message.last#narrate-4-suspicious(style="width: 500px;")
+                                    span Wells Fargo Bank: Your account has been temporarily blocked. 
+                                    span#narrate-5-suspicious
+                                        span Please log in to 
+                                    u 
+                                        span#narrate-time-suspicious http://goo.gl/23489 
                 .nine.wide.column
-                    p(style="margin-top: 20px;") Here are signs that the two messages are scams:
+                    p#narrate-6-suspicious(style="margin-top: 20px;") 
+                        span Here are signs that the two messages are scams:
                         .ui.bulleted.list
-                            .item 
-                                | Claim there’s a problem with your account or your payment information without specific information.
-                            .item 
-                                | Induce a sense of threat or urgency and compels you to click on the provided link.
-                            .item
-                                | Fail to demonstrate official sources.
+                            .item#narrate-7-suspicious 
+                                span Claim there’s a problem with your account or your payment information without specific information.
+                            .item#narrate-8-suspicious 
+                                span Induce a sense of threat or urgency and compels you to click on the provided link.
+                            .item#narrate-9-suspicious
+                                span Fail to demonstrate official sources.
                     .callout
                         .dark-blue-square
                             img(src=user.avatarImg, alt='avatar picture')
                         .light-blue-content
-                            h3.call-header Important
-                            p Beware of urgent requests for personal information. Legitimate companies don't ask for it this way.
+                            h3.call-header
+                                span#narrate-header-suspicious Important
+                            p#narrate-10-suspicious
+                                span Beware of urgent requests for personal information. 
+                                span#narrate-11-suspicious
+                                    span Legitimate companies don't ask for it this way.
