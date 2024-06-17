@@ -249,6 +249,13 @@ function highlightWord(start, finish, word, element) {
             temp.classList.add(wordClass);
             // $('#narrate-nested-group-' + currentPage).addClass(sentenceClass);
         }
+    } else if(element === "narrate-link-2-" + currentPage) {
+        // console.log("narrating a link-2 in module narration narrate-link-2!")
+        if(wordHighlighting || sentenceHighlighting) {
+            let temp = document.getElementById("narrate-link-2-" + currentPage);
+            temp.classList.add(wordClass);
+            // $('#narrate-nested-group-' + currentPage).addClass(sentenceClass);
+        }
     } else if(element === "showLink") {
         if(wordHighlighting || sentenceHighlighting) {
             let temp = document.getElementById("showLink");
@@ -345,7 +352,7 @@ function highlightWord(start, finish, word, element) {
             // highlighting nested groups
             let htmlElement = document.getElementById(element);
             if (htmlElement && htmlElement.parentElement) {
-                // console.log("YOO it has a parent nested!!!!!!!!!!!!")
+                console.log("YOO it has a parent nested!!!!!!!!!!!!")
                 // console.log("BEY: ", htmlElement);
                 // console.log("BEY THe parent element is: ", htmlElement.parentElement);
                 // console.log("Bey parent classlist: ", htmlElement.parentElement.classList);
@@ -583,6 +590,10 @@ function clearWordHighlights() {
     if(previousElement.includes("narrate-link")){
         document.getElementById("narrate-link-" + currentPage).classList.remove('highlighted-word-dark');
         document.getElementById("narrate-link-" + currentPage).classList.remove('highlighted-word');
+    }
+    if(previousElement.includes("narrate-link-2")){
+        document.getElementById("narrate-link-2-" + currentPage).classList.remove('highlighted-word-dark');
+        document.getElementById("narrate-link-2-" + currentPage).classList.remove('highlighted-word');
     }
     if(previousElement.includes("narrate-time")){ 
         document.getElementById(previousElement).classList.remove('highlighted-sentence');
