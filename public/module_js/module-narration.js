@@ -256,6 +256,13 @@ function highlightWord(start, finish, word, element) {
             temp.classList.add(wordClass);
             // $('#narrate-nested-group-' + currentPage).addClass(sentenceClass);
         }
+    } else if(element === "narrate-link-3-" + currentPage) {
+        // console.log("narrating a link-3 in module narration narrate-link-3!")
+        if(wordHighlighting || sentenceHighlighting) {
+            let temp = document.getElementById("narrate-link-3-" + currentPage);
+            temp.classList.add(wordClass);
+            // $('#narrate-nested-group-' + currentPage).addClass(sentenceClass);
+        }
     } else if(element === "showLink") {
         if(wordHighlighting || sentenceHighlighting) {
             let temp = document.getElementById("showLink");
@@ -382,7 +389,7 @@ function highlightWord(start, finish, word, element) {
             selectedElement = temp.getElementsByTagName('span')[0];
             console.log("The selected element: ", selectedElement);
 
-            // console.log("BEYYYY the selected element: " + selectedElement + " and the element: " + element + " and the word: " + word + " and the start: " + start + " and the finish: " + finish + " and the word class: " + wordClass + " and the sentence class: " + sentenceClass)
+            console.log("BEYYYY the selected element: " + selectedElement + " and the element: " + element + " and the word: " + word + " and the start: " + start + " and the finish: " + finish + " and the word class: " + wordClass + " and the sentence class: " + sentenceClass)
             if(sentenceHighlighting) {
                 selectedElement.classList.add(sentenceClass);
             }
@@ -594,6 +601,10 @@ function clearWordHighlights() {
     if(previousElement.includes("narrate-link-2")){
         document.getElementById("narrate-link-2-" + currentPage).classList.remove('highlighted-word-dark');
         document.getElementById("narrate-link-2-" + currentPage).classList.remove('highlighted-word');
+    }
+    if(previousElement.includes("narrate-link-3")){
+        document.getElementById("narrate-link-3-" + currentPage).classList.remove('highlighted-word-dark');
+        document.getElementById("narrate-link-3-" + currentPage).classList.remove('highlighted-word');
     }
     if(previousElement.includes("narrate-time")){ 
         document.getElementById(previousElement).classList.remove('highlighted-sentence');
