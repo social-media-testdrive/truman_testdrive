@@ -620,7 +620,7 @@ function setLinks(currentPage) {
             backlink = baseurl + 'quiz';
             nextlink = baseurl + 'takeaways';
         } else if(currentPage === 'takeaways') {
-            backlink = baseurl + 'quiz';
+            backlink = baseurl + 'reflection';
             nextlink = '/course-player?module=identity&section=reporting&page=objectives';
         }
     } else if(section === 'reporting') {

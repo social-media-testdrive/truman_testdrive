@@ -847,7 +847,18 @@ function displayCurrentQuestion()
                 // make label a p element so we can style it for multiline text for the long multi-select question prompts
                 labelElement = document.createElement("label");
                 const choiceText = document.createElement("p");
-                choiceText.textContent = choice.text;
+
+                let idName;
+                if(currentQuestion === 1) {
+                    idName = "narrate-" + choiceKey + "-quiz";
+                } else {
+                    idName = "narrate-" + choiceKey + "-quiz-" + currentQuestion;
+                }
+
+                choiceText.id = idName; // Set the ID of the p tag
+                const spanElement = document.createElement("span"); // Create a span tag
+                spanElement.textContent = choice.text; // Set text content to the span tag
+                choiceText.appendChild(spanElement);
                 labelElement.appendChild(choiceText);
             } else if (questionData[currentQuestion].type === "multi_select") {
                 // make label a p element so we can style it for multiline text for the long multi-select question prompts
