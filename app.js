@@ -341,6 +341,8 @@ app.post("/postEndTime", userController.postEndTime);
 app.post("/postModuleProgress", userController.postModuleProgress);
 app.post("/postQuizScore", userController.postQuizScore);
 app.get("/getLatestQuizScore", userController.getLatestQuizScore);
+app.get("/getNarrationSettings", userController.getNarrationSettings);
+app.post("/updateNarrationSettings", userController.updateNarrationSettings);
 app.post("/postAvatar", userController.postAvatar);
 app.post("/postPracticeChoice", userController.postPracticeChoice);
 app.post("/getPracticeChoices", userController.getPracticeChoices);

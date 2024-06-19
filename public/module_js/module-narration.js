@@ -27,6 +27,12 @@ let hiddenHighlight = false;
 let showingHere = false;
 let showingLink = false;
 
+let previousElement = "none";
+let started = false; 
+// *later set to DB values for curent user highlighting preferences
+let wordChecked = true;
+let sentenceChecked = true;
+
 // remove quiz question and slide numbers on reload 
 window.onload = function() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -43,6 +49,41 @@ window.onload = function() {
         const newUrl = window.location.pathname + '?' + urlParams.toString();
         window.history.replaceState(null, '', newUrl); // Replace the URL without reloading
     }
+
+    // get narration settings from db
+    fetch(`/getNarrationSettings`)
+        .then(response => response.json())
+        .then(userDBNarration => {
+            console.log("Got the narration settings from the db: " + JSON.stringify(userDBNarration));
+
+            if(userDBNarration.length != 0) { // we have narration settings in the db
+                mute = userDBNarration.mute;
+                if(mute) {
+                    muteNarration();
+                    document.getElementById('mute-checkbox').checked = true;
+                }
+                voiceSpeed = userDBNarration.speed;
+                changeSpeed(voiceSpeed);
+                wordHighlighting = userDBNarration.wordHighlighting;
+                wordChecked = userDBNarration.wordHighlighting;
+                sentenceHighlighting = userDBNarration.sentenceHighlighting;
+                sentenceChecked = userDBNarration.sentenceHighlighting;
+                console.log("--mute: " + mute + " voice speed: " + voiceSpeed + " word highlighting: " + wordHighlighting + " sentence highlighting: " + sentenceHighlighting);
+
+                document.getElementById('highlight-words-checkbox').checked = wordHighlighting;
+                document.getElementById('highlight-sentences-checkbox').checked = sentenceHighlighting;
+                // also set mute toggle and speed
+                
+                document.getElementById('currentSpeed').innerText = voiceSpeed + "x";
+
+                toggleHighlighting();
+    
+            } 
+        })
+        .catch(error => {
+            console.error('Error getting narration settings from db:', error);
+        });
+
 };
 
 document.addEventListener('click', function clickHandler() {
@@ -53,11 +94,7 @@ document.addEventListener('click', function clickHandler() {
     document.removeEventListener('click', clickHandler);
 });
 
-let previousElement = "none";
-let started = false; 
-// *later set to DB values for curent user highlighting preferences
-let wordChecked = true;
-let sentenceChecked = true;
+
 
 function stopHighlighting() {
     clearWordHighlights();
@@ -75,20 +112,19 @@ function stopHighlighting() {
 
     selectedElement = null;
 
-    wordHighlighting = true; 
-    sentenceHighlighting = false;
+    // wordHighlighting = true; 
+    // sentenceHighlighting = false;
 
-    contrastWords = false;
-    // when 
-    hiddenHighlight = false;
+    // contrastWords = false;
+    // hiddenHighlight = false;
 
     showingHere = false;
     showingLink = false;
     previousElement = "none";
     started = false; 
     // *later set to DB values for curent user highlighting preferences
-    wordChecked = true;
-    sentenceChecked = true;
+    // wordChecked = true;
+    // sentenceChecked = true;
 
     const button = document.getElementById('play-pause-audio');
     var buttonIcon = document.querySelector('#play-pause-audio i.icon');
@@ -107,7 +143,82 @@ function stopHighlighting() {
 
 }
 
+function postNarrationSetting(type, isChecked) {
+    console.log("In toggle highlighting for: " + type + " and is checked: " + isChecked);
+    // save previous values so can see if going from: on to off to clear the highlights
+    let priorWordChecked = wordChecked;
+    let priorSentenceChecked = sentenceChecked;
+    // wordChecked = document.querySelector('.ui.toggle.checkbox.item#highlight-words input[type="checkbox"]').checked;
+    // sentenceChecked = document.querySelector('.ui.toggle.checkbox.item#highlight-sentences input[type="checkbox"]').checked;
+
+    // document.getElementById('highlight-words-checkbox').checked = wordHighlighting;
+    // document.getElementById('highlight-sentences-checkbox').checked = sentenceHighlighting;
+
+    if(type === "words") {
+        wordChecked = isChecked;
+    } else if(type === "sentences") {
+        sentenceChecked = isChecked;
+    } else if(type === "mute") {
+        mute = isChecked;
+    }
+
+    const data = {
+        type: type,
+        value: isChecked
+    };
+
+    fetch('/updateNarrationSettings', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Success:', data);
+        toggleHighlighting();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+function updateSpeed(speed) {
+    const data = {
+        type: 'speed',
+        value: speed
+    };
+
+    fetch('/updateNarrationSettings', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Success:', data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+
 function toggleHighlighting() {
+    console.log("7878 In toggle highlighting")
 
     // save previous values so can see if going from: on to off to clear the highlights
     let priorWordChecked = wordChecked;
@@ -824,34 +935,34 @@ function playAudio(thePage) {
 }
 
 function replayAudio() {
-    if(!mute) {
-        var audio = document.getElementById('narration-audio');
-        audio.currentTime = 0; // Set the playback position to the beginning
-        audio.play();
+    // if(!mute) {
+    var audio = document.getElementById('narration-audio');
+    audio.currentTime = 0; // Set the playback position to the beginning
+    audio.play();
 
-        var audio = document.getElementById('narration-audio');
-        const button = document.getElementById('play-pause-audio');
-        var buttonIcon = document.querySelector('#play-pause-audio i.icon');
-        var buttonText = document.querySelector('#play-pause-audio span.toggle-text');
+    var audio = document.getElementById('narration-audio');
+    const button = document.getElementById('play-pause-audio');
+    var buttonIcon = document.querySelector('#play-pause-audio i.icon');
+    var buttonText = document.querySelector('#play-pause-audio span.toggle-text');
 
-        button.classList.remove('grey'); // Remove the grey class
-        button.classList.add('blue'); // Add the blue class to change its color back
-        button.style.pointerEvents = 'auto';
+    button.classList.remove('grey'); // Remove the grey class
+    button.classList.add('blue'); // Add the blue class to change its color back
+    button.style.pointerEvents = 'auto';
 
-        buttonIcon.classList.remove('play', 'pause', 'check');
-        buttonIcon.classList.add('pause');
-        buttonText.innerText = 'Pause';
+    buttonIcon.classList.remove('play', 'pause', 'check');
+    buttonIcon.classList.add('pause');
+    buttonText.innerText = 'Pause';
 
-        $('#volume-icon').removeClass('off');
-        $('#volume-icon').addClass('up');  
+    $('#volume-icon').removeClass('off');
+    $('#volume-icon').addClass('up');  
 
-        restartWordHighlighting();
+    restartWordHighlighting();
 
-        // if(wordHighlighting || sentenceHighlighting) {
-        //     restartWordHighlighting();
-        // }
+    // if(wordHighlighting || sentenceHighlighting) {
+    //     restartWordHighlighting();
+    // }
 
-    }
+    // }
 }
 
 function restartWordHighlighting() {
@@ -946,30 +1057,6 @@ function updateAvatar(avatarName) {
 
         // reload page to complete avatar change ie not just voice but also avatar image and name etc
         location.reload();
-
-        // // const urlParams = new URLSearchParams(window.location.search);
-        // // const pageParam = urlParams.get('page');
-        // // console.log("Avatar change the page is: " + page);
-        // clearWordHighlights();
-
-        // const urlParams = new URLSearchParams(window.location.search);
-        // const currentPage = urlParams.get('page');
-    
-        // playAudio(currentPage);
-
-        // const button = document.getElementById('play-pause-audio');
-        // var buttonIcon = document.querySelector('#play-pause-audio i.icon');
-        // var buttonText = document.querySelector('#play-pause-audio span.toggle-text');
-
-        // button.classList.remove('grey'); // Remove the grey class
-        // button.classList.add('blue'); // Add the blue class to change its color back
-        // button.style.pointerEvents = 'auto';
-
-        // buttonIcon.classList.remove('play', 'pause', 'check');
-        // buttonIcon.classList.add('pause');
-        // buttonText.innerText = 'Pause';
-        // startHighlightingWords();
-
         
       } else {
         console.error('Failed to update avatar');

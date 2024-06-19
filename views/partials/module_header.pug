@@ -52,29 +52,29 @@ header(style="z-index: 1000 !important;")
                         .ui.basic.label(style="border: none; font-size: 1rem; padding-left: 5px;") Speed
                         .ui.dropdown3.item#select-narrator(onclick="stopPropagation(event);")
                             i.dropdown.icon
-                            .default.text 1x
+                            .default.text#currentSpeed 1x
                             .menu
-                                .item(data-value="0.5") 0.5x
-                                .item(data-value="0.75") 0.75x
-                                .item(data-value="1") 1x
-                                .item(data-value="1.25") 1.25x
-                                .item(data-value="1.5") 1.5x
-                                .item(data-value="1.75") 1.75x
-                                .item(data-value="2") 2x
+                                .item(data-value="0.5" onclick="updateSpeed(0.5)") 0.5x
+                                .item(data-value="0.75" onclick="updateSpeed(0.75)") 0.75x
+                                .item(data-value="1" onclick="updateSpeed(1)") 1x
+                                .item(data-value="1.25" onclick="updateSpeed(1.25)") 1.25x
+                                .item(data-value="1.5" onclick="updateSpeed(1.5)") 1.5x
+                                .item(data-value="1.75" onclick="updateSpeed(1.75)") 1.75x
+                                .item(data-value="2" onclick="updateSpeed(2)") 2x
 
                         .ui.basic.label(style="border: none; font-size: 1rem; padding-left: 5px;") Mute Audio
                         //- Toggle Narration
                         .ui.toggle.checkbox.item#toggle-narration(onclick="stopPropagation(event); muteNarration();")
-                            input(type="checkbox")
+                            input(type="checkbox" id="mute-checkbox" onchange="postNarrationSetting('mute', this.checked)")
                             label
                         //- Toggle Narration
                         .ui.basic.label(style="border: none; font-size: 1rem;  padding-left: 5px;") Highlight Words
-                        .ui.toggle.checkbox.item#highlight-words(onclick="stopPropagation(event); toggleHighlighting();")
-                            input(type="checkbox" checked)
+                        .ui.toggle.checkbox.item#highlight-words(onclick="stopPropagation(event);")
+                            input(type="checkbox" id="highlight-words-checkbox" onchange="postNarrationSetting('word', this.checked)")
                             label
                         .ui.basic.label(style="border: none; font-size: 1rem;  padding-left: 5px;") Highlight Sentences
-                        .ui.toggle.checkbox.item#highlight-sentences(onclick="stopPropagation(event); toggleHighlighting();")
-                            input(type="checkbox" checked)
+                        .ui.toggle.checkbox.item#highlight-sentences(onclick="stopPropagation(event);")
+                            input(type="checkbox" id="highlight-sentences-checkbox" onchange="postNarrationSetting('sentence', this.checked)")
                             label
 
                         //- .ui.labeled.ticked.slider.item#speed-control(style="font-size: 0.05rem;")

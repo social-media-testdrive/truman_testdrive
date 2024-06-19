@@ -14,6 +14,12 @@ const userSchema = new mongoose.Schema({
   emailVerificationToken: String,
   emailVerified: { type: Boolean, default: false },
 //   newsletterConsent: { type: Boolean, default: false },
+  narration: {
+    mute: { type: Boolean, default: false },
+    speed: { type: Number, default: 1 },
+    wordHighlighting: { type: Boolean, default: true },
+    sentenceHighlighting: { type: Boolean, default: true },
+  },
   badges: [
     {
       module: { type: String, required: true },

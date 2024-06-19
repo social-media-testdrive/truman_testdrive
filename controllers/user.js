@@ -855,6 +855,35 @@ exports.getLatestQuizScore = async (req, res, next) => {
   }
 };
 
+// get narration settings
+exports.getNarrationSettings = async (req, res, next) => {
+  // const { modID, currentSection } = req.query;
+
+  console.log("In GET narration settings request body***********************hiii****");
+  // console.log("Module ID: " + modID);
+  // console.log("Current Section: " + currentSection);
+
+  try {
+    const existingUser = await User.findOne({
+      email: req.user.email
+    });
+
+    if (existingUser) {      
+      let narrationSettings = existingUser.narration;
+
+      // Send the latest quiz attempt 
+      res.status(200).json(narrationSettings);
+
+      // send all quiz attempts
+      // res.status(200).json(quizAttempts);
+    } else {
+      res.status(404).send('User not found while retrieving narration settings');
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
 exports.postAvatar = async (req, res, next) => {
   const { avatar, avatarImg } = req.body;
 
@@ -894,6 +923,197 @@ exports.postAvatar = async (req, res, next) => {
       // });
     } else {
       res.status(404).send('User not found while updating avatar');
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.postSpeed = async (req, res, next) => {
+  const {speed} = req.body;
+
+  try {
+    const existingUser = await User.findOne({ email: req.user.email });
+
+    if (existingUser) {
+      // Update the user's avatar
+      existingUser.narration.speed = speed;
+
+      // Save to MongoDB database
+      await existingUser.save();
+
+      // Manually update the user object in the session
+      req.session.passport.user.narration.speed = speed;
+
+      // Save the session
+      req.session.save((err) => {
+        if (err) {
+          return next(err);
+        }
+
+        // Redirect or send a success response
+        res.status(200).send('Narration speed updated successfully');
+      });
+    } else {
+      res.status(404).send('User not found while updating narration speed');
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.postMute = async (req, res, next) => {
+  const {mute} = req.body;
+
+  try {
+    const existingUser = await User.findOne({ email: req.user.email });
+
+    if (existingUser) {
+      // Update the user's avatar
+      existingUser.narration.mute = mute;
+
+      // Save to MongoDB database
+      await existingUser.save();
+
+      // Manually update the user object in the session
+      req.session.passport.user.narration.mute = mute;
+
+      // Save the session
+      req.session.save((err) => {
+        if (err) {
+          return next(err);
+        }
+
+        // Redirect or send a success response
+        res.status(200).send('Narration mute updated successfully');
+      });
+    } else {
+      res.status(404).send('User not found while updating narration mute');
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.postWordHighlighting = async (req, res, next) => {
+  const {wordHighlighting} = req.body;
+
+  try {
+    const existingUser = await User.findOne({ email: req.user.email });
+
+    if (existingUser) {
+      // Update the user's avatar
+      existingUser.narration.wordHighlighting = wordHighlighting;
+
+      // Save to MongoDB database
+      await existingUser.save();
+
+      // Manually update the user object in the session
+      req.session.passport.user.narration.wordHighlighting = wordHighlighting;
+
+      // Save the session
+      req.session.save((err) => {
+        if (err) {
+          return next(err);
+        }
+
+        // Redirect or send a success response
+        res.status(200).send('Narration wordHighlighting updated successfully');
+      });
+    } else {
+      res.status(404).send('User not found while updating narration wordHighlighting');
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.postSentenceHighlighting = async (req, res, next) => {
+  const {sentenceHighlighting} = req.body;
+
+  try {
+    const existingUser = await User.findOne({ email: req.user.email });
+
+    if (existingUser) {
+      // Update the user's avatar
+      existingUser.narration.sentenceHighlighting = sentenceHighlighting;
+
+      // Save to MongoDB database
+      await existingUser.save();
+
+      // Manually update the user object in the session
+      req.session.passport.user.narration.sentenceHighlighting = sentenceHighlighting;
+
+      // Save the session
+      req.session.save((err) => {
+        if (err) {
+          return next(err);
+        }
+
+        // Redirect or send a success response
+        res.status(200).send('Narration sentenceHighlighting updated successfully');
+      });
+    } else {
+      res.status(404).send('User not found while updating narration sentenceHighlighting');
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.updateNarrationSettings = async (req, res, next) => {
+  const { type, value } = req.body;
+  console.log("*** in updateNarrationSettings, the passed ing params: ", type, value);
+
+  try {
+    const existingUser = await User.findOne({ email: req.user.email });
+
+    if (existingUser) {
+      // Update the user's narration settings
+      // existingUser.narration.speed = speed;
+      if (type === 'word') {
+          existingUser.narration.wordHighlighting = value;
+          // console.log("NOw the word highlighting in db is: ", existingUser.wordHighlighting)
+      } else if (type === 'sentence') {
+          existingUser.narration.sentenceHighlighting = value;
+          // console.log("NOw the sentence highlighting in db is: ", existingUser.sentenceHighlighting)
+      } else if(type === 'mute') {
+          existingUser.narration.mute = value;
+      } else if(type === "speed"){
+          existingUser.narration.speed = value;
+      } else {
+          return res.status(400).json({ error: 'Invalid type' });
+      }
+
+      // Save to MongoDB database
+      await existingUser.save();
+
+      // Manually update the user object in the session
+      if (req.session.passport && req.session.passport.user) {
+        if(type === 'word') {
+          req.session.passport.user.narration.wordHighlighting = value;
+        } else if(type === 'sentence') {
+          req.session.passport.user.narration.sentenceHighlighting = value;
+        } else if(type === 'mute') {
+          req.session.passport.user.narration.mute = value;
+        } else if(type === 'speed') {
+          req.session.passport.user.narration.speed = value;
+        }
+      } else {
+        return res.status(404).json({ error: 'User not found in the session' });
+      }
+
+      // Save the session
+      req.session.save((err) => {
+        if (err) {
+          return next(err);
+        }
+
+        // Redirect or send a success response
+        res.status(200).json({ message: 'Narration setting updated successfully' });
+      });
+    } else {
+      res.status(404).json({ error: 'User not found while updating narration setting' });
     }
   } catch (err) {
     next(err);
