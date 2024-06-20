@@ -1,28 +1,36 @@
 #contacted.hidden
-    .ui.container#personal-info-read
+    .ui.container#personal-info-read(style="width: 70%;")
         .limit#learn-target(style="padding: 0;")
+            h1.ui.header.large#learn-title
+                .content 
+                    i.book.icon 
+                    span#narrate-title-contacted Upon Receiving a Call
             .ui.stackable.grid
                 .six.wide.column.middle.aligned
-                    img.ui.image(src='/images/grandparent/types-4.png' style='width: 90%; height: 90%; object-fit: cover;')
+                    img.ui.centered.image(src='/images/grandparent/types-4.png' style='width: 50%; height: 50%; object-fit: cover;')
                 .ten.wide.column
-                    h1.ui.header.large#learn-title
-                        .content 
-                            i.book.icon 
-                            | Upon Receiving a Call
-
                     strong 
-                        span Unknown Number
+                        span#narrate-header-contacted Unknown Number
                     .ui.bulleted.list 
-                        .item 
+                        .item#narrate-1-contacted 
                             span Be cautious of calls from unknown numbers, as they could be potential scams. 
-                        .item 
-                            span Never answer calls with unknown numbers. If it is a legitimate call, they will leave a voicemail for you. Listen to the voicemail first, and then decide if you want to call them back.
+                        .item
+                            span#narrate-2-contacted  
+                                span Never answer calls with unknown numbers.
+                            span#narrate-3-contacted   
+                                span If it is a legitimate call, they will leave a voicemail for you. 
+                            span#narrate-4-contacted   
+                                span Listen to the voicemail first, and then decide if you want to call them back.
                                  
-                    strong known Number
+                    strong Known Number
                     .ui.bulleted.list 
-                        .item 
+                        .item#narrate-5-contacted   
                             span Even if the number appears to be from someone you know, like your grandchild, or an authentic place like a police department or law enforcement agency, be aware that caller ID numbers can be spoofed or faked.
-                    p 
-                        span  1) If you noticed any warning signs during the call, hang up immediately. Then, make separate phone calls to other family members to verify the information.
-                    p 
-                        span  2) Important! If the number is really from a law enforcement, remember that law enforcement agencies never demand money over phone.
+                    .ui.ordered.list  
+                        .item
+                            span#narrate-6-contacted    
+                                span If you noticed any warning signs during the call, hang up immediately. 
+                            span#narrate-7-contacted 
+                                span Then, make separate phone calls to other family members to verify the information.
+                        .item#narrate-8-contacted  
+                            span Important! If the number is really from a law enforcement, remember that law enforcement agencies never demand money over phone.
