@@ -604,9 +604,19 @@ function setLinks(currentPage) {
       
       else if (currentPage === "contacted") {
         backlink = baseurl + "preventative";
+
+        nextlink = baseurl + "reactive";
+      } else if (currentPage === "reactive") {
+        backlink = baseurl + "contacted";
+        nextlink = baseurl + "accident";
+      } else if (currentPage === "accident") {
+        backlink = baseurl + "reactive";
+        nextlink = baseurl + "post-actions";
+      } else if (currentPage === "post-actions") {
+        backlink = baseurl + "accident";
         nextlink = baseurl + "activity";
       } else if (currentPage === "activity") {
-        backlink = baseurl + "contacted";
+        backlink = baseurl + "post-actions";
         nextlink = baseurl + "reflection";
       } else if (currentPage === "reflection") {
         backlink = baseurl + "activity";

@@ -1,96 +1,74 @@
-#activity.hidden
-    .ui.container#activity-read(style="width: 100%;")
-        .limit#learn-target
-            h1.ui.header.large#learn-title(style="margin-top: 10px;")
-                .content
-                    i.dice.icon
-                    | Smart Safety Moves: Thumbs Up or Down?
-            .ui.icon.mini.message(style="padding: 5px; z-index: 99;")
-                i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
-                .content 
-                    p Select thumbs up if you should do it and select thumbs down if you shouldn’t do it.
-            .ui.stackable.grid
-                .eight.wide.column
-                    .ui.vertical.basic.segments
-                        .ui.vertical.segment
-                            .ui.grid
-                                .two.wide.column
-                                    .ui.circular.small.basic.icon.button.green-button
-                                        i.icon.thumbs.up
-                                .two.wide.column#thumb-down
-                                    .ui.circular.small.basic.icon.button.red-button(data-content="Try again")
-                                        i.icon.thumbs.down
-                                .twelve.wide.column
-                                    p Set up two-factor authentication on any account that allows it.                       
-                        .ui.vertical.segment
-                            .ui.grid
-                                .two.wide.column
-                                    .ui.circular.small.basic.icon.button.green-button
-                                        i.icon.thumbs.up
-                                .two.wide.column
-                                    .ui.circular.small.basic.icon.button.red-button(data-content="Try again")
-                                        i.icon.thumbs.down
-                                .twelve.wide.column
-                                    p Collect your mail every day and place a hold on it when away for several days.
-                        .ui.vertical.segment
-                            .ui.grid
-                                .two.wide.column
-                                    .ui.circular.small.basic.icon.button.red-button(data-content="Try again")
-                                        i.icon.thumbs.up
-                                .two.wide.column
-                                    .ui.circular.small.basic.icon.button.green-button
-                                        i.icon.thumbs.down
-                                .twelve.wide.column
-                                        p Carry your social security card in your wallet.
-                        .ui.vertical.segment
-                            .ui.grid
-                                .two.wide.column
-                                    .ui.circular.small.basic.icon.button.green-button
-                                        i.icon.thumbs.up
-                                .two.wide.column
-                                    .ui.circular.small.basic.icon.button.red-button(data-content="Try again")
-                                        i.icon.thumbs.down
-                                .twelve.wide.column
-                                    p Shred old documents, receipts, credit offers, account statements, and expired credit cards, and blackout sensitive information.
-                .eight.wide.column
-                    .ui.vertical.basic.segments
-                        .ui.vertical.segment
-                            .ui.grid
-                                .two.wide.column
-                                    .ui.circular.small.basic.icon.button.red-button(data-content="Try again")
-                                        i.icon.thumbs.up
-                                .two.wide.column
-                                    .ui.circular.small.basic.icon.button.green-button
-                                        i.icon.thumbs.down
-                                .twelve.wide.column
-                                        p Share personal information on your public social media.
-                        .ui.vertical.segment
-                            .ui.grid
-                                .two.wide.column
-                                    .ui.circular.small.basic.icon.button.green-button
-                                        i.icon.thumbs.up
-                                .two.wide.column
-                                    .ui.circular.small.basic.icon.button.red-button(data-content="Try again")
-                                        i.icon.thumbs.down
-                                .twelve.wide.column
-                                    p Check your medical bills, benefit statements, and records for suspicious activity.
-                        .ui.vertical.segment
-                            .ui.grid
-                                .two.wide.column
-                                    .ui.circular.small.basic.icon.button.green-button
-                                        i.icon.thumbs.up
-                                .two.wide.column
-                                    .ui.circular.small.basic.icon.button.red-button(data-content="Try again")
-                                        i.icon.thumbs.down
-                                .twelve.wide.column
-                                    p Review your credit card statements regularly.
-                        .ui.vertical.segment
-                            .ui.grid
-                                .two.wide.column
-                                    .ui.circular.small.basic.icon.button.green-button
-                                        i.icon.thumbs.up
-                                .two.wide.column
-                                    .ui.circular.small.basic.icon.button.red-button(data-content="Try again")
-                                        i.icon.thumbs.down
-                                .twelve.wide.column
-                                    p Create passwords with over 8 characters, incorporating a mix of uppercase and lowercase letters, numbers, and symbols.
+.ui.container#activity.hidden
+  .ui.container#know-you-read
+    .limit
+      h1.ui.header.large#learn-title
+        .content 
+          i.dice.icon
+          | Activity: Select the appropriate option.
+
+        .ui.grid(style=" margin-top: 10px;")
+          .two.column.row
+            .column
+              p.ui.container
+                button.ui.button.fluid#wrong-bttn-1(onclick="showAnswer1()", style="font-size: 20px;") Set your account to public mode to attract as many followers as possible.
+
+            .column
+              p.ui.container
+                button.ui.button.fluid#correct-bttn-1(onclick="showAnswer1()", style="font-size: 20px;") Set your account to private mode to prevent strangers from reaching you.
+
+          .two.column.row
+            .column
+              p.ui.container
+                button.ui.button.fluid#wrong-bttn-2(onclick="showAnswer2()", style="font-size: 20px;") To identify whether the caller is actually your grandchild, pay attention to the caller’s voice. If the voice sounds identical or very similar, it’s safe to believe the caller is indeed your grandchild.
+              
+            .column
+              p.ui.container
+                button.ui.button.fluid#correct-bttn-2(onclick="showAnswer2()", style="font-size: 20px;") To identify whether the caller is actually your grandchild, establish and use a secret code, question, or nickname known only to you and your grandchild.
+
+
+          .two.column.row
+            .column
+              p.ui.container
+                button.ui.button.fluid#correct-bttn-3(onclick="showAnswer3()", style="font-size: 20px;") You identified the call as a scam, but you chose not to report it or inform others about it since you weren’t deceived by the scam.
+
+              
+            .column
+              p.ui.container
+                button.ui.button.fluid#wrong-bttn-3(onclick="showAnswer3()", style="font-size: 20px;") Although you recognized the scam call and weren’t deceived, you chose to report it and inform your family about it since you don’t want them to be scammed.
+
+script.
+  function showAnswer1() {
+    $('#correct-bttn-1').css({
+      'background-color': '#E3F2DC',
+      'border': '2px solid #6F8C5A'
+    });
+    $('#wrong-bttn-1').css({
+      'background-color': '#F2CECE',
+      'border': '2px solid #F24141'
+    });
+  }
+
+  function showAnswer2() {
+    $('#correct-bttn-2').css({
+      'background-color': '#E3F2DC',
+      'border': '2px solid #6F8C5A'
+    });
+    $('#wrong-bttn-2').css({
+      'background-color': '#F2CECE',
+      'border': '2px solid #F24141'
+    });
+  }
+
+  function showAnswer3() {
+    $('#correct-bttn-3').css({
+      'background-color': '#E3F2DC',
+      'border': '2px solid #6F8C5A'
+    });
+    $('#wrong-bttn-3').css({
+      'background-color': '#F2CECE',
+      'border': '2px solid #F24141'
+    });
+  }
+
+block styles
+  link(rel='stylesheet', href='/css/grandparent/reporting/activity1.css')
