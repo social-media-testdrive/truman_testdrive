@@ -36,10 +36,12 @@ block scripts
         var section = "#{section}";
         var startPage = "#{page}"; 
         var total = parseInt(#{numPages});  
-    script(src='/module_js/identity/identity-theft-practice.js', emailData=emails) 
+        var emails = !{JSON.stringify(emails)}; 
 
-    //- if page === 'activity'
-    //-     script(src='/module_js/identity_theft_explore.js', emailData=emails)
+    script(src='/module_js/module-narration.js')    
+    script(src='/module_js/identity/identity-theft.js')  
+    script(src='/module_js/identity/practice.js') 
+
     script.
         window.addEventListener('load', function() {
             // Simulate a delayed loading process for demonstration
