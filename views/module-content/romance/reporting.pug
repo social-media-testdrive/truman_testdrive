@@ -29,7 +29,6 @@ block styles
 block scripts   
     script.
         var speechData= !{JSON.stringify(speechMarks)}; // quizData is passed to pug file via render function in app.js    
-    script(src='/module_js/romance/romance-scam.js')    
     //- script(src='/js/text2speech.js')  
     script.
         window.addEventListener('load', function() {
@@ -82,6 +81,9 @@ block scripts
         var username = "#{user.name}";
         var current_percent = 50;
         var link = "/course-player?module=identity&section=consequences&page=takeaways";
+
+    script(src='/module_js/module-narration.js')    
+    script(src='/module_js/romance/romance-scam.js')    
 
     script(src='/module_js/module_quiz.js', mod-id=module, page=page, current-section=section, next-link=link, progress=progress)
         

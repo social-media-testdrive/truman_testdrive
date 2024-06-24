@@ -10216,6 +10216,79 @@
         {"time": 9440,"type": "word","value": "theft","element": "narrate-4-takeaways"}        
       ]
     }
+  },
 
+  "practice":{
+    "objectives":{
+        "daring":[
+          {"time": 0,"type": "word","value": "none","element": "none"},
+          {"time": 0,"type": "word","value": "none","element": "none"}
+        ],
+        "intrepid":[
+          {"time": 0,"type": "word","value": "none","element": "none"},
+          {"time": 0,"type": "word","value": "none","element": "none"}
+        ],
+        "valiant":[
+          {"time": 0,"type": "word","value": "none","element": "none"},
+          {"time": 0,"type": "word","value": "none","element": "none"}
+        ]
+    },
+    "arrive":{
+        "daring":[
+          {"time": 0,"type": "word","value": "none","element": "none"},
+          {"time": 0,"type": "word","value": "none","element": "none"}
+        ],
+        "intrepid":[
+          {"time": 0,"type": "word","value": "none","element": "none"},
+          {"time": 0,"type": "word","value": "none","element": "none"}
+        ],
+        "valiant":[
+          {"time": 0,"type": "word","value": "none","element": "none"},
+          {"time": 0,"type": "word","value": "none","element": "none"}
+        ]
+    },
+    "activity":{
+        "daring":[
+          {"time": 0,"type": "word","value": "none","element": "none"},
+          {"time": 0,"type": "word","value": "none","element": "none"}
+        ],
+        "intrepid":[
+          {"time": 0,"type": "word","value": "none","element": "none"},
+          {"time": 0,"type": "word","value": "none","element": "none"}
+        ],
+        "valiant":[
+          {"time": 0,"type": "word","value": "none","element": "none"},
+          {"time": 0,"type": "word","value": "none","element": "none"}
+        ]
+    },
+    "reflection":{
+        "daring":[
+          {"time": 0,"type": "word","value": "none","element": "none"},
+          {"time": 0,"type": "word","value": "none","element": "none"}
+        ],
+        "intrepid":[
+          {"time": 0,"type": "word","value": "none","element": "none"},
+          {"time": 0,"type": "word","value": "none","element": "none"}
+        ],
+        "valiant":[
+          {"time": 0,"type": "word","value": "none","element": "none"},
+          {"time": 0,"type": "word","value": "none","element": "none"}
+        ]
+    },
+    "takeaways":{
+        "daring":[
+          {"time": 0,"type": "word","value": "none","element": "none"},
+          {"time": 0,"type": "word","value": "none","element": "none"}
+        ],
+        "intrepid":[
+          {"time": 0,"type": "word","value": "none","element": "none"},
+          {"time": 0,"type": "word","value": "none","element": "none"}
+        ],
+        "valiant":[
+          {"time": 0,"type": "word","value": "none","element": "none"},
+          {"time": 0,"type": "word","value": "none","element": "none"}
+        ]
+    }
   }
 }
+

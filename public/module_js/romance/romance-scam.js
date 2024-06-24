@@ -3,79 +3,120 @@ let pageReload= false;
 let badgeEarned = false;
 
 $(document).ready(function() {
-    if(speechData !== "none") {
-        $('#page-article').click();
-    } else {
-        $('#volume-button').hide();
+  if(speechData !== "none") {
+    $('#page-article').click();
+} else {
+    $('#volume-button').hide();
+}
+
+// Check if the video element exists before initializing Video.js
+if ($('#my_video_1').length > 0) {
+    // Initialize Video.js and make it so when user clicks on the video, stop the voiceover narration and highlighting
+    var player = videojs('my_video_1');
+
+    // Add event listener for the 'play' event using Video.js's on() method
+    // could use 'play' 'pause' 'click' etc 
+    player.on('play', function() {
+        console.log("video playing");
+        turnOffNarrationAndHighlighting();
+    });
+} 
+// else {
+//     console.log("No video element found with ID 'my_video_1'");
+// }
+
+// Load the first page based on the URL
+// console.log("The start page: " + startPage);
+// narration audio dropdown
+$('.ui.dropdown')
+    .dropdown()
+;
+$('.ui.dropdown2').dropdown({
+    onChange: function(value, text, $selectedItem) {
+        updateAvatar(value.replace(/,/g, ''));
     }
+});
+$('.ui.dropdown3').dropdown({
+    onChange: function(value, text, $selectedItem) {
+        changeSpeed(value.replace(/,/g, ''));
+    }
+});
 
-    // Check if the video element exists before initializing Video.js
-    if ($('#my_video_1').length > 0) {
-        // Initialize Video.js and make it so when user clicks on the video, stop the voiceover narration and highlighting
-        var player = videojs('my_video_1');
+$('.ui.slider')
+    .slider({
+    min: 0.5,
+    max: 2,
+    start: 1,
+    step: 0.25
+    });
+;
+// later make so check from db whether to play audio / highlight 
+setLinks(startPage);
+updateProgressBar();
 
-        // Add event listener for the 'play' event using Video.js's on() method
-        // could use 'play' 'pause' 'click' etc 
-        player.on('play', function() {
-            console.log("video playing");
-            turnOffNarrationAndHighlighting();
+// for testing only do pages with speech data to avoid console log error 
+if(speechData !== "none") {
+
+    if(page === 'quiz') {
+        document.addEventListener('QuizDataLoaded', function(e) {
+            pastAttempts = e.detail.pastAttempts;
+            console.log("the past attempts now after custom event loaded: " + pastAttempts);
+            if(pastAttempts) {
+                const urlParams = new URLSearchParams(window.location.search);
+                page = "quiz-results";
+                urlParams.set('question', page); 
+                const newUrl = window.location.pathname + '?' + urlParams.toString();
+                history.pushState({path: newUrl}, '', newUrl);
+            }
+            playAudio(page);
+            toggleHighlighting();
+            startHighlightingWords();
         });
     } 
-    // else {
-    //     console.log("No video element found with ID 'my_video_1'");
-    // }
+    // } else if(page === 'types') {
+    // want event added to types page from wherever the submodule is loaded into as well, not just when it loads in from the types page directly. So include in else instead of else if
+    else  {
+        // add event listener for types slideshow pages to play correct audio for the current slide
+        $('#steps-slider').on('afterChange', function(event, slick, currentSlide){
+            // slide count starts at zero so add 1 to get the correct slide number
+            let slideNum = currentSlide + 1;
+            console.log('Current slide number:', slideNum);
 
-    $('.ui.dropdown')
-        .dropdown()
-    ;
-    $('.ui.dropdown2').dropdown({
-        onChange: function(value, text, $selectedItem) {
-            updateAvatar(value.replace(/,/g, ''));
-        }
-    });
-    $('.ui.dropdown3').dropdown({
-        onChange: function(value, text, $selectedItem) {
-            changeSpeed(value.replace(/,/g, ''));
-        }
-    });
+            if(slideNum !== 1) {
+                slideResetNarrationAndHighlighting(); // stop and remove previous audio/highlighting (needed to fix when user clicks next before narration is finished)
 
-    $('.ui.slider')
-        .slider({
-        min: 0.5,
-        max: 2,
-        start: 1,
-        step: 0.25
-        });
-    ;
-    // later make so check from db whether to play audio / highlight 
-    setLinks(startPage);
-    updateProgressBar();
+                const urlParams = new URLSearchParams(window.location.search);
+                page = "types-" + slideNum;
+                urlParams.set('slide', page); 
+                const newUrl = window.location.pathname + '?' + urlParams.toString();
+                history.pushState({path: newUrl}, '', newUrl);
 
-    // for testing only do pages with speech data to avoid console log error 
-    if(speechData !== "none") {
+                playAudio(page);
+                toggleHighlighting();
+                startHighlightingWords();          
+            } else {
+                // remove slide param when returning back to first slide
+                if(window.location.search.includes('slide')) {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    urlParams.delete('slide');
+                    const newUrl = window.location.pathname + '?' + urlParams.toString();
+                    history.pushState({path: newUrl}, '', newUrl);
 
-      if(page === 'quiz') {
-          document.addEventListener('QuizDataLoaded', function(e) {
-              pastAttempts = e.detail.pastAttempts;
-              console.log("the past attempts now after custom even loaded: " + pastAttempts);
-              if(pastAttempts) {
-                  const urlParams = new URLSearchParams(window.location.search);
-                  page = "quiz-results";
-                  urlParams.set('question', page); 
-                  const newUrl = window.location.pathname + '?' + urlParams.toString();
-                  history.pushState({path: newUrl}, '', newUrl);
-              }
-              playAudio(page);
-              toggleHighlighting();
-              startHighlightingWords();
-          });
-      } else {
-          playAudio(page);
-          toggleHighlighting();
-          startHighlightingWords();
-      }
+                    // not needed, does it below?
+                    page = "types";
+                    playAudio(page);
+                    toggleHighlighting();
+                    startHighlightingWords();
+                }          
+            }
+        });    
+    } 
+
+    playAudio(page);
+    toggleHighlighting();
+    startHighlightingWords();
+
   }
-
       $('#backButton').on('click', function() {
         // console.log("Back button clicked");
         const urlParams = new URLSearchParams(window.location.search);
@@ -795,7 +836,7 @@ function setLinks(currentPage) {
       } else if (currentPage === "conversation2") {
         $('.ui.modal').modal('hide');
         backlink = baseurl + "conversation";
-          nextlink = baseurl + "conversation3";
+        nextlink = baseurl + "conversation3";
       } else if (currentPage === "conversation3") {
         $('.ui.modal').modal('hide');
         backlink = baseurl + "conversation";
@@ -1128,17 +1169,17 @@ function setLinks(currentPage) {
     }
 }
 
-function appendScriptWithVariables(filename, modID, page, section, nextLink, progress) {
-    var head = document.getElementsByTagName('head')[0];
+// function appendScriptWithVariables(filename, modID, page, section, nextLink, progress) {
+//     var head = document.getElementsByTagName('head')[0];
 
-    var script = document.createElement('script');
-    script.src = filename;
-    script.type = 'text/javascript';
-    script.setAttribute('mod-id', modID);
-    script.setAttribute('page', page);
-    script.setAttribute('current-section', section);
-    script.setAttribute('next-link', nextLink);
-    script.setAttribute('progress', progress);
+//     var script = document.createElement('script');
+//     script.src = filename;
+//     script.type = 'text/javascript';
+//     script.setAttribute('mod-id', modID);
+//     script.setAttribute('page', page);
+//     script.setAttribute('current-section', section);
+//     script.setAttribute('next-link', nextLink);
+//     script.setAttribute('progress', progress);
 
-    head.appendChild(script);
-}
+//     head.appendChild(script);
+// }

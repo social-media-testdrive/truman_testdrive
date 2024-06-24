@@ -25,24 +25,6 @@ $(document).ready(function() {
     //     console.log("No video element found with ID 'my_video_1'");
     // }
     
-    // var player = videojs('my_video_1');
-    // // Event listener for the 'play' event using Video.js's on() method
-    // if(player) {
-    //     player.on('play', function() {
-    //         console.log("video playing");
-    //         turnOffNarrationAndHighlighting();
-
-    //     });
-    // }
-
-    // for highlighting
-    // avatarSpeechData = speechData[page][avatar];
-    // wordData= avatarSpeechData.filter(entry => entry.type === "word");
-
-
-    // console.log("Speech data: " + speechData);
-    // console.log(JSON.stringify(speechData))
-
     // Load the first page based on the URL
     // console.log("The start page: " + startPage);
     // narration audio dropdown
@@ -134,16 +116,8 @@ $(document).ready(function() {
         toggleHighlighting();
         startHighlightingWords();
 
-        // else {
-        //     playAudio(page);
-        //     toggleHighlighting();
-        //     startHighlightingWords();
-        // }
     }
-    // if(wordHighlighting || sentenceHighlighting) {
-    //     startHighlightingWords();
-    // }
-    
+
 
     $('#backButton').on('click', function() {
         // console.log("Back button clicked");
@@ -219,12 +193,14 @@ $(document).ready(function() {
 
                     if(speechData !== "none") {
                         // console.log("YO YO YO the past attempts: " + pastAttempts + " and the back page: " + backPage)
-                        if(pastAttempts  && backPage === 'quiz') {
-                            const urlParams = new URLSearchParams(window.location.search);
-                            backPage = "quiz-results";
-                            urlParams.set('question', backPage); 
-                            const newUrl = window.location.pathname + '?' + urlParams.toString();
-                            history.pushState({path: newUrl}, '', newUrl);
+                        if(typeof pastAttempts !== 'undefined') {
+                            if(pastAttempts  && backPage === 'quiz') {
+                                const urlParams = new URLSearchParams(window.location.search);
+                                backPage = "quiz-results";
+                                urlParams.set('question', backPage); 
+                                const newUrl = window.location.pathname + '?' + urlParams.toString();
+                                history.pushState({path: newUrl}, '', newUrl);
+                            }
                         }
 
                         playAudio(backPage);
@@ -416,12 +392,14 @@ $(document).ready(function() {
                 }
 
                 if(speechData !== "none") {
-                    if(pastAttempts && nextPage === 'quiz') {
-                        const urlParams = new URLSearchParams(window.location.search);
-                        nextPage = "quiz-results";
-                        urlParams.set('question', nextPage); 
-                        const newUrl = window.location.pathname + '?' + urlParams.toString();
-                        history.pushState({path: newUrl}, '', newUrl);
+                    if(typeof pastAttempts !== 'undefined') {
+                        if(pastAttempts && nextPage === 'quiz') {
+                            const urlParams = new URLSearchParams(window.location.search);
+                            nextPage = "quiz-results";
+                            urlParams.set('question', nextPage); 
+                            const newUrl = window.location.pathname + '?' + urlParams.toString();
+                            history.pushState({path: newUrl}, '', newUrl);
+                        }
                     }
                     playAudio(nextPage);
                     toggleHighlighting();
@@ -445,6 +423,8 @@ $(document).ready(function() {
 });
 
 function setLinks(currentPage) {
+    page = currentPage;
+
     let backlink, nextlink;
 
     // console.log("module: " + module + " section: " + section + " page: " + currentPage);
@@ -857,17 +837,17 @@ function updateProgressBar() {
     }
 }
 
-function appendScriptWithVariables(filename, modID, page, section, nextLink, progress) {
-    var head = document.getElementsByTagName('head')[0];
+// function appendScriptWithVariables(filename, modID, page, section, nextLink, progress) {
+//     var head = document.getElementsByTagName('head')[0];
 
-    var script = document.createElement('script');
-    script.src = filename;
-    script.type = 'text/javascript';
-    script.setAttribute('mod-id', modID);
-    script.setAttribute('page', page);
-    script.setAttribute('current-section', section);
-    script.setAttribute('next-link', nextLink);
-    script.setAttribute('progress', progress);
+//     var script = document.createElement('script');
+//     script.src = filename;
+//     script.type = 'text/javascript';
+//     script.setAttribute('mod-id', modID);
+//     script.setAttribute('page', page);
+//     script.setAttribute('current-section', section);
+//     script.setAttribute('next-link', nextLink);
+//     script.setAttribute('progress', progress);
 
-    head.appendChild(script);
-}
+//     head.appendChild(script);
+// }
