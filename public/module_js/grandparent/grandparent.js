@@ -589,18 +589,34 @@ function setLinks(currentPage) {
       if (currentPage === "objectives") {
         backlink =
           "/course-player?module=grandparent&section=flags&page=objectives";
+        nextlink = baseurl + "protect-video";
+      } else if (currentPage === "protect-video") {
+        backlink = baseurl + "objectives";
         nextlink = baseurl + "fundamental-measures";
       } else if (currentPage === "fundamental-measures") {
-        backlink = baseurl + "objectives";
+        backlink = baseurl + "protect-video";
         nextlink = baseurl + "preventative";
-      } else if (currentPage === "preventative") {
+      }
+      else if (currentPage === "preventative") {
         backlink = baseurl + "fundamental-measures";
         nextlink = baseurl + "contacted";
-      } else if (currentPage === "contacted") {
+      } 
+      
+      else if (currentPage === "contacted") {
         backlink = baseurl + "preventative";
+
+        nextlink = baseurl + "reactive";
+      } else if (currentPage === "reactive") {
+        backlink = baseurl + "contacted";
+        nextlink = baseurl + "accident";
+      } else if (currentPage === "accident") {
+        backlink = baseurl + "reactive";
+        nextlink = baseurl + "post-actions";
+      } else if (currentPage === "post-actions") {
+        backlink = baseurl + "accident";
         nextlink = baseurl + "activity";
       } else if (currentPage === "activity") {
-        backlink = baseurl + "contacted";
+        backlink = baseurl + "post-actions";
         nextlink = baseurl + "reflection";
       } else if (currentPage === "reflection") {
         backlink = baseurl + "activity";
