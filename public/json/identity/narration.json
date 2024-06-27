@@ -10217,5 +10217,54 @@
       ]
     }
 
+  },
+  "evaluation":{
+    "intro": {
+      "daring": [
+        {"time": 25, "type": "word", "value": "Let's", "element": "narrate-title-intro"},
+        {"time": 300, "type": "word", "value": "begin", "element": "narrate-title-intro"},
+        {"time": 600, "type": "word", "value": "the", "element": "narrate-title-intro"},
+        {"time": 675, "type": "word", "value": "section", "element": "narrate-title-intro"},
+        {"time": 1162, "type": "word", "value": "on", "element": "narrate-title-intro"},
+        {"time": 1400, "type": "word", "value": "identity", "element": "narrate-title-intro"},
+        {"time": 1862, "type": "word", "value": "theft", "element": "narrate-title-intro"},
+        {"time": 2175, "type": "word", "value": "evaluation", "element": "narrate-title-intro"},
+        {"time": 3542, "type": "word", "value": "It", "element": "narrate-title-intro"},
+        {"time": 3642, "type": "word", "value": "will", "element": "narrate-title-intro"},
+        {"time": 3792, "type": "word", "value": "take", "element": "narrate-title-intro"},
+        {"time": 4055, "type": "word", "value": "around", "element": "narrate-title-intro"}
+        ,
+        {"time": 4417, "type": "word", "value": "10", "element": "narrate-time-intro"},
+        {"time": 4667, "type": "word", "value": "minutes", "element": "narrate-time-intro"},
+        {"time": 4980, "type": "word", "value": "to", "element": "narrate-title-intro"},
+        {"time": 5067, "type": "word", "value": "complete", "element": "narrate-title-intro"},
+
+        {"time": 6185, "type": "word", "value": "Find", "element": "narrate-header-intro"},
+        {"time": 6535, "type": "word", "value": "out", "element": "narrate-header-intro"},
+        {"time": 6760, "type": "word", "value": "your", "element": "narrate-header-intro"},
+        {"time": 6922, "type": "word", "value": "identity", "element": "narrate-header-intro"},
+        {"time": 7335, "type": "word", "value": "theft", "element": "narrate-header-intro"},
+        {"time": 7622, "type": "word", "value": "resilience", "element": "narrate-header-intro"},
+        {"time": 8135, "type": "word", "value": "score", "element": "narrate-header-intro"},
+        
+        {"time": 9115, "type": "word", "value": "Take", "element": "narrate-1-intro"},
+        {"time": 9365, "type": "word", "value": "this", "element": "narrate-1-intro"},
+        {"time": 9565, "type": "word", "value": "to", "element": "narrate-1-intro"},
+        {"time": 9715, "type": "word", "value": "assess", "element": "narrate-1-intro"},
+        {"time": 10052, "type": "word", "value": "your", "element": "narrate-1-intro"},
+        {"time": 10165, "type": "word", "value": "understanding", "element": "narrate-1-intro"},
+        {"time": 10852, "type": "word", "value": "of", "element": "narrate-1-intro"},
+        {"time": 11002, "type": "word", "value": "identity", "element": "narrate-1-intro"},
+        {"time": 11440, "type": "word", "value": "theft", "element": "narrate-1-intro"},
+        {"time": 11840, "type": "word", "value": "and", "element": "narrate-1-intro"},
+        {"time": 11965, "type": "word", "value": "earn", "element": "narrate-1-intro"},
+        {"time": 12127, "type": "word", "value": "a", "element": "narrate-1-intro"},
+        {"time": 12190, "type": "word", "value": "badge", "element": "narrate-1-intro"}
+    ]
+    
+
+    }
   }
+
+
 }
