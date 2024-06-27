@@ -1,0 +1,90 @@
+{
+  "1": {
+    "progress": 20,
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "1. Which techniques are typically used in tech support scams? Select all that apply.",
+    "choices": {
+      "0": {
+        "text": "A. Voice-changing software"
+      },
+      "1": {
+        "text": "B. Spoofing"
+      },
+      "2": {
+        "text": "C. Robocalls"
+      },
+      "3": {
+        "text": "D. Fake websites"
+      }
+    },
+    "correctResponse": ["1", "2", "3"],
+    "theAnswers": "B, C, D"
+  },
+  "2": {
+    "progress": 40,
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "2. What are the common warning signs of tech support scams? Select all that apply.",
+    "choices": {
+      "0": {
+        "text": "A. Requests remote access to your device"
+      },
+      "1": {
+        "text": "B. Pop ups claiming your computer is infected with a virus"
+      },
+      "2": {
+        "text": "C. Instructs you to visit an authorized service center or retail store for device repair or support"
+      },
+      "3": {
+        "text": "D. Asks you to download security software that allegedly locates viruses on your computer"
+      }
+    },
+    "correctResponse": ["0", "1", "2"],
+    "theAnswers": "A, B, C"
+  },  
+  "3": {
+    "progress": 60,
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "3. What are effective preventative measures to protect yourself against falling victim to tech support scams? Select all that apply.",
+    "choices": {
+      "0": {
+        "text": "A. Regularly update your computer and antivirus software"
+      },
+      "1": {
+        "text": "B. Install a pop-up blocker in your web browser"
+      },
+      "2": {
+        "text": "C. Post about tech issues on public forums to get a variety of solutions"
+      },
+      "3": {
+        "text": "D. Use reputable security software"
+      }
+    },
+    "correctResponse": ["0", "1", "2"],
+    "theAnswers": "A, B, D"
+  }, 
+  "4": {
+    "progress": 40,
+    "type": "abcd",
+    "partial": "q4.html",
+    "prompt": "4. You receive an unexpected call from someone claiming to be a tech support agent. The caller alerts you that your computer has a virus and immediate action is needed to prevent data loss. After searching the phone number on the internet, you find that it matches the computer company’s official customer support number. What is the most appropriate action to take in this situation?",
+    "choices": {
+        "a": {
+            "text": "A. Follow the instructions given by the tech support agent to resolve the issue"
+        },
+        "b": {
+            "text": "B. Hang up. Then call the official customer service number listed on the website to verify the claim"
+        },
+        "c": {
+            "text": "C. Ask questions to verify the caller’s identity, such as their name or job title, before continuing the conversation"
+        },
+        "d": {
+            "text": "D. Ask the caller to provide information about you, such as your name or address, to prove they are legitimate"
+        }
+    },
+    "explanation": "<h1>The correct answer is B.</h1>",
+    "correctResponse": "b"
+  }
+}

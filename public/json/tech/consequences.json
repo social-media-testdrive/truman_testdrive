@@ -1,0 +1,46 @@
+{   
+"1": {
+    "progress": 100,
+    "type": "abcd",
+    "partial": "none",
+    "prompt": "1. What is a potential consequence of a tech support scam?",
+    "choices": {
+        "a": {
+        "text": "A. Improved computer performance"
+        },
+        "b": {
+        "text": "B. Increased internet speed"
+        },
+        "c": {
+        "text": "C. Financial loss and identity theft"
+        },
+        "d": {
+        "text": "D. Enhanced cybersecurity protection"
+        }
+    },
+    "explanation": "<h1>C is correct</h1><p>Tech support scammers aim to take control of your device and trick you into paying money to fix a fake problem with your computer. There are no real problems, they just want your money. They may also steal your personal information and your identity, like banking details. Their sole intention is to scam you, not help you. Falling victim can result in financial loss and identity theft, making option C correct. Options A, B, and D are incorrect.</p>",
+    "correctResponse": "c"
+    },
+"2": {
+    "progress": 100,
+    "type": "abcd",
+    "partial": "none",
+    "prompt": "2. What long-term consequences could result from falling victim to a tech support scam?",
+    "choices": {
+        "a": {
+            "text": "A. Enhanced computer skills and knowledge"
+        },
+        "b": {
+            "text": "B. Loss of personal data and compromised online accounts"
+        },
+        "c": {
+            "text": "C. Improved reputation within the online community"
+        },
+        "d": {
+            "text": "D. Access to premium tech support services at no cost"
+        }
+    },
+        "explanation": "<h1>B is correct</h1><p>Once tech support scammers gain control of your computer, they can use it to continue scamming you in the future. By giving them access to your device, your data and online privacy are compromised. Tech support scammers are trying to scam you, not help you, so A, C, and D are not correct.</p>",
+        "correctResponse": "b"
+    }
+}

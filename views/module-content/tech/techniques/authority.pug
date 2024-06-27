@@ -1,0 +1,43 @@
+#authority.hidden
+    .ui.container#authority-read(style="width: 90%;")
+        .top-info#examplePage(style="margin-top: 10px;")
+            h1.ui.header.large#learn-title
+                .content
+                    i.book.icon
+                    | Example 2: Claim that they know you
+            .ui.centered.stackable.grid
+                .eight.wide.column
+                    .htmlImageExample#walmart-email
+                        .ui.padded.raised.segment
+                            span#subjectLine
+                                | FW: Note from Bruce Stayton
+                            #inboxLabel.ui.large.label
+                                | inbox
+                                i.delete.icon
+                            .ui.icon.message
+                                i.user.circle.blue.icon 
+                                .content.senderInfo
+                                    .header
+                                        | Bruce Stayton
+                                        span.fromEmail &lt;938@enu.qz&gt;
+                            p Just thought picture 7 and 15 might look familiar to you
+                            p.fakeLink https://tdlrc:890ss.com/
+                .eight.wide.column
+                    //- p Here are signs that this email is a scam:
+                    .ui.bulleted.list 
+                        .item Scam emails fail to identify the receiver’s name.
+                        .item Scam emails invite you to click on a new link, redirecting you to an illegitimate website. Be careful when pressing links or filling out forms from emails as it may lead to a phishing website designed to steal your personal information.
+                    .callout
+                        .dark-blue-square
+                            //- - var avatarSquare = user.avatarImg.replace(/\.png$/, '-square.png')
+                            img(src=user.avatarImg, alt='avatar picture')
+                        .light-blue-content
+                            h3.call-header Important
+                            p Safe emails will generally address you by name and will never include links for updating personal or payment information.
+                    //- .ui.icon.fluid.blue.message.shorter
+                    //-     .icon
+                    //-         img.ui.small.image.right.floated(src=user.avatarImg)
+                    //-     .content
+                    //-         .header
+                    //-             | Important
+                    //-         p Safe emails will generally address you by name and will never include links for updating personal or payment information.
