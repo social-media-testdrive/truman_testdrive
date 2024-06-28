@@ -219,7 +219,7 @@ const userSchema = new mongoose.Schema({
             questionScores: [{ type: Number }],
             questionChoices: Schema.Types.Mixed,
         }],
-        flagsAttempts: [{
+        signsAttempts: [{
             timestamp: { type: Date, default: Date.now },
             scoreTotal: { type: Number, default: 0 },
             correctAnswers: { type: Number, default: 0 },
@@ -272,7 +272,7 @@ const userSchema = new mongoose.Schema({
             questionScores: [{ type: Number }],
             questionChoices: Schema.Types.Mixed,
         }],
-        flagsAttempts: [{
+        signsAttempts: [{
             timestamp: { type: Date, default: Date.now },
             scoreTotal: { type: Number, default: 0 },
             correctAnswers: { type: Number, default: 0 },

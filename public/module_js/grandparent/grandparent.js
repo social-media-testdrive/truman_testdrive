@@ -581,14 +581,14 @@ function setLinks(currentPage) {
       } else if (currentPage === "takeaways") {
         backlink = baseurl + "quiz";
         nextlink =
-          "/course-player?module=grandparent&section=flags&page=objectives";
+          "/course-player?module=grandparent&section=signs&page=objectives";
       }
     } else if (section === "protection") {
       let baseurl = "/course-player?module=grandparent&section=protection&page=";
   
       if (currentPage === "objectives") {
         backlink =
-          "/course-player?module=grandparent&section=flags&page=objectives";
+          "/course-player?module=grandparent&section=signs&page=objectives";
         nextlink = baseurl + "protect-video";
       } else if (currentPage === "protect-video") {
         backlink = baseurl + "objectives";
@@ -627,10 +627,10 @@ function setLinks(currentPage) {
       } else if (currentPage === "takeaways") {
         backlink = baseurl + "reflection";
         nextlink =
-          "/course-player?module=grandparent&section=flags&page=objectives";
+          "/course-player?module=grandparent&section=signs&page=objectives";
       }
-    } else if (section === "flags") {
-      let baseurl = "/course-player?module=grandparent&section=flags&page=";
+    } else if (section === "signs") {
+      let baseurl = "/course-player?module=grandparent&section=signs&page=";
   
       if (currentPage === "objectives") {
         backlink = "/course-player?module=grandparent&section=protection&page=objectives";
@@ -687,7 +687,7 @@ function setLinks(currentPage) {
       let baseurl = "/course-player?module=grandparent&section=practice&page=";
   
       if (currentPage === "objectives") {
-        backlink = "/course-player?module=grandparent&section=flags&page=objectives";
+        backlink = "/course-player?module=grandparent&section=signs&page=objectives";
 
         //- check if they have completed the practice module, then show results page
         //- console.log("Checking if practice module is completed. Their score is: "  + scoreTotal);

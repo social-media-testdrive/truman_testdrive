@@ -9,21 +9,21 @@ block content
             .ui.active.blue.large.elastic.loader 
             h1 Loading...
     .display-page.hidden
-        include flags/objectives.pug
-        include flags/titles.pug
-        include flags/responses.pug
-        include flags/family.pug
-        include flags/voice.pug
-        include flags/fear.pug
-        include flags/secrecy1.pug
-        include flags/secrecy2.pug
-        include flags/payment.pug
-        include flags/money.pug
-        include flags/activity1.pug
-        include flags/activity2.pug     
-        include flags/quiz.pug 
-        include flags/reflection.pug 
-        include flags/takeaways.pug
+        include signs/objectives.pug
+        include signs/titles.pug
+        include signs/responses.pug
+        include signs/family.pug
+        include signs/voice.pug
+        include signs/fear.pug
+        include signs/secrecy1.pug
+        include signs/secrecy2.pug
+        include signs/payment.pug
+        include signs/money.pug
+        include signs/activity1.pug
+        include signs/activity2.pug     
+        include signs/quiz.pug 
+        include signs/reflection.pug 
+        include signs/takeaways.pug
     audio(id="narration-audio", src=`https://dart-store.s3.amazonaws.com/identity+theft+voice+over/${section}/${page}_${user.avatar.toLowerCase()}.mp3`, preload="auto", onended="disableNarrationPlayButton()")
 
 

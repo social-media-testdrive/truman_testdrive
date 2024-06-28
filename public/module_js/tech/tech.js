@@ -575,14 +575,14 @@ function setLinks(currentPage) {
         } else if (currentPage === "takeaways") {
           backlink = baseurl + "quiz";
           nextlink =
-            "/course-player?module=tech&section=flags&page=objectives";
+            "/course-player?module=tech&section=signs&page=objectives";
         }
       } else if (section === "protection") {
         let baseurl = "/course-player?module=tech&section=protection&page=";
     
         if (currentPage === "objectives") {
           backlink =
-            "/course-player?module=tech&section=flags&page=objectives";
+            "/course-player?module=tech&section=signs&page=objectives";
           nextlink = baseurl + "protect-video";
         } else if (currentPage === "protect-video") {
           backlink = baseurl + "objectives";
@@ -621,51 +621,40 @@ function setLinks(currentPage) {
         } else if (currentPage === "takeaways") {
           backlink = baseurl + "reflection";
           nextlink =
-            "/course-player?module=tech&section=flags&page=objectives";
+            "/course-player?module=tech&section=signs&page=objectives";
         }
-      } else if (section === "flags") {
-        let baseurl = "/course-player?module=tech&section=flags&page=";
+      } else if (section === "signs") {
+        let baseurl = "/course-player?module=tech&section=signs&page=";
     
         if (currentPage === "objectives") {
           backlink = "/course-player?module=tech&section=protection&page=objectives";
-          nextlink = baseurl + "titles";
-        } 
-        
-        else if (currentPage === "titles") {
+          nextlink = baseurl + "sign-1";
+        } else if (currentPage === "sign-1") {
           backlink = baseurl + "objectives";
-          nextlink = baseurl + "responses";
-        } else if (currentPage === "responses") {
-          backlink = baseurl + "titles";
-          nextlink = baseurl + "family";
-        } else if (currentPage === "family") {
-          backlink = baseurl + "responses";
-          nextlink = baseurl + "voice";
-        } else if (currentPage === "voice") {
-          backlink = baseurl + "family";
-          nextlink = baseurl + "fear";
-        } else if (currentPage === "fear") {
-          backlink = baseurl + "voice";
-          nextlink = baseurl + "secrecy1";
-        } else if (currentPage === "secrecy1") {
-          backlink = baseurl + "fear";
-          nextlink = baseurl + "secrecy2";
-        } else if (currentPage === "secrecy2") {
-          backlink = baseurl + "secrecy1";
-          nextlink = baseurl + "payment";
-        } else if (currentPage === "payment") {
-          backlink = baseurl + "secrecy2";
-          nextlink = baseurl + "money";
-        } else if (currentPage === "money") {
-          backlink = baseurl + "payment";
-          nextlink = baseurl + "activity1";
-        } else if (currentPage === "activity1") {
-          backlink = baseurl + "money";
-          nextlink = baseurl + "activity2";
-        } else if (currentPage === "activity2") {
-          backlink = baseurl + "activity1";
+          nextlink = baseurl + "sign-2";
+        } else if (currentPage === "sign-2") {
+          backlink = baseurl + "sign-1";
+          nextlink = baseurl + "sign-3";
+        } else if (currentPage === "sign-3") {
+          backlink = baseurl + "sign-2";
+          nextlink = baseurl + "sign-4";
+        } else if (currentPage === "sign-4") {
+          backlink = baseurl + "sign-3";
+          nextlink = baseurl + "sign-5";
+        } else if (currentPage === "sign-5") {
+          backlink = baseurl + "sign-4";
+          nextlink = baseurl + "sign-6";
+        } else if (currentPage === "sign-6") {
+          backlink = baseurl + "sign-5";
+          nextlink = baseurl + "sign-7";
+        } else if (currentPage === "sign-7") {
+          backlink = baseurl + "sign-6";
+          nextlink = baseurl + "activity";
+        } else if (currentPage === "activity") {
+          backlink = baseurl + "sign-7";
           nextlink = baseurl + "quiz";
         } else if (currentPage === "quiz") {
-          backlink = baseurl + "activity2";
+          backlink = baseurl + "activity";
           nextlink = baseurl + "reflection";
         } else if (currentPage === "reflection") {
           backlink = baseurl + "quiz";
@@ -681,7 +670,7 @@ function setLinks(currentPage) {
         let baseurl = "/course-player?module=tech&section=practice&page=";
     
         if (currentPage === "objectives") {
-          backlink = "/course-player?module=tech&section=flags&page=objectives";
+          backlink = "/course-player?module=tech&section=signs&page=objectives";
   
           //- check if they have completed the practice module, then show results page
           //- console.log("Checking if practice module is completed. Their score is: "  + scoreTotal);
