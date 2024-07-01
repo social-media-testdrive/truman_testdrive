@@ -11070,7 +11070,62 @@
         ]
                           
       
-    }
+    },
+    "quiz-5":{
+      "daring": [
+        {"index": 0,"time": 25,"type": "word","value": "5.","element": "narrate-1-quiz"},
+        {"index": 2,"time": 1317,"type": "word","value": "Assuming","element": "narrate-1-quiz"},
+        {"index": 3,"time": 1780,"type": "word","value": "you","element": "narrate-1-quiz"},
+        {"index": 4,"time": 1917,"type": "word","value": "are","element": "narrate-1-quiz"},
+        {"index": 5,"time": 1992,"type": "word","value": "trying","element": "narrate-1-quiz"},
+        {"index": 6,"time": 2330,"type": "word","value": "to","element": "narrate-1-quiz"},
+        {"index": 7,"time": 2442,"type": "word","value": "log","element": "narrate-1-quiz"},
+        {"index": 8,"time": 2717,"type": "word","value": "into","element": "narrate-1-quiz"},
+        {"index": 9,"time": 2942,"type": "word","value": "Venmo","element": "narrate-1-quiz"},
+        {"index": 10,"time": 3305,"type": "word","value": "following","element": "narrate-1-quiz"},
+        {"index": 11,"time": 3780,"type": "word","value": "the","element": "narrate-1-quiz"},
+        {"index": 12,"time": 3905,"type": "word","value": "instruction","element": "narrate-1-quiz"},
+        {"index": 13,"time": 4492,"type": "word","value": "for","element": "narrate-1-quiz"},
+        {"index": 14,"time": 4655,"type": "word","value": "the","element": "narrate-1-quiz"},
+        {"index": 15,"time": 4730,"type": "word","value": "Venmo","element": "narrate-1-quiz"},
+        {"index": 16,"time": 5130,"type": "word","value": "App,","element": "narrate-1-quiz"},
+        {"index": 17,"time": 5630,"type": "word","value": "then","element": "narrate-1-quiz"},
+        {"index": 18,"time": 5767,"type": "word","value": "you","element": "narrate-1-quiz"},
+        {"index": 19,"time": 5892,"type": "word","value": "received","element": "narrate-1-quiz"},
+        {"index": 20,"time": 6280,"type": "word","value": "the","element": "narrate-1-quiz"},
+        {"index": 21,"time": 6342,"type": "word","value": "message","element": "narrate-1-quiz"},
+        {"index": 22,"time": 6742,"type": "word","value": "below.","element": "narrate-1-quiz"},
+        {"index": 23,"time": 7635,"type": "word","value": "In","element": "narrate-1-quiz"},
+        {"index": 24,"time": 7772,"type": "word","value": "that","element": "narrate-1-quiz"},
+        {"index": 25,"time": 7997,"type": "word","value": "case","element": "narrate-1-quiz"},
+        {"index": 26,"time": 8322,"type": "word","value": "would","element": "narrate-1-quiz"},
+        {"index": 27,"time": 8422,"type": "word","value": "you","element": "narrate-1-quiz"},
+        {"index": 28,"time": 8535,"type": "word","value": "consider","element": "narrate-1-quiz"},
+        {"index": 29,"time": 8972,"type": "word","value": "this","element": "narrate-1-quiz"},
+        {"index": 30,"time": 9185,"type": "word","value": "message","element": "narrate-1-quiz"},
+        {"index": 31,"time": 9572,"type": "word","value": "a","element": "narrate-1-quiz"},
+        {"index": 32,"time": 9622,"type": "word","value": "scam?","element": "narrate-1-quiz"},
+        
+        {"index": 40,"time": 13270,"type": "word","value": "Venmo","element": "narrate-2-quiz-5"},
+        {"index": 41,"time": 13595,"type": "word","value": "here!","element": "narrate-2-quiz-5"},
+        {"index": 42,"time": 14475,"type": "word","value": "NEVER","element": "narrate-2-quiz-5"},
+        {"index": 43,"time": 14737,"type": "word","value": "share","element": "narrate-2-quiz-5"},
+        {"index": 44,"time": 15000,"type": "word","value": "your","element": "narrate-2-quiz-5"},
+        {"index": 45,"time": 15162,"type": "word","value": "code","element": "narrate-2-quiz-5"},
+        {"index": 46,"time": 15512,"type": "word","value": "via","element": "narrate-2-quiz-5"},
+        {"index": 47,"time": 15750,"type": "word","value": "call/text.","element": "narrate-2-quiz-5"},
+        {"index": 50,"time": 17342,"type": "word","value": "Code:","element": "narrate-2-quiz-5"},
+        {"index": 51,"time": 18017,"type": "word","value": "568601","element": "narrate-2-quiz-5"},
+      
+        {"index": 57,"time": 20672,"type": "word","value": "Not","element": "narrate-3-quiz-5"},
+        {"index": 58,"time": 20947,"type": "word","value": "you?","element": "narrate-3-quiz-5"},
+        {"index": 59,"time": 21690,"type": "word","value": "Click","element": "narrate-3-quiz-5"},
+        {"index": 60,"time": 21952,"type": "word","value": "here:","element": "narrate-3-quiz-5"}
+      
+      
+      ]}
+      
+    
 
   }
 
