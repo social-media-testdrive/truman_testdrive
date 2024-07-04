@@ -1,252 +1,258 @@
 {
   "1": {
-      "progress": 10,
-      "type": "multi_select",
-      "partial": "none",
-      "prompt": "1. When you receive a call, which scenarios could indicate a potential scam call? Select all that apply.",
-      "choices": {
-          "0": {
-              "text": "A. An unknown number"
-          },
-          "1": {
-              "text": "B. Call appears to be from the Police Department"
-          },
-          "2": {
-              "text": "C. Call appears to be from a law enforcement agency"
-          },
-          "3": {
-              "text": "D. Call appears to be from your grandchild"
-          }
-      },
-      "explanation": "<p>Due to the advanced technique of using caller ID spoofing, any call-even from familiar numbers–could be fake. Therefore, do not trust the caller solely based on the appearance of a valid number.</p>",
-      "correctResponse": ["0", "1", "2", "3"],
-      "theAnswers": "A, B, C, D"
-  },
-  "2": {
-      "progress": 20,
-      "type": "multi_select",
-      "partial": "none",
-      "prompt": "2. What are some common techniques scammers use to pressure targets into sending them money? Select all that apply.",
-      "choices": {
-          "0": {
-              "text": "A. Crying and begging for help",
-              "explanation": "Choice A is correct. Scammers often use emotional manipulation to pressure the target into sending money right away. Scammers might cry and beg for help to make the target think their grandchild or loved one is in pain or in a terrible situation, exploiting the target’s fear and desire to help."
-          },
-          "1": {
-              "text": "B. Promising rewards or prizes if you send money immediately",
-              "explanation": "Choice B is incorrect.  In grandparent scams, scammers will not try to entice you into sending money by promising fake rewards or prizes."
-          },
-          "2": {
-              "text": "C. Sounding frightened and in an urgent situation",
-              "explanation": "Choice C is correct. Scammers often attempt to create a sense of urgency and fear in their victims to coerce them into sending money. Sounding frightened and in an urgent situation is another commonly used technique of emotional manipulation."
-          },
-          "3": {
-              "text": "D. Threatening that your grandchild will face serious charges.",
-              "explanation": "Choice D is correct. To pressure you to act fast, scammers attempt to manipulate your emotion by making threats. This technique aims to instill fear, leaving you with little time to think clearly so that you comply with their demands. Therefore, the more scared you feel, the more you need to stay calm and composed."
-          }
-      },
-      "correctResponse": ["0", "2", "3"],
-      "theAnswers": "A, C, D"
-  },
-  "3": {
-      "progress": 30,
-      "type": "multi_select",
-      "partial": "none",
-      "prompt": "3. When are individuals most vulnerable to being targeted by grandparent scammers? Select all that apply.",
-      "choices": {
-          "0": {
-              "text": "A. Late at night",
-              "explanation": "Choice A is correct. The initial contact from the scammer will often come  late at night when people may be disoriented or less alert, making them more vulnerable to being confused or misled."
-          },
-          "1": {
-              "text": "B. During typical working hours",
-              "explanation": "Choice B is incorrect. Scammers are less likely to contact potential victims during working hours when people are more likely to be active, alert, and busy. Nevertheless, it’s important to remain cautious as some scammers might contact potential victims during the day."
-          },
-          "2": {
-              "text": "C. During family gatherings or celebrations",
-              "explanation": "Choice C is incorrect. Scammers will often choose moments when people are more likely to be vulnerable, tired, or distressed, rather than when they are distracted by festivities and surrounded by other people."
-          },
-          "3": {
-              "text": "D. During times of natural disasters or adverse weather",
-              "explanation": "Choice D is correct. Scammers are likely to contact potential victims during times of crises, such as natural disasters or bad weather, when people are already in a heightened state of worry for their loved ones’ safety and therefore more likely to fall for the scammer’s claims and stories."
-          }
-      },
-      "correctResponse": ["0", "3"],
-      "theAnswers": "A, D"
-  },
-  "4": {
-      "progress": 40,
-      "type": "abcd",
-      "partial": "q4.html",
-      "prompt": "4. According to this conversation, what red flags did you notice that can indicate the caller is a scammer?",
-      "choices": {
-          "a": {
-              "text": "A. Inaccurate Family Details"
-          },
-          "b": {
-              "text": "B. Voice sounding Unnatural"
-          },
-          "c": {
-              "text": "C. Demand for Secrecy"
-          },
-          "d": {
-              "text": "D. Pressure to Act Fast and Deter Questions"
-          }
-      },
-      "explanation": "<h1>The correct answer is C.</h1><p>In this conversation, the scammer strongly emphasizes \"don't tell the parents\" with the excuse of \"don't want to worry them.\" By explicitly instructing the grandparent not to inform the parents/family, the scammer is demanding secrecy. This tactic isolates the victim from others who may identify it as a scam if the circumstances were discussed. Therefore, the correct answer is C. Demand for Secrecy.</p>",
-      "correctResponse": "c"
-  },
-  "5": {
-      "progress": 50,
-      "type": "multi_select",
-      "partial": "q5.html",
-      "prompt": "5. According to this conversation, what red flags did you notice that can indicate the caller is a scammer? Select all that apply.",
-      "choices": {
-          "0": {
-              "text": "A. A Fear Inducing and Urgent Scenario",
-              "explanation": "Choice A is correct. The scammer creates a fearful and urgent scenario about hitting a pregnant woman and potentially going to jail to evoke an emotional reaction from the grandparent."
-          },
-          "1": {
-              "text": "B. Voice sounding Unnatural",
-              "explanation": "Choice B is correct.  When the grandparent says \"Brandon, it doesn't sound like you\", it indicates the voice sounds unnatural or different than expected."
-          },
-          "2": {
-              "text": "C. Demand for Secrecy",
-              "explanation": "Choice C is correct. The scammer explicitly states, \"Please don't call my mom and dad, because I don't want them to know,\" demanding secrecy from the grandparents. This reduces the chance of the grandparents verifying the information with other family members."
-          },
-          "3": {
-              "text": "D. Pressure to Act Fast and Deter Questions",
-              "explanation": "Choice D is correct. By claiming there is an urgent need to take legal action through a \"friend's attorney\", the scammer is pressuring the grandparent to act fast without questioning the story further."
-          }
-      },
-      "correctResponse": ["0", "1", "2", "3"],
-      "theAnswers": "A, B, C, D"
-  },
-  "6": {
-    "progress": 60,
-    "type": "multi_select",
-    "partial": "q6.html",
-    "prompt": "6. According to this conversation, what red flags did you notice that can indicate the caller is a scammer?  Select all that apply.",
-    "choices": {
-        "0": {
-            "text": "A. Inaccurate Family Details",
-            "explanation": "Choice A is incorrect. In this conversation, there is no mention of the detailed family information, so this recording doesn’t exhibit this warning sign."
-        },
-        "1": {
-            "text": "B. Voice sounding unnatural",
-            "explanation": "Choice B is incorrect. In this conversation, there is no mention of the voice sounding unusual or different, so this recording doesn’t exhibit this warning sign."
-        },
-        "2": {
-            "text": "C. Pressure to Act Fast and Deter Questions",
-            "explanation": "Choice C is correct.  In this conversation, the caller says \"I need you to send the money quickly\" which creates a sense of urgency and pressure to act fast without properly considering the situation."
-        },
-        "3": {
-            "text": "D. Request for Untraceable Payment Methods",
-            "explanation": "Choice D is correct. The caller asks the grandparent to send money through cryptocurrency, specifically mentioning to download the \"CryptoWallet\" app. Cryptocurrency transactions are an untraceable payment method favored by scammers."
-        }
-    },
-    "correctResponse": ["2", "3"],
-    "theAnswers": "C, D"
-  },
-  "7": {
-    "progress": 70,
-    "type": "multi_select",
-    "partial": "q7.html",
-    "prompt": "7. According to this conversation, what red flags did you notice that can indicate the caller is a scammer?  Select all that apply.",
-    "choices": {
-        "0": {
-            "text": "A. Inaccurate Family Details"
-        },
-        "1": {
-            "text": "B. Voice sounding unnatural"
-        },
-        "2": {
-            "text": "C. Pressure to Act Fast and Deter Questions"
-        },
-        "3": {
-            "text": "D. Request for Untraceable Payment Methods"
-        }
-    },
-    "explanation": "<p>In this conversation, the scammer says “I need you to send the money to me now so it doesn't get sold out.” This creates a sense of urgency and pressures the grandparent to act quickly. By claiming there is only “one left” at this “great deal” price, the scammer is trying to deter the grandparent from taking time to verify the story or ask more questions that could expose the scam. Therefore, the correct answer is C. Pressure to Act Fast and Deter Questions.</p>",
-    "correctResponse": ["2"],
-    "theAnswers": "C"
-  },
-  "8": {
-    "progress": 80,
+    "progress": 10,
     "type": "multi_select",
     "partial": "none",
-    "prompt": "8. Which of the following payment methods are untraceable and therefore frequently used by scammers in grandparent scams? Select all that apply.",
+    "prompt": "1. When you receive a robocall, which potential scam could it be? Select all that apply.",
     "choices": {
-        "0": {
-            "text": "A. Cryptocurrency",
-            "explanation": " Choice A is correct. Scammers like to use cryptocurrencies, like Bitcoin, because they don’t have the same legal protections as credit or debit cards, and payments usually cannot be reversed."
-        },
-        "1": {
-            "text": "B. Gift cards",
-            "explanation": "Choice B is correct. Gift cards are frequently used in scams because they cannot be refunded, traced, or disputed."
-        },
-        "2": {
-            "text": "C. Checks",
-            "explanation": "Choice C is incorrect. Checks are an example of a traceable method. That is why scammers never ask you to send them a check."
-        },
-        "3": {
-            "text": "D. Cash",
-            "explanation": "Choice D is correct. Cash transactions are usually hard to trace as they do not leave a digital trail, making it difficult to track the movement of funds. Scammers often request the victim to hand over cash to a courier or runner at a predetermined time and location."
-        }
+      "0": {
+        "text": "A. Tech support scam",
+        "explanation": "Choice A is correct. Robocalls are commonly used in Tech support scams. The robocalls claim there's a problem with your computer or internet connection, instructing you to call a specific number for “tech support or to resolve the issue”. This connects you directly to the scammers, who then attempt to gain access to your computer or obtain sensitive information under the guise of providing assistance. Sometimes, these robocalls can create a sense of urgency and fear, prompting the recipient to take immediate action to resolve the supposed issue."
+      },
+      "1": {
+        "text": "B. Identity theft",
+        "explanation": "Choice B is correct. Robocalls are also used in identity theft scams. The robocall tricks you into believing there's a problem with your account or personal information, such as unauthorized transactions, a security breach, or an issue with their social security number. The call then promotes you to provide your personal information, such as bank account details or SSN."
+      },
+      "2": {
+        "text": "C. Romance scam",
+        "explanation": "Choice C is incorrect. Romance scams typically involve building a personal relationship over time, so random robocalls are not commonly used in this type of scams."
+      },
+      "3": {
+        "text": "D. Grandparent scam",
+        "explanation": "Choice D is incorrect. Grandparent scams rely on exploiting family relationships, so unsolicited robocalls are generally not effective tactics for this type of scams."
+      }
     },
-    "correctResponse": ["0", "1", "3"],
-    "theAnswers": "A, B, D"
+    "correctResponse": ["0", "1"],
+    "theAnswers": "A, B"
   },
-  "9": {
-    "progress": 90,
+  "2": 
+  {
+    "progress": 20,
+    "type": "abcd",
+    "partial": "none",
+    "prompt": "2. What is Caller ID Spoofing?",
+    "choices": {
+      "a": {
+        "text": "A special code that shows an email attachment is safe to open."
+      },
+      "b": {
+        "text": "A trick to change the caller ID to look like a trusted source."
+      },
+      "c": {
+        "text": "A way to keep your online purchases secure."
+      },
+      "d": {
+        "text": "A tool to stop hackers from getting into your computer."
+      }
+    },
+    "explanation": "<h1>The correct answer is B.</h1><p>Caller ID spoofing is a technology that scammers use to hide their real phone numbers and make it seem like they are calling from a different number. They often impersonate trusted sources like banks or people known to the victim, aiming to deceive and trick individuals.</p>",
+    "correctResponse": "b"
+  }
+  
+  ,
+  "3": 
+  {
+    "progress": 30,
+    "type": "abcd",
+    "partial": "none",
+    "prompt": "3. What is the true reason tech support scammers ask you to download software?",
+    "choices": {
+      "a": {
+        "text": "To help remove the virus they have detected"
+      },
+      "b": {
+        "text": "To help improve your computer’s performance"
+      },
+      "c": {
+        "text": "To install malware or access your personal information"
+      },
+      "d": {
+        "text": "To update your antivirus software"
+      }
+    },
+    "explanation": "<h1>The correct answer is C.</h1><p>Tech support scammers often claim there is a virus, performance issue, or other problem with your device as a pretext. They then request you to download software or grant them remote access, but their real intention is to gain control over your computer illegitimately. This allows them to potentially install malware, access sensitive data, or demand payment for \"fixing\" non-existent issues. Choices A, B, and D are incorrect because the stated reasons are merely cover stories used by scammers to trick you into downloading malicious software or granting access.</p>",
+    "correctResponse": "c"
+  }
+  ,
+  "4": 
+  {
+    "progress": 40,
     "type": "multi_select",
     "partial": "none",
-    "prompt": "9. To prevent potential grandparent scams, what should you do? Select all that apply.",
+    "prompt": "4. Which of the following cases is an example of a tech support scam technique? Select all that apply.",
     "choices": {
-        "0": {
-            "text": "A. Set your social media account to private",
-            "explanation": "Choice A is correct. Setting your accounts to private helps control who can see your personal information, such as posts, photos, and other content. This reduces the risk of scammers using the detailed information you shared to specifically target you."
-        },
-        "1": {
-            "text": "B. Post details about your family",
-            "explanation": "Choice B is incorrect. You should never post details about your family members online. Scammers could use this information to impersonate your family members and attempt to deceive you or other relatives through scams like the grandparent scam. Also, oversharing information about your family, especially children or grandchildren, can potentially expose them to risks like stalking, harassment."
-        },
-        "2": {
-            "text": "C. Do not answer calls from numbers that you do not recognize",
-            "explanation": "Choice C is correct. Scammers often use unfamiliar numbers in an attempt to trick you into answering and engaging with their fraudulent schemes, such as the grandparent scam. However, there's no need to worry about missing an important call. If it is genuinely important, the caller will leave a voicemail, which you can then respond to at a later time."
-        },
-        "3": {
-            "text": "D. Learn about scams and how to prevent them",
-            "explanation": "Choice C is correct. Understanding the tactics and methods used by scammers will help you more easily recognize potential scam attempts when you encounter them. This awareness can prevent you from falling victim. Also, learning about new and emerging scams allows you to stay informed about current threats. By educating yourself, you can not only avoid being scammed personally, but also help warn and prevent your family members and loved ones from falling prey to scams."
-        }
+      "0": {
+        "text": "A pop-up message appears on your screen, claiming that viruses are detected on your computer, and offering paid troubleshooting services that ask for your credit card information.",
+        "explanation": "Choice A is correct. Pop-up warning is a common technique for tech support scams. They aim to scare and mislead you into believing your device is compromised, so that you will call the number provided for \"tech support.\" However, this \"tech support\" is actually provided by the scammers. Once you call, the scammers may request remote access to your computer or charge fees for unnecessary services."
+      },
+      "1": {
+        "text": "A notification from your bank informing a transaction you made that has recently been completed",
+        "explanation": "Choice B is incorrect. This option is not related to a tech support scam. Banks routinely send alerts to inform customers about legitimate transactions on their accounts. It is a standard notification, not a scamming technique."
+      },
+      "2": {
+        "text": "A phone call claiming to be from the company of your antivirus software, stating the company will shut down soon and offering you a refund, but requesting your account details and password for verification.",
+        "explanation": "Choice C is correct. This is a common scam tactic. Legitimate companies would not randomly call and claim they are shutting down to then ask for sensitive information like passwords over the phone. They have official channels to communicate service changes and would not request passwords for processing refunds."
+      },
+      "3": {
+        "text": "A website you found through an online search, offers free computer troubleshooting but requires you to enter your credit card information for verification.",
+        "explanation": "Choice D is correct. This is a common scam technique. Legitimate companies do not ask for credit card information to provide free troubleshooting. Requesting financial details by claiming it's for \"verification” when it shouldn't be needed is a major red flag of a scam."
+      }
     },
     "correctResponse": ["0", "2", "3"],
     "theAnswers": "A, C, D"
   },
-  "10": {
-    "progress": 100,
+  "5": 
+  {
+    "progress": 50,
+    "type": "abcd",
+    "partial": "none",
+    "prompt": "5. Which of the following tactics do tech support scammers commonly use to cause urgency and panic?",
+    "choices": {
+      "a": {
+        "text": "Offering a free diagnostic report of your computer's performance."
+      },
+      "b": {
+        "text": "Requesting a callback number for a scheduled appointment with a certified technician."
+      },
+      "c": {
+        "text": "Claiming that immediate action is required to prevent data loss or security breaches."
+      },
+      "d": {
+        "text": "Providing a toll-free hotline for general inquiries and technical support."
+      }
+    },
+    "explanation": "<h1>The correct answer is C.</h1><p>Tech support scammers often try to instill a sense of urgency and panic in you by making claims that immediate action is required to avoid severe consequences like data loss or security breaches. This tactic is designed to pressure you into quickly following the scammer's instructions, such as allowing remote access, providing personal information, or making payments. The other options do not create a sense of urgency and panic.</p>",
+    "correctResponse": "c"
+  }
+  ,
+  "6": 
+  {
+    "progress": 60,
+    "type": "multi_select",
+    "partial": "q6.html",
+    "prompt": "6. In this audio recording, what warning sign do you notice that could indicate that this call is a scam? Select all that apply.",
+    "choices": {
+      "0": {
+        "text": "Requests for Remote Access",
+        "explanation": "Choice A is incorrect. This recording does not ask for remote access."
+      },
+      "1": {
+        "text": "Robotic voice",
+        "explanation": "Choice B is correct. Robocalls are a common tactic used by tech support scammers. This approach allows them to target a large number of potential victims efficiently. When someone follows the prompt to press a number, it connects them directly with the scammers. Therefore, receiving an unsolicited robocall, especially one trying to instill a sense of urgency or panic, should be viewed as a red flag for a likely scam attempt. The safe approach is to hang up immediately and block the number to prevent future calls from the same source."
+      },
+      "2": {
+        "text": "Creating a sense of urgency through the scenario described",
+        "explanation": "Choice C is correct. The audio transcript tries to instill a sense of panic and urgency by describing a \"highly suspicious transaction\" on the victim's Amazon account, threatening account suspension/termination if not acted upon within 2 hours, and using alarming language like \"compromised\" and \"at risk of further fraud.\""
+      },
+      "3": {
+        "text": "Pressuring you to take immediate action",
+        "explanation": "Choice D is correct. This call is threatening account suspension/termination if not acted upon within 2 hours. Also, scammers create this urgency-inducing scenario to pressure you into acting quickly without thinking rationally."
+      }
+    },
+    "correctResponse": ["1", "2", "3"],
+    "theAnswers": "B, C, D"
+  }
+  ,
+  "7": 
+  {
+    "progress": 70,
+    "type": "multi_select",
+    "partial": "q7.html",
+    "prompt": "7. In this conversation, what warning signs do you notice that could indicate that the caller is a scammer? Select all that apply.",
+    "choices": {
+      "0": {
+        "text": "Requests for Remote Access",
+        "explanation": "Choice A is incorrect. This caller does not ask for remote access."
+      },
+      "1": {
+        "text": "Robotic voice",
+        "explanation": "Choice B is incorrect. This is a real person talking, not a Robocall."
+      },
+      "2": {
+        "text": "Creating a sense of urgency and pressure to act quickly",
+        "explanation": "Choice C is correct. In this conversation, the caller tries to instill a sense of panic and urgency by describing critical security vulnerabilities that allegedly need immediate attention on the target's new computer. The caller states, \"If these issues aren’t resolved immediately, you risk losing all your data and having your personal information compromised.\" The scammers are using this technique to create a false sense of urgency and fear in order to manipulate the target."
+      },
+      "3": {
+        "text": "Cold phone calls",
+        "explanation": "Choice D is correct. This is a cold call from someone claiming to be a representative of Microsoft. They try to claim there is a serious problem with your device that requires immediate attention. However, as stated by Microsoft, “Microsoft does not send unsolicited email messages or make unsolicited phone calls to request personal or financial information, or to provide technical support to fix your computer. If you didn't ask us to, we won't call you to offer support.” This unsolicited call claiming to be from Microsoft is a common scam tactic."
+      }
+    },
+    "correctResponse": ["2", "3"],
+    "theAnswers": "C, D"
+  }
+  ,
+  "8": 
+  {
+    "progress": 80,
     "type": "multi_select",
     "partial": "none",
-    "prompt": "10. What is a recommended course of action for grandparents who suspect they are being targeted by a grandparent scam? Select all that apply.",
+    "prompt": "8. Why is it important for victims of tech support scams to report their experience and share it with close family and/or friends? Select all that apply.",
     "choices": {
-        "0": {
-            "text": "A. Hang up the phone immediately and ignore any further attempts at contact",
-            "explanation": "Choice A is correct. By hanging up, you prevent the scammer from continuing their script, making requests for money/payment, or trying to further manipulate you emotionally. Also, hanging up puts you in control of the situation and allows you to remove yourself from the scammer's influence. Scammers would highly likely try to contact you repeatedly. Ignoring them can make it clear to the scammers that you will not be deceived, discouraging future targeting."
-        },
-        "1": {
-            "text": "B. Engage in lengthy conversations to gather more information about the scammer",
-            "explanation": "Choice B is incorrect. Scammers are skilled at prolonging conversations to manipulate victims. The more you engage, the higher the risk that you will be manipulated or persuaded to provide personal information or money."
-        },
-        "2": {
-            "text": "C. Contact other family members or authorities on a separate call to verify the legitimacy of the call",
-            "explanation": "Choice C is correct. You should always verify the person’s identity through a separate call. It helps confirm whether the call is legitimate or a scam. Other family members or authorities can provide additional information or context that can help you make an informed decision. Also, it provides peace of mind knowing that you have taken the necessary steps to protect yourself and your family from potential scams."
-        },
-        "3": {
-            "text": "D. Send money as requested to prevent any potential harm to the supposed grandchild",
-            "explanation": "Choice D is incorrect.  Never give money to someone you already suspect."
-        }
+      "0": {
+        "text": "It helps prevent others from falling victim to similar scams by raising awareness",
+        "explanation": "Choice A is correct. Sharing your experience can alert others to the scam tactics, helping them recognize and avoid similar scams."
+      },
+      "1": {
+        "text": "It helps reduce your frustration and anxiety",
+        "explanation": "Choice B is correct. Keeping the experience to yourself can prolong the emotional distress, but talking about it with trusted individuals can provide a sense of relief and support."
+      },
+      "2": {
+        "text": "It automatically blocks all scam-related emails and calls",
+        "explanation": "Choice C is incorrect. Reporting a tech support scam does not automatically block all future scam emails and calls for the victim. The primary benefits are raising awareness, aiding investigations, providing support, and potentially recovering losses - not an instant block on all scam communications."
+      },
+      "3": {
+        "text": "It helps to provide valuable information that can aid authorities in investigating and prosecuting the scams",
+        "explanation": "Choice D is correct. Reporting the scam gives law enforcement and regulatory agencies the information they need to investigate and potentially prosecute the scammers, helping to prevent future incidents."
+      }
     },
-    "correctResponse": ["0", "2"],
-    "theAnswers": "A, C"
+    "correctResponse": ["0", "1", "3"],
+    "theAnswers": "A, B, D"
   }
+  ,
+  "9": 
+  {
+    "progress": 90,
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "9. You're browsing the internet when a pop-up window appears claiming your computer is infected with a virus, and it cannot be closed. What is the best practice in this situation? Select all that apply.",
+    "choices": {
+      "0": {
+        "text": "Follow the instructions in the pop-up and call the provided number for \"tech support\" to resolve the issue.",
+        "explanation": "Choice A is incorrect. Pop-ups claiming your computer is infected and prompting you to call a number are often tech support scams. Calling the provided number may lead to further deception and potential financial losses."
+      },
+      "1": {
+        "text": "Force quit the browser or restart your computer to get rid of the pop-up window.",
+        "explanation": "Choice B is correct. The pop-up will likely disappear once you close your browser because it was an ad on a webpage you were visiting. This is a safe practice to avoid tech support scams. DO NOT try to close the pop-up window itself–this may trigger installation of malware."
+      },
+      "2": {
+        "text": "Click on any links or buttons within the pop-up to download the recommended software or tools.",
+        "explanation": "Choice C is incorrect. Clicking on links or buttons within the pop-up to download recommended software or tools is extremely risky, as it could potentially install malware or give scammers access to your computer."
+      },
+      "3": {
+        "text": "Find the official contact information, reach out to people you can trust, or family members, friends for help.",
+        "explanation": "Choice D is correct. If you cannot close the pop-up window by closing the browser or restarting the computer, it is best not to engage with the potentially malicious pop-up. Instead, seek assistance from trusted sources, such as the official support channels of reputable software or security companies. Alternatively, you can consult knowledgeable friends or family members for guidance on how to proceed safely without falling prey to the suspected tech support scam."
+      }
+    },
+    "correctResponse": ["1", "3"],
+    "theAnswers": "B, D"
+  }
+  ,
+  "10": 
+  {
+    "progress": 100,
+    "type": "yes_no",
+    "partial": "q10.html",
+    "prompt": "10. Is this website a real Microsoft webpage?",
+    "choices": {
+      "yes": {
+        "text": "Yes"
+      },
+      "no": {
+        "text": "No"
+      }
+    },
+    "explanation": "<h1>The correct answer is No.</h1><p>This is not a real Microsoft webpage because:</p><ul><li>The web address does not include \"microsoft.com\" or any official Microsoft domain.</li><li>Microsoft has stated that their error and warning messages never include a phone number. Other legitimate companies generally follow the same practice. The pop-up window on this webpage prompts users to call a provided number, which is a red flag.</li></ul>",
+    "correctResponse": "no"
+  }
+  
 }
