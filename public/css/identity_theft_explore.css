@@ -532,6 +532,14 @@ button.ui.circular.icon.button:hover {
     animation: slideUp 4s ease forwards; 
 }
 
+.showOpenEmailAnimation.hidden {
+    display: none !important;
+}
+
+.showReturnToInboxAnimation.hidden {
+    display: none !important;
+}
+
 /* toggle where cursor goes to */
 .showOpenEmailAnimation {
     left: 45px; 

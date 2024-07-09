@@ -1,0 +1,54 @@
+{   
+    "1": {
+      "progress": 100,
+      "type": "multi_select",
+      "partial": "none",
+      "prompt": "1. Which of the following are types of tech support scams? Select all that apply.",
+      "choices": { 
+        "0": {
+            "text": "A. Cold phone calls",
+            "explanation": "Choice A is correct. Tech support scammers often pretend to be customer service representatives. They claim to have found a problem with your device. This trick lets them manipulate you into giving them access to your device, or paying them a service fee."
+        },
+        "1": {
+            "text": "B. Online pop-up warnings",
+            "explanation": "Choice B is correct. An online pop-up warning falsely claims there’s a problem with your device. This lie aims to make you panic. The scammer then pretends to help, but really takes advantage of you by fixing a non-existent issue or stealing your personal information."
+        },
+        "2": {
+          "text": "C. Dating apps",
+          "explanation": "Choice C is incorrect. Dating Apps are normally used for romance scams or identity theft, not tech support scams."
+        },
+        "3": {
+          "text": "D. Theft at ATM machines",
+          "explanation": "Choice D is incorrect. Tech support scams usually happen online, not in person at ATM machines."
+        }
+    },
+    "correctResponse": ["0", "1"],
+    "theAnswers": "A, B"
+},
+    "2": {
+        "progress": 100,
+        "type": "multi_select",
+        "partial": "none",
+        "prompt": "2. How do pop-up warning scams normally operate?  Select all that apply.",
+        "choices": {
+            "0": {
+                "text": "A. Claims your device is infected",
+                "explanation": "Choice A is correct."
+            },
+            "1": {
+                "text": "B. Instructs you to call a number",
+                "explanation": "Choice B is correct."
+            },
+            "2": {
+                "text": "C. Requests remote access to fix the issue If you call the number",
+                "explanation": "Choice C is correct."
+            },
+            "3": {
+              "text": "D. Offers to send someone in person to help you If you call the number",
+              "explanation": "Choice D is incorrect."
+            }
+        },
+        "correctResponse": ["0", "1", "2"],
+        "theAnswers": "A, B, C"
+}
+}

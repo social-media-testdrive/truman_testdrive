@@ -3022,6 +3022,40 @@
           {"time": 19932,"type": "word","value": "counselor.","element": "narrate-2-callout"}
           ]
     }, 
+    "quiz": {
+      "daring": [
+        {"time": 0,"type": "word","value": "none","element": "none"},
+        {"time": 0,"type": "word","value": "none","element": "none"}
+
+      ],
+      "intrepid": [
+        {"time": 0,"type": "word","value": "none","element": "none"},
+        {"time": 0,"type": "word","value": "none","element": "none"}
+
+      ],
+      "valiant": [
+        {"time": 0,"type": "word","value": "none","element": "none"},
+        {"time": 0,"type": "word","value": "none","element": "none"}
+
+      ]
+    },
+    "quiz-results": {
+      "daring": [
+        {"time": 0,"type": "word","value": "none","element": "none"},
+        {"time": 0,"type": "word","value": "none","element": "none"}
+
+      ],
+      "intrepid": [
+        {"time": 0,"type": "word","value": "none","element": "none"},
+        {"time": 0,"type": "word","value": "none","element": "none"}
+
+      ],
+      "valiant": [
+        {"time": 0,"type": "word","value": "none","element": "none"},
+        {"time": 0,"type": "word","value": "none","element": "none"}
+
+      ]
+    },
     "takeaways": {
       "daring": [
         {"time": 25,"type": "word","value": "Congratulations!","element": "narrate-title-takeaways"},

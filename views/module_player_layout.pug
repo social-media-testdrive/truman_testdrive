@@ -115,17 +115,17 @@ html(lang="en")
           a.item#request(href=`/course-player?module=${module}&section=requests&page=objectives`)
             i.envelope.icon
             |  Requests
-        else if module === 'grandparent'
+        else if module === 'grandparent' || module === 'tech'
           a.item#techniques(href=`/course-player?module=${module}&section=techniques&page=objectives`)
             i.wrench.icon
             |  Techniques
-          a.item#flags(href=`/course-player?module=${module}&section=flags&page=objectives`)
+          a.item#signs(href=`/course-player?module=${module}&section=signs&page=objectives`)
             i.flag.icon
-            |  Red Flags
+            |  Warning Signs
         a.item#protection(href=`/course-player?module=${module}&section=protection&page=objectives`)
           i.shield.alternate.icon
           |  Protection
-        if module !== 'grandparent'
+        if module !== 'grandparent' && module !== 'tech'
           a.item#reporting(href=`/course-player?module=${module}&section=reporting&page=objectives`)
             i.bullhorn.icon
             |  Reporting

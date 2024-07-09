@@ -121,3 +121,7 @@ span.target {
     text-align: center;
 }
 
+
+#avatarContainer button.ui.fluid.blue.huge.button {
+    border-radius: 0px !important;
+}

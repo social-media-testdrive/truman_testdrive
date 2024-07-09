@@ -219,7 +219,7 @@ const userSchema = new mongoose.Schema({
             questionScores: [{ type: Number }],
             questionChoices: Schema.Types.Mixed,
         }],
-        flagsAttempts: [{
+        signsAttempts: [{
             timestamp: { type: Date, default: Date.now },
             scoreTotal: { type: Number, default: 0 },
             correctAnswers: { type: Number, default: 0 },
@@ -234,7 +234,60 @@ const userSchema = new mongoose.Schema({
             questionChoices: Schema.Types.Mixed,
         }],
     },             
-  
+    tech: {
+        percent: { type: Number, default: 0 }, // percent complete
+        link: { type: String, default: '/course-player?module=tech&section=challenge&page=intro' }, // link to the last page the user was on in module
+        challengeAttempts: [{
+            timestamp: { type: Date, default: Date.now },
+            scoreTotal: { type: Number, default: 0 },
+            correctAnswers: { type: Number, default: 0 },
+            questionScores: [{ type: Number }],
+            questionChoices: Schema.Types.Mixed,
+        }],
+        conceptsAttempts: [{
+            timestamp: { type: Date, default: Date.now },
+            scoreTotal: { type: Number, default: 0 },
+            correctAnswers: { type: Number, default: 0 },
+            questionScores: [{ type: Number }],
+            questionChoices: Schema.Types.Mixed,
+        }],
+        consequencesAttempts: [{
+            timestamp: { type: Date, default: Date.now },
+            scoreTotal: { type: Number, default: 0 },
+            correctAnswers: { type: Number, default: 0 },
+            questionScores: [{ type: Number }],
+            questionChoices: Schema.Types.Mixed,
+        }],
+        techniquesAttempts: [{
+            timestamp: { type: Date, default: Date.now },
+            scoreTotal: { type: Number, default: 0 },
+            correctAnswers: { type: Number, default: 0 },
+            questionScores: [{ type: Number }],
+            questionChoices: Schema.Types.Mixed,
+        }],
+        protectionAttempts: [{
+            timestamp: { type: Date, default: Date.now },
+            scoreTotal: { type: Number, default: 0 },
+            correctAnswers: { type: Number, default: 0 },
+            questionScores: [{ type: Number }],
+            questionChoices: Schema.Types.Mixed,
+        }],
+        signsAttempts: [{
+            timestamp: { type: Date, default: Date.now },
+            scoreTotal: { type: Number, default: 0 },
+            correctAnswers: { type: Number, default: 0 },
+            questionScores: [{ type: Number }],
+            questionChoices: Schema.Types.Mixed,
+        }],
+        evaluationAttempts: [{
+            timestamp: { type: Date, default: Date.now },
+            scoreTotal: { type: Number, default: 0 },
+            correctAnswers: { type: Number, default: 0 },
+            questionScores: [{ type: Number }],
+            questionChoices: Schema.Types.Mixed,
+        }],
+    },             
+
     phishing: {
         percent: { type: Number, default: 0 }, // percent complete
         link: { type: String, default: '/course-player?module=phishing&section=challenge&page=intro' }, // link to the last page the user was on in module
@@ -293,7 +346,17 @@ const userSchema = new mongoose.Schema({
         practice: { type: Number, default: 0 }, 
         evaluation: { type: Number, default: 0 }, 
     },     
-  
+    tech: {
+        intro: { type: Number, default: 0 }, 
+        challenge: { type: Number, default: 0 },  
+        concepts: { type: Number, default: 0 }, 
+        consequences: { type: Number, default: 0 }, 
+        techniques: { type: Number, default: 0 }, 
+        protection: { type: Number, default: 0 }, 
+        signs: { type: Number, default: 0 }, 
+        practice: { type: Number, default: 0 }, 
+        evaluation: { type: Number, default: 0 }, 
+    }
   },
   modulePageTimes: { // marks the progress of each module
     identity: {

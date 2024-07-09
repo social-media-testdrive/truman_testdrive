@@ -33,7 +33,6 @@ block styles
 block scripts      
     script.
         var speechData = "none"; // quizData is passed to pug file via render function in app.js     
-    script(src='/module_js/romance/romance-scam.js')    
     //- script(src='/js/text2speech.js')  
     script.
         window.addEventListener('load', function() {
@@ -53,12 +52,6 @@ block scripts
         var startPage = "#{page}"; 
         var total = parseInt(#{numPages});
     script.
-        $('.ui.shape .ui.card').on('click', function() {
-            $(this).closest('.ui.card').removeClass('click-me-glow');
-            // Navigate up to the parent '.ui.shape' of the clicked '.ui.card' and perform the flip
-            $(this).closest('.ui.shape').shape('flip over');
-            
-        });
         //- Sources referenced: https://mgmgblog.com/en/post-4601/ and https://codepen.io/jjinMangKo/pen/LYygOrq
         $('#steps-slider').slick({
             asNavFor:"#image-slider",
@@ -91,9 +84,11 @@ block scripts
         var username = "#{user.name}";
         var current_percent = 50;
         var link = "/course-player?module=identity&section=requests&page=takeaways";
-
+    script(src='/module_js/module-narration.js')    
+    script(src='/module_js/romance/romance-scam.js')    
     script(src='/module_js/module_quiz.js', mod-id=module, page=page, current-section=section, next-link=link, progress=progress)
-        
+    script(src='/module_js/flipcard.js')    
+
         //- startQuiz()
     //- console.log("Page is quiz-template")
     //- console.log("module: " + module)

@@ -98,6 +98,19 @@ block content
           .ui.grid
             .row
               .two.wide.centered.column
+                if(user.moduleStatus.grandparent.reporting === 100)
+                  span.fake-checkbox.completed
+                else
+                  span.fake-checkbox
+              .nine.wide.column
+                h3 Warning Signs
+              .five.wide.right.aligned.column
+                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=grandparent&section=signs&page=objectives'") Start
+        .ui.divider
+        .ui.basic.segment
+          .ui.grid
+            .row
+              .two.wide.centered.column
                 if(user.moduleStatus.grandparent.protection === 100)
                   span.fake-checkbox.completed
                 else
@@ -106,19 +119,6 @@ block content
                 h3 Methods of Protection
               .five.wide.right.aligned.column
                 .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=grandparent&section=protection&page=objectives'") Start
-        .ui.divider
-        .ui.basic.segment
-          .ui.grid
-            .row
-              .two.wide.centered.column
-                if(user.moduleStatus.grandparent.reporting === 100)
-                  span.fake-checkbox.completed
-                else
-                  span.fake-checkbox
-              .nine.wide.column
-                h3 Red Flags
-              .five.wide.right.aligned.column
-                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=grandparent&section=flags&page=objectives'") Start
         .ui.divider
         .ui.basic.segment
           .ui.grid
