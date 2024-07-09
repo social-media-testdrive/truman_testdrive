@@ -312,6 +312,13 @@ app.get("/accessibility", passportConfig.isAuthenticated, function (req, res) {
   });
 });
 
+// Render dashboard
+app.get("/dashboard", passportConfig.isAuthenticated, function (req, res) {
+  res.render("dashboard", {
+    title: "Dashboard",
+  });
+});
+
 /**
  * Module Routes
  */
