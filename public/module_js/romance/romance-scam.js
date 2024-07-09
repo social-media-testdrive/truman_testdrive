@@ -508,7 +508,6 @@ function setLinks(currentPage) {
       } else if (currentPage === "intro-video") {
         // pause video
         $("#my_video_1")[0].player.pause();
-  
         backlink = baseurl + "objectives";
         nextlink = baseurl + "phases";
       } else if (currentPage === "phases") {
